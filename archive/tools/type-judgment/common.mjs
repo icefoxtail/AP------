@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { loadActiveMetaRegistry, curriculumForQuestion } from '../meta-foundation/active-registry.mjs';
 import { questionUidForSource } from '../meta-foundation/rpm-active-resolver.mjs';
 import { loadBank } from '../meta-foundation/auto-register-merged-source.mjs';
+import { loadAliasEvidence } from './alias-evidence.mjs';
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 export const isMain = url => Boolean(process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(url));
@@ -17,7 +18,7 @@ export function loadContext(root = ROOT) {
     const file = path.join(dir, name, 'pack.json');
     if (fs.existsSync(file)) { const pack = read(file); packs.set(pack.packId, pack); }
   }
-  return { root, registry, packs,
+  return { root, registry, packs, courseAliasEvidence: loadAliasEvidence(root),
     records: read(path.join(root, 'archive/data/question_metadata.json')).records,
     master: new Map(read(path.join(root, 'archive/data/master_tables/js_archive_tag_master.json')).map(row => [row.key, row])),
     aliases: read(path.join(root, 'archive/data/meta-foundation/compiled/aliases.json')).aliases };
@@ -25,6 +26,7 @@ export function loadContext(root = ROOT) {
 export function scopeForRecord(row = {}) {
   return { curriculum: row.curriculum || row.curriculumKey || curriculumForQuestion(row) || '',
     course: row.standardCourse || row.courseKey || '', unit: row.standardUnitKey || '', sub: row.subUnitKey || null,
+    ...(row.sourceArchiveFile ? {sourceArchiveFile:row.sourceArchiveFile} : {}),
     ...(row.curriculumKey ? { curriculumKey: row.curriculumKey } : {}), ...(row.courseKey ? { courseKey: row.courseKey } : {}) };
 }
 // ACTIVE and owner-pack conditions mirror rpm-active-resolver.activeCandidateKeysForScope.

@@ -8,22 +8,23 @@ import { buildOptions, buildWorkload, integrity, formatMarkdown, runCli as optio
 import { writeOutput, parseArgs, readExam } from '../archive/tools/type-judgment/common.mjs';
 import { validateLedger, compareLedgers, runCli as ledgerCli } from '../archive/tools/type-judgment/check-ledger.mjs';
 
-test('exact options isolate course/curriculum, ACTIVE packs and children; approved samples only', () => {
+test('broad options isolate course/curriculum, ACTIVE packs and children; approved samples only', () => {
   const {context} = fixture();
   context.records.push({...context.records[0],questionUid:'q2',fieldStatus:{problemType:'manual_review_pending',template:'manual_review_pending'}});
   const before = JSON.stringify(context.records);
   const result = buildOptions(context,{curriculum:'2015',course:'수학',unit:'U-01',sub:'S-01'});
-  assert.equal(result.status,'EXACT'); assert.deepEqual(result.candidates.map(x=>x.key),['PT_A']);
+  assert.equal(result.status,'BROAD'); assert.equal(result.candidates[0].bindingStatus,'EXACT'); assert.deepEqual(result.candidates.map(x=>x.key),['PT_A']);
   assert.deepEqual(result.candidates[0].templates.map(x=>x.key),['TPL_A','TPL_A2']);
   assert.deepEqual(result.candidates[0].representatives.map(x=>x.questionUid),['q1']);
   assert.equal(JSON.stringify(context.records),before);
 });
-test('sub fallback and separate adjacent-unit expansion are explicit; invalid scope fails closed', () => {
+test('unit-wide candidates carry binding debt; no invented adjacent expansion; invalid scope fails closed', () => {
   const {context}=fixture(), scope={curriculum:'2015',course:'수학',unit:'U-01',sub:'S-02'};
-  assert.equal(buildOptions(context,scope).status,'UNIT_FALLBACK');
+  assert.equal(buildOptions(context,scope).candidates[0].bindingStatus,'ALIAS');
+  assert.equal(buildOptions(context,scope).candidates[0].bindingReason,'UNIT_WIDE');
   const result=buildOptions(context,{...scope,unit:'U-02',sub:null});
-  assert.equal(result.status,'CANDIDATE_EXPANSION'); assert.equal(result.candidates.length,0);
-  assert.deepEqual(result.candidateExpansion.map(x=>x.unit),['U-01','U-03']);
+  assert.equal(result.status,'NO_CANDIDATES'); assert.equal(result.candidates.length,0);
+  assert.deepEqual(result.candidateExpansion,[]);
   assert.equal(buildOptions(context,{...scope,sub:'UNREGISTERED'}).status,'INVALID_CANONICAL_SCOPE');
 });
 test('workload omits source text, deduplicates option sets, preserves missing metadata', () => {
@@ -176,7 +177,7 @@ test('options CLI returns advisory 0 or strict 1 on unverified registry', () => 
   } finally {fs.rmSync(temp,{recursive:true,force:true});}
 });
 
-test('ledger rejects disagreeing curriculum aliases and unsupported course aliases', () => {
+test('ledger rejects disagreeing curriculum aliases but records course binding debt', () => {
   const { context, exam, ledger } = ledgerFixture();
   exam.rows[0].metadata.curriculumKey = '2022';
   let result = validateLedger(context, ledger, exam);
@@ -185,8 +186,9 @@ test('ledger rejects disagreeing curriculum aliases and unsupported course alias
   exam.rows[0].metadata.curriculumKey = '2015';
   exam.rows[0].metadata.courseKey = '지원하지 않는 과목';
   result = validateLedger(context, ledger, exam);
-  assert.equal(result.valid, false);
-  assert.ok(result.rows[0].errors.some(e => e.code === 'CANONICAL_COURSE_ALIAS_INVALID'));
+  assert.equal(result.valid, true);
+  assert.equal(result.rows[0].status,'NEEDS_BINDING');
+  assert.ok(result.rows[0].warnings.some(e => e.code === 'CANONICAL_COURSE_ALIAS_UNVERIFIED'));
   context.packs.get('PACK').standardCourses.push('지원하지 않는 과목');
   assert.equal(validateLedger(context, ledger, exam).rows[0].status, 'VALID_PICK');
 });
@@ -195,7 +197,7 @@ test('NEW_KEY validates parent-binding aliases while missing binding remains deb
   const { context, exam, ledger } = ledgerFixture();
   ledger.entries = [{ questionUid: 'qid_fixture', sourceOrdinal: 1, decision: 'NEW_KEY', proposedName: 'TPL_NEW', parentProblemTypeKey: 'PT_A', definition: '정의', internalSkeleton: '풀이 구조', decisiveStep: '양변에서 1을 뺀다.', cue: 'x+1=2' }];
   exam.rows[0].metadata.courseKey = '지원하지 않는 과목';
-  assert.equal(validateLedger(context, ledger, exam).valid, false);
+  assert.equal(validateLedger(context, ledger, exam).valid, true);
   context.registry.bindingRows = [];
   const result = validateLedger(context, ledger, exam);
   assert.equal(result.valid, true);

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Read-only structural/evidence checks, not mathematical review or registration approval.
 import fs from 'node:fs';
+import { loadUnits, resolveUnitScope } from './units.mjs';
 import { normalizeNotation } from '../meta-foundation/source-delta.mjs';
-import { ROOT, loadContext, readExam, scopeForRecord, activeKey, matchingBindings,
+import { ROOT, loadContext, readExam, activeKey, matchingBindings,
   parseArgs, writeOutput, isMain } from './common.mjs';
 
 const nonempty = value => typeof value === 'string' && value.trim().length > 0;
@@ -43,7 +44,7 @@ function checkEvidence(entry, question, errors) {
   if (!cue || !sourceFragments(question).some(fragment => normalizeNotation(fragment).includes(cue))) errors.push(issue('CUE_NOT_IN_SOURCE'));
 }
 
-export function validateLedger(context, ledger, suppliedExam) {
+export function validateLedger(context, ledger, suppliedExam, {units} = {}) {
   const errors = [];
   const rows = [];
   const registryVerified = context.registry.status === 'ACTIVE' && !context.registry.errors?.length;
@@ -85,12 +86,11 @@ export function validateLedger(context, ledger, suppliedExam) {
     if (!source?.metadata) rowErrors.push(issue('CANONICAL_METADATA_MISSING'));
     let scope;
     if (source?.metadata) {
-      scope = scopeForRecord(source.metadata);
-      const unit = context.master.get(scope.unit), sub = scope.sub ? context.master.get(scope.sub) : null;
-      // Same unit/ACTIVE checks as reviewed-exam-registration-v2 resolve/resolveUnitOnly.
-      if (!unit || unit.keyType !== 'standardUnitKey' || !['active', 'ACTIVE'].includes(unit.status)) rowErrors.push(issue('CANONICAL_UNIT_INVALID'));
-      if (scope.sub && (!sub || sub.keyType !== 'subUnitKey' || !['active', 'ACTIVE'].includes(sub.status)
-          || (sub.standardUnitKey || sub.parentKey) !== scope.unit)) rowErrors.push(issue('CANONICAL_SUBUNIT_INVALID'));
+      const resolved = resolveUnitScope(context, source, exam.questions[entry.sourceOrdinal - 1], units);
+      scope = resolved.scope;
+      row.unitSource = resolved.unitSource;
+      row.scope = scope;
+      rowErrors.push(...resolved.errors);
       if (!scope.curriculum || !scope.course) rowErrors.push(issue('CANONICAL_SCOPE_INCOMPLETE'));
       if (scope.curriculumKey && scope.curriculumKey !== scope.curriculum) rowErrors.push(issue('CANONICAL_CURRICULUM_ALIAS_INVALID'));
     }
@@ -104,10 +104,7 @@ export function validateLedger(context, ledger, suppliedExam) {
       if (!nonempty(ptKey) || !activeKey(context, 'PT', ptKey)) rowErrors.push(issue('PT_NOT_ACTIVE'));
       const bindings = scope ? matchingBindings(context, scope, ptKey, { exactSub: true }) : [];
       if (scope?.courseKey && !bindings.length) {
-        const withoutCourseAlias = { ...scope };
-        delete withoutCourseAlias.courseKey;
-        if (matchingBindings(context, withoutCourseAlias, ptKey, { exactSub: true }).length) rowErrors.push(issue('CANONICAL_COURSE_ALIAS_INVALID'));
-        else row.warnings = [issue('CANONICAL_COURSE_ALIAS_UNVERIFIED')];
+        row.warnings = [issue('CANONICAL_COURSE_ALIAS_UNVERIFIED')];
       }
       if (entry.decision === 'PICK') {
         if (!nonempty(entry.templateKey) || !activeKey(context, 'TPL', entry.templateKey)) rowErrors.push(issue('TPL_NOT_ACTIVE'));
@@ -131,9 +128,9 @@ export function validateLedger(context, ledger, suppliedExam) {
   return result();
 }
 
-export function compareLedgers(context, left, right, suppliedExam) {
-  const leftCheck = validateLedger(context, left, suppliedExam);
-  const rightCheck = validateLedger(context, right, suppliedExam);
+export function compareLedgers(context, left, right, suppliedExam, options = {}) {
+  const leftCheck = validateLedger(context, left, suppliedExam, options);
+  const rightCheck = validateLedger(context, right, suppliedExam, options);
   const counts = { AGREE: 0, PT_ONLY: 0, DIFF: 0, ONE_HOLD: 0, BOTH_NEW_KEY: 0 };
   if (!leftCheck.valid || !rightCheck.valid || leftCheck.exam !== rightCheck.exam) return {
     valid: false, errors: [issue('COMPARISON_REQUIRES_VALID_SAME_EXAM_LEDGERS')], leftCheck, rightCheck, counts, rows: [],
@@ -153,11 +150,12 @@ export function compareLedgers(context, left, right, suppliedExam) {
 }
 
 export function runCli(argv = process.argv.slice(2)) {
-  const args = parseArgs(argv, ['--ledger', '--compare', '--out'], ['--strict']);
+  const args = parseArgs(argv, ['--ledger', '--compare', '--out', '--units'], ['--strict']);
   if (!args.ledger) throw new Error('usage: check-ledger.mjs --ledger <json> [--compare <json>] [--out <outside-repository>] [--strict]');
   const context = loadContext(ROOT);
   const ledger = JSON.parse(fs.readFileSync(args.ledger, 'utf8'));
-  const result = args.compare ? compareLedgers(context, ledger, JSON.parse(fs.readFileSync(args.compare, 'utf8'))) : validateLedger(context, ledger);
+  const options = {units:loadUnits(args.units, context.root)};
+  const result = args.compare ? compareLedgers(context, ledger, JSON.parse(fs.readFileSync(args.compare, 'utf8')), undefined, options) : validateLedger(context, ledger, undefined, options);
   writeOutput(`${JSON.stringify(result, null, 2)}\n`, args.out, context.root);
   const registryVerified = context.registry.status === 'ACTIVE' && !context.registry.errors?.length;
   return !result.valid || (args.strict && !registryVerified) ? 1 : 0;
