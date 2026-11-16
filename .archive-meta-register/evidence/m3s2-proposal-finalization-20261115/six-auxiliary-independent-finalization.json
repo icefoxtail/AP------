@@ -1,0 +1,1430 @@
+{
+  "schemaVersion": "archive-independent-native-proposal-disposition-v1",
+  "status": "NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING",
+  "scope": {
+    "newFullMathematicalQa": false,
+    "newReview2Claims": 0,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "newSourceContentEdits": 0
+  },
+  "reviewedInputRef": {
+    "path": "review-inputs.json",
+    "sha256": "645462ec59bb8c7eabb27a03f682e5966b352ab36097edfe0d967b0f2ea711eb"
+  },
+  "globalActiveSearch": {
+    "baseline": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+    "registries": [
+      {
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2",
+        "activeRecordCount": 985
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "sha256": "3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208",
+        "activeRecordCount": 57
+      }
+    ],
+    "centroidDisposition": "Reuse the exact independently finalized M2 key after its canonical registration; do not add another centroid key or rewrite its supporting cohort.",
+    "polygonDisposition": "Exact native CC_POLYGON_INTERIOR_ANGLE_SUM proposal; triangle-only angle sum and solid-vertex feasibility are distinct. Four applications all use one quadrilateral interior sum.",
+    "nearestExisting": [
+      {
+        "key": "CC_CENTROID",
+        "distinction": "vertex coordinate average, not median 2:1 relation"
+      },
+      {
+        "key": "CC_TRIANGLE_CENTROID",
+        "distinction": "vertex and centroid coordinate relation"
+      },
+      {
+        "key": "CC_TRIANGLE_ANGLE_SUM",
+        "distinction": "a triangle sum180 does not name a four-angle sum360 application"
+      },
+      {
+        "key": "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY",
+        "distinction": "sum of face angles at a solid vertex is not one planar polygon interior sum"
+      }
+    ]
+  },
+  "applications": [
+    {
+      "examId": "E010",
+      "questionUid": "qid_v1_719c286ffcf71eb9f34be502cdb7964b0d74f8401d10a964fed913205341eefc",
+      "sourceOrdinal": 5,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+      "reason": "정사면체 밑면 BCD의 중선 DM에서 H가 꼭짓점 D 쪽으로 DH:HM=2:1을 이루므로 DH=(2/3)DM을 구한다. 이후 직각삼각형 ADH의 삼각비를 구하는 실제 보조 개념이다. 좌표평균 정의와 구별되며 M2에서 확정한 동일 CC를 재사용한다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.meta.json",
+        "sha256": "65fe6c4ea629787a11e37ae1bd5669ade0ef49f35a870e2e4a8eb1bd5a200876"
+      },
+      "nativeItemStableSha256": "89354cf3558e9df794cefa18ec67e86e96e830a56f6ba67ca779ea9157bc00e7",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.proposals.json",
+            "sha256": "18aa17dbb4ddc5af4ccb2fbf032f980dda9df8e0f8107d3fd4dab5d5fc8a36f8"
+          },
+          "index": 0,
+          "proposalSha256": "a4d5f605ecae6db4cc5e21bf2a33f67ed2d3618d8248285d7cb6bb46f7f5f5cd",
+          "questionUid": "qid_v1_719c286ffcf71eb9f34be502cdb7964b0d74f8401d10a964fed913205341eefc",
+          "sourceOrdinal": 5
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "blob": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+        "sha256": "91ddfec07ac015f7d4872ccaa1a4593b2e53885912f8650e6ff23a9e74b6ae47",
+        "questionSha256": "6eb3c825544c711f0d7bc7e05aedf5ff1d9ee288a661b19c652981b9b38576f4"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/25_신흥중_2학기_중간_중3_수학/q5.png",
+          "gitBlobSha1": "28214659b11b7f4e038c439e18ad50c7cbbdb852",
+          "sha256": "30cbeedec1255ac46c2751bea1e463d614c4ac68ff95d33370847f6bb817d3cd",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/25_신흥중_2학기_중간_중3_수학/q5-solution.svg",
+          "gitBlobSha1": "7c7120e34e3a8487f46bf5a81fe03468941711c3",
+          "sha256": "30cc63a603747e0d1c767d430dbb712d7ca5c702e712ff7b6f012efbf597f806",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.proposals.json",
+              "sha256": "18aa17dbb4ddc5af4ccb2fbf032f980dda9df8e0f8107d3fd4dab5d5fc8a36f8"
+            },
+            "index": 0,
+            "proposalSha256": "a4d5f605ecae6db4cc5e21bf2a33f67ed2d3618d8248285d7cb6bb46f7f5f5cd",
+            "questionUid": "qid_v1_719c286ffcf71eb9f34be502cdb7964b0d74f8401d10a964fed913205341eefc",
+            "sourceOrdinal": 5
+          },
+          "reason": "정사면체 밑면 BCD의 중선 DM에서 H가 꼭짓점 D 쪽으로 DH:HM=2:1을 이루므로 DH=(2/3)DM을 구한다. 이후 직각삼각형 ADH의 삼각비를 구하는 실제 보조 개념이다. 좌표평균 정의와 구별되며 M2에서 확정한 동일 CC를 재사용한다.",
+          "disposition": "REUSE_ACTIVE",
+          "definition": {
+            "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+            "canonicalLabelKo": "무게중심의 중선 교점과 2대1 분할",
+            "definition": "삼각형의 무게중심은 각 꼭짓점과 그 대변의 중점을 잇는 세 중선의 교점이며, 각 중선을 꼭짓점에서 대변의 중점 쪽으로 2:1로 나눈다.",
+            "ownerConceptShard": "PLANE_GEOMETRY",
+            "aliases": [],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+              "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
+            ],
+            "supportingItemCount": 2,
+            "sourceUnits": [
+              "M2-05",
+              "M2-06"
+            ],
+            "legacyKeys": [],
+            "taxonomyRefs": [
+              "PT_PARALLEL_SEGMENT_RATIO",
+              "PT_TRIANGLE_CENTERS"
+            ],
+            "curriculumRefs": [],
+            "evidenceProvenance": [
+              {
+                "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+                "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+                "sourceOrdinal": 3,
+                "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+                "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+                "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+                "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+                "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+                "nativeProposalRefs": [
+                  "B-E023-CC-CENTROID"
+                ],
+                "classificationRationale": "G가 무게중심이며 AG/BG의 연장이 각각 D/E에 닿는다는 stem과 그림을 확인했다. 중선의 정의로 D/E가 대변의 중점임을 얻은 후 평행선 선분비와 넓이비를 결합한다.",
+                "newMathematicalQa": false
+              },
+              {
+                "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+                "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+                "sourceOrdinal": 21,
+                "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+                "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+                "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+                "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+                "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+                "nativeProposalRefs": [
+                  "B-E023-CC-CENTROID"
+                ],
+                "classificationRationale": "PNG의 A 직각, G가 AD 위에 있는 위치, GD 길이 표기를 확인했다. 현재 해설은 무게중심의 AG:GD=2:1로 AD를 정한 뒤 직각삼각형 빗변 중점 성질을 Primary로 사용한다.",
+                "newMathematicalQa": false
+              }
+            ]
+          },
+          "canonicalPath": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json"
+        }
+      ]
+    },
+    {
+      "examId": "E010",
+      "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+      "sourceOrdinal": 14,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+      "reason": "같은 중심거리의 세 현이 같아 ABC가 정삼각형이고 O가 무게중심과 일치한다. 높이 6에 중선의 꼭짓점 쪽 2/3을 적용해 OA=4를 복원한다. 현재 해설의 그 단계에 동일 중선비 CC가 정확히 적용된다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.meta.json",
+        "sha256": "65fe6c4ea629787a11e37ae1bd5669ade0ef49f35a870e2e4a8eb1bd5a200876"
+      },
+      "nativeItemStableSha256": "65a778bc75b5010efbc88f612402bc2bf89e74470f3ac0350427038c91ca13fa",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.proposals.json",
+            "sha256": "18aa17dbb4ddc5af4ccb2fbf032f980dda9df8e0f8107d3fd4dab5d5fc8a36f8"
+          },
+          "index": 1,
+          "proposalSha256": "9a5aa0698a6a3596b0f81682d155419edf68956fdfcc8bca480744df771614f6",
+          "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+          "sourceOrdinal": 14
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "blob": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+        "sha256": "91ddfec07ac015f7d4872ccaa1a4593b2e53885912f8650e6ff23a9e74b6ae47",
+        "questionSha256": "14f634df9e2c2ea3e502faf78253af01934f0362579e209c0d32be141ff14205"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/25_신흥중_2학기_중간_중3_수학/q14.png",
+          "gitBlobSha1": "c1d25c567d3154e6a48a90ca267d7d62d933af3c",
+          "sha256": "a2ec16a08c09299cfd419f152ee51495365867c6d42beaed551aaae65ea834e6",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/25_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+          "gitBlobSha1": "59852e2d6d6ffbebf0e039477363c03712ea367e",
+          "sha256": "fadb355c504ef1a6bfa8fbe2d9451794c9929e18ea9e53d29f37d958ce66f8b9",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.proposals.json",
+              "sha256": "18aa17dbb4ddc5af4ccb2fbf032f980dda9df8e0f8107d3fd4dab5d5fc8a36f8"
+            },
+            "index": 1,
+            "proposalSha256": "9a5aa0698a6a3596b0f81682d155419edf68956fdfcc8bca480744df771614f6",
+            "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+            "sourceOrdinal": 14
+          },
+          "reason": "같은 중심거리의 세 현이 같아 ABC가 정삼각형이고 O가 무게중심과 일치한다. 높이 6에 중선의 꼭짓점 쪽 2/3을 적용해 OA=4를 복원한다. 현재 해설의 그 단계에 동일 중선비 CC가 정확히 적용된다.",
+          "disposition": "REUSE_ACTIVE",
+          "definition": {
+            "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+            "canonicalLabelKo": "무게중심의 중선 교점과 2대1 분할",
+            "definition": "삼각형의 무게중심은 각 꼭짓점과 그 대변의 중점을 잇는 세 중선의 교점이며, 각 중선을 꼭짓점에서 대변의 중점 쪽으로 2:1로 나눈다.",
+            "ownerConceptShard": "PLANE_GEOMETRY",
+            "aliases": [],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+              "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
+            ],
+            "supportingItemCount": 2,
+            "sourceUnits": [
+              "M2-05",
+              "M2-06"
+            ],
+            "legacyKeys": [],
+            "taxonomyRefs": [
+              "PT_PARALLEL_SEGMENT_RATIO",
+              "PT_TRIANGLE_CENTERS"
+            ],
+            "curriculumRefs": [],
+            "evidenceProvenance": [
+              {
+                "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+                "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+                "sourceOrdinal": 3,
+                "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+                "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+                "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+                "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+                "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+                "nativeProposalRefs": [
+                  "B-E023-CC-CENTROID"
+                ],
+                "classificationRationale": "G가 무게중심이며 AG/BG의 연장이 각각 D/E에 닿는다는 stem과 그림을 확인했다. 중선의 정의로 D/E가 대변의 중점임을 얻은 후 평행선 선분비와 넓이비를 결합한다.",
+                "newMathematicalQa": false
+              },
+              {
+                "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+                "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+                "sourceOrdinal": 21,
+                "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+                "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+                "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+                "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+                "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+                "nativeProposalRefs": [
+                  "B-E023-CC-CENTROID"
+                ],
+                "classificationRationale": "PNG의 A 직각, G가 AD 위에 있는 위치, GD 길이 표기를 확인했다. 현재 해설은 무게중심의 AG:GD=2:1로 AD를 정한 뒤 직각삼각형 빗변 중점 성질을 Primary로 사용한다.",
+                "newMathematicalQa": false
+              }
+            ]
+          },
+          "canonicalPath": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json"
+        }
+      ]
+    },
+    {
+      "examId": "E011",
+      "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+      "sourceOrdinal": 17,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+      "reason": "OM⊥AB, ON⊥AC인 사각형 AMON에서 두 직각과 ∠MON=130°를 내각합360°에서 빼 ∠A=50°를 구한다. 이등변삼각형 밑각 계산과 구별되는 사각형 내각합 보조 단계다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+        "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+      },
+      "nativeItemStableSha256": "70a19f396e6fd832db088d0bb28c0394cc1712ff5af013c83158e545e957dd86",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+            "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+          },
+          "index": 2,
+          "proposalSha256": "8b0f1db7d7ebf1f0a577ad6b5228ef7efb105d4baab9f29961077e0a726c3c59",
+          "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+          "sourceOrdinal": 17,
+          "proposalId": "B-E011-CC_POLYGON_INTERIOR_ANGLE_SUM"
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "blob": "56f0bbf80029562f4c1b2877d075146d4fdb267b",
+        "sha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f",
+        "questionSha256": "044e055e11e94fe6af150734770a84a065bef6e5da44b4f6b9f0d6ba2cb8b909"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q17.png",
+          "gitBlobSha1": "e7c0bd6e22036df2191b726d779a84cb9b84851b",
+          "sha256": "8fd80972476de6376dcda568956ac91fbcb41a87ba6a1411bf9a08e949be2ec0",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg",
+          "gitBlobSha1": "ea67c637256667e45c8b133ca6ea152aa5b0884f",
+          "sha256": "d8a5937f6238fe93f9ccdfd16f99621122bae7a230f126e51f12f5e7c41e075e",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "index": 2,
+            "proposalSha256": "8b0f1db7d7ebf1f0a577ad6b5228ef7efb105d4baab9f29961077e0a726c3c59",
+            "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+            "sourceOrdinal": 17,
+            "proposalId": "B-E011-CC_POLYGON_INTERIOR_ANGLE_SUM"
+          },
+          "reason": "OM⊥AB, ON⊥AC인 사각형 AMON에서 두 직각과 ∠MON=130°를 내각합360°에서 빼 ∠A=50°를 구한다. 이등변삼각형 밑각 계산과 구별되는 사각형 내각합 보조 단계다.",
+          "disposition": "ADD_ONLY",
+          "definition": {
+            "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+            "canonicalLabelKo": "다각형의 내각의 합",
+            "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+            "ownerConceptShard": "PLANE_GEOMETRY",
+            "aliases": [
+              "사각형 내각의 합"
+            ],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+              "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+              "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+              "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+            ],
+            "supportingItemCount": 4,
+            "sourceUnits": [
+              "M3-06"
+            ],
+            "legacyKeys": [],
+            "taxonomyRefs": [
+              "PT_CIRCLE_LINE_RELATION",
+              "PT_CIRCLE_ANGLE_RELATIONS"
+            ],
+            "curriculumRefs": [
+              "2015:중3 수학:M3-06"
+            ],
+            "evidenceProvenance": [
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "sourceOrdinal": 17,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                  "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                  "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                  "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                  "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                  "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                  "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                "sourceOrdinal": 5,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                  "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                  "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+              }
+            ]
+          },
+          "registryChange": {
+            "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+            "collection": "concepts",
+            "match": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM"
+            },
+            "before": null,
+            "after": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+              "canonicalLabelKo": "다각형의 내각의 합",
+              "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+              "ownerConceptShard": "PLANE_GEOMETRY",
+              "aliases": [
+                "사각형 내각의 합"
+              ],
+              "status": "ACTIVE",
+              "supportingQuestionUids": [
+                "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+              ],
+              "supportingItemCount": 4,
+              "sourceUnits": [
+                "M3-06"
+              ],
+              "legacyKeys": [],
+              "taxonomyRefs": [
+                "PT_CIRCLE_LINE_RELATION",
+                "PT_CIRCLE_ANGLE_RELATIONS"
+              ],
+              "curriculumRefs": [
+                "2015:중3 수학:M3-06"
+              ],
+              "evidenceProvenance": [
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                  "sourceOrdinal": 17,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                    "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                    "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                  "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                    "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                    "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                    "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                    "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                  "sourceOrdinal": 5,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                    "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                    "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "examId": "E014",
+      "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+      "sourceOrdinal": 22,
+      "sourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+      "reason": "원주각54°에서 중심각108°를 복원한 뒤 접점의 직각 두 개와 함께 사각형 ABOC의 내각합360°를 사용하여 ∠BAC=72°를 구한다. 원주각/접선의 주분류와 다른 실제 보조 개념이다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+        "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+      },
+      "nativeItemStableSha256": "41c9003be0b90109c50f23c555cf583419c00a23502f3f7ae537d98513db0dbd",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+            "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+          },
+          "index": 13,
+          "proposalSha256": "3586547ff96d9f5fe2ef36bb8de2f4a91973f13ca8de51d5cf8b06c8e7a94fd7",
+          "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+          "sourceOrdinal": 22,
+          "proposalId": "B-E014-REUSE-CC_POLYGON_INTERIOR_ANGLE_SUM"
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+        "blob": "547854b067b341377e39eb644b3380a128e3d869",
+        "sha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3",
+        "questionSha256": "98b0a7703e5782d5d3a377633964e70b9a70c00f7a2f0819aca7d744f22c1057"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/24_신흥중_2학기_기말_중3_기출/q22-solution-v2.svg",
+          "gitBlobSha1": "712ae3f00afe9e76fd1b17eb6b1f3348a4cdd8a9",
+          "sha256": "8cfc9e02da7296e2d91770c483dd3c4bd902764dc6b9e47133dbc45a9efe3088",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/24_신흥중_2학기_기말_중3_기출/q22.png",
+          "gitBlobSha1": "7a691786198dea15a03deab54f6ce5476d489268",
+          "sha256": "c9208723849ce5b20f491c3f285357acb2b7afe225ea92503b4a0345b9e37b6e",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+              "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+            },
+            "index": 13,
+            "proposalSha256": "3586547ff96d9f5fe2ef36bb8de2f4a91973f13ca8de51d5cf8b06c8e7a94fd7",
+            "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+            "sourceOrdinal": 22,
+            "proposalId": "B-E014-REUSE-CC_POLYGON_INTERIOR_ANGLE_SUM"
+          },
+          "reason": "원주각54°에서 중심각108°를 복원한 뒤 접점의 직각 두 개와 함께 사각형 ABOC의 내각합360°를 사용하여 ∠BAC=72°를 구한다. 원주각/접선의 주분류와 다른 실제 보조 개념이다.",
+          "disposition": "ADD_ONLY",
+          "definition": {
+            "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+            "canonicalLabelKo": "다각형의 내각의 합",
+            "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+            "ownerConceptShard": "PLANE_GEOMETRY",
+            "aliases": [
+              "사각형 내각의 합"
+            ],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+              "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+              "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+              "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+            ],
+            "supportingItemCount": 4,
+            "sourceUnits": [
+              "M3-06"
+            ],
+            "legacyKeys": [],
+            "taxonomyRefs": [
+              "PT_CIRCLE_LINE_RELATION",
+              "PT_CIRCLE_ANGLE_RELATIONS"
+            ],
+            "curriculumRefs": [
+              "2015:중3 수학:M3-06"
+            ],
+            "evidenceProvenance": [
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "sourceOrdinal": 17,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                  "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                  "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                  "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                  "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                  "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                  "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                "sourceOrdinal": 5,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                  "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                  "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+              }
+            ]
+          },
+          "registryChange": {
+            "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+            "collection": "concepts",
+            "match": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM"
+            },
+            "before": null,
+            "after": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+              "canonicalLabelKo": "다각형의 내각의 합",
+              "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+              "ownerConceptShard": "PLANE_GEOMETRY",
+              "aliases": [
+                "사각형 내각의 합"
+              ],
+              "status": "ACTIVE",
+              "supportingQuestionUids": [
+                "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+              ],
+              "supportingItemCount": 4,
+              "sourceUnits": [
+                "M3-06"
+              ],
+              "legacyKeys": [],
+              "taxonomyRefs": [
+                "PT_CIRCLE_LINE_RELATION",
+                "PT_CIRCLE_ANGLE_RELATIONS"
+              ],
+              "curriculumRefs": [
+                "2015:중3 수학:M3-06"
+              ],
+              "evidenceProvenance": [
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                  "sourceOrdinal": 17,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                    "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                    "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                  "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                    "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                    "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                    "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                    "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                  "sourceOrdinal": 5,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                    "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                    "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "examId": "E034",
+      "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+      "sourceOrdinal": 22,
+      "sourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+      "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+      "reason": "원주각126°가 보는 큰 호252°의 반대 작은 호108°를 복원하고 사각형 AOBP의 두 접점 직각을 내각합360°에서 빼 ∠P=72°를 구한다. 원 PNG의 중심각·원주각 사용 조건도 해설과 일치한다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+        "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+      },
+      "nativeItemStableSha256": "120e49a6241088d076a6a757995b2e2a9bd6ac2ab187bf08119eb516abbda278",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+            "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+          },
+          "index": 8,
+          "proposalSha256": "5fa131f0e227c8f47fd327ce69b3543d639262c584e456d7a1aa79077185f6c3",
+          "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+          "sourceOrdinal": 22
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+        "blob": "fc0c618f376e8fe025612b5f629b0c0bf2617e30",
+        "sha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824",
+        "questionSha256": "72aa26d626476711ad9b8b755e5e55cf9d233396fec1ffe59d70ea5be88b1a2b"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/22_팔마중_2학기_기말_중3_기출/q22.png",
+          "gitBlobSha1": "95cabc9a3556d38bb20eaa28933ef1e3663ed3c5",
+          "sha256": "650abccdc656ba9f64bd762e91d1764be4ef7451ad670815b5b09ce6c0aa9df9",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/22_팔마중_2학기_기말_중3_기출/q22-solution-v2.svg",
+          "gitBlobSha1": "fdb841fd7d94baa48af6f6bd5b162ff2d93dec48",
+          "sha256": "5e6ff6e3245c60732349a33016c8e1f4866f07d354bd240f52324f07877397ad",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+              "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+            },
+            "index": 8,
+            "proposalSha256": "5fa131f0e227c8f47fd327ce69b3543d639262c584e456d7a1aa79077185f6c3",
+            "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+            "sourceOrdinal": 22
+          },
+          "reason": "원주각126°가 보는 큰 호252°의 반대 작은 호108°를 복원하고 사각형 AOBP의 두 접점 직각을 내각합360°에서 빼 ∠P=72°를 구한다. 원 PNG의 중심각·원주각 사용 조건도 해설과 일치한다.",
+          "disposition": "ADD_ONLY",
+          "definition": {
+            "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+            "canonicalLabelKo": "다각형의 내각의 합",
+            "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+            "ownerConceptShard": "PLANE_GEOMETRY",
+            "aliases": [
+              "사각형 내각의 합"
+            ],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+              "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+              "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+              "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+            ],
+            "supportingItemCount": 4,
+            "sourceUnits": [
+              "M3-06"
+            ],
+            "legacyKeys": [],
+            "taxonomyRefs": [
+              "PT_CIRCLE_LINE_RELATION",
+              "PT_CIRCLE_ANGLE_RELATIONS"
+            ],
+            "curriculumRefs": [
+              "2015:중3 수학:M3-06"
+            ],
+            "evidenceProvenance": [
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "sourceOrdinal": 17,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                  "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                  "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                  "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                  "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                  "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                  "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                "sourceOrdinal": 5,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                  "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                  "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+              }
+            ]
+          },
+          "registryChange": {
+            "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+            "collection": "concepts",
+            "match": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM"
+            },
+            "before": null,
+            "after": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+              "canonicalLabelKo": "다각형의 내각의 합",
+              "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+              "ownerConceptShard": "PLANE_GEOMETRY",
+              "aliases": [
+                "사각형 내각의 합"
+              ],
+              "status": "ACTIVE",
+              "supportingQuestionUids": [
+                "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+              ],
+              "supportingItemCount": 4,
+              "sourceUnits": [
+                "M3-06"
+              ],
+              "legacyKeys": [],
+              "taxonomyRefs": [
+                "PT_CIRCLE_LINE_RELATION",
+                "PT_CIRCLE_ANGLE_RELATIONS"
+              ],
+              "curriculumRefs": [
+                "2015:중3 수학:M3-06"
+              ],
+              "evidenceProvenance": [
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                  "sourceOrdinal": 17,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                    "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                    "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                  "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                    "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                    "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                    "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                    "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                  "sourceOrdinal": 5,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                    "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                    "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "examId": "E052",
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "sourceOrdinal": 5,
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+      "reason": "그림의 원주각70°에서 중심각140°를 구하고 사각형 AOBP에서 접점의 직각90° 두 개를 함께 빼 x=40°를 계산한다. 사각형 내각합을 삼각형 내각합 키나 원주각 키로 대신하지 않고 기존 두 native 제안의 같은 의미로 결속한다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+        "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+      },
+      "nativeItemStableSha256": "3201f9d49c300e25e58d65e52b68878c30be1a22f3d134aa0d61d243543006e6",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+            "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+          },
+          "index": 13,
+          "proposalSha256": "71e078b1724325bc613c3d667ca31441e62c9ddd36943812bcf8953a1df058e0",
+          "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+          "sourceOrdinal": 5,
+          "proposalId": "ROOT-E052-14"
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "blob": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c",
+        "sha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6",
+        "questionSha256": "9ea7ca7940fddb90bc1ba175546a12e821ef48a19022802269e21c5255efbe02"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05.png",
+          "gitBlobSha1": "94d3cc1e9458a8096fb53aebd099e1b2d1b2e652",
+          "sha256": "57a3d35543875fd44004f2c90f512d872def58fded71e994fd6d836f46557fee",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q5-solution.svg",
+          "gitBlobSha1": "ed25d12cb19e551b50521307485c59f29d581484",
+          "sha256": "9aace2d7176e9bfc718831ba0944d033ebf67c2e989adc0aea8eb49449313084",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+              "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+            },
+            "index": 13,
+            "proposalSha256": "71e078b1724325bc613c3d667ca31441e62c9ddd36943812bcf8953a1df058e0",
+            "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+            "sourceOrdinal": 5,
+            "proposalId": "ROOT-E052-14"
+          },
+          "reason": "그림의 원주각70°에서 중심각140°를 구하고 사각형 AOBP에서 접점의 직각90° 두 개를 함께 빼 x=40°를 계산한다. 사각형 내각합을 삼각형 내각합 키나 원주각 키로 대신하지 않고 기존 두 native 제안의 같은 의미로 결속한다.",
+          "disposition": "ADD_ONLY",
+          "definition": {
+            "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+            "canonicalLabelKo": "다각형의 내각의 합",
+            "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+            "ownerConceptShard": "PLANE_GEOMETRY",
+            "aliases": [
+              "사각형 내각의 합"
+            ],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+              "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+              "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+              "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+            ],
+            "supportingItemCount": 4,
+            "sourceUnits": [
+              "M3-06"
+            ],
+            "legacyKeys": [],
+            "taxonomyRefs": [
+              "PT_CIRCLE_LINE_RELATION",
+              "PT_CIRCLE_ANGLE_RELATIONS"
+            ],
+            "curriculumRefs": [
+              "2015:중3 수학:M3-06"
+            ],
+            "evidenceProvenance": [
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "sourceOrdinal": 17,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                  "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                  "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                  "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                  "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "sourceOrdinal": 22,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                  "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                  "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+              },
+              {
+                "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                "sourceOrdinal": 5,
+                "nativeReviewRef": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                  "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                },
+                "nativeProposalDocumentRef": {
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                  "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                },
+                "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+              }
+            ]
+          },
+          "registryChange": {
+            "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+            "collection": "concepts",
+            "match": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM"
+            },
+            "before": null,
+            "after": {
+              "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+              "canonicalLabelKo": "다각형의 내각의 합",
+              "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+              "ownerConceptShard": "PLANE_GEOMETRY",
+              "aliases": [
+                "사각형 내각의 합"
+              ],
+              "status": "ACTIVE",
+              "supportingQuestionUids": [
+                "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+              ],
+              "supportingItemCount": 4,
+              "sourceUnits": [
+                "M3-06"
+              ],
+              "legacyKeys": [],
+              "taxonomyRefs": [
+                "PT_CIRCLE_LINE_RELATION",
+                "PT_CIRCLE_ANGLE_RELATIONS"
+              ],
+              "curriculumRefs": [
+                "2015:중3 수학:M3-06"
+              ],
+              "evidenceProvenance": [
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+                  "sourceOrdinal": 17,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+                    "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+                    "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+                  "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+                    "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+                    "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+                  "sourceOrdinal": 22,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+                    "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+                    "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+                },
+                {
+                  "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+                  "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                  "sourceOrdinal": 5,
+                  "nativeReviewRef": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                    "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                  },
+                  "nativeProposalDocumentRef": {
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+                    "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+                  },
+                  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+                  "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+                  "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

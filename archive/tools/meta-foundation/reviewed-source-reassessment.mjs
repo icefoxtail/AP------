@@ -13,6 +13,7 @@ import { bindReviewedNativeFamilyCourse } from "./reviewed-native-parent.mjs";
 import { bindReviewedNativeRationaleContinuity } from "./reviewed-native-rationale-continuity.mjs";
 import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-current-definition-application.mjs";
 import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
+import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -200,10 +201,12 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
   })) fail("native review retains an explicit source/content/difficulty hold");
   const payload = studentPayload(question);
+  const m2CcRenderer = validateReviewedM2CcRendererContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
   const rendererContinuity = patch.sourceReview.rendererProof === undefined ? null :
     validateReviewedCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
-  if (!rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
+  if (!m2CcRenderer && !rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
   if (row.sourceEvidence) {
     const evidence = row.sourceEvidence, q = reviewedBank[ordinal - 1];
@@ -222,7 +225,13 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question: m2CcRenderer?.originalQuestion || question, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+  if (m2CcRenderer && (proposalFinalization?.proof?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+      !proposalFinalization.proof.nativeProposalBindings?.length ||
+      proposalFinalization.proof.nativeProposalBindings.some(binding => binding.type !== "CC") ||
+      !proposalFinalization.proof.definitions?.length ||
+      proposalFinalization.proof.definitions.some(definition => definition.collection !== "concepts")))
+    fail("typed M2 renderer bridge requires the original CC finalizer to succeed");
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const currentDefinitionApplication = validateM2S1CurrentDefinitionApplication({ root, request, patch, native: loaded, row,
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,
@@ -333,6 +342,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewCommitSourceBlobSha1: loaded.committedBlob, questionUid: patch.questionUid, sourceOrdinal: ordinal,
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(rendererContinuity ? { rendererContinuity } : {}),
+    ...(m2CcRenderer ? { m2CcRendererContinuity: { ...m2CcRenderer.proof,
+      originalFinalizationSha256: sha256(stable(proposalFinalization.proof)) } } : {}),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(rationaleContinuity ? { rationaleContinuity } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
