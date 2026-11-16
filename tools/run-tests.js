@@ -96,6 +96,14 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-source-delta.test.mjs',
+    args: ['--test', 'tests/archive-source-delta.test.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/source-delta-report.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/source-delta-report.mjs']
+  },
+  {
     label: 'tests/archive-main-merge-meta.test.mjs',
     args: ['--test', 'tests/archive-main-merge-meta.test.mjs'],
     timeout: 300000
