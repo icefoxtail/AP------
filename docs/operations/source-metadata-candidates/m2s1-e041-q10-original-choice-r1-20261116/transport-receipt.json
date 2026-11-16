@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-reviewed-source-candidate-receipt-v1",
+  "materializationId": "m2s1-e041-q10-original-choice-r1-20261116",
+  "baseCommit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+  "inputCommit": "a8ffb1811c5e07c17ded8a3c28c5f046be1727df",
+  "manifestRef": {
+    "path": ".archive-meta-register/evidence/m2s1-e041-q10-original-choice-r1-20261116.json",
+    "blobSha1": "4210c1363be64d2559d41888709076154c83bfb7",
+    "sha256": "697e9edd73567540e2164244efd8a6a2cebe2a703ff7431dde48e6d1a7e36f80"
+  },
+  "sourceFiles": [
+    {
+      "path": "archive/exams/original/middle/m2/1final/21_신흥중_1학기_기말_중2_수학.js",
+      "blobSha1": "8352325a9872e91cf699732c3f93ce5afd3a0e05",
+      "sha256": "7c29326ae417dfd561061d09b54e3fe1ebcef60ad38b6926ceeb84ed8e12598a",
+      "bytes": 50974
+    }
+  ],
+  "inputFileCount": 1,
+  "inputBytes": 3138,
+  "inputClosure": {
+    "transportProfile": "M2S1_E041_Q10_ORIGINAL_CHOICE_ORDER_V1",
+    "requestCount": 0,
+    "preservationRequestCount": 0,
+    "selectedUidCount": 1,
+    "evidenceFileCount": 1,
+    "newApprovals": 0,
+    "approvalEffect": "NONE",
+    "actualUi": "PENDING",
+    "nativeCorrectionReview": "REQUIRED_SEPARATELY",
+    "existingApprovalReuseAuthorized": false,
+    "correctionEvidenceRef": {
+      "commit": "60f0ec217116aff2b9ddd535aee861db9494ceef",
+      "path": "docs/operations/m2s1-e041-q10-original-choice-correction-20261116/independent-correction-v1.json",
+      "gitBlobSha1": "ca3866d8b65fc5bfcaa7b7de47a7fb376f1c008a",
+      "sha256": "ddb8ae9a5c394673ffa065130a2bdcbc53e37ce52f573ce07c1bbcf6958a6280",
+      "bytes": 3497
+    },
+    "sourceFiles": [
+      {
+        "path": "archive/exams/original/middle/m2/1final/21_신흥중_1학기_기말_중2_수학.js",
+        "blobSha1": "8352325a9872e91cf699732c3f93ce5afd3a0e05",
+        "sha256": "7c29326ae417dfd561061d09b54e3fe1ebcef60ad38b6926ceeb84ed8e12598a",
+        "bytes": 50974,
+        "expectedQuestionCount": 24,
+        "selectedCount": 1,
+        "nonselectedWholeQuestionsPreserved": 23
+      }
+    ],
+    "selection": [
+      {
+        "key": "E041-Q10",
+        "questionUid": "qid_v1_eff16cb34d23543b88c1ec860d9c271078746a16c8dfd13ceb01a6cecbf7c108",
+        "sourceOrdinal": 10,
+        "beforeWholeQuestionSha256": "c34e0db61d17b44639dce4247e3522dba7e1889fa78ccd288b9d3caf8a269385",
+        "afterWholeQuestionSha256": "bf25c2bac47da131c50d99af134bc9df317c82732c7df074cea9f73544f9721d",
+        "changedFields": [
+          "answer",
+          "choices",
+          "solution"
+        ],
+        "fieldTransitions": [
+          {
+            "field": "answer",
+            "before": {
+              "own": true,
+              "type": "string",
+              "sha256": "d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34"
+            },
+            "after": {
+              "own": true,
+              "type": "string",
+              "sha256": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8"
+            }
+          },
+          {
+            "field": "choices",
+            "before": {
+              "own": true,
+              "type": "array",
+              "sha256": "7a60cb22caf91b445a5ebc2043873f7ca1f8bd0ee8a925e130059338f7adb482"
+            },
+            "after": {
+              "own": true,
+              "type": "array",
+              "sha256": "8584fa5a1d842fd0c91c6308d6a1aad2dc7b55143e6845c673b8e66686987bb0"
+            }
+          },
+          {
+            "field": "solution",
+            "before": {
+              "own": true,
+              "type": "string",
+              "sha256": "0ce04cd292c38093c917981ab51b850043c23bec52e957e95097b72f1e0b5bc3"
+            },
+            "after": {
+              "own": true,
+              "type": "string",
+              "sha256": "e7dc47267ace067a8ac514aed9ed913bf14d506e68b4ad047af1e813b4f45b7d"
+            }
+          }
+        ]
+      }
+    ],
+    "evidenceTraversal": "EXACT_ROOT_ORIGINAL_GIVEN_CHOICE_CORRECTION_CURRENT_WHOLE_SOURCE_AND_IDENTITY",
+    "sourceFieldsChanged": [
+      "answer",
+      "choices",
+      "solution"
+    ],
+    "literalChangeKind": "EXACT_OPTION_PERMUTATION_AND_LINKED_CHOICE_LABELS",
+    "nonselectedWholeQuestionChanges": 0,
+    "sourcePrefixSuffixChanged": 0,
+    "assetsChanged": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "compactWrites": 0
+  },
+  "approvalEffect": "NONE",
+  "registrationStatus": "NOT_REGISTERED",
+  "nextRequiredStep": "NORMAL_PULL_REQUEST_CI_AND_SINGLE_MAIN_REGISTRATION_WRITER"
+}
