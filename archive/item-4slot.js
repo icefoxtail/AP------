@@ -8,7 +8,7 @@
     for(const value of data.records){
       const r=JSON.parse(JSON.stringify(value));
       if(!/^qid_v1_[a-f0-9]{64}$/.test(r.questionUid)||byUid.has(r.questionUid)||r.registrationStatus!=='REGISTERED')throw Error('FOUR_SLOT_RECORD_INVALID');
-      if(!['EXACT_BLOB','UNCHANGED_STUDENT_PAYLOAD','REGISTERED_RENDERER_CONTINUITY'].includes(r.sourceBinding))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
+      if(!['EXACT_BLOB','UNCHANGED_STUDENT_PAYLOAD','REGISTERED_RENDERER_CONTINUITY','EXISTING_REGISTERED_VECTOR_CONTINUITY','SCOPED_REVIEWED_RENDERER'].includes(r.sourceBinding))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
       if(r.sourceBinding==='REGISTERED_RENDERER_CONTINUITY'){
         const ref=r.rendererContinuityRef;
         if(!ref||typeof ref!=='object'||Array.isArray(ref)||Object.keys(ref).sort().join(',')!=='path,sha256'||
@@ -17,6 +17,22 @@
            typeof ref.sha256!=='string'||!/^[a-f0-9]{64}$/.test(ref.sha256)||r.independentReviewClaim!==false)throw Error('FOUR_SLOT_RENDERER_CONTINUITY_REF_INVALID');
         Object.freeze(ref);
       }else if(Object.hasOwn(r,'rendererContinuityRef'))throw Error('FOUR_SLOT_RENDERER_CONTINUITY_REF_UNEXPECTED');
+      if(r.sourceBinding==='EXISTING_REGISTERED_VECTOR_CONTINUITY'){
+        const ref=r.existingVectorContinuityRef;
+        if(!ref||typeof ref!=='object'||Array.isArray(ref)||Object.keys(ref).sort().join(',')!=='path,sha256'||
+           ref.path!=='.archive-meta-register/4slot-existing-vector-continuity/'+r.questionUid+'.json'||
+           typeof ref.sha256!=='string'||!/^[a-f0-9]{64}$/.test(ref.sha256)||r.independentReviewClaim!==false)throw Error('FOUR_SLOT_EXISTING_VECTOR_REF_INVALID');
+        Object.freeze(ref);
+      }else if(Object.hasOwn(r,'existingVectorContinuityRef'))throw Error('FOUR_SLOT_EXISTING_VECTOR_REF_UNEXPECTED');
+      if(r.sourceBinding==='SCOPED_REVIEWED_RENDERER'){
+        const e=r.rendererReceipt;
+        if(!/^original\/middle\/m3\/2(?:mid|final)\//.test(r.sourceArchiveFile||'')||
+           !e||Object.keys(e).sort().join(',')!=='path,schemaVersion,sha256'||
+           e.schemaVersion!=='archive-4slot-existing-typed-v2-renderer-receipt-v1'||
+           !/^archive\/data\/item-4slot-renderer-receipts\/v1\/[A-Za-z0-9_-]+\.json$/.test(e.path||'')||
+           !/^[a-f0-9]{64}$/.test(e.sha256||''))throw Error('FOUR_SLOT_RENDERER_RECEIPT_INVALID');
+        Object.freeze(e);
+      }else if(Object.hasOwn(r,'rendererReceipt'))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
       for(const s of SLOTS){if(!Array.isArray(r[s])||r[s].some(id=>!Number.isInteger(id))||new Set(r[s]).size!==r[s].length)throw Error('FOUR_SLOT_ARRAY_REQUIRED');Object.freeze(r[s]);for(const id of r[s]){const key=JSON.stringify([r.dictionaryVersion,s,id]);if(!postings.has(key))postings.set(key,new Set());postings.get(key).add(r.questionUid);}}
       if(Array.isArray(r.candidates))Object.freeze(r.candidates);
       byUid.set(r.questionUid,Object.freeze(r));

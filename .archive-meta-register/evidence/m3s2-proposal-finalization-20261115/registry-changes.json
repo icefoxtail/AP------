@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "archive-reviewed-registry-change-proposal-v1",
+  "status": "PENDING_OFFICIAL_REGISTRAR",
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_EXCLUDED_ANGLE_VALUE"
+      },
+      "before": null,
+      "after": {
+        "conditionKey": "COND_EXCLUDED_ANGLE_VALUE",
+        "canonicalLabelKo": "특정 예각 값 제외",
+        "definition": "문제에서 특정 예각 값을 제외하도록 명시하여, 그 각에서 서로 다른 삼각비 표현이 같은 값을 갖는 경우를 배제하는 조건.",
+        "aliases": [],
+        "owner": "CONDITION_CORE",
+        "status": "ACTIVE",
+        "sourceEligibility": "ORIGINAL_EXAM",
+        "supportingQuestionUids": [
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74"
+        ],
+        "supportingItemCount": 1,
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+            "sourceOrdinal": 8,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+              "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+              "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+            "currentSourceRawSha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+          }
+        ]
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS"
+      },
+      "before": null,
+      "after": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS",
+        "canonicalLabelKo": "지정된 근삿값 사용",
+        "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+        "aliases": [],
+        "owner": "CONDITION_CORE",
+        "status": "ACTIVE",
+        "sourceEligibility": "ORIGINAL_EXAM",
+        "supportingQuestionUids": [
+          "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+          "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c"
+        ],
+        "supportingItemCount": 2,
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+            "sourceOrdinal": 9,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          },
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+            "sourceOrdinal": 10,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          }
+        ]
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "match": {
+        "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM"
+      },
+      "before": null,
+      "after": {
+        "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+        "canonicalLabelKo": "다각형의 내각의 합",
+        "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+        "ownerConceptShard": "PLANE_GEOMETRY",
+        "aliases": [
+          "사각형 내각의 합"
+        ],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+          "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+          "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+          "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+        ],
+        "supportingItemCount": 4,
+        "sourceUnits": [
+          "M3-06"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_CIRCLE_LINE_RELATION",
+          "PT_CIRCLE_ANGLE_RELATIONS"
+        ],
+        "curriculumRefs": [
+          "2015:중3 수학:M3-06"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+            "sourceOrdinal": 17,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          },
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+            "sourceOrdinal": 22,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+              "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+              "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+            "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+          },
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+            "sourceOrdinal": 22,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+              "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+              "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+            "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+          },
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+            "sourceOrdinal": 5,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+              "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+              "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+            "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+          }
+        ]
+      }
+    }
+  ]
+}

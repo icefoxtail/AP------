@@ -158,10 +158,13 @@ window.questionBank = [
     "solutionImageCaption": "닮음에서 CF:CA=1:4, 밑변에서 CD:CB=1:2이다. FDC 넓이는 전체의 1/8이므로 ABC의 넓이는 64 cm²이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M2-2",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [
-      "CC_AREA_RATIO"
+      "CC_AREA_RATIO",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -1136,10 +1139,13 @@ window.questionBank = [
     "solutionImageCaption": "GD=10 cm이므로 AD=30 cm이고 빗변 BC=60 cm이다. 피타고라스 정리로 AB=√(60²−36²)=48 cm이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M2-2",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
