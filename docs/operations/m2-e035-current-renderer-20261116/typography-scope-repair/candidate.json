@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "e035-student-typography-scope-repair-v1",
+  "status": "UNISSUED_ACTUAL_GLYPH_REVIEW_PENDING",
+  "baseRendererCommit": "2fd3ab926f40212c7fbe3a224a6d492e928741ba",
+  "baseProofHead": "4ee5bbfc7fa6b865f58e73c708ce6a2fbf71d4cd",
+  "files": [
+    {
+      "path": "archive/student-review-mobile.css",
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/archive/student-review-mobile.css",
+      "bytes": 3299,
+      "sha256": "6f513e35c237c5d352acf028bef51bd89268076b7e2d5025831984aa21fdee0d",
+      "gitBlobSha1": "a0c4b008f1a4da369848d757a552e0e43bda31e3",
+      "priorSha256": "4ae3fbb1f9c88ecaf4efc0c199b88f6a12c6ee4b36a66511d80d808f4cb3662a",
+      "changed": true
+    },
+    {
+      "path": "archive/mixed_engine.html",
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/archive/mixed_engine.html",
+      "bytes": 210128,
+      "sha256": "b24ed1ad441b50d79f6b6fd97ed5dbb69456d0b0de31d4a5da88e1fbabac4ff7",
+      "gitBlobSha1": "5cf2959fe9390c6e38686f5738454c884e0860d8",
+      "priorSha256": "951755334662c614363b3a746c9e7fec4cf071cd05cde0fff64e1b3705a26aa8",
+      "changed": true
+    },
+    {
+      "path": "tests/archive-mixed-student-review.test.js",
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/tests/archive-mixed-student-review.test.js",
+      "bytes": 11073,
+      "sha256": "63b9e2874c0c816ab534bc1aa4f1e4216010118ee735d9256d76f09b7500bed6",
+      "gitBlobSha1": "56c09ce01f27d9ed21a6007d1da12ece73e4f60f",
+      "priorSha256": "19782e4ee92f3e326940365545a17aa3c26d7b351ad75a2d541937a99d313c49",
+      "changed": true
+    },
+    {
+      "path": "tests/archive-mixed-screen-fit.test.js",
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/tests/archive-mixed-screen-fit.test.js",
+      "bytes": 8735,
+      "sha256": "c4a263b6b662e4fed4d59fb9f23ce25bf73f807b3c47ac0b031d35f818002c27",
+      "gitBlobSha1": "5776294deecee32794fef8dada6fd2d62b82e922",
+      "priorSha256": "c4a263b6b662e4fed4d59fb9f23ce25bf73f807b3c47ac0b031d35f818002c27",
+      "changed": false
+    }
+  ],
+  "productionDelta": [
+    "Limit body typography to the direct application div marker under a question box; compound MathJax descendants no longer match the broad attribute selector.",
+    "Bump the stylesheet URL cache version."
+  ],
+  "testDelta": "Update the existing wrapper-scope and cache-version expectations; existing35 cases unchanged.",
+  "evidence": {
+    "diagnosticRun": 43858197710,
+    "diagnosticPngsEqualPriorRun": 43855734634,
+    "observedMobileCompoundMathLineHeight": "25.6px",
+    "observedDesktopCompoundMathLineHeight": "0px",
+    "inference": "The unqualified data-semantic-content selector leaks body typography into compound MathJax nodes; actual repaired glyphs and computed styles still must confirm the correction.",
+    "independentHoldSha256": "6ea937c2ca18aeb9519f9e318d2255b4b56cc798925ebb4c7b031d85ccafcd51"
+  },
+  "validation": {
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/archive-mixed-student-review.test.js",
+      "tests/archive-mixed-screen-fit.test.js"
+    ],
+    "exitCode": 0,
+    "tests": 35,
+    "pass": 35,
+    "fail": 0,
+    "skip": 0,
+    "logPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/existing35-regression.tap",
+    "logSha256": "f2797c059588433b97dc5ce4819968be3a33fe39b6ff7fb89a1e83a26788354a",
+    "initialFixtureFailure": {
+      "kind": "MISSING_EXISTING_REVIEW_CSS_IN_THIN_FIXTURE",
+      "logPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/initial-fixture-missing-review-css.tap",
+      "logSha256": "1b2db970c0ec44220ba6165cb5ee497d648e8146c719f63f4a1cd24176de4a6e",
+      "studentReviewTestsPassed": 23,
+      "fitSuiteCasesExecuted": 0,
+      "resolvedByExactExistingDependencySha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110"
+    }
+  },
+  "sourceAssetMathjaxLibraryPrintFlowNativeInputChanges": 0,
+  "actualFourViewResult": "NOT_RUN_FOR_REPAIR",
+  "visualStatus": "HOLD"
+}

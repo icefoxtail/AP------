@@ -83,7 +83,7 @@ test('student reading marker recognizes only the explicit studentReview query', 
 });
 
 test('reading CSS is limited to mobile screen, READY, explicit student mode, and live question DOM', () => {
-  assert.match(html, /href="student-review-mobile\.css\?v=20261116-readable-1"/);
+  assert.match(html, /href="student-review-mobile\.css\?v=20261116-readable-2"/);
   const clean = css.replace(/\/\*[\s\S]*?\*\//g, '').trim();
   assert.match(clean, /^@media screen and \(max-width: 640px\)\s*\{/);
   assert.equal((clean.match(/@media/g) || []).length, 1);
@@ -112,7 +112,7 @@ test('reading rules remove page scaling and print column heights without reorder
 });
 
 test('body, choices and written solution use readable CSS sizes after A4 compression', () => {
-  assert.match(css, /\.q-box, \.q-content, \.choices, \.choice-item, \.sol-exp, \.sol-ans,[\s\S]*?\[data-semantic-content\], table\.question-table\s*\{\s*font-size: 16px !important;\s*line-height: 1\.6 !important;/);
+  assert.match(css, /\.q-box, \.q-content, \.choices, \.choice-item, \.sol-exp, \.sol-ans,[\s\S]*?\.q-box > div\[data-semantic-content="1"\], table\.question-table\s*\{\s*font-size: 16px !important;\s*line-height: 1\.6 !important;/);
   assert.match(css, /\.q-num\s*\{ font-size: 18px !important;/);
   assert.match(css, /\.sol-image-caption\s*\{ font-size: 14px !important;/);
   assert.match(css, /\.q-box img\s*\{[^}]*max-width: 100% !important;[^}]*height: auto !important/s);
