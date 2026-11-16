@@ -137,4 +137,380 @@ function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,questio
   need(selected.length===2&&Array.isArray(assetRefs)&&assetRefs.length===1&&selected.every(x=>eq(x.sourceRef,sourceRef)&&eq(x.assetRef,assetRefs[0])),'CURRENT_SELECTED_BINDING');
   return {logicalCases:2,originalTiles:selected.reduce((n,x)=>n+x.screenshots.length,0)};
 }
-module.exports={SCHEMA,TECHNICAL_REF,VISUAL_REF,MANIFEST_REF,verifySvg7Ui};
+
+
+const embeddedChoiceContinuity=(()=>{
+// A single already observed choice-display transition. This grants no new
+// vector, question metadata, Native authority, or general renderer exception.
+const crypto=require('node:crypto');
+const ui={TECHNICAL_REF,VISUAL_REF};
+const OPTION='svg7EmbeddedChoiceContinuity';
+const SCHEMA='archive-svg7-e045-q15-embedded-choices-continuity-v1';
+const UID='qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569';
+const FIELD='choicesEmbeddedInImage';
+// Immutable prior/native/current pins from the exact original seven-item preparation.
+// No runtime caller can supply these authority pins.
+const SEALED = {
+  "nativeSourceRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+    "gitBlobSha1": "a2d48ee6c1414eb9b5e89ca5f6824ebe0368a4d2",
+    "sha256": "eb6f8d268dba2b23b8375d87bc61c48de9cf252912675dde20854af588f59506",
+    "bytes": 43798
+  },
+  "priorSourceRef": {
+    "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+    "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+    "gitBlobSha1": "e2d87dde2c1f96cebe86ca8ae06c858f0e1adacc",
+    "sha256": "5df6a0d6f052889a0ffedca7ba5b8361e9f0fec69401e3a52b04d2f77ae6bb25",
+    "bytes": 44299
+  },
+  "currentSourceRef": {
+    "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+    "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+    "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+    "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+    "bytes": 44656
+  },
+  "nativeQuestionSha256": "21bd7ec872c0447f4b144dc89755f250975628aa4e41a279aa3246cbd85962f3",
+  "priorQuestionSha256": "43756b4e27e6e6f7a4115d5278f059a5ed976b487b8bdd4a84ff61a7e6f5bf2d",
+  "currentQuestionSha256": "2db11d3dcd68f9aaf35c5d68e69d30f2e550ed3b42b956797fc81b41a62365fb",
+  "choicesSha256": "f0fe7a77a17aad0c53993ce7ddb1c9c397a846f6b723f4519ff892a2757bdbaa",
+  "technicalRef": {
+    "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+    "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+    "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+    "bytes": 303157
+  },
+  "visualRef": {
+    "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+    "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+    "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+    "bytes": 5966
+  },
+  "staticRef": {
+    "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json",
+    "gitBlobSha1": "c0f84ef234a430067e79e563712bb2c95b0ae3a0",
+    "sha256": "2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e",
+    "bytes": 13196
+  },
+  "originalObservationRef": {
+    "commit": "fe358c718d68de9d73cc9d0990b7a4df716bf4e3",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/root-original7-observation-v1.json",
+    "gitBlobSha1": "49dad86c674e9d8b63ca69f5b32422f665b2e0c3",
+    "sha256": "4fd7aaedd5666a65ccb32c5eefaf413cddd6e38f43b422f47ab146d23bf07344",
+    "bytes": 3793
+  },
+  "priorProblemAssetRef": {
+    "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+    "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15.png",
+    "gitBlobSha1": "694cf60ffd6c1ba661ff2732b0c108ab8c307108",
+    "sha256": "fa4b5d271533f39c091189c7ccb00805d2c85cd339fcfe475fb3e76b5a81b272",
+    "bytes": 150607
+  },
+  "originalGivenPng": {
+    "sha256": "3d944e4f8b1858d051437c5b035e2de33057e08f6bfa16b86aabe2823194de74",
+    "bytes": 382741
+  }
+};
+const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
+const eq=(a,b)=>stable(a)===stable(b),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const blob=b=>crypto.createHash('sha1').update(`blob ${b.length}\0`).update(b).digest('hex');
+const own=(o,k)=>Object.prototype.hasOwnProperty.call(o||{},k);
+const fail=code=>{throw Error('SVG7_EMBEDDED_CHOICES_'+code);};
+const need=(x,code)=>{if(!x)fail(code);};
+function exact(x,keys,code){need(x&&typeof x==='object'&&!Array.isArray(x)&&eq(Object.keys(x).sort(),keys.slice().sort()),code);}
+function document(readRef,ref){const b=readRef(ref);need(Buffer.isBuffer(b)&&b.length===ref.bytes&&sha(b)===ref.sha256&&blob(b)===ref.gitBlobSha1,'IMMUTABLE_BYTES');return JSON.parse(b);}
+function one(rows,p,code){const found=(rows||[]).filter(p);need(found.length===1,code);return found[0];}
+function withoutCommit(ref){const {commit,...rest}=ref;return rest;}
+function state(nativeQuestion,priorQuestion,currentQuestion){
+  const model=q=>({wholeQuestionSha256:sha(stable(q)),flagOwn:own(q,FIELD),flagValue:own(q,FIELD)?q[FIELD]:null,
+    choicesSha256:sha(stable(q.choices)),choicesCount:Array.isArray(q.choices)?q.choices.length:-1,
+    choicesNonempty:Array.isArray(q.choices)&&q.choices.every(x=>typeof x==='string'&&x.trim())});
+  return {native:model(nativeQuestion),prior:model(priorQuestion),current:model(currentQuestion)};
+}
+function claim(){need(SEALED,'UNFROZEN_CANDIDATE');return {schemaVersion:SCHEMA,...structuredClone(SEALED)};}
+function verify({claim:input,questionUid,sourceOrdinal,boundState,nativeSourceRef,priorSourceRef,currentSourceRef,
+  priorProblemAssets,currentProblemAssets,readRef,readLiveRef}){
+  need(SEALED,'UNFROZEN_CANDIDATE');exact(input,['schemaVersion',...Object.keys(SEALED)],'CLAIM_KEYS');
+  need(eq(input,claim())&&questionUid===UID&&sourceOrdinal===15,'EXACT_SCOPE_AND_PINS');
+  need(eq(nativeSourceRef,SEALED.nativeSourceRef)&&eq(priorSourceRef,SEALED.priorSourceRef)&&eq(currentSourceRef,SEALED.currentSourceRef),'SOURCE_BINDING');
+  exact(boundState,['native','prior','current'],'STATE_KEYS');
+  for(const [role,hash] of [['native',SEALED.nativeQuestionSha256],['prior',SEALED.priorQuestionSha256],['current',SEALED.currentQuestionSha256]]){
+    const s=boundState[role];exact(s,['wholeQuestionSha256','flagOwn','flagValue','choicesSha256','choicesCount','choicesNonempty'],'STATE_ROLE_KEYS');
+    need(s.wholeQuestionSha256===hash&&s.choicesSha256===SEALED.choicesSha256&&s.choicesCount===5&&s.choicesNonempty===true,'WHOLE_QUESTION_OR_CHOICES');
+    need(role==='current'?s.flagOwn===true&&s.flagValue===true:s.flagOwn===false&&s.flagValue===null,'ABSENT_TO_TRUE_ONLY');
+  }
+  need(typeof readRef==='function'&&typeof readLiveRef==='function','IMMUTABLE_READERS');
+  for(const r of [nativeSourceRef,priorSourceRef,currentSourceRef])readRef(r);readLiveRef(currentSourceRef);
+  const t=document(readRef,ui.TECHNICAL_REF),v=document(readRef,ui.VISUAL_REF);
+  need(eq(SEALED.technicalRef,ui.TECHNICAL_REF)&&eq(SEALED.visualRef,ui.VISUAL_REF)&&eq(SEALED.staticRef,t.priorStaticEvidenceRef),'OBSERVATION_PINS');
+  const s=document(readRef,SEALED.staticRef),original=document(readRef,SEALED.originalObservationRef);
+  need(s.schemaVersion==='archive-independent-m2s1-svg7-image-pointer-static-v1'&&s.rootOriginalFreezeSha256===SEALED.originalObservationRef.sha256&&
+    s.producer!==s.reviewer&&s.newNativeApprovals===0&&s.newMetadataApprovals===0&&s.newFourSlotVectors===0,'STATIC_AUTHORITY');
+  const sr=one(s.rows,x=>x.questionUid===UID&&x.sourceOrdinal===15,'STATIC_SELECTED');
+  need(sr.key==='E045-Q15'&&sr.pointerField==='content'&&sr.pointerKind==='EXACT_SINGLE_IMG_SRC_URI'&&
+    sr.staticDecision==='ACCEPT_STATIC_DISPLAY_REPAIR','STATIC_SELECTED_DECISION');
+  const before=one(original.references,x=>x.key==='E045-Q15','ORIGINAL_SELECTED');
+  need(original.candidateImagesViewedBeforeFreeze===false&&typeof original.observer==='string'&&original.observer===s.reviewer,'ORIGINAL_PHASE');
+  need(Array.isArray(priorProblemAssets)&&priorProblemAssets.length===1&&Array.isArray(currentProblemAssets)&&currentProblemAssets.length===1,'PROBLEM_ASSET_INVENTORY');
+  // The observed original is a full given-only crop, not the prior standalone figure.
+  need(eq(priorProblemAssets[0],SEALED.priorProblemAssetRef),'PRIOR_PROBLEM_ASSET');
+  need(before.sha256===SEALED.originalGivenPng.sha256&&before.bytes===SEALED.originalGivenPng.bytes,'ORIGINAL_GIVEN_PNG');
+  readRef(SEALED.priorProblemAssetRef);
+  need(eq(withoutCommit(sr.newAssetRef),withoutCommit(currentProblemAssets[0])),'STATIC_NEW_ASSET');
+  const item=one(t.items,x=>x.questionUid===UID&&x.sourceOrdinal===15,'UI_ITEM');
+  need(eq(item.sourceRef,currentSourceRef)&&eq(item.assetRef,currentProblemAssets[0])&&item.expectedBankCount===24,'UI_CURRENT_INPUT');
+  for(const viewport of ['desktop','mobile']){
+    const row=one(t.results,x=>x.questionUid===UID&&x.sourceOrdinal===15&&x.viewport.name===viewport,'UI_CASE');
+    const role=row.capture?.closedProblemRoles,binding=role?.embeddedChoiceBinding,choices=role?.choiceState;
+    need(row.status==='PASS'&&role?.schemaVersion==='archive-m2s1-svg7-embedded-image-choices-v1'&&
+      role.expectedChoiceCount===5&&role.numberRoleCount===1&&role.contentRoleCount===1&&role.targetImageCount===1&&
+      binding?.schemaVersion==='archive-m2s1-svg7-e045-q15-embedded-choices-v1'&&binding.sourceFlag===FIELD&&
+      binding.choiceCount===5&&binding.choicesSha256===SEALED.choicesSha256&&
+      choices?.choiceCount===5&&choices.choicesSha256===SEALED.choicesSha256&&choices.allChoicesNonemptyStrings===true&&
+      choices.ownEmbeddedFlag===true&&choices.embeddedFlagValue===true&&choices.nestedEmbeddedFlag===false,'ACTUAL_EMBEDDED_CASE');
+    readRef(binding.beforeSourceRef);readRef(binding.oldAssetRef);
+  }
+  need(v.completeVisualRelease==='PASS_DISPLAY_SCOPE_7_OF_7'&&v.newNativeApprovals===0&&v.newMetadataApprovals===0&&
+    one(v.observations,x=>x.key==='E045-Q15','VISUAL_SELECTED').verdict==='ACCEPT_DISPLAY','INDEPENDENT_ACTUAL_PNG');
+  return {schemaVersion:SCHEMA,questionUid:UID,sourceOrdinal:15,field:FIELD,
+    nativeQuestionSha256:SEALED.nativeQuestionSha256,priorQuestionSha256:SEALED.priorQuestionSha256,currentQuestionSha256:SEALED.currentQuestionSha256,
+    choicesSha256:SEALED.choicesSha256,sourceWrites:0,newNativeApprovals:0,newSemanticApprovals:0,newFourSlotVectors:0};
+}
+return Object.freeze({OPTION,SCHEMA,UID,FIELD,state,claim,verify});
+
+})();
+
+// The three E048 sources already contain an own inline SVG. Their empty file
+// inventory is not a missing original figure and is never relabeled as a file.
+const inlineFigureContinuity=(()=>{
+const crypto=require('node:crypto');
+const OPTION='svg7InlineFigureContinuity';
+const SCHEMA='archive-svg7-e048-inline-figure-continuity-v1';
+const ROWS=[
+  {
+    "key": "E048-Q11",
+    "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+    "sourceOrdinal": 11,
+    "nativeSourceRef": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+      "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+      "bytes": 39003
+    },
+    "priorSourceRef": {
+      "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+      "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+      "bytes": 39003
+    },
+    "currentSourceRef": {
+      "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+      "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+      "bytes": 40797
+    },
+    "nativeWholeQuestionSha256": "8bd1edd558e7ebd7e4f5dcafddb9f8e26ff7dc4581ed688e9a39cf37350949b6",
+    "priorWholeQuestionSha256": "8bd1edd558e7ebd7e4f5dcafddb9f8e26ff7dc4581ed688e9a39cf37350949b6",
+    "currentWholeQuestionSha256": "204df6ce83ba0c3b0c7c0f2b36b6b727d22629017e57d20a74810abfb19583fa",
+    "sourceQuestionCount": 26,
+    "inlineSvgOwnFieldSha256": "c95eb589a39cb409f00008a7e3fcbd03868cb2f48be329cce3687d101bfb4944",
+    "inlineSvgUtf8Bytes": 951,
+    "currentProblemAssetRef": {
+      "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+      "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+      "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+      "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+      "bytes": 3708
+    },
+    "originalGivenPng": {
+      "sha256": "e37c3414ccacca2011c732d3b78da6376d1149d9f4501b846256b8b247c71db6",
+      "bytes": 4307
+    }
+  },
+  {
+    "key": "E048-Q13",
+    "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+    "sourceOrdinal": 13,
+    "nativeSourceRef": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+      "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+      "bytes": 39003
+    },
+    "priorSourceRef": {
+      "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+      "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+      "bytes": 39003
+    },
+    "currentSourceRef": {
+      "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+      "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+      "bytes": 40797
+    },
+    "nativeWholeQuestionSha256": "898dd45b83d05fccf4aacdc8f5f1f55bf1d610bf26ad138c8bd305b49b805e27",
+    "priorWholeQuestionSha256": "898dd45b83d05fccf4aacdc8f5f1f55bf1d610bf26ad138c8bd305b49b805e27",
+    "currentWholeQuestionSha256": "d9d927d29c120afda98c485b2e17853602c8061f01312e5043060a7972d22918",
+    "sourceQuestionCount": 26,
+    "inlineSvgOwnFieldSha256": "fbcc12f746afed4d0919fa0780fa471d78cb12d9a2f738611e1ff5110f4d8ab6",
+    "inlineSvgUtf8Bytes": 592,
+    "currentProblemAssetRef": {
+      "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+      "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+      "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+      "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+      "bytes": 1715
+    },
+    "originalGivenPng": {
+      "sha256": "b1d4580eb09515d29973328de7f06e82c324d3dfa94b7c03989a38a15a360e5b",
+      "bytes": 856
+    }
+  },
+  {
+    "key": "E048-Q24",
+    "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+    "sourceOrdinal": 24,
+    "nativeSourceRef": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+      "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+      "bytes": 39003
+    },
+    "priorSourceRef": {
+      "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+      "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+      "bytes": 39003
+    },
+    "currentSourceRef": {
+      "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+      "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+      "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+      "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+      "bytes": 40797
+    },
+    "nativeWholeQuestionSha256": "e5111d68258d8bf8649ae66f70a72530f11ee635cf8c0b6cdbe10efc3355adb1",
+    "priorWholeQuestionSha256": "e5111d68258d8bf8649ae66f70a72530f11ee635cf8c0b6cdbe10efc3355adb1",
+    "currentWholeQuestionSha256": "6af32349e8c99b6a75b05aae09dec93eb95cf45b28399e1cfc5d897494440d7a",
+    "sourceQuestionCount": 26,
+    "inlineSvgOwnFieldSha256": "540edf1c1f9cb816ef9ff64523a242e8713855599919a25ea762644fb5ca7ba2",
+    "inlineSvgUtf8Bytes": 1173,
+    "currentProblemAssetRef": {
+      "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+      "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+      "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+      "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+      "bytes": 3555
+    },
+    "originalGivenPng": {
+      "sha256": "b17c75b0f7ce6d80028b6462ef16d68e745ef27e56322b07096d15c00fd5fec0",
+      "bytes": 53993
+    }
+  }
+];
+const EVIDENCE={
+  "staticRef": {
+    "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json",
+    "gitBlobSha1": "c0f84ef234a430067e79e563712bb2c95b0ae3a0",
+    "sha256": "2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e",
+    "bytes": 13196
+  },
+  "originalObservationRef": {
+    "commit": "fe358c718d68de9d73cc9d0990b7a4df716bf4e3",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/root-original7-observation-v1.json",
+    "gitBlobSha1": "49dad86c674e9d8b63ca69f5b32422f665b2e0c3",
+    "sha256": "4fd7aaedd5666a65ccb32c5eefaf413cddd6e38f43b422f47ab146d23bf07344",
+    "bytes": 3793
+  },
+  "technicalRef": {
+    "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+    "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+    "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+    "bytes": 303157
+  },
+  "visualRef": {
+    "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+    "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+    "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+    "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+    "bytes": 5966
+  }
+};
+const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
+const eq=(a,b)=>stable(a)===stable(b),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const blob=b=>crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex');
+const own=(o,k)=>Object.prototype.hasOwnProperty.call(o||{},k);
+const fail=code=>{throw Error('SVG7_INLINE_FIGURE_'+code);};
+const need=(x,code)=>{if(!x)fail(code);};
+function exact(x,keys,code){need(x&&typeof x==='object'&&!Array.isArray(x)&&eq(Object.keys(x).sort(),keys.slice().sort()),code);}
+function document(readRef,ref){const b=readRef(ref);need(Buffer.isBuffer(b)&&b.length===ref.bytes&&sha(b)===ref.sha256&&blob(b)===ref.gitBlobSha1,'IMMUTABLE_BYTES');return JSON.parse(b);}
+function one(rows,p,code){const found=(rows||[]).filter(p);need(found.length===1,code);return found[0];}
+function withoutCommit(ref){const {commit,...rest}=ref;return rest;}
+function fixed(uid){return one(ROWS,r=>r.questionUid===uid,'EXACT_THREE_SUBJECTS');}
+function claim(uid){return {schemaVersion:SCHEMA,...structuredClone(fixed(uid)),...structuredClone(EVIDENCE)};}
+function state(nativeQuestion,priorQuestion,currentQuestion){
+  const model=q=>({wholeQuestionSha256:sha(stable(q)),inlineSvgOwn:own(q,'svg'),inlineSvgType:typeof q.svg,
+    inlineSvgOwnFieldSha256:own(q,'svg')?sha(stable(q.svg)):null,
+    inlineSvgUtf8Bytes:typeof q.svg==='string'?Buffer.byteLength(q.svg):null,
+    inlineSvgElementCount:typeof q.svg==='string'?(q.svg.match(/<svg\b/gi)||[]).length:0});
+  return {native:model(nativeQuestion),prior:model(priorQuestion),current:model(currentQuestion)};
+}
+function verify({claim:input,questionUid,sourceOrdinal,boundState,nativeSourceRef,priorSourceRef,currentSourceRef,
+  priorProblemAssets,currentProblemAssets,readRef,readLiveRef}){
+  const pin=fixed(questionUid),expected=claim(questionUid);
+  exact(input,Object.keys(expected),'CLAIM_KEYS');need(eq(input,expected)&&sourceOrdinal===pin.sourceOrdinal,'EXACT_SCOPE_AND_PINS');
+  need(eq(nativeSourceRef,pin.nativeSourceRef)&&eq(priorSourceRef,pin.priorSourceRef)&&eq(currentSourceRef,pin.currentSourceRef),'SOURCE_BINDING');
+  exact(boundState,['native','prior','current'],'STATE_KEYS');
+  for(const role of ['native','prior','current']){
+    const s=boundState[role];exact(s,['wholeQuestionSha256','inlineSvgOwn','inlineSvgType','inlineSvgOwnFieldSha256','inlineSvgUtf8Bytes','inlineSvgElementCount'],'STATE_ROLE_KEYS');
+    need(s.wholeQuestionSha256===pin[role+'WholeQuestionSha256'],'WHOLE_QUESTION');
+    need(s.inlineSvgOwn===true&&s.inlineSvgType==='string'&&s.inlineSvgOwnFieldSha256===pin.inlineSvgOwnFieldSha256&&
+      s.inlineSvgUtf8Bytes===pin.inlineSvgUtf8Bytes&&s.inlineSvgElementCount===1,'ORIGINAL_INLINE_SVG_RETAINED');
+  }
+  need(Array.isArray(priorProblemAssets)&&priorProblemAssets.length===0&&Array.isArray(currentProblemAssets)&&
+    currentProblemAssets.length===1&&eq(currentProblemAssets[0],pin.currentProblemAssetRef),'EXACT_INLINE_TO_FILE_INVENTORY');
+  need(typeof readRef==='function'&&typeof readLiveRef==='function','IMMUTABLE_READERS');
+  for(const r of [nativeSourceRef,priorSourceRef,currentSourceRef,pin.currentProblemAssetRef])readRef(r);
+  readLiveRef(currentSourceRef);readLiveRef(pin.currentProblemAssetRef);
+  const t=document(readRef,EVIDENCE.technicalRef),v=document(readRef,EVIDENCE.visualRef),s=document(readRef,EVIDENCE.staticRef),o=document(readRef,EVIDENCE.originalObservationRef);
+  need(eq(EVIDENCE.technicalRef,TECHNICAL_REF)&&eq(EVIDENCE.visualRef,VISUAL_REF)&&eq(EVIDENCE.staticRef,t.priorStaticEvidenceRef),'OBSERVATION_PINS');
+  need(s.schemaVersion==='archive-independent-m2s1-svg7-image-pointer-static-v1'&&s.rootOriginalFreezeSha256===EVIDENCE.originalObservationRef.sha256&&
+    s.producer!==s.reviewer&&s.newNativeApprovals===0&&s.newMetadataApprovals===0&&s.newFourSlotVectors===0,'STATIC_AUTHORITY');
+  const sr=one(s.rows,r=>r.key===pin.key&&r.questionUid===questionUid&&r.sourceOrdinal===sourceOrdinal,'STATIC_SELECTED');
+  need(sr.staticDecision==='ACCEPT_STATIC_DISPLAY_REPAIR'&&eq(withoutCommit(sr.newAssetRef),withoutCommit(pin.currentProblemAssetRef)),'STATIC_NEW_ASSET');
+  readRef(sr.beforeSourceRef);readRef(sr.oldAssetRef);readRef(sr.newAssetRef);
+  const original=one(o.references,r=>r.key===pin.key,'ORIGINAL_SELECTED');
+  need(o.candidateImagesViewedBeforeFreeze===false&&o.observer===s.reviewer&&original.sha256===pin.originalGivenPng.sha256&&
+    original.bytes===pin.originalGivenPng.bytes,'ORIGINAL_GIVEN_FREEZE');
+  const item=one(t.items,r=>r.key===pin.key&&r.questionUid===questionUid&&r.sourceOrdinal===sourceOrdinal,'UI_ITEM');
+  need(eq(item.sourceRef,currentSourceRef)&&eq(item.assetRef,pin.currentProblemAssetRef)&&item.expectedBankCount===26,'UI_CURRENT_INPUT');
+  for(const viewport of ['desktop','mobile']){
+    const row=one(t.results,r=>r.questionUid===questionUid&&r.sourceOrdinal===sourceOrdinal&&r.viewport.name===viewport,'UI_CASE');
+    need(row.status==='PASS'&&eq(row.sourceRef,currentSourceRef)&&eq(row.assetRef,pin.currentProblemAssetRef),'UI_CURRENT_INPUT');
+  }
+  need(v.completeVisualRelease==='PASS_DISPLAY_SCOPE_7_OF_7'&&v.newNativeApprovals===0&&v.newMetadataApprovals===0&&
+    one(v.observations,r=>r.key===pin.key,'VISUAL_SELECTED').verdict==='ACCEPT_DISPLAY','INDEPENDENT_ACTUAL_PNG');
+  return {schemaVersion:SCHEMA,questionUid,sourceOrdinal,priorRepresentation:'OWN_INLINE_SVG',priorFileAssetCount:0,
+    currentRepresentation:'FILE_IMG_WITH_ORIGINAL_INLINE_SVG_RETAINED',currentFileAssetCount:1,
+    inlineSvgOwnFieldSha256:pin.inlineSvgOwnFieldSha256,sourceWrites:0,newNativeApprovals:0,newSemanticApprovals:0,newFourSlotVectors:0};
+}
+return Object.freeze({OPTION,SCHEMA,claim,state,verify});
+})();
+module.exports={SCHEMA,TECHNICAL_REF,VISUAL_REF,MANIFEST_REF,verifySvg7Ui,embeddedChoiceContinuity,inlineFigureContinuity};
+

@@ -3,6 +3,7 @@
 // inputs. This verifier never converts a technical PASS into visual acceptance.
 const crypto = require('node:crypto');
 const svg7Ui = require('./existing-registered-vector-svg7-ui.cjs');
+const text3Fragments = require('../m2s1-text3-solution-fragments.cjs');
 const stable = v => JSON.stringify(v, (_, x) => x && typeof x === 'object' && !Array.isArray(x)
   ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x);
 const sha = v => crypto.createHash('sha256').update(v).digest('hex');
@@ -90,7 +91,53 @@ function closedProblemRoles(value, row, checkoutCommit, readRef) {
       !Array.isArray(item.assets) || item.assets.length !== 1 ||
       !eq({path:value.assetRef.path,gitBlobSha1:value.assetRef.gitBlobSha1,sha256:value.assetRef.sha256,bytes:value.assetRef.bytes},item.assets[0])) fail('CLOSED_PROBLEM_COHORT');
 }
+// The reviewed E051-Q15 solution has two original production layout shells.
+// Its immutable producer is fixed here, and every physical tile remains bound
+// to its shell, document coordinates, source, and independently reviewed PNG.
+const TEXT3_FRAGMENT_HELPER = Object.freeze({
+  path:'tools/m2s1-text3-solution-fragments.cjs',
+  gitBlobSha1:'8ccfc5b09602b3f348b8b842007123cbc7d9ecd1',
+  sha256:'b7fbc927ec795bca33fd923c971efee8ec94cd6aeb1a606f6be6ec3760caa4d9',bytes:22828
+});
+function closedSolutionFragments(c, screenshots, viewport, surface, context) {
+  const row=context?.row, checkout=context?.checkoutCommit, readRef=context?.readRef;
+  if (surface!=='SOLUTION' || row?.surface!=='SOLUTION' || row?.mode!=='sol' ||
+      row?.questionUid!==text3Fragments.UID || row?.sourceOrdinal!==15 ||
+      !eq(viewport,{name:'desktop',width:1440,height:1000}) || typeof readRef!=='function' ||
+      !eq(c.policy?.sourceRef,row.sourceRef) || row.assetRefs?.length!==1 ||
+      !eq(c.policy?.assetRef,row.assetRefs[0]) ||
+      !eq(c.policy?.helperRef,{commit:checkout,...TEXT3_FRAGMENT_HELPER})) fail('TEXT3_FRAGMENT_SCOPE');
+  text3Fragments.validateCapture(c,{width:viewport.width,height:viewport.height},screenshots);
+  for (const ref of [c.policy.sourceRef,c.policy.assetRef,c.policy.manifestRef,c.policy.helperRef]) {
+    if (ref.commit!==checkout) fail('TEXT3_FRAGMENT_CHECKOUT');
+    const raw=readRef(ref);
+    if (!Buffer.isBuffer(raw) || raw.length!==ref.bytes || sha(raw)!==ref.sha256) fail('TEXT3_FRAGMENT_REF');
+  }
+  const close=(a,b)=>Math.abs(a-b)<=1e-6;
+  let previousScroll=null;
+  for (const f of c.fragments) {
+    rect(f.question,'TEXT3_FRAGMENT_QUESTION'); rect(f.content,'TEXT3_FRAGMENT_CONTENT');
+    scroll(f.scrollBefore); scroll(f.scrollAfter);
+    if (previousScroll && !eq(f.scrollBefore,previousScroll)) fail('TEXT3_FRAGMENT_SCROLL_CHAIN');
+    if (!close(f.content.x,f.question.x) || !close(f.content.width,f.question.width) ||
+        f.content.y<f.question.y-1e-6 || f.content.y+f.content.height>f.question.y+f.question.height+1e-6)
+      fail('TEXT3_FRAGMENT_CONTENT_GEOMETRY');
+    previousScroll=f.scrollBefore;
+    for (const t of f.tiles) {
+      scroll(t.scroll); rect(t.clip,'TEXT3_FRAGMENT_CLIP');
+      if (t.scroll.x!==0 || !integer(t.hitTestSamples,2) ||
+          (t.scrollOperations===0 && !eq(t.scroll,previousScroll))) fail('TEXT3_FRAGMENT_SCROLL_CHAIN');
+      if (!close(t.clip.x+t.scroll.x,f.content.x) ||
+          !close(t.clip.y+t.scroll.y,f.content.y+t.relativeInterval[0]) ||
+          !close(t.clip.width,f.content.width) ||
+          !close(t.clip.height,t.relativeInterval[1]-t.relativeInterval[0])) fail('TEXT3_FRAGMENT_DOCUMENT_GEOMETRY');
+      previousScroll=t.scroll;
+    }
+    if (!eq(f.scrollAfter,previousScroll)) fail('TEXT3_FRAGMENT_SCROLL_CHAIN');
+  }
+}
 function coverage(c, screenshots, viewport, surface, context) {
+  if (c?.schemaVersion===text3Fragments.SCHEMA) return closedSolutionFragments(c,screenshots,viewport,surface,context);
   // Bind the original shared capture object, including its document geometry
   // and 1-based tile indexes. No compact replacement or stitched PNG is used.
   const twoRoles=surface==='PROBLEM' && c?.visibleChildren===2;
