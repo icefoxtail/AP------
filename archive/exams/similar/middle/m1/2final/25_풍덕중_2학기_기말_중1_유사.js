@@ -30,10 +30,19 @@ window.questionBank = [
     ],
     "answer": "①",
     "points": 3,
-    "solution": "다면체는 다각형인 면으로만 둘러싸인 입체도형이다.\n\n① 원기둥은 위아래 밑면이 원이고 옆면이 굽은 곡면으로 이루어진 회전체이므로 다면체가 아니다.\n② 사각기둥, ③ 삼각뿔, ④ 오각기둥, ⑤ 육각뿔대는 모든 면이 다각형(삼각형, 사각형 등)으로 둘러싸여 있으므로 모두 다면체이다.\n\n따라서 다면체가 아닌 것은 ①이다.",
+    "solution": "다면체는 다각형인 면으로만 둘러싸인 입체도형이다.\n\n① 원기둥은 위아래 밑면이 원이고 옆면이 굽은 곡면으로 이루어진 회전체이므로 다면체가 아니다.\n② 각기둥, ③ 삼각뿔, ④ 오각기둥, ⑤ 육각뿔대는 모든 면이 다각형(삼각형, 사각형 등)으로 둘러싸여 있으므로 모두 다면체이다.\n\n따라서 다면체가 아닌 것은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q01-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q01-solution.plan.json"
   },
   {
     "id": 2,
@@ -64,10 +73,19 @@ window.questionBank = [
     ],
     "answer": "②",
     "points": 4,
-    "solution": "육각뿔대의 구성 요소와 기하학적 성질을 검토한다.\n\n① 각뿔대의 두 밑면은 평행하지만 크기가 다르므로 합동이 아니다. (참)\n② $n$각뿔대의 면의 개수는 밑면 $2$개와 옆면 $n$개이므로 $n+2$개이다. 육각뿔대는 $6 + 2 = 8$개이므로 팔면체이다. 칠면체라고 한 설명은 옳지 않다. (거짓)\n③ 각뿔대의 옆면은 평행한 두 밑면 사이에 놓인 사각형이므로 사다리꼴이다. (참)\n④ 육각뿔대의 꼭짓점의 개수는 위아래 밑면에 각각 $6$개씩 있으므로 $2 \\times 6 = 12$개이다. (참)\n⑤ 각뿔을 밑면에 평행한 평면으로 잘랐을 때 생기는 두 입체도형 중 각뿔이 아닌 쪽이 각뿔대이다. (참)\n\n따라서 옳지 않은 것은 ②이다.",
+    "solution": "육각뿔대의 구성 요소와 기하학적 성질을 검토한다.\n\n① 각뿔대의 두 밑면은 평행하지만 크기가 다르므로 합동이 아니다. (참)\n② $n$각뿔대의 면의 개수는 밑면 $2$개와 옆면 $n$개이므로 $n+2$개이다. 육각뿔대는 $6 + 2 = 8$개이므로 팔면체이다. 칠면체라고 한 설명은 옳지 않다. (거짓)\n③ 각뿔대의 옆면은 윗변과 아랫변이 평행한 사각형이므로 사다리꼴이다. (참)\n④ 육각뿔대의 꼭짓점의 개수는 위아래 밑면에 각각 $6$개씩 있으므로 $2 \\times 6 = 12$개이다. (참)\n⑤ 각뿔을 밑면에 평행한 평면으로 잘랐을 때 생기는 두 입체도형 중 각뿔이 아닌 쪽이 각뿔대이다. (참)\n\n따라서 옳지 않은 것은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q02-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q02-solution.plan.json"
   },
   {
     "id": 3,
@@ -101,7 +119,18 @@ window.questionBank = [
     "solution": "전개도를 접었을 때 만들어지는 입체도형을 파악한다.\n\n1단계: 정오각형 밑면에 삼각형 $5$개가 붙어 있으므로, 전개도를 접어 만들 수 있는 입체도형은 '오각뿔'이다.\n\n2단계: 오각뿔의 모서리의 개수는 밑면 모서리 $5$개와 옆모서리 $5$개이므로\n$$\\begin{aligned}\na &= 2 \\times 5 \\\\\n&= 10\n\\end{aligned}$$\n\n3단계: 오각뿔의 꼭짓점의 개수는 밑면 꼭짓점 $5$개와 각뿔의 꼭짓점 $1$개이므로\n$$\\begin{aligned}\nb &= 5 + 1 \\\\\n&= 6\n\\end{aligned}$$\n\n4단계: 따라서 $a + b$의 값은\n$$\\begin{aligned}\na + b &= 10 + 6 \\\\\n&= 16\n\\end{aligned}$$\n정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_POLYHEDRON_NET"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q03-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q03-solution.plan.json"
   },
   {
     "id": 4,
@@ -135,7 +164,18 @@ window.questionBank = [
     "solution": "기둥의 겉넓이와 전개도의 성질을 확인한다.\n\n① 기둥의 겉넓이는 두 밑면의 넓이와 옆면의 넓이를 모두 더한 값이다. (참)\n② 각기둥의 두 밑면은 서로 평행하고 합동인 다각형이다. (참)\n③ 각기둥의 전개도를 그릴 때 옆면들을 나란히 이어 붙이면 하나의 큰 직사각형이 된다. (참)\n④ 옆면 전체로 만들어진 직사각형의 가로의 길이는 밑면의 한 변의 길이가 아니라 '밑면의 둘레의 길이'와 같다. 밑면의 둘레와 옆면 직사각형의 가로가 맞닿아 접히기 때문이다. (거짓)\n⑤ 옆면 직사각형의 세로의 길이는 기둥의 높이와 같다. (참)\n\n따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_POLYHEDRON_NET"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q04-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q04-solution.plan.json"
   },
   {
     "id": 5,
@@ -170,7 +210,16 @@ window.questionBank = [
     "solution": "회전축에 수직인 단면과 축을 포함하는 단면으로부터 입체도형을 추론하여 겉넓이를 구한다.\n\n1단계: 회전축에 수직인 평면으로 자른 단면이 항상 반지름 $3\\rm\\,cm$인 원이고, 축을 포함하는 평면으로 자른 단면이 직사각형이므로 이 입체도형은 '원기둥'이다.\n\n2단계: 직사각형 단면에서 가로 $6\\rm\\,cm$는 밑면 원의 지름($2 \\times 3$)이고, 세로 $8\\rm\\,cm$는 원기둥의 높이이다.\n따라서 밑면의 반지름 $r = 3\\rm\\,cm$, 높이 $h = 8\\rm\\,cm$인 원기둥이다.\n\n3단계: 두 밑면의 넓이의 합은\n$$\\begin{aligned}\n2 \\times (\\pi \\times 3^2) &= 18\\pi\\rm\\,cm^2\n\\end{aligned}$$\n\n4단계: 옆면의 넓이는 밑면 원의 둘레에 높이를 곱한 것이므로\n$$\\begin{aligned}\n(2\\pi \\times 3) \\times 8 &= 48\\pi\\rm\\,cm^2\n\\end{aligned}$$\n\n5단계: 따라서 원기둥의 겉넓이는\n$$\\begin{aligned}\n18\\pi + 48\\pi &= 66\\pi\\rm\\,cm^2\n\\end{aligned}$$\n정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q05-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q05-solution.plan.json"
   },
   {
     "id": 6,
@@ -205,7 +254,16 @@ window.questionBank = [
     "solution": "원뿔의 부피는 밑면의 넓이와 높이가 같은 원기둥 부피의 $\\dfrac{1}{3}$이다.\n\n1단계: 밑면의 반지름이 $3\\rm\\,cm$, 높이가 $7\\rm\\,cm$인 원기둥의 부피 $V_{\\text{원기둥}}$은\n$$\\begin{aligned}\nV_{\\text{원기둥}} &= (\\pi \\times 3^2) \\times 7 \\\\\n&= 9\\pi \\times 7 \\\\\n&= 63\\pi\\rm\\,cm^3\n\\end{aligned}$$\n\n2단계: 원뿔의 부피 $V_{\\text{원뿔}}$은 원기둥 부피의 $\\dfrac{1}{3}$이므로\n$$\\begin{aligned}\nV_{\\text{원뿔}} &= \\dfrac{1}{3} \\times 63\\pi \\\\\n&= 21\\pi\\rm\\,cm^3\n\\end{aligned}$$\n정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q06-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q06-solution.plan.json"
   },
   {
     "id": 7,
@@ -239,7 +297,16 @@ window.questionBank = [
     "solution": "각뿔의 부피는 $\\dfrac{1}{3} \\times (\\text{밑넓이}) \\times (\\text{높이})$이다.\n\n1단계: 밑면인 직사각형의 넓이는\n$$\\begin{aligned}\n6 \\times 4 &= 24\\rm\\,cm^2\n\\end{aligned}$$\n\n2단계: 높이가 $8\\rm\\,cm$이므로 사각뿔의 부피 $V$는\n$$\\begin{aligned}\nV &= \\dfrac{1}{3} \\times 24 \\times 8 \\\\\n&= 8 \\times 8 \\\\\n&= 64\\rm\\,cm^3\n\\end{aligned}$$\n정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q07-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q07-solution.plan.json"
   },
   {
     "id": 8,
@@ -273,7 +340,16 @@ window.questionBank = [
     "solution": "원뿔대의 부피는 큰 원뿔의 부피에서 잘라낸 작은 원뿔의 부피를 빼서 구한다.\n\n1단계: 큰 원뿔의 부피 $V_1$은\n$$\\begin{aligned}\nV_1 &= \\dfrac{1}{3} \\pi \\times 6^2 \\times 6 \\\\\n&= \\dfrac{1}{3} \\pi \\times 36 \\times 6 \\\\\n&= 72\\pi\\rm\\,cm^3\n\\end{aligned}$$\n\n2단계: 잘라낸 작은 원뿔의 부피 $V_2$는\n$$\\begin{aligned}\nV_2 &= \\dfrac{1}{3} \\pi \\times 3^2 \\times 3 \\\\\n&= \\dfrac{1}{3} \\pi \\times 9 \\times 3 \\\\\n&= 9\\pi\\rm\\,cm^3\n\\end{aligned}$$\n\n3단계: 따라서 원뿔대의 부피는\n$$\\begin{aligned}\nV_1 - V_2 &= 72\\pi - 9\\pi \\\\\n&= 63\\pi\\rm\\,cm^3\n\\end{aligned}$$\n정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q08-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q08-solution.plan.json"
   },
   {
     "id": 9,
@@ -307,7 +383,16 @@ window.questionBank = [
     "solution": "구의 반지름을 $r\\rm\\,cm$라 하면, 구가 꼭 맞게 들어가는 원기둥의 밑면의 반지름은 $r\\rm\\,cm$이고 높이는 지름과 같은 $2r\\rm\\,cm$이다.\n\n1단계: 원기둥의 부피는\n$$\\begin{aligned}\nV_{\\text{원기둥}} &= (\\pi r^2) \\times 2r \\\\\n&= 2\\pi r^3\\rm\\,cm^3\n\\end{aligned}$$\n\n2단계: 구의 부피는\n$$\\begin{aligned}\nV_{\\text{구}} &= \\dfrac{4}{3}\\pi r^3\\rm\\,cm^3\n\\end{aligned}$$\n\n3단계: 남아 있는 물의 부피는 원기둥 부피에서 구의 부피를 뺀 것이므로\n$$\\begin{aligned}\n2\\pi r^3 - \\dfrac{4}{3}\\pi r^3 &= \\dfrac{2}{3}\\pi r^3\\rm\\,cm^3\n\\end{aligned}$$\n\n4단계: 남아 있는 물의 부피가 $144\\pi\\rm\\,cm^3$이므로\n$$\\begin{aligned}\n\\dfrac{2}{3}\\pi r^3 &= 144\\pi \\\\\nr^3 &= 144 \\times \\dfrac{3}{2} \\\\\nr^3 &= 216 \\\\\nr &= 6\\rm\\,cm\n\\end{aligned}$$\n정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q09-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q09-solution.plan.json"
   },
   {
     "id": 10,
@@ -341,7 +426,16 @@ window.questionBank = [
     "solution": "고깔모자는 밑면이 뚫려 있으므로 부채꼴 모양의 옆넓이만 구하면 된다.\n\n원뿔의 옆넓이 $S$는 밑면의 반지름 $r$와 모선의 길이 $l$을 이용하여 다음과 같이 구한다.\n$$\\begin{aligned}\nS &= \\pi r l\n\\end{aligned}$$\n\n주어진 값 $r = 6\\rm\\,cm$, $l = 15\\rm\\,cm$를 대입하면\n$$\\begin{aligned}\nS &= \\pi \\times 6 \\times 15 \\\\\n&= 90\\pi\\rm\\,cm^2\n\\end{aligned}$$\n정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q10-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q10-solution.plan.json"
   },
   {
     "id": 11,
@@ -375,7 +469,18 @@ window.questionBank = [
     "solution": "극단적인 값의 유무를 확인하고 적절한 대푯값을 선택하여 계산한다.\n\n1단계: 자료를 보면 $90$분은 다른 $9$명의 독서 시간($15$~$25$분)에 비해 매우 큰 극단적인 값이다.\n평균은 극단적인 값의 영향을 크게 받으므로, 자료의 중심 경향을 나타내기에는 '중앙값'이 가장 적절하다.\n\n2단계: 자료 $10$개를 작은 수부터 차례로 나열하면\n$$15,\\quad 16,\\quad 17,\\quad 18,\\quad 19,\\quad 20,\\quad 20,\\quad 22,\\quad 25,\\quad 90$$\n이다.\n\n3단계: 자료의 개수가 $n=10$개(짝수)이므로 중앙값은 가운데 두 값($5$번째 값 $19$, $6$번째 값 $20$)의 평균이다.\n$$\\begin{aligned}\n\\text{중앙값} &= \\dfrac{19 + 20}{2} \\\\\n&= 19.5\\text{분}\n\\end{aligned}$$\n따라서 가장 적절한 대푯값과 그 값은 '중앙값, $19.5$분'이다.\n정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_INTERPRETATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_EXTREME_VALUES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q11-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q11-solution.plan.json"
   },
   {
     "id": 12,
@@ -407,7 +512,16 @@ window.questionBank = [
     "solution": "최빈값의 유일성 조건과 중앙값을 분석하여 $x$를 결정한다.\n\n1단계: 주어진 자료 중 $x$를 제외한 $7$개의 자료에서 $2$가 $2$번, $4$가 $2$번 나타나 있다.\n최빈값이 $1$개뿐이어야 하므로 $x$는 이미 $2$번 나타난 $2$ 또는 $4$ 중 하나이어야 한다.\n\n2단계: $x = 2$인 경우:\n자료를 정렬하면 $2, 2, 2, 4, 4, 5, 6, 8$이다.\n최빈값은 $2$이고, 중앙값은 $4$번째 값 $4$와 $5$번째 값 $4$의 평균인 $4$이다.\n최빈값($2$)과 중앙값($4$)이 서로 다르므로 조건을 만족하지 않는다.\n\n3단계: $x = 4$인 경우:\n자료를 정렬하면 $2, 2, 4, 4, 4, 5, 6, 8$이다.\n최빈값은 $3$번 나타난 $4$이다.\n중앙값은 $4$번째 값 $4$와 $5$번째 값 $4$의 평균인 $\\dfrac{4+4}{2} = 4$이다.\n최빈값과 중앙값이 모두 $4$로 일치하고, 최빈값도 $1$개뿐이므로 조건을 완벽히 만족한다.\n\n따라서 $x = 4$이다.\n정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_INTERPRETATION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q12-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q12-solution.plan.json"
   },
   {
     "id": 13,
@@ -439,7 +553,18 @@ window.questionBank = [
     "solution": "두 조건을 각각 $a$의 부등식 범위로 나타낸다.\n\n1단계: [조건1]에서 $4, 8, a$의 중앙값이 $8$이 되려면, $a$는 $8$ 이상이어야 한다.\n만약 $a < 8$이면 자료를 정렬했을 때 $a, 4, 8$ 또는 $4, a, 8$이 되어 중앙값이 $a$ 또는 $4$가 되므로 모순이다.\n따라서\n$$a \\ge 8$$\n\n2단계: [조건2]에서 $12, 15, a$의 중앙값이 $12$가 되려면, $a$는 $12$ 이하이어야 한다.\n만약 $a > 12$이면 중앙값이 $12$보다 커지므로 모순이다.\n따라서\n$$a \\le 12$$\n\n3단계: 두 조건을 동시에 만족시키는 자연수 $a$의 범위는\n$$8 \\le a \\le 12$$\n이다.\n선지 중 $7$은 이 범위에 포함되지 않으므로 $a$의 값이 될 수 없다.\n\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_INTERPRETATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q13-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q13-solution.plan.json"
   },
   {
     "id": 14,
@@ -473,7 +598,16 @@ window.questionBank = [
     "solution": "줄기와 잎 그림의 각 항목을 확인한다.\n\n① 각 줄기의 잎의 개수는 차례로 $4, 6, 7, 5$개이므로 전체 학생 수는\n$$4 + 6 + 7 + 5 = 22\\text{명}$$\n이다. (참)\n② 줄기가 $1$인 잎은 $5, 6, 8, 9$로 모두 $4$개이다. (참)\n③ 가장 높은 기록은 줄기 $4$의 잎 $8$이므로 $48$회이다. (참)\n④ 줄넘기 기록이 $40$회 이상인 자료는 줄기가 $4$인 자료 전체이며, $42, 44, 46, 48, 48$로 총 $5$명이다. 따라서 $4$명이라고 한 ④는 옳지 않다. (거짓)\n⑤ 기록이 작은 순서로 나열하면 $15, 16, 18, 19, \\dots$이므로 $4$번째로 낮은 기록은 $19$회이다. (참)\n\n따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_ORGANIZATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q14-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q14-solution.plan.json"
   },
   {
     "id": 15,
@@ -507,7 +641,16 @@ window.questionBank = [
     "solution": "도수분포표의 기본 성질을 검토한다.\n\n① 계급의 크기는 구간의 너비이므로 $140 - 120 = 20\\rm\\,cm$이다. (참)\n② 도수가 가장 큰 계급은 $11$명인 '$160\\rm\\,cm$ 이상 $180\\rm\\,cm$ 미만'이다. (참)\n③ $180\\rm\\,cm$ 이상인 학생 수는 $4 + 1 = 5$명이다. (참)\n④ '$160\\rm\\,cm$ 이상 $180\\rm\\,cm$ 미만' 계급의 학생 수는 $11$명이므로, 전체 $25$명 중 차지하는 백분율은\n$$\\dfrac{11}{25} \\times 100 = 44\\%$$\n이다. (참)\n⑤ 도수분포표는 각 계급에 속한 도수만을 나타내므로, '$200\\rm\\,cm$ 이상 $220\\rm\\,cm$ 미만' 계급에 $1$명이 속해 있다는 사실만으로 그 학생의 기록이 정확히 $210\\rm\\,cm$라고 단정할 수 없다. (거짓)\n\n따라서 옳지 않은 것은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_ORGANIZATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q15-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q15-solution.plan.json"
   },
   {
     "id": 16,
@@ -541,7 +684,16 @@ window.questionBank = [
     "solution": "히스토그램의 계급의 크기와 상위 순위 도수를 구한다.\n\n1단계: 가로축의 계급 경계가 $0, 4, 8, 12, 16, 20$이므로 계급의 크기 $a$는\n$$\\begin{aligned}\na &= 4 - 0 = 4\\text{시간}\n\\end{aligned}$$\n\n2단계: 봉사활동 시간이 가장 많은 쪽부터 학생 수를 누적하면\n'$16$시간 이상 $20$시간 미만' 계급에 $2$명(상위 $1$~$2$번째)이 있고,\n그다음 '$12$시간 이상 $16$시간 미만' 계급에 $5$명(상위 $3$~$7$번째)이 있다.\n따라서 봉사활동 시간이 많은 쪽에서 $6$번째인 학생이 속한 계급은 '$12$시간 이상 $16$시간 미만'이다.\n\n3단계: 이 계급의 도수 $b$는\n$$b = 5\\text{명}$$\n이다.\n\n4단계: 따라서 $b - a$의 값은\n$$\\begin{aligned}\nb - a &= 5 - 4 \\\\\n&= 1\n\\end{aligned}$$\n정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_ORGANIZATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q16-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q16-solution.plan.json"
   },
   {
     "id": 17,
@@ -572,10 +724,21 @@ window.questionBank = [
     ],
     "answer": "②",
     "points": 4,
-    "solution": "도수분포다각형의 항목을 하나씩 검토한다.\n\n① 전체 학생 수는 모든 계급의 도수의 합이므로\n$$2 + 4 + 8 + 14 + 8 + 4 = 40\\text{명}$$\n이다. (거짓)\n② 리프팅 횟수가 $45$회 이상인 학생 수는 마지막 계급의 $4$명이다. 전체 학생 수가 $40$명이므로 차지하는 백분율은\n$$\\dfrac{4}{40} \\times 100 = 10\\%$$\n이다. 따라서 ②는 옳다. (참)\n③ 계급의 크기는 각 구간의 너비이므로 $25 - 20 = 5$회이다. (거짓)\n④ 계급의 개수는 점의 개수와 같으므로 $6$개이다. (거짓)\n⑤ $30$회 미만인 학생 수는 $2 + 4 = 6$명이다. (거짓)\n\n따라서 옳은 것은 ②이다.",
+    "solution": "도수분포다각형의 항목을 하나씩 검토한다.\n\n① 전체 학생 수는 모든 계급의 도수의 합이므로\n$$2 + 4 + 8 + 14 + 8 + 4 = 40\\text{명}$$\n이다. (거짓)\n② 리프팅 횟수가 $45$회 이상인 학생 수는 마지막 계급의 $4$명이다. 전체 학생 수가 $40$명이므로 차지하는 백분율은\n$$\\dfrac{4}{40} \\times 100 = 10\\%$$\n이다. 따라서 ②는 옳다. (참)\n③ 계급의 크기는 각 구간의 너비이므로 $25 - 20 = 5$회이다. (거짓)\n④ 계급은 $20$회 이상 $25$회 미만, $25$회 이상 $30$회 미만, $30$회 이상 $35$회 미만, $35$회 이상 $40$회 미만, $40$회 이상 $45$회 미만, $45$회 이상 $50$회 미만의 $6$개이므로 $8$개라는 설명은 옳지 않다. (거짓)\n⑤ $30$회 미만인 학생 수는 $2 + 4 = 6$명이다. (거짓)\n\n따라서 옳은 것은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_ORGANIZATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_PERCENTAGE_CALCULATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q17-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q17-solution.plan.json"
   },
   {
     "id": 18,
@@ -587,7 +750,7 @@ window.questionBank = [
     "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 해석",
+    "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -609,7 +772,16 @@ window.questionBank = [
     "solution": "(계급의 도수) = (도수의 총합) $\\times$ (해당 계급의 상대도수)이다.\n\n1단계: 전체 학생 수는 $150$명이다.\n\n2단계: 해당 계급의 상대도수가 $0.24$이므로 학생 수는\n$$\\begin{aligned}\n150 \\times 0.24 &= 36\\text{명}\n\\end{aligned}$$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_ORGANIZATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q18-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q18-solution.plan.json"
   },
   {
     "id": 19,
@@ -643,7 +815,16 @@ window.questionBank = [
     "solution": "두 집단의 전체 도수가 서로 다르므로 상대도수에 각 집단의 전체 도수를 곱하여 실제 학생 수를 비교한다.\n\n① A 중학교에서 $70\\rm\\,cm$ 미만인 학생 수는\n$$100 \\times 0.10 = 10\\text{명}$$\n이다. (참)\n② B 중학교에서 $70\\rm\\,cm$ 미만인 학생 수는\n$$200 \\times 0.05 = 10\\text{명}$$\n이다. (참)\n③ B 중학교에서 $90\\rm\\,cm$ 이상인 계급의 상대도수는 $0.45$이므로 백분율은 $45\\%$이다. (참)\n④ '$80\\rm\\,cm$ 이상 $90\\rm\\,cm$ 미만' 계급의 실제 학생 수를 구하면\n$$\\begin{aligned}\n\\text{A 중학교: } 100 \\times 0.40 &= 40\\text{명} \\\\\n\\text{B 중학교: } 200 \\times 0.35 &= 70\\text{명}\n\\end{aligned}$$\n이므로 학생 수가 서로 같지 않다. 따라서 ④는 옳지 않다. (거짓)\n⑤ 각 경계에서 $70\\rm\\,cm$ 미만, $80\\rm\\,cm$ 미만, $90\\rm\\,cm$ 미만의 누적 상대도수를 비교하면 A교는 $0.10, 0.40, 0.80$이고 B교는 $0.05, 0.20, 0.55$이다. B교의 누적 상대도수가 모두 더 작으므로 B교 학생들의 앉은키가 전반적으로 더 큰 쪽에 분포한다. (참)\n\n따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_INTERPRETATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q19-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q19-solution.plan.json"
   },
   {
     "id": 20,
@@ -671,7 +852,16 @@ window.questionBank = [
     "solution": "(1) $3x - 5 = 4$\n상수항을 우변으로 이항하여 정리하면\n$$\\begin{aligned}\n3x &= 4 + 5 \\\\\n3x &= 9 \\\\\nx &= 3\n\\end{aligned}$$\n\n(2) $4(x - 2) = x + 7$\n좌변의 괄호를 전개하면\n$$\\begin{aligned}\n4x - 8 &= x + 7 \\\\\n4x - x &= 7 + 8 \\\\\n3x &= 15 \\\\\nx &= 5\n\\end{aligned}$$\n\n(3) $0.4x - \\dfrac{3}{5} = 1$\n소수와 분수가 섞여 있으므로 양변에 $10$을 곱하여 정수 계수로 변환하면\n$$\\begin{aligned}\n4x - 6 &= 10 \\\\\n4x &= 10 + 6 \\\\\n4x &= 16 \\\\\nx &= 4\n\\end{aligned}$$\n\n답: (1) $x = 3$, (2) $x = 5$, (3) $x = 4$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "LINEAR_EQUATION",
+    "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+    "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q20-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q20-solution.plan.json"
   },
   {
     "id": 21,
@@ -700,7 +890,18 @@ window.questionBank = [
     "solution": "(1) 정다면체 여부 판단 및 이유:\n정다면체가 되기 위해서는 '모든 면이 서로 합동인 정다각형'이어야 한다.\n정사각형이 아닌 마름모는 네 변의 길이는 같지만 네 내각의 크기가 모두 같지 않으므로 정다각형이 아니다.\n따라서 마름모로 이루어진 십이면체는 정다면체가 아니다.\n\n(2) 정다면체의 정의:\n'모든 면이 서로 합동인 정다각형이고, 각 꼭짓점에 모인 면의 개수가 모두 같은 다면체'이다.\n\n(3) 정사각형으로 이루어진 정다면체가 $1$가지인 이유:\n1단계: 정사각형의 한 내각의 크기는 $90^\\circ$이다.\n2단계: 입체도형의 꼭짓점이 형성되려면 한 꼭짓점에 최소 $3$개 이상의 면이 모여야 하고, 그 꼭짓점에 모인 면의 내각의 크기의 합이 $360^\\circ$ 미만이어야 한다.\n3단계: 정사각형이 한 꼭짓점에 $3$개 모이면\n$$90^\\circ \\times 3 = 270^\\circ < 360^\\circ$$\n이므로 입체도형인 정육면체가 만들어진다.\n4단계: 그러나 정사각형이 $4$개 모이면\n$$90^\\circ \\times 4 = 360^\\circ$$\n가 되어 면들이 완전히 펴져 평면을 이루므로 입체도형의 꼭짓점을 만들 수 없다.\n따라서 한 면의 모양이 정사각형인 정다면체는 정육면체 $1$가지만 존재한다.\n\n답: 해설 참조",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+    "crossConceptKeys": [
+      "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q21-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q21-solution.plan.json"
   },
   {
     "id": 22,
@@ -729,7 +930,16 @@ window.questionBank = [
     "solution": "(1) 구의 중심을 지나는 단면인 원의 넓이는 $\\pi r^2$이다.\n탐구 활동에서 구의 겉넓이 전체(껍질)가 단면과 크기가 같은 원 $4$개의 넓이와 같으므로, 반지름이 $r$인 구의 겉넓이 공식은 다음과 같다.\n$$S = 4\\pi r^2$$\n\n(2) 반지름이 $5\\rm\\,cm$인 반구의 겉넓이 계산:\n1단계: 반구의 겉넓이는 굽은 곡면 부분의 넓이와 평평한 원 모양 밑면의 넓이의 합이다.\n\n2단계: 곡면 부분의 넓이는 구 전체의 겉넓이의 절반이므로\n$$\\begin{aligned}\n\\dfrac{1}{2} \\times (4\\pi \\times 5^2) &= 2\\pi \\times 25 \\\\\n&= 50\\pi\\rm\\,cm^2\n\\end{aligned}$$\n\n3단계: 평평한 원 모양 밑면의 넓이는\n$$\\begin{aligned}\n\\pi \\times 5^2 &= 25\\pi\\rm\\,cm^2\n\\end{aligned}$$\n\n4단계: 따라서 반구의 겉넓이는\n$$\\begin{aligned}\n50\\pi + 25\\pi &= 75\\pi\\rm\\,cm^2\n\\end{aligned}$$\n\n답: (1) $4\\pi r^2$  (2) $75\\pi\\rm\\,cm^2$",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q22-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q22-solution.plan.json"
   },
   {
     "id": 23,
@@ -758,6 +968,15 @@ window.questionBank = [
     "solution": "1단계: 주어진 자료는 티셔츠 치수별 판매 수량을 나타낸 도수분포 자료이다. 의류 치수와 같은 상품 주문에서는 수치적인 평균값보다 학생들이 가장 많이 찾는 치수를 파악하는 것이 중요하다.\n\n2단계: 표에서 각 치수별 판매 수량을 비교하면\n$85$는 $4$벌, $90$은 $7$벌, $95$는 $22$벌, $100$은 $8$벌, $105$는 $3$벌이다.\n판매 수량이 가장 많은 치수는 $22$벌이 판매된 $95$(L)이다.\n따라서 최빈값은 $95$(L)이다.\n\n3단계: 이유 서술:\n티셔츠의 치수를 결정할 때는 가장 많은 학생이 선택한 치수를 파악하여 수요에 맞추는 것이 필요하므로, 도수가 가장 큰 값을 나타내는 '최빈값'이 가장 적절한 대푯값이다.\n\n답: 최빈값, $95$(L). 가장 많이 판매된 치수가 $95$(L)이므로 추가 주문 및 수요를 대표하기에 가장 적절하다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "conceptClusterKey": "DATA_INTERPRETATION",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q23-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_풍덕중_2학기_기말_중1_유사_plans/q23-solution.plan.json"
   }
 ];
