@@ -12,6 +12,7 @@ import { computeLegacyCompat, registerDifficulty5 } from "./register-difficulty5
 import { AUDIT_PRESERVATION_SCHEMA, isAuditPreservation, loadAuditPreservation, planPreservedAuditRecord, assertAuditPreservationReceipt, assertPreservedAuditRepair, readPreservedAuditEvidence, preservedAuditConsumerParent } from "./native-audit-preservation.mjs";
 import { AUDIT_SOURCE_PRESERVATION_SCHEMA, auditSourcePreservationSummary, auditSourceBindingPath, buildAuditSourceBinding } from "./native-audit-source-preservation.mjs";
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
+import { hasIssuedRpmHistory, loadIssuedRpmHistory } from "./native-issued-rpm-history.mjs";
 import { validateNativeReviewedParent } from "./reviewed-native-parent.mjs";
 import { validateReviewedRetainedScopeParent } from "./reviewed-retained-scope-transport.mjs";
 import { REVIEWED_SOURCE_FIELDS, REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
@@ -2374,6 +2375,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const found = allRuntime.filter(r => r.questionUid === record.questionUid);
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
       const current = previous.appliedRecords.find(row => row.questionUid === record.questionUid);
+      if (hasIssuedRpmHistory(req)) {
+        preservedSourceRegistry ??= loadActiveMetaRegistry(root);
+        const binding = activeBindingContext({ candidate: current, check: { curriculum: current.curriculum || current.curriculumKey },
+          registry: preservedSourceRegistry, runtimeOwner: current.metaFoundationPackId });
+        if (binding.reason || nativeReviewReceipt({ nativeSource: { root, bytes, blobSha1: blob,
+          bank: JSON.parse(JSON.stringify(bank)), runtimeRecord: found[0], identityMap: identity,
+          identityByJoin: new Map(identity.records.filter(row => row.sourceArchiveFile === source).map(row => [`${source}#${row.sourceOrdinal}`, row])),
+          runtimeStatus: read(`archive/data/meta-foundation/runtime/${current.metaFoundationPackId.toLowerCase().replaceAll("_", "-")}-v1.json`).status },
+          question: JSON.parse(JSON.stringify(bank[current.sourceOrdinal - 1])),
+          previous: JSON.parse(JSON.stringify(bank[current.sourceOrdinal - 1])), current, identity: ids.get(current.questionUid),
+          source, ordinal: current.sourceOrdinal, registry: preservedSourceRegistry, ...binding }) !== receiptPath)
+          fail("registered historical RPM source preservation cannot replay");
+      }
       if (previous.approval?.type === "FINAL_QA" && previous.approval.sourceRebind &&
           hasNativeReviewedSourceClaim({ root, current, runtimeRecord: found[0] })) {
         preservedSourceRegistry ??= loadActiveMetaRegistry(root);
@@ -2532,6 +2546,22 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const existingRuntime = (runtimes.get(owners.get(current.questionUid))?.data.records || []).find(r => r.questionUid === current.questionUid);
       if (rebindPrior.priorRuntime && !eq(existingRuntime, rebindPrior.priorRuntime.get(current.questionUid)))
         fail(`sourceRebind partial runtime differs from prior receipt: ${current.questionUid}`);
+      if (hasIssuedRpmHistory(req)) {
+        const historical = loadIssuedRpmHistory({ root, envelope: req, bytes, bank: JSON.parse(JSON.stringify(bank)),
+          current, identity: id, runtimeRecord: existingRuntime });
+        rebindSourceRegistry ??= loadActiveMetaRegistry(root);
+        const originalBytes = execFileSync("git", ["cat-file", "blob", rebindPrior.receipt.sourceBlobSha1],
+          { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+        const originalBank = JSON.parse(JSON.stringify(loadPriorQuestionBank(root, rebindPrior.receipt.sourceBlobSha1, priorBanks)));
+        const binding = activeBindingContext({ candidate: current, check: { curriculum: current.curriculum || current.curriculumKey },
+          registry: rebindSourceRegistry, runtimeOwner: current.metaFoundationPackId });
+        if (binding.reason || nativeReviewReceipt({ nativeSource: { root, bytes: originalBytes,
+          blobSha1: rebindPrior.receipt.sourceBlobSha1, bank: originalBank, runtimeRecord: existingRuntime, identityMap: identity,
+          identityByJoin: new Map(identity.records.filter(row => row.sourceArchiveFile === source).map(row => [`${source}#${row.sourceOrdinal}`, row])),
+          runtimeStatus: runtimes.get(packIdPrior)?.data.status, issuedRpmHistoryContext: historical }, question: originalBank[i], previous: originalBank[i],
+          current, identity: id, source, ordinal: i + 1, registry: rebindSourceRegistry, ...binding }) !== req.approval.sourceRebind.priorReceiptRef.path)
+          fail("historical RPM predecessor native authority cannot replay");
+      }
       const rrPrior = { ...finalPrior, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
         approvedSourceFingerprint: checkedPrior.sourceFingerprint, legacyLevel: finalPrior.level,
         runtimeSelectable: finalPrior.defaultSelectable && finalPrior.curriculumApplicability === "DEFAULT_SCOPE" };

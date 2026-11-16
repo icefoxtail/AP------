@@ -68,7 +68,7 @@ function validateCompact(d, rel, dict) {
   if(!dict)errors.push('DICTIONARY_VERSION_UNKNOWN');
   if(!d.reviewedBy||!String(d.reviewedBy.agent||'').trim()||!d.reviewedBy.at||!Array.isArray(d.reviewedBy.sampled))errors.push('REVIEW_REFERENCE_MISSING');
   if(partial.hasScope(d)) {
-    if(d.scope!==partial.SCOPE||d.evidence?.schemaVersion!==partial.EVIDENCE_SCHEMA)errors.push('PARTIAL_SCOPE_OR_EVIDENCE_INVALID');
+    if(d.scope!==partial.SCOPE||!partial.isEvidenceSchema(d.evidence?.schemaVersion))errors.push('PARTIAL_SCOPE_OR_EVIDENCE_INVALID');
   } else if(!d.evidence||['branch','commit','path'].some(k=>typeof d.evidence[k]!=='string'||!d.evidence[k].trim()))errors.push('EVIDENCE_REFERENCE_MISSING');
   if(!Array.isArray(d.items)||!d.items.length)errors.push('ITEMS_EMPTY');
   if(d.evidence?.nativeHoldReview?.rendererCorrection&&(!Array.isArray(d.items)||d.items.filter(it=>it.registrationHold?.reason===rendererHold.REASON).length!==1))errors.push('RENDERER_HOLD_ONE_UID_REQUIRED');
@@ -198,7 +198,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       const scope=partial.hasScope(d)?partial.publicEvidence(root,d,{bank,identity,sourceRaw,dictPath:dict.path}):null;
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
       const continuities=rendererContinuities.get(d.sourceArchiveFile)||[],continuityDigests=continuities.flatMap(e=>e.digests);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,continuityDigests]));
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,scope?.contractSha256||null,continuityDigests]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       if(scope)file={...file,scope:partial.SCOPE,expectedQuestionCount:bank.length,selectedCount:scope.selected.length,unsubmittedCount:scope.unsubmitted.length,completeExam:false};
