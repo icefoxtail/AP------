@@ -30,6 +30,9 @@ function proposal(item) {
 function scope(item) {
   return item?.sourceReview?.scopeFieldBinding?.schemaVersion === "archive-native-reviewed-scope-fields-v1";
 }
+function currentApplication(item) {
+  return item?.sourceReview?.currentDefinitionApplication?.schemaVersion === "archive-m2s1-current-definition-application-v1";
+}
 function selectedDefinition(item, spec, key) {
   const value = item.after?.[spec.field];
   return Array.isArray(value) ? value.includes(key) : value === key;
@@ -62,8 +65,8 @@ export function restoreReviewedReplayCanonicalBefore({ request, currentTables, r
       request.approval.metadataReviewed !== true || request.approval.sourceRebind !== undefined ||
       request.registrationMode !== undefined || !Array.isArray(request.items) || !request.items.length)
     fail("requires an ordinary partial FINAL_QA request with an explicit source-proof opt-in");
-  const opted = request.items.filter(item => proposal(item) || scope(item));
-  if (!opted.length) fail("proposal or native-scope proof opt-in required");
+  const opted = request.items.filter(item => proposal(item) || scope(item) || currentApplication(item));
+  if (!opted.length) fail("proposal, native-scope or current-application proof opt-in required");
   if (!currentTables || typeof currentTables !== "object") fail("current lookup tables missing");
   const restored = Object.create(Object.getPrototypeOf(currentTables), Object.getOwnPropertyDescriptors(currentTables));
   const cloned = new Set(), touched = new Set();
@@ -203,7 +206,8 @@ export function restoreReviewedReplayCanonicalBefore({ request, currentTables, r
     } else {
       const spec = DEFINITIONS[collection];
       if (!spec || !text(after[spec.key]) || !equal(match, { [spec.key]: after[spec.key] }) ||
-          !opted.some(item => proposal(item) && selectedDefinition(item, spec, after[spec.key])))
+          !opted.some(item => (proposal(item) || collection === "templates" && currentApplication(item)) &&
+            selectedDefinition(item, spec, after[spec.key])))
         fail("definition must be the exact selected proposal key");
       if (collection === "problemTypes" || collection === "templates") activePack(currentTables, after, file, "taxonomy");
       else if (collection === "concepts") {

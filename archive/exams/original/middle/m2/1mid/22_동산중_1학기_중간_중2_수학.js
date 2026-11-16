@@ -201,7 +201,7 @@ window.examData = {
     {
       "id": 15,
       "score": 4.0,
-      "question": "<p>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15.png\"/></div>",
+      "question": "<p>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽 원기둥의 밑면 반지름은 3ab이고 높이는 6ab이다. 오른쪽 원뿔의 밑면 반지름은 b/a이고 높이는 18a⁵b다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "$\\frac{2}{3}\\text{배}$",
         "$3\\text{배}$",
@@ -271,7 +271,7 @@ window.examData = {
     {
       "id": 20,
       "score": 3.0,
-      "question": "<p>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20.png\"/></div>",
+      "question": "<p>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"①과 ②는 −4에서 오른쪽으로 향하며 ①은 닫힌 점, ②는 열린 점이다. ③은 −4에서 왼쪽으로 향하는 닫힌 점, ④는 4에서 오른쪽으로 향하는 닫힌 점, ⑤는 4에서 왼쪽으로 향하는 닫힌 점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "①",
         "②",
@@ -552,8 +552,9 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15.png\"/></div>",
+    "question": "<p>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽 원기둥의 밑면 반지름은 3ab이고 높이는 6ab이다. 오른쪽 원뿔의 밑면 반지름은 b/a이고 높이는 18a⁵b다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "choices": [
       "$\\frac{2}{3}\\text{배}$",
       "$3\\text{배}$",
@@ -563,7 +564,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</div><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15.png\"/></div>"
+    "content": "<div>15. 다음 그림에서 원기둥의 부피는 원뿔의 부피의 몇 배인지 구하면?(4점)</div><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽 원기둥의 밑면 반지름은 3ab이고 높이는 6ab이다. 오른쪽 원뿔의 밑면 반지름은 b/a이고 높이는 18a⁵b다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 16,
@@ -627,8 +628,9 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "layoutTag": "fullwidth",
     "score": 3,
-    "question": "<p>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20.png\"/></div>",
+    "question": "<p>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</p><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"①과 ②는 −4에서 오른쪽으로 향하며 ①은 닫힌 점, ②는 열린 점이다. ③은 −4에서 왼쪽으로 향하는 닫힌 점, ④는 4에서 오른쪽으로 향하는 닫힌 점, ⑤는 4에서 왼쪽으로 향하는 닫힌 점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "choices": [
       "①",
       "②",
@@ -638,7 +640,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</div><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20.png\"/></div>"
+    "content": "<div>20. 다음 중에서 일차부등식 $-2x - 3 \\le 5$의 해를 수직선 위에 옳게 나타낸 것은?(3점)</div><div class=\"question-image\"><img src=\"assets/images/22_동산중_1학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"①과 ②는 −4에서 오른쪽으로 향하며 ①은 닫힌 점, ②는 열린 점이다. ③은 −4에서 왼쪽으로 향하는 닫힌 점, ④는 4에서 오른쪽으로 향하는 닫힌 점, ⑤는 4에서 왼쪽으로 향하는 닫힌 점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 21,

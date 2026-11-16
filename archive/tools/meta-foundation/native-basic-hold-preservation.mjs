@@ -6,6 +6,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
+import { prepareBasicHeldRendererContinuity } from "./basic-held-renderer-continuity.mjs";
 
 const canonical = createRequire(import.meta.url)("../../archive2-canonical.js");
 export const NATIVE_BASIC_HOLD_SCHEMA = "archive-basic-native-source-hold-preservation-v1";
@@ -185,12 +186,17 @@ function heldRuntime(records, uid, source, ordinal) {
 }
 export function verifyNativeBasicHoldPreservation({ root, request, review, item, current, previous, row, identity, crosswalk }) {
   const spec = request.approval.sourceReview;
-  if (!spec || spec.schemaVersion !== NATIVE_BASIC_HOLD_SCHEMA || !eq(Object.keys(spec).sort(), ["schemaVersion", "priorCommit", "nativeReviewCommit", "nativeReviewPath", "nativeReviewRef", "holdReviewCommit", "holdReviewPath", "holdReviewRef"].sort()) ||
+  const rendererClaim = Object.hasOwn(spec || {}, "rendererContinuity");
+  if (!spec || spec.schemaVersion !== NATIVE_BASIC_HOLD_SCHEMA || !eq(Object.keys(spec).sort(), ["schemaVersion", "priorCommit", "nativeReviewCommit", "nativeReviewPath", "nativeReviewRef", "holdReviewCommit", "holdReviewPath", "holdReviewRef", ...(rendererClaim ? ["rendererContinuity"] : [])].sort()) ||
       request.registryChanges !== undefined || request.difficultyEvidence !== undefined || request.scope !== undefined || request.registrationMode !== undefined || request.approval.sourceRebind !== undefined ||
       !eq(Object.keys(item).sort(), ["questionUid", "sourceOrdinal", "before", "after", "basicParent", "holdReasonCode", "reason", "evidenceRefs"].sort()) || item.holdReasonCode !== NATIVE_BASIC_HOLD_REASON) fail("native hold preservation scope");
   const uid = item.questionUid, source = request.sourceArchiveFile, ordinal = item.sourceOrdinal, sourcePath = `archive/exams/${source}`;
+  const renderer = rendererClaim ? prepareBasicHeldRendererContinuity({ root, request, item, current, identity }) : null;
+  // Re-run the unchanged native/HOLD tests against the exact original reviewed
+  // question. The helper above separately binds every live field and asset.
+  const reviewedCurrent = renderer?.reviewedQuestion ?? current;
   const oldBytes = gitBytes(root, request.previousSourceCommit, sourcePath), oldBank = bank(oldBytes);
-  if (blob(oldBytes) !== request.previousSourceBlobSha1 || oldBank.length !== request.expectedQuestionCount || !eq(oldBank[ordinal - 1], previous) || !eq(fingerprints(previous), item.before) || BODY.some(k => !eq(previous[k], current[k]))) fail("historical approved body/answer binding mismatch");
+  if (blob(oldBytes) !== request.previousSourceBlobSha1 || oldBank.length !== request.expectedQuestionCount || !eq(oldBank[ordinal - 1], previous) || !eq(fingerprints(previous), item.before) || BODY.some(k => !eq(previous[k], reviewedCurrent[k]))) fail("historical approved body/answer binding mismatch");
   const native = boundDocument(root, request, item, spec.nativeReviewCommit, spec.nativeReviewPath, spec.nativeReviewRef);
   const nativeAuthor = native.judgedBy?.agent ?? native.owner;
   if (native.schemaVersion !== "m2-s2-meta-review-v1" || native.sourceArchiveFile !== source || native.reviewedQuestionCount !== request.expectedQuestionCount || !text(nativeAuthor) ||
@@ -202,7 +208,7 @@ export function verifyNativeBasicHoldPreservation({ root, request, review, item,
   const beforeBytes = gitBytes(root, native.baseSha, sourcePath), reviewedBytes = gitBytes(root, spec.nativeReviewCommit, sourcePath);
   const beforeBank = bank(beforeBytes), reviewedBank = bank(reviewedBytes);
   if (blob(beforeBytes) !== native.sourceGitBlobSha || beforeBank.length !== request.expectedQuestionCount || reviewedBank.length !== request.expectedQuestionCount ||
-      !eq(pick(beforeBank[ordinal - 1], STUDENT), pick(current, STUDENT)) || !eq(pick(reviewedBank[ordinal - 1], STUDENT), pick(current, STUDENT))) fail("current student payload differs from immutable native review");
+      !eq(pick(beforeBank[ordinal - 1], STUDENT), pick(reviewedCurrent, STUDENT)) || !eq(pick(reviewedBank[ordinal - 1], STUDENT), pick(reviewedCurrent, STUDENT))) fail("current student payload differs from immutable native review");
   const independent = boundDocument(root, request, item, spec.holdReviewCommit, spec.holdReviewPath, spec.holdReviewRef);
   if (independent.schemaVersion !== "archive-independent-existing-primary-disposition-v1" || independent.scope !== "EXISTING_PRIMARY_RETENTION_ONLY" ||
       !text(independent.reviewerOwner) || independent.reviewerOwner === nativeAuthor || !text(independent.reviewerRole) ||
@@ -213,7 +219,7 @@ export function verifyNativeBasicHoldPreservation({ root, request, review, item,
       !eq(application.allowedRetentionFields, []) || !eq(application.approvedValues, {}) || !eq(application.nativeReviewRef, { commit: spec.nativeReviewCommit, path: spec.nativeReviewPath, sha256: spec.nativeReviewRef.sha256 }) ||
       application.nativeItemStableSha256 !== hash(decision) || application.nativeAfterSha256 !== hash(decision.after) || application.nativeActiveDefinitionMatchSha256 !== hash(decision.activeDefinitionMatch) ||
       application.originalNativeAfterPreserved !== true || application.sourcePayloadChangeApproved !== false || application.newMathematicalQa !== false || application.newReview2 !== false ||
-      application.newDifficultyApproval !== false || !text(application.rationale) || !eq(application.studentPayloadFields, STUDENT) || application.studentPayloadSha256 !== hash(pick(current, STUDENT))) fail("independent exact native hold disposition mismatch");
+      application.newDifficultyApproval !== false || !text(application.rationale) || !eq(application.studentPayloadFields, STUDENT) || application.studentPayloadSha256 !== hash(pick(reviewedCurrent, STUDENT))) fail("independent exact native hold disposition mismatch");
   const sourceRef = (ref, commit, bytes, question) => {
     if (!ref || ref.commit !== commit || ref.path !== sourcePath || ref.blob !== blob(bytes) || ref.sha256 !== sha(bytes) || ref.questionStableSha256 !== hash(question)) fail("independent source snapshot mismatch");
   };
@@ -221,8 +227,11 @@ export function verifyNativeBasicHoldPreservation({ root, request, review, item,
   sourceRef(application.immutableReviewedSource, spec.nativeReviewCommit, reviewedBytes, reviewedBank[ordinal - 1]);
   const currentBytes = gitBytes(root, application.currentSource?.commit, sourcePath), currentBank = bank(currentBytes);
   sourceRef(application.currentSource, application.currentSource.commit, currentBytes, currentBank[ordinal - 1]);
-  if (currentBank.length !== request.expectedQuestionCount || !eq(currentBank[ordinal - 1], current)) fail("current question differs from independently held snapshot");
-  const assets = rendererProof(root, current, application, { ...native, reviewCommit: spec.nativeReviewCommit });
+  if (currentBank.length !== request.expectedQuestionCount || !eq(currentBank[ordinal - 1], reviewedCurrent)) fail("current question differs from independently held snapshot");
+  if (renderer && (!eq(renderer.proof.beforeSource, { commit: application.currentSource.commit, path: sourcePath,
+      gitBlobSha1: blob(currentBytes), sha256: sha(currentBytes), questionSha256: hash(currentBank[ordinal - 1]) }) ||
+      renderer.proof.reviewer === nativeAuthor || renderer.proof.studentUi.reviewer === nativeAuthor)) fail("renderer continuity is not bound to the original independent HOLD snapshot");
+  const assets = rendererProof(root, reviewedCurrent, application, { ...native, reviewCommit: spec.nativeReviewCommit });
   const original = priorBundle(root, spec.priorCommit);
   const before = one(original.metadata.records, uid, source, ordinal, "prior metadata"), beforeId = one(original.identity.records, uid, source, ordinal, "prior identity");
   if (!eq(item.before, { sourceFingerprint: before.sourceFingerprint, contentFingerprint: before.contentFingerprint }) || beforeId.sourceFingerprint !== before.sourceFingerprint ||
@@ -250,6 +259,7 @@ export function verifyNativeBasicHoldPreservation({ root, request, review, item,
     nativeItemSha256: hash(decision), currentStudentPayloadSha256: hash(pick(current, STUDENT)), currentQuestionSha256: hash(current),
     protectedMetadataSha256: hash(protectedMetadata(before)), protectedIdentitySha256: hash(protectedIdentity(beforeId)), priorCommit: spec.priorCommit,
     priorCanonicalProjectionVersion: original.bundle.projectionVersion, rendererAssets: assets,
+    ...(renderer ? { rendererContinuity: renderer.proof } : {}),
     heldRuntimeBindings: priorRuntime.map(({ path: p, record }) => ({ path: p, questionUid: uid, recordSha256: hash(record) })),
     metaOnlyHoldReason: NATIVE_BASIC_HOLD_REASON, sourceDeclaredPrimaryNotApproved: true,
     preservedMetadataApprovals: 1, newMetadataApprovals: 0, advancedApprovals: 0,

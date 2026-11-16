@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "small-m2-current-four-slot-literal-validation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "scope": "CHANGED_UID_VALIDATION_PROJECTION_NOT_INTAKE_OR_RECEIPT",
+  "examId": "E001",
+  "selectedOrdinals": [
+    4,
+    6,
+    9,
+    11,
+    15
+  ],
+  "questionUids": [
+    "qid_v1_3b73137cf898fbf7edddacf91762822f8ee41025168065d4c9958881e84875ae",
+    "qid_v1_b65d4b70db484e58dbd4b7bdd98ee11cc2e3d4aa4ae08536d766df146d92b729",
+    "qid_v1_f3215929369278e7ec116feeb4ea481b0c525dac507946f79066a2878f9db27a",
+    "qid_v1_f12f6a84cef2c943ddc54b11cd8b61763e9ebeae31bfaa0ffab690c2508156e7",
+    "qid_v1_8e051eb77fe9b2602118ea1c1f2c10783d74da4287ed1e6c9b71fdeb284a98d9"
+  ],
+  "sourceRef": {
+    "path": "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+    "beforeGitBlobSha1": "9bb0ef8fd5205edfa0520d3ed7c1f0faea91b585",
+    "beforeRawSha256": "3b7d019b0af7e0a869444482d4bb5ddf8ebbb8be84f005d73569a18108047b0b",
+    "currentGitBlobSha1": "75a6f10eb7283507af1df83d10699eed605b7208",
+    "currentRawSha256": "7a3880aa58dbabc2bd67d8d7a15f7c99a0ad11fa86ea5a3fe83935ca197042a7"
+  },
+  "nativeFourSlotRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E001/four-slot.json",
+    "sha256": "abfe91d77cfe2af544665585fe86d6a983d77864d5953d1af6dac83734af6912",
+    "sourceGitBlobSha": "9bb0ef8fd5205edfa0520d3ed7c1f0faea91b585"
+  },
+  "dictionaryRef": {
+    "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+    "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+    "version": "term-dict-v1.5-2026-11-04"
+  },
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#4 only 4 distinct terms",
+      "#4 method has 1 term",
+      "#6 only 4 distinct terms",
+      "#15 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 5,
+      "examItems": 24,
+      "quotes": 26,
+      "scope": "PARTIAL_UIDS",
+      "unsubmitted": 19,
+      "completeExam": false
+    }
+  },
+  "allExistingVectorsUnchanged": true,
+  "allExistingMethodsUnchanged": true,
+  "allNormalGivenConditionBlankSetsPreserved": true,
+  "candidateTermNamesPreserved": true,
+  "newTermOrVectorJudgments": 0,
+  "newFullMathematicalQa": 0,
+  "repositoryWrites": 0
+}

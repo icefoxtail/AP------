@@ -11,12 +11,16 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "proposalFinalization", proofKey: "proposalFinalization" }),
   Object.freeze({ requestKey: "retainedFields", proofKey: "retainedNativeFields" }),
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
+  Object.freeze({ requestKey: "retainedScopeTransport", proofKey: "retainedScopeTransport" }),
+  Object.freeze({ requestKey: "rationaleContinuity", proofKey: "rationaleContinuity" }),
+  Object.freeze({ requestKey: "currentDefinitionApplication", proofKey: "currentDefinitionApplication" }),
 ]);
 
 export function reviewedSourceBindingItems(request) {
   if (!Array.isArray(request?.items)) fail("request items required");
   return request.items.filter(patch => REVIEWED_SOURCE_BINDING_OPT_INS.some(({ requestKey }) =>
-    patch.sourceReview?.[requestKey] !== undefined) || patch.targetParentRef?.nativeSourceReview !== undefined);
+    patch.sourceReview?.[requestKey] !== undefined) || patch.targetParentRef?.nativeSourceReview !== undefined ||
+    patch.targetParentRef?.retainedScopeParent !== undefined);
 }
 
 export function reviewedSourceBindingPath(requestId) {
@@ -56,7 +60,8 @@ export function buildReviewedSourceBinding({ request, requestId, requestSha256, 
           patch.sourceReview?.[requestKey] !== undefined && proof[proofKey] === undefined))
       fail("exact selected fingerprint repair and source-review proof required");
     const parents = nativeParentBindings.filter(value => value.questionUid === patch.questionUid && value.sourceOrdinal === patch.sourceOrdinal);
-    if (patch.targetParentRef?.nativeSourceReview !== undefined ? parents.length !== 1 : parents.length !== 0)
+    const hasParent = patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined;
+    if (hasParent ? parents.length !== 1 : parents.length !== 0)
       fail("exact native parent proof inventory required");
     return { questionUid: patch.questionUid, sourceOrdinal: patch.sourceOrdinal,
       sourceReviewSha256: sha(stable(proof)), fingerprintRepairSha256: sha(stable(repair)),
