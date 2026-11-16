@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "middle-audit-native-current-course-alias-transport-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "questionUid": "qid_v1_70a153fd0db92774327a2a79647a464cb887d400f870eb8b8280cab9f094b147",
+  "sourceOrdinal": 4,
+  "sourceArchiveFile": "original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+  "expectedQuestionCount": 24,
+  "sourceBeforeRef": {
+    "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "path": "archive/exams/original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+    "blobSha1": "6c857633edb9fe267375cd9b1c9326cc975817ba",
+    "sha256": "ebda72d20030605af7dd7a8434d04d731a0422bc3f66090f15e0160e818e3dd8"
+  },
+  "currentSourceRef": {
+    "path": "archive/exams/original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+    "blobSha1": "4382fa87a2df7fd9095ffda8d44fc55f81c1f514",
+    "sha256": "8e216996b7d98fd6dd0da83a5d61601dee780ddaffd79cb482d2d5f826851434"
+  },
+  "sourceDelta": {
+    "set": {
+      "courseKey": "M2-2"
+    },
+    "remove": []
+  },
+  "scopeBasis": {
+    "nativeReviewRef": {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E024.review.json",
+      "sha256": "c6813c370014429f47b12d4c7ed8e6477b31c780814f720d13428989f9da649f"
+    },
+    "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "nativeRpmRecordId": "M2-RPM-105",
+    "nativeRpmPath": {
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "majorUnit": "도형의 닮음과 피타고라스 정리",
+      "midUnit": "피타고라스 정리",
+      "l3": "도형에의 활용",
+      "l4": "평면도형 길이"
+    },
+    "currentExplicitCurriculum": "2015",
+    "currentStandardCourse": "중2 수학",
+    "currentStandardUnitKey": "M2-07",
+    "currentSubUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "exactNativeBinding": [
+      {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "status": "ACTIVE"
+      }
+    ],
+    "activeOwnerPackRef": {
+      "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "sha256": "3af188fa60d34e527c285b0757241da5ce13f705aabf4899a07e7c28ca75788e"
+    },
+    "ownerPack": "MIDDLE_GEOMETRY",
+    "approvedCourseAlias": "M2-2"
+  },
+  "rootScopeApproval": "Explicitly approved transport of the native M2-2 scope as the current source courseKey. Preserve 2015 and the current exam namespace; no year-based inference, new PT/TPL approval or source-quality judgment.",
+  "priorRejectedRequest": {
+    "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "path": ".archive-meta-register/rejected/middle-audit-repair-34c2-m2-e024-q4.json",
+    "sha256": "a9a78cabb09072e755a35ca84d87807c129139faeadc4977734b579c1505a013"
+  },
+  "cause": "The former absent courseKey allowed the registrar to fall back to the display standardCourse 중2 수학. The canonical scope policy requires M2-2, so it reported course_namespace_invalid and blanked the consumer curriculum/course.",
+  "all24ProtectedStudentPayloadsUnchanged": true,
+  "wholeOtherQuestionsUnchanged": 23,
+  "originalRendererProofUnchanged": {
+    "schemaVersion": "archive-reviewed-current-renderer-continuity-v1",
+    "reviewCommit": "c6cf8f68044346929a410f67e71dddadb2a74fae",
+    "reviewRef": {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e024-q4-renderer-continuity.json",
+      "sha256": "68105fe2ceb725c5825f66a4d1ab48429dfa30154a3f79fd8e26abb3248e4fea"
+    }
+  },
+  "newFigureOrMathReview": false,
+  "sourceApprovalFlagsUnchanged": true,
+  "compactWholeExamSourceBindingNotChangedByThisTask": true,
+  "officialRegistration": "PENDING_R2",
+  "studentDeployment": "NOT_RUN"
+}
