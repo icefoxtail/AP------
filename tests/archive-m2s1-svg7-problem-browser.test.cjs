@@ -277,3 +277,83 @@ for(const[name,alter]of[
 test('Q15 URL refuses differing source and loaded URLs',async()=>{
  const f=q15Dom();f.image.src=f.image.src.replace('/q15-','/q24-');await assert.rejects(f.measure(),/UI_Q15_IMAGE_PATH/);
 });
+
+// Diagnostics cannot accept a missing native child. No student bytes are read.
+const SharedSurface=require('../tools/capture-m1s2-problem-surface.cjs');
+function q24Diagnostic(){
+ const f=q15Dom(),item=manifest.items.find(r=>r.key==='E048-Q24');
+ const answer=new f.Element('div','answer-box',f.rect(20,580,360,0));f.box.append(answer);
+ const active={key:item.key,questionUid:item.questionUid,sourceOrdinal:24,viewport:'mobile'};
+ const measured={surface:{schemaVersion:'archive-m1s2-native-problem-surface-v1',kind:'DIRECT_CHILDREN',equalSlot:false,wrapperCount:0,outerElementCount:3,
+  nonemptyOutsideNodes:0,numberCount:1,contentCount:1,nestedQuestionCount:0,targetInsideContainer:true,semanticChildCount:2},
+  viewport:{width:390,height:844},domSha256:sha(f.box.outerHTML)};
+ return{...f,answer,item,active,measured};
+}
+test('Q24 failure diagnostic distinguishes real empty zero-height answer role without accepting it',async()=>{
+ const f=q24Diagnostic(),before=f.box.outerHTML,observed=normalize(await f.target.evaluate(H.inspectQ24FailureMetadata));
+ assert.equal(observed.status,'OBSERVATION_ONLY_NO_ACCEPTANCE');assert.equal(observed.outerElementCount,3);
+ assert.equal(observed.children[2].roles.answerBox,true);assert.equal(observed.children[2].nonemptyText,false);
+ assert.equal(observed.children[2].rect.height,0);assert.equal(observed.children[2].visibleBySharedRule,false);
+ assert.equal(observed.children[0].roles.number,true);assert.equal(observed.children[0].visibleBySharedRule,true);
+ assert.equal(observed.children[1].roles.content,true);assert.equal(observed.children[1].visibleBySharedRule,true);
+ assert.equal(observed.domSha256,sha(before));assert.equal(f.box.outerHTML,before);assert.equal(observed.domWrites,0);
+ const raw=JSON.stringify(observed);for(const secret of [f.text.textContent,f.image.src,'<DIV','textContent','outerHTML'])assert(!raw.includes(secret));
+ assert.equal(f.state.screenshots.length,0);
+});
+for(const[name,alter]of[
+ ['number display none',f=>f.num.style.display='none'],['content hidden',f=>f.content.style.visibility='hidden'],
+ ['number collapsed',f=>f.num.style.visibility='collapse'],['content zero opacity',f=>f.content.style.opacity='0'],
+ ['number zero width',f=>f.num.r.width=0],['content zero height',f=>f.content.r.height=0]
+])test('Q24 failure diagnostic reports '+name+' as unavailable geometry',async()=>{
+ const f=q24Diagnostic();alter(f);const o=normalize(await f.target.evaluate(H.inspectQ24FailureMetadata));
+ assert(o.children.slice(0,2).some(row=>row.visibleBySharedRule===false));assert.equal(o.status,'OBSERVATION_ONLY_NO_ACCEPTANCE');
+});
+test('Q24 failure diagnostic bounds role metadata and excludes added private text',async()=>{
+ const f=q24Diagnostic();for(let i=0;i<40;i++){const child=new f.Element('div');child.append(new f.TextNode('private-'+i));f.box.append(child);}
+ const o=normalize(await f.target.evaluate(H.inspectQ24FailureMetadata));assert.equal(o.containerElementCount,43);assert.equal(o.children.length,16);
+ assert.equal(o.truncated,true);assert(!JSON.stringify(o).includes('private-'));
+});
+test('Q24 failure diagnostic retains the real shared completeness rejection and no screenshot',async()=>{
+ const f=q24Diagnostic(),rows=[];
+ await assert.rejects(H.captureSharedWithDiagnostics(f.page,f.target,'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
+ assert.equal(rows.length,1);assert.equal(rows[0].failureCode,'UI_NATIVE_SURFACE_COMPLETENESS');assert.equal(rows[0].sameDomAsInitialMeasurement,true);
+ assert.equal(rows[0].observation.children[2].rect.height,0);assert.equal(f.state.screenshots.length,0);
+});
+test('Q24 failure diagnostic reports a changed DOM without making the rejected capture pass',async()=>{
+ const f=q24Diagnostic(),rows=[];f.measured.domSha256='0'.repeat(64);
+ await assert.rejects(H.captureSharedWithDiagnostics(f.page,f.target,'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
+ assert.equal(rows[0].sameDomAsInitialMeasurement,false);assert.equal(f.state.screenshots.length,0);
+});
+test('Q24 failure diagnostic preserves an exact capture exception and hides its raw message',async()=>{
+ const f=q24Diagnostic(),rows=[],original=new Error('private browser detail'),prior=SharedSurface.captureM1ProblemTiles;
+ f.measured.surface.semanticChildCount=3;SharedSurface.captureM1ProblemTiles=async()=>{throw original;};
+ try{await assert.rejects(H.captureSharedWithDiagnostics(f.page,f.target,'/tmp/not-written.png',f.item,f.active,rows,f.measured),e=>e===original);}
+ finally{SharedSurface.captureM1ProblemTiles=prior;}
+ assert.equal(rows[0].errorMessageSha256,sha(original.message));assert(!JSON.stringify(rows).includes(original.message));
+});
+test('Q24 failure diagnostic cannot replace the original exception when evaluation also fails',async()=>{
+ const f=q24Diagnostic(),rows=[],original=new Error('UI_NATIVE_SURFACE_COMPLETENESS'),prior=SharedSurface.assertSurfaceTopology;
+ SharedSurface.assertSurfaceTopology=()=>{throw original;};
+ try{await assert.rejects(H.captureSharedWithDiagnostics(f.page,{evaluate:async()=>{throw new Error('private observation');}},'/tmp/not-written.png',f.item,f.active,rows,f.measured),e=>e===original);}
+ finally{SharedSurface.assertSurfaceTopology=prior;}
+ assert.equal(rows[0].observation.status,'UNAVAILABLE');assert(!JSON.stringify(rows).includes('private observation'));
+});
+test('Q24 failure diagnostic leaves successful topology and capture calls in the original order',async()=>{
+ const f=q24Diagnostic(),rows=[],calls=[],result={exact:'capture'},a=SharedSurface.assertSurfaceTopology,c=SharedSurface.captureM1ProblemTiles;
+ SharedSurface.assertSurfaceTopology=s=>{assert.equal(s,f.measured.surface);calls.push('topology');};
+ SharedSurface.captureM1ProblemTiles=async(p,t,file)=>{assert.equal(p,f.page);assert.equal(t,target);assert.equal(file,'/tmp/not-written.png');calls.push('capture');return result;};
+ const target={evaluate:async()=>{throw new Error('diagnostic must not run on success');}};
+ try{assert.equal(await H.captureSharedWithDiagnostics(f.page,target,'/tmp/not-written.png',f.item,f.active,rows,f.measured),result);}
+ finally{SharedSurface.assertSurfaceTopology=a;SharedSurface.captureM1ProblemTiles=c;}
+ assert.deepEqual(calls,['topology','capture']);assert.equal(rows.length,0);
+});
+for(const[name,alter]of[
+ ['other UID',f=>f.item={...f.item,questionUid:Q15.UID}],['other key',f=>f.item={...f.item,key:'E045-Q24'}],
+ ['other ordinal',f=>f.item={...f.item,sourceOrdinal:13}],['other whole question',f=>f.item={...f.item,questionSha256:'0'.repeat(64)}],
+ ['desktop',f=>f.active={...f.active,viewport:'desktop'}],['different width',f=>f.measured.viewport.width=391],
+ ['different height',f=>f.measured.viewport.height=843],['active UID disagreement',f=>f.active={...f.active,questionUid:Q15.UID}]
+])test('Q24 failure diagnostic does not observe '+name,async()=>{
+ const f=q24Diagnostic(),rows=[];alter(f);let observations=0;
+ await assert.rejects(H.captureSharedWithDiagnostics(f.page,{evaluate:async()=>{observations++;}},'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
+ assert.equal(observations,0);assert.equal(rows.length,0);assert.equal(f.state.screenshots.length,0);
+});

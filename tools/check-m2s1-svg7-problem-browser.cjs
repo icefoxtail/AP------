@@ -71,6 +71,51 @@ async function captureQ15WithDiagnostics(page,target,file,item,activeCase,diagno
   throw error;
  }
 }
+// The shared capture remains strict. Observe the known Q24 mobile failure only
+// after it has failed; record no DOM text/HTML/URL and never replace the error.
+async function inspectQ24FailureMetadata(image){
+ const box=image.closest('.q-box'),wrappers=box?[...box.children].filter(n=>n.matches('.ap-slot-content')):[];
+ const equalSlot=Boolean(box?.classList.contains('ap-equal-slot'));
+ const container=equalSlot&&wrappers.length===1?wrappers[0]:box;
+ const rect=e=>{if(!e)return null;const r=e.getBoundingClientRect();return Object.fromEntries(['x','y','width','height'].map(k=>[k,Number.isFinite(r[k])?r[k]:null]));};
+ const role=e=>{
+  if(!e)return null;const r=rect(e),s=getComputedStyle(e),opacity=Number(s.opacity);
+  const visible=s.display!=='none'&&!['hidden','collapse'].includes(s.visibility)&&opacity!==0&&r.width>0&&r.height>0;
+  return{nodeType:e.nodeType,tagName:['DIV','P','SPAN','IMG','SVG','MATH','MJX-CONTAINER','UL','OL','TABLE'].includes(e.tagName)?e.tagName:'OTHER',
+   roles:{number:e.matches('.q-num'),content:e.matches('.q-content'),answerBox:e.matches('.answer-box'),choices:e.matches('.choices'),imageWrapper:e.matches('.q-image-wrap')},
+   rect:r,css:{displayNone:s.display==='none',visibilityHidden:s.visibility==='hidden',visibilityCollapse:s.visibility==='collapse',opacity:Number.isFinite(opacity)?opacity:null},
+   visibleBySharedRule:visible,nonemptyText:Boolean(e.textContent.trim()),elementChildren:e.children.length,
+   directNonemptyTextNodes:[...e.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE&&Boolean(n.textContent.trim())).length,
+   imageCount:e.querySelectorAll('img').length,mathCount:e.querySelectorAll('math,mjx-container').length};
+ };
+ const children=container?[...container.children]:[];
+ const digest=box?await crypto.subtle.digest('SHA-256',new TextEncoder().encode(box.outerHTML)):null;
+ return{schemaVersion:'archive-m2s1-q24-failure-diagnostic-v1',status:'OBSERVATION_ONLY_NO_ACCEPTANCE',
+  equalSlot,wrapperCount:wrappers.length,outerElementCount:box?.children.length??null,containerElementCount:children.length,
+  roles:{question:role(box),container:role(container),targetImage:role(image)},
+  children:children.slice(0,16).map((e,index)=>({index,...role(e)})),truncated:children.length>16,
+  numberCount:box?.querySelectorAll('.q-num').length??null,contentCount:box?.querySelectorAll('.q-content').length??null,
+  answerBoxCount:box?.querySelectorAll('.answer-box').length??null,nestedQuestionCount:box?.querySelectorAll('.q-box').length??null,
+  domSha256:digest?[...new Uint8Array(digest)].map(byte=>byte.toString(16).padStart(2,'0')).join(''):null,
+  viewport:{width:innerWidth,height:innerHeight},scroll:{x:scrollX,y:scrollY},domWrites:0};
+}
+async function captureSharedWithDiagnostics(page,target,file,item,activeCase,diagnostics,measuredSurface){
+ try{Surface.assertSurfaceTopology(measuredSurface.surface);return await Surface.captureM1ProblemTiles(page,target,file);}
+ catch(error){
+  const selected=item.key==='E048-Q24'&&item.questionUid==='qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad'&&item.sourceOrdinal===24&&
+   item.questionSha256==='6af32349e8c99b6a75b05aae09dec93eb95cf45b28399e1cfc5d897494440d7a'&&
+   activeCase.key===item.key&&activeCase.questionUid===item.questionUid&&activeCase.sourceOrdinal===24&&activeCase.viewport==='mobile'&&
+   measuredSurface.viewport?.width===390&&measuredSurface.viewport?.height===844;
+  if(selected){
+   const row={key:item.key,questionUid:item.questionUid,sourceOrdinal:24,viewport:'mobile',kind:'Q24_SHARED_CAPTURE_FAILURE',
+    failureCode:safeFailureCode(error,'UI_BROWSER_CHECK_FAILED'),errorMessageSha256:sha256(error.message||'')};
+   try{row.observation=await target.evaluate(inspectQ24FailureMetadata);row.sameDomAsInitialMeasurement=row.observation.domSha256===measuredSurface.domSha256;}
+   catch(diagnosticError){row.observation={status:'UNAVAILABLE',errorMessageSha256:sha256(diagnosticError.message||'')};}
+   diagnostics.push(row);
+  }
+  throw error;
+ }
+}
 const MANIFEST_PATH='tests/fixtures/archive-m2s1-svg7-problem-ui.json',CHECKER_PATH='tools/check-m2s1-svg7-problem-browser.cjs',SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const MANIFEST_SHA="6d79b0597fcdf0fe90490a408c467f223f753c0b81a0be06f0da49a64a88701b",CAPTURE_SHA='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-m2s1-svg7-problem-github-ui-raw-v1',FONT_FAMILY='Nanum Myeongjo';
@@ -292,7 +337,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           const route=surfaceRoute(item);
           let captured;
           if(route==='Q15_EMBEDDED_CHOICES')captured=await captureQ15WithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics);
-          else { Surface.assertSurfaceTopology(measuredSurface.surface); captured=await Surface.captureM1ProblemTiles(page,target,path.join(out,screenshotPath)); }
+          else captured=await captureSharedWithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics,measuredSurface);
           const {capture,surface:surfaceStructure}=captured;
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
@@ -343,5 +388,5 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
 }
 
 async function main(){const a=process.argv.slice(2);assert(a.length===4&&a[0]==='--root'&&a[2]==='--output','UI_ARGUMENTS');const root=path.resolve(a[1]),out=path.resolve(a[3]);assert(!out.startsWith(root+path.sep)&&out!==root,'UI_OUTPUT_OUTSIDE_CHECKOUT');assert(!fs.existsSync(out)||fs.readdirSync(out).length===0,'UI_EMPTY_OUTPUT');for(let p=out;p!==path.dirname(p);p=path.dirname(p))if(fs.existsSync(p))assert(!fs.lstatSync(p).isSymbolicLink(),'UI_OUTPUT_SYMLINK');const expectedCommit=process.env.ARCHIVE_M2S1_SVG7_UI_EXPECTED_SHA;assert(/^[a-f0-9]{40}$/.test(expectedCommit||''),'UI_EXPECTED_COMMIT');const p=await inspectStudentUi({root,out,expectedCommit,executablePath:process.env.CHROME_BIN});console.log(JSON.stringify({status:p.status,cases:p.completedLogicalCases,checkoutCommit:p.checkoutCommit,newApprovals:0}));}
-module.exports={surfaceRoute,safeFailureCode,inspectQ15FailureMetadata,captureQ15WithDiagnostics,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
+module.exports={surfaceRoute,safeFailureCode,inspectQ15FailureMetadata,captureQ15WithDiagnostics,inspectQ24FailureMetadata,captureSharedWithDiagnostics,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
 if(require.main===module)main().catch(e=>{console.error(JSON.stringify({status:'FAIL',failureCode:safeFailureCode(e,'UI_GITHUB_CHROME_FAILED'),errorMessageSha256:sha256(e.message||'')}));process.exitCode=1;});
