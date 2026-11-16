@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "m2-ready3-current-consumer-v1",
+  "baselineMain": "61830b6cd7ef773f6d9c963142a7e95af4c48e82",
+  "sourceScope": {
+    "targetSources": 2,
+    "targetQuestions": 47,
+    "changedUids": 3,
+    "globalRequiredHoldSources": 1,
+    "globalRequiredHoldSourceQuestions": 24,
+    "catalogSources": 3,
+    "catalogQuestions": 71
+  },
+  "builds": [
+    {
+      "script": "archive/tools/build-question-index.mjs",
+      "codeSha256": "c448eb784b28fb6fa67cf86249de7caf488af83d370537cc53f2baa94992d92b",
+      "logPath": "/workspace/scratch/3e3a7e007c36/m2-agent/ready3-packet/build-question-index.mjs.log",
+      "logSha256": "50651db67e27aa316dba212696e836aae03bd258d4d56729a63434988057b2ba"
+    },
+    {
+      "script": "archive/tools/build-archive2-catalog.mjs",
+      "codeSha256": "96be8eabe86d08f894f1e7fcef4010871ffc917bfbe4f901c01b33b7b75fd798",
+      "logPath": "/workspace/scratch/3e3a7e007c36/m2-agent/ready3-packet/build-archive2-catalog.mjs.log",
+      "logSha256": "b17af29c32215623beb4f77f7405731d5d190eb38d50a19a0d6efb654627e953"
+    }
+  ],
+  "originalDbSha256": "5955199cbc25bd0cb4447ca47932fcfedb1acaf41068972c73334c8e5cbce53e",
+  "scopedDbSha256": "f5edde82e12ca142890d2695c5779b71fdef18485c39efb3e091a1407b561023",
+  "result": {
+    "status": "PASS",
+    "mainSha": "UNKNOWN",
+    "counts": {
+      "changed": 3,
+      "checked": 3,
+      "passed": 3,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+        "kind": "reviewed-exam-v2",
+        "exam": "19_신흥중_2학기_기말_중2_기출",
+        "sourceFile": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+        "changed": 2,
+        "checked": 2,
+        "passed": 2,
+        "skippedUnchanged": 0
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s2-follow9-20261115-E028.json",
+        "kind": "reviewed-exam-v2",
+        "exam": "23_왕운중_2학기_중간_중2_수학",
+        "sourceFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0
+      }
+    ],
+    "failures": [],
+    "unobservedFields": [],
+    "solverOnlyRevisions": [],
+    "assignmentPending": []
+  },
+  "values": [
+    {
+      "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+      "sourceArchiveFile": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 7,
+      "canonicalAssignmentReasons": [],
+      "approvalStatus": "APPROVED",
+      "reviewEvidenceStatus": "PASS",
+      "directSelectable": true,
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_INCENTER",
+        "CC_TRIANGLE_AREA",
+        "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3
+    },
+    {
+      "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+      "sourceArchiveFile": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 12,
+      "canonicalAssignmentReasons": [],
+      "approvalStatus": "APPROVED",
+      "reviewEvidenceStatus": "PASS",
+      "directSelectable": true,
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CIRCUMFERENCE",
+        "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3
+    },
+    {
+      "questionUid": "qid_v1_c44b869578422235c076e993f43ba01014e75d35e3af7a5555d7eaf5104b0dae",
+      "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+      "sourceOrdinal": 2,
+      "canonicalAssignmentReasons": [],
+      "approvalStatus": "APPROVED",
+      "reviewEvidenceStatus": "PASS",
+      "directSelectable": true,
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_PROPERTY_STATEMENT_JUDGMENT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "difficultyBucket": 1
+    }
+  ],
+  "actualMainRegistration": "NOT_RUN",
+  "Pages": "NOT_RUN"
+}

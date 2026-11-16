@@ -1,0 +1,506 @@
+{
+  "schemaVersion": "archive-reviewed-source-binding-v1",
+  "requestId": "m2s2-e059-cc2-20261115",
+  "requestSha256": "f0c9675a54b5488055cb38f4167b066862eaae6ce9b4cf0006577744a67c86eb",
+  "sourceArchiveFile": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+  "sourceBlobSha1": "b8d54021c11d6a90eb49742be004fa81654a37ea",
+  "sourceRawSha256": "0103157f1bae26ae455a90f304889f27043d956e800e53649cddbd7d645f5095",
+  "scope": "PARTIAL_UIDS",
+  "expectedQuestionCount": 23,
+  "partialUidCount": 2,
+  "sourceReviewUidCount": 2,
+  "requestSnapshot": {
+    "approval": {
+      "approvedBy": "Accepted immutable native M2 review and independently finalized exact CC applications; metadata transport only, no new mathematical QA",
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+          "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.root-acceptance.json",
+          "sha256": "42e56ecde1852bf5818cd21498c96e15b3deed2a5956b2fddc0d3da625535f73"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+          "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+          "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+        },
+        {
+          "path": "docs/operations/m2s2-e059-cc2-20261115/native-scope-and-proposal-proof.json",
+          "sha256": "6bfa5b662954ab3ca01c00fe8c7f213b5b8afbb56b3db3fcbbc9cd98ffb26004"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.parent-labels.json",
+          "sha256": "f5789398bf58bb4f282b653106ecc9fe47b01f483fdf5fbf1b0ada319b18eae0"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q07.png",
+          "sha256": "5fdd824e91ef61c6ea52a8c619b842cf2631881e34c481d235607c66717fde74"
+        },
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q7-solution.svg",
+          "sha256": "82bb09e3008c9400a33a94580aabcd3475c608e92513c96ee04486dadec81b42"
+        },
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+          "sha256": "e856d5f926726dcef66ed2576542cf9ec01d5bfdd255fc92f5a3ea71c19e80b5"
+        },
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12.png",
+          "sha256": "fb6e7b003d77e4e943d0ccf81308b879c6d3fd63c23376c2caae45303f7b2c2d"
+        },
+        {
+          "path": "docs/operations/m2s2-e059-cc2-20261115/derived-tag-status-transport.json",
+          "sha256": "496dc3d31d7e8595058bd076206468cb93558518b9e017f6dbbac1ee5ef9b0e8"
+        }
+      ],
+      "metadataReviewed": true,
+      "type": "FINAL_QA"
+    },
+    "examUid": "19_신흥중_2학기_기말_중2_기출",
+    "expectedQuestionCount": 23,
+    "expectedSourceBlobSha1": "b8d54021c11d6a90eb49742be004fa81654a37ea",
+    "items": [
+      {
+        "after": {
+          "conditionKeys": [],
+          "contentFingerprint": "43f677cd29b63effa0bd74e81d93888a163f0b5b920d51530aa5b94c21471ef9",
+          "courseKey": "M2-2",
+          "crossConceptKeys": [
+            "CC_TRIANGLE_INCENTER",
+            "CC_TRIANGLE_AREA",
+            "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER"
+          ],
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "decisiveStep": "무게중심 평행단면의 높이비를 내접반지름에 연결하고 두넓이식에서 BC를 정한다.",
+          "difficultyBoundaryFlag": "B34",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "integrationPattern": "SEQUENTIAL",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "level": "상",
+          "primaryMethod": "무게중심 높이비와 내심 면적식 결합",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "rpmL3": "넓이와 무게중심",
+          "rpmL4": "무게중심을 이용한 복합도형",
+          "rpmPrimaryPath": {
+            "l3": "넓이와 무게중심",
+            "l4": "무게중심을 이용한 복합도형",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심"
+          },
+          "sourceFingerprint": "0d53758ed01ce20b810528fef385c073d48f8d5e0bcdd9a486f8c904293b9e6b",
+          "standardCourse": "중2 수학",
+          "standardUnit": "도형의 닮음",
+          "standardUnitKey": "M2-06",
+          "subUnit": "삼각형의 무게중심의 성질",
+          "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+          "templateKey": "TPL_CENTROID_APPLICATION"
+        },
+        "before": {
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "conditionKeys": [],
+          "contentFingerprint": "43f677cd29b63effa0bd74e81d93888a163f0b5b920d51530aa5b94c21471ef9",
+          "courseKey": null,
+          "crossConceptKeys": [],
+          "curriculum": null,
+          "curriculumKey": null,
+          "decisiveStep": null,
+          "difficultyBoundaryFlag": "B34",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "integrationPattern": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "level": null,
+          "primaryMethod": null,
+          "problemTypeKey": "",
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmPrimaryPath": null,
+          "sourceFingerprint": "0d53758ed01ce20b810528fef385c073d48f8d5e0bcdd9a486f8c904293b9e6b",
+          "standardCourse": "중2 수학",
+          "standardUnit": "도형의 닮음과 피타고라스 정리",
+          "standardUnitKey": "M2-06",
+          "subUnit": "평행선과 선분의 길이의 비",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "templateKey": ""
+        },
+        "evidenceRefs": [
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+            "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.root-acceptance.json",
+            "sha256": "42e56ecde1852bf5818cd21498c96e15b3deed2a5956b2fddc0d3da625535f73"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+            "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+            "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+          },
+          {
+            "path": "docs/operations/m2s2-e059-cc2-20261115/native-scope-and-proposal-proof.json",
+            "sha256": "6bfa5b662954ab3ca01c00fe8c7f213b5b8afbb56b3db3fcbbc9cd98ffb26004"
+          },
+          {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.parent-labels.json",
+            "sha256": "f5789398bf58bb4f282b653106ecc9fe47b01f483fdf5fbf1b0ada319b18eae0"
+          },
+          {
+            "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+            "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+          },
+          {
+            "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q07.png",
+            "sha256": "5fdd824e91ef61c6ea52a8c619b842cf2631881e34c481d235607c66717fde74"
+          },
+          {
+            "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q7-solution.svg",
+            "sha256": "82bb09e3008c9400a33a94580aabcd3475c608e92513c96ee04486dadec81b42"
+          },
+          {
+            "path": "docs/operations/m2s2-e059-cc2-20261115/derived-tag-status-transport.json",
+            "sha256": "496dc3d31d7e8595058bd076206468cb93558518b9e017f6dbbac1ee5ef9b0e8"
+          }
+        ],
+        "identityBefore": {
+          "sourceFingerprint": "0d53758ed01ce20b810528fef385c073d48f8d5e0bcdd9a486f8c904293b9e6b"
+        },
+        "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+        "reason": "Transport the direct native after fields and exact independently finalized auxiliary concept; preserve native primary, earlier native cross-concepts, all student payload and unselected question objects.",
+        "sourceOrdinal": 7,
+        "sourceReview": {
+          "proposalFinalization": {
+            "finalizationCommit": "1bd67bd03dfc299d371ea0e9ee55677bf4e9052a",
+            "finalizationRef": {
+              "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+              "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+            },
+            "proposalIds": [
+              "B-E059-INCIRCLE-SEMIPERIMETER"
+            ],
+            "registryChangesRef": {
+              "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+              "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+            },
+            "schemaVersion": "archive-native-proposal-finalization-v1"
+          },
+          "reviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "reviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+            "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+          },
+          "schemaVersion": "archive-reviewed-source-reassessment-v1"
+        },
+        "targetParentRef": {
+          "curriculum": "2015",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "scope": "M2-2"
+        }
+      },
+      {
+        "after": {
+          "conditionKeys": [],
+          "contentFingerprint": "c0ab696670873213ad62cfb322ab0e6f573d0271dced0d9657465a065de9cce6",
+          "courseKey": "M2-2",
+          "crossConceptKeys": [
+            "CC_CIRCLE_CIRCUMFERENCE",
+            "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH"
+          ],
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "decisiveStep": "한바퀴 둘레와 높이를 직사각형 두변으로 옮겨 전개면의 직선거리를 구한다.",
+          "difficultyBoundaryFlag": "B23",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "integrationPattern": "SEQUENTIAL",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "level": "상",
+          "primaryMethod": "원기둥 옆면 전개와 직선 최단거리",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "rpmL3": "도형에의 활용",
+          "rpmL4": "입체도형 거리",
+          "rpmPrimaryPath": {
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리"
+          },
+          "sourceFingerprint": "2e9d7f9cf91d1d1e2a6aeafe283b65cc40cbe4452590afeaa9a86ed924d151de",
+          "standardCourse": "중2 수학",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitKey": "M2-07",
+          "subUnit": "피타고라스 정리의 활용",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION"
+        },
+        "basicScopeParentRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.parent-labels.json",
+          "sha256": "f5789398bf58bb4f282b653106ecc9fe47b01f483fdf5fbf1b0ada319b18eae0"
+        },
+        "before": {
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "conditionKeys": [],
+          "contentFingerprint": "c0ab696670873213ad62cfb322ab0e6f573d0271dced0d9657465a065de9cce6",
+          "courseKey": null,
+          "crossConceptKeys": [],
+          "curriculum": null,
+          "curriculumKey": null,
+          "decisiveStep": null,
+          "difficultyBoundaryFlag": "B23",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "integrationPattern": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "level": null,
+          "primaryMethod": null,
+          "problemTypeKey": "",
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmPrimaryPath": null,
+          "sourceFingerprint": "2e9d7f9cf91d1d1e2a6aeafe283b65cc40cbe4452590afeaa9a86ed924d151de",
+          "standardCourse": "중2 수학",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitKey": "M2-07",
+          "subUnit": "피타고라스 정리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "templateKey": ""
+        },
+        "evidenceRefs": [
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+            "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.root-acceptance.json",
+            "sha256": "42e56ecde1852bf5818cd21498c96e15b3deed2a5956b2fddc0d3da625535f73"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+            "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+            "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+          },
+          {
+            "path": "docs/operations/m2s2-e059-cc2-20261115/native-scope-and-proposal-proof.json",
+            "sha256": "6bfa5b662954ab3ca01c00fe8c7f213b5b8afbb56b3db3fcbbc9cd98ffb26004"
+          },
+          {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.parent-labels.json",
+            "sha256": "f5789398bf58bb4f282b653106ecc9fe47b01f483fdf5fbf1b0ada319b18eae0"
+          },
+          {
+            "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+            "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+          },
+          {
+            "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+            "sha256": "e856d5f926726dcef66ed2576542cf9ec01d5bfdd255fc92f5a3ea71c19e80b5"
+          },
+          {
+            "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12.png",
+            "sha256": "fb6e7b003d77e4e943d0ccf81308b879c6d3fd63c23376c2caae45303f7b2c2d"
+          },
+          {
+            "path": "docs/operations/m2s2-e059-cc2-20261115/derived-tag-status-transport.json",
+            "sha256": "496dc3d31d7e8595058bd076206468cb93558518b9e017f6dbbac1ee5ef9b0e8"
+          }
+        ],
+        "identityBefore": {
+          "sourceFingerprint": "2e9d7f9cf91d1d1e2a6aeafe283b65cc40cbe4452590afeaa9a86ed924d151de"
+        },
+        "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+        "reason": "Transport the direct native after fields and exact independently finalized auxiliary concept; preserve native primary, earlier native cross-concepts, all student payload and unselected question objects.",
+        "sourceOrdinal": 12,
+        "sourceReview": {
+          "proposalFinalization": {
+            "finalizationCommit": "1bd67bd03dfc299d371ea0e9ee55677bf4e9052a",
+            "finalizationRef": {
+              "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+              "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+            },
+            "proposalIds": [
+              "B-E059-CYLINDER-UNFOLD"
+            ],
+            "registryChangesRef": {
+              "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+              "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+            },
+            "schemaVersion": "archive-native-proposal-finalization-v1"
+          },
+          "reviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "reviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+            "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+          },
+          "schemaVersion": "archive-reviewed-source-reassessment-v1"
+        }
+      }
+    ],
+    "registryChanges": [
+      {
+        "after": {
+          "aliases": [],
+          "canonicalLabelKo": "내접반지름과 반둘레에 의한 삼각형의 넓이",
+          "conceptKey": "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER",
+          "curriculumRefs": [],
+          "definition": "삼각형의 내접반지름을 r, 세 변의 길이를 a,b,c, 반둘레를 s=(a+b+c)/2라 하면 넓이 S=rs이다. 내심과 세 꼭짓점을 이은 세 삼각형의 공통 높이가 r이라는 관계로부터 얻는다.",
+          "evidenceProvenance": [
+            {
+              "classificationRationale": "현재 PNG에서 D-G-I-E가 BC와 평행한 단면 위에 놓임을 확인했다. 현재 해설은 무게중심 높이비와 내접반지름을 연결하고 S=rs 및 밑변×높이/2를 결합한다.",
+              "nativeProposalRefs": [
+                "B-E059-INCIRCLE-SEMIPERIMETER"
+              ],
+              "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+              "nativeReviewSha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+              "newMathematicalQa": false,
+              "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+              "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+              "sourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+              "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+              "sourceOrdinal": 7
+            }
+          ],
+          "legacyKeys": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "sourceUnits": [
+            "M2-06"
+          ],
+          "status": "ACTIVE",
+          "supportingItemCount": 1,
+          "supportingQuestionUids": [
+            "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78"
+          ],
+          "taxonomyRefs": [
+            "PT_COORD_CENTROID"
+          ]
+        },
+        "before": null,
+        "collection": "concepts",
+        "evidenceRefs": [
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+            "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+            "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+          }
+        ],
+        "match": {
+          "conceptKey": "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER"
+        },
+        "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json"
+      },
+      {
+        "after": {
+          "aliases": [],
+          "canonicalLabelKo": "원기둥 옆면의 고정 감김수 전개 최단거리",
+          "conceptKey": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH",
+          "curriculumRefs": [],
+          "definition": "직원기둥의 옆면을 길이가 보존되는 직사각형 띠로 펼치고 지정된 감김수에 해당하는 두 끝점의 전개 위치를 고르면, 허용된 옆면 전개 영역 안에서 두 끝점을 잇는 직선이 최단 경로가 된다. 밑면을 가로지르는 경로나 다른 감김수의 경로와 구별한다.",
+          "evidenceProvenance": [
+            {
+              "classificationRationale": "PNG에서 A/B는 같은 모선의 위/아래 끝점이고 실은 옆면을 한 바퀴 감는다. stem의 반지름/높이와 고정 한 바퀴 조건을 직사각형 전개 끝점에 대응한 후 직선 최단 경로를 피타고라스로 계산한다.",
+              "nativeProposalRefs": [
+                "B-E059-CYLINDER-UNFOLD"
+              ],
+              "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+              "nativeReviewSha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+              "newMathematicalQa": false,
+              "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+              "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+              "sourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+              "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+              "sourceOrdinal": 12
+            }
+          ],
+          "legacyKeys": [],
+          "ownerConceptShard": "COORDINATE_GEOMETRY",
+          "sourceUnits": [
+            "M2-07"
+          ],
+          "status": "ACTIVE",
+          "supportingItemCount": 1,
+          "supportingQuestionUids": [
+            "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9"
+          ],
+          "taxonomyRefs": [
+            "PT_M2_PYTHAGOREAN_RELATION"
+          ]
+        },
+        "before": null,
+        "collection": "concepts",
+        "evidenceRefs": [
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+            "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+          },
+          {
+            "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+            "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+          }
+        ],
+        "match": {
+          "conceptKey": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH"
+        },
+        "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json"
+      }
+    ],
+    "requestId": "m2s2-e059-cc2-20261115",
+    "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+    "scope": "PARTIAL_UIDS",
+    "sourceArchiveFile": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js"
+  },
+  "records": [
+    {
+      "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+      "sourceOrdinal": 7,
+      "sourceReviewSha256": "b7135933d902f82290edf141db8f5b443f6f876972d4b02b74bc8fcc8c4ab640",
+      "fingerprintRepairSha256": "e9b82821c26bd40c50dbf03ae0c8409c63c48a9ebd55adafc3a8d6e4bb575620",
+      "nativeParentBindingSha256": null
+    },
+    {
+      "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+      "sourceOrdinal": 12,
+      "sourceReviewSha256": "c31a07af6398f551cfc36519ba2662f32c06c3a9cfc190d17afecffa61fe1e08",
+      "fingerprintRepairSha256": "ea5aaffd55ff8d14cb6f1847c2c4c8d32a2b2c844842fbe908f610402bf99986",
+      "nativeParentBindingSha256": null
+    }
+  ]
+}

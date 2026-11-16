@@ -299,7 +299,7 @@ window.examData = {
     {
       "id": 22,
       "score": 4.0,
-      "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"A에 직각 표시가 있다. O를 중심으로 하는 외접원은 A, B, C를 지나고 I를 중심으로 하는 내접원은 각 변에 접한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></p>",
       "choices": [
         "$\\dfrac{111}{2}$",
         "60",
@@ -1010,9 +1010,8 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"A에 직각 표시가 있다. O를 중심으로 하는 외접원은 A, B, C를 지나고 I를 중심으로 하는 내접원은 각 변에 접한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></p>",
     "choices": [
       "$\\dfrac{111}{2}$",
       "60",
@@ -1022,7 +1021,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"A에 직각 표시가 있다. O를 중심으로 하는 외접원은 A, B, C를 지나고 I를 중심으로 하는 내접원은 각 변에 접한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+    "content": "<div>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></div>",
     "curriculum": "2015",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-05",

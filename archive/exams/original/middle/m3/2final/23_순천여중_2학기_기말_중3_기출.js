@@ -1083,3 +1083,9 @@ window.questionBank = [
     "decisiveStep": "편차합0으로 빠진 편차−1을 먼저 정하고 여섯 편차의 제곱평균과 그 양의 제곱근으로 분산·표준편차를 구한다."
   }
 ];
+
+// Transport the unchanged independently approved native template and course namespace.
+(function () {
+  Object.assign(window.questionBank[4], {"templateKey":"TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES","courseKey":"M3-2"});
+  Object.assign(window.questionBank[5], {"templateKey":"TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES","courseKey":"M3-2"});
+})();
