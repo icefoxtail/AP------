@@ -13,6 +13,7 @@ import { bindReviewedNativeFamilyCourse } from "./reviewed-native-parent.mjs";
 import { bindReviewedNativeRationaleContinuity } from "./reviewed-native-rationale-continuity.mjs";
 import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-current-definition-application.mjs";
 import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
+import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-target-application.mjs";
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
@@ -241,6 +242,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,
     studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
   if (prerequisiteExistingApplication) Object.assign(accepted, prerequisiteExistingApplication.fields);
+  const currentTargetApplication = validateM3S2CurrentTargetApplication({ root, request, patch, native: loaded, row,
+    accepted, question, final, canonicalBefore, canonicalAfter, rendererContinuity, studentPayload,
+    studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
+  if (currentTargetApplication) Object.assign(accepted, currentTargetApplication.fields);
   const unchangedPrimary = identityOnly ? null : bindUnchangedReviewedPrimary({ native: loaded, row, accepted,
     patch, question, final, canonicalBefore, canonicalAfter, proposalFinalization });
   if (unchangedPrimary) Object.assign(accepted, unchangedPrimary.fields);
@@ -354,6 +359,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(nativeFamilyCourseTransport ? { nativeFamilyCourseTransport: nativeFamilyCourseTransport.proof } : {}),
     ...(currentDefinitionApplication ? { currentDefinitionApplication: currentDefinitionApplication.proof } : {}),
     ...(prerequisiteExistingApplication ? { prerequisiteExistingApplication: prerequisiteExistingApplication.proof } : {}),
+    ...(currentTargetApplication ? { currentTargetApplication: currentTargetApplication.proof } : {}),
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
