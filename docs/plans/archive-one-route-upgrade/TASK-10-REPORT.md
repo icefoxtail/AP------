@@ -1854,3 +1854,11 @@
 
 ### 추가 체크포인트: 중2 2학기 중간
 - 연향·왕운 2시험지 48문항 추가 PICK 48, check PASS 44 / PT_ONLY 2 / OUT_OF_CANDIDATES 2. C 커밋 `7c281ec58d932a67fbc32da3d61faceda9cad3a2`, 원격 확인. 중2 원본 누적 93시험지 2,216문항, TASK10 중등 원격 총계 304시험지 7,254문항.
+
+
+### 재승인 후 결과 저장
+- 중3 원본 2mid 5시험지 117문항: C `28d96082a7f268e02ecbdb1cf2c7b74c404f3f98`. 18 연향중 1번은 기존 유형값 노출을 발견해 해당 담당자가 판정하지 않고 별도 담당자가 독립 판정 후 반영. 원격 확인, 나머지 35시험지는 계속 진행.
+- 중2 원본 2final 6시험지 142문항: PICK 76 / NEW_KEY 66 / HOLD 0. check PASS 39 / PT_ONLY 17 / TOOL_ERROR 86. C `15377815d6bfb5489e3684d36cb839071b07bd86` 원격 확인.
+- 중2 원본 2mid 이수·향림 2시험지 48문항 추가: PICK 37 / NEW_KEY 11, check PASS 34 / PT_ONLY 2 / OUT_OF_CANDIDATES 1 / TOOL_ERROR 11. C `ae3d86665dca6bf8f4fb5ccf2ec9525b783b4595` 원격 확인.
+- 중1 유사 2mid 12시험지 287문항 완료: PICK 276 / NEW_KEY 11 / HOLD 0. 두 독립 담당자의 193+94행을 UID 중복 없이 통합한 C `a1b679eb0a338e614cafb94ef81aec3e9ec95fe6` 원격 확인. 원문의심은 결과표 note에 기록.
+- 위 결과를 포함한 TASK10 중등 원격 누적 329시험지 7,848문항. 원본·정본·main 변경 없음.
