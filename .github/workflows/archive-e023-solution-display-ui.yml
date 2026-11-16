@@ -1,0 +1,50 @@
+name: Archive E023 Solution Display UI Evidence
+
+on:
+  push:
+    branches: ['review-reference/e023-solution-current-ui-20261116']
+    paths:
+      - '.github/workflows/archive-e023-solution-display-ui.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  solution-ui:
+    name: Exact six E023 solution renderers in current student UI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify the closed six-item solution capture contract
+        run: node --test tests/archive-e023-solution-display-ui.test.js
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/e023-solution-ui-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture exact original solution scroll tiles
+        env:
+          ARCHIVE_E023_SOLUTION_UI_EXPECTED_SHA: ${{ github.sha }}
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/e023-solution-ui-browser/node_modules
+        run: node tools/check-e023-solution-display-browser.cjs --output "$RUNNER_TEMP/e023-solution-current-ui"
+      - name: Preserve original solution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e023-solution-current-ui-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/e023-solution-current-ui/
+          if-no-files-found: warn
+          retention-days: 14
