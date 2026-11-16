@@ -231,4 +231,182 @@ async function captureQ15Tiles(page, target, file, item) {
     compositeImageCreated: false } };
 }
 
-module.exports = { UID, BROWSER_SCOPE, assertQ15Binding, assertQ15Preflight, assertQ15Topology, measureQ15Capture, documentQ15Frame, captureQ15Tiles };
+// E048 Q24 mobile has a real empty answer-box with height zero. Its content is
+// measured as real text ranges, generated math atoms and the one pinned image.
+// The empty box is recorded separately and never counted as a visible rectangle.
+const Q24_UID = 'qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad';
+const Q24_WHOLE = '6af32349e8c99b6a75b05aae09dec93eb95cf45b28399e1cfc5d897494440d7a';
+const Q24_SOURCE = Object.freeze({path:'archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js',
+  gitBlobSha1:'4a20adbce9e5a7f07744143cef611d453e454250',sha256:'bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b',bytes:40797});
+const Q24_ASSET = Object.freeze({path:'archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg',
+  gitBlobSha1:'e77c366e63ffa891cb53ccd3b8b334e4c541a57a',sha256:'2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0',bytes:3555});
+const Q24_BROWSER_SCOPE = Object.freeze({ordinal:24,assetPath:Q24_ASSET.path,width:390,height:844,choices:0});
+function assertQ24Binding(item,viewport){
+  assert(item&&item.key==='E048-Q24'&&item.questionUid===Q24_UID&&item.sourceOrdinal===24&&item.questionSha256===Q24_WHOLE,'UI_Q24_SCOPE');
+  assert(viewport&&viewport.name==='mobile'&&viewport.width===390&&viewport.height===844,'UI_Q24_VIEWPORT');
+  for(const[name,expected]of[['sourceRef',Q24_SOURCE],['assetRef',Q24_ASSET]]){
+    assert(item[name],'UI_Q24_SCOPE');for(const key of Object.keys(expected))assert.equal(item[name][key],expected[key],'UI_Q24_SCOPE');
+  }
+  return true;
+}
+function assertQ24Preflight(question,item){
+  assert(Array.isArray(question?.choices)&&question.choices.length===0&&question.choicesEmbeddedInImage!==true&&
+    question.sourcePayload?.choicesEmbeddedInImage!==true&&!question.image,'UI_Q24_SUBJECTIVE_SCOPE');
+  assert.equal(sha256(stable(question)),Q24_WHOLE,'UI_Q24_WHOLE_QUESTION');
+  return assertQ24Binding({...item,sourceRef:{path:item.sourcePath,gitBlobSha1:item.sourceGitBlobSha1,sha256:item.sourceSha256,bytes:item.sourceBytes},
+    assetRef:{path:item.assetPath,gitBlobSha1:item.assetGitBlobSha1,sha256:item.assetSha256,bytes:item.assetBytes}},
+    {name:'mobile',width:390,height:844});
+}
+function assertQ24Topology(s){
+  assert(s&&typeof s==='object'&&!Array.isArray(s),'UI_Q24_SURFACE_REQUIRED');
+  assert.deepEqual(Object.keys(s).sort(),['schemaVersion','kind','sourceOrdinal','viewportWidth','viewportHeight','outerElementCount','numberCount','contentCount',
+    'answerBoxCount','answerBoxHeight','emptyAnswerBox','choicesCount','imageCount','semanticChildCount','contentTextNodes','contentTextRanges','contentMathAtoms',
+    'contentImageAtoms','nonemptyOutsideNodes','nestedQuestionCount','targetInsideContainer'].sort(),'UI_Q24_SURFACE_KEYS');
+  assert(s.schemaVersion==='archive-m2s1-q24-mobile-native-surface-v1'&&s.kind==='NUMBER_AND_ALL_CONTENT_ATOMS_WITH_EMPTY_ANSWER_BOX'&&
+    s.sourceOrdinal===24&&s.viewportWidth===390&&s.viewportHeight===844,'UI_Q24_SURFACE_SCOPE');
+  assert(s.outerElementCount===3&&s.numberCount===1&&s.contentCount===1&&s.answerBoxCount===1&&s.answerBoxHeight===0&&s.emptyAnswerBox===true&&
+    s.choicesCount===0&&s.imageCount===1&&s.contentImageAtoms===1&&s.contentMathAtoms===3&&s.nonemptyOutsideNodes===0&&s.nestedQuestionCount===0&&s.targetInsideContainer===true,'UI_Q24_SURFACE_COMPLETENESS');
+  assert([s.semanticChildCount,s.contentTextNodes,s.contentTextRanges,s.contentMathAtoms].every(n=>Number.isSafeInteger(n)&&n>=0)&&
+    s.contentTextNodes>0&&s.contentTextRanges>=s.contentTextNodes&&s.semanticChildCount===1+s.contentTextRanges+s.contentMathAtoms+s.contentImageAtoms&&
+    s.semanticChildCount>=3,'UI_Q24_CONTENT_ACCOUNTING');
+  return s;
+}
+
+async function measureQ24Capture(image,scope){
+  const need=(ok,code)=>{if(!ok)throw new Error(code);};
+  need(scope&&scope.ordinal===24&&scope.width===390&&scope.height===844&&scope.choices===0&&typeof scope.assetPath==='string','UI_Q24_SCOPE');
+  need(innerWidth===390&&innerHeight===844,'UI_Q24_VIEWPORT');
+  const box=image.closest('.q-box');
+  need(box&&!box.classList.contains('ap-equal-slot')&&box.querySelectorAll('.ap-slot-content').length===0,'UI_Q24_DIRECT_TOPOLOGY');
+  const rect=e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
+  const finite=r=>r&&['x','y','width','height'].every(k=>Number.isFinite(r[k]));
+  const positive=r=>finite(r)&&r.width>0&&r.height>0;
+  const inside=(r,owner)=>positive(r)&&positive(owner)&&r.x>=owner.x-1&&r.y>=owner.y-1&&r.x+r.width<=owner.x+owner.width+1&&r.y+r.height<=owner.y+owner.height+1;
+  const shown=e=>{const s=getComputedStyle(e);return s.display!=='none'&&s.visibility!=='hidden'&&s.visibility!=='collapse'&&Number(s.opacity)!==0;};
+  const visible=e=>shown(e)&&positive(rect(e));
+  const visibleWithin=e=>{for(let n=e;n&&box.contains(n);n=n.parentElement)if(!visible(n))return false;return Boolean(e&&box.contains(e));};
+  need(box.children.length===3,'UI_Q24_OUTER_THREE');
+  const[number,content,answer]=box.children;
+  need(number.matches('.q-num')&&content.matches('.q-content')&&answer.matches('.answer-box')&&
+    box.querySelectorAll('.q-num').length===1&&box.querySelectorAll('.q-content').length===1&&box.querySelectorAll('.answer-box').length===1&&
+    box.querySelectorAll('.q-box').length===0&&box.querySelectorAll('.choices,.choice-item').length===0,'UI_Q24_ROLE_TOPOLOGY');
+  for(const node of box.childNodes){
+    if(node.nodeType===Node.ELEMENT_NODE)need([number,content,answer].includes(node),'UI_Q24_EXTRA_ELEMENT');
+    else if(node.nodeType===Node.TEXT_NODE)need(!node.textContent.trim(),'UI_Q24_OUTSIDE_TEXT');
+    else need(node.nodeType===Node.COMMENT_NODE,'UI_Q24_EXTRA_NODE');
+  }
+  need(number.children.length===0&&number.textContent.trim()==='24.','UI_Q24_VISIBLE_ORDINAL');
+  // These counts are from the byte-bound 106a failure observation, not inferred
+  // from a screenshot. Every such node is still read and measured below.
+  need(content.children.length===8&&[...content.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE&&Boolean(n.textContent.trim())).length===6,'UI_Q24_CONTENT_TOPOLOGY');
+  need(content.contains(image)&&image.tagName==='IMG'&&box.querySelectorAll('img').length===1&&!image.hasAttribute('srcset'),'UI_Q24_IMAGE_ROLE');
+  const expectedUrl='https://img.wangjiedu.com/exams/images/'+scope.assetPath.slice('archive/assets/images/'.length).split('/').map(encodeURIComponent).join('/')+'?v=20261014.1';
+  const imageUrl=new URL(image.currentSrc||image.src,document.baseURI);
+  need(imageUrl.href===expectedUrl&&(image.currentSrc||image.src)===expectedUrl&&image.src===expectedUrl,'UI_Q24_IMAGE_PATH');
+  need(image.complete&&image.naturalWidth>0&&image.naturalHeight>0,'UI_Q24_IMAGE_READY');
+  const question=rect(box),contentRect=rect(content),answerRect=rect(answer);
+  for(const e of[box,number,content,image])need(visibleWithin(e),'UI_Q24_REQUIRED_ELEMENT_HIDDEN');
+  need([number,content,image].every(e=>inside(rect(e),question))&&inside(rect(image),contentRect),'UI_Q24_ROLE_CLIPPED');
+  need(answer.children.length===0&&!answer.textContent.trim()&&[...answer.childNodes].every(n=>
+    n.nodeType===Node.COMMENT_NODE||n.nodeType===Node.TEXT_NODE&&!n.textContent.trim()),'UI_Q24_ANSWER_NOT_EMPTY');
+  need(shown(answer)&&!answer.hasAttribute('hidden')&&answer.getAttribute?.('aria-hidden')!=='true'&&finite(answerRect)&&answerRect.width>0&&answerRect.height===0,'UI_Q24_EMPTY_ANSWER_GEOMETRY');
+  need(answerRect.x>=question.x-1&&answerRect.x+answerRect.width<=question.x+question.width+1&&
+    answerRect.y>=contentRect.y+contentRect.height-1&&answerRect.y<=question.y+question.height+1,'UI_Q24_EMPTY_ANSWER_GEOMETRY');
+  const children=[rect(number)],seen=new Set();let contentTextNodes=0,contentTextRanges=0,contentMathAtoms=0,contentImageAtoms=0;
+  const add=r=>{need(inside(r,contentRect)&&inside(r,question),'UI_Q24_CONTENT_RANGE');
+    need(!children.some(p=>Math.abs(p.x-r.x)<0.01&&Math.abs(p.y-r.y)<0.01&&Math.abs(p.width-r.width)<0.01&&Math.abs(p.height-r.height)<0.01),'UI_Q24_DUPLICATE_ATOM');
+    children.push({x:r.x,y:r.y,width:r.width,height:r.height});};
+  const walk=node=>{
+    need(!seen.has(node),'UI_Q24_DUPLICATE_NODE');seen.add(node);
+    if(node.nodeType===Node.TEXT_NODE){
+      if(!node.textContent.trim())return;
+      need(visibleWithin(node.parentElement),'UI_Q24_CONTENT_HIDDEN');
+      const range=document.createRange();range.selectNodeContents(node);const spans=[...range.getClientRects()].filter(positive);
+      need(spans.length>0,'UI_Q24_CONTENT_RANGE');for(const span of spans)add(span);
+      contentTextNodes++;contentTextRanges+=spans.length;return;
+    }
+    if(node.nodeType===Node.COMMENT_NODE)return;
+    need(node.nodeType===Node.ELEMENT_NODE,'UI_Q24_CONTENT_NODE');
+    need(!node.hasAttribute('hidden')&&node.getAttribute?.('aria-hidden')!=='true','UI_Q24_CONTENT_HIDDEN');
+    if(node===image){need(visibleWithin(node),'UI_Q24_CONTENT_HIDDEN');add(rect(node));contentImageAtoms++;return;}
+    if(node.tagName==='MJX-CONTAINER'){
+      need(visibleWithin(node)&&inside(rect(node),contentRect)&&node.querySelectorAll('script,iframe,object,embed,foreignObject,img,mjx-merror,[data-mjx-error]').length===0,'UI_Q24_MATH_ATOM');
+      add(rect(node));contentMathAtoms++;return;
+    }
+    need(['SPAN','B','STRONG','I','EM','U','SUB','SUP','BR'].includes(node.tagName),'UI_Q24_CONTENT_ELEMENT');
+    if(node.tagName==='BR'){need(node.childNodes.length===0&&shown(node),'UI_Q24_BREAK_NODE');return;}
+    need(visibleWithin(node)&&inside(rect(node),contentRect),'UI_Q24_CONTENT_HIDDEN');
+    for(const child of node.childNodes)walk(child);
+  };
+  for(const node of content.childNodes)walk(node);
+  need(contentTextNodes>0&&contentTextRanges>=contentTextNodes&&contentMathAtoms===3&&contentImageAtoms===1&&children.length===1+contentTextRanges+contentMathAtoms+contentImageAtoms,'UI_Q24_CONTENT_ACCOUNTING');
+  const surface={schemaVersion:'archive-m2s1-q24-mobile-native-surface-v1',kind:'NUMBER_AND_ALL_CONTENT_ATOMS_WITH_EMPTY_ANSWER_BOX',
+    sourceOrdinal:24,viewportWidth:390,viewportHeight:844,outerElementCount:box.children.length,numberCount:1,contentCount:1,answerBoxCount:1,
+    answerBoxHeight:answerRect.height,emptyAnswerBox:true,choicesCount:0,imageCount:box.querySelectorAll('img').length,semanticChildCount:children.length,
+    contentTextNodes,contentTextRanges,contentMathAtoms,contentImageAtoms,nonemptyOutsideNodes:0,nestedQuestionCount:box.querySelectorAll('.q-box').length,targetInsideContainer:content.contains(image)};
+  const obstructions=[...document.querySelectorAll('body *')].filter(e=>!box.contains(e)&&!e.contains(box)&&['fixed','sticky'].includes(getComputedStyle(e).position)&&visible(e)).map(rect)
+    .filter(r=>r.x<innerWidth&&r.x+r.width>0&&r.y<innerHeight&&r.y+r.height>0);
+  const panel=document.getElementById('ap-archive-render-feedback'),digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(box.outerHTML));
+  return{surface,question,children,image:rect(image),emptyAnswerBox:answerRect,viewport:{width:innerWidth,height:innerHeight},scroll:{x:scrollX,y:scrollY},
+    obstructions,feedbackIdle:!panel||panel.hidden||!visible(panel),readiness:JSON.parse(document.documentElement.dataset.apPrintReadiness||'{}').state,
+    solutionNodes:document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .sol-ans,#print-area .sol-exp,#print-area .ans-v').length,
+    questionNumber:number.textContent.trim(),mandatoryChildrenVisible:true,
+    domSha256:[...new Uint8Array(digest)].map(byte=>byte.toString(16).padStart(2,'0')).join('')};
+}
+function documentQ24Frame(frame){
+  assertQ24Topology(frame.surface);assert.equal(frame.mandatoryChildrenVisible,true,'UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
+  assert(frame.scroll&&Number.isFinite(frame.scroll.x)&&Number.isFinite(frame.scroll.y),'UI_CAPTURE_SCROLL');
+  const documentRect=r=>{checkedRect(r);return{x:r.x+frame.scroll.x,y:r.y+frame.scroll.y,width:r.width,height:r.height};};
+  const e=frame.emptyAnswerBox;assert(e&&['x','y','width','height'].every(k=>Number.isFinite(e[k]))&&e.width>0&&e.height===0,'UI_Q24_EMPTY_ANSWER_GEOMETRY');
+  return{surface:frame.surface,question:documentRect(frame.question),content:documentRect(problemContentClip(frame)),children:frame.children.map(documentRect),
+    image:documentRect(frame.image),emptyAnswerBox:{x:e.x+frame.scroll.x,y:e.y+frame.scroll.y,width:e.width,height:0},viewport:frame.viewport,questionNumber:frame.questionNumber};
+}
+
+async function captureQ24Tiles(page, target, file, item, viewport) {
+  assertQ24Binding(item, viewport);
+  try {
+    await page.waitForFunction(() => {
+      const panel = document.getElementById('ap-archive-render-feedback');
+      return !panel || panel.hidden || getComputedStyle(panel).display === 'none';
+    }, null, { timeout: 15000 });
+  } catch { throw new Error('UI_RENDER_FEEDBACK_NOT_IDLE'); }
+  let frame = await target.evaluate(measureQ24Capture, Q24_BROWSER_SCOPE);
+  assert(frame.mandatoryChildrenVisible === true, 'UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
+  const original = documentQ24Frame(frame), originalDomSha256 = frame.domSha256, scrollBefore = frame.scroll;
+  const plan = planProblemTiles(frame), tiles = [];
+  for (const tile of plan.tiles) {
+    let scrollOperations = 0;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const step = planProblemTileScroll(frame, tile);
+      if (Math.abs(step.scrollByY) < 0.5) break;
+      await page.evaluate(delta => window.scrollBy({ top: delta, left: 0, behavior: 'instant' }), step.scrollByY);
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      scrollOperations++; frame = await target.evaluate(measureQ24Capture, Q24_BROWSER_SCOPE);
+    }
+    assert.equal(frame.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_SCROLL');
+    assert.deepEqual(documentQ24Frame(frame), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const clip = assertProblemTileCapture(frame, tile), hits = await target.evaluate(inspectCaptureHits, clip);
+    assert(hits.samples > 0 && hits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+    const tileFile = file.replace(/\.png$/, '') + `-tile-${String(tile.tileIndex).padStart(2, '0')}.png`;
+    await page.screenshot({ path: tileFile, clip, fullPage: false, caret: 'initial', timeout: 15000 });
+    const after = await target.evaluate(measureQ24Capture, Q24_BROWSER_SCOPE);
+    assert.deepEqual(assertProblemTileCapture(after, tile), clip, 'UI_CAPTURE_GEOMETRY_CHANGED');
+    assert.deepEqual(after.scroll, frame.scroll, 'UI_CAPTURE_SCROLLED');
+    assert.equal(after.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE');
+    assert.deepEqual(documentQ24Frame(after), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const afterHits = await target.evaluate(inspectCaptureHits, clip);
+    assert(afterHits.samples > 0 && afterHits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+    tiles.push({ ...tile, filename: path.basename(tileFile), clip, scroll: after.scroll, scrollOperations,
+      feedbackIdle: true, obstructionsIntersectingClip: 0, hitTestSamples: hits.samples + afterHits.samples,
+      foreignContentHits: 0, domSha256: originalDomSha256 });
+    frame = after;
+  }
+  return { surface: original.surface, capture: { schemaVersion: TILE_SCHEMA, method: 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES', tileLimit: TILE_LIMIT,
+    overlapCssPixels: TILE_OVERLAP, tileCount: tiles.length, content: original.content, question: original.question,
+    viewport: original.viewport, visibleChildren: original.children.length, coverage: assertTileCoverage(original.content.height, tiles),
+    tiles, scrollBefore, scrollAfter: frame.scroll, scrollOperations: tiles.reduce((sum, row) => sum + row.scrollOperations, 0),
+    domSha256: originalDomSha256, feedbackIdle: true, foreignContentHits: 0, cssWrites: 0, domWrites: 0, viewportChanges: 0,
+    compositeImageCreated: false } };
+}
+
+module.exports = { UID, BROWSER_SCOPE, assertQ15Binding, assertQ15Preflight, assertQ15Topology, measureQ15Capture, documentQ15Frame, captureQ15Tiles, Q24_UID, Q24_BROWSER_SCOPE, assertQ24Binding, assertQ24Preflight, assertQ24Topology, measureQ24Capture, documentQ24Frame, captureQ24Tiles };

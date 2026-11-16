@@ -357,3 +357,135 @@ for(const[name,alter]of[
  await assert.rejects(H.captureSharedWithDiagnostics(f.page,{evaluate:async()=>{observations++;}},'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
  assert.equal(observations,0);assert.equal(rows.length,0);assert.equal(f.state.screenshots.length,0);
 });
+
+// The mobile Q24 reader measures actual atoms and preserves the empty answer
+// slot as empty. This synthetic DOM is not an actual Chrome/visual approval.
+const q24Manifest=manifest.items.find(r=>r.key==='E048-Q24'),mobile={name:'mobile',width:390,height:844};
+function q24Binding(){const r=q24Manifest;return{key:r.key,questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,questionSha256:r.questionSha256,
+ sourceRef:{path:r.sourcePath,gitBlobSha1:r.sourceGitBlobSha1,sha256:r.sourceSha256,bytes:r.sourceBytes},
+ assetRef:{path:r.assetPath,gitBlobSha1:r.assetGitBlobSha1,sha256:r.assetSha256,bytes:r.assetBytes}};}
+function q24Dom(){
+ const f=q15Dom();f.num.childNodes[0].textContent='24.';f.content.childNodes=[];
+ f.image.src='https://img.wangjiedu.com/exams/images/'+q24Manifest.assetPath.slice('archive/assets/images/'.length).split('/').map(encodeURIComponent).join('/')+'?v=20261014.1';
+ f.image.currentSrc=f.image.src;f.image.r=f.rect(30,160,340,200);
+ const texts=[],maths=[],breaks=[];
+ function text(x,y,width){const t=new f.TextNode('private synthetic Q24 atom '+texts.length);t.textRects=[f.rect(x,y,width,20)];texts.push(t);return t;}
+ function math(x,y){const n=new f.Element('mjx-container','',f.rect(x,y,40,20)),a=new f.Element('mjx-assistive-mml');a.style.visibility='hidden';a.append(new f.TextNode('private assistive formula'));n.append(a);maths.push(n);return n;}
+ function br(){const n=new f.Element('br');breaks.push(n);return n;}
+ f.content.append(text(20,65,80),math(110,65),text(155,65,180),br(),text(20,110,80),math(110,110),text(155,110,180),br(),f.image,br(),text(20,400,80),math(110,400),text(155,400,180),br());
+ const answer=new f.Element('div','answer-box',f.rect(20,580,360,0));f.box.append(answer);
+ f.document.createRange=()=>{let n;return{selectNodeContents:x=>{n=x;},getClientRects:()=>
+  n.textRects?n.textRects.map(r=>({...r,x:r.x-f.state.scrollX,y:r.y-f.state.scrollY})):[n.parentElement.getBoundingClientRect()]};};
+ return{...f,texts,maths,breaks,answer,measure:()=>f.target.evaluate(Q15.measureQ24Capture,Q15.Q24_BROWSER_SCOPE)};
+}
+test('Q24 native fixed binding and route are limited to one exact mobile viewport',()=>{
+ const b=q24Binding();assert.equal(Q15.assertQ24Binding(b,mobile),true);assert.equal(H.surfaceRoute(b,mobile),'Q24_MOBILE_NATIVE_ATOMS');
+ assert.equal(H.surfaceRoute(b,{name:'desktop',width:1365,height:1000}),'SHARED_SURFACE');
+ for(const item of manifest.items.filter(r=>![Q15.UID,Q15.Q24_UID].includes(r.questionUid)))assert.equal(H.surfaceRoute(item,mobile),'SHARED_SURFACE');
+ assert.equal(H.surfaceRoute(q15Binding(),mobile),'Q15_EMBEDDED_CHOICES');
+});
+for(const[name,alter]of[
+ ['outside UID',b=>b.questionUid=Q15.UID],['outside key',b=>b.key='E045-Q24'],['other ordinal',b=>b.sourceOrdinal=15],
+ ['whole drift',b=>b.questionSha256='0'.repeat(64)],['source path drift',b=>b.sourceRef.path='archive/exams/other.js'],
+ ['source Git drift',b=>b.sourceRef.gitBlobSha1='0'.repeat(40)],['source raw drift',b=>b.sourceRef.sha256='0'.repeat(64)],
+ ['source length drift',b=>b.sourceRef.bytes++],['asset path drift',b=>b.assetRef.path='archive/assets/other.svg'],
+ ['asset Git drift',b=>b.assetRef.gitBlobSha1='0'.repeat(40)],['asset raw drift',b=>b.assetRef.sha256='0'.repeat(64)]
+])test('Q24 native binding refuses '+name,()=>{const b=q24Binding();alter(b);assert.throws(()=>Q15.assertQ24Binding(b,mobile),/UI_Q24_SCOPE/);});
+for(const[name,viewport]of[['desktop',{name:'desktop',width:1365,height:1000}],['different width',{...mobile,width:391}],['different height',{...mobile,height:845}]])
+ test('Q24 native binding refuses '+name+' viewport',()=>assert.throws(()=>Q15.assertQ24Binding(q24Binding(),viewport),/UI_Q24_VIEWPORT/));
+for(const[name,q]of[['choices added',{choices:['synthetic']}],['embedded flag',{choices:[],choicesEmbeddedInImage:true}],
+ ['nested embedded flag',{choices:[],sourcePayload:{choicesEmbeddedInImage:true}}],['top image added',{choices:[],image:'other.svg'}],['whole object changed',{choices:[]}]])
+ test('Q24 preflight refuses '+name,()=>assert.throws(()=>Q15.assertQ24Preflight(q,q24Manifest),/UI_Q24_(SUBJECTIVE_SCOPE|WHOLE_QUESTION)/));
+test('Q24 native reader accounts for every real text range math atom and image without parent or empty-box duplication',async()=>{
+ const f=q24Dom(),frame=normalize(await f.measure());Q15.assertQ24Topology(frame.surface);
+ assert.equal(frame.surface.outerElementCount,3);assert.equal(frame.surface.answerBoxHeight,0);assert.equal(frame.surface.semanticChildCount,11);
+ assert.equal(frame.surface.contentTextNodes,6);assert.equal(frame.surface.contentTextRanges,6);assert.equal(frame.surface.contentMathAtoms,3);assert.equal(frame.surface.contentImageAtoms,1);
+ assert.equal(frame.children.length,11);assert.deepEqual(frame.children[0],f.num.r);assert.deepEqual(frame.emptyAnswerBox,f.answer.r);
+ assert(!frame.children.some(r=>stable(r)===stable(f.content.r)||stable(r)===stable(f.answer.r)));
+ assert.equal(new Set(frame.children.map(stable)).size,frame.children.length);assert.equal(f.state.screenshots.length,0);
+ const serialized=JSON.stringify(frame);assert(!serialized.includes('private synthetic'));assert(!serialized.includes('private assistive'));
+});
+test('Q24 native reader retains each line fragment of a wrapped nonempty text node',async()=>{
+ const f=q24Dom();f.texts[5].textRects=[f.rect(155,400,80,20),f.rect(20,430,100,20)];
+ const frame=await f.measure();assert.equal(frame.surface.contentTextNodes,6);assert.equal(frame.surface.contentTextRanges,7);assert.equal(frame.children.length,12);
+});
+for(const[name,alter,code]of[
+ ['extra outer role',f=>f.box.append(new f.Element('div')),/UI_Q24_OUTER_THREE/],
+ ['outside text',f=>f.box.append(new f.TextNode('uncaptured')),/UI_Q24_OUTSIDE_TEXT/],
+ ['duplicate number',f=>f.content.classes+=' q-num',/UI_Q24_ROLE_TOPOLOGY/],
+ ['nested question',f=>f.maths[0].classes='q-box',/UI_Q24_ROLE_TOPOLOGY/],
+ ['choice element',f=>f.breaks[0].classes='choices',/UI_Q24_ROLE_TOPOLOGY/],
+ ['wrong ordinal',f=>f.num.childNodes[0].textContent='25.',/UI_Q24_VISIBLE_ORDINAL/],
+ ['extra direct text',f=>f.content.append(new f.TextNode('uncaptured')),/UI_Q24_CONTENT_TOPOLOGY/],
+ ['missing direct text',f=>f.texts[0].textContent='',/UI_Q24_CONTENT_TOPOLOGY/],
+ ['extra direct element',f=>f.content.append(new f.Element('span')),/UI_Q24_CONTENT_TOPOLOGY/],
+ ['unknown content element',f=>f.breaks[0].tagName='IFRAME',/UI_Q24_CONTENT_ELEMENT/],
+ ['unknown content node',f=>f.content.childNodes.push({nodeType:7,parentElement:f.content}),/UI_Q24_CONTENT_NODE/],
+ ['hidden number',f=>f.num.style.display='none',/UI_Q24_REQUIRED_ELEMENT_HIDDEN/],
+ ['hidden content',f=>f.content.style.visibility='hidden',/UI_Q24_REQUIRED_ELEMENT_HIDDEN/],
+ ['hidden nested text',f=>{const n=f.breaks[0];n.tagName='SPAN';n.style.visibility='hidden';n.append(new f.TextNode('hidden'));},/UI_Q24_CONTENT_HIDDEN/],
+ ['hidden attribute',f=>f.maths[0].attrs.hidden='',/UI_Q24_CONTENT_HIDDEN/],
+ ['hidden math',f=>f.maths[0].style.opacity='0',/UI_Q24_MATH_ATOM/],
+ ['active math descendant',f=>f.maths[0].append(new f.Element('script')),/UI_Q24_MATH_ATOM/],
+ ['missing generated math atom',f=>{const m=f.maths[0];m.tagName='BR';m.childNodes=[];},/UI_Q24_CONTENT_ACCOUNTING/],
+ ['extra generated math atom',f=>{const m=f.breaks[0];m.tagName='MJX-CONTAINER';m.r=f.rect(20,140,50,15);},/UI_Q24_CONTENT_ACCOUNTING/],
+ ['empty text range',f=>f.texts[0].textRects=[],/UI_Q24_CONTENT_RANGE/],
+ ['outside text range',f=>f.texts[0].textRects=[f.rect(0,65,80,20)],/UI_Q24_CONTENT_RANGE/],
+ ['duplicate atom rectangle',f=>f.texts[1].textRects=f.texts[0].textRects,/UI_Q24_DUPLICATE_ATOM/],
+ ['duplicate atom node',f=>{const i=f.content.childNodes.indexOf(f.breaks[0]);f.content.childNodes[i]=f.maths[0];},/UI_Q24_DUPLICATE_NODE/],
+ ['nonempty break',f=>f.breaks[0].append(new f.TextNode('hidden')),/UI_Q24_BREAK_NODE/],
+ ['answer text added',f=>f.answer.append(new f.TextNode('must not ignore')),/UI_Q24_ANSWER_NOT_EMPTY/],
+ ['answer element added',f=>f.answer.append(new f.Element('span')),/UI_Q24_ANSWER_NOT_EMPTY/],
+ ['answer hidden by CSS',f=>f.answer.style.display='none',/UI_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['answer hidden attribute',f=>f.answer.attrs.hidden='',/UI_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['answer positive height',f=>f.answer.r.height=1,/UI_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['answer outside question',f=>f.answer.r.x=-10,/UI_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['wrong image URL',f=>{f.image.src=f.image.currentSrc='https://img.wangjiedu.com/exams/images/other.svg?v=20261014.1';},/UI_Q24_IMAGE_PATH/],
+ ['unversioned image URL',f=>{f.image.src=f.image.currentSrc=f.image.src.split('?')[0];},/UI_Q24_IMAGE_PATH/],
+ ['different loaded image',f=>f.image.currentSrc+='&other=1',/UI_Q24_IMAGE_PATH/],
+ ['srcset alternate',f=>f.image.attrs.srcset='other.svg 2x',/UI_Q24_IMAGE_ROLE/],
+ ['incomplete image',f=>f.image.complete=false,/UI_Q24_IMAGE_READY/],
+ ['image outside content',f=>f.image.r.x=0,/UI_Q24_ROLE_CLIPPED/],
+ ['different actual viewport',f=>f.context.innerWidth=391,/UI_Q24_VIEWPORT/]
+])test('Q24 native reader refuses '+name,async()=>{const f=q24Dom();alter(f);await assert.rejects(f.measure,code);assert.equal(f.state.screenshots.length,0);});
+test('Q24 native synthetic capture preserves original tiles hit tests and zero DOM writes',async()=>{
+ const f=q24Dom(),r=await Q15.captureQ24Tiles(f.page,f.target,'/tmp/synthetic-q24.png',q24Binding(),mobile);
+ assert.equal(r.capture.coverage.complete,true);assert.equal(r.capture.visibleChildren,11);assert.equal(r.surface.answerBoxHeight,0);
+ assert.equal(r.capture.foreignContentHits,0);assert.equal(r.capture.domWrites,0);assert.equal(r.capture.cssWrites,0);assert.equal(r.capture.viewportChanges,0);
+ assert.equal(r.capture.compositeImageCreated,false);assert.equal(f.state.screenshots[0].fullPage,false);assert.equal(f.state.screenshots[0].caret,'initial');
+});
+test('Q24 native scroll rejects new content in the initially empty answer-box',async()=>{
+ const f=q24Dom();f.state.scrollY=-1000;f.state.onScroll=()=>f.answer.append(new f.TextNode('late change'));
+ await assert.rejects(Q15.captureQ24Tiles(f.page,f.target,'/tmp/synthetic-q24.png',q24Binding(),mobile),/UI_Q24_ANSWER_NOT_EMPTY/);assert.equal(f.state.screenshots.length,0);
+});
+test('Q24 native postcapture text mutation remains fatal even when all rectangles are unchanged',async()=>{
+ const f=q24Dom();f.state.onScreenshot=()=>f.texts[0].textContent+='changed';
+ await assert.rejects(Q15.captureQ24Tiles(f.page,f.target,'/tmp/synthetic-q24.png',q24Binding(),mobile),/UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE/);
+});
+test('Q24 native postcapture atom geometry change remains fatal',async()=>{
+ const f=q24Dom();f.state.onScreenshot=()=>f.maths[0].r.width-=1;
+ await assert.rejects(Q15.captureQ24Tiles(f.page,f.target,'/tmp/synthetic-q24.png',q24Binding(),mobile),/UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED/);
+});
+test('Q24 native postcapture empty-answer geometry is still part of the exact frame',async()=>{
+ const f=q24Dom();f.state.onScreenshot=()=>f.answer.r.y-=1;
+ await assert.rejects(Q15.captureQ24Tiles(f.page,f.target,'/tmp/synthetic-q24.png',q24Binding(),mobile),/UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED/);
+});
+test('Q24 native foreign hit and pending render readiness remain fatal',async()=>{
+ const a=q24Dom();a.state.foreignHit=true;await assert.rejects(Q15.captureQ24Tiles(a.page,a.target,'/tmp/synthetic-q24.png',q24Binding(),mobile),/UI_CAPTURE_FOREIGN_CONTENT/);
+ const b=q24Dom();b.document.documentElement.dataset.apPrintReadiness=JSON.stringify({state:'PENDING'});
+ await assert.rejects(Q15.captureQ24Tiles(b.page,b.target,'/tmp/synthetic-q24.png',q24Binding(),mobile),/UI_CAPTURE_RENDER_STATE/);
+ assert.equal(a.state.screenshots.length+b.state.screenshots.length,0);
+});
+test('Q24 native known errors are preserved while mixed unknown wrapped errors stay generic',()=>{
+ assert.equal(H.safeFailureCode(new Error('locator.evaluate: Error: UI_Q24_CONTENT_RANGE'),'FALLBACK'),'UI_Q24_CONTENT_RANGE');
+ assert.equal(H.safeFailureCode(new Error('locator.evaluate: UI_Q24_FUTURE_UNKNOWN'),'FALLBACK'),'FALLBACK');
+ assert.equal(H.safeFailureCode(new Error('UI_Q24_CONTENT_RANGE UI_Q15_IMAGE_PATH'),'FALLBACK'),'FALLBACK');
+});
+test('Q24 native failure wrapper records only diagnostics and rethrows the exact error',async()=>{
+ const f=q24Dom(),rows=[],original=new Error('locator.evaluate: Error: UI_Q24_CONTENT_RANGE'),prior=Q15.captureQ24Tiles;
+ Q15.captureQ24Tiles=async()=>{throw original;};
+ try{await assert.rejects(H.captureQ24WithDiagnostics(f.page,f.target,'/tmp/not-written.png',q24Binding(),
+  {key:'E048-Q24',questionUid:Q15.Q24_UID,sourceOrdinal:24,viewport:'mobile'},rows,{domSha256:sha(f.box.outerHTML)},mobile),e=>e===original);}
+ finally{Q15.captureQ24Tiles=prior;}
+ assert.equal(rows[0].failureCode,'UI_Q24_CONTENT_RANGE');assert.equal(rows[0].sameDomAsInitialMeasurement,true);assert.equal(f.state.screenshots.length,0);
+});
