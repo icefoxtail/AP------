@@ -123,6 +123,8 @@ async function prepareCourseFixture({ gitDir, baseCommit = BASE, modulePath = MO
 
 async function registerTests() {
   const f = await prepareCourseFixture(), bind = f.mod.bindReviewedM2NativeRpmCourse;
+  const {buildReviewedSourceBinding, reviewedSourceBindingPath} = await import(pathToFileURL(
+    path.join(path.dirname(MODULE), 'reviewed-source-binding.mjs')).href);
   test.after(() => f.close());
   for (const expression of ['window.constructor.constructor', 'console.log.constructor']) {
     test(`source VM rejects host constructor through ${expression}`, () => {
@@ -204,6 +206,158 @@ async function registerTests() {
     const c = fresh(), proof = bind(c).proof;
     c.metadata.courseKey = null; c.metadata.curriculum = null; c.metadata.curriculumKey = null; c.issuedProof = proof;
     assert.deepEqual(bind(c).proof, proof);
+  });
+  // This bounded receipt fixture models the *official post-write* view: the
+  // registrar adds curriculumKey and FINAL_QA/ACTIVE, then cold replay overlays
+  // patch.before. It deliberately retains the old empty PT/TPL in that view.
+  // The separate real-v2 bounded integration uses unchanged public requests;
+  // these tests mutate just one condition at a time without global generation.
+  let issuedSequence = 0;
+  function issuedView(item = f.items[0]) {
+    const c = f.caseFor(item);
+    c.request.schemaVersion = 'archive-reviewed-exam-meta-register-request-v2';
+    c.request.requestId = `course-issued-view-${++issuedSequence}`;
+    c.metadata.sourceArchiveFile = item.sourceArchiveFile;
+    for (const [key, value] of Object.entries({problemTypeKey: '', templateKey: '', rpmPrimaryPath: null,
+      sourceFingerprint: hash(['original-source', item.questionUid]), contentFingerprint: hash(['original-content', item.questionUid])})) {
+      c.metadata[key] = value; c.patch.before[key] = value;
+    }
+    c.patch.after.contentFingerprint = hash(c.question);
+    c.final = {...c.metadata, ...c.patch.after};
+    c.request.items = [c.patch];
+    const proof = bind(c).proof;
+    const receiptPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${c.request.requestId}.json`;
+    const sidecarPath = reviewedSourceBindingPath(c.request.requestId);
+    Object.assign(c.final, {curriculumKey: '2015', metadataApprovalType: 'FINAL_QA', metaFoundationStatus: 'ACTIVE',
+      metadataRevision: `meta-foundation:issued-test@1:exam-final_qa-v2:${c.request.requestId}`,
+      approvalEvidence: [receiptPath, sidecarPath]});
+    c.metadata = {...c.final, ...c.patch.before}; c.issuedProof = clone(proof);
+    const repair = {questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+      metadataBefore: {sourceFingerprint: c.patch.before.sourceFingerprint, contentFingerprint: c.patch.before.contentFingerprint},
+      after: {sourceFingerprint: c.final.sourceFingerprint, contentFingerprint: c.final.contentFingerprint},
+      sourceReview: {schemaVersion: 'archive-reviewed-source-reassessment-v1', questionUid: item.questionUid,
+        sourceOrdinal: item.sourceOrdinal, nativeRpmCourseTransport: clone(proof)}};
+    const receipt = {schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: c.request.requestId,
+      requestSha256: hash(c.request), sourceArchiveFile: item.sourceArchiveFile, sourceBlobSha1: c.request.expectedSourceBlobSha1,
+      sourceRawSha256: proof.currentSource.sha256, approval: clone(c.request.approval), scope: 'PARTIAL_UIDS',
+      expectedQuestionCount: item.expectedQuestionCount, partialUidCount: 1, totalQuestions: 1,
+      metadataRegistrationStatus: 'REGISTERED', registryChanges: [], appliedRecords: [clone(c.final)],
+      fingerprintRepairs: [repair], nativeParentBindings: []};
+    const write = (file, bytes) => { fs.mkdirSync(path.dirname(path.join(f.root, file)), {recursive: true});
+      fs.writeFileSync(path.join(f.root, file), bytes); };
+    const writeReceipt = () => write(receiptPath, JSON.stringify(receipt) + '\n');
+    function seal() {
+      const sidecar = buildReviewedSourceBinding({...receipt, request: c.request});
+      const bytes = Buffer.from(JSON.stringify(sidecar) + '\n');
+      write(sidecarPath, bytes); receipt.outputDigests = [{path: sidecarPath, sha256: sha(bytes)}]; writeReceipt();
+    }
+    seal();
+    return {c, proof, receipt, repair, receiptPath, sidecarPath, write, writeReceipt, seal};
+  }
+  for (const item of f.items) test(`issued registrar before-view ${item.questionUid.slice(-10)} preserves exact original course proof`, () => {
+    const x = issuedView(item), before = hash({request: x.c.request, metadata: x.c.metadata, final: x.c.final, receipt: x.receipt});
+    assert.equal(x.c.metadata.curriculumKey, '2015');
+    assert.equal(Object.hasOwn(x.c.patch.before, 'curriculumKey'), false);
+    assert.equal(x.c.metadata.problemTypeKey, '');
+    assert.equal(x.c.metadata.metadataApprovalType, 'FINAL_QA');
+    assert.deepEqual(bind(x.c).proof, x.proof);
+    assert.equal(hash({request: x.c.request, metadata: x.c.metadata, final: x.c.final, receipt: x.receipt}), before);
+  });
+  const issuedRefused = (label, change, error = /M2_NATIVE_RPM_COURSE:/) => test(label, () => {
+    const x = issuedView(); change(x); assert.throws(() => bind(x.c), error);
+  });
+  issuedRefused('issued view rejects missing helper proof', x => { delete x.c.issuedProof; });
+  issuedRefused('issued view rejects null helper proof', x => { x.c.issuedProof = null; });
+  issuedRefused('issued view rejects missing receipt', x => { fs.unlinkSync(path.join(f.root, x.receiptPath)); });
+  issuedRefused('issued view rejects missing typed sidecar', x => { fs.unlinkSync(path.join(f.root, x.sidecarPath)); });
+  issuedRefused('issued view rejects sidecar bytes changed without digest', x => { fs.appendFileSync(path.join(f.root, x.sidecarPath), ' '); });
+  issuedRefused('issued view rejects missing receipt typed course proof', x => { delete x.repair.sourceReview.nativeRpmCourseTransport; x.writeReceipt(); });
+  issuedRefused('issued view rejects altered receipt typed course proof', x => {
+    x.repair.sourceReview.nativeRpmCourseTransport.courseCarrierSha256 = '0'.repeat(64); x.seal();
+  });
+  issuedRefused('issued view rejects receipt request digest mismatch', x => { x.receipt.requestSha256 = '0'.repeat(64); x.writeReceipt(); });
+  issuedRefused('issued view rejects another selected record', x => {
+    x.receipt.appliedRecords[0].questionUid = f.items[1].questionUid; x.writeReceipt();
+  });
+  issuedRefused('issued view rejects receipt source blob mismatch', x => { x.receipt.sourceBlobSha1 = '0'.repeat(40); x.writeReceipt(); });
+  issuedRefused('issued view rejects receipt raw source mismatch', x => { x.receipt.sourceRawSha256 = '0'.repeat(64); x.writeReceipt(); });
+  issuedRefused('issued view rejects changed original fingerprint before', x => {
+    x.repair.metadataBefore.contentFingerprint = '0'.repeat(64); x.seal();
+  });
+  issuedRefused('issued view rejects changed issued fingerprint after', x => {
+    x.repair.after.contentFingerprint = '0'.repeat(64); x.seal();
+  });
+  issuedRefused('issued view rejects reconstructed metadata changed outside patch.before', x => { x.c.metadata.testOnlyExtra = true; });
+  issuedRefused('issued view rejects reconstructed original PT changed', x => { x.c.metadata.problemTypeKey = 'PT_FOREIGN'; });
+  issuedRefused('issued view rejects different request member', x => { x.c.request.items = []; });
+  for (const value of [null, '2022', undefined]) issuedRefused(`issued view rejects final derived curriculum ${String(value)}`, x => {
+    x.c.final.curriculumKey = value; x.c.metadata.curriculumKey = value;
+    x.receipt.appliedRecords = [clone(x.c.final)]; x.seal();
+  });
+  for (const key of ['metadataApprovalType', 'metaFoundationStatus', 'metadataRevision'])
+    issuedRefused(`issued view rejects missing registrar marker ${key}`, x => {
+      delete x.c.final[key]; delete x.c.metadata[key]; x.receipt.appliedRecords = [clone(x.c.final)]; x.seal();
+    });
+  issuedRefused('issued view rejects removed sidecar provenance even when receipt matches', x => {
+    x.c.final.approvalEvidence = [x.receiptPath]; x.c.metadata.approvalEvidence = [x.receiptPath];
+    x.receipt.appliedRecords = [clone(x.c.final)]; x.seal();
+  });
+  issuedRefused('issued view rejects re-sealed explicit alias after instead of registrar-only derivation', x => {
+    x.c.patch.after.curriculumKey = '2015'; x.receipt.requestSha256 = hash(x.c.request); x.seal();
+  });
+  issuedRefused('issued view rejects re-sealed explicit alias before conflict', x => {
+    x.c.patch.before.curriculumKey = '2015'; x.receipt.requestSha256 = hash(x.c.request); x.seal();
+  });
+  for (const key of ['problemTypeKey', 'templateKey', 'rpmPrimaryPath'])
+    issuedRefused(`issued view rejects re-sealed final Native ${key} conflict`, x => {
+      x.c.final[key] = null; x.c.metadata = {...x.c.final, ...x.c.patch.before};
+      x.receipt.appliedRecords = [clone(x.c.final)]; x.seal();
+    }, /M2_NATIVE_RPM_COURSE:ORIGINAL_NATIVE_AFTER_AUTHORITY_REQUIRED/);
+  issuedRefused('issued view still rejects current canonical after disagreement', x => {
+    x.c.canonicalAfter = clone(x.c.canonicalAfter); x.c.canonicalAfter.bindings = new Map();
+  }, /M2_NATIVE_RPM_COURSE:CURRENT_ACTIVE_TUPLE_OR_OWNER_CONFLICT/);
+  issuedRefused('issued view still rejects current owner scope withdrawal', x => {
+    for (const pack of x.c.canonicalBefore.packs.values()) pack.meta.standardCourses = [];
+  }, /M2_NATIVE_RPM_COURSE:CURRENT_ACTIVE_TUPLE_OR_OWNER_CONFLICT/);
+  function displayRequestView(x, keys) {
+    const schemas = {m2ProblemRenderer21Continuity: 'archive-reviewed-m2-problem21-continuity-v1',
+      e023SolutionDisplayContinuity: 'archive-m2-e023-solution-display6-continuity-v1',
+      e017RhsContinuity: 'archive-m2-e017-existing-rhs-solution-continuity-v1', unknownDisplay: 'unknown'};
+    const raw = clone(x.c.patch);
+    for (const key of keys) {
+      raw.sourceReview[key] = {schemaVersion: schemas[key], reviewCommit: NATIVE,
+        reviewRef: {path: raw.sourceReview.reviewRef.path, sha256: raw.sourceReview.reviewRef.sha256}};
+      x.repair.sourceReview[key] = {originalSourceReviewSha256: hash(['typed-comparison-view', key])};
+    }
+    x.c.request.items = [raw]; x.receipt.requestSha256 = hash(x.c.request); x.seal();
+  }
+  for (const [label, item, keys] of [
+    ['E017 public option', f.items[0], ['m2ProblemRenderer21Continuity']],
+    ['E017 existing RHS option', f.items.find(x => x.reviewPath.includes('/E017/') && x.sourceOrdinal === 2), ['e017RhsContinuity']],
+    ['E023 disjoint options', f.items.find(x => x.reviewPath.includes('/E023/')), ['m2ProblemRenderer21Continuity', 'e023SolutionDisplayContinuity']],
+  ]) test(`issued request comparison permits only central named removal: ${label}`, () => {
+    const x = issuedView(item); displayRequestView(x, keys);
+    assert.deepEqual(bind(x.c).proof, x.proof);
+    assert.deepEqual(keys.filter(key => Object.hasOwn(x.c.patch.sourceReview, key)), []);
+    assert.deepEqual(keys.filter(key => Object.hasOwn(x.c.request.items[0].sourceReview, key)), keys);
+  });
+  for (const key of ['unknownDisplay', 'e023SolutionDisplayContinuity', 'e017RhsContinuity'])
+    issuedRefused(`issued request comparison rejects foreign option removal ${key}`, x => { displayRequestView(x, [key]); },
+      /M2_NATIVE_RPM_COURSE:ISSUED_METADATA_REQUEST_VIEW_MISMATCH/);
+  issuedRefused('issued request comparison rejects null removed option', x => {
+    displayRequestView(x, ['m2ProblemRenderer21Continuity']);
+    x.c.request.items[0].sourceReview.m2ProblemRenderer21Continuity = null;
+    x.receipt.requestSha256 = hash(x.c.request); x.seal();
+  });
+  issuedRefused('issued request comparison rejects removed option without its issued typed proof', x => {
+    displayRequestView(x, ['m2ProblemRenderer21Continuity']);
+    delete x.repair.sourceReview.m2ProblemRenderer21Continuity; x.writeReceipt();
+  });
+  issuedRefused('issued request comparison rejects another changed after field', x => {
+    displayRequestView(x, ['m2ProblemRenderer21Continuity']); x.c.patch.after.standardUnitKey = 'M2-FOREIGN';
+  });
+  issuedRefused('issued request comparison rejects another changed base sourceReview field', x => {
+    displayRequestView(x, ['m2ProblemRenderer21Continuity']); x.c.patch.sourceReview.reviewCommit = BASE;
   });
   test('unrelated pack version and count advances keep current strict scope validation and issued course proof', () => {
     const c = fresh(), proof = bind(c).proof;
