@@ -82,3 +82,16 @@ test('single choice schematic renders a curve without a reference value, formula
   assert.equal(rejected.status, 'ERROR');
   assert.equal(rejected.result.code, 'MULTI_CURVE_SCHEMATIC_INVALID');
 });
+
+test('single reciprocal shape keeps the source read-off marks with the formula hidden', async () => {
+  const plan = { capability: 'multi-curve-figure-v1', caption: '속력과 시간 그래프',
+    graphPlan: { family: 'multi-curve', schematic: true, viewport: [-1, 15, -1, 9],
+      axisTickValues: { x: ['3', '6'], y: ['2', '4'] },
+      curves: [{ id: 'f', kind: 'RATIONAL', numerator: ['12', '0'], denominator: ['0', '1'],
+        domain: ['3/2', '15'], hideLabel: true }],
+      overlays: { points: [{ id: 'P', x: '3', y: '4', unnamed: true }],
+        guides: [{ id: 'g', from: 'P', axis: 'BOTH' }] } } };
+  const spec = await specOf(plan);
+  assert.equal(spec.objects.filter(object => object.kind === 'FUNCTION_GRAPH').length, 1);
+  assert.equal(spec.objects.some(object => object.id === 'curve-f-equation'), false);
+});

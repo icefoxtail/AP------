@@ -989,7 +989,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - 독립 관측기는 곡선마다 색·점선·굵기, 점근선 선 위치, 시작점 점, 가지 끝(틀에 잘린 곳 포함)을 다시 확인한다. 굵은 곡선은 다른 곡선보다 굵어야 한다.
 - 오류 코드: `MULTI_CURVE_WINDOW_REQUIRED:<id>`, `MULTI_CURVE_WINDOW_INVALID`, `MULTI_CURVE_COLOR_INVALID:<id>`, `MULTI_CURVE_WEIGHT_INVALID:<id>`, `MULTI_CURVE_STYLE_INVALID:<id>`, `MULTI_CURVE_HIDE_LABELS_INVALID:<id>`, `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `MULTI_CURVE_INVERSE_UNSUPPORTED:<id>`.
 
-보기의 지수함수 개형 한 개는 `multi-curve-figure-v1`의 `graphPlan.schematic:true`를 쓴다. `EXPONENTIAL` 곡선 하나와 `hideLabel:true`가 필요하다. 원문 개형을 정하는 증가·감소 방향과 축과 만나는 위치를 유지한다. 식이나 수치 눈금이 없는 원문에서는 `axisTickValues:{"x":[],"y":[]}`로 두고 예시 계수는 글자로 표시하지 않는다.
+문제나 보기에서 지수함수 또는 유리함수의 곡선 한 개를 식 없이 그리려면 `multi-curve-figure-v1`의 `graphPlan.schematic:true`를 쓴다. `EXPONENTIAL` 또는 `RATIONAL` 곡선 하나와 `hideLabel:true`가 필요하다. 원문 개형을 정하는 증가·감소 방향과 축과 만나는 위치를 유지한다. 식이나 수치 눈금이 없는 원문에서는 `axisTickValues:{"x":[],"y":[]}`로 두고 예시 계수는 글자로 표시하지 않는다.
 
 **가로·세로 눈금을 같게 `equalUnits` (G18b).** 유리함수(일차/일차)와 무리함수 한 개의 그림은 기본 틀이 가로·세로 눈금 길이가 다르다. `y=x` 대칭, 기울기 ±1인 직선, 정사각형·원이 중요한 풀이는 `graphPlan.equalUnits:true`를 쓴다. 가로 한 칸과 세로 한 칸이 같은 길이가 되고(관측기가 ±1px로 확인), 그림은 필요한 만큼 세로로 길어지거나(최대 640) 가로 범위가 넓어진다. `true`만 쓸 수 있고 `axisScale`·`axisSqueeze`와는 함께 못 쓴다(`EQUAL_UNITS_INVALID`). 극점·곡선 끝·원점이 한 눈금 비에서 한 칸 10px 이상, 극점 양쪽 곡선 48px 이상으로 안 담기면 `EQUAL_UNITS_WINDOW_TOO_WIDE`로 거절한다(극점이나 필요한 점을 원점 가까이로 잡거나 쓰지 않는다). 이차·다항·구간별·multi-curve는 원래 한 눈금 비다. `equalUnits`를 쓰지 않은 plan의 그림은 그대로다.
 
