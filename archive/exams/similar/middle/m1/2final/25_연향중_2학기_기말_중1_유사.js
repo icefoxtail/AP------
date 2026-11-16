@@ -400,7 +400,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직선 부분과 호 부분으로 이루어진 도형이 있다. 직선 부분은 한 변의 길이가 $6\\rm\\,cm$인 정사각형의 네 변이고, 호 부분의 길이의 합은 지름이 $6\\rm\\,cm$인 원 $2$개의 원주의 합과 같다. 이 도형의 둘레의 길이는? [5점]",
+    "content": "다음 그림과 같이 한 변의 길이가 $6\\rm\\,cm$인 정사각형을 합동인 작은 정사각형 $4$개로 나누고, 각 작은 정사각형 안에 그 한 변의 길이를 반지름으로 하는 사분원 $2$개를 그려 잎 모양을 만들었다. 잎 모양을 제외한 색칠한 부분의 둘레의 길이는? [5점]",
     "choices": [
       "$12\\pi\\rm\\,cm$",
       "$(24 + 6\\pi)\\rm\\,cm$",
@@ -410,7 +410,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "points": 5,
-    "solution": "이 도형의 둘레는 직선 선분 부분과 곡선(원호) 부분의 합으로 이루어진다.\n1단계: 직선으로 이루어진 경계의 길이는 한 변의 길이가 $6\\rm\\,cm$인 정사각형의 네 변의 길이와 같으므로\n$$\\begin{aligned}\n4 \\times 6 &= 24\\rm\\,cm\n\\end{aligned}$$\n2단계: 원호로 이루어진 경계는 지름이 $6\\rm\\,cm$인 원 $2$개의 원주의 합과 같으므로\n$$\\begin{aligned}\n2 \\times (\\pi \\times 6) &= 12\\pi\\rm\\,cm\n\\end{aligned}$$\n3단계: 따라서 구하는 도형의 둘레의 길이는 직선 부분과 원호 부분의 합이므로\n$$\\begin{aligned}\n24 + 12\\pi\\rm\\,cm\n\\end{aligned}$$\n즉, $(24 + 12\\pi)\\rm\\,cm$이다.\n정답은 ③이다.",
+    "solution": "색칠한 부분의 둘레는 직선 부분과 곡선(원호) 부분의 합으로 이루어진다.\n1단계: 직선으로 이루어진 경계는 큰 정사각형의 네 변이다. 큰 정사각형을 나누는 선분은 색칠한 부분의 안쪽에 있으므로 둘레에 포함되지 않는다. 따라서 직선 부분의 길이는\n$$\\begin{aligned}\n4 \\times 6 &= 24\\rm\\,cm\n\\end{aligned}$$\n2단계: 작은 정사각형의 한 변의 길이는 $3\\rm\\,cm$이므로 잎 모양을 이루는 사분원의 반지름은 $3\\rm\\,cm$이다. 원호로 이루어진 경계는 이 사분원의 호 $8$개이고, 사분원의 호 $4$개를 모으면 반지름이 $3\\rm\\,cm$인 원의 둘레와 같으므로 호 $8$개의 길이의 합은 반지름이 $3\\rm\\,cm$인 원 $2$개의 원주와 같다.\n$$\\begin{aligned}\n2 \\times (2\\pi \\times 3) &= 12\\pi\\rm\\,cm\n\\end{aligned}$$\n3단계: 따라서 색칠한 부분의 둘레의 길이는 직선 부분과 원호 부분의 합이므로\n$$\\begin{aligned}\n24 + 12\\pi\\rm\\,cm\n\\end{aligned}$$\n즉, $(24 + 12\\pi)\\rm\\,cm$이다.\n정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
