@@ -1,0 +1,69 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "예시 t=0일 때 길이4인 구간이 축의 위치3을 포함한다. 최솟값−2를 얻으려면 일반적으로 t≤3≤t+4여야 한다. t의 최종 범위는 표시하지 않는다.",
+  "accessibilityDescription": "예시 t=0일 때 길이4인 구간이 축의 위치3을 포함한다. 최솟값−2를 얻으려면 일반적으로 t≤3≤t+4여야 한다. t의 최종 범위는 표시하지 않는다.",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "4"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "L",
+            "value": "0"
+          },
+          {
+            "id": "T",
+            "value": "3"
+          },
+          {
+            "id": "R",
+            "value": "4"
+          }
+        ]
+      }
+    ],
+    "parameter": {
+      "name": "t",
+      "value": "0"
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $t$에 대하여 $t \\le x \\le t+4$에서 이차함수 $f(x)=x^2-6x+7$의 최솟값을 $g(t)$라고 할 때, 방정식 $g(t)=-2$를 만족시키는 모든 실수 $t$의 값의 범위를 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "움직이는 구간이 고정된 축3을 포함해야 하는 관계를 보여 최솟값 조건을 두 끝점의 부등식으로 연결한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "움직이는 구간이 고정된 축3을 포함해야 하는 관계를 보여 최솟값 조건을 두 끝점의 부등식으로 연결한다."
+  ]
+}
