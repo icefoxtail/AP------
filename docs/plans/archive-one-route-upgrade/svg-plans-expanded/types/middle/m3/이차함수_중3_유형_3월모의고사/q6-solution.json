@@ -1,0 +1,141 @@
+{
+  "capability": "polynomial-spike-v1",
+  "caption": "파란 삼각형 OBD와 DCA의 넓이는 같고, 점선 윤곽의 공통 삼각형 OAD를 각각 더한다.",
+  "accessibilityDescription": "파란 삼각형 OBD와 DCA의 넓이는 같고, 점선 윤곽의 공통 삼각형 OAD를 각각 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 원점 $\\text{O}$를 지나고 제$4$사분면 위의 점 $\\text{A}$를 꼭짓점으로 하는 이차함수 $y=f(x)$의 그래프가 있다. 두 점 $\\text{B}(-5, 0)$, $\\text{C}(0, -6)$에 대하여 선분 $\\text{AB}$와 선분 $\\text{OC}$가 점 $\\text{D}$에서 만난다. 삼각형 $\\text{OCA}$의 넓이가 $6$이고, 삼각형 $\\text{OBD}$의 넓이와 삼각형 $\\text{DCA}$의 넓이가 같을 때, $f(10)$의 값은? (단, 점 $\\text{D}$는 점 $\\text{C}$가 아니다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "넓이가 같은 두 영역에 공통 부분을 더하면 OAB와 OAC의 넓이가 같아지는 것을 시각화한다.",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "넓이가 같은 두 영역에 공통 부분을 더하면 OAB와 OAC의 넓이가 같아지는 것을 시각화한다."
+  ],
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-12/5",
+      "3/5"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -6,
+      6,
+      -7,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": -2.4
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "-5",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "0",
+          "y": "-12/7",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-12/5",
+          "coordinates": false,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "one",
+          "points": [
+            "O",
+            "B",
+            "D"
+          ],
+          "fill": "BLUE"
+        },
+        {
+          "id": "two",
+          "points": [
+            "D",
+            "C",
+            "P"
+          ],
+          "fill": "BLUE"
+        }
+      ],
+      "segments": [
+        {
+          "id": "BA",
+          "from": "B",
+          "to": "P"
+        },
+        {
+          "id": "commonOA",
+          "from": "O",
+          "to": "P",
+          "dashed": true
+        },
+        {
+          "id": "commonOD",
+          "from": "O",
+          "to": "D",
+          "dashed": true
+        },
+        {
+          "id": "commonDA",
+          "from": "D",
+          "to": "P",
+          "dashed": true
+        }
+      ]
+    },
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "-12/5"
+      ]
+    }
+  }
+}
