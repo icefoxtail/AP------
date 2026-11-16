@@ -1,0 +1,55 @@
+name: Archive M2S2 Public Four Original Problem Student UI
+
+on:
+  push:
+    branches: ['review-reference/m2s2-public4-current054-problem-ui-20261116-r3']
+    paths:
+      - '.github/workflows/archive-m2s2-public4-problem-ui.yml'
+      - 'tools/check-m2s2-public4-problem-browser.cjs'
+      - 'tests/archive-m2s2-public4-problem-ui-contract.test.cjs'
+      - 'tests/fixtures/archive-m2s2-public4-problem-ui.json'
+      - 'docs/operations/m2s2-public4-problem-ui-20261116/original-source-basis-v1.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  problem-ui:
+    name: Exact PUBLIC4 questions in desktop and mobile student UI
+    if: github.ref == 'refs/heads/review-reference/m2s2-public4-current054-problem-ui-20261116-r3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify the closed problem capture contract
+        run: node --max-old-space-size=256 --test tests/archive-m2s2-public4-problem-ui-contract.test.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/m2s2-public4-ui-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture exact original problem scroll tiles
+        env:
+          ARCHIVE_M2S2_PUBLIC4_UI_EXPECTED_SHA: ${{ github.sha }}
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/m2s2-public4-ui-browser/node_modules
+        run: node --max-old-space-size=512 tools/check-m2s2-public4-problem-browser.cjs --output "$RUNNER_TEMP/m2s2-public4-problem-ui"
+      - name: Preserve original problem evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2s2-public4-problem-ui-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/m2s2-public4-problem-ui/
+          if-no-files-found: warn
+          retention-days: 14
