@@ -9,7 +9,7 @@ const vm = require('node:vm');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
 const { stable, sha256, gitBlob, createGitReader, studentFontResourcePath, checkedStudentFontRefs, FONT_DIR, FONT_STYLESHEET,
   fontFailureDiagnostic, readScreenshotArtifacts, assertScreenshotInventory } = H;
-const { captureSolutionTiles } = require("./check-m2s1-solution-scroll.cjs");
+const { captureSolutionTiles, measureSolutionCapture } = require("./check-m2s1-solution-scroll.cjs");
 
 const CHECKER_PATH='tools/check-m2s1-text-solution3-browser.cjs';
 const SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
@@ -116,7 +116,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   assertFinalBinding(manifest);
   const inputs = preflight(reader, manifest);
   const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
-  const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [];
+  const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [], captureDiagnostics = [];
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
@@ -133,7 +133,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertCompletedResults(results, inputs, manifest, screenshotArtifacts);
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
-      results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
+      results, captureDiagnostics, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
       studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
@@ -244,7 +244,35 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," sol-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_SOLUTION_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await captureSolutionTiles(page, target, path.join(out,screenshotPath));
+          // Read-only diagnostics preserve the actual frame that a capture guard
+          // rejected. They do not change the guard, viewport, DOM or source.
+          const captureDiagnostic = { key: item.key, sourceOrdinal: item.sourceOrdinal,
+            before: await target.evaluate(measureSolutionCapture),
+            fragments: await target.evaluate(image => {
+              const box = image.closest('.sol-box');
+              return [...document.querySelectorAll('#print-area .sol-box')]
+                .filter(node => node.dataset.sourceRef === box.dataset.sourceRef)
+                .map(node => { const r = node.getBoundingClientRect(); return {
+                  questionNumber: node.querySelector('.q-num')?.textContent?.trim() ?? null,
+                  boxVisible: getComputedStyle(node).display !== 'none' && r.width > 0 && r.height > 0,
+                  rect: { x: r.x, y: r.y, width: r.width, height: r.height },
+                  solutionImages: node.querySelectorAll('img').length,
+                  answers: node.querySelectorAll('.sol-ans').length,
+                  explanations: node.querySelectorAll('.sol-exp').length
+                }; });
+            }) };
+          captureDiagnostics.push(captureDiagnostic);
+          let capture;
+          try {
+            capture = await captureSolutionTiles(page, target, path.join(out,screenshotPath));
+            captureDiagnostic.status = 'PASS';
+          } catch (error) {
+            captureDiagnostic.status = 'FAIL';
+            captureDiagnostic.failureCode = /^UI_[A-Z0-9_]+$/.test(error.message) ? error.message : 'UI_BROWSER_CHECK_FAILED';
+            captureDiagnostic.after = await target.evaluate(measureSolutionCapture);
+            if (error.captureDiagnostic) captureDiagnostic.guardDiagnostic = error.captureDiagnostic;
+            throw error;
+          }
           const geometry = await target.evaluate(image => {
             const box = image.closest('.sol-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
