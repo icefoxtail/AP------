@@ -1,0 +1,52 @@
+name: Remaining Three Figure Student UI
+
+on:
+  push:
+    branches: ['review-reference/remaining-figure3-current-ui-20261116']
+    paths: ['.github/workflows/archive-remaining-figure3-display-ui.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    name: Exact remaining figure3 ${{ matrix.surface }} display
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        surface: [PROBLEM, SOLUTION]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify immutable current source and capture contracts
+        run: node --max-old-space-size=512 --test tests/archive-remaining-figure3-display-ui.test.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install pinned driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/figure3-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture unchanged student viewport and complete original scroll tiles
+        env:
+          ARCHIVE_REMAINING_FIGURE3_UI_EXPECTED_SHA: ${{ github.sha }}
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/figure3-browser/node_modules
+        run: node --max-old-space-size=1024 tools/check-remaining-figure3-display-browser.cjs --surface "${{ matrix.surface }}" --output "$RUNNER_TEMP/figure3-${{ matrix.surface }}"
+      - name: Preserve original evidence and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: remaining-figure3-${{ matrix.surface }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/figure3-${{ matrix.surface }}/
+          if-no-files-found: warn
+          retention-days: 14
