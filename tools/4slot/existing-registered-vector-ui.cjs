@@ -2,6 +2,7 @@
 // Technical observations and independently viewed original tiles are separate
 // inputs. This verifier never converts a technical PASS into visual acceptance.
 const crypto = require('node:crypto');
+const svg7Ui = require('./existing-registered-vector-svg7-ui.cjs');
 const stable = v => JSON.stringify(v, (_, x) => x && typeof x === 'object' && !Array.isArray(x)
   ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x);
 const sha = v => crypto.createHash('sha256').update(v).digest('hex');
@@ -93,7 +94,10 @@ function coverage(c, screenshots, viewport, surface, context) {
   // Bind the original shared capture object, including its document geometry
   // and 1-based tile indexes. No compact replacement or stitched PNG is used.
   const twoRoles=surface==='PROBLEM' && c?.visibleChildren===2;
-  if (twoRoles) closedProblemRoles(c.closedProblemRoles,context.row,context.checkoutCommit,context.readRef);
+  if (twoRoles) {
+    if (typeof context?.validateClosedRoles === 'function') context.validateClosedRoles(c.closedProblemRoles,context.row);
+    else closedProblemRoles(c.closedProblemRoles,context.row,context.checkoutCommit,context.readRef);
+  }
   else if (own(c,'closedProblemRoles')) fail('CLOSED_PROBLEM_SCOPE');
   exact(c, ['schemaVersion','method','tileLimit','overlapCssPixels','tileCount','content','question','viewport',
     'visibleChildren','coverage','tiles','scrollBefore','scrollAfter','scrollOperations','domSha256','feedbackIdle',
@@ -140,7 +144,10 @@ function coverage(c, screenshots, viewport, surface, context) {
   if (previousEnd !== height || !eq(c.scrollAfter,previousScroll) || c.scrollOperations !== operations) fail('INCOMPLETE_COVERAGE');
 }
 /** readRef returns exact immutable bytes; it may also validate a live source. */
-function verifyUi({technical, visual, technicalRef, readRef, questionUid, sourceOrdinal, surface, sourceRef, assetRefs}) {
+function verifyUi({technical, visual, technicalRef, readRef, readLiveRef, questionUid, sourceOrdinal, surface, sourceRef, assetRefs}) {
+  if (technical?.schemaVersion === svg7Ui.SCHEMA) return svg7Ui.verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,
+    questionUid,sourceOrdinal,surface,sourceRef,assetRefs,
+    validateCapture:(capture,shots,viewport,context)=>coverage(capture,shots,viewport,'PROBLEM',context)});
   exact(technical, ['schemaVersion','status','executionOwner','checkoutCommit','sourceOverlayCount','domWrites','cssWrites',
     'expectedLogicalCases','completedLogicalCases','screenshotArtifactCount','screenshotArtifacts','results'], 'TECHNICAL');
   if (technical.schemaVersion !== TECHNICAL_SCHEMA || technical.status !== 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING' ||

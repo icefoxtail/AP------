@@ -34,6 +34,8 @@ const registrationContracts = [
   /^tests\/archive-basic-scope-rebind\.test\.mjs$/,
   /^tests\/archive-(?:source-metadata-materializer|reviewed-source-candidate)\.test\.mjs$/,
   /^tests\/archive-m2s1-svg7-image-pointer\.test\.mjs$/,
+  /^tests\/archive-svg7-existing-vector-ui\.test\.cjs$/,
+  /^tests\/archive-e041-original-choice-correction\.test\.mjs$/,
 ];
 const outputConsumers = [
   // Common output modules serve originals, Generated, saved papers and APMS
