@@ -1,6 +1,6 @@
 # TASK-05 보고 — CI 차단 수리와 병목 조사
 
-조사일: 2026-11-16. 코드 브랜치 `fix/ci-blockers-20261116`는 main `9908310ccb9e8f651daca226b4ed06ba1217b2f7`에서 시작. 이 보고는 계획 브랜치에만 기록한다.
+조사일: 2026-11-16. 코드 브랜치 `fix/ci-blockers-20261116`는 main `9908310ccb9e8f651daca226b4ed06ba1217b2f7`에서 시작. C/D 실측·코드 조사는 처음 받은 main `277b86d84`에서 수행했으며, 277b86d84→9908310cc 비교에서 시험지 4개, `archive/engine.html`, `archive/mathjax_render_loop.js`, Chrome 출력 테스트, 등록기/빌더 분석 대상 파일에 차이가 없음을 확인했다. 이 보고는 계획 브랜치에만 기록한다.
 
 ## A. 인라인 SVG fragment가 파일로 오인되는 결함
 
@@ -39,7 +39,7 @@
 
 ## D. Archive Main Auto Metadata 시간 조사
 
-GitHub Actions 최근 성공 5회와 main push 성공 5회를 구분했다. 전체 최근 성공 5회 중 4회가 PR 읽기 전용 test여서 register를 실행하지 않았다. 이 4회를 main 등록기 실행시간으로 해석하지 않는다.
+등록기·빌더 코드 판독 기준은 처음 받은 main `277b86d84`이며, 위에 적은 파일 비교에서 최종 코드 게시 기준 `9908310cc`까지 해당 파일들은 동일했다. GitHub Actions 최근 성공 5회와 main push 성공 5회를 구분했다. 전체 최근 성공 5회 중 4회가 PR 읽기 전용 test여서 register를 실행하지 않았다. 이 4회를 main 등록기 실행시간으로 해석하지 않는다.
 
 | main run | job | checkout | prepare | persist | 주요 등록기 단계 |
 |---|---:|---:|---:|---:|---|
