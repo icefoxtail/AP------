@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "middle-audit-current-existing-key-application-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+  "sourceOrdinal": 17,
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+  "decision": "APPROVE_EXACT_EXISTING_ACTIVE_DEFINITION_APPLICATION",
+  "approvedBy": "GPT_ROOT_0A70543C4CE8",
+  "preparedBy": "GPT_M2_34C2",
+  "nativeRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "nativePath": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/accepted-review.json",
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+    "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+  },
+  "nativeCandidateWasNotAnApproval": true,
+  "currentApplicationReviewedSeparately": true,
+  "rootObserved": "Root read the current source, existing solution, and ACTIVE definitions. Reducing a-3<b-3 to a<b and checking direction reversal on multiplication by a negative number exactly matches the problem type and template. Root approved this application without changing the existing solution.",
+  "sourceReasoning": "The question asks which inequality transformation is false. Positive multiplication and equal translation preserve a<b; multiplying by -3 reverses the sign, so the second option with a less-than sign is false. This is a transformation-property judgment, not the solution of a new single-variable inequality.",
+  "existingSolutionVerification": {
+    "mode": "REUSE_EXISTING_SOLUTION_WITH_DIRECT_SELECTED_ITEM_CHECK",
+    "sourceOrdinal": 17,
+    "solutionSha256": "60181ca0ebe675ff9c9a40246cfe78e8ca40879ba4d33550beb8357f783822ce",
+    "answerUnchanged": true,
+    "sourceStudentPayloadSha256": "543db4ece1a1520d5ff3c1da468c5c5e4ec48ce0779eb2edf7876119a86a1d3a",
+    "blindReviewClaim": false,
+    "newSolutionWritten": false
+  },
+  "exactDefinitions": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+    "originalFileSha256": "234121a8177fe104ef9c3decce046395ee4069a28b81624efdb39984d2a6eff4",
+    "problemType": {
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "canonicalLabelKo": "부등식 성질 적용의 옳고 그름 판별",
+      "definition": "부등식의 양변에 수를 더하거나 곱하고 나눌 때 성질을 옳게 적용한 보기를 찾는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    "template": {
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "parentProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "canonicalLabelKo": "부등식 변형 성질 검증 절차",
+      "definition": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    }
+  },
+  "scopeDecision": {
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "purpose": "Current classification namespace explicitly reviewed by root; not inferred from the exam year",
+    "originalSourceMachineCurriculumPresent": false,
+    "nativeSemanticCurriculum": "2022",
+    "nativeMachineCurriculum": null,
+    "acceptedBy": "GPT_ROOT_0A70543C4CE8"
+  },
+  "sourceBefore": {
+    "blobSha1": "5227a818f3b941f9222f876366fc7e316683ed41",
+    "sha256": "08642bbd085d3552ee3b01618f73788513018ed328ac53648268d6e3e2dbb28d"
+  },
+  "sourceAfter": {
+    "blobSha1": "5b2b82a0698986eaa464e85de2dbed93a948eada",
+    "sha256": "927b41384bf04d7f228700e8e71a240b07bb1bb7323c9586d24da8c68a88d0f4"
+  },
+  "changedSourceFields": [
+    "problemTypeKey",
+    "templateKey",
+    "curriculum",
+    "courseKey",
+    "primaryMethod",
+    "decisiveStep",
+    "rpmPrimaryId",
+    "rpmPrimaryPath",
+    "rpmL1",
+    "rpmL2",
+    "rpmL3",
+    "rpmL4",
+    "rpmPrimaryRecordId"
+  ],
+  "unchangedStudentPayloadQuestionCount": 24,
+  "wholeOtherQuestionsUnchanged": 23,
+  "sourceReviewFlagsPreserved": {
+    "answerStatus": "draft",
+    "solutionStatus": "draft",
+    "reviewStatus": "pending"
+  },
+  "newDefinitionCount": 0,
+  "newCurrentApplicationDecisionCount": 1,
+  "newFullMathematicalQa": false,
+  "officialResolverStatus": "PREPARED_FOR_PLANNED_REGISTRY_VERIFICATION",
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

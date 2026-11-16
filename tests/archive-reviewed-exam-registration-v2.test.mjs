@@ -4307,6 +4307,12 @@ function activeReuseProposalFixture(t, kind, { install = true } = {}) {
     if (kind === "EXISTING_ACTIVE_LINK_GAP") Object.assign(proposal, { existingTemplate: "TPL_NEW", parent: "PT_NEW" });
     else Object.assign(proposal, { reuseTemplate: "TPL_NEW", registrationStatus: "PROPOSAL_ONLY_NOT_INSERTED" });
   }
+  if (kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP") {
+    delete proposal.supportOrdinals;
+    Object.assign(proposal, { kind, historicalSourceRpm: "M3-RPM-059", currentExactRpm: "M2-RPM-182",
+      existingActiveProblemType: "PT_NEW", existingActiveTemplate: "TPL_NEW", newProblemTypeRequired: false,
+      newTemplateRequired: false, reason: "Original publisher leaf remains missing; reuse the existing semantic definition.", owner: "native-release-owner" });
+  }
   f.review.proposals = [proposal, { type: "REUSE_ACTIVE_ADD_CROSSWALK", supportingQuestionUids: ["uid2"] }];
   f.updateReview();
   return { ...f, proposal };
@@ -4406,6 +4412,25 @@ test("technical reuse cannot create a definition, change a parent, disguise sema
   assert.throws(() => registerReviewedExamV2({ root: semantic.root, request: semantic.request }), /selected semantic proposal requires an exact native ID/);
   semantic.review.proposals[2].type = "BOUNDARY_REVIEW"; delete semantic.review.proposals[2].kind; semantic.updateReview();
   assert.throws(() => registerReviewedExamV2({ root: semantic.root, request: semantic.request }), /selected semantic proposal requires an exact native ID/);
+});
+
+test("original publisher parent and leaf debt reuses only unchanged ACTIVE definitions and preserves the unresolved debt", t => {
+  const f = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  const proof = f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.technicalProposalBindings[0];
+  assert.equal(proof.newDefinition, false); assert.equal(proof.newMathematicalQa, false);
+  assert.equal(proof.originalPublisherParentAndLeafResolved, false);
+  assert.equal(proof.currentCurriculumBindingResolution, "NOT_ASSERTED");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  for (const delta of [{ existingActiveProblemType: "PT_OTHER" }, { existingActiveTemplate: "TPL_OTHER" },
+    { newProblemTypeRequired: true }, { newTemplateRequired: true }, { newTemplateRequired: undefined },
+    { newDefinition: "unreviewed" }]) {
+    const bad = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP");
+    Object.assign(bad.proposal, delta); bad.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: bad.root, request: bad.request }), /original publisher gap/);
+  }
+  const fresh = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP", { install: false });
+  assert.throws(() => registerReviewedExamV2({ root: fresh.root, request: fresh.request }), /unchanged pre-existing ACTIVE/);
 });
 
 test("finalization retains exact immutable evidence and dual approval/item binding", t => {

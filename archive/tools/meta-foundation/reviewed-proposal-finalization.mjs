@@ -15,7 +15,7 @@ const CANON = "archive/data/meta-foundation/canonical/";
 const sorted = values => [...values].sort();
 const uniqueStrings = values => Array.isArray(values) && values.every(text) && new Set(values).size === values.length;
 const ACTIVE_REUSE_KINDS = new Set(["EXISTING_ACTIVE_CROSSWALK_CONNECTION", "REUSE_ACTIVE_ADD_CROSSWALK", "RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
-  "EXISTING_ACTIVE_LINK_GAP", "RPM_LEAF_LINK_PROPOSAL"]);
+  "EXISTING_ACTIVE_LINK_GAP", "RPM_LEAF_LINK_PROPOSAL", "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP"]);
 
 function safePath(root, relative) {
   if (!text(relative) || path.isAbsolute(relative) || relative.includes("\\") || relative.includes("\0") ||
@@ -161,6 +161,14 @@ function validateActiveReuse(ctx, { id, kind, proposal, origin }) {
   } else if (kind === "RPM_LEAF_LINK_PROPOSAL") {
     if (proposal.reuseTemplate !== tplKey || proposal.searchedGlobalActive !== true || proposal.registrationStatus !== "PROPOSAL_ONLY_NOT_INSERTED")
       fail("RPM leaf proposal does not preserve the native template");
+  } else if (kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP") {
+    const keys = ["kind", "supportingQuestionUids", "historicalSourceRpm", "currentExactRpm", "existingActiveProblemType",
+      "existingActiveTemplate", "newProblemTypeRequired", "newTemplateRequired", "reason", "owner"];
+    if (Object.keys(proposal).some(k => !keys.includes(k)) || proposal.kind !== kind ||
+        proposal.existingActiveProblemType !== ptKey || proposal.existingActiveTemplate !== tplKey ||
+        proposal.newProblemTypeRequired !== false || proposal.newTemplateRequired !== false ||
+        !text(proposal.historicalSourceRpm) || !text(proposal.currentExactRpm) || !text(proposal.reason) || !text(proposal.owner))
+      fail("original publisher gap must preserve the exact native ACTIVE PT/TPL without new definitions");
   } else if (proposal.existingTemplateKey !== tplKey || proposal.parentProblemTypeKey !== ptKey ||
       proposal.nativeTemplateProposalWithdrawn !== true || proposal.sourceNewStringKeyInserted !== false ||
       proposal.registrationStatus !== "PUBLISHER_LEAF_AND_CONNECTION_ONLY_NATIVE_REUSE")
@@ -170,6 +178,8 @@ function validateActiveReuse(ctx, { id, kind, proposal, origin }) {
     scope: "EXISTING_ACTIVE_PT_TPL_REUSE", newDefinition: false, newMathematicalQa: false,
     ...(kind === "HISTORICAL_PROJECTION_BINDING_NOTE" ? {
       declaredCurricula: [...new Set(proposal.debts.map(d => d.curriculum))], historicalBindingsResolved: false,
+    } : kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP" ? {
+      originalPublisherParentAndLeafResolved: false, currentCurriculumBindingResolution: "NOT_ASSERTED",
     } : {}) };
 }
 

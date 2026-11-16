@@ -34,11 +34,11 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
   },
   "summary": {
-    "recordCount": 239,
-    "DIRECT_ACTIVE": 34,
-    "FAMILY_ACTIVE": 2,
+    "recordCount": 242,
+    "DIRECT_ACTIVE": 37,
+    "FAMILY_ACTIVE": 3,
     "DIRECT_BINDING_GAP": 67,
-    "FAMILY_BINDING_GAP": 14,
+    "FAMILY_BINDING_GAP": 13,
     "RPM_ONLY": 122
   },
   "records": [
@@ -1025,7 +1025,7 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
+      "mappingStatus": "FAMILY_ACTIVE",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
@@ -1044,7 +1044,16 @@
         }
       ],
       "selectionRule": "final solution에서 사용한 점·기울기·복합 조건에 맞는 listed template 선택",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "중2 수학",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "ownerPack": "MIDDLE2"
+      }
     },
     {
       "id": "M2-RPM-060",
@@ -4668,6 +4677,95 @@
         "standardUnitKey": "M2-06",
         "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
         "ownerPack": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "id": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "problemTypeLabelKo": "부등식 성질 적용의 옳고 그름 판별",
+      "ownerPack": "MIDDLE2",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "templateLabelKo": "부등식 변형 성질 검증 절차",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "ownerPack": "MIDDLE2"
+      },
+      "promotesRpmOnlyRowId": "M2-RPM-136"
+    },
+    {
+      "id": "M2-RPM-052-LINE-TWO-POINTS-34C2",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프",
+        "l3": "식 구하기",
+        "l4": "두 점으로 식 구하기"
+      },
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "problemTypeLabelKo": "직선의 방정식 구하기",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "templateLabelKo": "두 점을 지나는 직선",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "ownerPack": "MIDDLE2"
+      },
+      "promotesBindingGapRowId": "M2-RPM-052"
+    },
+    {
+      "id": "M2-RPM-059-SEGMENT-INTERSECTION-34C2",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계",
+        "l3": "그래프 활용",
+        "l4": "조건에 따른 식 결정"
+      },
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "problemTypeLabelKo": "직선의 교점과 위치 조건",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+      "templateLabelKo": "직선이 선분과 만나는 조건",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "ownerPack": "MIDDLE2"
       }
     }
   ]
