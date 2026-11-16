@@ -1,0 +1,99 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "0",
+            "showValue": false
+          },
+          {
+            "id": "P",
+            "value": "2*sqrt(2)"
+          },
+          {
+            "id": "Q",
+            "value": "2*sqrt(5)"
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "B",
+        "radius": {
+          "value": "2*sqrt(2)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            2,
+            2
+          ],
+          "toName": "D"
+        }
+      },
+      {
+        "id": "c2",
+        "center": "B",
+        "radius": {
+          "value": "2*sqrt(5)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "toName": "E"
+        }
+      }
+    ]
+  },
+  "caption": "점 B에서 두 빗변 BD와 BE의 길이를 각각 수직선으로 옮긴다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 한 변은 2, B는 0, C는 2, F는 4이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모눈의 가로·세로 길이와 컴퍼스 호를 함께 보이고 최종 합은 숨긴다."
+  ],
+  "accessibilityDescription": "점 B에서 두 빗변 BD와 BE의 길이를 각각 수직선으로 옮긴다."
+}
