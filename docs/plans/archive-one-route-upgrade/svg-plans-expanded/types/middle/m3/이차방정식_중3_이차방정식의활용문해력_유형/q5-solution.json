@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직사각형의 대각선과 가로·세로가 이루는 직각삼각형이다.",
+  "accessibilityDescription": "직사각형의 대각선과 가로·세로가 이루는 직각삼각형이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "강당 리모델링을 진행하고 있는 학교에서는 무대 뒤쪽 벽에 대형 직사각형 전광판을 설치하기로 하였다. 화면이 너무 좁으면 뒷자리 학생들이 글씨를 알아보기 어렵고, 반대로 지나치게 크면 무대 조명 장치와 겹치는 문제가 생긴다는 점을 고려하여, 설치 업체에서는 전광판의 가로 길이를 세로 길이보다 5 m 길게 제작하기로 결정하였다. 화려한 영상과 함께 진행될 학교 축제와 각종 발표회를 상상하며, 학생회 임원들도 전광판 크기에 큰 관심을 보였다. 본격적인 제작에 앞서 현장 실측을 진행한 결과, 전광판 한 꼭짓점에서 맞은편 꼭짓점까지의 대각선 거리가 정확히 25 m여야 벽면 구조물과 충돌하지 않고 안정적으로 고정된다는 결론이 나왔다. 설계팀은 이 조건을 만족하도록 설계안을 작성하여 시공 단계로 넘어갔다. 이 전광판의 세로 길이는 몇 m인지 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "전광판 대각선 25와 두 변 x, x+5가 피타고라스 관계를 이루는 것을 보여 준다.",
+      "mappedTo": [
+        "mathPlan",
+        "caption"
+      ]
+    },
+    {
+      "id": "coordinates",
+      "condition": "그림의 기준 꼭짓점을 원점으로 잡고 해설에서 검산한 가로·세로 길이만큼 평행이동하여 꼭짓점을 구성한다. 최종 답 숫자는 좌표·길이 라벨로 표시하지 않고 x가 든 길이식으로 보존한다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "전광판 대각선 25와 두 변 x, x+5가 피타고라스 관계를 이루는 것을 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "w",
+        "from": "A",
+        "to": "B",
+        "label": "x+5",
+        "side": "BELOW",
+        "unit": "m"
+      },
+      {
+        "id": "h",
+        "from": "B",
+        "to": "C",
+        "label": "x",
+        "side": "RIGHT",
+        "unit": "m"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "diag",
+        "ownerSegment": "sAC",
+        "text": "25"
+      }
+    ],
+    "rightAngles": [
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE"
+}
