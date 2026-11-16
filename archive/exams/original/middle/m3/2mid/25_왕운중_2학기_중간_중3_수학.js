@@ -869,7 +869,10 @@ window.questionBank = [
     "solutionImageCaption": "BH/BM=6/(13/2)=12/13이므로 sin x=12/13이다. 정답은 ②이다."
   ,
     "primaryMethod": "빗변의 중점이 외심이라는 성질로 BM을 얻고 평행·닮음으로 BH를 복원한 다음 작은 직각삼각형의 사인을 읽는다.",
-    "decisiveStep": "빗변의 중점이 외심이라는 성질로 BM을 얻고 평행·닮음으로 BH를 복원한 다음 작은 직각삼각형의 사인을 읽는다."
+    "decisiveStep": "빗변의 중점이 외심이라는 성질로 BM을 얻고 평행·닮음으로 BH를 복원한 다음 작은 직각삼각형의 사인을 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,

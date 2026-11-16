@@ -172,6 +172,7 @@ window.questionBank = [
       "6"
     ],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q05.png",
+    "imageAlt": "왼쪽으로 열린 포물선 위의 P는 초점 F보다 왼쪽 위에 있다. P에서 가로로 그은 수선은 세로 준선의 H에 닿고, 준선과 x축의 교점은 I이다.",
     "answer": "④",
     "solution": "포물선 위의 점은\n초점과 준선까지의 거리가 같다.\n\n$F$는 초점이고 $H$는 $P$에서 준선 $x=-p$에 내린 수선의 발이므로\n$PF=PH$이다.\n\n$PH=5$이므로\n$PF=5$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
@@ -213,6 +214,7 @@ window.questionBank = [
       "$-\\dfrac12$"
     ],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q06.png",
+    "imageAlt": "왼쪽으로 열린 포물선 위의 P는 초점 F보다 왼쪽 위에 있다. P에서 가로로 그은 수선은 세로 준선의 H에 닿고, 준선과 x축의 교점은 I이다.",
     "answer": "②",
     "solution": "포물선 위의 점을\n$P=(pt^2,2pt)$로 놓고\n$u=-p>0$이라 하자.\n\n그러면\n$P=(-ut^2,-2ut)$,\n$F=(-u,0)$이다.\n\n그림에서 $P$는 $F$보다 왼쪽에 있으므로\n$-ut^2<-u$이다.\n$-u<0$이므로 양변을 $-u$로 나누면 부등호 방향이 바뀌어\n$t^2>1$이다.\n\n직선 $x=-p=u$ 위의 점 $H$, $I$에 대하여\n$HI=2u|t|=4$이므로\n$u|t|=2$이다.\n\n또한\n$PH=u-(-ut^2)=u(1+t^2)=5$이다.\n\n$|t|=\\frac{2}{u}$를 대입하면\n$u+\\frac{4}{u}=5$,\n$u^2-5u+4=0$,\n$(u-1)(u-4)=0$이다.\n\n따라서 $u=1$ 또는 $u=4$이다.\n\n$u=1$이면 $|t|=2$이므로 $t^2>1$을 만족한다.\n$u=4$이면 $|t|=\\frac{1}{2}$이므로 $t^2>1$을 만족하지 않는다.\n\n따라서 $u=1$, $p=-1$이다.\n초점 $F$의 $x$좌표는 $-1$이므로 정답은 ②이다.",
     "level": "중",
@@ -332,6 +334,7 @@ window.questionBank = [
       "$3\\sqrt5$"
     ],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q09.png",
+    "imageAlt": "정사각형 ABCD에서 A는 왼쪽 위에 있다. A에서 B로 아래쪽, D로 오른쪽, C로 오른쪽 아래 방향의 세 화살표가 있다.",
     "answer": "④",
     "solution": "정사각형의 두 변은 서로 수직이고\n$|\\vec a|=|\\vec b|=2$이다.\n대각선 벡터는\n$\\vec c=\\vec a+\\vec b$이다.\n\n따라서\n$\\vec a-\\vec b+2\\vec c$\n$=\\vec a-\\vec b+2(\\vec a+\\vec b)$\n$=3\\vec a+\\vec b$이다.\n\n$\\vec a\\perp\\vec b$이므로\n$|3\\vec a+\\vec b|^2=9|\\vec a|^2+|\\vec b|^2$\n$=9\\cdot4+4=40$이다.\n\n구하는 값은\n$|3\\vec a+\\vec b|=\\sqrt{40}=2\\sqrt{10}$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
@@ -490,6 +493,7 @@ window.questionBank = [
       "$11+5\\sqrt5$"
     ],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q13.png",
+    "imageAlt": "좌표축 위의 타원에서 A는 y축 위쪽 교점이다. x축의 원점 왼쪽에 F′, 오른쪽에 F가 있으며 A와 두 초점을 이었다.",
     "answer": "①",
     "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q13-solution.svg",
     "solution": "타원의 장축의 길이가 6이므로 긴 반축의 길이는\n$a=\\dfrac62=3$이다.\n\n$A$는 $y$축 위의 점이고 두 초점 $F,F'$은 $x$축 위에 있다.\n$AO=b$, $OF=OF'=c$라 두면\n타원의 관계 $a^2=b^2+c^2$에서\n$b^2+c^2=3^2=9$이다.\n\n삼각형 $AFF'$의 밑변은\n$F'F=OF'+OF=2c$이고\n높이는 $AO=b$이다.\n따라서\n$[AFF']=\\dfrac12\\cdot F'F\\cdot AO$\n$=\\dfrac12\\cdot2c\\cdot b=bc$이다.\n\n넓이가 $2\\sqrt5$이므로\n$bc=2\\sqrt5$이다.\n\n따라서\n$(AO+OF)^2=(b+c)^2$\n$=b^2+c^2+2bc$\n$=9+4\\sqrt5$이다.\n\n따라서 정답은 ①이다.", decisiveStep: "삼각형 AFF′의 넓이는 bc이므로 bc=2√5이고, 따라서 (AO+OF)^2=b^2+c^2+2bc=9+4√5이다.",
@@ -531,7 +535,9 @@ window.questionBank = [
       "$2\\sqrt{13}$",
       "$2\\sqrt{14}$"
     ],
-    "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q14.png",
+    "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q14_question-v2.svg",
+    "imageSize": "large",
+    "imageAlt": "사다리꼴에서 위쪽 변 AD와 아래쪽 변 BC가 평행하다. 꼭짓점 B와 C에서 밑변과 옆변이 이루는 두 각에 같은 표시가 있다.",
     "answer": "④",
     "solution": "$AD\\parallel BC$이고 밑각이 같으므로 사다리꼴은 이등변이다.\n두 밑변의 길이 차는 $8-4=4$이므로\n각 옆의 수평 차는 $2$이다.\n\n$P$를 $BC$의 중점이라 하면\n$\\overrightarrow{AB}+\\overrightarrow{AC}=2\\overrightarrow{AP}$이다.\n따라서\n$2|AP|=4\\sqrt5$,\n$|AP|=2\\sqrt5$이다.\n\n직각삼각형에서 $AP$의 수평 성분은 $2$이므로\n$2^2+h^2=(2\\sqrt5)^2$,\n$h=4$이다.\n\n두 밑변의 길이 차의 절반은 $2$이고 $AD=4$이므로\n$BD$의 수평 성분은 $2+4=6$이다.\n따라서\n$|BD|=\\sqrt{6^2+4^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n\n따라서 정답은 ④이다.",
     "level": "상",
@@ -675,6 +681,7 @@ window.questionBank = [
     "content": "&lt;단답형3&gt;<br>두 초점이 $F,F'$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$이 있다. 타원 위의 두 점 $P,Q$에 대하여 직선 $PQ$가 원점 $O$를 지나고 삼각형 $PF'Q$의 둘레의 길이가 $13$일 때, 선분 $OP$의 길이는? (단, 점 $P$는 제1사분면 위의 점이다.) [5점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q18.png",
+    "imageAlt": "타원의 x축 위에 왼쪽 초점 F′와 오른쪽 초점 F가 있다. 오른쪽 위의 P와 왼쪽 아래의 Q를 이은 선분은 원점 O를 지난다. P와 Q를 각각 F′와 이었다.",
     "answer": "5/2",
     "solution": "타원에서 긴 반축의 길이는 $4$이므로\n초점까지 거리의 합은\n$PF+PF'=2\\cdot4=8$이다.\n\n직선 $PQ$가 중심 $O$를 지나므로\n$P,Q$는 서로 마주 보는 점이다.\n중심 대칭에 의해\n$F'Q=PF$이다.\n따라서\n$PF'+F'Q=PF'+PF=8$이다.\n\n삼각형 $PF'Q$의 둘레가 $13$이므로\n$PQ=13-8=5$이다.\n또 $O$가 $PQ$의 중점이므로\n$OP=\\dfrac{PQ}{2}=\\dfrac52$이다.\n\n따라서 답은 $\\dfrac52$이다.",
     "level": "상",
@@ -743,6 +750,7 @@ window.questionBank = [
     "content": "&lt;서술형2&gt;<br>선분 $CD$를 $1:4$로 내분하는 점을 $Q$, 직사각형 $ABCD$의 두 변 $AD=6, AB=8$, $\\overrightarrow{CD}-\\overrightarrow{BQ}=\\vec a$라 하자. 선분 $CD$를 지름으로 하고 중심이 $O$인 원 위를 움직이는 점 $P$에 대하여 $\\overrightarrow{BP}=\\vec b$라 할 때, 다음 물음에 답하시오.\n(1) $|\\vec a|$의 값을 구하시오. [2점]\n(2) $|\\vec b|$의 최댓값을 구하시오. [3점]\n(3) $|\\vec a+\\vec b|$의 최댓값을 구하시오. [5점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q20.png",
+    "imageAlt": "직사각형의 오른쪽 변 CD를 지름으로 하는 원의 중심은 O이다. Q는 C와 O 사이에 있고, P는 원의 오른쪽 위에 표시되어 있다. 왼쪽 아래 꼭짓점 B를 P, Q와 각각 이었다.",
     "answer": "(1) 2√481/5, (2) 2√13+4, (3) 72/5",
     "solution": "$B=(0,0)$으로 두면\n$C=(6,0)$, $D=(6,8)$, $A=(0,8)$이다.\n$CQ:QD=1:4$이므로\n$Q=(6,\\dfrac85)$이다.\n\n(1)\n$\\overrightarrow{CD}=(0,8)$,\n$\\overrightarrow{BQ}=(6,\\dfrac85)$이므로\n$\\vec a=(-6,\\dfrac{32}{5})$이다.\n따라서\n$|\\vec a|=\\sqrt{36+\\dfrac{1024}{25}}$\n$=\\sqrt{\\dfrac{900+1024}{25}}$\n$=\\sqrt{\\dfrac{1924}{25}}$\n$=\\dfrac{2\\sqrt{481}}5$이다.\n\n(2)\n지름 $CD=8$인 원의 중심은 $O=(6,4)$이고 반지름은 $4$이다.\n$BO=\\sqrt{6^2+4^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n$|\\vec b|=|BP|$의 최댓값은 중심까지의 거리와 반지름을 더한 값이므로\n$|\\vec b|_{\\max}=BO+4=2\\sqrt{13}+4$이다.\n\n(3)\n$\\vec a+\\vec b$\n$=(\\overrightarrow{CD}-\\overrightarrow{BQ})+\\overrightarrow{BP}$\n$=\\overrightarrow{CD}+(\\overrightarrow{BP}-\\overrightarrow{BQ})$\n$=\\overrightarrow{CD}+\\overrightarrow{QP}$이다.\n$Q$가 선분 $CD$ 위에 있으므로\n$\\overrightarrow{CD}=\\overrightarrow{CQ}+\\overrightarrow{QD}$,\n$\\overrightarrow{QP}=\\overrightarrow{QC}+\\overrightarrow{CP}$이다.\n$\\overrightarrow{CQ}+\\overrightarrow{QC}=\\vec0$이므로\n$\\vec a+\\vec b=\\overrightarrow{QD}+\\overrightarrow{CP}$이다.\n\n$\\overrightarrow{QD}=(0,8-\\dfrac85)=(0,\\dfrac{32}{5})$이다.\n$O=(6,4)$, $C=(6,0)$이므로\n$\\overrightarrow{CO}=(0,4)$이다.\n점 $P$가 중심 $O$, 반지름 $4$인 원 위를 움직이므로\n벡터 $\\overrightarrow{CP}$는 중심 $(0,4)$, 반지름 $4$인 원 위를 움직인다.\n따라서 $\\overrightarrow{QD}+\\overrightarrow{CP}$는\n중심 $(0,\\dfrac{32}{5}+4)=(0,\\dfrac{52}{5})$,\n반지름 $4$인 원 위를 움직인다.\n원점에서 이 원까지의 가장 먼 거리는\n$\\dfrac{52}{5}+4=\\dfrac{72}{5}$이다.\n이 값은 $P=D$일 때 실제로 달성된다.\n\n따라서 답은\n(1) $\\dfrac{2\\sqrt{481}}5$, (2) $2\\sqrt{13}+4$, (3) $\\dfrac{72}{5}$이다.",
     "level": "상",

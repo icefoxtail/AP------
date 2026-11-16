@@ -59,6 +59,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-source-quality-holds.test.mjs']
   },
   {
+    label: 'tests/archive-m2s1-original-source-error-hold.test.cjs',
+    args: ['--test', 'tests/archive-m2s1-original-source-error-hold.test.cjs']
+  },
+  {
     label: 'tests/archive-native-authority-correction.test.mjs',
     args: ['--test', 'tests/archive-native-authority-correction.test.mjs']
   },
@@ -546,6 +550,12 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-source-candidate.test.mjs',
     args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2s1-svg7-image-pointer.test.mjs',
+    // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
+    args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
+    timeout: 240000
   }
 ];
 

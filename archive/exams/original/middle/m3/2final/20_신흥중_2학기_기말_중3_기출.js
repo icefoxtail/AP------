@@ -254,7 +254,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+    "primaryMethod": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -515,7 +517,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+    "primaryMethod": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
