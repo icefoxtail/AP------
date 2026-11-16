@@ -745,3 +745,10 @@ FEEDBACK-10-11의 판정/검사분리, PT-only,후보0 직접ACTIVE정의선택,
 
 - 각 GitHub 저장 영수증의 commit/blob과 원격 HEAD 확인. shell readback 중 승인 검토 시스템 오류가 발생했으나, 수집 담당자가 읽기 전용 GitHub fetch_file로 최종 HEAD 6a70411의 6파일을 확인하여 행 수와 영수증 blob SHA 모두 일치를 검증했다.
 - PR 생성·main 병합·정본·등록 요청·시험지 JS 변경 없음. 전체 고등 완료가 아니라 미기록분 복구 체크포인트다. 추가 확통 6시험지 120행은 별도 체크포인트로 저장 예정이며 이 표에 포함하지 않는다.
+
+### 확률과 통계 잔여 6시험지 추가 저장 (2026-11-17 KST)
+- `h2-2final.jsonl`에 120행 추가, 723 → 843행. 결과 커밋 `90ca5f4134267ac38f1aed97577bdabf6547384a`, blob `ab4d6c46c52f64c351723b13caa164832a0496f4`.
+- 120행 모두 PICK. check PASS 112 / PT_ONLY 1 / OUT_OF_CANDIDATES 7. NEW_KEY 0.
+- 최신 main `56b9da73484799c7b6b47965ae6fc4cec4216fac` 기준 source 6개 blob 일치, UID·경로·순번 일치, 승인 중첩 0, 기존 D 중복 0. ACTIVE 키·TPL 상위 PT 관계 PASS.
+- 저장 후 GitHub 읽기로 결과표 전체 본문·843행·blob SHA 일치 확인.
+- 이 회차 복구 누계는 앞의 1,422행과 이번 120행을 합쳐 79시험지 1,542행. 고등 전체 완료를 뜻하지 않으며 남은 수학Ⅱ·고1·유사 등의 미기록 판정은 계속한다. 기존 승인 데이터·JS·main은 변경하지 않았다.
