@@ -173,8 +173,10 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
     // new permission for its registry operations in the post-prior chain.
     if(v[2]===from[2]){baselineProviders.push(row);continue;}
     for(const c of r.registryChanges){
+      // Older issued bindings inherit ownership from this verified canonical pack path.
       if(c.path===bindingPath&&c.collection==='bindings'&&c.before===null&&
-        same(Object.keys(c.match||{}).sort(),KEYS)&&c.after?.status==='ACTIVE'&&c.after.ownerPack===id&&
+        same(Object.keys(c.match||{}).sort(),KEYS)&&c.after?.status==='ACTIVE'&&
+        (!Object.hasOwn(c.after,'ownerPack')||c.after.ownerPack===id)&&
         KEYS.every(k=>typeof c.match[k]==='string'&&c.match[k]&&c.after[k]===c.match[k])){
         row.bindingChanges.push(c);continue;
       }
@@ -276,8 +278,13 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
   // Its original published receipt and request remain separate from the actual
   // prior approval, which may itself be an ordinary or source-only receipt.
   const fromPackDigest=sha(json(beforePack)),fromBindingDigest=sha(json(beforeBindings));
-  const providers=baselineProviders.filter(row=>digestEntry(row.receipt,packPath)===fromPackDigest&&
-    digestEntry(row.receipt,bindingPath)===fromBindingDigest);
+  const providers=baselineProviders.filter(({receipt})=>{
+    if(digestEntry(receipt,packPath)!==fromPackDigest)return false;
+    // A pack-only receipt without a bindings output cannot supply a midbatch anchor.
+    if(!receipt.outputDigests.some(d=>d.path===bindingPath)&&
+      !receipt.registryChanges.some(c=>c.path===bindingPath))return false;
+    return digestEntry(receipt,bindingPath)===fromBindingDigest;
+  });
   if(providers.length>1)fail('ambiguous prior-version canonical output provider');
   const provider=providers[0],publishedCompanions=new Set();
   let priorAnchored=false,providerPublished=false,providerRequestAnchored=false,

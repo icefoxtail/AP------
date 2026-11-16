@@ -366,7 +366,7 @@ function fontFailureDiagnostic(observation, error) {
   return { code: 'UI_STUDENT_FONT_FAILED',
     kind: ['STYLESHEET', 'FONT'].includes(observation.kind) ? observation.kind : 'UNKNOWN',
     urlSha256: SHA256.test(observation.urlSha256 || '') ? observation.urlSha256 : null,
-    stage: ['FETCH', 'HTTP_STATUS', 'RESPONSE_URL', 'MIME', 'BODY_READ', 'BODY_SIZE', 'CSS_DECLARATIONS'].includes(observation.stage)
+    stage: ['FETCH', 'HTTP_STATUS', 'RESPONSE_URL', 'MIME', 'BODY_READ', 'BODY_SIZE', 'CSS_DECLARATIONS', 'FULFILL', 'ABORT'].includes(observation.stage)
       ? observation.stage : 'UNKNOWN',
     httpStatus: Number.isInteger(observation.httpStatus) && observation.httpStatus >= 100 && observation.httpStatus <= 599 ? observation.httpStatus : null,
     responseUrlSha256: SHA256.test(observation.responseUrlSha256 || '') ? observation.responseUrlSha256 : null,
@@ -489,6 +489,105 @@ function preflight(reader, manifest) {
 const mime = rel => ({ '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }[path.extname(rel)] || 'application/octet-stream');
 
+function createStudentRouteLifecycle(failures) {
+  const pending = new Set(), errors = [];
+  return {
+    wrap(handler) {
+      return route => {
+        // Own rejection handling before Playwright's event callback receives it.
+        // Recorded failures are rethrown at teardown, never converted to PASS.
+        const task = Promise.resolve().then(() => handler(route));
+        const settled = task.then(() => {}, error => {
+          errors.push(error);
+          failures.push({ code: 'UI_ROUTE_HANDLER_FAILED', requestSha256: sha256(route.request().url()),
+            errorMessageSha256: sha256(typeof error?.message === 'string' ? error.message : '') });
+        });
+        pending.add(settled);
+        settled.then(() => pending.delete(settled));
+        return settled;
+      };
+    },
+    async drain() {
+      // A running handler can cause another request; include that later work.
+      while (pending.size) await Promise.all([...pending]);
+    },
+    assertSettled() {
+      assert.equal(pending.size, 0, 'UI_ROUTE_WORK_UNSETTLED');
+      if (errors.length) throw errors[0];
+    }
+  };
+}
+
+async function serveStudentFont(route, url, { stylesheet, declaredFonts, externalFontResources, fontResources, failures }) {
+  const fontObservation = { kind: stylesheet ? 'STYLESHEET' : 'FONT', urlSha256: sha256(url.href), stage: 'FETCH' };
+  let fulfillmentAttempted = false;
+  try {
+    const response = await route.fetch({ timeout: 15000, maxRedirects: 0 });
+    const contentType = response.headers()['content-type'] || '', mediaType = contentType.split(';')[0].trim().toLowerCase();
+    Object.assign(fontObservation, { httpStatus: response.status(), responseUrlSha256: sha256(response.url()), mime: mediaType, stage: 'HTTP_STATUS' });
+    assert.equal(response.status(), 200, 'UI_FONT_HTTP_STATUS');
+    fontObservation.stage = 'RESPONSE_URL';
+    assert.equal(response.url(), url.href, 'UI_FONT_REDIRECT');
+    fontObservation.stage = 'MIME';
+    assert(stylesheet ? mediaType === 'text/css' : ['font/woff2', 'font/woff', 'font/ttf', 'application/font-woff', 'application/x-font-ttf'].includes(mediaType), 'UI_FONT_MIME');
+    fontObservation.stage = 'BODY_READ';
+    const bytes = await response.body();
+    Object.assign(fontObservation, { bytes: bytes.length, responseSha256: sha256(bytes), stage: 'BODY_SIZE' });
+    assert(bytes.length > 0 && bytes.length <= 2 * 1024 * 1024, 'UI_FONT_BODY_SIZE');
+    fontObservation.stage = 'CSS_DECLARATIONS';
+    if (stylesheet) for (const file of declaredStudentFonts(bytes.toString('utf8'))) declaredFonts.add(file);
+    const urlSha256 = sha256(url.href), responseSha256 = sha256(bytes);
+    const resourceId = sha256(stable({ urlSha256, responseSha256, mime: contentType }));
+    fontObservation.stage = 'FULFILL';
+    fulfillmentAttempted = true;
+    await route.fulfill({ response });
+    externalFontResources.set(resourceId, { resourceId, kind: stylesheet ? 'STYLESHEET' : 'FONT', host: url.hostname, urlSha256,
+      status: response.status(), mime: contentType, sha256: responseSha256, bytes: bytes.length });
+    fontResources.add(resourceId);
+  } catch (error) {
+    failures.push(fontFailureDiagnostic(fontObservation, error));
+    // Once fulfillment has begun, another abort would attempt to handle the
+    // same route twice. Preserve the fulfillment error for a technical FAIL.
+    if (!fulfillmentAttempted) {
+      try { await route.abort('failed'); }
+      catch (abortError) {
+        failures.push(fontFailureDiagnostic({ ...fontObservation, stage: 'ABORT' }, abortError));
+        throw new AggregateError([error, abortError], 'UI_ROUTE_ABORT_FAILED');
+      }
+    }
+    throw error;
+  }
+}
+
+async function closeStudentContext(page, context, verifySettled = () => {}, routeLifecycle = null, priorFailure = null) {
+  const cleanupErrors = [];
+  try {
+    // Drain owned work before unrouteAll changes interception patterns. In the
+    // pinned Playwright version, unrouting with multiple handlers still active
+    // can release a later route when the first handler finishes.
+    if (routeLifecycle) {
+      await routeLifecycle.drain();
+      // A failed settlement can leave Playwright's handled promise unresolved.
+      // Preserve that failure and close the context without waiting on unroute.
+      routeLifecycle.assertSettled();
+    }
+    if (page) await page.unrouteAll({ behavior: 'wait' });
+    if (routeLifecycle) {
+      await routeLifecycle.drain();
+      routeLifecycle.assertSettled();
+    }
+    verifySettled();
+  } catch (error) {
+    cleanupErrors.push(error);
+  }
+  try { await context.close(); }
+  catch (error) { cleanupErrors.push(error); }
+  if (!cleanupErrors.length) return;
+  const errors = [...new Set(priorFailure ? [priorFailure, ...cleanupErrors] : cleanupErrors)];
+  if (errors.length === 1) throw errors[0];
+  throw new AggregateError(errors, priorFailure?.message || 'UI_CONTEXT_CLEANUP_FAILED', { cause: errors[0] });
+}
+
 async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   assert(executablePath && path.isAbsolute(executablePath) && fs.statSync(executablePath).isFile(), 'UI_SUPPORTED_CHROME_REQUIRED');
   const reader = createGitReader(root, expectedCommit);
@@ -542,43 +641,20 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     for (const viewport of manifest.viewports) for (const sourcePath of banks) {
       const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1,
         isMobile: viewport.name === 'mobile', hasTouch: viewport.name === 'mobile', serviceWorkers: 'block' });
+      let page, casesCompleted = false, caseFailure = null;
+      const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
+      const routeLifecycle = createStudentRouteLifecycle(failures);
       try {
-        const page = await context.newPage();
+        page = await context.newPage();
         page.setDefaultTimeout(10000);
-        const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
         page.on('pageerror', error => pageErrors.push({ messageSha256: sha256(error.message) }));
         page.on('requestfailed', request => requestFailures.push({ urlSha256: sha256(request.url()), errorSha256: sha256(request.failure()?.errorText || '') }));
-        await page.route('**/*', async route => {
+        await page.route('**/*', routeLifecycle.wrap(async route => {
           const url = new URL(route.request().url());
           if (url.origin === origin) return route.continue();
           const stylesheet = isStudentFontStylesheet(url.href);
           if (stylesheet || declaredFonts.has(url.href)) {
-            const fontObservation = { kind: stylesheet ? 'STYLESHEET' : 'FONT', urlSha256: sha256(url.href), stage: 'FETCH' };
-            try {
-              const response = await route.fetch({ timeout: 15000, maxRedirects: 0 });
-              const contentType = response.headers()['content-type'] || '', mediaType = contentType.split(';')[0].trim().toLowerCase();
-              Object.assign(fontObservation, { httpStatus: response.status(), responseUrlSha256: sha256(response.url()), mime: mediaType, stage: 'HTTP_STATUS' });
-              assert.equal(response.status(), 200, 'UI_FONT_HTTP_STATUS');
-              fontObservation.stage = 'RESPONSE_URL';
-              assert.equal(response.url(), url.href, 'UI_FONT_REDIRECT');
-              fontObservation.stage = 'MIME';
-              assert(stylesheet ? mediaType === 'text/css' : ['font/woff2', 'font/woff', 'font/ttf', 'application/font-woff', 'application/x-font-ttf'].includes(mediaType), 'UI_FONT_MIME');
-              fontObservation.stage = 'BODY_READ';
-              const bytes = await response.body();
-              Object.assign(fontObservation, { bytes: bytes.length, responseSha256: sha256(bytes), stage: 'BODY_SIZE' });
-              assert(bytes.length > 0 && bytes.length <= 2 * 1024 * 1024, 'UI_FONT_BODY_SIZE');
-              fontObservation.stage = 'CSS_DECLARATIONS';
-              if (stylesheet) for (const file of declaredStudentFonts(bytes.toString('utf8'))) declaredFonts.add(file);
-              const urlSha256 = sha256(url.href), responseSha256 = sha256(bytes);
-              const resourceId = sha256(stable({ urlSha256, responseSha256, mime: contentType }));
-              externalFontResources.set(resourceId, { resourceId, kind: stylesheet ? 'STYLESHEET' : 'FONT', host: url.hostname, urlSha256,
-                status: response.status(), mime: contentType, sha256: responseSha256, bytes: bytes.length });
-              fontResources.add(resourceId);
-              return route.fulfill({ response });
-            } catch (error) {
-              failures.push(fontFailureDiagnostic(fontObservation, error));
-              return route.abort('failed');
-            }
+            return serveStudentFont(route, url, { stylesheet, declaredFonts, externalFontResources, fontResources, failures });
           }
           if (url.protocol === 'https:' && url.hostname === 'img.wangjiedu.com' && url.pathname.startsWith('/exams/images/')) {
             try {
@@ -590,7 +666,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           }
           externalRequests.push({ host: url.hostname, urlSha256: sha256(url.href) });
           return route.abort('blockedbyclient');
-        });
+        }));
         const url = `${origin}/archive/engine.html?data=${encodeURIComponent(sourcePath.slice('archive/'.length))}&mode=exam&fit=screen&studentReview=1`;
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
         await page.waitForFunction(() => {
@@ -657,8 +733,17 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
           activeCase = null;
         }
-        assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
-      } finally { await context.close(); }
+        casesCompleted = true;
+      } catch (error) {
+        caseFailure = error;
+        throw error;
+      } finally {
+        await closeStudentContext(page, context, () => {
+          // Inspect real late failures after route settlement and before teardown.
+          // If the case already failed, retain that original failure instead.
+          if (casesCompleted) assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+        }, routeLifecycle, caseFailure);
+      }
     }
     assert.equal(results.length, manifest.expectedCases, 'UI_ALL_SIX_REQUIRED');
     assert.equal(new Set(results.map(row => `${row.key}:${row.viewport.name}`)).size, 6, 'UI_UNIQUE_SIX_REQUIRED');
@@ -703,7 +788,7 @@ async function main() {
 }
 
 module.exports = { MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, IDENTITY_PATH, SCHEMA, stable, sha256, gitBlob, validateManifest, planRequired, createGitReader, preflight,
-  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic,
+  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic, createStudentRouteLifecycle, serveStudentFont, closeStudentContext,
   problemContentClip, planProblemScroll, assertProblemCapture, captureCompleteProblem,
   TILE_SCHEMA, TILE_OVERLAP, TILE_LIMIT, planProblemTiles, planProblemTileScroll, assertTileCoverage, assertProblemTileCapture, captureProblemTiles,
   readScreenshotArtifacts, assertScreenshotInventory };
