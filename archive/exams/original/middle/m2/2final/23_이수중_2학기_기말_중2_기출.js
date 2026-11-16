@@ -176,7 +176,8 @@ window.questionBank = [
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
     "primaryMethod": "접기의 같은 길이와 피타고라스",
-    "decisiveStep": "접힌 점까지의 같은 거리를 빗변으로 잡고 직각변을 구하여 남은 선분을 뺀다."
+    "decisiveStep": "접힌 점까지의 같은 거리를 빗변으로 잡고 직각변을 구하여 남은 선분을 뺀다.",
+    "courseKey": "M2-2"
   },
   {
     "id": 5,
