@@ -1,0 +1,108 @@
+{
+  "capability": "polynomial-spike-v1",
+  "caption": "삼각형 OAB의 밑변 OB와 점 A에서 y축까지의 높이를 보여 준다.",
+  "accessibilityDescription": "삼각형 OAB의 밑변 OB와 점 A에서 y축까지의 높이를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 제$1$사분면 위의 점 $\\text{A}(a, b)$는 이차함수 $y=x^2-3x+2$의 그래프 위에 있다. 이 이차함수의 그래프가 $y$축과 만나는 점 $\\text{B}$에 대하여 삼각형 $\\text{OAB}$의 넓이가 $4$일 때, $a+b$의 값은? (단, $\\text{O}$는 원점이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "밑변 OB=2와 높이 a=4의 방향을 분명히 하고 그래프 위 A(4,6)을 보여 준다.",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑변 OB=2와 높이 a=4의 방향을 분명히 하고 그래프 위 A(4,6)을 보여 준다."
+  ],
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -0.5,
+      4.5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1.5,
+        "y": -0.25
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "A",
+          "x": "4",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "0",
+          "y": "6",
+          "coordinates": false
+        }
+      ],
+      "polygons": [
+        {
+          "id": "area",
+          "points": [
+            "O",
+            "A",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "height",
+          "from": "A",
+          "to": "H",
+          "dashed": true
+        }
+      ]
+    },
+    "exactCoordinates": {
+      "V": [
+        "3/2",
+        "-1/4"
+      ]
+    }
+  }
+}
