@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { sameCourse, sameUnit } from '../meta-os/scope-alias.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -452,6 +453,7 @@ function projectionPending(fields, projectionStatus, reasonCode, details = {}) {
     ownerVersion: details.ownerVersion || '',
     bindingOwnerPack,
     bindingIdentity: details.bindingIdentity || '',
+    ...(details.bindingMatch ? { bindingMatch: details.bindingMatch } : {}),
     legacyProjection: {
       status: projectionStatus,
       reasonCode,
@@ -461,6 +463,7 @@ function projectionPending(fields, projectionStatus, reasonCode, details = {}) {
       canonicalOwnerPack,
       bindingOwnerPack,
       bindingIdentity: details.bindingIdentity || '',
+      ...(details.bindingMatch ? { bindingMatch: details.bindingMatch } : {}),
     },
   });
 }
@@ -478,6 +481,28 @@ function exactProjectionBindings(registry, row, context, problemTypeKey, { force
     && (item.subUnitKey ?? null) === (subUnitKey ?? null)
     && item.problemTypeKey === problemTypeKey
     && (!standardCourse || !item.standardCourse || item.standardCourse === standardCourse));
+}
+
+// Exact rows always win, including ambiguity and owner mismatch. Aliases cannot
+// replace an established binding or expand PT, subunit, or curriculum authority.
+export function projectionBindingsWithAliases(registry, row, context, problemTypeKey, options = {}) {
+  const exact = exactProjectionBindings(registry, row, context, problemTypeKey, options);
+  if (exact.length) return { rows: exact };
+  const binding = options.forceCurrentContext ? {} : (row.binding || {});
+  const scope = {
+    curriculum: text(binding.curriculum || context.curriculum),
+    course: text(binding.standardCourse || (options.forceCurrentContext ? '' : row.standardCourse) || context.standardCourse),
+    standardUnitKey: text(binding.standardUnitKey || context.standardUnitKey),
+    sourceArchiveFile: context.sourceArchiveFile,
+  };
+  const subUnitKey = options.forceCurrentContext ? context.subUnitKey : (Object.hasOwn(binding, 'subUnitKey')
+    ? binding.subUnitKey : Object.hasOwn(row, 'subUnitKey') ? row.subUnitKey : context.subUnitKey);
+  const rows = (registry.bindingRows || []).filter(candidate => candidate.status === 'ACTIVE' &&
+    candidate.curriculum === scope.curriculum && candidate.problemTypeKey === problemTypeKey &&
+    (candidate.subUnitKey ?? null) === (subUnitKey ?? null) &&
+    sameCourse(scope, { ...candidate, course: candidate.standardCourse }) &&
+    sameUnit(scope, { ...candidate, course: candidate.standardCourse }));
+  return { rows, ...(rows.length ? { bindingMatch: 'ALIAS' } : {}) };
 }
 
 export function validateCanonicalProjectionKeys(candidateMeta, registry) {
@@ -684,7 +709,8 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
       { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys: templateKey ? [templateKey] : [] });
   }
 
-  const bindingRows = exactProjectionBindings(activeRegistry, row, context, problemTypeKey, { forceCurrentContext: scopeRelation !== 'CURRENT_SCOPE' });
+  const bindingLookup = projectionBindingsWithAliases(activeRegistry, row, { ...context, sourceArchiveFile: bundle.sourceIdentity.sourceArchiveFile }, problemTypeKey, { forceCurrentContext: scopeRelation !== 'CURRENT_SCOPE' });
+  const bindingRows = bindingLookup.rows;
   const bindingOwnerHint = text(row.bindingOwnerPack || row.binding?.bindingOwnerPack || row.binding?.ownerPack);
   const hintedBindings = bindingOwnerHint ? bindingRows.filter(binding => text(binding.ownerPack) === bindingOwnerHint) : [];
   const eligibleBindings = bindingOwnerHint ? hintedBindings : bindingRows;
@@ -703,7 +729,8 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   }
   return projectionPending(currentBase, 'PROJECTION_REUSE', 'ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE',
     { projectionReusable: true, problemTypeKey, templateKey, canonicalOwnerPack, ownerVersion: canonicalPack.version,
-      mappedTemplateKeys: [templateKey], bindingOwnerPack, bindingIdentity: bindingIdentity(bindingRow) });
+      mappedTemplateKeys: [templateKey], bindingOwnerPack, bindingIdentity: bindingIdentity(bindingRow),
+      ...(bindingLookup.bindingMatch ? { bindingMatch: bindingLookup.bindingMatch } : {}) });
 }
 function buildEvidence(fields) {
   const { bundle, refs = [], ...rest } = fields;

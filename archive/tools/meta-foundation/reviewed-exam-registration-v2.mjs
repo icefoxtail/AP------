@@ -1,5 +1,6 @@
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
+import { sameCourse, sameUnit } from "../meta-os/scope-alias.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -1689,7 +1690,7 @@ function lookup(plan) {
   return result;
 }
 
-function resolve(row, tables, { allowConditionDebt = false } = {}) {
+export function resolveReviewedScope(row, tables, { allowConditionDebt = false } = {}) {
   const active = (map, key, type) => {
     const r = map.get(key);
     if (!r || r.status !== "ACTIVE") fail(`inactive/missing ${type}: ${key}`);
@@ -1716,17 +1717,34 @@ function resolve(row, tables, { allowConditionDebt = false } = {}) {
   const course = requireText(row.standardCourse || row.courseKey, "standardCourse");
   const compactCourse = value => String(value).normalize("NFC").replace(/\s/g, "");
   if (row.curriculumKey && row.curriculumKey !== curriculum) fail("curriculum/course aliases disagree");
-  const binding = tables.bindings.get(stable([curriculum, course, row.standardUnitKey, row.subUnitKey ?? null, row.problemTypeKey]));
+  let binding = tables.bindings.get(stable([curriculum, course, row.standardUnitKey, row.subUnitKey ?? null, row.problemTypeKey]));
+  let aliasBinding = false;
+  const scope = { curriculum, course, standardUnitKey: row.standardUnitKey, sourceArchiveFile: row.sourceArchiveFile };
+  if (!binding) {
+    const candidates = [...tables.bindings.values()].filter(candidate => candidate.status === "ACTIVE" &&
+      candidate.curriculum === curriculum && candidate.problemTypeKey === row.problemTypeKey &&
+      (candidate.subUnitKey ?? null) === (row.subUnitKey ?? null) &&
+      sameCourse(scope, { ...candidate, course: candidate.standardCourse }) &&
+      sameUnit(scope, { ...candidate, course: candidate.standardCourse }));
+    if (candidates.length > 1) fail(`ACTIVE curriculum binding ambiguous: ${curriculum}/${course}/${row.problemTypeKey}`);
+    if (candidates.length === 1) { binding = candidates[0]; aliasBinding = true; }
+  }
   if (!binding) fail(`ACTIVE curriculum binding missing: ${curriculum}/${course}/${row.problemTypeKey}`);
   const pack = tables.packs.get(binding.ownerPack || pt.ownerPack);
   const courseKey = row.courseKey || course;
-  const courseAliasAllowed = compactCourse(courseKey) === compactCourse(course) || pack?.meta.standardCourses.includes(courseKey);
+  const packCourseMatches = value => pack?.meta.standardCourses.includes(value) || (aliasBinding &&
+    pack?.meta.standardCourses.some(official => sameCourse({ ...scope, course: value },
+      { curriculum, course: official, standardUnitKey: binding.standardUnitKey })));
+  const courseAliasAllowed = compactCourse(courseKey) === compactCourse(course) || pack?.meta.standardCourses.includes(courseKey) ||
+    (aliasBinding && sameCourse(scope, { ...scope, course: courseKey }));
   if (compactCourse(courseKey) !== compactCourse(course) && !courseAliasAllowed) fail("curriculum/course aliases disagree");
-  if (!pack || !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course) || !pack.meta.standardCourses.includes(courseKey))
+  if (!pack || !pack.meta.curricula.includes(curriculum) || !packCourseMatches(course) || !packCourseMatches(courseKey))
     fail(`binding ownerPack scope missing: ${binding.ownerPack || pt.ownerPack}/${curriculum}/${course}`);
   const extensions = extensionKeys.map(({ field, key }) => tables.ext.check(field, key, { curriculum, course }));
-  return { pt, tpl, unit, sub, binding, pack, curriculum, course, extensions };
+  return { pt, tpl, unit, sub, binding, pack, curriculum, course, extensions, ...(aliasBinding ? { bindingMatch: "ALIAS" } : {}) };
 }
+
+const resolve = resolveReviewedScope;
 
 // Type-hold rows (REVIEW2): validate everything except PT/TPL/binding/pack, which are deliberately absent.
 function resolveUnitOnly(row, tables) {
