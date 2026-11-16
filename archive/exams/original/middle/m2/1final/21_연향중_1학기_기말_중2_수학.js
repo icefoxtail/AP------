@@ -61,7 +61,7 @@ window.examData = {
     {
       "id": 5,
       "score": 4.0,
-      "question": "<p>5. 다음 중 주어진 일차함수의 그래프와 평행이고, $y$절편이 $-3$인 식으로 올바른 것은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q05.png\" class=\"question-image\" /></p>",
+      "question": "<p>5. 다음 중 주어진 일차함수의 그래프와 평행이고, $y$절편이 $-3$인 식으로 올바른 것은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q5-problem-visual-v2.svg\" alt=\"좌표평면에서 완만하게 내려가는 검은 일차함수의 그래프를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$y=-\\frac{1}{3}x-1$",
         "$y=-3x-1$",
@@ -89,7 +89,7 @@ window.examData = {
     {
       "id": 7,
       "score": 4.0,
-      "question": "<p>7. 일차방정식 $2x+ay+b=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$에 대하여 $-a+b$의 값은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q07.png\" class=\"question-image\" /></p>",
+      "question": "<p>7. 일차방정식 $2x+ay+b=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$에 대하여 $-a+b$의 값은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q7-problem-visual-v2.svg\" alt=\"이 직선은 세로축의 −2를 지나며, 가로좌표 6일 때 높이가 2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$-3$",
         "$-2$",
@@ -103,7 +103,7 @@ window.examData = {
     {
       "id": 8,
       "score": 4.0,
-      "question": "<p>8. 일차방정식 $ax-by-4=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q08.png\" class=\"question-image\" /></p>",
+      "question": "<p>8. 일차방정식 $ax-by-4=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"세로축의 −2를 지나는 검은 수평 직선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$a=0, b=-2$",
         "$a=1, b=2$",
@@ -187,7 +187,7 @@ window.examData = {
     {
       "id": 14,
       "score": 5.0,
-      "question": "<p>14. 일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=abx+\\frac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q14.png\" class=\"question-image\" /></p>",
+      "question": "<p>14. 일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=abx+\\frac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"오른쪽 위로 올라가는 검은 직선은 원점 아래에서 세로축과 만난다. 좌표의 눈금은 주어지지 않는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "제 1사분면",
         "제 2사분면",
@@ -201,7 +201,7 @@ window.examData = {
     {
       "id": 15,
       "score": 5.0,
-      "question": "<p>15. 다음 그림과 같은 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 점 $P$가 점 $B$를 출발하여 $x$초가 지난 후의 삼각형 $DPC$의 넓이를 $y\\text{ cm}^2$라고 할 때, $x$와 $y$ 사이의 관계식은? [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q15.png\" class=\"question-image\" /></p>",
+      "question": "<p>15. 다음 그림과 같은 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 점 $P$가 점 $B$를 출발하여 $x$초가 지난 후의 삼각형 $DPC$의 넓이를 $y\\text{ cm}^2$라고 할 때, $x$와 $y$ 사이의 관계식은? [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"가로 길이는 24 cm, 세로 길이는 10 cm이다. 아랫변의 P와 오른쪽 위 꼭짓점 D를 연결하여 삼각형 DPC만 색칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$y=120+10x$",
         "$y=120x$",
@@ -229,7 +229,7 @@ window.examData = {
     {
       "id": 17,
       "score": 5.0,
-      "question": "<p>17. 오른쪽 그래프와 같은 일차함수에서 $y$축으로 $k$만큼 평행이동하면 일차함수 $y=-ax+7$의 그래프와 일치한다. $a+k$의 값은? (단, $a$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q17.png\" class=\"question-image\" /></p>",
+      "question": "<p>17. 오른쪽 그래프와 같은 일차함수에서 $y$축으로 $k$만큼 평행이동하면 일차함수 $y=-ax+7$의 그래프와 일치한다. $a+k$의 값은? (단, $a$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"검은 직선은 가로축의 −4와 세로축의 3을 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\frac{13}{4}$",
         "$\\frac{7}{2}$",
@@ -257,7 +257,7 @@ window.examData = {
     {
       "id": 19,
       "score": 7.0,
-      "question": "<p>서술형 1. 다음 그림을 보고 직사각형의 긴 변과 짧은 변의 길이를 구하면? (연립방정식을 이용하여 풀이하시오.) [7점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/s01.png\" class=\"question-image\" /></p>",
+      "question": "<p>서술형 1. 다음 그림을 보고 직사각형의 긴 변과 짧은 변의 길이를 구하면? (연립방정식을 이용하여 풀이하시오.) [7점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q19-problem-visual-v2.svg\" alt=\"그림 1은 세운 직사각형 3장과 눕힌 2장이 같은 바닥에서 시작한다. 두 더미의 높이 차는 19 cm이다. 그림 2는 눕힌 3장 위에 세운 1장이 있고 전체 높이는 21 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -346,8 +346,9 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>5. 다음 중 주어진 일차함수의 그래프와 평행이고, $y$절편이 $-3$인 식으로 올바른 것은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q05.png\" class=\"question-image\" /></p>",
+    "question": "<p>5. 다음 중 주어진 일차함수의 그래프와 평행이고, $y$절편이 $-3$인 식으로 올바른 것은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q5-problem-visual-v2.svg\" alt=\"좌표평면에서 완만하게 내려가는 검은 일차함수의 그래프를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$y=-\\frac{1}{3}x-1$",
       "$y=-3x-1$",
@@ -357,7 +358,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>5. 다음 중 주어진 일차함수의 그래프와 평행이고, $y$절편이 $-3$인 식으로 올바른 것은? [4점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q05.png\" class=\"question-image\" /></div>"
+    "content": "<div>5. 다음 중 주어진 일차함수의 그래프와 평행이고, $y$절편이 $-3$인 식으로 올바른 것은? [4점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q5-problem-visual-v2.svg\" alt=\"좌표평면에서 완만하게 내려가는 검은 일차함수의 그래프를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 6,
@@ -376,8 +377,9 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>7. 일차방정식 $2x+ay+b=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$에 대하여 $-a+b$의 값은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q07.png\" class=\"question-image\" /></p>",
+    "question": "<p>7. 일차방정식 $2x+ay+b=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$에 대하여 $-a+b$의 값은? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q7-problem-visual-v2.svg\" alt=\"이 직선은 세로축의 −2를 지나며, 가로좌표 6일 때 높이가 2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$-3$",
       "$-2$",
@@ -387,12 +389,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>7. 일차방정식 $2x+ay+b=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$에 대하여 $-a+b$의 값은? [4점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q07.png\" class=\"question-image\" /></div>"
+    "content": "<div>7. 일차방정식 $2x+ay+b=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$에 대하여 $-a+b$의 값은? [4점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q7-problem-visual-v2.svg\" alt=\"이 직선은 세로축의 −2를 지나며, 가로좌표 6일 때 높이가 2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 8,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>8. 일차방정식 $ax-by-4=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q08.png\" class=\"question-image\" /></p>",
+    "question": "<p>8. 일차방정식 $ax-by-4=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"세로축의 −2를 지나는 검은 수평 직선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$a=0, b=-2$",
       "$a=1, b=2$",
@@ -402,7 +405,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>8. 일차방정식 $ax-by-4=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q08.png\" class=\"question-image\" /></div>"
+    "content": "<div>8. 일차방정식 $ax-by-4=0$의 그래프가 오른쪽 그림과 같을 때, 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"세로축의 −2를 지나는 검은 수평 직선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 9,
@@ -481,8 +484,9 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>14. 일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=abx+\\frac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q14.png\" class=\"question-image\" /></p>",
+    "question": "<p>14. 일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=abx+\\frac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"오른쪽 위로 올라가는 검은 직선은 원점 아래에서 세로축과 만난다. 좌표의 눈금은 주어지지 않는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "제 1사분면",
       "제 2사분면",
@@ -492,12 +496,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>14. 일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=abx+\\frac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수) [5점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q14.png\" class=\"question-image\" /></div>"
+    "content": "<div>14. 일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=abx+\\frac{b}{a}$의 그래프가 지나지 않는 사분면은? (단, $a, b$는 상수) [5점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"오른쪽 위로 올라가는 검은 직선은 원점 아래에서 세로축과 만난다. 좌표의 눈금은 주어지지 않는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 15,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>15. 다음 그림과 같은 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 점 $P$가 점 $B$를 출발하여 $x$초가 지난 후의 삼각형 $DPC$의 넓이를 $y\\text{ cm}^2$라고 할 때, $x$와 $y$ 사이의 관계식은? [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q15.png\" class=\"question-image\" /></p>",
+    "question": "<p>15. 다음 그림과 같은 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 점 $P$가 점 $B$를 출발하여 $x$초가 지난 후의 삼각형 $DPC$의 넓이를 $y\\text{ cm}^2$라고 할 때, $x$와 $y$ 사이의 관계식은? [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"가로 길이는 24 cm, 세로 길이는 10 cm이다. 아랫변의 P와 오른쪽 위 꼭짓점 D를 연결하여 삼각형 DPC만 색칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$y=120+10x$",
       "$y=120x$",
@@ -507,7 +512,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>15. 다음 그림과 같은 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 점 $P$가 점 $B$를 출발하여 $x$초가 지난 후의 삼각형 $DPC$의 넓이를 $y\\text{ cm}^2$라고 할 때, $x$와 $y$ 사이의 관계식은? [5점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q15.png\" class=\"question-image\" /></div>"
+    "content": "<div>15. 다음 그림과 같은 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 점 $P$가 점 $B$를 출발하여 $x$초가 지난 후의 삼각형 $DPC$의 넓이를 $y\\text{ cm}^2$라고 할 때, $x$와 $y$ 사이의 관계식은? [5점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"가로 길이는 24 cm, 세로 길이는 10 cm이다. 아랫변의 P와 오른쪽 위 꼭짓점 D를 연결하여 삼각형 DPC만 색칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 16,
@@ -526,8 +531,9 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>17. 오른쪽 그래프와 같은 일차함수에서 $y$축으로 $k$만큼 평행이동하면 일차함수 $y=-ax+7$의 그래프와 일치한다. $a+k$의 값은? (단, $a$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q17.png\" class=\"question-image\" /></p>",
+    "question": "<p>17. 오른쪽 그래프와 같은 일차함수에서 $y$축으로 $k$만큼 평행이동하면 일차함수 $y=-ax+7$의 그래프와 일치한다. $a+k$의 값은? (단, $a$는 상수) [5점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"검은 직선은 가로축의 −4와 세로축의 3을 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\frac{13}{4}$",
       "$\\frac{7}{2}$",
@@ -537,7 +543,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>17. 오른쪽 그래프와 같은 일차함수에서 $y$축으로 $k$만큼 평행이동하면 일차함수 $y=-ax+7$의 그래프와 일치한다. $a+k$의 값은? (단, $a$는 상수) [5점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q17.png\" class=\"question-image\" /></div>"
+    "content": "<div>17. 오른쪽 그래프와 같은 일차함수에서 $y$축으로 $k$만큼 평행이동하면 일차함수 $y=-ax+7$의 그래프와 일치한다. $a+k$의 값은? (단, $a$는 상수) [5점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"검은 직선은 가로축의 −4와 세로축의 3을 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 18,
@@ -556,12 +562,13 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "layoutTag": "fullwidth",
     "score": 7,
-    "question": "<p>서술형 1. 다음 그림을 보고 직사각형의 긴 변과 짧은 변의 길이를 구하면? (연립방정식을 이용하여 풀이하시오.) [7점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/s01.png\" class=\"question-image\" /></p>",
+    "question": "<p>서술형 1. 다음 그림을 보고 직사각형의 긴 변과 짧은 변의 길이를 구하면? (연립방정식을 이용하여 풀이하시오.) [7점]</p><p><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q19-problem-visual-v2.svg\" alt=\"그림 1은 세운 직사각형 3장과 눕힌 2장이 같은 바닥에서 시작한다. 두 더미의 높이 차는 19 cm이다. 그림 2는 눕힌 3장 위에 세운 1장이 있고 전체 높이는 21 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>서술형 1. 다음 그림을 보고 직사각형의 긴 변과 짧은 변의 길이를 구하면? (연립방정식을 이용하여 풀이하시오.) [7점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/s01.png\" class=\"question-image\" /></div>"
+    "content": "<div>서술형 1. 다음 그림을 보고 직사각형의 긴 변과 짧은 변의 길이를 구하면? (연립방정식을 이용하여 풀이하시오.) [7점]</div><div><img src=\"assets/images/21_연향중_1학기_기말_중2_수학/q19-problem-visual-v2.svg\" alt=\"그림 1은 세운 직사각형 3장과 눕힌 2장이 같은 바닥에서 시작한다. 두 더미의 높이 차는 19 cm이다. 그림 2는 눕힌 3장 위에 세운 1장이 있고 전체 높이는 21 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 20,

@@ -17,6 +17,7 @@ import { bindReviewedNativeRationaleContinuity } from "./reviewed-native-rationa
 import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-current-definition-application.mjs";
 import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-target-application.mjs";
+import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -216,6 +217,18 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
   })) fail("native review retains an explicit source/content/difficulty hold");
   const payload = studentPayload(question);
+  const m2ProblemRenderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
+  if (m2ProblemRenderer) {
+    // Only the authenticated four renderer fields are compared through the
+    // original prefigure view. Native, definition, retained-primary, scope and
+    // live original asset validators all run again without exceptions or writes.
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2ProblemRenderer.normalizedPatch,
+      metadata, question: m2ProblemRenderer.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2ProblemRendererContinuity: {
+      ...m2ProblemRenderer.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
   const rendererContinuity = patch.sourceReview.rendererProof === undefined ? null :
     validateReviewedCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
@@ -240,7 +253,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question: semanticQuestion, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question: semanticQuestion, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const currentDefinitionApplication = validateM2S1CurrentDefinitionApplication({ root, request, patch, native: loaded, row,
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,

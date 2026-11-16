@@ -14,6 +14,7 @@ import { AUDIT_SOURCE_PRESERVATION_SCHEMA, auditSourcePreservationSummary, audit
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
 import { assertNativeRpmEvidenceAliasScope } from "./reviewed-native-retained-fields.mjs";
 import { validateNativeReviewedParent } from "./reviewed-native-parent.mjs";
+import { checkedM2FinalizedParent } from "./reviewed-m2-finalized-scope-parent.mjs";
 import { validateReviewedRetainedScopeParent } from "./reviewed-retained-scope-transport.mjs";
 import { REVIEWED_SOURCE_FIELDS, REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from "./reviewed-current-renderer-continuity.mjs";
@@ -1831,6 +1832,7 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob,
     const nativeParent = ref.nativeSourceReview !== undefined
       ? validateNativeReviewedParent({ root, request, patch, row, resolved, sourceReview })
       : validateReviewedRetainedScopeParent({ request, patch, row, resolved, sourceReview });
+    const finalizedParent = checkedM2FinalizedParent({ request, patch, row, resolved, sourceReview });
     if (ref.crosswalkRef) {
       const cross = ref.crosswalkRef;
       if (!/^archive\/data\/meta-foundation\/crosswalks\/rpm-primary-v1\.0\/[a-z0-9-]+\.json$/.test(cross.path || "") ||
@@ -1849,7 +1851,7 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob,
       exactTypeParent = true;
     }
     if (!matches.length || ref.curriculum !== resolved.curriculum || compact(masterCourse) !== compact(row.courseKey || resolved.course) ||
-        !canonicalMidLabels.some(label => compact(label) === compact(ref.midUnit)) && !exactTypeParent && !nativeParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
+        !canonicalMidLabels.some(label => compact(label) === compact(ref.midUnit)) && !exactTypeParent && !nativeParent && !finalizedParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
     if (nativeParent) onNativeParent?.(nativeParent);
     return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
   };
@@ -2378,7 +2380,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     for (const record of previous.approval?.sourceRebind || approvedRendererRequested ? [] : previous.appliedRecords.filter(r => !isTypeHoldRecord(r))) {
       const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const patch = patches.get(record.questionUid);
-      let parentSourceReview = null;
+      let parentSourceReview = patch.targetParentRef?.finalizedScopeParent !== undefined
+        ? replaySourceReviewContext.get(patch.questionUid) : null;
       if (patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined) {
         const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid &&
           repair.sourceOrdinal === patch.sourceOrdinal);

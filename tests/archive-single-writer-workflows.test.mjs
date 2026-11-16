@@ -67,7 +67,13 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
   assert.match(register, /--paths-file "\$WRITER_WORK_DIR\/commit\.paths"/);
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
-  assert.match(register, /--remote origin --branch main --max-attempts 3/);
+  assert.match(register, /--remote origin --branch main --max-attempts 6/);
+  assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 1);
+  assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
+  assert.match(register.split('    steps:')[0], /timeout-minutes: 150/);
+  assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 90/);
+  assert.match(register, /--verify-command 'node tools\/check-git-growth\.mjs --base "\$DERIVED_BASE_SHA" --head "\$DERIVED_HEAD_SHA"'/);
+  assert.match(register, /--reapply-check 'node tools\/ci\/archive-registration-writer\.mjs --unrelated-range "\$DERIVED_BASE_SHA" "\$COMPETITOR_HEAD_SHA"'/);
   assert.doesNotMatch(register, /--force|git\s+(?:commit|push)\b/);
   assert.match(step(register, /^        id: persist$/m), /if: steps\.prepare\.outputs\.safe_to_persist == 'true'/);
   for (const [name, text] of [['Pages', pages], ['compatibility recovery', compatibility]]) {

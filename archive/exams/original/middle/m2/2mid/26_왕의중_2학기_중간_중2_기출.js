@@ -633,7 +633,7 @@ window.questionBank = [
       "삼각형의 성질"
     ],
     "wide": false,
-    "content": "그림과 같이 마름모 $ABCD$에서 $CD$의 중점을 $M$이라 하자. $\\triangle ACM\\cong\\triangle ADM$일 때, $\\angle B$의 크기는? (4점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q14-problem-visual-v2.svg\" alt=\"마름모 ABCD의 한 변 CD 위에 중점 M이 있다. A에서 C와 M으로 선을 이었다. 네 바깥 변에 같은 한 줄 눈금, CM과 MD에 같은 두 줄 눈금을 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "그림과 같이 마름모 $ABCD$에서 $CD$의 중점을 $M$이라 하자. $\\triangle ACM\\cong\\triangle ADM$일 때, $\\angle B$의 크기는? (4점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q14-problem-visual-v2.svg\" alt=\"마름모 ABCD의 한 변 CD 위에 중점 M이 있다. A에서 C와 M으로 선을 이었다. CM과 MD에 같은 두 줄 눈금을 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$40^\\circ$",
       "$45^\\circ$",

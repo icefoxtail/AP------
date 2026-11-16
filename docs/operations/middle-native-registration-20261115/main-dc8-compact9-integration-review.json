@@ -1,0 +1,2120 @@
+{
+  "schemaVersion": "middle-dc8-compact9-independent-integration-read-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "reviewMode": "READ_ONLY_INTEGRATION_AUTHORITY_AND_RAW_BINDING; NOT_A_NEW_SEMANTIC_OR_VISUAL_APPROVAL",
+  "snapshots": {
+    "root": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+    "main": "dc8c0aad86663f144102a25618dcd36558bf9607",
+    "base": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b"
+  },
+  "scope": {
+    "compactFiles": 9,
+    "items": 214,
+    "sourceFiles": 9,
+    "excluded": "M3S1 and all paths outside the explicit compact/source/referenced-asset set"
+  },
+  "counts": {
+    "fullItemsExactFiles": 4,
+    "fullItemsExactFileItems": 96,
+    "vectorChangedRows": 13,
+    "vectorUnchangedRows": 201,
+    "wholeItemChangedRowsIncludingHoldRemoval": 16,
+    "wholeItemUnchangedRows": 198,
+    "nativeProjectionExactRows": 212,
+    "legacyOriginalProjectionExactFallbackRows": 2,
+    "rootRendererHolds": 3,
+    "mainRendererHolds": 0,
+    "samePayloadRootHoldsToPreserve": 2,
+    "changedSourceRootHoldRequiringRepairClosure": 1,
+    "rootMetadataOverlaySourceFiles": 1,
+    "rootMetadataOverlayRows": 2,
+    "upstreamChangedSourceQuestions": 1,
+    "upstreamChangedAssetFiles": 0,
+    "referencedAssetCountsPerSourceTotal": 243,
+    "uniqueAssetPathsInRootMainUnion": 244
+  },
+  "normalization": {
+    "importPath": "tools/4slot/import-4slot.cjs",
+    "rawSha256": "e679d3b6440d7acb009f9eae28213a76fa8fae5b070e4d1aaa13da5421e12a9d",
+    "lookupPath": "tools/4slot/validate-4slot.cjs",
+    "lookupRawSha256": "8f35827437b4ae5e5a063f5968a5f23069fbc1e28244c2a8cab9c367d7a9edc7",
+    "dictionaryPath": "docs/architecture/4slot/term-dictionary-v1.6.json",
+    "rootAndMainDictionaryEqual": true,
+    "sourceOrdinalJoin": "Actual source identities from sourceLocatorMap; index+1 not assumed",
+    "originalNativeValuesExactForAll13": true,
+    "all214FormatsCandidatesReviewedByPreserved": true,
+    "fallbacks": [
+      {
+        "sourceOrdinal": 1,
+        "displayOrdinal": 1,
+        "questionUid": "qid_v1_8cccf8bbac380a7af59a08ca15145bb47585a4652dcf42387650e5e38e1bb52c",
+        "slot": "given",
+        "retainedIds": [
+          410
+        ],
+        "unapprovedCandidate": "삼각기둥",
+        "originalItemStableSha256": "84fef29dff5aaf1fd0a5cd6863c843c48b8f68967fecf1b3e153499c8fd396d3",
+        "declaredOriginalItemSha256": "84fef29dff5aaf1fd0a5cd6863c843c48b8f68967fecf1b3e153499c8fd396d3",
+        "originalItemHashExact": true,
+        "originalAuthorEntryExact": true,
+        "nativeSpecificEntryExact": true,
+        "rootMainWholeCompactItemExact": true,
+        "originalAuthorWholeProjectionExact": true,
+        "currentNativeProjectionDifferenceFields": [
+          "given"
+        ],
+        "currentItemStableSha256": "c4c5edb36268f323411da4352b1634598b966296c5902147a713389a60317c5d",
+        "candidateApproval": "NOT_GRANTED",
+        "ordinarySearchEligibilityChanged": false,
+        "newRegistrationHold": false
+      },
+      {
+        "sourceOrdinal": 2,
+        "displayOrdinal": 2,
+        "questionUid": "qid_v1_7c9d598bba3366f93955cd82474ee50bb1abeed074102cee59b7e02b952409d7",
+        "slot": "method",
+        "retainedIds": [
+          289
+        ],
+        "unapprovedCandidate": "축척",
+        "originalItemStableSha256": "1f9aebeb58fa958147b7d2dcd8230dedce05c5e670c879539de405a5e1b93863",
+        "declaredOriginalItemSha256": "1f9aebeb58fa958147b7d2dcd8230dedce05c5e670c879539de405a5e1b93863",
+        "originalItemHashExact": true,
+        "originalAuthorEntryExact": true,
+        "nativeSpecificEntryExact": true,
+        "rootMainWholeCompactItemExact": true,
+        "originalAuthorWholeProjectionExact": true,
+        "currentNativeProjectionDifferenceFields": [
+          "method"
+        ],
+        "currentItemStableSha256": "c7e7370a062fd7e652db6f45c4c90099aa0ad8f62a19bc268da5f0f9898ba4f7",
+        "candidateApproval": "NOT_GRANTED",
+        "ordinarySearchEligibilityChanged": false,
+        "newRegistrationHold": false
+      }
+    ],
+    "newSemanticApprovals": 0
+  },
+  "rows": [
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "c8fcf81a74ca3ced6da46ae697a9f654cfa800c9",
+          "sha256": "5e4ac7fcacb254aa590877056273dc7807be0c910a29c0e76f18558f72ecb60b",
+          "bytes": 4868
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "9d6f7a4e26c9a1799d49a159eeb6aa57eb19ed5a",
+          "sha256": "f80f151f12c4d604186291c394b6149285c641cbf8d1cedd6929e371bc4b69d4",
+          "bytes": 8898
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "4fc733705b691c9e934236bb1fe10f5f306db194",
+          "sha256": "a9b985f5438734e4c09a2d62dac543d4d13aca511174be7c5a54f51ff28eba36",
+          "bytes": 3877
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "41496688f246118f838f407b2e446174c14ee060",
+          "sha256": "0202f2ced6016260753dc115010638bc9aa0ad8a7572565fcc0becd3b9653091",
+          "bytes": 40880,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "41496688f246118f838f407b2e446174c14ee060",
+          "sha256": "0202f2ced6016260753dc115010638bc9aa0ad8a7572565fcc0becd3b9653091",
+          "bytes": 40880,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "41496688f246118f838f407b2e446174c14ee060",
+          "sha256": "0202f2ced6016260753dc115010638bc9aa0ad8a7572565fcc0becd3b9653091",
+          "bytes": 40880,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": true,
+      "itemsSha256": {
+        "root": "285d28d71ec4df748e88b71b69e0f35088f1a6d4e234f56c36f1b72b179dfd24",
+        "main": "285d28d71ec4df748e88b71b69e0f35088f1a6d4e234f56c36f1b72b179dfd24"
+      },
+      "changedHeaderFields": [
+        "evidence"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E003/accepted-four-slot.json",
+        "sha256": "5112b2715c62304cd95922d38906328c41bf68f25d3ee01a039a6c4b5ee58d80"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 0,
+      "mainHoldCount": 0,
+      "rootHolds": [],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 10,
+        "main": 10
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+            "path": "docs/operations/m2-s1-meta-full-20261114/exams/E003/accepted-four-slot.json"
+          },
+          {
+            "at": "evidence.currentRendererScopedContinuity",
+            "schemaVersion": "m2s1-current-renderer-four-slot-scoped-continuity-v1",
+            "commit": "8f07814cad772f24ff8c8a0591838e1334ae8d74",
+            "path": "docs/operations/m2s1-current-renderer-20261115/scoped-continuity-review.json",
+            "sha256": "d37f117d183bfd927a0bda13150277dfedf7475f8fabd2e2ff9aaeaf46ed6028"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+            "path": "docs/operations/m2-s1-meta-full-20261114/exams/E003/accepted-four-slot.json"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-e003-four-slot/e003-four-slot-current-continuity-independent.r1.json",
+            "sha256": "bf32e0fa0f74f2da7c8ebb7d8249b59d41686d5008de45c8b80f58d36bd3258d"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+            "path": "docs/operations/m2-s1-meta-full-20261114/exams/E003/accepted-four-slot.json",
+            "sha256": "5112b2715c62304cd95922d38906328c41bf68f25d3ee01a039a6c4b5ee58d80"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeCurrentRef",
+            "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+            "path": "docs/operations/m2-s1-meta-full-20261114/exams/E003/CURRENT.json",
+            "sha256": "9a444a2283f342c8ea57ec77e835e12faee5eaa34aa332c032f5f304b139bdbf"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PREFER_EXACT_MAIN_COMPACT",
+        "why": "24 full items, reviewedBy, source and referenced assets unchanged; preserve owner current-continuity evidence."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+          "gitBlobSha1": "6c3e2cdfbac5150381dcd0cf8b89641c449c4ffa",
+          "sha256": "a5a8a4d63fb31ee6c6c62826a61bad9c9b54d6c092a05d713303d50e1a36350c",
+          "bytes": 4970
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+          "gitBlobSha1": "f118566591f075554a0dff4676b52a3e84413df3",
+          "sha256": "93550b6a9b88ec9e34641fdc9e6424955ea788731151d8d0e5d76a8bc93a06d1",
+          "bytes": 8479
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+          "gitBlobSha1": "291adc0a7c718cb3850a1de334a32521cf9f391a",
+          "sha256": "18ff89486d35ca3a75669d18e17ea57590d06ff7046b02cf602698f4b9e7a664",
+          "bytes": 3979
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+          "sha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+          "bytes": 43051,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": false
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+          "sha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+          "bytes": 43051,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+          "sha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+          "bytes": 43051,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": true,
+      "itemsSha256": {
+        "root": "c5d5e850b9e0ad8a3cc6302f378433d1b168fd91c157e55ddf6654bbd51e900d",
+        "main": "c5d5e850b9e0ad8a3cc6302f378433d1b168fd91c157e55ddf6654bbd51e900d"
+      },
+      "changedHeaderFields": [
+        "evidence",
+        "sourceGitBlobSha"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json",
+        "sha256": "049ff85aeb2c5ccde47562ebdbb5418f44a38a2265406625ebaaf8521eadad2f"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 0,
+      "mainHoldCount": 0,
+      "rootHolds": [],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 5,
+        "main": 5
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+            "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json"
+          },
+          {
+            "at": "evidence.currentRendererScopedContinuity",
+            "schemaVersion": "m2s1-current-renderer-four-slot-scoped-continuity-v1",
+            "commit": "8f07814cad772f24ff8c8a0591838e1334ae8d74",
+            "path": "docs/operations/m2s1-current-renderer-20261115/scoped-continuity-review.json",
+            "sha256": "d37f117d183bfd927a0bda13150277dfedf7475f8fabd2e2ff9aaeaf46ed6028"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+            "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-e007-four-slot/e007-four-slot-current-continuity-independent.r1.json",
+            "sha256": "cf999a5b5950a74b9a0b693fda0ea19031634b86c81eafbbd2d309b9566d81b1"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+            "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json",
+            "sha256": "049ff85aeb2c5ccde47562ebdbb5418f44a38a2265406625ebaaf8521eadad2f"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeCurrentRef",
+            "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+            "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/CURRENT.json",
+            "sha256": "665ac9b589cb159dd33f75c1697bea0a9c025b9ef0cdfc34c44f85b31b7c9024"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PREFER_EXACT_MAIN_COMPACT",
+        "why": "24 full items unchanged; main corrects the compact source binding to the source bytes already present in ROOT and main."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "7204acdfbf167ca84fb8497e4f13396ecbf7cc3f",
+          "sha256": "5973e5fce7a2ea531f3ad3d2163434c6c4c1398d3c41e03df06f23a5415375f5",
+          "bytes": 9059
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "675999403ef8d5531aa96bb5526c9ab9ea11f8c7",
+          "sha256": "d902c64ad8a8cd0259436ea66e62a4ceff089b5b6b0cf3fc008b71ab3d9bce4c",
+          "bytes": 10160
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "0754d32c253ecfd66108a43fc61eb85a9cb021b9",
+          "sha256": "4ccec1af76e99f5b6a38b77991aa32d3b772f418b867889de080791c14c3334e",
+          "bytes": 4337
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "d39a3350f54b586a8d6e08bef4718f374eb29405",
+          "sha256": "b6cd012533b5e78e196e2a45ff09098cf002a0de85ce800515fba171e3d62fc9",
+          "bytes": 64217,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "d39a3350f54b586a8d6e08bef4718f374eb29405",
+          "sha256": "b6cd012533b5e78e196e2a45ff09098cf002a0de85ce800515fba171e3d62fc9",
+          "bytes": 64217,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "d39a3350f54b586a8d6e08bef4718f374eb29405",
+          "sha256": "b6cd012533b5e78e196e2a45ff09098cf002a0de85ce800515fba171e3d62fc9",
+          "bytes": 64217,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": false,
+      "itemsSha256": {
+        "root": "0dd9e38d5cd123a8157b8c89aefa11eb26c306ff3857fb69e5e02b9d71bf9c6c",
+        "main": "fe65af25970ca6f397b08ee573867bf08931a0559bf65310536bfb54cd86e72b"
+      },
+      "changedHeaderFields": [
+        "evidence"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E021/four-slot.json",
+        "gitBlobSha1": "54ccac9116e37eb3812966e072263a62bc26a098",
+        "sha256": "388d1c1cf8241fd18fcfcb030734e86850e14d7647691b6e5135061d0ad91ce4"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [
+        {
+          "ordinal": 5,
+          "sourceOrdinal": 5,
+          "changedFields": [
+            "condition"
+          ],
+          "oldVectorSha256": "11ba3fa4d77e9c82cbfdea80d79ca2d74d833dfcf898108df7607a4cf2f977c4",
+          "mainVectorSha256": "5c8dcb0d92c80e947e77a83dffe8cd155fb610d469f0edfbcd16575c164c88e3",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 14,
+          "sourceOrdinal": 14,
+          "changedFields": [
+            "condition"
+          ],
+          "oldVectorSha256": "bea6554a231559aacbe99f0b918751fdc33d9e9164a213eff93eadb46209a9b9",
+          "mainVectorSha256": "bfd89e1f33dccfb932ac0c31c0760fd004b50eab2a4c9277e107215f2481e436",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 15,
+          "sourceOrdinal": 15,
+          "changedFields": [
+            "given"
+          ],
+          "oldVectorSha256": "392c5906c8c93416c5b90196982169651f9bc3d856cef141769732c43775d457",
+          "mainVectorSha256": "362abf3a1a5acf0fb57c292fe126af4bd76de67ee57191a4ea51ee11273391bd",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 16,
+          "sourceOrdinal": 16,
+          "changedFields": [
+            "given",
+            "condition"
+          ],
+          "oldVectorSha256": "efec73b930fb7be66c9e9890cd43b849328e5b088aebfe64c94ee1d2c0b255f1",
+          "mainVectorSha256": "0d4a1eb17318ac7b88d7f852ca26a63228fa012b23e99d1f5a1f48df84de7eed",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 18,
+          "sourceOrdinal": 18,
+          "changedFields": [
+            "condition"
+          ],
+          "oldVectorSha256": "778006f4b8dd62aa9ab8bb9e1e6eea6614b17b6b29654207f87c30de34b8f894",
+          "mainVectorSha256": "7ab14151d093d978ef9ac0fe17d7499a94d2b626c29493e4ec52b2e87b562829",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 19,
+          "sourceOrdinal": 19,
+          "changedFields": [
+            "condition"
+          ],
+          "oldVectorSha256": "b3a518bd791412cf217ffef91c321fe8094db45beaed4dc78130b32e33a136cc",
+          "mainVectorSha256": "353f78c6fa80e6376139920a69c22ff2d7d84f77bff90d2cc176dce237078171",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 23,
+          "sourceOrdinal": 23,
+          "changedFields": [
+            "given"
+          ],
+          "oldVectorSha256": "fcf0dcbab84b7e2b4b92eb2b72fa9324b9a9555e03022fa931890f3ead41bd04",
+          "mainVectorSha256": "0d6d4b11f1807b90a998b5e4ee49cbd0cf11eb2086b645b89cdb56b63d246472",
+          "mainEqualsNative": true
+        }
+      ],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 0,
+      "mainHoldCount": 0,
+      "rootHolds": [],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 32,
+        "main": 32
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+            "path": "archive-work/4slot-annotate-v1/out/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json"
+          },
+          {
+            "at": "evidence.importDelta.reviewRecord",
+            "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+            "path": "tools/4slot/bulk-delta-overrides.json",
+            "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.carrier",
+            "commit": "b5274cbdd5db87a8d860317302edebcacf219dc3",
+            "path": "docs/operations/m2s2-imported-current71-20261116/MAESAN23/m2-imported-four-slot-transport.json",
+            "sha256": "ab80bdbe9b8258d600baae031a81406ab3a207ee5671c4c5eb86e4832debad78"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.readInputs",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/read-inputs.json",
+            "sha256": "fbc72098df721f829d9bc9bdd9b511847b40408edabfc548f6abd98ba84996a9"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.observation",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/MAESAN23-actual-observations.json",
+            "sha256": "d71a3977d346af129d1b8e3fde3201076e9932fc6110374e63689f4241b82888"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.importAuthority",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/authority-import-delta-join.json",
+            "sha256": "124081e656fe6e2f67b0fe0f8425d1ce3546f514b722a033d881a69642e11f12"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+            "path": "archive-work/4slot-annotate-v1/out/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json"
+          },
+          {
+            "at": "evidence.importDelta.reviewRecord",
+            "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+            "path": "tools/4slot/bulk-delta-overrides.json",
+            "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e021-four-slot/s2-e021-four-slot-current-continuity-independent.r1.json",
+            "sha256": "3f0ffab238d849e85ecd7ee376b79e7603ba02d2937279024ce547d8c345eb4a"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E021/four-slot.json",
+            "gitBlobSha1": "54ccac9116e37eb3812966e072263a62bc26a098",
+            "sha256": "388d1c1cf8241fd18fcfcb030734e86850e14d7647691b6e5135061d0ad91ce4"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E021/root-acceptance.json",
+            "gitBlobSha1": "a10f4f28eac14910db5aae5be2e2ef332cf84b53",
+            "sha256": "a20641fcf687908618ce198f6c12d3b89ef6b6771acea1d035465cbed4575a58"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.existingApprovedNativeVectorTransportRef",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e021-four-slot/s2-e021-existing-approved-native-vector-transport.r1.json",
+            "sha256": "cc9e39a9952836375c156b01979444bc90e4d40bd8f58363e71c9cf380d5917a"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PREFER_EXACT_MAIN_COMPACT",
+        "why": "7 changed rows reproduce existing c286 native-approved vectors; all 24 full projections exact. Preserve original content-debt notes; no release is inferred."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+      "denominator": 23,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "3cad140032283fafea0c0aaf12097ff1331a1e9f",
+          "sha256": "25d3c4ce345520424fa2cf326df0985f01bd43198ab8f721548f3aad20eea3e1",
+          "bytes": 11194
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "5ce69fac16d1a1e10cba4a3d22f2299cbddaae9a",
+          "sha256": "b83343978fd3ff21cd79d6823fbeca529f585b6291833b0b2fae82c2a0a98079",
+          "bytes": 10033
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "1ca5938a13a59df4e8493cce144f4aedcc8b6a9d",
+          "sha256": "31dd640d09ff52fc405f360824ebd4692d539ee3b43c18d0941cb6613150ca9b",
+          "bytes": 4282
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "c4936e7740e90e524300f2eaf983b0443a0362f6",
+          "sha256": "2313deac64ad6dcdb2a9a94ac83edfb2ea21e02877fab22a46e7928409894998",
+          "bytes": 60058,
+          "questionCount": 23,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "c4936e7740e90e524300f2eaf983b0443a0362f6",
+          "sha256": "2313deac64ad6dcdb2a9a94ac83edfb2ea21e02877fab22a46e7928409894998",
+          "bytes": 60058,
+          "questionCount": 23,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "c4936e7740e90e524300f2eaf983b0443a0362f6",
+          "sha256": "2313deac64ad6dcdb2a9a94ac83edfb2ea21e02877fab22a46e7928409894998",
+          "bytes": 60058,
+          "questionCount": 23,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": false,
+      "itemsSha256": {
+        "root": "f06f614b2caa1cac4fc04c914b9af577a0bf23494e7aea982dfe389208d80b6f",
+        "main": "e159f765e81ebce600a0cd3b4eba7a191e1bdd4f4062f40215a27fcf5e7bc23c"
+      },
+      "changedHeaderFields": [
+        "evidence"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/four-slot.json",
+        "gitBlobSha1": "5ed163a73aa33ddabbda61aa4dfaa09e3400b2b3",
+        "sha256": "28a8ca28bfc802d099c89063781a2a8df12708d1a25f59037e25e869432472d2"
+      },
+      "mainFullNativeProjectionExact": false,
+      "legacyFallbackExceptions": [
+        {
+          "sourceOrdinal": 1,
+          "slot": "given",
+          "retainedIds": [
+            410
+          ],
+          "currentItemStableSha256": "c4c5edb36268f323411da4352b1634598b966296c5902147a713389a60317c5d"
+        },
+        {
+          "sourceOrdinal": 2,
+          "slot": "method",
+          "retainedIds": [
+            289
+          ],
+          "currentItemStableSha256": "c7e7370a062fd7e652db6f45c4c90099aa0ad8f62a19bc268da5f0f9898ba4f7"
+        }
+      ],
+      "vectorChangedRows": [
+        {
+          "ordinal": 3,
+          "sourceOrdinal": 3,
+          "changedFields": [
+            "given"
+          ],
+          "oldVectorSha256": "52dc367c96a7370c3b76d4b7af24efe7f5dbbf4ca175991d2393084b135cddee",
+          "mainVectorSha256": "b50240d577259a702d8a5f1427d8c10f2c35c6c6f6b268dae6563f9ff67ea813",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 7,
+          "sourceOrdinal": 7,
+          "changedFields": [
+            "given"
+          ],
+          "oldVectorSha256": "3ee5363865a21ece4ea23148c43839c086beb09c6ac74342af59630aa39c0c25",
+          "mainVectorSha256": "7a25eaf98ae0604678d7089716ff18136564b155cb37fb3cc99fb0a795d0c195",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 21,
+          "sourceOrdinal": 21,
+          "changedFields": [
+            "given"
+          ],
+          "oldVectorSha256": "92f0fbce450a0093732a2b4190f6579189c59fe0b49212079a6bc2996ec5bb3a",
+          "mainVectorSha256": "8ed8ce6ee11799fadac5c22892cad1204db6df624cf1bbd61362de378e78ef74",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 23,
+          "sourceOrdinal": 23,
+          "changedFields": [
+            "condition"
+          ],
+          "oldVectorSha256": "5c4bfc39a4a3ed0967763e8a406d84240c5254a013e46cd8f909aef52f798372",
+          "mainVectorSha256": "e44c79fc634a21b426dabd2911da1c9c5808d22c5f59aaaf6b4894d6edeeb141",
+          "mainEqualsNative": true
+        }
+      ],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 1,
+      "mainHoldCount": 0,
+      "rootHolds": [
+        {
+          "arrayIndex": 11,
+          "locator": {},
+          "field": "registrationHold",
+          "value": {
+            "schemaVersion": "4slot-m2s2-imported-current-renderer-hold-v1",
+            "reason": "SOURCE_RENDERER_CORRECTION_PENDING"
+          },
+          "valueSha256": "632628950a7390a2c59db778d3abbff2c852e86abf61affce9f04052d3d915a8"
+        }
+      ],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 35,
+        "main": 35
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+            "path": "archive-work/4slot-annotate-v1/out/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json"
+          },
+          {
+            "at": "evidence.importDelta.reviewRecord",
+            "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+            "path": "tools/4slot/bulk-delta-overrides.json",
+            "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.carrier",
+            "commit": "b5274cbdd5db87a8d860317302edebcacf219dc3",
+            "path": "docs/operations/m2s2-imported-current71-20261116/SINHEUNG23/m2-imported-four-slot-transport.json",
+            "sha256": "110ccb8e52f75e4b859bc4a8c315be07e15912cdc4a9fc0d5e34c7d5c6cff2ed"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.readInputs",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/read-inputs.json",
+            "sha256": "fbc72098df721f829d9bc9bdd9b511847b40408edabfc548f6abd98ba84996a9"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.observation",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/SINHEUNG23-actual-observations.json",
+            "sha256": "3a7dd9ffb2e0e0ba4a58eef56d64221636abffbd63ffe17e264948a99d8cd9b0"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.rootFollowup",
+            "commit": "f6d8f94d35de2459fb3bfb344e9bff339253c84a",
+            "path": "docs/operations/m2s2-new95-current-followup-20261116/root-independent-observation.json",
+            "sha256": "16a93606c6d6b5fdab1fc9d216033b8e2dd4fa1bd3eb4691330970e4bdc9d21e"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.importAuthority",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/authority-import-delta-join.json",
+            "sha256": "124081e656fe6e2f67b0fe0f8425d1ce3546f514b722a033d881a69642e11f12"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+            "path": "archive-work/4slot-annotate-v1/out/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json"
+          },
+          {
+            "at": "evidence.importDelta.reviewRecord",
+            "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+            "path": "tools/4slot/bulk-delta-overrides.json",
+            "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e022-four-slot/s2-e022-four-slot-current-continuity-independent.r1.json",
+            "sha256": "3781d1c0be5a698a439faee6604bfff459e69bf354555eb250ef2d528cfbde29"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/four-slot.json",
+            "gitBlobSha1": "5ed163a73aa33ddabbda61aa4dfaa09e3400b2b3",
+            "sha256": "28a8ca28bfc802d099c89063781a2a8df12708d1a25f59037e25e869432472d2"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/root-acceptance.json",
+            "gitBlobSha1": "d1f8f179e764532597fa32127e5edc193dcacd6b",
+            "sha256": "61065952f2a0c032a849a9e56176bc85f7acbb9b1de27e041b62a15d8261a5eb"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.existingApprovedNativeVectorTransportRef",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e022-four-slot/s2-e022-existing-approved-native-vector-transport.r1.json",
+            "sha256": "99cb333ad8c39771d7328831a83d3d745ca1d688ded75def7af8f584e86ae624"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PRESERVE_MAIN_NATIVE_VECTOR_AUTHORITY_AND_ROOT_Q12_HOLD; DIRECT_RAW_SELECTION_BLOCKED",
+        "why": "4 existing native vector corrections are valid transports; 2 legacy fallback rows remain exact. The unchanged current source/assets cannot extinguish ROOT Q12 negative evidence.",
+        "required": "Keep exact original negative proof and HOLD, with a truthful carrier supporting main native vectors plus the two legacy fallbacks. Do not splice the old full-vector carrier or infer a successful builder result."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "4e1df2f234e793534e15077116e224b87b78a38c",
+          "sha256": "1188df1b59833f3c2ce364f7dfd2fdefce61288cf91c438bcedfcc94937cc1b8",
+          "bytes": 9471
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "a21b5f8003d24a2fbfe9f43897bdc7f9b44db72e",
+          "sha256": "bbfe5bc5344c691067eb609b5c860ba3990a73e77efda094004a8c87553c4502",
+          "bytes": 10020
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+          "gitBlobSha1": "006f63ff7016ef9d9d46e74fdd299ee8732d7fe2",
+          "sha256": "22bfa8f218bc01d849e4f6b171347615b186061b4ba138b46fc8580db5bdcab1",
+          "bytes": 4347
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "65343410134ecaabed3ffbc6d1cd114ce0121309",
+          "sha256": "3a11190a186b906f91d726652d871fcd827f0e93989ba6fea6ea6042f6595819",
+          "bytes": 64180,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "f0cd94780d1f2c277bad52142cfa20cb932e0e96",
+          "sha256": "e3eea28235f0054b79858ad6451af0a82c94ffb9ab7470f481710519a2887cdf",
+          "bytes": 63986,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "f0cd94780d1f2c277bad52142cfa20cb932e0e96",
+          "sha256": "e3eea28235f0054b79858ad6451af0a82c94ffb9ab7470f481710519a2887cdf",
+          "bytes": 63986,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": false,
+      "itemsSha256": {
+        "root": "2640290997557f2d1568d1a8e2bfdf68392e2c71b1c4f9bcea418359c8b827f8",
+        "main": "88b94cb274541868a3c2a1c2cd0c69701d4eb2e8d34f7a79bc68793c3a4d154a"
+      },
+      "changedHeaderFields": [
+        "evidence",
+        "sourceGitBlobSha"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/four-slot.json",
+        "gitBlobSha1": "d698e2519147a451a54184bd70e6f7a1434a5335",
+        "sha256": "5a0a1795a0c8cad9cf5f9785ded3d65179f2ff440f91d355a1704aef9e02e7db"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [
+        {
+          "ordinal": 20,
+          "sourceOrdinal": 20,
+          "changedFields": [
+            "method"
+          ],
+          "oldVectorSha256": "a528b44d9ed8600cb97dd784d6421a2e0ce5fb5f59a107c8fb25efd829b38749",
+          "mainVectorSha256": "8c603be43ef755644a115b8a7aaf8557325a8c11eb224cf480a502f60499e55f",
+          "mainEqualsNative": true
+        },
+        {
+          "ordinal": 24,
+          "sourceOrdinal": 24,
+          "changedFields": [
+            "method"
+          ],
+          "oldVectorSha256": "5d210f041ad77e1fd3750445e63ad36564d098837286514a033e3dd8c76347f6",
+          "mainVectorSha256": "9ae1cc836f122cb8a6a3e5de2e632da07e649dc3828315fb3259f4a174657037",
+          "mainEqualsNative": true
+        }
+      ],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 0,
+      "mainHoldCount": 0,
+      "rootHolds": [],
+      "rootToMainQuestionChanges": [
+        {
+          "sourceOrdinal": 3,
+          "sourceId": 3,
+          "sourceNumber": null,
+          "sourceQuestionNo": null,
+          "changedFields": [
+            "curriculumKey",
+            "courseKey",
+            "crossConceptKeys"
+          ],
+          "studentChangedFields": [],
+          "beforeWholeSha256": "2fa48b9b61c785451cd5ea66e6b4901efdac0904cd02441a2a982fe9577ebd0e",
+          "afterWholeSha256": "e8cde225d26e03e48ad8be36c415be14b5153568f7919b5b09c4b3e6058fbc63",
+          "beforeStudentSha256": "8db4fa2272668719f6c305b458880811582ffe01e124d96ccdd9f0b1d9f784b8",
+          "afterStudentSha256": "8db4fa2272668719f6c305b458880811582ffe01e124d96ccdd9f0b1d9f784b8"
+        },
+        {
+          "sourceOrdinal": 21,
+          "sourceId": 21,
+          "sourceNumber": null,
+          "sourceQuestionNo": null,
+          "changedFields": [
+            "curriculumKey",
+            "courseKey",
+            "crossConceptKeys"
+          ],
+          "studentChangedFields": [],
+          "beforeWholeSha256": "4a08342e5523345b7f694b5f6fadbf4e666f70a7366d524964fdd98686f14208",
+          "afterWholeSha256": "741bd850fbd7a3b641dff35cbfc7bc939e55d5cab5aad5522406fe182cfce4a7",
+          "beforeStudentSha256": "8e7a8581d3240051542f08ff64f4366874e655438302926ab32df74676aa410d",
+          "afterStudentSha256": "8e7a8581d3240051542f08ff64f4366874e655438302926ab32df74676aa410d"
+        }
+      ],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 25,
+        "main": 25
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+            "path": "archive-work/4slot-annotate-v1/out/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json"
+          },
+          {
+            "at": "evidence.importDelta.reviewRecord",
+            "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+            "path": "tools/4slot/bulk-delta-overrides.json",
+            "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.carrier",
+            "commit": "b5274cbdd5db87a8d860317302edebcacf219dc3",
+            "path": "docs/operations/m2s2-imported-current71-20261116/YEONHYANG23/m2-imported-four-slot-transport.json",
+            "sha256": "e950327e7ce8d9d54dd05421ef70ba028e4ca90acbd710b5d2ebe0a547a24190"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.readInputs",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/read-inputs.json",
+            "sha256": "fbc72098df721f829d9bc9bdd9b511847b40408edabfc548f6abd98ba84996a9"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.observation",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/YEONHYANG23-actual-observations.json",
+            "sha256": "138a91fa87e249685fb864e096d436c1edcb13e1ccd736365cdc4f31dd76c8fc"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.importAuthority",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/raw/authority-import-delta-join.json",
+            "sha256": "124081e656fe6e2f67b0fe0f8425d1ce3546f514b722a033d881a69642e11f12"
+          },
+          {
+            "at": "evidence.currentM2ImportedContinuity.metadataOverlayRequest",
+            "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+            "path": "docs/operations/m2s2-imported-current71-20261116/existing-metadata-overlay-request.json",
+            "sha256": "e199254160e0a7c4169c1b42fa8acdb2a72daabf30e0e79783e6c7813edd58f8"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+            "path": "archive-work/4slot-annotate-v1/out/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json"
+          },
+          {
+            "at": "evidence.importDelta.reviewRecord",
+            "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+            "path": "tools/4slot/bulk-delta-overrides.json",
+            "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e023-four-slot/s2-e023-four-slot-current-continuity-independent.r1.json",
+            "sha256": "1609180684bdbb931b05e14898fcb6d685449a2d59c3e5a6717a382adb41cbbd"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/four-slot.json",
+            "gitBlobSha1": "d698e2519147a451a54184bd70e6f7a1434a5335",
+            "sha256": "5a0a1795a0c8cad9cf5f9785ded3d65179f2ff440f91d355a1704aef9e02e7db"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/root-acceptance.json",
+            "gitBlobSha1": "88eb61cfaa51c5c2f7f30276a65b94636713cc00",
+            "sha256": "d7b64c2e4db235057552fb48806e5a0c7ae01d9284e1ac98cbbb0e26d9d7a537"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.existingApprovedNativeVectorTransportRef",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e023-four-slot/s2-e023-existing-approved-native-vector-transport.r1.json",
+            "sha256": "b45623e9c06925cbdaa9c33be0f62f3b01d9d8a828e6f890713ae79f3d22e915"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PRESERVE_MAIN_NATIVE_VECTORS_AND_ROOT_SOURCE_METADATA_OVERLAY; DIRECT_RAW_SELECTION_BLOCKED",
+        "why": "2 method-row changes reproduce c286 approval. Current ROOT source retains previously approved Q3/Q21 metadata; main source omits that overlay.",
+        "required": "Retain the exact two source metadata overlays and their immutable request. Bind new owner vector authority to the actual retained source using the authorized metadata-continuity contract; no bare source hash reseal."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "1100c441da786d984b3b1ba3440959df68844506",
+          "sha256": "2f0a51995683c84b08e1e0a303dd09296ff9fae480c27c3a66d9b7634a2f40b7",
+          "bytes": 8839
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "7b40c0c19c0e70f79a31d3d0649a0d7b62ce47c4",
+          "sha256": "f317d82658e3fe56df78faa44c44768e3ea77b277b6d302d5a19d19f05f3644e",
+          "bytes": 9484
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "bacb81924857b144d0e6fd8f8964520fdc0aaeac",
+          "sha256": "5e6967507ad148d88cc65306b01c570f3da4b887df16043d0233607b032bff1e",
+          "bytes": 4493
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "40fac8532d52c2b308708f6a0769005029bb7565",
+          "sha256": "b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4",
+          "bytes": 75142,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "40fac8532d52c2b308708f6a0769005029bb7565",
+          "sha256": "b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4",
+          "bytes": 75142,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "40fac8532d52c2b308708f6a0769005029bb7565",
+          "sha256": "b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4",
+          "bytes": 75142,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": true,
+      "itemsSha256": {
+        "root": "666b5072d9bd25a53a5b42e2de2ca98c54dcbf9b44ec41f0b0bf28c83e42a6dd",
+        "main": "666b5072d9bd25a53a5b42e2de2ca98c54dcbf9b44ec41f0b0bf28c83e42a6dd"
+      },
+      "changedHeaderFields": [
+        "evidence"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/four-slot.json",
+        "gitBlobSha1": "2c60f3c7e3552e7862f3aff5272332e22875ee63",
+        "sha256": "a06a2d964aaf82cf216967340f873427605958937869b908292c38763e5527ad"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 0,
+      "mainHoldCount": 0,
+      "rootHolds": [],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 46,
+        "main": 46
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/four-slot.json",
+            "sha256": "a06a2d964aaf82cf216967340f873427605958937869b908292c38763e5527ad"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/root-acceptance.json",
+            "sha256": "2771192e394026d8bf211b6731f74d42cd869ab3410a895ab6d901ea75c03648"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/independent-sample.json",
+            "sha256": "983159846d1e74b02620087ac4e20e0d077f0493942635215594400e6cb4c3d7"
+          },
+          {
+            "at": "evidence.currentM2Continuity.carrier",
+            "commit": "515e70abb89136a8bacee24a68f1e6197f7caf0a",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E015/m2-current-four-slot-transport.json",
+            "sha256": "7a80b15aae70176ed8f52fedc969c0661fe8f6bc96c9aa9f34dc5a48c1e79016"
+          },
+          {
+            "at": "evidence.currentM2Continuity.observation",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E015-current-vector-observation.json",
+            "sha256": "2d060d40f6521bb16789e7fb92b9176edd68b64fd000cd5c7fc953dd1db6286d"
+          },
+          {
+            "at": "evidence.currentM2Continuity.rootClosure",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/m2-current-four-slot-root-closure.json",
+            "sha256": "3b2cfd55138f21bd8f890cf696e0756ad7b44eabfaae08774d3dcf7126bfac47"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/four-slot.json",
+            "sha256": "a06a2d964aaf82cf216967340f873427605958937869b908292c38763e5527ad"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/root-acceptance.json",
+            "sha256": "2771192e394026d8bf211b6731f74d42cd869ab3410a895ab6d901ea75c03648"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/independent-sample.json",
+            "sha256": "983159846d1e74b02620087ac4e20e0d077f0493942635215594400e6cb4c3d7"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e015-four-slot/s2-e015-four-slot-current-continuity-independent.r1.json",
+            "sha256": "131a8fafe38f02361c58ae3052a637b9932c8846c7364abfbaae9a9090f0a8b1"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/four-slot.json",
+            "gitBlobSha1": "2c60f3c7e3552e7862f3aff5272332e22875ee63",
+            "sha256": "a06a2d964aaf82cf216967340f873427605958937869b908292c38763e5527ad"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/root-acceptance.json",
+            "gitBlobSha1": "7695fe82544523b7c3e010d87245bb1c1bdbeffe",
+            "sha256": "2771192e394026d8bf211b6731f74d42cd869ab3410a895ab6d901ea75c03648"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PREFER_EXACT_MAIN_COMPACT",
+        "why": "24 full items, reviewedBy, source and referenced assets unchanged; owner current-continuity evidence preserved."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+      "denominator": 23,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "4714c3efd63fc8902caf6c006b89d04583bd064b",
+          "sha256": "146b748941e38d7117a5952bbda7f699c36139c830aaf39d8f1db123eecb9886",
+          "bytes": 10311
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "72535e78c0652d1be4b0b66e20208ddf0e7eba52",
+          "sha256": "404a4ba2483b81e5c10954915ac144d2fd09e37838a854b00ac13e5c9f7a9758",
+          "bytes": 9204
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+          "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+          "bytes": 4316
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+          "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+          "bytes": 66448,
+          "questionCount": 23,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "41e074035e7ab7558bc1ae89820a2a60ebe3c806",
+          "sha256": "22c605bd1b96618563f72e48d5428ee4f5c6226e22e94d668c7ad9bb8e53449c",
+          "bytes": 66329,
+          "questionCount": 23,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+          "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+          "bytes": 66448,
+          "questionCount": 23,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": false,
+      "itemsSha256": {
+        "root": "7e71d04a52c3aa7b50ffe8ac17a656d1378a72355d1ec094fe7a472432d21bb9",
+        "main": "cf68924e71375f6264f122b456b147ed2d8aa6f53538c2606ef4b3954d1dbe29"
+      },
+      "changedHeaderFields": [
+        "evidence",
+        "sourceGitBlobSha"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+        "gitBlobSha1": "e6683bdb6009f840849dcfc8e942d260b4ad5c43",
+        "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 1,
+      "mainHoldCount": 0,
+      "rootHolds": [
+        {
+          "arrayIndex": 1,
+          "locator": {},
+          "field": "registrationHold",
+          "value": {
+            "schemaVersion": "4slot-m2s2-current-renderer-hold-v1",
+            "reason": "SOURCE_RENDERER_CORRECTION_PENDING"
+          },
+          "valueSha256": "dad48b2b3c9482f2e93e643200bf39e050cdd8f50193298e6bf27d5ed06c89fb"
+        }
+      ],
+      "rootToMainQuestionChanges": [
+        {
+          "sourceOrdinal": 2,
+          "sourceId": 2,
+          "sourceNumber": null,
+          "sourceQuestionNo": null,
+          "changedFields": [
+            "imageSize",
+            "imageAlt",
+            "layoutTag",
+            "solution",
+            "image"
+          ],
+          "studentChangedFields": [
+            "imageSize",
+            "imageAlt",
+            "layoutTag",
+            "solution",
+            "image"
+          ],
+          "beforeWholeSha256": "20a99cd2a1363d44ad9033982102491aff790ef4fe5b187f07bb04dfaa476a51",
+          "afterWholeSha256": "14ad87759519661f8b0c39ff681707e92a27a4e70c58aeb1403c2db652c13a78",
+          "beforeStudentSha256": "64d8123f5075e7a77ca9353e65a4f765114717c300c8df23d6c8b91ed3b75fa1",
+          "afterStudentSha256": "5f0314180ef03f296ff580c7d673a3117081cc4d8437caa3b4c50e728c1ce8c7"
+        }
+      ],
+      "upstreamQuestionChanges": [
+        {
+          "sourceOrdinal": 2,
+          "sourceId": 2,
+          "sourceNumber": null,
+          "sourceQuestionNo": null,
+          "changedFields": [
+            "imageSize",
+            "imageAlt",
+            "layoutTag",
+            "solution",
+            "image"
+          ],
+          "studentChangedFields": [
+            "imageSize",
+            "imageAlt",
+            "layoutTag",
+            "solution",
+            "image"
+          ],
+          "beforeWholeSha256": "20a99cd2a1363d44ad9033982102491aff790ef4fe5b187f07bb04dfaa476a51",
+          "afterWholeSha256": "14ad87759519661f8b0c39ff681707e92a27a4e70c58aeb1403c2db652c13a78",
+          "beforeStudentSha256": "64d8123f5075e7a77ca9353e65a4f765114717c300c8df23d6c8b91ed3b75fa1",
+          "afterStudentSha256": "5f0314180ef03f296ff580c7d673a3117081cc4d8437caa3b4c50e728c1ce8c7"
+        }
+      ],
+      "referencedAssetCounts": {
+        "root": 33,
+        "main": 33
+      },
+      "referencedAssetDifferences": [
+        {
+          "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+          "root": null,
+          "main": {
+            "gitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+            "sha256": "c667a734e5183fe1949d991592cef0c3c6934715482100988cdc621d43b9a866",
+            "bytes": 20730,
+            "missing": false
+          },
+          "referencedByRoot": [],
+          "referencedByMain": [
+            2
+          ],
+          "sameReferencedBytes": false
+        },
+        {
+          "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
+          "root": {
+            "gitBlobSha1": "bab4a51959bbc52cec399fbae555456bf47fdb33",
+            "sha256": "6f55717ce71daa79ea233874a3dcde73803364b2a025598026b7c2bc426a6d63",
+            "bytes": 3572,
+            "missing": false
+          },
+          "main": null,
+          "referencedByRoot": [
+            2
+          ],
+          "referencedByMain": [],
+          "sameReferencedBytes": false
+        }
+      ],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+            "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          {
+            "at": "evidence.currentM2Continuity.carrier",
+            "commit": "515e70abb89136a8bacee24a68f1e6197f7caf0a",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E017/m2-current-four-slot-transport.json",
+            "sha256": "e7b600791550b18434608b1b919667d49f84ca5fb77be8e1e04be1df1aff6336"
+          },
+          {
+            "at": "evidence.currentM2Continuity.observation",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E017-current-vector-observation.json",
+            "sha256": "b2ba4f0e41e286d808fd28d63c0f9a0ced41823c5ea799839fbea54e975b9e62"
+          },
+          {
+            "at": "evidence.currentM2Continuity.rootClosure",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/m2-current-four-slot-root-closure.json",
+            "sha256": "3b2cfd55138f21bd8f890cf696e0756ad7b44eabfaae08774d3dcf7126bfac47"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+            "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2s2-e017-four-slot/e017-four-slot-native-rhs-continuity-independent.r2.json",
+            "sha256": "7c03bbfe4a14e82db3a0d32a95423b6a9b9156b56e3fe5e3f0d5ed0ab00382c6"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+            "gitBlobSha1": "e6683bdb6009f840849dcfc8e942d260b4ad5c43",
+            "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "gitBlobSha1": "352883823b49db9b4c5a67f5a4e9b87f70b9cbf3",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PRESERVE_MAIN_REPAIRED_SOURCE_AND_OWNER_R2_AUTHORITY; ROOT_HOLD_CLOSURE_PENDING",
+        "why": "Q2 now references the exact approved native PNG and changes only the specified presentation fields and exact first solution line; other 22 whole questions and all 23 vectors unchanged.",
+        "required": "ROOT assesses the actual repaired Q2 boundary and records the applicable negative-history closure. Existing same-renderer claim is not used. Prior negative evidence stays historical; no new actual review is claimed here."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "4d6cbde19ee19cb6d030cbccf2be5b81fd63d4dc",
+          "sha256": "202868d88f0acf81a902467d94fed1e7efa593db621a0a3581de76a51ed71fa6",
+          "bytes": 8632
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "c69ba8d5bfba7bd6c5219a7b6576ddc493278ef4",
+          "sha256": "38689734e87f1ebeba2a591b19d8e1d8a546cb9435c92d32369f5ee3af0c5026",
+          "bytes": 9278
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+          "gitBlobSha1": "6b28a10a71ff438fe54c09bab8abdd5325e46922",
+          "sha256": "ae5f6edf1962fd437387c6ba99728077760feb78cd15096162dcafd1d93ba918",
+          "bytes": 4399
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "82dd922681e97c080baa6d72648c0b3929f5df2a",
+          "sha256": "c4ce61ed9591107544440278f86d6dbd337e04b7eeb7141bf6483dbad7614e27",
+          "bytes": 50768,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "82dd922681e97c080baa6d72648c0b3929f5df2a",
+          "sha256": "c4ce61ed9591107544440278f86d6dbd337e04b7eeb7141bf6483dbad7614e27",
+          "bytes": 50768,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "82dd922681e97c080baa6d72648c0b3929f5df2a",
+          "sha256": "c4ce61ed9591107544440278f86d6dbd337e04b7eeb7141bf6483dbad7614e27",
+          "bytes": 50768,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": true,
+      "itemsSha256": {
+        "root": "5699eca8f388c80935034d0bb4cc691d7ec2a2f28eef25030a0c227c0462c56a",
+        "main": "5699eca8f388c80935034d0bb4cc691d7ec2a2f28eef25030a0c227c0462c56a"
+      },
+      "changedHeaderFields": [
+        "evidence"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/four-slot.json",
+        "gitBlobSha1": "8014065ce108d9aa8b17bcae80014973918362cd",
+        "sha256": "289a67384aacc393cf233313b84be49aef1320e74dfefdfc51c8abf13bae0b56"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 0,
+      "mainHoldCount": 0,
+      "rootHolds": [],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 23,
+        "main": 23
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/four-slot.json",
+            "sha256": "289a67384aacc393cf233313b84be49aef1320e74dfefdfc51c8abf13bae0b56"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/root-acceptance.json",
+            "sha256": "c56e9d9ba40cea00d0bfa7fa1748bf4e0b826d9422031c2e26b1b329179eedb6"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/independent-sample.json",
+            "sha256": "6f870a6cf10d86abf9d74aa48cae2ae27c705df97d7b2525f5f7a58f48989e0f"
+          },
+          {
+            "at": "evidence.currentM2Continuity.carrier",
+            "commit": "515e70abb89136a8bacee24a68f1e6197f7caf0a",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E018/m2-current-four-slot-transport.json",
+            "sha256": "7ecc9a97bd4fc44c510690fa809f5c433c62293d80fe21b56325ea15f5ef2e99"
+          },
+          {
+            "at": "evidence.currentM2Continuity.observation",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E018-current-vector-observation.json",
+            "sha256": "50c20ff9d541d115c7848f6cb07747b310ea947227d524450c54b0829f0cb169"
+          },
+          {
+            "at": "evidence.currentM2Continuity.rootClosure",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/m2-current-four-slot-root-closure.json",
+            "sha256": "3b2cfd55138f21bd8f890cf696e0756ad7b44eabfaae08774d3dcf7126bfac47"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/four-slot.json",
+            "sha256": "289a67384aacc393cf233313b84be49aef1320e74dfefdfc51c8abf13bae0b56"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/root-acceptance.json",
+            "sha256": "c56e9d9ba40cea00d0bfa7fa1748bf4e0b826d9422031c2e26b1b329179eedb6"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/independent-sample.json",
+            "sha256": "6f870a6cf10d86abf9d74aa48cae2ae27c705df97d7b2525f5f7a58f48989e0f"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e018-four-slot/s2-e018-four-slot-current-continuity-independent.r1.json",
+            "sha256": "7dc68631e5f17d5b41c3c87a213adb2192ce0cec10a492846d1b0096ba7fc86a"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/four-slot.json",
+            "gitBlobSha1": "8014065ce108d9aa8b17bcae80014973918362cd",
+            "sha256": "289a67384aacc393cf233313b84be49aef1320e74dfefdfc51c8abf13bae0b56"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E018/root-acceptance.json",
+            "gitBlobSha1": "c4bfd26e76fb8ca642fe1edbf9f5327b05161aae",
+            "sha256": "c56e9d9ba40cea00d0bfa7fa1748bf4e0b826d9422031c2e26b1b329179eedb6"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PREFER_EXACT_MAIN_COMPACT",
+        "why": "24 full items, reviewedBy, source and referenced assets unchanged; owner current-continuity evidence preserved."
+      }
+    },
+    {
+      "compactPath": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+      "denominator": 24,
+      "compactRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+          "gitBlobSha1": "056c7b94166dfacc4bd4e34eb0aa32192c75f246",
+          "sha256": "0e3e0d2f1e47324f7a9f86cf5650bbf942ace16ddb8a73696f5b7e7dfa6ef52e",
+          "bytes": 10926
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+          "gitBlobSha1": "84352bbe0ea9fc270d8fb407b69ba2d69d12cb98",
+          "sha256": "00b9d2a138f86e516b654d6e234782d6e0d1b796233aad658f3e2b02b3e4f128",
+          "bytes": 9722
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+          "gitBlobSha1": "51effbac0c0e2205f489d7f4c1cc271a5296aae4",
+          "sha256": "53f15600d145568d4db421dc6ff427d22f124aa77cbabc9f600bc5044ee6bcdd",
+          "bytes": 4580
+        }
+      },
+      "sourcePath": "archive/exams/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+      "sourceRefs": {
+        "root": {
+          "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+          "gitBlobSha1": "e8f7b7319517897efe3172bf1b4d32107ec945a1",
+          "sha256": "886ba37ad001599dabd7f6b357c6cff298a4a4a72b98f5f60dc7eb0e822334d6",
+          "bytes": 63243,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "main": {
+          "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+          "gitBlobSha1": "e8f7b7319517897efe3172bf1b4d32107ec945a1",
+          "sha256": "886ba37ad001599dabd7f6b357c6cff298a4a4a72b98f5f60dc7eb0e822334d6",
+          "bytes": 63243,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": true
+        },
+        "base": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "gitBlobSha1": "e8f7b7319517897efe3172bf1b4d32107ec945a1",
+          "sha256": "886ba37ad001599dabd7f6b357c6cff298a4a4a72b98f5f60dc7eb0e822334d6",
+          "bytes": 63243,
+          "questionCount": 24,
+          "compactBindingMatchesCurrent": null
+        }
+      },
+      "fullItemsRootAndMainExact": false,
+      "itemsSha256": {
+        "root": "f1af85496d9e123d35e9d1f6d87323031a366e7712f9caac54cdde92830f8c63",
+        "main": "1de1ef9439290f1e3a4d08bdf2a917695667b348c652a1a093b152a255490488"
+      },
+      "changedHeaderFields": [
+        "evidence"
+      ],
+      "reviewedByPreserved": true,
+      "dictionaryVersionPreserved": true,
+      "formatsAndCandidatesPreserved": true,
+      "nativeAuthorityRef": {
+        "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/four-slot.json",
+        "gitBlobSha1": "745cc663c7e3217ca1ec64033902127994dc5d56",
+        "sha256": "53201d91ac38f145d812142c7fa7ee1bf7d17f6f13adba6b5bc5b6898fb2d309"
+      },
+      "mainFullNativeProjectionExact": true,
+      "legacyFallbackExceptions": [],
+      "vectorChangedRows": [],
+      "allChangedVectorsMatchOriginalNative": true,
+      "rootHoldCount": 1,
+      "mainHoldCount": 0,
+      "rootHolds": [
+        {
+          "arrayIndex": 13,
+          "locator": {},
+          "field": "registrationHold",
+          "value": {
+            "schemaVersion": "4slot-m2s2-current-renderer-hold-v1",
+            "reason": "SOURCE_RENDERER_CORRECTION_PENDING"
+          },
+          "valueSha256": "08daab8147e216c473fa59aa613144ec106f757a43f3ae9c4e9fceaa70cf183f"
+        }
+      ],
+      "rootToMainQuestionChanges": [],
+      "upstreamQuestionChanges": [],
+      "referencedAssetCounts": {
+        "root": 34,
+        "main": 34
+      },
+      "referencedAssetDifferences": [],
+      "ownerAndPriorAuthorityRefs": {
+        "root": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/four-slot.json",
+            "sha256": "53201d91ac38f145d812142c7fa7ee1bf7d17f6f13adba6b5bc5b6898fb2d309"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/root-acceptance.json",
+            "sha256": "bcea1b4df5f2f9bbfc6c1ffa0a1c3078b02addc5052cd105a0cae2f4b37b3e88"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/independent-sample.json",
+            "sha256": "5477dba3aaef003e422fc36a7aea9dc0380a77555435af2619d90621804ad284"
+          },
+          {
+            "at": "evidence.currentM2Continuity.carrier",
+            "commit": "515e70abb89136a8bacee24a68f1e6197f7caf0a",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E003/m2-current-four-slot-transport.json",
+            "sha256": "595f3e2eb8d9ccee42d59539027ee047f269e727ebc7efd77e6325ca9ee88c83"
+          },
+          {
+            "at": "evidence.currentM2Continuity.observation",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/E003-current-vector-observation.json",
+            "sha256": "1f46872a56b3348ed90cf1def67e7d0b2c30b6d74935f30fef6b956b0e21dfa3"
+          },
+          {
+            "at": "evidence.currentM2Continuity.rootClosure",
+            "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+            "path": "docs/operations/m2s2-current-four-slot-20261116/m2-current-four-slot-root-closure.json",
+            "sha256": "3b2cfd55138f21bd8f890cf696e0756ad7b44eabfaae08774d3dcf7126bfac47"
+          }
+        ],
+        "main": [
+          {
+            "at": "evidence",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/four-slot.json",
+            "sha256": "53201d91ac38f145d812142c7fa7ee1bf7d17f6f13adba6b5bc5b6898fb2d309"
+          },
+          {
+            "at": "evidence.rootAcceptance",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/root-acceptance.json",
+            "sha256": "bcea1b4df5f2f9bbfc6c1ffa0a1c3078b02addc5052cd105a0cae2f4b37b3e88"
+          },
+          {
+            "at": "evidence.independentReview",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/independent-sample.json",
+            "sha256": "5477dba3aaef003e422fc36a7aea9dc0380a77555435af2619d90621804ad284"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.ref",
+            "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e003-four-slot/s2-e003-four-slot-current-continuity-independent.r1.json",
+            "sha256": "3599ada977ce5e0ba0bfa4e94db2ada55490333f59f66a391304abd8598b96cc"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeFourSlotRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/four-slot.json",
+            "gitBlobSha1": "745cc663c7e3217ca1ec64033902127994dc5d56",
+            "sha256": "53201d91ac38f145d812142c7fa7ee1bf7d17f6f13adba6b5bc5b6898fb2d309"
+          },
+          {
+            "at": "evidence.currentRendererContinuity.nativeRootAcceptanceRef",
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/root-acceptance.json",
+            "gitBlobSha1": "19437bf88b95a70d02e197ec334e3842b1642563",
+            "sha256": "bcea1b4df5f2f9bbfc6c1ffa0a1c3078b02addc5052cd105a0cae2f4b37b3e88"
+          }
+        ]
+      },
+      "proposal": {
+        "action": "PRESERVE_EXACT_ROOT_COMPACT_WITH_Q14_HOLD",
+        "why": "The only item change is removal of ROOT Q14 HOLD. Same source and all assets are exact; main owner-positive proof is no renderer repair.",
+        "required": "Preserve owner proof as evidence without promoting its positive conclusion over the unchanged ROOT negative. Reconcile only through a later exact repair or explicit applicable closure."
+      }
+    }
+  ],
+  "metadataOverlay": {
+    "sourcePath": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+    "requestRef": {
+      "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+      "path": "docs/operations/m2s2-imported-current71-20261116/existing-metadata-overlay-request.json",
+      "sha256": "e199254160e0a7c4169c1b42fa8acdb2a72daabf30e0e79783e6c7813edd58f8",
+      "gitBlobSha1": "f88bdf5b5e18fbae7a81013939169ae165732c3d",
+      "bytes": 21340
+    },
+    "rows": [
+      {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+        "fields": [
+          "curriculumKey",
+          "courseKey",
+          "crossConceptKeys"
+        ],
+        "rootSourceMatchesExistingApprovedAfter": true,
+        "onlyTheseFieldsDifferent": true,
+        "rootSelectedFieldSha256": "979b6d4393b73d4d8bffff266b26127e6f2606bb9d7ad4f89c43aed03d3d1636",
+        "mainSelectedFieldSha256": "84706b40324954823f4828cc94090b565d0c980453e0bca076abffcca7ecb885",
+        "approvedAfterSelectedFieldSha256": "979b6d4393b73d4d8bffff266b26127e6f2606bb9d7ad4f89c43aed03d3d1636",
+        "wholeQuestionOutsideTheseFieldsExact": true
+      },
+      {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+        "fields": [
+          "curriculumKey",
+          "courseKey",
+          "crossConceptKeys"
+        ],
+        "rootSourceMatchesExistingApprovedAfter": true,
+        "onlyTheseFieldsDifferent": true,
+        "rootSelectedFieldSha256": "5bd321e33723485d84dcfcb6c245334ef35498d0ba622ea030ed247f44d60c9c",
+        "mainSelectedFieldSha256": "bfc1efdec02cf153d2b362310b127707919ebcd49594c9d324e6008bca5f54dd",
+        "approvedAfterSelectedFieldSha256": "5bd321e33723485d84dcfcb6c245334ef35498d0ba622ea030ed247f44d60c9c",
+        "wholeQuestionOutsideTheseFieldsExact": true
+      }
+    ],
+    "allOther22WholeQuestionsExact": true,
+    "studentPayloadAndAssetsExact": true,
+    "decision": "PRESERVE_ROOT_EXISTING_APPROVED_SOURCE_METADATA; DO_NOT_REPLACE_SOURCE_WITH_MAIN_OR_STAMP_MAIN_COMPACT_AS_ROOT_BYTES"
+  },
+  "e017OwnerRepair": {
+    "proofRef": {
+      "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+      "path": "docs/operations/middle-audit-repair-34c2-m2s2-e017-four-slot/e017-four-slot-native-rhs-continuity-independent.r2.json",
+      "sha256": "7c03bbfe4a14e82db3a0d32a95423b6a9b9156b56e3fe5e3f0d5ed0ab00382c6",
+      "gitBlobSha1": "a7b0f003fb1658677fcb6b5d37a13bd6381fd715",
+      "bytes": 134816
+    },
+    "ownerReviewer": "GPT_M3_34C2",
+    "ownerDecision": "ACCEPT_SCOPED_NATIVE_RHS_CLARIFICATION_RESTORATION_AND_UNCHANGED_VECTOR_BINDING",
+    "sourceRefs": {
+      "before": {
+        "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "bytes": 66448
+      },
+      "current": {
+        "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sha256": "22c605bd1b96618563f72e48d5428ee4f5c6226e22e94d668c7ad9bb8e53449c",
+        "gitBlobSha1": "41e074035e7ab7558bc1ae89820a2a60ebe3c806",
+        "bytes": 66329
+      },
+      "native": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sha256": "ec693aa011e6a82f41c63f640666d061c2751a972abfb730ca91e954565ad9c3",
+        "gitBlobSha1": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+        "bytes": 40638
+      }
+    },
+    "ownerCandidateUnpublishedMarkerPreserved": "NOT_YET_PUBLISHED",
+    "currentPublishedBytesMatchCandidate": true,
+    "rootBeforeSourceExact": true,
+    "questionCount": 23,
+    "changedSourceOrdinals": [
+      2
+    ],
+    "q2ChangedFields": [
+      "imageSize",
+      "imageAlt",
+      "layoutTag",
+      "solution",
+      "image"
+    ],
+    "outsideQ2WholeQuestionsExact": true,
+    "restoredImageReferenceEqualsNative": true,
+    "restoredAssetNativeAndCurrentRawExact": true,
+    "restoredAssetRef": {
+      "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+      "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+      "sha256": "c667a734e5183fe1949d991592cef0c3c6934715482100988cdc621d43b9a866",
+      "gitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+      "bytes": 20730
+    },
+    "solutionChangeEqualsOwnerExactFirstLineReplacement": true,
+    "nativeSolutionFirstLineEqualsBefore": true,
+    "currentSolutionSha256": "3aa64c0773f21d03552ff039f01abad9b9e605ac9ca91fa516cf51dab994c1bb",
+    "beforeSolutionSha256": "6401600c72f168a7a0c2fd737e8473ffa6531e6ea7284c3b61fa04d0c6c1aa26",
+    "originalFirstLineSha256": "a04617338857b30cdeebe4550856fee3a92983a7778af08d1cad0f5175a35970",
+    "replacementFirstLineSha256": "663bd41c1a79ccb2f334c6769234dbd8ada8caa87d36b81a6fbb1eb85417664a",
+    "solutionSuffixExact": true,
+    "solutionImageExact": true,
+    "nativeReviewItemStableSha256": "7965970ce20afa01019e35d813be95a040e2008a4dbcc308955a5ca612f82ac3",
+    "nativeReviewItemDeclaredSha256": "7965970ce20afa01019e35d813be95a040e2008a4dbcc308955a5ca612f82ac3",
+    "nativeReviewItemHashExact": true,
+    "nativeRootFourSlotHashExact": true,
+    "nativeRootReviewHashExact": true,
+    "compactRowMetadata": {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "rendererDecision": "RESTORE_NATIVE_PROBLEM_AND_CLARIFY_ONLY_NATIVE_ACCEPTED_RHS_FIRST_LINE",
+      "firstSolutionLineClarified": true
+    },
+    "ownerActualObservationClaims": {
+      "problemImageViewedAgain": true,
+      "solutionSvgMarkupRead": true
+    },
+    "independentActualImageOrMathReviewPerformed": false,
+    "ownerProtection": {
+      "originalCompactItemsAndReviewedByPreserved": true,
+      "registryWrites": 0,
+      "metadataWrites": 0,
+      "identityMapWrites": 0,
+      "holdsReleased": 0
+    },
+    "decision": "PRESERVE_PUBLISHED_OWNER_SOURCE_AND_R2_PROOF; ROOT_SCOPED_NEGATIVE_CLOSURE_AND_HISTORY_GUARD_INTEGRATION_REQUIRED_BEFORE_CLAIMING_HOLD_RELEASE"
+  },
+  "negativePolicy": {
+    "preserveSamePayload": [
+      "E022 Q12 / 23신흥2final",
+      "E003 Q14 / 26왕의2mid"
+    ],
+    "requireCurrentRepairClosure": [
+      "E017 Q2 / 24연향2mid"
+    ],
+    "doNotSilentlyDropHistoricalNegativeEvidence": true,
+    "independentFreshImageReviewCount": 0,
+    "newMathDifficultySlotApprovals": 0,
+    "blindPositiveOrHistoricalPassRepackaging": false
+  },
+  "latestFreshness": {
+    "base": "dc8c0aad86663f144102a25618dcd36558bf9607",
+    "latest": "8866abd245ce04a0bbedfe661d23791e0838c0e3",
+    "inputInventory": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main-8866-delta.json",
+      "sha256": "f76cb1e896b6a85628fd8c7d9bd046613b4254849fdbaef2ef90f079809b31f1",
+      "bytes": 6227
+    },
+    "method": "Git exact-path tree diff over all 9 compact files, 9 source files, and root/main referenced asset paths",
+    "pathsChecked": 262,
+    "changedPaths": [],
+    "allScopedBytesRemainExact": true,
+    "codeOrGlobalRegistryFreshnessClaimed": false
+  },
+  "integrationPlan": {
+    "exactMainCompactChoices": [
+      {
+        "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.4slot.json",
+        "gitBlobSha1": "9d6f7a4e26c9a1799d49a159eeb6aa57eb19ed5a",
+        "sha256": "f80f151f12c4d604186291c394b6149285c641cbf8d1cedd6929e371bc4b69d4",
+        "bytes": 8898
+      },
+      {
+        "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+        "path": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+        "gitBlobSha1": "f118566591f075554a0dff4676b52a3e84413df3",
+        "sha256": "93550b6a9b88ec9e34641fdc9e6424955ea788731151d8d0e5d76a8bc93a06d1",
+        "bytes": 8479
+      },
+      {
+        "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+        "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+        "gitBlobSha1": "675999403ef8d5531aa96bb5526c9ab9ea11f8c7",
+        "sha256": "d902c64ad8a8cd0259436ea66e62a4ceff089b5b6b0cf3fc008b71ab3d9bce4c",
+        "bytes": 10160
+      },
+      {
+        "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "7b40c0c19c0e70f79a31d3d0649a0d7b62ce47c4",
+        "sha256": "f317d82658e3fe56df78faa44c44768e3ea77b277b6d302d5a19d19f05f3644e",
+        "bytes": 9484
+      },
+      {
+        "commit": "dc8c0aad86663f144102a25618dcd36558bf9607",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "c69ba8d5bfba7bd6c5219a7b6576ddc493278ef4",
+        "sha256": "38689734e87f1ebeba2a591b19d8e1d8a546cb9435c92d32369f5ee3af0c5026",
+        "bytes": 9278
+      }
+    ],
+    "exactRootCompactChoices": [
+      {
+        "commit": "d5f52b296f4fbaafcb24a4788b8d3bb2adf13ab7",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+        "gitBlobSha1": "056c7b94166dfacc4bd4e34eb0aa32192c75f246",
+        "sha256": "0e3e0d2f1e47324f7a9f86cf5650bbf942ace16ddb8a73696f5b7e7dfa6ef52e",
+        "bytes": 10926
+      }
+    ],
+    "conditionalRecipes": [
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+        "action": "PRESERVE_MAIN_NATIVE_VECTOR_AUTHORITY_AND_ROOT_Q12_HOLD; DIRECT_RAW_SELECTION_BLOCKED",
+        "why": "4 existing native vector corrections are valid transports; 2 legacy fallback rows remain exact. The unchanged current source/assets cannot extinguish ROOT Q12 negative evidence.",
+        "required": "Keep exact original negative proof and HOLD, with a truthful carrier supporting main native vectors plus the two legacy fallbacks. Do not splice the old full-vector carrier or infer a successful builder result."
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+        "action": "PRESERVE_MAIN_NATIVE_VECTORS_AND_ROOT_SOURCE_METADATA_OVERLAY; DIRECT_RAW_SELECTION_BLOCKED",
+        "why": "2 method-row changes reproduce c286 approval. Current ROOT source retains previously approved Q3/Q21 metadata; main source omits that overlay.",
+        "required": "Retain the exact two source metadata overlays and their immutable request. Bind new owner vector authority to the actual retained source using the authorized metadata-continuity contract; no bare source hash reseal."
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "action": "PRESERVE_MAIN_REPAIRED_SOURCE_AND_OWNER_R2_AUTHORITY; ROOT_HOLD_CLOSURE_PENDING",
+        "why": "Q2 now references the exact approved native PNG and changes only the specified presentation fields and exact first solution line; other 22 whole questions and all 23 vectors unchanged.",
+        "required": "ROOT assesses the actual repaired Q2 boundary and records the applicable negative-history closure. Existing same-renderer claim is not used. Prior negative evidence stays historical; no new actual review is claimed here."
+      }
+    ],
+    "actualFilesMutated": 0,
+    "mergeOrBuilderCompatibilityNotExecuted": true
+  },
+  "supportingReadArtifacts": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/main-dc8-compact9-initial-read.json",
+      "sha256": "05cdd795f2534a40cb9bcb9f1c8874287896ec6f271708bd62fe2c8cd561ad2a",
+      "bytes": 68357
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/main-dc8-compact9-source-assets-read.json",
+      "sha256": "1354fcfd9988905ab669ed5dca3738b7edaa562ccce191f88ae046eb8671a7e3",
+      "bytes": 238083
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/main-dc8-compact9-native-projection-read.json",
+      "sha256": "a599f4f7973691c0e3b1e21441ffd4801dc540a877d3df8a94064a6027b8f5e8",
+      "bytes": 85529
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/main-dc8-compact9-supplemental-authority-read.json",
+      "sha256": "b56ae58882f30e30cec6cf461c914faf15b6c199017efda6c3dc31f3f8bea54f",
+      "bytes": 22156
+    }
+  ],
+  "execution": {
+    "tests": 0,
+    "builder": 0,
+    "consumer": 0,
+    "sourceAssetCompactEdits": 0,
+    "registrationWrites": 0,
+    "remoteWrites": 0,
+    "reportedOwnerActualObservationsAttributedToTheirProofAuthors": true
+  },
+  "limitations": [
+    "This metadata-only read confirms immutable authority, source/asset bytes and existing compact vectors. It does not add a new visual or mathematical review.",
+    "Existing negative-history and full-vector carrier validation still apply to any eventual combined input. The integration recipes are not claimed to be a passing merged compact.",
+    "Current metadata/runtime eligibility, issued receipts, Consumer results and production registration were not evaluated in this task."
+  ]
+}

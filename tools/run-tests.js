@@ -30,9 +30,11 @@ const tests = includeQuarantined
   ? files
   : files.filter(name => !quarantined.has(name));
 
-// These two complete suites exceeded the old 60-second child limit in CI.
+// These complete suites exceed the old 60-second child limit (the M2 renderer
+// suite measures 85–107 seconds with actual Git, writer and replay fixtures).
 // Keep a finite per-command limit in both the full and scoped runners.
-const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
+const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.test.js' ? 180000
+  : file === 'archive2-compose-scope.test.js' ? 180000
   : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
 
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.

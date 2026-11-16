@@ -170,6 +170,7 @@ export function nativeLanes(root,runScope=resolveSemanticRunScope(root)) {
       commands:[cmd('node','archive/tools/build-svg-accessibility-index.cjs','--base',accessibilityBase),
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
     {id:'fourSlot',inputs:['archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
+      '.archive-meta-register/4slot-existing-vector-continuity/',
       '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
       'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',
       'archive/data/meta-foundation/canonical/','archive/data/meta-foundation/compiled/','archive/tools/meta-foundation/',

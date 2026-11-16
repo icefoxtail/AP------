@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-compact-v1",
   "sourceArchiveFile": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
-  "sourceGitBlobSha": "e8f7b7319517897efe3172bf1b4d32107ec945a1",
+  "sourceGitBlobSha": "e3702e7daa0207f9c06f71c26bbf04a1dc6b2e32",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "evidence": {
     "branch": "review/m2-s2-meta-full-20261114",
@@ -23,50 +23,35 @@
       "reviewedSourceGitBlobSha": "1f0e579edde9dc64e5afa9843d448a15fd82fede",
       "currentSourceGitBlobSha": "482414633b2de0caf69a7071a8dc6c3f6c0491ac"
     },
-    "currentRendererContinuity": {
-      "schemaVersion": "m2-existing-four-slot-current-renderer-reference-v1",
-      "ref": {
-        "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e003-four-slot/s2-e003-four-slot-current-continuity-independent.r1.json",
-        "sha256": "3599ada977ce5e0ba0bfa4e94db2ada55490333f59f66a391304abd8598b96cc"
+    "currentM2Continuity": {
+      "carrier": {
+        "commit": "515e70abb89136a8bacee24a68f1e6197f7caf0a",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/E003/m2-current-four-slot-transport.json",
+        "sha256": "595f3e2eb8d9ccee42d59539027ee047f269e727ebc7efd77e6325ca9ee88c83"
       },
-      "nativeFourSlotRef": {
-        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
-        "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/four-slot.json",
-        "gitBlobSha1": "745cc663c7e3217ca1ec64033902127994dc5d56",
-        "sha256": "53201d91ac38f145d812142c7fa7ee1bf7d17f6f13adba6b5bc5b6898fb2d309",
-        "sourceGitBlobSha": "1f0e579edde9dc64e5afa9843d448a15fd82fede"
+      "observation": {
+        "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/E003-current-vector-observation.json",
+        "sha256": "1f46872a56b3348ed90cf1def67e7d0b2c30b6d74935f30fef6b956b0e21dfa3"
       },
-      "nativeRootAcceptanceRef": {
-        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
-        "path": "archive/data/meta-review/m2-s2-20261114/exams/E003/root-acceptance.json",
-        "gitBlobSha1": "19437bf88b95a70d02e197ec334e3842b1642563",
-        "sha256": "bcea1b4df5f2f9bbfc6c1ffa0a1c3078b02addc5052cd105a0cae2f4b37b3e88"
+      "rootClosure": {
+        "commit": "7a67343aa0af3c35d90ed16c026fb00fb3da9470",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/m2-current-four-slot-root-closure.json",
+        "sha256": "3b2cfd55138f21bd8f890cf696e0756ad7b44eabfaae08774d3dcf7126bfac47"
+      }
+    },
+    "currentM2DisplayRepairClosure": {
+      "origin": "CURRENT_V1",
+      "carrier": {
+        "commit": "f8fd57ad3fb0062e3556d01dd03f010e1c830759",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/exact-repairs/E003/m2-current-display-repair-closure.json",
+        "sha256": "4c502b8775074d0ed4ae12582faa973eb36c4f2af32e99bcc9e4608ae2ca06f4"
       },
-      "unchangedVectorCount": 24,
-      "rendererReviewedOrdinals": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        8,
-        9,
-        10,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        19,
-        20,
-        22,
-        23,
-        24
-      ],
-      "newMathematicalQa": 0,
-      "newMetadataApproval": 0
+      "observationBinding": {
+        "commit": "10749a1ffdb22f20a02b9293a57d46833a31b2bc",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/exact-repairs/E003/m2-display-repair-observation-binding.json",
+        "sha256": "294e83ce44c904f296bceae3288675651c66b26e833ffef41f1948102ce7700b"
+      }
     }
   },
   "reviewedBy": {

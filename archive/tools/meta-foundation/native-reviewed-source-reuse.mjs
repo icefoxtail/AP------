@@ -8,6 +8,7 @@ import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
 import { createExactJsonByteParser } from './exact-json-byte-parser.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
+import { M2_PROBLEM_RENDERER_SCHEMA } from './reviewed-m2-problem-renderer-continuity.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
 import { validateReviewedRetainedScopeParent } from './reviewed-retained-scope-transport.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
@@ -346,5 +347,26 @@ export function nativeReviewedMetadataRationaleReuse(receiptPath, nativeSource, 
     return fields.every(field => patch.after[field] === current[field] &&
       same(proof.rationaleBindings[field], { origin: 'NATIVE_ITEM_FIELD', valueSha256: sha(current[field]) }) &&
       same(proof.rationaleBindings[field], sourceReview.rationaleBindings[field]));
+  } catch { return false; }
+}
+
+// The exact three-item M2 renderer contract changes only a separately witnessed
+// picture presentation. Revalidate its complete typed request first, then bind
+// an older cursor to one of that proof's immutable whole questions. A generic
+// typed review or a matching student fingerprint is not renderer authority.
+export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2ProblemRendererContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_PROBLEM_RENDERER_SCHEMA ||
+      proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal ||
+      proof.sourceArchiveFile !== receipt.sourceArchiveFile || proof.memoryOnlyNormalization !== true ||
+      proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 || proof.newDifficultyJudgments !== 0 ||
+      proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
+      .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha);
   } catch { return false; }
 }

@@ -23,6 +23,7 @@ const registrationContracts = [
   /^tests\/archive-(?:issued-rpm-evidence-continuity|audited-cc-append|audited-cc-catalog-precedence|changed-uid-consumer-approval|m2-current-renderer-continuity|m2-current-renderer-registration|m2-provider-current-renderer|original-finalqa-renderer-preservation)\.test\.mjs$/,
   /^tests\/native-approved-renderer-(?:consumer|preservation|preview)\.test\.mjs$/,
   /^tests\/archive-(?:source-quality-holds|native-authority-correction)\.test\.mjs$/,
+  /^tests\/archive-m2-problem-renderer-continuity\.test\.js$/,
   /^tests\/archive-reviewed-exam-registration-v2\.test\.mjs$/,
   /^tests\/archive-reviewed-retained-scope-transport\.test\.mjs$/,
   /^tests\/archive-reviewed-parent-correction\.test\.mjs$/,

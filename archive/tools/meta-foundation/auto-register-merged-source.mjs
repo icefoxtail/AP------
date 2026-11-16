@@ -11,7 +11,7 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
-  nativeReviewedMetadataRationaleReuse } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
 import { validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
@@ -262,6 +262,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2ProblemRenderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       // M2 presentation transport has its own revalidated immutable prefigure
       // view. An older cursor must match that whole student payload exactly;
       // the presence of a marker or witness alone cannot exempt a change.
@@ -275,7 +276,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedM2ProviderRenderer=reviewedSource===true&&m2ProviderProofs.length===1&&
         m2ProviderProofs[0].schemaVersion==='archive-reviewed-m2-provider-current-renderer-continuity-v1'&&
         m2ProviderProofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2ProblemRenderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
