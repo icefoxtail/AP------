@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "difficulty-e070-execution-retry-verification-v1",
+  "status": "LOCAL_OFFICIAL_PASS_PENDING_MAIN",
+  "currentMainCas": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+  "actualBeforeSnapshot": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "scope": {
+    "publicationRequests": 1,
+    "publicationUids": 1,
+    "localValidationRequests": 2,
+    "localValidationUids": 2,
+    "discardedLocalAlternativeUids": 1,
+    "targetSourceQuestions": 47,
+    "requiredQualityControlSources": 1,
+    "mathReviews": 0
+  },
+  "official": {
+    "dryWriteProjection2": [
+      {
+        "requestId": "m3s2-audit-e070-difficulty-consumer-retry-26fc-20261116",
+        "dry": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 4,
+          "written": false,
+          "staleSourceBinding": 1
+        },
+        "write": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 4,
+          "written": true,
+          "staleSourceBinding": 1
+        },
+        "projection": {
+          "total": 1,
+          "APPLY": 0,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 1,
+          "changedFields": 0,
+          "written": false,
+          "consumerBinding": {
+            "stale": 1
+          },
+          "staleSourceBinding": 1
+        }
+      },
+      {
+        "requestId": "m2s1-e001-difficulty-consumer-retry-26fc-20261116",
+        "dry": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 4,
+          "written": false
+        },
+        "write": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 4,
+          "written": true
+        },
+        "projection": {
+          "total": 1,
+          "APPLY": 0,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 1,
+          "changedFields": 0,
+          "written": false,
+          "consumerBinding": {
+            "content": 1
+          }
+        }
+      }
+    ],
+    "consumer2": {
+      "changed": 2,
+      "checked": 2,
+      "passed": 2,
+      "skippedUnchanged": 0
+    },
+    "publishedE070Consumer1": {
+      "changed": 1,
+      "checked": 1,
+      "passed": 1,
+      "skippedUnchanged": 0
+    },
+    "publishedE070ReadOnlyReplay": {
+      "total": 1,
+      "APPLY": 0,
+      "ALREADY_REGISTERED": 1,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 0,
+      "changedFields": 0,
+      "written": false,
+      "staleSourceBinding": 1
+    },
+    "publishedE070ReadOnlyProjection": {
+      "total": 1,
+      "APPLY": 0,
+      "ALREADY_REGISTERED": 0,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 1,
+      "changedFields": 0,
+      "written": false,
+      "consumerBinding": {
+        "stale": 1
+      },
+      "staleSourceBinding": 1
+    }
+  },
+  "semanticAdvisories": [
+    {
+      "exam": "m3s2-audit-e070-difficulty-consumer-retry-26fc-20261116",
+      "qid": 23,
+      "uid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+      "field": "tagConfidence",
+      "reason": "SEMANTIC_REVIEW_PENDING_UNCHANGED",
+      "sourceValue": "medium",
+      "canonicalValue": "registration_only",
+      "semanticApproval": false
+    },
+    {
+      "exam": "m3s2-audit-e070-difficulty-consumer-retry-26fc-20261116",
+      "qid": 23,
+      "uid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+      "field": "tagStatus",
+      "reason": "SEMANTIC_REVIEW_PENDING_UNCHANGED",
+      "sourceValue": "reviewed_create",
+      "canonicalValue": "registration_only_pending_review",
+      "semanticApproval": false
+    }
+  ],
+  "sourceSemanticApproval": "NOT_GRANTED",
+  "currentPendingStatePreserved": true,
+  "protected": {
+    "outsideLocalTwoMetadataUnchanged": 28888,
+    "allTargetNonD5FieldsUnchanged": true,
+    "identitySourceAndAllRuntimeBytesUnchanged": true,
+    "original36Q5And2866Intersection": 0,
+    "originalRejectedFourFilesUnchanged": true
+  },
+  "evidenceDigests": {
+    "localRegistration2": "15a7ef4dbdc588fd26ee39de5bddd370786ad45b29d9c9649ad41d90b59a93ba",
+    "localConsumerReplay2": "a111b819df6f9086bbc0e7d536cc570c64c69a6003be41692867e9eb61db3534",
+    "publishedE070Consumer1": "a1df2445e51ca8baef9b85d9f46e69f0cc2636607270c1317045255bc22e6e56",
+    "fixtureInputs": "3d9f7eebce1da0c5b9eba5fb210a97169c90d437934ce389ebceefa1a1ab3b51",
+    "localRunLog": "53f2540d28fa54ae2e2a111c8ec4c6d20aeb57dada365afe5ef9b55e13491b4f",
+    "actualWriterPreflight1": "c7853b2360fff4f4f9adb67f7aa46ca3bc740eaea7b255d9226cc555424371e1"
+  },
+  "currentInputCasCount": 353,
+  "consumerCodeAfterSha256": "d598bb2d63915dbb0236313c08acb8a576600724f8f3ebe06a36d8dd994cfaf9",
+  "sourceWrites": 0,
+  "canonicalProductionWrites": 0,
+  "remoteWrites": 0,
+  "actualRegistration": "NOT_RUN",
+  "productionConsumer": "NOT_RUN",
+  "productionPages": "NOT_RUN",
+  "nextAction": "After the reviewed Consumer fix is merged, root may publish this one fresh retry, preserving the old rejected request/rejection. Check its actual writer applied entry and current canonical D5 values; do not requeue the duplicated E001 request."
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "GPT_ROOT_0A70543C4CE8_M3; gemini is the registrar envelope name, not authorship",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m3s2-audit-e070-difficulty-consumer-retry-26fc-20261116",
+    "createdAt": "2026-11-15T23:38:56.616Z",
+    "sourceArchiveFile": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+    "latestBlobSha": "6ba408d51f059a3c1e10f984154cda530ff33ef0",
+    "items": [
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+        "before": {
+          "level": "상"
+        },
+        "after": {
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "docs/operations/m3-s2-release-20261115/current-method-difficulty-review.json",
+    "evidencePath": ".archive-meta-register/evidence/m3s2-audit-e070-difficulty-20261116.json",
+    "evidenceSha256": "6f67ba98ad4840dff0023f7b874a5ad74c6b3b77aa7c85e1b40a3b10f462d753",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+        "ordinal": 23,
+        "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+        "before": {
+          "level": "상",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "b7df56882913e8e6d08d3376225eb2cc86defe42120da84150d998d55e1c3c64",
+          "contentFingerprint": "c8461194aa8b9783aedc7998f7925651b86f985f27915b1b3e22916c278ad6d9"
+        },
+        "after": {
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "1298b7824b93570432db1d11edb557dc85cab582c89edcd5b0cc101d3eaeb4cd",
+        "contentFingerprint": "6fc53bb9c0fa5fe15fba14675389e6937fc51c9900c2d51d33f169eeef12e061",
+        "staleSourceBinding": true,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "Reuse the completed independent current-method difficulty review at docs/operations/m3-s2-release-20261115/current-method-difficulty-review.json; current source difficulty fields and decisive method still match. Only the four difficulty values are transported; source binding and semantic approval are unchanged."
+      }
+    ]
+  }
+}

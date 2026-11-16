@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "difficulty-execution-retry-lineage-v1",
+  "status": "READY_LOCAL_NOT_REGISTERED",
+  "currentMainCas": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+  "actualBeforeSnapshot": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "request": {
+    "path": ".archive-meta-register/inbox/m3s2-audit-e070-difficulty-consumer-retry-26fc-20261116.json",
+    "requestId": "m3s2-audit-e070-difficulty-consumer-retry-26fc-20261116",
+    "rawSha256": "91fdc0df2a924c2b9f2906f8979a55dc93b23231e45390751436ba054f0a14a7",
+    "gitBlobSha1": "d622d39c97b49679a299e53bbfaf24153e96bf4d",
+    "canonicalSha256": "d9abd6f0283a64b443da3aa0a51b61e81ebfb94efe20098949e4d8c803050b1e"
+  },
+  "original": {
+    "path": ".archive-meta-register/rejected/m3s2-audit-e070-difficulty-20261116.json",
+    "requestId": "m3s2-audit-e070-difficulty-20261116",
+    "rawSha256": "a67932573a29ac6f3f398817aa5e962d43a204a2c0bd124290f75d34b242d4c0",
+    "canonicalSha256": "4a136c6555d0dad4986369e961e5341321ad0524504d756a3ed1462e9f4cdddd",
+    "rejection": {
+      "path": ".archive-meta-register/rejected/m3s2-audit-e070-difficulty-20261116.rejection.json",
+      "gitBlobSha1": "8047806a1fcdfc76943a5ab745e8bd875d8c169c",
+      "sha256": "184b7c8de93d6e8fd2f7d25b81616e2919d2d64360d4662f45570754bd823abf",
+      "stage": "consumer-verify",
+      "error": "METADATA_CONFLICT Q23: tagConfidence,tagStatus"
+    },
+    "sameIdNativeReceiptPresent": false,
+    "originalInboxPresent": false,
+    "originalRejectedRequestAndRejectionRetained": true
+  },
+  "selected": {
+    "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+    "sourceArchiveFile": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+    "sourceOrdinal": 23,
+    "sourceGitBlobSha": "6ba408d51f059a3c1e10f984154cda530ff33ef0",
+    "before": {
+      "difficultyBucket": 3,
+      "difficultyConfidence": null,
+      "difficultyBoundaryFlag": null,
+      "legacyLevelCompatibility": null
+    },
+    "after": {
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "NORMAL"
+    }
+  },
+  "changedJsonPaths": [
+    "gemini.requestId"
+  ],
+  "reviewedCorrectionAndEvidenceUnchanged": true,
+  "typedEvidenceDoesNotBindOriginalRequestId": true,
+  "contract": {
+    "rejectionResubmissionContract": {
+      "path": "tools/ci/register-reviewed-meta-requests.mjs",
+      "gitBlobSha1": "61bc1876ca2726663fbc5a609505126c1ac81145"
+    },
+    "officialDifficultyKernel": {
+      "path": "archive/tools/meta-foundation/register-difficulty5.mjs",
+      "gitBlobSha1": "33d45e24e26a713f61dca91d9526372c60ea996f"
+    },
+    "requiredConsumerRepair": {
+      "pullRequest": 2228,
+      "commit": "a09d1a0c76e9da974cf69482953d69e3355bad66",
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "gitBlobSha1": "7cf13c0b6de069b46b0eea7640ef1836ab77549e"
+    },
+    "permissionScope": "Existing reviewed D5 tuple execution retry only; no new review or semantic authority."
+  },
+  "excludedAlternative": {
+    "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+    "localRetryId": "m2s1-e001-difficulty-consumer-retry-26fc-20261116",
+    "disposition": "DO_NOT_PUBLISH_DUPLICATE_EXTERNAL_MERGED_RETRY",
+    "externalPullRequest": 2229,
+    "externalMergedCommit": "828b0797450a56280208506b8808b62e2d341195",
+    "externalRequest": {
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-reviewed-E001-r2.json",
+      "requestId": "middle-audit-repair-34c2-m2-difficulty-reviewed-E001-r2",
+      "gitBlobSha1": "ed701412c2240ee75521d050e7f471c4f68f6165",
+      "rawSha256": "1ed281c77d8d4f50d9d2794a1eaab6c67773c68680c1637546f623b781489a89",
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    "externalEvidence": {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/difficulty-four-reviewed-transport-r2.json",
+      "gitBlobSha1": "dd43e5d63530a9c4b83f50400ff3979f465154c5",
+      "sha256": "9b18cdd627173b62f4b7e0166d4f7c4aa0c43209c8c9cbcda03d6659a81bbc8c"
+    },
+    "note": "The external typed retry preserves BORDERLINE_ACCEPTABLE. The discarded ordinary local alternative computed NORMAL. They are not claimed to have equal final tuples; only the already merged external request may be consumed."
+  },
+  "sourceWrites": 0,
+  "newDifficultyJudgments": 0,
+  "newSemanticApprovals": 0,
+  "actualRegistration": "NOT_RUN"
+}
