@@ -23,12 +23,47 @@ export function loadSource(root, source) {
 
 export function questionAssetReferences(question) {
   const refs = new Set();
-  const add = value => { if (typeof value === 'string' && value.trim()) refs.add(value.trim()); };
+  const addFileReference = value => {
+    const reference = typeof value === 'string' ? value.trim() : '';
+    if (reference && !reference.startsWith('#')) refs.add(reference);
+  };
+  function verifyInlineSvgFragments(markup) {
+    const source = markup.replace(/<!--[\s\S]*?-->/g, '');
+    const tokenSource = source.replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, block => ' '.repeat(block.length));
+    const tokens = [...tokenSource.matchAll(/<\/?(?:[A-Za-z_][\w.-]*:)?svg(?=[\s/>])(?:[^>"']|"[^"]*"|'[^']*')*>/gi)];
+    let depth = 0, start = -1;
+    const check = fragment => {
+      const clean = fragment.replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, '');
+      const ids = new Set(), references = [];
+      for (const tag of clean.matchAll(/<([A-Za-z_][\w:.-]*)\b((?:[^<>"']|"[^"]*"|'[^']*')*)>/g)) {
+        const attrs = tag[2];
+        const attributePattern = /\s*([^\s=/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gy;
+        let attr;
+        while ((attr = attributePattern.exec(attrs))) {
+          const name = attr[1], value = attr[2] ?? attr[3] ?? attr[4] ?? '';
+          if (name === 'id') ids.add(value);
+          if (/^(?:[\w.-]+:)?href$/i.test(name)) references.push(value);
+        }
+      }
+      for (const url of fragment.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/gi)) references.push(url[1]);
+      for (const reference of references) {
+        if (reference.startsWith('#') && !ids.has(reference.slice(1))) throw new Error('missing inline SVG fragment ' + reference);
+      }
+    };
+    for (const token of tokens) {
+      const closing = /^<\//.test(token[0]);
+      if (!closing && /\/\s*>$/.test(token[0])) {
+        if (depth === 0) check(token[0]);
+      } else if (!closing) { if (depth === 0) start = token.index; depth += 1; }
+      else if (depth > 0 && --depth === 0) { check(source.slice(start, token.index + token[0].length)); start = -1; }
+    }
+  }
   function visit(value, imageField = false) {
     if (typeof value === 'string') {
-      if (imageField) add(value);
-      for (const match of value.matchAll(/<(?:img|image)\b[^>]*?\b(?:src|(?:xlink:)?href)\s*=\s*["']([^"']+)["']/gi)) add(match[1]);
-      for (const match of value.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/gi)) add(match[1]);
+      if (imageField) addFileReference(value);
+      verifyInlineSvgFragments(value);
+      for (const match of value.matchAll(/<(?:img|image)\b[^>]*?\b(?:src|(?:xlink:)?href)\s*=\s*["']([^"']+)["']/gi)) addFileReference(match[1]);
+      for (const match of value.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/gi)) addFileReference(match[1]);
     } else if (Array.isArray(value)) value.forEach(item => visit(item, imageField));
     else if (value && typeof value === 'object') {
       for (const [key, item] of Object.entries(value)) visit(item, IMAGE_FIELDS.test(key) || (imageField && /^(?:assetRef|imageRef|path|src|url|value)$/.test(key)));

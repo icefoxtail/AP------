@@ -95,6 +95,23 @@ test('reference extraction includes solution markup, structured image refs and q
   assert.throws(() => localAssetPath('assets/%2e%2e/secret.png'), /escapes/);
 });
 
+test('inline SVG fragment handling preserves external refs and recognizes only actual same-SVG ids', () => {
+  assert.deepEqual(questionAssetReferences({ solution: '<svg><defs><marker id="arrow_r"/></defs><path marker-end="url(#arrow_r)"/></svg>' }), []);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><path marker-end="url(#missing)"/></svg>' }), /missing inline SVG fragment #missing/);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><defs><marker id="arrow_r"/></defs></svg><svg><path marker-end="url(#arrow_r)"/></svg>' }), /missing inline SVG fragment #arrow_r/);
+  assert.deepEqual(questionAssetReferences({ solution: '<svg><style>.x{fill:url(assets/images/a.svg)}</style></svg>' }), ['assets/images/a.svg']);
+  assert.deepEqual(questionAssetReferences({ solution: '<svg><foreignObject><div><img src="assets/images/a.png"></div></foreignObject></svg>' }), ['assets/images/a.png']);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><g data-id="ghost"/><path fill="url(#ghost)"/></svg>' }), /missing inline SVG fragment #ghost/);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><!-- <marker id="ghost"/> --><path fill="url(#ghost)"/></svg>' }), /missing inline SVG fragment #ghost/);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><g data-note="id=\'ghost\'"/><path fill="url(#ghost)"/></svg>' }), /missing inline SVG fragment #ghost/);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><svg/><path marker-end="url(#missing)"/></svg>' }), /missing inline SVG fragment #missing/);
+  assert.throws(() => questionAssetReferences({ solution: '<svg fill="url(#missing)"/>' }), /missing inline SVG fragment #missing/);
+  assert.throws(() => questionAssetReferences({ solution: '<svg><text><![CDATA[<svg>]]></text><path marker-end="url(#missing)"/></svg>' }), /missing inline SVG fragment #missing/);
+  assert.throws(() => questionAssetReferences({ solution: '<s:svg><s:path fill="url(#missing)"/></s:svg>' }), /missing inline SVG fragment #missing/);
+  assert.deepEqual(questionAssetReferences({ solution: '<svg:path fill="url(#not-an-svg-root)"/>' }), []);
+  assert.deepEqual(questionAssetReferences({ solution: '<svg><g data-note="literal > in attribute" id="real"/><path fill="url(#real)"/></svg>' }), []);
+});
+
 test('nested SVG image references, duplicate IDs and missing fragments remain structural failures', t => {
   const f = fixture(t);
   f.write(asset, '<svg xmlns="http://www.w3.org/2000/svg"><image href="missing.png"/></svg>');
