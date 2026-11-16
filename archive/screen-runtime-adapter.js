@@ -657,7 +657,7 @@ function createArchiveScreenRuntime() {
         window.__AP_RENDER_METRICS__ = ctx.metrics;
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${ctx.candidate.mode}`));
         document.getElementById('ctrl-title').innerText = getDisplayTitle(AppState);
-        document.getElementById('qpp-display').innerText = `QPP: ${AppState.qpp}`;
+        document.getElementById('qpp-display').innerText = `쪽당 ${AppState.qpp}문항`;
         renderPrintHeaderControls();
         // QR controls use the candidate until history becomes visible at the end.
         const qr = ctx.candidate.qrState;

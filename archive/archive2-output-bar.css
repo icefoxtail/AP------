@@ -1,0 +1,157 @@
+/* Archive 2.0 출력 창 조작줄 (engine.html 원본 기출 · mixed_engine.html 만든 문제지).
+   화면에서만 보이는 부분이다. 인쇄되는 종이(본문)는 이 파일이 건드리지 않는다: 모든 규칙은 @media screen 안에 있다.
+   색·글꼴·모양은 archive2-tokens.css 값을 쓴다(DESIGN.md "출력 창 조작줄").
+
+   tokens.css는 :root에 글꼴·글자색·바탕도 정한다. 출력 창의 종이는 예전 값 그대로여야 하므로
+   tokens는 layer로 불러 우선순위를 낮추고(예: js-archive-theme-override.css의 html 배경이 이긴다),
+   글꼴·글자색·글자 크기·color-scheme은 아래에서 원래대로 되돌린다.
+   출력 창은 웹 글꼴을 따로 불러오지 않는다(글꼴이 늦게 도착하면 종이를 다시 그린다): Noto Sans KR가 없으면 맑은 고딕. */
+@import url("archive2-tokens.css?v=20261110-shell-1") layer(archive2-tokens);
+
+:root {
+  font-family: revert;
+  font-size: revert;
+  color: revert;
+  color-scheme: revert;
+}
+
+@media screen {
+  /* ── 조작줄 ── */
+  #mode-ctrl {
+    position: fixed; top: 0; left: 0; width: 100%; height: 56px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 0 24px; z-index: 1000;
+    background: var(--surface); color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-body); font-size: 14px;
+  }
+  #mode-ctrl > * { flex: none; }
+  #mode-ctrl button { font-family: inherit; }
+
+  #ctrl-title {
+    flex: 0 1 auto; min-width: 0; max-width: 30vw;
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--ink); font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #ctrl-title::before {
+    content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--brand);
+  }
+
+  /* 시험지·해설지·정답표 탭: 옅은 알약 안에서 고른 칸만 검정 */
+  .mode-tabs {
+    box-sizing: border-box; display: flex; align-items: center; gap: 2px; padding: 3px;
+    background: var(--chip); border: 1px solid var(--line); border-radius: var(--radius-pill);
+  }
+  .mode-tabs .mode-tab {
+    box-sizing: border-box; min-height: 40px; padding: 0 18px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--ink-2);
+    font: 700 14px/1 var(--font-body); white-space: nowrap; cursor: pointer;
+  }
+  .mode-tabs .mode-tab:hover { background: var(--surface); color: var(--ink); }
+  .mode-tabs .mode-tab.active { background: var(--ink); color: var(--surface); }
+
+  .ctrl-right { display: flex; align-items: center; gap: 10px; }
+  #qpp-display { color: var(--ink-2); font-size: 13px; font-weight: 500; white-space: nowrap; }
+  .qpp-selector { display: flex; align-items: center; gap: 8px; color: var(--ink-2); font-size: 13px; font-weight: 500; white-space: nowrap; }
+
+  /* 보조 버튼 = 검정 1.5px 테두리 알약, 주 버튼 = 검정 바탕 알약 */
+  .ctrl-btn {
+    box-sizing: border-box; min-height: 44px; padding: 0 18px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1.5px solid var(--ink); border-radius: var(--radius-pill);
+    background: var(--surface); color: var(--ink);
+    font: 700 14px/1 var(--font-body); white-space: nowrap; cursor: pointer;
+  }
+  .ctrl-btn:hover { background: var(--chip); }
+  .ctrl-btn--primary { background: var(--ink); color: var(--surface); }
+  .ctrl-btn--primary:hover { background: var(--ink-hover); }
+  .ctrl-btn:disabled { cursor: wait; }
+  /* 만든 문제지의 "PDF 새 탭"은 .mode-tab 클래스를 함께 쓴다: 탭 모양이 아니라 보조 버튼 모양을 유지 */
+  .ctrl-right > .mode-tab.ctrl-btn { padding: 0 18px; }
+
+  #qppSelect {
+    box-sizing: border-box; min-height: 36px; padding: 0 28px 0 12px;
+    background-color: var(--surface); color: var(--ink);
+    border: 1.5px solid var(--control-line); border-radius: var(--radius-field);
+    font: 700 14px/1 var(--font-body); cursor: pointer;
+  }
+  #qppSelect option { background: var(--surface); color: var(--ink); }
+
+  #mode-ctrl :is(button, select, input):focus-visible,
+  #fast-print-dialog :is(button, input):focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+  /* ── 헤더 수정 · QR 출력 말풍선 ── */
+  .qr-output-wrap, .print-header-editor-wrap { position: relative; }
+  .qr-output-popover, .print-header-editor-panel {
+    position: absolute; right: 0; top: calc(100% + 8px); z-index: 1100; display: none; box-sizing: border-box;
+    padding: 16px; background: var(--surface); color: var(--ink);
+    border: 2px solid var(--ink); border-radius: var(--radius-panel);
+  }
+  .qr-output-popover { width: 220px; }
+  .print-header-editor-panel { width: 330px; }
+  .qr-output-wrap.open .qr-output-popover,
+  .print-header-editor-wrap.open .print-header-editor-panel { display: block; }
+  .qr-output-title, .print-header-editor-title { margin-bottom: 10px; font-size: 15px; font-weight: 700; }
+  .qr-output-option, .print-header-editor-check {
+    display: flex; align-items: center; gap: 10px; min-height: 44px;
+    font-size: 14px; font-weight: 500; line-height: 1.35; cursor: pointer;
+  }
+  .qr-output-option input, .print-header-editor-check input { flex: none; width: 20px; height: 20px; margin: 0; accent-color: var(--ink); }
+  .print-header-editor-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; font-size: 13px; font-weight: 700; }
+  .print-header-editor-input {
+    box-sizing: border-box; width: 100%; min-height: 44px; padding: 0 12px;
+    background: var(--surface); color: var(--ink);
+    border: 1px solid var(--control-line); border-radius: var(--radius-field);
+    font: 500 14px/1 var(--font-body);
+  }
+  .print-header-editor-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; margin-top: 6px; }
+
+  /* ── 빠른 인쇄 대화상자 ── */
+  #fast-print-dialog {
+    display: none; position: fixed; inset: 0; z-index: 1200; align-items: center; justify-content: center;
+    background: rgba(23, 23, 28, 0.42); font-family: var(--font-body);
+  }
+  .fast-print-box {
+    box-sizing: border-box; width: min(360px, calc(100vw - 32px)); padding: 22px;
+    background: var(--surface); color: var(--ink); border: 2px solid var(--ink); border-radius: var(--radius-panel);
+  }
+  .fast-print-title { font-size: 20px; font-weight: 700; }
+  .fast-print-help { margin-top: 6px; color: var(--ink-2); font-size: 14px; }
+  .fast-print-field { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; font-size: 15px; font-weight: 700; }
+  .fast-print-input {
+    box-sizing: border-box; width: 80px; min-height: 44px; padding: 0 8px; text-align: center;
+    background: var(--surface); color: var(--ink);
+    border: 1.5px solid var(--control-line); border-radius: var(--radius-field);
+    font: 700 16px/1 var(--font-body);
+  }
+  .fast-print-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+  .fast-print-actions .ctrl-btn { min-height: 44px; }
+
+  /* ── 미리보기(preview=1): 모드 탭만 남긴다 ── */
+  body.preview-mode { padding-top: 52px; }
+  body.preview-mode #mode-ctrl { height: 52px; padding: 0 12px; justify-content: center; gap: 8px; }
+  body.preview-mode :is(#ctrl-title, #btn-print, #btn-print-gdi, #qpp-display, .qr-output-wrap, .print-header-editor-wrap) { display: none; }
+  /* 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
+  body.screen-fit-mode .qr-output-wrap { display: none !important; }
+
+  /* ── 좁은 화면: 조작줄이 가로로 넘치지 않게 한 줄 안에서 줄이고, 말풍선은 화면 가장자리에 붙인다 ── */
+  @media (max-width: 900px) {
+    #mode-ctrl { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+    .qr-output-popover, .print-header-editor-panel { position: fixed; top: 60px; right: 8px; max-width: calc(100vw - 16px); }
+    .print-header-editor-panel { width: min(330px, calc(100vw - 16px)); }
+  }
+
+  @media (max-width: 640px) {
+    #mode-ctrl { height: 52px; padding: 0 8px; gap: 8px; justify-content: flex-start; }
+    #ctrl-title, #qpp-display { display: none; }
+    .ctrl-btn, .mode-tabs .mode-tab, #qppSelect { min-height: 44px; }
+    .mode-tabs .mode-tab { padding: 0 14px; font-size: 14px; }
+    .ctrl-btn { padding: 0 14px; }
+    body.screen-fit-mode { padding-top: 52px; }
+    body.screen-fit-mode #mode-ctrl { justify-content: center; }
+    body.screen-fit-mode #btn-print, body.screen-fit-mode #btn-print-gdi { display: none; }
+    .print-header-editor-input, .fast-print-input { font-size: 16px; }
+  }
+}

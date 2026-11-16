@@ -108,3 +108,11 @@ test('표 화면은 작은 화면과 키보드 포커스를 위한 스타일을 
   assert.match(css, /prefers-reduced-motion/);
   assert.match(fallbackFixture, /unit-past-exams\.js\?v=20260827c/);
 });
+
+test('단원별 기출 권의 해설·정답 머리글은 출력 봉투 경로에서도 출처 요약을 쓴다', () => {
+  // 출력 봉투 경로에서는 AppState.key가 outputRequestId라 unitpast_ 접두로 알 수 없다: meta.category·봉투 sourceKind로 판별한다.
+  assert.match(mixedEngine, /function isUnitPastOutput\(\)/);
+  assert.match(mixedEngine, /startsWith\('unitpast_'\)[\s\S]{0,80}AppState\.meta\?\.category === '단원별 기출'[\s\S]{0,80}AppState\.outputEnvelope\?\.sourceKind === 'unit-past'/);
+  assert.match(mixedEngine, /function getRenderHeaderSubtitle\(type\) \{\s*const opts = getPrintHeaderOptions\(\);\s*if \(isUnitPastOutput\(\)\)/);
+  assert.match(js, /category: '단원별 기출'/);
+});
