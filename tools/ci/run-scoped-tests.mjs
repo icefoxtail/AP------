@@ -26,6 +26,7 @@ const registrationContracts = [
   /^tests\/archive-m2-problem-renderer-continuity\.test\.js$/,
   /^tests\/archive-m2-e006-problem-continuity\.test\.mjs$/,
   /^tests\/archive-m2-e017-rhs-continuity\.test\.js$/,
+  /^tests\/archive-existing-registered-vector-svg7-derived-continuity\.test\.cjs$/,
   /^tests\/archive-existing-vector-svg-index-continuity\.test\.cjs$/,
   /^tests\/archive-svg7-named-problem-continuity\.test\.cjs$/,
   /^tests\/archive-m2s1-text3-fragment-ui\.test\.cjs$/,
