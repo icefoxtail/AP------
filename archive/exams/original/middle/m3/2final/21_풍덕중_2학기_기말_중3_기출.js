@@ -1212,3 +1212,7 @@ window.questionBank = [
     "decisiveStep": "지름으로 반지름4.5를 얻고 접점 수직과 AH 수직의 평행 관계에서 A와 O의 높이 차1.5를 정한 뒤 반지름OA를 빗변으로 피타고라스를 적용해 접선 위 HC를 구한다."
   }
 ];
+
+// Transport the existing reviewed course identity; student payload and original metadata decisions remain unchanged.
+window.questionBank[4].courseKey = "M3-2";
+window.questionBank[11].courseKey = "M3-2";

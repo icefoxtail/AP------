@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "m3s2-e052-existing-preservation-request-id-lifecycle-v2",
+  "status": "PASS_LOCAL_OFFICIAL4_CONDITIONAL_UNCONSUMED_CURRENT_CAS",
+  "baseMain": "b645719341bc7deae6ed3b21a78f878109dc7789",
+  "reusedOwner": {
+    "pr": 2244,
+    "commit": "a01b2a3376762b3e23c362e21bdb711d00f58ff9",
+    "sourceGitBlob": "1939140f48439b40c89417908bde2d00bf5436dd",
+    "pendingRequestGitBlob": "aa633fcab69d2d6516833e9d998f937ad4f265d0",
+    "pendingRequestRawSha256": "c4732440aec4d0b5c0729056d21082ff6f72d1a8d67cbec303adb56f1041ec40"
+  },
+  "contract": {
+    "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+    "gitBlob": "b77a92da18ab1f032b205ce1019669604f0f513c",
+    "rule": "A modified registration request receives a new immutable requestId. No pending-header exception is declared."
+  },
+  "lifecycle": {
+    "oldRequestId": "m3s2-e052-preserve2-current-source-20261116",
+    "oldInboxPath": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json",
+    "oldInboxGitBlob": "2b80a243176fe3168f360ce72572184fdcfd0641",
+    "oldInboxRawSha256": "79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338",
+    "oldIssuedReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-current-source-20261116.json",
+    "oldIssuedReceiptAbsentAtBase": true,
+    "oldHistoryPreservedAt": {
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "path": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json"
+    },
+    "newRequestId": "m3s2-e052-preserve2-course-source-3e3a-20261116",
+    "newInboxPath": ".archive-meta-register/inbox/m3s2-e052-preserve2-course-source-3e3a-20261116.json",
+    "newInboxGitBlob": "a3bbfaa7a8a9f68dfdd8ce0e4f74b90fc1355bcb",
+    "newInboxRawSha256": "776142693d981293a03abdb708214f0dfe76e9baf3892360dc20ce26d8cb1ae7",
+    "newIssuedReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-course-source-3e3a-20261116.json",
+    "newInboxAndReceiptAbsentAtBase": true,
+    "operation": "Atomically remove the exact old active pending inbox and add the new immutable ID with the owner-approved new source header."
+  },
+  "exactComparisons": {
+    "ownerRequestVsOriginalPendingOnlyField": "expectedSourceBlobSha1",
+    "newRequestVsOwnerRequestOnlyField": "requestId",
+    "approvalExactlyOwner": true,
+    "itemsExactlyOwner": true,
+    "registryChangesExactlyOwner": true,
+    "expectedSourceExactlyOwner": true,
+    "priorReceiptExactlyOriginal": true
+  },
+  "preserved": [
+    {
+      "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+      "sourceOrdinal": 2
+    },
+    {
+      "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+      "sourceOrdinal": 25
+    }
+  ],
+  "priorReceipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-release-20261115.json",
+    "sha256": "a1ee07c869661804dc60fb1e6c05a78c3047115c0c83b6c276ad96c52d7b1721",
+    "gitBlob": "01381f3e01d8046921c38641aad99cb5a70b9a9c"
+  },
+  "currentSourceBefore": {
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "gitBlob": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34"
+  },
+  "sourceChangesByThisOverlay": 0,
+  "newMathematicalJudgments": 0,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newDefinitionChanges": 0,
+  "ownerBranchWrites": 0,
+  "productionState": {
+    "actualRegisteredSnapshot": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "newRequestOfficialGates": "PASS_LOCAL_DRY_WRITE_REPLAY_NATIVE_CONSUMER4_AND_SLOTS25; production registration/deployment still unverified",
+    "actualRegistered": false,
+    "actualConsumerVerified": false,
+    "deployed": false
+  },
+  "mandatoryPreMergeConditions": [
+    "Re-read current main and exact old inbox blob.",
+    "Re-read old and new issued receipt paths. If old receipt now exists, stop using this unconsumed packet and rebuild the new-ID source preservation from the actual issued prior and current selected metadata/identity/runtime.",
+    "Re-read owner PR head/source/request/evidence hashes to avoid overwriting active owner changes.",
+    "Include the exact owner source and native2 request plus original evidence, or a verified equivalent owner successor. This three-path overlay is not standalone.",
+    "Local current-code official4 gates have passed. Exact publication-HEAD CI and latest source/record/receipt CAS are still required.",
+    "After main merge, separately verify actual native4/Consumer4/slots25 and Pages."
+  ],
+  "notPublishedOwnQ5Candidate": true,
+  "localVerification": {
+    "baseMain": "b645719341bc7deae6ed3b21a78f878109dc7789",
+    "actualBefore": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "registrar": {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "gitBlob": "1110b4febb8253515000c522236857fe5306f0a5"
+    },
+    "officialSummaryRawSha256": "f5d939ed20d5811f92a2a13765f7a7ed41bd8b8fbf424a072986503366e48360",
+    "registrationProofRawSha256": "c9486de8cd71b5d9eca7ed051ea428139a8d579154a1f5b9d0734fab92599f13",
+    "consumerProofRawSha256": "8cf74c1974402aeb72f91bb2a54a4aaf1c5c4a2e133870be1979460db86cab7b",
+    "slotsProofRawSha256": "57fdb1541b903d0600371bc9b57972e7d52e4972848a322fb4060035d9c6de5c",
+    "dryRunRegisteredCount": 4,
+    "localWriteRegisteredCount": 4,
+    "zeroWriteReplayCount": 4,
+    "nativeReceiptCount": 4,
+    "currentAndPreTransportCursorPlanAlreadyRegisteredCount": 8,
+    "consumer": {
+      "changed": 4,
+      "checked": 4,
+      "passed": 4,
+      "skippedUnchanged": 0
+    },
+    "projectionReplay": [
+      {
+        "requestId": "m3s2-e052-native2-course-retry-26fc-20261116",
+        "count": 2,
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      },
+      {
+        "requestId": "m3s2-e052-preserve2-course-source-3e3a-20261116",
+        "count": 2,
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    ],
+    "existingSlotVectorCount": 25,
+    "existingSlotVectorsUnchanged": true,
+    "outsideExact": {
+      "metadata": 28886,
+      "identity": 28888,
+      "runtime": 7341
+    },
+    "newCanonicalDefinitionsFromOriginalApprovalOnly": 1,
+    "conceptKey": "CC_QUADRILATERAL_ANGLE_SUM",
+    "unchangedOtherCanonicalInputCount": 82,
+    "protectedInputCount": 16,
+    "newIndependentOrMathematicalReview": 0,
+    "newDifficultyJudgment": 0,
+    "existingIndependentDifficultyCorrection": {
+      "sourceOrdinal": 12,
+      "before": 4,
+      "after": 3
+    },
+    "oldP2WasSimulated": false,
+    "nativeAndConsumerValues": [
+      {
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+        "sourceOrdinal": 5,
+        "preservation": false,
+        "courseKey": "M3-2",
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true,
+        "difficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+        "sourceOrdinal": 12,
+        "preservation": false,
+        "courseKey": "M3-2",
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true,
+        "difficultyBucket": 3
+      },
+      {
+        "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+        "sourceOrdinal": 2,
+        "preservation": true,
+        "courseKey": "M3-2",
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true,
+        "difficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+        "sourceOrdinal": 25,
+        "preservation": true,
+        "courseKey": "M3-2",
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true,
+        "difficultyBucket": 3
+      }
+    ],
+    "locallyIssuedReceiptRefs": [
+      {
+        "requestId": "m3s2-e052-native2-course-retry-26fc-20261116",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-native2-course-retry-26fc-20261116.json",
+        "rawSha256": "87a78ff6cd7c71e6e1d232be6037245b1af8952e4f39553a95ea4bcab2b8e0e4",
+        "actualProductionReceipt": false
+      },
+      {
+        "requestId": "m3s2-e052-preserve2-course-source-3e3a-20261116",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-course-source-3e3a-20261116.json",
+        "rawSha256": "e549e530207eca51d940b6238d6b6c3b05aabe19c56ec9a63c2ae8d8976b48dc",
+        "actualProductionReceipt": false
+      }
+    ],
+    "centralDataWrites": 0,
+    "sourceWritesByRegistrar": 0,
+    "localFixtureStorage": "Private RAM regular files; read-only original caches reused."
+  }
+}
