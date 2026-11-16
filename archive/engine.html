@@ -15,38 +15,63 @@
         // boldsymbol/폰트를 못 불러 startup이 멈추고, 수식이 날것으로 인쇄된다.
         // 현재 문서 위치 기준 상대 경로로 해석해 어디에 올려도 vendor를 찾게 한다.
         var AP_VENDOR_BASE = new URL('vendor/', document.baseURI).href;
+
+        function prepareEnclosedLatinMathJax() {
+            // Install the fallback before MathJax can measure and cache these glyphs.
+            const descriptor = '16px "AP Enclosed Latin"';
+            const letters = String.fromCodePoint(...Array.from({ length: 52 }, (_, i) => 0x24B6 + i));
+            let timer;
+            const fontReady = Promise.resolve().then(() => {
+                if (!document.fonts?.load || !document.fonts?.check) throw new Error('ENCLOSED_LATIN_FONT_API_UNAVAILABLE');
+                return document.fonts.load(descriptor, letters);
+            }).then(faces => {
+                if (faces.length !== 1 || faces[0].family.replace(/["']/g, '') !== 'AP Enclosed Latin' ||
+                    faces[0].status !== 'loaded' || !document.fonts.check(descriptor, letters)) {
+                    throw new Error('ENCLOSED_LATIN_FONT_NOT_LOADED');
+                }
+            });
+            return Promise.race([
+                fontReady,
+                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('ENCLOSED_LATIN_FONT_TIMEOUT')), 5000); })
+            ]).finally(() => clearTimeout(timer)).then(() => {
+                const startup = window.MathJax.startup;
+                const output = startup.document?.outputJax;
+                const unknownText = output?.unknownText;
+                if (typeof unknownText !== 'function') throw new Error('ENCLOSED_LATIN_MATHJAX_OUTPUT_UNAVAILABLE');
+                output.unknownText = function (text, ...args) {
+                    const node = unknownText.call(this, text, ...args);
+                    if (!/[\u24B6-\u24E9]/u.test(text)) return node;
+
+                    // CHTML uses unknownText for both measurement and final markup.
+                    // Keep the original outer styles and style only the target runs.
+                    this.adaptor.remove(this.adaptor.firstChild(node));
+                    for (const part of text.split(/([\u24B6-\u24E9]+)/u)) {
+                        if (!part) continue;
+                        const content = this.text(part);
+                        const child = /[\u24B6-\u24E9]/u.test(part) ? this.html('span', {
+                            class: 'ap-enclosed-latin',
+                            style: { 'font-family': this.font.getFamily('"AP Enclosed Latin", serif') }
+                        }, [content]) : content;
+                        this.adaptor.append(node, child);
+                    }
+                    return node;
+                };
+                return startup.defaultPageReady();
+            });
+        }
+
         window.MathJax = {
             loader: { paths: { mathjax: AP_VENDOR_BASE + 'mathjax', 'mathjax-tex': AP_VENDOR_BASE + 'mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']}, macros: { wideparen: ['\\overset{\\frown}{#1}', 1] } },
             output: {
                 font: 'mathjax-tex',
-                unknownFamily: 'AP Enclosed Latin, serif',
                 displayOverflow: 'linebreak',
                 linebreaks: { inline: true, width: '100%', lineleading: 0.2 }
             },
             options: { enableMenu: false },
             startup: {
                 typeset: false,
-                pageReady() {
-                    // Unknown glyph widths are cached by MathJax. Load this exact
-                    // 52-character face before its first measurement, not afterward.
-                    const descriptor = '16px "AP Enclosed Latin"';
-                    const letters = String.fromCodePoint(...Array.from({ length: 52 }, (_, i) => 0x24B6 + i));
-                    let timer;
-                    const fontReady = Promise.resolve().then(() => {
-                        if (!document.fonts?.load || !document.fonts?.check) throw new Error('ENCLOSED_LATIN_FONT_API_UNAVAILABLE');
-                        return document.fonts.load(descriptor, letters);
-                    }).then(faces => {
-                        if (faces.length !== 1 || faces[0].family.replace(/["']/g, '') !== 'AP Enclosed Latin' ||
-                            faces[0].status !== 'loaded' || !document.fonts.check(descriptor, letters)) {
-                            throw new Error('ENCLOSED_LATIN_FONT_NOT_LOADED');
-                        }
-                    });
-                    return Promise.race([
-                        fontReady,
-                        new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('ENCLOSED_LATIN_FONT_TIMEOUT')), 5000); })
-                    ]).finally(() => clearTimeout(timer)).then(() => window.MathJax.startup.defaultPageReady());
-                }
+                pageReady: prepareEnclosedLatinMathJax
             }
         };
     </script>
@@ -60,7 +85,7 @@
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="mathjax_render_loop.js?v=20260911.5"></script>
+    <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
@@ -83,7 +108,7 @@
     <script src="screen-runtime-adapter.js?v=20261112-student-svg-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+        @import url('vendor/nanum-myeongjo/nanum-myeongjo.css');
         @font-face {
             font-family: 'AP Enclosed Latin';
             src: url('vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2') format('woff2');
@@ -586,8 +611,8 @@ function rendererMode() {
 }
 
 async function waitForEnclosedLatinMath(elements) {
-    const family = window.MathJax?.config?.output?.unknownFamily ?? window.MathJax?.output?.unknownFamily;
-    if (family !== 'AP Enclosed Latin, serif') return;
+    const pageReady = window.MathJax?.config?.startup?.pageReady ?? window.MathJax?.startup?.pageReady;
+    if (pageReady !== prepareEnclosedLatinMathJax) return;
     const roots = elements == null ? [document.body] : Array.isArray(elements) ? elements : [elements];
     const targets = roots.flatMap(root => typeof root === 'string' ? [...document.querySelectorAll(root)] : [root]);
     if (!targets.some(node => /[\u24B6-\u24E9]/u.test(node?.textContent || ''))) return;

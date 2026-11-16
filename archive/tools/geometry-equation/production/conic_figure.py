@@ -734,9 +734,6 @@ def produce(plan):
             or not _negative(a[0]-tx) or not _negative(tx-b[0]) or not _negative(a[1]-ty)):
             _fail('PARABOLIC_ARCH_LASER_INVALID')
         arch={'from':_value(a[0]),'to':_value(b[0]),'contactX':_value(tx)}
-    elif 'accessibilityDescription' in plan:
-        _fail('ELLIPSE_PLAN_INVALID')
-
     points=[]
     for raw in raw_points:
         pid=raw['id'];px,py=resolved[pid]

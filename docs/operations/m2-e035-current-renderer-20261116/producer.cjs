@@ -4,6 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
 const {execFileSync}=require('node:child_process');
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
+const playwrightVersion=require('playwright/package.json').version;assert.equal(playwrightVersion,'1.62.1','PINNED_SCREENSHOT_DRIVER_REQUIRED');
 const args=process.argv.slice(2),arg=(k)=>args[args.indexOf(k)+1];
 const REPO=path.resolve(arg('--repo')),COMMIT=arg('--commit'),OUT=path.resolve(arg('--output'));
 const PRODUCER_PATH='docs/operations/m2-e035-current-renderer-20261116/producer.cjs';
@@ -24,10 +25,21 @@ function read(rel){assert(typeof rel==='string'&&!path.posix.isAbsolute(rel)&&!r
 function ref(rel){const b=read(rel);return{commit:COMMIT,path:rel,gitBlobSha1:blob(b),sha256:sha(b)};}
 const producerBytes=git(['show',PRODUCER_COMMIT+':'+PRODUCER_PATH]);assert.equal(sha(producerBytes),sha(fs.readFileSync(__filename)),'PRODUCER_EXACT_PUBLIC_BYTES');
 const producerRef={commit:PRODUCER_COMMIT,path:PRODUCER_PATH,gitBlobSha1:blob(producerBytes),sha256:sha(producerBytes)};
-const helperPath='tools/check-reviewed-problem-renderer-browser.cjs',helperBytes=read(helperPath);
-assert.equal(sha(helperBytes),'94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4','FROZEN_TILE_HELPER');
+// The tile algorithm is an independently pinned historical dependency. The
+// current renderer and local response refs stay bound to COMMIT; runtime font
+// and MathJax measurements remain separate current-renderer observations.
+const helperRef=Object.freeze({commit:'63050c3475be52f6ebf5b34c4d0ac3c785915aa7',path:'tools/check-reviewed-problem-renderer-browser.cjs',gitBlobSha1:'dcb4382ada6913f9aa35a820777248ee93879e36',sha256:'94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4'});
+const helperVersion='archive-problem-scroll-coverage-v1';
+assert.equal(git(['rev-parse','--verify',helperRef.commit+'^{commit}']).toString().trim(),helperRef.commit,'EXACT_TILE_HELPER_COMMIT');
+git(['merge-base','--is-ancestor',helperRef.commit,COMMIT]);
+const helperInventory=git(['ls-tree','-z',helperRef.commit,'--',helperRef.path]).toString();
+assert.equal(helperInventory,'100644 blob '+helperRef.gitBlobSha1+'\t'+helperRef.path+'\0','FROZEN_TILE_HELPER_REGULAR_ENTRY');
+const helperBytes=git(['cat-file','blob',helperRef.gitBlobSha1]);
+assert.equal(blob(helperBytes),helperRef.gitBlobSha1,'FROZEN_TILE_HELPER_BLOB');assert.equal(sha(helperBytes),helperRef.sha256,'FROZEN_TILE_HELPER');
 fs.mkdirSync(OUT,{recursive:true});const helperLocal=path.join(OUT,'tile-helper.cjs');fs.writeFileSync(helperLocal,helperBytes);
 const helper=require(helperLocal);
+assert.equal(helper.TILE_SCHEMA,helperVersion,'FROZEN_TILE_HELPER_VERSION');assert.equal(helper.TILE_OVERLAP,32,'FROZEN_TILE_HELPER_OVERLAP');assert.equal(helper.TILE_LIMIT,8,'FROZEN_TILE_HELPER_LIMIT');
+for(const name of ['problemContentClip','planProblemTiles','planProblemTileScroll','assertTileCoverage'])assert.equal(typeof helper[name],'function','FROZEN_TILE_HELPER_EXPORT');
 const sandbox={window:{},console:{log(){},warn(){},error(){}}};vm.runInNewContext(read(SOURCE).toString(),sandbox,{timeout:1000});
 const bank=JSON.parse(JSON.stringify(sandbox.window.questionBank));assert(Array.isArray(bank)&&bank.length===21,'SOURCE_DENOMINATOR');
 assert.equal(bank[11].image,PROBLEM.slice('archive/'.length));assert.equal(bank[11].solutionImage,SOLUTION.slice('archive/'.length));
@@ -91,6 +103,12 @@ function visibleDocumentClip(frame,clip,contextViewport){
  for(const value of Object.values(v))assert(Number.isFinite(value),'UI_FINITE_VISUAL_METRICS');
  assert(v.width>0&&v.height>0&&v.scale>0,'UI_POSITIVE_VISUAL_METRICS');assert.equal(m.devicePixelRatio,1,'UI_EXACT_DPR');assert.deepEqual(m.layoutViewport,frame.viewport);
  assert.deepEqual(m.screen,contextViewport,'UI_SCREEN_CONTEXT_BINDING');
+ // The viewport API is valid here only when all measured coordinate spaces coincide.
+ assert.deepEqual(m.layoutViewport,contextViewport,'UI_VIEWPORT_CAPTURE_LAYOUT_CONTEXT');
+ assert.deepEqual(m.documentClient,contextViewport,'UI_VIEWPORT_CAPTURE_CLIENT_CONTEXT');
+ assert.deepEqual({width:v.width,height:v.height},contextViewport,'UI_VIEWPORT_CAPTURE_VISUAL_CONTEXT');
+ assert.equal(v.scale,1,'UI_VIEWPORT_CAPTURE_EXACT_SCALE');assert.equal(v.offsetLeft,0,'UI_VIEWPORT_CAPTURE_EXACT_OFFSET_X');assert.equal(v.offsetTop,0,'UI_VIEWPORT_CAPTURE_EXACT_OFFSET_Y');
+ assert.equal(v.pageLeft,frame.scroll.x,'UI_VIEWPORT_CAPTURE_EXACT_ORIGIN_X');assert.equal(v.pageTop,frame.scroll.y,'UI_VIEWPORT_CAPTURE_EXACT_ORIGIN_Y');
  assert(Math.abs(v.width*v.scale-contextViewport.width)<=1&&Math.abs(v.height*v.scale-contextViewport.height)<=1,'UI_VISUAL_CONTEXT_SCALE_BINDING');
  assert(clip.x>=v.offsetLeft&&clip.y>=v.offsetTop&&clip.x+clip.width<=v.offsetLeft+v.width&&clip.y+clip.height<=v.offsetTop+v.height,'UI_TILE_OUTSIDE_ACTUAL_VISUAL_VIEWPORT');
  assert(Math.abs(v.pageLeft-frame.scroll.x-v.offsetLeft)<.01&&Math.abs(v.pageTop-frame.scroll.y-v.offsetTop)<.01,'UI_DOCUMENT_VISUAL_ORIGIN_BINDING');
@@ -104,12 +122,13 @@ async function capture(page,selector,view,viewport){
  for(const tile of plan.tiles){let operations=0;for(let i=0;i<3;i++){const step=helper.planProblemTileScroll(frame,tile);if(Math.abs(step.scrollByY)<.5)break;await page.evaluate(y=>window.scrollBy({top:y,left:0,behavior:'instant'}),step.scrollByY);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));operations++;frame=await page.evaluate(measure,selector);}
   recordMandatoryDiagnostic('after-scroll',frame,tile.tileIndex);assert.equal(frame.domSha256,digest);assert.deepEqual(documentFrame(frame),original);assert.deepEqual(viewportShape(frame.viewportMetrics),originalViewportShape);const clip=verifyTile(frame,tile,view),hits=await page.evaluate(hit,{selector,clip});assert(hits.samples>0&&hits.outsideQuestion===0,'UI_FOREIGN_HITS');
   const contextBefore=page.viewportSize();assert.deepEqual(contextBefore,contextViewport);const documentClip=visibleDocumentClip(frame,clip,contextViewport);
-  // fullPage selects Chromium's document-coordinate capture API. The clip is
-  // still wholly inside the measured live visual viewport; no offscreen region,
-  // resize, DOM/CSS substitution, screenshot postprocessing or compositing is used.
-  const filename=`e035-${view}-${viewport.name}-tile-${String(tile.tileIndex).padStart(2,'0')}.png`;await page.screenshot({path:path.join(OUT,filename),clip:documentClip,fullPage:true,scale:'css',caret:'initial',timeout:15000});
-  const png=pngDimensions(fs.readFileSync(path.join(OUT,filename))),expectedPng={width:Math.round(clip.width),height:Math.round(clip.height)};
-  capturePixels.push({caseId:activeCase,tileIndex:tile.tileIndex,layoutClip:clip,documentClip,contextViewport:page.viewportSize(),metricsBefore:frame.viewportMetrics,pngDimensions:png,expectedPng,pixelRule:'NEAREST_INTEGER_CSS_PX'});
+  // The pinned viewport API receives the unchanged, wholly visible layout clip.
+  // documentClip is derived evidence only, never the API argument. No offscreen
+  // capture, resize, DOM/CSS substitution, restore-scroll or image processing is used.
+  const filename=`e035-${view}-${viewport.name}-tile-${String(tile.tileIndex).padStart(2,'0')}.png`;await page.screenshot({path:path.join(OUT,filename),clip,fullPage:false,scale:'css',caret:'initial',timeout:15000});
+  // Playwright 1.62.1 enclosingIntSize at the required scale1/DPR1 uses this exact rule.
+  const png=pngDimensions(fs.readFileSync(path.join(OUT,filename))),expectedPng={width:Math.floor(clip.width+1e-3),height:Math.floor(clip.height+1e-3)};
+  capturePixels.push({caseId:activeCase,tileIndex:tile.tileIndex,api:'PAGE_SCREENSHOT',fullPage:false,scale:'css',apiCoordinateSystem:'VIEWPORT_CSS_PIXELS',viewportClip:clip,layoutClip:clip,documentClip,documentClipRole:'DERIVED_VISIBLE_ROI_ONLY',contextViewport:page.viewportSize(),metricsBefore:frame.viewportMetrics,pngDimensions:png,expectedPng,pixelRule:'FLOOR_CSS_PX_PLUS_0_001',playwrightVersion});
   assert.deepEqual(png,expectedPng,'UI_ORIGINAL_PNG_FULL_CLIP_DIMENSIONS');
   const settle={caseId:activeCase,tileIndex:tile.tileIndex,method:'READ_ONLY_EXISTING_RENDER_IDLE',maximumWaitMs:10000,observations:[],elapsedMs:0,complete:false};captureSettles.push(settle);const settleStart=Date.now();let after;
   for(;;){
@@ -121,13 +140,13 @@ async function capture(page,selector,view,viewport){
    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   }
   assert.deepEqual(verifyTile(after,tile,view),clip);assert.deepEqual(visibleDocumentClip(after,clip,contextViewport),documentClip);const afterHits=await page.evaluate(hit,{selector,clip});assert(afterHits.samples>0&&afterHits.outsideQuestion===0,'UI_AFTER_FOREIGN_HITS');
-  const screenshotEvidence={api:'PAGE_SCREENSHOT',fullPage:true,scale:'css',coordinateSystem:'DOCUMENT_CSS_PIXELS',documentClip,contextViewportBefore:contextBefore,contextViewportAfter:page.viewportSize(),metricsBefore:frame.viewportMetrics,metricsAfter:after.viewportMetrics,pngDimensions:png,visibleRoiContained:true,postprocessing:false};
+  const screenshotEvidence={api:'PAGE_SCREENSHOT',fullPage:false,scale:'css',coordinateSystem:'VIEWPORT_CSS_PIXELS',viewportClip:clip,documentClip,documentClipRole:'DERIVED_VISIBLE_ROI_ONLY',contextViewportBefore:contextBefore,contextViewportAfter:page.viewportSize(),metricsBefore:frame.viewportMetrics,metricsAfter:after.viewportMetrics,pngDimensions:png,pixelRule:'FLOOR_CSS_PX_PLUS_0_001',playwrightVersion,visibleRoiContained:true,postprocessing:false};
   tiles.push({...tile,filename,clip,scroll:after.scroll,scrollOperations:operations,feedbackIdle:true,obstructionsIntersectingClip:0,hitTestSamples:hits.samples+afterHits.samples,foreignContentHits:0,domSha256:digest,screenshotEvidence});frame=after;
  }
  return{schemaVersion:'archive-problem-scroll-coverage-v1',method:'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES',coordinateSystem:'LAYOUT_CSS_PIXELS',viewportEvidence:{contextViewport,isMobile:viewport.name==='mobile',hasTouch:viewport.name==='mobile',deviceScaleFactor:1,beforeScroll:originalViewportShape,afterScroll:viewportShape(frame.viewportMetrics)},tileLimit:8,overlapCssPixels:32,tileCount:tiles.length,content:original.content,question:original.question,viewport:original.viewport,visibleChildren:original.children.length,coverage:helper.assertTileCoverage(original.content.height,tiles),tiles,scrollBefore,scrollAfter:frame.scroll,scrollOperations:tiles.reduce((n,t)=>n+t.scrollOperations,0),domSha256:digest,feedbackIdle:true,foreignContentHits:0,cssWrites:0,domWrites:0,viewportChanges:0,compositeImageCreated:false};
 }
 let browser,activeCase=null;
-function write(status,error){const technical={schemaVersion:'archive-e035-current-renderer-student-ui-technical-v2',status,producer:'/root',observedAt:new Date().toISOString(),executionOwner:'GITHUB_ACTIONS_SUPPORTED_CHROME',checkoutCommit:COMMIT,rendererRef:ref('archive/mixed_engine.html'),sourceRef:ref(SOURCE),currentAssets:{problem:ref(PROBLEM),solution:ref(SOLUTION)},sourceOverlayCount:0,cssWrites:0,domWrites:0,newMathematicalQa:false,newMetadataApprovals:0,newDifficultyJudgments:0,browserVersion:browser?.version()||'',producerRef,servedFiles:[...served.values()],mirroredAssets:[...mirrored.values()],transportMetadata,cases};fs.writeFileSync(path.join(OUT,'technical-proof.json'),JSON.stringify(technical,null,2)+'\n');fs.writeFileSync(path.join(OUT,'diagnostics.json'),JSON.stringify({status,activeCase,failures,externalResources,captureSettles,capturePixels,mandatoryDiagnostics,error:error?{name:error.name,message:error.message.split('\n')[0]}:null},null,2)+'\n');}
+function write(status,error){const technical={schemaVersion:'archive-e035-current-renderer-student-ui-technical-v3',status,producer:'/root',observedAt:new Date().toISOString(),executionOwner:'GITHUB_ACTIONS_SUPPORTED_CHROME',checkoutCommit:COMMIT,rendererRef:ref('archive/mixed_engine.html'),sourceRef:ref(SOURCE),currentAssets:{problem:ref(PROBLEM),solution:ref(SOLUTION)},sourceOverlayCount:0,cssWrites:0,domWrites:0,newMathematicalQa:false,newMetadataApprovals:0,newDifficultyJudgments:0,browserVersion:browser?.version()||'',playwrightVersion,producerRef,helperRef,helperVersion,servedFiles:[...served.values()],mirroredAssets:[...mirrored.values()],transportMetadata,cases};fs.writeFileSync(path.join(OUT,'technical-proof.json'),JSON.stringify(technical,null,2)+'\n');fs.writeFileSync(path.join(OUT,'diagnostics.json'),JSON.stringify({status,activeCase,failures,externalResources,captureSettles,capturePixels,mandatoryDiagnostics,error:error?{name:error.name,message:error.message.split('\n')[0]}:null},null,2)+'\n');}
 async function main(){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin=`http://127.0.0.1:${server.address().port}`;
  browser=await chromium.launch({executablePath:arg('--chrome')||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage'],timeout:30000});

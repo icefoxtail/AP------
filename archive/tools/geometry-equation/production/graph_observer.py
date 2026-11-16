@@ -3551,6 +3551,58 @@ def _ov_collinear(own,other,tolerance=0.5):
 def _ov_glyph_codes(node):
     return [(child.get('data-c') or '').upper() for child in node.iter() if child.tag.split('}')[-1]=='path' and child.get('data-c')]
 
+def _ov_codes_match(got,want):
+    return len(got)==len(want) and all(code in allowed for code,allowed in zip(got,want))
+
+def _ov_logb_operands(text):
+    """Read the two operands of one literal logb call independently of the typesetter."""
+    depth=0;separator=None
+    for index,char in enumerate(text):
+        if char=='(':depth+=1
+        elif char==')':
+            depth-=1
+            if depth<0:return None
+        elif char==',' and depth==0:
+            if separator is not None:return None
+            separator=index
+    if depth or separator is None:return None
+    base,argument=text[:separator].strip(),text[separator+1:].strip()
+    return (base,argument) if base and argument else None
+
+def _ov_math_callout_matches(node,text):
+    if node.get('data-text') is not None:return False
+    call=re.match(r'(?:(?P<lhs>[A-Za-zαβγδθπ])\s*=\s*)?logb\s*\(',text)
+    if call is None:return _ov_codes_match(_ov_glyph_codes(node),_ov_label_codes(text))
+    operands=_ov_logb_operands(text[call.end():-1]) if text.endswith(')') else None
+    if operands is None:return False
+    base,argument=operands
+    prefix=_ov_label_codes(call['lhs']+'=') if call['lhs'] else []
+    math_groups=[group for group in node.iter() if group.get('data-mml-node')=='math']
+    if len(math_groups)!=1:return False
+    children=list(math_groups[0]);operator_at=len(prefix)
+    if len(children)!=operator_at+3:return False
+    operator,application,argument_group=children[operator_at:]
+    if [group.get('data-mml-node') for group in (operator,application,argument_group)]!=['msub','mo','mrow'] or len(operator)!=2:
+        return False
+    upright,subscript=operator
+    if upright.get('data-mml-node')!='mi' or _ov_glyph_codes(upright)!=['6C','6F','67']:return False
+    # The locked MathJax serializer draws a real, lowered subscript at reduced scale.
+    subscript_transform=re.fullmatch(r'translate\(([\d.]+),(-[\d.]+)\) scale\(([\d.]+)\)',subscript.get('transform',''))
+    if subscript_transform is None:return False
+    try:dx,dy,scale=map(float,subscript_transform.groups())
+    except ValueError:return False
+    if not (math.isfinite(dx) and math.isfinite(dy) and dx>0 and dy<0 and 0<scale<1):return False
+    # U+2061 is a single empty function-application glyph in this exact slot.
+    glyphs=[child for child in node.iter() if child.tag.split('}')[-1]=='path']
+    paths=[child for child in math_groups[0].iter() if child.tag.split('}')[-1]=='path']
+    if len(application)!=1 or application[0] not in paths or application[0].get('data-c')!='2061' or application[0].get('d')!='':
+        return False
+    if glyphs!=paths or any(not child.get('data-c') or not child.get('d') for child in paths if child is not application[0]):
+        return False
+    got_prefix=[code for group in children[:operator_at] for code in _ov_glyph_codes(group)]
+    return (_ov_codes_match(got_prefix,prefix) and _ov_codes_match(_ov_glyph_codes(subscript),_ov_label_codes(base)) and
+            _ov_codes_match(_ov_glyph_codes(argument_group),_ov_label_codes('('+argument+')')))
+
 def _ov_color_errors(node,color,code):
     """(G12-2) The stroke of one drawn overlay line or segment against the plan's colour name: a coloured one wears the palette's line colour at the colour width, a plain one
     wears no palette colour (a colour the plan did not declare is as wrong as a missing one)."""
@@ -3890,8 +3942,7 @@ def overlays_audit(plan,svg,transform):
                     if node is None:errors.append('OVERLAY_CALLOUT_LABEL_MISSING:'+ident);continue
                     if node.get('data-owner')!=callout['dot']:errors.append('OVERLAY_CALLOUT_OWNER_MISMATCH:'+ident);continue
                     if callout['labelKind']=='MATH':
-                        want=_ov_label_codes(callout['text']);got=_ov_glyph_codes(node)
-                        if node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
+                        if not _ov_math_callout_matches(node,callout['text']):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
                     elif node.get('data-text')!=callout['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
                     box=_region_label_box(groups,label_id);leader=leaders.get(label_id);dot_node=circles.get(callout['dot'])
                     if box is None or leader is None or dot_node is None:errors.append('OVERLAY_CALLOUT_LEADER_MISSING:'+ident);continue

@@ -59,7 +59,7 @@
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="mathjax_render_loop.js?v=20260911.5"></script>
+    <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
@@ -436,10 +436,16 @@
         if (new URLSearchParams(window.location.search).get('archive2Context') === 'archive2') {
             document.documentElement.dataset.archive2Context = 'archive2';
         }
+        // Presentation marker only: do not impersonate Archive2 transport context.
+        if (new URLSearchParams(window.location.search).get('studentReview') === '1' &&
+            !document.documentElement.dataset.archive2Context) {
+            document.documentElement.dataset.apStudentReview = 'true';
+        }
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261116-mobile-figure-1">
+    <link rel="stylesheet" href="student-review-mobile.css?v=20261116-readable-1">
     <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
@@ -3389,9 +3395,25 @@ function getFastPrintCopies() {
     return copies;
 }
 
+// The existing A4 DOM remains the print/export authority. Suspend only the
+// student's screen presentation while any supported print transport reads it.
+function suspendStudentReviewPresentation() {
+    const html = document.documentElement;
+    if (html.dataset.apStudentReview !== 'true') return () => {};
+    const attribute = 'data-ap-student-review-printing';
+    const previous = html.getAttribute(attribute);
+    html.setAttribute(attribute, 'true');
+    return () => {
+        if (previous === null) html.removeAttribute(attribute);
+        else html.setAttribute(attribute, previous);
+    };
+}
+
 async function safePrint(mode = 'vector') {
     mode = mode === 'raster' || mode === 'native' || mode === 'gdi' ? mode : 'vector';
     if (printPending) return;
+    const restoreStudentPresentation = suspendStudentReviewPresentation();
+    try {
     printPending = true;
     setPrintButtonsBusy(true, mode);
     const printStartedAt = performance.now();
@@ -3555,6 +3577,9 @@ async function safePrint(mode = 'vector') {
     } catch (error) {
         cleanup();
         throw error;
+    }
+    } finally {
+        restoreStudentPresentation();
     }
 }
 if (!buildContext) window.safePrint = safePrint;

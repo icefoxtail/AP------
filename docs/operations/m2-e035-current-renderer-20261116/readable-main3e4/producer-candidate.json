@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "archive-e035-v7-helper-pin-publication-candidate-v1",
+  "status": "UNPUBLISHED_CANDIDATE_UI_HOLD",
+  "author": "/root/audit_m3",
+  "files": [
+    {
+      "publicationPath": "docs/operations/m2-e035-current-renderer-20261116/producer.cjs",
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/producer-v7-pinned-helper-candidate.cjs",
+      "sha256": "4ec3f3f17fe58c45d63b2c35cfc9a0735c80d051c0ce767f30dd0b9afbc9d8e2",
+      "bytes": 29202,
+      "gitBlobSha1": "dccdf93f7be48a50521ff82589c081ce2ee25b81",
+      "mode": "100644"
+    }
+  ],
+  "priorCandidate": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-viewport-capture/producer-v7-viewport-candidate.cjs",
+    "sha256": "0d4c1cd9a4c3789fa4f82579dd875d2f06e2b9f5d38d45063eb21389e837c3fc",
+    "bytes": 27822
+  },
+  "patch": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/v7-helper-pin.patch",
+    "sha256": "943e6d4a2b81707bdeb760cfc9c27bc220801331c41d3a1a1c4e3b54876e0d5a",
+    "bytes": 6067
+  },
+  "replacementJournal": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/exact-replacements.json",
+    "sha256": "56bafaea9e4476ff520fcc7c3c692bb58a0ef8cf16ffbd69ee9a6a612a298578",
+    "bytes": 2434
+  },
+  "staticValidation": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/static-validation.json",
+    "sha256": "de9534f110d7e143b36bee60e339206a4890eb74154c8384951122023b32f27f",
+    "bytes": 4442
+  },
+  "nativeV3DesignOnly": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/technical-v3-intake-design-only.json",
+    "sha256": "9fc92bd1d95103ee37f7df787740733c73c7121265605eba7fd54e1b510615ff",
+    "bytes": 5230
+  },
+  "helperRef": {
+    "commit": "63050c3475be52f6ebf5b34c4d0ac3c785915aa7",
+    "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+    "gitBlobSha1": "dcb4382ada6913f9aa35a820777248ee93879e36",
+    "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4"
+  },
+  "helperVersion": "archive-problem-scroll-coverage-v1",
+  "producerRuntimeExecution": 0,
+  "nativeCodeChanges": 0,
+  "remoteWrites": 0,
+  "requiredNextAction": "ROOT independent patch review and immutable publication, then one actual four-view supported Chrome run with latest readable renderer. M3 inspects all original tiles; no prior HOLD is superseded by syntax/static results."
+}
