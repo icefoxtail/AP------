@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "archive-independent-problem-display-review-v1",
+  "scope": "EXACT_Q22_TWO_PART_PROBLEM_STATIC_CONTINUITY",
+  "reviewer": "ROOT_INDEPENDENT_DISPLAY_REVIEW",
+  "producer": "EXTERNAL_MAIN_SOURCE_CHANGE",
+  "decision": "STATIC_PROBLEM_DISPLAY_CONTINUITY_ACCEPTED",
+  "expectedRef": {
+    "path": "evidence/root-q22-original-expected-r2.json",
+    "sha256": "90c0ec834d93a00318e5366a93743bcb7e1a07bfc96c87e4c018022352cfcf84"
+  },
+  "beforeImageRef": {
+    "path": "evidence/m2-q22-problem-only-continuity-r1/before.png",
+    "sha256": "37f46eb9139404b8423bdbdd7d605265e9168668c8c7cac29958b7eca9d370e4"
+  },
+  "currentImageRef": {
+    "path": "evidence/m2-q22-problem-only-continuity-r1/after.svg",
+    "sha256": "274a37ec62956b63400c6d27b9d217b2715ca3ef4d0a64dc40dcd39f5058f96d",
+    "gitBlobSha1": "b74f08fbd57d670ab8463932191dfedb9e16bf88"
+  },
+  "currentPreviewRef": {
+    "path": "evidence/root-q22-current-inspection-r1.png",
+    "sha256": "dfde088969e6bf643f32ca3990c2fd6457969ceb2b286b5d71c85179d840d690"
+  },
+  "observations": {
+    "bothOriginalSubpartsPresent": true,
+    "unknownAngleRemainsSymbolic": true,
+    "allGivenAngleLabelsAtExpectedVerticesAndRays": true,
+    "incenterSegmentsAndPointPreserved": true,
+    "circlePointsAndRadiiPreserved": true,
+    "radiusLabel8BindsOC": true,
+    "shadedRegionMatchesOriginalMinorArcAndChordAC": true,
+    "noAddedSolutionCueObserved": true,
+    "labelsLegibleAndNotClippedAtInspectedSize": true,
+    "imageAltMatchesObservedGivens": true,
+    "originalDashedOCNowSolid": "Style change of an already shown radius; incidence, length binding and shading unchanged",
+    "layoutChange": "Original two stacked figures remain separate in two stacked panels; imageSize tall and layoutTag fullwidth."
+  },
+  "numericChecks": {
+    "givenAngleDegrees": {
+      "part1_B_IC": 25.000012022155985,
+      "part1_C_AI": 29.999988890492897,
+      "part2_A_BO": 27.0000003837925,
+      "part2_C_BO": 18.00000189704667
+    },
+    "maxIncenterDistanceSpreadSvgUnits": 9.628461373267783e-05,
+    "maxCircleRadiusResidualSvgUnits": 3.020756167870786e-05,
+    "tolerance": 0.001
+  },
+  "exposure": {
+    "expectationsFrozenBeforeCurrentImage": true,
+    "answerOrSolutionRead": false,
+    "nativeJudgmentRead": false,
+    "upstreamVisualDecisionRead": false
+  },
+  "actualStudentUi": "NOT_RUN",
+  "newMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newFourSlotApprovals": 0,
+  "sourceWrites": 0,
+  "assetWrites": 0,
+  "boundary": "Narrow static problem display observation only; official parent/native reuse and actual student UI remain separate gates."
+}
