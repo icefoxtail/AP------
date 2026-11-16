@@ -654,7 +654,7 @@ window.questionBank = [
       "$268\\text{ cm}^3$"
     ],
     "image": "assets/images/25_신흥중_2학기_기말_중1_유사/q11-problem.svg",
-    "imageAlt": "밑면이 한 변 6cm인 정사각형인 사각기둥 위에, 밑면이 합동인 정사각형이고 높이가 6cm인 사각뿔을 올려놓아 두 밑면이 정확히 겹친 입체도형. 밑면의 한 변 6cm, 사각기둥의 높이 5cm를 나타냈고, 사각뿔의 높이 6cm는 꼭대기에서 밑면의 중심까지 내린 점선과 나란한 세로 치수선 곁에 표시했다.",
+    "imageAlt": "밑면의 한 변이 6cm인 정사각형이고 높이가 5cm인 사각기둥 위에, 밑면이 합동인 정사각형이고 높이가 6cm인 사각뿔을 밑면이 정확히 겹치게 올려놓은 입체도형. 밑면의 한 변 6cm와 사각기둥의 높이 5cm를 각각 그 길이 곁에 적었고, 사각뿔의 높이 6cm는 밑면의 중심에서 꼭대기까지 그린 점선과 그 오른쪽에 적었다. 숨은 모서리는 점선으로 나타냈다.",
     "imageSize": "full",
     "answer": "①",
     "points": 4,
@@ -672,7 +672,7 @@ window.questionBank = [
     "sourcePage": 3,
     "solution": "사각기둥과 사각뿔의 밑넓이는 모두 한 변의 길이가 $6\\text{ cm}$인 정사각형의 넓이이다. $$\\begin{aligned} \\text{밑넓이} &= 6 \\times 6 \\\\ &= 36\\text{ (cm}^2\\text{)} \\\\ \\text{사각기둥의 부피} &= 36 \\times 5 \\\\ &= 180\\text{ (cm}^3\\text{)} \\\\ \\text{사각뿔의 부피} &= \\dfrac{1}{3} \\times 36 \\times 6 \\\\ &= 72\\text{ (cm}^3\\text{)} \\end{aligned}$$ 따라서 입체도형 전체의 부피는 $$\\begin{aligned} 180 + 72 &= 252\\text{ (cm}^3\\text{)} \\end{aligned}$$ 따라서 정답은 ①이다.",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_유사/q11-solution.svg",
-    "solutionImageAlt": "사각기둥과 사각뿔을 나란히 그린 그림. 사각기둥은 파란색으로 칠하고 밑면의 한 변 6cm와 높이 5cm를, 사각뿔은 주황색으로 칠하고 밑면의 한 변 6cm와 높이 6cm를 나타냈다. 사각뿔의 높이는 꼭대기에서 밑면의 중심까지 내린 점선과 나란한 세로 치수선 곁에 적었고, 보이지 않는 모서리는 점선이다.",
+    "solutionImageAlt": "사각기둥과 사각뿔을 나란히 그린 그림. 사각기둥은 파란색으로 칠하고 밑면의 한 변 6cm와 높이 5cm를, 사각뿔은 주황색으로 칠하고 밑면의 한 변 6cm를 적었다. 사각뿔의 높이는 꼭대기에서 밑면의 중심까지 내린 점선으로 나타내고 그 점선의 오른쪽 곁에 6cm를 적었으며, 밑면의 중심에서 밑면 꼭짓점으로 간 점선과 그 사이의 직각 표시로 높이가 밑면에 수직임을 보였다. 보이지 않는 모서리는 점선이다.",
     "solutionImageCaption": "입체 전체를 사각기둥과 사각뿔로 나누어 본 그림이다. 사각기둥의 부피는 36×5=180 cm³, 사각뿔의 부피는 36×6÷3=72 cm³이고, 두 부피를 더한 값이 입체 전체의 부피이다. 정답은 ①이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
@@ -685,9 +685,9 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q11-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q11-solution.plan.json",
-    "imageStatus": "engine_svg_published",
     "problemTypeKey": "",
-    "templateKey": ""
+    "templateKey": "",
+    "imageStatus": "engine_svg_published"
   },
   {
     "id": 12,
@@ -1198,7 +1198,7 @@ window.questionBank = [
     "content": "합동인 정사면체 두 개를 서로 한 면을 맞대어 붙여 만든 다면체가 있다. 이 다면체가 정다면체인지 아닌지 판단하고, 정다면체의 정의를 바탕으로 이유를 구체적으로 서술하시오. [3점]",
     "choices": [],
     "image": "assets/images/25_신흥중_2학기_기말_중1_유사/q20-problem.svg",
-    "imageAlt": "합동인 정사면체 두 개를 한 면끼리 맞대어 붙인 다면체. 맞댄 면이 되는 세 꼭짓점이 가운데에 삼각형을 이루고, 그 위와 아래에 꼭짓점이 하나씩 있다. 가려진 모서리는 점선으로 그려져 있다.",
+    "imageAlt": "합동인 정사면체 두 개를 한 면끼리 맞대어 붙인 다면체를 비스듬히 위에서 본 그림. 맞댄 면의 세 꼭짓점이 가운데에 삼각형을 이루고, 그 위와 아래에 꼭짓점이 하나씩 있다. 가려진 모서리는 점선으로 그려져 있다.",
     "imageSize": "full",
     "answer": "정다면체가 아니다.",
     "points": 3,
@@ -1216,7 +1216,7 @@ window.questionBank = [
     "sourcePage": 5,
     "solution": "정다면체가 되려면 모든 면이 합동인 정다각형이고, 각 꼭짓점에 모인 면의 개수가 모두 같아야 한다. 합동인 정사면체 두 개를 한 면끼리 맞대어 붙이면 겉면은 합동인 정삼각형 6개이므로 첫 번째 조건은 만족한다. 그러나 맞댄 면의 세 꼭짓점에는 면 4개가 모이고, 두 바깥 꼭짓점에는 각각 면 3개가 모인다. 꼭짓점에 모이는 면의 수가 서로 다르므로 정다면체가 아니다.",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_유사/q20-solution.svg",
-    "solutionImageAlt": "합동인 정사면체 두 개를 한 면끼리 맞대어 붙인 다면체를 비스듬히 위에서 본 그림. 가운데에 맞댄 면이 옅은 파란 삼각형으로 칠해져 있고, 그 면의 세 모서리는 파란색, 위 꼭짓점과 아래 꼭짓점에서 만나는 모서리는 주황색이다. 맞댄 면의 꼭짓점 곁에 '면 4개', 위와 아래 꼭짓점 곁에 '면 3개'라고 적혀 있다. 보이지 않는 모서리는 점선으로 그려져 있다.",
+    "solutionImageAlt": "합동인 정사면체 두 개를 한 면끼리 맞대어 붙인 다면체를 비스듬히 위에서 본 그림. 가운데에 맞댄 면이 옅은 파란 삼각형으로 칠해져 있고, 그 면의 모서리는 파란색, 위 꼭짓점과 아래 꼭짓점에서 만나는 모서리는 주황색이다. 맞댄 면의 세 꼭짓점 모두 곁에 각각 '면 4개', 위와 아래 꼭짓점 곁에 '면 3개'라고 적혀 있다. 보이지 않는 모서리는 점선으로 그려져 있다.",
     "solutionImageCaption": "맞댄 면의 세 꼭짓점에는 면 4개가, 위·아래 꼭짓점에는 면 3개가 모인다. 꼭짓점에 모이는 면의 수가 서로 달라 정다면체가 아니다. 정답은 정다면체가 아니다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
@@ -1229,9 +1229,9 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q20-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q20-solution.plan.json",
-    "imageStatus": "engine_svg_published",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+    "imageStatus": "engine_svg_published"
   },
   {
     "id": 21,
