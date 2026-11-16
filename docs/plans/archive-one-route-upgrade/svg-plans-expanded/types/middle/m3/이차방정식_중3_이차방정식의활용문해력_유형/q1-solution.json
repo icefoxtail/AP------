@@ -1,0 +1,338 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "안쪽 정원과 바깥 산책로를 구분하고 양쪽에 더해지는 폭을 확인한다.",
+  "accessibilityDescription": "안쪽 정원과 바깥 산책로를 구분하고 양쪽에 더해지는 폭을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "본관 앞 정원을 새로 단장하기로 한 학교는 잔디와 꽃나무로 꾸며진 직사각형 구역 바깥쪽 전체를 두르는 형태로 산책로를 조성하기로 하였다. 이 정원의 안쪽 구역은 가로 길이가 20 m, 세로 길이가 12 m인 직사각형 모양이며, 산책로를 만들면 학생들이 정원 안으로 들어가지 않고도 꽃을 가까이서 감상할 수 있다. 학교 운영위원회는 예산을 편성하여 공사를 진행하기로 결정하였고, 시공 업체는 산책로를 정원의 동서남북 모든 방향에 걸쳐 일정한 폭으로 만들기로 설계하였다. 정원에는 계절마다 색이 변하는 다양한 꽃나무를 심어 학생들의 정서 함양에 도움을 주고자 하였고, 산책로는 친환경 소재를 사용하여 걷기 편하게 만들 계획이다. 설계가 완성된 뒤, 업체에서는 전체 공사 면적을 산출하기 위해 산책로를 포함한 외곽 직사각형 전체의 넓이와 안쪽 정원의 넓이를 각각 계산하였다. 두 넓이의 차이가 바로 산책로만의 면적이 되며, 이 면적에 따라 사용할 자재의 양과 공사 비용이 결정된다. 설계 검토 회의에서 여러 차례의 논의 끝에 산책로만의 넓이를 144 m²로 확정하였다. 완공 후 학교는 산책로의 실제 폭이 설계와 일치하는지 현장에서 직접 측정하여 확인하기로 하였다. 주어진 이야기를 바탕으로 산책로의 폭은 몇 m인지 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "안쪽 사각형 바깥으로 폭 x가 양쪽씩 더해져 산책로 넓이가 전체에서 안쪽을 뺀 차임을 보여 준다.",
+      "mappedTo": [
+        "mathPlan",
+        "caption"
+      ]
+    },
+    {
+      "id": "coordinates",
+      "condition": "그림의 기준 꼭짓점을 원점으로 잡고 해설에서 검산한 가로·세로 길이만큼 평행이동하여 꼭짓점을 구성한다. 최종 답 숫자는 좌표·길이 라벨로 표시하지 않고 x가 든 길이식으로 보존한다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "안쪽 사각형 바깥으로 폭 x가 양쪽씩 더해져 산책로 넓이가 전체에서 안쪽을 뺀 차임을 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "22"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "22"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "14"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "14"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "B",
+        "label": "20",
+        "side": "ABOVE",
+        "unit": "m"
+      },
+      {
+        "id": "d2",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "LEFT",
+        "unit": "m"
+      },
+      {
+        "id": "d3",
+        "from": "E",
+        "to": "F",
+        "label": "20+2x",
+        "side": "BELOW",
+        "unit": "m"
+      },
+      {
+        "id": "d4",
+        "from": "F",
+        "to": "G",
+        "label": "12+2x",
+        "side": "RIGHT",
+        "unit": "m"
+      }
+    ],
+    "regions": [
+      {
+        "id": "road",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "E",
+              "F",
+              "G",
+              "H"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "label": "144"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE"
+}
