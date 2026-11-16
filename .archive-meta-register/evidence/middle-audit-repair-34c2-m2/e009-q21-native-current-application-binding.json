@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "middle-audit-native-current-application-binding-preparation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+  "sourceOrdinal": 21,
+  "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+  "expectedQuestionCount": 23,
+  "mode": "EVIDENCE_ONLY_EXISTING_CONTRACT_GAP_EXPLICIT",
+  "nativeReviewRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E009/accepted-review.json",
+    "localRef": {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+      "sha256": "691e36be8fb22796e164e43de699f1e82dc93313e841a7ca7e2e5bb5db628cd5"
+    }
+  },
+  "nativeBaseSourceRef": {
+    "commit": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+    "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+    "blobSha1": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+    "sha256": "a2e6f12b42cb170bdb340895f4fde201f6da0afc69bb6a90faee7ea9f74e8c66"
+  },
+  "nativeCommitSourceRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+    "blobSha1": "e6c34e611a22373144ab3a91c3c7aa55d2f7c9d5",
+    "sha256": "4115a0aedeff63284ee245a380f91c7a6e094ee971475dbe60b521b78be1a57d"
+  },
+  "currentSourceRef": {
+    "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+    "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+    "blobSha1": "3d0454c4851e2d3c8c135feccf1e2c46f8497ba4",
+    "sha256": "a6278784f9f7ba32805df5f91c920c711d6502a265004cd064d1bb859f4a8192"
+  },
+  "protectedStudentFields": [
+    "id",
+    "number",
+    "sourceQuestionNo",
+    "sourceQid",
+    "sourceOrdinal",
+    "questionUid",
+    "questionType",
+    "content",
+    "question",
+    "choices",
+    "answer",
+    "solution",
+    "image",
+    "images",
+    "figureSvg",
+    "solutionImage",
+    "solutionImages",
+    "solutionFigureSvg",
+    "layoutTag",
+    "wide",
+    "imageSize",
+    "solutionImageAlt",
+    "solutionImageCaption",
+    "solutionImageSize",
+    "score"
+  ],
+  "protectedStudentPayloadSha256": "4a279f6141bb9bbe5725fc86478cc985ca17e9ae6c3060343bb75f05079a5c35",
+  "nativeBeforeToCurrentStudentDeltas": [],
+  "nativeCommitToCurrentStudentDeltas": [],
+  "nativeProposalRefs": [],
+  "nativeSupportingProposalCount": 0,
+  "nativeAfterUnchanged": {
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "level": "중",
+    "difficultyBoundaryFlag": "B23"
+  },
+  "nativeFinalDifficultyUnchanged": {
+    "level": "중",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "reason": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다."
+  },
+  "nativeContentDebt": [],
+  "nativeRegistrationDebt": [
+    "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+  ],
+  "definitionApprovalRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-definition-approval.json",
+    "sha256": "c9d99644f099ba12d73de983d9e38ea2080bfc566c6f18de3c2ec300ea052046"
+  },
+  "nativeRationale": {
+    "primaryMethod": "주문·오배송 가격차와 총개수로 연립식을 모델링",
+    "decisiveStep": "x+y=10, (2000x+1300y)-(1300x+2000y)=1400"
+  },
+  "currentRationale": {
+    "primaryMethod": "개수·가격 조건으로 연립방정식 구성",
+    "decisiveStep": "x+y=10,x-y=2"
+  },
+  "currentRationaleEqualInBothNativeSources": true,
+  "currentRationaleRetentionBasis": "Both immutable native source snapshots and current source carry the same cleaned two-equation rationale. Root read this exact current solution/model before approving the new template; native item prose is retained separately and is not overwritten.",
+  "nativeRpmRecordId": "M2-RPM-157",
+  "rpmPath": {
+    "majorUnit": "연립일차방정식",
+    "midUnit": "연립일차방정식의 활용",
+    "l3": "수와 개수",
+    "l4": "개수·가격"
+  },
+  "proposedDerivedAliases": {
+    "rpmPrimaryId": "M2-RPM-157",
+    "rpmL1": "연립일차방정식",
+    "rpmL2": "연립일차방정식의 활용"
+  },
+  "officialContractGaps": [
+    "The unchanged original native.after does not include the new PT/TPL.",
+    "There is no exact native semantic proposal to select; existing proposalFinalization requires one and cannot be asserted.",
+    "The current source rationale is identical in both immutable source snapshots but differs from the native item wording that the existing validator prioritizes.",
+    "Derived rpmPrimaryId/rpmL1/rpmL2 aliases are not explicit old source fields and require a bounded native-RPM provenance transport."
+  ],
+  "requiredOfficialPath": "An explicit immutable current-application finalization bound to the original native review, exact unchanged protected source payload, real independent definition approval, add-only registry changes and current exact target scope. Preserve every existing native hold/denominator/UID/before-fingerprint check. Do not replace or amend the original native approval JSON or invent original proposalRefs.",
+  "newNativeReviewFabricated": false,
+  "originalNativeMutated": false,
+  "existingGuardBypassed": false,
+  "sourceMutated": false,
+  "registryMutated": false,
+  "officialDryrun": "NOT_RUN_PENDING_SUPPORTED_CONTRACT",
+  "officialRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

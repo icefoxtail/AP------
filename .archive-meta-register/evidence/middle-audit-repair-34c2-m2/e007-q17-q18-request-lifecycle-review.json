@@ -1,0 +1,600 @@
+{
+  "schemaVersion": "archive-readonly-request-lifecycle-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "createdAt": "2026-11-16T01:27:32.302Z",
+  "reviewer": {
+    "id": "GPT_M3_34C2",
+    "agent": "/root/m3",
+    "independentOf": [
+      "M2 source/request author",
+      "root writer"
+    ],
+    "method": "READ_ONLY_CODE_AND_EXISTING_TEST_REVIEW",
+    "blindReview": false
+  },
+  "decision": "EXISTING_PARTIAL_SOURCE_REBIND_ROUTE_SUPPORTED_PENDING_ACTUAL_PRIOR_RECEIPT",
+  "scope": {
+    "repository": "icefoxtail/AP------",
+    "baselineMain": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+    "upstreamPr": 2226,
+    "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+    "selectedOrdinal": 17,
+    "selectedQuestionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+    "plannedNeighborOrdinal": 18,
+    "registrationExecuted": false,
+    "sharedFilesModified": false,
+    "testsExecuted": false,
+    "studentDeploymentExecuted": false
+  },
+  "observedInput": {
+    "requestPath": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e007-q17.json",
+    "requestRawSha256": "cf7493de73e0402a8182a45e268e8253039af74bbbfd6e803cb7f2d7ebe63302",
+    "requestCanonicalSha256": "4da9b00b5ba60ae011e3fb02ab5f9d11345ae851c3a85b43aef1705ba6ef5d08",
+    "requestId": "middle-audit-repair-34c2-m2-e007-q17",
+    "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+    "scope": "PARTIAL_UIDS",
+    "approvalType": "FINAL_QA",
+    "expectedSourceBlobSha1": "5b2b82a0698986eaa464e85de2dbed93a948eada",
+    "actualSourceBlobSha1": "5b2b82a0698986eaa464e85de2dbed93a948eada",
+    "sourceRawSha256": "927b41384bf04d7f228700e8e71a240b07bb1bb7323c9586d24da8c68a88d0f4",
+    "expectedQuestionCount": 24,
+    "selectedCount": 1,
+    "hasSourceReview": false,
+    "hasItemRebind": false,
+    "hasApprovalSourceRebind": false,
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+    "receiptPresentAtPinnedMain": false,
+    "receiptStateAfterPinnedMain": "NOT_OBSERVED_IN_THIS_REVIEW",
+    "selectedFullQuestionCanonicalSha256": "12203ffc3268e3adbeee66b0f54a294c4b6c90a56e729eabc929f034e9fe2d70",
+    "selectedFullQuestionComparisonRequired": "isDeepStrictEqual of JSON-normalized full question objects from prior receipt source blob and next source file",
+    "selectedSourceApprovalFlags": {
+      "reviewStatus": "pending",
+      "answerStatus": "draft",
+      "solutionStatus": "draft"
+    },
+    "mutableEvidencePaths": [
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "Successful reviewed requests are copied into RUNNER_TEMP for final changed-UID verification, then deleted from the inbox; refused requests are moved to rejected with a rejection record. Local deletion or a green per-request pass is not proof of persisted registration.",
+      "refs": [
+        "tools/ci/reviewed-meta-register-pass.sh",
+        "tools/ci/register-reviewed-meta-requests.mjs"
+      ]
+    },
+    {
+      "id": "F2",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "The top-level expectedSourceBlobSha1 check occurs before prior receipt lookup/replay. A Q18-only change changes the source file blob, so replaying the old Q17 request fails source Git blob drift even when the Q17 question is unchanged. Retargeting that old request under the same requestId fails the request-content SHA guard.",
+      "refs": [
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs"
+      ]
+    },
+    {
+      "id": "F3",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "The normal Q17 FINAL_QA registration snapshots selected identity records even when no identity repair occurs. Its actual issued receipt should therefore satisfy the partial source-rebind identity-array shape; the actual issued receipt, row, and runtime still must be read back before relying on it.",
+      "refs": [
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs"
+      ]
+    },
+    {
+      "id": "F4",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "An existing FINAL_QA PARTIAL_UIDS sourceRebind with priorReceiptRef, empty before/after, and no registryChanges preserves the same selected approval subset against a new whole source blob. It reports zero new metadata approvals and one preserved approval, while changing only approvalEvidence and metadataRevision in the selected metadata/runtime records.",
+      "refs": [
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "tests/archive-reviewed-exam-registration-v2.test.mjs"
+      ]
+    },
+    {
+      "id": "F5",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "The partial rebind compares the full selected question object, not merely its legacy source fingerprint. A change to Q17 numbering, renderer fields, primaryMethod, metadata, problem text, answer, or solution is outside this preservation route. Only other questions or file bytes may differ. The prior source blob must remain available in Git and the denominator must remain 24.",
+      "refs": [
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "tests/archive-reviewed-exam-registration-v2.test.mjs"
+      ]
+    },
+    {
+      "id": "F6",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "The prior receipt must be REGISTERED, SHA-bound in approval evidence, linked by the currently approved Q17 row, and contain exactly the same partial selected set with identity/runtime snapshots. Current selected metadata, identity, runtime, fingerprints and ACTIVE resolution are guarded. The only code allowance for later difficulty intake is not needed for Q17 current integer difficulty and must not be used to carry unrelated changes.",
+      "refs": [
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs"
+      ]
+    },
+    {
+      "id": "F7",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "Q17 currently has no sourceReview or rendererProof input, so this is plain FINAL_QA approval preservation, not typed renderer/sourceReview approval. A neighbor-only file change does not by itself prove Q17 general search eligibility is lost. The prior receipt remains historical evidence, but must not be reported as binding the new whole file. Actual current consumer/index outcomes remain to be verified.",
+      "refs": [
+        ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e007-q17.json",
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs"
+      ]
+    },
+    {
+      "id": "F8",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "Original approval evidence includes a mutable middle2 crosswalk path with a pinned old SHA. A new rebind should cite the immutable issued receipt and narrow new continuity evidence, not blindly copy all original live-path evidence hashes after a crosswalk update. The prior approved values and provenance remain in the untouched old receipt and preserved row.",
+      "refs": [
+        ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e007-q17.json",
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs"
+      ]
+    },
+    {
+      "id": "F9",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "Generic Q17 partial-source-rebind and Q18 semantic request have per-request isolation, not an automatic atomic sibling dependency. Filename order alone is not an all-or-nothing guarantee. A refusal can allow the other independent request to register. Both must be preflighted against the planned source and then both actual receipts/results must be checked; no dependency bypass or broader transaction change is required for this narrow path.",
+      "refs": [
+        "tools/ci/register-reviewed-meta-requests.mjs",
+        "tools/ci/reviewed-meta-register-pass.sh"
+      ]
+    },
+    {
+      "id": "F10",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "A source change before the current Q17 writer persists is a protected related race: the writer can regenerate against the new main, where the old request blob fails. Wait for the actual remote Q17 receipt and consumed inbox at the persisted SHA before preparing the Q18 merge. Existing writer receipts are immutable and must not be edited.",
+      "refs": [
+        "tools/ci/archive-registration-writer.mjs",
+        "tools/ci/git-push-derived-with-retry.mjs",
+        ".github/workflows/archive-main-auto-meta.yml"
+      ]
+    },
+    {
+      "id": "F11",
+      "status": "CONFIRMED_FROM_CODE",
+      "finding": "The main writer rebuilds relevant shared/canonical/four-slot outputs and invokes real changed-UID consumer checks; persistence, registered snapshot verification, and Pages dispatch are separate steps. Only successful actual deployed result checks can establish student deployment.",
+      "refs": [
+        "tools/ci/archive-registration-writer.mjs",
+        ".github/workflows/archive-main-auto-meta.yml",
+        "tools/ci/verify-registered-consumer-approval.sh"
+      ]
+    }
+  ],
+  "requiredSequence": [
+    {
+      "step": 1,
+      "action": "Keep the entire source file unchanged while the active Q17 writer is issuing/persisting. Read the actual remote registered SHA, Q17 issued receipt bytes/SHA, current metadata/identity/runtime tuple, and inbox absence. Check no Q17 rejection. Do not substitute a local dryrun or workflow status for remote stored outputs."
+    },
+    {
+      "step": 2,
+      "action": "At that persisted base, make the approved Q18-only source change in the next isolated root unit. Preserve the complete Q17 question object exactly and keep source count/order/UID denominator 24. Record old/new file blob/raw SHA and selected-object equality; use the actual prior receipt sourceBlobSha1 as the prior source."
+    },
+    {
+      "step": 3,
+      "action": "Create a new Q17 preservation requestId with PARTIAL_UIDS, FINAL_QA, actual priorReceiptRef SHA also in approval.evidenceRefs, new expectedSourceBlobSha1, expectedQuestionCount 24, exactly Q17 ordinal17, before {}, after {}, and no registryChanges/sourceReview/item rebind. Leave prior request/receipt immutable. Use a separate ordinary supported semantic request for Q18."
+    },
+    {
+      "step": 4,
+      "action": "Root should preflight Q17 preservation and Q18 request against the exact planned source/current approved state, plus the directly affected consumer projection. If current Q17 records differ from the prior receipt, stop only this pair and inspect the newer receipt/drift; do not weaken guards. This review did not execute those preflights."
+    },
+    {
+      "step": 5,
+      "action": "Merge the source change and both supported inputs in one narrow root unit after step1. Let the official single writer consume them. Per-request isolation remains; verify each actual applied/rejected result and new receipts, rather than assuming the pair is atomic."
+    },
+    {
+      "step": 6,
+      "action": "Read back the exact remote registered SHA and new Q17 receipt: same one UID, new source blob/raw SHA, newMetadataApprovals 0, preservedMetadataApprovals 1. Compare Q17 semantic fields/holds/identity unchanged, only intended metadataRevision/approvalEvidence changes, current ACTIVE binding, runtime/canonical and directly affected four-slot/index connection. Separately verify Q18 official result and actual student publication/search/selection/output."
+    }
+  ],
+  "symbolicNonExecutableRequestShape": {
+    "status": "NOT_AN_INBOX_REQUEST_DO_NOT_EXECUTE",
+    "requestId": "<NEW_UNIQUE_Q17_SOURCE_REBIND_ID>",
+    "scope": "PARTIAL_UIDS",
+    "examUid": "26_왕운중_1학기_중간_중2_기출",
+    "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+    "expectedSourceBlobSha1": "<ACTUAL_NEW_BLOB_AFTER_Q18_ONLY_CHANGE>",
+    "expectedQuestionCount": 24,
+    "approval": {
+      "type": "FINAL_QA",
+      "metadataReviewed": true,
+      "approvedBy": "<ROOT_TASK_OWNER>",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+          "sha256": "<ACTUAL_ISSUED_PRIOR_RECEIPT_RAW_SHA256>"
+        },
+        {
+          "path": "<IMMUTABLE_SELECTED_OBJECT_CONTINUITY_EVIDENCE>",
+          "sha256": "<EXACT_EVIDENCE_SHA256>"
+        }
+      ],
+      "sourceRebind": {
+        "priorReceiptRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+          "sha256": "<ACTUAL_ISSUED_PRIOR_RECEIPT_RAW_SHA256>"
+        }
+      }
+    },
+    "items": [
+      {
+        "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+        "sourceOrdinal": 17,
+        "before": {},
+        "after": {},
+        "reason": "Preserve the already registered Q17 approval after only Q18 metadata changes in the same source file.",
+        "evidenceRefs": [
+          {
+            "path": "<IMMUTABLE_SELECTED_OBJECT_CONTINUITY_EVIDENCE>",
+            "sha256": "<EXACT_EVIDENCE_SHA256>"
+          }
+        ]
+      }
+    ]
+  },
+  "codeReferences": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "8c8c3bee9b8b564e3c04bdd2814a1c32bc871392",
+      "sha256": "d25aa18e0166bc44591935a9771cf62cae99f77a31b3cea4638f444fe1bc8393",
+      "workingCopyEqualsPinned": false,
+      "anchors": [
+        {
+          "text": "function loadSourceRebindPrior",
+          "lines": [
+            1946
+          ]
+        },
+        {
+          "text": "sourceRebind partial prior scope/approval mismatch",
+          "lines": [
+            1969
+          ]
+        },
+        {
+          "text": "sourceRebind partial selected source question changed",
+          "lines": [
+            1986
+          ]
+        },
+        {
+          "text": "sourceRebind prior receipt is not the registration of the current approved rows",
+          "lines": [
+            1992
+          ]
+        },
+        {
+          "text": "if (req.expectedSourceBlobSha1 !== blob)",
+          "lines": [
+            2142
+          ]
+        },
+        {
+          "text": "requestId reused with different content",
+          "lines": [
+            2196
+          ]
+        },
+        {
+          "text": "partial source rebind receipt source binding drift",
+          "lines": [
+            2226
+          ]
+        },
+        {
+          "text": "source rebind must not change values",
+          "lines": [
+            2495
+          ]
+        },
+        {
+          "text": "source rebind: metadata differs from prior receipt",
+          "lines": [
+            2503
+          ]
+        },
+        {
+          "text": "sourceRebind partial runtime differs from prior receipt",
+          "lines": [
+            2523
+          ]
+        },
+        {
+          "text": "appliedIdentityRecords.push(structuredClone(id))",
+          "lines": [
+            2516,
+            2604
+          ]
+        },
+        {
+          "text": "newMetadataApprovals: 0, preservedMetadataApprovals: patches.size",
+          "lines": [
+            2187
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tools/ci/reviewed-meta-register-pass.sh",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "244b59ba7cabbc6be42160920127aa781bd3651c",
+      "sha256": "ea568ae2354335bab5b65c2a0c5c48ccb95325ecdc123e153b82164b6f342bbe",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "find .archive-meta-register/inbox",
+          "lines": [
+            30,
+            74
+          ]
+        },
+        {
+          "text": "collect-reviewed-consumer-refusals.mjs",
+          "lines": [
+            128
+          ]
+        },
+        {
+          "text": "Applied requests are consumed (deleted)",
+          "lines": [
+            151
+          ]
+        },
+        {
+          "text": "rm -f -- \"$request\"",
+          "lines": [
+            154
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tools/ci/register-reviewed-meta-requests.mjs",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "61bc1876ca2726663fbc5a609505126c1ac81145",
+      "sha256": "dc0fc4807131d42a1a9787187364a8956dc453fabd14cae04bd58ad1f8f33580",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "export function orderedRequestPaths",
+          "lines": [
+            97
+          ]
+        },
+        {
+          "text": "if(!descriptors.some",
+          "lines": [
+            136
+          ]
+        },
+        {
+          "text": "AUDIT_DEPENDENCY_NOT_APPLIED",
+          "lines": [
+            263
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "e4ab17a977909affd9745634c10be17c385d375c",
+      "sha256": "135f8885d0ba0acf2044272ea01f1f6e09cc929ee6e3be82e4011246c3311149",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "id:'reviewed'",
+          "lines": [
+            111
+          ]
+        },
+        {
+          "text": "alwaysFinal:true",
+          "lines": [
+            119
+          ]
+        },
+        {
+          "text": "finalCommands:({env})",
+          "lines": [
+            120,
+            128
+          ]
+        },
+        {
+          "text": "IMMUTABLE_INPUT_OR_RECEIPT_CHANGED",
+          "lines": [
+            211
+          ]
+        },
+        {
+          "text": "id:'fourSlot'",
+          "lines": [
+            161
+          ]
+        },
+        {
+          "text": "const PROTECTED_PREFIXES",
+          "lines": [
+            439
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tools/ci/git-push-derived-with-retry.mjs",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "40e04004700a71c5d63048867ab912ddb511f10f",
+      "sha256": "11039848fd1f25b071f2134f59bdc8ee8096076a85d2f9d11f60d1585a9dc620",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "regenerate",
+          "lines": [
+            6,
+            13,
+            15,
+            18,
+            41,
+            42,
+            142,
+            168,
+            169,
+            170,
+            171,
+            180,
+            204
+          ]
+        },
+        {
+          "text": "registeredSha",
+          "lines": [
+            68,
+            110,
+            114,
+            127,
+            139,
+            192,
+            206,
+            207,
+            209
+          ]
+        },
+        {
+          "text": "reapply",
+          "lines": [
+            10,
+            21,
+            41,
+            43,
+            144,
+            145,
+            204
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/archive-main-auto-meta.yml",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "e0e3df787b435861376a052dd35552c94e99b47b",
+      "sha256": "b113c3db65c760d1886547b0c809b35a970c7ba1ed1de85103bdb8f714a66aa8",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "Prepare only changed native registration lanes",
+          "lines": [
+            95
+          ]
+        },
+        {
+          "text": "Persist verified lanes",
+          "lines": [
+            99
+          ]
+        },
+        {
+          "text": "Bind the persisted snapshot",
+          "lines": [
+            115
+          ]
+        },
+        {
+          "text": "git checkout --detach \"$REGISTERED_MAIN_SHA\"",
+          "lines": [
+            124
+          ]
+        },
+        {
+          "text": "Dispatch the exact registered snapshot",
+          "lines": [
+            128
+          ]
+        },
+        {
+          "text": "Report incomplete required registration",
+          "lines": [
+            136
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tools/ci/verify-registered-consumer-approval.sh",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "26a85e4d7b2f426023f138bea06d2442648c42c8",
+      "sha256": "a15700fece5adb325e8e4b53e232b02d8edb3367c4f91548d7ddc6b4f330e8ff",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "NO_CHANGED_UIDS_TO_VERIFY",
+          "lines": [
+            42
+          ]
+        },
+        {
+          "text": "verify-changed-uid-consumer-approval",
+          "lines": [
+            28,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+      "gitBlobSha1": "7cfc29c88ad23027355d9345c04271e266c7fac0",
+      "sha256": "9922c1bc86fe87ce56e6585d128e2f6a2bbc82c50e4a475a928ef59e4cdc5ac7",
+      "workingCopyEqualsPinned": true,
+      "anchors": [
+        {
+          "text": "function partialSourceRebindFixture",
+          "lines": [
+            2846
+          ]
+        },
+        {
+          "text": "partial source rebind preserves one approval and all omitted rows with zero new approvals",
+          "lines": [
+            2863
+          ]
+        },
+        {
+          "text": "partial source rebind keeps the accepted row version when the active pack has advanced",
+          "lines": [
+            2888
+          ]
+        },
+        {
+          "text": "partial source rebind rejects prior denominator, selection, identity, runtime and approval drift",
+          "lines": [
+            2900
+          ]
+        },
+        {
+          "text": "partial source rebind cannot add a held neighbour or change a selected renderer field",
+          "lines": [
+            2919
+          ]
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "performed": [
+      "Direct read of pinned main request/source and lifecycle implementation",
+      "Direct read of existing partial source rebind tests",
+      "SHA/blob capture for read-only evidence",
+      "Observed no sourceReview, no item rebind, no approval sourceRebind in Q17 request",
+      "Confirmed normal registration unconditionally snapshots selected identity records"
+    ],
+    "notPerformed": [
+      "No registrar execution",
+      "No tests run",
+      "No new source/registry/shared-code edits",
+      "No live issued-receipt or remote writer result validation after pinned main",
+      "No main merge or student deployment"
+    ],
+    "overallStatus": "READ_ONLY_ROUTE_REVIEW_COMPLETE_ACTUAL_APPLICATION_PENDING"
+  }
+}
