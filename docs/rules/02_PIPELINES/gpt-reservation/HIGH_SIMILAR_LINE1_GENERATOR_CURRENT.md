@@ -15,7 +15,7 @@
 
 1. `docs/agents/outcome-method-review.md` (공통 판단 계약) — 같은 세션에서 읽은 판본은 재사용.
 2. `docs/agents/exam-pipeline.md`, `docs/agents/metadata.md`(특히 "PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙"과 "빈 메타 채우기"), `docs/architecture/JS_Archive_Meta_OS_CURRENT.md` — 메타·4칸 공통 계약. 유사 문항 1개의 메타 완성 = Meta OS + 4칸 계약 + 이 문서.
-3. `docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md` — RPM→CrossConcept/Condition/Integration 판정, PT/TPL은 공식 Resolver 결과만.
+3. `docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md` — RPM→CrossConcept/Condition/Integration 판정, PT/TPL은 Resolver 조회·근거 있는 직접 판정·새 키 신설(같은 문서 §0, 2026-11-16 제한 해제).
 4. `docs/rules/02_PIPELINES/gpt-reservation/CREATE_CURRENT.md` §2~§3 — 학생용 작은칠판 해설·정밀 Meta 책임. (예약 공용 README의 Library/Drive stage 변수는 이 라인에 쓰지 않는다. 입력과 인계는 Git이다.)
 5. `docs/rules/02_PIPELINES/해설프로토콜.md` — 칠판 판서형 해설.
 6. `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`, `docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md` — 그림이 있는 문항에서만 해당 부분.
