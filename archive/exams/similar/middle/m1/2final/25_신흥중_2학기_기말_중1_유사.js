@@ -57,8 +57,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q01-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q01-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
   },
   {
     "id": 2,
@@ -69,8 +69,8 @@ window.questionBank = [
     "standardUnitKey": "M1-06",
     "standardUnit": "평면도형의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M1-06-POLYGON_CIRCLE",
-    "subUnit": "다각형과 원",
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -94,7 +94,7 @@ window.questionBank = [
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "중1 수학",
-    "conceptClusterKey": "POLYGON_CIRCLE",
+    "conceptClusterKey": "PLANE_FIGURE_MEASURE",
     "rpmL1Label": "평면도형",
     "rpmL2Label": "원과 부채꼴",
     "rpmL3Label": "원과 부채꼴의 기본",
@@ -116,20 +116,20 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q02-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q02-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
   },
   {
     "id": 3,
-    "level": "중",
+    "level": "상",
     "category": "평면도형의 성질",
     "originalCategory": "평면도형의 성질",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-06",
     "standardUnit": "평면도형의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M1-06-POLYGON_CIRCLE",
-    "subUnit": "다각형과 원",
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -156,7 +156,7 @@ window.questionBank = [
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "중1 수학",
-    "conceptClusterKey": "POLYGON_CIRCLE",
+    "conceptClusterKey": "PLANE_FIGURE_MEASURE",
     "rpmL1Label": "평면도형",
     "rpmL2Label": "원과 부채꼴",
     "rpmL3Label": "원과 부채꼴의 기본",
@@ -176,16 +176,16 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "BOUNDARY",
     "difficultyReason": "평행선 동위각과 반지름 이등변삼각형 성질로 두 중심각을 추론한 후 비례식을 푸는 문항",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q03-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q03-solution.plan.json",
     "imageStatus": "engine_svg_published",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
   },
   {
     "id": 4,
@@ -249,8 +249,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q04-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q04-solution.plan.json",
     "imageStatus": "engine_svg_published",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER"
   },
   {
     "id": 5,
@@ -319,7 +319,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "하",
+    "level": "중",
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
@@ -366,15 +366,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "BOUNDARY",
     "difficultyReason": "입체도형의 면, 모서리, 꼭짓점 공식을 직접 점검하는 1단계 개념 문항",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q06-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q06-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
   },
   {
     "id": 7,
@@ -432,8 +432,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q07-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q07-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
   },
   {
     "id": 8,
@@ -491,8 +491,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q08-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q08-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+    "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT"
   },
   {
     "id": 9,
@@ -556,8 +556,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q09-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q09-solution.plan.json",
     "imageStatus": "engine_svg_published",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
   },
   {
     "id": 10,
@@ -621,8 +621,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q10-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q10-solution.plan.json",
     "imageStatus": "engine_svg_published",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE"
   },
   {
     "id": 11,
@@ -685,8 +685,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q11-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q11-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
     "imageStatus": "engine_svg_published"
   },
   {
@@ -751,8 +751,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q12-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q12-solution.plan.json",
     "imageStatus": "engine_svg_published",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE"
   },
   {
     "id": 13,
@@ -813,8 +813,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q13-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q13-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION"
   },
   {
     "id": 14,
@@ -872,8 +872,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q14-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q14-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT"
   },
   {
     "id": 15,
@@ -992,8 +992,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q16-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q16-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT"
   },
   {
     "id": 17,
@@ -1053,8 +1053,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q17-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q17-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
   },
   {
     "id": 18,
@@ -1065,8 +1065,8 @@ window.questionBank = [
     "standardUnitKey": "M1-08",
     "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -1090,7 +1090,7 @@ window.questionBank = [
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "중1 수학",
-    "conceptClusterKey": "DATA_ORGANIZATION",
+    "conceptClusterKey": "DATA_INTERPRETATION",
     "rpmL1Label": "통계",
     "rpmL2Label": "도수분포표와 상대도수",
     "rpmL3Label": "상대도수",
@@ -1112,12 +1112,12 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q18-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q18-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON"
   },
   {
     "id": 19,
-    "level": "중",
+    "level": "상",
     "category": "평면도형의 성질",
     "originalCategory": "평면도형의 성질",
     "standardCourse": "중1 수학",
@@ -1163,8 +1163,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "BOUNDARY",
     "difficultyReason": "부채꼴 넓이 공식과 정사각형 넓이의 차를 연계하여 서술하는 기하 문항",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -1289,8 +1289,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q21-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q21-solution.plan.json",
     "imageStatus": "engine_svg_published",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE"
   },
   {
     "id": 22,
@@ -1332,9 +1332,7 @@ window.questionBank = [
     "image": null,
     "solutionImage": null,
     "solution": "(1) 주어진 $10$개의 자료를 크기순으로 나열하면 $$6, \\quad 6, \\quad 11, \\quad 13, \\quad 15, \\quad 17, \\quad 21, \\quad 24, \\quad 27, \\quad 160$$ $$\\begin{aligned} \\text{평균} &= \\dfrac{6 + 6 + 11 + 13 + 15 + 17 + 21 + 24 + 27 + 160}{10} \\\\ &= \\dfrac{300}{10} \\\\ &= 30\\text{ (분)} \\\\ \\text{중앙값} &= \\dfrac{15 + 17}{2} \\\\ &= 16\\text{ (분)} \\\\ \\text{최빈값} &= 6\\text{ (분)} \\end{aligned}$$ (2) 대푯값 선택 및 타당성 서술: 이 자료의 대푯값으로는 중앙값($16$분)이 가장 적절하다. 이유: • 평균($30$분)은 다른 대부분의 자료보다 지나치게 큰 극단적인 값인 $160$분의 영향을 크게 받아 전체 자료의 중심적인 경향을 왜곡하므로 적절하지 않다. • 최빈값($6$분)은 가장 작은 값 쪽에 치우쳐 있어 전체 자료의 중심 위치를 대표하기 어렵다. 반면 중앙값($16$분)은 극단값의 영향을 받지 않고 크기순으로 가운데 위치하므로 대푯값으로 가장 적절하다.",
-    "crossConceptKeys": [
-      "CC_EXTREME_VALUES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
@@ -1344,7 +1342,7 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q22-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_신흥중_2학기_기말_중1_유사_plans/q22-solution.plan.json",
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_REPRESENTATIVE_VALUE_SELECTION"
   }
 ];

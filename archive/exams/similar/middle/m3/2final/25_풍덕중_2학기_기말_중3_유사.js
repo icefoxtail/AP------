@@ -55,9 +55,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "crossConceptKeys": [
-      "CC_RATIO"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "category": "원의 성질",
@@ -94,8 +92,8 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "questionType": "객관식",
-    "level": "중",
-    "difficultyBucket": 2,
+    "level": "상",
+    "difficultyBucket": 3,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [],
@@ -120,7 +118,9 @@ window.questionBank = [
     "imageAlt": "선분 AB가 지름인 원 위의 점 D, C와 두 직선 AD, BC가 만나는 원 밖의 점 E를 나타내고 ∠AEB=58°, 중심각 ∠DOC=x를 표시한 그림.",
     "imageSize": "full",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "imageStatus": "engine_svg_published"
+    "imageStatus": "engine_svg_published",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "BOUNDARY"
   },
   {
     "id": 4,
@@ -172,10 +172,10 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "questionType": "객관식",
-    "level": "하",
-    "difficultyBucket": 1,
+    "level": "중",
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -194,7 +194,9 @@ window.questionBank = [
       "④ ㄱ, ㄴ, ㅁ",
       "⑤ ㄱ, ㄷ, ㅁ"
     ],
-    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE"
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "BOUNDARY"
   },
   {
     "id": 6,
@@ -211,11 +213,12 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "상",
     "difficultyBucket": 4,
-    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE_RHS",
-      "CC_CIRCLE_SECTOR_AREA"
+      "CC_CIRCLE_SECTOR_AREA",
+      "CC_CIRCLE_CHORD_PERP_BISECTOR"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -294,8 +297,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -327,8 +330,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -409,8 +412,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 3,
-    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
     "crossConceptKeys": [
       "CC_TRIANGLE_SIMILARITY"
     ],
@@ -451,9 +454,9 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "questionType": "객관식",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "crossConceptKeys": [
       "CC_CIRCLE_TANGENT_PROPERTY"
     ],
@@ -478,7 +481,9 @@ window.questionBank = [
     "imageAlt": "원 O의 지름 AC의 연장선 위의 점 C, 점 B에서의 접선 BC, 원 위의 점 D, ∠ADB=58°, ∠BCO=x를 나타낸 그림.",
     "imageSize": "full",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "imageStatus": "engine_svg_published"
+    "imageStatus": "engine_svg_published",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "BOUNDARY"
   },
   {
     "id": 13,
@@ -491,8 +496,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "하",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -524,8 +529,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS",
     "crossConceptKeys": [
       "CC_MEAN"
     ],
@@ -561,8 +566,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "templateKey": "TPL_M3_FIND_MEAN_AND_UNKNOWN_FROM_DEVIATIONS",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -594,9 +599,11 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
+    "crossConceptKeys": [
+      "CC_VARIANCE_SCALING_PROPERTY"
+    ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "category": "통계",
@@ -627,8 +634,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "상",
     "difficultyBucket": 4,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "templateKey": "TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS",
     "crossConceptKeys": [
       "CC_SUM_OF_SQUARES_IDENTITY"
     ],
@@ -664,10 +671,10 @@ window.questionBank = [
     "standardUnitKey": "M3-07",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "questionType": "객관식",
-    "level": "중",
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "level": "하",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+    "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -686,7 +693,9 @@ window.questionBank = [
       "④ $32\\%$",
       "⑤ $36\\%$"
     ],
-    "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION"
+    "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "BOUNDARY"
   },
   {
     "id": 19,
@@ -699,8 +708,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "하",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+    "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -732,8 +741,8 @@ window.questionBank = [
     "questionType": "객관식",
     "level": "하",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+    "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -833,8 +842,8 @@ window.questionBank = [
     "questionType": "서술형",
     "level": "중",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "templateKey": "TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -863,8 +872,8 @@ window.questionBank = [
     "questionType": "서술형",
     "level": "하",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+    "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

@@ -13,9 +13,9 @@
     "evidenceRefs": []
   },
   "registryChanges": [],
-  "expectedSourceBlobSha1": "d39bed733f7b4919e9eaa1ef7be2402b89499078",
-  "rpmStatus": "EVIDENCE_DEBT",
-  "expectedSourceSha256": "fd237600d417484d7b66f464d14ca6a0c67ebd207f47713737b6e62040e3f884",
+  "expectedSourceBlobSha1": "2969bcf6303b2521d93e218b2806ea9f397c530b",
+  "rpmStatus": "FINAL",
+  "expectedSourceSha256": "67630b6e5c08e47412a7c7abd160add68bee850cf8b9f823496bc4c19eb095e1",
   "items": [
     {
       "sourceOrdinal": 1,
@@ -30,68 +30,40 @@
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 1,
         "primaryMethod": "원의 현·지름·활꼴·부채꼴의 정의와 중심각에 정비례하는 양이 호와 부채꼴의 넓이뿐임을 선지마다 하나씩 대조해 거짓인 진술을 가려낸다.",
         "decisiveStep": "현의 길이는 중심각의 크기에 정비례하지 않는다는 사실로 ①을 거짓이라고 확정하는 판단.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-201"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "원의 현·지름·활꼴·부채꼴의 정의와 중심각에 정비례하는 양이 호와 부채꼴의 넓이뿐임을 선지마다 하나씩 대조해 거짓인 진술을 가려낸다.",
       "decisiveStep": "현의 길이는 중심각의 크기에 정비례하지 않는다는 사실로 ①을 거짓이라고 확정하는 판단.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 평면도형 > 원과 부채꼴 > 원과 부채꼴의 기본 > 중심각·호·현",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-201",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: no concept outside the primary method contributes",
+        "condition": "None judged: 정의 진술의 참·거짓만 가리면 되고 해를 제한하는 별도 조건은 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 2,
@@ -103,69 +75,57 @@
         "courseKey": "MID-MATH-1",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형의 성질",
-        "subUnitKey": "M1-06-POLYGON_CIRCLE",
-        "subUnit": "다각형과 원",
-        "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "conceptClusterKey": "PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 2,
         "primaryMethod": "두 중심각 80°와 20°의 비 4:1을 구한 뒤 호의 길이만 중심각에 정비례함을 적용해 호 AB가 호 CD의 4배라는 선지를 찾아낸다.",
         "decisiveStep": "호 AB : 호 CD = 4 : 1이므로 ②가 참임을 확정하고, 현의 길이와 삼각형의 넓이가 정비례한다는 선지를 배제하는 비교.",
         "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-204"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "두 중심각 80°와 20°의 비 4:1을 구한 뒤 호의 길이만 중심각에 정비례함을 적용해 호 AB가 호 CD의 4배라는 선지를 찾아낸다.",
       "decisiveStep": "호 AB : 호 CD = 4 : 1이므로 ②가 참임을 확정하고, 현의 길이와 삼각형의 넓이가 정비례한다는 선지를 배제하는 비교.",
       "metaRationale": {
-        "rpmPath": "2022 M1-2 > 평면도형 > 원과 부채꼴 > 원과 부채꼴의 기본 > 중심각·호·현",
+        "rpmPath": "2022 M1-2 > 평면도형 > 원과 부채꼴 > 부채꼴의 넓이 > 호의 길이와 넓이 관계",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
-          "crosswalkRecordId": "M1-RPM-201",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-204",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 비례 여부 판정이 Primary 안에서 끝나고 다른 표 키 개념은 쓰이지 않았다.",
+        "condition": "None judged: 두 중심각의 크기만 주어져 비례 관계를 판정할 뿐 해를 가르는 제약이 없다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
+        {
+          "fields": [
+            "rpmPrimaryPath"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Independent judgments disagree (first pass \"M1-RPM-201\", pass1 \"M1-RPM-204\", pass2 \"M1-RPM-202\"); provisional value kept, final decision pending."
+        },
         {
           "fields": [
             "problemTypeKey",
             "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_CIRCLE_ANGLE_RELATIONS/null, pass2 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_SECTOR_MEASURE)."
         }
       ]
     },
@@ -179,74 +139,46 @@
         "courseKey": "MID-MATH-1",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형의 성질",
-        "subUnitKey": "M1-06-POLYGON_CIRCLE",
-        "subUnit": "다각형과 원",
-        "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "conceptClusterKey": "PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLE",
           "CC_PARALLEL_LINE_ANGLES"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "level": "중",
-        "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 3,
         "primaryMethod": "반지름이 같아 이등변삼각형이 되는 AOD에서 ∠AOD=120°를 얻고, AD와 OC가 평행하다는 성질로 ∠BOC=30°를 구한 뒤 호의 길이가 중심각에 정비례함을 이용해 비례식을 세운다.",
         "decisiveStep": "∠AOD : ∠BOC = 120° : 30° = 4 : 1에서 20 : 호 BC = 4 : 1을 세워 호 BC = 5cm를 확정하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "BOUNDARY"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M1-RPM-202"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "반지름이 같아 이등변삼각형이 되는 AOD에서 ∠AOD=120°를 얻고, AD와 OC가 평행하다는 성질로 ∠BOC=30°를 구한 뒤 호의 길이가 중심각에 정비례함을 이용해 비례식을 세운다.",
       "decisiveStep": "∠AOD : ∠BOC = 120° : 30° = 4 : 1에서 20 : 호 BC = 4 : 1을 세워 호 BC = 5cm를 확정하는 계산.",
       "metaRationale": {
-        "rpmPath": "2022 M1-2 > 평면도형 > 원과 부채꼴 > 원과 부채꼴의 기본 > 중심각·호·현",
+        "rpmPath": "2022 M1-2 > 평면도형 > 원과 부채꼴 > 원과 부채꼴의 기본 > 부채꼴의 호의 길이",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
-          "crosswalkRecordId": "M1-RPM-201",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-202",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
         },
-        "crossConcept": "CC_ISOSCELES_TRIANGLE: 반지름 OA=OD에서 ∠ADO=∠DAO=30°를 얻어 ∠AOD=120°를 구하는 데 기여한다. CC_PARALLEL_LINE_ANGLES: AD∥OC의 동위각 성질로 ∠BOC=30°를 얻는 데 기여한다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_ISOSCELES_TRIANGLE, CC_PARALLEL_LINE_ANGLES.",
+        "condition": "None judged: 평행 관계와 각도, 호의 길이가 모두 주어져 별도 제약 없이 길이를 구한다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 4,
@@ -261,68 +193,40 @@
         "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
         "subUnit": "평면도형의 측정",
         "conceptClusterKey": "PLANE_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 4,
         "primaryMethod": "중심각이 60°로 같은 두 동심 부채꼴에서 큰 호와 작은 호의 길이를 각각 구하고, 반지름의 차로 양쪽 직선 부분의 길이를 구해 세 값을 더한다.",
         "decisiveStep": "큰 호 3π, 작은 호 π, 직선 부분 12cm를 합쳐 둘레가 4π+12cm임을 확정하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-205"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "중심각이 60°로 같은 두 동심 부채꼴에서 큰 호와 작은 호의 길이를 각각 구하고, 반지름의 차로 양쪽 직선 부분의 길이를 구해 세 값을 더한다.",
       "decisiveStep": "큰 호 3π, 작은 호 π, 직선 부분 12cm를 합쳐 둘레가 4π+12cm임을 확정하는 계산.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 평면도형 > 원과 부채꼴 > 복합도형 > 부채꼴을 포함한 둘레",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-205",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 부채꼴 호의 길이 공식과 경계 분할만으로 해결되어 다른 표 키 개념이 필요 없다.",
+        "condition": "None judged: 띠의 둘레를 이루는 조각은 도형 구조에서 정해지고 해를 가르는 별도 제약은 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 5,
@@ -344,15 +248,16 @@
         "integrationPattern": "REINTERPRETATION",
         "level": "상",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 5,
         "primaryMethod": "직사각형에만 속하는 부분과 부채꼴에만 속하는 부분의 넓이가 같다는 조건에 공통 부분을 양변에 더해 두 도형 전체의 넓이가 같다고 바꾼 뒤, 넓이 공식으로 방정식을 세워 BC를 구한다.",
         "decisiveStep": "직사각형의 넓이 8x와 중심각 90°인 부채꼴의 넓이 16π를 같게 놓아 x=2π를 얻는 식 세우기.",
-        "semanticStatus": "SELF_CHECKED",
+        "semanticStatus": "FINAL",
         "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-206"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "직사각형에만 속하는 부분과 부채꼴에만 속하는 부분의 넓이가 같다는 조건에 공통 부분을 양변에 더해 두 도형 전체의 넓이가 같다고 바꾼 뒤, 넓이 공식으로 방정식을 세워 BC를 구한다.",
       "decisiveStep": "직사각형의 넓이 8x와 중심각 90°인 부채꼴의 넓이 16π를 같게 놓아 x=2π를 얻는 식 세우기.",
@@ -365,30 +270,18 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 등넓이 환원과 부채꼴 넓이 계산이 모두 Primary 안에서 처리된다.",
+        "condition": "None judged: 각자만의 부분 넓이가 같다는 진술은 방정식을 세우는 핵심 정보이며 선택지를 제한하는 별도 조건 키는 쓰이지 않는다.",
         "integration": "REINTERPRETATION"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "conditionKeys"
+            "problemTypeKey",
+            "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_CIRCLE_ANGLE_RELATIONS/null, pass2 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_SECTOR_MEASURE)."
         }
       ]
     },
@@ -405,68 +298,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "level": "하",
-        "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 6,
         "primaryMethod": "각기둥·각뿔·각뿔대의 면·모서리·꼭짓점 개수 공식을 선지마다 적용해 옳은 진술을 골라낸다.",
         "decisiveStep": "n각뿔의 면의 개수와 꼭짓점의 개수가 모두 n+1개로 같다는 ①을 참으로 확정하는 판단.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M1-RPM-208"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "각기둥·각뿔·각뿔대의 면·모서리·꼭짓점 개수 공식을 선지마다 적용해 옳은 진술을 골라낸다.",
       "decisiveStep": "n각뿔의 면의 개수와 꼭짓점의 개수가 모두 n+1개로 같다는 ①을 참으로 확정하는 판단.",
       "metaRationale": {
-        "rpmPath": "2022 M1-2 > 입체도형 > 다면체와 회전체 > 다면체 > 면·모서리·꼭짓점",
+        "rpmPath": "2022 M1-2 > 입체도형 > 다면체와 회전체 > 다면체 > 각기둥·각뿔",
         "resolver": {
-          "projectionStatus": "PROJECTION_BINDING_PENDING",
-          "reasonCode": "EXACT_ACTIVE_BINDING_PENDING",
-          "crosswalkRecordId": "M1-RPM-207",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-208",
+          "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 다면체 구성요소 공식 검토가 Primary 전체를 이루어 별도 개념이 없다.",
+        "condition": "None judged: 다섯 진술의 참·거짓만 가리면 되고 값을 제한하는 조건이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_BINDING_PENDING (EXACT_ACTIVE_BINDING_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 7,
@@ -481,66 +346,54 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 7,
         "primaryMethod": "한 꼭짓점에 모인 면의 개수를 단서로 정팔면체를, 면의 모양을 단서로 정십이면체를 식별한 뒤 각각의 꼭짓점 수와 모서리 수를 구해 더한다.",
         "decisiveStep": "정팔면체의 꼭짓점 6개와 정십이면체의 모서리 30개를 합쳐 36을 확정하는 계산.",
         "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-210-S2P-A996"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "한 꼭짓점에 모인 면의 개수를 단서로 정팔면체를, 면의 모양을 단서로 정십이면체를 식별한 뒤 각각의 꼭짓점 수와 모서리 수를 구해 더한다.",
       "decisiveStep": "정팔면체의 꼭짓점 6개와 정십이면체의 모서리 30개를 합쳐 36을 확정하는 계산.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 다면체와 회전체 > 정다면체 > 면·모서리·꼭짓점 관계",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M1-RPM-210",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-210-S2P-A996",
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 정다면체 식별과 구성요소 계산만으로 해결된다.",
+        "condition": "None judged: 주어진 성질은 정다면체를 특정하는 정보이며 해를 가르는 제약 키에 해당하지 않는다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
+        {
+          "fields": [
+            "rpmPrimaryPath"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Independent judgments disagree (first pass \"M1-RPM-210\", pass1 \"M1-RPM-209\", pass2 \"M1-RPM-207\"); provisional value kept, final decision pending."
+        },
         {
           "fields": [
             "problemTypeKey",
             "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_M1_POLYHEDRON_COMPONENT_COUNT/null, pass2 PT_M1_POLYHEDRON_COMPONENT_COUNT/TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE)."
         }
       ]
     },
@@ -557,68 +410,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 8,
         "primaryMethod": "회전체가 생기는 방식과 회전축을 포함하거나 회전축에 수직인 평면으로 자를 때 나타나는 단면의 모양을 선지마다 대조해 거짓인 진술을 찾는다.",
         "decisiveStep": "구를 중심을 지나지 않는 평면으로 잘라도 단면이 원이라는 사실로 ③을 거짓이라고 확정하는 판단.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "BOUNDARY"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M1-RPM-212"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "회전체가 생기는 방식과 회전축을 포함하거나 회전축에 수직인 평면으로 자를 때 나타나는 단면의 모양을 선지마다 대조해 거짓인 진술을 찾는다.",
       "decisiveStep": "구를 중심을 지나지 않는 평면으로 잘라도 단면이 원이라는 사실로 ③을 거짓이라고 확정하는 판단.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 다면체와 회전체 > 회전체 > 회전체의 단면",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-212",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+          "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 회전체 단면 성질 검토가 Primary이며 추가 개념이 없다.",
+        "condition": "None judged: 단면 성질 진술만 판정하므로 해를 제한하는 조건이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 9,
@@ -633,75 +458,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 9,
         "primaryMethod": "밑면인 5-12-13 직각삼각형의 넓이를 두 번 더하고, 세 변의 합 30에 높이 8을 곱한 옆넓이를 구해 두 값을 합친다.",
         "decisiveStep": "밑면 둘레 30과 높이 8의 곱으로 옆넓이 240을 얻고, 두 밑면 60을 더해 300으로 확정하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-213"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "밑면인 5-12-13 직각삼각형의 넓이를 두 번 더하고, 세 변의 합 30에 높이 8을 곱한 옆넓이를 구해 두 값을 합친다.",
       "decisiveStep": "밑면 둘레 30과 높이 8의 곱으로 옆넓이 240을 얻고, 두 밑면 60을 더해 300으로 확정하는 계산.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 기둥의 겉넓이와 부피 > 각기둥",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-213",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 기둥 겉넓이 공식 대입이 Primary 전부다.",
+        "condition": "None judged: 겉넓이 공식에 넣을 길이가 모두 주어져 별도 제약이 없다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 10,
@@ -716,75 +506,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 10,
         "primaryMethod": "원기둥 양쪽에 붙인 두 반구의 곡면을 합쳐 반지름 3인 구의 겉넓이로 바꾸고, 가운데 원기둥에서는 옆면만 더해 전체 겉넓이를 낸다.",
         "decisiveStep": "맞닿은 원형 단면을 겉넓이에서 제외하고 구의 겉넓이 36π와 원기둥 옆넓이 48π만 합쳐 84π로 정하는 판단.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-220"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "원기둥 양쪽에 붙인 두 반구의 곡면을 합쳐 반지름 3인 구의 겉넓이로 바꾸고, 가운데 원기둥에서는 옆면만 더해 전체 겉넓이를 낸다.",
       "decisiveStep": "맞닿은 원형 단면을 겉넓이에서 제외하고 구의 겉넓이 36π와 원기둥 옆넓이 48π만 합쳐 84π로 정하는 판단.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 복합입체도형 > 붙인 입체",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-220",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 노출면 판별과 공식 계산이 Primary 안에 있다.",
+        "condition": "None judged: 반구가 밑면에 붙어 있다는 배치는 형태 정보이고 선택지를 가르는 제약은 없다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 11,
@@ -799,75 +554,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 11,
         "primaryMethod": "같은 정사각형을 밑면으로 공유하는 사각기둥과 사각뿔로 나누어 각각의 부피를 구한 뒤 하나로 더한다.",
         "decisiveStep": "밑넓이 36에 높이 5를 적용한 180과 높이 6의 3분의 1을 적용한 72를 합쳐 252로 확정하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-220"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "같은 정사각형을 밑면으로 공유하는 사각기둥과 사각뿔로 나누어 각각의 부피를 구한 뒤 하나로 더한다.",
       "decisiveStep": "밑넓이 36에 높이 5를 적용한 180과 높이 6의 3분의 1을 적용한 72를 합쳐 252로 확정하는 계산.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 복합입체도형 > 붙인 입체",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-220",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 부피 합산 외 다른 개념이 없다.",
+        "condition": "None judged: 밑면이 합동이라는 배치는 부피 계산의 구조 정보일 뿐 해를 제한하지 않는다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 12,
@@ -882,75 +602,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "상",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 12,
         "primaryMethod": "구의 지름 8 cm가 통의 지름과 같아 두 구가 통의 높이를 가득 채운다는 점에서 기둥의 높이를 16으로 잡고, 원기둥 부피에서 구 두 개의 부피를 빼 남은 공간을 구한다.",
         "decisiveStep": "원기둥 부피 256π에서 구 두 개의 부피 512π/3을 빼 256π/3으로 정리하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-219"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "구의 지름 8 cm가 통의 지름과 같아 두 구가 통의 높이를 가득 채운다는 점에서 기둥의 높이를 16으로 잡고, 원기둥 부피에서 구 두 개의 부피를 빼 남은 공간을 구한다.",
       "decisiveStep": "원기둥 부피 256π에서 구 두 개의 부피 512π/3을 빼 256π/3으로 정리하는 계산.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 복합입체도형 > 잘라낸 입체",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-219",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 부피 차 계산이 Primary이며 별도 개념이 없다.",
+        "condition": "None judged: 꼭 맞게 들어 있다는 서술은 통의 높이를 정하는 구조 정보이고 복수 해를 가르는 제약 키에 해당하지 않는다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 13,
@@ -965,73 +650,46 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "상",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 13,
         "primaryMethod": "구의 반지름을 r로 두어 기둥의 반지름 r과 높이 2r을 세우고, 처음 물의 부피에서 구가 밀어낸 부피를 뺀 양이 높이 6 cm의 물과 같다고 놓아 방정식을 푼다.",
         "decisiveStep": "2πr³에서 4πr³/3을 뺀 2πr³/3을 6πr²과 같다고 놓고 r을 약분해 9 cm로 확정하는 단계.",
         "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-218"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "구의 반지름을 r로 두어 기둥의 반지름 r과 높이 2r을 세우고, 처음 물의 부피에서 구가 밀어낸 부피를 뺀 양이 높이 6 cm의 물과 같다고 놓아 방정식을 푼다.",
       "decisiveStep": "2πr³에서 4πr³/3을 뺀 2πr³/3을 6πr²과 같다고 놓고 r을 약분해 9 cm로 확정하는 단계.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 구 > 구의 부피",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-218",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 부피 보존과 방정식 세우기가 Primary 안에서 끝난다.",
+        "condition": "None judged: 꼭 맞게 들어가는 배치와 남은 물의 높이는 방정식을 세우는 정보이며 해를 가르는 제약은 아니다.",
         "integration": "SEQUENTIAL"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
             "conditionKeys"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
+          "reason": "Independent judgments disagree (first pass null, pass1 [], pass2 [\"COND_POSITIVE\"]); provisional value kept, final decision pending."
         }
       ]
     },
@@ -1048,68 +706,40 @@
         "subUnitKey": "M1-08-DATA_ORGANIZATION",
         "subUnit": "자료의 정리",
         "conceptClusterKey": "DATA_ORGANIZATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 14,
         "primaryMethod": "줄기마다 잎의 개수를 세어 줄기별 도수와 전체 인원을 확인하고, 기록을 큰 값부터 늘어놓아 다섯 번째 값을 찾아 각 설명의 참거짓을 가린다.",
         "decisiveStep": "56, 52, 45, 43, 40의 순서로 세어 다섯 번째가 40분임을 밝혀 ④를 거짓으로 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-231"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "줄기마다 잎의 개수를 세어 줄기별 도수와 전체 인원을 확인하고, 기록을 큰 값부터 늘어놓아 다섯 번째 값을 찾아 각 설명의 참거짓을 가린다.",
       "decisiveStep": "56, 52, 45, 43, 40의 순서로 세어 다섯 번째가 40분임을 밝혀 ④를 거짓으로 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 통계 > 도수분포표와 상대도수 > 분포 해석 > 히스토그램·그래프 해석",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-231",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 줄기·잎 읽기 자체가 Primary이고 최대·최소 확인도 그 안에서 처리된다.",
+        "condition": "None judged: 그림에 주어진 자료에서 값을 읽어내는 문제로 해를 제한하는 조건이 없다.",
         "integration": "CASE_BRANCH"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 15,
@@ -1133,15 +763,16 @@
         "integrationPattern": "SEQUENTIAL",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 15,
         "primaryMethod": "전체 40명의 65%를 계산해 8권 이상인 학생 26명을 얻고, 8권 미만 14명에서 4권 미만인 4명을 빼 4권 이상 8권 미만의 도수를 채운다.",
         "decisiveStep": "40명에서 26명을 덜어 8권 미만 14명을 만들고 여기서 4명을 빼 10명으로 확정하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-228"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "전체 40명의 65%를 계산해 8권 이상인 학생 26명을 얻고, 8권 미만 14명에서 4권 미만인 4명을 빼 4권 이상 8권 미만의 도수를 채운다.",
       "decisiveStep": "40명에서 26명을 덜어 8권 미만 14명을 만들고 여기서 4명을 빼 10명으로 확정하는 계산.",
@@ -1154,32 +785,11 @@
           "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
           "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY"
         },
-        "crossConcept": "전체 40명의 65%를 26명으로 계산하는 비율 계산(CC_PERCENTAGE_CALCULATION)이 8권 미만 인원을 만드는 결정 경로에 실제로 쓰였다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_PERCENTAGE_CALCULATION.",
+        "condition": "None judged: 백분율과 인원이 모두 주어져 별도 제약 없이 도수를 계산한다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 16,
@@ -1194,75 +804,40 @@
         "subUnitKey": "M1-08-DATA_ORGANIZATION",
         "subUnit": "자료의 정리",
         "conceptClusterKey": "DATA_ORGANIZATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 16,
         "primaryMethod": "일곱 계급의 도수를 모두 더해 전체 인원을 구하고, 계급의 크기와 누적 도수, 도수가 가장 큰 계급, 큰 쪽에서 네 번째가 드는 계급을 차례로 확인해 각 설명의 참거짓을 가린다.",
         "decisiveStep": "4시간 미만 인원을 3과 6을 더한 9명으로 계산해 6명이라는 ①의 서술을 거짓으로 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-231"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "일곱 계급의 도수를 모두 더해 전체 인원을 구하고, 계급의 크기와 누적 도수, 도수가 가장 큰 계급, 큰 쪽에서 네 번째가 드는 계급을 차례로 확인해 각 설명의 참거짓을 가린다.",
       "decisiveStep": "4시간 미만 인원을 3과 6을 더한 9명으로 계산해 6명이라는 ①의 서술을 거짓으로 확정하는 것.",
       "metaRationale": {
-        "rpmPath": "2022 M1-2 > 통계 > 도수분포표와 상대도수 > 도수분포표 > 계급·도수",
+        "rpmPath": "2022 M1-2 > 통계 > 도수분포표와 상대도수 > 분포 해석 > 히스토그램·그래프 해석",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "CROSSWALK_ROW_SELECTION_PENDING",
-          "crosswalkRecordId": null,
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-231",
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 계급·도수 진술 검증이 Primary다.",
+        "condition": "None judged: 계급과 도수가 모두 제시되어 해를 가르는 제약이 없다.",
         "integration": "CASE_BRANCH"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (CROSSWALK_ROW_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 17,
@@ -1277,8 +852,8 @@
         "subUnitKey": "M1-08-DATA_ORGANIZATION",
         "subUnit": "자료의 정리",
         "conceptClusterKey": "DATA_ORGANIZATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
         "crossConceptKeys": [
           "CC_PERCENTAGE_CALCULATION"
         ],
@@ -1286,61 +861,33 @@
         "integrationPattern": "SEQUENTIAL",
         "level": "상",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 17,
         "primaryMethod": "도수가 큰 계급부터 거꾸로 누적해 상위 5번째가 들어가는 계급의 경계 12와 16을 정하고, 그 계급의 도수 8명을 전체 25명에 대한 백분율 32로 환산해 세 수를 더한다.",
         "decisiveStep": "16회 이상 20회 미만 4명을 지나 12회 이상 16회 미만에서 누적이 12명이 되므로 5번째가 이 계급에 속함을 확정하고, 8/25×100=32를 얻는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-231"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "도수가 큰 계급부터 거꾸로 누적해 상위 5번째가 들어가는 계급의 경계 12와 16을 정하고, 그 계급의 도수 8명을 전체 25명에 대한 백분율 32로 환산해 세 수를 더한다.",
       "decisiveStep": "16회 이상 20회 미만 4명을 지나 12회 이상 16회 미만에서 누적이 12명이 되므로 5번째가 이 계급에 속함을 확정하고, 8/25×100=32를 얻는 계산.",
       "metaRationale": {
         "rpmPath": "2022 M1-2 > 통계 > 도수분포표와 상대도수 > 분포 해석 > 히스토그램·그래프 해석",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
           "crosswalkRecordId": "M1-RPM-231",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
         },
-        "crossConcept": "CC_PERCENTAGE_CALCULATION: 계급의 도수 8명을 전체 25명에 대한 백분율 32로 바꾸는 비율 계산이 c를 만들어 정답 60에 직접 기여한다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_PERCENTAGE_CALCULATION.",
+        "condition": "None judged: 계급 구간과 도수가 주어져 순위와 비율을 계산할 뿐 해를 제한하는 조건은 없다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 18,
@@ -1352,71 +899,43 @@
         "courseKey": "MID-MATH-1",
         "standardUnitKey": "M1-08",
         "standardUnit": "자료의 정리와 해석",
-        "subUnitKey": "M1-08-DATA_ORGANIZATION",
-        "subUnit": "자료의 정리",
-        "conceptClusterKey": "DATA_ORGANIZATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "conceptClusterKey": "DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 18,
         "primaryMethod": "상대도수가 전체 학생 수에 대한 비율임을 이용해 6시간 이상인 학생 수를 전체 인원과 상대도수의 곱으로 구하고, 그 값과 비율의 성질로 다섯 진술의 참·거짓을 가른다.",
         "decisiveStep": "A 중학교는 150×0.30=45명, B 중학교는 200×0.20=40명이므로 ③만 참이고 ④가 말한 50명은 거짓임이 드러나는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-232"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "상대도수가 전체 학생 수에 대한 비율임을 이용해 6시간 이상인 학생 수를 전체 인원과 상대도수의 곱으로 구하고, 그 값과 비율의 성질로 다섯 진술의 참·거짓을 가른다.",
       "decisiveStep": "A 중학교는 150×0.30=45명, B 중학교는 200×0.20=40명이므로 ③만 참이고 ④가 말한 50명은 거짓임이 드러나는 계산.",
       "metaRationale": {
-        "rpmPath": "2022 M1-2 > 통계 > 도수분포표와 상대도수 > 상대도수 > 상대도수 계산",
+        "rpmPath": "2022 M1-2 > 통계 > 도수분포표와 상대도수 > 분포 해석 > 두 집단 비교",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
-          "crosswalkRecordId": null,
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-232",
+          "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+          "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 상대도수에 인원을 곱하는 비교가 Primary이며 추가 개념이 없다.",
+        "condition": "None judged: 상대도수와 전체 인원이 주어져 진술을 검증할 뿐 별도 제약이 없다.",
         "integration": "CASE_BRANCH"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 19,
@@ -1436,17 +955,18 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "level": "중",
-        "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 19,
         "primaryMethod": "정사각형의 서로 맞은편 꼭짓점을 중심으로 하는 두 사분원의 넓이를 각각 구해 더한 뒤 정사각형 넓이를 빼면 겹치는 부분만 남는다는 관계로 넓이를 구한다.",
         "decisiveStep": "사분원 한 개가 36π이므로 두 개의 합 72π에서 정사각형 144를 빼는 식을 세워 (72π−144) cm²로 확정하는 계산.",
         "semanticStatus": "SELF_CHECKED",
         "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "BOUNDARY"
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M1-RPM-206"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "정사각형의 서로 맞은편 꼭짓점을 중심으로 하는 두 사분원의 넓이를 각각 구해 더한 뒤 정사각형 넓이를 빼면 겹치는 부분만 남는다는 관계로 넓이를 구한다.",
       "decisiveStep": "사분원 한 개가 36π이므로 두 개의 합 72π에서 정사각형 144를 빼는 식을 세워 (72π−144) cm²로 확정하는 계산.",
@@ -1459,37 +979,25 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 포함배제 관계 설정과 사분원 넓이 계산이 Primary 안에서 이루어진다.",
+        "condition": "None judged: 겹침 배치와 길이가 주어져 넓이를 계산할 뿐 해를 가르는 제약은 없다.",
         "integration": "SEQUENTIAL"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "conditionKeys"
+            "difficultyBucket"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
+          "reason": "Independent judgments disagree (first pass 2, pass1 4, pass2 3); provisional value kept, final decision pending."
         },
         {
           "fields": [
-            "reviewStatus"
+            "problemTypeKey",
+            "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_CIRCLE_ANGLE_RELATIONS/null, pass2 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_SECTOR_MEASURE)."
         }
       ]
     },
@@ -1513,15 +1021,16 @@
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 20,
         "primaryMethod": "정다면체의 정의 두 가지(모든 면이 합동인 정다각형, 모든 꼭짓점에 모이는 면의 수가 같음)를 정사면체 두 개를 한 면끼리 붙인 입체에 그대로 대입해 성립 여부를 판정한다.",
         "decisiveStep": "맞댄 면의 세 꼭짓점에는 면 4개, 바깥 두 꼭짓점에는 면 3개가 모여 꼭짓점 조건이 깨지므로 정다면체가 아니라고 결론짓는 판단.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-209"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "정다면체의 정의 두 가지(모든 면이 합동인 정다각형, 모든 꼭짓점에 모이는 면의 수가 같음)를 정사면체 두 개를 한 면끼리 붙인 입체에 그대로 대입해 성립 여부를 판정한다.",
       "decisiveStep": "맞댄 면의 세 꼭짓점에는 면 4개, 바깥 두 꼭짓점에는 면 3개가 모여 꼭짓점 조건이 깨지므로 정다면체가 아니라고 결론짓는 판단.",
@@ -1534,32 +1043,11 @@
           "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
           "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 정다면체 정의 적용이 Primary이며 다른 개념이 없다.",
+        "condition": "None judged: 다면체 구성이 그림으로 제시되어 판정에 별도 제약이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 21,
@@ -1574,75 +1062,40 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "상",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 21,
         "primaryMethod": "직각사다리꼴의 높이를 축으로 한 회전이 원뿔대를 만든다는 것을 확인하고, 빗변을 연장해 만든 큰 원뿔에서 작은 원뿔을 잘라낸 것으로 보아 두 원뿔의 닮음으로 모선 5 cm와 10 cm를 복원해 옆넓이를 차로 구한 뒤 두 밑넓이를 더한다.",
         "decisiveStep": "작은 원뿔과 큰 원뿔의 닮음비 1:2에서 모선이 5 cm, 10 cm임을 얻어 옆넓이 60π−15π=45π를 만들고, 밑넓이 45π와 합쳐 90π로 확정하는 계산.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "BOUNDARY"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M1-RPM-216"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "직각사다리꼴의 높이를 축으로 한 회전이 원뿔대를 만든다는 것을 확인하고, 빗변을 연장해 만든 큰 원뿔에서 작은 원뿔을 잘라낸 것으로 보아 두 원뿔의 닮음으로 모선 5 cm와 10 cm를 복원해 옆넓이를 차로 구한 뒤 두 밑넓이를 더한다.",
       "decisiveStep": "작은 원뿔과 큰 원뿔의 닮음비 1:2에서 모선이 5 cm, 10 cm임을 얻어 옆넓이 60π−15π=45π를 만들고, 밑넓이 45π와 합쳐 90π로 확정하는 계산.",
       "metaRationale": {
-        "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 복합입체도형 > 잘라낸 입체",
+        "rpmPath": "2022 M1-2 > 입체도형 > 입체도형의 겉넓이와 부피 > 뿔의 겉넓이와 부피 > 원뿔",
         "resolver": {
-          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
-          "reasonCode": "FAMILY_TEMPLATE_SELECTION_PENDING",
-          "crosswalkRecordId": "M1-RPM-219",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-216",
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: no concept outside the primary method contributes",
+        "condition": "None judged: 회전축과 네 변의 길이가 주어져 제약 없이 겉넓이를 계산한다. 단위 표기는 답의 형식 요구이다.",
         "integration": "SEQUENTIAL"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "A fitting CrossConcept key was not available in the key table."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "sourceOrdinal": 22,
@@ -1657,24 +1110,23 @@
         "subUnitKey": "M1-08-DATA_INTERPRETATION",
         "subUnit": "자료의 해석",
         "conceptClusterKey": "DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
-        "crossConceptKeys": [
-          "CC_EXTREME_VALUES"
-        ],
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_REPRESENTATIVE_VALUE_SELECTION",
+        "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
         "level": "상",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 22,
         "primaryMethod": "주어진 10개 값을 크기순으로 세워 평균·중앙값·최빈값을 각각 계산하고, 160분이 만드는 치우침이 각 값에 어떻게 작용하는지 견주어 대푯값을 정한다.",
         "decisiveStep": "평균 30분은 160분 때문에 위로 끌려가고 최빈값 6분은 아래쪽에 몰려 있으므로, 극단값에 흔들리지 않는 중앙값 16분을 고르는 판단.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M1-RPM-225-S2P-16C3"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "주어진 10개 값을 크기순으로 세워 평균·중앙값·최빈값을 각각 계산하고, 160분이 만드는 치우침이 각 값에 어떻게 작용하는지 견주어 대푯값을 정한다.",
       "decisiveStep": "평균 30분은 160분 때문에 위로 끌려가고 최빈값 6분은 아래쪽에 몰려 있으므로, 극단값에 흔들리지 않는 중앙값 16분을 고르는 판단.",
@@ -1682,45 +1134,16 @@
         "rpmPath": "2022 M1-2 > 통계 > 대푯값 > 대푯값의 선택 > 자료에 적절한 대푯값",
         "resolver": {
           "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "ACTIVE_TEMPLATE_PROJECTION_NOT_MAPPED",
-          "crosswalkRecordId": "M1-RPM-225",
+          "reasonCode": "CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS",
+          "crosswalkRecordId": null,
           "problemTypeKey": "",
           "templateKey": ""
         },
-        "crossConcept": "CC_EXTREME_VALUES: 160분이라는 최댓값이 평균을 30분으로 끌어올린다는 판단이 중앙값을 고르는 직접 근거가 된다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 세 대푯값 계산과 극단값 영향 판단이 모두 Primary(대푯값 선택) 안에서 이루어진다.",
+        "condition": "None judged: 자료 값이 모두 주어져 대푯값을 계산하고 고를 뿐 해를 제한하는 조건은 없다.",
         "integration": "CASE_BRANCH"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (ACTIVE_TEMPLATE_PROJECTION_NOT_MAPPED); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "conditionKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "No matching condition key in the 중1 key-selection table for the stated constraints; left empty."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "field": "questionUid",
-          "status": "PENDING_IDENTITY_MAP",
-          "reason": "Do not invent or derive an unregistered UID; temporary binding is source file plus sourceOrdinal.",
-          "nextAction": "Authorized identity-map owner registers/reconciles the official UID."
-        }
-      ]
+      "evidenceDebt": []
     }
   ]
 }
