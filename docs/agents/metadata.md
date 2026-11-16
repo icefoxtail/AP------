@@ -134,3 +134,7 @@
 - **무엇:** `archive/tools/meta-foundation/source-delta.mjs`는 같은 문항의 옛 본문과 현재 본문을 비교해 무엇이 바뀌었는지 판정하는 순수 모듈이다(`UNCHANGED`·`FIGURE`·`NOTATION`·`SOLUTION`·`STEM_EDIT`·`ANSWER`·`REPLACED`·`NUMBER_MISMATCH`). 지문 계산식은 기존 등록기와 글자 그대로 같고, `NOTATION`은 코드에 이유와 함께 적힌 명시 규칙만 같게 본다(애매하면 아님). 이유: 그림 교체·본문 오류 수정으로 지문이 어긋난 문항의 메타를 떼지 않고, 변경 종류를 꼬리표로 남기는 재결속의 첫 단계다.
 - **보고 도구:** `node archive/tools/meta-foundation/source-delta-report.mjs --scope <시험지 경로 접두어> --out <저장소 밖 경로>`는 읽기 전용이며 어긋난 문항마다 git 이력에서 옛 blob을 찾아 분류를 집계한다. 보고서는 Git에 두지 않는다(저장소 안 출력은 거부). `REPLACED` 임계값(`REPLACED_RECALL_THRESHOLD`)은 표본 약 20건으로 정한 값이고 전수 보고로 보정한다.
 - 이 PR 시점에서 등록기·빌더·화면 코드는 이 모듈을 쓰지 않는다. 검사: `tests/archive-source-delta.test.mjs`.
+
+- 완성도 확인: `node archive/tools/completion/check.mjs --scope original/middle/m3/1` (읽기 전용, 시험별 요약 + 문항 TSV).
+- JSON 증적은 `--format json --out /tmp/completion.json`, 완료 게이트는 `--require complete`를 사용한다. 저장소 내부 출력은 금지한다.
+- 실행 이유: 본문·답·풀이·그림과 canonical 메타/4슬롯의 부족 상태를 분리 집계하며, 수학 정오·승인·등록을 자동 변경하지 않는다.
