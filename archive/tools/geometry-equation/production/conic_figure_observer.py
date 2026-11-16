@@ -24,7 +24,7 @@ import sympy as S
 from ellipse_figure_observer import (
     Refuse,NS,PIXEL_TOLERANCE,LABEL_DISTANCE,LIGHT_FILL,MEDIUM_FILL,POINT_ID,exact_scalar,
     _find,_attr_float,_line_coords,_box_of,_point_in_box,_box_distance,_point_segment_distance,
-    _box_boundary_distance,_line_interior_points)
+    _box_boundary_distance,_line_interior_points,audit_accessible_names)
 
 CURVE_TOLERANCE_PX=0.6
 FOOT_ANGLE_DEGREES=0.5
@@ -560,6 +560,8 @@ def audit(plan,svg):
         return {'status':'FAIL','errors':['SVG_NOT_WELL_FORMED'],'finalSvgSha256':digest,'checks':checks}
     if root.tag!=NS+'svg': errors.append('SVG_ROOT_NOT_SVG')
     elements=[element for element in root.iter()]
+    audit_accessible_names(plan,root,elements,errors)
+    scoped_labels='accessibilityDescription' in plan and 'arch' not in plan
     try: canvas={'width':float(root.get('width')),'height':float(root.get('height'))}
     except (TypeError,ValueError): errors.append('SVG_INTRINSIC_MISSING');canvas={'width':0.0,'height':0.0}
     if root.get('transform'): errors.append('SVG_TRANSFORM_UNSUPPORTED')
@@ -941,7 +943,7 @@ def audit(plan,svg):
     leaders_by_label={}
     for element in elements:
         if element.tag==NS+'line' and element.get('data-role')=='leader':
-            key=element.get('data-owner-label')
+            key=element.get('data-label' if scoped_labels else 'data-owner-label')
             if not key or key in leaders_by_label: errors.append('MEASURE_LEADER_DUPLICATE_OR_UNOWNED')
             else: leaders_by_label[key]=element
     named_lines={raw['id'] for raw in raw_lines if raw.get('label') and raw.get('hidden') is not True}
@@ -985,7 +987,7 @@ def audit(plan,svg):
             if element.get('data-box') is None: continue
             box=_box_of(element)
             if not box: continue
-            if element.get('id')==leader_key:
+            if (element.get('data-owner')=='ellipse-'+leader_key if scoped_labels else element.get('id')==leader_key):
                 if any(_point_in_box(px,py,box,-0.5) for px,py in samples): errors.append('MEASURE_LEADER_CROSSES_OWN_LABEL:%s'%leader_key)
             elif any(_point_in_box(px,py,box,1.2) for px,py in samples):
                 errors.append('MEASURE_LEADER_CROSSES_LABEL:%s:%s'%(leader_key,element.get('id')))

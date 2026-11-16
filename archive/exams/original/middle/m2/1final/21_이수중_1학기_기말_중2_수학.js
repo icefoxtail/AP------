@@ -170,8 +170,9 @@ window.examData = {
     },
     {
       "id": 6,
+      "choicesEmbeddedInImage": true,
       "score": 5,
-      "question": "<p>6. 다음 그림에서 일차부등식 $0.2(2x+1) < \\frac{3x-4}{5}+0.4$의 해를 수직선 위에 바르게 나타낸 것은? [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q06.png\" class=\"question-image\" /></p>",
+      "question": "<p>6. 다음 그림에서 일차부등식 $0.2(2x+1) < \\frac{3x-4}{5}+0.4$의 해를 수직선 위에 바르게 나타낸 것은? [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q6-problem-visual-v2.svg\" alt=\"①은 2를 포함하여 왼쪽, ②는 2를 포함하여 오른쪽, ③은 3을 제외하여 왼쪽, ④는 3을 포함하여 오른쪽, ⑤는 3을 제외하여 오른쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "①",
         "②",
@@ -190,10 +191,10 @@ window.examData = {
       "subUnit": "일차부등식",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "content": "<p>6. 다음 그림에서 일차부등식 $0.2(2x+1) < \\dfrac{3x-4}{5}+0.4$의 해를 수직선 위에 바르게 나타낸 것은? [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q06.png\" alt=\"일차부등식의 해를 수직선 위에 나타낸 선택지 1번부터 5번까지의 그림\" class=\"question-image\" /></p>",
+      "content": "<p>6. 다음 그림에서 일차부등식 $0.2(2x+1) < \\dfrac{3x-4}{5}+0.4$의 해를 수직선 위에 바르게 나타낸 것은? [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q6-problem-visual-v2.svg\" alt=\"①은 2를 포함하여 왼쪽, ②는 2를 포함하여 오른쪽, ③은 3을 제외하여 왼쪽, ④는 3을 포함하여 오른쪽, ⑤는 3을 제외하여 오른쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "originalCategory": "일차부등식",
       "standardCourse": "중2-1",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "일차부등식"
       ],
@@ -567,7 +568,7 @@ window.examData = {
     {
       "id": 18,
       "score": 4,
-      "question": "<p>18. 다음 그림은 일차함수 $y=ax+b$의 그래프이다. 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q18.png\" class=\"question-image\" /></p>",
+      "question": "<p>18. 다음 그림은 일차함수 $y=ax+b$의 그래프이다. 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q18-problem-visual-v2.svg\" alt=\"모눈 위를 내려가는 y=ax+b 직선과 축에 표시된 수를 읽을 수 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$a=-1, b=-3$",
         "$a=-2, b=-3$",
@@ -586,10 +587,10 @@ window.examData = {
       "subUnit": "일차함수의 뜻과 그래프",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "content": "<p>18. 다음 그림은 일차함수 $y=ax+b$의 그래프이다. 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q18.png\" alt=\"좌표평면 위에 y절편 (0, -3), x절편 (-1, 0)을 지나는 일차함수 y=ax+b의 그래프\" class=\"question-image\" /></p>",
+      "content": "<p>18. 다음 그림은 일차함수 $y=ax+b$의 그래프이다. 두 수 $a$와 $b$의 값을 각각 구하면? [4점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q18-problem-visual-v2.svg\" alt=\"모눈 위를 내려가는 y=ax+b 직선과 축에 표시된 수를 읽을 수 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "일차함수"
       ],
@@ -665,8 +666,12 @@ window.examData = {
     },
     {
       "id": 21,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "1도 해에 포함되므로 닫힌 점을 찍고 왼쪽으로 표시한다.",
+      "solutionImageAlt": "수직선의 1에 닫힌 점이 있고 왼쪽으로 검정 화살표가 이어진다. 눈금은 −3부터 3까지이다.",
+      "solutionImage": "assets/images/21_이수중_1학기_기말_중2_수학/q21-solution-visual-v2.svg",
       "score": 5,
-      "question": "<p>서술형 1. 다음 일차부등식을 풀고, 그 해를 수직선 위에 나타내시오. [5점]</p><p>(1) $2x+1 \\ge 4x-1$</p><p>(2)</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/s01.png\" class=\"question-image\" /></p>",
+      "question": "<p>서술형 1. 다음 일차부등식을 풀고, 그 해를 수직선 위에 나타내시오. [5점]</p><p>(1) $2x+1 \\ge 4x-1$</p><p>(2)</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q21-problem-visual-v2.svg\" alt=\"−3, −2, −1, 0, 1, 2, 3에 눈금이 있는 수직선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "(1) $x \\le 1$  (2) $1$에 채워진 원을 찍고 왼쪽으로 화살표를 그림",
       "solution": "[키포인트] 부등식을 풀어 $x \\le 1$을 구하고, 수직선 위의 점 $1$에 색칠된 원을 찍은 뒤 왼쪽 방향으로 화살표를 나타낸다.\n<풀이과정>\n(1) 일차부등식 풀기:\n$2x + 1 \\ge 4x - 1$\n$2x - 4x \\ge -1 - 1$\n$-2x \\ge -2$\n양변을 음수 $-2$로 나누면 부등호의 방향이 반대로 바뀐다.\n$x \\le 1$\n\n(2) 수직선 위에 나타내기:\n등호가 포함된 부등호($\\le$)이므로 수직선 위의 점 $1$에 채워진 원(검은 점)을 찍고, $1$ 이하의 범위를 나타내기 위해 왼쪽 방향으로 화살표 선을 긋는다.\n<답>\n(1) $x \\le 1$\n(2) 수직선 위의 $1$에 색칠된 원을 찍고 왼쪽 방향으로 화살표를 나타냄",
@@ -679,10 +684,10 @@ window.examData = {
       "subUnit": "일차부등식",
       "difficultyBucket": 2,
       "questionType": "서술형",
-      "content": "<p>서술형 1. 다음 일차부등식을 풀고, 그 해를 수직선 위에 나타내시오. [5점]</p><p>(1) $2x+1 \\ge 4x-1$</p><p>(2)</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/s01.png\" alt=\"-3부터 3까지 정수 눈금이 표시된 수직선\" class=\"question-image\" /></p>",
+      "content": "<p>서술형 1. 다음 일차부등식을 풀고, 그 해를 수직선 위에 나타내시오. [5점]</p><p>(1) $2x+1 \\ge 4x-1$</p><p>(2)</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q21-problem-visual-v2.svg\" alt=\"−3, −2, −1, 0, 1, 2, 3에 눈금이 있는 수직선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "originalCategory": "일차부등식",
       "standardCourse": "중2-1",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "일차부등식"
       ],
@@ -746,8 +751,12 @@ window.examData = {
     },
     {
       "id": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "두 절편 $(0,2)$, $(4,0)$을 자로 잇고 양쪽으로 연장한다.",
+      "solutionImageAlt": "검은 직선이 세로축에서 (0,2), 가로축에서 (4,0)을 지나간다. 두 절편은 청록 점으로 표시했다.",
+      "solutionImage": "assets/images/21_이수중_1학기_기말_중2_수학/q24-solution-visual-v2.svg",
       "score": 5,
-      "question": "<p>서술형 4. 일차함수 $y=-\\frac{1}{2}x+2$의 그래프를 그리시오. (두 점 이상 정확히 찍어 그래프를 그려야 인정.) [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/s04.png\" class=\"question-image\" /></p>",
+      "question": "<p>서술형 4. 일차함수 $y=-\\frac{1}{2}x+2$의 그래프를 그리시오. (두 점 이상 정확히 찍어 그래프를 그려야 인정.) [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"가로축과 세로축의 −5부터 5까지 정수 모눈을 나타냈으며, 짝수 눈금을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "두 점 $(0, 2)$와 $(4, 0)$을 지나는 직선",
       "solution": "[키포인트] $x$절편과 $y$절편을 구하여 좌표평면 위에 두 점을 찍고 직선으로 연결한다.\n<풀이과정>\n1단계 (절편 구하기):\n- $x=0$일 때 $y = -\\dfrac{1}{2}(0) + 2 = 2$이므로 $y$절편은 점 $(0, 2)$이다.\n- $y=0$일 때 $0 = -\\dfrac{1}{2}x + 2 \\implies \\dfrac{1}{2}x = 2 \\implies x = 4$이므로 $x$절편은 점 $(4, 0)$이다.\n- 추가 점 확인: $x=2$일 때 $y = -\\dfrac{1}{2}(2) + 2 = 1 \\implies (2, 1)$\n2단계 (그래프 그리기):\n좌표평면 위에 두 점 $(0, 2)$와 $(4, 0)$을 정확히 찍고, 자를 대고 두 점을 지나는 곧은 직선을 그린다.\n<답>\n좌표평면 위에 두 점 $(0, 2)$와 $(4, 0)$을 찍고 이를 지나는 직선을 그린다.",
@@ -760,10 +769,10 @@ window.examData = {
       "subUnit": "일차함수의 뜻과 그래프",
       "difficultyBucket": 2,
       "questionType": "서술형",
-      "content": "<p>서술형 4. 일차함수 $y=-\\dfrac{1}{2}x+2$의 그래프를 그리시오. (두 점 이상 정확히 찍어 그래프를 그려야 인정.) [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/s04.png\" alt=\"-5부터 5까지 x축, y축 눈금이 그려진 좌표평면 모눈종이\" class=\"question-image\" /></p>",
+      "content": "<p>서술형 4. 일차함수 $y=-\\dfrac{1}{2}x+2$의 그래프를 그리시오. (두 점 이상 정확히 찍어 그래프를 그려야 인정.) [5점]</p><p><img src=\"assets/images/21_이수중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"가로축과 세로축의 −5부터 5까지 정수 모눈을 나타냈으며, 짝수 눈금을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "일차함수"
       ],
