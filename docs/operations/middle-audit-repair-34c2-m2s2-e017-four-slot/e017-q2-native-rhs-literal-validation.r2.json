@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "small-m2-current-four-slot-literal-validation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "examId": "E017",
+  "reviewer": "GPT_M3_34C2",
+  "checkedAt": "2026-11-16T03:27:54.221Z",
+  "scope": "Q2_FIRST_SOLUTION_LINE_ONLY_NATIVE_FOUR_QUOTE_REVALIDATION",
+  "sourceRef": {
+    "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+    "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "currentBeforeGitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+    "candidateGitBlobSha1": "41e074035e7ab7558bc1ae89820a2a60ebe3c806",
+    "candidateSha256": "22c605bd1b96618563f72e48d5428ee4f5c6226e22e94d668c7ad9bb8e53449c"
+  },
+  "nativeFourSlotRef": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+    "gitBlobSha1": "e6683bdb6009f840849dcfc8e942d260b4ad5c43",
+    "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+    "sourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d"
+  },
+  "selected": [
+    {
+      "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2"
+    }
+  ],
+  "unsubmittedCount": 22,
+  "nativeItemStableSha256": "fdba451ca7dbdb110bd520a53c76b1b1c67ec285e3523384889a436fad4853b2",
+  "nativeSlotAndImpliedEvidenceUnchanged": true,
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#2 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 1,
+      "examItems": 23,
+      "quotes": 4,
+      "scope": "PARTIAL_UIDS",
+      "unsubmitted": 22,
+      "completeExam": false
+    }
+  },
+  "existingWarningReused": true,
+  "other20RendererUidLiteralResultReused": {
+    "sha256": "b50559ce3242158c00f67340a0af4ab4dbcd952e9ec45987a4d95e6b3bccaf48",
+    "previousSelected": 21,
+    "previousQuoteCount": 112,
+    "currentR2DirectRevalidationCount": 1,
+    "other20QuestionsSourceBytesUnchanged": true
+  },
+  "codeRefs": [
+    {
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "path": "tools/4slot/partial-submission.cjs",
+      "sha256": "499ce72f4b936ce9041b3e740a9baea0ca36583a2dc96623b5f951a6c9d9c614",
+      "gitBlobSha1": "82b2724f75991f3952df1b2a78f8f452be1d826d"
+    },
+    {
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "path": "tools/4slot/exam-items.cjs",
+      "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2",
+      "gitBlobSha1": "debef5587df86821c04e543afb72a72b2e0fc1e4"
+    },
+    {
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "path": "tools/4slot/validate-4slot.cjs",
+      "sha256": "8f35827437b4ae5e5a063f5968a5f23069fbc1e28244c2a8cab9c367d7a9edc7",
+      "gitBlobSha1": "f475bcb009080160489e189aa9e920e9cabb7613"
+    }
+  ],
+  "limits": {
+    "newFullMathematicalQa": 0,
+    "newSemanticRegistrationApproval": 0,
+    "newFourSlotVector": 0,
+    "officialRegistration": "NOT_RUN",
+    "studentDeployment": "NOT_RUN"
+  }
+}
