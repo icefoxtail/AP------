@@ -848,10 +848,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -861,7 +863,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+    "decisiveStep": "x>-15이므로최소정수는-14."
   },
   {
     "id": 20,
@@ -891,10 +897,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -904,7 +912,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "각부등식의최소정수해를독립결정하여합최소화",
+    "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5."
   },
   {
     "id": 21,
