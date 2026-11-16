@@ -1,0 +1,1 @@
+window.questionBank = [{id: 1, content: 'PRIVATE_STEM', choices: ['PRIVATE_CHOICE'], answer: '1', solution: 'PRIVATE_SOLUTION', image: 'assets/images/sample.svg', difficultyBucket: 2, figureSvg: '<svg><use href="#local"/></svg>'}];
