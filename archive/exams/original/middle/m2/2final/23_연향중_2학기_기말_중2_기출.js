@@ -733,7 +733,11 @@ window.questionBank = [
       "l4": "단계별 선택"
     },
     "primaryMethod": "두 눈의 합이5 또는10인 순서쌍",
-    "decisiveStep": "합이 될 수 있는 배수 두개를 찾아 각 순서쌍 수4와3을 더한다."
+    "decisiveStep": "합이 될 수 있는 배수 두개를 찾아 각 순서쌍 수4와3을 더한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 14,
@@ -783,7 +787,11 @@ window.questionBank = [
       "l4": "순서가 있는 경우"
     },
     "primaryMethod": "양끝 고정 후 가운데 배열",
-    "decisiveStep": "맨앞과 맨뒤 두 자리를 고정하고 남은3명을 배열한다."
+    "decisiveStep": "맨앞과 맨뒤 두 자리를 고정하고 남은3명을 배열한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 15,
@@ -890,7 +898,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "빈 공을 포함한 표본공간과 약수 개수",
-    "decisiveStep": "전체18에 약수6개를 대응시킨다."
+    "decisiveStep": "전체18에 약수6개를 대응시킨다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 17,
@@ -940,7 +952,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "구체 사건의 불가능·확실 여부",
-    "decisiveStep": "각 시행에서 사건이 불가능하거나 확실한지 확인하고 가위바위보 승부를 고른다."
+    "decisiveStep": "각 시행에서 사건이 불가능하거나 확실한지 확인하고 가위바위보 승부를 고른다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 18,
@@ -990,7 +1006,11 @@ window.questionBank = [
       "l4": "사건의 합"
     },
     "primaryMethod": "배타적인 두 맛 사건의 합",
-    "decisiveStep": "딸기와 사과의 주어진 확률을 더한다."
+    "decisiveStep": "딸기와 사과의 주어진 확률을 더한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 19,
@@ -1105,7 +1125,11 @@ window.questionBank = [
       "l4": "여사건"
     },
     "primaryMethod": "두 사람 모두 오답인 사건의 여사건",
-    "decisiveStep": "독립 가정 아래 두 오답 확률을 곱하고1에서 뺀다."
+    "decisiveStep": "독립 가정 아래 두 오답 확률을 곱하고1에서 뺀다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 21,
@@ -1261,7 +1285,11 @@ window.questionBank = [
       "l4": "순서가 있는 경우"
     },
     "primaryMethod": "끝자리 조건에 따른 세 자리 수 계수",
-    "decisiveStep": "전체수·짝수·4의배수에서 선두0금지와 서로다름을 적용해 경우수를 합한다."
+    "decisiveStep": "전체수·짝수·4의배수에서 선두0금지와 서로다름을 적용해 경우수를 합한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 24,
