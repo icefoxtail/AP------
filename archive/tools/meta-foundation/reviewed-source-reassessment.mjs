@@ -15,6 +15,7 @@ import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-curren
 import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-target-application.mjs";
 import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import { validateM2E006ProblemContinuity } from "./reviewed-m2-e006-problem-continuity.mjs";
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
 import { validateM2ProblemRenderer21Continuity } from "./reviewed-m2-problem21-continuity.mjs";
@@ -277,6 +278,15 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     return { ...inner, studentPayloadSha256: sha256(stable(payload)),
       ...(m2Problem21 ? { m2ProblemRenderer21Continuity: { ...m2Problem21.proof, originalSourceReviewSha256 } } : {}),
       ...(e023Display ? { e023SolutionDisplayContinuity: { ...e023Display.proof, originalSourceReviewSha256 } } : {}) };
+  }
+  const m2E006 = validateM2E006ProblemContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
+  if (m2E006) {
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2E006.normalizedPatch,
+      metadata, question: m2E006.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2E006ProblemContinuity: {
+      ...m2E006.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
   const m2Renderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });

@@ -206,6 +206,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-projection-phase.test.mjs']
   },
   {
+    label: 'tests/meta-foundation-geometry-issued-rows.test.mjs',
+    args: ['--test', 'tests/meta-foundation-geometry-issued-rows.test.mjs']
+  },
+  {
     label: 'tests/archive-registration-writer.test.mjs',
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
   },
@@ -377,6 +381,11 @@ const requiredCommands = [
     label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
     args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
     timeout: 300000
+  },
+  {
+    label: 'tests/archive-m2-e006-problem-continuity.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-m2-e006-problem-continuity.test.mjs'],
+    timeout: 60000
   },
   {
     label: 'tests/archive-reviewed-m2-family3-problem-continuity.test.mjs',
