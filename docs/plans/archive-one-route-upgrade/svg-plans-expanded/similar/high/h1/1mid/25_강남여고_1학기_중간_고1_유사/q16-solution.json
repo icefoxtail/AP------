@@ -1,0 +1,58 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "기존 문제 그림의 세 기둥 모두에 포함된 중앙 부분을 따로 꺼낸 정육면체이다. 한 변은 x이고 부피는 x³이다. 세 기둥의 부피를 더할 때 이 부분은 세 번 계산된다.",
+  "accessibilityDescription": "기존 문제 그림의 세 기둥 모두에 포함된 중앙 부분을 따로 꺼낸 정육면체이다. 한 변은 x이고 부피는 x³이다. 세 기둥의 부피를 더할 때 이 부분은 세 번 계산된다.",
+  "solids": [
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ],
+      "label": "x"
+    },
+    {
+      "edge": [
+        "s2#b1",
+        "s2#b2"
+      ],
+      "label": "x"
+    },
+    {
+      "edge": [
+        "s2#b1",
+        "s2#t1"
+      ],
+      "label": "x"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><img src=\"assets/images/25_강남여고_1학기_중간_고1_유사/q16-quality-v4.svg\" style=\"display:block; margin:8px auto; width:300px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"정사각기둥 한 개와, 중심에서 서로 수직으로 만나는 세 정사각기둥\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "기존 교차 입체 그림을 유지하고 중복 계산되는 중앙 정육면체만 분리해 세 번 포함되는 부분을 확인한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 교차 입체 그림을 유지하고 중복 계산되는 중앙 정육면체만 분리해 세 번 포함되는 부분을 확인한다."
+  ]
+}
