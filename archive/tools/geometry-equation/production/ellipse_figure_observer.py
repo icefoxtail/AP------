@@ -299,19 +299,31 @@ def audit_accessible_names(plan,root,elements,errors):
         errors.append('CONIC_ACCESSIBLE_NAME_MISMATCH')
 
     bindings={'point':'data-point','line':'data-line','curve':'data-curve-id','measure':'data-segment'}
-    labels={}
+    expected={
+        'point-'+point['id'] for point in (plan.get('points') or []) if point.get('label',True)
+    } | {
+        'measure-'+segment['id'] for segment in (plan.get('segments') or []) if segment.get('label')
+    }
+    if 'conic' in plan or 'conics' in plan:
+        expected.update('line-'+line['id'] for line in (plan.get('lines') or []) if line.get('label') and not line.get('hidden'))
+        expected.update('curve-'+curve['id'] for curve in (plan.get('conics') or []) if curve.get('label'))
+    label_ids={key:key if key.startswith('measure-') else 'label-'+key for key in expected}
+    seen=set()
     for element in elements:
+        kind=element.get('data-label-kind')
         role=element.get('data-label-role')
-        if role not in bindings: continue
-        owner=element.get(bindings[role])
+        if kind is None and role is None: continue
+        owner=element.get(bindings[role]) if role in bindings else None
         key=f'{role}-{owner}'
-        expected_id=key if role=='measure' else 'label-'+key
-        if not owner or key in labels or element.get('id')!=expected_id or element.get('data-owner')!='ellipse-'+key:
+        if (kind!='COORDINATE_LABEL' or key not in expected or key in seen or element.get('id')!=label_ids.get(key)
+            or element.get('data-owner')!='ellipse-'+key):
             errors.append('CONIC_LABEL_OWNER_MISMATCH:'+key)
-        labels[key]=expected_id
+        seen.add(key)
+    for key in sorted(expected-seen):
+        errors.append('CONIC_LABEL_OWNER_MISMATCH:'+key)
     for element in _find(elements,'leader'):
         key=element.get('data-label')
-        if key not in labels or labels[key]!=element.get('data-owner-label'):
+        if key not in expected or label_ids[key]!=element.get('data-owner-label'):
             errors.append('CONIC_LEADER_LABEL_MISMATCH:'+str(key))
 
 

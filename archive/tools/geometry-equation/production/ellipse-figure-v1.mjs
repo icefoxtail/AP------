@@ -836,7 +836,10 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy,sto
   let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
   const accessible=plan.accessibilityDescription!==undefined;
   const scopedLabels=accessible&&!model.arch;
-  const labelId=item=>scopedLabels&&item.role!=='segment'||model.arch&&item.role==='point'?'label-'+item.key:item.key;
+  function labelId(item){
+    const needsPrefix=(scopedLabels&&item.role!=='measure')||(model.arch&&item.role==='point');
+    return needsPrefix?'label-'+item.key:item.key;
+  }
   for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
   const lineage={planSha256:objectSha(plan),modelSha256:objectSha(model),typographyPolicySha256:objectSha(typographyPolicy),
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};

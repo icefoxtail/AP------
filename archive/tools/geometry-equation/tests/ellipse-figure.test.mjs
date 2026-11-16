@@ -518,7 +518,10 @@ test('a curve name gets a leader that ends on its own curve; a changed name or a
 // (MULTI_CURVE_KIND_INVALID:circle); conics takes it, the hidden tangent line on c2 proves the tangency to the parabola, and the parabola's name keeps its leader.
 test('accessible conic plans bind unique labels, titles, and descriptions to the same geometry',async()=>{
   const mixed=mixPlan();
-  const cases=[chordPlan(),{...mixed,conics:[{...mixed.conics[0],label:'x^2/a^2+y^2/b^2=1'},
+  const chord=chordPlan();
+  chord.segments[0].label='2';
+  chord.points.find(point=>point.id==='P').label=false;
+  const cases=[chord,{...mixed,conics:[{...mixed.conics[0],label:'x^2/a^2+y^2/b^2=1'},
     {...mixed.conics[1],label:'y^2=4x'}]}];
   for(const original of cases){
     const caption='이차곡선과 점의 위치';
@@ -535,6 +538,13 @@ test('accessible conic plans bind unique labels, titles, and descriptions to the
     assert.ok((await auditEllipseSvg({plan,svg:duplicate})).errors.includes('CONIC_DUPLICATE_ID'));
     const missing=svg.replace(/<desc[^>]*>[^<]*<\/desc>/,'');
     assert.ok((await auditEllipseSvg({plan,svg:missing})).errors.includes('CONIC_ACCESSIBLE_NAME_MISMATCH'));
+    const rogue=svg.replace('</svg>','<g id="measure-z" data-label-kind="COORDINATE_LABEL" data-label-role="measure" data-segment="z" data-owner="ellipse-measure-z"/></svg>');
+    assert.ok((await auditEllipseSvg({plan,svg:rogue})).errors.includes('CONIC_LABEL_OWNER_MISMATCH:measure-z'));
+    if(original===chord){
+      assert.match(svg,/id="measure-s1" data-label-kind="COORDINATE_LABEL"/);
+      const hiddenLabel=svg.replace('</svg>','<g id="label-point-P" data-label-kind="COORDINATE_LABEL" data-label-role="point" data-point="P" data-owner="ellipse-point-P"/></svg>');
+      assert.ok((await auditEllipseSvg({plan,svg:hiddenLabel})).errors.includes('CONIC_LABEL_OWNER_MISMATCH:point-P'));
+    }
     const wrongOwner=svg.replace('data-owner-label="label-curve-c1"','data-owner-label="curve-c1"');
     if(original===cases[1]){
       assert.notEqual(wrongOwner,svg);
