@@ -1,4 +1,214 @@
 {
-  "status": "EXEMPT",
-  "reason": "유클리드 증명 구조에 의한 직각삼각형과 정사각형 사이의 삼각형 넓이 계산 문항"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "0" },
+      { "kind": "integer", "value": "0" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "6" },
+      { "kind": "integer", "value": "0" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "0" },
+      { "kind": "integer", "value": "8" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "14" },
+      { "kind": "integer", "value": "6" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "G",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "8" },
+      { "kind": "integer", "value": "14" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "-8" },
+      { "kind": "integer", "value": "8" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "-8" },
+      { "kind": "integer", "value": "0" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "H",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "6" },
+      { "kind": "integer", "value": "-6" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "J",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      { "kind": "integer", "value": "0" },
+      { "kind": "integer", "value": "-6" }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  { "id": "sAB", "refs": ["A", "B"] },
+  { "id": "sBC", "refs": ["B", "C"] },
+  { "id": "sCA", "refs": ["C", "A"] },
+  { "id": "sCD", "refs": ["C", "D"] },
+  { "id": "sDE", "refs": ["D", "E"] },
+  { "id": "sEA", "refs": ["E", "A"] },
+  { "id": "sBH", "refs": ["B", "H"] },
+  { "id": "sHJ", "refs": ["H", "J"] },
+  { "id": "sJA", "refs": ["J", "A"] },
+  { "id": "sCG", "refs": ["C", "G"] },
+  { "id": "sGF", "refs": ["G", "F"] },
+  { "id": "sFB", "refs": ["F", "B"] },
+  { "id": "sAG", "refs": ["A", "G"] }
+ ],
+ "displayPoints": ["A", "B", "C", "F", "G", "D", "E", "H", "J"],
+ "hiddenPointNames": ["D", "E", "H", "J"],
+ "hiddenPointStyle": "NONE",
+ "rightAngles": [
+  { "id": "raA", "refs": ["B", "A", "C"] }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "tAB",
+    "ownerSegment": "sAB",
+    "text": "6",
+    "unit": "cm",
+    "ownership": "NEAREST",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "tBC",
+    "ownerSegment": "sBC",
+    "text": "10",
+    "unit": "cm",
+    "labelAt": "START",
+    "ownership": "NEAREST",
+    "factRole": "GIVEN"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rACG",
+    "fill": "LIGHT",
+    "factRole": "GIVEN",
+    "shapes": [
+     { "polygon": ["A", "C", "G"] }
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 600
+ },
+ "caption": "직각삼각형 ABC의 세 변을 각각 한 변으로 하는 정사각형을 바깥쪽에 그리고 빗변 위 정사각형의 꼭짓점 G를 이용해 삼각형 ACG를 연한 색으로 칠한 그림.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "∠A=90°인 직각삼각형 ABC의 세 변을 각각 한 변으로 하는 정사각형을 삼각형 바깥쪽에 그린다",
+   "mappedTo": ["A", "B", "C", "D", "E", "H", "J", "F", "G"]
+  },
+  {
+   "id": "c2",
+   "condition": "빗변 BC 위의 정사각형은 B, C, G, F 순서이고 G는 C에 이웃한 꼭짓점이다",
+   "mappedTo": ["B", "C", "G", "F"]
+  },
+  {
+   "id": "c3",
+   "condition": "AB=6 cm, BC=10 cm",
+   "mappedTo": ["tAB", "tBC"]
+  }
+ ],
+ "newVisualInformation": [
+  "세 변 위의 정사각형과 빗변 위 정사각형의 꼭짓점 G, 삼각형 ACG의 연한 색칠",
+  "AB=6 cm, BC=10 cm의 길이 표시(AC의 길이는 쓰지 않음)"
+ ]
 }

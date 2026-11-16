@@ -1,4 +1,305 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 사다리꼴 대각선 교점 및 평행선 선분비에 의한 기본 대수 계산 문항"
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "caption": "사다리꼴에서 두 대각선의 교점 P를 지나 밑변에 평행한 PQ를 그으면 △APD와 △CPB가 닮고, 삼각형 CAD에서 PQ와 AD가 평행이므로 △CPQ와 △CAD가 닮는다.",
+  "sourceQuote": "점 $P$는 두 대각선 $AC$와 $BD$의 교점",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사다리꼴에서 AD∥PQ∥BC이고 AD=6cm, BC=12cm",
+      "mappedTo": ["A", "B", "C", "D", "P", "Q", "sDA", "sPQ", "sBC", "dAD", "dBC"]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 두 대각선 AC, BD의 교점이고 Q는 변 CD 위의 점",
+      "mappedTo": ["P", "Q", "sAP", "sPC", "sBP", "sPD"]
+    }
+  ],
+  "newVisualInformation": [
+    "닮은 두 삼각형 APD와 CPB를 파란색과 주황색으로 칠하고, 대각선 AC에서 AP:PC=1:2를 표시",
+    "삼각형 CAD만 떼어 CP:CA=2:3과 PQ∥AD, AD=6cm를 표시"
+  ],
+  "panels": [
+    {
+      "caption": { "text": "사다리꼴의 두 대각선과 PQ" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "2" }, { "kind": "integer", "value": "4" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lAC",
+              "op": "LINE_THROUGH",
+              "inputs": ["A", "C"],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lBD",
+              "op": "LINE_THROUGH",
+              "inputs": ["B", "D"],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": ["lAC", "lBD"],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Pdir",
+              "op": "TRANSLATE_POINT",
+              "inputs": ["P"],
+              "args": {
+                "dx": { "kind": "integer", "value": "1" },
+                "dy": { "kind": "integer", "value": "0" }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lPQ",
+              "op": "LINE_THROUGH",
+              "inputs": ["P", "Pdir"],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lCD",
+              "op": "LINE_THROUGH",
+              "inputs": ["C", "D"],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "LINE_INTERSECTION",
+              "inputs": ["lPQ", "lCD"],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "axisTickValues": { "x": [], "y": [] },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] },
+          { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sCD", "refs": ["C", "D"] },
+          { "id": "sDA", "refs": ["D", "A"] },
+          { "id": "sAP", "refs": ["A", "P"] },
+          { "id": "sPC", "refs": ["P", "C"] },
+          { "id": "sBP", "refs": ["B", "P"] },
+          { "id": "sPD", "refs": ["P", "D"] },
+          { "id": "sPQ", "refs": ["P", "Q"] }
+        ],
+        "displayPoints": ["A", "B", "C", "D", "P", "Q"],
+        "planeMarks": {
+          "parallels": [
+            { "id": "p1", "count": 1, "segments": ["sDA", "sPQ", "sBC"], "color": "GREEN" }
+          ],
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "label": "6",
+              "unit": "cm",
+              "side": "ABOVE",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "12",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "GIVEN"
+            }
+          ],
+          "regions": [
+            {
+              "id": "rAPD",
+              "fill": "BLUE",
+              "shapes": [ { "polygon": ["A", "P", "D"] } ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "rCPB",
+              "fill": "WARM",
+              "shapes": [ { "polygon": ["C", "P", "B"] } ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "pathLabels": [
+            {
+              "id": "rRatio1",
+              "points": ["A", "P", "C"],
+              "label": "AP:PC=1:2",
+              "labelKind": "TEXT",
+              "labelWeight": "MATH",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": { "width": 720, "height": 600 }
+      }
+    },
+    {
+      "caption": { "text": "삼각형 CAD와 평행선 PQ" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "2" }, { "kind": "integer", "value": "4" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "DIVISION_POINT",
+              "inputs": ["C", "A"],
+              "args": {
+                "m": { "kind": "integer", "value": "2" },
+                "n": { "kind": "integer", "value": "1" },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "DIVISION_POINT",
+              "inputs": ["C", "D"],
+              "args": {
+                "m": { "kind": "integer", "value": "2" },
+                "n": { "kind": "integer", "value": "1" },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "axisTickValues": { "x": [], "y": [] },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          { "id": "sCP", "refs": ["C", "P"] },
+          { "id": "sPA", "refs": ["P", "A"] },
+          { "id": "sAD", "refs": ["A", "D"] },
+          { "id": "sDQ", "refs": ["D", "Q"] },
+          { "id": "sQC", "refs": ["Q", "C"] },
+          { "id": "sPQ", "refs": ["P", "Q"] }
+        ],
+        "displayPoints": ["A", "C", "D", "P", "Q"],
+        "planeMarks": {
+          "parallels": [
+            { "id": "p1", "count": 1, "segments": ["sAD", "sPQ"], "color": "GREEN" }
+          ],
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "label": "6",
+              "unit": "cm",
+              "side": "ABOVE",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "GIVEN"
+            }
+          ],
+          "pathLabels": [
+            {
+              "id": "rRatio2",
+              "points": ["C", "P", "A"],
+              "label": "CP:CA=2:3",
+              "labelKind": "TEXT",
+              "labelWeight": "MATH",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": { "width": 720, "height": 600 }
+      }
+    }
+  ]
 }

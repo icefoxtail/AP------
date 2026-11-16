@@ -1,4 +1,224 @@
 {
-  "status": "EXEMPT",
-  "reason": "입체도형의 닮음비와 부피비 성질을 이용한 비례 계산 문항"
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "t",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": [
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v0"
+          ],
+          "ratio": "1:2"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "B",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v1"
+          ],
+          "ratio": "1:2"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "C",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v2"
+          ],
+          "ratio": "1:2"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "D",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v0"
+          ],
+          "ratio": "2:1"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "E",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v1"
+          ],
+          "ratio": "2:1"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "F",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v2"
+          ],
+          "ratio": "2:1"
+        },
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "D",
+        "to": "E",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "F",
+        "to": "D",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "#v3",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "#v0",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "#v3",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "#v1",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "D",
+        "E",
+        "B"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "labels": [
+    {
+      "text": "(가)",
+      "at": {
+        "edge": [
+          "#v3",
+          "B"
+        ]
+      }
+    },
+    {
+      "text": "(나)",
+      "at": {
+        "edge": [
+          "A",
+          "D"
+        ]
+      }
+    },
+    {
+      "text": "(다)",
+      "at": {
+        "edge": [
+          "E",
+          "#v1"
+        ]
+      }
+    }
+  ],
+  "caption": "정사면체를 높이가 같은 세 층으로 나누는 밑면에 평행한 두 단면과, 위에서부터 (가), (나), (다)인 세 부분을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체의 높이를 삼등분하는 밑면 평행 단면 두 개",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c2",
+      "condition": "위에서부터 세 층 (가), (나), (다)",
+      "mappedTo": "labels"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 정사면체를 유지한 두 단면과 세 층",
+    "가운데 (나) 부분을 주황색으로 구별"
+  ]
 }

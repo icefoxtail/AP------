@@ -1,4 +1,164 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 평행선 사이의 선분의 길이의 비 성질을 판정하는 대수적 수치 비교 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "9" },
+            { "kind": "integer", "value": "12" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [ "A", "B" ],
+        "args": {
+          "m": { "kind": "integer", "value": "1" },
+          "n": { "kind": "integer", "value": "2" },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [ "A", "C" ],
+        "args": {
+          "m": { "kind": "integer", "value": "1" },
+          "n": { "kind": "integer", "value": "2" },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAD", "refs": [ "A", "D" ] },
+    { "id": "sDB", "refs": [ "D", "B" ] },
+    { "id": "sBC", "refs": [ "B", "C" ] },
+    { "id": "sAE", "refs": [ "A", "E" ] },
+    { "id": "sEC", "refs": [ "E", "C" ] },
+    { "id": "sDE", "refs": [ "D", "E" ] }
+  ],
+  "displayPoints": [ "A", "B", "C", "D", "E" ],
+  "planeMarks": {
+    "parallels": [
+      { "id": "pDE", "count": 1, "segments": [ "sDE", "sBC" ], "color": "WARM" }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": "AUTO",
+        "value": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dDB",
+        "from": "D",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": "AUTO",
+        "value": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAE",
+        "from": "A",
+        "to": "E",
+        "label": "5",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR",
+        "offset": "AUTO",
+        "value": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dEC",
+        "from": "E",
+        "to": "C",
+        "label": "10",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR",
+        "offset": "AUTO",
+        "value": "10",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      { "segments": [ "sAD", "sDB", "sAE", "sEC" ], "color": "BLUE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 560 },
+  "caption": "삼각형 ABC에서 D는 AB 위, E는 AC 위에 있고, 파란색으로 묶은 네 선분의 길이 4, 8, 5, 10은 AD와 DB의 비, AE와 EC의 비가 모두 1:2임을 보여 주며, 주황색 평행 표시는 DE와 BC가 평행함을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D는 AB 위, E는 AC 위에 있고 AD=4, DB=8, AE=5, EC=10",
+      "mappedTo": [ "A", "B", "C", "D", "E", "dAD", "dDB", "dAE", "dEC" ]
+    },
+    {
+      "id": "c2",
+      "condition": "DE는 BC와 평행",
+      "mappedTo": [ "sDE", "sBC", "pDE" ]
+    }
+  ],
+  "newVisualInformation": [
+    "파란색으로 묶은 네 선분의 길이 4, 8, 5, 10과 DE, BC의 주황색 평행 표시"
+  ],
+  "sourceQuote": "위의 점을 각각 $D, E$라 할 때"
 }

@@ -1,4 +1,237 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 유클리드 증명 구조에 의한 직각삼각형과 정사각형 사이의 삼각형 넓이 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "6" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "8" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-8" },
+            { "kind": "integer", "value": "8" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-8" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "6" },
+            { "kind": "integer", "value": "-6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "-6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "8" },
+            { "kind": "integer", "value": "14" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "C"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["G", "lAC"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEA", "refs": ["E", "A"] },
+    { "id": "sBK", "refs": ["B", "K"] },
+    { "id": "sKL", "refs": ["K", "L"] },
+    { "id": "sLA", "refs": ["L", "A"] },
+    { "id": "sCG", "refs": ["C", "G"] },
+    { "id": "sGF", "refs": ["G", "F"] },
+    { "id": "sFB", "refs": ["F", "B"] },
+    { "id": "sAG", "refs": ["A", "G"] },
+    { "id": "sCH", "refs": ["C", "H"], "dashed": true },
+    { "id": "sGH", "refs": ["G", "H"] }
+  ],
+  "displayPoints": ["A", "B", "C", "F", "G", "H", "D", "E", "K", "L"],
+  "hiddenPointNames": ["D", "E", "K", "L"],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    { "id": "raA", "refs": ["B", "A", "C"] },
+    { "id": "raH", "refs": ["G", "H", "A"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "eBaseHeight", "count": 1, "segments": ["sCA", "sGH"], "color": "BLUE" }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tGH",
+        "ownerSegment": "sGH",
+        "text": "8",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rACG",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          { "polygon": ["A", "C", "G"] }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "직각삼각형 ABC에서 AB=6cm, BC=10cm이므로 피타고라스 정리로 AC=8cm를 얻고, G에서 AC를 C 쪽으로 연장한 직선에 내린 수선의 발을 H라 하면 GH=8cm이다. 삼각형 ACG의 밑변 AC와 높이 GH가 같으므로 그 넓이는 AC의 제곱의 절반이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°인 직각삼각형 ABC의 세 변을 각각 한 변으로 하는 정사각형을 삼각형 바깥쪽에 그린다",
+      "mappedTo": ["A", "B", "C", "D", "E", "K", "L", "F", "G"]
+    },
+    {
+      "id": "c2",
+      "condition": "빗변 BC 위의 정사각형은 B, C, G, F 순서이고 G는 C에 이웃한 꼭짓점이다",
+      "mappedTo": ["B", "C", "G", "F"]
+    },
+    {
+      "id": "c3",
+      "condition": "AB=6cm, BC=10cm이다",
+      "mappedTo": ["sAB", "sBC"]
+    }
+  ],
+  "newVisualInformation": [
+    "G에서 AC의 연장선에 내린 수선의 발 H와 그 직각 표시",
+    "AC=8cm와 GH=8cm를 같은 파란 눈금으로 묶은 표시",
+    "삼각형 ACG의 연한 색칠"
+  ],
+  "sourceQuote": "삼각형 $ACG$의 넓이는?"
 }

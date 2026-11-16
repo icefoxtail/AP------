@@ -1,4 +1,183 @@
 {
-  "status": "EXEMPT",
-  "reason": "평행사변형 대각선 삼등분점과 삼각형 넓이비에 의한 다각형 넓이 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "2" },
+            { "kind": "integer", "value": "8" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "8" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": ["B", "C"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": ["C", "D"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAM",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "M"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAN",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "N"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": ["B", "D"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": ["lAM", "lBD"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": ["lAN", "lBD"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBM", "refs": ["B", "M"] },
+    { "id": "sMC", "refs": ["M", "C"] },
+    { "id": "sCN", "refs": ["C", "N"] },
+    { "id": "sND", "refs": ["N", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAM", "refs": ["A", "M"] },
+    { "id": "sAN", "refs": ["A", "N"] },
+    { "id": "sBD", "refs": ["B", "D"] }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "M", "N", "P", "Q"],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "eBM", "count": 1, "segments": ["sBM", "sMC"] },
+      { "id": "eCN", "count": 2, "segments": ["sCN", "sND"] }
+    ],
+    "regions": [
+      {
+        "id": "rPent",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          { "polygon": ["P", "M", "C", "N", "Q"] }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 460
+  },
+  "caption": "평행사변형에서 변 BC와 변 CD의 중점 M, N을 잡고, 대각선 BD가 선분 AM, AN과 만나는 점 P, Q를 표시한 그림. 다섯 점 P, M, C, N, Q로 이루어진 오각형을 연한 색으로 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행사변형의 네 꼭짓점 A, B, C, D",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sDA"]
+    },
+    {
+      "id": "c2",
+      "condition": "M, N은 각각 변 BC, CD의 중점",
+      "mappedTo": ["M", "N", "sBM", "sMC", "sCN", "sND", "eBM", "eCN"]
+    },
+    {
+      "id": "c3",
+      "condition": "대각선 BD가 선분 AM, AN과 만나는 점을 각각 P, Q라 한다",
+      "mappedTo": ["P", "Q", "sAM", "sAN", "sBD", "rPent"]
+    }
+  ],
+  "newVisualInformation": [
+    "두 변 BC, CD의 중점 M, N을 같은 길이 눈금으로 표시",
+    "대각선 BD와 선분 AM, AN의 교점 P, Q",
+    "다섯 점 P, M, C, N, Q로 이루어진 오각형을 연한 색으로 칠해 구하는 영역을 보임"
+  ],
+  "sourceQuote": "평행사변형 $ABCD$에서 두 점 $M, N$은 각각 변 $BC, CD$의 중점이고, 대각선 $BD$가 선분 $AM, AN$과 만나는 점을 각각 $P, Q$라 하자."
 }

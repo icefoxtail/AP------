@@ -1,4 +1,72 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 두 주머니에서 독립적으로 구슬을 꺼내는 곱의 법칙 확률 계산 문항"
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "시작",
+      "children": [
+        {
+          "label": "A 흰",
+          "p": "4/10",
+          "children": [
+            {
+              "label": "B 흰",
+              "p": "3/10"
+            },
+            {
+              "label": "B 검은",
+              "p": "7/10"
+            }
+          ]
+        },
+        {
+          "label": "A 검은",
+          "p": "6/10",
+          "children": [
+            {
+              "label": "B 흰",
+              "p": "3/10"
+            },
+            {
+              "label": "B 검은",
+              "p": "7/10"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "A 흰",
+          "B 흰"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "labelWeight": "MATH"
+  },
+  "caption": "A 주머니에서 흰 구슬이 나오는 경우와 검은 구슬이 나오는 경우를 먼저 나누고, 각 경우마다 B 주머니에서 흰 구슬과 검은 구슬이 나오는 경우를 이어 붙인다. 흰 구슬이 연달아 나오는 경로는 파란 굵은 선으로 강조하고 나머지 경로는 가는 선으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A 주머니에는 흰 구슬 4개와 검은 구슬 6개가 들어 있다.",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c2",
+      "condition": "B 주머니에는 흰 구슬 3개와 검은 구슬 7개가 들어 있다.",
+      "mappedTo": "chart.root.children[0].children"
+    },
+    {
+      "id": "c3",
+      "condition": "두 주머니에서 각각 구슬을 한 개씩 임의로 꺼낸다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "A 주머니의 흰 구슬 4/10과 검은 구슬 6/10을 첫째 단계로 나눈다.",
+    "각 첫째 단계 가지에서 B 주머니의 흰 구슬 3/10과 검은 구슬 7/10을 둘째 단계로 이어 붙인다.",
+    "흰 구슬이 연달아 나오는 경로를 파란 굵은 선으로 강조해 구하는 사건의 경로를 보인다."
+  ]
 }

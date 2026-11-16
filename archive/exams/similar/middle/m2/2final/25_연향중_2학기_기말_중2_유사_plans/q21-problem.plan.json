@@ -1,4 +1,182 @@
 {
-  "status": "EXEMPT",
-  "reason": "평행선 동위각·엇각에 의한 AA 닮음 및 ASA 합동 증명과 선분 길이 연립 서술 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "6" },
+            { "kind": "integer", "value": "10" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "16" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "24" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": ["A", "B"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "MIDPOINT",
+        "inputs": ["A", "C"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": ["C", "A"],
+        "args": {
+          "m": { "kind": "integer", "value": "1" },
+          "n": { "kind": "integer", "value": "3" },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDB", "refs": ["D", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCF", "refs": ["C", "F"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sDG", "refs": ["D", "G"] }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G"],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eAD",
+        "count": 1,
+        "segments": ["sAD", "sDB"]
+      },
+      {
+        "id": "eDE",
+        "count": 2,
+        "segments": ["sDE", "sEF"]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pDG",
+        "count": 1,
+        "segments": ["sDG", "sBC", "sCF"]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBF",
+        "from": "B",
+        "to": "F",
+        "label": "24",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 1,
+        "value": "24",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 460
+  },
+  "caption": "삼각형 ABC에서 변 AB의 중점 D와 변 AC 위의 두 점 G, E를 잡고, 변 BC를 F까지 연장한 뒤 점 D, E, F가 한 직선 위에서 DE=EF이고 DG와 BF가 평행인 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 D는 선분 AB의 중점이다",
+      "mappedTo": ["A", "B", "D", "eAD"]
+    },
+    {
+      "id": "c2",
+      "condition": "점 A, G, E, C는 한 직선 위에 이 순서로 놓여 있다",
+      "mappedTo": ["A", "G", "E", "C", "sAC"]
+    },
+    {
+      "id": "c3",
+      "condition": "점 D, E, F는 한 직선 위에 이 순서로 놓여 있고 DE=EF이다",
+      "mappedTo": ["D", "E", "F", "eDE"]
+    },
+    {
+      "id": "c4",
+      "condition": "점 B, C, F는 한 직선 위에 이 순서로 놓여 있고 DG와 BF는 평행이다",
+      "mappedTo": ["B", "C", "F", "sBC", "sCF", "sDG", "pDG"]
+    },
+    {
+      "id": "c5",
+      "condition": "선분 BF의 길이는 24 cm이다",
+      "mappedTo": ["dBF"]
+    }
+  ],
+  "newVisualInformation": [
+    "점 D가 선분 AB의 중점임을 보이는 같은 길이 눈금(AD=DB)",
+    "점 E가 선분 DF의 중점임을 보이는 같은 길이 눈금(DE=EF)",
+    "DG와 BF의 평행 표시, BF=24 cm의 길이 표시(BC, CF, DG의 길이는 쓰지 않음)"
+  ]
 }

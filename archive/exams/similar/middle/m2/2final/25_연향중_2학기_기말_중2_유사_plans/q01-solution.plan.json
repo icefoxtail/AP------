@@ -1,4 +1,376 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 삼각형 닮음비와 대응변 성질을 이용한 대수적 둘레 계산 문항"
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "caption": "닮음비가 4:1인 두 삼각형에서 대응하는 변의 길이의 비는 닮음비와 같다. 파란 변 AB와 DE, 주황 변 BC와 EF, 초록 변 CA와 FD가 서로 대응한다.",
+  "sourceQuote": "삼각형 ABC와 삼각형 DEF가 닮음이고 두 삼각형의 닮음비가 4:1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABC와 삼각형 DEF는 닮음이고 닮음비는 4:1",
+      "mappedTo": ["A", "B", "C", "D", "E", "F", "sAB", "sBC", "sCA", "sDE", "sEF", "sFD"]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=20cm, BC=28cm, DF=6cm",
+      "mappedTo": ["dAB", "dBC", "dFD"]
+    }
+  ],
+  "newVisualInformation": [
+    "닮은 두 삼각형 ABC와 DEF를 같은 방향으로 위아래에 놓고, 대응하는 변 AB와 DE, BC와 EF, CA와 FD를 같은 색으로 묶어 표시한다",
+    "두 패널 사이에 닮음비 4:1을 표시하고 각 변의 길이를 정확한 값으로 적는다"
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "△ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "28"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "76",
+                    "denominator": "7"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "48"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "6"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": ["A", "B"]
+          },
+          {
+            "id": "sBC",
+            "refs": ["B", "C"]
+          },
+          {
+            "id": "sCA",
+            "refs": ["C", "A"]
+          }
+        ],
+        "displayPoints": ["A", "B", "C"],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "20",
+              "unit": "cm",
+              "side": "LEFT",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "28",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "tCA",
+              "ownerSegment": "sCA",
+              "text": "24",
+              "unit": "cm",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": ["sAB"],
+              "color": "BLUE"
+            },
+            {
+              "segments": ["sBC"],
+              "color": "WARM"
+            },
+            {
+              "segments": ["sCA"],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 600
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "△DEF (닮음비 4 : 1)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "19",
+                    "denominator": "7"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "12"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "6"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sDE",
+            "refs": ["D", "E"]
+          },
+          {
+            "id": "sEF",
+            "refs": ["E", "F"]
+          },
+          {
+            "id": "sFD",
+            "refs": ["F", "D"]
+          }
+        ],
+        "displayPoints": ["D", "E", "F"],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dDE",
+              "from": "D",
+              "to": "E",
+              "label": "5",
+              "unit": "cm",
+              "side": "LEFT",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "dEF",
+              "from": "E",
+              "to": "F",
+              "label": "7",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "tFD",
+              "ownerSegment": "sFD",
+              "text": "6",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ],
+          "segmentColors": [
+            {
+              "segments": ["sDE"],
+              "color": "BLUE"
+            },
+            {
+              "segments": ["sEF"],
+              "color": "WARM"
+            },
+            {
+              "segments": ["sFD"],
+              "color": "GREEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 600
+        }
+      }
+    }
+  ]
 }

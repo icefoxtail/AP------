@@ -1,4 +1,140 @@
 {
-  "status": "EXEMPT",
-  "reason": "직각삼각형의 닮음 공식을 적용하는 기본 대수 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "16" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                { "kind": "integer", "value": "4" },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [{ "kind": "integer", "value": "3" }]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sBD", "refs": ["B", "D"] }
+  ],
+  "displayPoints": ["A", "B", "C", "D"],
+  "rightAngles": [
+    { "id": "raB", "refs": ["A", "B", "C"] },
+    { "id": "raD", "refs": ["A", "D", "B"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 360
+  },
+  "caption": "각 B가 90°인 직각삼각형에서 꼭짓점 B에서 빗변 AC에 내린 수선의 발 D와, AD=4 cm, AB=8 cm인 두 변의 길이를 표시한 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "각 B=90°인 직각삼각형 ABC의 꼭짓점 B에서 빗변 AC에 내린 수선의 발을 D라 한다",
+      "mappedTo": ["A", "B", "C", "D", "raB", "raD", "sBD"]
+    },
+    {
+      "id": "c2",
+      "condition": "AD=4 cm, AB=8 cm",
+      "mappedTo": ["dAD", "dAB"]
+    }
+  ],
+  "newVisualInformation": [
+    "빗변 AC가 수평인 직각삼각형과 B에서 AC에 내린 수선 BD, B와 D의 직각 표시",
+    "AD=4 cm와 AB=8 cm의 길이 표시(AC, DC, BC, BD의 길이는 쓰지 않음)"
+  ]
 }

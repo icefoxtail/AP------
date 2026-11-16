@@ -1,4 +1,408 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 평행선 동위각·엇각에 의한 AA 닮음 및 ASA 합동 증명과 선분 길이 연립 서술 문항"
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "caption": "DG와 BF가 평행이므로 ∠ADG=∠ABC, ∠AGD=∠ACB이다. DE=EF이고 엇각과 맞꼭지각이 각각 같아 △DGE≡△FCE이므로 DG=CF이다.",
+  "sourceQuote": "삼각형 ABC에서 점 D는 선분 AB의 중점이다. 점 A, G, E, C는 한 직선 위에 이 순서로 놓여 있고, 점 D, E, F는 한 직선 위에 이 순서로 놓여 있으며 DE=EF이다. 점 B, C, F도 한 직선 위에 이 순서로 놓여 있고, DG∥BF이다. BF=24cm일 때 선분 DG의 길이를 구하시오.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 D는 선분 AB의 중점이고, 점 A, G, E, C가 한 직선 위에 이 순서로 있다",
+      "mappedTo": ["p1"]
+    },
+    {
+      "id": "c2",
+      "condition": "점 D, E, F가 한 직선 위에 이 순서로 있고 DE=EF이다",
+      "mappedTo": ["p1", "p2"]
+    },
+    {
+      "id": "c3",
+      "condition": "점 B, C, F가 한 직선 위에 이 순서로 있고 DG∥BF이다",
+      "mappedTo": ["p1", "p2"]
+    },
+    {
+      "id": "c4",
+      "condition": "BF=24cm이다",
+      "mappedTo": ["p1"]
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 패널은 문제의 배치를 그대로 두고 삼각형 ADG를 파란 영역으로 구분한다",
+    "오른쪽 패널은 삼각형 DGE와 삼각형 FCE를 떼어 같은 방향으로 위아래에 놓고 대응 꼭짓점 이름을 그대로 쓴다",
+    "오른쪽 패널에서 대응하는 변 DG와 FC, 각 D와 각 F, 각 E와 각 E를 같은 색과 같은 표시로 묶는다"
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "① 문제의 배치 (△ADG 파랑)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "6"},
+                  {"kind": "integer", "value": "10"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "0"},
+                  {"kind": "integer", "value": "0"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "16"},
+                  {"kind": "integer", "value": "0"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "24"},
+                  {"kind": "integer", "value": "0"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": ["A", "B"],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "MIDPOINT",
+              "inputs": ["A", "C"],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "DIVISION_POINT",
+              "inputs": ["C", "A"],
+              "args": {
+                "m": {"kind": "integer", "value": "1"},
+                "n": {"kind": "integer", "value": "3"},
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {"x": [], "y": []},
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {"id": "sAD", "refs": ["A", "D"]},
+          {"id": "sDB", "refs": ["D", "B"]},
+          {"id": "sBC", "refs": ["B", "C"]},
+          {"id": "sCF", "refs": ["C", "F"]},
+          {"id": "sAG", "refs": ["A", "G"]},
+          {"id": "sGE", "refs": ["G", "E"]},
+          {"id": "sEC", "refs": ["E", "C"]},
+          {"id": "sDE", "refs": ["D", "E"]},
+          {"id": "sEF", "refs": ["E", "F"]},
+          {"id": "sDG", "refs": ["D", "G"]}
+        ],
+        "displayPoints": ["A", "B", "C", "D", "E", "F", "G"],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rADG",
+              "fill": "BLUE",
+              "shapes": [
+                {"polygon": ["A", "D", "G"]}
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "aD",
+              "refs": ["A", "D", "G"],
+              "value": 59.036243467926475,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aB",
+              "refs": ["A", "B", "C"],
+              "value": 59.036243467926475,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aG",
+              "refs": ["A", "G", "D"],
+              "value": 45,
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aC",
+              "refs": ["A", "C", "B"],
+              "value": 45,
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "eAD",
+              "count": 1,
+              "segments": ["sAD", "sDB"]
+            },
+            {
+              "id": "eDE",
+              "count": 2,
+              "segments": ["sDE", "sEF"]
+            }
+          ],
+          "parallels": [
+            {
+              "id": "pDG",
+              "count": 1,
+              "segments": ["sDG", "sBC", "sCF"]
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBF",
+              "from": "B",
+              "to": "F",
+              "label": "24",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offset": 1,
+              "value": "24",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {"width": 720, "height": 460}
+      }
+    },
+    {
+      "caption": {
+        "text": "② △DGE≡△FCE (ASA 합동)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "0"},
+                  {"kind": "integer", "value": "5"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "8"},
+                  {"kind": "integer", "value": "5"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "rational", "numerator": "21", "denominator": "2"},
+                  {"kind": "rational", "numerator": "5", "denominator": "2"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "0"},
+                  {"kind": "integer", "value": "0"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "integer", "value": "8"},
+                  {"kind": "integer", "value": "0"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {"kind": "rational", "numerator": "21", "denominator": "2"},
+                  {"kind": "rational", "numerator": "-5", "denominator": "2"}
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {"x": [], "y": []},
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {"id": "sDG", "refs": ["D", "G"]},
+          {"id": "sGE", "refs": ["G", "E"]},
+          {"id": "sDE", "refs": ["D", "E"]},
+          {"id": "sFC", "refs": ["F", "C"]},
+          {"id": "sCE2", "refs": ["C", "E2"]},
+          {"id": "sFE2", "refs": ["F", "E2"]}
+        ],
+        "displayPoints": ["D", "G", "E", "F", "C", "E2"],
+        "pointNames": {"E2": "E"},
+        "pointNameGroups": [["D", "G", "E"], ["F", "C", "E2"]],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "eDG",
+              "count": 1,
+              "segments": ["sDG", "sFC"],
+              "color": "BLUE"
+            },
+            {
+              "id": "eDE",
+              "count": 2,
+              "segments": ["sDE", "sFE2"]
+            }
+          ],
+          "angles": [
+            {
+              "id": "aD",
+              "refs": ["G", "D", "E"],
+              "value": 13.392497753751098,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aF",
+              "refs": ["C", "F", "E2"],
+              "value": 13.392497753751098,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aE",
+              "refs": ["D", "E", "G"],
+              "value": 31.60750224624889,
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aE2",
+              "refs": ["F", "E2", "C"],
+              "value": 31.60750224624889,
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "equalAngles": [
+            {"angles": ["aD", "aF"], "color": "WARM"},
+            {"angles": ["aE", "aE2"], "color": "GREEN"}
+          ]
+        },
+        "coordinateCanvas": {"width": 720, "height": 460}
+      }
+    }
+  ]
 }

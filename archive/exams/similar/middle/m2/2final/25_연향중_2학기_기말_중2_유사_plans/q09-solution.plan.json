@@ -1,4 +1,336 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 히포크라테스의 초승달 정리 원리에 따른 직사각형 넓이 동치 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-4" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "-3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-4" },
+            { "kind": "integer", "value": "-3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MAB",
+        "op": "MIDPOINT",
+        "inputs": ["A", "B"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBC",
+        "op": "MIDPOINT",
+        "inputs": ["B", "C"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MCD",
+        "op": "MIDPOINT",
+        "inputs": ["C", "D"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MDA",
+        "op": "MIDPOINT",
+        "inputs": ["D", "A"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "5" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["MAB"],
+        "args": {
+          "radius": { "kind": "integer", "value": "4" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kBC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["MBC"],
+        "args": {
+          "radius": { "kind": "integer", "value": "3" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kCD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["MCD"],
+        "args": {
+          "radius": { "kind": "integer", "value": "4" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kDA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["MDA"],
+        "args": {
+          "radius": { "kind": "integer", "value": "3" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": ["kO"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "O", "MAB", "MBC", "MCD", "MDA"],
+  "hiddenPointNames": ["MAB", "MBC", "MCD", "MDA"],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "kAB",
+        "center": "MAB",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcBC",
+        "circle": "kBC",
+        "center": "MBC",
+        "from": "B",
+        "to": "C",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCD",
+        "circle": "kCD",
+        "center": "MCD",
+        "from": "C",
+        "to": "D",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcDA",
+        "circle": "kDA",
+        "center": "MDA",
+        "from": "D",
+        "to": "A",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "lunes",
+        "fill": "WARM",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                { "to": "B", "arc": { "center": "MAB", "side": "CW" } },
+                { "to": "A", "arc": { "center": "O", "side": "CCW" } }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                { "to": "C", "arc": { "center": "MBC", "side": "CW" } },
+                { "to": "B", "arc": { "center": "O", "side": "CCW" } }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                { "to": "D", "arc": { "center": "MCD", "side": "CW" } },
+                { "to": "C", "arc": { "center": "O", "side": "CCW" } }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "D",
+              "steps": [
+                { "to": "A", "arc": { "center": "MDA", "side": "CW" } },
+                { "to": "D", "arc": { "center": "O", "side": "CCW" } }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "rABCD",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          { "polygon": ["A", "B", "C", "D"] }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tSum",
+        "at": [0, 7.9],
+        "text": "네 반원의 넓이의 합 = 외접원의 넓이 = 25π",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "anchor": "CENTER",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tLune",
+        "at": [0, -8.0],
+        "text": "초승달의 합 = 사각형의 넓이",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "anchor": "CENTER",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "사각형의 네 변을 각각 지름으로 하는 반원 네 개를 바깥쪽에 그린 그림. 네 반원의 넓이의 합과 외접원의 넓이가 모두 25π로 같고, 원의 외부이자 네 반원의 내부인 초승달 모양 네 영역의 넓이의 합은 사각형의 넓이와 같다. 초승달 영역은 주황색, 사각형은 파란색으로 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원에 내접하는 사각형의 가로가 8cm, 세로가 6cm이다",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sBC"]
+    },
+    {
+      "id": "c2",
+      "condition": "사각형의 네 변을 각각 지름으로 하는 반원을 사각형의 바깥쪽에 그린다",
+      "mappedTo": ["MAB", "MBC", "MCD", "MDA", "kAB", "kBC", "kCD", "kDA", "arcAB", "arcBC", "arcCD", "arcDA"]
+    },
+    {
+      "id": "c3",
+      "condition": "원의 외부이자 네 반원의 내부인 초승달 모양 네 영역을 칠한다",
+      "mappedTo": ["kO", "lunes"]
+    }
+  ],
+  "newVisualInformation": [
+    "초승달 모양 네 영역을 주황색으로, 사각형을 파란색으로 칠해 두 넓이의 합이 같음을 보인다",
+    "네 반원의 넓이의 합과 외접원의 넓이가 25π로 같음을 caption에서 밝힌다"
+  ]
 }

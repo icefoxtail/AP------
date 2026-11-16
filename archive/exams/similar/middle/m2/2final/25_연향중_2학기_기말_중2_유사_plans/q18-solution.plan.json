@@ -1,4 +1,301 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 배수 조건 배반사건의 합의 법칙을 이용한 기하학적/대수적 확률 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "1" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "6" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P01",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "105" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P02",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "75" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P03",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "45" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P04",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "15" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P05",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "345" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P06",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "315" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P07",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "285" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P08",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "255" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P09",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "225" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P10",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "195" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P11",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "165" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P12",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "6" },
+          "angleDeg": { "kind": "integer", "value": "135" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sO01", "refs": ["O", "P01"] },
+    { "id": "sO02", "refs": ["O", "P02"] },
+    { "id": "sO03", "refs": ["O", "P03"] },
+    { "id": "sO04", "refs": ["O", "P04"] },
+    { "id": "sO05", "refs": ["O", "P05"] },
+    { "id": "sO06", "refs": ["O", "P06"] },
+    { "id": "sO07", "refs": ["O", "P07"] },
+    { "id": "sO08", "refs": ["O", "P08"] },
+    { "id": "sO09", "refs": ["O", "P09"] },
+    { "id": "sO10", "refs": ["O", "P10"] },
+    { "id": "sO11", "refs": ["O", "P11"] },
+    { "id": "sO12", "refs": ["O", "P12"] }
+  ],
+  "displayPoints": [
+    "O",
+    "P01", "P02", "P03", "P04", "P05", "P06",
+    "P07", "P08", "P09", "P10", "P11", "P12"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "P01", "P02", "P03", "P04", "P05", "P06",
+    "P07", "P08", "P09", "P10", "P11", "P12"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rBlue3",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [{ "sector": { "center": "O", "from": "P04", "to": "P03", "side": "MINOR" } }]
+      },
+      {
+        "id": "rBlue6",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [{ "sector": { "center": "O", "from": "P07", "to": "P06", "side": "MINOR" } }]
+      },
+      {
+        "id": "rBlue9",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [{ "sector": { "center": "O", "from": "P10", "to": "P09", "side": "MINOR" } }]
+      },
+      {
+        "id": "rBlue12",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [{ "sector": { "center": "O", "from": "P01", "to": "P12", "side": "MINOR" } }]
+      },
+      {
+        "id": "rWarm5",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [{ "sector": { "center": "O", "from": "P06", "to": "P05", "side": "MINOR" } }]
+      },
+      {
+        "id": "rWarm10",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [{ "sector": { "center": "O", "from": "P11", "to": "P10", "side": "MINOR" } }]
+      }
+    ],
+    "textLabels": [
+      { "id": "tl01", "at": [0, 3.72], "text": "1", "factRole": "GIVEN" },
+      { "id": "tl02", "at": [1.86, 3.221], "text": "2", "factRole": "GIVEN" },
+      { "id": "tl03", "at": [3.221, 1.86], "text": "3", "factRole": "GIVEN" },
+      { "id": "tl04", "at": [3.72, 0], "text": "4", "factRole": "GIVEN" },
+      { "id": "tl05", "at": [3.221, -1.86], "text": "5", "factRole": "GIVEN" },
+      { "id": "tl06", "at": [1.86, -3.221], "text": "6", "factRole": "GIVEN" },
+      { "id": "tl07", "at": [0, -3.72], "text": "7", "factRole": "GIVEN" },
+      { "id": "tl08", "at": [-1.86, -3.221], "text": "8", "factRole": "GIVEN" },
+      { "id": "tl09", "at": [-3.221, -1.86], "text": "9", "factRole": "GIVEN" },
+      { "id": "tl10", "at": [-3.72, 0], "text": "10", "factRole": "GIVEN" },
+      { "id": "tl11", "at": [-3.221, 1.86], "text": "11", "factRole": "GIVEN" },
+      { "id": "tl12", "at": [-1.86, 3.221], "text": "12", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "12등분 원판에 1부터 12까지의 수가 시계 방향으로 하나씩 적혀 있고, 3의 배수인 3, 6, 9, 12가 적힌 부채꼴은 파랑, 5의 배수인 5, 10이 적힌 부채꼴은 주황으로 칠한 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원판이 중심각이 같은 12개의 부채꼴로 나뉘어 있다",
+      "mappedTo": ["O", "k", "sO01", "sO04", "sO07", "sO10"]
+    },
+    {
+      "id": "c2",
+      "condition": "1부터 12까지의 수가 부채꼴에 시계 방향으로 하나씩 적혀 있다",
+      "mappedTo": ["tl01", "tl02", "tl03", "tl04", "tl05", "tl06", "tl07", "tl08", "tl09", "tl10", "tl11", "tl12"]
+    },
+    {
+      "id": "c3",
+      "condition": "3의 배수가 적힌 부채꼴은 파랑, 5의 배수가 적힌 부채꼴은 주황으로 칠한다",
+      "mappedTo": ["rBlue3", "rBlue6", "rBlue9", "rBlue12", "rWarm5", "rWarm10"]
+    }
+  ],
+  "newVisualInformation": [
+    "3의 배수 부채꼴과 5의 배수 부채꼴을 서로 다른 두 색으로 묶어, 두 색이 겹치는 부채꼴이 없음을 보인다"
+  ]
 }

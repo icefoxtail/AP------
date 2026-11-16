@@ -1,4 +1,146 @@
 {
-  "status": "EXEMPT",
-  "reason": "삼각형의 중선과 무게중심의 2:1 내분 성질을 연쇄 적용하는 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "18" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-9" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "9" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": ["B", "C"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": ["A", "B", "C"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "CENTROID",
+        "inputs": ["G", "B", "C"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sAG", "refs": ["A", "G"] },
+    { "id": "sGG2", "refs": ["G", "G2"] },
+    { "id": "sG2D", "refs": ["G2", "D"] },
+    { "id": "sGB", "refs": ["G", "B"], "dashed": true },
+    { "id": "sGC", "refs": ["G", "C"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "G", "G2"],
+  "pointNames": {
+    "G2": "G′"
+  },
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "eBD", "count": 1, "segments": ["sBD", "sDC"] }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tGG2",
+        "ownerSegment": "sGG2",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "pGD",
+        "points": ["G", "G2", "D"],
+        "label": "GD=6",
+        "unit": "cm",
+        "value": "6",
+        "anchor": 0.8,
+        "side": "LEFT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "caption": "삼각형 ABC의 중선 AD 위에 무게중심 G와 삼각형 GBC의 무게중심 G′이 있고, 선분 GG′의 길이가 4 cm이므로 선분 GD의 길이가 6 cm임을 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 D는 변 BC의 중점이고, 점 G는 삼각형 ABC의 무게중심, 점 G′은 삼각형 GBC의 무게중심이다",
+      "mappedTo": ["A", "B", "C", "D", "G", "G2", "sBD", "sDC"]
+    },
+    {
+      "id": "c2",
+      "condition": "선분 GG′=4 cm",
+      "mappedTo": ["tGG2", "sGG2"]
+    }
+  ],
+  "newVisualInformation": [
+    "D가 BC의 중점이므로 BD=DC이다",
+    "무게중심 G가 중선 AD를 AG:GD=2:1로 나누고, G′이 중선 GD를 GG′:G′D=2:1로 나눈다",
+    "주어진 GG′=4 cm에서 GD=6 cm를 구하는 중간 단계"
+  ],
+  "sourceQuote": "점 D는 변 BC의 중점이고, 두 점 G, G′은 각각 삼각형 ABC와 삼각형 GBC의 무게중심이다. 선분 GG′=4 cm"
 }

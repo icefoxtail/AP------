@@ -1,4 +1,250 @@
 {
-  "status": "EXEMPT",
-  "reason": "문항 해설이 수식·문장만으로 완결되어 별도 해설 그림이 필요 없다. 영역 인접 제약 조건에 따른 색칠하기 경우의 수 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "9" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "9" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "7" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "7" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sBottom", "refs": ["P1", "P2"] },
+    { "id": "sRight", "refs": ["P2", "P3"] },
+    { "id": "sTop", "refs": ["P3", "P4"] },
+    { "id": "sLeft", "refs": ["P4", "P1"] },
+    { "id": "sLineLowLeft", "refs": ["P5", "P6"] },
+    { "id": "sLineLowRight", "refs": ["P6", "P7"] },
+    { "id": "sLineHighLeft", "refs": ["P8", "P9"] },
+    { "id": "sLineHighRight", "refs": ["P9", "P10"] },
+    { "id": "sMiddleDivider", "refs": ["P6", "P9"] }
+  ],
+  "displayPoints": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10"],
+  "hiddenPointNames": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10"],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": [7, 7.5],
+        "text": "A",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tB",
+        "at": [3.5, 4.5],
+        "text": "B",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tC",
+        "at": [10.5, 4.5],
+        "text": "C",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tD",
+        "at": [7, 1.5],
+        "text": "D",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAn",
+        "at": [8.6, 7.5],
+        "text": "3가지 색",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tBn",
+        "at": [5.1, 4.5],
+        "text": "5가지 색",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tCn",
+        "at": [12.1, 4.5],
+        "text": "4가지 색",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tDn",
+        "at": [8.6, 1.5],
+        "text": "3가지 색",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "위층 A, 가운데 층의 왼쪽 B와 오른쪽 C, 아래층 D 영역 안에 각 영역에 칠할 수 있는 색의 가짓수 5, 4, 3, 3을 적은 그림.",
+  "sourceQuote": "영역으로 나누어진 도형을",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도형이 A, B, C, D 네 영역으로 나누어져 있다.",
+      "mappedTo": ["tA", "tB", "tC", "tD"]
+    },
+    {
+      "id": "c2",
+      "condition": "B와 C는 서로 이웃한다.",
+      "mappedTo": ["tB", "tC", "sMiddleDivider"]
+    },
+    {
+      "id": "c3",
+      "condition": "A와 D는 각각 B, C와 이웃하지만 A와 D는 서로 이웃하지 않는다.",
+      "mappedTo": ["tA", "tD", "sLineHighLeft", "sLineHighRight", "sLineLowLeft", "sLineLowRight"]
+    },
+    {
+      "id": "c4",
+      "condition": "서로 다른 5가지 색을 사용할 수 있다.",
+      "mappedTo": ["tBn", "tCn", "tAn", "tDn"]
+    }
+  ],
+  "newVisualInformation": [
+    "각 영역 안에 그 영역에 칠할 수 있는 색의 가짓수 5, 4, 3, 3을 영역 이름 옆에 적어, 이웃한 영역의 색을 빼고 세는 과정을 보인다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 460
+  }
 }

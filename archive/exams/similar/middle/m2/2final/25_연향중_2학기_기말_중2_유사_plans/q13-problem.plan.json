@@ -1,4 +1,221 @@
 {
-  "status": "EXEMPT",
-  "reason": "영역 인접 제약 조건에 따른 색칠하기 경우의 수 계산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "9" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "9" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "7" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "7" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "14" },
+            { "kind": "integer", "value": "6" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sBottom", "refs": ["P1", "P2"] },
+    { "id": "sRight", "refs": ["P2", "P3"] },
+    { "id": "sTop", "refs": ["P3", "P4"] },
+    { "id": "sLeft", "refs": ["P4", "P1"] },
+    { "id": "sLineLowLeft", "refs": ["P5", "P6"] },
+    { "id": "sLineLowRight", "refs": ["P6", "P7"] },
+    { "id": "sLineHighLeft", "refs": ["P8", "P9"] },
+    { "id": "sLineHighRight", "refs": ["P9", "P10"] },
+    { "id": "sMiddleDivider", "refs": ["P6", "P9"] }
+  ],
+  "displayPoints": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10"],
+  "hiddenPointNames": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10"],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": [7, 7.5],
+        "text": "A",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tB",
+        "at": [3.5, 4.5],
+        "text": "B",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tC",
+        "at": [10.5, 4.5],
+        "text": "C",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tD",
+        "at": [7, 1.5],
+        "text": "D",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "가로로 긴 직사각형을 가로선 두 개로 위·가운데·아래 세 층으로 나누고, 위층을 A, 가운데 층을 세로선으로 나눈 왼쪽을 B, 오른쪽을 C, 아래층을 D라 이름 붙인 그림.",
+  "sourceQuote": "네 영역으로 나누어진 도형을",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도형이 A, B, C, D 네 영역으로 나누어져 있다.",
+      "mappedTo": ["tA", "tB", "tC", "tD"]
+    },
+    {
+      "id": "c2",
+      "condition": "B와 C는 서로 이웃한다.",
+      "mappedTo": ["tB", "tC", "sMiddleDivider"]
+    },
+    {
+      "id": "c3",
+      "condition": "A와 D는 각각 B, C와 이웃하지만 A와 D는 서로 이웃하지 않는다.",
+      "mappedTo": ["tA", "tD", "sLineHighLeft", "sLineHighRight", "sLineLowLeft", "sLineLowRight"]
+    }
+  ],
+  "newVisualInformation": [
+    "A는 위층 전체, D는 아래층 전체라서 두 영역이 맞닿지 않고, B와 C만 세로 경계로 맞닿는 배치"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 460
+  }
 }
