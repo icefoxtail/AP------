@@ -90,6 +90,18 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pr-registration-prepare.test.mjs']
   },
   {
+    label: 'tests/archive-native-issued-rpm-history.test.mjs',
+    args: ['--test', 'tests/archive-native-issued-rpm-history.test.mjs']
+  },
+  {
+    label: 'tests/archive-native-issued-solution-rpm-history.test.mjs',
+    args: ['--test', 'tests/archive-native-issued-solution-rpm-history.test.mjs']
+  },
+  {
+    label: 'tests/archive-native-issued-child-continuity.test.mjs',
+    args: ['--test', 'tests/archive-native-issued-child-continuity.test.mjs']
+  },
+  {
     label: 'tests/archive-pr-native-preview.test.mjs',
     args: ['--test', 'tests/archive-pr-native-preview.test.mjs'],
     timeout: 300000

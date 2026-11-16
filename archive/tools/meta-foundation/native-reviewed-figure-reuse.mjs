@@ -6,6 +6,8 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
+import { readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
 const fail = message => { throw Error(`native reviewed figure reuse: ${message}`); };
@@ -162,12 +164,18 @@ function verifyAssets(ctx, assets, question, commit, live=false) {
 // A claimed narrow figure receipt is mandatory to verify, even if an AutoMeta cursor
 // has subsequently caught up; changing an asset at the same path cannot bypass it.
 export function nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current) {
+  if(nativeSource.issuedRpmHistoryContext&&nativeSource.issuedSolutionRpmHistoryContext)
+    fail('multiple historical contexts are not supported');
   const repairs=receipt.fingerprintRepairs?.filter(r=>r.questionUid===identity.questionUid&&r.sourceReview);
   if(!repairs?.length){
     // The approval may still claim an independently reviewed changed row after a
     // malformed receipt loses its repair entry. A caught-up cursor is no waiver.
     for(const ref of receipt.approval.evidenceRefs||[]){
-      const bytes=fs.readFileSync(safePath(nativeSource.root,ref.path));
+      const bytes=nativeSource.issuedSolutionRpmHistoryContext
+        ?readIssuedSolutionRpmHistoricalEvidence(nativeSource.issuedSolutionRpmHistoryContext,receipt,ref)
+        :nativeSource.issuedRpmHistoryContext
+          ?readIssuedRpmHistoricalEvidence(nativeSource.issuedRpmHistoryContext,receipt,ref)
+          :fs.readFileSync(safePath(nativeSource.root,ref.path));
       if(sha(bytes)!==ref.sha256)fail('current evidence bytes changed');
       let doc;try{doc=JSON.parse(bytes);}catch{continue;}
       if(doc.sourceArchiveFile===receipt.sourceArchiveFile&&
