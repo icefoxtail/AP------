@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "첫째 줄의 근 −3, 6을 각각 왼쪽으로 2만큼 옮기면 둘째 줄의 근 −5, 4가 된다. 두 근의 곱은 따로 계산한다.",
+  "accessibilityDescription": "첫째 줄의 근 −3, 6을 각각 왼쪽으로 2만큼 옮기면 둘째 줄의 근 −5, 4가 된다. 두 근의 곱은 따로 계산한다.",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "-3"
+          },
+          {
+            "id": "B",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "C",
+            "value": "-5"
+          },
+          {
+            "id": "D",
+            "value": "4"
+          }
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[상] 이차함수 $y=f(x)$의 그래프가 $x$축과 두 점 $(-3, 0), (6, 0)$에서 만날 때, 이차방정식 $f(x+2)=0$의 두 실근의 곱은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "f(x+2)=0의 두 근이 원래 근보다2 작아지는 이동 방향을 같은 눈금의 두 줄로 보여 준다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "f(x+2)=0의 두 근이 원래 근보다2 작아지는 이동 방향을 같은 눈금의 두 줄로 보여 준다."
+  ]
+}
