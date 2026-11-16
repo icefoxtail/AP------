@@ -1,0 +1,41 @@
+name: Recover exact public UI evidence
+
+on:
+  push:
+    branches: ['review-reference/public4-artifact-recovery-20261116-r1']
+    paths: ['.github/workflows/archive-public4-artifact-recovery.yml']
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/review-reference/public4-artifact-recovery-20261116-r1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download the exact already verified PUBLIC4 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api repos/icefoxtail/AP------/actions/artifacts/14282126069/zip > "$RUNNER_TEMP/public4.zip"
+      - name: Verify and recover only the technical metadata bytes
+        shell: python
+        run: |
+          import os, hashlib, zipfile, io, base64, json
+          raw = open(os.path.join(os.environ['RUNNER_TEMP'], 'public4.zip'), 'rb').read()
+          assert hashlib.sha256(raw).hexdigest() == '7acf01e027848881adafeea4ac8fd488ce6b8e3d104fff193e5058a589cb0156', 'artifact byte mismatch'
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              names = [n for n in z.namelist() if n == 'technical-proof.json' or n.endswith('/technical-proof.json')]
+              assert len(names) == 1, 'ambiguous technical proof'
+              item = z.getinfo(names[0])
+              assert item.file_size == 167362, 'technical proof size mismatch'
+              proof = z.read(item)
+          assert hashlib.sha256(proof).hexdigest() == '9eb1f5807b0e921f264ed6f9a5df78073bfb1448847349527cf9c5c82c8f737b', 'technical proof byte mismatch'
+          json.loads(proof)
+          encoded = base64.b64encode(proof).decode('ascii')
+          chunks = [encoded[i:i+6000] for i in range(0, len(encoded), 6000)]
+          print('PUBLIC4_TECHNICAL_BEGIN_V1 bytes=167362 sha256=9eb1f5807b0e921f264ed6f9a5df78073bfb1448847349527cf9c5c82c8f737b chunks=' + str(len(chunks)))
+          for index, chunk in enumerate(chunks):
+              print('PUBLIC4_TECHNICAL_B64_V1:' + str(index).zfill(4) + ':' + chunk)
+          print('PUBLIC4_TECHNICAL_END_V1')
