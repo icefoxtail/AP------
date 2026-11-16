@@ -190,7 +190,7 @@ function cases() {
       technical: { mode: 'exam', questions: 25, pages: 1, readiness: 'RENDER_READY', imagesComplete: true, mathErrors: 0, unrenderedMath: 0, mathJaxSource: 'local', solutionNodes: 0,
         fontReadiness: { status: 'loaded', family: 'Nanum Myeongjo', weights: [400, 700, 800].map(weight => ({ weight, loadedFaces: 1, allLoaded: true, checked: true })), problemFontFamilies: ['"Nanum Myeongjo", serif'] } },
       geometry: { naturalWidth: 550, naturalHeight: 330, image: { width: 300 }, imageInsideQuestion: true },
-      capture: { schemaVersion: H.TILE_SCHEMA, method: 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES', tileLimit: 8, overlapCssPixels: 32, tileCount: 1, content: { height: 100 },
+      capture: { equalSlotEvidence: [input.sourceRef, input.assetRef, ...[C.MANIFEST_PATH, C.CHECKER_PATH, C.SHARED_CHECKER_PATH].map(p=>({ ...ref,path:p,sha256:p===C.SHARED_CHECKER_PATH?C.SHARED_CHECKER_SHA256:ref.sha256 })), ...C.Q5_EQUAL_SLOT_SURFACE.map(r=>({commit:ref.commit,...r}))], equalSlotRoles: clone(C.Q5_EQUAL_SLOT_ROLES), visibleChildren: 1, visibleRoleDescendants: 4, measuredEnvelopeRects: 5, schemaVersion: H.TILE_SCHEMA, method: 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES', tileLimit: 8, overlapCssPixels: 32, tileCount: 1, content: { height: 100 },
         coverage: { requiredInterval: [0, 100], coveredInterval: [0, 100], complete: true }, tiles: [tile], feedbackIdle: true, foreignContentHits: 0,
         cssWrites: 0, domWrites: 0, viewportChanges: 0, compositeImageCreated: false, domSha256: dom }, visualReview: 'PENDING', pageErrors: [], requestFailures: [], externalRequests: [] };
   });
@@ -208,6 +208,10 @@ test('three original tiles can cover two logical cases with exact 32 px overlap'
   assert.equal(C.assertCompletedResults(f.results, f.inputs, f.m, f.artifacts), 3);
 });
 for (const [name, change] of Object.entries({
+  'missing equal-slot proof': f => { delete f.results[0].capture.equalSlotRoles; },
+  'missing equal-slot surface refs': f => { f.results[0].capture.equalSlotEvidence.pop(); },
+  'mutated equal-slot code': f => { f.results[0].capture.equalSlotEvidence[5].sha256 = '0'.repeat(64); },
+  'wrong direct count': f => { f.results[0].capture.visibleChildren = 5; },
   'missing case': f => { f.results.pop(); },
   'duplicate case': f => { f.results[1] = clone(f.results[0]); },
   'wrong viewport': f => { f.results[0].viewport.width--; },
@@ -250,3 +254,121 @@ test('capture output must be empty, outside checkout and without symlink ancesto
     assert.throws(() => C.checkedOutput(root, path.join(base, 'alias/child')));
   } finally { fs.rmSync(base, { recursive: true, force: true }); }
 });
+
+function equalSlotCase() {
+  const x = diagnosticCase();
+  for (const ref of C.Q5_EQUAL_SLOT_SURFACE) x.refs.set(ref.path, { commit: x.reader.commit, ...ref });
+  const r = (x,y,width,height) => ({x,y,width,height});
+  x.frame = { question:r(20,150,300,500), children:[r(20,160,300,300),r(20,160,300,20),r(20,185,300,50),r(20,240,300,180),r(20,425,300,35)],
+    image:r(25,240,290,174), viewport:{width:1365,height:1000}, scroll:{x:0,y:0}, obstructions:[r(0,0,1365,116)],
+    feedbackIdle:true,readiness:'RENDER_READY',solutionNodes:0,questionNumber:'5.',mandatoryChildrenVisible:true,
+    domSha256:'d'.repeat(64),equalSlotRoles:clone(C.Q5_EQUAL_SLOT_ROLES) };
+  x.target = { evaluate:async(fn)=>fn.name==='inspectQ5CaptureHits'?{samples:10,outsideQuestion:0}:clone(x.frame) };
+  x.shots=[];x.page={waitForFunction:async()=>{},evaluate:async(fn,arg)=>{if(typeof arg==='number'){
+    x.frame.scroll.y+=arg;for(const rect of [x.frame.question,x.frame.image,...x.frame.children])rect.y-=arg;
+  }},screenshot:async options=>{x.shots.push(options)}};
+  x.filename='/tmp/q5-equal-slot-synthetic.png';
+  return x;
+}
+test('original shared helper still rejects the actual one-wrapper structure',()=>{
+  const x=equalSlotCase();x.frame.children=[x.frame.children[0]];
+  assert.throws(()=>H.problemContentClip(x.frame),/UI_COMPLETE_PROBLEM_CHILDREN/);
+});
+test('closed Q5 actual wrapper and four measured descendants preserve the complete wrapper envelope',async()=>{
+  const x=equalSlotCase(),out=await C.captureQ5EqualSlotProblem(x);
+  assert.equal(out.visibleChildren,1);assert.equal(out.visibleRoleDescendants,4);assert.equal(out.measuredEnvelopeRects,5);
+  assert.equal(out.content.y,158);assert.equal(out.content.height,304);assert.equal(out.equalSlotEvidence.length,7);
+  assert.equal(out.tileCount,1);assert.equal(x.shots.length,1);assert.equal(out.foreignContentHits,0);
+  assert.equal(out.cssWrites,0);assert.equal(out.domWrites,0);assert.equal(out.viewportChanges,0);
+});
+test('closed Q5 tall content uses original scroll tiles with exact 32 pixel overlap',async()=>{
+  const x=equalSlotCase();x.frame.question.height=2000;x.frame.children[0].height=1800;
+  const out=await C.captureQ5EqualSlotProblem(x);assert(out.tileCount>1);assert.equal(out.tileCount,x.shots.length);
+  assert.deepEqual(out.coverage,H.assertTileCoverage(out.content.height,out.tiles));
+  for(let i=1;i<out.tiles.length;i++)assert.equal(out.tiles[i-1].relativeInterval[1]-out.tiles[i].relativeInterval[0],32);
+});
+for(const[name,change]of Object.entries({
+  'unknown wrapper':x=>{x.frame.equalSlotRoles.wrapperClass='other'},
+  'missing number':x=>{x.frame.equalSlotRoles.roleOrder.shift()},
+  'wrong number':x=>{x.frame.questionNumber='6.'},
+  'missing content':x=>{x.frame.equalSlotRoles.roleDescendants=3},
+  'hidden choice':x=>{x.frame.equalSlotRoles.hiddenRoles=1},
+  'four choices':x=>{x.frame.equalSlotRoles.choiceItems=4},
+  'extra choice':x=>{x.frame.equalSlotRoles.choiceItems=6},
+  'foreign image':x=>{x.frame.equalSlotRoles.targetImages=2},
+  'foreign media':x=>{x.frame.equalSlotRoles.foreignMedia=1},
+  'unsafe direct node':x=>{x.frame.equalSlotRoles.unknownDirectNodes=1},
+  'omitted wrapper envelope':x=>{x.frame.equalSlotRoles.completeWrapperEnvelope=false},
+  'role outside wrapper':x=>{x.frame.children[4].y=500},
+  'role outside question':x=>{x.frame.children[0].x=-5},
+  'solution node':x=>{x.frame.solutionNodes=1},
+  'not ready':x=>{x.frame.readiness='PENDING'},
+  'viewport changed':x=>{x.frame.viewport.height=1200},
+  'altered equal-slot code':x=>{x.refs.get(C.Q5_EQUAL_SLOT_SURFACE[0].path).sha256='0'.repeat(64)},
+  'different source':x=>{x.item.sourceRef.gitBlobSha1='0'.repeat(40)},
+  'foreign UID':x=>{x.item.questionUid='qid_v1_'+'0'.repeat(64)}
+}))test('closed Q5 rejects '+name+' before original PNG capture',async()=>{
+  const x=equalSlotCase();change(x);await assert.rejects(()=>C.captureQ5EqualSlotProblem(x));assert.equal(x.shots.length,0);
+});
+test('closed Q5 rejects foreign hit content before screenshot',async()=>{
+  const x=equalSlotCase();x.target.evaluate=async(fn)=>fn.name==='inspectQ5CaptureHits'?{samples:10,outsideQuestion:1}:clone(x.frame);
+  await assert.rejects(()=>C.captureQ5EqualSlotProblem(x),/UI_CAPTURE_FOREIGN_CONTENT/);assert.equal(x.shots.length,0);
+});
+test('closed Q5 retains DOM and geometry comparisons after screenshot',async()=>{
+  const x=equalSlotCase();x.page.screenshot=async()=>{x.frame.domSha256='e'.repeat(64)};
+  await assert.rejects(()=>C.captureQ5EqualSlotProblem(x),/UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE/);
+});
+test('closed Q5 rereads production wrapper code after original capture',async()=>{
+  const x=equalSlotCase();x.page.screenshot=async()=>{x.refs.get(C.Q5_EQUAL_SLOT_SURFACE[0].path).bytes++};
+  await assert.rejects(()=>C.captureQ5EqualSlotProblem(x),/UI_Q5_EQUAL_SLOT_INPUT_CHANGED/);
+});
+test('closed Q5 keeps the eight-tile ceiling',async()=>{
+  const x=equalSlotCase();x.frame.question.height=20000;x.frame.children[0].height=19000;
+  await assert.rejects(()=>C.captureQ5EqualSlotProblem(x),/UI_SCROLL_TILE_LIMIT/);assert.equal(x.shots.length,0);
+});
+
+function syntheticQ5Dom() {
+  const vm=require('node:vm'),webcrypto=require('node:crypto').webcrypto;
+  const r=(y,h=20)=>({x:20,y,width:300,height:h});
+  class E {
+    constructor(tag,classes,rect,text=''){this.nodeType=1;this.tagName=tag;this.className=classes;this.r=rect;this.textContent=text;this.children=[];this.childNodes=[];this.css={display:'block',visibility:'visible',opacity:'1',position:'static'};this.classList={contains:n=>this.className.split(' ').includes(n)};this.outerHTML='<synthetic-unchanged/>';}
+    add(...nodes){for(const node of nodes){node.parent=this;this.children.push(node);this.childNodes.push(node);}return this;}
+    contains(node){return node===this||this.children.some(c=>c.contains(node));}
+    closest(sel){if(sel==='.q-box'&&this.classList.contains('q-box'))return this;return this.parent?.closest(sel);}
+    getBoundingClientRect(){return this.r;}
+    querySelectorAll(sel){const match=n=>sel.split(',').some(t=>t[0]==='.'?n.classList.contains(t.slice(1)):n.tagName===t.toUpperCase());const all=[];for(const c of this.children){if(match(c))all.push(c);all.push(...c.querySelectorAll(sel));}return all;}
+  }
+  const box=new E('DIV','q-box ap-equal-slot',r(150,500)),wrapper=new E('DIV','ap-slot-content',r(160,300));box.add(wrapper);
+  const number=new E('DIV','q-num',r(160),'5.'),content=new E('DIV','q-content',r(185,50),'Synthetic'),imageWrap=new E('DIV','q-image-wrap image-large',r(240,180)),choices=new E('DIV','choices choices-grid',r(425,35),'Choices');wrapper.add(number,content,imageWrap,choices);
+  for(let i=0;i<5;i++)content.add(new E('MJX-CONTAINER','',r(190,14),'M'));
+  const image=new E('IMG','',r(240,180));image.complete=true;image.naturalWidth=550;image.naturalHeight=330;image.src='http://127.0.0.1/archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png';imageWrap.add(image);
+  for(let i=0;i<5;i++)choices.add(new E('DIV','choice-item',r(425,30),'C').add(new E('SPAN','choice-no',r(425,20),['①','②','③','④','⑤'][i]),new E('SPAN','choice-text',r(425,20),'C').add(new E('MJX-CONTAINER','',r(425,14),'M'))));
+  const area=new E('DIV','',r(0,2000)).add(box);const doc={querySelector:s=>s==='#print-area'?area:null,querySelectorAll:s=>s==='body *'?[area,box,wrapper,...wrapper.children]:[],getElementById:()=>null,documentElement:{dataset:{apPrintReadiness:'{"state":"RENDER_READY"}'}}};
+  const context={AppState:{mode:'exam',data:new Array(25)},document:doc,Node:{ELEMENT_NODE:1,TEXT_NODE:3},URL,location:{href:'http://127.0.0.1/archive/engine.html?mode=exam&studentReview=1&data=exams/original/middle/m3/2final/21_%ED%92%8D%EB%8D%95%EC%A4%91_2%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EC%A4%913_%EA%B8%B0%EC%B6%9C.js'},getComputedStyle:n=>n.css,innerWidth:1365,innerHeight:1000,scrollX:0,scrollY:0,crypto:webcrypto,TextEncoder,image};
+  return {box,wrapper,number,content,imageWrap,choices,image,area,E,context,run:()=>vm.runInNewContext('('+C.measureQ5EqualSlotCapture.toString()+')(image)',context,{timeout:1000})};
+}
+test('actual browser collector reads exact engine wrapper roles without exporting text or changing DOM',async()=>{
+  const x=syntheticQ5Dom(),out=JSON.parse(JSON.stringify(await x.run()));
+  assert.deepEqual(out.equalSlotRoles,C.Q5_EQUAL_SLOT_ROLES);assert.equal(out.children.length,5);assert.equal(out.solutionNodes,0);
+  assert.equal(JSON.stringify(out).includes('Synthetic'),false);assert.equal(x.box.outerHTML,'<synthetic-unchanged/>');
+});
+for(const[name,change]of Object.entries({
+  'hidden number':x=>{x.number.css.display='none'},
+  'hidden content':x=>{x.content.css.visibility='hidden'},
+  'missing choice':x=>{x.choices.children.pop();x.choices.childNodes.pop()},
+  'hidden choice marker':x=>{x.choices.children[0].children[0].css.opacity='0'},
+  'foreign media':x=>{x.content.add(new x.E('IMG','',{x:20,y:190,width:30,height:20}))},
+  'extra sibling':x=>{x.box.add(new x.E('DIV','',{x:20,y:200,width:30,height:20},'not captured'))},
+  'unsafe text sibling':x=>{x.box.childNodes.push({nodeType:3,textContent:'unaccounted'})},
+  'missing number':x=>{x.number.className='other'},
+  'different wrapper':x=>{x.wrapper.className='different'},
+  'role overflow':x=>{x.content.r.x=500},
+  'another question':x=>{x.number.textContent='6.'},
+  'cropped PNG':x=>{x.image.naturalWidth=255},
+  'new source URL':x=>{x.context.location.href=x.context.location.href.replace('2final','2mid')},
+  'loaded original asset':x=>{x.image.src=x.image.src.replace('q05-problem-source-v2.png','q05.png')}
+}))test('actual browser collector rejects '+name,async()=>{
+  const x=syntheticQ5Dom();change(x);await assert.rejects(()=>x.run(),/UI_Q5_EQUAL_SLOT_/);
+});
+
+test('closed Q5 uses the unchanged mobile viewport',async()=>{ const x=equalSlotCase(); x.viewport=clone(C.VIEWPORTS[1]); x.frame.viewport={width:x.viewport.width,height:x.viewport.height}; x.frame.obstructions[0].width=x.viewport.width; const out=await C.captureQ5EqualSlotProblem(x); assert.deepEqual(out.viewport,x.frame.viewport); assert.equal(out.viewportChanges,0); });

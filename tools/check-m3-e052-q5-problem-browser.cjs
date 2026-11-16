@@ -171,6 +171,18 @@ function assertCompletedResults(results, inputs, manifest, artifacts) {
       fonts.weights.length === 3 && fonts.weights.every((font, index) => font.weight === [400, 700, 800][index] && font.loadedFaces > 0 && font.allLoaded === true && font.checked === true) &&
       Array.isArray(fonts.problemFontFamilies) && fonts.problemFontFamilies.length > 0 && fonts.problemFontFamilies.every(value => value.includes(FONT_FAMILY)), 'UI_Q5_COMPLETED_FONT_READINESS');
     const capture = row.capture;
+    assert.deepEqual(capture.equalSlotRoles, Q5_EQUAL_SLOT_ROLES, 'UI_Q5_EQUAL_SLOT_COMPLETED_ROLES');
+    assert(capture.visibleChildren === 1 && capture.visibleRoleDescendants === 4 && capture.measuredEnvelopeRects === 5, 'UI_Q5_EQUAL_SLOT_COMPLETED_COUNTS');
+    assert(Array.isArray(capture.equalSlotEvidence) && capture.equalSlotEvidence.length === 7, 'UI_Q5_EQUAL_SLOT_COMPLETED_EVIDENCE');
+    assert.deepEqual(capture.equalSlotEvidence.slice(0, 2), [item.sourceRef, item.assetRef], 'UI_Q5_EQUAL_SLOT_COMPLETED_INPUTS');
+    const evidencePaths = [MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, ...Q5_EQUAL_SLOT_SURFACE.map(ref => ref.path)];
+    capture.equalSlotEvidence.slice(2).forEach((ref, index) => {
+      ownKeys(ref, ['commit','path','gitBlobSha1','sha256','bytes'], 'UI_Q5_EQUAL_SLOT_COMPLETED_REF');
+      assert(ref.commit === item.sourceRef.commit && ref.path === evidencePaths[index] && SHA1.test(ref.gitBlobSha1) && SHA256.test(ref.sha256) &&
+        Number.isSafeInteger(ref.bytes) && ref.bytes > 0, 'UI_Q5_EQUAL_SLOT_COMPLETED_REF');
+      if (index === 2) assert.equal(ref.sha256, SHARED_CHECKER_SHA256, 'UI_Q5_EQUAL_SLOT_COMPLETED_COMMON');
+      if (index > 2) assert.deepEqual(ref, { commit: item.sourceRef.commit, ...Q5_EQUAL_SLOT_SURFACE[index - 3] }, 'UI_Q5_EQUAL_SLOT_COMPLETED_SURFACE');
+    });
     assert(capture.schemaVersion === H.TILE_SCHEMA && capture.method === 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES' && capture.overlapCssPixels === 32 && capture.tileLimit === 8 &&
       capture.cssWrites === 0 && capture.domWrites === 0 && capture.viewportChanges === 0 && capture.compositeImageCreated === false && capture.feedbackIdle === true && capture.foreignContentHits === 0, 'UI_Q5_UNCHANGED_CAPTURE_REQUIRED');
     assert.deepEqual(capture.coverage, H.assertTileCoverage(capture.content.height, capture.tiles), 'UI_Q5_COMPLETE_COVERAGE');
@@ -273,6 +285,184 @@ async function measureProblemRoles(image, expected) {
 }
 
 
+// Q5 alone uses the production equal-slot wrapper observed in run 43909557685.
+// All rectangles below belong to actual unchanged DOM elements. The wrapper
+// envelope stays in the clip; role descendants are never synthetic stand-ins.
+const Q5_EQUAL_SLOT_SCHEMA = 'archive-m3-e052-q5-equal-slot-capture-v1';
+const Q5_EQUAL_SLOT_SURFACE = [
+  { path: 'archive/equal-slot-engine.js', gitBlobSha1: 'c826512ff61d4969c7ce45ba8f4ee002286bcf10',
+    sha256: '4979ccfd129470e076965bf93bb86e089d53c4ea875a17b011760886f967177a', bytes: 20518 },
+  { path: 'archive/exam-render-executor.js', gitBlobSha1: '583a72ae2c960d485cdcd1c1aec1329f204067b6',
+    sha256: 'e4ac35518351fd89d16222df4221e64a32121213f5b99c831407a61d90b573d7', bytes: 24896 }
+];
+function checkedQ5EqualSlotScope(reader, item, viewport) {
+  const refs = checkedQ5DiagnosticScope(reader, item, viewport);
+  for (const expected of Q5_EQUAL_SLOT_SURFACE) {
+    const ref = reader.ref(expected.path);
+    assert.deepEqual(ref, { commit: reader.commit, ...expected }, 'UI_Q5_EQUAL_SLOT_SURFACE');
+    refs.push(ref);
+  }
+  return refs;
+}
+async function measureQ5EqualSlotCapture(image) {
+  const check = (value, code) => { if (!value) throw Error(code); };
+  const box = image?.closest('.q-box'), area = document.querySelector('#print-area');
+  check(typeof AppState !== 'undefined' && AppState.mode === 'exam' && AppState.data.length === 25,
+    'UI_Q5_EQUAL_SLOT_BANK_MODE');
+  check(image?.tagName === 'IMG' && box && area?.contains(box) && box.classList.contains('ap-equal-slot'),
+    'UI_Q5_EQUAL_SLOT_BOX');
+  const query = new URL(location.href).searchParams;
+  check(query.get('mode') === 'exam' && query.get('studentReview') === '1' &&
+    query.get('data') === 'exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js', 'UI_Q5_EQUAL_SLOT_PAGE');
+  const assetPath = '/archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png';
+  const allowedAssetPaths = [assetPath, '/exams/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png'];
+  const imagePath = node => { try { return decodeURIComponent(new URL(node.currentSrc || node.src, location.href).pathname); } catch { return ''; } };
+  check(allowedAssetPaths.includes(imagePath(image)) && [...area.querySelectorAll('img')].filter(node => allowedAssetPaths.includes(imagePath(node))).length === 1,
+    'UI_Q5_EQUAL_SLOT_ASSET');
+  const rect = node => { const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; };
+  const visible = node => { const c = getComputedStyle(node), r = rect(node); return c.display !== 'none' &&
+    !['hidden', 'collapse'].includes(c.visibility) && Number(c.opacity) !== 0 && r.width > 0 && r.height > 0; };
+  const elements = node => {
+    check([...node.childNodes].every(child => child.nodeType === Node.ELEMENT_NODE ||
+      child.nodeType === Node.TEXT_NODE && !child.textContent.trim()), 'UI_Q5_EQUAL_SLOT_UNSAFE_NODE');
+    return [...node.children];
+  };
+  const outer = elements(box);
+  check(outer.length === 1 && outer[0].tagName === 'DIV' && outer[0].className === 'ap-slot-content', 'UI_Q5_EQUAL_SLOT_WRAPPER');
+  const wrapper = outer[0], roles = elements(wrapper);
+  check(roles.length === 4 && roles.every(node => node.tagName === 'DIV'), 'UI_Q5_EQUAL_SLOT_FOUR_ROLES');
+  const [number, content, imageWrap, choices] = roles;
+  check(number.className === 'q-num' && number.textContent.trim() === '5.' &&
+    box.querySelectorAll('.q-num').length === 1, 'UI_Q5_EQUAL_SLOT_NUMBER');
+  check(content.className === 'q-content' && content.textContent.trim().length > 0 &&
+    box.querySelectorAll('.q-content').length === 1, 'UI_Q5_EQUAL_SLOT_CONTENT');
+  check(imageWrap.classList.contains('q-image-wrap') && elements(imageWrap).length === 1 && imageWrap.children[0] === image,
+    'UI_Q5_EQUAL_SLOT_IMAGE_ROLE');
+  check(choices.classList.contains('choices') && box.querySelectorAll('.choices').length === 1, 'UI_Q5_EQUAL_SLOT_CHOICES');
+  const choiceItems = elements(choices), labels = ['①', '②', '③', '④', '⑤'];
+  check(choiceItems.length === 5, 'UI_Q5_EQUAL_SLOT_CHOICE_COUNT');
+  const choiceParts = [];
+  for (let i = 0; i < choiceItems.length; i++) {
+    const item = choiceItems[i], parts = elements(item);
+    check(item.tagName === 'DIV' && item.className === 'choice-item' && parts.length === 2 &&
+      parts[0].tagName === 'SPAN' && parts[0].className === 'choice-no' && parts[0].textContent.trim() === labels[i] &&
+      parts[1].tagName === 'SPAN' && parts[1].className === 'choice-text' && parts[1].textContent.trim().length > 0,
+      'UI_Q5_EQUAL_SLOT_CHOICE_ROLE');
+    choiceParts.push(...parts);
+  }
+  const media = [...box.querySelectorAll('img,svg,math,mjx-container')];
+  check(media.length === 11 && media.filter(node => node.tagName === 'IMG').length === 1 &&
+    media.every(node => node === image || node.tagName === 'MJX-CONTAINER' && (content.contains(node) || choices.contains(node))),
+    'UI_Q5_EQUAL_SLOT_MEDIA');
+  check(content.querySelectorAll('mjx-container').length === 5 && choices.querySelectorAll('mjx-container').length === 5,
+    'UI_Q5_EQUAL_SLOT_MATH_COUNTS');
+  check(image.complete && image.naturalWidth === 550 && image.naturalHeight === 330, 'UI_Q5_EQUAL_SLOT_IMAGE_READY');
+  const mandatory = [box, wrapper, ...roles, ...choiceItems, ...choiceParts, ...media];
+  check(mandatory.every(visible), 'UI_Q5_EQUAL_SLOT_HIDDEN_ROLE');
+  const containsRect = (outer, inner) => inner.x >= outer.x - 1 && inner.y >= outer.y - 1 &&
+    inner.x + inner.width <= outer.x + outer.width + 1 && inner.y + inner.height <= outer.y + outer.height + 1;
+  const boxRect = rect(box), wrapperRect = rect(wrapper);
+  check(mandatory.slice(1).every(node => containsRect(boxRect, rect(node))) &&
+    mandatory.slice(2).every(node => containsRect(wrapperRect, rect(node))), 'UI_Q5_EQUAL_SLOT_CLIPPED_ROLE');
+  const obstructions = [...document.querySelectorAll('body *')].filter(node => !box.contains(node) && !node.contains(box) &&
+    ['fixed', 'sticky'].includes(getComputedStyle(node).position) && visible(node)).map(rect)
+    .filter(r => r.x < innerWidth && r.x + r.width > 0 && r.y < innerHeight && r.y + r.height > 0);
+  const panel = document.getElementById('ap-archive-render-feedback');
+  const solutionNodes = document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .sol-ans,#print-area .sol-exp,#print-area .ans-v').length;
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(box.outerHTML));
+  return { question: boxRect, children: [wrapper, ...roles].map(rect), image: rect(image),
+    viewport: { width: innerWidth, height: innerHeight }, scroll: { x: scrollX, y: scrollY }, obstructions,
+    feedbackIdle: !panel || panel.hidden || !visible(panel), readiness: JSON.parse(document.documentElement.dataset.apPrintReadiness || '{}').state,
+    solutionNodes, questionNumber: '5.', mandatoryChildrenVisible: true,
+    domSha256: [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join(''),
+    equalSlotRoles: { schemaVersion: 'archive-m3-e052-q5-equal-slot-capture-v1', sourceOrdinal: 5, bankCount: 25,
+      actualDirectChildren: 1, wrapperClass: 'ap-slot-content', roleOrder: ['q-num', 'q-content', 'q-image-wrap', 'choices'],
+      roleDescendants: 4, choiceItems: 5, targetImages: 1, contentMath: 5, choiceMath: 5, hiddenRoles: 0,
+      unknownDirectNodes: 0, foreignMedia: 0, completeWrapperEnvelope: true } };
+}
+const Q5_EQUAL_SLOT_ROLES = { schemaVersion: Q5_EQUAL_SLOT_SCHEMA, sourceOrdinal: 5, bankCount: 25,
+  actualDirectChildren: 1, wrapperClass: 'ap-slot-content', roleOrder: ['q-num', 'q-content', 'q-image-wrap', 'choices'],
+  roleDescendants: 4, choiceItems: 5, targetImages: 1, contentMath: 5, choiceMath: 5, hiddenRoles: 0,
+  unknownDirectNodes: 0, foreignMedia: 0, completeWrapperEnvelope: true };
+function checkedQ5EqualSlotFrame(frame, viewport) {
+  assert.deepEqual(frame.equalSlotRoles, Q5_EQUAL_SLOT_ROLES, 'UI_Q5_EQUAL_SLOT_ROLE_PROOF');
+  assert.deepEqual(frame.viewport, { width: viewport.width, height: viewport.height }, 'UI_Q5_EQUAL_SLOT_VIEWPORT');
+  assert(frame.children.length === 5 && frame.questionNumber === '5.' && frame.mandatoryChildrenVisible === true &&
+    frame.solutionNodes === 0 && frame.readiness === 'RENDER_READY' && SHA256.test(frame.domSha256), 'UI_Q5_EQUAL_SLOT_FRAME');
+  const wrapper = frame.children[0];
+  assert(frame.children.slice(1).every(r => r.x >= wrapper.x - 1 && r.y >= wrapper.y - 1 &&
+    r.x + r.width <= wrapper.x + wrapper.width + 1 && r.y + r.height <= wrapper.y + wrapper.height + 1), 'UI_Q5_EQUAL_SLOT_ROLE_ENVELOPE');
+  H.problemContentClip(frame);
+  return frame;
+}
+function q5DocumentProblemFrame(frame) {
+  assert(frame.scroll && Number.isFinite(frame.scroll.x) && Number.isFinite(frame.scroll.y), 'UI_CAPTURE_SCROLL');
+  const documentRect = rect => ({ x: rect.x + frame.scroll.x, y: rect.y + frame.scroll.y, width: rect.width, height: rect.height });
+  return { question: documentRect(frame.question), content: documentRect(H.problemContentClip(frame)),
+    children: frame.children.map(documentRect), image: documentRect(frame.image), viewport: frame.viewport,
+    questionNumber: frame.questionNumber, equalSlotRoles: frame.equalSlotRoles };
+}
+function inspectQ5CaptureHits(image, clip) {
+  const box = image.closest('.q-box'); let samples = 0, outsideQuestion = 0;
+  const xs = [clip.x + 1.5], ys = [clip.y + 1.5];
+  for (let x = clip.x + 17.5; x < clip.x + clip.width - 1.5; x += 16) xs.push(x);
+  for (let y = clip.y + 17.5; y < clip.y + clip.height - 1.5; y += 16) ys.push(y);
+  xs.push(clip.x + clip.width - 1.5); ys.push(clip.y + clip.height - 1.5);
+  for (const x of xs) for (const y of ys) {
+    samples++; const top = document.elementFromPoint(x, y);
+    if (!top || (top !== box && !box.contains(top))) outsideQuestion++;
+  }
+  return { samples, outsideQuestion };
+}
+async function captureQ5EqualSlotProblem({ page, target, filename, reader, item, viewport }) {
+  const evidence = checkedQ5EqualSlotScope(reader, item, viewport);
+  try {
+    await page.waitForFunction(() => {
+      const panel = document.getElementById('ap-archive-render-feedback');
+      return !panel || panel.hidden || getComputedStyle(panel).display === 'none';
+    }, null, { timeout: 15000 });
+  } catch { throw new Error('UI_RENDER_FEEDBACK_NOT_IDLE'); }
+  const measure = async () => checkedQ5EqualSlotFrame(await target.evaluate(measureQ5EqualSlotCapture), viewport);
+  let frame = await measure();
+  const original = q5DocumentProblemFrame(frame), originalDomSha256 = frame.domSha256, scrollBefore = frame.scroll;
+  const plan = H.planProblemTiles(frame), tiles = [];
+  for (const tile of plan.tiles) {
+    let scrollOperations = 0;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const step = H.planProblemTileScroll(frame, tile);
+      if (Math.abs(step.scrollByY) < 0.5) break;
+      await page.evaluate(delta => window.scrollBy({ top: delta, left: 0, behavior: 'instant' }), step.scrollByY);
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      scrollOperations++; frame = await measure();
+    }
+    assert.equal(frame.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_SCROLL');
+    assert.deepEqual(q5DocumentProblemFrame(frame), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const clip = H.assertProblemTileCapture(frame, tile), hits = await target.evaluate(inspectQ5CaptureHits, clip);
+    assert(hits.samples > 0 && hits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+    const tileFile = filename.replace(/\.png$/, '') + `-tile-${String(tile.tileIndex).padStart(2, '0')}.png`;
+    await page.screenshot({ path: tileFile, clip, fullPage: false, caret: 'initial', timeout: 15000 });
+    const after = await measure();
+    assert.deepEqual(H.assertProblemTileCapture(after, tile), clip, 'UI_CAPTURE_GEOMETRY_CHANGED');
+    assert.deepEqual(after.scroll, frame.scroll, 'UI_CAPTURE_SCROLLED');
+    assert.equal(after.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE');
+    assert.deepEqual(q5DocumentProblemFrame(after), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const afterHits = await target.evaluate(inspectQ5CaptureHits, clip);
+    assert(afterHits.samples > 0 && afterHits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+    tiles.push({ ...tile, filename: path.basename(tileFile), clip, scroll: after.scroll, scrollOperations,
+      feedbackIdle: true, obstructionsIntersectingClip: 0, hitTestSamples: hits.samples + afterHits.samples,
+      foreignContentHits: 0, domSha256: originalDomSha256 });
+    frame = after;
+  }
+  for (const ref of evidence) assert.deepEqual(reader.ref(ref.path), ref, 'UI_Q5_EQUAL_SLOT_INPUT_CHANGED');
+  return { schemaVersion: H.TILE_SCHEMA, method: 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES', tileLimit: H.TILE_LIMIT,
+    overlapCssPixels: H.TILE_OVERLAP, tileCount: tiles.length, content: original.content, question: original.question,
+    viewport: original.viewport, visibleChildren: 1, visibleRoleDescendants: 4, measuredEnvelopeRects: 5,
+    equalSlotRoles: original.equalSlotRoles, equalSlotEvidence: evidence,
+    coverage: H.assertTileCoverage(original.content.height, tiles), tiles, scrollBefore, scrollAfter: frame.scroll,
+    scrollOperations: tiles.reduce((sum, row) => sum + row.scrollOperations, 0), domSha256: originalDomSha256,
+    feedbackIdle: true, foreignContentHits: 0, cssWrites: 0, domWrites: 0, viewportChanges: 0, compositeImageCreated: false };
+}
+
 // Diagnostic only. Every capture failure remains the same thrown failure.
 const Q5_CHILD_FAILURE = 'UI_COMPLETE_PROBLEM_CHILDREN';
 const Q5_DIAGNOSTIC_ITEM_SHA256 = 'c8435288e0ab156661f686299fa1a91947490e3da347476f01585ca1a600c7ae';
@@ -318,8 +508,8 @@ async function readQ5RoleDiagnostic({ reader, item, viewport, target }) {
     captureAccepted: false, screenshotCreated: false, solutionsOpened: false, sourceWrites: 0, newNativeApprovals: 0 };
 }
 async function captureQ5WithFailureDiagnostic({ page, target, filename, reader, item, viewport, diagnostics,
-  capture = captureProblemTiles, diagnose = readQ5RoleDiagnostic }) {
-  try { return await capture(page, target, filename); }
+  capture, diagnose = readQ5RoleDiagnostic }) {
+  try { return await (capture ? capture(page, target, filename) : captureQ5EqualSlotProblem({ page, target, filename, reader, item, viewport })); }
   catch (originalError) {
     if (String(originalError?.message || '').split('\n')[0] === Q5_CHILD_FAILURE) {
       try { diagnostics.push(await diagnose({ reader, item, viewport, target })); }
@@ -535,7 +725,7 @@ async function main() {
     newParentApprovals: 0, releaseGate: proof.releaseGate }));
 }
 module.exports = { MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, SHARED_CHECKER_SHA256, IDENTITY_PATH, SCHEMA,
-  EXPECTED_ITEMS_SHA256, EXPECTED_SOURCE_BINDINGS, EXPECTED_SURFACE_REFS, checkedSurface, VIEWPORTS, DRAFT, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, preflight, assertTechnicalState, assertCompletedResults, checkedOutput, checkedQ5DiagnosticScope, readQ5RoleDiagnostic, captureQ5WithFailureDiagnostic, measureProblemRoles };
+  EXPECTED_ITEMS_SHA256, EXPECTED_SOURCE_BINDINGS, EXPECTED_SURFACE_REFS, checkedSurface, VIEWPORTS, DRAFT, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, preflight, assertTechnicalState, assertCompletedResults, checkedOutput, checkedQ5DiagnosticScope, readQ5RoleDiagnostic, captureQ5WithFailureDiagnostic, measureProblemRoles, Q5_EQUAL_SLOT_SCHEMA, Q5_EQUAL_SLOT_SURFACE, Q5_EQUAL_SLOT_ROLES, checkedQ5EqualSlotScope, measureQ5EqualSlotCapture, checkedQ5EqualSlotFrame, q5DocumentProblemFrame, inspectQ5CaptureHits, captureQ5EqualSlotProblem };
 if (require.main === module) main().catch(error => {
   const message = String(error?.message || ''), code = message.split('\n')[0];
   console.error(JSON.stringify({ schemaVersion: SCHEMA, status: 'FAIL', newParentApprovals: 0,
