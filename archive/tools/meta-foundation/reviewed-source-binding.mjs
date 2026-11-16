@@ -13,6 +13,7 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
   Object.freeze({ requestKey: "retainedScopeTransport", proofKey: "retainedScopeTransport" }),
   Object.freeze({ requestKey: "rationaleContinuity", proofKey: "rationaleContinuity" }),
+  Object.freeze({ requestKey: "currentDefinitionApplication", proofKey: "currentDefinitionApplication" }),
 ]);
 
 export function reviewedSourceBindingItems(request) {

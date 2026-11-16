@@ -2303,7 +2303,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         fail(`registered explicit source review ${requestKey} inventory drift`);
     }
     const replayBeforeTables = sourceBindingPatches.some(patch => patch.sourceReview?.proposalFinalization !== undefined ||
-      patch.sourceReview?.scopeFieldBinding !== undefined)
+      patch.sourceReview?.scopeFieldBinding !== undefined || patch.sourceReview?.currentDefinitionApplication !== undefined)
       ? restoreReviewedReplayCanonicalBefore({ request: req, currentTables, root }) : currentTables;
     for (const patch of sourceBindingPatches) {
       const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid && repair.sourceOrdinal === patch.sourceOrdinal);
