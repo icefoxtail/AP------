@@ -109,6 +109,11 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },
   {
+    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
+    timeout: 180000
+  },
+  {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
     args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
   },

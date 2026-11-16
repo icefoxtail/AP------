@@ -60,7 +60,7 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q1-solution-visual-v2.svg",
-    "solutionImageAlt": "내려가는 파란 실선은 y=−3x+2이다. 주황 점선은 (0,5)를 지나고 파란 실선과 평행하다. 화살표는 세로로 옮기는 방향이다.",
+    "solutionImageAlt": "내려가는 검은 실선은 y=−3x+2이다. 주황 점선은 (0,5)를 지나고 검은 실선과 평행하다. 화살표는 세로로 옮기는 방향이다.",
     "solutionImageCaption": "원래 세로축과 만나는 값은 2이고 새 값은 5이므로 5−2=3만큼 위로 옮긴다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
@@ -182,7 +182,7 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q3-solution-visual-v2.svg",
-    "solutionImageAlt": "오르는 파란 그래프 y=2x+4가 가로축의 −2, 세로축의 4를 지난다.",
+    "solutionImageAlt": "오르는 검은 그래프 y=2x+4가 가로축의 −2, 세로축의 4를 지난다.",
     "solutionImageCaption": "가로축과 만날 때 y=0이어서 x=−2이고, 세로축과 만날 때 x=0이어서 y=4이다. 따라서 a+b=2이고 정답은 ③이다.",
     "solutionImageSize": "full"
   },
@@ -249,7 +249,7 @@ window.questionBank = [
   {
     "id": 5,
     "imageSize": "tall",
-    "imageAlt": "A는 (1,3), B는 (4,1)이다. 파란 선분으로 두 점을 이었다.",
+    "imageAlt": "A는 (1,3), B는 (4,1)이다. 검은 선분으로 두 점을 이었다.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -308,7 +308,7 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q5-solution-visual-v2.svg",
-    "solutionImageAlt": "A는 (1,3), B는 (4,1)이다. 파란 선분으로 두 점을 이었다. 원점에서 A와 B로 향하는 두 경계 직선을 서로 다른 색으로 그렸다.",
+    "solutionImageAlt": "A는 (1,3), B는 (4,1)이다. 검은 선분으로 두 점을 이었다. 원점에서 A와 B로 향하는 두 경계 직선을 서로 다른 색으로 그렸다.",
     "solutionImageCaption": "원점에서 A로 향하는 기울기는 3이고 B로 향하는 기울기는 1/4이다. 선분 AB를 만나는 범위는 1/4≤a≤3이고 정답은 ①이다.",
     "solutionImageSize": "full"
   },
@@ -372,7 +372,7 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q6-solution-visual-v2.svg",
-    "solutionImageAlt": "파란 직선의 예는 제2사분면에서 위쪽을 지나 제1사분면으로 이어지고, 오른쪽 아래의 제4사분면으로 내려간다.",
+    "solutionImageAlt": "검은 직선의 예는 제2사분면에서 위쪽을 지나 제1사분면으로 이어지고, 오른쪽 아래의 제4사분면으로 내려간다.",
     "solutionImageCaption": "제2사분면에서 제4사분면으로 내려가는 직선이므로 a<0이다. 세로축을 원점보다 위에서 지나므로 b>0이고 정답은 ①이다.",
     "solutionImageSize": "full"
   },
@@ -502,7 +502,7 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q8-solution-visual-v2.svg",
-    "solutionImageAlt": "파란 직선은 주어진 2x−3y−11=0의 그래프다. 청록색 점선은 (0,2)를 지나고 파란 직선과 나란하다.",
+    "solutionImageAlt": "검은 직선은 주어진 2x−3y−11=0의 그래프다. 청록색 점선은 (0,2)를 지나고 검은 직선과 나란하다.",
     "solutionImageCaption": "두 직선의 기울기는 모두 2/3이고 지나야 할 점이 (0,2)이므로 구하는 식은 y=(2/3)x+2이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
@@ -1253,7 +1253,7 @@ window.questionBank = [
   {
     "id": 21,
     "imageSize": "tall",
-    "imageAlt": "파란 직선이 (0,−2)와 (3,0)을 지난다.",
+    "imageAlt": "검은 직선이 (0,−2)와 (3,0)을 지난다.",
     "questionType": "서술형",
     "tags": [
       "일차함수",
@@ -1307,7 +1307,7 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-solution-visual-v2.svg",
-    "solutionImageAlt": "파란 직선이 (0,−2)와 (3,0)을 지난다. 두 점 사이의 가로 3과 세로 2를 색으로 표시했다.",
+    "solutionImageAlt": "검은 직선이 (0,−2)와 (3,0)을 지난다. 두 점 사이의 가로 3과 세로 2를 색으로 표시했다.",
     "solutionImageCaption": "기울기는 2/3이고 y절편은 −2이다. 따라서 일차함수의 식은 y=(2/3)x−2이다.",
     "solutionImageSize": "full"
   },

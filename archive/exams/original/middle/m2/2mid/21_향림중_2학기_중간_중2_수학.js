@@ -61,7 +61,7 @@ window.examData = {
     {
       "id": 5,
       "score": 3.0,
-      "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"파란 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"검은 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$-3$",
         "$-\\dfrac{1}{3}$",
@@ -89,7 +89,7 @@ window.examData = {
     {
       "id": 7,
       "score": 4.0,
-      "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"파란 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"검은 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$a > 0, b > 0$",
         "$a > 0, b < 0$",
@@ -321,7 +321,7 @@ window.examData = {
     {
       "id": 24,
       "score": 5.0,
-      "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 파란색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 검정색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -329,7 +329,7 @@ window.examData = {
     {
       "id": 25,
       "score": 6.0,
-      "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 파랑으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 검정으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -476,7 +476,7 @@ window.questionBank = [
     "id": 5,
     "layoutTag": "fullwidth",
     "score": 3,
-    "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"파란 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"검은 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$-3$",
       "$-\\dfrac{1}{3}$",
@@ -486,7 +486,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"파란 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+    "content": "<div>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"검은 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "standardUnitKey": "M2-04",
@@ -539,7 +539,7 @@ window.questionBank = [
     "id": 7,
     "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"파란 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"검은 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$a > 0, b > 0$",
       "$a > 0, b < 0$",
@@ -549,7 +549,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"파란 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+    "content": "<div>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"검은 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "standardUnitKey": "M2-04",
@@ -1083,11 +1083,11 @@ window.questionBank = [
     "id": 24,
     "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 파란색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 검정색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 파란색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+    "content": "<div>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 검정색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
     "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
     "standardUnitKey": "M2-04",
@@ -1109,11 +1109,11 @@ window.questionBank = [
     "id": 25,
     "layoutTag": "fullwidth",
     "score": 6,
-    "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 파랑으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 검정으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 파랑으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+    "content": "<div>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 검정으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "",
     "problemTypeKey": "PT_LINE_EQUATION",
     "standardUnitKey": "M2-04",

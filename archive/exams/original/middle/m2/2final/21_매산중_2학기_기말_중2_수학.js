@@ -267,7 +267,7 @@ window.examData = {
     "id": 8,
     "layoutTag": "fullwidth",
     "score": 4,
-    "question": "8. 오른쪽 정사각형 ABCD에서 $a^2 + b^2 = 49$일 때, 사각형 EFGH에 대한 설명으로 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"정사각형 ABCD의 각 변을 a와 b 두 길이로 나눈다. 안쪽의 E, F, G, H를 서로 이었다. 길이 a는 파랑, b는 청록으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "question": "8. 오른쪽 정사각형 ABCD에서 $a^2 + b^2 = 49$일 때, 사각형 EFGH에 대한 설명으로 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"정사각형 ABCD의 각 변을 a와 b 두 길이로 나눈다. 안쪽의 E, F, G, H를 서로 이었다. 길이 a는 검정, b는 청록으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "정사각형이다.",
       "둘레의 길이는 $28$이다.",
@@ -853,7 +853,7 @@ window.examData = {
     "answer": "수준별 4-① $\\dfrac38$, 4-② $\\dfrac16$",
     "solution": "[수준별 4-①]\n카드는 모두 $8$장이다. 표면온도가 영상($0^\\circ\\text{C}$보다 높음)인 행성은 수성($+179^\\circ\\text{C}$), 금성($+467^\\circ\\text{C}$), 지구($+17^\\circ\\text{C}$)의 $3$장이다.\n따라서 확률은 $\\dfrac38$이다.\n답: $\\dfrac38$\n\n[수준별 4-②]\n정육각형의 둘레는 $6$이고, 꼭짓점 $A$에서 $D$까지는 $3$만큼 움직여야 한다.\n두 번 던져 나온 눈의 합이 $3$ 또는 $9$이면 $D$에 놓인다. (합이 $15$ 이상은 불가능하다.)\n합이 $3$인 경우: $(1,2),(2,1)$의 $2$가지\n합이 $9$인 경우: $(3,6),(4,5),(5,4),(6,3)$의 $4$가지\n전체 경우의 수는 $6\\times6=36$가지이므로 확률은 $\\dfrac{2+4}{36}=\\dfrac16$이다.\n답: $\\dfrac16$",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q24-solution-visual-v2.svg",
-    "solutionImageAlt": "정육각형의 A에서 B, C, D로 가는 세 구간에 청록 화살표가 있다. D에서 E, F, A로 이어지는 나머지 반 바퀴는 옅은 회색 선이다.",
+    "solutionImageAlt": "정육각형의 A에서 B, C, D로 가는 세 구간에 검정 화살표가 있다. D에서 E, F, A로 이어지는 나머지 반 바퀴는 옅은 회색 선이다.",
     "solutionImageCaption": "4-① 여덟 카드 중 영상은 수성·금성·지구 세 장이므로 확률은 3/8이다. 4-② 두 눈의 합이 3 또는 9이면 D에 놓인다. 각각 2가지와 4가지여서 확률은 6/36=1/6이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [

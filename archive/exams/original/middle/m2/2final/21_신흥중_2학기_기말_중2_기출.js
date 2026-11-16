@@ -719,7 +719,7 @@ window.questionBank = [
   {
     "id": 12,
     "imageSize": "tall",
-    "imageAlt": "집과 학교를 연결하는 길 두 개는 파랑이고, 학교와 도서관을 연결하는 길 네 개는 청록이다. 학교에서만 두 구간이 이어진다.",
+    "imageAlt": "집과 학교를 연결하는 길 두 개는 검정이고, 학교와 도서관을 연결하는 길 네 개는 청록이다. 학교에서만 두 구간이 이어진다.",
     "questionType": "객관식",
     "tags": [
       "경우의 수"
@@ -1270,9 +1270,9 @@ window.questionBank = [
     "id": 21,
     "solutionImageSize": "full",
     "solutionImageCaption": "두 정사각형 한 변은 각각 2 cm와 6 cm이다. BE=8 cm, EF=6 cm이므로 BF=√(8²+6²)=10 cm이다.",
-    "solutionImageAlt": "B, C, E는 같은 수평선 위에 있다. 파란 작은 정사각형과 청록 큰 정사각형에 걸쳐 B부터 F까지 사선을 이었다. 두 정사각형의 한 변이 2 cm와 6 cm이므로 가로 BE는 8 cm이다. 직각삼각형 BEF만 옅게 색칠했다.",
+    "solutionImageAlt": "B, C, E는 같은 수평선 위에 있다. 검은 작은 정사각형과 청록 큰 정사각형에 걸쳐 B부터 F까지 사선을 이었다. 두 정사각형의 한 변이 2 cm와 6 cm이므로 가로 BE는 8 cm이다. 직각삼각형 BEF만 옅게 색칠했다.",
     "imageSize": "tall",
-    "imageAlt": "B, C, E는 같은 수평선 위에 있다. 파란 작은 정사각형과 청록 큰 정사각형에 걸쳐 B부터 F까지 사선을 이었다.",
+    "imageAlt": "B, C, E는 같은 수평선 위에 있다. 검은 작은 정사각형과 청록 큰 정사각형에 걸쳐 B부터 F까지 사선을 이었다.",
     "questionType": "서술형",
     "tags": [
       "정사각형",
