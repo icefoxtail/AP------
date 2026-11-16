@@ -1,0 +1,155 @@
+name: M2 current main four-slot cold verification
+
+on:
+  push:
+    branches:
+      - review-reference/m2-four-slot-current-main-cold-20261116
+    paths:
+      - .github/workflows/m2-four-slot-current-main-cold.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: m2-four-slot-current-main-cold-20261116
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/review-reference/m2-four-slot-current-main-cold-20261116'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ARCHIVE_REVIEW_BASE: b18bf1e25cbace6c2a9985067ca79cff4e6b8a3c
+      ARCHIVE_REGISTERED_INDEX_COMMIT: 8377221debc9200dff7e647ae1a772d8d5a2e8be
+      ARCHIVE_EXPECTED_INDEX_BLOB: 82e4ea98415a859771717904a9858baa40ad3ba5
+      ARCHIVE_EXPECTED_MD_BLOB: f705bba21cd6eaad71f9317cd55ee4ce85e187c7
+      ARCHIVE_EXPECTED_ID_BLOB: 24c9016c5910d188c5665f2f837d47dbd6ae3e77
+      ARCHIVE_REVIEW_OUTPUT: ${{ runner.temp }}/m2-four-slot-current-main-cold
+      NODE_OPTIONS: --max-old-space-size=2048
+    steps:
+      - name: Check out the immutable review head and all Git history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up the existing Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run the two official read-only gates and verify unchanged inputs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, resource, subprocess, time
+          from pathlib import Path
+
+          root = Path.cwd()
+          output = Path(os.environ['ARCHIVE_REVIEW_OUTPUT'])
+          output.mkdir(parents=True, exist_ok=False)
+          workflow = '.github/workflows/m2-four-slot-current-main-cold.yml'
+          base = os.environ['ARCHIVE_REVIEW_BASE']
+          def git(*args):
+              return subprocess.check_output(['git', *args], cwd=root).decode().strip()
+          def digest(path):
+              value = hashlib.sha256()
+              with path.open('rb') as stream:
+                  for block in iter(lambda: stream.read(1024 * 1024), b''):
+                      value.update(block)
+              return value.hexdigest()
+          def file_ref(path):
+              return {'path': str(path.relative_to(output)), 'sha256': digest(path), 'bytes': path.stat().st_size}
+          def snapshot(paths):
+              return [{'path': name, 'sha256': digest(root / name), 'bytes': (root / name).stat().st_size} for name in paths]
+          def write_json(name, value):
+              path = output / name
+              path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+              return file_ref(path)
+
+          report = {
+              'schemaVersion': 'archive-current-main-four-slot-cold-proof-v1',
+              'status': 'FAIL', 'baseCommit': base,
+              'registeredIndexCommit': os.environ['ARCHIVE_REGISTERED_INDEX_COMMIT'],
+              'observedSourceChanges': None, 'observedMetadataChanges': None, 'observedIndexChanges': None,
+              'newSlotApprovals': 0, 'remoteWrites': 0, 'commands': [],
+              'observedInputChanges': [], 'error': None,
+          }
+          before = None
+          paths = []
+          try:
+              report['checkoutCommit'] = git('rev-parse', 'HEAD')
+              report['checkoutTree'] = git('rev-parse', 'HEAD^{tree}')
+              parents = git('show', '-s', '--format=%P', 'HEAD').split()
+              if parents != [base]:
+                  raise RuntimeError('REVIEW_PARENT_MISMATCH')
+              changes = git('diff', '--name-only', base, 'HEAD', '--').splitlines()
+              if changes != [workflow]:
+                  raise RuntimeError('REVIEW_SCOPE_MISMATCH')
+              expected = {
+                  'archive/data/item-4slot-index.json': os.environ['ARCHIVE_EXPECTED_INDEX_BLOB'],
+                  'archive/data/question_metadata.json': os.environ['ARCHIVE_EXPECTED_MD_BLOB'],
+                  'archive/data/question_identity_map.json': os.environ['ARCHIVE_EXPECTED_ID_BLOB'],
+              }
+              for name, blob in expected.items():
+                  if git('rev-parse', 'HEAD:' + name) != blob or git('hash-object', '--', name) != blob:
+                      raise RuntimeError('ACTUAL_INPUT_BLOB_MISMATCH:' + name)
+              paths = sorted(p.decode() for p in subprocess.check_output(['git', 'ls-files', '-z'], cwd=root).split(b'\0') if p)
+              before = snapshot(paths)
+              report['beforeManifest'] = write_json('input-manifest-before.json', {'files': before})
+              report['trackedInputCount'] = len(paths)
+              report['sourceInputCount'] = sum(name.startswith('archive/exams/') for name in paths)
+              report['expectedActualBlobs'] = expected
+              commands = [
+                  ('official-cold-check', ['node', 'tools/4slot/build-4slot-runtime.cjs', '--check', '--report', str(output / 'official-cold-check-report.json')]),
+                  ('item-4slot-data', ['node', 'tests/item-4slot-data.test.cjs']),
+              ]
+              for name, command in commands:
+                  log = output / (name + '.log')
+                  started = time.monotonic()
+                  error = None
+                  with log.open('wb') as stream:
+                      try:
+                          result = subprocess.run(command, cwd=root, stdin=subprocess.DEVNULL, stdout=stream, stderr=subprocess.STDOUT, timeout=1200)
+                          exit_code = result.returncode
+                      except subprocess.TimeoutExpired:
+                          exit_code = None
+                          error = 'COMMAND_TIMEOUT_1200_SECONDS'
+                  usage = resource.getrusage(resource.RUSAGE_CHILDREN)
+                  report['commands'].append({
+                      'name': name, 'argv': command, 'exitCode': exit_code, 'error': error,
+                      'elapsedSeconds': round(time.monotonic() - started, 3),
+                      'childrenCumulativeMaxRssKiB': usage.ru_maxrss,
+                      'log': file_ref(log),
+                  })
+                  write_json('proof.json', report)
+              report['status'] = 'PASS' if all(row['exitCode'] == 0 for row in report['commands']) else 'FAIL'
+          except Exception as error:
+              report['error'] = type(error).__name__ + ':' + str(error)
+              report['status'] = 'FAIL'
+          finally:
+              if before is not None:
+                  try:
+                      after = snapshot(paths)
+                      report['observedInputChanges'] = [old['path'] for old, new in zip(before, after) if old != new]
+                      report['observedSourceChanges'] = sum(name.startswith('archive/exams/') for name in report['observedInputChanges'])
+                      report['observedMetadataChanges'] = sum(name in ('archive/data/question_metadata.json', 'archive/data/question_identity_map.json') for name in report['observedInputChanges'])
+                      report['observedIndexChanges'] = int('archive/data/item-4slot-index.json' in report['observedInputChanges'])
+                      if report['observedInputChanges']:
+                          report['status'] = 'FAIL'
+                      report['afterManifest'] = write_json('input-manifest-after.json', {'files': after})
+                  except Exception as error:
+                      report['status'] = 'FAIL'
+                      report['afterVerificationError'] = type(error).__name__ + ':' + str(error)
+              proof_ref = write_json('proof.json', report)
+              print(json.dumps({'status': report['status'], 'commands': [{'name': row['name'], 'exitCode': row['exitCode']} for row in report['commands']], 'changedInputs': len(report['observedInputChanges']), 'proof': proof_ref}))
+          raise SystemExit(0 if report['status'] == 'PASS' else 1)
+          PY
+      - name: Preserve exact gate logs, exit codes, resource observations and SHA manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2-four-slot-current-main-cold-${{ github.run_id }}
+          path: ${{ runner.temp }}/m2-four-slot-current-main-cold
+          if-no-files-found: error
+          retention-days: 30
