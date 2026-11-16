@@ -7,6 +7,7 @@ const path = require('node:path');
 const http = require('node:http');
 const vm = require('node:vm');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
+const E051Fragments = require('./m2s1-text3-solution-fragments.cjs');
 const { stable, sha256, gitBlob, createGitReader, studentFontResourcePath, checkedStudentFontRefs, FONT_DIR, FONT_STYLESHEET,
   fontFailureDiagnostic, readScreenshotArtifacts, assertScreenshotInventory } = H;
 const { captureSolutionTiles, measureSolutionCapture } = require("./check-m2s1-solution-scroll.cjs");
@@ -82,9 +83,16 @@ function assertCompletedResults(results,inputs,manifest,artifacts){
   assert.equal(row.surface,manifest.surface,'UI_RESULT_SURFACE');assert.equal(row.mode,manifest.mode,'UI_RESULT_MODE');assert.deepEqual(row.viewport,b.v,'UI_EXACT_VIEWPORT');
   assert.deepEqual(row.sourceRef,item.sourceRef,'UI_RESULT_SOURCE');assert.deepEqual(row.assetRefs,item.assetRefs,'UI_RESULT_ASSETS');
   assertTechnicalState(row.technical,manifest.mode,item.expectedBankCount);
-  const c=row.capture;assert.equal(c.schemaVersion,'archive-solution-scroll-coverage-v1','UI_CAPTURE_SCHEMA');
-  assert(c.method==='UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES'&&c.overlapCssPixels===32&&c.tileLimit===8&&c.cssWrites===0&&c.domWrites===0&&c.viewportChanges===0&&c.compositeImageCreated===false&&c.feedbackIdle===true&&c.foreignContentHits===0,'UI_UNCHANGED_CAPTURE_REQUIRED');
-  assert.deepEqual(c.coverage,H.assertTileCoverage(c.content.height,c.tiles),'UI_COMPLETE_COVERAGE');
+  const c=row.capture;
+  if(item.questionUid===E051Fragments.UID){
+   assert.deepEqual(c.policy.sourceRef,item.sourceRef,'UI_FRAGMENT_SOURCE');
+   assert.deepEqual([c.policy.assetRef],item.assetRefs,'UI_FRAGMENT_ASSET');
+   E051Fragments.validateCapture(c,{width:row.viewport.width,height:row.viewport.height},row.screenshots);
+  }else{
+   assert.equal(c.schemaVersion,'archive-solution-scroll-coverage-v1','UI_CAPTURE_SCHEMA');
+   assert(c.method==='UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES'&&c.overlapCssPixels===32&&c.tileLimit===8&&c.cssWrites===0&&c.domWrites===0&&c.viewportChanges===0&&c.compositeImageCreated===false&&c.feedbackIdle===true&&c.foreignContentHits===0,'UI_UNCHANGED_CAPTURE_REQUIRED');
+   assert.deepEqual(c.coverage,H.assertTileCoverage(c.content.height,c.tiles),'UI_COMPLETE_COVERAGE');
+  }
  }
  assert.equal(seen.size,expected.size,'UI_CASE_INVENTORY');return assertScreenshotInventory(results,artifacts);
 }
@@ -264,7 +272,9 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           captureDiagnostics.push(captureDiagnostic);
           let capture;
           try {
-            capture = await captureSolutionTiles(page, target, path.join(out,screenshotPath));
+            capture = item.questionUid === E051Fragments.UID
+              ? await E051Fragments.capture(page, target, path.join(out,screenshotPath), E051Fragments.makePolicy(reader,item))
+              : await captureSolutionTiles(page, target, path.join(out,screenshotPath));
             captureDiagnostic.status = 'PASS';
           } catch (error) {
             captureDiagnostic.status = 'FAIL';
@@ -303,7 +313,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     assertCompletedResults(results, inputs, manifest, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.solutionCaptureHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.solutionCaptureHelperRef, reader.ref(E051Fragments.HELPER_PATH), inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');

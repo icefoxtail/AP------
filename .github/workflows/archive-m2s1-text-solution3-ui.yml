@@ -2,11 +2,13 @@ name: Archive M2S1 text3 Solution Display UI Evidence
 
 on:
   push:
-    branches: ['review-reference/m2s1-text-solution3-current-ui-r2-20261116']
+    branches: ['review-reference/m2s1-text-solution3-current-ui-r3-20261116']
     paths:
       - '.github/workflows/archive-m2s1-text-solution3-ui.yml'
       - 'tools/check-m2s1-text-solution3-browser.cjs'
       - 'tools/check-m2s1-solution-scroll.cjs'
+      - 'tools/m2s1-text3-solution-fragments.cjs'
+      - 'tests/archive-m2s1-text3-fragment-ui.test.cjs'
       - 'tools/check-reviewed-problem-renderer-browser.cjs'
       - 'tests/archive-m2s1-text-solution3-ui.test.js'
       - 'tests/fixtures/archive-m2s1-text-solution3-ui.json'
@@ -30,7 +32,7 @@ jobs:
         with:
           node-version: 22
       - name: Verify the closed three-item solution capture contract
-        run: node --test tests/archive-m2s1-text-solution3-ui.test.js
+        run: node --test tests/archive-m2s1-text-solution3-ui.test.js tests/archive-m2s1-text3-fragment-ui.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
