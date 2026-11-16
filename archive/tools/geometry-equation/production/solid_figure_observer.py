@@ -3820,7 +3820,13 @@ def check_face_label(g, box, ctx):
     if want is None:
         errors.append('SOLID_FACE_LABEL_UNKNOWN:' + lid)
         return
-    if isinstance(entry.get('text'), str) and not SYMBOLIC.fullmatch(entry['text']) and FACE_SYMBOL.fullmatch(entry['text']):
+    if 'printedValue' in entry:
+        printed = entry['printedValue']
+        m = re.fullmatch(r'(-?)([0-9]{1,9})/([1-9][0-9]{0,8})', printed) if isinstance(printed, str) else None
+        expected = '%s\\frac{%s}{%s}' % m.groups() if m else None
+        if 'text' in entry or expected is None or expected != tex or g.get('data-value') != printed or g.get('data-numeric') != '0':
+            errors.append('SOLID_FACE_PRINTED_VALUE_MISMATCH:' + fid)
+    elif isinstance(entry.get('text'), str) and not SYMBOLIC.fullmatch(entry['text']) and FACE_SYMBOL.fullmatch(entry['text']):
         # a face symbol (a circled number, a Hangul letter, (1)): plain text that is no area, so only the characters and the "not numeric" mark are read back
         if g.get('data-text') != entry['text'] or g.get('data-numeric') != '0' or g.get('data-tex') is not None: errors.append('SOLID_FACE_LABEL_VALUE_MISMATCH:%s:%s' % (fid, g.get('data-text')))
     elif symbolic:

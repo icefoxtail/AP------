@@ -2023,12 +2023,17 @@ function netFaceLabels(net,areas,unit){
   if(!Array.isArray(list)||list.length<1||list.length>areas.size)bad('SOLID_FACE_LABEL_INVALID');
   const seen=new Set(),out=[];
   list.forEach((entry,k)=>{
-    onlyKeys(entry,['face','text'],'SOLID_FACE_LABEL_INVALID');
+    onlyKeys(entry,['face','text','printedValue'],'SOLID_FACE_LABEL_INVALID');
     if(typeof entry.face!=='string')bad('SOLID_FACE_LABEL_INVALID');
     if(!areas.has(entry.face))bad('SOLID_NET_FACE_UNKNOWN');
     if(seen.has(entry.face))bad('SOLID_FACE_LABEL_INVALID');
     seen.add(entry.face);
-    out.push({face:entry.face,...areaLabel(entry.text,areas.get(entry.face),unit,'f'+(k+1))});
+    if(entry.printedValue!==undefined){
+      if(entry.text!==undefined||typeof entry.printedValue!=='string'||!(/^-?[0-9]{1,9}\/[1-9][0-9]{0,8}$/).test(entry.printedValue))bad('SOLID_FACE_PRINTED_VALUE_INVALID');
+      const [n,d]=entry.printedValue.split('/');
+      const tex=(n.startsWith('-')?'-':'')+'\\frac{'+n.replace(/^-/,'')+'}{'+d+'}';
+      out.push({face:entry.face,tex,text:entry.printedValue,numeric:false,value:entry.printedValue});
+    }else out.push({face:entry.face,...areaLabel(entry.text,areas.get(entry.face),unit,'f'+(k+1))});
   });
   return out;
 }

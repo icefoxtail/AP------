@@ -3371,3 +3371,16 @@ test('an orthogonal prism union composes with the source square prism and its x,
   assert.match(panelSvg[1],/data-vis="hidden"[^>]*stroke="#a0a0a0"[^>]*stroke-dasharray="5 4"/);
   assert.doesNotMatch(composed.svg,/⑤|겹침|부피/);
 });
+
+test('a printed fraction is formatted inside its net face without changing the area rule', () => {
+  const make = labels => figure({ net: { kind: 'CYLINDER', radius: 2, height: 3, faceLabels: labels } });
+  const source = make([{ face: 'rect', printedValue: '-2/5' }]);
+  const model = solveSolidFigure(source);
+  const spec = solidFigureSpec(source, model);
+  assert.equal(spec.labels.find(row => row.faceOf === 'rect').tex, '-\\frac{2}{5}');
+  assert.equal(spec.labels.find(row => row.faceOf === 'rect').numeric, false);
+  assert.throws(() => solveSolidFigure(make([{ face: 'rect', text: '1' }])),
+    code('SOLID_FACE_LABEL_VALUE_MISMATCH'));
+  assert.throws(() => solveSolidFigure(make([{ face: 'rect', printedValue: '2/0' }])),
+    code('SOLID_FACE_PRINTED_VALUE_INVALID'));
+});
