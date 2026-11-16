@@ -192,6 +192,139 @@ def split_registry_changes(changes: list) -> tuple[list, list]:
     return native, sidecar
 
 
+def plan_type_binding_changes(request: dict, judgments: list, bank: list, current_rows: list,
+                              identity_rows: list, ledger_ref: dict) -> list:
+    """Turn source-bound direct judgments into add-only native binding proposals.
+
+    This only constructs registryChanges. The unchanged v2 registrar remains the
+    authority for shared-consumer impact, pack scope and registration. A missing
+    or ambiguous existing scope parent is NEEDS_BINDING, never an invented label.
+    The small-meta file itself is the SHA-bound judgment ledger.
+    """
+    def refuse(message):
+        raise RequestGenerationError("TYPE_BINDING_NEEDS_BINDING: " + message)
+
+    if not isinstance(judgments, list):
+        refuse("typeBindingJudgments must be an array")
+    if not judgments:
+        return []
+    ledger_path = (REPO_ROOT / ledger_ref.get("path", "")).resolve()
+    try:
+        ledger_path.relative_to(REPO_ROOT.resolve())
+    except ValueError:
+        refuse("judgment ledger must be inside the repository")
+    if not ledger_path.is_file() or sha256_file(ledger_path) != ledger_ref.get("sha256"):
+        refuse("judgment ledger evidence SHA mismatch")
+    ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+    if ledger.get("typeBindingJudgments") != judgments:
+        refuse("judgments differ from their evidence ledger")
+    index = json.loads((CANON_DIR / "registry_index.json").read_text(encoding="utf-8"))
+    packs, pts, tpls, bindings = {}, {}, {}, []
+    for entry in index["activePacks"]:
+        if entry.get("status") != "ACTIVE":
+            continue
+        base = CANON_DIR / "packs" / entry["id"].lower().replace("_", "-")
+        meta = json.loads((base / "pack.json").read_text(encoding="utf-8"))
+        if meta.get("canonicalStatus") != "ACTIVE" or meta.get("packId") != entry["id"]:
+            refuse("invalid ACTIVE pack: " + entry["id"])
+        packs[entry["id"]] = (base, meta)
+        taxonomy = json.loads((base / "taxonomy.json").read_text(encoding="utf-8"))
+        for field, key, bag in (("problemTypes", "problemTypeKey", pts), ("templates", "templateKey", tpls)):
+            for row in taxonomy[field]:
+                if row[key] in bag:
+                    refuse("ambiguous canonical key: " + row[key])
+                bag[row[key]] = row
+        for row in json.loads((base / "bindings.json").read_text(encoding="utf-8"))["bindings"]:
+            bindings.append((base, {**row, "ownerPack": row.get("ownerPack", entry["id"])}))
+    master_rows = json.loads((REPO_ROOT / "archive/data/master_tables/js_archive_tag_master.json").read_text(encoding="utf-8"))
+    master = {row["key"]: row for row in master_rows}
+    current = {row["questionUid"]: row for row in current_rows}
+    identities = {row["sourceOrdinal"]: row for row in identity_rows}
+    items = {row["questionUid"]: row for row in request["items"]}
+    if len(current) != len(current_rows) or len(identities) != len(identity_rows) or len(items) != len(request["items"]):
+        refuse("duplicate canonical/request UID or identity ordinal")
+    proposals, seen = {}, set()
+    scope_fields = ("curriculum", "standardCourse", "standardUnitKey", "subUnitKey")
+    for judgment in judgments:
+        if not isinstance(judgment, dict):
+            refuse("judgment must be an object")
+        uid = judgment.get("questionUid")
+        if uid in seen or uid not in items or uid not in current:
+            refuse("duplicate or unknown judgment UID: " + str(uid))
+        seen.add(uid)
+        item = items[uid]
+        ordinal = item["sourceOrdinal"]
+        identity = identities.get(ordinal, {})
+        if (identity.get("questionUid") != uid or identity.get("sourceArchiveFile") != request["sourceArchiveFile"]
+                or current[uid].get("sourceOrdinal") != ordinal or current[uid].get("sourceArchiveFile") != request["sourceArchiveFile"]):
+            refuse("identity join mismatch: " + uid)
+        if judgment.get("sourceOrdinal") != ordinal or not 1 <= ordinal <= len(bank):
+            refuse("judgment ordinal mismatch: " + uid)
+        row = {**current[uid], **item["after"]}
+        pt, tpl = pts.get(row.get("problemTypeKey")), tpls.get(row.get("templateKey"))
+        if not pt or pt.get("status") != "ACTIVE" or not tpl or tpl.get("status") != "ACTIVE":
+            refuse("inactive/missing PT or TPL: " + uid)
+        if tpl.get("parentProblemTypeKey") != pt["problemTypeKey"]:
+            refuse("TPL parent mismatch: " + uid)
+        if any(judgment.get(key) != row.get(key) for key in ("problemTypeKey", "templateKey", "decisiveStep")):
+            refuse("judgment and requested type/decisiveStep differ: " + uid)
+        if not isinstance(judgment.get("decisiveStep"), str) or not judgment["decisiveStep"].strip():
+            refuse("decisiveStep required: " + uid)
+        excerpt = judgment.get("sourceExcerpt")
+        question = bank[ordinal - 1]
+        if not isinstance(excerpt, str) or not excerpt.strip() or not any(
+                isinstance(question.get(field), str) and excerpt in question[field] for field in ("content", "question", "solution")):
+            refuse("sourceExcerpt is not in this question or solution: " + uid)
+        unit, sub = master.get(row.get("standardUnitKey")), master.get(row.get("subUnitKey"))
+        if not unit or unit.get("keyType") != "standardUnitKey" or unit.get("status") not in ("ACTIVE", "active"):
+            refuse("invalid standard unit: " + uid)
+        if row.get("subUnitKey") and (not sub or sub.get("keyType") != "subUnitKey" or sub.get("status") not in ("ACTIVE", "active")
+                or (sub.get("standardUnitKey") or sub.get("parentKey")) != unit["key"]):
+            refuse("invalid subunit or parent: " + uid)
+        scope = {"curriculum": row.get("curriculum") or row.get("curriculumKey"),
+                 "standardCourse": row.get("standardCourse") or row.get("courseKey"),
+                 "standardUnitKey": row["standardUnitKey"], "subUnitKey": row.get("subUnitKey")}
+        if not scope["curriculum"] or not scope["standardCourse"]:
+            refuse("curriculum/course required: " + uid)
+        matches_scope = lambda b: all(b.get(k) == scope[k] for k in scope_fields)
+        exact = [(base, b) for base, b in bindings if matches_scope(b) and b.get("problemTypeKey") == pt["problemTypeKey"]]
+        if exact:
+            if len(exact) != 1 or exact[0][1].get("status") != "ACTIVE":
+                refuse("existing binding conflict; existing rows are immutable: " + uid)
+            continue
+        peers = [(base, b) for base, b in bindings if matches_scope(b) and b.get("status") == "ACTIVE"]
+        parents = {(b.get("ownerPack"), b.get("L1"), b.get("L2")) for _, b in peers}
+        if len(parents) != 1 or not all(next(iter(parents), ())):
+            refuse("existing exact-scope parent/owner missing or ambiguous: " + uid)
+        owner, l1, l2 = next(iter(parents))
+        if owner not in packs:
+            refuse("existing binding owner is not an ACTIVE pack: " + uid)
+        base, pack = packs[owner]
+        if scope["curriculum"] not in pack.get("curricula", []) or any(
+                course not in pack.get("standardCourses", []) for course in (scope["standardCourse"], row.get("courseKey") or scope["standardCourse"])):
+            refuse("existing owner pack does not cover curriculum/course: " + uid)
+        match = {**scope, "problemTypeKey": pt["problemTypeKey"]}
+        relative = (base / "bindings.json").relative_to(REPO_ROOT).as_posix()
+        for change in request.get("registryChanges", []):
+            if change.get("path") == relative and (not change.get("collection") or
+                    change.get("collection") == "bindings" and all((change.get("after") or {}).get(k) == v for k, v in match.items())):
+                refuse("binding already has an explicit registry change; choose one owner: " + uid)
+        key = json.dumps([relative, match], sort_keys=True)
+        if key not in proposals:
+            after = {**match, "L1": l1, "L2": l2, "ownerPack": owner, "status": "ACTIVE",
+                     "supportingQuestionUids": [], "supportingItemCount": 0, "supportingJudgments": []}
+            if sub:
+                after["subUnitLabelKo"] = sub.get("labelKo") or sub.get("label") or l2
+            proposals[key] = {"path": relative, "collection": "bindings", "match": match, "before": None,
+                              "after": after, "evidenceRefs": [dict(ledger_ref)]}
+        after = proposals[key]["after"]
+        after["supportingQuestionUids"].append(uid)
+        after["supportingItemCount"] += 1
+        after["supportingJudgments"].append({k: judgment[k] for k in (
+            "questionUid", "sourceOrdinal", "problemTypeKey", "templateKey", "decisiveStep", "sourceExcerpt")})
+    return list(proposals.values())
+
+
 RPM_MASTER_REL = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
 CROSSWALK_REL_DIR = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0"
 UNIT_REALIGN_FIELDS = ("standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "conceptClusterKey")
@@ -638,6 +771,14 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
         "items": req_items
     }
 
+    # Direct type judgments are evidence input, not a second permissive registrar.
+    # Legacy requests without this input keep their existing byte-level behavior.
+    if "typeBindingJudgments" in meta_json:
+        if rpm_path_delta:
+            raise RequestGenerationError("typeBindingJudgments are not an RPM-only delta")
+        ledger_ref = {"path": files["meta"].relative_to(REPO_ROOT).as_posix(), "sha256": sha256_file(files["meta"])}
+        request["registryChanges"].extend(plan_type_binding_changes(
+            request, meta_json["typeBindingJudgments"], bank, cur_records, identity_records, ledger_ref))
     return request
 
 def get_whitelist_files(files: dict, inbox_path: Path = None) -> list[str]:
