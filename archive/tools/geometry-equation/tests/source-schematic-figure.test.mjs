@@ -10,7 +10,8 @@ import {loadBank} from '../build-visual-render-matrix.mjs';
 
 const repoRoot=fileURLToPath(new URL('../../../../',import.meta.url));
 const title='23_제일고_1학기_중간_고2_수학I';
-const question=loadBank(fs.readFileSync(path.join(repoRoot,'archive/exams/original/high/h2/1mid',title+'.js'),'utf8')).find(row=>row.id===17);
+// Original PNG-linked stem from 615c166760816753965c0a396a39de7ef2a362cf. The published body now links the reviewed SVG.
+const question={"id":17,"content":"$a > 1$인 실수 $a$에 대하여 직선 $y=-x+4$가 두 곡선 $y=a^{x-1}$, $y=\\log_a (x-1)$과 만나는 점을 각각 $A, B$라 하고, 곡선 $y=a^{x-1}$이 $y$축과 만나는 점을 $C$라 하자. $\\overline{AB} = 2\\sqrt{2}$일 때, 점 $C$의 $y$ 좌표는? [4.6점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_제일고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\"></div>"};
 const identity=assetIdentity(title+'|17','PROBLEM_VISUAL','body');
 const context={repoRoot,question,identity,typography:{baseFontPx:24,displayScale:.49}};
 const plan={
@@ -82,7 +83,8 @@ test('the read-back audit rejects an extra shape, detached point, remapped label
 });
 
 const palmaTitle='23_팔마고_1학기_중간_고2_수학I';
-const palmaQuestion=loadBank(fs.readFileSync(path.join(repoRoot,'archive/exams/original/high/h2/1mid',palmaTitle+'.js'),'utf8')).find(row=>row.id===17);
+// Original PNG-linked stem from 59da8b9e6c7e757318781df326429fec30db8a42. The published body now links the reviewed SVG.
+const palmaQuestion={"id":17,"content":"그림과 같이 직선 $y=-\\frac{1}{2}x+7$이 $y$축, $x$축과 만나는 점을 각각 $\\mathrm{A}, \\mathrm{B}$라 하고, 직선 $y=-\\frac{1}{2}x+7$이 두 함수 $y=\\log_a(x-1)$, $y=\\log_a(x-3)-1$의 그래프와 만나는 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라 하자. $\\overline{\\mathrm{AP}}=2\\overline{\\mathrm{QB}}$일 때, 상수 $a^3$의 값은? (단, $a>1$) [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\"></div>"};
 const palmaIdentity=assetIdentity(palmaTitle+'|17','PROBLEM_VISUAL','body');
 const palmaContext={repoRoot,question:palmaQuestion,identity:palmaIdentity,typography:{baseFontPx:30,displayScale:.4375}};
 const palmaPlan={
@@ -162,4 +164,86 @@ test('the translated figure refuses unbound source, swapped traces, extra author
   assert.ok(auditSourceSchematic(bad,expected).errors.includes('SCHEMATIC_LABELS_CHANGED'));
   const detached=svg.replace(/(<circle id="Q"[^>]*cx=")[^"]+/,(_m,head)=>head+'450');
   assert.ok(auditSourceSchematic(detached,expected).errors.includes('SCHEMATIC_POINT_CHANGED:Q'));
+});
+
+test('a published SVG link cannot provide authority to reuse the former PNG',()=>{
+  for(const [testPlan,scope] of [[plan,context],[palmaPlan,palmaContext]]){
+    const content=scope.question.content.replace('q17.png','q17-problem-v1.svg');
+    assert.notEqual(content,scope.question.content);
+    const question={...scope.question,content};
+    assert.throws(()=>prepareSourceSchematic(testPlan,{...scope,question}),/SCHEMATIC_SOURCE_NOT_BOUND_TO_QUESTION/);
+  }
+});
+
+const jeil22Title='22_제일고_1학기_중간_고2_수학I';
+const jeil22Question=loadBank(fs.readFileSync(path.join(repoRoot,'archive/exams/original/high/h2/1mid',jeil22Title+'.js'),'utf8')).find(row=>row.id===18);
+const jeil22Identity=assetIdentity(jeil22Title+'|18','PROBLEM_VISUAL','body');
+const jeil22Context={repoRoot,question:jeil22Question,identity:jeil22Identity,typography:{baseFontPx:36,displayScale:350/960}};
+const jeil22Plan={
+  capability:"source-exp-log-orthogonal-guides-schematic-v1",
+  sourceAsset:"archive/assets/images/22_제일고_1학기_중간_고2_수학I/q18.png",
+  sourceSha256:"91340bda760e30191e4e71fdeb4aefc8128532789f0f119110e63c4891419339",
+  view:{"width":960,"height":810},
+  paths:{
+    xAxis:[[12,741],[946,741]],
+    yAxis:[[202,54],[202,747]],
+    exponential:[
+      [11,510],[40,506],[70,500],[100,495],[130,486],[160,476],[185,464],
+      [202,455],[218,446],[240,432],[260,416],[280,399],[300,377],[320,352],
+      [340,321],[350,308],[365,279],[380,254],[395,215],[415,168],[430,121],
+      [442,86],[453,47],
+    ],
+    logarithm:[
+      [346,741],[355,725],[367,707],[384,683],[405,657],[430,635],[460,608],
+      [490,591],[520,577],[550,562],[590,545],[630,528],[680,510],[730,497],
+      [780,484],[830,469],[870,460],[889,455],[914,452],[946,449],
+    ],
+  },
+  labelOrigins:{"O":[184,760],"A":[158,407],"B":[333,760],"C":[889,469],"D":[308,266],"x":[925,759],"y":[167,31],"exp":[468,56],"log":[662,342],"schematic":[780,58]}
+};
+
+test('Jeil 2022 Q18 derives the quadrilateral and its perpendicular guides and restores B in the output padding',()=>{
+  const {svg,points,coverage,staticAudit,display}=prepareSourceSchematic(jeil22Plan,jeil22Context);
+  const {O,A,B,C,D}=points;
+  assert.equal(A[0],O[0]);assert.equal(B[1],O[1]);assert.equal(C[1],A[1]);assert.equal(D[0],B[0]);
+  assert.ok(D[1]<A[1]&&A[1]<B[1]&&A[0]<B[0]&&B[0]<C[0]);
+  assert.deepEqual([staticAudit.status,staticAudit.pathsVerified,staticAudit.pointsVerified,staticAudit.labelsVerified],['PASS',10,5,10]);
+  assert.equal(display.width,350);
+  assert.ok(coverage.CD.ratio>=.8&&coverage.CD.longestGap<=36);
+  assert.match(svg,/viewBox="0 0 960 810"/);
+  assert.match(svg,/id="label-B" data-label-kind="POINT_NAME" data-owner="B"[^>]*transform="translate\(333 760\)"/);
+  assert.equal((svg.match(/data-label-kind="EQUATION_LABEL"/g)??[]).length,2);
+  assert.doesNotMatch(svg,/data-label-kind="(?:TICK_LABEL|COORDINATE_LABEL)"|정답|②|a=\\sqrt/);
+});
+
+test('the author path refuses wrong source relations, invalid frames, off-ink traces and extra derived edges',()=>{
+  const stem=jeil22Question.content;
+  assert.ok(stem.includes('$y$축에 수직인'));
+  const incorrect={...jeil22Context,question:{...jeil22Question,content:stem.replace('$y$축에 수직인','$y$축에 평행인')}};
+  assert.throws(()=>prepareSourceSchematic(jeil22Plan,incorrect),/SCHEMATIC_SOURCE_POINT_BINDING_UNSUPPORTED/);
+  for(const [change,error] of [
+    [p=>p.sourceSha256='0'.repeat(64),/SCHEMATIC_SOURCE_SHA_MISMATCH/],
+    [p=>p.view.width=800,/SCHEMATIC_INVALID_OUTPUT_FRAME/],
+    [p=>p.view.width=900,/SCHEMATIC_TRACE_OUTSIDE_OUTPUT_FRAME/],
+    [p=>p.view.height=751,/SCHEMATIC_INVALID_LABEL_POSITIONS/],
+    [p=>p.paths.logarithm[7]=[490,622],/SCHEMATIC_TRACE_WITHOUT_SOURCE_INK:logarithm/],
+    [p=>p.paths.AC=[[202,455],[889,455]],/SCHEMATIC_INVALID_TRACE/]
+  ]){
+    const plan=structuredClone(jeil22Plan);change(plan);
+    assert.throws(()=>prepareSourceSchematic(plan,jeil22Context),error);
+  }
+});
+
+test('the quadrilateral readback rejects altered guides and point ownership',()=>{
+  const {svg,points}=prepareSourceSchematic(jeil22Plan,jeil22Context);
+  const groups=svg.split('<g id="schematic-labels">')[1].slice(0,-'</g></svg>'.length);
+  const paths={...jeil22Plan.paths,...Object.fromEntries(['AC','BD','AB','BC','CD','DA'].map(id=>[id,[points[id[0]],points[id[1]]]]))};
+  const expected={paths,points,groups:[{group:groups}],sourceSha256:jeil22Plan.sourceSha256,width:960,height:810,
+    title:'지수곡선과 로그곡선이 만드는 사각형의 개형',
+    description:'좌표평면의 개형이다. 세로축과 지수곡선의 교점은 A이고, 가로축과 로그곡선의 교점은 B이다. A에서 옮긴 수평선은 C에서 로그곡선과 만나고, B에서 세운 수직선은 D에서 지수곡선과 만난다. 네 점이 사각형을 이룬다.'};
+  assert.equal(auditSourceSchematic(svg,expected).status,'PASS');
+  const diagonal=svg.replace(/(<line id="AC"[^>]*y2=")[^"]+/,(_m,head)=>head+'500');
+  assert.ok(auditSourceSchematic(diagonal,expected).errors.includes('SCHEMATIC_PATH_CHANGED:AC'));
+  const owner=svg.replace('id="label-B" data-label-kind="POINT_NAME" data-owner="B"','id="label-B" data-label-kind="POINT_NAME" data-owner="D"');
+  assert.ok(auditSourceSchematic(owner,expected).errors.includes('SCHEMATIC_LABELS_CHANGED'));
 });

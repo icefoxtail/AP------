@@ -9,7 +9,11 @@ import {analyzeRenderedLayout,captureAtDisplaySize} from '../verify-rendered-lay
 
 export const SOURCE_SCHEMATIC_CAPABILITY='source-exp-log-schematic-v1';
 const TRANSLATED_LOG_CAPABILITY='source-log-translate-schematic-v1';
-export const isSourceSchematicCapability=value=>value===SOURCE_SCHEMATIC_CAPABILITY||value===TRANSLATED_LOG_CAPABILITY;
+const QUADRILATERAL_CAPABILITY='source-exp-log-orthogonal-guides-schematic-v1';
+export const isSourceSchematicCapability=value=>
+  [SOURCE_SCHEMATIC_CAPABILITY,TRANSLATED_LOG_CAPABILITY,QUADRILATERAL_CAPABILITY].includes(value);
+const guideIds=['AC','BD'];
+const outlineIds=['AB','BC','CD','DA'];
 
 const colors={exponential:'#1f5fa8',logarithm:'#2e7d32',logOriginal:'#1f5fa8',logShifted:'#2e7d32',secant:'#b85c00'};
 const commonOwners={x:'xAxis',y:'yAxis',line:'secant',schematic:'figure'};
@@ -40,10 +44,30 @@ function translatedLogFormulas(math,a){
   return {logOriginal:first.text,logShifted:second.text,line};
 }
 
-function sourceFormulas(question,translated){
+function quadrilateralFormulas(stem,math){
+  const base=stem.match(/1보다\s*큰\s*실수\s*\$([a-wz])\$/)?.[1];
+  if(!base)refuse('SCHEMATIC_SOURCE_STEM_UNSUPPORTED');
+  const exp=math.find(token=>new RegExp('^y='+base+'\\^x\\+[1-9]\\d?$').test(token));
+  const log=math.find(token=>new RegExp('^y=\\\\log_'+base+'\\(x-[1-9]\\d?\\)$').test(token));
+  if(!exp||!log)refuse('SCHEMATIC_SOURCE_STEM_UNSUPPORTED');
+  const body=stem.split(/<img\b/i)[0].replace(/\s/g,'').replace(/\\mathrm\{([ABCD]+)\}/g,'$1');
+  const relations=[
+    exp+'$의그래프가$y$축과만나는점을$A$',
+    log+'$의그래프가$x$축과만나는점을$B$',
+    '$A$를지나고$y$축에수직인직선이함수$'+log+'$의그래프와만나는점을$C$',
+    '$B$를지나고$x$축에수직인직선이함수$'+exp+'$의그래프와만나는점을$D$',
+    '사각형$ABCD$',
+  ];
+  if(!relations.every(relation=>body.includes(relation)))
+    refuse('SCHEMATIC_SOURCE_POINT_BINDING_UNSUPPORTED');
+  return {stem,exp,log};
+}
+
+function sourceFormulas(question,translated,quadrilateral){
   const stem=question.content??question.question;
   if(typeof stem!=='string')refuse('SCHEMATIC_SOURCE_STEM_UNSUPPORTED');
   const math=[...stem.matchAll(/\$([^$]+)\$/g)].map(match=>match[1].replace(/\s/g,''));
+  if(quadrilateral)return quadrilateralFormulas(stem,math);
   const a=math.find(x=>/^[a-wz]>1$/.test(x))?.[0];
   if(translated)return {stem,...translatedLogFormulas(math,a)};
   const line=math.find(x=>/^y=-x\+[1-9]\d?$/.test(x));
@@ -114,9 +138,35 @@ function expLogPoints(secant,axes,exponential,logarithm){
   return {O,C,A,B};
 }
 
+function quadrilateralPoints(axes,exponential,logarithm){
+  const {xAxis,yAxis}=axes,[[lx,ly],[rx]]=xAxis,[[tx,ty]]=yAxis;
+  // crossY on [-screenY, screenX] gives the x position at a given height.
+  const asHeight=logarithm.map(([x,y])=>[-y,x]);
+  const ay=crossY(exponential,tx),bx=crossY(asHeight,-ly);
+  const cx=ay===null?null:crossY(asHeight,-ay),dy=bx===null?null:crossY(exponential,bx);
+  if([ay,bx,cx,dy].some(value=>value===null)||
+    !(ty<=ay&&ay<ly&&lx<=bx&&tx<bx&&bx<cx&&bx<=rx&&dy<ay&&logarithm[0][0]>tx))
+    refuse('SCHEMATIC_POINT_TOPOLOGY_MISMATCH');
+  return {O:[tx,ly],A:[tx,ay],B:[bx,ly],C:[cx,ay],D:[bx,dy]};
+}
+
+function quadrilateralEdges(points,raster,coverage){
+  const edges={};
+  for(const id of [...guideIds,...outlineIds]){
+    const path=[points[id[0]],points[id[1]]],sample=inkCoverage(path,raster);
+    // The source scan may have a bounded gap in an outline. The ends still
+    // come from jointly verified curve/axis incidences, never from input edges.
+    const min=guideIds.includes(id)?.93:.8;
+    const maxGap=guideIds.includes(id)?7:36;
+    if(sample.ratio<min||sample.longestGap>maxGap)refuse('SCHEMATIC_TRACE_WITHOUT_SOURCE_INK:'+id);
+    edges[id]=path;coverage[id]=sample;
+  }
+  return edges;
+}
+
 // Validate the source-pixel paths; pixel coordinates are not allowed to acquire mathematical units.
-function geometry(paths,raster,curveIds,translated){
-  const pathIds=['xAxis','yAxis','secant',...curveIds];
+function geometry(paths,raster,curveIds,translated,quadrilateral){
+  const pathIds=['xAxis','yAxis',...(quadrilateral?[]:['secant']),...curveIds];
   if(!keys(paths,pathIds))refuse('SCHEMATIC_INVALID_TRACE');
   const coverage={};
   for(const id of pathIds){
@@ -128,8 +178,12 @@ function geometry(paths,raster,curveIds,translated){
     coverage[id]=link;
   }
   const {xAxis,yAxis,secant}=paths, [first,second]=curveIds.map(id=>paths[id]);
-  const [[lx,ly],[rx,ry]]=xAxis,[[tx,ty],[bx,by]]=yAxis,[[sx,sy],[ex,ey]]=secant;
-  if(ly!==ry||tx!==bx||lx>=tx||rx<=tx||ty>=ly||by<=ly||sx>=ex||sy>=ey)refuse('SCHEMATIC_INVALID_AXES_OR_LINE');
+  const [[lx,ly],[rx,ry]]=xAxis,[[tx,ty],[bx,by]]=yAxis;
+  if(ly!==ry||tx!==bx||lx>=tx||rx<=tx||ty>=ly||by<=ly)refuse('SCHEMATIC_INVALID_AXES_OR_LINE');
+  if(!quadrilateral){
+    const [[sx,sy],[ex,ey]]=secant;
+    if(sx>=ex||sy>=ey)refuse('SCHEMATIC_INVALID_AXES_OR_LINE');
+  }
   for(const trace of [first,second]){
     if(trace.slice(1).some(([x,y],i)=>x<=trace[i][0]||y>=trace[i][1]))refuse('SCHEMATIC_CURVE_NOT_INCREASING');
   }
@@ -143,16 +197,29 @@ function geometry(paths,raster,curveIds,translated){
   if(overlapStart>=overlapEnd||overlapXs.some(x=>crossY(first,x)>=crossY(second,x)))
     refuse('SCHEMATIC_CURVES_CROSS_OR_DO_NOT_OVERLAP');
   const axes={xAxis,yAxis};
-  const points=translated?translatedLogPoints(secant,axes,first,second):expLogPoints(secant,axes,first,second);
+  const points=quadrilateral?quadrilateralPoints(axes,first,second)
+    :translated?translatedLogPoints(secant,axes,first,second):expLogPoints(secant,axes,first,second);
   for(const [x,y] of Object.values(points))if(!raster.nearInk(x,y))refuse('SCHEMATIC_POINT_WITHOUT_SOURCE_INK');
-  return {points,coverage};
+  const drawnPaths=Object.fromEntries(pathIds.map(id=>[id,paths[id]]));
+  if(quadrilateral)Object.assign(drawnPaths,quadrilateralEdges(points,raster,coverage));
+  return {points,coverage,drawnPaths};
 }
 
 const attrs=(id,role)=>'id="'+id+'" data-role="'+role+'"';
 const position=(x,y)=>fmt(x)+','+fmt(y);
 
+function outputFrame(raster,view,drawnPaths){
+  if(!keys(view,['width','height'])||!Number.isSafeInteger(view.width)||!Number.isSafeInteger(view.height)||
+    view.width<.7*raster.width||view.width>raster.width||view.height<raster.height||view.height>raster.height+128)
+    refuse('SCHEMATIC_INVALID_OUTPUT_FRAME');
+  if(Object.values(drawnPaths).some(trace=>trace.some(([x,y])=>x>=view.width||y>=view.height)))
+    refuse('SCHEMATIC_TRACE_OUTSIDE_OUTPUT_FRAME');
+  return view;
+}
+
 export function prepareSourceSchematic(plan,{repoRoot,question,identity,typography}){
-  if(!keys(plan,['capability','sourceAsset','sourceSha256','paths','labelOrigins'])||
+  const quadrilateral=plan?.capability===QUADRILATERAL_CAPABILITY;
+  if(!keys(plan,['capability','sourceAsset','sourceSha256','paths','labelOrigins',...(quadrilateral?['view']:[])])||
     !isSourceSchematicCapability(plan.capability))refuse('SCHEMATIC_INVALID_PLAN');
   if(identity?.surface!=='PROBLEM_VISUAL'||!['body','image'].includes(identity.visualRole)||
     identity.assetId!==assetIdentity(identity.questionUid,identity.surface,identity.visualRole).assetId)
@@ -160,25 +227,28 @@ export function prepareSourceSchematic(plan,{repoRoot,question,identity,typograp
   const ordinal=question?.id??question?.qid??question?.number;
   if(!Number.isSafeInteger(ordinal)||!identity.questionUid.endsWith('|'+ordinal))refuse('SCHEMATIC_SOURCE_ORDINAL_MISMATCH');
   const translated=plan.capability===TRANSLATED_LOG_CAPABILITY;
-  const formulas=sourceFormulas(question,translated),raster=sourceRaster(plan,repoRoot,formulas.stem);
+  const formulas=sourceFormulas(question,translated,quadrilateral),raster=sourceRaster(plan,repoRoot,formulas.stem);
   const curveIds=translated?['logOriginal','logShifted']:['exponential','logarithm'];
-  const {points,coverage}=geometry(plan.paths,raster,curveIds,translated);
-  const pointNames=translated?['O','A','B','P','Q']:['O','A','B','C'];
+  const {points,coverage,drawnPaths}=geometry(plan.paths,raster,curveIds,translated,quadrilateral);
+  const frame=quadrilateral?outputFrame(raster,plan.view,drawnPaths):raster;
+  const pointNames=quadrilateral?['O','A','B','C','D']:translated?['O','A','B','P','Q']:['O','A','B','C'];
   const formulaNames=translated?curveIds:['exp','log'];
-  const labels=[...pointNames,'x','y',...formulaNames,'line','schematic'];
+  const labels=[...pointNames,'x','y',...formulaNames,...(quadrilateral?[]:['line']),'schematic'];
   const owner={...commonOwners,...Object.fromEntries(pointNames.map(id=>[id,id])),
     [formulaNames[0]]:curveIds[0],[formulaNames[1]]:curveIds[1]};
-  if(!keys(plan.labelOrigins,labels)||!Object.values(plan.labelOrigins).every(at=>screenPoint(at,raster)))refuse('SCHEMATIC_INVALID_LABEL_POSITIONS');
+  if(!keys(plan.labelOrigins,labels)||!Object.values(plan.labelOrigins).every(at=>screenPoint(at,frame)))refuse('SCHEMATIC_INVALID_LABEL_POSITIONS');
   const {baseFontPx,displayScale}=typography??{};
   if(!Number.isFinite(baseFontPx)||baseFontPx<20||baseFontPx>36||!Number.isFinite(displayScale)||displayScale<=0||displayScale>2||baseFontPx*displayScale<11)
     refuse('SCHEMATIC_TYPOGRAPHY_INVALID');
   const text={...Object.fromEntries(pointNames.map(id=>[id,id])),x:'x',y:'y',
     [formulaNames[0]]:formulas[formulaNames[0]],[formulaNames[1]]:formulas[formulaNames[1]],line:formulas.line,schematic:'개형'};
-  const title=translated?'두 로그곡선과 직선의 개형':expLogTitle;
-  const description=translated
+  const title=quadrilateral?'지수곡선과 로그곡선이 만드는 사각형의 개형':translated?'두 로그곡선과 직선의 개형':expLogTitle;
+  const description=quadrilateral
+    ?'좌표평면의 개형이다. 세로축과 지수곡선의 교점은 A이고, 가로축과 로그곡선의 교점은 B이다. A에서 옮긴 수평선은 C에서 로그곡선과 만나고, B에서 세운 수직선은 D에서 지수곡선과 만난다. 네 점이 사각형을 이룬다.'
+    :translated
     ?'좌표평면의 개형이다. 직선이 세로축과 A에서, 가로축과 B에서 만난다. 첫 로그곡선은 직선과 P에서 만나고 오른쪽 아래로 옮긴 둘째 로그곡선은 Q에서 만난다. O는 원점이다.'
     :expLogDescription;
-  const width=raster.width,height=raster.height,type=typesetter();
+  const {width,height}=frame,type=typesetter();
   const groups=labels.map(id=>{
     const f=type({id:'label-'+id,owner:owner[id],factRole:'GIVEN',fontPx:baseFontPx,
       ...(id==='schematic'?{kind:'TEXT',text:text[id]}:{kind:'MATH',tex:text[id]})},identity);
@@ -194,11 +264,13 @@ export function prepareSourceSchematic(plan,{repoRoot,question,identity,typograp
     const [l,t,r,d]=a.box,[x,y,u,v]=b.box;
     if(l<u&&x<r&&t<v&&y<d)refuse('SCHEMATIC_LABEL_OVERLAP:'+a.id+':'+b.id);
   }
-  const strokes=['xAxis','yAxis','secant',...curveIds].map(id=>{
-    const trace=plan.paths[id],stroke=colors[id]??'#111',weight=id==='xAxis'||id==='yAxis'?1.8:3.2;
-    if(id==='xAxis'||id==='yAxis'||id==='secant'){
+  const strokes=Object.entries(drawnPaths).map(([id,trace])=>{
+    const isAxis=id==='xAxis'||id==='yAxis',guide=guideIds.includes(id),side=outlineIds.includes(id);
+    const stroke=guide?'#475569':side?'#64748b':colors[id]??'#111';
+    const weight=isAxis?1.8:guide?2.2:side?2.4:3.2;
+    if(!curveIds.includes(id)){
       const [[x1,y1],[x2,y2]]=trace;
-      return '<line '+attrs(id,id==='secant'?'line':'axis')+' x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+stroke+'" stroke-width="'+weight+'"/>';
+      return '<line '+attrs(id,isAxis?'axis':'line')+' x1="'+fmt(x1)+'" y1="'+fmt(y1)+'" x2="'+fmt(x2)+'" y2="'+fmt(y2)+'" stroke="'+stroke+'" stroke-width="'+weight+'"/>';
     }
     return '<polyline '+attrs(id,'curve')+' points="'+trace.map(([x,y])=>position(x,y)).join(' ')+'" fill="none" stroke="'+stroke+'" stroke-width="'+weight+'"'+(id===curveIds[1]?' stroke-dasharray="8 4"':'')+'/>';
   });
@@ -207,7 +279,7 @@ export function prepareSourceSchematic(plan,{repoRoot,question,identity,typograp
     '" role="img" aria-labelledby="visual-title visual-desc" data-source-png-sha256="'+plan.sourceSha256+'" data-scale-policy="SCHEMATIC_ALLOWED" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="10">'+
     '<title id="visual-title">'+title+'</title><desc id="visual-desc">'+description+'</desc><rect width="'+width+'" height="'+height+'" fill="#fff"/>'+
     '<g id="schematic-geometry">'+strokes.join('')+dots.join('')+'</g><g id="schematic-labels">'+groups.map(g=>g.group).join('')+'</g></svg>';
-  const staticAudit=auditSourceSchematic(svg,{paths:plan.paths,points,groups,sourceSha256:plan.sourceSha256,width,height,title,description});
+  const staticAudit=auditSourceSchematic(svg,{paths:drawnPaths,points,groups,sourceSha256:plan.sourceSha256,width,height,title,description});
   if(staticAudit.status!=='PASS')refuse('SCHEMATIC_STATIC_AUDIT_FAILED:'+staticAudit.errors.join(','));
   return {svg,staticAudit,coverage,points,display:{width:width*displayScale,height:height*displayScale},sourceSha256:plan.sourceSha256,svgSha256:plainSha(Buffer.from(svg))};
 }
