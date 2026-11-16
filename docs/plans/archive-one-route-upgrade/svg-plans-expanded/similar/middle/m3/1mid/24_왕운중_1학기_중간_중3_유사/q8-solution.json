@@ -1,0 +1,82 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "P",
+            "value": "-2+sqrt(13)",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "-2-sqrt(13)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(13)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "LEFT"
+          },
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            -2,
+            0
+          ],
+          "to": [
+            0,
+            3
+          ],
+          "toName": "C"
+        }
+      }
+    ]
+  },
+  "caption": "모눈의 가로 2, 세로 3으로 빗변 AC의 길이를 구한 뒤 중심 A에서 양쪽으로 같은 길이를 옮긴다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(−2), B(0), C(0,3), AC 반지름의 원과 수직선 교점은 오른쪽 P, 왼쪽 Q이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심 좌표와 반지름을 구별하고 P·Q 좌표나 정답 보기 번호는 쓰지 않는다."
+  ],
+  "accessibilityDescription": "모눈의 가로 2, 세로 3으로 빗변 AC의 길이를 구한 뒤 중심 A에서 양쪽으로 같은 길이를 옮긴다."
+}
