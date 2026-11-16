@@ -1862,3 +1862,8 @@
 - 중2 원본 2mid 이수·향림 2시험지 48문항 추가: PICK 37 / NEW_KEY 11, check PASS 34 / PT_ONLY 2 / OUT_OF_CANDIDATES 1 / TOOL_ERROR 11. C `ae3d86665dca6bf8f4fb5ccf2ec9525b783b4595` 원격 확인.
 - 중1 유사 2mid 12시험지 287문항 완료: PICK 276 / NEW_KEY 11 / HOLD 0. 두 독립 담당자의 193+94행을 UID 중복 없이 통합한 C `a1b679eb0a338e614cafb94ef81aec3e9ec95fe6` 원격 확인. 원문의심은 결과표 note에 기록.
 - 위 결과를 포함한 TASK10 중등 원격 누적 329시험지 7,848문항. 원본·정본·main 변경 없음.
+
+
+### 추가 체크포인트: 중2 2학기 중간 2024~25년
+- 9시험지 213문항, PICK 200 / NEW_KEY 13 / HOLD 0. check PASS 164 / PT_ONLY 33 / TOOL_ERROR 13 / OUT_OF_CANDIDATES 3. 그림 164개 확인, 원문 의심 4건은 결과 note에 기재. C 커밋 `15871aa5cedfeaa66d4534c76d20cdc15768e666`, 원격 697행 확인.
+- TASK10 중등 원격 누적 338시험지·8,061문항. 중2 2026년 4시험지는 별도 담당자가 판정 중.
