@@ -541,7 +541,8 @@
   // unified unit layer (archive2-quick-pools.js) and use the existing catalog and output engine
   // without changing the compose draft or its selection controls.
   const Quick = window.Archive2QuickPools;
-  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(),
+  const QuickTree = window.Archive2UnitTree;
+  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
     presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";
@@ -2368,8 +2369,34 @@
     if (quickPoolCache.index !== index || quickPoolCache.meta !== metaIndex) {
       const metaByUid = new Map((metaIndex || []).map(row => [row.questionUid || row.uid, row]));
       quickPoolCache = { index, meta: metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
+      quickScopeCache = null;
     }
     return quickPoolCache.pools;
+  }
+  // 중단원 / 소단원 scopes of the chosen grade and subject (shared unit tree). Built once per pool / selection /
+  // 소단원 묶음표 load and read by every render and click. The 묶음표 (high school 소단원, a small JSON) is requested
+  // at boot; until it is there a high school list shows its 단원 only and says so.
+  let quickScopeCache = null;
+  let quickGroupsRequested = false;
+  function quickLoadGroups() {
+    if (quickGroupsRequested || !QuickTree?.loadGroups) return;
+    quickGroupsRequested = true;
+    QuickTree.loadGroups().then((doc) => {
+      quickState.groupsFailed = !doc;
+      quickScopeCache = null;
+      if (state.catalog && isQuickAssessmentView()) render();
+    });
+  }
+  function quickScopes(pools) {
+    if (!pools || !quickState.grade || !quickState.subject) return null;
+    const middle = /^중[123]$/.test(quickState.grade);
+    if (!middle) quickLoadGroups();
+    const groupsReady = middle || Boolean(QuickTree?.groupsLoaded?.());
+    const key = `${quickState.grade}|${quickState.subject}|${groupsReady}`;
+    if (quickScopeCache?.pools !== pools || quickScopeCache.key !== key)
+      quickScopeCache = { pools, key, scopes: Quick.buildScopes(pools, quickState.grade, quickState.subject,
+        { index: quickPoolCache.index, metaByUid: quickPoolCache.metaByUid }) };
+    return quickScopeCache.scopes;
   }
   // The grade / subject choice is shared by the four products; the difficulty preset is per product.
   function quickEnsureSelection(pools) {
@@ -2379,68 +2406,146 @@
       quickState.subject = (subjects.find(subject => subject.items > 0) || subjects[0] || {}).value || "";
     return subjects;
   }
+  const quickGradeClass = (grade) => `grade-${({ 중1: "m1", 중2: "m2", 중3: "m3", 고1: "h1", 고2: "h2", 고3: "h3" })[grade] || "none"}`;
+  const QUICK_INTRO = {
+    "five-minute": (grade) => `대단원 전체나 ${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 4문항, 수업 앞뒤 5분 확인용입니다.`,
+    "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
+    "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
+    "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
+  };
+  // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
+  function quickRowMarkup(item, product, picked, busy) {
+    const { node, role } = item;
+    const name = role === "root" && node.kind !== "unclassified" ? `${node.label} 전체` : node.label;
+    const counts = quickCountsText(node, product);
+    const body = `<span class="qk-row-name">${esc(name)}</span><small>${counts}</small>`;
+    if (product.combine) {
+      const implied = role === "child" && picked.has(node.root.key);
+      return `<label class="qk-row qk-check${role === "root" ? " is-root" : ""}${implied ? " is-implied" : ""}"><input type="checkbox" data-quick-bundle="${esc(node.key)}"
+        ${picked.has(node.key) || implied ? "checked" : ""}${implied ? " disabled" : ""}><span>${body}</span></label>`;
+    }
+    return `<button type="button" class="qk-row${role === "root" ? " is-root" : ""}" data-action="quick-pick" data-unit-key="${esc(node.key)}"
+      aria-pressed="${picked.has(node.key)}" ${busy ? "disabled" : ""}>${body}</button>`;
+  }
   function renderQuick() {
     const product = quickProduct();
-    const tabs = `<div class="quick-tabs" role="group" aria-label="평가 종류">${Quick?.VIEWS.map(view =>
-      `<button type="button" class="quick-tab" data-view="${view}" aria-pressed="${view === state.view}">${esc(Quick.PRODUCTS[view].title)}</button>`).join("") || ""}</div>`;
+    const tabs = `<div class="qk-seg" role="group" aria-label="평가 종류">${Quick?.VIEWS.map(view =>
+      `<button type="button" class="qk-seg-btn" data-view="${view}" aria-pressed="${view === state.view}">${esc(Quick.PRODUCTS[view].title)}</button>`).join("") || ""}</div>`;
     const pools = quickPools();
-    if (!pools) return `${tabs}<section class="panel"><h1>${esc(product?.title || "빠른 평가")}</h1><p class="muted">단원 목록을 준비하지 못했습니다. 페이지를 새로 고쳐 주세요.</p></section>`;
+    if (!pools) return `<div class="qk">${tabs}<section class="panel"><h1>${esc(product?.title || "빠른 평가")}</h1><p class="muted">단원 목록을 준비하지 못했습니다. 페이지를 새로 고쳐 주세요.</p></section></div>`;
     const subjects = quickEnsureSelection(pools);
     const preset = quickPreset();
     const busy = quickState.busy;
     const mix = Quick.presetMix(product, preset);
-    const units = quickState.grade && quickState.subject
-      ? Quick.unitsFor(pools, state.view, quickState.grade, quickState.subject) : [];
-    const gradeChips = Unified.GRADES.map(grade =>
-      `<button type="button" class="quick-chip" data-action="quick-grade" data-grade="${grade}" aria-pressed="${grade === quickState.grade}">${grade}</button>`).join("");
+    const grade = quickState.grade;
+    const scopes = quickScopes(pools);
+    const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
+    const noun = Quick.unitNoun(state.view, grade);
+    const gradeButtons = Unified.GRADES.map(label =>
+      `<button type="button" class="find-grade ${quickGradeClass(label)}" data-action="quick-grade" data-grade="${label}" aria-pressed="${label === grade}">${label}</button>`).join("");
     const subjectChips = subjects.length > 1 ? `<div class="quick-chips" role="group" aria-label="과목">${subjects.map(subject =>
-      `<button type="button" class="quick-chip" data-action="quick-subject" data-subject="${esc(subject.value)}" aria-pressed="${subject.value === quickState.subject}"${subject.items || subject.value === quickState.subject ? "" : " disabled"}>${esc(subject.label)} <small>${subject.items}</small></button>`).join("")}</div>` : "";
-    let body;
-    if (!quickState.grade) body = '<p class="muted">학년을 선택하세요.</p>';
-    else if (!units.length)
-      body = `<p class="muted">이 과목에는 ${esc(product.title)}에 쓸 수 있는 ${esc(product.unitLabel)}가 아직 없습니다.</p>`;
-    else if (product.combine) {
-      const selectedUnits = units.filter(unit => quickState.bundle.has(unit.key));
-      const verdictAll = Quick.evaluate(units, product, preset);
-      const verdictSel = Quick.evaluate(selectedUnits, product, preset);
-      const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
-      const rows = units.map(unit => `<label class="quick-unit quick-unit-check"><input type="checkbox" data-quick-bundle="${esc(unit.key)}"
-        ${quickState.bundle.has(unit.key) ? "checked" : ""}><span><strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small></span></label>`).join("");
-      body = `<p class="muted">범위를 고르세요. 과목 전체에서 출제하거나, 원하는 단원만 골라 묶을 수 있습니다.</p>
-        <div class="quick-units">${rows}</div>
-        <div class="quick-actions">
-          ${button("quick-open-all", `${esc(subjectLabel)} 전체에서 ${product.count}문항 출력`,
-            `type="button" class="primary" ${verdictAll.ok && !busy ? "" : "disabled"}`)}
-          ${button("quick-open-selected", `선택한 단원 ${selectedUnits.length}개에서 ${product.count}문항 출력`,
-            `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
-        </div>
-        ${!verdictAll.ok ? `<p class="muted quick-reason">과목 전체: ${esc(Quick.shortageText(verdictAll.shortages))}</p>` : ""}
-        ${selectedUnits.length && !verdictSel.ok ? `<p class="muted quick-reason">선택한 단원: ${esc(Quick.shortageText(verdictSel.shortages))}</p>` : ""}`;
+      `<button type="button" class="quick-chip" data-action="quick-subject" data-subject="${esc(subject.value)}" aria-pressed="${subject.value === quickState.subject}"${subject.items || subject.value === quickState.subject ? "" : " disabled"}>${esc(subject.label)} <small>${subject.items}</small></button>`).join("")}</div>`
+      : (subjects.length ? `<p class="qk-subject-note">${esc(subjectLabel)}</p>` : "");
+    // ---- unit list (left) and what it will make (right)
+    let list = "", result = "", bar = "";
+    const openAll = (label, ok) => button("quick-open-all", label, `type="button" class="primary" ${ok && !busy ? "" : "disabled"}`);
+    if (!grade) {
+      list = '<p class="muted">학년을 선택하세요.</p>';
+      result = `<p class="muted">학년과 ${esc(noun)}을 고르면 만들 시험지가 여기에 보입니다.</p>`;
+    } else if (!scopes?.roots.length) {
+      list = `<p class="muted">이 과목에는 ${esc(product.title)}에 쓸 수 있는 ${esc(noun)}가 아직 없습니다.</p>`;
+      result = `<p class="muted">고를 수 있는 ${esc(noun)}가 없습니다. 다른 학년이나 과목을 선택해 보세요.</p>`;
     } else {
-      const { ready, short } = Quick.partition(units, product, preset);
-      const itemsReady = ready.reduce((sum, row) => sum + row.unit.total, 0);
-      const parent = unit => product.unitKind === "subunit" ? `<span class="quick-unit-parent">${esc(unit.unitLabel)}</span>` : "";
-      const readyCards = ready.map(({ unit }) => `<button type="button" class="quick-unit" data-action="quick-unit"
-        data-unit-key="${esc(unit.key)}" ${busy ? "disabled" : ""}>${parent(unit)}<strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small></button>`).join("");
-      const shortCards = short.map(({ unit, verdict }) => `<button type="button" class="quick-unit is-short" disabled aria-disabled="true">
-        ${parent(unit)}<strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small><em class="quick-reason">${esc(Quick.shortageText(verdict.shortages))}</em></button>`).join("");
-      body = `<p class="muted" id="quick-ready-summary">이 난이도로 만들 수 있는 ${esc(product.unitLabel)} ${ready.length}개 (문항 ${itemsReady}개) · 전체 ${units.length}개</p>
-        ${ready.length ? `<div class="quick-units">${readyCards}</div>` : '<p class="callout">이 난이도로 만들 수 있는 단원이 없습니다. 난이도를 바꾸거나 다른 과목을 선택해 보세요.</p>'}
-        ${short.length ? `<details class="quick-short" open><summary>문항이 부족한 ${esc(product.unitLabel)} ${short.length}개</summary><div class="quick-units">${shortCards}</div></details>` : ""}`;
+      const groups = Quick.pickableGroups(scopes, state.view);
+      const items = groups.flatMap(group => group.items.map(item => ({ ...item, section: group.section, unclassified: group.unclassified })));
+      const known = new Set(items.map(item => item.node.key));
+      // A choice made on another product stays only where this product can pick it.
+      if (!known.has(quickState.pick)) quickState.pick = "";
+      for (const key of [...quickState.bundle]) if (!known.has(key)) quickState.bundle.delete(key);
+      const picked = new Set(product.combine ? quickState.bundle : (quickState.pick ? [quickState.pick] : []));
+      // Which rows can make this product at this difficulty. 종합평가 unions units, so a row is only "empty" or not.
+      const verdicts = new Map(items.map(item => [item.node.key, product.combine
+        ? { ok: item.node.total > 0, shortages: [] } : Quick.evaluate([item.node], product, preset)]));
+      const readyCount = items.filter(item => verdicts.get(item.node.key).ok).length;
+      const groupMarkup = (group, ready) => {
+        const rows = group.items.filter(item => verdicts.get(item.node.key).ok === ready);
+        if (!rows.length) return "";
+        const head = `<h3 class="qk-group-title">${esc(group.section.label)}<small>${group.section.unit.total}문항</small></h3>`;
+        if (ready) return `<div class="qk-group">${head}<div class="qk-rows">${rows.map(item => quickRowMarkup(item, product, picked, busy)).join("")}</div></div>`;
+        return `<div class="qk-group">${head}<div class="qk-rows">${rows.map(item => {
+          const { node, role } = item, verdict = verdicts.get(node.key);
+          const name = role === "root" && node.kind !== "unclassified" ? `${node.label} 전체` : node.label;
+          return `<div class="qk-row is-short" aria-disabled="true"><span class="qk-row-name">${esc(name)}</span><em class="qk-reason">${esc(product.combine ? "문항 없음" : Quick.shortReason(verdict.shortages))}</em></div>`;
+        }).join("")}</div></div>`;
+      };
+      const readyMarkup = groups.map(group => groupMarkup(group, true)).join("");
+      const shortRows = items.length - readyCount;
+      const shortNoun = product.combine ? "문항이 없는" : "문항이 모자란";
+      const shortMarkup = shortRows ? `<div class="qk-short"><button type="button" class="qk-short-toggle" data-action="quick-short-toggle" aria-expanded="${quickState.shortOpen}">${shortNoun} ${esc(noun)} ${shortRows}개</button>
+        ${quickState.shortOpen ? `<div class="qk-short-body">${groups.map(group => groupMarkup(group, false)).join("")}</div>` : ""}</div>` : "";
+      const groupNote = !scopes.middle && scopes.groupsMissing && state.view !== "unit-test"
+        ? `<p class="callout qk-note">${quickState.groupsFailed ? "소단원 목록을 불러오지 못해 단원 단위로 보입니다." : "소단원 목록을 불러오는 중입니다. 단원 단위로 먼저 보입니다."}</p>` : "";
+      const hint = product.combine
+        ? "범위를 고르세요. 대단원을 고르면 그 안의 중단원이 모두 들어갑니다. 고르지 않으면 과목 전체에서 냅니다."
+        : `${esc(noun)} 하나를 고르세요. 숫자는 단계별 기출 문항 수입니다.`;
+      list = `${groupNote}<p class="muted qk-hint" id="quick-ready-summary">이 난이도로 만들 수 있는 ${esc(noun)} ${readyCount}개 · 전체 ${items.length}개</p>
+        <p class="muted qk-hint">${hint}</p>
+        ${readyCount ? `<div class="qk-groups">${readyMarkup}</div>` : '<p class="callout">이 난이도로 만들 수 있는 단원이 없습니다. 난이도를 바꾸거나 다른 과목을 선택해 보세요.</p>'}${shortMarkup}`;
+      // ---- result
+      const info = (heading, count, lines, actions) => `<h2 class="qk-r-title">${esc(heading)}</h2>${lines}<p class="qk-r-count"><span class="qk-big">${count}</span>문항</p>
+        <p class="muted qk-r-mix">${esc(Quick.PRESET_LABELS[preset])} · ${mix}</p><div class="qk-actions">${actions}</div>
+        <p class="muted qk-r-after">열리는 창에서 출력 · 보관함 저장 · 반에 출제를 할 수 있습니다.</p>`;
+      if (product.combine) {
+        const selectedUnits = Quick.selectNodes(scopes, [...quickState.bundle]);
+        const verdictAll = Quick.evaluate(scopes.roots, product, preset);
+        const verdictSel = Quick.evaluate(selectedUnits, product, preset);
+        const names = selectedUnits.slice(0, 3).map(unit => unit.label).join(" · ") + (selectedUnits.length > 3 ? ` 외 ${selectedUnits.length - 3}개` : "");
+        const reason = (verdict) => verdict.ok ? "" : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`;
+        const actions = `${button("quick-open-selected", `선택한 ${esc(noun)} ${selectedUnits.length}개로 시험지 열기`,
+          `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
+          ${openAll(`${esc(subjectLabel)} 전체로 시험지 열기`, verdictAll.ok)}`;
+        const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(subjectLabel)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
+          ${selectedUnits.length ? reason(verdictSel) : reason(verdictAll)}`;
+        result = info(product.title, product.count, lines, actions);
+        bar = { text: selectedUnits.length ? `${product.count}문항 · ${selectedUnits.length}개 ${noun}` : `${product.count}문항 · 과목 전체`,
+          action: selectedUnits.length ? "quick-open-selected" : "quick-open-all",
+          disabled: busy || (selectedUnits.length ? !verdictSel.ok : !verdictAll.ok) };
+      } else {
+        const node = quickState.pick ? scopes.byKey.get(quickState.pick) : null;
+        if (!node) {
+          result = `<h2 class="qk-r-title">${esc(product.title)}</h2><p class="muted">왼쪽에서 ${esc(noun)}을 고르면 만들 시험지가 여기에 보입니다.</p>`;
+          bar = { text: `${noun}을 고르세요`, action: "quick-open-pick", disabled: true };
+        } else {
+          const verdict = Quick.evaluate([node], product, preset);
+          const path = node.root ? `${node.root.label} › ${node.label}` : node.label;
+          const lines = `<p class="qk-r-scope"><strong>${esc(path)}</strong></p>${verdict.ok ? "" : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`}`;
+          result = info(product.title, product.count, lines, button("quick-open-pick", "시험지 열기", `type="button" class="primary" ${verdict.ok && !busy ? "" : "disabled"}`));
+          bar = { text: `${product.count}문항 · ${node.label}`, action: "quick-open-pick", disabled: busy || !verdict.ok };
+        }
+      }
     }
-    return `${tabs}<div class="intro"><div><h1>${esc(product.title)}</h1></div>${state.view === "subunit-test"
-      ? '<a href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
-      <section class="panel"><h2>학년 · 과목</h2>
-        <div class="quick-chips" role="group" aria-label="학년">${gradeChips}</div>${subjectChips}
-        <p class="muted">2015·2022 개정 문항은 2022 개정 단원 기준으로 함께 묶어 보여줍니다.</p></section>
-      <section class="panel"><h2>난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
-        <div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
-          <div class="five-minute-slider-rail">${product.order.map(() => "<span></span>").join("")}
-            <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
-              value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
-          </div>
-        </div><p class="muted" id="quick-assessment-mix">${mix}</p><p class="muted">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></section>
-      <section class="panel"><h2>${esc(product.unitLabel)}</h2>${body}</section>`;
+    const barMarkup = bar ? `<div class="qk-bar" role="region" aria-label="시험지 열기"><div class="qk-bar-text"><strong class="qk-bar-count">${esc(bar.text)}</strong></div>
+      ${button(bar.action, "시험지 열기", `type="button" class="qk-bar-main" ${bar.disabled ? "disabled" : ""}`)}</div>` : "";
+    const levelOpen = quickState.levelOpen ? " is-open" : "";
+    return `<div class="qk">${tabs}<div class="qk-intro"><h1>${esc(product.title)}</h1><p class="muted">${esc(QUICK_INTRO[state.view]?.(grade) || "")}</p>${state.view === "subunit-test"
+      ? '<a class="qk-pack-link" href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
+      <div class="qk-grid">
+        <div class="qk-cond">
+          <section class="qk-block"><h2 class="qk-h">학년 · 과목</h2>
+            <div class="qk-grades" role="group" aria-label="학년">${gradeButtons}</div>${subjectChips}</section>
+          <section class="qk-block qk-level${levelOpen}"><div class="qk-level-head"><h2 class="qk-h">난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
+            <button type="button" class="qk-fold" data-action="quick-level-toggle" aria-expanded="${quickState.levelOpen}">바꾸기</button></div>
+            <p class="muted" id="quick-assessment-mix">${mix}</p>
+            <div class="qk-level-body"><div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
+              <div class="five-minute-slider-rail">${product.order.map(() => "<span></span>").join("")}
+                <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
+                  value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
+              </div></div>
+              <p class="muted qk-note">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></div></section>
+          <section class="qk-block qk-scope"><h2 class="qk-h">${esc(noun)}</h2>${list}</section>
+        </div>
+        <aside class="qk-result" aria-label="만들어질 평가">${result}</aside>
+      </div>${barMarkup}</div>`;
   }
   function fiveMinuteShuffle(rows) {
     const result = rows.slice();
@@ -2528,7 +2633,7 @@
   }
   function quickUnitsLabel(units, subjectLabel, all) {
     if (all) return `${subjectLabel} 전체`;
-    const names = units.map(unit => unit.kind === "subunit" ? unit.label : unit.label);
+    const names = units.map(unit => unit.label);
     return names.length > 3 ? `${names.slice(0, 3).join(" · ")} 외 ${names.length - 3}개` : names.join(" · ");
   }
   // unitKeys: an array of unit keys, or "all" (every unit of the chosen subject, 종합평가).
@@ -2538,9 +2643,10 @@
     const pools = quickPools();
     if (!pools || !quickState.grade || !quickState.subject) return;
     const preset = quickPreset();
-    const all = Quick.unitsFor(pools, state.view, quickState.grade, quickState.subject);
+    const scopes = quickScopes(pools);
+    if (!scopes) return;
     const everything = unitKeys === "all";
-    const units = everything ? all : all.filter(unit => unitKeys.includes(unit.key));
+    const units = everything ? scopes.roots : Quick.selectNodes(scopes, unitKeys);
     const subjectLabel = Unified.subjectByValue(quickState.grade, quickState.subject)?.label || "";
     const label = quickUnitsLabel(units, subjectLabel, everything);
     if (!units.length || (!product.combine && units.length !== 1)) return;
@@ -4198,6 +4304,7 @@
     });
     document.body.dataset.archiveView = state.view;
     window.Archive2Navigation?.sync?.(state.view);
+    const quickFocus = isQuickAssessmentView() ? quickFocusKey() : null;
     $("content").innerHTML =
       state.view === "home"
         ? renderHome()
@@ -4218,6 +4325,21 @@
       focusTarget?.focus?.({ preventScroll: true });
     }
     if (state.view === "compose" && state.selected.length) updatePreview();
+    if (quickFocus) quickFocusRestore(quickFocus);
+  }
+  // A quick-assessment click re-draws the screen; keyboard focus returns to the same button or check box.
+  function quickFocusKey() {
+    const el = document.activeElement;
+    if (!el?.closest?.(".qk") || !el.dataset) return null;
+    const key = el.dataset.unitKey || el.dataset.quickBundle || el.dataset.grade || el.dataset.subject || el.dataset.view || "";
+    return { action: el.dataset.action || "", key, id: el.id || "" };
+  }
+  function quickFocusRestore(focus) {
+    const all = [...document.querySelectorAll(".qk [data-action], .qk [data-quick-bundle], .qk [data-view], .qk input[id]")];
+    const target = all.find(el => el.id && el.id === focus.id)
+      || all.find(el => (el.dataset.action || "") === focus.action
+        && (el.dataset.unitKey || el.dataset.quickBundle || el.dataset.grade || el.dataset.subject || el.dataset.view || "") === focus.key);
+    target?.focus?.({ preventScroll: true });
   }
   async function prepare() {
     const records = state.selected,
@@ -5571,8 +5693,17 @@
         const target = product.routeResolver();
         if (target && !state.catalog && openRouteInPage(target)) return;
         if (target) location.href = String(target);
-      } else if (a === "quick-unit") {
-        await openQuickAssessment([b.dataset.unitKey]);
+      } else if (a === "quick-pick") {
+        quickState.pick = b.dataset.unitKey || "";
+        render();
+      } else if (a === "quick-open-pick") {
+        await openQuickAssessment(quickState.pick ? [quickState.pick] : []);
+      } else if (a === "quick-short-toggle") {
+        quickState.shortOpen = !quickState.shortOpen;
+        render();
+      } else if (a === "quick-level-toggle") {
+        quickState.levelOpen = !quickState.levelOpen;
+        render();
       } else if (a === "quick-open-all") {
         await openQuickAssessment("all");
       } else if (a === "quick-open-selected") {
@@ -5581,11 +5712,15 @@
         quickState.grade = b.dataset.grade || "";
         quickState.subject = "";
         quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         replaceUrlState();
         render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
         quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         replaceUrlState();
         render();
       } else if (a === "home-school" || a === "home-all-schools") {
@@ -6341,6 +6476,7 @@
       quickState.grade = Unified?.GRADES.includes(grade) ? grade : "";
       quickState.subject = quickState.grade ? p.get(QUICK_URL_KEYS.subject) || "" : "";
       quickState.bundle.clear();
+      quickState.pick = "";
     }
     state.savedPaperId = p.get("paper_id") || "";
     state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(p.get("status"))
@@ -6592,6 +6728,7 @@
   }
   (async () => {
     readUrl();
+    if (isQuickAssessmentView()) quickLoadGroups();
     Boot?.mountProgress?.($("boot-progress"));
     // 1) First screen: home / 보관함 / 출제 내역 are drawn now; every other screen shows its progress.
     render();

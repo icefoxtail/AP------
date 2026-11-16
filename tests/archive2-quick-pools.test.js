@@ -13,10 +13,14 @@ const Unified = require('../archive/archive2-unified-units.js');
 const Quick = require('../archive/archive2-quick-pools.js');
 const archiveSource = require('../archive/archive2-source.js');
 const navigation = require('../archive/archive2-navigation.js');
+const Tree = require('../archive/archive2-unit-tree.js');
+const Toc = require('../archive/rpm-middle-toc.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
+const groupsDoc = JSON.parse(read('data/archive2-subunit-groups.json'));
+Tree.setGroups(groupsDoc);
 let catalogPromise;
 const catalog = () => (catalogPromise ||= productionCatalog().then(result => result.data));
 
@@ -177,89 +181,138 @@ test('고2 and 고3 views share a source question; a question is counted once pe
   assert.equal(pools.stats.usable, 1);
 });
 
-test('소단원 pools use only recorded sub-units, labelled in Korean, under the unified unit', () => {
-  const rows = [...many(1, 3), ...many(2, 3)].map(r => entry(r));
-  const unrecorded = entry(record(2));
-  const meta = new Map();
-  rows.forEach((row, i) => meta.set(row.uid, { subUnitKey: 'H22-C-01-A', subUnit: i % 4 === 0 ? 'polynomial basic' : '다항식의 덧셈과 곱셈' }));
-  const pools = Quick.buildPools(indexOf([...rows, unrecorded]), { metaByUid: meta });
-  const subs = Quick.unitsFor(pools, 'subunit-test', '고1', 'COMMON_MATH_1');
-  assert.equal(subs.length, 1);
-  assert.equal(subs[0].label, '다항식의 덧셈과 곱셈');
-  assert.equal(subs[0].unitLabel, '다항식의 연산');
-  assert.equal(subs[0].total, 6, 'the question without a recorded sub-unit is not guessed into one');
-  assert.equal(Quick.unitsFor(pools, 'unit-test', '고1', 'COMMON_MATH_1')[0].total, 7);
-  assert.equal(Quick.unitsFor(Quick.buildPools(indexOf(rows)), 'subunit-test', '고1', 'COMMON_MATH_1').length, 0);
-});
+// ---- 중단원 / 소단원 scopes from the shared unit tree (2026-11-16) ------------------------------------------------
+const realParent = (grade, L2) => Toc.parents(grade).find(parent => parent.L2 === L2);
+function realMiddleEntry(rec, parent, extra = {}) {
+  return entry(rec, { grade: '중1', subject: middleSubject, subjectLabel: '중1 수학', unitKey: parent.unitKey,
+    unitLabel: parent.L1, unitOrder: Unified.unitsForGrade('중1').find(unit => unit.key === parent.unitKey).order, views: ['중1'], originalCurriculum: '2022',
+    rpmParent: parent, rpmParentStatus: 'EXACT', ...extra });
+}
+const treeOptions = (rows, meta = new Map()) => ({ index: indexOf(rows), metaByUid: meta });
+const childLabels = section => section.children.filter(node => node.kind === 'child').map(node => node.label);
+const pickLabels = (scopes, view) => Quick.pickableGroups(scopes, view).flatMap(group => group.items.map(item => item.node.label));
 
-test('middle current RPM subunits split one recorded broad group without changing original metadata', () => {
-  const parents = [middleParent('다각형', 1), middleParent('원과 부채꼴', 2)];
-  const rows = parents.flatMap(parent => [1, 2, 3].flatMap(bucket => many(bucket, bucket === 2 ? 6 : 3)
-    .map(rec => middleEntry(rec, parent))));
-  const meta = new Map(rows.map(row => [row.uid, Object.freeze({
-    subUnitKey: 'M1-05-CORE', subUnit: '평면도형 핵심 개념', rpmL3: 'preserved-concept',
-    rpmL4: 'preserved-type', approvalStatus: 'preserved-approval',
-  })]));
+test('middle 중단원 scopes are the official table of contents of the unit, in order, empty ones included', () => {
+  const polygon = realParent('중1', '다각형'), circle = realParent('중1', '원과 부채꼴');
+  assert.equal(polygon.unitKey, circle.unitKey);
+  const rows = [polygon, circle].flatMap(parent => [1, 2, 3].flatMap(bucket => many(bucket, bucket === 2 ? 6 : 3)
+    .map(rec => realMiddleEntry(rec, parent))));
+  // The recorded broad sub-unit of these rows must neither split nor merge anything.
+  const meta = new Map(rows.map(row => [row.uid, Object.freeze({ subUnitKey: 'M1-05-CORE', subUnit: '평면도형 핵심 개념', rpmL3: 'kept' })]));
   const before = JSON.stringify([rows, [...meta]]);
-  const pools = Quick.buildPools(indexOf(rows), { metaByUid: meta });
-  const subs = Quick.unitsFor(pools, 'subunit-test', '중1', middleSubject);
-  assert.deepEqual(subs.map(sub => sub.subUnitKey), parents.map(parent => parent.parentKey));
-  assert.deepEqual(subs.map(sub => sub.label), ['다각형', '원과 부채꼴']);
-  assert.ok(subs.every(sub => sub.total === 12 && Quick.evaluate([sub], Quick.PRODUCTS['subunit-test'], 'standard').ok));
-  for (const [i, sub] of subs.entries()) {
-    const expected = rows.filter(row => row.rpmParent === parents[i]).map(row => row.uid).sort();
-    assert.deepEqual(Quick.BUCKETS.flatMap(bucket => sub.buckets[bucket].map(rec => rec.questionUid)).sort(), expected);
-    assert.ok(Quick.BUCKETS.flatMap(bucket => sub.buckets[bucket]).every(rec => rows.some(row => row.record === rec)),
-      'pool records retain their original identity and fields');
+  const pools = Quick.buildPools(indexOf(rows));
+  const scopes = Quick.buildScopes(pools, '중1', middleSubject, treeOptions(rows, meta));
+  const section = scopes.sections.find(row => row.unit.unitKey === polygon.unitKey);
+  const tocNames = Toc.parents('중1').filter(parent => parent.unitKey === polygon.unitKey).map(parent => parent.L2);
+  assert.deepEqual(childLabels(section), tocNames, '중단원 list = official L2 list of the unit, in table-of-contents order');
+  const bySource = new Map(rows.map(row => [row.record, row]));
+  for (const label of ['다각형', '원과 부채꼴']) {
+    const node = section.children.find(child => child.label === label);
+    assert.equal(node.total, 12);
+    assert.ok(Quick.evaluate([node], Quick.PRODUCTS['subunit-test'], 'standard').ok);
+    const parent = label === '다각형' ? polygon : circle;
+    for (const bucket of Quick.BUCKETS) for (const rec of node.buckets[bucket])
+      assert.equal(bySource.get(rec).rpmParent, parent, 'a scope holds only records of its own 중단원');
   }
-  assert.equal(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject)[0].total, rows.length);
+  assert.equal(section.unit.total, rows.length);
+  // Every unit of the grade is listed (no usable question yet = shown as short, never missing).
+  assert.deepEqual(scopes.sections.map(row => row.unit.unitKey), Toc.parents('중1').map(parent => parent.unitKey)
+    .filter((key, i, all) => all.indexOf(key) === i));
+  // Pickable lists per product.
+  assert.deepEqual(pickLabels(scopes, 'subunit-test').filter(label => tocNames.includes(label)), tocNames);
+  assert.ok(!pickLabels(scopes, 'subunit-test').includes('평면도형'), '소단원 평가 never offers a whole 대단원');
+  assert.deepEqual(pickLabels(scopes, 'unit-test').filter(label => tocNames.includes(label)), tocNames, '중단원 평가 = 중단원 list');
+  const fiveMinute = Quick.pickableGroups(scopes, 'five-minute').find(group => group.section.unit.unitKey === polygon.unitKey);
+  assert.deepEqual(fiveMinute.items.map(item => item.role), ['root', ...tocNames.map(() => 'child')]);
   assert.equal(JSON.stringify([rows, [...meta]]), before);
 });
 
-test('middle ambiguous or missing RPM parents never use a broad legacy key as a current child', () => {
-  const parent = middleParent('다각형', 1);
-  const rows = [
-    middleEntry(record(2), null),
-    middleEntry(record(2), null, { rpmParentStatus: 'NOT_FOUND' }),
-    middleEntry(record(2), parent, { rpmParentStatus: 'LEGACY_PARENT_AMBIGUOUS' }),
-    middleEntry(record(2), { ...parent, grade: '중2' }),
-    middleEntry(record(2), { ...parent, L2: '' }),
-    middleEntry(record(2), null, { rpmParentStatus: 'OUT_OF_SCOPE' }),
+test('middle: ambiguous or missing parents never become a 중단원; 2015 legacy keys fold into the 중단원 the table maps them to', () => {
+  const polygon = realParent('중1', '다각형');
+  const mapping = Toc.authority.legacySubUnitMappings.find(row => row.parentKeys?.length === 1 &&
+    Toc.parents('중1').some(parent => parent.parentKey === row.parentKeys[0]));
+  const target = Toc.parents('중1').find(parent => parent.parentKey === mapping.parentKeys[0]);
+  const legacy = realMiddleEntry(record(2), target, { originalCurriculum: '2015', rpmParent: null, rpmParentStatus: 'OUT_OF_SCOPE' });
+  const current = realMiddleEntry(record(2), target);
+  const unmapped = realMiddleEntry(record(2), target, { originalCurriculum: '2015', rpmParent: null, rpmParentStatus: 'OUT_OF_SCOPE' });
+  const broken = [
+    realMiddleEntry(record(2), polygon, { rpmParent: null, rpmParentStatus: 'NOT_FOUND' }),
+    realMiddleEntry(record(2), polygon, { rpmParentStatus: 'LEGACY_PARENT_AMBIGUOUS' }),
+    realMiddleEntry(record(2), polygon, { rpmParent: realParent('중2', '확률') }),
   ];
+  const rows = [legacy, current, unmapped, ...broken];
   const meta = new Map(rows.map(row => [row.uid, { subUnitKey: 'M1-05-CORE', subUnit: '평면도형 핵심 개념' }]));
+  meta.set(legacy.uid, { subUnitKey: mapping.subUnitKey, subUnit: '이전 이름' });
   const before = JSON.stringify([rows, [...meta]]);
-  const pools = Quick.buildPools(indexOf(rows), { metaByUid: meta });
-  assert.deepEqual(Quick.unitsFor(pools, 'subunit-test', '중1', middleSubject), []);
-  assert.equal(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject)[0].total, rows.length,
-    'unresolved subunits remain usable in the unchanged general unit pool');
+  const pools = Quick.buildPools(indexOf(rows));
+  const scopes = Quick.buildScopes(pools, '중1', middleSubject, treeOptions(rows, meta));
+  const node = scopes.sections.find(row => row.unit.unitKey === target.unitKey).children.find(child => child.label === target.L2);
+  assert.deepEqual(Quick.BUCKETS.flatMap(bucket => node.buckets[bucket]).map(rec => rec.questionUid).sort(),
+    [legacy.uid, current.uid].sort(), 'the legacy record folds into its mapped 중단원 next to the current one');
+  const labels = scopes.order.map(item => item.label);
+  assert.ok(labels.every(label => !/이전 분류|중단원 미지정/.test(label)));
+  const section = scopes.sections.find(row => row.unit.unitKey === target.unitKey);
+  assert.ok(section.children.some(child => child.kind === 'other'), 'unplaceable records stay in the 대단원 only');
+  assert.ok(!pickLabels(scopes, 'subunit-test').some(label => /이전 분류|중단원 미지정|기타/.test(label)));
+  const childTotal = section.children.reduce((sum, child) => sum + child.total, 0);
+  assert.equal(childTotal, section.unit.total, 'a question sits in exactly one child of its unit');
   assert.equal(JSON.stringify([rows, [...meta]]), before);
 });
 
-test('2015 middle subunits retain distinct legacy pools while high-school recorded pools stay unchanged', () => {
-  const parent = middleParent('다각형', 1);
-  const current = middleEntry(record(2), parent);
-  const legacy = middleEntry(record(2), null, { originalCurriculum: '2015', rpmParentStatus: 'OUT_OF_SCOPE' });
-  const ambiguous2015 = middleEntry(record(2), null, { originalCurriculum: '2015' });
-  const high = entry(record(2), { rpmParent: parent, rpmParentStatus: 'EXACT' });
-  const rows = [current, legacy, ambiguous2015, high];
-  // Matching key text and labels must not merge a legacy pool into the current parent.
-  const meta = new Map(rows.map(row => [row.uid, { subUnitKey: parent.parentKey, subUnit: '다각형' }]));
-  meta.set(high.uid, { subUnitKey: 'H22-C-01-A', subUnit: '다항식의 덧셈과 곱셈' });
+test('high school 소단원 scopes use the 묶음표: Korean names, no duplicates, only groups that have questions', () => {
+  const scopeDoc = groupsDoc.scopes.find(row => row.unitKey === 'H22-C-01');
+  const group = scopeDoc.groups.find(row => row.kind === 'subunit' && Tree.isDisplayableName(row.label) && row.keys?.length);
+  const other = scopeDoc.groups.find(row => row.kind === 'subunit' && row.groupKey !== group.groupKey && Tree.isDisplayableName(row.label) && row.keys?.length);
+  const inGroup = [...many(1, 3), ...many(2, 6), ...many(3, 3)].map(rec => entry(rec));
+  const stray = entry(record(2));
+  const unrecorded = entry(record(2));
+  const meta = new Map(inGroup.map(row => [row.uid, { subUnitKey: group.keys[0].subUnitKey, subUnit: 'polynomial basic' }]));
+  meta.set(stray.uid, { subUnitKey: 'NOT-IN-ANY-GROUP', subUnit: 'whatever' });
+  const rows = [...inGroup, stray, unrecorded];
   const before = JSON.stringify([rows, [...meta]]);
-  const pools = Quick.buildPools(indexOf(rows), { metaByUid: meta });
-  const subs = Quick.unitsFor(pools, 'subunit-test', '중1', middleSubject);
-  assert.equal(subs.length, 2);
-  assert.equal(new Set(subs.map(sub => sub.key)).size, 2);
-  const old = subs.find(sub => sub.legacyCurriculum === '2015');
-  assert.equal(old.label, '이전 분류 · 다각형');
-  assert.deepEqual(old.buckets[2], [legacy.record]);
-  assert.deepEqual(subs.find(sub => !sub.legacyCurriculum).buckets[2], [current.record]);
-  assert.equal(Quick.unitsFor(pools, 'unit-test', '중1', middleSubject)[0].total, 3);
-  const highSub = Quick.unitsFor(pools, 'subunit-test', '고1', 'COMMON_MATH_1')[0];
-  assert.equal(highSub.subUnitKey, 'H22-C-01-A');
-  assert.equal(highSub.label, '다항식의 덧셈과 곱셈');
-  assert.deepEqual(highSub.buckets[2], [high.record]);
+  const pools = Quick.buildPools(indexOf(rows));
+  const scopes = Quick.buildScopes(pools, '고1', 'COMMON_MATH_1', treeOptions(rows, meta));
+  const section = scopes.sections.find(row => row.unit.unitKey === 'H22-C-01');
+  assert.deepEqual(childLabels(section), [group.label], 'only the group that holds questions is listed, under its 묶음표 name');
+  assert.ok(!childLabels(section).includes(other.label));
+  const node = section.children.find(child => child.kind === 'child');
+  assert.equal(node.total, 12);
+  assert.ok(Quick.evaluate([node], Quick.PRODUCTS['subunit-test'], 'standard').ok);
+  assert.equal(section.unit.total, 14, 'the stray and unrecorded questions stay in the 단원, not in any 소단원');
+  assert.deepEqual(pickLabels(scopes, 'subunit-test').filter(label => !/\d/.test(label)).slice(0, 1), [group.label]);
+  assert.deepEqual(Quick.pickableGroups(scopes, 'unit-test').find(row => row.section.unit.unitKey === 'H22-C-01').items.map(item => item.role), ['root'],
+    '중단원 평가 of high school is the 단원 itself');
   assert.equal(JSON.stringify([rows, [...meta]]), before);
+});
+
+test('high school without the 묶음표 shows 단원 only and says so; the list returns when it loads', () => {
+  const rows = [...many(1, 3), ...many(2, 6), ...many(3, 3)].map(rec => entry(rec));
+  const meta = new Map(rows.map(row => [row.uid, { subUnitKey: 'x' }]));
+  const pools = Quick.buildPools(indexOf(rows));
+  Tree.resetGroups();
+  try {
+    const scopes = Quick.buildScopes(pools, '고1', 'COMMON_MATH_1', treeOptions(rows, meta));
+    assert.equal(scopes.groupsMissing, true);
+    assert.deepEqual(pickLabels(scopes, 'subunit-test').filter(label => label === '다항식의 연산'), ['다항식의 연산'],
+      '소단원 평가 falls back to the 단원 while the 묶음표 is missing');
+  } finally { Tree.setGroups(groupsDoc); }
+  assert.equal(Quick.buildScopes(pools, '고1', 'COMMON_MATH_1', treeOptions(rows, meta)).groupsMissing, false);
+});
+
+test('종합평가 union: a 대단원 chosen whole swallows its own 중단원, siblings stay disjoint', () => {
+  const polygon = realParent('중1', '다각형'), circle = realParent('중1', '원과 부채꼴');
+  const rows = [polygon, circle].flatMap(parent => many(2, 6).map(rec => realMiddleEntry(rec, parent)));
+  const pools = Quick.buildPools(indexOf(rows));
+  const scopes = Quick.buildScopes(pools, '중1', middleSubject, treeOptions(rows));
+  const section = scopes.sections.find(row => row.unit.unitKey === polygon.unitKey);
+  const [a, b] = ['다각형', '원과 부채꼴'].map(label => section.children.find(child => child.label === label));
+  assert.deepEqual(Quick.selectNodes(scopes, [a.key, b.key]).map(node => node.key), [a.key, b.key]);
+  assert.deepEqual(Quick.selectNodes(scopes, [a.key, section.unit.key]).map(node => node.key), [section.unit.key]);
+  assert.equal(Quick.evaluate(Quick.selectNodes(scopes, [a.key, b.key]), Quick.PRODUCTS['monthly-test'], 'standard').counts[2], 12);
+  assert.equal(Quick.unitNoun('subunit-test', '중1'), '중단원');
+  assert.equal(Quick.unitNoun('subunit-test', '고1'), '소단원');
+  assert.equal(Quick.unitNoun('unit-test', '고1'), '단원');
+  assert.equal(Quick.shortReason([{ bucket: 2 }, { bucket: 3 }]), '2·3단계 문항 부족');
 });
 
 test('real catalog: pools are built once, fast, from recorded difficulty and without curriculum suffixes', async () => {
@@ -320,7 +373,7 @@ function harness(data, { quick = true } = {}) {
     },
     addEventListener() {},
     fetch: async url => ({ ok: true, json: async () => JSON.parse(read(new URL(String(url)).pathname.replace(/^\/archive\//, ''))) }),
-    Archive2Core: core, Archive2UnifiedUnits: Unified, Archive2QuickPools: quick ? Quick : undefined,
+    Archive2Core: core, Archive2UnifiedUnits: Unified, Archive2UnitTree: Tree, Archive2QuickPools: quick ? Quick : undefined,
     ProblemBankMeta: require('../archive/problem-bank-meta.js'),
     ProblemBankAssessmentRecipes: require('../archive/problem-bank-assessment-recipes.js'),
     Archive2Canonical: core.Canonical,
@@ -395,7 +448,10 @@ test('middle balanced selection keeps a 2015 legacy group distinct from an ident
   assert.equal(selected.filter(rec => rec === rows[0].record || rec === rows[1].record).length, 1);
 });
 
-test('screens: each product shows unified units, no curriculum suffix, ready cards and bundle controls', async () => {
+const rowNames = html => [...html.matchAll(/<span class="qk-row-name">([^<]*)<\/span>/g)].map(match => match[1]);
+const groupTitles = html => [...html.matchAll(/<h3 class="qk-group-title">([^<]*)</g)].map(match => match[1]);
+
+test('screens: each product lists units under 대단원 headings, no old labels, and a conditions / result layout', async () => {
   const data = await catalog();
   const h = harness(data);
   for (const view of Quick.VIEWS) {
@@ -410,27 +466,126 @@ test('screens: each product shows unified units, no curriculum suffix, ready car
     assert.match(html, /data-view="five-minute"/);
     assert.match(html, /data-view="monthly-test"/);
     assert.match(html, /data-action="quick-subject"[^>]*data-subject="COMMON_MATH_2"/);
+    assert.match(html, /class="qk-grid"/);
+    assert.match(html, /<aside class="qk-result"/, 'the result sits beside the conditions');
+    assert.match(html, /class="qk-bar"/, 'phone bar with the one main button');
     assert.doesNotMatch(html, /· 2015|· 2022|\b2015\b개정 ·/);
     assert.match(html, /1단계 \d+ · 2단계 \d+ · 3단계 \d+/);
+    assert.ok(groupTitles(html).length >= 1, `${view} has 대단원 headings`);
+    for (const name of rowNames(html)) assert.doesNotMatch(name, /이전 분류|핵심\s*개념|[A-Za-z]{2,}/, `${view}: ${name}`);
     const t2 = performance.now();
     h.w.renderQuick();
     assert.ok(performance.now() - t2 < 100, 'a second render reads the cached pools');
   }
   h.w.state.view = 'five-minute';
   const html = h.w.renderQuick();
-  assert.match(html, /data-action="quick-unit"/);
+  assert.match(html, /data-action="quick-pick"/);
   assert.match(html, /이 난이도로 만들 수 있는 단원 \d+개/);
+  assert.match(html, /<span class="qk-row-name">[^<]+ 전체<\/span>/, '5분 테스트 can take a whole 대단원');
   h.w.state.view = 'unit-test';
   h.w.quickState.subject = 'COMMON_MATH_1';
-  const unitHtml = h.w.renderQuick();
-  assert.match(unitHtml, /data-action="quick-unit"/);
+  assert.match(h.w.renderQuick(), /data-action="quick-pick"/);
   h.w.state.view = 'monthly-test';
   const monthly = h.w.renderQuick();
   assert.match(monthly, /data-quick-bundle=/);
   assert.match(monthly, /data-action="quick-open-all"/);
+  assert.match(monthly, /data-action="quick-open-selected"/);
   // grade not chosen yet -> prompt only
   h.w.quickState.grade = '';
   assert.match(h.w.renderQuick(), /학년을 선택하세요/);
+});
+
+test('screens: 중단원 평가 lists every official 중단원 of the grade under its 대단원, in order, with no 이전 분류', async () => {
+  const data = await catalog();
+  const h = harness(data);
+  h.w.state.view = 'unit-test';
+  h.w.quickState.shortOpen = true; // the 모자란 줄 are folded by default; open them to see the whole table of contents
+  for (const grade of ['중1', '중2', '중3']) {
+    h.w.quickState.grade = grade;
+    h.w.quickState.subject = 'MIDDLE';
+    const html = h.w.renderQuick();
+    assert.doesNotMatch(html, /이전 분류|중단원 미지정/);
+    const shown = rowNames(html);
+    for (const name of shown) assert.doesNotMatch(name, /[A-Za-z]{2,}|핵심\s*개념/, `${grade}: ${name}`);
+    // each 대단원 heading holds its 중단원 rows in the official order (a row can sit in the ready or in the folded part)
+    const wanted = Toc.parents(grade).map(parent => parent.L2);
+    const seen = wanted.filter(name => shown.includes(name));
+    assert.deepEqual(seen, wanted, `${grade}: every 중단원 of the table of contents is on screen`);
+  }
+  h.w.quickState.grade = '중1';
+  h.w.state.view = 'subunit-test';
+  const first = h.w.renderQuick();
+  assert.match(first, /평면도형/);
+  assert.match(first, /<span class="qk-row-name">다각형<\/span>|<span class="qk-row-name">원과 부채꼴<\/span>/);
+  assert.doesNotMatch(first, /이전 분류/);
+  h.w.quickState.shortOpen = false;
+  const folded = h.w.renderQuick();
+  assert.match(folded, /class="qk-short-toggle"[^>]*aria-expanded="false">문항이 모자란 중단원 \d+개</, 'short rows are one folded line');
+  assert.doesNotMatch(folded, /class="qk-row is-short"/);
+  assert.doesNotMatch(folded, /필요 · \d+문항 가능/, 'no long shortage sentence in the list');
+});
+
+test('screens: a short row is folded behind one line and opens to a short reason', async () => {
+  const data = shortUnitCatalog();
+  const h = harness(data);
+  h.w.state.view = 'unit-test';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  const html = h.w.renderQuick();
+  assert.match(html, /class="qk-short-toggle"[^>]*aria-expanded="false">문항이 모자란 단원 \d+개</);
+  assert.doesNotMatch(html, /class="qk-row is-short"/, 'folded by default');
+  await h.click({ action: 'quick-short-toggle' });
+  assert.equal(h.w.quickState.shortOpen, true);
+  const open = h.w.renderQuick();
+  assert.match(open, /class="qk-row is-short" aria-disabled="true"/);
+  assert.match(open, /<em class="qk-reason">\d(·\d)*단계 문항 부족<\/em>/);
+});
+
+test('real catalog: every list on every screen is free of old labels, duplicates and wrong membership', async () => {
+  const data = await catalog();
+  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  const meta = require('../archive/problem-bank-meta.js').buildIndex(data.records, []);
+  const metaByUid = new Map(meta.map(row => [row.questionUid || row.uid, row]));
+  const pools = Quick.buildPools(index, { metaByUid });
+  let nodes = 0;
+  for (const grade of Unified.GRADES) for (const subject of Quick.subjectsFor(pools, grade)) {
+    const scopes = Quick.buildScopes(pools, grade, subject.value, { index, metaByUid });
+    assert.equal(scopes.groupsMissing, false, `${grade} ${subject.label}: 묶음표 loaded`);
+    if (scopes.middle) {
+      // the official table of contents, complete and in order, also for units with no usable question
+      const wanted = Toc.parents(grade).map(parent => [parent.unitKey, parent.L2]);
+      const got = scopes.sections.flatMap(section => section.children.filter(node => node.kind === 'child').map(node => [section.unit.unitKey, node.label]));
+      assert.deepEqual(got, wanted, `${grade}: 중단원 list = official table of contents`);
+    }
+    for (const view of Quick.VIEWS) {
+      const names = new Map();
+      for (const group of Quick.pickableGroups(scopes, view)) {
+        const seen = new Set();
+        for (const { node, role } of group.items) {
+          nodes++;
+          assert.doesNotMatch(node.label, /이전 분류|핵심\s*개념|중단원 미지정/, `${grade} ${view}: ${node.label}`);
+          assert.ok(role === 'root' || !/[A-Za-z]{2,}/.test(node.label), `${grade} ${view}: English name ${node.label}`);
+          if (role === 'child') {
+            assert.ok(!seen.has(node.label), `${grade} ${view} ${group.section.label}: duplicate ${node.label}`);
+            seen.add(node.label);
+          }
+          names.set(node.key, node);
+          // membership: every question of a scope belongs to the 대단원 the scope sits under
+          for (const bucket of Quick.BUCKETS) for (const rec of node.buckets[bucket]) {
+            const owner = index.byUid.get(rec.questionUid);
+            if (group.unclassified) assert.equal(owner.unclassified, true);
+            else assert.equal(owner.unitKey, group.section.unit.unitKey, `${grade} ${view} ${node.label}: wrong unit`);
+          }
+        }
+      }
+    }
+    // a question sits in exactly one child of its unit: the children never overlap and never exceed the unit
+    for (const section of scopes.sections) {
+      const sum = section.children.reduce((total, child) => total + child.total, 0);
+      assert.ok(!section.children.length || sum === section.unit.total, `${grade} ${section.label}: children ${sum} vs unit ${section.unit.total}`);
+    }
+  }
+  assert.ok(nodes > 500, `checked ${nodes} scopes`);
 });
 
 test('screens: the grade choice picks a usable default subject; middle school has one subject', async () => {
@@ -459,8 +614,13 @@ test('opening a unit selects the preset mix once per usable step and publishes 4
   h.w.quickState.grade = '고1';
   h.w.quickState.subject = 'COMMON_MATH_1';
   const html = h.w.renderQuick();
-  const key = html.match(/data-action="quick-unit"\s+data-unit-key="([^"]+)"/)[1];
-  await h.click({ action: 'quick-unit', unitKey: key });
+  assert.match(html, /<button type="button" class="qk-row[^"]*" data-action="quick-pick"/);
+  const key = html.match(/data-action="quick-pick" data-unit-key="([^"]+)"/)[1];
+  await h.click({ action: 'quick-pick', unitKey: key });
+  assert.equal(h.w.quickState.pick, key, 'a click only picks; nothing opens yet');
+  assert.equal(h.published.length, 0);
+  assert.match(h.w.renderQuick(), /data-action="quick-open-pick"/);
+  await h.click({ action: 'quick-open-pick' });
   assert.equal(h.published.length, 1);
   const { questionUids, meta, questionCount } = h.published[0];
   assert.equal(questionCount, 4);
@@ -488,8 +648,11 @@ test('opening refuses a unit that cannot make the mix and a changed question sta
   h.w.quickState.grade = '고1';
   h.w.quickState.subject = 'COMMON_MATH_1';
   const html = h.w.renderQuick();
-  assert.match(html, /class="quick-unit is-short" disabled aria-disabled="true"/);
-  assert.match(html, /class="quick-reason">/);
+  assert.match(html, /class="qk-short-toggle"/, 'the short unit is folded behind one line');
+  h.w.quickState.shortOpen = true;
+  const opened = h.w.renderQuick();
+  assert.match(opened, /class="qk-row is-short" aria-disabled="true"/);
+  assert.match(opened, /class="qk-reason">/);
   // The deterministic synthetic fixture keeps the visible shortage and refusal path stable.
   const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
   const units = Quick.unitsFor(Quick.buildPools(index), 'unit-test', '고1', 'COMMON_MATH_1');

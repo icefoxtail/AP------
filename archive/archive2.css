@@ -1627,8 +1627,7 @@ select {
   display: none;
 }
 /* Drawn chevron (no text-symbol icons). */
-.finder-detail-filters > summary::after,
-.quick-short > summary::after {
+.finder-detail-filters > summary::after {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1638,8 +1637,7 @@ select {
   border-bottom: 2px solid currentColor;
   transform: rotate(45deg) translate(-2px, -2px);
 }
-.finder-detail-filters[open] > summary::after,
-.quick-short[open] > summary::after {
+.finder-detail-filters[open] > summary::after {
   transform: rotate(225deg) translate(-2px, -2px);
 }
 .finder-filter-detail {
@@ -2334,33 +2332,99 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
   }
 }
 
-/* Quick assessments (5분 테스트 / 소단원 / 중단원 / 종합평가) */
-.quick-tabs {
+/* ---- 빠른 평가 (5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가), 2026-11-16 ---------------------------------
+   위에 4종 전환과 한 줄 설명, 아래는 왼쪽 조건(학년·과목 → 난이도 → 단원 목록), 오른쪽 "만들어질 평가"와 시험지 열기.
+   1100px 미만은 조건이 위, 결과가 아래 한 줄이고 하단 고정 띠(.qk-bar)가 시험지 열기를 맡는다(문제지 만들기 .cz-bar와 같은 구성).
+   색·글꼴은 토큰만 쓴다. */
+.qk {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.qk-seg {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.qk-seg-btn {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 0;
+  font-size: 15px;
+  line-height: 1.25;
+  word-break: keep-all;
+}
+.qk-seg-btn + .qk-seg-btn {
+  border-left: 1px solid var(--line);
+}
+.qk-intro {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 0 0 14px;
+  align-items: baseline;
+  gap: 4px 16px;
 }
-.quick-tab {
+.qk-intro h1 {
+  margin: 0;
+}
+.qk-intro p {
+  flex: 1 1 280px;
+  margin: 0;
+}
+.qk-pack-link {
+  display: inline-flex;
+  align-items: center;
   min-height: 44px;
-  padding: 8px 16px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 14px;
   font-weight: 700;
 }
-.quick-tab[aria-pressed="true"] {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--surface);
+.qk-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.qk-cond {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+.qk-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.qk-h {
+  margin: 0;
+  font-size: 17px;
+}
+.qk-grades {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+.qk-grades .find-grade {
+  min-width: 0;
+  padding: 0 2px;
+  font-weight: 700;
+}
+.qk-subject-note {
+  margin: 0;
+  font-weight: 700;
+}
+.qk-note,
+.qk-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
 }
 .quick-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 8px 0;
 }
 .quick-chip {
   min-height: 44px;
@@ -2385,44 +2449,343 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 .quick-chip[aria-pressed="true"] small {
   color: #fff;
 }
-.quick-units {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
-  margin-top: 10px;
+.quick-chip:disabled {
+  color: var(--muted);
+  background: var(--chip);
 }
-.quick-unit {
-  min-width: 0;
-  min-height: 72px;
-  padding: 12px 14px;
+/* 난이도: PC는 슬라이더가 늘 보이고, 휴대폰은 "한 쪽 4문항 · 바꾸기"처럼 한 줄 요약 + 바꾸기로 접는다. */
+.qk-level-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.qk-level > p {
+  margin: 0;
+}
+.qk-level-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qk-fold {
+  display: none;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+/* 난이도 슬라이더는 누르는 칸이 44px 이상이어야 한다(workspace.html의 기본 34px보다 우선). */
+.qk .five-minute-slider-rail,
+.qk .five-minute-slider input {
+  height: 44px;
+}
+.qk .five-minute-slider input::-webkit-slider-runnable-track {
+  height: 44px;
+}
+.qk .five-minute-slider input::-webkit-slider-thumb {
+  margin-top: 11px;
+}
+/* 단원 목록: 대단원 머리 아래 중단원(소단원) 줄. 쓸 수 있는 줄이 먼저, 모자란 줄은 한 줄로 접는다. */
+.qk-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.qk-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qk-group-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-size: 15px;
+}
+.qk-group-title small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.qk-rows {
   display: grid;
-  align-content: start;
-  gap: 3px;
-  border: 1px solid var(--line);
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+.qk-row {
+  min-width: 0;
+  min-height: 52px;
+  padding: 8px 14px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  border: 1.5px solid var(--control-line);
   border-radius: var(--radius-card);
   background: var(--surface);
   color: var(--ink);
   text-align: left;
   font-size: 14px;
 }
-.quick-unit strong { font-size: 15px; }
-.quick-unit small { color: var(--muted); font-size: 12px; font-weight: 600; word-break: keep-all; }
-.quick-unit-parent { color: var(--muted); font-size: 12px; font-weight: 600; }
-button.quick-unit:not(:disabled):hover { border-color: var(--ink); background: var(--chip); }
-.quick-unit.is-short, .quick-unit:disabled { background: var(--chip); color: var(--muted); }
-.quick-reason { color: var(--danger); font-size: 12px; font-style: normal; font-weight: 600; }
-.quick-unit-check {
+.qk-row-name {
+  font-size: 15px;
+  font-weight: 700;
+  word-break: keep-all;
+}
+.qk-row small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  word-break: keep-all;
+}
+.qk-row.is-root {
+  background: var(--chip);
+}
+.qk-row[aria-pressed="true"] small,
+.qk-check:has(input:checked) small {
+  color: #fff;
+}
+.qk-check {
   grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
+  align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-.quick-unit-check span { display: grid; gap: 3px; }
-.quick-unit-check input { margin-top: 3px; width: 20px; height: 20px; }
-.quick-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-.quick-short { margin-top: 14px; }
-.quick-chip:disabled { color: var(--muted); background: var(--chip); }
-.quick-short > summary { cursor: pointer; font-weight: 700; color: var(--ink-2); min-height: 44px; display: flex; align-items: center; }
+.qk-check > span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.qk-check input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--brand);
+}
+.qk-check:has(input:checked) {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+.qk-check.is-implied:has(input:checked) {
+  border-style: dashed;
+  background: var(--chip);
+  color: var(--ink);
+}
+.qk-check.is-implied:has(input:checked) small {
+  color: var(--muted);
+}
+.qk-row.is-short {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 44px;
+  border-color: var(--line);
+  background: var(--chip);
+  color: var(--muted);
+}
+.qk-row.is-short .qk-row-name {
+  font-weight: 500;
+}
+.qk-reason {
+  color: var(--danger);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.qk-short {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qk-short-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--radius-field);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 14px;
+  text-align: left;
+}
+.qk-short-toggle::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+}
+.qk-short-toggle[aria-expanded="true"]::after {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+.qk-short-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+/* 오른쪽: 만들어질 평가 */
+.qk-result {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 20px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+}
+.qk-result > p {
+  margin: 0;
+}
+.qk-r-title {
+  margin: 0;
+  font-size: 18px;
+}
+.qk-r-scope {
+  font-size: 16px;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+.qk-r-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 700;
+}
+.qk-big {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+}
+.qk-r-reason {
+  padding: 8px 10px;
+  border-radius: var(--radius-field);
+  background: var(--brand-soft);
+  color: var(--brand-soft-ink);
+  font-size: 13px;
+}
+.qk-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.qk-actions button {
+  width: 100%;
+  min-height: 52px;
+}
+.qk-r-after {
+  font-size: 13px;
+}
+.qk-bar {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .qk-grid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 32px;
+  }
+  .qk-result {
+    position: sticky;
+    top: 16px;
+  }
+}
+@media (max-width: 1099px) {
+  body[data-archive-view="five-minute"] #content,
+  body[data-archive-view="subunit-test"] #content,
+  body[data-archive-view="unit-test"] #content,
+  body[data-archive-view="monthly-test"] #content {
+    padding-bottom: calc(110px + var(--archive2-mobile-bottom-nav-offset, 0px));
+  }
+  .qk-fold {
+    display: inline-flex;
+    align-items: center;
+  }
+  .qk-level-body {
+    display: none;
+  }
+  .qk-level.is-open .qk-level-body {
+    display: flex;
+  }
+  .qk-actions {
+    display: none;
+  }
+  .qk-result {
+    padding: 16px;
+  }
+  .qk-bar {
+    position: fixed;
+    z-index: 40;
+    left: 0;
+    right: 0;
+    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--ink);
+    color: var(--surface);
+  }
+  .qk-bar-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .qk-bar-count {
+    display: block;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .qk-bar .qk-bar-main {
+    min-height: 48px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--surface);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .qk-bar .qk-bar-main:disabled {
+    background: var(--chip);
+    color: var(--muted);
+  }
+  .qk-bar :focus-visible {
+    outline: 3px solid var(--surface);
+    outline-offset: 2px;
+  }
+}
+@media (min-width: 961px) and (max-width: 1099px) {
+  .qk-bar {
+    left: var(--archive2-sidebar-width, 232px);
+    padding-inline: 48px;
+  }
+}
+@media (max-width: 600px) {
+  .qk-seg-btn {
+    padding: 0 2px;
+    font-size: 13px;
+  }
+  .qk-grades .find-grade {
+    min-height: 48px;
+  }
+  .qk-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .qk-big {
+    font-size: 36px;
+  }
+}
 
 /* Error alert: a failure is also shown here (fixed, dismissible) so it is not missed below the fold or behind a dialog.
    Placed at the top so it never covers the bottom action bar or the phone bottom menu. */
@@ -3087,25 +3450,6 @@ body[data-archive-view="compose"] .compose-step-number {
 }
 .home-quick-item:hover .home-quick-open {
   color: var(--brand-hover);
-}
-
-/* Grade choice buttons in 빠른 평가: grade-colored 2px outline, filled with the grade color when chosen. */
-.quick-chip[data-action="quick-grade"] {
-  min-width: 64px;
-  border: 2px solid var(--grade);
-  border-radius: var(--radius-field);
-  background: var(--surface);
-  color: var(--grade);
-  font-weight: 700;
-}
-.quick-chip[data-action="quick-grade"]:hover {
-  background: var(--chip);
-}
-.quick-chip[data-action="quick-grade"][aria-pressed="true"],
-.quick-chip[data-action="quick-grade"][aria-pressed="true"]:hover {
-  border-color: var(--grade);
-  background: var(--grade);
-  color: #fff;
 }
 
 /* ---- Exam rows and 학교별 기출 (2026-11-10: similar problems beside the exam) ------------------
