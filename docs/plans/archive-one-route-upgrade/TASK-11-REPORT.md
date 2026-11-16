@@ -1,3 +1,26 @@
+# TASK-11 고등 유형 판정 보고서 — checkpoint 13
+
+- 시각: 2026-11-16T17:11:06.441116+00:00
+- 결과 `data/type-judgment-d-20261116` commit `3ffec45145542fc14430b6bc1680c61963a85c15`, 비강제CAS/5개blob원격readback일치.
+- 이번32시험지289행전부PICK: similar고2·고3전체24시험지113행 + similar고1정렬39–46의8시험지176행.
+- 누적520시험지3924행: PICK3850 / NEW_KEY58 / HOLD16.
+- 이번check PASS250 / PT_ONLY7 / OUT_OF_CANDIDATES29 / TOOL_ERROR3. 누적 PASS2323 / PT_ONLY208 / OUT_OF_CANDIDATES746 / TOOL_ERROR647 / NOT_RUN0.
+- 추가파일: similar-h2-1mid46행,similar-h2-2final22행,similar-h2-2mid45행,similar-h1-2final23행,similar-h1-2mid153행. 원본결과수정0.
+- 실제source92dd/적격UID/ACTIVE/상위재검증완료,UID중복0. 고2고3첨부7개,고1tail첨부57개 source Git blob 결속후직접확인.
+- 고2금당24의정답·해설오류는본문독립계산과분리해note보존. 9·10·15의CANONICAL_UNIT_INVALID도PICK/TOOL_ERROR로명시. PT-only필요TPL이름·정의와정확검사오류보존.
+- 고1tail39·40·41·43전체valid=false이며개별PASS와혼동하지않는다. 신규NEW_KEY없고기존58문항24의미묶음은아래기록보존.
+
+## 저장 차단 및 명시 재승인
+
+첫blob업로드의반복안전거절후원격시도중단,예상blob404및branch불변을확인했다. 사용자에게‘고등 유사 판정 결과표를 icefoxtail/AP------의 data/type-judgment-d-20261116 브랜치에 푸시하고 보고서를 계획 브랜치에 저장하는 작업을 다시 시도해도 될까요?’라고질문했고사용자가‘승인한다’고답했다. 이새구체승인에따라1회재시도해성공했으며우회수단은사용하지않았다. 추가‘고등 중등 기출 유사 교과서 등 아카이브 모든 작업 전체 승인한다’도현재지정결과·보고범위에만적용했다.
+
+## 수정 반영·최종 잔여
+
+FEEDBACK-10-11 기준유지. 최신계획HEAD `6df2464595b1368ee99af20e8a5886ebc93ff5ec`에본보고한파일만반영,다른작업보존. 마지막유사고1 38시험지341행은모두직접판독및로컬검증완료하여다음checkpoint14로저장한다. 유사전체70시험지의실제source1574문항,적격630,대상0시험지41개를비노출선별전수audit로확인했다. 원본488시험지3635행과합쳐최종558시험지4265행예정.
+
+정본·JS·등록요청·도구·PR/main변경없음.
+
+---
 # TASK-11 고등 유형 판정 보고서 — checkpoint 12: 원본 전체 완료
 
 - 시각: 2026-11-16T17:02:00.484099+00:00
