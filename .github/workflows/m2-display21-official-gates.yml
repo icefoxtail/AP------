@@ -1,0 +1,72 @@
+name: M2 display 21 official gates
+
+on:
+  push:
+    branches:
+      - review-reference/m2-display21-official-gates-r3-20261116
+    paths:
+      - .github/workflows/m2-display21-official-gates.yml
+      - tools/ci/verify-m2-display21-official-gates.mjs
+      - docs/operations/m2-display21-official-gates-20261116/input-manifest.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: m2-display21-official-gates-20261116
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/review-reference/m2-display21-official-gates-r3-20261116'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GIT_NO_LAZY_FETCH: '1'
+      NODE_OPTIONS: --max-old-space-size=4096
+    steps:
+      - name: Check out the exact control revision and public immutable history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use the existing official Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify the closed orchestration contracts
+        run: >-
+          node --max-old-space-size=256 tools/ci/verify-m2-display21-official-gates.mjs
+          --self-test docs/operations/m2-display21-official-gates-20261116/input-manifest.json
+
+      - name: Create a disposable checkout from the exact public metadata parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e "$RUNNER_TEMP/m2-display21-cow"
+          git config gc.auto 0
+          git config maintenance.auto false
+          DISPLAY21_HEAD="$(node --max-old-space-size=256 tools/ci/verify-m2-display21-official-gates.mjs --input-head docs/operations/m2-display21-official-gates-20261116/input-manifest.json)"
+          git worktree add --detach "$RUNNER_TEMP/m2-display21-cow" "$DISPLAY21_HEAD"
+
+      - name: Run official registration, Consumer, Native and preservation gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --max-old-space-size=256 tools/ci/verify-m2-display21-official-gates.mjs \
+            --root "$RUNNER_TEMP/m2-display21-cow" \
+            --scope "$GITHUB_WORKSPACE/docs/operations/m2-display21-official-gates-20261116/input-manifest.json" \
+            --output "$RUNNER_TEMP/m2-display21-evidence" \
+            --private "$RUNNER_TEMP/m2-display21-private"
+
+      - name: Preserve only counts, hashes, gate outcomes and resource observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2-display21-official-gates-${{ github.run_id }}
+          path: ${{ runner.temp }}/m2-display21-evidence
+          if-no-files-found: error
+          retention-days: 30
