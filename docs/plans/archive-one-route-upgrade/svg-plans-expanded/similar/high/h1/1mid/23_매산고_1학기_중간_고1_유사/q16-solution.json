@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "경계 a=−16에서 포물선과 직선은 접한다. 직선을 이 위치보다 위로 옮기면 모든 x에서 직선이 포물선보다 높다.",
+  "accessibilityDescription": "경계 a=−16에서 포물선과 직선은 접한다. 직선을 이 위치보다 위로 옮기면 모든 x에서 직선이 포물선보다 높다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "접하는 경계에서 직선을 더 위로 옮겨야 엄격한 부등식이 됨을 보여 주며 마지막 정수 최솟값은 표시하지 않는다.",
+      "mappedTo": [
+        "caption",
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접하는 경계에서 직선을 더 위로 옮겨야 엄격한 부등식이 됨을 보여 주며 마지막 정수 최솟값은 표시하지 않는다."
+  ],
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-15",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-x^2+2x-15"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-14",
+          "4"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=4x-14"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "-1",
+          "y": "-18",
+          "coordinates": true
+        }
+      ]
+    }
+  }
+}
