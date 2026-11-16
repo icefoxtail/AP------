@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "middle-audit-e029-scoped-canonical-consumer-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "baseDataCommit": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "immutableProofCommit": "2219e98223e0c15ccbe64b0744e6058df935ff7f",
+  "status": "PASS_LOCAL_CHANGED_SCOPE_OFFICIAL_CONSUMER",
+  "scope": {
+    "changedSourceExamQuestions": 23,
+    "metadataMeaningApplicationUids": 1,
+    "preservedIssuedUids": 1,
+    "unchangedMandatoryHoldExamQuestions": 24,
+    "actualLocalQuestionCount": 47,
+    "newFullMathematicalQa": 0,
+    "wholeCorpusNewReviewClaim": false
+  },
+  "officialConsumerProjection": {
+    "status": "PASS",
+    "results": [
+      {
+        "requestId": "middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14",
+        "result": {
+          "status": "PASS",
+          "requestId": "middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14",
+          "totalQuestions": 1,
+          "scope": "PARTIAL_UIDS",
+          "partialUidCount": 1,
+          "expectedQuestionCount": 23,
+          "newMetadataApprovals": 0,
+          "preservedMetadataApprovals": 1,
+          "replay": true,
+          "plannedPaths": [],
+          "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+          "browserStatus": "NOT_RUN",
+          "consumerLanes": {
+            "canonical": 1,
+            "usableMetaLane": 0
+          }
+        }
+      },
+      {
+        "requestId": "middle-audit-repair-34c2-m2-e029-q14-prerequisite",
+        "result": {
+          "status": "PASS",
+          "requestId": "middle-audit-repair-34c2-m2-e029-q14-prerequisite",
+          "totalQuestions": 1,
+          "scope": "PARTIAL_UIDS",
+          "partialUidCount": 1,
+          "expectedQuestionCount": 23,
+          "replay": true,
+          "plannedPaths": [],
+          "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+          "browserStatus": "NOT_RUN",
+          "consumerLanes": {
+            "canonical": 1,
+            "usableMetaLane": 0
+          }
+        }
+      }
+    ]
+  },
+  "checks": [
+    {
+      "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+      "sourceOrdinal": 7,
+      "curriculumKey": "2015",
+      "courseKey": "M2-1",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PARALLEL",
+      "canonicalAssignmentReasons": [],
+      "metadataConflicts": [],
+      "directQuery": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PARALLEL"
+      },
+      "directSearchFound": true,
+      "directSelectable": true,
+      "generalUseEligibility": {
+        "ok": true,
+        "reasons": []
+      },
+      "basicEligibility": {
+        "ok": true,
+        "reasons": []
+      },
+      "advancedEligible": true
+    },
+    {
+      "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+      "sourceOrdinal": 14,
+      "curriculumKey": "2015",
+      "courseKey": "M2-1",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+      "canonicalAssignmentReasons": [],
+      "metadataConflicts": [],
+      "directQuery": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY"
+      },
+      "directSearchFound": true,
+      "directSelectable": true,
+      "generalUseEligibility": {
+        "ok": true,
+        "reasons": []
+      },
+      "basicEligibility": {
+        "ok": true,
+        "reasons": []
+      },
+      "advancedEligible": true
+    }
+  ],
+  "studentSourceRestore": {
+    "status": "PASS_REQUIRE_SOURCE_HASH",
+    "count": 2,
+    "questionUids": [
+      "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+      "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354"
+    ]
+  },
+  "dualScopeReadback": {
+    "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+    "semanticRpm": "M1-RPM-042",
+    "semanticSourceScope": "M1-1",
+    "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+    "registeredCourseKey": "M2-1",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-03",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "L1": "일차부등식과 연립일차방정식",
+    "L2": "연립일차방정식",
+    "rpmL1": "문자와 식",
+    "rpmL2": "일차방정식의 활용",
+    "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+    "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+    "runtimeOwner": "MIDDLE2",
+    "canonicalDefinitionOwner": "MIDDLE1"
+  },
+  "fourSlot": {
+    "verification": {
+      "schemaVersion": "archive-item-4slot-runtime-v1",
+      "status": "PASS",
+      "verified": 23,
+      "pending": 0,
+      "indexSha256": "0839e13f4e76a18977b2dc8219f652b918503a47a57ea82d920153dbe9da6598",
+      "sourceMutation": 0,
+      "semanticApprovalMutation": 0
+    },
+    "reusedReviewedVectorCount": 23,
+    "vectorMeaningChanges": 0,
+    "counts": {
+      "files": 1,
+      "items": 23,
+      "registered": 23,
+      "pending": 0,
+      "withCandidates": 2,
+      "identityFingerprintHistorical": 21
+    },
+    "selectedRecords": [
+      {
+        "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+        "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceDisplayNumber": 7,
+        "compactPath": "archive/data/item-4slot/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.4slot.json",
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "format": "단일 정답",
+        "given": [
+          64,
+          180,
+          142
+        ],
+        "goal": [
+          308,
+          286
+        ],
+        "method": [
+          150,
+          180,
+          53
+        ],
+        "condition": [],
+        "candidates": [],
+        "sourceUidBinding": "CANONICAL_SOURCE_TUPLE",
+        "identityFingerprintStatus": "CURRENT",
+        "sourceBinding": "EXACT_BLOB",
+        "registrationStatus": "REGISTERED",
+        "independentReviewClaim": false
+      },
+      {
+        "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+        "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceDisplayNumber": 14,
+        "compactPath": "archive/data/item-4slot/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.4slot.json",
+        "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+        "format": "단일 정답",
+        "given": [
+          129,
+          286
+        ],
+        "goal": [
+          745,
+          131
+        ],
+        "method": [
+          64,
+          53
+        ],
+        "condition": [],
+        "candidates": [],
+        "sourceUidBinding": "CANONICAL_SOURCE_TUPLE",
+        "identityFingerprintStatus": "CURRENT",
+        "sourceBinding": "EXACT_BLOB",
+        "registrationStatus": "REGISTERED",
+        "independentReviewClaim": false
+      }
+    ],
+    "goalQ14": [
+      745,
+      131
+    ]
+  },
+  "unchangedHoldChecks": [
+    {
+      "questionUid": "qid_v1_378417836e32662281c15dd16fae018a76dfb486b235ebe1d91c4a6041f4f3fc",
+      "sourceIssueHold": true,
+      "verifiedEligible": false,
+      "basicEligible": false,
+      "advancedEligible": false,
+      "directSelectable": true,
+      "generalUseEligibility": {
+        "ok": true,
+        "reasons": []
+      }
+    }
+  ],
+  "canonicalManifest": {
+    "path": "archive/data/archive2-canonical-input-manifest.json",
+    "sha256": "7758c5bfa1f198155cc12c5d4a38da274c53887433dbd49ecba451050762e1db"
+  },
+  "generatedLiteRef": {
+    "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "path": "archive/data/generated-lite-consumer/v1/index.json",
+    "sha256": "c6f6b03c594794b02901ee5aa89c057461985b8ab988e928d7661c0b64c61c48"
+  },
+  "inputScopeProof": {
+    "path": "state/m2-e029-scoped-consumer-inputs.json",
+    "sha256": "b48f5ac53ebe49d518616432f5cc48425e3da74bf3e263c2fff3ff6b04dc6a76"
+  },
+  "actualConsumerExecution": "loadInputBundle -> resolveCatalog -> buildIndex/query(DIRECT) -> source.restore(requireSourceHash) -> 4slot createIndex/get/hasTerm",
+  "actualRemoteRegistration": "PENDING_OFFICIAL_WRITER",
+  "browserUi": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

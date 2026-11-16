@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "archive-independent-current-four-slot-goal-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "createdAt": "2026-11-16T02:25:52.266Z",
+  "reviewer": {
+    "id": "GPT_M3_34C2",
+    "taskPath": "/root/m3",
+    "role": "INDEPENDENT_CURRENT_GOAL_REVIEWER",
+    "independentFromGoalAmendmentApprover": "GPT_ROOT_0A70543C4CE8",
+    "independentFromNativeAuthor": "M2_META_REVIEWER_B_RESUME",
+    "blindReviewClaim": false
+  },
+  "decision": "ACCEPT_CURRENT_GOAL_UNKNOWN_VALUE_NO_DICTIONARY_EXTENSION",
+  "scope": "One current goal vector only, comparing the unchanged question and existing solution against the actual current four-slot contract. No source rewrite, new full mathematical QA, PT/TPL registration or dictionary expansion.",
+  "currentMain": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+  "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+  "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "sourceOrdinal": 14,
+  "sourceRef": {
+    "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+    "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+    "sha256": "25a2b5c096c82f1a653b12c3c743112fc18dd79a9bc7c62dc531973fc9b54c7b",
+    "blobSha1": "144b1bd0bf1c82be94910bb727ff3c33b6a69772",
+    "questionCount": 23,
+    "selectedQuestionSha256": "027da2dd40779002384feec5b8288d754794362531e4889fb75e3be44bff65c8"
+  },
+  "studentPayloadContinuity": {
+    "fields": [
+      "id",
+      "number",
+      "sourceQuestionNo",
+      "sourceQid",
+      "sourceOrdinal",
+      "questionUid",
+      "questionType",
+      "content",
+      "question",
+      "choices",
+      "answer",
+      "solution",
+      "image",
+      "images",
+      "figureSvg",
+      "solutionImage",
+      "solutionImages",
+      "solutionFigureSvg",
+      "layoutTag",
+      "wide",
+      "imageSize",
+      "solutionImageAlt",
+      "solutionImageCaption",
+      "solutionImageSize",
+      "score"
+    ],
+    "sha256": "145daca62a04fe2553e6a533c5fdea8e1048bbb3d49b5cfd75ac0970afbe1dca",
+    "equalsPriorIndependentReview": true,
+    "priorIndependentReviewRef": {
+      "path": "/workspace/scratch/0a70543c4ce8/m3-prep/independent/m2-e029-q14-existing-definition-application-review-20261116.json",
+      "sha256": "2384d2b44b6d560ace529d0564d748aa2b06607e35467fa7969db98d00ea98ee"
+    },
+    "sourceQuestionRead": true,
+    "existingSolutionRead": true,
+    "sourceTextChanged": false
+  },
+  "contractRef": {
+    "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+    "path": "docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md",
+    "sha256": "345b06496fc64faead622b44d8ef7f668452cc96c543e6dbd361e2c7947ab6ec"
+  },
+  "contractSections": [
+    {
+      "section": "3 and 3-1",
+      "sha256": "3b4e2e4b55481e8257d8608902b27f11eec9dc71652e06f3ca3f735746fd5f18",
+      "rule": "Put the core mathematical target first and the final answer form second; goal contains target objects, not solving actions."
+    },
+    {
+      "section": "4",
+      "sha256": "a0fc0c6f42d10aa8a74b20687c3a35a95ec576c774d98923961c9d5be7d7b75e",
+      "rule": "Encode the mathematical structure of a word problem; preserve story material in scenarioNote."
+    },
+    {
+      "section": "10",
+      "sha256": "7ba1f0268e29f75aaec6d03dc6efc5d6f4d124504ef1b3e6915b20deb020cf2c",
+      "rule": "Declare genuinely absent mathematical concepts as candidates, but do not declare story material names as candidates."
+    }
+  ],
+  "compactRef": {
+    "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+    "path": "archive/data/item-4slot/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.4slot.json",
+    "sha256": "ecd57eedb0cd9364c8f4551411a0ba658b47befef4d1d5aec0368935663a659c",
+    "itemSha256": "be6957217c34a62ed0329b1e9fc6583b34c879ea16393f9f715c8b00d740d970",
+    "sourceGitBlobSha": "144b1bd0bf1c82be94910bb727ff3c33b6a69772",
+    "dictionaryVersion": "term-dict-v1.5-2026-11-04"
+  },
+  "currentCompactItem": {
+    "ordinal": 14,
+    "format": "단일 정답",
+    "given": [
+      129,
+      286
+    ],
+    "goal": [
+      745,
+      131
+    ],
+    "method": [
+      64,
+      53
+    ],
+    "condition": [],
+    "candidates": []
+  },
+  "dictionaryRefs": {
+    "declared": {
+      "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+      "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+      "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be"
+    },
+    "current": {
+      "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+      "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+      "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d"
+    }
+  },
+  "goalTerms": [
+    {
+      "id": 745,
+      "ko": "미지수",
+      "definitionSha256": "b4561550a71457cc0647ac433eb72f2345f5df999950191c1319cb6f7da681f3",
+      "declaredAndCurrentDefinitionIdentical": true
+    },
+    {
+      "id": 131,
+      "ko": "값",
+      "definitionSha256": "c9ce00acfc595f93b1b14d73c38326f50126905c9b4682e3a2e94a43ccab2a08",
+      "declaredAndCurrentDefinitionIdentical": true
+    }
+  ],
+  "priorGoalAmendmentRef": {
+    "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q14-goal-amendment.json",
+    "sha256": "4bf79ffd99a24000782860866052c4d781ffb74e7480e1fbb43493809945a94b"
+  },
+  "priorGoalAmendmentDecision": "ACCEPT_GOAL_UNKNOWN_VALUE_AMENDMENT",
+  "nativeEvidence": {
+    "acceptedReviewRef": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E029/accepted-review.json",
+      "sha256": "f49dca98cbcb5432515ba2182848cf9c83c15c1c7b284942f5b26df5ec0b535b"
+    },
+    "acceptedItemSha256": "16f366efa6521ece31ed4011c14fc5a3170849358071c22e63fcd19d2a532ce9",
+    "fourSlotRef": {
+      "commit": "ecb00ddace7e87904e8ed60ce535f61d8c7a05c5",
+      "path": ".archive-meta-register/evidence/m2s1-follow49-four-slot-accepted-26fc-20261115/native/E029.four-slot.json",
+      "sha256": "212920f5ed507b069e581d95321bdfd465a40d326ca043506a6013c3ded556c1"
+    },
+    "fourSlotItemSha256": "41a8a21dd2ff2ce9c6d9f536256bd982562afcae139b6446641600132db25a8a",
+    "nativeGoal": [
+      131
+    ],
+    "nativeDebt": [
+      {
+        "code": "GOAL_CONTEXT_MEASURE_TERM_GAP",
+        "targetQuote": "다훈이의 나이",
+        "reason": "나이는 문맥상 측정 대상이나 사전에는 나이 또는 적절한 상위 측정량 용어가 없다. 태어난 시점을 새로 가정해 경과시간으로 바꾸거나 소재를 신규 수학개념으로 등록하지 않는다.",
+        "disposition": "정확한 문맥 목표를 scenarioNote와 인용에 보존하며 generic 값만 남은 부분을 완전한 goal 대상 채움으로 주장하지 않는다."
+      }
+    ],
+    "nativeArtifactsModified": false
+  },
+  "findings": [
+    {
+      "code": "CORE_TARGET_EXPLICIT",
+      "disposition": "SATISFIED",
+      "reason": "The question asks for an unknown numerical quantity, Dahun’s age. In the existing solution, the younger age x is determined by the linear relation and the requested older age is x+5. Existing term 745 (미지수) records the unknown numerical target; term 131 (값) records the numerical answer form."
+    },
+    {
+      "code": "STORY_CONTEXT_NOT_A_NEW_MATHEMATICAL_TERM",
+      "disposition": "SATISFIED",
+      "reason": "Here 나이 is the setting of a one-unknown quantity relation, not a distinct mathematical operation, elapsed-time calculation, birth-date model or age-definition constraint. Current contract sections 4 and 10 support retaining it as scenario context without adding an age/time dictionary term."
+    },
+    {
+      "code": "NOT_REPLACING_A_MISSING_PRECISE_CONCEPT_WITH_A_BROAD_TERM",
+      "disposition": "SATISFIED",
+      "reason": "No separately required mathematical concept is hidden by the current goal. The specific linear-relation structure and substitution remain in the existing method [64,53]; given [129,286] retains count and sum. Only the mathematical target of the goal is assessed here."
+    },
+    {
+      "code": "HISTORICAL_NATIVE_GOAL_DEBT",
+      "disposition": "SUPERSEDED_FOR_CURRENT_GOAL_ONLY",
+      "reason": "The immutable native finding applied to generic goal [131]. The already merged amendment adds existing term 745 and preserves the exact age wording. The old debt remains historically intact but is not a current unresolved goal defect under this narrow review."
+    }
+  ],
+  "scenarioContext": {
+    "literalTarget": "다훈이의 나이",
+    "clarifiedNote": "같은 나이인 세 동생과 다훈이의 나이 합, 다훈이가 동생보다 5살 많은 관계.",
+    "note": "This exact current source interpretation is preserved in this independent evidence. It does not infer birth dates, as-of time, legal-age rules or new source conditions.",
+    "priorAmendmentScenarioNote": "다훈이와 같은 나이인 세 동생의 나이 합 및 나이 차. 발문이 요구하는 것은 다훈이의 나이이며, 생년월일·기준시각·만 나이 조건을 추가하지 않는다.",
+    "priorNoteInterpretation": "Read against the explicit source five-year difference; the three younger siblings are the same age as each other, not the same age as Dahun.",
+    "sourceLiteralAwkwardWordingPreserved": "쌍둥이 동생 3명"
+  },
+  "actualStoredIndex": {
+    "ref": {
+      "commit": "fd01b027135256ffb7150368e6606738d5dcd6bc",
+      "path": "archive/data/item-4slot-index.json",
+      "sha256": "f2f0ca6ff38e93f6f6bc4e0badb4c0d77a01068910d934f9df63017e5db64d2d"
+    },
+    "registrationStatus": "REGISTERED",
+    "goal": [
+      745,
+      131
+    ],
+    "rowSha256": "56e9a760835c89b2910fa591f1ba3187690a1b30831ffe304afaccc9cf6cfe93",
+    "sourceBinding": "EXACT_BLOB",
+    "currentSourceFileBlobMatches": true,
+    "semanticRegistrationImplied": false
+  },
+  "disposition": {
+    "currentGoalDebtCount": 0,
+    "additionalGoalEditRequired": false,
+    "newDictionaryTermRequired": false,
+    "scenarioTermCandidateRequired": false,
+    "reuseExistingMergedGoalAmendment": true,
+    "newRepairUidCredit": 0,
+    "newSourceConditions": 0,
+    "sourceWrites": 0,
+    "compactWrites": 0,
+    "dictionaryWrites": 0,
+    "newFullMathematicalQa": false,
+    "originalNativeAfterAndProposalRefsPreserved": true
+  },
+  "limits": {
+    "onlyGoalSemanticSufficiencyReviewed": true,
+    "otherSlotsNotNewlyAuthoredOrApproved": true,
+    "sourceStudentPayloadPreserved": true,
+    "ptTplBindingAndResolverStateSeparate": true,
+    "actualCurrentSourceProjectionStatus": "BINDING_PENDING",
+    "verifiedFinalResolverClaim": false,
+    "newOfficialRegistrationExecuted": false,
+    "newBrowserUiCheck": false,
+    "newStudentDeployment": false
+  }
+}

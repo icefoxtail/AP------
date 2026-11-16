@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "archive-independent-scoped-code-integration-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "createdAt": "2026-11-16T02:41:44.481644+00:00",
+  "reviewer": {
+    "id": "GPT_M3_34C2",
+    "taskPath": "/root/m3",
+    "independentFromCodeAuthor": "GPT_M2_34C2",
+    "independentFromRootIntegrator": "GPT_ROOT_0A70543C4CE8",
+    "blindReviewClaim": false
+  },
+  "decision": "APPROVE_INTEGRATED_DELTA_NO_BLOCKING_FINDINGS",
+  "scope": "Exact seven-file integration readback and the three overlapping 071dc upstream deltas. Prior full helper/code review reused. No new source, semantic or operational approval.",
+  "priorCodeReview": {
+    "path": "/workspace/scratch/0a70543c4ce8/m3-prep/independent/m2s1-prerequisite-existing-application-code-review-20261116.json",
+    "sha256": "12091c51438988101286e46a7a11f3ab1d83f9848510f07d011638bc197d0303"
+  },
+  "integrationManifest": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-integrated-code-manifest.json",
+    "sha256": "5750a7746c778feb7d9115b851844f590288df537641455aaeb99fa3c7441ee7"
+  },
+  "reviewedFiles": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "beforeSha256": "9a46e5da43a4643750c2a1a319b6b729cc14b7def40de51cf9a1a50053e5a7d4",
+      "afterSha256": "41f4300b4ca69b368e55bfdefe11e7d90e0e634519dc15d7705f75a0eed5b5dc",
+      "latestMainBeforeSha256": "bb53e1ee14e276ec7b92d8e3d0a7ad3bece228f48a9f2f388d507782b917866b",
+      "upstreamPreserved": true,
+      "actualIntegratedSha256": "41f4300b4ca69b368e55bfdefe11e7d90e0e634519dc15d7705f75a0eed5b5dc",
+      "exactManifestMatch": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "beforeSha256": "bd8c9eaeca865a78221a7f800778168fbd9ee2df97ad8fa57ea6d210e8739a82",
+      "afterSha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288",
+      "latestMainBeforeSha256": "bd8c9eaeca865a78221a7f800778168fbd9ee2df97ad8fa57ea6d210e8739a82",
+      "actualIntegratedSha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288",
+      "exactManifestMatch": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "beforeSha256": "d66d7104fe4a89df4f13296a57497d7f8b2153cf538e6281e1392fb3ee209b7b",
+      "afterSha256": "ab41e9edcc64234776c399073e2ab40f8e489d9fe7b0bbb52da86f991b247e60",
+      "latestMainBeforeSha256": "7703f160c77f546b22c9fcf11ac664b764b0a6dca491308c77cbdc4f87304acf",
+      "upstreamPreserved": true,
+      "actualIntegratedSha256": "ab41e9edcc64234776c399073e2ab40f8e489d9fe7b0bbb52da86f991b247e60",
+      "exactManifestMatch": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "beforeSha256": "67d940fd381356c272d7af770f6870655e9f088a82186a0d7123556100d5bbe8",
+      "afterSha256": "01d4385259801587eb2e2d442601f570eabc44a4afd915b63da6dd4cf0097a7d",
+      "latestMainBeforeSha256": "3c1c1dd6b4cafe4df222cdb0cb6d93266d8bd034f804431998a5c2a11df8f642",
+      "upstreamPreserved": true,
+      "actualIntegratedSha256": "01d4385259801587eb2e2d442601f570eabc44a4afd915b63da6dd4cf0097a7d",
+      "exactManifestMatch": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "beforeSha256": "91f44671182c31449ee0ae24ed6e0e99f77fd312f05b92dbbf720576d6ffd733",
+      "afterSha256": "9c7309a6dfb99490126aad6963a01dac986e0542704e5e14b48772f889a88ebb",
+      "latestMainBeforeSha256": "91f44671182c31449ee0ae24ed6e0e99f77fd312f05b92dbbf720576d6ffd733",
+      "actualIntegratedSha256": "9c7309a6dfb99490126aad6963a01dac986e0542704e5e14b48772f889a88ebb",
+      "exactManifestMatch": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "beforeSha256": null,
+      "afterSha256": "5493058b94580b8a87e4cca7e9aa0bad890a1f713709677f42bde2f9f06d69b8",
+      "actualIntegratedSha256": "5493058b94580b8a87e4cca7e9aa0bad890a1f713709677f42bde2f9f06d69b8",
+      "exactManifestMatch": true
+    },
+    {
+      "path": "tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+      "beforeSha256": null,
+      "afterSha256": "2f4d714c6c0dcdb65b2ed98c454d655d9ad944d3c80e44a761df4681c6207e02",
+      "actualIntegratedSha256": "2f4d714c6c0dcdb65b2ed98c454d655d9ad944d3c80e44a761df4681c6207e02",
+      "exactManifestMatch": true
+    }
+  ],
+  "inspectedUpstreamAuthority": [
+    {
+      "commit": "071dc5756f153202ae1b17228a7a0c2c0b3bcb54",
+      "path": "archive/tools/meta-foundation/reviewed-retained-scope-transport.mjs",
+      "sha256": "ea2b11feedccd10f2d0121983d264d53f05401cdfd15f9e77664a61a863a8e88"
+    },
+    {
+      "commit": "071dc5756f153202ae1b17228a7a0c2c0b3bcb54",
+      "path": "archive/tools/meta-foundation/reviewed-native-rationale-continuity.mjs",
+      "sha256": "cdbd5cf53f5242f134c2c4279487f64fbdc4c34bffd73caeb25edfc75c0bf25d"
+    },
+    {
+      "commit": "071dc5756f153202ae1b17228a7a0c2c0b3bcb54",
+      "path": "archive/tools/meta-foundation/reviewed-native-parent.mjs",
+      "sha256": "6d5d69e94a7b7e012709473fcb1e33519c775a374c43cee64bb64d7019a399b3"
+    }
+  ],
+  "findings": [
+    {
+      "id": "THREE_WAY_UPSTREAM_PRESERVATION",
+      "status": "PASS",
+      "finding": "The three integrated files retain all 071dc upstream audit-source-preservation, retained-scope-parent, native-family-course and rationale-continuity additions. Diff from latest main contains only the previously reviewed E029 hook additions."
+    },
+    {
+      "id": "EXCLUSIVE_TYPED_PROFILES",
+      "status": "PASS",
+      "finding": "E029 requires the exact five sourceReview keys, M2 first-semester m2-s1 native review, one item and one registry binding addition. The upstream retainedScopeTransport and rationaleContinuity profiles require separate opt-ins and M2 second-semester m2-s2 native reviews; they return null without their opt-in and cannot be combined with the E029 exact shape. Native family course transport likewise returns null without targetParentRef.nativeSourceReview.courseTransport and requires an exact M2-2 native family."
+    },
+    {
+      "id": "ISSUED_REPLAY_CONTEXT",
+      "status": "PASS",
+      "finding": "issuedSourceReview is supplied by registrar replay only after receipt request/source/sidecar and fingerprint repair inventory checks. It is passed only to upstream presence-reconstruction helpers. E029 helper does not consume issuedSourceReview and still revalidates immutable authorities, current selected payload, definitions and semantic/target namespaces. Exact regenerated proof equality remains mandatory."
+    },
+    {
+      "id": "SOURCE_BINDING_INVENTORY",
+      "status": "PASS",
+      "finding": "Both upstream retainedScopeTransport/rationaleContinuity opt-ins and E029 prerequisiteExistingApplication remain in the shared sidecar inventory. Upstream native and retained parent bindings are mutually exclusive, and exact parent inventory/proof checks remain. No ordinary guard was removed."
+    },
+    {
+      "id": "UNCHANGED_E029_AUTHORITY",
+      "status": "PASS",
+      "finding": "Helper, RPM capability guard, readonly replay restoration and focused test bytes exactly match the independently reviewed candidate. The explicit rationale/RPM origins and source-declared aliases remain unchanged."
+    }
+  ],
+  "blockingFindings": [],
+  "integrationTestStatus": "PENDING_AUTHOR_RUN_ON_INTEGRATED_LATEST_MAIN_DEPENDENCIES",
+  "workspaceDependencyObservation": {
+    "observedAtReview": "Three upstream import/export dependencies were not yet overlaid in the sparse worktree; remote 071dc bytes were read directly and are present in main. Root was notified before execution.",
+    "requiredBeforeLocalExecution": "Use exact 071dc upstream helper dependencies; do not interpret missing local module as a semantic-code failure.",
+    "productionCodeCompletenessClaim": false
+  },
+  "limits": {
+    "independentTestRerun": false,
+    "newFullMathematicalQa": false,
+    "productionRegistrationVerified": false,
+    "actualConsumerVerified": false,
+    "studentDeploymentVerified": false,
+    "repositoryWritesByReviewer": 0
+  }
+}

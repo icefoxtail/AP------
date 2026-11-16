@@ -2057,123 +2057,126 @@ for (const label of ['absent', 'empty']) {
   });
 }
 
-
-// Existing source-only FINAL_QA approval, with a later append to shared input.
-// This uses the public preview/prepare/proof interfaces and their existing
-// official-phase test runner; the registrar's approval guard remains separate.
-function issuedPartialHistoryFixture(t, { mutateReceipt, mutateRequest, directHistorical = false, nestedDirect = false } = {}) {
+function historicalPreservedRpmFixture(t, { unreachableHistory = false, mutateCurrent } = {}) {
   const f = fixture(t, { partial: true, finalQaPreservation: true, otherOwner: false });
-  const priorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-partial.json';
-  const sharedPath = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
-  const historicalBytes = json({ records: [{ id: 'EXISTING' }] });
-  const currentBytes = json({ records: [{ id: 'EXISTING' }, { id: 'UNRELATED-APPEND' }] });
-  const historicalRef = { path: sharedPath, sha256: sha(historicalBytes) };
-  const currentRef = copy(f.request.approval.evidenceRefs[0]);
-  f.request.examUid = 'existing-partial-exam';
-  const item = f.request.items[0], row = { questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
-    sourceArchiveFile: f.request.sourceArchiveFile };
-  const receipt = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
-    requestId: 'issued-partial', requestSha256: 'a'.repeat(64), examUid: f.request.examUid,
-    sourceArchiveFile: f.request.sourceArchiveFile, sourceBlobSha1: 'b'.repeat(40), sourceRawSha256: 'c'.repeat(64),
+  const priorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/historical-rpm-prior.json';
+  const crosswalkPath = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
+  const runtimePath = 'archive/data/meta-foundation/runtime/middle2-v1.json';
+  const rpmPath = { majorUnit: 'unit', midUnit: 'subunit', l3: 'method', l4: 'variant' };
+  const crosswalk = { schemaVersion: 'rpm-primary-active-crosswalk-v1', status: 'ACTIVE_REFERENCE', grade: 'M2',
+    records: [{ id: 'M2-RPM-136', curriculum: '2022', scope: 'M2-1', rpmPath, mappingStatus: 'RPM_ONLY' }] };
+  const crosswalkRef = { path: crosswalkPath, sha256: sha(json(crosswalk)) };
+  const sourceBytes = fs.readFileSync(path.join(f.root, SOURCE));
+  const row = { questionUid: 'fixture', sourceArchiveFile: 'original/native.js', sourceOrdinal: 5,
+    metadataApprovalType: 'FINAL_QA', metadataStatus: 'approved_semantic_review', metaFoundationStatus: 'ACTIVE',
+    defaultSelectable: true, approvalEvidence: [priorPath], rpmPrimaryId: 'M2-RPM-136', curriculum: '2022', courseKey: 'M2-1' };
+  const identity = { questionUid: 'fixture', sourceArchiveFile: row.sourceArchiveFile, sourceOrdinal: 5, sourceFingerprint: 'a'.repeat(64) };
+  const runtimeRecord = { ...copy(row), sourceIdentity: 'original/native.js#5', runtimeSelectable: true };
+  const prior = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
+    requestId: 'historical-rpm-prior', requestSha256: 'b'.repeat(64), sourceArchiveFile: row.sourceArchiveFile,
     scope: 'PARTIAL_UIDS', totalQuestions: 1, partialUidCount: 1, expectedQuestionCount: 24,
-    approval: { type: 'FINAL_QA', metadataReviewed: true, approvedBy: 'existing fixture approval', evidenceRefs: [historicalRef] },
-    appliedRecords: [{ ...row, metadataApprovalType: 'FINAL_QA' }], appliedIdentityRecords: [{ ...row }],
-    runtimeRecords: [{ ...row, sourceIdentity: `${row.sourceArchiveFile}#${row.sourceOrdinal}` }] };
-  mutateReceipt?.(receipt);
-  const priorBytes = json(receipt), priorRef = { path: priorPath, sha256: sha(priorBytes) };
-  f.write(priorPath, priorBytes); f.write(sharedPath, historicalBytes);
-  f.git('add', '.'); f.git('commit', '-qm', 'issued exact partial approval');
-  f.request.approval.sourceRebind.priorReceiptRef = priorRef;
-  f.request.approval.evidenceRefs = [priorRef, currentRef];
-  f.request.items[0].evidenceRefs = [priorRef, currentRef];
-  if (directHistorical) f.request.approval.evidenceRefs.push(historicalRef);
-  if (nestedDirect) {
-    const otherPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/separate-current.json';
-    const otherBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2', approval: { evidenceRefs: [historicalRef] } });
-    f.write(otherPath, otherBytes);
-    f.request.approval.evidenceRefs.push({ path: otherPath, sha256: sha(otherBytes) });
-  }
-  mutateRequest?.(f.request);
-  f.write(sharedPath, currentBytes); f.write(REQUEST, json(f.request));
-  f.git('add', '.'); f.git('commit', '-qm', 'preserve issued subset after unrelated shared append');
-  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository';
-  const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
-    number: 17, base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } };
-  const options = { root: f.root, repo, event, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run };
-  return { ...f, headSha, priorPath, priorBytes, priorRef, sharedPath, currentBytes, currentRef, options,
+    sourceBlobSha1: f.git('rev-parse', `HEAD:${SOURCE}`), sourceRawSha256: sha(sourceBytes),
+    approval: { type: 'FINAL_QA', metadataReviewed: true, approvedBy: 'original independent reviewer', evidenceRefs: [crosswalkRef] },
+    appliedRecords: [copy(row)], appliedIdentityRecords: [copy(identity)], runtimeRecords: [copy(runtimeRecord)],
+    rpmPrimaryBindings: [{ questionUid: 'fixture', sourceOrdinal: 5, recordId: 'M2-RPM-136', crosswalkRef,
+      curriculum: '2022', scope: 'M2-1', rpmPath, authorityUse: 'RPM_PATH_PROVENANCE_ONLY', selectsPtTpl: false }],
+    outputDigests: [{ path: runtimePath, sha256: 'c'.repeat(64) }] };
+  f.write(META, json({ records: [row] })); f.write(IDENTITY, json({ records: [identity] }));
+  f.write(runtimePath, json({ status: 'ACTIVE', generatedFrom: { reviewedExam_historical_rpm_unused: 'unrelated',
+    ['reviewedExam_' + prior.requestId]: priorPath }, records: [runtimeRecord] }));
+  f.write(crosswalkPath, json(crosswalk)); f.write(priorPath, json(prior));
+  f.git('add', '.');
+  let issuedCommit;
+  if (unreachableHistory) {
+    issuedCommit = f.git('commit-tree', f.git('write-tree'), '-p', f.git('rev-parse', 'HEAD'), '-m', 'unmerged historical bytes');
+    f.git('update-ref', 'refs/heads/unmerged-issued-snapshot', issuedCommit);
+  } else { f.git('commit', '-qm', 'issued exact partial FINAL_QA RPM provenance'); issuedCommit = f.git('rev-parse', 'HEAD'); }
+  const current = copy(crosswalk); current.records.push({ id: 'M2-RPM-UNRELATED', curriculum: '2015', scope: 'M2-1' });
+  f.write(crosswalkPath, json(current));
+  const source = Array.from({ length: 24 }, (_, i) => ({ id: i + 1 })); source[0].tagConfidence = 'reviewed-disjoint-metadata';
+  f.write(SOURCE, 'window.questions = ' + JSON.stringify(source) + ';\n');
+  const priorRef = { path: priorPath, sha256: sha(json(prior)) };
+  f.request.approval.evidenceRefs = [priorRef]; f.request.approval.sourceRebind = { priorReceiptRef: priorRef };
+  f.request.items[0].evidenceRefs = [priorRef]; f.request.expectedSourceBlobSha1 = f.git('hash-object', SOURCE);
+  f.write(REQUEST, json(f.request));
+  mutateCurrent?.({ f, prior, current, row, identity, runtimeRecord, priorPath, crosswalkPath, runtimePath, priorRef });
+  f.git('add', '.'); f.git('commit', '-qm', 'current unrelated crosswalk expansion and source-only preservation');
+  const headSha = f.git('rev-parse', 'HEAD');
+  return { ...f, headSha, issuedCommit, priorPath, priorRef, crosswalkPath, runtimePath, crosswalkRef,
     selected: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
-    produce: () => producePrRegistrationProof(options),
-    validate: proof => validateLocalRegistrationProof({ ...options, proof }) };
+    pending: () => selectPendingNativeRequests({ root: f.root, headSha }) };
 }
 
-test('issued partial FINAL_QA history stages the exact receipt and current inputs through PR, main and shadow proof', t => {
-  const f = issuedPartialHistoryFixture(t);
-  const [selected] = f.selected();
-  assert.deepEqual(selected.evidence.map(ref => ref.path).sort(), [f.priorPath, EVIDENCE].sort());
-  assert.equal(selected.questionCount, 1); assert.equal(selected.sourceQuestionCount, 24);
-  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), [selected]);
-  f.hook['dry-run'] = target => {
-    assert.deepEqual(fs.readFileSync(path.join(target, f.priorPath)), Buffer.from(f.priorBytes));
-    assert.deepEqual(fs.readFileSync(path.join(target, f.sharedPath)), Buffer.from(f.currentBytes));
-  };
-  const proof = f.produce(), before = f.snapshot();
-  assert.equal(f.validate(proof).reusable, true); assert.deepEqual(f.snapshot(), before);
-  const check = proof.nativePreview.checks.find(value => value.id === 'native-consumer');
-  assert.deepEqual(check.preservedNativeApprovals, { requests: 1, preservedMetadataApprovals: 1,
-    newMetadataApprovals: 0, approvalTypes: ['FINAL_QA'] });
-  f.assertShadowsRemoved();
+test('historical preserved RPM crosswalk stages current bytes with exact issued ancestor provenance', t => {
+  const f = historicalPreservedRpmFixture(t), before = f.snapshot();
+  const selected = f.selected(); assert.equal(selected.length, 1);
+  const row = selected[0], history = row.historicalRpmEvidence;
+  assert.equal(history.length, 1); assert.equal(history[0].historicalRef.commit, f.issuedCommit);
+  assert.equal(history[0].historicalRef.sha256, f.crosswalkRef.sha256);
+  assert.equal(history[0].priorReceiptRef.sha256, f.priorRef.sha256);
+  assert.equal(history[0].selectedRecords[0].recordId, 'M2-RPM-136');
+  const currentSha = sha(fs.readFileSync(path.join(f.root, f.crosswalkPath)));
+  assert.notEqual(currentSha, f.crosswalkRef.sha256);
+  assert.equal(row.evidence.find(r => r.path === f.crosswalkPath).sha256, currentSha);
+  assert.deepEqual(f.pending(), selected); assert.deepEqual(f.snapshot(), before);
+  assert.equal(f.calls.some(c => c.program !== 'git'), false, 'staging issues no approval');
 });
 
-for (const [name, options] of [
-  ['wrong prior SHA', { mutateRequest: r => { r.approval.sourceRebind.priorReceiptRef.sha256 = '0'.repeat(64); } }],
-  ['changed UID', { mutateReceipt: r => { r.appliedRecords[0].questionUid = 'foreign'; } }],
-  ['changed identity ordinal', { mutateReceipt: r => { r.appliedIdentityRecords[0].sourceOrdinal = 6; } }],
-  ['changed runtime source', { mutateReceipt: r => { r.runtimeRecords[0].sourceArchiveFile = 'original/foreign.js'; } }],
-  ['wrong partial scope', { mutateReceipt: r => { delete r.scope; } }],
-  ['different approval type', { mutateReceipt: r => { r.approval.type = 'REVIEW2'; } }],
-  ['changed runtime identity', { mutateReceipt: r => { r.runtimeRecords[0].sourceIdentity = 'original/native.js#6'; } }],
-  ['wrong full denominator', { mutateReceipt: r => { r.expectedQuestionCount = 1; } }],
-  ['extra selected UID', { mutateReceipt: r => { r.appliedRecords.push({ ...r.appliedRecords[0], questionUid: 'neighbour' }); } }],
-  ['different exam', { mutateReceipt: r => { r.examUid = 'foreign-exam'; } }],
-  ['unregistered receipt', { mutateReceipt: r => { r.metadataRegistrationStatus = 'PENDING'; } }],
-  ['ordinary FINAL_QA without preservation', { mutateRequest: r => { delete r.approval.sourceRebind; } }],
-  ['unknown preservation option', { mutateRequest: r => { r.approval.sourceRebind.allowDrift = true; } }],
-  ['nonempty semantic after', { mutateRequest: r => { r.items[0].after.templateKey = 'UNREVIEWED'; } }],
-  ['separately declared historical ref', { directHistorical: true }],
-  ['separate current recursive receipt', { nestedDirect: true }],
-]) test(`issued partial FINAL_QA history refuses ${name} before official registration`, t => {
-  const f = issuedPartialHistoryFixture(t, options), before = f.snapshot();
-  assert.throws(f.produce, /EVIDENCE_DRIFT/);
-  assert.deepEqual(f.snapshot(), before); assert.equal(f.calls.length, 0);
+for (const [name, mutateCurrent, expected] of [
+  ['selected metadata', ({ f, row }) => f.write(META, json({ records: [{ ...row, difficultyBucket: 5 }] })), /EXISTING_APPROVAL/],
+  ['selected identity', ({ f, identity }) => f.write(IDENTITY, json({ records: [{ ...identity, sourceFingerprint: 'd'.repeat(64) }] })), /EXISTING_APPROVAL/],
+  ['selected runtime', ({ f, runtimeRecord, runtimePath, priorPath }) => f.write(runtimePath, json({ status: 'ACTIVE', generatedFrom: { 'reviewedExam_historical-rpm-prior': priorPath }, records: [{ ...runtimeRecord, runtimeSelectable: false }] })), /EXISTING_APPROVAL/],
+  ['runtime receipt binding', ({ f, runtimeRecord, runtimePath }) => f.write(runtimePath, json({ status: 'ACTIVE', generatedFrom: {}, records: [runtimeRecord] })), /RUNTIME_BINDING/],
+  ['selected RPM row', ({ f, current, crosswalkPath }) => { current.records[0].mappingStatus = 'CHANGED'; f.write(crosswalkPath, json(current)); }, /SELECTED_RECORD_CHANGED/],
+  ['unknown field on selected RPM row', ({ f, current, crosswalkPath }) => { current.records[0].unreviewedAlias = true; f.write(crosswalkPath, json(current)); }, /SELECTED_RECORD_CHANGED/],
+  ['duplicate RPM record', ({ f, current, crosswalkPath }) => { current.records.push(copy(current.records[0])); f.write(crosswalkPath, json(current)); }, /CROSSWALK_SCOPE/],
+  ['foreign crosswalk grade', ({ f, current, crosswalkPath }) => { current.grade = 'M3'; f.write(crosswalkPath, json(current)); }, /CROSSWALK_SCOPE/],
+  ['inactive crosswalk', ({ f, current, crosswalkPath }) => { current.status = 'DRAFT'; f.write(crosswalkPath, json(current)); }, /CROSSWALK_SCOPE/],
+  ['new semantic after value', ({ f }) => { f.request.items[0].after = { difficultyBucket: 5 }; f.write(REQUEST, json(f.request)); }, /EVIDENCE_DRIFT/],
+  ['ordinary request without source rebind', ({ f }) => { delete f.request.approval.sourceRebind; f.write(REQUEST, json(f.request)); }, /EVIDENCE_DRIFT/],
+  ['direct stale crosswalk reference', ({ f, prior }) => { f.request.approval.evidenceRefs.push(prior.approval.evidenceRefs[0]); f.request.items[0].evidenceRefs.push(prior.approval.evidenceRefs[0]); f.write(REQUEST, json(f.request)); }, /EVIDENCE_DRIFT/],
+]) test(`historical preserved RPM crosswalk rejects ${name}`, t => {
+  const f = historicalPreservedRpmFixture(t, { mutateCurrent }), before = f.snapshot();
+  assert.throws(() => f.selected(), expected); assert.deepEqual(f.snapshot(), before);
 });
 
-test('issued partial FINAL_QA history retains live prior and direct evidence SHA and HEAD checks', t => {
-  for (const file of ['prior', 'direct']) {
-    const f = issuedPartialHistoryFixture(t), changed = file === 'prior' ? f.priorPath : EVIDENCE;
-    fs.appendFileSync(path.join(f.root, changed), '\n');
-    assert.throws(f.selected, /EVIDENCE_DRIFT/); assert.equal(f.calls.length, 0);
-  }
-  for (const file of ['prior', 'direct']) {
-    const f = issuedPartialHistoryFixture(t), changed = file === 'prior' ? f.priorPath : EVIDENCE;
-    const changedBytes = fs.readFileSync(path.join(f.root, changed), 'utf8') + '\n';
-    f.write(changed, changedBytes);
-    for (const refs of [f.request.approval.evidenceRefs, f.request.items[0].evidenceRefs])
-      refs.find(ref => ref.path === changed).sha256 = sha(changedBytes);
-    f.write(REQUEST, json(f.request)); f.git('add', '--', REQUEST); f.git('commit', '-qm', 'only the request is committed');
-    assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha,
-      headSha: f.git('rev-parse', 'HEAD') }), /EVIDENCE_NOT_FIXED/);
-    assert.equal(f.calls.length, 0);
-  }
+test('historical preserved RPM crosswalk rejects matching bytes on an unmerged side branch', t => {
+  const f = historicalPreservedRpmFixture(t, { unreachableHistory: true });
+  assert.throws(() => f.selected(), /IMMUTABLE_REFERENCE/);
 });
 
-test('issued partial FINAL_QA history cannot bypass official registration, projection, Consumer or shadow refusal', t => {
-  for (const phase of ['dry-run', 'projection', 'consumer']) {
-    const f = issuedPartialHistoryFixture(t);
-    f.hook[phase] = () => { throw Error('OFFICIAL_PRESERVATION_REFUSED'); };
-    assert.throws(f.produce, /OFFICIAL_PRESERVATION_REFUSED/); f.assertShadowsRemoved();
-  }
-  const f = issuedPartialHistoryFixture(t), proof = f.produce(), before = f.snapshot();
-  f.hook['dry-run'] = target => { if (target !== f.root) throw Error('OFFICIAL_SHADOW_PRESERVATION_REFUSED'); };
-  assert.throws(() => f.validate(proof), /OFFICIAL_SHADOW_PRESERVATION_REFUSED/);
-  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+test('historical preserved RPM crosswalk still rejects current worktree drift', t => {
+  const f = historicalPreservedRpmFixture(t);
+  fs.appendFileSync(path.join(f.root, f.crosswalkPath), '\n');
+  assert.throws(() => f.selected(), /EVIDENCE_NOT_FIXED/);
 });
+
+test('historical preserved RPM crosswalk cannot bypass an official registrar refusal', t => {
+  const f = historicalPreservedRpmFixture(t), selected = f.selected(), before = f.snapshot();
+  f.hook['dry-run'] = () => { throw Error('OFFICIAL_PRIOR_WHOLE_QUESTION_REJECTED'); };
+  assert.throws(() => applyNativeRequests({ root: f.root, requests: selected, run: f.run }), /OFFICIAL_PRIOR_WHOLE_QUESTION_REJECTED/);
+  assert.deepEqual(f.snapshot(), before);
+});
+
+test('historical preserved RPM crosswalk cannot claim a new approval from a preservation plan', t => {
+  const f = historicalPreservedRpmFixture(t), selected = f.selected();
+  f.hook.result = (_phase, result) => ({ ...result, newMetadataApprovals: 1 });
+  assert.throws(() => applyNativeRequests({ root: f.root, requests: selected, run: f.run }), /DRY_RUN_NOT_PASS/);
+});
+
+for (const [name, mutate] of [
+  ['missing issued RPM bindings', prior => { delete prior.rpmPrimaryBindings; }],
+  ['wrong cohort denominator', prior => { prior.expectedQuestionCount = 23; }],
+  ['wrong prior approval type', prior => { prior.approval.type = 'REVIEW2'; }],
+  ['missing prior source blob binding', prior => { delete prior.sourceBlobSha1; }],
+  ['wrong prior source raw digest', prior => { prior.sourceRawSha256 = '0'.repeat(64); }],
+  ['foreign RPM selection authority', prior => { prior.rpmPrimaryBindings[0].selectsPtTpl = true; }],
+]) test(`historical preserved RPM crosswalk rejects re-sealed ${name}`, t => {
+  const f = historicalPreservedRpmFixture(t, { mutateCurrent: ({ f, prior, priorPath }) => {
+    mutate(prior); const raw = json(prior), ref = { path: priorPath, sha256: sha(raw) };
+    f.write(priorPath, raw); f.request.approval.sourceRebind.priorReceiptRef = ref;
+    f.request.approval.evidenceRefs = [ref]; f.request.items[0].evidenceRefs = [ref]; f.write(REQUEST, json(f.request));
+  } });
+  assert.throws(() => f.selected(), /PRESERVED_RPM_HISTORY_/);
+});
+
