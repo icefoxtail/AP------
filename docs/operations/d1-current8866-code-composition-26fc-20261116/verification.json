@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "current8866-C-D-focused-composition-verification-v1",
+  "currentMain": "8866abd245ce04a0bbedfe661d23791e0838c0e3",
+  "status": "PASS_FOR_BOUNDED_CODE_COMPOSITION_NOT_ACTUAL_REGISTRATION",
+  "code": [
+    {
+      "group": "C-prefix",
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "after": {
+        "sha256": "54aeaa8b945926db8f8ff695538390692e0ed6d6e53e54509052a6288e163e60",
+        "gitBlobSha1": "1a2e826af449a32798ff7d876b89f53aab19c1a7",
+        "bytes": 30478
+      }
+    },
+    {
+      "group": "C-prefix",
+      "path": "tools/run-tests.js",
+      "after": {
+        "sha256": "cb0789175fd321714c8a413ae9afecb577ba61dcf53dbfe02873a51671e35c14",
+        "gitBlobSha1": "e35d8163879c8c6c27b9680bd8401c8d6b5b7861",
+        "bytes": 25282
+      }
+    },
+    {
+      "group": "D-after",
+      "path": "archive/item-4slot.js",
+      "after": {
+        "sha256": "3c8b67c60cbb56ca69c45c3fdadef757bd7a215800589b7c582b387123153674",
+        "gitBlobSha1": "bc842db7daa1e4cbee52e33e06846b940547f9ce",
+        "bytes": 4812
+      }
+    },
+    {
+      "group": "D-after",
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "after": {
+        "sha256": "3e08ce8e78d516c586b87b8bc0189795c47e356b62392b04a47238d0131b09d2",
+        "gitBlobSha1": "34da6247ba0e36750deaf64395ce6c38cc0e69e0",
+        "bytes": 31655
+      }
+    },
+    {
+      "group": "D-after",
+      "path": "tools/run-tests.js",
+      "after": {
+        "sha256": "e73cb1ed7595f502d66516d58e73e434f643d17befee21b5f39717e54bd8fc6d",
+        "gitBlobSha1": "91cbe6a6b26e0f74f7d8c6878a41c66a61a6f4d8",
+        "bytes": 25564
+      }
+    },
+    {
+      "group": "D-after",
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "after": {
+        "sha256": "c8faaf60bdfae7e26c7bdb58719d8c98e49eb849957def47dbd8965ae8ab60e6",
+        "gitBlobSha1": "d0519d2e5b813685d3739998f22d07f214ff339a",
+        "bytes": 28240
+      }
+    },
+    {
+      "group": "D-after",
+      "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+      "after": {
+        "sha256": "649f0c6c539eed8aec7aa720a28bd9aaf5103895451401a497597f34933f9ef5",
+        "gitBlobSha1": "22ea66254653f7678cb73f2209fcc206c1a5e87a",
+        "bytes": 96880
+      }
+    },
+    {
+      "group": "D-after",
+      "path": "tests/item-4slot-existing-renderer-v2.test.cjs",
+      "after": {
+        "sha256": "8d14c5a89e0fac2b0122270780445e92cf46a0ed841400c25deb5696e4e2d31c",
+        "gitBlobSha1": "27dafadb8b2c51feff93c182a38027232480cc3a",
+        "bytes": 21836
+      }
+    }
+  ],
+  "preservedCurrentChanges": {
+    "pr2260ExistingVector": true,
+    "pr2210NativeRationale": true,
+    "priorCPartialScopeDigest": true,
+    "priorQ17RequiredCommand": true,
+    "priorDRendererAndM2Cc": true,
+    "mixedContinuityAuthoritiesRejected": true
+  },
+  "focusedTests": [
+    {
+      "scope": "C-vector-public",
+      "passed": 13,
+      "failed": 0,
+      "sha256": "4f9489faa594880b0ae733a09bd965b87d93d0cca86c08aa8bd69206774bad7e"
+    },
+    {
+      "scope": "D-vector-renderer",
+      "passed": 13,
+      "failed": 0,
+      "sha256": "855d354e7d1f0e69218c4429118268484f1b70c4f1dcfe6096371897f188a4b9"
+    },
+    {
+      "scope": "D9-rationale-four-final",
+      "passed": 4,
+      "failed": 0,
+      "sha256": "c289a6e8b7f950355b343f670bf001f977e8b6654452a9dabfd0cc83127c5ebf"
+    }
+  ],
+  "executions": 30,
+  "newCrossCertificateNegativeCases": 2,
+  "runner": {
+    "currentCommandsExactlyPreserved": 109,
+    "cCommands": 112,
+    "dCommands": 114,
+    "dAdditions": [
+      "tests/archive-reviewed-m2-cc-renderer.test.mjs",
+      "tests/item-4slot-existing-renderer-v2.test.cjs"
+    ]
+  },
+  "fixtureCodeDigest": "5ec41bd4ddf1a04866fa7f755363c8e2cfb219183b1ae4ed550c3ea9b26258a9",
+  "inputContinuity": {
+    "reportSha256": "12c1e596ac8d05df13771868f43934ac3e80ae54a924cf4cc1b1e38618c3ed88",
+    "selectedWholeQuestions": 10,
+    "assets": 20,
+    "compacts": 3,
+    "sourceRows": 69,
+    "selectedInputRetargets": 0
+  },
+  "testHydration": {
+    "fixedCodeCommit": "8866abd245ce04a0bbedfe661d23791e0838c0e3",
+    "initialModuleMissingAttempts": 2,
+    "codeOnlyExactGitHydration": true,
+    "finalExecutionPassed": true
+  },
+  "unrun": {
+    "fullC161": true,
+    "fullD203Plus97": true,
+    "priorNative88_22_59Repeated": false,
+    "liveRegistration": true,
+    "liveConsumer": true,
+    "livePages": true,
+    "remoteCi": true
+  },
+  "sourceDataRegistryApprovalWrites": 0,
+  "remoteWrites": 0,
+  "q7NewContractIncluded": false
+}
