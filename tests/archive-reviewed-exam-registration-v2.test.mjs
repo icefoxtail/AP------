@@ -10,6 +10,7 @@ import { registerDifficulty5 } from "../archive/tools/meta-foundation/register-d
 import { planQuestion as planAutoQuestion, sourceFingerprint as auditSourceFingerprint, contentFingerprint as auditContentFingerprint, loadBank as loadSourceBank } from "../archive/tools/meta-foundation/auto-register-merged-source.mjs";
 import { validateActiveMetaFields, loadActiveMetaRegistry } from "../archive/tools/meta-foundation/active-registry.mjs";
 import { nativeReviewedRendererRebind } from "../archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs";
+import { verifyRegisteredRendererContinuity } from "../tools/4slot/registered-renderer-continuity.mjs";
 import { buildReviewedRendererBinding } from "../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs";
 import { loadAuditPreservation } from "../archive/tools/meta-foundation/native-audit-preservation.mjs";
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
@@ -261,7 +262,7 @@ test("partial missing-array projection rejects reordering an explicit source tag
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source\/approved metadata parity/);
 });
 
-function fixture(t, course = "중1 수학", curriculum = "2022") {
+function fixture(t, course = "중1 수학", curriculum = "2022", unitKey = "UNIT_NEW", subKey = "SUB_NEW") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-meta-v2-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const put = (p, value) => { const full = path.join(root, p); fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, typeof value === "string" ? value : j(value)); };
@@ -269,14 +270,14 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   put("docs/approval.json", { approved: true, meaning: "fixture reviewed definitions" });
   const evidenceRefs = [{ path: "docs/approval.json", sha256: hash(fs.readFileSync(path.join(root, "docs/approval.json"))) }];
   const q = { id: 1, content: "학생용 지문", choices: ["1", "2"], answer: "1", solution: "학생용 해설", image: "",
-    standardCourse: course, standardUnitKey: "UNIT_NEW", standardUnit: "새 단원", subUnitKey: "SUB_NEW", subUnit: "새 세부단원",
+    standardCourse: course, standardUnitKey: unitKey, standardUnit: "새 단원", subUnitKey: subKey, subUnit: "새 세부단원",
     level: "중", problemTypeKey: "PT_NEW", templateKey: "TPL_NEW", crossConceptKeys: ["CC_NEW"], conditionKeys: ["COND_NEW"], integrationPattern: "NONE", difficultyBucket: 3 };
   const source = "fixture/exam.js";
   const text = `window.questions = ${JSON.stringify([q])};\n`;
   put(`archive/exams/${source}`, text);
   const fingerprint = hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
   const current = { questionUid: "uid1", sourceArchiveFile: source, sourceOrdinal: 1, sourceFingerprint: fingerprint,
-    standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", reviewStatus: "review_required" };
+    standardCourse: course, standardUnitKey: unitKey, subUnitKey: subKey, reviewStatus: "review_required" };
   put(META, { records: [current], counts: {} });
   put("archive/data/question_identity_map.json", { records: [{ ...current }] });
   put(`${CANON}/registry_index.json`, { activePacks: [], activeConceptShards: [], conditionRegistry: { id: "CONDITION_CORE", version: "1", status: "ACTIVE" }, canonicalSources: [{ path: `${CANON}/condition_registry.json` }],
@@ -289,13 +290,13 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   const base = `${CANON}/packs/new-course`;
   change(`${CANON}/registry_index.json`, "activePacks", { id: "NEW_COURSE" }, null, { id: "NEW_COURSE", version: "1.0.0", status: "ACTIVE" });
   change(`${base}/pack.json`, null, null, null, { schemaVersion: "meta-foundation-pack-v1", packId: "NEW_COURSE", packVersion: "1.0.0", canonicalStatus: "ACTIVE", curricula: [curriculum], standardCourses: [course] });
-  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
-  change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
+  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: unitKey, supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: unitKey, supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
+  change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: unitKey, subUnitKey: subKey, problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
   change(`${base}/aliases.json`, null, null, null, { aliases: [] });
   change(`${CANON}/registry_index.json`, "activeConceptShards", { id: "NEW_CONCEPTS" }, null, { id: "NEW_CONCEPTS", version: "1.0.0", status: "ACTIVE" });
   change(`${CANON}/concepts/new-concepts.json`, null, null, null, { shardId: "NEW_CONCEPTS", shardVersion: "1.0.0", concepts: [{ conceptKey: "CC_NEW", canonicalLabelKo: "새 추가 개념", definition: "추가 개념 근거", supportingQuestionUids: ["uid1"], supportingItemCount: 1, status: "ACTIVE" }] });
   change(`${CANON}/condition_registry.json`, "conditions", { conditionKey: "COND_NEW" }, null, { conditionKey: "COND_NEW", canonicalLabelKo: "새 조건", definition: "조건 근거", status: "ACTIVE" });
-  for (const row of [{ key: "UNIT_NEW", keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: "SUB_NEW", keyType: "subUnitKey", parentKey: "UNIT_NEW", standardUnitKey: "UNIT_NEW", labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
+  for (const row of [{ key: unitKey, keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: subKey, keyType: "subUnitKey", parentKey: unitKey, standardUnitKey: unitKey, labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
   const after = { ...Object.fromEntries(Object.entries(q).filter(([k]) => !["id", "content", "choices", "answer", "solution", "image"].includes(k))), curriculum, curriculumKey: curriculum, courseKey: course, rpmSemanticStatus: "FINAL", rpmL3: "reviewed-rpm-l3", rpmL4: "reviewed-rpm-l4" };
   const request = { schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "test-new-course", examUid: "exam1", sourceArchiveFile: source, expectedSourceBlobSha1: blob(text), expectedQuestionCount: 1,
     approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-reviewer", evidenceRefs }, registryChanges: changes,
@@ -2819,8 +2820,8 @@ test("fieldCandidates rpmPath is accepted when the path is a leaf of the locked 
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rpmPath not in RPM master or received registry/);
 });
 
-function partialFixture(t) {
-  const f = fixture(t);
+function partialFixture(t, completeActiveMetadata = false) {
+  const f = completeActiveMetadata ? fixture(t, "중2 수학", "2022", "M2-01", "M2-01-FIXTURE") : fixture(t);
   const hold = { questionUid: "uid2", sourceArchiveFile: f.request.sourceArchiveFile, sourceOrdinal: 2,
     sourceFingerprint: "legacy-fingerprint", reviewStatus: "manual_review", metadataStatus: "approved_partial_with_explicit_holds",
     fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" }, problemTypeKey: "", templateKey: null };
@@ -2930,8 +2931,8 @@ test("partial source rebind cannot add a held neighbour or change a selected ren
   assert.throws(() => registerReviewedExamV2({ root: changed.root, request: changed.request }), /must not change values/);
 });
 
-function itemRebindFixture(t) {
-  const f = partialFixture(t);
+function itemRebindFixture(t, completeActiveMetadata = false) {
+  const f = partialFixture(t, completeActiveMetadata);
   const sourceSha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
   const bodySha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, image: q.image }));
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
@@ -3117,13 +3118,18 @@ test("partial UID Consumer verification sees only applied records from the recei
   assert.throws(() => verifyConsumerValues(f.root, f.read(META).records, receipt.runtimeRecords, catalog), /Consumer UID missing\/mismatch: uid2/);
 });
 
-function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", mutateReview = () => {}) {
-  const f = itemRebindFixture(t);
+function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", mutateReview = () => {}, completeActiveMetadata = false) {
+  const f = itemRebindFixture(t, completeActiveMetadata);
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
   const commit = () => { git("add", "--", f.sourcePath, "docs/native-review.json");
     git("-c", "user.name=Fixture reviewer", "-c", "user.email=fixture@example.invalid", "commit", "--allow-empty", "-qm", "Reviewed current source");
     return git("rev-parse", "HEAD"); };
   Object.assign(f.current, { content: "실제 재검토한 새 발문", image: "assets/reviewed-figure.svg" });
+  if (completeActiveMetadata) {
+    const difficulty = { difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' };
+    Object.assign(f.current, difficulty); Object.assign(f.item.after, difficulty);
+    for (const key of Object.keys(difficulty)) f.item.before[key] = f.read(META).records[0][key] ?? null;
+  }
   const bytes = f.writeBank(f.current), sourceBlob = git("hash-object", "-w", f.sourcePath);
   Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
   const after = structuredClone(f.item.after);
@@ -3162,8 +3168,8 @@ function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", 
   return { ...f, git, review, updateReview };
 }
 
-function rendererContinuityFixture(t, schema = 'm3-s2-complete-semantic-review-v1', mutateReview) {
-  const f = reviewedSourceFixture(t, schema, mutateReview);
+function rendererContinuityFixture(t, schema = 'm3-s2-complete-semantic-review-v1', mutateReview, completeActiveMetadata = false) {
+  const f = reviewedSourceFixture(t, schema, mutateReview, completeActiveMetadata);
   const oldAssetPath = "archive/assets/reviewed-figure.svg", assetPath = "archive/assets/current-figure.svg";
   f.put(oldAssetPath, '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>');
   f.git("add", "--", oldAssetPath);
@@ -3248,8 +3254,8 @@ function correctiveRendererContinuityFixture(t) {
 }
 
 function rendererV2Fixture(t, { insertions = false, transformContainer = value => value, extraDelta = {},
-  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview } = {}) {
-  const f = rendererContinuityFixture(t, nativeSchema, mutateReview), previous = structuredClone(f.nativeQuestion);
+  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview, completeActiveMetadata = false } = {}) {
+  const f = rendererContinuityFixture(t, nativeSchema, mutateReview, completeActiveMetadata), previous = structuredClone(f.nativeQuestion);
   const secondAsset = 'archive/assets/current-relic.svg';
   f.put(secondAsset, '<svg xmlns="http://www.w3.org/2000/svg"><circle r="2"/></svg>');
   Object.assign(f.current, { imageAlt: 'The two given radii and perpendicular foot', imageSize: 'full' }, extraDelta);
@@ -3349,6 +3355,65 @@ test('m2-s2 renderer continuation preserves independent source, reviewer and ass
   }
   const unsupported = rendererV2Fixture(t, { nativeSchema: 'm2-s1-meta-review-v1' });
   assert.throws(() => registerReviewedExamV2({ root: unsupported.root, request: unsupported.request }), /exclusive native-semantic/);
+});
+
+function fourSlotRendererFixture(t) {
+  const f=rendererV2Fixture(t,{nativeSchema:'m2-s2-meta-review-v1',completeActiveMetadata:true});
+  const index=f.read(`${CANON}/registry_index.json`);index.status='ACTIVE';
+  index.canonicalSources.push({path:`${CANON}/metadata_rules.json`});f.put(`${CANON}/registry_index.json`,index);
+  f.put(`${CANON}/metadata_rules.json`,{status:'ACTIVE',integrationPatterns:['NONE']});
+  const conditions=f.read(`${CANON}/condition_registry.json`);conditions.status='ACTIVE';f.put(`${CANON}/condition_registry.json`,conditions);
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const compactPath='archive/data/item-4slot/'+f.request.sourceArchiveFile.replace(/\.js$/,'.4slot.json');
+  const item={ordinal:1,format:'단일 정답',given:[],goal:[1],method:[2],condition:[],candidates:[]};
+  const compact={schemaVersion:'archive-meta-4slot-compact-v1',sourceArchiveFile:f.request.sourceArchiveFile,
+    sourceGitBlobSha:f.manifest.items[0].prefigureSourceRef.gitBlobSha1,dictionaryVersion:'1.0',
+    reviewedBy:{agent:'existing-slot-reviewer',at:'2026-11-15',sampled:[1]},
+    evidence:{branch:'existing-native-review',commit:f.item.sourceReview.reviewCommit,path:'docs/existing-slots.json'},items:[item]};
+  f.put(compactPath,compact);
+  const dictionaryPath='docs/architecture/4slot/term-dictionary-v1.0.json';
+  f.put(dictionaryPath,{dictionaryVersion:'1.0',terms:[{id:1,ko:'값',status:'ACTIVE'},{id:2,ko:'계산',status:'ACTIVE'}]});
+  const ref=p=>({path:p,sha256:hash(fs.readFileSync(path.join(f.root,p)))});
+  const sidecarPath='.archive-meta-register/4slot-renderer-continuity/fixture.json';
+  const doc={schemaVersion:'archive-four-slot-registered-renderer-continuity-v1',scope:'EXISTING_VECTOR_ONLY',
+    sourceArchiveFile:f.request.sourceArchiveFile,questionUid:'uid1',sourceOrdinal:1,sourceQuestionNo:'1',sourceDisplayNumber:1,
+    compactRef:ref(compactPath),compactItemSha256:hash(stable(item)),dictionaryRef:ref(dictionaryPath),
+    currentSourceRef:{...ref(f.sourcePath),gitBlobSha1:blob(fs.readFileSync(path.join(f.root,f.sourcePath)))},
+    receiptRef:ref(f.receiptPath),rendererBindingRef:ref(f.receiptPath.replace(/\.json$/,'.renderer-binding.json')),
+    independentReviewRef:ref(f.independentPath),newFourSlotApprovals:0,newMathematicalQa:false};
+  f.put(sidecarPath,doc);
+  return {...f,compactPath,compact,item,dictionaryPath,sidecarPath,doc,ref};
+}
+test('four-slot registered renderer continuity reuses only the exact issued receipt and unchanged vector',t=>{
+  const f=fourSlotRendererFixture(t),before=fs.readFileSync(path.join(f.root,f.compactPath));
+  const result=verifyRegisteredRendererContinuity(f.root,f.sidecarPath);
+  assert.deepEqual(result,{status:'PASS',questionUid:'uid1',sourceOrdinal:1,sourceBinding:'REGISTERED_RENDERER_CONTINUITY',independentReviewClaim:false,newFourSlotApprovals:0});
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.compactPath)),before);
+  const child=JSON.parse(execFileSync(process.execPath,[fileURLToPath(new URL('../tools/4slot/registered-renderer-continuity.mjs',import.meta.url)),f.root,f.sidecarPath],{encoding:'utf8'}));
+  assert.deepEqual(child,result);
+  assert.equal(verifyRegisteredRendererContinuity(f.root,f.sidecarPath).status,'PASS');
+});
+test('four-slot registered renderer continuity rejects drift without weakening the native proof',async t=>{
+  for(const [name,mutate,error]of[
+    ['changed vector',f=>{f.compact.items[0].method=[1];f.put(f.compactPath,f.compact);},/BOUND_FILE_CHANGED/],
+    ['changed dictionary',f=>f.put(f.dictionaryPath,{dictionaryVersion:'1.0',terms:[]}),/BOUND_FILE_CHANGED/],
+    ['unregistered receipt',f=>fs.rmSync(path.join(f.root,f.receiptPath)),/ENOENT/],
+    ['changed independent witness',f=>{f.independent.reviewer='someone else';f.put(f.independentPath,f.independent);},/BOUND_FILE_CHANGED/],
+    ['changed asset',f=>f.put(f.assetPath,'<svg/>'),/live renderer bytes changed/],
+    ['wrong UID',f=>{f.doc.questionUid='uid2';f.put(f.sidecarPath,f.doc);},/SELECTED_RENDERER_PROOF_REQUIRED/],
+    ['wrong ordinal',f=>{f.doc.sourceOrdinal=2;f.put(f.sidecarPath,f.doc);},/SOURCE_NUMBER_MISMATCH/],
+    ['new slot approval claim',f=>{f.doc.newFourSlotApprovals=1;f.put(f.sidecarPath,f.doc);},/CLOSED_CONTINUITY_SCOPE/],
+    ['current metadata changed',f=>{const m=f.read(META);m.records[0].difficultyBucket=5;f.put(META,m);},/REGISTERED_METADATA_DRIFT/],
+    ['inactive current registry',f=>{const r=f.read(CANON+'/registry_index.json');r.status='INACTIVE';f.put(CANON+'/registry_index.json',r);},/CURRENT_ACTIVE_BINDING_REQUIRED/],
+    ...['missing','inactive','changed'].map(kind=>['current runtime '+kind,f=>{
+      const directory='archive/data/meta-foundation/runtime';
+      for(const name of fs.readdirSync(path.join(f.root,directory))){const p=directory+'/'+name,r=f.read(p),row=r.records?.find(x=>x.questionUid==='uid1');if(!row)continue;
+        if(kind==='missing')r.records=r.records.filter(x=>x.questionUid!=='uid1');else if(kind==='inactive')r.status='INACTIVE';else row.templateKey='UNREVIEWED';f.put(p,r);
+      }
+    },/CURRENT_RUNTIME_/]),
+    ['current source changed',f=>{f.current.solution+=' changed';f.writeBank(f.current);},/CURRENT_SOURCE_CHANGED/],
+    ['held compact item',f=>{f.item.registrationHold={reason:'SOURCE_EVIDENCE_UNRESOLVED'};f.put(f.compactPath,f.compact);f.doc.compactRef=f.ref(f.compactPath);f.doc.compactItemSha256=hash(stable(f.item));f.put(f.sidecarPath,f.doc);},/EXACT_UNHELD_VECTOR_REQUIRED/],
+  ])await t.test(name,t=>{const f=fourSlotRendererFixture(t);mutate(f);assert.throws(()=>verifyRegisteredRendererContinuity(f.root,f.sidecarPath),error);});
 });
 
 test('renderer v2 fingerprint-only reuse preserves the issued registered rationale origin and RPM proof', t => {

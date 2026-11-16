@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "archive-m3-reviewed-renderer-reuse-limits-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "nativeEvidence": {
+    "path": ".archive-meta-register/evidence/m3s2-audit-e038-renderer2-20261116/E038.meta.json",
+    "sha256": "2203e2c6472b19a1bd22f98aaa681dfa884f9149dcdf59904681cc60ccfeac84"
+  },
+  "independentSampleEvidence": {
+    "path": ".archive-meta-register/evidence/m3s2-audit-e038-renderer2-20261116/E038.independent.json",
+    "sha256": "101e2dcdcd2cfa515ee87cad20e04e44fa7cdeef42cb8278f2f800fbfdfe2ee7"
+  },
+  "nativeIndependentSampleStatus": "PASS_FINAL_METADATA_BOUND",
+  "currentPublishedCommit": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+  "currentRendererSnapshotCommit": "0f985c4a242888c44a45db99b1a55c7ff32a1aa3",
+  "note": "currentSourceRef는 실제 Git에 존재한 그림 개정 후·native 메타 포트 전 source이다. 현재 main의 학생 payload/asset와 exact 일치하며, 현행 source의 메타값은 별도 native sourceReview가 검증한다.",
+  "noNewSourceQualityApproval": true,
+  "noNewFullMathematicalQa": true,
+  "newDefinitionCount": 0,
+  "rows": [
+    {
+      "questionUid": "qid_v1_83cda756e3fe5ea56759246f839cd121b901b92a992c7ca2ea63821eacf43007",
+      "sourceOrdinal": 14,
+      "liveSourceRef": {
+        "commit": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+        "path": "archive/exams/original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "52fc0c0797b95e8cd99b8abb3f960794f873ca45",
+        "sha256": "e80059609e3f1584f29ddf82f4cc5189bb3ea78938a276b2b9199aff2e7b41aa",
+        "questionSha256": "b8071cbe3820518a0798d594c76ff51bb637c1e8ee05c7cd88b433e70636d49d"
+      },
+      "historicalRendererStudentPayloadSha256": "407b6ba701d46c0f6a9dcb49d3c1b0de3d1ce64f06c0ddb106f11ac1915a81d4",
+      "liveStudentPayloadSha256": "407b6ba701d46c0f6a9dcb49d3c1b0de3d1ce64f06c0ddb106f11ac1915a81d4",
+      "nativeRationaleAndPublishedCurriculum": [
+        {
+          "field": "curriculum",
+          "currentValue": "2015",
+          "nativeAfterPresent": false,
+          "nativeBeforeValue": null,
+          "nativeOriginalCurriculum": null,
+          "nativeProvenance": {
+            "status": "UNSPECIFIED",
+            "comparisonPathCurriculum": "2015",
+            "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+          },
+          "status": "EXISTING_PUBLISHED_SOURCE_VALUE_ONLY_NOT_NATIVE_ORIGINAL_CURRICULUM_APPROVAL"
+        },
+        {
+          "field": "primaryMethod",
+          "currentValue": "물매3/10을 직각삼각형의 높이/밑변 즉 tanx로 해석한 뒤 표의 탄젠트0.30에서 각17도를 역으로 찾는다. 최종 각을 찾는 삼각비표 조회이다.",
+          "currentValueSha256": "b60905012d3a4ebbc86a647b24e78ff8bd1b20e3cd068ecafeadbc92bfa568b6",
+          "nativeOriginPath": "items[ordinal=14].decisiveStep",
+          "nativeValue": "물매3/10을 직각삼각형의 높이/밑변 즉 tanx로 해석한 뒤 표의 탄젠트0.30에서 각17도를 역으로 찾는다. 최종 각을 찾는 삼각비표 조회이다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": false,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        },
+        {
+          "field": "decisiveStep",
+          "currentValue": "물매3/10을 직각삼각형의 높이/밑변 즉 tanx로 해석한 뒤 표의 탄젠트0.30에서 각17도를 역으로 찾는다. 최종 각을 찾는 삼각비표 조회이다.",
+          "currentValueSha256": "b60905012d3a4ebbc86a647b24e78ff8bd1b20e3cd068ecafeadbc92bfa568b6",
+          "nativeOriginPath": "items[ordinal=14].decisiveStep",
+          "nativeValue": "물매3/10을 직각삼각형의 높이/밑변 즉 tanx로 해석한 뒤 표의 탄젠트0.30에서 각17도를 역으로 찾는다. 최종 각을 찾는 삼각비표 조회이다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": true,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        }
+      ],
+      "preservedDebts": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "GLOBAL ACTIVE 정의는 재사용하지만 선택한 PT/TPL은 이 RPM row의 직접키 또는 templateCandidates와 일치하지 않는다. 신규 유형 생성과 구별하여 연결 정합화만 인계한다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "sourceHoldFieldsNotChanged": true,
+      "newExactRpmLeafResolution": false,
+      "newCurrent2022Binding": false,
+      "contactRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e038-renderer2-20261116/E038-q14-contact.png",
+        "sha256": "c563d748b5452a70ef377203441a3b40b22b0b10fe3032c3197fa371edb0cd9a"
+      }
+    },
+    {
+      "questionUid": "qid_v1_3b04294258c4b0f7ae456e5fcccb100fa7bc4b83d554603410b84b4b19053c2d",
+      "sourceOrdinal": 24,
+      "liveSourceRef": {
+        "commit": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+        "path": "archive/exams/original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "52fc0c0797b95e8cd99b8abb3f960794f873ca45",
+        "sha256": "e80059609e3f1584f29ddf82f4cc5189bb3ea78938a276b2b9199aff2e7b41aa",
+        "questionSha256": "0907310b6a79ca958f225d3c671fa721851161ff212e3b8a484ed4afbddfc590"
+      },
+      "historicalRendererStudentPayloadSha256": "43e0f55595c4cdbe9bd1acf31dd229188bec01dfeb09569d7bf054dc48f44be1",
+      "liveStudentPayloadSha256": "43e0f55595c4cdbe9bd1acf31dd229188bec01dfeb09569d7bf054dc48f44be1",
+      "nativeRationaleAndPublishedCurriculum": [
+        {
+          "field": "curriculum",
+          "currentValue": "2015",
+          "nativeAfterPresent": false,
+          "nativeBeforeValue": null,
+          "nativeOriginalCurriculum": null,
+          "nativeProvenance": {
+            "status": "UNSPECIFIED",
+            "comparisonPathCurriculum": "2015",
+            "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+          },
+          "status": "EXISTING_PUBLISHED_SOURCE_VALUE_ONLY_NOT_NATIVE_ORIGINAL_CURRICULUM_APPROVAL"
+        },
+        {
+          "field": "primaryMethod",
+          "currentValue": "①은 두 직각변을 삼각비로 구하고 주어진 조각8을 빼 목표 삼각형의 넓이를 낸다. ②는 닮은 이등변삼각형의 길이·높이를 구해 좌표화한 뒤 두 직선 위 점F를 매개변수 연립으로 결정하고 등밑변 넓이비로 목표 넓이에 연결한다.",
+          "currentValueSha256": "45d7b393f09cbd9a541a47d7269238e5dbcff2f30f2e8f79262df001e465e375",
+          "nativeOriginPath": "items[ordinal=24].decisiveStep",
+          "nativeValue": "①은 두 직각변을 삼각비로 구하고 주어진 조각8을 빼 목표 삼각형의 넓이를 낸다. ②는 닮은 이등변삼각형의 길이·높이를 구해 좌표화한 뒤 두 직선 위 점F를 매개변수 연립으로 결정하고 등밑변 넓이비로 목표 넓이에 연결한다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": false,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        },
+        {
+          "field": "decisiveStep",
+          "currentValue": "①은 두 직각변을 삼각비로 구하고 주어진 조각8을 빼 목표 삼각형의 넓이를 낸다. ②는 닮은 이등변삼각형의 길이·높이를 구해 좌표화한 뒤 두 직선 위 점F를 매개변수 연립으로 결정하고 등밑변 넓이비로 목표 넓이에 연결한다.",
+          "currentValueSha256": "45d7b393f09cbd9a541a47d7269238e5dbcff2f30f2e8f79262df001e465e375",
+          "nativeOriginPath": "items[ordinal=24].decisiveStep",
+          "nativeValue": "①은 두 직각변을 삼각비로 구하고 주어진 조각8을 빼 목표 삼각형의 넓이를 낸다. ②는 닮은 이등변삼각형의 길이·높이를 구해 좌표화한 뒤 두 직선 위 점F를 매개변수 연립으로 결정하고 등밑변 넓이비로 목표 넓이에 연결한다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": true,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        }
+      ],
+      "preservedDebts": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "sourceHoldFieldsNotChanged": true,
+      "newExactRpmLeafResolution": false,
+      "newCurrent2022Binding": false,
+      "contactRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e038-renderer2-20261116/E038-q24-contact.png",
+        "sha256": "d1e545e6ac890e3bc2490189af0547f377fd0fe8f4a70a0d3117f66bb555074b"
+      }
+    }
+  ]
+}
