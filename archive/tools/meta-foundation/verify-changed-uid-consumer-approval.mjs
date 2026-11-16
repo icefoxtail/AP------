@@ -40,7 +40,7 @@ import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
-import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
+import { isAuditPreservation } from "./native-audit-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
 import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
@@ -178,7 +178,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     }
     if (schema === SCHEMA.V2 && (doc.approval?.sourceRebind !== undefined || doc.approval?.rendererPreservation !== undefined)) {
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
-        doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
+        isAuditPreservation(doc.approval);
       const partial = doc.scope === "PARTIAL_UIDS";
       const renderer = doc.approval.rendererPreservation !== undefined;
       const rendererValid = renderer && partial && doc.approval.sourceRebind === undefined &&

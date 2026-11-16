@@ -25,13 +25,14 @@ export function auditSourceSchematic(svg,expected){
   if(byId.size!==tags.length)errors.push('SCHEMATIC_PRIMITIVE_INVENTORY_MISMATCH');
   for(const [id,points] of Object.entries(expected.paths)){
     const m=byId.get(id),firstCurve=id==='exponential'||id==='logOriginal',secondCurve=id==='logarithm'||id==='logShifted';
-    const curved=firstCurve||secondCurve;
+    const curved=firstCurve||secondCurve, axis=id==='xAxis'||id==='yAxis';
     if(!m||m[1]!== (curved?'polyline':'line')||
-      attr(m[0],'data-role')!==(curved?'curve':id==='secant'?'line':'axis')){
+      attr(m[0],'data-role')!==(curved?'curve':axis?'axis':'line')){
       errors.push('SCHEMATIC_PATH_MISSING:'+id);continue;
     }
     const extra=secondCurve?['stroke-dasharray']:[];
-    const style=firstCurve?['#1f5fa8','3.2']:secondCurve?['#2e7d32','3.2']:id==='secant'?['#b85c00','3.2']:['#111','1.8'];
+    const style=firstCurve?['#1f5fa8','3.2']:secondCurve?['#2e7d32','3.2']:id==='secant'?['#b85c00','3.2']:
+      axis?['#111','1.8']:id==='AC'||id==='BD'?['#475569','2.2']:['#64748b','2.4'];
     const allowed=['id','data-role','stroke','stroke-width',...(curved?['points','fill',...extra]:['x1','y1','x2','y2'])];
     if(!expectedAttributes(m[0],allowed)||attr(m[0],'stroke')!==style[0]||attr(m[0],'stroke-width')!==style[1]||
       (curved&&attr(m[0],'fill')!=='none')||(extra.length&&attr(m[0],'stroke-dasharray')!=='8 4'))

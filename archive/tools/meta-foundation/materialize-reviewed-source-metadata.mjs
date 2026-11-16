@@ -11,6 +11,7 @@ export const SOURCE_METADATA_FIELDS = Object.freeze([
   'courseKey', 'crossConceptKeys', 'curriculum', 'reviewStatus', 'rpmL3', 'rpmL4',
   'rpmPath', 'tagConfidence', 'tagStatus', 'templateKey',
 ]);
+export const M2_NATIVE_PROPOSAL_PROFILE = 'M2_NATIVE_PROPOSAL_V3';
 export const M3_SOURCE_METADATA_PROFILE = 'M3_REVIEWED_METADATA_V1';
 export const M3_SOURCE_METADATA_FIELDS = Object.freeze([
   'curriculum', 'curriculumKey', 'courseKey', 'conditionKeys', 'primaryMethod',
@@ -29,6 +30,8 @@ const blob = bytes => crypto.createHash('sha1').update(`blob ${bytes.length}\0`)
 const plain = value => value !== null && typeof value === 'object' && !Array.isArray(value)
   && Object.getPrototypeOf(value) === Object.prototype;
 const equal = isDeepStrictEqual;
+const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === 'object'
+  ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
 const text = value => typeof value === 'string' && value.length > 0 && value.length <= 160
   && !/[\r\n\0<>]/u.test(value);
 
@@ -306,6 +309,116 @@ function assertM3NativeRationale({ repoRoot, request, item, file, change, field,
   }
   if (!text(nativeValue) || nativeValue !== value) fail('M3_NATIVE_RATIONALE_VALUE');
 }
+
+// A new primary key is outside the default ten source fields. This named
+// opt-in transports only a separately finalized, still-unresolved native NEW_PT
+// proposal, including its exact template and curriculum binding. It does not
+// issue approval or replace the official registrar's source/canonical checks.
+function assertM2FinalizedPrimary({ repoRoot, request, item, file, change, value, cache }) {
+  const spec = item.sourceReview, p = spec?.proposalFinalization;
+  if (spec?.schemaVersion !== 'archive-reviewed-source-reassessment-v1' || spec.rendererProof !== undefined ||
+      p?.schemaVersion !== 'archive-native-proposal-finalization-v3') fail('M2_V3_PRIMARY_REF');
+  keys(p, ['schemaVersion', 'finalizationCommit', 'finalizationRef', 'proposalSelections'], 'M2_V3_PRIMARY_SPEC');
+  const load = (commit, relative, expected) => {
+    if (!HASH.test(expected ?? '')) fail('M2_V3_AUTHORITY_HASH');
+    const k = `m2-v3:${commit}:${relative}`;
+    if (!cache.has(k)) {
+      assertCommit(repoRoot, commit);
+      const bytes = gitRead(repoRoot, commit, relative);
+      cache.set(k, { bytes, doc: readJson(bytes, 'M2_V3_AUTHORITY') });
+    }
+    const entry = cache.get(k);
+    if (sha(entry.bytes) !== expected) fail('M2_V3_AUTHORITY_HASH');
+    return entry.doc;
+  };
+  const bound = ref => {
+    keys(ref, ['path', 'sha256'], 'M2_V3_EVIDENCE');
+    safeRelative(ref.path, 'M2_V3_EVIDENCE');
+    if (![request.approval.evidenceRefs, item.evidenceRefs].every(refs => Array.isArray(refs) && refs.some(r => equal(r, ref))))
+      fail('M2_V3_EVIDENCE_UNBOUND');
+  };
+  bound(spec.reviewRef); bound(p.finalizationRef);
+  const native = load(spec.reviewCommit, spec.reviewPath, spec.reviewRef.sha256);
+  const rows = native.items?.filter(r => r.questionUid === change.questionUid && r.sourceOrdinal === change.sourceOrdinal);
+  if (native.schemaVersion !== 'm2-s2-meta-review-v1' || native.sourceArchiveFile !== request.sourceArchiveFile ||
+      native.reviewedQuestionCount !== file.expectedQuestionCount || rows?.length !== 1 ||
+      !Array.isArray(p.proposalSelections) || p.proposalSelections.length !== 1) fail('M2_V3_NATIVE_SCOPE');
+  const row = rows[0], selection = p.proposalSelections[0];
+  keys(selection, ['documentRef', 'index', 'proposalSha256', 'questionUid', 'sourceOrdinal'], 'M2_V3_SELECTION', ['proposalId']);
+  keys(selection.documentRef, ['path', 'sha256'], 'M2_V3_SELECTION_REF');
+  const proposal = native.proposals?.[selection.index];
+  if (selection.documentRef.path !== spec.reviewPath || selection.documentRef.sha256 !== spec.reviewRef.sha256 ||
+      !Number.isSafeInteger(selection.index) || selection.index < 0 || selection.questionUid !== change.questionUid ||
+      selection.sourceOrdinal !== change.sourceOrdinal || !plain(proposal) || proposal.type !== 'NEW_PT' ||
+      sha(stable(proposal)) !== selection.proposalSha256 || !text(selection.proposalId) ||
+      selection.proposalId !== (proposal.id ?? proposal.proposalId) || !equal(row.proposalRefs, [selection.proposalId]) ||
+      !proposal.supportingQuestionUids?.includes(change.questionUid)) fail('M2_V3_NATIVE_NEW_PT');
+  const match = row.activeDefinitionMatch;
+  if (['problemTypeKey', 'templateKey'].some(k => Object.hasOwn(row.after ?? {}, k) && ![null, ''].includes(row.after[k])) ||
+      !match || ['problemTypeKey', 'templateKey', 'problemTypeStatus', 'templateStatus', 'templateParent'].some(k => match[k] !== null) ||
+      !equal(match.exactBindings, [])) fail('M2_V3_NATIVE_PRIMARY_ALREADY_DECIDED');
+  const proof = load(p.finalizationCommit, p.finalizationRef.path, p.finalizationRef.sha256);
+  const noApproval = d => d?.newFullMathematicalQa === false && d?.newReview2Claims === 0 &&
+    d?.newMetadataApprovals === 0 && d?.newDifficultyJudgments === 0;
+  const apps = proof.applications?.filter(a => a.questionUid === change.questionUid && a.sourceOrdinal === change.sourceOrdinal);
+  if (proof.schemaVersion !== 'archive-independent-m2-native-proposal-disposition-v1' ||
+      proof.status !== 'NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING' || !noApproval(proof.scope) ||
+      proof.scope.newSourceContentEdits !== 0 || apps?.length !== 1) fail('M2_V3_FINALIZATION_SCOPE');
+  const app = apps[0], primary = ['standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey'];
+  if (app.sourcePath !== file.path || app.examId !== native.examId ||
+      !equal(app.nativeReviewRef, { commit: spec.reviewCommit, path: spec.reviewPath, sha256: spec.reviewRef.sha256 }) ||
+      app.nativeItemStableSha256 !== sha(stable(row)) || !equal(app.proposalSelections, p.proposalSelections) ||
+      app.newMathematicalQa !== false || app.newMetadataApproval !== false || app.difficultyChanged !== false ||
+      !equal(app.nativeProtectedStudentFieldsChanges, []) || !Array.isArray(app.decisions) || app.decisions.length !== 1 ||
+      !equal(app.decisions[0].selection, selection) || primary.some(k => !text(app.reviewedPrimaryContext?.[k]) ||
+        app.reviewedPrimaryContext[k] !== item.after[k])) fail('M2_V3_PRIMARY_APPLICATION');
+  bound(app.independentReviewRef);
+  const witness = load(p.finalizationCommit, app.independentReviewRef.path, app.independentReviewRef.sha256);
+  const originals = witness.rows?.filter(a => a.questionUid === change.questionUid && a.sourceOrdinal === change.sourceOrdinal);
+  if (witness.schemaVersion !== 'archive-independent-m2-native-definition-finalization-v1' ||
+      witness.decision !== 'APPROVE_EXACT_NEW_DEFINITIONS_AND_REUSE_APPLICATIONS' || !text(app.reviewer) ||
+      witness.reviewer !== app.reviewer || !noApproval(witness) || witness.existingDefinitionsModified !== 0 ||
+      witness.sourceWrites !== 0 || witness.canonicalWrites !== 0 || witness.officialCompilerResolverConsumerStillRequired !== true ||
+      witness.actualMainRegistrationClaimed !== false || witness.currentMainChecked !== app.sourceSnapshot?.commit || originals?.length !== 1)
+    fail('M2_V3_INDEPENDENT_SCOPE');
+  const original = originals[0], choice = app.decisions[0];
+  if (!['examId', 'questionUid', 'sourceOrdinal', 'sourcePath', 'nativeReviewRef', 'nativeItemStableSha256',
+    'sourceSnapshot', 'rendererAssets', 'reviewedPrimaryContext'].every(k => equal(original[k], app[k])) ||
+      !equal(original.nativeProposal, proposal) || !equal(original.proposalSelection, selection) ||
+      !equal(original.nativeAfter, row.after) || !equal(original.nativeActiveDefinitionMatch, match) ||
+      !equal(original.decision, choice) || original.protectedPayloadFieldsUnchanged !== true ||
+      original.newFullMathematicalQa !== false || original.newReview2 !== false || original.newMetadataApproval !== false ||
+      original.newDifficultyJudgment !== false || original.sourceWrites !== 0) fail('M2_V3_ORIGINAL_WITNESS');
+  const rpm = original.nativeRpmContext;
+  if (rpm?.path !== 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json') fail('M2_V3_NATIVE_RPM_SCOPE');
+  const records = load(spec.reviewCommit, rpm.path, rpm.sha256).records?.filter(r => r.id === row.rpmRecordId);
+  if (records?.length !== 1 || !equal(records[0], rpm.record) || rpm.record.scope !== 'M2-2' ||
+      !['2015', '2022'].includes(rpm.record.curriculum) || proposal.parent !== `${rpm.record.id} / ${rpm.record.rpmPath?.l3}`)
+    fail('M2_V3_NATIVE_RPM_SCOPE');
+  const pt = choice.problemTypeDefinition, tpl = choice.definition, binding = choice.binding;
+  const owner = pt?.ownerPack, canonical = 'archive/data/meta-foundation/canonical/';
+  const expected = { problemTypeKey: value, curriculum: rpm.record.curriculum, standardCourse: item.after.standardCourse,
+    standardUnitKey: item.after.standardUnitKey, subUnitKey: item.after.subUnitKey };
+  if (choice.disposition !== 'ADD_ONLY' || !/^PT_[A-Z0-9_]+$/.test(value) || pt?.problemTypeKey !== value ||
+      item.after.problemTypeKey !== value || !text(owner) || owner !== rpm.record.ownerPack ||
+      tpl?.templateKey !== item.after.templateKey || tpl.parentProblemTypeKey !== value || tpl.ownerPack !== owner ||
+      !change.metadataFields.some(f => f.field === 'templateKey' && f.after === tpl.templateKey) ||
+      Object.entries(expected).some(([k,v]) => binding?.[k] !== v) || binding.ownerPack !== owner ||
+      !equal(binding.supportingQuestionUids, [change.questionUid]) || binding.supportingItemCount !== 1)
+    fail('M2_V3_PRIMARY_OWNER_OR_BINDING');
+  const pack = owner.toLowerCase().replaceAll('_', '-');
+  for (const [changeKey, definition, rel, collection, matchKey] of [
+    ['problemTypeRegistryChange', pt, `${canonical}packs/${pack}/taxonomy.json`, 'problemTypes', { problemTypeKey: value }],
+    ['registryChange', tpl, `${canonical}packs/${pack}/taxonomy.json`, 'templates', { templateKey: tpl.templateKey }],
+    ['bindingRegistryChange', binding, `${canonical}packs/${pack}/bindings.json`, 'bindings', expected],
+  ]) {
+    const approved = choice[changeKey], exact = { path: rel, collection, match: matchKey, before: null, after: definition };
+    const requested = request.registryChanges?.filter(c => equal(Object.fromEntries(['path', 'collection', 'match', 'before', 'after'].map(k => [k,c[k]])), exact));
+    if (definition.status !== 'ACTIVE' || !equal(approved, exact) || witness.approvedRegistryChanges?.filter(c => equal(c, exact)).length !== 1 ||
+        requested?.length !== 1 || ![p.finalizationRef, app.independentReviewRef].every(ref => requested[0].evidenceRefs?.some(r => equal(r, ref))))
+      fail('M2_V3_EXACT_REGISTRY_CHANGE');
+  }
+}
 function requestCarrier(field, request, item, m3 = false) {
   if (['reviewStatus', 'tagStatus', 'tagConfidence'].includes(field)) {
     // These are candidate source declarations for the same FINAL_QA request,
@@ -390,9 +503,10 @@ export function materializeReviewedSourceMetadata({ repoRoot, manifest, baseComm
   if (write !== true && write !== false) fail('WRITE_BOOLEAN');
   const out = isolatedOutput(repoRoot, outputRoot);
   keys(manifest, ['schemaVersion', 'materializationId', 'baseCommit', 'identityRef', 'requestRefs', 'outputScope', 'files'], 'MANIFEST', ['transportProfile']);
-  if (manifest.transportProfile !== undefined && manifest.transportProfile !== M3_SOURCE_METADATA_PROFILE) fail('TRANSPORT_PROFILE');
+  if (![undefined, M3_SOURCE_METADATA_PROFILE, M2_NATIVE_PROPOSAL_PROFILE].includes(manifest.transportProfile)) fail('TRANSPORT_PROFILE');
   const m3 = manifest.transportProfile === M3_SOURCE_METADATA_PROFILE;
-  const fieldSet = new Set(m3 ? M3_SOURCE_METADATA_FIELDS : SOURCE_METADATA_FIELDS);
+  const m2Proposal = manifest.transportProfile === M2_NATIVE_PROPOSAL_PROFILE;
+  const fieldSet = new Set(m3 ? M3_SOURCE_METADATA_FIELDS : [...SOURCE_METADATA_FIELDS, ...(m2Proposal ? ['problemTypeKey'] : [])]);
   const nativeCache = new Map();
   if (manifest.schemaVersion !== SOURCE_METADATA_MANIFEST_SCHEMA || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(manifest.materializationId ?? '')
       || !GIT_HASH.test(baseCommit ?? '') || manifest.baseCommit !== baseCommit || !GIT_HASH.test(inputCommit ?? '')) fail('MANIFEST_BINDING');
@@ -448,12 +562,16 @@ export function materializeReviewedSourceMetadata({ repoRoot, manifest, baseComm
       const question = afterBank[change.sourceOrdinal - 1], fields = new Set();
       for (const op of change.metadataFields) {
         keys(op, ['field', 'beforePresent', 'afterPresent', 'before', 'after'], 'FIELD');
+        const newPrimary = m2Proposal && op.field === 'problemTypeKey';
         if (!fieldSet.has(op.field) || fields.has(op.field) || typeof op.beforePresent !== 'boolean'
-            || op.afterPresent !== true || !typedAfter(op.field, op.after, m3)) fail('FIELD_SCOPE');
+            || op.afterPresent !== true || !(newPrimary ? typeof op.after === 'string' && /^PT_[A-Z0-9_]+$/.test(op.after)
+              : typedAfter(op.field, op.after, m3))) fail('FIELD_SCOPE');
         if (Object.hasOwn(question, op.field) !== op.beforePresent || !op.beforePresent && op.before !== null
             || op.beforePresent && !equal(question[op.field], op.before)) fail('FIELD_BEFORE');
         if (op.beforePresent && equal(op.before, op.after)) fail('FIELD_NO_CHANGE');
         if (!equal(requestCarrier(op.field, request, item, m3), op.after)) fail('FIELD_REQUEST_BINDING');
+        if (newPrimary) assertM2FinalizedPrimary({ repoRoot, request, item, file, change,
+          value: op.after, cache: nativeCache });
         if (m3 && ['primaryMethod', 'decisiveStep'].includes(op.field)) assertM3NativeRationale({
           repoRoot, request, item, file, change, field: op.field, value: op.after, cache: nativeCache });
         question[op.field] = op.after; fields.add(op.field);

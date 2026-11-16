@@ -9,7 +9,9 @@ import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-iden
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
-import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
+import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
+  nativeReviewedMetadataRationaleReuse } from './native-reviewed-source-reuse.mjs';
+import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
@@ -317,9 +319,10 @@ export function planQuestion({question:q, previous, current, identity, registry,
     const supplied=validate({...candidate,sourceArchiveFile:source},registry,{requireFields:false});
     if(supplied.status==='VALIDATED'&&supplied.activeBinding) {
       const context=activeBindingContext({candidate,check:supplied,registry,runtimeOwner});
-      if(!context.reason&&hasSourceRationale) {
+      if(!context.reason) {
         const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,registry,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
-        if(nativeReceipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
+        if(nativeReceipt&&(hasSourceRationale||nativeReviewedFamilyRationaleReuse(nativeReceipt,nativeSource,previous,q,identity,ordinal,current,registry)||
+          nativeReviewedMetadataRationaleReuse(nativeReceipt,nativeSource,previous,q,identity,ordinal,current,registry)))return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
           sourceOrdinal:ordinal,inputHash,nativeReviewReceipt:nativeReceipt};
       }
     }
@@ -328,6 +331,8 @@ export function planQuestion({question:q, previous, current, identity, registry,
     return reject('NATIVE_APPROVED_RENDERER_PRESERVATION_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeReviewedSourceClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED');
+  if(nativeSource&&hasAuditSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
+    return reject('NATIVE_AUDIT_SOURCE_PRESERVATION_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))
     return reject('NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED');
   // All new registrations and missing/stale/incompatible native evidence retain
