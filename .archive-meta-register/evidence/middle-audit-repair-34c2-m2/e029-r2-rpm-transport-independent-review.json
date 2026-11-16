@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "archive-independent-scoped-code-delta-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "createdAt": "2026-11-16T02:56:14.341Z",
+  "reviewer": {
+    "id": "GPT_M3_34C2",
+    "taskPath": "/root/m3",
+    "independentFromCodeAuthor": "GPT_M2_34C2",
+    "independentFromRootIntegrator": "GPT_ROOT_0A70543C4CE8",
+    "blindReviewClaim": false
+  },
+  "decision": "APPROVE_R2_ACCEPTED_NATIVE_RPM_TRANSPORT_NO_BLOCKING_FINDINGS",
+  "scope": "One helper return map and its proof description. Reuse prior full helper/integration review and existing narrow tests; no new source, semantic, math or production approval.",
+  "priorIntegrationReview": {
+    "path": "/workspace/scratch/0a70543c4ce8/m3-prep/independent/m2s1-prerequisite-existing-application-integration-review-20261116.json",
+    "sha256": "0c1411fd7fcff86fb3da69e17e7d00fb5bcf97436fafe5dcbe0037e874d10460"
+  },
+  "reviewedDelta": {
+    "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+    "beforeSha256": "5493058b94580b8a87e4cca7e9aa0bad890a1f713709677f42bde2f9f06d69b8",
+    "afterSha256": "a0ebb6c148b6ecb23ac88fe0a75b07693d6478727ab05bc24dc71eadb374bd57",
+    "changedOperations": [
+      "Keep source-delta aliases separate from nativeRpmFields.",
+      "Bind rpmPrimaryPath/rpmL3/rpmL4 to the already authenticated accepted semantic row instead of falling back to older native source metadata.",
+      "Expose the same exact typed native RPM map to the existing REVIEWED_RPM_FIELDS loop.",
+      "Record EXACT_NATIVE_SEMANTIC_DECISION_AND_LOCKED_MASTER_LEAF origin."
+    ],
+    "sourceMetadataSetCount": 6,
+    "sourceMetadataRemoveCount": 4,
+    "sourceMetadataDeltaUnchanged": true
+  },
+  "unchangedHooks": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "41f4300b4ca69b368e55bfdefe11e7d90e0e634519dc15d7705f75a0eed5b5dc",
+      "unchangedFromPriorReviewedIntegration": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "sha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288",
+      "unchangedFromPriorReviewedIntegration": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "ab41e9edcc64234776c399073e2ab40f8e489d9fe7b0bbb52da86f991b247e60",
+      "unchangedFromPriorReviewedIntegration": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "sha256": "01d4385259801587eb2e2d442601f570eabc44a4afd915b63da6dd4cf0097a7d",
+      "unchangedFromPriorReviewedIntegration": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "sha256": "9c7309a6dfb99490126aad6963a01dac986e0542704e5e14b48772f889a88ebb",
+      "unchangedFromPriorReviewedIntegration": true
+    }
+  ],
+  "actualNativeAndCurrentGitReadback": {
+    "proposalRef": {
+      "path": "/workspace/scratch/0a70543c4ce8/scoped/.archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q14-native-semantic-rpm-transport-r2.json",
+      "sha256": "9899ad7538b565fb88fd31d17d2eea9f459bb6f45cfbaaccb84f902d5ae4e133"
+    },
+    "sources": [
+      {
+        "name": "immutableNativeSource",
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+        "sha256": "6b231624d183c4f4d4f45d96aff4d5de1e250667a3ca82276663efb4f51ec4f2",
+        "gitBlobSha1": "1dec9c46d4828f04f415d84eee03c2815af35fae",
+        "rpmFields": {
+          "rpmPrimaryId": null,
+          "rpmPrimaryRecordId": "M2-RPM-038",
+          "rpmPrimaryPath": {
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식의 활용",
+            "l3": "수와 개수",
+            "l4": "두 수 관계"
+          },
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": "수와 개수",
+          "rpmL4": "두 수 관계",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "TARGET_SCOPE"
+        }
+      },
+      {
+        "name": "priorCurrentSource",
+        "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+        "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+        "sha256": "25a2b5c096c82f1a653b12c3c743112fc18dd79a9bc7c62dc531973fc9b54c7b",
+        "gitBlobSha1": "144b1bd0bf1c82be94910bb727ff3c33b6a69772",
+        "rpmFields": {
+          "rpmPrimaryId": null,
+          "rpmPrimaryRecordId": "M1-RPM-042",
+          "rpmPrimaryPath": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 활용",
+            "l3": "수와 관계",
+            "l4": "나이·개수 관계"
+          },
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": "수와 관계",
+          "rpmL4": "나이·개수 관계",
+          "semanticSourceScope": "M1-1",
+          "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE"
+        }
+      },
+      {
+        "name": "currentApprovedSource",
+        "commit": "6b672ca51bb274803bfd6fe0287b5f13b4ce90f3",
+        "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+        "sha256": "67869fb390585b1985f8aefe25e09764f6e933bde14d0101d06d212c04e12efb",
+        "gitBlobSha1": "4d133716fc9336b49bd7ba7c59a7e045635c1ef9",
+        "rpmFields": {
+          "rpmPrimaryId": "M1-RPM-042",
+          "rpmPrimaryRecordId": "M1-RPM-042",
+          "rpmPrimaryPath": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 활용",
+            "l3": "수와 관계",
+            "l4": "나이·개수 관계"
+          },
+          "rpmL1": "문자와 식",
+          "rpmL2": "일차방정식의 활용",
+          "rpmL3": "수와 관계",
+          "rpmL4": "나이·개수 관계",
+          "semanticSourceScope": "M1-1",
+          "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE"
+        }
+      }
+    ],
+    "nativeReviewRef": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E029/accepted-review.json",
+      "sha256": "f49dca98cbcb5432515ba2182848cf9c83c15c1c7b284942f5b26df5ec0b535b"
+    },
+    "nativeItemStableSha256": "16f366efa6521ece31ed4011c14fc5a3170849358071c22e63fcd19d2a532ce9",
+    "acceptedSemanticDecision": {
+      "rpmRecordId": "M1-RPM-042",
+      "rpmDecision": "CORRECT",
+      "semanticCurriculum": "2015",
+      "semanticScope": "M1-1",
+      "rpmPath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "수와 관계",
+        "l4": "나이·개수 관계"
+      },
+      "rpmBasePath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "수와 관계",
+        "l4": "나이·개수 관계"
+      },
+      "semanticSourcePath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "수와 관계",
+        "l4": "나이·개수 관계"
+      }
+    },
+    "nativeProposalRefsPreserved": [],
+    "studentSourceEditCreated": false
+  },
+  "findings": [
+    {
+      "kind": "NON_BLOCKING_CONFIRMED_CAUSE",
+      "summary": "The immutable committed source still has M2-RPM-038 and its M2 four-level path, while the authenticated native accepted semanticDecision and the already-current source specify M1-RPM-042. The old generic source fallback therefore rejects rpmPrimaryPath even when the selected accepted meaning is exact."
+    },
+    {
+      "kind": "CLOSED_TYPED_TRANSPORT",
+      "summary": "The map is returned only after the original exact UID, immutable root/independent/application proofs, unchanged existing definitions, M1 semantic row and LOCKED leaf, separate M2 target parent/binding, whole initial source delta and live selected-question guards pass. It does not promote an unreviewed source field or alter a crosswalk."
+    },
+    {
+      "kind": "DEFAULT_GUARDS_PRESERVED",
+      "summary": "Unopted requests still use the prior immutable native-source fallback and ordinary RPM scope checks. The final source and patch values must equal the authenticated record path; the new map does not accept a hybrid path."
+    }
+  ],
+  "blockingFindings": [],
+  "testsReused": [
+    {
+      "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-r2-focused-tests.log",
+      "sha256": "8e71ba013c03d406bd1573e2a21536434b46d24442c46c3f499123674e570f43",
+      "result": "22/22 PASS including prior guard/replay/native reuse tests",
+      "executionOwner": "GPT_M2_34C2",
+      "independentRerun": false
+    },
+    {
+      "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-r2-exact-native-rpm-test.log",
+      "sha256": "b87ca08ba6f76df19d74d0589532568d961590d537ff3b245793b8f29aaaa712",
+      "result": "1/1 PASS exact four-level legacy native path fixture",
+      "executionOwner": "GPT_M2_34C2",
+      "independentRerun": false
+    }
+  ],
+  "finalTestRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+    "sha256": "584980dee2f086872bca04d4760193edae1eaaba7f92be963c51403190d7362f"
+  },
+  "limits": {
+    "sourceWrites": 0,
+    "registryWrites": 0,
+    "registrationExecuted": false,
+    "productionStatus": "NOT_RUN",
+    "newSemanticDecision": false,
+    "newFullMathematicalQa": false,
+    "originalNativeArtifactModified": false,
+    "priorIndependentArtifactModified": false,
+    "studentDeployment": "NOT_RUN"
+  }
+}
