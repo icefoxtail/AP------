@@ -1,4 +1,273 @@
 {
-  "status": "EXEMPT",
-  "reason": "두 현의 교점 P, 호의 원주 분율·비와 목표각을 문장에 명시함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "20"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "140"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "224"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "344"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAC",
+     "lBD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "D",
+  "C",
+  "B",
+  "P"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "D",
+     "P",
+     "C"
+    ],
+    "value": 60,
+    "label": "x"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arc0",
+    "circle": "c",
+    "center": "O",
+    "from": "B",
+    "to": "A",
+    "side": "MINOR",
+    "label": "3",
+    "color": "BLUE",
+    "labelKind": "TEXT",
+    "labelWeight": "MATH"
+   },
+   {
+    "id": "arc1",
+    "circle": "c",
+    "center": "O",
+    "from": "D",
+    "to": "C",
+    "side": "MINOR",
+    "label": "7",
+    "color": "WARM",
+    "labelKind": "TEXT",
+    "labelWeight": "MATH"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 620,
+  "height": 560
+ },
+ "caption": "원 위의 네 점 A, D, C, B와 두 현 AC, BD의 교점 P, 호 AB와 호 CD의 길이의 비를 나타낸 그림",
+ "newVisualInformation": [],
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
 }

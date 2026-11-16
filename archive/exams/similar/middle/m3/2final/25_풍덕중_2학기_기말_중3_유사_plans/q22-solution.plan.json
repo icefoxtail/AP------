@@ -1,4 +1,269 @@
 {
-  "status": "EXEMPT",
-  "reason": "해설이 필요한 계산·기하 관계와 결론을 문장·식으로 제시하며 별도 시각 추론이 필요하지 않음"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "20"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "140"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "224"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "344"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAC",
+     "lBD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "D",
+  "C",
+  "B",
+  "P"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "D",
+     "P",
+     "C"
+    ],
+    "value": 60,
+    "label": "x"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arc0",
+    "circle": "c",
+    "center": "O",
+    "from": "B",
+    "to": "A",
+    "side": "MINOR",
+    "label": "36",
+    "color": "BLUE"
+   },
+   {
+    "id": "arc1",
+    "circle": "c",
+    "center": "O",
+    "from": "D",
+    "to": "C",
+    "side": "MINOR",
+    "label": "84",
+    "color": "WARM"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 620,
+  "height": 560
+ },
+ "caption": "호 AB의 중심각은 360도의 10분의 1인 36도이고 호 CD는 84도이다. 두 현의 교각은 마주 보는 두 호의 중심각의 합의 절반이다.",
+ "newVisualInformation": [],
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
 }

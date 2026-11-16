@@ -1,4 +1,307 @@
 {
-  "status": "EXEMPT",
-  "reason": "두 원주각 쌍의 같은 호 관계와 두 수치를 발문이 직접 제공함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "20"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "120"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "284"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAC",
+     "lBD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "P"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "D",
+     "B",
+     "C"
+    ],
+    "value": 52,
+    "label": "52"
+   },
+   {
+    "id": "a1",
+    "refs": [
+     "B",
+     "D",
+     "C"
+    ],
+    "value": 30,
+    "label": "30"
+   },
+   {
+    "id": "a2",
+    "refs": [
+     "D",
+     "A",
+     "C"
+    ],
+    "value": 52,
+    "label": "x",
+    "ring": 1
+   },
+   {
+    "id": "a3",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 30,
+    "label": "y",
+    "ring": 2
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 520
+ },
+ "caption": "원에 내접하는 사각형과 두 대각선, 각 DBC, 각 BDC, 각 DAC(x), 각 BAC(y)를 나타낸 그림",
+ "newVisualInformation": [],
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
 }

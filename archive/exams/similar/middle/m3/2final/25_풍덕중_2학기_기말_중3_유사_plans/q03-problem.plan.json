@@ -1,4 +1,270 @@
 {
-  "status": "EXEMPT",
-  "reason": "반원 원주점 순서 A-D-C-B와 외부 교점 E의 할선 순서를 발문에 명시함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "122"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "58"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAD",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "E",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "D",
+  "C",
+  "E"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sBE",
+   "refs": [
+    "B",
+    "E"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "A",
+     "E",
+     "B"
+    ],
+    "value": 58,
+    "label": "58"
+   },
+   {
+    "id": "a1",
+    "refs": [
+     "D",
+     "O",
+     "C"
+    ],
+    "value": 64,
+    "label": "x"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "D",
+     "C"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 600,
+  "height": 560
+ },
+ "caption": "지름 AB인 원 위의 점 D, C와 두 직선 AD, BC가 만나는 점 E, 중심각 DOC를 나타낸 그림",
+ "newVisualInformation": []
 }

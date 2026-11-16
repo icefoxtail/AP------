@@ -1,4 +1,316 @@
 {
-  "status": "EXEMPT",
-  "reason": "원 위의 네 점, 두 현의 내부 교점 E, 외부 두 할선의 교점 P와 각 조건을 문장에 명시함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "20"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "120"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "232"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "332"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAC",
+     "lBD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "E",
+    "op": "LINE_INTERSECTION"
+   },
+   {
+    "inputs": [
+     "A",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAD",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "D",
+  "C",
+  "B",
+  "E",
+  "P"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPD",
+   "refs": [
+    "P",
+    "D"
+   ]
+  },
+  {
+   "id": "sPC",
+   "refs": [
+    "P",
+    "C"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "A",
+     "C",
+     "B"
+    ],
+    "value": 24,
+    "label": "24"
+   },
+   {
+    "id": "a1",
+    "refs": [
+     "A",
+     "E",
+     "B"
+    ],
+    "value": 80,
+    "label": "80",
+    "labelPlacement": "LEADER"
+   },
+   {
+    "id": "a2",
+    "refs": [
+     "A",
+     "P",
+     "B"
+    ],
+    "value": 32,
+    "label": "x"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 600
+ },
+ "caption": "원 위의 네 점 A, D, C, B와 두 현 AC, BD의 교점 E, 두 할선 PAD, PBC가 만나는 점 P를 나타낸 그림",
+ "newVisualInformation": [],
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
 }

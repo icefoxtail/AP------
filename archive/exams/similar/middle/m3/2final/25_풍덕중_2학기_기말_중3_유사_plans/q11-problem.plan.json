@@ -1,4 +1,280 @@
 {
-  "status": "EXEMPT",
-  "reason": "원 위의 점, 외부 접점 P와 할선점의 순서를 발문에 명시함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "13",
+       "denominator": "2"
+      },
+      {
+       "kind": "expression",
+       "op": "div",
+       "args": [
+        {
+         "kind": "expression",
+         "op": "mul",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "9"
+          },
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "7"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "kind": "integer",
+         "value": "14"
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "div",
+      "args": [
+       {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "8"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "7"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "kind": "integer",
+        "value": "7"
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "9"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "9",
+       "denominator": "2"
+      },
+      {
+       "kind": "expression",
+       "op": "div",
+       "args": [
+        {
+         "kind": "expression",
+         "op": "mul",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          },
+          {
+           "kind": "expression",
+           "op": "sqrt",
+           "args": [
+            {
+             "kind": "integer",
+             "value": "7"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "kind": "integer",
+         "value": "2"
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "T",
+    "op": "SOURCE_POINT"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "P",
+  "A",
+  "B",
+  "T"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPT",
+   "refs": [
+    "P",
+    "T"
+   ]
+  },
+  {
+   "id": "sTA",
+   "refs": [
+    "T",
+    "A"
+   ]
+  },
+  {
+   "id": "sTB",
+   "refs": [
+    "T",
+    "B"
+   ]
+  },
+  {
+   "id": "sPB",
+   "refs": [
+    "P",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "e0",
+    "ownerSegment": "sPT",
+    "text": "6"
+   },
+   {
+    "id": "e1",
+    "ownerSegment": "sTA",
+    "text": "4"
+   },
+   {
+    "id": "e2",
+    "ownerSegment": "sTB",
+    "text": "6"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "T",
+     "A",
+     "B"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 520
+ },
+ "caption": "원 O 위의 점 T, A, B와 점 T에서의 접선 PT, 점 P에서 원과 만나는 직선 PB를 나타낸 그림",
+ "newVisualInformation": []
 }

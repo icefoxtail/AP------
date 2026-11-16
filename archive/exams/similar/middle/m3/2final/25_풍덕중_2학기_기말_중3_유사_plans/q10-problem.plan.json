@@ -1,4 +1,248 @@
 {
-  "status": "EXEMPT",
-  "reason": "접점·호의 가지와 접선 반직선의 위치를 발문에 명시함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "T",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "26"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "150"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-6"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "Q",
+    "op": "SOURCE_POINT"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "T",
+  "B",
+  "A",
+  "P",
+  "Q"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPQ",
+   "refs": [
+    "P",
+    "Q"
+   ]
+  },
+  {
+   "id": "sTB",
+   "refs": [
+    "T",
+    "B"
+   ]
+  },
+  {
+   "id": "sTA",
+   "refs": [
+    "T",
+    "A"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "B",
+     "T",
+     "Q"
+    ],
+    "value": 58,
+    "label": "58"
+   },
+   {
+    "id": "a1",
+    "refs": [
+     "T",
+     "A",
+     "B"
+    ],
+    "value": 58,
+    "label": "x"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "T",
+     "B",
+     "A"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 600,
+  "height": 540
+ },
+ "caption": "원 O 위의 점 T에서의 접선 PQ와 현 TB, 원주각 TAB를 나타낸 그림",
+ "newVisualInformation": []
 }

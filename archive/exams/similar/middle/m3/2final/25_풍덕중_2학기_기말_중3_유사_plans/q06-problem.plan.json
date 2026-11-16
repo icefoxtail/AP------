@@ -1,4 +1,232 @@
 {
-  "status": "EXEMPT",
-  "reason": "원주점 순서와 색칠된 두 작은 활꼴(AB, CD)을 발문에서 정확히 지정함"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-4"
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "-4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-3"
+      },
+      {
+       "kind": "integer",
+       "value": "-4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "SOURCE_POINT"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "e0",
+    "ownerSegment": "sAB",
+    "text": "8",
+    "side": "LEFT"
+   },
+   {
+    "id": "e1",
+    "ownerSegment": "sCD",
+    "text": "6",
+    "side": "LEFT"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  ],
+  "regions": [
+   {
+    "id": "rgAB",
+    "fill": "LIGHT",
+    "shapes": [
+     {
+      "loop": {
+       "start": "A",
+       "steps": [
+        {
+         "to": "B",
+         "arc": {
+          "center": "O",
+          "side": "MINOR"
+         }
+        },
+        {
+         "to": "A"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "rgCD",
+    "fill": "LIGHT",
+    "shapes": [
+     {
+      "loop": {
+       "start": "C",
+       "steps": [
+        {
+         "to": "D",
+         "arc": {
+          "center": "O",
+          "side": "MINOR"
+         }
+        },
+        {
+         "to": "C"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 560
+ },
+ "caption": "원 O의 두 현 AB, CD와 각 현과 작은 호 사이의 활꼴(색칠한 부분)을 나타낸 그림",
+ "newVisualInformation": []
 }

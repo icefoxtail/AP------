@@ -1,4 +1,281 @@
 {
-  "status": "EXEMPT",
-  "reason": "해설이 필요한 계산·기하 관계와 결론을 문장·식으로 제시하며 별도 시각 추론이 필요하지 않음"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "122"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "58"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAD",
+     "lBC"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "E",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "D",
+  "C",
+  "E"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sBE",
+   "refs": [
+    "B",
+    "E"
+   ]
+  },
+  {
+   "id": "sOD",
+   "refs": [
+    "O",
+    "D"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "A",
+     "E",
+     "B"
+    ],
+    "value": 58,
+    "label": "58"
+   }
+  ],
+  "arcs": [
+   {
+    "id": "arc0",
+    "circle": "c",
+    "center": "O",
+    "from": "A",
+    "to": "B",
+    "side": "CCW",
+    "label": "180",
+    "color": "BLUE"
+   },
+   {
+    "id": "arc1",
+    "circle": "c",
+    "center": "O",
+    "from": "C",
+    "to": "D",
+    "side": "MINOR",
+    "color": "WARM"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "D",
+     "C"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 600,
+  "height": 560
+ },
+ "caption": "바깥 점 E에서 그은 두 할선이 이루는 각은 마주 보는 두 호의 차의 절반이다. 반원 호 AB는 180도이다.",
+ "newVisualInformation": []
 }

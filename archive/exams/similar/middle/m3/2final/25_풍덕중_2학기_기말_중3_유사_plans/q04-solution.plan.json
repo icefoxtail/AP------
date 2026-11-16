@@ -1,4 +1,319 @@
 {
-  "status": "EXEMPT",
-  "reason": "해설이 필요한 계산·기하 관계와 결론을 문장·식으로 제시하며 별도 시각 추론이 필요하지 않음"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "20"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "120"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "C",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "284"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "D",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lAC",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "B",
+     "D"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "lBD",
+    "op": "LINE_THROUGH"
+   },
+   {
+    "inputs": [
+     "lAC",
+     "lBD"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "LINE_INTERSECTION"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "P"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDA",
+   "refs": [
+    "D",
+    "A"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "D",
+     "B",
+     "C"
+    ],
+    "value": 52,
+    "label": "52",
+    "equalGroup": 1,
+    "arcs": 1,
+    "emphasisGroup": 1
+   },
+   {
+    "id": "a1",
+    "refs": [
+     "D",
+     "A",
+     "C"
+    ],
+    "value": 52,
+    "label": "52",
+    "equalGroup": 1,
+    "arcs": 1,
+    "emphasisGroup": 1,
+    "ring": 1
+   },
+   {
+    "id": "a2",
+    "refs": [
+     "B",
+     "D",
+     "C"
+    ],
+    "value": 30,
+    "label": "30",
+    "equalGroup": 2,
+    "arcs": 2,
+    "emphasisGroup": 2
+   },
+   {
+    "id": "a3",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 30,
+    "label": "30",
+    "equalGroup": 2,
+    "arcs": 2,
+    "emphasisGroup": 2,
+    "ring": 2
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 520
+ },
+ "caption": "같은 호에 대한 원주각은 서로 같다. 각 DAC와 각 DBC는 호 DC에 대한 원주각이고, 각 BAC와 각 BDC는 호 BC에 대한 원주각이다.",
+ "newVisualInformation": [],
+ "hiddenPointNames": [
+  "O"
+ ],
+ "hiddenPointStyle": "NONE"
 }

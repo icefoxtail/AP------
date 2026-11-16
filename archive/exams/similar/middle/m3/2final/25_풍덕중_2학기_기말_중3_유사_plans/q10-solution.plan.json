@@ -1,4 +1,254 @@
 {
-  "status": "EXEMPT",
-  "reason": "해설이 필요한 계산·기하 관계와 결론을 문장·식으로 제시하며 별도 시각 추론이 필요하지 않음"
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "O",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "id": "X",
+    "op": "TRANSLATE_POINT"
+   },
+   {
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN",
+    "id": "c",
+    "op": "CIRCLE_CENTER_RADIUS"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "T",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "26"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "B",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "150"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "A",
+    "op": "POLAR_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-6"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "P",
+    "op": "SOURCE_POINT"
+   },
+   {
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "id": "Q",
+    "op": "SOURCE_POINT"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "T",
+  "B",
+  "A",
+  "P",
+  "Q"
+ ],
+ "displayLines": [],
+ "displayCircles": [
+  "c"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPQ",
+   "refs": [
+    "P",
+    "Q"
+   ]
+  },
+  {
+   "id": "sTB",
+   "refs": [
+    "T",
+    "B"
+   ]
+  },
+  {
+   "id": "sTA",
+   "refs": [
+    "T",
+    "A"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a0",
+    "refs": [
+     "B",
+     "T",
+     "Q"
+    ],
+    "value": 58,
+    "label": "58",
+    "emphasisGroup": 1,
+    "equalGroup": 1,
+    "arcs": 1
+   },
+   {
+    "id": "a1",
+    "refs": [
+     "T",
+     "A",
+     "B"
+    ],
+    "value": 58,
+    "noLabel": true,
+    "emphasisGroup": 1,
+    "equalGroup": 1,
+    "arcs": 1
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c",
+    "points": [
+     "T",
+     "B",
+     "A"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 600,
+  "height": 540
+ },
+ "caption": "접선과 현이 이루는 각 BTQ는 그 각의 내부에 있는 호 TB에 대한 원주각 TAB와 같다. 같은 색의 두 각이 서로 같다.",
+ "newVisualInformation": []
 }
