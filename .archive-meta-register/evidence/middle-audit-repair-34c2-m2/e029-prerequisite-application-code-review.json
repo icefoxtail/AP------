@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "archive-independent-scoped-code-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "createdAt": "2026-11-16T02:34:41.460Z",
+  "reviewer": {
+    "id": "GPT_M3_34C2",
+    "taskPath": "/root/m3",
+    "independentFromCodeAuthor": "GPT_M2_34C2",
+    "independentFromRootIntegrator": "GPT_ROOT_0A70543C4CE8",
+    "blindReviewClaim": false
+  },
+  "decision": "APPROVE_SCOPED_CODE_NO_BLOCKING_FINDINGS",
+  "scope": "One immutable M2 S1 current-UID application of unchanged existing M1 PT/TPL definitions with an explicitly separate M1 prerequisite semantic RPM and M2 registered target; six runtime/helper files and their focused fixture. Scratch candidate only until root integration hash readback.",
+  "manifestRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-final-code-manifest.json",
+    "sha256": "dd84edfaa5e9526a70a1c98b64f6dcacb237b88c55c4f947c4d7fe8ef4418bf4"
+  },
+  "reviewedFiles": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "beforeSha256": "9a46e5da43a4643750c2a1a319b6b729cc14b7def40de51cf9a1a50053e5a7d4",
+      "afterSha256": "ab79160ebbca4970ac28018ac437f0e647a470030a49f596f5b6bfcc2253ef8a",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "reviewedSha256": "ab79160ebbca4970ac28018ac437f0e647a470030a49f596f5b6bfcc2253ef8a",
+      "sharedSha256AtReview": "9a46e5da43a4643750c2a1a319b6b729cc14b7def40de51cf9a1a50053e5a7d4",
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "beforeSha256": "bd8c9eaeca865a78221a7f800778168fbd9ee2df97ad8fa57ea6d210e8739a82",
+      "afterSha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "reviewedSha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288",
+      "sharedSha256AtReview": "bd8c9eaeca865a78221a7f800778168fbd9ee2df97ad8fa57ea6d210e8739a82",
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "beforeSha256": "d66d7104fe4a89df4f13296a57497d7f8b2153cf538e6281e1392fb3ee209b7b",
+      "afterSha256": "f80323504248b895e814e7a6a4ef832fe8a6268116547a643db404d463b2eb21",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "reviewedSha256": "f80323504248b895e814e7a6a4ef832fe8a6268116547a643db404d463b2eb21",
+      "sharedSha256AtReview": "d66d7104fe4a89df4f13296a57497d7f8b2153cf538e6281e1392fb3ee209b7b",
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "beforeSha256": "67d940fd381356c272d7af770f6870655e9f088a82186a0d7123556100d5bbe8",
+      "afterSha256": "b022b0870ad0375345a5802120edcf3ec117bafce3c0b2dec97071cf84146918",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "reviewedSha256": "b022b0870ad0375345a5802120edcf3ec117bafce3c0b2dec97071cf84146918",
+      "sharedSha256AtReview": "67d940fd381356c272d7af770f6870655e9f088a82186a0d7123556100d5bbe8",
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "beforeSha256": "91f44671182c31449ee0ae24ed6e0e99f77fd312f05b92dbbf720576d6ffd733",
+      "afterSha256": "9c7309a6dfb99490126aad6963a01dac986e0542704e5e14b48772f889a88ebb",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "reviewedSha256": "9c7309a6dfb99490126aad6963a01dac986e0542704e5e14b48772f889a88ebb",
+      "sharedSha256AtReview": "91f44671182c31449ee0ae24ed6e0e99f77fd312f05b92dbbf720576d6ffd733",
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "beforeSha256": null,
+      "afterSha256": "5493058b94580b8a87e4cca7e9aa0bad890a1f713709677f42bde2f9f06d69b8",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "reviewedSha256": "5493058b94580b8a87e4cca7e9aa0bad890a1f713709677f42bde2f9f06d69b8",
+      "sharedSha256AtReview": null,
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    },
+    {
+      "path": "tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+      "beforeSha256": null,
+      "afterSha256": "2f4d714c6c0dcdb65b2ed98c454d655d9ad944d3c80e44a761df4681c6207e02",
+      "reviewedPath": "/workspace/scratch/0a70543c4ce8/state/m2-e029-scratch/tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+      "reviewedSha256": "2f4d714c6c0dcdb65b2ed98c454d655d9ad944d3c80e44a761df4681c6207e02",
+      "sharedSha256AtReview": null,
+      "sharedMatchesReviewedCandidate": false,
+      "sharedMatchesDeclaredBaseline": true
+    }
+  ],
+  "method": {
+    "newHelperReadInFull": true,
+    "allFiveHookDiffsRead": true,
+    "sourceReassessmentAndRpmProvenanceReadInFull": true,
+    "sourceBindingAndReadonlyReplayContextRead": true,
+    "existingNativeReviewedSourceReusePathRead": true,
+    "focusedTestSourceAndExecutionLogRead": true,
+    "independentTestRerun": false,
+    "reasonNoDuplicateTestRun": "The frozen implementation was unchanged across the author’s actual 21-case focused execution. The independent reviewer inspected the exact test cases, execution log and hashes rather than repeating identical fixture execution."
+  },
+  "findings": [
+    {
+      "id": "SCOPE_SEPARATION",
+      "status": "PASS",
+      "locations": [
+        "validateM2S1PrerequisiteExistingApplication",
+        "authenticatedPrerequisiteRpmScope",
+        "validateRpmPrimaryProvenance"
+      ],
+      "finding": "The helper checks the native accepted M1-RPM-042 path against immutable and current M1 crosswalk/master leaf separately from the explicit source/native M2-1 target parent and exact MIDDLE2 binding. M2 target lookup M2-RPM-030 cannot replace the semantic primary or create a hybrid path."
+    },
+    {
+      "id": "CLOSED_PROVENANCE_EXCEPTION",
+      "status": "PASS",
+      "locations": [
+        "preparePrerequisiteExistingRpmAuthority",
+        "authenticatedPrerequisiteRpmScope"
+      ],
+      "finding": "An in-process WeakMap capability is minted only after full typed evidence validation. Its whole-question, final-row and exact semantic-record digests are rechecked at the ordinary RPM provenance boundary. A request JSON object or copied proof cannot manufacture it. Source-declared rpmPrimaryId, curriculum and path checks remain enforced, and selectsPtTpl remains false."
+    },
+    {
+      "id": "IMMUTABLE_INDEPENDENT_AUTHORITY",
+      "status": "PASS",
+      "locations": [
+        "boundDocument",
+        "readNative",
+        "snapshot",
+        "validateM2S1PrerequisiteExistingApplication"
+      ],
+      "finding": "Exact Git commits and raw SHA references bind root approval, proposal, current application and independent review at approval and selected-item level. Distinct root, proposal preparer, native reviewer and independent reviewer identities are required. All four independently reviewed source snapshots and the selected native item are authenticated."
+    },
+    {
+      "id": "NO_RETROACTIVE_NATIVE_APPROVAL",
+      "status": "PASS",
+      "locations": [
+        "validateM2S1PrerequisiteExistingApplication",
+        "validateReviewedSourceReassessment"
+      ],
+      "finding": "The native REGISTRATION_PENDING decision, native absent PT/TPL after values and exactly empty proposal inventories are required and preserved. Newly authorized current application is a separate typed proof. Retained primaryMethod/decisiveStep and native RPM aliases receive explicit current-application origins instead of NATIVE_AFTER."
+    },
+    {
+      "id": "SOURCE_AND_HOLD_BOUNDARY",
+      "status": "PASS",
+      "locations": [
+        "validateM2S1PrerequisiteExistingApplication",
+        "registerReviewedExamV2"
+      ],
+      "finding": "The existing 25-field student payload, text-only boundary, current and native source/content holds, all five accepted difficulty fields, original source approval flags and exact rationale are checked. The immutable source transition admits only the declared metadata additions/removals and requires every unselected question to be identical. Ordinary registrar source/metadata parity, exact file blob, UID, fingerprint, target parent and registry-scope guards remain in the execution path."
+    },
+    {
+      "id": "ADD_ONLY_EXISTING_BINDING",
+      "status": "PASS",
+      "locations": [
+        "validateM2S1PrerequisiteExistingApplication",
+        "restoreReviewedReplayCanonicalBefore"
+      ],
+      "finding": "Existing ACTIVE PT and TPL objects must match immutable approved definitions and remain equal before/after. Exactly one add-only target binding for the selected UID is admitted; definition and crosswalk changes are zero. Replay reconstructs only an authenticated original add-only binding in a cloned lookup map, with no canonical file write or unrelated state reconstruction."
+    },
+    {
+      "id": "DURABLE_PROOF_AND_REUSE",
+      "status": "PASS",
+      "locations": [
+        "REVIEWED_SOURCE_BINDING_OPT_INS",
+        "buildReviewedSourceBinding",
+        "registerReviewedExamV2 replay",
+        "validateNativeReviewedSourceReuse"
+      ],
+      "finding": "The new opt-in joins the existing source-review sidecar and receipt inventory. Proof/sidecar removal is rejected during replay and native reuse. The original request snapshot and exact issued proof remain authenticated before reuse; a later source-only request can preserve the unchanged selected UID while updating a different question in the same file, without issuing a new approval."
+    },
+    {
+      "id": "CURRENT_CONTEXT_RECHECK",
+      "status": "PASS",
+      "locations": [
+        "validateM2S1PrerequisiteExistingApplication",
+        "validateNativeReviewedSourceReuse"
+      ],
+      "finding": "Current selected source, selected semantic crosswalk row, master leaf/target parent, definitions and binding are re-read/rechecked. An unrelated crosswalk append is not treated as a change to the selected semantic authority. Initial unselected-source mutation is rejected, while a later independently issued source-only rebind is supported with the earlier typed proof intact."
+    }
+  ],
+  "focusedTests": {
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "command": "ARCHIVE_TEST_REPO=/absolute/scratch node --test tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+    "logPath": "state/m2-e029-focused-tests.log",
+    "logSha256": "8fa0abc799b592279b8f02de1d761ccd0fd2eff09b5410eb41baa83f612c0b4d",
+    "logRef": {
+      "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-focused-tests.log",
+      "sha256": "8fa0abc799b592279b8f02de1d761ccd0fd2eff09b5410eb41baa83f612c0b4d"
+    },
+    "exactFrozenTestSha256": "2f4d714c6c0dcdb65b2ed98c454d655d9ad944d3c80e44a761df4681c6207e02",
+    "observedTestExecutionAuthor": "GPT_M2_34C2",
+    "sourceReadByIndependentReviewer": true,
+    "coverage": [
+      "official write, exact replay and native reuse",
+      "default RPM scope and source-declared alias guard",
+      "forged JSON capability refusal",
+      "missing independent ref and reviewer collision",
+      "native proposal and native content hold refusal",
+      "hybrid RPM or replaced target refusal",
+      "fresh-hash student/neighbor/rationale/source-flag mutations refused",
+      "existing definition, selected crosswalk and master leaf mutations refused",
+      "receipt typed-proof and sidecar stripping refused",
+      "unrelated crosswalk append plus source-only neighbor change: zero new approvals, one preserved approval, replay and current reuse"
+    ]
+  },
+  "actualUidLocalContractPrecheck": {
+    "ref": {
+      "path": "/workspace/scratch/0a70543c4ce8/state/m2-e029-actual-packet-contract-check.json",
+      "sha256": "fc98f3588703f3e9a86c404c9e6018435f6a554c162a00e9e58f7c435f5c9916"
+    },
+    "status": "PASS",
+    "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+    "fixtureOnly": true,
+    "actualImmutableNativeAndIndependentReferencesReused": true,
+    "productionRegistration": "NOT_RUN"
+  },
+  "existingSemanticReviewRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/m3-prep/independent/m2-e029-q14-existing-definition-application-review-20261116.json",
+    "sha256": "2384d2b44b6d560ace529d0564d748aa2b06607e35467fa7969db98d00ea98ee"
+  },
+  "currentGoalReviewRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/m3-prep/independent/m2-e029-q14-current-goal-review-20261116.json",
+    "sha256": "a06e3815152e99c61af3cbe0e9bb85b3b3a0afbd1076b0ee7b268d088f02d574"
+  },
+  "blockingFindings": [],
+  "requiredRootIntegrationReadback": "Exact hashes of the six runtime/helper files and focused test must match this frozen candidate after root-only integration; any delta requires separate review.",
+  "limits": {
+    "rootIntegrationVerified": false,
+    "newSourceOrRegistryApprovalFromCodeReview": false,
+    "sourceStudentPayloadModificationApproved": false,
+    "newFullMathematicalQa": false,
+    "officialResolverVerifiedFinalClaim": false,
+    "productionRegistrationVerified": false,
+    "actualConsumerVerified": false,
+    "studentDeploymentVerified": false,
+    "repositoryWritesByReviewer": 0
+  }
+}
