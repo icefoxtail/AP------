@@ -86,11 +86,14 @@ function clock() {
   };
 }
 const flush = async () => { for (let i=0;i<12;i++) await Promise.resolve(); };
-function harness({ faces, check = true, unavailable = false, defaultReady, output = { unknownText() {} } } = {}) {
+function harness({ faces, check = true, unavailable = false, defaultReady, output = { unknownText() {} }, hangulLoad, hangulCheck = true } = {}) {
   const load = deferred(), time = clock(), calls = [];
   const fonts = unavailable ? undefined : {
-    load(descriptor, text) { calls.push({ event: 'load', descriptor, points: Array.from(text, c=>c.codePointAt(0)) }); return load.promise; },
-    check(descriptor, text) { calls.push({ event:'check', descriptor, points:Array.from(text,c=>c.codePointAt(0)) }); return check; }
+    load(descriptor, text) {
+      calls.push({ event: 'load', descriptor, points: Array.from(text, c=>c.codePointAt(0)) });
+      return descriptor.includes('Nanum Myeongjo') ? (hangulLoad ? hangulLoad(descriptor, text) : Promise.resolve([{family:'Nanum Myeongjo',status:'loaded'}])) : load.promise;
+    },
+    check(descriptor, text) { calls.push({ event:'check', descriptor, points:Array.from(text,c=>c.codePointAt(0)) }); return descriptor.includes('Nanum Myeongjo') ? hangulCheck : check; }
   };
   const context = vm.createContext({ window:{}, document:{baseURI:'https://example.invalid/archive/engine.html',fonts}, URL,
     console: {warn(){},info(){}},
@@ -172,27 +175,30 @@ function vendoredOutput() {
     { font, adaptor, html, Hr: text => Array.from(text, c => c.codePointAt(0)) });
 }
 
-test('vendored CHTML keeps default families and byte-identical markup for ordinary unknown glyphs', async () => {
+test('vendored CHTML keeps default families and byte-identical markup for non-target unknown glyphs', async () => {
   const output = vendoredOutput();
   assert.deepEqual(Array.from(output.font.getCssFont('normal')), ['serif', false, false]);
   assert.deepEqual(Array.from(output.font.getCssFont('bold')), ['serif', false, true]);
   assert.deepEqual(Array.from(output.font.getCssFont('script')), ['cursive', false, false]);
-  const inputs = [['①②', 'normal'], ['계급의 도수', 'bold'], ['ㄱㄴㄷ', 'normal'], ['⒵⓪', 'script'], ['𝒜', 'normal']];
+  const inputs = [['①②', 'normal'], ['α∠∞', 'bold'], ['ㄱㄴㄷ', 'normal'], ['⒵⓪', 'script'], ['𝒜', 'normal']];
   const render = () => JSON.stringify(inputs.map(args => output.unknownText(...args)));
   const original = render();
   await harness({ faces: loaded(), output }).start();
   assert.equal(render(), original);
 });
 
-test('CHTML paints and measures only enclosed Latin runs with the local face, preserving mixed text order and style', async () => {
+test('CHTML paints and measures separate enclosed Latin and Hangul runs, preserving mixed text order and style', async () => {
   const output = vendoredOutput();
   const letters = String.fromCodePoint(...points);
   const text = `①한글${letters}ㄱⓐ②`;
   const before = JSON.parse(JSON.stringify(output.unknownText(text, 'bold', 1)));
-  await harness({ faces: loaded(), output }).start();
+  const h = harness({ faces: loaded(), output });
+  await h.start();
+  await h.context.prepareHangulMathFont('글한');
   const render = JSON.parse(JSON.stringify(output.unknownText(text, 'bold', 1)));
   const run = contents => ({ tag: 'span', props: { class: 'ap-enclosed-latin', style: { 'font-family': 'MJX-TEX-ZERO, "AP Enclosed Latin", serif' } }, children: [{ text: contents }] });
-  assert.deepEqual(render, { ...before, children: [{ text: '①한글' }, run(letters), { text: 'ㄱ' }, run('ⓐ'), { text: '②' }] });
+  const hangul = { tag: 'span', props: { class: 'ap-hangul-math', style: { 'font-family': 'MJX-TEX-ZERO, "Nanum Myeongjo", serif' } }, children: [{ text: '한글' }] };
+  assert.deepEqual(render, { ...before, children: [{ text: '①' }, hangul, run(letters), { text: 'ㄱ' }, run('ⓐ'), { text: '②' }] });
   const measured = JSON.parse(JSON.stringify(output.measureText(text, '-explicitFont', ['monospace', true, false])));
   assert.deepEqual(measured.props.style, { 'font-family': 'MJX-TEX-ZERO, monospace', 'font-style': 'italic' });
   assert.deepEqual(measured.children, render.children);
@@ -308,4 +314,119 @@ test('undefined elements and selector inputs still guard actual enclosed glyphs'
   await assert.rejects(h.context.window.APRenderLoop.typeset('body',undefined),/font request failed/);
   await assert.rejects(h.context.window.APRenderLoop.typeset('selector',['.choices']),/font request failed/);
   assert.equal(h.measurements(),0);
+});
+
+const nanum = () => [{ family: 'Nanum Myeongjo', status: 'loaded' }];
+const hangulLoads = h => h.calls.filter(row => row.event === 'load' && row.descriptor.includes('Nanum Myeongjo'));
+async function waitForHangulRequests(h) {
+  for (let i = 0; i < 100 && hangulLoads(h).length !== 2; i++) await Promise.resolve();
+  assert.equal(hangulLoads(h).length, 2, 'both Nanum weight requests must start before advancing the fake font deadline');
+}
+
+test('direct CHTML measurement refuses unprepared Hangul, including a new glyph after a different run was prepared', async () => {
+  const output = vendoredOutput(), h = harness({ faces: loaded(), output });
+  await h.start();
+  assert.throws(() => output.measureText('(가)', 'normal'), /HANGUL_MATH_FONT_NOT_READY/);
+  await h.context.prepareHangulMathFont('가');
+  assert.doesNotThrow(() => output.measureText('(가)', 'normal'));
+  assert.throws(() => output.unknownText('(나)', 'bold'), /HANGUL_MATH_FONT_NOT_READY/);
+  assert.equal(hangulLoads(h).length, 2);
+});
+
+test('Hangul run font preserves the original normal, bold, italic and explicit-width outer styles', async () => {
+  const output = vendoredOutput(), text = '계급의 도수';
+  const inputs = ['normal', 'bold', 'italic'].map(style => [text, style, 1]);
+  const before = inputs.map(args => JSON.parse(JSON.stringify(output.unknownText(...args))));
+  const h = harness({ faces: loaded(), output }); await h.start();
+  await h.context.prepareHangulMathFont('계급도수의');
+  for (const [i, args] of inputs.entries()) {
+    const after = JSON.parse(JSON.stringify(output.unknownText(...args)));
+    assert.deepEqual(after.props, before[i].props);
+    assert.deepEqual(after.children.map(child => child.text ?? child.children[0].text), ['계급의', ' ', '도수']);
+    assert.equal(after.children[0].props.style['font-family'], 'MJX-TEX-ZERO, "Nanum Myeongjo", serif');
+    assert.equal(after.children[2].props.class, 'ap-hangul-math');
+  }
+});
+
+for (const directFallback of [false, true]) {
+  const pathName = directFallback ? 'engine direct fallback' : 'shared APRenderLoop';
+  test(`${pathName}: Hangul math waits for both existing Nanum weights before the first measurement and reuses readiness`, async () => {
+    const normal = deferred(), bold = deferred();
+    const h = connectedCaller({ faces: loaded(), hangulLoad: descriptor => descriptor.startsWith('400 ') ? normal.promise : bold.promise });
+    const pending = h.call('본문 한글 $(가)\\sim(마)$', directFallback);
+    await waitForHangulRequests(h);
+    assert.equal(h.measurements(), 0);
+    assert.deepEqual(hangulLoads(h).map(row => [row.descriptor, row.points]), [
+      ['400 16px "Nanum Myeongjo"', [0xAC00, 0xB9C8]],
+      ['700 16px "Nanum Myeongjo"', [0xAC00, 0xB9C8]],
+    ]);
+    normal.resolve(nanum()); await flush(); assert.equal(h.measurements(), 0);
+    bold.resolve(nanum()); assert.equal(await pending, true); assert.equal(h.measurements(), 1);
+    assert.equal(await h.call('$(마)(가)(가)$', directFallback), true);
+    assert.equal(h.measurements(), 2); assert.equal(hangulLoads(h).length, 2);
+    h.time.tick(5000); await flush(); assert.equal(h.time.timers.size, 0);
+  });
+  for (const [name, options, error] of [
+    ['empty face', { hangulLoad: async () => [] }, 'HANGUL_MATH_FONT_NOT_LOADED'],
+    ['wrong face', { hangulLoad: async () => [{ family: 'serif', status: 'loaded' }] }, 'HANGUL_MATH_FONT_NOT_LOADED'],
+    ['unloaded face', { hangulLoad: async () => [{ family: 'Nanum Myeongjo', status: 'loading' }] }, 'HANGUL_MATH_FONT_NOT_LOADED'],
+    ['failed coverage check', { hangulCheck: false }, 'HANGUL_MATH_FONT_NOT_LOADED'],
+    ['font load rejection', { hangulLoad: async () => { throw new Error('Nanum bytes unavailable'); } }, 'Nanum bytes unavailable'],
+  ]) test(`${pathName}: ${name} refuses Hangul math before measurement`, async () => {
+    const h = connectedCaller({ faces: loaded(), ...options });
+    await assert.rejects(h.call('$(가)$', directFallback), new RegExp(error));
+    assert.equal(h.measurements(), 0);
+    h.time.tick(5000); await flush(); assert.equal(h.time.timers.size, 0);
+  });
+  test(`${pathName}: Hangul timeout stays refused after late success, without measuring or marking glyphs prepared`, async () => {
+    const fontReady = deferred(), output = vendoredOutput();
+    const h = connectedCaller({ faces: loaded(), output, hangulLoad: () => fontReady.promise });
+    const pending = h.call('$(가)$', directFallback), rejected = assert.rejects(pending, /HANGUL_MATH_FONT_TIMEOUT/);
+    await waitForHangulRequests(h); h.time.tick(4999); await flush(); assert.equal(h.measurements(), 0);
+    h.time.tick(1); await rejected;
+    fontReady.resolve(nanum()); await flush();
+    await assert.rejects(h.call('$(가)$', directFallback), /HANGUL_MATH_FONT_TIMEOUT/);
+    assert.throws(() => output.unknownText('가', 'normal'), /HANGUL_MATH_FONT_NOT_READY/);
+    assert.equal(h.measurements(), 0);
+    h.time.tick(5000); await flush(); assert.equal(h.time.timers.size, 0);
+  });
+  test(`${pathName}: plain Korean text and non-Hangul math retain the existing continuation after startup failure`, async () => {
+    const h = connectedCaller(); h.load.reject(new Error('font request failed'));
+    assert.equal(await h.call('한글 본문 $x+1$ 및 \\$(가)\\$', directFallback), true);
+    assert.equal(h.measurements(), 1); assert.equal(hangulLoads(h).length, 0);
+  });
+}
+
+test('all configured math text forms collect only their Hangul glyphs before measurement', async () => {
+  const h = connectedCaller({ faces: loaded() });
+  assert.equal(await h.runtimeCall('본문 $$가$$ $나$ \\(다\\) \\[라\\] $(마)$'), true);
+  assert.deepEqual(hangulLoads(h).map(row => row.points), [[0xAC00,0xB098,0xB2E4,0xB77C,0xB9C8], [0xAC00,0xB098,0xB2E4,0xB77C,0xB9C8]]);
+});
+
+test('MathML roots and existing CHTML descendants prepare Hangul for subsequent measurements', async () => {
+  const h = connectedCaller({ faces: loaded() });
+  const math = { textContent: '가', matches: selector => selector === 'math, mjx-container' };
+  const parent = { textContent: '본문 나', querySelectorAll: selector => selector === 'math, mjx-container' ? [{ textContent: '나' }] : [] };
+  assert.equal(await h.context.window.APRenderLoop.typeset('math-nodes', [math, parent]), true);
+  assert.deepEqual(hangulLoads(h).map(row => row.points), [[0xAC00,0xB098], [0xAC00,0xB098]]);
+});
+
+test('missing startup promise and missing font API refuse only the Hangul math path', async () => {
+  const missingReady = connectedCaller({ faces: loaded() }); await missingReady.config.startup.promise;
+  delete missingReady.config.startup.promise;
+  await assert.rejects(missingReady.runtimeCall('$(가)$'), /HANGUL_MATH_FONT_NOT_READY/);
+  assert.equal(await missingReady.runtimeCall('한글 본문 $x+1$'), true);
+  const missingApi = connectedCaller({ faces: loaded() }); await missingApi.config.startup.promise;
+  missingApi.context.document.fonts = undefined;
+  await assert.rejects(missingApi.runtimeCall('$(가)$'), /HANGUL_MATH_FONT_API_UNAVAILABLE/);
+  assert.equal(missingApi.measurements(), 0); assert.equal(missingApi.time.timers.size, 0);
+});
+
+test('quoted family names and multiple unicode-range Nanum faces are accepted without a new font asset', async () => {
+  const h = connectedCaller({ faces: loaded(), hangulLoad: async () => [
+    { family: '"Nanum Myeongjo"', status: 'loaded' }, { family: 'Nanum Myeongjo', status: 'loaded' },
+  ] });
+  assert.equal(await h.runtimeCall('$(가)(나)$'), true); assert.equal(h.measurements(), 1);
+  assert.equal((engine.match(/@font-face\s*\{[^}]*font-family:\s*'AP Enclosed Latin';[^}]*\}/g) || []).length, 1);
+  assert(!engine.includes('font-family: \'Nanum Myeongjo\';'));
 });

@@ -58,6 +58,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-source-quality-holds.test.mjs']
   },
   {
+    label: 'tests/archive-m2s1-original-source-error-hold.test.cjs',
+    args: ['--test', 'tests/archive-m2s1-original-source-error-hold.test.cjs']
+  },
+  {
     label: 'tests/archive-native-authority-correction.test.mjs',
     args: ['--test', 'tests/archive-native-authority-correction.test.mjs']
   },
