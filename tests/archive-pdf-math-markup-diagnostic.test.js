@@ -16,10 +16,14 @@ function range(text, start, end) {
   assert.ok(a >= 0 && b > a, `actual helper range missing: ${start}`);
   return text.slice(a, b);
 }
-function math(markup, elements = []) {
+function childNode(type, name, value = null, children = [], namespace = null) {
+  return Object.freeze({ nodeType: type, nodeName: name, nodeValue: value, namespaceURI: namespace,
+    childNodes: Object.freeze(children) });
+}
+function math(markup, elements = [], childNodes = []) {
   const children = elements.map(([tag, attributes = {}]) => Object.freeze({ localName: tag,
     attributes: Object.freeze(Object.entries(attributes).map(([name, value]) => Object.freeze({ name, value }))) }));
-  return Object.freeze({ innerHTML: markup, querySelectorAll(selector) {
+  return Object.freeze({ innerHTML: markup, childNodes: Object.freeze(childNodes), querySelectorAll(selector) {
     assert.equal(selector, '*'); return children;
   }, getBoundingClientRect: () => ({ width: 30, height: 20 }) });
 }
@@ -163,6 +167,82 @@ test('text-only changes expose only different hashes, never text or guessed norm
   assert.equal(result.nodes[0].afterSha256, hash('<text>PRIVATE_TEX_AFTER</text>'));
   assert.equal(result.nodes[0].changed, true); assert.deepEqual(result.nodes[0].elementChanges, []);
   assert.ok(!JSON.stringify(result).includes('PRIVATE_TEX'));
+});
+
+test('ordered attribute changes are distinct from changed values and remain parity failures', async () => {
+  const f = fixture(), children = [childNode(1, 'svg', null, [], 'http://www.w3.org/2000/svg')];
+  const before = await f.capture([math('<svg id="PRIVATE" class="x"></svg>', [['svg', { id: 'PRIVATE', class: 'x' }]], children)]);
+  const after = await f.capture([math('<svg class="x" id="PRIVATE"></svg>', [['svg', { class: 'x', id: 'PRIVATE' }]], children)]);
+  const error = await f.failure(before, after), node = plain(error.details.mathMarkupDiagnostic.nodes[0]);
+  assert.equal(error.code, 'EXTENDED_OUTPUT_PARITY_MISMATCH');
+  assert.deepEqual(node.elementChanges, []);
+  assert.deepEqual(node.attributeOrderChanges, [{ elementIndex: 0, tag: 'svg', beforeOrder: ['id', 'class'], afterOrder: ['class', 'id'] }]);
+  assert.deepEqual(node.characterDataChanges, []); assert.deepEqual(node.childNodeTypeChanges, []);
+  assert.equal(node.beforeChildStructureSha256, node.afterChildStructureSha256);
+  assert.ok(!JSON.stringify(f.context.safeError(error)).includes('PRIVATE'));
+});
+
+for (const [kind, type, name, beforeValue, afterValue] of [
+  ['text', 3, '#text', 'PRIVATE_MATH_BEFORE', 'PRIVATE_MATH_AFTER'],
+  ['comment', 8, '#comment', 'PRIVATE_COMMENT_BEFORE', 'PRIVATE_COMMENT_AFTER'],
+  ['whitespace text', 3, '#text', ' ', '\n  '],
+  ['CDATA', 4, '#cdata-section', 'PRIVATE_CDATA_BEFORE', 'PRIVATE_CDATA_AFTER']
+]) test(`${kind} changes have exact hashes and types without leaking character data`, async () => {
+  const f = fixture();
+  const make = value => math(`<span>${value}</span>`, [['span']], [childNode(1, 'SPAN', null, [childNode(type, name, value)])]);
+  const before = await f.capture([make(beforeValue)]), after = await f.capture([make(afterValue)]);
+  const error = await f.failure(before, after), node = plain(error.details.mathMarkupDiagnostic.nodes[0]);
+  assert.equal(error.code, 'EXTENDED_OUTPUT_PARITY_MISMATCH');
+  assert.deepEqual(node.elementChanges, []); assert.deepEqual(node.attributeOrderChanges, []);
+  assert.equal(node.beforeChildNodeCount, 2); assert.equal(node.afterChildNodeCount, 2);
+  assert.equal(node.beforeChildStructureSha256, node.afterChildStructureSha256);
+  assert.deepEqual(node.childNodeTypeChanges, []);
+  assert.deepEqual(node.characterDataChanges, [{ childIndex: 1, beforePath: [0, 0], afterPath: [0, 0],
+    beforeType: type, afterType: type, beforeLength: beforeValue.length, afterLength: afterValue.length,
+    beforeSha256: hash(beforeValue), afterSha256: hash(afterValue),
+    beforeWhitespaceOnly: /^\s*$/.test(beforeValue), afterWhitespaceOnly: /^\s*$/.test(afterValue) }]);
+  assert.ok(!JSON.stringify(f.context.safeError(error)).includes('PRIVATE_'));
+  assert.ok(!JSON.stringify(f.returned).includes('<span>'));
+});
+
+test('comment insertion reports an exact child position and a null prior hash', async () => {
+  const f = fixture();
+  const before = await f.capture([math('<span></span>', [['span']], [childNode(1, 'SPAN')])]);
+  const after = await f.capture([math('<span><!--PRIVATE_COMMENT--></span>', [['span']],
+    [childNode(1, 'SPAN', null, [childNode(8, '#comment', 'PRIVATE_COMMENT')])])]);
+  const error = await f.failure(before, after), node = plain(error.details.mathMarkupDiagnostic.nodes[0]);
+  assert.equal(node.beforeChildNodeCount, 1); assert.equal(node.afterChildNodeCount, 2);
+  assert.notEqual(node.beforeChildStructureSha256, node.afterChildStructureSha256);
+  assert.deepEqual(node.childNodeTypeChanges, [{ childIndex: 1, beforePath: null, afterPath: [0, 0],
+    beforeType: null, afterType: 8, beforeName: null, afterName: '#comment' }]);
+  assert.equal(node.characterDataChanges[0].beforeSha256, null);
+  assert.equal(node.characterDataChanges[0].afterSha256, hash('PRIVATE_COMMENT'));
+  assert.ok(!JSON.stringify(f.context.safeError(error)).includes('PRIVATE_COMMENT'));
+});
+
+test('child text reordering is detected even when the element and child type structure is unchanged', async () => {
+  const f = fixture();
+  const make = values => math(`<span>${values.join('')}</span>`, [['span']],
+    [childNode(1, 'SPAN', null, values.map(value => childNode(3, '#text', value)))]);
+  const before = await f.capture([make(['PRIVATE_A', 'PRIVATE_B'])]);
+  const after = await f.capture([make(['PRIVATE_B', 'PRIVATE_A'])]);
+  const error = await f.failure(before, after), node = plain(error.details.mathMarkupDiagnostic.nodes[0]);
+  assert.equal(node.characterDataChanges.length, 2);
+  assert.equal(node.beforeChildStructureSha256, node.afterChildStructureSha256);
+  assert.deepEqual(node.childNodeTypeChanges, []); assert.deepEqual(node.elementChanges, []);
+  assert.equal(node.characterDataChanges[0].beforeSha256, node.characterDataChanges[1].afterSha256);
+  assert.ok(!JSON.stringify(f.context.safeError(error)).includes('PRIVATE_'));
+});
+
+test('changed child nesting is diagnosed independently of element document order', async () => {
+  const f = fixture();
+  const before = await f.capture([math('<span><i></i></span>', [['span'], ['i']], [childNode(1, 'SPAN', null, [childNode(1, 'I')])])]);
+  const after = await f.capture([math('<span></span><i></i>', [['span'], ['i']], [childNode(1, 'SPAN'), childNode(1, 'I')])]);
+  const error = await f.failure(before, after), node = plain(error.details.mathMarkupDiagnostic.nodes[0]);
+  assert.deepEqual(node.elementChanges, []); assert.deepEqual(node.characterDataChanges, []);
+  assert.notEqual(node.beforeChildStructureSha256, node.afterChildStructureSha256);
+  assert.deepEqual(node.childNodeTypeChanges, [{ childIndex: 1, beforePath: [0, 0], afterPath: [1],
+    beforeType: 1, afterType: 1, beforeName: 'I', afterName: 'I' }]);
 });
 
 test('existing numeric MJX normalization is unchanged and adds no new exception', async () => {

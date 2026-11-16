@@ -369,7 +369,19 @@ async function documentEvidence(page, capturePdfMath = false) {
     // never leave the page; only a failed parity check requests redacted hashes.
     let mathSnapshot;
     if (capturePdfMath) try {
+      const childNodes = root => {
+        const result = [];
+        const walk = (node, path) => {
+          result.push({ path, type: node.nodeType, name: node.nodeName,
+            namespace: node.namespaceURI || null,
+            value: node.nodeValue === null ? null : String(node.nodeValue).replace(/MJX-\d+/g, 'MJX-N') });
+          Array.from(node.childNodes || []).forEach((child, index) => walk(child, [...path, index]));
+        };
+        Array.from(root.childNodes || []).forEach((node, index) => walk(node, [index]));
+        return result;
+      };
       mathSnapshot = math.map((node, index) => ({ markup: mathMarkup[index],
+        childNodes: childNodes(node),
         elements: [...node.querySelectorAll('*')].map(element => ({ tag: element.localName,
           attributes: [...element.attributes].map(attribute => [attribute.name, attribute.value.replace(/MJX-\d+/g, 'MJX-N')]) })) }));
     } catch (_) { delete window.__archivePdfMathSnapshots; }
@@ -546,6 +558,7 @@ async function pdfMathMarkupDiagnostic(page, beforeHash, afterHash) {
         record.attributeNameCountChanges = countChanges(counts(leftElements.flatMap(element => element.attributes.map(([name]) => name))),
           counts(rightElements.flatMap(element => element.attributes.map(([name]) => name))));
         record.elementChanges = [];
+        record.attributeOrderChanges = [];
         for (let elementIndex = 0; elementIndex < Math.max(leftElements.length, rightElements.length); elementIndex++) {
           const a = leftElements[elementIndex], b = rightElements[elementIndex];
           const aAttributes = new Map(a?.attributes || []), bAttributes = new Map(b?.attributes || []);
@@ -555,6 +568,36 @@ async function pdfMathMarkupDiagnostic(page, beforeHash, afterHash) {
           if (a?.tag !== b?.tag || addedAttributeNames.length || removedAttributeNames.length || changedAttributeNames.length)
             record.elementChanges.push({ elementIndex, beforeTag: a?.tag || null, afterTag: b?.tag || null,
               addedAttributeNames, removedAttributeNames, changedAttributeNames });
+          const beforeOrder = [...aAttributes.keys()], afterOrder = [...bAttributes.keys()];
+          if (a?.tag === b?.tag && !addedAttributeNames.length && !removedAttributeNames.length && !changedAttributeNames.length &&
+              JSON.stringify(beforeOrder) !== JSON.stringify(afterOrder))
+            record.attributeOrderChanges.push({ elementIndex, tag: a?.tag || null, beforeOrder, afterOrder });
+        }
+        // Character data never leaves Chrome. These hashes distinguish text,
+        // comment and DOM ordering changes from an attribute-order-only change;
+        // none changes the original byte-exact mathMarkupHash comparison.
+        const leftChildren = left?.childNodes || [], rightChildren = right?.childNodes || [];
+        const structure = nodes => nodes.map(({ value, ...node }) => node);
+        record.childNodeDetailVersion = 2;
+        record.beforeChildNodeCount = leftChildren.length;
+        record.afterChildNodeCount = rightChildren.length;
+        record.beforeChildStructureSha256 = await digest(JSON.stringify(structure(leftChildren)));
+        record.afterChildStructureSha256 = await digest(JSON.stringify(structure(rightChildren)));
+        record.childNodeTypeChanges = [];
+        record.characterDataChanges = [];
+        for (let childIndex = 0; childIndex < Math.max(leftChildren.length, rightChildren.length); childIndex++) {
+          const a = leftChildren[childIndex], b = rightChildren[childIndex];
+          if (JSON.stringify(a?.path) !== JSON.stringify(b?.path) || a?.type !== b?.type || a?.name !== b?.name || a?.namespace !== b?.namespace)
+            record.childNodeTypeChanges.push({ childIndex, beforePath: a?.path || null, afterPath: b?.path || null,
+              beforeType: a?.type ?? null, afterType: b?.type ?? null, beforeName: a?.name || null, afterName: b?.name || null });
+          if ((a?.value !== null && a?.value !== undefined || b?.value !== null && b?.value !== undefined) && a?.value !== b?.value)
+            record.characterDataChanges.push({ childIndex, beforePath: a?.path || null, afterPath: b?.path || null,
+              beforeType: a?.type ?? null, afterType: b?.type ?? null,
+              beforeLength: a?.value?.length ?? null, afterLength: b?.value?.length ?? null,
+              beforeSha256: a?.value === null || a?.value === undefined ? null : await digest(a.value),
+              afterSha256: b?.value === null || b?.value === undefined ? null : await digest(b.value),
+              beforeWhitespaceOnly: typeof a?.value === 'string' ? /^\s*$/.test(a.value) : null,
+              afterWhitespaceOnly: typeof b?.value === 'string' ? /^\s*$/.test(b.value) : null });
         }
       }
       nodes.push(record);
