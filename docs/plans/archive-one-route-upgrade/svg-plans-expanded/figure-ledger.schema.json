@@ -1,0 +1,345 @@
+{
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "source",
+    "scope",
+    "existing",
+    "need",
+    "plan",
+    "pedagogy",
+    "checks",
+    "publication"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "svg-plan-ledger-v1"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "exam",
+        "sourceOrdinal",
+        "sourceId",
+        "uid",
+        "sourceCommit",
+        "sourceBlobSha"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "exam": {
+          "type": "string"
+        },
+        "sourceOrdinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sourceId": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "uid": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "sourceCommit": {
+          "type": "string"
+        },
+        "sourceBlobSha": {
+          "type": "string"
+        }
+      }
+    },
+    "scope": {
+      "enum": [
+        "similar",
+        "textbooks",
+        "types"
+      ]
+    },
+    "existing": {
+      "type": "object",
+      "required": [
+        "inventoryStatus",
+        "problemAssets",
+        "solutionAssets",
+        "productionLedgerState",
+        "checkedCommit",
+        "visualReview",
+        "missingAssets"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "inventoryStatus": {
+          "enum": [
+            "NOT_INSPECTED",
+            "INVENTORIED"
+          ]
+        },
+        "problemAssets": {
+          "type": "array"
+        },
+        "solutionAssets": {
+          "type": "array"
+        },
+        "productionLedgerState": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "checkedCommit": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "visualReview": {
+          "enum": [
+            "NOT_REVIEWED",
+            "VIEWED"
+          ]
+        },
+        "missingAssets": {
+          "type": "array"
+        }
+      }
+    },
+    "need": {
+      "type": "object",
+      "required": [
+        "problem",
+        "solution",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "problem": {
+          "enum": [
+            "UNASSESSED",
+            "KEEP",
+            "ADD",
+            "REVIEW"
+          ]
+        },
+        "solution": {
+          "enum": [
+            "UNASSESSED",
+            "KEEP",
+            "ADD",
+            "EXEMPT",
+            "UNSUPPORTED",
+            "CONTENT"
+          ]
+        },
+        "why": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "required": [
+        "decisionPath",
+        "files",
+        "capability",
+        "status",
+        "render"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "decisionPath": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array"
+        },
+        "capability": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "NOT_STARTED",
+            "IN_PROGRESS",
+            "PLAN_READY",
+            "RENDERED",
+            "NEEDS_REVISION"
+          ]
+        },
+        "render": {
+          "enum": [
+            "NOT_RUN",
+            "PASS",
+            "ERROR"
+          ]
+        }
+      }
+    },
+    "pedagogy": {
+      "type": "object",
+      "required": [
+        "decisiveRelation",
+        "auxiliaryLines",
+        "intermediateValues",
+        "correspondingMarks",
+        "hiddenAnswerValues",
+        "sourceEvidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "decisiveRelation": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "auxiliaryLines": {
+          "type": "array"
+        },
+        "intermediateValues": {
+          "type": "array"
+        },
+        "correspondingMarks": {
+          "type": "array"
+        },
+        "hiddenAnswerValues": {
+          "type": "array"
+        },
+        "sourceEvidence": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "required": [
+        "answerHidden",
+        "midValuesKept",
+        "coordsVerified",
+        "captionNamesPresent",
+        "visualReviewed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "answerHidden": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "midValuesKept": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "coordsVerified": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "captionNamesPresent": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        },
+        "visualReviewed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "state",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "UNVERIFIED",
+            "EXISTING_REFERENCE",
+            "PUBLISHED_CONFIRMED"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "number",
+            "object",
+            "array",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expanded SVG plan ledger row"
+}
