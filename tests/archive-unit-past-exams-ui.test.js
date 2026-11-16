@@ -116,3 +116,26 @@ test('단원별 기출 권의 해설·정답 머리글은 출력 봉투 경로�
   assert.match(mixedEngine, /function getRenderHeaderSubtitle\(type\) \{\s*const opts = getPrintHeaderOptions\(\);\s*if \(isUnitPastOutput\(\)\)/);
   assert.match(js, /category: '단원별 기출'/);
 });
+
+test('긴 출처 요약은 시험 이름 중간이 아니라 " / " 경계에서 자르고 " 외 N개"를 붙인다', () => {
+  const start = mixedEngine.indexOf('function clampSourceSummary(');
+  const end = mixedEngine.indexOf('function getRenderHeaderSubtitle(', start);
+  assert.ok(start > 0 && end > start);
+  assert.match(mixedEngine.slice(end, end + 400), /clampSourceSummary\(AppState\.meta\?\.sourceSummary \|\| '', 180\)/);
+  const clampText = (value, max) => String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, max);
+  const clampSourceSummary = new Function('clampText', `${mixedEngine.slice(start, end)}; return clampSourceSummary;`)(clampText);
+  const names = ['2026 · 금당고 · 1학기 중간', '2026 · 복성고 · 1학기 중간', '2026 · 효천고 · 1학기 중간', '2025 · 강남여고 · 1학기 중간',
+    '2025 · 금당고 · 1학기 중간', '2025 · 순천여고 · 1학기 중간', '2025 · 강남여고 · 1학기 기말', '2024 · 강남여고 · 1학기 중간'];
+  const long = `출처: ${names.join(' / ')}`;
+  const cut = clampSourceSummary(long, 180);
+  assert.ok(cut.length <= 180);
+  assert.match(cut, /^출처: /);
+  assert.match(cut, / 외 \d+개$/);
+  const kept = cut.replace(/^출처: /, '').replace(/ 외 \d+개$/, '').split(' / ');
+  kept.forEach(name => assert.ok(names.includes(name), `잘린 이름 없이 통째로 남는다: ${name}`));
+  assert.equal(kept.length + Number(/ 외 (\d+)개$/.exec(cut)[1]), names.length);
+  const short = '출처: 2026 · 금당고 · 1학기 중간 / 2025 · 강남여고 · 1학기 중간';
+  assert.equal(clampSourceSummary(short, 180), short);
+  const noSlash = '출처: ' + '가'.repeat(300);
+  assert.equal(clampSourceSummary(noSlash, 180), clampText(noSlash, 180));
+});

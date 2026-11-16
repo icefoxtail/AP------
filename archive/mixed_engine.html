@@ -588,11 +588,26 @@ function isUnitPastOutput() {
         || AppState.outputEnvelope?.sourceKind === 'unit-past';
 }
 
+// 출처 요약("출처: A / B / C")이 길면 시험 이름 중간에서 자르지 않고 " / " 경계에서 자른 뒤 " 외 N개"를 붙인다.
+// " / "로 나뉘지 않는 문자열이면 예전처럼 글자 수로 자른다.
+function clampSourceSummary(summary, maxLength) {
+    const text = String(summary ?? '').replace(/\s+/g, ' ').trim();
+    if (text.length <= maxLength || !text.includes(' / ')) return clampText(text, maxLength);
+    const label = /^출처:\s*/.exec(text);
+    const prefix = label ? '출처: ' : '';
+    const parts = text.slice(label ? label[0].length : 0).split(' / ');
+    for (let kept = parts.length - 1; kept >= 1; kept--) {
+        const candidate = `${prefix}${parts.slice(0, kept).join(' / ')} 외 ${parts.length - kept}개`;
+        if (candidate.length <= maxLength) return candidate;
+    }
+    return clampText(text, maxLength);
+}
+
 function getRenderHeaderSubtitle(type) {
     const opts = getPrintHeaderOptions();
     if (isUnitPastOutput()) {
         if (type === 'exam') return shouldApplyPrintHeader(type) ? opts.subtitle : '';
-        return clampText(AppState.meta?.sourceSummary || '', 180);
+        return clampSourceSummary(AppState.meta?.sourceSummary || '', 180);
     }
     return shouldApplyPrintHeader(type) ? opts.subtitle : '';
 }
