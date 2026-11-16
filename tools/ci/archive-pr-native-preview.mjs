@@ -598,7 +598,35 @@ export function selectPendingNativeRequests({ root, headSha }) {
 // Include that receipt's explicit SHA-bound approval inputs in the same fixed
 // manifest, so the independent shadow receives the documents too. This stages
 // inputs only; the official registrar still authenticates every approval.
-function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditSourceAncestor } = {}) {
+// The existing partial FINAL_QA source-only registrar authenticates this exact
+// issued subset against the current approved metadata, identity, runtime and
+// complete selected source objects. The old receipt's approval evidence is
+// historical provenance, not a declaration that mutable shared inputs still
+// have their historical bytes. Other receipts retain the recursive staging.
+function exactPartialFinalQaPrior(request, ref, receipt) {
+  if (!request || !partialFinalQaPreservation(request) ||
+      !eq(request.approval.sourceRebind.priorReceiptRef, { path: ref.path, sha256: ref.sha256 })) return false;
+  const count = request.items.length;
+  const selected = rows => Array.isArray(rows) && rows.length === count &&
+    new Set(rows.map(row => row?.questionUid)).size === count && request.items.every(item =>
+      rows.filter(row => row?.questionUid === item.questionUid && row.sourceOrdinal === item.sourceOrdinal &&
+        row.sourceArchiveFile === request.sourceArchiveFile).length === 1);
+  return receipt?.schemaVersion === 'archive-reviewed-exam-meta-registration-v2' &&
+    receipt.metadataRegistrationStatus === 'REGISTERED' && receipt.scope === 'PARTIAL_UIDS' &&
+    receipt.registrationMode === undefined && receipt.partialUidCount === count && receipt.totalQuestions === count &&
+    receipt.expectedQuestionCount === request.expectedQuestionCount && receipt.examUid === request.examUid &&
+    typeof receipt.examUid === 'string' && Boolean(receipt.examUid.trim()) &&
+    receipt.sourceArchiveFile === request.sourceArchiveFile && receipt.requestId === path.posix.basename(ref.path, '.json') &&
+    /^[a-f0-9]{40}$/.test(receipt.sourceBlobSha1 || '') && /^[a-f0-9]{64}$/.test(receipt.sourceRawSha256 || '') &&
+    /^[a-f0-9]{64}$/.test(receipt.requestSha256 || '') && receipt.approval?.type === 'FINAL_QA' &&
+    receipt.approval.metadataReviewed === true && typeof receipt.approval.approvedBy === 'string' &&
+    Boolean(receipt.approval.approvedBy.trim()) && Array.isArray(receipt.approval.evidenceRefs) &&
+    receipt.approval.evidenceRefs.length > 0 && selected(receipt.appliedRecords) && selected(receipt.appliedIdentityRecords) &&
+    selected(receipt.runtimeRecords) && receipt.appliedRecords.every(row => row.metadataApprovalType === 'FINAL_QA') &&
+    receipt.runtimeRecords.every(row => row.sourceIdentity === `${request.sourceArchiveFile}#${row.sourceOrdinal}`);
+}
+
+function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditSourceAncestor, partialFinalQaRequest } = {}) {
   const refs = new Map(), active = new Set();
   const visit = item => {
     if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
@@ -619,6 +647,7 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditS
     let receipt;
     try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
     catch { fail(`EVIDENCE_JSON:${ref.path}`); }
+    if (exactPartialFinalQaPrior(partialFinalQaRequest, ref, receipt)) return;
     if (auditSourceAncestor && eq(auditSourceAncestor.priorReceiptRef, { path: ref.path, sha256: ref.sha256 })) {
       // Only this typed source-only audit uses a historical FULL authority.
       // Its registrar replays the entire prior graph from immutable Git,
@@ -712,6 +741,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
       ...(correction ? [[request.difficultyEvidence]] : [])],
       { withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
+        partialFinalQaRequest: partialFinalQaPreservation(request) ? request : undefined,
         auditSourceAncestor: auditSourcePreservation ? { ...auditSourcePreservation,
           sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
