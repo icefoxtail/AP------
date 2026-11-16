@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "13",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "자연수 n의 범위"
+  },
+  "caption": "파란 구간의 열린 끝과 닫힌 끝을 구분하여 정수 눈금을 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "발문의 부등식을 양수 조건에서 정리한 범위",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 눈금의 포함 여부를 보여 주고 개수나 합은 쓰지 않는다."
+  ],
+  "accessibilityDescription": "파란 구간의 열린 끝과 닫힌 끝을 구분하여 정수 눈금을 읽는다."
+}
