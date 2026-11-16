@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "code-only-independent-review-v1",
+  "reviewer": "/root/m1_closeout",
+  "reviewedAt": "2026-11-15T23:14:03Z",
+  "scope": "Three root-owned D rationale files; no question source or mathematical review.",
+  "status": "ACCEPT_CODE_ONLY",
+  "sourceAnswerSolutionOrHiddenReasoningIncluded": false,
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "beforeSha256": "9c807ce54ee096869bf8d782f19a308f475bbab1e36959f3066b3bf1d261128a",
+      "afterSha256": "3f7c21e7eb13ac2e4ac241c6fb662c67e290332b61e62321c6ad02cf85878973"
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "beforeSha256": "50c38bc53b9c74f16c48265531b908d00297dcd6cab2a1371f61002eafade7a2",
+      "afterSha256": "3aa1e960808c6ab926ce171ce8e0660783abcfd6f509e0d949933eb8856fc9fd"
+    },
+    {
+      "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+      "beforeSha256": "31c63c3442d1c749828d5fd412c3ff385df33311657dc22846a24f09ec1aa57e",
+      "afterSha256": "6f2fdefd3d8e6601bc22d3adabc4c4a982291a1d2740d47c633c62e4dd18880e"
+    }
+  ],
+  "findings": {
+    "nativeAfterAndNativeItemPriority": "PRESERVED",
+    "fourDeclarationsRequired": "EXACT",
+    "committedSourceProvenanceWhenAlreadyEqual": "PRESERVED",
+    "existingFingerprintOnlyBranch": "PRESERVED",
+    "studentPayloadAndExplicitDebtGuards": "PRESERVED",
+    "acceptedFinalFieldsAndOmittedCorrectionGuards": "PRESERVED",
+    "meaningApprovalExpansionObserved": false
+  },
+  "testScopeReviewed": [
+    "old-source verbatim transport and replay",
+    "all four individual declaration mismatches reject",
+    "already-matching source provenance replay",
+    "explicit native after/item precedence"
+  ],
+  "testExecutionByThisReviewer": false,
+  "limitation": "Code review does not establish packet eligibility, actual main registration or deployment."
+}

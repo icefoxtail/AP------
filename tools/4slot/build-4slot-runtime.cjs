@@ -7,6 +7,7 @@ const consumer = require('../../archive/item-4slot.js');
 const rendererHold = require('./renderer-registration-hold.cjs');
 const partial = require('./partial-submission.cjs');
 const registeredRenderer = require('./registered-renderer-continuity.cjs');
+const existingVector = require('./existing-registered-vector-continuity.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
@@ -21,7 +22,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker].map(p=>fs.readFileSync(p))));
+const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-registered-vector-ui.cjs')].map(p=>fs.readFileSync(p))));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -180,6 +181,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
   for(const r of identity.records||[]){const key=`${r.sourceArchiveFile}#${r.sourceOrdinal}`;if(!joins.has(key))joins.set(key,[]);joins.get(key).push(r);uidUses.set(r.questionUid,(uidUses.get(r.questionUid)||0)+1);}
   const oldFiles=new Map((previous?.files||[]).map(f=>[f.path,f]));
   const rendererContinuities=registeredRenderer.collect(root,{safe,walk,sha});
+  const vectorContinuities=existingVector.collect(root,{safe,walk,sha});
   const records=[], files=[], pending=[], observed=[], stats={revalidatedFiles:0,reusedFiles:0};
   const inputs=walk(safe(root,INPUT.slice(0,-1)));
   for(const full of inputs){
@@ -198,7 +200,8 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       const scope=partial.hasScope(d)?partial.publicEvidence(root,d,{bank,identity,sourceRaw,dictPath:dict.path}):null;
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
       const continuities=rendererContinuities.get(d.sourceArchiveFile)||[],continuityDigests=continuities.flatMap(e=>e.digests);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,continuityDigests]));
+      const vectorEntries=vectorContinuities.get(d.sourceArchiveFile)||[],vectorDigests=vectorEntries.flatMap(e=>e.digests);
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,continuityDigests,vectorDigests]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       if(scope)file={...file,scope:partial.SCOPE,expectedQuestionCount:bank.length,selectedCount:scope.selected.length,unsubmittedCount:scope.unsubmitted.length,completeExam:false};
@@ -207,10 +210,14 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       for(const [p,h]of Object.entries(assetDigests))if(h)observed.push([p,h]);
       for(const [p,h]of Object.entries(holdDigests))if(h)observed.push([p,h]);
       for(const [p,h]of continuityDigests)if(h)observed.push([p,h]);
+      for(const [p,h]of vectorDigests)if(h)observed.push([p,h]);
+      const oldVectorClaims=(old?.existingVectorContinuityClaims||[]).concat((previous?.records||[]).filter(r=>r.compactPath===rel&&
+        (r.sourceBinding==='EXISTING_REGISTERED_VECTOR_CONTINUITY'||own(r,'existingVectorContinuityRef'))));
+      if(vectorEntries.length)file.existingVectorContinuityClaims=vectorEntries.map(e=>({questionUid:e.questionUid,sourceOrdinal:e.sourceOrdinal,path:e.path,sha256:e.sha256}));
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
       // The explicit metadata continuation also depends on the issued receipt,
       // metadata and runtime. Always replay that one negative decision live.
-      if(reuseCache&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
+      if(reuseCache&&!vectorEntries.length&&!oldVectorClaims.length&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
         files.push(old);records.push(...previous.records.filter(r=>r.compactPath===rel));pending.push(...previous.pending.filter(r=>r.path===rel));stats.reusedFiles++;continue;
       }
       stats.revalidatedFiles++;
@@ -232,6 +239,15 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
         if(id.status!=null&&id.status!=='VERIFIED'){fail('IDENTITY_STATE_INVALID',it.ordinal);continue;}
+        let vectorContinuation=null;
+        const selectedVectors=vectorEntries.filter(e=>e.questionUid===id.questionUid||e.sourceOrdinal===cur.ordinal);
+        const priorVectorClaim=oldVectorClaims.some(r=>r.questionUid===id.questionUid||r.sourceOrdinal===cur.ordinal);
+        if(selectedVectors.length||priorVectorClaim){
+          if(selectedVectors.length!==1||selectedVectors[0].questionUid!==id.questionUid||selectedVectors[0].sourceOrdinal!==cur.ordinal||
+             continuities.some(e=>e.questionUid===id.questionUid||e.sourceOrdinal===cur.ordinal)){fail('EXISTING_REGISTERED_VECTOR_CLAIM_MISSING_OR_MIXED',it.ordinal);continue;}
+          try{vectorContinuation=existingVector.verify(root,selectedVectors[0],{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loadBank,safe});observed.push(...vectorContinuation.observed);}
+          catch(e){fail(e.message,it.ordinal);continue;}
+        }
         let sourceUidBinding='CANONICAL_SOURCE_TUPLE';
         if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){
           // An orphan embedded UID is NOT silently ignored. A compact may carry an explicit,
@@ -243,8 +259,10 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
              rec.sourceGitBlobSha!==sourceBlob||uidUses.has(cur.q.questionUid)||
              proof.embeddedQuestionUid!==cur.q.questionUid||proof.questionUid!==id.questionUid||
              proof.sourceQuestionNo!==sourceIdentityNumber(cur.q)||proof.sourceFingerprint!==fp||
-             id.sourceFingerprint!==fp){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
-          sourceUidBinding='VERIFIED_ORPHAN_UID_RECONCILIATION';
+             id.sourceFingerprint!==fp){
+            if(!vectorContinuation?.orphanIdentity){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
+            sourceUidBinding='EXISTING_REGISTERED_ORPHAN_UID_DISPLAY_CONTINUITY';
+          }else sourceUidBinding='VERIFIED_ORPHAN_UID_RECONCILIATION';
         }
         if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==sourceIdentityNumber(cur.q)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
         // Identity maps own stable UID/path/ordinal, not current content freshness. Their native writer
@@ -262,17 +280,17 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
           try{registeredRenderer.verify(root,selectedContinuities[0]);rendererContinuation={path:selectedContinuities[0].path,sha256:selectedContinuities[0].sha256};}
           catch(e){fail(e.message,it.ordinal);continue;}
         }
-        if(currentPayload!==baseline&&!rendererContinuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
+        if(currentPayload!==baseline&&!rendererContinuation&&!vectorContinuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
-        if(alteredAsset&&!rendererContinuation){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
+        if(alteredAsset&&!rendererContinuation&&!vectorContinuation){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
         if(own(it,'registrationHold')) {
           const errors=validateRegistrationHold(root,d,it,id,cur), h=it.registrationHold;
           if(errors.length)fail('INVALID_REGISTRATION_HOLD:'+errors.join('|'),it.ordinal,{questionUid:id.questionUid});
           else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence,nextAction:h.nextAction});
           continue;
         }
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
         records.push(row);
       }
       if(scope)for(const row of scope.unsubmitted)fail('NOT_SUBMITTED',row.displayNumber,{questionUid:row.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:row.sourceOrdinal,sourceQuestionNo:row.sourceQuestionNo});
