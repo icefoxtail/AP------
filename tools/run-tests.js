@@ -92,6 +92,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
   },
   {
+    label: 'tests/archive-reviewed-m2-cc-renderer.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-cc-renderer.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
