@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
+import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
 // Each successful lane stages its allowlisted output. Native `git diff`/reset guards then see that index as
 // their baseline; a single final push helper commits the consistent result, requests and cursors together.
@@ -77,6 +78,7 @@ function rollbackStaged(root, allowed) {
 
 export function nativeLanes(root,runScope=resolveSemanticRunScope(root)) {
   const config=read(root,'.archive-meta-register/auto/config.json',{});
+  const parentRetry=canonicalParentRetryRequests(root)[0]||null;
   const shared=specs(root,'tools/ci/archive-pages-registration.paths');
   const reviewed=specs(root,'tools/ci/archive-meta-register-commit.paths');
   const reviewedScoped=specs(root,'tools/ci/archive-meta-register-trigger-paths.txt').filter(p=>!p.includes('*'));
@@ -124,11 +126,11 @@ export function nativeLanes(root,runScope=resolveSemanticRunScope(root)) {
         // Reuse its real checks before commit; its old post-push summary names HEAD as registered,
         // so use this writer's accurate PREPARED summary and the push helper's exact SHA instead.
         ?[{...cmd('bash','tools/ci/verify-registered-consumer-approval.sh'),env:{GITHUB_STEP_SUMMARY:'/dev/null'}}]:[]},
-    {id:'semantic',inputs:[...code,...registration,SEMANTIC_RUN_SCOPE_DIR,'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
+    {id:'semantic',inputs:[...code,...registration,SEMANTIC_RUN_SCOPE_DIR,...canonicalParentRetryDependencies(root),'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
       'tools/ci/archive-main-auto-meta-pass.sh','tests/archive-question-identity-contract.test.mjs',
       'tests/archive-question-identity-runtime.test.mjs'],outputs:auto,enabled:config.enabled===true,
       parameters:{semanticRunScope:semanticRunScopeProof(runScope)},
-      commands:[cmd('bash','tools/ci/archive-main-auto-meta-pass.sh')],
+      commands:[{...cmd('bash','tools/ci/archive-main-auto-meta-pass.sh'),...(parentRetry?{env:{ARCHIVE_CANONICAL_PARENT_RETRY_REQUEST:parentRetry.path,ARCHIVE_CANONICAL_PARENT_RETRY_SHA256:parentRetry.sha256}}:{})}],
       finalCommands:({env})=>fs.existsSync(path.join(env.RUNNER_TEMP,'archive-main-auto-meta/report.json'))
         ?[cmd('node','archive/tools/meta-foundation/auto-register-merged-source.mjs','--verify','--report',path.join(env.RUNNER_TEMP,'archive-main-auto-meta/report.json'))]:[],
       continuation:({root,env})=>{
@@ -143,7 +145,7 @@ export function nativeLanes(root,runScope=resolveSemanticRunScope(root)) {
         // Excluded debt remains in pending and is reported separately. A later
         // consumed-inbox HEAD has an unscoped parameter fingerprint and resumes
         // the default policy; the current batch must not spin on deferred work.
-        return Object.entries(pending).some(([key,target])=>!excludesSemanticSource(scope,target.sourceArchiveFile)&&!attempted.has(key));
+        return canonicalParentRetryRequests(root).length>0||Object.entries(pending).some(([key,target])=>!excludesSemanticSource(scope,target.sourceArchiveFile)&&!attempted.has(key));
       }},
     {id:'shared',inputs:[...code,...registration,'archive/assets/','archive/data/generated-lite-consumer/v1/',
       'archive/db.js','archive/question-index.js','archive/question-identity.js'],outputs:shared,required:true,

@@ -166,6 +166,10 @@ const requiredCommands = [
     timeout: 300000
   },
   {
+    label: 'tests/archive-main-auto-parent-retry.test.mjs',
+    args: ['--test', 'tests/archive-main-auto-parent-retry.test.mjs']
+  },
+  {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
     args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
   },
@@ -176,6 +180,14 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
+  },
+  {
+    label: 'tests/archive-mathjax-enclosed-latin-font.test.cjs',
+    args: ['--test', 'tests/archive-mathjax-enclosed-latin-font.test.cjs']
+  },
+  {
+    label: 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs',
+    args: ['--test', 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs']
   },
   {
     label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
