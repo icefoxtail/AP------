@@ -2,6 +2,7 @@
 // The already observed SVG7 problem surface has its own sealed capture and
 // original root observation. This does not approve a vector or metadata row.
 const crypto = require('node:crypto');
+const {verifySvg7DerivedContinuity} = require('./existing-registered-vector-svg7-derived-continuity.cjs');
 const SCHEMA = 'archive-m2s1-svg7-problem-ui-preview-v1';
 const COMMIT = '45e976a5981701bef9c755d50c11636116ee788f';
 const PUBLIC = 'b9bd24223d4e523db6577682c1a30e74c11d25db';
@@ -73,7 +74,7 @@ function closedRoles(value,row,technical,manifest,readRef){
     readRef(b.beforeSourceRef);readRef(b.oldAssetRef);
   }
 }
-function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){
+function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){
   need(surface==='PROBLEM'&&ITEMS.some(x=>x[1]===questionUid&&x[2]===sourceOrdinal),'EXACT_SEVEN_PROBLEMS');
   need(typeof readRef==='function'&&typeof readLiveRef==='function'&&typeof validateCapture==='function','READERS_REQUIRED');
   need(eq(technicalRef,TECHNICAL_REF),'PUBLIC_TECHNICAL_REF');
@@ -95,9 +96,19 @@ function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,questio
     need(t[key].commit===COMMIT,'CHECKOUT_REF');readRef(t[key]);
   }
   need(eq(t.manifestRef,MANIFEST_REF),'CAPTURE_MANIFEST');
+  need(readCurrentFile===undefined||typeof readCurrentFile==='function','CURRENT_READER');
+  // Only the exact captured generated index receives a scoped derived comparison.
+  const derivedContinuity=readCurrentFile?verifySvg7DerivedContinuity({technical:t,technicalRef,readRef,readLiveRef,readCurrentFile,
+    questionUid,sourceOrdinal,surface,sourceRef,assetRefs}):null;
   const dynamic=new Set(['archive/data/question_metadata.json',...t.items.map(x=>x.sourceRef.path)]);
   need(t.servedFiles.length===99&&new Set(t.servedFiles.map(x=>x.path)).size===99,'SERVED_INVENTORY');
-  for(const ref of t.servedFiles){need(ref.commit===COMMIT,'SERVED_COMMIT');readRef(ref);if(!dynamic.has(ref.path))readLiveRef(ref);}
+  for(const ref of t.servedFiles){
+    need(ref.commit===COMMIT,'SERVED_COMMIT');readRef(ref);
+    if(!dynamic.has(ref.path)){
+      if(derivedContinuity&&ref.path===derivedContinuity.indexPath)derivedContinuity.assertCapturedIndexRef(ref);
+      else readLiveRef(ref);
+    }
+  }
   const fontIds=new Set();
   need(t.studentFontResources.length===40,'FONT_INVENTORY');
   for(const font of t.studentFontResources){

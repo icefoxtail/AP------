@@ -683,7 +683,8 @@ window.questionBank = [
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
     "crossConceptKeys": [
-      "CC_SIMILAR_FIGURES_AREA_VOLUME"
+      "CC_SIMILAR_FIGURES_AREA_VOLUME",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
