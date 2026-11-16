@@ -9,13 +9,13 @@ const vm = require('node:vm');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
 const { stable, sha256, gitBlob, createGitReader, studentFontResourcePath, checkedStudentFontRefs, FONT_DIR, FONT_STYLESHEET,
   fontFailureDiagnostic, readScreenshotArtifacts, assertScreenshotInventory } = H;
-const { captureSolutionTiles } = require("./check-m2s1-solution-scroll.cjs");
+const { captureSolutionTiles, makeE017CaptionAbsencePolicy, assertE017CaptionObservation } = require("./check-m2s1-solution-scroll.cjs");
 
 const CHECKER_PATH='tools/check-e017-solution-display-browser.cjs';
 const SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const SOLUTION_CHECKER_PATH='tools/check-m2s1-solution-scroll.cjs';
 const SHARED_CHECKER_SHA256='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
-const SOLUTION_CHECKER_SHA256='9dfe5d4e0f0fd83ba0766eb38836e6397027bd311d78c0e6bb37fdbf5dbddc4d';
+const SOLUTION_CHECKER_SHA256='7a7b0611fcc38d304b6c1d305c44e3917db93cd6d096267bebf21b70d388588c';
 const IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-e017-solution-display-raw-ui-v1',FONT_FAMILY='Nanum Myeongjo';
 const SHA1=/^[a-f0-9]{40}$/;
@@ -81,6 +81,7 @@ function assertCompletedResults(results,inputs,manifest,artifacts){
   assert.equal(row.surface,manifest.surface,'UI_RESULT_SURFACE');assert.equal(row.mode,manifest.mode,'UI_RESULT_MODE');assert.deepEqual(row.viewport,b.v,'UI_EXACT_VIEWPORT');
   assert.deepEqual(row.sourceRef,item.sourceRef,'UI_RESULT_SOURCE');assert.deepEqual(row.assetRefs,item.assetRefs,'UI_RESULT_ASSETS');
   assertTechnicalState(row.technical,manifest.mode,item.expectedBankCount);
+  assertE017CaptionObservation(row.captionAbsenceObservation);
   const c=row.capture;assert.equal(c.schemaVersion,'archive-solution-scroll-coverage-v1','UI_CAPTURE_SCHEMA');
   assert(c.method==='UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES'&&c.overlapCssPixels===32&&c.tileLimit===8&&c.cssWrites===0&&c.domWrites===0&&c.viewportChanges===0&&c.compositeImageCreated===false&&c.feedbackIdle===true&&c.foreignContentHits===0,'UI_UNCHANGED_CAPTURE_REQUIRED');
   assert.deepEqual(c.coverage,H.assertTileCoverage(c.content.height,c.tiles),'UI_COMPLETE_COVERAGE');
@@ -114,9 +115,10 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   assert.equal(manifest.surface,surface,"UI_SELECTED_SURFACE");
   assertFinalBinding(manifest);
   const inputs = preflight(reader, manifest);
+  const captionAbsencePolicy=makeE017CaptionAbsencePolicy(reader,inputs.items[0],loadQuestions);
   const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
   const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [];
-  let activeCase = null;
+  let activeCase = null, captureDiagnostic = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
     manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, solutionCaptureHelperRef, ...inputs,
@@ -125,12 +127,12 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     surface, mode: manifest.mode, studentReview: true, screenshotsScope: 'SELECTED_OWN_SURFACE_ORIGINAL_SCROLL_TILES', problemOnlyScreenshots: false,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,
     solutionsOpened: true, productionCdnTest: false, assetTransport: 'EXACT_CHECKOUT_BYTES_FOR_DEFAULT_IMAGE_ORIGIN',
-    fontTransport: 'EXACT_CHECKOUT_CHROMIUM_NANUM_MYEONGJO_V31_SUBSETS', fontLicenseRef,
+    fontTransport: 'EXACT_CHECKOUT_CHROMIUM_NANUM_MYEONGJO_V31_SUBSETS', fontLicenseRef, captionAbsenceBinding:captionAbsencePolicy,
     newFullMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0, newReviewPassCount: 0, newFourSlotApprovals: 0 };
   const writeProof = (status, code = null) => {
     const screenshotArtifacts = readScreenshotArtifacts(out);
     if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertCompletedResults(results, inputs, manifest, screenshotArtifacts);
-    const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
+    const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase, captureDiagnostic } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
       results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
       studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
@@ -243,7 +245,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," sol-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_SOLUTION_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await captureSolutionTiles(page, target, path.join(out,screenshotPath));
+          const {captionAbsenceObservation,...capture}=await captureSolutionTiles(page,target,path.join(out,screenshotPath),captionAbsencePolicy);
           const geometry = await target.evaluate(image => {
             const box = image.closest('.sol-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -257,7 +259,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
             return { tileIndex: tile.tileIndex, path: tile.filename, sha256: sha256(bytes), bytes: bytes.length }; });
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport, surface, mode:manifest.mode,
             sourceRef: item.sourceRef, assetRef: item.assetRef, assetRefs:item.assetRefs, screenshots,
-            technical: { ...technical, fontReadiness, fontResourceIds: [...fontState.fontResources.values()].sort() }, geometry, capture,
+            technical: { ...technical, fontReadiness, fontResourceIds: [...fontState.fontResources.values()].sort() }, geometry, capture, captionAbsenceObservation,
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
           activeCase = null;
         }
@@ -279,6 +281,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
   } catch (error) {
+    captureDiagnostic=error.captureDiagnostic??null;
     writeProof('FAIL', /^UI_[A-Z0-9_]+$/.test(error.message) ? error.message : 'UI_BROWSER_CHECK_FAILED');
     throw error;
   } finally {
