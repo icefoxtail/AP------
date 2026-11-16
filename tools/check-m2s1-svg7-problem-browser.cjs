@@ -12,6 +12,7 @@ const Q15_SURFACE_PATH='tools/capture-m2s1-svg7-problem-surface.cjs';
 function surfaceRoute(item,viewport){
  if(item.questionUid===Q15Surface.UID){Q15Surface.assertQ15Binding(item);return 'Q15_EMBEDDED_CHOICES';}
  if(item.questionUid===Q15Surface.Q24_UID&&viewport?.name==='mobile'){Q15Surface.assertQ24Binding(item,viewport);return 'Q24_MOBILE_NATIVE_ATOMS';}
+ if(item.questionUid===Q15Surface.E045_Q24_UID&&viewport?.name==='mobile'){Q15Surface.assertE045Q24Binding(item,viewport);return 'E045_Q24_MOBILE_NATIVE_PARAGRAPHS';}
  return 'SHARED_SURFACE';
 }
 // Preserve only known failure codes from Playwright's error wrapper. Neither
@@ -25,11 +26,16 @@ const Q24_FAILURE_CODES=new Set(['SCOPE','VIEWPORT','SUBJECTIVE_SCOPE','WHOLE_QU
  'SURFACE_COMPLETENESS','CONTENT_ACCOUNTING','DIRECT_TOPOLOGY','OUTER_THREE','ROLE_TOPOLOGY','EXTRA_ELEMENT','OUTSIDE_TEXT','EXTRA_NODE',
  'VISIBLE_ORDINAL','CONTENT_TOPOLOGY','IMAGE_ROLE','IMAGE_PATH','IMAGE_READY','REQUIRED_ELEMENT_HIDDEN','ROLE_CLIPPED','ANSWER_NOT_EMPTY',
  'EMPTY_ANSWER_GEOMETRY','CONTENT_RANGE','DUPLICATE_ATOM','DUPLICATE_NODE','CONTENT_HIDDEN','CONTENT_NODE','MATH_ATOM','CONTENT_ELEMENT','BREAK_NODE'].map(code=>'UI_Q24_'+code));
+const E045_Q24_FAILURE_CODES=new Set(['SCOPE','VIEWPORT','SUBJECTIVE_SCOPE','WHOLE_QUESTION','SURFACE_REQUIRED','SURFACE_KEYS','SURFACE_SCOPE',
+ 'SURFACE_COMPLETENESS','PARAGRAPH_ACCOUNTING','CONTENT_ACCOUNTING','DIRECT_TOPOLOGY','CHILD_ORDER','EXTRA_ELEMENT','OUTSIDE_TEXT','EXTRA_NODE',
+ 'OUTER_THREE','ROLE_TOPOLOGY','VISIBLE_ORDINAL','PARAGRAPHS_FIVE','IMAGE_ROLE','IMAGE_PATH','IMAGE_READY','REQUIRED_ELEMENT_HIDDEN','ROLE_CLIPPED',
+ 'ANSWER_NOT_EMPTY','EMPTY_ANSWER_GEOMETRY','SEMANTIC_ROLES_OVERLAP','CONTENT_RANGE','DUPLICATE_ATOM','DUPLICATE_NODE','CONTENT_HIDDEN',
+ 'CONTENT_NODE','MATH_ATOM','CONTENT_ELEMENT','BREAK_NODE'].map(code=>'UI_E045_Q24_'+code));
 function safeFailureCode(error,fallback){
  const message=typeof error?.message==='string'?error.message:'';
  if(/^UI_[A-Z0-9_]+$/.test(message))return message;
- const codes=[...new Set(message.match(/\bUI_(?:Q15|Q24)_[A-Z0-9_]+\b/g)||[])];
- return codes.length===1&&(Q15_FAILURE_CODES.has(codes[0])||Q24_FAILURE_CODES.has(codes[0]))?codes[0]:fallback;
+ const codes=[...new Set(message.match(/\bUI_(?:Q15|Q24|E045_Q24)_[A-Z0-9_]+\b/g)||[])];
+ return codes.length===1&&(Q15_FAILURE_CODES.has(codes[0])||Q24_FAILURE_CODES.has(codes[0])||E045_Q24_FAILURE_CODES.has(codes[0]))?codes[0]:fallback;
 }
 // Failure-only browser reader: no text, HTML, URLs, choices or solutions leave
 // the page. It neither mutates DOM nor decides whether capture can proceed.
@@ -142,6 +148,16 @@ async function captureQ24WithDiagnostics(page,target,file,item,activeCase,diagno
   diagnostics.push(row);throw error;
  }
 }
+async function captureE045Q24WithDiagnostics(page,target,file,item,activeCase,diagnostics,measuredSurface,viewport){
+ try{return await Q15Surface.captureE045Q24Tiles(page,target,file,item,viewport);}
+ catch(error){
+  const row={key:activeCase.key,questionUid:activeCase.questionUid,sourceOrdinal:activeCase.sourceOrdinal,viewport:activeCase.viewport,
+   kind:'E045_Q24_NATIVE_CAPTURE_FAILURE',failureCode:safeFailureCode(error,'UI_BROWSER_CHECK_FAILED'),errorMessageSha256:sha256(error.message||'')};
+  try{row.observation=await target.evaluate(inspectQ24FailureMetadata);row.sameDomAsInitialMeasurement=row.observation.domSha256===measuredSurface.domSha256;}
+  catch(diagnosticError){row.observation={status:'UNAVAILABLE',errorMessageSha256:sha256(diagnosticError.message||'')};}
+  diagnostics.push(row);throw error;
+ }
+}
 const MANIFEST_PATH='tests/fixtures/archive-m2s1-svg7-problem-ui.json',CHECKER_PATH='tools/check-m2s1-svg7-problem-browser.cjs',SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const MANIFEST_SHA="6d79b0597fcdf0fe90490a408c467f223f753c0b81a0be06f0da49a64a88701b",CAPTURE_SHA='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-m2s1-svg7-problem-github-ui-raw-v1',FONT_FAMILY='Nanum Myeongjo';
@@ -188,6 +204,7 @@ function preflight(reader, manifest) {
     validateInlinePointer(question,item);
     if(item.questionUid===Q15Surface.UID)Q15Surface.assertQ15Preflight(question,item);
     if(item.questionUid===Q15Surface.Q24_UID)Q15Surface.assertQ24Preflight(question,item);
+    if(item.questionUid===Q15Surface.E045_Q24_UID)Q15Surface.assertE045Q24Preflight(question,item);
     assert.equal(sha256(stable({ imageAlt: question.imageAlt, imageSize: question.imageSize, layoutTag: question.layoutTag })), item.presentationSha256, 'UI_PRESENTATION_DRIFT');
     const asset = reader.read(item.assetPath);
     assert.equal(sha256(asset), item.assetSha256, 'UI_REVIEWED_ASSET_DRIFT');assert.equal(gitBlob(asset),item.assetGitBlobSha1,'UI_ASSET_GIT_DRIFT');assert.equal(asset.length,item.assetBytes,'UI_ASSET_SIZE_DRIFT');
@@ -365,6 +382,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           let captured;
           if(route==='Q15_EMBEDDED_CHOICES')captured=await captureQ15WithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics);
           else if(route==='Q24_MOBILE_NATIVE_ATOMS')captured=await captureQ24WithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics,measuredSurface,viewport);
+          else if(route==='E045_Q24_MOBILE_NATIVE_PARAGRAPHS')captured=await captureE045Q24WithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics,measuredSurface,viewport);
           else captured=await captureSharedWithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics,measuredSurface);
           const {capture,surface:surfaceStructure}=captured;
           const geometry = await target.evaluate(image => {
@@ -416,5 +434,5 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
 }
 
 async function main(){const a=process.argv.slice(2);assert(a.length===4&&a[0]==='--root'&&a[2]==='--output','UI_ARGUMENTS');const root=path.resolve(a[1]),out=path.resolve(a[3]);assert(!out.startsWith(root+path.sep)&&out!==root,'UI_OUTPUT_OUTSIDE_CHECKOUT');assert(!fs.existsSync(out)||fs.readdirSync(out).length===0,'UI_EMPTY_OUTPUT');for(let p=out;p!==path.dirname(p);p=path.dirname(p))if(fs.existsSync(p))assert(!fs.lstatSync(p).isSymbolicLink(),'UI_OUTPUT_SYMLINK');const expectedCommit=process.env.ARCHIVE_M2S1_SVG7_UI_EXPECTED_SHA;assert(/^[a-f0-9]{40}$/.test(expectedCommit||''),'UI_EXPECTED_COMMIT');const p=await inspectStudentUi({root,out,expectedCommit,executablePath:process.env.CHROME_BIN});console.log(JSON.stringify({status:p.status,cases:p.completedLogicalCases,checkoutCommit:p.checkoutCommit,newApprovals:0}));}
-module.exports={surfaceRoute,safeFailureCode,inspectQ15FailureMetadata,captureQ15WithDiagnostics,inspectQ24FailureMetadata,captureSharedWithDiagnostics,captureQ24WithDiagnostics,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
+module.exports={surfaceRoute,safeFailureCode,inspectQ15FailureMetadata,captureQ15WithDiagnostics,inspectQ24FailureMetadata,captureSharedWithDiagnostics,captureQ24WithDiagnostics,captureE045Q24WithDiagnostics,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
 if(require.main===module)main().catch(e=>{console.error(JSON.stringify({status:'FAIL',failureCode:safeFailureCode(e,'UI_GITHUB_CHROME_FAILED'),errorMessageSha256:sha256(e.message||'')}));process.exitCode=1;});

@@ -381,7 +381,7 @@ function q24Dom(){
 test('Q24 native fixed binding and route are limited to one exact mobile viewport',()=>{
  const b=q24Binding();assert.equal(Q15.assertQ24Binding(b,mobile),true);assert.equal(H.surfaceRoute(b,mobile),'Q24_MOBILE_NATIVE_ATOMS');
  assert.equal(H.surfaceRoute(b,{name:'desktop',width:1365,height:1000}),'SHARED_SURFACE');
- for(const item of manifest.items.filter(r=>![Q15.UID,Q15.Q24_UID].includes(r.questionUid)))assert.equal(H.surfaceRoute(item,mobile),'SHARED_SURFACE');
+ for(const item of manifest.items.filter(r=>![Q15.UID,Q15.Q24_UID,Q15.E045_Q24_UID].includes(r.questionUid)))assert.equal(H.surfaceRoute(item,mobile),'SHARED_SURFACE');
  assert.equal(H.surfaceRoute(q15Binding(),mobile),'Q15_EMBEDDED_CHOICES');
 });
 for(const[name,alter]of[
@@ -541,4 +541,145 @@ for(const[name,alter]of[
  const f=e045Q24Diagnostic(),rows=[];alter(f);let observations=0;
  await assert.rejects(H.captureSharedWithDiagnostics(f.page,{evaluate:async()=>{observations++;}},'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
  assert.equal(observations,0);assert.equal(rows.length,0);assert.equal(f.state.screenshots.length,0);
+});
+
+const e045Q24Manifest=manifest.items.find(r=>r.key==='E045-Q24');
+function e045Q24Binding(){return e045Q24Diagnostic().item;}
+function e045Q24Dom(){
+ const f=q15Dom();f.Element.prototype.getAttribute=function(k){return Object.hasOwn(this.attrs,k)?this.attrs[k]:null;};
+ f.num.childNodes[0].textContent='24.';for(const n of f.content.childNodes)n.parentElement=null;f.content.childNodes=[];
+ const positions=[[20,60,360,45],[20,115,360,250],[20,375,360,45],[20,430,360,50],[20,490,360,50]];
+ const paragraphs=positions.map(r=>new f.Element('p','',f.rect(...r))),texts=[],maths=[];
+ f.image.r=f.rect(30,120,340,240);f.image.src='https://img.wangjiedu.com/exams/images/'+e045Q24Manifest.assetPath.slice('archive/assets/images/'.length).split('/').map(encodeURIComponent).join('/')+'?v=20261014.1';f.image.currentSrc=f.image.src;
+ for(const[i,p]of paragraphs.entries()){
+  if(i===1){p.append(f.image);continue;}
+  const text=new f.TextNode('private synthetic paragraph '+i);text.textRects=[f.rect(20,p.r.y+2,100,15)];texts.push(text);p.append(text);
+  for(let j=0;j<[2,0,1,2,1][i];j++){
+   const math=new f.Element('mjx-container','',f.rect(140+j*60,p.r.y+20,45,18)),assistive=new f.Element('mjx-assistive-mml');
+   assistive.style.visibility='hidden';assistive.append(new f.TextNode('private assistive formula'));math.append(assistive);maths.push(math);p.append(math);
+  }
+ }
+ f.content.append(...paragraphs);const answer=new f.Element('div','answer-box',f.rect(20,580,360,0));f.box.append(answer);
+ f.document.createRange=()=>{let n;return{selectNodeContents:x=>{n=x;},getClientRects:()=>
+  n.textRects?n.textRects.map(r=>({...r,x:r.x-f.state.scrollX,y:r.y-f.state.scrollY})):[n.parentElement.getBoundingClientRect()]};};
+ return{...f,paragraphs,texts,maths,answer,measure:()=>f.target.evaluate(Q15.measureE045Q24Capture,Q15.E045_Q24_BROWSER_SCOPE)};
+}
+test('E045 Q24 native binding routes only its exact mobile edition while old routes remain unchanged',()=>{
+ const b=e045Q24Binding();assert.equal(Q15.assertE045Q24Binding(b,mobile),true);assert.equal(H.surfaceRoute(b,mobile),'E045_Q24_MOBILE_NATIVE_PARAGRAPHS');
+ assert.equal(H.surfaceRoute(b,{name:'desktop',width:1365,height:1000}),'SHARED_SURFACE');
+ assert.equal(H.surfaceRoute(q15Binding(),mobile),'Q15_EMBEDDED_CHOICES');assert.equal(H.surfaceRoute(q24Binding(),mobile),'Q24_MOBILE_NATIVE_ATOMS');
+ for(const item of manifest.items.filter(r=>![Q15.UID,Q15.Q24_UID,Q15.E045_Q24_UID].includes(r.questionUid)))assert.equal(H.surfaceRoute(item,mobile),'SHARED_SURFACE');
+});
+for(const[name,alter]of[
+ ['outside UID',b=>b.questionUid=Q15.Q24_UID],['outside key',b=>b.key='E048-Q24'],['other ordinal',b=>b.sourceOrdinal=15],
+ ['whole drift',b=>b.questionSha256='0'.repeat(64)],['source path drift',b=>b.sourceRef.path='archive/exams/other.js'],
+ ['source Git drift',b=>b.sourceRef.gitBlobSha1='0'.repeat(40)],['source raw drift',b=>b.sourceRef.sha256='0'.repeat(64)],['source length drift',b=>b.sourceRef.bytes++],
+ ['previous asset edition',b=>b.assetRef.path=b.assetRef.path.replace('-r2.svg','-r1.svg')],['asset Git drift',b=>b.assetRef.gitBlobSha1='0'.repeat(40)],
+ ['asset raw drift',b=>b.assetRef.sha256='0'.repeat(64)],['asset length drift',b=>b.assetRef.bytes++]
+])test('E045 Q24 native binding refuses '+name,()=>{const b=e045Q24Binding();alter(b);assert.throws(()=>Q15.assertE045Q24Binding(b,mobile),/UI_E045_Q24_SCOPE/);});
+for(const[name,viewport]of[['desktop',{name:'desktop',width:1365,height:1000}],['different width',{...mobile,width:391}],['different height',{...mobile,height:845}]])
+ test('E045 Q24 native binding refuses '+name+' viewport',()=>assert.throws(()=>Q15.assertE045Q24Binding(e045Q24Binding(),viewport),/UI_E045_Q24_VIEWPORT/));
+for(const[name,q]of[['choices added',{choices:['synthetic']}],['embedded flag',{choices:[],choicesEmbeddedInImage:true}],
+ ['nested embedded flag',{choices:[],sourcePayload:{choicesEmbeddedInImage:true}}],['top image added',{choices:[],image:'other.svg'}],['whole object changed',{choices:[]}]])
+ test('E045 Q24 preflight refuses '+name,()=>assert.throws(()=>Q15.assertE045Q24Preflight(q,e045Q24Manifest),/UI_E045_Q24_(SUBJECTIVE_SCOPE|WHOLE_QUESTION)/));
+test('E045 Q24 native reader measures the real six surfaces and authenticates every descendant without parent or empty-box duplication',async()=>{
+ const f=e045Q24Dom(),frame=normalize(await f.measure());Q15.assertE045Q24Topology(frame.surface);
+ assert.equal(frame.surface.semanticChildCount,6);assert.equal(frame.surface.contentMathAtoms,6);assert.equal(frame.surface.contentImageAtoms,1);
+ assert.equal(frame.surface.contentTextNodes,4);assert.equal(frame.surface.contentTextRanges,4);assert.equal(frame.semanticAtoms.length,11);
+ assert.equal(frame.surface.paragraphCount,5);assert.equal(frame.surface.answerBoxHeight,0);assert.equal(frame.emptyAnswerBox.height,0);
+ assert.deepEqual(frame.children,[f.num.r,...f.paragraphs.map(p=>p.r)]);assert(!frame.children.some(r=>stable(r)===stable(f.content.r)));
+ assert(!JSON.stringify(frame).includes('private'));assert.equal(f.state.screenshots.length,0);
+});
+test('E045 Q24 native reader preserves every wrapped text line and ignores only generated assistive descendants',async()=>{
+ const f=e045Q24Dom();f.texts[0].textRects=[f.rect(20,62,80,8),f.rect(20,72,80,8)];
+ const frame=normalize(await f.measure());assert.equal(frame.surface.contentTextNodes,4);assert.equal(frame.surface.contentTextRanges,5);assert.equal(frame.surface.contentMathAtoms,6);
+ assert.equal(frame.semanticAtoms.length,12);assert.equal(frame.children.length,6);
+});
+for(const[name,alter,code]of[
+ ['another viewport',f=>f.context.innerWidth=391,/UI_E045_Q24_VIEWPORT/],
+ ['extra outer child',f=>f.box.append(new f.Element('div')),/UI_E045_Q24_OUTER_THREE/],
+ ['outer text',f=>f.box.append(new f.TextNode('unaccounted')),/UI_E045_Q24_OUTSIDE_TEXT/],
+ ['equal-slot route',f=>f.box.classes+=' ap-equal-slot',/UI_E045_Q24_DIRECT_TOPOLOGY/],
+ ['nested question',f=>f.paragraphs[0].classes='q-box',/UI_E045_Q24_ROLE_TOPOLOGY/],
+ ['choice carrier',f=>f.paragraphs[0].classes='choices',/UI_E045_Q24_ROLE_TOPOLOGY/],
+ ['duplicate number',f=>f.paragraphs[0].classes='q-num',/UI_E045_Q24_ROLE_TOPOLOGY/],
+ ['missing paragraph',f=>f.content.childNodes.pop(),/UI_E045_Q24_PARAGRAPHS_FIVE/],
+ ['extra paragraph',f=>f.content.append(new f.Element('p')),/UI_E045_Q24_PARAGRAPHS_FIVE/],
+ ['non-paragraph wrapper',f=>f.paragraphs[2].tagName='DIV',/UI_E045_Q24_PARAGRAPHS_FIVE/],
+ ['outside paragraph text',f=>f.content.append(new f.TextNode('unaccounted')),/UI_E045_Q24_OUTSIDE_TEXT/],
+ ['swapped image paragraph',f=>{[f.content.childNodes[0],f.content.childNodes[1]]=[f.content.childNodes[1],f.content.childNodes[0]];},/UI_E045_Q24_CHILD_ORDER/],
+ ['extra figure text',f=>f.paragraphs[1].append(new f.TextNode('unaccounted')),/UI_E045_Q24_OUTSIDE_TEXT/],
+ ['second image',f=>f.paragraphs[3].append(new f.Element('img')),/UI_E045_Q24_IMAGE_ROLE/],
+ ['alternate image source',f=>f.image.attrs.srcset='other.svg 2x',/UI_E045_Q24_IMAGE_ROLE/],
+ ['changed asset path',f=>f.image.src=f.image.currentSrc=f.image.src.replace('-r2.svg','-r1.svg'),/UI_E045_Q24_IMAGE_PATH/],
+ ['extra image query',f=>f.image.src=f.image.currentSrc=f.image.src+'&x=1',/UI_E045_Q24_IMAGE_PATH/],
+ ['image fragment',f=>f.image.src=f.image.currentSrc=f.image.src+'#x',/UI_E045_Q24_IMAGE_PATH/],
+ ['incomplete image',f=>f.image.complete=false,/UI_E045_Q24_IMAGE_READY/],
+ ['hidden paragraph',f=>f.paragraphs[3].style.visibility='hidden',/UI_E045_Q24_REQUIRED_ELEMENT_HIDDEN/],
+ ['zero-height paragraph',f=>f.paragraphs[3].r.height=0,/UI_E045_Q24_REQUIRED_ELEMENT_HIDDEN/],
+ ['paragraph outside content',f=>f.paragraphs[4].r.x=0,/UI_E045_Q24_ROLE_CLIPPED/],
+ ['image outside its paragraph',f=>f.image.r.width=500,/UI_E045_Q24_ROLE_CLIPPED/],
+ ['nonempty answer text',f=>f.answer.append(new f.TextNode('new answer content')),/UI_E045_Q24_ANSWER_NOT_EMPTY/],
+ ['answer child',f=>f.answer.append(new f.Element('span')),/UI_E045_Q24_ANSWER_NOT_EMPTY/],
+ ['nonzero answer height',f=>f.answer.r.height=1,/UI_E045_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['hidden answer box',f=>f.answer.style.display='none',/UI_E045_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['hidden answer attribute',f=>f.answer.attrs.hidden='',/UI_E045_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['zero-width answer box',f=>f.answer.r.width=0,/UI_E045_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['moved answer outside question',f=>f.answer.r.y=1000,/UI_E045_Q24_EMPTY_ANSWER_GEOMETRY/],
+ ['overlapping paragraphs',f=>{f.paragraphs[3].r.y=400;},/UI_E045_Q24_SEMANTIC_ROLES_OVERLAP/],
+ ['unmeasurable text',f=>f.texts[0].textRects=[],/UI_E045_Q24_CONTENT_RANGE/],
+ ['text outside its paragraph',f=>f.texts[0].textRects=[f.rect(0,62,80,15)],/UI_E045_Q24_CONTENT_RANGE/],
+ ['duplicate text range',f=>f.texts[0].textRects.push({...f.texts[0].textRects[0]}),/UI_E045_Q24_DUPLICATE_ATOM/],
+ ['duplicate node',f=>f.paragraphs[0].childNodes.push(f.texts[0]),/UI_E045_Q24_DUPLICATE_NODE/],
+ ['hidden text wrapper',f=>{const e=new f.Element('span','',f.paragraphs[4].r);e.style.opacity='0';e.append(new f.TextNode('hidden'));f.paragraphs[4].append(e);},/UI_E045_Q24_CONTENT_HIDDEN/],
+ ['active node',f=>f.paragraphs[4].append(new f.Element('iframe')),/UI_E045_Q24_CONTENT_ELEMENT/],
+ ['unknown inline SVG',f=>f.paragraphs[4].append(new f.Element('svg')),/UI_E045_Q24_CONTENT_ELEMENT/],
+ ['hidden math',f=>f.maths[0].style.visibility='hidden',/UI_E045_Q24_CONTENT_HIDDEN/],
+ ['math outside paragraph',f=>f.maths[0].r.y=1000,/UI_E045_Q24_MATH_ATOM/],
+ ['active content inside generated math',f=>f.maths[0].append(new f.Element('iframe')),/UI_E045_Q24_MATH_ATOM/],
+ ['math rendering error',f=>f.maths[0].append(new f.Element('mjx-merror')),/UI_E045_Q24_MATH_ATOM/],
+ ['missing math atom',f=>{const m=f.maths[0];m.parentElement.childNodes=m.parentElement.childNodes.filter(n=>n!==m);},/UI_E045_Q24_CONTENT_ACCOUNTING/],
+ ['extra math atom',f=>f.paragraphs[4].append(new f.Element('mjx-container','',f.rect(250,510,40,18))),/UI_E045_Q24_CONTENT_ACCOUNTING/],
+ ['empty semantic paragraph',f=>f.paragraphs[4].childNodes=[],/UI_E045_Q24_PARAGRAPH_ACCOUNTING/]
+])test('E045 Q24 native reader refuses '+name,async()=>{const f=e045Q24Dom();alter(f);await assert.rejects(f.measure,code);assert.equal(f.state.screenshots.length,0);});
+test('E045 Q24 native capture keeps the original scroll tiles hit tests and zero DOM writes',async()=>{
+ const f=e045Q24Dom(),r=await Q15.captureE045Q24Tiles(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile);
+ assert.equal(r.capture.visibleChildren,6);assert.equal(r.capture.coverage.complete,true);assert.equal(r.capture.foreignContentHits,0);
+ for(const k of ['domWrites','cssWrites','viewportChanges'])assert.equal(r.capture[k],0);assert.equal(r.capture.compositeImageCreated,false);
+ assert.equal(f.state.screenshots.length,1);assert.equal(f.state.screenshots[0].fullPage,false);assert.equal(f.state.screenshots[0].caret,'initial');
+});
+test('E045 Q24 native scroll rejects changed empty answer content before capture',async()=>{
+ const f=e045Q24Dom();f.state.scrollY=-1000;f.state.onScroll=()=>f.answer.append(new f.TextNode('changed'));
+ await assert.rejects(()=>Q15.captureE045Q24Tiles(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile),/UI_E045_Q24_ANSWER_NOT_EMPTY/);
+ assert.equal(f.state.screenshots.length,0);
+});
+test('E045 Q24 native postcapture text mutation remains fatal',async()=>{
+ const f=e045Q24Dom();f.state.onScreenshot=()=>f.texts[0].textContent+=' changed';
+ await assert.rejects(()=>Q15.captureE045Q24Tiles(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile),/UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE/);
+});
+test('E045 Q24 native postcapture descendant movement is fatal even with fixed paragraph rectangles',async()=>{
+ const f=e045Q24Dom();f.state.onScreenshot=()=>{f.texts[0].textRects[0].x+=2;};
+ await assert.rejects(()=>Q15.captureE045Q24Tiles(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile),/UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED/);
+});
+test('E045 Q24 native postcapture empty-answer movement remains part of the exact frame',async()=>{
+ const f=e045Q24Dom();f.state.onScreenshot=()=>{f.answer.r.y+=1;};
+ await assert.rejects(()=>Q15.captureE045Q24Tiles(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile),/UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED/);
+});
+test('E045 Q24 native foreign hit and pending readiness remain fatal',async()=>{
+ const f=e045Q24Dom();f.state.foreignHit=true;
+ await assert.rejects(()=>Q15.captureE045Q24Tiles(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile),/UI_CAPTURE_FOREIGN_CONTENT/);assert.equal(f.state.screenshots.length,0);
+ const g=e045Q24Dom();g.document.documentElement.dataset.apPrintReadiness=JSON.stringify({state:'PENDING'});
+ await assert.rejects(()=>Q15.captureE045Q24Tiles(g.page,g.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),mobile),/UI_CAPTURE_RENDER_STATE/);assert.equal(g.state.screenshots.length,0);
+});
+test('E045 Q24 native known wrapped errors remain exact and failure diagnostics preserve original identity',async()=>{
+ assert.equal(H.safeFailureCode(new Error('locator.evaluate: Error: UI_E045_Q24_PARAGRAPHS_FIVE'),'FALLBACK'),'UI_E045_Q24_PARAGRAPHS_FIVE');
+ assert.equal(H.safeFailureCode(new Error('UI_E045_Q24_NOT_KNOWN: wrapped'),'FALLBACK'),'FALLBACK');
+ assert.equal(H.safeFailureCode(new Error('UI_E045_Q24_PARAGRAPHS_FIVE UI_Q24_CONTENT_RANGE'),'FALLBACK'),'FALLBACK');
+ const f=e045Q24Dom(),rows=[],original=new Error('locator.evaluate: Error: UI_E045_Q24_CONTENT_RANGE'),prior=Q15.captureE045Q24Tiles;
+ Q15.captureE045Q24Tiles=async()=>{throw original;};
+ try{await assert.rejects(()=>H.captureE045Q24WithDiagnostics(f.page,f.target,'/tmp/synthetic-e045-q24.png',e045Q24Binding(),
+  {key:'E045-Q24',questionUid:Q15.E045_Q24_UID,sourceOrdinal:24,viewport:'mobile'},rows,{domSha256:sha(f.box.outerHTML)},mobile),e=>e===original);}
+ finally{Q15.captureE045Q24Tiles=prior;}
+ assert.equal(rows.length,1);assert.equal(rows[0].failureCode,'UI_E045_Q24_CONTENT_RANGE');assert.equal(rows[0].sameDomAsInitialMeasurement,true);
+ assert(!JSON.stringify(rows).includes('private'));assert.equal(f.state.screenshots.length,0);
 });
