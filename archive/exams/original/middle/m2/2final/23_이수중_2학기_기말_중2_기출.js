@@ -129,6 +129,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "curriculum": "2015",
     "imageSize": "tall",
     "imageAlt": "직사각형의 가로는 10, 세로는 8이다. AP를 접는 선으로 하여 D를 BC 위 D′으로 옮겼다.",
     "level": "중",
