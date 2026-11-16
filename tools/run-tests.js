@@ -41,6 +41,17 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
+  { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
+  { label: 'tests/item-4slot-m1s2-problem-continuity.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-problem-continuity.test.cjs'] },
+  { label: 'tests/item-4slot-m1s2-ui-provenance.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-ui-provenance.test.cjs'] },
+  { label: 'tests/item-4slot-m1-m3-transport.test.cjs', args: ['--test', 'tests/item-4slot-m1-m3-transport.test.cjs'] },
+  { label: 'tests/archive-m3s2-layout-continuity.test.cjs', args: ['--test', 'tests/archive-m3s2-layout-continuity.test.cjs'] },
+  { label: 'tests/archive-renderer-continuity-writer-inputs.test.mjs', args: ['--test', 'tests/archive-renderer-continuity-writer-inputs.test.mjs'] },
+  {
+    label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-problem21-continuity.test.mjs']
+  },
   {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
@@ -171,6 +182,10 @@ const requiredCommands = [
   {
     label: 'tests/archive-registration-writer.test.mjs',
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
+  },
+  {
+    label: 'tests/archive-registration-build-db.test.mjs',
+    args: ['--test', 'tests/archive-registration-build-db.test.mjs']
   },
   {
     label: 'tests/archive-single-writer-workflows.test.mjs',
@@ -554,6 +569,12 @@ const requiredCommands = [
     label: 'tests/archive-m2s1-svg7-image-pointer.test.mjs',
     // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
     args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
+    timeout: 240000
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs',
+    // Bound the immutable Git fixture like the neighboring SVG7 contract.
+    args: ['--max-old-space-size=256', 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs'],
     timeout: 240000
   }
 ];

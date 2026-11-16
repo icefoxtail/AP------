@@ -36,6 +36,7 @@ const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -762,8 +763,31 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditS
   return [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en'));
 }
 
+// Reuse the official closed E032 subset contract against the immutable input.
+// Selection also runs after registration, so generated worktree post-state must
+// not replace the initial HEAD authority. The official registrar and Consumer
+// still validate every selected native leaf and the actual issued post-state.
+function partialSubsetPreservationDescriptor({ root, headSha, request, bytes, bank, cache }) {
+  if (!isPartialSubsetPreservation(request)) return undefined;
+  const spec = request.approval.sourceRebind, ref = spec.priorReceiptRef;
+  if (!objectKeys(ref, ['path', 'sha256']) || typeof ref.path !== 'string'
+      || !ref.path.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes('/')
+      || !ref.path.endsWith('.json') || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')) fail('PARTIAL_SUBSET_PRIOR_REF');
+  const prior = fixedJson(root, headSha, ref.path, cache);
+  if (prior.sha256 !== ref.sha256) fail('PARTIAL_SUBSET_PRIOR_DRIFT');
+  const metadata = fixedJson(root, headSha, METADATA, cache);
+  const identity = fixedJson(root, headSha, 'archive/data/question_identity_map.json', cache);
+  const runtime = fixedJson(root, headSha, 'archive/data/meta-foundation/runtime/middle2-v1.json', cache);
+  const validated = validatePartialSubsetPreservation({ root, envelope: request, prior: prior.value, bytes, bank,
+    metadata: metadata.value.records, identities: identity.value.records, runtime: runtime.value.records, mode: 'request' });
+  return { schemaVersion: spec.schemaVersion, priorCommit: spec.priorCommit, currentCommit: spec.currentCommit,
+    priorReceiptRef: { ...ref }, priorApprovalCount: validated.priorApprovalCount,
+    preservedMetadataApprovals: validated.preservedMetadataApprovals, newMetadataApprovals: validated.newMetadataApprovals,
+    baselineDigests: { metadata: metadata.sha256, identity: identity.sha256, runtime: runtime.sha256 } };
+}
+
 function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map(), inheritedReassessments = new Map() }) {
-  const requests = [];
+  const requests = [], fixedSubsetInputs = new Map();
   for (const file of files) {
     safe(root, file);
     const raw = fs.readFileSync(path.join(root, file));
@@ -789,7 +813,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || auditSourcePreservation || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
+        !(sourceRebind || auditSourcePreservation || isPartialSubsetPreservation(request)
+          || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial ||
@@ -824,6 +849,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
     } catch { fail('SOURCE_BANK_INVALID'); }
     if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount) fail('SOURCE_DENOMINATOR');
+    const partialSubsetPreservation = partialSubsetPreservationDescriptor({ root, headSha, request,
+      bytes: fs.readFileSync(safe(root, sourcePath)), bank, cache: fixedSubsetInputs });
     requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: selectedItems.length,
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(inherited.has(file) ? { inheritedPreservation: inherited.get(file) } : {}),
@@ -833,6 +860,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(auditSourcePreservation ? { auditSourcePreservation } : {}),
+      ...(partialSubsetPreservation ? { partialSubsetPreservation } : {}),
       ...(historicalRpmEvidence.length ? { historicalRpmEvidence } : {}),
       ...(registryDependency ? { registryDependency } : {}),
       ...(rendererPreservation ? { rendererPreservation } : {}),

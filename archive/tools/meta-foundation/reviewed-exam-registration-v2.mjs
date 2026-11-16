@@ -26,6 +26,7 @@ import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merge
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
+import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
@@ -1951,7 +1952,7 @@ export function validateReviewedSourceFingerprints({ question: q, metadata, iden
 // FINAL_QA source-only rebind guard. `approval.sourceRebind.priorReceiptRef` names the SHA-bound registration receipt whose
 // per-question records the current metadata rows must still equal exactly. Nothing but the source binding, the metadata
 // revision and the approval evidence list may change; approval provenance (type, fieldStatus, EVIDENCE_DEBT) stays as registered.
-function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) {
+function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, runtimeRows, priorBanks, read, evidenceRefs }) {
   const spec = req.approval.sourceRebind, ref = spec?.priorReceiptRef;
   if (req.approval.type !== "FINAL_QA" || req.registryChanges?.length) fail("sourceRebind requires FINAL_QA without registryChanges");
   if (!ref || !/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/[^/]+\.json$/.test(ref.path || "") ||
@@ -1959,9 +1960,12 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
   evidenceRefs([ref]);
   const prior = read(ref.path);
   const partial = req.scope === "PARTIAL_UIDS", selectedCount = partial ? req.items.length : rows.length;
+  const subset = isPartialSubsetPreservation(req) ? validatePartialSubsetPreservation({ root, envelope: req, prior, bytes,
+    bank: JSON.parse(JSON.stringify(bank)), metadata: rows, identities: [...ids.values()], runtime: runtimeRows, mode: "request" }) : null;
+  const ancestorCount = subset ? subset.priorApprovalCount : selectedCount;
   if (prior.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || prior.metadataRegistrationStatus !== "REGISTERED" ||
-      prior.examUid !== req.examUid || prior.sourceArchiveFile !== source || prior.totalQuestions !== selectedCount ||
-      !Array.isArray(prior.appliedRecords) || prior.appliedRecords.length !== selectedCount) fail("sourceRebind prior receipt does not match this exam");
+      prior.examUid !== req.examUid || prior.sourceArchiveFile !== source || prior.totalQuestions !== ancestorCount ||
+      !Array.isArray(prior.appliedRecords) || prior.appliedRecords.length !== ancestorCount) fail("sourceRebind prior receipt does not match this exam");
   if (prior.sourceRawSha256 === digest(bytes)) fail("sourceRebind unnecessary: source bytes equal the prior receipt");
   const records = unique(prior.appliedRecords, "questionUid", "prior receipt UID");
   let priorRuntime;
@@ -1969,11 +1973,11 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
     // Preserve the same previously approved subset, never turn a selected receipt
     // into exam-wide approval or include an unregistered neighbour.
     if (prior.scope !== "PARTIAL_UIDS" || prior.expectedQuestionCount !== rows.length ||
-        prior.partialUidCount !== selectedCount || prior.approval?.type !== "FINAL_QA" ||
+        prior.partialUidCount !== ancestorCount || prior.approval?.type !== "FINAL_QA" ||
         prior.approval.metadataReviewed !== true || !String(prior.approval.approvedBy || "").trim() ||
         !/^[a-f0-9]{64}$/.test(prior.requestSha256 || "") ||
-        !Array.isArray(prior.appliedIdentityRecords) || prior.appliedIdentityRecords.length !== selectedCount ||
-        !Array.isArray(prior.runtimeRecords) || prior.runtimeRecords.length !== selectedCount)
+        !Array.isArray(prior.appliedIdentityRecords) || prior.appliedIdentityRecords.length !== ancestorCount ||
+        !Array.isArray(prior.runtimeRecords) || prior.runtimeRecords.length !== ancestorCount)
       fail("sourceRebind partial prior scope/approval mismatch");
     const priorIdentity = unique(prior.appliedIdentityRecords, "questionUid", "prior source rebind identity UID");
     priorRuntime = unique(prior.runtimeRecords, "questionUid", "prior source rebind runtime UID");
@@ -1998,7 +2002,7 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
   const selectedRows = partial ? req.items.map(item => rows[item.sourceOrdinal - 1]) : rows;
   if (prior.requestId !== path.basename(ref.path, ".json") || selectedRows.some(r => !approved(r) || !(r.approvalEvidence || []).includes(ref.path)))
     fail("sourceRebind prior receipt is not the registration of the current approved rows");
-  return { receipt: prior, records, priorRuntime };
+  return { receipt: prior, records, priorRuntime, subset };
 }
 
 export function verifyIdentityFingerprintConsumer(root, bindings, catalog) {
@@ -2379,6 +2383,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const found = allRuntime.filter(r => r.questionUid === record.questionUid);
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
       const current = previous.appliedRecords.find(row => row.questionUid === record.questionUid);
+      if (isPartialSubsetPreservation(previous)) {
+        preservedSourceRegistry ??= loadActiveMetaRegistry(root);
+        const context = activeBindingContext({ candidate: current, check: { curriculum: current.curriculum || current.curriculumKey },
+          registry: preservedSourceRegistry, runtimeOwner: current.metaFoundationPackId });
+        const question = JSON.parse(JSON.stringify(bank[current.sourceOrdinal - 1]));
+        const verified = context.reason ? null : nativeReviewReceipt({
+          nativeSource: { root, bytes, blobSha1: blob, bank: JSON.parse(JSON.stringify(bank)), runtimeRecord: found[0], runtimeStatus: "ACTIVE",
+            identityMap: identity, identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) },
+          question, previous: question, current, identity: ids.get(current.questionUid), source, ordinal: current.sourceOrdinal,
+          registry: preservedSourceRegistry, ...context });
+        if (verified !== receiptPath) fail("subset preservation issued native proof cannot replay");
+      }
       if (previous.approval?.type === "FINAL_QA" && previous.approval.sourceRebind &&
           hasNativeReviewedSourceClaim({ root, current, runtimeRecord: found[0] })) {
         preservedSourceRegistry ??= loadActiveMetaRegistry(root);
@@ -2453,7 +2469,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const auditPreservation = auditPreservationRequested ? loadAuditPreservation({ root, request: req, bytes, bank }) : null;
   if (auditPreservation && auditPreservation.sourceOnly !== true)
     registerDifficulty5({ root, request: auditPreservation.difficulty, verifyProjection: true });
-  const rebindPrior = req.approval.sourceRebind && !auditPreservation ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) : null;
+  const rebindPrior = req.approval.sourceRebind && !auditPreservation ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids,
+    runtimeRows: [...runtimes.values()].flatMap(item => item.data.records), priorBanks, read, evidenceRefs }) : null;
   let rebindSourceRegistry;
   const approvedRendererRegistry = approvedRendererRequested ? loadActiveMetaRegistry(root) : null;
   const approvedRenderer = approvedRendererRequested ? loadApprovedRendererPreservation({ root, request: req, bytes,
@@ -2510,6 +2527,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (rebindPrior) {
       if (Object.keys(patch.before).length || Object.keys(patch.after).length) fail(`source rebind must not change values: ${current.questionUid}`);
       const prior = rebindPrior.records.get(current.questionUid);
+      if (rebindPrior.subset) {
+        rebindSourceRegistry ??= loadActiveMetaRegistry(root);
+        const context = activeBindingContext({ candidate: current, check: { curriculum: current.curriculum || current.curriculumKey },
+          registry: rebindSourceRegistry, runtimeOwner: current.metaFoundationPackId });
+        const oldQuestion = rebindPrior.subset.priorBank[i];
+        const original = context.reason ? null : nativeReviewReceipt({
+          nativeSource: { root, bytes: rebindPrior.subset.priorBytes, blobSha1: rebindPrior.receipt.sourceBlobSha1,
+            bank: rebindPrior.subset.priorBank, runtimeRecord: rebindPrior.priorRuntime.get(current.questionUid), runtimeStatus: "ACTIVE",
+            identityMap: identity, identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) },
+          question: oldQuestion, previous: oldQuestion, current, identity: id, source, ordinal: i + 1, registry: rebindSourceRegistry, ...context });
+        if (original !== req.approval.sourceRebind.priorReceiptRef.path) fail("subset preservation original native authority unavailable");
+      }
       // The only value change tolerated since the prior receipt is the later 5-level difficulty intake
       // (register-difficulty5.mjs), which only fills a difficultyBucket the receipt recorded as null.
       const diff5Fields = ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"];

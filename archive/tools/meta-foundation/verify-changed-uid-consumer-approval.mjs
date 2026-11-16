@@ -41,6 +41,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { isAuditPreservation } from "./native-audit-preservation.mjs";
+import { isPartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
 import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
@@ -185,7 +186,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         doc.approval.rendererPreservation?.schemaVersion === APPROVED_RENDERER_PRESERVATION;
       if ((!audit && doc.approval.type !== "FINAL_QA") || (renderer ? !rendererValid : !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined)) ||
+          (!audit && !(partial && isPartialSubsetPreservation(doc)) && doc.approval.sourceRebind.schemaVersion !== undefined)) ||
           doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
