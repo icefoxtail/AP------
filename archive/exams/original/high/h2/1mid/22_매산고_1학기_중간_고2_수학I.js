@@ -928,7 +928,7 @@ window.questionBank = [
     "sourceQid": 20,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
     "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 축척을 맞춘 개략도이다. A와 B는 y=x에 대하여 대칭인 점이고, C=(β,β)는 대각선 y=x 위에서 A와 원점 사이의 음수 쪽에 놓인다. 실제 t 수치와 계산된 답은 그림에 표시하지 않는다.",
+    "solutionImageAlt": "해설 그림: 직선 y=x를 기준으로 A와 B가 서로 대칭이다. C=(β,β)는 직선 y=x 위에서 A와 원점 사이에 놓인다.",
     "solutionImageCaption": "g와 g^{-1}의 교점은 대칭쌍 (-t,t), (t,-t)와 고정점 (β,β)이며 -t<β<t이다. 주어진 식의 값은 56이다.",
     "solutionImageSize": "full"
   }
