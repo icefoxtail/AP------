@@ -1100,7 +1100,7 @@ async function main() {
   if (!report.pass) process.exitCode = 1;
 }
 
-module.exports = { openSession, awaitInitialOutcome, documentEvidence, printPreflight, safeError };
+module.exports = { openSession, awaitInitialOutcome, documentEvidence, printPreflight, safeError, cycle };
 
 if (require.main === module) main().catch(error => {
   report.pass = false; report.failures.push(safeError(error)); report.summaries = summarize(); writeReport();

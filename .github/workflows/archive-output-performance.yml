@@ -6,6 +6,8 @@ on:
     paths:
       - 'archive/**'
       - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-pdf-images24-diagnostic.cjs'
+      - 'tests/archive-pdf-images24-diagnostic.test.js'
       - 'tests/archive2-output-pdf-evidence.cjs'
       - 'tests/archive2-output-cache-browser.cjs'
       - 'tests/archive-mixed-envelope-cache.test.cjs'
@@ -30,6 +32,8 @@ on:
       - 'archive/mixed_engine.html'
       - 'archive/engine.html'
       - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-pdf-images24-diagnostic.cjs'
+      - 'tests/archive-pdf-images24-diagnostic.test.js'
       - 'tests/archive2-output-pdf-evidence.cjs'
       - 'tests/archive2-output-cache-browser.cjs'
       - 'tests/archive-mixed-envelope-cache.test.cjs'
@@ -199,6 +203,50 @@ jobs:
         with:
           name: archive-output-pdf-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/archive-output-pdf/
+          if-no-files-found: warn
+          retention-days: 14
+
+  pdf-markup-diagnostic:
+    name: Archive images24 PDF diagnostic only
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch the exact qualification source snapshot
+        run: |
+          source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
+          git fetch --no-tags --depth=1 origin "$source_revision"
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned diagnostic browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-pdf-diagnostic-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Install the PDF raster inspector
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+      - name: Observe two unchanged images24 PDF cycles
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-pdf-diagnostic-browser/node_modules
+          ARCHIVE_PDF_DIAGNOSTIC_EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node tests/archive2-pdf-images24-diagnostic.cjs --diagnostic-only --cycles 2 --output "$RUNNER_TEMP/pdf-images24-diagnostic"
+      - name: Upload separate diagnostic-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-images24-diagnostic-only-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pdf-images24-diagnostic/
           if-no-files-found: warn
           retention-days: 14
 
