@@ -1,3 +1,35 @@
+# TASK-11 고등 유형 판정 보고서 — checkpoint 11
+
+- 시각: 2026-11-16T16:59:16.580343+00:00
+- 결과 `data/type-judgment-d-20261116` commit `649dc0acf655e7633c3d2b5f427a5566793ca99d`, 비강제 CAS/원격 readback 완료.
+- 이번고1 2중간48시험지66행: PICK65 / NEW_KEY1 / HOLD0. 적격은5번20,37번23,41번23이고45시험지적격0.
+- 누적452시험지3624행: PICK3550 / NEW_KEY58 / HOLD16.
+- 이번check PASS17 / PT_ONLY3 / OUT_OF_CANDIDATES22 / TOOL_ERROR24. 누적 PASS2067 / PT_ONLY200 / OUT_OF_CANDIDATES713 / TOOL_ERROR644 / NOT_RUN0.
+- h1-2mid.jsonl 66행추가만변경. 원문·해설66문항과첨부52개 직접확인. 전체48source바이트92dd일치,적격UID66유일·정확일치,ACTIVE·TPL상위재검증.
+
+## 정본 식별 충돌과 원문 이슈
+
+37번25매산여23행과39번25순천여21행의정본UID가실제source경로UID와달라 readExam은 CANONICAL_IDENTITY_CONFLICT:1을발생시킨다. 정본의해당sourceArchiveFile+sourceOrdinal이각각유일하고ordinal중복0임을비노출기계검사로확인했다. 정본수정없이 실제source문항을readExam(records:[])로읽고유일ordinal메타를메모리에만결속하여승인사전필터를적용했다.37번23행적격,39번0이며사전필터결과와safe패킷정확일치.
+
+37번의23판정행은실제source UID를사용하고모두 TOOL_ERROR와정확한충돌문구를note에보존한다. PT-only의미1행도충돌우선TOOL_ERROR로표시하고필요TPL정의는note에있다. 해당검사를PASS또는정본복구완료로보고하지않는다. 나머지TOOL_ERROR1행은NEW_KEY의PT_NOT_ACTIVE다. 적격3시험지전체valid는모두false이며45비대상은NOT_RUN,전체시험지PASS로바꾸지않았다.
+
+37번4의그림직선부호불일치및41번14의예시포물선은개별note에기록. 의미판독가능하여PICK유지.
+
+## NEW_KEY 동의어 누적
+
+새24번째묶음1문항추가,누적58문항24의미묶음. 기존57문항23묶음은아래기록보존.
+- 이름: 조건의 부정
+- 정의: 양화사가 없는 조건이 거짓인 모든 경우를 빠짐없이 정확한 조건으로 표현한다.
+- 문항 수: 1
+- 대표(전체1): `qid_v1_010f8f1faae3e08bd5b215e9c6d482b88c2c5da7ba1db2fac725c869ec7e7a0e` (고1 2중간41번시험지2번)
+
+## 수정 반영·소유
+
+FEEDBACK-10-11 판정/검사분리그대로,원문및필수그림직접판독. 계획최신HEAD `e7f636e78412629998ffe1814b34a9e74ab956cb`의보고단일파일만갱신. 원본저장잔여고1 2기말36시험지11행이며이미판독완료. 유사고1세비중복범위작업중,유사고2고3완료24시험지113행수합대기.
+
+사용자‘모든 문항이 끝날 때까지 계속 승인한다’범위의결과·보고만저장,정본·JS·도구·등록요청·PR/main변경없음.
+
+---
 # TASK-11 고등 유형 판정 보고서 — checkpoint 10
 
 - 시각: 2026-11-16T16:56:23.287323+00:00
