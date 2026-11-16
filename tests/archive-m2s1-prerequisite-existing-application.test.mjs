@@ -30,7 +30,7 @@ const bodySha=q=>hash(JSON.stringify({content:q.content??null,choices:q.choices?
 const json=v=>JSON.stringify(v,null,2)+'\n';
 const bank=bytes=>{const c={window:{},console};vm.runInNewContext(bytes.toString(),c);return JSON.parse(JSON.stringify(c.window.questions));};
 
-function fixture(t,{mutateNative}={}) {
+function fixture(t,{mutateNative,legacyNativeRpmPath=false}={}) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'archive-prerequisite-existing-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const put=(p,v)=>{const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,typeof v==='string'?v:json(v));};
@@ -55,6 +55,9 @@ function fixture(t,{mutateNative}={}) {
     rpmPrimaryRecordId:'M1-RPM-042',rpmPrimaryPath:rp,rpmL3:rp.l3,rpmL4:rp.l4,
     semanticSourceScope:'M1-1',semanticScopeRelation:'PREREQUISITE_LOWER_GRADE',...remove};
   const question=structuredClone(beforeQuestion),neighbour={id:2,content:'Unselected held question',answer:'unknown',solution:'',sourceIssueHold:true};
+  if(legacyNativeRpmPath)Object.assign(question,{rpmPrimaryRecordId:'M2-RPM-038',
+    rpmPrimaryPath:{majorUnit:target.majorUnit,midUnit:'연립일차방정식의 활용',l3:'수와 개수',l4:'두 수 관계'},
+    rpmL3:'수와 개수',rpmL4:'두 수 관계',semanticSourceScope:'M2-1',semanticScopeRelation:'TARGET_SCOPE'});
   const writeBank=()=>put(sourcePath,`window.questions = ${JSON.stringify([question,neighbour])};\n`);
   writeBank();
   const stored={questionUid:uid,sourceArchiveFile:source,sourceOrdinal:1,sourceQuestionNo:'1',reviewStatus:'review_required',
@@ -103,9 +106,11 @@ function fixture(t,{mutateNative}={}) {
   const review={schemaVersion:'m2-s1-meta-review-v1',owner:'native-author',sourceArchiveFile:source,sourceGitBlobSha:sourceBlob,baseSha:base,
     reviewedQuestionCount:2,proposals:[],items:[row,{questionUid:heldUid,sourceOrdinal:2,verdict:'UNRESOLVED',rpmDecision:'UNRESOLVED',after:{},decisiveStep:'Held neighbour'}]};
   mutateNative?.({review,row});put(nativePath,review);const reviewCommit=commit('Synthetic native review');
+  if(legacyNativeRpmPath){Object.assign(question,{rpmPrimaryRecordId:beforeQuestion.rpmPrimaryRecordId,rpmPrimaryPath:structuredClone(rp),
+    rpmL3:rp.l3,rpmL4:rp.l4,semanticSourceScope:'M1-1',semanticScopeRelation:'PREREQUISITE_LOWER_GRADE'});writeBank();}
   const beforeCommit=commit('Current source before application'),independentCommit=commit('Independent source observation');
   const ref=(p,commit=beforeCommit)=>({commit,path:p,sha256:hash(raw(p))});
-  const sourceRef=commit=>({...ref(sourcePath,commit),blobSha1:sourceBlob});
+  const sourceRef=commit=>{const bytes=execFileSync('git',['show',commit+':'+sourcePath],{cwd:root});return{commit,path:sourcePath,sha256:hash(bytes),blobSha1:blob(bytes)};};
   const beforeRef=sourceRef(beforeCommit),nativeRef=ref(nativePath,reviewCommit),nativeLocal={path:nativePath,sha256:nativeRef.sha256};
   const payloadSha=digest(payload(beforeQuestion)),flags=Object.fromEntries(['answerStatus','solutionStatus','reviewStatus'].map(k=>[k,{present:false,value:null}]));
   const binding={curriculum:'2015',standardCourse:target.standardCourse,standardUnitKey:target.standardUnitKey,subUnitKey:target.subUnitKey,
@@ -126,7 +131,8 @@ function fixture(t,{mutateNative}={}) {
     preservedLimits:{newFullMathematicalQa:false,newSourceQualityApproval:false,newDifficultyJudgment:false,nativeAcceptedDifficultyReused:true,
       fingerprintReplacementWithoutTypedProofAllowed:false,originalSourceApprovalFlags:flags},
     nativeAuthorityPreserved:{nativeProposalRefs:[],nativeDocumentProposalCount:0,nativeAfterContainsApprovedCurrentPtTpl:false,retroactiveNativeProposalOrApprovalClaim:false},
-    sourceSnapshots:[base,reviewCommit,beforeCommit,independentCommit].map(commit=>({...sourceRef(commit),questionCount:2,selectedOrdinal:1,protectedStudentPayloadSha256:payloadSha,selectedWholeQuestionSha256:digest(beforeQuestion)})),
+    sourceSnapshots:[base,reviewCommit,beforeCommit,independentCommit].map(commit=>({...sourceRef(commit),questionCount:2,selectedOrdinal:1,protectedStudentPayloadSha256:payloadSha,
+      selectedWholeQuestionSha256:digest(bank(execFileSync('git',['show',commit+':'+sourcePath],{cwd:root}))[0])})),
     existingDefinitions:{taxonomyRef:ref(`${C}/packs/middle1/taxonomy.json`,independentCommit),problemTypeKey:PT,templateKey:TPL,
       problemTypeSha256:digest(pt),templateSha256:digest(tpl),definitionChangesApproved:0,newDefinitionsApproved:0},
     semanticRpm:{crosswalkRef:ref(M1,independentCommit),masterRef:ref(MASTER,independentCommit),recordId:record.id,recordSha256:digest(record),leafSha256:digest(leaf),activeCrosswalkMappingClaim:false},
@@ -199,6 +205,19 @@ test('existing prerequisite: ordinary RPM scope guard, direct-source guard and u
   assert.throws(()=>validateRpmPrimaryProvenance({...args,question:q}),/exact declared source value/);
   const final={...f.item.after,courseKey:'M1-1'};
   assert.equal(validateRpmPrimaryProvenance({...args,final}).scope,'M1-1');
+});
+
+test('existing prerequisite: an old hybrid native source path uses only its exact accepted semantic decision without another source delta',t=>{
+  const f=fixture(t,{legacyNativeRpmPath:true}),nativeSource=f.git('show',f.item.sourceReview.reviewCommit+':'+f.sourcePath),sourceBytes=f.raw(f.sourcePath);
+  assert.notDeepEqual(bank(nativeSource)[0].rpmPrimaryPath,f.question.rpmPrimaryPath);
+  assert.equal(bank(nativeSource)[0].rpmPrimaryRecordId,'M2-RPM-038');
+  assert.deepEqual(bank(nativeSource)[0].rpmPrimaryPath,{majorUnit:'일차부등식과 연립일차방정식',midUnit:'연립일차방정식의 활용',l3:'수와 개수',l4:'두 수 관계'});
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request,write:true}).status,'PASS');
+  const receipt=f.read(f.receiptPath),proof=receipt.fingerprintRepairs[0].sourceReview.prerequisiteExistingApplication,stored=f.read(META).records[0];
+  assert.deepEqual(stored.rpmPrimaryPath,f.row.semanticDecision.rpmPath);assert.equal(stored.rpmL3,f.row.semanticDecision.rpmPath.l3);assert.equal(stored.rpmL4,f.row.semanticDecision.rpmPath.l4);
+  assert.equal(Object.keys(proof.sourceMetadataDelta.set).length,6);assert.equal(Object.keys(proof.sourceMetadataDelta.remove).length,4);
+  assert.equal(proof.acceptedSemanticRpmTransport.sourceMetadataDeltaUnchanged,true);assert.deepEqual(f.raw(f.sourcePath),sourceBytes);
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);assert.equal(f.reuse(),true);
 });
 
 test('existing prerequisite: exact guard failures do not issue a receipt or change stored metadata',async t=>{

@@ -440,7 +440,10 @@ export function validateM2S1PrerequisiteExistingApplication(input) {
   }
   need(equal(application.retainedRationale,rationale),'retained rationale application differs');
   const aliases={rpmPrimaryId:record.id,rpmL1:rp.majorUnit,rpmL2:rp.midUnit,courseKey:'M2-1'};
-  const fields={problemTypeKey:PT,templateKey:TPL,standardCourse:target.standardCourse,...rationale,...aliases,
+  // The immutable source metadata may predate its accepted semantic decision.
+  // Transport only the exact already-validated semantic row; keep the source delta below limited to its six approved additions.
+  const nativeRpmFields={...aliases,rpmPrimaryPath:rp,rpmL3:rp.l3,rpmL4:rp.l4};
+  const fields={problemTypeKey:PT,templateKey:TPL,standardCourse:target.standardCourse,...rationale,...nativeRpmFields,
     semanticSourceScope:'M1-1',semanticScopeRelation:'PREREQUISITE_LOWER_GRADE'};
   const set={problemTypeKey:PT,templateKey:TPL,...aliases};
   const remove=Object.fromEntries(['projectionStatus','ownerPack','nullReason','projectionReason'].map(k => [k,before.question[k]]));
@@ -466,7 +469,7 @@ export function validateM2S1PrerequisiteExistingApplication(input) {
   need(question.rpmPrimaryRecordId===record.id && equal(question.rpmPrimaryPath,rp) &&
     question.rpmL3===rp.l3 && question.rpmL4===rp.l4 &&
     equal(final.rpmPrimaryPath,rp) && final.rpmL3===rp.l3 && final.rpmL4===rp.l4,'declared semantic RPM path is hybrid or changed');
-  return {fields,retainedRationaleFields:rationale,nativeRpmAliasFields:aliases,proof:{
+  return {fields,retainedRationaleFields:rationale,nativeRpmAliasFields:nativeRpmFields,proof:{
     schemaVersion:PREREQUISITE_EXISTING_APPLICATION_SCHEMA,evidenceCommit:spec.evidenceCommit,
     rootApprovalRef:spec.rootApprovalRef,independentReviewRef:spec.independentReviewRef,applicationRef:spec.applicationRef,
     nativeReviewRef:nativeRef,nativeItemStableSha256:objectSha(row),questionUid:patch.questionUid,
@@ -479,6 +482,8 @@ export function validateM2S1PrerequisiteExistingApplication(input) {
       leafSha256:objectSha(leaves[0]),curriculum:'2015',semanticScope:'M1-1',rpmPath:rp,authorityUse:'RPM_PATH_PROVENANCE_ONLY',selectsPtTpl:false},
     registeredTarget:{curriculum:'2015',courseKey:'M2-1',standardCourse:target.standardCourse,
       standardUnitKey:target.standardUnitKey,subUnitKey:target.subUnitKey,L1:target.majorUnit,L2:target.midUnit,bindingOwner:'MIDDLE2'},
+    acceptedSemanticRpmTransport:{origin:'EXACT_NATIVE_SEMANTIC_DECISION_AND_LOCKED_MASTER_LEAF',
+      fields:['rpmPrimaryId','rpmPrimaryPath','rpmL1','rpmL2','rpmL3','rpmL4'],sourceMetadataDeltaUnchanged:true},
     semanticScopeRelation:'PREREQUISITE_LOWER_GRADE',newDefinitions:0,newBindings:1,crosswalkChanges:0,
     existingDefinitionChanges:0,nativeProposalFabricated:false,newMathematicalQa:false,
     newSourceQualityApproval:false,newDifficultyJudgment:false,unselectedUidApproval:false,
