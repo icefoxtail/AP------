@@ -1,0 +1,140 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "공통 밑변 OC를 가진 두 삼각형으로 사각형 O, A, C, B의 넓이를 나눈다.",
+  "accessibilityDescription": "공통 밑변 OC를 가진 두 삼각형으로 사각형 O, A, C, B의 넓이를 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $f(x)=ax^2-4ax+5a+1$, $g(x)=-x^2-2ax$의 그래프의 꼭짓점을 각각 $\\text{A}$, $\\text{B}$라 하자. 이차함수 $y=f(x)$의 그래프가 $y$축과 만나는 점 $\\text{C}$에 대하여 사각형 $\\text{OACB}$의 넓이가 $7$일 때, 양수 $a$의 값은? (단, $\\text{O}$는 원점이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "공통 밑변 OC=5a+1와 양쪽 높이 2, a로 넓이를 더하는 구조를 보여 주고 a의 답은 수치로 적지 않는다.",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공통 밑변 OC=5a+1와 양쪽 높이 2, a로 넓이를 더하는 구조를 보여 주고 a의 답은 수치로 적지 않는다."
+  ],
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-16/5",
+          "4/5"
+        ],
+        "domain": [
+          "-11/10",
+          "33/10"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-8/5",
+          "-1"
+        ],
+        "domain": [
+          "-21/10",
+          "3/2"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "viewport": [
+      -3,
+      4,
+      -3,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "9/5",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "-4/5",
+          "y": "16/25",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "5",
+          "coordinates": false
+        }
+      ],
+      "polygons": [
+        {
+          "id": "right",
+          "points": [
+            "O",
+            "A",
+            "C"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "left",
+          "points": [
+            "O",
+            "B",
+            "C"
+          ],
+          "fill": "MEDIUM"
+        }
+      ],
+      "segments": [],
+      "callouts": [
+        {
+          "id": "la",
+          "point": "A",
+          "text": "A(2,a+1)",
+          "labelKind": "MATH",
+          "direction": "NE"
+        },
+        {
+          "id": "lb",
+          "point": "B",
+          "text": "B(-a,a^2)",
+          "labelKind": "MATH",
+          "direction": "NE"
+        },
+        {
+          "id": "lc",
+          "point": "C",
+          "text": "C(0,5a+1)",
+          "labelKind": "MATH",
+          "direction": "NE"
+        }
+      ]
+    }
+  }
+}
