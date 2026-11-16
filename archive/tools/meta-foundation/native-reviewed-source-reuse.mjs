@@ -1,3 +1,4 @@
+import { M3_Q5_COMPLETE_GIVEN_SCHEMA, M3_Q5_UID, loadM3Q5CompleteGivenBank } from "./reviewed-m3-e052-q5-complete-given.mjs";
 import { M2_E017_RHS_SCHEMA, M2_E017_RHS_UID, M2_E017_RHS_SOURCE } from "./reviewed-m2-e017-rhs-continuity.mjs";
 // Revalidate an issued opt-in source review before AutoMeta reuses its approval.
 // This read-only check grants neither a new approval nor a student-change exception.
@@ -9,6 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { M2_PROBLEM_RENDERER_SCHEMA } from './reviewed-m2-problem-renderer-continuity.mjs';
+import { M2_E006_PROBLEM_SCHEMA, M2_E006_PROBLEM_ITEMS } from './reviewed-m2-e006-problem-continuity.mjs';
 import { M2_PROBLEM21_CONTINUITY_SCHEMA, M2_PROBLEM21_ITEMS } from './reviewed-m2-problem21-continuity.mjs';
 import { M2_FAMILY3_PROBLEM_CONTINUITY_SCHEMA, M2_FAMILY3_PROBLEM_SCOPE, M2_FAMILY3_PROBLEM_ITEMS } from './reviewed-m2-family3-problem-continuity.mjs';
 import { E023_SOLUTION_DISPLAY_SCHEMA, E023_SOLUTION_DISPLAY_FIELDS } from './reviewed-m2-e023-solution-display-continuity.mjs';
@@ -216,6 +218,109 @@ function priorBank(root, receipt) {
 }
 const unchangedRecord = row => Object.fromEntries(Object.entries(row).filter(([key]) => !['metadataRevision','approvalEvidence'].includes(key)));
 
+// One already issued Q5 CC proof remains an obligation after its original
+// diagram is restored. The new typed review does not replace that obligation:
+// replay these exact public receipt, sidecar and source bytes before resolving
+// this one historical marker. Other typed-to-typed chains remain unsupported.
+const Q5_ORIGINAL_TYPED_RECEIPT = Object.freeze({
+  commit: '50d001f8ab5a9a4dbfc749edb30916fb15c8dc0a',
+  path: RECEIPTS + 'm3s2-audit-e052-native2-course-r2-20261116.json',
+  gitBlobSha1: 'e01550ad3fde0f4970467a9386c3a8c06bd6f12c',
+  sha256: 'c44a99b1b1b09bfdde74d46819115d1369fb9bbbc7f602c79477375450848be3', bytes: 29781
+});
+const Q5_ORIGINAL_TYPED_BINDING = Object.freeze({
+  commit: Q5_ORIGINAL_TYPED_RECEIPT.commit,
+  path: RECEIPTS + 'm3s2-audit-e052-native2-course-r2-20261116.source-review-binding.json',
+  gitBlobSha1: '119bcc32412c805aa144700a4652be195c650092',
+  sha256: 'de13eeb7e26812fdf3970cf15cb54c49b8f0e39f53884ac5808af963ea195126', bytes: 15753
+});
+const Q5_ORIGINAL_TYPED_SOURCE = Object.freeze({
+  commit: 'd422885a338e06169739815f0f717d7d035ef7a1',
+  path: 'archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js',
+  gitBlobSha1: '533c93f017e1640ba9764925b2f164aaeaae9bb7',
+  sha256: 'cc6c9ac3347716da154d24321207395cc24539b34a6b99087ae2e5866e087c27', bytes: 66316
+});
+function q5OriginalTypedBytes(root, ref, live) {
+  const git = args => execFileSync('git', args, {cwd:root, maxBuffer:2*1024*1024, timeout:30000,
+    env:{...process.env,GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0'}, stdio:['ignore','pipe','pipe']});
+  const entry = git(['ls-tree','-z',ref.commit,'--',ref.path]);
+  if (entry.toString('utf8') !== `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`)
+    fail('Q5 original typed ancestor Git entry differs');
+  const raw = git(['cat-file','blob',ref.gitBlobSha1]);
+  if (raw.length !== ref.bytes || blob(raw) !== ref.gitBlobSha1 || sha(raw) !== ref.sha256 ||
+      live && !bytes(root,ref.path).equals(raw)) fail('Q5 original typed ancestor raw/live bytes differ');
+  return raw;
+}
+function validateQ5OriginalTypedAncestor(receipt, context, wanted) {
+  const {root,current,runtimeRecord,question,identity,ordinal,tables,cache} = context;
+  const repair = receipt.fingerprintRepairs?.find(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = repair?.sourceReview?.q5CompleteGivenApplication;
+  if (proof === undefined) return null;
+  if (identity.questionUid !== M3_Q5_UID || ordinal !== 5 || proof.schemaVersion !== M3_Q5_COMPLETE_GIVEN_SCHEMA ||
+      receipt.expectedQuestionCount !== 25 || receipt.partialUidCount !== 2 || receipt.approval?.sourceRebind !== undefined ||
+      receipt.registryChanges?.length || !same([...wanted], [Q5_ORIGINAL_TYPED_BINDING.path]) ||
+      !current.approvalEvidence?.includes(Q5_ORIGINAL_TYPED_BINDING.path) ||
+      !runtimeRecord.approvalEvidence?.includes(Q5_ORIGINAL_TYPED_BINDING.path))
+    fail('Q5 original typed ancestor obligation missing or ambiguous');
+  const prior = JSON.parse(q5OriginalTypedBytes(root,Q5_ORIGINAL_TYPED_RECEIPT,true));
+  const binding = JSON.parse(q5OriginalTypedBytes(root,Q5_ORIGINAL_TYPED_BINDING,true));
+  const oldBytes = q5OriginalTypedBytes(root,Q5_ORIGINAL_TYPED_SOURCE,false);
+  if (prior.sourceBlobSha1 !== Q5_ORIGINAL_TYPED_SOURCE.gitBlobSha1 || prior.sourceRawSha256 !== Q5_ORIGINAL_TYPED_SOURCE.sha256 ||
+      prior.sourceArchiveFile !== receipt.sourceArchiveFile || prior.examUid !== receipt.examUid ||
+      prior.expectedQuestionCount !== 25 || prior.partialUidCount !== 2 ||
+      Q5_ORIGINAL_TYPED_RECEIPT.path !== RECEIPTS + prior.requestId + '.json' ||
+      Q5_ORIGINAL_TYPED_BINDING.path !== reviewedSourceBindingPath(prior.requestId))
+    fail('Q5 original typed ancestor source or scope differs');
+  const old = selected(prior,M3_Q5_UID,5), issued = selected(receipt,M3_Q5_UID,5);
+  const q12 = 'qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a';
+  if (!same([...old.records.keys()].sort(),[M3_Q5_UID,q12].sort()) ||
+      !same([...issued.records.keys()].sort(),[M3_Q5_UID,q12].sort()) ||
+      old.records.get(q12)?.sourceOrdinal !== 12 || issued.records.get(q12)?.sourceOrdinal !== 12 ||
+      !same(markers(old.row),[Q5_ORIGINAL_TYPED_BINDING.path]) ||
+      !same(markers(old.runtime),[Q5_ORIGINAL_TYPED_BINDING.path]) ||
+      markers(old.records.get(q12)).length || markers(old.runtimes.get(q12)).length)
+    fail('Q5 original typed ancestor exact pair or marker inventory differs');
+  const oldBank = loadM3Q5CompleteGivenBank(oldBytes);
+  const currentBytes = bytes(root,'archive/exams/'+receipt.sourceArchiveFile);
+  const currentBank = loadM3Q5CompleteGivenBank(currentBytes);
+  if (oldBank.length !== 25 || currentBank.length !== 25 || blob(currentBytes) !== receipt.sourceBlobSha1 ||
+      sha(currentBytes) !== receipt.sourceRawSha256 || !same(currentBank[4],question) ||
+      sha(stable(oldBank[4])) !== proof.wholeQuestionBeforeSha256 || !same(oldBank[11],currentBank[11]))
+    fail('Q5 original typed ancestor whole question differs');
+  const oldPatch = binding.requestSnapshot?.items?.find(row => row.questionUid === M3_Q5_UID && row.sourceOrdinal === 5);
+  if (!oldPatch || sha(stable(oldPatch.sourceReview)) !== proof.originalSourceReviewSha256)
+    fail('Q5 original typed ancestor Native and CC authority differs');
+  const omit = (row, fields) => Object.fromEntries(Object.entries(row).filter(([key]) => !fields.includes(key)));
+  const nextReceiptPath = RECEIPTS + receipt.requestId + '.json', nextBindingPath = reviewedSourceBindingPath(receipt.requestId);
+  for (const [uid, priorRow] of old.records) {
+    const isQ5 = uid === M3_Q5_UID, next = issued.records.get(uid), previousRuntime = old.runtimes.get(uid), nextRuntime = issued.runtimes.get(uid);
+    const fields = ['metadataRevision','approvalEvidence',...(isQ5?['sourceFingerprint','contentFingerprint']:[])];
+    const runtimeFields = [...fields,...(isQ5?['approvedSourceFingerprint']:[])];
+    const evidenceAfter = [...new Set([...(priorRow.approvalEvidence||[]),nextReceiptPath,...(isQ5?[nextBindingPath]:[])])];
+    const revision = `meta-foundation:${next.metaFoundationPackId}@${next.metaFoundationPackVersion}:exam-final_qa-v2:${receipt.requestId}`;
+    if (!same(omit(next,fields),omit(priorRow,fields)) || !same(omit(nextRuntime,runtimeFields),omit(previousRuntime,runtimeFields)) ||
+        !same(next.approvalEvidence,evidenceAfter) || !same(nextRuntime.approvalEvidence,evidenceAfter) ||
+        next.metadataRevision !== revision || nextRuntime.metadataRevision !== revision ||
+        !same(omit(issued.identities.get(uid),isQ5?['sourceFingerprint']:[]),omit(old.identities.get(uid),isQ5?['sourceFingerprint']:[])))
+      fail('Q5 original typed ancestor changed an approval, identity or unrelated field');
+    const index = next.sourceOrdinal-1;
+    if (next.sourceFingerprint !== fullFp(currentBank[index]) || next.contentFingerprint !== bodyFp(currentBank[index]) ||
+        priorRow.sourceFingerprint !== fullFp(oldBank[index]) || priorRow.contentFingerprint !== bodyFp(oldBank[index]) ||
+        nextRuntime.approvedSourceFingerprint !== next.sourceFingerprint ||
+        previousRuntime.approvedSourceFingerprint !== priorRow.sourceFingerprint ||
+        issued.identities.get(uid).sourceFingerprint !== next.sourceFingerprint ||
+        old.identities.get(uid).sourceFingerprint !== priorRow.sourceFingerprint)
+      fail('Q5 original typed ancestor fingerprint transition differs');
+  }
+  // Existing validation replays the original request, complete Native review
+  // and original CC finalization. It must authenticate the exact old sidecar;
+  // no historical approval field or before-view is manufactured here.
+  const verified = validateDirect(prior,{root,current:old.row,runtimeRecord:old.runtime,question:oldBank[4],
+    identity:old.identity,ordinal:5,tables,cache});
+  if (verified !== Q5_ORIGINAL_TYPED_BINDING.path) fail('Q5 original typed ancestor was not replayed');
+  return verified;
+}
+
 // Source-only rebinding may update whole-file bytes while retaining an earlier
 // typed review. Follow that exact receipt chain; never use a new receipt to erase
 // the old review's witness/asset obligations.
@@ -238,6 +343,8 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
       if (cursor.approval.sourceRebind !== undefined) fail('source rebind cannot issue a new typed review');
       const verified = validateDirect(cursor,{...context,current:state.row,runtimeRecord:state.runtime,identity:state.identity});
       wanted.delete(verified);
+      const q5Ancestor = validateQ5OriginalTypedAncestor(cursor,{...context,current:state.row,runtimeRecord:state.runtime,identity:state.identity},wanted);
+      if (q5Ancestor !== null) wanted.delete(q5Ancestor);
       if (wanted.size) fail('unresolved registered source-review ancestor');
       return true;
     }
@@ -352,6 +459,53 @@ export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, pre
     const previousSha = sha(stable(previous));
     return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
       .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha);
+  } catch { return false; }
+}
+
+// Exact pending Q3 cursor. Its whole question is also the initial independent
+// label-repair predecessor. Recognition follows a fresh typed Native/UI replay;
+// this immutable historical context grants no display or metadata approval.
+const E006_Q3_CURSOR_SOURCE = Object.freeze({
+  commit: 'd511d4f82d3da2224cc43f8ff26f30469b436af3',
+  path: 'archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js',
+  gitBlobSha1: 'fb5492f096e8d7cfa8cccbf2f5cb9c98181a0ce1',
+  sha256: '1ad6a014c40c64d8524b7f616fcbd5b717e7b0051887189bcbbdf0e46b6fbf9f',
+  bytes: 58252
+});
+const E006_Q3_CURSOR_QUESTION_SHA256 = 'caf314395157fdeb6543107e3e12bcb0b73bd8b5a9670155cb4aa5375bfd1d43';
+function matchesE006Q3HistoricalCursor(root, previous) {
+  if (sha(stable(previous)) !== E006_Q3_CURSOR_QUESTION_SHA256) return false;
+  const ref = E006_Q3_CURSOR_SOURCE;
+  const run = args => execFileSync('git', args, {cwd:fs.realpathSync(root), maxBuffer:1024*1024,
+    stdio:['ignore','pipe','pipe'], env:{...process.env,GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0'}});
+  if (run(['ls-tree','-z',ref.commit,'--',ref.path]).toString() !==
+      `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`) return false;
+  const raw = run(['cat-file','blob',ref.gitBlobSha1]);
+  if (raw.length !== ref.bytes || sha(raw) !== ref.sha256 || blob(raw) !== ref.gitBlobSha1) return false;
+  const context = vm.createContext(Object.create(null), {codeGeneration:{strings:false,wasm:false}});
+  vm.runInContext('globalThis.window = {}; globalThis.console = Object.freeze({log(){},warn(){},error(){}});', context);
+  vm.runInContext(raw.toString('utf8'), context, {timeout:3000});
+  const bank = context.window.questionBank || context.window.questions;
+  return Array.isArray(bank) && bank.length === 23 && same(JSON.parse(JSON.stringify(bank[2])), previous);
+}
+
+// The E006 four-case observation remains separate from the original THREE
+// profile. Reuse replays every native, current source, asset and UI gate first.
+export function nativeReviewedM2E006ProblemRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined || !M2_E006_PROBLEM_ITEMS.some(item =>
+      item.questionUid === identity.questionUid && item.sourceOrdinal === ordinal && item.sourceArchiveFile === receipt.sourceArchiveFile)) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2E006ProblemContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_E006_PROBLEM_SCHEMA ||
+      proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile ||
+      proof.memoryOnlyNormalization !== true || proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 ||
+      proof.newDifficultyJudgments !== 0 || proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
+      .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha) ||
+      ordinal === 3 && matchesE006Q3HistoricalCursor(nativeSource.root, previous);
   } catch { return false; }
 }
 
@@ -545,5 +699,29 @@ export function nativeReviewedM2Family3Rebind(receipt, nativeSource, previous, q
     return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256,
       proof.staticBeforeQuestionSha256, proof.staticCurrentQuestionSha256, proof.reviewedCurrentQuestionSha256]
       .some(value => SHA256.test(value || '') && value === previousSha);
+  } catch { return false; }
+}
+
+
+// The one original-diagram restoration is reusable only after the complete
+// issued typed receipt, independent given/UI evidence and unchanged Native/CC
+// validators pass. An old cursor must match an authenticated whole question.
+export function nativeReviewedM3Q5CompleteGivenRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined || identity.questionUid !== M3_Q5_UID || ordinal !== 5) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.q5CompleteGivenApplication;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M3_Q5_COMPLETE_GIVEN_SCHEMA || proof.questionUid !== M3_Q5_UID ||
+      proof.sourceOrdinal !== 5 || proof.sourceArchiveFile !== receipt.sourceArchiveFile || proof.expectedQuestionCount !== 25 ||
+      proof.selectedAuthorityUidCount !== 1 || proof.outsideScopeCount !== 24 || proof.memoryOnlyNormalization !== true ||
+      !same(proof.normalizedFields, ['image']) || proof.outside24WholeQuestionsUnchanged !== true ||
+      proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 || proof.newNativeApprovals !== 0 ||
+      proof.newDifficultyJudgments !== 0 || proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 ||
+      proof.rendererWrites !== 0 || proof.canonicalWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256, proof.wholeQuestionBeforeSha256,
+      proof.oldCursorCourseBinding?.wholeQuestionSha256]
+      .some(hash => SHA256.test(hash || '') && hash === previousSha);
   } catch { return false; }
 }

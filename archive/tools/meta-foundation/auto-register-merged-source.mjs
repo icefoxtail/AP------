@@ -12,8 +12,8 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
-  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedE017RhsRebind,
-  nativeReviewedM2Problem21Rebind, nativeReviewedM2Family3Rebind } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedM2E006ProblemRebind, nativeReviewedE017RhsRebind,
+  nativeReviewedM2Problem21Rebind, nativeReviewedM2Family3Rebind, nativeReviewedM3Q5CompleteGivenRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
@@ -242,11 +242,13 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2Renderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2E006=nativeReviewedM2E006ProblemRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource});
       const reviewedE017Rhs=nativeReviewedE017RhsRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2Problem21=nativeReviewedM2Problem21Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2Family3=nativeReviewedM2Family3Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&reviewedM2Problem21!==true&&reviewedM2Family3!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedM3Q5=nativeReviewedM3Q5CompleteGivenRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2E006!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&reviewedM2Problem21!==true&&reviewedM2Family3!==true&&reviewedM3Q5!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

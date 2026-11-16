@@ -392,6 +392,8 @@ test('native proof includes external canonical authority, consumer policy and co
   ])assert.equal(matches(input,shared.inputs),true,'direct shared dependency: '+input);
   assert.equal(matches('tools/ci/archive-pr-native-preview.mjs',lanes.find(l=>l.id==='reviewed').inputs),true,
     'main request ordering changes invalidate the reviewed lane cached proof');
+  assert.equal(matches('tools/ci/verify-reviewed-projection-requests.mjs',lanes.find(l=>l.id==='reviewed').inputs),true, 'projection supervisor changes invalidate the reviewed proof');
+  assert.equal(matches('archive/tools/meta-foundation/reviewed-projection-phase.mjs',lanes.find(l=>l.id==='reviewed').inputs),true, 'read-only phase implementation is an input');
   assert.equal(lanes.find(l=>l.id==='fourSlot').required,false,'existing independent failure policy is preserved');
   const student=lanes.find(l=>l.id==='studentIndexes');
   assert.match(student.parameters.accessibilityBase,/^[a-f0-9]{40}$/);
@@ -481,4 +483,27 @@ test('--unrelated-range CLI exits 0 only for an unrelated range and 1 for anythi
   const f=fixture(t);write(f.root,'apmath/playground/next/x.js','x\n');const next=commit(f.root,'would be unrelated');
   const unknown=spawnSync(process.execPath,[script,'--unrelated-range',git(f.root,'rev-parse',next+'^'),next,'--root',f.root],{cwd:realRoot,encoding:'utf8'});
   assert.equal(unknown.status,1);
+});
+
+
+for(const unexpected of [false,true])test('reviewed compiler output ownership is exact: unexpected='+unexpected,async t=>{
+  const f=fixture(t),root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const policies=read(root,'tools/ci/archive-meta-register-commit.paths').split(/\r?\n/).filter(x=>x&&!x.startsWith('#'));
+  const outputs=['archive/data/meta-foundation/evidence/geometry-equations/v1/global_integrity_audit.json',
+    'archive/data/meta-foundation/evidence/geometry-equations/v1/promotion_receipt.json'];
+  for(const file of outputs)assert.equal(matches(file,policies),true);
+  const outside='archive/data/meta-foundation/evidence/geometry-equations/v1/another-approval.json';
+  assert.equal(matches(outside,policies),false);
+  f.lanes.find(l=>l.id==='reviewed').outputs.push(...policies);
+  const execute=async ctx=>{
+    const result=await f.execute(ctx);
+    if(ctx.lane.id==='reviewed')for(const file of [...outputs,...(unexpected?[outside]:[])])write(ctx.root,file,{fixtureDerived:true});
+    return result;
+  };
+  if(unexpected)await assert.rejects(prepareRegistration({...f.options,execute}),/UNEXPECTED_REVIEWED_PATHS/);
+  else{
+    const result=await prepareRegistration({...f.options,execute});assert.equal(result.safeToPersist,true);
+    assert.ok(outputs.every(file=>result.changedPaths.includes(file)));
+    assert.equal(git(f.root,'diff','--name-only'),'');
+  }
 });
