@@ -8,12 +8,13 @@ const path = require('node:path');
 const http = require('node:http');
 const vm = require('node:vm');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
-const { stable, sha256, gitBlob, createGitReader, isStudentFontStylesheet, declaredStudentFonts,
-  fontFailureDiagnostic, captureProblemTiles, readScreenshotArtifacts, assertScreenshotInventory } = H;
+const { stable, sha256, gitBlob, createGitReader, FONT_DIR, FONT_STYLESHEET, studentFontResourcePath, checkedStudentFontRefs,
+  createStudentRouteLifecycle, serveStudentFont, closeStudentContext, captureProblemTiles, readScreenshotArtifacts, assertScreenshotInventory } = H;
 const MANIFEST_PATH = 'tests/fixtures/archive-e013-q20-enclosed-latin-ui.json';
 const CHECKER_PATH = 'tools/check-e013-q20-enclosed-latin-browser.cjs';
 const SHARED_CHECKER_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
-const SHARED_CHECKER_SHA256 = '94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4';
+// Bind the exact shared capture, same-origin font verification, and owned route cleanup.
+const SHARED_CHECKER_SHA256 = 'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
 const IDENTITY_PATH = 'archive/data/question_identity_map.json';
 const SCHEMA = 'archive-e013-q20-enclosed-latin-ui-preview-v1';
 const FONT_FAMILY = 'Nanum Myeongjo';
@@ -225,7 +226,8 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   assert.equal(captureHelperRef.sha256, SHARED_CHECKER_SHA256, 'UI_E013_CAPTURE_HELPER_CHANGED');
   const manifestBytes = reader.read(MANIFEST_PATH), manifest = JSON.parse(manifestBytes);
   const inputs = preflight(reader, manifest);
-  const served = new Map(), mirrored = new Map(), externalFontResources = new Map(), failures = [], results = [], glyphObservations = [];
+  const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
+  const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [], glyphObservations = [];
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
@@ -235,7 +237,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,
     solutionsOpened: false, productionCdnTest: false, assetTransport: 'EXACT_CHECKOUT_BYTES_FOR_DEFAULT_IMAGE_ORIGIN',
-    fontTransport: 'EXACT_STUDENT_NANUM_FILES_AND_TRACKED_ENCLOSED_LATIN_WOFF2',
+    fontTransport: 'EXACT_STUDENT_NANUM_FILES_AND_TRACKED_ENCLOSED_LATIN_WOFF2', fontLicenseRef,
     newFullMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0, newReviewPassCount: 0, newFourSlotApprovals: 0 };
   const writeProof = (status, code = null) => {
     const screenshotArtifacts = readScreenshotArtifacts(out);
@@ -243,7 +245,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
       results, glyphObservations, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
-      externalFontResources: [...externalFontResources.values()], failures };
+      studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
   };
@@ -275,43 +277,25 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     for (const viewport of manifest.viewports) for (const sourcePath of banks) {
       const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1,
         isMobile: viewport.name === 'mobile', hasTouch: viewport.name === 'mobile', serviceWorkers: 'block' });
+      let page, casesCompleted = false, caseFailure = null;
+      const pageErrors = [], requestFailures = [], externalRequests = [];
+      const fontState = { declaredFonts: new Set(), fontRefs, fontWeights, studentFontResources, fontResources: new Map(), failures };
+      const routeLifecycle = createStudentRouteLifecycle(failures);
       try {
-        const page = await context.newPage();
+        page = await context.newPage();
         page.setDefaultTimeout(10000);
-        const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
         page.on('pageerror', error => pageErrors.push({ messageSha256: sha256(error.message) }));
         page.on('requestfailed', request => requestFailures.push({ urlSha256: sha256(request.url()), errorSha256: sha256(request.failure()?.errorText || '') }));
-        await page.route('**/*', async route => {
+        await page.route('**/*', routeLifecycle.wrap(async route => {
           const url = new URL(route.request().url());
-          if (url.origin === origin) return route.continue();
-          const stylesheet = isStudentFontStylesheet(url.href);
-          if (stylesheet || declaredFonts.has(url.href)) {
-            const fontObservation = { kind: stylesheet ? 'STYLESHEET' : 'FONT', urlSha256: sha256(url.href), stage: 'FETCH' };
-            try {
-              const response = await route.fetch({ timeout: 15000, maxRedirects: 0 });
-              const contentType = response.headers()['content-type'] || '', mediaType = contentType.split(';')[0].trim().toLowerCase();
-              Object.assign(fontObservation, { httpStatus: response.status(), responseUrlSha256: sha256(response.url()), mime: mediaType, stage: 'HTTP_STATUS' });
-              assert.equal(response.status(), 200, 'UI_FONT_HTTP_STATUS');
-              fontObservation.stage = 'RESPONSE_URL';
-              assert.equal(response.url(), url.href, 'UI_FONT_REDIRECT');
-              fontObservation.stage = 'MIME';
-              assert(stylesheet ? mediaType === 'text/css' : ['font/woff2', 'font/woff', 'font/ttf', 'application/font-woff', 'application/x-font-ttf'].includes(mediaType), 'UI_FONT_MIME');
-              fontObservation.stage = 'BODY_READ';
-              const bytes = await response.body();
-              Object.assign(fontObservation, { bytes: bytes.length, responseSha256: sha256(bytes), stage: 'BODY_SIZE' });
-              assert(bytes.length > 0 && bytes.length <= 2 * 1024 * 1024, 'UI_FONT_BODY_SIZE');
-              fontObservation.stage = 'CSS_DECLARATIONS';
-              if (stylesheet) for (const file of declaredStudentFonts(bytes.toString('utf8'))) declaredFonts.add(file);
-              const urlSha256 = sha256(url.href), responseSha256 = sha256(bytes);
-              const resourceId = sha256(stable({ urlSha256, responseSha256, mime: contentType }));
-              externalFontResources.set(resourceId, { resourceId, kind: stylesheet ? 'STYLESHEET' : 'FONT', host: url.hostname, urlSha256,
-                status: response.status(), mime: contentType, sha256: responseSha256, bytes: bytes.length });
-              fontResources.add(resourceId);
-              return route.fulfill({ response });
-            } catch (error) {
-              failures.push(fontFailureDiagnostic(fontObservation, error));
-              return route.abort('failed');
+          const fontPath = studentFontResourcePath(url.href, origin, fontRefs);
+          if (fontPath) return serveStudentFont(route, url, fontPath, fontState);
+          if (url.origin === origin) {
+            if (url.pathname.startsWith('/' + FONT_DIR)) {
+              failures.push({ code: 'UI_FONT_NOT_DECLARED', requestSha256: sha256(url.href) });
+              return route.abort('blockedbyclient');
             }
+            return route.continue();
           }
           if (url.protocol === 'https:' && url.hostname === 'img.wangjiedu.com' && url.pathname.startsWith('/exams/images/')) {
             try {
@@ -323,7 +307,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           }
           externalRequests.push({ host: url.hostname, urlSha256: sha256(url.href) });
           return route.abort('blockedbyclient');
-        });
+        }));
         const url = `${origin}/archive/engine.html?data=${encodeURIComponent(sourcePath.slice('archive/'.length))}&mode=exam&fit=screen&studentReview=1`;
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
         await page.waitForFunction(() => {
@@ -336,7 +320,8 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           for (const weight of [400, 700, 800]) {
             const faces = await document.fonts.load(`${weight} 12px "${family}"`, '한글 ABC 123');
             weights.push({ weight, loadedFaces: faces.length, allLoaded: faces.length > 0 && faces.every(face =>
-              face.status === 'loaded' && face.family.replace(/["']/g, '') === family), checked: document.fonts.check(`${weight} 12px "${family}"`, '한글 ABC 123') });
+              face.status === 'loaded' && face.family.replace(/["']/g, '') === family &&
+              face.weight === String(weight) && face.style === 'normal'), checked: document.fonts.check(`${weight} 12px "${family}"`, '한글 ABC 123') });
           }
           await document.fonts.ready;
           await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
@@ -346,8 +331,13 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
         assert.equal(fontReadiness.status, 'loaded', 'UI_DOCUMENT_FONTS_READY');
         assert(fontReadiness.weights.every(row => row.allLoaded && row.checked), 'UI_STUDENT_FONT_NOT_LOADED');
         assert(fontReadiness.problemFontFamilies.length > 0 && fontReadiness.problemFontFamilies.every(value => value.includes(FONT_FAMILY)), 'UI_STUDENT_FONT_NOT_APPLIED');
-        assert([...fontResources].some(key => externalFontResources.get(key)?.kind === 'STYLESHEET') &&
-          [...fontResources].some(key => externalFontResources.get(key)?.kind === 'FONT'), 'UI_FONT_RESPONSES_REQUIRED');
+        // Resource evidence is recorded when Playwright's fulfillment settles.
+        await routeLifecycle.drain();
+        routeLifecycle.assertSettled();
+        const respondingWeights = [...fontState.fontResources.keys()].map(file => fontWeights.get(file));
+        assert(fontState.fontResources.has(FONT_STYLESHEET) && fontReadiness.weights.every(row =>
+          respondingWeights.filter(weight => weight === row.weight).length >= row.loadedFaces),
+          'UI_FONT_RESPONSES_REQUIRED');
         await page.waitForFunction(() => JSON.parse(document.documentElement.dataset.apPrintReadiness || '{}').state === 'RENDER_READY', null, { timeout: 30000 });
         const technical = await page.evaluate(() => ({
           mode: AppState.mode, questions: AppState.data.length, pages: document.querySelectorAll('#print-area .page').length,
@@ -387,17 +377,24 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
             return { tileIndex: tile.tileIndex, path: tile.filename, sha256: sha256(bytes), bytes: bytes.length }; });
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport,
             sourceRef: item.sourceRef, assetRef: item.assetRef, fontRef: inputs.fontRef, choiceGlyphs, screenshots,
-            technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources].sort() }, geometry, capture,
+            technical: { ...technical, fontReadiness, fontResourceIds: [...fontState.fontResources.values()].sort() }, geometry, capture,
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
           activeCase = null;
         }
-        assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
-      } finally { await context.close(); }
+        casesCompleted = true;
+      } catch (error) {
+        caseFailure = error;
+        throw error;
+      } finally {
+        await closeStudentContext(page, context, () => {
+          if (casesCompleted) assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+        }, routeLifecycle, caseFailure);
+      }
     }
     assertCompletedResults(results, inputs, manifest, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, inputs.identityRef, inputs.fontRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, inputs.identityRef, inputs.fontRef, fontLicenseRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
