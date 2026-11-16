@@ -4331,7 +4331,7 @@ def _overlay_anchor_points(plan):
 # (vertical squeeze at most 1/2), freezes every branch's exact x interval and sampling expression, and refuses a
 # curve it cannot represent. The independent observer recomputes every branch from the same coefficients and reads
 # the final SVG; it never trusts a frozen expression.
-MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles','regions','axisScale'}
+MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles','regions','axisScale','schematic'}
 # G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
 # its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
@@ -4429,7 +4429,9 @@ def _mc_look(entry,ident,free):
         hidden.extend(item for item in raw if item not in hidden)
     if hidden:look['hideLabels']=[item for item in MULTI_CURVE_HIDE_LABELS if item in hidden]
     if 'label' in entry:
-        if free:look['label']=_mc_label_ascii(entry['label'],ident)
+        if entry.get('kind')=='LOGARITHMIC' and isinstance(entry['label'],str) and re.fullmatch(r'y=logb\([A-Za-z],x\)',entry['label']):
+            look['label']=entry['label']
+        elif free:look['label']=_mc_label_ascii(entry['label'],ident)
         elif not isinstance(entry['label'],str) or not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,entry['label']):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
         else:look['label']=entry['label']
     return look
@@ -4622,7 +4624,12 @@ def multi_curve_source(plan):
     unknown=set(plan)-MULTI_CURVE_FIELDS
     if unknown:raise ValueError('MULTI_CURVE_FIELD_UNKNOWN:'+sorted(unknown)[0])
     raw=plan.get('curves')
-    minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it (or the region it bounds) is the point
+    schematic=plan.get('schematic')
+    if 'schematic' in plan and (schematic is not True or not isinstance(raw,list) or len(raw)!=1
+            or not isinstance(raw[0],dict) or raw[0].get('kind')!='EXPONENTIAL'
+            or raw[0].get('hideLabel') is not True):
+        raise ValueError('MULTI_CURVE_SCHEMATIC_INVALID')
+    minimum=1 if schematic or (isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions']))) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it (or the region it bounds) is the point
     if not isinstance(raw,list) or not minimum<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
     normalized=[]
     for entry in raw:

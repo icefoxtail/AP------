@@ -5285,7 +5285,12 @@ def multi_curve_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
         raw=plan.get('curves')
-        minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else 2
+        schematic=plan.get('schematic')
+        if 'schematic' in plan and (schematic is not True or not isinstance(raw,list) or len(raw)!=1
+                or not isinstance(raw[0],dict) or raw[0].get('kind')!='EXPONENTIAL'
+                or raw[0].get('hideLabel') is not True):
+            raise ValueError('MULTI_CURVE_SCHEMATIC_INVALID')
+        minimum=1 if schematic or (isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions']))) else 2
         if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
         normalized=[]
         for entry in raw:

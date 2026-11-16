@@ -65,3 +65,20 @@ test('spec (G18a-4): an emphasised stretch is its own heavier coloured curve wit
   // the base curves keep their own whole draw interval
   assert.deepEqual(spec.objects.find(object=>object.id==='f-f').domain,[-1,4]);
 });
+
+test('single choice schematic renders a curve without a reference value, formula or asymptote', async () => {
+  const graphPlan = {
+    family: 'multi-curve', schematic: true, viewport: [-2.5, 2.8, -1.8, 2.8],
+    axisTickValues: { x: [], y: [] },
+    curves: [{ id: 'f', kind: 'EXPONENTIAL', base: '1/2', coefficients: ['1', '1', '-3/2'],
+      domain: ['-5/2', '14/5'], hideLabel: true }]
+  };
+  const plan = { capability: 'multi-curve-figure-v1', graphPlan, caption: '감소하는 지수함수의 개형' };
+  const spec = await specOf(plan);
+  assert.deepEqual(spec.objects.map(object => object.kind), ['FUNCTION_GRAPH']);
+  assert.equal(spec.displayFacts.multiCurveMarks, undefined);
+  const withoutHidden = { ...graphPlan, curves: [{ ...graphPlan.curves[0], hideLabel: false }] };
+  const rejected = await pythonWorker({ action: 'frame_graph', graphPlan: withoutHidden });
+  assert.equal(rejected.status, 'ERROR');
+  assert.equal(rejected.result.code, 'MULTI_CURVE_SCHEMATIC_INVALID');
+});

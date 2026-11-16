@@ -24,6 +24,16 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - 엔진이 못 그리는 것(사차 초과 그래프, 닫힌 형 근이 없는 삼차 같은 것; 유리수 계수 삼차·사차와 직선·이차의 조합은 3-6-영역)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다. 세로선은 이제 그린다: 그래프 위 `graphPlan.overlays`의 `lines`에 `{"id":"k","x":"2"}`를 쓴다(3-14). 원기둥 안에 구를 위아래로 둘 이상 쌓는 것도 그린다: 입체(`solid-figure-v1`)의 E28c 기능이며 `inside`로 원기둥 안에 놓는다(아래 3-입체). 그래프의 색칠 영역은 아래 3-6-영역의 `graphPlan.regions`로, 중학교 평면도형의 색칠은 3-9의 `planeMarks.regions`로 그린다.
 - 발문 그림과 해설 그림은 별개의 plan이다. 각각 따로 쓴다.
 
+### 2-1. 운영 중인 발문·보기 그림 교체
+
+최신 시험지 JS에서 그림이 연결된 문항과 위치를 확인한다. 발문에 필요한 수학 관계, 치수, 점 이름과 함수식만 네이티브 엔진 plan으로 작성한다.
+
+- `item.json`에 `visualRole: "PROBLEM_VISUAL"`, 저장소 기준 `sourcePath`, 시험지 순서의 1부터 시작하는 `ordinal`, 위치 `slot`, 현재 그림 참조 `assetRef`, `typography`를 넣는다. `slot`은 `image`, `body`, 또는 `choice-1`처럼 1부터 시작하는 보기 위치다. `typography`의 `baseFontPx`와 `displayScale`은 학생 화면 크기에 맞춘다.
+- `plan.json`에 이 문서의 네이티브 `capability`와 한국어 `caption`을 포함한 렌더 설계를 쓴다. 학생에게 주어진 표시를 사용하고 접근성 설명에도 풀이 결과를 넣지 않는다.
+- `node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out out`으로 렌더한다. `out/figure-result.json`의 `PROBLEM_RENDERED`와 `figure-problem.svg`를 확인한다.
+- `[{ "item": "item.json", "plan": "plan.json", "out": "out" }]` 형식의 게시 목록으로 `node archive/tools/geometry-equation/ops/tools/publish-problem-figures.mjs manifest.json`을 실행한다. 대상과 결과 해시를 검증한 뒤 `--apply`를 붙여 자산을 게시하고 JS 참조를 변경한다. 기존 SVG와 같은 결과는 기존 참조로 결속한다.
+- 게시된 JS를 실제 학생 화면에서 열고 그래프, 수식, 좌표, 점 이름과 치수의 간격을 확인한다.
+
 ## 3. 어떤 plan을 쓰는가
 
 - 좌표축 없는 중학교 평면도형(각도 표식, 같은 길이·평행 표시, 호 강조): `construction-spike-v1`의 `PLANE_FIGURE_v1`과 `planeMarks`(아래 3-8). 길이와 각으로 점을 놓는 `POLAR_POINT`.
@@ -976,6 +986,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - **곡선 구간 강조 `emphasis`와 정의역 `domain:{from,to}`**(G18a): 곡선 하나의 일부만 굵게·색으로 보이고 싶을 때(`x≥4`, 증가구간 `x≤2`, `2≤x≤a`) 곡선 항목에 `emphasis:[{"from":"2","to":"4","color":"WARM","fromState":"CLOSED","toState":"OPEN"}]`를 쓴다(최대 3개). `from`·`to`를 생략하면 그 곡선의 끝까지, `color` 기본은 `WARM`, `fromState`·`toState`는 `NONE`(기본, 점 없음)·`OPEN`(속이 빈 점)·`CLOSED`(찬 점)이다. 강조 구간은 곡선의 그려지는 구간(`domain`) 안에 있어야 하고 서로 겹치지 않으며, 유리함수의 구간은 극점을 건너지 못한다(`MULTI_CURVE_EMPHASIS_ACROSS_POLE:<id>`). `X_OF_Y` 곡선에는 쓸 수 없다(`MULTI_CURVE_EMPHASIS_UNSUPPORTED:<id>`). 곡선 전체는 얇게 그대로 그려지고 그 위에 강조 구간이 굵게 덧그려진다. `domain`은 `["-1","4"]`와 `{"from":"-1","to":"4"}` 둘 다 쓸 수 있고 곡선은 그 밖을 그리지 않는다. **곡선이 하나여도 `emphasis`가 있으면 그림이 된다**(곡선 수 하한 2는 강조가 없는 곡선에만 적용). 독립 관측기는 강조 폴리라인(`EMPH_<id>_<n>`)이 그 구간 안에서 곡선 위에 있고 굵으며 색이 맞는지, 끝점 점의 위치·속이 빈지 찬지를 확인한다. 오류 코드: `MULTI_CURVE_EMPHASIS_INVALID:<id>`, `MULTI_CURVE_EMPHASIS_UNSUPPORTED:<id>`, `MULTI_CURVE_EMPHASIS_ACROSS_POLE:<id>`.
 - 독립 관측기는 곡선마다 색·점선·굵기, 점근선 선 위치, 시작점 점, 가지 끝(틀에 잘린 곳 포함)을 다시 확인한다. 굵은 곡선은 다른 곡선보다 굵어야 한다.
 - 오류 코드: `MULTI_CURVE_WINDOW_REQUIRED:<id>`, `MULTI_CURVE_WINDOW_INVALID`, `MULTI_CURVE_COLOR_INVALID:<id>`, `MULTI_CURVE_WEIGHT_INVALID:<id>`, `MULTI_CURVE_STYLE_INVALID:<id>`, `MULTI_CURVE_HIDE_LABELS_INVALID:<id>`, `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `MULTI_CURVE_INVERSE_UNSUPPORTED:<id>`.
+
+보기의 지수함수 개형 한 개는 `multi-curve-figure-v1`의 `graphPlan.schematic:true`를 쓴다. `EXPONENTIAL` 곡선 하나와 `hideLabel:true`가 필요하다. 원문 개형을 정하는 증가·감소 방향과 축과 만나는 위치를 유지한다. 식이나 수치 눈금이 없는 원문에서는 `axisTickValues:{"x":[],"y":[]}`로 두고 예시 계수는 글자로 표시하지 않는다.
 
 **가로·세로 눈금을 같게 `equalUnits` (G18b).** 유리함수(일차/일차)와 무리함수 한 개의 그림은 기본 틀이 가로·세로 눈금 길이가 다르다. `y=x` 대칭, 기울기 ±1인 직선, 정사각형·원이 중요한 풀이는 `graphPlan.equalUnits:true`를 쓴다. 가로 한 칸과 세로 한 칸이 같은 길이가 되고(관측기가 ±1px로 확인), 그림은 필요한 만큼 세로로 길어지거나(최대 640) 가로 범위가 넓어진다. `true`만 쓸 수 있고 `axisScale`·`axisSqueeze`와는 함께 못 쓴다(`EQUAL_UNITS_INVALID`). 극점·곡선 끝·원점이 한 눈금 비에서 한 칸 10px 이상, 극점 양쪽 곡선 48px 이상으로 안 담기면 `EQUAL_UNITS_WINDOW_TOO_WIDE`로 거절한다(극점이나 필요한 점을 원점 가까이로 잡거나 쓰지 않는다). 이차·다항·구간별·multi-curve는 원래 한 눈금 비다. `equalUnits`를 쓰지 않은 plan의 그림은 그대로다.
 

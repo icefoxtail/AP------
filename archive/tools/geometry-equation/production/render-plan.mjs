@@ -30,6 +30,7 @@ import * as lpf from './lattice-path-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
+import {renderProblemPlan} from './problem-plan.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -53,7 +54,8 @@ const tagPanel=(run,index)=>{try{return run();}catch(error){if(error&&typeof err
 const stdoutView=r=>{const {detailFull,errors,hint,...rest}=r;return {...rest,...(hint?{hint:hint.map(h=>h.length>160?h.slice(0,160)+'...':h)}:{}),...(detailFull!==undefined?{detailFile:true}:{})};};
 
 // plan: a parsed plan object, or a path to plan.json. Returns the result record (also written as <name>-result.json).
-export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass}){
+export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSizeClass,problemBrowser}){
+  if(item?.visualRole==='PROBLEM_VISUAL')return renderProblemPlan({item,planInput,outDir,sharedBrowser:problemBrowser});
   fs.mkdirSync(outDir,{recursive:true});
   const meta={...item};
   const name=String(meta.dir??meta.tag??'figure');
