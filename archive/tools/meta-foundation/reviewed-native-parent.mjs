@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { readM2Family7RpmRowContinuity } from "./reviewed-m2-family7-rpm-row-continuity.mjs";
 
 const MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
@@ -109,7 +110,11 @@ export function validateNativeReviewedParent({ root, request, patch, row, resolv
   const cross = spec.crosswalkRef;
   if (!/^archive\/data\/meta-foundation\/crosswalks\/rpm-primary-v1\.0\/middle2\.json$/.test(cross?.path || ""))
     fail("M2 native crosswalk reference required");
-  const crosswalk = evidence(root, request, patch, cross).doc;
+  const rpmRowContinuity = readM2Family7RpmRowContinuity({ root, request, patch,
+    nativeSpec: patch.sourceReview, nativeRow: native });
+  if (rpmRowContinuity && (!activeFamily || cross.sha256 !== rpmRowContinuity.current.ref.sha256 ||
+      cross.recordId !== rpmRowContinuity.proof.recordId)) fail("current exact family RPM carrier mismatch");
+  const crosswalk = rpmRowContinuity ? rpmRowContinuity.historical.document : evidence(root, request, patch, cross).doc;
   const records = crosswalk.records?.filter(r => r.id === cross.recordId), reference = records?.[0];
   const expectedReference = activeFamily
     ? reference?.mappingStatus === "FAMILY_ACTIVE" && reference.bindingStatus === "ACTIVE" && !Object.hasOwn(reference, "templateKey") &&
@@ -125,7 +130,7 @@ export function validateNativeReviewedParent({ root, request, patch, row, resolv
     try { original = execFileSync("git", ["show", `${spec.reviewCommit}:${cross.path}`],
       { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }); }
     catch { fail("immutable native family crosswalk unavailable"); }
-    if (sha(original) !== cross.sha256 || !same(JSON.parse(original), crosswalk))
+    if (sha(original) !== (rpmRowContinuity?.historical.ref.sha256 ?? cross.sha256) || !same(JSON.parse(original), crosswalk))
       fail("native family crosswalk differs from the exact review commit");
   }
   const { binding, pt, tpl, pack } = resolved;
@@ -142,6 +147,7 @@ export function validateNativeReviewedParent({ root, request, patch, row, resolv
     reviewCommit: spec.reviewCommit, reviewPath: spec.reviewPath, reviewRef: spec.reviewRef,
     nativeItemSha256: sha(stable(native)), studentPayloadSha256: sourceReview.studentPayloadSha256,
     masterRef: { path: target.path, sha256: target.sha256 }, crosswalkRef: cross,
+    ...(rpmRowContinuity ? { rpmRowContinuity: rpmRowContinuity.proof } : {}),
     ...(activeFamily ? { crosswalkProfile: spec.crosswalkProfile, nativeCrosswalkCommit: spec.reviewCommit,
       primaryAuthority: "EXPLICIT_NATIVE_AFTER", templateCandidatesUsedAsApproval: false } : {}),
     parent: { curriculum: target.curriculum, scope: target.scope, L1: target.majorUnit, L2: target.midUnit },
