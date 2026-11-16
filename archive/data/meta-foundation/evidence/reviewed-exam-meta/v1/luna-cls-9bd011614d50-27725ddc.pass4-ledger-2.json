@@ -1,0 +1,34 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:50:09.166+00:00",
+ "sourceArchiveFile": "original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 22,
+   "chosenFrom": "new",
+   "resolutionReason": "f(x)=||-2x+6|-4|의 네 선분과 y=x/3+k의 교점 수 g(k)를 구간별로 정한 뒤 f(a)=g(a)인 a를 구하는 순서 풀이라 그래프의 교점 항목과 SEQUENTIAL이다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "l3": "",
+    "l4": ""
+   },
+   "integrationPattern": "SEQUENTIAL",
+   "hold": "신규 제안: 함수>함수 아래 그래프의 교점을 다루는 l3·l4 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "함수의 그래프",
+     "label": "함수의 그래프",
+     "parent": "함수 > 함수",
+     "why": "가장 가까운 '함수의 성질'은 일대일·항등함수 분류이고, 이 문항은 절댓값 함수 그래프와 직선의 교점 개수를 센다."
+    },
+    "rpmPath.l4": {
+     "value": "그래프의 교점",
+     "label": "함수 그래프의 교점",
+     "parent": "함수 > 함수 > 함수의 그래프",
+     "why": "가장 가까운 '정의역·공역·치역'은 집합을 다루고, 이 문항은 f(x)=x/3+k의 해의 개수를 센다."
+    }
+   }
+  }
+ ]
+}
