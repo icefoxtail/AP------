@@ -734,7 +734,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "각이등분선의 대변 분할비 직접 대입",
-    "decisiveStep": "AB:AC=BD:CD에8,6,3을 넣어BD를 구한다."
+    "decisiveStep": "AB:AC=BD:CD에8,6,3을 넣어BD를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 A에서 BC 위 D로 각 이등분선 AD를 그리고, A의 두 반각을 같은 호로 표시했다. AB와 BD, AC와 DC는 각각 다른 색으로 대응시켰다.",
+    "solutionImageCaption": "각 이등분선 정리에 따라 AB:AC=BD:DC를 적용한다. AB=8 cm, AC=6 cm, CD=3 cm이므로 BD=4 cm이다. 정답은 ② 4 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -824,7 +828,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중첩된 두 무게중심의 중선비",
-    "decisiveStep": "AG의절반GD를 얻고 그1/3인G′D를 구한다."
+    "decisiveStep": "AG의절반GD를 얻고 그1/3인G′D를 구한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 중선 AD 위에 G와 G′을 차례로 표시하고, D가 BC의 중점임을 눈금으로 보였다. AG=12 cm를 치수선으로 나타냈다.",
+    "solutionImageCaption": "G가 중선 AD를 2:1로 나누고, G′은 중선 GD를 2:1로 나눈다. 따라서 G′D=2 cm이다. 정답은 ① 2 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -869,7 +877,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "무게중심의1/6 넓이와 중점 반분",
-    "decisiveStep": "전체의1/6인GDC를 구하고GC중점E로 다시 절반을 취한다."
+    "decisiveStep": "전체의1/6인GDC를 구하고GC중점E로 다시 절반을 취한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 무게중심 G와 BC의 중점 D를 표시하고, GC의 중점 E가 GD와 DC를 잇는 삼각형 안에 있다. △GDE와 △EDC를 같은 파란색으로 표시했다.",
+    "solutionImageCaption": "무게중심으로 △GDC의 넓이는 전체의 1/6인 14 cm²이고, E가 GC의 중점이므로 두 부분의 넓이가 같다. 정답은 ③ 7 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -986,7 +998,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "겹친 삼각형의 뒤바뀐 두 변 대응으로 SAS",
-    "decisiveStep": "BC=9+7을 복원하고BA:BD=BC:BA를 공통각B와 묶는다."
+    "decisiveStep": "BC=9+7을 복원하고BA:BD=BC:BA를 공통각B와 묶는다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 삼각형 ABC와 BC 위 D, 선분 AD 및 주어진 길이를 보인다. 둘째 패널은 △ABC와 △DBA를 나란히 표시하고, 대응변을 파랑·주황·초록으로, 대응각을 같은 호 개수로 표시한다. 두 삼각형의 점 이름은 패널별로 분리된다.",
+    "solutionImageCaption": "공통각과 AB:DB=BC:BA=4:3으로 △ABC∼△DBA(SAS)이며 AC:DA=4:3이다. 따라서 AD=6 cm이다. 정답은 (1) △ABC∼△DBA (SAS), (2) 6 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1018,7 +1034,11 @@ window.examData = {
       "assets/images/20_풍덕중_2학기_중간_중2_수학/s04.png"
     ],
     "answer": "1) $\\dfrac{1}{2}$배\n2) $\\dfrac{2}{3}$배\n3) $\\dfrac{1}{6}$배\n4) $3 : 1 : 2$\n5) $6\\text{cm}$",
-    "solution": "$\\triangle\\mathrm{ABC}$에서 중선 $\\overline{\\mathrm{AD}}$, 무게중심 $\\mathrm{G}$, 두 변의 중점연결선 $\\overline{\\mathrm{EF}}$와 $\\overline{\\mathrm{AD}}$의 교점 $\\mathrm{P}$에 대하여 각 물음에 답한다.\n\n1. 그림에서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$ 위에, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$ 위에 있으며, $\\mathrm{B}, \\mathrm{G}, \\mathrm{E}$와 $\\mathrm{C}, \\mathrm{G}, \\mathrm{F}$는 각각 한 직선 위에 있다. 무게중심 $\\mathrm{G}$는 세 중선이 만나는 점이므로 $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{CF}}$는 각각 중선이다. 따라서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$의 중점, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$의 중점이다.\n삼각형의 중점연결정리에 의해 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이다. 따라서 $\\triangle\\mathrm{ABD}$에서 변 $\\overline{\\mathrm{AB}}$의 중점 $\\mathrm{F}$를 지나 변 $\\overline{\\mathrm{BD}}$와 평행한 선분이 $\\overline{\\mathrm{AD}}$와 만나는 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이다. 즉, $\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$이다.\n2. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이므로 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$에서 $\\overline{\\mathrm{AG}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{GD}} = \\dfrac{1}{3}\\overline{\\mathrm{AD}}$이다.\n3. $\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\left(\\dfrac{2}{3} - \\dfrac{1}{2}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$이다.\n\n1단계: 1)번 답안\n점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이므로:\n$\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{2}$배)\n\n2단계: 2)번 답안\n점 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} = \\dfrac{2}{2+1}\\overline{\\mathrm{AD}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{2}{3}$배)\n\n3단계: 3)번 답안\n$\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}} - \\dfrac{1}{2}\\overline{\\mathrm{AD}} = \\left(\\dfrac{4}{6} - \\dfrac{3}{6}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{6}$배)\n\n4단계: 4)번 답안\n세 선분의 길이의 비를 통분하여 계산하면:\n$\\overline{\\mathrm{AP}} : \\overline{\\mathrm{PG}} : \\overline{\\mathrm{GD}} = \\dfrac{3}{6} : \\dfrac{1}{6} : \\dfrac{2}{6} = 3 : 1 : 2$\n\n5단계: 5)번 답안\n$\\overline{\\mathrm{GD}} = 4\\text{cm}$일 때, 비례식 $\\overline{\\mathrm{AP}} : \\overline{\\mathrm{GD}} = 3 : 2$에 대입하면:\n$\\overline{\\mathrm{AP}} : 4 = 3 : 2 \\implies 2\\overline{\\mathrm{AP}} = 12 \\implies \\overline{\\mathrm{AP}} = 6\\text{cm}$\n(또는 $\\overline{\\mathrm{AD}} = 3 \\times \\overline{\\mathrm{GD}} = 12\\text{cm} \\implies \\overline{\\mathrm{AP}} = \\dfrac{1}{2} \\times 12 = 6\\text{cm}$)\n\n1) $\\dfrac{1}{2}$배\n2) $\\dfrac{2}{3}$배\n3) $\\dfrac{1}{6}$배\n4) $3 : 1 : 2$\n5) $6\\text{cm}$"
+    "solution": "$\\triangle\\mathrm{ABC}$에서 중선 $\\overline{\\mathrm{AD}}$, 무게중심 $\\mathrm{G}$, 두 변의 중점연결선 $\\overline{\\mathrm{EF}}$와 $\\overline{\\mathrm{AD}}$의 교점 $\\mathrm{P}$에 대하여 각 물음에 답한다.\n\n1. 그림에서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$ 위에, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$ 위에 있으며, $\\mathrm{B}, \\mathrm{G}, \\mathrm{E}$와 $\\mathrm{C}, \\mathrm{G}, \\mathrm{F}$는 각각 한 직선 위에 있다. 무게중심 $\\mathrm{G}$는 세 중선이 만나는 점이므로 $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{CF}}$는 각각 중선이다. 따라서 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$의 중점, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$의 중점이다.\n삼각형의 중점연결정리에 의해 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이다. 따라서 $\\triangle\\mathrm{ABD}$에서 변 $\\overline{\\mathrm{AB}}$의 중점 $\\mathrm{F}$를 지나 변 $\\overline{\\mathrm{BD}}$와 평행한 선분이 $\\overline{\\mathrm{AD}}$와 만나는 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이다. 즉, $\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$이다.\n2. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이므로 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$에서 $\\overline{\\mathrm{AG}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{GD}} = \\dfrac{1}{3}\\overline{\\mathrm{AD}}$이다.\n3. $\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\left(\\dfrac{2}{3} - \\dfrac{1}{2}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$이다.\n\n1단계: 1)번 답안\n점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$의 중점이므로:\n$\\overline{\\mathrm{AP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{2}$배)\n\n2단계: 2)번 답안\n점 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} = \\dfrac{2}{2+1}\\overline{\\mathrm{AD}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{2}{3}$배)\n\n3단계: 3)번 답안\n$\\overline{\\mathrm{PG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AP}} = \\dfrac{2}{3}\\overline{\\mathrm{AD}} - \\dfrac{1}{2}\\overline{\\mathrm{AD}} = \\left(\\dfrac{4}{6} - \\dfrac{3}{6}\\right)\\overline{\\mathrm{AD}} = \\dfrac{1}{6}\\overline{\\mathrm{AD}}$ (즉, $\\dfrac{1}{6}$배)\n\n4단계: 4)번 답안\n세 선분의 길이의 비를 통분하여 계산하면:\n$\\overline{\\mathrm{AP}} : \\overline{\\mathrm{PG}} : \\overline{\\mathrm{GD}} = \\dfrac{3}{6} : \\dfrac{1}{6} : \\dfrac{2}{6} = 3 : 1 : 2$\n\n5단계: 5)번 답안\n$\\overline{\\mathrm{GD}} = 4\\text{cm}$일 때, 비례식 $\\overline{\\mathrm{AP}} : \\overline{\\mathrm{GD}} = 3 : 2$에 대입하면:\n$\\overline{\\mathrm{AP}} : 4 = 3 : 2 \\implies 2\\overline{\\mathrm{AP}} = 12 \\implies \\overline{\\mathrm{AP}} = 6\\text{cm}$\n(또는 $\\overline{\\mathrm{AD}} = 3 \\times \\overline{\\mathrm{GD}} = 12\\text{cm} \\implies \\overline{\\mathrm{AP}} = \\dfrac{1}{2} \\times 12 = 6\\text{cm}$)\n\n1) $\\dfrac{1}{2}$배\n2) $\\dfrac{2}{3}$배\n3) $\\dfrac{1}{6}$배\n4) $3 : 1 : 2$\n5) $6\\text{cm}$",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD와 EF를 그리고, EF와 AD의 교점 P 및 무게중심 G를 표시했다. D, E, F의 중점 눈금은 1·2·3개로 구분하며 GD=4 cm이다.",
+    "solutionImageCaption": "중점연결선에서 P는 AD의 중점이고, 무게중심 G는 AD를 2:1로 나눈다. 따라서 AP:PG:GD=3:1:2이며, GD=4 cm일 때 AP=6 cm이다. 정답은 (1) 1/2, (2) 2/3, (3) 1/6, (4) 3:1:2, (5) 6 cm이다.",
+    "solutionImageSize": "full"
   }
 ]
 };

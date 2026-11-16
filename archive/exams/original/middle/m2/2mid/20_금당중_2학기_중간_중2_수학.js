@@ -43,7 +43,11 @@ window.examData = {
       "assets/images/20_금당중_2학기_중간_중2_수학/q01.png"
     ],
     "answer": "②",
-    "solution": "주어진 삼각형 ABC에서 ∠B = 70°, 꼭짓점 C의 내각이 ∠C = 40°, 밑변 BC의 길이가 6 cm일 때, 다음 보기 중 옳지 않은 것을 찾는다.\n\n삼각형의 내각의 합과 이등변삼각형의 성질을 이용한다.\n- 삼각형의 세 내각의 크기의 합은 180°이다.\n- 두 내각의 크기가 같은 삼각형은 이등변삼각형이며, 그 두 각의 대변의 길이가 서로 같다.\n\n1단계: 삼각형 ABC의 세 내각의 크기 구하기\n∠B = 70°, ∠C = 40°이고 삼각형 세 내각의 합은 180°이므로:\n∠A = 180° - (∠B + ∠C) = 180° - (70° + 40°) = 70°\n따라서 ∠A = ∠B = 70°이다.\n2단계: 변의 길이 관계 파악하기\n두 각의 크기가 같으므로 마주보는 두 대변의 길이가 같다:\nCA = CB = 6 cm\n따라서 삼각형 ABC는 CA = CB인 이등변삼각형이다.\n3단계: 선분 AB의 길이 검토\n선분 AB는 두 밑각 사이의 밑변이며, 주어진 조건만으로는 선분 AB의 길이가 3 cm라고 단정할 수 없다.\n\n각 선지를 확인하면 다음과 같다.\n① ∠A = 70°: 두 밑각 중 하나로 참이다.\n② 선분 AB = 3 cm: 주어진 각도와 한 변의 길이로는 밑변 AB의 길이를 3 cm로 확정할 수 없으므로 옳지 않다 (정답).\n③ 선분 AC = 6 cm: 이등변삼각형의 성질에 의해 CA = CB = 6 cm이므로 참이다.\n④ ∠A = ∠B: 두 밑각의 크기가 각각 70°로 서로 같으므로 참이다.\n⑤ △ABC는 이등변삼각형이다: 두 내각의 크기가 같으므로 이등변삼각형이 맞다.\n\n따라서 옳지 않은 것은 ②이다."
+    "solution": "주어진 삼각형 ABC에서 ∠B = 70°, 꼭짓점 C의 내각이 ∠C = 40°, 밑변 BC의 길이가 6 cm일 때, 다음 보기 중 옳지 않은 것을 찾는다.\n\n삼각형의 내각의 합과 이등변삼각형의 성질을 이용한다.\n- 삼각형의 세 내각의 크기의 합은 180°이다.\n- 두 내각의 크기가 같은 삼각형은 이등변삼각형이며, 그 두 각의 대변의 길이가 서로 같다.\n\n1단계: 삼각형 ABC의 세 내각의 크기 구하기\n∠B = 70°, ∠C = 40°이고 삼각형 세 내각의 합은 180°이므로:\n∠A = 180° - (∠B + ∠C) = 180° - (70° + 40°) = 70°\n따라서 ∠A = ∠B = 70°이다.\n2단계: 변의 길이 관계 파악하기\n두 각의 크기가 같으므로 마주보는 두 대변의 길이가 같다:\nCA = CB = 6 cm\n따라서 삼각형 ABC는 CA = CB인 이등변삼각형이다.\n3단계: 선분 AB의 길이 검토\n선분 AB는 두 밑각 사이의 밑변이며, 주어진 조건만으로는 선분 AB의 길이가 3 cm라고 단정할 수 없다.\n\n각 선지를 확인하면 다음과 같다.\n① ∠A = 70°: 두 밑각 중 하나로 참이다.\n② 선분 AB = 3 cm: 주어진 각도와 한 변의 길이로는 밑변 AB의 길이를 3 cm로 확정할 수 없으므로 옳지 않다 (정답).\n③ 선분 AC = 6 cm: 이등변삼각형의 성질에 의해 CA = CB = 6 cm이므로 참이다.\n④ ∠A = ∠B: 두 밑각의 크기가 각각 70°로 서로 같으므로 참이다.\n⑤ △ABC는 이등변삼각형이다: 두 내각의 크기가 같으므로 이등변삼각형이 맞다.\n\n따라서 옳지 않은 것은 ②이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: △ABC에 ∠B=70°, ∠C=40°, BC=6 cm를 표시하고, 풀이에서 얻은 ∠A=70°와 AC=BC를 각각 같은 표식으로 나타냈다.",
+    "solutionImageCaption": "∠A=∠B=70°이고 AC=BC=6 cm이므로 AB=3 cm라고는 할 수 없다. 정답은 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -80,7 +84,11 @@ window.examData = {
       "assets/images/20_금당중_2학기_중간_중2_수학/q02.png"
     ],
     "answer": "④",
-    "solution": "선분 AC = BC인 이등변삼각형 ABC에서 AB = AD = DE = EF = FC일 때, 각 B의 크기를 구한다.\n\n이등변삼각형의 성질과 외각의 성질을 이용한다.\n- 이등변삼각형의 두 밑각의 크기는 서로 같다.\n- 삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.\n- 가장 안쪽의 꼭짓점 C를 기준으로 미지수 ∠C = x로 설정한 후, 외각의 성질을 연속적으로 적용하여 각 꼭짓점에서의 각의 크기를 x로 나타낸다.\n\n1단계: 꼭짓점 C에서 시작하는 각 추적\n∠C = x라 하자.\n△CEF에서 EF = FC이므로 이등변삼각형이다:\n∠FEC = ∠C = x\n△CEF에서 꼭짓점 F의 외각인 ∠EFD의 크기는:\n∠EFD = ∠FEC + ∠C = x + x = 2x\n2단계: △DEF와 외각 계산\n△DEF에서 DE = EF이므로 이등변삼각형이다:\n∠EDF = ∠EFD = 2x\n이제 △CDE에서 점 E의 외각인 ∠AED의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠EDC(즉 ∠EDF)이므로:\n∠AED = ∠C + ∠EDF = x + 2x = 3x\n3단계: △ADE와 외각 계산\n△ADE에서 AD = DE이므로 이등변삼각형이다:\n∠DAE = ∠AED = 3x\n이제 △ADC에서 점 D의 외각인 ∠ADB의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠DAC(즉 ∠DAE)이므로:\n∠ADB = ∠C + ∠DAE = x + 3x = 4x\n4단계: △ABD와 큰 삼각형 ABC의 각 계산\n△ABD에서 AB = AD이므로 이등변삼각형이다:\n∠B = ∠ADB = 4x\n원래 큰 삼각형 ABC에서 AC = BC이므로 이등변삼각형이며, 밑각의 크기가 같다:\n∠A = ∠B = 4x\n5단계: 삼각형 ABC의 세 내각의 합으로 x 구하기\n삼각형 ABC에서 세 내각의 합은 180°이므로:\n∠A + ∠B + ∠C = 180°\n4x + 4x + x = 180°\n9x = 180°\nx = 20°\n따라서 구하는 각 B의 크기는:\n∠B = 4x = 4 × 20° = 80°\n\n각 선지를 확인하면 다음과 같다.\n① 60°: x = 15°일 때의 오답\n② 72°: 정오각형 내각 등 다른 도형 오판 오답\n③ 75°: 계산 착오 오답\n④ 80°: 정확한 연속 외각 계산 결과와 일치 (정답)\n⑤ 84°: 오답\n\n따라서 각 B의 크기는 80°이므로 정답은 ④이다."
+    "solution": "선분 AC = BC인 이등변삼각형 ABC에서 AB = AD = DE = EF = FC일 때, 각 B의 크기를 구한다.\n\n이등변삼각형의 성질과 외각의 성질을 이용한다.\n- 이등변삼각형의 두 밑각의 크기는 서로 같다.\n- 삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.\n- 가장 안쪽의 꼭짓점 C를 기준으로 미지수 ∠C = x로 설정한 후, 외각의 성질을 연속적으로 적용하여 각 꼭짓점에서의 각의 크기를 x로 나타낸다.\n\n1단계: 꼭짓점 C에서 시작하는 각 추적\n∠C = x라 하자.\n△CEF에서 EF = FC이므로 이등변삼각형이다:\n∠FEC = ∠C = x\n△CEF에서 꼭짓점 F의 외각인 ∠EFD의 크기는:\n∠EFD = ∠FEC + ∠C = x + x = 2x\n2단계: △DEF와 외각 계산\n△DEF에서 DE = EF이므로 이등변삼각형이다:\n∠EDF = ∠EFD = 2x\n이제 △CDE에서 점 E의 외각인 ∠AED의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠EDC(즉 ∠EDF)이므로:\n∠AED = ∠C + ∠EDF = x + 2x = 3x\n3단계: △ADE와 외각 계산\n△ADE에서 AD = DE이므로 이등변삼각형이다:\n∠DAE = ∠AED = 3x\n이제 △ADC에서 점 D의 외각인 ∠ADB의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠DAC(즉 ∠DAE)이므로:\n∠ADB = ∠C + ∠DAE = x + 3x = 4x\n4단계: △ABD와 큰 삼각형 ABC의 각 계산\n△ABD에서 AB = AD이므로 이등변삼각형이다:\n∠B = ∠ADB = 4x\n원래 큰 삼각형 ABC에서 AC = BC이므로 이등변삼각형이며, 밑각의 크기가 같다:\n∠A = ∠B = 4x\n5단계: 삼각형 ABC의 세 내각의 합으로 x 구하기\n삼각형 ABC에서 세 내각의 합은 180°이므로:\n∠A + ∠B + ∠C = 180°\n4x + 4x + x = 180°\n9x = 180°\nx = 20°\n따라서 구하는 각 B의 크기는:\n∠B = 4x = 4 × 20° = 80°\n\n각 선지를 확인하면 다음과 같다.\n① 60°: x = 15°일 때의 오답\n② 72°: 정오각형 내각 등 다른 도형 오판 오답\n③ 75°: 계산 착오 오답\n④ 80°: 정확한 연속 외각 계산 결과와 일치 (정답)\n⑤ 84°: 오답\n\n따라서 각 B의 크기는 80°이므로 정답은 ④이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: A-E-C와 B-D-F-C의 점 순서를 지킨 이등변삼각형에서 AC=BC와 AB=AD=DE=EF=FC를 표식으로 나타내고, 풀이의 각 x, 2x, 3x, 4x를 표시했다.",
+    "solutionImageCaption": "같은 길이의 작은 삼각형들에서 각을 x, 2x, 3x, 4x로 차례로 나타내면 x=20°이고 ∠B=80°이다. 정답은 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -127,7 +135,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각이등분선과 공통변 ASA로 이등변 판정 정리 증명",
-    "decisiveStep": "주어진 두 쌍의 같은각과 공통AD가 한변과양끝각임을 확인해 증명의 합동조건 빈칸을 채운다."
+    "decisiveStep": "주어진 두 쌍의 같은각과 공통AD가 한변과양끝각임을 확인해 증명의 합동조건 빈칸을 채운다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 △ABC와 각의 이등분선 AD, 같은 각 표식을 보인다. 둘째 패널은 △ABD와 △ACD를 같은 방향으로 분리해 대응각과 변 AD를 표시했다.",
+    "solutionImageCaption": "공통변 AD와 그 양 끝의 두 각이 각각 같으므로 △ABD와 △ACD는 ASA 합동이다. 정답은 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -174,7 +186,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "여각으로 같은 예각을 얻어 RHA 판정",
-    "decisiveStep": "직각삼각형의 한 예각을 여각으로 바꾸어 같은 빗변과 같은 예각을 가진 두 도형을 찾는다."
+    "decisiveStep": "직각삼각형의 한 예각을 여각으로 바꾸어 같은 빗변과 같은 예각을 가진 두 도형을 찾는다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC, DEF, GHI, LJK를 각각 보여 주고, 각 직각 꼭짓점과 주어진 변의 길이 및 예각을 표시한 비교 그림.",
+    "solutionImageCaption": "△DEF와 △LJK는 빗변의 길이가 같고 대응하는 한 예각이 같으므로 RHA 합동이다. 따라서 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -221,7 +237,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "공통 빗변 RHS로 얻은 각이등분",
-    "decisiveStep": "EBC와EDC의 공통EC 및같은직각변으로RHS를 확인하고 나누어진C각을 직각삼각형 각합으로 옮긴다."
+    "decisiveStep": "EBC와EDC의 공통EC 및같은직각변으로RHS를 확인하고 나누어진C각을 직각삼각형 각합으로 옮긴다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 D∈AC, E∈AB, BC=DC, ED⊥AC를 표시하고, ∠A=48°, ∠ACB=42°, ∠ECD=∠ECB=21°와 구하는 각의 위치를 나타냈다.",
+    "solutionImageCaption": "△EBC와 △EDC의 RHS 합동으로 ∠ECD=∠ECB=21°이므로 ∠DEC=69°이다. 정답은 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -268,7 +288,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 수직이등분선 교점에서 세 번째 중점 판정",
-    "decisiveStep": "P를 외심으로 인식하여 AC의 수직이등분선도 P를 지나므로 수선발F가 중점임을 판정한다."
+    "decisiveStep": "P를 외심으로 인식하여 AC의 수직이등분선도 P를 지나므로 수선발F가 중점임을 판정한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: AB와 BC의 수직이등분선이 D와 E를 지나 P에서 만나고, P에서 AC에 내린 수선의 발 F를 표시했다.",
+    "solutionImageCaption": "P는 외심이므로 PF는 AC의 수직이등분선이며 AF=CF이다. 정답은 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -352,7 +376,11 @@ window.examData = {
       "assets/images/20_금당중_2학기_중간_중2_수학/q08.png"
     ],
     "answer": "③",
-    "solution": "점 I가 삼각형 ABC의 내심일 때, 꼭짓점 A에서 내심을 잇는 선분에 의해 나뉜 각 x의 크기를 구한다.\n\n내심의 성질을 이용한다.\n- 내심의 정의: 삼각형의 세 내각의 이등분선의 교점이다.\n- 따라서 각 꼭짓점과 내심을 잇는 선분 AI, BI, CI는 각각 세 내각 ∠A, ∠B, ∠C를 정확히 이등분한다.\n- 그러므로:\n  ∠x + ∠(B/2) + ∠(C/2) = 90°\n  (세 내각의 합이 180°이므로 그 절반들의 합은 90°이다.)\n\n1단계: 꼭짓점 B와 C에서의 이등분된 각 확인\n그림에서 꼭짓점 B와 C에서 내심과 이루는 각의 크기가 각각 다음과 같이 주어져 있다:\n∠IBC = 29°\n∠ICB = 31°\n2단계: 내심의 각의 합 공식 적용하기\n선분 AI가 ∠A의 이등분선이므로 구하는 각은 ∠x = ∠A / 2이다.\n내각의 이등분선들에 의해 나뉜 세 각의 합은 90°이므로:\n∠x + 29° + 31° = 90°\n3단계: 방정식 풀이\n29° + 31° = 60°이므로:\n∠x + 60° = 90°\n∠x = 90° - 60° = 30°\n\n(별해: 전체 각을 구하여 풀기\nBI가 ∠B의 이등분선이므로 ∠B = 2 × 29° = 58°\nCI가 ∠C의 이등분선이므로 ∠C = 2 × 31° = 62°\n삼각형 ABC의 세 내각의 합은 180°이므로:\n∠A = 180° - (∠B + ∠C) = 180° - (58° + 62°) = 180° - 120° = 60°\nAI가 ∠A의 이등분선이므로:\n∠x = (1/2) × ∠A = (1/2) × 60° = 30°)\n\n각 선지를 확인하면 다음과 같다.\n① 28°: 계산 실수 오답\n② 29°: B각의 절반과 혼동한 오답\n③ 30°: 정확한 계산 결과와 일치 (정답)\n④ 31°: C각의 절반과 혼동한 오답\n⑤ 32°: 계산 실수 오답\n\n따라서 각 x의 크기는 30°이므로 정답은 ③이다."
+    "solution": "점 I가 삼각형 ABC의 내심일 때, 꼭짓점 A에서 내심을 잇는 선분에 의해 나뉜 각 x의 크기를 구한다.\n\n내심의 성질을 이용한다.\n- 내심의 정의: 삼각형의 세 내각의 이등분선의 교점이다.\n- 따라서 각 꼭짓점과 내심을 잇는 선분 AI, BI, CI는 각각 세 내각 ∠A, ∠B, ∠C를 정확히 이등분한다.\n- 그러므로:\n  ∠x + ∠(B/2) + ∠(C/2) = 90°\n  (세 내각의 합이 180°이므로 그 절반들의 합은 90°이다.)\n\n1단계: 꼭짓점 B와 C에서의 이등분된 각 확인\n그림에서 꼭짓점 B와 C에서 내심과 이루는 각의 크기가 각각 다음과 같이 주어져 있다:\n∠IBC = 29°\n∠ICB = 31°\n2단계: 내심의 각의 합 공식 적용하기\n선분 AI가 ∠A의 이등분선이므로 구하는 각은 ∠x = ∠A / 2이다.\n내각의 이등분선들에 의해 나뉜 세 각의 합은 90°이므로:\n∠x + 29° + 31° = 90°\n3단계: 방정식 풀이\n29° + 31° = 60°이므로:\n∠x + 60° = 90°\n∠x = 90° - 60° = 30°\n\n(별해: 전체 각을 구하여 풀기\nBI가 ∠B의 이등분선이므로 ∠B = 2 × 29° = 58°\nCI가 ∠C의 이등분선이므로 ∠C = 2 × 31° = 62°\n삼각형 ABC의 세 내각의 합은 180°이므로:\n∠A = 180° - (∠B + ∠C) = 180° - (58° + 62°) = 180° - 120° = 60°\nAI가 ∠A의 이등분선이므로:\n∠x = (1/2) × ∠A = (1/2) × 60° = 30°)\n\n각 선지를 확인하면 다음과 같다.\n① 28°: 계산 실수 오답\n② 29°: B각의 절반과 혼동한 오답\n③ 30°: 정확한 계산 결과와 일치 (정답)\n④ 31°: C각의 절반과 혼동한 오답\n⑤ 32°: 계산 실수 오답\n\n따라서 각 x의 크기는 30°이므로 정답은 ③이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 내심 I에서 A,B,C로 이은 각의 이등분선을 보이고, B와 C의 절반 각 29°,31° 및 구하는 ∠BAI=x를 표시했다.",
+    "solutionImageCaption": "내심의 세 각 이등분선으로 x+29°+31°=90°이므로 x=30°이다. 정답은 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -399,7 +427,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외심의 중심각을 대응 꼭지각의 두배로 계산",
-    "decisiveStep": "주어진B각에대응하는AOC중심각을두배로읽는다."
+    "decisiveStep": "주어진B각에대응하는AOC중심각을두배로읽는다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 외심 O와 세 반지름 OA,OB,OC, ∠B=50°, 두 이등변삼각형의 각 a,b 및 구하는 중심각 ∠AOC를 표시했다.",
+    "solutionImageCaption": "OB를 그으면 ∠B=a+b=50°이고 중심각 ∠AOC=2a+2b=100°이다. 정답은 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -483,7 +515,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "내심 반각의 외각 두 개를 합으로 결합",
-    "decisiveStep": "대변까지연장한두각이등분선의외각을C각과A·B반각으로표현하고A+B를전체각합으로묶는다."
+    "decisiveStep": "대변까지연장한두각이등분선의외각을C각과A·B반각으로표현하고A+B를전체각합으로묶는다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I에서 나온 AI와 BI가 BC와 AC에 닿는 D, E를 보여 준다. ∠C는 58°이고 두 목표각의 변을 옅은 호로 구별한다.",
+    "solutionImageCaption": "∠AEB+∠ADB=2×58°+(180°−58°)/2=177°이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -573,7 +609,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 외접반지름은 반빗변",
-    "decisiveStep": "본문의직각과빗변15를읽어외접반지름을절반으로구한다."
+    "decisiveStep": "본문의직각과빗변15를읽어외접반지름을절반으로구한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: A가 직각인 삼각형 ABC가 외접원에 놓여 있다. BC의 중점을 점으로 표시하고, 그 점에서 A, B, C까지의 반지름이 같은 것을 보여 준다.",
+    "solutionImageCaption": "직각삼각형의 외접원의 지름은 빗변 BC=15 cm이므로 반지름은 7.5 cm이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -610,7 +650,11 @@ window.examData = {
       "assets/images/20_금당중_2학기_중간_중2_수학/q14.png"
     ],
     "answer": "①",
-    "solution": "평행사변형 ABCD에서 이웃하는 두 내각 ∠DAB와 ∠ADC의 크기의 비가 7 : 3일 때, 각 x와 각 y의 크기를 각각 구한다.\n\n평행사변형의 성질을 이용한다.\n- 평행사변형의 성질:\n  1) 이웃하는 두 내각의 크기의 합은 180°이다: ∠DAB + ∠ADC = 180°.\n  2) 마주보는 두 대각의 크기는 서로 같다: ∠B = ∠D, ∠A = ∠C.\n- 비례배분을 이용하여 두 내각의 크기를 구한다.\n\n1단계: 이웃하는 두 각의 합과 비례배분 적용\n평행사변형에서 두 쌍의 대각의 크기는 각각 같고 네 내각의 합은 360°이므로, 이웃한 두 각의 합은 180°이다:\n∠DAB + ∠ADC = 180°\n비가 7 : 3이므로 비례배분하면:\n∠DAB = 180° × (7 / (7 + 3)) = 180° × (7 / 10) = 126°\n∠ADC = 180° × (3 / (7 + 3)) = 180° × (3 / 10) = 54°\n2단계: 각 x와 각 y 구하기\n평행사변형에서 마주보는 대각의 크기가 같으므로:\n- 꼭짓점 B에서의 각 x는 마주보는 ∠ADC와 같으므로:\n  ∠x = ∠ADC = 54°\n- 꼭짓점 C에서의 각 y는 마주보는 ∠DAB와 같으므로:\n  ∠y = ∠DAB = 126°\n\n각 선지를 확인하면 다음과 같다.\n① ∠x = 54°, ∠y = 126°: 비례배분 및 대각의 성질과 정확히 일치함 (정답)\n② ∠x = 56°, ∠y = 124°: 비례배분 오차 오답\n③ ∠x = 60°, ∠y = 120°: 2 : 1 비율 착오 오답\n④ ∠x = 64°, ∠y = 116°: 오답\n⑤ ∠x = 72°, ∠y = 108°: 3 : 2 비율 착오 오답\n\n따라서 ∠x = 54°, ∠y = 126°이므로 정답은 ①이다."
+    "solution": "평행사변형 ABCD에서 이웃하는 두 내각 ∠DAB와 ∠ADC의 크기의 비가 7 : 3일 때, 각 x와 각 y의 크기를 각각 구한다.\n\n평행사변형의 성질을 이용한다.\n- 평행사변형의 성질:\n  1) 이웃하는 두 내각의 크기의 합은 180°이다: ∠DAB + ∠ADC = 180°.\n  2) 마주보는 두 대각의 크기는 서로 같다: ∠B = ∠D, ∠A = ∠C.\n- 비례배분을 이용하여 두 내각의 크기를 구한다.\n\n1단계: 이웃하는 두 각의 합과 비례배분 적용\n평행사변형에서 두 쌍의 대각의 크기는 각각 같고 네 내각의 합은 360°이므로, 이웃한 두 각의 합은 180°이다:\n∠DAB + ∠ADC = 180°\n비가 7 : 3이므로 비례배분하면:\n∠DAB = 180° × (7 / (7 + 3)) = 180° × (7 / 10) = 126°\n∠ADC = 180° × (3 / (7 + 3)) = 180° × (3 / 10) = 54°\n2단계: 각 x와 각 y 구하기\n평행사변형에서 마주보는 대각의 크기가 같으므로:\n- 꼭짓점 B에서의 각 x는 마주보는 ∠ADC와 같으므로:\n  ∠x = ∠ADC = 54°\n- 꼭짓점 C에서의 각 y는 마주보는 ∠DAB와 같으므로:\n  ∠y = ∠DAB = 126°\n\n각 선지를 확인하면 다음과 같다.\n① ∠x = 54°, ∠y = 126°: 비례배분 및 대각의 성질과 정확히 일치함 (정답)\n② ∠x = 56°, ∠y = 124°: 비례배분 오차 오답\n③ ∠x = 60°, ∠y = 120°: 2 : 1 비율 착오 오답\n④ ∠x = 64°, ∠y = 116°: 오답\n⑤ ∠x = 72°, ∠y = 108°: 3 : 2 비율 착오 오답\n\n따라서 ∠x = 54°, ∠y = 126°이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 ∠DAB와 ∠ADC를 7t°, 3t°로 표시하고, A의 외각 x와 C의 각 y를 각 꼭짓점에 연결한다.",
+    "solutionImageCaption": "이웃한 각의 합은 180°이므로 7t+3t=180°에서 t=18°; 따라서 x=54°, y=126°이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -657,7 +701,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "평행사변형 대변과 대각의 기본 진위",
-    "decisiveStep": "주어진B각과BC길이를대각·대변으로옮기고이웃변AB는같다고보장되지않음을구분한다."
+    "decisiveStep": "주어진B각과BC길이를대각·대변으로옮기고이웃변AB는같다고보장되지않음을구분한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠B=60°와 BC=5 cm를 표시하고, 두 쌍의 대변과 대각의 관계를 서로 다른 기호로 구분한다.",
+    "solutionImageCaption": "AD=BC=5 cm이지만 AB는 정해지지 않으므로 옳지 않은 것은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -706,7 +754,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "primaryMethod": "대각선 이등분과 평행선 각으로 ASA 대응 판정",
-    "decisiveStep": "같은반대각선과맞꼭지각·엇각으로마주보는두삼각형의ASA대응을확인하고잘못된각대응을배제한다."
+    "decisiveStep": "같은반대각선과맞꼭지각·엇각으로마주보는두삼각형의ASA대응을확인하고잘못된각대응을배제한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 대각선 교점 O와 변 AD, BC 위의 E, F를 보여 준다. OE와 OF는 한 눈금, 합동에 쓰는 다른 길이와 각은 별도 기호로 구분한다.",
+    "solutionImageCaption": "△OAE와 △OCF는 ASA 합동이고 ∠AEO=∠CFO이므로 옳지 않은 것은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -755,7 +807,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중점의 반대변에서 한 쌍의 평행·같은길이 판정",
-    "decisiveStep": "원래대변의평행과같은길이를각절반인MB,DN으로옮겨한쌍의대변조건을고른다."
+    "decisiveStep": "원래대변의평행과같은길이를각절반인MB,DN으로옮겨한쌍의대변조건을고른다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 M, N은 각각 AB, CD의 중점이다. 사각형 MBND를 연결하고, 중점의 반변과 MB·DN의 평행·길이 관계를 서로 다른 표시로 나타낸다.",
+    "solutionImageCaption": "MB와 DN이 한 쌍의 대변이고 평행하며 길이가 같으므로 가장 적절한 조건은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -802,7 +858,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "마름모의 대각선 수직이등분과 등변 성질 비교",
-    "decisiveStep": "네변같음과대각선수직이등분은확인하고두대각선의같은길이는일반적으로보장되지않음을판정한다."
+    "decisiveStep": "네변같음과대각선수직이등분은확인하고두대각선의같은길이는일반적으로보장되지않음을판정한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD의 네 변에 같은 길이 표식이 있고, 대각선 AC와 BD는 O에서 서로 수직으로 이등분된다.",
+    "solutionImageCaption": "마름모의 네 변은 같고 두 대각선은 서로 수직으로 이등분한다. 일반 마름모의 두 대각선 길이는 같지 않다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -888,7 +948,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "정사각형 대각선 대칭의 SAS와 외각",
-    "decisiveStep": "대각선의45도와같은변·공통변으로ABE,ADE의SAS를얻고주어진외각에서45도를빼대응각을구한다."
+    "decisiveStep": "대각선의45도와같은변·공통변으로ABE,ADE의SAS를얻고주어진외각에서45도를빼대응각을구한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 AC 위에 E가 놓여 있다. ∠BEC=69°이고, 대각선이 나누는 A의 두 각은 각각 45°이다.",
+    "solutionImageCaption": "△ABE와 △ADE는 SAS 합동이므로 ∠EDA=∠EBA이다. 외각의 성질로 ∠EBA=69°−45°=24°이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -932,7 +996,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 내접원 접선길이로 반지름 방정식",
-    "decisiveStep": "같은내접반지름의RHS쌍에서접선길이를전달하고빗변합을r의일차식으로표현해빈칸을완성한다."
+    "decisiveStep": "같은내접반지름의RHS쌍에서접선길이를전달하고빗변합을r의일차식으로표현해빈칸을완성한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원 중심 I에서 접점 D, E, F까지의 반지름과 IA, IB가 그려져 있다. 같은 점에서 그은 접선 길이 쌍에 같은 눈금이 있고 세 변은 6 cm, 8 cm, 10 cm이다.",
+    "solutionImageCaption": "BE=BD=8−r, AF=AD=6−r이고 10=(6−r)+(8−r)이므로 r=2 cm이다. (1) 8−r, (2) RHS, (3) 8−r, (4) 10=(6−r)+(8−r), (5) 2. 정답은 (1)~(5) 순서대로 이 값들이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1013,7 +1081,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직사각형 두 대각선의 같은길이를 SAS로 증명",
-    "decisiveStep": "대변AB=DC를공통BC와직각에보태SAS를완성하고대응대각선AC=DB를증명의결론으로쓴다."
+    "decisiveStep": "대변AB=DC를공통BC와직각에보태SAS를완성하고대응대각선AC=DB를증명의결론으로쓴다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD와 대각선이 있는 원래 그림 아래에 △ABC와 △DCB를 같은 방향으로 분리해 놓았다. 대응하는 두 변과 직각에 같은 표식이 있다.",
+    "solutionImageCaption": "AB=DC, BC는 공통이고 ∠ABC=∠DCB=90°이므로 SAS 합동이다. 대응변 AC=DB이다. 정답은 (1) AB=DC, (2) AC=DB이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

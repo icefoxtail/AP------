@@ -172,7 +172,11 @@ window.examData = {
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "주어진 교점으로 계수 역산",
-    "decisiveStep": "실제그림의 교점(3,1)을 두식에 차례로 대입하여 a,b를 구한다."
+    "decisiveStep": "실제그림의 교점(3,1)을 두식에 차례로 대입하여 a,b를 구한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 교점 (3, 1)과 그 점을 지나는 두 직선을 나타낸 그림",
+    "solutionImageCaption": "두 직선의 교점은 (3, 1)이며, 계수를 대입하면 a=-1, b=5이다. 따라서 a+b=4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -291,7 +295,11 @@ window.examData = {
       "l4": "두 각 조건"
     },
     "primaryMethod": "외각으로 같은 두각을 찾아 등변 판정",
-    "decisiveStep": "외각60과 C30으로 A30을 구해 같은각의 대변길이를 옮긴다."
+    "decisiveStep": "외각60과 C30으로 A30을 구해 같은각의 대변길이를 옮긴다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 B의 외각 60도와 C의 30도, A와 C의 같은 각 표시, AB와 BC의 같은 길이 표시를 보여 준다.",
+    "solutionImageCaption": "외각의 성질로 ∠A=30°이고 ∠A=∠C이므로 AB=BC이다. 따라서 x=5 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -349,7 +357,11 @@ window.examData = {
       "l4": "RHA"
     },
     "primaryMethod": "회전된 직각삼각형의 RHA 대응",
-    "decisiveStep": "직각과 평각에서 예각일치를 확인해 두 수선길이를 DA,AE로 옮겨 더한다."
+    "decisiveStep": "직각과 평각에서 예각일치를 확인해 두 수선길이를 DA,AE로 옮겨 더한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이등변삼각형과 D, A, E를 지나는 직선에 내린 수선의 발을 원래 배치와 합동 대응을 펼친 배치로 보여 준다.",
+    "solutionImageCaption": "△BDA≡△AEC이므로 AD=EC=4 cm, AE=BD=6 cm이다. 따라서 DE=10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -399,7 +411,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내심의 거리·각이등분·합동 성질 비교",
-    "decisiveStep": "같은변거리와 같은각,공통빗변 RHA를 사용하고 꼭짓점등거리의 일반화를 거부한다."
+    "decisiveStep": "같은변거리와 같은각,공통빗변 RHA를 사용하고 꼭짓점등거리의 일반화를 거부한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 내심 I에서 세 변에 내린 수선의 길이는 같고, 외심 O에서 세 꼭짓점까지의 반지름도 같음을 두 그림으로 비교한다.",
+    "solutionImageCaption": "내심의 거리 성질과 외심의 거리 성질을 구별하면 옳지 않은 것은 ②, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -457,7 +473,11 @@ window.examData = {
       "l4": "꼭짓각의 이등분선"
     },
     "primaryMethod": "꼭지각 이등분선의 수직이등분 성질",
-    "decisiveStep": "밑변의중점·수직과 SAS합동은 성립하지만 임의P의 세꼭짓점거리는 같지않음을 판단한다."
+    "decisiveStep": "밑변의중점·수직과 SAS합동은 성립하지만 임의P의 세꼭짓점거리는 같지않음을 판단한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 각이등분선 AD 위의 P와 밑변의 D를 보여 주고, 펼친 두 직각삼각형에서 대응변과 직각을 표시한다.",
+    "solutionImageCaption": "△PBD와 △PCD는 SAS로 합동이므로 BP=CP이다. AP=BP=CP는 일반적으로 성립하지 않으므로 옳지 않은 것은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -518,7 +538,11 @@ window.examData = {
       "l4": "RHS"
     },
     "primaryMethod": "공통빗변 RHS와 45도 등변 길이",
-    "decisiveStep": "그려진 AE를 공통빗변으로 DE=EC를 얻고 작은직각이등변삼각형의 DB=DE를 더한다."
+    "decisiveStep": "그려진 AE를 공통빗변으로 DE=EC를 얻고 작은직각이등변삼각형의 DB=DE를 더한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이등변삼각형의 원래 도형에 보조선 AE를 넣고, △ADE와 △ACE의 같은 방향 합동 대응을 펼쳐 보인다.",
+    "solutionImageCaption": "△ADE≡△ACE(RHS)로 DE=EC이고, △EBD는 직각이등변이므로 DB=DE=5 cm이다. 따라서 DB+DE=10 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -576,7 +600,11 @@ window.examData = {
       "l4": "외심·내심을 이용한 복합도형"
     },
     "primaryMethod": "외심각에서 내각을 거쳐 내심각",
-    "decisiveStep": "외심각의 절반인 A를 구해 내심각90+A/2에 대입한다."
+    "decisiveStep": "외심각의 절반인 A를 구해 내심각90+A/2에 대입한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 외접원과 외심 O, 내심 I를 보인다. 반지름 OA, OB, OC는 같고, 중심각 BOC는 100도이며 꼭짓각 BAC는 50도이다.",
+    "solutionImageCaption": "외심각에서 ∠A=50°를 얻고 내심각 관계를 적용한다. 정답은 ① 115°입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -636,7 +664,11 @@ window.examData = {
       "l4": "외심의 위치·각"
     },
     "primaryMethod": "중심각의 비례배분 후 원주각",
-    "decisiveStep": "한바퀴360을2:4:3으로 배분한 뒤 목표원주각을 반으로 구한다."
+    "decisiveStep": "한바퀴360을2:4:3으로 배분한 뒤 목표원주각을 반으로 구한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 외접원 중심 O에서 A, B, C로 이어지는 세 반지름과 중심각 AOB, 같은 호를 보는 원주각 ACB를 보인다.",
+    "solutionImageCaption": "중심각의 비에서 ∠AOB=80°를 구한 뒤 원주각은 그 절반임을 적용한다. 정답은 ② 40°입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -696,7 +728,11 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "내심의 이등분선과 평행선의 등변 형성",
-    "decisiveStep": "엇각과 이등분각으로 DB=DI,EC=EI를 얻고 일반적으로 BI=CI는 아님을 판단한다."
+    "decisiveStep": "엇각과 이등분각으로 DB=DI,EC=EI를 얻고 일반적으로 BI=CI는 아님을 판단한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I에서 BI와 CI를 잇고, I를 지나는 DE를 BC와 평행하게 그렸다. 같은 표시로 DB=DI와 EC=EI를 나타낸다.",
+    "solutionImageCaption": "DE∥BC와 각 이등분선에서 DB=DI, EI=EC를 얻지만 BI=CI는 일반적으로 성립하지 않는다. 정답은 ④입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1243,7 +1279,11 @@ window.examData = {
       "l4": "반지름·각 계산"
     },
     "primaryMethod": "외접반지름을 둘레식에서 복원",
-    "decisiveStep": "OB=OC=R로 삼각형둘레식에서 R을 구하고 원주2πR을 계산한다."
+    "decisiveStep": "OB=OC=R로 삼각형둘레식에서 R을 구하고 원주2πR을 계산한다.",
+    "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 외접원 중심 O에서 세 꼭짓점까지의 반지름에 같은 눈금을 표시했다. BC는 8cm이다.",
+    "solutionImageCaption": "삼각형 OBC의 둘레 20cm와 BC=8cm에서 외접원 반지름 6cm를 구한 뒤 원주를 계산한다. 정답은 12π cm입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
