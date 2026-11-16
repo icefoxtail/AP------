@@ -66,17 +66,41 @@ function evidenceDigests(root,d,{safe,sha}) {
   return out;
 }
 
-function validateFile(root,d,hp,replayHistorical) {
+function validateCore(root,d,hp,replayHistorical,historicalCommit=null,historicalReads=null) {
   if(!has(d))return [];
   const {safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,identity}=hp;
   const fail=s=>{throw Error('M2_REPAIRED_METADATA_'+s);},same=(a,b)=>stable(a)===stable(b);
   const keys=(o,ks)=>{if(!o||typeof o!=='object'||Array.isArray(o)||!same(Object.keys(o).sort(),[...ks].sort()))fail('FIELDS');};
   const fields=(a,b)=>[...new Set([...Object.keys(a),...Object.keys(b)])].filter(k=>own(a,k)!==own(b,k)||!same(a[k],b[k])).sort();
   const plain=r=>Object.fromEntries(REF.map(k=>[k,r?.[k]]));
-  function ancestor(a,b='HEAD'){try{git(root,['merge-base','--is-ancestor',a,b]);}catch{fail('UNMERGED_REFERENCE');}}
+  function ancestor(a,b=historicalCommit||'HEAD'){try{git(root,['merge-base','--is-ancestor',a,b]);}catch{fail('UNMERGED_REFERENCE');}}
+  function historicalRaw(commit,path) {
+    safe(root,path);
+    const entry=git(root,['ls-tree','-z','--full-tree',commit,'--',path]).toString();
+    const m=/^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+    if(!m||m[2]!==path)fail('HISTORICAL_REGULAR_FILE');
+    const raw=git(root,['show',commit+':'+path]);if(blob(raw)!==m[1])fail('HISTORICAL_BLOB');return raw;
+  }
   function read(r,pattern,{full=false,live=false,merged=false,head=false}={}) {
     keys(r,full?FULL:REF);if(!GIT.test(r.commit||'')||!SHA.test(r.sha256||'')||full&&!GIT.test(r.gitBlobSha1||'')||!pattern.test(r.path||''))fail('REFERENCE');safe(root,r.path);
     if(merged)ancestor(r.commit);
+    // Only the closed historical wrapper supplies this snapshot. The ordinary
+    // path below is unchanged; callers cannot provide a reader or bypass flag.
+    if(historicalCommit) {
+      const raw=historicalRaw(r.commit,r.path);
+      if(sha(raw)!==r.sha256||full&&blob(raw)!==r.gitBlobSha1)fail('IMMUTABLE_BYTES');
+      if(head||live) {
+        const snapshot=historicalRaw(historicalCommit,r.path);
+        if(!snapshot.equals(raw))fail('HISTORICAL_SNAPSHOT_BYTES');
+        if(DOC.test(r.path)||COPY.test(r.path)||RECEIPT.test(r.path)) {
+          const ref={commit:historicalCommit,path:r.path,gitBlobSha1:blob(raw),sha256:sha(raw)};
+          const prior=historicalReads.get(r.path);
+          if(prior&&prior.sha256!==ref.sha256)fail('HISTORICAL_EVIDENCE_CONFLICT');
+          historicalReads.set(r.path,ref);
+        }
+      }
+      return raw;
+    }
     let raw;try{const entry=git(root,['ls-tree','-z','--full-tree',r.commit,'--',r.path]).toString(),m=/^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);if(!m||m[2]!==r.path)fail('IMMUTABLE_REGULAR_FILE');raw=git(root,['show',r.commit+':'+r.path]);if(blob(raw)!==m[1])fail('IMMUTABLE_BLOB');}catch(e){if(String(e.message).startsWith('M2_REPAIRED_METADATA_'))throw e;fail('IMMUTABLE_UNAVAILABLE');}
     if(sha(raw)!==r.sha256||full&&blob(raw)!==r.gitBlobSha1)fail('IMMUTABLE_BYTES');
     if(head){const entry=git(root,['ls-tree','-z','--full-tree','HEAD','--',r.path]).toString(),m=/^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);if(!m||m[2]!==r.path)fail('CURRENT_HEAD_REGULAR_FILE');if(m[1]!==blob(raw)||!raw.equals(git(root,['show','HEAD:'+r.path])))fail('CURRENT_HEAD_BYTES');}
@@ -95,6 +119,7 @@ function validateFile(root,d,hp,replayHistorical) {
     if(p.sourceRef?.path!==sp||p.priorValidatedCompactRef?.path!==cp)fail('SOURCE_PATH');
     read(p.priorValidatedCompactRef,COMPACT,{full:true,merged:true});
     const replay=replayHistorical(root,p.priorValidatedCompactRef,hp);if(replay.errors.length)fail('HISTORICAL_CHAIN:'+replay.errors.join('|'));
+    if(historicalReads)for(const r of replay.requiredLiveEvidence||[])historicalReads.set(r.path,r);
     const prior=replay.document;
     if(has(prior)||own(prior.evidence,'currentM2DisplayRepairClosure')||!prior.evidence?.[PRIOR_GROUP]||prior.sourceArchiveFile!==d.sourceArchiveFile||!same(prior.evidence[PRIOR_GROUP].carrier,p.priorRepairCarrierRef))fail('PRIOR_LITERAL_REPAIR');
     const old=doc(p.priorRepairCarrierRef,/^docs\/operations\/.+\/m2-current-four-slot-repair-closure\.json$/,{live:true});
@@ -154,4 +179,24 @@ function validateFile(root,d,hp,replayHistorical) {
     return [];
   } catch(e) {return [String(e.message).startsWith('M2_REPAIRED_METADATA_')?e.message:'M2_REPAIRED_METADATA_EVIDENCE_UNAVAILABLE'];}
 }
-module.exports={GROUP,SCHEMA,SCOPE,ZERO,ADDED,CARRIER,has,createObligationReader,evidenceDigests,validateFile};
+// An immutable result is historical evidence only. The IMAGE8 successor must
+// independently require its complete live authority set before accepting it.
+function validateFile(root,d,hp,replayHistorical) {
+  return validateCore(root,d,hp,replayHistorical);
+}
+function validateHistoricalFile(root,reference,hp,replayHistorical) {
+  try {
+    const {safe,sha,blob,stable}=hp;
+    if(!reference||stable(Object.keys(reference).sort())!==stable([...FULL].sort())||!GIT.test(reference.commit||'')||!GIT.test(reference.gitBlobSha1||'')||!SHA.test(reference.sha256||'')||!COMPACT.test(reference.path||''))throw Error('REFERENCE');
+    safe(root,reference.path);git(root,['merge-base','--is-ancestor',reference.commit,'HEAD']);
+    const entry=git(root,['ls-tree','-z','--full-tree',reference.commit,'--',reference.path]).toString(),m=/^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+    if(!m||m[2]!==reference.path||m[1]!==reference.gitBlobSha1)throw Error('MODE');
+    const raw=git(root,['show',reference.commit+':'+reference.path]);
+    if(sha(raw)!==reference.sha256||blob(raw)!==reference.gitBlobSha1)throw Error('BYTES');
+    const document=JSON.parse(raw);
+    if(!has(document)||own(document.evidence,'currentM2Image8Continuity'))throw Error('LITERAL_METADATA_SUCCESSOR_REQUIRED');
+    const reads=new Map(),errors=validateCore(root,document,hp,replayHistorical,reference.commit,reads);
+    return {errors,document,requiredLiveEvidence:[...reads.values()].sort((a,b)=>a.path.localeCompare(b.path,'en'))};
+  }catch{return {errors:['M2_REPAIRED_METADATA_HISTORICAL_INPUT_INVALID'],document:null,requiredLiveEvidence:[]};}
+}
+module.exports={GROUP,SCHEMA,SCOPE,ZERO,ADDED,CARRIER,has,createObligationReader,evidenceDigests,validateFile,validateHistoricalFile};

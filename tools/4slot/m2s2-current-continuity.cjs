@@ -38,8 +38,9 @@ const utc = s => typeof s==='string' && /^\d{4}-\d\d-\d\dT.*(?:Z|\+00:00)$/.test
 const hasLegacy = d => own(d.evidence,GROUP) || (d.items || []).some(i => i.registrationHold?.schemaVersion===HOLD_SCHEMA || own(i.registrationHold,'m2ContinuityCarrier'));
 const repairClosure = () => require('./m2s2-current-repair-closure.cjs');
 const issuedRepairMetadata = () => require('./m2s2-repaired-issued-metadata-continuity.cjs');
+const image8 = () => require('./m2s2-image8-existing-vector-continuity.cjs');
 const displayRepair = () => require('./m2s2-exact-display-repair-closure.cjs');
-const has = d => issuedRepairMetadata().has(d) || hasLegacy(d) || repairClosure().has(d) || displayRepair().hasFor(d,'CURRENT_V1');
+const has = d => image8().hasFor(d,'E017') || issuedRepairMetadata().has(d) || hasLegacy(d) || repairClosure().has(d) || displayRepair().hasFor(d,'CURRENT_V1');
 const inScope = d => /^original\/middle\/m2\/2(?:mid|final)\//.test(d.sourceArchiveFile || '');
 const gitBytes = (root,args) => execFileSync('git',['-C',root,'-c','core.quotepath=false',...args],{timeout:30000,maxBuffer:32*1024*1024,stdio:['ignore','pipe','pipe']});
 
@@ -386,6 +387,7 @@ function validateHistoricalFile(root,reference,hp) {
 }
 
 function validateFile(root,d,hp) {
+  if(image8().hasFor(d,'E017'))return image8().validateFile(root,d,hp,(r,ref,h)=>issuedRepairMetadata().validateHistoricalFile(r,ref,h,(r2,ref2,h2)=>repairClosure().validateHistoricalFile(r2,ref2,h2,validateHistoricalFile)));
   if(issuedRepairMetadata().has(d))return issuedRepairMetadata().validateFile(root,d,hp,(r,ref,h)=>repairClosure().validateHistoricalFile(r,ref,h,validateHistoricalFile));
   if(displayRepair().has(d)) return displayRepair().validateFile(root,d,hp,validateHistoricalFile);
   if(repairClosure().has(d)) return repairClosure().validateFile(root,d,hp,validateHistoricalFile);

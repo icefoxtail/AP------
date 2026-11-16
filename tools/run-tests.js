@@ -41,6 +41,51 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  // Closed IMAGE8 contract and original historical adapters; default 60s each.
+  {
+    label: 'tests/item-4slot-m2s2-image8-contract.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-contract.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-current.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-current.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-evidence.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-evidence.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-generated-authority.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-generated-authority.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-generated-parser.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-generated-parser.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-generated.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-generated.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-history-loss.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-history-loss.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-history.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-imported-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-imported-history.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-image8-repaired-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-image8-repaired-history.test.cjs']
+  },
+  {
+    label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-problem21-continuity.test.mjs']
+  },
   {
     label: 'tests/item-4slot-m2s2-repaired-issued-metadata.test.cjs',
     args: ['--test', 'tests/item-4slot-m2s2-repaired-issued-metadata.test.cjs']
@@ -310,6 +355,10 @@ const requiredCommands = [
   {
     label: 'tests/archive-registration-writer.test.mjs',
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
+  },
+  {
+    label: 'tests/archive-registration-build-db.test.mjs',
+    args: ['--test', 'tests/archive-registration-build-db.test.mjs']
   },
   {
     label: 'tests/archive-single-writer-workflows.test.mjs',
@@ -688,6 +737,12 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-source-candidate.test.mjs',
     args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2s1-svg7-image-pointer.test.mjs',
+    // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
+    args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
+    timeout: 240000
   }
 ];
 

@@ -8,6 +8,7 @@ const {buildLookup,validateData}=require('./validate-4slot.cjs');
 const {sourceNumber,sourceIdentityNumber}=require('./exam-items.cjs');
 const nativeAmendment=require('./m2s2-imported-native-vector-amendment.cjs');
 const issuedMetadata=require('./m2s2-imported-issued-metadata-continuity.cjs');
+const image8 = () => require('./m2s2-image8-existing-vector-continuity.cjs');
 const displayRepair=()=>require('./m2s2-exact-display-repair-closure.cjs');
 const CARRIER_SCHEMA='m2-s2-imported-current-four-slot-continuity-v1';
 const HOLD_SCHEMA='4slot-m2s2-imported-current-renderer-hold-v1';
@@ -30,7 +31,7 @@ const PRESENTATION=new Set(['image','imageAlt','imageSize','layoutTag','solution
 const METADATA=new Set(['conditionKeys','crossConceptKeys','curriculum','decisiveStep','difficultyBoundaryFlag','difficultyBucket','difficultyConfidence','integrationPattern','legacyLevelCompatibility','primaryMethod','problemTypeKey','rpmL1','rpmL2','rpmL3','rpmL4','rpmPrimaryPath','standardUnit','standardUnitKey','subUnit','subUnitKey','templateKey']);
 const OVERLAY=new Set(['courseKey','curriculumKey','crossConceptKeys']);
 const own=(o,k)=>Object.hasOwn(o||{},k);
-const has=d=>issuedMetadata.has(d)||displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')||nativeAmendment.has(d)||own(d.evidence,GROUP)||(d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||own(i.registrationHold,'m2ImportedCarrier'));
+const has=d=>image8().hasFor(d,'E023')||issuedMetadata.has(d)||displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')||nativeAmendment.has(d)||own(d.evidence,GROUP)||(d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||own(i.registrationHold,'m2ImportedCarrier'));
 const inScope=d=>/^original\/middle\/m2\/2final\//.test(d.sourceArchiveFile||'');
 const git=(root,args)=>execFileSync('git',['-C',root,'-c','core.quotepath=false',...args],{timeout:30000,maxBuffer:32*1024*1024,stdio:['ignore','pipe','pipe']});
 
@@ -288,6 +289,7 @@ function validateHistoricalFile(root,reference,hp){
   }catch{return {errors:['M2_IMPORTED_CONTINUITY_HISTORICAL_INPUT_INVALID'],document:null,requiredLiveEvidence:[]};}
 }
 function validateFile(root,d,hp){
+  if(image8().hasFor(d,'E023'))return image8().validateFile(root,d,hp,(r,ref,h)=>issuedMetadata.validateHistoricalFile(r,ref,h,validateHistoricalFile));
   if(issuedMetadata.has(d))return issuedMetadata.validateFile(root,d,hp,validateHistoricalFile);
   if(displayRepair().has(d))return displayRepair().validateFile(root,d,hp,validateHistoricalFile);
   if(nativeAmendment.has(d))return nativeAmendment.validateFile(root,d,hp,validateFile);

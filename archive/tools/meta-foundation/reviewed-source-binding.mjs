@@ -20,6 +20,8 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "currentTargetApplication", proofKey: "currentTargetApplication" }),
   Object.freeze({ requestKey: "m2ProblemRendererContinuity", proofKey: "m2ProblemRendererContinuity" }),
   Object.freeze({ requestKey: "e017RhsContinuity", proofKey: "e017RhsContinuity" }),
+  Object.freeze({ requestKey: "m2ProblemRenderer21Continuity", proofKey: "m2ProblemRenderer21Continuity" }),
+  Object.freeze({ requestKey: "e023SolutionDisplayContinuity", proofKey: "e023SolutionDisplayContinuity" }),
 ]);
 
 // A previous native receipt can be lineage evidence for a fresh source
@@ -39,7 +41,8 @@ export function reviewedSourceBindingItems(request) {
   const lineage = hasReviewedReceiptLineage(request);
   return request.items.filter(patch => REVIEWED_SOURCE_BINDING_OPT_INS.some(({ requestKey }) =>
     patch.sourceReview?.[requestKey] !== undefined) || patch.targetParentRef?.nativeSourceReview !== undefined ||
-    patch.targetParentRef?.retainedScopeParent !== undefined || (lineage && patch.sourceReview !== undefined));
+    patch.targetParentRef?.retainedScopeParent !== undefined || (lineage && patch.sourceReview !== undefined) ||
+    patch.targetParentRef?.nativeRpmCourseTransport !== undefined);
 }
 
 export function reviewedSourceBindingPath(requestId) {
@@ -76,7 +79,8 @@ export function buildReviewedSourceBinding({ request, requestId, requestSha256, 
     if (repairs.length !== 1 || !proof || proof.schemaVersion !== "archive-reviewed-source-reassessment-v1" ||
         proof.questionUid !== patch.questionUid || proof.sourceOrdinal !== patch.sourceOrdinal ||
         REVIEWED_SOURCE_BINDING_OPT_INS.some(({ requestKey, proofKey }) =>
-          patch.sourceReview?.[requestKey] !== undefined && proof[proofKey] === undefined))
+          patch.sourceReview?.[requestKey] !== undefined && proof[proofKey] === undefined) ||
+        patch.targetParentRef?.nativeRpmCourseTransport !== undefined && proof.nativeRpmCourseTransport === undefined)
       fail("exact selected fingerprint repair and source-review proof required");
     const parents = nativeParentBindings.filter(value => value.questionUid === patch.questionUid && value.sourceOrdinal === patch.sourceOrdinal);
     const hasParent = patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined;

@@ -20,6 +20,9 @@ import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-ta
 import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
+import { validateM2ProblemRenderer21Continuity } from "./reviewed-m2-problem21-continuity.mjs";
+import { validateM2E023SolutionDisplayContinuity } from "./reviewed-m2-e023-solution-display-continuity.mjs";
+import { bindReviewedM2NativeRpmCourse } from "./reviewed-m2-native-rpm-course.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -228,6 +231,39 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
       ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
+  // Both witnesses read the same real source before either comparison view is
+  // composed. Each owns a closed, disjoint set of display fields. The recursive
+  // ordinary Native validator still checks the complete resulting payload and
+  // all metadata, original assets and current parent authority.
+  const m2Problem21 = validateM2ProblemRenderer21Continuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes, cache });
+  const e023Display = validateM2E023SolutionDisplayContinuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes });
+  if (m2Problem21 || e023Display) {
+    const normalizedQuestion = { ...question }, normalizedPatch = { ...patch, sourceReview: { ...patch.sourceReview } };
+    const owned = new Set();
+    for (const [context, fields, option] of [
+      [m2Problem21, m2Problem21?.normalizedProblemFields, "m2ProblemRenderer21Continuity"],
+      [e023Display, e023Display?.ownedFields, "e023SolutionDisplayContinuity"],
+    ]) {
+      if (!context) continue;
+      if (!Array.isArray(fields) || !fields.length || new Set(fields).size !== fields.length)
+        fail("exact owned display field inventory required");
+      for (const field of fields) {
+        if (owned.has(field)) fail("display comparison field ownership overlaps");
+        owned.add(field);
+        if (Object.hasOwn(context.normalizedQuestion, field)) normalizedQuestion[field] = context.normalizedQuestion[field];
+        else delete normalizedQuestion[field];
+      }
+      delete normalizedPatch.sourceReview[option];
+    }
+    const inner = validateReviewedSourceReassessment({ root, request, patch: normalizedPatch, metadata,
+      question: normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter, issuedSourceReview, cache });
+    const originalSourceReviewSha256 = sha256(stable(inner));
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)),
+      ...(m2Problem21 ? { m2ProblemRenderer21Continuity: { ...m2Problem21.proof, originalSourceReviewSha256 } } : {}),
+      ...(e023Display ? { e023SolutionDisplayContinuity: { ...e023Display.proof, originalSourceReviewSha256 } } : {}) };
+  }
   const m2ProblemRenderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });
   if (m2ProblemRenderer) {
@@ -362,6 +398,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       questionUid: patch.questionUid, sourceOrdinal: ordinal, studentPayloadSha256: sha256(stable(payload)),
       rpmBindings, scope: "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false } });
   if (nativeFamilyCourseTransport) Object.assign(accepted, nativeFamilyCourseTransport.fields);
+  const nativeRpmCourseTransport = bindReviewedM2NativeRpmCourse({ root, request, patch, native: loaded, row,
+    metadata, question, committedQuestion: committedBank[ordinal - 1], accepted, final, canonicalBefore, canonicalAfter,
+    issuedProof: issuedSourceReview?.nativeRpmCourseTransport });
+  if (nativeRpmCourseTransport) Object.assign(accepted, nativeRpmCourseTransport.fields);
   for (const [key, value] of Object.entries(patch.after)) {
     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
     // Source curriculum identifiers may be carried verbatim; they are never guessed from the reviewed grade.
@@ -399,6 +439,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(retainedNativeFields ? { retainedNativeFields: retainedNativeFields.proof } : {}),
     ...(retainedScopeTransport ? { retainedScopeTransport: retainedScopeTransport.proof } : {}),
     ...(nativeFamilyCourseTransport ? { nativeFamilyCourseTransport: nativeFamilyCourseTransport.proof } : {}),
+    ...(nativeRpmCourseTransport ? { nativeRpmCourseTransport: nativeRpmCourseTransport.proof } : {}),
     ...(currentDefinitionApplication ? { currentDefinitionApplication: currentDefinitionApplication.proof } : {}),
     ...(prerequisiteExistingApplication ? { prerequisiteExistingApplication: prerequisiteExistingApplication.proof } : {}),
     ...(currentTargetApplication ? { currentTargetApplication: currentTargetApplication.proof } : {}),

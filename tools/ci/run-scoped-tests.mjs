@@ -34,6 +34,7 @@ const registrationContracts = [
   /^tests\/(?:git-push-derived-with-retry\.|ci-signal-hygiene\.|run-tests-output-guard\.|apms-worker-deploy\.)/,
   /^tests\/archive-basic-scope-rebind\.test\.mjs$/,
   /^tests\/archive-(?:source-metadata-materializer|reviewed-source-candidate)\.test\.mjs$/,
+  /^tests\/archive-m2s1-svg7-image-pointer\.test\.mjs$/,
 ];
 const outputConsumers = [
   // Common output modules serve originals, Generated, saved papers and APMS
