@@ -321,7 +321,7 @@
     PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS,
     isQuickView: (view) => VIEWS.includes(view),
     usableBucket, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
-    buildScopes, pickableGroups, selectNodes, unitNoun, shortReason,
+    buildScopes, wrapRecord, pickableGroups, selectNodes, unitNoun, shortReason,
     shortageText, presetMix,
   };
 });

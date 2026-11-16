@@ -533,6 +533,7 @@
     previewOpen: true,
     outputSettingsOpen: false,
     scopeGroupOpen: {},
+    scopeUnitOpen: {},
     composeAnnounce: "",
     assignBusy: false,
   };
@@ -1018,8 +1019,12 @@
       // Scope keys from the previous (per-curriculum) list are not valid unit keys any more.
       // Drop them with a visible notice instead of rejecting the whole draft; selected
       // questions and their frozen rows are kept as saved.
-      const currentKeys = new Set(currentScopes.map(scope => scope.key));
-      restoredScopeKeys = data.scopes.filter(key => currentKeys.has(key));
+      const currentKeys = new Set(currentScopes.flatMap(scope => [scope.key, ...(scope.children || []).map(child => child.key)]));
+      // 고등 소단원 묶음표를 아직 못 읽었으면 자식 키(대단원 키~묶음 키)를 버리지 않고 둔다(읽으면 그대로 살아난다).
+      const groupsPending = !/^중[123]$/.test(restoredFilters.grade || "") && Boolean(QuickTree?.loadGroups) && !QuickTree.groupsLoaded?.();
+      const parentKeys = new Set(currentScopes.map(scope => scope.key));
+      restoredScopeKeys = data.scopes.filter(key => currentKeys.has(key) ||
+        (groupsPending && key.includes("~") && parentKeys.has(key.slice(0, key.indexOf("~")))));
       droppedScopeCount = data.scopes.length - restoredScopeKeys.length;
     } else {
       const currentScopePaths = new Set(currentScopes.flatMap(scope => scope.paths));
@@ -1317,10 +1322,82 @@
   // PRIMARY scope source (user decision 2026-10-29): one 2022-based unit list per grade built by
   // Archive2UnifiedUnits. 2015 and 2022 items share a unit; a UID is counted once; items without
   // unit evidence stay selectable in a per-subject "단원 미분류" scope instead of disappearing.
+  // 문제지 만들기 단원 목록의 둘째 층(2026-11-16, 계획 작업 3b): 대단원 아래 중단원(고등은 소단원 묶음).
+  // 이름·순서·소속은 빠른 평가와 단원별 기출 표가 쓰는 공용 모듈(Archive2UnitTree)과 같은 규칙이다
+  // (한 문항은 자기 대단원의 자식 한 줄에만 들어가고, 정할 수 없는 문항은 "중단원 미지정"/"기타" 줄이다).
+  // 자식 구조는 조건(학교·연도·난이도)에 따라 바뀌지 않게 학년 전체 문항으로 한 번 만들고, 조건은 숫자에만 반영한다.
+  // 자식 키는 `${대단원 키}~${자식 키}`이고 자식 키는 다시 계산해도 같은 안정 키다(m<8자리 해시> / 묶음 키 / __none__).
+  let composeTreeCache = null;
+  let composeGroupsRequested = false;
+  function composeLoadGroups() {
+    if (composeGroupsRequested || !QuickTree?.loadGroups) return;
+    composeGroupsRequested = true;
+    QuickTree.loadGroups().then(() => {
+      composeTreeCache = null;
+      if (state.catalog && state.view === "compose") render();
+    });
+  }
+  function composeTree(index, grade) {
+    if (!Quick?.wrapRecord || !QuickTree?.createTree || !index || !Unified.GRADE_PROFILE[grade]) return null;
+    const middle = /^중[123]$/.test(grade);
+    if (!middle) composeLoadGroups();
+    const groupsReady = middle || Boolean(QuickTree.groupsLoaded?.());
+    const metaIndex = ensureMetaIndex();
+    const hit = composeTreeCache;
+    if (hit && hit.index === index && hit.meta === metaIndex && hit.grade === grade && hit.groupsReady === groupsReady) return hit;
+    const metaByUid = new Map((metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+    const seen = new Set(), placed = [], byUnit = new Map();
+    for (const entry of index.views[grade] || []) {
+      if (entry.unclassified || !entry.unitKey || !entry.uid || seen.has(entry.uid)) continue;
+      seen.add(entry.uid);
+      const wrapped = Quick.wrapRecord(entry.record, middle, index, metaByUid);
+      placed.push([entry, wrapped]);
+      if (!byUnit.has(entry.unitKey)) byUnit.set(entry.unitKey, []);
+      byUnit.get(entry.unitKey).push(wrapped);
+    }
+    let tree = null;
+    try {
+      tree = QuickTree.createTree(Unified.GRADE_PROFILE[grade], Unified.unitsForGrade(grade).map(unit =>
+        ({ key: unit.key, name: unit.name, course: unit.course, selectableRecords: byUnit.get(unit.key) || [] })));
+    } catch (error) { tree = null; }
+    const childOf = new Map();
+    if (tree) for (const [entry, wrapped] of placed) childOf.set(entry.uid, tree.childKeyOf(entry.unitKey, wrapped));
+    composeTreeCache = { index, meta: metaIndex, grade, groupsReady, tree, childOf };
+    return composeTreeCache;
+  }
+  // 대단원 범위(draft)의 문항 묶음으로 자식 범위를 만든다. 자식은 대단원 목록(scopeOptions)에는 넣지 않고 `children`에만 둔다.
+  function composeChildScopes(parent, draft, built) {
+    if (!built?.tree || !built.tree.hasChildren(draft.entry.unitKey)) return [];
+    return built.tree.childrenOf(draft.entry.unitKey).map(child => {
+      const kid = draft.kids?.get(child.key);
+      const uids = kid ? kid.uids : [];
+      return {
+        key: `${parent.key}~${child.key}`,
+        parentKey: parent.key,
+        childKey: child.key,
+        childKind: child.kind,
+        L1: parent.L1,
+        L2: parent.L2,
+        label: child.name,
+        fullLabel: `${parent.fullLabel} › ${child.name}`,
+        basicScope: false,
+        unified: true,
+        child: true,
+        unclassified: false,
+        paths: kid ? [...kid.paths] : [],
+        scopeQuestionUids: uids,
+        facetQuestionUids: kid?.facet || uids,
+        count: uids.length,
+        eligibleCount: uids.length,
+        supplemental: false,
+      };
+    });
+  }
   function unifiedScopeOptions(index) {
     if (renderingScopes && scopeRenderCache) return scopeRenderCache;
     const grade = state.filters.grade || "";
     const structure = grade ? Unified.structure(grade) : [];
+    const built = grade ? composeTree(index, grade) : null;
     const excluded = C.composeExclusions(context()).union;
     const selectionFilters = {
       ...state.filters,
@@ -1358,10 +1435,20 @@
           };
           drafts.set(key, draft);
         }
+        const childKey = built?.tree && !entry.unclassified ? built.childOf.get(uid) : "";
+        let kid = null;
+        if (childKey) {
+          if (!draft.kids) draft.kids = new Map();
+          kid = draft.kids.get(childKey);
+          if (!kid) draft.kids.set(childKey, kid = { uids: [], facet: metaActive ? [] : null, paths: new Set() });
+        }
         if (draft.facetUids) draft.facetUids.push(uid);
+        if (kid?.facet) kid.facet.push(uid);
         if (metaActive && !C.metaFacetMatches(record, selectionFilters)) continue;
         draft.uids.push(uid);
-        draft.paths.add(C.generalPathKey(record));
+        const pathKey = C.generalPathKey(record);
+        draft.paths.add(pathKey);
+        if (kid) { kid.uids.push(uid); kid.paths.add(pathKey); }
       }
     }
     const singleSubject = structure.length === 1;
@@ -1369,22 +1456,27 @@
       .sort((a, b) => a.subjectIndex - b.subjectIndex ||
         Number(a.entry.unclassified) - Number(b.entry.unclassified) ||
         a.entry.unitOrder - b.entry.unitOrder)
-      .map((draft) => ({
-        key: draft.key,
-        L1: draft.entry.subjectLabel,
-        L2: draft.entry.unitLabel,
-        label: draft.entry.unitLabel,
-        fullLabel: singleSubject ? draft.entry.unitLabel : `${draft.entry.subjectLabel} · ${draft.entry.unitLabel}`,
-        basicScope: true,
-        unified: true,
-        unclassified: draft.entry.unclassified,
-        paths: [...draft.paths],
-        scopeQuestionUids: draft.uids,
-        facetQuestionUids: draft.facetUids || draft.uids,
-        count: draft.uids.length,
-        eligibleCount: draft.uids.length,
-        supplemental: false,
-      }));
+      .map((draft) => {
+        const scope = {
+          key: draft.key,
+          L1: draft.entry.subjectLabel,
+          L2: draft.entry.unitLabel,
+          label: draft.entry.unitLabel,
+          fullLabel: singleSubject ? draft.entry.unitLabel : `${draft.entry.subjectLabel} · ${draft.entry.unitLabel}`,
+          basicScope: true,
+          unified: true,
+          unclassified: draft.entry.unclassified,
+          paths: [...draft.paths],
+          scopeQuestionUids: draft.uids,
+          facetQuestionUids: draft.facetUids || draft.uids,
+          count: draft.uids.length,
+          eligibleCount: draft.uids.length,
+          supplemental: false,
+        };
+        const children = composeChildScopes(scope, draft, built);
+        if (children.length) scope.children = children;
+        return scope;
+      });
     if (renderingScopes) {
       scopeRenderCache = result;
       displayedScopes = result;
@@ -1509,8 +1601,23 @@
       (!scope.unified && scope.paths.some((path) => state.scopes.includes(path)))
     );
   }
+  // 고른 범위: 대단원을 고르면 그 단원 전체(자식 키가 함께 있어도 대단원이 우선), 아니면 고른 중단원(소단원 묶음)들.
+  function pickedScopeNodes(scopes = scopeOptions()) {
+    const picked = [];
+    for (const scope of scopes) {
+      if (scopeIsSelected(scope)) picked.push(scope);
+      else for (const child of scope.children || []) if (state.scopes.includes(child.key)) picked.push(child);
+    }
+    return picked;
+  }
   function selectedScopeOptions() {
-    return scopeOptions().filter((scope) => scopeIsSelected(scope) && scope.count > 0);
+    return pickedScopeNodes().filter((scope) => scope.count > 0);
+  }
+  // 대단원 키 목록에서 같은 대단원의 자식 키를 뺀다(대단원이 자식을 포함한다).
+  function withoutShadowedChildren(keys, scopes) {
+    const parents = new Set(keys);
+    const shadowed = new Set(scopes.filter(scope => parents.has(scope.key)).flatMap(scope => (scope.children || []).map(child => child.key)));
+    return keys.filter(key => !shadowed.has(key));
   }
   function selectedScopePaths() {
     const scopes = selectedScopeOptions();
@@ -3033,6 +3140,41 @@
       ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기", 'data-use-sources="true"')}</div></div>` : ""}</div>`;
   }
 
+  // 대단원 한 줄(체크 + 문항 수 + 중단원 펼침 단추)과, 펼쳤을 때 그 아래 중단원(소단원 묶음) 줄들.
+  // 대단원을 체크하면 중단원 줄은 "포함됨"이고, 중단원은 체크 해제한 대단원 아래에서만 따로 고른다.
+  // 0문항 중단원은 흐리게 보이고 고를 수 없다. "중단원 미지정"/"기타" 줄은 문항이 있을 때만 나온다.
+  function scopeOpenState(scope) {
+    const kids = scope.children || [];
+    if (!kids.length) return false;
+    const explicit = state.scopeUnitOpen[scope.key];
+    return explicit !== undefined ? explicit : kids.some(child => state.scopes.includes(child.key));
+  }
+  function scopeUnitMarkup(s) {
+    const kids = s.children || [];
+    const parentOn = scopeIsSelected(s);
+    const pickedKids = kids.filter(child => state.scopes.includes(child.key));
+    const open = scopeOpenState(s);
+    const disabled = state.sealed ? "disabled" : "";
+    const noun = /^중[123]$/.test(state.filters.grade || "") ? "중단원" : "소단원";
+    const hint = s.unclassified ? ' <span class="scope-hint">단원 정보가 아직 없는 문항 · 선택하면 함께 출제</span>'
+      : kids.length ? ` <span class="scope-hint" data-scope-sub-hint>${parentOn ? `${noun} ${kids.length}개 모두 포함`
+        : pickedKids.length ? `${noun} ${pickedKids.length}개 선택` : `${noun} ${kids.length}개`}</span>` : "";
+    const partial = !parentOn && pickedKids.length ? " data-scope-partial" : "";
+    const toggle = kids.length
+      ? button("scope-expand", "", `class="scope-expand" data-scope-key="${esc(s.key)}" aria-expanded="${open}" aria-label="${esc(s.label)} ${noun} ${open ? "접기" : "펼치기"}" title="${noun} ${open ? "접기" : "펼치기"}"`)
+      : "";
+    const head = `<div class="scope-item${kids.length ? " has-subs" : ""}"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}"${partial} ${parentOn ? "checked" : ""} ${disabled}><span class="scope-name">${esc(s.label)}${hint}</span></label><small>${s.count}문항</small>${toggle}</div>`;
+    if (!open) return kids.length ? `<div class="scope-unit">${head}</div>` : head;
+    const rows = kids.filter(child => child.count > 0 || state.scopes.includes(child.key) ||
+      !["none", "other"].includes(child.childKind)).map(child => {
+      const on = parentOn || state.scopes.includes(child.key);
+      const zero = child.count === 0 && !on;
+      const cls = `scope-item scope-sub${parentOn ? " is-implied" : ""}${zero ? " is-zero" : ""}`;
+      const off = state.sealed || parentOn || zero ? "disabled" : "";
+      return `<div class="${cls}" data-scope-sub="${esc(child.key)}"><label class="check"><input type="checkbox" data-scope="${esc(child.key)}" ${on ? "checked" : ""} ${off}><span class="scope-name">${esc(child.label)}${parentOn ? ' <span class="scope-hint">대단원에 포함됨</span>' : ""}</span></label><small>${child.count}문항</small></div>`;
+    }).join("");
+    return `<div class="scope-unit is-open">${head}<div class="scope-subs" data-scope-subs="${esc(s.key)}">${rows}</div></div>`;
+  }
   function renderScopes() {
     if (state.uidRoute) return renderUidRoute();
     if (
@@ -3058,13 +3200,11 @@
         const explicit = state.scopeGroupOpen[g];
         const open = explicit !== undefined ? explicit
           : wideScreen || names.length === 1 || g === names[0] || g === currentSubject || members.some(scopeIsSelected);
-        return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(s =>
-          `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}${s.unclassified ? ' <span class="scope-hint">단원 정보가 아직 없는 문항 · 선택하면 함께 출제</span>' : ""}</label><small>${s.count}문항</small></div>`
-        ).join("")}</details>`;
+        return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(scopeUnitMarkup).join("")}</details>`;
       }).join("")}</div>`;
     };
     const unifiedNotice = unifiedIndex()
-      ? `<p class="muted">단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
+      ? `<p class="muted">단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.${scopes.some(scope => scope.children?.length) ? " 줄 끝의 화살표를 누르면 중단원을 따로 고를 수 있습니다." : ""}</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
     return `<div class="resultbar"><h2>단원</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
       ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 단원입니다. 숫자는 지금 출제할 수 있는 문항 수이며, 같은 문항은 한 번만 셉니다. 난이도를 고르지 않으면 난이도가 정해지지 않은 문항까지 포함해 전체에서 고릅니다.</p>'}
@@ -3109,7 +3249,7 @@
   // Faceted: each list ignores its own selection and honours the other selections.
   function composeMetaFacets() {
     const scopes = scopeOptions();
-    const picked = scopes.filter(scopeIsSelected);
+    const picked = pickedScopeNodes(scopes);
     const uids = new Set((picked.length ? picked : scopes).flatMap((scope) => scope.facetQuestionUids || scope.scopeQuestionUids || []));
     const index = unifiedIndex();
     const records = index
@@ -4291,10 +4431,11 @@
     const focusedFilter = document.activeElement?.dataset?.group === "compose"
       ? document.activeElement.dataset.filter : null;
     const focusedScope = document.activeElement?.dataset?.scope;
-    const focusedAction = ["scope-all", "scope-clear", "scope-group", "scope-range"]
+    const focusedAction = ["scope-all", "scope-clear", "scope-group", "scope-range", "scope-expand"]
       .includes(document.activeElement?.dataset?.action)
       ? document.activeElement.dataset.action : null;
-    const focusedGroupIndex = document.activeElement?.dataset?.groupIndex;
+    const focusedGroupIndex = document.activeElement?.dataset?.groupIndex ?? document.activeElement?.dataset?.scopeKey;
+    const scopeListScroll = document.querySelector(".cz-scope .scope-list")?.scrollTop || 0;
     document.querySelectorAll("[data-view]").forEach((b) => {
       b.classList.toggle("active", navViewActive(b));
       b.setAttribute(
@@ -4321,8 +4462,12 @@
       const focusTarget = [...document.querySelectorAll('[data-group="compose"][data-filter], [data-scope]')]
         .find((el) => focusedFilter ? el.dataset.filter === focusedFilter : focusedScope && el.dataset.scope === focusedScope)
         || [...document.querySelectorAll('[data-action]')]
-          .find((el) => focusedAction && el.dataset.action === focusedAction && el.dataset.groupIndex === focusedGroupIndex);
+          .find((el) => focusedAction && el.dataset.action === focusedAction && (el.dataset.groupIndex ?? el.dataset.scopeKey) === focusedGroupIndex);
       focusTarget?.focus?.({ preventScroll: true });
+      // 목록 안쪽 스크롤은 다시 그려도 그 자리에 둔다(중단원을 펼칠 때마다 맨 위로 돌아가지 않게).
+      const scopeList = document.querySelector(".cz-scope .scope-list");
+      if (scopeList && scopeListScroll) scopeList.scrollTop = scopeListScroll;
+      document.querySelectorAll("input[data-scope-partial]").forEach((input) => { input.indeterminate = true; });
     }
     if (state.view === "compose" && state.selected.length) updatePreview();
     if (quickFocus) quickFocusRestore(quickFocus);
@@ -5883,6 +6028,10 @@
         invalidate();
         clearUidRoute();
         render();
+      } else if (a === "scope-expand") {
+        const scope = (displayedScopes || scopeOptions()).find((item) => item.key === b.dataset.scopeKey);
+        if (scope) state.scopeUnitOpen[scope.key] = !scopeOpenState(scope);
+        render();
       } else if (
         a === "scope-all" ||
         a === "scope-clear" ||
@@ -5909,6 +6058,7 @@
             throw new Error("끝 단원은 시작 단원 뒤에 있어야 합니다.");
           state.scopes = scopes.slice(from, to + 1).filter(s => s.basicScope && !s.unclassified).map((s) => s.key);
         }
+        state.scopes = withoutShadowedChildren(state.scopes, scopes);
         invalidate();
         render();
       } else if (a === "bucket" || a === "bucket-all") {
@@ -6164,9 +6314,11 @@
       } else if (el.dataset.scope) {
         const scope = (displayedScopes || scopeOptions()).find((item) => item.key === el.dataset.scope);
         const legacyPaths = scope?.unified ? [] : scope?.paths || [];
+        // 대단원을 고르면 그 안의 중단원 키는 뺀다(대단원이 전체를 포함한다).
+        const ownChildren = (scope?.children || []).map((child) => child.key);
         state.scopes = el.checked
           ? [
-              ...state.scopes.filter((x) => !legacyPaths.includes(x)),
+              ...state.scopes.filter((x) => !legacyPaths.includes(x) && !ownChildren.includes(x)),
               el.dataset.scope,
             ]
           : state.scopes.filter(
@@ -6706,7 +6858,7 @@
   // while the progress text ("문항 목록 정리 중") is already on screen. The rest builds them when idle.
   const viewNeedsUnifiedIndex = () => ["find", "compose", "health"].includes(state.view) || isQuickAssessmentView();
   async function settleIndexesForView() {
-    const unified = viewNeedsUnifiedIndex(), meta = isQuickAssessmentView();
+    const unified = viewNeedsUnifiedIndex(), meta = isQuickAssessmentView() || state.view === "compose";
     if (!unified && !meta) return;
     Boot?.setStage?.("index");
     await Boot?.nextPaint?.();
@@ -6729,6 +6881,7 @@
   (async () => {
     readUrl();
     if (isQuickAssessmentView()) quickLoadGroups();
+    else if (state.view === "compose") composeLoadGroups();
     Boot?.mountProgress?.($("boot-progress"));
     // 1) First screen: home / 보관함 / 출제 내역 are drawn now; every other screen shows its progress.
     render();
