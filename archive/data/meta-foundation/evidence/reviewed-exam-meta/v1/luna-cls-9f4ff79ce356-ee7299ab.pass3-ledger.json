@@ -1,0 +1,57 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:39:45+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "밑면색은 6가지이고 옆면의 5색 고리 칠하기는 4⁵−4=1020가지라 회전 동치를 5로 나누어 204, 전체는 6×204=1224가지다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "6×5 격자 최단 경로에서 테두리 큰 길을 정확히 세 번 지나는 양끝 구간 배치를 나누어 세면 70+70=140경로다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "f(3)=t와 f(6)=2t에서 증가 간격 2 이상을 반영하면 t=6,7,8,9별 함수 수가 21,90,180,150개라 합계는 441이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_STRICT_MONOTONE_VALUES"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  "rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4: 해당 H2-확률과통계 선택지 표에 함수값의 단조 조건을 세는 RPM 경로가 없다."
+                  }
+              ]
+}

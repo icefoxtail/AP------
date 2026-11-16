@@ -1,0 +1,75 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T14:39:32+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "4Π3=4³=64이고 6H2=7C2=21이므로 두 항의 합은 85로, 첫 항의 중복 허용 배열을 세는 순열이 핵심이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  }
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "1부터 75에서 3 또는 5의 배수는 25+15−5=35개이므로 확률은 35/75=7/15이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "확률의 덧셈정리"
+                                  }
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "마지막 소수 자리는 2·3 중 하나이고 앞 세 자리에는 4를 한 번 놓은 뒤 나머지를 1·2·3에서 골라 2×3×3²=54개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_FREQUENCY_CONSTRAINTS",
+                                            "COND_PRIME_DIGITS_AT_SPECIFIED_POSITIONS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "각 (1+3x)^k의 x³ 계수는 27·C(k,3)이므로 k=3,4,5,6의 합은 27(1+4+10+20)=945이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "특정 항의 계수"
+                                  }
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "a,b,c,d,e는 자연수이고 d²\u003c14라 d=1,2,3으로 나누어 세며 각 경우 a+3b+c+e의 상한 조건을 적용한다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_UPPER_BOUND"
+                                        ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(2),f(3),f(4),f(5)의 순서 있는 네 함수값 합이 ±2인 경우를 세고 자유로운 f(1),f(6)의 5²를 곱한다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  }
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "곱이 24=2³·3의 배수이려면 네 카드 수의 곱에서 2의 지수 합이 3 이상이고 3의 인수가 있어야 하므로 나눗셈 조건으로 분류한다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_DIVISIBILITY"
+                                        ]
+                  }
+              ]
+}
