@@ -28,14 +28,17 @@
   #mode-ctrl > * { flex: none; }
   #mode-ctrl button { font-family: inherit; }
 
+  /* 제목은 자리가 모자라면 버튼보다 먼저 줄어들고, 글자 중간이 아니라 말줄임표(…)로 끝난다(전체 이름은 title 속성).
+     말줄임표는 block 요소의 글자에만 적용되므로 inline-flex가 아니라 block으로 두고 점은 inline-block이다. */
   #ctrl-title {
-    flex: 0 1 auto; min-width: 0; max-width: 30vw;
-    display: inline-flex; align-items: center; gap: 8px;
-    color: var(--ink); font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+    flex: 0 1 auto; min-width: 0; max-width: 100%;
+    display: block;
+    color: var(--ink); font-weight: 700; font-size: 15px; line-height: 1.4; letter-spacing: -0.01em;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   #ctrl-title::before {
-    content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--brand);
+    content: ""; display: inline-block; vertical-align: middle; margin: -2px 8px 0 0;
+    width: 10px; height: 10px; border-radius: 50%; background: var(--brand);
   }
 
   /* 시험지·해설지·정답표 탭: 옅은 알약 안에서 고른 칸만 검정 */
@@ -135,6 +138,17 @@
   body.preview-mode :is(#ctrl-title, #btn-print, #btn-print-gdi, #qpp-display, .qr-output-wrap, .print-header-editor-wrap) { display: none; }
   /* 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
   body.screen-fit-mode .qr-output-wrap { display: none !important; }
+
+  /* 태블릿·작은 PC(1280 이하): 버튼 안쪽 여백을 줄여 제목(시험지 이름)이 더 많이 보이게 한다. 1060 이하에서는 "쪽당 N문항"을 접는다. */
+  @media (max-width: 1280px) {
+    #mode-ctrl { padding: 0 16px; gap: 10px; }
+    .ctrl-btn { padding: 0 14px; }
+    .mode-tabs .mode-tab { padding: 0 14px; }
+    .ctrl-right { gap: 8px; }
+  }
+  @media (max-width: 1060px) {
+    #qpp-display { display: none; }
+  }
 
   /* ── 좁은 화면: 조작줄이 가로로 넘치지 않게 한 줄 안에서 줄이고, 말풍선은 화면 가장자리에 붙인다 ── */
   @media (max-width: 900px) {

@@ -63,7 +63,7 @@ test("출력 창 조작줄은 토큰을 쓰고 종이를 건드리지 않으며 
   assert.match(outputBarCss, /\.print-header-editor-input \{[^}]*min-height: 44px/);
   // 두 창이 같은 CSS를 같은 버전으로 불러오고, 옛 어두운 조작줄 규칙과 인라인 색은 남기지 않는다.
   for (const html of [engineHtml, mixedHtml]) {
-    assert.match(html, /<link rel="stylesheet" href="archive2-output-bar\.css\?v=20261116-output-bar-1">/);
+    assert.match(html, /<link rel="stylesheet" href="archive2-output-bar\.css\?v=20261116-polish-3">/);
     assert.doesNotMatch(html, /#mode-ctrl \{[^}]*#0f172a/);
     assert.doesNotMatch(html, /id="btn-print[^>]*style=/);
     assert.doesNotMatch(html, /QPP: /);

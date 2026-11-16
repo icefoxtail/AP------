@@ -658,6 +658,7 @@ function createArchiveScreenRuntime() {
         window.__AP_RENDER_METRICS__ = ctx.metrics;
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${ctx.candidate.mode}`));
         document.getElementById('ctrl-title').innerText = getDisplayTitle(AppState);
+        document.getElementById('ctrl-title').title = getDisplayTitle(AppState);
         if (ctx.candidate.source?.displayTitle) document.title = `${getDisplayTitle(AppState)} · JS 아카이브`;
         document.getElementById('qpp-display').innerText = `쪽당 ${AppState.qpp}문항`;
         renderPrintHeaderControls();

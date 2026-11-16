@@ -69,7 +69,7 @@
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
-    <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-output-bar-1">
+    <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -3625,7 +3625,7 @@ async function init() {
                 AppState.qpp = normalizeMixedQpp(p.get('qpp') || AppState.meta.qpp);
                 AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
                 const title = getIdentityTitle();
-                document.getElementById('ctrl-title').textContent = title;
+                document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title;
                 document.getElementById('qppSelect').value = String(AppState.qpp);
                 document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
                 renderPrintHeaderControls();
@@ -3682,7 +3682,7 @@ async function init() {
 
     AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
     const title = getIdentityTitle();
-    document.getElementById('ctrl-title').textContent = title;
+    document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title;
     document.getElementById('qppSelect').value = String(AppState.qpp);
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
     renderPrintHeaderControls();
@@ -3958,7 +3958,7 @@ return { AppState,
         if (ctx) mixedReadinessTracker = ctx.readinessTracker;
         renderPrintHeaderControls();
         syncQrOutputControls(ctx?.input.url);
-        document.getElementById('ctrl-title').textContent = getIdentityTitle();
+        document.getElementById('ctrl-title').textContent = getIdentityTitle(); document.getElementById('ctrl-title').title = getIdentityTitle();
         document.getElementById('qppSelect').value = String(AppState.qpp);
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${AppState.mode}`));
         applyQrSolutionLockUI();

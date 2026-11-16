@@ -60,7 +60,7 @@
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
     <script src="screen-runtime-adapter.js?v=20261116-polish-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
-    <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-output-bar-1">
+    <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -1689,6 +1689,7 @@ async function init() {
             if (AppState.displayTitle) document.title = `${AppState.displayTitle} · JS 아카이브`;
             AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
             document.getElementById('ctrl-title').innerText = getDisplayTitle();
+            document.getElementById('ctrl-title').title = getDisplayTitle();
             renderPrintHeaderControls();
             await render();
         } catch (error) {
