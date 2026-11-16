@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "middle-C-public42-current-actual4b504-ui-integration-v1",
+  "actualRegisteredBaseline": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "writer": {
+    "runId": 43802613045,
+    "jobId": 133086128718,
+    "registeredSha": "4b504e10b1ce7a90576486663b3862ef99922325",
+    "artifactId": 14198305807,
+    "artifactSha256": "bd49cce324b75a072e1898912ff9a4c24d652e2c8bce3cfc40ede11435b35cc2"
+  },
+  "scope": {
+    "selected": 42,
+    "existing": 23,
+    "renderer": 19,
+    "unsubmitted": 52
+  },
+  "sourceAssetWrites": 0,
+  "activeParentSix": false,
+  "alreadyConsumedRequestsExcluded": [
+    "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+    "middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14"
+  ],
+  "unneededHistoricalRequestCodePublished": false,
+  "consumedRequestHandling": "No replay, retirement or altered receipt; current actual native applicability verified separately.",
+  "preservedCurrentCode": [
+    "#2260 vector path and strict independent authority checks",
+    "#2210 native rationale changes and already issued requests",
+    "#2263 measured preview command timeout"
+  ],
+  "code": [
+    {
+      "path": "tools/4slot/rebind-reviewed-partial.cjs",
+      "after": "a145cd9d39d31b341212de433d0baa7f6608ba04",
+      "rawSha256": "b28ea547422cf5698411840114e15291cf04e9bb5bb6ffea08bdf521ac03c33f"
+    },
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "after": "b7d0b82cd851405a63d604ba289bc815cfd59475",
+      "rawSha256": "48f01a02593511320d7795a8dc350109c4aa0a4aa28ee2f0ec58de02560d36a8"
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "after": "1a2e826af449a32798ff7d876b89f53aab19c1a7",
+      "rawSha256": "54aeaa8b945926db8f8ff695538390692e0ed6d6e53e54509052a6288e163e60"
+    },
+    {
+      "path": "tools/run-tests.js",
+      "after": "256cc468746854bb9f6fc3ce247721e39c0087b4",
+      "rawSha256": "f3cc0490ed008aa36cfbd14a6996d2bba5d36db9255df7b18633c145d7de4003"
+    },
+    {
+      "path": "archive/tools/meta-foundation/canonical-parent-retry.mjs",
+      "after": "5afa5b91f1c09f8ba2a7c5735eea13e568173074",
+      "rawSha256": "f0d5766d2fcfeeee8490948e6df8ed680a1a2e88668e38f924e93e91af545325"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "after": "0cab270e211f512d09a6160ae64b641479f2b1a6",
+      "rawSha256": "a1dd060425d6ed5b9351b71258628dc0ee51765604d68911bf7e2d9be867d815"
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "after": "e174d28cdf8e76a60f5a4eee0e67989d7ea6a64e",
+      "rawSha256": "e0db9aa31ee495438fb3203f69d4ea5cf91e5053f9c4dfe1ac812d0a0701c62a"
+    },
+    {
+      "path": "tools/ci/archive-main-auto-meta-pass.sh",
+      "after": "ee6af2fc702d19d7665818a837d721a0d5a1f957",
+      "rawSha256": "8c958f106842749aa239d654a4a4cb4637f9a7fb631070dcc9845dea590ba3e9"
+    },
+    {
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "after": "8e59e585733aeed3498e269f4a5cc71c0f785de2",
+      "rawSha256": "b653c12e26057ed0a46ed0245ce7b1c7dd60257b6082168bb8e5a8583797075e"
+    }
+  ],
+  "localTests": {
+    "CVectorAndPublic": {
+      "pass": 13,
+      "fail": 0,
+      "proofSha256": "5c88fe51ecd319c8dafbd3bcd8a3bfaabaa489161bd79fc976b52816d0636cb1"
+    },
+    "priorC42": "Same fixed public proofs and exact original parent-retry code reused; no full math review repeated",
+    "uiLifecycle": {
+      "focusedTests": {
+        "selected": 5,
+        "passed": 5,
+        "failed": 0,
+        "newBoundaryTests": 2,
+        "existingFailureDiagnosticTests": 3,
+        "logPath": "/workspace/scratch/26fc42390a50/m3s2-recovery/ui-font-route-lifecycle/focused-tests-v2.log",
+        "sha256": "ebc053a068b705acae9fb96c6054f239dc7c72b5d4987fc2eea4354fe5877246"
+      },
+      "node": "v24.22.1",
+      "fontRoutingAndFailureDiagnosticsByteUnchanged": true,
+      "lateFailureAssertAfterRouteDrain": true,
+      "actualSixBrowserCases": "NOT_RUN_REQUIRES_PR_CI",
+      "lateFailureAssertAfterRouteDrainBeforeContextDisposal": true,
+      "originalCaseFailurePreserved": true
+    },
+    "SVGScope": {
+      "independentProofSha256": "191d00ed2eef7c7e83bdd888700ad125858ab3d26e108afeb231eb932b6fc655",
+      "oldBase": "one new use correctly fails mandatory title/desc check",
+      "currentBase": "same source use already present; zero new uses for this target",
+      "newUseNegative": "still fails closed",
+      "assetMetadataDebt": "OPEN; title/desc absence not approved or repaired"
+    }
+  },
+  "uiFix": {
+    "before": "dcb4382ada6913f9aa35a820777248ee93879e36",
+    "after": "8e59e585733aeed3498e269f4a5cc71c0f785de2",
+    "requiredOrder": [
+      "wait for route handlers",
+      "verify actual late failures",
+      "close context in finally"
+    ],
+    "suppressedFailures": 0,
+    "browserCases": "REQUIRED_BY_PUBLICATION_HEAD_CI"
+  },
+  "finalGates": {
+    "exactHeadCI": "PENDING",
+    "newActualRegistration": "NOT_OBSERVED",
+    "newActualConsumer": "NOT_OBSERVED",
+    "newActualPages": "NOT_OBSERVED"
+  }
+}
