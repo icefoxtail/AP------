@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "archive-independent-native-proposal-disposition-v1",
+  "status": "NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "scope": {
+    "newFullMathematicalQa": false,
+    "newReview2Claims": 0,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "newSourceContentEdits": 0
+  },
+  "applications": [
+    {
+      "examId": "E052",
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "sourceOrdinal": 5,
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "reviewer": "GPT_M3_0A70543C4CE8_CC_FINALIZATION",
+      "reason": "현재 원문·기존 해설 및 두 그림을 읽고, 기존 native ROOT-E052-14의 사각형 내각합 CC 정의와 이 UID의 사용만 독립적으로 최종화한다. 실제 해설의 x+90+90+140=360은 이 개념을 직접 사용한다. 기존 PT/TPL·난도 판단을 재사용하며 새 전면 수학검수나 source 품질 승인을 하지 않는다.",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+        "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+      },
+      "nativeItemStableSha256": "3201f9d49c300e25e58d65e52b68878c30be1a22f3d134aa0d61d243543006e6",
+      "proposalSelections": [
+        {
+          "documentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+            "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+          },
+          "index": 13,
+          "proposalSha256": "71e078b1724325bc613c3d667ca31441e62c9ddd36943812bcf8953a1df058e0",
+          "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+          "sourceOrdinal": 5,
+          "proposalId": "ROOT-E052-14"
+        }
+      ],
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false,
+      "nativeProtectedStudentFieldsChanges": [],
+      "sourceSnapshot": {
+        "commit": "ede1e94855bc452e8b75e92b1461077c9b22d3da",
+        "sourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "blob": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c",
+        "sha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6",
+        "questionSha256": "9ea7ca7940fddb90bc1ba175546a12e821ef48a19022802269e21c5255efbe02"
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05.png",
+          "gitBlobSha1": "94d3cc1e9458a8096fb53aebd099e1b2d1b2e652",
+          "sha256": "57a3d35543875fd44004f2c90f512d872def58fded71e994fd6d836f46557fee",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q5-solution.svg",
+          "gitBlobSha1": "ed25d12cb19e551b50521307485c59f29d581484",
+          "sha256": "9aace2d7176e9bfc718831ba0944d033ebf67c2e989adc0aea8eb49449313084",
+          "visuallyInspected": true
+        }
+      ],
+      "reviewedPrimaryContext": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "decisions": [
+        {
+          "selection": {
+            "documentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+              "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+            },
+            "index": 13,
+            "proposalSha256": "71e078b1724325bc613c3d667ca31441e62c9ddd36943812bcf8953a1df058e0",
+            "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+            "sourceOrdinal": 5,
+            "proposalId": "ROOT-E052-14"
+          },
+          "disposition": "ADD_ONLY",
+          "reason": "정본 ACTIVE 전체 개념 중 사각형 내각합에 정확히 맞는 정의가 없다. 삼각형 내각합 180°, 정다면체 꼭짓점 면각합, 원에 내접한 사각형의 대각 보각과 구별하고, 다른 정본을 바꾸지 않는 단일 CC를 추가한다.",
+          "definition": {
+            "conceptKey": "CC_QUADRILATERAL_ANGLE_SUM",
+            "canonicalLabelKo": "사각형의 내각의 합",
+            "definition": "평면의 단순사각형에서 네 내각의 합이 360°임을 이용하여 미지의 내각을 구하거나 각 관계를 정리한다.",
+            "aliases": [],
+            "status": "ACTIVE",
+            "supportingQuestionUids": [
+              "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+            ],
+            "supportingItemCount": 1,
+            "sourceUnits": [
+              "M3-06"
+            ],
+            "legacyKeys": [],
+            "evidenceProvenance": [
+              {
+                "source": "NATIVE_PROPOSAL_INDEPENDENT_FINALIZATION",
+                "nativeReview": {
+                  "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                  "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                  "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                },
+                "proposalId": "ROOT-E052-14",
+                "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                "sourceOrdinal": 5,
+                "classificationRationale": "기존 풀이가 두 접점의 직각과 중심각을 사각형 AOBP의 내각합 360°에서 빼는 결정 단계를 명시한다. 원주각의 배각 관계 및 삼각형 내각합과 구분되는 원자적 보조 개념이다."
+              }
+            ],
+            "taxonomyRefs": [
+              "PT_CIRCLE_ANGLE_RELATIONS"
+            ],
+            "curriculumRefs": [
+              "2015:중3 수학:M3-06"
+            ],
+            "ownerConceptShard": "PLANE_GEOMETRY"
+          },
+          "registryChange": {
+            "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+            "collection": "concepts",
+            "match": {
+              "conceptKey": "CC_QUADRILATERAL_ANGLE_SUM"
+            },
+            "before": null,
+            "after": {
+              "conceptKey": "CC_QUADRILATERAL_ANGLE_SUM",
+              "canonicalLabelKo": "사각형의 내각의 합",
+              "definition": "평면의 단순사각형에서 네 내각의 합이 360°임을 이용하여 미지의 내각을 구하거나 각 관계를 정리한다.",
+              "aliases": [],
+              "status": "ACTIVE",
+              "supportingQuestionUids": [
+                "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+              ],
+              "supportingItemCount": 1,
+              "sourceUnits": [
+                "M3-06"
+              ],
+              "legacyKeys": [],
+              "evidenceProvenance": [
+                {
+                  "source": "NATIVE_PROPOSAL_INDEPENDENT_FINALIZATION",
+                  "nativeReview": {
+                    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+                    "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+                  },
+                  "proposalId": "ROOT-E052-14",
+                  "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+                  "sourceOrdinal": 5,
+                  "classificationRationale": "기존 풀이가 두 접점의 직각과 중심각을 사각형 AOBP의 내각합 360°에서 빼는 결정 단계를 명시한다. 원주각의 배각 관계 및 삼각형 내각합과 구분되는 원자적 보조 개념이다."
+                }
+              ],
+              "taxonomyRefs": [
+                "PT_CIRCLE_ANGLE_RELATIONS"
+              ],
+              "curriculumRefs": [
+                "2015:중3 수학:M3-06"
+              ],
+              "ownerConceptShard": "PLANE_GEOMETRY"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "definitionSearch": {
+    "canonicalRoot": "archive/data/meta-foundation/canonical/concepts/",
+    "exactActiveDefinitionFound": false,
+    "nearbyConcepts": [
+      "CC_TRIANGLE_ANGLE_SUM",
+      "CC_SUPPLEMENTARY_ANGLES",
+      "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY"
+    ],
+    "nativeProposalUnchanged": true
+  },
+  "preservedNativeDebts": [
+    {
+      "type": "RESOLVER_SOLUTION_PROVENANCE",
+      "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+    },
+    {
+      "type": "CURRENT2022_CONTEXT_BINDING_GAP",
+      "detail": "Global ACTIVE semantic reuse exists; exact chosen publisher unit/subunit/curriculum binding is absent."
+    }
+  ],
+  "observationLimits": [
+    "원본 PNG의 오른쪽 부분이 잘려 P와 x 표시는 완전히 보이지 않는다. 이 검토는 기존 해설과 불변 해설 SVG의 사각형 내각합 사용을 확인할 뿐, 원문 재구성이나 새 source 품질 PASS를 주장하지 않는다.",
+    "2015의 기존 ACTIVE 정확 바인딩만 이번 요청에서 사용한다. native에 남은 2022 바인딩 및 VERIFIED_FINAL 해설 provenance 한계는 별도 부채로 보존한다."
+  ],
+  "priorIndependentSample": {
+    "nativePath": "docs/operations/m3-s2-meta-full-20261114/exams/E052.independent.json",
+    "sha256": "5dffc90f281489d4bf5af604f5963a124274a47dde83528d0fe13e12de4fdfdf",
+    "status": "PASS",
+    "sampleOrdinals": [
+      12,
+      20,
+      25
+    ],
+    "scope": "Prior author-independent metadata samples; this is not a new full exam mathematical QA."
+  }
+}

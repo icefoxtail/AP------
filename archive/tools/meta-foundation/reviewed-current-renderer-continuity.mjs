@@ -527,7 +527,9 @@ export function validateReviewedCurrentRendererContinuity(args) {
       spec.schemaVersion !== 'archive-reviewed-current-renderer-continuity-v1' || !SHA1.test(spec.reviewCommit || '') ||
       ctx.request.scope !== 'PARTIAL_UIDS' || ctx.request.approval?.type !== 'FINAL_QA' || ctx.request.registrationMode ||
       ctx.request.approval.sourceRebind || ctx.patch.rebind !== undefined || ctx.patch.sourceReview.proposalFinalization !== undefined ||
-      ctx.native.review.schemaVersion !== 'm3-s2-complete-semantic-review-v1' || ctx.native.review.reviewScope !== undefined)
+      !['m3-s2-complete-semantic-review-v1', 'm2-s2-meta-review-v1'].includes(ctx.native.review.schemaVersion) ||
+      (ctx.native.review.schemaVersion === 'm2-s2-meta-review-v1' && ctx.row.verdict !== 'REGISTRATION_PENDING') ||
+      ctx.native.review.reviewScope !== undefined)
     fail('exclusive native-semantic and narrow-renderer scope required');
   const doc = boundDocument(ctx, spec.reviewRef);
   if (!ownKeys(doc, ['schemaVersion', 'scope', 'sourceArchiveFile', 'expectedQuestionCount', 'selectedUidCount',
