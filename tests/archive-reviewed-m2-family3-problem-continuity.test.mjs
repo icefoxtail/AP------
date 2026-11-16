@@ -37,7 +37,7 @@ function bankFromBytes(bytes) {
   vm.runInContext(bytes.toString("utf8"), context, { timeout: 3000 });
   return JSON.parse(vm.runInContext("JSON.stringify(window.questionBank || window.questions || globalThis.questions || globalThis.questionBank || window.examData?.questions)", context, { timeout: 1000 }));
 }
-function fixture() {
+function fixture(selectedKey) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-family3-")); git(root, ["init", "-q"]);
   const common = path.resolve(REPO, git(REPO, ["rev-parse", "--git-common-dir"]).toString().trim());
   fs.writeFileSync(path.join(root, ".git/objects/info/alternates"), path.join(common, "objects") + "\n");
@@ -61,7 +61,7 @@ function fixture() {
     const bytes = git(root, ["show", ref.commit + ":" + ref.path]);
     assert.equal(blob(bytes), ref.gitBlobSha1); assert.equal(sha(bytes), ref.sha256); write(ref.path, bytes);
   }
-  for (const row of staticDoc.rows) {
+  for (const row of staticDoc.rows.filter(row => selectedKey === undefined || row.key === selectedKey)) {
     materialize(row.currentSourceRef);
     row.nativeProblemAssets.forEach(materialize); row.currentProblemAssets.forEach(materialize);
   }
@@ -234,3 +234,44 @@ test("family3 immutable static and actual UI evidence bounds memory-only normali
     f.verifyUnchanged();
   } finally { f.close(); }
 });
+
+test("generated SVG index preserves all fixed family3 asset records and strict local input boundaries", async t => {
+  const f = fixture("E017-Q06"), relative = "archive/data/svg-accessibility-index.js";
+  const full = path.join(f.root, relative), original = fs.readFileSync(full);
+  const match = original.toString("utf8").match(/Object\.freeze\((\{[\s\S]*\})\);/);
+  assert.ok(match);
+  const index = JSON.parse(match[1]);
+  const encode = records => Buffer.from(original.toString("utf8").replace(match[1], JSON.stringify({ ...index, records })));
+  const fixedAssets = ITEMS.map(item => f.technical.items.find(row => row.questionUid === item.questionUid).assetRef.path.slice("archive/".length));
+  const run = () => validate(f.args("E017-Q06"));
+  try {
+    const baseline = run();
+    await t.test("nonselected generated rows may advance", () => {
+      fs.writeFileSync(full, encode([...index.records, { ...index.records[0], assetRef: "assets/images/generated-reader-fixture/unrelated.svg" }]));
+      try { assert.deepEqual(run(), baseline); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("another fixed family3 member remains protected", () => {
+      const other = fixedAssets.find(asset => !asset.endsWith("/q6-problem-visual-v2.svg"));
+      const hits = index.records.filter(row => row.assetRef === other && row.visualRole === "problem"); assert.equal(hits.length, 1);
+      fs.writeFileSync(full, encode(index.records.map(row => row === hits[0] ? { ...row, unapprovedField: true } : row)));
+      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("a fixed member cannot disappear", () => {
+      fs.writeFileSync(full, encode(index.records.filter(row => row.assetRef !== fixedAssets[0] || row.visualRole !== "problem")));
+      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("current index file symlinks are refused", () => {
+      const outside = fs.mkdtempSync(path.join(os.tmpdir(), "family-svg-input-"));
+      fs.writeFileSync(path.join(outside, "index.js"), original);
+      fs.unlinkSync(full); fs.symlinkSync(path.join(outside, "index.js"), full);
+      try { assert.throws(run, /SYMLINK_PATH/); }
+      finally { fs.unlinkSync(full); fs.writeFileSync(full, original); fs.rmSync(outside, { recursive: true, force: true }); }
+    });
+    await t.test("missing current bytes do not fall back to captured bytes", () => {
+      fs.unlinkSync(full);
+      try { assert.throws(run, /LIVE_SVG_INDEX_UNAVAILABLE/); } finally { fs.writeFileSync(full, original); }
+    });
+    f.verifyUnchanged();
+  } finally { f.close(); }
+});
+

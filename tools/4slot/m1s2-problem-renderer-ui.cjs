@@ -53,8 +53,11 @@ function svgRecords(bytes,assets){
  return selected.sort((a,b)=>a.assetRef.localeCompare(b.assetRef));
 }
 function currentData(reader,p){
- const bytes=reader.local(p),ref={path:p,gitBlobSha1:crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+bytes.length+'\0'),bytes])).digest('hex'),sha256:sha(bytes),bytes:bytes.length};
- reader.read(ref,true);return bytes;
+ if(p!==SVG_INDEX)fail('GENERATED_DATA_PATH');
+ // The writer generates this data before fourSlot and commits it afterwards.
+ // Keep the captured whole file Git-authenticated; the current regular file
+ // is checked by the fixed JSON wrapper and exact selected-record comparison.
+ return reader.local(SVG_INDEX);
 }
 function svgContinuity(before,after,assets){if(!eq(svgRecords(before,assets),svgRecords(after,assets)))fail('SELECTED_SVG_INDEX_DRIFT');}
 function capturedArtifacts(reader,refs,artifacts,ancestor){
@@ -177,4 +180,4 @@ function verify({reader,doc,current,subjects,ancestor}){
  capturedArtifacts(reader,v.artifactRefs,artifacts,ancestor);
  return{logicalCases:2,newSemanticApproval:0,newFourSlotVector:0};
 }
-module.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology};
+module.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData};

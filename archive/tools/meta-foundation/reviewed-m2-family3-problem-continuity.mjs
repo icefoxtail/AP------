@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import SvgIndexContinuity from "../../../tools/4slot/existing-vector-svg-index-continuity.cjs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -141,6 +142,20 @@ function live(ctx, ref, code = "LIVE_REF_DRIFT") {
   } catch (error) { if (String(error.message).startsWith("M2_FAMILY3_PROBLEM:")) throw error; fail(code); }
   finally { if (fd !== undefined) fs.closeSync(fd); }
 }
+function liveGeneratedSvgIndex(ctx) {
+  // This exact file is generated before four-slot/Native reads in the writer.
+  // Authenticate its captured version separately; compare only authenticated
+  // problem assets below instead of treating current derived data as code.
+  let fd;
+  try {
+    fd = fs.openSync(safe(ctx.root, "archive/data/svg-accessibility-index.js"), "r");
+    if (!fs.fstatSync(fd).isFile()) fail("LIVE_SVG_INDEX_UNAVAILABLE");
+    return fs.readFileSync(fd);
+  } catch (error) {
+    if (String(error.message).startsWith("M2_FAMILY3_PROBLEM:")) throw error;
+    fail("LIVE_SVG_INDEX_UNAVAILABLE");
+  } finally { if (fd !== undefined) fs.closeSync(fd); }
+}
 function bindEvidence(ctx, ref) {
   const narrow = { path: ref.path, sha256: ref.sha256 };
   for (const refs of [ctx.request.approval.evidenceRefs, ctx.patch.evidenceRefs])
@@ -276,7 +291,17 @@ function validateUi(ctx, bound, current) {
   if (technical.servedFiles?.length !== 98 || new Set(technical.servedFiles.map(ref => ref.path)).size !== 98) fail("SERVED_INVENTORY");
   for (const ref of technical.servedFiles) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
-    if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    if (ref.path === "archive/data/svg-accessibility-index.js") {
+      const assetPaths = M2_FAMILY3_PROBLEM_ITEMS.map(item => {
+        const matches = technical.items.filter(row => row.questionUid === item.questionUid && row.sourceOrdinal === item.sourceOrdinal);
+        if (matches.length !== 1) fail("UI_IDENTITY_CASE_INVENTORY");
+        return matches[0].assetRef?.path;
+      });
+      const assetRefs = assetPaths.map(path => ({ path }));
+      if (!same(SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(immutable(ctx, ref, true)), assetRefs),
+        SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(liveGeneratedSvgIndex(ctx)), assetRefs)))
+        fail("SELECTED_SVG_INDEX_DRIFT");
+    } else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {
