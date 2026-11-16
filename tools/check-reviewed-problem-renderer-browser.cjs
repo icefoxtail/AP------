@@ -489,6 +489,18 @@ function preflight(reader, manifest) {
 const mime = rel => ({ '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }[path.extname(rel)] || 'application/octet-stream');
 
+async function closeStudentContext(page, context, verifySettled = () => {}) {
+  try {
+    // A completed screenshot does not settle every intercepted font response.
+    // Keep the request context alive until its running handlers finish reading
+    // and fulfilling (or reporting and aborting) those exact responses.
+    if (page) await page.unrouteAll({ behavior: 'wait' });
+    verifySettled();
+  } finally {
+    await context.close();
+  }
+}
+
 async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   assert(executablePath && path.isAbsolute(executablePath) && fs.statSync(executablePath).isFile(), 'UI_SUPPORTED_CHROME_REQUIRED');
   const reader = createGitReader(root, expectedCommit);
@@ -542,10 +554,11 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     for (const viewport of manifest.viewports) for (const sourcePath of banks) {
       const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1,
         isMobile: viewport.name === 'mobile', hasTouch: viewport.name === 'mobile', serviceWorkers: 'block' });
+      let page, casesCompleted = false;
+      const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
       try {
-        const page = await context.newPage();
+        page = await context.newPage();
         page.setDefaultTimeout(10000);
-        const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
         page.on('pageerror', error => pageErrors.push({ messageSha256: sha256(error.message) }));
         page.on('requestfailed', request => requestFailures.push({ urlSha256: sha256(request.url()), errorSha256: sha256(request.failure()?.errorText || '') }));
         await page.route('**/*', async route => {
@@ -657,8 +670,14 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
           activeCase = null;
         }
-        assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
-      } finally { await context.close(); }
+        casesCompleted = true;
+      } finally {
+        await closeStudentContext(page, context, () => {
+          // Inspect real late failures after route settlement and before teardown.
+          // If the case already failed, retain that original failure instead.
+          if (casesCompleted) assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+        });
+      }
     }
     assert.equal(results.length, manifest.expectedCases, 'UI_ALL_SIX_REQUIRED');
     assert.equal(new Set(results.map(row => `${row.key}:${row.viewport.name}`)).size, 6, 'UI_UNIQUE_SIX_REQUIRED');
@@ -703,7 +722,7 @@ async function main() {
 }
 
 module.exports = { MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, IDENTITY_PATH, SCHEMA, stable, sha256, gitBlob, validateManifest, planRequired, createGitReader, preflight,
-  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic,
+  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic, closeStudentContext,
   problemContentClip, planProblemScroll, assertProblemCapture, captureCompleteProblem,
   TILE_SCHEMA, TILE_OVERLAP, TILE_LIMIT, planProblemTiles, planProblemTileScroll, assertTileCoverage, assertProblemTileCapture, captureProblemTiles,
   readScreenshotArtifacts, assertScreenshotInventory };
