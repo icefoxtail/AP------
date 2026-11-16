@@ -1,0 +1,145 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "두 포물선과 수평선 네 위치를 비교한다. y=−3,10에서는 한 포물선과 접하고, y=1,6에서는 두 포물선의 공통점이 중복된다. 서로 다른 교점 개수를 세되 높이들의 합은 쓰지 않는다.",
+  "accessibilityDescription": "두 포물선과 수평선 네 위치를 비교한다. y=−3,10에서는 한 포물선과 접하고, y=1,6에서는 두 포물선의 공통점이 중복된다. 서로 다른 교점 개수를 세되 높이들의 합은 쓰지 않는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2-4x+1"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=-x^2+6x+1"
+      },
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=-3"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=1"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=6"
+      },
+      {
+        "id": "l3",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-3",
+          "coordinates": true
+        },
+        {
+          "id": "W",
+          "x": "3",
+          "y": "10",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "6",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 직선 $y=t$가 두 이차함수 $y=x^2-4x+1,\\ y=-x^2+6x+1$의 그래프와 만날 때, 만나는 서로 다른 점의 개수가 3인 모든 실수 $t$의 값의 합을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "교점이3개가 되는 두 원인인 접점과 중복 교점을 구분해 빠뜨리지 않게 한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점이3개가 되는 두 원인인 접점과 중복 교점을 구분해 빠뜨리지 않게 한다."
+  ]
+}
