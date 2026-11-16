@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "archive-mixed-screen-fit-current-viewport-repair-v2",
+  "status": "UNISSUED_RENDERER_UI_PENDING",
+  "author": "/root/m1_compact_transport",
+  "createdAt": "2026-11-16T10:11:38.702735+00:00",
+  "baselineRendererRefs": [
+    {
+      "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+      "path": "archive/mixed_engine.html",
+      "gitBlobSha1": "7787ac987faab92aa5a4574b52e7b897aa2c0661",
+      "sha256": "65a68639a97ea39c9e66322d0936dfc81a646354dea7b2546c6b2fd0c6da1e54",
+      "bytes": 208087
+    },
+    {
+      "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+      "path": "archive/mixed_engine.html",
+      "gitBlobSha1": "7787ac987faab92aa5a4574b52e7b897aa2c0661",
+      "sha256": "65a68639a97ea39c9e66322d0936dfc81a646354dea7b2546c6b2fd0c6da1e54",
+      "bytes": 208087
+    },
+    {
+      "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+      "path": "archive/mixed_engine.html",
+      "gitBlobSha1": "7787ac987faab92aa5a4574b52e7b897aa2c0661",
+      "sha256": "65a68639a97ea39c9e66322d0936dfc81a646354dea7b2546c6b2fd0c6da1e54",
+      "bytes": 208087
+    }
+  ],
+  "observedFailure": {
+    "ref": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v6-gha-independent-failure.json",
+      "sha256": "fc2398405a14211a3748457ff764b7a50dcdbd35fda3ca4120a3aafe0db6b405",
+      "bytes": 12199
+    },
+    "scope": "Reuse the separately recorded ROOT/M3 supported Chrome observation; no new browser observation by this author.",
+    "selectedQuestionUid": "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+    "currentDocumentClientWidth": 390,
+    "observedInnerWidth": 786,
+    "observedSelectedImageRight": 722.3066101074219,
+    "actualVisualRight": 390
+  },
+  "productionChanges": {
+    "files": 1,
+    "path": "archive/mixed_engine.html",
+    "hunks": 2,
+    "description": [
+      "Use a finite positive documentElement.clientWidth first, retaining innerWidth only as an unavailable-client fallback; do not write a transform if neither is valid.",
+      "Retain the existing 16px gutter, 280px available minimum, 0.32 minimum scale, 1 maximum scale and measured page width.",
+      "Add screen-only translateX for the overflowing max-content area so center-origin scaling remains centered in the actual viewport; non-overflow desktop offset is zero.",
+      "Preserve the existing archive2-paper-review max-width 850px top-left mode by setting the center offset to zero under exactly that class/media condition; re-evaluate it on every existing update/resize call.",
+      "The existing print transform:none!important remains byte-identical and disables both screen transform components."
+    ],
+    "newCandidateSha256": "88695f546ad269874ff434762d65eae029e955610b27ca36e605533428af5555",
+    "newCandidateGitBlobSha1": "52d0aa11be977df6b2ef04ac5a500ae7803409ea",
+    "newCandidateBytes": 208963,
+    "patchRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/renderer-complete.patch",
+      "sha256": "0ca90e2f6c1e03592d796f164466484a3fcaecd1664c36ac6dab832bdd5c24e6",
+      "bytes": 2234
+    },
+    "revision2DeltaRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/review-mode-followup.patch",
+      "sha256": "2c751d8f42cdaea02fc469cf9f0a92164095e3e64d7f082919797f790b6f02f8",
+      "bytes": 884
+    },
+    "inverseTwoRegionsMatchesEntireBaselineRenderer": true
+  },
+  "tests": {
+    "kind": "EXTRACTED_PRODUCTION_FUNCTION_AND_DECLARED_CSS_HORIZONTAL_MODEL",
+    "sameBeforeAfterTestRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/candidate/tests/archive-mixed-screen-fit.test.js",
+      "sha256": "c4a263b6b662e4fed4d59fb9f23ce25bf73f807b3c47ac0b031d35f818002c27",
+      "bytes": 8735
+    },
+    "uniqueTests": 12,
+    "original11NamesAndBodiesPreservedByteExact": true,
+    "addedTests": 1,
+    "addedTestName": "the existing narrow paper-review mode keeps its left origin and clears prior center offsets",
+    "initialHistory": {
+      "kind": "EXTRACTED_PRODUCTION_FUNCTION_AND_DECLARED_CSS_HORIZONTAL_MODEL",
+      "sameBeforeAfterTestSha256": "f2e1e35451a0e5a6d3075adf1a5daeb38901d42ac1e33e99d839843b24431c88",
+      "before": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/before-regression.tap",
+        "sha256": "ba753aa7c57b27a753a1187879f2215ef825b82ce1f536b8f2e66a7f2df90810",
+        "bytes": 9847,
+        "exitCode": 1,
+        "counts": {
+          "tests": 11,
+          "pass": 3,
+          "fail": 8,
+          "skipped": 0
+        }
+      },
+      "after": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/after-regression.tap",
+        "sha256": "5b6d89f0aa4be0059263fdf45a91834f3c6e0cb3084affa04511d9ebf9af9949",
+        "bytes": 1114,
+        "exitCode": 0,
+        "counts": {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "skipped": 0
+        }
+      },
+      "browserExecution": 0,
+      "cases": [
+        "desktop unchanged size and center",
+        "390 client / 786 inner overflow",
+        "768 client / 980 inner overflow",
+        "320 client / 980 inner overflow",
+        "390 client / 390 inner overflowing centered area",
+        "missing client measurement fallback",
+        "invalid dimensions no transform",
+        "mobile to desktop resize clears offset",
+        "explicit render target measured width",
+        "non-screen/missing paper unchanged",
+        "print overrides entire transform"
+      ],
+      "limitations": "These assertions model horizontal transforms from the actual production CSS and execute the actual function. They do not establish real-browser rendering, vertical paging, or glyph readability. New four-view original UI evidence remains mandatory.",
+      "ciDiscovery": "The new archive-*.test.js file is found by the existing global .test.js registry and matches the output-consumer selector. No command, timeout or assertion gate was weakened."
+    },
+    "revision2Before": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/before-review-mode.tap",
+      "sha256": "9417f4342df65917194e10e4c4b1f0bee87f827ca5fb37f3f06235fb2b3f0dc9",
+      "bytes": 2268,
+      "rendererSha256": "5422ca623e5c1274620d12c3ca91bc8df3cbe41479fea6ae67e695f4ee82d497",
+      "exitCode": 1,
+      "counts": {
+        "tests": 12,
+        "pass": 11,
+        "fail": 1,
+        "skipped": 0
+      },
+      "onlyFailure": "the existing narrow paper-review mode keeps its left origin and clears prior center offsets",
+      "durationMs": 314.567885
+    },
+    "revision2After": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/after-review-mode.tap",
+      "sha256": "be8c32a14e6cfa52c3202e781435d9535c217881913709fa675c80fd31182e2e",
+      "bytes": 1227,
+      "rendererSha256": "88695f546ad269874ff434762d65eae029e955610b27ca36e605533428af5555",
+      "exitCode": 0,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "skipped": 0
+      },
+      "durationMs": 386.927224
+    },
+    "fixtureCss": {
+      "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+      "path": "archive/archive2-review.css",
+      "gitBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+      "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+      "bytes": 476,
+      "changed": false
+    },
+    "originalPredicateAndThresholdWeakening": 0,
+    "browserExecution": 0,
+    "limitations": "These assertions model horizontal transforms from the actual production CSS and execute the actual function. They do not establish real-browser rendering, vertical paging, or glyph readability. New four-view original UI evidence remains mandatory.",
+    "ciDiscovery": "The new archive-*.test.js file is found by the existing global .test.js registry and matches the output-consumer selector. No command, timeout or assertion gate was weakened."
+  },
+  "helperContractCompatibility": {
+    "helperCommit": "542639cf7c873a1e462e683c63224fcc7d64b8ad",
+    "helperRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/archive/tools/meta-foundation/reviewed-m2-e035-renderer-continuity.mjs",
+      "sha256": "898f91f466348d39522868ef9f8e691a00f5c2751c762c8166168e6dea059cd8",
+      "bytes": 47383
+    },
+    "unchanged": true,
+    "quantizer": "FLOOR_UNCHANGED",
+    "rendererRefCanAdvance": true,
+    "reason": "studentUi requires an immutable ancestor checkoutCommit and rendererRef.path=archive/mixed_engine.html with rendererRef.commit equal to checkoutCommit, but does not hard-code the old renderer SHA. Source and asset refs at that same new checkout must retain the already inspected exact production bytes.",
+    "requiredNewEvidence": [
+      "ROOT publishes the bounded renderer change at a new immutable descendant; source and both repaired assets remain exact.",
+      "The supported Chrome producer uses the new checkout and binds rendererRef plus exactly one matching servedFiles entry to its actual new Git bytes.",
+      "technical.sourceRef and currentAssets use the new checkout commit with old source and asset bytes exactly equal to the inspected production source and repaired assets.",
+      "Collect all four original desktop/mobile problem/solution cases with current exact presets, no external DOM or CSS writes, actual visual-viewport containment and unchanged readiness gates.",
+      "A distinct independent visual record must reference those exact technical bytes and original captures.",
+      "Keep original HOLD observations and failure artifacts. The native helper still rejects an incomplete case set or pixel mismatch. Any quantizer follow-up is a separate ROOT decision, not part of this renderer patch."
+    ],
+    "sourceObservationReuse": "Existing source/asset observations and productionCurrentSourceRef may remain e162 because equality is by exact bytes and asset digests; the new UI checkout is separately authenticated."
+  },
+  "preservation": {
+    "frozenSourceWrites": 0,
+    "assetWrites": 0,
+    "nativeOrFourSlotApprovals": 0,
+    "inputRequestWrites": 0,
+    "metadataWrites": 0,
+    "rootWorktreeWrites": 0,
+    "trackedWrites": 0,
+    "remoteWrites": 0,
+    "E035HelperPixelChanges": 0,
+    "actualUiPass": false
+  },
+  "reviewState": {
+    "independentCodeReviewer": "/root/audit_m3",
+    "status": "REVISION2_REREVIEW_REQUESTED",
+    "productionPublished": false,
+    "actualFourViewUi": "HOLD_PENDING_NEW_RENDERER_AND_COMPLETE_ORIGINAL_UI_EVIDENCE"
+  },
+  "revision": 2,
+  "preservedInitialCandidate": {
+    "manifestRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/publication-candidate-manifest.json",
+      "sha256": "d1a3ccf79f56380115e569787f083fb5877e91e7376f89b7e17309929e70e0d3",
+      "bytes": 1626
+    },
+    "validationRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/repair-plan-and-validation.json",
+      "sha256": "780e4397541c8e335656419a8b9886b6c1c3f9f0eb416086ac80f191b32a9652",
+      "bytes": 7471
+    },
+    "independentBlockingReviewRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-screen-fit-independent-initial-review.json",
+      "sha256": "b6f9132fb134acfe1e9c93210dc0ea289951976e6c808522fa1b540f81d3b1ae",
+      "bytes": 5280
+    },
+    "status": "SUPERSEDED_UNPUBLISHED_BLOCKING_EXISTING_REVIEW_MODE",
+    "sourceAndLogsUnmodified": true
+  },
+  "existingReviewMode": {
+    "dependencyRefs": [
+      {
+        "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "path": "archive/archive2-review.css",
+        "gitBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+        "bytes": 476,
+        "changed": false
+      },
+      {
+        "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "path": "archive/archive2-review.js",
+        "gitBlobSha1": "ffaadeababca6797270f1bae6482ed1a4d0a9949",
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce",
+        "bytes": 407,
+        "changed": false
+      }
+    ],
+    "finding": "Existing archive2Review=1 mode uses zero horizontal margins and top-left transform origin at screen max-width 850px.",
+    "exactPredicate": "document.documentElement.classList.contains(archive2-paper-review) && window.matchMedia((max-width: 850px)).matches",
+    "repair": "Recalculate screen offset on every update. Use zero in this existing left-origin mode and the center compensation otherwise.",
+    "initialCounterexample": {
+      "viewportWidth": 390,
+      "areaWidth": 794,
+      "initialLeft": -202,
+      "initialRight": 172
+    },
+    "newModeBounds": {
+      "viewportWidth": 390,
+      "areaWidth": 794,
+      "left": 0,
+      "right": 374
+    },
+    "modeTransitionCoverage": [
+      "normal narrow center to narrow review clears prior offset",
+      "narrow review to normal recalculates centered gutter",
+      "review class retained at desktop width restores normal centered mode",
+      "existing print override disables entire transform"
+    ]
+  },
+  "nextAction": "M3 independently re-reads revision2 renderer/test/dependency/log bytes. ROOT may publish only after review acceptance, then collects the new four-view UI evidence. No production or UI success is claimed here."
+}

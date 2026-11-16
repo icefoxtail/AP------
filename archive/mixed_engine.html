@@ -137,7 +137,7 @@
 
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         body.screen-fit-mode { overflow-x: hidden; }
-        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
+        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: translateX(var(--screen-page-offset-x, 0px)) scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
         @media screen and (max-width: 640px) {
             body.screen-fit-mode { padding-top: 44px; }
@@ -3569,9 +3569,19 @@ function updateScreenFitScale() {
     const page = area?.querySelector('.page');
     if (!area || !page) return;
     const pageWidth = page.offsetWidth || 794;
-    const availableWidth = Math.max(280, window.innerWidth - 16);
+    // Mobile overflow can widen innerWidth beyond the actual document viewport.
+    const clientWidth = document.documentElement.clientWidth;
+    const viewportWidth = Number.isFinite(clientWidth) && clientWidth > 0 ? clientWidth : window.innerWidth;
+    if (!Number.isFinite(viewportWidth) || viewportWidth <= 0) return;
+    const availableWidth = Math.max(280, viewportWidth - 16);
     const scale = Math.max(0.32, Math.min(1, availableWidth / pageWidth));
+    // An overflowing max-content area has no auto margin. Keep its scaled
+    // paper centered in the real viewport without changing print geometry.
+    const leftAlignedReview = document.documentElement.classList.contains('archive2-paper-review') &&
+        window.matchMedia('(max-width: 850px)').matches;
+    const offsetX = leftAlignedReview ? 0 : Math.min(0, (viewportWidth - (area.offsetWidth || pageWidth)) / 2);
     document.documentElement.style.setProperty('--screen-page-scale', String(scale));
+    document.documentElement.style.setProperty('--screen-page-offset-x', `${offsetX}px`);
 }
 
 if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {
