@@ -1,0 +1,30 @@
+{
+  "status": "FAILED",
+  "attempts": 2,
+  "capability": "stat-chart-figure-v1",
+  "sizeClass": null,
+  "layoutRepairs": null,
+  "svgFile": null,
+  "planSha256": "d7e75f776044e7c2d22ccf1eb6a3dd4afec7cc37ef0dde804195f90af2e986cd",
+  "attemptHistory": [
+    {
+      "attempt": 1,
+      "status": "FAILED",
+      "stage": "stat-chart",
+      "planSha256": "4eb4021f8770d6172675759c3bd07abe9ca4b7ea6b5dd5c01b5ec5fdcc8548ba",
+      "error": "STAT_TREE_COMPACT_INVALID",
+      "note": "The exhaustive 5×4×3 tree exceeded the compact-tree depth constraint."
+    },
+    {
+      "attempt": 2,
+      "status": "FAILED",
+      "stage": "measure",
+      "planSha256": "d7e75f776044e7c2d22ccf1eb6a3dd4afec7cc37ef0dde804195f90af2e986cd",
+      "error": "ARCHIVE_PREFLIGHT_FAIL",
+      "detail": "Cannot find module '.tmp/apmath-visual-engine/dependencies/node_modules/playwright' required by visual-browser-runtime.mjs."
+    }
+  ],
+  "visualReview": "NOT_RUN",
+  "png": null,
+  "blocker": "Missing pinned Playwright dependency. No setup or further retry performed per user instruction."
+}

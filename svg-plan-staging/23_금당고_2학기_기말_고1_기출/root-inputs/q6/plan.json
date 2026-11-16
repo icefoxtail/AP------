@@ -1,0 +1,56 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "+u",
+          "−u"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "중간값",
+        "elements": [
+          "0"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "예: u=1/2로 두면 이웃한 두 항이 상쇄된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1/[k(k+1)]=1/k−1/(k+1)이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "인접한 +1/2와 −1/2가 없어지는 한 사례를 나타낸다."
+  ]
+}

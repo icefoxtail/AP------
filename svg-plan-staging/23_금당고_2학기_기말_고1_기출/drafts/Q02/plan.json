@@ -3,106 +3,36 @@
   "chart": {
     "kind": "TREE",
     "root": {
+      "label": "선택",
       "children": [
         {
-          "label": "1",
+          "label": "첫째5명",
+          "p": "1",
           "children": [
             {
-              "label": "2"
-            },
-            {
-              "label": "3"
-            },
-            {
-              "label": "4"
-            },
-            {
-              "label": "5"
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "children": [
-            {
-              "label": "1"
-            },
-            {
-              "label": "3"
-            },
-            {
-              "label": "4"
-            },
-            {
-              "label": "5"
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "children": [
-            {
-              "label": "1"
-            },
-            {
-              "label": "2"
-            },
-            {
-              "label": "4"
-            },
-            {
-              "label": "5"
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "children": [
-            {
-              "label": "1"
-            },
-            {
-              "label": "2"
-            },
-            {
-              "label": "3"
-            },
-            {
-              "label": "5"
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "children": [
-            {
-              "label": "1"
-            },
-            {
-              "label": "2"
-            },
-            {
-              "label": "3"
-            },
-            {
-              "label": "4"
+              "label": "둘째4명",
+              "p": "1",
+              "children": [
+                {
+                  "label": "20쌍",
+                  "p": "1"
+                }
+              ]
             }
           ]
         }
       ]
-    },
-    "leafLayout": "COMPACT"
+    }
   },
-  "caption": "순서쌍 5×4=20개에서 AB와 BA처럼 순서만 바뀐 쌍을 하나의 두 모둠으로 묶어 2로 나눈다.",
+  "caption": "첫째는 5명 중, 둘째는 남은 4명 중 고르므로 20개의 순서쌍이 생긴다. AB와 BA는 같은 두 명 모둠을 두 번 세므로 20÷2=10가지이다. 정답은 ⑤이다.",
   "sourceConditions": [
     {
       "id": "c1",
-      "condition": "학생 다섯 명에서 첫 번째와 두 번째 학생을 순서 있게 고른다. 각 두 명 모둠은 순서가 달라도 같은 모둠이다.",
+      "condition": "순서 있게 두 학생을 고르면 첫째 5명, 둘째 4명이며 AB와 BA는 같은 모둠이다.",
       "mappedTo": "chart"
     }
   ],
   "newVisualInformation": [
-    "순서쌍은 20개이며 각 무순서 두 명 모둠을 두 번 센다.",
-    "쌍 수를 2로 나누어 2명·3명 두 모둠으로 나눈다."
+    "첫째 5명, 둘째 남은 4명으로 20개 순서쌍이 생기고 순서 반전은 같은 모둠."
   ]
 }
