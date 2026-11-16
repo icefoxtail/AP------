@@ -838,3 +838,9 @@ FEEDBACK-10-11의 판정/검사분리, PT-only,후보0 직접ACTIVE정의선택,
 - 새 TPL ② **일차방정식의 직선 퇴화·축 평행 판정**, PT_LINE_EQUATION. 두 변수 계수의 영 여부로 일반 직선·수평선·수직선·퇴화식을 구분한다. 1문항, 대표 26 팔마고 2학기 중간 Q10. 각 그룹 실제1문항이므로 대표를 부풀리지 않았다.
 - 원문 주의: 19 복성고 2학기 중간 Q18은 g의 정의역 [0,1]에서 g(4)가 정의되지 않으나 해설은 구간 밖 연장값16을 사용한다. 읽히는 상수함수 추론 구조를 판정하고 note로 오류를 보존했다.
 - 기존 결과 보존. PR·main 병합·정본·JS·등록 요청 변경 없음.
+
+### 고1 batch7 및 고2 유사 대수 159행 저장
+- 고1 원본2시험지43행: h1-1mid 396→439행. 결과 커밋 `747d4acdc06aca5fa4dee268837272c6ea9ab3f9`, blob `560526ddd99ee1ff72c9d4cbe280f5bf74598fb1`. PICK43, PASS41/PT_ONLY1/OUT_OF_CANDIDATES1.
+- 고2 유사 대수5시험지116행: similar-h2-1mid 46→162행. 결과 커밋 `a4b52b6ba9d862f20d1b1f13c11da335f0069923`, blob `b5040c5eba54eac00c6533610f4ec8872021c8b8`. PICK116, PASS76/PT_ONLY7/OUT_OF_CANDIDATES33.
+- 최신 main `82eb5d09f85d1b082facaef47645b978ff2bdcf5` 기준 원문7개 blob·UID·경로·순번 일치, 승인 중첩·기존 결과 중복0, ACTIVE 키 및 TPL 상위 PT 관계 PASS.
+- 각 저장 후 원격 전체 본문·행수·blob 일치 확인. 기존 행 보존. PR·main 병합·정본·JS·등록 요청 변경 없음.
