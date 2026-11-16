@@ -1,0 +1,437 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "18"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "18"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "S",
+    "T",
+    "U",
+    "V"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCT",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "sTS",
+      "refs": [
+        "T",
+        "S"
+      ]
+    },
+    {
+      "id": "sAV",
+      "refs": [
+        "A",
+        "V"
+      ]
+    },
+    {
+      "id": "sVU",
+      "refs": [
+        "V",
+        "U"
+      ]
+    },
+    {
+      "id": "sCS",
+      "refs": [
+        "C",
+        "S"
+      ]
+    },
+    {
+      "id": "sAU",
+      "refs": [
+        "A",
+        "U"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "2*sqrt(10)"
+      },
+      {
+        "id": "lCS",
+        "ownerSegment": "sCS",
+        "text": "sqrt(10)"
+      },
+      {
+        "id": "lAU",
+        "ownerSegment": "sAU",
+        "text": "sqrt(10)"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "2"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sCS",
+          "sAU"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "S",
+    "T",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "파란 빗변과 주황 접합부는 조각 둘레에서 두 번씩 세어지지만 바깥 둘레에는 들어가지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "보기에서 고른 배치는 가로 6, 세로 2인 직사각형을 이루는 직각삼각형 둘과 같은 이등변삼각형 둘이다.",
+      "mappedTo": [
+        "mathPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "겹쳐 붙인 세 선분의 길이는 각각 두 번 빠진다. 최종 차는 쓰지 않는다."
+  ],
+  "accessibilityDescription": "파란 빗변과 주황 접합부는 조각 둘레에서 두 번씩 세어지지만 바깥 둘레에는 들어가지 않는다."
+}
