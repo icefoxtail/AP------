@@ -760,3 +760,50 @@ FEEDBACK-10-11의 판정/검사분리, PT-only,후보0 직접ACTIVE정의선택,
 - 최신 main `56b9da73484799c7b6b47965ae6fc4cec4216fac` 및 metadata blob `1bbbf70031d034a17a1481daf9623cc3e80b3491` 기준 원문 JS 10개 blob 일치, UID·경로·순번 일치, 승인 boolean 중첩 0, 기존 D 결과 중복 0. ACTIVE 키·TPL 상위 PT 관계 PASS.
 - 저장 후 읽기 전용 GitHub fetch_file로 전체 본문·339행·blob SHA 일치 확인.
 - 기존 결과 행 보존. PR·main 병합·정본·등록 요청·시험지 JS 변경 없음. 이번 복구 저장 누계 89시험지 1,751행이며, 전체 고등 범위 완료가 아닌 중간 체크포인트다.
+
+### 고2 수학II 잔여 17시험지 379행 저장
+- `h2-2mid.jsonl` 1,073→1,452행, 결과 커밋 `4670bc3a0175178270e9e4056328ae07f88717da`, blob `f473aa975c370146edf860650eb2b770c68f8c71`.
+- PICK 379. check PASS 342 / PT_ONLY 9 / OUT_OF_CANDIDATES 28. 도구 이유 HOLD 0. 신규 PT는 없고 PT-only의 TPL 제안 6그룹은 아래에 정리한다.
+- main `56b9da73484799c7b6b47965ae6fc4cec4216fac` 기준 원문17개 blob 일치, 독립 작업자에게 제공된 379개 정제 입력의 발문·보기·정답·해설·그림 필드가 검증 소스와 일치. UID·경로·순번 일치, 승인 겹침·D 기존 중복0, ACTIVE·TPL 상위 관계 PASS. 작업자는 그림 문항59개 직접 열람을 보고했다.
+- 저장 후 GitHub 읽기에서 전체 본문·1,452행·blob SHA 일치 확인. 기존 행 보존. 정본·등록 요청·JS·main·PR 변경 없음. 남은 범위는 계속 진행한다.
+
+## 문항 원문 검토 사항
+- source11 19매산고 17번: 정수부분 좌접근 해설 b=6 오류, 실제 b=5로 보임.
+- source22 21효천고 2번: x=2에서 하한7>상한19/9로 제시 부등식을 만족하는 함수 없음. 의도된 샌드위치 골격 판정, 원문 수정하지 않음.
+- source23 22금당고 16번: 정답·해설 공란. 함수방정식에서 f(0)=2, f=x²/2+cx+2; f(2)=0은 c=-2인데 주어진 극한4는 c=2로 모순. 함수방정식-도함수 관계 골격을 독립 추론하여 판정.
+
+## 같은 뜻으로 묶은 TPL 제안
+대표는 최대3개, 3개 미만인 그룹은 실제 문항 전부만 표시.
+
+### 필요 TPL: 연속 정리의 역명제 반례 — 최대·최소 존재와 연속성을 구분하여 역명제 반례를 찾는다.
+- 문항 수: 1
+- PT: PT_CONTINUITY_JUDGMENT
+- 대표: archive/exams/original/high/h2/2mid/19_금당고_2학기_중간_고2_수학II.js #15 / qid_v1_6e470a5587dce280001dfa7b980f4db5178ee8fbeca5c798426ac4aaedf95e34
+
+### 필요 TPL: 고립된 예외 함숫값의 극한 — 예외점들이 고립됨을 확인하여 함수값과 근방의 극한을 구분한다.
+- 문항 수: 1
+- PT: PT_LIMIT_VALUE_CALC
+- 대표: archive/exams/original/high/h2/2mid/19_순천고_2학기_중간_고2_수학II.js #5 / qid_v1_152fcc8c52d8e501b7b32b9e9218dfaea8ada3a6c805092615da157dac45591f
+
+### 필요 TPL: 유리함수의 제한구간 극값 — 매개변수 부호와 단조성으로 양 끝의 극값을 결정한다.
+- 문항 수: 1
+- PT: PT_FUNCTION_GRAPH_PROPERTIES
+- 대표: archive/exams/original/high/h2/2mid/19_제일고_2학기_중간_고2_수학II.js #6 / qid_v1_8cac1be78ae440cc4f139f391098a06c4b970f87c0a5a64df8242fbdb582b91c
+
+### 필요 TPL: 조각함수 좌우극한 일치로 계수 결정 — 경계 양쪽 식의 극한을 같게 하여 계수를 정한다.
+- 문항 수: 2
+- PT: PT_LIMIT_PARAMETER_DETERMINATION
+- 대표: archive/exams/original/high/h2/2mid/20_금당고_2학기_중간_고2_수학II.js #2 / qid_v1_149d5f24fc8f10d7b7cb563a2bd6d84ba62f617c3a5cd610b184033a8068f033
+- 대표: archive/exams/original/high/h2/2mid/21_강남여고_2학기_중간_고2_수학II.js #6 / qid_v1_1a159960698c29a4f47eb62629f8eca688e336e7517a48b1e84a385367056906
+
+### 필요 TPL: 열린구간의 이차방정식 근 배치 — 양 끝 부호·꼭짓점·경계 제외로 구간 안의 근 개수를 제한한다.
+- 문항 수: 3
+- PT: PT_H1_QUADRATIC_DISCRIMINANT
+- 대표: archive/exams/original/high/h2/2mid/20_금당고_2학기_중간_고2_수학II.js #6 / qid_v1_53a6438d0fe419833a075d023d2edee806ea7d216d6be88f9987434f057dffca
+- 대표: archive/exams/original/high/h2/2mid/20_매산여고_2학기_중간_고2_수학II.js #19 / qid_v1_d65f174b9bea33f134a870877ad0351ffef843368d4825ec824f55ceb40f42c5
+- 대표: archive/exams/original/high/h2/2mid/21_효천고_2학기_중간_고2_수학II.js #6 / qid_v1_0bdd536558bc110bd6fa0c7337d3107d358efc4a0ea20a247c19596fa1a89f10
+
+### 필요 TPL: 복수 극한값 직접 계산 — 유리화·통분·인수분해가 필요한 독립된 여러 극한값을 각각 구한다(옳고 그름 판정 아님).
+- 문항 수: 1
+- PT: PT_LIMIT_VALUE_CALC
+- 대표: archive/exams/original/high/h2/2mid/21_강남여고_2학기_중간_고2_수학II.js #28 / qid_v1_6a49abc0ff488338dd8c09318d1f3089618abb2f4e341cbce35e17b6a12ee437
