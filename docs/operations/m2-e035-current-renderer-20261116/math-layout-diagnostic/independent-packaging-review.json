@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "archive-e035-diagnostic-publication-packaging-independent-read-v1",
+  "observedAt": "2026-11-16T11:28:21.781169+00:00",
+  "observer": "/root/audit_m3",
+  "decision": "STATIC_ACCEPT_EXACT_ONE_ENTRY",
+  "baseTree": "849f58ffdb1d2109db51791f3fd007e3813d2b41",
+  "path": "tools/archive-pages-release-manifest.json",
+  "beforeSha256": "4d3f0a01d736ea82f0c4da13593bfa38ba539edc7064a91a130b4bc9b92fcbc4",
+  "afterSha256": "c7961d056139b4290957e1ccf468466d58a1ffdabeb0811a6c5f3a3fe880c0fc",
+  "addedArchiveRootFile": "student-review-mobile.css",
+  "existingEntriesAndAllOtherFieldsExact": true,
+  "diagnosticRendererCommitUnchanged": "2fd3ab926f40212c7fbe3a224a6d492e928741ba",
+  "producerIndependentReviewSha256": "6713775db27294587e8a9b39b859e2f2413c33aec9eb64e460520749463aeb73",
+  "authorFailureReportOnly": {
+    "runId": 43855734628,
+    "test": "every local script and stylesheet a shipped page names is in the site",
+    "missing": "archive/student-review-mobile.css"
+  },
+  "newRuntimeGuardExecution": 0,
+  "newBrowserExecution": 0,
+  "sourceAssetRendererCssChanges": 0,
+  "independentVisualDecision": "HOLD",
+  "limitations": "This exact manifest inclusion review does not claim a new runtime guard or Pages publication PASS."
+}
