@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "경계 k=9에서 파란 포물선과 주황 직선은 T(−1,10)에서 접한다. 두 교점이 필요하므로 경계보다 포물선을 아래로 내려야 한다. 마지막 자연수 답은 쓰지 않는다.",
+  "accessibilityDescription": "경계 k=9에서 파란 포물선과 주황 직선은 T(−1,10)에서 접한다. 두 교점이 필요하므로 경계보다 포물선을 아래로 내려야 한다. 마지막 자연수 답은 쓰지 않는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "9",
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=2x^2+x+9"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=-3x+7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "-1",
+          "y": "10",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=2x^2+x+k$의 그래프와 직선 $y=-3x+7$이 서로 다른 두 점에서 만나도록 하는 자연수 $k$의 최댓값을 구하면? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "두 교점 조건이 접하는 경계를 포함하지 않는다는 것을 보여 준다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점 조건이 접하는 경계를 포함하지 않는다는 것을 보여 준다."
+  ]
+}
