@@ -9,7 +9,7 @@
     for(const value of data.records){
       const r=JSON.parse(JSON.stringify(value));
       if(!/^qid_v1_[a-f0-9]{64}$/.test(r.questionUid)||byUid.has(r.questionUid)||r.registrationStatus!=='REGISTERED')throw Error('FOUR_SLOT_RECORD_INVALID');
-      if(!['EXACT_BLOB','UNCHANGED_STUDENT_PAYLOAD','REGISTERED_RENDERER_CONTINUITY','SCOPED_REVIEWED_RENDERER','EXISTING_REGISTERED_VECTOR_CONTINUITY','M1S2_PROBLEM_RENDERER_CONTINUITY','M3S2_EXISTING_LAYOUT_CONTINUITY'].includes(r.sourceBinding))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
+      if(!['EXACT_BLOB','UNCHANGED_STUDENT_PAYLOAD','REGISTERED_RENDERER_CONTINUITY','SCOPED_REVIEWED_RENDERER','EXISTING_REGISTERED_VECTOR_CONTINUITY','M1S2_PROBLEM_RENDERER_CONTINUITY','M3S2_EXISTING_LAYOUT_CONTINUITY','M3_E052_Q5_COMPLETE_GIVEN_EXISTING_VECTOR'].includes(r.sourceBinding))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
       if(r.sourceBinding==='REGISTERED_RENDERER_CONTINUITY'){
         const ref=r.rendererContinuityRef;
         if(!ref||typeof ref!=='object'||Array.isArray(ref)||Object.keys(ref).sort().join(',')!=='path,sha256'||
@@ -52,6 +52,17 @@
           throw Error('FOUR_SLOT_M3S2_LAYOUT_REF_INVALID');
         Object.freeze(ref);
       }else if(Object.hasOwn(r,'layoutContinuityRef'))throw Error('FOUR_SLOT_M3S2_LAYOUT_REF_UNEXPECTED');
+      if(r.sourceBinding==='M3_E052_Q5_COMPLETE_GIVEN_EXISTING_VECTOR'){
+        const ref=r.q5CompleteGivenContinuityRef;
+        if(r.questionUid!=='qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1'||
+           r.sourceArchiveFile!=='original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js'||r.sourceOrdinal!==5||
+           r.sourceDisplayNumber!==5||String(r.sourceQuestionNo)!=='5'||
+           !ref||typeof ref!=='object'||Array.isArray(ref)||Object.keys(ref).sort().join(',')!=='path,sha256'||
+           ref.path!=='.archive-meta-register/4slot-m3-e052-q5-complete-given/'+r.questionUid+'.json'||
+           typeof ref.sha256!=='string'||!/^[a-f0-9]{64}$/.test(ref.sha256)||r.independentReviewClaim!==false)
+          throw Error('FOUR_SLOT_M3_Q5_COMPLETE_GIVEN_REF_INVALID');
+        Object.freeze(ref);
+      }else if(Object.hasOwn(r,'q5CompleteGivenContinuityRef'))throw Error('FOUR_SLOT_M3_Q5_COMPLETE_GIVEN_REF_UNEXPECTED');
       for(const s of SLOTS){if(!Array.isArray(r[s])||r[s].some(id=>!Number.isInteger(id))||new Set(r[s]).size!==r[s].length)throw Error('FOUR_SLOT_ARRAY_REQUIRED');Object.freeze(r[s]);for(const id of r[s]){const key=JSON.stringify([r.dictionaryVersion,s,id]);if(!postings.has(key))postings.set(key,new Set());postings.get(key).add(r.questionUid);}}
       if(Array.isArray(r.candidates))Object.freeze(r.candidates);
       byUid.set(r.questionUid,Object.freeze(r));

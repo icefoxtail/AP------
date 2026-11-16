@@ -85,7 +85,7 @@ window.examData = {
         "도형"
       ],
       "wide": false,
-      "content": "<p>3. 다음 직사각형에서 선분 $AE$를 접어서 삼각형 $AEF$를 만들었다고 할 때 색칠한 삼각형 $AEF$의 넓이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2.svg\" alt=\"가로가 2b이고 세로가 3a인 직사각형이다. 오른쪽 변 위 E와 A를 접는 선으로 그렸다. 접혀서 D가 옮겨지는 F를 표시하고 삼각형 AEF만 청록으로 칠했다. CE는 2/3 b이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "content": "<p>3. 다음 직사각형에서 선분 $AE$를 접어서 삼각형 $AEF$를 만들었다고 할 때 색칠한 삼각형 $AEF$의 넓이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg\" alt=\"가로가 2b이고 세로가 3a인 직사각형이다. 오른쪽 변 위 E와 A를 접는 선으로 그렸다. 접혀서 D가 옮겨지는 F를 표시하고 삼각형 AEF만 청록으로 칠했다. CE는 2/3 b이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$6ab-b^2$",
         "$6ab-\\dfrac43b^2$",
@@ -451,7 +451,7 @@ window.examData = {
       "layoutTag": "fullwidth",
       "tags": [],
       "wide": false,
-      "content": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점으로 만들어진 사각형 $\\text{EFGH}$에 대한 설명으로 옳지 <u>않은</u> 것은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 네 꼭짓점에서 내각의 이등분선을 그렸다. 안쪽 네 교점은 왼쪽 E, 아래 F, 오른쪽 G, 위 H 순서다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "content": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점으로 만들어진 사각형 $\\text{EFGH}$에 대한 설명으로 옳지 <u>않은</u> 것은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg\" alt=\"평행사변형 ABCD의 네 꼭짓점에서 내각의 이등분선을 그렸다. 안쪽 네 교점은 왼쪽 E, 아래 F, 오른쪽 G, 위 H 순서다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "한 내각의 크기가 직각이다.",
         "두 쌍의 대변의 길이가 각각 같다.",
