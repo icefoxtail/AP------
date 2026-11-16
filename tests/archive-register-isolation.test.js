@@ -370,6 +370,8 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
     'archive/tools/meta-foundation/native-authority-correction.mjs', 'archive/tools/meta-foundation/reviewed-runtime-summary.mjs'])
     put(rel, read(rel));
   copyModule('tools/ci/archive-pr-native-preview.mjs');
+  // Keep the real generation entrypoint; only its heavy Python child is stubbed.
+  copyModule('tools/ci/archive-registration-build-db.mjs');
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');
