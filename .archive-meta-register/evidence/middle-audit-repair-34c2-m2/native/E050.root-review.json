@@ -1,0 +1,1327 @@
+{
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E050",
+  "owner": "GPT_ROOT_14C2C64E43FB",
+  "createdAt": "2026-11-14T14:25:55.160829+00:00",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "rootJudgment": {
+    "examId": "E050",
+    "reviewPath": "/workspace/scratch/14c2c64e43fb/workers/B/E050.review.json",
+    "fourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E050.4slot.json",
+    "independentPath": "/workspace/scratch/14c2c64e43fb/root/independent/E050/independent-review.json",
+    "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+    "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E050.accepted-four-slot-candidate.json",
+    "acceptedFourSlotSha256": "0fc69ecae9e97447b831e69bc9823353e468dae1def4c0230f172135476b4195",
+    "acceptedFourSlotBasis": "Actual root source/solution21 and6renderedimages; sample9/13/19 and21difficulty. Narrow exact NAMED and condition-term corrections accepted.",
+    "acceptIndependentAdjacentMismatch": [
+      1,
+      4,
+      5
+    ],
+    "authorSupplementPaths": [
+      "/workspace/scratch/14c2c64e43fb/workers/B/E050.accepted-four-slot-candidate.json",
+      "/workspace/scratch/14c2c64e43fb/workers/B/E050.independent-semantic-supplement.json",
+      "/workspace/scratch/14c2c64e43fb/workers/B/E050.difficulty-blind-freeze.json"
+    ],
+    "independentSupplementPaths": [
+      "/workspace/scratch/14c2c64e43fb/root/independent/E050/initial.json"
+    ],
+    "rootAcceptance": {
+      "owner": "GPT_ROOT_14C2C64E43FB",
+      "actualSourceOrdinalsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "decision": "ACCEPT_WITH_SCOPED_FOUR_SLOT_SUPPLEMENT",
+      "rationale": "All21 actual solutions and6images read. Actual fraction-component assumption9 preservedlow; target/prerequisite separation13 verified; original solution flow19 retained. Three narrow source-bound four-slot corrections accepted."
+    }
+  },
+  "sampleReviewer": "GPT_ROOT_14C2C64E43FB",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_76e8c67f95933bc484fdf131eb02568d76d2c5f5abc64065d4e779b353ec8ff4",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_76e8c67f95933bc484fdf131eb02568d76d2c5f5abc64065d4e779b353ec8ff4",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "반복되는 최소 숫자블록을 직접 읽는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "순환마디를 직접 읽는 정의 적용1이며 학습중의 표기 숙련과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_eec24cf1fabe7dd0e2c209f2c13856b943db564c741d010b58e69f1fad196cd5",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_eec24cf1fabe7dd0e2c209f2c13856b943db564c741d010b58e69f1fad196cd5",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "양변정리 후 차수·등호·미지수 유무를 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "양변정리 후 차수·등호·미지수 유무를 판정한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0aad98a7fad44ab29a816c5a857c5bbb3f6265b74cf27d6767632cdb90e03062",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_0aad98a7fad44ab29a816c5a857c5bbb3f6265b74cf27d6767632cdb90e03062",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "단항식 곱몫과 거듭제곱을 보기별로 계산한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단항식의 곱셈과 나눗셈 지수법칙을 여러 보기에서 확인한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "단항식 곱몫과 거듭제곱을 보기별로 계산한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_3d02ec8ae5771750408d7901b74b63961fac1c313463d695a9d1acbb77cad14a",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_3d02ec8ae5771750408d7901b74b63961fac1c313463d695a9d1acbb77cad14a",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "분모의 부족한5인수를 지수로 바로 맞춘다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+      },
+      "decision": "ACCEPT",
+      "reason": "분모에 부족한 소인수를 직접 맞추는1이며 학습중과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5cc50ad4c0d12c6d10cc625ed710497ed9a41777f1d698998a664bd6d4c4e019",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_5cc50ad4c0d12c6d10cc625ed710497ed9a41777f1d698998a664bd6d4c4e019",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "유리수·유한소수·순환소수의 기본 정의와 분모소인수를 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수·순환소수의 기본 정의를 구별하는1이며 학습중과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_fd2cf9ad39fcaa172746b7da8376925f60a96787fdd5a12698c28f29229c188e",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_fd2cf9ad39fcaa172746b7da8376925f60a96787fdd5a12698c28f29229c188e",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "부등식을 풀고 보기의 수를 해범위와 비교한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "부등식을 풀고 보기의 수를 해범위와 비교한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "기본부등식해와 실제 수직선 열린끝점/방향을 대응한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "기본부등식해와 실제 수직선 열린끝점/방향을 대응한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d3d5d4d0236ddf47e2d2ec0e2fa2ec10893a396537a6f3da486a2da105aef210",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_d3d5d4d0236ddf47e2d2ec0e2fa2ec10893a396537a6f3da486a2da105aef210",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "중첩괄호를 안에서부터 풀고 동류항을 모은다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세 겹 괄호를 안쪽부터 풀고 부호를 보존하며 동류항을 모은다."
+      },
+      "decision": "ACCEPT",
+      "reason": "중첩괄호를 안에서부터 풀고 동류항을 모은다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_734b45f2f62c92f213cff2d1590ecca2e2c21f09956dd4221cdb6eee5f0e1a2e",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_734b45f2f62c92f213cff2d1590ecca2e2c21f09956dd4221cdb6eee5f0e1a2e",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "잘못 읽은 두 순환소수를 분수로 바꾸어 서로 다른 성분을 복원한다. 다만 잘못읽은 분수가 기약이라는 가정으로 원분자/분모를 직접 동일시하는 해설의 암묵전제가 있다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "잘못 본 분모와 분자를 두 순환소수에서 분리 복원하여 원분수를 조합한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못 읽은 두 순환소수를 분수로 바꾸어 서로 다른 성분을 복원한다. 다만 잘못읽은 분수가 기약이라는 가정으로 원분자/분모를 직접 동일시하는 해설의 암묵전제가 있다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f46e55177a0876fa91c18b814a95a7f3a5d83dcc71a146a745b2346c9145fc9f",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_f46e55177a0876fa91c18b814a95a7f3a5d83dcc71a146a745b2346c9145fc9f",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "비순환부분 한 자리를 제외하고 순환마디 길이로 나눈 나머지를 쓴다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "비순환 앞자리 하나를 제외하고 주기5 나머지로 지정 소수자리를 찾는다."
+      },
+      "decision": "ACCEPT",
+      "reason": "비순환부분 한 자리를 제외하고 순환마디 길이로 나눈 나머지를 쓴다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "같은밑으로지수를합쳐 역수의지수와 일차관계를 세운다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+      },
+      "decision": "ACCEPT",
+      "reason": "같은밑으로지수를합쳐 역수의지수와 일차관계를 세운다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_fb231e3feb4409cbb8baf2db79295b830424a4a75046bf295260576c38f40b3e",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_fb231e3feb4409cbb8baf2db79295b830424a4a75046bf295260576c38f40b3e",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "복합나눗셈의 미지식을 놓아 곱관계로 변형한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이중 나눗셈의 빈칸을 문자로 놓고 역연산하여 복원한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "복합나눗셈의 미지식을 놓아 곱관계로 변형한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_601c10f61fe55a4f0550bacce238ebf3c01ecc6c18d693511ffe385189bef3c0",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_601c10f61fe55a4f0550bacce238ebf3c01ecc6c18d693511ffe385189bef3c0",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "실제 두 원기둥의 반지름/높이를 교환해 부피비를 단항식으로 약분한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "실제 두 원기둥의 반지름/높이를 교환해 부피비를 단항식으로 약분한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9af6cd558befb01447ad73c6f325857940a595e801f8eb20fe82eab489fdfbfa",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_9af6cd558befb01447ad73c6f325857940a595e801f8eb20fe82eab489fdfbfa",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "같은밑의60제곱을 주어진10제곱의6제곱으로 바꾼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "밑9를3으로 바꾸어 같은 거듭제곱 묶음을 A로 치환한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "같은밑의60제곱을 주어진10제곱의6제곱으로 바꾼다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "두 부등식해의 경계가 같다는 조건으로 미정계수를 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 부등식을 각각 풀어 같은 해의 경계로 매개변수를 정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 부등식해의 경계가 같다는 조건으로 미정계수를 구한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_661c4ae0fd71b2986702643358ae91be3ba32a1c2ef0dc9666f71bece1ddb917",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_661c4ae0fd71b2986702643358ae91be3ba32a1c2ef0dc9666f71bece1ddb917",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "주어진 풀이단계마다 적용한 부등식 성질을 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 풀이 단계에 쓰인 양수 곱셈·이항·음수 나눗셈 성질을 대응한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 풀이단계마다 적용한 부등식 성질을 연결한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_2ec505ef78c1f3fc55082e219588d2bde488fddf9fc5cb6adab89a40f894ee6c",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_2ec505ef78c1f3fc55082e219588d2bde488fddf9fc5cb6adab89a40f894ee6c",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "총트럭8대의두종류 용량을 부등식으로 세워 최소자연수를 고른다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+      },
+      "decision": "ACCEPT",
+      "reason": "총트럭8대의두종류 용량을 부등식으로 세워 최소자연수를 고른다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_f1e81ea932b4b265dd317a108e4100a20b8a511a1911f65bbb7570ea136064bd",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_f1e81ea932b4b265dd317a108e4100a20b8a511a1911f65bbb7570ea136064bd",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "자연수해3개라는 조건의 열린닫힌 경계를 계수범위로 옮긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "자연수해3개라는 조건의 열린닫힌 경계를 계수범위로 옮긴다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_68d296dc4f7beba306a3ba6283c2c83f81c0cdd8319d2f3208e2feb6fb2166ca",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_68d296dc4f7beba306a3ba6283c2c83f81c0cdd8319d2f3208e2feb6fb2166ca",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "순환소수 분수변환의 산출물에 분모소인수 조건을 이어 최소곱을 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "순환소수 분수변환의 산출물에 분모소인수 조건을 이어 최소곱을 구한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e08caecb7a849f55fb179e738c749b4648a904de89e55445a6080f1bf82ba148",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_e08caecb7a849f55fb179e738c749b4648a904de89e55445a6080f1bf82ba148",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "다항식을 단항식으로 나누고 상수배해 동류항을 모은다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수식의 단항식 나눗셈과 다항식 전개를 차례로 수행해 동류항을 정리한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "다항식을 단항식으로 나누고 상수배해 동류항을 모은다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_92b1fa2a6b0795c0b3c5f4a822bc7e395867ef55ed593bb3b69a00c82e005f27",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_92b1fa2a6b0795c0b3c5f4a822bc7e395867ef55ed593bb3b69a00c82e005f27",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "왕복의 다른 거리·속력을 시간상한에 연결하는 표준 부등식모델이다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "왕복의 다른 거리·속력을 시간상한에 연결하는 표준 부등식모델이다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 7,
+      "decision": "ACCEPT_ACTUAL_SVG_AND_NARROW_METHOD_COVERAGE",
+      "reason": "실제5SVG에서 열린3 왼쪽이 정답과 일치하며 해설은 부등식풀이와 정답까지만 명시한다. method에 없는 수직선설명 인용을 만들지 않은 범위보존을 수용한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_ORIGINAL_SOLUTION_NEGATIVE_EXPONENT",
+      "reason": "현재 기존해설의 음의지수 표현을 실제읽고 보존한다. 새중등풀이를 써서 원해설을 대체하지 않는다."
+    }
+  ],
+  "scopedOverrides": [
+    {
+      "sourceOrdinal": 1,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "순환마디와 표현121의 직접 판정이다. 반복되는 순환마디의 실제 블록 확인 실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "방정식과 상수 대소식은 일차부등식이 아니며 차수 소거를 먼저 확인한다. 실제 해 풀이 leaf와 구분해 exact RPM은 보류한다. 정리 후 일차부등식의 정의 판정 식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "단항식 혼합계산129이며 ACTIVE 보기별 지수법칙 계산비교 정의가 실제 해설 구조와 일치한다. 단항식 곱과 몫 및 거듭제곱 결과 검증 단항식의 곱셈과 나눗셈 지수법칙을 여러 보기에서 확인한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "목표는 판별119보다 분수를 소수로 고치는123이며 소인수조건120은 보조 경로이다. 분모를 10의 거듭제곱으로 만드는 소인수 보충 분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "결정적 오진술은 소인수11을 가진 기약분수의 순환소수 가능성이다. 120으로 분류하고 유리수의 정의 진술은 관련 배경으로 둔다. 기약분모의 소인수 조건으로 소수 표현 판정 기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "괄호전개를 포함한139이며 얻은 범위와 보기 수를 비교한다. 괄호 부등식을 푼 뒤 수의 소속 비교 괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "실제 SVG 다섯 개의 열린점·닫힌점과 방향을 직접 읽었다. 목표는 해 표현137이고 기본 부등식풀이138은 관련 단계이다. 해 범위와 열린 끝점의 수직선 대응 일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "여러 괄호가 있는 다항식 계산131이다. 안쪽 괄호부터 부호를 분배하고 동류항 정리 세 겹 괄호를 안쪽부터 풀고 부호를 보존하며 동류항을 모은다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "단순 분수변환122의 산출물을 분리하여 원유리수 조건에 조합하는124이다. 기약형과 원래 성분 동일시의 암묵전제를 명시적으로 보류한다. 잘못 읽은 두 분수에서 원분자·원분모 복원 잘못 본 분모와 분자를 두 순환소수에서 분리 복원하여 원분수를 조합한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "순환마디와 표현121의 위치 활용이다. 비순환 앞자리 제외 후 주기의 나머지 적용 비순환 앞자리 하나를 제외하고 주기5 나머지로 지정 소수자리를 찾는다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "최종 같은 밑의 지수 결정을 위한 곱몫125이며 power126도 함께 사용하는 같은 지수법칙 내부이다. 거듭제곱의 곱·몫을 정리하여 지수 일치 거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "괄호 안 몫을 역수의 곱으로 바꾸는 혼합계산129이다. 중첩 단항식 나눗셈의 빈칸 역산 이중 나눗셈의 빈칸을 문자로 놓고 역연산하여 복원한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "crossConceptKeys": [
+          "CC_MONOMIAL_DIVISION"
+        ],
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "원기둥 두 부피를 구하는 중1 정본214를 선수 경로로 보존한다. 기존 source의 중2 단항식 namespace를 변경하지 않고 별도 target에 유지한다. 두 원기둥의 부피 공식 후 문자식 비 계산 두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "거듭제곱의 거듭제곱126이며 단순 밑변환과 묶음이다. 같은 밑과 같은 거듭제곱 묶음으로 치환 밑9를3으로 바꾸어 같은 거듭제곱 묶음을 A로 치환한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "두 해집합의 같음을 계수조건141로 판정한다. 두 부등식 해의 경계 일치로 상수 결정 두 부등식을 각각 풀어 같은 해의 경계로 매개변수를 정한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "부등식 성질136의 단계 판정이다. 지정된 변형 단계와 부등식 성질의 대응 각 풀이 단계에 쓰인 양수 곱셈·이항·음수 나눗셈 성질을 대응한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "최소최대정수143이다. 적재량 하한 부등식에서 최소 자연수 대수 차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "자연수 해가 정확히3개인 정수개수140이며 계수범위141은 관련 경로이다. 자연수 해의 개수로 경계 구간 결정 자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "두 안내 소문항이 하나의 분수 산출물을 공유한다. 목표 자연수에 대한 유리수 조건124이며122와120은 실제 내부 단계이다. 혼합순환소수의 분수화 뒤 유한소수 조건 인수 선택 혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "각 분자 항을 단항식으로 나누는133이 핵심이고 동류항130 및 분배132가 내부 후처리이다. 각 다항식을 단항식으로 나눈 뒤 전개·정리 분수식의 단항식 나눗셈과 다항식 전개를 차례로 수행해 동류항을 정리한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "총 시간 제한144이며 경로차가 각 이동시간의 분자를 바꾼다. 거리차를 반영한 왕복 시간 상한 부등식 돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "순환마디와 표현121의 직접 판정이다. 반복되는 순환마디의 실제 블록 확인 실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "순환마디와 표현121의 직접 판정이다. 반복되는 순환마디의 실제 블록 확인 실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "순환마디와 표현121의 직접 판정이다. 반복되는 순환마디의 실제 블록 확인 실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "순환마디와 표현121의 직접 판정이다. 반복되는 순환마디의 실제 블록 확인 실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "방정식과 상수 대소식은 일차부등식이 아니며 차수 소거를 먼저 확인한다. 실제 해 풀이 leaf와 구분해 exact RPM은 보류한다. 정리 후 일차부등식의 정의 판정 식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "방정식과 상수 대소식은 일차부등식이 아니며 차수 소거를 먼저 확인한다. 실제 해 풀이 leaf와 구분해 exact RPM은 보류한다. 정리 후 일차부등식의 정의 판정 식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "방정식과 상수 대소식은 일차부등식이 아니며 차수 소거를 먼저 확인한다. 실제 해 풀이 leaf와 구분해 exact RPM은 보류한다. 정리 후 일차부등식의 정의 판정 식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "방정식과 상수 대소식은 일차부등식이 아니며 차수 소거를 먼저 확인한다. 실제 해 풀이 leaf와 구분해 exact RPM은 보류한다. 정리 후 일차부등식의 정의 판정 식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "단항식 혼합계산129이며 ACTIVE 보기별 지수법칙 계산비교 정의가 실제 해설 구조와 일치한다. 단항식 곱과 몫 및 거듭제곱 결과 검증 단항식의 곱셈과 나눗셈 지수법칙을 여러 보기에서 확인한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "단항식 혼합계산129이며 ACTIVE 보기별 지수법칙 계산비교 정의가 실제 해설 구조와 일치한다. 단항식 곱과 몫 및 거듭제곱 결과 검증 단항식의 곱셈과 나눗셈 지수법칙을 여러 보기에서 확인한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "단항식 혼합계산129이며 ACTIVE 보기별 지수법칙 계산비교 정의가 실제 해설 구조와 일치한다. 단항식 곱과 몫 및 거듭제곱 결과 검증 단항식의 곱셈과 나눗셈 지수법칙을 여러 보기에서 확인한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "목표는 판별119보다 분수를 소수로 고치는123이며 소인수조건120은 보조 경로이다. 분모를 10의 거듭제곱으로 만드는 소인수 보충 분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "목표는 판별119보다 분수를 소수로 고치는123이며 소인수조건120은 보조 경로이다. 분모를 10의 거듭제곱으로 만드는 소인수 보충 분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "목표는 판별119보다 분수를 소수로 고치는123이며 소인수조건120은 보조 경로이다. 분모를 10의 거듭제곱으로 만드는 소인수 보충 분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "목표는 판별119보다 분수를 소수로 고치는123이며 소인수조건120은 보조 경로이다. 분모를 10의 거듭제곱으로 만드는 소인수 보충 분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "결정적 오진술은 소인수11을 가진 기약분수의 순환소수 가능성이다. 120으로 분류하고 유리수의 정의 진술은 관련 배경으로 둔다. 기약분모의 소인수 조건으로 소수 표현 판정 기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "결정적 오진술은 소인수11을 가진 기약분수의 순환소수 가능성이다. 120으로 분류하고 유리수의 정의 진술은 관련 배경으로 둔다. 기약분모의 소인수 조건으로 소수 표현 판정 기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "결정적 오진술은 소인수11을 가진 기약분수의 순환소수 가능성이다. 120으로 분류하고 유리수의 정의 진술은 관련 배경으로 둔다. 기약분모의 소인수 조건으로 소수 표현 판정 기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "결정적 오진술은 소인수11을 가진 기약분수의 순환소수 가능성이다. 120으로 분류하고 유리수의 정의 진술은 관련 배경으로 둔다. 기약분모의 소인수 조건으로 소수 표현 판정 기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "괄호전개를 포함한139이며 얻은 범위와 보기 수를 비교한다. 괄호 부등식을 푼 뒤 수의 소속 비교 괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "괄호전개를 포함한139이며 얻은 범위와 보기 수를 비교한다. 괄호 부등식을 푼 뒤 수의 소속 비교 괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "괄호전개를 포함한139이며 얻은 범위와 보기 수를 비교한다. 괄호 부등식을 푼 뒤 수의 소속 비교 괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "괄호전개를 포함한139이며 얻은 범위와 보기 수를 비교한다. 괄호 부등식을 푼 뒤 수의 소속 비교 괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "실제 SVG 다섯 개의 열린점·닫힌점과 방향을 직접 읽었다. 목표는 해 표현137이고 기본 부등식풀이138은 관련 단계이다. 해 범위와 열린 끝점의 수직선 대응 일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "실제 SVG 다섯 개의 열린점·닫힌점과 방향을 직접 읽었다. 목표는 해 표현137이고 기본 부등식풀이138은 관련 단계이다. 해 범위와 열린 끝점의 수직선 대응 일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "실제 SVG 다섯 개의 열린점·닫힌점과 방향을 직접 읽었다. 목표는 해 표현137이고 기본 부등식풀이138은 관련 단계이다. 해 범위와 열린 끝점의 수직선 대응 일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "실제 SVG 다섯 개의 열린점·닫힌점과 방향을 직접 읽었다. 목표는 해 표현137이고 기본 부등식풀이138은 관련 단계이다. 해 범위와 열린 끝점의 수직선 대응 일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "여러 괄호가 있는 다항식 계산131이다. 안쪽 괄호부터 부호를 분배하고 동류항 정리 세 겹 괄호를 안쪽부터 풀고 부호를 보존하며 동류항을 모은다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_OR_ANSWER_RECHECK",
+      "after": "B23",
+      "reason": "여러 괄호가 있는 다항식 계산131이다. 안쪽 괄호부터 부호를 분배하고 동류항 정리 세 겹 괄호를 안쪽부터 풀고 부호를 보존하며 동류항을 모은다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "단순 분수변환122의 산출물을 분리하여 원유리수 조건에 조합하는124이다. 기약형과 원래 성분 동일시의 암묵전제를 명시적으로 보류한다. 잘못 읽은 두 분수에서 원분자·원분모 복원 잘못 본 분모와 분자를 두 순환소수에서 분리 복원하여 원분수를 조합한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "low",
+      "reason": "단순 분수변환122의 산출물을 분리하여 원유리수 조건에 조합하는124이다. 기약형과 원래 성분 동일시의 암묵전제를 명시적으로 보류한다. 잘못 읽은 두 분수에서 원분자·원분모 복원 잘못 본 분모와 분자를 두 순환소수에서 분리 복원하여 원분수를 조합한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_OR_ANSWER_RECHECK",
+      "after": "B23",
+      "reason": "단순 분수변환122의 산출물을 분리하여 원유리수 조건에 조합하는124이다. 기약형과 원래 성분 동일시의 암묵전제를 명시적으로 보류한다. 잘못 읽은 두 분수에서 원분자·원분모 복원 잘못 본 분모와 분자를 두 순환소수에서 분리 복원하여 원분수를 조합한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "순환마디와 표현121의 위치 활용이다. 비순환 앞자리 제외 후 주기의 나머지 적용 비순환 앞자리 하나를 제외하고 주기5 나머지로 지정 소수자리를 찾는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "순환마디와 표현121의 위치 활용이다. 비순환 앞자리 제외 후 주기의 나머지 적용 비순환 앞자리 하나를 제외하고 주기5 나머지로 지정 소수자리를 찾는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "순환마디와 표현121의 위치 활용이다. 비순환 앞자리 제외 후 주기의 나머지 적용 비순환 앞자리 하나를 제외하고 주기5 나머지로 지정 소수자리를 찾는다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "최종 같은 밑의 지수 결정을 위한 곱몫125이며 power126도 함께 사용하는 같은 지수법칙 내부이다. 거듭제곱의 곱·몫을 정리하여 지수 일치 거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "최종 같은 밑의 지수 결정을 위한 곱몫125이며 power126도 함께 사용하는 같은 지수법칙 내부이다. 거듭제곱의 곱·몫을 정리하여 지수 일치 거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "최종 같은 밑의 지수 결정을 위한 곱몫125이며 power126도 함께 사용하는 같은 지수법칙 내부이다. 거듭제곱의 곱·몫을 정리하여 지수 일치 거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "괄호 안 몫을 역수의 곱으로 바꾸는 혼합계산129이다. 중첩 단항식 나눗셈의 빈칸 역산 이중 나눗셈의 빈칸을 문자로 놓고 역연산하여 복원한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "괄호 안 몫을 역수의 곱으로 바꾸는 혼합계산129이다. 중첩 단항식 나눗셈의 빈칸 역산 이중 나눗셈의 빈칸을 문자로 놓고 역연산하여 복원한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "괄호 안 몫을 역수의 곱으로 바꾸는 혼합계산129이다. 중첩 단항식 나눗셈의 빈칸 역산 이중 나눗셈의 빈칸을 문자로 놓고 역연산하여 복원한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_MONOMIAL_DIVISION"
+      ],
+      "reason": "원기둥 두 부피를 구하는 중1 정본214를 선수 경로로 보존한다. 기존 source의 중2 단항식 namespace를 변경하지 않고 별도 target에 유지한다. 두 원기둥의 부피 공식 후 문자식 비 계산 두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "원기둥 두 부피를 구하는 중1 정본214를 선수 경로로 보존한다. 기존 source의 중2 단항식 namespace를 변경하지 않고 별도 target에 유지한다. 두 원기둥의 부피 공식 후 문자식 비 계산 두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "원기둥 두 부피를 구하는 중1 정본214를 선수 경로로 보존한다. 기존 source의 중2 단항식 namespace를 변경하지 않고 별도 target에 유지한다. 두 원기둥의 부피 공식 후 문자식 비 계산 두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "원기둥 두 부피를 구하는 중1 정본214를 선수 경로로 보존한다. 기존 source의 중2 단항식 namespace를 변경하지 않고 별도 target에 유지한다. 두 원기둥의 부피 공식 후 문자식 비 계산 두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "거듭제곱의 거듭제곱126이며 단순 밑변환과 묶음이다. 같은 밑과 같은 거듭제곱 묶음으로 치환 밑9를3으로 바꾸어 같은 거듭제곱 묶음을 A로 치환한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "거듭제곱의 거듭제곱126이며 단순 밑변환과 묶음이다. 같은 밑과 같은 거듭제곱 묶음으로 치환 밑9를3으로 바꾸어 같은 거듭제곱 묶음을 A로 치환한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "거듭제곱의 거듭제곱126이며 단순 밑변환과 묶음이다. 같은 밑과 같은 거듭제곱 묶음으로 치환 밑9를3으로 바꾸어 같은 거듭제곱 묶음을 A로 치환한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "두 해집합의 같음을 계수조건141로 판정한다. 두 부등식 해의 경계 일치로 상수 결정 두 부등식을 각각 풀어 같은 해의 경계로 매개변수를 정한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_OR_ANSWER_RECHECK",
+      "after": "B23",
+      "reason": "두 해집합의 같음을 계수조건141로 판정한다. 두 부등식 해의 경계 일치로 상수 결정 두 부등식을 각각 풀어 같은 해의 경계로 매개변수를 정한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "부등식 성질136의 단계 판정이다. 지정된 변형 단계와 부등식 성질의 대응 각 풀이 단계에 쓰인 양수 곱셈·이항·음수 나눗셈 성질을 대응한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_OR_ANSWER_RECHECK",
+      "after": "B12",
+      "reason": "부등식 성질136의 단계 판정이다. 지정된 변형 단계와 부등식 성질의 대응 각 풀이 단계에 쓰인 양수 곱셈·이항·음수 나눗셈 성질을 대응한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL"
+      ],
+      "reason": "최소최대정수143이다. 적재량 하한 부등식에서 최소 자연수 대수 차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "최소최대정수143이다. 적재량 하한 부등식에서 최소 자연수 대수 차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "최소최대정수143이다. 적재량 하한 부등식에서 최소 자연수 대수 차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "최소최대정수143이다. 적재량 하한 부등식에서 최소 자연수 대수 차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL"
+      ],
+      "reason": "자연수 해가 정확히3개인 정수개수140이며 계수범위141은 관련 경로이다. 자연수 해의 개수로 경계 구간 결정 자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "자연수 해가 정확히3개인 정수개수140이며 계수범위141은 관련 경로이다. 자연수 해의 개수로 경계 구간 결정 자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "자연수 해가 정확히3개인 정수개수140이며 계수범위141은 관련 경로이다. 자연수 해의 개수로 경계 구간 결정 자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "자연수 해가 정확히3개인 정수개수140이며 계수범위141은 관련 경로이다. 자연수 해의 개수로 경계 구간 결정 자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "자연수 해가 정확히3개인 정수개수140이며 계수범위141은 관련 경로이다. 자연수 해의 개수로 경계 구간 결정 자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL"
+      ],
+      "reason": "두 안내 소문항이 하나의 분수 산출물을 공유한다. 목표 자연수에 대한 유리수 조건124이며122와120은 실제 내부 단계이다. 혼합순환소수의 분수화 뒤 유한소수 조건 인수 선택 혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "두 안내 소문항이 하나의 분수 산출물을 공유한다. 목표 자연수에 대한 유리수 조건124이며122와120은 실제 내부 단계이다. 혼합순환소수의 분수화 뒤 유한소수 조건 인수 선택 혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "두 안내 소문항이 하나의 분수 산출물을 공유한다. 목표 자연수에 대한 유리수 조건124이며122와120은 실제 내부 단계이다. 혼합순환소수의 분수화 뒤 유한소수 조건 인수 선택 혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_OR_ANSWER_RECHECK",
+      "after": "B23",
+      "reason": "두 안내 소문항이 하나의 분수 산출물을 공유한다. 목표 자연수에 대한 유리수 조건124이며122와120은 실제 내부 단계이다. 혼합순환소수의 분수화 뒤 유한소수 조건 인수 선택 혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "각 분자 항을 단항식으로 나누는133이 핵심이고 동류항130 및 분배132가 내부 후처리이다. 각 다항식을 단항식으로 나눈 뒤 전개·정리 분수식의 단항식 나눗셈과 다항식 전개를 차례로 수행해 동류항을 정리한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_OR_ANSWER_RECHECK",
+      "after": "B23",
+      "reason": "각 분자 항을 단항식으로 나누는133이 핵심이고 동류항130 및 분배132가 내부 후처리이다. 각 다항식을 단항식으로 나눈 뒤 전개·정리 분수식의 단항식 나눗셈과 다항식 전개를 차례로 수행해 동류항을 정리한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RANGE"
+      ],
+      "reason": "총 시간 제한144이며 경로차가 각 이동시간의 분자를 바꾼다. 거리차를 반영한 왕복 시간 상한 부등식 돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "총 시간 제한144이며 경로차가 각 이동시간의 분자를 바꾼다. 거리차를 반영한 왕복 시간 상한 부등식 돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "총 시간 제한144이며 경로차가 각 이동시간의 분자를 바꾼다. 거리차를 반영한 왕복 시간 상한 부등식 돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "총 시간 제한144이며 경로차가 각 이동시간의 분자를 바꾼다. 거리차를 반영한 왕복 시간 상한 부등식 돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "총 시간 제한144이며 경로차가 각 이동시간의 분자를 바꾼다. 거리차를 반영한 왕복 시간 상한 부등식 돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "reviewedSourceBlob": "7c2c001f2210839a5ee562473d72a60cd3ac5cda",
+  "finalSourceBlob": "61e92c85009e8256b4a1a3fd59c1339aaa829dc4",
+  "reviewSha256": "a3df0c2e012e3e465e06d04101a02f8ce4b80b582eea34b193a8628003e17338",
+  "acceptedReviewSha256": "c02e55f41dc5b031d2623aea64340fbf9a98008557c5ea532c88c2f44848f331",
+  "independentSha256": "ade077f207a152fd9b44cd687b160347c3977d3a8d0e92650e61b983b1372f2d",
+  "reviewedFourSlotSha256": "0780387cd451708c2607bf4d2802ccdc4640dec026795e76b4cedcd0ac8b0a30",
+  "finalFourSlotSha256": "46e2e38376c620eeb7d30c824355fc6e4c2df437da7a659a6d53ed6e2614a5ef",
+  "independentSupplements": [
+    {
+      "file": "independent-supplements/initial.json",
+      "sha256": "569e31668627a5f4b1e87bf15e3dc4b1a1df2709d66f57019977745991bc0d66"
+    }
+  ],
+  "fourSlotRebind": {
+    "transformation": "Explicitly identified and independently reviewed immutable candidate supplement plus final sourceGitBlobSha rebind. Original author bytes remain separate.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "notes": [
+    "Root consumed actual source-bound author and independent evidence. Semantics are not inferred from static validator PASS.",
+    "No main merge, shared registry/metadata write, production inbox or deployment."
+  ],
+  "acceptedFourSlotCandidate": {
+    "path": "/workspace/scratch/14c2c64e43fb/workers/B/E050.accepted-four-slot-candidate.json",
+    "sha256": "0fc69ecae9e97447b831e69bc9823353e468dae1def4c0230f172135476b4195",
+    "basis": "Actual root source/solution21 and6renderedimages; sample9/13/19 and21difficulty. Narrow exact NAMED and condition-term corrections accepted."
+  },
+  "authorSupplements": [
+    {
+      "file": "author-supplements/E050.accepted-four-slot-candidate.json",
+      "sha256": "0fc69ecae9e97447b831e69bc9823353e468dae1def4c0230f172135476b4195"
+    },
+    {
+      "file": "author-supplements/E050.independent-semantic-supplement.json",
+      "sha256": "5eb03d8e840b97dde400ea2f37c5f04ccdacc5718d9dca0ef40b2ce2212be08b"
+    },
+    {
+      "file": "author-supplements/E050.difficulty-blind-freeze.json",
+      "sha256": "9b5eda2e839dbf7d8eec8e597acb6507371541f4150c9ea266c54b423b2d5131"
+    }
+  ]
+}

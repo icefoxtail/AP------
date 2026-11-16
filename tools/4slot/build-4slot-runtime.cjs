@@ -21,7 +21,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./registered-renderer-continuity.cjs')), fs.readFileSync(registeredRenderer.worker)]));
+const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker].map(p=>fs.readFileSync(p))));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -135,7 +135,7 @@ function validateM2SourceHold(root,d,it,id,cur) {
 function holdEvidenceDigests(root,d) {
   const out={};
   for(const it of d.items)if(own(it,'registrationHold')) {
-    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence','supersessionEvidence']) {
+    for(const field of ['evidence','reviewEvidence','independentEvidence','metadataTransportEvidence','fourSlotEvidence','supersessionEvidence']) {
       const rel=it.registrationHold?.[field]?.path;
       if(typeof rel!=='string')continue;
       try { out[rel]=sha(fs.readFileSync(safe(root,rel))); } catch { out[rel]=null; }
@@ -208,7 +208,9 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       for(const [p,h]of Object.entries(holdDigests))if(h)observed.push([p,h]);
       for(const [p,h]of continuityDigests)if(h)observed.push([p,h]);
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
-      if(reuseCache&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
+      // The explicit metadata continuation also depends on the issued receipt,
+      // metadata and runtime. Always replay that one negative decision live.
+      if(reuseCache&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
         files.push(old);records.push(...previous.records.filter(r=>r.compactPath===rel));pending.push(...previous.pending.filter(r=>r.path===rel));stats.reusedFiles++;continue;
       }
       stats.revalidatedFiles++;

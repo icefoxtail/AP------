@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-m3-e070-retry-official-dryrun-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "baselineMain": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+  "requestRef": {
+    "path": ".archive-meta-register/inbox/m3s2-audit-e070-difficulty-r2-20261116.json",
+    "sha256": "8073d4f1d72639c1602344ed563f2a1a906b45d49d1ded829c5d317c73abc9af"
+  },
+  "officialRegistrarRef": {
+    "path": "archive/tools/meta-foundation/register-difficulty5.mjs",
+    "sha256": "681e30501e9a9f0df7ac78c560a868cba8564864f8ab1468220223d28d360d6e",
+    "exactRemoteCode": true
+  },
+  "result": {
+    "status": "PASS",
+    "mode": "dry-run-reviewed-correction",
+    "requestId": "m3s2-audit-e070-difficulty-r2-20261116",
+    "driveFileId": null,
+    "driveSha256": null,
+    "sourceArchiveFile": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+    "sourceBlobSha": "6ba408d51f059a3c1e10f984154cda530ff33ef0",
+    "items": [
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+        "decision": "APPLY",
+        "before": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "b7df56882913e8e6d08d3376225eb2cc86defe42120da84150d998d55e1c3c64",
+          "contentFingerprint": "c8461194aa8b9783aedc7998f7925651b86f985f27915b1b3e22916c278ad6d9"
+        },
+        "after": {
+          "difficultyBoundaryFlag": "B34",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "sourceFingerprint": "b7df56882913e8e6d08d3376225eb2cc86defe42120da84150d998d55e1c3c64",
+          "contentFingerprint": "c8461194aa8b9783aedc7998f7925651b86f985f27915b1b3e22916c278ad6d9"
+        },
+        "reason": "Reuse the completed independent current-method difficulty review at docs/operations/m3-s2-release-20261115/current-method-difficulty-review.json; current source difficulty fields and decisive method still match. Only the four difficulty values are transported; source binding and semantic approval are unchanged.",
+        "consumerBinding": "stale"
+      }
+    ],
+    "summary": {
+      "total": 1,
+      "APPLY": 1,
+      "ALREADY_REGISTERED": 0,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 0,
+      "changedFields": 4,
+      "written": false,
+      "staleSourceBinding": 1
+    },
+    "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+  },
+  "sourceChanged": false,
+  "actualRegistration": "NOT_RUN",
+  "actualConsumerAfter": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

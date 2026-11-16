@@ -648,3 +648,136 @@ Regression coverage is in `tests/archive-basic-scope-rebind.test.mjs`; the
 reviewed parent correction suite must continue to pass alongside it. This
 reconstruction was tested as new bytes after loss of an unpublished local
 implementation; historical test reports are not substituted for current runs.
+
+### Explicit M2 scope transport and ACTIVE family parents
+
+Two separately named profiles carry existing evidence across the registrar's display-parent boundary. They do not create mathematical, difficulty, primary-type, or curriculum judgments. Both require `PARTIAL_UIDS` and ordinary `FINAL_QA`, the exact whole-bank denominator, original immutable native review, unchanged student payload and renderer evidence, current ACTIVE definitions and binding, and the exact current canonical master. Shared registry changes and mixed evidence profiles are refused.
+
+1. `sourceReview.retainedScopeTransport` uses schema `archive-reviewed-retained-scope-transport-v1` and exactly the fields `curriculum`, `curriculumKey`, `courseKey`. The independent existing-primary disposition must expressly bind curriculum and the existing primary tuple. The same native UID's immutable RPM record supplies scope `M2-2`; the independent disposition is not represented as directly approving `courseKey`. This profile is limited to explicit `2015` / `M2-2` evidence. Explicit source or metadata nulls and conflicts are refused. Its optional `targetParentRef.retainedScopeParent`, schema `archive-reviewed-retained-primary-parent-v1`, carries only the exact L1/L2 of an ACTIVE `FAMILY_ACTIVE` RPM record with no own `templateKey`; PT/TPL authority remains the independently approved existing primary. `templateCandidates` are never an approval source.
+2. `targetParentRef.nativeSourceReview.crosswalkProfile = "ACTIVE_FAMILY_EXPLICIT_NATIVE_AFTER"` is a distinct parent profile. The immutable native `after` itself must expressly name curriculum, PT, TPL, RPM L1/L2 and the complete RPM path. The exact native-commit crosswalk must be ACTIVE / `FAMILY_ACTIVE`, have no own `templateKey`, and agree with the current unit, primary, scope and master leaf. No independent retained-primary authority is borrowed. The existing unmarked `DIRECT_BINDING_GAP` / `MISSING` contract is unchanged.
+
+For the second profile alone, an absent course can be carried by the additional exact marker:
+
+```json
+"courseTransport": {
+  "schemaVersion": "archive-native-family-course-transport-v1",
+  "field": "courseKey"
+}
+```
+
+This marker transports only `courseKey = "M2-2"`. Native `after.curriculum` must be `2015`; both immutable source snapshots and current source must have no own course property; current metadata must originally have no own course property. The native after must not already claim that field. The exact immutable RPM scope, current ACTIVE PT/TPL/binding/owning-pack scope, active unit parent and canonical master leaf are revalidated by the full native-parent validator before the value enters the accepted-after map. Explicit null, another semester, missing authority, registry mutation or another evidence profile still fails.
+
+The scope and course proofs record original metadata property presence. Receipt-backed replays may reconstruct an originally absent value from a serialized `before: null` only after the writer-issued source-review sidecar, full stored proof, current metadata/identity/runtime rows and request binding have been verified. An explicit initial null is never treated as absence. Parent proof hashes and the complete reconstructed source-review proof remain subject to exact replay comparison. Removing the opt-in, sidecar, proof or presence record cannot select a generic fallback.
+
+These profiles support metadata-only requests when current student/source values already agree with the immutable review. They do not require status declarations to be written into otherwise unchanged source files. Official writer, replay, native reuse, current catalog/parent/readiness checks and consumed-inbox typed Consumer verification remain separate release gates.
+
+AutoMeta can reuse an already issued explicit native-family approval when an older pending cursor differs only in the four difficulty metadata fields and both source versions omit both rationale properties. The complete receipt, source-review sidecar, immutable native review, current records, ACTIVE tuple and native parent must first pass their existing replay checks. The selected request must explicitly carry both rationale values, and both issued rationale bindings must come from exact `NATIVE_ITEM_FIELD` values. Other source-review profiles, explicit null rationale properties, other changed fields, missing or altered witnesses, and ordinary unmarked native approvals do not enter this path. It returns the existing receipt without writing source or issuing approval; the ordinary producer still requires its source rationale.
+
+### Issued M2 metadata-parent rationale continuity
+
+`sourceReview.rationaleContinuity` is a separate opt-in with exactly
+`{ "schemaVersion": "archive-native-rationale-continuity-v1" }`. It reuses an
+already issued `FINAL_QA` receipt for a `PARTIAL_UIDS` M2 second-semester request
+whose existing parent comes from exact `basicScopeParentRef` metadata evidence.
+The request has no registry changes, target-parent profile, source rebind,
+registration mode, or other source-review option. Every selected item shares
+the exact parent evidence and opt-in, with the complete selected UID/ordinal
+inventory verified. The original whole-metadata parent hash remains mandatory.
+
+Both `primaryMethod` and `decisiveStep` must be explicit top-level fields of the
+immutable `m2-s2-meta-review-v1` item, absent from its `after`, and equal the
+request's after values and issued metadata. Their proof origins must be
+`NATIVE_ITEM_FIELD`. Neither property may exist in either immutable native
+source bank or the current source, including as null. Current scope is exact
+`2015` / `M2-2` / `중2 수학`, and the ACTIVE PT, TPL and binding definitions are
+unchanged. This carries the original review's values; it supplies no new judgment.
+
+The native and current whole question must be equal apart from the explicit
+source metadata fields `courseKey`, `curriculum`, `reviewStatus`, `tagConfidence`,
+`tagStatus`, `templateKey` and the four existing difficulty metadata fields.
+The current values must agree with the issued row or the exact approved status
+declarations. An older cursor's value for each of these fields must equal a
+value bound by one of the two immutable native banks or the current bank.
+All other properties, including student text, choices, answers and solutions,
+must remain equal. Renderer references are collected recursively, including
+choice and shared-material HTML, and every asset is bound to both native Git
+snapshots and current bytes. Unsupported inline renderers, external or malformed
+SVG dependencies, `xml:base`, backslash-escaped CSS, missing assets and same-path
+byte changes are refused. This profile does not normalize these indirect
+resource mechanisms or treat their bytes as self-contained renderer evidence.
+
+The opt-in issues the existing typed source-review sidecar, including the full
+request snapshot, output digest, complete repair proof and mandatory metadata
+and runtime evidence markers. Replay and AutoMeta re-run the official source
+review against current witnesses, canonical records and assets. Removed or
+altered markers, sidecars or proofs cannot fall back to ordinary reuse. Only a
+verified existing receipt may return `ALREADY_REGISTERED`; the ordinary source
+producer still requires its own source rationale. The separate FAMILY_ACTIVE
+contract is unchanged.
+
+The trusted metadata-source worker may first create a candidate using its
+existing supported request. A later explicit child commit can add this opt-in
+and its support code without changing the immutable input commit, original
+materialization manifest, transport receipt or generated source bytes. The
+transport receipt still describes its original input and grants no approval.
+The child request delta must be separately recorded and its exact final HEAD
+must pass the official registrar, replay, Native old/caught-up cursor checks
+and consumed-inbox Consumer. Past transport validation is never presented as
+validation of the added option.
+
+## Existing BASIC and explicit type HOLD: inspected problem display continuity
+
+An existing `archive-basic-native-source-hold-preservation-v1` request may carry
+the named `rendererContinuity` option with schema
+`archive-basic-held-renderer-continuity-v1`, an immutable `reviewCommit`, and an
+exact `reviewPath`/`reviewRef`. This is a one-UID BASIC fingerprint rebind. The
+ordinary figure filename rule and all requests without this option are
+unchanged. Registry changes, difficulty changes, a new parent, a new primary
+type, or another approval mode are not authorized by this option.
+
+The renderer evidence binds the original native review and independent HOLD,
+the entire original/current source snapshots, and complete asset inventories.
+Exactly `image`, `imageAlt`, `imageSize`, and `layoutTag` may differ. All other
+question properties remain identical; non-problem assets also remain exact.
+The new problem SVG must be self-contained. Current source and asset bytes are
+read again on every initial registration, replay and projection verification.
+The original native/HOLD validator runs on the exact original reviewed
+question; it retains its independent definition decision, protected metadata,
+identity, approved parent and unapproved held runtime checks.
+
+The given-first input is not an uploaded question-body evidence file. Its
+`givenRef` uses `archive-public-source-derived-given-ref-v1` and identifies the
+original given packet path and SHA. The validator deterministically recreates
+that packet in memory from `previousSourceCommit`, the same source path and
+selected ordinal, using only `content`, `question`, and `choices` plus the
+fixed packet schema/instructions. The exact pretty-JSON raw SHA must equal the
+one frozen in both independent expected-observation documents. Manual packet
+content, another source snapshot, unknown fields or a different raw SHA fail.
+No answer, solution, new source text or upstream judgment is transported.
+
+The independent given-first, original-image-first and static-display documents
+retain their original bytes, exposure boundaries and zero-approval claims.
+Static review alone is insufficient. `studentUi` additionally carries exact
+five-field public Git references to the actual UI technical report and the
+independent original-PNG review. These references are sealed transitively by
+the immutable renderer evidence, which is itself bound on both approval and
+selected item. The ordinary BASIC `evidenceRefs` path restriction is unchanged.
+The independent UI report's public static reference must match the separately
+bound static document byte-for-byte.
+
+The UI contract requires one exact UID, the current source/asset and identity,
+desktop and mobile original scroll captures, every original PNG hash and byte
+count, complete coverage with the recorded 32-pixel overlap, no CSS/DOM capture
+edits, and an independent acceptance of every tile. The inspected served
+renderer code, including the engine, must equal current bytes. Missing or
+changed public witnesses, substituted screenshots, another reviewer identity,
+uninspected conditions or a different current renderer are refused. A technical
+capture is never an independent review or a mathematical approval.
+
+The receipt records display continuity separately from original native/HOLD
+judgments. Registration changes only the existing metadata/identity
+fingerprints and reviewed source-link fingerprints, and issues its exact
+receipt; all protected metadata values, type HOLD and runtime values remain
+unchanged. It reports one preserved BASIC approval and zero new metadata,
+difficulty, mathematical, REVIEW2 or four-slot approvals. Full parent/catalog
+closure and consumed typed Consumer validation remain required before release.

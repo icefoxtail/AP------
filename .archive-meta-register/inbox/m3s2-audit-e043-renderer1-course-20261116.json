@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "m3s2-audit-e043-renderer1-course-20261116",
+  "examUid": "22_풍덕중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+  "expectedQuestionCount": 25,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+        "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.independent.json",
+        "sha256": "08e9160916e3a46892c505a42b7b0c22f55cc444d443231b75098ef49e007036"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/independent-renderer-review.json",
+        "sha256": "6680a78931734c638357bcee3583c21adac4d5a63b6b95c3e085f9d711464466"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+        "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/native-reuse-limits.json",
+        "sha256": "ee217906e9d0c75ad3d13e99a31fb95a7dd0cc9ebba781fcbb937c5548d608ba"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-course4-retry-20261116.json",
+        "sha256": "02a5330dc86ec9236900ffc242e3e6ae043a169dc2f61005337135b510086cc7"
+      }
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_1c949738b805dde02e2b4c00c1fa2bc1caa6943fc4a0a14bbc6597669c5cc8ea",
+      "sourceOrdinal": 13,
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "",
+        "subUnit": "",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_ANGLE_BISECTOR_THEOREM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "sourceFingerprint": "d2280bbfa67f7db1933cc13334b715bc914df96665cdaeaf01e5d79d981aa250",
+        "contentFingerprint": "dcdeddab3eb4d80c3146bb8ada8b900c64d44ece186077e9b6697f50ed247764",
+        "courseKey": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015",
+        "primaryMethod": "30도 꼭짓각의 이등변삼각형에서 밑각75도를 얻고 C에서 AB에 수선을 내려30도 삼각비로 AH·CH를 복원한다. 남은 BH와 CH의 비가15도의 탄젠트가 된다.",
+        "decisiveStep": "30도 꼭짓각의 이등변삼각형에서 밑각75도를 얻고 C에서 AB에 수선을 내려30도 삼각비로 AH·CH를 복원한다. 남은 BH와 CH의 비가15도의 탄젠트가 된다.",
+        "curriculumKey": "2015",
+        "sourceFingerprint": "5f9537205c34c4cfe12fdefbdac63fafe436d73f4f45c72c65e1c950d1635c8b",
+        "contentFingerprint": "dcdeddab3eb4d80c3146bb8ada8b900c64d44ece186077e9b6697f50ed247764",
+        "courseKey": "M3-2"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "d2280bbfa67f7db1933cc13334b715bc914df96665cdaeaf01e5d79d981aa250"
+      },
+      "reason": "불변 native의 의미·난도 검토와 직접 확인한 후속 그림의 좁은 보존 증거를 재사용한다. 현재 source의 기존 curriculum은 운송하고 native의 원본 교육과정 승인으로 확대하지 않는다. 원본 crop·해설 provenance·정확 RPM leaf·2022 연결 부채는 증거에 보존한다. The operational courseKey is transported separately from the native semantic RPM scope using the exact source exam identity, unchanged accepted source course and current ACTIVE target binding; original semantic/leaf/renderer limitations remain.",
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+          "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.independent.json",
+          "sha256": "08e9160916e3a46892c505a42b7b0c22f55cc444d443231b75098ef49e007036"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/independent-renderer-review.json",
+          "sha256": "6680a78931734c638357bcee3583c21adac4d5a63b6b95c3e085f9d711464466"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+          "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/native-reuse-limits.json",
+          "sha256": "ee217906e9d0c75ad3d13e99a31fb95a7dd0cc9ebba781fcbb937c5548d608ba"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-course4-retry-20261116.json",
+          "sha256": "02a5330dc86ec9236900ffc242e3e6ae043a169dc2f61005337135b510086cc7"
+        }
+      ],
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.meta.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+          "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+        },
+        "rendererProof": {
+          "schemaVersion": "archive-reviewed-current-renderer-continuity-v1",
+          "reviewCommit": "689fa6379fa2dec544890d83af186f64d127d763",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+            "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+          }
+        }
+      }
+    }
+  ]
+}
