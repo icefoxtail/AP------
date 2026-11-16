@@ -1,0 +1,56 @@
+name: Archive M2S1 Exact Glyph Repair UI Evidence
+on:
+  push:
+    branches: ['review-reference/m2s1-glyph-ui4-20261116']
+    paths:
+      - 'tools/check-m2s1-current-display-browser.cjs'
+      - 'tools/check-m2s1-solution-scroll.cjs'
+      - 'tests/fixtures/archive-m2s1-current-*-display-ui.json'
+      - 'tests/archive-m2s1-current-display-ui.test.js'
+      - '.github/workflows/archive-m2s1-current-display-ui.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  current-display:
+    name: Exact current ${{ matrix.surface }} display
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        surface: [PROBLEM, SOLUTION]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify closed bindings and capture rejection contracts
+        run: node --test --test-concurrency=1 tests/archive-m2s1-current-display-ui.test.js
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned driver outside checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/m2s1-display-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture exact original student surface scroll tiles
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/m2s1-display-browser/node_modules
+          ARCHIVE_M2S1_DISPLAY_UI_EXPECTED_SHA: ${{ github.sha }}
+          SELECTED_SURFACE: ${{ matrix.surface }}
+        run: node tools/check-m2s1-current-display-browser.cjs --surface "$SELECTED_SURFACE" --output "$RUNNER_TEMP/m2s1-current-display"
+      - name: Preserve the original evidence for separate independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2s1-current-display-${{ matrix.surface }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/m2s1-current-display/
+          if-no-files-found: warn
+          retention-days: 14
