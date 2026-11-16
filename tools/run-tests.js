@@ -119,6 +119,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-coverage-map.test.mjs',
+    args: ['--test', 'tests/archive-coverage-map.test.mjs']
+  },
+  {
     label: 'tests/archive-source-delta.test.mjs',
     args: ['--test', 'tests/archive-source-delta.test.mjs']
   },
