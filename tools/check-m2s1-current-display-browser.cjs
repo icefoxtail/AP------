@@ -11,6 +11,7 @@ const { stable, sha256, gitBlob, createGitReader, isStudentFontStylesheet, decla
   fontFailureDiagnostic, captureProblemTiles, readScreenshotArtifacts, assertScreenshotInventory } = H;
 const { captureSolutionTiles } = require("./check-m2s1-solution-scroll.cjs");
 const { diagnoseProblemCaptureFailure } = require('./m2s1-problem-capture-diagnostic.cjs');
+const { captureClosedProblem18Tiles } = require('./m2s1-problem18-capture.cjs');
 
 const CHECKER_PATH='tools/check-m2s1-current-display-browser.cjs';
 const SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
@@ -113,7 +114,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   let activeCase = null, captureFailureDiagnostic = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
-    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, solutionCaptureHelperRef: reader.ref(SOLUTION_CHECKER_PATH), ...inputs,
+    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, problemCaptureHelperRef: reader.ref('tools/m2s1-problem18-capture.cjs'), solutionCaptureHelperRef: reader.ref(SOLUTION_CHECKER_PATH), ...inputs,
     checkout: { expectedCheckoutCommit: expectedCommit, actualCheckoutCommit: reader.commit, githubEventCommit },
     parentRestorationApproval: false, releaseGate: 'PENDING_INDEPENDENT_VISUAL_REVIEW',
     surface, mode: manifest.mode, studentReview: true, screenshotsScope: 'SELECTED_OWN_SURFACE_ORIGINAL_SCROLL_TILES', problemOnlyScreenshots: surface==='PROBLEM',
@@ -250,10 +251,31 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           assert.equal(await target.count(), 1, 'UI_UNIQUE_PROBLEM_IMAGE');
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
+          let choiceGlyphDiagnostic = null;
+          if (surface === 'PROBLEM' && item.key === 'E013-Q20') {
+            choiceGlyphDiagnostic = await target.evaluate(image => {
+              if (AppState.mode !== 'exam' || document.querySelector('#print-area .sol-ans,#print-area .sol-exp')) throw new Error('UI_CHOICE_DIAGNOSTIC_SURFACE');
+              const box = image.closest('.q-box');
+              if (box.querySelector('.q-num')?.textContent?.trim() !== '20.') throw new Error('UI_CHOICE_DIAGNOSTIC_ORDINAL');
+              const rect = node => { const r = node.getBoundingClientRect(); return { x:r.x, y:r.y, width:r.width, height:r.height }; };
+              const point = text => Array.from(text || '').map(c => c.codePointAt(0));
+              const choices = Array.from(box.querySelectorAll('.choice-text')).map(node => ({
+                textCodePoints: point(node.textContent), rect:rect(node),
+                nodes:Array.from(node.querySelectorAll('*')).map(n => ({tag:n.tagName, classes:Array.from(n.classList),
+                  textCodePoints:point(n.textContent), fontFamily:getComputedStyle(n).fontFamily,
+                  beforeContent:getComputedStyle(n,'::before').content, afterContent:getComputedStyle(n,'::after').content,
+                  visibility:getComputedStyle(n).visibility, display:getComputedStyle(n).display, rect:rect(n)}))
+              }));
+              return {schemaVersion:'archive-problem-choice-glyph-diagnostic-v1', mode:'exam', sourceOrdinal:20, choices,
+                domWrites:0, cssWrites:0, diagnosticOnly:true};
+            });
+          }
           const screenshotPath = `${item.key}-${viewport.name}.png`;
           let capture;
           try {
-            capture = await (surface==='PROBLEM'?captureProblemTiles:captureSolutionTiles)(page, target, path.join(out, screenshotPath));
+            capture = surface === 'PROBLEM'
+              ? await captureClosedProblem18Tiles({ root, expectedCommit:reader.commit, item, viewport, surface:'PROBLEM', mode:'exam', page, target, file:path.join(out,screenshotPath) })
+              : await captureSolutionTiles(page, target, path.join(out,screenshotPath));
           } catch (error) {
             if (surface === 'PROBLEM' && item.key === 'E009-Q17' && viewport.name === 'mobile' && error.message === 'UI_COMPLETE_PROBLEM_CHILDREN') {
               try {
@@ -279,7 +301,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport, surface, mode:manifest.mode,
             sourceRef: item.sourceRef, assetRef: item.assetRef, assetRefs:item.assetRefs, screenshots,
             technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources].sort() }, geometry, capture,
-            visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
+            visualReview: 'PENDING', pageErrors, requestFailures, externalRequests, ...(choiceGlyphDiagnostic ? { choiceGlyphDiagnostic } : {}) });
           activeCase = null;
         }
         assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
@@ -288,7 +310,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     assertCompletedResults(results, inputs, manifest, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.solutionCaptureHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.problemCaptureHelperRef, proofBase.solutionCaptureHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
