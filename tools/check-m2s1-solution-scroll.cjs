@@ -77,7 +77,11 @@ async function measureSolutionCapture(image, captionPolicy = null) {
   const completeChildrenVisible = [...box.children].every(child =>
     (!child.textContent.trim() && !child.querySelector('img,svg,math,mjx-container')) || visible(child));
   const role = selector => { const nodes=[...box.querySelectorAll(selector)];return {count:nodes.length,visible:nodes.filter(visible).length}; };
-  const roles={number:role('.q-num'),semantic:role('[data-semantic-content]'),answer:role('.sol-ans'),
+  // The named role is the engine's direct reminder wrapper. MathJax/SRE also
+  // uses data-semantic-content on nested math nodes; those are not extra reminders.
+  const semanticSelector=captionPolicy===null?'[data-semantic-content]':':scope > div[data-semantic-content="1"]';
+  const semanticCandidates=[...box.querySelectorAll('[data-semantic-content]')];
+  const roles={number:role('.q-num'),semantic:role(semanticSelector),answer:role('.sol-ans'),
     explanation:role('.sol-exp'),caption:role('.sol-image-caption')};
   const questionNumber=box.querySelector('.q-num')?.textContent?.trim();
   const imageUrl=captionPolicy===null?null:new URL(image.currentSrc||image.src,location.href);
@@ -97,8 +101,9 @@ async function measureSolutionCapture(image, captionPolicy = null) {
     solutionNodes: document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .sol-ans,#print-area .sol-exp,#print-area .ans-v').length,
     questionNumber,
     mandatoryChildrenVisible: visible(box) && completeChildrenVisible && !!box.querySelector('.q-num') && visible(box.querySelector('.q-num')) &&
-      !!box.querySelector('[data-semantic-content]') && visible(box.querySelector('[data-semantic-content]')) &&
+      !!box.querySelector(semanticSelector) && visible(box.querySelector(semanticSelector)) &&
       ['.sol-ans','.sol-exp'].every(s=>box.querySelectorAll(s).length===1 && visible(box.querySelector(s))) && captionVisible && visible(image),
+    semanticRoleCandidates:semanticCandidates.map(node=>({tag:String(node.tagName||'').toLowerCase(),directChild:node.parentElement===box,visible:visible(node),isReminderValue:node.getAttribute('data-semantic-content')==='1'})),
     roleVisibility:{roles,boxVisible:visible(box),imageVisible:visible(image),completeChildrenVisible,namedCaptionAbsence,
       captionPolicyApplied:captionPolicy!==null,captionExpected:captionPolicy===null?1:0},
     domSha256: [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('') };
@@ -146,7 +151,7 @@ async function captureSolutionTiles(page, target, file, captionPolicy = null) {
   const requireVisible=frame=>{
     if(frame.mandatoryChildrenVisible!==true){const e=Error('UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
       e.captureDiagnostic={schemaVersion:'archive-solution-role-visibility-diagnostic-v1',questionNumberSha256:H.sha256(String(frame.questionNumber||'')),
-        roleVisibility:frame.roleVisibility,visibleChildren:frame.children.length,readiness:frame.readiness,mode:frame.mode,
+        roleVisibility:frame.roleVisibility,semanticRoleCandidates:frame.semanticRoleCandidates,visibleChildren:frame.children.length,readiness:frame.readiness,mode:frame.mode,
         sourceFragments:frame.sourceFragments,domSha256:frame.domSha256};throw e;}
   };
   try {

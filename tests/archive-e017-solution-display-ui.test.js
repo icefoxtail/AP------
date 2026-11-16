@@ -77,8 +77,8 @@ test('the exact production renderer omits a caption for this actual source while
 function boundPolicy(){return S.makeE017CaptionAbsencePolicy(reader,C.preflight(reader,manifest).items[0],C.loadQuestions);}
 function domFixture(options={}){
  const r={x:100,y:180,width:300,height:120};
- const element=(text='fixture-role',pos=r)=>({nodeType:1,textContent:text,hidden:false,
-   getBoundingClientRect:()=>pos,querySelector:()=>null});
+ const element=(text='fixture-role',pos=r)=>({nodeType:1,tagName:'DIV',textContent:text,hidden:false,
+   getBoundingClientRect:()=>pos,querySelector:()=>null,getAttribute:()=>null});
  const nodes={number:[element(options.number||'2.',{x:100,y:100,width:30,height:20})],
    semantic:[element('fixture-stem',{x:100,y:125,width:300,height:40})],answer:[element()],explanation:[element()],
    caption:options.caption?[element()]:[]};
@@ -87,11 +87,19 @@ function domFixture(options={}){
  if(options.hidden&&nodes[options.hidden][0])nodes[options.hidden][0].hidden=true;
  const image=element('',{x:110,y:190,width:200,height:100});image.src=options.imageSrc||'http://localhost:123/archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg?stable=1';
  image.hidden=options.imageHidden===true;
- const selectors={'.q-num':'number','[data-semantic-content]':'semantic','.sol-ans':'answer','.sol-exp':'explanation','.sol-image-caption':'caption'};
+ const selectors={'.q-num':'number','.sol-ans':'answer','.sol-exp':'explanation','.sol-image-caption':'caption'};
+ const nestedSemantic=Array.from({length:options.nestedSemanticCount||0},()=>{
+   const node=element('synthetic-math');node.tagName='MJX-MROW';node.getAttribute=()=>'17,18';return node;
+ });
  const meta=element();meta.querySelector=()=>image;if(options.hiddenDirect)meta.hidden=true;
  const box=element('',{x:100,y:95,width:300,height:250});box.dataset={sourceRef:'fixture-source:2'};box.outerHTML='<div class="sol-box">synthetic-capture</div>';
- box.children=[...(nodes.number.slice(0,1)),...(nodes.semantic.slice(0,1)),meta];box.childNodes=box.children;box.contains=x=>x===image||box.children.includes(x);
- box.querySelectorAll=s=>nodes[selectors[s]]||[];box.querySelector=s=>box.querySelectorAll(s)[0]||null;image.closest=()=>box;
+ box.children=[...(nodes.number.slice(0,1)),...nodes.semantic,meta];box.childNodes=box.children;box.contains=x=>x===image||box.children.includes(x);
+ for(const node of nodes.semantic){node.parentElement=box;node.tagName=options.semanticTag||'DIV';node.getAttribute=()=>options.semanticValue??'1';}
+ for(const node of nestedSemantic)node.parentElement=nodes.semantic[0]||meta;
+ box.querySelectorAll=s=>s==='[data-semantic-content]'?[...nodes.semantic,...nestedSemantic]:
+   s===':scope > div[data-semantic-content="1"]'?nodes.semantic.filter(n=>n.parentElement===box&&n.tagName==='DIV'&&n.getAttribute('data-semantic-content')==='1'):
+   nodes[selectors[s]]||[];
+ box.querySelector=s=>box.querySelectorAll(s)[0]||null;image.closest=()=>box;
  const document={documentElement:{dataset:{apPrintReadiness:'{"state":"RENDER_READY"}'}},getElementById:()=>null,
    querySelectorAll:s=>s==='body *'?[]:s==='#print-area .sol-box'?[box]:[...box.children,...nodes.answer,...nodes.explanation]};
  const sandbox={image,Node:{ELEMENT_NODE:1,TEXT_NODE:3},document,innerWidth:1440,innerHeight:1000,scrollX:0,scrollY:0,
@@ -152,4 +160,55 @@ test('named capture preserves the full scroll plan and records all checked zero-
  const bad=structuredClone(captionAbsenceObservation);bad.measuredFrames[0].roles.caption.count=1;
  assert.throws(()=>S.assertE017CaptionObservation(bad),/UNEXPECTED/);
  assert.throws(()=>S.assertE017CaptionObservation({...captionAbsenceObservation,measuredFrames:[]}),/OBSERVATION/);
+});
+
+test('the exact served solution producers use a direct reminder div while MathJax uses nested semantic attributes',()=>{
+ for(const p of ['archive/engine.html','archive/solution-render-executor.js']){
+  const code=read(p).toString();
+  assert(code.includes('<div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta">'));
+ }
+ const math=read('archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js').toString();
+ assert(math.includes('CONTENT="data-semantic-content"'));
+});
+
+test('named caption absence measures one direct reminder despite two nested MathJax semantic markers',async()=>{
+ const f=await measured({nestedSemanticCount:2},boundPolicy());
+ assert.equal(f.mandatoryChildrenVisible,true);assert.equal(f.roleVisibility.roles.semantic.count,1);
+ assert.equal(f.semanticRoleCandidates.length,3);assert.equal(f.semanticRoleCandidates.filter(x=>x.directChild).length,1);
+ assert.equal(f.semanticRoleCandidates.filter(x=>x.tag==='mjx-mrow').length,2);
+ assert.equal(f.semanticRoleCandidates.every(x=>x.visible),true);
+});
+
+for(const [name,options]of Object.entries({
+ missingReminder:{missing:'semantic'},hiddenReminder:{hidden:'semantic'},duplicateReminder:{duplicate:'semantic'},
+ wrongReminderValue:{semanticValue:'2'},wrongReminderElement:{semanticTag:'SPAN'},
+}))test('nested semantic markers do not mask '+name,async()=>{
+ const f=await measured({...options,nestedSemanticCount:2},boundPolicy());
+ assert.equal(f.mandatoryChildrenVisible,false);
+});
+
+test('the generic caption-required path keeps its original descendant selector behavior',async()=>{
+ const f=await measured({caption:true,nestedSemanticCount:2});
+ assert.equal(f.mandatoryChildrenVisible,true);assert.equal(f.roleVisibility.roles.semantic.count,3);
+ assert.equal(f.roleVisibility.captionPolicyApplied,false);
+});
+
+test('named full capture retains complete coverage and all direct-role checks with nested markers',async()=>{
+ const p=boundPolicy(),f=await measured({nestedSemanticCount:2},p);let screenshots=0;
+ const page={waitForFunction:async()=>{},evaluate:async()=>{},screenshot:async()=>{screenshots++;}};
+ const target={evaluate:async fn=>fn===S.measureSolutionCapture?f:{samples:8,outsideQuestion:0}};
+ const out=await S.captureSolutionTiles(page,target,'/synthetic-unwritten.png',p);
+ assert.equal(screenshots,1);assert.equal(out.coverage.complete,true);
+ S.assertE017CaptionObservation(out.captionAbsenceObservation);
+ assert(out.captionAbsenceObservation.measuredFrames.every(x=>x.roles.semantic.count===1&&x.roles.semantic.visible===1));
+ assert.equal(out.domWrites,0);assert.equal(out.cssWrites,0);assert.equal(out.viewportChanges,0);
+});
+
+test('a hidden direct reminder records redacted candidate ancestry and still takes no screenshot',async()=>{
+ const p=boundPolicy(),f=await measured({hidden:'semantic',nestedSemanticCount:2},p);let screenshots=0;
+ await assert.rejects(S.captureSolutionTiles({waitForFunction:async()=>{},screenshot:async()=>{screenshots++;}},
+  {evaluate:async()=>f},'/unwritten.png',p),e=>e.message==='UI_REQUIRED_PROBLEM_CHILD_HIDDEN'&&
+  e.captureDiagnostic.semanticRoleCandidates.length===3&&e.captureDiagnostic.semanticRoleCandidates.some(x=>x.directChild&&!x.visible)&&
+  !JSON.stringify(e.captureDiagnostic).includes('fixture-stem')&&!JSON.stringify(e.captureDiagnostic).includes('synthetic-math'));
+ assert.equal(screenshots,0);
 });
