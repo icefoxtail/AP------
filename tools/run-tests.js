@@ -102,6 +102,10 @@ const requiredCommands = [
     timeout: 300000
   },
   {
+    label: 'tests/archive-main-auto-parent-retry.test.mjs',
+    args: ['--test', 'tests/archive-main-auto-parent-retry.test.mjs']
+  },
+  {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
     args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
   },
