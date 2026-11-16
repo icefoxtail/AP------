@@ -133,7 +133,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 직육면체에서 직선 $AB$와 수직인 평면을 모두 고르면? (3.8점)",
-    "image": "assets/images/26_매산고_1학기_중간_고2_기하/q4.png",
+    "image": "assets/images/26_매산고_1학기_중간_고2_기하/q4_question-v2.svg",
+    "imageAlt": "윗면이 ABCD, 아랫면이 EFGH인 직육면체. 수직 모서리는 AE, BF, CG, DH이다.",
+    "imageSize": "large",
     "choices": [
       "평면 ABCD",
       "평면 BCGF",
@@ -297,6 +299,7 @@ window.questionBank = [
     "wide": false,
     "content": "아래 그림과 같이 모든 변의 길이가 같은 정사각뿔에서 선분 $AB$와 평면 $BCDE$가 이루는 각을 $\\theta$라고 할 때, $\\cos\\theta$의 값은? (4.5점)",
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q8.png",
+    "imageAlt": "꼭짓점 A와 정사각형 밑면 BCDE가 있는 정사각뿔. 뒤쪽 꼭짓점 E에 이어지는 숨은 모서리는 점선이다.",
     "choices": [
       "$\\dfrac12$",
       "$\\dfrac{\\sqrt2}{3}$",
@@ -460,6 +463,7 @@ window.questionBank = [
     "wide": false,
     "content": "아래 그림과 같이 한 모서리의 길이가 $8$인 정사면체가 있다. 삼각형 $BCD$의 무게중심을 $G$라 할 때, 삼각형 $GBC$의 평면 $ACD$ 위로의 정사영의 넓이를 구하면? (4.5점)",
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q12.png",
+    "imageAlt": "모서리 AB에 길이 8이 표시된 정사면체 ABCD. 삼각형 BCD 안에 점 G가 표시되어 있다.",
     "choices": [
       "$\\dfrac89\\sqrt3$",
       "$\\dfrac{10}{9}\\sqrt3$",
@@ -503,6 +507,7 @@ window.questionBank = [
     "wide": false,
     "content": "아래 그림과 같이 쌍곡선 $x^2-y^2=12$ 위의 점 $(4,2)$에서의 접선과 두 점근선으로 둘러싸인 삼각형의 넓이는? (4.8점)",
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q13.png",
+    "imageAlt": "쌍곡선의 왼쪽 가지와 오른쪽 가지, 원점을 지나는 두 점근선, 점 (4, 2)에서의 접선이 그려져 있다. 두 점근선과 접선 사이의 삼각형에 빗금이 있다.",
     "choices": [
       "6",
       "8",
@@ -587,6 +592,7 @@ window.questionBank = [
     "wide": false,
     "content": "아래 그림과 같이 초점이 $F$인 포물선 $y^2=4px$ 위의 한 점 $A$에서 포물선의 준선에 내린 수선의 발을 $B$라 하고, 선분 $BF$와 포물선이 만나는 점을 $C$라 하자. $\\overline{AB}=\\overline{BF}$이고 $\\overline{BC}+6\\overline{CF}=8$일 때, $8p$의 값을 구하면? (단, $p$는 양수) (4.8점)",
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q15.png",
+    "imageAlt": "포물선 위의 점 A에서 세로 준선에 내린 수선의 발이 B이다. B와 초점 F를 이은 선분은 포물선과 점 C에서 만난다.",
     "choices": [
       "6",
       "7",
@@ -698,6 +704,7 @@ window.questionBank = [
     "wide": false,
     "content": "[단답형3] 아래 그림과 같이 한 모서리의 길이가 $4$인 정육면체가 있다. 모서리 $AB$를 $3:1$로 내분하는 점을 $L$, 모서리 $HG$의 중점을 $M$이라 하자. 점 $M$에서 선분 $LD$에 내린 수선의 발을 $N$이라 할 때, 삼각형 $DLM$의 넓이를 구하시오. (5점)",
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q18.png",
+    "imageAlt": "정육면체에서 L은 모서리 AB 위에, M은 모서리 HG 위에 있다. M에서 선분 LD에 내린 수선이 N에서 직각으로 만난다.",
     "choices": [],
     "answer": "$2\\sqrt{29}$",
     "solution": "삼각형 $DLM$의 세 변의 길이를 구한 뒤 $M$에서 $DL$에 내린 높이 $MN$을 계산한다.\n$AL:LB=3:1$이고 $AB=4$이므로 $AL=3$, $LB=1$이다. 윗면 정사각형에서 $DL=\\sqrt{AD^2+AL^2}=\\sqrt{4^2+3^2}=5$이다. 오른쪽 면에서 $HM=2$이므로 $DM=\\sqrt{DH^2+HM^2}=\\sqrt{4^2+2^2}=2\\sqrt5$이다. $L$에서 아랫면으로 내린 수선의 발을 $L_0$라 하면 $LL_0=4$이고, 아랫면에서 $L_0M^2=4^2+1^2=17$이므로 $LM^2=4^2+17=33$이다. 이제 삼각형 $DLM$에서 $DN=\\dfrac{DL^2+DM^2-LM^2}{2DL}=\\dfrac{25+20-33}{10}=\\dfrac65$이다. 따라서 $MN=\\sqrt{DM^2-DN^2}=\\sqrt{20-\\dfrac{36}{25}}=\\dfrac{4\\sqrt{29}}5$이다. 그러므로 $[DLM]=\\dfrac12\\times5\\times\\dfrac{4\\sqrt{29}}5=2\\sqrt{29}$이다.\n따라서 구하는 넓이는 $2\\sqrt{29}$이다.",
@@ -733,6 +740,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형1] 평면 $\\alpha$ 위에 있지 않은 점 $P$, 평면 $\\alpha$ 위의 점 $O$, 점 $O$를 지나지 않는 평면 $\\alpha$ 위의 직선 $l$, 직선 $l$ 위의 점 $H$에 대하여<br>1) $PO\\perp\\alpha$이고 $OH\\perp l$이면 $PH\\perp l$<br>2) $PO\\perp\\alpha$이고 $PH\\perp l$이면 $OH\\perp l$<br>3) $PH\\perp l$이고 $OH\\perp l$이면 $PO\\perp\\alpha$<br>위의 삼수선 정리 1)~3) 중 잘못된 한 가지를 찾고(1점), 이를 수정하여 작성(2점)하고, 추가된 수식이 필요한 이유(3점)를 서술하시오. (6점)",
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q19.png",
+    "imageAlt": "평면 α 위의 직선 l 위에 H가 있다. 평면 위의 점 O와 평면 밖의 점 P를 각각 H와 잇고, P와 O도 이었다. H와 O에 직각 표시가 있다.",
     "choices": [],
     "answer": "3번, $PO\\perp OH$ 조건 추가",
     "solution": "평면에 수직임을 보이려면 그 평면 위의 서로 만나는 두 직선에 모두 수직임을 확인해야 한다.\n잘못된 것은 3)이다.\n$PH\\perp l$이고 $OH\\perp l$이면 직선 $l$은 서로 만나는 두 직선 $PH$, $OH$에 모두 수직이므로 평면 $POH$에 수직이고, 따라서 $PO\\perp l$임은 알 수 있다. 그러나 $PO$가 평면 $\\alpha$ 위의 직선 하나인 $l$에 수직이라는 사실만으로는 $PO\\perp\\alpha$를 결론낼 수 없다. \n따라서 3)은 “$PH\\perp l$, $OH\\perp l$, $PO\\perp OH$이면 $PO\\perp\\alpha$”로 고쳐야 한다. 이때 $l$과 $OH$는 평면 $\\alpha$ 위에서 점 $H$에서 만나는 두 직선이고, $PO$가 이 두 직선에 모두 수직이므로 $PO\\perp\\alpha$이다.\n따라서 잘못된 것은 3)이며 추가 조건은 $PO\\perp OH$이다.",
