@@ -927,8 +927,8 @@ window.questionBank = [
     "questionUid": "qid_v1_5546de92fbb1a66b01488b09d4c4f3714cd1a923d03584330a0e62bb49ffaf1f",
     "sourceQid": 20,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 직선 y=x를 기준으로 A와 B가 서로 대칭이다. C=(β,β)는 직선 y=x 위에서 A와 원점 사이에 놓인다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x에 대하여 A와 B가 서로 대칭이다. 고정점 C=(β,β)는 직선 y=x 위의 음수 쪽에 있고 −t<β<0이다.",
     "solutionImageCaption": "g와 g^{-1}의 교점은 대칭쌍 (-t,t), (t,-t)와 고정점 (β,β)이며 -t<β<t이다. 주어진 식의 값은 56이다.",
     "solutionImageSize": "full"
   }
