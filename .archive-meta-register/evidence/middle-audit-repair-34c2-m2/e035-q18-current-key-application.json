@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "middle-audit-current-existing-key-application-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+  "sourceOrdinal": 18,
+  "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+  "sourceBlobSha1": "0a1a4d8a4c6104e256495da1f1c20d47a4bce70b",
+  "sourceFrozen": true,
+  "decision": "APPROVE_EXACT_EXISTING_SEGMENT_INTERSECTION_TEMPLATE_APPLICATION",
+  "approvedBy": "GPT_ROOT_0A70543C4CE8",
+  "rootObserved": "Root read the actual Q18 source, existing solution and exact ACTIVE PT/TPL definitions. Intersection x=12/(a+1) constrained by 4≤x≤8 is equivalent to the two endpoint boundary lines with endpoints included; the existing candidate check matches the exact template.",
+  "nativeRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E035.accepted-review.json",
+    "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+  },
+  "taxonomyRef": {
+    "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+  },
+  "problemType": {
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "canonicalLabelKo": "직선의 교점과 위치 조건",
+    "definition": "직선의 교점 존재 여부·위치, 선분·그래프·사분면과의 만남 또는 통과 조건을 구하는 유형.",
+    "aliases": [
+      "직선의 교점과 통과 조건"
+    ],
+    "internalDescription": "교점의 존재·위치·범위가 decisive condition.",
+    "supportingQuestionUids": [
+      "qid_v1_5f9b7724d2648e4d2cc64fbd371d1beeb57d8384cac1b1116d71ec8d9a09e86d",
+      "qid_v1_873683859a89cc1a797c0adfdfe9bdb42ad61082ef7eebe59e57f627fc081a3e",
+      "qid_v1_9caad688054b1a0fc6bb12d70f38c3d22fdc0c009e29d24b68994722599b5ce1",
+      "qid_v1_f0979c876710beacc1433d68476308ba40cc6496e5f840f9379ccccee01ec3a7"
+    ],
+    "supportingItemCount": 4,
+    "sourceUnit": "LINE_EQUATION",
+    "status": "ACTIVE",
+    "ownerPack": "GEOMETRY_EQUATIONS"
+  },
+  "template": {
+    "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+    "canonicalLabelKo": "직선이 선분과 만나는 조건",
+    "definition": "매개변수 직선이 주어진 선분과 만나는 경계 직선을 구해 매개변수 범위를 정한다.",
+    "aliases": [],
+    "internalSkeleton": "매개변수 직선이 주어진 선분과 만나는 경계 직선을 구해 매개변수 범위를 정한다.",
+    "parentProblemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "supportingQuestionUids": [
+      "qid_v1_9caad688054b1a0fc6bb12d70f38c3d22fdc0c009e29d24b68994722599b5ce1"
+    ],
+    "supportingItemCount": 1,
+    "sourceUnit": "LINE_EQUATION",
+    "status": "ACTIVE",
+    "ownerPack": "GEOMETRY_EQUATIONS"
+  },
+  "newDefinitionCount": 0,
+  "newBinding": {
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-04",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "ownerPack": "MIDDLE2",
+    "subUnitLabelKo": "일차함수와 일차방정식의 관계",
+    "L1": "일차함수",
+    "L2": "일차함수와 일차방정식의 관계",
+    "status": "ACTIVE",
+    "supportingQuestionUids": [
+      "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb"
+    ],
+    "supportingItemCount": 1
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "ownerPack": "MIDDLE2",
+        "subUnitLabelKo": "일차함수와 일차방정식의 관계",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb"
+        ],
+        "supportingItemCount": 1
+      }
+    }
+  ],
+  "curriculumScope": {
+    "curriculum": "2015",
+    "scope": "M2-1",
+    "basis": "Exact native M2-RPM-059 path resolved within the 2015 master and current target binding namespace, not inferred from the exam year."
+  },
+  "existingStudentPayloadUnchanged": true,
+  "solutionReuse": true,
+  "newBlindReview": false,
+  "proposalRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e035-q18-existing-key-application-proposal.json",
+    "sha256": "e2f79e296bdd2340fb2a3cb4550da743b7bdc934a4cb3f95fe7def6f143b6129"
+  },
+  "crosswalkImpactRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e035-q18-family-binding-impact.json",
+    "sha256": "805053056469f30d8ba0a697d7db0b8de03086e37615e8175340745379c85036"
+  },
+  "sourceBefore": {
+    "blobSha1": "a2b5ff24952749484bc38c1be6c153cb1a355c61",
+    "sha256": "e0555915c32c32a199f2442502dd0f0cd6433607fca53d268eae2523be4c2b56"
+  },
+  "sourceAfter": {
+    "blobSha1": "0a1a4d8a4c6104e256495da1f1c20d47a4bce70b",
+    "sha256": "ac1ce894f4cb91035f851749b5aa778f1a834ed0c91ac60c864665fd20d15cea"
+  },
+  "changedSourceFields": [
+    "curriculum",
+    "courseKey",
+    "problemTypeKey",
+    "templateKey",
+    "crossConceptKeys",
+    "conditionKeys",
+    "integrationPattern",
+    "primaryMethod",
+    "decisiveStep",
+    "rpmPrimaryId",
+    "rpmPrimaryPath",
+    "rpmL1",
+    "rpmL2",
+    "rpmL3",
+    "rpmL4",
+    "rpmPrimaryRecordId"
+  ],
+  "unchangedStudentPayloadQuestionCount": 24,
+  "wholeOtherQuestionsUnchanged": 23,
+  "historicalFingerprintRepair": {
+    "priorSourceBlobSha1": "fd9fa25b4df30997e6ae35285659998d63ff9af6",
+    "priorCommit": "0441bbe1de62a62b4d26f82fa3c0271d65884dce",
+    "metadataSourceFingerprint": "d7d9153c8b62e0c74d77debfc3e09c9390066f4e321da3515fc3259bc5116dd1",
+    "currentSourceFingerprint": "f30322e09ed3a4b5ffb2d2ef8f186ef9b04318e64ae00f07ea03f2043c4d4059",
+    "unchangedContentFingerprint": "4e6dd122cd1a47f910df6927b64c9027ffcfd196e529a734d9df4d61a1d6ec67",
+    "changedStudentFields": [
+      "solution"
+    ]
+  },
+  "rootScopeApproval": "Root approved this exact native 2015 M2 target binding/crosswalk materialization after reading the current source, solution, definitions and impact proof.",
+  "existingSolutionVerification": {
+    "mode": "REUSE_NATIVE_AND_CURRENT_ROOT_APPROVED_SOLUTION",
+    "solutionSha256": "818502e61e600da6f78820cc927627597d13e2b6c7ea0f80899d098e514b107f",
+    "blindReviewClaim": false,
+    "newSolutionWritten": false
+  },
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}
