@@ -26,6 +26,7 @@ const registrationContracts = [
   /^tests\/archive-m2-problem-renderer-continuity\.test\.js$/,
   /^tests\/archive-m2-e017-rhs-continuity\.test\.js$/,
   /^tests\/archive-reviewed-exam-registration-v2\.test\.mjs$/,
+  /^tests\/archive-reviewed-projection-phase\.test\.mjs$/,
   /^tests\/archive-reviewed-retained-scope-transport\.test\.mjs$/,
   /^tests\/archive-reviewed-parent-correction\.test\.mjs$/,
   /^tests\/archive-(?:registration-|register-|single-writer-|main-(?:merge-meta|meta-batch-replay)\.|native-(?:proposal-|replay-registry-context\.)|pr-(?:registration-|native-preview\.)|pages-|package-only\.|reviewed-(?:apply-bridge\.|native-)|meta-backlog-)/,

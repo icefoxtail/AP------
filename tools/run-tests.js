@@ -185,6 +185,10 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
   },
   {
+    label: 'tests/archive-reviewed-projection-phase.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-projection-phase.test.mjs']
+  },
+  {
     label: 'tests/archive-registration-writer.test.mjs',
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
   },

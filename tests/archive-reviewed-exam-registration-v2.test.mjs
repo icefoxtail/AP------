@@ -6409,3 +6409,29 @@ test('renderer v3 prior solution witness cannot be omitted or broaden the exact 
     assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /live renderer bytes changed/);
   });
 });
+
+
+// Actual registrar/Native/Consumer parity for the issued read-only batch context.
+test('projection phase reuses inputs while revalidating each real partial Native replay', async t => {
+  const { createProjectionPhase, projectionPhaseSummary, closeProjectionPhase } = await import('../archive/tools/meta-foundation/reviewed-projection-phase.mjs');
+  const f = auditedSourcePreservationFixture(t, { questionCount: 24, selectedOrdinals: [1, 24], consumerCatalog: true, consumerParent: false });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  materializeAuditConsumerInputs(f);
+  const baseline = registerReviewedExamV2({ root: f.root, request: f.request, verifyProjection: true });
+  const phase = createProjectionPhase(f.root);
+  for (let n = 0; n < 2; n++) assert.deepEqual(registerReviewedExamV2({ root: f.root, request: f.request, verifyProjection: true, projectionPhase: phase }), baseline);
+  const bad = structuredClone(f.request); bad.items[0].sourceOrdinal = 2;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: bad, verifyProjection: true, projectionPhase: phase }), /UID\/source ordinal mismatch|different content/);
+  assert.deepEqual(registerReviewedExamV2({ root: f.root, request: f.request, verifyProjection: true, projectionPhase: phase }), baseline);
+  const summary = projectionPhaseSummary(phase, f.root);
+  for (const key of ['json:archive/data/question_metadata.json', 'json:archive/data/question_identity_map.json', 'canonical-tables', 'resolved-consumer-catalog', 'search-source-index']) assert.equal(summary.inputLoads[key], 1, key);
+  assert.equal(summary.cachedVerdicts, 0); assert.equal(closeProjectionPhase(phase, f.root).snapshot.sha256, summary.snapshot.sha256);
+});
+test('projection input context cannot enter real write or ordinary dry-run registration', async t => {
+  const { createProjectionPhase, closeProjectionPhase } = await import('../archive/tools/meta-foundation/reviewed-projection-phase.mjs');
+  const f = auditedSourcePreservationFixture(t, { questionCount: 2, selectedOrdinals: [1], consumerCatalog: true });
+  const phase = createProjectionPhase(f.root);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true, projectionPhase: phase }), /read-only projection/);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, projectionPhase: phase }), /read-only projection/);
+  closeProjectionPhase(phase, f.root);
+});
