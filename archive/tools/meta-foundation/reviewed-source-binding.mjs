@@ -13,6 +13,7 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
   Object.freeze({ requestKey: "m2RendererProof", proofKey: "m2RendererContinuity" }),
   Object.freeze({ requestKey: "m2ProviderRendererProof", proofKey: "m2ProviderRendererContinuity" }),
+  Object.freeze({ requestKey: "currentDefinitionApplication", proofKey: "currentDefinitionApplication" }),
 ]);
 
 // A previous native receipt can be lineage evidence for a fresh source

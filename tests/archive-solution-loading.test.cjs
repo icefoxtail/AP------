@@ -299,3 +299,106 @@ for (const failure of ['network', 'timeout', 'cancel']) {
     assert.equal(retry.outcome.value, retry.area, 'an old image failure must not poison a fresh transaction');
   });
 }
+
+function originalPrintPreflightHarness({ failedGate = null } = {}) {
+  const browserSource = fs.readFileSync(path.join(__dirname, 'archive2-solution-loading-browser.cjs'), 'utf8');
+  const start = browserSource.indexOf('async function preflight(page) {');
+  const end = browserSource.indexOf('\nasync function verifiedPreflight(', start);
+  assert.ok(start >= 0 && end > start);
+  const ready = deferred(), events = [], bounds = [], timers = new Map();
+  let now = 0, serial = 0;
+  const fonts = { status: 'loading', ready: ready.promise };
+  const context = {
+    document: { fonts },
+    setTimeout(callback, milliseconds) {
+      const id = ++serial;
+      timers.set(id, { at: now + milliseconds, callback });
+      return id;
+    },
+    clearTimeout(id) { timers.delete(id); },
+    window: {
+      archiveScreenRuntime: { activeSnapshot: {}, committedCandidate: {} },
+      APArchiveSnapshotContract: { preflight() {
+        events.push('snapshot-preflight');
+        const gates = Object.fromEntries(Array.from({ length: 23 }, (_, index) =>
+          ['P' + String(index + 1).padStart(2, '0'), true]));
+        gates.P11 = fonts.status === 'loaded';
+        if (failedGate) gates[failedGate] = false;
+        return { pass: Object.values(gates).every(Boolean), gates };
+      } },
+      bindArchiveRuntimePrintReadiness() { events.push('bind-ready'); }
+    },
+    bounded(promise, milliseconds, code) { bounds.push({ milliseconds, code }); return promise; }
+  };
+  vm.runInNewContext(browserSource.slice(start, end) + '\nthis.runPreflight = preflight;', context);
+  const result = context.runPreflight({ evaluate: callback => callback() });
+  return { ready, fonts, events, bounds, result, timerCount: () => timers.size,
+    async advance(milliseconds) {
+      now += milliseconds;
+      for (const [id, timer] of timers) {
+        if (timer.at <= now) { timers.delete(id); timer.callback(); }
+      }
+      for (let turn = 0; turn < 8; turn++) await Promise.resolve();
+    }
+  };
+}
+
+test('original print qualification waits for late fonts within its existing deadline', async () => {
+  const h = originalPrintPreflightHarness();
+  await Promise.resolve();
+  assert.deepEqual(h.events, [], 'snapshot gates must run after the same font wait as safePrint');
+  assert.deepEqual(h.bounds, [{ milliseconds: 45000, code: 'PRINT_PREFLIGHT_TIMEOUT' }]);
+  h.fonts.status = 'loaded';
+  h.ready.resolve();
+  const result = await h.result;
+  assert.equal(result.ok, true);
+  assert.deepEqual(h.events, ['snapshot-preflight', 'bind-ready']);
+  assert.equal(h.timerCount(), 0);
+});
+
+test('font settlement cannot waive a changed snapshot layout', async () => {
+  const h = originalPrintPreflightHarness({ failedGate: 'P15' });
+  h.fonts.status = 'loaded';
+  h.ready.resolve();
+  const result = await h.result;
+  assert.equal(result.ok, false);
+  assert.deepEqual(Array.from(result.failedGates), ['P15']);
+  assert.deepEqual(h.events, ['snapshot-preflight']);
+});
+
+test('a font readiness promise cannot substitute for the P11 loaded gate', async () => {
+  const h = originalPrintPreflightHarness();
+  h.ready.resolve();
+  const result = await h.result;
+  assert.equal(result.ok, false);
+  assert.deepEqual(Array.from(result.failedGates), ['P11']);
+  assert.deepEqual(h.events, ['snapshot-preflight']);
+});
+
+test('rejected font readiness fails original print qualification', async () => {
+  const h = originalPrintPreflightHarness();
+  h.ready.reject(new Error('font transport rejected'));
+  const result = await h.result;
+  assert.equal(result.ok, false);
+  assert.equal(result.code, 'PRINT_PREFLIGHT_FAILED');
+  assert.deepEqual(h.events, []);
+  assert.equal(h.timerCount(), 0);
+});
+
+test('the production five-second font timeout keeps P11 failed after a late resolve', async () => {
+  const h = originalPrintPreflightHarness(), outcome = observe(h.result);
+  await h.advance(4999);
+  assert.equal(outcome.settled, false);
+  assert.deepEqual(h.events, []);
+  await h.advance(1);
+  const result = await h.result;
+  assert.equal(result.ok, false);
+  assert.deepEqual(Array.from(result.failedGates), ['P11']);
+  assert.deepEqual(h.events, ['snapshot-preflight']);
+  assert.equal(h.timerCount(), 0);
+  h.fonts.status = 'loaded';
+  h.ready.resolve();
+  await h.advance(1);
+  assert.equal(outcome.value.ok, false);
+  assert.deepEqual(h.events, ['snapshot-preflight']);
+});

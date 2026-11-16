@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "archive-correctness-font-reference-v1",
+  "status": "PREPARED_FOR_BROWSER_REQUALIFICATION",
+  "priorReference": "9efb9633b19b966b0611a10bc352172f217c2dcd",
+  "correctedReference": "13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb",
+  "correctedReferenceTree": "83da2291a19bb083ea148df10a419e3c5e788ca8",
+  "referenceChangedPaths": [
+    "archive/engine.html"
+  ],
+  "referenceChange": "Swap only the same two adjacent existing CSS lines as the real engine repair",
+  "inverseOriginalBytesExact": true,
+  "sourceDataChanges": 0,
+  "performanceCodeChanges": 0,
+  "geometryTolerancePx": 1,
+  "oldReferenceIndependentReviewSha256": "1a3fcdb38a264d57187cacd2ab735c4173e9d3ea5569b668168b24076301805b",
+  "initialRuntimeRun": 43768003969,
+  "initialMixedComparisons": "PASS",
+  "initialOriginalComparison": {
+    "baselineQuestions": 24,
+    "currentQuestions": 24,
+    "baselineBlocks": 24,
+    "currentBlocks": 25,
+    "baselinePages": 11,
+    "currentPages": 12,
+    "sourceOrderEqual": true,
+    "mathCountBoth": 301,
+    "imagesBoth": 20,
+    "status": "FAIL_BEFORE_REFERENCE_CORRECTION"
+  },
+  "rootParserDiagnosticSha256": "b57f84f0b59a6963e6ec680fef739a4d9cd6ef12618117c582f46d7d779b41bb",
+  "requiredNext": "Actual six student views, independent screenshot review and all existing original/mixed output gates",
+  "performanceReferenceCorrection": {
+    "prior": "b9d77f8a32e245f29c672de100178bb1ebf4c617",
+    "corrected": "7611743a80b71488f63f281af4a225afece3d40a",
+    "tree": "761ecd04726300b1de746dc5cec14c00da981c74",
+    "paths": [
+      "archive/engine.html",
+      "archive/screen-runtime-adapter.js"
+    ],
+    "inverseBytesExact": true,
+    "independentRootReviewSha256": "45144481f76e42d0b142d161811393b4937aa5ebf9f43c21049ae0f256d5393a",
+    "diagnosisSha256": "21597e7b0be8751964f55e538bcc13fb59f958ef75fcfcd642b0aed6a0dce6c7",
+    "performanceAndPdfRequalification": "PENDING"
+  },
+  "actualUiObservation": {
+    "run": 43769474558,
+    "technicalCasesPassed": 6,
+    "mobileVisibilityPassed": 3,
+    "desktopVisibilityFailed": 3,
+    "priorEvidenceRetained": true,
+    "nextCapture": "Unchanged viewport, natural scrolling, complete child envelope and occlusion checks"
+  },
+  "originalPreflightFontWait": {
+    "maximumMs": 5000,
+    "overallPreflightBoundMs": 45000,
+    "snapshotGatesUnchanged": 23,
+    "outputParityChecksUnchanged": true
+  }
+}

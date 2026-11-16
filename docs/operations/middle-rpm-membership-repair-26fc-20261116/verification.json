@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "middle-rpm-membership-repair-root-verification-v1",
+  "status": "PASS_LOCAL_CURRENT_INPUTS",
+  "main": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "blockedPagesRun": 43786397078,
+  "blockedPagesJob": 133034908172,
+  "failure": "RPM_MIDDLE_CROSSWALK_ID_DRIFT",
+  "repair": {
+    "existingM2CrosswalkId": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+    "canonicalField": "leafMappings[136].crosswalkRecordIds",
+    "before": [
+      "M2-RPM-136"
+    ],
+    "after": [
+      "M2-RPM-136",
+      "M2-RPM-136-INEQUALITY-PROPERTIES-34C2"
+    ],
+    "otherAuthorityFieldsAnd325MappingsExact": true,
+    "nonM2MappingsOpaqueUnchanged": {
+      "count": 208,
+      "beforeSha256": "d7138a88c334e05eb16983a9cf953fe0299dcbb596a945233ac87625cb8c39f7",
+      "afterSha256": "d7138a88c334e05eb16983a9cf953fe0299dcbb596a945233ac87625cb8c39f7",
+      "inspection": "opaque digest only; no source/native/branch review"
+    },
+    "newDefinitions": 0,
+    "newApprovals": 0,
+    "sourceOrNativeEdits": 0
+  },
+  "files": [
+    {
+      "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "beforeGitBlobSha1": "8213f3eb06df7dd929af9af6a00b53da208fb775",
+      "gitBlobSha1": "f0bdbb0059046afbc253042b017abb490085d31c",
+      "sha256": "9cb24fe80dbea4764de77da3548e4283a68447d7b07e0c2c8cd4b776f3ccf37e"
+    },
+    {
+      "path": "archive/rpm-middle-toc.js",
+      "beforeGitBlobSha1": "2756fda647fe612e1541187da7c20490736f3459",
+      "gitBlobSha1": "e19740cb01c8fa08ed1bbf397429d4b96e370d06",
+      "sha256": "3172d97a6cf8c65d19a7123d323ddaa8b3252d9f6747069908bfe4177383d848"
+    }
+  ],
+  "validation": {
+    "officialBuildAndFreshCheck": "PASS",
+    "originalFailedTestsPassed": 3,
+    "assertionsUnchanged": true,
+    "localVerificationSha256": "c66663620a3712ba40b93937004083969fd7810df092f2e6fe94711915486889",
+    "focusedLogSha256": "449cb886ef3e38c67486f8cabbff863cf69641d0d7e554351277425e72b5f07c",
+    "officialCheckSha256": "7997bd2e3a3f29d31b8a4137d04a73d1d1bbba003299ff74c4b00df6a73ffa5a",
+    "generatorCodeEdits": 0
+  },
+  "productionPages": "NOT_RUN_AFTER_REPAIR"
+}

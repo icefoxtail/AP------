@@ -13,9 +13,12 @@ import { hasReviewedReceiptLineage, reviewedSourceBindingItems, reviewedSourceBi
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 import { readImmutableGitFiles, forEachImmutableGitFile } from './immutable-git-batch.mjs';
+import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 
 export const ISSUED_SOURCE_BINDING_RECOVERY_SCHEMA = 'archive-native-issued-source-binding-recovery-v1';
+export const ISSUED_SOURCE_BINDING_CURRENT_SOURCE_SCHEMA = 'archive-native-issued-source-binding-current-source-v1';
 const PROOF_SCHEMA = 'archive-issued-source-binding-recovery-proof-v1';
+const CURRENT_SOURCE_PROOF_SCHEMA = 'archive-issued-source-binding-current-source-proof-v1';
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const META = 'archive/data/question_metadata.json', IDENTITY = 'archive/data/question_identity_map.json';
 const RUNTIME = 'archive/data/meta-foundation/runtime/';
@@ -39,7 +42,15 @@ function mismatchPaths(left, right, prefix = '', result = []) {
 }
 const receiptPath = id => { if (!ID.test(id || '')) fail('valid requestId required'); return RECEIPTS + id + '.json'; };
 export const issuedSourceBindingRecoveryPath = id => receiptPath(id).replace(/\.json$/, '.source-binding-recovery.json');
-export const isIssuedSourceBindingRecovery = spec => spec?.schemaVersion === ISSUED_SOURCE_BINDING_RECOVERY_SCHEMA;
+const isCurrentSourceRecovery = spec => spec?.schemaVersion === ISSUED_SOURCE_BINDING_CURRENT_SOURCE_SCHEMA;
+const hasCurrentIssuedReceipt = spec => isCurrentSourceRecovery(spec) && Object.hasOwn(spec, 'currentIssuedReceiptRef');
+export const isIssuedSourceBindingRecovery = spec => spec?.schemaVersion === ISSUED_SOURCE_BINDING_RECOVERY_SCHEMA || isCurrentSourceRecovery(spec);
+const specKeys = spec => ['schemaVersion', 'priorReceiptRef', 'originalRequestRef', 'issuedReceiptCommit',
+  ...(isCurrentSourceRecovery(spec) ? ['currentSourceRef'] : []), ...(hasCurrentIssuedReceipt(spec) ? ['currentIssuedReceiptRef'] : [])];
+const exactCurrentSourceRef = ref => exactKeys(ref, ['commit', 'path', 'gitBlobSha1', 'sha256']) &&
+  SHA1.test(ref.commit || '') && SHA1.test(ref.gitBlobSha1 || '') && SHA256.test(ref.sha256 || '');
+const exactIssuedReceiptRef = ref => exactKeys(ref, ['commit', 'path', 'sha256']) &&
+  SHA1.test(ref.commit || '') && SHA256.test(ref.sha256 || '');
 export const hasIssuedSourceBindingRecoveryMarker = row => Array.isArray(row?.approvalEvidence) && row.approvalEvidence.some(p =>
   typeof p === 'string' && p.startsWith(RECEIPTS) && /\/[A-Za-z0-9][A-Za-z0-9_-]{0,100}\.source-binding-recovery\.json$/.test(p));
 
@@ -47,7 +58,9 @@ export function isExplicitIssuedSourceBindingRecoveryRequest(request) {
   const spec = request?.approval?.sourceRebind, ref = spec?.priorReceiptRef, original = spec?.originalRequestRef;
   return request?.schemaVersion === 'archive-reviewed-exam-meta-register-request-v2' && request.scope === 'PARTIAL_UIDS' &&
     request.registrationMode === undefined && request.approval?.type === 'FINAL_QA' && request.approval.metadataReviewed === true &&
-    isIssuedSourceBindingRecovery(spec) && exactKeys(spec, ['schemaVersion', 'priorReceiptRef', 'originalRequestRef', 'issuedReceiptCommit']) &&
+    isIssuedSourceBindingRecovery(spec) && exactKeys(spec, specKeys(spec)) &&
+    (!isCurrentSourceRecovery(spec) || exactCurrentSourceRef(spec.currentSourceRef)) &&
+    (!hasCurrentIssuedReceipt(spec) || exactIssuedReceiptRef(spec.currentIssuedReceiptRef)) &&
     exactKeys(ref, ['path', 'sha256']) && SHA256.test(ref.sha256 || '') && exactKeys(original, ['commit', 'path', 'sha256']) &&
     SHA256.test(original.sha256 || '') && SHA1.test(original.commit || '') && SHA1.test(spec.issuedReceiptCommit || '') &&
     (!request.registryChanges || Array.isArray(request.registryChanges) && !request.registryChanges.length) &&
@@ -131,6 +144,11 @@ function byUid(rows, label) {
     map.set(row.questionUid, row);
   }
   return map;
+}
+function sourceIdentityLayout(rows, source) {
+  return rows.filter(row => row.sourceArchiveFile === source).map(row => ({ questionUid: row.questionUid,
+    sourceOrdinal: row.sourceOrdinal, sourceQuestionNo: row.sourceQuestionNo ?? null }))
+    .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
 }
 function inventory(receipt) {
   const records = byUid(receipt.appliedRecords, 'issued metadata'), runtimes = byUid(receipt.runtimeRecords, 'issued runtime'),
@@ -385,6 +403,7 @@ function replayOriginal(root, originalRef, issuedRef) {
       if(!same(row.approvalEvidence,evidence)||!same(runtime.approvalEvidence,evidence))fail('official issuance lost its original native provenance');
     }
     const result = { original, issued, binding, sourceRaw, bank,
+      sourceIdentityLayout: sourceIdentityLayout(preIdentityDoc.records, original.sourceArchiveFile),
       liveEvidenceRefs: liveAuthorityRefs(shadow,original,bank,prerequisites), prerequisiteProofs,
       canonicalAuthority: authority(registry, strict.appliedRecords, read(shadow, MASTER)),
       strictReceiptSha256: sha(stable(strict)),
@@ -431,21 +450,174 @@ function expectedRefs(original, priorRef, liveRefs) {
   }
   return [...map.values()].sort((a, b) => a.path.localeCompare(b.path));
 }
+function sourceOnlyCarriedRow(row, id) {
+  return { ...structuredClone(row),
+    metadataRevision: 'meta-foundation:' + row.metaFoundationPackId + '@' + row.metaFoundationPackVersion + ':exam-final_qa-v2:' + id,
+    approvalEvidence: [...new Set([...row.approvalEvidence, receiptPath(id)])] };
+}
+// An already-issued source-only descendant is preserved as another immutable
+// input. Only an exact original whole-cohort chain may precede this new recovery.
+function currentIssuedReceiptTransport(root, spec, replay, sourceRaw) {
+  if (!hasCurrentIssuedReceipt(spec)) return null;
+  const ref = spec.currentIssuedReceiptRef, original = replay.issued, expected = inventory(original);
+  if (!exactIssuedReceiptRef(ref)) fail('exact current issued receipt reference required');
+  try { git(root, ['merge-base', '--is-ancestor', ref.commit, spec.currentSourceRef.commit]); }
+  catch { fail('current issued receipt is not in current source history'); }
+  const raw = gitBytes(root, ref.commit, ref.path);
+  if (sha(raw) !== ref.sha256 || !raw.equals(bytes(root, ref.path))) fail('current issued receipt bytes changed');
+  const currentIssued = JSON.parse(raw);
+  if (ref.path !== receiptPath(currentIssued.requestId) || currentIssued.requestId === original.requestId ||
+      currentIssued.sourceBlobSha1 !== blob(sourceRaw) || currentIssued.sourceRawSha256 !== sha(sourceRaw) ||
+      !gitBytes(root, ref.commit, 'archive/exams/' + original.sourceArchiveFile).equals(sourceRaw))
+    fail('current issued receipt must bind the exact current source snapshot');
+  const refs = [{ path: ref.path, sha256: ref.sha256 }], chain = [], seen = new Set();
+  let cursor = currentIssued;
+  while (cursor.requestId !== original.requestId) {
+    if (seen.has(cursor.requestId) || seen.size >= 128) fail('current issued receipt chain is cyclic or too long');
+    seen.add(cursor.requestId);
+    const state = inventory(cursor), rebind = cursor.approval?.sourceRebind, priorRef = rebind?.priorReceiptRef;
+    if (cursor.schemaVersion !== original.schemaVersion || cursor.metadataRegistrationStatus !== 'REGISTERED' ||
+        cursor.scope !== 'PARTIAL_UIDS' || cursor.approval?.type !== 'FINAL_QA' || cursor.approval.metadataReviewed !== true ||
+        typeof cursor.approval.approvedBy !== 'string' || !cursor.approval.approvedBy ||
+        !exactKeys(rebind, ['priorReceiptRef']) || !exactKeys(priorRef, ['path', 'sha256']) || !SHA256.test(priorRef.sha256 || '') ||
+        cursor.newMetadataApprovals !== 0 || cursor.preservedMetadataApprovals !== original.partialUidCount ||
+        cursor.partialUidCount !== original.partialUidCount || cursor.totalQuestions !== original.totalQuestions ||
+        cursor.expectedQuestionCount !== original.expectedQuestionCount || cursor.examUid !== original.examUid ||
+        cursor.sourceArchiveFile !== original.sourceArchiveFile || cursor.registryChanges?.length ||
+        cursor.fingerprintRepairs?.length || cursor.nativeParentBindings?.length ||
+        !same(cursor.sourceValueOverrides, original.sourceValueOverrides) ||
+        !Array.isArray(cursor.approval.evidenceRefs) || !cursor.approval.evidenceRefs.some(value => same(value, priorRef)) ||
+        !same([...state.records.keys()].sort(), [...expected.records.keys()].sort()))
+      fail('current issued receipt must be an exact whole-cohort source-only descendant');
+    verifyRefs(root, cursor.approval.evidenceRefs);
+    for (const evidence of cursor.approval.evidenceRefs) {
+      if (sha(gitBytes(root, ref.commit, evidence.path)) !== evidence.sha256)
+        fail('current issued receipt immutable evidence changed');
+      refs.push(structuredClone(evidence));
+    }
+    const priorRaw = gitBytes(root, ref.commit, priorRef.path);
+    if (sha(priorRaw) !== priorRef.sha256 || !priorRaw.equals(bytes(root, priorRef.path)))
+      fail('current issued receipt ancestor bytes changed');
+    const prior = JSON.parse(priorRaw), priorState = inventory(prior);
+    if (priorRef.path !== receiptPath(prior.requestId) || !SHA1.test(cursor.sourceBlobSha1 || '') ||
+        !SHA1.test(prior.sourceBlobSha1 || '') || !SHA256.test(cursor.sourceRawSha256 || '') ||
+        !SHA256.test(prior.sourceRawSha256 || '') || cursor.sourceRawSha256 === prior.sourceRawSha256 ||
+        !same([...priorState.records.keys()].sort(), [...expected.records.keys()].sort()))
+      fail('current issued receipt ancestor scope/source changed');
+    const afterRaw = git(root, ['cat-file', 'blob', cursor.sourceBlobSha1]);
+    const beforeRaw = git(root, ['cat-file', 'blob', prior.sourceBlobSha1]);
+    if (sha(afterRaw) !== cursor.sourceRawSha256 || sha(beforeRaw) !== prior.sourceRawSha256)
+      fail('current issued receipt ancestor source bytes changed');
+    const afterBank = bankOf(afterRaw, original.expectedQuestionCount), beforeBank = bankOf(beforeRaw, original.expectedQuestionCount);
+    for (const bank of [beforeBank, afterBank]) {
+      if (!same(bank.map(q => q.id), replay.bank.map(q => q.id)))
+        fail('current issued receipt ancestor changed full source identity/order');
+    }
+    for (const [uid, row] of state.records) {
+      const before = priorState.records.get(uid), originalRow = expected.records.get(uid);
+      if (!same(row, sourceOnlyCarriedRow(before, cursor.requestId)) ||
+          !same(state.runtimes.get(uid), sourceOnlyCarriedRow(priorState.runtimes.get(uid), cursor.requestId)) ||
+          !same(state.identities.get(uid), priorState.identities.get(uid)) ||
+          !same(state.identities.get(uid), expected.identities.get(uid)) ||
+          !same(withoutProvenance(row), withoutProvenance(originalRow)) ||
+          !same(beforeBank[row.sourceOrdinal - 1], replay.bank[row.sourceOrdinal - 1]) ||
+          !same(afterBank[row.sourceOrdinal - 1], replay.bank[row.sourceOrdinal - 1]))
+        fail('current issued receipt ancestor altered a selected approval, question or identity');
+    }
+    chain.push({ requestId: cursor.requestId, receiptRef: { path: receiptPath(cursor.requestId),
+      sha256: sha(gitBytes(root, ref.commit, receiptPath(cursor.requestId))) },
+      priorReceiptRef: structuredClone(priorRef), sourceBlobSha1: cursor.sourceBlobSha1,
+      sourceRawSha256: cursor.sourceRawSha256, preservedMetadataApprovals: cursor.partialUidCount });
+    cursor = prior;
+  }
+  if (!same(cursor, original) || !chain.length) fail('current issued receipt chain must end in the exact original issued receipt');
+  return { currentIssued, refs, evidence: { currentIssuedReceiptRef: structuredClone(ref), chain,
+    newMetadataApprovals: 0, preservedMetadataApprovals: original.partialUidCount,
+    originalMetadataSha256: sha(stable(original.appliedRecords)), currentMetadataSha256: sha(stable(currentIssued.appliedRecords)),
+    originalRuntimeSha256: sha(stable(original.runtimeRecords)), currentRuntimeSha256: sha(stable(currentIssued.runtimeRecords)) } };
+}
+// This separate opt-in carries an unchanged issued cohort through an already
+// committed source change outside that cohort. It never rewrites the cached
+// original replay, its source, or its reconstructed historical binding.
+function currentSourceTransport(root, spec, replay) {
+  const ref = spec.currentSourceRef, { original, issued } = replay;
+  if (!exactCurrentSourceRef(ref) || ref.path !== `archive/exams/${original.sourceArchiveFile}`)
+    fail('exact current source transport reference required');
+  const raw = gitBytes(root, ref.commit, ref.path);
+  if (raw.length > 16 * 1024 * 1024 || blob(raw) !== ref.gitBlobSha1 || sha(raw) !== ref.sha256 || raw.equals(replay.sourceRaw))
+    fail('current source transport must bind distinct exact bytes');
+  try { git(root, ['merge-base', '--is-ancestor', ref.commit, 'HEAD']); }
+  catch { fail('current source transport commit is not in checkout history'); }
+  const bank = bankOf(raw, original.expectedQuestionCount), selected = new Set(original.items.map(item => item.sourceOrdinal));
+  if (replay.sourceIdentityLayout.length !== bank.length || new Set(replay.sourceIdentityLayout.map(row => row.questionUid)).size !== bank.length ||
+      replay.sourceIdentityLayout.some((row, i) => typeof row.questionUid !== 'string' || !row.questionUid || row.sourceOrdinal !== i + 1))
+    fail('current source transport original full identity layout is incomplete');
+  const ids = new Set();
+  for (let i = 0; i < bank.length; i++) {
+    const id = bank[i]?.id;
+    if (id === undefined || ids.has(stable(id)) || !same(id, replay.bank[i]?.id))
+      fail('current source transport changed full source identity/order');
+    ids.add(stable(id));
+    if (selected.has(i + 1) && !same(bank[i], replay.bank[i]))
+      fail('current source transport changed a selected whole question');
+  }
+  // A stable image path is insufficient. Pin its original, issued, current Git
+  // and fresh live bytes separately, including inline and solution assets.
+  const assets = assetPaths(replay.bank, original.items), commits = [...new Set([
+    spec.originalRequestRef.commit, spec.issuedReceiptCommit, ref.commit])];
+  const entries = assets.flatMap(path => commits.map(commit => ({ commit, path })));
+  const rawAssets = entries.length ? readImmutableGitFiles(root, entries) : [];
+  const expectedRefsByPath = new Map(replay.liveEvidenceRefs.map(value => [value.path, value.sha256]));
+  const assetBindings = [];
+  for (let i = 0; i < assets.length; i++) {
+    const relative = assets[i], expected = expectedRefsByPath.get(relative), live = bytes(root, relative);
+    if (!SHA256.test(expected || '') || sha(live) !== expected) fail('current source transport live asset differs from issued authority');
+    for (let j = 0; j < commits.length; j++) {
+      const data = rawAssets[i * commits.length + j];
+      if (!data.equals(live) || sha(data) !== expected) fail('current source transport immutable asset differs from issued authority');
+    }
+    assetBindings.push({ path: relative, sha256: expected, gitBlobSha1: blob(live) });
+  }
+  const evidence = { schemaVersion: 'archive-issued-binding-current-source-transport-v1',
+    currentSourceRef: structuredClone(ref), originalSourceBlobSha1: issued.sourceBlobSha1,
+    originalSourceRawSha256: issued.sourceRawSha256, expectedQuestionCount: original.expectedQuestionCount,
+    fullSourceIdentityLayout: structuredClone(replay.sourceIdentityLayout),
+    newMetadataApprovals: 0, newMathematicalQa: false, newDifficultyJudgments: 0, sourceWrites: 0,
+    selectedWholeQuestions: original.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+      originalQuestionSha256: sha(stable(replay.bank[item.sourceOrdinal - 1])), currentQuestionSha256: sha(stable(bank[item.sourceOrdinal - 1])) })),
+    outsideOrdinals: bank.map((_, i) => i + 1).filter(ordinal => !selected.has(ordinal)),
+    changedOutsideOrdinals: bank.map((q, i) => !selected.has(i + 1) && !same(q, replay.bank[i]) ? i + 1 : null).filter(Boolean),
+    assets: assetBindings };
+  const descendant = currentIssuedReceiptTransport(root, spec, replay, raw);
+  if (descendant) evidence.currentIssuedDescendant = descendant.evidence;
+  return { sourceRaw: raw, bank, evidence, ...(descendant ? { currentIssued: descendant.currentIssued, authorityRefs: descendant.refs } : {}) };
+}
+const sourceState = ctx => ctx.transport || ctx;
+function currentSourceIdentityLayout(root, ctx, identities) {
+  if (ctx.transport && !same(sourceIdentityLayout([...identities.values()], ctx.original.sourceArchiveFile), ctx.sourceIdentityLayout))
+    fail('current source transport changed full source UID layout');
+}
+function currentSourceAuthorityHold(root, ctx, current, identity) {
+  if (ctx.transport && nativeAuthorityHoldState({ root, current, identity,
+      source: ctx.original.sourceArchiveFile, ordinal: current?.sourceOrdinal }))
+    fail('current source transport cannot restore withdrawn authority');
+}
 function context(root, request) {
   const spec = request?.approval?.sourceRebind;
-  if (!isIssuedSourceBindingRecovery(spec) || !exactKeys(spec, ['schemaVersion', 'priorReceiptRef', 'originalRequestRef', 'issuedReceiptCommit']) ||
+  if (!isIssuedSourceBindingRecovery(spec) || !exactKeys(spec, specKeys(spec)) ||
       !exactKeys(spec.priorReceiptRef, ['path', 'sha256']) || !exactKeys(spec.originalRequestRef, ['commit', 'path', 'sha256']) ||
       !SHA1.test(spec.issuedReceiptCommit || '') || !SHA1.test(spec.originalRequestRef.commit || '') ||
       !SHA256.test(spec.originalRequestRef.sha256 || '') || !SHA256.test(spec.priorReceiptRef.sha256 || '')) fail('exact typed immutable recovery refs required');
   const replay = replayOriginal(root, spec.originalRequestRef, { commit: spec.issuedReceiptCommit, ...spec.priorReceiptRef });
   const { original, issued } = replay;
+  const transport = isCurrentSourceRecovery(spec) ? currentSourceTransport(root, spec, replay) : null;
   if (request.schemaVersion !== 'archive-reviewed-exam-meta-register-request-v2' || !ID.test(request.requestId || '') ||
       request.requestId === original.requestId || request.scope !== 'PARTIAL_UIDS' || request.registrationMode !== undefined ||
       request.registryChanges?.length || !Array.isArray(request.items) || request.items.length !== issued.partialUidCount ||
       request.examUid !== original.examUid || request.sourceArchiveFile !== original.sourceArchiveFile ||
-      request.expectedSourceBlobSha1 !== original.expectedSourceBlobSha1 || request.expectedQuestionCount !== original.expectedQuestionCount ||
+      request.expectedSourceBlobSha1 !== (transport ? blob(transport.sourceRaw) : original.expectedSourceBlobSha1) || request.expectedQuestionCount !== original.expectedQuestionCount ||
       Object.hasOwn(request, 'newMetadataApprovals') || Object.hasOwn(request, 'preservedMetadataApprovals')) fail('recovery must preserve the exact original whole cohort and source');
-  const refs = expectedRefs(original, spec.priorReceiptRef, replay.liveEvidenceRefs);
+  const refs = expectedRefs(original, spec.priorReceiptRef, [...replay.liveEvidenceRefs, ...(transport?.authorityRefs || [])]);
   const approval = structuredClone(request.approval); delete approval.sourceRebind; delete approval.evidenceRefs;
   const originalApproval = structuredClone(original.approval); delete originalApproval.evidenceRefs;
   if (!same(approval, originalApproval) || !same(request.approval.evidenceRefs, refs)) fail('original approval and complete immutable evidence must be retained');
@@ -459,16 +631,16 @@ function context(root, request) {
   const registry = loadActiveMetaRegistry(root);
   if (registry.status !== 'ACTIVE' || !same(authority(registry, issued.appliedRecords, read(root, MASTER)), replay.canonicalAuthority))
     fail('current ACTIVE selected authority changed');
-  return { ...replay, request, refs, registry, spec };
+  return { ...replay, request, refs, registry, spec, ...(transport ? { transport } : {}) };
 }
 function carriedRow(row, id) {
   return { ...structuredClone(row), metadataRevision: `meta-foundation:${row.metaFoundationPackId}@${row.metaFoundationPackVersion}:exam-final_qa-v2:${id}`,
     approvalEvidence: [...new Set([...row.approvalEvidence, receiptPath(id), issuedSourceBindingRecoveryPath(id)])] };
 }
 function buildProof(ctx) {
-  const { request, original, issued } = ctx;
-  return { schemaVersion: PROOF_SCHEMA, requestId: request.requestId, requestSha256: sha(stable(request)),
-    sourceArchiveFile: issued.sourceArchiveFile, sourceBlobSha1: issued.sourceBlobSha1, sourceRawSha256: issued.sourceRawSha256,
+  const { request, original, issued } = ctx, source = sourceState(ctx);
+  return { schemaVersion: ctx.transport ? CURRENT_SOURCE_PROOF_SCHEMA : PROOF_SCHEMA, requestId: request.requestId, requestSha256: sha(stable(request)),
+    sourceArchiveFile: issued.sourceArchiveFile, sourceBlobSha1: blob(source.sourceRaw), sourceRawSha256: sha(source.sourceRaw),
     expectedQuestionCount: issued.expectedQuestionCount, partialUidCount: issued.partialUidCount,
     newMetadataApprovals: 0, preservedMetadataApprovals: issued.partialUidCount, newMathematicalQa: false, newDifficultyJudgments: 0,
     originalRequestRef: request.approval.sourceRebind.originalRequestRef,
@@ -477,14 +649,15 @@ function buildProof(ctx) {
     officialReplay: { originalRequestSha256: sha(stable(original)), receiptSha256: ctx.strictReceiptSha256, preStateSha256: ctx.preStateSha256,
       bindingPrerequisites:ctx.prerequisiteProofs,originalNativeApproval:ctx.originalNativeApprovalReplay },
     reconstructedSourceBinding: ctx.binding, requestSnapshot: structuredClone(request),
+    ...(ctx.transport ? { currentSourceTransport: structuredClone(ctx.transport.evidence) } : {}),
     records: issued.appliedRecords.map(row => ({ questionUid: row.questionUid, sourceOrdinal: row.sourceOrdinal,
       issuedMetadataSha256: sha(stable(row)), issuedRuntimeSha256: sha(stable(issued.runtimeRecords.find(r => r.questionUid === row.questionUid))),
       issuedIdentitySha256: sha(stable(issued.appliedIdentityRecords.find(r => r.questionUid === row.questionUid))) })) };
 }
 function expectedReceipt(ctx, proof, outputDigests) {
-  const { request, issued } = ctx;
+  const { request } = ctx, source = sourceState(ctx), issued = ctx.transport?.currentIssued || ctx.issued;
   return { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: request.requestId, requestSha256: sha(stable(request)),
-    examUid: issued.examUid, sourceArchiveFile: issued.sourceArchiveFile, sourceBlobSha1: issued.sourceBlobSha1, sourceRawSha256: issued.sourceRawSha256,
+    examUid: issued.examUid, sourceArchiveFile: issued.sourceArchiveFile, sourceBlobSha1: blob(source.sourceRaw), sourceRawSha256: sha(source.sourceRaw),
     approval: structuredClone(request.approval), metadataRegistrationStatus: 'REGISTERED', examFinalQaStatus: 'NOT_EVALUATED_BY_REGISTRAR',
     consumerSearchStatus: 'NOT_RUN', totalQuestions: issued.totalQuestions, registryChanges: [],
     appliedRecords: issued.appliedRecords.map(row => carriedRow(row, request.requestId)),
@@ -492,7 +665,7 @@ function expectedReceipt(ctx, proof, outputDigests) {
     runtimeRecords: issued.runtimeRecords.map(row => carriedRow(row, request.requestId)), outputDigests,
     scope: 'PARTIAL_UIDS', partialUidCount: issued.partialUidCount, expectedQuestionCount: issued.expectedQuestionCount,
     newMetadataApprovals: 0, preservedMetadataApprovals: issued.partialUidCount,
-    issuedSourceBindingRecovery: { schemaVersion: ISSUED_SOURCE_BINDING_RECOVERY_SCHEMA,
+    issuedSourceBindingRecovery: { schemaVersion: ctx.spec.schemaVersion,
       proofPath: issuedSourceBindingRecoveryPath(request.requestId), sourceReviewUidCount: proof.sourceReviewUidCount, unchangedUidCount: proof.unchangedUidCount } };
 }
 function verifyReceipt(ctx, receipt, proof) {
@@ -522,9 +695,11 @@ function liveSnapshot(root) {
 const withoutProvenance=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
 function assertLiveCohort(root,ctx,recovery) {
   const live=liveSnapshot(root),expected=inventory(recovery),sourceRaw=bytes(root,`archive/exams/${recovery.sourceArchiveFile}`),bank=bankOf(sourceRaw,recovery.expectedQuestionCount);
+  currentSourceIdentityLayout(root,ctx,live.identity);
   const latestIds=new Set();
   for(const [uid,row]of expected.records) {
     const current=live.metadata.get(uid),runtime=live.runtime.get(uid),pack=live.runtimePackByUid.get(uid);
+    currentSourceAuthorityHold(root,ctx,current,live.identity.get(uid));
     if(!current||!runtime||!same(withoutProvenance(current),withoutProvenance(row))||
       !same(withoutProvenance(runtime),withoutProvenance(expected.runtimes.get(uid)))||!same(live.identity.get(uid),expected.identities.get(uid))||
       !same(bank[row.sourceOrdinal-1],ctx.bank[row.sourceOrdinal-1])||pack?.status!=='ACTIVE'||pack.packId!==row.metaFoundationPackId||
@@ -585,22 +760,43 @@ export function prepareIssuedSourceBindingRecovery({ root, requestId, originalRe
   return { request, inputRefs: refs, sourceReviewUidCount: ctx.sourceReviewUidCount, unchangedUidCount: ctx.unchangedUidCount };
 }
 
+export function prepareIssuedSourceBindingCurrentTransport({ currentSourceRef, currentIssuedReceiptRef, ...options }) {
+  const prepared = prepareIssuedSourceBindingRecovery(options), request = structuredClone(prepared.request);
+  request.approval.sourceRebind = { ...request.approval.sourceRebind,
+    schemaVersion: ISSUED_SOURCE_BINDING_CURRENT_SOURCE_SCHEMA, currentSourceRef: structuredClone(currentSourceRef),
+    ...(currentIssuedReceiptRef === undefined ? {} : { currentIssuedReceiptRef: structuredClone(currentIssuedReceiptRef) }) };
+  request.expectedSourceBlobSha1 = currentSourceRef?.gitBlobSha1;
+  if (currentIssuedReceiptRef !== undefined) {
+    const spec = request.approval.sourceRebind;
+    const replay = replayOriginal(options.root, spec.originalRequestRef, { commit: spec.issuedReceiptCommit, ...spec.priorReceiptRef });
+    const transport = currentSourceTransport(options.root, spec, replay);
+    const refs = expectedRefs(replay.original, spec.priorReceiptRef, [...replay.liveEvidenceRefs, ...transport.authorityRefs]);
+    request.approval.evidenceRefs = refs; request.items = request.items.map(row => ({ ...row, evidenceRefs: refs }));
+  }
+  const ctx = context(options.root, request);
+  return { ...prepared, request, inputRefs: structuredClone(ctx.refs), currentSourceTransport: structuredClone(ctx.transport.evidence) };
+}
+
 export function registerIssuedSourceBindingRecovery({ root, request, write = false, verifyProjection = false }) {
   const ctx = context(root, request), id = request.requestId, relative = receiptPath(id), proofPath = issuedSourceBindingRecoveryPath(id);
   const sourceRaw = bytes(root, `archive/exams/${request.sourceArchiveFile}`);
-  if (!sourceRaw.equals(ctx.sourceRaw)) fail('current whole source differs from issued source');
+  if (!sourceRaw.equals(sourceState(ctx).sourceRaw)) fail('current whole source differs from issued source');
   const metadata = read(root, META), identity = read(root, IDENTITY), current = byUid(metadata.records, 'current metadata'),
     ids = byUid(identity.records, 'current identity'), runtimeDocs = runtimeDocuments(root), allRuntime = byUid(runtimeDocs.flatMap(doc => doc.records || []), 'current runtime');
+  currentSourceIdentityLayout(root,ctx,ids);
   if (metadata.records.filter(row => row.sourceArchiveFile === request.sourceArchiveFile).length !== request.expectedQuestionCount ||
       identity.records.filter(row => row.sourceArchiveFile === request.sourceArchiveFile).length !== request.expectedQuestionCount) fail('current full source inventory differs');
   const exists = fs.existsSync(safePath(root, relative)), proof = buildProof(ctx);
   if (!exists && fs.existsSync(safePath(root, proofPath))) fail('orphan recovery proof cannot be adopted');
   const receipt = exists ? read(root, relative) : expectedReceipt(ctx, proof, []);
   if (exists) verifyReceipt(ctx, receipt, read(root, proofPath));
-  const expected = exists ? receipt : ctx.issued;
-  for (const row of expected.appliedRecords) if (!same(current.get(row.questionUid), row) ||
-      !same(ids.get(row.questionUid), expected.appliedIdentityRecords.find(r => r.questionUid === row.questionUid)) ||
-      !same(allRuntime.get(row.questionUid), expected.runtimeRecords.find(r => r.questionUid === row.questionUid))) fail('current whole-cohort metadata/runtime/identity drift');
+  const expected = exists ? receipt : ctx.transport?.currentIssued || ctx.issued;
+  for (const row of expected.appliedRecords) {
+    currentSourceAuthorityHold(root,ctx,current.get(row.questionUid),ids.get(row.questionUid));
+    if (!same(current.get(row.questionUid), row) ||
+        !same(ids.get(row.questionUid), expected.appliedIdentityRecords.find(r => r.questionUid === row.questionUid)) ||
+        !same(allRuntime.get(row.questionUid), expected.runtimeRecords.find(r => r.questionUid === row.questionUid))) fail('current whole-cohort metadata/runtime/identity drift');
+  }
   const summary = { status: 'PASS', requestId: id, approvalType: 'FINAL_QA', totalQuestions: ctx.issued.totalQuestions,
     scope: 'PARTIAL_UIDS', partialUidCount: ctx.issued.partialUidCount, expectedQuestionCount: ctx.issued.expectedQuestionCount,
     newMetadataApprovals: 0, preservedMetadataApprovals: ctx.issued.partialUidCount, sourceReviewUidCount: ctx.sourceReviewUidCount,
@@ -647,9 +843,10 @@ export function validateIssuedSourceBindingRecovery(receipt, nativeSource, quest
   const root = nativeSource.root, proof = read(root, issuedSourceBindingRecoveryPath(receipt.requestId));
   const ctx = context(root, proof.requestSnapshot); verifyReceipt(ctx, receipt, proof);
   assertLiveCohort(root,ctx,receipt);
+  const source = sourceState(ctx);
   if (!same(read(root, receiptPath(receipt.requestId)), receipt) || !Buffer.isBuffer(nativeSource.bytes) ||
-      !nativeSource.bytes.equals(ctx.sourceRaw) || nativeSource.blobSha1 !== ctx.issued.sourceBlobSha1 ||
-      !same(nativeSource.bank, ctx.bank) || !same(question, ctx.bank[ordinal - 1])) fail('recovery current/historical source context drift');
+      !nativeSource.bytes.equals(source.sourceRaw) || nativeSource.blobSha1 !== blob(source.sourceRaw) ||
+      !same(nativeSource.bank, source.bank) || !same(question, source.bank[ordinal - 1])) fail('recovery current/historical source context drift');
   const state = inventory(receipt), uid = identity.questionUid;
   if (state.records.get(uid)?.sourceOrdinal !== ordinal || !same(state.records.get(uid), current) ||
       !same(state.runtimes.get(uid), nativeSource.runtimeRecord) || !same(state.identities.get(uid), identity)) fail('recovery supplied current state drift');

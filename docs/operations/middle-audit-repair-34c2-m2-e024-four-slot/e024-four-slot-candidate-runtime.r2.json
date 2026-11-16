@@ -1,0 +1,382 @@
+{
+  "schemaVersion": "e024-four-slot-candidate-scoped-runtime-verification-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewer": "GPT_M1_0A70543C4CE8",
+  "checkedAt": "2026-11-16T01:59:37.576Z",
+  "scope": "ISOLATED_CANDIDATE_OFFICIAL_BUILDER_AND_CONSUMER_NOT_MAIN_REGISTRATION",
+  "fixtureRoot": "/workspace/scratch/0a70543c4ce8/m1-read/e024-continuity/runtime-fixture",
+  "currentSourceRef": {
+    "path": "archive/exams/original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+    "gitBlobSha1": "4382fa87a2df7fd9095ffda8d44fc55f81c1f514",
+    "sha256": "8e216996b7d98fd6dd0da83a5d61601dee780ddaffd79cb482d2d5f826851434",
+    "commitStatus": "NOT_YET_MERGED"
+  },
+  "originalCompactSha256": "8894a12c573b6b9738d51115d2413d662c4295edf016b83d7316e312b3c61ad0",
+  "candidateCompactSha256": "be615334fbdea28187f8920868383be7fa3c97bf6ebb13d35f2b34b7709cf2a3",
+  "continuityRef": {
+    "path": "e024-four-slot-current-continuity-independent.r1.json",
+    "sha256": "df2dcfbefdca5886c705d76a28f3759c0a99f433dfb9d7ac64e9ffe75859fd20"
+  },
+  "transportRef": {
+    "path": "e024-six-native-vector-transport.r1.json",
+    "sha256": "4e3b9cf13857d9b7231d0d178f972f1e8125ae5f37bea4f1d01b4f7b4cf87517"
+  },
+  "counts": {
+    "sourceDenominator": 24,
+    "beforeRegistered": 12,
+    "beforePending": 12,
+    "afterRegistered": 24,
+    "afterPending": 0,
+    "slotVectorCorrections": 6,
+    "otherVectorsPreserved": 18
+  },
+  "verification": {
+    "schemaVersion": "archive-item-4slot-runtime-v1",
+    "status": "PASS",
+    "verified": 24,
+    "pending": 0,
+    "indexSha256": "70594598a2fbb50b02b524f85fa4b8d7becdc3045c6b69bbac01d17029978183",
+    "sourceMutation": 0,
+    "semanticApprovalMutation": 0
+  },
+  "originalReviewedByPreserved": true,
+  "existingNativeSourceHoldPreserved": {
+    "sourceOrdinal": 20,
+    "authority": {
+      "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+      "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/root-acceptance.json",
+      "sha256": "686f94c07b8765843620da1cdbf78e2fcbd5891a3929a038580047730ee7807a"
+    },
+    "reason": "Original native independence-assumption source-content hold is neither rewritten nor released; its existing four-slot row and method remain unchanged."
+  },
+  "normalBlankSetsPreserved": true,
+  "metadataApprovalMutation": 0,
+  "sourceMutation": 0,
+  "repositoryWrites": 0,
+  "officialMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d7902ea85258cf820334adb997ee42e271a9ca19e988dc26a92583a395251365",
+      "sourceOrdinal": 1,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_4293e06926ff2227427808389e5f26a70b5f52abc28bc199134fb091898a1bc9",
+      "sourceOrdinal": 2,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_3e59590b21b06d32bd3a873de9c5e80dc96f0f8b2b28d4545c6e172e1c05965b",
+      "sourceOrdinal": 3,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_70a153fd0db92774327a2a79647a464cb887d400f870eb8b8280cab9f094b147",
+      "sourceOrdinal": 4,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_d90a05b6d154747ce7c5c1489f3d449769aa3f2365b4a340a92d1a33b670ab82",
+      "sourceOrdinal": 5,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_d36f1e2a47b7da7f41d4d9f8f36d833d15d6868fc3b686d8d0f5f38813d06e65",
+      "sourceOrdinal": 6,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_1d21626dc4960cb27defc33053099ba00da279218a56d2afd8e702c89c2affc1",
+      "sourceOrdinal": 7,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": true,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_925a065db9d4d8e1314f7664c4ed3f8aeca25b4804502f4717e903bbde671470",
+      "sourceOrdinal": 8,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_e7924cf387c36055b9126fe4a82ac6e1f9a5951e4bd1e3e2f67879d5ab6e4bb0",
+      "sourceOrdinal": 9,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": true,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_1b2d52b8311ec9375f5c1d3d4d4c426b025dfde99fdf6be2b341f22a043e62c0",
+      "sourceOrdinal": 10,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_5eb61fb6bd2b1d603fc0353ea27e725e79864e79db0d67e04d853d042e238427",
+      "sourceOrdinal": 11,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_961edc3108d111f578eb5daec774cca9af9548a70d3c5bc0cabb7488099387e0",
+      "sourceOrdinal": 12,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_9f7f8734346a2d08465bdb2f805e07c04c54f6dabe1a649bb5754f9b697dd1c8",
+      "sourceOrdinal": 13,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": true,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_555dd90fef7e28faeff2d711314e53ee78a07b991384562383d55d715e8d0c1c",
+      "sourceOrdinal": 14,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_1e423a64dbcc6b24db22a15a4d33242b6ece6fb155f0bf40738c915316f926ca",
+      "sourceOrdinal": 15,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_f5c51d556d3eb386034d3799413f96e24bfa94cbfaa86144ca708f02a4e505dc",
+      "sourceOrdinal": 16,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_0e8416064aee95e0a80abad20fbc79a966818cb81ce0cbf361e166a5b0e9fe39",
+      "sourceOrdinal": 17,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_459e361df01ef8b1a174db34c9b64f15dfde0709c7237422757208ea94443288",
+      "sourceOrdinal": 18,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": true,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_ef35d32d6e2d3d56fe92d9d35f439bd8e785b6315451bcae80e485e08db64045",
+      "sourceOrdinal": 19,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_1f993e33e207d80a4df41c26af306dbd8b62f672fb66da452325452b596f69ba",
+      "sourceOrdinal": 20,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_2d94042b9e6fc226e2988cb52c7310fece2e4bd2a674f7aaba14457e6c2866a6",
+      "sourceOrdinal": 21,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_78d36c5d485aac7421f5459768792a2dfe3b93ef2f244a35d3a04c3bb60f8993",
+      "sourceOrdinal": 22,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": true,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_34f9e8c830023ebec7e2af51c06313f8000dbf68308fdc2c6b1ce27174dfed22",
+      "sourceOrdinal": 23,
+      "beforeRegistered": true,
+      "beforePending": [],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": false,
+      "postingRoundTrip": true
+    },
+    {
+      "questionUid": "qid_v1_cafaf9bac09243f5b160fe5b95d475e97f823e8e619b4d6fac2150ef709e561c",
+      "sourceOrdinal": 24,
+      "beforeRegistered": false,
+      "beforePending": [
+        "STALE_STUDENT_PAYLOAD"
+      ],
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "methodUnchanged": true,
+      "nativeCorrectionApplied": true,
+      "postingRoundTrip": true
+    }
+  ],
+  "codeRefs": [
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "47e3492f6477cf0a36d7df02e7b5cb9548369bbb53dc4e1c8cfe72654ec3bcba"
+    },
+    {
+      "path": "tools/4slot/validate-4slot.cjs",
+      "sha256": "8f35827437b4ae5e5a063f5968a5f23069fbc1e28244c2a8cab9c367d7a9edc7"
+    },
+    {
+      "path": "tools/4slot/import-4slot.cjs",
+      "sha256": "e679d3b6440d7acb009f9eae28213a76fa8fae5b070e4d1aaa13da5421e12a9d"
+    },
+    {
+      "path": "tools/4slot/exam-items.cjs",
+      "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2"
+    },
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "sha256": "499ce72f4b936ce9041b3e740a9baea0ca36583a2dc96623b5f951a6c9d9c614"
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.cjs",
+      "sha256": "482b14918edf02eba8b794bbb350829b5ffc30f2fc89df23c0d360318dc27076"
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.mjs",
+      "sha256": "b3f447bc44e1283b942eb2f70f778c32ceab667370ed1be2966687bbf573f3e8"
+    },
+    {
+      "path": "archive/item-4slot.js",
+      "sha256": "e85ed65f5524d7636545e5d8aa1e38ecfc2f82597944101cf9e28814582b7393"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "middle-audit-add-only-crosswalk-plan-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+  "beforeSha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+  "afterSha256": "98a6978ad2bb055d9645d7bec83b788c12972341b08f5fabbe013b574e3e5100",
+  "existingRowCount": 239,
+  "existingRowsModified": 0,
+  "append": [
+    {
+      "id": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "problemTypeLabelKo": "부등식 성질 적용의 옳고 그름 판별",
+      "ownerPack": "MIDDLE2",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "templateLabelKo": "부등식 변형 성질 검증 절차",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "ownerPack": "MIDDLE2"
+      },
+      "promotesRpmOnlyRowId": "M2-RPM-136"
+    }
+  ],
+  "summaryBefore": {
+    "recordCount": 239,
+    "DIRECT_ACTIVE": 34,
+    "FAMILY_ACTIVE": 2,
+    "DIRECT_BINDING_GAP": 67,
+    "FAMILY_BINDING_GAP": 14,
+    "RPM_ONLY": 122
+  },
+  "summaryAfter": {
+    "recordCount": 240,
+    "DIRECT_ACTIVE": 35,
+    "FAMILY_ACTIVE": 2,
+    "DIRECT_BINDING_GAP": 67,
+    "FAMILY_BINDING_GAP": 14,
+    "RPM_ONLY": 122
+  },
+  "rootSingleWriterRequired": true,
+  "sealPriorDigestBeforeAppend": true,
+  "evidenceRefs": [
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+      "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-current-key-application.json",
+      "sha256": "c86ed8804f573cd57e96813a4dd73e30576b266f86d8bc6c51206c5df8740e92"
+    }
+  ]
+}

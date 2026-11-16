@@ -43,7 +43,7 @@ import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerRe
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { isExplicitAuditCcAppendRequest } from "./audited-cross-concept-append.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
-import { bindDifficulty5Source } from "./register-difficulty5.mjs";
+import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
@@ -66,6 +66,7 @@ const SCHEMA = {
   BASIC_PARENT_CORRECTION: "archive-basic-parent-correction-request-v1",
   BASIC_REBIND: "archive-basic-scope-rebind-request-v1",
 };
+const DIFFICULTY_FIELDS = Object.freeze(["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"]);
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
 // Full metadata, identity and runtime records are checked by the official v2
@@ -293,9 +294,12 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     const sourceFile = normalizeFile(gemini.sourceArchiveFile || doc.sourceArchiveFile);
     if (!sourceFile) fail("INVALID_REQUEST", "diff5 request needs sourceArchiveFile");
     const items = gemini.items || doc.items || [];
-    if (!Array.isArray(items)) fail("INVALID_REQUEST", "diff5 request needs items[]");
+    if (!Array.isArray(items) || !items.length) fail("INVALID_REQUEST", "diff5 request needs items[]");
+    if (doc.approval || (doc.registryChanges?.length ?? 0)) fail("INVALID_REQUEST", "diff5 request cannot carry semantic approval or registry changes");
     const rows = items.map(item => {
-      if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.ordinal} has no after`);
+      if (!item?.after || typeof item.after !== "object" || Array.isArray(item.after) ||
+          Object.keys(item.after).some(field => !DIFFICULTY_FIELDS.includes(field)))
+        fail("INVALID_REQUEST", `item #${item?.ordinal} is not difficulty-only`);
       const expect = { difficultyBucket: item.after.difficultyBucket };
       return {
         ordinal: item.ordinal,
@@ -307,6 +311,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     });
     return {
       kind: "difficulty5-ratings",
+      request: doc,
       approvalType: null,
       exam: gemini.requestId || sourceFile,
       sourceFile,
@@ -364,6 +369,50 @@ function findMetaPipelineRuntime(consumer, unit, row, resolved) {
   return candidates.length === 1 ? candidates[0] : null;
 }
 
+// The official registrar owns normalization and reviewed-correction authority. A D5
+// Consumer claim first replays that exact read-only kernel against current canonical
+// metadata/identity/source. No source tag or semantic approval is changed here.
+function verifiedDifficultyRows(root, unit, consumer) {
+  const proof = registerDifficulty5({ root, request: unit.request, write: false, verifyProjection: true });
+  if (proof.status !== "PASS" || !["verify-projection", "verify-reviewed-correction"].includes(proof.mode) ||
+      proof.requestId !== unit.request.gemini.requestId || proof.sourceArchiveFile !== unit.sourceFile ||
+      proof.sourceBlobSha !== unit.expectedBlob || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
+      proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
+      proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||
+      new Set(proof.items.map(item => item.questionUid)).size !== unit.rows.length ||
+      new Set(proof.items.map(item => item.ordinal)).size !== unit.rows.length)
+    throw Error("official difficulty projection/scope mismatch");
+  if (!consumer.difficultyMetadataByUid) {
+    const records = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+    consumer.difficultyMetadataByUid = new Map();
+    for (const record of records || []) {
+      const list = consumer.difficultyMetadataByUid.get(record.questionUid) || [];
+      list.push(record); consumer.difficultyMetadataByUid.set(record.questionUid, list);
+    }
+  }
+  const bank = loadBank(root, unit.sourceFile);
+  return unit.rows.map(row => {
+    const checked = proof.items.find(item => item.questionUid === row.uid && item.ordinal === row.ordinal);
+    const matches = consumer.difficultyMetadataByUid.get(row.uid) || [], meta = matches[0];
+    if (!checked || checked.decision !== "VERIFIED" || matches.length !== 1 ||
+        meta.sourceArchiveFile !== unit.sourceFile || meta.sourceOrdinal !== row.ordinal ||
+        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) && same(meta[field], checked.after[field])))
+      throw Error(`official difficulty metadata/UID mismatch: ${row.uid}`);
+    const source = bank[row.ordinal - 1];
+    if (!source) throw Error(`difficulty source ordinal missing: ${row.uid}`);
+    const values = Object.fromEntries(DIFFICULTY_FIELDS.map(field => [field, checked.after[field] ?? null]));
+    const semanticPending = !meta.metadataApprovalType &&
+      ["registration_only_pending_review", "registration_pending_semantic_review"].includes(meta.metadataStatus) &&
+      meta.fieldStatus?.problemType === "manual_review_pending" && meta.fieldStatus?.template === "manual_review_pending" &&
+      meta.tagConfidence === "registration_only" && meta.tagStatus === "registration_only_pending_review";
+    return { ...row, difficultyProjection: { values, binding: checked.consumerBinding, semanticPending,
+      ordinaryNormalization: proof.mode === "verify-projection" && !unit.request.reviewedCorrection,
+      currentTags: { tagConfidence: meta.tagConfidence, tagStatus: meta.tagStatus },
+      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", "legacyLevelCompatibility"].map(field => [field, source[field] ?? null])) } };
+  });
+}
+
 function checkRow(consumer, unit, row) {
   const key = `${normalizeFile(unit.sourceFile)}#${Number(row.ordinal)}`;
   const resolved = consumer.resolvedBySource.get(key);
@@ -379,7 +428,31 @@ function checkRow(consumer, unit, row) {
   // REVIEW2 may also register a judged tag/difficulty value over the exam file's inline value; the registrar records the source value in receipt.sourceValueOverrides.
   // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
   // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
-  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && (f === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(f))));
+  const difficulty = unit.kind === "difficulty5-ratings" ? row.difficultyProjection : null;
+  if (unit.kind === "difficulty5-ratings") {
+    if (!difficulty) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty projection missing" };
+    // Some auxiliary D5 fields are not exposed by the page. Their exact current
+    // metadata equivalence is already proven above; any exposed canonical value
+    // must agree too, while the bucket still takes the real page/query path below.
+    const mismatched = DIFFICULTY_FIELDS.filter(field => own(resolved, field) && !same(resolved[field], difficulty.values[field]));
+    if (mismatched.length) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty tuple != canonical consumer: " + mismatched.join(",") };
+  }
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(field => {
+    if (unit.approvalType === "REVIEW2" && (field === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(field))) return false;
+    let reason = null;
+    if (difficulty?.semanticPending && ["tagConfidence", "tagStatus"].includes(field) &&
+        same(resolved[field], difficulty.currentTags[field]) && difficulty.sourceAnnotations[field] !== null &&
+        !same(difficulty.sourceAnnotations[field], difficulty.currentTags[field]))
+      reason = "SEMANTIC_REVIEW_PENDING_UNCHANGED";
+    if (field === "legacyLevelCompatibility" && difficulty?.ordinaryNormalization &&
+        same(resolved[field], difficulty.values[field]) && difficulty.sourceAnnotations[field] !== null &&
+        !same(difficulty.sourceAnnotations[field], difficulty.values[field]))
+      reason = "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION";
+    if (!reason) return true;
+    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty.sourceAnnotations[field],
+      canonicalValue: resolved[field], semanticApproval: false });
+    return false;
+  });
   if (blockingConflicts.length)
     return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
@@ -520,7 +593,7 @@ function preservedBasicRows(root, unit, consumer) {
 export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scopedPaths = [] }) {
   let mainSha = "UNKNOWN";
   try { mainSha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(); } catch { /* not a git checkout */ }
-  const result = { status: "PASS", mainSha, counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], failures: [], unobservedFields: [], solverOnlyRevisions: [], assignmentPending: [] };
+  const result = { status: "PASS", mainSha, counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], failures: [], unobservedFields: [], solverOnlyRevisions: [], assignmentPending: [], metadataConflictAdvisories: [] };
   const inputs = [...requestPaths, ...scopedPaths];
   if (!inputs.length) { result.status = "FAIL"; result.failures.push({ exam: "-", qid: "-", uid: "-", reason: "NO_INPUT", detail: "no --request/--scoped given" }); return result; }
   const units = [];
@@ -566,6 +639,16 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       }
     }
     if (!sourceBound) continue;
+    if (unit.kind === "difficulty5-ratings") {
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.semanticApproval = false;
+      try { rows = verifiedDifficultyRows(root, unit, consumer); summary.officialDifficultyTuplesVerified = rows.length; }
+      catch (error) {
+        summary.checked = rows.length; result.counts.checked += rows.length;
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "VALUE_MISMATCH", detail: "official difficulty projection failed: " + error.message });
+        continue;
+      }
+    }
     if (unit.kind === "native-authority-withdrawal") {
       summary.checked = rows.length; result.counts.checked += rows.length;
       summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.withdrawnMetadataApprovals = 0;
@@ -653,6 +736,8 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       if (checked.reason) result.failures.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid || row.uid || "-", reason: checked.reason, detail: checked.detail || "" });
       else { summary.passed++; result.counts.passed++; }
       if (checked.assignmentPending && !checked.reason) result.assignmentPending.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, reason: checked.assignmentPending });
+      for (const advisory of checked.metadataConflictAdvisories || [])
+        result.metadataConflictAdvisories.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, ...advisory });
       if (checked.solverOnlyRevision) result.solverOnlyRevisions.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid });
       if (checked.unobserved?.length) result.unobservedFields.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, fields: checked.unobserved });
     }
@@ -670,10 +755,13 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 export function renderSummary(result) {
   const c = result.counts;
   const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation", "native-authority-withdrawal"].includes(e.kind));
-  const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
+  const difficulty = result.exams.some(e => e.kind === "difficulty5-ratings");
+  const verification = preservation || difficulty;
+  const lines = [verification ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
-    lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
+    lines.push(`PASS: changed ${c.passed}/${c.changed} ${verification ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
     if (preservation) lines.push("These operations verify consumer state and create no new metadata or exam approval.");
+    if (difficulty) lines.push("D5 rows verify the official four-field difficulty projection and the page bucket/query; they do not grant semantic, PT/TPL or source approval.");
   } else {
     lines.push(`FAIL: changed ${c.changed}, checked ${c.checked}, passed ${c.passed}, skippedUnchanged ${c.skippedUnchanged}, main \`${result.mainSha}\`.`, "",
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
@@ -697,6 +785,8 @@ export function renderSummary(result) {
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);
     lines.push("", `Informational: ${result.assignmentPending.length} row(s) with canonical L1/L2 assignment not approved; outside this request's changed fields: ${[...byExam].map(([exam, qids]) => `${exam} ${qids.join(", ")}`).join("; ")}.`);
   }
+  for (const row of result.metadataConflictAdvisories || [])
+    lines.push(`Retained annotation conflict: ${row.exam} Q${row.qid} ${row.field}: ${row.reason}; no semantic approval.`);
   if (result.solverOnlyRevisions?.length) lines.push("", `Solver-only revisions since review (body fingerprint still bound; informational): ${result.solverOnlyRevisions.map(r => `Q${r.qid}`).join(", ")}.`);
   if (result.unobservedFields.length) lines.push("", `Fields not exposed by the consumer (informational): ${result.unobservedFields.length} row(s).`);
   return lines.join("\n") + "\n";
