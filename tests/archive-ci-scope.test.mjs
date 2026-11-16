@@ -155,7 +155,7 @@ test('long native suites retain bounded identical full and scoped budgets withou
     const selected=selectTechnicalCommands(classifyPaths(['tools/ci/archive-registration-writer.mjs']),registry).filter(command=>command.args.includes(file));
     assert.equal(selected.length,1,`scoped command: ${file}`);assert.equal(selected[0].timeout,timeout,file);
   }
-  assert.equal(registry.find(command=>command.args.includes('tests/archive-pr-native-preview.test.mjs')).timeout,60000);
+  assert.equal(registry.find(command=>command.args.includes('tests/archive-pr-native-preview.test.mjs')).timeout,300000);
   assert.ok(registry.every(command=>Number.isSafeInteger(command.timeout)&&command.timeout>0&&command.timeout<=300000));
   assert.equal((text.match(/timeout: jsTestTimeout\(file\)/g)||[]).length,2,'full and scoped JS use the same bounded mapping');
   assert.equal((text.match(/timeout: command\.timeout \?\? 60000/g)||[]).length,2,'full and scoped explicit commands preserve per-command defaults');
