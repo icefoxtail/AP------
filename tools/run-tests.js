@@ -42,6 +42,10 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-type-judgment-tools.test.mjs',
+    args: ['--test', 'tests/archive-type-judgment-tools.test.mjs']
+  },
+  {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
   },

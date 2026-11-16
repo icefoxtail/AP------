@@ -134,3 +134,8 @@
 - **무엇:** `archive/tools/meta-foundation/source-delta.mjs`는 같은 문항의 옛 본문과 현재 본문을 비교해 무엇이 바뀌었는지 판정하는 순수 모듈이다(`UNCHANGED`·`FIGURE`·`NOTATION`·`SOLUTION`·`STEM_EDIT`·`ANSWER`·`REPLACED`·`NUMBER_MISMATCH`). 지문 계산식은 기존 등록기와 글자 그대로 같고, `NOTATION`은 코드에 이유와 함께 적힌 명시 규칙만 같게 본다(애매하면 아님). 이유: 그림 교체·본문 오류 수정으로 지문이 어긋난 문항의 메타를 떼지 않고, 변경 종류를 꼬리표로 남기는 재결속의 첫 단계다.
 - **보고 도구:** `node archive/tools/meta-foundation/source-delta-report.mjs --scope <시험지 경로 접두어> --out <저장소 밖 경로>`는 읽기 전용이며 어긋난 문항마다 git 이력에서 옛 blob을 찾아 분류를 집계한다. 보고서는 Git에 두지 않는다(저장소 안 출력은 거부). `REPLACED` 임계값(`REPLACED_RECALL_THRESHOLD`)은 표본 약 20건으로 정한 값이고 전수 보고로 보정한다.
 - 이 PR 시점에서 등록기·빌더·화면 코드는 이 모듈을 쓰지 않는다. 검사: `tests/archive-source-delta.test.mjs`.
+
+유형 직접 판정 준비는 읽기 전용 도구를 쓴다. 이유: 후보 목록·근거 원장을 준비하되 승인·등록과 혼동하지 않기 위해서다.
+`node archive/tools/type-judgment/options.mjs --curriculum 2015 --course 중3-1 --unit M3-01 --format md`로 범위 후보를 본다.
+`node archive/tools/type-judgment/options.mjs --exam archive/exams/<시험지>.js --out /tmp/type-workload.json`은 원문 없는 일감을 만든다(출력은 저장소 밖 새 파일만).
+`node archive/tools/type-judgment/check-ledger.mjs --ledger /tmp/ledger.json --compare /tmp/other.json --strict`로 근거·키·연결과 일치를 검사한다. `NEEDS_BINDING`은 승인이나 자동 추가가 아니다.
