@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {loadBank} from '../build-visual-render-matrix.mjs';
 import {bytesSha} from '../../pipeline-core/canonical.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {typesetter} from './typography.mjs';
@@ -77,13 +78,40 @@ function sourceFormulas(question,translated,quadrilateral){
   return {stem,exp,log,line};
 }
 
-function sourceRaster(plan,repoRoot,stem){
+// Only this exact previously reviewed image-slot replacement is authorized.
+// Its pre-replacement PNG-linked question and current JS/SVG are separately pinned.
+const approvedImageSource=Object.freeze({
+  uid:'22_제일고_1학기_중간_고2_수학I|18',
+  source:'archive/exams/original/high/h2/1mid/22_제일고_1학기_중간_고2_수학I.js',
+  sourceSha:'799fa38225e8f2e6c1ceb429cca9eeb977112d8c98fe6818d151022d8e247da8',
+  svg:'assets/images/22_제일고_1학기_중간_고2_수학I/q18-problem-v1.svg',
+  svgSha:'5e00546adaf62812d3617babf9566ecc973bfff07ac7d95d443617b2dab3a51a',
+  png:'archive/assets/images/22_제일고_1학기_중간_고2_수학I/q18.png',
+  pngSha:'91340bda760e30191e4e71fdeb4aefc8128532789f0f119110e63c4891419339',
+});
+function imageSourceApproved(plan,repoRoot,question,identity){
+  const a=approvedImageSource;
+  if(identity?.surface!=='PROBLEM_VISUAL'||identity.visualRole!=='image'||identity.questionUid!==a.uid||
+     question?.id!==18||question.image!==a.svg||plan.sourceAsset!==a.png||plan.sourceSha256!==a.pngSha)return false;
+  const source=fs.readFileSync(path.resolve(repoRoot,a.source));
+  if(plainSha(source)!==a.sourceSha)return false;
+  const saved=loadBank(source.toString('utf8'))[17];
+  if(JSON.stringify(saved)!==JSON.stringify(question))return false;
+  const images=fs.realpathSync(path.resolve(repoRoot,'archive/assets/images'));
+  const svg=fs.realpathSync(path.resolve(repoRoot,'archive',a.svg));
+  const rel=path.relative(images,svg);
+  if(rel.startsWith('..')||path.isAbsolute(rel))return false;
+  return plainSha(fs.readFileSync(svg))===a.svgSha;
+}
+
+function sourceRaster(plan,repoRoot,stem,question,identity){
   if(typeof plan.sourceAsset!=='string'||
     !/^archive\/assets\/images\/[^/\\:\u0000-\u001f]+\/[^/\\:\u0000-\u001f]+\.png$/.test(plan.sourceAsset)||
     path.posix.normalize(plan.sourceAsset)!==plan.sourceAsset||
     !/^[a-f0-9]{64}$/.test(plan.sourceSha256??''))refuse('SCHEMATIC_INVALID_SOURCE_REFERENCE');
   const src=[...stem.matchAll(/<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/gi)].map(x=>x[1]);
-  if(src.length!==1||src[0]!==plan.sourceAsset.slice('archive/'.length))refuse('SCHEMATIC_SOURCE_NOT_BOUND_TO_QUESTION');
+  if((src.length!==1||src[0]!==plan.sourceAsset.slice('archive/'.length))&&
+     !(src.length===0&&imageSourceApproved(plan,repoRoot,question,identity)))refuse('SCHEMATIC_SOURCE_NOT_BOUND_TO_QUESTION');
   const abs=path.resolve(repoRoot,plan.sourceAsset),images=fs.realpathSync(path.resolve(repoRoot,'archive/assets/images'));
   const rel=path.relative(images,fs.realpathSync(abs));
   if(rel.startsWith('..')||path.isAbsolute(rel))refuse('SCHEMATIC_INVALID_SOURCE_REFERENCE');
@@ -219,7 +247,8 @@ function outputFrame(raster,view,drawnPaths){
 
 export function prepareSourceSchematic(plan,{repoRoot,question,identity,typography}){
   const quadrilateral=plan?.capability===QUADRILATERAL_CAPABILITY;
-  if(!keys(plan,['capability','sourceAsset','sourceSha256','paths','labelOrigins',...(quadrilateral?['view']:[])])||
+  if(!keys(plan,['capability','sourceAsset','sourceSha256','paths','labelOrigins',...(quadrilateral?['view']:[]),...(Object.hasOwn(plan??{},'caption')?['caption']:[])])||
+    (Object.hasOwn(plan??{},'caption')&&(typeof plan.caption!=='string'||!plan.caption.trim()))||
     !isSourceSchematicCapability(plan.capability))refuse('SCHEMATIC_INVALID_PLAN');
   if(identity?.surface!=='PROBLEM_VISUAL'||!['body','image'].includes(identity.visualRole)||
     identity.assetId!==assetIdentity(identity.questionUid,identity.surface,identity.visualRole).assetId)
@@ -227,7 +256,7 @@ export function prepareSourceSchematic(plan,{repoRoot,question,identity,typograp
   const ordinal=question?.id??question?.qid??question?.number;
   if(!Number.isSafeInteger(ordinal)||!identity.questionUid.endsWith('|'+ordinal))refuse('SCHEMATIC_SOURCE_ORDINAL_MISMATCH');
   const translated=plan.capability===TRANSLATED_LOG_CAPABILITY;
-  const formulas=sourceFormulas(question,translated,quadrilateral),raster=sourceRaster(plan,repoRoot,formulas.stem);
+  const formulas=sourceFormulas(question,translated,quadrilateral),raster=sourceRaster(plan,repoRoot,formulas.stem,question,identity);
   const curveIds=translated?['logOriginal','logShifted']:['exponential','logarithm'];
   const {points,coverage,drawnPaths}=geometry(plan.paths,raster,curveIds,translated,quadrilateral);
   const frame=quadrilateral?outputFrame(raster,plan.view,drawnPaths):raster;

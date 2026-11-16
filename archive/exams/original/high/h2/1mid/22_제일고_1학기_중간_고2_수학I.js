@@ -694,7 +694,11 @@ window.questionBank = [
       "examUid": "22_제일고_1학기_중간_고2_수학I",
       "sourceQid": 14,
       "sourceOnlySha256": "a1f77104bb62161de578fefa269f3242cc742e968b9325a17ad990a9b109d30b"
-    }
+    },
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 제4사분면의 점 P(4,−4)와 원점 O를 잇고, P에서 x축에 내린 수선으로 직각삼각형을 만든다. 두 직각변에는 같은 길이 눈금이 있다.",
+    "solutionImageCaption": "tanθ=−1이고 a>0이므로 a=4이다. 따라서 cosθ=1/√2, sinθ=−1/√2이고 cosθ−sinθ=√2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -746,7 +750,7 @@ window.questionBank = [
   {
     "id": 16,
     "questionType": "객관식",
-    "content": "함수 $f(x)=\\sin\\frac{\\pi}{2}x$ ($x \\ge 0$)의 그래프와 직선 $y=\\frac{2}{3}$가 만나는 점의 $x$좌표를 작은 것부터 차례대로 $\\alpha, \\beta, \\gamma$라 할 때, $f(\\alpha+\\beta+\\gamma+2) + f(\\beta+\\gamma-1)$의 값은? [5.2점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_제일고_1학기_중간_고2_수학I/q16.png\" class=\"exam-img\"></div>",
+    "content": "함수 $f(x)=\\sin\\frac{\\pi}{2}x$ ($x \\ge 0$)의 그래프와 직선 $y=\\frac{2}{3}$가 만나는 점의 $x$좌표를 작은 것부터 차례대로 $\\alpha, \\beta, \\gamma$라 할 때, $f(\\alpha+\\beta+\\gamma+2) + f(\\beta+\\gamma-1)$의 값은? [5.2점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_제일고_1학기_중간_고2_수학I/q16.png\" class=\"exam-img\" alt=\"사인곡선 y=f(x)의 높이 1과 −1을 점선으로 표시했다. 수평선 y=2/3과 만나는 세 점의 x좌표가 왼쪽부터 α, β, γ다. α와 γ는 오르는 구간, β는 내려가는 구간에 놓인다.\"></div>",
     "choices": [
       "$\\frac{5}{3}$",
       "2",
@@ -797,7 +801,7 @@ window.questionBank = [
   {
     "id": 17,
     "questionType": "객관식",
-    "content": "그림은 함수 $y=a\\sin(bx-c)$의 그래프이다. $a > 0, b > 0, c > 0$일 때, $abc$의 최솟값은? [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_제일고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\"></div>",
+    "content": "그림은 함수 $y=a\\sin(bx-c)$의 그래프이다. $a > 0, b > 0, c > 0$일 때, $abc$의 최솟값은? [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_제일고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\" alt=\"사인곡선의 최고점은 x=11π/6에서 y=3이고, 그 다음 최저점은 x=29π/6에서 y=−3이다. 위·아래와 두 x좌표가 점선으로 표시되어 있다.\"></div>",
     "choices": [
       "$\\pi$",
       "$2\\pi$",
@@ -848,7 +852,10 @@ window.questionBank = [
   {
     "id": 18,
     "questionType": "객관식",
-    "content": "1보다 큰 실수 $a$에 대하여 함수 $y=a^x+3$의 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 함수 $y=\\log_a(x-1)$의 그래프가 $x$축과 만나는 점을 $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $y$축에 수직인 직선이 함수 $y=\\log_a(x-1)$의 그래프와 만나는 점을 $\\mathrm{C}$, 점 $\\mathrm{B}$를 지나고 $x$축에 수직인 직선이 함수 $y=a^x+3$의 그래프와 만나는 점을 $\\mathrm{D}$라 하자. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, $\\overline{\\mathrm{CD}}^2$의 값은? [5.3점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_제일고_1학기_중간_고2_수학I/q18.png\" class=\"exam-img\"></div>",
+    "content": "1보다 큰 실수 $a$에 대하여 함수 $y=a^x+3$의 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 함수 $y=\\log_a(x-1)$의 그래프가 $x$축과 만나는 점을 $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $y$축에 수직인 직선이 함수 $y=\\log_a(x-1)$의 그래프와 만나는 점을 $\\mathrm{C}$, 점 $\\mathrm{B}$를 지나고 $x$축에 수직인 직선이 함수 $y=a^x+3$의 그래프와 만나는 점을 $\\mathrm{D}$라 하자. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, $\\overline{\\mathrm{CD}}^2$의 값은? [5.3점]",
+    "image": "assets/images/22_제일고_1학기_중간_고2_수학I/q18-problem-v1.svg",
+    "imageAlt": "좌표평면에서 지수곡선 y=a^x+3의 세로축 교점이 A이고, 로그곡선 y=logₐ(x−1)의 가로축 교점이 B이다. A에서 오른쪽으로 그은 수평선이 로그곡선과 만나는 점이 C, B에서 위로 그은 수직선이 지수곡선과 만나는 점이 D이다. 네 점을 이은 사각형 ABCD가 표시되어 있다.",
+    "imageSize": "tall",
     "choices": [
       "67",
       "68",
