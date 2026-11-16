@@ -245,6 +245,31 @@ function validateReview(reader, ref, binding) {
   if(row.bindingSha256!==sha(stable(binding)))fail('DISPLAY_REVIEW_BINDING');
   return row;
 }
+function verifyUiCheckoutContinuity(reader, claim, {technical,questionUid,sourceOrdinal,surface,sourceRef,assetRefs}) {
+  // Separate captures may use different actual checkouts. This named claim
+  // joins only identical complete source/asset bytes; the original technical
+  // and visual records are passed unchanged to the existing UI verifier.
+  exact(claim,['schemaVersion','questionUid','sourceOrdinal','surface','capturedSourceRef','capturedAssetRefs',
+    'currentSourceRef','currentAssetRefs'],'UI_CHECKOUT_CONTINUITY');
+  if(claim.schemaVersion!=='archive-existing-vector-ui-checkout-continuity-v1'||claim.questionUid!==questionUid||
+     claim.sourceOrdinal!==sourceOrdinal||claim.surface!==surface||!['PROBLEM','SOLUTION'].includes(surface)||
+     !sameRef(claim.currentSourceRef,sourceRef)||!eq(claim.currentAssetRefs,assetRefs)||
+     !object(claim.capturedSourceRef)||claim.capturedSourceRef.commit===sourceRef.commit||
+     claim.capturedSourceRef.commit!==technical.checkoutCommit||!Array.isArray(claim.capturedAssetRefs)||
+     claim.capturedAssetRefs.length!==assetRefs.length||!Array.isArray(technical.results))fail('UI_CHECKOUT_SCOPE');
+  const captured=technical.results.filter(r=>r.questionUid===questionUid&&r.sourceOrdinal===sourceOrdinal&&r.surface===surface);
+  if(captured.length!==(surface==='PROBLEM'?2:1)||captured.some(r=>!sameRef(r.sourceRef,claim.capturedSourceRef)||
+     !eq(r.assetRefs,claim.capturedAssetRefs)))fail('UI_CHECKOUT_CAPTURE_BINDING');
+  const sameBytes=(before,current)=>{
+    if(!object(before)||before.commit!==technical.checkoutCommit||before.path!==current.path||
+       before.gitBlobSha1!==current.gitBlobSha1||before.sha256!==current.sha256||before.bytes!==current.bytes)fail('UI_CHECKOUT_BYTES');
+    const capturedRaw=reader.read(before),currentRaw=reader.read(current,true);
+    if(!Buffer.isBuffer(capturedRaw)||!Buffer.isBuffer(currentRaw)||!capturedRaw.equals(currentRaw))fail('UI_CHECKOUT_BYTES');
+  };
+  sameBytes(claim.capturedSourceRef,sourceRef);
+  for(let i=0;i<assetRefs.length;i++)sameBytes(claim.capturedAssetRefs[i],assetRefs[i]);
+  return {sourceRef:claim.capturedSourceRef,assetRefs:claim.capturedAssetRefs};
+}
 function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loadBank,safe}) {
   const doc=entry.doc,reader=entry.reader;
   exact(doc,['schemaVersion','scope','sourceArchiveFile','questionUid','sourceOrdinal','sourceQuestionNo','sourceQuestionCount',
@@ -327,7 +352,8 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
   let inlineKind='NONE',uiCases=0,uiTiles=0;
   for(const surface of surfaces) {
     const review=unique(doc.displayReviews,x=>x.surface===surface,'DISPLAY_SURFACE');
-    exact(review,['surface','independentRef','technicalRef','visualRef'],'DISPLAY_REFS');
+    const continuedCheckout=own(review,'uiCheckoutContinuity');
+    exact(review,['surface','independentRef','technicalRef','visualRef',...(continuedCheckout?['uiCheckoutContinuity']:[])],'DISPLAY_REFS');
     const keys=surface==='PROBLEM'?PROBLEM_ASSETS:SOLUTION_ASSETS;
     const oldPaths=new Set(sourceRefs(p.q,keys)),newPaths=new Set(sourceRefs(cur.q,keys));
     const surfaceRefs=(all,paths)=>{const map=new Map(all.map(r=>[r.path,r])),pending=[...paths],seen=new Set();while(pending.length){const p=pending.shift();if(seen.has(p))continue;seen.add(p);const r=map.get(p);if(!r)fail('SURFACE_ASSET');pending.push(...nestedAssets(reader.read(r),p));}return all.filter(r=>seen.has(r.path));};
@@ -337,8 +363,12 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
     const row=validateReview(reader,review.independentRef,binding);
     if(surface==='PROBLEM')inlineKind=row.contentEditKind;
     else if(row.contentEditKind!=='NONE')fail('SOLUTION_CONTENT_EDIT');
-    const ui=verifyUi({technical:reader.json(review.technicalRef),visual:reader.json(review.visualRef),technicalRef:review.technicalRef,
-      readRef:ref=>reader.read(ref),questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,sourceRef:doc.currentSourceRef,assetRefs:currentAssets});
+    const technical=reader.json(review.technicalRef),visual=reader.json(review.visualRef);
+    const currentUi={sourceRef:doc.currentSourceRef,assetRefs:currentAssets};
+    const capturedUi=continuedCheckout?verifyUiCheckoutContinuity(reader,review.uiCheckoutContinuity,
+      {technical,questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,...currentUi}):currentUi;
+    const ui=verifyUi({technical,visual,technicalRef:review.technicalRef,readRef:ref=>reader.read(ref),
+      questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,...capturedUi});
     uiCases+=ui.logicalCases;uiTiles+=ui.originalTiles;
   }
   if(changes.some(c=>c.field==='content')===(inlineKind==='NONE'))fail('CONTENT_REVIEW_KIND');
@@ -364,4 +394,4 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
     logicalUiCases:uiCases,originalUiTiles:uiTiles,observed:[...reader.observed],
     ref:{path:entry.path,sha256:entry.sha256},approvalEffect:SCOPE,newFourSlotVector:0,newSemanticApproval:0};
 }
-module.exports={DIR,SCHEMA,SCOPE,REVIEW_SCHEMA,collect,verify,displayBinding,ownChanges,fields,vector,stable,sha,identityHash};
+module.exports={DIR,SCHEMA,SCOPE,REVIEW_SCHEMA,collect,verify,verifyUiCheckoutContinuity,displayBinding,ownChanges,fields,vector,stable,sha,identityHash};

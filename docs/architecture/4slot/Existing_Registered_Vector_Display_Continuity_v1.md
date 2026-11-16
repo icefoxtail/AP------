@@ -40,6 +40,33 @@ Both require `UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES`, at most 8 original tile
 
 Problem and solution observations are separate surfaces. Private solution review documents, original PNGs and references remain in the root/registrar review lane; they do not belong in blind problem review packets or shared checkpoints.
 
+### Explicit continuity between actual capture checkouts
+
+When separately accepted problem and solution captures use different actual
+Git checkouts, the selected `displayReviews` entry may declare
+`uiCheckoutContinuity`. Its closed shape is `{schemaVersion, questionUid,
+sourceOrdinal, surface, capturedSourceRef, capturedAssetRefs, currentSourceRef,
+currentAssetRefs}` with schema
+`archive-existing-vector-ui-checkout-continuity-v1`. Every source and asset
+reference retains the ordinary five exact Git/raw/length fields.
+
+The claim must identify this exact UID, ordinal and surface. Its current refs
+must equal the carrier's current source and complete selected surface-asset
+inventory. Its captured refs must equal every matching result in the original
+technical capsule and belong to that actual capture checkout. Source paths,
+whole source bytes, and every surface asset's path and bytes must be identical
+across the two commits; the current files are also checked live. This includes
+nested SVG dependencies. A selected-question comparison cannot replace the
+whole source comparison.
+
+Only after these checks does the unchanged UI verifier consume the original
+capture refs. Technical/visual documents, PNGs, capture hashes and checkout
+identities are never rewritten or normalized. Missing, null, unknown,
+unnecessary same-checkout, foreign-surface, incomplete-inventory or changed-byte
+claims are refused. Without this explicit claim the original exact selected-ref
+rule applies. Historical registration, ancestry, native authority, current
+metadata/identity, vectors and caught-up deletion checks are unchanged.
+
 ## Named orphan-UID continuity
 
 An old embedded orphan UID is supported only by `archive-existing-registered-orphan-uid-display-continuity-v1` for the exact selected UID and ordinal. The prior published row must already have passed `VERIFIED_ORPHAN_UID_RECONCILIATION`. Its original embedded UID and whole existing reconciliation record remain unchanged, the orphan is absent from global canonical identities, and the prior identity fingerprint equals the recomputed historical question fingerprint. The current fingerprint is recomputed from the current question. The global identity map is never rewritten or normalized.
