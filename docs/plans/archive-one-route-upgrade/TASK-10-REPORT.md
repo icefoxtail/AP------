@@ -1917,3 +1917,20 @@
 - `m3-2final.jsonl`: 기존 585행 보존 + 신규 357행 = **942행 / 43시험지**. PICK 760 / NEW_KEY 181 / HOLD 1. check PASS 225 / PT_ONLY 125 / OUT_OF_CANDIDATES 70 / TOOL_ERROR 522. commit `324208f4cd1e7ddcd514acf1512099000a55df9e`, blob `4c6c3eb79c7df70abd4c4e27191c56ad71486643`.
 - 이번 신규 저장 합계 **766행**. 각 결과표 UID 중복 0이며, 두 파일 모두 원격 readback 내용이 저장 내용과 완전히 일치함을 확인했다. 전체 C 브랜치 누적 수치는 이번에 전수 재집계하지 않았으므로 갱신하지 않는다.
 - 미반영 차이 1건: `qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1`은 원격에서 HOLD이며 그대로 보존했다. 로컬 보정은 편차의 도수가중합이 -4≠0이라는 원문 모순을 note에 유지하되, 편차제곱의 도수가중평균이라는 풀이 구조로 `PT_M3_DISPERSION_FREQUENCY_TABLE` / `TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE`을 PICK하는 내용이다. 이번 신규행 append에서는 기존행을 바꾸지 않았으므로 해당 보정은 미반영 상태다.
+
+
+### 추가 체크포인트: 중3 1학기 중간 유사 5시험지
+- 23 왕운중 유사1·2·3, 23 풍덕중 유사1·2: 각 24문항, **5시험지 120행 신규 저장**. 결과 파일 `type-results-c/similar-m3-1mid.jsonl`. PICK 114 / NEW_KEY 6 / HOLD 0. check PASS 66 / PT_ONLY 47 / OUT_OF_CANDIDATES 1 / TOOL_ERROR 6.
+- C commit `972917010a9e1fc022affc4ef782741c61971b96`, blob `a798d486a3b2502752021a7cbe8e84fa26fcab41`. 원격 readback 120행 및 내용 완전 일치 확인.
+- 최신 main `56b9da73484799c7b6b47965ae6fc4cec4216fac`의 승인 boolean·문항 식별자를 대조해 120/120 미승인·식별자 일치를 확인했고, 원문 5파일 blob 동일 및 기존 C 결과 전체와 UID 중복 0을 확인했다. ACTIVE PT 및 TPL 부모관계 직접 검사 오류 0. 기존 판정값을 참고하지 않고 원문·해설을 읽어 판정했으며, 왕운중 유사1 19·23번 인라인 SVG를 렌더해 직접 보았다. 기존 결과·정본·main 변경 및 PR 생성 없음.
+- 도구와 판정의 분리: PT만 맞는 47행은 PICK/tpl=null로 기록했다. NEW_KEY 6행은 신규 PT 제안에 기존 parent PT를 요구하는 `PT_NOT_ACTIVE` 및 같은 이름 반복의 `DUPLICATE_PROPOSED_NAME` 검사 문제를 check/note에 남겼으며, 이 때문에 HOLD로 바꾸지 않았다.
+
+#### 새 키 제안 묶음
+- **이름:** 제곱근표의 읽기와 소수점 환산.
+- **정의:** 표의 행·열에서 제곱근 근삿값을 읽거나, 근호 안의 100배와 근호 밖의 10배 관계를 이용하여 소수점 위치를 환산한다.
+- **문항 수:** 6문항.
+- **대표 3문항:** `archive/exams/similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사1.js` 5번(표 직접 읽기), 같은 파일 6번(소수점 환산), `archive/exams/similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사2.js` 6번(근호 안 100배 환산).
+
+#### 원문 의심 (유형 판정과 별개)
+1. **왕운중 유사1 20번:** 인수분해의 계수 범위가 명시되지 않았고 해설은 `(px+1)(x+q)`만 가능하다고 주장하나 `(px+q)(x+1)` 형태도 가능하여 논증이 불완전하다. 원문·정답은 수정하지 않았다.
+2. **왕운중 유사3 5·6번:** 제곱근표의 근삿값을 정확한 등식으로 써서 정확한 방정식의 해와 어림값을 혼용한다. 유형은 제곱근표의 소수점 환산으로 판정하고 원문 의심만 별도 기록했다.
