@@ -215,7 +215,7 @@ window.questionBank = [
       "원주각",
       "접선"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q05.png",
+    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
