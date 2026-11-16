@@ -1,0 +1,57 @@
+name: Archive M2S1 text3 Problem Display UI Evidence
+
+on:
+  push:
+    branches: ['review-reference/m2s1-text3-problem-current-ui-20261116']
+    paths:
+      - '.github/workflows/archive-m2s1-text3-problem-ui.yml'
+      - 'tools/check-m2s1-text3-problem-browser.cjs'
+      - 'tools/m2s1-text3-problem-capture.cjs'
+      - 'tools/m2s1-problem-capture-diagnostic.cjs'
+      - 'tests/m2s1-text3-problem-capture.test.cjs'
+      - 'tools/check-reviewed-problem-renderer-browser.cjs'
+      - 'tests/archive-m2s1-text3-problem-ui.test.js'
+      - 'tests/fixtures/archive-m2s1-text3-problem-ui.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  problem-ui:
+    name: Exact three M2S1 text3 problem renderers in current student UI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify the closed three-item problem capture contract
+        run: node --test tests/archive-m2s1-text3-problem-ui.test.js tests/m2s1-text3-problem-capture.test.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/m2s1-text3-problem-ui-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture exact original problem scroll tiles
+        env:
+          ARCHIVE_M2S1_TEXT3_PROBLEM_UI_EXPECTED_SHA: ${{ github.sha }}
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/m2s1-text3-problem-ui-browser/node_modules
+        run: node tools/check-m2s1-text3-problem-browser.cjs --output "$RUNNER_TEMP/m2s1-text3-problem-current-ui"
+      - name: Preserve original problem evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2s1-text3-problem-current-ui-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/m2s1-text3-problem-current-ui/
+          if-no-files-found: warn
+          retention-days: 14
