@@ -1,4 +1,46 @@
 {
-  "status": "EXEMPT",
-  "reason": "학생형 단계 해설은 텍스트·수식으로 제공; 별도 해설 그림 필요성 재검토 대기"
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "SPHERE",
+      "radius": 3
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 8
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "center"
+    },
+    {
+      "solid": "s2",
+      "height": true
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom"
+    }
+  ],
+  "caption": "양 끝의 반구 2개를 합치면 반지름 3cm인 구 1개가 되고, 가운데는 밑면의 반지름 3cm, 높이 8cm인 원기둥이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 3cm인 반구 2개와 밑면 반지름 3cm, 높이 8cm인 원기둥이 결합된 입체",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "반구 2개를 합친 구 1개",
+    "원기둥의 반지름 3cm와 높이 8cm"
+  ],
+  "solidCaption": {
+    "text": "반구 2개를 합친 구 1개와 원기둥"
+  }
 }

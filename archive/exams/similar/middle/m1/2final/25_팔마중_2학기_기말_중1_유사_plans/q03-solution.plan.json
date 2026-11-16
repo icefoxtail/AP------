@@ -1,4 +1,406 @@
 {
-  "status": "EXEMPT",
-  "reason": "학생형 단계 해설은 텍스트·수식으로 제공; 별도 해설 그림 필요성 재검토 대기"
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 원의 반지름과 중심 사이의 거리가 같으므로",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "id": "O",
+        "op": "SOURCE_POINT"
+      },
+      {
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "id": "O2",
+        "op": "SOURCE_POINT"
+      },
+      {
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "X",
+        "op": "TRANSLATE_POINT"
+      },
+      {
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN",
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS"
+      },
+      {
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN",
+        "id": "cO2",
+        "op": "CIRCLE_CENTER_RADIUS"
+      },
+      {
+        "inputs": [
+          "O2",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "id": "P",
+        "op": "POLAR_POINT"
+      },
+      {
+        "inputs": [
+          "O2",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "R60",
+        "op": "POLAR_POINT"
+      },
+      {
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "R0",
+        "op": "SOURCE_POINT"
+      },
+      {
+        "inputs": [
+          "O2",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "Q",
+        "op": "POLAR_POINT"
+      },
+      {
+        "inputs": [
+          "O2",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "R240",
+        "op": "POLAR_POINT"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "O2",
+    "P",
+    "R60",
+    "R0",
+    "Q",
+    "R240"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cO",
+    "cO2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOO2",
+      "refs": [
+        "O",
+        "O2"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sO2P",
+      "refs": [
+        "O2",
+        "P"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "aOP",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "O",
+        "to": "P",
+        "side": "MINOR",
+        "color": "WARM"
+      },
+      {
+        "id": "aP60",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "P",
+        "to": "R60",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "a600",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "R60",
+        "to": "R0",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "a0Q",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "R0",
+        "to": "Q",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "aQ240",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "Q",
+        "to": "R240",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "a240O",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "R240",
+        "to": "O",
+        "side": "MINOR",
+        "color": "BLUE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a60",
+        "refs": [
+          "O",
+          "O2",
+          "P"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a60b",
+        "refs": [
+          "P",
+          "O",
+          "O2"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tOO2",
+        "ownerSegment": "sOO2",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "tO2P",
+        "ownerSegment": "sO2P",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rSector",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O2",
+              "from": "O",
+              "to": "P",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "cO",
+        "points": [
+          "O2",
+          "P"
+        ]
+      },
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "cO2",
+        "points": [
+          "O",
+          "P"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sOO2",
+          "sO2P",
+          "sOP"
+        ]
+      }
+    ]
+  },
+  "pointNames": {
+    "O2": "O'"
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 520
+  },
+  "caption": "두 원의 반지름과 중심 사이의 거리가 모두 12cm이므로 삼각형 OO′P는 정삼각형이고 ∠OO′P=60°이다. 색칠한 부분의 둘레는 반지름 2개 12+12=24와 호 OP의 길이 4π를 더한 4π+24(cm)이므로 정답은 ③이다.",
+  "newVisualInformation": [],
+  "hiddenPointNames": [
+    "R60",
+    "R0",
+    "Q",
+    "R240"
+  ],
+  "hiddenPointStyle": "NONE"
 }

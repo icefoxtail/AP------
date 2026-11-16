@@ -1,4 +1,31 @@
 {
-  "status": "EXEMPT",
-  "reason": "구 겉넓이 공식 4*pi*r^2 적용 및 3회 절단 원형 단면 면적 누적 서술 문항"
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "SPHERE",
+      "radius": 4,
+      "cut": {
+        "kind": "SEVEN_EIGHTHS"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "center"
+    }
+  ],
+  "caption": "반지름 4cm인 구를 중심을 지나는 서로 수직인 세 평면으로 자를 때, 8조각 중 한 조각을 떼어 내어 단면이 드러난 모양.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름이 4cm인 구를 중심을 지나도록 서로 수직인 평면으로 3번 자른다",
+      "mappedTo": "solids+cut"
+    }
+  ],
+  "newVisualInformation": [
+    "중심을 지나는 서로 수직인 세 평면이 만드는 4분원 모양의 단면 3개"
+  ]
 }

@@ -1,4 +1,169 @@
 {
-  "status": "EXEMPT",
-  "reason": "대각선 분할 밑넓이 계산 및 기둥 부피 공식 연산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "2" },
+            { "kind": "integer", "value": "3" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "-5" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "6" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "2" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sAH", "refs": ["A", "H"], "dashed": true },
+    { "id": "sCK", "refs": ["C", "K"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "H", "K"],
+  "hiddenPointNames": ["H", "K"],
+  "rightAngles": [
+    { "id": "raH", "refs": ["A", "H", "D"] },
+    { "id": "raK", "refs": ["C", "K", "D"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "6",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "INLINE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAH",
+        "ownerSegment": "sAH",
+        "text": "3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCK",
+        "ownerSegment": "sCK",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 600
+  },
+  "caption": "대각선 BD의 양쪽에 꼭짓점 A와 C가 있는 사각형에서 대각선 BD와, A와 C에서 BD에 내린 수선 및 그 길이를 나타낸 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대각선 BD의 길이가 6 cm인 사각형 ABCD",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA", "sBD", "dBD"]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 ABD의 대각선 BD에 대한 높이가 3 cm",
+      "mappedTo": ["H", "sAH", "raH", "tAH"]
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 BCD의 대각선 BD에 대한 높이가 5 cm",
+      "mappedTo": ["K", "sCK", "raK", "tCK"]
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 BD를 사이에 두고 A는 위쪽, C는 아래쪽에 있는 볼록사각형",
+    "A와 C에서 BD에 내린 두 수선(AH, CK)과 수선의 발에서의 직각 표시",
+    "BD=6 cm와 두 수선의 길이 3 cm, 5 cm"
+  ]
 }

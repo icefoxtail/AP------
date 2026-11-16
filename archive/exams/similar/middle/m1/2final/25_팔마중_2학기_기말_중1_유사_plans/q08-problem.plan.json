@@ -1,4 +1,99 @@
 {
-  "status": "EXEMPT",
-  "reason": "정육면체 삼각뿔 절단 부피 비율 5/6 x^3 = 1440 방정식 역산 문항"
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "view": {
+    "yawDeg": -28
+  },
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "D",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "B",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": ["A", "B", "E"],
+      "fill": "WARM"
+    },
+    {
+      "polygon": ["A", "D", "E"],
+      "fill": "WARM"
+    },
+    {
+      "polygon": ["A", "B", "D"],
+      "fill": "WARM"
+    },
+    {
+      "polygon": ["B", "D", "E"],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AE",
+      "label": "x\\ \\mathrm{cm}",
+      "side": "LEFT",
+      "line": 1
+    }
+  ],
+  "marks": {
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": ["AB", "AD", "AE"]
+      }
+    ]
+  },
+  "caption": "정육면체에서 꼭짓점 A에 모인 세 모서리의 다른 쪽 끝점 B, D, E를 지나는 평면으로 A 쪽을 잘라 낼 때, 잘려 나갈 삼각뿔을 주황색으로 칠하고 단면의 세 변을 빨간색으로 나타낸 그림.",
+  "accessibilityDescription": "정육면체의 꼭짓점 A와 세 모서리의 끝점 B, D, E로 이루어진 삼각뿔을 주황색으로 칠하고, 단면 삼각형의 세 변을 빨간색으로 나타낸 그림.",
+  "sourceQuote": "잘라내고 남은 입체도형의 부피가",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체의 한 모서리의 길이는 x cm이다",
+      "mappedTo": ["AE"]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 A에 모인 세 모서리 AB, AD, AE의 길이가 같다",
+      "mappedTo": ["AB", "AD", "AE"]
+    },
+    {
+      "id": "c3",
+      "condition": "세 모서리의 다른 쪽 끝점 B, D, E를 지나는 평면으로 꼭짓점 A 쪽을 잘라 낸다",
+      "mappedTo": ["B", "D", "E"]
+    }
+  ],
+  "newVisualInformation": [
+    "잘려 나갈 삼각뿔을 주황색으로 칠해 나타냈다",
+    "단면 삼각형 BDE의 세 변 BD, DE, EB를 빨간색으로 나타냈다",
+    "꼭짓점 A에 모인 세 모서리에 같은 길이 눈금을 그렸다"
+  ]
 }

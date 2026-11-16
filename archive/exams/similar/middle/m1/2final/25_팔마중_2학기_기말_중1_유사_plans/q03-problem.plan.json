@@ -1,4 +1,270 @@
 {
-  "status": "EXEMPT",
-  "reason": "정삼각형 중심각 60도 호의 길이와 두 반지름의 합 둘레 연산 문항"
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 원의 반지름과 중심 사이의 거리가 같으므로",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "id": "O",
+        "op": "SOURCE_POINT"
+      },
+      {
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "id": "O2",
+        "op": "SOURCE_POINT"
+      },
+      {
+        "inputs": ["O2"],
+        "args": {
+          "dx": { "kind": "integer", "value": "1" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "X",
+        "op": "TRANSLATE_POINT"
+      },
+      {
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN",
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS"
+      },
+      {
+        "inputs": ["O2"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN",
+        "id": "cO2",
+        "op": "CIRCLE_CENTER_RADIUS"
+      },
+      {
+        "inputs": ["O2", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "120" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "id": "P",
+        "op": "POLAR_POINT"
+      },
+      {
+        "inputs": ["O2", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "R60",
+        "op": "POLAR_POINT"
+      },
+      {
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "24" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "R0",
+        "op": "SOURCE_POINT"
+      },
+      {
+        "inputs": ["O2", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "300" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "Q",
+        "op": "POLAR_POINT"
+      },
+      {
+        "inputs": ["O2", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "240" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "R240",
+        "op": "POLAR_POINT"
+      }
+    ]
+  },
+  "displayPoints": ["O", "O2", "P", "R60", "R0", "Q", "R240"],
+  "displayLines": [],
+  "displayCircles": ["cO", "cO2"],
+  "displaySegments": [
+    {
+      "id": "sOO2",
+      "refs": ["O", "O2"],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sO2P",
+      "refs": ["O2", "P"],
+      "emphasis": "BOLD"
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "aOP",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "O",
+        "to": "P",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "aP60",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "P",
+        "to": "R60",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "a600",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "R60",
+        "to": "R0",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "a0Q",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "R0",
+        "to": "Q",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "aQ240",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "Q",
+        "to": "R240",
+        "side": "MINOR",
+        "color": "BLUE"
+      },
+      {
+        "id": "a240O",
+        "circle": "cO2",
+        "center": "O2",
+        "from": "R240",
+        "to": "O",
+        "side": "MINOR",
+        "color": "BLUE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a60",
+        "refs": ["O", "O2", "P"],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tOO2",
+        "ownerSegment": "sOO2",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "tO2P",
+        "ownerSegment": "sO2P",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rSector",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O2",
+              "from": "O",
+              "to": "P",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "cO",
+        "points": ["O2", "P"]
+      },
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "cO2",
+        "points": ["O", "P"]
+      }
+    ]
+  },
+  "pointNames": {
+    "O2": "O'"
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 520
+  },
+  "caption": "반지름이 12cm로 같은 두 원 O, O′가 서로의 중심을 지나고, 두 원의 교점 P와 원 O′의 중심각 60°인 부채꼴을 색칠한 그림",
+  "newVisualInformation": [],
+  "hiddenPointNames": ["R60", "R0", "Q", "R240"],
+  "hiddenPointStyle": "NONE"
 }

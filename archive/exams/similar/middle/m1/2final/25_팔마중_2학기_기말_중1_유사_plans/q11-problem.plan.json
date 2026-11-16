@@ -1,4 +1,182 @@
 {
-  "status": "EXEMPT",
-  "reason": "원기둥 옆넓이, 원형 밑넓이, 반구 곡면 넓이 분할 합산 겉넓이 연산 문항"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "4" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "4" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["D"],
+        "args": {
+          "dx": { "kind": "rational", "numerator": "-3", "denominator": "5" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["C"],
+        "args": {
+          "dx": { "kind": "rational", "numerator": "3", "denominator": "5" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["D"],
+        "args": {
+          "radius": { "kind": "integer", "value": "4" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F"],
+  "hiddenPointNames": ["E", "F"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sAxis", "refs": ["E", "F"], "dashed": true }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAC",
+        "circle": "k",
+        "center": "D",
+        "from": "A",
+        "to": "C",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rCut",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                { "to": "B" },
+                { "to": "C" },
+                { "to": "A", "arc": { "center": "D", "side": "CCW" } }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 560 },
+  "caption": "한 변의 길이가 4 cm인 정사각형에서 점 D를 중심으로 하는 사분원의 호를 그리고, 잘라내고 남은 모서리 부분을 옅은 파란색으로 칠한 뒤 변 CD를 회전축으로 표시한 그림.",
+  "sourceQuote": "$4\\rm\\,cm$인 정사각형 $ABCD$에서 점 $D$를 중심으로 하고",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변의 길이가 4 cm인 정사각형",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sAD", "dAD"]
+    },
+    {
+      "id": "c2",
+      "condition": "점 D를 중심으로 하고 반지름의 길이가 4 cm인 사분원",
+      "mappedTo": ["k", "arcAC"]
+    },
+    {
+      "id": "c3",
+      "condition": "사분원을 잘라내고 남은 도형",
+      "mappedTo": ["rCut"]
+    },
+    {
+      "id": "c4",
+      "condition": "변 CD를 회전축으로 한다",
+      "mappedTo": ["sAxis", "E", "F"]
+    }
+  ],
+  "newVisualInformation": [
+    "사분원의 호와 두 변으로 둘러싸인, 잘라내고 남은 모서리 부분을 옅은 파란색으로 칠함",
+    "변 CD를 점선으로 두 점 밖으로 조금 연장해 회전축임을 보임",
+    "한 변의 길이 4 cm를 왼쪽 변 바깥 치수선에 표시"
+  ]
 }

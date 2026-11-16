@@ -1,4 +1,48 @@
 {
-  "status": "EXEMPT",
-  "reason": "학생형 단계 해설은 텍스트·수식으로 제공; 별도 해설 그림 필요성 재검토 대기"
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE_FRUSTUM",
+      "radius": 6,
+      "topRadius": 3,
+      "height": 5,
+      "axis": {
+        "label": "회전축"
+      }
+    }
+  ],
+  "section": {
+    "kind": "AXIAL"
+  },
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true
+    },
+    {
+      "solid": "s1",
+      "radius": "bottom"
+    },
+    {
+      "solid": "s1",
+      "radius": "top"
+    }
+  ],
+  "solidCaption": {
+    "text": "원뿔대와 회전축을 포함하는 단면"
+  },
+  "caption": "높이에 해당하는 변을 축으로 직각사다리꼴을 1회전시키면 윗면 반지름 3cm, 아랫면 반지름 6cm, 높이 5cm인 원뿔대가 생긴다. 축을 포함하는 평면으로 자른 단면은 윗변 6cm, 아랫변 12cm, 높이 5cm인 사다리꼴이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "윗변 3cm, 아랫변 6cm, 높이 5cm인 직각사다리꼴을 높이 변을 축으로 1회전",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔대의 두 밑면 반지름 3cm, 6cm와 높이 5cm",
+    "축을 포함하는 단면 사다리꼴"
+  ]
 }

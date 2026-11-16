@@ -1,4 +1,46 @@
 {
-  "status": "EXEMPT",
-  "reason": "학생형 단계 해설은 텍스트·수식으로 제공; 별도 해설 그림 필요성 재검토 대기"
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 4
+    },
+    {
+      "id": "s2",
+      "kind": "HEMISPHERE",
+      "radius": 4
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true
+    },
+    {
+      "solid": "s1",
+      "radius": "bottom"
+    },
+    {
+      "solid": "s2",
+      "radius": "center"
+    }
+  ],
+  "solidCaption": {
+    "text": "원기둥과 파낸 반구"
+  },
+  "caption": "CD를 축으로 회전시키면 반지름 4cm, 높이 4cm인 원기둥에서 반지름 4cm인 반구를 파낸 입체가 생긴다. 겉넓이는 원기둥의 옆면, 한쪽 밑면, 파낸 반구의 곡면으로 이루어진다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변이 4cm인 정사각형에서 반지름 4cm인 사분원을 잘라내고 CD를 축으로 1회전",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "원기둥의 반지름 4cm와 높이 4cm",
+    "윗면에서 반지름 4cm인 반구 모양으로 파인 홈"
+  ]
 }

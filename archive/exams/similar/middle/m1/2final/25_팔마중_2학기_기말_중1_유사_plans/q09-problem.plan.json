@@ -1,4 +1,55 @@
 {
-  "status": "EXEMPT",
-  "reason": "구의 부피 36pi와 원기둥 부피 72pi의 분할 합산 문항"
+  "capability": "solid-figure-v1",
+  "caption": "원기둥의 양 끝에 반지름이 같은 반구를 붙여 만든 입체도형.",
+  "accessibilityDescription": "원기둥의 위아래에 반구가 붙은 입체도형과, 밑면의 반지름 3cm, 원기둥의 높이 8cm를 나타낸 그림.",
+  "solids": [
+    {
+      "id": "lower",
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "orientation": "APEX_DOWN"
+    },
+    {
+      "id": "tube",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 8,
+      "on": "lower"
+    },
+    {
+      "id": "upper",
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "on": "tube"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "tube",
+      "height": true,
+      "label": "8\\mathrm{cm}"
+    },
+    {
+      "solid": "tube",
+      "radius": "bottom",
+      "label": "3\\mathrm{cm}"
+    }
+  ],
+  "sourceQuote": "양 끝에 반지름의 길이가 $3\\rm\\,cm$인 반구 $2$개가 붙어 있고",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥의 양 끝에 반지름 3 cm인 반구 2개가 붙어 있다",
+      "mappedTo": ["lower", "upper"]
+    },
+    {
+      "id": "c2",
+      "condition": "가운데 원기둥의 밑면 반지름 3 cm, 높이 8 cm",
+      "mappedTo": ["tube"]
+    }
+  ],
+  "newVisualInformation": [
+    "반구와 원기둥이 만나는 접합 원 두 개가 보이는 하나의 입체도형",
+    "밑면의 반지름 3cm와 원기둥의 높이 8cm의 치수 표시"
+  ]
 }
