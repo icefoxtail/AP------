@@ -1904,3 +1904,8 @@
 ### 추가 체크포인트: 중2 2학기 기말 index24–30
 - 미승인 7시험지 140행: PICK139 / NEW_KEY1 / HOLD0, check PASS112 / PT_ONLY14 / OUT_OF_CANDIDATES13 / TOOL_ERROR1. UID·최신 metadata 승인 상태 대조 및 원격 readback 확인. 기존554행 보존하여 총694행, C `35d9b2ee7990ef3230ee8f2db4f5227cfec7121a`.
 - 원문 의심: 25 삼산중 2번 그림의 B 55도 표기를 확인할 수 없고 해설에만 존재. 유형 판정과 별도 기록.
+
+
+### 완료 체크포인트: 중2 2학기 기말
+- index31–33 미승인 3시험지 70행 추가: PICK69 / NEW_KEY0 / HOLD1, check PASS54 / PT_ONLY1 / OUT_OF_CANDIDATES15. 그림46개 확인, 기존694행과 UID 중복 및 신규 승인 중첩0 확인. C `f49c2066604a5b74810832e960a93fb655d20a02` 원격764행 확인.
+- 25 왕운중 10번은 두 독립 개념 결합으로 단일 PT 결정 불가 HOLD. 왕운중 12번 SVG 점 D가 B로 중복 표기된 점 등은 note에 보존. 승인된 기존 중첩46행은 앞선 감사대로 그대로 보존.
