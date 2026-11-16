@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { validateM2ProblemRendererUiTileEvidence } from './reviewed-m2-problem-renderer-continuity.mjs';
+import SvgIndexContinuity from '../../../tools/4slot/existing-vector-svg-index-continuity.cjs';
 
 // This named contract transports one already frozen complete-given review. It
 // neither replaces the complete original Native review nor grants another UID
@@ -154,6 +155,26 @@ const UI_CODE = [
   ['archive/screen-runtime-adapter.js', '3d8f3159934c99637c4df893649adbc331065d96', '2834bd3d0f3b40264921e15a85840df3d2374c7fcc6158844ce12883fb7cdd93', 52980],
 ].map(([path, gitBlobSha1, sha256, bytes]) => ({ path, gitBlobSha1, sha256, bytes }));
 
+// The captured global index is immutable screen evidence. A later generated
+// index can serve unrelated assets while the exact captured asset lookup stays
+// unchanged. Authenticate the old file and compare every field in both visual
+// roles using the unchanged student runtime; all asset bytes stay live-bound.
+function svgIndexFootprint(ctx, ref, technical) {
+  reference(ctx, ref);
+  const full = safe(ctx.root, ref.path);
+  ensure(fs.existsSync(full) && fs.lstatSync(full).isFile() &&
+    fs.statSync(full).size > 0 && fs.statSync(full).size <= 128 * 1024 * 1024, 'LIVE_SVG_INDEX_REQUIRED');
+  const originalRaw = git(ctx, ['cat-file', 'blob', ref.gitBlobSha1]);
+  ensure(originalRaw.length === ref.bytes && sha(originalRaw) === ref.sha256 &&
+    blob(originalRaw) === ref.gitBlobSha1, 'SVG_INDEX_IMMUTABLE_RAW_DRIFT');
+  const assetRefs = [...technical.servedFiles, ...technical.mirroredAssets]
+    .filter(asset => asset.path.startsWith('archive/assets/'));
+  const original = SvgIndexContinuity.parseIndex(originalRaw);
+  const current = SvgIndexContinuity.parseIndex(fs.readFileSync(full));
+  ensure(same(SvgIndexContinuity.selectEntries(original, assetRefs),
+    SvgIndexContinuity.selectEntries(current, assetRefs)), 'SVG_INDEX_CONSUMED_FOOTPRINT_DRIFT');
+}
+
 function uiEvidence(ctx, basis) {
   const technical = evidence(ctx, ctx.spec.technicalRef, DIR + 'student-ui-technical-v1.json');
   const visual = evidence(ctx, ctx.spec.visualRef, DIR + 'student-ui-independent-v1.json');
@@ -221,7 +242,9 @@ function uiEvidence(ctx, basis) {
       served.set(ref.path, ref);
       // The captured whole MD is immutable evidence of the screen. The ordinary
       // Native/Consumer validates the newly issued selected row after writing.
-      atCheckout(ref, { live: ref.path !== 'archive/data/question_metadata.json' });
+      if (ref.path === 'archive/data/svg-accessibility-index.js') {
+        atCheckout(ref); svgIndexFootprint(ctx, ref, technical);
+      } else atCheckout(ref, { live: ref.path !== 'archive/data/question_metadata.json' });
     }
   }
   for (const pin of UI_CODE.slice(3)) ensure(same(noCommit(served.get(pin.path) || {}), pin), 'UI_REQUIRED_SERVED_CODE_MISSING');

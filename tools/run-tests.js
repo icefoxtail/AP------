@@ -171,6 +171,10 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
   },
   {
+    label: 'tests/archive-existing-vector-svg-index-continuity.test.cjs',
+    args: ['--test', 'tests/archive-existing-vector-svg-index-continuity.test.cjs']
+  },
+  {
     label: 'tests/archive-svg7-named-problem-continuity.test.cjs',
     args: ['--test', 'tests/archive-svg7-named-problem-continuity.test.cjs']
   },
