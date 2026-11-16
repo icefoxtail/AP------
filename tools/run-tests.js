@@ -171,6 +171,11 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
   },
   {
+    label: 'tests/item-4slot-existing-original-text-solution3.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-original-text-solution3.test.cjs'],
+    timeout: 60000
+  },
+  {
     label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
     args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
     timeout: 180000
@@ -576,10 +581,20 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
   },
   {
+    label: 'tests/archive-svg7-existing-vector-ui.test.cjs',
+    args: ['--max-old-space-size=128', '--test', 'tests/archive-svg7-existing-vector-ui.test.cjs'],
+    timeout: 60000
+  },
+  {
     label: 'tests/archive-m2s1-svg7-image-pointer.test.mjs',
     // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
     args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
     timeout: 240000
+  },
+  {
+    label: 'tests/archive-e041-original-choice-correction.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-e041-original-choice-correction.test.mjs'],
+    timeout: 120000
   },
   {
     label: 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs',
