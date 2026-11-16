@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "archive-reviewed-pack-lineage-transaction-repair-proposal-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "author": "GPT_M2_34C2",
+  "reviewedCodeBaseline": {
+    "commit": "d422885a338e06169739815f0f717d7d035ef7a1",
+    "path": "archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+    "sha256": "a8c9c9f5c96133d8d2ab7eaacb1d392598e2d26c07983e35b9263c8c2a48162a",
+    "actualRemoteGitBytesMatched": true
+  },
+  "blockerRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/unit25-official-validation/m2-replacement-three/native-reuse3.r4.json",
+    "sha256": "d1d0ccc14800b15903f4fee9947b3dcdf215d3fa19c9b0531cfab1a073ecfab8"
+  },
+  "selectedUids": [
+    "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+    "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+    "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb"
+  ],
+  "scope": "Three existing native-reuse applications; no source, meaning, QA or registrar-counter changes in this code patch.",
+  "actualReceiptRefs": [
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+      "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3",
+      "requestId": "middle-audit-repair-34c2-m2-e007-q17",
+      "appliedVersions": [
+        "1.0.7"
+      ],
+      "registryChanges": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "collection": null,
+          "beforeIsNull": false,
+          "key": null
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "collection": "bindings",
+          "beforeIsNull": true,
+          "key": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+        }
+      ],
+      "canonicalDigests": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "sha256": "6e13b071cd630dc3fac1188ba6734a2819ab84e5b5e2e274cdda5a143ce987fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "sha256": "4caf6a0ac58839cf146ed84b0fa289c45a031b699513d583400a40a8b1eaf7c0"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json",
+      "sha256": "adb28d993b9a4077eaa14b7a5ce362872d6d9ecaa669574beb4017f16720797e",
+      "requestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+      "appliedVersions": [
+        "1.0.7"
+      ],
+      "registryChanges": [],
+      "canonicalDigests": []
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json",
+      "sha256": "f86c4fa1caadff8457e4ba4011a7a6fab0be7879eb32d31353d84216bfc684fa",
+      "requestId": "middle-audit-repair-34c2-m2-e035-q12",
+      "appliedVersions": [
+        "1.0.7"
+      ],
+      "registryChanges": [],
+      "canonicalDigests": []
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json",
+      "sha256": "a450f653ab8e6687d4d405f732948cdadc3fe85238fdfb1bbf99a74056ccc839",
+      "requestId": "middle-audit-repair-34c2-m2-e035-q18",
+      "appliedVersions": [
+        "1.0.8"
+      ],
+      "registryChanges": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "collection": "bindings",
+          "beforeIsNull": true,
+          "key": "PT_LINE_INTERSECTION_CONDITION"
+        }
+      ],
+      "canonicalDigests": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "sha256": "76a82acb1d74f2fb1057b3cfcabdb8cbcff82da70c3fc09660d18ded31734bca"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "sha256": "884f6c895e96a494aa769a9c822cf4052b2c44282709618ad5f0fa5f9467af04"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q18.json",
+      "sha256": "da62f88fb1dfb937952b3e9a79b99715624053cae05f482aedb1a1a597490719",
+      "requestId": "middle-audit-repair-34c2-m2-e007-q18",
+      "appliedVersions": [
+        "1.0.9"
+      ],
+      "registryChanges": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+          "collection": "templates",
+          "beforeIsNull": true,
+          "key": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "collection": "bindings",
+          "beforeIsNull": true,
+          "key": "PT_H1_LINEAR_SYSTEM_INEQUALITY"
+        }
+      ],
+      "canonicalDigests": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+          "sha256": "44626f726cde840090852b7a5a4817a16a30512dfdcfd32f5d7a9a44a64c99e7"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "sha256": "dfafa994ee4064d4deae3a2218d70485cbc44c2e4843bd16c353ef1cc53b2fb1"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+          "sha256": "aa6a964e730086f7ac3601f96a103e0a6b83ed4a8ed83d196a4b3922a65a851f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "sha256": "b263745011565f09443d88394922f90ab3f352926f868eb51d6a55935cc2bcac"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e009-q21.json",
+      "sha256": "fc31ea54e7fd0cd7ff7722fc3b4a8279092bed1ee2057a95fee47c4b643fb5a1",
+      "requestId": "middle-audit-repair-34c2-m2-e009-q21",
+      "appliedVersions": [
+        "1.0.10"
+      ],
+      "registryChanges": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+          "collection": "templates",
+          "beforeIsNull": true,
+          "key": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "collection": "bindings",
+          "beforeIsNull": true,
+          "key": "PT_H1_EQUATION_APPLICATION"
+        }
+      ],
+      "canonicalDigests": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+          "sha256": "032655c756d35f2d01cbf6a23adf172f88b5ddf26e5bb4989e9a44d4732973a0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "sha256": "d7a52f9742db1d31d03dbc023adaab12bc2384c77981ff1f20ce7339d4419310"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+          "sha256": "b7a246c893268d5aee4da3c0856c3dd7e97864871cbec18b01defd668702ccad"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "sha256": "20a0a9dfbc1f8b48e277085d84d0babbce7ba400e05600ef1113e8569c2e9e0c"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e029-q14-prerequisite.json",
+      "sha256": "8b085ac482e3c5e2ccb475ffbd0d80a358e8e1e686adfdec7fc1220e459a819a",
+      "requestId": "middle-audit-repair-34c2-m2-e029-q14-prerequisite",
+      "appliedVersions": [
+        "1.0.11"
+      ],
+      "registryChanges": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "collection": "bindings",
+          "beforeIsNull": true,
+          "key": "PT_M1_LINEAR_EQUATION_MODELING"
+        }
+      ],
+      "canonicalDigests": [
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "sha256": "9833476cc60ebb0ca440367c474eb926010e04f90ba89bb2096ef2b23b79c6de"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "sha256": "a2a475effb045717df8c1af760c412076b3c3c92d1f3dcea34f3ef846208327d"
+        }
+      ]
+    }
+  ],
+  "actualPublishedMiddle2Versions": [
+    {
+      "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+      "version": "1.0.11"
+    },
+    {
+      "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+      "version": "1.0.8"
+    },
+    {
+      "commit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "version": "1.0.6"
+    },
+    {
+      "commit": "b8e08d57fd0aa07a02e7f3b916bd3043ed995683",
+      "version": "1.0.1"
+    }
+  ],
+  "mixedTransactionScope": {
+    "targetOperations": "Exact target-owner ACTIVE binding append only.",
+    "companionOperations": "ACTIVE template additions only in another existing explicit canonical owner, selected by the same issued target binding application.",
+    "closedOperations": "All other post-prior operations, existing-row replacements, pack/curricula changes, new owners, aliases, problem types, concepts and conditions remain rejected.",
+    "checks": [
+      "Exact owner-derived canonical path, single match key, before:null and explicit ACTIVE status.",
+      "Current canonical and compiled unique full template and parent rows; ACTIVE pack/index/version/input digests.",
+      "Earlier immutable owner snapshot with exact index digests and original parent unchanged.",
+      "Reproduce entire taxonomy and owner pack outputs by exact append and official count/patch updates, matching each original receipt output digest.",
+      "Original companion receipts must be exact bytes on actual HEAD ancestry.",
+      "All original request/source/approval/item/change evidence anchors remain mandatory.",
+      "Cache tracks new canonical and original receipt reads and rechecks caller registry companion definitions and owner version."
+    ]
+  },
+  "midbatchPriorScope": {
+    "priorVersion": "1.0.7",
+    "priorReceiptsHaveCanonicalOutputDigests": false,
+    "sameVersionOutputProvider": "middle-audit-repair-34c2-m2-e007-q17",
+    "baselineCurriculaExtension": "Reused only as already issued baseline authority; not admitted as a post-prior operation.",
+    "checks": [
+      "A genuinely published higher target pack/binding snapshot must exactly match a state reconstructed by the complete add-only chain.",
+      "Exact actual prior receipt raw and same-version canonical provider raw must exist together at that ancestor.",
+      "Reconstructed prior pack and binding hashes must match that provider original output digests.",
+      "Original provider request, source bytes and all evidence must authenticate at an earlier actual ancestor.",
+      "A first post-prior request sharing that provider input commit is stored separately and counts only when the published provider/digest proof succeeds.",
+      "Selected PT/TPL definitions and exact original binding must match the published higher compiled authority and current ACTIVE records.",
+      "Existing exact-prior snapshot and now>issued actual-issued-snapshot requirements stay intact."
+    ]
+  },
+  "focusedValidation": {
+    "scope": "Synthetic isolated small Git fixtures; no production question QA/registrar/native receipt run.",
+    "codeSha256": "328af2184158489f1f4d77c609c6a883738db2bf7b2b672f258798b5743d16d9",
+    "testSha256": "348cee528b47b0c71a0f0fd95ef80ecba6a1e79e649269d037546297c1c298ed",
+    "logRef": {
+      "path": "/workspace/scratch/0a70543c4ce8/state/m2-pack-lineage-repair/focused-tests.r3.log",
+      "sha256": "d93ae6fbecdc782d1f5051a84a6493050733602eb581311d8836ddf548bd16e3"
+    },
+    "tests": 21,
+    "pass": 21,
+    "fail": 0,
+    "existingBroaderSuiteRerun": false,
+    "existingGuardCoverage": "Original archive-main-merge-meta.test.mjs lineage positive/negative guards were reviewed and kept; no whole-suite rerun."
+  },
+  "currentLimits": {
+    "actualThreeNativeReuse": "NOT_RUN_WITH_CANDIDATE; ROOT_REQUIRED",
+    "productionAndSharedFixtureCodeWrites": 0,
+    "sourceMetadataRegistryIdentityReceiptWrites": 0,
+    "newMeaningApproval": 0,
+    "newFullMathQa": 0,
+    "deployment": "NOT_RUN"
+  },
+  "requiredNextAction": "M1 independent code/evidence review; root single-writer integration and the three exact failed native-reuse calls only; publish immutable result and report actual remote registration separately."
+}

@@ -142,6 +142,22 @@
     const curriculumIdentity = String(meta.rpmCurriculum || meta.curriculumKey || meta.curriculum || '').trim();
     const matchingCourses = gradeCourseAllowlist.filter(row => row.grade === sourceGrade && courseIdentity(row.courseKey) === courseIdentity(meta.standardCourse));
     let allowed = curriculumIdentity ? matchingCourses.filter(row => row.curriculumKey === curriculumIdentity) : matchingCourses;
+    // Registered middle-school metadata keeps a grade label in standardCourse
+    // and its exact semester key separately. Use that approved key only for the
+    // known grade label; never infer a semester or change the stored label.
+    const middleGrade = /^중([123])$/.exec(sourceGrade);
+    if (!allowed.length && middleGrade && approvedCurrentFields && meta.metadataApprovalType === 'FINAL_QA' &&
+        courseIdentity(meta.standardCourse) === `중${middleGrade[1]}수학`) {
+      const declaredCourse = String(meta.courseKey || '').trim();
+      const declaredCurriculum = String(meta.curriculumKey || '').trim();
+      if (!new RegExp(`^M${middleGrade[1]}-[12]$`).test(declaredCourse) ||
+          !['2015', '2022'].includes(declaredCurriculum) ||
+          ['curriculum', 'rpmCurriculum'].some(field => meta[field] != null && String(meta[field]).trim() &&
+            String(meta[field]).trim() !== declaredCurriculum))
+        return fail('DISPLAY_PROJECTION_COURSE_NOT_ALLOWED');
+      allowed = gradeCourseAllowlist.filter(row => row.grade === sourceGrade &&
+        row.curriculumKey === declaredCurriculum && row.courseKey === declaredCourse);
+    }
     // Original H1 source classifications may use an active native course whose
     // basic RPM browse-parent table has no exact row. The reviewed source pack
     // explicitly owns these course names; this fallback grants only the

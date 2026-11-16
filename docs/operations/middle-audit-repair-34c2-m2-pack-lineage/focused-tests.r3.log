@@ -1,0 +1,29 @@
+✔ mixed add-only template transactions reproduce outputs and preserve a prior issued inside a published batch (590.023004ms)
+✔ mixed transactions retain the original exact-prior-snapshot path (442.837878ms)
+✔ receipt-bound midbatch anchoring also preserves a binding-only transaction chain (413.781894ms)
+✔ mixed lineage refuses foreign replacement instead of addition (455.767261ms)
+✔ mixed lineage refuses foreign owner/path mismatch (535.84628ms)
+✔ mixed lineage refuses unknown extra operation including a post-prior curricula edit (485.992331ms)
+✔ mixed lineage refuses companion current full row changed (720.385394ms)
+✔ mixed lineage refuses companion parent changed after immutable approval (964.094544ms)
+✔ mixed lineage refuses companion canonical output digest differs (1066.736584ms)
+✔ mixed lineage refuses companion was not an issued target application (965.84447ms)
+✔ mixed lineage refuses prior-version provider output digest differs (1073.986218ms)
+✔ mixed lineage refuses prior-version provider immutable request hash differs (626.902038ms)
+✔ mixed lineage refuses prior issued raw differs from its immutable ancestor (720.520671ms)
+✔ mixed lineage refuses higher snapshots and receipts exist only off ancestry (447.767684ms)
+✔ mixed lineage refuses intervening target version step is missing (407.261849ms)
+✔ cache cannot retain a companion whose caller registry row changed without changing disk bytes (379.973801ms)
+✔ a duplicate compiled companion key is rejected even when one row still matches the issued definition (376.127199ms)
+✔ cache cannot retain deleted foreign canonical taxonomy (367.580764ms)
+✔ cache cannot retain deleted original prior-version provider receipt (419.274353ms)
+✔ cache cannot retain deleted exact prior approval receipt (600.639055ms)
+✔ a missing actual issued-version snapshot is not replaced by the midbatch prior anchor (108.37439ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12338.62743

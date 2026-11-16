@@ -1,0 +1,629 @@
+{
+  "schemaVersion": "middle-audit-existing-native-integer-extrema-template-proposal-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "preparedBy": "GPT_M2_34C2",
+  "status": "REVIEWABLE_PROPOSAL_ONLY_NO_SOURCE_REGISTRY_OR_APPROVAL_WRITE",
+  "observedMain": "16f0413bbf709581eededf19497008031d80b808",
+  "sourceRef": {
+    "commit": "16f0413bbf709581eededf19497008031d80b808",
+    "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+    "blobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+    "sha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+    "questionCount": 24
+  },
+  "nativeReviewRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/accepted-review.json",
+    "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+  },
+  "nativeSourceRef": {
+    "commit": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+    "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+    "blobSha1": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+    "sha256": "e01b9fa4e46470e7fe06a5fddf98deb3402c5ed2a37cf041069a325a124b1dd7"
+  },
+  "nativeProposalRef": {
+    "id": "E007-INTEGER-EXTREME",
+    "kind": "RPM_LEAF_GAP",
+    "proposalStableSha256": "7066edd47425ed5fb9e4b46627db35a0bbc769675af6877de6be650ac985f7ba",
+    "proposal": {
+      "id": "E007-INTEGER-EXTREME",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "기본일차부등식에서허용정수의최소·최대값을결정.",
+      "parent": "2022/M2-1/일차부등식/일차부등식/해의 조건",
+      "distinction": "정수해개수leaf와다르고WORD최소최대정수에순수식문항강제안함.",
+      "supportingQuestionUids": [
+        "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+        "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 19,
+          "decisiveStep": "x>-15이므로최소정수는-14."
+        },
+        {
+          "sourceOrdinal": 20,
+          "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5."
+        }
+      ]
+    }
+  },
+  "existingParent": {
+    "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+    "fileSha256": "f86de5514f0412339a7ecd4c726263cf84db28d961fcfe24d95644802c5cf4ef",
+    "definition": {
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "일차·연립부등식",
+      "definition": "일차부등식 또는 연립부등식의 공통 해구간과 정수·매개변수 조건을 다루는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 33,
+      "supportingQuestionUids": [
+        "qid_v1_072720e1cd83a4b76720e7fb1d6065e371b4a6d40db0fe54c4f9956240605c06",
+        "qid_v1_1156cb2376d414ef4a081aa0b60729815f4437ff352486d44b48e73ad956ee06",
+        "qid_v1_1306e876022b5835d06559f2ddd97c47fe9063627958b5d8b9b3c8073b8ff402",
+        "qid_v1_1b4f820943842535241f9fe7c42714e8f82e7d39789656563560a17175e1e741",
+        "qid_v1_2a07d932073a85f9a3f5582564cdf8b37e279c4f995c85ae3b37942d72bd7ff7",
+        "qid_v1_3210e26254ace3212297bbc4415a26916f7d734dd86c306280665ec9bcd36dc3",
+        "qid_v1_34eb9ae81ac81083229b4dcbd5a1fc181636eb99acd69faf6e4a5869faf7cdb6",
+        "qid_v1_3c2c7b62e79375cb0b697d7318601af47219962def88728d441d10b3bd715136",
+        "qid_v1_4724c797d366afa030b54a7dd41d8a67d3e4185ea867b48b0ae560dbecb20251",
+        "qid_v1_495ea7b9e4c8a4c5e04cbc52675afa2db4ece36e8ff876e2bc1438fccb11a890",
+        "qid_v1_4c10c08bc03e4e7c7accf0a13dd715cb44320aa28874a6fabf01387d8480be3a",
+        "qid_v1_6c4ddbe07e93c8b05b0ad53f8c066a0cb59cc46f41a5fe2e6efc52c18531f74b",
+        "qid_v1_73de991e0186358c19857ccf415eb1d13eda2156ed453bcfe73dcb7581c41488",
+        "qid_v1_7b245c5643365c42e92364cf744018ae9e46060b54726d1cd6502a58622e6a3d",
+        "qid_v1_7b6988c0a40d03d686f43f8892516932f3c31604f9bd8d1bb9f23b4f74e7c25f",
+        "qid_v1_80f37be1140da2f2054a24fbffc534ccdede6dfbcefac3a5986975fba408821e",
+        "qid_v1_84a3b2964170857b18b78d51ed9141d7d688009d23b953e603e8f57952daa5f3",
+        "qid_v1_8a95fffd66f311cfef175f53a55b4b7866bd4604e68e530354eef5ea79240763",
+        "qid_v1_8ad523bf03924fcbc90074a0946919d457e50b90959aedc13b82bca896e59e38",
+        "qid_v1_92484be86eb874204231db8062bed043c787704f02af2bc69e8fcae05340b268",
+        "qid_v1_9287fd12956567b957ac092fa2f40189084e84e53250c64fbdbd28b04e085df5",
+        "qid_v1_9694f3c680ddbcb581d99777abbb5d3753660c6d468dc73a3dfc956c0893268a",
+        "qid_v1_9933f6e4d70bd356cb9221216dba03118fbf9b8809c4e9961f20b8fee2c7210a",
+        "qid_v1_ab00d0fc95efd3711c48d9dc52d861558a5b1c4ed8a5e882cc9e1735886cb366",
+        "qid_v1_b890cc5cc0ae6f62b78fadc6bd4c22ff4afa6c102046bc65095b1b0e25241369",
+        "qid_v1_c01a67fdcbc5b669ef846067333521e51c44898c4586c5049dd8daef02a8f91b",
+        "qid_v1_c8272ecbc630a77883d914521bac7d6675e0061ca2055568124feb8de41dd2c1",
+        "qid_v1_d9ee9a3769771b5a6c881c4363088f1b2d8568d239280291bb0e5a2ff6b909b8",
+        "qid_v1_e208742c3fd137c653bc442deed3d9e8c3f6b88a0f34a39e9b311d9e3d5fc048",
+        "qid_v1_f66e8227494783d5f2d0fafd6fe4ad775d204e199942c36512aa520a79e2ed4e",
+        "qid_v1_f73bccddd4ec4b57fff8f868d817d7d9de075e7979ebecffd9cb05666cc628e9",
+        "qid_v1_feaddac713d6f84947aa45d89ebe23e398f8376241a8b294397e878a4d4e2297",
+        "qid_v1_ff803c6041ba1a1863111aacde0226753cfbdc1769481d61b233ff82626d01f2"
+      ],
+      "sourceUnits": [
+        "H15-SA-08",
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "H1_STAGE3_L3_GLOBAL_NORMALIZED_1170",
+          "semanticLedger": "accepted H1 L3 baseline",
+          "definitionSource": "H1_STAGE3_L3_SYNTHESIS_CHECKPOINT_1170"
+        }
+      ]
+    },
+    "definitionStableSha256": "d7f8829fda63e4c2700aef249c479c313e69cf2d53880ffd41dc55a52b170389",
+    "definitionChange": false
+  },
+  "applications": [
+    {
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "sourceOrdinal": 19,
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "currentQuestionStableSha256": "8ae526c1b614b397729c948f711fd0fb9d28ca4e92490a66b7da75d7def00dd1",
+      "nativeQuestionStableSha256": "36161b479252ebd381bbe94c2040f87ca0c13d6927c60450380920d98fe4e2a2",
+      "nativeItemStableSha256": "0bd7aac959b95be2088e314da3c4c7be5d4fe8f30355b8ac85996a56b699bbe8",
+      "protectedStudentPayloadSha256": "78f575ceb6a20e7477c6fe187fb812a39c5e9a69ed771c4ac33051e7120dd9f7",
+      "nativeAndCurrentProtectedPayloadExact": true,
+      "currentQuestion": {
+        "id": 19,
+        "level": "하",
+        "category": "수학",
+        "originalCategory": "수학",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [],
+        "wide": false,
+        "content": "일차부등식 $1.2x+1>\\frac15(5x-10)$을 만족시키는 $x$의 값 중 가장 작은 정수는? [4점]",
+        "choices": [
+          "-14",
+          "-13",
+          "11",
+          "13",
+          "14"
+        ],
+        "answer": "①",
+        "solution": "부등식을 정리한다.\n$1.2x+1>\\dfrac15(5x-10)$\n$\\dfrac65x+1>x-2$\n$\\dfrac15x>-3$\n$x>-15$\n따라서 가장 작은 정수는 $-14$이다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
+        "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "sourceType": "exam",
+        "imageStatus": "none",
+        "answerStatus": "draft",
+        "solutionStatus": "draft",
+        "reviewStatus": "pending"
+      },
+      "nativeItem": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+        "verdict": "CORRECT",
+        "rpmRecordId": null,
+        "rpmDecision": "RPM_LEAF_GAP",
+        "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+        "decisiveStep": "x>-15이므로최소정수는-14.",
+        "beforeSource": {
+          "conditionKeys": [],
+          "level": "하",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "beforeMetadata": {
+          "conditionKeys": [],
+          "level": null,
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "after": {
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "level": "하",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "semanticDecision": {
+          "semanticCurriculum": "2022",
+          "machineCurriculum": null,
+          "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "rpmPath": null,
+          "rpmRecordId": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "integrationPattern": "NONE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "activeProjection": "REGISTRATION_PENDING",
+          "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+          "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+          "effectiveParent2022": null
+        },
+        "fieldReview": {
+          "classification": "기본부등식영역의정수해최솟값은해개수140과다르며 WORD143으로강제하지않음.",
+          "binding": "자연수합template와달리정수하한최소값을결정하는template필요.",
+          "crossConcept": "소수분수정리와정수끝점선택은이목적primary내부.",
+          "condition": "정수값중최소라는명시제약.",
+          "integration": "부등식정수하한을구하는단일primary.",
+          "difficulty": "소수분수풀이후엄격경계의최소정수를선택.",
+          "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+        },
+        "reason": "기본부등식영역의정수해최솟값은해개수140과다르며 WORD143으로강제하지않음. x>-15이므로최소정수는-14.",
+        "registrationDebt": [
+          "TARGET_BINDING_NOT_CONFIRMED",
+          "RPM_LEAF_GAP",
+          "NEW_TEMPLATE_REQUIRED",
+          "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+          "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+        ],
+        "proposalRefs": [
+          "E007-INTEGER-EXTREME"
+        ],
+        "finalDifficulty": {
+          "level": "하",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "reason": "소수분수풀이후엄격경계의최소정수를선택."
+        },
+        "contentDebt": [],
+        "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+        "sourceEvidence": {
+          "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+          "fingerprints": [
+            {
+              "scope": "QBODY",
+              "algo": "sha256-canonical-json-v1",
+              "value": "51d941d17a62a319ccb7a514e9edceaafe8145ec75077d36f8c0aa0480574461"
+            },
+            {
+              "scope": "QFULL",
+              "algo": "sha256-canonical-json-v1",
+              "value": "ecae893b1b5ba7a75674fc612211a2712dcb7735ef7688402881ce52c7e643fb"
+            }
+          ]
+        }
+      },
+      "exactFingerprintContract": {
+        "ordinal": 19,
+        "uid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+        "currentFullFingerprint": "ecae893b1b5ba7a75674fc612211a2712dcb7735ef7688402881ce52c7e643fb",
+        "currentBodyFingerprint": "51d941d17a62a319ccb7a514e9edceaafe8145ec75077d36f8c0aa0480574461",
+        "metadataFullExact": true,
+        "metadataBodyExact": true,
+        "identityFullExact": true,
+        "nativeFullExact": true,
+        "nativeBodyExact": true,
+        "metaFields": {
+          "curriculum": null,
+          "courseKey": null,
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
+          "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+          "rpmPrimaryId": null,
+          "rpmPrimaryPath": null,
+          "metadataApprovalType": null,
+          "reviewStatus": "pending",
+          "fieldStatus": {
+            "standardUnit": "approved_source",
+            "subUnit": "approved_source",
+            "concept": "approved_source",
+            "problemType": "approved_source",
+            "template": "approved_source",
+            "difficulty": "approved_source"
+          }
+        }
+      },
+      "proposedTemplate": {
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+        "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "canonicalLabelKo": "일차부등식의 가장 작은 정수해",
+        "definition": "일차부등식의 해집합을 유한한 하한을 갖는 비어 있지 않은 반직선으로 나타낸 뒤, 경계의 포함 여부를 반영하여 그 해집합에 속하는 가장 작은 정수를 정한다.",
+        "internalSkeleton": "ISOLATE_VARIABLE_IDENTIFY_LOWER_BOUND_AND_INCLUSION_SELECT_LEAST_ADMISSIBLE_INTEGER",
+        "status": "ACTIVE",
+        "ownerPack": "H1_FOUNDATION",
+        "aliases": [],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c"
+        ]
+      },
+      "proposedTemplateStableSha256": "88d808e2e6e20a3cf787034d0d7ffc06d5b88cb1a61478f063a4519465944f95",
+      "proposedSourceMetadata": {
+        "curriculum": "2022",
+        "courseKey": "M2-1",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+        "decisiveStep": "x>-15이므로최소정수는-14."
+      },
+      "currentSourceApprovalFlags": {
+        "answerStatus": "draft",
+        "solutionStatus": "draft",
+        "reviewStatus": "pending",
+        "sourceType": "exam",
+        "imageStatus": "none"
+      },
+      "semanticApplicationScope": "One algebraic inequality; not a count of all integer roots, a parameter condition, or a modeled word-problem maximum/minimum.",
+      "reusedAcceptedProcedure": "x > -15; the strict lower boundary excludes -15, so the least allowed integer is -14.",
+      "exactRpmLeaf": {
+        "status": "RPM_LEAF_GAP_PRESERVED",
+        "currentSourceHasRpmId": false,
+        "newRpmId": null,
+        "newRpmPath": null,
+        "rpmMasterChanges": 0,
+        "crosswalkChanges": 0,
+        "forbiddenSubstitutions": [
+          "M2-RPM-140 integer-solution count",
+          "M2-RPM-143 contextual inequality minimum/maximum"
+        ]
+      },
+      "newSolutionOrStudentPayload": false,
+      "newVerifiedFinalSolutionClaim": false,
+      "currentSemanticApproval": "PENDING_ROOT_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+      "sourceOrdinal": 20,
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "currentQuestionStableSha256": "466a90e285cfd05c286fd497ce0a9e0780c7139a17389df6de11bf33c1123340",
+      "nativeQuestionStableSha256": "07f896b04b2d8b2f8116be6f32b2b2c8b93d4d3a2d830ee382f7e2e33e5a0563",
+      "nativeItemStableSha256": "25f6895c0fe52bd52b878beb1ed9e7bd80f95f09ef4093dff3229f0cc50afd0f",
+      "protectedStudentPayloadSha256": "c7af5e0054a4fec8040624776ee7846e744f6639dadbe479d34d142a6da27cff",
+      "nativeAndCurrentProtectedPayloadExact": true,
+      "currentQuestion": {
+        "id": 20,
+        "level": "중",
+        "category": "수학",
+        "originalCategory": "수학",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [],
+        "wide": false,
+        "content": "다음 (가), (나)의 일차부등식을 만족하는 임의의 해 중 정수인 것을 각각 $a$, $b$라고 할 때, $a+b$의 최솟값을 구하면? [5점]<br>(가) $4x+9>2x+1$<br>(나) $0.01x-0.3>-0.1x+0.14$",
+        "choices": [
+          "-1",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "answer": "④",
+        "solution": "(가)를 풀면\n$4x+9>2x+1$\n$x>-4$\n따라서 가장 작은 정수해는 $a=-3$이다.\n(나)를 풀면\n$0.01x-0.3>-0.1x+0.14$\n$0.11x>0.44$\n$x>4$\n따라서 가장 작은 정수해는 $b=5$이다.\n$a+b=-3+5=2$이다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
+        "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceType": "exam",
+        "imageStatus": "none",
+        "answerStatus": "draft",
+        "solutionStatus": "draft",
+        "reviewStatus": "pending"
+      },
+      "nativeItem": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+        "verdict": "CORRECT",
+        "rpmRecordId": null,
+        "rpmDecision": "RPM_LEAF_GAP",
+        "primaryMethod": "각부등식의최소정수해를독립결정하여합최소화",
+        "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5.",
+        "beforeSource": {
+          "conditionKeys": [],
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyBoundaryFlag": "NONE"
+        },
+        "beforeMetadata": {
+          "conditionKeys": [],
+          "level": null,
+          "difficultyBucket": 3,
+          "difficultyBoundaryFlag": "NONE"
+        },
+        "after": {
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyBoundaryFlag": "B23"
+        },
+        "semanticDecision": {
+          "semanticCurriculum": "2022",
+          "machineCurriculum": null,
+          "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "rpmPath": null,
+          "rpmRecordId": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "integrationPattern": "NONE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "activeProjection": "REGISTRATION_PENDING",
+          "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+          "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+          "effectiveParent2022": null
+        },
+        "fieldReview": {
+          "classification": "기본부등식해의최소정수유형gap; 서로같은변수동시해교집합은아님.",
+          "binding": "자연수해합/무자연수해templates와다른두독립최소합template필요.",
+          "crossConcept": "독립두하한계산은동일정수최소primary.",
+          "condition": "a,b가각해중정수라는명시조건.",
+          "integration": "같은정수최소절차를각각적용한뒤합산.",
+          "difficulty": "소수계수포함두부등식을풀고각최소정수를더하는표준반복. 기존3→2제안.",
+          "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+        },
+        "reason": "기본부등식해의최소정수유형gap; 서로같은변수동시해교집합은아님. 각각x>-4,x>4에서a최소-3,b최소5.",
+        "registrationDebt": [
+          "TARGET_BINDING_NOT_CONFIRMED",
+          "RPM_LEAF_GAP",
+          "NEW_TEMPLATE_REQUIRED",
+          "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+          "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+        ],
+        "proposalRefs": [
+          "E007-INTEGER-EXTREME"
+        ],
+        "finalDifficulty": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL",
+          "reason": "소수계수포함두부등식을풀고각최소정수를더하는표준반복. 기존3→2제안."
+        },
+        "contentDebt": [],
+        "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+        "sourceEvidence": {
+          "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+          "fingerprints": [
+            {
+              "scope": "QBODY",
+              "algo": "sha256-canonical-json-v1",
+              "value": "23e2f1f842e5ed7d426d2b6a04f8c9d9a8bb846ded93abde025eff61133433a1"
+            },
+            {
+              "scope": "QFULL",
+              "algo": "sha256-canonical-json-v1",
+              "value": "2a9f8502a5302287b4a530a9af802a092eeb721f4ed582dc11426db8706b4121"
+            }
+          ]
+        }
+      },
+      "exactFingerprintContract": {
+        "ordinal": 20,
+        "uid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+        "currentFullFingerprint": "2a9f8502a5302287b4a530a9af802a092eeb721f4ed582dc11426db8706b4121",
+        "currentBodyFingerprint": "23e2f1f842e5ed7d426d2b6a04f8c9d9a8bb846ded93abde025eff61133433a1",
+        "metadataFullExact": true,
+        "metadataBodyExact": true,
+        "identityFullExact": true,
+        "nativeFullExact": true,
+        "nativeBodyExact": true,
+        "metaFields": {
+          "curriculum": null,
+          "courseKey": null,
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
+          "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+          "rpmPrimaryId": null,
+          "rpmPrimaryPath": null,
+          "metadataApprovalType": null,
+          "reviewStatus": "pending",
+          "fieldStatus": {
+            "standardUnit": "approved_source",
+            "subUnit": "approved_source",
+            "concept": "approved_source",
+            "problemType": "approved_source",
+            "template": "approved_source",
+            "difficulty": "approved_source"
+          }
+        }
+      },
+      "proposedTemplate": {
+        "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+        "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "canonicalLabelKo": "독립된 부등식의 최소 정수해 합",
+        "definition": "서로 독립된 두 일차부등식에서 각각 유한한 하한과 경계의 포함 여부를 구하고, 각 해집합에 속하는 가장 작은 정수를 독립적으로 선택하여 그 두 정수의 합의 최솟값을 정한다.",
+        "internalSkeleton": "SOLVE_TWO_INDEPENDENT_INEQUALITIES_SELECT_EACH_LEAST_INTEGER_ADD_INDEPENDENT_MINIMA",
+        "status": "ACTIVE",
+        "ownerPack": "H1_FOUNDATION",
+        "aliases": [],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
+        ]
+      },
+      "proposedTemplateStableSha256": "362a0a8b063a0c30a53f5044c53798651dab4c37129014f9150a8d24694e5dd8",
+      "proposedSourceMetadata": {
+        "curriculum": "2022",
+        "courseKey": "M2-1",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "primaryMethod": "각부등식의최소정수해를독립결정하여합최소화",
+        "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5."
+      },
+      "currentSourceApprovalFlags": {
+        "answerStatus": "draft",
+        "solutionStatus": "draft",
+        "reviewStatus": "pending",
+        "sourceType": "exam",
+        "imageStatus": "none"
+      },
+      "semanticApplicationScope": "The selected integers are independent choices from different solution sets. No common-variable intersection, extra relation between a and b, or new constraint is introduced.",
+      "reusedAcceptedProcedure": "The first half-line is x > -4 and the second is x > 4. Independent least integers are -3 and 5, and their least sum is 2.",
+      "exactRpmLeaf": {
+        "status": "RPM_LEAF_GAP_PRESERVED",
+        "currentSourceHasRpmId": false,
+        "newRpmId": null,
+        "newRpmPath": null,
+        "rpmMasterChanges": 0,
+        "crosswalkChanges": 0,
+        "forbiddenSubstitutions": [
+          "M2-RPM-140 integer-solution count",
+          "M2-RPM-143 contextual inequality minimum/maximum"
+        ]
+      },
+      "newSolutionOrStudentPayload": false,
+      "newVerifiedFinalSolutionClaim": false,
+      "currentSemanticApproval": "PENDING_ROOT_AND_INDEPENDENT_REVIEW"
+    }
+  ],
+  "whyTwoProcedures": "Q19 selects one least allowed integer at a lower boundary. Q20 independently selects two least allowed integers and combines them; preserving independence prevents accidental intersection of the solution sets.",
+  "comparedExistingTemplates": [
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "definition": "각 부등식의 해를 구해 교집합 구간을 정한다.",
+      "mismatch": "Common intersection is not either requested procedure."
+    },
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+      "definition": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+      "mismatch": "An integer-count or parameter condition is not choosing an actual least integer from a fixed solution set."
+    }
+  ],
+  "currentClassificationScope": {
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-02",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "basis": "Native semanticDecision explicitly identifies 2022/M2-02; current classification namespace requires a new bounded root application decision. It is not inferred from the exam year."
+  },
+  "plannedRegistryImpact": {
+    "newTemplates": 2,
+    "newProblemTypes": 0,
+    "existingDefinitionsChanged": 0,
+    "unrelatedUidAssignmentsChanged": 0,
+    "newBindings": 0,
+    "bindingPrerequisite": "Q18 official writer must actually publish the approved 2022/M2-02 PT_H1_LINEAR_SYSTEM_INEQUALITY binding before this unit reuses it.",
+    "rpmMasterChanges": 0,
+    "rpmCrosswalkChanges": 0,
+    "sourceApprovalFlagChanges": 0,
+    "wholeExamReclassification": false
+  },
+  "officialRegistrationContract": {
+    "writer": "archive/tools/meta-foundation/register-reviewed-exam-meta-v2.mjs",
+    "requestSchema": "archive-reviewed-exam-meta-register-request-v2",
+    "scope": "PARTIAL_UIDS",
+    "currentRegistrarRef": {
+      "commit": "16f0413bbf709581eededf19497008031d80b808",
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "bb53e1ee14e276ec7b92d8e3d0a7ad3bece228f48a9f2f388d507782b917866b"
+    },
+    "proposedRoute": "Ordinary current-source FINAL_QA metadata application after root and independent approval, with add-only registryChanges for the two exact templates. Current source, native, metadata and identity QBODY/QFULL are already exact. No sourceReview/fingerprint-repair adapter is needed for these unchanged payloads.",
+    "rpmContract": "Do not add a made-up RPM identifier, RPM path or crosswalk. RPM fields remain absent/null and immutable native RPM_LEAF_GAP remains explicitly carried in application evidence.",
+    "sourceFreeze": "Do not edit E007 until the running writer issues Q17 preservation and Q18. After that, re-read exact issued records and prepare source-only preserves for Q17 and Q18 alongside the two new applications.",
+    "compactContract": "No four-slot vector changes. Rebind the compact header only if required after the metadata-only source update, keeping all 24 reviewed vectors and candidates.",
+    "actualDryrun": "NOT_RUN_PENDING_APPROVAL_AND_ISSUED_PREREQUISITES",
+    "actualWrite": "NOT_RUN",
+    "actualRemoteRegistration": "NOT_RUN",
+    "studentDeployment": "NOT_RUN"
+  },
+  "limitations": [
+    "Native SOURCE_ONLY / missing genuine resolver VERIFIED_FINAL is not relabeled or erased.",
+    "Native RPM leaf debt remains unresolved even if PT/TPL metadata registration later succeeds.",
+    "No original source condition, new method, new mathematical QA or blanket search eligibility change is introduced."
+  ]
+}
