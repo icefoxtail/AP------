@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-compact-v1",
   "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
-  "sourceGitBlobSha": "c4936e7740e90e524300f2eaf983b0443a0362f6",
+  "sourceGitBlobSha": "6df75a3da7cf6685b42bf17c613c10d8f7271657",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "evidence": {
     "branch": "work/4slot-annotate-v1",
@@ -38,6 +38,19 @@
         "commit": "8866abd245ce04a0bbedfe661d23791e0838c0e3",
         "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e022-four-slot/s2-e022-existing-approved-native-vector-transport.r1.json",
         "sha256": "99cb333ad8c39771d7328831a83d3d745ca1d688ded75def7af8f584e86ae624"
+      }
+    },
+    "currentM2DisplayRepairClosure": {
+      "origin": "IMPORTED_NATIVE_AMENDMENT",
+      "carrier": {
+        "commit": "f8fd57ad3fb0062e3556d01dd03f010e1c830759",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/exact-repairs/E022/m2-current-display-repair-closure.json",
+        "sha256": "1b61682220ff3335c020a62d94b9addb43fc8cab6e40d3cfd512a23aa86fa8bb"
+      },
+      "observationBinding": {
+        "commit": "10749a1ffdb22f20a02b9293a57d46833a31b2bc",
+        "path": "docs/operations/m2s2-current-four-slot-20261116/exact-repairs/E022/m2-display-repair-observation-binding.json",
+        "sha256": "ae3b98bf0fa564ef150f1f03da6c009890d4a7dc59dff14281073e32321a0ef6"
       }
     }
   },
@@ -281,35 +294,7 @@
       "condition": [],
       "candidates": [
         "넓이비"
-      ],
-      "registrationHold": {
-        "schemaVersion": "4slot-m2s2-imported-current-renderer-hold-v1",
-        "reason": "SOURCE_RENDERER_CORRECTION_PENDING",
-        "questionUid": "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
-        "sourceOrdinal": 12,
-        "sourceQuestionNo": "12",
-        "ordinal": 12,
-        "sourceGitBlobSha": "c4936e7740e90e524300f2eaf983b0443a0362f6",
-        "wholeQuestionSha256": "22fafd7f8402f2be161adca6b152221b698d17f92f2268c9a2aae0336f3b706f",
-        "studentPayloadSha256": "d29fe01245716ba7f0eaea1170629b6cc8e0efb0d657d0400b8970372729cba1",
-        "sourceFingerprint": "a35b7d3350e2707112c7647d8c8d053d132e6792719c95685eecdeb373836629",
-        "m2ImportedCarrier": {
-          "commit": "b5274cbdd5db87a8d860317302edebcacf219dc3",
-          "path": "docs/operations/m2s2-imported-current71-20261116/SINHEUNG23/m2-imported-four-slot-transport.json",
-          "sha256": "110ccb8e52f75e4b859bc4a8c315be07e15912cdc4a9fc0d5e34c7d5c6cff2ed"
-        },
-        "m2ImportedObservation": {
-          "commit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
-          "path": "docs/operations/m2s2-imported-current71-20261116/raw/SINHEUNG23-actual-observations.json",
-          "sha256": "3a7dd9ffb2e0e0ba4a58eef56d64221636abffbd63ffe17e264948a99d8cd9b0"
-        },
-        "m2ImportedRootFollowup": {
-          "commit": "f6d8f94d35de2459fb3bfb344e9bff339253c84a",
-          "path": "docs/operations/m2s2-new95-current-followup-20261116/root-independent-observation.json",
-          "sha256": "16a93606c6d6b5fdab1fc9d216033b8e2dd4fa1bd3eb4691330970e4bdc9d21e"
-        },
-        "nextAction": "Keep the exact existing vector pending. A separately authorized renderer correction and exact current continuity review are required before releasing this UID."
-      }
+      ]
     },
     {
       "ordinal": 13,
