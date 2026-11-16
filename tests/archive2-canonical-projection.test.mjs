@@ -27,6 +27,171 @@ const parent = {
 };
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
+// Exercise the real synchronous test loader with in-memory manifest inputs.
+// Non-JSON dependencies retain exactly the builder's digest and version rules.
+function scopeHarnessFixture() {
+  const archiveDir = path.join(root, "archive");
+  const raw = new Map([
+    ["data/synthetic-resolver.json", Buffer.from('\uFEFF{\r\n"synthetic":true\r\n}\r\n')],
+    ["../docs/operations/synthetic/given.png", Buffer.from([137, 80, 78, 71, 13, 10, 26, 10, 0, 255, 128])],
+    ["assets/images/synthetic.svg", Buffer.from('<svg><path d="M0 0"/></svg>\r\n')],
+    ["exams/synthetic.js", Buffer.from('window.questionBank = [];\r\n')],
+  ]);
+  const digest = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
+  const normalized = bytes => bytes.toString("utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+  const files = [...raw].map(([path, bytes]) => ({ path, sha256: digest(normalized(bytes)) }));
+  const manifest = { resolverVersion: canonical.RESOLVER_VERSION, files };
+  manifest.projectionVersion = "archive2-canonical-v1:" + digest(JSON.stringify({
+    resolverVersion: manifest.resolverVersion,
+    files: files.slice().sort((a, b) => a.path.localeCompare(b.path)),
+  }));
+  const harnessSource = fs.readFileSync(path.join(root, "tests/helpers/archive2-scope-harness.cjs"), "utf8");
+  const run = () => {
+    const fakeFs = { readFileSync(file, encoding) {
+      let bytes;
+      if (file === path.join(archiveDir, "archive2-workspace.js")) bytes = Buffer.from("");
+      else if (file === path.join(archiveDir, "data/archive2-canonical-input-manifest.json"))
+        bytes = Buffer.from(JSON.stringify(manifest));
+      else {
+        const entry = [...raw].find(([relative]) => path.resolve(archiveDir, relative) === file);
+        if (!entry) throw new Error("SYNTHETIC_DEPENDENCY_MISSING");
+        bytes = entry[1];
+      }
+      return encoding ? bytes.toString(encoding) : bytes;
+    } };
+    const module = { exports: {} };
+    vm.runInNewContext(harnessSource, {
+      __dirname: path.join(root, "tests/helpers"), module, Buffer,
+      require(name) {
+        if (name === "node:fs") return fakeFs;
+        if (name === "../../archive/archive2-core.js")
+          return { Canonical: { resolveCatalog: ({ versionBundle }) => versionBundle } };
+        return require(name);
+      },
+    }, { filename: "archive2-scope-harness.cjs", timeout: 1000 });
+    return module.exports.catalog;
+  };
+  return { raw, manifest, digest, normalized, run };
+}
+
+test("scope harness verifies PNG/SVG/JS dependencies without treating them as JSON resources", () => {
+  const fixture = scopeHarnessFixture(), result = fixture.run();
+  assert.equal(result.projectionVersion, fixture.manifest.projectionVersion);
+  assert.deepEqual(Object.keys(result.resources), ["data/synthetic-resolver.json"]);
+  assert.equal(result.resources["data/synthetic-resolver.json"].synthetic, true);
+  assert.deepEqual(Object.keys(result.files).sort(), [...fixture.raw.keys()].sort());
+  for (const entry of fixture.manifest.files) assert.equal(result.files[entry.path].sha256, entry.sha256);
+});
+
+for (const file of ["../docs/operations/synthetic/given.png", "assets/images/synthetic.svg", "exams/synthetic.js"]) {
+  test(`scope harness rejects changed digest-only dependency ${path.extname(file)}`, () => {
+    const fixture = scopeHarnessFixture();
+    fixture.raw.set(file, Buffer.concat([fixture.raw.get(file), Buffer.from("SYNTHETIC_CHANGE")]));
+    assert.throws(fixture.run, /Archive2 test input digest mismatch/);
+  });
+  test(`scope harness rejects missing digest-only dependency ${path.extname(file)}`, () => {
+    const fixture = scopeHarnessFixture(); fixture.raw.delete(file);
+    assert.throws(fixture.run, /SYNTHETIC_DEPENDENCY_MISSING/);
+  });
+}
+
+test("scope harness keeps malformed JSON rejection even when its digest is correct", () => {
+  const fixture = scopeHarnessFixture(), file = "data/synthetic-resolver.json";
+  fixture.raw.set(file, Buffer.from("{ malformed JSON"));
+  fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.raw.get(file));
+  assert.throws(fixture.run, /JSON/);
+});
+
+test("scope harness refuses a binary body renamed as a JSON resolver resource", () => {
+  const fixture = scopeHarnessFixture(), file = "data/synthetic-resolver.json";
+  const bytes = fixture.raw.get("../docs/operations/synthetic/given.png");
+  fixture.raw.set(file, bytes);
+  fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.normalized(bytes));
+  assert.throws(fixture.run, /JSON/);
+});
+
+test("scope harness binds a non-JSON dependency digest into the complete projection version", () => {
+  const fixture = scopeHarnessFixture(), file = "../docs/operations/synthetic/given.png";
+  const bytes = Buffer.concat([fixture.raw.get(file), Buffer.from("RESEALED_SYNTHETIC_CHANGE")]);
+  fixture.raw.set(file, bytes);
+  fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.normalized(bytes));
+  assert.throws(fixture.run, /Archive2 test manifest version mismatch/);
+});
+
+test("scope harness refuses removal of a dependency from the committed manifest", () => {
+  const fixture = scopeHarnessFixture(); fixture.manifest.files.pop();
+  assert.throws(fixture.run, /Archive2 test manifest version mismatch/);
+});
+
+function canonicalLoaderBoundary(kind) {
+  const fixture = scopeHarnessFixture(), archiveDir = path.join(root, "archive");
+  const fakeFs = { readFileSync(file, encoding) {
+    let bytes;
+    if (file === path.join(archiveDir, "data/archive2-canonical-input-manifest.json"))
+      bytes = Buffer.from(JSON.stringify(fixture.manifest));
+    else {
+      const entry = [...fixture.raw].find(([relative]) => path.resolve(archiveDir, relative) === file);
+      if (!entry) throw new Error("SYNTHETIC_DEPENDENCY_MISSING");
+      bytes = entry[1];
+    }
+    return encoding ? bytes.toString(encoding) : bytes;
+  } };
+  const run = async () => {
+    if (kind === "readiness") {
+      const relative = "archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs";
+      const source = fs.readFileSync(path.join(root, relative), "utf8");
+      const start = source.indexOf("const archiveRoot ="), end = source.indexOf("const catalog =");
+      assert.ok(start > 0 && end > start, "exercise the actual readiness loader before catalog resolution");
+      const code = source.slice(start, end).replaceAll("import.meta.url", JSON.stringify(new URL("../" + relative, import.meta.url).href));
+      return vm.runInNewContext(code + "\n({files,resources,projectionVersion});", {
+        fs: fakeFs, path, crypto, Buffer, fileURLToPath, core: { normalizeFile: value => value },
+      }, { filename: relative, timeout: 1000 });
+    }
+    const relative = "archive/tools/report-archive2-canonical-impact.mjs";
+    const source = fs.readFileSync(path.join(root, relative), "utf8");
+    const start = source.indexOf("async function loadFinalCatalog("), end = source.indexOf("export async function buildImpactReport(");
+    assert.ok(start > 0 && end > start, "exercise the complete actual impact-report loader");
+    return vm.runInNewContext(source.slice(start, end) + "\nloadFinalCatalog(root);", {
+      fs: fakeFs, path, Buffer, root, sha256: fixture.digest,
+      core: { Canonical: { computeProjectionVersion: canonical.computeProjectionVersion,
+        resolveCatalog: ({ versionBundle }) => versionBundle } },
+    }, { filename: relative, timeout: 1000 });
+  };
+  return { ...fixture, run };
+}
+
+for (const kind of ["readiness", "impact-report"]) {
+  test(`canonical manifest ${kind} loader verifies binary/source dependencies and parses only JSON`, async () => {
+    const fixture = canonicalLoaderBoundary(kind), result = await fixture.run();
+    assert.equal(result.projectionVersion, fixture.manifest.projectionVersion);
+    assert.deepEqual(Object.keys(result.resources), ["data/synthetic-resolver.json"]);
+    assert.deepEqual(Object.keys(result.files).sort(), [...fixture.raw.keys()].sort());
+  });
+  for (const file of ["../docs/operations/synthetic/given.png", "assets/images/synthetic.svg", "exams/synthetic.js"]) {
+    test(`canonical manifest ${kind} loader rejects changed ${path.extname(file)} bytes`, async () => {
+      const fixture = canonicalLoaderBoundary(kind);
+      fixture.raw.set(file, Buffer.concat([fixture.raw.get(file), Buffer.from("SYNTHETIC_CHANGE")]));
+      await assert.rejects(fixture.run, /canonical input digest mismatch/);
+    });
+    test(`canonical manifest ${kind} loader rejects missing ${path.extname(file)} bytes`, async () => {
+      const fixture = canonicalLoaderBoundary(kind); fixture.raw.delete(file);
+      await assert.rejects(fixture.run, /SYNTHETIC_DEPENDENCY_MISSING/);
+    });
+  }
+  test(`canonical manifest ${kind} loader binds resealed binary digests into its projection version`, async () => {
+    const fixture = canonicalLoaderBoundary(kind), file = "../docs/operations/synthetic/given.png";
+    const bytes = Buffer.concat([fixture.raw.get(file), Buffer.from("RESEALED_CHANGE")]);
+    fixture.raw.set(file, bytes); fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.normalized(bytes));
+    await assert.rejects(fixture.run, /projection version mismatch/);
+  });
+  test(`canonical manifest ${kind} loader still rejects malformed JSON with a matching digest`, async () => {
+    const fixture = canonicalLoaderBoundary(kind), file = "data/synthetic-resolver.json";
+    const bytes = Buffer.from("{ malformed JSON"); fixture.raw.set(file, bytes);
+    fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(bytes);
+    await assert.rejects(fixture.run, /JSON/);
+  });
+}
+
 function fixture({ validAssignment = true, catalogSeed = false } = {}) {
   const row = {
     questionUid: uid,

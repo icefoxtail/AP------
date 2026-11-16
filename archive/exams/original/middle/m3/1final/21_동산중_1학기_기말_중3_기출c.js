@@ -26,7 +26,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 좌변을 전개하고 인수분해하여 일차항 계수를 비교합니다.\n정석 풀이:\n$(x+2)(x-4)-7=x^2-2x-8-7=x^2-2x-15=(x+3)(x-5)$입니다.\n따라서 $a,b$는 $3,-5$이므로 $a+b=-2$입니다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
@@ -882,7 +882,7 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -1172,7 +1172,7 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
