@@ -1,0 +1,287 @@
+/* Archive 2.0 standalone pages (모의고사 · 평가 보관함 · 분석표).
+   These pages are not part of workspace.html, but they open from its menus, so they wear the same frame:
+   left menu / phone bottom menu (archive2-navigation.*), tokens (archive2-tokens.css) and the shapes below.
+   Colors, fonts and radii come from archive2-tokens.css only; do not write color numbers here.
+   Page-specific rules stay in each page's own <style>. See archive/DESIGN.md "단독 페이지". */
+
+/* Zero-specificity base: a page rule always wins without needing !important. */
+:where(body.archive2-standalone) {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+:where(body.archive2-standalone) *,
+:where(body.archive2-standalone) *::before,
+:where(body.archive2-standalone) *::after {
+  box-sizing: border-box;
+}
+:where(body.archive2-standalone) :is(button, input, select, textarea) {
+  font: inherit;
+  touch-action: manipulation;
+}
+:where(body.archive2-standalone) a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+}
+:where(body.archive2-standalone) a:hover {
+  color: var(--brand-hover);
+}
+
+/* Buttons: ink-outline pill by default, ink fill for the main action, brand text for link-like. */
+:where(body.archive2-standalone) button {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+}
+:where(body.archive2-standalone) button:hover:not(:disabled) {
+  background: var(--chip);
+}
+:where(body.archive2-standalone) button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+:where(body.archive2-standalone) button.primary {
+  background: var(--ink);
+  color: #fff;
+}
+:where(body.archive2-standalone) button.primary:hover:not(:disabled) {
+  background: var(--ink-hover);
+}
+:where(body.archive2-standalone) button[aria-pressed="true"],
+:where(body.archive2-standalone) button.active {
+  background: var(--ink);
+  color: #fff;
+}
+:where(body.archive2-standalone) button[aria-pressed="true"]:hover:not(:disabled),
+:where(body.archive2-standalone) button.active:hover:not(:disabled) {
+  background: var(--ink-hover);
+}
+
+/* Fields: 44px tall, 10px radius, visible 1px border, 16px text on a phone (no zoom on focus). */
+:where(body.archive2-standalone) :is(input:not([type="checkbox"], [type="radio"]), select, textarea) {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--control-line);
+  border-radius: var(--radius-field);
+  background: var(--surface);
+  color: var(--ink);
+}
+:where(body.archive2-standalone) textarea {
+  padding: 10px 12px;
+}
+:where(body.archive2-standalone) :is(input[type="checkbox"], input[type="radio"]) {
+  accent-color: var(--ink);
+}
+:where(body.archive2-standalone) :is(input, select, textarea, button, summary, a):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+:where(body.archive2-standalone) ::placeholder {
+  color: var(--muted);
+}
+
+/* Page frame: same rhythm as workspace <main> (48px, 24px tablet, 16px phone). */
+.sa-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px 48px 80px;
+}
+.sa-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 0 0 24px;
+}
+.sa-title,
+.sa-head h1 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.sa-lead {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+/* A quiet notice (empty list, waiting, error). Never a colored stripe. */
+.sa-notice {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.sa-notice.is-warn {
+  border-color: var(--warn);
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+.sa-notice.is-error {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger-ink);
+}
+
+@media (max-width: 960px) {
+  .sa-main {
+    padding: 24px 24px 40px;
+  }
+  .sa-title,
+  .sa-head h1 {
+    font-size: 26px;
+  }
+}
+@media (max-width: 700px) {
+  .sa-main {
+    padding: 20px 16px 32px;
+  }
+}
+@media (max-width: 600px) {
+  :where(body.archive2-standalone) :is(input:not([type="checkbox"], [type="radio"]), select, textarea) {
+    font-size: 16px;
+  }
+}
+
+/* Card family shared by 시험지 보관함 and 분석표 (both wear body.archive2-assessment). */
+body.archive2-assessment .exam-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  color: var(--ink);
+}
+body.archive2-assessment .card-body {
+  padding: 20px 22px;
+}
+body.archive2-assessment .card-grade-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+body.archive2-assessment .card-grade-label {
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+}
+body.archive2-assessment .card-type-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+body.archive2-assessment .card-main-title {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+body.archive2-assessment .card-sub-title {
+  display: block;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+body.archive2-assessment .card-meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+body.archive2-assessment .meta-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-field);
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+/* Grade marks wear the grade color with white text (the same rule as grade buttons and exam spines). */
+body.archive2-assessment .meta-badge[data-grade] {
+  border-color: var(--grade);
+  background: var(--grade);
+  color: #fff;
+}
+body.archive2-assessment .meta-badge.green {
+  border-color: var(--good);
+  background: var(--good-bg);
+  color: var(--good);
+}
+body.archive2-assessment .empty-state {
+  padding: 16px 18px;
+  border: 1px solid var(--warn);
+  border-radius: var(--radius-card);
+  background: var(--warn-bg);
+  color: var(--warn);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+body.archive2-assessment .stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--chip);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+}
+body.archive2-assessment .stat strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+/* Printing never shows the menu or its page offsets (the printed sheet is the page's own business). */
+@media print {
+  body.archive2-shell {
+    padding: 0 !important;
+  }
+  .archive-navigation {
+    display: none !important;
+  }
+}

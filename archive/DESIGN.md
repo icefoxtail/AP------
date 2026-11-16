@@ -115,6 +115,13 @@
 - 준비 전에 누를 수 있는 메뉴·칩·검색은 즉시 그 화면으로 옮기고, 본문에 화면 이름과 진행 줄이 보이며 "자료 준비가 끝나면 이 화면이 저절로 열립니다."라고 알린다. 다시 누르게 하지 않는다.
 - 진행 줄은 실제로 끝난 일(받은 파일 수, 해석 단계)에서만 움직이고 가짜로 채우지 않는다. 색은 토큰만 쓰고 `prefers-reduced-motion`에서는 움직임이 없다. 실패하면 홈은 그대로 두고 기출 자리에 이유와 `다시 시도`, 다른 화면은 본문에 같은 안내가 나온다.
 
+## 단독 페이지 (모의고사 · 시험지 보관함 · 분석표, 2026-11-16)
+
+- 대상: `generated-bank.html`(모의고사), `assessment/assessment-mvp.html`(시험지 보관함), `assessment/assessment-analysis.html`(분석표). 홈·학교별 기출·AP Math OS에서 링크로 들어오는 화면이라 **작업공간과 같은 틀**을 쓴다: 토큰(`archive2-tokens.css`) + 공용 모양(`archive2-standalone.css`) + 메뉴(`archive2-navigation.*`). 이유: 예전 남색·자체 글꼴 화면은 메뉴가 없어 다른 사이트처럼 보였고 돌아갈 길이 없었다.
+- 붙이는 법: `<body class="archive2-standalone [archive2-assessment] archive2-shell">`, 맨 위 `<header data-archive-navigation="standalone" ...>`, 바로 뒤에 `archive2-session.js`·`archive2-navigation.js`(`defer` 없이). 하위 폴더(`assessment/`)는 `data-archive-base="../"`로 메뉴 링크·로그인 링크 경로를 맞추고, `data-archive-view`로 현재 칸(모의고사 = 빠른 평가 `five-minute`, 시험지 보관함·분석표 = 보관함 `saved`), `data-archive-title`로 휴대폰 위 띠 이름을 정한다. 시험지 보관함은 `?scope=subunit`(빠른 평가 소단원 평가에서 들어옴)일 때 현재 칸이 빠른 평가이고 이름이 "소단원 평가 보관함"이다. AP Math OS가 `#apmsess=`로 넘기는 로그인은 메뉴가 읽기 전에 `archive-session.js`가 먼저 복원한다.
+- 모양은 이 문서의 나머지와 같다: 제목 `Black Han Sans` 34px(휴대폰 26px, 메뉴 위 띠와 같은 글자면 휴대폰에서 화면에서만 숨김), 카드 반지름 12 + 1px 선(그림자·그라데이션 없음), 주 버튼 검정 알약, 보조 버튼 글자색 1.5px 알약, 선택된 카드는 2px 글자색 테두리 + `--selected` 바탕, 학년 표시는 학년 색 + 흰 글자, 누르는 칸·입력 44px 이상, 대화상자는 2px 글자색 테두리 + 반지름 16(+ 반투명 막). 색은 토큰만 쓰고 화면 CSS에 색 숫자를 쓰지 않는다(흰 글자 `#fff`와 반투명 막 제외). 어두운 화면 규칙은 두지 않는다.
+- 교사에게 영문 상태값·파일 경로·내부 이름을 보이지 않는다: 검수·사용 상태는 "검수 완료 / 사용 가능"처럼 말로, 원본 시험지는 경로가 아니라 시험 이름으로, 평가팩 내부 번호는 카드에 쓰지 않는다. 출력(인쇄) 본문은 이 디자인과 무관하게 그대로다.
+
 ## 금지
 
 - 제목 위의 작은 영문 머리말(eyebrow).

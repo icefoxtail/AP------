@@ -199,3 +199,18 @@ test('native unit assignment embeds without changing assignment APIs and cannot 
   assert.equal(messages[0].message.type,'archive2-original-close');
   assert.equal(messages[0].origin,'https://archive.test');
 });
+
+test('standalone pages in a sub folder keep the menu working: base prefix, chosen current entry and custom phone title', () => {
+  const html = navigation.markup('standalone', { view: 'saved', title: '시험지 보관함', base: '../' });
+  assert.match(html, /href="\.\.\/workspace\.html\?view=home"/, 'brand');
+  assert.match(html, /href="\.\.\/unit-past-exams\.html\?ready=1" data-nav-key="unit"/);
+  assert.match(html, /href="\.\.\/workspace\.html\?view=saved" data-nav-key="library" aria-current="page" class="active"/);
+  assert.equal((html.match(/aria-current="page"/g) || []).length, 2, 'one current entry in the PC menu and one in the phone menu');
+  assert.match(html, /<span class="archive-mobile-title">시험지 보관함<\/span>/);
+  assert.match(html, /href="\.\.\/\.\.\/apmath\/"/, 'login link reaches AP Math OS from archive/assessment/');
+  assert.doesNotMatch(html, /href="workspace\.html|href="unit-past-exams\.html/, 'no un-prefixed links');
+  const quick = navigation.markup('standalone', { view: 'five-minute', title: '모의고사' });
+  assert.match(quick, /href="workspace\.html\?view=five-minute" data-nav-key="quick" aria-current="page" class="active"/);
+  assert.match(quick, /href="\.\.\/apmath\/"/);
+  assert.equal(navigation.markup('standalone', { view: 'saved' }).includes('archive-mobile-title">보관함<'), true, 'default title still comes from the view');
+});
