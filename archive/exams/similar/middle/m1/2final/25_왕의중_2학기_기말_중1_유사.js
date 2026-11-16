@@ -42,7 +42,7 @@ window.questionBank = [
     "rpmL2Label": "다각형",
     "rpmL3Label": "삼각형·다각형의 각",
     "rpmL4Label": "각의 크기 계산",
-    "solution": "삼각형 $ABC$의 세 내각의 크기의 합은 $180^\\circ$이므로 $\\begin{aligned} \\angle A &= 180^\\circ - 40^\\circ - 60^\\circ \\\\ &= 80^\\circ \\end{aligned}$ $\\overline{AD}$가 $\\angle A$의 이등분선이므로 $\\begin{aligned} \\angle DAC &= \\dfrac{1}{2} \\angle A \\\\ &= \\dfrac{1}{2} \\times 80^\\circ \\\\ &= 40^\\circ \\end{aligned}$ 삼각형 $ADC$의 세 내각의 크기의 합은 $180^\\circ$이므로 $\\begin{aligned} \\angle ADC &= 180^\\circ - \\angle DAC - \\angle C \\\\ &= 180^\\circ - 40^\\circ - 60^\\circ \\\\ &= 80^\\circ \\end{aligned}$ 따라서 정답은 ③이다.",
+    "solution": "삼각형 $ABC$의 세 내각의 크기의 합은 $180^\\circ$이므로\n\n$$\n\\begin{aligned}\n\\angle A &= 180^\\circ - 40^\\circ - 60^\\circ \\\\\n&= 80^\\circ\n\\end{aligned}\n$$\n\n$\\overline{AD}$가 $\\angle A$의 이등분선이므로\n\n$$\n\\begin{aligned}\n\\angle DAC &= \\dfrac{1}{2} \\angle A \\\\\n&= \\dfrac{1}{2} \\times 80^\\circ \\\\\n&= 40^\\circ\n\\end{aligned}\n$$\n\n삼각형 $ADC$의 세 내각의 크기의 합은 $180^\\circ$이므로\n\n$$\n\\begin{aligned}\n\\angle ADC &= 180^\\circ - \\angle DAC - \\angle C \\\\\n&= 180^\\circ - 40^\\circ - 60^\\circ \\\\\n&= 80^\\circ\n\\end{aligned}\n$$\n\n따라서 정답은 ③이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q01-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q01-solution.plan.json"
@@ -89,7 +89,7 @@ window.questionBank = [
     "rpmL4Label": "내각의 합",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
-    "solution": "외각의 크기가 각각 $40^\\circ$, $50^\\circ$인 꼭짓점의 내각의 크기는 다음과 같다. $\\begin{aligned} 180^\\circ - 40^\\circ &= 140^\\circ \\\\ 180^\\circ - 50^\\circ &= 130^\\circ \\end{aligned}$ 육각형의 내각의 크기의 합은 $\\begin{aligned} (6-2) \\times 180^\\circ &= 4 \\times 180^\\circ \\\\ &= 720^\\circ \\end{aligned}$ 육각형의 여섯 내각의 합이 $720^\\circ$이므로 $\\begin{aligned} 140^\\circ + 130^\\circ + 115^\\circ + 120^\\circ + 110^\\circ + x &= 720^\\circ \\\\ 615^\\circ + x &= 720^\\circ \\\\ x &= 720^\\circ - 615^\\circ \\\\ &= 105^\\circ \\end{aligned}$ 따라서 정답은 ①이다.",
+    "solution": "외각의 크기가 각각 $40^\\circ$, $50^\\circ$인 꼭짓점의 내각의 크기는 다음과 같다.\n\n$$\n\\begin{aligned}\n180^\\circ - 40^\\circ &= 140^\\circ \\\\\n180^\\circ - 50^\\circ &= 130^\\circ\n\\end{aligned}\n$$\n\n육각형의 내각의 크기의 합은\n\n$$\n\\begin{aligned}\n(6-2) \\times 180^\\circ &= 4 \\times 180^\\circ \\\\\n&= 720^\\circ\n\\end{aligned}\n$$\n\n육각형의 여섯 내각의 합이 $720^\\circ$이므로\n\n$$\n\\begin{aligned}\n140^\\circ + 130^\\circ + 115^\\circ + 120^\\circ + 110^\\circ + x &= 720^\\circ \\\\\n615^\\circ + x &= 720^\\circ \\\\\nx &= 720^\\circ - 615^\\circ \\\\\n&= 105^\\circ\n\\end{aligned}\n$$\n\n따라서 정답은 ①이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q02-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q02-solution.plan.json"
@@ -136,7 +136,7 @@ window.questionBank = [
     "rpmL4Label": "정다각형의 성질",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
-    "solution": "각 선지의 참·거짓을 판별한다. $\\begin{aligned} \\text{① } & \\text{삼각형의 꼭짓점의 수는 } 3\\text{개이고, 자기 자신과 이웃한 두 꼭짓점을 빼면 } 3-3=0\\text{이므로} \\\\ & \\text{대각선을 그을 수 없다. (참)} \\\\ \\text{② } & \\text{정다각형은 '모든 변의 길이가 같고 모든 내각의 크기가 같은 다각형'이다.} \\\\ & \\text{정사각형이 아닌 마름모는 네 변의 길이가 모두 같지만 내각의 크기가 같지 않으므로 정다각형이 아니다. (거짓)} \\\\ \\text{③ } & n\\text{각형의 한 꼭짓점에서 자기 자신과 이웃한 두 꼭짓점을 제외한 꼭짓점에 대각선을 그을 수 있으므로} \\\\ & \\text{대각선의 개수는 } n-3\\text{개이다. (참)} \\\\ \\text{④ } & \\text{모든 다각형의 외각의 크기의 합은 변의 개수와 관계없이 항상 } 360^\\circ\\text{이다. (참)} \\\\ \\text{⑤ } & n\\text{각형의 한 꼭짓점에서 대각선을 그을 때 생기는 삼각형의 개수는 } n-2\\text{개이므로} \\\\ & 6-2=4\\text{개의 삼각형으로 나누어진다. (참)} \\end{aligned}$ 따라서 옳지 않은 것은 ②이다.",
+    "solution": "각 선지의 참·거짓을 판별한다.\n① 삼각형은 꼭짓점이 $3$개이고 자기 자신과 이웃한 두 꼭짓점을 빼면 $3-3=0$이므로 대각선을 그을 수 없다. (참)\n② 정다각형은 '모든 변의 길이가 같고 모든 내각의 크기가 같은 다각형'이다. 정사각형이 아닌 마름모는 네 변의 길이가 모두 같지만 내각의 크기가 같지 않으므로 정다각형이 아니다. (거짓)\n③ $n$각형의 한 꼭짓점에서 자기 자신과 이웃한 두 꼭짓점을 제외한 꼭짓점에 대각선을 그을 수 있으므로 대각선의 개수는 $n-3$개이다. (참)\n④ 모든 다각형의 외각의 크기의 합은 변의 개수와 관계없이 항상 $360^\\circ$이다. (참)\n⑤ $n$각형의 한 꼭짓점에서 대각선을 그을 때 생기는 삼각형의 개수는 $n-2$개이므로 $6-2=4$개의 삼각형으로 나누어진다. (참)\n\n따라서 옳지 않은 것은 ②이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q03-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q03-solution.plan.json"
@@ -163,7 +163,7 @@ window.questionBank = [
       "다각형과 원",
       "도형"
     ],
-    "content": "한 원 $O$에서 세 호의 길이가 $\\overset{\\frown}{AB} = \\overset{\\frown}{BC} = \\overset{\\frown}{CD}$로 서로 같을 때, 다음 설명 중 옳지 않은 것은? [4점]\n점 A, B, C, D는 원 O 위에 이 순서대로 놓여 있고, 호 AB, BC, CD는 원 위에서 연속한 같은 크기의 호이다. 이 세 호를 합친 호 AD는 반원보다 짧다.",
+    "content": "한 원 $O$ 위에 네 점 $A, B, C, D$가 이 순서대로 놓여 있고 호 $AD$는 반원보다 짧다. 세 호의 길이가 $\\overset{\\frown}{AB} = \\overset{\\frown}{BC} = \\overset{\\frown}{CD}$로 서로 같을 때, 다음 설명 중 옳지 않은 것은? [4점]",
     "choices": [
       "$\\overline{AB} = \\overline{CD}$이다.",
       "$\\angle AOC = 2\\angle AOB$이다.",
@@ -184,7 +184,7 @@ window.questionBank = [
     "rpmL4Label": "중심각·호·현",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
-    "solution": "같은 원에서 같은 크기의 호는 같은 중심각과 같은 현에 대응한다. 호 AB=BC=CD이고 세 호를 합친 호 AD가 반원보다 짧으므로, 각 호의 중심각을 θ라 하면 3θ<180°이다. 따라서 θ<60°이고 호 AC에 대응하는 중심각은 2θ이다.\n① 호 AB와 CD가 같으므로 현 AB와 CD의 길이는 같다. 참이다.\n② ∠AOC=∠AOB+∠BOC=2∠AOB이다. 참이다.\n③ 부채꼴의 넓이는 중심각에 비례하므로 AOC 부채꼴의 넓이는 AOB 부채꼴의 2배이다. 참이다.\n④ 삼각형 ABC에서 AC<AB+BC=2AB이므로 AC=2AB는 성립하지 않는다. 거짓이다.\n⑤ 호 AC는 호 AB와 BC를 합친 것이므로 AB의 2배이다. 참이다.\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "같은 원에서 같은 크기의 호는 같은 중심각과 같은 현에 대응한다. 호 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$이고 세 호를 합친 호 $\\overset{\\frown}{AD}$가 반원보다 짧으므로, 각 호의 중심각을 $\\theta$라 하면 $3\\theta<180^\\circ$이다. 따라서 $\\theta<60^\\circ$이고 호 $\\overset{\\frown}{AC}$에 대응하는 중심각은 $2\\theta$이다.\n① 호 $\\overset{\\frown}{AB}$와 $\\overset{\\frown}{CD}$가 같으므로 현 $\\overline{AB}$와 $\\overline{CD}$의 길이는 같다. 참이다.\n② $\\angle AOC=\\angle AOB+\\angle BOC=2\\angle AOB$이다. 참이다.\n③ 부채꼴의 넓이는 중심각에 비례하므로 $AOC$ 부채꼴의 넓이는 $AOB$ 부채꼴의 $2$배이다. 참이다.\n④ 삼각형 $ABC$에서 $AC<AB+BC=2AB$이므로 $AC=2AB$는 성립하지 않는다. 거짓이다.\n⑤ 호 $\\overset{\\frown}{AC}$는 호 $\\overset{\\frown}{AB}$와 $\\overset{\\frown}{BC}$를 합친 것이므로 $\\overset{\\frown}{AB}$의 $2$배이다. 참이다.\n따라서 옳지 않은 것은 ④이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q04-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q04-solution.plan.json"
@@ -210,7 +210,7 @@ window.questionBank = [
       "평면도형의 성질",
       "다각형과 원"
     ],
-    "content": "다음 조건을 만족시키는 다각형의 대각선의 개수는? [4점]\n• 모든 변의 길이와 모든 내각의 크기가 같다. • 한 외각의 크기는 $36^\\circ$이다.",
+    "content": "다음 조건을 만족시키는 다각형의 대각선의 개수는? [4점]\n• 모든 변의 길이와 모든 내각의 크기가 같다.\n• 한 외각의 크기는 $36^\\circ$이다.",
     "choices": [
       "$20$개",
       "$25$개",
@@ -231,7 +231,7 @@ window.questionBank = [
     "rpmL4Label": "변·대각선 개수",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
-    "solution": "주어진 다각형은 정다각형이다. 정다각형의 외각의 크기의 합은 항상 $360^\\circ$이므로 변의 개수를 $n$이라 하면 $\\begin{aligned} 36^\\circ \\times n &= 360^\\circ \\\\ n &= \\dfrac{360^\\circ}{36^\\circ} \\\\ &= 10 \\end{aligned}$ 따라서 주어진 다각형은 정십각형이다. $n$각형의 대각선의 개수 구하는 공식 $\\dfrac{n(n-3)}{2}$에 $n=10$을 대입하면 $\\begin{aligned} \\text{대각선의 개수} &= \\dfrac{10 \\times (10-3)}{2} \\\\ &= \\dfrac{10 \\times 7}{2} \\\\ &= 35\\text{ (개)} \\end{aligned}$ 따라서 정답은 ⑤이다.",
+    "solution": "주어진 다각형은 정다각형이다. 정다각형의 외각의 크기의 합은 항상 $360^\\circ$이므로 변의 개수를 $n$이라 하면\n\n$$\n\\begin{aligned}\n36^\\circ \\times n &= 360^\\circ \\\\\nn &= \\dfrac{360^\\circ}{36^\\circ} \\\\\n&= 10\n\\end{aligned}\n$$\n\n따라서 주어진 다각형은 정십각형이다. $n$각형의 대각선의 개수 구하는 공식 $\\dfrac{n(n-3)}{2}$에 $n=10$을 대입하면\n\n$$\n\\begin{aligned}\n\\text{대각선의 개수} &= \\dfrac{10 \\times (10-3)}{2} \\\\\n&= \\dfrac{10 \\times 7}{2} \\\\\n&= 35\\text{ (개)}\n\\end{aligned}\n$$\n\n따라서 정답은 ⑤이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q05-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q05-solution.plan.json"
@@ -278,7 +278,7 @@ window.questionBank = [
     "rpmL4Label": "정다면체의 종류",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
-    "solution": "정다면체 5가지의 면의 모양, 꼭짓점의 개수, 모서리의 개수를 점검한다. $\\begin{aligned} \\text{① } & \\text{정십이면체의 면의 모양은 정오각형이다. (참)} \\\\ \\text{② } & \\text{정팔면체의 모서리의 개수는 } 12\\text{개이다. (거짓)} \\\\ \\text{③ } & \\text{한 꼭짓점에 모인 면의 개수가 } 3\\text{개인 정다면체는 정사면체, 정육면체, 정십이면체의 } 3\\text{가지이다. (거짓)} \\\\ \\text{④ } & \\text{정이십면체의 꼭짓점의 개수는 } 12\\text{개이다. (거짓, } 20\\text{개는 면의 수)} \\\\ \\text{⑤ } & \\text{정다면체는 정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체의 } 5\\text{가지뿐이다. (거짓)} \\end{aligned}$ 따라서 옳은 것은 ①이다.",
+    "solution": "정다면체 5가지의 면의 모양, 꼭짓점의 개수, 모서리의 개수를 점검한다.\n① 정십이면체의 면의 모양은 정오각형이다. (참)\n② 정팔면체의 모서리의 개수는 $12$개이다. (거짓)\n③ 한 꼭짓점에 모인 면의 개수가 $3$개인 정다면체는 정사면체, 정육면체, 정십이면체의 $3$가지이다. (거짓)\n④ 정이십면체의 꼭짓점의 개수는 $12$개이다. (거짓, $20$개는 면의 수)\n⑤ 정다면체는 정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체의 $5$가지뿐이다. (거짓)\n\n따라서 옳은 것은 ①이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q06-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q06-solution.plan.json"
@@ -325,7 +325,7 @@ window.questionBank = [
     "rpmL4Label": "정다각형의 각",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
-    "solution": "정다각형의 변의 개수를 $n$이라 하면 내각의 크기의 합은 $(n-2) \\times 180^\\circ$이므로 $\\begin{aligned} (n-2) \\times 180^\\circ &= 1800^\\circ \\\\ n-2 &= \\dfrac{1800^\\circ}{180^\\circ} \\\\ n-2 &= 10 \\\\ n &= 12 \\end{aligned}$ 따라서 구하는 정다각형은 정십이각형이다. 정십이각형의 모든 외각의 크기의 합은 $360^\\circ$이므로 한 외각의 크기는 $\\begin{aligned} \\text{한 외각의 크기} &= \\dfrac{360^\\circ}{12} \\\\ &= 30^\\circ \\end{aligned}$ 따라서 정답은 ②이다.",
+    "solution": "정다각형의 변의 개수를 $n$이라 하면 내각의 크기의 합은 $(n-2) \\times 180^\\circ$이므로\n\n$$\n\\begin{aligned}\n(n-2) \\times 180^\\circ &= 1800^\\circ \\\\\nn-2 &= \\dfrac{1800^\\circ}{180^\\circ} \\\\\nn-2 &= 10 \\\\\nn &= 12\n\\end{aligned}\n$$\n\n따라서 구하는 정다각형은 정십이각형이다. 정십이각형의 모든 외각의 크기의 합은 $360^\\circ$이므로 한 외각의 크기는\n\n$$\n\\begin{aligned}\n\\text{한 외각의 크기} &= \\dfrac{360^\\circ}{12} \\\\\n&= 30^\\circ\n\\end{aligned}\n$$\n\n따라서 정답은 ②이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q07-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q07-solution.plan.json"
@@ -352,7 +352,7 @@ window.questionBank = [
       "평면도형의 측정",
       "도형"
     ],
-    "content": "한 변의 길이가 $6\\,\\mathrm{cm}$인 정사각형의 각 꼭짓점을 중심으로 하고 한 변의 길이를 반지름으로 하는 호 4개를 정사각형 내부에 그렸다. 이때 색칠한 도형의 둘레의 길이는? [5점]\n색칠한 도형의 둘레는 반지름이 $6\\,\\mathrm{cm}$이고 중심각이 각각 $30^\\circ$인 원호 8개로 이루어져 있다.",
+    "content": "한 변의 길이가 $6\\,\\mathrm{cm}$인 정사각형의 각 꼭짓점을 중심으로 하고 한 변의 길이를 반지름으로 하는 호 4개를 정사각형 내부에 그렸다. 이때 색칠한 도형의 둘레의 길이는? [5점]\n색칠한 도형은 마주 보는 두 꼭짓점을 중심으로 하는 두 호가 둘러싸는 렌즈 모양과, 나머지 두 꼭짓점을 중심으로 하는 두 호가 둘러싸는 렌즈 모양을 합친 도형이다.",
     "choices": [
       "$6\\pi\\,\\mathrm{cm}$",
       "$7\\pi\\,\\mathrm{cm}$",
@@ -373,7 +373,7 @@ window.questionBank = [
     "rpmL4Label": "부채꼴을 포함한 둘레",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
-    "solution": "색칠한 도형의 둘레를 이루는 원호는 모두 8개이다. 각 원호의 반지름은 6 cm이고 중심각은 30°이므로 한 원호의 길이는 2π×6×(30/360)=π cm이다.\n따라서 색칠한 도형의 둘레의 길이는 8×π=8π cm이다. 정답은 ③이다.",
+    "solution": "정사각형의 한 변의 길이를 반지름으로 하는 호들이 만나 이루는 교점과 꼭짓점을 이으면 정삼각형이 만들어진다. 정삼각형의 한 내각의 크기는 $60^\\circ$이므로, 정사각형의 직각 $90^\\circ$에서 $60^\\circ$를 빼면 색칠한 도형의 경계를 이루는 각 호의 중심각은 $30^\\circ$이다.\n\n$$\n90^\\circ - 60^\\circ = 30^\\circ\n$$\n\n각 변에 대해 중심각이 $30^\\circ$인 호가 $2$개씩 있으므로 색칠한 도형의 둘레를 이루는 호는 $4 \\times 2 = 8$개이다. 따라서 호들의 중심각의 총합은\n\n$$\n30^\\circ \\times 8 = 240^\\circ\n$$\n\n반지름이 $6\\,\\mathrm{cm}$이므로 구하는 둘레의 길이는\n\n$$\n\\begin{aligned}\n2\\pi \\times 6 \\times \\dfrac{240^\\circ}{360^\\circ} &= 12\\pi \\times \\dfrac{2}{3} \\\\\n&= 8\\pi\\,\\mathrm{cm}\n\\end{aligned}\n$$\n\n따라서 정답은 ③ $8\\pi\\,\\mathrm{cm}$이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q08-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q08-solution.plan.json"
@@ -418,7 +418,7 @@ window.questionBank = [
     "rpmL2Label": "다면체와 회전체",
     "rpmL3Label": "다면체",
     "rpmL4Label": "면·모서리·꼭짓점",
-    "solution": "각 다면체의 면의 개수를 구하면 다음과 같다. $\\begin{aligned} \\text{① 정사면체} &: 4\\text{개} \\\\ \\text{② 오각뿔} &: 5+1 = 6\\text{개} \\\\ \\text{③ 육각뿔대} &: 6+2 = 8\\text{개} \\\\ \\text{④ 칠각기둥} &: 7+2 = 9\\text{개} \\\\ \\text{⑤ 정팔면체} &: 8\\text{개} \\end{aligned}$ 면의 개수를 비교하면 $4 < 6 < 8 = 8 < 9$이므로 면이 가장 많은 다면체는 칠각기둥($9$개)이다. 따라서 정답은 ④이다.",
+    "solution": "각 다면체의 면의 개수를 구하면 다음과 같다.\n\n$$\n\\begin{aligned}\n\\text{① 정사면체} &: 4\\text{개} \\\\\n\\text{② 오각뿔} &: 5+1 = 6\\text{개} \\\\\n\\text{③ 육각뿔대} &: 6+2 = 8\\text{개} \\\\\n\\text{④ 칠각기둥} &: 7+2 = 9\\text{개} \\\\\n\\text{⑤ 정팔면체} &: 8\\text{개}\n\\end{aligned}\n$$\n\n면의 개수를 비교하면 $4 < 6 < 8 = 8 < 9$이므로 면이 가장 많은 다면체는 칠각기둥($9$개)이다. 따라서 정답은 ④이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q09-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q09-solution.plan.json"
@@ -465,7 +465,7 @@ window.questionBank = [
     "rpmL4Label": "회전체의 단면",
     "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
     "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
-    "solution": "각 회전체를 회전축을 포함하는 평면으로 잘랐을 때 생기는 단면의 모양을 조사한다. $\\begin{aligned} \\text{① 구} &: \\text{원} \\\\ \\text{② 원뿔} &: \\text{이등변삼각형} \\\\ \\text{③ 원뿔대} &: \\text{등변사다리꼴} \\\\ \\text{④ 반구} &: \\text{반원} \\\\ \\text{⑤ 원기둥} &: \\text{직사각형} \\end{aligned}$ 따라서 회전축을 포함하는 단면이 직사각형인 회전체는 원기둥이다. 따라서 정답은 ⑤이다.",
+    "solution": "각 회전체를 회전축을 포함하는 평면으로 잘랐을 때 생기는 단면의 모양을 조사한다.\n\n$$\n\\begin{aligned}\n\\text{① 구} &: \\text{원} \\\\\n\\text{② 원뿔} &: \\text{이등변삼각형} \\\\\n\\text{③ 원뿔대} &: \\text{등변사다리꼴} \\\\\n\\text{④ 반구} &: \\text{반원} \\\\\n\\text{⑤ 원기둥} &: \\text{직사각형}\n\\end{aligned}\n$$\n\n따라서 회전축을 포함하는 단면이 직사각형인 회전체는 원기둥이다. 따라서 정답은 ⑤이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q10-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q10-solution.plan.json"
@@ -513,7 +513,7 @@ window.questionBank = [
     "rpmL4Label": "구의 겉넓이",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
-    "solution": "반지름이 $r=6\\,\\mathrm{cm}$인 구를 4등분한 입체도형의 겉넓이는 둥근 곡면의 넓이와 잘린 두 평면(반원 2개)의 넓이의 합이다. $\\begin{aligned} \\text{곡면의 넓이} &= \\dfrac{1}{4} \\times 4\\pi r^2 \\\\ &= \\pi \\times 6^2 \\\\ &= 36\\pi\\,\\mathrm{cm}^2 \\end{aligned}$ 잘린 두 평면은 각각 반지름이 $6\\,\\mathrm{cm}$인 반원이므로 두 반원의 넓이의 합은 반지름이 $6\\,\\mathrm{cm}$인 원 $1$개의 넓이와 같다. $\\begin{aligned} \\text{두 반원의 넓이의 합} &= \\pi r^2 \\\\ &= \\pi \\times 6^2 \\\\ &= 36\\pi\\,\\mathrm{cm}^2 \\end{aligned}$ 따라서 구하는 입체도형의 겉넓이는 $\\begin{aligned} \\text{겉넓이} &= 36\\pi + 36\\pi \\\\ &= 72\\pi\\,\\mathrm{cm}^2 \\end{aligned}$ 따라서 정답은 ①이다.",
+    "solution": "반지름이 $r=6\\,\\mathrm{cm}$인 구를 4등분한 입체도형의 겉넓이는 둥근 곡면의 넓이와 잘린 두 평면(반원 2개)의 넓이의 합이다.\n\n$$\n\\begin{aligned}\n\\text{곡면의 넓이} &= \\dfrac{1}{4} \\times 4\\pi r^2 \\\\\n&= \\pi \\times 6^2 \\\\\n&= 36\\pi\\,\\mathrm{cm}^2\n\\end{aligned}\n$$\n\n잘린 두 평면은 각각 반지름이 $6\\,\\mathrm{cm}$인 반원이므로 두 반원의 넓이의 합은 반지름이 $6\\,\\mathrm{cm}$인 원 $1$개의 넓이와 같다.\n\n$$\n\\begin{aligned}\n\\text{두 반원의 넓이의 합} &= \\pi r^2 \\\\\n&= \\pi \\times 6^2 \\\\\n&= 36\\pi\\,\\mathrm{cm}^2\n\\end{aligned}\n$$\n\n따라서 구하는 입체도형의 겉넓이는\n\n$$\n\\begin{aligned}\n\\text{겉넓이} &= 36\\pi + 36\\pi \\\\\n&= 72\\pi\\,\\mathrm{cm}^2\n\\end{aligned}\n$$\n\n따라서 정답은 ①이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q11-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q11-solution.plan.json"
@@ -560,7 +560,7 @@ window.questionBank = [
     "rpmL4Label": "원뿔",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
-    "solution": "원뿔의 밑면의 반지름의 길이를 $r\\,\\mathrm{cm}$라 하면, 옆넓이는 $\\pi r l$이므로 $\\begin{aligned} \\pi \\times r \\times 10 &= 40\\pi \\\\ 10\\pi r &= 40\\pi \\\\ r &= 4\\,\\mathrm{cm} \\end{aligned}$ 원뿔의 밑넓이는 $\\begin{aligned} \\text{밑넓이} &= \\pi r^2 \\\\ &= \\pi \\times 4^2 \\\\ &= 16\\pi\\,\\mathrm{cm}^2 \\end{aligned}$ 따라서 원뿔의 겉넓이는 옆넓이와 밑넓이의 합이므로 $\\begin{aligned} \\text{겉넓이} &= \\text{옆넓이} + \\text{밑넓이} \\\\ &= 40\\pi + 16\\pi \\\\ &= 56\\pi\\,\\mathrm{cm}^2 \\end{aligned}$ 따라서 정답은 ②이다.",
+    "solution": "원뿔의 밑면의 반지름의 길이를 $r\\,\\mathrm{cm}$라 하면, 옆넓이는 $\\pi r l$이므로\n\n$$\n\\begin{aligned}\n\\pi \\times r \\times 10 &= 40\\pi \\\\\n10\\pi r &= 40\\pi \\\\\nr &= 4\\,\\mathrm{cm}\n\\end{aligned}\n$$\n\n원뿔의 밑넓이는\n\n$$\n\\begin{aligned}\n\\text{밑넓이} &= \\pi r^2 \\\\\n&= \\pi \\times 4^2 \\\\\n&= 16\\pi\\,\\mathrm{cm}^2\n\\end{aligned}\n$$\n\n따라서 원뿔의 겉넓이는 옆넓이와 밑넓이의 합이므로\n\n$$\n\\begin{aligned}\n\\text{겉넓이} &= \\text{옆넓이} + \\text{밑넓이} \\\\\n&= 40\\pi + 16\\pi \\\\\n&= 56\\pi\\,\\mathrm{cm}^2\n\\end{aligned}\n$$\n\n따라서 정답은 ②이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q12-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q12-solution.plan.json"
@@ -607,7 +607,7 @@ window.questionBank = [
     "rpmL4Label": "구의 겉넓이",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT",
-    "solution": "공의 반지름의 길이를 $r\\,\\mathrm{cm}$라 하자. 공이 원기둥의 옆면에 꼭 맞으므로 원기둥의 밑면의 반지름의 길이는 $r\\,\\mathrm{cm}$이다. 또한 공 $3$개가 세로로 쌓여 위아래 두 밑면에 접하므로 원기둥의 높이는 공 $3$개의 지름의 합과 같다. $\\begin{aligned} \\text{원기둥의 높이} &= 3 \\times 2r \\\\ &= 6r\\,\\mathrm{cm} \\end{aligned}$ 원기둥의 부피가 $162\\pi\\,\\mathrm{cm}^3$이므로 $\\begin{aligned} \\pi r^2 \\times 6r &= 162\\pi \\\\ 6\\pi r^3 &= 162\\pi \\\\ r^3 &= 27 \\\\ r &= 3\\,\\mathrm{cm} \\end{aligned}$ 공 $1$개의 겉넓이는 $\\begin{aligned} \\text{겉넓이} &= 4\\pi r^2 \\\\ &= 4\\pi \\times 3^2 \\\\ &= 36\\pi\\,\\mathrm{cm}^2 \\end{aligned}$ 따라서 정답은 ③이다.",
+    "solution": "공의 반지름의 길이를 $r\\,\\mathrm{cm}$라 하자. 공이 원기둥의 옆면에 꼭 맞으므로 원기둥의 밑면의 반지름의 길이는 $r\\,\\mathrm{cm}$이다. 또한 공 $3$개가 세로로 쌓여 위아래 두 밑면에 접하므로 원기둥의 높이는 공 $3$개의 지름의 합과 같다.\n\n$$\n\\begin{aligned}\n\\text{원기둥의 높이} &= 3 \\times 2r \\\\\n&= 6r\\,\\mathrm{cm}\n\\end{aligned}\n$$\n\n원기둥의 부피가 $162\\pi\\,\\mathrm{cm}^3$이므로\n\n$$\n\\begin{aligned}\n\\pi r^2 \\times 6r &= 162\\pi \\\\\n6\\pi r^3 &= 162\\pi \\\\\nr^3 &= 27 \\\\\nr &= 3\\,\\mathrm{cm}\n\\end{aligned}\n$$\n\n공 $1$개의 겉넓이는\n\n$$\n\\begin{aligned}\n\\text{겉넓이} &= 4\\pi r^2 \\\\\n&= 4\\pi \\times 3^2 \\\\\n&= 36\\pi\\,\\mathrm{cm}^2\n\\end{aligned}\n$$\n\n따라서 정답은 ③이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q13-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q13-solution.plan.json"
@@ -655,7 +655,7 @@ window.questionBank = [
     "rpmL4Label": "각뿔",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
-    "solution": "정육면체의 한 모서리의 길이를 $a$라 하면, 정육면체의 부피는 다음과 같다. $\\begin{aligned} V_{\\text{정육면체}} &= a^3 \\end{aligned}$ 삼각뿔 모양의 틀은 밑면이 한 면의 절반인 직각이등변삼각형이고, 높이가 정육면체의 한 모서리의 길이 $a$와 같으므로 그 부피는 다음과 같다. $\\begin{aligned} V_{\\text{삼각뿔}} &= \\dfrac{1}{3} \\times \\text{밑넓이} \\times \\text{높이} \\\\ &= \\dfrac{1}{3} \\times \\left(\\dfrac{1}{2} \\times a \\times a\\right) \\times a \\\\ &= \\dfrac{1}{6} a^3 \\end{aligned}$ 따라서 정육면체 덩어리 하나를 녹여 만들 수 있는 삼각뿔 부품의 최대 개수는 $\\begin{aligned} \\text{최대 개수} &= \\dfrac{V_{\\text{정육면체}}}{V_{\\text{삼각뿔}}} \\\\ &= \\dfrac{a^3}{\\dfrac{1}{6} a^3} \\\\ &= 6\\text{ (개)} \\end{aligned}$ 따라서 정답은 ⑤이다.",
+    "solution": "정육면체의 한 모서리의 길이를 $a$라 하면, 정육면체의 부피는 다음과 같다.\n\n$$\n\\begin{aligned}\nV_{\\text{정육면체}} &= a^3\n\\end{aligned}\n$$\n\n삼각뿔 모양의 틀은 밑면이 한 면의 절반인 직각이등변삼각형이고, 높이가 정육면체의 한 모서리의 길이 $a$와 같으므로 그 부피는 다음과 같다.\n\n$$\n\\begin{aligned}\nV_{\\text{삼각뿔}} &= \\dfrac{1}{3} \\times \\text{밑넓이} \\times \\text{높이} \\\\\n&= \\dfrac{1}{3} \\times \\left(\\dfrac{1}{2} \\times a \\times a\\right) \\times a \\\\\n&= \\dfrac{1}{6} a^3\n\\end{aligned}\n$$\n\n따라서 정육면체 덩어리 하나를 녹여 만들 수 있는 삼각뿔 부품의 최대 개수는\n\n$$\n\\begin{aligned}\n\\text{최대 개수} &= \\dfrac{V_{\\text{정육면체}}}{V_{\\text{삼각뿔}}} \\\\\n&= \\dfrac{a^3}{\\dfrac{1}{6} a^3} \\\\\n&= 6\\text{ (개)}\n\\end{aligned}\n$$\n\n따라서 정답은 ⑤이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q14-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q14-solution.plan.json"
@@ -681,13 +681,13 @@ window.questionBank = [
       "자료의 정리와 해석",
       "자료의 해석"
     ],
-    "content": "다음은 학생들의 한 달 독서 권수를 조사하여 나타낸 두 모둠 A, B의 자료이다. 이 자료를 보고 알 수 있는 것으로 옳은 것은? [4점]\n• A모둠 (단위: 권): $3, 5, 5, 5, 6, 6$ • B모둠 (단위: 권): $2, 4, 4, 4, 5, 6, 7, 8$",
+    "content": "다음은 학생들의 한 달 독서 권수를 조사하여 나타낸 두 모둠 A, B의 자료이다. 이 자료를 보고 알 수 있는 것으로 옳은 것은? [4점]\n• A모둠 (단위: 권): $3, 5, 5, 5, 6, 6$\n• B모둠 (단위: 권): $2, 4, 4, 4, 5, 6, 7, 8$",
     "choices": [
-      "$\\text{A모둠의 독서 권수의 최빈값은 6권이다.}$",
-      "$\\text{A모둠의 독서 권수의 평균은 B모둠보다 높다.}$",
-      "$\\text{B모둠의 독서 권수의 최빈값은 5권이다.}$",
-      "$\\text{A모둠의 독서 권수의 중앙값은 B모둠의 중앙값보다 크다.}$",
-      "$\\text{A모둠과 B모둠의 독서 권수의 중앙값은 서로 같다.}$"
+      "A모둠의 독서 권수의 최빈값은 6권이다.",
+      "A모둠의 독서 권수의 평균은 B모둠보다 높다.",
+      "B모둠의 독서 권수의 최빈값은 5권이다.",
+      "A모둠의 독서 권수의 중앙값은 B모둠의 중앙값보다 크다.",
+      "A모둠과 B모둠의 독서 권수의 중앙값은 서로 같다."
     ],
     "answer": "④",
     "points": 4,
@@ -702,7 +702,7 @@ window.questionBank = [
     "rpmL4Label": "대푯값 비교",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
-    "solution": "두 모둠의 자료를 분석하여 각각의 평균, 중앙값, 최빈값을 구한다. A모둠의 자료는 이미 정렬되어 있으며 변량의 수는 $6$개이다. $\\begin{aligned} \\text{A모둠의 평균} &= \\dfrac{3+5+5+5+6+6}{6} = \\dfrac{30}{6} = 5\\text{ (권)} \\\\ \\text{A모둠의 중앙값} &= \\dfrac{5+5}{2} = 5\\text{ (권)} \\\\ \\text{A모둠의 최빈값} &= 5\\text{ (권)} \\end{aligned}$ B모둠의 자료는 이미 정렬되어 있으며 변량의 수는 $8$개이다. $\\begin{aligned} \\text{B모둠의 평균} &= \\dfrac{2+4+4+4+5+6+7+8}{8} = \\dfrac{40}{8} = 5\\text{ (권)} \\\\ \\text{B모둠의 중앙값} &= \\dfrac{4+5}{2} = 4.5\\text{ (권)} \\\\ \\text{B모둠의 최빈값} &= 4\\text{ (권)} \\end{aligned}$ 선지별 참·거짓을 판정하면 다음과 같다. $\\begin{aligned} \\text{① } & \\text{A모둠의 최빈값은 } 5\\text{권이다. (거짓)} \\\\ \\text{② } & \\text{두 모둠의 평균은 모두 } 5\\text{권으로 같다. (거짓)} \\\\ \\text{③ } & \\text{B모둠의 최빈값은 } 4\\text{권이다. (거짓)} \\\\ \\text{④ } & \\text{A모둠의 중앙값}(5) > \\text{B모둠의 중앙값}(4.5)\\text{이므로 A모둠이 더 크다. (참)} \\\\ \\text{⑤ } & 5 \\ne 4.5\\text{이므로 같지 않다. (거짓)} \\end{aligned}$ 따라서 옳은 것은 ④이다.",
+    "solution": "두 모둠의 자료를 분석하여 각각의 평균, 중앙값, 최빈값을 구한다. A모둠의 자료는 이미 정렬되어 있으며 변량의 수는 $6$개이다.\n\n$$\n\\begin{aligned}\n\\text{A모둠의 평균} &= \\dfrac{3+5+5+5+6+6}{6} = \\dfrac{30}{6} = 5\\text{ (권)} \\\\\n\\text{A모둠의 중앙값} &= \\dfrac{5+5}{2} = 5\\text{ (권)} \\\\\n\\text{A모둠의 최빈값} &= 5\\text{ (권)}\n\\end{aligned}\n$$\n\nB모둠의 자료는 이미 정렬되어 있으며 변량의 수는 $8$개이다.\n\n$$\n\\begin{aligned}\n\\text{B모둠의 평균} &= \\dfrac{2+4+4+4+5+6+7+8}{8} = \\dfrac{40}{8} = 5\\text{ (권)} \\\\\n\\text{B모둠의 중앙값} &= \\dfrac{4+5}{2} = 4.5\\text{ (권)} \\\\\n\\text{B모둠의 최빈값} &= 4\\text{ (권)}\n\\end{aligned}\n$$\n\n선지별 참·거짓을 판정하면 다음과 같다.\n\n$$\n\\begin{aligned}\n\\text{① } & \\text{A모둠의 최빈값은 } 5\\text{권이다. (거짓)} \\\\\n\\text{② } & \\text{두 모둠의 평균은 모두 } 5\\text{권으로 같다. (거짓)} \\\\\n\\text{③ } & \\text{B모둠의 최빈값은 } 4\\text{권이다. (거짓)} \\\\\n\\text{④ } & \\text{A모둠의 중앙값}(5) > \\text{B모둠의 중앙값}(4.5)\\text{이므로 A모둠이 더 크다. (참)} \\\\\n\\text{⑤ } & 5 \\ne 4.5\\text{이므로 같지 않다. (거짓)}\n\\end{aligned}\n$$\n\n따라서 옳은 것은 ④이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q15-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q15-solution.plan.json"
@@ -749,7 +749,7 @@ window.questionBank = [
     "rpmL4Label": "대푯값 비교",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
-    "solution": "주어진 $10$개의 변량을 작은 것부터 차례대로 나열하면 다음과 같다. $3, \\quad 5, \\quad 5, \\quad 5, \\quad 6, \\quad 8, \\quad 9, \\quad 9, \\quad 10, \\quad 10$ 자료의 총합을 구하여 평균 $a$를 계산한다. $\\begin{aligned} \\text{총합} &= 3+5+5+5+6+8+9+9+10+10 = 70 \\\\ a &= \\dfrac{70}{10} = 7 \\end{aligned}$ 변량의 개수가 $10$개(짝수)이므로 가운데 위치한 $5$번째 값($6$)과 $6$번째 값($8$)의 평균이 중앙값 $b$이다. $\\begin{aligned} b &= \\dfrac{6+8}{2} = 7 \\end{aligned}$ 가장 많이 나타난 값은 $5$(3회)이므로 최빈값 $c$는 $\\begin{aligned} c &= 5 \\end{aligned}$ 따라서 구하는 값은 $\\begin{aligned} a + b + c &= 7 + 7 + 5 \\\\ &= 19 \\end{aligned}$ 따라서 정답은 ①이다.",
+    "solution": "주어진 $10$개의 변량을 작은 것부터 차례대로 나열하면 다음과 같다. $3, \\quad 5, \\quad 5, \\quad 5, \\quad 6, \\quad 8, \\quad 9, \\quad 9, \\quad 10, \\quad 10$ 자료의 총합을 구하여 평균 $a$를 계산한다.\n\n$$\n\\begin{aligned}\n\\text{총합} &= 3+5+5+5+6+8+9+9+10+10 = 70 \\\\\na &= \\dfrac{70}{10} = 7\n\\end{aligned}\n$$\n\n변량의 개수가 $10$개(짝수)이므로 가운데 위치한 $5$번째 값($6$)과 $6$번째 값($8$)의 평균이 중앙값 $b$이다.\n\n$$\n\\begin{aligned}\nb &= \\dfrac{6+8}{2} = 7\n\\end{aligned}\n$$\n\n가장 많이 나타난 값은 $5$(3회)이므로 최빈값 $c$는\n\n$$\n\\begin{aligned}\nc &= 5\n\\end{aligned}\n$$\n\n따라서 구하는 값은\n\n$$\n\\begin{aligned}\na + b + c &= 7 + 7 + 5 \\\\\n&= 19\n\\end{aligned}\n$$\n\n따라서 정답은 ①이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q16-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q16-solution.plan.json"
@@ -824,7 +824,7 @@ window.questionBank = [
       "자료의 정리",
       "표"
     ],
-    "content": "다음은 학생들의 하루 스마트폰 사용 시간을 조사하여 나타낸 줄기와 잎 그림이다. (줄기 1, 잎 2는 12분을 뜻한다.) 이 자료를 도수분포표로 옮길 때, 표에 들어갈 수로 옳지 않은 것은? [4점]\n\n| 줄기 | 잎 |\n| --- | --- |\n| 0 | 3, 5, 8 |\n| 1 | 1, 3, 4, 6, 8 |\n| 2 | 0, 2, 4, 5, 6, 7, 9 |\n| 3 | 2, 5, 8 |\n| 4 | 1, 6 |\n\n| 사용 시간 (분) | 학생 수 (명) |\n| --- | --- |\n| 0 이상 ~ 10 미만 | 3 |\n| 10 이상 ~ 20 미만 | a |\n| b 이상 ~ 30 미만 | 7 |\n| 30 이상 ~ 40 미만 | c |\n| 40 이상 ~ d 미만 | 2 |\n| 합계 | e |\n계급의 크기는 모두 10분으로 같다.",
+    "content": "다음은 학생들의 하루 스마트폰 사용 시간을 조사하여 나타낸 줄기와 잎 그림이다. (줄기 1, 잎 2는 12분을 뜻한다.) 이 자료를 도수분포표로 옮길 때, 표에 들어갈 수로 옳지 않은 것은? [4점]\n\n| 줄기 | 잎 |\n| --- | --- |\n| 0 | 3, 5, 8 |\n| 1 | 1, 3, 4, 6, 8 |\n| 2 | 0, 2, 4, 5, 6, 7, 9 |\n| 3 | 2, 5, 8 |\n| 4 | 1, 6 |\n\n| 사용 시간 (분) | 학생 수 (명) |\n| --- | --- |\n| 0 이상 ~ 10 미만 | 3 |\n| 10 이상 ~ 20 미만 | a |\n| b 이상 ~ 30 미만 | 7 |\n| 30 이상 ~ 40 미만 | c |\n| 40 이상 ~ d 미만 | 2 |\n| 합계 | e |\n\n계급의 크기는 모두 10분으로 같다.",
     "choices": [
       "$a = 5$",
       "$b = 20$",
@@ -845,7 +845,7 @@ window.questionBank = [
     "rpmL4Label": "히스토그램·그래프 해석",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
-    "solution": "줄기와 잎 그림의 각 줄기별 잎의 개수를 세어 계급별 도수를 구한다. $\\begin{aligned} 0\\text{ 이상 } 10\\text{ 미만 (줄기 0)} &: 3\\text{명} \\\\ 10\\text{ 이상 } 20\\text{ 미만 (줄기 1)} &: 5\\text{명} \\implies a = 5 \\\\ 20\\text{ 이상 } 30\\text{ 미만 (줄기 2)} &: 7\\text{명} \\implies b = 20 \\\\ 30\\text{ 이상 } 40\\text{ 미만 (줄기 3)} &: 3\\text{명} \\implies c = 3 \\\\ 40\\text{ 이상 } 50\\text{ 미만 (줄기 4)} &: 2\\text{명} \\implies d = 50 \\end{aligned}$ 전체 학생 수 $e$는 각 계급의 도수의 합이므로 $\\begin{aligned} e &= 3 + 5 + 7 + 3 + 2 = 20\\text{ (명)} \\end{aligned}$ 계급의 크기가 $10$분이므로 마지막 계급은 $40$ 이상 $50$ 미만이어야 한다. 따라서 $d = 50$이어야 하므로 $d = 60$으로 제시된 ④가 옳지 않다.\n따라서 정답은 ④이다.",
+    "solution": "줄기와 잎 그림의 각 줄기별 잎의 개수를 세어 계급별 도수를 구한다.\n\n$$\n\\begin{aligned}\n0\\text{ 이상 } 10\\text{ 미만 (줄기 0)} &: 3\\text{명} \\\\\n10\\text{ 이상 } 20\\text{ 미만 (줄기 1)} &: 5\\text{명} \\implies a = 5 \\\\\n20\\text{ 이상 } 30\\text{ 미만 (줄기 2)} &: 7\\text{명} \\implies b = 20 \\\\\n30\\text{ 이상 } 40\\text{ 미만 (줄기 3)} &: 3\\text{명} \\implies c = 3 \\\\\n40\\text{ 이상 } 50\\text{ 미만 (줄기 4)} &: 2\\text{명} \\implies d = 50\n\\end{aligned}\n$$\n\n전체 학생 수 $e$는 각 계급의 도수의 합이므로\n\n$$\n\\begin{aligned}\ne &= 3 + 5 + 7 + 3 + 2 = 20\\text{ (명)}\n\\end{aligned}\n$$\n\n계급의 크기가 $10$분이므로 마지막 계급은 $40$ 이상 $50$ 미만이어야 한다. 따라서 $d = 50$이어야 하므로 $d = 60$으로 제시된 ④가 옳지 않다.\n따라서 정답은 ④이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q18-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q18-solution.plan.json"
@@ -892,7 +892,7 @@ window.questionBank = [
     "rpmL4Label": "히스토그램·그래프 해석",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
-    "solution": "전체 학생 수 $50$명에서 보이는 다섯 계급의 학생 수의 합을 빼서 찢어진 계급의 도수를 구한다. $\\begin{aligned} \\text{보이는 학생 수의 합} &= 4 + 7 + 12 + 10 + 5 = 38\\text{ (명)} \\\\ \\text{찢어진 계급의 학생 수} &= 50 - 38 = 12\\text{ (명)} \\end{aligned}$ 각 선지를 검토한다. $\\begin{aligned} \\text{① } & \\text{계급의 크기는 } 5-0 = 5\\text{분이다. (참)} \\\\ \\text{② } & 0\\text{부터 } 30\\text{분까지 } 5\\text{분 간격이므로 계급의 개수는 } 6\\text{개이다. (참)} \\\\ \\text{③ } & \\text{도수가 가장 큰 값은 } 12\\text{명으로, } 10\\sim15\\text{분과 } 15\\sim20\\text{분의 두 계급이다. (참)} \\\\ \\text{④ } & 15\\text{분 이상 } 20\\text{분 미만 계급의 학생 수는 } 12\\text{명이다. (참)} \\\\ \\text{⑤ } & 15\\text{분 미만인 학생 수: } 4 + 7 + 12 = 23\\text{ (명)} \\\\ & 20\\text{분 이상인 학생 수: } 10 + 5 = 15\\text{ (명)} \\\\ & 23 > 15\\text{이므로 } 15\\text{분 미만인 학생 수가 더 많다. '적다'고 한 설명은 옳지 않다. (거짓)} \\end{aligned}$ 따라서 옳지 않은 것은 ⑤이다.",
+    "solution": "전체 학생 수 $50$명에서 보이는 다섯 계급의 학생 수의 합을 빼서 찢어진 계급의 도수를 구한다.\n\n$$\n\\begin{aligned}\n\\text{보이는 학생 수의 합} &= 4 + 7 + 12 + 10 + 5 = 38\\text{ (명)} \\\\\n\\text{찢어진 계급의 학생 수} &= 50 - 38 = 12\\text{ (명)}\n\\end{aligned}\n$$\n\n각 선지를 검토한다.\n\n$$\n\\begin{aligned}\n\\text{① } & \\text{계급의 크기는 } 5-0 = 5\\text{분이다. (참)} \\\\\n\\text{② } & 0\\text{부터 } 30\\text{분까지 } 5\\text{분 간격이므로 계급의 개수는 } 6\\text{개이다. (참)} \\\\\n\\text{③ } & \\text{도수가 가장 큰 값은 } 12\\text{명으로, } 10\\sim15\\text{분과 } 15\\sim20\\text{분의 두 계급이다. (참)} \\\\\n\\text{④ } & 15\\text{분 이상 } 20\\text{분 미만 계급의 학생 수는 } 12\\text{명이다. (참)} \\\\\n\\text{⑤ } & 15\\text{분 미만인 학생 수: } 4 + 7 + 12 = 23\\text{ (명)} \\\\\n& 20\\text{분 이상인 학생 수: } 10 + 5 = 15\\text{ (명)} \\\\\n& 23 > 15\\text{이므로 } 15\\text{분 미만인 학생 수가 더 많다. '적다'고 한 설명은 옳지 않다. (거짓)}\n\\end{aligned}\n$$\n\n따라서 옳지 않은 것은 ⑤이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q19-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q19-solution.plan.json"
@@ -920,11 +920,11 @@ window.questionBank = [
     ],
     "content": "두 반의 100 m 달리기 기록을 도수분포다각형으로 나타낼 때의 계급별 학생 수를 표로 정리하였다. 다음 중 옳은 것은? [4점]\n\n| 기록 (초) | A반 학생 수 (명) | B반 학생 수 (명) |\n| --- | --- | --- |\n| 12 이상 ~ 13 미만 | 1 | 0 |\n| 13 이상 ~ 14 미만 | 3 | 2 |\n| 14 이상 ~ 15 미만 | 7 | 5 |\n| 15 이상 ~ 16 미만 | 9 | 10 |\n| 16 이상 ~ 17 미만 | 4 | 6 |\n| 17 이상 ~ 18 미만 | 1 | 2 |",
     "choices": [
-      "$\\text{A반의 전체 학생 수가 B반보다 2명 더 많다.}$",
-      "$\\text{A반에서 기록이 14초 미만인 학생은 전체의 20\\%이다.}$",
-      "$\\text{A반과 B반에서 17초 이상인 전체 학생 수는 3명이다.}$",
-      "$\\text{B반에서 도수가 가장 큰 계급의 도수는 9명이다.}$",
-      "$\\text{A반에서 5번째로 빠르게 달린 학생이 속하는 계급의 도수는 3명이다.}$"
+      "A반의 전체 학생 수가 B반보다 2명 더 많다.",
+      "A반에서 기록이 14초 미만인 학생은 전체의 20%이다.",
+      "A반과 B반에서 17초 이상인 전체 학생 수는 3명이다.",
+      "B반에서 도수가 가장 큰 계급의 도수는 9명이다.",
+      "A반에서 5번째로 빠르게 달린 학생이 속하는 계급의 도수는 3명이다."
     ],
     "answer": "③",
     "points": 4,
@@ -1010,7 +1010,7 @@ window.questionBank = [
       "도형",
       "서술형"
     ],
-    "content": "[서답형 2] 반지름의 길이가 $3\\,\\mathrm{cm}$인 사분원(중심각 $90^\\circ$)의 호의 양 끝점을 각각 $A$, $B$라 하고 현 $AB$를 그었을 때, 호 $AB$와 현 $AB$로 둘러싸인 활꼴 부분을 한 반지름을 포함하는 직선 $l$을 회전축으로 하여 $1$회전 시켰을 때 생기는 회전체의 부피를 구하는 과정을 자세히 서술하시오. [5점]\n회전축 직선 $l$은 사분원의 두 반지름 중 하나를 포함하는 직선이다.",
+    "content": "[서답형 2] 반지름의 길이가 $3\\,\\mathrm{cm}$인 사분원(중심각 $90^\\circ$)의 호의 양 끝점을 각각 $A$, $B$라 하고 현 $AB$를 그었을 때, 호 $AB$와 현 $AB$로 둘러싸인 활꼴 부분을 사분원의 두 반지름 중 하나를 포함하는 직선 $l$을 회전축으로 하여 $1$회전 시켰을 때 생기는 회전체의 부피를 구하는 과정을 자세히 서술하시오. [5점]",
     "choices": [],
     "answer": "$9\\pi\\,\\mathrm{cm}^3$",
     "points": 5,
@@ -1025,7 +1025,7 @@ window.questionBank = [
     "rpmL4Label": "잘라낸 입체",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
-    "solution": "사분원 전체를 회전축 $l$을 중심으로 $1$회전 시키면 반지름이 $3\\,\\mathrm{cm}$인 반구가 생기고, 활꼴을 제외한 직각이등변삼각형 부분을 $1$회전 시키면 밑면의 반지름과 높이가 모두 $3\\,\\mathrm{cm}$인 원뿔이 생긴다. 따라서 구하는 회전체의 부피는 반구의 부피에서 원뿔의 부피를 뺀 것과 같다. 반구의 부피를 구하면 $\\begin{aligned} V_{\\text{반구}} &= \\dfrac{1}{2} \\times \\left(\\dfrac{4}{3}\\pi r^3\\right) \\\\ &= \\dfrac{2}{3}\\pi \\times 3^3 \\\\ &= \\dfrac{2}{3}\\pi \\times 27 \\\\ &= 18\\pi\\,\\mathrm{cm}^3 \\end{aligned}$ 원뿔의 부피를 구하면 $\\begin{aligned} V_{\\text{원뿔}} &= \\dfrac{1}{3}\\pi r^2 h \\\\ &= \\dfrac{1}{3}\\pi \\times 3^2 \\times 3 \\\\ &= 9\\pi\\,\\mathrm{cm}^3 \\end{aligned}$ 따라서 활꼴을 회전시켜 생기는 회전체의 부피는 $\\begin{aligned} V &= V_{\\text{반구}} - V_{\\text{원뿔}} \\\\ &= 18\\pi - 9\\pi \\\\ &= 9\\pi\\,\\mathrm{cm}^3 \\end{aligned}$ 따라서 정답은 $9\\pi\\,\\mathrm{cm}^3$이다.",
+    "solution": "사분원 전체를 회전축 $l$을 중심으로 $1$회전 시키면 반지름이 $3\\,\\mathrm{cm}$인 반구가 생기고, 활꼴을 제외한 직각이등변삼각형 부분을 $1$회전 시키면 밑면의 반지름과 높이가 모두 $3\\,\\mathrm{cm}$인 원뿔이 생긴다. 따라서 구하는 회전체의 부피는 반구의 부피에서 원뿔의 부피를 뺀 것과 같다. 반구의 부피를 구하면\n\n$$\n\\begin{aligned}\nV_{\\text{반구}} &= \\dfrac{1}{2} \\times \\left(\\dfrac{4}{3}\\pi r^3\\right) \\\\\n&= \\dfrac{2}{3}\\pi \\times 3^3 \\\\\n&= \\dfrac{2}{3}\\pi \\times 27 \\\\\n&= 18\\pi\\,\\mathrm{cm}^3\n\\end{aligned}\n$$\n\n원뿔의 부피를 구하면\n\n$$\n\\begin{aligned}\nV_{\\text{원뿔}} &= \\dfrac{1}{3}\\pi r^2 h \\\\\n&= \\dfrac{1}{3}\\pi \\times 3^2 \\times 3 \\\\\n&= 9\\pi\\,\\mathrm{cm}^3\n\\end{aligned}\n$$\n\n따라서 활꼴을 회전시켜 생기는 회전체의 부피는\n\n$$\n\\begin{aligned}\nV &= V_{\\text{반구}} - V_{\\text{원뿔}} \\\\\n&= 18\\pi - 9\\pi \\\\\n&= 9\\pi\\,\\mathrm{cm}^3\n\\end{aligned}\n$$\n\n따라서 정답은 $9\\pi\\,\\mathrm{cm}^3$이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q22-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q22-solution.plan.json"
@@ -1052,7 +1052,7 @@ window.questionBank = [
       "자료의 해석",
       "서술형"
     ],
-    "content": "[서답형 3] 다음은 민우의 5회에 걸친 쪽지시험 성적을 조사한 자료이다. 쪽지시험 성적의 평균과 최빈값이 같을 때, $x$의 값을 구하는 과정을 자세히 서술하시오. [5점]\n$\\text{쪽지시험 점수 (단위: 점): } 30, \\quad 45, \\quad 75, \\quad 50, \\quad x$",
+    "content": "[서답형 3] 다음은 민우의 5회에 걸친 쪽지시험 성적을 조사한 자료이다. 쪽지시험 성적의 평균과 최빈값이 같을 때, $x$의 값을 구하는 과정을 자세히 서술하시오. [5점]\n쪽지시험 점수(단위: 점): $30, 45, 75, 50, x$",
     "choices": [],
     "answer": "$50$",
     "points": 5,
@@ -1067,7 +1067,7 @@ window.questionBank = [
     "rpmL4Label": "평균을 이용한 미지수",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
-    "solution": "주어진 네 점수 $30, 45, 75, 50$은 모두 서로 다른 값이므로, $5$개의 자료에 최빈값이 존재하려면 $x$는 이 네 값 중 하나와 같아야 한다. 따라서 최빈값은 $x$점이다. 자료의 평균을 구하기 위해 다섯 변량의 합을 계산하면 $\\begin{aligned} \\text{다섯 점수의 합} &= 30 + 45 + 75 + 50 + x \\\\ &= 200 + x \\end{aligned}$ 평균과 최빈값이 서로 같으므로 $\\begin{aligned} \\dfrac{200 + x}{5} &= x \\\\ 200 + x &= 5x \\\\ 4x &= 200 \\\\ x &= 50 \\end{aligned}$ $x=50$일 때 자료는 $30, 45, 50, 50, 75$가 되어 최빈값은 $50$점이고 평균도 $50$점으로 문제의 조건을 만족한다. 따라서 정답은 $50$이다.",
+    "solution": "주어진 네 점수 $30, 45, 75, 50$은 모두 서로 다른 값이므로, $5$개의 자료에 최빈값이 존재하려면 $x$는 이 네 값 중 하나와 같아야 한다. 따라서 최빈값은 $x$점이다. 자료의 평균을 구하기 위해 다섯 변량의 합을 계산하면\n\n$$\n\\begin{aligned}\n\\text{다섯 점수의 합} &= 30 + 45 + 75 + 50 + x \\\\\n&= 200 + x\n\\end{aligned}\n$$\n\n평균과 최빈값이 서로 같으므로\n\n$$\n\\begin{aligned}\n\\dfrac{200 + x}{5} &= x \\\\\n200 + x &= 5x \\\\\n4x &= 200 \\\\\nx &= 50\n\\end{aligned}\n$$\n\n$x=50$일 때 자료는 $30, 45, 50, 50, 75$가 되어 최빈값은 $50$점이고 평균도 $50$점으로 문제의 조건을 만족한다. 따라서 정답은 $50$이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q23-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q23-solution.plan.json"
@@ -1110,7 +1110,7 @@ window.questionBank = [
     "rpmL4Label": "상대도수 계산",
     "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
-    "solution": "상대도수의 총합은 항상 $1$이므로 $6\\,\\mathrm{km}$ 이상 $8\\,\\mathrm{km}$ 미만 계급의 상대도수를 구한다. $\\begin{aligned} \\text{해당 계급 상대도수} &= 1 - (0.10 + 0.20 + 0.28 + 0.16 + 0.08) \\\\ &= 1 - 0.82 \\\\ &= 0.18 \\end{aligned}$ $6\\,\\mathrm{km}$ 이상 $8\\,\\mathrm{km}$ 미만 계급의 도수가 $36$명이므로, 전체 학생 수를 $N$명이라 하면 $\\begin{aligned} N \\times 0.18 &= 36 \\\\ N &= \\dfrac{36}{0.18} \\\\ &= 200\\text{ (명)} \\end{aligned}$ 통학 거리가 $6\\,\\mathrm{km}$ 이상인 계급의 상대도수의 합은 $\\begin{aligned} 0.18 + 0.16 + 0.08 &= 0.42 \\end{aligned}$ 따라서 통학 거리가 $6\\,\\mathrm{km}$ 이상인 학생 수는 $\\begin{aligned} \\text{학생 수} &= 200 \\times 0.42 \\\\ &= 84\\text{ (명)} \\end{aligned}$ 따라서 정답은 $84$명이다.",
+    "solution": "상대도수의 총합은 항상 $1$이므로 $6\\,\\mathrm{km}$ 이상 $8\\,\\mathrm{km}$ 미만 계급의 상대도수를 구한다.\n\n$$\n\\begin{aligned}\n\\text{해당 계급 상대도수} &= 1 - (0.10 + 0.20 + 0.28 + 0.16 + 0.08) \\\\\n&= 1 - 0.82 \\\\\n&= 0.18\n\\end{aligned}\n$$\n\n$6\\,\\mathrm{km}$ 이상 $8\\,\\mathrm{km}$ 미만 계급의 도수가 $36$명이므로, 전체 학생 수를 $N$명이라 하면\n\n$$\n\\begin{aligned}\nN \\times 0.18 &= 36 \\\\\nN &= \\dfrac{36}{0.18} \\\\\n&= 200\\text{ (명)}\n\\end{aligned}\n$$\n\n통학 거리가 $6\\,\\mathrm{km}$ 이상인 계급의 상대도수의 합은\n\n$$\n\\begin{aligned}\n0.18 + 0.16 + 0.08 &= 0.42\n\\end{aligned}\n$$\n\n따라서 통학 거리가 $6\\,\\mathrm{km}$ 이상인 학생 수는\n\n$$\n\\begin{aligned}\n\\text{학생 수} &= 200 \\times 0.42 \\\\\n&= 84\\text{ (명)}\n\\end{aligned}\n$$\n\n따라서 정답은 $84$명이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q24-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2final/25_왕의중_2학기_기말_중1_유사_plans/q24-solution.plan.json"
