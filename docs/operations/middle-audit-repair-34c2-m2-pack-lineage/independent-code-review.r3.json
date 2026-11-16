@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "archive-pack-version-lineage-independent-code-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewer": "GPT_M1_0A70543C4CE8",
+  "author": "GPT_M2_0A70543C4CE8",
+  "decision": "APPROVE_MINIMAL_PACK_LINEAGE_EXTENSION_FOR_ROOT_TARGETED_APPLICATION",
+  "blockingFindings": [],
+  "scope": "One helper plus its focused synthetic lineage tests. No semantic approval, receipt authoring or source/registry mutation.",
+  "approvedCandidateRef": {
+    "path": "state/m2-pack-lineage-repair/reviewed-pack-version-lineage.candidate.r3.mjs",
+    "sha256": "328af2184158489f1f4d77c609c6a883738db2bf7b2b672f258798b5743d16d9"
+  },
+  "approvedRepoPath": "archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+  "targetQuestionUids": [
+    "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+    "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+    "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb"
+  ],
+  "refs": {
+    "checklist": {
+      "path": "state/m1-pack-version-lineage-review/pre-review-checklist.r1.json",
+      "sha256": "6251b4e76c4cf3372b3e07dae52faa1ba8651cb050abecb1f5cf6c22bab26e33"
+    },
+    "baselineHelper": {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+      "sha256": "a8c9c9f5c96133d8d2ab7eaacb1d392598e2d26c07983e35b9263c8c2a48162a"
+    },
+    "candidateR1": {
+      "path": "state/m2-pack-lineage-repair/reviewed-pack-version-lineage.candidate.mjs",
+      "sha256": "6e2a616f6fcd35847d0ce0491853922c239bf69870810a14e3566572ad732234"
+    },
+    "candidateR2": {
+      "path": "state/m2-pack-lineage-repair/reviewed-pack-version-lineage.candidate.r2.mjs",
+      "sha256": "560887a5d293364e4fb224dc6785f2792c116c306b459b8cd7207e5478a83361"
+    },
+    "candidateR3": {
+      "path": "state/m2-pack-lineage-repair/reviewed-pack-version-lineage.candidate.r3.mjs",
+      "sha256": "328af2184158489f1f4d77c609c6a883738db2bf7b2b672f258798b5743d16d9"
+    },
+    "proposedHelper": {
+      "path": "state/m2-pack-lineage-repair/proposed/archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+      "sha256": "328af2184158489f1f4d77c609c6a883738db2bf7b2b672f258798b5743d16d9"
+    },
+    "focusedTests": {
+      "path": "state/m2-pack-lineage-repair/proposed/tests/archive-reviewed-pack-version-lineage-companions.test.mjs",
+      "sha256": "348cee528b47b0c71a0f0fd95ef80ecba6a1e79e649269d037546297c1c298ed"
+    },
+    "r2Log": {
+      "path": "state/m2-pack-lineage-repair/focused-tests.r2.log",
+      "sha256": "eeceac9ffa716085320349d18c1c496e77d301172c7663ba800ee9a6b73c3ab1"
+    },
+    "r3Log": {
+      "path": "state/m2-pack-lineage-repair/focused-tests.r3.log",
+      "sha256": "d93ae6fbecdc782d1f5051a84a6493050733602eb581311d8836ddf548bd16e3"
+    },
+    "actualBlocker": {
+      "path": "state/unit25-official-validation/m2-replacement-three/native-reuse3.r4.json",
+      "sha256": "d1d0ccc14800b15903f4fee9947b3dcdf215d3fa19c9b0531cfab1a073ecfab8"
+    },
+    "diagnosticCorrection": {
+      "path": "state/unit25-official-validation/m2-replacement-three/native-reuse3.r4-diagnostic-supplement.json",
+      "sha256": "cb2be7f1ce6fa6165b049dcc6cc8cc5ed31ad4823a7aa8af28f2e0ed0d821c31"
+    },
+    "existingGuardTests": {
+      "path": "scoped/tests/archive-main-merge-meta.test.mjs",
+      "sha256": "a34fc03ebb44651ecacf70bce72f4bfeb541e7592e3b0b96ec34ce2dc102628c"
+    }
+  },
+  "unchangedBaselineSections": {
+    "selectedDefinitionAndBindingAuthority": true,
+    "packIdentityVersionsAndForwardPatchLimits": true,
+    "currentCanonicalAndHistoricalIssuedSnapshot": true
+  },
+  "checks": [
+    {
+      "id": "ALL_CHANGES",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Every post-from registry change enters exact own-binding or different-owner ACTIVE template lane. Unknown operations, existing pack edits and same-owner templates remain rejected."
+    },
+    {
+      "id": "OTHER_TEMPLATE_AUTHORITY",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Exact owner path, explicit add-only before, match key, ACTIVE full canonical row, unique compiled key/full row and unchanged ACTIVE parent are mandatory; the template must have been used by a corresponding issued target binding."
+    },
+    {
+      "id": "OTHER_OUTPUT_BYTES",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "From actual earlier canonical owner documents and their registry-index digests, companionAt applies only exact additions and reproduces whole taxonomy and pack output digests after each mixed receipt. Current row existence alone is insufficient."
+    },
+    {
+      "id": "OWN_BINDING_LINEAGE",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Reverse reconstruction keeps exact appended suffix, tuple uniqueness, owner-domain membership, complete version steps and the original output digests."
+    },
+    {
+      "id": "PRIOR_MIDBATCH_ANCHOR",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Fallback requires exact prior and same-version provider receipt raw on actual first-parent ancestry with a reconstructed higher canonical snapshot; provider outputs must equal the exact reconstructed from-version pack/binding bytes."
+    },
+    {
+      "id": "PROVIDER_AND_BATCH_AUTHORITY",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Original provider request/source/all evidence must authenticate at an actual pre-provider commit. Batch request anchors are collected only at that same authenticated commit and counted only when providerPublished and providerRequestAnchored both hold."
+    },
+    {
+      "id": "NO_GENERIC_MISSING_SNAPSHOT",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "The now>issued actual canonical snapshot requirement is byte-for-byte preserved. No arbitrary missing snapshot or detached ancestry fallback was added."
+    },
+    {
+      "id": "BASELINE_EXTENSION_ONLY",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Prior-version provider registry operations establish already-issued baseline outputs only; the closed post-from classifier still rejects curricula/existing pack changes."
+    },
+    {
+      "id": "CURRENT_CACHE",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "New current companion owner documents and receipt bytes are read through tracked input digests; cache hits also revalidate caller registry owner/version and full parent/template rows."
+    },
+    {
+      "id": "CALLER_BOUNDARY",
+      "status": "PASS_CODE_INSPECTION",
+      "reason": "Existing consumer call sites use true only to permit metaFoundationPackVersion drift. Their source/student/semantic/identity/approval comparisons remain in force."
+    }
+  ],
+  "revisionBoundaries": {
+    "r1": "Closed mixed-template and midbatch-provider paths; author synthetic positive exposed missing same pre-provider batch request anchoring.",
+    "r2": "Adds conditional batchAnchored set; no unconditional older-request allowance.",
+    "r3": "Requires total compiled key count exactly one before comparing full rows; adds duplicate-key negative."
+  },
+  "validationEvidenceReused": {
+    "executedBy": "GPT_M2_0A70543C4CE8",
+    "r2Log": {
+      "path": "state/m2-pack-lineage-repair/focused-tests.r2.log",
+      "sha256": "eeceac9ffa716085320349d18c1c496e77d301172c7663ba800ee9a6b73c3ab1"
+    },
+    "r2Pass": 20,
+    "r3Log": {
+      "path": "state/m2-pack-lineage-repair/focused-tests.r3.log",
+      "sha256": "d93ae6fbecdc782d1f5051a84a6493050733602eb581311d8836ddf548bd16e3"
+    },
+    "r3Pass": 21,
+    "r3Fail": 0,
+    "syntheticGitFixturesOnly": true,
+    "covers": [
+      "mixed actual-shaped batch and no standalone prior-version snapshot",
+      "exact-prior historical path",
+      "binding-only midbatch path",
+      "foreign shape/owner/row/parent/digest and unknown mutation rejection",
+      "provider digest/request/prior raw and ancestry rejection",
+      "missing version step",
+      "changed caller registry and deleted current dependencies",
+      "duplicate compiled key",
+      "now>issued missing canonical snapshot remains rejected"
+    ],
+    "existingBroadGuardSuite": "Read existing source and reused boundary; not re-executed by reviewer"
+  },
+  "limits": {
+    "actualThreeNativeConsumerExecution": "NOT_RUN_BY_REVIEWER_PENDING_ROOT",
+    "remoteMainMerge": "NOT_ASSERTED",
+    "actualOfficialWriter": "NOT_ASSERTED",
+    "studentDeployment": "NOT_ASSERTED",
+    "ordinaryOptionalTypedValidatorNullIsNotPass": true,
+    "candidateApprovalDoesNotApproveNewMeaningOrEraseHolds": true
+  },
+  "nextAction": "Root applies only the frozen helper/test candidate, runs the three blocked existing native consumer paths and narrowly required changed-path checks, then continues actual main/writer/consumer verification. Preserve the prior r4 failure and diagnostic correction as historical evidence.",
+  "reviewerValidatorInvocations": 0,
+  "reviewerRegistrarInvocations": 0,
+  "reviewerFixtureWrites": 0,
+  "reviewerProductionWrites": 0,
+  "reviewerTestReruns": 0,
+  "newSemanticApprovals": 0,
+  "newMathematicalQa": 0,
+  "studentContentIncluded": false
+}

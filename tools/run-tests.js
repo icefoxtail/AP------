@@ -30,9 +30,11 @@ const tests = includeQuarantined
   ? files
   : files.filter(name => !quarantined.has(name));
 
-// These two complete suites exceeded the old 60-second child limit in CI.
+// These complete suites exceed the old 60-second child limit (the M2 renderer
+// suite measures 85–107 seconds with actual Git, writer and replay fixtures).
 // Keep a finite per-command limit in both the full and scoped runners.
-const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
+const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.test.js' ? 180000
+  : file === 'archive2-compose-scope.test.js' ? 180000
   : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
 
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
@@ -89,16 +91,29 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive-pr-native-preview.test.mjs',
-    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs'],
+    timeout: 300000
   },
   {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-source-delta.test.mjs',
+    args: ['--test', 'tests/archive-source-delta.test.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/source-delta-report.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/source-delta-report.mjs']
+  },
+  {
     label: 'tests/archive-main-merge-meta.test.mjs',
     args: ['--test', 'tests/archive-main-merge-meta.test.mjs'],
     timeout: 300000
+  },
+  {
+    label: 'tests/archive-main-auto-parent-retry.test.mjs',
+    args: ['--test', 'tests/archive-main-auto-parent-retry.test.mjs']
   },
   {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
@@ -107,6 +122,19 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
+  },
+  {
+    label: 'tests/archive-mathjax-enclosed-latin-font.test.cjs',
+    args: ['--test', 'tests/archive-mathjax-enclosed-latin-font.test.cjs']
+  },
+  {
+    label: 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs',
+    args: ['--test', 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
+    timeout: 180000
   },
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',

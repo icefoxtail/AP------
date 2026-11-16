@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "existing-native-parent-transport-release-proof-v1",
+  "baseCommit": "16f0413bbf709581eededf19497008031d80b808",
+  "scope": {
+    "term": "M2S2",
+    "exam": "E024",
+    "sourceArchiveFile": "original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+    "sourceOrdinal": 4,
+    "questionUid": "qid_v1_70a153fd0db92774327a2a79647a464cb887d400f870eb8b8280cab9f094b147",
+    "selectedCount": 1
+  },
+  "purpose": "Carry the existing native 2015/M2-2 canonical parent through the standard evidence-bound targetParentRef path so current Consumer normalization retains the approved classification.",
+  "requestDelta": {
+    "oldPath": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e024-q4-course-r2.json",
+    "oldGitBlob": "20a58eb5bf0371b7dfc008bdcddae1c405524f7a",
+    "oldRawSha256": "afae4b377954254f53cea35dbe9c432c19f3777903fa98d398ed5ccda5fcce3b",
+    "newPath": ".archive-meta-register/inbox/m2s2-e024-q4-native-parent-3e3a-20261116.json",
+    "newRequestId": "m2s2-e024-q4-native-parent-3e3a-20261116",
+    "newGitBlob": "354198361de2a1e65b792f07cf8632fe22a9ed31",
+    "newRawSha256": "15a1c7733320fc8f2800fe86497b1c6909cbdba8e12ba22bd479fd30ebf15336",
+    "changedJsonPaths": [
+      "/items/0/evidenceRefs",
+      "/items/0/targetParentRef",
+      "/requestId"
+    ],
+    "approvalObjectUnchanged": true,
+    "beforeAfterIdentityBeforeUnchanged": true,
+    "onlyAddedEvidenceRef": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    "targetParentRef": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "majorUnit": "도형의 닮음과 피타고라스 정리",
+      "midUnit": "피타고라스 정리"
+    }
+  },
+  "lifecycle": {
+    "observedAtCommit": "16f0413bbf709581eededf19497008031d80b808",
+    "oldR2State": "ACTIVE_INBOX_NO_PERSISTED_RECEIPT_OR_REJECTION",
+    "operation": "Remove the superseded active r2 inbox entry and add the new immutable request atomically. Do not edit or create historical rejected records.",
+    "oldRequestImmutableRef": {
+      "commit": "16f0413bbf709581eededf19497008031d80b808",
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e024-q4-course-r2.json",
+      "gitBlob": "20a58eb5bf0371b7dfc008bdcddae1c405524f7a",
+      "sha256": "afae4b377954254f53cea35dbe9c432c19f3777903fa98d398ed5ccda5fcce3b"
+    },
+    "successfulRegistrationClaim": false,
+    "rule": {
+      "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+      "gitBlob": "b77a92da18ab1f032b205ce1019669604f0f513c",
+      "section": "requestId definition and receipt/rejection lifecycle",
+      "requirement": "requestId content is immutable; a changed registration request receives a new ID."
+    }
+  },
+  "preservation": {
+    "sourceGitBlob": "4382fa87a2df7fd9095ffda8d44fc55f81c1f514",
+    "sourceRawSha256": "8e216996b7d98fd6dd0da83a5d61601dee780ddaffd79cb482d2d5f826851434",
+    "sourceQuestionCount": 24,
+    "sourceChanges": 0,
+    "assetChanges": 0,
+    "compactChanges": 0,
+    "canonicalDefinitionChanges": 0,
+    "validatorChanges": 0,
+    "existingApprovalChanges": 0,
+    "newIndependentOrMathematicalAdjudications": 0,
+    "difficultyFieldsUnchanged": [
+      "difficultyBucket",
+      "difficultyConfidence",
+      "difficultyBoundaryFlag",
+      "legacyLevelCompatibility"
+    ],
+    "outsideRowsExact": {
+      "metadata": 28889,
+      "identity": 28889,
+      "runtime": 7343
+    },
+    "protectedRegistrationInputCount": 435
+  },
+  "verification": {
+    "status": "PASS_LOCAL_DRY_WRITE_REPLAY_CONSUMER_PROJECTION",
+    "currentInputRef": "0add2ea9c9059e506f81a9e572efeceba6758b5f",
+    "latestBaseInputCAS": {
+      "commit": "16f0413bbf709581eededf19497008031d80b808",
+      "completeChangedPathCount": 57,
+      "testedInputCount": 448,
+      "intersectionCount": 0,
+      "proof": {
+        "name": "current16-input-cas-v2.json",
+        "sha256": "c64adcf9f2e63ee1ece5ba242e2340d0a17ad3f0f08e3fb776c6b903d041599c",
+        "gitBlob": "2f10dfd414f7a1ac05dca3beb5d68abee7c7b915"
+      }
+    },
+    "fixtureGitHead": "420958185771bad1c1101795a2eeacca9dda2018",
+    "fixtureNature": "Isolated current-input fixture. Full actual e9af metadata/identity/runtime before data; current official code; scoped catalog contains E024 plus the mandatory M1S2 source-quality-hold dependency. No production write.",
+    "dry": {
+      "status": "PASS",
+      "write": false,
+      "requestId": "m2s2-e024-q4-native-parent-3e3a-20261116",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 24,
+      "registryChangeCount": 0,
+      "runtimeMaterialized": 1,
+      "fingerprintRepairCount": 1,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e024-q4-native-parent-3e3a-20261116.renderer-binding.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e024-q4-native-parent-3e3a-20261116.json"
+      ]
+    },
+    "localWrite": {
+      "status": "PASS",
+      "write": true,
+      "requestId": "m2s2-e024-q4-native-parent-3e3a-20261116",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 24,
+      "registryChangeCount": 0,
+      "runtimeMaterialized": 1,
+      "fingerprintRepairCount": 1,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e024-q4-native-parent-3e3a-20261116.renderer-binding.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e024-q4-native-parent-3e3a-20261116.json"
+      ]
+    },
+    "noWriteReplay": {
+      "status": "PASS",
+      "requestId": "m2s2-e024-q4-native-parent-3e3a-20261116",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 24,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "NOT_RUN",
+      "browserStatus": "NOT_RUN"
+    },
+    "changedUidConsumer": {
+      "status": "PASS",
+      "counts": {
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0
+      },
+      "unobservedFields": [],
+      "selected": {
+        "questionUid": "qid_v1_70a153fd0db92774327a2a79647a464cb887d400f870eb8b8280cab9f094b147",
+        "sourceArchiveFile": "original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 4,
+        "curriculum": "2015",
+        "courseKey": "M2-2",
+        "L1": "도형의 닮음과 피타고라스 정리",
+        "L2": "피타고라스 정리",
+        "L3": "피타고라스 정리·역 및 도형 활용",
+        "L4": "접기·입체도형과 피타고라스",
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true
+      }
+    },
+    "projectionReplay": {
+      "status": "PASS",
+      "requestId": "m2s2-e024-q4-native-parent-3e3a-20261116",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 24,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "browserStatus": "NOT_RUN",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      }
+    },
+    "currentCompactReuse": {
+      "authoredByThisRequest": false,
+      "ownerPr": 2233,
+      "localRegisteredCount": 24,
+      "baselineActualCount": 12,
+      "existingVectorsExact": 9,
+      "inheritedOwnerNativeCorrectionOrdinals": [
+        18,
+        13,
+        9
+      ],
+      "currentSourceAndCompactUnchangedByRequest": true
+    },
+    "evidence": [
+      {
+        "name": "official-registration.json",
+        "sha256": "1e2f9ab0426674b2986293be85852e395d08eadb381efe01e5a3cb0a1f3440c6",
+        "gitBlob": "74ea1051e9e20c0bec24d347c997eb60ed6163e4"
+      },
+      {
+        "name": "official-consumer.json",
+        "sha256": "c5e0f83548644d05c463eb278698f51f1618b466a42ee496a3a6df57f6adc762",
+        "gitBlob": "32f87b477c7bb2e83a66c874ef5594da215e1d8f"
+      },
+      {
+        "name": "official-scoped-4slot.json",
+        "sha256": "9eef1f5b2d9f6988550d92282d805e92c2f920ee5bcf0c4b9c8ff33978665e1e",
+        "gitBlob": "56bac5f10d63cb032064c1c093fece2894be9228"
+      },
+      {
+        "name": "official-local-summary.json",
+        "sha256": "5a563f5b6e8b1d73ff1820a5b688f6de5799fb01f260aa3f436a3e1c2dcdbaf2",
+        "gitBlob": "b5b62539280592dc751d6340ea428307f101b6ac"
+      },
+      {
+        "name": "verify-registration.mjs",
+        "sha256": "add3882687aa528bcb4930c5478ab0fdfeef37eaad310bc9afd235b673e93d80",
+        "gitBlob": "4630f8dea034b83bfe579479ca2867d6ddab0478"
+      },
+      {
+        "name": "verify-consumer.mjs",
+        "sha256": "0e71b9882916b6e68f9e60ecea32659ec61d8ca129239b136fb2db44bcb7fa6e",
+        "gitBlob": "ef212357bfd151b12886569f9f52b9b544a21c66"
+      }
+    ]
+  },
+  "operationalStatus": {
+    "pullRequestMerge": "NOT_RUN",
+    "actualMainRegistration": "NOT_RUN",
+    "deployment": "NOT_CONFIRMED",
+    "nextAction": "Publish the exact three-path packet, validate exact-HEAD CI, merge, then read back the new receipt/metadata/identity/Consumer from the actual registered main SHA and confirm deployment separately."
+  },
+  "excludedScope": "M3S1 sources, branches and packets were not read, changed or adopted."
+}

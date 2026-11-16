@@ -59,9 +59,9 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 기울기가 같은 두 직선과 이동 후 점 (0,5).",
-    "solutionImageCaption": "y절편이 2에서 5로 변하므로 b=3이다. 정답 ④.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q1-solution-visual-v2.svg",
+    "solutionImageAlt": "내려가는 검은 실선은 y=−3x+2이다. 주황 점선은 (0,5)를 지나고 검은 실선과 평행하다. 화살표는 세로로 옮기는 방향이다.",
+    "solutionImageCaption": "원래 세로축과 만나는 값은 2이고 새 값은 5이므로 5−2=3만큼 위로 옮긴다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -181,9 +181,9 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 y=2x+4의 x절편 -2와 y절편 4.",
-    "solutionImageCaption": "a=-2, b=4이므로 a+b=2이다. 정답 ③.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q3-solution-visual-v2.svg",
+    "solutionImageAlt": "오르는 검은 그래프 y=2x+4가 가로축의 −2, 세로축의 4를 지난다.",
+    "solutionImageCaption": "가로축과 만날 때 y=0이어서 x=−2이고, 세로축과 만날 때 x=0이어서 y=4이다. 따라서 a+b=2이고 정답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -248,6 +248,8 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "imageSize": "tall",
+    "imageAlt": "A는 (1,3), B는 (4,1)이다. 검은 선분으로 두 점을 이었다.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -261,7 +263,7 @@ window.questionBank = [
       "$1\\le a\\le4$",
       "$3\\le a\\le4$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q05-source-repaired.svg",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q5-problem-visual-v2.svg",
     "answer": "①",
     "solution": "선분 $AB$의 점 $(x,y)$에서 $x>0$이므로 원점을 지나는 직선의 기울기는 $a=\\dfrac yx$이다.\n끝점에서의 기울기는\n$A(1,3)$에서 $\\dfrac31=3$, $B(4,1)$에서 $\\dfrac14$이다.\n선분을 따라 A에서 B로 가면 x좌표는 1에서 4로 커지고 y좌표는 3에서 1로 작아진다.\n따라서 $\\dfrac yx$는 3에서 $\\dfrac14$까지 연속해서 감소한다.\n따라서 $\\dfrac14\\le a\\le3$이고 정답은 ①이다.",
     "level": "중",
@@ -275,7 +277,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -305,9 +307,9 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 원점에서 선분 AB의 양 끝점을 지나는 두 경계 직선.",
-    "solutionImageCaption": "A와 B에서 기울기가 각각 3, 1/4이므로 1/4≤a≤3이다. 정답 ①.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q5-solution-visual-v2.svg",
+    "solutionImageAlt": "A는 (1,3), B는 (4,1)이다. 검은 선분으로 두 점을 이었다. 원점에서 A와 B로 향하는 두 경계 직선을 서로 다른 색으로 그렸다.",
+    "solutionImageCaption": "원점에서 A로 향하는 기울기는 3이고 B로 향하는 기울기는 1/4이다. 선분 AB를 만나는 범위는 1/4≤a≤3이고 정답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -369,13 +371,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 예: 제1, 2, 4사분면을 지나는 오른쪽으로 내려가는 직선.",
-    "solutionImageCaption": "예: 기울기는 음수이고 y절편은 양수이다. 정답 ①.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q6-solution-visual-v2.svg",
+    "solutionImageAlt": "검은 직선의 예는 제2사분면에서 위쪽을 지나 제1사분면으로 이어지고, 오른쪽 아래의 제4사분면으로 내려간다.",
+    "solutionImageCaption": "제2사분면에서 제4사분면으로 내려가는 직선이므로 a<0이다. 세로축을 원점보다 위에서 지나므로 b>0이고 정답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
     "id": 7,
+    "imageSize": "tall",
+    "imageAlt": "그래프는 (−3,4)와 (3,0)을 지난다. 가로축과 세로축에 두 점의 위치를 보조선으로 표시했다.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -390,7 +394,7 @@ window.questionBank = [
       "$\\frac{4}{3}$",
       "$\\frac{3}{4}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q07.png",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q7-problem-visual-v2.svg",
     "answer": "②",
     "solution": "그래프에서 두 점 $(-3,4)$, $(3,0)$을 읽는다.\n기울기는 $\\dfrac{0-4}{3-(-3)}=-\\dfrac23$이다.\n$y=ax+b$에 $(3,0)$을 대입하면\n$0=-\\dfrac23\\cdot3+b=-2+b$이다.\n따라서 $b=2$이고 정답은 ②이다.",
     "level": "하",
@@ -404,7 +408,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -434,9 +438,9 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 점 사이의 수평 변화 6과 수직 변화 4를 나타낸 직선.",
-    "solutionImageCaption": "기울기는 -4/6=-2/3이며 y절편 b=2이다. 정답 ②.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q7-solution-visual-v2.svg",
+    "solutionImageAlt": "그래프는 (−3,4)와 (3,0)을 지난다. 가로축과 세로축에 두 점의 위치를 보조선으로 표시했다. 가로 변화량과 세로 변화량을 색으로 구분했다.",
+    "solutionImageCaption": "기울기는 (0−4)/(3−(−3))=−2/3이다. 점 (3,0)을 대입하면 b=2이므로 정답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -497,13 +501,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 주어진 직선과 점 (0,2)를 지나는 평행선.",
-    "solutionImageCaption": "기울기를 2/3으로 맞추고 절편 2를 대입하면 y=2x/3+2이다. 정답 ⑤.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q8-solution-visual-v2.svg",
+    "solutionImageAlt": "검은 직선은 주어진 2x−3y−11=0의 그래프다. 청록색 점선은 (0,2)를 지나고 검은 직선과 나란하다.",
+    "solutionImageCaption": "두 직선의 기울기는 모두 2/3이고 지나야 할 점이 (0,2)이므로 구하는 식은 y=(2/3)x+2이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
     "id": 9,
+    "imageSize": "tall",
+    "imageAlt": "일차함수가 세로축의 4와 원점 왼쪽의 가로축을 지난다. 세 선으로 둘러싸인 삼각형을 옅게 칠했다.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -518,7 +524,7 @@ window.questionBank = [
       "$\\frac{3}{2}$",
       "$\\frac{2}{3}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q09-source-repaired.svg",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q9-problem-visual-v2.svg",
     "answer": "⑤",
     "solution": "y절편은 4이고 x절편을 $p$라 하면 둘러싸인 삼각형의 밑변과 높이는 $|p|$, 4이다.\n넓이 조건에서\n$\\dfrac12\\times|p|\\times4=12$이다.\n$|p|=6$이다.\n$a>0$이므로 x절편은 음수여서 $p=-6$이다.\n점 $(-6,0)$을 $y=ax+4$에 대입하면\n$0=-6a+4$\n$a=\\dfrac23$이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
@@ -532,7 +538,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -564,9 +570,9 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 축과 직선이 둘러싼 삼각형의 밑변 6과 높이 4.",
-    "solutionImageCaption": "밑변은 6, x절편은 -6이므로 a=2/3이다. 정답 ⑤.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q9-solution-visual-v2.svg",
+    "solutionImageAlt": "일차함수가 세로축의 4와 원점 왼쪽의 가로축을 지난다. 세 선으로 둘러싸인 삼각형을 옅게 칠했다. 가로축 교점과 밑변을 확인한다.",
+    "solutionImageCaption": "넓이가 12이고 높이가 4이므로 밑변 길이는 6이다. 가로축 교점은 (−6,0)이므로 a=2/3이고 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
@@ -630,6 +636,8 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "일직선 위 A, B, C의 왼쪽 구간에는 위·가운데·아래 경로가 있다. B에서 C로 이어지는 구간도 세 경로다.",
     "questionType": "객관식",
     "tags": [
       "경우의 수",
@@ -643,7 +651,7 @@ window.questionBank = [
       "9가지",
       "10가지"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q11-source-repaired.svg",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q11-problem-visual-v2.svg",
     "answer": "④",
     "solution": "그림에서 A-B 사이 경로는 3가지이다.\nB-C 사이 경로도 3가지이다.\n두 구간의 경로를 각각 하나씩 고르면 되므로\n$3\\times3=9$가지이다.\n각 경로는 B에서 이어지고 다른 지점을 다시 지나지 않으므로 조건을 만족한다. 정답은 ④이다.",
     "level": "중",
@@ -657,7 +665,7 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -748,6 +756,8 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "원 위의 여섯 점 A, B, C, D, E, F를 모두 서로 다른 곳에 배치했다. A는 위, D는 아래, B와 C는 왼쪽, E와 F는 오른쪽이다.",
     "questionType": "객관식",
     "tags": [
       "경우의 수",
@@ -763,7 +773,7 @@ window.questionBank = [
       "8",
       "9"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q13-source-repaired.svg",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q13-problem-visual-v2.svg",
     "answer": "①",
     "solution": "세 점을 순서 있게 고르는 수는 $6\\times5\\times4=120$이다.\n한 삼각형은 꼭짓점 순서 $3\\times2\\times1=6$번씩 중복된다.\n$a=120\\div6=20$이다.\n두 점을 순서 있게 고르는 수는 $6\\times5=30$이다.\n한 선분은 양 끝점 순서 2번씩 중복된다.\n$b=30\\div2=15$이다.\n따라서 $a-b=20-15=5$이고 정답은 ①이다.",
     "level": "중",
@@ -777,7 +787,7 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -992,6 +1002,8 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "imageSize": "tall",
+    "imageAlt": "A는 왼쪽 위, B는 오른쪽 아래이다. P는 왼쪽에서 두 칸과 위에서 두 칸 이동한 교차점이다. 왼쪽 아래 모서리에 이어지는 두 도로는 없다.",
     "questionType": "객관식",
     "tags": [
       "확률"
@@ -1004,7 +1016,7 @@ window.questionBank = [
       "$\\dfrac{12}{23}$",
       "$\\dfrac{12}{25}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17.png",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17-problem-visual-v2.svg",
     "answer": "③",
     "solution": "각 교점으로 들어오는 최단경로 수는 왼쪽과 위쪽 수의 합이다.\n맨 윗행: $1,1,1,1$.\n둘째 행: $1,2,3,4$.\n셋째 행: $1,3,6,10$.\n마지막 행은 왼쪽 아래 길이 없으므로 $3,9,19$이다.\n따라서 B까지 최단경로는 19가지이다.\nP까지는 6가지이며, P에서 B까지는 오른쪽과 아래쪽 순서가 바뀌는 2가지이다.\nP를 지나는 경로는 $6\\times2=12$가지이다.\n따라서 확률은 $\\dfrac{12}{19}$이고 정답은 ③이다.",
     "level": "상",
@@ -1018,7 +1030,7 @@ window.questionBank = [
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -1050,9 +1062,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": null,
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 아래 도로가 없는 격자에 각 교점까지의 경로 수를 표시한 그림.",
-    "solutionImageCaption": "수는 A에서 각 교점까지의 최단 경로 수이다. P까지 6가지이고 P에서 B까지 2가지이므로 P를 지나는 경로는 6×2가지이다. 전체 B까지 경로는 19가지이다. 정답 ③ 12/19.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17-solution-visual-v2.svg",
+    "solutionImageAlt": "A는 왼쪽 위, B는 오른쪽 아래이다. P는 왼쪽에서 두 칸과 위에서 두 칸 이동한 교차점이다. 왼쪽 아래 모서리에 이어지는 두 도로는 없다. 각 교차점까지의 최단 경로 수를 붙였다.",
+    "solutionImageCaption": "B까지의 최단 경로는 19가지이다. P까지 6가지이고 P에서 B까지 2가지이므로 P를 지나는 경로는 12가지이다. 확률은 12/19이며 정답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1240,6 +1252,8 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "imageSize": "tall",
+    "imageAlt": "검은 직선이 (0,−2)와 (3,0)을 지난다.",
     "questionType": "서술형",
     "tags": [
       "일차함수",
@@ -1248,7 +1262,7 @@ window.questionBank = [
     ],
     "content": "서술형 1. 일차함수 $y=ax+b$의 그래프를 보고 다음을 구하시오.\n(1) 기울기 $a$를 구하시오. (풀이과정 서술) (3점)\n(2) 일차함수의 식을 구하시오. (단답형) (2점)",
     "choices": [],
-    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-source-repaired.svg",
+    "image": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-problem-visual-v2.svg",
     "answer": "(1) 2/3; (2) y=2/3x-2",
     "solution": "그래프에서 $(0,-2)$와 $(3,0)$을 읽는다.\n따라서 $a=\\dfrac{0-(-2)}{3-0}=\\dfrac23$, y절편은 $b=-2$이다.\n일차함수의 식은 $y=\\dfrac23x-2$이다.",
     "level": "하",
@@ -1262,7 +1276,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -1292,9 +1306,9 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 점 사이 수평 변화 3과 수직 변화 2를 나타낸 직선.",
-    "solutionImageCaption": "(1) 기울기는 2/3이고 (2) 식은 y=2x/3-2이다.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-solution-visual-v2.svg",
+    "solutionImageAlt": "검은 직선이 (0,−2)와 (3,0)을 지난다. 두 점 사이의 가로 3과 세로 2를 색으로 표시했다.",
+    "solutionImageCaption": "기울기는 2/3이고 y절편은 −2이다. 따라서 일차함수의 식은 y=(2/3)x−2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1307,7 +1321,7 @@ window.questionBank = [
     ],
     "content": "서술형 2. 세 직선 $y=2x-2$, $y=x-2$, $x=2$로 둘러싸인 삼각형의 넓이를 구하려고 한다. 다음 물음에 서술하시오.\n(1) 개략적인 그래프를 그리시오. (교점좌표 표시) (4점)\n(2) 세 직선에 의해 둘러싸인 삼각형의 넓이를 구하시오. (단답형) (2점)",
     "choices": [],
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution-v2.svg",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution-visual-v2.svg",
     "answer": "2",
     "solution": "두 직선의 교점은 $2x-2=x-2$에서 $x=0$, $y=-2$이므로 $(0,-2)$이다.\n$x=2$와 $y=2x-2$의 교점은 $(2,2)$이다.\n$x=2$와 $y=x-2$의 교점은 $(2,0)$이다.\n세 꼭짓점은 $(0,-2),(2,2),(2,0)$이다.\n세로 변의 길이는 $2$, 반대 꼭짓점에서 $x=2$까지의 수평 거리는 $2$이다.\n넓이는 $\\dfrac12\\times2\\times2=2$이다.",
     "level": "중",
@@ -1351,8 +1365,8 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
-    "solutionImageAlt": "해설 그림: 두 일차함수 직선과 x=2가 둘러싸는 삼각형.",
-    "solutionImageCaption": "(1) 세 교점은 (0,-2), (2,0), (2,2)이다. (2) 밑변과 높이가 각각 2이므로 넓이는 2이다.",
+    "solutionImageAlt": "올라가는 두 직선 y=2x−2와 y=x−2가 세로축에서 만난다. 세로 직선 x=2와 두 교점이 만드는 삼각형만 옅게 칠했다.",
+    "solutionImageCaption": "교점은 (0,−2), (2,2), (2,0)이다. 세로 길이와 그 변에 대한 높이가 모두 2이므로 넓이는 2이다.",
     "solutionImageSize": "full"
   },
   {

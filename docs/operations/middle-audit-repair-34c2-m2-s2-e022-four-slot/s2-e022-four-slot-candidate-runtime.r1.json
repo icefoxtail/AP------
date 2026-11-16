@@ -1,0 +1,527 @@
+{
+  "schemaVersion": "small-m2-current-four-slot-scoped-runtime-verification-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "examId": "E022",
+  "semester": "M2_S2",
+  "reviewer": "GPT_M2_34C2",
+  "checkedAt": "2026-11-16T03:40:47.043Z",
+  "scope": "ISOLATED_CANDIDATE_OFFICIAL_BUILDER_AND_ACTUAL_CONSUMER_NOT_MAIN_REGISTRATION",
+  "fixtureRoot": "/workspace/scratch/0a70543c4ce8/state/m2-s2-next39/S2-E022/runtime-fixture",
+  "sourceRef": {
+    "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+    "beforeGitBlobSha1": "c29473e34d5971708a5d9da11b0aa6a86e37053d",
+    "beforeRawSha256": "5da56f57de4da2245345fd68b69e374ebcfd893126189c84a10871aef8b6a3bc",
+    "currentGitBlobSha1": "c4936e7740e90e524300f2eaf983b0443a0362f6",
+    "currentRawSha256": "2313deac64ad6dcdb2a9a94ac83edfb2ea21e02877fab22a46e7928409894998"
+  },
+  "originalCompactSha256": "31dd640d09ff52fc405f360824ebd4692d539ee3b43c18d0941cb6613150ca9b",
+  "candidateCompactSha256": "b83343978fd3ff21cd79d6823fbeca529f585b6291833b0b2fae82c2a0a98079",
+  "continuityRef": {
+    "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e022-four-slot/s2-e022-four-slot-current-continuity-independent.r1.json",
+    "sha256": "3781d1c0be5a698a439faee6604bfff459e69bf354555eb250ef2d528cfbde29"
+  },
+  "nativeVectorTransportRef": {
+    "path": "docs/operations/middle-audit-repair-34c2-m2-s2-e022-four-slot/s2-e022-existing-approved-native-vector-transport.r1.json",
+    "sha256": "99cb333ad8c39771d7328831a83d3d745ca1d688ded75def7af8f584e86ae624"
+  },
+  "counts": {
+    "examDenominator": 23,
+    "rendererReviewedUidCount": 19,
+    "newHistoricalBindingUidCount": 19,
+    "existingApprovedNativeVectorCorrectionUidCount": 4,
+    "rendererAndVectorOverlapUidCount": 3,
+    "distinctAffectedUidCount": 20,
+    "unchangedExistingVectorsReused": 19,
+    "existingApprovalVectorsReused": 23,
+    "methodChangesFromExistingNativeApproval": 0,
+    "actualImagePairsViewed": 35,
+    "retainedExistingFallbackUidCount": 2,
+    "nativeVectorCorrectionsOutsideHistoricalUidCount": 1,
+    "newSemanticApprovals": 0,
+    "newTermIds": 0,
+    "newFullMathematicalQa": 0,
+    "sourceDenominator": 23,
+    "beforeRegistered": 4,
+    "beforePending": 19,
+    "afterRegistered": 23,
+    "afterPending": 0
+  },
+  "sets": {
+    "rendererOrdinals": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      20,
+      21,
+      22
+    ],
+    "rendererUids": [
+      "qid_v1_8cccf8bbac380a7af59a08ca15145bb47585a4652dcf42387650e5e38e1bb52c",
+      "qid_v1_3c4ed9d4f8cb86838498027ec3de6db1e957345b16992530636c1c911b81b0fb",
+      "qid_v1_5d7ba86050b9338a67e36265d1f5da34d35fb92cc53ddfd000d5e2cb3a26548d",
+      "qid_v1_a438810be625fa9cd973e8a7f2af2fd9fa0661a06794b02eae1ce5645a8c76f7",
+      "qid_v1_8c9535880521d324e6e2771362f4dbd68ae6a6b1226d46c851807130aac6de40",
+      "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
+      "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
+      "qid_v1_39cfce1b27c0882095663e82cf44ff82ded0942cd57e646fd395f5e1c1ca2362",
+      "qid_v1_a4725c01d82c6df45888fa0c5a375a18e468b284bb3003139ec6b6dbed466c85",
+      "qid_v1_fc4b845acbedac9832b4dd132457352095c2e7487b04cde5f1e71b02d8d03f9e",
+      "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+      "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
+      "qid_v1_04dbea630e2d38257e7c2085e13eaa2132420110ee777c98ce622b012e2b3351",
+      "qid_v1_0e47d3a2f9adf96372e1c026dcff87fe5b6c4914d981657e11ed0c336747984d",
+      "qid_v1_18d2ad274b66381c89f7fa41654b848b9fbbf4e34332bbe366c8fa42d1f01fe2",
+      "qid_v1_022afe09d59386528a914f8a05d729644bb0e837d454285f1ed02e9f7f3df26f",
+      "qid_v1_836d281e4e8291b7278ba035721f6d0279387bd213f3b0cf70980e9e1ecaa42b",
+      "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
+      "qid_v1_d4a8f0510fc695382c4cd988820b0fcb5980968392cd18d650f44b350ca027db"
+    ],
+    "nativeVectorCorrectionOrdinals": [
+      3,
+      7,
+      21,
+      23
+    ],
+    "nativeVectorCorrectionUids": [
+      "qid_v1_3c4ed9d4f8cb86838498027ec3de6db1e957345b16992530636c1c911b81b0fb",
+      "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
+      "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
+      "qid_v1_9d88b4d5f1dd925f353393e5c67014831cbab52d9767e34a276d60d34f4cbf18"
+    ],
+    "overlapOrdinals": [
+      3,
+      7,
+      21
+    ],
+    "overlapUids": [
+      "qid_v1_3c4ed9d4f8cb86838498027ec3de6db1e957345b16992530636c1c911b81b0fb",
+      "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
+      "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851"
+    ],
+    "unionOrdinals": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "unionUids": [
+      "qid_v1_8cccf8bbac380a7af59a08ca15145bb47585a4652dcf42387650e5e38e1bb52c",
+      "qid_v1_3c4ed9d4f8cb86838498027ec3de6db1e957345b16992530636c1c911b81b0fb",
+      "qid_v1_5d7ba86050b9338a67e36265d1f5da34d35fb92cc53ddfd000d5e2cb3a26548d",
+      "qid_v1_a438810be625fa9cd973e8a7f2af2fd9fa0661a06794b02eae1ce5645a8c76f7",
+      "qid_v1_8c9535880521d324e6e2771362f4dbd68ae6a6b1226d46c851807130aac6de40",
+      "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
+      "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
+      "qid_v1_39cfce1b27c0882095663e82cf44ff82ded0942cd57e646fd395f5e1c1ca2362",
+      "qid_v1_a4725c01d82c6df45888fa0c5a375a18e468b284bb3003139ec6b6dbed466c85",
+      "qid_v1_fc4b845acbedac9832b4dd132457352095c2e7487b04cde5f1e71b02d8d03f9e",
+      "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+      "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
+      "qid_v1_04dbea630e2d38257e7c2085e13eaa2132420110ee777c98ce622b012e2b3351",
+      "qid_v1_0e47d3a2f9adf96372e1c026dcff87fe5b6c4914d981657e11ed0c336747984d",
+      "qid_v1_18d2ad274b66381c89f7fa41654b848b9fbbf4e34332bbe366c8fa42d1f01fe2",
+      "qid_v1_022afe09d59386528a914f8a05d729644bb0e837d454285f1ed02e9f7f3df26f",
+      "qid_v1_836d281e4e8291b7278ba035721f6d0279387bd213f3b0cf70980e9e1ecaa42b",
+      "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
+      "qid_v1_d4a8f0510fc695382c4cd988820b0fcb5980968392cd18d650f44b350ca027db",
+      "qid_v1_9d88b4d5f1dd925f353393e5c67014831cbab52d9767e34a276d60d34f4cbf18"
+    ],
+    "nativeVectorCorrectionsOutsideHistoricalOrdinals": [
+      23
+    ],
+    "nativeVectorCorrectionsOutsideHistoricalUids": [
+      "qid_v1_9d88b4d5f1dd925f353393e5c67014831cbab52d9767e34a276d60d34f4cbf18"
+    ],
+    "preservedFallbackUids": [
+      "qid_v1_8cccf8bbac380a7af59a08ca15145bb47585a4652dcf42387650e5e38e1bb52c",
+      "qid_v1_7c9d598bba3366f93955cd82474ee50bb1abeed074102cee59b7e02b952409d7"
+    ]
+  },
+  "verification": {
+    "schemaVersion": "archive-item-4slot-runtime-v1",
+    "status": "PASS",
+    "verified": 23,
+    "pending": 0,
+    "indexSha256": "20d494c93e11864bd22e38ab3d0808d8502b495db2c62a8174713199482e2a31",
+    "sourceMutation": 0,
+    "semanticApprovalMutation": 0
+  },
+  "allNonVectorItemFieldsAndReviewedByPreserved": true,
+  "unmodifiedNormalBlanksPreserved": true,
+  "originalNamedDebtsAndHoldsNotReleased": true,
+  "metadataApprovalMutation": 0,
+  "sourceMutation": 0,
+  "assetMutation": 0,
+  "repositoryWrites": 0,
+  "officialMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8cccf8bbac380a7af59a08ca15145bb47585a4652dcf42387650e5e38e1bb52c",
+      "sourceOrdinal": 1,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": false,
+      "existingReviewedFallbackPreserved": true,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_7c9d598bba3366f93955cd82474ee50bb1abeed074102cee59b7e02b952409d7",
+      "sourceOrdinal": 2,
+      "beforeRegistered": true,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": false,
+      "existingReviewedFallbackPreserved": true,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_3c4ed9d4f8cb86838498027ec3de6db1e957345b16992530636c1c911b81b0fb",
+      "sourceOrdinal": 3,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": false,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_5d7ba86050b9338a67e36265d1f5da34d35fb92cc53ddfd000d5e2cb3a26548d",
+      "sourceOrdinal": 4,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_a438810be625fa9cd973e8a7f2af2fd9fa0661a06794b02eae1ce5645a8c76f7",
+      "sourceOrdinal": 5,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_8c9535880521d324e6e2771362f4dbd68ae6a6b1226d46c851807130aac6de40",
+      "sourceOrdinal": 6,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
+      "sourceOrdinal": 7,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": false,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
+      "sourceOrdinal": 8,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_39cfce1b27c0882095663e82cf44ff82ded0942cd57e646fd395f5e1c1ca2362",
+      "sourceOrdinal": 9,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_a4725c01d82c6df45888fa0c5a375a18e468b284bb3003139ec6b6dbed466c85",
+      "sourceOrdinal": 10,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_fc4b845acbedac9832b4dd132457352095c2e7487b04cde5f1e71b02d8d03f9e",
+      "sourceOrdinal": 11,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+      "sourceOrdinal": 12,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
+      "sourceOrdinal": 13,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_04dbea630e2d38257e7c2085e13eaa2132420110ee777c98ce622b012e2b3351",
+      "sourceOrdinal": 14,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_0e47d3a2f9adf96372e1c026dcff87fe5b6c4914d981657e11ed0c336747984d",
+      "sourceOrdinal": 15,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_73e593e9cac1eeea3ad334b7d504869c84f8f523e776c45bb005026ad2c7afa7",
+      "sourceOrdinal": 16,
+      "beforeRegistered": true,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_18d2ad274b66381c89f7fa41654b848b9fbbf4e34332bbe366c8fa42d1f01fe2",
+      "sourceOrdinal": 17,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_cd6d35a7c21bc99be28e5b8c72b373fe999a0e83c95531d487762b8e2a73a863",
+      "sourceOrdinal": 18,
+      "beforeRegistered": true,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_022afe09d59386528a914f8a05d729644bb0e837d454285f1ed02e9f7f3df26f",
+      "sourceOrdinal": 19,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_836d281e4e8291b7278ba035721f6d0279387bd213f3b0cf70980e9e1ecaa42b",
+      "sourceOrdinal": 20,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
+      "sourceOrdinal": 21,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": false,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_d4a8f0510fc695382c4cd988820b0fcb5980968392cd18d650f44b350ca027db",
+      "sourceOrdinal": 22,
+      "beforeRegistered": false,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": true,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    },
+    {
+      "questionUid": "qid_v1_9d88b4d5f1dd925f353393e5c67014831cbab52d9767e34a276d60d34f4cbf18",
+      "sourceOrdinal": 23,
+      "beforeRegistered": true,
+      "afterRegistered": true,
+      "sourceBinding": "EXACT_BLOB",
+      "unchangedOriginalVector": false,
+      "exactApprovedNativeVector": true,
+      "existingReviewedFallbackPreserved": false,
+      "currentVectorsMatchExactCandidate": true,
+      "queryRoundtrip": true
+    }
+  ],
+  "codeRefs": [
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "1d5b0a6318e4b5ba092f0eab96199dd1adcb6e64",
+      "sha256": "797101c53e78a3ce74de502826ee1bf8978240c58181c242699d053b00f37928"
+    },
+    {
+      "path": "tools/4slot/renderer-registration-hold.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "170b5e85bff442b34b44fc67cd9a291a3b1f0e75",
+      "sha256": "5361c4481d8b5db7520cb2aa6686dfe9d4aba7374a48b4d63c7de4647d517ab3"
+    },
+    {
+      "path": "tools/4slot/metadata-registration-hold.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "25822045c5c2f4c38cba46136d4b6b737e47e1a7",
+      "sha256": "5e8c110953ef3ce8ed1c7779dbfebc7f3f4ea0ef988a789d59b7578c10ab8cc8"
+    },
+    {
+      "path": "tools/4slot/verify-hold-metadata-replay.mjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "8075281ac62b5a2a82b459303c98ddce4f1f381e",
+      "sha256": "a1023f1d5e9002200b66db7ef8cd53d7ec4b91f32e6d93d3ae0bd9c05100fcbc"
+    },
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "82b2724f75991f3952df1b2a78f8f452be1d826d",
+      "sha256": "499ce72f4b936ce9041b3e740a9baea0ca36583a2dc96623b5f951a6c9d9c614"
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "636508c172e4c2016cd285384d09b467920f4836",
+      "sha256": "482b14918edf02eba8b794bbb350829b5ffc30f2fc89df23c0d360318dc27076"
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.mjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "4ced47a9e712cc4b4def9d35d36f7a90f77a8482",
+      "sha256": "b3f447bc44e1283b942eb2f70f778c32ceab667370ed1be2966687bbf573f3e8"
+    },
+    {
+      "path": "tools/4slot/exam-items.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "debef5587df86821c04e543afb72a72b2e0fc1e4",
+      "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2"
+    },
+    {
+      "path": "tools/4slot/validate-4slot.cjs",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "f475bcb009080160489e189aa9e920e9cabb7613",
+      "sha256": "8f35827437b4ae5e5a063f5968a5f23069fbc1e28244c2a8cab9c367d7a9edc7"
+    },
+    {
+      "path": "archive/item-4slot.js",
+      "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+      "gitBlobSha1": "c59c2ff413c654cf2df1c4d8ec5f891abf34d3f2",
+      "sha256": "e85ed65f5524d7636545e5d8aa1e38ecfc2f82597944101cf9e28814582b7393"
+    }
+  ]
+}
