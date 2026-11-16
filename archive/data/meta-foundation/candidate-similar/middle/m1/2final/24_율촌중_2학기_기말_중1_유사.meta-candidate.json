@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "archive-similar-candidate-meta-v1",
+  "exam": "yulchon24",
+  "sourceOnlyInput": {
+    "path": "/tmp/grade1-review/source-only/yulchon24.candidate-source-only.json",
+    "sha256": "1b1f36e502deda2d769cfd2c0cd0293e49dd2488f132f1d342166d4eac06e030",
+    "originalImmutableInputSha256": "2fda634cb76774db550c835a622d32b71c3911853f2d8857bfa1642ea3fe9417"
+  },
+  "candidateJs": {
+    "path": "archive/exams/similar/middle/m1/2final/24_율촌중_2학기_기말_중1_유사.js",
+    "sha256": "695733741a142500ed7dca7652744e820663430aca149400ef18ecfa865afa27",
+    "gitBlobSha1": "aa7aa4bd1083247afcbd1547b9175d7489af212b"
+  },
+  "r1BlindFreeze": {
+    "path": "/tmp/grade1-review/yulchon24-r1-blind-freeze.json",
+    "sha256": "a1d547c20eadca7a630bd47b3e666394b680efb3af7bfdc57d7e26e4721200d3",
+    "resolvedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "unresolvedQids": [
+      9,
+      21,
+      22
+    ],
+    "freezePreserved": true
+  },
+  "projection": {
+    "status": "RESOLVER_ONLY",
+    "resolver": "archive/tools/meta-foundation/rpm-active-resolver.mjs via stage-meta-bridge.mjs",
+    "reason": "Official CREATE bridge current-source run bound to JS 695733741a142500ed7dca7652744e820663430aca149400ef18ecfa865afa27: 22/22 resolver validations PASS; 21 PROJECTION_REUSE and one Q20 META_ONLY_COMPATIBILITY_PENDING. Q9=M1-RPM-106/PT_M1_SOLID_FIGURE_MEASURE/TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE; Q19=M1-RPM-100/PT_M1_SOLID_FIGURE_MEASURE/TPL_M1_SOLID_FIGURE_STANDARD_MEASURE (primary subproblem (1), preserve (2)); Q22=M1-RPM-112/PT_M1_DATA_CATEGORY_PERCENTAGE/TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON. Q20 linked x and 2x frequency cells do not satisfy the current one-missing-bin family rule, so no PT/TPL selected. Full output: /tmp/grade1-review/yulchon24-current-sourcegrounded-rerun/create-report.json sha256 e4d34270b1dc362740df49e0e723662d3dc8aaf10bed86505d7e3db4155d2398. Production registration pending; source identity map and metadata target rows are both zero.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "questionUids": "Resolver scratch input IDs are deterministic stage values only. Official archive/data/question_identity_map.json and archive/data/question_metadata.json each have 0 target rows; UID registration pending. Do not treat staged IDs as issued or mint/register new IDs.",
+    "sourceGroundedSelections": [
+      {
+        "sourceOrdinal": 9,
+        "crosswalkRecordId": "M1-RPM-106",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "inputBundleSha": "sha256:9c638f761603323c39217d652b290229c3142c049b67eb650b7ab77ad8f7a529"
+      },
+      {
+        "sourceOrdinal": 19,
+        "crosswalkRecordId": "M1-RPM-100",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "projectionStatus": "PROJECTION_REUSE",
+        "inputBundleSha": "sha256:bbf085ea101be34611b76f4966fc3d661448ccdff8c118b05c4f512c5a09f1bc"
+      },
+      {
+        "sourceOrdinal": 20,
+        "crosswalkRecordId": "M1-RPM-108",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "reason": "Linked x and 2x table cells are not the available MISSING_FREQUENCY template’s single-missing-bin structure."
+      },
+      {
+        "sourceOrdinal": 22,
+        "crosswalkRecordId": "M1-RPM-112",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
+        "projectionStatus": "PROJECTION_REUSE",
+        "inputBundleSha": "sha256:07f7ec47c79ef571eb3b042cbe67ba189ed261eae90c4d0e647b89a832b44a5e"
+      }
+    ],
+    "currentResolverReport": {
+      "path": "/tmp/grade1-review/yulchon24-current-sourcegrounded-rerun/create-report.json",
+      "sha256": "e4d34270b1dc362740df49e0e723662d3dc8aaf10bed86505d7e3db4155d2398",
+      "reconciliationReport": "/tmp/grade1-review/yulchon24-current-695733-review-reconciliation.json",
+      "reconciliationSha256": "d40ac964e40159fcc5dfb486f6480372014defc1e15aaebe57b6c44ec5283047"
+    }
+  },
+  "review": {
+    "semanticR1": "Q4/Q9/Q21/Q22 targeted corrections are source-bound and checked; Q4/Q19/Q22 evidence review report /tmp/grade1-review/yulchon24-q4-q19-q22-targeted-review-695733-2867e5.json sha256 ca0bdecfb7ed574e7ecd61bc1a5abb7b6748610a4f23cd9f36e0bb60138c2340. Q20 answer x=5 and target count 15 remain independently confirmed; canonical M1-08 label correction is correct. Full review stages R2/R3 are still NOT_RUN.",
+    "fourSlot": "UNREVIEWED; selected Q19/Q22 4slot edits passed only targeted source/evidence checks; all per-item statuses remain UNREVIEWED.",
+    "R2": "NOT_RUN",
+    "R3": "NOT_RUN",
+    "consumerRegistration": "NOT_RUN",
+    "deployment": "NOT_RUN",
+    "q20UnitCorrection": "PASS on current JS SHA-256 695733741a142500ed7dca7652744e820663430aca149400ef18ecfa865afa27: Q20 x=5, 30–50 minute count 15; M1-08 canonical label 자료의 정리와 해석. Current Resolver family binding remains pending; see /tmp/grade1-review/yulchon24-current-695733-review-reconciliation.json."
+  },
+  "sourceEvidence": {
+    "documentId": "1sR5BvEfmkr6YY8G169qJWfQeqrOoS5lPZ14sumvCEpg",
+    "revisionId": "AHj4eMRafavgJLvcDqx2B444KVP_yhq1cONV00ECGkjji35dAY2EMG3BwDQjsalcWA5uUxVKOANy-jAXv6sMN0Of9FxeXYMSLyaPxbj6xRk",
+    "sourceRawSha256": "fe7203eadbcee4c92b273c00d5f7f108bf18a7f4df69cd147f598699179d42c1"
+  },
+  "checks": {
+    "nodeCheck": "PASS (current JS SHA-256 695733741a142500ed7dca7652744e820663430aca149400ef18ecfa865afa27)",
+    "draftHarness": "NOT_RUN_FOR_CURRENT_CANDIDATE; do not infer full harness or release pass.",
+    "staticChecks": "Official CREATE Resolver current JS run: 22/22 validations PASS; 21 projection reuse, Q20 pending with no PT/TPL; current report /tmp/grade1-review/yulchon24-current-sourcegrounded-rerun/create-report.json sha256 e4d34270b1dc362740df49e0e723662d3dc8aaf10bed86505d7e3db4155d2398; identity-map/metadata rows 0.",
+    "fourSlotValidation": "Current 4slot artifact SHA-256 2867e52b9698eb282e71c208c418475fc65f1f4de29d4b29df41ff97b27b3554: 22 items, 125 quotes, fail 0, warn 29. Targeted Q4/Q19/Q22 review /tmp/grade1-review/yulchon24-q4-q19-q22-targeted-review-695733-2867e5.json sha256 ca0bdecfb7ed574e7ecd61bc1a5abb7b6748610a4f23cd9f36e0bb60138c2340; all 22 statuses remain UNREVIEWED."
+  }
+}
