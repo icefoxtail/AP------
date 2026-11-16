@@ -37,7 +37,7 @@ const px2=value=>String(Math.round(value*100)/100);
 const POINT_ID=/^[A-Z][0-9']?$/;
 const ELLIPSE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
 
-const TOP_KEYS=['capability','ellipse','ellipses','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
+const TOP_KEYS=['capability','ellipse','ellipses','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription'];
 const ELLIPSE_KEYS=['center','semiAxisSquared','majorAxis'];
 const PAIR_ELLIPSE_KEYS=[...ELLIPSE_KEYS,'id'];
 const POINT_KEYS=['id','kind','side','end','x','y','branch','of','label','ellipseId'];
@@ -64,6 +64,13 @@ function validatePair(plan){
     validateEllipse(ellipse,PAIR_ELLIPSE_KEYS);
   }
   return ids;
+}
+
+function validateAccessibleName(plan){
+  if(!Object.hasOwn(plan,'accessibilityDescription'))return;
+  const validText=text=>typeof text==='string'&&text.trim()&&text.length<=500&&!/[\r\n]/.test(text);
+  if(!validText(plan.accessibilityDescription))bad('INVALID_ACCESSIBILITY_DESCRIPTION');
+  if(!plan.arch&&!validText(plan.caption))bad('PLAN_CAPTION_REQUIRED');
 }
 
 // --- conic (parabola, hyperbola, circle, ellipse; one `conic` or one or two `conics`) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
@@ -105,10 +112,7 @@ export function validateConicPlan(plan){
     if(Array.isArray(plan.conics)||plan.conic?.kind!=='PARABOLA'||plan.conic.axis!=='Y'
       ||!LINE_ID.test(plan.arch.ground??'')||!LINE_ID.test(plan.arch.laser??'')||plan.arch.ground===plan.arch.laser)bad('PARABOLIC_ARCH_INVALID');
   }
-  if(Object.hasOwn(plan,'accessibilityDescription')){
-    const text=plan.accessibilityDescription;
-    if(!plan.arch||typeof text!=='string'||!text.trim()||text.length>500||/[\r\n]/.test(text))bad('INVALID_ACCESSIBILITY_DESCRIPTION');
-  }
+  validateAccessibleName(plan);
   const kinds=new Set(rows.map(row=>row.kind));
   const points=plan.points??[];
   if(!Array.isArray(points)||points.length>10)bad('ELLIPSE_POINT_INVALID');
@@ -146,6 +150,7 @@ export function validateEllipseFigurePlan(plan){
   if(isPlain(plan)&&('conic' in plan||'conics' in plan))return validateConicPlan(plan);
   onlyKeys(plan,TOP_KEYS,'ELLIPSE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
+  validateAccessibleName(plan);
   const pair='ellipses' in plan;
   const ellipseIds=pair?validatePair(plan):null;
   if(!pair)validateEllipse(plan.ellipse,ELLIPSE_KEYS);
@@ -829,6 +834,9 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy,sto
   const placed=placeLabels(prepared,layoutOf(model),ellipseLabelObstacles(spec));
   const {width,height}=spec.size;
   let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
+  const accessible=plan.accessibilityDescription!==undefined;
+  const scopedLabels=accessible&&!model.arch;
+  const labelId=item=>scopedLabels&&item.role!=='segment'||model.arch&&item.role==='point'?'label-'+item.key:item.key;
   for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
   const lineage={planSha256:objectSha(plan),modelSha256:objectSha(model),typographyPolicySha256:objectSha(typographyPolicy),
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
@@ -836,18 +844,18 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy,sto
   for(const item of placed)if(item.leader){
     if(stopCurveLeaders&&item.role==='curve')item.leader=stopCurveLeaderShort(item.leader);
     const ownerAttr=item.role==='point'?`data-owner-point="${esc(item.pointId)}"`:item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:item.role==='curve'?`data-owner-curve="${esc(item.curveId)}"`:`data-owner-segment="${item.segmentId}"`;
-    body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
+    const ownerLabel=scopedLabels?labelId(item):item.key;
+    body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${ownerLabel}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
   }
   for(const item of placed){
     const box=item.box;
-    const labelId=model.arch&&item.role==='point'?'label-'+item.key:item.key;
     const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:item.role==='curve'?` data-curve-id="${esc(item.curveId)}"`:` data-segment="${esc(item.segmentId)}"`;
     const role=item.role==='point'?'point':item.role==='line'?'line':item.role==='curve'?'curve':'measure';
-    body+=`<g data-layer="90"><g id="${labelId}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
+    body+=`<g data-layer="90"><g id="${labelId(item)}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
     lineage.fragmentSha256s[item.key]=item.fragment.fragmentSha256;
   }
-  const names=model.arch?`<title id="visual-title">${esc(plan.caption??'포물선 모양 조형물')}</title><desc id="visual-desc">${esc(plan.accessibilityDescription??'포물선 호의 양 끝은 지면에 닿고, 지면에서 시작하는 선분은 호에 접한다.')}</desc>`:'';
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${model.arch?' aria-labelledby="visual-title visual-desc"':''} data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${(model.conic?[model.conic]:model.conics).map(one=>one.kind).join('+')}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${names}${body}</svg>`;
+  const names=accessible||model.arch?`<title id="visual-title">${esc(plan.caption??'포물선 모양 조형물')}</title><desc id="visual-desc">${esc(plan.accessibilityDescription??'포물선 호의 양 끝은 지면에 닿고, 지면에서 시작하는 선분은 호에 접한다.')}</desc>`:'';
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${names?' aria-labelledby="visual-title visual-desc"':''} data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${(model.conic?[model.conic]:model.conics).map(one=>one.kind).join('+')}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${names}${body}</svg>`;
   lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
   return {status:'RENDERED',svg,lineage,spec};
 }

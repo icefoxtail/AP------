@@ -13,6 +13,7 @@ SVG.  Nothing the producer computed is trusted:
     and must not cover another point.
 """
 import hashlib
+from collections import Counter
 import json
 import math
 import re
@@ -283,6 +284,37 @@ def _line_interior_points(a,b,end_margin=3.0,step=1.5):
              a[1]+(b[1]-a[1])*min(1.0,(index*step)/length)) for index in range(count)]
 
 
+def audit_accessible_names(plan,root,elements,errors):
+    if 'accessibilityDescription' not in plan or 'arch' in plan:
+        return
+    ids=Counter(element.get('id') for element in elements if element.get('id'))
+    if any(count>1 for count in ids.values()):
+        errors.append('CONIC_DUPLICATE_ID')
+    titles=root.findall(NS+'title')
+    descriptions=root.findall(NS+'desc')
+    if (root.get('role')!='img' or root.get('aria-labelledby')!='visual-title visual-desc'
+        or len(titles)!=1 or titles[0].get('id')!='visual-title' or titles[0].text!=plan.get('caption')
+        or len(descriptions)!=1 or descriptions[0].get('id')!='visual-desc'
+        or descriptions[0].text!=plan['accessibilityDescription']):
+        errors.append('CONIC_ACCESSIBLE_NAME_MISMATCH')
+
+    bindings={'point':'data-point','line':'data-line','curve':'data-curve-id','measure':'data-segment'}
+    labels={}
+    for element in elements:
+        role=element.get('data-label-role')
+        if role not in bindings: continue
+        owner=element.get(bindings[role])
+        key=f'{role}-{owner}'
+        expected_id=key if role=='measure' else 'label-'+key
+        if not owner or key in labels or element.get('id')!=expected_id or element.get('data-owner')!='ellipse-'+key:
+            errors.append('CONIC_LABEL_OWNER_MISMATCH:'+key)
+        labels[key]=expected_id
+    for element in _find(elements,'leader'):
+        key=element.get('data-label')
+        if key not in labels or labels[key]!=element.get('data-owner-label'):
+            errors.append('CONIC_LEADER_LABEL_MISMATCH:'+str(key))
+
+
 def audit(plan,svg):
     """Return {status, errors, finalSvgSha256, checks} for one plan against one final SVG."""
     if isinstance(plan,dict) and ('conic' in plan or 'conics' in plan):
@@ -303,6 +335,7 @@ def audit(plan,svg):
     if root.tag!=NS+'svg':
         errors.append('SVG_ROOT_NOT_SVG')
     elements=[element for element in root.iter()]
+    audit_accessible_names(plan,root,elements,errors)
     width=root.get('width');height=root.get('height')
     try:
         canvas={'width':float(width),'height':float(height)}
