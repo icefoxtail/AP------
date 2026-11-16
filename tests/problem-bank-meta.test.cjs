@@ -173,3 +173,103 @@ test('regression: similar/m3/2mid 26_삼산중 유사 keeps deterministic qid_v1
     Array.from({length:24},(_,i)=>i+1),'identity rows exist for every ordinal');
   assert.ok(identityRows.every(r=>r.questionUid===formula(Number(r.sourceOrdinal))),'identity keeps the deterministic UID');
 });
+
+function registeredMiddleDisplayFixture(curriculum='2015') {
+  const questionUid='qid_v1_'+'1'.repeat(64), sourceFile='original/middle/m3/2mid/display-fixture.js';
+  const sourceFingerprint='2'.repeat(64), assignmentFingerprint='3'.repeat(64);
+  return {
+    meta:{questionUid,sourceArchiveFile:sourceFile,sourceOrdinal:1,sourceFingerprint,contentFingerprint:assignmentFingerprint,
+      metadataApprovalType:'FINAL_QA',metadataStatus:'approved_semantic_review',
+      metadataRevision:'meta-foundation:MIDDLE3@1.0.8:exam-final_qa-v2:fixture',
+      fieldStatus:{standardUnit:'approved_final_qa',subUnit:'approved_final_qa'},approvalEvidence:['evidence/exact-receipt.json'],
+      curriculum,curriculumKey:curriculum,courseKey:'M3-2',standardCourse:'중3 수학',
+      standardUnitKey:'M3-05',standardUnit:'삼각비',subUnitKey:'M3-05-TRIG_RATIO',subUnit:'삼각비'},
+    identity:{questionUid,sourceArchiveFile:sourceFile,sourceOrdinal:1},sourceFile,sourceOrdinal:1,sourceGrade:'중3',
+    sourceFingerprint,assignmentFingerprint,
+    gradeCourseAllowlist:['2015','2022'].map(curriculumKey=>({grade:'중3',curriculumKey,courseKey:'M3-2'})),
+    scopeParents:['2015','2022'].map(curriculumKey=>({grade:'중3',curriculumKey,courseKey:'M3-2',
+      standardUnitKey:'M3-05',subUnitKey:'M3-05-TRIG_RATIO',L1:'M3-'+curriculumKey,L2:'TRIG-'+curriculumKey})),
+    canonicalParents:['2015','2022'].map(curriculumKey=>({curriculumKey,courseKey:'M3-2',L1:'M3-'+curriculumKey,L2:'TRIG-'+curriculumKey})),
+  };
+}
+
+test('registered middle course display keeps the exact approved semester and curriculum', () => {
+  for(const curriculum of ['2015','2022']) {
+    const input=registeredMiddleDisplayFixture(curriculum), before=structuredClone(input);
+    const result=meta.createSourceBoundDisplayProjection(input);
+    assert.equal(result.reason,'');assert.equal(result.projection.courseKey,'M3-2');
+    assert.equal(result.projection.curriculumKey,curriculum);
+    assert.equal(result.projection.standardCourse,'중3 수학');
+    assert.equal(result.projection.L1,'M3-'+curriculum);assert.equal(result.projection.L2,'TRIG-'+curriculum);
+    assert.equal(result.projection.displayOnly,true);assert.equal(result.projection.sourceBinding.bindingMode,'EXACT');
+    assert.deepEqual(input,before,'projection must not rewrite an approved value or input');
+  }
+});
+
+test('registered middle course display rejects unknown aliases and conflicting course authority', async t => {
+  const mutations=[
+    ['missing semester',x=>delete x.meta.courseKey],
+    ['unregistered semester',x=>x.meta.courseKey='M3-9'],
+    ['wrong grade key',x=>x.meta.courseKey='M2-2'],
+    ['unknown display alias',x=>x.meta.standardCourse='unreviewed alias'],
+    ['different grade display alias',x=>x.meta.standardCourse='중2 수학'],
+    ['missing explicit curriculum',x=>delete x.meta.curriculumKey],
+    ['unknown curriculum',x=>{x.meta.curriculumKey='2030';x.meta.curriculum='2030';}],
+    ['2015 and 2022 conflict',x=>x.meta.curriculum='2022'],
+    ['RPM curriculum conflict',x=>x.meta.rpmCurriculum='2022'],
+    ['course not allowlisted',x=>x.gradeCourseAllowlist=[]],
+    ['grade not allowlisted',x=>x.sourceGrade='중2'],
+    ['non-FINAL_QA producer',x=>x.meta.metadataApprovalType='REVIEW2'],
+  ];
+  for(const [label,mutate]of mutations)await t.test(label,()=>{
+    const input=registeredMiddleDisplayFixture();mutate(input);
+    assert.equal(meta.createSourceBoundDisplayProjection(input).projection,null);
+  });
+});
+
+test('registered middle course display retains identity, approval and exact-parent gates', async t => {
+  const mutations=[
+    ['fingerprint mismatch',x=>x.sourceFingerprint='4'.repeat(64),'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH'],
+    ['identity mismatch',x=>x.identity.questionUid='qid_v1_'+'5'.repeat(64),'DISPLAY_PROJECTION_IDENTITY_MISMATCH'],
+    ['approval missing',x=>x.meta.fieldStatus.standardUnit='pending','DISPLAY_PROJECTION_CORE_APPROVAL_MISSING'],
+    ['missing parent',x=>x.scopeParents=[],'DISPLAY_PROJECTION_PARENT_MISSING'],
+    ['parent for another semester',x=>x.scopeParents.forEach(r=>r.courseKey='M3-1'),'DISPLAY_PROJECTION_PARENT_MISSING'],
+    ['parent for another curriculum',x=>x.scopeParents=x.scopeParents.filter(r=>r.curriculumKey==='2022'),'DISPLAY_PROJECTION_PARENT_MISSING'],
+    ['ambiguous course',x=>x.gradeCourseAllowlist.push({...x.gradeCourseAllowlist[0]}),'DISPLAY_PROJECTION_COURSE_AMBIGUOUS'],
+    ['ambiguous parent',x=>x.scopeParents.push({...x.scopeParents[0]}),'DISPLAY_PROJECTION_PARENT_AMBIGUOUS'],
+    ['missing canonical parent',x=>x.canonicalParents=[],'DISPLAY_PROJECTION_CANONICAL_PARENT_MISSING'],
+  ];
+  for(const [label,mutate,reason]of mutations)await t.test(label,()=>{
+    const input=registeredMiddleDisplayFixture();mutate(input);
+    const result=meta.createSourceBoundDisplayProjection(input);assert.equal(result.projection,null);assert.equal(result.reason,reason);
+  });
+});
+
+test('registered middle course display does not create verification, RPM values or approval', () => {
+  const input=registeredMiddleDisplayFixture(),result=meta.createSourceBoundDisplayProjection(input);
+  assert(result.projection);assert.equal(result.projection.metaVerification,undefined);
+  for(const key of ['rpmL1','rpmL2','rpmL3','rpmL4'])assert.equal(result.projection[key],undefined);
+  const record={questionUid:input.meta.questionUid,sourceFile:input.sourceFile,sourceOrdinal:1,
+    metaProjection:result.projection,metaProjectionStatus:'DISPLAY_ONLY_SOURCE_BOUND',
+    metadataRevision:input.meta.metadataRevision,currentSourceJsSha256:'6'.repeat(64),
+    reviewedExamRegistration:{schemaVersion:'archive-reviewed-exam-registration-projection-v2',
+      sourceJsSha256:'6'.repeat(64),metadataRevision:input.meta.metadataRevision,reference:'native.json',sha256:'7'.repeat(64)},
+    assignmentEvidence:{reviewEvidence:{reference:'native.json',sha256:'7'.repeat(64)}}};
+  const projected=meta.projectOriginal(record);
+  assert.equal(projected.directSelectable,true);assert.equal(projected.verifiedEligible,false);
+  assert.equal(meta.query([projected],{},{}).length,1);
+  assert.equal(meta.query([projected],{},{profile:'VERIFIED'}).length,0);
+  for(const key of ['rpmL1','rpmL2','rpmL3','rpmL4'])assert.equal(projected[key],null);
+});
+
+test('registered middle course display leaves existing literal high-school courses unchanged', () => {
+  const input=registeredMiddleDisplayFixture();input.sourceGrade='고1';input.meta.standardCourse='수학(상)';
+  input.meta.metadataApprovalType='REVIEW2';delete input.meta.courseKey;
+  input.gradeCourseAllowlist=[{grade:'고1',curriculumKey:'2015',courseKey:'수학(상)'}];
+  input.scopeParents=[{grade:'고1',curriculumKey:'2015',courseKey:'수학(상)',standardUnitKey:'M3-05',
+    subUnitKey:'M3-05-TRIG_RATIO',L1:'A',L2:'B'}];
+  input.canonicalParents=[{curriculumKey:'2015',courseKey:'수학(상)',L1:'A',L2:'B'}];
+  const result=meta.createSourceBoundDisplayProjection(input);
+  assert.equal(result.reason,'');assert.equal(result.projection.courseKey,'수학(상)');
+  assert.equal(result.projection.standardCourse,'수학(상)');
+});

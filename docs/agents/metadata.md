@@ -128,3 +128,9 @@
 - **검수 상태:** 시험지의 `reviewStatus`와 등록 후 `reviewed_pass`의 차이는 REVIEW2에서 소비자 충돌로 거부하지 않는다(`verifyConsumerValues`의 `blockingConflicts`와 `verify-changed-uid-consumer-approval.mjs`의 METADATA_CONFLICT 판정에서 `reviewStatus`만 제외). 시험지 파일은 고치지 않는다.
 - **유형 경로를 정할 수 없는 문항(`typeHold`):** 항목에 `typeHold: true`를 두면 단원·소단원과 판정된 CrossConcept·Condition·Integration만 등록한다. PT/TPL이 둘 다 미등록인 문항에만 쓸 수 있고, `after`에 PT/TPL/L3/L4/rpmL3/rpmL4를 넣으면 거부한다. 결과 행은 `metadataStatus: approved_partial_with_explicit_holds`, `fieldStatus.problemType/template: manual_review_pending`, `metaFoundationHoldReason: TYPE_PATH_UNBOUND_UNIT_SUB_ONLY`이며 런타임 행을 만들지 않는다. 크로스워크·봉인 문서·4칸 사전은 건드리지 않는다.
 - 도구: `_luna/classify-final/register/`의 `select-ready.cjs` → `build-meta-request.mjs` → `verify-batch.mjs` → `install-batch.sh`.
+
+## CURRENT — 문항 본문 변경 종류 판정기 `source-delta` (등록기 동작은 아직 바꾸지 않음)
+
+- **무엇:** `archive/tools/meta-foundation/source-delta.mjs`는 같은 문항의 옛 본문과 현재 본문을 비교해 무엇이 바뀌었는지 판정하는 순수 모듈이다(`UNCHANGED`·`FIGURE`·`NOTATION`·`SOLUTION`·`STEM_EDIT`·`ANSWER`·`REPLACED`·`NUMBER_MISMATCH`). 지문 계산식은 기존 등록기와 글자 그대로 같고, `NOTATION`은 코드에 이유와 함께 적힌 명시 규칙만 같게 본다(애매하면 아님). 이유: 그림 교체·본문 오류 수정으로 지문이 어긋난 문항의 메타를 떼지 않고, 변경 종류를 꼬리표로 남기는 재결속의 첫 단계다.
+- **보고 도구:** `node archive/tools/meta-foundation/source-delta-report.mjs --scope <시험지 경로 접두어> --out <저장소 밖 경로>`는 읽기 전용이며 어긋난 문항마다 git 이력에서 옛 blob을 찾아 분류를 집계한다. 보고서는 Git에 두지 않는다(저장소 안 출력은 거부). `REPLACED` 임계값(`REPLACED_RECALL_THRESHOLD`)은 표본 약 20건으로 정한 값이고 전수 보고로 보정한다.
+- 이 PR 시점에서 등록기·빌더·화면 코드는 이 모듈을 쓰지 않는다. 검사: `tests/archive-source-delta.test.mjs`.

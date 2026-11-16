@@ -2256,6 +2256,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     } else if ([...previous.appliedRecords, ...previous.runtimeRecords].some(record =>
       record.approvalEvidence?.includes(reviewedSourceBindingPath(req.requestId))))
       fail("registered source-review binding marker has no explicit opt-in");
+    const replayBeforeTables = sourceBindingPatches.some(patch => patch.sourceReview?.proposalFinalization !== undefined ||
+      patch.sourceReview?.scopeFieldBinding !== undefined || patch.sourceReview?.currentDefinitionApplication !== undefined ||
+      patch.sourceReview?.prerequisiteExistingApplication !== undefined || patch.sourceReview?.currentTargetApplication !== undefined)
+      ? restoreReviewedReplayCanonicalBefore({ request: req, currentTables, root }) : currentTables;
     // A renderer can change without changing its referencing JS source. Re-run only
     // the explicitly opted-in compound proof on replay, including all immutable
     // review/assets and the original before values; ordinary native receipts keep
@@ -2287,7 +2291,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
             record.sourceFingerprint !== checked.sourceFingerprint || ids.get(patch.questionUid)?.sourceFingerprint !== checked.sourceFingerprint)
           fail("registered renderer computed fingerprint drift");
         const proof = validateReviewedSourceReassessment({ root, request: req, patch, metadata: before, question, final: record,
-          supportedFields: valueFields, canonicalBefore: currentTables, canonicalAfter: currentTables, cache: replaySourceReviewCache });
+          supportedFields: valueFields, canonicalBefore: replayBeforeTables, canonicalAfter: currentTables, cache: replaySourceReviewCache });
         if (!eq(proof, repair.sourceReview)) fail("registered renderer source review proof drift");
         replaySourceReviewContext.set(patch.questionUid, proof);
       }
@@ -2303,10 +2307,6 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         patch.questionUid === repair.questionUid && patch.sourceOrdinal === repair.sourceOrdinal).length !== 1))
         fail(`registered explicit source review ${requestKey} inventory drift`);
     }
-    const replayBeforeTables = sourceBindingPatches.some(patch => patch.sourceReview?.proposalFinalization !== undefined ||
-      patch.sourceReview?.scopeFieldBinding !== undefined || patch.sourceReview?.currentDefinitionApplication !== undefined ||
-      patch.sourceReview?.prerequisiteExistingApplication !== undefined)
-      ? restoreReviewedReplayCanonicalBefore({ request: req, currentTables, root }) : currentTables;
     for (const patch of sourceBindingPatches) {
       const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid && repair.sourceOrdinal === patch.sourceOrdinal);
       const record = previous.appliedRecords.find(row => row.questionUid === patch.questionUid), repair = repairs[0];
