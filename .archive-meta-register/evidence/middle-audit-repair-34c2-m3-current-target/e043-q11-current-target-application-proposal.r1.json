@@ -1,0 +1,788 @@
+{
+  "schemaVersion": "archive-m3s2-prerequisite-current-target-application-proposal-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "preparedBy": "GPT_M3_34C2",
+  "createdAt": "2026-11-16T03:47:25.277Z",
+  "baselineMain": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+  "status": "PROPOSED_EXACT_CURRENT_TARGET_APPLICATION_PENDING_INDEPENDENT_FINAL_REVIEW_AND_ROOT_INTEGRATION",
+  "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+  "sourceOrdinal": 11,
+  "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+  "expectedQuestionCount": 25,
+  "decisionScope": "Restore the explicit original current-grade target under the current prerequisite rule, reusing the independently accepted existing ACTIVE lower-grade PT/TPL meaning. This is a new bounded current-target application decision, not a claim that native.after approved M3.",
+  "native": {
+    "reviewRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E043.meta.json",
+      "gitBlobSha1": "cd1262323739e9dff3b3e045067104d2a82567d0",
+      "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+    },
+    "itemStableSha256": "dd7400f33fe61352ca9e97eb1a063441447da1330d5c075b76094e6b9fe0bc54",
+    "independentRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E043.independent.json",
+      "gitBlobSha1": "1d9d142f82ed8783a283ae1d561b1935f864af45",
+      "sha256": "08e9160916e3a46892c505a42b7b0c22f55cc444d443231b75098ef49e007036"
+    },
+    "independentItemStableSha256": "33272e0782a76ef607bcb3179887b9c60f1384938e15a049dee11abdc3e87586",
+    "independentMetadataClassification": "PASS",
+    "newMathematicalVerification": false,
+    "proposalRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E043.proposals.json",
+      "gitBlobSha1": "3b4766e23305580116815a90e51f7b51b4956888",
+      "sha256": "a47b881f42025257dc62c069af75b202386383e741c3fdaaa4815bb8d5bf20bf",
+      "index": 1,
+      "proposalStableSha256": "e64005ac950ae6d93b571291fd58da23fc3102477b11536c3476e4de7794d430"
+    },
+    "originalProposal": {
+      "kind": "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP",
+      "supportingQuestionUids": [
+        "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546"
+      ],
+      "historicalSourceRpm": "M3-RPM-059",
+      "currentExactRpm": "M2-RPM-182",
+      "existingActiveProblemType": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "existingActiveTemplate": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "newProblemTypeRequired": false,
+      "newTemplateRequired": false,
+      "reason": "현재 풀이의 결정적 전략은 일반 삼각형의 이등분선으로 대변을 양변의 비로 나누는 정리이다. 원본2015 M2의 이등변 꼭짓각이등분선·평행선 길이비 leaf는 일반 정리와 다르며 원본M3 삼각비 활용도 실제 사용하지 않았다. 현행2022 M2-182는 정확하고 ACTIVE native PT/TPL을 재사용한다.",
+      "owner": "CODEX_RELEASE_OWNER"
+    },
+    "nativeAfterUnchanged": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": null,
+      "standardSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "rpmPrimaryKey"
+      ],
+      "semanticMeta": {
+        "primaryConcept": "삼각형의 각의 이등분선",
+        "subConcept": "각의 이등분선으로 대변을 양변의 비로 나누어 길이 구하기",
+        "conditionsUsed": "30·60·90도 직각삼각형의 고정 변비로 BC=3과 AC=6을 구한다. 각의 이등분선 CD에 대해 AD:DB=AC:CB=2:1을 세운다.",
+        "integrationPatternExplanation": "고정 특수 직각삼각형의 변비 결과를 각의 이등분선 정리의 변비에 순차 사용한다. 실제 sin/cos/tan 계산은 없고 각의 이등분선이 목표 길이를 결정하는 주전략이다."
+      },
+      "difficultyReason": "중·3 유지: 특수 직각삼각형의 두 변을 구한 뒤 독립된 각의 이등분선 정리로 목표 조각을 정하는 표준 결합이다."
+    },
+    "nativeOriginalCurriculum": null,
+    "nativeOriginalCurriculumProvenance": {
+      "status": "UNSPECIFIED",
+      "comparisonPathCurriculum": "2015",
+      "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+    },
+    "semanticMeaningApproval": {
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "decisiveStep": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+      "independentJudgment": "원본 그림의 AB=3√3, ∠A30°, ∠B90°와 C의 각이등분선 CD를 확인했다. 실제 해설은 고정 특수직각삼각형 변비로 두 변을 준비한 다음 일반 각의 이등분선 정리의 AD:DB=AC:CB를 사용해 목표 조각을 결정한다. 최종 핵심이 일반 각이등분선이므로 ACTIVE PT_TRIANGLE_ANGLE_BISECTOR/TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO가 맞고, 원본2015 이등변삼각형·내심/닮음 leaf와 현행2022 M2-RPM-182를 구별한 exact 공백 기록도 수용한다. given에 실제 30° 입력의 각이 보완되었고 method의 고정변비 후보와 같은칸 parent 직각삼각형, 각의이등분선정리 및 내분이 현 해설과 맞는다. 최종 Q11 전처리의 30-60-90 고정변비는 정형 특수각 삼각비 값과 수치적으로 같은 관계이므로 CC_SPECIAL_ANGLES 정의의 의미 재사용을 수용한다. 정확 지원 UID의 freeze가 이 CC까지 직접 승인한 것으로 주장하지 않고, 정의와 정형 변비의 의미 대응에 따른 추론임을 명시한 저자 근거를 확인했다. 기존 CC 정의공백만 철회하며 이등분선 Primary와 원본 RPM 정확공백은 그대로이다."
+    },
+    "exact2015PublisherRpm": {
+      "recordId": null,
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "majorUnit": "삼각형의 성질",
+      "midUnit": null,
+      "l3": null,
+      "l4": null,
+      "status": "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP",
+      "reason": "원본2015 M2-061은 이등변삼각형 꼭짓각 이등분선,063/064/066은 수직이등분선·외심·내심,089/091~096은 닮음·평행선 길이비로 일반 삼각형의 각의 이등분선 변비 정리와 exact가 다르다. 옛M3-059 삼각비의 활용은 실제 해설의 최종 주전략이 아니므로 보존 강제하지 않는다."
+    },
+    "exact2022Comparison": {
+      "recordId": "M2-RPM-182",
+      "basePath": {
+        "majorUnit": "삼각형의 성질",
+        "midUnit": "삼각형의 성질",
+        "l3": "각의 이등분선",
+        "l4": "각의 이등분선 성질"
+      },
+      "effectiveParent": {
+        "key": "[\"2022\",\"M2-2\",\"삼각형의 성질\",\"삼각형의 성질\"]",
+        "parentKey": "[\"2022\",\"M2-2\",\"삼각형의 성질\",\"삼각형의 성질\"]",
+        "unitKey": "RPM22-M2-L1-06",
+        "grade": "중2",
+        "gradeKey": "M2",
+        "curriculumKey": "2022",
+        "courseKey": "M2-2",
+        "L1": "삼각형의 성질",
+        "L2": "삼각형의 성질",
+        "label": "삼각형의 성질",
+        "order": 11,
+        "orderInUnit": 1,
+        "legacyUnitKeys": [
+          "M22-2-06"
+        ]
+      },
+      "reason": "일반 삼각형에서 대변의 분할비가 인접 두 변의 비가 되는 현재 풀이의 마지막 단계를 정확히 포함한다."
+    },
+    "preservedDebts": [
+      {
+        "type": "ORIGINAL_EXACT_LEAF_GAP",
+        "detail": "원본2015 M2-061은 이등변삼각형 꼭짓각 이등분선,063/064/066은 수직이등분선·외심·내심,089/091~096은 닮음·평행선 길이비로 일반 삼각형의 각의 이등분선 변비 정리와 exact가 다르다. 옛M3-059 삼각비의 활용은 실제 해설의 최종 주전략이 아니므로 보존 강제하지 않는다."
+      },
+      {
+        "type": "CURRENT2022_BINDING_GAP",
+        "detail": "M2-RPM-182의 일반 이등분선 native 정의는 ACTIVE이지만 해당2022 정확 context binding은 대기 중이다."
+      }
+    ],
+    "officialResolver": {
+      "original": {
+        "status": "NO_EXACT_RPM_LEAF"
+      },
+      "current2022": {
+        "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+        "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+        "readOnlyCompatibilityInspection": {
+          "notResolverResult": true,
+          "crosswalkRecordId": "M2-RPM-182",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+          "globalActiveProblemType": "PT_TRIANGLE_ANGLE_BISECTOR",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      }
+    }
+  },
+  "sourceRefs": {
+    "reviewedBefore": {
+      "commit": "0f638ef02303919e82136e4671d0f9f70db436b1",
+      "path": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+      "gitBlobSha1": "8c97dc8a6456b4cf369dd7ae18d487f25b163ac0",
+      "sha256": "547efe95868d38f0bcae7e84ce54287a9305332b7ad35cbfd3b5d09dc0b8ea25"
+    },
+    "nativeCommitted": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+      "gitBlobSha1": "c58a4af84dfb7458428127415135b74b1ef58bc9",
+      "sha256": "1ec4d59601f6d987060c28323954a26b66d88d28ab3a0b804cdd3448d948d259"
+    },
+    "current": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+      "gitBlobSha1": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+      "sha256": "c6ff66668f00e74badd0e3248b12632c44e8dee19b9d07e76f1bfd6c852c05c8"
+    }
+  },
+  "originalExplicitTarget": {
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "standardSubUnitKey": "M3-05-TRIG_RATIO",
+    "sourceFieldOrigin": "IMMUTABLE_REVIEWED_BEFORE_SOURCE_FIELDS",
+    "notTakenFromRejectedHistoricalRpm": true
+  },
+  "currentRuleAuthority": {
+    "ruleRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "gitBlobSha1": "8cd98707cb79cabdbb145b60d8d989b1f8cb0046",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    },
+    "section": "1.4.1 PREREQUISITE SEMANTIC FALLBACK — LOWER-ONLY HARD RULE",
+    "anchors": [
+      178,
+      182,
+      185,
+      186,
+      194
+    ],
+    "solutionRuleRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md",
+      "gitBlobSha1": "ba06da0e96be22d0efae1b30766b598bb48ae758",
+      "sha256": "d6b62662edc191b0c67aee06dbc1d3a2be9744250baf47f59f63b37091c91306"
+    },
+    "solutionRuleAnchor": 25,
+    "interpretation": "Keep current target grade/subject L1/L2 and reuse lower-grade semantic knowledge with explicit scope provenance; an absent exact binding remains a projection-binding task."
+  },
+  "currentTarget": {
+    "curriculum": "2015",
+    "courseKey": "M3-2",
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
+    "L1": "삼각비",
+    "L2": "삼각비",
+    "tagMasterRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "gitBlobSha1": "c9adf854560c9e7c3a1730a8e7339f5a13f24af9",
+      "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551"
+    },
+    "unitRecord": {
+      "key": "M3-05",
+      "keyType": "standardUnitKey",
+      "labelKo": "삼각비",
+      "description": "문서 기준 표준단원 (5)",
+      "evidencePolicy": "content_required",
+      "autoApplyAllowed": true,
+      "reviewRequiredWhen": [],
+      "sourceKind": "document",
+      "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+      "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+      "status": "active"
+    },
+    "subunitRecord": {
+      "key": "M3-05-TRIG_RATIO",
+      "keyType": "subUnitKey",
+      "labelKo": "삼각비",
+      "parentKey": "M3-05",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "evidencePolicy": "content_or_solution_required",
+      "autoApplyAllowed": false,
+      "reviewRequiredWhen": [
+        "source_solution_disagreement",
+        "visual_only_evidence"
+      ],
+      "sourceKind": "document",
+      "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+      "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+      "status": "active"
+    },
+    "parentRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "gitBlobSha1": "ba2f9577f4feb148dba342cbec6db8dd3be4d123",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    "parentRecord": {
+      "curriculum": "2015",
+      "level": "middle",
+      "scope": "M3-2",
+      "majorUnit": "삼각비",
+      "midUnit": "삼각비",
+      "rpmSource": "RPM_M3_2015",
+      "majorStatus": "RPM_VERIFIED",
+      "midStatus": "RPM_VERIFIED",
+      "concepts": [
+        {
+          "concept": "삼각비의 뜻",
+          "status": "CANONICAL_DRAFT",
+          "problemTypes": [
+            {
+              "problemType": "sin·cos·tan",
+              "status": "CANONICAL_DRAFT",
+              "curriculumApplicability": "DEFAULT_SCOPE",
+              "defaultSelectable": true
+            },
+            {
+              "problemType": "삼각비의 관계",
+              "status": "CANONICAL_DRAFT",
+              "curriculumApplicability": "DEFAULT_SCOPE",
+              "defaultSelectable": true
+            }
+          ],
+          "curriculumApplicability": "DEFAULT_SCOPE",
+          "defaultSelectable": true
+        },
+        {
+          "concept": "특수각의 삼각비",
+          "status": "CANONICAL_DRAFT",
+          "problemTypes": [
+            {
+              "problemType": "30°·45°·60°",
+              "status": "CANONICAL_DRAFT",
+              "curriculumApplicability": "DEFAULT_SCOPE",
+              "defaultSelectable": true
+            },
+            {
+              "problemType": "특수각 계산",
+              "status": "CANONICAL_DRAFT",
+              "curriculumApplicability": "DEFAULT_SCOPE",
+              "defaultSelectable": true
+            }
+          ],
+          "curriculumApplicability": "DEFAULT_SCOPE",
+          "defaultSelectable": true
+        },
+        {
+          "concept": "삼각비와 길이",
+          "status": "CANONICAL_DRAFT",
+          "problemTypes": [
+            {
+              "problemType": "직각삼각형의 변",
+              "status": "CANONICAL_DRAFT",
+              "curriculumApplicability": "DEFAULT_SCOPE",
+              "defaultSelectable": true
+            },
+            {
+              "problemType": "각을 이용한 길이",
+              "status": "CANONICAL_DRAFT",
+              "curriculumApplicability": "DEFAULT_SCOPE",
+              "defaultSelectable": true
+            }
+          ],
+          "curriculumApplicability": "DEFAULT_SCOPE",
+          "defaultSelectable": true
+        }
+      ],
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
+    },
+    "parentStableSha256": "22f0dc595b40a0bf7580ab718cd6ea6956c53f0d047bf535c512bbc9efb99712",
+    "sourceCurriculumOrigin": "Explicit current source curriculum=2015; the native original curriculum UNSPECIFIED fact remains unchanged.",
+    "subunitAliasOrigin": "Original explicit standardSubUnitKey=M3-05-TRIG_RATIO resolved by the current active standard-unit master, not inferred from exam filename or former M3-RPM-059.",
+    "examIdentityRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/archive2-catalog.json",
+      "gitBlobSha1": "45889427367efb57f6c5648f206f7f2c12be02c0",
+      "sha256": "e30dc8cea97f199ce0158777fd909a0f8b5cf89ba8f6fec292a96d4c703d29f2"
+    },
+    "examIdentity": {
+      "file": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2022,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학",
+      "identityTitle": "2022학년도 풍덕중학교 3학년 2학기 중간고사 수학",
+      "sourceGrade": "중3",
+      "effectiveBrowseGrade": "중3",
+      "automaticCount": 0,
+      "curriculums": [],
+      "courseFamilies": [],
+      "gradeConflict": false
+    }
+  },
+  "scopeSeparation": {
+    "operationalTarget": "2015|M3-2|중3 수학|M3-05|M3-05-TRIG_RATIO|삼각비|삼각비",
+    "semanticSourceScope": "M2-2",
+    "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+    "approvedMeaningAuthority": "EXISTING_ACTIVE_PT_TPL_WITH_EXPLICIT_NATIVE_AND_INDEPENDENT_APPLICATION",
+    "semantic2015RpmRecordId": null,
+    "semantic2015PublisherParentAndLeafResolved": false,
+    "comparison2022RpmRecordId": "M2-RPM-182",
+    "comparison2022BindingResolved": false,
+    "oldM3Rpm059Restored": false,
+    "semanticM2CanonicalDefinitionsDuplicatedInM3": false,
+    "sourceOriginalCurriculumRewritten": false
+  },
+  "existingDefinitions": {
+    "taxonomyRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "gitBlobSha1": "fe8a9e23dbcd98b7057035a8bde22bb81893564f",
+      "sha256": "1c2e5c465e9f2efa5a3f77298e7ad9b6424211e90bc2281a5560f4ab01065ba2"
+    },
+    "problemType": {
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "canonicalLabelKo": "삼각형의 각의 이등분선",
+      "definition": "삼각형의 각의 이등분선 성질을 독립적인 결정적 전략으로 이용하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+        "qid_v1_7a1260fc04746ac8eb84be65f89688da0ea35c5b450742cae97586c85eb2e850"
+      ],
+      "action": "ADD",
+      "promotionStatus": "REVIEW_REQUIRED"
+    },
+    "problemTypeStableSha256": "b43bbd0c8f2eff251f7929b69def26c1367d334a3f88899f4cca6a7b908a8b88",
+    "template": {
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "parentProblemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "canonicalLabelKo": "삼각형의 각의 이등분선 정리",
+      "definition": "각의 이등분선이 대변을 양변의 비로 나누는 성질을 이용한다.",
+      "internalSkeleton": "각의 이등분선 정리의 변비를 세워 미지 길이를 구한다.",
+      "status": "ACTIVE",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869"
+      ],
+      "supportingItemCount": 1,
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    "templateStableSha256": "0cffde609e51012160bbb45cd2755bf22946ca56fc6998a7cbbaf9ecb2e8fff5",
+    "definitionChanges": 0,
+    "ownerPackRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "gitBlobSha1": "4f10453ee606e7ee7f8a3a18a43aab10ec03fc16",
+      "sha256": "3af188fa60d34e527c285b0757241da5ce13f705aabf4899a07e7c28ca75788e"
+    },
+    "ownerPackSupportsTarget": true
+  },
+  "proposedExactBinding": {
+    "curriculum": "2015",
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "ownerPack": "MIDDLE_GEOMETRY",
+    "subUnitLabelKo": "삼각비",
+    "L1": "삼각비",
+    "L2": "삼각비",
+    "status": "ACTIVE",
+    "supportingQuestionUids": [
+      "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546"
+    ],
+    "supportingItemCount": 1
+  },
+  "proposedRegistryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "subUnitLabelKo": "삼각비",
+        "L1": "삼각비",
+        "L2": "삼각비",
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546"
+        ],
+        "supportingItemCount": 1
+      }
+    }
+  ],
+  "registryImpact": {
+    "compiledRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "gitBlobSha1": "e68c9534f436934ab2541e022f2574386e7d9e04",
+      "sha256": "1b03f874729c80a8d96466479ad1fe6bdf552d20980838f544783bfaa8b46e1e"
+    },
+    "canonicalBindingRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "gitBlobSha1": "828ce9f602b68b972289acb8a74c70b946a34d57",
+      "sha256": "3220536f00748380a96b09496b6bec5bcf55ce145043fed92afa49088133f2ce"
+    },
+    "currentExactTargetBindingCount": 0,
+    "currentSameMeaningM2Bindings": [
+      {
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_7a1260fc04746ac8eb84be65f89688da0ea35c5b450742cae97586c85eb2e850"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
+    ],
+    "currentOtherMetadataMatchingNewTuple": [],
+    "guardMustStillRun": true,
+    "guardBypassAllowed": false
+  },
+  "sourceCandidate": {
+    "localPath": "/workspace/scratch/0a70543c4ce8/m3-prep/e043-q11-current-target/blocked-e043-q11-current-target-candidate.js",
+    "sha256": "4cbc1c0e817966fd40a1e87b13c1c66f890b67757282ddbb9953f9588d9e4247",
+    "gitBlobSha1": "6f004b952d46880e2d86bc7615656af76ed8163b",
+    "bytes": 86946,
+    "repoPath": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+    "sourceChangedUids": 1,
+    "sourceMetadataDelta": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardSubUnitKey": "M3-05-TRIG_RATIO",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "courseKey": "M3-2",
+      "semanticSourceScope": "M2-2",
+      "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE"
+    },
+    "changedFieldNames": [
+      "courseKey",
+      "semanticScopeRelation",
+      "semanticSourceScope",
+      "standardCourse",
+      "standardSubUnitKey",
+      "standardUnit",
+      "standardUnitKey",
+      "subUnit",
+      "subUnitKey"
+    ],
+    "all25StudentPayloadsAndIdentityHashesUnchanged": true,
+    "allOther24WholeQuestionsUnchanged": true,
+    "currentOriginalMetadataValuesNotInDeltaUnchanged": true,
+    "originalMetaStatus": "PROJECTION_PENDING",
+    "originalMetaDebtFields": [
+      "rpmPrimaryKey"
+    ],
+    "publicationAuthorizedNow": false
+  },
+  "currentRowRefs": {
+    "metadataRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/question_metadata.json",
+      "gitBlobSha1": "153fd5198d4fecbccaddcc9fff228545909db57c",
+      "sha256": "7e54a2bf119fba179262d46fd8f7943e42ee56b4c4c3323d53ed703a04c984f1"
+    },
+    "metadataStableSha256": "bcd6b88a9abf6986f8d5a43df79f5a5b53e813eda8ae6ffcc5231da5d560cb0a",
+    "identityRef": {
+      "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+      "path": "archive/data/question_identity_map.json",
+      "gitBlobSha1": "5860f657b01e042fce17a9fdb6fcf031dc81889e",
+      "sha256": "e5ca007a85b5a93b34ad02dd9986261137e77fdd99c2f8108d027729e0c26ce0"
+    },
+    "identityStableSha256": "25d1b491e1a3a986000784c7e6616f2eac700b55d9fc0bb1aa2424c9ec0fa78d"
+  },
+  "rendererProofReuse": {
+    "sourceReviewInput": {
+      "schemaVersion": "archive-reviewed-current-renderer-continuity-v1",
+      "reviewCommit": "689fa6379fa2dec544890d83af186f64d127d763",
+      "reviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+        "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+      }
+    },
+    "proofRef": {
+      "commit": "689fa6379fa2dec544890d83af186f64d127d763",
+      "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+      "gitBlobSha1": "bdf05f0aba9e461be86e18c20ad24ec9cd6de96d",
+      "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+    },
+    "newRendererChanges": 0,
+    "currentQuestionStudentPayloadSha256": "def1139206482ac4c6ec862b951fd7e1250e6be8c1bfac55adf17293ff448205",
+    "existingReviewedRendererProofMustBeRevalidatedByOfficialRequest": true,
+    "originalSourceCropAndFullSolutionQaLimitsPreserved": true
+  },
+  "currentProtectedSourceDependencies": {
+    "livePendingRequests": [
+      {
+        "ref": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": ".archive-meta-register/inbox/m3s2-audit-e043-course-preserve22-20261116.json",
+          "gitBlobSha1": "0f2876d6e739755cd183cd0748b29d92be6a9a89",
+          "sha256": "d13ab5a880c227807eb1a82d7f09f63c9933206282bc04206ff188134ed2baa0"
+        },
+        "requestId": "m3s2-audit-e043-course-preserve22-20261116",
+        "expectedSourceBlobSha1": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+        "selected": [
+          {
+            "questionUid": "qid_v1_db084f82fe12052ec6cc5f11a9c0b3986e535d0087841ec1ae20b73dd40c537d",
+            "sourceOrdinal": 1
+          },
+          {
+            "questionUid": "qid_v1_0b10f48bb32b8076d3d18795c2d566528d298eaae96b2cfacb6b81bf1dad121f",
+            "sourceOrdinal": 2
+          },
+          {
+            "questionUid": "qid_v1_4ad64660de0ce48176424870e234471500e482499e8a569986a1958f7029e0cb",
+            "sourceOrdinal": 3
+          },
+          {
+            "questionUid": "qid_v1_66d6fd5dbbae07f7f6f9650c4e9b882675bd35d870f8d5d41eed4f77d0528310",
+            "sourceOrdinal": 4
+          },
+          {
+            "questionUid": "qid_v1_18dcf5665687c258ed5db13eadaf77555d1df88d3245f59e3dd3b212ec2dafd9",
+            "sourceOrdinal": 5
+          },
+          {
+            "questionUid": "qid_v1_f4acfbce9387d4b45708ff234c37b00d0a0d265670ab7c780fbfe46a40e9264d",
+            "sourceOrdinal": 6
+          },
+          {
+            "questionUid": "qid_v1_3c210fd9faac58975e1262c40eff2f2a20894e5e9be22613cf6106c9777429c2",
+            "sourceOrdinal": 7
+          },
+          {
+            "questionUid": "qid_v1_7de576c1a88910c9a31f1aa39d340280022119c0627afa3b3a12595bd8d4faa1",
+            "sourceOrdinal": 8
+          },
+          {
+            "questionUid": "qid_v1_bbe41491f4632367a12bad49aa0dce5c1eb345ab95982cc89b1b7857bdefc492",
+            "sourceOrdinal": 9
+          },
+          {
+            "questionUid": "qid_v1_de2d13748d371ef5b6a3743a10d266676dffe05b3e41d9ed6496b5c1eb3d8914",
+            "sourceOrdinal": 10
+          },
+          {
+            "questionUid": "qid_v1_2be27a4324508d19badfbc7eec0fe663cddfccdc17fdb643afec5372d131db9b",
+            "sourceOrdinal": 12
+          },
+          {
+            "questionUid": "qid_v1_493bd0313df273b6763efaf173bb4882d87acab84069b78f5e9fbd3a5e98406f",
+            "sourceOrdinal": 14
+          },
+          {
+            "questionUid": "qid_v1_0abd870a021aa29c32e046ea32b0f0904656fbca2af57ab94eacf372de6e23c4",
+            "sourceOrdinal": 15
+          },
+          {
+            "questionUid": "qid_v1_b7d3085f373dcf5fbafc8c21aaf09e8eb45c6d5c9262154d24a5e01481339828",
+            "sourceOrdinal": 17
+          },
+          {
+            "questionUid": "qid_v1_6f1ced7a6cd85f97b6a5e09a36b25ae4f974cde110d0fd0e556f909ded9560ac",
+            "sourceOrdinal": 18
+          },
+          {
+            "questionUid": "qid_v1_f52d8a8e9aeb6536fe3b6fa8cc5f2ebe2416fbd81020f3eb93937172e7ae1804",
+            "sourceOrdinal": 19
+          },
+          {
+            "questionUid": "qid_v1_c14d34c65cf88bcfebe9084be9414253588b6c9e1d7ede7bea79d49524eea619",
+            "sourceOrdinal": 20
+          },
+          {
+            "questionUid": "qid_v1_068886cfed29a032f6659a57a4a1fc5454e84806853f0cc4a3314e83f76ba567",
+            "sourceOrdinal": 21
+          },
+          {
+            "questionUid": "qid_v1_0df558f7a05214b192931898d28a681bbe6396750d0cf32c96208852144fb871",
+            "sourceOrdinal": 22
+          },
+          {
+            "questionUid": "qid_v1_9024b89b094747ee123a4dc730a0d633e51768be2431e85f9fe06ed4a7d942d9",
+            "sourceOrdinal": 23
+          },
+          {
+            "questionUid": "qid_v1_14bce2db289434a8f25fc38d853821fb39b422fbac067bd55b9a5537e73b385e",
+            "sourceOrdinal": 24
+          },
+          {
+            "questionUid": "qid_v1_3e2c61d347b432bfc24eff2ace22fc62bbe2afb369c428be67ba826dba2ac3c7",
+            "sourceOrdinal": 25
+          }
+        ],
+        "issuedReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-course-preserve22-20261116.json",
+        "scope": "PARTIAL_UIDS",
+        "approvalType": "FINAL_QA"
+      },
+      {
+        "ref": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": ".archive-meta-register/inbox/m3s2-audit-e043-native1-course-20261116.json",
+          "gitBlobSha1": "190b9a8c286078ef5f78ba2ef9506a4aa0b19912",
+          "sha256": "c85d1f4f8febee3c71e6b61ec26ccb8750337fcfc4921d51f01b959f2f5832ee"
+        },
+        "requestId": "m3s2-audit-e043-native1-course-20261116",
+        "expectedSourceBlobSha1": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+        "selected": [
+          {
+            "questionUid": "qid_v1_3287f6e2ebbb415ebfc69f3ad97bbae47dad7828cce197e70be2349d449f14b9",
+            "sourceOrdinal": 16
+          }
+        ],
+        "issuedReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-native1-course-20261116.json",
+        "scope": "PARTIAL_UIDS",
+        "approvalType": "FINAL_QA"
+      },
+      {
+        "ref": {
+          "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+          "path": ".archive-meta-register/inbox/m3s2-audit-e043-renderer1-course-20261116.json",
+          "gitBlobSha1": "2543a9beae9b2944af6279aa9a233eca0dcb88db",
+          "sha256": "57fa37b202cd6a230fad4588e62aabdc629a743013c240232bff175abfaa825f"
+        },
+        "requestId": "m3s2-audit-e043-renderer1-course-20261116",
+        "expectedSourceBlobSha1": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+        "selected": [
+          {
+            "questionUid": "qid_v1_1c949738b805dde02e2b4c00c1fa2bc1caa6943fc4a0a14bbc6597669c5cc8ea",
+            "sourceOrdinal": 13
+          }
+        ],
+        "issuedReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-renderer1-course-20261116.json",
+        "scope": "PARTIAL_UIDS",
+        "approvalType": "FINAL_QA"
+      }
+    ],
+    "currentSourceBlob": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+    "candidateSourceBlob": "6f004b952d46880e2d86bc7615656af76ed8163b",
+    "liveRequestSelectedUnionCount": 24,
+    "sourceMayChangeBeforeExistingRequestsPersist": false,
+    "afterIssueRequirement": "Read all actual per-request receipts and current rows. Preserve the exact current approved neighbours by their actual issued receipt groups, potentially24 UIDs if all three current requests succeed. Do not assume all succeed or manufacture a future receipt."
+  },
+  "newDefinitionCount": 0,
+  "newBindingCount": 1,
+  "newFullMathematicalQa": false,
+  "newIndependentSolutionCertification": false,
+  "newSourceQualityApproval": false,
+  "newDifficultyJudgment": false,
+  "registryWrites": 0,
+  "sharedSourceWrites": 0,
+  "officialRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN",
+  "nextAction": [
+    "Obtain independent review of this exact bounded current-target application and root approval.",
+    "Publish immutable application/independent proof first. Implement a separate closed typed adapter; do not weaken the native-after/provenance guards.",
+    "Wait for current E043 pending requests to persist and read actual receipts/current rows before materializing source change and neighbour preservation requests.",
+    "Run changed-only sourceReview/renderer/application/registry-impact validation, then merge and verify actual official registration/canonical/four-slot consumer results."
+  ]
+}

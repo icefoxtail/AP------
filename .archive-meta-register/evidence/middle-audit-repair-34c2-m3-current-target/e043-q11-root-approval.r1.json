@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-m3s2-current-target-root-approval-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "approvedBy": "GPT_ROOT_0A70543C4CE8",
+  "approvedAt": "2026-11-16T03:58:56.062198+00:00",
+  "decision": "APPROVE_EXACT_CURRENT_TARGET_APPLICATION_ONLY",
+  "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+  "sourceOrdinal": 11,
+  "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+  "expectedQuestionCount": 25,
+  "proposalRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e043-q11-current-target-application-proposal.r1.json",
+    "sha256": "3db656e39724ca488ceab2ef9a1160e038df85fcfbc0f25ae583a04b1f5956b8"
+  },
+  "independentReviewRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e043-q11-current-target-application-independent-review.r1.json",
+    "sha256": "4772df476be25678ef3b9cd42a61732270fa1b34429781e2d80e71cd3ca5a685"
+  },
+  "sourceBeforeRef": {
+    "commit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+    "path": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "80740fa75deba8f95f6c6a4994db99d038d115cb",
+    "sha256": "c6ff66668f00e74badd0e3248b12632c44e8dee19b9d07e76f1bfd6c852c05c8"
+  },
+  "sourceCandidateRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/m3-prep/e043-q11-current-target/blocked-e043-q11-current-target-candidate.js",
+    "sha256": "4cbc1c0e817966fd40a1e87b13c1c66f890b67757282ddbb9953f9588d9e4247",
+    "gitBlobSha1": "6f004b952d46880e2d86bc7615656af76ed8163b"
+  },
+  "approvedSourceFieldNames": [
+    "courseKey",
+    "semanticScopeRelation",
+    "semanticSourceScope",
+    "standardCourse",
+    "standardSubUnitKey",
+    "standardUnit",
+    "standardUnitKey",
+    "subUnit",
+    "subUnitKey"
+  ],
+  "approvedSourceFieldValues": {
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardSubUnitKey": "M3-05-TRIG_RATIO",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
+    "courseKey": "M3-2",
+    "semanticSourceScope": "M2-2",
+    "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE"
+  },
+  "currentTarget": "2015|M3-2|중3 수학|M3-05|M3-05-TRIG_RATIO|삼각비|삼각비",
+  "semanticSourceScope": "M2-2",
+  "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+  "targetApprovalOrigin": "NEW_CURRENT_TARGET_APPLICATION",
+  "originalTargetOrigin": "IMMUTABLE_REVIEWED_BEFORE_SOURCE_FIELDS",
+  "approvedBinding": {
+    "curriculum": "2015",
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "ownerPack": "MIDDLE_GEOMETRY",
+    "subUnitLabelKo": "삼각비",
+    "L1": "삼각비",
+    "L2": "삼각비",
+    "status": "ACTIVE",
+    "supportingQuestionUids": [
+      "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546"
+    ],
+    "supportingItemCount": 1
+  },
+  "nativeItemStableSha256": "dd7400f33fe61352ca9e97eb1a063441447da1330d5c075b76094e6b9fe0bc54",
+  "nativeIndependentItemStableSha256": "33272e0782a76ef607bcb3179887b9c60f1384938e15a049dee11abdc3e87586",
+  "nativeProposalStableSha256": "e64005ac950ae6d93b571291fd58da23fc3102477b11536c3476e4de7794d430",
+  "problemTypeStableSha256": "b43bbd0c8f2eff251f7929b69def26c1367d334a3f88899f4cca6a7b908a8b88",
+  "templateStableSha256": "0cffde609e51012160bbb45cd2755bf22946ca56fc6998a7cbbaf9ecb2e8fff5",
+  "definitionChanges": 0,
+  "addOnlyBindingCount": 1,
+  "rootVerification": {
+    "remoteMain": "c3027e63785af0d9c018aee93a323f44872e5d4d",
+    "exactAuthorityRefsRead": 9,
+    "currentPrerequisiteRuleRead": true,
+    "immutableSourceBeforeNativeAndCurrentRead": true,
+    "nativeDecisiveStepAndIndependentMeaningRead": true,
+    "reason": "The original explicit M3-05/M3-05-TRIG_RATIO target is restored under the current lower-prerequisite rule. Existing angle-bisector semantics remain the approved lower-grade source; no rejected M3-RPM-059 or fabricated publisher leaf is restored."
+  },
+  "preservedLimits": {
+    "nativeOriginalCurriculum": "UNSPECIFIED",
+    "semantic2015ExactRpmRecordId": null,
+    "semantic2015PublisherParentAndLeafResolved": false,
+    "comparison2022RpmRecordId": "M2-RPM-182",
+    "comparison2022BindingResolved": false,
+    "existingSourceAndDifficultyHoldsReleased": 0,
+    "newFullMathematicalQa": false,
+    "newSourceQualityApproval": false,
+    "newDifficultyJudgment": false,
+    "newSemanticDefinitionApproval": false
+  },
+  "publicationPrerequisite": "Read the actual issued Q13/Q16 and preserve22 receipts, preserve their currently approved neighboring rows against the new whole-source blob, then run the closed application and official write/replay/consumer validation. Do not modify the currently pending neighbor packets.",
+  "implementationApprovedOnlyWithinThisExactContract": true,
+  "officialRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}
