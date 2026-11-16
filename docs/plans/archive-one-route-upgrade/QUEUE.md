@@ -5,9 +5,9 @@
 ## 도는 방법
 
 1. 이 브랜치(`plan/archive-one-route-upgrade-20261116`)를 최신으로 받아 이 파일을 읽는다.
-2. 아래 표에서 `TASK-NN-REPORT.md`가 아직 없는 가장 위 작업의 지시 파일을 읽고 수행한다. 지시 파일에 적힌 브랜치에만 코드를 커밋한다(없으면 최신 `main`에서 만든다).
+2. 먼저 폴더에 아직 처리하지 않은 `FEEDBACK-NN.md`(관제의 수정 요청, 해당 보고서에 "수정 반영" 절이 없으면 미처리)가 있으면 그것부터 처리한다. 없으면 아래 표에서 `TASK-NN-REPORT.md`가 아직 없는 가장 위 작업의 지시 파일을 읽고 수행한다. 지시 파일에 적힌 브랜치에만 코드를 커밋한다(없으면 최신 `main`에서 만든다).
 3. 끝나면 이 브랜치에 `TASK-NN-REPORT.md`를 커밋한다. 이 파일(`QUEUE.md`)과 지시 파일은 고치지 않는다.
-4. 다시 1로. 새 작업이 없으면 `FEEDBACK-*.md`(관제가 올린 수정 요청)가 있는지 보고, 있으면 그것을 처리한 뒤 해당 보고서 끝에 "수정 반영" 절을 덧붙인다. 둘 다 없으면 멈춘다.
+4. 수정 요청을 처리했으면 해당 보고서 끝에 "수정 반영" 절을 덧붙인다. 다시 1로. 수정 요청도 새 작업도 없으면 멈춘다.
 
 ## 공통 규칙 (모든 작업)
 
@@ -24,7 +24,7 @@
 | 순서 | 지시 파일 | 코드 브랜치 | 상태 |
 | --- | --- | --- | --- |
 | 1 | `TASK-01-completion-check.md` | `feat/completion-check-20261116` | 보고 완료, 검수 중 |
-| 2 | `TASK-02-type-judgment-tools.md` | `feat/type-judgment-tools-20261116` | 보고 완료, 검수 대기 |
+| 2 | `TASK-02-type-judgment-tools.md` | `feat/type-judgment-tools-20261116` | 보고 완료 → 수정 요청 `FEEDBACK-02.md` |
 | 3 | `TASK-03-registrar-rebind.md` | `feat/registrar-rebind-20261116` | 대기 |
 | 4 | `TASK-04-type-unlock-code.md` | `feat/type-unlock-code-20261116` | 대기 |
 | 5 | `TASK-05-ci-blockers.md` | `fix/ci-blockers-20261116` | 대기 |
