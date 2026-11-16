@@ -46,6 +46,8 @@ window.examData = {
   },
   {
     "id": 2,
+    "imageSize": "tall",
+    "imageAlt": "다섯 원에서 현, 이등분한 길이, 직각 또는 각의 이등분선이 서로 다르게 표시되어 있다. 각 작도에서 선이 만나는 점을 표시했다.",
     "questionNumber": 2,
     "score": 4,
     "level": "중",
@@ -61,13 +63,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>2. 중심을 알 수 없는 원이 주어질 때, 다음 중 그 중심을 찾는 방법으로 옳은 것을 고르면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q02.png\" alt=\"원의 중심을 찾는 5가지 작도 방법 그림\" /></p>",
-    "question": "<p>2. 중심을 알 수 없는 원이 주어질 때, 다음 중 그 중심을 찾는 방법으로 옳은 것을 고르면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q02.png\" alt=\"원의 중심을 찾는 5가지 작도 방법 그림\" /></p>",
+    "content": "<p>2. 중심을 알 수 없는 원이 주어질 때, 다음 중 그 중심을 찾는 방법으로 옳은 것을 고르면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q2-problem-visual-v2.svg\" alt=\"다섯 원에서 현, 이등분한 길이, 직각 또는 각의 이등분선이 서로 다르게 표시되어 있다. 각 작도에서 선이 만나는 점을 표시했다.\" style=\"display:block;width:min(100%,380px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>2. 중심을 알 수 없는 원이 주어질 때, 다음 중 그 중심을 찾는 방법으로 옳은 것을 고르면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q2-problem-visual-v2.svg\" alt=\"다섯 원에서 현, 이등분한 길이, 직각 또는 각의 이등분선이 서로 다르게 표시되어 있다. 각 작도에서 선이 만나는 점을 표시했다.\" style=\"display:block;width:min(100%,380px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "①",
       "②",
@@ -75,10 +77,8 @@ window.examData = {
       "④",
       "⑤"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q02.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q02.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q2-problem-visual-v2.svg"],
     "answer": "②",
     "solution": "[원문 조건 및 구할 대상]\n중심을 알 수 없는 원이 주어질 때, 그 중심을 올바르게 찾는 작도 방법을 보기 그림 중에서 고른다.\n\n[핵심 발상/공식/보조선]\n- 원 위의 서로 다른 점들을 연결한 선분을 '현'이라고 한다.\n- 원의 성질: 원의 현의 수직이등분선은 항상 원의 중심을 지난다.\n- 따라서 원 위의 세 점으로 만든 삼각형의 두 변(두 현)의 수직이등분선의 교점이 바로 원의 중심(외심)이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 원의 중심을 찾는 수학적 원리\n원의 중심에서 현에 내린 수선은 그 현을 수직이등분하므로, 역으로 원 위의 두 현의 수직이등분선이 만나는 교점이 원의 중심이 된다.\n이는 삼각형의 세 변의 수직이등분선의 교점인 '외심'을 작도하는 방법과 같다.\n2단계: 보기 그림 전수 검토\n- ①: 원 위의 세 꼭짓점에서 마주보는 변의 중점을 연결한 중선의 교점을 나타낸 그림으로, 이는 원의 중심이 아니라 '무게중심'을 찾는 작도이다.\n- ②: 원 위의 세 점을 연결한 삼각형의 두 변에 수직 기호(ㄴ)와 이등분 기호가 표시되어 있으며, 두 변의 '수직이등분선'의 교점을 찾아 원의 중심을 나타내고 있다. (참)\n- ③: 내각의 이등분선의 교점을 나타낸 그림으로, 이는 '내심' 작도이다.\n- ④: 한 꼭짓점에서 대변에 내린 수선의 교점으로 '수심'을 나타낸 작도이다.\n- ⑤: 각의 이등분선과 수직이등분선이 혼합된 잘못된 작도선이다.\n\n[경우 나눔 및 5개 선지 검토]\n현의 수직이등분선의 교점을 정확히 표시한 것은 직각 기호와 변의 이등분 기호가 모두 포함된 ②번 그림이다.\n\n[명확한 결론]\n따라서 원의 중심을 올바르게 찾는 방법은 ②이다.",
     "crossConceptKeys": [],
@@ -130,6 +130,8 @@ window.examData = {
   },
   {
     "id": 4,
+    "imageSize": "tall",
+    "imageAlt": "직각은 B에 있고 AB=6 cm, BC=8 cm, CA=10 cm이다.",
     "questionNumber": 4,
     "score": 4,
     "level": "하",
@@ -145,13 +147,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>4. 오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{BC}}=8$, $\\overline{\\mathrm{CA}}=10$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 넓이와 외접원의 둘레의 길이의 합을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q04.png\" alt=\"세 변의 길이가 6, 8, 10인 직각삼각형 ABC\" /></p>",
-    "question": "<p>4. 오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. $\\overline{\\mathrm{AB}}=6$, $\\overline{\\.mathrm{BC}}=8$, $\\overline{\\mathrm{CA}}=10$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 넓이와 외접원의 둘레의 길이의 합을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q04.png\" alt=\"세 변의 길이가 6, 8, 10인 직각삼각형 ABC\" /></p>",
+    "content": "<p>4. 오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{BC}}=8$, $\\overline{\\mathrm{CA}}=10$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 넓이와 외접원의 둘레의 길이의 합을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q4-problem-visual-v2.svg\" alt=\"직각은 B에 있고 AB=6 cm, BC=8 cm, CA=10 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>4. 오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. $\\overline{\\mathrm{AB}}=6$, $\\overline{\\.mathrm{BC}}=8$, $\\overline{\\mathrm{CA}}=10$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 넓이와 외접원의 둘레의 길이의 합을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q4-problem-visual-v2.svg\" alt=\"직각은 B에 있고 AB=6 cm, BC=8 cm, CA=10 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$10\\pi$",
       "$20\\pi$",
@@ -159,10 +161,8 @@ window.examData = {
       "$30\\pi$",
       "$35\\pi$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q04.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q04.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q4-problem-visual-v2.svg"],
     "answer": "⑤",
     "solution": "[원문 조건 및 구할 대상]\n$\\angle\\mathrm{B}=90^\\circ$, $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{BC}}=8$, $\\overline{\\mathrm{CA}}=10$인 직각삼각형 $\\mathrm{ABC}$의 외접원의 넓이와 둘레의 길이의 합을 구한다.\n\n[핵심 발상/공식/보조선]\n직각삼각형의 외심은 빗변의 중점에 위치한다.\n빗변 $\\overline{\\mathrm{CA}}$가 외접원의 지름이 되므로 외접원의 반지름 $R = \\frac{\\overline{\\mathrm{CA}}}{2}$이다.\n원의 넓이는 $\\pi R^2$, 둘레의 길이는 $2\\pi R$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 외접원의 반지름 $R$ 계산\n빗변의 길이가 10이므로\n$R = \\frac{10}{2} = 5$\n2단계: 외접원의 넓이 계산\n$\\text{넓이} = \\pi R^2 = \\pi \\times 5^2 = 25\\pi$\n3단계: 외접원의 둘레의 길이 계산\n$\\text{둘레} = 2\\pi R = 2\\pi \\times 5 = 10\\pi$\n4단계: 넓이와 둘레의 합 계산\n$\\text{합} = 25\\pi + 10\\pi = 35\\pi$\n\n[경우 나눔 및 5개 선지 검토]\n① $10\\pi$: 둘레의 길이만 구한 오답이다.\n② $20\\pi$: 지름을 반지름으로 오인한 오답이다.\n③ $25\\pi$: 넓이만 구한 오답이다.\n④ $30\\pi$: 계산 실수이다.\n⑤ $35\\pi$: 계산된 결과와 정확히 일치하여 정답이다.\n\n[명확한 결론]\n따라서 외접원의 넓이와 둘레의 길이의 합은 $35\\pi$이므로 정답은 ⑤이다.",
     "crossConceptKeys": [
@@ -226,6 +226,8 @@ window.examData = {
   },
   {
     "id": 6,
+    "imageSize": "tall",
+    "imageAlt": "O에서 A까지, A에서 B까지, B에서 C까지, C에서 D까지는 같은 길이이다. 각 AOB는 25°이고, D에서 나오는 바깥 각이 x이다.",
     "questionNumber": 6,
     "score": 4,
     "level": "중",
@@ -241,13 +243,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>6. 그림과 같이 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이고 $\\angle\\mathrm{AOB}=25^\\circ$일 때 $\\angle x$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q06.png\" alt=\"지그재그로 연속된 이등변삼각형들과 외각 각 x 그림\" /></p>",
-    "question": "<p>6. 그림과 같이 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이고 $\\angle\\mathrm{AOB}=25^\\circ$일 때 $\\angle x$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q06.png\" alt=\"지그재그로 연속된 이등변삼각형들과 외각 각 x 그림\" /></p>",
+    "content": "<p>6. 그림과 같이 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이고 $\\angle\\mathrm{AOB}=25^\\circ$일 때 $\\angle x$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q6-problem-visual-v2.svg\" alt=\"O에서 A까지, A에서 B까지, B에서 C까지, C에서 D까지는 같은 길이이다. 각 AOB는 25°이고, D에서 나오는 바깥 각이 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>6. 그림과 같이 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이고 $\\angle\\mathrm{AOB}=25^\\circ$일 때 $\\angle x$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q6-problem-visual-v2.svg\" alt=\"O에서 A까지, A에서 B까지, B에서 C까지, C에서 D까지는 같은 길이이다. 각 AOB는 25°이고, D에서 나오는 바깥 각이 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$50^\\circ$",
       "$75^\\circ$",
@@ -255,10 +257,8 @@ window.examData = {
       "$105^\\circ$",
       "$150^\\circ$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q06.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q06.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q6-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q6-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "[원문 조건 및 구할 대상]\n선분 $\\overline{\\text{OA}} = \\overline{\\text{AB}} = \\overline{\\text{BC}} = \\overline{\\text{CD}}$이고 $\\angle\\text{AOB} = 25^\\circ$일 때, $\\angle x$($\\angle\\text{CDE}$)의 크기를 구한다.\n(단, 점 $\\text{O, B, D, E}$는 일직선 위에 있다.)\n\n[핵심 발상/공식/보조선]\n- 이등변삼각형의 두 밑각의 크기는 같다.\n- 삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.\n- 평각의 크기는 $180^\\circ$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\triangle\\text{OAB}$ 분석\n$\\overline{\\text{OA}} = \\overline{\\text{AB}}$이므로 $\\triangle\\text{OAB}$는 이등변삼각형이다.\n$\\angle\\text{ABO} = \\angle\\text{AOB} = 25^\\circ$\n$\\triangle\\text{OAB}$에서 점 $\\text{A}$의 외각:\n$\\angle\\text{CAB} = \\angle\\text{AOB} + \\angle\\text{ABO} = 25^\\circ + 25^\\circ = 50^\\circ$\n\n2단계: $\\triangle\\text{ABC}$ 분석\n$\\overline{\\text{AB}} = \\overline{\\text{BC}}$이므로 $\\triangle\\text{ABC}$는 이등변삼각형이다.\n$\\angle\\text{BCA} = \\angle\\text{CAB} = 50^\\circ$\n$\\triangle\\text{OBC}$에서 점 $\\text{B}$의 외각:\n$\\angle\\text{CBD} = \\angle\\text{BOC} + \\angle\\text{BCO} = 25^\\circ + 50^\\circ = 75^\\circ$\n\n3단계: $\\triangle\\text{BCD}$ 분석\n$\\overline{\\text{BC}} = \\overline{\\text{CD}}$이므로 $\\triangle\\text{BCD}$는 이등변삼각형이다.\n$\\angle\\text{BDC} = \\angle\\text{CBD} = 75^\\circ$\n\n4단계: $\\angle x$의 크기 계산\n점 $\\text{O, B, D, E}$는 한 직선 위에 있으므로 $\\angle\\text{ODE} = 180^\\circ$이다.\n따라서 $\\angle x$는 평각에서 $\\angle\\text{BDC}$를 뺀 각이다:\n$\\angle x = 180^\\circ - \\angle\\text{BDC} = 180^\\circ - 75^\\circ = 105^\\circ$\n\n[경우 나눔 및 5개 선지 검토]\n① $50^\\circ$, ② $75^\\circ$, ③ $100^\\circ$, ⑤ $150^\\circ$: 오답이다.\n④ $105^\\circ$: 단계별 외각 계산 결과와 정확히 일치하여 정답이다.\n\n[명확한 결론]\n따라서 $\\angle x$의 크기는 $105^\\circ$이므로 정답은 ④이다.",
     "crossConceptKeys": [],
@@ -272,6 +272,8 @@ window.examData = {
   },
   {
     "id": 7,
+    "imageSize": "tall",
+    "imageAlt": "AB는 12 cm, 대각선 AC는 14 cm이고 OD는 8 cm이다. 두 대각선은 O에서 만나며 오른쪽 삼각형 COD만 옅게 칠했다.",
     "questionNumber": 7,
     "score": 3,
     "level": "하",
@@ -287,13 +289,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>7. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\triangle\\mathrm{COD}$의 둘레의 길이를 구하면? [3점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q07.png\" alt=\"두 대각선의 교점이 O이고 AB=12cm, OD=8cm, 대각선 AC=14cm인 평행사변형 ABCD 그림\" /></p>",
-    "question": "<p>7. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\triangle\\mathrm{COD}$의 둘레의 길이를 구하면? [3점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q07.png\" alt=\"두 대각선의 교점이 O이고 AB=12cm, OD=8cm, 대각선 AC=14cm인 평행사변형 ABCD 그림\" /></p>",
+    "content": "<p>7. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\triangle\\mathrm{COD}$의 둘레의 길이를 구하면? [3점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"AB는 12 cm, 대각선 AC는 14 cm이고 OD는 8 cm이다. 두 대각선은 O에서 만나며 오른쪽 삼각형 COD만 옅게 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>7. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\triangle\\mathrm{COD}$의 둘레의 길이를 구하면? [3점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"AB는 12 cm, 대각선 AC는 14 cm이고 OD는 8 cm이다. 두 대각선은 O에서 만나며 오른쪽 삼각형 COD만 옅게 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$20$",
       "$22$",
@@ -301,15 +303,15 @@ window.examData = {
       "$27$",
       "$32$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q07.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q07.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q7-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q7-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "[원문 조건 및 구할 대상]\n평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=12\\text{ cm}$, $\\overline{\\mathrm{OD}}=8\\text{ cm}$, 대각선 $\\overline{\\mathrm{AC}}=14\\text{ cm}$일 때, $\\triangle\\mathrm{COD}$의 둘레의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n- 평행사변형의 성질 1: 두 쌍의 대변의 길이는 각각 같다. ($\\overline{\\mathrm{CD}} = \\overline{\\mathrm{AB}}$)\n- 평행사변형의 성질 2: 두 대각선은 서로 다른 것을 이등분한다. ($\\overline{\\mathrm{OC}} = \\frac{1}{2}\\overline{\\mathrm{AC}}$)\n- $\\triangle\\mathrm{COD}$의 둘레 $= \\overline{\\mathrm{OC}} + \\overline{\\mathrm{OD}} + \\overline{\\mathrm{CD}}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 선분 $\\overline{\\mathrm{CD}}$의 길이 구하기\n평행사변형에서 대변의 길이가 같으므로\n$\\overline{\\mathrm{CD}} = \\overline{\\mathrm{AB}} = 12\\text{ cm}$\n\n2단계: 선분 $\\overline{\\mathrm{OC}}$의 길이 구하기\n대각선은 서로 다른 것을 이등분하므로\n$\\overline{\\mathrm{OC}} = \\frac{1}{2}\\overline{\\mathrm{AC}} = \\frac{1}{2} \\times 14 = 7\\text{ cm}$\n\n3단계: 선분 $\\overline{\\mathrm{OD}}$의 길이 확인\n그림에 주어진 대각선 $\\overline{\\mathrm{BD}}$의 절반인 선분 $\\overline{\\mathrm{OD}}$의 길이는\n$\\overline{\\mathrm{OD}} = 8\\text{ cm}$\n\n4단계: $\\triangle\\mathrm{COD}$의 둘레의 길이 계산\n$\\triangle\\mathrm{COD}\\text{의 둘레} = \\overline{\\mathrm{OC}} + \\overline{\\mathrm{OD}} + \\overline{\\mathrm{CD}} = 7 + 8 + 12 = 27\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $20$, ② $22$, ③ $25$, ⑤ $32$: 오답이다.\n④ $27$: 정확한 둘레의 길이 $27\\text{ cm}$와 일치하여 정답이다.\n\n[명확한 결론]\n따라서 $\\triangle\\mathrm{COD}$의 둘레의 길이는 $27$이므로 정답은 ④이다."
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 각 A는 48°이다. O는 외심, I는 내심이다. B와 C에서 각 중심을 잇는 선을 서로 다른 색으로 그렸다.",
     "questionNumber": 8,
     "score": 5,
     "level": "중",
@@ -325,13 +327,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q08.png\" alt=\"삼각형 ABC와 외심 O, 내심 I가 표시된 그림\" /></p>",
-    "question": "<p>8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q08.png\" alt=\"삼각형 ABC와 외심 O, 내심 I가 표시된 그림\" /></p>",
+    "content": "<p>8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q8-problem-visual-v2.svg\" alt=\"삼각형 ABC의 각 A는 48°이다. O는 외심, I는 내심이다. B와 C에서 각 중심을 잇는 선을 서로 다른 색으로 그렸다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q8-problem-visual-v2.svg\" alt=\"삼각형 ABC의 각 A는 48°이다. O는 외심, I는 내심이다. B와 C에서 각 중심을 잇는 선을 서로 다른 색으로 그렸다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$78^\\circ$",
       "$80^\\circ$",
@@ -339,10 +341,8 @@ window.examData = {
       "$96^\\circ$",
       "$100^\\circ$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q08.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q08.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q8-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q8-problem-visual-v2.svg"],
     "answer": "①",
     "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC}$에서 점 $\\mathrm{O}$는 외심, 점 $\\mathrm{I}$는 내심이고 $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC}$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n- 외심 공식: $\\angle\\mathrm{BOC} = 2\\angle\\mathrm{A}$\n- 내심 공식: $\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2}\\angle\\mathrm{A}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\angle\\mathrm{BOC}$ 계산\n$\\angle\\mathrm{BOC} = 2 \\times 48^\\circ = 96^\\circ$\n\n2단계: $\\angle\\mathrm{BIC}$ 계산\n$\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2} \\times 48^\\circ = 90^\\circ + 24^\\circ = 114^\\circ$\n\n3단계: $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC}$ 식의 값 계산\n$2\\angle\\mathrm{BOC} = 2 \\times 96^\\circ = 192^\\circ$\n$2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC} = 192^\\circ - 114^\\circ = 78^\\circ$\n\n[경우 나눔 및 5개 선지 검토]\n① $78^\\circ$: 계산된 결과와 정확히 일치하여 정답이다.\n② $80^\\circ$, ③ $85^\\circ$: 오답이다.\n④ $96^\\circ$: $\\angle\\mathrm{BOC}$ 자체의 크기이므로 오답이다.\n⑤ $100^\\circ$: 오답이다.\n\n[명확한 결론]\n따라서 구하는 각의 크기는 $78^\\circ$이므로 정답은 ①이다.",
     "crossConceptKeys": [],
@@ -356,6 +356,8 @@ window.examData = {
   },
   {
     "id": 9,
+    "imageSize": "tall",
+    "imageAlt": "계단 밑 직각삼각형 공간의 밑변은 32 cm이고 빗변은 40 cm이다. 농구공 반지름 9 cm, 축구공 8 cm, 배구공 7 cm, 핸드볼공 6 cm, 볼링공 5 cm의 원본 표기를 보존했다.",
     "questionNumber": 9,
     "score": 5,
     "level": "중",
@@ -371,13 +373,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>9. 다음 그림은 왕운이네 집에 있는 계단 밑 공간과 공의 크기를 나타낸 것이다. 계단 밑 공간에 농구공, 축구공, 배구공, 핸드볼공, 볼링공을 넣으려고 하는데 계단 밑 공간에 들어가지 않는 공을 고르면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q09.png\" alt=\"직각삼각형 모양의 계단 밑 공간(높이 24cm, 밑변 32cm, 빗변 40cm)과 여러 공의 반지름 그림\" /></p>",
-    "question": "<p>9. 다음 그림은 왕운이네 집에 있는 계단 밑 공간과 공의 크기를 나타낸 것이다. 계단 밑 공간에 농구공, 축구공, 배구공, 핸드볼공, 볼링공을 넣으려고 하는데 계단 밑 공간에 들어가지 않는 공을 고르면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q09.png\" alt=\"직각삼각형 모양의 계단 밑 공간(높이 24cm, 밑변 32cm, 빗변 40cm)과 여러 공의 반지름 그림\" /></p>",
+    "content": "<p>9. 다음 그림은 왕운이네 집에 있는 계단 밑 공간과 공의 크기를 나타낸 것이다. 계단 밑 공간에 농구공, 축구공, 배구공, 핸드볼공, 볼링공을 넣으려고 하는데 계단 밑 공간에 들어가지 않는 공을 고르면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q9-problem-visual-v2.svg\" alt=\"계단 밑 직각삼각형 공간의 밑변은 32 cm이고 빗변은 40 cm이다. 농구공 반지름 9 cm, 축구공 8 cm, 배구공 7 cm, 핸드볼공 6 cm, 볼링공 5 cm의 원본 표기를 보존했다.\" style=\"display:block;width:min(100%,385px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>9. 다음 그림은 왕운이네 집에 있는 계단 밑 공간과 공의 크기를 나타낸 것이다. 계단 밑 공간에 농구공, 축구공, 배구공, 핸드볼공, 볼링공을 넣으려고 하는데 계단 밑 공간에 들어가지 않는 공을 고르면? [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q9-problem-visual-v2.svg\" alt=\"계단 밑 직각삼각형 공간의 밑변은 32 cm이고 빗변은 40 cm이다. 농구공 반지름 9 cm, 축구공 8 cm, 배구공 7 cm, 핸드볼공 6 cm, 볼링공 5 cm의 원본 표기를 보존했다.\" style=\"display:block;width:min(100%,385px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "농구공",
       "축구공",
@@ -385,12 +387,10 @@ window.examData = {
       "핸드볼공",
       "볼링공"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q09.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q09.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q9-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q9-problem-visual-v2.svg"],
     "answer": "①",
-    "solution": "[원문 조건 및 구할 대상]\n계단 밑 공간의 직각삼각형 영역(높이 $24\\text{ cm}$, 밑변 $32\\text{ cm}$, 빗변 $40\\text{ cm}$)에 들어갈 수 없는 공을 고른다.\n각 공의 반지름 크기: 농구공 반지름 $9\\text{ cm}$, 축구공 반지름 $5.5\\text{ cm}$, 배구공 반지름 $7\\text{ cm}$, 핸드볼공 반지름 $6\\text{ cm}$, 볼링공 반지름 $8\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n직각삼각형 모양의 공간에 완전히 들어갈 수 있는 가장 큰 원(공의 단면)은 직각삼각형의 내접원이다.\n직각삼각형의 두 변을 $a, b$, 빗변을 $c$라 할 때 내접원의 반지름 $r$은 $r = \\frac{a+b-c}{2}$이다.\n공의 반지름이 내접원의 반지름 $r$보다 크면 계단 밑 공간에 들어가지 못한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 계단 밑 직각삼각형 공간의 내접원의 반지름 $r$ 계산\n$a = 24\\text{ cm}, b = 32\\text{ cm}, c = 40\\text{ cm}$이므로\n$r = \\frac{24 + 32 - 40}{2} = \\frac{56 - 40}{2} = \\frac{16}{2} = 8\\text{ cm}$\n2단계: 공간에 들어갈 수 있는 공의 조건 판정\n공의 반지름이 $8\\text{ cm}$ 이하이면 들어갈 수 있고, $8\\text{ cm}$를 초과하면 들어갈 수 없다.\n3단계: 5개 공의 반지름 비교\n- 농구공: 반지름 $9\\text{ cm} > 8\\text{ cm}$ (들어가지 못함)\n- 축구공: 반지름 $5.5\\text{ cm} \\le 8\\text{ cm}$ (들어감)\n- 배구공: 반지름 $7\\text{ cm} \\le 8\\text{ cm}$ (들어감)\n- 핸드볼공: 반지름 $6\\text{ cm} \\le 8\\text{ cm}$ (들어감)\n- 볼링공: 반지름 $8\\text{ cm} \\le 8\\text{ cm}$ (딱 맞게 들어감)\n\n[경우 나눔 및 5개 선지 검토]\n농구공만이 반지름이 내접원의 반지름 $8\\text{ cm}$보다 크므로 계단 밑 공간에 들어가지 않는다.\n\n[명확한 결론]\n따라서 계단 밑 공간에 들어가지 않는 공은 농구공이므로 정답은 ①이다.",
+    "solution": "[원문 조건 및 구할 대상]\n계단 밑 공간의 직각삼각형 영역(밑변 $32\\text{ cm}$, 빗변 $40\\text{ cm}$)에 들어갈 수 없는 공을 고른다.\n각 공의 반지름 크기: 농구공 반지름 $9\\text{ cm}$, 축구공 반지름 $8\\text{ cm}$, 배구공 반지름 $7\\text{ cm}$, 핸드볼공 반지름 $6\\text{ cm}$, 볼링공 반지름 $5\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n직각삼각형 모양의 공간에 완전히 들어갈 수 있는 가장 큰 원(공의 단면)은 직각삼각형의 내접원이다.\n직각삼각형의 두 변을 $a, b$, 빗변을 $c$라 할 때 내접원의 반지름 $r$은 $r = \\frac{a+b-c}{2}$이다.\n공의 반지름이 내접원의 반지름 $r$보다 크면 계단 밑 공간에 들어가지 못한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 계단 밑 직각삼각형 공간의 내접원의 반지름 $r$ 계산\n높이는 피타고라스 정리로 $\\sqrt{40^2-32^2}=24\\text{ cm}$이다.\n$a = 24\\text{ cm}, b = 32\\text{ cm}, c = 40\\text{ cm}$이므로\n$r = \\frac{24 + 32 - 40}{2} = \\frac{56 - 40}{2} = \\frac{16}{2} = 8\\text{ cm}$\n2단계: 공간에 들어갈 수 있는 공의 조건 판정\n공의 반지름이 $8\\text{ cm}$ 이하이면 들어갈 수 있고, $8\\text{ cm}$를 초과하면 들어갈 수 없다.\n3단계: 5개 공의 반지름 비교\n- 농구공: 반지름 $9\\text{ cm} > 8\\text{ cm}$ (들어가지 못함)\n- 축구공: 반지름 $8\\text{ cm} \\le 8\\text{ cm}$ (딱 맞게 들어감)\n- 배구공: 반지름 $7\\text{ cm} \\le 8\\text{ cm}$ (들어감)\n- 핸드볼공: 반지름 $6\\text{ cm} \\le 8\\text{ cm}$ (들어감)\n- 볼링공: 반지름 $5\\text{ cm} \\le 8\\text{ cm}$ (들어감)\n\n[경우 나눔 및 5개 선지 검토]\n농구공만이 반지름이 내접원의 반지름 $8\\text{ cm}$보다 크므로 계단 밑 공간에 들어가지 않는다.\n\n[명확한 결론]\n따라서 계단 밑 공간에 들어가지 않는 공은 농구공이므로 정답은 ①이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -402,6 +402,8 @@ window.examData = {
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "O는 외심이다. B에서 BA와 BO 사이는 20°, C에서 CA와 CO 사이는 30°이다. B의 OBC에 x, O의 BOC에 y를 표시했다.",
     "questionNumber": 10,
     "score": 4,
     "level": "하",
@@ -417,13 +419,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>10. 그림의 점 $\\mathrm{O}$는 외심이다. $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q10.png\" alt=\"외심 O에서 각 ABO=20도, 각 ACO=30도이고 각 OBC=x, 중심각 BOC=y인 그림\" /></p>",
-    "question": "<p>10. 그림의 점 $\\mathrm{O}$는 외심이다. $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q10.png\" alt=\"외심 O에서 각 ABO=20도, 각 ACO=30도이고 각 OBC=x, 중심각 BOC=y인 그림\" /></p>",
+    "content": "<p>10. 그림의 점 $\\mathrm{O}$는 외심이다. $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q10-problem-visual-v2.svg\" alt=\"O는 외심이다. B에서 BA와 BO 사이는 20°, C에서 CA와 CO 사이는 30°이다. B의 OBC에 x, O의 BOC에 y를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>10. 그림의 점 $\\mathrm{O}$는 외심이다. $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q10-problem-visual-v2.svg\" alt=\"O는 외심이다. B에서 BA와 BO 사이는 20°, C에서 CA와 CO 사이는 30°이다. B의 OBC에 x, O의 BOC에 y를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$170$",
       "$160$",
@@ -431,10 +433,8 @@ window.examData = {
       "$140$",
       "$130$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q10.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q10.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q10-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "[원문 조건 및 구할 대상]\n점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심이고 $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$, $\\angle\\mathrm{OBC}=\\angle x$, $\\angle\\mathrm{BOC}=\\angle y$일 때, $\\angle x + \\angle y$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n외심에서 세 꼭짓점에 이르는 거리는 같으므로 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OB}} = \\overline{\\mathrm{OC}}$이다.\n따라서 $\\triangle\\mathrm{OAB}$, $\\triangle\\mathrm{OBC}$, $\\triangle\\mathrm{OCA}$는 모두 이등변삼각형이며, $\\angle\\mathrm{BOC} = 2\\angle\\mathrm{BAC}$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\angle\\mathrm{A}$의 크기 구하기\n- $\\triangle\\mathrm{OAB}$에서 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}$이므로 $\\angle\\mathrm{OAB} = \\angle\\mathrm{ABO} = 20^\\circ$\n- $\\triangle\\mathrm{OCA}$에서 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}}$이므로 $\\angle\\mathrm{OAC} = \\angle\\mathrm{ACO} = 30^\\circ$\n- 따라서 $\\angle\\mathrm{A} = \\angle\\mathrm{OAB} + \\angle\\mathrm{OAC} = 20^\\circ + 30^\\circ = 50^\\circ$\n\n2단계: $\\angle y = \\angle\\mathrm{BOC}$ 계산\n외심 공식에 의해\n$\\angle y = \\angle\\mathrm{BOC} = 2\\angle\\mathrm{A} = 2 \\times 50^\\circ = 100^\\circ$\n\n3단계: $\\angle x = \\angle\\mathrm{OBC}$ 계산\n$\\triangle\\mathrm{OBC}$는 $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$인 이등변삼각형이므로\n$\\angle x = \\frac{180^\\circ - \\angle\\mathrm{BOC}}{2} = \\frac{180^\\circ - 100^\\circ}{2} = \\frac{80^\\circ}{2} = 40^\\circ$\n\n4단계: $\\angle x + \\angle y$ 계산\n$\\angle x + \\angle y = 40^\\circ + 100^\\circ = 140^\\circ$\n\n[경우 나눔 및 5개 선지 검토]\n① 170, ② 160, ③ 150: 오답이다.\n④ 140: 계산된 합과 정확히 일치하여 정답이다.\n⑤ 130: 오답이다.\n\n[명확한 결론]\n따라서 $\\angle x + \\angle y = 140$이므로 정답은 ④이다.",
     "crossConceptKeys": [],
@@ -491,6 +491,8 @@ window.examData = {
   },
   {
     "id": 12,
+    "imageSize": "tall",
+    "imageAlt": "ADB, ACF, BCE는 정삼각형이다. BCE와 A는 BC의 같은 쪽에 있다. 세 종류의 같은 길이는 각각 같은 색과 눈금이다. AFED만 칠했다.",
     "questionNumber": 12,
     "score": 4,
     "level": "중",
@@ -506,13 +508,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q12.png\" alt=\"삼각형 ABC의 세 변에 정삼각형을 붙여 만든 사각형 AFED 그림\" /></p>",
-    "question": "<p>12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q12.png\" alt=\"삼각형 ABC의 세 변에 정삼각형을 붙여 만든 사각형 AFED 그림\" /></p>",
+    "content": "<p>12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q12-problem-visual-v2.svg\" alt=\"ADB, ACF, BCE는 정삼각형이다. BCE와 A는 BC의 같은 쪽에 있다. 세 종류의 같은 길이는 각각 같은 색과 눈금이다. AFED만 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q12-problem-visual-v2.svg\" alt=\"ADB, ACF, BCE는 정삼각형이다. BCE와 A는 BC의 같은 쪽에 있다. 세 종류의 같은 길이는 각각 같은 색과 눈금이다. AFED만 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "대각선의 길이가 서로 같다.",
       "이웃하는 두 변의 길이가 서로 같다.",
@@ -520,12 +522,10 @@ window.examData = {
       "대각선이 서로 수직이다.",
       "네 변의 길이가 모두 같다."
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q12.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q12.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q12-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q12-problem-visual-v2.svg"],
     "answer": "③",
-    "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC}$의 세 변에 바깥쪽으로 정삼각형 $\\triangle\\mathrm{ADB}, \\triangle\\mathrm{ACF}, \\triangle\\mathrm{BCE}$를 그렸을 때 만들어지는 사각형 $\\mathrm{AFED}$에 대한 설명 중 옳은 것을 고른다.\n\n[핵심 발상/공식/보조선]\n삼각형의 합동을 이용하여 사각형 $\\mathrm{AFED}$가 어떤 사각형인지 먼저 규명한다.\n$\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DBE} \\equiv \\triangle\\mathrm{FEC}$ ($\\mathrm{SAS}$ 합동)임을 증명하여 마주보는 대변의 길이가 각각 같음을 보이면 사각형 $\\mathrm{AFED}$는 평행사변형이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DBE}$ 증명\n- $\\overline{\\mathrm{DB}} = \\overline{\\mathrm{AB}}$ (정삼각형 $\\mathrm{ADB}$)\n- $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BC}}$ (정삼각형 $\\mathrm{BCE}$)\n- $\\angle\\mathrm{DBE} = 60^\\circ - \\angle\\mathrm{EBA} = \\angle\\mathrm{ABC}$ (또는 $60^\\circ + \\angle\\mathrm{EBA}$)\n따라서 $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DBE}$ ($\\mathrm{SAS}$ 합동)이므로 대응변 $\\overline{\\mathrm{DE}} = \\overline{\\mathrm{AC}}$이다.\n정삼각형 $\\mathrm{ACF}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AF}}$이므로 $\\overline{\\mathrm{DE}} = \\overline{\\mathrm{AF}}$이다.\n\n2단계: $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{FEC}$ 증명\n같은 방법으로 $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{FEC}$ ($\\mathrm{SAS}$ 합동)이므로 $\\overline{\\mathrm{FE}} = \\overline{\\mathrm{AB}}$이다.\n정삼각형 $\\mathrm{ADB}$에서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$이므로 $\\overline{\\mathrm{FE}} = \\overline{\\mathrm{AD}}$이다.\n\n3단계: 사각형 $\\mathrm{AFED}$의 판정\n마주보는 두 쌍의 대변의 길이가 각각 같으므로($\\overline{\\mathrm{AF}}=\\overline{\\mathrm{DE}}$, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{FE}}$),\n사각형 $\\mathrm{AFED}$는 **평행사변형**이다.\n\n4단계: 평행사변형의 성질 검토\n- ① 대각선의 길이가 같다: 직사각형의 성질 (거짓)\n- ② 이웃하는 두 변의 길이가 같다: 마름모의 성질 (거짓)\n- ③ 대각선이 서로 다른 것을 이등분한다: 평행사변형의 기본 성질 (참)\n- ④ 대각선이 서로 수직이다: 마름모의 성질 (거짓)\n- ⑤ 네 변의 길이가 모두 같다: 마름모의 정의 (거짓)\n\n[경우 나눔 및 5개 선지 검토]\n사각형 $\\mathrm{AFED}$는 일반적인 평행사변형이므로 평행사변형의 성질인 ③번만이 항상 옳다.\n\n[명확한 결론]\n따라서 옳은 설명은 ③이다.",
+    "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC}$의 세 변에 각각 정삼각형 $\\triangle\\mathrm{ADB}, \\triangle\\mathrm{ACF}, \\triangle\\mathrm{BCE}$를 그렸을 때 만들어지는 사각형 $\\mathrm{AFED}$에 대한 설명 중 옳은 것을 고른다. 그림에서 A와 E는 변 BC의 같은 쪽에 있다.\n\n[핵심 발상/공식/보조선]\n삼각형의 합동을 이용하여 사각형 $\\mathrm{AFED}$가 어떤 사각형인지 먼저 규명한다.\n$\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DBE} \\equiv \\triangle\\mathrm{FEC}$ ($\\mathrm{SAS}$ 합동)임을 증명하여 마주보는 대변의 길이가 각각 같음을 보이면 사각형 $\\mathrm{AFED}$는 평행사변형이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DBE}$ 증명\n- $\\overline{\\mathrm{DB}} = \\overline{\\mathrm{AB}}$ (정삼각형 $\\mathrm{ADB}$)\n- $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BC}}$ (정삼각형 $\\mathrm{BCE}$)\n- $\\angle\\mathrm{DBE} = 60^\\circ - \\angle\\mathrm{EBA} = \\angle\\mathrm{ABC}$\n따라서 $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DBE}$ ($\\mathrm{SAS}$ 합동)이므로 대응변 $\\overline{\\mathrm{DE}} = \\overline{\\mathrm{AC}}$이다.\n정삼각형 $\\mathrm{ACF}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AF}}$이므로 $\\overline{\\mathrm{DE}} = \\overline{\\mathrm{AF}}$이다.\n\n2단계: $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{FEC}$ 증명\n같은 방법으로 $\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{FEC}$ ($\\mathrm{SAS}$ 합동)이므로 $\\overline{\\mathrm{FE}} = \\overline{\\mathrm{AB}}$이다.\n정삼각형 $\\mathrm{ADB}$에서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$이므로 $\\overline{\\mathrm{FE}} = \\overline{\\mathrm{AD}}$이다.\n\n3단계: 사각형 $\\mathrm{AFED}$의 판정\n마주보는 두 쌍의 대변의 길이가 각각 같으므로($\\overline{\\mathrm{AF}}=\\overline{\\mathrm{DE}}$, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{FE}}$),\n사각형 $\\mathrm{AFED}$는 **평행사변형**이다.\n\n4단계: 평행사변형의 성질 검토\n- ① 대각선의 길이가 같다: 직사각형의 성질 (거짓)\n- ② 이웃하는 두 변의 길이가 같다: 마름모의 성질 (거짓)\n- ③ 대각선이 서로 다른 것을 이등분한다: 평행사변형의 기본 성질 (참)\n- ④ 대각선이 서로 수직이다: 마름모의 성질 (거짓)\n- ⑤ 네 변의 길이가 모두 같다: 마름모의 정의 (거짓)\n\n[경우 나눔 및 5개 선지 검토]\n사각형 $\\mathrm{AFED}$는 일반적인 평행사변형이므로 평행사변형의 성질인 ③번만이 항상 옳다.\n\n[명확한 결론]\n따라서 옳은 설명은 ③이다.",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE_SAS"
     ],
@@ -621,6 +621,8 @@ window.examData = {
   },
   {
     "id": 15,
+    "imageSize": "tall",
+    "imageAlt": "A의 각은 직각이다. AB=12 cm, AC=9 cm, BC=15 cm이다. 내심 I의 세 반지름과 접점 D, E, F를 표시했다. 원 내부를 제외한 삼각형 부분만 칠했다.",
     "questionNumber": 15,
     "score": 4,
     "level": "하",
@@ -636,13 +638,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q15.png\" alt=\"직각삼각형 ABC 내부에서 내접원을 제외한 색칠한 부분 그림\" /></p>",
-    "question": "<p>15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q15.png\" alt=\"직각삼각형 ABC 내부에서 내접원을 제외한 색칠한 부분 그림\" /></p>",
+    "content": "<p>15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"A의 각은 직각이다. AB=12 cm, AC=9 cm, BC=15 cm이다. 내심 I의 세 반지름과 접점 D, E, F를 표시했다. 원 내부를 제외한 삼각형 부분만 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"A의 각은 직각이다. AB=12 cm, AC=9 cm, BC=15 cm이다. 내심 I의 세 반지름과 접점 D, E, F를 표시했다. 원 내부를 제외한 삼각형 부분만 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$9\\pi$",
       "$54-3\\pi$",
@@ -650,10 +652,8 @@ window.examData = {
       "$54-9\\pi$",
       "$90-9\\pi$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q15.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q15.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q15-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q15-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "[원문 조건 및 구할 대상]\n$\\angle\\mathrm{A}=90^\\circ$이고 $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$인 직각삼각형 $\\mathrm{ABC}$에서 내접원을 제외한 색칠한 부분의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n$\\text{색칠한 부분의 넓이} = \\triangle\\mathrm{ABC}\\text{의 넓이} - \\text{내접원의 넓이}$\n직각삼각형에서 내접원의 반지름 $r$은 $r = \\frac{a+b-c}{2}$로 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 직각삼각형 $\\mathrm{ABC}$의 넓이 계산\n$\\text{Area}(\\triangle\\mathrm{ABC}) = \\frac{1}{2} \\times 12 \\times 9 = 54$\n\n2단계: 내접원의 반지름 $r$ 계산\n$r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} - \\overline{\\mathrm{BC}}}{2} = \\frac{12 + 9 - 15}{2} = \\frac{6}{2} = 3$\n(또는 $\\frac{1}{2}r(12+9+15) = 54 \\implies 18r = 54 \\implies r = 3$)\n\n3단계: 내접원의 넓이 계산\n$\\text{내접원 넓이} = \\pi r^2 = \\pi \\times 3^2 = 9\\pi$\n\n4단계: 색칠한 부분의 넓이 계산\n$\\text{색칠한 넓이} = 54 - 9\\pi$\n\n[경우 나눔 및 5개 선지 검토]\n① $9\\pi$: 내접원의 넓이만 구한 오답이다.\n② $54-3\\pi$: 반지름을 뺀 오답이다.\n③ $36-7\\pi$: 오답이다.\n④ $54-9\\pi$: 계산 결과와 정확히 일치하여 정답이다.\n⑤ $90-9\\pi$: 밑변과 높이를 잘못 곱한 오답이다.\n\n[명확한 결론]\n따라서 색칠한 부분의 넓이는 $54-9\\pi$이므로 정답은 ④이다.",
     "crossConceptKeys": [
@@ -669,6 +669,8 @@ window.examData = {
   },
   {
     "id": 16,
+    "imageSize": "tall",
+    "imageAlt": "A, C, B가 아래의 한 직선 위에 놓인다. 정삼각형 ACD의 세 변과 정삼각형 CBE의 세 변을 다른 색과 눈금으로 표시했다. AE와 DB를 연결했다.",
     "questionNumber": 16,
     "score": 4,
     "level": "하",
@@ -684,13 +686,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>16. 오른쪽 그림과 같이 두 변 $\\mathrm{AC}$, $\\mathrm{BC}$를 각각 한 변으로 하는 정삼각형 $\\mathrm{ACD}$, $\\mathrm{CBE}$를 그렸을 때, $\\triangle\\mathrm{ACE}$와 $\\triangle\\mathrm{DCB}$가 합동임을 증명하려 한다. 이 때, 사용된 가장 알맞은 합동 조건을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q16.png\" alt=\"변 AC, BC 위에 각각 정삼각형 ACD, CBE를 그린 그림\" /></p>",
-    "question": "<p>16. 오른쪽 그림과 같이 두 변 $\\mathrm{AC}$, $\\mathrm{BC}$를 각각 한 변으로 하는 정삼각형 $\\mathrm{ACD}$, $\\mathrm{CBE}$를 그렸을 때, $\\triangle\\mathrm{ACE}$와 $\\triangle\\mathrm{DCB}$가 합동임을 증명하려 한다. 이 때, 사용된 가장 알맞은 합동 조건을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q16.png\" alt=\"변 AC, BC 위에 각각 정삼각형 ACD, CBE를 그린 그림\" /></p>",
+    "content": "<p>16. 오른쪽 그림과 같이 두 변 $\\mathrm{AC}$, $\\mathrm{BC}$를 각각 한 변으로 하는 정삼각형 $\\mathrm{ACD}$, $\\mathrm{CBE}$를 그렸을 때, $\\triangle\\mathrm{ACE}$와 $\\triangle\\mathrm{DCB}$가 합동임을 증명하려 한다. 이 때, 사용된 가장 알맞은 합동 조건을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"A, C, B가 아래의 한 직선 위에 놓인다. 정삼각형 ACD의 세 변과 정삼각형 CBE의 세 변을 다른 색과 눈금으로 표시했다. AE와 DB를 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>16. 오른쪽 그림과 같이 두 변 $\\mathrm{AC}$, $\\mathrm{BC}$를 각각 한 변으로 하는 정삼각형 $\\mathrm{ACD}$, $\\mathrm{CBE}$를 그렸을 때, $\\triangle\\mathrm{ACE}$와 $\\triangle\\mathrm{DCB}$가 합동임을 증명하려 한다. 이 때, 사용된 가장 알맞은 합동 조건을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"A, C, B가 아래의 한 직선 위에 놓인다. 정삼각형 ACD의 세 변과 정삼각형 CBE의 세 변을 다른 색과 눈금으로 표시했다. AE와 DB를 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\mathrm{SSS}$ 합동",
       "$\\mathrm{SAS}$ 합동",
@@ -698,10 +700,8 @@ window.examData = {
       "$\\mathrm{RHA}$ 합동",
       "$\\mathrm{RHS}$ 합동"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q16.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q16.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q16-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q16-problem-visual-v2.svg"],
     "answer": "②",
     "solution": "[원문 조건 및 구할 대상]\n정삼각형 $\\mathrm{ACD}$와 $\\mathrm{CBE}$가 주어졌을 때, $\\triangle\\mathrm{ACE}$와 $\\triangle\\mathrm{DCB}$가 합동임을 보이는 데 사용되는 알맞은 합동 조건을 찾는다.\n\n[핵심 발상/공식/보조선]\n두 삼각형에서 길이가 같은 두 변과 그 사이에 끼인각의 크기가 같음을 확인한다.\n\n[연속 등식 및 충분한 중간 계산]\n$\\triangle\\mathrm{ACE}$와 $\\triangle\\mathrm{DCB}$에서\n1단계: 대응변 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{DC}}$ 비교\n$\\triangle\\mathrm{ACD}$가 정삼각형이므로\n$\\overline{\\mathrm{AC}} = \\overline{\\mathrm{DC}}$\n\n2단계: 대응변 $\\overline{\\mathrm{CE}}$와 $\\overline{\\mathrm{CB}}$ 비교\n$\\triangle\\mathrm{CBE}$가 정삼각형이므로\n$\\overline{\\mathrm{CE}} = \\overline{\\mathrm{CB}}$\n\n3단계: 끼인각 $\\angle\\mathrm{ACE}$와 $\\angle\\mathrm{DCB}$ 비교\n$\\angle\\mathrm{DCA} = 60^\\circ$, $\\angle\\mathrm{BCE} = 60^\\circ$이므로\n$\\angle\\mathrm{ACE} = \\angle\\mathrm{ACB} + \\angle\\mathrm{BCE} = \\angle\\mathrm{ACB} + 60^\\circ$\n$\\angle\\mathrm{DCB} = \\angle\\mathrm{DCA} + \\angle\\mathrm{ACB} = 60^\\circ + \\angle\\mathrm{ACB}$\n따라서\n$\\angle\\mathrm{ACE} = \\angle\\mathrm{DCB}$\n\n4단계: 합동 조건 판정\n두 쌍의 대응변의 길이가 각각 같고, 그 끼인각의 크기가 같으므로\n$\\triangle\\mathrm{ACE} \\equiv \\triangle\\mathrm{DCB}$ ($\\mathrm{SAS}$ 합동)\n\n[경우 나눔 및 5개 선지 검토]\n두 변과 끼인각에 의한 합동이므로 $\\mathrm{SAS}$ 합동인 ②번이 정확한 답이다.\n\n[명확한 결론]\n따라서 가장 알맞은 합동 조건은 ② $\\mathrm{SAS}$ 합동이다.",
     "crossConceptKeys": [],
@@ -715,6 +715,8 @@ window.examData = {
   },
   {
     "id": 17,
+    "imageSize": "tall",
+    "imageAlt": "삼각형의 각 A는 50°이다. B의 각 이등분선이 AC에 닿는 곳은 D이고 C의 각 이등분선이 AB에 닿는 곳은 E이다. 두 선이 I에서 만난다.",
     "questionNumber": 17,
     "score": 4,
     "level": "중",
@@ -730,13 +732,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>17. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\angle\\mathrm{A}=50^\\circ$이다. $\\angle\\mathrm{BDC}+\\angle\\mathrm{BEC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q17.png\" alt=\"삼각형 ABC에서 내심 I를 지나는 두 각의 이등분선이 대변과 만나는 점 D, E 그림\" /></p>",
-    "question": "<p>17. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\angle\\mathrm{A}=50^\\circ$이다. $\\angle\\mathrm{BDC}+\\angle\\mathrm{BEC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q17.png\" alt=\"삼각형 ABC에서 내심 I를 지나는 두 각의 이등분선이 대변과 만나는 점 D, E 그림\" /></p>",
+    "content": "<p>17. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\angle\\mathrm{A}=50^\\circ$이다. $\\angle\\mathrm{BDC}+\\angle\\mathrm{BEC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"삼각형의 각 A는 50°이다. B의 각 이등분선이 AC에 닿는 곳은 D이고 C의 각 이등분선이 AB에 닿는 곳은 E이다. 두 선이 I에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>17. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\angle\\mathrm{A}=50^\\circ$이다. $\\angle\\mathrm{BDC}+\\angle\\mathrm{BEC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"삼각형의 각 A는 50°이다. B의 각 이등분선이 AC에 닿는 곳은 D이고 C의 각 이등분선이 AB에 닿는 곳은 E이다. 두 선이 I에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$115^\\circ$",
       "$120^\\circ$",
@@ -744,10 +746,8 @@ window.examData = {
       "$145^\\circ$",
       "$165^\\circ$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q17.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q17.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q17-problem-visual-v2.svg"],
     "answer": "⑤",
     "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC}$에서 점 $\\mathrm{I}$는 내심이고 $\\angle\\mathrm{A}=50^\\circ$이다. 선분 $\\mathrm{BE}$와 $\\mathrm{CD}$가 각각 $\\angle\\mathrm{B}$와 $\\angle\\mathrm{C}$의 이등분선일 때, $\\angle\\mathrm{BDC} + \\angle\\mathrm{BEC}$의 크기를 구한다.\n\n[핵심 발상/공식/보조선]\n내심은 세 내각의 이등분선의 교점이므로 $\\angle\\mathrm{B} = 2b$, $\\angle\\mathrm{C} = 2c$라 둘 수 있다.\n$\\triangle\\mathrm{BDC}$와 $\\triangle\\mathrm{BEC}$에서 각각 세 내각의 합이 $180^\\circ$임을 이용하여 $\\angle\\mathrm{BDC}$와 $\\angle\\mathrm{BEC}$를 $b, c$에 관한 식으로 표현하고 합을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $b + c$의 값 계산\n$\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{A} + \\angle\\mathrm{B} + \\angle\\mathrm{C} = 180^\\circ$이므로\n$50^\\circ + 2b + 2c = 180^\\circ$\n$2(b + c) = 130^\\circ \\implies b + c = 65^\\circ$\n\n2단계: $\\triangle\\mathrm{BDC}$에서 $\\angle\\mathrm{BDC}$ 계산\n선분 $\\mathrm{CD}$는 $\\angle\\mathrm{C}$의 이등분선이므로 $\\angle\\mathrm{DCB} = c$이고, $\\angle\\mathrm{DBC} = 2b$이다.\n$\\angle\\mathrm{BDC} = 180^\\circ - (2b + c)$\n\n3단계: $\\triangle\\mathrm{BEC}$에서 $\\angle\\mathrm{BEC}$ 계산\n선분 $\\mathrm{BE}$는 $\\angle\\mathrm{B}$의 이등분선이므로 $\\angle\\mathrm{EBC} = b$이고, $\\angle\\mathrm{ECB} = 2c$이다.\n$\\angle\\mathrm{BEC} = 180^\\circ - (b + 2c)$\n\n4단계: 두 각의 합 계산\n$\\angle\\mathrm{BDC} + \\angle\\mathrm{BEC} = \\{180^\\circ - (2b + c)\\} + \\{180^\\circ - (b + 2c)\\}$\n$= 360^\\circ - (3b + 3c)$\n$= 360^\\circ - 3(b + c)$\n$= 360^\\circ - 3 \\times 65^\\circ$\n$= 360^\\circ - 195^\\circ = 165^\\circ$\n\n[경우 나눔 및 5개 선지 검토]\n① $115^\\circ$: $\\angle\\mathrm{BIC}$의 크기이므로 오답이다.\n② $120^\\circ$, ③ $135^\\circ$, ④ $145^\\circ$: 오답이다.\n⑤ $165^\\circ$: 계산된 합과 정확히 일치하여 정답이다.\n\n[명확한 결론]\n따라서 $\\angle\\mathrm{BDC} + \\angle\\mathrm{BEC} = 165^\\circ$이므로 정답은 ⑤이다.",
     "crossConceptKeys": [],
@@ -802,6 +802,8 @@ window.examData = {
   },
   {
     "id": 19,
+    "imageSize": "tall",
+    "imageAlt": "EF가 접는 선이다. 접기 전 오른쪽의 테두리는 회색 점선, 접은 뒤의 테두리는 청록선이다. G는 접은 선 모양이 위 가로선과 만나는 점이며 각 EGF는 30°이다. E의 바깥 각 CEF에 x를 붙였다.",
     "questionNumber": 19,
     "score": 4,
     "level": "하",
@@ -817,13 +819,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>19. 오른쪽 그림과 같이 직사각형 모양의 종이띠를 접었을 때, $\\angle\\mathrm{EGF}=30^\\circ$이다. 이 때, $\\angle\\mathrm{CEF}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q19.png\" alt=\"직사각형 모양 종이띠를 선분 EF를 접는 선으로 하여 접은 그림\" /></p>",
-    "question": "<p>19. 오른쪽 그림과 같이 직사각형 모양의 종이띠를 접었을 때, $\\angle\\mathrm{EGF}=30^\\circ$이다. 이 때, $\\angle\\mathrm{CEF}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q19.png\" alt=\"직사각형 모양 종이띠를 선분 EF를 접는 선으로 하여 접은 그림\" /></p>",
+    "content": "<p>19. 오른쪽 그림과 같이 직사각형 모양의 종이띠를 접었을 때, $\\angle\\mathrm{EGF}=30^\\circ$이다. 이 때, $\\angle\\mathrm{CEF}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"EF가 접는 선이다. 접기 전 오른쪽의 테두리는 회색 점선, 접은 뒤의 테두리는 청록선이다. G는 접은 선 모양이 위 가로선과 만나는 점이며 각 EGF는 30°이다. E의 바깥 각 CEF에 x를 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>19. 오른쪽 그림과 같이 직사각형 모양의 종이띠를 접었을 때, $\\angle\\mathrm{EGF}=30^\\circ$이다. 이 때, $\\angle\\mathrm{CEF}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"EF가 접는 선이다. 접기 전 오른쪽의 테두리는 회색 점선, 접은 뒤의 테두리는 청록선이다. G는 접은 선 모양이 위 가로선과 만나는 점이며 각 EGF는 30°이다. E의 바깥 각 CEF에 x를 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$70^\\circ$",
       "$75^\\circ$",
@@ -831,10 +833,8 @@ window.examData = {
       "$85^\\circ$",
       "$90^\\circ$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q19.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q19.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q19-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q19-problem-visual-v2.svg"],
     "answer": "②",
     "solution": "[원문 조건 및 구할 대상]\n직사각형 모양의 종이띠를 $\\overline{\\mathrm{EF}}$를 접는 선으로 하여 접었을 때, $\\angle\\mathrm{EGF}=30^\\circ$이다. 이때 접은 각 $\\angle\\mathrm{CEF}$의 크기를 구한다.\n\n[핵심 발상/공식/보조선]\n직사각형 종이접기에서 생기는 삼각형 $\\triangle\\mathrm{GEF}$는 접은 각의 크기와 평행선의 엇각의 크기가 같으므로 항상 이등변삼각형이 된다.\n- 접은 각: $\\angle\\mathrm{GEF} = \\angle\\mathrm{CEF}$\n- 엇각: $\\angle\\mathrm{CEF} = \\angle\\mathrm{EFG}$ (평행선 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BC}}$)\n따라서 $\\angle\\mathrm{GEF} = \\angle\\mathrm{GFE}$이므로 $\\overline{\\mathrm{GE}} = \\overline{\\mathrm{GF}}$인 이등변삼각형이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 이등변삼각형 $\\triangle\\mathrm{GEF}$의 밑각 구하기\n꼭지각 $\\angle\\mathrm{EGF} = 30^\\circ$이므로\n두 밑각의 크기는 다음과 같다:\n$\\angle\\mathrm{GEF} = \\angle\\mathrm{GFE} = \\frac{180^\\circ - 30^\\circ}{2} = \\frac{150^\\circ}{2} = 75^\\circ$\n\n2단계: $\\angle\\mathrm{CEF}$의 크기 구하기\n종이를 접었으므로 접기 전의 각과 접은 후의 각의 크기가 같다.\n$\\angle\\mathrm{CEF} = \\angle\\mathrm{GEF} = 75^\\circ$\n\n[경우 나눔 및 5개 선지 검토]\n① $70^\\circ$: 오답이다.\n② $75^\\circ$: 계산된 각의 크기와 일치하여 정답이다.\n③ $80^\\circ$, ④ $85^\\circ$, ⑤ $90^\\circ$: 오답이다.\n\n[명확한 결론]\n따라서 $\\angle\\mathrm{CEF} = 75^\\circ$이므로 정답은 ②이다.",
     "crossConceptKeys": [
@@ -851,6 +851,8 @@ window.examData = {
   },
   {
     "id": 20,
+    "imageSize": "tall",
+    "imageAlt": "F는 오른쪽 변 DC 위에 있다. A와 F를 이은 선을 아래로 늘이면 BC의 연장선과 E에서 만난다. 물은 삼각형 DFE만 옅은 청록으로 칠했다.",
     "questionNumber": 20,
     "score": 4,
     "level": "중",
@@ -866,13 +868,13 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>20. 다음 그림과 같은 직사각형 $\\mathrm{ABCD}$의 한 변 $\\mathrm{DC}$ 위에 $2\\overline{\\mathrm{DF}}=3\\overline{\\mathrm{FC}}$가 되도록 점 $\\mathrm{F}$를 잡고 $\\overline{\\mathrm{AF}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{E}$라 할 때, $\\square\\mathrm{ABCD}$의 넓이가 $120\\text{ cm}^2$이라 할 때, $\\triangle\\mathrm{DFE}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q20.png\" alt=\"직사각형 ABCD와 선분 AF의 연장선이 BC의 연장선과 만나는 점 E 그림\" /></p>",
-    "question": "<p>20. 다음 그림과 같은 직사각형 $\\mathrm{ABCD}$의 한 변 $\\mathrm{DC}$ 위에 $2\\overline{\\mathrm{DF}}=3\\overline{\\mathrm{FC}}$가 되도록 점 $\\mathrm{F}$를 잡고 $\\overline{\\mathrm{AF}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{E}$라 할 때, $\\square\\mathrm{ABCD}$의 넓이가 $120\\text{ cm}^2$이라 할 때, $\\triangle\\mathrm{DFE}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q20.png\" alt=\"직사각형 ABCD와 선분 AF의 연장선이 BC의 연장선과 만나는 점 E 그림\" /></p>",
+    "content": "<p>20. 다음 그림과 같은 직사각형 $\\mathrm{ABCD}$의 한 변 $\\mathrm{DC}$ 위에 $2\\overline{\\mathrm{DF}}=3\\overline{\\mathrm{FC}}$가 되도록 점 $\\mathrm{F}$를 잡고 $\\overline{\\mathrm{AF}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{E}$라 할 때, $\\square\\mathrm{ABCD}$의 넓이가 $120\\text{ cm}^2$이라 할 때, $\\triangle\\mathrm{DFE}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"F는 오른쪽 변 DC 위에 있다. A와 F를 이은 선을 아래로 늘이면 BC의 연장선과 E에서 만난다. 물은 삼각형 DFE만 옅은 청록으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>20. 다음 그림과 같은 직사각형 $\\mathrm{ABCD}$의 한 변 $\\mathrm{DC}$ 위에 $2\\overline{\\mathrm{DF}}=3\\overline{\\mathrm{FC}}$가 되도록 점 $\\mathrm{F}$를 잡고 $\\overline{\\mathrm{AF}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{E}$라 할 때, $\\square\\mathrm{ABCD}$의 넓이가 $120\\text{ cm}^2$이라 할 때, $\\triangle\\mathrm{DFE}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"F는 오른쪽 변 DC 위에 있다. A와 F를 이은 선을 아래로 늘이면 BC의 연장선과 E에서 만난다. 물은 삼각형 DFE만 옅은 청록으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$12\\text{ cm}^2$",
       "$15\\text{ cm}^2$",
@@ -880,10 +882,8 @@ window.examData = {
       "$24\\text{ cm}^2$",
       "$40\\text{ cm}^2$"
     ],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q20.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/q20.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q20-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "[원문 조건 및 구할 대상]\n직사각형 $\\mathrm{ABCD}$의 넓이가 $120\\text{ cm}^2$이고, 변 $\\mathrm{DC}$ 위의 점 $\\mathrm{F}$에 대하여 $2\\overline{\\mathrm{DF}} = 3\\overline{\\mathrm{FC}}$이다.\n선분 $\\overline{\\mathrm{AF}}$와 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{E}$라 할 때, $\\triangle\\mathrm{DFE}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n평행선 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BE}}$에 의해 $\\triangle\\mathrm{ADF} \\sim \\triangle\\mathrm{ECF}$ ($\\mathrm{AA}$ 닮음)이다.\n삼각형의 넓이는 밑변의 길이와 높이의 곱의 절반으로 계산하거나, 전체 직사각형 넓이에 대한 비율로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 변의 길이 비율 파악\n$2\\overline{\\mathrm{DF}} = 3\\overline{\\mathrm{FC}} \\implies \\overline{\\mathrm{DF}} : \\overline{\\mathrm{FC}} = 3 : 2$\n따라서 $\\overline{\\mathrm{DF}} = \\frac{3}{5}\\overline{\\mathrm{DC}}$, $\\overline{\\mathrm{FC}} = \\frac{2}{5}\\overline{\\mathrm{DC}}$이다.\n\n2단계: $\\triangle\\mathrm{ADF}$와 $\\triangle\\mathrm{ECF}$의 닮음비 활용\n$\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EC}}$이므로\n$\\frac{\\overline{\\mathrm{EC}}}{\\overline{\\mathrm{AD}}} = \\frac{\\overline{\\mathrm{FC}}}{\\overline{\\mathrm{DF}}} = \\frac{2}{3}$\n따라서 $\\overline{\\mathrm{EC}} = \\frac{2}{3}\\overline{\\mathrm{AD}}$이다.\n\n3단계: $\\triangle\\mathrm{DFE}$의 넓이 식 수립\n$\\triangle\\mathrm{DFE}$에서 밑변을 $\\overline{\\mathrm{DF}}$로 잡으면, $\\overline{\\mathrm{DC}} \\perp \\overline{\\mathrm{BC}}$이므로 점 $\\mathrm{E}$에서 직선 $\\mathrm{DC}$까지의 수선의 길이는 $\\overline{\\mathrm{CE}}$가 된다.\n따라서\n$\\text{Area}(\\triangle\\mathrm{DFE}) = \\frac{1}{2} \\times \\overline{\\mathrm{DF}} \\times \\overline{\\mathrm{CE}}$\n$= \\frac{1}{2} \\times \\left(\\frac{3}{5}\\overline{\\mathrm{DC}}\\right) \\times \\left(\\frac{2}{3}\\overline{\\mathrm{AD}}\\right)$\n$= \\frac{1}{2} \\times \\frac{3}{5} \\times \\frac{2}{3} \\times (\\overline{\\mathrm{AD}} \\times \\overline{\\mathrm{DC}})$\n$= \\frac{1}{5} \\times \\square\\mathrm{ABCD}$\n\n4단계: 넓이 대입 및 계산\n$\\square\\mathrm{ABCD} = 120\\text{ cm}^2$이므로\n$\\text{Area}(\\triangle\\mathrm{DFE}) = \\frac{1}{5} \\times 120 = 24\\text{ cm}^2$\n\n[경우 나눔 및 5개 선지 검토]\n① $12\\text{ cm}^2$, ② $15\\text{ cm}^2$, ③ $20\\text{ cm}^2$: 오답이다.\n④ $24\\text{ cm}^2$: 계산된 결과와 정확히 일치하여 정답이다.\n⑤ $40\\text{ cm}^2$: 오답이다.\n\n[명확한 결론]\n따라서 $\\triangle\\mathrm{DFE}$의 넓이는 $24\\text{ cm}^2$이므로 정답은 ④이다.",
     "crossConceptKeys": [
@@ -899,6 +899,8 @@ window.examData = {
   },
   {
     "id": 21,
+    "imageSize": "tall",
+    "imageAlt": "두 대각선이 O에서 만난다. 세로 대각선의 AO는 4이고 가로 대각선의 BD는 9이다.",
     "questionNumber": 21,
     "score": 4,
     "level": "중",
@@ -914,19 +916,17 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "<p>[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s01.png\" alt=\"두 대각선의 교점이 O이고 AO=4, BD=9인 마름모 ABCD 그림\" /></p><p>(1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점]</p><p>(2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]</p>",
-    "question": "<p>[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s01.png\" alt=\"두 대각선의 교점이 O이고 AO=4, BD=9인 마름모 ABCD 그림\" /></p><p>(1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점]</p><p>(2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]</p>",
+    "content": "<p>[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q21-problem-visual-v2.svg\" alt=\"두 대각선이 O에서 만난다. 세로 대각선의 AO는 4이고 가로 대각선의 BD는 9이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점]</p><p>(2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]</p>",
+    "question": "<p>[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q21-problem-visual-v2.svg\" alt=\"두 대각선이 O에서 만난다. 세로 대각선의 AO는 4이고 가로 대각선의 BD는 9이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점]</p><p>(2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]</p>",
     "choices": [],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/s01.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/s01.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q21-problem-visual-v2.svg"],
     "answer": "(1) $36$\n(2) 마름모의 두 대각선은 서로 다른 것을 수직이등분한다.",
     "solution": "[원문 조건 및 구할 대상]\n마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때,\n(1) 마름모 $\\mathrm{ABCD}$의 넓이를 구한다.\n(2) 넓이를 구하는 데 사용된 마름모의 성질을 서술한다.\n\n[핵심 발상/공식/보조선]\n마름모의 두 대각선은 서로 다른 것을 수직이등분한다.\n따라서 대각선 $\\overline{\\mathrm{AC}} = 2\\overline{\\mathrm{AO}}$이고, 마름모의 넓이는 $\\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}}$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 소문항 (1) - 대각선 $\\overline{\\mathrm{AC}}$의 길이 계산\n마름모의 두 대각선은 서로 다른 것을 이등분하므로\n$\\overline{\\mathrm{AC}} = 2 \\times \\overline{\\mathrm{AO}} = 2 \\times 4 = 8$\n\n2단계: 소문항 (1) - 마름모 $\\square\\mathrm{ABCD}$의 넓이 계산\n두 대각선이 서로 수직이므로\n$\\text{Area}(\\square\\mathrm{ABCD}) = \\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}} = \\frac{1}{2} \\times 8 \\times 9 = 36$\n\n3단계: 소문항 (2) - 사용된 마름모의 성질 서술\n'마름모의 두 대각선은 서로 다른 것을 수직이등분한다.'\n(대각선 $\\overline{\\mathrm{AC}}$의 길이를 구하는 데 '이등분' 성질이, 넓이 공식에 '수직' 성질이 적용됨)\n\n[조건 적합성 검토]\n서술형 문항으로 (1) 넓이 36 도출과 (2) 대각선의 수직이등분 성질이 논리적 비약 없이 정확하게 서술되었다.\n\n[명확한 결론]\n따라서 정답은 (1) $36$, (2) 마름모의 두 대각선은 서로 다른 것을 수직이등분한다.",
     "crossConceptKeys": [],
@@ -940,6 +940,8 @@ window.examData = {
   },
   {
     "id": 22,
+    "imageSize": "tall",
+    "imageAlt": "평행사변형 ABCD의 대각선 AC와 BD가 O에서 만나는 그림이다. 두 대각선을 선의 색과 모양으로 구분했다.",
     "questionNumber": 22,
     "score": 5,
     "level": "중",
@@ -955,19 +957,17 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "<p>[서술형2] 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=3x-2$, $\\overline{\\mathrm{CD}}=5x-6$, $\\overline{\\mathrm{AD}}=-x+6$일 때, 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s02.png\" alt=\"평행사변형 ABCD의 세 변 AB, CD, AD가 x에 관한 식으로 주어진 그림\" /></p><p>(1) $x$의 값을 구하시오. [2점]</p><p>(2) $\\overline{\\mathrm{BC}}$의 길이를 구하시오. [1점]</p><p>(3) $\\angle\\mathrm{AOD}$의 크기를 구하시오. [2점]</p>",
-    "question": "<p>[서술형2] 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=3x-2$, $\\overline{\\mathrm{CD}}=5x-6$, $\\overline{\\mathrm{AD}}=-x+6$일 때, 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s02.png\" alt=\"평행사변형 ABCD의 세 변 AB, CD, AD가 x에 관한 식으로 주어진 그림\" /></p><p>(1) $x$의 값을 구하시오. [2점]</p><p>(2) $\\overline{\\mathrm{BC}}$의 길이를 구하시오. [1점]</p><p>(3) $\\angle\\mathrm{AOD}$의 크기를 구하시오. [2점]</p>",
+    "content": "<p>[서술형2] 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=3x-2$, $\\overline{\\mathrm{CD}}=5x-6$, $\\overline{\\mathrm{AD}}=-x+6$일 때, 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 대각선 AC와 BD가 O에서 만나는 그림이다. 두 대각선을 선의 색과 모양으로 구분했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $x$의 값을 구하시오. [2점]</p><p>(2) $\\overline{\\mathrm{BC}}$의 길이를 구하시오. [1점]</p><p>(3) $\\angle\\mathrm{AOD}$의 크기를 구하시오. [2점]</p>",
+    "question": "<p>[서술형2] 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=3x-2$, $\\overline{\\mathrm{CD}}=5x-6$, $\\overline{\\mathrm{AD}}=-x+6$일 때, 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 대각선 AC와 BD가 O에서 만나는 그림이다. 두 대각선을 선의 색과 모양으로 구분했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $x$의 값을 구하시오. [2점]</p><p>(2) $\\overline{\\mathrm{BC}}$의 길이를 구하시오. [1점]</p><p>(3) $\\angle\\mathrm{AOD}$의 크기를 구하시오. [2점]</p>",
     "choices": [],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/s02.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/s02.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q22-problem-visual-v2.svg"],
     "answer": "(1) $x=2$\n(2) $4$\n(3) $90^\\circ$",
     "solution": "[원문 조건 및 구할 대상]\n평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=3x-2$, $\\overline{\\mathrm{CD}}=5x-6$, $\\overline{\\mathrm{AD}}=-x+6$일 때,\n(1) $x$의 값\n(2) $\\overline{\\mathrm{BC}}$의 길이\n(3) 두 대각선의 교점 $\\mathrm{O}$에 대한 $\\angle\\mathrm{AOD}$의 크기\n를 구한다.\n\n[핵심 발상/공식/보조선]\n평행사변형의 대변의 길이는 같으므로 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다.\n이웃하는 두 변의 길이가 같으면 평행사변형은 마름모가 되며, 마름모의 두 대각선은 서로 수직으로 만난다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 소문항 (1) - $x$의 값 구하기\n평행사변형에서 마주보는 대변의 길이는 서로 같으므로\n$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$\n$3x - 2 = 5x - 6$\n$5x - 3x = 6 - 2$\n$2x = 4 \\implies x = 2$\n\n2단계: 소문항 (2) - $\\overline{\\mathrm{BC}}$의 길이 구하기\n$\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = -x + 6$\n$x = 2$를 대입하면\n$\\overline{\\mathrm{BC}} = -2 + 6 = 4$\n\n3단계: 소문항 (3) - $\\angle\\mathrm{AOD}$의 크기 구하기\n$\\overline{\\mathrm{AB}}$의 길이를 구하면\n$\\overline{\\mathrm{AB}} = 3(2) - 2 = 6 - 2 = 4$\n이때 $\\overline{\\mathrm{AB}} = 4$, $\\overline{\\mathrm{AD}} = 4$이므로 이웃하는 두 변의 길이가 같다.\n이웃하는 두 변의 길이가 같은 평행사변형은 마름모이다.\n마름모의 두 대각선은 서로 수직이므로 $\\overline{\\mathrm{AC}} \\perp \\overline{\\mathrm{BD}}$이다.\n따라서 $\\angle\\mathrm{AOD} = 90^\\circ$이다.\n\n[조건 적합성 검토]\n서술형 문항으로 (1) 방정식 수립과 풀이, (2) 대변 관계 대입, (3) 마름모 판정 및 대각선의 수직 성질이 체계적으로 서술되었다.\n\n[명확한 결론]\n따라서 정답은 (1) $x=2$, (2) $4$, (3) $90^\\circ$이다.",
     "crossConceptKeys": [],
@@ -981,6 +981,8 @@ window.examData = {
   },
   {
     "id": 23,
+    "imageSize": "tall",
+    "imageAlt": "그림 1은 CA와 CB가 같은 길이인 이등변삼각형이다. 그림 2는 접는 선 DE를 따라 C가 A와 겹쳐진다. 접은 뒤에 각 EAB는 15°이다.",
     "questionNumber": 23,
     "score": 5,
     "level": "중",
@@ -996,19 +998,17 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "<p>[서술형3] $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$인 이등변삼각형 모양의 색종이 $\\mathrm{ABC}$를 그림과 같이 $\\overline{\\mathrm{DE}}$를 접는 선으로 하여 점 $\\mathrm{C}$가 점 $\\mathrm{A}$와 겹쳐지도록 접었더니 $\\angle\\mathrm{EAB}=15^\\circ$이었다. 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s03.png\" alt=\"이등변삼각형 색종이를 점 C가 점 A에 겹치도록 접은 그림 1과 그림 2\" /></p><p>(1) [그림 1]에서 $\\angle\\mathrm{C}=x$라 놓고, $\\angle\\mathrm{A}$, $\\angle\\mathrm{B}$의 값을 $x$를 써서 나타내시오. [2점]</p><p>(2) [그림 2]에서 $\\angle\\mathrm{DAE}$의 값은 구하시오. [1점]</p><p>(3) $x$의 값을 구하시오. [2점]</p>",
-    "question": "<p>[서술형3] $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$인 이등변삼각형 모양의 색종이 $\\mathrm{ABC}$를 그림과 같이 $\\overline{\\mathrm{DE}}$를 접는 선으로 하여 점 $\\mathrm{C}$가 점 $\\mathrm{A}$와 겹쳐지도록 접었더니 $\\angle\\mathrm{EAB}=15^\\circ$이었다. 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s03.png\" alt=\"이등변삼각형 색종이를 점 C가 점 A에 겹치도록 접은 그림 1과 그림 2\" /></p><p>(1) [그림 1]에서 $\\angle\\mathrm{C}=x$라 놓고, $\\angle\\mathrm{A}$, $\\angle\\mathrm{B}$의 값을 $x$를 써서 나타내시오. [2점]</p><p>(2) [그림 2]에서 $\\angle\\mathrm{DAE}$의 값은 구하시오. [1점]</p><p>(3) $x$의 값을 구하시오. [2점]</p>",
+    "content": "<p>[서술형3] $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$인 이등변삼각형 모양의 색종이 $\\mathrm{ABC}$를 그림과 같이 $\\overline{\\mathrm{DE}}$를 접는 선으로 하여 점 $\\mathrm{C}$가 점 $\\mathrm{A}$와 겹쳐지도록 접었더니 $\\angle\\mathrm{EAB}=15^\\circ$이었다. 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q23-problem-visual-v2.svg\" alt=\"그림 1은 CA와 CB가 같은 길이인 이등변삼각형이다. 그림 2는 접는 선 DE를 따라 C가 A와 겹쳐진다. 접은 뒤에 각 EAB는 15°이다.\" style=\"display:block;width:min(100%,380px);height:auto;margin:0 auto;\"></p><p>(1) [그림 1]에서 $\\angle\\mathrm{C}=x$라 놓고, $\\angle\\mathrm{A}$, $\\angle\\mathrm{B}$의 값을 $x$를 써서 나타내시오. [2점]</p><p>(2) [그림 2]에서 $\\angle\\mathrm{DAE}$의 값은 구하시오. [1점]</p><p>(3) $x$의 값을 구하시오. [2점]</p>",
+    "question": "<p>[서술형3] $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$인 이등변삼각형 모양의 색종이 $\\mathrm{ABC}$를 그림과 같이 $\\overline{\\mathrm{DE}}$를 접는 선으로 하여 점 $\\mathrm{C}$가 점 $\\mathrm{A}$와 겹쳐지도록 접었더니 $\\angle\\mathrm{EAB}=15^\\circ$이었다. 물음에 답하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q23-problem-visual-v2.svg\" alt=\"그림 1은 CA와 CB가 같은 길이인 이등변삼각형이다. 그림 2는 접는 선 DE를 따라 C가 A와 겹쳐진다. 접은 뒤에 각 EAB는 15°이다.\" style=\"display:block;width:min(100%,380px);height:auto;margin:0 auto;\"></p><p>(1) [그림 1]에서 $\\angle\\mathrm{C}=x$라 놓고, $\\angle\\mathrm{A}$, $\\angle\\mathrm{B}$의 값을 $x$를 써서 나타내시오. [2점]</p><p>(2) [그림 2]에서 $\\angle\\mathrm{DAE}$의 값은 구하시오. [1점]</p><p>(3) $x$의 값을 구하시오. [2점]</p>",
     "choices": [],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/s03.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/s03.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q23-problem-visual-v2.svg"],
     "answer": "(1) $\\angle\\mathrm{A} = \\angle\\mathrm{B} = \\frac{180^\\circ-x}{2}$ (또는 $90^\\circ-\\frac{x}{2}$)\n(2) $x$ (또는 $x^\\circ$)\n(3) $50$ (또는 $50^\\circ$)",
     "solution": "[원문 조건 및 구할 대상]\n$\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$인 이등변삼각형 $\\mathrm{ABC}$에서 점 $\\mathrm{C}$를 접는 선 $\\overline{\\mathrm{DE}}$를 기준으로 점 $\\mathrm{A}$에 포개어지도록 접었을 때 $\\angle\\mathrm{EAB}=15^\\circ$이다.\n(1) $\\angle\\mathrm{C}=x$일 때 $\\angle\\mathrm{A}, \\angle\\mathrm{B}$를 $x$에 관한 식으로 나타낸다.\n(2) [그림 2]에서 $\\angle\\mathrm{DAE}$의 크기를 구한다.\n(3) $x$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n- 이등변삼각형의 밑각 공식: 두 밑각의 크기가 같으므로 $\\angle\\mathrm{A} = \\angle\\mathrm{B} = \\frac{180^\\circ - x}{2}$\n- 접은 도형의 합동: $\\triangle\\mathrm{DEC} \\equiv \\triangle\\mathrm{DEA}$이므로 대응각 $\\angle\\mathrm{DAE} = \\angle\\mathrm{C} = x$\n- 각의 합: $\\angle\\mathrm{A} = \\angle\\mathrm{DAE} + \\angle\\mathrm{EAB}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 소문항 (1) - $\\angle\\mathrm{A}, \\angle\\mathrm{B}$를 $x$로 나타내기\n$\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$이므로 $\\angle\\mathrm{A} = \\angle\\mathrm{B}$이다.\n$\\triangle\\mathrm{ABC}$의 세 내각의 합은 $180^\\circ$이므로\n$\\angle\\mathrm{A} + \\angle\\mathrm{B} + x = 180^\\circ$\n$2\\angle\\mathrm{A} = 180^\\circ - x$\n$\\angle\\mathrm{A} = \\angle\\mathrm{B} = \\frac{180^\\circ - x}{2} = 90^\\circ - \\frac{x}{2}$\n\n2단계: 소문항 (2) - $\\angle\\mathrm{DAE}$의 값 구하기\n점 $\\mathrm{C}$를 점 $\\mathrm{A}$에 오도록 접었으므로 접힌 각과 원래 각의 크기는 같다.\n$\\angle\\mathrm{DAE} = \\angle\\mathrm{C} = x$\n\n3단계: 소문항 (3) - $x$의 값 구하기\n[그림 2]에서 전체 각 $\\angle\\mathrm{A}$는 다음과 같이 나뉜다:\n$\\angle\\mathrm{A} = \\angle\\mathrm{DAE} + \\angle\\mathrm{EAB}$\n(1)과 (2)의 결과를 대입하면\n$\\frac{180^\\circ - x}{2} = x + 15^\\circ$\n양변에 2를 곱하면\n$180^\\circ - x = 2x + 30^\\circ$\n$3x = 180^\\circ - 30^\\circ = 150^\\circ$\n$x = 50^\\circ$\n따라서 $x$의 값은 50이다.\n\n[조건 적합성 검토]\n서술형 3단계 문항으로 (1), (2), (3)의 논리적 연결과 일차방정식 풀이가 완벽히 검증되었다.\n\n[명확한 결론]\n따라서 정답은 (1) $\\frac{180^\\circ-x}{2}$ (또는 $90^\\circ-\\frac{x}{2}$), (2) $x$, (3) $50$이다.",
     "crossConceptKeys": [
@@ -1024,6 +1024,8 @@ window.examData = {
   },
   {
     "id": 24,
+    "imageSize": "tall",
+    "imageAlt": "B는 직각이다. AB=5이고, 외접원 중심 E는 빗변 AC의 가운데에 있다. 내접원 중심 D와 왼쪽 접점 사이를 r, 외접원의 EA를 R로 표시했다.",
     "questionNumber": 24,
     "score": 6,
     "level": "중상",
@@ -1039,21 +1041,19 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "<p>[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s04.png\" alt=\"직각삼각형 ABC의 내심 D와 빗변 위 외심 E 그림\" /></p>",
-    "question": "<p>[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/s04.png\" alt=\"직각삼각형 ABC의 내심 D와 빗변 위 외심 E 그림\" /></p>",
+    "content": "<p>[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"B는 직각이다. AB=5이고, 외접원 중심 E는 빗변 AC의 가운데에 있다. 내접원 중심 D와 왼쪽 접점 사이를 r, 외접원의 EA를 R로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점]</p><p><img src=\"assets/images/21_왕운중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"B는 직각이다. AB=5이고, 외접원 중심 E는 빗변 AC의 가운데에 있다. 내접원 중심 D와 왼쪽 접점 사이를 r, 외접원의 EA를 R로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
-    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/s04.png",
-    "images": [
-      "assets/images/21_왕운중_2학기_중간_중2_수학/s04.png"
-    ],
+    "image": "assets/images/21_왕운중_2학기_중간_중2_수학/q24-problem-visual-v2.svg",
+    "images": ["assets/images/21_왕운중_2학기_중간_중2_수학/q24-problem-visual-v2.svg"],
     "answer": "$30$",
-    "solution": "[원문 조건 및 구할 대상]\n삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=5$이고 점 $\\mathrm{D}$는 내심, 점 $\\mathrm{E}$는 외심이다.\n내접원의 반지름 $r$, 외접원의 반지름 $R$에 대하여\n$R + r = \\frac{17}{2}, \\quad R - r = \\frac{9}{2}$\n일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n1. 외심 $\\mathrm{E}$가 변 $\\mathrm{BC}$의 중점에 위치하므로 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형이다.\n따라서 빗변 $\\overline{\\mathrm{BC}} = 2R$이다.\n2. 직각삼각형의 내접원 반지름 공식:\n$r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} - \\overline{\\mathrm{BC}}}{2}$\n따라서 $\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}} + 2r = 2R + 2r$이다.\n3. 삼각형의 둘레의 길이는 $(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}}) + \\overline{\\mathrm{BC}}$로 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 연립방정식을 풀어 $R$과 $r$의 값 구하기\n두 식을 변끼리 더하면:\n$(R + r) + (R - r) = \\frac{17}{2} + \\frac{9}{2}$\n$2R = \\frac{26}{2} = 13 \\implies R = \\frac{13}{2}$\n두 식을 변끼리 빼면:\n$(R + r) - (R - r) = \\frac{17}{2} - \\frac{9}{2}$\n$2r = \\frac{8}{2} = 4 \\implies r = 2$\n\n2단계: 직각삼각형의 빗변 $\\overline{\\mathrm{BC}}$의 길이 구하기\n외심이 빗변 $\\overline{\\mathrm{BC}}$ 위에 있으므로\n$\\overline{\\mathrm{BC}} = 2R = 2 \\times \\frac{13}{2} = 13$\n\n3단계: 삼각형 $\\mathrm{ABC}$의 둘레의 길이 계산\n내접원의 반지름 공식 $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} - \\overline{\\mathrm{BC}}}{2}$에서\n$2 = \\frac{5 + \\overline{\\mathrm{AC}} - 13}{2}$\n$4 = \\overline{\\mathrm{AC}} - 8 \\implies \\overline{\\mathrm{AC}} = 12$\n(피타고라스 정리 확인: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$으로 직각삼각형 조건이 완벽히 성립함)\n따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는\n$\\text{둘레} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} + \\overline{\\mathrm{AC}} = 5 + 13 + 12 = 30$\n(대수적 별해: $\\text{둘레} = 2R + 2r + 2R = 4R + 2r = 4\\left(\\frac{13}{2}\\right) + 2(2) = 26 + 4 = 30$)\n\n[조건 적합성 검토]\n서술형 문항으로 $R, r$의 정확한 연립방정식 풀이, 빗변의 결정, 내접원 반지름 공식을 이용한 다른 변 구하기 및 둘레 계산이 오류 없이 서술되었다.\n\n[명확한 결론]\n따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $30$이다.",
+    "solution": "[원문 조건 및 구할 대상]\n삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=5$이고 점 $\\mathrm{D}$는 내심, 점 $\\mathrm{E}$는 외심이다.\n내접원의 반지름 $r$, 외접원의 반지름 $R$에 대하여\n$R + r = \\frac{17}{2}, \\quad R - r = \\frac{9}{2}$\n일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n1. 외심 $\\mathrm{E}$가 변 $\\mathrm{AC}$의 중점에 위치하므로 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다.\n따라서 빗변 $\\overline{\\mathrm{AC}} = 2R$이다.\n2. 직각삼각형의 내접원 반지름 공식:\n$r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$\n따라서 $\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} = \\overline{\\mathrm{AC}} + 2r = 2R + 2r$이다.\n3. 삼각형의 둘레의 길이는 $(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}}) + \\overline{\\mathrm{AC}}$로 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 연립방정식을 풀어 $R$과 $r$의 값 구하기\n두 식을 변끼리 더하면:\n$(R + r) + (R - r) = \\frac{17}{2} + \\frac{9}{2}$\n$2R = \\frac{26}{2} = 13 \\implies R = \\frac{13}{2}$\n두 식을 변끼리 빼면:\n$(R + r) - (R - r) = \\frac{17}{2} - \\frac{9}{2}$\n$2r = \\frac{8}{2} = 4 \\implies r = 2$\n\n2단계: 직각삼각형의 빗변 $\\overline{\\mathrm{AC}}$의 길이 구하기\n외심이 빗변 $\\overline{\\mathrm{AC}}$ 위에 있으므로\n$\\overline{\\mathrm{AC}} = 2R = 2 \\times \\frac{13}{2} = 13$\n\n3단계: 삼각형 $\\mathrm{ABC}$의 둘레의 길이 계산\n내접원의 반지름 공식 $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$에서\n$2 = \\frac{5 + \\overline{\\mathrm{BC}} - 13}{2}$\n$4 = \\overline{\\mathrm{BC}} - 8 \\implies \\overline{\\mathrm{BC}} = 12$\n(피타고라스 정리 확인: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$으로 직각삼각형 조건이 완벽히 성립함)\n따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는\n$\\text{둘레} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} + \\overline{\\mathrm{BC}} = 5 + 13 + 12 = 30$\n(대수적 별해: $\\text{둘레} = 2R + 2r + 2R = 4R + 2r = 4\\left(\\frac{13}{2}\\right) + 2(2) = 26 + 4 = 30$)\n\n[조건 적합성 검토]\n서술형 문항으로 $R, r$의 정확한 연립방정식 풀이, 빗변의 결정, 내접원 반지름 공식을 이용한 다른 변 구하기 및 둘레 계산이 오류 없이 서술되었다.\n\n[명확한 결론]\n따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $30$이다.",
     "crossConceptKeys": [
       "CC_LINEAR_SYSTEM"
     ],

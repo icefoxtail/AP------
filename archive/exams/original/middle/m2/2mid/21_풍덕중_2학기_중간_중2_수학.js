@@ -417,6 +417,8 @@ window.examData = {
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "사각형 ABCD와 EFGH가 닮았다. 닮음비는 2:3이고 C의 각은 70°이다. 큰 사각형의 EH는 6 cm이다.",
     "questionNumber": 11,
     "score": 3,
     "level": "하",
@@ -432,13 +434,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>11. 아래 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳지 않은 것은? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q11.png\" alt=\"서로 닮은 두 사각형 ABCD와 EFGH 그림\" /></p>",
-    "question": "<p>11. 아래 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳지 않은 것은? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q11.png\" alt=\"서로 닮은 두 사각형 ABCD와 EFGH 그림\" /></p>",
+    "content": "<p>11. 아래 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳지 않은 것은? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q11-problem-visual-v2.svg\" alt=\"사각형 ABCD와 EFGH가 닮았다. 닮음비는 2:3이고 C의 각은 70°이다. 큰 사각형의 EH는 6 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>11. 아래 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳지 않은 것은? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q11-problem-visual-v2.svg\" alt=\"사각형 ABCD와 EFGH가 닮았다. 닮음비는 2:3이고 C의 각은 70°이다. 큰 사각형의 EH는 6 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\angle\\mathrm{G} = 70^\\circ$",
       "$\\overline{\\mathrm{AD}} = 4\\text{ cm}$",
@@ -446,10 +448,8 @@ window.examData = {
       "대응각의 크기는 모두 같다.",
       "대응변의 길이는 모두 같다."
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q11.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q11.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q11-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q11-problem-visual-v2.svg"],
     "answer": "⑤",
     "solution": "$\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 보기에 제시된 닮음의 성질 중 옳지 않은 것을 고른다.\n\n- 닮은 평면도형의 성질:\n  1. 대응변의 길이의 비는 일정하다 (닮음비).\n  2. 대응각의 크기는 각각 서로 같다.\n- 대응변의 '길이'가 모두 같은 것은 닮음이 아니라 '합동'의 성질이다.\n\n1단계: 선지 ① 검토\n점 $\\mathrm{G}$의 대응점은 점 $\\mathrm{C}$이다.\n그림에서 $\\angle\\mathrm{C} = 70^\\circ$이므로 대응각의 크기는 같다: $\\angle\\mathrm{G} = \\angle\\mathrm{C} = 70^\\circ$. (참)\n\n2단계: 닮음비와 선지 ②, ③ 검토\n그림에서 $\\overline{\\mathrm{EH}} = 6\\text{ cm}$, 닮음비가 $2:3$일 때 $\\overline{\\mathrm{AD}} = 6 \\times \\dfrac{2}{3} = 4\\text{ cm}$이다. (참)\n넓이의 비는 닮음비의 제곱의 비와 같으므로 $2^2 : 3^2 = 4 : 9$이다. (참)\n\n3단계: 선지 ④ 검토\n닮은 도형에서 대응각의 크기는 항상 각각 같다. (참)\n\n4단계: 선지 ⑤ 검토\n닮은 도형에서는 대응변의 '길이의 비'가 일정한 것이며, 대응변의 '길이'가 모두 같은 것은 합동인 경우에만 성립한다. 따라서 거짓이다.\n\n⑤번은 닮음과 합동의 기본 정의를 혼동하게 만든 대표적 오개념 선지이다.\n\n따라서 옳지 않은 것은 ⑤이다."
   },
@@ -498,6 +498,8 @@ window.examData = {
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "사각기둥 (가)의 높이는 4 cm이고 사각기둥 (나)의 대응 높이는 8 cm이다. 보이지 않는 뒤쪽 선은 점선이다.",
     "questionNumber": 13,
     "score": 4,
     "level": "중",
@@ -513,13 +515,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>13. 두 사각기둥 (가)와 (나)는 서로 닮은 도형이고 대응하는 모서리의 길이가 그림과 같을 때, 사각기둥 (나)의 부피가 $64\\text{ cm}^3$일 때, 사각기둥 (가)의 부피를 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q13.png\" alt=\"높이가 각각 4cm와 8cm인 서로 닮은 두 사각기둥 가와 나 그림\" /></p>",
-    "question": "<p>13. 두 사각기둥 (가)와 (나)는 서로 닮은 도형이고 대응하는 모서리의 길이가 그림과 같을 때, 사각기둥 (나)의 부피가 $64\\text{ cm}^3$일 때, 사각기둥 (가)의 부피를 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q13.png\" alt=\"높이가 각각 4cm와 8cm인 서로 닮은 두 사각기둥 가와 나 그림\" /></p>",
+    "content": "<p>13. 두 사각기둥 (가)와 (나)는 서로 닮은 도형이고 대응하는 모서리의 길이가 그림과 같을 때, 사각기둥 (나)의 부피가 $64\\text{ cm}^3$일 때, 사각기둥 (가)의 부피를 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q13-problem-visual-v2.svg\" alt=\"사각기둥 (가)의 높이는 4 cm이고 사각기둥 (나)의 대응 높이는 8 cm이다. 보이지 않는 뒤쪽 선은 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>13. 두 사각기둥 (가)와 (나)는 서로 닮은 도형이고 대응하는 모서리의 길이가 그림과 같을 때, 사각기둥 (나)의 부피가 $64\\text{ cm}^3$일 때, 사각기둥 (가)의 부피를 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q13-problem-visual-v2.svg\" alt=\"사각기둥 (가)의 높이는 4 cm이고 사각기둥 (나)의 대응 높이는 8 cm이다. 보이지 않는 뒤쪽 선은 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$4\\text{ cm}^3$",
       "$8\\text{ cm}^3$",
@@ -527,10 +529,8 @@ window.examData = {
       "$20\\text{ cm}^3$",
       "$24\\text{ cm}^3$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q13.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q13.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q13-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q13-problem-visual-v2.svg"],
     "answer": "②",
     "solution": "서로 닮은 두 사각기둥 (가), (나)에서 대응하는 모서리(높이)의 길이가 각각 $4\\text{ cm}, 8\\text{ cm}$이고, (나)의 부피가 $64\\text{ cm}^3$일 때, (가)의 부피를 구한다.\n\n- 닮은 입체도형의 닮음비가 $m : n$일 때:\n  부피의 비는 $m^3 : n^3$이다.\n\n1단계: 닮음비 구하기\n대응하는 모서리의 길이가 $4\\text{ cm}$와 $8\\text{ cm}$이므로:\n$\\text{닮음비} = 4 : 8 = 1 : 2$\n\n2단계: 부피의 비 구하기\n$\\text{부피비} = 1^3 : 2^3 = 1 : 8$\n\n3단계: 사각기둥 (가)의 부피 계산하기\n사각기둥 (가)의 부피를 $V$라 하면:\n$V : 64 = 1 : 8$\n$8V = 64$\n$V = 8\\text{ cm}^3$\n\n각 선지를 확인하면 다음과 같다.\n① $4\\text{ cm}^3$: 오답\n② $8\\text{ cm}^3$: 계산 결과와 정확히 일치함\n③ $16\\text{ cm}^3$: 넓이비($1:4$)로 계산한 오답 ($\\frac{64}{4} = 16$)\n④ $20\\text{ cm}^3$: 오답\n⑤ $24\\text{ cm}^3$: 오답\n\n따라서 사각기둥 (가)의 부피는 ② $8\\text{ cm}^3$이다.",
     "crossConceptKeys": [],
@@ -544,6 +544,8 @@ window.examData = {
   },
   {
     "id": 14,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 ABC에서 B의 각은 50°, BC는 8 cm이다. 오른쪽 DEF에서도 E의 각은 50°이고 EF는 4 cm이다.",
     "questionNumber": 14,
     "score": 4,
     "level": "중",
@@ -559,13 +561,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>14. 다음 중에서 어느 조건을 추가할 때, $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$가 되는가? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q14.png\" alt=\"각B가 50도, BC가 8cm인 삼각형 ABC와 각E가 50도, EF가 4cm인 삼각형 DEF 그림\" /></p>",
-    "question": "<p>14. 다음 중에서 어느 조건을 추가할 때, $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$가 되는가? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q14.png\" alt=\"각B가 50도, BC가 8cm인 삼각형 ABC와 각E가 50도, EF가 4cm인 삼각형 DEF 그림\" /></p>",
+    "content": "<p>14. 다음 중에서 어느 조건을 추가할 때, $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$가 되는가? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"왼쪽 ABC에서 B의 각은 50°, BC는 8 cm이다. 오른쪽 DEF에서도 E의 각은 50°이고 EF는 4 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>14. 다음 중에서 어느 조건을 추가할 때, $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$가 되는가? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"왼쪽 ABC에서 B의 각은 50°, BC는 8 cm이다. 오른쪽 DEF에서도 E의 각은 50°이고 EF는 4 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\overline{\\mathrm{AC}} = 6\\text{ cm}$, $\\overline{\\mathrm{DF}} = 3\\text{ cm}$",
       "$\\overline{\\mathrm{AB}} = 12\\text{ cm}$, $\\overline{\\mathrm{DE}} = 6\\text{ cm}$",
@@ -573,10 +575,8 @@ window.examData = {
       "$\\angle\\mathrm{A} = 60^\\circ$, $\\angle\\mathrm{F} = 60^\\circ$",
       "$\\angle\\mathrm{C} = 45^\\circ$, $\\angle\\mathrm{D} = 45^\\circ$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q14.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q14.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q14-problem-visual-v2.svg"],
     "answer": "②",
     "solution": "그림에서 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=50^\\circ, \\overline{\\mathrm{BC}}=8\\text{ cm}$이고, $\\triangle\\mathrm{DEF}$는 $\\angle\\mathrm{E}=50^\\circ, \\overline{\\mathrm{EF}}=4\\text{ cm}$일 때, $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$가 되도록 추가해야 하는 조건을 고른다.\n\n- 이미 주어진 조건: $\\angle\\mathrm{B} = \\angle\\mathrm{E} = 50^\\circ$, 그리고 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{EF}} = 8 : 4 = 2 : 1$\n- $\\mathrm{SAS}$ 닮음이 되려면 그 각을 낀 두 변의 길이의 비가 같아야 하므로, $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DE}} = 2 : 1$이어야 한다.\n- 또는 $\\mathrm{AA}$ 닮음이 되려면 대응각의 크기가 같아야 한다: $\\angle\\mathrm{A} = \\angle\\mathrm{D}$ 또는 $\\angle\\mathrm{C} = \\angle\\mathrm{F}$.\n\n1단계: 선지 ① 검토\n$\\overline{\\mathrm{AC}} = 6\\text{ cm}, \\overline{\\mathrm{DF}} = 3\\text{ cm}$:\n$\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{DF}}$는 $\\angle\\mathrm{B}, \\angle\\mathrm{E}$의 대변이므로 끼인각 조건이 아니어서 $\\mathrm{SAS}$ 닮음이 성립하지 않는다.\n\n2단계: 선지 ② 검토\n$\\overline{\\mathrm{AB}} = 12\\text{ cm}, \\overline{\\mathrm{DE}} = 6\\text{ cm}$:\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DE}} = 12 : 6 = 2 : 1$\n이미 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{EF}} = 8 : 4 = 2 : 1$이고, 그 끼인각 $\\angle\\mathrm{B} = \\angle\\mathrm{E} = 50^\\circ$가 같다.\n따라서 두 쌍의 대응변의 길이의 비가 같고 그 끼인각의 크기가 같으므로 $\\mathrm{SAS}$ 닮음이 완벽히 성립한다. (정답)\n\n3단계: 선지 ③ 검토\n$\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{DF}}$는 대응변이 아니므로 닮음 조건이 아니다.\n\n4단계: 선지 ④, ⑤ 검토\n- ④: $\\angle\\mathrm{A} = 60^\\circ$이면 대응각 $\\angle\\mathrm{D} = 60^\\circ$이어야 하는데 $\\angle\\mathrm{F} = 60^\\circ$라고 하였으므로 대응각이 맞지 않다.\n- ⑤: $\\angle\\mathrm{C} = 45^\\circ$이면 대응각 $\\angle\\mathrm{F} = 45^\\circ$이어야 하는데 $\\angle\\mathrm{D} = 45^\\circ$라고 하였으므로 대응각이 맞지 않다.\n\n선지 ②만이 올바른 대응변의 비와 끼인각을 만족하는 $\\mathrm{SAS}$ 닮음 조건을 완성한다.\n\n따라서 필요한 추가 조건은 ② $\\overline{\\mathrm{AB}} = 12\\text{ cm}, \\overline{\\mathrm{DE}} = 6\\text{ cm}$이다.",
     "crossConceptKeys": [],
@@ -590,6 +590,8 @@ window.examData = {
   },
   {
     "id": 15,
+    "imageSize": "tall",
+    "imageAlt": "AB는 6 cm이고 AC는 8 cm이다. AC 위의 D까지 AD는 x cm이다. 각 ABD와 ACB는 각각 40°이다.",
     "questionNumber": 15,
     "score": 4,
     "level": "중",
@@ -605,13 +607,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>15. 오른쪽 그림에서 $x$값을 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q15.png\" alt=\"삼각형 ABC의 변 AC 위의 점 D에 대하여 각ABD와 각C가 40도로 같은 삼각형 그림\" /></p>",
-    "question": "<p>15. 오른쪽 그림에서 $x$값을 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q15.png\" alt=\"삼각형 ABC의 변 AC 위의 점 D에 대하여 각ABD와 각C가 40도로 같은 삼각형 그림\" /></p>",
+    "content": "<p>15. 오른쪽 그림에서 $x$값을 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"AB는 6 cm이고 AC는 8 cm이다. AC 위의 D까지 AD는 x cm이다. 각 ABD와 ACB는 각각 40°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>15. 오른쪽 그림에서 $x$값을 구하면? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"AB는 6 cm이고 AC는 8 cm이다. AC 위의 D까지 AD는 x cm이다. 각 ABD와 ACB는 각각 40°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\dfrac{7}{2}\\text{ cm}$",
       "$4\\text{ cm}$",
@@ -619,10 +621,8 @@ window.examData = {
       "$5\\text{ cm}$",
       "$\\dfrac{11}{2}\\text{ cm}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q15.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q15.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q15-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q15-problem-visual-v2.svg"],
     "answer": "③",
     "solution": "그림과 같이 $\\triangle\\mathrm{ABC}$에서 변 $\\overline{\\mathrm{AC}}$ 위의 점 $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{AB}}=6\\text{ cm}, \\overline{\\mathrm{AC}}=8\\text{ cm}, \\overline{\\mathrm{AD}}=x\\text{ cm}$이고 $\\angle\\mathrm{ABD} = \\angle\\mathrm{C} = 40^\\circ$일 때, $x$의 값을 구한다.\n\n- $\\triangle\\mathrm{ABD}$와 $\\triangle\\mathrm{ACB}$에서:\n  1. $\\angle\\mathrm{A}$는 공통인 각이다.\n  2. $\\angle\\mathrm{ABD} = \\angle\\mathrm{ACB} = 40^\\circ$\n- 두 각의 크기가 같으므로 $\\triangle\\mathrm{ABD} \\sim \\triangle\\mathrm{ACB}$ ($\\mathrm{AA}$ 닮음)이다.\n- 대응변의 길이의 비: $\\dfrac{\\overline{\\mathrm{AD}}}{\\overline{\\mathrm{AB}}} = \\dfrac{\\overline{\\mathrm{AB}}}{\\overline{\\mathrm{AC}}}$\n\n1단계: 비례식 세우기\n대응변의 비에 의해:\n$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{AB}} = \\overline{\\mathrm{AB}} : \\overline{\\mathrm{AC}}$\n$x : 6 = 6 : 8$\n\n2단계: $x$의 값 계산하기\n내항의 곱과 외항의 곱이 같으므로:\n$8x = 6 \\times 6 = 36$\n$x = \\dfrac{36}{8} = \\dfrac{9}{2}\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $\\dfrac{7}{2}\\text{ cm}$: 오답\n② $4\\text{ cm}$: 오답\n③ $\\dfrac{9}{2}\\text{ cm}$: 계산 결과와 정확히 일치함\n④ $5\\text{ cm}$: 오답\n⑤ $\\dfrac{11}{2}\\text{ cm}$: 오답\n\n따라서 $x$의 값은 ③ $\\dfrac{9}{2}\\text{ cm}$이다.",
     "crossConceptKeys": [],
@@ -636,6 +636,8 @@ window.examData = {
   },
   {
     "id": 16,
+    "imageSize": "tall",
+    "imageAlt": "A와 D에 직각 표시가 있다. AD는 4 cm, BD는 2 cm, DC는 x cm이다.",
     "questionNumber": 16,
     "score": 3,
     "level": "하",
@@ -651,13 +653,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>16. 다음 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"각A가 90도인 직각삼각형 ABC에서 빗변 BC에 내린 수선의 발 D와 변의 길이가 주어진 그림\" /></p>",
-    "question": "<p>16. 다음 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"각A가 90도인 직각삼각형 ABC에서 빗변 BC에 내린 수선의 발 D와 변의 길이가 주어진 그림\" /></p>",
+    "content": "<p>16. 다음 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"A와 D에 직각 표시가 있다. AD는 4 cm, BD는 2 cm, DC는 x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>16. 다음 그림에서 $x$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"A와 D에 직각 표시가 있다. AD는 4 cm, BD는 2 cm, DC는 x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$8\\text{ cm}$",
       "$9\\text{ cm}$",
@@ -665,15 +667,15 @@ window.examData = {
       "$11\\text{ cm}$",
       "$12\\text{ cm}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q16.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q16.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q16-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q16-problem-visual-v2.svg"],
     "answer": "①",
     "solution": "$\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\overline{\\mathrm{BC}}$에 내린 수선의 발 $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{BD}}=2\\text{ cm}, \\overline{\\mathrm{AD}}=4\\text{ cm}, \\overline{\\mathrm{DC}}=x\\text{ cm}$일 때, $x$의 값을 구한다.\n\n직각삼각형의 높이 공식(닮음 정리):\n$\\overline{\\mathrm{AD}}^2 = \\overline{\\mathrm{BD}} \\times \\overline{\\mathrm{DC}}$\n\n1단계: 직각삼각형 닮음 공식 적용\n$\\triangle\\mathrm{DBA} \\sim \\triangle\\mathrm{DAC}$이므로:\n$\\dfrac{\\overline{\\mathrm{BD}}}{\\overline{\\mathrm{AD}}} = \\dfrac{\\overline{\\mathrm{AD}}}{\\overline{\\mathrm{DC}}}$\n$\\overline{\\mathrm{AD}}^2 = \\overline{\\mathrm{BD}} \\times \\overline{\\mathrm{DC}}$\n\n2단계: 수치 대입 및 $x$ 계산\n$4^2 = 2 \\times x$\n$16 = 2x$\n$x = 8\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $8\\text{ cm}$: 계산 결과와 정확히 일치함\n② $9\\text{ cm}$: 오답\n③ $10\\text{ cm}$: 오답\n④ $11\\text{ cm}$: 오답\n⑤ $12\\text{ cm}$: 오답\n\n따라서 $x$의 값은 ① $8\\text{ cm}$이다."
   },
   {
     "id": 17,
+    "imageSize": "tall",
+    "imageAlt": "AD는 5 cm, AB는 6 cm, BF는 4 cm이다. AB를 연장하면 F가 되며, DF가 아래 변 BC를 E에서 지나간다.",
     "questionNumber": 17,
     "score": 4,
     "level": "중",
@@ -689,13 +691,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>17. 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라고 할 때, $\\overline{\\mathrm{EC}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q17.png\" alt=\"평행사변형 ABCD에서 변 AB의 연장선 위의 점 F와 선분 DF가 변 BC와 만나는 점 E 그림\" /></p>",
-    "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라고 할 때, $\\overline{\\mathrm{EC}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q17.png\" alt=\"평행사변형 ABCD에서 변 AB의 연장선 위의 점 F와 선분 DF가 변 BC와 만나는 점 E 그림\" /></p>",
+    "content": "<p>17. 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라고 할 때, $\\overline{\\mathrm{EC}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"AD는 5 cm, AB는 6 cm, BF는 4 cm이다. AB를 연장하면 F가 되며, DF가 아래 변 BC를 E에서 지나간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라고 할 때, $\\overline{\\mathrm{EC}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"AD는 5 cm, AB는 6 cm, BF는 4 cm이다. AB를 연장하면 F가 되며, DF가 아래 변 BC를 E에서 지나간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$2\\text{ cm}$",
       "$\\dfrac{12}{5}\\text{ cm}$",
@@ -703,15 +705,15 @@ window.examData = {
       "$3\\text{ cm}$",
       "$\\dfrac{16}{5}\\text{ cm}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q17.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q17.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q17-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=5\\text{ cm}, \\overline{\\mathrm{AB}}=6\\text{ cm}$이고, $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{BF}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점 $\\mathrm{E}$에 대한 선분 $\\overline{\\mathrm{EC}}$의 길이를 구한다.\n\n- $\\overline{\\mathrm{BE}} \\parallel \\overline{\\mathrm{AD}}$이므로 $\\triangle\\mathrm{FBE} \\sim \\triangle\\mathrm{FAD}$ ($\\mathrm{AA}$ 닮음)이다.\n- 닮음비를 이용하여 $\\overline{\\mathrm{BE}}$의 길이를 구한다.\n- 평행사변형의 대변의 성질 $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = 5\\text{ cm}$에서 $\\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BE}}$를 계산한다.\n\n1단계: $\\overline{\\mathrm{AF}}$의 전체 길이\n$\\overline{\\mathrm{AF}} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{BF}} = 6 + 4 = 10\\text{ cm}$\n\n2단계: $\\triangle\\mathrm{FBE} \\sim \\triangle\\mathrm{FAD}$ 닮음비 적용하여 $\\overline{\\mathrm{BE}}$ 구하기\n$\\dfrac{\\overline{\\mathrm{BE}}}{\\overline{\\mathrm{AD}}} = \\dfrac{\\overline{\\mathrm{FB}}}{\\overline{\\mathrm{FA}}}$\n$\\dfrac{\\overline{\\mathrm{BE}}}{5} = \\dfrac{4}{10} = \\dfrac{2}{5}$\n$\\overline{\\mathrm{BE}} = 5 \\times \\dfrac{2}{5} = 2\\text{ cm}$\n\n3단계: $\\overline{\\mathrm{EC}}$의 길이 계산하기\n평행사변형에서 대변의 길이는 같으므로 $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = 5\\text{ cm}$이다.\n따라서:\n$\\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BE}} = 5 - 2 = 3\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $2\\text{ cm}$: $\\overline{\\mathrm{BE}}$의 길이이다.\n② $\\dfrac{12}{5}\\text{ cm}$: 오답\n③ $\\dfrac{13}{5}\\text{ cm}$: 오답\n④ $3\\text{ cm}$: 구한 $\\overline{\\mathrm{EC}}$의 길이와 정확히 일치함\n⑤ $\\dfrac{16}{5}\\text{ cm}$: 오답\n\n따라서 $\\overline{\\mathrm{EC}}$의 길이는 ④ $3\\text{ cm}$이다."
   },
   {
     "id": 18,
+    "imageSize": "tall",
+    "imageAlt": "AD=8 cm, BC=14 cm이다. M과 N의 가운데 선이 두 대각선과 P, Q에서 차례로 만난다. PQ는 x cm이다.",
     "questionNumber": 18,
     "score": 4,
     "level": "중",
@@ -727,13 +729,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>18. 다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 점 $\\mathrm{M}, \\mathrm{N}$이 각각 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{CD}}$의 중점일 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 두 변의 중점 M, N과 대각선이 만나는 점 P, Q 그림\" /></p>",
-    "question": "<p>18. 다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 점 $\\mathrm{M}, \\mathrm{N}$이 각각 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{CD}}$의 중점일 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 두 변의 중점 M, N과 대각선이 만나는 점 P, Q 그림\" /></p>",
+    "content": "<p>18. 다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 점 $\\mathrm{M}, \\mathrm{N}$이 각각 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{CD}}$의 중점일 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"AD=8 cm, BC=14 cm이다. M과 N의 가운데 선이 두 대각선과 P, Q에서 차례로 만난다. PQ는 x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>18. 다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 점 $\\mathrm{M}, \\mathrm{N}$이 각각 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{CD}}$의 중점일 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"AD=8 cm, BC=14 cm이다. M과 N의 가운데 선이 두 대각선과 P, Q에서 차례로 만난다. PQ는 x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\dfrac{3}{2}\\text{ cm}$",
       "$2\\text{ cm}$",
@@ -741,15 +743,15 @@ window.examData = {
       "$3\\text{ cm}$",
       "$4\\text{ cm}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q18.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q18.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q18-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q18-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "$\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=8\\text{ cm}, \\overline{\\mathrm{BC}}=14\\text{ cm}$이고, $\\mathrm{M}, \\mathrm{N}$이 각각 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{CD}}$의 중점일 때, 두 대각선과의 교점 사이의 거리 $\\overline{\\mathrm{PQ}} = x\\text{ cm}$의 값을 구한다.\n\n- 삼각형의 중점연결정리:\n  1. $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{MQ}} = \\dfrac{1}{2}\\overline{\\mathrm{BC}}$\n  2. $\\triangle\\mathrm{ABD}$에서 $\\overline{\\mathrm{MP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}}$\n- $\\overline{\\mathrm{PQ}} = \\overline{\\mathrm{MQ}} - \\overline{\\mathrm{MP}} = \\dfrac{\\overline{\\mathrm{BC}} - \\overline{\\mathrm{AD}}}{2}$\n\n1단계: 선분 $\\overline{\\mathrm{MQ}}$의 길이 구하기\n$\\triangle\\mathrm{ABC}$에서 점 $\\mathrm{M}$은 $\\overline{\\mathrm{AB}}$의 중점이고 $\\overline{\\mathrm{MQ}} \\parallel \\overline{\\mathrm{BC}}$이므로 점 $\\mathrm{Q}$는 $\\overline{\\mathrm{AC}}$의 중점이다.\n중점연결정리에 의해:\n$\\overline{\\mathrm{MQ}} = \\dfrac{1}{2}\\overline{\\mathrm{BC}} = \\dfrac{1}{2} \\times 14 = 7\\text{ cm}$\n\n2단계: 선분 $\\overline{\\mathrm{MP}}$의 길이 구하기\n$\\triangle\\mathrm{ABD}$에서 점 $\\mathrm{M}$은 $\\overline{\\mathrm{AB}}$의 중점이고 $\\overline{\\mathrm{MP}} \\parallel \\overline{\\mathrm{AD}}$이므로 점 $\\mathrm{P}$는 $\\overline{\\mathrm{BD}}$의 중점이다.\n중점연결정리에 의해:\n$\\overline{\\mathrm{MP}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}} = \\dfrac{1}{2} \\times 8 = 4\\text{ cm}$\n\n3단계: $\\overline{\\mathrm{PQ}}$의 길이 계산하기\n$x = \\overline{\\mathrm{PQ}} = \\overline{\\mathrm{MQ}} - \\overline{\\mathrm{MP}} = 7 - 4 = 3\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $\\dfrac{3}{2}\\text{ cm}$: 오답\n② $2\\text{ cm}$: 오답\n③ $\\dfrac{5}{2}\\text{ cm}$: 오답\n④ $3\\text{ cm}$: 계산 결과와 정확히 일치함\n⑤ $4\\text{ cm}$: $\\overline{\\mathrm{MP}}$의 길이이다.\n\n따라서 $x$의 값은 ④ $3\\text{ cm}$이다."
   },
   {
     "id": 19,
+    "imageSize": "tall",
+    "imageAlt": "삼각형의 무게중심 G에서 만나는 세 중선을 표시했다. D는 BC의 중점이고 구하는 삼각형 GDC를 옅게 칠했다.",
     "questionNumber": 19,
     "score": 4,
     "level": "하",
@@ -765,13 +767,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>19. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\triangle\\mathrm{ABC}$의 넓이가 $30\\text{ cm}^2$일 때, $\\triangle\\mathrm{GDC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q19.png\" alt=\"삼각형 ABC의 무게중심 G와 중점 D로 나누어진 삼각형 GDC 그림\" /></p>",
-    "question": "<p>19. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\triangle\\mathrm{ABC}$의 넓이가 $30\\text{ cm}^2$일 때, $\\triangle\\mathrm{GDC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q19.png\" alt=\"삼각형 ABC의 무게중심 G와 중점 D로 나누어진 삼각형 GDC 그림\" /></p>",
+    "content": "<p>19. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\triangle\\mathrm{ABC}$의 넓이가 $30\\text{ cm}^2$일 때, $\\triangle\\mathrm{GDC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"삼각형의 무게중심 G에서 만나는 세 중선을 표시했다. D는 BC의 중점이고 구하는 삼각형 GDC를 옅게 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>19. 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\triangle\\mathrm{ABC}$의 넓이가 $30\\text{ cm}^2$일 때, $\\triangle\\mathrm{GDC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"삼각형의 무게중심 G에서 만나는 세 중선을 표시했다. D는 BC의 중점이고 구하는 삼각형 GDC를 옅게 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$5\\text{ cm}^2$",
       "$6\\text{ cm}^2$",
@@ -779,15 +781,15 @@ window.examData = {
       "$8\\text{ cm}^2$",
       "$9\\text{ cm}^2$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q19.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q19.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q19-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q19-problem-visual-v2.svg"],
     "answer": "①",
     "solution": "점 $\\mathrm{G}$가 $\\triangle\\mathrm{ABC}$의 무게중심이고 전체 넓이가 $30\\text{ cm}^2$일 때, $\\triangle\\mathrm{GDC}$의 넓이를 구한다.\n\n- 삼각형의 세 중선은 무게중심 $\\mathrm{G}$에서 만나며, 삼각형의 넓이를 6등분한다.\n- 따라서 $\\text{넓이}(\\triangle\\mathrm{GDC}) = \\dfrac{1}{6} \\times \\text{넓이}(\\triangle\\mathrm{ABC})$이다.\n\n1단계: 중선에 의한 삼각형 분할\n선분 $\\overline{\\mathrm{AD}}$는 중선이므로 점 $\\mathrm{D}$는 $\\overline{\\mathrm{BC}}$의 중점이다.\n따라서 $\\triangle\\mathrm{ADC}$의 넓이는 전체의 절반이다:\n$\\text{넓이}(\\triangle\\mathrm{ADC}) = \\dfrac{1}{2} \\times 30 = 15\\text{ cm}^2$\n\n2단계: 무게중심의 길이 비를 이용한 넓이 계산\n점 $\\mathrm{G}$는 무게중심이므로 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$이다.\n따라서 $\\triangle\\mathrm{GDC}$의 넓이는 $\\triangle\\mathrm{ADC}$의 넓이의 $\\dfrac{1}{3}$이다:\n$\\text{넓이}(\\triangle\\mathrm{GDC}) = \\dfrac{1}{3} \\times \\text{넓이}(\\triangle\\mathrm{ADC}) = \\dfrac{1}{3} \\times 15 = 5\\text{ cm}^2$\n\n각 선지를 확인하면 다음과 같다.\n① $5\\text{ cm}^2$: 정확히 6분의 1로 일치함\n② $6\\text{ cm}^2$: 오답\n③ $7\\text{ cm}^2$: 오답\n④ $8\\text{ cm}^2$: 오답\n⑤ $9\\text{ cm}^2$: 오답\n\n따라서 $\\triangle\\mathrm{GDC}$의 넓이는 ① $5\\text{ cm}^2$이다."
   },
   {
     "id": 20,
+    "imageSize": "tall",
+    "imageAlt": "G는 ABC의 무게중심이고 G′은 GBC의 무게중심이다. 순서대로 A, G, G′, D가 한 중선에 있고 GG′=2 cm이다.",
     "questionNumber": 20,
     "score": 4,
     "level": "중",
@@ -803,13 +805,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>20. 다음 그림에서 점 $\\mathrm{G}$와 점 $\\mathrm{G}'$은 각각 $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'} = 2\\text{ cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q20.png\" alt=\"삼각형 ABC의 무게중심 G와 삼각형 GBC의 무게중심 G'이 주어진 그림\" /></p>",
-    "question": "<p>20. 다음 그림에서 점 $\\mathrm{G}$와 점 $\\mathrm{G}'$은 각각 $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'} = 2\\text{ cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q20.png\" alt=\"삼각형 ABC의 무게중심 G와 삼각형 GBC의 무게중심 G'이 주어진 그림\" /></p>",
+    "content": "<p>20. 다음 그림에서 점 $\\mathrm{G}$와 점 $\\mathrm{G}'$은 각각 $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'} = 2\\text{ cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"G는 ABC의 무게중심이고 G′은 GBC의 무게중심이다. 순서대로 A, G, G′, D가 한 중선에 있고 GG′=2 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>20. 다음 그림에서 점 $\\mathrm{G}$와 점 $\\mathrm{G}'$은 각각 $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'} = 2\\text{ cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"G는 ABC의 무게중심이고 G′은 GBC의 무게중심이다. 순서대로 A, G, G′, D가 한 중선에 있고 GG′=2 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$6\\text{ cm}$",
       "$8\\text{ cm}$",
@@ -817,15 +819,15 @@ window.examData = {
       "$12\\text{ cm}$",
       "$15\\text{ cm}$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q20.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q20.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q20-problem-visual-v2.svg"],
     "answer": "③",
     "solution": "점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고, 점 $\\mathrm{G}'$은 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'}=2\\text{ cm}$일 때, 중선 $\\overline{\\mathrm{AD}}$의 길이를 구한다.\n\n- 점 $\\mathrm{D}$는 $\\overline{\\mathrm{BC}}$의 중점이므로, $\\overline{\\mathrm{GD}}$는 $\\triangle\\mathrm{GBC}$의 중선이다.\n- 무게중심은 중선의 길이를 $2 : 1$로 내분한다:\n  1. $\\triangle\\mathrm{GBC}$에서 $\\overline{\\mathrm{GG}'} : \\overline{\\mathrm{G}'\\mathrm{D}} = 2 : 1$\n  2. $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$\n\n1단계: 선분 $\\overline{\\mathrm{GD}}$의 길이 구하기\n$\\triangle\\mathrm{GBC}$에서 $\\mathrm{G}'$은 무게중심이므로:\n$\\overline{\\mathrm{GG}'} : \\overline{\\mathrm{G}'\\mathrm{D}} = 2 : 1$\n$\\overline{\\mathrm{GG}'} = 2\\text{ cm}$이므로 $\\overline{\\mathrm{G}'\\mathrm{D}} = 1\\text{ cm}$이다.\n따라서:\n$\\overline{\\mathrm{GD}} = \\overline{\\mathrm{GG}'} + \\overline{\\mathrm{G}'\\mathrm{D}} = 2 + 1 = 3\\text{ cm}$\n\n2단계: 선분 $\\overline{\\mathrm{AG}}$의 길이 구하기\n$\\triangle\\mathrm{ABC}$에서 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$\n$\\overline{\\mathrm{AG}} = 2 \\times \\overline{\\mathrm{GD}} = 2 \\times 3 = 6\\text{ cm}$\n\n3단계: 전체 중선 $\\overline{\\mathrm{AD}}$의 길이 계산하기\n$\\overline{\\mathrm{AD}} = \\overline{\\mathrm{AG}} + \\overline{\\mathrm{GD}} = 6 + 3 = 9\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $6\\text{ cm}$: $\\overline{\\mathrm{AG}}$의 길이이다.\n② $8\\text{ cm}$: 오답\n③ $9\\text{ cm}$: 구한 $\\overline{\\mathrm{AD}}$의 길이와 일치함\n④ $12\\text{ cm}$: 오답\n⑤ $15\\text{ cm}$: 오답\n\n따라서 $\\overline{\\mathrm{AD}}$의 길이는 ③ $9\\text{ cm}$이다."
   },
   {
     "id": 21,
+    "imageSize": "tall",
+    "imageAlt": "FE는 BC와 나란하다. 무게중심 G를 지나는 중선 AD 위에 F가 있고, B에서 G로 이어지는 중선이 AC에서 E와 만난다.",
     "questionNumber": 21,
     "score": 4,
     "level": "상",
@@ -841,13 +843,13 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "<p>21. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\overline{\\mathrm{FE}} // \\overline{\\mathrm{BC}}$일 때, $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$의 넓이 비는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q21.png\" alt=\"삼각형 ABC의 무게중심 G를 지나고 변 BC에 평행한 선분 FE가 있는 그림\" /></p>",
-    "question": "<p>21. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\overline{\\mathrm{FE}} // \\overline{\\mathrm{BC}}$일 때, $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$의 넓이 비는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q21.png\" alt=\"삼각형 ABC의 무게중심 G를 지나고 변 BC에 평행한 선분 FE가 있는 그림\" /></p>",
+    "content": "<p>21. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\overline{\\mathrm{FE}} // \\overline{\\mathrm{BC}}$일 때, $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$의 넓이 비는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q21-problem-visual-v2.svg\" alt=\"FE는 BC와 나란하다. 무게중심 G를 지나는 중선 AD 위에 F가 있고, B에서 G로 이어지는 중선이 AC에서 E와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+    "question": "<p>21. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이다. $\\overline{\\mathrm{FE}} // \\overline{\\mathrm{BC}}$일 때, $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$의 넓이 비는? [4점]</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q21-problem-visual-v2.svg\" alt=\"FE는 BC와 나란하다. 무게중심 G를 지나는 중선 AD 위에 F가 있고, B에서 G로 이어지는 중선이 AC에서 E와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$1:9$",
       "$1:6$",
@@ -855,10 +857,8 @@ window.examData = {
       "$1:3$",
       "$1:2$"
     ],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q21.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/q21.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q21-problem-visual-v2.svg"],
     "answer": "④",
     "solution": "점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 선분 $\\overline{\\mathrm{BE}}$는 중선이다. $\\overline{\\mathrm{FE}} \\parallel \\overline{\\mathrm{BC}}$일 때, $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$의 넓이의 비를 구한다.\n\n- $\\overline{\\mathrm{BE}}$가 중선이므로 점 $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$의 중점이다.\n- $\\triangle\\mathrm{ADC}$에서 $\\mathrm{E}$가 $\\overline{\\mathrm{AC}}$의 중점이고 $\\overline{\\mathrm{FE}} \\parallel \\overline{\\mathrm{DC}}$이므로, 중점연결정리에 의해 점 $\\mathrm{F}$는 $\\overline{\\mathrm{AD}}$의 중점이다.\n- 두 삼각형 $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$는 밑변 $\\overline{\\mathrm{FE}}$를 공통으로 가진다. 따라서 넓이의 비는 높이의 비, 즉 $\\overline{\\mathrm{AD}}$ 위에서 $\\overline{\\mathrm{FG}}$와 $\\overline{\\mathrm{AF}}$의 길이의 비와 같다.\n\n1단계: 선분 $\\overline{\\mathrm{AD}}$ 위의 길이 비율 설정\n전체 중선 $\\overline{\\mathrm{AD}}$의 길이를 $6k$라 하자.\n- 점 $\\mathrm{F}$는 $\\overline{\\mathrm{AD}}$의 중점이므로:\n  $\\overline{\\mathrm{AF}} = 3k$, $\\overline{\\mathrm{FD}} = 3k$\n- 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이므로 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$이다:\n  $\\overline{\\mathrm{AG}} = \\dfrac{2}{3} \\times 6k = 4k$, $\\overline{\\mathrm{GD}} = 2k$\n\n2단계: 선분 $\\overline{\\mathrm{FG}}$의 길이 구하기\n점들의 위치 순서는 $\\mathrm{A} - \\mathrm{F} - \\mathrm{G} - \\mathrm{D}$이다.\n$\\overline{\\mathrm{FG}} = \\overline{\\mathrm{AG}} - \\overline{\\mathrm{AF}} = 4k - 3k = k$\n\n3단계: 두 삼각형의 넓이 비 계산\n$\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$는 밑변 $\\overline{\\mathrm{FE}}$를 공유하므로:\n$\\text{넓이비} = \\text{높이비} = \\overline{\\mathrm{FG}} : \\overline{\\mathrm{AF}} = k : 3k = 1 : 3$\n\n각 선지를 확인하면 다음과 같다.\n① $1:9$: 오답\n② $1:6$: 오답\n③ $1:4$: 오답\n④ $1:3$: 계산된 넓이비와 정확히 일치함\n⑤ $1:2$: 오답\n\n따라서 $\\triangle\\mathrm{GEF}$와 $\\triangle\\mathrm{AEF}$의 넓이 비는 ④ $1:3$이다."
   },
@@ -939,6 +939,8 @@ window.examData = {
   },
   {
     "id": 24,
+    "imageSize": "tall",
+    "imageAlt": "AD는 9 cm, AC는 12 cm이다. E의 AED와 B의 ABC에 같은 호를 표시했다.",
     "questionNumber": 24,
     "score": 5,
     "level": "중",
@@ -954,19 +956,17 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "<p>[서술형 3] 다음 그림의 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{AED} = \\angle\\mathrm{ABC}$이고, $\\triangle\\mathrm{ADE}$의 넓이가 $18\\text{ cm}^2$일 때, 다음 물음에 답하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/s03.png\" alt=\"각AED와 각B가 같고 AD가 9cm, AC가 12cm인 삼각형 ABC 그림\" /></p><p>1) 서로 닮음 삼각형을 찾아 $\\sim$을 사용하여 나타내고, 이 때 사용한 삼각형의 닮음 조건을 쓰시오.(단답형) [2점]</p><p>2) $\\square\\mathrm{DBCE}$의 넓이를 구하시오.(풀이과정 서술) [3점]</p>",
-    "question": "<p>[서술형 3] 다음 그림의 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{AED} = \\angle\\mathrm{ABC}$이고, $\\triangle\\mathrm{ADE}$의 넓이가 $18\\text{ cm}^2$일 때, 다음 물음에 답하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/s03.png\" alt=\"각AED와 각B가 같고 AD가 9cm, AC가 12cm인 삼각형 ABC 그림\" /></p><p>1) 서로 닮음 삼각형을 찾아 $\\sim$을 사용하여 나타내고, 이 때 사용한 삼각형의 닮음 조건을 쓰시오.(단답형) [2점]</p><p>2) $\\square\\mathrm{DBCE}$의 넓이를 구하시오.(풀이과정 서술) [3점]</p>",
+    "content": "<p>[서술형 3] 다음 그림의 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{AED} = \\angle\\mathrm{ABC}$이고, $\\triangle\\mathrm{ADE}$의 넓이가 $18\\text{ cm}^2$일 때, 다음 물음에 답하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"AD는 9 cm, AC는 12 cm이다. E의 AED와 B의 ABC에 같은 호를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>1) 서로 닮음 삼각형을 찾아 $\\sim$을 사용하여 나타내고, 이 때 사용한 삼각형의 닮음 조건을 쓰시오.(단답형) [2점]</p><p>2) $\\square\\mathrm{DBCE}$의 넓이를 구하시오.(풀이과정 서술) [3점]</p>",
+    "question": "<p>[서술형 3] 다음 그림의 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{AED} = \\angle\\mathrm{ABC}$이고, $\\triangle\\mathrm{ADE}$의 넓이가 $18\\text{ cm}^2$일 때, 다음 물음에 답하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"AD는 9 cm, AC는 12 cm이다. E의 AED와 B의 ABC에 같은 호를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>1) 서로 닮음 삼각형을 찾아 $\\sim$을 사용하여 나타내고, 이 때 사용한 삼각형의 닮음 조건을 쓰시오.(단답형) [2점]</p><p>2) $\\square\\mathrm{DBCE}$의 넓이를 구하시오.(풀이과정 서술) [3점]</p>",
     "choices": [],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/s03.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/s03.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q24-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q24-problem-visual-v2.svg"],
     "answer": "1) $\\triangle\\mathrm{ADE} \\sim \\triangle\\mathrm{ACB}$ ($\\mathrm{AA}$ 닮음)\n2) $14\\text{ cm}^2$ (또는 $14$)",
     "solution": "$\\triangle\\mathrm{ABC}$에서 변 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{AC}}$ 위의 점 $\\mathrm{D}, \\mathrm{E}$에 대하여 $\\angle\\mathrm{AED} = \\angle\\mathrm{ABC}$, $\\overline{\\mathrm{AD}}=9\\text{ cm}, \\overline{\\mathrm{AC}}=12\\text{ cm}$이고 $\\triangle\\mathrm{ADE}$의 넓이가 $18\\text{ cm}^2$일 때,\n1) 닮음인 두 삼각형과 닮음 조건을 쓴다. [2점]\n2) 사각형 $\\square\\mathrm{DBCE}$의 넓이를 구한다. [3점]\n\n- $\\triangle\\mathrm{ADE}$와 $\\triangle\\mathrm{ACB}$에서 $\\angle\\mathrm{A}$가 공통이고 $\\angle\\mathrm{AED} = \\angle\\mathrm{B}$이므로 $\\mathrm{AA}$ 닮음이다.\n- 닮음비 $m : n$일 때 넓이의 비는 $m^2 : n^2$이다.\n- 사각형 $\\square\\mathrm{DBCE}$의 넓이 $= \\text{넓이}(\\triangle\\mathrm{ABC}) - \\text{넓이}(\\triangle\\mathrm{ADE})$\n\n1단계: 소문항 1) 닮음 삼각형 및 닮음 조건 작성 [2점]\n$\\triangle\\mathrm{ADE}$와 $\\triangle\\mathrm{ACB}$에서:\n$\\angle\\mathrm{A}$는 공통인 각이고,\n조건에서 $\\angle\\mathrm{AED} = \\angle\\mathrm{ABC}$이다.\n따라서 두 쌍의 대응각의 크기가 같으므로:\n$\\triangle\\mathrm{ADE} \\sim \\triangle\\mathrm{ACB}$ ($\\mathrm{AA}$ 닮음)\n\n2단계: 소문항 2) 넓이 계산 풀이과정 [3점]\n두 닮은 삼각형 $\\triangle\\mathrm{ADE}$와 $\\triangle\\mathrm{ACB}$의 대응변 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{AC}}$의 길이의 비는:\n$\\text{닮음비} = \\overline{\\mathrm{AD}} : \\overline{\\mathrm{AC}} = 9 : 12 = 3 : 4$\n따라서 두 삼각형의 넓이의 비는 제곱의 비와 같으므로:\n$\\text{넓이비} = 3^2 : 4^2 = 9 : 16$\n$\\triangle\\mathrm{ADE}$의 넓이가 $18\\text{ cm}^2$이므로, $\\triangle\\mathrm{ABC}$의 넓이를 $S$라 하면:\n$18 : S = 9 : 16$\n$9S = 18 \\times 16$\n$S = 2 \\times 16 = 32\\text{ cm}^2$\n따라서 사각형 $\\square\\mathrm{DBCE}$의 넓이는:\n$\\text{넓이}(\\square\\mathrm{DBCE}) = \\text{넓이}(\\triangle\\mathrm{ABC}) - \\text{넓이}(\\triangle\\mathrm{ADE}) = 32 - 18 = 14\\text{ cm}^2$\n\n따라서 정답은\n1) $\\triangle\\mathrm{ADE} \\sim \\triangle\\mathrm{ACB}$ ($\\mathrm{AA}$ 닮음)\n2) $14\\text{ cm}^2$ (또는 $14$)이다.",
     "crossConceptKeys": [
@@ -982,6 +982,8 @@ window.examData = {
   },
   {
     "id": 25,
+    "imageSize": "tall",
+    "imageAlt": "A에는 같은 크기의 정사면체가 6개 있고 작은 정사면체의 모서리 길이는 5 cm이다. B에는 모서리 길이가 10 cm인 정사면체 하나가 있다.",
     "questionNumber": 25,
     "score": 5,
     "level": "상",
@@ -997,19 +999,17 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "<p>[서술형 4] 정사면체 모양의 아이스크림이 오른쪽 그림과 같이 $\\mathrm{A}, \\mathrm{B}$ 두 종류로 판매되고 있다. $\\mathrm{A}$에는 크기와 모양이 같은 작은 크기의 아이스크림 6개가 들어 있고, $\\mathrm{B}$에는 큰 크기의 아이스크림 1개가 들어 있다. $\\mathrm{A}$와 $\\mathrm{B}$의 가격이 같을 때, 더 많은 양의 아이스크림을 사려면 $\\mathrm{A}$와 $\\mathrm{B}$ 중에서 어떤 것을 사야 하는지 수학적 논리로 설명하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/s04.png\" alt=\"한 모서리가 5cm인 정사면체 6개가 든 제품 A와 한 모서리가 10cm인 정사면체 1개가 든 제품 B 그림\" /></p><p>&lt;설명&gt; [5점]</p>",
-    "question": "<p>[서술형 4] 정사면체 모양의 아이스크림이 오른쪽 그림과 같이 $\\mathrm{A}, \\mathrm{B}$ 두 종류로 판매되고 있다. $\\mathrm{A}$에는 크기와 모양이 같은 작은 크기의 아이스크림 6개가 들어 있고, $\\mathrm{B}$에는 큰 크기의 아이스크림 1개가 들어 있다. $\\mathrm{A}$와 $\\mathrm{B}$의 가격이 같을 때, 더 많은 양의 아이스크림을 사려면 $\\mathrm{A}$와 $\\mathrm{B}$ 중에서 어떤 것을 사야 하는지 수학적 논리로 설명하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/s04.png\" alt=\"한 모서리가 5cm인 정사면체 6개가 든 제품 A와 한 모서리가 10cm인 정사면체 1개가 든 제품 B 그림\" /></p><p>&lt;설명&gt; [5점]</p>",
+    "content": "<p>[서술형 4] 정사면체 모양의 아이스크림이 오른쪽 그림과 같이 $\\mathrm{A}, \\mathrm{B}$ 두 종류로 판매되고 있다. $\\mathrm{A}$에는 크기와 모양이 같은 작은 크기의 아이스크림 6개가 들어 있고, $\\mathrm{B}$에는 큰 크기의 아이스크림 1개가 들어 있다. $\\mathrm{A}$와 $\\mathrm{B}$의 가격이 같을 때, 더 많은 양의 아이스크림을 사려면 $\\mathrm{A}$와 $\\mathrm{B}$ 중에서 어떤 것을 사야 하는지 수학적 논리로 설명하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"A에는 같은 크기의 정사면체가 6개 있고 작은 정사면체의 모서리 길이는 5 cm이다. B에는 모서리 길이가 10 cm인 정사면체 하나가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>&lt;설명&gt; [5점]</p>",
+    "question": "<p>[서술형 4] 정사면체 모양의 아이스크림이 오른쪽 그림과 같이 $\\mathrm{A}, \\mathrm{B}$ 두 종류로 판매되고 있다. $\\mathrm{A}$에는 크기와 모양이 같은 작은 크기의 아이스크림 6개가 들어 있고, $\\mathrm{B}$에는 큰 크기의 아이스크림 1개가 들어 있다. $\\mathrm{A}$와 $\\mathrm{B}$의 가격이 같을 때, 더 많은 양의 아이스크림을 사려면 $\\mathrm{A}$와 $\\mathrm{B}$ 중에서 어떤 것을 사야 하는지 수학적 논리로 설명하시오.</p><p><img src=\"assets/images/21_풍덕중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"A에는 같은 크기의 정사면체가 6개 있고 작은 정사면체의 모서리 길이는 5 cm이다. B에는 모서리 길이가 10 cm인 정사면체 하나가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>&lt;설명&gt; [5점]</p>",
     "choices": [],
-    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/s04.png",
-    "images": [
-      "assets/images/21_풍덕중_2학기_중간_중2_수학/s04.png"
-    ],
+    "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q25-problem-visual-v2.svg",
+    "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q25-problem-visual-v2.svg"],
     "answer": "제품 $\\mathrm{B}$를 사야 한다.\n(이유: 작은 정사면체와 큰 정사면체의 닮음비가 $5:10=1:2$이므로 부피비는 $1^3:2^3=1:8$이다. 따라서 작은 아이스크림 1개의 부피를 $V$라 하면, 제품 $\\mathrm{A}$의 총 부피는 $6V$이고 제품 $\\mathrm{B}$의 부피는 $8V$이므로 $6V < 8V$가 되어 제품 $\\mathrm{B}$의 양이 더 많다.)",
     "solution": "제품 $\\mathrm{A}$: 한 모서리가 $5\\text{ cm}$인 정사면체 아이스크림 6개\n제품 $\\mathrm{B}$: 한 모서리가 $10\\text{ cm}$인 정사면체 아이스크림 1개\n두 제품의 가격이 같을 때, 더 많은 양의 아이스크림을 구매하기 위해 $\\mathrm{A}$와 $\\mathrm{B}$ 중 어떤 것을 사야 하는지 수학적으로 설명한다. [5점]\n\n- 모든 정사면체는 서로 닮은 입체도형이다.\n- 닮음비는 대응하는 한 모서리의 길이의 비와 같다.\n- 닮은 두 입체도형의 부피의 비는 닮음비의 세제곱의 비와 같다: $m : n \\implies m^3 : n^3$\n- 제품 $\\mathrm{A}$와 $\\mathrm{B}$의 총 부피를 비교하여 결론을 내린다.\n\n1단계: 두 아이스크림의 닮음비 구하기\n정사면체 모양의 아이스크림은 서로 닮은 입체도형이며, 작은 아이스크림과 큰 아이스크림의 한 모서리의 길이는 각각 $5\\text{ cm}, 10\\text{ cm}$이다.\n따라서 닮음비는:\n$\\text{닮음비} = 5 : 10 = 1 : 2$\n\n2단계: 부피의 비 구하기\n닮은 입체도형의 부피의 비는 닮음비의 세제곱의 비와 같으므로:\n$\\text{부피비} = 1^3 : 2^3 = 1 : 8$\n즉, 작은 아이스크림 1개의 부피를 $V$라 하면, 큰 아이스크림 1개의 부피는 $8V$이다.\n\n3단계: 제품 $\\mathrm{A}$와 $\\mathrm{B}$의 총 부피 비교하기\n- 제품 $\\mathrm{A}$에는 작은 아이스크림이 6개 들어 있으므로 총 부피는:\n  $V \\times 6 = 6V$\n- 제품 $\\mathrm{B}$에는 큰 아이스크림이 1개 들어 있으므로 총 부피는:\n  $8V \\times 1 = 8V$\n따라서 $6V < 8V$이므로 제품 $\\mathrm{B}$의 아이스크림 양이 제품 $\\mathrm{A}$보다 더 많다.\n\n따라서 가격이 같을 때 더 많은 양의 아이스크림을 사려면 제품 $\\mathrm{B}$를 사야 한다.",
     "crossConceptKeys": [],

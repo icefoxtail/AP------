@@ -139,6 +139,54 @@ test('same event and unrelated main commits reuse exact input/tool/output bytes 
   }
 });
 
+test('existing-vector carrier bytes invalidate a VERIFIED fourSlot cache while unchanged observed pending stays stable',async t=>{
+  const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const native=nativeLanes(realRoot).find(l=>l.id==='fourSlot'),f=fixture(t);
+  const lane=f.lanes.find(l=>l.id==='fourSlot');lane.inputs=[...native.inputs,'out/identity.json'];
+  const carrier='.archive-meta-register/4slot-existing-vector-continuity/fixture_uid.json';
+  const execute=async ctx=>{
+    if(ctx.lane.id!=='fourSlot')return f.execute(ctx);
+    f.calls.push('fourSlot');
+    // A native command can finish with a verified index containing a refused
+    // item. This orchestration fixture never promotes that item to REGISTERED.
+    write(ctx.root,'out/4slot.json',{uid:'fixture_uid',status:'SUPPLEMENT_PENDING',reason:'IMMUTABLE_GIT_INPUT_UNAVAILABLE'});
+    return {advisories:[]};
+  };
+  const options={...f.options,execute};
+  const first=await prepareRegistration(options);
+  assert.equal(first.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
+  commit(f.root,'verified index with an observed pending item');f.calls.length=0;
+  const pending=read(f.root,'out/4slot.json');
+  assert.equal(checkRegistration(options).needed,false);
+  assert.equal((await prepareRegistration(options)).status,'NO_OP');
+  assert.deepEqual(f.calls,[],'unchanged observed pending is not an infinite continuation');
+
+  for(const [name,change] of [
+    ['add',()=>write(f.root,carrier,{schemaVersion:'fixture-carrier-v1',witness:'first'})],
+    ['change',()=>write(f.root,carrier,{schemaVersion:'fixture-carrier-v1',witness:'updated'})],
+    ['remove',()=>fs.rmSync(path.join(f.root,carrier))]
+  ]){
+    const before=readJson(f.root,STATE).lanes.fourSlot.inputDigest,base=git(f.root,'rev-parse','HEAD');
+    change();const head=commit(f.root,name+' carrier only');
+    const checked=checkRegistration(options),four=checked.lanes.find(l=>l.id==='fourSlot');
+    assert.notEqual(four.inputDigest,before,name+' carrier bytes must affect the native fourSlot input digest');
+    assert.equal(four.needed,true);assert.equal(checked.needed,true);
+    assert.deepEqual(checked.lanes.filter(l=>l.needed).map(l=>l.id),['fourSlot']);
+    const range=unrelatedRange({root:f.root,base,head,lanes:f.lanes});
+    assert.equal(range.unrelated,false);assert.equal(range.firstProtectedHit,carrier);
+    f.calls.length=0;const refreshed=await prepareRegistration(options);
+    assert.deepEqual(f.calls,['fourSlot']);assert.equal(refreshed.needed,false);
+    assert.equal(refreshed.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
+    assert.equal(read(f.root,'out/4slot.json'),pending,'input invalidation never overrides the native pending result');
+    assert.ok(!refreshed.changedPaths.includes(carrier),'carrier is an input, never a generated output');
+    commit(f.root,name+' carrier verified');f.calls.length=0;
+    const cached=read(f.root,STATE);assert.equal((await prepareRegistration(options)).status,'NO_OP');
+    assert.deepEqual(f.calls,[]);assert.equal(read(f.root,STATE),cached);
+  }
+  assert.equal(native.continuation,undefined);assert.equal(native.scopedInputs,undefined);
+  assert.equal(matches(carrier,native.outputs),false);assert.equal(native.required,false);
+});
+
 test('same-path SVG bytes change reruns asset consumers; metadata-only changes rerun their consumers',async t=>{
   const f=fixture(t);await f.seedRegistered();
   const before=readJson(f.root,'out/4slot.json').assetSha256;
@@ -407,7 +455,8 @@ test('--unrelated-range accepts only provably unrelated competing changes', t=>{
   const ok=verdict(['apmath/playground/next/x.js']);
   assert.equal(ok.unrelated,true);assert.equal(ok.changedCount,1);assert.equal(ok.firstProtectedHit,null);
   for(const protectedPath of ['archive/exams/x.js','archive/archive2-source.js','archive/unit-past-exams-core.js','archive/engine.html','tests/fixtures/diff5/x.json',STATE,'tools/ci/foo.mjs','.github/workflows/archive-main-auto-meta.yml',
-    'apmath/playground/next/.gitignore','.gitattributes','tools/lib/x.mjs','.archive-meta-register/inbox/x.json','package.json','package-lock.json']) {
+    'apmath/playground/next/.gitignore','.gitattributes','tools/lib/x.mjs','.archive-meta-register/inbox/x.json',
+    '.archive-meta-register/4slot-existing-vector-continuity/x.json','package.json','package-lock.json']) {
     const result=verdict([protectedPath]);
     assert.equal(result.unrelated,false,protectedPath);assert.equal(result.firstProtectedHit,protectedPath);
   }
