@@ -975,7 +975,6 @@ window.questionBank = [
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
-    "courseKey": "M3-2",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
@@ -1004,7 +1003,7 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": ["CC_POLYGON_INTERIOR_ANGLE_SUM"],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",

@@ -1,0 +1,431 @@
+{
+  "schemaVersion": "main316-d5-authority-separation-read-v1",
+  "mode": "READ_ONLY_NO_NEW_JUDGMENT",
+  "main": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+  "own": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+  "ruleRef": {
+    "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+    "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "gitBlobSha1": "51a6b4ae3164be845ba9d90fd49d88378fc32fbe",
+    "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+    "bytes": 38634
+  },
+  "ruleSections": [
+    "11: boundary/legacy conflict handling",
+    "18: mandatory independent recheck; unresolved hold/manual review",
+    "19: complete approved D5 tuple and canonical/generated parity"
+  ],
+  "authorityOrdering": "The rule requires an approved exact tuple and independent adjudication where triggered. Neither source chronology nor the Mother label grants blanket precedence. Broad exam PASS does not cover an unlisted target UID.",
+  "historicalConflictReportObservedMain": "855c7a441a53690d242c93e10d710471fb215690",
+  "currentMetadataEvidence": {
+    "path": "current-metadata-targeted-read.json",
+    "sha256": "e04003e4fec74b5f799a3331977d19c0d024f9b827760a9cac53fde6dce0bfcd"
+  },
+  "currentIdentityEvidence": {
+    "path": "current-identity-targeted-read.json",
+    "sha256": "1d6984549e34a8d7b6b7d924635d911ad02d443bd293b4c925f0cf0abddced72"
+  },
+  "targets": [
+    {
+      "examId": "E014",
+      "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+      "sourceOrdinal": 22,
+      "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "status": "D5_AUTHORITY_CONFLICT_HOLD",
+      "originalOwnRequest": {
+        "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+        "path": ".archive-meta-register/inbox/m3s2-finalized-e014-transport-20261115.json",
+        "gitBlobSha1": "cc0102975e0e5d38d818e7ee7a5034bd90d6ed67",
+        "sha256": "08f0a21b71f35dadb12cec2521ec0c8e34480f30b4bebc7759e6a991809f917c",
+        "bytes": 7431
+      },
+      "originalNative": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+        "gitBlobSha1": "1df7a94127bef0b5998f1ca14fed92bc0a2a779e",
+        "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132",
+        "bytes": 199088
+      },
+      "sourceReviewSha256": "f4b3a6dee8cd11aadd11dc261e1b65451166136be7544685ca9ed8fb206f00ef",
+      "requestBeforeD5": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "requestAfterD5": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeOperationalBeforeD5": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "currentMetadataD5": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "currentMetadataRecordSha256": "66902a1731b6da867dab0a6dd0b78fb30014f9a5855a504c54e98993200102a6",
+      "independent": {
+        "ref": {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.independent.json",
+          "gitBlobSha1": "fb3e1f3922ec0fff4476fa6585c71e7b4b93dba5",
+          "sha256": "ebf01ff9669de747f30b9d35a9bf05a3d545ae9eb106b8d1d7013df4954d6aae",
+          "bytes": 3039
+        },
+        "status": "PASS_AFTER_CONDITION_AND_PRIMARY_LEAF_CORRECTIONS",
+        "reviewer": "c",
+        "sampledOrdinals": [
+          9,
+          19,
+          20
+        ],
+        "targetCovered": false
+      },
+      "difficultyAdjudication": {
+        "ref": {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.difficulty-adjudication.json",
+          "gitBlobSha1": "66cd45b75b4d120239c6f14ec24c6cc9777a1f97",
+          "sha256": "3e980859f40c4ece400fc72dbde642cdab075594da5c7f99227ff65ae896fcd0",
+          "bytes": 3009
+        },
+        "status": null,
+        "reviewer": "GPT_ROOT_9C9D44BB632B",
+        "acceptedOrdinals": [
+          7,
+          10,
+          13,
+          18
+        ],
+        "targetCovered": false,
+        "rootAcceptedOrdinals": null
+      },
+      "mother": {
+        "ref": {
+          "commit": "855c7a441a53690d242c93e10d710471fb215690",
+          "path": "archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_015_MOTHER_FINAL.json",
+          "gitBlobSha1": "f58d6d945ef53eaccee9a27d6e9da67aee55b3a0",
+          "sha256": "05a48923b8ac639516d63727a7c5544546752bb3cf60b33d832ffdab7cc69836",
+          "bytes": 47955
+        },
+        "status": "MOTHER_FINALIZED",
+        "targetRowSha256": "3369f769c724c02c60e7a54db8fe3cd58e607fbf978ecb8f7ae44a5de2983bad",
+        "difficultyBucket": 3,
+        "otherD5FieldsNotDeclaredInFinalDecision": true
+      },
+      "conflictDocument": {
+        "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+        "path": "docs/operations/m3s2-polygon-d5-conflict-holds-26fc-20261116/difficulty-authority-conflict.json",
+        "gitBlobSha1": "ab234c4fc589c17cb3b1d61eba88d0772be34bdb",
+        "sha256": "bc70f12298a116d1c30ce95ae469fbee19c445394676193bb171df55bc7fa161",
+        "bytes": 17637
+      },
+      "holdReason": "BOUNDARY_B23_TARGET_NOT_IN_REFERENCED_INDEPENDENT_ADJUDICATION",
+      "originalNativeAfterJudgmentExists": true,
+      "laterAuthorJudgmentDeclaredInvalid": false,
+      "candidateAction": {
+        "removeWholeRequest": ".archive-meta-register/inbox/m3s2-finalized-e014-transport-20261115.json",
+        "retainCurrentMetadataAndRuntime": true,
+        "chooseExactMainSource": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+          "gitBlobSha1": "547854b067b341377e39eb644b3380a128e3d869",
+          "sha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3",
+          "bytes": 64989
+        },
+        "discardOnlyOwnSourceFields": [
+          "courseKey",
+          "crossConceptKeys"
+        ],
+        "outsideWholeRowsExact": 23,
+        "studentRowsExact": 24,
+        "assetGitBlobsExact": 36
+      },
+      "releaseCondition": "An exact UID-bound independent adjudication or an already-existing immutable explicit supersession accepting the complete four-field D5 tuple; rerun the required official request and Consumer gates after binding. No chronological winner is inferred."
+    },
+    {
+      "examId": "E034",
+      "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+      "sourceOrdinal": 22,
+      "sourceArchiveFile": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+      "status": "D5_AUTHORITY_CONFLICT_HOLD",
+      "originalOwnRequest": {
+        "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+        "path": ".archive-meta-register/inbox/m3s2-finalized-e034-transport-20261115.json",
+        "gitBlobSha1": "606eaa1c7bf6a28a047e95c974ae13d809e1bbdd",
+        "sha256": "4a94e949beffbe25aea338469f6fae1494bac30f4a08ad2b87e6e5e3efee6ce9",
+        "bytes": 7458
+      },
+      "originalNative": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+        "gitBlobSha1": "85c5b82703c539380279fa7b9d3beb9651f12c11",
+        "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e",
+        "bytes": 186411
+      },
+      "sourceReviewSha256": "58c01ce74c03108298d7b80b9c2ef66055f527df2d2c3f1e1e654ccb2636699a",
+      "requestBeforeD5": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "requestAfterD5": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeOperationalBeforeD5": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "currentMetadataD5": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "currentMetadataRecordSha256": "783efa33b3235ba34e84df44fddbcf1b13679256fa8da69573b58e5c9f9d3d3a",
+      "independent": {
+        "ref": {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.independent.json",
+          "gitBlobSha1": "9f788a9576569f4a4cb01495389c36e53442242c",
+          "sha256": "8abcc700dd8a4da08354f1338263ea703c85f021384f597d7789ce4731102a8a",
+          "bytes": 5210
+        },
+        "status": "PASS_FINAL_METADATA_BOUND",
+        "reviewer": "review_b",
+        "sampledOrdinals": [
+          7,
+          20,
+          23
+        ],
+        "targetCovered": false
+      },
+      "difficultyAdjudication": {
+        "ref": {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.difficulty-adjudication.json",
+          "gitBlobSha1": "807aa260760e813fd6029834526a4065cd5c2182",
+          "sha256": "47fb8629dd6bedeb95574fdcb561e5f63fdf0c8e854db6ae141fe1c07eb9d140",
+          "bytes": 10800
+        },
+        "status": "ROOT_ACCEPTED_INDEPENDENT_DIFFICULTY",
+        "reviewer": "b",
+        "acceptedOrdinals": [
+          5,
+          6,
+          8,
+          9,
+          12,
+          13,
+          18,
+          21,
+          23,
+          24
+        ],
+        "targetCovered": false,
+        "rootAcceptedOrdinals": [
+          5,
+          6,
+          8,
+          9,
+          12,
+          13,
+          18,
+          21,
+          23,
+          24
+        ]
+      },
+      "mother": {
+        "ref": {
+          "commit": "855c7a441a53690d242c93e10d710471fb215690",
+          "path": "archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_005_MOTHER_FINAL.json",
+          "gitBlobSha1": "bcb6dc5cfe10ad09a3bd67fa5c10372f2873fa65",
+          "sha256": "391ff8e5856fd5aad9d2a1280bf121f70523bb3772fe5701457e0cec8d2b9d23",
+          "bytes": 40742
+        },
+        "status": "MOTHER_FINALIZED",
+        "targetRowSha256": "b1f96914a2fb7a17417949291232d0f91012bf93f2a0d6bfc2d91f0cfc6403a9",
+        "difficultyBucket": 4,
+        "otherD5FieldsNotDeclaredInFinalDecision": true
+      },
+      "conflictDocument": {
+        "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+        "path": "docs/operations/m3s2-polygon-d5-conflict-holds-26fc-20261116/difficulty-authority-conflict.json",
+        "gitBlobSha1": "ab234c4fc589c17cb3b1d61eba88d0772be34bdb",
+        "sha256": "bc70f12298a116d1c30ce95ae469fbee19c445394676193bb171df55bc7fa161",
+        "bytes": 17637
+      },
+      "holdReason": "EXISTING_FINAL_4_VS_LATER_AUTHOR_2_TARGET_SUPERSESSION_NOT_UNAMBIGUOUS",
+      "originalNativeAfterJudgmentExists": true,
+      "laterAuthorJudgmentDeclaredInvalid": false,
+      "candidateAction": {
+        "removeWholeRequest": ".archive-meta-register/inbox/m3s2-finalized-e034-transport-20261115.json",
+        "retainCurrentMetadataAndRuntime": true,
+        "chooseExactMainSource": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+          "gitBlobSha1": "fc0c618f376e8fe025612b5f629b0c0bf2617e30",
+          "sha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824",
+          "bytes": 59459
+        },
+        "discardOnlyOwnSourceFields": [
+          "courseKey",
+          "crossConceptKeys"
+        ],
+        "outsideWholeRowsExact": 24,
+        "studentRowsExact": 25,
+        "assetGitBlobsExact": 40
+      },
+      "releaseCondition": "An exact UID-bound independent adjudication or an already-existing immutable explicit supersession accepting the complete four-field D5 tuple; rerun the required official request and Consumer gates after binding. No chronological winner is inferred.",
+      "additionalAuthorDifficultyChangeReview": {
+        "ref": {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.difficulty-change-review.json",
+          "gitBlobSha1": "52c3a21064576605d0f77d54cdf0cd571ecca126",
+          "sha256": "5006c58f2eade6402caeb15f2a519323d3986bfbdac329dfb775ad5045d75331",
+          "bytes": 41942
+        },
+        "author": "review_a",
+        "status": "AUTHOR_COMPLETE_INDEPENDENT_EXCEPTIONS_PENDING",
+        "targetRowSha256": "ba9511bb69428f97f952eb1682ff93c6e14fb1e7a8e387e8a0993d57f975b0d1",
+        "targetOrdinal": 22,
+        "independentRequiredAsAuthored": false,
+        "role": "Original author review; not a separate UID-specific independent adjudication"
+      }
+    }
+  ],
+  "allVerifiedAuthorityRefs": [
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "gitBlobSha1": "51a6b4ae3164be845ba9d90fd49d88378fc32fbe",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+      "bytes": 38634
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+      "gitBlobSha1": "1df7a94127bef0b5998f1ca14fed92bc0a2a779e",
+      "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132",
+      "bytes": 199088
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.independent.json",
+      "gitBlobSha1": "fb3e1f3922ec0fff4476fa6585c71e7b4b93dba5",
+      "sha256": "ebf01ff9669de747f30b9d35a9bf05a3d545ae9eb106b8d1d7013df4954d6aae",
+      "bytes": 3039
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.difficulty-adjudication.json",
+      "gitBlobSha1": "66cd45b75b4d120239c6f14ec24c6cc9777a1f97",
+      "sha256": "3e980859f40c4ece400fc72dbde642cdab075594da5c7f99227ff65ae896fcd0",
+      "bytes": 3009
+    },
+    {
+      "commit": "855c7a441a53690d242c93e10d710471fb215690",
+      "path": "archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_015_MOTHER_FINAL.json",
+      "gitBlobSha1": "f58d6d945ef53eaccee9a27d6e9da67aee55b3a0",
+      "sha256": "05a48923b8ac639516d63727a7c5544546752bb3cf60b33d832ffdab7cc69836",
+      "bytes": 47955
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+      "gitBlobSha1": "85c5b82703c539380279fa7b9d3beb9651f12c11",
+      "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e",
+      "bytes": 186411
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.independent.json",
+      "gitBlobSha1": "9f788a9576569f4a4cb01495389c36e53442242c",
+      "sha256": "8abcc700dd8a4da08354f1338263ea703c85f021384f597d7789ce4731102a8a",
+      "bytes": 5210
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.difficulty-adjudication.json",
+      "gitBlobSha1": "807aa260760e813fd6029834526a4065cd5c2182",
+      "sha256": "47fb8629dd6bedeb95574fdcb561e5f63fdf0c8e854db6ae141fe1c07eb9d140",
+      "bytes": 10800
+    },
+    {
+      "commit": "855c7a441a53690d242c93e10d710471fb215690",
+      "path": "archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_005_MOTHER_FINAL.json",
+      "gitBlobSha1": "bcb6dc5cfe10ad09a3bd67fa5c10372f2873fa65",
+      "sha256": "391ff8e5856fd5aad9d2a1280bf121f70523bb3772fe5701457e0cec8d2b9d23",
+      "bytes": 40742
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.rpm-leaf-gap-adjudication.json",
+      "gitBlobSha1": "613f200a03b6128295831e62def0ad4a9bbd444e",
+      "sha256": "23cd942c0aa7818f068a511d60a78ad55071c51bcfdf0e0871ac73bae4d9ef7f",
+      "bytes": 1448
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.primary-adjudication.json",
+      "gitBlobSha1": "1562cb46195525bb5787014b168c8250b4e39053",
+      "sha256": "61728b4ea31111e0ddf3927d96a66628e02a9add64f1d82190b08217d87f7145",
+      "bytes": 1252
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.resume-adjudication.json",
+      "gitBlobSha1": "2c9fccc1e656c7876d8715bab9794c01bbe8b7dc",
+      "sha256": "2633dca6243c9c92311543dab7cdc11ec56e017dc1b250972226efd99b8d1232",
+      "bytes": 4278
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.difficulty-change-review.json",
+      "gitBlobSha1": "52c3a21064576605d0f77d54cdf0cd571ecca126",
+      "sha256": "5006c58f2eade6402caeb15f2a519323d3986bfbdac329dfb775ad5045d75331",
+      "bytes": 41942
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.resume-notes.json",
+      "gitBlobSha1": "2d3430c5a13beecef3ba53d483732378d49b77b7",
+      "sha256": "e4bbdcc16e9943d449bbb79322309b47d592b683a8be3c652c5df414bcaecfcf",
+      "bytes": 2026
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.rpm-leaf-gap-adjudication.json",
+      "gitBlobSha1": "754cd0903dcd5f17886cb5b3a6f52f8937afe6e4",
+      "sha256": "109a92d6636e79d3235de67e7ae2629fc7bca0e4aea72aa66559a8eb9edf8616",
+      "bytes": 2029
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.4slot-independent-amendment.json",
+      "gitBlobSha1": "58acbe93f10f16aad12c1e484da1b9934a651be0",
+      "sha256": "5e35f24f6734e8067ca89a0a91df18a56158292016c0697a735d5121071118a5",
+      "bytes": 1619
+    }
+  ],
+  "newMathReview": 0,
+  "newDifficultyJudgment": 0,
+  "newApproval": 0,
+  "actualRegistration": "NOT_RUN",
+  "Consumer": "NOT_RUN"
+}

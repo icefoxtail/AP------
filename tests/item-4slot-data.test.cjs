@@ -11,9 +11,12 @@ const path = require('path');
 const { loadExam } = require('../tools/4slot/exam-items.cjs');
 const runtime = require('../tools/4slot/build-4slot-runtime.cjs');
 const partial = require('../tools/4slot/partial-submission.cjs');
+const currentRendererHold = require('../tools/4slot/current-renderer-negative-hold.cjs');
+const { createCurrentNegativeContext } = require('./helpers/4slot-current-negative-context.cjs');
 
 const root = path.resolve(__dirname, '..');
 const identities = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_identity_map.json'), 'utf8')).records;
+const currentNegativeContext = createCurrentNegativeContext(root, {records:identities});
 
 // The legacy examData.questions source also exposes the same objects as questionBank.
 // Its stem field is `question`, not `content`; ensure the adapter preserves those stems.
@@ -127,11 +130,20 @@ for (const file of files) {
     try { submissionScope = partial.publicEvidence(root,d,{bank:nativeBank,identity:{records:identities},dictPath:DICT_BY_VERSION[d.dictionaryVersion]}); }
     catch(e) { bad(e.message); continue; }
   }
+  let holdContext = {};
+  if (currentRendererHold.has(d)) {
+    // Match the official builder's full-file and immutable-history gates before
+    // passing a derived context to the item check. No HOLD decision is released.
+    const dictPath = DICT_BY_VERSION[d.dictionaryVersion];
+    const checked = currentNegativeContext(d, {terms:dict,path:dictPath,sha256:runtime.sha(fs.readFileSync(path.join(root,dictPath)))});
+    if (checked.errors.length) { for (const error of checked.errors) bad(error); continue; }
+    holdContext = checked.context;
+  }
   for (const it of d.items.filter(x => Object.prototype.hasOwnProperty.call(x, 'registrationHold'))) {
     const index = exam.findIndex(q => Number(q.ordinal) === it.ordinal);
     const ids = identities.filter(r => r.sourceArchiveFile === d.sourceArchiveFile && r.sourceOrdinal === index + 1);
     if (index < 0 || ids.length !== 1) { bad(`#${it.ordinal}: explicit hold identity missing or ambiguous`); continue; }
-    for (const error of runtime.validateRegistrationHold(root, d, it, ids[0], {q: nativeBank[index], ordinal: index + 1})) bad(`#${it.ordinal}: ${error}`);
+    for (const error of runtime.validateRegistrationHold(root, d, it, ids[0], {q: nativeBank[index], ordinal: index + 1}, holdContext)) bad(`#${it.ordinal}: ${error}`);
   }
   const examOrds = submissionScope ? submissionScope.selected.map(row => row.displayNumber) : exam.map(q => Number(q.ordinal));
   const missing = examOrds.filter(o => !ords.has(o));

@@ -15,6 +15,9 @@ import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuit
 import {isIssuedSourceBindingRecovery,hasIssuedSourceBindingRecoveryMarker} from './issued-source-binding-recovery.mjs';
 import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
 import {verifyIssuedRpmEvidenceContinuity} from './issued-rpm-evidence-continuity.mjs';
+import {loadIssuedChildContinuity} from './native-issued-child-continuity.mjs';
+import {loadIssuedRpmChildContinuity,readIssuedRpmHistoricalEvidence,replayIssuedRpmHistoricalLeaf} from './native-issued-rpm-history.mjs';
+import {loadIssuedSolutionRpmChildContinuity,readIssuedSolutionRpmHistoricalEvidence,replayIssuedSolutionRpmHistoricalLeaf} from './native-issued-solution-rpm-history.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -360,6 +363,11 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     !Buffer.isBuffer(source.bytes)||!Array.isArray(source.bank)||!same(source.bank[ordinal-1],question)||
     source.bank.length!==receipt.expectedQuestionCount||blob(source.bytes)!==source.blobSha1||
     receipt.sourceBlobSha1!==source.blobSha1||receipt.sourceRawSha256!==sha(source.bytes))fail('current receipt differs from actual state');
+  const issuedChild=loadIssuedChildContinuity({root,receipt,nativeSource,current,identity,ordinal});
+  const historyInput={childContext:issuedChild,root,envelope:receipt,bytes:nativeSource.bytes,bank:nativeSource.bank,
+    current,identity,runtimeRecord:runtime};
+  const issuedHistory=issuedChild ? issuedChild.descriptor.kind==='RPM_UNCHANGED_FP0'
+    ?loadIssuedRpmChildContinuity(historyInput):loadIssuedSolutionRpmChildContinuity(historyInput) : null;
   if(unchangedMemberOfRendererReassessment({receipt,nativeSource,question,identity,ordinal,current,registry,state,revalidateLeaf}))return true;
   // null preserves the ordinary native/student guards; this is not permission
   // to reuse changed student content or skip a renderer/typed-source verifier.
@@ -415,6 +423,20 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     const historicalIdentity=subset?priorSourceIdentityContext(source,prior):{};
     if(fullSubset)replayOriginalFullFinalQa({root,prior,priorReceiptRef:ref,nativeSource:source,registry,revalidateLeaf});
     cursor=prior;state=old;source={...source,...priorSource,...historicalIdentity,runtimeRecord:old.runtime};
+  }
+  if(issuedChild) {
+    if(receiptPath(cursor.requestId)!==issuedChild.descriptor.priorReceiptRef.path)
+      fail('issued child history terminal differs');
+    const isSolution=issuedChild.descriptor.kind==='SOLUTION_REBIND_FP1';
+    for(const ref of cursor.approval.evidenceRefs||[]) {
+      const bytes=isSolution?readIssuedSolutionRpmHistoricalEvidence(issuedHistory,cursor,ref)
+        :readIssuedRpmHistoricalEvidence(issuedHistory,cursor,ref);
+      if(sha(bytes)!==ref.sha256)fail('issued child historical evidence changed');
+    }
+    const replay=isSolution?replayIssuedSolutionRpmHistoricalLeaf:replayIssuedRpmHistoricalLeaf;
+    if(replay({context:issuedHistory,nativeSource:source,revalidateLeaf})!==true)
+      fail('issued child original native cursors did not replay');
+    return true;
   }
   evidence(root,cursor.approval.evidenceRefs,cursor);
   const relative=receiptPath(cursor.requestId),context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};

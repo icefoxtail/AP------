@@ -7,6 +7,7 @@ const v2=require('../tools/4slot/current-renderer-negative-hold-v2.cjs');
 const {compactItem}=require('../tools/4slot/import-4slot.cjs');
 const {buildLookup}=require('../tools/4slot/validate-4slot.cjs');
 const consumer=require('../archive/item-4slot.js');
+const {createCurrentNegativeContext}=require('./helpers/4slot-current-negative-context.cjs');
 const stable=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);
 const uid=n=>'qid_v1_'+String(n).padStart(64,'0');
 const source='original/middle/m3/2final/current-negative-v2-fixture.js';
@@ -116,6 +117,26 @@ function fixture(t,{amended=true}={}) {
   signCarrier();
   return {root,save,bytes,git,commit,ref,bank,before,js,paths,data,prior,proof,review,negative,identity,native,top,continuity,amendment,nativePath,topPath,continuityPath,amendmentPath,proofPath,reviewPath,negativePath,priorCommit,signCarrier,signReview,rebindCurrent,resealPriorAuthority,write:()=>save(cp,data)};
 }
+
+function dataCheck(f,check=createCurrentNegativeContext(f.root,f.identity)) {
+  const raw=f.bytes(dictPath),dictionary=JSON.parse(raw);
+  return check(f.data,{path:dictPath,sha256:mod.sha(raw),terms:new Map(dictionary.terms.map(t=>[t.id,t]))});
+}
+test('data check validates the entire v2 amendment partition before both hold contexts',t=>{
+  const f=fixture(t),before=f.bytes(cp),checked=dataCheck(f);
+  assert.deepEqual(checked.errors,[]);assert.equal(checked.context.currentRendererNegativeValidated,true);
+  for(let i=0;i<2;i++)assert.deepEqual(mod.validateRegistrationHold(f.root,f.data,f.data.items[i],f.identity.records[i],{q:f.bank[i],ordinal:i+1},checked.context),[]);
+  assert.deepEqual(f.bytes(cp),before);assert.equal(f.data.items.filter(i=>i.registrationHold).length,2);
+});
+test('data check refuses v2 context after an unreviewed peer asset changes',t=>{
+  const f=fixture(t),check=createCurrentNegativeContext(f.root,f.identity);assert.deepEqual(dataCheck(f,check).errors,[]);
+  f.save(f.paths.binary,Buffer.from('unreviewed changed bytes'));const checked=dataCheck(f,check);
+  assert.ok(checked.errors.some(e=>e.includes('UNREVIEWED_ASSET_CHANGE')));assert.equal(checked.context.currentRendererNegativeValidated,false);
+});
+test('data check refuses v2 context after an original slot vector changes',t=>{
+  const f=fixture(t);f.data.items[2].method=[4];f.write();const checked=dataCheck(f);
+  assert.ok(checked.errors.some(e=>e.includes('ORIGINAL_COMPACT_CHANGED')));assert.equal(checked.context.currentRendererNegativeValidated,false);
+});
 
 function denied(f,reason) {
   const out=mod.build(f.root).index;

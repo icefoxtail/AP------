@@ -13,10 +13,13 @@ import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.m
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
   nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
+import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
 import { validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 import { hasReviewedReceiptLineage, reviewedSourceBindingPath } from './reviewed-source-binding.mjs';
 import { nativeOriginalFinalQaRendererRebind,hasOriginalFinalQaRendererClaim } from './original-finalqa-renderer-preservation.mjs';
+import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
@@ -212,10 +215,21 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||approval?.type!==current.metadataApprovalType||approval.metadataReviewed!==true
         ||!String(approval.approvedBy||'').trim()||approval.type==='REVIEW2'&&approval.reviewPassCount!==2
         ||!Array.isArray(approval.evidenceRefs)||!approval.evidenceRefs.length)continue;
+      const rpmHistory=nativeSource.issuedRpmHistoryContext;
+      const solutionRpmHistory=nativeSource.issuedSolutionRpmHistoryContext;
+      if(rpmHistory&&solutionRpmHistory)continue;
+      if(rpmHistory)assertIssuedRpmHistoricalLeaf({context:rpmHistory,receipt,nativeSource,current,identity,ordinal});
+      if(solutionRpmHistory)assertIssuedSolutionRpmHistoricalLeaf({context:solutionRpmHistory,receipt,nativeSource,current,identity,ordinal,previous});
       if(!approval.evidenceRefs.every(ref=>{
         if(!/^[a-f0-9]{64}$/.test(ref.sha256||''))return false;
-        const liveSha=sha256(boundRead(ref.path));
+        const evidenceBytes=solutionRpmHistory
+          ?readIssuedSolutionRpmHistoricalEvidence(solutionRpmHistory,receipt,ref):rpmHistory
+            ?readIssuedRpmHistoricalEvidence(rpmHistory,receipt,ref):boundRead(ref.path);
+        const liveSha=sha256(evidenceBytes);
         if(liveSha===ref.sha256)return true;
+        // Historical replay requires the original immutable bytes.
+        // Current RPM continuity must never repair a historical mismatch.
+        if(rpmHistory||solutionRpmHistory)return false;
         const continuity=verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath,evidenceRef:ref});
         return continuity?.currentRef.sha256===liveSha;
       }))continue;
@@ -276,7 +290,8 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedM2ProviderRenderer=reviewedSource===true&&m2ProviderProofs.length===1&&
         m2ProviderProofs[0].schemaVersion==='archive-reviewed-m2-provider-current-renderer-continuity-v1'&&
         m2ProviderProofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2ProblemRenderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource:reviewedSource});
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2ProblemRenderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&reviewedM2CcRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

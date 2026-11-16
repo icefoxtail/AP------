@@ -4,6 +4,7 @@ const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),{exe
 const mod=require('../tools/4slot/build-4slot-runtime.cjs');
 const hold=require('../tools/4slot/current-renderer-negative-hold.cjs');
 const consumer=require('../archive/item-4slot.js');
+const {createCurrentNegativeContext}=require('./helpers/4slot-current-negative-context.cjs');
 const stable=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);
 const uid=n=>'qid_v1_'+String(n).padStart(64,'0');
 const source='original/middle/m3/2final/current-negative-fixture.js',sp='archive/exams/'+source,cp='archive/data/item-4slot/'+source.replace(/\.js$/,'.4slot.json');
@@ -46,6 +47,28 @@ function fixture(t) {
  signCarrier();return {root,save,bytes,git,commit,ref,priorCommit,bank,before,js,data,prior,proof,review,negative,proofPath,reviewPath,negativePath,identity,heldNow,retNow,unchangedAsset,signCarrier,signReview,write:()=>save(cp,data)};
 }
 function denied(f){const out=mod.build(f.root).index;assert.equal(out.records.length,0,JSON.stringify(out.counts));assert.ok(out.pending.some(p=>/CURRENT_RENDERER_HOLD_/.test(p.reason)),JSON.stringify(out.pending));assert.equal(consumer.createIndex(out).get(uid(1)),null);return out;}
+function dataCheck(f,check=createCurrentNegativeContext(f.root,f.identity)){
+ const raw=f.bytes(dictPath),dictionary=JSON.parse(raw);
+ return check(f.data,{path:dictPath,sha256:mod.sha(raw),terms:new Map(dictionary.terms.map(t=>[t.id,t]))});
+}
+test('data check derives the v1 item context only after full current negative validation',t=>{
+ const f=fixture(t),before=f.bytes(cp),item=f.data.items[0],current={q:f.bank[0],ordinal:1};
+ assert.deepEqual(mod.validateRegistrationHold(f.root,f.data,item,f.identity.records[0],current),['CURRENT_RENDERER_HOLD_FILE_NOT_VALIDATED']);
+ const checked=dataCheck(f);assert.deepEqual(checked.errors,[]);assert.equal(checked.context.currentRendererNegativeValidated,true);
+ assert.deepEqual(mod.validateRegistrationHold(f.root,f.data,item,f.identity.records[0],current,checked.context),[]);
+ assert.deepEqual(f.bytes(cp),before);assert.ok(f.data.items[0].registrationHold);
+});
+test('data check rereads v1 carrier bytes after an earlier successful file validation',t=>{
+ const f=fixture(t),check=createCurrentNegativeContext(f.root,f.identity);assert.deepEqual(dataCheck(f,check).errors,[]);
+ f.save(f.proofPath,{...f.proof,slotChanges:1});const checked=dataCheck(f,check);
+ assert.ok(checked.errors.some(e=>e==='CURRENT_RENDERER_HOLD_LOCAL_BYTES'));assert.equal(checked.context.currentRendererNegativeValidated,false);
+ assert.deepEqual(mod.validateRegistrationHold(f.root,f.data,f.data.items[0],f.identity.records[0],{q:f.bank[0],ordinal:1},checked.context),['CURRENT_RENDERER_HOLD_FILE_NOT_VALIDATED']);
+});
+test('data check cannot derive v1 eligibility by stripping every live hold marker',t=>{
+ const f=fixture(t),check=createCurrentNegativeContext(f.root,f.identity);assert.deepEqual(dataCheck(f,check).errors,[]);
+ delete f.data.evidence.nativeHoldReview;delete f.data.items[0].registrationHold;f.write();
+ for(const verify of [check,createCurrentNegativeContext(f.root,f.identity)]){const checked=dataCheck(f,verify);assert.ok(checked.errors.includes('CURRENT_RENDERER_HOLD_NEGATIVE_OBLIGATION_REQUIRED'));assert.equal(checked.context.currentRendererNegativeValidated,false);}
+});
 test('current negative intake retains the original full vector while exactly one UID stays pending',t=>{
  const f=fixture(t),sourceBefore=f.bytes(sp),compactBefore=structuredClone(f.prior),out=mod.build(f.root).index;
  assert.deepEqual(out.records.map(r=>r.questionUid),[uid(2),uid(3)]);assert.equal(out.counts.items,3);assert.equal(out.pending.length,1);assert.equal(out.pending[0].reason,'EXPLICIT_REVIEW_HOLD:'+hold.REASON);assert.equal(out.pending[0].questionUid,uid(1));assert.equal(consumer.createIndex(out).get(uid(1)),null);assert.equal(mod.verify(out).verified,2);

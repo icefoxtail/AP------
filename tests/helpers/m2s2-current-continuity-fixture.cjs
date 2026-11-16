@@ -13,8 +13,9 @@ function fixture(t,{multiAssets=false,noPriorHeldAsset=false,repairReady=false,d
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const save=(p,v)=>{const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,typeof v==='string'||Buffer.isBuffer(v)?v:JSON.stringify(v));};
   const bytes=p=>fs.readFileSync(path.join(root,p));
-  const git=(...args)=>execFileSync('git',['-C',root,...args],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
-  const commit=msg=>{git('add','.');git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit','--allow-empty','-qm',msg);return git('rev-parse','HEAD').trim();};
+  // Both explicit commits and merge commits use a fixture-local identity.
+  const git=(...args)=>execFileSync('git',['-C',root,'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',...args],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
+  const commit=msg=>{git('add','.');git('commit','--allow-empty','-qm',msg);return git('rev-parse','HEAD').trim();};
   const ref=(c,p,full=false)=>{const raw=execFileSync('git',['-C',root,'show',c+':'+p],{stdio:['ignore','pipe','pipe']});return {commit:c,path:p,...(full?{gitBlobSha1:mod.blob(raw)}:{}),sha256:mod.sha(raw)};};
   const js=bank=>'window.questionBank='+JSON.stringify(bank)+';';
   const asset=n=>'archive/assets/images/m2-current-fixture/'+n;

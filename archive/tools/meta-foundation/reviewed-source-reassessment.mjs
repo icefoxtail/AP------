@@ -18,6 +18,7 @@ import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-curren
 import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-target-application.mjs";
 import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -229,6 +230,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2ProblemRendererContinuity: {
       ...m2ProblemRenderer.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
+  const m2CcRenderer = validateReviewedM2CcRendererContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
   const rendererContinuity = patch.sourceReview.rendererProof === undefined ? null :
     validateReviewedCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
@@ -238,7 +241,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const m2ProviderRenderer = patch.sourceReview.m2ProviderRendererProof === undefined ? null :
     validateM2ProviderCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
-  if (!rendererContinuity && !m2Renderer && !m2ProviderRenderer && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
+  if (!m2CcRenderer && !rendererContinuity && !m2Renderer && !m2ProviderRenderer && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
   // Only the authenticated frozen request's exact prefigure object can be used
   // as this M2 presentation view. Its metadata is equal to the live object; the
@@ -253,7 +256,13 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question: semanticQuestion, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question: m2CcRenderer?.originalQuestion || semanticQuestion, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+  if (m2CcRenderer && (proposalFinalization?.proof?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+      !proposalFinalization.proof.nativeProposalBindings?.length ||
+      proposalFinalization.proof.nativeProposalBindings.some(binding => binding.type !== "CC") ||
+      !proposalFinalization.proof.definitions?.length ||
+      proposalFinalization.proof.definitions.some(definition => definition.collection !== "concepts")))
+    fail("typed M2 renderer bridge requires the original CC finalizer to succeed");
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const currentDefinitionApplication = validateM2S1CurrentDefinitionApplication({ root, request, patch, native: loaded, row,
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,
@@ -370,6 +379,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(rendererContinuity ? { rendererContinuity } : {}),
     ...(m2Renderer ? { m2RendererContinuity: m2Renderer.proof } : {}),
     ...(m2ProviderRenderer ? { m2ProviderRendererContinuity: m2ProviderRenderer.proof } : {}),
+    ...(m2CcRenderer ? { m2CcRendererContinuity: { ...m2CcRenderer.proof,
+      originalFinalizationSha256: sha256(stable(proposalFinalization.proof)) } } : {}),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(rationaleContinuity ? { rationaleContinuity } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),

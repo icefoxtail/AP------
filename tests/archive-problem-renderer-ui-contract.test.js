@@ -12,6 +12,174 @@ const head = 'a'.repeat(40);
 const scope = changedFiles => ({ schemaVersion: 'archive-ci-scope-v2', eventName: 'pull_request', headSha: head, changedFiles });
 const studentCss = [400, 700, 800].map(weight => `@font-face { font-family: 'Nanum Myeongjo'; font-style: normal; font-weight: ${weight}; src: url(https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2) format('woff2'); }`).join('\n');
 
+function deferredRouteStep() {
+  let resolve;
+  const promise = new Promise(done => { resolve = done; });
+  return { promise, resolve };
+}
+
+function studentFontRouteFixture(overrides = {}) {
+  const url = new URL('https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_400.woff2');
+  const state = { stylesheet: false, declaredFonts: new Set([url.href]), externalFontResources: new Map(), fontResources: new Set(), failures: [] };
+  const calls = [];
+  const response = { headers: () => ({ 'content-type': 'font/woff2' }), status: () => 200, url: () => url.href,
+    body: async () => Buffer.from('exact-font-response') };
+  const route = { request: () => ({ url: () => url.href }), async fetch(options) {
+    calls.push('fetch'); assert.deepEqual(options, { timeout: 15000, maxRedirects: 0 }); return response;
+  }, async fulfill(options) { calls.push('fulfill'); assert.equal(options.response, response); },
+  async abort(reason) { calls.push('abort'); assert.equal(reason, 'failed'); }, ...overrides };
+  return { url, state, calls, response, route };
+}
+
+test('owned route work settles concurrent and newly arrived handlers before interception is removed', async () => {
+  const failures = [], lifecycle = checker.createStudentRouteLifecycle(failures), events = [];
+  const first = deferredRouteStep(), second = deferredRouteStep(), late = deferredRouteStep();
+  let completed = 0;
+  const route = { request: () => ({ url: () => 'https://example.test/hashed-only' }) };
+  const lateHandler = lifecycle.wrap(async () => { await late.promise; completed++; events.push('late-settled'); });
+  lifecycle.wrap(async () => { await first.promise; completed++; events.push('first-settled'); lateHandler(route); })(route);
+  lifecycle.wrap(async () => { await second.promise; completed++; events.push('second-settled'); })(route);
+  const page = { async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' });
+    assert.equal(completed, 3, 'unroute must not release another in-flight route'); events.push('unroute');
+  } };
+  const closing = checker.closeStudentContext(page, { async close() { events.push('close'); } },
+    () => { assert.equal(failures.length, 0); events.push('verify'); }, lifecycle);
+  await Promise.resolve(); assert.deepEqual(events, []);
+  first.resolve(); await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(events, ['first-settled']);
+  second.resolve(); await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(events, ['first-settled', 'second-settled']);
+  late.resolve(); await closing;
+  assert.deepEqual(events, ['first-settled', 'second-settled', 'late-settled', 'unroute', 'verify', 'close']);
+});
+
+test('student font route records a resource only after successful fulfillment', async () => {
+  const fixture = studentFontRouteFixture(), fulfill = deferredRouteStep();
+  fixture.route.fulfill = async () => { fixture.calls.push('fulfill'); await fulfill.promise; };
+  const work = checker.serveStudentFont(fixture.route, fixture.url, fixture.state);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(fixture.calls, ['fetch', 'fulfill']);
+  assert.equal(fixture.state.fontResources.size, 0); assert.equal(fixture.state.externalFontResources.size, 0);
+  fulfill.resolve(); await work;
+  assert.equal(fixture.state.fontResources.size, 1); assert.equal(fixture.state.externalFontResources.size, 1);
+  assert.equal(fixture.state.failures.length, 0);
+});
+
+test('student font route fetch failure aborts once and still fails owned cleanup', async () => {
+  const failure = new Error('actual font fetch failed'), fixture = studentFontRouteFixture();
+  fixture.route.fetch = async () => { fixture.calls.push('fetch'); throw failure; };
+  const lifecycle = checker.createStudentRouteLifecycle(fixture.state.failures);
+  await lifecycle.wrap(route => checker.serveStudentFont(route, fixture.url, fixture.state))(fixture.route);
+  let closed = 0;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { assert.fail('failed work must not wait for an unresolved Playwright handled promise'); } },
+    { async close() { closed++; } }, () => assert.fail('failure cannot become PASS'), lifecycle), error => error === failure);
+  assert.equal(closed, 1); assert.deepEqual(fixture.calls, ['fetch', 'abort']);
+  assert.equal(fixture.state.fontResources.size, 0);
+  assert.equal(fixture.state.failures[0].stage, 'FETCH');
+  assert.equal(fixture.state.failures[0].errorMessageSha256, checker.sha256(failure.message));
+});
+
+test('student font route asynchronous fulfillment failure is recorded and is never aborted twice', async () => {
+  const failure = new Error('route.fulfill: Route is already handled!'), fixture = studentFontRouteFixture();
+  fixture.route.fulfill = async () => { fixture.calls.push('fulfill'); await Promise.resolve(); throw failure; };
+  const lifecycle = checker.createStudentRouteLifecycle(fixture.state.failures);
+  await lifecycle.wrap(route => checker.serveStudentFont(route, fixture.url, fixture.state))(fixture.route);
+  let closed = false;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { assert.fail('no unroute wait after a settlement error'); } },
+    { async close() { closed = true; } }, () => assert.fail('failure cannot become PASS'), lifecycle), error => error === failure);
+  assert.equal(closed, true); assert.deepEqual(fixture.calls, ['fetch', 'fulfill']);
+  assert.equal(fixture.state.fontResources.size, 0); assert.equal(fixture.state.externalFontResources.size, 0);
+  assert.equal(fixture.state.failures[0].stage, 'FULFILL');
+  assert.equal(fixture.state.failures[0].errorMessageSha256, checker.sha256(failure.message));
+});
+
+test('student font route preserves both the original fetch failure and an abort failure', async () => {
+  const fetchError = new Error('fetch failed'), abortError = new Error('abort failed'), fixture = studentFontRouteFixture();
+  fixture.route.fetch = async () => { fixture.calls.push('fetch'); throw fetchError; };
+  fixture.route.abort = async () => { fixture.calls.push('abort'); throw abortError; };
+  await assert.rejects(checker.serveStudentFont(fixture.route, fixture.url, fixture.state), error =>
+    error instanceof AggregateError && error.message === 'UI_ROUTE_ABORT_FAILED' &&
+    error.errors[0] === fetchError && error.errors[1] === abortError);
+  assert.deepEqual(fixture.calls, ['fetch', 'abort']);
+  assert.deepEqual(fixture.state.failures.map(x => x.stage), ['FETCH', 'ABORT']);
+  assert.equal(fixture.state.failures[1].errorMessageSha256, checker.sha256(abortError.message));
+});
+
+test('owned route work records a non-font handler rejection and never calls the success verifier', async () => {
+  const failures = [], lifecycle = checker.createStudentRouteLifecycle(failures), failure = new Error('continue failed');
+  const route = { request: () => ({ url: () => 'https://example.test/request-not-exported' }) };
+  await lifecycle.wrap(async () => { throw failure; })(route);
+  let closed = false;
+  await assert.rejects(checker.closeStudentContext(null, { async close() { closed = true; } },
+    () => assert.fail('must not verify failed work'), lifecycle), error => error === failure);
+  assert.equal(closed, true); assert.equal(failures.length, 1);
+  assert.equal(failures[0].code, 'UI_ROUTE_HANDLER_FAILED');
+  assert(!JSON.stringify(failures).includes('request-not-exported'));
+});
+
+test('student context retains the original case failure alongside route and close failures', async () => {
+  const failures = [], lifecycle = checker.createStudentRouteLifecycle(failures);
+  const original = new Error('UI_RENDERED_IMAGES'), routeError = new Error('route fulfillment failed'), closeError = new Error('context close failed');
+  const route = { request: () => ({ url: () => 'https://example.test/private-request' }) };
+  await lifecycle.wrap(async () => { throw routeError; })(route);
+  await assert.rejects(checker.closeStudentContext(null, { async close() { throw closeError; } },
+    () => assert.fail('failed work cannot pass verification'), lifecycle, original), error =>
+      error instanceof AggregateError && error.message === original.message && error.cause === original &&
+      error.errors.length === 3 && error.errors[0] === original && error.errors[1] === routeError && error.errors[2] === closeError);
+  assert.equal(failures.length, 1);
+});
+
+test('student context waits for a pending font body and route fulfillment before disposal', async () => {
+  const events = []; let disposed = false, releaseBody;
+  const bodyReady = new Promise(resolve => { releaseBody = resolve; });
+  const handler = (async () => {
+    await bodyReady;
+    assert.equal(disposed, false, 'pending response must still be readable');
+    events.push('body-read', 'route-fulfilled');
+  })();
+  const page = { async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' });
+    events.push('drain-start'); await handler; events.push('drain-end');
+  } };
+  const context = { async close() { disposed = true; events.push('context-closed'); } };
+  const completion = checker.closeStudentContext(page, context, () => {
+    assert.equal(disposed, false); events.push('late-check');
+  });
+  await Promise.resolve();
+  assert.equal(disposed, false); assert.deepEqual(events, ['drain-start']);
+  releaseBody(); await completion;
+  assert.deepEqual(events, ['drain-start', 'body-read', 'route-fulfilled', 'drain-end', 'late-check', 'context-closed']);
+});
+
+test('student context draining preserves late font failure diagnostics and does not suppress handler errors', async () => {
+  const failures = []; let releaseFailure, closed = false;
+  const pending = new Promise(resolve => { releaseFailure = resolve; });
+  const message = 'apiResponse.body: genuine response body read failure';
+  const handler = (async () => {
+    await pending;
+    failures.push(checker.fontFailureDiagnostic({ kind: 'FONT', stage: 'BODY_READ', httpStatus: 200,
+      urlSha256: 'a'.repeat(64), responseUrlSha256: 'a'.repeat(64), mime: 'font/woff2' }, new Error(message)));
+  })();
+  const completion = checker.closeStudentContext({ async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' }); await handler;
+  } }, { async close() { closed = true; } }, () => {
+    assert.equal(closed, false);
+    assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+  });
+  await Promise.resolve(); assert.equal(closed, false); assert.equal(failures.length, 0);
+  const rejects = assert.rejects(completion, /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  releaseFailure(); await rejects;
+  assert.equal(closed, true); assert.equal(failures.length, 1);
+  assert.equal(failures[0].errorMessageSha256, checker.sha256(message));
+  assert.equal(failures[0].stage, 'BODY_READ');
+  assert.throws(() => assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE'), /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  const original = new Error('route handler failed'); let closedAfterError = false;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { throw original; } },
+    { async close() { closedAfterError = true; } }), error => error === original);
+  assert.equal(closedAfterError, true);
+});
+
 test('the real engine imports its student font before qualified CSS rules', () => {
   const engine = fs.readFileSync(path.join(__dirname, '..', 'archive/engine.html'), 'utf8');
   const fontStyles = [...engine.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
