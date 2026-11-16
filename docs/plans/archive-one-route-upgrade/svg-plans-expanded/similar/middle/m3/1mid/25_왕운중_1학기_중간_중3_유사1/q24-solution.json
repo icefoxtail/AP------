@@ -1,0 +1,124 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "O",
+            "value": "1",
+            "showValue": true
+          },
+          {
+            "id": "T",
+            "value": "5",
+            "showValue": true
+          },
+          {
+            "id": "A",
+            "value": "1-sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "1+sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "C",
+            "value": "5-sqrt(10)",
+            "showValue": false
+          },
+          {
+            "id": "D",
+            "value": "5+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "O",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "A",
+            "branch": "LEFT"
+          },
+          {
+            "id": "B",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            1,
+            0
+          ],
+          "to": [
+            0,
+            2
+          ],
+          "toName": "R"
+        }
+      },
+      {
+        "id": "c2",
+        "center": "T",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "C",
+            "branch": "LEFT"
+          },
+          {
+            "id": "D",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            5,
+            0
+          ],
+          "to": [
+            8,
+            1
+          ],
+          "toName": "S"
+        }
+      }
+    ]
+  },
+  "caption": "1인 중심 O와 5인 중심 T에서 각 빗변 길이를 왼쪽과 오른쪽으로 옮긴다. A·B는 O의 호, C·D는 T의 호에서 얻는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심1에서 가로1 세로2 빗변을 양쪽으로 옮겨 A,B, 중심5에서 가로3 세로1 빗변을 양쪽으로 옮겨 C,D를 얻는다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 이름 없는 중심을 O,T로 보조 명명하여 어느 중심에 속하는 교점인지 구별한다. 네 좌표의 정답은 숨긴다."
+  ],
+  "accessibilityDescription": "1인 중심 O와 5인 중심 T에서 각 빗변 길이를 왼쪽과 오른쪽으로 옮긴다. A·B는 O의 호, C·D는 T의 호에서 얻는다."
+}
