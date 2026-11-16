@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import {e035Fixture} from './helpers/m2-e035-renderer-fixture.mjs';
 import {validateM2E035RendererContinuity} from '../archive/tools/meta-foundation/reviewed-m2-e035-renderer-continuity.mjs';
 
@@ -56,4 +57,39 @@ test('v3 rejects a truthfully hashed replacement helper rather than approving an
   const f=e035Fixture(t,{uiVersion:'v3'});f.put(f.uiHelperPath,'// Synthetic substituted capture algorithm.\n');const changed=f.commit();
   f.reseal('technical',v=>{v.helperRef=f.ref(changed,f.uiHelperPath);});
   assert.throws(()=>validateM2E035RendererContinuity(f.args),/exact v3 producer and historical tile helper/);
+});
+
+// Synthetic historical response bodies exercise I/O capacity only. They do not
+// replace any current metadata, source, original review or UI observation.
+function addHistoricalResponse(f, relative, bytes) {
+  const target=path.join(f.root,relative),original=fs.existsSync(target)?fs.readFileSync(target):null;
+  f.put(relative,bytes);const commit=f.commit();
+  const ref={commit,path:relative,gitBlobSha1:f.git('rev-parse',`${commit}:${relative}`),
+    sha256:crypto.createHash('sha256').update(bytes).digest('hex')};
+  if(original)f.put(relative,original);else fs.rmSync(target);
+  f.commit();
+  f.reseal('technical',v=>{v.servedFiles.push(ref);});
+  return ref;
+}
+
+test('v3 immutable metadata raw above32MiB keeps full bytes and exact digest rejection',t=>{
+  const f=e035Fixture(t,{uiVersion:'v3'}),relative='archive/data/question_metadata.json';
+  const before=f.raw(relative),bytes=Buffer.from(JSON.stringify({records:[],syntheticPadding:'x'.repeat(33*1024*1024)}));
+  addHistoricalResponse(f,relative,bytes);
+  assert.ok(validateM2E035RendererContinuity(f.args));
+  assert.deepEqual(f.raw(relative),before,'the historical read must not replace current metadata');
+  f.reseal('technical',v=>{v.servedFiles.find(r=>r.path===relative).sha256='0'.repeat(64);});
+  assert.throws(()=>validateM2E035RendererContinuity(f.args),/immutable reference digest changed/);
+});
+
+test('v3 immutable metadata rejects raw above the128MiB ceiling',t=>{
+  const f=e035Fixture(t,{uiVersion:'v3'});
+  addHistoricalResponse(f,'archive/data/question_metadata.json',Buffer.alloc(128*1024*1024+1,0x78));
+  assert.throws(()=>validateM2E035RendererContinuity(f.args),/immutable metadata byte limit exceeded/);
+});
+
+test('v3 immutable nonmetadata paths keep the original32MiB ceiling',t=>{
+  const f=e035Fixture(t,{uiVersion:'v3'});
+  addHistoricalResponse(f,'archive/data/unrelated-metadata.json',Buffer.alloc(33*1024*1024,0x78));
+  assert.throws(()=>validateM2E035RendererContinuity(f.args),/immutable Git object or HEAD unavailable/);
 });

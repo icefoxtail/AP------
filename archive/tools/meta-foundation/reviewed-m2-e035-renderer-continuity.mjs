@@ -55,9 +55,9 @@ function safe(root, relative) {
     if (fs.existsSync(p) && fs.lstatSync(p).isSymbolicLink()) fail('symlink evidence or source');
   return full;
 }
-function git(root, args) {
+function git(root, args, maxBuffer = 32 * 1024 * 1024) {
   try {return execFileSync('git', ['-c', 'protocol.allow=never', ...args], {cwd: root,
-    env: {...process.env, GIT_NO_LAZY_FETCH: '1'}, maxBuffer: 32 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe']});}
+    env: {...process.env, GIT_NO_LAZY_FETCH: '1'}, maxBuffer, stdio: ['ignore', 'pipe', 'pipe']});}
   catch {fail('immutable Git object or HEAD unavailable');}
 }
 function file(ctx, commit, relative) {
@@ -69,7 +69,15 @@ function file(ctx, commit, relative) {
     const inventory = git(ctx.root, ['ls-tree', '-z', commit, '--', relative]).toString();
     const match = inventory.match(/^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/);
     if (!match || match[2] !== relative) fail('regular immutable blob required');
-    const bytes = git(ctx.root, ['cat-file', 'blob', match[1]]);
+    // The served historical metadata is a complete immutable response. Keep it
+    // byte-for-byte; only this exact repository path has the larger I/O limit.
+    const metadata = relative === 'archive/data/question_metadata.json';
+    const metadataLimit = 128 * 1024 * 1024;
+    const sizeText = metadata ? git(ctx.root, ['cat-file', '-s', match[1]]).toString().trim() : null;
+    if (metadata && (!/^(?:0|[1-9][0-9]*)$/.test(sizeText) || !Number.isSafeInteger(Number(sizeText)) ||
+        Number(sizeText) > metadataLimit)) fail('immutable metadata byte limit exceeded');
+    const bytes = git(ctx.root, ['cat-file', 'blob', match[1]], metadata ? metadataLimit : undefined);
+    if (metadata && bytes.length !== Number(sizeText)) fail('immutable metadata byte length changed');
     if (blob(bytes) !== match[1]) fail('immutable blob content mismatch');
     ctx.files.set(key, {commit, path: relative, gitBlobSha1: match[1], sha256: sha(bytes), bytes});
   }

@@ -238,3 +238,14 @@ the actual E035 student UI. A production carrier cannot issue until the ROOT and
 independent actual observations, repair artifact, complete UI measurements and
 all original tiles are published and bound. The original phase1 request remains
 frozen; a phase2 candidate is a separate concrete transport.
+
+## Complete historical metadata response bytes
+
+The exact `archive/data/question_metadata.json` blob referenced by the actual
+student UI response inventory may be larger than the generic Git subprocess
+buffer. This path alone uses a 128 MiB raw read ceiling. Its immutable regular
+file entry, declared Git object size, returned byte length, blob identity and
+reference SHA-256 are still checked. The ceiling for every other raw Git read
+remains 32 MiB. No response is sliced, summarized or substituted. All ancestor,
+source, UI, PNG, independent observation and original native approval checks
+remain unchanged. This is an I/O capacity boundary, not a new approval path.
