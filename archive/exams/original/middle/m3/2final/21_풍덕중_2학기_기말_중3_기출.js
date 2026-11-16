@@ -230,7 +230,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "crossConceptKeys": ["CC_INSCRIBED_ANGLE"],
+    "crossConceptKeys": ["CC_INSCRIBED_ANGLE","CC_QUADRILATERAL_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
