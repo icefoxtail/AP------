@@ -3117,7 +3117,7 @@ test("partial UID Consumer verification sees only applied records from the recei
   assert.throws(() => verifyConsumerValues(f.root, f.read(META).records, receipt.runtimeRecords, catalog), /Consumer UID missing\/mismatch: uid2/);
 });
 
-function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1") {
+function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", mutateReview = () => {}) {
   const f = itemRebindFixture(t);
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
   const commit = () => { git("add", "--", f.sourcePath, "docs/native-review.json");
@@ -3157,12 +3157,13 @@ function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1") 
     return ref;
   };
   delete f.item.rebind;
+  mutateReview(review);
   updateReview();
   return { ...f, git, review, updateReview };
 }
 
-function rendererContinuityFixture(t) {
-  const f = reviewedSourceFixture(t);
+function rendererContinuityFixture(t, schema = 'm3-s2-complete-semantic-review-v1', mutateReview) {
+  const f = reviewedSourceFixture(t, schema, mutateReview);
   const oldAssetPath = "archive/assets/reviewed-figure.svg", assetPath = "archive/assets/current-figure.svg";
   f.put(oldAssetPath, '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>');
   f.git("add", "--", oldAssetPath);
@@ -3246,8 +3247,9 @@ function correctiveRendererContinuityFixture(t) {
   return { ...f, intermediate, intermediateQuestion, oldSolution, newSolution };
 }
 
-function rendererV2Fixture(t, { insertions = false, transformContainer = value => value, extraDelta = {} } = {}) {
-  const f = rendererContinuityFixture(t), previous = structuredClone(f.nativeQuestion);
+function rendererV2Fixture(t, { insertions = false, transformContainer = value => value, extraDelta = {},
+  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview } = {}) {
+  const f = rendererContinuityFixture(t, nativeSchema, mutateReview), previous = structuredClone(f.nativeQuestion);
   const secondAsset = 'archive/assets/current-relic.svg';
   f.put(secondAsset, '<svg xmlns="http://www.w3.org/2000/svg"><circle r="2"/></svg>');
   Object.assign(f.current, { imageAlt: 'The two given radii and perpendicular foot', imageSize: 'full' }, extraDelta);
@@ -3294,9 +3296,10 @@ function rendererV2Fixture(t, { insertions = false, transformContainer = value =
   return { ...f, secondAsset, v2row: f.independent.rows[0] };
 }
 
-for (const insertions of [false, true]) test('renderer v2 official write/replay and native reuse preserve exact inspected ' +
+for (const nativeSchema of ['m3-s2-complete-semantic-review-v1', 'm2-s2-meta-review-v1'])
+for (const insertions of [false, true]) test(nativeSchema + ' renderer v2 official write/replay and native reuse preserve exact inspected ' +
     (insertions ? 'two image containers' : 'image description and size'), t => {
-  const f = rendererV2Fixture(t, { insertions }), nativeBytes = fs.readFileSync(path.join(f.root, 'docs/native-review.json'));
+  const f = rendererV2Fixture(t, { insertions, nativeSchema }), nativeBytes = fs.readFileSync(path.join(f.root, 'docs/native-review.json'));
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
   const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview.rendererContinuity;
   assert.equal(proof.transitionContract.schemaVersion, 'archive-independent-current-renderer-review-v2');
@@ -3312,6 +3315,40 @@ for (const insertions of [false, true]) test('renderer v2 official write/replay 
     assert.equal(nativeReviewedRendererRebind(receipt, source, previous, bank[0], identity, 1, receipt.appliedRecords[0], registry), true);
   assert.deepEqual(f.read(META).records[1], f.hold);
   assert.deepEqual(fs.readFileSync(path.join(f.root, 'docs/native-review.json')), nativeBytes);
+});
+
+test('m2-s2 renderer continuation preserves independent source, reviewer and asset gates', async t => {
+  for (const [name, mutateReview, error] of [
+    ['native source-only review', review => { Object.assign(review.items[0], { verdict: 'SOURCE_ONLY', rpmDecision: 'UNRESOLVED' }); }, /native semantic decision/],
+    ['native content hold', review => { review.items[0].contentDebt = ['SOURCE_SCAN_REQUIRED']; }, /explicit source\/content\/difficulty hold/],
+    ['native denominator', review => { review.reviewedQuestionCount = 1; }, /denominator/],
+    ...['SOURCE_ONLY', 'UNRESOLVED', undefined].map(verdict => [
+      `unsettled verdict ${verdict} cannot borrow a settled RPM decision`,
+      review => { review.items[0].verdict = verdict; }, /exclusive native-semantic/]),
+  ]) await t.test(name, t => {
+    const f = rendererV2Fixture(t, { nativeSchema: 'm2-s2-meta-review-v1', mutateReview });
+    const before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), error);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  });
+  for (const [name, mutate, error] of [
+    ['same author and renderer reviewer', f => { f.independent.reviewer = f.review.owner; }, /independent reviewer/],
+    ['uninspected asset', f => { f.v2row.assets.current[0].visuallyInspected = false; }, /visual inspection/],
+    ['wrong current source', f => { f.v2row.currentSourceRef.gitBlobSha1 = '0'.repeat(40); }, /source/],
+    ['new approval claim', f => { f.independent.counts.newMetadataApprovals = 1; }, /independent renderer review/],
+  ]) await t.test(name, t => {
+    const f = rendererV2Fixture(t, { nativeSchema: 'm2-s2-meta-review-v1' });
+    const before = fs.readFileSync(path.join(f.root, META));
+    mutate(f); f.republish();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), error);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  });
+  for (const extraDelta of [{ answer: 'unreviewed' }, { solution: 'unreviewed' }, { difficultyBucket: 5 }]) {
+    const f = rendererV2Fixture(t, { nativeSchema: 'm2-s2-meta-review-v1', extraDelta });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /renderer continuity|source\/approved metadata parity/);
+  }
+  const unsupported = rendererV2Fixture(t, { nativeSchema: 'm2-s1-meta-review-v1' });
+  assert.throws(() => registerReviewedExamV2({ root: unsupported.root, request: unsupported.request }), /exclusive native-semantic/);
 });
 
 test('renderer v2 fingerprint-only reuse preserves the issued registered rationale origin and RPM proof', t => {

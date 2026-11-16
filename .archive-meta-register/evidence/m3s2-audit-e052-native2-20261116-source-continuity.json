@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "archive-metadata-only-source-continuity-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "scope": "EXACT_STUDENT_PAYLOAD_AND_UNCHANGED_FOUR_SLOT_VECTORS",
+  "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+  "beforeSource": {
+    "commit": "c6cf8f68044346929a410f67e71dddadb2a74fae",
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "gitBlobSha1": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c",
+    "sha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+  },
+  "afterSource": {
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "gitBlobSha1": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+    "sha256": "ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9"
+  },
+  "sourceQuestionCount": 25,
+  "changedMetadata": [
+    {
+      "sourceOrdinal": 5,
+      "fields": [
+        "crossConceptKeys"
+      ]
+    }
+  ],
+  "protectedStudentFieldChanges": [],
+  "unchangedStudentPayloadCount": 25,
+  "priorCompact": {
+    "path": "archive/data/item-4slot/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.4slot.json",
+    "sha256": "44122bb897961fb78eef7b6b8acf7c4e56c568c2f1e4cd34b4d4694a5e4a6f1e",
+    "sourceGitBlobSha": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c"
+  },
+  "unchangedCompactItemCount": 25,
+  "compactItemsStableSha256": "9f29dca5d4b196b616e7882a5423337b16f3bd9989097d617797feb59d1d564c",
+  "reusedEvidence": {
+    "branch": "review/m3-s2-meta-full-20261114",
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.4slot.json",
+    "sha256": "29eb72472dfb7788207848197789d8f7dd54804aa45a210f3ec0bc3b90c9fcdc",
+    "originalReview": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.4slot.json",
+      "sha256": "29eb72472dfb7788207848197789d8f7dd54804aa45a210f3ec0bc3b90c9fcdc"
+    },
+    "sourceContinuity": {
+      "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+      "path": "archive-work/m3s2-4slot-current-20261115/current-source-continuity.json",
+      "sha256": "6f608cf2458bf9ce06e5b2a2da304ffc3ab34315b612d92f9b6d2b241e7c5968",
+      "scope": "EXACT_STUDENT_PAYLOAD_OR_SCOPED_REUSED_REVIEW",
+      "fullExamReReview": false
+    },
+    "dictionaryPromotion": {
+      "version": "term-dict-v1.6-2026-11-15",
+      "definitionReviewSha256": "8938198986ae1dfa70178f4f83e3bae018a749b9367cf15d3a186ff0d6f27cf4"
+    }
+  },
+  "reusedReviewer": {
+    "agent": "GPT_ROOT_26FC42390A50_SUBAGENT_M3S2",
+    "at": "2026-11-15",
+    "sampled": [
+      12,
+      20,
+      25
+    ],
+    "scope": "REUSE_COMPLETED_FULL_REVIEW_AND_SCOPED_CURRENT_SOURCE_CONTINUITY",
+    "independentFullExamReview": false,
+    "originalAuthor": {
+      "agent": "GPT_ROOT_6538DF266481",
+      "run": "M3S2_FULL_20261114",
+      "at": "2026-11-14"
+    },
+    "originalIndependentSampleStatus": "PASS"
+  },
+  "finalization": {
+    "commit": "c6cf8f68044346929a410f67e71dddadb2a74fae",
+    "path": ".archive-meta-register/evidence/m3s2-audit-e052-q5-cc-20261116/independent-cc-finalization.json",
+    "sha256": "65663d415174dd6a548a1d248934dd03940b49a93293b738322373a47a8644ab"
+  },
+  "sourceQualityApproval": false,
+  "newFullMathematicalQa": false,
+  "newFourSlotClassification": false,
+  "limitations": [
+    "CC registry와 4칸 용어 사전은 별도 정본이다. compact의 사각형내각합·교차하는현의정리 후보 및 기존 term ID는 이번 CC 등록만으로 승격하지 않는다.",
+    "원본 crop, 기존 해설 provenance, 정확 RPM leaf 및 2022 binding 부채를 보존한다."
+  ]
+}

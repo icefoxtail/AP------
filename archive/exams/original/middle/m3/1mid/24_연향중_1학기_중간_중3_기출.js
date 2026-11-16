@@ -310,7 +310,7 @@ window.questionBank = [
     "sourceQid": 6,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-004",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -332,8 +332,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_IRRATIONAL_NUMBER_CLASSIFICATION"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL"
   },
   {
@@ -618,8 +618,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_RATIONAL"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 12,
@@ -675,8 +675,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_RATIONAL"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 13,
@@ -888,15 +888,15 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "NONE"
   },
   {
     "id": 17,
@@ -949,9 +949,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_COMPLETE_SQUARE"
-    ],
+    "crossConceptKeys": ["CC_PERFECT_SQUARE_FACTORIZATION"],
     "conditionKeys": [
       "COND_RANGE"
     ],
@@ -1065,7 +1063,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 20,
@@ -1120,7 +1118,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 21,
@@ -1168,8 +1166,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_RATIONAL"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 22,
@@ -1215,15 +1213,13 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_RADICAL_EXPRESSION"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "semanticSourceScope": "M2-2",
@@ -1278,12 +1274,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SQUARE",
-      "CC_AREA"
-    ],
+    "crossConceptKeys": ["CC_SQUARE_AREA"],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/24_연향중_1학기_중간_중3_기출/q23-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 주어진 두 정사각형이 큰 정사각형의 파란 두 조각에 해당하고, 주황 직사각형 둘은 각각 넓이 xy이다.",
     "solutionImageCaption": "한 변의 합은 x+y=20이다. 큰 정사각형에서 주어진 두 정사각형 넓이를 빼면 400−200=2xy이다. 따라서 두 둘레의 곱은 (4x)(4y)=16xy=1600이다.",
