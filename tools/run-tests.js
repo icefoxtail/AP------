@@ -563,6 +563,12 @@ const requiredCommands = [
     // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
     args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
     timeout: 240000
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs',
+    // Bound the immutable Git fixture like the neighboring SVG7 contract.
+    args: ['--max-old-space-size=256', 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs'],
+    timeout: 240000
   }
 ];
 
