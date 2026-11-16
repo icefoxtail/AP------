@@ -114,6 +114,14 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },
   {
+    label: 'tests/archive-mathjax-enclosed-latin-font.test.cjs',
+    args: ['--test', 'tests/archive-mathjax-enclosed-latin-font.test.cjs']
+  },
+  {
+    label: 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs',
+    args: ['--test', 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs']
+  },
+  {
     label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
     args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
     timeout: 180000
