@@ -16,7 +16,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
   assert.match(engine, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
   assert.match(engine, /src="svg-accessibility\.js\?v=20261014\.1"/);
-  assert.match(engine, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-1/);
+  assert.match(engine, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-2/);
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
@@ -77,20 +77,48 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /injectQrToLastExamPage\(area, ctx\);[\s\S]{0,80}injectSubmitQrToLastExamPage\(area, ctx\);/);
 });
 
-test('direct mobile problem flow admits only explicitly marked inline images through the raster path', () => {
+test('direct mobile problem flow admits only explicitly marked problem images through the raster path', () => {
   const css = fs.readFileSync(path.join(root, 'archive', 'archive2-preview-mobile.css'), 'utf8');
   const mobile = css.slice(css.indexOf('/* Direct problem sheets'));
   assert.match(mobile, /@media screen and \(max-width: 640px\)/);
   assert.match(mobile, /html:not\(\[data-archive2-context\]\):has\(#qpp-display\)\[data-ap-render-ready="true"\]\s+#print-area:has\(\.page-exam-frame\)/);
   assert.match(mobile, /svg:not\(mjx-container svg, \.katex svg\)/);
   assert.match(mobile, /\.q-box \.q-content img\[data-archive-mobile-figure="true"\]:not\(\[hidden\]\)/);
+  const flowSelector = mobile.slice(0, mobile.indexOf('box-sizing:'));
+  assert.match(flowSelector, /\.q-box \.q-image-wrap > img\[data-archive-mobile-figure="true"\]:not\(\[hidden\]\)/);
+  assert.match(mobile, /\.q-box \.q-image-wrap > img\[data-archive-mobile-figure="true"\]:not\(\[hidden\]\)\s*\{\s*width: auto !important;\s*max-height: none !important;/);
   assert.doesNotMatch(mobile, /:has\(\.q-box \.q-content img\)/);
   const mixed = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
-  assert.match(mixed, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-1/);
+  assert.match(mixed, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-2/);
   const wrapSource = engine.slice(engine.indexOf('function wrapLatex('), engine.indexOf('function normalizeSolutionLineBreaks('));
   const wrapLatex = vm.runInNewContext('(' + wrapSource.trim() + ')');
   const marked = '<img src="assets/images/example/q12.png" class="exam-img" alt="그림" data-archive-mobile-figure="true">';
   assert.equal(wrapLatex('그림을 본다.<br>' + marked), '그림을 본다.<br>' + marked);
+});
+
+test('a structured problem image opts in only with a boolean and retains its role, URL, alt and size', () => {
+  const from = engine.indexOf('function renderQuestionImageHTML(');
+  const to = engine.indexOf('function withArchiveAssetCacheBuster(', from);
+  const calls = [];
+  const render = vm.runInNewContext('(' + engine.slice(from, to).trim() + ')', {
+    window: { APSvgAccessibility: { selectAccessibleAlt: (...args) => {
+      calls.push(args);
+      return '좌표축 "x" & y';
+    } } },
+    withArchiveAssetCacheBuster: src => src + '?asset=1&v=2',
+    examImageCrossOriginAttr: () => ' crossorigin="anonymous"',
+    escapeArchiveHtmlAttribute: text => text.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
+  });
+  const question = Object.freeze({ image: 'assets/images/example/q12.png', imageSize: 'small', imageAlt: '원래 그림' });
+  const ordinary = render(question, {});
+  assert.equal(ordinary, '<div class="q-image-wrap image-small"><img src="assets/images/example/q12.png?asset=1&amp;v=2" crossorigin="anonymous" alt="좌표축 &quot;x&quot; &amp; y"></div>');
+  for (const flag of [false, null, 1, 'true', 'false', { value: true }]) {
+    assert.equal(render({ ...question, imageMobileFigure: flag }, {}), ordinary);
+  }
+  const optedIn = Object.freeze({ ...question, imageMobileFigure: true });
+  assert.equal(render(optedIn, {}), ordinary.replace('></div>', ' data-archive-mobile-figure="true"></div>'));
+  assert.deepEqual(calls.at(-1), [question.image, 'image', optedIn, question.imageAlt, '문제 그림']);
+  assert.equal(render({ imageMobileFigure: true, content: '<img src="inline.png">' }, {}), '');
 });
 
 test('Archive solution executor is a DOM transaction module with injected engine dependencies', () => {

@@ -323,12 +323,13 @@
 
 
 /* Direct problem sheets use the mobile reading column for SVGs and author-marked
-   inline problem images. The A4 pagination and print layout stay separate. */
+   problem images. The A4 pagination and print layout stay separate. */
 @media screen and (max-width: 640px) {
   html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"]
     #print-area:has(.page-exam-frame):has(
       .q-box :is(.q-content, .q-image-wrap, .choice-text) :is(svg:not(mjx-container svg, .katex svg), img[src*=".svg" i], img[src^="data:image/svg+xml" i]),
-      .q-box .q-content img[data-archive-mobile-figure="true"]:not([hidden])
+      .q-box .q-content img[data-archive-mobile-figure="true"]:not([hidden]),
+      .q-box .q-image-wrap > img[data-archive-mobile-figure="true"]:not([hidden])
     ) {
     box-sizing: border-box;
     width: calc(100vw - 16px);
@@ -395,10 +396,15 @@
     }
     .q-box :is(
       :is(.q-content, .q-image-wrap, .choice-text) :is(svg:not(mjx-container svg, .katex svg), img[src*=".svg" i], img[src^="data:image/svg+xml" i]),
-      .q-content img[data-archive-mobile-figure="true"]:not([hidden])
+      .q-content img[data-archive-mobile-figure="true"]:not([hidden]),
+      .q-image-wrap > img[data-archive-mobile-figure="true"]:not([hidden])
     ) {
       max-width: 100% !important;
       height: auto !important;
+    }
+    .q-box .q-image-wrap > img[data-archive-mobile-figure="true"]:not([hidden]) {
+      width: auto !important;
+      max-height: none !important;
     }
   }
 }
