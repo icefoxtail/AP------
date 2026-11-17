@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "P",
+    "Q"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l",
+      "form": "GENERAL"
+    }
+  ],
+  "displaySegments": [
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "BQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "HQ",
+      "refs": [
+        "H",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "B",
+    "P",
+    "Q"
+  ],
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "P",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenBP",
+        "ownerSegment": "BP",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBQ",
+        "ownerSegment": "BQ",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBH",
+        "ownerSegment": "BH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenPH",
+        "ownerSegment": "PH",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenHQ",
+        "ownerSegment": "HQ",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "B(1,4)에서A가놓인직선y=1까지수직차3이다. AB=5이므로수평차√(25−9)=4. P(−3,1),Q(5,1)는A의두거리조건가능위치이다. k>0조건으로왼쪽P를제외하고오른쪽Q를선택하므로k=5. 정답④. H는공식수선발이고P,Q는수평차를계산한뒤H에서좌우평행이동으로파생한점이다. 기존이미지의풀이값을보존하되두후보의좌표와선택근거를같은축에서비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 두 점 $A(k, 1)$, $B(1, 4)$ 사이의 거리가 $5$일 때, 양수 $k$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "B(1,4)에서A가놓인직선y=1까지수직차3이다. AB=5이므로수평차√(25−9)=4. P(−3,1),Q(5,1)는A의두거리조건가능위치이다. k>0조건으로왼쪽P를제외하고오른쪽Q를선택하므로k=5. 정답④. H는공식수선발이고P,Q는수평차를계산한뒤H에서좌우평행이동으로파생한점이다. 기존이미지의풀이값을보존하되두후보의좌표와선택근거를같은축에서비교한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "B(1,4)에서A가놓인직선y=1까지수직차3이다. AB=5이므로수평차√(25−9)=4. P(−3,1),Q(5,1)는A의두거리조건가능위치이다. k>0조건으로왼쪽P를제외하고오른쪽Q를선택하므로k=5. 정답④. H는공식수선발이고P,Q는수평차를계산한뒤H에서좌우평행이동으로파생한점이다. 기존이미지의풀이값을보존하되두후보의좌표와선택근거를같은축에서비교한다."
+  ]
+}

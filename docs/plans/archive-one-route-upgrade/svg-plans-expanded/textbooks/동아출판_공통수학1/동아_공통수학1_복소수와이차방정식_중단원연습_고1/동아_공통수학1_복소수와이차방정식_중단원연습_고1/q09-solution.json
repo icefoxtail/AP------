@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "6"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-sqrt(3)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "sqrt(3)",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "u",
+      "y": "y"
+    }
+  },
+  "caption": "u=x−k로옮기면원식은u²−3=0이다. 이그림의가로축u는x−k이며모든k에서같은그래프다. 두근u=±√3을원래변수로돌리면x=k±√3. 항상서로다른두실근이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차방정식 $x^2-2kx+k^2-3=0$의 근을 판별하시오. (단, $k$는 실수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "u=x−k로옮기면원식은u²−3=0이다. 이그림의가로축u는x−k이며모든k에서같은그래프다. 두근u=±√3을원래변수로돌리면x=k±√3. 항상서로다른두실근이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "u=x−k로옮기면원식은u²−3=0이다. 이그림의가로축u는x−k이며모든k에서같은그래프다. 두근u=±√3을원래변수로돌리면x=k±√3. 항상서로다른두실근이다."
+  ]
+}

@@ -1,0 +1,461 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0Yn1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P6Yn1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0Yn2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P5Yn2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0Yn3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3Yn3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1Yn3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2Yn3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4Yn2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P5Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P6Y0",
+    "P0Yn1",
+    "P6Yn1",
+    "P0Yn2",
+    "P5Yn2",
+    "P0Yn3",
+    "P3Yn3",
+    "P1Y0",
+    "P1Yn3",
+    "P2Y0",
+    "P2Yn3",
+    "P3Y0",
+    "P4Y0",
+    "P4Yn2",
+    "P5Y0"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "P6Y0",
+    "P0Yn1",
+    "P6Yn1",
+    "P0Yn2",
+    "P5Yn2",
+    "P0Yn3",
+    "P3Yn3",
+    "P1Y0",
+    "P1Yn3",
+    "P2Y0",
+    "P2Yn3",
+    "P3Y0",
+    "P4Y0",
+    "P4Yn2",
+    "P5Y0"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "P6Y0"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P0Yn1",
+        "P6Yn1"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P0Yn2",
+        "P5Yn2"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P0Yn3",
+        "P3Yn3"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "P0Yn3"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P1Y0",
+        "P1Yn3"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "P2Y0",
+        "P2Yn3"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "P3Y0",
+        "P3Yn3"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "P4Y0",
+        "P4Yn2"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "P5Y0",
+        "P5Yn2"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "P6Y0",
+        "P6Yn1"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "원문 HTML 격자의 위쪽부터6·5·3칸과 모든 경계선을 보존했다. 굵은 두 수평선은 둘째 줄의 위·아래를 고른 한 예시이다. 두 높이를 모두 잇는 수직선 중 둘을 고르면 직사각형이 된다. 모든 높이 쌍을 세고 한 변이1·2·3칸인 정사각형을 따로 제외하되 최종 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 합동인 정사각형 14개로 이루어진 도형이 있다. 이 도형의 선들로 이루어진 정사각형이 아닌 직사각형의 개수는? [5.2점]<br><div style='display:grid;grid-template-columns:repeat(6,34px);grid-template-rows:repeat(3,34px);width:max-content;margin:12px auto'><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span style='border:1px solid'></span><span></span><span></span><span></span></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 CSS grid6열3행, bordered span14(6+5+3) 직접 확인. 높이1:21+15+6=42,높이2:15+6=21,높이3:6 ->69. 정사각형14+4+2+1=21 ->48③. 실제 HTML 렌더는 환경 socket제한 NOT_RUN, DOM조건은 완전.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "O=(0,0)은 평면도형의 평행이동 자유도를 고정하는 비표시 기준점이다. Q13은 원문의 정사각형 한 칸, Q14는 원문 길이 단위를 사용하며 나머지 모든 점은 O에서 해당 정수 칸수만큼 TRANSLATE_POINT로 유도한다. 좌표나 점 이름은 학생 화면에 표시하지 않는다.",
+      "mappedTo": "O and derived grid nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 HTML 격자의 위쪽부터6·5·3칸과 모든 경계선을 보존했다. 굵은 두 수평선은 둘째 줄의 위·아래를 고른 한 예시이다. 두 높이를 모두 잇는 수직선 중 둘을 고르면 직사각형이 된다. 모든 높이 쌍을 세고 한 변이1·2·3칸인 정사각형을 따로 제외하되 최종 개수는 쓰지 않는다."
+  ]
+}

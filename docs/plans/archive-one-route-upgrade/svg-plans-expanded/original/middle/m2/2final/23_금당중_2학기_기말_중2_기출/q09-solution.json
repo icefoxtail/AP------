@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -4,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7/2"
+        ],
+        "label": "y=x-3"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-4"
+        ],
+        "domain": [
+          "-1/4",
+          "3/2"
+        ],
+        "label": "y=-4x+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-2",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "coords",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "교점(1,−2)은 두 방정식을 모두 만족한다. x−ay=3에 대입하면1+2a=3에서a=1, bx+y=2에 대입하면b−2=2에서b=4. 실제 두 직선은y=x−3,y=−4x+2이며a−b=−3. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림은 두 일차방정식 $x-ay=3$과 $bx+y=2$의 그래프를 각각 그린 것이다. 두 수 $a$와 $b$에 대하여 $a-b$의 값을 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "교점(1,−2)은 두 방정식을 모두 만족한다. x−ay=3에 대입하면1+2a=3에서a=1, bx+y=2에 대입하면b−2=2에서b=4. 실제 두 직선은y=x−3,y=−4x+2이며a−b=−3. 정답①.",
+      "mappedTo": "overlays"
+    },
+    {
+      "id": "window",
+      "condition": "직선의 정의역은 전체 실수이며 domain은 교점과 양축 절편을 보존하는 표시창 자르기다. 선의 표시 끝을 실제 정의역 경계로 주장하지 않는다.",
+      "mappedTo": "graphPlan.curves.domain"
+    }
+  ],
+  "newVisualInformation": [
+    "판독 가능한 교점과 본문을 일치시킨 선명한 식 라벨"
+  ]
+}

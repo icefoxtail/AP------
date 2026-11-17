@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "-6"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "14",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": "-1/2",
+        "y": "11"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "-4"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "-4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "B",
+        "C",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1/2",
+        "2"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "breakpoints": [
+      {
+        "x": "-1/2",
+        "y": "11"
+      },
+      {
+        "x": "2",
+        "y": "-4"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "H"
+    }
+  },
+  "caption": "√((2x+1)²)=|2x+1|로 바꾸고 좌변에서 우변을 뺀 H(x)=3|x−2|−|2x+1|−x+3을 그렸다. 부호 분기점−1/2,2를 경계로 식이 달라진다. H가0보다 낮은 부분을 각 구간에서 찾아 합치며 최종 경계값과 해구간은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 2]<br>부등식 $3|x-2|-\\sqrt{4x^2+4x+1}<x-3$를 만족시키는 범위를 구하는 풀이과정과 답을 쓰시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "H는x<−.5에서10−2x,−.5≤x<2에서8−6x,x≥2에서−4. 음수영역x>4/3. 최종근표식/좌표/음영 없음.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "√((2x+1)²)=|2x+1|로 바꾸고 좌변에서 우변을 뺀 H(x)=3|x−2|−|2x+1|−x+3을 그렸다. 부호 분기점−1/2,2를 경계로 식이 달라진다. H가0보다 낮은 부분을 각 구간에서 찾아 합치며 최종 경계값과 해구간은 표시하지 않는다."
+  ]
+}

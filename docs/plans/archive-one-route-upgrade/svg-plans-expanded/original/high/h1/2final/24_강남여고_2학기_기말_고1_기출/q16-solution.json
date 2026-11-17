@@ -1,0 +1,153 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      5,
+      -1,
+      3
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "5",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "-1"
+        ],
+        "label": "y=sqrt(x+5)"
+      },
+      {
+        "id": "right",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=sqrt(x)"
+      },
+      {
+        "id": "top",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "label": "y=2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "0"
+      ],
+      "y": [
+        "0",
+        "2"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "under": "left",
+        "from": "-5",
+        "to": "-1",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S2",
+        "under": "top",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S3",
+        "between": [
+          "top",
+          "right"
+        ],
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-5",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "E",
+          "x": "-4",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "F",
+          "x": "1",
+          "y": "1",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "slice",
+          "from": "E",
+          "to": "F",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "0≤y≤2에서 왼쪽 x=y²−5,오른쪽 x=y²이므로 같은 높이의 가로폭은5이다. 예를 들어 y=1에서(−4,1)과(1,1)의 거리도5이다. 이 가로 조각을 나란히 옮기면 폭5·높이2 직사각형과 같아 넓이5×2=10. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 곡선 $y=\\sqrt{x+5}$, $y=\\sqrt{x}$와 $x$축 및 $y=2$로 둘러싸인 부분의 넓이는? [4.6점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "0≤y≤2에서 왼쪽 x=y²−5,오른쪽 x=y²이므로 같은 높이의 가로폭은5이다. 예를 들어 y=1에서(−4,1)과(1,1)의 거리도5이다. 이 가로 조각을 나란히 옮기면 폭5·높이2 직사각형과 같아 넓이5×2=10. 정답②.",
+      "mappedTo": "overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "정확 경계점과 높이1에서의 일정 가로폭5"
+  ]
+}

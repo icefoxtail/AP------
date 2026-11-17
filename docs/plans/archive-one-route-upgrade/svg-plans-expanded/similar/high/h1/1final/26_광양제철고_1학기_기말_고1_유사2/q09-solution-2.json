@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "-8",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4/3",
+        "y": "-64/3"
+      },
+      {
+        "id": "A",
+        "x": "-4/3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "formula": "3*x^2+(-8)*x-16",
+    "axisTitles": {
+      "x": "u",
+      "y": "F"
+    }
+  },
+  "caption": "d=−2√3일 때, s=x+y와 u=s/√3로 두면3u²−8u−16=0이다. 이 패널의 u근은-4/3,4이고 실제 s는 각 값의√3배이다. 두 패널 전체의 최댓값은u4에서s4√3. 그림 식의x는u,y는변환식이다. 정답4√3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x=\\alpha,y=\\beta$가 연립방정식 $\\begin{cases}x^2-2xy+y^2=12\\\\x^2+3xy-y^2=3\\end{cases}$의 해일 때, $\\alpha+\\beta$의 최댓값은? [4.9점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "d²12,3s²+4sd−48=0, s=√3u로 나눠 두 이차식. x=(s+d)/2,y=(s−d)/2로 모든 후보가 실제 해이다.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "d=−2√3일 때, s=x+y와 u=s/√3로 두면3u²−8u−16=0이다. 이 패널의 u근은-4/3,4이고 실제 s는 각 값의√3배이다. 두 패널 전체의 최댓값은u4에서s4√3. 그림 식의x는u,y는변환식이다. 정답4√3."
+  ]
+}

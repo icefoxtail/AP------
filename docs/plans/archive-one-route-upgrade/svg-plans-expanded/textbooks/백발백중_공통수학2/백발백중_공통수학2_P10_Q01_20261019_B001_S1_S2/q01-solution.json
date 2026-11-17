@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "P",
+    "Q"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l",
+      "form": "GENERAL"
+    }
+  ],
+  "displaySegments": [
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "BQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "HQ",
+      "refs": [
+        "H",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "B",
+    "P",
+    "Q"
+  ],
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "P",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenBP",
+        "ownerSegment": "BP",
+        "text": "sqrt(41)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBQ",
+        "ownerSegment": "BQ",
+        "text": "sqrt(41)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBH",
+        "ownerSegment": "BH",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenPH",
+        "ownerSegment": "PH",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenHQ",
+        "ownerSegment": "HQ",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "B(1,2)에서A가놓인직선y=−2까지수직차4이다. AB²=41이므로수평차√(41−16)=5. P(−4,−2),Q(6,−2)는각각A의두가능위치이고같은좌표축에함께나타냈다. 따라서t=−4또는6,두값의합2. 정답②. H는공식수선발이고P,Q는수평차를계산한뒤H에서좌우평행이동으로파생한점이다. 기존이미지의풀이값을보존하되두후보의좌표와선택근거를같은축에서비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 두 점 $A(t, -2)$, $B(1, 2)$ 사이의 거리가 $\\sqrt{41}$일 때, 모든 실수 $t$의 값의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "B(1,2)에서A가놓인직선y=−2까지수직차4이다. AB²=41이므로수평차√(41−16)=5. P(−4,−2),Q(6,−2)는각각A의두가능위치이고같은좌표축에함께나타냈다. 따라서t=−4또는6,두값의합2. 정답②. H는공식수선발이고P,Q는수평차를계산한뒤H에서좌우평행이동으로파생한점이다. 기존이미지의풀이값을보존하되두후보의좌표와선택근거를같은축에서비교한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "B(1,2)에서A가놓인직선y=−2까지수직차4이다. AB²=41이므로수평차√(41−16)=5. P(−4,−2),Q(6,−2)는각각A의두가능위치이고같은좌표축에함께나타냈다. 따라서t=−4또는6,두값의합2. 정답②. H는공식수선발이고P,Q는수평차를계산한뒤H에서좌우평행이동으로파생한점이다. 기존이미지의풀이값을보존하되두후보의좌표와선택근거를같은축에서비교한다."
+  ]
+}

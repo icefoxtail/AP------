@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "displaySegments": [
+    {
+      "id": "S1S2",
+      "refs": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "S3S4",
+      "refs": [
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "S4S5",
+      "refs": [
+        "S4",
+        "S5"
+      ]
+    }
+  ],
+  "caption": "좌석을 왼쪽부터 S1,S2 | S3,S4,S5로 표시한다. S2와S3 사이의 넓은 간격은 통로이며 그 두 좌석 사이에는 인접선을 긋지 않는다. 선으로 연결한 세 쌍만 A,B가 이웃하여 앉을 수 있다. 쌍3가지×두 사람 순서2!×남은 세 사람3!=36. 정답36. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 5개의 좌석이 있다. $\\mathrm{A, B, C, D, E}$ 다섯 명이 영화 관람을 위하여 좌석에 앉을 때, $\\mathrm{A}$와 $\\mathrm{B}$가 이웃하게 앉는 경우의 수를 구하시오. (단, 통로를 사이에 두고 앉는 경우에는 이웃하지 않는 것으로 생각한다.)\n<img src=\"q10.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "좌석을 왼쪽부터 S1,S2 | S3,S4,S5로 표시한다. S2와S3 사이의 넓은 간격은 통로이며 그 두 좌석 사이에는 인접선을 긋지 않는다. 선으로 연결한 세 쌍만 A,B가 이웃하여 앉을 수 있다. 쌍3가지×두 사람 순서2!×남은 세 사람3!=36. 정답36. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "좌석을 왼쪽부터 S1,S2 | S3,S4,S5로 표시한다. S2와S3 사이의 넓은 간격은 통로이며 그 두 좌석 사이에는 인접선을 긋지 않는다. 선으로 연결한 세 쌍만 A,B가 이웃하여 앉을 수 있다. 쌍3가지×두 사람 순서2!×남은 세 사람3!=36. 정답36. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

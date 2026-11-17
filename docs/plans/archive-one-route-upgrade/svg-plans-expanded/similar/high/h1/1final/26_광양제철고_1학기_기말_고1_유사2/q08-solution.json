@@ -35,33 +35,59 @@
         "y": "4"
       }
     ],
-    "coordinateBand": {
-      "hide": [
-        "L",
-        "V",
-        "R"
-      ]
-    },
-    "axisTickValues": {
-      "x": [
-        "-6",
-        "-5",
-        "-4",
-        "-3",
-        "-2",
-        "-1",
-        "0"
-      ],
-      "y": [
-        "0"
-      ]
-    },
     "axisTitles": {
       "x": "a",
       "y": "H"
+    },
+    "formula": "(4) + (6)*x + (1)*x^2",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-3-sqrt(5)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "-3+sqrt(5)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "I0",
+          "curveX": "-5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "I1",
+          "curveX": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "I2",
+          "curveX": "-3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "I3",
+          "curveX": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "I4",
+          "curveX": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
     }
   },
-  "caption": "먼저 a>0과 a=0은 양수가 되는 x가 있으므로 제외한다. a<0에서는 D/4=a²+6a+4≤0이어야 한다. 가로축을 a로 하여 판별식 보조곡선을 그렸으며 정수 눈금에서 높이가0 이하인 경우를 확인한다. 최종 정수 개수는 쓰지 않는다.",
+  "caption": "a>0과 a0은 양수가 되는 x가 있어 제외. a<0에서 D/4=H(a)=a²+6a+4≤0이어야 한다. 두 경계−3±√5 사이의 정수−5,−4,−3,−2,−1을 확인한다. 그림 식 x는 매개변수a이다. 정답5개.",
   "sourceConditions": [
     {
       "id": "source",
@@ -70,11 +96,11 @@
     },
     {
       "id": "method",
-      "condition": "a<0,D/4≤0 ->−3−√5≤a≤−3+√5. 정수−5..−1 총5③. a0 일차예외 확인.",
+      "condition": "a>0과 a0은 양수가 되는 x가 있어 제외. a<0에서 D/4=H(a)=a²+6a+4≤0이어야 한다. 두 경계−3±√5 사이의 정수−5,−4,−3,−2,−1을 확인한다. 그림 식 x는 매개변수a이다. 정답5개.",
       "mappedTo": "independent-math"
     }
   ],
   "newVisualInformation": [
-    "먼저 a>0과 a=0은 양수가 되는 x가 있으므로 제외한다. a<0에서는 D/4=a²+6a+4≤0이어야 한다. 가로축을 a로 하여 판별식 보조곡선을 그렸으며 정수 눈금에서 높이가0 이하인 경우를 확인한다. 최종 정수 개수는 쓰지 않는다."
+    "a>0과 a0은 양수가 되는 x가 있어 제외. a<0에서 D/4=H(a)=a²+6a+4≤0이어야 한다. 두 경계−3±√5 사이의 정수−5,−4,−3,−2,−1을 확인한다. 그림 식 x는 매개변수a이다. 정답5개."
   ]
 }

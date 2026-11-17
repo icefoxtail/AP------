@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-3",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      "-1/5",
+      "4/5"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3/10",
+        "y": "31/20"
+      },
+      {
+        "id": "L",
+        "x": "-1/5",
+        "y": "14/5"
+      },
+      {
+        "id": "R",
+        "x": "4/5",
+        "y": "14/5"
+      }
+    ],
+    "formula": "5*x^2 - 3*x + 2"
+  },
+  "caption": "⑵ D=9−40=−31<0. 최솟값31/20>0으로실수교점은없고두허근(3±√31 i)/10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차방정식을 풀고, 그 근이 실근인지 허근인지 말하시오.\n⑴ $x^2-15x+36=0$\n⑵ $5x^2-3x+2=0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ (x−3)(x−12)=0이므로서로다른두실근3,12이다. 두x축교점과꼭짓점을표시한다. 가로와세로척도는달라축값으로읽는다. ⑵ D=9−40=−31<0. 최솟값31/20>0으로실수교점은없고두허근(3±√31 i)/10이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ D=9−40=−31<0. 최솟값31/20>0으로실수교점은없고두허근(3±√31 i)/10이다."
+  ]
+}

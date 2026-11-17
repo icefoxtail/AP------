@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "8",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      -2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "-2",
+        "y": "4"
+      }
+    ],
+    "formula": "x^2 + 8*x + 16"
+  },
+  "caption": "D/4=(k+3)²−(k²−ak+9)=k(a+6). 모든실수k에서0이어야하므로a=−6이다. 원식은(x+k+3)²로항상중근−k−3. 이패널은k=1인평행이동예시이다. 정답a=−6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[추론] $x$에 대한 이차방정식\n$$x^2+(2k+6)x+k^2-ak+9=0$$\n이 실수 $k$의 값에 관계없이 항상 중근을 가질 때, 실수 $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "D/4=(k+3)²−(k²−ak+9)=k(a+6). 모든실수k에서0이어야하므로a=−6이다. 원식은(x+k+3)²로항상중근−k−3. 이패널은k=0인평행이동예시이다. 정답a=−6. D/4=(k+3)²−(k²−ak+9)=k(a+6). 모든실수k에서0이어야하므로a=−6이다. 원식은(x+k+3)²로항상중근−k−3. 이패널은k=1인평행이동예시이다. 정답a=−6.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "D/4=(k+3)²−(k²−ak+9)=k(a+6). 모든실수k에서0이어야하므로a=−6이다. 원식은(x+k+3)²로항상중근−k−3. 이패널은k=1인평행이동예시이다. 정답a=−6."
+  ]
+}

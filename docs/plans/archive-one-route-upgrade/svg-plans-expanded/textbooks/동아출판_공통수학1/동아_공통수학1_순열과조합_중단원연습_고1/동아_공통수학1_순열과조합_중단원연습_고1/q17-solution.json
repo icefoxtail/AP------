@@ -1,0 +1,120 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "caption": "기존 반원과7개 점 그림을 보존하고, 같은 직선 위의 지름4점만 확대한다. A,B,C,D는 원본에서 왼쪽부터 지름 위에 있는 점을 임시로 부른 이름이며 간격의 수치는 사용하지 않는다. 네 점의 쌍 AB,AC,AD,BC,BD,CD 여섯 개는 모두 같은 한 직선이다. 전체7C2=21에서 이 여섯 중복을 빼고 실제 한 직선을 다시 더하면21−6+1=16. 정답16. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반원 위에 7개의 점이 있을 때, 두 점을 이어서 만들 수 있는 서로 다른 직선의 개수를 구하시오.\n<img src=\"q17.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존 반원과7개 점 그림을 보존하고, 같은 직선 위의 지름4점만 확대한다. A,B,C,D는 원본에서 왼쪽부터 지름 위에 있는 점을 임시로 부른 이름이며 간격의 수치는 사용하지 않는다. 네 점의 쌍 AB,AC,AD,BC,BD,CD 여섯 개는 모두 같은 한 직선이다. 전체7C2=21에서 이 여섯 중복을 빼고 실제 한 직선을 다시 더하면21−6+1=16. 정답16. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 반원과7개 점 그림을 보존하고, 같은 직선 위의 지름4점만 확대한다. A,B,C,D는 원본에서 왼쪽부터 지름 위에 있는 점을 임시로 부른 이름이며 간격의 수치는 사용하지 않는다. 네 점의 쌍 AB,AC,AD,BC,BD,CD 여섯 개는 모두 같은 한 직선이다. 전체7C2=21에서 이 여섯 중복을 빼고 실제 한 직선을 다시 더하면21−6+1=16. 정답16. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

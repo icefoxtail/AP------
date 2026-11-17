@@ -1,0 +1,133 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "계산 지정값으로 얻은 길이를 이어 놓은 합계 막대이다. 밑동12 m와 부러진 부분25 m를 더해37 m. 앞의33° 삼각형을 이 길이로 재작도한 것이 아니며 근삿값 계산 과정을 분리한 것이다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지면에 수직으로 서 있던 나무가 번개를 맞아 부러져 오른쪽 그림과 같이 지면과 $33^\\circ$의 각을 이루게 되었다. 부러지기 전의 이 나무의 높이는?<br>(단, $\\cos 33^\\circ=0.8, \\tan 33^\\circ=0.6$으로 계산한다.)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q6-problem-v2.svg\" alt=\"부러진 지점 A와 땅에 닿은 C를 이은 나무가 지면에서 33도를 이룬다. B에서 C까지는 20 m이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "stump",
+        "ownerSegment": "AB",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "fallen",
+        "ownerSegment": "BC",
+        "text": "25",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "whole",
+        "from": "A",
+        "to": "C",
+        "label": "37",
+        "unit": "m",
+        "side": "BELOW",
+        "value": 37
+      }
+    ]
+  }
+}

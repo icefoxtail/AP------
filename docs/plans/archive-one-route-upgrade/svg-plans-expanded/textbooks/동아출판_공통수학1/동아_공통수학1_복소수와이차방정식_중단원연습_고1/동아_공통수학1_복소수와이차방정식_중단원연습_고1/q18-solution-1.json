@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-5",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-4"
+      },
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "0",
+        "y": "5"
+      }
+    ],
+    "formula": "x^2 + 6*x + 5"
+  },
+  "caption": "근의합k−11,곱k이므로근의차제곱16=(k−11)²−4k. k²−26k+105=(k−5)(k−21)=0. 이패널은k5의두근−5,−1로차4를보인다. 정답k5또는21.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[추론] 이차방정식 $x^2+(11-k)x+k=0$의 두 근의 차가 $4$일 때, 실수 $k$의 값을 모두 구하시오.\n\n[단계1] 이차방정식의 근과 계수의 관계를 이용하여 두 근의 합과 곱을 $k$에 대한 식으로 나타내시오.\n[단계2] 실수 $k$의 값을 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "근의합k−11,곱k이므로근의차제곱16=(k−11)²−4k. k²−26k+105=(k−5)(k−21)=0. 이패널은k5의두근−5,−1로차4를보인다. 정답k5또는21. k21의두근3,7도차4이다. 두k값모두실근의차조건을만족하며제외할값없다. 정답k=5또는21.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "근의합k−11,곱k이므로근의차제곱16=(k−11)²−4k. k²−26k+105=(k−5)(k−21)=0. 이패널은k5의두근−5,−1로차4를보인다. 정답k5또는21."
+  ]
+}

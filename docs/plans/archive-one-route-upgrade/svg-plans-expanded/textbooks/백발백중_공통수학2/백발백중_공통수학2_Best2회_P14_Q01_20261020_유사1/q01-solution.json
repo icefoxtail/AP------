@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "axis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BK",
+      "refs": [
+        "B",
+        "K"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OK",
+      "refs": [
+        "O",
+        "K"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B"
+  ],
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "O",
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "k",
+      "refs": [
+        "O",
+        "K",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBO",
+        "ownerSegment": "BO",
+        "text": "2sqrt(13)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "기존그림의세좌표와세변길이를보존하고x축으로내린수선AH,BK를더해거리공식의직각변을보인다. OA=√(3²+4²)=5,AB=|−3−(−6)|=3,BO=√(6²+4²)=2√13. 둘레는5+3+2√13=8+2√13. 정답④. H,K는원문새조건이아니라두점에서x축으로내린보조수선발이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 세 점 $O(0, 0)$, $A(-3, 4)$, $B(-6, 4)$를 꼭짓점으로 하는 삼각형 $OAB$의 둘레의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존그림의세좌표와세변길이를보존하고x축으로내린수선AH,BK를더해거리공식의직각변을보인다. OA=√(3²+4²)=5,AB=|−3−(−6)|=3,BO=√(6²+4²)=2√13. 둘레는5+3+2√13=8+2√13. 정답④. H,K는원문새조건이아니라두점에서x축으로내린보조수선발이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존그림의세좌표와세변길이를보존하고x축으로내린수선AH,BK를더해거리공식의직각변을보인다. OA=√(3²+4²)=5,AB=|−3−(−6)|=3,BO=√(6²+4²)=2√13. 둘레는5+3+2√13=8+2√13. 정답④. H,K는원문새조건이아니라두점에서x축으로내린보조수선발이다."
+  ]
+}

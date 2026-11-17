@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "34"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "G",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "GA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "직육면체에서 밑면 EG=√(5²+3²)=√34, 높이 AE=4이다. 직각삼각형 AGE만 같은 길이로 펼치면 AG=√(34+16)=5√2. sin x=4/(5√2), cos x=√34/(5√2), 정답(2√2−√17)/5(④). 원래 입체그림은 유지한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 직육면체에서 $\\angle\\mathrm{AGE}=\\angle x$라고 할 때, $\\sin x - \\cos x$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q3-problem-v2.svg\" alt=\"직육면체의 가로는 5 cm, 깊이는 3 cm, 높이는 4 cm이다. A와 G를 공간 대각선으로 이었고 각 x는 G에서 밑면 대각선 GE와 이루는 각이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "e",
+      "refs": [
+        "A",
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "base",
+        "ownerSegment": "EG",
+        "text": "sqrt(34)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "AE",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "hyp",
+        "ownerSegment": "GA",
+        "text": "5sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

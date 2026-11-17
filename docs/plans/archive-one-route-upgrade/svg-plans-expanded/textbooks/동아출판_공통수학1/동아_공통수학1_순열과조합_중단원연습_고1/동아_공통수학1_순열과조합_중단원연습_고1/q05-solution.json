@@ -1,0 +1,182 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "A=정문,B=정원,C=분수,D=후문. 선 옆 수는 길이가 아니라 산책로 개수다. 정원과 분수를 모두 지나므로 A→B→C→D는3×1×2=6, A→C→B→D는2×1×2=4. 재방문 없이 가능한 방문 순서는 이 두 가지다. 정답6+4=10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "nAB",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nAC",
+        "ownerSegment": "AC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nBC",
+        "ownerSegment": "BC",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nBD",
+        "ownerSegment": "BD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nCD",
+        "ownerSegment": "CD",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 어느 공원의 정문, 분수, 후문, 정원을 연결하는 산책로를 나타낸 것이다. 정문에서 정원, 분수를 모두 거쳐 후문으로 가는 경우의 수를 구하시오. (단, 한 번 지나간 지점은 다시 지나가지 않는다.)\n<img src=\"q05.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A=정문,B=정원,C=분수,D=후문. 선 옆 수는 길이가 아니라 산책로 개수다. 정원과 분수를 모두 지나므로 A→B→C→D는3×1×2=6, A→C→B→D는2×1×2=4. 재방문 없이 가능한 방문 순서는 이 두 가지다. 정답6+4=10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A=정문,B=정원,C=분수,D=후문. 선 옆 수는 길이가 아니라 산책로 개수다. 정원과 분수를 모두 지나므로 A→B→C→D는3×1×2=6, A→C→B→D는2×1×2=4. 재방문 없이 가능한 방문 순서는 이 두 가지다. 정답6+4=10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "base",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "right",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "top",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "left",
+      "refs": [
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "diag",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "base",
+        "text": "x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "right",
+        "text": "y",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "label2",
+        "ownerSegment": "diag",
+        "text": "4\\sqrt{13}",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "변경 전 직사각형을 같은 길이 단위의 정확한 비율로 그렸다. 원래 가로를 x,세로를 y라 하면 x²+y²=208, (x−4)(y+4)=xy−32이다. 두 그림의 변 길이 표기와 넓이 차를 연결해 연립방정식을 세우며 최종 넓이는 쓰지 않는다.",
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "대각선의 길이가 $4\\sqrt{13}$인 직사각형 $ABCD$가 있다. 이 직사각형의 가로 길이는 4만큼 줄어들고 세로 길이는 4만큼 늘어난 직사각형을 $A'B'C'D'$라 하자. $A'B'C'D'$의 넓이는 $ABCD$의 넓이보다 32만큼 작을 때, $A'B'C'D'$의 넓이는? [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x−y−4, x²+y²208 ->x8 y12, 새4×16=64②. 실측 비율은 확정해의 정확한 도형, 변에는 x,y및변화식만 표기. 최종넓이64 미표시.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "O=(0,0)은 평면도형의 평행이동 자유도를 고정하는 비표시 기준점이다. Q13은 원문의 정사각형 한 칸, Q14는 원문 길이 단위를 사용하며 나머지 모든 점은 O에서 해당 정수 칸수만큼 TRANSLATE_POINT로 유도한다. 좌표나 점 이름은 학생 화면에 표시하지 않는다.",
+      "mappedTo": "O and derived grid nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "변경 전 직사각형을 같은 길이 단위의 정확한 비율로 그렸다. 원래 가로를 x,세로를 y라 하면 x²+y²=208, (x−4)(y+4)=xy−32이다. 두 그림의 변 길이 표기와 넓이 차를 연결해 연립방정식을 세우며 최종 넓이는 쓰지 않는다."
+  ]
+}
