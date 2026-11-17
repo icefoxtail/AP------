@@ -1,0 +1,58 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "ratePi": "1",
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1/4",
+        "7/4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -0.25,
+      1.75
+    ],
+    "viewport": [
+      -1.25,
+      2.75,
+      -3,
+      3
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [],
+      "lines": []
+    }
+  },
+  "caption": "③의함수를세로평행이동·배율변환하면tanx가되므로주기는변하지않아π이다. 이패널은그주기비교용정규화함수이다. ①②⑤도x계수절댓값2인sin/cos라주기π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 주기가 다른 하나는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "③의함수를세로평행이동·배율변환하면tanx가되므로주기는변하지않아π이다. 이패널은그주기비교용정규화함수이다. ①②⑤도x계수절댓값2인sin/cos라주기π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다. ④2tan(x/2)의주기는2π이므로다른네함수의π와다르다. 두패널가로축t=x/π에서주기는각각1과2다. 정답④. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "③의함수를세로평행이동·배율변환하면tanx가되므로주기는변하지않아π이다. 이패널은그주기비교용정규화함수이다. ①②⑤도x계수절댓값2인sin/cos라주기π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다."
+  ]
+}

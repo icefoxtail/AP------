@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-2",
+          "8"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "9"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "5"
+      },
+      {
+        "id": "V",
+        "x": "1/8",
+        "y": "-9/8"
+      },
+      {
+        "id": "A",
+        "x": "-1/4",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1/2",
+        "y": "0"
+      }
+    ],
+    "formula": "8*x^2 - 2*x - 1",
+    "axisTitles": {
+      "x": "s",
+      "y": "y"
+    }
+  },
+  "caption": "s=sinx로바꾸면8s²−2s−1=(4s+1)(2s−1)=0. 후보s−1/4,1/2중0≤x<π에서는s≥0이라1/2만가능. 표시식x는s. 각의두해π/6,5π/6의합π.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < \\pi$일 때, 방정식 $8\\cos^2 x + 2\\sin x - 7 = 0$의 모든 근의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "s=sinx로바꾸면8s²−2s−1=(4s+1)(2s−1)=0. 후보s−1/4,1/2중0≤x<π에서는s≥0이라1/2만가능. 표시식x는s. 각의두해π/6,5π/6의합π. 원문0≤x<π에서sinx=1/2의두해π/6,5π/6을그려대칭성을확인한다. 정답합π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "s=sinx로바꾸면8s²−2s−1=(4s+1)(2s−1)=0. 후보s−1/4,1/2중0≤x<π에서는s≥0이라1/2만가능. 표시식x는s. 각의두해π/6,5π/6의합π."
+  ]
+}

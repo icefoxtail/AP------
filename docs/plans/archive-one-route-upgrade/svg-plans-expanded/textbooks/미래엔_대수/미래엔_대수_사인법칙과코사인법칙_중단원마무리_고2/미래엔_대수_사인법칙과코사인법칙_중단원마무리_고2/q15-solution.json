@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "E",
+    "W",
+    "S",
+    "R",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "원뿔옆면을펴면반지름12,호길이8π인부채꼴이므로중심각120°. 한바퀴감아같은모선의반대경계에있는중점Q까지가므로OP12,OQ6,∠POQ120°. 직선PQ가최단이며PQ²=144+36−144cos120°=252. 정답6√7cm. 전체보조원은방향기준이며실제전개도는작은호PR의부채꼴이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "displayCircles": [
+    "circle"
+  ],
+  "hiddenPointNames": [
+    "E",
+    "W",
+    "S"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle",
+        "refs": [
+          "P",
+          "O",
+          "R"
+        ],
+        "value": 120,
+        "label": "120"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc",
+        "circle": "circle",
+        "center": "O",
+        "from": "P",
+        "to": "R",
+        "side": "MINOR",
+        "label": "8pi"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "op",
+        "ownerSegment": "OP",
+        "text": "12"
+      },
+      {
+        "id": "pq",
+        "ownerSegment": "PQ",
+        "text": "6sqrt(7)"
+      },
+      {
+        "id": "oq",
+        "ownerSegment": "OQ",
+        "text": "6"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "mid",
+        "count": 1,
+        "segments": [
+          "OQ",
+          "QR"
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$이고 모선의 길이가 $12\\text{ cm}$인 원뿔이 있다. 원뿔의 밑면인 원의 둘레 위의 점 $\\mathrm{P}$에서 모선 $\\mathrm{OP}$의 중점 $\\mathrm{Q}$까지 원뿔의 표면을 따라 실을 감을 때, 감은 실의 길이의 최솟값을 구하시오.\n<img src=\"q15.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원뿔옆면을펴면반지름12,호길이8π인부채꼴이므로중심각120°. 한바퀴감아같은모선의반대경계에있는중점Q까지가므로OP12,OQ6,∠POQ120°. 직선PQ가최단이며PQ²=144+36−144cos120°=252. 정답6√7cm. 전체보조원은방향기준이며실제전개도는작은호PR의부채꼴이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔옆면을펴면반지름12,호길이8π인부채꼴이므로중심각120°. 한바퀴감아같은모선의반대경계에있는중점Q까지가므로OP12,OQ6,∠POQ120°. 직선PQ가최단이며PQ²=144+36−144cos120°=252. 정답6√7cm. 전체보조원은방향기준이며실제전개도는작은호PR의부채꼴이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

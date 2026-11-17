@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4/3",
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/6",
+        "y": "-17/12"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "2/3"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "8/3"
+      }
+    ],
+    "formula": "3*x^2 + x - 4/3",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "(-1-sqrt(17))/6",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "(-1+sqrt(17))/6",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두근의합sinθ+cosθ=−1/3,곱k/3. 제곱합1을이용하면1/9−2k/3=1,k=−4/3. 그래프는확정된이차식3x²+x−4/3의두근(−1±√17)/6을보인다. 두근제곱합1과합−1/3을검산할수있다. 정답−4/3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $3x^2+x+k=0$의 두 근이 $\\sin\\theta$와 $\\cos\\theta$일 때, 상수 $k$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두근의합sinθ+cosθ=−1/3,곱k/3. 제곱합1을이용하면1/9−2k/3=1,k=−4/3. 그래프는확정된이차식3x²+x−4/3의두근(−1±√17)/6을보인다. 두근제곱합1과합−1/3을검산할수있다. 정답−4/3.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두근의합sinθ+cosθ=−1/3,곱k/3. 제곱합1을이용하면1/9−2k/3=1,k=−4/3. 그래프는확정된이차식3x²+x−4/3의두근(−1±√17)/6을보인다. 두근제곱합1과합−1/3을검산할수있다. 정답−4/3."
+  ]
+}

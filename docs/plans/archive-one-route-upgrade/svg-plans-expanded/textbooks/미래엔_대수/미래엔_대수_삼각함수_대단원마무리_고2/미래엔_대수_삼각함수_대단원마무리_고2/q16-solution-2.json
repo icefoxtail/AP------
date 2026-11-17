@@ -1,0 +1,78 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "ratePi": "1",
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0.0,
+      1.0
+    ],
+    "viewport": [
+      -1.0,
+      2.0,
+      -3,
+      3
+    ],
+    "keyPoints": true,
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1/6",
+          "y": "1/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5/6",
+          "y": "1/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "bound",
+          "slope": "0",
+          "intercept": "1/2"
+        }
+      ]
+    }
+  },
+  "caption": "원문0≤x<π에서sinx=1/2의두해π/6,5π/6을그려대칭성을확인한다. 정답합π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < \\pi$일 때, 방정식 $8\\cos^2 x + 2\\sin x - 7 = 0$의 모든 근의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "s=sinx로바꾸면8s²−2s−1=(4s+1)(2s−1)=0. 후보s−1/4,1/2중0≤x<π에서는s≥0이라1/2만가능. 표시식x는s. 각의두해π/6,5π/6의합π. 원문0≤x<π에서sinx=1/2의두해π/6,5π/6을그려대칭성을확인한다. 정답합π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문0≤x<π에서sinx=1/2의두해π/6,5π/6을그려대칭성을확인한다. 정답합π. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다."
+  ]
+}

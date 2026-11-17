@@ -1,0 +1,65 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "3",
+      "1"
+    ],
+    "ratePi": "1",
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0.0,
+      2.0
+    ],
+    "viewport": [
+      -1.0,
+      3.0,
+      -3,
+      3
+    ],
+    "keyPoints": true,
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1/6",
+          "coordinates": true
+        }
+      ],
+      "lines": []
+    }
+  },
+  "caption": "이패널은원래x축그대로사용한다. a>0에서최대a+b4, f(1/6)=a/2+b=5/2. 따라서a3,b1,함수3sinπx+1의최대4/최소−2와조건점(1/6,5/2)을보인다. 정답a−b=2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=a\\sin\\pi x+b$의 최댓값이 $4$이고 $f\\left(\\frac{1}{6}\\right)=\\frac{5}{2}$일 때, 두 상수 $a$와 $b$에 대하여 $a-b$의 값을 구하시오. (단, $a>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이패널은원래x축그대로사용한다. a>0에서최대a+b4, f(1/6)=a/2+b=5/2. 따라서a3,b1,함수3sinπx+1의최대4/최소−2와조건점(1/6,5/2)을보인다. 정답a−b=2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이패널은원래x축그대로사용한다. a>0에서최대a+b4, f(1/6)=a/2+b=5/2. 따라서a3,b1,함수3sinπx+1의최대4/최소−2와조건점(1/6,5/2)을보인다. 정답a−b=2."
+  ]
+}

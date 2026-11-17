@@ -1,0 +1,78 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "ratePi": "1",
+    "phasePi": "-1/4",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0.0,
+      2.0
+    ],
+    "viewport": [
+      -1.0,
+      3.0,
+      -3,
+      3
+    ],
+    "keyPoints": true,
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1/12",
+          "y": "sqrt(3)/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5/12",
+          "y": "sqrt(3)/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "bound",
+          "slope": "0",
+          "intercept": "sqrt(3)/2"
+        }
+      ]
+    }
+  },
+  "caption": "cos(x−π/4)>√3/2에서−π/6<x−π/4<π/6(mod2π). 원문0≤x<2π와교차하면π/12<x<5π/12. 두경계는등호여서제외. 정답(π/12,5π/12). 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < 2\\pi$일 때, 부등식 $\\cos\\left(x-\\frac{\\pi}{4}\\right) > \\frac{\\sqrt{3}}{2}$을 푸시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "cos(x−π/4)>√3/2에서−π/6<x−π/4<π/6(mod2π). 원문0≤x<2π와교차하면π/12<x<5π/12. 두경계는등호여서제외. 정답(π/12,5π/12). 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다. 가로값t=x/π. 코사인곡선이높이√3/2보다큰부분을두빈원사이로옮긴다. 정답π/12<x<5π/12.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "cos(x−π/4)>√3/2에서−π/6<x−π/4<π/6(mod2π). 원문0≤x<2π와교차하면π/12<x<5π/12. 두경계는등호여서제외. 정답(π/12,5π/12). 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다."
+  ]
+}
