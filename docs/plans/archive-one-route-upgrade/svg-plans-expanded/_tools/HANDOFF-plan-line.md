@@ -34,3 +34,9 @@
 - 미렌더(편집만): 확인 q20(RESULT 줄 제거, 근호 2√2와 3이 가까워 `NUMBER_LINE_LABELS_TOO_CLOSE`였음), 금당고 기말 q09, 복성고 q11, 순천고 q17(q03과 같은 세로 점선 방식).
 - 미해결: 팔마고 기말 q21 실제 값 그래프(x 0~500, y −900~612는 `WORKER_TIMEOUT`; 정의역·눈금을 줄여 재시도), 20 매산여고 기말 고2 수학II q13(`referenceCurves`에 name/formula를 넣으면 `PIECEWISE_POLY_REFERENCE_CURVES_INVALID`; 이름 없이 callouts로 식 라벨 또는 `overlays.names` 시도). 두 문항은 옛 플랜 그대로다.
 - 미확인: 금당고 중간 q13(렌더 통과, 라벨은 plan에 있음), 매산여고 중간 q13(렌더 중 중단).
+
+## 2026-11-18 추가 (b03 마무리)
+- 팔마고 기말 q21: `sourceDomain` INTERVAL [0,500]에 `domain` [100,350], 눈금 3개로 `WORKER_TIMEOUT`을 피했다. 엔진은 원 정의역 전체(0~500)를 그린다. ARCHIVE_BOUND.
+- 20 매산여고 기말 고2 수학II q13: `referenceCurves[0]`에 `name:"g"`만 쓰고 `formula`는 빼면 통과한다(`formula`는 조각 형식 전용). f는 `functionName:"f"`+`formula`. ARCHIVE_BOUND.
+- 금당고 확인 q20, 금당고 기말 q09, 복성고 q11, 순천고 q17: 렌더 ARCHIVE_BOUND, PNG에서 핵심 값·축 이름 확인.
+- 남은 미확인: 매산여고 중간 q13(렌더 중단).
