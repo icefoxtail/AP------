@@ -48,7 +48,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간의 양 끝점 (−2,−8)과 (2,8), 구간 안의 점 (0,−12)이 표시된 삼차함수 곡선이 그려져 있다.",
+    "solutionImageCaption": "f′(x)=3x(x+2)라 후보는 x=−2, 0, 2이고 f(−2)=−8, f(0)=−12, f(2)=8이다. 최댓값 8과 최솟값 −12의 합은 −4이므로 답은 ① −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
