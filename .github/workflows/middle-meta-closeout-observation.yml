@@ -1,0 +1,64 @@
+name: Middle Metadata Closeout Observation
+
+on:
+  push:
+    branches: ['ops/middle-meta-observer-26fc-20261117']
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/middle-meta-closeout-observation.yml'
+      - 'docs/operations/middle-meta-closeout-26fc-20261117/**'
+      - 'archive/tools/meta-foundation/**'
+      - 'tools/4slot/**'
+      - 'tools/run-tests.js'
+      - 'tests/meta-foundation-middle-geometry-runtime.test.js'
+      - '.archive-meta-register/4slot-renderer-continuity/**'
+
+permissions:
+  contents: read
+
+jobs:
+  observe-registered-snapshot:
+    if: (github.event_name == 'pull_request' && github.event.pull_request.number == 2330) || (github.event_name == 'push' && github.ref == 'refs/heads/ops/middle-meta-observer-26fc-20261117')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+          sparse-checkout: |
+            archive/item-4slot.js
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Observe the latest persisted main snapshot without registration
+        shell: bash
+        env:
+          OBSERVATION_CODE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          observed_main="$(git rev-parse refs/remotes/origin/main)"
+          registered_sha="$(git log refs/remotes/origin/main --first-parent --format=%H --fixed-strings --grep='chore(archive): register main snapshot' -1)"
+          [[ "$observed_main" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$registered_sha" =~ ^[a-f0-9]{40}$ ]]
+          git merge-base --is-ancestor "$registered_sha" "$observed_main"
+          printf 'observed_main=%s\nregistered_snapshot=%s\n' "$observed_main" "$registered_sha"
+          observer_commit="$OBSERVATION_CODE_SHA"
+          [[ "$observer_commit" =~ ^[a-f0-9]{40}$ ]]
+          git show "$observer_commit:docs/operations/middle-meta-closeout-26fc-20261117/observe-registered-snapshot.mjs" > "$RUNNER_TEMP/observe-registered-snapshot.mjs"
+          printf 'observer_commit=%s\n' "$observer_commit"
+          git checkout --detach "$registered_sha"
+          [[ -z "$(git status --porcelain --untracked-files=all)" ]]
+          node "$RUNNER_TEMP/observe-registered-snapshot.mjs" --snapshot "$registered_sha" --out "$RUNNER_TEMP/middle-meta-observation.json" --public-base https://icefoxtail.github.io/AP------/
+          [[ -z "$(git status --porcelain --untracked-files=all)" ]]
+      - name: Preserve the metadata-only observation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: middle-meta-observation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/middle-meta-observation.json
+          if-no-files-found: warn
+          retention-days: 30
