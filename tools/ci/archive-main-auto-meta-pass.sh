@@ -50,6 +50,19 @@ stage compile-meta-foundation
 node archive/tools/meta-foundation/compile-meta-foundation.mjs --write > "$work/compile.json"
 stage materialize-meta-v2
 node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write > "$work/materialize.json"
+# Merge run (ARCHIVE_REGISTRATION_MODE=merge, set once by the registration writer): only the questions this merge changed
+# are registered. With none, nothing below can register anything, so skip the two build_db runs and the checks that
+# certify a registration. The queued backlog stays untouched in state.json; the writer keeps its "work remains" flag
+# and the scheduled or manual digest run drains it. A bounded canonical-parent retry always takes the full path.
+if [[ "${ARCHIVE_REGISTRATION_MODE:-}" == merge ]] && (( ${#retry_args[@]} == 0 )); then
+  stage plan-targets
+  node archive/tools/meta-foundation/auto-register-merged-source.mjs --plan --report "$work/plan.json" > /dev/null
+  if [[ "$(node -p "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8')).targetCount" "$work/plan.json")" == 0 ]]; then
+    cp "$work/plan.json" "$report"
+    echo 'NO_TARGETS: this merge changed no exam question; queued backlog is left for the scheduled or manual digest run.'
+    exit 0
+  fi
+fi
 stage build-db-before
 node tools/ci/archive-registration-build-db.mjs > "$work/build-before.log" 2>&1
 stage auto-register-write

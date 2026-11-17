@@ -6,7 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,registrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -659,7 +659,7 @@ test('the summary shows the instrumentation tables within a hard size bound and 
 test('the AutoMeta pass script keeps its commands and only adds stage markers that never touch stdout',t=>{
   const script=fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/archive-main-auto-meta-pass.sh'),'utf8');
   const markers=[...script.matchAll(/^\s*stage ([a-z0-9-]+)$/gm)].map(m=>m[1]);
-  assert.deepEqual(markers,['compile-meta-foundation','materialize-meta-v2','build-db-before','auto-register-write','build-db-after','verify','build-db-fixed-point',
+  assert.deepEqual(markers,['compile-meta-foundation','materialize-meta-v2','plan-targets','build-db-before','auto-register-write','build-db-after','verify','build-db-fixed-point',
     'verify-after-fixed-point','identity-contract-test','identity-runtime-test','registration-parity','git-diff-checks','replay','postchecks']);
   for(const line of ['node archive/tools/meta-foundation/compile-meta-foundation.mjs --write > "$work/compile.json"',
     'node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write > "$work/materialize.json"'])assert.ok(script.includes(line),line);
@@ -719,4 +719,197 @@ test('a malformed instrumentation object never makes the summary renderer throw'
   }
   const text=renderRegistrationSummary({status:'PREPARED',lanes:[{id:'semantic',status:'VERIFIED',instrumentation:{autoMeta:{run:{},origin:{available:true}}}}]});
   assert.match(text,/Instrumentation summary could not be rendered/);
+});
+
+// ---- registration modes in the writer: a merge run drains nothing it does not need, and never hides what remains ----
+const queueFixture=(t,remaining=2)=>{
+  const f=fixture(t),queue='.archive-meta-register/auto/fixture-queue.json';
+  write(f.root,queue,{remaining});commit(f.root,'queued batches fixture');
+  const lane=f.lanes.find(l=>l.id==='semantic');lane.inputs.push(queue);lane.outputs.push(queue);
+  lane.digestContinuation=true;lane.continuation=({root})=>readJson(root,queue).remaining>0;
+  const execute=async ctx=>{await f.execute(ctx);if(ctx.lane.id==='semantic')write(ctx.root,queue,{remaining:Math.max(0,readJson(ctx.root,queue).remaining-1)});};
+  return {...f,queue,execute,options:{...f.options,execute}};
+};
+const registrationState=root=>readJson(root,STATE);
+test('the writer decides the mode once, hands the same name to every command, and refuses an unknown value',async t=>{
+  for(const [env,expected] of [[{GITHUB_EVENT_NAME:'push'},'merge'],[{GITHUB_EVENT_NAME:'schedule'},'digest'],[{GITHUB_EVENT_NAME:'workflow_dispatch'},'digest'],[{},'digest'],
+    [{GITHUB_EVENT_NAME:'push',ARCHIVE_REGISTRATION_MODE:'digest'},'digest']]) {
+    const f=fixture(t),seen=new Set();
+    const result=await prepareRegistration({...f.options,env,execute:async ctx=>{seen.add(ctx.env.ARCHIVE_REGISTRATION_MODE);return f.execute(ctx);}});
+    assert.deepEqual([...seen],[expected],JSON.stringify(env));assert.equal(result.registrationMode,expected);
+  }
+  assert.equal(registrationMode({GITHUB_EVENT_NAME:'push'}),'merge');
+  const f=fixture(t);
+  await assert.rejects(()=>prepareRegistration({...f.options,env:{ARCHIVE_REGISTRATION_MODE:'fast'}}),/REGISTRATION_MODE_INVALID/);
+});
+test('merge run: queued semantic work is not a reason to run, stays visible as backlog, and writer-state keeps the flag; a digest run continues it',async t=>{
+  const f=queueFixture(t),push={GITHUB_EVENT_NAME:'push'};
+  const first=await prepareRegistration({...f.options,env:{}});
+  assert.equal(first.status,'PREPARED_WITH_PENDING');commit(f.root,'digest batch one');
+  assert.equal(registrationState(f.root).lanes.semantic.needsContinuation,true);
+  const savedState=read(f.root,STATE);f.calls.length=0;
+  const digestCheck=checkRegistration({...f.options,env:{}}),mergeCheck=checkRegistration({...f.options,env:push});
+  assert.equal(digestCheck.needed,true);assert.equal(digestCheck.status,'REGISTRATION_PARTIAL');
+  assert.equal(mergeCheck.needed,false,'a merge run does not need to run it');assert.equal(mergeCheck.backlogDeferred,true);
+  assert.equal(mergeCheck.status,'REGISTERED_WITH_BACKLOG','"not needed now" is not "registered, nothing left"');assert.equal(mergeCheck.publishable,true);
+  const merge=await prepareRegistration({...f.options,env:push});
+  assert.deepEqual(f.calls,[],'nothing ran');assert.equal(merge.needed,false);assert.equal(merge.publishable,true);assert.equal(merge.safeToPersist,true);
+  assert.equal(merge.status,'NO_OP_WITH_BACKLOG');assert.equal(merge.backlogDeferred,true);
+  assert.equal(read(f.root,STATE),savedState,'writer-state.json is byte-identical: the remaining work is still recorded');
+  assert.equal(registrationState(f.root).lanes.semantic.needsContinuation,true);
+  const lane=merge.lanes.find(l=>l.id==='semantic');assert.equal(lane.status,'NO_OP');assert.equal(lane.needsContinuation,true);
+  assert.match(renderRegistrationSummary(merge),/Queued registration work remains/);
+  const digest=await prepareRegistration({...f.options,env:{}});
+  assert.deepEqual(f.calls,['semantic'],'the digest run does the queued batch');assert.equal(digest.needed,false);assert.equal(digest.backlogDeferred,false);
+  assert.equal(registrationState(f.root).lanes.semantic.needsContinuation,false,'only a digest run that actually finished clears it');
+});
+test('merge run whose inputs changed runs the lane and recomputes the flag from what remains, never from the old value',async t=>{
+  const f=queueFixture(t,3);
+  const first=await prepareRegistration({...f.options,env:{}});assert.equal(first.needed,true);commit(f.root,'digest batch one');
+  write(f.root,'inputs/meta.json',{label:'fixture metadata v2'});commit(f.root,'a merge changed an input');f.calls.length=0;
+  const merge=await prepareRegistration({...f.options,env:{GITHUB_EVENT_NAME:'push'}});
+  assert.ok(f.calls.includes('semantic'),'changed inputs still run the lane in a merge run');
+  assert.equal(registrationState(f.root).lanes.semantic.needsContinuation,true,'backlog remains after this batch');
+  assert.equal(merge.needed,false);assert.equal(merge.backlogDeferred,true);assert.equal(merge.status,'PREPARED_WITH_BACKLOG');
+});
+test('needsContinuation never feeds publication: publishable, registrationReady and safeToPersist ignore a semantic backlog in both modes',async t=>{
+  const f=queueFixture(t);
+  for(const env of [{},{GITHUB_EVENT_NAME:'push'}]) {
+    const result=await prepareRegistration({...f.options,env});
+    assert.equal(result.publishable,true);assert.equal(result.registrationReady,true);assert.equal(result.safeToPersist,true);
+    if(git(f.root,'status','--porcelain'))commit(f.root,'persist');
+    const checked=checkRegistration({...f.options,env});
+    assert.equal(checked.publishable,true);assert.equal(checked.registrationReady,true);
+  }
+  // Only required, enabled lanes decide publication; the semantic lane is optional by construction.
+  const lanes=nativeLanes(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'));
+  assert.equal(lanes.find(l=>l.id==='semantic').required,undefined);
+  assert.deepEqual(lanes.filter(l=>l.digestContinuation).map(l=>l.id),['semantic'],'only the semantic lane defers its backlog');
+  assert.ok(lanes.filter(l=>l.continuation).every(l=>l.digestContinuation));
+});
+test('--unrelated-range and the regenerate path do not read needsContinuation',()=>{
+  const source=fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/archive-registration-writer.mjs'),'utf8');
+  const uses=[...source.matchAll(/needsContinuation/g)].length;
+  const unrelated=source.slice(source.indexOf('export function unrelatedRange'),source.indexOf('async function main'));
+  assert.ok(uses>0);assert.doesNotMatch(unrelated,/needsContinuation|continuation/);
+});
+test('fourSlot stage times are collected like the semantic ones and stay evidence only',t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'four-slot-stage-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  write(dir,'archive-four-slot/stage-times.jsonl',['build-write','check-full-rebuild','replay-reuse-cache','receipt-proof','git-diff-guards','path-allowlist'].map((stage,i)=>JSON.stringify({stage,durationMs:1000+i,exitCode:0})).join('\n')+'\n');
+  const out=laneInstrumentation({laneId:'fourSlot',nativeWork:dir,sharedEvidence:dir,root:dir,result:{commandTimings:[]}});
+  assert.deepEqual(out.stages.map(s=>s.stage),['build-write','check-full-rebuild','replay-reuse-cache','receipt-proof','git-diff-guards','path-allowlist']);
+  assert.equal(laneInstrumentation({laneId:'fourSlot',nativeWork:path.join(dir,'missing'),sharedEvidence:dir,root:dir,result:{}}),undefined,'no file, no numbers, no failure');
+});
+test('the summary shows mode, remaining backlog and this merge\'s unreached questions',()=>{
+  const text=renderRegistrationSummary({status:'NO_OP_WITH_BACKLOG',registrationReady:true,backlogDeferred:true,changedPaths:[],lanes:[{id:'semantic',status:'NO_OP',instrumentation:{autoMeta:{
+    run:{targets:0,attempted:0,applied:0,alreadyRegistered:0,refused:0,unchangedSkipped:0,notReachedBudget:0,batchLimit:100},registration:{mode:'merge',backlogRemaining:13238,mergeBacklog:3,mergeNotReached:3}}}}]});
+  for(const expected of ['| mode | merge','| backlog remaining (all queued) | 13238','| this merge\'s questions not processed (limit) | 3','| merge leftovers still queued | 3'])assert.ok(text.includes(expected),expected);
+});
+
+// ---- the shell passes: commands unchanged, time per step recorded, merge runs with nothing to do skip the heavy build ----
+const scriptPath=name=>path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci',name);
+const lf=text=>text.replace(/\r\n/g,'\n');
+test('the 4slot pass keeps every command line and body unchanged and only adds stage markers around them',t=>{
+  const script=lf(fs.readFileSync(scriptPath('archive-four-slot-pass.sh'),'utf8'));
+  const markers=[...script.matchAll(/^stage ([a-z0-9-]+)$/gm)].map(m=>m[1]);
+  assert.deepEqual(markers,['build-write','check-full-rebuild','replay-reuse-cache','receipt-proof','git-diff-guards','path-allowlist']);
+  const start=script.indexOf('# Stage timing'),end=script.indexOf('\n',script.indexOf("trap 'rc=$?; stage_end"))+1;
+  assert.ok(start>0&&end>start);
+  const without=(script.slice(0,start)+script.slice(end)).split('\n').filter(l=>!/^stage [a-z0-9-]+$/.test(l)).join('\n');
+  // sha256 of tools/ci/archive-four-slot-pass.sh before this change (LF endings).
+  assert.equal(hash(without),'0f6b9b4649da0d6306e9f600c6f2ee34a2e9c0b4c95c0758615d6e46ac71e84f','removing the timing block and markers gives back the previous script byte for byte');
+  const helper=text=>text.slice(text.indexOf('stage_log='),text.indexOf('\n',text.indexOf("trap 'rc=$?; stage_end"))).split('\n').filter(l=>!l.startsWith('#')).join('\n');
+  assert.equal(helper(script),helper(lf(fs.readFileSync(scriptPath('archive-main-auto-meta-pass.sh'),'utf8'))),'same helper as the semantic pass');
+  void t;
+});
+const bashOk=()=>{const b=spawnSync('bash',['-c','exit 0'],{encoding:'utf8'});return !b.error&&b.status===0;};
+const pyOk=()=>{const p=spawnSync('python',['-c','pass'],{encoding:'utf8'});return !p.error&&p.status===0;};
+// Static relative-import closure of a module, copied into a scratch repo so the real planner can run against fixture data.
+function copyClosure(repoRoot,entry,dest) {
+  const seen=new Set(),queue=[path.resolve(repoRoot,entry)];
+  while(queue.length) {
+    const file=queue.pop();if(seen.has(file))continue;seen.add(file);
+    for(const m of fs.readFileSync(file,'utf8').matchAll(/(?:from\s*|import\s*\(\s*|require\s*\(\s*|import\s+)['"](\.{1,2}\/[^'"]+)['"]/g)) {
+      const target=path.resolve(path.dirname(file),m[1]);
+      if(fs.existsSync(target)&&fs.statSync(target).isFile()&&/\.(mjs|cjs|js)$/.test(target))queue.push(target);
+    }
+  }
+  for(const file of seen){const rel=path.relative(repoRoot,file);fs.mkdirSync(path.dirname(path.join(dest,rel)),{recursive:true});fs.copyFileSync(file,path.join(dest,rel));}
+}
+function passHarness(t,{changeExam}) {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-pass-')),repo=path.join(dir,'repo'),temp=path.join(dir,'runner');
+  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));fs.mkdirSync(repo);fs.mkdirSync(temp);
+  const here=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  copyClosure(here,'archive/tools/meta-foundation/auto-register-merged-source.mjs',repo);
+  fs.mkdirSync(path.join(repo,'tools/ci'),{recursive:true});fs.copyFileSync(path.join(here,'tools/ci/archive-pages-registration.paths'),path.join(repo,'tools/ci/archive-pages-registration.paths'));
+  // Stand-ins for the heavy native producers (compile / materialize): only those two command lines are swapped; the planning,
+  // the shortcut and everything after it run as shipped. build_db only records that it ran.
+  const stub=(rel,body)=>write(repo,rel,body);
+  stub('stub-compile.mjs','console.log("{}");\n');
+  const shipped=lf(fs.readFileSync(path.join(here,'tools/ci/archive-main-auto-meta-pass.sh'),'utf8'));
+  const swapped=shipped.replace('node archive/tools/meta-foundation/compile-meta-foundation.mjs --write','node stub-compile.mjs').replace('node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write','node stub-compile.mjs');
+  assert.notEqual(swapped,shipped);fs.writeFileSync(path.join(repo,'tools/ci/archive-main-auto-meta-pass.sh'),swapped);
+  stub('tools/ci/archive-registration-build-db.mjs',"import fs from 'node:fs';fs.appendFileSync(process.env.RUNNER_TEMP+'/build-db-calls','run\\n');\n");
+  const sourceRel='archive/exams/original/middle/m3/1mid/fixture.js';
+  const bank=(a)=>'window.questionBank='+JSON.stringify([{id:1,a},{id:2,a}])+';\n';
+  git(repo,'init','-q','--initial-branch=main');git(repo,'config','user.name','fixture');git(repo,'config','user.email','fixture@example.invalid');
+  write(repo,sourceRel,bank(1));write(repo,'.archive-meta-register/auto/config.json',{schemaVersion:'archive-main-merge-meta-v1',enabled:true,maxQuestionsPerRun:100,pilotTargets:[]});
+  const base=commit(repo,'base');
+  if(changeExam)write(repo,sourceRel,bank(2));else write(repo,'derived.json','{}');
+  commit(repo,'merge');
+  const pendingKey='original/middle/m3/1mid/older.js#1';
+  const state={schemaVersion:'archive-main-merge-meta-v1',lastProcessedCommit:base,pending:{[pendingKey]:{sourceArchiveFile:'original/middle/m3/1mid/older.js',sourceOrdinal:1,baseCommit:base}},completedPilots:[],latestReceipts:{}};
+  write(repo,'.archive-meta-register/auto/state.json',state);
+  write(repo,'.archive-meta-register/auto/config.json',{schemaVersion:'archive-main-merge-meta-v1',enabled:true,bootstrapBase:base,maxQuestionsPerRun:100,pilotTargets:[]});
+  commit(repo,'cursor');
+  const stateBytes=fs.readFileSync(path.join(repo,'.archive-meta-register/auto/state.json'));
+  const run=mode=>spawnSync('bash',['tools/ci/archive-main-auto-meta-pass.sh'],{cwd:repo,encoding:'utf8',
+    env:{...process.env,RUNNER_TEMP:temp.split(path.sep).join('/'),GITHUB_ACTIONS:'',GITHUB_EVENT_NAME:'',GITHUB_STEP_SUMMARY:'',...(mode?{ARCHIVE_REGISTRATION_MODE:mode}:{ARCHIVE_REGISTRATION_MODE:''})}});
+  const buildCalls=()=>{try{return fs.readFileSync(path.join(temp,'build-db-calls'),'utf8').trim().split('\n').filter(Boolean).length;}catch{return 0;}};
+  return {repo,temp,run,buildCalls,stateBytes,work:path.join(temp,'archive-main-auto-meta')};
+}
+test('merge pass with no changed exam question ends at NO_TARGETS without build_db, keeps state.json and keeps the work-remains flag',{skip:!bashOk()&&'bash is not available'},t=>{
+  const h=passHarness(t,{changeExam:false});
+  const result=h.run('merge');
+  assert.equal(result.status,0,result.stderr+result.stdout);
+  assert.match(result.stdout,/^NO_TARGETS/m);assert.equal(h.buildCalls(),0,'neither build_db run happened');
+  assert.deepEqual(fs.readFileSync(path.join(h.repo,'.archive-meta-register/auto/state.json')),h.stateBytes,'state.json byte-identical');
+  const report=JSON.parse(fs.readFileSync(path.join(h.work,'report.json'),'utf8'));
+  assert.equal(report.status,'NO_CHANGE');assert.equal(report.mode,'merge');assert.equal(report.targetCount,0);assert.equal(report.backlogRemaining,1);assert.deepEqual(report.results,[]);
+  const stages=readStageTimes(path.join(h.work,'stage-times.jsonl')).map(s=>s.stage);
+  assert.deepEqual(stages,['compile-meta-foundation','materialize-meta-v2','plan-targets'],'the heavy stages never started');
+  // The writer's own continuation rule on this exact evidence: queued work that this run did not visit keeps the lane "not finished".
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const continuation=nativeLanes(root).find(l=>l.id==='semantic').continuation;
+  assert.equal(continuation({root:h.repo,env:{RUNNER_TEMP:h.temp}}),true);
+});
+test('merge pass with a changed exam question takes the full path; digest pass never takes the shortcut',{skip:!bashOk()&&'bash is not available'},t=>{
+  const merge=passHarness(t,{changeExam:true}),mergeRun=merge.run('merge');
+  assert.notEqual(mergeRun.status,0,'the fixture has no registry, so the full path fails at the real planner after the build step');
+  assert.ok(merge.buildCalls()>=1,'build_db ran: the full set of steps is kept when this merge has questions');
+  assert.doesNotMatch(mergeRun.stdout,/NO_TARGETS/);
+  const digest=passHarness(t,{changeExam:false}),digestRun=digest.run('');
+  assert.ok(digest.buildCalls()>=1,'a digest (or unset) mode still runs everything');assert.doesNotMatch(digestRun.stdout,/NO_TARGETS/);
+  assert.deepEqual(readStageTimes(path.join(digest.work,'stage-times.jsonl')).map(s=>s.stage).slice(0,3),['compile-meta-foundation','materialize-meta-v2','build-db-before'],'no plan stage outside merge mode');
+});
+test('the 4slot pass writes its per-step times next to the existing report and keeps its exit code',{skip:(!bashOk()&&'bash is not available')||(!pyOk()&&'python is not available')},t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'four-slot-pass-')),repo=path.join(dir,'repo'),temp=path.join(dir,'runner');
+  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));fs.mkdirSync(repo);fs.mkdirSync(temp);
+  git(repo,'init','-q','--initial-branch=main');git(repo,'config','user.name','fixture');git(repo,'config','user.email','fixture@example.invalid');
+  fs.mkdirSync(path.join(repo,'tools/ci'),{recursive:true});fs.copyFileSync(scriptPath('archive-four-slot-pass.sh'),path.join(repo,'tools/ci/archive-four-slot-pass.sh'));
+  write(repo,'.archive-meta-register/auto/config.json',{fourSlotEnabled:true});
+  // Stand-in builder: writes one deterministic index and the three reports the pass compares.
+  write(repo,'tools/4slot/build-4slot-runtime.cjs',`const fs=require('node:fs'),crypto=require('node:crypto');
+const a=process.argv,report=a[a.indexOf('--report')+1];fs.mkdirSync('archive/data',{recursive:true});
+if(a.includes('--write'))fs.writeFileSync('archive/data/item-4slot-index.json','{"rows":1}\\n');
+const sha=crypto.createHash('sha256').update(fs.readFileSync('archive/data/item-4slot-index.json')).digest('hex');
+fs.writeFileSync(report,JSON.stringify({status:'OK',changed:false,indexSha256:sha,inputDigest:'x',counts:{},verified:true}));\n`);
+  commit(repo,'base');
+  const result=spawnSync('bash',['tools/ci/archive-four-slot-pass.sh'],{cwd:repo,encoding:'utf8',env:{...process.env,RUNNER_TEMP:temp.split(path.sep).join('/'),GITHUB_STEP_SUMMARY:''}});
+  assert.equal(result.status,0,result.stderr);
+  const rows=readStageTimes(path.join(temp,'archive-four-slot/stage-times.jsonl'));
+  assert.deepEqual(rows.map(r=>r.stage),['build-write','check-full-rebuild','replay-reuse-cache','receipt-proof','git-diff-guards','path-allowlist']);
+  assert.ok(rows.every(r=>r.exitCode===0&&Number.isInteger(r.durationMs)));
+  assert.ok(fs.existsSync(path.join(repo,'.archive-meta-register/auto/4slot/last-verification.json')));
+  assert.ok(!fs.readFileSync(path.join(temp,'archive-four-slot/stage-times.jsonl'),'utf8').includes('"exitCode":1'));
 });

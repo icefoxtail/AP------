@@ -46,6 +46,18 @@ writer가 실행마다 남기는 `report.json`(커밋되지 않는 증거)과 `G
 
 `report.instrumentation`은 `replayBatch` 밖에 있어 replay 비교·`state.json`·`writer-state.json`에 들어가지 않는다.
 
+## 병합 실행과 소화 실행 (2026-11-18)
+
+writer가 `ARCHIVE_REGISTRATION_MODE`를 한 번 정해 모든 하위 명령에 넘긴다. `push`(main 병합)이면 `merge`, 정시(`schedule`)·수동(`workflow_dispatch`)·로컬·테스트는 `digest`다. 환경 변수에 두 값 중 하나가 이미 있으면 그 값을 따르고 다른 값은 오류다. 이유: main에 병합될 때마다 밀린 pending 전체를 다시 시도하느라 병합 한 건이 12~17분 걸렸고, 방금 병합한 시험지가 밀린 것과 같은 100건 예산을 다퉜다.
+
+- **merge(병합 실행):** 처리 대상은 `lastProcessedCommit..HEAD`의 시험지 diff 문항과 pilot뿐이다. pending은 대상에도 시드에도 넣지 않고 한 글자도 바꾸지 않는다. 기준은 직전 병합이 아니라 영속 cursor라서 중간 push 실행이 동시성 그룹에서 사라져도 문항이 빠지지 않는다. 대상이 0이면 `archive-main-auto-meta-pass.sh`가 compile·materialize 뒤 `--plan`(쓰기 없음)으로 확인하고 build_db 없이 `NO_TARGETS`를 한 줄 낸 뒤 끝낸다. `state.json`은 바이트 그대로다. 대상이 1건 이상이면 이전과 같은 전체 단계(build_db 2회, verify, 테스트, replay)를 모두 돈다.
+- **digest(소화 실행):** 이전 동작 그대로 pending 전체를 대상으로 하되, 병합 실행이 상한을 넘겨 못 본 "이번 병합분"을 먼저 시도한다. 시도해 결과(등록이든 거절이든)가 나오면 표식을 지운다. 한 번 처리량(`maxQuestionsPerRun`)은 이 변경에서 바꾸지 않았다.
+- **미처리 병합분 표식:** 병합 실행이 상한(100)을 넘겨 못 본 문항은 pending에 `origin:"merge"`, `mergeHead:<그 실행의 HEAD>`로 저장된다. cursor 전진과 같은 `state.json` 한 번의 쓰기라 병합분이 사라지지 않는다. 필드가 없는 기존 항목은 일반 backlog다(옛 판본도 새 필드를 버리지 않고 그대로 두며 오류가 나지 않는다). report와 실행 요약에 `mergeNotReached`(이번 병합분 미처리), `mergeBacklog`(표식이 남은 수), `backlogRemaining`(pending 총수)을 따로 보인다.
+- **"남은 일"과 "지금 돌 필요"는 다르다.** 병합 실행은 입력이 바뀐 때만 semantic 레인을 돌린다(`assess`가 병합 모드에서는 `needsContinuation`만으로 이 레인을 필요로 보지 않는다). 돌지 않거나 `NO_TARGETS`로 끝난 레인도 writer-state의 `needsContinuation`을 기존 값으로 이어받고(또는 pending이 남았는지로 계산해) pending이 남았으면 `true`를 유지한다. 그래서 병합 실행 요약은 `NO_OP_WITH_BACKLOG`/`PREPARED_WITH_BACKLOG`, `--check`는 `REGISTERED_WITH_BACKLOG`로 "이번엔 필요 없지만 남은 일이 있음"을 표시하고 "완료"로 쓰지 않는다. `publishable`·`registrationReady`·`safeToPersist`는 필수 레인만 보며 이 값을 읽지 않는다. `needsContinuation`을 `false`로 되돌리는 것은 소화 실행이 pending 전체를 훑은 뒤뿐이다.
+- **소화 방법:** 정시 실행(매시 43분)이 100건씩 소화한다. 즉시 더 돌리려면 `Archive Main Auto Metadata`를 `workflow_dispatch`(입력 없음)로 실행한다. 병합이 더는 backlog를 줄이지 않으므로 소화 속도는 정시·수동 실행 횟수로 정해진다.
+- **fourSlot 단계 시간:** `archive-four-slot-pass.sh`도 semantic 패스와 같은 단계 기록(`build-write`, `check-full-rebuild`, `replay-reuse-cache`, `receipt-proof`, `git-diff-guards`, `path-allowlist`)을 남기고 writer가 요약에 싣는다. 명령 줄은 바꾸지 않았다.
+- **롤백:** 이 변경을 되돌려도 `origin`·`mergeHead`가 든 state는 그대로 읽힌다(옛 코드는 필드를 보존하고 새 의미를 쓰지 않는다).
+
 ## 시범 및 운영 경계
 
 초기 기준 main은 config에 고정하고 이미 병합된 동산중 2022 중3 q01 한 문항만 pilot target으로 지정한다. 같은 시험지 나머지 24문항과 장부 73건 전체를 소급 처리하지 않는다. 새 source 변경은 이후 정상 자동 처리한다. 실제 pilot 성공 증거는 Actions 로그·remote main·자동 영수증·Consumer 확인으로 남긴다.
