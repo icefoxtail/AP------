@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "archive-e035-screen-fit-independent-revision2-review-v1",
+  "reviewer": "M3",
+  "observedAt": "2026-11-16T10:13:44.541653+00:00",
+  "decision": "PASS_SCOPED_STATIC_REVIEW",
+  "blockingFindings": 0,
+  "uiDecision": "HOLD",
+  "candidateManifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/publication-candidate-manifest.json",
+    "bytes": 2959,
+    "sha256": "c55c20e55609cd831dbeab1d87a8f739e0b2df19c69bf734acf81daccc5d689b"
+  },
+  "authorValidation": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/repair-plan-and-validation.json",
+    "bytes": 13779,
+    "sha256": "a654e6b029bdeba76b457ee74c395e6b6bb78a0487933dde3e29724875926baa"
+  },
+  "production": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/candidate/archive/mixed_engine.html",
+    "bytes": 208963,
+    "sha256": "88695f546ad269874ff434762d65eae029e955610b27ca36e605533428af5555"
+  },
+  "test": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/candidate/tests/archive-mixed-screen-fit.test.js",
+    "bytes": 8735,
+    "sha256": "c4a263b6b662e4fed4d59fb9f23ce25bf73f807b3c47ac0b031d35f818002c27"
+  },
+  "previousBlockingReview": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-screen-fit-independent-initial-review.json",
+    "bytes": 5280,
+    "sha256": "b6f9132fb134acfe1e9c93210dc0ea289951976e6c808522fa1b540f81d3b1ae"
+  },
+  "closedFinding": {
+    "id": "EXISTING_REVIEW_TOP_LEFT_ORIGIN",
+    "initialCandidatePreserved": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/candidate/archive/mixed_engine.html",
+      "bytes": 208780,
+      "sha256": "5422ca623e5c1274620d12c3ca91bc8df3cbe41479fea6ae67e695f4ee82d497"
+    },
+    "newCondition": "archive2-paper-review class and the existing max-width:850px media match",
+    "behavior": "Set offset to zero under the existing left-origin mode; recompute center compensation otherwise on each update.",
+    "exactDeployedModeRefs": [
+      {
+        "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "path": "archive/archive2-review.css",
+        "bytes": 476,
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110"
+      },
+      {
+        "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "path": "archive/archive2-review.js",
+        "bytes": 407,
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce"
+      },
+      {
+        "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+        "path": "archive/archive2-review.css",
+        "bytes": 476,
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110"
+      },
+      {
+        "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+        "path": "archive/archive2-review.js",
+        "bytes": 407,
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce"
+      },
+      {
+        "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+        "path": "archive/archive2-review.css",
+        "bytes": 476,
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110"
+      },
+      {
+        "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+        "path": "archive/archive2-review.js",
+        "bytes": 407,
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce"
+      },
+      {
+        "commit": "a66fe820204ac8aaeb086124321dbc8259554a69",
+        "path": "archive/archive2-review.css",
+        "bytes": 476,
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110"
+      },
+      {
+        "commit": "a66fe820204ac8aaeb086124321dbc8259554a69",
+        "path": "archive/archive2-review.js",
+        "bytes": 407,
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce"
+      }
+    ],
+    "cssAndEntryModeUnchangedAcrossCheckedCommits": true,
+    "printQualification": "The CSS mode is screen-only. During printing the unchanged transform:none!important disables both transform components; no print layout success is claimed."
+  },
+  "offsetBehaviorRead": [
+    {
+      "case": "normal overflow, width390/page794",
+      "modelResult": "scale374/794, offset-202, centered horizontal edges8 and382"
+    },
+    {
+      "case": "enter narrow paper-review from normal overflow",
+      "modelResult": "offset becomes0; existing left-origin edges0 and374 are preserved"
+    },
+    {
+      "case": "leave narrow paper-review for normal overflow",
+      "modelResult": "negative center compensation is recalculated; prior zero does not persist"
+    },
+    {
+      "case": "resize to desktop1280 with review class retained",
+      "modelResult": "media condition becomes false, scale1 and offset0; normal centered edges243 and1037"
+    },
+    {
+      "case": "no overflow in normal mode",
+      "modelResult": "Math.min produces0, so no additional horizontal shift"
+    },
+    {
+      "case": "screen-fit disabled or area/page absent",
+      "modelResult": "existing early return remains before transform writes"
+    },
+    {
+      "case": "document width unavailable",
+      "modelResult": "finite positive innerWidth fallback retained; invalid combined viewport returns without a non-finite write"
+    },
+    {
+      "case": "print",
+      "modelResult": "existing whole-transform override remains byte exact"
+    }
+  ],
+  "scopeProof": {
+    "onlyOriginalTwoRendererRegionsChanged": true,
+    "inverseRegionsMatchEntireOriginalRenderer": true,
+    "originalElevenTestNamesAndBodiesByteExact": true,
+    "sameTwelveTestsUsedBeforeAndAfter": true,
+    "actualReviewCssFixtureExact": true,
+    "studentContentAssetsNativeInputsInPublication": 0
+  },
+  "testEvidence": {
+    "ownerExecuted": true,
+    "independentReexecution": false,
+    "logs": [
+      {
+        "ref": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/before-review-mode.tap",
+          "bytes": 2268,
+          "sha256": "9417f4342df65917194e10e4c4b1f0bee87f827ca5fb37f3f06235fb2b3f0dc9"
+        },
+        "counts": {
+          "tests": 12,
+          "pass": 11,
+          "fail": 1,
+          "skipped": 0
+        }
+      },
+      {
+        "ref": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/revision2/after-review-mode.tap",
+          "bytes": 1227,
+          "sha256": "be8c32a14e6cfa52c3202e781435d9535c217881913709fa675c80fd31182e2e"
+        },
+        "counts": {
+          "tests": 12,
+          "pass": 12,
+          "fail": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "uniqueTests": 12,
+    "notSumOfRevisionCounts": true,
+    "scope": "The actual production function and declared CSS transform order are exercised in a VM horizontal model. The media evaluator is modeled; real browser cascade, viewport behavior, vertical pagination and readability are not established."
+  },
+  "remainingActualGates": [
+    "Publish a new immutable renderer descendant with source and repaired assets byte-exact.",
+    "Pin the supported Chrome run to that new renderer checkout and preserve original four-case PNGs and diagnostics.",
+    "Require full actual visual-viewport containment and unchanged source, asset, DOM, geometry and readiness guards.",
+    "Bind independent observation to the exact newly published technical evidence and original PNGs.",
+    "The frozen native helper still uses its original floor quantization and has not been changed. Any pixel-rule decision remains separate and cannot be inferred from this code review."
+  ],
+  "nativeHelperRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/archive/tools/meta-foundation/reviewed-m2-e035-renderer-continuity.mjs",
+    "bytes": 47383,
+    "sha256": "898f91f466348d39522868ef9f8e691a00f5c2751c762c8166168e6dea059cd8"
+  },
+  "nativeHelperFrozenCommit": "542639cf7c873a1e462e683c63224fcc7d64b8ad",
+  "reviewExecution": {
+    "newTests": 0,
+    "browser": 0,
+    "productionEdits": 0,
+    "remoteWrites": 0,
+    "newApprovals": 0
+  },
+  "nextAction": "ROOT can publish the exact revision2 renderer/test payload for the authorized actual UI validation. Preserve the initial blocked candidate and all v1-v6 failures."
+}

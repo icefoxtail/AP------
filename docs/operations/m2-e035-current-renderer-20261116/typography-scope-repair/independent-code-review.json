@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "archive-e035-typography-selector-independent-review-v1",
+  "observedAt": "2026-11-16T11:38:20.791787+00:00",
+  "observer": "/root/audit_m3",
+  "decision": "STATIC_ACCEPT_ACTUAL_GLYPH_REVIEW_PENDING",
+  "blockingFindings": 0,
+  "baseRendererCommit": "2fd3ab926f40212c7fbe3a224a6d492e928741ba",
+  "manifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate-manifest.json",
+    "sha256": "b0e1a5e1d8f27051a3b726dc14e4a8da94950a685b189dbd2615ef255bdb1b52"
+  },
+  "files": [
+    {
+      "path": "archive/student-review-mobile.css",
+      "sha256": "6f513e35c237c5d352acf028bef51bd89268076b7e2d5025831984aa21fdee0d",
+      "bytes": 3299,
+      "gitBlobSha1": "a0c4b008f1a4da369848d757a552e0e43bda31e3",
+      "priorSha256": "4ae3fbb1f9c88ecaf4efc0c199b88f6a12c6ee4b36a66511d80d808f4cb3662a",
+      "changed": true
+    },
+    {
+      "path": "archive/mixed_engine.html",
+      "sha256": "b24ed1ad441b50d79f6b6fd97ed5dbb69456d0b0de31d4a5da88e1fbabac4ff7",
+      "bytes": 210128,
+      "gitBlobSha1": "5cf2959fe9390c6e38686f5738454c884e0860d8",
+      "priorSha256": "951755334662c614363b3a746c9e7fec4cf071cd05cde0fff64e1b3705a26aa8",
+      "changed": true
+    },
+    {
+      "path": "tests/archive-mixed-student-review.test.js",
+      "sha256": "63b9e2874c0c816ab534bc1aa4f1e4216010118ee735d9256d76f09b7500bed6",
+      "bytes": 11073,
+      "gitBlobSha1": "56c09ce01f27d9ed21a6007d1da12ece73e4f60f",
+      "priorSha256": "19782e4ee92f3e326940365545a17aa3c26d7b351ad75a2d541937a99d313c49",
+      "changed": true
+    },
+    {
+      "path": "tests/archive-mixed-screen-fit.test.js",
+      "sha256": "c4a263b6b662e4fed4d59fb9f23ce25bf73f807b3c47ac0b031d35f818002c27",
+      "bytes": 8735,
+      "gitBlobSha1": "5776294deecee32794fef8dada6fd2d62b82e922",
+      "priorSha256": "c4a263b6b662e4fed4d59fb9f23ce25bf73f807b3c47ac0b031d35f818002c27",
+      "changed": false
+    }
+  ],
+  "verifiedDelta": {
+    "css": "One selector changed from bare data-semantic-content to the direct application div marker with value 1 beneath a question box",
+    "html": "One stylesheet cache-version string only",
+    "test": "Existing selector expectation and cache-version expectation only",
+    "fitTest": "Entire file unchanged",
+    "inverseCssHtmlAndTestMatchPriorFrozenBytes": true
+  },
+  "scopeReasoning": {
+    "applicationWrapper": "Both existing solution construction paths emit a direct div[data-semantic-content=\"1\"] under .q-box",
+    "mathSubtreeExclusion": "MathJax custom elements and deeper descendants cannot satisfy the direct child div selector",
+    "bodyTypography": "All existing body, choice, written solution, number and caption size rules remain",
+    "screenAndPrint": "Same mobile-screen/READY/student-review/no-Archive2/no-printing selector; safePrint and screen-fit bodies unchanged",
+    "captureAndAuthority": "Producer, fixed viewport/coverage/pixel rules, source/assets, math library and native input are outside this delta"
+  },
+  "evidenceBasis": {
+    "originalVisualHoldSha256": "6ea937c2ca18aeb9519f9e318d2255b4b56cc798925ebb4c7b031d85ccafcd51",
+    "actualMathDiagnosticSha256": "481e42d9bac83e4f2fb6d3579b90aabcfd915c970583207b09a6bd96672393d7",
+    "diagnosticInference": "Selective body line-height was observed in compound math descendants; this exact selector change addresses that possible leakage. A repaired browser result is still required."
+  },
+  "authorValidation": {
+    "tests": 35,
+    "pass": 35,
+    "fail": 0,
+    "skip": 0,
+    "logs": [
+      {
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/existing35-regression.tap",
+        "sha256": "f2797c059588433b97dc5ce4819968be3a33fe39b6ff7fb89a1e83a26788354a",
+        "bytes": 7686
+      },
+      {
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/initial-fixture-missing-review-css.tap",
+        "sha256": "1b2db970c0ec44220ba6165cb5ee497d648e8146c719f63f4a1cd24176de4a6e",
+        "bytes": 6678
+      }
+    ],
+    "initialMissingThinDependencyFailurePreserved": true,
+    "independentReexecution": 0
+  },
+  "notClaimed": [
+    "Actual repaired glyph PASS",
+    "Browser layout or print execution PASS",
+    "New mathematical or metadata approval",
+    "Native technical-v3 intake approval"
+  ],
+  "nextAction": "Publish the exact scoped repair and run unchanged diagnostic producer against that immutable renderer. Independently inspect all four original views and verify repaired compound math line heights. Preserve all prior failed/HOLD attempts."
+}

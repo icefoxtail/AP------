@@ -1,0 +1,92 @@
+/* Student review reads the committed A4 DOM as a flowing screen column.
+   The offscreen pagination tree never has #print-area. Print/export temporarily
+   suspends this presentation; print media and desktop never use these rules. */
+@media screen and (max-width: 640px) {
+  html[data-ap-student-review="true"][data-ap-render-ready="true"]:not([data-archive2-context]):not([data-ap-student-review-printing="true"])
+    body:not(.mode-pdf) #print-area:has(.q-box) {
+    box-sizing: border-box !important;
+    width: calc(100% - 16px) !important;
+    max-width: none !important;
+    margin: 8px auto !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    transform: none !important;
+    transform-origin: top left !important;
+
+    .page {
+      box-sizing: border-box !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      margin: 0 !important;
+      padding: 14px 12px !important;
+      overflow: visible !important;
+      flex: 0 0 auto !important;
+    }
+    .page-body, .grid-container, .grid-col, .ap-equal-slot-grid, .ap-equal-slot {
+      display: block !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      overflow: visible !important;
+      flex: none !important;
+    }
+    .grid-container::after { display: none !important; }
+    .ap-slot-content {
+      display: flow-root !important;
+      position: static !important;
+      inset: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      transform: none !important;
+    }
+    .q-box {
+      box-sizing: border-box !important;
+      flex: 0 0 auto !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 12px 0 !important;
+      overflow: visible !important;
+      border-bottom: 1px solid #e5e7eb !important;
+    }
+    .q-box, .q-content, .choices, .choice-item, .sol-exp, .sol-ans,
+    .q-box > div[data-semantic-content="1"], table.question-table {
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+    }
+    .q-num { font-size: 18px !important; line-height: 1.4 !important; }
+    .sol-image-caption { font-size: 14px !important; line-height: 1.5 !important; }
+    .q-box img {
+      max-width: 100% !important;
+      max-height: none !important;
+      height: auto !important;
+      object-fit: contain;
+    }
+    .q-box svg:not(mjx-container svg, .katex svg) {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .page-exam-frame { inset: 8px !important; }
+    .page-header.page-header--exam {
+      grid-template-columns: minmax(0, 1fr) !important;
+      row-gap: 8px !important;
+    }
+    .page-header-title { overflow-wrap: anywhere; }
+    .page-header-meta-right { flex-wrap: wrap !important; white-space: normal !important; }
+    .page > div[style*="bottom: 15mm"] {
+      position: static !important;
+      flex: 0 0 auto !important;
+      align-self: center;
+      margin-top: 12px;
+    }
+  }
+}

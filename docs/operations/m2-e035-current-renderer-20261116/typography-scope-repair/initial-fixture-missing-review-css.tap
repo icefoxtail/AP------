@@ -1,0 +1,179 @@
+TAP version 13
+# node:fs:483
+#     return binding.readFileUtf8(path, stringToFlags(options.flag));
+#                    ^
+# Error: ENOENT: no such file or directory, open '/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/archive/archive2-review.css'
+#     at Object.readFileSync (node:fs:483:20)
+#     at Object.<anonymous> (/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/tests/archive-mixed-screen-fit.test.js:14:22)
+#     at Module._compile (node:internal/modules/cjs/loader:1929:14)
+#     at Object..js (node:internal/modules/cjs/loader:2060:10)
+#     at Module.load (node:internal/modules/cjs/loader:1651:32)
+#     at Module._load (node:internal/modules/cjs/loader:1443:12)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+#     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+#     at node:internal/main/run_main_module:33:47 {
+#   errno: -2,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: '/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/archive/archive2-review.css'
+# }
+# Node.js v24.22.1
+# Subtest: tests/archive-mixed-screen-fit.test.js
+not ok 1 - tests/archive-mixed-screen-fit.test.js
+  ---
+  duration_ms: 116.614051
+  type: 'test'
+  location: '/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-typography-scope-repair/candidate/tests/archive-mixed-screen-fit.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: student reading marker recognizes only the explicit studentReview query
+ok 2 - student reading marker recognizes only the explicit studentReview query
+  ---
+  duration_ms: 8.302589
+  type: 'test'
+  ...
+# Subtest: reading CSS is limited to mobile screen, READY, explicit student mode, and live question DOM
+ok 3 - reading CSS is limited to mobile screen, READY, explicit student mode, and live question DOM
+  ---
+  duration_ms: 0.66008
+  type: 'test'
+  ...
+# Subtest: existing Archive2 context keeps its own mobile reading and print policy
+ok 4 - existing Archive2 context keeps its own mobile reading and print policy
+  ---
+  duration_ms: 1.060892
+  type: 'test'
+  ...
+# Subtest: reading rules remove page scaling and print column heights without reordering question content
+ok 5 - reading rules remove page scaling and print column heights without reordering question content
+  ---
+  duration_ms: 0.310659
+  type: 'test'
+  ...
+# Subtest: body, choices and written solution use readable CSS sizes after A4 compression
+ok 6 - body, choices and written solution use readable CSS sizes after A4 compression
+  ---
+  duration_ms: 0.33977
+  type: 'test'
+  ...
+# Subtest: vector print temporarily suspends the reading view and restores it on completion
+ok 7 - vector print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 3.325248
+  type: 'test'
+  ...
+# Subtest: vector dry-run restores the reading view without a browser print
+ok 8 - vector dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 5.753564
+  type: 'test'
+  ...
+# Subtest: raster print temporarily suspends the reading view and restores it on completion
+ok 9 - raster print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 1.701058
+  type: 'test'
+  ...
+# Subtest: raster dry-run restores the reading view without a browser print
+ok 10 - raster dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 1.500277
+  type: 'test'
+  ...
+# Subtest: native print temporarily suspends the reading view and restores it on completion
+ok 11 - native print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 2.372046
+  type: 'test'
+  ...
+# Subtest: native dry-run restores the reading view without a browser print
+ok 12 - native dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 1.383368
+  type: 'test'
+  ...
+# Subtest: gdi print temporarily suspends the reading view and restores it on completion
+ok 13 - gdi print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 1.048106
+  type: 'test'
+  ...
+# Subtest: gdi dry-run restores the reading view without a browser print
+ok 14 - gdi dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 1.683489
+  type: 'test'
+  ...
+# Subtest: vector preflight refusal restores the reading view and keeps transport blocked
+ok 15 - vector preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 2.39889
+  type: 'test'
+  ...
+# Subtest: raster preflight refusal restores the reading view and keeps transport blocked
+ok 16 - raster preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 0.925732
+  type: 'test'
+  ...
+# Subtest: native preflight refusal restores the reading view and keeps transport blocked
+ok 17 - native preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 1.452391
+  type: 'test'
+  ...
+# Subtest: gdi preflight refusal restores the reading view and keeps transport blocked
+ok 18 - gdi preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 1.249398
+  type: 'test'
+  ...
+# Subtest: GDI refusal and cancelled installer prompt restore presentation
+ok 19 - GDI refusal and cancelled installer prompt restore presentation
+  ---
+  duration_ms: 1.654031
+  type: 'test'
+  ...
+# Subtest: browser print cancellation restores presentation
+ok 20 - browser print cancellation restores presentation
+  ---
+  duration_ms: 3.036044
+  type: 'test'
+  ...
+# Subtest: synchronous browser print throw restores presentation in finally
+ok 21 - synchronous browser print throw restores presentation in finally
+  ---
+  duration_ms: 2.483778
+  type: 'test'
+  ...
+# Subtest: unexpected setup throw restores presentation in finally
+ok 22 - unexpected setup throw restores presentation in finally
+  ---
+  duration_ms: 1.565074
+  type: 'test'
+  ...
+# Subtest: pre-existing presentation suspension is restored exactly
+ok 23 - pre-existing presentation suspension is restored exactly
+  ---
+  duration_ms: 1.167616
+  type: 'test'
+  ...
+# Subtest: busy print and normal review do not change presentation attributes
+ok 24 - busy print and normal review do not change presentation attributes
+  ---
+  duration_ms: 2.056831
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 23
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 202.156985

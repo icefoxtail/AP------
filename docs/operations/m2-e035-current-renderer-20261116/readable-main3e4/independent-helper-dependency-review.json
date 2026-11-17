@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "archive-e035-capture-helper-dependency-independent-read-v1",
+  "observer": "/root/audit_m3",
+  "observedAt": "2026-11-16T11:03:14.358846+00:00",
+  "status": "STATIC_READ_COMPLETE_RECOMMENDATION_ONLY",
+  "mainCommit": "3e4c4404463f7556898048de43f8ec0d8cac2cda",
+  "inputs": {
+    "frozenHelperArtifact": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43847494804/tile-helper.cjs",
+      "bytes": 50028,
+      "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4"
+    },
+    "mainHelperCached": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main3e4-intake/exact-main-code/tools/check-reviewed-problem-renderer-browser.cjs",
+      "bytes": 56735,
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673"
+    },
+    "mainGitRefs": [
+      {
+        "commit": "3e4c4404463f7556898048de43f8ec0d8cac2cda",
+        "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+        "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+        "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+        "bytes": 56735
+      },
+      {
+        "commit": "3e4c4404463f7556898048de43f8ec0d8cac2cda",
+        "path": "archive/mixed_engine.html",
+        "sha256": "a946d11b43af51a24bfa90e5362e98f91e5d466fbe3059753f2501a310c578ad",
+        "gitBlobSha1": "302831ea09b90242ace7bfe86320ce84eabdf44f",
+        "bytes": 208100
+      }
+    ],
+    "diff": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-helper-main3e4-review/helper-diff.patch",
+      "bytes": 25984,
+      "sha256": "2e60dbf958fd5c2d87c9df21f6102d736616638b8c7e9836c781722365a95527"
+    },
+    "geometryComparison": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-helper-main3e4-review/geometry-function-comparison.json",
+      "bytes": 1816,
+      "sha256": "da5b4f336631d862c5190ae7eedc00704b4e375fa1ce01f32006572f5dac14c6"
+    },
+    "sourceComparison": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-helper-main3e4-review/e035-main3e4-raw-refs.json",
+      "bytes": 2128,
+      "sha256": "3bed0fc3f3d61f474fe38128b11ce1d44954927bf687f5dc9eea90122b9d4cc8"
+    }
+  },
+  "usedExports": [
+    "problemContentClip",
+    "planProblemTiles",
+    "planProblemTileScroll",
+    "assertTileCoverage"
+  ],
+  "transitiveGeometryFunctions": [
+    "problemTileIntervals",
+    "problemTileClip",
+    "checkedRect"
+  ],
+  "geometryComparison": [
+    {
+      "name": "problemContentClip",
+      "same": true,
+      "sha256": "f718dc63e01acd37f85f4f458fe1bf4fb01e76ee0ffec85774d3d92d2d5c5692",
+      "bytes": 887,
+      "oldLine": 46,
+      "newLine": 55
+    },
+    {
+      "name": "problemTileIntervals",
+      "same": true,
+      "sha256": "78c9451870c6f0d662c43a19607155fd34acb301cc84cfe73626fa5e7bf46274",
+      "bytes": 982,
+      "oldLine": 177,
+      "newLine": 186
+    },
+    {
+      "name": "assertTileCoverage",
+      "same": true,
+      "sha256": "8b39fc06a1a999f1d6ba74e8cbf27d1591766d9b7bec336f0d39084cdde240d0",
+      "bytes": 994,
+      "oldLine": 192,
+      "newLine": 201
+    },
+    {
+      "name": "planProblemTiles",
+      "same": true,
+      "sha256": "8b8fff3a3c4c442ba308f15cccdefd6674bb096cf30a7cd1db230c2a1edbb6d0",
+      "bytes": 684,
+      "oldLine": 210,
+      "newLine": 219
+    },
+    {
+      "name": "problemTileClip",
+      "same": true,
+      "sha256": "b2705cb4cf596d7394d3cbed5d711d879196320db2f678aec4f928fa644ae364",
+      "bytes": 391,
+      "oldLine": 225,
+      "newLine": 234
+    },
+    {
+      "name": "planProblemTileScroll",
+      "same": true,
+      "sha256": "32706487c95a8b2ec8cb70e0b2ce01b841810ffb294b8e106115f6ca142e55ba",
+      "bytes": 520,
+      "oldLine": 232,
+      "newLine": 241
+    },
+    {
+      "name": "TILE_SCHEMA",
+      "same": true,
+      "value": "const TILE_SCHEMA = 'archive-problem-scroll-coverage-v1';"
+    },
+    {
+      "name": "TILE_OVERLAP",
+      "same": true,
+      "value": "const TILE_OVERLAP = 32;"
+    },
+    {
+      "name": "TILE_LIMIT",
+      "same": true,
+      "value": "const TILE_LIMIT = 8;"
+    },
+    {
+      "name": "checkedRect",
+      "same": true,
+      "sha256": "723b6bfd20fdf68a265d12483fcc9a60fd3922a23fee9517db1d19c9aada4bb0",
+      "bytes": 197
+    },
+    {
+      "name": "overlaps",
+      "same": true,
+      "sha256": "4d5142509f69a94fd6ed313e469d473235dbbb93a53e90cb87b044c90e7f65bf",
+      "bytes": 120
+    }
+  ],
+  "usedGeometryLiteralExact": true,
+  "moduleLoadBoundary": {
+    "topLevelImports": "NODE_BUILTINS_ONLY",
+    "browserCliGuard": "require.main === module",
+    "newFontIntakeNotInvokedByFourGeometryExports": true
+  },
+  "mainHelperChanges": [
+    "Pinned offline Nanum stylesheet/font/license inventory for its engine.html UI3 runner",
+    "Strict font declaration parsing and response raw-hash checks",
+    "Owned route lifecycle draining and late failures preserved before teardown",
+    "Additional plan triggers for engine.html and font resources"
+  ],
+  "actualMixedRenderer": {
+    "sha256": "a946d11b43af51a24bfa90e5362e98f91e5d466fbe3059753f2501a310c578ad",
+    "localMathJaxPath": "vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+    "localMathJaxFallbackGuardStillRequired": true,
+    "nanumTransport": "EXISTING_GOOGLE_FONTS_CSS_IMPORT_STILL_PRESENT",
+    "offlineNanumClaim": false
+  },
+  "e035RawComparison": {
+    "sourceWholeFileExactTo630": true,
+    "problemAssetExactTo630": true,
+    "mainSolutionIsUnrepairedPrior": true,
+    "approvedRepairedSolutionSha256": "983e9e1d8d68f177c560f1a36e01227a4024dd70dab438e2b2d7e7090ecc8f25",
+    "requiredCarrierAction": "Overlay only the already independently reviewed repaired solution bytes; preserve main source/problem bytes"
+  },
+  "recommendation": {
+    "decision": "PIN_EXISTING_FROZEN_TILE_ALGORITHM_EXPLICITLY",
+    "reason": "Only four pure geometry exports are consumed; these and their geometry dependencies are byte-exact across versions. Pinning the reviewed artifact independently avoids falsely treating the complete changed UI3 font/network runner as the E035 capture dependency.",
+    "declaredHelperRef": {
+      "commit": "63050c3475be52f6ebf5b34c4d0ac3c785915aa7",
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "dcb4382ada6913f9aa35a820777248ee93879e36",
+      "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4"
+    },
+    "algorithmSchema": "archive-problem-scroll-coverage-v1",
+    "requiredChecks": [
+      "Exact immutable regular Git file and declared raw SHA/blob",
+      "No latest-helper fallback or accepted-hash list",
+      "Declare helperRef and algorithm binding in technical proof",
+      "Keep current renderer/source/assets served from the current declared renderer commit",
+      "Keep v7 viewport-coordinate/floor/visibility/whole-bank checks unchanged",
+      "Keep actual four-view/glyph/native gates pending"
+    ]
+  },
+  "historicalGitRead": {
+    "ref": "63050c3475be52f6ebf5b34c4d0ac3c785915aa7:tools/check-reviewed-problem-renderer-browser.cjs",
+    "localRead": "EXIT_128_OBJECT_UNAVAILABLE",
+    "fallbackUsed": false,
+    "rootExactHydrationRequested": true,
+    "note": "Original run artifact bytes and raw hash are verified; public historical Git binding must be read successfully before producer edit/freeze."
+  },
+  "scope": {
+    "producerEdits": 0,
+    "rendererEdits": 0,
+    "sourceAssetEdits": 0,
+    "tests": 0,
+    "browserRuns": 0,
+    "nativeRegistrations": 0,
+    "remoteWrites": 0,
+    "uiDecision": "HOLD"
+  },
+  "nextAction": "Root confirms explicit immutable helper pin and hydrates the exact historical commit:path; then issue a separate v7 dependency delta. Wait for rebased readable renderer and actual four original views."
+}

@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: desktop screen-fit retains the unscaled centered A4 paper
+ok 1 - desktop screen-fit retains the unscaled centered A4 paper
+  ---
+  duration_ms: 6.172609
+  type: 'test'
+  ...
+# Subtest: mobile overflow cannot enlarge screen-fit beyond the 390px document viewport
+ok 2 - mobile overflow cannot enlarge screen-fit beyond the 390px document viewport
+  ---
+  duration_ms: 1.684826
+  type: 'test'
+  ...
+# Subtest: tablet overflow uses its 768px client viewport rather than a wider innerWidth
+ok 3 - tablet overflow uses its 768px client viewport rather than a wider innerWidth
+  ---
+  duration_ms: 1.742166
+  type: 'test'
+  ...
+# Subtest: a 320px mobile viewport retains both gutters when layout overflows
+ok 4 - a 320px mobile viewport retains both gutters when layout overflows
+  ---
+  duration_ms: 2.019363
+  type: 'test'
+  ...
+# Subtest: a correctly measured mobile width also centers an overflowing max-content area
+ok 5 - a correctly measured mobile width also centers an overflowing max-content area
+  ---
+  duration_ms: 1.823374
+  type: 'test'
+  ...
+# Subtest: an unavailable document measurement falls back to the existing innerWidth
+ok 6 - an unavailable document measurement falls back to the existing innerWidth
+  ---
+  duration_ms: 1.694243
+  type: 'test'
+  ...
+# Subtest: an invalid viewport measurement cannot install a non-finite or guessed transform
+ok 7 - an invalid viewport measurement cannot install a non-finite or guessed transform
+  ---
+  duration_ms: 1.770589
+  type: 'test'
+  ...
+# Subtest: resizing from mobile to desktop clears the horizontal overflow correction
+ok 8 - resizing from mobile to desktop clears the horizontal overflow correction
+  ---
+  duration_ms: 1.75921
+  type: 'test'
+  ...
+# Subtest: the explicit render build target keeps its own measured page width
+ok 9 - the explicit render build target keeps its own measured page width
+  ---
+  duration_ms: 1.594304
+  type: 'test'
+  ...
+# Subtest: the normal output path and missing paper do not acquire a screen transform
+ok 10 - the normal output path and missing paper do not acquire a screen transform
+  ---
+  duration_ms: 5.492492
+  type: 'test'
+  ...
+# Subtest: print still disables the complete screen transform without changing paper layout
+ok 11 - print still disables the complete screen transform without changing paper layout
+  ---
+  duration_ms: 0.804299
+  type: 'test'
+  ...
+# Subtest: the existing narrow paper-review mode keeps its left origin and clears prior center offsets
+ok 12 - the existing narrow paper-review mode keeps its left origin and clears prior center offsets
+  ---
+  duration_ms: 2.110469
+  type: 'test'
+  ...
+# Subtest: student reading marker recognizes only the explicit studentReview query
+ok 13 - student reading marker recognizes only the explicit studentReview query
+  ---
+  duration_ms: 11.769703
+  type: 'test'
+  ...
+# Subtest: reading CSS is limited to mobile screen, READY, explicit student mode, and live question DOM
+ok 14 - reading CSS is limited to mobile screen, READY, explicit student mode, and live question DOM
+  ---
+  duration_ms: 0.692643
+  type: 'test'
+  ...
+# Subtest: existing Archive2 context keeps its own mobile reading and print policy
+ok 15 - existing Archive2 context keeps its own mobile reading and print policy
+  ---
+  duration_ms: 1.67656
+  type: 'test'
+  ...
+# Subtest: reading rules remove page scaling and print column heights without reordering question content
+ok 16 - reading rules remove page scaling and print column heights without reordering question content
+  ---
+  duration_ms: 0.465383
+  type: 'test'
+  ...
+# Subtest: body, choices and written solution use readable CSS sizes after A4 compression
+ok 17 - body, choices and written solution use readable CSS sizes after A4 compression
+  ---
+  duration_ms: 0.901075
+  type: 'test'
+  ...
+# Subtest: vector print temporarily suspends the reading view and restores it on completion
+ok 18 - vector print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 4.787012
+  type: 'test'
+  ...
+# Subtest: vector dry-run restores the reading view without a browser print
+ok 19 - vector dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 5.96198
+  type: 'test'
+  ...
+# Subtest: raster print temporarily suspends the reading view and restores it on completion
+ok 20 - raster print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 2.572678
+  type: 'test'
+  ...
+# Subtest: raster dry-run restores the reading view without a browser print
+ok 21 - raster dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 2.848263
+  type: 'test'
+  ...
+# Subtest: native print temporarily suspends the reading view and restores it on completion
+ok 22 - native print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 3.54832
+  type: 'test'
+  ...
+# Subtest: native dry-run restores the reading view without a browser print
+ok 23 - native dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 2.691798
+  type: 'test'
+  ...
+# Subtest: gdi print temporarily suspends the reading view and restores it on completion
+ok 24 - gdi print temporarily suspends the reading view and restores it on completion
+  ---
+  duration_ms: 2.835416
+  type: 'test'
+  ...
+# Subtest: gdi dry-run restores the reading view without a browser print
+ok 25 - gdi dry-run restores the reading view without a browser print
+  ---
+  duration_ms: 4.953425
+  type: 'test'
+  ...
+# Subtest: vector preflight refusal restores the reading view and keeps transport blocked
+ok 26 - vector preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 2.425475
+  type: 'test'
+  ...
+# Subtest: raster preflight refusal restores the reading view and keeps transport blocked
+ok 27 - raster preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 2.106094
+  type: 'test'
+  ...
+# Subtest: native preflight refusal restores the reading view and keeps transport blocked
+ok 28 - native preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 1.909732
+  type: 'test'
+  ...
+# Subtest: gdi preflight refusal restores the reading view and keeps transport blocked
+ok 29 - gdi preflight refusal restores the reading view and keeps transport blocked
+  ---
+  duration_ms: 2.826523
+  type: 'test'
+  ...
+# Subtest: GDI refusal and cancelled installer prompt restore presentation
+ok 30 - GDI refusal and cancelled installer prompt restore presentation
+  ---
+  duration_ms: 2.663576
+  type: 'test'
+  ...
+# Subtest: browser print cancellation restores presentation
+ok 31 - browser print cancellation restores presentation
+  ---
+  duration_ms: 2.287331
+  type: 'test'
+  ...
+# Subtest: synchronous browser print throw restores presentation in finally
+ok 32 - synchronous browser print throw restores presentation in finally
+  ---
+  duration_ms: 4.574808
+  type: 'test'
+  ...
+# Subtest: unexpected setup throw restores presentation in finally
+ok 33 - unexpected setup throw restores presentation in finally
+  ---
+  duration_ms: 1.721608
+  type: 'test'
+  ...
+# Subtest: pre-existing presentation suspension is restored exactly
+ok 34 - pre-existing presentation suspension is restored exactly
+  ---
+  duration_ms: 1.464619
+  type: 'test'
+  ...
+# Subtest: busy print and normal review do not change presentation attributes
+ok 35 - busy print and normal review do not change presentation attributes
+  ---
+  duration_ms: 2.734589
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 243.858662

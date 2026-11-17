@@ -1,0 +1,390 @@
+{
+  "schemaVersion": "archive-e035-gha-independent-ui-failure-v1",
+  "observer": "M3",
+  "observedAt": "2026-11-16T09:39:51.847584+00:00",
+  "decision": "HOLD",
+  "execution": {
+    "runId": 43840731652,
+    "jobId": 133208417861,
+    "head": "7ce68ee94a9c08b79c8e0884ed0f3a936d950944",
+    "conclusion": "failure",
+    "browserVersion": "157.0.8103.78",
+    "producerRef": {
+      "commit": "7ce68ee94a9c08b79c8e0884ed0f3a936d950944",
+      "path": "docs/operations/m2-e035-current-renderer-20261116/producer.cjs",
+      "gitBlobSha1": "a7dc999696ba0b6780dcfc9ae47822b6588d5f8a",
+      "sha256": "32a4c6e7af1b8dcaf937466a468207be12354d4f1091e3163db0cb17fb17b89a"
+    },
+    "captureStartedAt": "2026-11-16T09:36:30.3319636Z",
+    "desktopProblemCompletedAt": "2026-11-16T09:36:37.9862176Z",
+    "desktopSolutionStartedAt": "2026-11-16T09:36:38.0069526Z",
+    "failureAt": "2026-11-16T09:36:48.7310533Z",
+    "activeCase": "desktop-solution",
+    "error": {
+      "name": "AssertionError",
+      "message": "UI_MANDATORY_CHILDREN_NOT_VISIBLE"
+    }
+  },
+  "artifact": {
+    "id": 14213251822,
+    "zip": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/artifact-original.zip",
+      "bytes": 205100,
+      "sha256": "5eb99104302d64c3f5e12f0c235669bb52e948dd2c284be924f9e151e02ea7da"
+    },
+    "remoteDigest": "sha256:5eb99104302d64c3f5e12f0c235669bb52e948dd2c284be924f9e151e02ea7da",
+    "zipDigestVerified": true,
+    "originalManifest": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/original-artifact-manifest.json",
+      "bytes": 1818,
+      "sha256": "31a40cfdfb2fabc3902ce97605a7e2ecf7c1b9c855f9a65301e346dd4b393016"
+    },
+    "technical": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/technical-proof.json",
+      "bytes": 34458,
+      "sha256": "9c91c85509d226ebc13f7a189e95ded55e6cb7728cfed0cd5bd71adb407972f0"
+    },
+    "diagnostics": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/diagnostics.json",
+      "bytes": 463294,
+      "sha256": "9dc9993150cfad55555de3f70354eefb63ba7668e795e10499f95f052dcde358"
+    },
+    "tileHelper": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/tile-helper.cjs",
+      "bytes": 50028,
+      "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4"
+    }
+  },
+  "caseCoverage": {
+    "desktopProblem": "technical case complete; original PNG independently inspected",
+    "desktopSolution": "original PNG independently inspected; post-capture mandatory validation failed",
+    "mobileProblem": "NOT_RUN",
+    "mobileSolution": "NOT_RUN",
+    "fourCaseUiPass": false
+  },
+  "actualObservations": {
+    "images": [
+      {
+        "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/e035-problem-desktop-tile-01.png",
+        "bytes": 30354,
+        "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+        "role": "selected problem",
+        "width": 664,
+        "height": 438,
+        "originalFileViewedBy": "M3",
+        "postProcessed": false
+      },
+      {
+        "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/e035-solution-desktop-tile-01.png",
+        "bytes": 48167,
+        "sha256": "ebb975a21025ce51f60ee847ab67e242ffd7a08bb261ea50743c56ad6c39c1a7",
+        "role": "selected solution",
+        "width": 316,
+        "height": 597,
+        "originalFileViewedBy": "M3",
+        "postProcessed": false
+      },
+      {
+        "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43840731652/desktop-solution-failure-viewport.png",
+        "bytes": 101115,
+        "sha256": "02d4ea1cab6f2ba30022db03e344e5d02eff11461db6b78762dcb201143ec147",
+        "role": "failure viewport",
+        "width": 1280,
+        "height": 900,
+        "originalFileViewedBy": "M3",
+        "postProcessed": false
+      }
+    ],
+    "notes": [
+      "The selected desktop problem tile visibly includes the question presentation, diagram and choices. No new content interpretation or answer approval was made.",
+      "The selected desktop solution tile visibly includes its context, the repaired diagram and written explanation. This is an image observation, not successful completion of the post-capture gate.",
+      "The later failure viewport visibly contains the selected solution. It does not prove the earlier measured ElementHandle was attached and does not override the failed mandatory assertion."
+    ],
+    "allThreePngBytesEqualV4": true,
+    "initialHoldAndRepairedAssetObservationUnmodified": true
+  },
+  "mandatoryDiagnostics": {
+    "measurementCount": 96,
+    "retainedSnapshots": 64,
+    "droppedSnapshots": 32,
+    "lastSuccessfulVisibilityMeasurement": 95,
+    "failedMeasurement": 96,
+    "failedStage": "post-screenshot-poll",
+    "failedRoles": [
+      {
+        "role": "box",
+        "index": null,
+        "isConnected": false,
+        "inDocument": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "isVisible": false
+      },
+      {
+        "role": "selected-image",
+        "index": null,
+        "isConnected": false,
+        "inDocument": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "isVisible": false
+      },
+      {
+        "role": "question-number",
+        "index": null,
+        "isConnected": false,
+        "inDocument": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "isVisible": false
+      },
+      {
+        "role": "direct-child",
+        "index": 0,
+        "isConnected": false,
+        "inDocument": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "isVisible": false
+      },
+      {
+        "role": "direct-child",
+        "index": 1,
+        "isConnected": false,
+        "inDocument": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "isVisible": false
+      },
+      {
+        "role": "direct-child",
+        "index": 2,
+        "isConnected": false,
+        "inDocument": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "isVisible": false
+      }
+    ],
+    "totalDirectChildren": 3,
+    "diagnosticsTruncated": false,
+    "domSha256Unchanged": true,
+    "domSha256": "5455e4e973ef3f6df4496607620b8b386f0ccf0bdc047d976c6754f994457ab7",
+    "scrollUnchanged": true,
+    "viewportMetricsUnchanged": true,
+    "lastFeedbackIdle": true,
+    "lastReadiness": "RENDER_READY",
+    "firstMandatoryAssertFailedBeforeSubsequentInvariantAssertions": true
+  },
+  "captureSettles": [
+    {
+      "caseId": "desktop-problem",
+      "polls": 33,
+      "elapsedMs": 1680,
+      "complete": true,
+      "first": {
+        "feedbackIdle": false,
+        "mandatoryChildrenVisible": true,
+        "readiness": "RENDER_READY",
+        "domSha256": "2998c999a9cd27191c252b1fc2c33026ecfcafdc85c3e2743b0b0e2e40df10f2"
+      },
+      "last": {
+        "feedbackIdle": true,
+        "mandatoryChildrenVisible": true,
+        "readiness": "RENDER_READY",
+        "domSha256": "2998c999a9cd27191c252b1fc2c33026ecfcafdc85c3e2743b0b0e2e40df10f2"
+      }
+    },
+    {
+      "caseId": "desktop-solution",
+      "polls": 56,
+      "elapsedMs": 3373,
+      "complete": false,
+      "first": {
+        "feedbackIdle": false,
+        "mandatoryChildrenVisible": true,
+        "readiness": "RENDER_READY",
+        "domSha256": "5455e4e973ef3f6df4496607620b8b386f0ccf0bdc047d976c6754f994457ab7"
+      },
+      "last": {
+        "feedbackIdle": true,
+        "mandatoryChildrenVisible": false,
+        "readiness": "RENDER_READY",
+        "domSha256": "5455e4e973ef3f6df4496607620b8b386f0ccf0bdc047d976c6754f994457ab7"
+      }
+    }
+  ],
+  "capturePixels": [
+    {
+      "caseId": "desktop-problem",
+      "tileIndex": 1,
+      "layoutClip": {
+        "x": 307.84375,
+        "y": 123.546875,
+        "width": 664.3125,
+        "height": 438.421875
+      },
+      "documentClip": {
+        "x": 307.84375,
+        "y": 10429.546875,
+        "width": 664.3125,
+        "height": 438.421875
+      },
+      "contextViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "metricsBefore": {
+        "layoutViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "documentClient": {
+          "width": 1280,
+          "height": 900
+        },
+        "visualViewport": {
+          "width": 1280,
+          "height": 900,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "pageLeft": 0,
+          "pageTop": 10306,
+          "scale": 1
+        },
+        "screen": {
+          "width": 1280,
+          "height": 900
+        },
+        "devicePixelRatio": 1
+      },
+      "pngDimensions": {
+        "width": 664,
+        "height": 438
+      },
+      "expectedPng": {
+        "width": 664,
+        "height": 438
+      },
+      "pixelRule": "NEAREST_INTEGER_CSS_PX"
+    },
+    {
+      "caseId": "desktop-solution",
+      "tileIndex": 1,
+      "layoutClip": {
+        "x": 311.84375,
+        "y": 123.515625,
+        "width": 316.15625,
+        "height": 596.890625
+      },
+      "documentClip": {
+        "x": 311.84375,
+        "y": 5895.515625,
+        "width": 316.15625,
+        "height": 596.890625
+      },
+      "contextViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "metricsBefore": {
+        "layoutViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "documentClient": {
+          "width": 1280,
+          "height": 900
+        },
+        "visualViewport": {
+          "width": 1280,
+          "height": 900,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "pageLeft": 0,
+          "pageTop": 5772,
+          "scale": 1
+        },
+        "screen": {
+          "width": 1280,
+          "height": 900
+        },
+        "devicePixelRatio": 1
+      },
+      "pngDimensions": {
+        "width": 316,
+        "height": 597
+      },
+      "expectedPng": {
+        "width": 316,
+        "height": 597
+      },
+      "pixelRule": "NEAREST_INTEGER_CSS_PX"
+    }
+  ],
+  "diagnosis": {
+    "observed": "All six measured selected container/image/number/direct-child nodes were disconnected with zero rectangles at the failure. The raw markup hash was unchanged, which does not establish DOM node identity.",
+    "atomicMeasurementOutcome": "The single-turn snapshot removed the internal digest-await measurement gap but did not prevent evaluation of an already detached ElementHandle.",
+    "exactPrimaryCode": {
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/lib/coreBundle.js",
+      "sha256": "9393fa79e1c67c74edc26b610d65a4f7ed73d345a762465cc88340a33a2454ac",
+      "version": "1.62.1",
+      "locatorWithElementLines": [
+        57995,
+        58008
+      ],
+      "locatorEvaluateLines": [
+        58040,
+        58041
+      ],
+      "handleEvaluateLines": [
+        57448,
+        57453
+      ],
+      "finding": "Locator.evaluate resolves an attached element through an awaited channel call, then separately evaluates the supplied function through the returned handle. It does not select the DOM node inside that supplied function."
+    },
+    "inference": "The resolve-to-evaluate gap can supply a detached handle when the application replaces the print area. The artifact proves detachment, but does not trace the exact detach instruction or establish screenshot causation."
+  },
+  "nextAction": "Keep the complete v5 failed evidence immutable. Prepare a separate candidate that resolves the same frozen selector with exact count one and attached checks within page.evaluate, then performs the unchanged snapshot and hit predicates in that same JavaScript turn. Do not retry or ignore a failed visibility result.",
+  "approvals": {
+    "newMathematicalQa": false,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "newFourSlotApprovals": 0,
+    "studentUiPass": false
+  },
+  "changesByM3": {
+    "source": 0,
+    "assets": 0,
+    "renderer": 0,
+    "css": 0,
+    "viewport": 0,
+    "remote": 0,
+    "workflowExecution": 0,
+    "imagePostProcessing": 0
+  }
+}
