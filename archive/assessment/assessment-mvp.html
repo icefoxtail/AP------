@@ -3,709 +3,306 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AP Math 시험지 보관함</title>
+  <title>시험지 보관함 · JS 아카이브</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../archive2-tokens.css?v=20261110-shell-1">
+  <link rel="stylesheet" href="../archive2-standalone.css?v=20261116-standalone-1">
+  <link rel="stylesheet" href="../archive2-navigation.css?v=20261116-menu-tools-1">
   <style>
-    :root {
-      --blue-main: #27272a;
-      --blue-strong: #18181b;
-      --blue-light: #a1a1aa;
-      --blue-pale: #f4f4f5;
-      --green-border: #b7efd4;
-      --gray-muted: #94a3b8;
-      --bg-soft: #f4f4f5;
-      --card-bg: #ffffff;
-      --card-active: #f7f7f8;
-      --card-border: #e4e4e7;
-      --card-border-hover: #d4d4d8;
-      --card-border-active: #a1a1aa;
-      --text-main: #0f172a;
-      --text-sub: #64748b;
-      --badge-bg: #f4f4f5;
-      --badge-text: #27272a;
-      --badge-border: #e4e4e7;
-      --warn-bg: #fff7ed;
-      --warn-border: #fed7aa;
-      --warn-text: #9a3412;
-      --shadow-card: 0 14px 32px rgba(15, 23, 42, 0.06);
-      --shadow-card-hover: 0 22px 44px rgba(0, 0, 0, 0.12);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(0,0,0,0.04), transparent 26%),
-        linear-gradient(180deg, #f9f9fa 0%, var(--bg-soft) 100%);
-      color: #1e293b;
-      overflow-x: hidden;
-    }
-
-    .filter-band {
-      background: rgba(255,255,255,0.88);
-      border-bottom: 1px solid #e6ebf3;
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      backdrop-filter: blur(14px);
-    }
-
-    .filter-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .fb-search {
-      flex: 1 1 320px;
-      position: relative;
-      min-width: 260px;
-    }
-
-    .fb-search input {
-      width: 100%;
-      height: 44px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      padding: 0 14px 0 40px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #0f172a;
-      outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s, transform 0.15s;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
-    }
-
-    .fb-search input::placeholder {
-      color: #94a3b8;
-      font-weight: 600;
-    }
-
-    .fb-search input:focus {
-      border-color: var(--blue-main);
-      background: #fff;
-      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.08), 0 10px 20px rgba(29, 78, 216, 0.06);
-      transform: translateY(-1px);
-    }
-
-    .fb-search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #94a3b8;
-      font-size: 13px;
-    }
-
-    .fb-sel {
-      height: 44px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      padding: 0 12px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      color: #334155;
-      min-width: 120px;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
-      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
-    }
-
-    .fb-sel:hover,
-    .fb-sel:focus {
-      border-color: #d4d4d8;
-      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .fb-original-toggle {
-      display: inline-flex;
-      height: 44px;
-      background: rgba(255,255,255,0.92);
-      color: #334155;
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      padding: 0 14px;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
-      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s, color 0.15s, background 0.15s;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .fb-original-toggle:hover {
-      border-color: #d4d4d8;
-      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
-      transform: translateY(-1px);
-    }
-
-    .fb-original-toggle.active {
-      background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
-      color: #9a3412;
-      border-color: #fed7aa;
-    }
-
-    .content-wrap {
-      background: linear-gradient(180deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0) 100%);
-    }
-
-    .sec-block {
-      padding: 52px 24px;
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .sec-block > * {
-      max-width: 1152px;
-      margin: 0 auto;
-    }
-
-    .archive-head {
-      margin-bottom: 22px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-end;
-    }
-
-    .archive-title {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .archive-sub {
-      margin-top: 8px;
-      color: var(--text-sub);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.55;
-    }
-
-    .stats {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .stat {
-      min-height: 38px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      padding: 0 12px;
-      color: var(--text-sub);
-      font-size: 12px;
-      font-weight: 800;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
-    }
-
-    .stat strong {
-      color: var(--text-main);
-      font-size: 15px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .exam-card {
-      background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 100%);
-      border: 1px solid var(--card-border);
-      border-radius: 22px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: 0.18s ease;
-      cursor: pointer;
-      box-shadow: var(--shadow-card);
-      position: relative;
-    }
-
-    .exam-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--card-border-hover);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .exam-card.is-active {
-      background: linear-gradient(180deg, #ffffff 0%, var(--card-active) 100%);
-      border-color: var(--card-border-active);
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
-    }
-
-    .card-top {
-      height: 4px;
-      background: linear-gradient(90deg, var(--blue-main) 0%, var(--blue-light) 100%);
-    }
-
-    .exam-card.type-sheet .card-top {
-      background: linear-gradient(90deg, var(--blue-main) 0%, #a1a1aa 100%);
-    }
-
-    .card-body {
-      padding: 22px 22px 18px;
-      display: flex;
-      flex-direction: column;
-      min-height: 212px;
-    }
-
-    .card-grade-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .card-grade-label {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--text-sub);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .card-type-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 25px;
-      padding: 0 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      border: 1px solid var(--badge-border);
-      background: rgba(244,244,245,0.86);
-      color: var(--badge-text);
-      flex-shrink: 0;
-      backdrop-filter: blur(8px);
-    }
-
-    .card-main-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.28;
-      letter-spacing: -0.04em;
-      display: block;
-      margin-bottom: 8px;
-      white-space: normal;
-      word-break: keep-all;
-      overflow-wrap: anywhere;
-    }
-
-    .card-sub-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-sub);
-      line-height: 1.58;
-      display: block;
-    }
-
-    .card-meta-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 13px;
-      min-height: 28px;
-    }
-
-    .meta-badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 27px;
-      padding: 0 10px;
-      border-radius: 9px;
-      font-size: 11px;
-      font-weight: 800;
-      color: #475569;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
-    }
-
-    .meta-badge.primary {
-      color: var(--blue-main);
-      background: rgba(244,244,245,0.95);
-      border-color: #e4e4e7;
-    }
-
-    .meta-badge.green {
-      color: #047857;
-      background: rgba(236,253,245,0.95);
-      border-color: var(--green-border);
-    }
-
-    .card-file-name {
-      display: block;
-      margin-top: auto;
-      font-size: 11px;
-      line-height: 1.45;
-      color: #000000;
-      word-break: break-all;
-      padding-top: 13px;
-      border-top: 1px dashed #e2e8f0;
-      opacity: 0.92;
-    }
-
-    .exam-card.is-active .card-file-name {
-      color: #000000;
-      border-top-color: #e4e4e7;
-    }
-
-    .card-actions {
-      border-top: 1px solid var(--card-border);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
-    }
-
-    .exam-card.is-active .card-actions {
-      background: linear-gradient(180deg, #f9f9fa 0%, #f4f4f5 100%);
-      border-top-color: #e4e4e7;
-    }
-
-    .action-btn {
-      min-height: 48px;
-      border: 0;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--text-sub);
-      transition: background 0.15s, color 0.15s;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .action-btn + .action-btn {
-      border-left: 1px solid #edf2f7;
-    }
-
-    .action-btn:hover {
-      background: #f4f4f5;
-      color: #27272a;
-    }
-
-    .exam-card.is-active .action-btn + .action-btn {
-      border-left-color: #e4e4e7;
-    }
-
-    .empty-state {
-      max-width: 1152px;
-      margin: 32px auto 0;
-      padding: 18px 20px;
-      border: 1px solid var(--warn-border);
-      background: var(--warn-bg);
-      color: var(--warn-text);
-      border-radius: 14px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 12px 24px rgba(154, 52, 18, 0.05);
-    }
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(2, 8, 23, 0.52);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(6px);
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal-box {
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
-      border-radius: 26px;
-      padding: 40px;
-      width: 388px;
-      max-width: calc(100% - 28px);
-      text-align: center;
-      box-shadow: 0 28px 60px rgba(0,0,0,0.22);
-      border: 1px solid rgba(226,232,240,0.9);
-    }
-
-    .modal-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .modal-sub {
-      font-size: 14px;
-      color: var(--text-sub);
-      line-height: 1.6;
-    }
-
-    .qpp-btns {
-      display: flex;
-      gap: 14px;
-      margin: 24px 0;
-    }
-
-    .qpp-opt {
-      flex: 1;
-      padding: 24px 0;
-      border: 2px solid #eef2f6;
-      border-radius: 18px;
-      cursor: pointer;
-      font-size: 32px;
-      font-weight: 800;
-      transition: all 0.2s ease;
-      background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
-      color: #cbd5e1;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
-    }
-
-    .qpp-opt:hover {
-      border-color: var(--blue-main);
-      color: var(--blue-main);
-      background: linear-gradient(180deg, #f4f4f5 0%, var(--blue-pale) 100%);
-      transform: scale(1.04);
-      box-shadow: 0 16px 26px rgba(0, 0, 0, 0.10);
-    }
-
-    .modal-btn-primary {
-      background: var(--blue-main);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      transition: 0.2s;
-      font-family: inherit;
-    }
-
-    .modal-btn-primary:hover {
-      filter: brightness(1.1);
-    }
-
-    .modal-btn-cancel {
-      background: #f1f5f9;
-      color: var(--text-sub);
-      border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 8px;
-      font-family: inherit;
-    }
-
-    .modal-close-btn {
-      border: none;
-      background: none;
-      color: var(--gray-muted);
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 14px;
-      font-family: inherit;
-    }
-
-    .teacher-class-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 20px 0;
-      text-align: left;
-    }
-
-    .teacher-class-label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--text-sub);
-    }
-
-    .teacher-class-select {
-      width: 100%;
-      height: 44px;
-      padding: 0 12px;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-      font-size: 14px;
-      font-weight: 700;
-      outline: none;
-      background: rgba(255,255,255,0.92);
-      color: var(--text-main);
-      font-family: inherit;
-    }
-
-    .teacher-class-note {
-      margin-top: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.5;
-      color: var(--text-sub);
-    }
-
-    :root {
-      --archive-accent: #27272A;
-      --archive-accent-strong: #18181B;
-      --archive-accent-soft: rgba(39, 39, 42, 0.08);
-      --archive-accent-ring: rgba(39, 39, 42, 0.20);
-      --archive-bg: #F2F2F2;
-      --archive-surface: #FFFFFF;
-      --archive-border: rgba(0, 0, 0, 0.10);
-      --archive-border-soft: rgba(0, 0, 0, 0.06);
-      --archive-text: #1C1C1E;
-      --archive-text-soft: #6C6C70;
-      --archive-radius-sm: 12px;
-      --archive-radius-lg: 22px;
-      --archive-shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-      --blue-main: var(--archive-accent);
-      --blue-strong: var(--archive-accent-strong);
-      --blue-light: #A1A1AA;
-      --blue-pale: rgba(39, 39, 42, 0.14);
-      --bg-soft: var(--archive-bg);
-      --card-bg: var(--archive-surface);
-      --card-active: #F7F7F8;
-      --card-border: var(--archive-border);
-      --card-border-hover: var(--archive-accent-ring);
-      --card-border-active: rgba(39, 39, 42, 0.42);
-      --text-main: var(--archive-text);
-      --text-sub: var(--archive-text-soft);
-      --badge-bg: rgba(39, 39, 42, 0.08);
-      --badge-text: #27272A;
-      --badge-border: rgba(39, 39, 42, 0.16);
-      --shadow-card: var(--archive-shadow-sm);
-      --shadow-card-hover: 0 18px 44px rgba(0, 0, 0, 0.14);
-    }
-
-    html {
-      background: var(--archive-bg);
-    }
-
-    body {
-      color: var(--archive-text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .filter-band {
-      background: rgba(255,255,255,0.84);
-      border-bottom-color: var(--archive-border-soft);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .fb-search input,
-    .fb-sel {
-      border-color: var(--archive-border);
-      border-radius: var(--archive-radius-sm);
-      background: rgba(255,255,255,0.92);
-    }
-
-    .fb-search input:focus,
-    .fb-sel:focus {
-      border-color: var(--archive-accent);
-      box-shadow: 0 0 0 4px var(--archive-accent-soft);
-    }
-
-    .fb-original-toggle {
-      border-radius: var(--archive-radius-sm);
-    }
-
-    .exam-card {
-      border-radius: var(--archive-radius-lg);
-      border-color: var(--archive-border);
-      box-shadow: var(--archive-shadow-sm);
-    }
-
-    .exam-card:hover {
-      border-color: var(--archive-accent-ring);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .exam-card.is-active {
-      border-color: var(--card-border-active);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.14);
-    }
-
-    .card-body {
-      border-color: var(--archive-border-soft);
-    }
-
-    .meta-badge {
-      border-color: var(--badge-border);
-    }
-
-    .modal-overlay {
-      background: rgba(2, 8, 23, 0.46);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .modal-box {
-      border-radius: 28px;
-      border-color: rgba(255,255,255,0.80);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.16);
-    }
-
-    .modal-box button,
-    .modal-btn-primary {
-      border-radius: var(--archive-radius-sm);
-    }
-
-    @media (max-width: 820px) {
-      .filter-inner { padding: 12px 16px; }
-      .fb-search { min-width: 100%; }
-      .fb-sel, .fb-original-toggle { flex: 1 1 calc(50% - 8px); min-width: 0; justify-content: center; }
-      .sec-block { padding: 34px 16px; }
-      .archive-head { display: block; }
-      .archive-title { font-size: 24px; }
-      .stats { justify-content: flex-start; margin-top: 14px; }
-      .card-grid { grid-template-columns: 1fr; }
-    }
+/* 시험지 보관함: only what is specific to this page. Frame, buttons, fields and the card family come from archive2-standalone.css. */
+.archive-sub { margin-top: 0; }
+.stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Filters: category tabs first, then search and selects. */
+.filter-band {
+  margin: 0 0 24px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+.filter-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.fb-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+}
+.fb-search {
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+.fb-search input {
+  width: 100%;
+}
+.fb-sel {
+  min-width: 140px;
+  font-weight: 700;
+}
+.fb-original-toggle {
+  padding: 0 20px;
+}
+
+.sec-block { padding: 0; }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+.card-grid > .empty-state { grid-column: 1 / -1; }
+body.archive2-assessment .exam-card.type-sheet {
+  margin: 0;
+  cursor: pointer;
+}
+body.archive2-assessment .exam-card.type-sheet:hover {
+  border-color: var(--control-line);
+}
+body.archive2-assessment .exam-card.is-active {
+  border: 2px solid var(--ink);
+  background: var(--selected);
+}
+body.archive2-assessment .exam-card.is-active .card-body { padding: 19px 21px; }
+body.archive2-assessment .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 190px;
+}
+/* The pack title is a button (it opens the preview) that reads as a title. */
+.action-btn.paper-title {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 0 0 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--ink);
+  text-align: left;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.action-btn.paper-title:hover:not(:disabled) {
+  background: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dx-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.dx {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+.dx-low { border-color: var(--good); background: var(--good-bg); color: var(--good); }
+.dx-high { border-color: var(--brand); background: var(--brand-soft); color: var(--brand-soft-ink); }
+.skill-line { margin-top: 8px; }
+
+/* Card buttons: pills, 출제 is the filled one. */
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 22px 20px;
+}
+body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19px; }
+.action-btn {
+  padding: 0 16px;
+  font-size: 14px;
+}
+.action-btn[data-action="exam"] {
+  background: var(--ink);
+  color: #fff;
+}
+.action-btn[data-action="exam"]:hover:not(:disabled) { background: var(--ink-hover); }
+
+/* Dialogs: panel look (2px ink border, 16px radius), the same as the 출제 panel. */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(23, 23, 28, 0.5);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  width: 420px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 28px 28px 24px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  color: var(--ink);
+  text-align: center;
+}
+.modal-title {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.3;
+}
+.modal-sub {
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 22px 0 14px;
+}
+.modal-btn-primary,
+.modal-btn-secondary,
+.modal-btn-cancel {
+  width: 100%;
+  padding: 0 24px;
+  font-size: 15px;
+}
+.modal-btn-primary {
+  background: var(--ink);
+  color: #fff;
+}
+.modal-btn-primary:hover:not(:disabled) { background: var(--ink-hover); }
+.modal-btn-primary.is-alt {
+  background: var(--surface);
+  color: var(--ink);
+}
+.modal-btn-primary.is-alt:hover:not(:disabled) { background: var(--chip); }
+.modal-btn-cancel { margin-top: 8px; }
+.modal-close-btn {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--brand-ink);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.modal-close-btn:hover:not(:disabled) { background: none; color: var(--brand-hover); }
+.qpp-btns {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0 14px;
+}
+.qpp-opt {
+  flex: 1;
+  min-height: 88px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-panel);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+}
+.qpp-opt:hover:not(:disabled) {
+  background: var(--ink);
+  color: #fff;
+}
+.teacher-class-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0 4px;
+  text-align: left;
+}
+.teacher-class-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 700;
+}
+.teacher-class-select { width: 100%; }
+.teacher-class-note {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.modal-note {
+  margin: 20px 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+.modal-note.is-warn { color: var(--danger); }
+.modal-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+  text-align: left;
+}
+.modal-login .modal-note { margin: 0; }
+.modal-err { min-height: 18px; font-size: 13px; }
+.modal-field { width: 100%; }
+
+@media (max-width: 960px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .stats { justify-content: flex-start; }
+}
+@media (max-width: 600px) {
+  .filter-band { margin-bottom: 16px; padding-bottom: 16px; }
+  .fb-search { flex-basis: 100%; min-width: 0; }
+  .fb-sel { flex: 1 1 calc(50% - 8px); min-width: 0; }
+  .fb-tabs > button { flex: 1 1 auto; padding: 0 12px; }
+  body.archive2-assessment .card-body { padding: 18px 16px; min-height: 0; }
+  body.archive2-assessment .exam-card.is-active .card-body { padding: 17px 15px; }
+  .card-actions { padding: 0 16px 18px; }
+  .exam-card.is-active .card-actions { padding: 0 15px 17px; }
+  .modal-box { padding: 24px 18px 20px; }
+}
   </style>
-<style>.paper-title { display:block; width:100%; text-align:left; background:none; border:0; padding:0; color:inherit; cursor:pointer; } .paper-title:hover { text-decoration:underline; }</style>
 </head>
-<body>
-  <a href="../workspace.html" style="display:block;padding:12px 20px;color:#203551;font-weight:700;text-decoration:none">← Archive 2.0</a>
+<body class="archive2-standalone archive2-assessment archive2-shell">
+  <header data-archive-navigation="standalone" data-archive-base="../" data-archive-view="saved" data-archive-title="시험지 보관함" class="archive-navigation"></header>
+  <!-- 소단원 평가팩은 빠른 평가에서 들어온 화면이라 메뉴의 현재 칸을 빠른 평가로 둔다. -->
+  <script>if (new URLSearchParams(location.search).get('scope') === 'subunit') { var navHost = document.querySelector('[data-archive-navigation]'); navHost.dataset.archiveView = 'five-minute'; navHost.dataset.archiveTitle = '소단원 평가 보관함'; }</script>
+  <!-- AP Math OS가 주소 뒤(#apmsess=)에 실어 보낸 로그인을 메뉴가 읽기 전에 먼저 복원한다. -->
+  <script src="../archive-session.js"></script>
+  <script src="../archive2-session.js?v=20261110-library-2"></script>
+  <script src="../archive2-navigation.js?v=20261116-standalone-1"></script>
   <div class="modal-overlay" id="assessmentPrintModeModal">
     <div class="modal-box">
       <div class="modal-title">시험지 출력 방식 선택</div>
       <div class="modal-sub">원하시는 출력 형태를 선택하세요.</div>
-      <div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+      <div class="modal-actions">
         <button class="modal-btn-primary" type="button" onclick="selectAssessmentPrintMode(false)">일반 시험지 출력</button>
-        <button class="modal-btn-primary" type="button" style="background: var(--archive-navy, #0B1220);" onclick="selectAssessmentPrintMode(true)">AP 제출 QR 시험지 출력</button>
+        <button class="modal-btn-primary is-alt" type="button" onclick="selectAssessmentPrintMode(true)">AP 제출 QR 시험지 출력</button>
       </div>
       <button class="modal-close-btn" type="button" onclick="closeAssessmentModal()">취소</button>
     </div>
@@ -716,8 +313,8 @@
       <div class="modal-title">시험지 출력 형식</div>
       <div class="modal-sub">한 페이지에 담을 문항 수를 선택하세요.</div>
       <div class="qpp-btns">
-        <div class="qpp-opt" onclick="confirmAssessmentQpp(4)">4</div>
-        <div class="qpp-opt" onclick="confirmAssessmentQpp(6)">6</div>
+        <button class="qpp-opt" type="button" onclick="confirmAssessmentQpp(4)">4</button>
+        <button class="qpp-opt" type="button" onclick="confirmAssessmentQpp(6)">6</button>
       </div>
       <button class="modal-close-btn" type="button" onclick="closeAssessmentModal()">다음에 하기</button>
     </div>
@@ -727,9 +324,9 @@
     <div class="modal-box">
       <div class="modal-title">출제 대상</div>
       <div class="modal-sub">시험지를 출제할 대상을 선택하세요.</div>
-      <div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+      <div class="modal-actions">
         <button class="modal-btn-primary" type="button" onclick="selectAssessmentTarget('class')">반별</button>
-        <button class="modal-btn-primary" type="button" style="background: var(--archive-navy, #0B1220);" onclick="selectAssessmentTarget('grade')">학년별</button>
+        <button class="modal-btn-primary is-alt" type="button" onclick="selectAssessmentTarget('grade')">학년별</button>
       </div>
       <button class="modal-close-btn" type="button" onclick="closeAssessmentModal()">취소</button>
     </div>
@@ -753,34 +350,34 @@
     </div>
   </div>
 
-  <div class="filter-band">
-    <div class="filter-inner">
-      <div class="fb-search">
-        <span class="fb-search-icon" aria-hidden="true">⌕</span>
-        <input id="search" placeholder="평가명, 학년, 단원, 범위 검색">
-      </div>
-      <select class="fb-sel" id="grade"><option value="">전체 학년</option></select>
-      <select class="fb-sel" id="count">
-        <option value="">전체 문항 수</option>
-        <option value="10">10문항</option>
-        <option value="15">15문항</option>
-        <option value="20">20문항</option>
-        <option value="25">25문항</option>
-      </select>
-      <button class="fb-original-toggle active" type="button" data-category="진단평가">진단평가</button>
-      <button class="fb-original-toggle" type="button" data-category="단원평가">단원평가</button>
-      <button class="fb-original-toggle" type="button" data-category="중간·기말평가">중간·기말평가</button>
-    </div>
-  </div>
-
-  <main class="content-wrap">
+  <main class="sa-main content-wrap">
     <section class="sec-block">
-      <div class="archive-head">
+      <div class="archive-head sa-head">
         <div>
-          <h1 class="archive-title">시험지 보관함</h1>
-          <p class="archive-sub">진단평가 · 단원평가 · 중간·기말평가를 범위 확인 후 바로 출력합니다.</p>
+          <h1 class="archive-title sa-title">시험지 보관함</h1>
+          <p class="archive-sub sa-lead">진단평가 · 단원평가 · 중간·기말평가를 범위 확인 후 바로 출력합니다.</p>
         </div>
         <div class="stats" id="stats"></div>
+      </div>
+      <div class="filter-band">
+        <div class="filter-inner">
+          <div class="fb-tabs" role="group" aria-label="평가 구분">
+            <button class="fb-original-toggle active" type="button" data-category="진단평가">진단평가</button>
+            <button class="fb-original-toggle" type="button" data-category="단원평가">단원평가</button>
+            <button class="fb-original-toggle" type="button" data-category="중간·기말평가">중간·기말평가</button>
+          </div>
+          <div class="fb-search">
+            <input id="search" type="search" aria-label="평가 검색" placeholder="평가명, 학년, 단원, 범위 검색">
+          </div>
+          <select class="fb-sel" id="grade" aria-label="학년"><option value="">전체 학년</option></select>
+          <select class="fb-sel" id="count" aria-label="문항 수">
+            <option value="">전체 문항 수</option>
+            <option value="10">10문항</option>
+            <option value="15">15문항</option>
+            <option value="20">20문항</option>
+            <option value="25">25문항</option>
+          </select>
+        </div>
       </div>
       <div class="card-grid" id="grid"></div>
     </section>
@@ -821,8 +418,8 @@
       }
       document.getElementById('stats').innerHTML = [
         `<div class="stat"><strong>${packs.length}</strong>평가</div>`,
-        `<div class="stat"><strong>${summary.uniqueTextQuestions || 0}</strong>고유 텍스트 문항</div>`,
-        `<div class="stat"><strong>${summary.imageExcluded || 0}</strong>이미지 제외</div>`,
+        `<div class="stat"><strong>${summary.uniqueTextQuestions || 0}</strong>서로 다른 문항</div>`,
+        `<div class="stat"><strong>${summary.imageExcluded || 0}</strong>그림 문항 제외</div>`,
       ].join('');
     }
 
@@ -874,20 +471,23 @@
     function renderDifficultyChips(mix) {
       if (!mix || typeof mix !== 'object') return '';
       const order = ['하', '중', '상'];
-      const styles = {
-        '하': 'color:#047857;background:rgba(236,253,245,0.95);border:1px solid #b7efd4;',
-        '중': 'color:#2563eb;background:rgba(239,246,255,0.95);border:1px solid #dbeafe;',
-        '상': 'color:#b45309;background:rgba(255,247,237,0.95);border:1px solid #fed7aa;',
-      };
+      const styles = { '하': 'dx dx-low', '중': 'dx dx-mid', '상': 'dx dx-high' };
       return order
         .filter((k) => mix[k] != null)
-        .map((k) => `<span style="display:inline-flex;align-items:center;min-height:22px;padding:0 7px;border-radius:7px;font-size:11px;font-weight:800;${styles[k]}">${escapeHTML(k)}${escapeHTML(String(mix[k]))}</span>`)
+        .map((k) => `<span class="${styles[k]}">${escapeHTML(k)}${escapeHTML(String(mix[k]))}</span>`)
         .join('');
+    }
+
+    const GRADE_COLORED = new Set(['중1', '중2', '중3', '고1', '고2', '고3']);
+
+    // 카드 범위 설명에서 단원 코드 "(M1-01)", "(H22-C-06~09)"는 화면에 보이지 않게 한다(교사가 모르는 내부 코드).
+    function plainScopeText(text) {
+      return String(text || '').replace(/\s*\((?:[A-Z]\d*)(?:-[A-Z0-9]+)+(?:~\d+)?\)/g, '');
     }
 
     function renderMeta(pack) {
       return [
-        `<span class="meta-badge primary">${escapeHTML(pack.grade || '학년 미정')}</span>`,
+        `<span class="meta-badge primary"${GRADE_COLORED.has(pack.grade) ? ` data-grade="${escapeHTML(pack.grade)}"` : ''}>${escapeHTML(pack.grade || '학년 미정')}</span>`,
         `<span class="meta-badge">${escapeHTML(pack.questionCount || 0)}문항</span>`,
         pack.courseLabel ? `<span class="meta-badge">${escapeHTML(pack.courseLabel)}</span>` : '',
       ].filter(Boolean).join('');
@@ -985,18 +585,16 @@
 
       grid.innerHTML = list.map((pack) => `
         <article class="exam-card type-sheet" data-pack-id="${escapeHTML(pack.id)}">
-          <div class="card-top"></div>
           <div class="card-body">
             <div class="card-grade-row">
               <div class="card-grade-label">${escapeHTML(pack.category)}</div>
               <div class="card-type-chip">시험지</div>
             </div>
             <button class="card-main-title action-btn paper-title" type="button" data-action="preview" data-pack-id="${escapeHTML(pack.id)}">${escapeHTML(pack.title)}</button>
-            <div class="card-sub-title">${escapeHTML(pack.scopeLabel || pack.unitLabel || '범위 확인 필요')}</div>
+            <div class="card-sub-title">${escapeHTML(plainScopeText(pack.scopeLabel || pack.unitLabel) || '범위 확인 필요')}</div>
             <div class="card-meta-line">${renderMeta(pack)}</div>
-            <div style="display:flex;align-items:center;gap:5px;margin-top:12px;">${renderDifficultyChips(pack.difficultyMix)}</div>
-            <div class="card-sub-title" style="margin-top:6px;">유형: ${escapeHTML(countObj(pack.skillMix))}</div>
-            <div class="card-file-name">${escapeHTML(pack.id || pack.title)}</div>
+            <div class="dx-row">${renderDifficultyChips(pack.difficultyMix)}</div>
+            <div class="card-sub-title skill-line">유형: ${escapeHTML(countObj(pack.skillMix))}</div>
           </div>
           <div class="card-actions">
             <button class="action-btn" type="button" data-action="preview" data-pack-id="${escapeHTML(pack.id)}">시험지 확인</button>
@@ -1149,7 +747,7 @@
     }
 
     function assessmentQrNoticeHtml(message) {
-      return `<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">${message}</div>${assessmentGeneralPrintButtonHtml()}`;
+      return `<div class="modal-note is-warn">${message}</div>${assessmentGeneralPrintButtonHtml()}`;
     }
 
     function notifyAssessmentQrApiFailure(status, context) {
@@ -1341,7 +939,7 @@
 
       const teachers = Object.keys(_assessmentQrGroupedByTeacher).sort((a, b) => a.localeCompare(b, 'ko'));
       if (!teachers.length) {
-        return '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
+        return '<div class="modal-note is-warn">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
       }
 
       const teacherOptions = teachers
@@ -1357,7 +955,7 @@
           <div>
             <label class="teacher-class-label" for="assessment-class-select">2. 반 선택</label>
             <select id="assessment-class-select" class="teacher-class-select"></select>
-            <div class="teacher-class-note">같은 반명이라도 선택한 선생님의 class_id로 분리되어 QR에 연결됩니다.</div>
+            <div class="teacher-class-note">같은 이름의 반이라도 선택한 선생님의 반으로 구분되어 QR에 연결됩니다.</div>
           </div>
           <button class="modal-btn-secondary" type="button" onclick="previewPendingAssessment()">시험지 확인</button>
           <button class="modal-btn-primary" type="button" onclick="confirmAssessmentClassSelection()">출제</button>
@@ -1382,25 +980,25 @@
       const overlay = document.getElementById('assessmentClassModalOverlay');
       const body = document.getElementById('assessmentClassModalBody');
       overlay.classList.add('open');
-      body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
+      body.innerHTML = '<div class="modal-note">반 목록을 불러오는 중...</div>';
 
       let authHeader = {};
       try {
         authHeader = getAssessmentAssignmentAuthHeader();
         if (!authHeader) {
           body.innerHTML = `
-            <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
-              <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
-              <input id="assessment-apmath-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-              <input id="assessment-apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-              <div id="assessment-apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
+            <div class="modal-login">
+              <div class="modal-note">AP Math OS 계정으로 로그인하세요.</div>
+              <input id="assessment-apmath-login-id" type="text" placeholder="아이디" class="modal-field">
+              <input id="assessment-apmath-login-pw" type="password" placeholder="비밀번호" class="modal-field">
+              <div id="assessment-apmath-login-err" class="modal-note is-warn modal-err"></div>
               <button class="modal-btn-primary" type="button" onclick="doAssessmentApmathLoginAndLoadClasses(event)">로그인 후 반 목록 불러오기</button>
               ${assessmentGeneralPrintButtonHtml()}
             </div>`;
           return;
         }
       } catch (error) {
-        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">오류가 발생했습니다. 새로고침 후 다시 시도하세요.</div>';
+        body.innerHTML = '<div class="modal-note is-warn">오류가 발생했습니다. 새로고침 후 다시 시도하세요.</div>';
         return;
       }
 
@@ -1419,7 +1017,7 @@
         const data = await res.json();
         if (data && data.success && Array.isArray(data.classes)) {
           if (data.classes.length === 0) {
-            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
+            body.innerHTML = '<div class="modal-note is-warn">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
             return;
           }
 
@@ -1439,7 +1037,7 @@
       _assessmentQrClassRows = Array.isArray(classes) ? classes : [];
       const grades = getAssessmentAvailableGrades(_assessmentQrClassRows);
       if (!grades.length) {
-        return '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">해당 학년에 출제할 반이 없습니다.</div>';
+        return '<div class="modal-note is-warn">해당 학년에 출제할 반이 없습니다.</div>';
       }
       const options = grades
         .map((grade) => `<option value="${escapeModalText(grade)}">${escapeModalText(grade)} 전체</option>`)
@@ -1468,16 +1066,16 @@
       const overlay = document.getElementById('assessmentGradeModalOverlay');
       const body = document.getElementById('assessmentGradeModalBody');
       overlay.classList.add('open');
-      body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
+      body.innerHTML = '<div class="modal-note">반 목록을 불러오는 중...</div>';
 
       const authHeader = getAssessmentAssignmentAuthHeader();
       if (!authHeader) {
         body.innerHTML = `
-          <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
-            <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
-            <input id="assessment-grade-apmath-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-            <input id="assessment-grade-apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
-            <div id="assessment-grade-apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
+          <div class="modal-login">
+            <div class="modal-note">AP Math OS 계정으로 로그인하세요.</div>
+            <input id="assessment-grade-apmath-login-id" type="text" placeholder="아이디" class="modal-field">
+            <input id="assessment-grade-apmath-login-pw" type="password" placeholder="비밀번호" class="modal-field">
+            <div id="assessment-grade-apmath-login-err" class="modal-note is-warn modal-err"></div>
             <button class="modal-btn-primary" type="button" onclick="doAssessmentApmathLoginAndLoadGrades(event)">로그인 후 반 목록 불러오기</button>
             ${assessmentGeneralPrintButtonHtml()}
           </div>`;
@@ -1598,7 +1196,7 @@
         if (!Array.isArray(pack.questions) || pack.questions.length === 0) {
           console.warn('[assessment class assignment] 문항 수 확인 실패:', pack?.id);
           const classBody = document.getElementById('assessmentClassModalBody');
-          if (classBody) classBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
+          if (classBody) classBody.innerHTML = '<div class="modal-note is-warn">문항 수 확인이 필요합니다.</div>';
           return;
         }
         const classBody = document.getElementById('assessmentClassModalBody');
@@ -1640,7 +1238,7 @@
       if (!Array.isArray(pack.questions) || pack.questions.length === 0) {
         console.warn('[assessment grade assignment] 문항 수 확인 실패:', pack?.id);
         const gradeBody = document.getElementById('assessmentGradeModalBody');
-        if (gradeBody) gradeBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
+        if (gradeBody) gradeBody.innerHTML = '<div class="modal-note is-warn">문항 수 확인이 필요합니다.</div>';
         return;
       }
       const key = `assessment_${pack.id}_${Date.now()}`;
@@ -1678,7 +1276,7 @@
       } catch (error) {
         console.error(error);
         const body = document.getElementById('assessmentGradeModalBody');
-        if (body) body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">학년별 출제 등록에 실패했습니다. AP Math OS 연결을 확인하세요.</div>';
+        if (body) body.innerHTML = '<div class="modal-note is-warn">학년별 출제 등록에 실패했습니다. AP Math OS 연결을 확인하세요.</div>';
       }
     }
 
@@ -1771,7 +1369,7 @@
 
     restoreApmathSessionFromHash();
     if (subunitScope) {
-      document.title = '소단원 평가 보관함 · AP Math';
+      document.title = '소단원 평가 보관함 · JS 아카이브';
       document.querySelector('.archive-title').textContent = '소단원 평가 보관함';
       document.querySelector('.archive-sub').textContent = '기존 소단원 평가팩을 확인하고 문제·정답·해설을 출력합니다.';
     }

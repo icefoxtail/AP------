@@ -15,10 +15,9 @@ function slice(source, from, to) {
   return source.slice(start, end);
 }
 
-// 두 화면은 같은 보관 규칙을 각자 가지고 있으므로 같은 시나리오를 둘 다에 적용한다.
+// 옛 출력 전달 방식의 보관 규칙은 mixer.html만 가진다(단원별 기출은 2026-11-16부터 이 저장소 키를 쓰지 않는다).
 const variants = [
   ['mixer.html', slice(mixerHtml, 'const MIXED_SNAPSHOT_INDEX_KEY', 'function openMixedEngine')],
-  ['unit-past-exams.js', slice(unitJs, 'const MIXED_SNAPSHOT_INDEX_KEY', 'async function prepareOutputEnvelope')],
 ];
 
 function fakeLocalStorage(initial = {}, { quotaChars = Infinity } = {}) {
@@ -99,10 +98,9 @@ for (const [name, source] of variants) {
   });
 }
 
-test('mixer.html과 단원별 기출은 쓰기 오류를 숨기지 않는다', () => {
+test('mixer.html은 쓰기 오류를 숨기지 않고, 단원별 기출은 옛 저장소 키를 쓰지 않는다', () => {
   assert.doesNotMatch(mixerHtml, /localStorage\.setItem\('mixedQuestions_' \+ sessionKey/, 'mixer must use the guarded store');
   assert.match(mixerHtml, /storeMixedSnapshot\(sessionKey, exportCart, meta\)/);
   assert.match(mixerHtml, /if \(!stored\.ok\)[\s\S]{0,200}alert\(/);
-  assert.doesNotMatch(unitJs, /localStorage\.setItem\(`mixedQuestions_\$\{paper\.snapshotKey\}`/);
-  assert.match(unitJs, /legacySnapshotStored === false\) throw new Error/);
+  assert.doesNotMatch(unitJs, /mixedQuestions_|mixedMeta_|APMATH_UNIT_PAST_ASSIGN_|storeMixedSnapshot|legacySnapshotStored/);
 });

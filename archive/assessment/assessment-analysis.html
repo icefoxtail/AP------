@@ -3,360 +3,181 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>시험지 분석표</title>
+  <title>시험지 분석표 · JS 아카이브</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../archive2-tokens.css?v=20261110-shell-1">
+  <link rel="stylesheet" href="../archive2-standalone.css?v=20261116-standalone-1">
+  <link rel="stylesheet" href="../archive2-navigation.css?v=20261116-menu-tools-1">
   <style>
-    :root {
-      --blue-main: #27272a;
-      --blue-light: #a1a1aa;
-      --blue-pale: #f4f4f5;
-      --green-border: #b7efd4;
-      --bg-soft: #f4f4f5;
-      --card-active: #f7f7f8;
-      --card-border: #e4e4e7;
-      --card-border-hover: #d4d4d8;
-      --text-main: #0f172a;
-      --text-sub: #64748b;
-      --badge-text: #27272a;
-      --badge-border: #e4e4e7;
-      --warn-bg: #fff7ed;
-      --warn-border: #fed7aa;
-      --warn-text: #9a3412;
-      --shadow-card: 0 14px 32px rgba(15, 23, 42, 0.06);
-      --shadow-card-hover: 0 22px 44px rgba(0, 0, 0, 0.12);
-      --archive-red: #b42318;
-      --archive-amber: #a16207;
-      --archive-green: #0f766e;
-    }
+/* 시험지 분석표: only what is specific to this page. Frame, buttons, fields and the card family come from archive2-standalone.css. */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.sa-main { max-width: 1200px; }
+.sa-head { margin-bottom: 16px; }
+body.archive2-assessment .exam-card { margin-bottom: 16px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 700;
+}
+input, textarea { width: 100%; }
+textarea { min-height: 44px; resize: vertical; }
+.span-2 { grid-column: span 2; }
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.action-btn { padding: 0 18px; font-size: 14px; }
+.diagnostic-internal-toggle {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--control-line);
+}
+.save-state {
+  margin-left: auto;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+}
+.section-title {
+  margin: 0 0 12px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.input-section table { min-width: 0; }
+th, td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+}
+th {
+  background: var(--chip);
+  color: var(--ink-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 0; }
+.result-picker { display: flex; gap: 6px; }
+.result-btn {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1.5px solid var(--control-line);
+  border-radius: var(--radius-field);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-weight: 700;
+}
+.result-btn.is-selected[data-status="correct"],
+.result-btn.is-selected[data-status="correct"]:hover:not(:disabled) {
+  border-color: var(--good);
+  background: var(--good);
+  color: #fff;
+}
+.result-btn.is-selected[data-status="wrong"],
+.result-btn.is-selected[data-status="wrong"]:hover:not(:disabled) {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+body.archive2-assessment .stat {
+  display: block;
+  padding: 14px;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  font-size: 13px;
+}
+body.archive2-assessment .stat strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 24px;
+}
+.needs-list { display: grid; gap: 8px; }
+.need-item {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-field);
+  background: var(--surface);
+  font-size: 14px;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background:
-        radial-gradient(circle at top left, rgba(0,0,0,0.04), transparent 26%),
-        linear-gradient(180deg, #f9f9fa 0%, var(--bg-soft) 100%);
-      color: #1e293b;
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-    header {
-      background: rgba(255,255,255,0.88);
-      border-bottom: 1px solid #e6ebf3;
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      backdrop-filter: blur(14px);
-    }
-    .top-nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .brand {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--text-main);
-    }
-    .back-link {
-      color: var(--text-sub);
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-    .content-wrap {
-      background: linear-gradient(180deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0) 100%);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 24px 58px;
-    }
-    .exam-card {
-      background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 100%);
-      border: 1px solid var(--card-border);
-      border-radius: 22px;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 18px;
-      overflow: hidden;
-      transition: 0.18s ease;
-      position: relative;
-    }
-    .card-top {
-      height: 4px;
-      background: linear-gradient(90deg, var(--blue-main) 0%, #7db8ff 100%);
-    }
-    .card-body {
-      padding: 22px 22px 18px;
-    }
-    .card-grade-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .card-grade-label {
-      color: var(--text-sub);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .card-type-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 25px;
-      border-radius: 999px;
-      background: rgba(244,244,245,0.86);
-      border: 1px solid var(--badge-border);
-      color: var(--badge-text);
-      font-size: 11px;
-      font-weight: 800;
-      padding: 0 10px;
-      flex-shrink: 0;
-      backdrop-filter: blur(8px);
-    }
-    .meta-badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 27px;
-      padding: 0 10px;
-      border-radius: 9px;
-      font-size: 11px;
-      font-weight: 800;
-      color: #475569;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
-    }
-    .meta-badge.primary {
-      color: var(--blue-main);
-      background: rgba(244,244,245,0.95);
-      border-color: #e4e4e7;
-    }
-    .meta-badge.green {
-      color: #047857;
-      background: rgba(236,253,245,0.95);
-      border-color: var(--green-border);
-    }
-    .card-main-title {
-      color: var(--text-main);
-      font-size: 20px;
-      font-weight: 800;
-      line-height: 1.28;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
-      word-break: keep-all;
-      overflow-wrap: anywhere;
-    }
-    .card-sub-title {
-      color: var(--text-sub);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.58;
-      margin-bottom: 12px;
-    }
-    .card-meta-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 13px;
-      min-height: 28px;
-    }
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-    label {
-      display: grid;
-      gap: 6px;
-      color: var(--text-sub);
-      font-size: 12px;
-      font-weight: 800;
-    }
-    input, textarea {
-      width: 100%;
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.92);
-      color: var(--text-main);
-      font: inherit;
-      padding: 10px 11px;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
-    }
-    textarea {
-      min-height: 42px;
-      resize: vertical;
-    }
-    .span-2 { grid-column: span 2; }
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0;
-      margin-top: 14px;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      overflow: hidden;
-      background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
-    }
-    .action-btn {
-      min-height: 48px;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      color: var(--text-sub);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 800;
-      font-family: inherit;
-      padding: 0 16px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .action-btn + .action-btn { border-left: 1px solid #edf2f7; }
-    .action-btn:hover {
-      background: #f4f4f5;
-      color: #27272a;
-    }
-    .save-state {
-      color: var(--text-sub);
-      font-size: 12px;
-      font-weight: 800;
-      margin-left: auto;
-      padding: 0 12px;
-    }
-    .section-title {
-      font-size: 17px;
-      font-weight: 900;
-      margin: 0 0 12px;
-      color: var(--text-main);
-    }
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      background: linear-gradient(180deg, #fcfcfd 0%, #f9f9fa 100%);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
-    }
-    th, td {
-      border-bottom: 1px solid var(--card-border);
-      padding: 9px 10px;
-      text-align: left;
-      vertical-align: middle;
-      font-size: 13px;
-    }
-    th {
-      background: #f8fafc;
-      color: var(--text-sub);
-      font-weight: 800;
-      white-space: nowrap;
-    }
-    tr:last-child td { border-bottom: 0; }
-    .result-picker {
-      display: flex;
-      gap: 5px;
-    }
-    .result-btn {
-      min-width: 38px;
-      min-height: 38px;
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      background: #fff;
-      color: var(--text-sub);
-      cursor: pointer;
-      font-weight: 850;
-    }
-    .result-btn.is-selected[data-status="correct"] {
-      border-color: var(--archive-green);
-      background: #e9f8f4;
-      color: var(--archive-green);
-    }
-    .result-btn.is-selected[data-status="wrong"] {
-      border-color: var(--archive-red);
-      background: #fff1f0;
-      color: var(--archive-red);
-    }
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 8px;
-    }
-    .stat {
-      border: 1px solid #e4ebf5;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.92);
-      padding: 12px;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
-    }
-    .stat strong {
-      display: block;
-      color: var(--text-main);
-      font-size: 20px;
-      line-height: 1.1;
-    }
-    .empty-state {
-      border: 1px solid var(--warn-border);
-      border-radius: 14px;
-      background: var(--warn-bg);
-      color: var(--warn-text);
-      padding: 18px 20px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 12px 24px rgba(154, 52, 18, 0.05);
-    }
-    .needs-list {
-      display: grid;
-      gap: 8px;
-    }
-    .need-item {
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      background: #fff;
-      padding: 10px 12px;
-      font-size: 13px;
-    }
+@media (max-width: 960px) {
+  .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .span-2 { grid-column: span 1; }
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.archive2-assessment .card-body { padding: 18px 16px; }
+  th, td { padding: 8px; }
+  .save-state { margin-left: 0; flex-basis: 100%; }
+}
 
-    @media (max-width: 760px) {
-      .top-nav { align-items: flex-start; flex-direction: column; }
-      .content-wrap { padding: 16px 12px 40px; }
-      .form-grid, .summary-grid { grid-template-columns: 1fr; }
-      .span-2 { grid-column: span 1; }
-      .card-main-title { font-size: 19px; }
-      th, td { padding: 8px; }
-      .result-btn { min-width: 36px; }
-    }
-
-    @media print {
-      body { background: #fff; }
-      header, .no-print, .input-section, .result-picker, .print-hidden, .internal-only { display: none !important; }
-      .content-wrap { max-width: none; padding: 0; }
-      .exam-card { box-shadow: none; break-inside: avoid; }
-      .card-body { padding: 12px; }
-      .table-wrap { overflow: visible; }
-      table { min-width: 0; }
-      th, td { font-size: 10px; padding: 5px; }
-      .card-main-title { font-size: 18px; }
-    }
+@media print {
+  body { background: #fff; }
+  header, .no-print, .input-section, .result-picker, .print-hidden, .internal-only { display: none !important; }
+  body main.sa-main { max-width: none; margin: 0; padding: 0; }
+  body.archive2-assessment .exam-card { break-inside: avoid; }
+  body.archive2-assessment .card-body { padding: 12px; }
+  .table-wrap { overflow: visible; }
+  table { min-width: 0; }
+  th, td { font-size: 10px; padding: 5px; }
+  body.archive2-assessment .card-main-title { font-size: 18px; }
+}
   </style>
 </head>
-<body>
-  <header>
-    <div class="top-nav">
-      <div class="brand">시험지 분석표</div>
+<body class="archive2-standalone archive2-assessment archive2-shell">
+  <header data-archive-navigation="standalone" data-archive-base="../" data-archive-view="saved" data-archive-title="시험지 분석표" class="archive-navigation"></header>
+  <script src="../archive2-session.js?v=20261110-library-2"></script>
+  <script src="../archive2-navigation.js?v=20261116-standalone-1"></script>
+
+  <main class="sa-main content-wrap">
+    <div class="sa-head no-print">
+      <div>
+        <h1 class="sa-title">시험지 분석표</h1>
+        <p class="sa-lead">학생 결과를 입력하면 단원·유형별로 정답률과 보완할 곳을 정리해 줍니다.</p>
+      </div>
       <a class="back-link" href="./assessment-mvp.html">시험지 보관함으로 돌아가기</a>
     </div>
-  </header>
-
-  <main class="content-wrap" id="app">
-    <div class="empty-state">평가팩을 불러오는 중입니다.</div>
+    <div id="app">
+      <div class="empty-state">평가팩을 불러오는 중입니다.</div>
+    </div>
   </main>
 
   <script src="assessment-packs-1sem.generated.js"></script>
@@ -454,6 +275,12 @@
       ], '');
     }
 
+    // "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js" -> "22 신흥중 1학기 기말 중3 기출c"
+    function sourceFileLabel(file) {
+      const name = String(file || '').split('/').pop().replace(/\.js$/i, '').replace(/_/g, ' ').trim();
+      return name || String(file || '');
+    }
+
     function getQuestionSourceNo(question) {
       return firstValue([
         question?._sourceQuestionNo,
@@ -544,11 +371,10 @@
     function renderInfo(pack, count) {
       return `
         <section class="exam-card">
-          <div class="card-top"></div>
           <div class="card-body">
             <div class="card-grade-row">
               <div class="card-grade-label">${escapeHTML(pack.category || '평가 구분 확인 필요')}</div>
-              <div class="card-type-chip">내부용 분석표</div>
+              <div class="card-type-chip">교사용 분석표</div>
             </div>
             <div class="card-main-title">${escapeHTML(pack.title || '평가팩 제목 확인 필요')}</div>
             <div class="card-sub-title">${escapeHTML(getScopeLabel(pack))}</div>
@@ -570,7 +396,6 @@
       const examDate = payload?.examDate || todayString();
       return `
         <section class="exam-card parent-print">
-          <div class="card-top"></div>
           <div class="card-body">
             <div class="card-grade-row">
               <div class="card-grade-label">AP수학 진단평가</div>
@@ -592,8 +417,8 @@
               <button class="action-btn" type="button" onclick="window.print()">결과표 출력</button>
               <span class="save-state">결과표가 먼저 표시됩니다. 입력을 고칠 때만 빠른 입력을 다시 엽니다.</span>
             </div>
-            <div class="action-row diagnostic-internal-toggle" style="margin-top:10px; border-style:dashed; background:#f8fafc;">
-              <button class="action-btn" type="button" onclick="toggleDiagnosticInternalDetails()">${state.diagnosticInternalOpen ? '내부 상세 숨기기' : '내부 상세 보기'}</button>
+            <div class="action-row diagnostic-internal-toggle">
+              <button class="action-btn" type="button" onclick="toggleDiagnosticInternalDetails()">${state.diagnosticInternalOpen ? '원본 정보 숨기기' : '원본 정보 보기'}</button>
               <span class="save-state">운영 확인용 보조 정보입니다. 학부모 기본 화면과 출력에서는 분리됩니다.</span>
             </div>
           </div>
@@ -739,7 +564,7 @@
         <tr>
           <td>${row.order_no}</td>
           <td>${STATUS_LABELS[row.result_status] || '-'}</td>
-          <td>${escapeHTML(row.meta.sourceFile)}</td>
+          <td>${escapeHTML(sourceFileLabel(row.meta.sourceFile))}</td>
           <td>${escapeHTML(row.meta.sourceQuestionNo)}</td>
           <td>${escapeHTML(row.meta.unit)}</td>
           <td>${escapeHTML(row.meta.type)}</td>
@@ -790,7 +615,7 @@
       const rows = state.rows.map((row) => `
         <tr>
           <td>${row.order_no}</td>
-          <td>${escapeHTML(row.meta.sourceFile)}</td>
+          <td>${escapeHTML(sourceFileLabel(row.meta.sourceFile))}</td>
           <td>${escapeHTML(row.meta.sourceQuestionNo)}</td>
           <td>${escapeHTML(row.student_answer)}</td>
           <td>${escapeHTML(row.note)}</td>
@@ -798,10 +623,10 @@
       return `
         <section class="exam-card internal-only print-hidden diagnostic-internal-detail">
           <div class="card-body">
-            <h2 class="section-title">내부 상세 보기</h2>
+            <h2 class="section-title">원본 정보</h2>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>문항</th><th>sourceFile</th><th>sourceQuestionNo</th><th>학생답</th><th>내부 메모</th></tr></thead>
+                <thead><tr><th>문항</th><th>원본 시험지</th><th>원본 문항번호</th><th>학생답</th><th>메모</th></tr></thead>
                 <tbody>${rows}</tbody>
               </table>
             </div>

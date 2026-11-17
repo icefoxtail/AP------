@@ -26,7 +26,7 @@ const unitPastFixtureData = Array.from({ length: 12 }, (_, index) => ({
 }));
 const unitPastFixtureHtml = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><base href="./"><title>Unit Past preview regression</title></head>
-<body class="unit-page"><div id="unit-kicker"></div><h1 id="unit-title"></h1><div id="unit-summary"></div><div id="unit-status" role="status" aria-live="polite"></div><nav id="unit-stepper"></nav><select id="unit-qpp"><option value="4" selected>4문항</option></select><main id="unit-content"></main>
+<body class="unit-page"><div id="unit-kicker"></div><h1 id="unit-title"></h1><div id="unit-summary"></div><div id="unit-status" role="status" aria-live="polite"></div><select id="unit-qpp"><option value="4" selected>4문항</option></select><main id="unit-content"></main>
 <script src="archive2-core.js"></script><script src="unit-past-exams-core.js"></script><script src="archive2-session.js"></script><script src="unit-past-exams.js"></script>
 <script>window.ARCHIVE_META_FOUNDATION_RUNTIME={status:'ACTIVE',ownedScopes:[],taxonomyRows:[]};window.questionIndex=${JSON.stringify(unitPastFixtureData.map((question) => ({ ...question, sourceFile: unitPastFixtureFile, sourceQuestionNo: question.id })))};window.UnitPastExams.init();</script></body></html>`;
 const archive2ExamData = "exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js";
@@ -190,7 +190,7 @@ test("390px Unit Past embedded preview carries Archive2 context and uses one-col
   try {
     await page.goto(`${baseUrl}/archive/__unit-past-preview-regression.html?grade=h1#apmsess=${session}`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() =>
-      document.querySelector("#unit-content .unit-card:not(:disabled), #unit-content .unit-error") ||
+      document.querySelector("#unit-content .ug-cell:not(.is-zero)") || document.querySelector("#unit-content .unit-error") ||
       document.querySelector("#unit-status.is-error"),
     null, { timeout: 30000 });
     const catalog = await page.evaluate(() => ({
@@ -201,14 +201,13 @@ test("390px Unit Past embedded preview carries Archive2 context and uses one-col
       questionCount: window.questionIndex?.length || 0,
       status: document.getElementById("unit-status")?.textContent || "",
       content: document.getElementById("unit-content")?.innerText.slice(0, 500) || "",
-      cards: document.querySelectorAll("#unit-content .unit-card:not(:disabled)").length,
+      cards: document.querySelectorAll("#unit-content .ug-cell:not(.is-zero)").length,
     }));
     assert.ok(catalog.cards > 0, JSON.stringify(catalog));
-    await page.locator("#unit-content .unit-card:not(:disabled)").first().click();
-    await page.waitForSelector("#unit-subunits", { timeout: 30000 });
-    await page.locator("#unit-quick-count").fill("8");
-    await page.locator("#unit-quick-count").dispatchEvent("change");
-    await page.getByRole("button", { name: /미리보기로 이동/ }).click();
+    // The unit x step table is the only screen: pick a cell, open the paper list, then 고치기 shows the real preview.
+    await page.locator("#unit-content .ug-cell:not(.is-zero)").first().click();
+    await page.locator(".ug-bar .ug-primary").click();
+    await page.getByRole("button", { name: /미리 보고 고치기/ }).first().click();
     await page.waitForSelector("#unit-preview-iframe", { timeout: 30000 });
     await page.waitForFunction(() => {
       const frame = document.getElementById("unit-preview-iframe");
