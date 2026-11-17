@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "10"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "7/3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "47",
+          "-13"
+        ],
+        "domain": [
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "21",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "P1",
+          "to": "P2"
+        }
+      ]
+    }
+  },
+  "caption": "고정점(0,1)에서 A(2,21),B(3,8)를 잇는 두 경계기울기는10과7/3. 실제 선분AB를 보존하고 경계 포함7/3≤a≤10,자연수3..10 총8개. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+1$의 그래프가 두 점 $A(2,21)$, $B(3,8)$을 이은 선분 $AB$와 만나도록 하는 자연수 $a$의 개수는? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "고정점(0,1)에서 A(2,21),B(3,8)를 잇는 두 경계기울기는10과7/3. 실제 선분AB를 보존하고 경계 포함7/3≤a≤10,자연수3..10 총8개. 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "고정점(0,1)에서 A(2,21),B(3,8)를 잇는 두 경계기울기는10과7/3. 실제 선분AB를 보존하고 경계 포함7/3≤a≤10,자연수3..10 총8개. 정답②."
+  ]
+}

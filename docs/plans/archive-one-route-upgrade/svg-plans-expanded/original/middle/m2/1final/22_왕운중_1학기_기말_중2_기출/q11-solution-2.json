@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "m",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "수평선m0도허용되고원점지나는m2도제2사분면없음. 닫힌0..2,최대2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(-1,-2)$를 지나는 직선이 제2사분면을 지나지 않을 때, 이 직선의 기울기의 최댓값을 구하면? [4점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "수평선m0도허용되고원점지나는m2도제2사분면없음. 닫힌0..2,최대2.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "수평선m0도허용되고원점지나는m2도제2사분면없음. 닫힌0..2,최대2."
+  ]
+}

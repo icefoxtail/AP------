@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "1 - x/2"
+  },
+  "caption": "라의두절편(2,0),(0,1)에서기울기−1/2,합1/2라거짓. 일반절편식x/a+y/b1은두절편을지나므로가참. 정답가·나·다·마④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기 중 옳은 것을 모두 고르면? [5점]\\n<보기>\\n가. $a\\ne0$, $b\\ne0$인 상수 $a, b$에 대하여 $x$절편이 $a$, $y$절편이 $b$인 직선의 방정식은 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$이다.\\n\n나. $y=2$인 그래프는 점 $(0,2)$를 지나고, $x$축에 평행한 직선이다.\\n\n다. 연립방정식의 해는 두 방정식의 그래프의 교점의 좌표와 같다.\\n\n라. $y=ax+b$의 그래프의 $x$절편이 2, $y$절편이 1일 때, $a+b$의 값은 3이다.\\n마. $y=-\\dfrac{1}{3}x+4$의 그래프를 $y$축 방향으로 1만큼 평행이동하면 점 $(3,4)$를 지난다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "라의두절편(2,0),(0,1)에서기울기−1/2,합1/2라거짓. 일반절편식x/a+y/b1은두절편을지나므로가참. 정답가·나·다·마④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "라의두절편(2,0),(0,1)에서기울기−1/2,합1/2라거짓. 일반절편식x/a+y/b1은두절편을지나므로가참. 정답가·나·다·마④."
+  ]
+}

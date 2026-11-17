@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1/3"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-1/3"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "마는위1이동해y−x/3+5가되고점(3,4)를지나참. 다는두방정식공통점이해라는의미로참. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기 중 옳은 것을 모두 고르면? [5점]\\n<보기>\\n가. $a\\ne0$, $b\\ne0$인 상수 $a, b$에 대하여 $x$절편이 $a$, $y$절편이 $b$인 직선의 방정식은 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$이다.\\n\n나. $y=2$인 그래프는 점 $(0,2)$를 지나고, $x$축에 평행한 직선이다.\\n\n다. 연립방정식의 해는 두 방정식의 그래프의 교점의 좌표와 같다.\\n\n라. $y=ax+b$의 그래프의 $x$절편이 2, $y$절편이 1일 때, $a+b$의 값은 3이다.\\n마. $y=-\\dfrac{1}{3}x+4$의 그래프를 $y$축 방향으로 1만큼 평행이동하면 점 $(3,4)$를 지난다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "마는위1이동해y−x/3+5가되고점(3,4)를지나참. 다는두방정식공통점이해라는의미로참. 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "마는위1이동해y−x/3+5가되고점(3,4)를지나참. 다는두방정식공통점이해라는의미로참. 정답④."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "formula": "(-3)*x+(2)"
+  },
+  "caption": "원본은a<0,b>0. 표시예시a−1,b2에서㉠의식y=-3x+(2)를비교한다. 음기울기는x를충분히작게하면제2사분면을지나고,양기울기/음절편인㉡㉣은안지난다. 예시계수가일반값확정은아니다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같다. 다음 네 일차함수의 그래프 중 제2사분면을 지나지 않는 것을 모두 고르면? [5점]\n\n㉠ $y=(a-b)x+b$\n㉡ $y=(b-a)x-b$\n㉢ $y=(a-b)x+a$\n㉣ $y=(b-a)x+a$ 보기: ['㉠, ㉡', '㉠, ㉣', '㉡, ㉢', '㉡, ㉣', '㉢, ㉣']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본은a<0,b>0. 표시예시a−1,b2에서㉠의식y=-3x+(2)를비교한다. 음기울기는x를충분히작게하면제2사분면을지나고,양기울기/음절편인㉡㉣은안지난다. 예시계수가일반값확정은아니다. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은a<0,b>0. 표시예시a−1,b2에서㉠의식y=-3x+(2)를비교한다. 음기울기는x를충분히작게하면제2사분면을지나고,양기울기/음절편인㉡㉣은안지난다. 예시계수가일반값확정은아니다. 정답④."
+  ]
+}

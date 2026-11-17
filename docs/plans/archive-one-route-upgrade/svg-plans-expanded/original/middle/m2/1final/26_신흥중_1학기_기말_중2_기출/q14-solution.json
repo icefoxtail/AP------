@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "1/3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "19/3"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "7"
+      },
+      {
+        "id": "P2",
+        "x": "6",
+        "y": "8"
+      }
+    ],
+    "formula": "x/3 + 6"
+  },
+  "caption": "주어진(3,7),(6,8)의 기울기1/3,절편6. (1,19/3)에서 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=f(x)$의 그래프가 두 점 $(3,7)$, $(6,8)$을 지날 때, $f(1)$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진(3,7),(6,8)의 기울기1/3,절편6. (1,19/3)에서 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진(3,7),(6,8)의 기울기1/3,절편6. (1,19/3)에서 정답①."
+  ]
+}

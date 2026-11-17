@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "formula": "2*x"
+  },
+  "caption": "보기5의기울기 2만비교하려고세로평행이동해원점에모았다. 실제절편은다르지만완만함은기울기절댓값으로결정한다. 다섯개중절댓값1/2인④가가장완만.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 일차함수 중 그래프의 기울기가 가장 완만한 것을 고르면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "보기5의기울기 2만비교하려고세로평행이동해원점에모았다. 실제절편은다르지만완만함은기울기절댓값으로결정한다. 다섯개중절댓값1/2인④가가장완만.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "보기5의기울기 2만비교하려고세로평행이동해원점에모았다. 실제절편은다르지만완만함은기울기절댓값으로결정한다. 다섯개중절댓값1/2인④가가장완만."
+  ]
+}

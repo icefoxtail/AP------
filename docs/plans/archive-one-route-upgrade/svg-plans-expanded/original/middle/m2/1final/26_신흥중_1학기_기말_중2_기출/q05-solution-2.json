@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-7"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "11"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "formula": "4 - 7*x"
+  },
+  "caption": "보기2의 실제 함수: 기울기−7이므로 오른쪽 아래로 감소한다. 정답ㄴ,②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기에서 일차함수의 그래프가 오른쪽 아래를 향하는 것을 있는 대로 고른 것은? [3점]<div class=\"note-box\">ㄱ. $y=4x-5$<br>ㄴ. $y=-7x+4$<br>ㄷ. $y=\\dfrac35x-2$<br>ㄹ. $y=3x+8$</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "보기2의 실제 함수: 기울기−7이므로 오른쪽 아래로 감소한다. 정답ㄴ,②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "보기2의 실제 함수: 기울기−7이므로 오른쪽 아래로 감소한다. 정답ㄴ,②."
+  ]
+}

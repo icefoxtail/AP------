@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5/3",
+          "-5/3"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "11/2",
+          "1/4"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "id": "f3",
+        "kind": "LINE",
+        "coefficients": [
+          "11",
+          "3"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "먼저 계수 없는 두 식의 교점(−2,5)로a−4,b3을 복원한다. 네 확정된 직선 모두 이 점을 지나며 ab−12. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 네 일차방정식이 한 쌍의 공통인 해를 가질 때, 두 수 $a,b$에 대하여 $ab$의 값은? [4점]\n$-x+y=7,\\quad x+ay=-22$\n$bx-y=-11,\\quad 5x+3y=5$ 보기: ['-12', '-10', '-8', '-4', '-2']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "먼저 계수 없는 두 식의 교점(−2,5)로a−4,b3을 복원한다. 네 확정된 직선 모두 이 점을 지나며 ab−12. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "먼저 계수 없는 두 식의 교점(−2,5)로a−4,b3을 복원한다. 네 확정된 직선 모두 이 점을 지나며 ab−12. 정답①."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/2",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "a,b가 없는 두 선부터 만나 공통해(−1,−3)를 구한다. 이어−a−6=2에서a−8,−4+3b14에서b6,합−2. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 수 $a, b$에 대하여 다음 두 연립방정식의 해가 서로 같을 때, $a+b$의 값은? [4점]<div class=\"note-box\">$\\begin{cases}3x+y=-6\\\\ax+2y=2\\end{cases}\\qquad\\begin{cases}4x-by=14\\\\x-2y=5\\end{cases}$</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a,b가 없는 두 선부터 만나 공통해(−1,−3)를 구한다. 이어−a−6=2에서a−8,−4+3b14에서b6,합−2. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a,b가 없는 두 선부터 만나 공통해(−1,−3)를 구한다. 이어−a−6=2에서a−8,−4+3b14에서b6,합−2. 정답③."
+  ]
+}

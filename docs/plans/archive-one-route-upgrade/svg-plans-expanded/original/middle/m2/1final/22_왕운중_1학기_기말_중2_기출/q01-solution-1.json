@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "formula": "1"
+  },
+  "caption": "①y1은수평상수함수로기울기0이므로일차함수아니다. 일차함수는기울기0이아닌직선. ⑤반비례와함께정답①,⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차함수가 아닌 것을 모두 고르면? (정답 2개) [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "①y1은수평상수함수로기울기0이므로일차함수아니다. 일차함수는기울기0이아닌직선. ⑤반비례와함께정답①,⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "①y1은수평상수함수로기울기0이므로일차함수아니다. 일차함수는기울기0이아닌직선. ⑤반비례와함께정답①,⑤."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-1"
+        ],
+        "domain": [
+          "3",
+          "9"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "2"
+        ],
+        "domain": [
+          "3",
+          "9"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "8",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "P0",
+          "to": "P1"
+        }
+      ]
+    }
+  },
+  "caption": "실제 선분AB는(4,6)부터(8,2)까지이다. 비교기울기a=2일 때 교점(4,6). a1/2와2는양끝포함,5/2는x24/7<4로선분밖이다. 원래지지직선의연장과닫힌선분을구별한다. 허용1/2≤a≤2,될수없는①. 경계 교점은 기존 끝점과 동일하므로 중복 좌표라벨은 추가하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래의 그림과 같이 좌표평면 위에 두 점 $A(4,6),\\ B(8,2)$가 있다. 다음 중 일차방정식 $ax-y-2=0$의 그래프가 선분 $\\overline{AB}$와 만나도록 하는 수 $a$의 값이 될 수 없는 것은? [5점] 보기: ['$\\\\dfrac52$', '2', '$\\\\dfrac32$', '1', '$\\\\dfrac12$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제 선분AB는(4,6)부터(8,2)까지이다. 비교기울기a=2일 때 교점(4,6). a1/2와2는양끝포함,5/2는x24/7<4로선분밖이다. 원래지지직선의연장과닫힌선분을구별한다. 허용1/2≤a≤2,될수없는①. 경계 교점은 기존 끝점과 동일하므로 중복 좌표라벨은 추가하지 않는다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 선분AB는(4,6)부터(8,2)까지이다. 비교기울기a=2일 때 교점(4,6). a1/2와2는양끝포함,5/2는x24/7<4로선분밖이다. 원래지지직선의연장과닫힌선분을구별한다. 허용1/2≤a≤2,될수없는①. 경계 교점은 기존 끝점과 동일하므로 중복 좌표라벨은 추가하지 않는다."
+  ]
+}

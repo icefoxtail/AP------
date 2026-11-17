@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "교점(3,−2)에서 두 함숫값이 같다. a+b1,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차함수 $y=x-5$, $y=-2x+4$의 그래프의 교점의 좌표를 $(a,b)$라고 할 때, $a+b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "교점(3,−2)에서 두 함숫값이 같다. a+b1,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "교점(3,−2)에서 두 함숫값이 같다. a+b1,정답④."
+  ]
+}

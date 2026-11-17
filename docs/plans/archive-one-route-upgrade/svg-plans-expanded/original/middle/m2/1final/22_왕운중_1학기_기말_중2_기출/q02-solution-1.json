@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-4"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "2*x - 4"
+  },
+  "caption": "보기1의x절편은2이다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 일차함수 중에서 $x$절편이 다른 것을 고르면? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "보기1의x절편은2이다. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "보기1의x절편은2이다. 정답⑤."
+  ]
+}

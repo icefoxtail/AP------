@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6/7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "거리비음수,왕복구매총40분이하. 0≤x≤6/7의닫힌범위이며정답6/7km이내.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "왕운이가 역에서 기차를 기다리는 데 40분의 여유가 있어서 책을 사오려고 한다. 시속 3km로 걸어가서 10분 동안 책을 사고, 시속 4km로 돌아오려면 역에서 몇 km 이내의 서점까지 갔다 올 수 있는지를 구하면? [5점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "거리비음수,왕복구매총40분이하. 0≤x≤6/7의닫힌범위이며정답6/7km이내.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "거리비음수,왕복구매총40분이하. 0≤x≤6/7의닫힌범위이며정답6/7km이내."
+  ]
+}
