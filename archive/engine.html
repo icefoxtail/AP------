@@ -138,8 +138,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
-    <script src="exam-source-reader.js?v=20261117-reader-1"></script>
-    <script src="screen-runtime-adapter.js?v=20261117-reader-1"></script>
+    <script src="screen-runtime-adapter.js?v=20261116-polish-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
     <style>
@@ -1787,9 +1786,9 @@ async function init() {
         try {
             await waitForMathJaxOrContinue();
             if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
-            // 문항 배열 찾기 규칙(questionBank, 별칭 줄이 없는 window.examData 형식 포함)은 exam-source-reader.js 한 곳에 있다.
-            if (!window.ExamSourceReader) throw new Error('exam-source-reader.js를 불러오지 못했습니다.');
-            const loadedQuestions = window.ExamSourceReader.readQuestionArray(window) || [];
+            // questionBank가 없을 때만 window.examData(별칭 줄이 없는 원본 시험지 형식)로 읽는다.
+            const qb = window.questionBank || window.examData;
+            const loadedQuestions = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
             const sourceArchiveFile = String(safeDataUrl)
                 .replace(/^[^#?]*\/exams\//i, '')
                 .replace(/[?#].*$/, '')
@@ -1799,7 +1798,7 @@ async function init() {
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);
             AppState.canonicalData = buildArchiveCanonicalData(sourceArchiveFile);
-            AppState.title = window.ExamSourceReader.readExamTitle(window) || p.get('title') || recentLaunch?.title || '수학 시험지';
+            AppState.title = window.examTitle || (!window.questionBank && (window.examData?.title || window.examData?.examTitle)) || p.get('title') || recentLaunch?.title || '수학 시험지';
             AppState.identityTitle = AppState.title;
             // 머리글에 찍는 제목만 읽기 쉬운 이름으로 바꾼다(식별 제목 identityTitle·시험지 JS는 그대로). 해석할 수 없으면 원문.
             const readableTitle = value => window.ExamDisplayTitle?.readableExamTitle?.(value) || value;

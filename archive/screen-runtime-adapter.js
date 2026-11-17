@@ -432,11 +432,11 @@ function createArchiveScreenRuntime() {
             script.textContent = `(function () {\n${sourceCode}\n}).call(window);`;
             document.body.appendChild(script);
             if (scriptError) throw scriptError;
-            // 문항 배열 찾기 규칙(별칭 줄이 없는 window.examData 형식 포함)은 exam-source-reader.js 한 곳에 있다.
-            if (!window.ExamSourceReader) throw new Error('EXAM_SOURCE_READER_MISSING');
-            raw = window.ExamSourceReader.readQuestionArray(window);
+            // questionBank가 있으면 그대로 쓴다. 없을 때만 window.examData(별칭 줄이 없는 원본 시험지 형식)로 읽는다.
+            const bank = window.questionBank || window.examData;
+            raw = Array.isArray(bank) ? bank : bank?.questions || bank?.problems;
             if (!Array.isArray(raw) || !raw.length) throw new Error('EMPTY_SOURCE_DATA');
-            title = window.ExamSourceReader.readExamTitle(window) || input.title || '수학 시험지';
+            title = window.examTitle || (!window.questionBank && (window.examData?.title || window.examData?.examTitle)) || input.title || '수학 시험지';
             // 머리글에 찍는 제목만 읽기 쉬운 이름으로(식별 제목 title/identityTitle은 그대로). 해석할 수 없으면 원문.
             displayTitle = window.examDisplayTitle || window.ExamDisplayTitle?.readableExamTitle?.(title) || title;
         } finally {
