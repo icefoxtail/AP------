@@ -1,0 +1,34 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "R"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "subset": [
+      "R",
+      "Q"
+    ]
+  },
+  "caption": "원본의 P와 Q가 겹치고 그 안에 R이 있는 전체 벤 그림은 반드시 유지한다. 여기서는 그중 R과 Q의 포함 관계만 따로 꺼내 확대했다. R과 Q의 관계와 그 대우를 비교하고, P가 등장하는 다른 보기는 원본 전체 그림에서 판단한다. 원 넓이는 원소 개수를 나타내지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라고 하자. $P$, $Q$, $R$ 사이의 포함 관계가 다음 벤 다이어그램과 같을 때, 보기 중 참인 것을 고르시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본직접확인 R⊂P∩Q이나P,Q서로포함아님. ㄴ만참. 공식3집합chain으로잘못모델링하지않고전체원본유지+R⊂Q추출보조만.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 P와 Q가 겹치고 그 안에 R이 있는 전체 벤 그림은 반드시 유지한다. 여기서는 그중 R과 Q의 포함 관계만 따로 꺼내 확대했다. R과 Q의 관계와 그 대우를 비교하고, P가 등장하는 다른 보기는 원본 전체 그림에서 판단한다. 원 넓이는 원소 개수를 나타내지 않는다."
+  ]
+}

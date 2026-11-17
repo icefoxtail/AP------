@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "2",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "parameter": {
+      "name": "k",
+      "value": "3"
+    }
+  },
+  "caption": "k=3인 허용 예시에서 P의 닫힌 끝점 2k와 Q의 열린 끝점 8을 비교한다. P의 끝점 자체도 Q에 들어가야 하는 이유를 확인한 뒤 일반 k의 조건을 판단한다. 이 예시를 전체 해의 범위로 읽지 않으며 최종 범위는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 명제가 참이 되도록 하는 실수 $k$의 값의 범위를 구하시오.\n$x\\le2k$이면 $2x+7>5x-17$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "2x+7>5x−17→x<8, P=(−∞,2k],Q=(−∞,8),포함은2k<8. 최종k<4숨김. 기존SVG하단완성답문구를새그림에복제하지않음.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "k=3인 허용 예시에서 P의 닫힌 끝점 2k와 Q의 열린 끝점 8을 비교한다. P의 끝점 자체도 Q에 들어가야 하는 이유를 확인한 뒤 일반 k의 조건을 판단한다. 이 예시를 전체 해의 범위로 읽지 않으며 최종 범위는 쓰지 않는다."
+  ]
+}

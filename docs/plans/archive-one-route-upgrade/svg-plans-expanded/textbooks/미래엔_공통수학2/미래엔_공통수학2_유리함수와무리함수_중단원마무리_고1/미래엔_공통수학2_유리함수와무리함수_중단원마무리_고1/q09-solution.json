@@ -1,0 +1,51 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "16",
+      "-4"
+    ],
+    "sign": -1,
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -5,
+      4
+    ],
+    "viewport": [
+      -6,
+      5,
+      -8,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 0.0,
+        "y": -2.0
+      }
+    ],
+    "hideLabels": [
+      "formula"
+    ]
+  },
+  "caption": "원본 문제 그림의 시작점 (4,2)와 세로축 교점 (0,−2)를 보존한다. 시작점에서 근호 안이 0임을 쓰고 세로축 교점으로 남은 계수를 구한 뒤 요구된 입력을 대입한다. 구하는 f(−5)와 완성된 함수식은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-\\sqrt{ax+b}+c$의 그래프가 오른쪽 그림과 같을 때, $f(-5)$의 값을 구하시오. (단, $a,\\, b,\\, c$는 상수)\n<img src=\"q09.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "c2,4a+b0,−sqrt(b)+2=−2에서b16,a−4. f−5=−4 최종값과 해당점라벨숨김. 자연정의역x≤4.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 문제 그림의 시작점 (4,2)와 세로축 교점 (0,−2)를 보존한다. 시작점에서 근호 안이 0임을 쓰고 세로축 교점으로 남은 계수를 구한 뒤 요구된 입력을 대입한다. 구하는 f(−5)와 완성된 함수식은 표시하지 않는다."
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/8",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "1/8"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-1/8"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "17/8"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    }
+  },
+  "caption": "증가함수와 역함수의 교점은 y=x 위에 있으므로 t=√(x−5)≥0로 놓고 t²−t+5−k=0을 살핀다. k=39/8인 한 예시에서 두 영점이 모두 t≥0인지 보여 주는 보조 그래프다. 오른쪽 표시 구간은 0≤t≤2의 확대이며 모든 k의 해를 이 범위에 제한하지 않는다. 일반 조건은 서로 다른 두 근과 음수가 아닌 근을 함께 검사한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\sqrt{x-5}+k$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "엄밀증가 f는 f(x)=inversef(x)의 2주기 비고정점 불가. t≥0 이차 t²−t+5−k: D=4k−19>0,곱5−k≥0,합1>0이므로19/4<k≤5. 최종범위숨김. 예시k39/8 두양근,중근/0근경계는일반설명.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "증가함수와 역함수의 교점은 y=x 위에 있으므로 t=√(x−5)≥0로 놓고 t²−t+5−k=0을 살핀다. k=39/8인 한 예시에서 두 영점이 모두 t≥0인지 보여 주는 보조 그래프다. 오른쪽 표시 구간은 0≤t≤2의 확대이며 모든 k의 해를 이 범위에 제한하지 않는다. 일반 조건은 서로 다른 두 근과 음수가 아닌 근을 함께 검사한다."
+  ]
+}

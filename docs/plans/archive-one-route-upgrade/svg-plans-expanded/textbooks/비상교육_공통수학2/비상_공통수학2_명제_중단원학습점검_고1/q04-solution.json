@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "(2)의 두 진리집합을 같은 수직선 척도로 비교한다. P의 양 끝은 열려 있고 Q의 양 끝은 닫혀 있다. 어느 방향으로 모든 원소가 포함되는지 읽고 필요·충분조건 이름을 판단한다. (1)은 x=y의 함의와 부호가 반대인 반례로 따로 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 조건 $p$, $q$가 다음과 같을 때, $p$는 $q$이기 위한 무슨 조건인지 말하시오.\n(1) $p$: $|x|=|y|$, $q$: $x=y$\n(2) $p$: $-1<x<1$, $q$: $(x+3)(x-2)\\le0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(1)q→p,역은x1y−1반례,필요조건. (2)P=(−1,1)⊂Q=[−3,2],충분조건. 최종조건명그림미표시.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "(2)의 두 진리집합을 같은 수직선 척도로 비교한다. P의 양 끝은 열려 있고 Q의 양 끝은 닫혀 있다. 어느 방향으로 모든 원소가 포함되는지 읽고 필요·충분조건 이름을 판단한다. (1)은 x=y의 함의와 부호가 반대인 반례로 따로 판단한다."
+  ]
+}

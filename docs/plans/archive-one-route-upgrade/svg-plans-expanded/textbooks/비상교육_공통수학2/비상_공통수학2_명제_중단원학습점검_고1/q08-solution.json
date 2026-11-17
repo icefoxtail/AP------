@@ -1,0 +1,61 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "parameter": {
+      "name": "a",
+      "value": "7"
+    }
+  },
+  "caption": "a=7인 허용 예시이다. 필요조건은 Q의 모든 원소가 P에 들어가는 방향이다. 두 열린 끝점의 위치를 비교하되 6 자체는 Q에 들어가지 않는다는 점을 주의해서 가장 작은 a를 판단한다. 그림의 a=7을 최솟값으로 해석하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 조건 $p$, $q$\n$p$: $x<a$, $q$: $-5<x<6$\n에 대하여 $p$는 $q$이기 위한 필요조건일 때, 실수 $a$의 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "Q=(−5,6)⊂P=(−∞,a)이면a≥6,최소6숨김. 경계같아도열린끝점이면포함가능.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a=7인 허용 예시이다. 필요조건은 Q의 모든 원소가 P에 들어가는 방향이다. 두 열린 끝점의 위치를 비교하되 6 자체는 Q에 들어가지 않는다는 점을 주의해서 가장 작은 a를 판단한다. 그림의 a=7을 최솟값으로 해석하지 않는다."
+  ]
+}
