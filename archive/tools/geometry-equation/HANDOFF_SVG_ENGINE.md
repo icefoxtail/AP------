@@ -5,7 +5,7 @@
 다음 작업자는 이 문서 하나로 이어서 일할 수 있다. **읽는 순서: §00(최신 현황) → §0 → §1 → §2(작업 방식) → §3(도구 복원) → §6(남은 일).** 나머지는 필요할 때 찾아본다. 2026-10-26판(Codex·opencode DeepSeek 방식)은 git 이력에 있다. 지금 방식은 이 문서다.
 
 - 그림 작성 규칙 정본: `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`. 본문 `author-guide-body.md`와 계약을 `node archive/tools/geometry-equation/production/build-author-guide.mjs`로 합성한다. `tests/author-guide.test.mjs`가 동기화를 검사한다.
-- 시험지 마감 원장: `archive/tools/geometry-equation/production/exam-figure-ledger.json`
+- 시험지 마감 원장: `archive/tools/geometry-equation/production/exam-figure-ledger/` (시험지 하나 = 파일 하나, 2026-11-17부터. 읽기·쓰기는 `ops/svg-m1/figure_ledger.py`·`figure-ledger.cjs`, 규칙은 `docs/agents/visual-svg.md` "해설 그림 장부")
 - 캠페인 도구·지시서·현황 메모: `archive/tools/geometry-equation/ops/svg-m1/` (§3에서 `.tmp/svg-m1/`로 복원해서 쓴다)
 - 엔진 정답지(골든): `archive/tools/geometry-equation/ops/golden.manifest.json` + `ops/golden/itemNN/`
 
@@ -305,7 +305,7 @@ mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-eq
   4. 입체 고정 YAW 28°라 정사각뿔 앞 옆모서리가 높이선과 겹친다(끌어낸 직각삼각형 패널로 우회).
   5. pathLabels anchor가 꼭짓점 근처에서 LAYOUT_INVENTORY_INCOMPLETE가 날 수 있다(E37).
 
-## 5. 진행 현황 (원장 `exam-figure-ledger.json` 다시 센 값, 2026-11-01)
+## 5. 진행 현황 (당시 원장 `exam-figure-ledger.json` 다시 센 값, 2026-11-01)
 
 | 학년 | 시험지(원본) | 원장 등록 | CLOSED | 미결 |
 |---|---|---|---|---|

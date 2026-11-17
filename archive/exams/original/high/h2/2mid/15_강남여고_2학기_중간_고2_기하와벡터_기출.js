@@ -1021,14 +1021,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "smallBoardContinuityStatus": "PASS",
-    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q18-solution.svg",
+    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q18-solution-v2.svg",
     "solutionSha256": "93631d9921cae3572a180f52108d65314101d8a22560a2bbddc7780aa5b3dfd6",
     "subUnitKeyNullReason": "The H15-GV master table defines standard units but does not publish exact H15-GV subUnitKey bindings for this topic; no other-curriculum key is inherited.",
     "difficultyReason": "Find a circular lens area and use its symmetry axis to halve it.",
-    "solutionImageAlt": "두 중심 A(2,0), B(0,2)인 반지름 2 원의 공통부분과 그 중심선을 나타낸 그림",
-    "solutionImageCaption": "중심선 x+y=2가 렌즈 넓이를 이등분한다.",
+    "solutionImageAlt": "중심 A(2,0), B(0,2), 반지름 2인 두 원판의 공통 렌즈를 나타낸다. 선분 AB가 두 중심을 잇는 유일한 중심선이며 x+y=2이다. 이 선을 경계로 원점 쪽 절반을 색칠했다.",
+    "solutionImageCaption": "두 중심을 잇는 선분 AB는 x+y=2이고 공통 렌즈를 이등분한다. 전체 렌즈의 넓이는 2π−4이므로 색칠한 부분은 π−2이다. 정답은 ⑤.",
     "layoutTag": "grid",
-    "wide": true
+    "wide": true,
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1232,14 +1233,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "smallBoardContinuityStatus": "PASS",
-    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q22-solution.svg",
+    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q22-solution-v2.svg",
     "solutionSha256": "bed9d9f8c56c0fece67ce36a5992d6b86b55708ce16a61c29f4f92104e59715e",
     "subUnitKeyNullReason": "The H15-GV master table defines standard units but does not publish exact H15-GV subUnitKey bindings for this topic; no other-curriculum key is inherited.",
     "difficultyReason": "Combine a conic tangent with two asymptote intersections and exact distance algebra.",
-    "solutionImageAlt": "쌍곡선, 점 P의 접선 x−y=2, 두 점근선과 교점 A, B를 나타낸 그림",
-    "solutionImageCaption": "점근선 교점의 좌표로 OA·OB=8을 계산한다.",
+    "solutionImageAlt": "쌍곡선 x²/6−y²/2=1 위의 P(3,1)에서 그은 접선 x−y=2와 점근선 y=±x/√3, 교점 A와 B를 나타낸다. 원점 O에서 A와 B까지의 선분 OA와 OB는 각 점근선 위에 있다.",
+    "solutionImageCaption": "접선과 두 점근선의 교점 A, B를 정하고, 원점에서 각 교점까지의 선분 OA, OB의 길이 곱을 구한다. 정답은 8.",
     "layoutTag": "grid",
-    "wide": true
+    "wide": true,
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1287,13 +1289,14 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "smallBoardContinuityStatus": "PASS",
-    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q23-solution.svg",
+    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q23-solution-v2.svg",
     "solutionSha256": "219f70a413d6c653dff3394049acc89e3f0f8bae5ccd0cbea3e22f1df2cd3a2d",
     "subUnitKeyNullReason": "The H15-GV master table defines standard units but does not publish exact H15-GV subUnitKey bindings for this topic; no other-curriculum key is inherited.",
     "difficultyReason": "Read three directed grid vectors and solve a 2×2 system.",
-    "solutionImageAlt": "격자에서 읽은 세 벡터와 p, q 연립방정식 계산을 나타낸 그림",
-    "solutionImageCaption": "a=(−2,−2), b=(−3,1), c=(3,5)에서 p+q=−7/4를 구한다.",
+    "solutionImageAlt": "한 패널의 8×8 모눈에 벡터 a=(−2,−2), b=(−3,1), c=(3,5)를 각각 화살표로 나타낸다.",
+    "solutionImageCaption": "모눈에서 읽은 a, b, c의 성분으로 c=pa+qb를 비교하면 p=−9/4, q=1/2이다. 따라서 p+q=−7/4.",
     "layoutTag": "grid",
-    "wide": true
+    "wide": true,
+    "solutionImageSize": "medium"
   }
 ];

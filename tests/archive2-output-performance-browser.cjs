@@ -1018,7 +1018,8 @@ async function main() {
     if (!profileOnly) {
       execFileSync('git', ['worktree', 'add', '--detach', baselineRoot, baseSha], { cwd: root, stdio: 'pipe', timeout: 120000 });
       worktree = true;
-      baselineServer = await H.serve(baselineRoot, root, pinned.sourceOverlay);
+      // The reference predates the readable original-exam title (2026-11-16); it receives it via examDisplayTitle.
+      baselineServer = await H.serve(baselineRoot, root, pinned.sourceOverlay, { referenceDisplayTitle: true });
     }
     currentServer = await H.serve(root, root, pinned.sourceOverlay);
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });

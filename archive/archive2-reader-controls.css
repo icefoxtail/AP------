@@ -20,6 +20,7 @@
     justify-content: stretch !important;
     gap: 0 !important;
     box-sizing: border-box;
+    overflow: visible; /* 더보기 메뉴가 조작줄 아래로 펼쳐진다 */
   }
 
   html.archive2-mobile-reader-enabled #mode-ctrl #ctrl-title,
@@ -41,7 +42,8 @@
     gap: 8px;
     width: 100%;
     height: 100%;
-    color: #f8fafc;
+    color: var(--ink);
+    font-family: var(--font-body);
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-back,
@@ -50,11 +52,20 @@
     box-sizing: border-box;
     min-width: 44px;
     min-height: 44px;
-    border: 1px solid rgba(255, 255, 255, .22);
-    border-radius: 8px;
-    color: #f8fafc;
-    background: #1e293b;
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    background: var(--surface);
     font: inherit;
+    cursor: pointer;
+  }
+
+  html.archive2-mobile-reader-enabled .archive2-reader-back:hover,
+  html.archive2-mobile-reader-enabled .archive2-reader-more:hover { background: var(--chip); }
+
+  html.archive2-mobile-reader-enabled :is(.archive2-reader-back, .archive2-reader-mode, .archive2-reader-more):focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 2px;
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-back {
@@ -68,30 +79,50 @@
     white-space: nowrap;
   }
 
+  /* 글자 아이콘(‹)은 쓰지 않는다: 글자를 숨기고 CSS로 화살표를 그린다. */
   html.archive2-mobile-reader-enabled .archive2-reader-back span:first-child {
-    font-size: 22px;
-    line-height: 1;
+    width: 9px;
+    height: 9px;
+    margin-left: 3px;
+    border-left: 2.5px solid currentColor;
+    border-bottom: 2.5px solid currentColor;
+    transform: rotate(45deg);
+    font-size: 0;
+    line-height: 0;
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-mode-label { min-width: 0; }
 
   html.archive2-mobile-reader-enabled .archive2-reader-mode {
     width: 100%;
-    padding: 0 30px 0 12px;
-    font-size: 14px;
+    padding: 0 30px 0 16px;
+    border-color: var(--control-line);
+    border-radius: var(--radius-field);
+    font-size: 16px;
     font-weight: 700;
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-mode option {
-    color: #0f172a;
-    background: #fff;
+    color: var(--ink);
+    background: var(--surface);
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-more {
     width: 48px;
     padding: 0;
-    font-size: 22px;
-    line-height: 1;
+    font-size: 0; /* ⋯ 글자 대신 점 세 개를 그린다 */
+    line-height: 0;
+  }
+
+  html.archive2-mobile-reader-enabled .archive2-reader-more::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: -8px 0 currentColor, 8px 0 currentColor;
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-menu {
@@ -101,10 +132,9 @@
     z-index: 1200;
     width: min(260px, calc(100vw - 16px));
     padding: 6px;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 12px 32px rgba(15, 23, 42, .24);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-panel);
+    background: var(--surface);
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-menu[hidden] { display: none !important; }
@@ -115,20 +145,21 @@
     min-height: 44px;
     padding: 0 12px;
     border: 0;
-    border-radius: 7px;
+    border-radius: var(--radius-pill);
     background: transparent;
-    color: #0f172a;
+    color: var(--ink);
     text-align: left;
     font: inherit;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
+    cursor: pointer;
   }
 
   html.archive2-mobile-reader-enabled .archive2-reader-menu button:hover,
   html.archive2-mobile-reader-enabled .archive2-reader-menu button:focus-visible {
-    background: #eff6ff;
-    outline: 2px solid #2563eb;
-    outline-offset: -2px;
+    background: var(--chip);
+    outline: 3px solid var(--ink);
+    outline-offset: -3px;
   }
 
   html.archive2-mobile-reader-enabled body { padding-top: 52px !important; }

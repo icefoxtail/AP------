@@ -1633,16 +1633,192 @@
     return null;
   }
 
-  // Cell counts per unit: { [unitKey]: { 1..5, none, total } }. Computed once per grade by the screen
-  // (never inside a render), from the units' automatically selectable records.
-  function countGrid(units) {
+  // ---- 유형 거르기 (단원별 기출 표의 "유형" 패널) ----
+  // 한 문항의 유형은 problemTypeKey다. 키나 이름이 없거나 유형 연결이 끊긴(isProblemTypeSelectable 거짓) 문항은 모두
+  // "유형 미지정"(NO_TYPE_KEY)으로 본다. 중학교는 유형 채움이 7~16%라 미지정이 대부분이므로 선택지로 반드시 둔다.
+  // 거르기는 "뺄 유형 목록"(excluded)으로 표현한다: 기본(빈 목록)은 전부이고, 고른 단원이 바뀌어도 새 유형은 켜진 채 나타난다.
+  // filterUnitRecords는 미지정 문항을 빼므로 쓰지 않는다.
+  const NO_TYPE_KEY = '__none__';
+
+  function getFilterTypeKey(record) {
+    const key = getProblemTypeKey(record);
+    return key && getProblemTypeLabel(record) && isProblemTypeSelectable(record) ? key : NO_TYPE_KEY;
+  }
+
+  function normalizeExcludedTypeKeys(input) {
+    return [...new Set((Array.isArray(input) ? input : input instanceof Set ? [...input] : [])
+      .map(value => String(value || '').trim()).filter(Boolean))].sort();
+  }
+
+  // (record) => boolean. 빼는 유형이 없으면 null(거르지 않음).
+  function createTypeFilter(excluded) {
+    const keys = new Set(normalizeExcludedTypeKeys(excluded));
+    return keys.size ? record => !keys.has(getFilterTypeKey(record)) : null;
+  }
+
+  // 유형 패널의 선택지: { options: [{ key, label, count }] (많은 순), noneCount, total }.
+  function getTypeFilterOptions(records) {
+    const groups = new Map();
+    let noneCount = 0;
+    let total = 0;
+    for (const record of Array.isArray(records) ? records : []) {
+      total += 1;
+      const key = getFilterTypeKey(record);
+      if (key === NO_TYPE_KEY) { noneCount += 1; continue; }
+      const group = groups.get(key) || { key, label: getProblemTypeLabel(record), count: 0 };
+      group.count += 1;
+      groups.set(key, group);
+    }
+    return { options: [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label)), noneCount, total };
+  }
+
+  // ---- 출처 거르기 (단원별 기출 표의 "조건 줄": 학교·연도·시험·학기) ----
+  // 사용자 결정 2026-11-16: 학교별·연도별로 단원별 기출을 뽑아 "그 학교 시험이 전체적으로 어떤 모양인지" 학생이 알 수 있게 한다.
+  // 옛 모아뽑기의 계산 규칙을 그대로 쓴다(학교·연도·학기·중간/기말, "최근 N년"은 학교마다 자료가 있는 최신 N개 연도).
+  // 조건이 하나도 없으면 active=false이고 keep=null이라 표·문제지가 조건을 모르던 때와 같다.
+  const SOURCE_YEAR_MODES = Object.freeze(['all', 'recent', 'range']);
+
+  function normalizeSourceOptions(input) {
+    const source = input && typeof input === 'object' ? input : {};
+    const rawSchools = Array.isArray(source.schoolKeys) ? source.schoolKeys : source.schoolKeys instanceof Set ? [...source.schoolKeys] : String(source.schoolKeys || '').split(',');
+    const schoolKeys = [...new Set(rawSchools.map(value => String(value || '').trim()).filter(Boolean))].sort();
+    let yearMode = SOURCE_YEAR_MODES.includes(source.yearMode) ? source.yearMode : 'all';
+    const yearCount = Number(source.yearCount) === 5 ? 5 : 3;
+    const toYear = value => (Number(value) ? normalizeExamYear(value) : 0);
+    let yearFrom = toYear(source.yearFrom);
+    let yearTo = toYear(source.yearTo);
+    if (!isValidExamYear(yearFrom)) yearFrom = 0;
+    if (!isValidExamYear(yearTo)) yearTo = 0;
+    if (yearMode === 'range') {
+      if (!yearFrom && !yearTo) yearMode = 'all';
+      else {
+        if (!yearFrom) yearFrom = yearTo;
+        if (!yearTo) yearTo = yearFrom;
+        if (yearFrom > yearTo) [yearFrom, yearTo] = [yearTo, yearFrom];
+      }
+    } else { yearFrom = 0; yearTo = 0; }
+    return {
+      schoolKeys, yearMode, yearCount: yearMode === 'recent' ? yearCount : 3, yearFrom, yearTo,
+      examType: normalizeCollectionExamType(source.examType), semester: normalizeCollectionSemester(source.semester),
+      // 학교를 2곳 이상 골랐을 때만 뜻이 있다: 'school' = 학교마다 따로 권, 'mixed' = 한 권으로 섞기.
+      group: source.group === 'school' && schoolKeys.length >= 2 ? 'school' : 'mixed'
+    };
+  }
+
+  // 같은 조건이면 같은 문자열, 조건이 없으면 ''. 권의 snapshotKey와 표 숫자 저장에 쓴다.
+  function sourceOptionsKey(options) {
+    const o = normalizeSourceOptions(options);
+    const parts = [];
+    if (o.schoolKeys.length) parts.push(`s=${o.schoolKeys.join(',')}`);
+    if (o.yearMode === 'recent') parts.push(`y=r${o.yearCount}`);
+    else if (o.yearMode === 'range') parts.push(`y=${o.yearFrom}-${o.yearTo}`);
+    if (o.examType) parts.push(`x=${o.examType}`);
+    if (o.semester) parts.push(`m=${o.semester}`);
+    return parts.join(';');
+  }
+
+  function sourcePeriodText(options) {
+    const o = normalizeSourceOptions(options);
+    return [o.semester ? `${o.semester}학기` : '', o.examType ? (o.examType === 'mid' ? '중간고사' : '기말고사') : ''].filter(Boolean).join(' ');
+  }
+
+  function sourceYearText(options) {
+    const o = normalizeSourceOptions(options);
+    if (o.yearMode === 'recent') return `최근 ${o.yearCount}년`;
+    if (o.yearMode === 'range') return o.yearFrom === o.yearTo ? `${o.yearFrom}년` : `${o.yearFrom}~${o.yearTo}년`;
+    return '';
+  }
+
+  // universe: 그 학년의 문항 전부(보통 모든 단원의 selectableRecords). "최근 N년"은 그 학교의 (학기·시험을 거른 뒤) 자료가 있는 최신 N개 연도다.
+  // 반환: { active, options, key, keep(record) | null, yearsOf(schoolKey) }
+  function createSourceFilter(universe, input) {
+    const options = normalizeSourceOptions(input);
+    const key = sourceOptionsKey(options);
+    const active = Boolean(key);
+    if (!active) return { active: false, options, key: '', keep: null, yearsOf: () => [] };
+    const schools = new Set(options.schoolKeys);
+    const periodOk = record => (!options.semester || getSemester(record) === options.semester) && (!options.examType || getExamType(record) === options.examType);
+    const schoolOf = record => getSchoolKey(record) || '__unknown__';
+    let allowed = null;
+    if (options.yearMode === 'recent') {
+      const yearsBySchool = new Map();
+      for (const record of Array.isArray(universe) ? universe : []) {
+        if (!periodOk(record)) continue;
+        const year = getExamYear(record);
+        if (!isValidExamYear(year)) continue;
+        const school = schoolOf(record);
+        if (!yearsBySchool.has(school)) yearsBySchool.set(school, new Set());
+        yearsBySchool.get(school).add(year);
+      }
+      allowed = new Map([...yearsBySchool].map(([school, years]) => [school, new Set([...years].sort((a, b) => b - a).slice(0, options.yearCount))]));
+    }
+    const yearOk = record => {
+      if (options.yearMode === 'all') return true;
+      const year = getExamYear(record);
+      if (!isValidExamYear(year)) return false;
+      if (options.yearMode === 'range') return year >= options.yearFrom && year <= options.yearTo;
+      const years = allowed.get(schoolOf(record));
+      return Boolean(years && years.has(year));
+    };
+    return {
+      active, options, key,
+      keep: record => periodOk(record) && (!schools.size || schools.has(schoolOf(record))) && yearOk(record),
+      yearsOf: schoolKey => (allowed && allowed.get(schoolKey) ? [...allowed.get(schoolKey)].sort((a, b) => b - a) : [])
+    };
+  }
+
+  // 학교 고르기 목록: 그 학년에 기출이 있는 학교와 (학교를 뺀 나머지 조건으로 센) 문항 수, 문항이 많은 학교부터.
+  function getSourceSchoolOptions(universe, input) {
+    const filter = createSourceFilter(universe, { ...normalizeSourceOptions(input), schoolKeys: [] });
+    const groups = new Map();
+    for (const record of Array.isArray(universe) ? universe : []) {
+      const school = getSchool(record);
+      if (!school) continue;
+      const schoolKey = getSchoolKey(record);
+      const group = groups.get(schoolKey) || { key: schoolKey, label: school, count: 0, total: 0, years: new Set() };
+      group.total += 1;
+      if (!filter.keep || filter.keep(record)) {
+        group.count += 1;
+        const year = getExamYear(record);
+        if (isValidExamYear(year)) group.years.add(year);
+      }
+      groups.set(schoolKey, group);
+    }
+    return [...groups.values()]
+      .map(group => ({ ...group, years: [...group.years].sort((a, b) => b - a) }))
+      .sort((a, b) => b.count - a.count || compareText(a.label, b.label) || compareText(a.key, b.key));
+  }
+
+  // Cell counts per unit: { [unitKey]: { 1..5, none, total, children?: { [childKey]: { 1..5, none, total } } } }. Computed per
+  // grade by the screen (never inside a render), from the units' automatically selectable records.
+  // options.childOf(record, unit) -> childKey ('' = no child): adds the per-중단원/소단원 rows (Archive2UnitTree).
+  // options.excludedTypeKeys: records of an excluded 유형 are not counted (same rule as buildSelectionPapers).
+  // options.sourceFilter: createSourceFilter(...) 결과. 학교·연도·시험·학기 조건에 맞는 문항만 센다(조건이 없으면 모르는 척한다).
+  function countGrid(units, options = {}) {
+    const childOf = typeof options.childOf === 'function' ? options.childOf : null;
+    const typeKeep = createTypeFilter(options.excludedTypeKeys);
+    const sourceKeep = options.sourceFilter && options.sourceFilter.active ? options.sourceFilter.keep : null;
+    const keep = typeKeep && sourceKeep ? record => typeKeep(record) && sourceKeep(record) : typeKeep || sourceKeep;
+    const blank = () => ({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, [STEP_NONE]: 0, total: 0 });
     const grid = {};
     for (const unit of Array.isArray(units) ? units : []) {
-      const row = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, [STEP_NONE]: 0, total: 0 };
+      const row = blank();
+      const children = childOf ? {} : null;
       for (const record of Array.isArray(unit && unit.selectableRecords) ? unit.selectableRecords : []) {
-        row[getStepToken(record)] += 1;
+        if (keep && !keep(record)) continue;
+        const token = getStepToken(record);
+        row[token] += 1;
         row.total += 1;
+        if (children) {
+          const childKey = childOf(record, unit);
+          if (childKey) {
+            const child = children[childKey] || (children[childKey] = blank());
+            child[token] += 1;
+            child.total += 1;
+          }
+        }
       }
+      if (children) row.children = children;
       grid[unit.key] = row;
     }
     return grid;
@@ -1709,8 +1885,12 @@
     return sections;
   }
 
-  // selection: [{ unitKey, step }] (step 1..5, or 'none' / null / 'UNKNOWN' = 단계 미지정).
-  // options: { units | catalog, perCell: null | N, order: 'recent' | 'unit' | 'step', seed, target, max }.
+  // selection: [{ unitKey, step, childKey? }] (step 1..5, or 'none' / null / 'UNKNOWN' = 단계 미지정).
+  //   childKey = 그 단원의 중단원(중등) / 소단원 묶음(고등) 하나만(Archive2UnitTree가 정한 키). 없으면 단원 전체.
+  //   단원 전체 칸이 같은 단계에 있으면 그 단원의 중단원 칸은 이미 들어 있으므로 따로 세지 않는다.
+  // options: { units | catalog, perCell: null | N, order: 'recent' | 'unit' | 'step', seed, target, max,
+  //   childOf(record, unit) -> childKey (childKey 칸을 쓰려면 필요), childName(unitKey, childKey) -> 이름(권 제목용),
+  //   childRank(unitKey, childKey) -> 목차 순서, excludedTypeKeys: 뺄 유형(NO_TYPE_KEY = 유형 미지정) }.
   //   recent: papers are cut newest year first (paper 1 = newest); inside a paper unit -> easy step first.
   //   unit:   papers are cut in unit order; inside a paper unit -> step -> newest year.
   //   step:   papers are cut easy step first; inside a paper step -> unit -> newest year.
@@ -1722,41 +1902,77 @@
     const perCell = Number.isFinite(rawPerCell) && rawPerCell >= 1 ? Math.floor(rawPerCell) : null;
     const order = SELECTION_ORDERS.includes(options.order) ? options.order : 'recent';
     const seed = options.seed || DEFAULT_SELECTION_SEED;
+    const childOf = typeof options.childOf === 'function' ? options.childOf : null;
+    const childNameOf = typeof options.childName === 'function' ? options.childName : () => '';
+    const childRankOf = typeof options.childRank === 'function' ? options.childRank : () => 0;
+    const excludedTypeKeys = normalizeExcludedTypeKeys(options.excludedTypeKeys);
+    const typeFilter = createTypeFilter(excludedTypeKeys);
+    // 학교·연도·시험·학기 조건(createSourceFilter 결과). 없거나 조건이 없으면 모르는 척한다.
+    const sourceFilter = options.sourceFilter && options.sourceFilter.active ? options.sourceFilter : null;
+    const poolKeep = typeFilter && sourceFilter ? record => typeFilter(record) && sourceFilter.keep(record) : typeFilter || (sourceFilter ? sourceFilter.keep : null);
+    const groupBySchool = Boolean(sourceFilter && sourceFilter.options.group === 'school');
+    const schoolOf = record => getSchoolKey(record) || '__unknown__';
+    const scopeKeyOf = (unitKey, childKey) => (childKey ? `${unitKey}~${childKey}` : unitKey);
 
     const cellMap = new Map();
     for (const raw of Array.isArray(selection) ? selection : []) {
       const found = raw && unitByKey.get(String(raw.unitKey || '').trim());
       const token = raw ? normalizeStepCell(raw.step) : null;
       if (!found || !token) continue;
-      cellMap.set(`${found.unit.key}|${token}`, { unitKey: found.unit.key, step: token, unitIndex: found.index });
+      const childKey = childOf ? String(raw.childKey || '').trim() : '';
+      cellMap.set(`${scopeKeyOf(found.unit.key, childKey)}|${token}`, { unitKey: found.unit.key, childKey, step: token, unitIndex: found.index });
     }
-    const cells = [...cellMap.values()].sort((a, b) => a.unitIndex - b.unitIndex || STEP_TOKENS.indexOf(a.step) - STEP_TOKENS.indexOf(b.step));
+    const wholeUnitCells = new Set([...cellMap.values()].filter(cell => !cell.childKey).map(cell => `${cell.unitKey}|${cell.step}`));
+    const cells = [...cellMap.values()]
+      .filter(cell => !cell.childKey || !wholeUnitCells.has(`${cell.unitKey}|${cell.step}`))
+      .sort((a, b) => a.unitIndex - b.unitIndex || STEP_TOKENS.indexOf(a.step) - STEP_TOKENS.indexOf(b.step) ||
+        (a.childKey ? childRankOf(a.unitKey, a.childKey) : -1) - (b.childKey ? childRankOf(b.unitKey, b.childKey) : -1));
 
     const taken = new Set();
     const picked = [];
     const unitIndexOf = new Map();
+    const scopeOfRecord = new Map();
     const cellReports = [];
     for (const cell of cells) {
       const unit = unitByKey.get(cell.unitKey).unit;
-      const pool = (Array.isArray(unit.selectableRecords) ? unit.selectableRecords : []).filter(record => getStepToken(record) === cell.step);
-      const ordered = perCell ? sortForSelection(pool, `${seed}|${cell.unitKey}|${cell.step}`) : pool;
+      const scopeKey = scopeKeyOf(cell.unitKey, cell.childKey);
+      const pool = (Array.isArray(unit.selectableRecords) ? unit.selectableRecords : []).filter(record =>
+        getStepToken(record) === cell.step &&
+        (!cell.childKey || childOf(record, unit) === cell.childKey) &&
+        (!poolKeep || poolKeep(record)));
+      // 학교별로 한 권씩이면 "칸마다 N문항"은 학교마다 N문항이다(한 학교가 칸을 차지하지 않게).
+      let ordered;
+      let wanted = perCell;
+      if (perCell && groupBySchool) {
+        const bySchool = new Map();
+        for (const record of pool) { const school = schoolOf(record); if (!bySchool.has(school)) bySchool.set(school, []); bySchool.get(school).push(record); }
+        ordered = [...bySchool.entries()].sort((a, b) => compareText(getSchoolLabel(a[1][0]), getSchoolLabel(b[1][0])) || compareText(a[0], b[0]))
+          .flatMap(([school, items]) => sortForSelection(items, `${seed}|${scopeKey}|${cell.step}|${school}`));
+        wanted = perCell * bySchool.size;
+      } else ordered = perCell ? sortForSelection(pool, `${seed}|${scopeKey}|${cell.step}`) : pool;
       let got = 0;
+      const gotBySchool = new Map();
       for (const record of ordered) {
-        if (perCell && got >= perCell) break;
+        if (perCell) {
+          if (groupBySchool) { if ((gotBySchool.get(schoolOf(record)) || 0) >= perCell) continue; }
+          else if (got >= perCell) break;
+        }
         const identity = getRecordIdentity(record);
         if (taken.has(identity)) continue;
         taken.add(identity);
         picked.push(record);
         unitIndexOf.set(record, cell.unitIndex);
+        scopeOfRecord.set(record, scopeKey);
         got += 1;
+        if (groupBySchool) gotBySchool.set(schoolOf(record), (gotBySchool.get(schoolOf(record)) || 0) + 1);
       }
-      cellReports.push({ unitKey: cell.unitKey, step: cell.step, available: pool.length, wanted: perCell, got });
+      cellReports.push({ unitKey: cell.unitKey, childKey: cell.childKey, scopeKey, step: cell.step, available: pool.length, wanted, got });
     }
     const shortages = perCell
-      ? cellReports.filter(cell => cell.got < perCell).map(cell => ({ unitKey: cell.unitKey, step: cell.step, wanted: perCell, got: cell.got }))
+      ? cellReports.filter(cell => cell.got < cell.wanted).map(cell => ({ unitKey: cell.unitKey, childKey: cell.childKey, scopeKey: cell.scopeKey, step: cell.step, wanted: cell.wanted, got: cell.got }))
       : [];
 
-    const base = { order, perCell, cells: cellReports, shortages, total: picked.length, papers: [], unitKeys: [], seed };
+    const base = { order, perCell, cells: cellReports, shortages, total: picked.length, papers: [], unitKeys: [], seed, excludedTypeKeys, scopes: [], groupBy: 'mixed', sourceKey: '', sourceLabel: '', schools: [] };
     if (!picked.length) return base;
 
     const usedCells = cellReports.filter(cell => cell.got > 0);
@@ -1765,6 +1981,25 @@
     const usedTokens = [...new Set(usedCells.map(cell => cell.step))];
     const unitNames = new Map(usedUnits.map(unit => [unit.key, unit.name]));
     const multiUnit = usedUnits.length > 1;
+    // 표의 한 줄(단원 하나 또는 단원의 중단원 하나)마다 한 항목: 요약표·권 제목·권 줄이 같은 이름을 쓴다.
+    const scopeMap = new Map();
+    for (const cell of usedCells) {
+      if (scopeMap.has(cell.scopeKey)) continue;
+      const unit = unitByKey.get(cell.unitKey).unit;
+      const childLabel = cell.childKey ? (childNameOf(cell.unitKey, cell.childKey) || cell.childKey) : '';
+      scopeMap.set(cell.scopeKey, {
+        scopeKey: cell.scopeKey, unitKey: cell.unitKey, childKey: cell.childKey, unitIndex: unitByKey.get(cell.unitKey).index,
+        rank: cell.childKey ? childRankOf(cell.unitKey, cell.childKey) : -1,
+        label: childLabel ? `${unit.name} › ${childLabel}` : unit.name, childLabel
+      });
+    }
+    const scopes = [...scopeMap.values()].sort((a, b) => a.unitIndex - b.unitIndex || a.rank - b.rank)
+      .map(({ unitIndex, rank, ...scope }) => scope);
+    const unitScopeLabel = unit => {
+      const own = scopes.filter(scope => scope.unitKey === unit.key);
+      if (!own.length || own.some(scope => !scope.childKey)) return unit.name;
+      return own.length === 1 ? own[0].label : `${unit.name} › ${own[0].childLabel} 외 ${own.length - 1}`;
+    };
     const uIdx = record => (unitIndexOf.has(record) ? unitIndexOf.get(record) : 9999);
     const stepOf = record => getStepSortKey(record);
     const legacyThenRest = compareStepRecords;
@@ -1778,31 +2013,71 @@
       : (a, b) => uIdx(a) - uIdx(b) || legacyThenRest(a, b);
 
     const scope = (usedUnits[0] && usedUnits[0].paperScope) || options.scope || COMMON_SCOPE;
-    const split = splitIntoPapers(picked, {
-      target: options.target || scope.targetQuestionsPerPaper,
-      max: options.max || scope.hardMaxQuestionsPerPaper,
-      compare: cutCompare
-    }).map(records => [...records].sort(innerCompare));
+    const splitOptions = { target: options.target || scope.targetQuestionsPerPaper, max: options.max || scope.hardMaxQuestionsPerPaper, compare: cutCompare };
+    const sortInner = records => [...records].sort(innerCompare);
+    // books: 한 권마다 { records, schoolKey, school, bookIndex, bookTotal }. 학교별로 한 권씩이면 학교마다 따로 나누고 번호도 학교 안에서 센다.
+    let books;
+    if (groupBySchool) {
+      const bySchool = new Map();
+      for (const record of picked) { const school = schoolOf(record); if (!bySchool.has(school)) bySchool.set(school, []); bySchool.get(school).push(record); }
+      books = [];
+      for (const [schoolKey, items] of [...bySchool.entries()].sort((a, b) => compareText(getSchoolLabel(a[1][0]), getSchoolLabel(b[1][0])) || compareText(a[0], b[0]))) {
+        const parts = splitIntoPapers(items, splitOptions).map(sortInner);
+        parts.forEach((records, i) => books.push({ records, schoolKey, school: getSchoolLabel(records[0]), bookIndex: i + 1, bookTotal: parts.length }));
+      }
+    } else {
+      const parts = splitIntoPapers(picked, splitOptions).map(sortInner);
+      books = parts.map((records, i) => ({ records, schoolKey: '', school: '', bookIndex: i + 1, bookTotal: parts.length }));
+    }
+    const yearRangeText = records => {
+      const years = records.map(getExamYear).filter(isValidExamYear);
+      return years.length ? (Math.min(...years) === Math.max(...years) ? String(years[0]) : `${Math.min(...years)}~${Math.max(...years)}`) : '';
+    };
+    // 조건 줄을 쓴 권: 제목 앞에 학교·연도·시험을 붙인다(조건이 없으면 붙이지 않아 옛 제목·키와 같다).
+    const pickedSchools = [];
+    if (sourceFilter) {
+      const counts = new Map();
+      for (const record of picked) { const school = schoolOf(record); counts.set(school, (counts.get(school) || 0) + 1); }
+      pickedSchools.push(...[...counts.entries()].map(([key, count]) => ({ key, count, label: getSchoolLabel(picked.find(record => schoolOf(record) === key)) }))
+        .sort((a, b) => compareText(a.label, b.label) || compareText(a.key, b.key)));
+    }
+    const sourcePeriod = sourceFilter ? sourcePeriodText(sourceFilter.options) : '';
+    const sourceYear = sourceFilter ? sourceYearText(sourceFilter.options) : '';
+    const schoolsText = sourceFilter && sourceFilter.options.schoolKeys.length && pickedSchools.length ? (pickedSchools.length === 1 ? pickedSchools[0].label : `${pickedSchools[0].label} 외 ${pickedSchools.length - 1}교`) : '';
+    const sourceLabel = [schoolsText, sourceYear, sourcePeriod].filter(Boolean).join(' · ');
 
-    const unitLabel = selectionUnitLabel(usedUnits.map(unit => unit.name));
+    const unitLabel = selectionUnitLabel(usedUnits.map(unitScopeLabel));
     const stepLabel = selectionStepLabel(usedTokens);
     const baseTitle = [unitLabel, stepLabel].filter(Boolean).join(' · ');
     const snapshotUnitKey = usedUnits.length === 1 ? usedUnits[0].key : `multi-${fnv1a(usedUnits.map(unit => unit.key).join(','))}`;
     const difficultySteps = normalizeStepSelection(usedTokens);
     const sectionOptions = { primary: order === 'step' || !multiUnit ? 'step' : 'unit', showUnit: multiUnit, unitNames };
+    // 같은 조건이면 같은 키가 되도록 고른 중단원·소단원과 (거르기를 켰을 때) 남은 유형을 키에 넣는다. 안 쓰면 비어 있어 옛 키와 같다.
+    const subUnitKeys = [...new Set(usedCells.filter(cell => cell.childKey).map(cell => cell.scopeKey))].sort();
+    const problemTypeKeys = typeFilter ? [...new Set(picked.map(getFilterTypeKey))].sort() : [];
     base.unitKeys = usedUnits.map(unit => unit.key);
     base.unitNames = usedUnits.map(unit => unit.name);
     base.courses = [...new Set(usedUnits.map(unit => unit.course))];
     base.stepLabel = stepLabel;
     base.unitLabel = unitLabel;
     base.snapshotUnitKey = snapshotUnitKey;
-    base.papers = split.map((records, index) => {
+    base.scopes = scopes;
+    base.groupBy = groupBySchool ? 'school' : 'mixed';
+    base.sourceKey = sourceFilter ? sourceFilter.key : '';
+    base.sourceLabel = sourceLabel;
+    base.schools = pickedSchools;
+    base.papers = books.map((book, index) => {
+      const records = book.records;
       const years = records.map(getExamYear).filter(isValidExamYear);
+      const prefix = !sourceFilter ? '' : groupBySchool ? [book.school, yearRangeText(records), sourcePeriod].filter(Boolean).join(' · ') : sourceLabel;
+      const fullTitle = [prefix, baseTitle].filter(Boolean).join(' · ');
+      const schoolsHere = sourceFilter ? pickedSchools.filter(item => records.some(record => schoolOf(record) === item.key)) : [];
       const paperUnits = usedUnits.filter(unit => records.some(record => uIdx(record) === unitByKey.get(unit.key).index));
+      const paperScopeKeys = new Set(records.map(record => scopeOfRecord.get(record)));
       return {
         index: index + 1,
         gridId: `grid-${index + 1}`,
-        title: split.length === 1 ? baseTitle : `${baseTitle} · ${index + 1}권/${split.length}권`,
+        title: book.bookTotal === 1 ? fullTitle : `${fullTitle} · ${book.bookIndex}권/${book.bookTotal}권`,
         count: records.length,
         sourceCount: new Set(records.map(record => record.sourceFile)).size,
         records,
@@ -1812,14 +2087,22 @@
         difficultySteps,
         stepSummary: summarizeSteps(records),
         unitNames: paperUnits.map(unit => unit.name),
+        scopeNames: scopes.filter(item => paperScopeKeys.has(item.scopeKey)).map(item => item.label),
         yearMin: years.length ? Math.min(...years) : 0,
         yearMax: years.length ? Math.max(...years) : 0,
         sections: buildSelectionSections(records, sectionOptions),
+        ...(sourceFilter ? {
+          sourceLabel: prefix, schools: schoolsHere.map(item => ({ key: item.key, label: item.label, count: records.filter(record => schoolOf(record) === item.key).length })),
+          school: schoolsHere.length === 1 ? schoolsHere[0].label : '', schoolKey: schoolsHere.length === 1 ? schoolsHere[0].key : ''
+        } : {}),
         snapshotKey: buildSnapshotKey(snapshotUnitKey, records, scope, {
           mode: 'grid',
           difficultySteps,
+          subUnitKeys,
+          problemTypeKeys,
           seed: `${seed}|${order}|${perCell || 'all'}`,
-          paperKey: `${index + 1}/${split.length}`
+          paperKey: groupBySchool ? `${book.schoolKey}:${book.bookIndex}/${book.bookTotal}` : `${index + 1}/${books.length}`,
+          ...(sourceFilter ? { collection: { source: sourceFilter.key, group: groupBySchool ? 'school' : 'mixed' } } : {})
         })
       };
     });
@@ -1953,6 +2236,17 @@
     buildStepSections,
     buildUnitPapers,
     SELECTION_ORDERS,
+    NO_TYPE_KEY,
+    getFilterTypeKey,
+    normalizeExcludedTypeKeys,
+    createTypeFilter,
+    getTypeFilterOptions,
+    normalizeSourceOptions,
+    sourceOptionsKey,
+    sourcePeriodText,
+    sourceYearText,
+    createSourceFilter,
+    getSourceSchoolOptions,
     countGrid,
     buildSelectionSections,
     selectionStepLabel,

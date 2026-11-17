@@ -1,0 +1,41 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:03:41.841+00:00",
+ "sourceArchiveFile": "original/high/h2/1mid/19_금당고_1학기_중간_고2_확률과통계.js",
+ "items": [
+  {
+   "ordinal": 6,
+   "chosenFrom": "pass2",
+   "resolutionReason": "5×5 격자에서 왼쪽 위와 오른쪽 아래 모서리 칸이 빠진 도형의 정사각형을 한 변의 칸 수별로 나누어 세므로 경우를 나누어 세기 항목과 CASE_BRANCH이다.",
+   "choiceTableUsed": "H1-공통수학1.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "경우의 수와 순열",
+    "l3": "합·곱의 법칙",
+    "l4": "경우를 나누어 세기"
+   },
+   "crossConceptKeys": [],
+   "conditionKeys": [],
+   "integrationPattern": "CASE_BRANCH"
+  },
+  {
+   "ordinal": 9,
+   "chosenFrom": "pass2",
+   "resolutionReason": "가로 5칸, 세로 3칸 도로망에서 갑과 을이 각자 4칸 이동한 뒤 만나는 네 격자점별로 두 사람의 최단 경로쌍을 세는 격자 최단경로의 CASE_BRANCH 문제이다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "순열",
+    "l4": "중복·원순열"
+   },
+   "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+   "crossConceptKeys": [
+    "CC_GRID_SHORTEST_PATH"
+   ],
+   "conditionKeys": [],
+   "integrationPattern": "CASE_BRANCH"
+  }
+ ]
+}

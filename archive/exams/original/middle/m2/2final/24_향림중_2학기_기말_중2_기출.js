@@ -3,6 +3,8 @@ window.examTitle = "24_향림중_2학기_기말_중2_기출";
 window.questionBank = [
   {
     "id": 1,
+    "imageSize": "tall",
+    "imageAlt": "마름모 ABCD에서 두 대각선은 O에서 만난다. AB는 6 cm이고 AO는 3 cm이다. B에서 AB와 BO가 이루는 각은 30도이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -11,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -27,7 +29,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "마름모의 두 대각선은 서로를 이등분하고, 각 꼭짓점의 각을 이등분한다.\n그림에서 $AO=3\\rm\\,cm$이므로 $AC=2AO=6\\rm\\,cm$이다.\n또 $\\angle ABO=30^\\circ$이고 $BD$가 $\\angle ABC$를 이등분하므로 $\\angle ABC=60^\\circ$이다.\n마름모에서 이웃한 두 각의 합은 $180^\\circ$이므로 $\\angle BCD=120^\\circ$이고, $AC$가 $\\angle BCD$를 이등분하므로 $\\angle OCD=60^\\circ$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q1-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q1.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q1-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
@@ -49,6 +51,8 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "full",
+    "imageAlt": "B, C, E가 차례로 한 직선에 있다. A와 C를 잇는 선은 D와 E를 잇는 선과 평행하다. A와 B, D, E도 연결하고 C와 D를 이었다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -57,7 +61,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -73,7 +77,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "평행한 두 직선 사이의 거리는 일정하므로 밑변이 같은 두 삼각형의 넓이가 같음을 이용한다.\n그림에서 $B,C,E$는 한 직선 위에 있다. $AC\\parallel DE$이므로 $\\triangle ACD$와 $\\triangle ACE$는 밑변 $AC$가 같고 높이도 같다.\n따라서 $\\triangle ACE=\\triangle ACD=10\\rm\\,cm^2$이다.\n$\\triangle ABE=\\triangle ABC+\\triangle ACE$이므로\n$16+10=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q2-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -95,6 +99,8 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "imageSize": "full",
+    "imageAlt": "등변사다리꼴 ABCD에서 위쪽 AD는 4 cm, 아랫변 BC는 10 cm, 왼쪽 AB는 5 cm이다. 위와 아래에는 같은 평행 화살표가 있다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -103,7 +109,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -119,7 +125,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "등변사다리꼴의 두 밑변 길이 차를 양쪽으로 반씩 나누어 높이를 구한다.\n두 밑변의 길이 차는 $10-4=6\\rm\\,cm$이므로 양쪽의 가로 길이는 각각 $3\\rm\\,cm$이다.\n빗변이 $5\\rm\\,cm$, 한 변이 $3\\rm\\,cm$인 직각삼각형에서 사다리꼴의 높이를 $h$라 하면\n$h^2+3^2=5^2$이므로 $h=4\\rm\\,cm$이다.\n따라서 넓이는 $\\dfrac{4+10}{2}\\times4=28\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q3-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q3.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -144,6 +150,8 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "imageSize": "full",
+    "imageAlt": "아래 변 BC의 길이는 24 cm이고 왼쪽 위 A에서 오른쪽 아래 C까지 이은 대각선의 길이는 25 cm이다.",
     "level": "하",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -152,7 +160,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -168,7 +176,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "직사각형의 대각선과 두 변으로 이루어진 직각삼각형에 피타고라스 정리를 적용한다.\n그림에서 $AC=25\\rm\\,cm$, $BC=24\\rm\\,cm$이므로 $AB^2+24^2=25^2$이다.\n따라서 $AB^2=625-576=49$이므로 $AB=7\\rm\\,cm$이다.\n직사각형의 둘레는 $2(24+7)=62\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q4-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q4.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q4-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -192,6 +200,8 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 ABCD에서 AB는 10, BC는 14, C의 각은 135도이다. 옆의 EFGH에서 EF는 5이고 E의 각은 100도이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -200,7 +210,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -216,7 +226,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "닮은 도형에서는 대응변의 길이비는 일정하고, 넓이비는 닮음비의 제곱이다.\n닮음의 순서에서 $A\\leftrightarrow E$, $B\\leftrightarrow F$, $C\\leftrightarrow G$, $D\\leftrightarrow H$이다.\n그림에서 $AB=10$, $EF=5$이므로 큰 도형과 작은 도형의 닮음비는 $2:1$이다.\n따라서 $AD:EH=2:1$, $\\angle FGH=\\angle BCD=135^\\circ$, $\\angle DAB=\\angle HEF=100^\\circ$이고, $GF=\\dfrac{BC}{2}=7$이므로 ①, ②, ③, ⑤는 옳다.\n작은 도형의 넓이는 $100\\times\\left(\\dfrac12\\right)^2=25\\rm\\,cm^2$이므로 $50\\rm\\,cm^2$이라는 ④가 옳지 않다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q5-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q5.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q5-problem-visual-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
@@ -236,6 +246,8 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "imageSize": "tall",
+    "imageAlt": "밑변 BC가 8 cm인 삼각형에서 AB 위의 D와 AC 위 E를 이었다. AD는 5 cm, DB는 3 cm이고, 밑변과 평행한 DE는 x cm이다.",
     "level": "하",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -244,7 +256,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -260,7 +272,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "평행선으로 생기는 두 삼각형의 닮음비를 이용한다.\n그림에서 $AD=5\\rm\\,cm$, $DB=3\\rm\\,cm$이므로 $AB=8\\rm\\,cm$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이고\n$\\dfrac{DE}{BC}=\\dfrac{AD}{AB}=\\dfrac58$이다.\n$BC=8\\rm\\,cm$이므로 $DE=8\\times\\dfrac58=5\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q6-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q6.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q6-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -282,6 +294,8 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "imageSize": "tall",
+    "imageAlt": "정사각형 ABCD의 위 변은 6 cm이다. F, B, C, E가 차례로 한 직선에 있고 CE는 2 cm이다. AE와 DF가 G에서 만나며 DG는 x cm이다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -290,7 +304,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -306,7 +320,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "합동으로 연장선의 길이를 먼저 구한 뒤, 교차하는 두 직선에서 생기는 닮음을 이용한다.\n$\\triangle ABE\\equiv\\triangle DCF$이므로 대응변에서 $BE=CF$이다.\n$BC=6\\rm\\,cm$, $CE=2\\rm\\,cm$이므로 $BE=8\\rm\\,cm$이고, 따라서 $CF=8\\rm\\,cm$이다. 그러므로 $BF=CF-BC=2\\rm\\,cm$이다.\n따라서 $FE=FB+BC+CE=2+6+2=10\\rm\\,cm$이다.\n$AD\\parallel FE$, $A,G,E$가 한 직선 위, $D,G,F$가 한 직선 위이므로 $\\triangle ADG\\sim\\triangle EFG$이다. 따라서 $DG:GF=AD:FE=6:10=3:5$이다.\n또 직각삼각형 $DCF$에서 $DC=6$, $CF=8$이므로 $DF=10\\rm\\,cm$이다. 따라서 $DG=10\\times\\dfrac{3}{3+5}=\\dfrac{15}{4}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q7-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q7.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q7-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
     "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
@@ -331,6 +345,8 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "AB는 6 cm, AC는 12 cm이다. A에서 D로, B에서 E로 각을 이등분하는 선을 긋고 D와 E를 이었다. DE는 AB와 평행하다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -339,7 +355,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -355,7 +371,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "두 각의 이등분선과 그림의 평행 표시를 함께 이용한다.\n그림에서 $AB=6\\rm\\,cm$, $AC=12\\rm\\,cm$이고 $DE\\parallel AB$이다.\n$AD$는 $\\angle A$의 이등분선이므로 각의 이등분선의 성질에 따라 $BD:DC=AB:AC=1:2$이다. 따라서 $DC:BC=2:3$이다.\n$DE\\parallel AB$이므로 $\\triangle CDE\\sim\\triangle CBA$이고, $CE:CA=CD:CB=2:3$이다. 따라서 $CE=8\\rm\\,cm$, $AE=4\\rm\\,cm$이다.\n또 $BE$는 $\\angle B$의 이등분선이므로 $AE:EC=AB:BC$이다. 즉 $4:8=6:BC$이므로 $BC=12\\rm\\,cm$이다.\n따라서 $DC=\\dfrac23\\times12=8\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q8-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q8.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
@@ -379,6 +395,8 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "imageSize": "tall",
+    "imageAlt": "가로선 l, m, n은 서로 평행하다. 왼쪽 사선의 AB는 20 cm, BC는 15 cm이다. 오른쪽 세로선의 DE는 16 cm이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -387,7 +405,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -403,7 +421,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "세 평행선이 두 직선을 자를 때 대응하는 선분의 길이비가 같다.\n그림에서 $AB=20\\rm\\,cm$, $BC=15\\rm\\,cm$, $DE=16\\rm\\,cm$이다.\n따라서 $AB:BC=DE:EF$이므로 $20:15=16:EF$이다.\n$EF=12\\rm\\,cm$이고, $DF=DE+EF=16+12=28\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q9-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q9.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q9-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -425,6 +443,8 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "AB에서 B부터 E, D, A까지 세 구간이 각각 5 cm이다. DF와 EG는 밑변 BC와 평행하고 BC는 18 cm이다. EG 위의 H는 D와 C를 이은 선 위에 있다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -433,7 +453,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -449,7 +469,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "큰 삼각형에서 평행선으로 길이를 구하고, 작은 삼각형에서는 중점연결정리를 이용한다.\n$AB=15\\rm\\,cm$, $AE=10\\rm\\,cm$이고 $EG\\parallel BC$이므로 $\\triangle AEG\\sim\\triangle ABC$이다.\n따라서 $EG=BC\\times\\dfrac{AE}{AB}=18\\times\\dfrac{10}{15}=12\\rm\\,cm$이다.\n한편 $DB=DE+EB=10\\rm\\,cm$이고 $DE=5\\rm\\,cm$이므로 $E$는 $DB$의 중점이다.\n$\\triangle DBC$에서 $EH\\parallel BC$이므로 $H$는 $DC$의 중점이고 $EH=\\dfrac12BC=9\\rm\\,cm$이다.\n따라서 $GH=EG-EH=12-9=3\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q10-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q10.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q10-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -471,6 +491,8 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "사다리꼴 ABCD의 위쪽 AB는 6 cm, 아랫변 DC는 8 cm이며 서로 평행하다. 대각선이 E에서 만난다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -479,7 +501,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -495,7 +517,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "사다리꼴의 두 대각선 교점에서는 평행한 두 밑변의 길이비만큼 대각선이 나뉜다.\n$AB\\parallel DC$이므로 $\\triangle ABE\\sim\\triangle CDE$이고 $BE:DE=AB:DC=6:8=3:4$이다.\n$\\triangle ABE$와 $\\triangle ADE$는 밑변 $BE$, $DE$가 같은 직선 $BD$ 위에 있고 점 $A$에서 그 직선까지의 높이가 같으므로 넓이비도 $3:4$이다.\n따라서 $12:[\\triangle ADE]=3:4$이므로 $[\\triangle ADE]=16\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q11-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q11.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q11-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
@@ -517,6 +539,8 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "imageSize": "tall",
+    "imageAlt": "AB와 AC가 서로 같은 삼각형에서 D는 AB 위, E는 AC 위의 중점이다. 중선 BE와 CD는 G에서 만나고 EG는 5 cm이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -525,7 +549,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -541,7 +565,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "두 중선을 이용하여 무게중심의 $2:1$ 분할 성질을 적용한다.\n$E$는 $AC$의 중점이므로 $BE$는 중선이고, $D$는 $AB$의 중점이므로 $CD$도 중선이다. 따라서 두 중선의 교점 $G$는 삼각형의 무게중심이다.\n무게중심은 중선을 꼭짓점 쪽과 중점 쪽의 비가 $2:1$이 되도록 나누므로 $BG:GE=2:1$이다. $GE=5\\rm\\,cm$이므로 $BE=15\\rm\\,cm$이다.\n또 $AB=AC$인 이등변삼각형에서는 대칭인 두 중선 $BE$, $CD$의 길이가 같으므로 $CD=15\\rm\\,cm$이다.\n따라서 $CG=\\dfrac23CD=10\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q12-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q12.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q12-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -565,6 +589,8 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "AB 중점 E와 AC 중점 D를 이었다. B와 D, C와 E를 잇는 선이 G에서 교차한다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -573,7 +599,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -589,7 +615,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "중점연결선과 무게중심의 위치를 같은 높이 기준으로 비교한다.\n$D$, $E$가 각각 $AC$, $AB$의 중점이므로 $DE\\parallel BC$이다. $BC$의 중점을 $M$이라 하고 $AM$과 $DE$의 교점을 $N$이라 하자.\n$DE$는 중점연결선이므로 $N$은 $AM$의 중점이어서 $AN=\\dfrac12AM$이다.\n또 $G$는 두 중선 $BD$, $CE$의 교점인 무게중심이므로 $AG=\\dfrac23AM$이다. 따라서 $GN=\\dfrac23AM-\\dfrac12AM=\\dfrac16AM$이다.\n$\\triangle ADE$와 $\\triangle GDE$는 밑변 $DE$가 같고, 그 밑변에 대한 높이의 비가 $AN:GN=\\dfrac12:\\dfrac16=3:1$이다.\n따라서 넓이의 비는 $3:1$이므로 구하는 값은 $3$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q13-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q13.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q13-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -700,6 +726,11 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "바로 가는 길은 3가지이다. B를 거치면 앞의 두 길마다 뒤의 두 길을 고를 수 있어 4가지이다. 모두 7가지이다.",
+    "solutionImageAlt": "위에는 A에서 C로 바로 연결된 세 길이 있다. 아래에는 A에서 B로 가는 파란 두 길과 B에서 C로 가는 청록 두 길이 있다.",
+    "imageSize": "full",
+    "imageAlt": "A와 C를 바로 연결하는 길 세 개가 있다. A와 B 사이에는 두 길이 있고, B와 C 사이에도 두 길이 있다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -708,7 +739,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -723,8 +754,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$A$에서 $C$로 직접 가는 길과 $B$를 거쳐 가는 길을 나누어 센다.\n그림에서 $A$와 $C$를 직접 잇는 길은 $3$개이다.\n또 $A$에서 $B$로 가는 길이 $2$개, $B$에서 $C$로 가는 길이 $2$개이므로 $B$를 거쳐 가는 경우는 $2\\times2=4$가지이다.\n따라서 전체 경우의 수는 $3+4=7$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q16-solution.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q16.png",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q16-solution-visual-v2.svg",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q16-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
@@ -828,6 +859,8 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "imageSize": "full",
+    "imageAlt": "원판 A는 세로 지름으로 나뉘고 왼쪽 1, 오른쪽 2이다. 원판 B는 위 왼쪽 1, 위 오른쪽 2, 아래 3의 세 같은 칸이다. 두 원판에 바늘이 하나씩 있다.",
     "level": "하",
     "category": "확률",
     "originalCategory": "확률",
@@ -836,7 +869,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -852,7 +885,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "두 원판의 각 영역 크기가 같으므로 가능한 숫자쌍을 모두 같은 가능성으로 센다.\n원판 $A$에서 나올 수 있는 수는 $1,2$이고, 원판 $B$에서는 $1,2,3$이므로 전체 경우는 $2\\times3=6$가지이다.\n두 수가 같은 경우는 $(1,1)$, $(2,2)$의 $2$가지이다. 따라서 서로 다른 경우는 $6-2=4$가지이다.\n확률은 $\\dfrac46=\\dfrac23$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q19-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q19.png",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q19-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
@@ -920,6 +953,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "imageAlt": "삼각형 ABC는 C에서 직각이다. AB는 13 cm, BC는 5 cm이다. A와 C를 지나는 세로 직선 l이 회전축이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -928,7 +962,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -939,8 +973,8 @@ window.questionBank = [
     "answer": "$100\\pi\\rm\\,cm^3$",
     "solution": "회전체는 밑면의 반지름이 $BC$이고 높이가 $AC$인 원뿔이므로 먼저 피타고라스 정리로 $AC$를 구한다.\n그림에서 $AB=13\\rm\\,cm$, $BC=5\\rm\\,cm$, $\\angle C=90^\\circ$이므로\n$AC^2=AB^2-BC^2=13^2-5^2=169-25=144$이다. 따라서 $AC=12\\rm\\,cm$이다.\n직선 $l$은 $AC$의 연장선이므로 회전하여 생기는 입체도형은 반지름 $5\\rm\\,cm$, 높이 $12\\rm\\,cm$인 원뿔이다.\n따라서 부피는 $\\dfrac13\\pi\\times5^2\\times12=100\\pi\\rm\\,cm^3$이다.\n따라서 구하는 값은 $100\\pi\\rm\\,cm^3$이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q21-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q21.png",
-    "imageSize": "large",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q21-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -964,6 +998,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "imageAlt": "A와 B, E와 F, D와 C는 각각 위아래로 나란하다. AC와 BD가 E에서 만난다. AB는 20 cm, EF는 12 cm, BF는 10 cm, FC는 x cm, DC는 y cm이다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -972,7 +1007,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -983,8 +1018,8 @@ window.questionBank = [
     "answer": "$x=15,\\ y=30$",
     "solution": "평행한 세 선 때문에 생기는 두 쌍의 닮은 삼각형을 차례로 이용한다.\n그림에서 $AB=20\\rm\\,cm$, $EF=12\\rm\\,cm$, $BF=10\\rm\\,cm$, $FC=x\\rm\\,cm$, $DC=y\\rm\\,cm$이다.\n먼저 $EF\\parallel AB$이므로 $\\triangle CEF\\sim\\triangle CAB$이다. 따라서\n$\\dfrac{CF}{CB}=\\dfrac{EF}{AB}=\\dfrac{12}{20}=\\dfrac35$이다.\n즉 $\\dfrac{x}{x+10}=\\dfrac35$이므로 $5x=3x+30$, 따라서 $x=15$이다.\n그러면 $BC=10+15=25\\rm\\,cm$이다.\n또 $EF\\parallel DC$이므로 $\\triangle BEF\\sim\\triangle BDC$이다. 따라서\n$\\dfrac{EF}{DC}=\\dfrac{BF}{BC}=\\dfrac{10}{25}=\\dfrac25$이다.\n$\\dfrac{12}{y}=\\dfrac25$이므로 $2y=60$, 따라서 $y=30$이다.\n따라서 구하는 값은 $x=15$, $y=30$이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q22-solution-v2.svg",
-    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q22.png",
-    "imageSize": "large",
+    "image": "assets/images/24_향림중_2학기_기말_중2_기출/q22-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",

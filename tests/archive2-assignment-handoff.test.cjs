@@ -526,8 +526,9 @@ test('Original and Saved Paper PDF failure is a saved receipt; retry POST target
     });
     h.context.renderAssignTargetProgressView();
     assert.match(h.host.innerHTML, /고1 기하반/);
-    assert.match(h.host.innerHTML, new RegExp(`Assignment ID[^<]*${h.assignmentId}`));
+    assert.match(h.host.innerHTML, new RegExp(`출제 번호[^<]*${h.assignmentId}`));
     assert.match(h.host.innerHTML, /PDF 다시 준비/);
+    assert.doesNotMatch(h.host.innerHTML.replace(/<[^>]*>/g, ' '), /Assignment|action/, '출제 완료 패널에 영어 내부 용어가 보이지 않는다');
     for (const mode of ['exam', 'sol', 'ans']) assert.match(h.host.innerHTML, new RegExp(`archiveBoardDirectOutput\\('${h.assignmentId}','${mode}'\\)`));
 
     await h.context.assignTargetRetryPdf('classA');

@@ -3,10 +3,11 @@
   const api = factory(
     isNode ? require("./archive2-core.js") : root.Archive2Core,
     isNode ? require("./archive2-unified-units.js") : root.Archive2UnifiedUnits,
+    isNode ? require("./archive2-unit-tree.js") : root.Archive2UnitTree,
   );
   if (isNode) module.exports = api;
   else root.Archive2QuickPools = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (Core, Unified) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (Core, Unified, Tree) {
   "use strict";
   if (!Core || !Unified || typeof Unified.buildIndex !== "function")
     throw new Error("Archive2QuickPools requires Archive2Core and Archive2UnifiedUnits.");
@@ -19,23 +20,23 @@
   const PRESET_LABELS = Object.freeze({ basic: "기초", standard: "기본", application: "응용", advanced: "심화" });
   // [difficultyBucket, count] pairs. 5단계 is not part of any preset, so it never enters a pool.
   const PRODUCTS = Object.freeze({
-    "five-minute": Object.freeze({ title: "5분 테스트", count: 4, unitKind: "unit", unitLabel: "단원",
+    "five-minute": Object.freeze({ title: "5분 테스트", count: 4, unitKind: "unit", unitLabel: "단원", pick: "any",
       order: Object.freeze(["basic", "standard", "application"]), presets: Object.freeze({
         basic: [[1, 2], [2, 2]], standard: [[2, 2], [3, 2]], application: [[2, 1], [3, 3]],
       }) }),
-    "subunit-test": Object.freeze({ title: "소단원 평가", count: 12, unitKind: "subunit", unitLabel: "소단원",
+    "subunit-test": Object.freeze({ title: "소단원 평가", count: 12, unitKind: "subunit", unitLabel: "소단원", pick: "child",
       order: Object.freeze(["basic", "standard", "application"]), presets: Object.freeze({
         basic: [[1, 6], [2, 6], [3, 0]], standard: [[1, 3], [2, 6], [3, 3]],
         application: [[1, 1], [2, 5], [3, 6]],
       }) }),
-    "unit-test": Object.freeze({ title: "중단원 평가", count: 20, unitKind: "unit", unitLabel: "단원",
+    "unit-test": Object.freeze({ title: "중단원 평가", count: 20, unitKind: "unit", unitLabel: "단원", pick: "unit",
       order: Object.freeze(["basic", "standard", "application", "advanced"]), presets: Object.freeze({
         basic: [[1, 8], [2, 10], [3, 2], [4, 0]],
         standard: [[1, 4], [2, 10], [3, 6], [4, 0]],
         application: [[1, 2], [2, 6], [3, 9], [4, 3]],
         advanced: [[1, 0], [2, 4], [3, 10], [4, 6]],
       }) }),
-    "monthly-test": Object.freeze({ title: "종합평가", count: 24, unitKind: "unit", unitLabel: "단원", combine: true,
+    "monthly-test": Object.freeze({ title: "종합평가", count: 24, unitKind: "unit", unitLabel: "단원", combine: true, pick: "any",
       order: Object.freeze(["basic", "standard", "application", "advanced"]), presets: Object.freeze({
         basic: [[1, 8], [2, 12], [3, 4], [4, 0]],
         standard: [[1, 4], [2, 12], [3, 8], [4, 0]],
@@ -66,22 +67,20 @@
 
   // One pass over the unified index. Pools are per grade view, so a 고3 source question that is
   // browsable in the 고2 view is a candidate there too, exactly as in 문제지 만들기.
-  // Middle-school subunits use only the exact current RPM parent projected by the unified
-  // index. A legacy broad parent stays in its unit pool, but is never guessed into a child.
-  // An explicitly out-of-scope 2015 record keeps a separate legacy pool. High-school subunits
-  // keep the recorded metaByUid (uid -> projected meta row) contract.
+  // The pools are the 대단원 (high school: 단원) level only. The 중단원 / 소단원 level is a view over these
+  // same records built by buildScopes() from the shared unit tree (archive2-unit-tree.js), so every
+  // screen names, orders and groups units the same way (2026-11-16: no more 2015 "이전 분류" cards,
+  // no duplicated or English sub-unit names; the 2015 legacy keys fold into the tree's 중단원).
   function buildPools(index, options = {}) {
     const difficultyMode = options.difficultyMode === "eligible" ? "eligible" : "recorded";
-    const metaByUid = options.metaByUid || null;
     const pools = {
       difficultyMode,
       units: {},
-      subunits: {},
       stats: { records: 0, usable: 0, noSubject: 0, difficultyUnusable: 0, bucket5: 0, byBucket: { 1: 0, 2: 0, 3: 0, 4: 0 } },
     };
     const countedRecords = new Set();
     for (const grade of Unified.GRADES) {
-      const unitMap = new Map(), subMap = new Map(), seen = new Set();
+      const unitMap = new Map(), seen = new Set();
       for (const entry of index.views[grade] || []) {
         const record = entry.record;
         const first = !countedRecords.has(record);
@@ -108,50 +107,15 @@
           order: unitKey ? entry.unitOrder : 9999, buckets: emptyBuckets(),
         });
         unit.buckets[bucket].push(record);
-        const middle = /^중[123]$/.test(grade);
-        const legacyMiddle = middle && entry.rpmParentStatus === "OUT_OF_SCOPE" && entry.originalCurriculum === "2015";
-        const parent = middle && entry.rpmParentStatus === "EXACT" && entry.rpmParent?.grade === grade
-          ? entry.rpmParent : null;
-        const meta = metaByUid?.get(uid);
-        const subKey = middle && !legacyMiddle
-          ? parent && text(parent.L2) ? text(parent.parentKey) : ""
-          : text(meta?.subUnitKey);
-        if (subKey) {
-          const subId = `${key}:${legacyMiddle ? "legacy:2015:" : ""}${subKey}`;
-          let sub = subMap.get(subId);
-          if (!sub) subMap.set(subId, sub = {
-            key: subId, kind: "subunit", grade, subject: entry.subject, subjectLabel: entry.subjectLabel,
-            unitKey, unitLabel: unit.label, subUnitKey: subKey,
-            label: parent ? text(parent.L2) : "",
-            order: parent ? parent.order : unit.order,
-            ...(parent ? { orderInUnit: parent.orderInUnit } : { names: new Map() }),
-            ...(legacyMiddle ? { legacyCurriculum: "2015" } : {}),
-            buckets: emptyBuckets(),
-          });
-          sub.buckets[bucket].push(record);
-          const name = text(meta?.subUnit);
-          if (sub.names && name) sub.names.set(name, (sub.names.get(name) || 0) + 1);
-        }
       }
-      const finish = (list) => {
-        for (const unit of list) {
-          unit.counts = countsOf(unit.buckets);
-          unit.total = BUCKETS.reduce((sum, bucket) => sum + unit.counts[bucket], 0);
-          if (unit.names) {
-            // The recorded name can be an English variant of the same key; prefer a Korean one,
-            // then the most frequent.
-            unit.label = [...unit.names.entries()].sort((a, b) =>
-              hasHangul(b[0]) - hasHangul(a[0]) || b[1] - a[1] || compareKo(a[0], b[0]))[0]?.[0] || unit.subUnitKey;
-            if (unit.legacyCurriculum === "2015") unit.label = `이전 분류 · ${unit.label}`;
-            delete unit.names;
-          }
-        }
-        return list.sort((a, b) => compareKo(a.subject, b.subject) || a.order - b.order ||
-          (a.orderInUnit || 0) - (b.orderInUnit || 0) ||
-          compareKo(a.label, b.label) || compareKo(a.key, b.key));
-      };
-      pools.units[grade] = groupBySubject(finish([...unitMap.values()]));
-      pools.subunits[grade] = groupBySubject(finish([...subMap.values()]));
+      const list = [...unitMap.values()];
+      for (const unit of list) {
+        unit.counts = countsOf(unit.buckets);
+        unit.total = BUCKETS.reduce((sum, bucket) => sum + unit.counts[bucket], 0);
+      }
+      list.sort((a, b) => compareKo(a.subject, b.subject) || a.order - b.order ||
+        compareKo(a.label, b.label) || compareKo(a.key, b.key));
+      pools.units[grade] = groupBySubject(list);
     }
     return pools;
   }
@@ -168,14 +132,11 @@
       return { value: subject.value, label: subject.label, items: units.reduce((sum, unit) => sum + unit.total, 0) };
     });
   }
-  // Units of one product for a grade/subject. Unclassified questions form a last "단원 미분류"
-  // unit for the unit based products. Middle-school 소단원 use exact current parents or an
-  // explicitly separate 2015 legacy pool; high-school 소단원 retain their recorded metadata.
+  // 대단원(고등은 단원) pools of a grade/subject in curriculum order; the unclassified pool is last. Every product
+  // shares them; what a teacher can pick inside them (중단원 / 소단원) is buildScopes().
   function unitsFor(pools, view, grade, subject) {
-    const product = PRODUCTS[view];
-    if (!product) return [];
-    const source = product.unitKind === "subunit" ? pools.subunits : pools.units;
-    return (source[grade]?.[subject] || []).slice();
+    if (!PRODUCTS[view]) return [];
+    return (pools.units[grade]?.[subject] || []).slice();
   }
 
   function sumCounts(units) {
@@ -208,19 +169,149 @@
     return { ready, short };
   }
 
+  // ---- 중단원 / 소단원 scopes (shared unit tree, 2026-11-16) -----------------------------------------------------
+  // A scope is something a teacher can pick: a 대단원 (high school: 단원), one of its 중단원 (middle school, the
+  // official RPM 2022 table of contents) or one of its 소단원 groups (high school, archive2-subunit-groups.json).
+  // Scopes are views over the pooled records, not copies: every record appears in exactly one child of its
+  // unit, so the counts of sibling scopes add up. Names, order and membership come from Archive2UnitTree, the
+  // same module that draws the rows of 단원별 기출, so no screen invents its own list.
+  // A record the tree cannot place ("중단원 미지정" / "기타") stays inside its 대단원 scope and is not
+  // offered as a scope of its own. Nothing here changes a record, its keys or its metadata.
+  function flatRecords(unit) {
+    const rows = [];
+    for (const bucket of BUCKETS) for (const record of unit.buckets[bucket]) rows.push([bucket, record]);
+    return rows;
+  }
+  // The tree reads `subUnitKey` (high school sub-unit groups, 2015 legacy 중단원 folding) and
+  // `rpmParentResolution` (middle school exact parents) off the record. A thin wrapper supplies the recorded
+  // meta value and the unified index's judgement without copying or touching the record itself.
+  function wrapRecord(record, middle, index, metaByUid) {
+    const wrapped = Object.create(record);
+    const uid = text(record.questionUid);
+    wrapped.subUnitKey = text(metaByUid?.get(uid)?.subUnitKey) || text(record.subUnitKey);
+    if (middle) {
+      const entry = index?.byUid?.get(uid);
+      if (entry?.rpmParentStatus) wrapped.rpmParentResolution = { status: entry.rpmParentStatus, parent: entry.rpmParent || null };
+    }
+    return wrapped;
+  }
+  const finishNode = (node) => {
+    node.counts = countsOf(node.buckets);
+    node.total = BUCKETS.reduce((sum, bucket) => sum + node.counts[bucket], 0);
+    return node;
+  };
+  function buildScopes(pools, grade, subject, options = {}) {
+    const all = pools.units[grade]?.[subject] || [];
+    const unclassified = all.find((unit) => unit.kind === "unclassified") || null;
+    // Every unit of the table of contents is listed, also one with no usable question yet (it then shows as
+    // "문항 부족" instead of silently missing from the list).
+    const pooled = all.filter((unit) => unit.kind === "unit");
+    const known = new Set(pooled.map((unit) => unit.unitKey));
+    const subjectLabel = Unified.subjectByValue(grade, subject)?.label || "";
+    const empty = Unified.unitsForSubject(grade, subject).filter((row) => !known.has(row.key)).map((row) => finishNode({
+      key: Unified.scopeKey(grade, subject, row.key), kind: "unit", grade, subject, subjectLabel, unitKey: row.key,
+      label: row.name, order: row.order, buckets: emptyBuckets(),
+    }));
+    const classified = [...pooled, ...empty].sort((a, b) => a.order - b.order || compareKo(a.label, b.label));
+    const middle = /^중[123]$/.test(grade);
+    const profileId = Unified.GRADE_PROFILE[grade];
+    const prepared = new Map();
+    let tree = null;
+    if (Tree && profileId && classified.length) {
+      const treeUnits = classified.map((unit) => {
+        const rows = flatRecords(unit);
+        const wrapped = rows.map(([, record]) => wrapRecord(record, middle, options.index, options.metaByUid));
+        prepared.set(unit.key, { rows, wrapped });
+        return { key: unit.unitKey, name: unit.label, course: unit.subjectLabel, selectableRecords: wrapped };
+      });
+      try { tree = Tree.createTree(profileId, treeUnits); } catch (error) { tree = null; }
+    }
+    const byKey = new Map(), order = [];
+    const sections = classified.map((unit) => {
+      byKey.set(unit.key, unit);
+      order.push(unit);
+      const children = [];
+      if (tree && tree.hasChildren(unit.unitKey)) {
+        const nodes = new Map();
+        for (const child of tree.childrenOf(unit.unitKey)) {
+          const node = {
+            key: `${unit.key}~${child.key}`, kind: ["none", "other", "moved"].includes(child.kind) ? "other" : "child",
+            grade, subject, subjectLabel: unit.subjectLabel, unitKey: unit.unitKey, unitLabel: unit.label,
+            childKey: child.key, label: child.name, section: child.section || "", order: unit.order,
+            orderInUnit: child.rank, root: unit, buckets: emptyBuckets(),
+          };
+          nodes.set(child.key, node);
+          children.push(node);
+        }
+        const { rows, wrapped } = prepared.get(unit.key);
+        rows.forEach(([bucket, record], i) => {
+          nodes.get(tree.childKeyOf(unit.unitKey, wrapped[i]))?.buckets[bucket].push(record);
+        });
+        for (const node of children) { finishNode(node); byKey.set(node.key, node); if (node.kind === "child") order.push(node); }
+      }
+      return { key: unit.key, label: unit.label, unit, children };
+    });
+    if (unclassified) { byKey.set(unclassified.key, unclassified); order.push(unclassified); }
+    return {
+      grade, subject, middle, tree, sections, unclassified, byKey, order,
+      groupsMissing: Boolean(tree?.groupsMissing),
+      // "과목 전체" = every 대단원 plus the unclassified pool; they are disjoint, so counts add.
+      roots: [...classified, ...(unclassified ? [unclassified] : [])],
+    };
+  }
+  // What a product lets a teacher pick, in table-of-contents order, grouped under the 대단원 heading.
+  //   five-minute / monthly-test: the 대단원 as a whole and each 중단원 (소단원 group) of it
+  //   subunit-test: 중단원 (middle) / 소단원 group (high) only
+  //   unit-test: 중단원 (middle) / 단원 (high)
+  // Each group is { section, items: [{ node, role: "root" | "child" }] }. "단원 미분류" is a last group (not for 소단원 평가).
+  function pickableGroups(scopes, view) {
+    const product = PRODUCTS[view];
+    const groups = [];
+    if (!product) return groups;
+    for (const section of scopes.sections) {
+      const kids = section.children.filter((node) => node.kind === "child").map((node) => ({ node, role: "child" }));
+      const root = { node: section.unit, role: "root" };
+      let items;
+      if (product.pick === "child") items = kids.length ? kids : (scopes.groupsMissing || !scopes.tree ? [root] : []);
+      else if (product.pick === "unit") items = scopes.middle && kids.length ? kids : [root];
+      else items = [root, ...kids];
+      if (items.length) groups.push({ section, items });
+    }
+    if (scopes.unclassified && product.pick !== "child")
+      groups.push({ section: { key: scopes.unclassified.key, label: scopes.unclassified.label, unit: scopes.unclassified, children: [] },
+        items: [{ node: scopes.unclassified, role: "root" }], unclassified: true });
+    return groups;
+  }
+  // Scopes for a list of keys, in table-of-contents order. A 대단원 chosen as a whole swallows its own children
+  // (the union stays disjoint, so evaluate() can simply add the counts).
+  function selectNodes(scopes, keys) {
+    const wanted = new Set(keys);
+    return scopes.order.filter((node) => wanted.has(node.key) && !(node.root && wanted.has(node.root.key)));
+  }
+  // The word a teacher sees for the thing a product lets them pick.
+  function unitNoun(view, grade) {
+    const middle = /^중[123]$/.test(grade);
+    if (view === "subunit-test") return middle ? "중단원" : "소단원";
+    if (view === "unit-test") return middle ? "중단원" : "단원";
+    return "단원";
+  }
+  // "2단계 문항 부족" / "2·3단계 문항 부족": the short reason for a list. shortageText() has the exact numbers.
+  const shortReason = (shortages) => `${shortages.map(({ bucket }) => bucket).join("·")}단계 문항 부족`;
+
   // Everything a product needs for measurement across all grades/subjects (used by tests and the
   // before/after report).
-  function summarize(pools, view, presetName) {
+  function summarize(pools, view, presetName, options = {}) {
     const product = PRODUCTS[view];
     const rows = [];
     for (const grade of Unified.GRADES) for (const subject of subjectsFor(pools, grade)) {
-      const units = unitsFor(pools, view, grade, subject.value);
+      const scopes = buildScopes(pools, grade, subject.value, options);
+      const units = pickableGroups(scopes, view).flatMap((group) => group.items.map((item) => item.node));
       const parts = partition(units, product, presetName);
-      const combined = product.combine ? evaluate(units, product, presetName).ok : null;
+      const combined = product.combine ? evaluate(scopes.roots, product, presetName).ok : null;
       rows.push({
         grade, subject: subject.value, label: subject.label, units: units.length,
         readyUnits: parts.ready.length, readyItems: parts.ready.reduce((sum, row) => sum + row.unit.total, 0),
-        items: units.reduce((sum, unit) => sum + unit.total, 0), combined,
+        items: scopes.roots.reduce((sum, unit) => sum + unit.total, 0), combined,
       });
     }
     return rows;
@@ -230,6 +321,7 @@
     PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS,
     isQuickView: (view) => VIEWS.includes(view),
     usableBucket, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
+    buildScopes, wrapRecord, pickableGroups, selectNodes, unitNoun, shortReason,
     shortageText, presetMix,
   };
 });

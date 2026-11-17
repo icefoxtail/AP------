@@ -118,14 +118,15 @@ window.questionBank=[
       "$17$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q4-solution.svg",
-    "solutionImageAlt": "위치 x(t)=−t³+6t², 속도 v(t)=−3t²+12t, 가속도 a(t)=−6t+12를 차례로 제시하고, t=1에서 x(1)=5, v(1)=9, a(1)=6이므로 v(1)+a(1)=15임을 보여주는 해설 도식이다.",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림. 파란 속도 곡선 위의 점 (1,9)에 기울기 6인 주황 직선이 접한다.",
     "solutionImageSize": "full",
     "solution": "위치를 시간에 대해 미분하면 속도, 속도를 미분하면 가속도이다.\n위치:\n$x(t)=-t^3+6t^2$\n속도:\n$v(t)=x'(t)=-3t^2+12t$\n$v(1)=-3+12=9$이다.\n가속도:\n$a(t)=v'(t)=-6t+12$\n$a(1)=-6+12=6$이다.\n따라서 $t=1$에서 속도와 가속도의 합은\n$v(1)+a(1)=9+6=15$이다.\n정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "시간 1에서 위치를 한 번 미분한 속도는 9이고, 속도를 한 번 더 미분한 가속도는 6이다. 합은 15이며 정답은 ③이다."
   },
   {
     "id": 5,

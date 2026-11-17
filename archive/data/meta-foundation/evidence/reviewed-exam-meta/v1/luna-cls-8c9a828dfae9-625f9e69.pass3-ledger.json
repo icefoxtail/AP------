@@ -1,0 +1,124 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T19:20:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/20_매산여고_1학기_중간_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "필터를 n번 지난 양은 처음의 0.8ⁿ이고 0.8ⁿ≤0.1에서 log0.8=−0.1을 쓰면 n≥10이라 최소 자연수는 10이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "243=3⁵이므로 a⁻²=3⁴=81, 따라서 a²=1/81이고 a\u003e0에서 a=1/9다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x=0에서 y=2sin(−π/2)−1=−3이므로 그래프는 (0,−3)을 지난다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "그래프 변환",
+                                      "l4":  "평행이동"
+                                  }
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "그래프의 x절편 (4,0)은 4a=1을, y=1일 때 x=k는 ak=3을 주므로 a=1/4,k=12, 8a+k=14다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "로그함수의 그래프",
+                                      "l4":  "평행이동"
+                                  }
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "tanθ=−3/4와 sinθtanθ\u003c0에서 θ는 제2사분면이라 sinθ=3/5, cosθ=−4/5이고 10합은 −2다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "삼각함수의 성질",
+                                      "l4":  "삼각함수 관계"
+                                  }
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(2)=logₐ2=−1/2에서 a=1/4이고 (1/4)^t=32=2⁵를 풀면 f(12)=t=−5/2다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  }
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "t=log₃x∈[−1,2]로 놓으면 식은 (t−1)(t−2)이고 최솟값 −1/4, 최댓값 6이라 M−m=25/4다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "y축 대칭 조건 5θ=π−θ+2kπ에서 θ=(2k+1)π/6이고 열린 범위의 값 5π/6,7π/6의 합은 2π다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "A=(π/(2b),a), B=(π/b,0)에서 직각 조건은 a=π/(2b)를 주고 넓이=a²=9라 a=3,b=π/6, a+b=3+π/6이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "log a=1+log8.23이므로 a=82.3, log b=log2.54−1이므로 b=0.254, 따라서 10a+1000b=1077이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "상용로그",
+                                      "l4":  "소수점 위치"
+                                  }
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(3x+6)=2f(x)의 진수조건과 로그 등식은 x=3을 남기고 역함수 g(x)=3ˣ−1 식은 t=3ˣ로 치환해 g(α)=5다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수방정식",
+                                      "l4":  "치환"
+                                  }
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "t=sin²x∈[0,1]이면 식은 3t²−t+1로 최소 11/12, 최대 3이므로 M+m=47/12다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  }
+              ]
+}

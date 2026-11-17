@@ -20,12 +20,12 @@
             const style = doc.createElement('style');
             style.id = 'ap-archive-render-feedback-style';
             style.textContent = `
-                #ap-archive-render-feedback { position:fixed; z-index:1100; left:50%; bottom:max(12px,env(safe-area-inset-bottom)); transform:translateX(-50%); display:flex; align-items:center; gap:12px; box-sizing:border-box; width:max-content; max-width:calc(100vw - 24px); padding:10px 14px; border:1px solid #d4d4d8; border-radius:10px; background:#fff; color:#27272a; box-shadow:0 4px 18px rgba(24,24,27,.12); font:14px/1.45 system-ui,sans-serif; }
+                #ap-archive-render-feedback { position:fixed; z-index:1100; left:50%; bottom:max(12px,env(safe-area-inset-bottom)); transform:translateX(-50%); display:flex; align-items:center; gap:12px; box-sizing:border-box; width:max-content; max-width:calc(100vw - 24px); padding:10px 16px; border:2px solid var(--ink); border-radius:var(--radius-panel); background:var(--surface); color:var(--ink); font:500 14px/1.45 var(--font-body); }
                 #ap-archive-render-feedback[hidden] { display:none !important; }
                 #ap-archive-render-feedback .ap-render-feedback-message { min-width:0; }
-                #ap-archive-render-feedback button { flex:none; min-height:44px; padding:0 12px; border:1px solid #a1a1aa; border-radius:7px; background:#fafafa; color:#27272a; font:inherit; cursor:pointer; }
+                #ap-archive-render-feedback button { flex:none; min-height:44px; padding:0 18px; border:1.5px solid var(--ink); border-radius:var(--radius-pill); background:var(--ink); color:var(--surface); font:700 14px/1 var(--font-body); cursor:pointer; }
                 #ap-archive-render-feedback button[hidden] { display:none !important; }
-                #ap-archive-render-feedback button:focus-visible { outline:2px solid #52525b; outline-offset:2px; }
+                #ap-archive-render-feedback button:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
                 @media print { #ap-archive-render-feedback { display:none !important; } }
             `;
             (doc.head || doc.body).appendChild(style);
