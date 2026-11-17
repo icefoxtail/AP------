@@ -778,7 +778,7 @@ const allInputPaths = [...new Set([
   ),
   coreMetaFilterAuthorityPath,
   ...sourceQualityHolds.manifestPaths,
-])].sort();
+])].filter((inputPath) => inputPath !== core.Canonical.COMPACT_INPUT_MANIFEST_PATH).sort();
 const manifestFiles = allInputPaths.map((inputPath) => {
   const bytes = inputPath === "data/archive2-catalog.json"
     ? Buffer.from(packedText, "utf8")
@@ -1113,6 +1113,11 @@ const manifest = {
   files: manifestFilesWithSourceIndex,
 };
 const manifestTarget = path.join(root, "archive/data/archive2-canonical-input-manifest.json");
+const compactManifest = core.Canonical.encodeCompactInputManifest(manifest);
+if (JSON.stringify(core.Canonical.decodeCompactInputManifest(compactManifest)) !== JSON.stringify(manifest))
+  throw new Error("Canonical compact input manifest did not preserve the original manifest exactly");
+const compactManifestText = JSON.stringify(compactManifest) + "\n";
+const compactManifestTarget = path.join(root, "archive", core.Canonical.COMPACT_INPUT_MANIFEST_PATH);
 if (packageOnly) {
   const relative = file => path.relative(root, file).split(path.sep).join('/');
   materializePackageShards({
@@ -1123,6 +1128,7 @@ if (packageOnly) {
       [relative(sourceIndexTarget), sourceIndexText],
       [relative(topIndexTarget), topIndexText],
       [relative(manifestTarget), JSON.stringify(manifest) + "\n"],
+      [relative(compactManifestTarget), compactManifestText],
       ...[...shardTexts, ...indexBucketTexts].map(([file, text]) => ['archive/' + file, text]),
     ],
     packageFiles: [
@@ -1197,6 +1203,11 @@ if (packageOnly) {
     : null;
   if (actualManifest !== JSON.stringify(manifest) + "\n")
     throw new Error("Archive 2.0 canonical input manifest is stale");
+  const actualCompactManifest = fs.existsSync(compactManifestTarget)
+    ? fs.readFileSync(compactManifestTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualCompactManifest !== compactManifestText)
+    throw new Error("Archive 2.0 canonical compact input manifest is stale");
 } else {
   fs.writeFileSync(target, packedText);
   fs.writeFileSync(overrideIndexTarget, overrideIndexText);
@@ -1216,6 +1227,7 @@ if (packageOnly) {
   fs.writeFileSync(mixedContextTarget, mixedContextText);
   fs.writeFileSync(sourceIndexTarget, sourceIndexText);
   fs.writeFileSync(manifestTarget, JSON.stringify(manifest) + "\n");
+  fs.writeFileSync(compactManifestTarget, compactManifestText);
 }
 console.log(JSON.stringify({
   indexVersion,

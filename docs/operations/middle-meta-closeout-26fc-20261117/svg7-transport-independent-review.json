@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "archive-independent-svg7-ui-log-transport-review-v1",
+  "reviewer": "/root/m3s2_release",
+  "author": "/root/ci_m2s2",
+  "date": "2026-11-17",
+  "decision": "STATIC_ACCEPT_RUNTIME_AND_CHROME_NOT_RUN",
+  "scope": "PRIMARY_PR_SVG7_14_LOGICAL_CASES_ONLY",
+  "reviewedInputs": [
+    {
+      "key": "helper",
+      "gitBlobSha": "2ec7712541ee6977e6482fb94d474d21d85c97ae",
+      "rawSha256": "e6043571213b7cd67010968796b0b3a524ebea81595f9d54c92a1b57b90315f0",
+      "bytes": 17220
+    },
+    {
+      "key": "test",
+      "gitBlobSha": "50a0b085dd39133a0729302cf85657fd3fa818b5",
+      "rawSha256": "a05e20b42b6c4c9895c85a6f3c308f0c157edcf7cc6d32ec72be1322995766aa",
+      "bytes": 9083
+    },
+    {
+      "key": "workflow",
+      "gitBlobSha": "8bd77d5d9b288efb5ba0042b6fd5971fed8d98ee",
+      "rawSha256": "1df54975f75607c6275f8df902db14abdfa006a8af51b1d546df95704ddd8bfc",
+      "bytes": 4952
+    },
+    {
+      "key": "workflow-before",
+      "gitBlobSha": "818af190cf98c92c20a1fc50c6576eb311244ec5",
+      "rawSha256": "700c46b8393bb9d332d1f8383a2ec8105cf6591f81ee9848bd6cd63f39ce2309",
+      "bytes": 4378
+    },
+    {
+      "key": "producer",
+      "gitBlobSha": "027e8da7549a2c8b63d5dd913d3023dfb14f7589",
+      "rawSha256": "9ffb9952d031ac774bc59326e74d7e39774950078ee32d45aaed2c4674eb9613",
+      "bytes": 39798
+    },
+    {
+      "key": "fixture",
+      "gitBlobSha": "7557df94d518fe36dde9426ec928eb880747c07e",
+      "rawSha256": "2723900e7f2868a6cc034fd09b8faa449c7e04056732e713c7caccb9e433700f",
+      "bytes": 11980
+    },
+    {
+      "key": "shared",
+      "gitBlobSha": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+      "rawSha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "bytes": 56735
+    }
+  ],
+  "profileMetadataComparison": {
+    "exact": true,
+    "orderedItemsEqual": true,
+    "subjects": [
+      {
+        "key": "E037-Q3",
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+        "sourceOrdinal": 3
+      },
+      {
+        "key": "E037-Q15",
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+        "sourceOrdinal": 15
+      },
+      {
+        "key": "E048-Q11",
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+        "sourceOrdinal": 11
+      },
+      {
+        "key": "E048-Q13",
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+        "sourceOrdinal": 13
+      },
+      {
+        "key": "E048-Q24",
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+        "sourceOrdinal": 24
+      },
+      {
+        "key": "E045-Q24",
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+        "sourceOrdinal": 24
+      },
+      {
+        "key": "E045-Q15",
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "sourceOrdinal": 15
+      }
+    ],
+    "viewportEqual": true,
+    "expectedLogicalCases": 14,
+    "questionBodiesRead": 0
+  },
+  "verification": {
+    "completeHelperAndTestRead": true,
+    "actualProducerMetadataShapeRead": true,
+    "sharedScreenshotInventoryFunctionRead": true,
+    "workflowWholeInverseExact": true,
+    "repositoryCodeExecution": 0,
+    "nodeSyntax": "NOT_RUN",
+    "nodeSyntheticTests": "NOT_RUN",
+    "definedSyntheticTests": 20,
+    "chrome": "NOT_RUN",
+    "screenshotVisualReview": 0,
+    "sourceQuestionBodyReview": 0,
+    "mathReview": 0,
+    "registrationExecution": 0,
+    "newApproval": 0,
+    "remoteRefWrites": 0
+  },
+  "findings": {
+    "blockerCount": 0,
+    "primaryCaptureUnchanged": "Checker027e, fixture7557 and shared H56c8 are reused. The primary workflow has no new push trigger or SVG7 producer provenance change.",
+    "profile": "Only svg7 accepted. Fixed keys/UIDs/ordinals and exact desktop1365x1000/mobile390x844 match actual immutable fixture. Other profiles reject.",
+    "execution": "GITHUB_ACTIONS/repo/run/workflow/job/head/event identity must match technical execution; PR head/base/repository/pull request are bound. Optional explicit fixed review-push branch validation exists in transport but is not activated by this primary PR-only workflow.",
+    "inputBytes": "Actual HEAD must equal expected commit. Regular tracked checker/manifest/H refs from proof are matched to checkout Git+SHA256+size. Transport self ref also captured.",
+    "outputBoundary": "Only technical-proof.json plus exactly declared filenames in the closed keys/viewports/tile01..08 set. Output outside checkout, ancestor/component symlinks refused, regular files and byte limits required. No arbitrary recursive output-directory reads.",
+    "tileAssociation": "Existing H.assertScreenshotInventory binds completed row key+viewport+tile ordinal+path+capture tile and exact PNG ref inventory. Incomplete-case artifacts remain separately labelled and never create a completed case.",
+    "pixelIntegrity": "Original bytes are read and framed unchanged. PNG header/dimensions/IDAT/end/chunk length validated; no rendering, compositing, editing or mathematical assessment. Byte SHA and Git blob hash retained.",
+    "framing": "2MiB technical/2MiB individual PNG/10MiB total limits; 4096-character base64 chunks carry ordered file/chunk counts and per-file SHA. Begin/end bundle digest detects incomplete recovery. No claim of cryptographic attestation beyond authenticated run/checkout metadata.",
+    "failure": "FAIL technical status and bounded error enum remain FAIL. Completed-case count and uncompleted PNG count are explicit. Transport cannot convert capture failure or pending visual review into approval.",
+    "workflow": "Two transport paths added to trigger and sparse list, test command adds one synthetic test, always transport step added before unchanged always artifact upload. No permission, capture command, success-condition or artifact-step weakening; capture failure still fails job."
+  },
+  "resultShape": {
+    "top": "schemaVersion/status/checkoutCommit/executionOwner/execution/results/items/screenshotArtifacts/expectedLogicalCases/completedLogicalCases",
+    "result": "status/key/questionUid/sourceOrdinal/viewport/surface/mode/technical/screenshots/capture/pageErrors/requestFailures/externalRequests",
+    "statusAccepted": [
+      "TECHNICAL_PASS_VISUAL_REVIEW_PENDING",
+      "FAIL"
+    ],
+    "approvalClassification": "TRANSPORT_ONLY; VISUAL_REVIEW_PENDING; NEW_APPROVALS_ZERO"
+  },
+  "limitsAndNext": {
+    "freshCurrentUiAcceptance": "NOT_PROVEN",
+    "oldProofReuse": "No old UI/math approval is upgraded by this transport review.",
+    "required": "Root integrate exact helper/test/workflow, run synthetic protocol and unchanged real SVG7 Chrome. Recover original frames/artifact bytes, authenticate exact actual run, then independently inspect all required original tiles.",
+    "producerFollowup": "Q16/Q5 separate ops followup; not included in this14-case primary review."
+  }
+}

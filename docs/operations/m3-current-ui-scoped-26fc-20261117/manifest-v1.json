@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "archive-m3-current-ui-source49-gate-publication-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_M3S2_RELEASE_20261116",
+  "status": "FROZEN_REMOTE_PRIVATE_GATE_CANDIDATE_STATIC_REVIEW_AND_CI_PENDING",
+  "files": [
+    {
+      "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+      "after": {
+        "gitBlobSha1": "5868dad02eec45e9dd35ec36b364d8538c1e36ba",
+        "sha256": "086c2d57f08cde9edb587a6d639fe95f5b0dc8c19e2ba258c691d5cad1e02cc5",
+        "bytes": 45539
+      },
+      "operation": "ADD",
+      "fullRemoteReadbackExact": true
+    },
+    {
+      "path": ".github/workflows/m3-current-ui-registration.yml",
+      "after": {
+        "gitBlobSha1": "088a98d86f76a630481d554f77b86e6cfa1bcb59",
+        "sha256": "5956556ef4a254302837c5c8b4f737b86733031af9dd63ac6883214a762b2e5e",
+        "bytes": 1621
+      },
+      "operation": "ADD",
+      "fullRemoteReadbackExact": true
+    }
+  ],
+  "execution": {
+    "repository": "icefoxtail/AP------",
+    "exactRef": "refs/heads/ops/m3-current-ui-registration-26fc-20261117",
+    "integrationAncestor": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "visualAncestor": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+    "job": "m3-current-authority",
+    "expectedShaVariable": "ARCHIVE_M3_SOURCE49_EXPECTED_SHA",
+    "contentsPermission": "read",
+    "persistCredentials": false,
+    "fullHistory": true,
+    "command": "node tools/4slot/check-m3-current-ui-scoped.cjs --root \"$GITHUB_WORKSPACE\" --output \"$RUNNER_TEMP/m3-current-authority/scoped-result.json\""
+  },
+  "dependencies": {
+    "production7": {
+      "gitBlobSha1": "4f2744955009bcba3b42260d8e91f2c3e98157ba",
+      "sha256": "1ac0ea3caa07e3e6279596669bf8a904d05ac7a3cac1e7c0f2a568452f927bf5",
+      "bytes": 13722
+    },
+    "independentProduction7": {
+      "gitBlobSha1": "7cafcf2a5b1302b027b5b61190b890a797f32da9",
+      "sha256": "6f362773c96dda8c686a543acb217d17f4fc68e7f7642931d68527bb55436563",
+      "bytes": 9995
+    },
+    "previewAdapter": {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+      "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
+      "bytes": 116137
+    },
+    "previewTest": {
+      "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
+      "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
+      "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
+      "bytes": 21269
+    },
+    "independentAdapter": {
+      "gitBlobSha1": "a328166b1fefbd074da39ffa2a17c743773c3db1",
+      "sha256": "69c5c3614937ea4053e4ac36fcf124fd2c2930636a6c6bbef9a74000ef6fa71a",
+      "bytes": 4919
+    },
+    "officialCode": [
+      {
+        "path": "tools/4slot/build-4slot-runtime.cjs",
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+        "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+        "bytes": 41001
+      },
+      {
+        "path": "archive/item-4slot.js",
+        "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+        "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+        "bytes": 8639
+      }
+    ],
+    "allCodeAndCarrierPins": [
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+        "gitBlobSha1": "71eb98b06f359f1f1a18f62fa281b01e1ea94eec",
+        "sha256": "695298b878666f01aafbce21378f991b82b865e8b359849df0627200fd255b7d",
+        "bytes": 50755
+      },
+      {
+        "path": "tools/4slot/m3-e052-q5-complete-given-continuity.cjs",
+        "gitBlobSha1": "a3929b0965545a279486c81b060357bfc66b5d03",
+        "sha256": "f26f136f4e1fea5409512df26fec6815929d88177ce235d5fecdfdf5cb6ac3b7",
+        "bytes": 9456
+      },
+      {
+        "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+        "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
+        "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
+        "bytes": 15920
+      },
+      {
+        "path": "tools/4slot/m3s2-layout-continuity.cjs",
+        "gitBlobSha1": "ac7eb5ebf99620ea5e9620f3e592e1342add30d7",
+        "sha256": "9683ec12b0253d6c2f7bd7feadb800833e6a4a7798e02178dafc53788621030c",
+        "bytes": 44099
+      },
+      {
+        "path": ".archive-meta-register/4slot-m3s2-layout-continuity/qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf.json",
+        "gitBlobSha1": "8a54a3d9a00dabed465b495b0c89723eb0a600cb",
+        "sha256": "09f91865024aaa7b2162244d8abaf6a2bdd76c7df81342bd1e242a013659dfd4",
+        "bytes": 6642
+      },
+      {
+        "path": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+        "gitBlobSha1": "a11402180c3b1f5a124905dbdb5e1ff78c34d600",
+        "sha256": "896f16b36f9cb2878f758f80ed0a836fde765dc78cfc76d9f697af691004e1ac",
+        "bytes": 8192
+      },
+      {
+        "path": "tests/archive-m3s2-current-ui-reuse.test.cjs",
+        "gitBlobSha1": "28ba356add45f8620c18eb68189037506e01b8e7",
+        "sha256": "07255f9d2036c99af4966f730080bb0a9ed28bc614e41654760a59ac85bc77b1",
+        "bytes": 10741
+      },
+      {
+        "path": "tools/ci/archive-pr-native-preview.mjs",
+        "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+        "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
+        "bytes": 116137
+      },
+      {
+        "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
+        "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
+        "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
+        "bytes": 21269
+      },
+      {
+        "path": ".archive-meta-register/4slot-m3-e052-q5-complete-given/qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1.json",
+        "gitBlobSha1": "d5776277d104277ab625fa6e66c5d50b90f283e8",
+        "sha256": "edcbd2bd8d55c8fc111ba8d693a6cd1ead274f7a225b2849b75a621d865a8fdc",
+        "bytes": 4614
+      }
+    ],
+    "latestBoundedSourceImpact": {
+      "gitBlobSha1": "7178d7a8e530a3597c8aaf19cf93406073a7d1d9",
+      "sha256": "ef226664dc94d1ff2e461f7b92b4affa7b2ca2197b428ffa956a53149bda78f3",
+      "bytes": 3174
+    }
+  },
+  "scope": {
+    "sourceQuestionCount": 49,
+    "selectedCount": 2,
+    "outsideCount": 47,
+    "groups": [
+      {
+        "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "count": 25,
+        "sourceRef": {
+          "commit": "dd2d5d9dca6ee625500d0d5b3d201717190a9a7e",
+          "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+          "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+          "sha256": "996ba1f2538b060c96f6528fc90c62affa567285a6a24d2106051199f9a348d1",
+          "bytes": 66658
+        },
+        "compactRef": {
+          "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+          "path": "archive/data/item-4slot/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.4slot.json",
+          "gitBlobSha1": "4f996d2c2d1c170554b2711e664c7fe9422591ec",
+          "sha256": "5f821ee0847061d5f964b4a6f84597b0102c66e3c30075c84cef406c694971a1",
+          "bytes": 5278
+        },
+        "dictionaryRef": {
+          "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+          "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+          "gitBlobSha1": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+          "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+          "bytes": 367619
+        }
+      },
+      {
+        "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "count": 24,
+        "sourceRef": {
+          "commit": "a66a389b96525f67e2868a000184039e08627e9f",
+          "path": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+          "gitBlobSha1": "80043be4a26d379664740f0846720bba38f31d5a",
+          "sha256": "02614aa1dcd88aa933aa81712074fb66597867fd3d3673bb3bb23312bc91636b",
+          "bytes": 63188
+        },
+        "compactRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "archive/data/item-4slot/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.4slot.json",
+          "gitBlobSha1": "f4893c501ed00113c370827bf508f86a73a5e8b1",
+          "sha256": "43350f9e38ee141503b5f738ee2cd76100975604b6c1c265adc68d4c940dd89f",
+          "bytes": 4821
+        },
+        "dictionaryRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+          "gitBlobSha1": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+          "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+          "bytes": 367619
+        }
+      }
+    ],
+    "selected": [
+      {
+        "key": "Q5",
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+        "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "path": ".archive-meta-register/4slot-m3-e052-q5-complete-given/qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1.json",
+        "binding": "M3_E052_Q5_COMPLETE_GIVEN_EXISTING_VECTOR",
+        "refField": "q5CompleteGivenContinuityRef",
+        "deleteReason": "M3_Q5_CLAIM_MISSING_OR_MIXED"
+      },
+      {
+        "key": "Q16",
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+        "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 16,
+        "path": ".archive-meta-register/4slot-m3s2-layout-continuity/qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf.json",
+        "binding": "M3S2_EXISTING_LAYOUT_CONTINUITY",
+        "refField": "layoutContinuityRef",
+        "deleteReason": "M3S2_LAYOUT_CLAIM_MISSING_OR_MIXED"
+      }
+    ],
+    "actualOutsideBaseline": "Entire current index record/pending state for each exact outside UID. Registration is not assumed; both registered and pending current states must stay whole-equal.",
+    "newMathQa": 0,
+    "newSemanticApprovals": 0,
+    "newNativeApprovals": 0,
+    "newFourSlotVectors": 0
+  },
+  "phases": [
+    {
+      "phase": "AUTHENTICATED_INPUTS",
+      "required": "Exact root HEAD/code7/adapter2/carrier pins; disjoint private clone with readonly Git alternates; current source2/compact2/dictionary, real MDID/runtime/ACTIVE inputs and fixed Q5 receipt/binding; immutable proof refs; no outputDigests recursion or unrelated source banks."
+    },
+    {
+      "phase": "FOCUSED_AND_ORIGINAL_AUTHORITY",
+      "commands": [
+        {
+          "command": "node --test tests/archive-pr-q5-current-ui-shadow.test.mjs",
+          "expectedTests": 54
+        },
+        {
+          "command": "node tests/archive-m3-e052-q5-current-ui-reuse.test.mjs --actual-native",
+          "expectedTests": 45,
+          "meaning": "Original default44 plus real unchanged Q5 GIVEN/UI/ancestor Native===true and existing vector25 resolver once."
+        },
+        {
+          "command": "node tests/archive-m3s2-current-ui-reuse.test.cjs --actual-authority",
+          "expectedTests": 44,
+          "meaning": "Original default43 plus real unchanged source/layout/vector24/MDID and complete current UI verifier once."
+        }
+      ],
+      "totalExpectedTests": 143,
+      "execution": "NOT_RUN"
+    },
+    {
+      "phase": "OLD_DISPLAY_BINDING_BASELINE",
+      "required": "Only private current UI proof files removed and Q16 previous UI sidecar reinstated; selected2 must remain pending while actual outside47 whole states stay equal."
+    },
+    {
+      "phase": "OFFICIAL_BUILDER_SOURCE49",
+      "required": "Current evidence and new Q16 sidecar restored; original official builder must recover exactly2 using dedicated authority routes and identical compact vectors; outside47 whole equal; official verify+Consumer get/term."
+    },
+    {
+      "phase": "COLD_REPLAY",
+      "required": "Only private derived index write; official check changed=false, revalidatedFiles2, reusedFiles0."
+    },
+    {
+      "phase": "CURRENT_VISUAL_DELETION",
+      "required": "Delete each current visual separately in private fixture; its selected UID must reject, the other selected UID remains whole-equal, outside47 remains whole-equal."
+    },
+    {
+      "phase": "CARRIER_SIDECAR_DELETION",
+      "required": "Delete Q5 carrier and Q16 sidecar with prior claims preserved; both exact missing/mixed claim reasons required."
+    },
+    {
+      "phase": "FINAL_INPUT_PRESERVATION",
+      "required": "All private nonderived bytes restored to authenticated inputs, root current files/HEAD/status unchanged, no shared writable inode or remote ref writes."
+    }
+  ],
+  "output": {
+    "path": "$RUNNER_TEMP/m3-current-authority/scoped-result.json",
+    "maxBytes": 2097152,
+    "artifactAlways": true,
+    "metadataOnly": true,
+    "logProtocol": "archive-scoped-metadata-log-v1 / M3_SOURCE49_EXISTING_AUTHORITY",
+    "studentTextAnswersSolutions": "EXCLUDED",
+    "rawUnitOutput": "Only SHA digests, exit and TAP counts enter report."
+  },
+  "verification": {
+    "fullRemoteReadbackExact": true,
+    "authorTextAndMetadataInspectionOnly": true,
+    "nodeSyntax": "NOT_RUN",
+    "focused143": "NOT_RUN",
+    "actualOriginalAuthority2": "NOT_RUN",
+    "officialBuilder49": "NOT_RUN",
+    "consumer2": "NOT_RUN",
+    "coldReplay": "NOT_RUN",
+    "negativeGates": "NOT_RUN",
+    "currentMainRegistration": "NOT_PERFORMED",
+    "pages": "NOT_PERFORMED"
+  },
+  "permissions": {
+    "rootTrackedWrites": 0,
+    "remoteRefWrites": 0,
+    "sourceEdits": 0,
+    "compactEdits": 0,
+    "approvalEdits": 0,
+    "derivedIndexWrites": "PRIVATE_FIXTURE_ONLY",
+    "temporaryMutations": "PRIVATE_UI_PROOFS_AND_EXISTING_CARRIER_SIDECAR_ONLY",
+    "publicGitObjectReadCacheHydration": "ALLOWED"
+  },
+  "nextAction": "Independent review of these exact two files, then root publishes the closed ops branch with unchanged production7, preview2 and e371 evidence history. Current Native/registration recovery is only reportable after actual scoped results; this manifest is not PASS."
+}

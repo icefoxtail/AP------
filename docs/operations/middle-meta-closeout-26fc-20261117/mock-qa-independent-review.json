@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "archive-pages-mock-qa-independent-review-v1",
+  "reviewer": "GPT_ROOT_26FC42390A50",
+  "decision": "STATIC_ACCEPT_ACTUAL_CHROME_REQUIRED",
+  "beforeGit": "4f029f42e55bd9d306a9784dc3ebc4165de379df",
+  "afterGit": "4513a5b0404938c26a455fc1197aab46eea4fd58",
+  "afterSha256": "8115cfa523d17dde40add227bb129a24ccc4f5be8d0782955aa4a200def61796",
+  "actualFailure": {
+    "run": 44004159980,
+    "job": 133775268361,
+    "line": 372
+  },
+  "sourceDisplayContract": {
+    "git": "27b67d7e19b10d31ac19e92cc690fdfab504d1ba",
+    "path": "archive/generated-bank.html",
+    "independentRead": true,
+    "currentFormat": "Positive source number followed by Korean number suffix; exact coverage ratio and original-count summary"
+  },
+  "deltaScope": "Two pure metadata helpers and two stale assertions; remaining checker content preserved",
+  "pureHelperVerification": {
+    "runtime": "V8 metadata-only function execution; no repository top-level code executed",
+    "checks": [
+      {
+        "name": "actual exact",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "reverse order",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "missing23",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "unexpected16",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "duplicate",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "wrongMember",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "oldInternalQids",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "rangeOver",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "numericSuffix",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "empty",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "extraColon",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "trailingText",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "actualCoverage",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "wrongTotal",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "wrongDenominator",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "116Trap",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "duplicateRatio",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "duplicateTotal",
+        "expected": false,
+        "actual": false
+      }
+    ]
+  },
+  "syntax": "V8 parse-only PASS; Node syntax NOT_RUN",
+  "actualChrome": "NOT_RUN",
+  "productionWrites": 0,
+  "newMathReview": 0,
+  "newSemanticApproval": 0,
+  "fullQaPassClaim": false
+}

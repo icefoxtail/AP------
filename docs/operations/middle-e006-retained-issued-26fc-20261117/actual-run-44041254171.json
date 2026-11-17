@@ -1,0 +1,1311 @@
+{
+  "schemaVersion": "archive-e006-retained-issued-native-plan-probe-v1",
+  "status": "READONLY_OBSERVED",
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "eventName": "push",
+    "repository": "icefoxtail/AP------",
+    "ref": "refs/heads/ops/middle-e006-retained-issued-probe-26fc-20261117",
+    "codeCommit": "394d336b69942689797ff3710cad8e4cd10eed2a",
+    "snapshotCommit": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+    "runId": "44041254171",
+    "runAttempt": "1",
+    "job": "observe-current-main"
+  },
+  "currentStoredSnapshot": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+  "expectedSubjects": 12,
+  "completedSubjects": 12,
+  "codePins": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 60529,
+      "sha256": "dbcb5bc3b7e999793e7f9a321872ec58e0f50c0c2e2cf2cd63adaadbde6141f8",
+      "gitBlobSha1": "dfc382f28643fd5fe9e2ca6a719beddd42fc0c55"
+    },
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "bytes": 13944,
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed",
+      "gitBlobSha1": "93ed7214a5e4dc0b0cdd9853d388bca26e64a172"
+    }
+  ],
+  "sourceObservations": [
+    {
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "currentSource": {
+        "bytes": 64226,
+        "sha256": "b0e801cecba43ad4cffd2009a1a5cb1a5e533330481bfd24e9401e0d7480470e",
+        "gitBlobSha1": "a06c36b865b617f8c327cc90e1f4a931668a3e19"
+      },
+      "issuedSource": {
+        "gitBlobSha1": "305e21cf2fb3155b46d3fa7937cde4e4c0e5de18",
+        "sha256": "c2a0244074bd4257961b5facb672786361ae88526c6b35f55beb3b1c595d93fb"
+      },
+      "expectedQuestions": 23,
+      "changedFromIssuedSource": true,
+      "issuedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e006-residual-current410-r8-20261116.json",
+        "bytes": 208512,
+        "sha256": "73176562cdc8dd91b7025f23cd9d9595c5acbfa6470c3403876367b9f7068677",
+        "gitBlobSha1": "253c5aeae229085d9bf6bb51942f114743981d44"
+      },
+      "declaredSourceReviewBinding": false
+    }
+  ],
+  "observations": [
+    {
+      "questionUid": "qid_v1_1629824d0b99dd6df92f964bb2f7681caddfbfd33e01e5d02bf92163ea060cda",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 1,
+      "metadataWholeSha256": "1b0a4c316246ae9bb2af861345ee968a4c5af2637d1036a9bf6b5080a2fc5cc3",
+      "identityWholeSha256": "2fda55d84515f6cb4647be55b79992f60f49a735fb858b454e0ddbaddf4fcfd9",
+      "runtimeWholeSha256": "1ccc97ec1f7dc9c5d21a5e927fa78a3e6121ecea8df1081ba9a762f05071b8ee",
+      "currentQuestionWholeSha256": "881bd58bfeedebfd455378b90752515806c725c44c91b06ee3f4744964e13cf1",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_7716a1d4f757041ef0f10c447e3c22d4d1bbeee9d6b01c1cdf531f6ec9fb9c1f",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 2,
+      "metadataWholeSha256": "535b909d876f1b258aa1cf828039cfe3ca440140b435db68e8da1eedf0762249",
+      "identityWholeSha256": "f6563076f880c2b04f16b50294c5a6137674c92c18d60206c8f90cbb956ebc68",
+      "runtimeWholeSha256": "d914c929f414bbfb135ca9d0fd53b189fbf94a8a047167f77b0b11c3cde3139a",
+      "currentQuestionWholeSha256": "103f39c23efc41dd28043295b10af6a921ac9b862e1a5fce2fb96bf1c56bcdee",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 3,
+      "metadataWholeSha256": "e97c38b4f9e82b1b7aebd13ce1c4f895905d501d6424db75de06ec6ca5071baa",
+      "identityWholeSha256": "a69ff87701146ba58077bfdfca8a09b742482f442bfc464f81aa66ce75995e91",
+      "runtimeWholeSha256": "60330133912bc21e6393e37f2207651df40faa3ead9fd8a078603011c4d80cdf",
+      "currentQuestionWholeSha256": "9b61d0d47383d73f5f09e45e6d9472231fbabaafee73891f2485eb8df06a5813",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": false,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
+            "sha256": "fb43dcbf9ab3bca310a29c56400ee9934d7305b4a72578b669a63f87806b6967",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_c2f698969ecc2c3a25f4a02f14dedfdac862634ee41cfc129fc818430ad3fb9c",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 4,
+      "metadataWholeSha256": "64f6f4e6b21b31769c965a80f8e3699dbc58be709073c61f6203d8fb9a3874fb",
+      "identityWholeSha256": "b2902d975f9be69e4cd76b519628f102621f7fde51de85fb987e5333be207c31",
+      "runtimeWholeSha256": "82ac157d104f561c599cf5b95589749b3d0ef4dc0041b3be61ff8dd8e091399b",
+      "currentQuestionWholeSha256": "4cd8b90c75bf8b28d6941d1135d82b8a3b584b1301ce9c75da7fe0bf20f70824",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_4b65c4d5f07e51a20f54254f3cb58c9896ffb5937c786ce253157270ef683c1a",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 5,
+      "metadataWholeSha256": "04c892c6d909d7d74004427ce5a193cf2b2105758bc1180ad0e0a0e5573b36cd",
+      "identityWholeSha256": "01f120c525f0d832f9ce23841b27d1a4867d7418c8a9154fb790eab7dacfd030",
+      "runtimeWholeSha256": "861a4ea8a9737858a01e4da2c249898da1ca898fd847bdfc06dc787df835446a",
+      "currentQuestionWholeSha256": "05a69be5f5aa3f668068fbca57e326e36115d312322d580c9d12ad8b7f289a1c",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_12860943ddaef3358660134a0d8d5007891be0a15104be47196a1797e9d5cc61",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 6,
+      "metadataWholeSha256": "bbfdf7edd65876b63794fc5570291acda7bf0e0beddaaf4f7942e9ce8342df89",
+      "identityWholeSha256": "760b5999bafe8d07ad7d446846cf19a331aec2a55229f030a0f07e85aab2b6cb",
+      "runtimeWholeSha256": "3c32986bf41c3f0d3782244dcae31fb0da54d7156d9b8356fdeba2a38956ec1a",
+      "currentQuestionWholeSha256": "8544cf9f41c2e2600f950ebbdbb4df1e1e5de538ef59bbf875d114f8de03ec72",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_8c2f1c37ae92a5f8d9c4248d0b4488395355b22592f7956c514c7af797045a3e",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 7,
+      "metadataWholeSha256": "dd30d90fc33a1131af987054e9cbb0b2633cab6441b4169591e14cba8cbe7503",
+      "identityWholeSha256": "2a323be5fe19d56f9d578e13be102a843b9aad2384ee8f1a9d8f6109ad59f656",
+      "runtimeWholeSha256": "b00dd31549abc6e34eb6cd93bc5b2d55d0bfe4555614c5f9b6d67153a818aa58",
+      "currentQuestionWholeSha256": "e2f93e1239d916ae609fe2591e105a0df4bd1ac37dbddc0cad90cc8c344e5df4",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_006d3d7fb3c9f11a0355c15b8df9cc7ec43e9de53da5b4e7d3171318ff7e23d3",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 8,
+      "metadataWholeSha256": "97b0a8051bbc2bd40944caad64ca6e700e079a2e8e9379c7f3659defabb48595",
+      "identityWholeSha256": "dbca474d6f08bfb044a22493a36ecb8741bae1bc4951f3bb44812f1120592246",
+      "runtimeWholeSha256": "805624f706e71ee36cc4511bbc014e4858cf37a5864991d8d13e241e1d4b2998",
+      "currentQuestionWholeSha256": "b99e57e6a75aca02c096ae218404ad7102caa7d9d7992b981d91bc93576e3f9b",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_f02ca0c6d6f22a766861024269c0d890a68808e08b50949ab0ecc68d1d5268ed",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 10,
+      "metadataWholeSha256": "d775755247e7bc544d05e9db22d642441c49af7583f08e0d2af5823c224af42a",
+      "identityWholeSha256": "1ee3fa6eff3d50b28d3cd85a8bd07a7cf232564ae72fbb87a60cbd5d8fa81e4e",
+      "runtimeWholeSha256": "e7b9ee86d024202c307e862674c501acb86a416a830555a80e8db93bcb6586b6",
+      "currentQuestionWholeSha256": "5a1ed553e3556f595235dc4141f3d30a212e978c83522699f3fc78721cfbc521",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_a2f1a03cd4f81c3ee3d3dcdff678cee5f47b574e3301c902048786b927e22e56",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 11,
+      "metadataWholeSha256": "41514f3823b5eb41467d0c00dbb232530ec0a6809988ecf74473986507a6b50f",
+      "identityWholeSha256": "e1a62b8a298c4ff3c3952b7aa07cefa04271933082944075950658d94999f4f2",
+      "runtimeWholeSha256": "cc782ecb30e23397334d1a5b5c4b20fcbae76c6bb9dfe5721998dd486421ce33",
+      "currentQuestionWholeSha256": "6d22f5f5e17813bb8a2b94a578836e8951ae5a7020de5c15fe9fd8c18788a1ba",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_ab1ed1af925a924cf90ec8f3e94c66f7ae52b07ac17faa277ab571c89c853c09",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 21,
+      "metadataWholeSha256": "22cd7995455e33b814ce82f58499f9341c2132d702abdf76e9771f1cfd9a97cb",
+      "identityWholeSha256": "f3e0428963047a0e5ed88de5957229a51cd018b8161ca730159c53af5fe190c8",
+      "runtimeWholeSha256": "83711665c8d339913cc6086f3a6b6f546d405c8d9dc88b7c22457aee9d14e67b",
+      "currentQuestionWholeSha256": "1a58f9ad2cc519019f8cd51c1753f2ff0599153285d837348a9aa4925ae06243",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_8d53b4019a9c831c7abc15952c4eec1b1c5901130240eaf4119697527a595993",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 22,
+      "metadataWholeSha256": "01818d9e63f7d276dc29a6c8afdfd058410a819ddf596b4d3727873fd0d90757",
+      "identityWholeSha256": "af8326d2da0e402d5ab20d41e4a8b40c7fc6739ab5a4df27e0a0e350332ee90e",
+      "runtimeWholeSha256": "29710fb31b76cc111c8ed47ba3322b5377c5ebdea851404ef14f583bb04072f6",
+      "currentQuestionWholeSha256": "8c58f057f8307b308f7fa90db77ab1b075f8d1fcb411062c3b1f8057ee536303",
+      "storedMetadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.12:exam-final_qa-v2:m3s2-e006-residual-current410-r8-20261116",
+      "storedApprovalType": "FINAL_QA",
+      "wholeIssuedRowsPreserved": true,
+      "sourceFingerprintMatchesCurrentQuestion": true,
+      "currentNative": {
+        "result": null,
+        "error": null,
+        "interpretation": "NO_CURRENT_NATIVE_REUSE"
+      },
+      "currentPlan": {
+        "status": "SUPPLEMENT_PENDING",
+        "action": "SUPPLEMENT_PENDING",
+        "reasons": [
+          {
+            "code": "CANONICAL_LABELS_MISSING",
+            "sha256": "c402b9e02cd0e83e832fdc690caae57d67c617ca626c4a9c81953d18d5196e69",
+            "representation": "DEFINED_REASON"
+          }
+        ],
+        "error": null,
+        "keys": [
+          "questionUid",
+          "reasons",
+          "sourceArchiveFile",
+          "sourceOrdinal",
+          "status"
+        ],
+        "finalPresent": false,
+        "finalWholeSha256": null,
+        "finalEqualsCurrentWhole": null,
+        "finalApprovalType": null,
+        "finalMetadataRevision": null,
+        "changedFields": [],
+        "preserveReview": null,
+        "coreChanged": null,
+        "sourceMetaChanged": null,
+        "applied": false,
+        "approvalGrantedByProbe": false
+      }
+    }
+  ],
+  "errors": [],
+  "inputPins": [
+    {
+      "path": ".archive-meta-register/evidence/m3s2-follow428-native-20261115/E006.meta.json",
+      "bytes": 132701,
+      "sha256": "888a93bffe0cfc4968f9cd6bc0408cea67106e2fd43bd263ea67f4f4ce53ab2c",
+      "gitBlobSha1": "0442f2f5fd975ae4697c9657fb61bd1c72dd83e5"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "bytes": 807919,
+      "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551",
+      "gitBlobSha1": "c9adf854560c9e7c3a1730a8e7339f5a13f24af9"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
+      "bytes": 584321,
+      "sha256": "6f0c3508c293f6861a7d9a2641be2c90769d8cc46c00c75cbe67092edb009d54",
+      "gitBlobSha1": "6a8837b713a8bfec9d415865fd1a29005da30dc3"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/calculus.json",
+      "bytes": 89336,
+      "sha256": "dd2bc4069ed66978b42550739c4c7807a30346463a78dfa81f5613d1680f129c",
+      "gitBlobSha1": "dd6bcc336d20e09b671559967d56045285e618ec"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "bytes": 110560,
+      "sha256": "c4d237b4a25cbaaaffe9c923d79eb1240ec7ae2c2cc6488204a392a14ccb06b1",
+      "gitBlobSha1": "d0a27974e46884b8e46d7ff90b0575d12817405e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/counting.json",
+      "bytes": 82454,
+      "sha256": "d6dac004fc42c4d7c5e8fc411ea97bc653ba5681079698f77f352c6518d6b9e4",
+      "gitBlobSha1": "b0c3ed16a89eaacde6516ee10ea97b135d805d95"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+      "bytes": 234975,
+      "sha256": "97a3b7de9161ee8840ca41c2a4c8ca9876734937198d87cb4c16e2e9e89849c6",
+      "gitBlobSha1": "654a94820dc861500dc7efcb2e3141e31c039535"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/logic-set.json",
+      "bytes": 38585,
+      "sha256": "f33efc641f56ace7dd121238f4b2638f410570bb4a8f47642111df67992b0eeb",
+      "gitBlobSha1": "4f8c13c5836510dc445caf6a014ba5653a8096a1"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/middle1.json",
+      "bytes": 11017,
+      "sha256": "dab255cf0df9d191393e1fe7bc5b72a68eef8e2c94f15ed172a644a4380f4049",
+      "gitBlobSha1": "c183f7b20f49e44bc16faac0f5fe013ab9d155de"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/number-theory.json",
+      "bytes": 64889,
+      "sha256": "c5e617dd42eca2268207905cdee4ebe61939f76f9108349b692aeaee47b5bcf1",
+      "gitBlobSha1": "3521d2289b1b65527944f63536b2b60a68f25958"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "bytes": 275715,
+      "sha256": "77802a9b81c4e5e5739ed0996de7d6d36153116ee2067728a2d6944fd23472cc",
+      "gitBlobSha1": "0fcd21e3b2926746ded9f34c56f08de0dbc9ce1e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/sequences.json",
+      "bytes": 3813,
+      "sha256": "dbc95de1be6ba1c3ebd487d1827f8d6c325d2ae909981ff8f61544742678957a",
+      "gitBlobSha1": "bdf3f98c66751c309625436bbc333a88bed4b4e7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+      "bytes": 150276,
+      "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657",
+      "gitBlobSha1": "2d9c9a6e9e697c4ba0fe679c22b06e503afa73eb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/trigonometry.json",
+      "bytes": 64560,
+      "sha256": "6dc2372dc0ed53987215f08a003a91c3453e2e5c2988f43ba730a2a8ec599974",
+      "gitBlobSha1": "46c5fd4f64209e5e9d0dc098030bd318c7f1f0de"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "bytes": 263680,
+      "sha256": "ca7a0755b90a4ee2e35ff76078bd31870a7f62733ff1002c4993ab393caa85dd",
+      "gitBlobSha1": "b0e6e384f13910d9dc8af378cedc334b7336d367"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "bytes": 2268,
+      "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf",
+      "gitBlobSha1": "1fd85b5f2e2262cbb1bb0cf34ab643c8085aa7d5"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/aliases.json",
+      "bytes": 130,
+      "sha256": "96e5c8ef2d0a31204d9b58b38fd1c613af78c54d849004659d251a61a47cce63",
+      "gitBlobSha1": "29b3f87ca3067ce165dbde00d783ef84520f5b38"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/bindings.json",
+      "bytes": 23181,
+      "sha256": "d659538f5253bd081706c299b82ac5814ba3cb85e64420a8a282ab042adbf61c",
+      "gitBlobSha1": "10de34c1675f86ba59ebd0552e2e7b930fa8d219"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/pack.json",
+      "bytes": 1089,
+      "sha256": "6457d8d5956a4da6b6b78eed0d271e440b1ed398438a7b29c708e4fd3617c591",
+      "gitBlobSha1": "f64e577df865d743ab55675d7ddb3a1ef2b8e531"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/taxonomy.json",
+      "bytes": 74023,
+      "sha256": "1aa1dcd5faa83efcb0ec211c631f935ca2e1c604bb41b58fd30ae977cd420f2b",
+      "gitBlobSha1": "04c4d2771f925e7d5d07add939528bdbe4441f43"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/aliases.json",
+      "bytes": 344,
+      "sha256": "f3af3f54d502bf8e7ae7b6dd84ac74ca46eeb8aa928171408e38a0f6f8f3f50c",
+      "gitBlobSha1": "967fb8128dac9e6317a8a82287720b001fee3b54"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "bytes": 45284,
+      "sha256": "ff59576b8df6c016103841234f0bc64bdfcc16ac875df2f23f8d299b4ff66330",
+      "gitBlobSha1": "43787d9a0db21270bc724eb6809cd1bcc81ea004"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/pack.json",
+      "bytes": 2292,
+      "sha256": "f9f334947ab521a168c27eac76c3d87a25e9e31a2af9c8f88fa50ef4a1bed427",
+      "gitBlobSha1": "5453ad4713d3528ae813ef8891518e741d06ce15"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+      "bytes": 84631,
+      "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2",
+      "gitBlobSha1": "36df7a6afc8d919743b256fb87af88428bae1081"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/aliases.json",
+      "bytes": 220,
+      "sha256": "0cf59c0d43ef96fd46b4c16325e0c3d7f6f6aadbf1decef262658e6f5755110c",
+      "gitBlobSha1": "e12ddf41e652f81c8a15f2ab93586fd95e94ddba"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/bindings.json",
+      "bytes": 14617,
+      "sha256": "2a2b9d2cdf3d5b2cdbf27279d85d69b392f70e5706d073b8ed92bf2a4ea13160",
+      "gitBlobSha1": "f31d642f743e0f97fbeb68d37e44ef863d15d97d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/pack.json",
+      "bytes": 1282,
+      "sha256": "14be7fac9251ae3b58994a942651080877b740f2dbe1eb6ce2a0dde0782e8ff2",
+      "gitBlobSha1": "ca185cea2d48e0f7837fc5b8f1591d7b28b9e935"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/taxonomy.json",
+      "bytes": 44288,
+      "sha256": "6cdb69282a67115935134e5d6d7632c51fa9e26126ae4a45e1a1ef48813b471f",
+      "gitBlobSha1": "2c9b670ef99fa5a418320a9146e06c6a3d5029db"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/aliases.json",
+      "bytes": 303,
+      "sha256": "a0e69ab0e7b3825763272f086dccdb86ef2cd0730552acf91529092c884d3fd8",
+      "gitBlobSha1": "e16b6f850ee227f43ee3b02ab347529098f8aa25"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "bytes": 120302,
+      "sha256": "e881896df6f8ae5a5728876e1fcb0dffecb9e9bdc01f7e50f10f842eaffb826e",
+      "gitBlobSha1": "37d7cc4ba8c1b5356f51d27d183b25db1b9ce023"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "bytes": 1844,
+      "sha256": "eb7f9aadc04019ca36c4c0255fa46f84a5a5de52d031e5fe5e71665a51a97c2c",
+      "gitBlobSha1": "8f4681aa70523ae547e2a5f1c13a76c7bfd7b66c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "bytes": 224909,
+      "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456",
+      "gitBlobSha1": "73466c5d547b14ade63df5975925f24a018641e4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/aliases.json",
+      "bytes": 26418,
+      "sha256": "a459a72979b235d531b3b9992d08d5dec7d4e60f3913788c400d442dba79ece6",
+      "gitBlobSha1": "f470e6a944da09ce7b9b406364f32894054af67a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
+      "bytes": 60631,
+      "sha256": "35302a5b1448feea34bb03ee24c9b7059a7f84dd9510fb19274250f39fab29ad",
+      "gitBlobSha1": "28c9a1639425ca1b8f4375da6612d15c7f5f94f7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/pack.json",
+      "bytes": 1338,
+      "sha256": "eb9511053b56fc9b1ee7c127306b92e03914e42b8e855b64e174420c14d7b17c",
+      "gitBlobSha1": "f3585265e2cd1a87891397f7f4540b97b0da4a2e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "bytes": 173977,
+      "sha256": "cf6919c4a11f9157351bec2aed6b791c8db96882ef3c21b62dace57ff39ea1cc",
+      "gitBlobSha1": "e524d31b11d7d703477a6c0f3d8361312a1a860d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/aliases.json",
+      "bytes": 110,
+      "sha256": "db186215fe6ef0ced6c6dcd3825727af1c91f77ad34a642d23a2febc09b81926",
+      "gitBlobSha1": "c2339460c6e6d2fc91e2fb7ab2f9665899cdac55"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+      "bytes": 4015,
+      "sha256": "af843d20885e448ea5a730d3c8a7a5e8b21abf93c45d5658f4b6aa5e9ab3b1f7",
+      "gitBlobSha1": "0d8bb6f228a4d468f403543f9bdcf2892d284e56"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/pack.json",
+      "bytes": 818,
+      "sha256": "2b560ef0db7ec3aad0178a73d60c1cf6de7e267855708865bb67d890e7c20610",
+      "gitBlobSha1": "bcb6f0552ef27e1b899772c8fc52d171bb407ca0"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/taxonomy.json",
+      "bytes": 14244,
+      "sha256": "bc6a43a4b941af7891014d311396da352ceac53c30adf54ea1e111cbb7fc4d85",
+      "gitBlobSha1": "6e94b45321ef28b1edfff81bbc486ae4ff1c07ff"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/aliases.json",
+      "bytes": 108,
+      "sha256": "c540580aba9060ceff81319155d7c1337bf1e811289483511c3030c2d68449c4",
+      "gitBlobSha1": "27dce1a6fe73d43c73e79c384e60c7b9f04f6e2f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json",
+      "bytes": 185585,
+      "sha256": "7c2334d36cd2eee4eb90f6962d4301317fcde385a9cb88f1c1e15a10f75ae9f8",
+      "gitBlobSha1": "ec72c9d6c616382ebca4d6a7392df8e04db15619"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+      "bytes": 1861,
+      "sha256": "9f42add5dc58b9a73cec846d3840e25c51bb1b42a1e6fab61cde4f613415ca19",
+      "gitBlobSha1": "436ee72ea6a5a7a665832f631d10ac798798027b"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "bytes": 237856,
+      "sha256": "b053ec5faf408fe659e1f9232cba84aca8abed8c9e448548c7693e12cc0ab0fb",
+      "gitBlobSha1": "754ba72c796da2f8ddc9401137700b2e4222c70f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/aliases.json",
+      "bytes": 147,
+      "sha256": "3c46a5ad22e2ba13fa7d8dfb2051ff4519e790befea0701908d4ff300ac5f461",
+      "gitBlobSha1": "cb8f3753f29de1b874d1a819724daa8adc1ef465"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/bindings.json",
+      "bytes": 19950,
+      "sha256": "ab37bbce702c73d28dd14415d6ba7fe1cb55c42417162f97f497b277f3da9379",
+      "gitBlobSha1": "e2a47d81ddbc5c531ea53b22feb049c2c82d12f7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/pack.json",
+      "bytes": 1347,
+      "sha256": "60cbdccb978bafbf4edf1bf04e081fb39970a0334c827079957e3ba6cd796648",
+      "gitBlobSha1": "7f4b99b2fbcc7088be9e013ecf44e5de2df0e520"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/taxonomy.json",
+      "bytes": 390,
+      "sha256": "533eb7222eb313e034fddb8e3034653dc8763472ab232c988d10d54a36ecea4a",
+      "gitBlobSha1": "8f3eb8a74d70e267ff37a66b20c17fc50d74cbeb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/aliases.json",
+      "bytes": 331,
+      "sha256": "9d5bca3366f3a8823afd506be37f6a8b196b1599faaa5f53a548d4023c48d78a",
+      "gitBlobSha1": "16f6217cf7f00d8bc759cb3de313a22674d1ac91"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "bytes": 14104,
+      "sha256": "b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e",
+      "gitBlobSha1": "9b3d0cb40054198b34d36db2f7c5ad2512a94c2a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/pack.json",
+      "bytes": 1216,
+      "sha256": "91c6493661c00809e6b1c613f886ac4eb37289558abe8274b3929f5c2cb577ca",
+      "gitBlobSha1": "6d5e8b79cacba5a6d9cc2ba72c5a4666a986b938"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+      "bytes": 36175,
+      "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0",
+      "gitBlobSha1": "b6d279a2913aac0a754b9bfb4ccf3bb74c437cc5"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/aliases.json",
+      "bytes": 332,
+      "sha256": "9fb49614a2829b3d928e90a2d91d98c3a53dd6e07bbb47fbffb31b37f33e3912",
+      "gitBlobSha1": "588f977b18de391f189def3aeae74f56f22bfb2e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "bytes": 25802,
+      "sha256": "50605f20f9f4a37f186ee79c983db4631b4e8922cb7dfedf791722b37497ffe4",
+      "gitBlobSha1": "dd4b573c8b6a9cb0a90211f26034124ad6378379"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+      "bytes": 2406,
+      "sha256": "b9337290842da013fddda2afe899361232be1428d3395ee25e355459c9358f24",
+      "gitBlobSha1": "f415d54096b82524af8f81f2354b878c5ab1a080"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "bytes": 61754,
+      "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f",
+      "gitBlobSha1": "a103610df452c6158936251920f05bb73559395b"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/aliases.json",
+      "bytes": 210,
+      "sha256": "06a45ebecbd7dacfc71e1f795230e6341deee6b726127b807b3f3e99bc13676d",
+      "gitBlobSha1": "7826146fd794dc9ce7ebc68cd0ff60b026fc416c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "bytes": 109136,
+      "sha256": "fdb92fca11f884042792fcbd6daf65b813117d0903ff635a82933a3864e48ac4",
+      "gitBlobSha1": "2795ded1489e66139deb8c1989dfae72c3335d52"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "bytes": 1277,
+      "sha256": "62ae2428ec07ed577d68afa7081515cea21c78794f88685228e42575fb3ba2dd",
+      "gitBlobSha1": "2442f0fa8ee618192f6b36825b5acf31ebcd1a21"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "bytes": 224367,
+      "sha256": "45fce2196125b7b86e8169d3c0f1403e99989540d06de755ce2bffee84a9a741",
+      "gitBlobSha1": "6392ec892e35142f8011d9388a6caeeccbe9904a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+      "bytes": 107252,
+      "sha256": "422eadccd96aac0451555aecf69be61bd0405ec4964036fd6eba9c5ccbb16801",
+      "gitBlobSha1": "1fde5e7e87340444d8b6260911584f540e8aa6e0"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "bytes": 104445,
+      "sha256": "5ae9a97704ca099fd6a6f107ffb3625d91997bb9cc4578333970071b64f123f2",
+      "gitBlobSha1": "c7396a1e083f3a6d2ba19441729dfec77528f65d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "bytes": 1510,
+      "sha256": "7f4e69baf53a1ae67ea867440ba9bf93ff5a6b288c4502b582032951368523cf",
+      "gitBlobSha1": "d68138ea4f7893738b91db5bea823d5377a0480a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "bytes": 472276,
+      "sha256": "30628c37c5225f8f7c653645dd7433d9ca4203d6fa95721f489e3d6fce650a80",
+      "gitBlobSha1": "e117f17661c8cc13c5624153eb655860e1b475fd"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/aliases.json",
+      "bytes": 160,
+      "sha256": "932b39f7ba367e04a7c655ed044a8fb109536b45cb48f7155780625b6b73cbf6",
+      "gitBlobSha1": "2ab85c599d95db5faf46e824aa8ac09edb73c648"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "bytes": 33700,
+      "sha256": "9833476cc60ebb0ca440367c474eb926010e04f90ba89bb2096ef2b23b79c6de",
+      "gitBlobSha1": "57fb4d6a30fb6d6c5dcbd3237e838a7c08bd606c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "bytes": 1003,
+      "sha256": "a2a475effb045717df8c1af760c412076b3c3c92d1f3dcea34f3ef846208327d",
+      "gitBlobSha1": "e11589e402a6097514eaeabd712bd73540326cc2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+      "bytes": 131616,
+      "sha256": "234121a8177fe104ef9c3decce046395ee4069a28b81624efdb39984d2a6eff4",
+      "gitBlobSha1": "363101b2cf987e71e80526a7e720cbd2dbce4527"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/aliases.json",
+      "bytes": 160,
+      "sha256": "658690343529c52ca583035c1d2811dd3bf816f383ca42a4bc41e17f24bb52ee",
+      "gitBlobSha1": "d39f0c2c44c8651003abcbff890d749615333aca"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+      "bytes": 41888,
+      "sha256": "2ae38abf26297d925f76dd9f1531886add680a08a0d368a223b1ea73a592364f",
+      "gitBlobSha1": "5099eb252f35116970608b2629a6cdd6eaf81f0e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+      "bytes": 1102,
+      "sha256": "719cd81b6a2d8135317eedfccf0e012df9e61daeacb5f818185eff35eedd38ab",
+      "gitBlobSha1": "08dfd6408af6352611f80bc343b36c31eedefac7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "bytes": 238472,
+      "sha256": "ab1b0b9eada89a5c1d761ed08c9928496bb1024035a59ecd1f80cbc12107fb7d",
+      "gitBlobSha1": "b58847fb54832551b1a36d7ad58f99b66cb3fa04"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/aliases.json",
+      "bytes": 280,
+      "sha256": "5a5c5839128fbcf40c0cdee802f1e7f6b7f9408b7a18157bab07194ab02458ee",
+      "gitBlobSha1": "691e810f28bcb60b7adf500b1f760813ffef6918"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "bytes": 101101,
+      "sha256": "ca1523d9fc65cd2b37c7b4cd99203e1785b231b4c09bc30a9cd7d9b3e86bf685",
+      "gitBlobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+      "bytes": 1963,
+      "sha256": "a31b21f5067b468b5c450b55775e03d66b2df5c4f8eb3f246ab36b83efe05a6d",
+      "gitBlobSha1": "384d7de0daa757fd363319bb062f3f5d809f2572"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "bytes": 136069,
+      "sha256": "d47934ac1d6729dd42f434e19bf49b47e5175c4125d496541c88ef90946b8ec1",
+      "gitBlobSha1": "aac8ee94fd982755358eefc936cff50fec2d1601"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/aliases.json",
+      "bytes": 2086,
+      "sha256": "8eaf72d877a8b560455ef948c7229faf0a6c3de841ab9d962edb513259f3422a",
+      "gitBlobSha1": "0719579105cb0526944edd8235c24a906298ee91"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+      "bytes": 71123,
+      "sha256": "5d11705a488f3de996a1a0be10154168748299015052e6d5e1b19d7037817fb9",
+      "gitBlobSha1": "9f650c46d1b42a7b05951465dc5c124e1b0ac963"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/pack.json",
+      "bytes": 1340,
+      "sha256": "19198198adf5cee0fda38708ae71313272d60a854afeb71a750fa0a41945b552",
+      "gitBlobSha1": "f888794056a183bcfe55759b738dfae35f30f4e3"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+      "bytes": 136912,
+      "sha256": "f39e9445169d2c0f42d38a4bd1e3c41219e7e03f28b9a41ab4d76542f638e520",
+      "gitBlobSha1": "0dff04fc3f75a1d93a9f8c2a4f83f8165fe63421"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/aliases.json",
+      "bytes": 204,
+      "sha256": "74f9273c95bef1eb0188aab181b13de31da36c8b54172c72efe712382296db98",
+      "gitBlobSha1": "998024f20f21e7ceeae52683921efd81d2f7c0af"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+      "bytes": 5353,
+      "sha256": "ba5f1e2fa976ef7434fae7e461b1228df6f5b0ce07043e1448a291e6233b9149",
+      "gitBlobSha1": "f0da1e32a7f1ffc539595abf3844deffecb7e37c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/pack.json",
+      "bytes": 1229,
+      "sha256": "71a532845d684687fd85992737452fda79537804ddc5d7aad72eb4d3fc0a091f",
+      "gitBlobSha1": "cb7c91719a432bf6d6f447d7f9d35cd5eb7eaa3e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/taxonomy.json",
+      "bytes": 18300,
+      "sha256": "e00d94231656f828f82df3e4523135aaf420c4cd1cf3b577b964a864608226da",
+      "gitBlobSha1": "3496603694ec3ec27e952bb869eab4ae75371bfe"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "bytes": 21746,
+      "sha256": "0973cc20ab654d1a098cb079add18762722e07e95cd7b35047e1434f45b7bd0e",
+      "gitBlobSha1": "96ce907d0645c53e007637ec75ec78b2d95d1a94"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/aliases.json",
+      "bytes": 145344,
+      "sha256": "d34f5c3f16b85f7a95940ffa257e5da0858ff60e750afd931cf0402bddebdc9f",
+      "gitBlobSha1": "6bd5d2ac3390f64251336c6bd401b009de5b9af5"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "bytes": 1709699,
+      "sha256": "5143f7ae0bfdd5f5f1ddd3a6fb58eb2db6e5ce0500017748faca5d68ed0c1dbd",
+      "gitBlobSha1": "af19a0e51275f480f9b2bc0f6c34d4740ca59de3"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "bytes": 263721,
+      "sha256": "63a945bfc6efe513280a6d16ffa981a9edc21f8178e403642b4777b4aac4aad0",
+      "gitBlobSha1": "5bad36ef4c889c19f0857844040ee3ffe0e3f91d"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "bytes": 974569,
+      "sha256": "9532b32442acb8819e327483090e84f401a35923171f1ce8bf0b387d13ead9cf",
+      "gitBlobSha1": "9f5da5eaee127d668cf6e7450df338a818d91d6d"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "bytes": 1301,
+      "sha256": "37e7beb87ffd45a028f9a213cb6a272d053d29169ec764dbb4dff37b1aba368f",
+      "gitBlobSha1": "bb26ca504fcb6530682c64b6c7e03ee73945623c"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "bytes": 2305248,
+      "sha256": "a168fe3b061e5d4dac8419654042e0a0a949ef55b3ad77e472896347ec6064d8",
+      "gitBlobSha1": "739c2c65a2902bd2ec812e832d97828b90533a97"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3-residual547-publicc0f6-current96-r11-20261116.parent-labels.json",
+      "bytes": 3680,
+      "sha256": "f3637fbfce41df6cb4f48b1f0f6bc0271fe361b4480e1bc1ce18c9316702ad8b",
+      "gitBlobSha1": "e135ed6b8d0ec0466958e9a12742291a8cdc25bf"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e006-residual-current410-r8-20261116.json",
+      "bytes": 208512,
+      "sha256": "73176562cdc8dd91b7025f23cd9d9595c5acbfa6470c3403876367b9f7068677",
+      "gitBlobSha1": "253c5aeae229085d9bf6bb51942f114743981d44"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "bytes": 1034057,
+      "sha256": "7096d7cd992e73fded6424f502416f1d82bf34174d7a925ebaac60cc52338710",
+      "gitBlobSha1": "4c589a8ea99668377566f57740d68929da8a6a58"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "bytes": 2106487,
+      "sha256": "41c4274aad3facb12486f15390b9630296a1639eb0f3ee7c7cbab4fc19d9ea74",
+      "gitBlobSha1": "097fa95ababff0df4fca7f733a125fb61c56c49f"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "bytes": 1331792,
+      "sha256": "834e0551aa957dd2ca90bd8974e049465070f74fcc060d15a68a6563f63cdeba",
+      "gitBlobSha1": "dbf32ba39549120e7b016bb478fd8b7df54dc205"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "bytes": 5796746,
+      "sha256": "2c122c61dbc81cc77bced50d366b3548fd6926c6f6ad50b5f1bc1a2fee14f0ab",
+      "gitBlobSha1": "b3ab91ba57d12183af2372da1e244a6626a852bd"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+      "bytes": 6727222,
+      "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+      "gitBlobSha1": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "bytes": 608916,
+      "sha256": "75d5aa5d1a746f0fa168f67f9f3eb1de93db7c51bc29a9be04c7736e4d6c8391",
+      "gitBlobSha1": "f99dbdb7aca6baa5300f2102959a35a628d0f53e"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "bytes": 620246,
+      "sha256": "6ca2d99a8bb44024364be13d3ec0f749f727a66aad52bc1ff0430999f522c930",
+      "gitBlobSha1": "ab230d73ad39400e4fd87cc89e66b4cb618a5597"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "bytes": 6976077,
+      "sha256": "1763c3bb136b131b9de1eadb4c95ea962df3343ef1c23dbef7fd1910bf3b1fd9",
+      "gitBlobSha1": "c42ff5c9189dc837eb5ec938cb6ae022671eaa24"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "bytes": 1643163,
+      "sha256": "7ac466ae29ead3287d67bbb9589a45ae21f1356d3027b40860e8c7811cab3827",
+      "gitBlobSha1": "8a096d74050fd2b1f1da8244ddcd9744e1ae14da"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "bytes": 4010784,
+      "sha256": "db61a1447e88bd7095ebe6947002e774ccf5ce239784195f702a36e6cf182c6e",
+      "gitBlobSha1": "43e950485e0cdd4aaef5a80f4cc13d8814c46fa4"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "bytes": 1181959,
+      "sha256": "f994fe456947710e523c9d9295b16f49f933a03979b3386a66ef08e5c033369a",
+      "gitBlobSha1": "888db1dfee9e4d26f3042c8984b30acec2a94501"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "bytes": 27938431,
+      "sha256": "54109424643693dd8cf1914d61624e3d4ecf9b6546ce086bb00b6d8dc5635511",
+      "gitBlobSha1": "4a7890a5d683e7f11e568b2a7d250069716caee6"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "bytes": 74737223,
+      "sha256": "651b40880dae37b851be1ee348b72c6d878dd109bb078cb5df572a606ad00d9c",
+      "gitBlobSha1": "b0f9f54ccc3ecb4b5a62d4fe835671d93bb276d2"
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "bytes": 64226,
+      "sha256": "b0e801cecba43ad4cffd2009a1a5cb1a5e533330481bfd24e9401e0d7480470e",
+      "gitBlobSha1": "a06c36b865b617f8c327cc90e1f4a931668a3e19"
+    },
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "bytes": 13944,
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed",
+      "gitBlobSha1": "93ed7214a5e4dc0b0cdd9853d388bca26e64a172"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 60529,
+      "sha256": "dbcb5bc3b7e999793e7f9a321872ec58e0f50c0c2e2cf2cd63adaadbde6141f8",
+      "gitBlobSha1": "dfc382f28643fd5fe9e2ca6a719beddd42fc0c55"
+    }
+  ],
+  "unchanged": {
+    "head": true,
+    "worktree": true,
+    "inputFiles": 109,
+    "issuedRows": 12
+  },
+  "limits": {
+    "officialPrepareRuns": 0,
+    "registrationCalls": 0,
+    "applyCalls": 0,
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "runtimeWrites": 0,
+    "approvalChanges": 0,
+    "mathematicalReview": 0,
+    "studentUiCaptures": 0,
+    "fullRuntimeTestRuns": 0,
+    "nativePlanResultIsNewApproval": false,
+    "fullSuitePassClaimed": false
+  }
+}

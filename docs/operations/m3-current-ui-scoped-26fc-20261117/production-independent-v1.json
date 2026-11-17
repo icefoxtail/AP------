@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "archive-bounded-independent-code-review-v1",
+  "reviewer": "ci_m2s2",
+  "owner": "m3s2_release",
+  "decision": "STATIC_ACCEPT_Q5_Q16_CURRENT_UI_BINDINGS_DYNAMIC_PENDING",
+  "manifest": {
+    "gitBlobSha1": "4f2744955009bcba3b42260d8e91f2c3e98157ba",
+    "bytes": 13722,
+    "sha256": "1ac0ea3caa07e3e6279596669bf8a904d05ac7a3cac1e7c0f2a568452f927bf5"
+  },
+  "reversibleDelta": {
+    "gitBlobSha1": "d2c9a96900e409e6987d54af413d36c82a8cb357",
+    "bytes": 41731,
+    "sha256": "2adaab0774bfb1bf36a954551ab890b6072bb2922aae76cba36aa2da4c82367a"
+  },
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+      "before": {
+        "gitBlobSha1": "0acb6f9469d26ee6bcf358a7780be1284d5b4546",
+        "sha256": "3b4fab8fd690ea8f395f5ddbe4724a145b121b3f0586b5d66ab2c6b3113dd277",
+        "bytes": 34125
+      },
+      "after": {
+        "gitBlobSha1": "71eb98b06f359f1f1a18f62fa281b01e1ea94eec",
+        "sha256": "695298b878666f01aafbce21378f991b82b865e8b359849df0627200fd255b7d",
+        "bytes": 50755
+      }
+    },
+    {
+      "path": "tools/4slot/m3-e052-q5-complete-given-continuity.cjs",
+      "before": {
+        "gitBlobSha1": "cdd8ef220e37ccb431b6f9cf43403a37b2b32feb",
+        "sha256": "cfaa78c46b33d45527f008824c02c3b52f9dd88903cf9a25c350a396872b3853",
+        "bytes": 8792
+      },
+      "after": {
+        "gitBlobSha1": "a3929b0965545a279486c81b060357bfc66b5d03",
+        "sha256": "f26f136f4e1fea5409512df26fec6815929d88177ce235d5fecdfdf5cb6ac3b7",
+        "bytes": 9456
+      }
+    },
+    {
+      "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+      "before": {
+        "gitBlobSha1": "2878cea681d01854b5b398ec5e115a1c94473f89",
+        "sha256": "1b7fa586aa0d6518b95262a870fe75bb5d1782f0da05eddb1885293d8a07ff5e",
+        "bytes": 15434
+      },
+      "after": {
+        "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
+        "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
+        "bytes": 15920
+      }
+    },
+    {
+      "path": "tools/4slot/m3s2-layout-continuity.cjs",
+      "before": {
+        "gitBlobSha1": "cb7e91df70472e1d6dcd60e70ee725822cf83c20",
+        "sha256": "b25dbb65df95ca2b744be309e313a545b5f2fb4a4232837e7a79e88e3936e08c",
+        "bytes": 32918
+      },
+      "after": {
+        "gitBlobSha1": "ac7eb5ebf99620ea5e9620f3e592e1342add30d7",
+        "sha256": "9683ec12b0253d6c2f7bd7feadb800833e6a4a7798e02178dafc53788621030c",
+        "bytes": 44099
+      }
+    },
+    {
+      "path": ".archive-meta-register/4slot-m3s2-layout-continuity/qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf.json",
+      "before": {
+        "gitBlobSha1": "0874eaad4c591ab35ad0996c1e445ade67f98c61",
+        "sha256": "1b25e5e592d05428e6818d63f27f0f18c20940524622bd3928e14623e64fad6a",
+        "bytes": 6568
+      },
+      "after": {
+        "gitBlobSha1": "8a54a3d9a00dabed465b495b0c89723eb0a600cb",
+        "sha256": "09f91865024aaa7b2162244d8abaf6a2bdd76c7df81342bd1e242a013659dfd4",
+        "bytes": 6642
+      }
+    },
+    {
+      "path": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "a11402180c3b1f5a124905dbdb5e1ff78c34d600",
+        "sha256": "896f16b36f9cb2878f758f80ed0a836fde765dc78cfc76d9f697af691004e1ac",
+        "bytes": 8192
+      }
+    },
+    {
+      "path": "tests/archive-m3s2-current-ui-reuse.test.cjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "28ba356add45f8620c18eb68189037506e01b8e7",
+        "sha256": "07255f9d2036c99af4966f730080bb0a9ed28bc614e41654760a59ac85bc77b1",
+        "bytes": 10741
+      }
+    }
+  ],
+  "inverseChecks": {
+    "productionFourWholeBodyExact": [
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+        "wholeInverseEqual": true
+      },
+      {
+        "path": "tools/4slot/m3-e052-q5-complete-given-continuity.cjs",
+        "wholeInverseEqual": true
+      },
+      {
+        "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+        "wholeInverseEqual": true
+      },
+      {
+        "path": "tools/4slot/m3s2-layout-continuity.cjs",
+        "wholeInverseEqual": true
+      }
+    ],
+    "q16SidecarExceptUiWholeExact": true,
+    "q16ChangedFields": [
+      "ui.technicalRef",
+      "ui.visualRef",
+      "ui.artifactRefs"
+    ]
+  },
+  "authority": {
+    "q5": "Original request application/technical/visual evidence is read first. Exact prior refs, published ancestor current bundle, frames, witness, PNG and explicit font/provenance difference join the current branch. Original Native GIVEN/UI/ancestor resolver must return true; source, original question/body, 25 original vectors, selected whole MD/ID/runtime, ACTIVE and original review authority remain required.",
+    "q16": "Original source/vector24/selected whole MD/ID/layout authority remains unchanged. Exact sealed current proof validates before an unexported object-identity token selects the fixed current engine. Unchanged legacy calls still require the old engine. Current served/font/asset loop, selected generated-data projection, capture/tile checks and original visual records remain mandatory.",
+    "cache": "Builder9fb98cdd disables reuseCache when Q5 entries or prior Q5 claims (and Q16 layout entries/claims) exist. Q5 worker collects current proof6/live refs before original Native and rehashes every observed input before returning. No generic hash shortcut is introduced.",
+    "originalRequestConnection": {
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/approved-request-v1.json",
+      "bytes": 15405,
+      "sha256": "e0211e0093661e782455ce631e8cb68fbd1fe9f65479e3a8b8162b8ba82eb317",
+      "gitBlobSha1": "da393b3aff6d7c482da1c9f505ea4c46c27b28a8",
+      "markerRefs": [
+        {
+          "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+          "path": "docs/operations/m3-e052-q5-complete-given-20261116/application-basis-v1.json",
+          "gitBlobSha1": "f2a96c282b365405c05ae7ad78c04c710ed635bc",
+          "sha256": "5c1cca89666988ba8e5f500c1eddac525d6dcc4f5ad01f17eb4c6e7bbf7a025a",
+          "bytes": 9022
+        },
+        {
+          "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+          "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-technical-v1.json",
+          "gitBlobSha1": "e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb",
+          "sha256": "c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f",
+          "bytes": 76825
+        },
+        {
+          "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+          "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-independent-v1.json",
+          "gitBlobSha1": "ba2b198f2e8876f2667f29e12e595556714460c5",
+          "sha256": "d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e",
+          "bytes": 1736
+        }
+      ]
+    },
+    "noNewMathReview": true,
+    "noNewSourceReview": true,
+    "noNewNativeApproval": true,
+    "noNewFourSlotVector": true
+  },
+  "focusedTests": {
+    "q5Defined": 44,
+    "q16Defined": 43,
+    "reviewed": "Default published metadata/ref-bound positive and mutation checks; optional flags invoke existing original dedicated resolvers read-only. A default metadata test success is not Native/Builder/Consumer PASS.",
+    "commands": {
+      "focusedQ5": "node tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+      "focusedQ16": "node tests/archive-m3s2-current-ui-reuse.test.cjs",
+      "actualQ5OriginalNativeAndVectorResolver": "node tests/archive-m3-e052-q5-current-ui-reuse.test.mjs --actual-native",
+      "actualQ16OriginalAuthorityAndUIResolver": "node tests/archive-m3s2-current-ui-reuse.test.cjs --actual-authority",
+      "actualNotes": "Optional actual flags invoke the existing dedicated full read-only resolvers on the exact integration tree with original Git/data/ACTIVE evidence closure. They do not generate a global index or claim builder/Consumer completion."
+    },
+    "execution": "NOT_RUN"
+  },
+  "integrationFinding": {
+    "id": "Q5_CURRENT_SHADOW_NINE_MISSING",
+    "status": "SEPARATE_CI_ADAPTER_PREPARED_INDEPENDENT_REVIEW_PENDING_AT_PROOF_CREATION",
+    "reason": "Unchanged original request evidence walker cannot discover separately published current display proof6 and extra served3.",
+    "affectedPaths": [
+      "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/visual-current-reuse-v1.json",
+      "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/technical-proof.json",
+      "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json",
+      "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/producer-frames.jsonl",
+      "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-desktop-tile-01.png",
+      "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-mobile-tile-01.png",
+      "archive/archive2-output-bar.css",
+      "archive/exam-display-title.js",
+      "archive/archive2-tokens.css"
+    ],
+    "adapterCandidate": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+    "dynamicRequired": "Authenticated missing-only adapter and original resolvers must run on the exact integration HEAD before current restoration is claimed."
+  },
+  "verification": {
+    "rawGitByteCalculations": true,
+    "wholeInverseCodeComparison": true,
+    "productionOrTestExecution": 0,
+    "syntaxExecution": 0,
+    "nativeExecution": 0,
+    "builderExecution": 0,
+    "consumerExecution": 0,
+    "imagesViewed": 0,
+    "sourceQuestionEvaluation": 0
+  },
+  "limits": [
+    "Original static/UI/math decisions are reused only within their existing bindings.",
+    "This review does not establish physical registration or generated-index inclusion.",
+    "Current final integration must preserve immutable publication ancestry and all live evidence files."
+  ]
+}

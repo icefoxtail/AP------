@@ -31,10 +31,18 @@ function preflight(reader,m){
 function checkoutEvidence(actualCommit,env=process.env){
  const expected=env.ARCHIVE_M3S2_LAYOUT_UI_EXPECTED_SHA;assert(SHA1.test(expected||''),'UI_EXPECTED_CHECKOUT_REQUIRED');assert.equal(actualCommit,expected,'UI_CHECKOUT_MISMATCH');
  if(env.GITHUB_ACTIONS==='true'){
-  assert.equal(env.GITHUB_EVENT_NAME,'pull_request','UI_ACTIONS_EVENT_REQUIRED');assert.equal(env.GITHUB_REPOSITORY,'icefoxtail/AP------','UI_ACTIONS_REPOSITORY');assert(SHA1.test(env.GITHUB_SHA||''),'UI_ACTIONS_EVENT_COMMIT');
+  const reviewPush=env.GITHUB_EVENT_NAME==='push';
+  assert(env.GITHUB_EVENT_NAME==='pull_request'||reviewPush,'UI_ACTIONS_EVENT_REQUIRED');
+  if(reviewPush)assert.equal(env.GITHUB_REF,'refs/heads/ops/middle-protected9-current-renderer-26fc-20261117','UI_ACTIONS_REVIEW_BRANCH');
+  assert.equal(env.GITHUB_REPOSITORY,'icefoxtail/AP------','UI_ACTIONS_REPOSITORY');assert(SHA1.test(env.GITHUB_SHA||''),'UI_ACTIONS_EVENT_COMMIT');
   assert(path.isAbsolute(env.GITHUB_EVENT_PATH||'')&&fs.statSync(env.GITHUB_EVENT_PATH).isFile(),'UI_ACTIONS_EVENT_FILE');const event=JSON.parse(fs.readFileSync(env.GITHUB_EVENT_PATH,'utf8'));
-  assert.equal(event.pull_request?.head?.sha,actualCommit,'UI_ACTIONS_HEAD_MISMATCH');assert.equal(event.pull_request?.head?.repo?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_SAME_REPOSITORY');assert.equal(event.repository?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_EVENT_REPOSITORY');
-  assert(/^\d+$/.test(env.GITHUB_RUN_ID||'')&&/^\d+$/.test(env.GITHUB_RUN_ATTEMPT||''),'UI_ACTIONS_RUN_REQUIRED');assert(/^[A-Za-z0-9_.-]+$/.test(env.GITHUB_JOB||''),'UI_ACTIONS_JOB_REQUIRED');return{expectedCheckoutCommit:expected,actualCheckoutCommit:actualCommit,executionOwner:'GITHUB_ACTIONS_SUPPORTED_CHROME',githubEventCommit:env.GITHUB_SHA,repository:env.GITHUB_REPOSITORY,runId:env.GITHUB_RUN_ID,runAttempt:env.GITHUB_RUN_ATTEMPT,job:env.GITHUB_JOB,eventName:env.GITHUB_EVENT_NAME,headCommit:event.pull_request.head.sha};}
+  if(reviewPush){
+   assert.equal(env.GITHUB_SHA,actualCommit,'UI_ACTIONS_PUSH_HEAD_MISMATCH');assert.equal(event.after,actualCommit,'UI_ACTIONS_PUSH_AFTER_MISMATCH');assert.equal(event.ref,env.GITHUB_REF,'UI_ACTIONS_PUSH_REF_MISMATCH');
+  }else{
+   assert.equal(event.pull_request?.head?.sha,actualCommit,'UI_ACTIONS_HEAD_MISMATCH');assert.equal(event.pull_request?.head?.repo?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_SAME_REPOSITORY');
+  }
+  assert.equal(event.repository?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_EVENT_REPOSITORY');
+  assert(/^\d+$/.test(env.GITHUB_RUN_ID||'')&&/^\d+$/.test(env.GITHUB_RUN_ATTEMPT||''),'UI_ACTIONS_RUN_REQUIRED');assert(/^[A-Za-z0-9_.-]+$/.test(env.GITHUB_JOB||''),'UI_ACTIONS_JOB_REQUIRED');return{expectedCheckoutCommit:expected,actualCheckoutCommit:actualCommit,executionOwner:'GITHUB_ACTIONS_SUPPORTED_CHROME',githubEventCommit:env.GITHUB_SHA,repository:env.GITHUB_REPOSITORY,runId:env.GITHUB_RUN_ID,runAttempt:env.GITHUB_RUN_ATTEMPT,job:env.GITHUB_JOB,eventName:env.GITHUB_EVENT_NAME,headCommit:reviewPush?event.after:event.pull_request.head.sha};}
 
  assert(env.GITHUB_SHA===undefined&&env.GITHUB_RUN_ID===undefined,'UI_LOCAL_EXECUTION_NOT_ACTIONS');return{expectedCheckoutCommit:expected,actualCheckoutCommit:actualCommit,executionOwner:'LOCAL_CHROMIUM',githubEventCommit:null};
 }

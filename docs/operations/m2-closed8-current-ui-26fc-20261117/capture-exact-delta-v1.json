@@ -1,0 +1,302 @@
+{
+  "schemaVersion": "m2s2-closed-eight-current-capture-reversible-delta-v1",
+  "owner": "/root/m1_release_closeout",
+  "oldProducer": {
+    "path": "tools/check-m2-problem24-renderer-browser.cjs",
+    "gitBlobSha1": "9d3eaa8bac83851f05bf32a96503393179e9d41b",
+    "sha256": "84ceda35c28aca2e683d3f118bc13dcec72eac4541e157e8010698fc18dbc49f",
+    "bytes": 28283
+  },
+  "newProducer": {
+    "path": "tools/check-m2s2-closed-eight-current-browser.cjs",
+    "gitBlobSha1": "1768171228a76080b2797a669afa2c4827f66147",
+    "sha256": "9786aa90a8f1b6261530084831bf5145e85b07113157394af8ff415a991e9dff",
+    "bytes": 30657
+  },
+  "producerEdits": [
+    {
+      "label": "scope-comment",
+      "before": "// Closed problem-only capture for the reviewed 21 questions and three family\n// questions. Source seals remain a draft until the public source candidate is\n// available. This checker confers no mathematical or metadata approval.",
+      "after": "// Closed current-renderer capture for eight existing E017/E023 bindings.\n// The original 24-question/48-view evidence remains unchanged. This separate\n// 16-view capture confers no mathematical, Native or metadata approval."
+    },
+    {
+      "label": "manifest-path",
+      "before": "const MANIFEST_PATH = 'tests/fixtures/archive-m2-problem24-renderer-ui.json';",
+      "after": "const MANIFEST_PATH = 'tests/fixtures/archive-m2s2-closed-eight-current-ui.json';"
+    },
+    {
+      "label": "checker-path",
+      "before": "const CHECKER_PATH = 'tools/check-m2-problem24-renderer-browser.cjs';",
+      "after": "const CHECKER_PATH = 'tools/check-m2s2-closed-eight-current-browser.cjs';"
+    },
+    {
+      "label": "schema-provenance",
+      "before": "const SCHEMA = 'archive-m2-problem24-student-ui-preview-v1';",
+      "after": "const SCHEMA = 'archive-m2s2-closed-eight-current-ui-raw-v1';\nconst CLOSED_PUSH_REF = 'refs/heads/ops/m2-closed8-current-renderer-26fc-20261117';\nconst EXECUTION_OWNER = 'GITHUB_ACTIONS_CHROMIUM_CLOSED_M2S2_EIGHT_PUSH_HEAD';"
+    },
+    {
+      "label": "closed-items-and-source-seals",
+      "before": "const EXPECTED_ITEMS_SHA256 = 'd096e10e69349f3be69f89a30c9fdf2d40d86a0bf3d23481bd35e0331ca338bb';",
+      "after": "const EXPECTED_ITEMS_SHA256 = '7dc81210d3c5c2173f0aee9cb2140641f6a26f55650e4016276fefccb3c4f1a9';\nconst EXPECTED_SOURCE_BINDINGS_SHA256 = 'c8de2896c8eb031068b98d99c33fd0057c69eb46ea3cdd12acf429829aecdf58';"
+    },
+    {
+      "label": "manifest-schema",
+      "before": "'archive-m2-problem24-renderer-ui-manifest-v1'",
+      "after": "'archive-m2s2-closed-eight-current-ui-manifest-v1'"
+    },
+    {
+      "label": "manifest-scope",
+      "before": "'EXACT_PROBLEM21_PLUS_FAMILY3_NO_APPROVAL'",
+      "after": "'EXACT_E017_SIX_E023_TWO_CURRENT_RENDERER_NO_NEW_APPROVAL'"
+    },
+    {
+      "label": "manifest-cases",
+      "before": "assert.equal(manifest.expectedCases, 48, 'UI_24_CASE_COUNT');",
+      "after": "assert.equal(manifest.expectedCases, 16, 'UI_24_CASE_COUNT');"
+    },
+    {
+      "label": "manifest-items",
+      "before": "manifest.items.length === 24",
+      "after": "manifest.items.length === 8"
+    },
+    {
+      "label": "manifest-uid-count",
+      "before": "size, 24, 'UI_24_UNIQUE_UID'",
+      "after": "size, 8, 'UI_24_UNIQUE_UID'"
+    },
+    {
+      "label": "manifest-banks",
+      "before": "assert.equal(sources.length, 3, 'UI_24_THREE_BANKS');",
+      "after": "assert.equal(sources.length, 2, 'UI_24_TWO_BANKS');"
+    },
+    {
+      "label": "manifest-source-count",
+      "before": "manifest.sourceBindings.length === 3",
+      "after": "manifest.sourceBindings.length === 2"
+    },
+    {
+      "label": "exact-current-source",
+      "before": "assert.deepEqual(manifest.sourceBindings.map(row => row.sourcePath), sources, 'UI_24_SOURCE_INVENTORY');",
+      "after": "assert.deepEqual(manifest.sourceBindings.map(row => row.sourcePath), sources, 'UI_24_SOURCE_INVENTORY');\n  assert.equal(sha256(stable(manifest.sourceBindings)), EXPECTED_SOURCE_BINDINGS_SHA256, 'UI_24_EXACT_CURRENT_SOURCE_BINDING');"
+    },
+    {
+      "label": "closed-push-checkout",
+      "before": "function checkoutEvidence(actualCommit, env = process.env) {\n  const expectedCommit = env.ARCHIVE_M2_PROBLEM24_UI_EXPECTED_SHA;\n  assert(typeof expectedCommit === 'string' && SHA1.test(expectedCommit), 'UI_24_EXPECTED_CHECKOUT_REQUIRED');\n  assert.equal(actualCommit, expectedCommit, 'UI_24_CHECKOUT_MISMATCH');\n  assert(env.GITHUB_SHA === undefined || (typeof env.GITHUB_SHA === 'string' && SHA1.test(env.GITHUB_SHA)), 'UI_24_EVENT_SHA');\n  return { expectedCheckoutCommit: expectedCommit, actualCheckoutCommit: actualCommit, githubEventCommit: env.GITHUB_SHA ?? null };\n}\n",
+      "after": "function checkoutEvidence(actualCommit, env = process.env, event) {\n  const expectedCommit = env.ARCHIVE_M2S2_CLOSED8_UI_EXPECTED_SHA;\n  assert(typeof expectedCommit === 'string' && SHA1.test(expectedCommit), 'UI_24_EXPECTED_CHECKOUT_REQUIRED');\n  assert.equal(actualCommit, expectedCommit, 'UI_24_CHECKOUT_MISMATCH');\n  assert(env.GITHUB_ACTIONS === 'true' && env.GITHUB_REPOSITORY === 'icefoxtail/AP------', 'UI_24_ACTIONS_REPOSITORY');\n  assert(env.GITHUB_EVENT_NAME === 'push', 'UI_24_EXACT_PUSH_EVENT');\n  assert.equal(env.GITHUB_SHA, expectedCommit, 'UI_24_PUSH_SHA');\n  assert.equal(env.GITHUB_REF, CLOSED_PUSH_REF, 'UI_24_EXACT_PUSH_REF');\n  assert(/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ID || ''), 'UI_24_RUN_ID');\n  const runAttempt = Number(env.GITHUB_RUN_ATTEMPT);\n  assert(/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ATTEMPT || '') && Number.isSafeInteger(runAttempt), 'UI_24_RUN_ATTEMPT');\n  assert(typeof env.GITHUB_WORKFLOW === 'string' && env.GITHUB_WORKFLOW.length > 0 && env.GITHUB_WORKFLOW.length < 200 &&\n    /^[A-Za-z0-9_-]+$/.test(env.GITHUB_JOB || ''), 'UI_24_WORKFLOW_JOB');\n  const payload = event || JSON.parse(fs.readFileSync(env.GITHUB_EVENT_PATH, 'utf8'));\n  assert(payload && payload.ref === CLOSED_PUSH_REF && payload.after === expectedCommit &&\n    payload.deleted === false, 'UI_24_EXACT_PUSH_PAYLOAD');\n  assert(payload.repository?.full_name === env.GITHUB_REPOSITORY && payload.repository?.fork === false,\n    'UI_24_PUSH_REPOSITORY');\n  const execution = { provider: 'GITHUB_ACTIONS', repository: env.GITHUB_REPOSITORY, eventName: 'push',\n    ref: CLOSED_PUSH_REF, headSha: actualCommit, capturedHead: actualCommit, eventSha: env.GITHUB_SHA,\n    runId: env.GITHUB_RUN_ID, runAttempt, workflow: env.GITHUB_WORKFLOW, job: env.GITHUB_JOB,\n    pullRequest: null, baseSha: null };\n  return { expectedCheckoutCommit: expectedCommit, actualCheckoutCommit: actualCommit,\n    githubEventCommit: env.GITHUB_SHA, execution };\n}\n"
+    },
+    {
+      "label": "result-cases",
+      "before": "assert.equal(results.length, 48, 'UI_24_FORTY_EIGHT_LOGICAL_CASES');",
+      "after": "assert.equal(results.length, 16, 'UI_24_SIXTEEN_LOGICAL_CASES');"
+    },
+    {
+      "label": "result-items",
+      "before": "assert.equal(inputs.items.length, 24, 'UI_24_INPUT_INVENTORY');",
+      "after": "assert.equal(inputs.items.length, 8, 'UI_24_INPUT_INVENTORY');"
+    },
+    {
+      "label": "result-inventory",
+      "before": "assert.equal(seen.size, 48, 'UI_24_COMPLETE_LOGICAL_INVENTORY');",
+      "after": "assert.equal(seen.size, 16, 'UI_24_COMPLETE_LOGICAL_INVENTORY');"
+    },
+    {
+      "label": "driver-provenance-argument",
+      "before": "async function inspectStudentUi({ root, out, expectedCommit, executablePath, githubEventCommit = null }) {",
+      "after": "async function inspectStudentUi({ root, out, expectedCommit, executablePath, githubEventCommit = null, execution }) {"
+    },
+    {
+      "label": "driver-current-provenance",
+      "before": "  const reader = createGitReader(root, expectedCommit);",
+      "after": "  const reader = createGitReader(root, expectedCommit);\n  assert.deepEqual(execution, checkoutEvidence(reader.commit).execution, 'UI_24_EXECUTION_CHANGED');"
+    },
+    {
+      "label": "actual-execution-owner",
+      "before": "const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,",
+      "after": "const proofBase = { schemaVersion: SCHEMA, executionOwner: EXECUTION_OWNER, checkoutCommit: reader.commit, execution,"
+    },
+    {
+      "label": "no-native-approval",
+      "before": "    newParentApprovals: 0, releaseGate: 'PENDING_INDEPENDENT_VISUAL_REVIEW',",
+      "after": "    newParentApprovals: 0, newNativeApprovals: 0, releaseGate: 'PENDING_INDEPENDENT_VISUAL_REVIEW',"
+    },
+    {
+      "label": "main-execution",
+      "before": "githubEventCommit: checkout.githubEventCommit, executablePath: process.env.CHROME_BIN",
+      "after": "githubEventCommit: checkout.githubEventCommit, execution: checkout.execution, executablePath: process.env.CHROME_BIN"
+    },
+    {
+      "label": "exports",
+      "before": "  EXPECTED_ITEMS_SHA256, VIEWPORTS, DRAFT, SEALED, ownSnapshot,",
+      "after": "  EXPECTED_ITEMS_SHA256, EXPECTED_SOURCE_BINDINGS_SHA256, CLOSED_PUSH_REF, EXECUTION_OWNER, VIEWPORTS, DRAFT, SEALED, ownSnapshot,"
+    },
+    {
+      "label": "distinct-diagnostic-prefix",
+      "operation": "replaceAll",
+      "before": "UI_24_",
+      "after": "UI_CLOSED8_",
+      "occurrences": 73
+    }
+  ],
+  "producerInverseByteExact": true,
+  "sharedCaptureHelper": {
+    "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+    "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+    "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+    "changed": false
+  },
+  "emitterBefore": {
+    "path": "tools/emit-protected9-ui-log-transport.cjs",
+    "gitBlobSha1": "66e822cd012fc8744afc8af3124d39ff9319b20c",
+    "sha256": "606a2008bb34a2cd363b16099a32eb0288781592d99ee1ede41cd8977360850b",
+    "bytes": 24695
+  },
+  "emitterAfter": {
+    "path": "tools/emit-protected9-ui-log-transport.cjs",
+    "gitBlobSha1": "5ee0af1e1ab2b5248e85afbf754aa8f08d2c1b4d",
+    "sha256": "94be8be0b759eca67323618d8cbcf6e470eeb535be12a76abc45ff955e62e3e7",
+    "bytes": 34332
+  },
+  "emitterEdits": [
+    {
+      "label": "profile-count-comment",
+      "before": "// Read-only transport for four explicit current-renderer capture profiles. This does not",
+      "after": "// Read-only transport for five explicit current-renderer capture profiles. This does not"
+    },
+    {
+      "label": "closed-ref",
+      "before": "const REVIEW_REF = 'refs/heads/ops/middle-protected9-current-renderer-26fc-20261117';",
+      "after": "const REVIEW_REF = 'refs/heads/ops/middle-protected9-current-renderer-26fc-20261117';\nconst CLOSED8_REF = 'refs/heads/ops/m2-closed8-current-renderer-26fc-20261117';"
+    },
+    {
+      "label": "explicit-eight-profile",
+      "before": "const PROFILES = Object.freeze({",
+      "after": "const PROFILES = Object.freeze({\n  \"closed8\": {\n    \"schema\": \"archive-m2s2-closed-eight-current-ui-raw-v1\",\n    \"checkerPath\": \"tools/check-m2s2-closed-eight-current-browser.cjs\",\n    \"manifestPath\": \"tests/fixtures/archive-m2s2-closed-eight-current-ui.json\",\n    \"cases\": 16,\n    \"subjects\": [\n      {\n        \"key\": \"E017-Q04\",\n        \"questionUid\": \"qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b\",\n        \"sourceOrdinal\": 4,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js\",\n        \"sourceGitBlobSha1\": \"2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb\",\n        \"sourceSha256\": \"11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae\",\n        \"sourceBytes\": 66844,\n        \"assetPath\": \"archive/assets/images/24_연향중_2학기_중간_중2_수학/q4-problem-visual-v4.svg\",\n        \"assetGitBlobSha1\": \"8ceb67213019d19a316f585046f4dfb2a3866770\",\n        \"assetSha256\": \"536b894d4b9c78180125ec685816040271a46e8c297e4b025ba5570efbafde7c\",\n        \"assetBytes\": 4426\n      },\n      {\n        \"key\": \"E017-Q05\",\n        \"questionUid\": \"qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490\",\n        \"sourceOrdinal\": 5,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js\",\n        \"sourceGitBlobSha1\": \"2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb\",\n        \"sourceSha256\": \"11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae\",\n        \"sourceBytes\": 66844,\n        \"assetPath\": \"archive/assets/images/24_연향중_2학기_중간_중2_수학/q5-problem-visual-v4.svg\",\n        \"assetGitBlobSha1\": \"28c9d60eee441984ce81ed941a477d661a556f3e\",\n        \"assetSha256\": \"2c7fd8f8cbebe68fc21b52c3927382e609ae4238f5cd601ddfe6c58c9dd5a87e\",\n        \"assetBytes\": 17139\n      },\n      {\n        \"key\": \"E017-Q09\",\n        \"questionUid\": \"qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad\",\n        \"sourceOrdinal\": 9,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js\",\n        \"sourceGitBlobSha1\": \"2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb\",\n        \"sourceSha256\": \"11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae\",\n        \"sourceBytes\": 66844,\n        \"assetPath\": \"archive/assets/images/24_연향중_2학기_중간_중2_수학/q9-problem-visual-v4.svg\",\n        \"assetGitBlobSha1\": \"1c2b78a81b3e5a34be0ac1a7163bbfb19ca4b85e\",\n        \"assetSha256\": \"b1378acc43d6a968bade6c4b4ab15a55cfd4738252fc044857093fffe1fdff20\",\n        \"assetBytes\": 4802\n      },\n      {\n        \"key\": \"E017-Q18\",\n        \"questionUid\": \"qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67\",\n        \"sourceOrdinal\": 18,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js\",\n        \"sourceGitBlobSha1\": \"2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb\",\n        \"sourceSha256\": \"11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae\",\n        \"sourceBytes\": 66844,\n        \"assetPath\": \"archive/assets/images/24_연향중_2학기_중간_중2_수학/q18-problem-visual-v3.svg\",\n        \"assetGitBlobSha1\": \"2cae8726c373f5c728f010860ae288e103982212\",\n        \"assetSha256\": \"a301b3ff21f2f371ec0220600757e74b4473c5cad5f084494a233f16506ad37c\",\n        \"assetBytes\": 4257\n      },\n      {\n        \"key\": \"E017-Q20\",\n        \"questionUid\": \"qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7\",\n        \"sourceOrdinal\": 20,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js\",\n        \"sourceGitBlobSha1\": \"2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb\",\n        \"sourceSha256\": \"11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae\",\n        \"sourceBytes\": 66844,\n        \"assetPath\": \"archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-problem-visual-v3.svg\",\n        \"assetGitBlobSha1\": \"c1c73664336bdbdd83136ea58773b1c23b189b90\",\n        \"assetSha256\": \"a156e3687d04197ee3dff3dd65710e833908432b3c3d6440b854526b57145fe6\",\n        \"assetBytes\": 4437\n      },\n      {\n        \"key\": \"E017-Q23\",\n        \"questionUid\": \"qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472\",\n        \"sourceOrdinal\": 23,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js\",\n        \"sourceGitBlobSha1\": \"2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb\",\n        \"sourceSha256\": \"11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae\",\n        \"sourceBytes\": 66844,\n        \"assetPath\": \"archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-problem-visual-v3.svg\",\n        \"assetGitBlobSha1\": \"2f865edf92807075f5ab0bb7fa36009a8b28693c\",\n        \"assetSha256\": \"82f2b31b9133062ce50c6332a7668a7ce228c4bb21f6ba512103e9ad5ce94f1d\",\n        \"assetBytes\": 3713\n      },\n      {\n        \"key\": \"E023-Q06\",\n        \"questionUid\": \"qid_v1_a14cd28d820b2cb2aabe1fc601fc72ebd6679b7eeaf1451c6773b3727ea77758\",\n        \"sourceOrdinal\": 6,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js\",\n        \"sourceGitBlobSha1\": \"a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7\",\n        \"sourceSha256\": \"8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82\",\n        \"sourceBytes\": 65146,\n        \"assetPath\": \"archive/assets/images/23_연향중_2학기_기말_중2_기출/q6-problem-visual-v4.svg\",\n        \"assetGitBlobSha1\": \"c42e846519c266ef9f30389c03e71d6f33c81d72\",\n        \"assetSha256\": \"a92041578869d2121a0524f79dec4cb77d1711a59b530bbc2f1ca4e2cb860482\",\n        \"assetBytes\": 4003\n      },\n      {\n        \"key\": \"E023-Q10\",\n        \"questionUid\": \"qid_v1_54940cea5cf2027a3c3cbc2fc16025f7ccb632d5bd8ee0cff0eb747e108537c9\",\n        \"sourceOrdinal\": 10,\n        \"sourcePath\": \"archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js\",\n        \"sourceGitBlobSha1\": \"a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7\",\n        \"sourceSha256\": \"8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82\",\n        \"sourceBytes\": 65146,\n        \"assetPath\": \"archive/assets/images/23_연향중_2학기_기말_중2_기출/q10-problem-visual-v4.svg\",\n        \"assetGitBlobSha1\": \"56a4c294c7dcadb0271a9b13e4222afc2a764e8f\",\n        \"assetSha256\": \"ad5ef51883df950f9b12f28083921b98b87547b382edc9326365a21fdf33a3f7\",\n        \"assetBytes\": 4979\n      }\n    ]\n  },"
+    },
+    {
+      "label": "closed-execution-context",
+      "before": "function assertExecution(proof,profile,context){",
+      "after": "function closed8ExecutionContext(expectedCommit,env=process.env,event){\n requireThat(env.GITHUB_ACTIONS==='true'&&env.GITHUB_REPOSITORY==='icefoxtail/AP------','CLOSED8_ACTIONS_REPOSITORY');\n requireThat(SHA1.test(expectedCommit||'')&&env.GITHUB_SHA===expectedCommit,'CLOSED8_EXPECTED_SHA');\n requireThat(env.GITHUB_EVENT_NAME==='push'&&env.GITHUB_REF===CLOSED8_REF,'CLOSED8_EXACT_PUSH');\n requireThat(/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ID||'')&&/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ATTEMPT||'')&&\n  Number.isSafeInteger(Number(env.GITHUB_RUN_ATTEMPT)),'CLOSED8_RUN_ID');\n requireThat(typeof env.GITHUB_WORKFLOW==='string'&&env.GITHUB_WORKFLOW.length>0&&env.GITHUB_WORKFLOW.length<200&&\n  /^[A-Za-z0-9_-]+$/.test(env.GITHUB_JOB||''),'CLOSED8_WORKFLOW_JOB');\n const payload=event||JSON.parse(fs.readFileSync(env.GITHUB_EVENT_PATH,'utf8'));\n requireThat(payload?.ref===CLOSED8_REF&&payload.after===expectedCommit&&payload.deleted===false,'CLOSED8_PUSH_PAYLOAD');\n requireThat(payload.repository?.full_name===env.GITHUB_REPOSITORY&&payload.repository?.fork===false,'CLOSED8_PUSH_REPOSITORY');\n return{provider:'GITHUB_ACTIONS',repository:env.GITHUB_REPOSITORY,eventName:'push',ref:CLOSED8_REF,\n  pullRequest:null,baseSha:null,checkoutCommit:expectedCommit,eventCommit:env.GITHUB_SHA,runId:env.GITHUB_RUN_ID,\n  runAttempt:Number(env.GITHUB_RUN_ATTEMPT),workflow:env.GITHUB_WORKFLOW,job:env.GITHUB_JOB};\n}\nfunction assertExecution(proof,profile,context){"
+    },
+    {
+      "label": "new-profile-execution-only",
+      "before": " requireThat(proof.checkoutCommit===context.checkoutCommit,'PROOF_HEAD');",
+      "after": " requireThat(proof.checkoutCommit===context.checkoutCommit,'PROOF_HEAD');\n if(profile==='closed8'){\n  const p=proof.execution;\n  requireThat(context.provider==='GITHUB_ACTIONS'&&context.repository==='icefoxtail/AP------'&&\n   context.eventName==='push'&&context.ref===CLOSED8_REF&&context.eventCommit===context.checkoutCommit&&\n   context.pullRequest===null&&context.baseSha===null,'CLOSED8_CONTEXT');\n  requireThat(proof.executionOwner==='GITHUB_ACTIONS_CHROMIUM_CLOSED_M2S2_EIGHT_PUSH_HEAD'&&p&&\n   p.provider===context.provider&&p.repository===context.repository&&p.eventName==='push'&&p.ref===CLOSED8_REF&&\n   p.headSha===context.checkoutCommit&&p.capturedHead===context.checkoutCommit&&p.eventSha===context.eventCommit&&\n   p.runId===context.runId&&p.runAttempt===context.runAttempt&&p.workflow===context.workflow&&p.job===context.job&&\n   p.pullRequest===null&&p.baseSha===null,'CLOSED8_EXECUTION');\n  requireThat(stable(proof.checkout)===stable({expectedCheckoutCommit:context.checkoutCommit,\n   actualCheckoutCommit:context.checkoutCommit,githubEventCommit:context.eventCommit}),'CLOSED8_CHECKOUT');\n  return;\n }"
+    },
+    {
+      "label": "new-profile-no-approval",
+      "before": " assertExecution(proof,profile,context);",
+      "after": " assertExecution(proof,profile,context);\n if(profile==='closed8')requireThat(proof.surface===undefined&&proof.newParentApprovals===0&&\n  proof.newNativeApprovals===0&&proof.releaseGate==='PENDING_INDEPENDENT_VISUAL_REVIEW','CLOSED8_NO_APPROVAL');"
+    },
+    {
+      "label": "new-profile-pins",
+      "before": "  itemSeen.add(item.questionUid);",
+      "after": "  if(profile==='closed8')requireThat(item.sourceRef.gitBlobSha1===fixed.sourceGitBlobSha1&&\n   item.sourceRef.sha256===fixed.sourceSha256&&item.sourceRef.bytes===fixed.sourceBytes&&\n   item.assetRef.gitBlobSha1===fixed.assetGitBlobSha1&&item.assetRef.sha256===fixed.assetSha256&&\n   item.assetRef.bytes===fixed.assetBytes,'CLOSED8_IMMUTABLE_INPUT_PINS');\n  itemSeen.add(item.questionUid);"
+    },
+    {
+      "label": "cli-context-dispatch",
+      "before": " const context=executionContext(a[7]),bundle=assertProducerRefs(root,collectBundle({out,profile:a[5],context}));",
+      "after": " const context=a[5]==='closed8'?closed8ExecutionContext(a[7]):executionContext(a[7]),\n  bundle=assertProducerRefs(root,collectBundle({out,profile:a[5],context}));"
+    },
+    {
+      "label": "exports",
+      "before": "module.exports={PROFILES,VIEWPORTS,LIMITS,REVIEW_REF,FRAME_SCHEMA,executionContext,",
+      "after": "module.exports={PROFILES,VIEWPORTS,LIMITS,REVIEW_REF,CLOSED8_REF,FRAME_SCHEMA,executionContext,closed8ExecutionContext,"
+    }
+  ],
+  "emitterInverseByteExact": true,
+  "existingProfileNames": [
+    "svg7",
+    "m1",
+    "q16",
+    "q5"
+  ],
+  "existingExecutionFunctionBodyUnchanged": true,
+  "existingPngParsingBundleByteLimitsAndFramingBodiesUnchanged": true,
+  "transportTestBefore": {
+    "path": "tests/protected-current-ui-log-transport.test.cjs",
+    "gitBlobSha1": "942d546f42ecb611a5d5b2b25e9a61093df27bb8",
+    "sha256": "ab5efddc292f74c61d6672145e2003b36cafc746cc46683734f5676a1b6ae184",
+    "bytes": 11149
+  },
+  "transportTestAfter": {
+    "path": "tests/protected-current-ui-log-transport.test.cjs",
+    "gitBlobSha1": "ae1789fceef470a2ab5043f48a37a2edba1bf30e",
+    "sha256": "58928149140becf4cb4f8dbd391691de0be76adf9ee555386824c16a3162286a",
+    "bytes": 22097
+  },
+  "transportTestAppendix": "\n\n// Separate closed-eight transport profile. Synthetic protocol PNGs are not UI evidence.\nconst C8=require('../tools/check-m2s2-closed-eight-current-browser.cjs');\nconst closed8Fixture=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/archive-m2s2-closed-eight-current-ui.json'),'utf8'));\nfunction closed8Protocol(){\n const spec=T.PROFILES.closed8;\n const env={GITHUB_ACTIONS:'true',GITHUB_EVENT_NAME:'push',GITHUB_REPOSITORY:REPO,GITHUB_REF:T.CLOSED8_REF,\n  GITHUB_SHA:HEAD,GITHUB_RUN_ID:'9003',GITHUB_RUN_ATTEMPT:'1',GITHUB_WORKFLOW:'M2 Closed Eight Current Renderer',\n  GITHUB_JOB:'current-ui',ARCHIVE_M2S2_CLOSED8_UI_EXPECTED_SHA:HEAD};\n const event={ref:T.CLOSED8_REF,after:HEAD,deleted:false,repository:{full_name:REPO,fork:false}};\n const context=T.closed8ExecutionContext(HEAD,env,event),checkout=C8.checkoutEvidence(HEAD,env,event);\n const items=spec.subjects.map(s=>({key:s.key,questionUid:s.questionUid,sourceOrdinal:s.sourceOrdinal,\n  sourceRef:{commit:HEAD,path:s.sourcePath,gitBlobSha1:s.sourceGitBlobSha1,sha256:s.sourceSha256,bytes:s.sourceBytes},\n  assetRef:{commit:HEAD,path:s.assetPath,gitBlobSha1:s.assetGitBlobSha1,sha256:s.assetSha256,bytes:s.assetBytes}}));\n const results=items.flatMap(item=>T.VIEWPORTS.map(viewport=>{\n  const count=viewport.name==='desktop'&&['E017-Q05','E017-Q23'].includes(item.key)?2:1;\n  const screenshots=Array.from({length:count},(_,i)=>({tileIndex:i+1,\n   path:item.key+'-'+viewport.name+'-tile-'+String(i+1).padStart(2,'0')+'.png',sha256:sha(png),bytes:png.length}));\n  return{...clone(item),status:'PASS',viewport:{...viewport},screenshots,\n   capture:{tileCount:count,tiles:screenshots.map(s=>({tileIndex:s.tileIndex,filename:s.path}))},\n   technical:{mode:'exam',solutionNodes:0},pageErrors:[],requestFailures:[],externalRequests:[],visualReview:'PENDING'};\n }));\n const proof={schemaVersion:spec.schema,status:'TECHNICAL_PASS_VISUAL_REVIEW_PENDING',checkoutCommit:HEAD,\n  executionOwner:C8.EXECUTION_OWNER,execution:checkout.execution,\n  checkout:{expectedCheckoutCommit:HEAD,actualCheckoutCommit:HEAD,githubEventCommit:HEAD},mode:'exam',\n  screenshotsScope:'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY',problemOnlyScreenshots:true,\n  sourceOverlay:false,sourceOverlayCount:0,sourceWrites:0,solutionsOpened:false,newFullMathematicalQa:false,\n  newMetadataApprovals:0,newDifficultyJudgments:0,newReviewPassCount:0,newFourSlotApprovals:0,\n  newParentApprovals:0,newNativeApprovals:0,releaseGate:'PENDING_INDEPENDENT_VISUAL_REVIEW',\n  items,expectedLogicalCases:16,completedLogicalCases:16,results,\n  screenshotArtifacts:results.flatMap(r=>r.screenshots.map(({tileIndex,...shot})=>shot)),\n  screenshotArtifactCount:18,failures:[]};\n return{env,event,context,proof};\n}\nfunction closed8Files(t){\n const p=closed8Protocol(),directory=fs.mkdtempSync(path.join(os.tmpdir(),'closed8-ui-log-')),out=path.join(directory,'output');\n fs.mkdirSync(out);const write=()=>fs.writeFileSync(path.join(out,'technical-proof.json'),JSON.stringify(p.proof,null,2)+'\\n');\n for(const s of p.proof.screenshotArtifacts)fs.writeFileSync(path.join(out,s.path),png);\n write();t.after(()=>fs.rmSync(directory,{recursive:true,force:true}));\n return{...p,directory,out,write,collect:()=>T.collectBundle({out,profile:'closed8',context:p.context})};\n}\ntest('closed eight profile matches the separately sealed capture fixture and its source/asset pins',()=>{\n assert.equal(C8.requireSealedManifest(clone(closed8Fixture)).expectedCases,16);\n assert.deepEqual(T.PROFILES.closed8.subjects.map(s=>({key:s.key,questionUid:s.questionUid,sourceOrdinal:s.sourceOrdinal,\n  sourcePath:s.sourcePath,assetPath:s.assetPath})),closed8Fixture.items.map(s=>({key:s.key,questionUid:s.questionUid,\n  sourceOrdinal:s.sourceOrdinal,sourcePath:s.sourcePath,assetPath:s.assetPath})));\n for(const s of T.PROFILES.closed8.subjects){\n  const item=closed8Fixture.items.find(i=>i.questionUid===s.questionUid),binding=closed8Fixture.sourceBindings.find(b=>b.sourcePath===s.sourcePath);\n  assert.equal(s.sourceGitBlobSha1,binding.gitBlobSha1);assert.equal(s.sourceSha256,binding.sha256);assert.equal(s.sourceBytes,binding.bytes);\n  assert.equal(s.assetGitBlobSha1,item.assetGitBlobSha1);assert.equal(s.assetSha256,item.assetSha256);assert.equal(s.assetBytes,item.assetBytes);\n }\n});\ntest('closed eight sixteen logical cases retain eighteen original protocol tiles and raw JSON without editing',t=>{\n const f=closed8Files(t),raw=fs.readFileSync(path.join(f.out,'technical-proof.json')),bundle=f.collect();\n assert.equal(bundle.manifest.logicalCases,16);assert.equal(bundle.manifest.pngFiles,18);\n assert.equal(bundle.manifest.newApprovals,0);assert.equal(bundle.manifest.execution.ref,T.CLOSED8_REF);\n assert.equal(bundle.manifest.execution.eventName,'push');assert(bundle.files[0].data.equals(raw));\n const frames=[...T.frames(bundle)].map(line=>JSON.parse(line));\n for(let i=0;i<bundle.files.length;i++){\n  const chunks=frames.filter(x=>x.kind==='file-chunk'&&x.fileIndex===i);\n  assert(chunks.every((x,j)=>x.chunkIndex===j&&x.chunks===chunks.length&&x.base64.length<=T.LIMITS.chunkCharacters));\n  const recovered=Buffer.from(chunks.map(x=>x.base64).join(''),'base64');\n  assert(recovered.equals(bundle.files[i].data));assert.equal(sha(recovered),bundle.files[i].sha256);\n }\n assert.equal(bundle.manifest.visualReview,'NOT_PERFORMED_BY_TRANSPORT');\n});\ntest('closed eight partial capture transports its failure and does not invent sixteen successful cases',t=>{\n const f=closed8Files(t);f.proof.status='FAIL';f.proof.failureCode='UI_BROWSER_CHECK_FAILED';\n f.proof.results=f.proof.results.slice(0,2);f.proof.completedLogicalCases=2;f.write();\n const b=f.collect();assert.equal(b.manifest.captureStatus,'FAIL');assert.equal(b.manifest.logicalCases,2);\n assert.equal(b.manifest.pngFiles,18);assert.equal(b.manifest.uncompletedCasePngFiles,16);\n});\ntest('closed eight and protected eighteen branch contexts cannot be interchanged',()=>{\n const c=closed8Protocol(),m=protocol('m1');\n assert.throws(()=>T.executionContext(HEAD,c.env,c.event),/UI_LOG_EXACT_REVIEW_PUSH/);\n assert.throws(()=>T.closed8ExecutionContext(HEAD,m.env,m.event),/UI_LOG_CLOSED8_EXACT_PUSH/);\n assert.throws(()=>T.validateProof(c.proof,'closed8',m.context),/UI_LOG_CLOSED8_CONTEXT/);\n assert.throws(()=>T.validateProof(m.proof,'m1',c.context),/UI_LOG_CLOSED_OPS_PROFILE/);\n});\nfor(const [name,mutate,error] of [\n ['a foreign UID',p=>{p.items[0].questionUid='qid_v1_'+'f'.repeat(64);},/UI_LOG_ITEM_SCOPE/],\n ['a duplicate UID',p=>{p.items[1]=clone(p.items[0]);},/UI_LOG_ITEM_SCOPE/],\n ['a different source path',p=>{p.items[0].sourceRef.path='archive/exams/other.js';},/UI_LOG_ITEM_SOURCE/],\n ['the historical source Git',p=>{p.items[0].sourceRef.gitBlobSha1='f417b7e4e993ceb1a70c1b85de1e292a52d2b551';},/UI_LOG_CLOSED8_IMMUTABLE_INPUT_PINS/],\n ['a changed source raw hash',p=>{p.items[0].sourceRef.sha256='0'.repeat(64);},/UI_LOG_CLOSED8_IMMUTABLE_INPUT_PINS/],\n ['a changed source byte count',p=>{p.items[0].sourceRef.bytes++;},/UI_LOG_CLOSED8_IMMUTABLE_INPUT_PINS/],\n ['a different asset path',p=>{p.items[0].assetRef.path='archive/assets/images/other.svg';},/UI_LOG_ITEM_ASSET/],\n ['a changed asset Git',p=>{p.items[0].assetRef.gitBlobSha1='0'.repeat(40);},/UI_LOG_CLOSED8_IMMUTABLE_INPUT_PINS/],\n ['a changed asset raw hash',p=>{p.items[0].assetRef.sha256='0'.repeat(64);},/UI_LOG_CLOSED8_IMMUTABLE_INPUT_PINS/],\n ['a changed asset byte count',p=>{p.items[0].assetRef.bytes++;},/UI_LOG_CLOSED8_IMMUTABLE_INPUT_PINS/],\n ['a mixed result source',p=>{p.results[0].sourceRef.sha256='0'.repeat(64);},/UI_LOG_RESULT_SOURCE/],\n ['a mixed result asset',p=>{p.results[0].assetRef.sha256='0'.repeat(64);},/UI_LOG_RESULT_ASSET/],\n ['an old broad raw schema',p=>{p.schemaVersion='archive-m2-problem24-student-ui-preview-v1';},/UI_LOG_PROFILE_SCHEMA/],\n ['an old broad execution owner',p=>{p.executionOwner='GITHUB_ACTIONS_SUPPORTED_CHROME';},/UI_LOG_CLOSED8_EXECUTION/],\n ['a different captured head',p=>{p.execution.capturedHead='2'.repeat(40);},/UI_LOG_CLOSED8_EXECUTION/],\n ['a different run identity',p=>{p.execution.runId='9004';},/UI_LOG_CLOSED8_EXECUTION/],\n ['a different workflow',p=>{p.execution.workflow='other-workflow';},/UI_LOG_CLOSED8_EXECUTION/],\n ['a PR-shaped identity',p=>{p.execution.pullRequest=2330;},/UI_LOG_CLOSED8_EXECUTION/],\n ['another execution ref',p=>{p.execution.ref=T.REVIEW_REF;},/UI_LOG_CLOSED8_EXECUTION/],\n ['a changed actual checkout',p=>{p.checkout.actualCheckoutCommit='2'.repeat(40);},/UI_LOG_CLOSED8_CHECKOUT/],\n ['a source overlay',p=>{p.sourceOverlay=true;},/UI_LOG_PROBLEM_ONLY/],\n ['a solution node',p=>{p.results[0].technical.solutionNodes=1;},/UI_LOG_RESULT_PROBLEM_ONLY/],\n ['a new Native approval',p=>{p.newNativeApprovals=1;},/UI_LOG_CLOSED8_NO_APPROVAL/],\n ['a new parent approval',p=>{p.newParentApprovals=1;},/UI_LOG_CLOSED8_NO_APPROVAL/],\n ['a new four-slot approval',p=>{p.newFourSlotApprovals=1;},/UI_LOG_PROBLEM_ONLY/],\n ['a premature visual acceptance',p=>{p.releaseGate='ACCEPTED';},/UI_LOG_CLOSED8_NO_APPROVAL/],\n ['a changed viewport',p=>{p.results[0].viewport.width=1366;},/UI_LOG_RESULT_SCOPE/],\n ['a duplicate case',p=>{p.results[1]=clone(p.results[0]);},/UI_LOG_DUPLICATE_CASE/],\n ['a missing logical case',p=>{p.results.pop();p.completedLogicalCases--;},/UI_LOG_COMPLETE_CAPTURE/],\n ['a missing declared tile',p=>{p.screenshotArtifacts.pop();p.screenshotArtifactCount--;},/UI_SCREENSHOT_/]\n])test('closed eight transport rejects '+name,t=>{\n const f=closed8Files(t);mutate(f.proof);f.write();assert.throws(()=>f.collect(),error);\n});\ntest('closed eight keeps the existing eight-tile and ten-megabyte transport bounds',t=>{\n const f=closed8Files(t);assert.equal(T.LIMITS.bundleBytes,10*1024*1024);\n f.proof.screenshotArtifacts=Array.from({length:129},()=>clone(f.proof.screenshotArtifacts[0]));\n f.proof.screenshotArtifactCount=129;f.write();assert.throws(()=>f.collect(),/UI_LOG_ARTIFACT_COUNT/);\n});\ntest('closed eight refuses changed PNG bytes rather than reframing a false hash',t=>{\n const f=closed8Files(t);fs.writeFileSync(path.join(f.out,f.proof.screenshotArtifacts[0].path),Buffer.from('changed'));\n assert.throws(()=>f.collect(),/UI_LOG_PNG_BYTES_MISMATCH/);\n});\nfor(const [name,mutate] of [\n ['missing repository',f=>{delete f.event.repository;}],\n ['fork',f=>{f.event.repository.fork=true;}],\n ['another payload repository',f=>{f.event.repository.full_name='example/other';}],\n ['another branch',f=>{f.event.ref=T.REVIEW_REF;}],\n ['missing after',f=>{delete f.event.after;}],\n ['deleted push',f=>{f.event.deleted=true;}],\n ['different GitHub SHA',f=>{f.env.GITHUB_SHA='2'.repeat(40);}],\n ['unsafe attempt',f=>{f.env.GITHUB_RUN_ATTEMPT='9007199254740992';}],\n ['pull request event',f=>{f.env.GITHUB_EVENT_NAME='pull_request';}]\n])test('closed eight transport context refuses '+name,()=>{\n const f=closed8Protocol();mutate(f);assert.throws(()=>T.closed8ExecutionContext(HEAD,f.env,f.event),/UI_LOG_CLOSED8_/);\n});\n",
+  "transportTestOldPrefixByteExact": true,
+  "fixture": {
+    "beforeGit": "98a3811d40962136442f92c2236335acd75c931f",
+    "after": {
+      "path": "tests/fixtures/archive-m2s2-closed-eight-current-ui.json",
+      "gitBlobSha1": "35e096ff1713a1d871784882c0467b857f1124d1",
+      "sha256": "6e50b7d2ddb741058669585a42cc5053444659af1dfcf0ae031b0f77d8c227d5",
+      "bytes": 8384
+    },
+    "originalFileUnmodified": true,
+    "selectedItemWholeObjectsExact": true,
+    "originalItemsCount": 24,
+    "currentCaptureItemsCount": 8,
+    "originalLogicalCases": 48,
+    "currentCaptureLogicalCases": 16,
+    "originalSourceBindings": [
+      {
+        "sourcePath": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+        "gitBlobSha1": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+        "sha256": "8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82",
+        "bytes": 65146
+      },
+      {
+        "sourcePath": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "40fac8532d52c2b308708f6a0769005029bb7565",
+        "sha256": "b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4",
+        "bytes": 75142
+      },
+      {
+        "sourcePath": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+        "sha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+        "bytes": 66605
+      }
+    ],
+    "closedSourceBindings": [
+      {
+        "sourcePath": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+        "gitBlobSha1": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+        "sha256": "8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82",
+        "bytes": 65146
+      },
+      {
+        "sourcePath": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb",
+        "sha256": "11b02d6fd4916e30dbbcd0f98b0386388f44d9980d76b8c02bf5047058f529ae",
+        "bytes": 66844
+      }
+    ],
+    "selectedStableDigest": "7dc81210d3c5c2173f0aee9cb2140641f6a26f55650e4016276fefccb3c4f1a9"
+  },
+  "newFiles": [
+    {
+      "path": "tests/m2s2-closed-eight-current-browser.test.cjs",
+      "gitBlobSha1": "0ae27196df97be45f4fecc33b5866d7b7b5db1f0",
+      "sha256": "005f5a3b77347a13af0e838da8473500a3cb989ffc40062d75169fb256242047",
+      "bytes": 7422
+    },
+    {
+      "path": ".github/workflows/m2-closed-eight-current-renderer-chrome.yml",
+      "gitBlobSha1": "84881aae89cc252a7ac2b1999b98d1b3d2a8d868",
+      "sha256": "8ba2f7af2ced8415ceb26a376b845ff81ddd24672862d3fea33e03138271cf56",
+      "bytes": 5488
+    }
+  ],
+  "tests": {
+    "producerBoundaryCasesAuthored": 51,
+    "transportBoundaryCasesAdded": 45,
+    "officialNodeExecution": "NOT_RUN",
+    "actualChrome": "NOT_RUN",
+    "actualNativeOrConsumer": "NOT_RUN"
+  },
+  "sourceMathAndAuthorityChanges": 0,
+  "branchOrRefWrites": 0
+}

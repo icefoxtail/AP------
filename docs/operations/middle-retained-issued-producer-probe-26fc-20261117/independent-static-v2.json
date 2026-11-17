@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-independent-retained-issued-native-plan-probe-review-v1",
+  "reviewer": "GPT_M3S2_RELEASE_26FC42390A50",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "decision": "STATIC_ACCEPT_READONLY_OBSERVATION_ONLY_ACTUAL_PENDING",
+  "candidateManifest": {
+    "gitBlobSha1": "492b5882a6d98f24aa92279566bf66773b8b667d",
+    "sha256": "2a78b9dc2648344b01cd18d2ff4861a312dcdd76062275260c55a2e7cb75be68",
+    "bytes": 4762
+  },
+  "inputs": [
+    {
+      "path": "tools/ci/observe-retained-issued-native-plan.cjs",
+      "gitBlobSha1": "2f8d02db2a5f6789cd8cfe9b9ca77cbc7a97d0b7",
+      "sha256": "2b5d3676b6eee3f08c339c62e34ba5aacde7ec44c2109f0866f6c433402069f1",
+      "bytes": 24228
+    },
+    {
+      "path": ".github/workflows/middle-retained-issued-native-plan-probe.yml",
+      "gitBlobSha1": "8c36f5952c28ea367324921087f160253e82d0bc",
+      "sha256": "3161df9c49c059f34043d19f8c9915b1473322915c37cc683a8333159de1fe21",
+      "bytes": 1823
+    }
+  ],
+  "directInspection": {
+    "fullCodeAndWorkflowRead": true,
+    "rawGitByteHashesRecomputed": true,
+    "originalSourceOrQuestionContentReview": false,
+    "executedRepositoryCode": false
+  },
+  "scope": {
+    "snapshot": "b4dc3bf65c37106ef2661173a0d1b83dc0e0417b",
+    "sourceCount": 2,
+    "subjectCount": 11,
+    "e034Count": 10,
+    "hyangrimQ5Count": 1,
+    "heldE034Q22Included": false
+  },
+  "acceptedBoundaries": [
+    {
+      "name": "Separate fixed data and publication code",
+      "evidence": "Workflow checks out exact event code and fixed b4 actual-main into separate directories; script requires exact actual HEAD and clean worktree, verifies Auto/ACTIVE/source2/receipt2 raw/Git/size and snapshot paths."
+    },
+    {
+      "name": "Issued whole-state prerequisite",
+      "evidence": "Unique global metadata/identity and target runtime joins; current MD/ID/runtime whole equality to exact issued receipt rows for all eleven; source/ordinal/owner status exact and current ACTIVE binding required."
+    },
+    {
+      "name": "Original producer observation only",
+      "evidence": "Fixed actual Auto exports nativeReviewReceipt and planQuestion are called with current inputs. No registration/apply/prepare/build/compile function is invoked. Native null and plan APPLY are recorded without granting approval or executing a plan."
+    },
+    {
+      "name": "Fail closed result contract",
+      "evidence": "Unknown Native result shapes, unknown plan statuses, unmatched UID/source/ordinal, unrecognized reason text or any call exception produce failure. Free text errors are hashed; no source, answer, solution, rationale or final object is serialized."
+    },
+    {
+      "name": "Bounded metadata transport",
+      "evidence": "Report capped at512KiB with exact raw/Git/size framing; only locator/status/field-name metadata and whole hashes are emitted. Output is outside actual input checkout."
+    },
+    {
+      "name": "Input preservation",
+      "evidence": "Normal completion verifies input object whole hashes, all watched disk input pins and HEAD/worktree equality. Early input/call failure is a failed observation, not a completed unchanged assertion."
+    },
+    {
+      "name": "Workflow permissions",
+      "evidence": "Exact repository and one closed push branch; contents:read; persist-credentials:false; fixed actual snapshot; no remote writes."
+    }
+  ],
+  "limitations": {
+    "node": "NOT_RUN",
+    "syntaxByReviewer": "NOT_RUN",
+    "actualNative11": "NOT_RUN",
+    "actualPlan11": "NOT_RUN",
+    "registration": 0,
+    "newSemanticApprovals": 0,
+    "newNativeApprovals": 0,
+    "fullSuitePassClaimed": false,
+    "inputUnchangedOnEarlyAbort": "Not independently observed; use actual success/failure fields, not the declarative write-count alone."
+  },
+  "blockingFindings": [],
+  "nextAction": "Root may publish the exact read-only probe and evaluate actual metadata. Do not treat Native=null, APPLY or observer completion as a new approval or registration."
+}

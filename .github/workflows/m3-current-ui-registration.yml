@@ -1,0 +1,43 @@
+name: M3 Current UI Existing Authority Gate
+on:
+  push:
+    branches:
+      - ops/m3-current-ui-registration-26fc-20261117
+permissions:
+  contents: read
+concurrency:
+  group: m3-current-ui-authority-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  m3-current-authority:
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/m3-current-ui-registration-26fc-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      ARCHIVE_M3_SOURCE49_EXPECTED_SHA: ${{ github.sha }}
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout the exact closed ops HEAD with immutable history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Supported Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse the private scoped gate
+        run: node --check tools/4slot/check-m3-current-ui-scoped.cjs
+      - name: Original Q5 and Q16 authority with source49 Consumer and refusal checks
+        run: >-
+          node tools/4slot/check-m3-current-ui-scoped.cjs
+          --root "$GITHUB_WORKSPACE"
+          --output "$RUNNER_TEMP/m3-current-authority/scoped-result.json"
+      - name: Preserve bounded metadata even on refusal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m3-source49-existing-authority-${{ github.sha }}
+          path: ${{ runner.temp }}/m3-current-authority/scoped-result.json
+          if-no-files-found: error

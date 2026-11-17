@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "e015-native-two-observed-outcome-recovery-v1",
+  "recoveryKind": "NEW_METADATA_WITNESS_FROM_PARSED_RESULT_NOT_ORIGINAL_RAW_RECOVERY",
+  "originalProof": {
+    "path": "/tmp/ap-middle-meta-26fc-recovery17/m1/proof/e015-actual-native-v2.json",
+    "originalRawSha256": null,
+    "originalRawBytesRecovered": false
+  },
+  "observedBy": {
+    "executionOwner": "/root/m1_release_closeout",
+    "completionToolSession": 64644,
+    "completionExitCode": 0,
+    "parsedResultObserver": "/root",
+    "parsedResultMethod": "Root read and parsed the actual v2 JSON before environment disconnection; exact parsed fields were returned to the owner."
+  },
+  "observedResult": {
+    "schemaVersion": "e015-current-native-closed-two-v1",
+    "status": "PASS",
+    "dependencyTree": "5dadbefbcd9eefe5eabcf31bedbf9a9c29527aab",
+    "registryStatus": "ACTIVE",
+    "registrySha256": "sha256:86af91cc66850bb59667c7634a12212223e1df0e25962ed09247ce7ef949d549",
+    "rows": [
+      {
+        "questionUid": "qid_v1_3c72535bb4d43798192918e723d32bd646b2415bde8c5e8ad872b445496b7bfd",
+        "sourceOrdinal": 7,
+        "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2-family3-e015-current65a-display-r2-20261116.json",
+        "approvalType": "FINAL_QA",
+        "reviewStatus": "reviewed_pass",
+        "selectedMetadataSha256": "8f44fbf99408b7bde066400aed6cda46d94a15fb1f9c886eeb8993a1105589fa",
+        "selectedIdentitySha256": "a555070c4a10e0cf3e0404d56c3563722c94e6ca95df29e5829603aa85d2f453",
+        "selectedRuntimeSha256": "20f56cf6de495eaffc348e3f02d598c2cb08bf27a542a88283a37c7b15d21ce8",
+        "native": "PASS",
+        "currentActiveBinding": "PASS"
+      },
+      {
+        "questionUid": "qid_v1_76b2be613350f59166e128170c6f38b6150078c9ed44e727733d5de0bbf76942",
+        "sourceOrdinal": 8,
+        "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2-family3-e015-current65a-display-r2-20261116.json",
+        "approvalType": "FINAL_QA",
+        "reviewStatus": "reviewed_pass",
+        "selectedMetadataSha256": "3d459296fbacab476d72b035d1902a6e3a18a32d9967f76396c058762d00a725",
+        "selectedIdentitySha256": "823c90b69955e28009bdf1df2554cca4f545b77dda22d1974978efc9c696c701",
+        "selectedRuntimeSha256": "8fd5224b188aca63ea4d64d8ba20d52b3ad8427f6c6ef5618551f28ab05e7470",
+        "native": "PASS",
+        "currentActiveBinding": "PASS"
+      }
+    ],
+    "ordinaryNativePositive": 2,
+    "actualNonselectedBankTamperRejected": true,
+    "sourceWrites": 0,
+    "registrations": 0,
+    "newApprovals": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0
+  },
+  "fixtureCorrection": {
+    "firstAttempt": "Sparse fixture ENOENT for original E015 review JSON",
+    "actualMainHasFile": true,
+    "actualCurrentGitBlobSha1": "ef208dcb4f0f0ebb6a6297c843099441c90bc679",
+    "requiredSha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0",
+    "cause": "Local fixture filter matched /exams/ inside archive/data/meta-review/.../exams/E015/review.json and skipped the declared evidence file.",
+    "resolution": "Hydrated the exact declared ef208 blob; the required current-main path and issued expected bytes agree.",
+    "productionCodeChangesAfterFrozenDraft": 0,
+    "newHistoricalReader": 0,
+    "rawReviewPublication": 0
+  },
+  "generatedSvgInput": {
+    "proofSha256": "b3b65bd6a84706c0122034323a1d1ea973c5114e2c28eef492070493a41d27e1",
+    "proofKind": "Private scoped generated input, not actual persisted index",
+    "approvedAssetRecordCount": 3,
+    "capturedWholeRecordsExact": 3,
+    "productionFunctionBodiesChanged": false,
+    "sourceJavascriptExecutions": 0
+  },
+  "scopeInventory": {
+    "proofSha256": "271cf83514b974e7d346fc2ea37ed91a32e07e716aa880a9c80c7bac78305377",
+    "sourceBanks": 4,
+    "sourceQuestions": 93,
+    "alreadyIssuedNativeClaims": 2,
+    "scopeExtension": 0
+  },
+  "limits": {
+    "newApprovals": 0,
+    "newRegistrations": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "mainWrites": 0,
+    "rerunCompletedGates": 0
+  }
+}

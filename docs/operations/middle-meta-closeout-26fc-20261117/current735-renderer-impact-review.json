@@ -1,0 +1,397 @@
+{
+  "schemaVersion": "archive-current735-renderer-dependency-independent-review-v1",
+  "owner": "/root/m3s2_release",
+  "dateUtc": "2026-11-17",
+  "repository": "icefoxtail/AP------",
+  "remoteOnly": true,
+  "safety": {
+    "shellCalls": 0,
+    "repositoryJavascriptExecutions": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "newNativeExecutions": 0,
+    "newConsumerExecutions": 0,
+    "sourceOrApprovalEdits": 0,
+    "refWrites": 0,
+    "branchWrites": 0,
+    "prWrites": 0,
+    "mainWrites": 0
+  },
+  "baseCommit": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
+  "headCommit": "735596ae7fdf37e920569271def0c2bc4add6f86",
+  "previousThinCommit": "ddf30c98e667b498ee8a72bf5ac7b484300edbad",
+  "verdict": {
+    "m3FrozenThree": "NO_GLOBAL_RENDERER_GUARD_INTERSECTION_RELEVANT_PINS_PRESERVED_SELECTED_MD_ID_CAS_PENDING",
+    "e015NativeTwo": "DO_NOT_REUSE_OLD_NATIVE_PASS_ON_CURRENT_RENDERER",
+    "m1TypedSeven": "CURRENT_SHARED_RENDERER_DOES_NOT_MATCH_CAPTURED_PROOF"
+  },
+  "codePins": [
+    {
+      "path": "tools/4slot/registered-renderer-continuity.mjs",
+      "sha256": "b3f447bc44e1283b942eb2f70f778c32ceab667370ed1be2966687bbf573f3e8",
+      "gitBlobSha1": "4ced47a9e712cc4b4def9d35d36f7a90f77a8482",
+      "bytes": 8030
+    },
+    {
+      "path": "tools/4slot/m1s2-problem-renderer-continuity.cjs",
+      "sha256": "38556d0a9be5ab9582f3c0fc3a9c2a9401d34c46371f01574e88a0e5fffb84d2",
+      "gitBlobSha1": "b073bac3a47ceee4fd69d52e91f37252bf61e60a",
+      "bytes": 21244
+    },
+    {
+      "path": "tools/4slot/m1s2-problem-renderer-ui.cjs",
+      "sha256": "30b2b0abe6c91c3a7ffc2f1a7c3aca37b499d9bd32ba8a31e01f2cf6fe94b45b",
+      "gitBlobSha1": "d26a950d5a907698f7468e29c799f127985c0005",
+      "bytes": 20016
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "sha256": "83de1798ec68b90d29271a9bfd7a175eb19e57fd7c93e03d35c6992666a09336",
+      "gitBlobSha1": "2a92763df7777114ed403b0fc9e5ca5481171daa",
+      "bytes": 12520
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83",
+      "gitBlobSha1": "73a5b83ae2411dcafc58bf3103d31937f7ef6ceb",
+      "bytes": 47223
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "5bddb9b7fb860c34058a9930e0924736a0d3dba2091c9296ea1b94026302ca96",
+      "gitBlobSha1": "baa28462a9ba71555e7fffdaac1ab99418d90ec3",
+      "bytes": 36385
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-family3-problem-continuity.mjs",
+      "sha256": "bde8f0422051d8ce88ac2554f8f87960bc94ed1efa86aff2266b4c28e69ed262",
+      "gitBlobSha1": "6e21fde28ef071f5916e24981ab0144d3343754e",
+      "bytes": 32210
+    }
+  ],
+  "e015CandidateFamily3": {
+    "sha256": "2430a8e7a30762b8e1187a84c612c4c2672b4f60abc05d7ec54abb3c2cb2c295",
+    "gitBlobSha1": "bb79804751f1bc925f2a75f8469702b79c9480d2",
+    "bytes": 34003
+  },
+  "sharedServedCodeChanges": [
+    {
+      "path": "archive/engine.html",
+      "captureGit": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+      "captureSha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+      "captureBytes": 201060,
+      "currentGit": "226342544e896cd6a6f35aa946947b89ef3c893e"
+    },
+    {
+      "path": "archive/screen-runtime-adapter.js",
+      "captureGit": "3d8f3159934c99637c4df893649adbc331065d96",
+      "captureSha256": "2834bd3d0f3b40264921e15a85840df3d2374c7fcc6158844ce12883fb7cdd93",
+      "captureBytes": 52980,
+      "currentGit": "fb0ee7afc7eed48b30975874c5536eb283f308c9"
+    },
+    {
+      "path": "archive/render-feedback.js",
+      "captureGit": "d1dd28351e42c887269744fa127f5979b81f213c",
+      "captureSha256": "a55be90c452de08090ba648c1e8150f6fdecbfc9e10a9bd2e1ed59ccad727052",
+      "captureBytes": 7419,
+      "currentGit": "bba4a0a028b08260de01ae66a936dd9b77a849af"
+    }
+  ],
+  "currentPathPinsProvenance": "Current six changed path Git pins supplied by root from exact735 tree. The M1 captured three refs were directly parsed from immutable technical bytes; the same three family3 refs were separately supplied from the original P21 technical inventory by CI owner.",
+  "changedPathsNotInEitherCapturedServedOrMirrorInventory": [
+    "archive/mixed_engine.html",
+    "archive/exam-display-title.js",
+    "archive/archive2-output-bar.css"
+  ],
+  "m1TypedSeven": {
+    "technicalRef": {
+      "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+      "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+      "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+      "bytes": 222136
+    },
+    "captureCommit": "9fb79d71320063f490a8d90caef3e05d0fb2d4ed",
+    "sameTechnicalRefAcrossSeven": true,
+    "subjects": [
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8
+      },
+      {
+        "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+        "sourceOrdinal": 6
+      },
+      {
+        "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+        "sourceOrdinal": 19
+      },
+      {
+        "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+        "sourceOrdinal": 18
+      },
+      {
+        "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+        "sourceOrdinal": 17
+      },
+      {
+        "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+        "sourceOrdinal": 13
+      },
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6
+      }
+    ],
+    "gate": "m1s2-problem-renderer-ui.verify -> capturedRef(shared served code, live=true) -> makeReader.read(withoutCommit(ref), true)",
+    "mandatoryFailureReason": "The current HEAD tree no longer has the captured Git blob for each of the three shared files. GIT_PATH_BINDING or a prior guard rejects; no actual first-throw claim is made.",
+    "newVisualPass": false
+  },
+  "e015NativeTwo": {
+    "technicalGit": "8e30cbebdf2518a9e307383d04d50e5a4b337e9d",
+    "technicalSha256": "90265ccadf9b400e99396667f5e44ec39da5a43138eaa04626e605d9b840d264",
+    "captureCommit": "e841eb07f25c9646df5bbf5b235fc9a1d815f4f7",
+    "sourcePin": {
+      "path": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+      "expectedGit": "f14aefb3ab99ed6df2badef820a0878e97c6f488",
+      "actualGit": "f14aefb3ab99ed6df2badef820a0878e97c6f488",
+      "unique": true,
+      "same": true
+    },
+    "gate": "validateUi authenticates immutable served files, then requires current live bytes for every non-dynamic file. Candidate bb798 changes only generated SVG handling; engine/screen/feedback remain strict.",
+    "mandatoryMismatchCode": "M2_FAMILY3_PROBLEM:LIVE_SERVED_CODE_DRIFT",
+    "priorWitnessIsHistoricalOnly": "647c6aa1869f773b5c738a33301a0612d258ccaf",
+    "actualCurrentNativeRerun": 0
+  },
+  "m3FrozenThree": {
+    "frozenSidecarCommit": "edf7e529a41c5a9417ea1131bed843e1975e0f1c",
+    "priorThinRecoveryGit": "7e5426e20bd7c34a125824201e2428ac598944da",
+    "sourcePins": [
+      {
+        "key": "E002Q16",
+        "path": "archive/exams/original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.js",
+        "expectedGit": "ccc44f8c3a2734c6216756eaec130f44473e9f06",
+        "actualGit": "ccc44f8c3a2734c6216756eaec130f44473e9f06",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "E007Q9",
+        "path": "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "expectedGit": "3bfcf3713676cd5fa7f306e4ee3d7d5e6ba6ca6a",
+        "actualGit": "3bfcf3713676cd5fa7f306e4ee3d7d5e6ba6ca6a",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "E051Q6",
+        "path": "archive/exams/original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.js",
+        "expectedGit": "bd01773b3f7c076f8197d8af85340b401048a192",
+        "actualGit": "bd01773b3f7c076f8197d8af85340b401048a192",
+        "unique": true,
+        "same": true
+      }
+    ],
+    "assetPins": [
+      {
+        "key": "e002",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중3_기출/q16-engine-upgrade.svg",
+        "gitBlobSha1": "b8dbe931c6355592e3fe17e319a0ef952c85e99c",
+        "sha256": "6a2adfb467233fbe77edd4057b2a93388871506637f792fb0774eb44b4d2f12a",
+        "actualGit": "b8dbe931c6355592e3fe17e319a0ef952c85e99c",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "e002",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중3_기출/q16-solution.svg",
+        "gitBlobSha1": "8d5ff07fbc0bd93202e2cf44d739e8b4419892e6",
+        "sha256": "20f980c8a9926499d892aefe10a17d7de2110205ff95271311959a8804df9c46",
+        "actualGit": "8d5ff07fbc0bd93202e2cf44d739e8b4419892e6",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "e007",
+        "path": "archive/assets/images/25_왕운중_2학기_기말_중3_기출/q09-quality-v4.svg",
+        "gitBlobSha1": "25f6c4f575704eeea7d053838b5e9e2f96fbd76e",
+        "sha256": "fdfaab9a43a50a61414fd474c7a8050924c1dfea6e63997adf90705c1cd3325a",
+        "actualGit": "25f6c4f575704eeea7d053838b5e9e2f96fbd76e",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "e007",
+        "path": "archive/assets/images/25_왕운중_2학기_기말_중3_기출/q9-solution.svg",
+        "gitBlobSha1": "0c267cbf4cd6f7efc3e0027bccced1e59f91af5f",
+        "sha256": "5912dbd59498ce02f64d2b693a770ec6d5a18d3b533243569775a0e07033f197",
+        "actualGit": "0c267cbf4cd6f7efc3e0027bccced1e59f91af5f",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "e051",
+        "path": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q06-audit-rework.svg",
+        "gitBlobSha1": "13951fa1a602b63d4833e73a1104da90a1fa9349",
+        "sha256": "f8f4b3082cf5a73fe15c559fc1f8e81e447e65f79e07711238d77a5a8a24d519",
+        "actualGit": "13951fa1a602b63d4833e73a1104da90a1fa9349",
+        "unique": true,
+        "same": true
+      },
+      {
+        "key": "e051",
+        "path": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q6-solution.svg",
+        "gitBlobSha1": "d67cf5f7f91ec2248c5c5e6aba3ac17876c2f859",
+        "sha256": "2251ca3216441d07ee5b037e16c171130592bcb9b68ef93de0e39286094f93d7",
+        "actualGit": "d67cf5f7f91ec2248c5c5e6aba3ac17876c2f859",
+        "unique": true,
+        "same": true
+      }
+    ],
+    "receiptPins": [
+      {
+        "key": "e002",
+        "sha256": "1b88e0e936068b76bcf578fa7b4448650ea7bae383c35eb6bfa3ad82b35fdd90",
+        "gitBlobSha1": "9866a841f7284dc6cd6ecd2a55fa05d42b6d7f9a",
+        "bytes": 91058
+      },
+      {
+        "key": "e007",
+        "sha256": "a5b9ed5641287e1d692e3f8e62c754c0917c88432ef1029f281c715f88092f0d",
+        "gitBlobSha1": "662933fc622340b3875dcaffffa2b42067c34f9f",
+        "bytes": 217836
+      },
+      {
+        "key": "e051",
+        "sha256": "30edc986b33d1d86e772885f62d27048275b1d844c608284617ab351dd94afbc",
+        "gitBlobSha1": "9424705f889559aecee6c12dd5bd4fb98da6bb11",
+        "bytes": 106884
+      }
+    ],
+    "compactAndDictionaryPins": [
+      {
+        "path": "archive/data/item-4slot/original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.4slot.json",
+        "priorGit": "ed275213e377742c06bd482f879c54a6d6874c0f",
+        "currentGit": "ed275213e377742c06bd482f879c54a6d6874c0f",
+        "same": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.4slot.json",
+        "priorGit": "cd68b91cba5e4e5b71b9602862dfe5577f10f93b",
+        "currentGit": "cd68b91cba5e4e5b71b9602862dfe5577f10f93b",
+        "same": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.4slot.json",
+        "priorGit": "6ea277ab642607f6d32847da16802d963d6453e4",
+        "currentGit": "6ea277ab642607f6d32847da16802d963d6453e4",
+        "same": true
+      },
+      {
+        "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+        "priorGit": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+        "currentGit": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+        "same": true
+      }
+    ],
+    "definitionTreePins": [
+      {
+        "path": "archive/data/meta-foundation/canonical",
+        "priorTree": "8e97696c7619476a8c79b6d7b7150c98d4b11155",
+        "currentTree": "8e97696c7619476a8c79b6d7b7150c98d4b11155",
+        "same": true
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled",
+        "priorTree": "48d2be5fd3ca97c82687bb4bb77ce7fc396535ad",
+        "currentTree": "48d2be5fd3ca97c82687bb4bb77ce7fc396535ad",
+        "same": true
+      }
+    ],
+    "dataAndRuntimeComparison": [
+      {
+        "path": "archive/data/question_identity_map.json",
+        "priorGit": "e455443e6348ec1f04a7b2bad726cb5bef66a110",
+        "currentGit": "083110c6268cb143d3211b0e2b6fc5687196f5dd",
+        "same": false,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "priorGit": "1064850acded7cc6169f285971d397faa2e21ee1",
+        "currentGit": "7a7c2f90addf7270566be00c95ce540a3a988320",
+        "same": false,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+        "priorGit": "8c7753a254aff43d4e3051f1eb895c3071df08e3",
+        "currentGit": "7d4129de81a69386efd18c1c26ec751d43c0b2e4",
+        "same": false,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+        "priorGit": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+        "currentGit": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+        "same": true,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "priorGit": "c42ff5c9189dc837eb5ec938cb6ae022671eaa24",
+        "currentGit": "c42ff5c9189dc837eb5ec938cb6ae022671eaa24",
+        "same": true,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "priorGit": "8a096d74050fd2b1f1da8244ddcd9744e1ae14da",
+        "currentGit": "8a096d74050fd2b1f1da8244ddcd9744e1ae14da",
+        "same": true,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+        "priorGit": "080ab8bd96254ca63c93b855327e6367d48cd2a8",
+        "currentGit": "080ab8bd96254ca63c93b855327e6367d48cd2a8",
+        "same": true,
+        "type": "file"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+        "priorGit": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+        "currentGit": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+        "same": true,
+        "type": "file"
+      }
+    ],
+    "f9To735MetadataIdentity": [
+      {
+        "path": "archive/data/question_identity_map.json",
+        "f9Git": "083110c6268cb143d3211b0e2b6fc5687196f5dd",
+        "currentGit": "083110c6268cb143d3211b0e2b6fc5687196f5dd",
+        "same": true
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "f9Git": "7a7c2f90addf7270566be00c95ce540a3a988320",
+        "currentGit": "7a7c2f90addf7270566be00c95ce540a3a988320",
+        "same": true
+      }
+    ],
+    "guardRoute": [
+      "verifyRegisteredRendererContinuity",
+      "nativeReviewedRendererRebind",
+      "validateReviewedSourceReassessment",
+      "validateReviewedCurrentRendererContinuity"
+    ],
+    "dependencyBoundary": "This ordinary renderer-binding route authenticates issued native/source/independent renderer evidence and exact selected assets. It has no shared engine servedFiles live-equality dependency. The three unchanged current receipts use that route; no additional authority is inferred.",
+    "remainingGate": "Global MD and ID changed since ddf, so selected three current whole-row hashes must be compared by the root/M1 snapshot collector before main merge. MIDDLE_GEOMETRY runtime and canonical/compiled trees are exact; no full Consumer rerun is requested."
+  },
+  "releaseBoundary": [
+    "Do not mutate captured technical JSON or weaken live-code equality to reuse an old display PASS.",
+    "Historical source/semantic approval and current live display readiness are separate observations.",
+    "Unaffected M3 three may proceed to current CI and selected-row CAS; affected E015/M1 display readiness stays unverified until its existing guard is satisfied by valid current evidence or an independently reviewed narrow continuity contract.",
+    "This static report does not claim a new registered count, native execution, browser capture or deployed result."
+  ]
+}

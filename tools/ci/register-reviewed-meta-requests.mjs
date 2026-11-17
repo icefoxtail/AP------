@@ -31,7 +31,7 @@ import { fileURLToPath } from "node:url";
 import { verifyStudentAccess } from '../../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 import { AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, auditPreservationDependency,
   basicPreservationDescriptor, difficultyBeforeBindings, nativeRegistryDependencyDescriptor,
-  nativeRegistryDependencies, orderNativeRequests } from './archive-pr-native-preview.mjs';
+  nativeRegistryDependencies, orderNativeRequests, attachNativeRegistryVersionDependencies } from './archive-pr-native-preview.mjs';
 
 export function acceptPendingSupplement(opt, requestAbs, error) {
   const bytes=fs.readFileSync(requestAbs),doc=JSON.parse(bytes.toString('utf8'));
@@ -96,6 +96,22 @@ const jsonText = value => JSON.stringify(value, null, 2) + "\n";
 // projection/shadow replay. Main supplies the current immutable source bytes;
 // ordinary unrelated request order and per-request refusal handling are kept.
 export function orderedRequestPaths(opt, { onDependencyError } = {}) {
+  return orderedRequestPathsForHead(opt, { onDependencyError }, {});
+}
+
+// One private HEAD context is shared by ordering and the prewrite dependency
+// graph. Taxonomy-free batches retain their existing no-extra-Git-read path.
+function attachMainRegistryVersionDependencies(opt, descriptors, context) {
+  if(!descriptors.some(row=>row.registryDependency?.geometryPackProvider))return descriptors;
+  if(context.headSha===undefined) {
+    const head=spawnSync('git',['rev-parse','HEAD'],{cwd:opt.root,encoding:'utf8',stdio:['ignore','pipe','pipe']});
+    if(head.status!==0)throw Error('REGISTRY_VERSION_CONTEXT');
+    context.headSha=head.stdout.trim();
+  }
+  return attachNativeRegistryVersionDependencies({root:opt.root,headSha:context.headSha,requests:descriptors});
+}
+
+function orderedRequestPathsForHead(opt, { onDependencyError } = {}, registryContext) {
   if(onDependencyError) {
     const auditArgs=opt.requests.filter(requestArg=>{
       const absolute=path.resolve(opt.root,requestArg);if(!fs.existsSync(absolute))return false;
@@ -106,12 +122,12 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     });
     const rejected=[];
     for(const requestArg of auditArgs) {
-      try {orderedRequestPaths({...opt,requests:opt.requests.filter(p=>p===requestArg||!auditArgs.includes(p))});}
+      try {orderedRequestPathsForHead({...opt,requests:opt.requests.filter(p=>p===requestArg||!auditArgs.includes(p))},{},registryContext);}
       catch(error) {rejected.push(requestArg);onDependencyError(posix(path.relative(opt.root,path.resolve(opt.root,requestArg))),error);}
     }
     // Invalid declarations have no executable dependency edge. They are rejected
     // without invoking a registrar; unrelated requests retain their normal order.
-    return [...rejected,...orderedRequestPaths({...opt,requests:opt.requests.filter(p=>!rejected.includes(p))})];
+    return [...rejected,...orderedRequestPathsForHead({...opt,requests:opt.requests.filter(p=>!rejected.includes(p))},{},registryContext)];
   }
   const descriptors=opt.requests.map(requestArg=>{
     const absolute=path.resolve(opt.root,requestArg),rel=posix(path.relative(opt.root,absolute));
@@ -168,6 +184,7 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     if(row.kind!=='difficulty5-ratings'&&payload.expectedQuestionCount!==bank.length)
       throw Error('AUDIT_DEPENDENCY_SOURCE_DENOMINATOR');
   }
+  attachMainRegistryVersionDependencies(opt,descriptors,registryContext);
   return orderNativeRequests(descriptors).map(row=>row.requestArg);
 }
 
@@ -236,8 +253,8 @@ export function registerRequests(opt, { log = console.log } = {}) {
 
   const applied = [], rejected = [], pendingSupplement = [];
   let dirtied = null;
-  const dependencyErrors=new Map();
-  const requestOrder=orderedRequestPaths(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)});
+  const dependencyErrors=new Map(),registryContext={};
+  const requestOrder=orderedRequestPathsForHead(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)},registryContext);
   // Keep the selected basic owners before a failed request is moved away.
   // A dependent D5 request must not execute after its rebind was refused.
   const basicOwners=new Map(),registryRequests=[];
@@ -249,6 +266,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
         for(const item of doc.items||[])basicOwners.set(item.questionUid,posix(path.relative(root,absolute)));
     }catch(error){if(!(error instanceof SyntaxError))throw error;}
   }
+  attachMainRegistryVersionDependencies(opt,registryRequests,registryContext);
   const registryDependencies=nativeRegistryDependencies(registryRequests);
   for (const requestArg of requestOrder) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
