@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-853f3de72d7e-a0ecdfc5",
+  "sourceArchiveFile": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
+  "createdAt": "2026-11-15T19:33:42.444Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "8838f99aad1ed70ebbfc1cddabe5e7b1d668d0ed",
+  "ledgers": [
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-8-exam-026.json",
+      "sourceSha256": "24096a78c3f2e228cc77122eefdb530f6cc4b6d42e7eb09ac980f8ada1666a6d",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-853f3de72d7e-a0ecdfc5.pass3-ledger.json",
+      "repoSha256": "fc73136b3d751a5ad74f6974e3fd35e9e6e818e1f5b0b2f3f245e3c710449e61",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass4",
+      "source": "classify-final/p3/s/ledgers/shard-1-exam-0088.json",
+      "sourceSha256": "3a6e2e1437710868f16af1aa8caa326fd466a985a3343124d84748eb9ddeabc8",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-853f3de72d7e-a0ecdfc5.pass4-ledger.json",
+      "repoSha256": "3a6e2e1437710868f16af1aa8caa326fd466a985a3343124d84748eb9ddeabc8",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 191,
+    "p3": 3,
+    "sonnet-pass4": 2,
+    "luna-k4": 2
+  },
+  "itemSources": {
+    "registered": 5
+  },
+  "typeHoldQuestions": 0,
+  "idWarnings": []
+}

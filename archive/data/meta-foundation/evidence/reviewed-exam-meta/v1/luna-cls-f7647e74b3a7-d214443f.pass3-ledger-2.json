@@ -1,0 +1,99 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:12:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/22_효천고_1학기_기말_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "첫째항 1, 일곱째항 9의 공차는 4/3이라 가운데 c=5이고 대칭항 a+e=10이므로 a+c+e=15다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l4":  "중항"
+                                  }
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "각 k의 차는 (k³+k²+4k+1)−k(k²+k+2)=2k+1이므로 합 n²+2n=120에서 자연수 n=10이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l4":  "Σ 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "AB=4√5, AP=7인 지름삼각형에서 BP²=80−49=31, cosθ=7/(4√5)라 cos2θ=9/40이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "hold":  "crossConceptKeys: H2-수학I.json에 원주각·직각삼각형과 이중각을 나타낼 적절한 concept key가 없다."
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "h\u003e0에서 귀납 가정에 1+h를 곱하면 kh²\u003e0이므로 induction step이 성립하며 g(2)−f(k)=(2k+3)−(2k+1)=2다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "hold":  "integrationPattern: H2-수학I.json에 허용 목록이 없어 값을 선택하지 못했다."
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "0≤x\u003c5에서는 직선 2−x/5\u003e1이라 교점이 없고 (6,7),(8,9)의 두 양의 사인 봉우리마다 교점 둘씩 있어 총 4개다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "교점은 α_n=n,β_n=n+1이고 각 항은 1/(√(n+1)+√n)=√(n+1)−√n이라 15항 합은 √16−1=3이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "hold":  "integrationPattern: H2-수학I.json에 허용 목록이 없어 값을 선택하지 못했다."
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "복귀 주기는 k+1번의 증가와 k번의 감소인 2k+1이므로 14의 약수 중 k\u003e1을 만족하는 홀수 주기 7에서 최소 k=3이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_LOWER_BOUND"
+                                        ],
+                      "hold":  "integrationPattern: H2-수학I.json에 허용 목록이 없어 값을 선택하지 못했다."
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "첫 3항 합은 a₁(1+r+r²)=14, 다음 3항 합은 r³·14=112이므로 r=2,a₁=2라 일반항은 2ⁿ이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l4":  "일반항"
+                                  }
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "a_k=S_k−S_{k−1}=2k+1이므로 Σ₁¹⁰ka_k=2Σk²+Σk=2·385+55=825다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "여러 가지 수열의 합",
+                                      "l4":  "자연수 거듭제곱의 합"
+                                  }
+                  },
+                  {
+                      "ordinal":  24,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "밑을 2로 바꾸면 (2sinx−1)(sinx+1)\u003e0이고 −1≤sinx≤1에서 sinx\u003e1/2라 π/6\u003cx\u003c5π/6다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ],
+                      "hold":  "integrationPattern: H2-수학I.json에 허용 목록이 없어 값을 선택하지 못했다."
+                  }
+              ]
+}
