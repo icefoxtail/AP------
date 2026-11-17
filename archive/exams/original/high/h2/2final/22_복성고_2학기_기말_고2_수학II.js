@@ -592,9 +592,9 @@ window.questionBank = [
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
     "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
-    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: x축과 세 점에서 만나는 사차곡선이 있고, x축 위쪽의 영역 A와 x축 아래쪽의 영역 B가 칠해져 있다.",
-    "solutionImageCaption": "예: 두 영역 A, B의 넓이가 같아지는 경우를 그린 것으로, 부호 있는 정적분이 0이 되는 a를 구하면 a=5/6이다. 따라서 답은 ① 5/6이다.",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 곡선 y=f(x)가 원점에서 x축에 접한 뒤 다시 축과 만나며 그려져 있다. 원점 오른쪽 x축 위쪽 영역에 A, 그 오른쪽 x축 아래쪽 영역에 B가 칠해져 있고, 곡선의 극값 위치에 점이 표시되어 있다.",
+    "solutionImageCaption": "축 위 영역과 축 아래 영역의 넓이가 같으면 부호 있는 정적분에서 서로 상쇄된다.",
     "solutionImageSize": "full"
   },
   {

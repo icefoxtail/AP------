@@ -860,13 +860,13 @@ window.questionBank = [
     "answer": "제2사분면과 제3사분면",
     "solution": "[키포인트] 유리함수 그래프의 점근선과 절편으로 $a,b,c$를 정한 뒤 무리함수의 위치를 판단한다.\n그림에서 $f(x)$의 수평점근선은 $y=-2$이므로 $a=-2$이고, 수직점근선은 $x=1$이므로 $-c=1$, 즉 $c=-1$이다.\n또 그래프의 $y$절편이 $1$이므로 $f(0)=\\dfrac{b}{c}=1$에서 $b=-1$이다.\n따라서 $g(x)=\\sqrt{-2x-1}-1$이다. 정의역은 $x\\le-\\dfrac12$이다.\n$-1\\lt x\\le-\\dfrac12$에서는 $x\\lt0$, $-1\\le g(x)\\lt0$이므로 제3사분면을 지나고, $x\\lt-1$에서는 $x\\lt0$, $g(x)\\gt0$이므로 제2사분면을 지난다.\n따라서 그래프가 지나는 사분면은 제2사분면과 제3사분면이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q27-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q27-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수에서 유도한 무리함수의 사분면을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(−2x−1)−1의 그래프가 점 (−1, 0)에서 x축을 지나 (−1/2, −1)에서 끝나는 곡선으로 그려져 있다. 그래프 위의 점 (−5, 2)와 정의역 x≤−1/2, 치역 y≥−1이 표시되어 있다.",
 
-    "solutionImageCaption": "g=√(−2x−1)−1의 제2·제3사분면 통과를 확인한다.",
+    "solutionImageCaption": "그림에서 수평점근선 y=−2와 수직점근선 x=1, y절편 1이므로 a=−2, c=−1, b=−1이고 g(x)=√(−2x−1)−1이다. x<−1에서는 y>0으로 제2사분면, −1<x≤−1/2에서는 y<0으로 제3사분면을 지나므로 답은 제2사분면과 제3사분면이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q27.png",
     "imageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",

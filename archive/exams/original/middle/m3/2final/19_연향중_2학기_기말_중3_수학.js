@@ -1258,9 +1258,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q21-solution-v2.svg",
-      "solutionImageAlt": "주황 높이가 두 작은 직각삼각형의 공통 변이다. 왼쪽 AC와 오른쪽 AB에 다른 색을 썼다.",
-      "solutionImageCaption": "∠BAH=45°, ∠CAH=30°이다. AH=4√3 m이고 AB=4√6 m이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q21-solution-v3.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A에서 변 BC에 내린 수선 AH가 그어져 H에 직각 표시가 있고, ∠B=45°, ∠BAH=45°, ∠CAH=30°, AC=8이 표시되어 있다. AH에 4√3, AB에 4√6이 적혀 있다.",
+      "solutionImageCaption": "AH⊥BC이므로 삼각형 ABH는 45°−45°−90° 직각삼각형이고, ∠BAC=75°에서 ∠BAH=45°, ∠CAH=75°−45°=30°이다. AC=8을 빗변으로 하는 직각삼각형 ACH에서 AH=8cos30°=4√3 m, AB=AH√2=4√6 m이므로 답은 45°, 30°, 4√3 m, 4√6 m이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",

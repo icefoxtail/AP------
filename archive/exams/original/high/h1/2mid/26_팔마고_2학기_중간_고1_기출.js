@@ -920,9 +920,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q20-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: 전체집합 U에 음악 M과 미술 A의 두 집합이 있다. 전체 40명, 음악 19명, 미술 25명이며 두 집합 밖의 5와 색칠한 공통 부분은 각각 인원과 두 과목을 모두 선택한 학생을 뜻한다.",
-    "solutionImageCaption": "전체에서 두 집합 밖의 인원을 빼고 합집합의 원소 수 공식을 적용한다. 정답: 1) 35명, 2) 9명, 3) 16명.",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q20-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: 큰 사각형 U(40명) 안에 두 집합 M(19명)과 A(25명)의 벤 다이어그램이 있고, M만인 부분에 10, 겹친 부분에 9, A만인 부분에 16, 어느 쪽도 아닌 부분에 5가 적혀 있다. 겹친 부분이 회색으로 칠해져 있다.",
+    "solutionImageCaption": "전체 40명에서 둘 다 선택하지 않은 5명을 빼면 적어도 하나를 선택한 학생은 35명이고, 35=19+25에서 공통 부분을 빼면 두 과목을 모두 선택한 학생은 9명이다. 미술만 선택한 학생은 25−9=16명이므로 답은 1) 35명, 2) 9명, 3) 16명이다.",
     "solutionImageSize": "full"
   },
   {
