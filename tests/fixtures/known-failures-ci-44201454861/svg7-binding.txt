@@ -1,0 +1,810 @@
+TAP version 13
+# Subtest: sealed current technical dispatch verifies seven retained display bindings and all sixteen original tiles
+not ok 1 - sealed current technical dispatch verifies seven retained display bindings and all sixteen original tiles
+  ---
+  duration_ms: 47.008731
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:74:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 196085
+  actual: 198587
+  operator: 'strictEqual'
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:78:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+  ...
+# Subtest: per-case font inventories retain their actual resource sets, including the thirty-resource mobile case
+ok 2 - per-case font inventories retain their actual resource sets, including the thirty-resource mobile case
+  ---
+  duration_ms: 7.803448
+  type: 'test'
+  ...
+# Subtest: a forged technical publication commit is rejected
+ok 3 - a forged technical publication commit is rejected
+  ---
+  duration_ms: 0.44484
+  type: 'test'
+  ...
+# Subtest: old typed generic evidence cannot be substituted for the current closed schema
+ok 4 - old typed generic evidence cannot be substituted for the current closed schema
+  ---
+  duration_ms: 31.035404
+  type: 'test'
+  ...
+# Subtest: unknown schema fails closed instead of reaching the legacy or current SVG7 path
+ok 5 - unknown schema fails closed instead of reaching the legacy or current SVG7 path
+  ---
+  duration_ms: 0.207422
+  type: 'test'
+  ...
+# Subtest: the historical SVG7 schema continues to enforce its historical sealed ref
+ok 6 - the historical SVG7 schema continues to enforce its historical sealed ref
+  ---
+  duration_ms: 0.114883
+  type: 'test'
+  ...
+# Subtest: current source-only continuity cannot select a different UID or surface
+ok 7 - current source-only continuity cannot select a different UID or surface
+  ---
+  duration_ms: 0.183026
+  type: 'test'
+  ...
+# Subtest: generated current data reader is mandatory
+ok 8 - generated current data reader is mandatory
+  ---
+  duration_ms: 0.080571
+  type: 'test'
+  ...
+# Subtest: raw capture immutable bytes cannot be modified
+ok 9 - raw capture immutable bytes cannot be modified
+  ---
+  duration_ms: 2.373917
+  type: 'test'
+  ...
+# Subtest: a changed original capture object is rejected before acceptance
+ok 10 - a changed original capture object is rejected before acceptance
+  ---
+  duration_ms: 2.082368
+  type: 'test'
+  ...
+# Subtest: a changed per-case font digest cannot reuse the sealed typed evidence
+ok 11 - a changed per-case font digest cannot reuse the sealed typed evidence
+  ---
+  duration_ms: 1.880063
+  type: 'test'
+  ...
+# Subtest: the old visual itself cannot replace the new current decision binding
+ok 12 - the old visual itself cannot replace the new current decision binding
+  ---
+  duration_ms: 1.536435
+  type: 'test'
+  ...
+# Subtest: visual reuse does not grant a new semantic approval or remove a legacy debt
+ok 13 - visual reuse does not grant a new semantic approval or remove a legacy debt
+  ---
+  duration_ms: 3.86934
+  type: 'test'
+  ...
+# Subtest: a forged independent equivalence document is rejected
+ok 14 - a forged independent equivalence document is rejected
+  ---
+  duration_ms: 4.004003
+  type: 'test'
+  ...
+# Subtest: changed live renderer engine bytes fail closed
+ok 15 - changed live renderer engine bytes fail closed
+  ---
+  duration_ms: 4.976088
+  type: 'test'
+  ...
+# Subtest: changed live font resource bytes fail closed
+not ok 16 - changed live font resource bytes fail closed
+  ---
+  duration_ms: 5.158382
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:144:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_REF_BYTES/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    readLiveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:83)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: changed live selected source bytes fail closed
+not ok 17 - changed live selected source bytes fail closed
+  ---
+  duration_ms: 5.010029
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:144:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_REF_BYTES/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    readLiveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:83)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: changed live selected problem asset bytes fail closed
+not ok 18 - changed live selected problem asset bytes fail closed
+  ---
+  duration_ms: 4.73828
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:144:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_REF_BYTES/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    readLiveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:83)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:146:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: changed live capture implementation bytes fail closed
+ok 19 - changed live capture implementation bytes fail closed
+  ---
+  duration_ms: 4.043993
+  type: 'test'
+  ...
+# Subtest: the sixteen actual original PNG files must remain present and byte exact
+not ok 20 - the sixteen actual original PNG files must remain present and byte exact
+  ---
+  duration_ms: 4.983469
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:148:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /ORIGINAL_PNG_UNAVAILABLE/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:150:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:150:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:150:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: current selected metadata drift is rejected
+not ok 21 - current selected metadata drift is rejected
+  ---
+  duration_ms: 390.889932
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:153:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_WHOLE_75_TABLE_ROWS_CHANGED/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:154:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:154:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:154:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a nonselected item in the same three source banks cannot drift
+not ok 22 - a nonselected item in the same three source banks cannot drift
+  ---
+  duration_ms: 6.515748
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:156:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_WHOLE_75_TABLE_ROWS_CHANGED/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:158:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:158:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:158:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: current selected identity drift is rejected
+not ok 23 - current selected identity drift is rejected
+  ---
+  duration_ms: 208.59845
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:160:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_WHOLE_75_TABLE_ROWS_CHANGED/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:161:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:161:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:161:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a selected UID duplicated elsewhere in the global identity table is rejected
+not ok 24 - a selected UID duplicated elsewhere in the global identity table is rejected
+  ---
+  duration_ms: 4.822316
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:163:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /GLOBAL_UID_DUPLICATE/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:164:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:164:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:164:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a missing source-bank identity row is rejected
+not ok 25 - a missing source-bank identity row is rejected
+  ---
+  duration_ms: 4.712331
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:166:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /WHOLE_BANK_DENOMINATOR/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:167:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:167:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:167:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: unrelated global metadata additions preserve the complete selected bank rows
+not ok 26 - unrelated global metadata additions preserve the complete selected bank rows
+  ---
+  duration_ms: 5.486607
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:169:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 196085
+  actual: 198587
+  operator: 'strictEqual'
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:170:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: generated files use only their named current-data path while code and assets stay live exact
+not ok 27 - generated files use only their named current-data path while code and assets stay live exact
+  ---
+  duration_ms: 4.38651
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:173:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 196085
+  actual: 198587
+  operator: 'strictEqual'
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    readLiveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:176:99)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:175:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  ...
+# Subtest: unrelated SVG generator header changes do not replace the selected consumed footprint
+not ok 28 - unrelated SVG generator header changes do not replace the selected consumed footprint
+  ---
+  duration_ms: 120.543041
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:180:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 196085
+  actual: 198587
+  operator: 'strictEqual'
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:181:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: a newly consumed selected SVG problem record is rejected
+not ok 29 - a newly consumed selected SVG problem record is rejected
+  ---
+  duration_ms: 96.649048
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:184:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CONSUMED_SVG_RECORDS_CHANGED|RUNTIME_LOOKUP_REJECTED/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:185:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:185:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:185:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a newly consumed selected SVG solution fallback record is rejected
+not ok 30 - a newly consumed selected SVG solution fallback record is rejected
+  ---
+  duration_ms: 94.818991
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:190:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CONSUMED_SVG_RECORDS_CHANGED|RUNTIME_LOOKUP_REJECTED/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:191:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:191:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:191:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: duplicate global SVG lookup keys are rejected even outside the selected seven assets
+not ok 31 - duplicate global SVG lookup keys are rejected even outside the selected seven assets
+  ---
+  duration_ms: 92.15081
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:196:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /RUNTIME_LOOKUP_REJECTED/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:197:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:197:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:197:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: executing or malformed SVG wrappers are rejected
+not ok 32 - executing or malformed SVG wrappers are rejected
+  ---
+  duration_ms: 4.788725
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:199:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /WRAPPER/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:200:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:200:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:200:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the caller must bind the actual captured selected source and asset refs
+not ok 33 - the caller must bind the actual captured selected source and asset refs
+  ---
+  duration_ms: 4.483526
+  type: 'test'
+  location: '/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:202:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /CURRENT_SELECTED_INPUT_BINDING/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: live bytes\n\n198587 !== 196085\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    live bytes
+    
+    198587 !== 196085
+    
+  stack: |-
+    liveRef (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:38:10)
+    currentPinned (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:550:13)
+    verifyCurrentSvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:668:33)
+    Object.verifySvg7Ui (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-svg7-ui.cjs:78:55)
+    Object.verifyUi (/home/runner/work/AP------/AP------/tools/4slot/existing-registered-vector-ui.cjs:195:119)
+    invoke (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:51:13)
+    /home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:203:21
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:203:10)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-svg7-current-ui-binding.test.cjs:203:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: all seven sidecars change only technical/visual refs and their exact source-byte checkout bridge
+ok 34 - all seven sidecars change only technical/visual refs and their exact source-byte checkout bridge
+  ---
+  duration_ms: 67.14978
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 16
+# fail 18
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1343.810228

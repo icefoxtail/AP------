@@ -292,6 +292,16 @@ test('selected failures remain blocking and the existing command timeout is unch
   assert.throws(() => readScope(f.scopeFile, f.root), /no longer matches snapshot: checks/);
 });
 
+test('scoped execution counts a listed known failure as KNOWN-FAIL while anything else stays blocking', t => {
+  const f = scopedExecutionFixture(t);
+  const entry = { file: f.command.args.at(-1), pattern: 'known-boom', repair: 'R-1', cause: 'fixture', resolvedWhen: 'never' };
+  const scoped = (stderr, status = 1) => ({ root: f.root, scopeFile: f.scopeFile, availableCommands: [f.command], knownFailures: [entry],
+    run: (_node, args) => args.includes('--test') ? { status, stdout: '', stderr } : { status: 0 } });
+  assert.equal(runScopedTests(scoped('Error: known-boom happened\n')), true, 'the listed signature does not turn the scoped run red');
+  assert.throws(() => runScopedTests(scoped('Error: some other failure\n')), /Scoped checks failed/, 'a different failure in the same file stays blocking');
+  assert.throws(() => runScopedTests(scoped('', 0)), /Scoped checks failed/, 'a listed failure that no longer reproduces is red');
+});
+
 test('workflow conditions preserve output/checker Chrome and metadata shared-Consumer prerequisites', () => {
   const ci = read('.github/workflows/ci.yml');
   const runtime = read('.github/workflows/archive2-runtime-guard.yml');

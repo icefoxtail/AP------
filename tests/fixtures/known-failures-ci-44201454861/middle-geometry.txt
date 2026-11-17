@@ -1,0 +1,24 @@
+AssertionError [ERR_ASSERTION]: historical reviewed transition: qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9: unknown live renderer change
++ actual - expected
+
+  {
++   bytes: 198587,
++   gitBlobSha1: '022b230a7bd19afba3e9fb4a55d55e528e3e9803',
++   sha256: '8310d7ee0f01a9eb98e8aa1952d39ba416f53ec24db59ba7a07f39dcd3edd36e'
+-   bytes: 196085,
+-   gitBlobSha1: '226342544e896cd6a6f35aa946947b89ef3c893e',
+-   sha256: '671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5'
+  }
+
+    at assertKnownInputs (/home/runner/work/AP------/AP------/tests/helpers/middle-geometry-issued-approval.cjs:1793:16)
+    at Object.assertBlocked (/home/runner/work/AP------/AP------/tests/helpers/middle-geometry-issued-approval.cjs:1835:18)
+    at assertReviewedState (/home/runner/work/AP------/AP------/tests/meta-foundation-middle-geometry-runtime.test.js:206:37)
+    at verifyHistoricalCohorts (/home/runner/work/AP------/AP------/tests/meta-foundation-middle-geometry-runtime.test.js:246:19)
+    at main (/home/runner/work/AP------/AP------/tests/meta-foundation-middle-geometry-runtime.test.js:255:26) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [Object],
+  expected: [Object],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
