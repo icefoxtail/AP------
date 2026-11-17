@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass4",
+  "createdAt": "2026-11-14T00:00:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass1",
+      "resolutionReason": "점 (2,1)의 좌표에 이동량 -1과 3을 더해 (1,4)를 얻는다.",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "new",
+      "resolutionReason": "A(4,3)와 B(5,2)를 각각 y=2x, x축에 대칭시킨 A′=(0,5), B′=(5,-2)의 선분 길이 √74가 꺾인 경로의 최솟값이다.",
+      "integrationPattern": "REINTERPRETATION"
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "new",
+      "resolutionReason": "네 꼭짓점 (±a,0),(0,±a) 중 두 점을 고정하는 축 6개와 두 쌍을 맞바꾸는 y=±x 두 경우를 합쳐 8개다.",
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "new",
+      "resolutionReason": "식 u=-y+3, v=x+1을 풀어 이동 규칙 (u,v)→(v-1,3-u)로 바꾸면 (2,3)은 (2,1)로 옮겨진다.",
+      "integrationPattern": "REINTERPRETATION"
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "new",
+      "resolutionReason": "f(x)=x+1을 20회 차례로 합성하면 매번 1씩 더해져 f²⁰(1)=1+20=21이다.",
+      "integrationPattern": "SEQUENTIAL"
+    }
+  ]
+}

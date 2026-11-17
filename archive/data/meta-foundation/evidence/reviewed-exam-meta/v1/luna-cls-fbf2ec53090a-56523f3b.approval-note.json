@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-fbf2ec53090a-56523f3b",
+  "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_확률과통계.js",
+  "createdAt": "2026-11-15T19:33:36.865Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "c4fb6ad72269b1bf6f67af8bd47d2f1436aae213",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/22_팔마고_1학기_중간_고2_확률과통계.json",
+      "sourceSha256": "0d451213c08aaac26b67e9e79f2e19179fa902e9b6c4734a86475c77ccdca8a5",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-fbf2ec53090a-56523f3b.pass1-ledger.json",
+      "repoSha256": "0d451213c08aaac26b67e9e79f2e19179fa902e9b6c4734a86475c77ccdca8a5",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/22_팔마고_1학기_중간_고2_확률과통계.json",
+      "sourceSha256": "13c48eeffa223d1a50fb6b5d93e8411d60d607c43fb269a16ec99c5115906264",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-fbf2ec53090a-56523f3b.pass2-ledger.json",
+      "repoSha256": "13c48eeffa223d1a50fb6b5d93e8411d60d607c43fb269a16ec99c5115906264",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-1-exam-0158.json",
+      "sourceSha256": "203b1ad0a5810a2870986b9e6ef0510f5e593d8b56f11f02908abc849d1f75f8",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-fbf2ec53090a-56523f3b.pass3-ledger.json",
+      "repoSha256": "203b1ad0a5810a2870986b9e6ef0510f5e593d8b56f11f02908abc849d1f75f8",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 191,
+    "p3": 4,
+    "tera-k67": 2,
+    "agree": 1
+  },
+  "itemSources": {
+    "registered": 12
+  },
+  "typeHoldQuestions": 0,
+  "idWarnings": []
+}
