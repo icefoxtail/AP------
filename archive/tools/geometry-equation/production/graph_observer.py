@@ -2888,8 +2888,12 @@ def _ov_curve_value(plan,value,curve_id=None):
         raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
     raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
 
+# The observer is independent of graph_framing, so the limit is declared here; it must equal graph_framing.PIECEWISE_POLY_MAX_COEFFICIENTS
+# (constant ... x^4: a cubic or quartic piece is a valid plan, and the exact evaluation below is generic in the degree).
+_PP_MAX_COEFFICIENTS=5
+
 def _pp_coeff_coefficients(values):
-    if not isinstance(values,list) or len(values)>4:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    if not isinstance(values,list) or len(values)>_PP_MAX_COEFFICIENTS:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
     return [_ov_reader(item) for item in values]
 
 def _ov_drop_fraction_brackets(text):
