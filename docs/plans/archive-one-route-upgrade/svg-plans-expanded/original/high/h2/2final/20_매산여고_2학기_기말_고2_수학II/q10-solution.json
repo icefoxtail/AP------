@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "3",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      0,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "E1",
+        "x": "1",
+        "y": "7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "5",
+        "intersectionX": [
+          "-sqrt(3)",
+          "0",
+          "sqrt(3)"
+        ]
+      }
+    ],
+    "sampleNote": "k=5"
+  },
+  "caption": "중간 높이 k=5인 예시 수평선과 곡선의 교점을 비교하고 두 극값 높이 사이에서 세 교점이 생기는 이유를 본다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)$의 도함수가 $f'(x)$일 때, $y=f'(x)$의 그래프는 다음과 같다. $f(0)=5$일 때, 방정식 $f(x)=k$가 서로 다른 세 실근을 갖기 위한 정수 $k$의 개수를 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG도함수의영점±1/절편3에서 f′=3−3x². f=−x³+3x+5,극값3/7중간값보존. k5예시명시,최종정수개수3표시안함.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "PNG도함수의영점±1/절편3에서 f′=3−3x². f=−x³+3x+5,극값3/7중간값보존. k5예시명시,최종정수개수3표시안함."
+  ]
+}

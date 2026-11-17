@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "15",
+          "49/10",
+          "-49/10"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      0,
+      2,
+      0,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "649/40"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/8"
+    }
+  },
+  "caption": "높이의 변화에서 상승과 하강이 바뀌는 꼭짓점을 찾는다. 보조 다항식은 실수 전체로 연장하되 표시창은0~2초이고 실제 비행구간은0≤t≤(7+√649)/14이다. 최종 높이는 좌표·눈금·캡션에 표시하지 않는다.",
+  "accessibilityDescription": "높이의 변화에서 상승과 하강이 바뀌는 꼭짓점을 찾는다. 보조 다항식은 실수 전체로 연장하되 표시창은0~2초이고 실제 비행구간은0≤t≤(7+√649)/14이다. 최종 높이는 좌표·눈금·캡션에 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 올림픽의 다이빙 경기 중에는 높이가 $15\\mathrm{m}$인 고정 다이빙대에서 뛰어드는 플랫폼 다이빙이 있다. $15\\mathrm{m}$ 높이의 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h\\mathrm{m}$는 $h = -4.9t^2 + 4.9t + 15$이라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래에 수면을 나타낸 파란 평면이 있다. 그 왼쪽 위에는 다이빙대가 있고, 출발하는 사람과 수면 사이의 수직 높이를 15 m라고 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "h=−49(t−1/2)²/10+649/40으로최대16.225.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "높이의 변화에서 상승과 하강이 바뀌는 꼭짓점을 찾는다. 보조 다항식은 실수 전체로 연장하되 표시창은0~2초이고 실제 비행구간은0≤t≤(7+√649)/14이다. 최종 높이는 좌표·눈금·캡션에 표시하지 않는다."
+  ]
+}

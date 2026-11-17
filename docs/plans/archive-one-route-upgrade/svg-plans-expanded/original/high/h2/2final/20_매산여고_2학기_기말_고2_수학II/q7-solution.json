@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      0,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "E1",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "극솟값 조건으로 계수를 복원한 뒤 두 정지점에서 증가와 감소의 방향을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3+ax^2+bx+3$은 $x=3$에서 극솟값 $3$을 가진다. 이때, 함수 $f(x)$의 극댓값을 $k$라 하면, $a+b+k$를 구하면? (단, $a,b,k$는 상수) [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a−6,b9이며 극점x1,3. 극댓값7은 중간값, 최종a+b+k=10은표시안함.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a−6,b9이며 극점x1,3. 극댓값7은 중간값, 최종a+b+k=10은표시안함."
+  ]
+}

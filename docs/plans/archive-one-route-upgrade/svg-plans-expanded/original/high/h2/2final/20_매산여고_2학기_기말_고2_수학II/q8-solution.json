@@ -1,0 +1,69 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "도함수 양수",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "도함수 음수",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "기존 도함수 그림을 부호 구간으로 옮긴다. 양수인 구간과 음수인 구간에서 원래 함수의 증가와 감소를 판단하며 보기의 완성 개형은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같을 때, 원점을 지나는 함수 $y=f(x)$의 그래프의 개형으로 옳은 것을 고르면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존PNG를 직접 확인했다. f′=1(x<−1),2x(−1<x<1),−1(x>1). ±1에서 열린점,0에서영점. 주어진도함수를 임의삼차식으로근사하지않고정확한부호구간만그린다. 최종선택지②/원함수완성개형은표시하지않음.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "기존PNG를 직접 확인했다. f′=1(x<−1),2x(−1<x<1),−1(x>1). ±1에서 열린점,0에서영점. 주어진도함수를 임의삼차식으로근사하지않고정확한부호구간만그린다. 최종선택지②/원함수완성개형은표시하지않음."
+  ]
+}

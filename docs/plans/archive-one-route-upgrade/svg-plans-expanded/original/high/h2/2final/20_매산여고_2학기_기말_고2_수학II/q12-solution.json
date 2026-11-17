@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -22,
+      34
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-1",
+        "y": "7"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "-20"
+      },
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-4"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "32"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "상수항을 제외한 다항식 h의 끝점과 내부 극점을 비교한다. 전체 그래프를 같은 만큼 평행이동해도 최대와 최소의 차이는 유지된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌구간 $[-2,4]$에서 $f(x)=2x^3-3x^2-12x+k+3$의 최댓값이 $38$일 때, 함수 $f(x)$의 최솟값을 구하면? (단, $k$는 상수) [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h=2x³−3x²−12x의높이−4,7,−20,32는중간값. k3과최종f최소−14는라벨안씀.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "h=2x³−3x²−12x의높이−4,7,−20,32는중간값. k3과최종f최소−14는라벨안씀."
+  ]
+}

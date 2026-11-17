@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      2
+    ],
+    "viewport": [
+      -4,
+      2,
+      -5,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-1",
+        "y": "-4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "도함수의 두 영점에서 부호가 바뀌는 방향을 확인한 뒤 극솟값 조건으로 원함수의 상수를 정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\displaystyle\\int(x^2+2x-3),dx$의 극솟값이 $-4$일 때, $f(x)$의 극댓값을 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′=(x+3)(x−1)만 표시. 최종극댓값20/3을 원함수높이라벨로노출하지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f′=(x+3)(x−1)만 표시. 최종극댓값20/3을 원함수높이라벨로노출하지않음."
+  ]
+}

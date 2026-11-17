@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "12",
+          "-9",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      -6,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "-1"
+      },
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-5"
+      },
+      {
+        "id": "B",
+        "x": "5/2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "속도를 적분한 위치 그래프가 시간축에 닿는 경우와 가로지르는 경우를 구분하여 원점 도달 시각을 찾는다. 보조 위치 다항식은 실수 전체로 연장하지만 실제 운동의 시간조건은 t≥0이며 [0,3]은 표시창일 뿐이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $A(-5)$를 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$ ($t\\ge0$)에서의 속도 $v(t)$가 $v(t)=6(t-1)(t-2)$이다. 시각 $t=a$와 시각 $t=b$에서의 점 $P$의 위치가 모두 원점일 때, $a+b$를 구하면? (단, $a<b$) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "위치=(t−1)²(2t−5). t1은접하고5/2는횡단한다. 원점도달시각1,5/2는중간값이며합7/2는라벨안씀. t0..3은검토창일뿐운동전체정의역은t≥0.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "위치=(t−1)²(2t−5). t1은접하고5/2는횡단한다. 원점도달시각1,5/2는중간값이며합7/2는라벨안씀. t0..3은검토창일뿐운동전체정의역은t≥0."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -6,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-6",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "-5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "두 꼭짓점을 연결하여 오른쪽1, 아래쪽5의 이동을 읽는다. 이동량의 합은 표시하지 않는다.",
+  "accessibilityDescription": "두 꼭짓점을 연결하여 오른쪽1, 아래쪽5의 이동을 읽는다. 이동량의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 이차함수 $y = 3(x - 1)^2 - 5$의 그래프는 이차함수 $y = 3x^2$의 그래프를 $x$축의 방향으로 $n$만큼, $y$축의 방향으로 $m$만큼 평행이동한 것과 같을 때, $n + m$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "가로1,세로−5 이동으로합−4.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 꼭짓점을 연결하여 오른쪽1, 아래쪽5의 이동을 읽는다. 이동량의 합은 표시하지 않는다."
+  ]
+}

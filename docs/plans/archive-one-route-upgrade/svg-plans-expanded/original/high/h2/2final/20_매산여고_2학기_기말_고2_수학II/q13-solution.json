@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      1
+    ],
+    "viewport": [
+      -2,
+      1,
+      -7,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-sqrt(3)/3",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "E1",
+        "x": "sqrt(3)/3",
+        "y": "-2*sqrt(3)/9"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "1/4"
+      },
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-6"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "coefficients": [
+          "0",
+          "1",
+          "-1"
+        ],
+        "intersectionX": [
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "g",
+        "from": "-2",
+        "to": "0",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "두 곡선의 교점에서 위아래가 바뀌므로 두 구간의 넓이를 각각 양수로 구해 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 곡선 $y=x^3-x$, $y=-x^2+x$로 둘러싸인 도형의 넓이를 구하면? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "교점−2,0,1. 차x(x+2)(x−1)는왼쪽양수오른쪽음수. 면적8/3,5/12및총37/12최종표시없음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "교점−2,0,1. 차x(x+2)(x−1)는왼쪽양수오른쪽음수. 면적8/3,5/12및총37/12최종표시없음."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "Q",
+            "value": "1-sqrt(2)"
+          },
+          {
+            "id": "M",
+            "value": "1"
+          },
+          {
+            "id": "P",
+            "value": "1+sqrt(2)"
+          }
+        ],
+        "spans": [
+          {
+            "from": "Q",
+            "to": "M",
+            "label": "sqrt(2)",
+            "style": "ARROW"
+          },
+          {
+            "from": "M",
+            "to": "P",
+            "label": "sqrt(2)",
+            "style": "ARROW"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "기준점 1에서 왼쪽과 오른쪽으로 같은 거리만큼 떨어진 두 점을 표시한다. 두 부분의 길이를 합해 전체 거리를 구한다.",
+  "accessibilityDescription": "기준점 1에서 왼쪽과 오른쪽으로 같은 거리만큼 떨어진 두 점을 표시한다. 두 부분의 길이를 합해 전체 거리를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서술형 3】 수직선 위에 $1+\\sqrt{2}$, $1-\\sqrt{2}$에 대응하는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 할 때, 점 $\\mathrm{P}$, $\\mathrm{Q}$를 각각 수직선 위에 나타내고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P=1+√2,Q=1−√2는1에서양쪽으로√2만큼떨어짐. 구간전체길이2√2최종라벨숨김,원문에주어진좌표는보존.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기준점 1에서 왼쪽과 오른쪽으로 같은 거리만큼 떨어진 두 점을 표시한다. 두 부분의 길이를 합해 전체 거리를 구한다."
+  ]
+}

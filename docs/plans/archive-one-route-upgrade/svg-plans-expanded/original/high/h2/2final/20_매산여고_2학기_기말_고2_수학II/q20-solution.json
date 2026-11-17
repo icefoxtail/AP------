@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "54/5",
+          "0",
+          "-2/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -25,
+      25
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-3",
+        "y": "-103/5"
+      },
+      {
+        "id": "E1",
+        "x": "3",
+        "y": "113/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    }
+  },
+  "caption": "외분 공식으로 얻은 높이 함수에서 도함수의 부호가 양에서 음으로 바뀌는 정지점을 찾는다. 극댓값의 수치는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식2 (단답형)] 직선 $x=t$가 곡선 $y=2x^3+1$, $y=9x+1$과 만나는 점을 각각 $P,Q$라 하자. 선분 $PQ$를 $6:1$로 외분하는 점을 $R$라 할 때, 점 $R$의 $y$좌표를 $f(t)$라 할 때, 함수 $f(t)$의 극댓값을 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "외분점R의높이f=(6yQ−yP)/5=1+54t/5−2t³/5. 극점±3및최대113/5의좌표밴드는숨김. piecewise식머리말도없어최종값누출없음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "외분점R의높이f=(6yQ−yP)/5=1+54t/5−2t³/5. 극점±3및최대113/5의좌표밴드는숨김. piecewise식머리말도없어최종값누출없음."
+  ]
+}
