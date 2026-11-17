@@ -171,3 +171,5 @@
 `node archive/tools/type-judgment/options.mjs --curriculum 2015 --course 중3-1 --unit M3-01 --format md`로 범위 후보를 본다.
 `node archive/tools/type-judgment/options.mjs --exam archive/exams/<시험지>.js --out /tmp/type-workload.json`은 원문 없는 일감을 만든다(출력은 저장소 밖 새 파일만).
 `node archive/tools/type-judgment/check-ledger.mjs --ledger /tmp/ledger.json --compare /tmp/other.json --strict`로 근거·키·연결과 일치를 검사한다. `NEEDS_BINDING`은 승인이나 자동 추가가 아니다.
+
+직접 판정 결과표(dots)를 정식 등록 요청으로 바꾸는 변환기: `node archive/tools/type-judgment/build-requests.mjs --results <결과표 브랜치> … --bundles <묶음표 브랜치> [--exam <시험지>] [--out <저장소 밖 폴더>]`. `--out`이 없으면 요약만 낸다(쓰기 없음). 시험지별 요청(`archive-reviewed-exam-meta-register-request-v2`, PARTIAL_UIDS)·새 키 `registryChanges`·`holds/conflicts-approved/hints/skipped/pt-only/bundle-links`를 만든다. 건너뛴 문항은 사유와 함께 `skipped.jsonl`에 남고 추정으로 채우지 않는다. 등록기 읽기 전용 검사는 `node archive/tools/type-judgment/dry-run-requests.mjs --build-out <위 출력 폴더> --overlay <저장소 밖 빈 폴더>`(저장소 파일은 하드링크로만 읽고 쓰지 않는다). 이유: 판정 결과를 사람이 요청 파일로 옮기면 승인된 문항 덮어쓰기와 없는 키 참조가 생기기 때문이다. 등록기가 아직 받지 않는 형태(PT만, 승인 전 단원·난이도, 원본 JS와 다른 유형)는 요청에 넣지 않고 사유로 낸다.

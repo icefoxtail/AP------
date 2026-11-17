@@ -58,6 +58,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-type-judgment-tools.test.mjs']
   },
   {
+    label: 'tests/archive-type-judgment-build-requests.test.mjs',
+    args: ['--test', 'tests/archive-type-judgment-build-requests.test.mjs']
+  },
+  {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
   },
