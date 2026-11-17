@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2/2-4",
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "0",
+        "y": "-4"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "1/2"
+      },
+      {
+        "id": "A",
+        "x": "4",
+        "y": "4"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "id",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        },
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "7/2",
+          "style": "DASHED",
+          "label": "y=-x+7/2"
+        }
+      ]
+    }
+  },
+  "caption": "역함수의 실제정의역은x≥0이다. 다항식전체는보조연장일뿐음의x를역함수로쓰지않는다. l과의대수후보−5,3중3만채택하여C(3,1/2). A(4,4)와함께넓이45/8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x)=\\sqrt{2x+8}$의 그래프와 그 역함수 $f^{-1}(x)$의 그래프가 만나는 점을 $A$라 하자. 함수 $y=f(x)$ 위의 점 $B\\left(\\dfrac12,3\\right)$을 지나고 기울기가 $-1$인 직선 $l$이 $y=f^{-1}(x)$와 만나는 점을 $C$라 하자. 다음에 답하시오. [7점] (부분 점수 있음)<br>1) $f(x)$의 역함수를 구하시오. (2점)<br>2) 삼각형 $ABC$의 넓이를 구하시오. (5점)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수의 실제정의역은x≥0이다. 다항식전체는보조연장일뿐음의x를역함수로쓰지않는다. l과의대수후보−5,3중3만채택하여C(3,1/2). A(4,4)와함께넓이45/8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수의 실제정의역은x≥0이다. 다항식전체는보조연장일뿐음의x를역함수로쓰지않는다. l과의대수후보−5,3중3만채택하여C(3,1/2). A(4,4)와함께넓이45/8."
+  ]
+}

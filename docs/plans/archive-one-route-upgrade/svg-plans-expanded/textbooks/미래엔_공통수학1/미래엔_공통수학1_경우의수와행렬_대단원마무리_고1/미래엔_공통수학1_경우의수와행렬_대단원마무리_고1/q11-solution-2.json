@@ -1,0 +1,116 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "R",
+        "name": "순위",
+        "elements": [
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36"
+        ]
+      },
+      {
+        "id": "N",
+        "name": "자연수",
+        "elements": [
+          "4206",
+          "4208",
+          "4260",
+          "4268",
+          "4280",
+          "4286"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "접두사42를고정한뒤남은숫자0,6,8에서십·일의자리를사전순으로배열한다. 순위31~36의정확한수를대응시켜35→4280을확인한다. 정답4280.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5개의 숫자 0, 2, 4, 6, 8 중에서 서로 다른 4개를 택하여 만든 네 자리 자연수를 작은 것부터 순서대로 나열할 때, 35째 수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "천의자리2인24개가순위1~24. 그다음천의자리4·백의자리0인6개가25~30. 접두사42인6개가31~36이므로35번째는이묶음의5번째다. 다음대응도에서정확수열을확인한다. 정답4280. 접두사42를고정한뒤남은숫자0,6,8에서십·일의자리를사전순으로배열한다. 순위31~36의정확한수를대응시켜35→4280을확인한다. 정답4280.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접두사42를고정한뒤남은숫자0,6,8에서십·일의자리를사전순으로배열한다. 순위31~36의정확한수를대응시켜35→4280을확인한다. 정답4280."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "capability": "exp-log-pair-spike-v1",
+  "graphPlan": {
+    "family": "exp-log-pair",
+    "curves": [
+      {
+        "id": "f",
+        "family": "exponential-affine",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "2"
+        ],
+        "shiftX": "3",
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        }
+      },
+      {
+        "id": "g",
+        "family": "logarithmic-affine",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-2",
+          "3"
+        ],
+        "sourceDomain": {
+          "kind": "NATURAL_LOG_AFFINE"
+        }
+      }
+    ],
+    "identityLine": true,
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curve": "f",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curve": "f",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "로그곡선을 오른쪽2 이동하면 y=log2(x−2)+3. 그 역함수는 y=2^(x−3)+2이므로 원 지수곡선을 오른쪽3 이동해야 한다. 두 곡선은 y=x 대칭이며 교점(3,3),(4,4)를 복원한다. 정답 m=3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형]\n함수 $y=2^x+2$의 그래프를 $x$축의 방향으로 $m$만큼 평행이동한 그래프가 함수 $y=\\log_2 8x$의 그래프를 $x$축의 방향으로 $2$만큼 평행이동한 그래프와 직선 $y=x$에 대하여 대칭일 때, $m$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "로그곡선을 오른쪽2 이동하면 y=log2(x−2)+3. 그 역함수는 y=2^(x−3)+2이므로 원 지수곡선을 오른쪽3 이동해야 한다. 두 곡선은 y=x 대칭이며 교점(3,3),(4,4)를 복원한다. 정답 m=3.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "로그곡선을 오른쪽2 이동하면 y=log2(x−2)+3. 그 역함수는 y=2^(x−3)+2이므로 원 지수곡선을 오른쪽3 이동해야 한다. 두 곡선은 y=x 대칭이며 교점(3,3),(4,4)를 복원한다. 정답 m=3."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "원본에서 A는 y3보다위에있다. B(0,3),C(3,3)으로밑변3,넓이3에서높이2,A(2,5). AB는y=x+3이므로a−1,b−3,k2,합−2. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 세 직선 $y=-2x+9$, $ax+y+b=0$, $y=3$으로 둘러싸인 삼각형 $ABC$에 대해 $y=-2x+9$, $ax+y+b=0$의 교점 $A$의 $x$좌표를 $k$라고 하자. $\\triangle ABC=3$이라고 할 때, $a+b+k$의 값을 구하면? (단, 점 $B$는 $y$축 위의 점이고, $a$, $b$는 상수) [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

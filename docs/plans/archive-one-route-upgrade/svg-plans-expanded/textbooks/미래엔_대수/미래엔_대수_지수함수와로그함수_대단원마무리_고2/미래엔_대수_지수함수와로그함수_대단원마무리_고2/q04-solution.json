@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "7/4"
+      },
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "formula": "x^2 - x + 2",
+    "overlays": {
+      "lines": [
+        {
+          "id": "one",
+          "slope": "0",
+          "intercept": "1"
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "y"
+    }
+  },
+  "caption": "ㄱ의 밑 a²−a+2=(a−1/2)²+7/4는 항상 1보다 크고 진수 a²+1≥1. 이 그림은 밑이 금지값1에 닿지 않음을 보인다. ㄴ은 a=0에서 밑1이라 실패, ㄷ은 a=1에서 진수0이라 실패. 정답 ㄱ. 표시 식의 x는 원문의 a이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $a$의 값에 관계없이 로그가 정의될 수 있는 것을 보기에서 모두 고르시오.\n\n[보기]\nㄱ. $\\log_{a^2-a+2} (a^2+1)$\nㄴ. $\\log_{2|a|+1} (a^2+1)$\nㄷ. $\\log_{a^2+2} (a^2-2a+1)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "ㄱ의 밑 a²−a+2=(a−1/2)²+7/4는 항상 1보다 크고 진수 a²+1≥1. 이 그림은 밑이 금지값1에 닿지 않음을 보인다. ㄴ은 a=0에서 밑1이라 실패, ㄷ은 a=1에서 진수0이라 실패. 정답 ㄱ. 표시 식의 x는 원문의 a이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "ㄱ의 밑 a²−a+2=(a−1/2)²+7/4는 항상 1보다 크고 진수 a²+1≥1. 이 그림은 밑이 금지값1에 닿지 않음을 보인다. ㄴ은 a=0에서 밑1이라 실패, ㄷ은 a=1에서 진수0이라 실패. 정답 ㄱ. 표시 식의 x는 원문의 a이다."
+  ]
+}

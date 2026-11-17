@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "formula": "x^2",
+    "axisTitles": {
+      "x": "u",
+      "y": "y"
+    }
+  },
+  "caption": "판별식 D/4=(a−2)k+4−b가 모든 실수k에서0이므로 a=2,b=4. 원래 식은 (x−(k−1))²=0. u=x−(k−1)로 옮기면 모든 k에서 같은 포물선 y=u²가 u=0에 접한다. 표시식 x는 보조변수u이고 실제 중근은x=k−1이다. 정답 a=2,b=4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차방정식\n$$x^2-2(k-1)x+k^2-ak+b-3=0$$\n이 실수 $k$의 값에 관계없이 항상 중근을 가질 때, 실수 $a$와 $b$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "판별식 D/4=(a−2)k+4−b가 모든 실수k에서0이므로 a=2,b=4. 원래 식은 (x−(k−1))²=0. u=x−(k−1)로 옮기면 모든 k에서 같은 포물선 y=u²가 u=0에 접한다. 표시식 x는 보조변수u이고 실제 중근은x=k−1이다. 정답 a=2,b=4.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식 D/4=(a−2)k+4−b가 모든 실수k에서0이므로 a=2,b=4. 원래 식은 (x−(k−1))²=0. u=x−(k−1)로 옮기면 모든 k에서 같은 포물선 y=u²가 u=0에 접한다. 표시식 x는 보조변수u이고 실제 중근은x=k−1이다. 정답 a=2,b=4."
+  ]
+}

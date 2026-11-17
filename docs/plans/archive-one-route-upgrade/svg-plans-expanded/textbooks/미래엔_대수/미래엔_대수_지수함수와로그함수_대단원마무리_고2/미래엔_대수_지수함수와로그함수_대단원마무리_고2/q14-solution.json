@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "6",
+        "y": "2"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "7/3"
+      }
+    ],
+    "formula": "x/3",
+    "overlays": {
+      "lines": [
+        {
+          "id": "target",
+          "slope": "0",
+          "intercept": "2"
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "L"
+    }
+  },
+  "caption": "원문의 이익금을 최초 투자금으로 나눈 비율 R=(4/3)^(t/3)에 밑4/3인 로그를 취하면 L=log_(4/3)R=t/3이다. 목표비율1600000/900000=16/9=(4/3)²이므로 L=2. 직선과 높이2의 교점(6,2)에서 t=6. 곡선식 x는 시간t,y는 로그비율L이다. 물리시간은t≥0이며 그 구간을 읽는다. 정답6년.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 금융 상품에 $A$ 원을 투자할 때, $t$년 후의 이익금은 $A\\left(\\frac{4}{3}\\right)^{\\frac{t}{3}}$ 원이 된다고 한다. 처음 투자 금액이 $90$만 원이고 $t$년 후의 이익금이 $160$만 원일 때, $t$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문의 이익금을 최초 투자금으로 나눈 비율 R=(4/3)^(t/3)에 밑4/3인 로그를 취하면 L=log_(4/3)R=t/3이다. 목표비율1600000/900000=16/9=(4/3)²이므로 L=2. 직선과 높이2의 교점(6,2)에서 t=6. 곡선식 x는 시간t,y는 로그비율L이다. 물리시간은t≥0이며 그 구간을 읽는다. 정답6년.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 이익금을 최초 투자금으로 나눈 비율 R=(4/3)^(t/3)에 밑4/3인 로그를 취하면 L=log_(4/3)R=t/3이다. 목표비율1600000/900000=16/9=(4/3)²이므로 L=2. 직선과 높이2의 교점(6,2)에서 t=6. 곡선식 x는 시간t,y는 로그비율L이다. 물리시간은t≥0이며 그 구간을 읽는다. 정답6년."
+  ]
+}

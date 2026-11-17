@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "4",
+      "4"
+    ],
+    "sign": -1,
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -2,
+      4,
+      -3,
+      3
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 0
+      }
+    ]
+  },
+  "caption": "끝점(−1,2)에서 근호0,c2. 원점조건으로b4,−2a+b0에서a2이다. 실제곡선y=−√(4x+4)+2,정답8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=-\\sqrt{2ax+b}+c$의 그래프의 끝점이 $(-1,2)$이고 이 그래프가 원점을 지날 때, 상수 $a+b+c$의 값을 구하면? [3.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "끝점(−1,2)에서 근호0,c2. 원점조건으로b4,−2a+b0에서a2이다. 실제곡선y=−√(4x+4)+2,정답8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점(−1,2)에서 근호0,c2. 원점조건으로b4,−2a+b0에서a2이다. 실제곡선y=−√(4x+4)+2,정답8."
+  ]
+}

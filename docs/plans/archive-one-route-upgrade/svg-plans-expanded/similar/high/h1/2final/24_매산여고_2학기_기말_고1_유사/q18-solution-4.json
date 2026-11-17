@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(x-1/2)^2-3/4",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "1/2",
+        "y": "-3/4"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "-3"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "k"
+    }
+  },
+  "caption": "오른쪽 가지의 실제 조건t≥0에서 최댓값−3/4을 t1/2에서 갖는다. 표시창2는 상한이 아니며 이후k는계속감소한다. 정답 경계합17/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=\\sqrt{|x+2|-3}$의 그래프와 직선 $y=x+k$가 만나지 않도록 하는 상수 $k$의 범위가 $a\\lt k\\lt b$일 때, $a+b$의 값을 구하면? (단, $a,b$는 상수) [4.4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "오른쪽 가지의 실제 조건t≥0에서 최댓값−3/4을 t1/2에서 갖는다. 표시창2는 상한이 아니며 이후k는계속감소한다. 정답 경계합17/4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 가지의 실제 조건t≥0에서 최댓값−3/4을 t1/2에서 갖는다. 표시창2는 상한이 아니며 이후k는계속감소한다. 정답 경계합17/4."
+  ]
+}

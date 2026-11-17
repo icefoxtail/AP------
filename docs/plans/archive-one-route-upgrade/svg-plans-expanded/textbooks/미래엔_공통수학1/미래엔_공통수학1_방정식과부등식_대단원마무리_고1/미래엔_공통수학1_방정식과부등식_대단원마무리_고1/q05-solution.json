@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "-5"
+      },
+      {
+        "id": "L",
+        "x": "-4",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "formula": "x^2 + 2*x - 4",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "coordinates": true,
+          "unnamed": true,
+          "x": "-1-sqrt(5)",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "coordinates": true,
+          "unnamed": true,
+          "x": "-1+sqrt(5)",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "근의 합−2,곱k에서 α²+β²=4−2k=12이므로 k=−4. 확정한 함수 y=x²+2x−4의 근은−1±√5이며 두 근의 제곱합12를 만족한다. 정답−4(②).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2+2x+k=0$의 두 근을 $\\alpha$와 $\\beta$라 할 때, $\\alpha^2+\\beta^2=12$이다. 실수 $k$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "근의 합−2,곱k에서 α²+β²=4−2k=12이므로 k=−4. 확정한 함수 y=x²+2x−4의 근은−1±√5이며 두 근의 제곱합12를 만족한다. 정답−4(②).",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "근의 합−2,곱k에서 α²+β²=4−2k=12이므로 k=−4. 확정한 함수 y=x²+2x−4의 근은−1±√5이며 두 근의 제곱합12를 만족한다. 정답−4(②)."
+  ]
+}

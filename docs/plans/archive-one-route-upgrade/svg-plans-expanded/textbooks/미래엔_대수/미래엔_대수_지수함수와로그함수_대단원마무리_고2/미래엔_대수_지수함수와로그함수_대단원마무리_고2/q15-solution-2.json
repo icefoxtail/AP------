@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ],
+    "variable": "t"
+  },
+  "caption": "1<a<b이므로 log_a b>1. 앞 패널의 후보1은 제외되고2가 남는다. 정답2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1<a<b$인 두 실수 $a$와 $b$에 대하여\n$$\\frac{3a}{\\log_a b} = \\frac{b}{2\\log_b a} = \\frac{3a+b}{3}$$\n가 성립할 때, $\\log_a b$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=log_a b>1. 공통값을 K라 놓으면 3a=Kt,b=2K/t이고 3a+b=3K. 따라서 t+2/t=3, (t−1)(t−2)=0. t>1이므로2만 가능하다. 표시 식 x는 t. 정답 log_a b=2. 1<a<b이므로 log_a b>1. 앞 패널의 후보1은 제외되고2가 남는다. 정답2.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "1<a<b이므로 log_a b>1. 앞 패널의 후보1은 제외되고2가 남는다. 정답2."
+  ]
+}

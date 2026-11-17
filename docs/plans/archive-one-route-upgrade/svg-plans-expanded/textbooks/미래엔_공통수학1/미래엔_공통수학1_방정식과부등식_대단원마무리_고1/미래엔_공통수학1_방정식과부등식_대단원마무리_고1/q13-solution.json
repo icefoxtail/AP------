@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "-4"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "-4"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "formula": "-x^2 + 4*x - 4"
+  },
+  "caption": "해가 오직 x=2이려면 이차식은 a(x−2)², a<0이다. 그림은 대표 a=−1을 선택한 y=−(x−2)²이며 모든 해당 함수의 아래로 열린 접촉 구조를 보인다. 판별식0, x=1의 값a<0이므로 ㄱ·ㄴ·ㄷ 모두 참. 대표값을 원문 추가조건으로 삼지 않는다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $ax^2+bx+c\\ge 0$의 해가 $x=2$일 때, 옳은 것을 <보기>에서 모두 고르면?\n<보기>\nㄱ. $a<0$\nㄴ. $b^2-4ac=0$\nㄷ. $a+b+c<0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "해가 오직 x=2이려면 이차식은 a(x−2)², a<0이다. 그림은 대표 a=−1을 선택한 y=−(x−2)²이며 모든 해당 함수의 아래로 열린 접촉 구조를 보인다. 판별식0, x=1의 값a<0이므로 ㄱ·ㄴ·ㄷ 모두 참. 대표값을 원문 추가조건으로 삼지 않는다. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "해가 오직 x=2이려면 이차식은 a(x−2)², a<0이다. 그림은 대표 a=−1을 선택한 y=−(x−2)²이며 모든 해당 함수의 아래로 열린 접촉 구조를 보인다. 판별식0, x=1의 값a<0이므로 ㄱ·ㄴ·ㄷ 모두 참. 대표값을 원문 추가조건으로 삼지 않는다. 정답⑤."
+  ]
+}

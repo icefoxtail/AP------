@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "48",
+        "title": "첫자리"
+      },
+      {
+        "count": "6",
+        "title": "둘째"
+      },
+      {
+        "count": "4",
+        "title": "셋째"
+      },
+      {
+        "count": "1",
+        "title": "본인"
+      }
+    ],
+    "join": "PLUS"
+  },
+  "caption": "cbead보다 앞선 배열은 첫자리a/b인48,첫c·둘째a인6,첫cb·셋째a/d인4이다. 넷째에는 추가0개이므로 슬롯에 억지 빈 경우를 넣지 않는다. 본인1을 더해59번째,정답59.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$5$개의 문자 $a,b,c,d,e$를 일렬로 배열하여 사전식으로 $abcde$부터 $edcba$까지 나열하였을 때, $cbead$는 몇 번째인지 구하면? [3.9점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "cbead보다 앞선 배열은 첫자리a/b인48,첫c·둘째a인6,첫cb·셋째a/d인4이다. 넷째에는 추가0개이므로 슬롯에 억지 빈 경우를 넣지 않는다. 본인1을 더해59번째,정답59.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "cbead보다 앞선 배열은 첫자리a/b인48,첫c·둘째a인6,첫cb·셋째a/d인4이다. 넷째에는 추가0개이므로 슬롯에 억지 빈 경우를 넣지 않는다. 본인1을 더해59번째,정답59."
+  ]
+}

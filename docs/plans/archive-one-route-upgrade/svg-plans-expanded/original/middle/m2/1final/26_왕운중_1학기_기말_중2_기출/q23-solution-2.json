@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "3/4"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-3"
+      }
+    ],
+    "formula": "3*x/4 - 3"
+  },
+  "caption": "미남은절편만잘못읽어y3x/4−3을그렸다. 따라서원래기울기3/4가보존된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원이와 미남이가 어떤 일차함수의 식을 보고 그래프를 그리는데 다음 보기와 같이 각각 잘못 그렸다. 처음 일차함수의 그래프가 점 $(4,k)$를 지난다고 할 때, 처음 일차함수의 식과 수 $k$의 값을 구하시오. [5점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>&lt;보기&gt;</div>원이: 기울기를 잘못 보고 그렸더니 두 점 $(5,-1)$, $(2,5)$를 지나는 그래프를 그렸어.<br>미남: $y$절편을 잘못 보고 그렸더니 $x$절편이 $4$, $y$절편이 $-3$인 그래프를 그렸어.</div>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

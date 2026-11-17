@@ -1,0 +1,51 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "9",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -16,
+      16
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "curveX": "2/3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "target",
+          "slope": "0",
+          "intercept": "27/2"
+        }
+      ]
+    }
+  },
+  "caption": "둘째 단계는 g(b)=9/b=27/2이다. 실제교점(2/3,27/2)에서b2/3을 얻는다. 첫패널의x9와 이 패널의x2/3은 같은함숫값을 갖지만 다른입력이다. 정답2/3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 두 함수 $f(x)=\\dfrac{3}{2}x, g(x)=\\dfrac{9}{x}$가 다음 &lt;조건&gt;을 모두 만족시킬 때, 상수 $b$의 값은? [6점]\n\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>&lt;조건&gt;<br>(가) $f(6)=a$<br>(나) $f(a)=g(b)$</td></tr></tbody></table></div>\n\n",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

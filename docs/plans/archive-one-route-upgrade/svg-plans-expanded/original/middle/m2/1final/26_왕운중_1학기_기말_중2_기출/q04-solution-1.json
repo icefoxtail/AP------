@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-11/2",
+          "3/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫 연립의 공통점(3,−1)에서m3,n−1을 얻는다. 다음 패널은 이 계수를 대입한 새 연립의 해다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}2x+y=5\\\\3x-2y=11\\end{cases}$의 해가 $x=m$, $y=n$일 때, 연립방정식 $\\begin{cases}mx+ny=8\\\\nx-my=4\\end{cases}$의 해를 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

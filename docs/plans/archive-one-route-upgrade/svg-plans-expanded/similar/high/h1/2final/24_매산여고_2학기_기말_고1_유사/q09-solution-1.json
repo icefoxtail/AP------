@@ -1,0 +1,110 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "학생",
+        "elements": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "답안지",
+        "elements": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "6명 한 고리의 한 예시이다. 화살표를 학생→답안지 주인으로 읽고 같은 문자를 이어 추적하면 고리가 된다. 이 구조의 총개수는120이며 예시 자체가 전체 목록은 아니다. 네 유형120+90+40+15=265,정답265.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$A$, $B$, $C$, $D$, $E$, $F$ $6$명의 학생이 수학 시험을 보고 서로 답안지를 바꿔서 채점하기로 하였다. 각 학생은 자기 답안지가 아닌 다른 학생의 답안지 한 장을 채점하고, 각 답안지는 정확히 한 명이 채점할 때, 채점할 수 있는 모든 경우의 수를 구하면? [3.9점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "6명 한 고리의 한 예시이다. 화살표를 학생→답안지 주인으로 읽고 같은 문자를 이어 추적하면 고리가 된다. 이 구조의 총개수는120이며 예시 자체가 전체 목록은 아니다. 네 유형120+90+40+15=265,정답265.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "6명 한 고리의 한 예시이다. 화살표를 학생→답안지 주인으로 읽고 같은 문자를 이어 추적하면 고리가 된다. 이 구조의 총개수는120이며 예시 자체가 전체 목록은 아니다. 네 유형120+90+40+15=265,정답265."
+  ]
+}

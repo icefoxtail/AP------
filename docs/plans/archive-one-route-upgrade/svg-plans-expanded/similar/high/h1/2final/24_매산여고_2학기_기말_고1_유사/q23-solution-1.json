@@ -1,0 +1,77 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "8",
+      "2"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -5,
+      6,
+      -1,
+      6
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": -4,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0.5,
+        "y": 3
+      },
+      {
+        "id": "A",
+        "x": 4,
+        "y": 4
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "id",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        },
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "7/2",
+          "style": "DASHED",
+          "label": "y=-x+7/2"
+        }
+      ]
+    }
+  },
+  "caption": "원함수y=√(2x+8)의끝점(−4,0),B(1/2,3),공통점A(4,4)를보존한다. 직선l의기울기−1과역함수대칭축y=x를표시. 역함수는x²/2−4,x≥0이고넓이정답45/8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x)=\\sqrt{2x+8}$의 그래프와 그 역함수 $f^{-1}(x)$의 그래프가 만나는 점을 $A$라 하자. 함수 $y=f(x)$ 위의 점 $B\\left(\\dfrac12,3\\right)$을 지나고 기울기가 $-1$인 직선 $l$이 $y=f^{-1}(x)$와 만나는 점을 $C$라 하자. 다음에 답하시오. [7점] (부분 점수 있음)<br>1) $f(x)$의 역함수를 구하시오. (2점)<br>2) 삼각형 $ABC$의 넓이를 구하시오. (5점)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원함수y=√(2x+8)의끝점(−4,0),B(1/2,3),공통점A(4,4)를보존한다. 직선l의기울기−1과역함수대칭축y=x를표시. 역함수는x²/2−4,x≥0이고넓이정답45/8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원함수y=√(2x+8)의끝점(−4,0),B(1/2,3),공통점A(4,4)를보존한다. 직선l의기울기−1과역함수대칭축y=x를표시. 역함수는x²/2−4,x≥0이고넓이정답45/8."
+  ]
+}

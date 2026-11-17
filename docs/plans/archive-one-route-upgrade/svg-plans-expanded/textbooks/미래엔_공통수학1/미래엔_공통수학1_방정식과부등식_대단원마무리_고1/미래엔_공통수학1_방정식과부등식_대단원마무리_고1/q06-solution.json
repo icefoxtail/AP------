@@ -1,0 +1,64 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "원래근",
+        "elements": [
+          "1",
+          "−2/7"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "역수근",
+        "elements": [
+          "1",
+          "−7/2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "원래 방정식은 두 근이0이 아니므로 계수를 거꾸로 한 방정식의 근은 각각 역수1,−7/2이다. 다시 역수를 더하면 원래 두 근의 합1−2/7=5/7이다. 화살표는 t→1/t 대응이며 근 순서는 중요하지 않다. 정답5/7(④).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $ax^2+bx+c=0$의 두 근이 $1$과 $-\\dfrac{2}{7}$이고, 이차방정식 $cx^2+bx+a=0$의 두 근이 $\\alpha$와 $\\beta$일 때, $\\dfrac{1}{\\alpha}+\\dfrac{1}{\\beta}$의 값은? (단, $a$, $b$, $c$는 실수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원래 방정식은 두 근이0이 아니므로 계수를 거꾸로 한 방정식의 근은 각각 역수1,−7/2이다. 다시 역수를 더하면 원래 두 근의 합1−2/7=5/7이다. 화살표는 t→1/t 대응이며 근 순서는 중요하지 않다. 정답5/7(④).",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 방정식은 두 근이0이 아니므로 계수를 거꾸로 한 방정식의 근은 각각 역수1,−7/2이다. 다시 역수를 더하면 원래 두 근의 합1−2/7=5/7이다. 화살표는 t→1/t 대응이며 근 순서는 중요하지 않다. 정답5/7(④)."
+  ]
+}

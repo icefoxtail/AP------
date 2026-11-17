@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-13",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-6"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "2"
+      }
+    ],
+    "formula": "-x^2 + 8*x - 13"
+  },
+  "caption": "a<0이고 꼭짓점x4이므로 원문[1,3]에서는 증가한다. 최소−7a−b=−6, 최대−15a−b=2의 차에서 a=−1,b=13. 실제 함수 y=−x²+8x−13의 두 닫힌 끝점(1,−6),(3,2)을 표시한다. 정답 b−a=14.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1\\le x\\le 3$일 때, 이차함수 $y=ax^2-8ax-b$의 최댓값이 $2$이고 최솟값이 $-6$이다. 실수 $a$와 $b$에 대하여 $b-a$의 값을 구하시오. (단, $a<0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a<0이고 꼭짓점x4이므로 원문[1,3]에서는 증가한다. 최소−7a−b=−6, 최대−15a−b=2의 차에서 a=−1,b=13. 실제 함수 y=−x²+8x−13의 두 닫힌 끝점(1,−6),(3,2)을 표시한다. 정답 b−a=14.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a<0이고 꼭짓점x4이므로 원문[1,3]에서는 증가한다. 최소−7a−b=−6, 최대−15a−b=2의 차에서 a=−1,b=13. 실제 함수 y=−x²+8x−13의 두 닫힌 끝점(1,−6),(3,2)을 표시한다. 정답 b−a=14."
+  ]
+}

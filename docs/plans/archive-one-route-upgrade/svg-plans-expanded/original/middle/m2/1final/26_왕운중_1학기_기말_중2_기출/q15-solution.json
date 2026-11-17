@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래 y=bx−a는 감소하며 절편양수라a<0,b<0. 목표는ab>0,a+b<0이다. 패널은a=b=−1을택한 부호대표형(원래−x+1,목표x−2)이며 실제계수를 확정하지 않는다. 목표는 제2사분면을 지나지 않는다. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=bx-a$의 그래프가 다음 그림과 같을 때, 일차함수 $y=abx+(a+b)$의 그래프가 지나가지 않는 사분면을 구하면? (단, $a$, $b$는 상수) [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

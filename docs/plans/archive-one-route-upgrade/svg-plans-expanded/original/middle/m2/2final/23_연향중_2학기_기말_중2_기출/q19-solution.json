@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "y=2x-4"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "y=6"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "P3",
+          "x": "4",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P4",
+          "x": "5",
+          "y": "6",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "원문 두 절편(0,−4),(2,0)으로 y=2x−4. 주사위1..6 눈으로 가능한 세 점은(3,2),(4,4),(5,6)뿐이므로3/36=1/12. 두 절편은 식을 구하는 기준점이며 실제 주사위 결과에 포함하지 않는다. 수평선6은 범위 안내선이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던져서 처음에 나오는 눈의 수를 $x$, 나중에 나오는 눈의 수를 $y$라고 할 때, 이들을 좌표로 하는 점 $(x,y)$가 오른쪽 그림의 직선 위에 있을 확률을 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

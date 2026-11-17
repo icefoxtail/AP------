@@ -1,0 +1,37 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-5"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "formula": "-5*x"
+  },
+  "caption": "보기4의 기울기-5,y절편0,x절편0를 표시한다. 음수기울기4개,두절편같음은ㄹ,음수x절편은ㅁ,평행은ㄱ·ㅁ한쌍. 증가하는것은ㄷ하나. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기의 일차함수들에 대한 설명으로 옳은 것은? [4점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>&lt;보기&gt;</div>ㄱ. $y=-2x+1$<br>ㄴ. $y=1-3x$<br>ㄷ. $y=\\dfrac{1}{2}x-9$<br>ㄹ. $y=-5x$<br>ㅁ. $y=-2x-18$</div>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "4"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "12"
+      }
+    ],
+    "formula": "4*x + 12"
+  },
+  "caption": "첫 그래프의 x절편−3은 점(−3,0)의 가로좌표다. 다음 그래프의 y절편3k와 같으므로3k−3,k−1. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=4x+12$의 그래프의 $x$절편이 일차함수 $y=-2x+3k$의 그래프의 $y$절편과 같을 때, 상수 $k$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

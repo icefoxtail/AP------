@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3/5"
+        ],
+        "domain": [
+          "10",
+          "25"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "52",
+          "-2"
+        ],
+        "domain": [
+          "10",
+          "25"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "20",
+          "y": "12",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로축x는 타일 긴변cm,세로축y는 짧은변cm. 원래 타일배치에서3x5y,둘레208에서2x+y52. 두 조건의 교점(20,12)으로 타일넓이240cm². 원래11타일배치는 별도기하패널에 보존한다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 모양과 크기가 같은 직사각형 모양의 타일 $11$장을 겹치지 않게 빈틈없이 이어 붙여 둘레의 길이가 $208\\text{cm}$인 큰 직사각형을 만들었다. 이 때, 타일 한 장의 넓이를 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

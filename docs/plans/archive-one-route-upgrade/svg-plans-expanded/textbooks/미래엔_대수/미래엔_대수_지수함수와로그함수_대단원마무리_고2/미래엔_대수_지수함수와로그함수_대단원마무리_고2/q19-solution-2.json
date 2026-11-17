@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 부등식0<x<2와 둘째1<x<3의 교집합. 모든 부등호가 엄격하므로 양끝1,2는 빈 원. 정답1<x<2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형]\n연립부등식\n$$\\begin{cases} 4^{-x^2} > \\left(\\dfrac{1}{2}\\right)^{4x} \\\\ \\log_2 (x^2-2x+3) < \\log_2 2x \\end{cases}$$\n를 푸시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 부등식은 밑2로 바꾸어 −2x²>−4x, 즉0<x<2. 둘째는 진수2x>0와 x²−2x+3>0에서 x>0이며, 증가로그 비교로 x²−4x+3<0. 그래프의 두 근1,3 사이가 해다. 최종 교집합1<x<2. 첫 부등식0<x<2와 둘째1<x<3의 교집합. 모든 부등호가 엄격하므로 양끝1,2는 빈 원. 정답1<x<2.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식0<x<2와 둘째1<x<3의 교집합. 모든 부등호가 엄격하므로 양끝1,2는 빈 원. 정답1<x<2."
+  ]
+}

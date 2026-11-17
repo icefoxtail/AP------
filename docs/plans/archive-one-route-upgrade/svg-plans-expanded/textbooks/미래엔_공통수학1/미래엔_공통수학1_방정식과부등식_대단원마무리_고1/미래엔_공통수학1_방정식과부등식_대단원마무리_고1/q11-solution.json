@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "T",
+        "x": "-2",
+        "y": "5"
+      },
+      {
+        "id": "L",
+        "x": "-4",
+        "y": "11"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "7/2"
+      }
+    ],
+    "formula": "x^2/2 + 3",
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "-2",
+          "intercept": "1"
+        }
+      ]
+    }
+  },
+  "caption": "y=1−2x를 대입하면 x²+2kx+6−k=0. 오직 한 쌍의 실수해이므로 판별식 k²+k−6=0, k=2 또는−3. 양수조건으로 k=2. 그림은 y=(x²+6)/2와 y=1−2x의 유일 접점(−2,5)을 표시한다. 정답2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} 2x+y=1 \\\\ x^2-ky=-6 \\end{cases}$이 오직 한 쌍의 해를 갖도록 하는 양수 $k$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=1−2x를 대입하면 x²+2kx+6−k=0. 오직 한 쌍의 실수해이므로 판별식 k²+k−6=0, k=2 또는−3. 양수조건으로 k=2. 그림은 y=(x²+6)/2와 y=1−2x의 유일 접점(−2,5)을 표시한다. 정답2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=1−2x를 대입하면 x²+2kx+6−k=0. 오직 한 쌍의 실수해이므로 판별식 k²+k−6=0, k=2 또는−3. 양수조건으로 k=2. 그림은 y=(x²+6)/2와 y=1−2x의 유일 접점(−2,5)을 표시한다. 정답2."
+  ]
+}

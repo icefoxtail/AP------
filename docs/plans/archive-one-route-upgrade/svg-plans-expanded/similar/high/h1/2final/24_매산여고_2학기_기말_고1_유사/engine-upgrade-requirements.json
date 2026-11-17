@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "ENGINE_UPGRADE_REQUIREMENTS_v1",
+  "sourceCommit": "35f3023d736d4785de04846605ed5bbbb315425e",
+  "requirements": [
+    {
+      "question": 7,
+      "status": "ENGINE_UPGRADE_REQUIRED",
+      "executable": false,
+      "need": "절댓값 유리함수 |(3x−1)/(x+2)|의 음수 부분을x축대칭으로접은실제곡선과수평선k0/1/3/5의교점비교",
+      "supportLimitation": "현재 absolute-value 계열은 절댓값 일차식이며 유리함수의 절댓값은 실행계약으로 넣지 않는다.",
+      "existingEquivalentExecutable": "q07-solution-1..4.json의 signed 유리함수와 y=±k 교점세기는 수학적으로 정확한 대체 풀이이며 실제 접힌 곡선이라고 주장하지 않는다.",
+      "requiredFacts": [
+        "x=−2정의역제외",
+        "y≥0",
+        "영점x=1/3",
+        "수평점근선y=3",
+        "N0=1,N1=2,N3=1,N5=2,합6"
+      ],
+      "actualRender": "NOT_RUN"
+    }
+  ]
+}

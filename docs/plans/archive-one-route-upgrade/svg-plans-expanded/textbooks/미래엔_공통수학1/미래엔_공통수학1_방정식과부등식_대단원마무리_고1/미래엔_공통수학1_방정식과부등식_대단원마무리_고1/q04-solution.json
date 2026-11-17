@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ],
+    "variable": "k"
+  },
+  "caption": "판별식 D/4=(k−2)²−(k²−24)=28−4k>0이므로 k<7. 자연수는1,2,3,4,5,6의6개이다. 첫 줄은 실수 조건, 둘째 줄의 정수점은 자연수 후보이다. 정답6개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차방정식 $x^2+2(k-2)x+k^2-24=0$이 서로 다른 두 실근을 갖도록 하는 자연수 $k$의 개수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "판별식 D/4=(k−2)²−(k²−24)=28−4k>0이므로 k<7. 자연수는1,2,3,4,5,6의6개이다. 첫 줄은 실수 조건, 둘째 줄의 정수점은 자연수 후보이다. 정답6개.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식 D/4=(k−2)²−(k²−24)=28−4k>0이므로 k<7. 자연수는1,2,3,4,5,6의6개이다. 첫 줄은 실수 조건, 둘째 줄의 정수점은 자연수 후보이다. 정답6개."
+  ]
+}

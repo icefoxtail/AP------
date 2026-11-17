@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P14",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P23",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P32",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P41",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P46",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P55",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P64",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P14",
+    "P23",
+    "P32",
+    "P41",
+    "P46",
+    "P55",
+    "P64"
+  ],
+  "displaySegments": [],
+  "caption": "가로축은 첫 주사위, 세로축은 둘째 주사위의 눈이다. 합5는(1,4),(2,3),(3,2),(4,1) 네 점, 합10은(4,6),(5,5),(6,4) 세 점이다. 원점O는 좌표 기준일 뿐 주사위 결과가 아니다. 두 주사위를 구별하므로 순서쌍을 따로 세어 정답7(③). 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "coordinateLabels": [
+    "P14",
+    "P23",
+    "P32",
+    "P41",
+    "P46",
+    "P55",
+    "P64"
+  ],
+  "hiddenPointNames": [
+    "P14",
+    "P23",
+    "P32",
+    "P41",
+    "P46",
+    "P55",
+    "P64"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 주사위 두 개를 동시에 던질 때 나오는 눈의 수의 합이 5의 배수인 경우의 수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가로축은 첫 주사위, 세로축은 둘째 주사위의 눈이다. 합5는(1,4),(2,3),(3,2),(4,1) 네 점, 합10은(4,6),(5,5),(6,4) 세 점이다. 원점O는 좌표 기준일 뿐 주사위 결과가 아니다. 두 주사위를 구별하므로 순서쌍을 따로 세어 정답7(③). 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 첫 주사위, 세로축은 둘째 주사위의 눈이다. 합5는(1,4),(2,3),(3,2),(4,1) 네 점, 합10은(4,6),(5,5),(6,4) 세 점이다. 원점O는 좌표 기준일 뿐 주사위 결과가 아니다. 두 주사위를 구별하므로 순서쌍을 따로 세어 정답7(③). 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

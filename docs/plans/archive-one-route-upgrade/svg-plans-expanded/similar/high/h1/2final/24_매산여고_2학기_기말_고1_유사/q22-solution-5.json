@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "5",
+            "13"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "첫조건k>6과둘째k≤12를교집합으로계산한다. 경계6제외12포함,정수점7,8,9,10,11,12가모두정답이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 함수 $y=\\dfrac{k}{x+3}-2$의 그래프가 모든 사분면을 지나고, 함수 $y=\\dfrac{k}{x-4}+3$의 그래프가 제3사분면을 지나지 않도록 하는 정수 $k$를 모두 구하시오. [7점] (부분 점수 있음)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "첫조건k>6과둘째k≤12를교집합으로계산한다. 경계6제외12포함,정수점7,8,9,10,11,12가모두정답이다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "첫조건k>6과둘째k≤12를교집합으로계산한다. 경계6제외12포함,정수점7,8,9,10,11,12가모두정답이다."
+  ]
+}

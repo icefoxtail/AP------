@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "100"
+      },
+      {
+        "id": "B",
+        "count": "66"
+      }
+    ],
+    "shade": "(A∪B)^c",
+    "universe": {
+      "name": "U",
+      "count": "200"
+    }
+  },
+  "caption": "A는2의 배수100개,B는3의 배수66개이다. 공통부분은6의 배수33개라 한 번 돌려놓는다. 음영은 두 집합 밖의 서로소 수,200−100−66+33=67. 정답67.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$에서 $200$까지의 자연수 중에서 $6$과 서로소인 것의 개수를 구하면? [3.7점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "A는2의 배수100개,B는3의 배수66개이다. 공통부분은6의 배수33개라 한 번 돌려놓는다. 음영은 두 집합 밖의 서로소 수,200−100−66+33=67. 정답67.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "A는2의 배수100개,B는3의 배수66개이다. 공통부분은6의 배수33개라 한 번 돌려놓는다. 음영은 두 집합 밖의 서로소 수,200−100−66+33=67. 정답67."
+  ]
+}

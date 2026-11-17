@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-3/2"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "6",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x가2 증가하면 y가3 감소. 절편(0,6),(4,0)이며x>4에서 제4사분면을 지난다. 비교식y−x+6은 기울기−1로 서로 다르다. 정답④. 기존 정보와 실제4사분면 점을 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차함수 $y=-\\dfrac{3}{2}x+6$의 그래프에 대한 설명으로 옳은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

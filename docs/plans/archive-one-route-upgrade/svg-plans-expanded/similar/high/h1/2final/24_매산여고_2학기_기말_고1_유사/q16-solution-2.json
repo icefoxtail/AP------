@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-2",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      2,
+      9
+    ],
+    "viewport": [
+      1,
+      10,
+      -1,
+      4
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 1
+      }
+    ]
+  },
+  "caption": "k=2의 근호함수는 x≥2에서 증가한다. 왼쪽 허용구간[2,5/2]에서 부호가 바뀌어 한 점,오른쪽에도 한 점으로총2개. 일반 단조성으로 경계를 판정하며 정답2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정수 $k$에 대하여 $x$에 대한 방정식 $\\sqrt{x-k}=\\dfrac{2x-5}{x-4}$ $(x\\ge k,x\\ne4)$의 서로 다른 실근의 개수를 $f(k)$라고 할 때, $f(k)=2$를 만족시키는 $k$의 최댓값을 구하면? [4.1점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "k=2의 근호함수는 x≥2에서 증가한다. 왼쪽 허용구간[2,5/2]에서 부호가 바뀌어 한 점,오른쪽에도 한 점으로총2개. 일반 단조성으로 경계를 판정하며 정답2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "k=2의 근호함수는 x≥2에서 증가한다. 왼쪽 허용구간[2,5/2]에서 부호가 바뀌어 한 점,오른쪽에도 한 점으로총2개. 일반 단조성으로 경계를 판정하며 정답2."
+  ]
+}

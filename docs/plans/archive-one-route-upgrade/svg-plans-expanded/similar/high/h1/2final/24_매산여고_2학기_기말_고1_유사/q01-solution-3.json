@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "5",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "5"
+      }
+    ],
+    "formula": "(-1/2)*x-(3/2)*abs(x)+5",
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "5"
+      }
+    ]
+  },
+  "caption": "a=4인 비교 사례이다. 왼쪽 치역도5미만이라 오른쪽 치역과 겹친다. 일반 조건은a−3<0,정답a<3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 함수 $f(x)=\\begin{cases}-2x+5&(x\\ge0)\\\\(a-3)x+5&(x\\lt 0)\\end{cases}$이 일대일대응일 때, 상수 $a$의 값의 범위를 구하면? [3.6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a=4인 비교 사례이다. 왼쪽 치역도5미만이라 오른쪽 치역과 겹친다. 일반 조건은a−3<0,정답a<3.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a=4인 비교 사례이다. 왼쪽 치역도5미만이라 오른쪽 치역과 겹친다. 일반 조건은a−3<0,정답a<3."
+  ]
+}

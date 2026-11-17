@@ -1,0 +1,110 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "선택값",
+        "elements": [
+          "10",
+          "8",
+          "7",
+          "6",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      }
+    ]
+  },
+  "caption": "선택된 값10,8,7,6,4,1의 한 허용 예시이다. 출력집합 전체Y는1..10이며 이 패널에는선택값만표시한다. 7위2개·아래3개를고르면내림차순배정이유일,정답60.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 두 집합 $X=\\{1,2,3,4,5,6\\}$, $Y=\\{1,2,3,4,5,6,7,8,9,10\\}$에 대하여 다음 조건을 모두 만족시키는 함수 $f:X\\to Y$의 개수를 구하시오. [6점] (부분 점수 있음)<br>(가) $x_1\\lt x_2$이면 $f(x_1)\\gt f(x_2)$<br>(나) $f(3)=7$",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "선택된 값10,8,7,6,4,1의 한 허용 예시이다. 출력집합 전체Y는1..10이며 이 패널에는선택값만표시한다. 7위2개·아래3개를고르면내림차순배정이유일,정답60.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "선택된 값10,8,7,6,4,1의 한 허용 예시이다. 출력집합 전체Y는1..10이며 이 패널에는선택값만표시한다. 7위2개·아래3개를고르면내림차순배정이유일,정답60."
+  ]
+}

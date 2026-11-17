@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-1/2",
+          "-1/16"
+        ]
+      }
+    ],
+    "domain": [
+      -8,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(x+4)^2/16",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "C",
+        "x": "4",
+        "y": "-4"
+      }
+    ],
+    "axisTitles": {
+      "x": "r",
+      "y": "T"
+    }
+  },
+  "caption": "상계 U=32−(r+4)²를 T=(U−32)/16으로 정규화한 곡선이다. 수식의x는r,y는T이며 실제 값은U=32+16T로 복원한다. 실제 r≤4에서 꼭짓점(−4,0)은U32를 뜻한다. 전체 다항식의 보조 연장은허용영역과 구별한다. alpha0,q64로달성,정답32.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 집합 $\\{x\\mid x\\ge0\\}$의 부분집합인 함수 $y=\\sqrt{px+q}+r$ $(p\\gt 0)$의 치역이 $\\{y\\mid y\\ge4\\}$가 되도록 하는 상수 $p,q,r$에 대하여 $q-2r^2$의 최댓값을 구하면? [4.3점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "상계 U=32−(r+4)²를 T=(U−32)/16으로 정규화한 곡선이다. 수식의x는r,y는T이며 실제 값은U=32+16T로 복원한다. 실제 r≤4에서 꼭짓점(−4,0)은U32를 뜻한다. 전체 다항식의 보조 연장은허용영역과 구별한다. alpha0,q64로달성,정답32.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "상계 U=32−(r+4)²를 T=(U−32)/16으로 정규화한 곡선이다. 수식의x는r,y는T이며 실제 값은U=32+16T로 복원한다. 실제 r≤4에서 꼭짓점(−4,0)은U32를 뜻한다. 전체 다항식의 보조 연장은허용영역과 구별한다. alpha0,q64로달성,정답32."
+  ]
+}

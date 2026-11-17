@@ -1,0 +1,58 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-1",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "-1",
+    "sourceDomain": {
+      "kind": "CLOSED_INTERVAL",
+      "range": [
+        "5",
+        "10"
+      ]
+    },
+    "domain": [
+      5,
+      10
+    ],
+    "viewport": [
+      4,
+      11,
+      0,
+      8
+    ],
+    "domainRangeLabels": false,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 5,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 10,
+        "y": 2
+      }
+    ]
+  },
+  "caption": "k=−1의 실제 제한곡선은(5,1)부터(10,2)이다. 일반 교점조건 K(t)=−2+36/(t−1)−√(t−1)은 감소하여 K5=5,K10=−1,가능범위[−1,5]. 정답−1. 닫힌 끝점 좌표가 잘리지 않는지 집PC에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x\\mid5\\le x\\le10\\}$인 두 함수 $y=\\dfrac{-2x+38}{x-1}$, $y=\\sqrt{x-1}+k$의 그래프가 한 점에서 만날 때, 상수 $k$의 최솟값을 구하면? [4.0점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "k=−1의 실제 제한곡선은(5,1)부터(10,2)이다. 일반 교점조건 K(t)=−2+36/(t−1)−√(t−1)은 감소하여 K5=5,K10=−1,가능범위[−1,5]. 정답−1. 닫힌 끝점 좌표가 잘리지 않는지 집PC에서 확인한다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "k=−1의 실제 제한곡선은(5,1)부터(10,2)이다. 일반 교점조건 K(t)=−2+36/(t−1)−√(t−1)은 감소하여 K5=5,K10=−1,가능범위[−1,5]. 정답−1. 닫힌 끝점 좌표가 잘리지 않는지 집PC에서 확인한다."
+  ]
+}

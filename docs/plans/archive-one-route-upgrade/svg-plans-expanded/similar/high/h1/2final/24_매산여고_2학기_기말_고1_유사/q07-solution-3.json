@@ -1,0 +1,68 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-1",
+      "3"
+    ],
+    "denominator": [
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      8
+    ],
+    "viewport": [
+      -8,
+      8,
+      -6,
+      6
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-5/6",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "up",
+          "slope": "0",
+          "intercept": "3",
+          "style": "DASHED",
+          "label": "y=3"
+        },
+        {
+          "id": "down",
+          "slope": "0",
+          "intercept": "-3",
+          "style": "DASHED",
+          "label": "y=-3"
+        }
+      ]
+    }
+  },
+  "caption": "k=3에서 절댓값을 취하기 전 곡선과 y=±k의 교점을 세는 동치 풀이이다. k3에서 y=3은 점근선이라 만나지 않고 y=−3에서만1개. 실제 |함수|의 개형을 그대로 그렸다고 주장하지 않는다. 개수1+2+1+2=6,정답6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\left|\\dfrac{3x-1}{x+2}\\right|$의 그래프와 직선 $y=k$ ($k$는 상수)의 교점의 개수를 $N(k)$라 하자. $N(0)+N(1)+N(3)+N(5)$의 값을 구하면? [4.4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "k=3에서 절댓값을 취하기 전 곡선과 y=±k의 교점을 세는 동치 풀이이다. k3에서 y=3은 점근선이라 만나지 않고 y=−3에서만1개. 실제 |함수|의 개형을 그대로 그렸다고 주장하지 않는다. 개수1+2+1+2=6,정답6.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "k=3에서 절댓값을 취하기 전 곡선과 y=±k의 교점을 세는 동치 풀이이다. k3에서 y=3은 점근선이라 만나지 않고 y=−3에서만1개. 실제 |함수|의 개형을 그대로 그렸다고 주장하지 않는다. 개수1+2+1+2=6,정답6."
+  ]
+}

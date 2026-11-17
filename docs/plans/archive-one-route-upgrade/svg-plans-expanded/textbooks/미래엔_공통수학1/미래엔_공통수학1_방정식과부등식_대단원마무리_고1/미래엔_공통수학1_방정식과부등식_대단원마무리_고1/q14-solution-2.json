@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "절댓값 조건[−2,4]와 양의 이차식 영역(−∞,3)∪(5,∞)의 교집합은[−2,3). a=−2,b=3이므로 정답5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} |x-1|\\le 3 \\\\ x^2-8x+15>0 \\end{cases}$의 해가 $a\\le x<b$일 때, $b-a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x²−8x+15=(x−3)(x−5)>0의 해는 x<3 또는x>5. |x−1|≤3의 해[−2,4]와 다음 패널에서 교차시킨다. 최종[−2,3), b−a=5. 절댓값 조건[−2,4]와 양의 이차식 영역(−∞,3)∪(5,∞)의 교집합은[−2,3). a=−2,b=3이므로 정답5.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 조건[−2,4]와 양의 이차식 영역(−∞,3)∪(5,∞)의 교집합은[−2,3). a=−2,b=3이므로 정답5."
+  ]
+}

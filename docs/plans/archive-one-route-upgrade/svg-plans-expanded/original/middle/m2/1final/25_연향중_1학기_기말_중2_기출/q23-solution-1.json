@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "6",
+        "y": "9"
+      },
+      {
+        "id": "P2",
+        "x": "9",
+        "y": "27/2"
+      }
+    ],
+    "formula": "3*x/2"
+  },
+  "caption": "첫 단계 f6=a=9,다음 f9=27/2를 읽는다. 이 높이를 다음 패널의g(b)와 같게 맞춘다. 정답b2/3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 두 함수 $f(x)=\\dfrac{3}{2}x, g(x)=\\dfrac{9}{x}$가 다음 &lt;조건&gt;을 모두 만족시킬 때, 상수 $b$의 값은? [6점]\n\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>&lt;조건&gt;<br>(가) $f(6)=a$<br>(나) $f(a)=g(b)$</td></tr></tbody></table></div>\n\n",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

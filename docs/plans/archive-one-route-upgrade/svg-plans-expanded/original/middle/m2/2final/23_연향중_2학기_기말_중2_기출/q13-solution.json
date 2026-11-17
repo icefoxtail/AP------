@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "label": "x+y=5"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-1"
+        ],
+        "domain": [
+          "4",
+          "6"
+        ],
+        "label": "x+y=10"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "P3",
+          "x": "4",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "P4",
+          "x": "4",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "P5",
+          "x": "5",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "P6",
+          "x": "6",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 눈은1..6 정수이며 합2..12 안의5배수는5/10뿐이다. 합5의4점과 합10의3점으로7가지. 연속선은 관계 안내이며 실제 결과는 정수점이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 두 눈의 수의 합이 $5$의 배수인 경우의 수를 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

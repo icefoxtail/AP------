@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1/2"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "6",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "area",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "세 꼭짓점(0,−6),(0,3),(6,0)의 삼각형이다. y축 밑변길이9와 높이6으로 넓이27. 원래 두 직선과 음영영역을 정확히 보존한다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차함수 $y=x-6, y=-\\dfrac{1}{2}x+3$의 그래프와 $y$축으로 둘러싸인 도형의 넓이는? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "caption": "원본그림의 A=입구,B=매점,C=출구를 압축한 연결도다. 선 옆 숫자는 길이가 아니라 서로 다른 산책로 개수다. A-B 3개,B-C 2개,A-C 4개. 재방문 금지에서 A→C 직접4가지와 A→B→C의3×2=6가지뿐이므로 정답10. 원본 공원그림은 유지한다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "nAB",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nBC",
+        "ownerSegment": "BC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nAC",
+        "ownerSegment": "AC",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 어느 공원의 산책로를 나타낸 것이다. 입구에서 출구로 가는 경우의 수를 구하시오. (단, 같은 지점을 다시 가지 않는다.)\n<img src=\"q04.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본그림의 A=입구,B=매점,C=출구를 압축한 연결도다. 선 옆 숫자는 길이가 아니라 서로 다른 산책로 개수다. A-B 3개,B-C 2개,A-C 4개. 재방문 금지에서 A→C 직접4가지와 A→B→C의3×2=6가지뿐이므로 정답10. 원본 공원그림은 유지한다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본그림의 A=입구,B=매점,C=출구를 압축한 연결도다. 선 옆 숫자는 길이가 아니라 서로 다른 산책로 개수다. A-B 3개,B-C 2개,A-C 4개. 재방문 금지에서 A→C 직접4가지와 A→B→C의3×2=6가지뿐이므로 정답10. 원본 공원그림은 유지한다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}
