@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-8/11",
+          "-8/11"
+        ],
+        "domain": [
+          "-15",
+          "0"
+        ],
+        "label": "b=-8a/11-8/11"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-15",
+          "0"
+        ],
+        "label": "b=2-a/2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-12",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "b"
+    }
+  },
+  "caption": "주어진해(4,2)를대입한계수평면:8a+11b−8,a+2b4. 교점(a,b)=(−12,8),정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}2ax+4y=-11b\\\\x-by=a\\end{cases}$의 해가 $x=4, y=2$일 때, $a$와 $b$의 값은? [5점] 보기: ['$a=4,\\\\ b=4$', '$a=-4,\\\\ b=4$', '$a=8,\\\\ b=-8$', '$a=12,\\\\ b=-8$', '$a=-12,\\\\ b=8$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진해(4,2)를대입한계수평면:8a+11b−8,a+2b4. 교점(a,b)=(−12,8),정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진해(4,2)를대입한계수평면:8a+11b−8,a+2b4. 교점(a,b)=(−12,8),정답⑤."
+  ]
+}

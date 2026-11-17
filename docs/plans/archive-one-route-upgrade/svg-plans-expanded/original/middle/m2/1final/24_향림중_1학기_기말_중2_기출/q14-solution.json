@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/3",
+          "-2/3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1/2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "분모/소수를없애2x+y3,2x+3y7. 같은x계수를뺀2y4에서y2,x1/2. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}0.3x+0.15y=0.45\\\\{}\\dfrac{1}{4}x+\\dfrac{3}{8}y=\\dfrac{7}{8}\\end{cases}$의 해는? [4점] 보기: ['$x=2,\\\\ y=1$', '$x=1,\\\\ y=\\\\dfrac{1}{2}$', '$x=\\\\dfrac{3}{4},\\\\ y=3$', '$x=\\\\dfrac{1}{2},\\\\ y=2$', '$x=-1,\\\\ y=2$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "분모/소수를없애2x+y3,2x+3y7. 같은x계수를뺀2y4에서y2,x1/2. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "분모/소수를없애2x+y3,2x+3y7. 같은x계수를뺀2y4에서y2,x1/2. 정답④."
+  ]
+}

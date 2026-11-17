@@ -1,0 +1,62 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "정의역",
+        "elements": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "함숫값",
+        "elements": [
+          "1",
+          "7"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "정의역은두점−1/2뿐이므로연속직선으로함수의정의역을늘리지않는다. 대응−1→1,2→7에서a2,b3을얻고a+b5. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{-1,2\\}$인 두 함수 $f(x)=ax+b$, $g(x)$에 대하여 $f=g$이고, $g(-1)=1$, $g(2)=7$이다. 두 실수 $a$, $b$에 대하여 $a+b$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "정의역은두점−1/2뿐이므로연속직선으로함수의정의역을늘리지않는다. 대응−1→1,2→7에서a2,b3을얻고a+b5. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역은두점−1/2뿐이므로연속직선으로함수의정의역을늘리지않는다. 대응−1→1,2→7에서a2,b3을얻고a+b5. 정답②."
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "BC∥AD라엇각BCA=DAC. AB∥CD라BAC=DCA이고공통변AC를끼워ASA합동ABC≅CDA. 따라서AB=CD,BC=DA로두쌍대변의길이가각각같다. 수치는설명용대표배치이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 1) 다음 보기는 「평행사변형 $ABCD$의 두 쌍의 대변의 길이가 각각 같음」을 설명한 것이다. 빈칸 안에 알맞은 문장 또는 기호를 정확하게 쓰시오. [5점]\n<보기>\n그림과 같이 평행사변형 $ABCD$에서 대각선 $AC$를 그으면 $\\triangle ABC$와 $\\triangle CDA$에서\n$\\overline{AB}\\parallel\\overline{DC}$이므로 $\\angle BAC=\\angle DCA$ (엇각) …… ㉠\n(1) [빈칸] (엇각) …… ㉡ [2점]\n$\\overline{AC}$는 공통인 변 …… ㉢\n이다. ㉠, ㉡, ㉢에 의해 한 대응변의 길이가 같고, 그 양 끝 각의 크기가 각각 같으므로 (2) [빈칸]이다. [1점]\n따라서 $\\overline{AB}=\\overline{CD}$, $\\overline{BC}=\\overline{DA}$이므로 평행사변형 $ABCD$의 두 쌍의 (3) [빈칸]. [2점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "α",
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "c1",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "label": "α",
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "c2",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "β",
+        "equalGroup": 2,
+        "arcs": 2,
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "label": "β",
+        "equalGroup": 2,
+        "arcs": 2,
+        "style": "ARC"
+      }
+    ]
+  }
+}

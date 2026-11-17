@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "U",
+    "V",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "OU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "OV",
+      "refs": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "VH",
+      "refs": [
+        "V",
+        "H"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    }
+  ],
+  "caption": "두법선(1,2,4),(4,1,2)의길이는√21,내적14. 공통배율로길이3으로정규화한두법선의단면에서cosθ=2/3. 두평면의예각도θ이므로원래면적6의정사영은6×2/3=4. 도형의임의모양을특정하지않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "rightAngles": [
+    {
+      "id": "r",
+      "refs": [
+        "O",
+        "H",
+        "V"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOV",
+        "ownerSegment": "OV",
+        "text": "3"
+      },
+      {
+        "id": "lOH",
+        "ownerSegment": "OH",
+        "text": "2"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "구 $x^2+y^2+z^2=21$ 위의 두 점 $\\mathrm{P}(1, 2, 4), \\mathrm{Q}(4, 1, 2)$에서 구에 접하는 두 평면을 각각 $\\alpha, \\beta$라고 하자. 평면 $\\alpha$ 위에 넓이가 $6$인 도형이 있을 때, 이 도형의 평면 $\\beta$ 위로의 정사영의 넓이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두법선(1,2,4),(4,1,2)의길이는√21,내적14. 공통배율로길이3으로정규화한두법선의단면에서cosθ=2/3. 두평면의예각도θ이므로원래면적6의정사영은6×2/3=4. 도형의임의모양을특정하지않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두법선(1,2,4),(4,1,2)의길이는√21,내적14. 공통배율로길이3으로정규화한두법선의단면에서cosθ=2/3. 두평면의예각도θ이므로원래면적6의정사영은6×2/3=4. 도형의임의모양을특정하지않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

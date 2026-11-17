@@ -1,0 +1,367 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "17"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "225",
+            "denominator": "17"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "120",
+            "denominator": "17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-120",
+            "denominator": "17"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "225",
+            "denominator": "17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-120",
+            "denominator": "17"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "225",
+            "denominator": "17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "120",
+            "denominator": "17"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "64",
+            "denominator": "17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "120",
+            "denominator": "17"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "64",
+            "denominator": "17"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I",
+    "H",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "HI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "IA",
+      "refs": [
+        "I",
+        "A"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "GF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB²289→AB17,AC²225→AC15. 직각C에서BC8,삼각형넓이15×8/2=60. 원문의세정사각형이름과실제넓이를보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 직각삼각형 $ABC$의 세 변을 각각 한 변으로 하는 정사각형을 그린 것이다. $\\square{}ACHI=225\\text{ cm}^2$, $\\square ADEB=289\\text{ cm}^2$일 때, $\\triangle ABC$의 넓이는? (4점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "c",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r0",
+        "fill": "LIGHT",
+        "label": "225",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "H",
+              "I"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r1",
+        "fill": "LIGHT",
+        "label": "289",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "D",
+              "E",
+              "B"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "LIGHT",
+        "label": "60",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

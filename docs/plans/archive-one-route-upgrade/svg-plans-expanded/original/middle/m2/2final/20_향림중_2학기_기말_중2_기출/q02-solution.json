@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bisA",
+          "bisB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "BI가B를이등분해35°+35°=70°. C70°라A40°,AI가A를이등분하므로IAC20°. 밑변10은대표크기이며주어진각모두보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\angle IBA=35^\\circ$, $\\angle C=70^\\circ$일 때, $\\angle IAC$의 크기는? (3점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "I",
+          "B",
+          "A"
+        ],
+        "value": 35,
+        "label": "35°",
+        "style": "ARC"
+      },
+      {
+        "id": "c",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 70,
+        "label": "70°",
+        "style": "ARC"
+      },
+      {
+        "id": "a",
+        "refs": [
+          "I",
+          "A",
+          "C"
+        ],
+        "value": 20,
+        "label": "20°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

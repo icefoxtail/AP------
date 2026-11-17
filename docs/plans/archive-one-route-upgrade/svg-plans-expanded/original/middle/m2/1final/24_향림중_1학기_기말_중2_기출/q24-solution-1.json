@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-9",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-9",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-6",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-8",
+          "y": "-12",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래y2x를위로4옮긴직선은y2x+4. 실제두점(a,b)=(−6,−8),(b,2a)=(−8,−12)이새선위임을확인한다. 정답a−6,b−8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=2x$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 그래프가 $(a,b)$, $(b,2a)$를 지날 때, $a,b$의 값을 구하시오. [5점] 보기: []",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원래y2x를위로4옮긴직선은y2x+4. 실제두점(a,b)=(−6,−8),(b,2a)=(−8,−12)이새선위임을확인한다. 정답a−6,b−8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원래y2x를위로4옮긴직선은y2x+4. 실제두점(a,b)=(−6,−8),(b,2a)=(−8,−12)이새선위임을확인한다. 정답a−6,b−8."
+  ]
+}

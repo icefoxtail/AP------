@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "line",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "parallel",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "P",
+          "line"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "line"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "평행조건a−4에서두선3x+2y−4=0,3x+2y−7=0. 실제좌표A(0,2),B(2,−1),P(0,7/2)를보존하며두번째선위P에서첫선에내린수선길이는3√13/13. A좌표는배치게이지가아니라첫직선위점이다.",
+  "displayLines": [
+    "line",
+    "parallel"
+  ],
+  "rightAngles": [
+    {
+      "id": "r",
+      "refs": [
+        "P",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPH",
+        "ownerSegment": "PH",
+        "text": "3sqrt(13)/13"
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P",
+    "H"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $l_1: \\frac{x+2}{a}=\\frac{y-5}{6}, l_2: \\frac{3-x}{2}=\\frac{y+1}{3}$이 서로 평행할 때, 두 직선 사이의 거리를 구하시오. (단, $a$는 실수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "평행조건a−4에서두선3x+2y−4=0,3x+2y−7=0. 실제좌표A(0,2),B(2,−1),P(0,7/2)를보존하며두번째선위P에서첫선에내린수선길이는3√13/13. A좌표는배치게이지가아니라첫직선위점이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평행조건a−4에서두선3x+2y−4=0,3x+2y−7=0. 실제좌표A(0,2),B(2,−1),P(0,7/2)를보존하며두번째선위P에서첫선에내린수선길이는3√13/13. A좌표는배치게이지가아니라첫직선위점이다."
+  ]
+}

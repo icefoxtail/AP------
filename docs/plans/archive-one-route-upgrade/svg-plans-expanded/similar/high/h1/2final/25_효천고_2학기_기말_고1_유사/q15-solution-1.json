@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "J",
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "id": "L",
+        "x": "0",
+        "y": "-6"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "5"
+      }
+    ]
+  },
+  "caption": "최소정수a0,b−6의실제두증가가지4x−6/x가(2,2)에서이어진다. 일반조건−1<a<4,b4a−6에서가능정수a0/1/2/3,목표5a−6최소−6. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역과 공역이 각각 실수 전체의 집합인 함수 $f$가 $x\\lt2$에서 $f(x)=(4-a)x+b$이고, $x\\ge2$에서의 그래프는 원점을 지나며 기울기가 $a+1$인 직선의 일부이다. 함수 $f$가 일대일대응이 되도록 하는 두 정수 $a,b$에 대하여 $a+b$의 최솟값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "최소정수a0,b−6의실제두증가가지4x−6/x가(2,2)에서이어진다. 일반조건−1<a<4,b4a−6에서가능정수a0/1/2/3,목표5a−6최소−6. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "최소정수a0,b−6의실제두증가가지4x−6/x가(2,2)에서이어진다. 일반조건−1<a<4,b4a−6에서가능정수a0/1/2/3,목표5a−6최소−6. 정답①."
+  ]
+}

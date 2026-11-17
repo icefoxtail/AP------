@@ -1,0 +1,79 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "10",
+          "13"
+        ],
+        "label": "T=n"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "59/5",
+          "0"
+        ],
+        "domain": [
+          "10",
+          "13"
+        ],
+        "label": "T=59/5"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "11",
+          "y": "11",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "12",
+          "y": "12",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "59/5",
+          "y": "59/5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "n",
+      "y": "T"
+    }
+  },
+  "caption": "가로종이수n,세로T=(S−6)/30으로넓이S를정확변환한다. 실제S=30n+6은T=n이고S360경계는T59/5. 11장T11→336,12장T12→366이라최소12. 실제종이수는자연수이며연속선은조건비교보조이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 6cm인 정사각형 모양의 종이를 그림과 같이 이웃하는 종이끼리 1cm만큼 겹치도록 이어 붙여서 직사각형을 만들려고 한다. 직사각형의 넓이가 $360\\text{cm}^2$ 이상이 되도록 할 때, 종이를 최소 몇 장 붙여야 하는지 구하면? [5점] 보기: ['11장', '12장', '13장', '14장', '15장']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로종이수n,세로T=(S−6)/30으로넓이S를정확변환한다. 실제S=30n+6은T=n이고S360경계는T59/5. 11장T11→336,12장T12→366이라최소12. 실제종이수는자연수이며연속선은조건비교보조이다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로종이수n,세로T=(S−6)/30으로넓이S를정확변환한다. 실제S=30n+6은T=n이고S360경계는T59/5. 11장T11→336,12장T12→366이라최소12. 실제종이수는자연수이며연속선은조건비교보조이다."
+  ]
+}

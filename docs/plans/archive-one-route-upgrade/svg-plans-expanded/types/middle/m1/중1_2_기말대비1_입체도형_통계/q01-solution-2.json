@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "근거",
+        "elements": [
+          "오각형",
+          "원뿔",
+          "삼각기둥"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "결과",
+        "elements": [
+          "평면",
+          "곡면",
+          "다면체"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "다면체의판정에서평면도형인지와곡면유무를순서대로분리한다. 정답②⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 다면체가 아닌 것을 모두 고르면? (정답 2개)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "선택지⑤ 원뿔은곡면이있어다면체가아니다. ②오각형은평면도형이므로입체다면체가아니다. 나머지는다각형면으로둘러싸인입체다. 정답②⑤. 모형크기는설명용이다. 다면체의판정에서평면도형인지와곡면유무를순서대로분리한다. 정답②⑤.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "다면체의판정에서평면도형인지와곡면유무를순서대로분리한다. 정답②⑤."
+  ]
+}

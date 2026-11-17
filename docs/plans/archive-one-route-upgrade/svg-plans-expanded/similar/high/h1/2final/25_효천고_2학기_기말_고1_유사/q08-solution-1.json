@@ -1,0 +1,64 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "2",
+      "1"
+    ],
+    "sign": -1,
+    "offset": "3",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -2,
+      14
+    ],
+    "viewport": [
+      -3,
+      15,
+      -2,
+      4
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "id": "C",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 14,
+        "y": -1
+      }
+    ]
+  },
+  "caption": "실제시작점(−2,3),x절편7,최댓값3과오른쪽아래가지를보존한다. 제1/2/4사분면은지나지만제3은안지난다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=-\\sqrt{x-p}+q$의 그래프의 시작점이 $(-2,3)$이다. 다음 중 이 함수의 그래프에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제시작점(−2,3),x절편7,최댓값3과오른쪽아래가지를보존한다. 제1/2/4사분면은지나지만제3은안지난다. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제시작점(−2,3),x절편7,최댓값3과오른쪽아래가지를보존한다. 제1/2/4사분면은지나지만제3은안지난다. 정답⑤."
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "k": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "U",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "AU",
+      "refs": [
+        "A",
+        "U"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "한변1인정육각형에서a+b=AC,−c=CB의수평대칭이아니라정확히CD의역방향이다. a+b−c=2AB이므로크기2. 각성분으로도(−√3,−1)의크기2. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "1"
+      },
+      {
+        "id": "lAU",
+        "ownerSegment": "AU",
+        "text": "2"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q02.png\" />\n\n오른쪽 그림과 같이 한 변의 길이가 $1$인 정육각형 $\\mathrm{ABCDEF}$에서 $\\vec{\\mathrm{AB}}=\\vec{a}, \\vec{\\mathrm{BC}}=\\vec{b}, \\vec{\\mathrm{CD}}=\\vec{c}$라고 할 때, 벡터 $\\vec{a}+\\vec{b}-\\vec{c}$의 크기를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한변1인정육각형에서a+b=AC,−c=CB의수평대칭이아니라정확히CD의역방향이다. a+b−c=2AB이므로크기2. 각성분으로도(−√3,−1)의크기2. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "한변1인정육각형에서a+b=AC,−c=CB의수평대칭이아니라정확히CD의역방향이다. a+b−c=2AB이므로크기2. 각성분으로도(−√3,−1)의크기2. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다."
+  ]
+}

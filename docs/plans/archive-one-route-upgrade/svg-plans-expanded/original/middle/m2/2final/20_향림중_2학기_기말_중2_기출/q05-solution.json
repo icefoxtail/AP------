@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "220"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "직사각형대각선은길이가같고서로이등분해OA=OD이다. 맞꼭지각AOD100°에서x=ADO40°. 직각A에서y50°이므로y−x10°. 반대각선5는대표크기이고주어진100°를보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 직사각형 $ABCD$에서 $\\angle BOC=100^\\circ$일 때, $\\angle y-\\angle x$의 값은? (단, 점 $O$는 두 대각선의 교점이다.) (4점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "o",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 100,
+        "label": "100°",
+        "style": "ARC"
+      },
+      {
+        "id": "d",
+        "refs": [
+          "A",
+          "D",
+          "O"
+        ],
+        "value": 40,
+        "label": "x=40°",
+        "style": "ARC"
+      },
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 50,
+        "label": "y=50°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

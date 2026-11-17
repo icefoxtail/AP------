@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "新변수t=3x+7로범위를표현한다. x≥−1이면t≥4이고경계x−1→t4가포함된다. 따라서원래식3x+7≥4,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-2x+4 \\le 6$일 때, $3x+7$의 범위를 구하면? [4점] 보기: ['$3x+7\\\\le4$', '$3x+7\\\\ge4$', '$3x+7\\\\le11$', '$3x+7\\\\ge11$', '$3x+7\\\\ge5$']",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "新변수t=3x+7로범위를표현한다. x≥−1이면t≥4이고경계x−1→t4가포함된다. 따라서원래식3x+7≥4,정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "新변수t=3x+7로범위를표현한다. x≥−1이면t≥4이고경계x−1→t4가포함된다. 따라서원래식3x+7≥4,정답②."
+  ]
+}

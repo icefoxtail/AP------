@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "F",
+          "G"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "G",
+          "F"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "au",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "au",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "대응A↔E,B↔F,C↔G,D↔H. D/H85°,C80°. BC12:FG9=4:3에서EF6. 넓이비는16:9이므로8:6이라는⑤가틀리다. 모든각125/70/80/85와실제변길이를보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 $\\square ABCD\\sim\\square EFGH$일 때, 다음 중 옳지 않은 것은? (4점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "EF",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "FG",
+        "text": "9",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "anga",
+        "refs": [
+          "F",
+          "E",
+          "H"
+        ],
+        "value": 125,
+        "label": "125°",
+        "style": "ARC"
+      },
+      {
+        "id": "angb",
+        "refs": [
+          "E",
+          "F",
+          "G"
+        ],
+        "value": 70,
+        "label": "70°",
+        "style": "ARC"
+      },
+      {
+        "id": "angc",
+        "refs": [
+          "F",
+          "G",
+          "H"
+        ],
+        "value": 80,
+        "label": "80°",
+        "style": "ARC"
+      },
+      {
+        "id": "angd",
+        "refs": [
+          "E",
+          "H",
+          "G"
+        ],
+        "value": 85,
+        "label": "85°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

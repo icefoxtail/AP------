@@ -1,0 +1,77 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "oct",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 1,
+      "names": "CBEDAF"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "C",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "F",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "E",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AC",
+      "label": "1"
+    },
+    {
+      "from": "C",
+      "to": "E",
+      "label": "\\sqrt{2}"
+    }
+  ],
+  "caption": "원본처럼A/F가양꼭짓점이고C/B/E/D는중앙정사각형의순서다. 반대중앙점C/E,B/D를보존한다. AC=EF, AB=DF=−FD, CE는한변1인정사각형대각선√2이며√3이아니다. BD⊥CE이므로ㄱㄴㄹ. 선분의방향은각벡터의시점/종점이름순서로읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q01.png\" />\n\n오른쪽 그림과 같이 한 모서리의 길이가 $1$인 정팔면체에 대하여 다음 <보기> 중 옳은 것을 모두 고르시오.\n\n<보기>\nㄱ. $\\vec{\\mathrm{AC}}=\\vec{\\mathrm{EF}}$\nㄴ. $\\vec{\\mathrm{AB}}=-\\vec{\\mathrm{FD}}$\nㄷ. $|\\vec{\\mathrm{CE}}|=\\sqrt{3}$\nㄹ. $\\vec{\\mathrm{BD}} \\perp \\vec{\\mathrm{CE}}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본처럼A/F가양꼭짓점이고C/B/E/D는중앙정사각형의순서다. 반대중앙점C/E,B/D를보존한다. AC=EF, AB=DF=−FD, CE는한변1인정사각형대각선√2이며√3이아니다. BD⊥CE이므로ㄱㄴㄹ. 선분의방향은각벡터의시점/종점이름순서로읽는다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "원본처럼A/F가양꼭짓점이고C/B/E/D는중앙정사각형의순서다. 반대중앙점C/E,B/D를보존한다. AC=EF, AB=DF=−FD, CE는한변1인정사각형대각선√2이며√3이아니다. BD⊥CE이므로ㄱㄴㄹ. 선분의방향은각벡터의시점/종점이름순서로읽는다."
+  ]
+}

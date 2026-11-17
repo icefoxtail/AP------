@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "af",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "de",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "af",
+          "de"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "E",
+    "F",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "실제AB3/AD4를보존한다. E,F는BC를1:3,3:1내분. AF=(3,−3),DE=(−3,−3)이므로내적−9+9=0,두벡터수직. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "rightAngles": [
+    {
+      "id": "r",
+      "refs": [
+        "A",
+        "H",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "3"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "DA",
+        "text": "4"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q07.png\" />\n\n오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=3, \\overline{\\mathrm{AD}}=4$인 직사각형 $\\mathrm{ABCD}$에서 변 $\\mathrm{BC}$를 $1:3, 3:1$로 내분하는 점을 각각 $\\mathrm{E}, \\mathrm{F}$라고 할 때, $\\vec{\\mathrm{AF}}\\cdot\\vec{\\mathrm{DE}}$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "실제AB3/AD4를보존한다. E,F는BC를1:3,3:1내분. AF=(3,−3),DE=(−3,−3)이므로내적−9+9=0,두벡터수직. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제AB3/AD4를보존한다. E,F는BC를1:3,3:1내분. AF=(3,−3),DE=(−3,−3)이므로내적−9+9=0,두벡터수직. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      7,
+      0,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "7"
+        ],
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ],
+        "label": "y=2+4/(x-1)"
+      },
+      {
+        "id": "minimum",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "x+y=7"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "실제정의역x>1의오른쪽가지에서P(3,4)가합x+y의최솟값7을달성한다. 표시창7은원문상한이아니다. 원본없는왼쪽가지는그리지않는다. 정답둘레14.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=\\dfrac4{x-1}+2$ $(x\\gt1)$의 그래프 위의 점 $P$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q,R$라 하고 원점을 $O$라 하자. 직사각형 $OQPR$의 둘레의 길이의 최솟값을 구하고 그 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제정의역x>1의오른쪽가지에서P(3,4)가합x+y의최솟값7을달성한다. 표시창7은원문상한이아니다. 원본없는왼쪽가지는그리지않는다. 정답둘레14.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제정의역x>1의오른쪽가지에서P(3,4)가합x+y의최솟값7을달성한다. 표시창7은원문상한이아니다. 원본없는왼쪽가지는그리지않는다. 정답둘레14."
+  ]
+}

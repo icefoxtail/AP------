@@ -1,0 +1,70 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "1",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "1",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -1,
+      8
+    ],
+    "viewport": [
+      -2,
+      9,
+      0,
+      5
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "id": "C",
+        "x": 8,
+        "y": 4
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "치역시작1에서b1,교점x3에서f3=3을읽어a1. 실제곡선의(8,4)로최종f8=4. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $f(x)=\\sqrt{x+a}+b$의 치역이 $\\{y\\mid y\\ge1\\}$이고, $y=f(x)$의 그래프와 그 역함수의 그래프의 교점의 $x$좌표가 $3$일 때, $f(8)$의 값은? (단, $a,b$는 상수이다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "치역시작1에서b1,교점x3에서f3=3을읽어a1. 실제곡선의(8,4)로최종f8=4. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "치역시작1에서b1,교점x3에서f3=3을읽어a1. 실제곡선의(8,4)로최종f8=4. 정답③."
+  ]
+}

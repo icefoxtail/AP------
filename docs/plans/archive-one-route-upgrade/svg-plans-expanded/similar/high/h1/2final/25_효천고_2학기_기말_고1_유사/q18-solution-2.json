@@ -1,0 +1,446 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "neg",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P",
+    "Q",
+    "L",
+    "R",
+    "U",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "C",
+    "P",
+    "Q"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "U",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "a0의실제원과두교점. 중심이동좌표X=x,Y=y−2에서XY4와X²+Y²8이만나는(±2,±2)로반지름2√2. 다른a에대한조건은문항의전제로사용하며전체충분성별도검토를보고서에남긴다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 실수 $a$에 대하여 함수 $f(x)=\\dfrac{(a+2)x-a^2-2a+4}{x-a}$의 그래프와 반지름의 길이가 $r$인 원이 서로 다른 두 점에서 만난다. 이 원의 중심은 두 점 $A(a-1,a^2+1)$, $B(a+1,a^2+3)$을 잇는 선분의 중점이다. $r$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a0의실제원과두교점. 중심이동좌표X=x,Y=y−2에서XY4와X²+Y²8이만나는(±2,±2)로반지름2√2. 다른a에대한조건은문항의전제로사용하며전체충분성별도검토를보고서에남긴다. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a0의실제원과두교점. 중심이동좌표X=x,Y=y−2에서XY4와X²+Y²8이만나는(±2,±2)로반지름2√2. 다른a에대한조건은문항의전제로사용하며전체충분성별도검토를보고서에남긴다. 정답④."
+  ]
+}

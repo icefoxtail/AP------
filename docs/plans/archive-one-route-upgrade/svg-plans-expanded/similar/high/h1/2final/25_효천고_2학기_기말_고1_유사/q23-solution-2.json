@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "-5",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "5/3",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "5/2",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "세유효해−5,5/3,5/2는모두서로다르다. 가운데구간−2≤x<1에서나온대수후보25는범위밖이라제외. 합−5/6,정답그값.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "역함수가 $f^{-1}(x)=\\begin{cases}2x+5&(x\\lt-2)\\\\\\dfrac{x+5}{3}&(x\\ge-2)\\end{cases}$인 일대일함수 $f$에 대하여 $\\{f(x)\\}^2=f(x)f^{-1}(x)$를 만족시키는 모든 실수 $x$의 값의 합을 구하고 그 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "세유효해−5,5/3,5/2는모두서로다르다. 가운데구간−2≤x<1에서나온대수후보25는범위밖이라제외. 합−5/6,정답그값.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "세유효해−5,5/3,5/2는모두서로다르다. 가운데구간−2≤x<1에서나온대수후보25는범위밖이라제외. 합−5/6,정답그값."
+  ]
+}

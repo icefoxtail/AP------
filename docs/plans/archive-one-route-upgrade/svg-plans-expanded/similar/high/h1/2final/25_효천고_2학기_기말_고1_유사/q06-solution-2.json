@@ -1,0 +1,38 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "disjoint": [
+      [
+        "P",
+        "Q"
+      ]
+    ]
+  },
+  "caption": "드모르간법칙으로P∩Q=∅이므로Q⊆P^c. 정답② q→¬p. 원소를임의로추가하지않은관계도이며빈집합도허용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자. $P^C\\cup R^C=P^C$, $P^C\\cup Q^C=U$일 때, 다음 중 항상 참인 명제는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "드모르간법칙으로P∩Q=∅이므로Q⊆P^c. 정답② q→¬p. 원소를임의로추가하지않은관계도이며빈집합도허용한다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "드모르간법칙으로P∩Q=∅이므로Q⊆P^c. 정답② q→¬p. 원소를임의로추가하지않은관계도이며빈집합도허용한다."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "근거",
+        "elements": [
+          "남학생",
+          "여학생"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "결과",
+        "elements": [
+          "1/5",
+          "4/25"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "[해설 기준 조건부 보조] 해설에남은대상계급10~20초의도수/전체수로상대도수를비교하면남학생0.20>여학생0.16. 전체분포나누락표의다른계급은만들지않았다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 표는 광현이네 반 남학생과 여학생의 잠수 기록을 조사하여 나타낸 것이다. 기록이 10초 이상 20초 미만인 학생의 비율은 남학생과 여학생 중 어느 쪽이 더 높은지 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "[해설 기준 조건부 보조] 해설에남은대상계급10~20초의도수/전체수로상대도수를비교하면남학생0.20>여학생0.16. 전체분포나누락표의다른계급은만들지않았다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "[해설 기준 조건부 보조] 해설에남은대상계급10~20초의도수/전체수로상대도수를비교하면남학생0.20>여학생0.16. 전체분포나누락표의다른계급은만들지않았다."
+  ]
+}

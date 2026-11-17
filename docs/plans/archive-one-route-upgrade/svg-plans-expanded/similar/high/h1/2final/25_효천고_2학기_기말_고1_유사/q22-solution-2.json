@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "P",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "QP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "PR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "RO",
+      "refs": [
+        "R",
+        "O"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "O",
+    "Q",
+    "P",
+    "R"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "angle",
+      "refs": [
+        "O",
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "caption": "최소배치직사각형의폭3/높이4를표시한다. t=x−1=2에서t+4/t4,따라서2(x+y)=14. 곡선은앞패널에필수유지. 정답14.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=\\dfrac4{x-1}+2$ $(x\\gt1)$의 그래프 위의 점 $P$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q,R$라 하고 원점을 $O$라 하자. 직사각형 $OQPR$의 둘레의 길이의 최솟값을 구하고 그 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "최소배치직사각형의폭3/높이4를표시한다. t=x−1=2에서t+4/t4,따라서2(x+y)=14. 곡선은앞패널에필수유지. 정답14.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "최소배치직사각형의폭3/높이4를표시한다. t=x−1=2에서t+4/t4,따라서2(x+y)=14. 곡선은앞패널에필수유지. 정답14."
+  ]
+}

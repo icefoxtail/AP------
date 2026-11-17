@@ -1,0 +1,343 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bisA",
+          "bisB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ca",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "ca"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "I",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "inc"
+  ],
+  "displayLines": [],
+  "caption": "직각삼각형BC√(15²+8²)=17. 넓이60은내심으로나눈세삼각형넓이합(15+17+8)r/2=20r이므로r3. 각변에내린수선이같은반지름임을실제접점으로보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 2) 다음 그림에서 △ABC는 ∠A=90°인 직각삼각형이고, 점 I는 △ABC의 내심이다. 선분 AB의 길이가 15 cm, 선분 AC의 길이가 8 cm일 때, 다음 물음에 답하시오. [5점]\n(1) 선분 BC의 길이를 구하는 과정을 쓰시오. [2점]\n(2) △ABC의 내접원의 반지름의 길이 r cm를 구하는 과정을 자세히 쓰시오. [3점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "17",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vID",
+        "ownerSegment": "ID",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vIE",
+        "ownerSegment": "IE",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vIF",
+        "ownerSegment": "IF",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "d",
+      "refs": [
+        "I",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "e",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "f",
+      "refs": [
+        "I",
+        "F",
+        "C"
+      ]
+    }
+  ]
+}

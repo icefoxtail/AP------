@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-8",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "9"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "EL",
+        "x": "-4",
+        "y": "16"
+      },
+      {
+        "id": "ER",
+        "x": "6",
+        "y": "16"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "height",
+          "slope": "0",
+          "intercept": "10",
+          "style": "DASHED",
+          "label": "y=10"
+        }
+      ]
+    }
+  },
+  "caption": "원문g=(x−1)²−9의절댓값에서 k10의교점은2개. 세서로다른입력을고를수있는최대정수는9. k0에서는두방정식의근이겹치므로네개로세지않는다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 이차함수 $g(x)$의 그래프가 $x$축과 두 점 $(-2,0)$, $(4,0)$에서 만난다. 서로 다른 세 실수 $a,b,c$에 대하여 집합 $X=\\{a,b,c\\}$를 정의역, 정수 전체의 집합을 공역으로 하는 함수 $f(x)=|g(x)|$가 상수함수이고 치역이 $\\{k\\}$일 때, 정수 $k$의 최댓값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문g=(x−1)²−9의절댓값에서 k10의교점은2개. 세서로다른입력을고를수있는최대정수는9. k0에서는두방정식의근이겹치므로네개로세지않는다. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문g=(x−1)²−9의절댓값에서 k10의교점은2개. 세서로다른입력을고를수있는최대정수는9. k0에서는두방정식의근이겹치므로네개로세지않는다. 정답③."
+  ]
+}

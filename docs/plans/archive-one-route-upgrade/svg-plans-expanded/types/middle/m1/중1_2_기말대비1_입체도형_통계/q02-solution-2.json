@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "근거",
+        "elements": [
+          "각기둥",
+          "각뿔",
+          "각뿔대"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "결과",
+        "elements": [
+          "직사각형",
+          "삼각형",
+          "사다리꼴"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "옆면만비교한다. 삼각뿔대/사각뿔/칠각뿔/육각뿔대선지는각각사다리꼴/삼각형/삼각형/사다리꼴이므로③만옳다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 다면체와 그 옆면의 모양을 짝지은 것으로 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "오각기둥의옆면은직사각형이므로③. 뿔의옆면은삼각형,뿔대의옆면은사다리꼴. 치수는형태설명용이며원문조건아님. 옆면만비교한다. 삼각뿔대/사각뿔/칠각뿔/육각뿔대선지는각각사다리꼴/삼각형/삼각형/사다리꼴이므로③만옳다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "옆면만비교한다. 삼각뿔대/사각뿔/칠각뿔/육각뿔대선지는각각사다리꼴/삼각형/삼각형/사다리꼴이므로③만옳다."
+  ]
+}

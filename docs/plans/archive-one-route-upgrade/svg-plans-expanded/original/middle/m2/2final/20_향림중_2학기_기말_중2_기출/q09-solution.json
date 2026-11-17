@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bis",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bis",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "평행사변형B80°라D80°,A100°. ACD50°에서CAD50°,이등분선CAE25°. ACE130°라AEC25°=y,외각DCE80°=x. x−y55°. AB=BC인주어진각관계와모든평행을보존한대표크기10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 평행사변형 $ABCD$에서 $\\angle DAC$의 이등분선이 $\\overline{BC}$의 연장선과 만나는 점을 $E$라고 하자. $\\angle B=80^\\circ$, $\\angle ACD=50^\\circ$일 때, $\\angle x-\\angle y$의 값은? (5점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 80,
+        "label": "80°",
+        "style": "ARC"
+      },
+      {
+        "id": "c",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 50,
+        "label": "50°",
+        "style": "ARC"
+      },
+      {
+        "id": "x",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 80,
+        "label": "x=80°",
+        "style": "ARC"
+      },
+      {
+        "id": "y",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "value": 25,
+        "label": "y=25°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

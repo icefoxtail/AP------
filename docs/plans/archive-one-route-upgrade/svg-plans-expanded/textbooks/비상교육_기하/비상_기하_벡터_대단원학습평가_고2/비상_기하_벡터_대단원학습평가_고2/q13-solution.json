@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "m",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "한변2정삼각형에서무게중심G. AB·AG=|AB||AG|cos30°=2. GA와GC는120°이고길이2√3/3이므로GA·GC=−2/3. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "g",
+        "refs": [
+          "A",
+          "G",
+          "C"
+        ],
+        "value": 120,
+        "label": "120°"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "2"
+      },
+      {
+        "id": "ag",
+        "ownerSegment": "AG",
+        "text": "2sqrt(3)/3"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q13.png\" />\n\n오른쪽 그림과 같이 한 변의 길이가 $2$인 정삼각형 $\\mathrm{ABC}$의 무게중심을 $\\mathrm{G}$라고 할 때, 다음을 구하시오.\n\n⑴ $\\vec{\\mathrm{AB}}\\cdot\\vec{\\mathrm{AG}}$\n⑵ $\\vec{\\mathrm{GA}}\\cdot\\vec{\\mathrm{GC}}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한변2정삼각형에서무게중심G. AB·AG=|AB||AG|cos30°=2. GA와GC는120°이고길이2√3/3이므로GA·GC=−2/3. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "한변2정삼각형에서무게중심G. AB·AG=|AB||AG|cos30°=2. GA와GC는120°이고길이2√3/3이므로GA·GC=−2/3. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다."
+  ]
+}

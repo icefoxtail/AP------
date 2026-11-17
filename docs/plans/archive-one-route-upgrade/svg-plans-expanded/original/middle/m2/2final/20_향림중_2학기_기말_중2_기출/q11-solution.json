@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB7+9=16. AH=t라두면CH²=64−t²=144−(16−t)²에서AH11/2. DH3/2,CH²135/4이므로CD²135/4+9/4=36,CD6. 원문세길이8/12/16을정확히보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{CD}$의 길이를 구하면? (4점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAH",
+        "ownerSegment": "AH",
+        "text": "11/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vHD",
+        "ownerSegment": "HD",
+        "text": "3/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vDB",
+        "ownerSegment": "DB",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "C",
+        "H",
+        "D"
+      ]
+    }
+  ]
+}

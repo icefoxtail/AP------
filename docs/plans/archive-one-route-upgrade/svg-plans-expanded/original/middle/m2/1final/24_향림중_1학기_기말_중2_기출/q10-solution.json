@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-15/7",
+          "3/7"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "7/3",
+        "y": "-8/7"
+      },
+      {
+        "id": "P2",
+        "x": "5/2",
+        "y": "-15/14"
+      },
+      {
+        "id": "P3",
+        "x": "5",
+        "y": "0"
+      }
+    ],
+    "formula": "(3/7)*x+(-15/7)",
+    "overlays": {
+      "points": [
+        {
+          "id": "wrong",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "직선3x−7y15위에①③④⑤의점을표시한다. 보기②(2,3)는3·2−7·3=−15로선밖이다. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $3x-7y=15$의 해가 아닌 것은? [3점] 보기: ['$(5,0)$', '$(2,3)$', '$(-2,-3)$', '$\\\\left(\\\\dfrac{7}{3},-\\\\dfrac{8}{7}\\\\right)$', '$\\\\left(\\\\dfrac{15}{6},-\\\\dfrac{15}{14}\\\\right)$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "직선3x−7y15위에①③④⑤의점을표시한다. 보기②(2,3)는3·2−7·3=−15로선밖이다. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "직선3x−7y15위에①③④⑤의점을표시한다. 보기②(2,3)는3·2−7·3=−15로선밖이다. 정답②."
+  ]
+}

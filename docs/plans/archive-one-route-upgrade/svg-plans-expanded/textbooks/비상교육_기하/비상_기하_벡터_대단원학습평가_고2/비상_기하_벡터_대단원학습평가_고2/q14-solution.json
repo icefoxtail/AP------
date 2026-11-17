@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "u",
+        "kind": "LINE",
+        "coefficients": [
+          "28/3",
+          "-2/3"
+        ],
+        "domain": [
+          "5",
+          "9"
+        ]
+      },
+      {
+        "id": "v",
+        "kind": "LINE",
+        "coefficients": [
+          "4/3",
+          "1/3"
+        ],
+        "domain": [
+          "5",
+          "9"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "8",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "첫직선의xy정사영은y=28/3−2x/3. t1에서(8,4,z−2). 둘째직선은s2에서같은(8,4,z−2)이므로실제공간교점(8,4,−2). 투영교점만으로공간교차를단정하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $l_1: \\frac{x-5}{3}=\\frac{6-y}{2}=\\frac{z+4}{2}, l_2: \\frac{x-2}{3}=y-2=\\frac{z+8}{3}$의 교점의 좌표를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫직선의xy정사영은y=28/3−2x/3. t1에서(8,4,z−2). 둘째직선은s2에서같은(8,4,z−2)이므로실제공간교점(8,4,−2). 투영교점만으로공간교차를단정하지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "첫직선의xy정사영은y=28/3−2x/3. t1에서(8,4,z−2). 둘째직선은s2에서같은(8,4,z−2)이므로실제공간교점(8,4,−2). 투영교점만으로공간교차를단정하지않는다."
+  ]
+}

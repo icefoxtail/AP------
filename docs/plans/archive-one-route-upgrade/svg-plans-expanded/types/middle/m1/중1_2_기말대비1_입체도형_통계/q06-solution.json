@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "L",
+    "R",
+    "U",
+    "D"
+  ],
+  "displaySegments": [],
+  "caption": "원뿔대·원뿔·구·반구를회전축에수직으로내부에서자르면단면은원이다. 크기는달라도모양은모두원이므로⑤답이없다. 접하는극한절단/공집합은통상적인내부단면과구분한다. 세원은모양비교의대표형이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "displayCircles": [
+    "cO",
+    "cA",
+    "cB"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "L",
+    "R",
+    "U",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 회전축에 수직인 평면으로 잘랐을 때, 그 단면이 항상 같은 모양이 아닌 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원뿔대·원뿔·구·반구를회전축에수직으로내부에서자르면단면은원이다. 크기는달라도모양은모두원이므로⑤답이없다. 접하는극한절단/공집합은통상적인내부단면과구분한다. 세원은모양비교의대표형이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔대·원뿔·구·반구를회전축에수직으로내부에서자르면단면은원이다. 크기는달라도모양은모두원이므로⑤답이없다. 접하는극한절단/공집합은통상적인내부단면과구분한다. 세원은모양비교의대표형이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

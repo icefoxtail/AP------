@@ -1,0 +1,421 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "10"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "10"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "162"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "10"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "234"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "10"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "306"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "10"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "정오각형한변1의대각선은φ=(1+√5)/2. EC는AB와같은방향이므로EC=φa. AC=AE+EC=b+φa. 원본점순서와두벡터방향을보존한다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "1"
+      },
+      {
+        "id": "lEC",
+        "ownerSegment": "EC",
+        "text": "(1+sqrt(5))/2"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q12.png\" />\n\n오른쪽 그림과 같이 한 변의 길이가 $1$인 정오각형 $\\mathrm{ABCDE}$에서 $\\vec{\\mathrm{AB}}=\\vec{a}, \\vec{\\mathrm{AE}}=\\vec{b}$라고 할 때, 다음 물음에 답하시오.\n\n⑴ 벡터 $\\vec{\\mathrm{EC}}$를 $\\vec{a}$로 나타내시오.\n⑵ 벡터 $\\vec{\\mathrm{AC}}$를 $\\vec{a}, \\vec{b}$로 나타내시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정오각형한변1의대각선은φ=(1+√5)/2. EC는AB와같은방향이므로EC=φa. AC=AE+EC=b+φa. 원본점순서와두벡터방향을보존한다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정오각형한변1의대각선은φ=(1+√5)/2. EC는AB와같은방향이므로EC=φa. AC=AE+EC=b+φa. 원본점순서와두벡터방향을보존한다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다."
+  ]
+}

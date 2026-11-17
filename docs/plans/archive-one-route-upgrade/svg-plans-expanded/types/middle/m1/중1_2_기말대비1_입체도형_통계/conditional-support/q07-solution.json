@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sector",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "U",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "caption": "[해설 기준 조건부 보조] 해설의원뿔전개도관계는옆면부채꼴호BC길이=밑면원주이다. 설명용예에서부채꼴반지름2/각180°의호2π와밑면반지름1의원주2π가같다. A/B/C는이설명용도식의이름으로원래누락그림의기호배치를확인한것이아니다. 원래보기④는해설에따른조건부답이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "hiddenPointNames": [
+    "U",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "base"
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc",
+        "circle": "sector",
+        "center": "A",
+        "to": "C",
+        "side": "CCW",
+        "from": "B"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림은 원뿔의 전개도이다. 원뿔의 밑면의 원주와 길이가 같은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "[해설 기준 조건부 보조] 해설의원뿔전개도관계는옆면부채꼴호BC길이=밑면원주이다. 설명용예에서부채꼴반지름2/각180°의호2π와밑면반지름1의원주2π가같다. A/B/C는이설명용도식의이름으로원래누락그림의기호배치를확인한것이아니다. 원래보기④는해설에따른조건부답이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "[해설 기준 조건부 보조] 해설의원뿔전개도관계는옆면부채꼴호BC길이=밑면원주이다. 설명용예에서부채꼴반지름2/각180°의호2π와밑면반지름1의원주2π가같다. A/B/C는이설명용도식의이름으로원래누락그림의기호배치를확인한것이아니다. 원래보기④는해설에따른조건부답이다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

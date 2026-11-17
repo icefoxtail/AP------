@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "근거",
+        "elements": [
+          "B",
+          "A",
+          "합"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "결과",
+        "elements": [
+          "25",
+          "6",
+          "31"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "[해설 기준 조건부 보조] 해설의1+4+9+3+2=19와전체25로A6/B25를보인다. 원래계급경계와A칸위치가없으므로임의도수분포표나히스토그램으로복원하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 표는 현진이네 반 학생 25명의 한 달 동안의 독서량을 조사하여 나타낸 도수분포표일 때, A+B의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "[해설 기준 조건부 보조] 해설의1+4+9+3+2=19와전체25로A6/B25를보인다. 원래계급경계와A칸위치가없으므로임의도수분포표나히스토그램으로복원하지않는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "[해설 기준 조건부 보조] 해설의1+4+9+3+2=19와전체25로A6/B25를보인다. 원래계급경계와A칸위치가없으므로임의도수분포표나히스토그램으로복원하지않는다."
+  ]
+}

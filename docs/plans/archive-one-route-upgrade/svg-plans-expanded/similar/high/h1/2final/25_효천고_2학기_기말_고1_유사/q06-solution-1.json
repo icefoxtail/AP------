@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "R",
+        "name": "R"
+      }
+    ],
+    "subset": [
+      "P",
+      "R"
+    ]
+  },
+  "caption": "첫여집합등식은P⊆R. 이것만으로역방향r→p는보장하지않는다. 다음서로소조건에서정답q→¬p를얻는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자. $P^C\\cup R^C=P^C$, $P^C\\cup Q^C=U$일 때, 다음 중 항상 참인 명제는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "첫여집합등식은P⊆R. 이것만으로역방향r→p는보장하지않는다. 다음서로소조건에서정답q→¬p를얻는다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "첫여집합등식은P⊆R. 이것만으로역방향r→p는보장하지않는다. 다음서로소조건에서정답q→¬p를얻는다."
+  ]
+}

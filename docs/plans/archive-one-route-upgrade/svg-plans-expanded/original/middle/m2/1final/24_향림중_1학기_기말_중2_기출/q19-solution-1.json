@@ -1,0 +1,50 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력",
+        "elements": [
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "출력",
+        "elements": [
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "① 약수의개수는6의경우4개로하나. 일반적으로자연수가정해지면개수가유일하다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$의 함수인 것은? [4점] 보기: ['$y$는 자연수 $x$의 약수의 개수', '$y$는 자연수 $x$를 소인수분해 했을 때 소인수', '$y$는 자연수 $x$보다 작은 짝수', '$y$는 자연수 $x$의 배수', '$y$는 자연수 $x$보다 크거나 같고 $2x$보다 작은 정수']",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "① 약수의개수는6의경우4개로하나. 일반적으로자연수가정해지면개수가유일하다. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "① 약수의개수는6의경우4개로하나. 일반적으로자연수가정해지면개수가유일하다. 정답①."
+  ]
+}
