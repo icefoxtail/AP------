@@ -26,3 +26,11 @@
 - composite 패널 규칙은 `archive/tools/geometry-equation/production/composite-candidate-svg-v1.mjs`(벤 2~6, 평면도형 2~5 PLANE_FIGURE, 그래프 2패널, 다중곡선 정확히 2패널, 통계 2~4, 입체 2~6). 패널 제목은 한글·ASCII 16자 이내.
 - 렌더: 공장 render 도구는 `r.sh`(이 폴더)로 한 개씩. 렌더 슬롯은 공장과 공유하므로 한 번에 1개.
 - 표 작성 도구: `b68.js`가 batch68 작성 본보기(헬퍼 `pw()`로 구간별 다항 plan, `add()`로 등록, ALT 사전으로 alt).
+
+## 2026-11-18 중단 시점 (사용자 지시로 SVG 라인 멈춤)
+- batch68 결과: 매산여고 q20·제일고 q9는 UNSUPPORTED(끊어지는 조각함수 관측기가 비정수 x 필수점을 못 읽음, `PIECEWISE_POLY_EXACT_VALUE_INVALID`). 같은 조건의 다른 끊어지는 조각함수 플랜(예: 22 효천고 기말 고2 수학II q14)도 같은 공백일 수 있다.
+- caption/alt: 공백이 빠진 문장 약 630개는 공백만 복원했고, 한글–수식 사이 띄어쓰기는 전 플랜에 적용했다(`_tools`에 스크립트 없음, 규칙은 "한글 뒤 숫자·영문·√·|·−는 한 칸 띄움, 제·고·중·초+숫자는 제외").
+- b03 기준 반영 12문항 push 완료(4930d91dd7). 렌더 확인: q03, 심화 q4, 확인 q11, 순천여고 중간 q21, 순천고 q10·q11, 순천여고 q12·q19 ARCHIVE_BOUND.
+- 미렌더(편집만): 확인 q20(RESULT 줄 제거, 근호 2√2와 3이 가까워 `NUMBER_LINE_LABELS_TOO_CLOSE`였음), 금당고 기말 q09, 복성고 q11, 순천고 q17(q03과 같은 세로 점선 방식).
+- 미해결: 팔마고 기말 q21 실제 값 그래프(x 0~500, y −900~612는 `WORKER_TIMEOUT`; 정의역·눈금을 줄여 재시도), 20 매산여고 기말 고2 수학II q13(`referenceCurves`에 name/formula를 넣으면 `PIECEWISE_POLY_REFERENCE_CURVES_INVALID`; 이름 없이 callouts로 식 라벨 또는 `overlays.names` 시도). 두 문항은 옛 플랜 그대로다.
+- 미확인: 금당고 중간 q13(렌더 통과, 라벨은 plan에 있음), 매산여고 중간 q13(렌더 중 중단).
