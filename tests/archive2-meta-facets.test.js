@@ -640,7 +640,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261116-unit-source-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261117-examdata-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261117-reader-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');

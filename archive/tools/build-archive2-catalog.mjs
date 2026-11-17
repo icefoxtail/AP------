@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
+import examSourceReader from "../exam-source-reader.js";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import {
   buildMixedSourceShard,
@@ -361,12 +362,7 @@ for (const exam of exams) {
   const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(scope);
   vm.runInContext(source, scope, { filename: file, timeout: 3000 });
-  const bank = [
-    scope.window.questions,
-    scope.window.questionBank,
-    scope.window.questionBank?.questions,
-    scope.window.examData?.questions,
-  ].find(Array.isArray);
+  const bank = examSourceReader.readQuestionArray(scope.window);
   exam.identityTitle = scope.window.examTitle || file.split('/').pop().replace(/\.js$/,'');
   if (!Array.isArray(bank)) throw new Error("source bank unavailable: " + file);
   if (bank.length !== Number(exam.qCount))
