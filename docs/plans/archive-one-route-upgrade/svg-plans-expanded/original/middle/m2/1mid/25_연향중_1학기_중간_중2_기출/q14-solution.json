@@ -1,0 +1,58 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 1,
+      "height": 4
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 2
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "r"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "h"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom",
+      "label": "3r"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "\\frac{h}{2}"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 A / 오른쪽 B"
+  },
+  "caption": "두 원기둥을 같은 배율로 나란히 놓았다. 오른쪽 B는 반지름이 3r, 높이가 h/2이다. 이 도형은 h/r=4인 한 배치 예시이며 원문이 이 비율을 지정한 것은 아니다. 밑넓이에 반지름이 제곱으로 들어가고 높이는 한 번 곱해짐을 비교한 뒤, 문제에서 묻는 A의 부피가 B의 몇 배인지를 구한다. 최종 부피비는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 원기둥 A, B가 있다. 원기둥 B의 높이는 원기둥 A의 높이의 $\\frac{1}{2}$배이고, 원기둥 B의 밑면의 반지름의 길이는 원기둥 A의 밑면의 반지름의 길이의 3배이다. 이때 원기둥 A의 부피는 원기둥 B의 부피의 몇 배인지 구하면? [4점]",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "method",
+      "condition": "원본 전필드 자산참조0이며 발문만으로 두 원기둥의 비례조건이 완전하다. 반지름3배와 높이1/2배를 독립 비교하도록 같은 배율의 원기둥2개를 공식 입체계획으로 작성한다. r1,h4의 대표 비율을 택하되 수치는 표시하지 않고r/h/3r/h/2만 라벨로 보인다. h/r4는 배치 예시이며 원문 추가조건이나 일반증명의 근거가 아니다. 부피비는 반지름배율을 제곱한 뒤 높이배율을 곱해 구하고 마지막A/B역비2/9는 그림에 쓰지 않는다.",
+      "mappedTo": "dims"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 배율에서 반지름은 커지고 높이는 작아지는 두 독립 변화를 비교하며 반지름비와 부피비를 혼동하지 않게 한다."
+  ]
+}
