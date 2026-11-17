@@ -966,13 +966,19 @@ function specForFamily(plan,model,id){
         const point=required.find(other=>other.id===line.tangentAt);
         if(!point||!through.includes(line.tangentAt)||Math.abs(curveSlope(point.x)-m)>1e-9*Math.max(1,Math.abs(m)))throw Error('GRAPH_LINE_TANGENCY_FAIL:'+line.id);
       }
-      const lineId='line-'+line.id,labelId=lineId+'-equation',shared=header?.sharedLines.includes(line.id);if(!shared)lineLabels.push(labelId);
+      const lineId='line-'+line.id,labelId=lineId+'-equation',shared=header?.sharedLines.includes(line.id);
       objects.push({id:lineId,kind:'LINE',coefficients:[m,-1,q]});
       // A slope with a square root or several terms is bracketed before x; an intercept is appended as written (its own sign leads).
       const plainRational=/^-?\d+(?:\/\d+)?$/.test(line.slope);
       const slopeText=line.slope==='0'?'':line.slope==='1'?'x':line.slope==='-1'?'-x':plainRational?line.slope+'*x':'('+line.slope+')*x';
       const interceptText=line.intercept==='0'?(slopeText?'':'0'):line.intercept.startsWith('-')?line.intercept:(slopeText?'+':'')+line.intercept;
-      if(!shared)objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[(v[0]+v[1])/2,v[3]],priority:0});
+      if(!shared){
+        // The equation stands at the right end of its own line (a line label owned by its line: a free box beside it, else a leader to the line), not as a row of the header band.
+        const spanX=v[1]-v[0],spanY=v[3]-v[2],top=v[3]-spanY*.08,bottom=v[2]+spanY*.08;
+        let labelX=v[1]-spanX*.07,labelY=m*labelX+q+spanY*.07;
+        if(m!==0&&(labelY>top||labelY<bottom)){labelY=labelY>top?top:bottom;labelX=Math.min(Math.max((labelY-spanY*.07-q)/m,v[0]+spanX*.05),labelX);}
+        objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[labelX,labelY],priority:0,target:lineId,lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:'END'});
+      }
     }
     // The band rows (line equations first, then key point coordinates) extend the header band: two columns, 34 px rows; the canvas grows by as much.
     // Each line equation takes a whole row (it can be long); the key point coordinates follow in two columns, or one per row when any is long.
