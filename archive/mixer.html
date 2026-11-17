@@ -1978,11 +1978,15 @@ function fetchQuestionData(file) {
             // 동일한 top-level const/let 선언이 전역에서 충돌하지 않게 한다.
             delete window.questions;
             delete window.questionBank;
+            delete window.examData;
             const executeArchiveSource = new Function('window', 'document', source);
             executeArchiveSource(window, document);
-            const data = window.questions || window.questionBank;
+            const examData = window.examData;
+            const data = window.questions || window.questionBank
+                || (Array.isArray(examData) ? examData : examData?.questions || examData?.problems);
             delete window.questions;
             delete window.questionBank;
+            delete window.examData;
             if (!Array.isArray(data)) throw new Error('문항 배열이 없습니다.');
             return data;
         });

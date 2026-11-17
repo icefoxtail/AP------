@@ -246,7 +246,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": true,
-    "visualDisposition": "SOURCE_GRAPH_RECONSTRUCTED_FROM_SOURCE_PDF"
+    "visualDisposition": "SOURCE_GRAPH_RECONSTRUCTED_FROM_SOURCE_PDF",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 시각 t축에 1부터 9까지의 값이 표시되어 있고, 속도 v(t)의 그래프가 높이 4와 −4 사이를 오가며 t축을 여러 번 가로지르고, 몇 곳에서 값이 끊겨 있다.",
+    "solutionImageCaption": "그래프가 t축과 만나는 t=0, 2, 5, 9에서 속도의 부호가 바뀌므로 운동 방향은 두 번 바뀐다. 3초부터 8초까지 이동거리는 4+2+2+8=16이라 ㄴ은 거짓, v(1)=4와 v(3)=−4로 속력은 같고 7초 후 위치 변화가 2라 ㄹ도 거짓이므로 답은 ② ㄱ, ㄷ이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -688,7 +692,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: x축에 −2, −1, 1, 2가 표시된 좌표평면에 y=−x³−4x+3 곡선이 한 줄기로 그려져 있고, 곡선은 계속 내려가는 모양이다.",
+    "solutionImageCaption": "F(u)=−u³−4u+3은 F′(u)=−3u²−4<0이라 감소하므로 부등식은 g(x)≥f(x)와 같다. g(x)−f(x)=x³+x²−x+2=(x+2)(x²−x+1)이고 x²−x+1>0이므로 x≥−2, 최솟값은 −2이고 답은 ① −2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -920,6 +928,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": true,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간 0부터 3까지 그려진 곡선이 점 (0,5)에서 시작해 점 (2,1)까지 내려갔다가 점 (3,5)에서 끝나, 양 끝의 높이가 5로 같다.",
+    "solutionImageCaption": "f(x)=ax³+bx²+cx+d에서 극한 조건으로 d=5, c=0이고, 주기가 3인 함수가 경계에서 연속이려면 f(3)=f(0)이라 b=−3a이며, 두 극값의 곱 5(5−4a)=5에서 a=1이다. f(x)=x³−3x²+5이고 24=8·3이므로 8∫₀³f(x)dx=66, 답은 f(x)=x³−3x²+5, 66이다.",
+    "solutionImageSize": "full"
   }
 ];
