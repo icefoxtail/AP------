@@ -286,7 +286,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-027",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선 두 개가 위아래로 놓여 있고, 각 곡선의 왼쪽 꼬리 넓이가 같은 색으로 칠해져 있다. 위 패널에는 P(X≤130)=P(Z≤5/σ), 아래 패널에는 P(Y≥k)=P(Z≤(100−k)/(3σ))가 적혀 있고, 가로축 z의 1 위치에 경계선이 서 있다.",
+    "solutionImageCaption": "X를 표준화하면 P(X≤130)=P(Z≤5/σ)이고, Y의 오른쪽 확률은 대칭에 의해 P(Y≥k)=P(Z≤(100−k)/(3σ))인 왼쪽 누적확률과 같다. 두 경계가 같아야 하므로 5/σ=(100−k)/(3σ), 즉 100−k=15에서 k=85이다. 그림은 예: σ=5일 때 경계가 z=1인 경우이다. 따라서 답은 ② 85이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
