@@ -247,6 +247,7 @@
             let targetCol = cols[colIdx];
             targetCol.appendChild(shell);
             markSolutionPlacement(shell, false);
+            let primaryShell = true;
 
             for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
                 const chunk = preparedChunks[chunkIndex];
@@ -279,6 +280,26 @@
                     exp.appendChild(chunk);
                     if (deps.rendererMode() === 'legacy') await deps.raf();
                     else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                    primaryShell = false;
+                } else if (primaryShell) {
+                    // The first shell carries the question reminder, figures and answer, so its only
+                    // chunk can push the column over even though the header alone fits. Hand that one
+                    // chunk to a continuation shell instead of letting the column clip it.
+                    exp.removeChild(chunk);
+                    if (deps.rendererMode() === 'legacy') await deps.raf();
+                    if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                        targetCol = advanceColumn();
+                        shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                        exp = shell.querySelector('.sol-exp');
+                        targetCol.appendChild(shell);
+                        markSolutionPlacement(shell, true);
+                        exp.appendChild(chunk);
+                        if (deps.rendererMode() === 'legacy') await deps.raf();
+                        else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                        primaryShell = false;
+                    } else {
+                        exp.appendChild(chunk);
+                    }
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     deps.autoCompress(shell);

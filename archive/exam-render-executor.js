@@ -10,6 +10,29 @@
     // valid cold images before MathJax or any page measurement begins.
     const EXAM_IMAGE_TIMEOUT_MS = 15000;
 
+    const WIDE_FALLBACK_MAX_PASSES = 3;
+    const CLIP_TOLERANCE_PX = 3;
+
+    // Question boxes whose content is still cut off after every fit step. Same test as
+    // Archive2PdfReadiness.assertLayoutReady (clipping overflow + scroll size beyond client size + 3px),
+    // restricted to elements inside a question box. The readiness check itself is not changed.
+    function clippedQuestionBoxes(page) {
+        const view = page.ownerDocument?.defaultView || root;
+        const clipped = [];
+        page.querySelectorAll('.q-box').forEach(box => {
+            const hit = [box, ...box.querySelectorAll('*')].some(element => {
+                const tooTall = element.scrollHeight > element.clientHeight + CLIP_TOLERANCE_PX;
+                const tooWide = element.scrollWidth > element.clientWidth + CLIP_TOLERANCE_PX;
+                if (!tooTall && !tooWide) return false;
+                const style = view.getComputedStyle(element);
+                const clips = value => value === 'hidden' || value === 'clip';
+                return (tooWide && clips(style.overflowX)) || (tooTall && clips(style.overflowY));
+            });
+            if (hit) clipped.push(box);
+        });
+        return clipped;
+    }
+
     function usesEqualSlots(qpp, questions, deps) {
         const url = deps.engineUrl || root.location?.href || 'https://ap.invalid/';
         const params = new URL(url, 'https://ap.invalid/').searchParams;
@@ -19,7 +42,7 @@
         return root.APEqualSlotEngine.enabled(qpp, url, questions);
     }
 
-    function buildSlotPages(items, qpp) {
+    function buildSlotPages(items, qpp, forcedWide) {
         const rowCount = Math.max(1, Math.ceil(Number(qpp) / 2));
         const slotColumnCount = Number(qpp) === 1 ? 1 : 2;
         const spanFor = item => {
@@ -52,7 +75,7 @@
         };
         for (const item of items) {
             const tag = item.q.layoutTag || '';
-            if (tag === 'fullwidth') {
+            if (tag === 'fullwidth' || forcedWide?.has(item)) {
                 flushSlotPage();
                 slotPages.push({ wideItem: item });
                 continue;
@@ -169,19 +192,33 @@
         };
         if (deps.layoutPlannerMode?.() === 'authority') return deps.renderExamPlan({ area, items, usableHeight: usablePageHeight });
 
+        // A question that still overflows its slot at the smallest text/figure size must not stop the whole
+        // paper ("PDF readiness failed: content clipped"). It is moved to the existing wide layout (its own
+        // full-width page) and the paper is paginated again; questions that fit keep their placement.
+        const forcedWide = new Set();
+        const cloneItems = new WeakMap();
+        let builtPages = [];
+        const cloneFor = item => {
+            const clone = item.box.cloneNode(true);
+            cloneItems.set(clone, item);
+            return clone;
+        };
+        const trackPage = page => { builtPages.push(page); return page; };
+        const layoutPass = async () => {
+        pNum = 1;
         const usesSlotLayout = items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
         if (usesSlotLayout) {
             const rowCount = Math.max(1, Math.ceil(appState.qpp / 2));
             const slotColumnCount = Number(appState.qpp) === 1 ? 1 : 2;
-            const slotPages = buildSlotPages(items, appState.qpp);
+            const slotPages = buildSlotPages(items, appState.qpp, forcedWide);
 
             let slotPageNumber = 1;
             for (const slotPageData of slotPages) {
-                const page = deps.makePage(area, 'exam', slotPageNumber++);
+                const page = trackPage(deps.makePage(area, 'exam', slotPageNumber++));
                 if (slotPageData.wideItem) {
                     const wideCol = document.createElement('div');
                     wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                    wideCol.appendChild(slotPageData.wideItem.box.cloneNode(true));
+                    wideCol.appendChild(cloneFor(slotPageData.wideItem));
                     page.body.appendChild(wideCol);
                 } else {
                     const grid = document.createElement('div');
@@ -198,15 +235,15 @@
                     if (!hasSpecialPlacement) {
                         const ordered = slotPageData.placements.map(entry => entry.item);
                         const split = Math.ceil(ordered.length / 2);
-                        ordered.slice(0, split).forEach(item => columns[0].appendChild(item.box.cloneNode(true)));
-                        ordered.slice(split).forEach(item => columns[1]?.appendChild(item.box.cloneNode(true)));
+                        ordered.slice(0, split).forEach(item => columns[0].appendChild(cloneFor(item)));
+                        ordered.slice(split).forEach(item => columns[1]?.appendChild(cloneFor(item)));
                     } else {
                         for (let col = 0; col < slotColumnCount; col += 1) {
                             let row = 0;
                             while (row < rowCount) {
                                 const placement = slotPageData.placements.find(entry => entry.col === col && entry.row === row);
                                 if (placement) {
-                                    const clone = placement.item.box.cloneNode(true);
+                                    const clone = cloneFor(placement.item);
                                     clone.style.flex = `${placement.span} 1 0`;
                                     columns[col].appendChild(clone);
                                     row += placement.span;
@@ -266,7 +303,7 @@
             const layoutTag = item.q.layoutTag || '';
             let qType = 'normal';
             let limit = appState.qpp;
-            if (layoutTag === 'fullwidth') { qType = 'wide'; limit = 1; }
+            if (layoutTag === 'fullwidth' || forcedWide.has(item)) { qType = 'wide'; limit = 1; }
             else if (layoutTag === 'subjective-2up') { qType = 'subj2'; limit = 2; }
             else if (layoutTag === 'subjective-4up') { qType = 'subj4'; limit = 4; }
             const isSpecialType = ['subj2', 'subj4', 'wide'].includes(qType);
@@ -286,12 +323,12 @@
         if (currentPage.blocks.length > 0) pages.push(currentPage);
         for (let pIdx = 0; pIdx < pages.length; pIdx += 1) {
             const pageData = pages[pIdx];
-            const page = !firstPage ? (firstPage = deps.makePage(area, 'exam', pNum)) : deps.makePage(area, 'exam', ++pNum);
+            const page = !firstPage ? (firstPage = trackPage(deps.makePage(area, 'exam', pNum))) : trackPage(deps.makePage(area, 'exam', ++pNum));
             pageData.blocks.forEach((block, bIdx) => {
                 if (block.type === 'wide') {
                     const wideCol = document.createElement('div');
                     wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                    wideCol.appendChild(block.items[0].box.cloneNode(true));
+                    wideCol.appendChild(cloneFor(block.items[0]));
                     page.body.appendChild(wideCol);
                 } else {
                     const bGrid = document.createElement('div');
@@ -306,8 +343,8 @@
                     bGrid.appendChild(bRight);
                     page.body.appendChild(bGrid);
                     const split = Math.ceil(block.items.length / 2);
-                    block.items.slice(0, split).forEach(item => bLeft.appendChild(item.box.cloneNode(true)));
-                    block.items.slice(split).forEach(item => bRight.appendChild(item.box.cloneNode(true)));
+                    block.items.slice(0, split).forEach(item => bLeft.appendChild(cloneFor(item)));
+                    block.items.slice(split).forEach(item => bRight.appendChild(cloneFor(item)));
                 }
             });
             if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-page', [page]);
@@ -319,6 +356,21 @@
                 await deps.raf();
                 if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-page-overflow', [page]);
             }
+        }
+        return area;
+        };
+        for (let pass = 0; ; pass += 1) {
+            builtPages = [];
+            await layoutPass();
+            if (pass >= WIDE_FALLBACK_MAX_PASSES) break;
+            const overflowed = new Set();
+            builtPages.forEach(page => clippedQuestionBoxes(page).forEach(box => {
+                const item = cloneItems.get(box);
+                if (item && !forcedWide.has(item) && item.q.layoutTag !== 'fullwidth') overflowed.add(item);
+            }));
+            if (!overflowed.size) break;
+            overflowed.forEach(item => forcedWide.add(item));
+            builtPages.forEach(page => page.remove());
         }
         return area;
     }
