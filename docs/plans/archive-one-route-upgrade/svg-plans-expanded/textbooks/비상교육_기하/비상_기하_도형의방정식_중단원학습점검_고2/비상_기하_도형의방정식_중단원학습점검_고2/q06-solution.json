@@ -1,0 +1,124 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "OU",
+      "refs": [
+        "O",
+        "U"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "OV",
+      "refs": [
+        "O",
+        "V"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "방향벡터(3k,−5),(2k+1,k²)의내적=3k(2k+1)−5k²=k(k+3). k0 제외로k−3. 표시된두벡터(−9,−5),(−5,9)는해에서실제로수직이다. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다.",
+  "coordinateLabels": [
+    "O",
+    "U",
+    "V"
+  ],
+  "rightAngles": [
+    {
+      "id": "perp",
+      "refs": [
+        "U",
+        "O",
+        "V"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $l_1: \\frac{x-2}{3k}=\\frac{-y-1}{5}, l_2: \\frac{x+3}{2k+1}=\\frac{y-4}{k^2}$가 서로 수직일 때, 실수 $k$의 값을 구하시오. (단, $k \\ne 0, k \\ne -\\frac{1}{2}$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "방향벡터(3k,−5),(2k+1,k²)의내적=3k(2k+1)−5k²=k(k+3). k0 제외로k−3. 표시된두벡터(−9,−5),(−5,9)는해에서실제로수직이다. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "방향벡터(3k,−5),(2k+1,k²)의내적=3k(2k+1)−5k²=k(k+3). k0 제외로k−3. 표시된두벡터(−9,−5),(−5,9)는해에서실제로수직이다. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다."
+  ]
+}

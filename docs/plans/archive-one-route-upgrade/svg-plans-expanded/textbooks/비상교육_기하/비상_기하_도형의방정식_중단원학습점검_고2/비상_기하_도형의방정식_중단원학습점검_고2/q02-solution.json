@@ -1,0 +1,127 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "P",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "HP",
+      "refs": [
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "HN",
+      "refs": [
+        "H",
+        "N"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "평면의 법선 방향을 세로로 돌려 본 수직 단면의 개념도이다. H는 주어진 점,HP는 평면 안의 임의 방향으로서 법선n과 수직. 원문xyz좌표축이 아니다. ⑴3(x+4)+5(y−1)−2(z−2)=0→3x+5y−2z+11=0. ⑵기존평면과같은법선(4,−2,−5)을써 4x−2(y+3)−5(z−2)=0→4x−2y−5z+4=0. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "rightAngles": [
+    {
+      "id": "normal",
+      "refs": [
+        "P",
+        "H",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lHN",
+        "ownerSegment": "HN",
+        "text": "n"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 평면의 방정식을 구하시오.\n\n⑴ 점 $(-4, 1, 2)$를 지나고 법선벡터가 $\\vec{n}=(3, 5, -2)$인 평면\n⑵ 점 $(0, -3, 2)$를 지나고 평면 $4x-2y-5z+7=0$에 평행한 평면",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "평면의 법선 방향을 세로로 돌려 본 수직 단면의 개념도이다. H는 주어진 점,HP는 평면 안의 임의 방향으로서 법선n과 수직. 원문xyz좌표축이 아니다. ⑴3(x+4)+5(y−1)−2(z−2)=0→3x+5y−2z+11=0. ⑵기존평면과같은법선(4,−2,−5)을써 4x−2(y+3)−5(z−2)=0→4x−2y−5z+4=0. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평면의 법선 방향을 세로로 돌려 본 수직 단면의 개념도이다. H는 주어진 점,HP는 평면 안의 임의 방향으로서 법선n과 수직. 원문xyz좌표축이 아니다. ⑴3(x+4)+5(y−1)−2(z−2)=0→3x+5y−2z+11=0. ⑵기존평면과같은법선(4,−2,−5)을써 4x−2(y+3)−5(z−2)=0→4x−2y−5z+4=0. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

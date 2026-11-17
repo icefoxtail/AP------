@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2/3",
+          "-2/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1.5,
+      0.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "X",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "Y",
+        "x": "0",
+        "y": "-2/3"
+      }
+    ],
+    "formula": "-2*x/3 - 2/3",
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "U",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "V",
+          "x": "0",
+          "y": "-2/3"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "area",
+          "points": [
+            "O",
+            "U",
+            "V"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "0"
+      ],
+      "y": [
+        "-2/3",
+        "0"
+      ]
+    }
+  },
+  "caption": "앞 전체도의 동일 직선 2x+3y+2=0을 원점과 두 절편 근처에서 확대한다. 원래 정의역은 실수 전체이며 이 패널은 표시 구간만 발췌했다. 절편 (−1,0),(0,−2/3)과 O의 삼각형은 밑변 1, 높이 2/3이므로 넓이는 1/3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(5, -4)$를 지나고 방향벡터가 $\\vec{u}=(3, -2)$인 직선과 $x$축, $y$축으로 둘러싸인 도형의 넓이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "앞 전체도의 동일 직선 2x+3y+2=0을 원점과 두 절편 근처에서 확대한다. 원래 정의역은 실수 전체이며 이 패널은 표시 구간만 발췌했다. 절편 (−1,0),(0,−2/3)과 O의 삼각형은 밑변 1, 높이 2/3이므로 넓이는 1/3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "앞 전체도의 동일 직선 2x+3y+2=0을 원점과 두 절편 근처에서 확대한다. 원래 정의역은 실수 전체이며 이 패널은 표시 구간만 발췌했다. 절편 (−1,0),(0,−2/3)과 O의 삼각형은 밑변 1, 높이 2/3이므로 넓이는 1/3이다."
+  ]
+}

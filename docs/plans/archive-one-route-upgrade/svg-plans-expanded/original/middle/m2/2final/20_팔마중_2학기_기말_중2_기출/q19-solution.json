@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "5개 배열",
+        "elements": [
+          "120"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "묶음 내부",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "총경우",
+        "elements": [
+          "240"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "두여학생을한묶음으로보면남학생4명+묶음=5개,5!120. 묶음내부순서2를곱해240. 화살표는단계별계산연결이며사람대응함수로해석하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "남학생 4명, 여학생 2명을 한 줄로 세울 때, 여학생끼리 이웃하여 서는 경우의 수는? [5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

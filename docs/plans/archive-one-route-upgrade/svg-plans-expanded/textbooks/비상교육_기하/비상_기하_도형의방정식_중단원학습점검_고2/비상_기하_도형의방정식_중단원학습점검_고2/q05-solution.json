@@ -1,0 +1,113 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "caption": "공간직선의xy 정사영이다. 실제z는P0,Q1,B3. 매개변수x−1+2t,y1−3t,z3t에서xy평면z0은t0, zx평면y0은t1/3. 실제PQ=(2/3,−1,1)이므로 길이√22/3이며 화면의평면길이를정답으로쓰지않는다. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다.",
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $\\mathrm{A}(-1, 1, 0), \\mathrm{B}(1, -2, 3)$을 지나는 직선이 $xy$평면, $zx$평면과 만나는 두 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라고 할 때, 두 점 $\\mathrm{P}, \\mathrm{Q}$ 사이의 거리를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "공간직선의xy 정사영이다. 실제z는P0,Q1,B3. 매개변수x−1+2t,y1−3t,z3t에서xy평면z0은t0, zx평면y0은t1/3. 실제PQ=(2/3,−1,1)이므로 길이√22/3이며 화면의평면길이를정답으로쓰지않는다. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "공간직선의xy 정사영이다. 실제z는P0,Q1,B3. 매개변수x−1+2t,y1−3t,z3t에서xy평면z0은t0, zx평면y0은t1/3. 실제PQ=(2/3,−1,1)이므로 길이√22/3이며 화면의평면길이를정답으로쓰지않는다. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다."
+  ]
+}

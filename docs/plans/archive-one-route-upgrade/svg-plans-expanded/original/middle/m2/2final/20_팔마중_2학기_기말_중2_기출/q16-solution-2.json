@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      3,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "3",
+        "y": "6"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "5"
+      },
+      {
+        "id": "P2",
+        "x": "5",
+        "y": "4"
+      },
+      {
+        "id": "P3",
+        "x": "6",
+        "y": "3"
+      }
+    ],
+    "formula": "9-x"
+  },
+  "caption": "두눈합9의실제가능점은(3,6),(4,5),(5,4),(6,3) 네개. 선분은관계의보조연장이고정수점만주사위결과이다. 합5의4개와합9의4개는겹치지않아총8가지."
+}

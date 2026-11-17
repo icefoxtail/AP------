@@ -1,0 +1,97 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "일의 자리",
+        "elements": [
+          "0",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "백 자리 수",
+        "elements": [
+          "5",
+          "4"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "십 자리 수",
+        "elements": [
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "일의자리0이면백의자리5가지×십의자리4가지=20. 일의자리2/4각각백의자리4가지×십의자리4가지=16. 합20+16+16=52. 자릿수와0제외를순서대로구별하며같은개수값은별도선택사건이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 4. 0부터 5까지의 숫자가 각각 하나씩 적힌 6장의 카드 중에서 3장을 뽑아 세 자리 정수를 만들 때, 짝수의 개수를 구하고 그 과정을 설명하시오. [5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

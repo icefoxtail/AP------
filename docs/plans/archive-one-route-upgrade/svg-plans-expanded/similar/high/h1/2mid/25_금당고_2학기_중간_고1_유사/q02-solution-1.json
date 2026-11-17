@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      2,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x-10",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "-2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "given",
+          "slope": "-1/2",
+          "intercept": "3",
+          "style": "DASHED",
+          "label": "y=-x/2+3"
+        }
+      ]
+    }
+  },
+  "caption": "주어진직선과실제수직직선y2x−10,점(4,−2)을보존한다. 두기울기곱−1이며a2,b−10. 정답22.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=-\\dfrac12x+3$에 수직이고 점 $(4,-2)$를 지나는 직선의 방정식을 $y=ax+b$라 할 때, $a-2b$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "주어진직선과실제수직직선y2x−10,점(4,−2)을보존한다. 두기울기곱−1이며a2,b−10. 정답22.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진직선과실제수직직선y2x−10,점(4,−2)을보존한다. 두기울기곱−1이며a2,b−10. 정답22."
+  ]
+}

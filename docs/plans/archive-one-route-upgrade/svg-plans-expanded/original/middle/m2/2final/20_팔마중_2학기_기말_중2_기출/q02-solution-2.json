@@ -1,0 +1,30 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 12.0,
+      "height": 9.0
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "radius": "bottom"
+    },
+    {
+      "solid": "cone",
+      "slant": true
+    }
+  ],
+  "caption": "모선10:15=2:3. 큰반지름12에서작은반지름8,작은밑면둘레2π×8=16π. 이큰원뿔은실제반지름/모선을보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림에서 두 원뿔 A, B가 서로 닮은 도형이라고 한다. 원뿔 A의 밑면의 둘레의 길이는? [4점]",
+      "mappedTo": "solids"
+    }
+  ]
+}

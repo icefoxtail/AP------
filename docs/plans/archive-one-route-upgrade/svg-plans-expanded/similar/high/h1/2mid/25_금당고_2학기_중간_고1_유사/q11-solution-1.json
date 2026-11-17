@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-13",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "17",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "20",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "0",
+            "20"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "두교점은접선경계제외 |k−2|<15. 원문양의정수제한과교집합에서1..16의16개. k17접선은제외,정답16.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심이 $(-2,1)$이고 반지름의 길이가 $3$인 원과 직선 $3x+4y+k=0$이 두 점에서 만나도록 하는 양의 정수 $k$ $(1\\le k\\le20)$의 개수는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "두교점은접선경계제외 |k−2|<15. 원문양의정수제한과교집합에서1..16의16개. k17접선은제외,정답16.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "두교점은접선경계제외 |k−2|<15. 원문양의정수제한과교집합에서1..16의16개. k17접선은제외,정답16."
+  ]
+}

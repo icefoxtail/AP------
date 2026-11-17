@@ -1,0 +1,84 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "⑵ 공간직선의xy 정사영만 표시한다. 원래점(3,−2,4),방향(−1,5,2)이므로 t0→1에서 z4→6. 세성분관계 (x−3)/(−1)=(y+2)/5=(z−4)/2. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다.",
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 직선의 방정식을 구하시오.\n\n⑴ 점 $(4, -3)$을 지나고 벡터 $\\vec{u}=(-2, 5)$에 평행한 직선\n⑵ 점 $(3, -2, 4)$를 지나고 방향벡터가 $\\vec{u}=(-1, 5, 2)$인 직선\n⑶ 두 점 $(3, -5), (6, -6)$을 지나는 직선\n⑷ 점 $(3, 0, -2)$를 지나고 직선 $\\frac{1-x}{4}=\\frac{y+2}{2}=\\frac{z-7}{3}$에 평행한 직선",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴(4,−3)에서 방향(−2,5)를 더한(2,2)로 향한다. (x−4)/(−2)=(y+3)/5,즉y=7−5x/2. ⑶두점(3,−5),(6,−6)의차(3,−1)가 방향벡터. (x−3)/3=(y+5)/(−1). ⑵ 공간직선의xy 정사영만 표시한다. 원래점(3,−2,4),방향(−1,5,2)이므로 t0→1에서 z4→6. 세성분관계 (x−3)/(−1)=(y+2)/5=(z−4)/2. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다. ⑷ 공간직선의xy 정사영이다. (1−x)/4에서 x방향은−4임에주의. 원래점(3,0,−2),방향(−4,2,3)이므로t0→1에서z−2→1. 답 (x−3)/(−4)=y/2=(z+2)/3. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 공간직선의xy 정사영만 표시한다. 원래점(3,−2,4),방향(−1,5,2)이므로 t0→1에서 z4→6. 세성분관계 (x−3)/(−1)=(y+2)/5=(z−4)/2. 여기 좌표는 원문의 실제 성분이며 임의 배치가 아니다."
+  ]
+}

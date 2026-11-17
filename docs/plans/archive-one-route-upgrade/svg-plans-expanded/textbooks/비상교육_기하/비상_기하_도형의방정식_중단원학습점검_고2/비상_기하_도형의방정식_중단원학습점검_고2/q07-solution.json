@@ -1,0 +1,127 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "P",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "HP",
+      "refs": [
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "HN",
+      "refs": [
+        "H",
+        "N"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "caption": "법선방향을 세로로 돌려 본 AH 수직단면이다. H는 원문의(3,−2,−1), A는(−1,0,2)이며 표시좌표는원문xyz가아니다. AH=(4,−2,−3),평면내모든방향HP와수직이므로 4(x−3)−2(y+2)−3(z+1)=0. 정답4x−2y−3z−19=0. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "rightAngles": [
+    {
+      "id": "normal",
+      "refs": [
+        "P",
+        "H",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lHN",
+        "ownerSegment": "HN",
+        "text": "n"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $\\mathrm{A}(-1, 0, 2)$에서 평면 $\\alpha$에 내린 수선의 발을 $\\mathrm{H}(3, -2, -1)$이라고 할 때, 평면 $\\alpha$의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "법선방향을 세로로 돌려 본 AH 수직단면이다. H는 원문의(3,−2,−1), A는(−1,0,2)이며 표시좌표는원문xyz가아니다. AH=(4,−2,−3),평면내모든방향HP와수직이므로 4(x−3)−2(y+2)−3(z+1)=0. 정답4x−2y−3z−19=0. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "법선방향을 세로로 돌려 본 AH 수직단면이다. H는 원문의(3,−2,−1), A는(−1,0,2)이며 표시좌표는원문xyz가아니다. AH=(4,−2,−3),평면내모든방향HP와수직이므로 4(x−3)−2(y+2)−3(z+1)=0. 정답4x−2y−3z−19=0. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

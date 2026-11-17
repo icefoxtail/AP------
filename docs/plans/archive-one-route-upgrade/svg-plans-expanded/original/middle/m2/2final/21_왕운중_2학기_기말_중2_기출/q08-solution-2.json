@@ -1,0 +1,30 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 3.0,
+      "height": 6.0
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "radius": "bottom"
+    },
+    {
+      "solid": "cone",
+      "height": true
+    }
+  ],
+  "caption": "둘레비2:3은길이비2:3. 부피비8:27이라40×27/8=135,정답②. 이모형의반지름2/3·높이4/6은닮음만보이는정규화대표형이며표시모형의실제부피를40/135라고주장하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 두 원뿔 (가), (나)는 서로 닮은 도형이고 밑면의 둘레의 길이의 비가 2:3일 때, (가)의 부피가 40일 때 (나)의 부피를 구하면? [4점]",
+      "mappedTo": "solids"
+    }
+  ]
+}
