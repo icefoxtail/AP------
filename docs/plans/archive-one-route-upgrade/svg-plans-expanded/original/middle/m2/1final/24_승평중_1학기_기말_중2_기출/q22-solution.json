@@ -1,0 +1,151 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "전체 관계를 읽기 위한"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "20",
+                "10/29"
+              ],
+              "domain": [
+                "-60",
+                "1"
+              ],
+              "label": "Y=10X/29+20"
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "20",
+                "-10"
+              ],
+              "domain": [
+                "-1",
+                "3"
+              ],
+              "label": "Y=-10X+20"
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "-58",
+                "y": "0",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "P1",
+                "x": "0",
+                "y": "20",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "P2",
+                "x": "2",
+                "y": "0",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          },
+          "axisTitles": {
+            "x": "X",
+            "y": "Y"
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "A와C 부근 확대"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "1/29"
+              ],
+              "domain": [
+                "-2",
+                "3"
+              ]
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "-1"
+              ],
+              "domain": [
+                "-2",
+                "3"
+              ]
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "0",
+                "y": "0",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "P1",
+                "x": "0",
+                "y": "2",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "P2",
+                "x": "2",
+                "y": "0",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "전체 관계를 읽기 위한 세로확대: X=x,Y=10y. 실제 A(0,2)는 화면(0,20),B(−58,0),C(2,0)는 불변이다. 실제 밑변60·높이2/2=60이며 화면 높이20으로 넓이를 계산하지 않는다. b=2,a=1/29,ab=2/29. 두 곡선은 y=x/29+2와 y=−x+2의 동일 관계이고 다음 패널은 실제좌표의 A/C 확대다. A와C 부근 확대. 전체도 B(−58,0)는 화면 밖에 있으며 삭제된 꼭짓점이 아니다. A(0,2),C(2,0)과 b=2를 정확히 읽고,전체 밑변60에서 a=1/29,ab=2/29.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 두 일차함수 $y=ax+2$, $y=-x+b$의 그래프가 $y$축 위의 점 $A$에서 만나고, 두 일차함수의 그래프와 $x$축으로 둘러싸인 삼각형 $ABC$의 넓이가 60이다. 이때 두 상수 $a$, $b$에 대하여 $ab$의 값을 구하는 과정과 답을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 관계를 읽기 위한 세로확대: X=x,Y=10y. 실제 A(0,2)는 화면(0,20),B(−58,0),C(2,0)는 불변이다. 실제 밑변60·높이2/2=60이며 화면 높이20으로 넓이를 계산하지 않는다. b=2,a=1/29,ab=2/29. 두 곡선은 y=x/29+2와 y=−x+2의 동일 관계이고 다음 패널은 실제좌표의 A/C 확대다. A와C 부근 확대. 전체도 B(−58,0)는 화면 밖에 있으며 삭제된 꼭짓점이 아니다. A(0,2),C(2,0)과 b=2를 정확히 읽고,전체 밑변60에서 a=1/29,ab=2/29."
+  ]
+}

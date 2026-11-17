@@ -1,0 +1,110 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "약수의개수는6의경우4개로하나"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "입력",
+              "elements": [
+                "6"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "출력",
+              "elements": [
+                "4"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "는입력6에소인수2"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "입력",
+              "elements": [
+                "6"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "출력",
+              "elements": [
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "① 약수의개수는6의경우4개로하나. 일반적으로자연수가정해지면개수가유일하다. 정답①. ②는입력6에소인수2,3이동시에대응하므로함수가아니다. 다른보기도복수출력반례가능.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$의 함수인 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "① 약수의개수는6의경우4개로하나. 일반적으로자연수가정해지면개수가유일하다. 정답①. ②는입력6에소인수2,3이동시에대응하므로함수가아니다. 다른보기도복수출력반례가능."
+  ]
+}

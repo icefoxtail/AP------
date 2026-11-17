@@ -1,0 +1,251 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "모든두장조합10개를작은숫자큰숫"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "작은카드",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "큰카드",
+              "elements": [
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "일의자리인큰카드3또는5인6쌍만"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "A",
+              "name": "작은카드",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "B",
+              "name": "큰카드",
+              "elements": [
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "모든두장조합10개를작은숫자→큰숫자로한번씩연결. 10개중6개라3/5. 같은카드역순을별도경우로세지않는다. 일의자리인큰카드3또는5인6쌍만연결.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "≪서술형3≫ 숫자 1, 2, 3, 4, 5가 각각 적힌 5장의 카드가 있다.\n 이 중에서 두 장을 임의로 뽑아 카드에 적힌 숫자가 작은 것은 십의 자리, 큰 것은 일의 자리로 하는 두 자리 자연수를 만들었을 때,\n 그 수가 홀수일 확률을 구하시오. (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "모든두장조합10개를작은숫자→큰숫자로한번씩연결. 10개중6개라3/5. 같은카드역순을별도경우로세지않는다. 일의자리인큰카드3또는5인6쌍만연결."
+  ]
+}

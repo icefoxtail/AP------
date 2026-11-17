@@ -1,0 +1,124 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "의a0,b2이면수평선y2와(6"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "-1",
+                "1/2"
+              ],
+              "domain": [
+                "0",
+                "8"
+              ]
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "2",
+                "0"
+              ],
+              "domain": [
+                "0",
+                "8"
+              ]
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "6",
+                "y": "2",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "의a1,b2는기울기같고절편달라"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "-1",
+                "1/2"
+              ],
+              "domain": [
+                "0",
+                "8"
+              ]
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "-2",
+                "1/2"
+              ],
+              "domain": [
+                "0",
+                "8"
+              ]
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "0",
+                "y": "-1",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "P1",
+                "x": "0",
+                "y": "-2",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "④의a0,b−2이면수평선y2와(6,2)에서만난다. 해없다는설명이틀려정답④. ⑤의a−1,b2는기울기같고절편달라해없음. ③a−2,b4는첫식의2배라직선이완전히일치하여무수한해. 일치한선을두개로억지분리하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\begin{cases}-x+2y=-2\\\\ax+by=-4\\end{cases}$의 해에 대한 설명으로 옳지 않은 것은? (단, $b\\ne0$) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "④의a0,b−2이면수평선y2와(6,2)에서만난다. 해없다는설명이틀려정답④. ⑤의a−1,b2는기울기같고절편달라해없음. ③a−2,b4는첫식의2배라직선이완전히일치하여무수한해. 일치한선을두개로억지분리하지않는다."
+  ]
+}

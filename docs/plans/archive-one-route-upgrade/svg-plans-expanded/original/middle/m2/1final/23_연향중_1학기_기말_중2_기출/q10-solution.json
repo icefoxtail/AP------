@@ -1,0 +1,89 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "이패널절편은4/3"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "4/3",
+                "-2/3"
+              ]
+            }
+          ],
+          "domain": [
+            -1,
+            1
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "P0",
+              "x": "0",
+              "y": "4/3"
+            }
+          ],
+          "formula": "4/3 - 2*x/3"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "이패널절편은3/2"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3/2",
+                "-2/3"
+              ]
+            }
+          ],
+          "domain": [
+            -1,
+            1
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "P0",
+              "x": "0",
+              "y": "3/2"
+            }
+          ],
+          "formula": "3/2 - 2*x/3"
+        }
+      }
+    }
+  ],
+  "caption": "두선의기울기를−2/3으로맞추면a−4. 이패널절편은4/3이며다른패널의절편과달라평행하지만겹치지않는다. 절편차1/6을삭제하지않고패널분리로가독성을보존. 정답−4. 이패널절편은3/2이며다른패널의절편과달라평행하지만겹치지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $2x+3y-4=0$, $ax-6y+9=0$의 교점이 존재하지 않을 때, 상수 $a$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두선의기울기를−2/3으로맞추면a−4. 이패널절편은4/3이며다른패널의절편과달라평행하지만겹치지않는다. 절편차1/6을삭제하지않고패널분리로가독성을보존. 정답−4. 이패널절편은3/2이며다른패널의절편과달라평행하지만겹치지않는다."
+  ]
+}

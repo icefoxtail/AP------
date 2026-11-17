@@ -1,0 +1,426 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "왼쪽 직선만 따로 펴서"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "ab",
+              "ownerSegment": "AB",
+              "text": "4",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bc",
+              "ownerSegment": "BC",
+              "text": "8",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "wholeAC",
+              "from": "A",
+              "to": "C",
+              "label": "12",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "BAR",
+              "offset": 2,
+              "value": 12,
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "왼쪽의 12 cm는 ln"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-8"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "m",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "E"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "n",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "F"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "B",
+          "A",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "displayLines": [
+          "l",
+          "m",
+          "n"
+        ],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "ab",
+              "ownerSegment": "AB",
+              "text": "4",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bc",
+              "ownerSegment": "BC",
+              "text": "12-4=8",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "de",
+              "ownerSegment": "DE",
+              "text": "6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ef",
+              "ownerSegment": "EF",
+              "text": "x=12",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "왼쪽 직선만 따로 펴서 전체와 부분을 구별한다. AC=12 cm 전체에서 AB=4 cm를 빼면 BC=8 cm이다. 그다음 4:8=6:x를 적용하면 x=12 cm이다. 왼쪽의 12 cm는 l~n 전체 AC이다. 위 구간 AB=4 cm이므로 아래 구간 BC=12−4=8 cm이다. 세 직선 l∥m∥n에서 AB:BC=DE:EF, 즉 4:8=6:x. 따라서 정답 x=12 cm(①).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 $l\\parallel m\\parallel n$일 때, $x$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 직선만 따로 펴서 전체와 부분을 구별한다. AC=12 cm 전체에서 AB=4 cm를 빼면 BC=8 cm이다. 그다음 4:8=6:x를 적용하면 x=12 cm이다. 왼쪽의 12 cm는 l~n 전체 AC이다. 위 구간 AB=4 cm이므로 아래 구간 BC=12−4=8 cm이다. 세 직선 l∥m∥n에서 AB:BC=DE:EF, 즉 4:8=6:x. 따라서 정답 x=12 cm(①)."
+  ]
+}

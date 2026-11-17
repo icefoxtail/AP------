@@ -1,0 +1,167 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "차3인 순서쌍은 6"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "3",
+                "1"
+              ],
+              "domain": [
+                "1",
+                "3"
+              ],
+              "label": "y=x+3"
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "-3",
+                "1"
+              ],
+              "domain": [
+                "4",
+                "6"
+              ],
+              "label": "y=x-3"
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "1",
+                "y": "4",
+                "coordinates": true
+              },
+              {
+                "id": "P1",
+                "x": "2",
+                "y": "5",
+                "coordinates": true
+              },
+              {
+                "id": "P2",
+                "x": "3",
+                "y": "6",
+                "coordinates": true
+              },
+              {
+                "id": "P3",
+                "x": "4",
+                "y": "1",
+                "coordinates": true
+              },
+              {
+                "id": "P4",
+                "x": "5",
+                "y": "2",
+                "coordinates": true
+              },
+              {
+                "id": "P5",
+                "x": "6",
+                "y": "3",
+                "coordinates": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "차4인 순서쌍은 4"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "4",
+                "1"
+              ],
+              "domain": [
+                "1",
+                "2"
+              ],
+              "label": "y=x+4"
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "-4",
+                "1"
+              ],
+              "domain": [
+                "5",
+                "6"
+              ],
+              "label": "y=x-4"
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "1",
+                "y": "5",
+                "coordinates": true
+              },
+              {
+                "id": "P1",
+                "x": "2",
+                "y": "6",
+                "coordinates": true
+              },
+              {
+                "id": "P2",
+                "x": "5",
+                "y": "1",
+                "coordinates": true
+              },
+              {
+                "id": "P3",
+                "x": "6",
+                "y": "2",
+                "coordinates": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "눈의 차3인 순서쌍은 6개이며 두 주사위를 구별하므로 바꾼 순서도 센다. 차3의6개와 차4의4개는 겹치지 않아 총10가지. 연속선은 안내이며 1..6 정수점만 실제 결과이다. 눈의 차4인 순서쌍은 4개이며 두 주사위를 구별하므로 바꾼 순서도 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 차가 $3$ 또는 $4$가 되는 경우의 수를 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "눈의 차3인 순서쌍은 6개이며 두 주사위를 구별하므로 바꾼 순서도 센다. 차3의6개와 차4의4개는 겹치지 않아 총10가지. 연속선은 안내이며 1..6 정수점만 실제 결과이다. 눈의 차4인 순서쌍은 4개이며 두 주사위를 구별하므로 바꾼 순서도 센다."
+  ]
+}

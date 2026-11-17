@@ -1,0 +1,380 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "가정에서 BC=AD이고"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 440
+        },
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 21.80140948635181,
+              "noLabel": true,
+              "arcs": 1,
+              "equalGroup": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "angle1",
+              "refs": [
+                "C",
+                "A",
+                "D"
+              ],
+              "value": 21.80140948635181,
+              "noLabel": true,
+              "arcs": 1,
+              "equalGroup": 1,
+              "style": "ARC"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "sameSide",
+              "ownerSegment": "sDA",
+              "text": "AD=BC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "commonSide",
+              "ownerSegment": "sAC",
+              "text": "공통변 AC",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "SAS 합동으로 대응각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 440
+        },
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 41.63353933657021,
+              "noLabel": true,
+              "arcs": 1,
+              "equalGroup": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "angle1",
+              "refs": [
+                "D",
+                "C",
+                "A"
+              ],
+              "value": 41.63353933657021,
+              "noLabel": true,
+              "arcs": 1,
+              "equalGroup": 1,
+              "style": "ARC"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "가정에서 BC=AD이고 AD∥BC이므로 ∠ACB=∠CAD이다. 공통변 AC와 함께 두 변과 그 사이각이 같아 △ABC≡△CDA (SAS)이다. 빈칸 ㄷ은 AC이며 BD가 아니다. 정답 ③. SAS 합동으로 대응각 ∠BAC=∠DCA를 얻는다. AC를 가로지르는 엇각이 같아 AB∥CD이다. 이미 주어진 AD∥BC와 함께 두 쌍의 대변이 평행하여 평행사변형이다. ㄱ=AD, ㄴ=∠CAD, ㄷ=AC, ㄹ=∠DCA, ㅁ=CD이므로 옳지 않은 것은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "가정에서 BC=AD이고 AD∥BC이므로 ∠ACB=∠CAD이다. 공통변 AC와 함께 두 변과 그 사이각이 같아 △ABC≡△CDA (SAS)이다. 빈칸 ㄷ은 AC이며 BD가 아니다. 정답 ③. SAS 합동으로 대응각 ∠BAC=∠DCA를 얻는다. AC를 가로지르는 엇각이 같아 AB∥CD이다. 이미 주어진 AD∥BC와 함께 두 쌍의 대변이 평행하여 평행사변형이다. ㄱ=AD, ㄴ=∠CAD, ㄷ=AC, ㄹ=∠DCA, ㅁ=CD이므로 옳지 않은 것은 ③이다."
+  ]
+}

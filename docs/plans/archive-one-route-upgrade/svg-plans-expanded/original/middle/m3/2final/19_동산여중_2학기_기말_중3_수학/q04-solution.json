@@ -1,0 +1,356 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "특수각의 변 비132로"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "A",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenCA",
+              "ownerSegment": "CA",
+              "text": "sqrt(3)",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lenAB",
+              "ownerSegment": "AB",
+              "text": "2",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lenBC",
+              "ownerSegment": "BC",
+              "text": "1",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 30,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "angle1",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 60,
+              "arcs": 1,
+              "style": "ARC"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "45 삼각형에서 tan45=1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "A",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenCA",
+              "ownerSegment": "CA",
+              "text": "1",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lenAB",
+              "ownerSegment": "AB",
+              "text": "sqrt(2)",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lenBC",
+              "ownerSegment": "BC",
+              "text": "1",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 45,
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "angle1",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 45,
+              "arcs": 1,
+              "style": "ARC"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "특수각의 변 비1:√3:2로 tan30°=√3/3<√3=tan60°. sin60°−cos60°=(√3−1)/2≠0. sin90°+cos60°=3/2이다. 정답①,③. 45° 삼각형에서 tan45°=1,cos45°=√2/2로 서로 다르다. 별도로 0°의 단위원 점은(1,0)이므로 sin0°+cos0°=0+1=1. 이 패널은45° 관계를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "특수각의 변 비1:√3:2로 tan30°=√3/3<√3=tan60°. sin60°−cos60°=(√3−1)/2≠0. sin90°+cos60°=3/2이다. 정답①,③. 45° 삼각형에서 tan45°=1,cos45°=√2/2로 서로 다르다. 별도로 0°의 단위원 점은(1,0)이므로 sin0°+cos0°=0+1=1. 이 패널은45° 관계를 표시한다."
+  ]
+}

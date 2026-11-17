@@ -1,0 +1,99 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "f5=7/6"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "1/2",
+                "-1/3"
+              ]
+            }
+          ],
+          "domain": [
+            -2,
+            6
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "P0",
+              "x": "0",
+              "y": "1/2"
+            },
+            {
+              "id": "P1",
+              "x": "5",
+              "y": "-7/6"
+            }
+          ],
+          "formula": "1/2 - x/3"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "g(1)=3/2"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-6/5",
+                "3/10"
+              ]
+            }
+          ],
+          "domain": [
+            -2,
+            6
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "P0",
+              "x": "0",
+              "y": "-6/5"
+            },
+            {
+              "id": "P1",
+              "x": "-1",
+              "y": "-3/2"
+            }
+          ],
+          "formula": "3*x/10 - 6/5"
+        }
+      }
+    }
+  ],
+  "caption": "f5=−7/6를정확좌표로읽는다. 6f5+2g(−1)=−7−3=−10. 두함수/입력을분리해혼동을막는다. g(−1)=−3/2를정확좌표로읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-\\dfrac13x+\\dfrac12$, $g(x)=0.3x-1.2$에 대하여 $6f(5)+2g(-1)$의 값을 구하고 그 풀이 과정을 서술하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f5=−7/6를정확좌표로읽는다. 6f5+2g(−1)=−7−3=−10. 두함수/입력을분리해혼동을막는다. g(−1)=−3/2를정확좌표로읽는다."
+  ]
+}

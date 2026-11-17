@@ -1,0 +1,367 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "AC 전체가 8 cm이므로"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "36",
+                  "denominator": "5"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "27",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "CENTROID",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "E",
+          "A",
+          "C",
+          "G",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "EC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "BG",
+            "refs": [
+              "B",
+              "G"
+            ]
+          },
+          {
+            "id": "GE",
+            "refs": [
+              "G",
+              "E"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "ae",
+              "ownerSegment": "AE",
+              "text": "x=4",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ec",
+              "ownerSegment": "EC",
+              "text": "4",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bg",
+              "ownerSegment": "BG",
+              "text": "6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ge",
+              "ownerSegment": "GE",
+              "text": "y=3",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "wholeAC",
+              "from": "A",
+              "to": "C",
+              "label": "8",
+              "unit": "cm",
+              "side": "RIGHT",
+              "style": "BAR",
+              "offset": 2,
+              "value": 8,
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "중선 BE만 따로 펴서 본"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "B",
+                "E"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "mode": "INTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "E",
+          "G"
+        ],
+        "displaySegments": [
+          {
+            "id": "BG",
+            "refs": [
+              "B",
+              "G"
+            ]
+          },
+          {
+            "id": "GE",
+            "refs": [
+              "G",
+              "E"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "bg",
+              "ownerSegment": "BG",
+              "text": "6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ge",
+              "ownerSegment": "GE",
+              "text": "3",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "AC 전체가 8 cm이므로 중점 E에서 AE=EC=4 cm, 따라서 x=4이다. 무게중심 G는 BG:GE=2:1이므로 BG=6 cm에서 GE=y=3 cm이다. 정답 x+y=7(③). 중선 BE만 따로 펴서 본다. BG:GE=2:1이고 BG=6 cm이므로 같은 한 몫은 3 cm이다. 따라서 GE=y=3 cm, x+y=4+3=7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 점 $G$가 $\\triangle ABC$의 무게중심일 때,\n$x+y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "AC 전체가 8 cm이므로 중점 E에서 AE=EC=4 cm, 따라서 x=4이다. 무게중심 G는 BG:GE=2:1이므로 BG=6 cm에서 GE=y=3 cm이다. 정답 x+y=7(③). 중선 BE만 따로 펴서 본다. BG:GE=2:1이고 BG=6 cm이므로 같은 한 몫은 3 cm이다. 따라서 GE=y=3 cm, x+y=4+3=7."
+  ]
+}

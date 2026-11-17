@@ -1,0 +1,130 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원래y2x를위로4옮긴직선은y2"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "0",
+                "2"
+              ],
+              "domain": [
+                "-9",
+                "0"
+              ]
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "4",
+                "2"
+              ],
+              "domain": [
+                "-9",
+                "0"
+              ]
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "-6",
+                "y": "-8",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "P1",
+                "x": "-8",
+                "y": "-12",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "계수평면에서b=2a+4"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f0",
+              "kind": "LINE",
+              "coefficients": [
+                "4",
+                "2"
+              ],
+              "domain": [
+                "-9",
+                "0"
+              ],
+              "label": "b=2a+4"
+            },
+            {
+              "id": "f1",
+              "kind": "LINE",
+              "coefficients": [
+                "-2",
+                "1"
+              ],
+              "domain": [
+                "-9",
+                "0"
+              ],
+              "label": "b=a-2"
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "P0",
+                "x": "-6",
+                "y": "-8",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          },
+          "axisTitles": {
+            "x": "a",
+            "y": "b"
+          }
+        }
+      }
+    }
+  ],
+  "caption": "원래y2x를위로4옮긴직선은y2x+4. 실제두점(a,b)=(−6,−8),(b,2a)=(−8,−12)이새선위임을확인한다. 정답a−6,b−8. 계수평면에서b=2a+4,b=a−2를연립하여(a,b)=(−6,−8). 첫패널실제점의좌표평면과이패널의계수평면을구별한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=2x$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 그래프가 $(a,b)$, $(b,2a)$를 지날 때, $a,b$의 값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원래y2x를위로4옮긴직선은y2x+4. 실제두점(a,b)=(−6,−8),(b,2a)=(−8,−12)이새선위임을확인한다. 정답a−6,b−8. 계수평면에서b=2a+4,b=a−2를연립하여(a,b)=(−6,−8). 첫패널실제점의좌표평면과이패널의계수평면을구별한다."
+  ]
+}
