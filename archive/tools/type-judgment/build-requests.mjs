@@ -134,12 +134,16 @@ function bundleIndex(bundles) {
     ptAssign: new Map(bundles.ptAssign.map(r => [r.uid, r])), tplAssign: new Map(bundles.tplAssign.map(r => [r.uid, r])) };
 }
 
+export const STEP_MISMATCH_NOTE = /판정\s*step.{0,60}다르|근거 문장.{0,40}다르|원문과 다르|step.{0,30}원문.{0,10}다르/;
 // Decide the target PT/TPL of one result row. Returns { skip } or { pt, tpl, newPt?, newTpl?, ptOnly?, hints }.
 export function assignRow(ctx, bundleIdx, row) {
   const R = ctx.registry;
   const active = (map, key) => map.get(key)?.status === 'ACTIVE';
   const hints = { condition: [], cross: [] };
   if (row.decision === 'HOLD') return { skip: 'HOLD' };
+  // The bundle table can say the dots step sentence no longer matches the current source text: the type is then unconfirmed.
+  const bundleNote = bundleIdx.tplAssign.get(row.uid)?.note || bundleIdx.ptAssign.get(row.uid)?.note || '';
+  if (STEP_MISMATCH_NOTE.test(bundleNote)) return { skip: 'REVIEW_NEEDED', note: bundleNote };
   if (row.decision === 'PICK') {
     if (!active(R.problemTypes, row.pt)) return { skip: 'PT_NOT_ACTIVE' };
     let tpl = row.tpl || null, newTpl = null;
@@ -363,7 +367,7 @@ export function registryChangeRows(ctx, plan, evidenceRef) {
 // ---------------------------------------------------------------- main build
 export function buildAll({ ctx, resultRows, bundles, only = null, resultCommits = [], review = {} }) {
   const bundleIdx = bundleIndex(bundles);
-  const skipped = [], holds = [], conflicts = [], hints = [], ptOnly = [], duplicates = [];
+  const skipped = [], holds = [], conflicts = [], hints = [], ptOnly = [], duplicates = [], identityConflicts = [], reviewNeeded = [];
   const seen = new Set();
   const planned = [];
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam, no: row.no, reason, decision: row.decision, ...extra });
@@ -373,12 +377,16 @@ export function buildAll({ ctx, resultRows, bundles, only = null, resultCommits 
     const m = ctx.records.get(row.uid);
     if (only && normalizeExam(row.exam) !== only) continue;
     if (row.decision === 'HOLD') { holds.push({ uid: row.uid, exam: row.exam, no: row.no, note: row.note ?? null, step: row.step ?? null }); continue; }
+    // Canonical uid and source uid disagree (or the uid is unknown): the canonical uid must be repaired first.
+    if (/IDENTITY_CONFLICT/.test(String(row.note || '') + String(row.checkErrors || '')) || !m || normalizeExam(row.exam) !== normalizeExam(m.sourceArchiveFile)) {
+      identityConflicts.push({ uid: row.uid, exam: row.exam, no: row.no, decision: row.decision, pt: row.pt ?? null, tpl: row.tpl ?? null, check: row.check ?? null, note: row.note ?? null, canonicalKnown: Boolean(m) });
+      skip(row, 'IDENTITY_CONFLICT'); continue;
+    }
     const target = assignRow(ctx, bundleIdx, row);
+    if (target.skip === 'REVIEW_NEEDED') { reviewNeeded.push({ uid: row.uid, exam: row.exam, no: row.no, pt: row.pt ?? null, step: row.step ?? null, bundleNote: target.note }); skip(row, 'REVIEW_NEEDED'); continue; }
     if (target.skip) { skip(row, target.skip); continue; }
     if (target.hints && (target.hints.condition.length || target.hints.cross.length))
       hints.push({ uid: row.uid, conditionHints: target.hints.condition, crossConceptHints: target.hints.cross });
-    if (!m) { skip(row, 'NOT_IN_CANONICAL_METADATA'); continue; }
-    if (normalizeExam(row.exam) !== normalizeExam(m.sourceArchiveFile)) { skip(row, 'EXAM_PATH_MISMATCH'); continue; }
     if (target.ptOnly) { ptOnly.push({ uid: row.uid, exam: row.exam, no: row.no, pt: target.pt, reason: target.reason }); }
     const hasType = Boolean(m.problemTypeKey || m.templateKey);
     if (hasType && isApprovedRow(m)) {
@@ -412,7 +420,7 @@ export function buildAll({ ctx, resultRows, bundles, only = null, resultCommits 
     newTemplates: [...plan.newTpl].filter(([k, e]) => !plan.blocked.has(k) && !plan.blocked.has(e.pt)).sort((a, b) => a[0].localeCompare(b[0], 'en')).map(([key, e]) => ({ key, parent: e.pt, nameKo: e.nameKo, definition: e.definition, bundle: e.bundle, kind: e.kind, questionUidCount: new Set(e.uids).size, exampleUids: [...new Set(e.uids)].sort().slice(0, 5) })),
     newBindingCount: plan.bindings.size, packScopeAdditions: Object.fromEntries([...plan.packScope].map(([k, v]) => [k, { curricula: [...v.curricula], courses: [...v.courses] }]))
   };
-  return { plan, planned: final, skipped, holds, conflicts, hints, ptOnly, duplicates, keysEvidence, bundleIdx };
+  return { plan, planned: final, skipped, holds, conflicts, hints, ptOnly, duplicates, identityConflicts, reviewNeeded, keysEvidence, bundleIdx };
 }
 
 // Groups planned rows by exam and builds one request per exam (PARTIAL_UIDS), or only the exams in `exams`.
@@ -468,13 +476,15 @@ export function summarize({ built, requestsInfo }) {
     newPtKeys: built.keysEvidence.newProblemTypes.length,
     newTplKeys: built.keysEvidence.newTemplates.length,
     newBindings: built.keysEvidence.newBindingCount,
+    newBindingsOnExistingKeys: [...built.plan.bindings.values()].filter(b => !built.plan.newPt.has(b.pt)).length,
+    newBindingsOnPackScopeGap: [...built.plan.bindings.values()].filter(b => built.plan.packScope.has(b.owner)).length,
     packScopeAdditions: built.keysEvidence.packScopeAdditions,
     keyCollisions: built.plan.collisions,
     packUndecided: built.plan.undecidedPack,
     emptyDefaultsFilled: defaulted,
     skippedByFirstReason: countBy(skipped, r => r.reason),
     skippedByAnyReason: skipped.flatMap(r => r.all || [r.reason]).reduce((m, k) => { m[k] = (m[k] || 0) + 1; return m; }, {}),
-    holds: built.holds.length, conflictsWithApproved: built.conflicts.length,
+    holds: built.holds.length, conflictsWithApproved: built.conflicts.length, identityConflicts: built.identityConflicts.length, reviewNeeded: built.reviewNeeded.length,
     hintRows: built.hints.length, duplicateUids: built.duplicates.length,
     ...sharedChangeStats(requestsInfo.requests)
   };
@@ -520,12 +530,16 @@ export function writeOutputs(outDir, { built, requestsInfo, summary, links }) {
   for (const [rel, content] of requestsInfo.files) put(`repo-files/${rel}`, content);
   put('registry-changes.json', json(requestsInfo.allChanges.map(c => ({ pack: c.pack, ...c.change }))));
   put('holds.jsonl', lines(built.holds)); put('conflicts-approved.jsonl', lines(built.conflicts));
+  put('identity-conflict.jsonl', lines(built.identityConflicts)); put('review-needed.jsonl', lines(built.reviewNeeded));
   put('hints.jsonl', lines(built.hints)); put('skipped.jsonl', lines(built.skipped)); put('pt-only.jsonl', lines(built.ptOnly));
   put('bundle-links.json', json(links)); put('summary.json', json(summary));
 }
 
 // ---------------------------------------------------------------- CLI
 const here = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+// Defaults pinned by the coordinator 2026-11-17. The high-school table stays a branch name because dots keeps adding rows to it.
+export const DEFAULT_RESULTS = Object.freeze(['52d2699b5ce8463fa9446e87a811863a275a3ab8', 'origin/data/type-judgment-d-20261116', 'e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d']);
+export const DEFAULT_BUNDLES = 'f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692';
 export function parseCli(argv) {
   const args = { results: [], out: null, exam: null, root: here, bundles: null, mainRef: null, tag: null, passCount: 2, approval: 'REVIEW2', registryMode: 'per-exam', relax: [], resultsDir: [], bundlesDir: null };
   for (let i = 0; i < argv.length; i++) {
@@ -548,7 +562,9 @@ export function parseCli(argv) {
   return args;
 }
 export function run(args) {
-  const sources = [...args.results.map(ref => ({ ref })), ...args.resultsDir.map(dir => ({ dir }))];
+  const useDefaults = !args.results.length && !args.resultsDir.length && !args.bundles && !args.bundlesDir;
+  const sources = [...(useDefaults ? DEFAULT_RESULTS : args.results).map(ref => ({ ref })), ...args.resultsDir.map(dir => ({ dir }))];
+  if (useDefaults) args.bundles = DEFAULT_BUNDLES;
   if (!sources.length || !(args.bundles || args.bundlesDir)) throw new Error('RESULTS_AND_BUNDLES_REQUIRED');
   const ctx = loadRepoContext(args.root, { mainRef: args.mainRef });
   ctx.relax = new Set(args.relax || []);

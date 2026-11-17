@@ -158,3 +158,15 @@ test('helpers: jsonl parsing, exam path normalization, course-to-pack table poin
   const active = new Set(index.activePacks.filter(p => p.status === 'ACTIVE').map(p => p.id));
   for (const pack of Object.values(COURSE_PACK)) assert.ok(active.has(pack), `COURSE_PACK target must be an ACTIVE pack: ${pack}`);
 });
+
+test('identity conflicts and step-mismatch notes are listed, never requested', () => {
+  const { ctx, bundles } = ctxFixture();
+  bundles.tplAssign.push({ uid: 'u1', pt: 'PT_EXISTING', bundle: null, note: '기존 판정 step의 내용과 다르다' });
+  const rows = [...rowsFor(), dots('u7', { decision: 'PICK', pt: 'PT_EXISTING', tpl: 'TPL_EXISTING', note: 'actual readExam 오류: CANONICAL_IDENTITY_CONFLICT:1' }),
+    dots('unknown-uid', { decision: 'PICK', pt: 'PT_EXISTING', tpl: 'TPL_EXISTING' })];
+  const built = buildAll({ ctx, resultRows: rows, bundles });
+  const requested = new Set(buildRequests({ ctx, built, tag: 'unit', approvedBy: 'test' }).requests.flatMap(r => r.items.map(i => i.questionUid)));
+  assert.deepEqual(built.reviewNeeded.map(r => r.uid), ['u1']);
+  assert.deepEqual(built.identityConflicts.map(r => r.uid).sort(), ['u7', 'unknown-uid']);
+  for (const uid of ['u1', 'u7', 'unknown-uid']) assert.ok(!requested.has(uid));
+});
