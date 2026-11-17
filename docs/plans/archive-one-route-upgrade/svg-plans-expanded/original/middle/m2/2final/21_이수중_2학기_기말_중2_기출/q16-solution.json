@@ -1,0 +1,124 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "five",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "label": "x+y=5"
+      },
+      {
+        "id": "eight",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "x+y=8"
+      }
+    ],
+    "viewport": [
+      0,
+      7,
+      0,
+      7
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "P3",
+          "x": "4",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "P4",
+          "x": "2",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "P5",
+          "x": "3",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "P6",
+          "x": "4",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P7",
+          "x": "5",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P8",
+          "x": "6",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  },
+  "caption": "가로는 주사위 A, 세로는 B의 눈이다. 두 합의 조건을 만족하는 정수점만 표시했다. 합5의4점과 합8의5점은 겹치지 않아9/36=1/4. 연속 선분은 관계 안내이며 정수점만 실제 결과이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 개의 주사위 $A$, $B$를 동시에 던질 때 나오는 눈의 수의 합이 5 또는 8일 확률을 구하면? (4점)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

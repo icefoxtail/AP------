@@ -1,0 +1,57 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "9",
+      "2"
+    ],
+    "denominator": [
+      "3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -1,
+      4,
+      2,
+      4
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점근선으로 a=3,b=2. 실제 제한구간 0≤x≤3에서 y=2+3/(x+3)는 감소하여 (0,3)이 최대,(3,5/2)가 최소이다. 곡선의 일반 정의역과 문제의 제한구간을 구별하며 정답11/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=\\dfrac{bx+9}{x+a}$의 그래프의 점근선의 방정식이 $x=-3$, $y=2$일 때, $0\\le x\\le3$에서 이 함수의 최댓값과 최솟값의 합은? (단, $a$, $b$는 상수이다.) [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "점근선으로 a=3,b=2. 실제 제한구간 0≤x≤3에서 y=2+3/(x+3)는 감소하여 (0,3)이 최대,(3,5/2)가 최소이다. 곡선의 일반 정의역과 문제의 제한구간을 구별하며 정답11/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선으로 a=3,b=2. 실제 제한구간 0≤x≤3에서 y=2+3/(x+3)는 감소하여 (0,3)이 최대,(3,5/2)가 최소이다. 곡선의 일반 정의역과 문제의 제한구간을 구별하며 정답11/2."
+  ]
+}

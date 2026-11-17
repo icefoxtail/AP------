@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "2"
+    ],
+    "sign": -1,
+    "offset": "4",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -1,
+      5
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 2
+      }
+    ]
+  },
+  "caption": "이동 후 시작점(−3,4),점(−1,2)이다. x대신x+3, y방향+4이므로 y=−√(2x+6)+4. 정의역x≥−3,치역y≤4, 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=-\\sqrt{2x}$를 $x$축으로 $-3$만큼, $y$축으로 $4$만큼 평행이동한 함수는? [3.5점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "이동 후 시작점(−3,4),점(−1,2)이다. x대신x+3, y방향+4이므로 y=−√(2x+6)+4. 정의역x≥−3,치역y≤4, 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "이동 후 시작점(−3,4),점(−1,2)이다. x대신x+3, y방향+4이므로 y=−√(2x+6)+4. 정의역x≥−3,치역y≤4, 정답①."
+  ]
+}

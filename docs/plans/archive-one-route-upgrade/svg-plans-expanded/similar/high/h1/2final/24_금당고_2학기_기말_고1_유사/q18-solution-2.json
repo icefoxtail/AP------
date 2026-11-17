@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "3",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -2,
+      6
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 2
+      }
+    ]
+  },
+  "caption": "경계 비교 y=√(x+3), 시작점(−3,0). 일반적으로 u=y≥0,u≠1이면 K(u)=1+4/(u−1)−u². 0≤u<1에서는 감소하며 값범위k≤−3, u>1에서는 감소하며 모든 실수k를 한 번씩 갖는다. 따라서 두 점은k≤−3. 이 패널만으로 일반성을 주장하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<단답형 1> 두 함수 $y=\\dfrac{x+3}{x-1}$, $y=\\sqrt{x-k}$의 그래프가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오. [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "경계 비교 y=√(x+3), 시작점(−3,0). 일반적으로 u=y≥0,u≠1이면 K(u)=1+4/(u−1)−u². 0≤u<1에서는 감소하며 값범위k≤−3, u>1에서는 감소하며 모든 실수k를 한 번씩 갖는다. 따라서 두 점은k≤−3. 이 패널만으로 일반성을 주장하지 않는다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "경계 비교 y=√(x+3), 시작점(−3,0). 일반적으로 u=y≥0,u≠1이면 K(u)=1+4/(u−1)−u². 0≤u<1에서는 감소하며 값범위k≤−3, u>1에서는 감소하며 모든 실수k를 한 번씩 갖는다. 따라서 두 점은k≤−3. 이 패널만으로 일반성을 주장하지 않는다."
+  ]
+}

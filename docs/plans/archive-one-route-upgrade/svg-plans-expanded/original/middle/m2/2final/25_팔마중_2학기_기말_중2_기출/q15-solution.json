@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "5/2",
+          "11/2"
+        ],
+        "label": "y=2x-5"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "label": "y=6"
+      }
+    ],
+    "viewport": [
+      0,
+      7,
+      0,
+      7
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  },
+  "caption": "주사위눈은1..6의정수이다. y=2x−5에서해당정수점(3,1),(4,3),(5,5)만표시,총3가지. 수평선6은눈의범위안내선이며연속직선전체가표본공간은아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 개의 주사위 $A,B$를 동시에 던져 $A$에서 나온 눈의 수를 $x$, $B$에서 나온 눈의 수를 $y$라 할 때, $2x-y=5$를 만족시키는 경우의 수는? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "네 묶음",
+        "elements": [
+          "남1",
+          "남2",
+          "남3",
+          "여여"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "묶음 배열",
+        "elements": [
+          "24"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "내부 순서",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "유리한 수",
+        "elements": [
+          "48"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "여학생 둘을 여여 한 묶음으로 보는 계산 흐름이다. 네 묶음 배열4!=24, 내부 여학생 순서2!=2를 곱하여48. 전체5!=120과 비교하면48/120=2/5. 화살표는 함수가 아닌 계산 단계 연결이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "남학생 3명과 여학생 2명을 한 줄로 세울 때, 여학생 2명이 서로 이웃할 확률을 구하면? (5점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

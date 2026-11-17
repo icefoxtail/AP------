@@ -1,0 +1,107 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫 원판",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "둘째 원판",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 6
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 7
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "합5의세쌍(2,3),(3,2),(4,1)과합9의세쌍(6,3),(7,2),(8,1)만화살표로표시했다. 서로겹치지않으므로경우의수6. 원판의전체24가지중조건에맞는것만연결한관계이며전체결과가6개라는뜻은아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음 그림과 같이 8등분, 3등분된 서로 다른 두 개의 원판에 각각 1부터 8까지, 1부터 3까지의 자연수가 적혀 있다. 두 원판을 돌린 후 멈추었을 때, 두 원판의 각 바늘이 가리킨 수의 합이 5 또는 9인 경우의 수를 풀이과정과 함께 쓰시오. (단, 바늘이 경계선을 가리키는 경우는 생각하지 않는다.) [부분점수 있음, 5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

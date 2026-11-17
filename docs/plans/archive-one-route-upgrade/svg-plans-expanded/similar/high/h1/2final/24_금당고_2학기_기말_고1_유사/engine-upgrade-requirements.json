@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "ENGINE_UPGRADE_REQUIREMENTS_v1",
+  "sourceCommit": "35f3023d736d4785de04846605ed5bbbb315425e",
+  "sourceBlobSha": "80f7180b04266bca5f9ee3a493b47455f1e57738",
+  "requirements": [
+    {
+      "question": 18,
+      "status": "ENGINE_UPGRADE_REQUIRED",
+      "executable": false,
+      "need": "K(u)=1+4/(u−1)−u²의 두 실제 정의역 0≤u<1 및 u>1을 분리하여 단조감소와 값범위를 같은 k척도로 표시",
+      "exactFunction": {
+        "numerator": [
+          "3",
+          "1",
+          "1",
+          "-1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ]
+      },
+      "currentLimitation": "현재 rational-spike-v1의 분자는 상수 또는 일차만 허용한다. 삼차분자를 지원하는 척 실행 계획으로 넣지 않는다.",
+      "preservedExecutableHelp": [
+        "q18-solution-1.json",
+        "q18-solution-2.json",
+        "q18-solution-3.json"
+      ],
+      "requiredFeatures": [
+        "u=0의 닫힌 점(0,−3)",
+        "u=1 제외 및 양쪽 극한",
+        "각 가지의 정확한 단조감소와 값범위",
+        "k≤−3에서 각 가지 하나씩,정답 포함"
+      ],
+      "actualRender": "NOT_RUN"
+    }
+  ]
+}

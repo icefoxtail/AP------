@@ -1,0 +1,64 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-5",
+      "3"
+    ],
+    "amplitude": "1",
+    "sign": 1,
+    "offset": "1",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -10,
+      10
+    ],
+    "viewport": [
+      -10,
+      10,
+      -10,
+      10
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "증가함수와역함수의교점은y=x위에있다. √(3x−5)+1=x에서x≥1과x²−5x+6=0을만족해x2,3. P(2,2),Q(3,3)이고거리√2. 이패널은원함수와대칭선. 정답√2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\sqrt{3x-5}+1$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 만나는 두 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 할 때, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "증가함수와역함수의교점은y=x위에있다. √(3x−5)+1=x에서x≥1과x²−5x+6=0을만족해x2,3. P(2,2),Q(3,3)이고거리√2. 이패널은원함수와대칭선. 정답√2. 역함수는y=((x−1)²+5)/3이고정의역x≥1. 이패널곡선은식의보조연장이므로세로선x1의오른쪽만역함수로읽는다. y=x와의교점(2,2),(3,3)을앞패널과비교. 두점거리√((3−2)²+(3−2)²)=√2. 정답√2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "증가함수와역함수의교점은y=x위에있다. √(3x−5)+1=x에서x≥1과x²−5x+6=0을만족해x2,3. P(2,2),Q(3,3)이고거리√2. 이패널은원함수와대칭선. 정답√2."
+  ]
+}

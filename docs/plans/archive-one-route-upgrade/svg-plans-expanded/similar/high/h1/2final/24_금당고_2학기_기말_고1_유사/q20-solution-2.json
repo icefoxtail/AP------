@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "21/4",
+          "-3/2",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      7,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-3)^2/4+3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "7",
+        "y": "7"
+      },
+      {
+        "id": "C",
+        "x": "11",
+        "y": "19"
+      }
+    ]
+  },
+  "caption": "g의 둘째 가지는 x≥7에서 (x−3)²/4+3이다. 7..11은 표시창이며 원식 허용영역은7이상으로 계속된다. 이 다항식 자체의 보조 연장과 실제g의 정의역을 구별한다. (7,7)에서 앞 가지와 만나고 (11,19)로 최종정답19.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서·논술형 1> 함수 $f(x)=\\sqrt{ax-12}+3$ $(a\\ge4)$에 대하여 집합 $\\left\\{x\\,\\middle|\\,x\\ge\\dfrac{12}{a}\\right\\}$에서 정의된 함수<br>$g(x)=\\begin{cases}f(x)&(f(x)\\ge f^{-1}(x)\\text{인 경우})\\\\f^{-1}(x)&(f(x)<f^{-1}(x)\\text{인 경우})\\end{cases}$<br>가 있다. 실수 $t$ $(t\\ge0)$에 대하여 함수 $y=g(x)$의 그래프와 직선 $y=x+t$가 만나는 서로 다른 점의 개수를 $h(t)$라 하자. $h(t)=2$를 만족하는 $t$가 $t=0$, $t=1$일 때, $g(11)$의 값을 풀이과정과 함께 상세하게 서술하시오. (단, $a$는 상수이다.) [10점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "g의 둘째 가지는 x≥7에서 (x−3)²/4+3이다. 7..11은 표시창이며 원식 허용영역은7이상으로 계속된다. 이 다항식 자체의 보조 연장과 실제g의 정의역을 구별한다. (7,7)에서 앞 가지와 만나고 (11,19)로 최종정답19.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "g의 둘째 가지는 x≥7에서 (x−3)²/4+3이다. 7..11은 표시창이며 원식 허용영역은7이상으로 계속된다. 이 다항식 자체의 보조 연장과 실제g의 정의역을 구별한다. (7,7)에서 앞 가지와 만나고 (11,19)로 최종정답19."
+  ]
+}

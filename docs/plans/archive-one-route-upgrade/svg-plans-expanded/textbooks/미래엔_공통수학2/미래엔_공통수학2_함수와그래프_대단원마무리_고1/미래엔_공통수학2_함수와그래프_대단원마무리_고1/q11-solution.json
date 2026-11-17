@@ -1,0 +1,80 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "39/4",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      10
+    ],
+    "viewport": [
+      -4,
+      10,
+      -4,
+      10
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "8"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "13/2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "3/2",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "area",
+          "points": [
+            "O",
+            "P",
+            "Q"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "원본의P는오른쪽,Q는왼쪽교점이다. 두x좌표합8,차를d라하면삼각형OPQ넓이4d=20이라d5. xP13/2,xQ3/2,두근곱k39/4. 실제P(13/2,3/2),Q(3/2,13/2)를직선y−x+8과함께보인다. 정답39/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 함수 $y=\\dfrac{k}{x}\\;(k>0)$의 그래프가 직선 $y=-x+8$과 두 점 $\\mathrm{P},\\, \\mathrm{Q}$에서 만난다. 삼각형 $\\mathrm{OPQ}$의 넓이가 $20$일 때, 상수 $k$의 값을 구하시오. (단, $\\mathrm{O}$는 원점)\n<img src=\"q11.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본의P는오른쪽,Q는왼쪽교점이다. 두x좌표합8,차를d라하면삼각형OPQ넓이4d=20이라d5. xP13/2,xQ3/2,두근곱k39/4. 실제P(13/2,3/2),Q(3/2,13/2)를직선y−x+8과함께보인다. 정답39/4.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의P는오른쪽,Q는왼쪽교점이다. 두x좌표합8,차를d라하면삼각형OPQ넓이4d=20이라d5. xP13/2,xQ3/2,두근곱k39/4. 실제P(13/2,3/2),Q(3/2,13/2)를직선y−x+8과함께보인다. 정답39/4."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "g",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "다른 역합성식은3→g(3)=2→f(2)=b2이다. 순서를 바꾸면 중간값과 최종값이 달라진다. 정답 a4+b2=6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(x)=\\dfrac{2}{x-1}$, $g(x)=\\dfrac{x+3}{x}$이고, $(f^{-1}\\circ g^{-1})(a)=3$, $(g^{-1}\\circ f^{-1})(b)=3$일 때, $a+b$의 값은? [4.7점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "다른 역합성식은3→g(3)=2→f(2)=b2이다. 순서를 바꾸면 중간값과 최종값이 달라진다. 정답 a4+b2=6.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "다른 역합성식은3→g(3)=2→f(2)=b2이다. 순서를 바꾸면 중간값과 최종값이 달라진다. 정답 a4+b2=6."
+  ]
+}

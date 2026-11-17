@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^2/2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "8"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "chord",
+          "slope": "2",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=2x"
+        }
+      ]
+    }
+  },
+  "caption": "오른쪽 호 O(0,0)→A(4,8)와 현 OA 사이의 넓이를 S1이라 한다. 원점을 중심으로90도 회전하면 (x,x²/2)→(−x²/2,x)여서 다음 왼쪽 호와 겹친다. 표시호만 제한했으며 전체 양의 가지는 계속된다. 정답40.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}\\dfrac{1}{2}x^2&(x\\ge0)\\\\\\sqrt{-2x}&(x<0)\\end{cases}$의 그래프와 직선 $x-3y+20=0$이 두 점 $A(4,8)$, $B(-8,4)$에서 만난다. 주어진 함수 $y=f(x)$의 그래프와 직선 $x-3y+20=0$으로 둘러싸인 부분의 넓이는? [4.4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "오른쪽 호 O(0,0)→A(4,8)와 현 OA 사이의 넓이를 S1이라 한다. 원점을 중심으로90도 회전하면 (x,x²/2)→(−x²/2,x)여서 다음 왼쪽 호와 겹친다. 표시호만 제한했으며 전체 양의 가지는 계속된다. 정답40.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 호 O(0,0)→A(4,8)와 현 OA 사이의 넓이를 S1이라 한다. 원점을 중심으로90도 회전하면 (x,x²/2)→(−x²/2,x)여서 다음 왼쪽 호와 겹친다. 표시호만 제한했으며 전체 양의 가지는 계속된다. 정답40."
+  ]
+}

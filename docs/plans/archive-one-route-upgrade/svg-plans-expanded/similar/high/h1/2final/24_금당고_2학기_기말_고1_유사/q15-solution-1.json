@@ -1,0 +1,61 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "9",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      6
+    ],
+    "viewport": [
+      0,
+      7,
+      0,
+      10
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "OP",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "ab=9인 P에서 QH=9/√(a²+b²). a²+b²≥18이므로 최대는 a=b=3일 때이다. 실제 최댓값 배치 P(3,3)과 곡선 y=9/x를 보존한다. 정답3√2/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=\\dfrac{9}{x}$의 그래프 위의 한 점 $P(a,b)$와 원점을 지나는 직선을 $l$이라 하고, 점 $P$에서 $x$축에 내린 수선의 발을 $Q$, 점 $Q$에서 직선 $l$에 내린 수선의 발을 $H$라 할 때, 선분 $QH$의 길이의 최댓값은? (단, $a>0$) [4.4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "ab=9인 P에서 QH=9/√(a²+b²). a²+b²≥18이므로 최대는 a=b=3일 때이다. 실제 최댓값 배치 P(3,3)과 곡선 y=9/x를 보존한다. 정답3√2/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "ab=9인 P에서 QH=9/√(a²+b²). a²+b²≥18이므로 최대는 a=b=3일 때이다. 실제 최댓값 배치 P(3,3)과 곡선 y=9/x를 보존한다. 정답3√2/2."
+  ]
+}

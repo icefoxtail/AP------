@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "2"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      9,
+      -1,
+      5
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 4
+      }
+    ]
+  },
+  "caption": "왼쪽 경계 y=√(2x+6)는 y0에서x−3,y4에서x5이다. 다음 오른쪽 경계와 같은 높이끼리 비교한다. 면적은 최종12.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 곡선 $y=\\sqrt{2x+6}$, $y=\\sqrt{2x}$와 $x$축 및 직선 $y=4$로 둘러싸인 부분의 넓이는? [4.6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "왼쪽 경계 y=√(2x+6)는 y0에서x−3,y4에서x5이다. 다음 오른쪽 경계와 같은 높이끼리 비교한다. 면적은 최종12.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 경계 y=√(2x+6)는 y0에서x−3,y4에서x5이다. 다음 오른쪽 경계와 같은 높이끼리 비교한다. 면적은 최종12."
+  ]
+}

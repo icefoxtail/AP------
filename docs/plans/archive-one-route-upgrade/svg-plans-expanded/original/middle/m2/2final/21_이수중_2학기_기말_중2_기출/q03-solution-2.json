@@ -1,0 +1,41 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "body",
+      "kind": "CONE_FRUSTUM",
+      "radius": 6,
+      "height": 4,
+      "topRadius": 3
+    }
+  ],
+  "dims": [
+    {
+      "solid": "body",
+      "radius": "bottom"
+    },
+    {
+      "solid": "body",
+      "height": true,
+      "side": "LEFT"
+    },
+    {
+      "solid": "body",
+      "radius": "top"
+    }
+  ],
+  "caption": "남은원뿔대의아래반지름6,위반지름3,높이4이다. 잘린작은원뿔부피(1/3)π×3²×4=12π이므로남은부피96π−12π=84π cm³.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 밑면의 반지름의 길이가 $6\\text{ cm}$이고, 부피가 $96\\pi\\text{ cm}^3$인 원뿔을 밑면에 평행한 평면으로 자른 원뿔대이다. $\\overline{OO'}=4\\text{ cm}$일 때, 원뿔대의 부피를 구하면? (5점)",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "derived",
+      "condition": "원뿔높이8과잘린높이4/반지름3을부피및닮음으로정확히유도했다.",
+      "mappedTo": "dims"
+    }
+  ]
+}

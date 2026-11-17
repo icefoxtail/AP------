@@ -1,0 +1,52 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "273",
+      "1"
+    ],
+    "amplitude": "20",
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -10,
+      10
+    ],
+    "viewport": [
+      -10,
+      10,
+      -10,
+      10
+    ],
+    "overlays": {
+      "points": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 16,
+        "y": 340
+      }
+    ]
+  },
+  "caption": "340=20√(273+x)에서√(273+x)=17,273+x289,x16. 곡선의(16,340)을표시하고가로변수는온도x,세로는음속y이다. 정답16°C.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "공기의 온도가 $x\\,{}^\\circ\\mathrm{C}$일 때, 공기 중에서 소리의 전달 속도를 $y\\,\\mathrm{m/s}$라 하면 $x$와 $y$ 사이에 $y=20\\sqrt{273+x}$인 관계가 성립한다고 한다. 소리의 전달 속도가 $340\\,\\mathrm{m/s}$일 때, 공기의 온도를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "340=20√(273+x)에서√(273+x)=17,273+x289,x16. 곡선의(16,340)을표시하고가로변수는온도x,세로는음속y이다. 정답16°C.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "340=20√(273+x)에서√(273+x)=17,273+x289,x16. 곡선의(16,340)을표시하고가로변수는온도x,세로는음속y이다. 정답16°C."
+  ]
+}

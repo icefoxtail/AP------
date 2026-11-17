@@ -1,0 +1,61 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "4",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0.5,
+      6
+    ],
+    "viewport": [
+      -4,
+      7,
+      -6,
+      9
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "2*sqrt(2)",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "BC",
+          "slope": "-1/2",
+          "intercept": "-5/2",
+          "style": "DASHED",
+          "label": "x+2y+5=0"
+        }
+      ]
+    }
+  },
+  "caption": "A(t,4/t),B(−3,−1),C(5,−5)에서 BC길이4√5,높이(t+8/t+5)/√5이다. t+8/t≥4√2이므로 t=2√2,A(2√2,√2)에서 최소넓이10+8√2. 다음 정확 삼각형에서 밑변과 높이를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\dfrac{4}{x}$의 그래프의 제1사분면 위의 점 $A$와 두 점 $B(-3,-1)$, $C(5,-5)$를 꼭짓점으로 하는 삼각형 $ABC$의 넓이의 최솟값은? [4.6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "A(t,4/t),B(−3,−1),C(5,−5)에서 BC길이4√5,높이(t+8/t+5)/√5이다. t+8/t≥4√2이므로 t=2√2,A(2√2,√2)에서 최소넓이10+8√2. 다음 정확 삼각형에서 밑변과 높이를 확인한다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "A(t,4/t),B(−3,−1),C(5,−5)에서 BC길이4√5,높이(t+8/t+5)/√5이다. t+8/t≥4√2이므로 t=2√2,A(2√2,√2)에서 최소넓이10+8√2. 다음 정확 삼각형에서 밑변과 높이를 확인한다."
+  ]
+}

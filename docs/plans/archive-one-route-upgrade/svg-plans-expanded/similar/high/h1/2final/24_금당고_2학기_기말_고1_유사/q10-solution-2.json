@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2/2-x-2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-5/2"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "-2"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "K"
+    }
+  },
+  "caption": "t=√(4−4x)≥0로 바꾸면 k=K(t)=t²/2−t−2. 이 패널의 x는t,y는K이다. 실제 t정의역은0이상이며 표시창3은 상한이 아니다. K(0)=−2,최솟값−5/2 사이에서 두 비음수 해가 존재한다. 정답−5/2<k≤−2,경계합−9/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=-\\sqrt{4-4x}$의 그래프와 직선 $y=2x+k$가 서로 다른 두 점에서 만나도록 하는 상수 $k$의 값의 범위가 $a<k\\le b$일 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은? [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "t=√(4−4x)≥0로 바꾸면 k=K(t)=t²/2−t−2. 이 패널의 x는t,y는K이다. 실제 t정의역은0이상이며 표시창3은 상한이 아니다. K(0)=−2,최솟값−5/2 사이에서 두 비음수 해가 존재한다. 정답−5/2<k≤−2,경계합−9/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "t=√(4−4x)≥0로 바꾸면 k=K(t)=t²/2−t−2. 이 패널의 x는t,y는K이다. 실제 t정의역은0이상이며 표시창3은 상한이 아니다. K(0)=−2,최솟값−5/2 사이에서 두 비음수 해가 존재한다. 정답−5/2<k≤−2,경계합−9/2."
+  ]
+}

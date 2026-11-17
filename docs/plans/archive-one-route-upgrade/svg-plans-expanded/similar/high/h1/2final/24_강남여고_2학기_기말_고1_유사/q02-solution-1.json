@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "-2"
+    ],
+    "sign": -1,
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -6,
+      4,
+      -4,
+      3
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      }
+    ]
+  },
+  "caption": "끝점(3,2)에서 왼쪽 아래로 뻗고 (1,0)을 지난다. 근호 조건6−2x≥0 및 음수 부호를 함께 읽으면 정의역 x≤3,치역 y≤2. 경계 포함, 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 무리함수 $y=-\\sqrt{6-2x}+2$의 정의역과 치역을 바르게 나타낸 것은? [3점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "끝점(3,2)에서 왼쪽 아래로 뻗고 (1,0)을 지난다. 근호 조건6−2x≥0 및 음수 부호를 함께 읽으면 정의역 x≤3,치역 y≤2. 경계 포함, 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점(3,2)에서 왼쪽 아래로 뻗고 (1,0)을 지난다. 근호 조건6−2x≥0 및 음수 부호를 함께 읽으면 정의역 x≤3,치역 y≤2. 경계 포함, 정답①."
+  ]
+}

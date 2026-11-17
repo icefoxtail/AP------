@@ -1,0 +1,57 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "1"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -2,
+      6
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "(3+sqrt(17))/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "경계 k=−3에서 유리함수의 첫 교점(−3,0)이 근호함수 시작점과 겹친다. 유리함수의 점근선 x=1,y=1을 보존한다. 이는 경계 예시이며 다른 교점은((3+√17)/2,(1+√17)/2)이다. 일반 두 교점 조건은 뒤의 u구간별 값범위로 증명한다. 정답k≤−3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<단답형 1> 두 함수 $y=\\dfrac{x+3}{x-1}$, $y=\\sqrt{x-k}$의 그래프가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오. [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "경계 k=−3에서 유리함수의 첫 교점(−3,0)이 근호함수 시작점과 겹친다. 유리함수의 점근선 x=1,y=1을 보존한다. 이는 경계 예시이며 다른 교점은((3+√17)/2,(1+√17)/2)이다. 일반 두 교점 조건은 뒤의 u구간별 값범위로 증명한다. 정답k≤−3.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "경계 k=−3에서 유리함수의 첫 교점(−3,0)이 근호함수 시작점과 겹친다. 유리함수의 점근선 x=1,y=1을 보존한다. 이는 경계 예시이며 다른 교점은((3+√17)/2,(1+√17)/2)이다. 일반 두 교점 조건은 뒤의 u구간별 값범위로 증명한다. 정답k≤−3."
+  ]
+}

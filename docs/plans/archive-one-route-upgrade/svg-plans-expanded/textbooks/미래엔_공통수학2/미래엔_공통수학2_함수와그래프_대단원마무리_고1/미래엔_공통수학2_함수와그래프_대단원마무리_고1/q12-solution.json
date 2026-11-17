@@ -1,0 +1,56 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "3"
+    ],
+    "amplitude": "1",
+    "sign": -1,
+    "offset": "3",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -10,
+      10
+    ],
+    "viewport": [
+      -10,
+      10,
+      -10,
+      10
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "시작점(−2,3),정의역x≥−2,치역y≤3인감소곡선. x절편1보다오른쪽에서는x>0,y<0으로제4사분면을지난다. 역함수식은x≤3에서x²/3−2x+1. 옳지않은설명④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음에서 함수 $y=-\\sqrt{3x+6}+3$에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "시작점(−2,3),정의역x≥−2,치역y≤3인감소곡선. x절편1보다오른쪽에서는x>0,y<0으로제4사분면을지난다. 역함수식은x≤3에서x²/3−2x+1. 옳지않은설명④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "시작점(−2,3),정의역x≥−2,치역y≤3인감소곡선. x절편1보다오른쪽에서는x>0,y<0으로제4사분면을지난다. 역함수식은x≤3에서x²/3−2x+1. 옳지않은설명④."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "-8",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-4"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "-4"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "4"
+      }
+    ],
+    "formula": "2*abs(x-1)+2*x-6"
+  },
+  "caption": "a=2인경우를비교한다. x<1기울기a−2,x>1기울기a+2이다. 자연수a에서a1은기울기부호가달라일대일아니고a2는왼쪽이상수라일대일아니다. a3부터양쪽엄격증가하며치역전체실수라일대일대응. 최소a3. 정답3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 함수\n$$f(x)=2|x-1|+ax-6$$\n이 일대일대응이 되도록 하는 자연수 $a$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=2인경우를비교한다. x<1기울기a−2,x>1기울기a+2이다. 자연수a에서a1은기울기부호가달라일대일아니고a2는왼쪽이상수라일대일아니다. a3부터양쪽엄격증가하며치역전체실수라일대일대응. 최소a3. 정답3. a=3인경우를비교한다. x<1기울기a−2,x>1기울기a+2이다. 자연수a에서a1은기울기부호가달라일대일아니고a2는왼쪽이상수라일대일아니다. a3부터양쪽엄격증가하며치역전체실수라일대일대응. 최소a3. 정답3.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2인경우를비교한다. x<1기울기a−2,x>1기울기a+2이다. 자연수a에서a1은기울기부호가달라일대일아니고a2는왼쪽이상수라일대일아니다. a3부터양쪽엄격증가하며치역전체실수라일대일대응. 최소a3. 정답3."
+  ]
+}

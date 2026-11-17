@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "항등함수f는각원소를그자신으로보내므로f3=3. 다음상수함수도식과합쳐3+4=7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X=\\{1,\\, 2,\\, 3,\\, 4\\}$에 대하여 함수 $f \\colon X \\longrightarrow X$는 항등함수이고 함수 $g \\colon X \\longrightarrow X$는 상수함수이다. $g(2)=4$일 때, $f(3)+g(1)$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "항등함수f는각원소를그자신으로보내므로f3=3. 다음상수함수도식과합쳐3+4=7. g2=4인상수함수는모든원소를4로보내므로g1=4. 오른쪽은공역X중실제로도착하는4만보인다. 정답f3+g1=7.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "항등함수f는각원소를그자신으로보내므로f3=3. 다음상수함수도식과합쳐3+4=7."
+  ]
+}

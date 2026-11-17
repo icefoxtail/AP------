@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "0",
+          "2",
+          "4",
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "0",
+          "2",
+          "4",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "0→2→4→6→0의4주기이다. 26≡2(mod4)라f26(6)=f2(6)=2,27≡3(mod4)라f27(0)=f3(0)=6. 합8. 화살표는한번적용이며이를반복해읽는다. 정답8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X=\\{0,\\, 2,\\, 4,\\, 6\\}$에 대하여 함수 $f \\colon X \\longrightarrow X$가\n$$f(x)=\\begin{cases} x+2 & (x \\le 4) \\\\ 0 & (x=6) \\end{cases}$$\n이다. $f^2=f \\circ f$, $f^3=f \\circ f^2$, $\\cdots$, $f^{n+1}=f \\circ f^n$으로 나타낼 때, $f^{26}(6)+f^{27}(0)$의 값은? (단, $n$은 자연수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "0→2→4→6→0의4주기이다. 26≡2(mod4)라f26(6)=f2(6)=2,27≡3(mod4)라f27(0)=f3(0)=6. 합8. 화살표는한번적용이며이를반복해읽는다. 정답8.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "0→2→4→6→0의4주기이다. 26≡2(mod4)라f26(6)=f2(6)=2,27≡3(mod4)라f27(0)=f3(0)=6. 합8. 화살표는한번적용이며이를반복해읽는다. 정답8."
+  ]
+}

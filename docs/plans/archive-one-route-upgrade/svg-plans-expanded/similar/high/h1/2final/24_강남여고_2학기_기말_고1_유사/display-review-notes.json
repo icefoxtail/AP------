@@ -1,0 +1,26 @@
+{
+  "question": 14,
+  "status": "HOME_PC_RENDER_CHECK_REQUIRED",
+  "sourceInterval": [
+    5,
+    40
+  ],
+  "declaredViewport": [
+    2,
+    43,
+    0,
+    11
+  ],
+  "observedFinalViewport": {
+    "xMin": 1.5,
+    "xMax": 40,
+    "yMin": -3.65,
+    "yMax": 10.65,
+    "width": 610,
+    "height": 320,
+    "panel": 140
+  },
+  "risk": "공식 frame_graph 후 최종 xMax=40으로 닫힌 끝점 B(40,9)가 오른쪽 경계에 놓인다. 마커/좌표 잘림을 실제 화면에서 반드시 확인한다. sourceDomain 또는 실제 표본구간을 넓히지 않는다. 표시 여백만 확보하는 공식 경로가 적용되는지 현재 실행 사양에서 확인하지 못했다.",
+  "actualRender": "NOT_RUN",
+  "publication": "BLOCK_UNTIL_ENDPOINT_MARKER_AND_COORDINATE_LEGIBLE"
+}

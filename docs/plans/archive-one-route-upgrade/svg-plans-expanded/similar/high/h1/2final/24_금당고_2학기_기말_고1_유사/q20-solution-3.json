@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "2*x-x^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "u",
+      "y": "t"
+    }
+  },
+  "caption": "첫 가지와 y=x+t의 교점을 u=√(x−3)로 바꾸면 t=2u−u²,0≤u≤2. t0에서 두 점,t1에서 한 점,0<t<1에서 두 점이다. 다음 가지와 합산할 때u2는공유경계x7이므로 한 번만 센다. 정답g(11)=19.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서·논술형 1> 함수 $f(x)=\\sqrt{ax-12}+3$ $(a\\ge4)$에 대하여 집합 $\\left\\{x\\,\\middle|\\,x\\ge\\dfrac{12}{a}\\right\\}$에서 정의된 함수<br>$g(x)=\\begin{cases}f(x)&(f(x)\\ge f^{-1}(x)\\text{인 경우})\\\\f^{-1}(x)&(f(x)<f^{-1}(x)\\text{인 경우})\\end{cases}$<br>가 있다. 실수 $t$ $(t\\ge0)$에 대하여 함수 $y=g(x)$의 그래프와 직선 $y=x+t$가 만나는 서로 다른 점의 개수를 $h(t)$라 하자. $h(t)=2$를 만족하는 $t$가 $t=0$, $t=1$일 때, $g(11)$의 값을 풀이과정과 함께 상세하게 서술하시오. (단, $a$는 상수이다.) [10점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "첫 가지와 y=x+t의 교점을 u=√(x−3)로 바꾸면 t=2u−u²,0≤u≤2. t0에서 두 점,t1에서 한 점,0<t<1에서 두 점이다. 다음 가지와 합산할 때u2는공유경계x7이므로 한 번만 센다. 정답g(11)=19.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 가지와 y=x+t의 교점을 u=√(x−3)로 바꾸면 t=2u−u²,0≤u≤2. t0에서 두 점,t1에서 한 점,0<t<1에서 두 점이다. 다음 가지와 합산할 때u2는공유경계x7이므로 한 번만 센다. 정답g(11)=19."
+  ]
+}

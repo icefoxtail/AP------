@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "동전 네 번",
+        "elements": [
+          "HTTT",
+          "THTT",
+          "TTHT",
+          "TTTH"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "최종 위치",
+        "elements": [
+          "-1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "H는앞면(+2),T는뒷면(−1)이다. 앞면h번의최종위치3h−4가−1이려면h1. 네경로각각+2−1−1−1=−1이고전체16경로중4개라확률1/4. 여기에표시한것은조건을만족하는경로만이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 수직선 위의 원점에 점 $P$가 있다. 동전 한 개를 던져 앞면이 나오면 오른쪽으로 2만큼, 뒷면이 나오면 왼쪽으로 1만큼 점 $P$를 움직이기로 할 때, 동전을 연속하여 4번 던져 움직인 점 $P$에 대응하는 수가 $-1$일 확률은? [5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

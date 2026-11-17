@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2/3",
+          "1/3"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "5/3"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "14/3"
+      },
+      {
+        "id": "P",
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "id": "Q",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "formula": "x^2/3 - 2*x/3 + 2",
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED"
+        },
+        {
+          "id": "b",
+          "x": "1",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "역함수는y=((x−1)²+5)/3이고정의역x≥1. 이패널곡선은식의보조연장이므로세로선x1의오른쪽만역함수로읽는다. y=x와의교점(2,2),(3,3)을앞패널과비교. 두점거리√((3−2)²+(3−2)²)=√2. 정답√2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\sqrt{3x-5}+1$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 만나는 두 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 할 때, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "증가함수와역함수의교점은y=x위에있다. √(3x−5)+1=x에서x≥1과x²−5x+6=0을만족해x2,3. P(2,2),Q(3,3)이고거리√2. 이패널은원함수와대칭선. 정답√2. 역함수는y=((x−1)²+5)/3이고정의역x≥1. 이패널곡선은식의보조연장이므로세로선x1의오른쪽만역함수로읽는다. y=x와의교점(2,2),(3,3)을앞패널과비교. 두점거리√((3−2)²+(3−2)²)=√2. 정답√2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수는y=((x−1)²+5)/3이고정의역x≥1. 이패널곡선은식의보조연장이므로세로선x1의오른쪽만역함수로읽는다. y=x와의교점(2,2),(3,3)을앞패널과비교. 두점거리√((3−2)²+(3−2)²)=√2. 정답√2."
+  ]
+}

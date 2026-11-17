@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "3"
+      }
+    ],
+    "formula": "3",
+    "axisTitles": {
+      "x": "y",
+      "y": "w"
+    }
+  },
+  "caption": "가로축은 원래 높이y,세로축w는 오른쪽x−왼쪽x이다. w=y²/2−(y²−6)/2=3이므로 높이0..4 전체에서 일정하다. 원래 곡선 자체가 직사각형이라는 뜻이 아니라 같은 높이 띠의 넓이가 같다는 뜻이다. 정답3×4=12.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 곡선 $y=\\sqrt{2x+6}$, $y=\\sqrt{2x}$와 $x$축 및 직선 $y=4$로 둘러싸인 부분의 넓이는? [4.6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "가로축은 원래 높이y,세로축w는 오른쪽x−왼쪽x이다. w=y²/2−(y²−6)/2=3이므로 높이0..4 전체에서 일정하다. 원래 곡선 자체가 직사각형이라는 뜻이 아니라 같은 높이 띠의 넓이가 같다는 뜻이다. 정답3×4=12.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 원래 높이y,세로축w는 오른쪽x−왼쪽x이다. w=y²/2−(y²−6)/2=3이므로 높이0..4 전체에서 일정하다. 원래 곡선 자체가 직사각형이라는 뜻이 아니라 같은 높이 띠의 넓이가 같다는 뜻이다. 정답3×4=12."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "22",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "25"
+      },
+      {
+        "id": "R",
+        "x": "8",
+        "y": "-2"
+      },
+      {
+        "id": "A",
+        "x": "7",
+        "y": "1"
+      }
+    ],
+    "formula": "22 - 3*x"
+  },
+  "caption": "t=6x+1로치환하면f(t)=−t/3+22/3. 역함수는y=−3x+22이므로a−3,b22,ab−66. 이패널은역함수직선이며원함수의(1,7)이역함수(7,1)로바뀐다. 정답−66.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 함수 $f$에 대하여\n$$f(6x+1)=-2x+7$$\n이 성립할 때, 역함수는 $f^{-1}(x)=ax+b$이다. 이때 상수 $a$와 $b$에 대하여 $ab$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=6x+1로치환하면f(t)=−t/3+22/3. 역함수는y=−3x+22이므로a−3,b22,ab−66. 이패널은역함수직선이며원함수의(1,7)이역함수(7,1)로바뀐다. 정답−66.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t=6x+1로치환하면f(t)=−t/3+22/3. 역함수는y=−3x+22이므로a−3,b22,ab−66. 이패널은역함수직선이며원함수의(1,7)이역함수(7,1)로바뀐다. 정답−66."
+  ]
+}

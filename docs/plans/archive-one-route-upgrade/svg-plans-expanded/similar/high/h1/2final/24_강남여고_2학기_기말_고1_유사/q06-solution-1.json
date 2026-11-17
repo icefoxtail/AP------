@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "2"
+    ],
+    "sign": -1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -1,
+      9,
+      -5,
+      1
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -2
+      }
+    ]
+  },
+  "caption": "이동 전 y=−√(2x)의 시작점(0,0)과 점(2,−2)를 표시한다. 이동벡터(−3,4)에 따라 두 점은 각각(−3,4),(−1,2)가 된다. 다음 패널에서 비교, 정답 y=−√(2x+6)+4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=-\\sqrt{2x}$를 $x$축으로 $-3$만큼, $y$축으로 $4$만큼 평행이동한 함수는? [3.5점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "이동 전 y=−√(2x)의 시작점(0,0)과 점(2,−2)를 표시한다. 이동벡터(−3,4)에 따라 두 점은 각각(−3,4),(−1,2)가 된다. 다음 패널에서 비교, 정답 y=−√(2x+6)+4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "이동 전 y=−√(2x)의 시작점(0,0)과 점(2,−2)를 표시한다. 이동벡터(−3,4)에 따라 두 점은 각각(−3,4),(−1,2)가 된다. 다음 패널에서 비교, 정답 y=−√(2x+6)+4."
+  ]
+}

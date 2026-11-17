@@ -1,0 +1,101 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "1",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "각제곱의7로나눈나머지는1,4,2,2,4. 치역은중복을제거한{1,2,4}라원소합7. 오른쪽에는무한공역정수전체가아니라이미지가있는부분만보인다. 정답7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $X=\\{1,\\, 2,\\, 3,\\, 4,\\, 5\\}$와 $Y=\\{y \\mid y\\text{는 정수}\\}$에 대하여 함수 $f \\colon X \\longrightarrow Y$가\n$$f(x)=(x^2\\text{을 } 7\\text{로 나누었을 때의 나머지})$$\n일 때, 함수 $f$의 치역의 모든 원소의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "각제곱의7로나눈나머지는1,4,2,2,4. 치역은중복을제거한{1,2,4}라원소합7. 오른쪽에는무한공역정수전체가아니라이미지가있는부분만보인다. 정답7.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "각제곱의7로나눈나머지는1,4,2,2,4. 치역은중복을제거한{1,2,4}라원소합7. 오른쪽에는무한공역정수전체가아니라이미지가있는부분만보인다. 정답7."
+  ]
+}

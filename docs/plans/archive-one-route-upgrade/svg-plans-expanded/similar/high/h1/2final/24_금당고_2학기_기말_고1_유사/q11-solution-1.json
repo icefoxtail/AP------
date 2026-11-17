@@ -1,0 +1,71 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-1",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "1",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      1,
+      5
+    ],
+    "viewport": [
+      0,
+      6,
+      0,
+      6
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "id": "C",
+        "x": 3.25,
+        "y": 4
+      }
+    ],
+    "amplitude": "2",
+    "overlays": {
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "4/5",
+          "intercept": "7/5",
+          "style": "DASHED",
+          "label": "y=(4/5)x+7/5"
+        }
+      ]
+    }
+  },
+  "caption": "P(2,3),Q(13/4,4)는 b+d=7을 만족하는 비교 예시이지 유일한 두 점이 아니다. 일반적으로 √(a−1)+√(c−1)=5/2이므로 유리화한 할선 기울기는 2/[√(a−1)+√(c−1)]=4/5이다. 정답4/5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=2\\sqrt{x-1}+1$의 그래프 위의 두 점 $P(a,b)$, $Q(c,d)$에 대하여 $b+d=7$일 때, 직선 $PQ$의 기울기는? (단, $1<a<c$이다.) [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "P(2,3),Q(13/4,4)는 b+d=7을 만족하는 비교 예시이지 유일한 두 점이 아니다. 일반적으로 √(a−1)+√(c−1)=5/2이므로 유리화한 할선 기울기는 2/[√(a−1)+√(c−1)]=4/5이다. 정답4/5.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "P(2,3),Q(13/4,4)는 b+d=7을 만족하는 비교 예시이지 유일한 두 점이 아니다. 일반적으로 √(a−1)+√(c−1)=5/2이므로 유리화한 할선 기울기는 2/[√(a−1)+√(c−1)]=4/5이다. 정답4/5."
+  ]
+}
