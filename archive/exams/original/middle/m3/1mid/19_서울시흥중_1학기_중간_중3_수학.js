@@ -66,7 +66,6 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "layoutTag": "fullwidth",
     "questionNumber": 5,
     "questionType": "객관식",
     "content": "다음 ㉠구간에 있는 수를 고르시오. [4점]\n<img src=\"assets/images/19_서울시흥중_1학기_중간_중3_수학/q5-problem-v3.svg\" alt=\"얇은 수직선의 −2 눈금부터 −1 눈금까지 옅은 파랑 영역이 놓인다. 영역 위에 ㉠이라 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
@@ -195,7 +194,6 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "layoutTag": "fullwidth",
     "questionNumber": 13,
     "questionType": "객관식",
     "content": "예은이네는 넓이가 각각 $6a^2-a-2$, $6a-2$인 거실과 발코니를 합하여 거실을 확장하였다. 확장된 거실의 세로의 길이가 $2a-1$인 직사각형 모양일 때, 가로의 길이 $x$를 구하시오. [4점]\n<img src=\"assets/images/19_서울시흥중_1학기_중간_중3_수학/q13-problem-v3.svg\" alt=\"한 직사각형이 왼쪽 발코니와 오른쪽 거실로 나뉜다. 전체 세로는 2a−1, 전체 가로는 x이다. 두 부분의 넓이가 각각 적혀 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
@@ -276,7 +274,6 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "layoutTag": "fullwidth",
     "questionNumber": 18,
     "questionType": "서술형",
     "content": "<서술형 1>\n아래 [그림1]은 한 변의 길이가 $1$인 정사각형 $2$개를 붙인 직사각형이다. 이 도형을 [그림2]와 같이 $4$개의 조각으로 나눈 뒤 재배열하여 [그림3]과 같은 정사각형을 만들었다. [그림3]의 정사각형에 대해 다음 물음에 답하시오. (총 6점) [6점]\n<img src=\"assets/images/19_서울시흥중_1학기_중간_중3_수학/q18-problem-v3.svg\" alt=\"왼쪽 직사각형은 한 변이 1인 정사각형 두 장이다. 가운데의 네 조각을 같은 색끼리 대응시켜 오른쪽 정사각형으로 모았다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n(1) 정사각형 한 변의 길이를 구하고, 그렇게 답한 이유를 쓰시오. (이유 1점, 답 2점) [3점]\n(2) 정사각형 둘레의 길이를 구하는 식과 답을 쓰시오. (식 1점, 답 2점) [3점]",
@@ -307,7 +304,6 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "layoutTag": "fullwidth",
     "questionNumber": 21,
     "questionType": "서술형",
     "content": "<서술형 4>\n그림과 같이 지름의 길이가 $2a+2$인 원 $\\text{O}$에 지름이 각각 $2a, 2$인 반원을 그렸을 때, 색칠한 부분의 넓이를 구하여 인수분해한 식으로 나타내시오. [4점]\n<img src=\"assets/images/19_서울시흥중_1학기_중간_중3_수학/q21-problem-v3.svg\" alt=\"지름 2a+2인 원을 나눴다. 왼쪽 지름 2a의 반원은 위로, 오른쪽 지름 2의 반원은 아래로 향한다. 원 속 주황 영역이 색칠된 부분이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",

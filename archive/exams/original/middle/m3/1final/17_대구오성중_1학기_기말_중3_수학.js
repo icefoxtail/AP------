@@ -162,7 +162,6 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "원점 O 오른쪽의 A에서 수직으로 올라가 직선 위 P에 닿는다. 직선과 y축이 만나는 B 높이는 2이다. 점 P, B, O, A를 이은 사다리꼴을 칠했다.",
     "questionNumber": 9,
@@ -326,7 +325,6 @@ window.questionBank = [
   {
     "id": 17,
     "choiceColumns": 2,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 파란 곡선의 꼭짓점은 y축의 오른쪽에 있다. 곡선이 x축을 y축 양쪽에서 지나며 y축과 만나는 점은 x축 아래이다.",
     "questionNumber": 17,
@@ -343,7 +341,6 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "아래로 열린 파란 포물선의 꼭짓점은 A이고 왼쪽 x절편은 B이다. C는 세로절편이다. A, B, O, C를 이은 사각형 영역을 녹색으로 칠했다.",
     "questionNumber": 18,
@@ -366,7 +363,6 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "파란 포물선이 정사각형의 위쪽 점 A와 D를 지난다. 아래쪽 B와 C는 x축 위에 있고 B의 x좌표는 2이다. 곡선은 원점도 지난다.",
     "questionNumber": 19,
@@ -429,7 +425,6 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "파란 위로 열린 포물선 위 P와 주황 점선 직선 위 Q를 가로선으로 연결했다. 포물선의 y절편은 −2이다.",
     "questionNumber": 22,
@@ -452,7 +447,6 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "삼각형 ABC의 A에서 가로 밑변 BC에 내린 수선 AH의 길이는 4이다. 밑변은 H에서 12와 4로 나뉜다. 직사각형 PQRS의 위쪽 두 점은 두 사선, 아래쪽 두 점은 밑변에 있다.",
     "questionNumber": 23,

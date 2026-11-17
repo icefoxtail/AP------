@@ -192,7 +192,6 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "왼쪽부터 넓이 x²인 같은 정사각형 두 개, 넓이 x인 같은 직사각형 세 개, 넓이 1인 작은 정사각형 하나를 늘어놓았다. 큰 정사각형의 변은 x, 직사각형의 변은 x와 1, 작은 정사각형의 변은 1이다.",
     "image": "assets/images/17_대구교동중_1학기_중간_중3_수학/q11-problem-visual-v2.svg",
@@ -330,7 +329,6 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "정사각형 A, B, C가 큰 것부터 작은 것 순서로 왼쪽에서 오른쪽에 붙어 있다. 바닥은 한 직선에 있고 서로 맞닿은 경계는 점선이다.",
     "image": "assets/images/17_대구교동중_1학기_중간_중3_수학/q19-problem-visual-v2.svg",

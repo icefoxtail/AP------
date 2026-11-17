@@ -117,7 +117,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "제곱근",
@@ -297,7 +297,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "제곱근",
