@@ -1727,6 +1727,24 @@ async function loadConceptMapForRecommend() {
     return state.ui.conceptMapCache;
 }
 
+// 문항 번호 규칙: number 필드 → id에서 뽑은 숫자("Q01"→1) → 배열 순번+1.
+// 원본 시험지는 id가 없거나 "Q01" 문자열인 파일이 있어 Number(q.id)만으로는 번호를 못 얻는다.
+function getArchiveQuestionNumber(q, index) {
+    for (const value of [q?.number, q?.id]) {
+        const match = String(value ?? '').match(/\d+/);
+        if (match) return Number(match[0]);
+    }
+    return Number(index) + 1;
+}
+
+// 원본 엔진(archive/engine.html)과 같은 규칙으로 문항 배열을 찾는다.
+// window.questionBank가 있으면 그것, 없으면 window.examData(배열 / .questions / .problems).
+function pickArchiveQuestionList(win) {
+    const qb = win?.questionBank || win?.examData;
+    if (Array.isArray(qb)) return qb;
+    return qb?.questions || qb?.problems || [];
+}
+
 async function loadArchiveQuestionBank(file) {
     const path = normalizeArchivePath(file);
     if (!path) return { examTitle: '', questionBank: [] };
@@ -1734,11 +1752,13 @@ async function loadArchiveQuestionBank(file) {
     if (state.ui.archiveQuestionBankCache[path]) return state.ui.archiveQuestionBankCache[path];
 
     const text = await fetchArchiveScriptText(path);
-    const sandbox = {};
-    const data = new Function('window', `${text}\n;return { examTitle: window.examTitle || '', questionBank: window.questionBank || [] };`)(sandbox);
+    // sandbox는 호출마다 새 객체라 앞 파일의 window.examData/questionBank가 섞이지 않는다.
+    const sandbox = { questionBank: null, examData: null };
+    const data = new Function('window', `${text}\n;return { examTitle: window.examTitle || (window.examData && window.examData.title) || '', win: window };`)(sandbox);
+    const list = pickArchiveQuestionList(data.win);
     const normalized = {
         examTitle: data.examTitle || path.replace(/^exams\//, '').replace(/\.js$/, ''),
-        questionBank: Array.isArray(data.questionBank) ? data.questionBank : []
+        questionBank: Array.isArray(list) ? list : []
     };
     state.ui.archiveQuestionBankCache[path] = normalized;
     return normalized;
@@ -2057,13 +2077,14 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
         const file = normalizeArchivePath(entry.file);
         try {
             const bankData = await loadArchiveQuestionBank(file);
-            for (const q of bankData.questionBank) {
-                if (!q || q.id === undefined || q.id === null) continue;
-                if (isOriginalWrongQuestion(item, file, q.id)) continue;
+            for (const [qIndex, q] of bankData.questionBank.entries()) {
+                if (!q || typeof q !== 'object') continue;
+                const qNo = getArchiveQuestionNumber(q, qIndex);
+                if (isOriginalWrongQuestion(item, file, qNo)) continue;
 
                 const qUnitKey = q.standardUnitKey || '';
                 const qCluster = q.conceptClusterKey || conceptMap[qUnitKey] || '';
-                const key = `${file}::${Number(q.id)}`;
+                const key = `${file}::${qNo}`;
                 if (seen.has(key)) continue;
 
                 const isExact = unitKey && qUnitKey === unitKey;
@@ -2075,8 +2096,8 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
                     archiveFile: file,
                     examTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
                     sourceTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
-                    questionId: q.id,
-                    questionNo: q.id,
+                    questionId: qNo,
+                    questionNo: qNo,
                     level: q.level || '',
                     standardUnitKey: qUnitKey,
                     standardUnit: q.standardUnit || qUnitKey || '',
@@ -2207,7 +2228,7 @@ function getQuestionNumberFromClinicItem(item) {
 
 function findQuestionInBank(questionBank, questionNo) {
     if (!Array.isArray(questionBank) || questionNo === null || questionNo === undefined) return null;
-    const byId = questionBank.find(q => Number(q?.id) === Number(questionNo));
+    const byId = questionBank.find((q, i) => getArchiveQuestionNumber(q, i) === Number(questionNo));
     if (byId) return byId;
     const idx = Number(questionNo) - 1;
     if (Number.isInteger(idx) && idx >= 0 && idx < questionBank.length) return questionBank[idx];
