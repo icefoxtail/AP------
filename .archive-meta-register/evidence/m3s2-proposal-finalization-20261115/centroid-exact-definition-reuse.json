@@ -1,0 +1,73 @@
+{
+  "immutableProposalCommit": "1bd67bd03dfc299d371ea0e9ee55677bf4e9052a",
+  "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+  "change": {
+    "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+    "collection": "concepts",
+    "match": {
+      "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
+    },
+    "before": null,
+    "after": {
+      "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+      "canonicalLabelKo": "무게중심의 중선 교점과 2대1 분할",
+      "definition": "삼각형의 무게중심은 각 꼭짓점과 그 대변의 중점을 잇는 세 중선의 교점이며, 각 중선을 꼭짓점에서 대변의 중점 쪽으로 2:1로 나눈다.",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+        "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-05",
+        "M2-06"
+      ],
+      "legacyKeys": [],
+      "taxonomyRefs": [
+        "PT_PARALLEL_SEGMENT_RATIO",
+        "PT_TRIANGLE_CENTERS"
+      ],
+      "curriculumRefs": [],
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+          "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+          "sourceOrdinal": 3,
+          "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+          "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+          "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+          "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+          "nativeProposalRefs": [
+            "B-E023-CC-CENTROID"
+          ],
+          "classificationRationale": "G가 무게중심이며 AG/BG의 연장이 각각 D/E에 닿는다는 stem과 그림을 확인했다. 중선의 정의로 D/E가 대변의 중점임을 얻은 후 평행선 선분비와 넓이비를 결합한다.",
+          "newMathematicalQa": false
+        },
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+          "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+          "sourceOrdinal": 21,
+          "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+          "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+          "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+          "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+          "nativeProposalRefs": [
+            "B-E023-CC-CENTROID"
+          ],
+          "classificationRationale": "PNG의 A 직각, G가 AD 위에 있는 위치, GD 길이 표기를 확인했다. 현재 해설은 무게중심의 AG:GD=2:1로 AD를 정한 뒤 직각삼각형 빗변 중점 성질을 Primary로 사용한다.",
+          "newMathematicalQa": false
+        }
+      ]
+    },
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+        "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+      }
+    ]
+  }
+}

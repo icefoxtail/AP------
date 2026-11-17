@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>공통 Meta 문항 검색 | Archive 2.0</title>
+<title>문항 검색 · JS 아카이브</title>
 <style>
 body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#17324f;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#155fa8}h1{font-size:26px}.filters{display:flex;flex-wrap:wrap;gap:12px;background:white;padding:18px;border-radius:12px}label{display:grid;gap:6px}select,button{font:inherit;padding:9px;border:1px solid #b8c9dc;border-radius:7px;background:white}article{background:white;padding:16px;margin:10px 0;border-radius:10px}article p{color:#516b83}#preview{white-space:pre-wrap;background:white;padding:20px;margin-top:16px}#preview img{max-width:100%;max-height:360px}#status{min-height:24px}nav{display:flex;gap:20px}button,a{cursor:pointer}#preview[hidden]{display:none}#preview table{border-collapse:collapse;white-space:normal}#preview table:not(.ap-table) td,#preview table:not(.ap-table) th{border:1px solid #a5b2c0;padding:6px}
 .pick{display:inline-flex;align-items:center;gap:6px;margin-right:12px}.pickbar{position:sticky;bottom:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:#fff;border-top:2px solid #155fa8;padding:12px 18px;margin-top:12px;border-radius:10px 10px 0 0;box-shadow:0 -2px 8px rgba(23,50,79,.12)}.pickbar[hidden]{display:none}.pickbar .go{background:#155fa8;color:#fff;padding:9px 14px;border-radius:7px;text-decoration:none}.pickbar .go[aria-disabled=true]{background:#9db7d3;pointer-events:none}.pickbar #picknote{flex-basis:100%;margin:0;color:#8a5200;font-size:13px}.pickbar #picknote:empty{display:none}
@@ -10,7 +10,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
 <main>
 <nav><a href="workspace.html?view=compose">문제지 만들기</a><a href="generated-bank.html">생성 문항 선택·인쇄</a></nav>
-<h1>공통 Meta 문항 검색</h1>
+<h1>문항 검색</h1>
 <p>메인에 등록된 기출과 생성문제를 같은 분류·난이도로 찾습니다. 검수 상태와 미지정 정보는 문항별 기록을 따릅니다.</p>
 <div class="filters">
 <label>출처<select id="source"><option value="">전체</option><option value="original">기출</option><option value="generated">생성</option><option value="archive">기타 아카이브</option></select></label>
@@ -167,7 +167,7 @@ function render(){
   card.append(title,info);
   const keyLine=keyChips(row);if(keyLine)card.append(keyLine);
   if(row.metaProjectionStatus==='SOURCE_META_STALE_OR_UNAVAILABLE'){
-   const stale=document.createElement('p');stale.textContent='원본 Meta 분류가 현재 자료와 연결되지 않아 표시되지 않습니다.';card.append(stale);
+   const stale=document.createElement('p');stale.textContent='원본 분류가 현재 자료와 연결되지 않아 표시되지 않습니다.';card.append(stale);
   }
   if(row.metaBindingMode==='CONTENT_BOUND_SOURCE_REVISED'){const note=document.createElement('p');note.textContent='분류는 문제 본문·보기·그림 기준으로 기록되었고, 이후 정답·해설이 갱신되었습니다.';card.append(note);}
   const pendingMeta=Object.entries(row.metadataAssignmentEvidence?.fieldStatus||{}).filter(([,status])=>status==='manual_review_pending').map(([field])=>field);

@@ -614,7 +614,8 @@ test('recent and student detail expose cancellation, replacement, review-only, a
   h.w.state.recentShowCancelled = true;
   const markup = h.w.recentAssignmentMarkup();
   assert.match(markup, /취소됨/);
-  assert.match(markup, /대체됨 · replacement-assignment/);
+  assert.match(markup, /대체됨<\/span>/);
+  assert.doesNotMatch(markup, /history-state-chip[^>]*>[^<]*replacement-assignment/, '내부 출제 번호는 칩에 보이지 않는다');
   assert.match(markup, /열람 전용 · 1명/);
   assert.match(markup, /PDF 준비 실패/);
   assert.match(markup, /PDF 다시 준비/);

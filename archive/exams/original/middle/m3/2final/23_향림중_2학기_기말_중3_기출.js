@@ -35,7 +35,7 @@ window.questionBank = [
     "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "primaryMethod": "두 현까지의 중심거리가 같아 현 길이가 같음을 얻고 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
+    "primaryMethod": "중심에서 두 현까지의 거리가 같다는 조건으로 두 현의 길이가 같음을 보이고 이등변삼각형의 각을 계산한다.",
     "decisiveStep": "두 현까지의 중심거리가 같아 현 길이가 같음을 얻고 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
     "solutionImage": "assets/images/23_향림중_2학기_기말_중3_기출/q1-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 원의 중심 O에서 두 현에 내린 같은 길이의 수선과 이등변삼각형, 두 밑각, 꼭지각 x",
@@ -45,7 +45,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -92,7 +95,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "중심에서 현에 내린 수선이 현을 이등분하므로 반현을 피타고라스로 구한 뒤 두 배 한다.",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현을 피타고라스로 구한 뒤 두 배 한다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현을 피타고라스로 구한 뒤 두 배 한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -139,7 +145,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "현 중점과 원호 사이 높이1을 이용해 중심거리를 r−1로 표현하고 반현3과 반지름r의 피타고라스 식을 세운다.",
-    "decisiveStep": "현 중점과 원호 사이 높이1을 이용해 중심거리를 r−1로 표현하고 반현3과 반지름r의 피타고라스 식을 세운다."
+    "decisiveStep": "현 중점과 원호 사이 높이1을 이용해 중심거리를 r−1로 표현하고 반현3과 반지름r의 피타고라스 식을 세운다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -233,7 +242,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반지름 이등변삼각형에서 호AC의 중심각120°를 얻고 접현각54°로 호BC의108°를 얻어 나머지 중심각과 두 접선 사이 각을 결정한다.",
-    "decisiveStep": "반지름 이등변삼각형에서 호AC의 중심각120°를 얻고 접현각54°로 호BC의108°를 얻어 나머지 중심각과 두 접선 사이 각을 결정한다."
+    "decisiveStep": "반지름 이등변삼각형에서 호AC의 중심각120°를 얻고 접현각54°로 호BC의108°를 얻어 나머지 중심각과 두 접선 사이 각을 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -280,7 +292,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름이 정한180° 호와50° 호의 차를 두 할선이 만드는 원 밖 각의 두 배로 연결한다.",
-    "decisiveStep": "지름이 정한180° 호와50° 호의 차를 두 할선이 만드는 원 밖 각의 두 배로 연결한다."
+    "decisiveStep": "지름이 정한180° 호와50° 호의 차를 두 할선이 만드는 원 밖 각의 두 배로 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -327,7 +342,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "primaryMethod": "15° 원주각과 길이4인 호에서 원주를 정하고 길이8인 호의 중심각60° 및 같은 호의 원주각30°를 비례로 구한다.",
-    "decisiveStep": "15° 원주각과 길이4인 호에서 원주를 정하고 길이8인 호의 중심각60° 및 같은 호의 원주각30°를 비례로 구한다."
+    "decisiveStep": "15° 원주각과 길이4인 호에서 원주를 정하고 길이8인 호의 중심각60° 및 같은 호의 원주각30°를 비례로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -374,7 +392,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "교차현의80°가 보는 두 호의 중심각 합160°와 호 길이 합8π를 원주에 대한 같은 비로 놓아 반지름을 정한다.",
-    "decisiveStep": "교차현의80°가 보는 두 호의 중심각 합160°와 호 길이 합8π를 원주에 대한 같은 비로 놓아 반지름을 정한다."
+    "decisiveStep": "교차현의80°가 보는 두 호의 중심각 합160°와 호 길이 합8π를 원주에 대한 같은 비로 놓아 반지름을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -421,7 +442,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반지름 이등변삼각형에서 호DC의92°를 정하고 큰 호ADC의230°에서 빼서 호AD의 원주각을 구한다.",
-    "decisiveStep": "반지름 이등변삼각형에서 호DC의92°를 정하고 큰 호ADC의230°에서 빼서 호AD의 원주각을 구한다."
+    "decisiveStep": "반지름 이등변삼각형에서 호DC의92°를 정하고 큰 호ADC의230°에서 빼서 호AD의 원주각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -468,7 +492,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내접사각형 대각합으로 BAD를 구하고 지름직각과 삼각형 내각합으로 ADB를 만든 뒤 접현각 ABT에 옮긴다.",
-    "decisiveStep": "내접사각형 대각합으로 BAD를 구하고 지름직각과 삼각형 내각합으로 ADB를 만든 뒤 접현각 ABT에 옮긴다."
+    "decisiveStep": "내접사각형 대각합으로 BAD를 구하고 지름직각과 삼각형 내각합으로 ADB를 만든 뒤 접현각 ABT에 옮긴다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -515,7 +542,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 현까지의 등거리로 정삼각형을 복원하고 반현과60°의 사인 관계로 반지름을 구해 원넓이로 연결한다.",
-    "decisiveStep": "세 현까지의 등거리로 정삼각형을 복원하고 반현과60°의 사인 관계로 반지름을 구해 원넓이로 연결한다."
+    "decisiveStep": "세 현까지의 등거리로 정삼각형을 복원하고 반현과60°의 사인 관계로 반지름을 구해 원넓이로 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -562,7 +592,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "원기둥의 단면에서 접점 반지름과 접선의 수직을 사용한다. OP=2r인 직각삼각형으로 접선 두 길이와 접점 중심각을 정한 뒤 실제 감긴 큰 호 240°의 길이를 더한다.",
-    "decisiveStep": "접점 A,B에서 OA⊥PA와 OB⊥PB로 두 접선 길이 8√3과 작은 중심각 120°를 동시에 얻는다. 감긴 부분은 반대쪽 큰 호 240°이므로 전체 길이는 두 접선과 큰 호의 합이다."
+    "decisiveStep": "접점 A,B에서 OA⊥PA와 OB⊥PB로 두 접선 길이 8√3과 작은 중심각 120°를 동시에 얻는다. 감긴 부분은 반대쪽 큰 호 240°이므로 전체 길이는 두 접선과 큰 호의 합이다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -947,7 +980,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 현AB=BC에서 같은 호를 얻고 호비2:1로 원 전체를2:2:1로 나눈 뒤 접현각을 해당 호의 절반으로 구한다.",
-    "decisiveStep": "같은 현AB=BC에서 같은 호를 얻고 호비2:1로 원 전체를2:2:1로 나눈 뒤 접현각을 해당 호의 절반으로 구한다."
+    "decisiveStep": "같은 현AB=BC에서 같은 호를 얻고 호비2:1로 원 전체를2:2:1로 나눈 뒤 접현각을 해당 호의 절반으로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -989,7 +1025,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "121° 원주각이 보는242° 큰 호에서 CD의48°를 빼고 전체360°에서 보완호를 복원하여 E의 원주각을 정한다.",
-    "decisiveStep": "121° 원주각이 보는242° 큰 호에서 CD의48°를 빼고 전체360°에서 보완호를 복원하여 E의 원주각을 정한다."
+    "decisiveStep": "121° 원주각이 보는242° 큰 호에서 CD의48°를 빼고 전체360°에서 보완호를 복원하여 E의 원주각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

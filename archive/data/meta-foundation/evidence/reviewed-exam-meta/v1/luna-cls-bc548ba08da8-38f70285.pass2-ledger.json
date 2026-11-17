@@ -1,0 +1,307 @@
+{
+    "sourceArchiveFile":  "types/high/h2/비상_대수_사인코사인법칙_익힘책_고2_유형확인.js",
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "items":  [
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  1,
+                      "rpmPath":  {
+                                      "l4":  "일반각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "일반각과 호도법"
+                                  },
+                      "primaryMethod":  "보기의 각을 360도 주기로 줄여 다섯 동경의 위치를 비교한다.",
+                      "decisiveStep":  "-11π/3은 60도와 같은 동경이고 나머지 네 각은 300도와 같다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  2,
+                      "primaryMethod":  "넓이 12와 중심각 1.5를 부채꼴 넓이식에 넣어 반지름 4를 구하고 호 길이 6을 둘레에 더한다.",
+                      "decisiveStep":  "1/2·r²·1.5=12에서 r=4임을 얻은 뒤 2r+rθ를 계산한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "hold":  "호 길이와 부채꼴 둘레를 묻는 내용에 맞는 네 칸 유형 조합이 H2-대수 선택지에 없음"
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  3,
+                      "rpmPath":  {
+                                      "l4":  "삼각함수 관계",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 성질"
+                                  },
+                      "primaryMethod":  "두 분수를 통분하고 sin²θ+cos²θ=1로 2/sinθ를 얻어 -4와 같게 둔다.",
+                      "decisiveStep":  "제4사분면 조건은 부호 확인에 쓰이며 식에서 sinθ=-1/2를 결정한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  4,
+                      "rpmPath":  {
+                                      "l4":  "일반각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "일반각과 호도법"
+                                  },
+                      "primaryMethod":  "-7π/3, 11π/6, 9π/4를 주기와 대칭으로 특수각에 맞춰 각각 1/2, -1/2, 1로 계산한다.",
+                      "decisiveStep":  "세 각을 각각 -π/3, 11π/6, π/4의 동치각으로 고쳐 삼각함수 값을 더한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  5,
+                      "rpmPath":  {
+                                      "l4":  "주기·진폭",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 그래프",
+                                      "l3":  "그래프 변환"
+                                  },
+                      "primaryMethod":  "각 함수의 주기를 비교해 |sin(x/2)|의 주기가 2π임을 확인한다.",
+                      "decisiveStep":  "절댓값이 sin의 부호 반 주기를 접어 올려 원래 4π의 절반 주기를 만든다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  6,
+                      "rpmPath":  {
+                                      "l4":  "주기·대칭",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 성질"
+                                  },
+                      "primaryMethod":  "코사인은 180도 대칭쌍, 사인 제곱은 여각쌍, 탄젠트는 여각의 곱을 이용해 각 보기의 값을 확인한다.",
+                      "decisiveStep":  "cos 항은 쌍마다 상쇄되어 cos180도=-1만 남고, 나머지 두 보기는 5와 1이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  7,
+                      "rpmPath":  {
+                                      "l4":  "주기 구간의 해",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각방정식·부등식"
+                                  },
+                      "primaryMethod":  "sin(π/2+x)=cos x로 바꾸어 cos x=cos 2x를 풀고 0≤x\u003c2π에서 해를 센다.",
+                      "decisiveStep":  "2cos²x-cos x-1=0을 인수분해해 cos x=1 또는 -1/2를 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  8,
+                      "rpmPath":  {
+                                      "l4":  "주기 구간의 해",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각방정식·부등식"
+                                  },
+                      "primaryMethod":  "|sin x|\u003e√3/2를 양·음 두 부등식으로 나누어 각각의 열린 구간 끝점을 더한다.",
+                      "decisiveStep":  "네 끝점 π/3, 2π/3, 4π/3, 5π/3의 합이 4π이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  9,
+                      "rpmPath":  {
+                                      "l4":  "외접원 반지름",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "사인법칙"
+                                  },
+                      "primaryMethod":  "∠C=60도를 구하고 AB=12가 마주 보는 각과 외접원 반지름을 사인법칙으로 연결한다.",
+                      "decisiveStep":  "12/sin60도=2R에서 R=4√3을 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  10,
+                      "rpmPath":  {
+                                      "l4":  "변·각 계산",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "사인법칙"
+                                  },
+                      "primaryMethod":  "사인비 3:5:7을 변의 비로 두어 가장 긴 변과 각 C를 정하고 외접원 반지름 7로 길이를 환산한다.",
+                      "decisiveStep":  "cos C=-1/2이므로 sin C=√3/2이고 c=2R sin C=7√3이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  11,
+                      "rpmPath":  {
+                                      "l4":  "두 변과 끼인각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "삼각형의 넓이"
+                                  },
+                      "primaryMethod":  "코사인법칙으로 cos C=1/5를 구한 뒤 양의 sin C=2√6/5를 삼각형 넓이식에 대입한다.",
+                      "decisiveStep":  "넓이 1/2·5·6·sin C를 계산해 6√6을 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  12,
+                      "rpmPath":  {
+                                      "l4":  "일반각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "일반각과 호도법"
+                                  },
+                      "primaryMethod":  "제3사분면의 일반각 범위를 절반으로 나누고 원래 정수 n의 짝홀에 따라 동경의 사분면을 찾는다.",
+                      "decisiveStep":  "n이 짝수이면 θ/2는 제2사분면, 홀수이면 제4사분면에 놓인다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  13,
+                      "rpmPath":  {
+                                      "l4":  "주기·진폭",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 그래프",
+                                      "l3":  "그래프 변환"
+                                  },
+                      "primaryMethod":  "최댓값 5와 최솟값 -1에서 a=3,c=2를 구하고 주기 4π에서 b=1/2를 얻어 abc를 계산한다.",
+                      "decisiveStep":  "2π/b=4π로 b를 정한 뒤 3·1/2·2=3을 계산한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  14,
+                      "rpmPath":  {
+                                      "l4":  "두 변과 끼인각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "삼각형의 넓이"
+                                  },
+                      "primaryMethod":  "내분점과 중점으로 OP=3r/4,OQ=r/2를 놓고 끼인각 π/4인 삼각형 OPQ의 넓이로 r을 구한다.",
+                      "decisiveStep":  "1/2·(3r/4)·(r/2)·sin(π/4)=3√2/2에서 r=4를 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  15,
+                      "rpmPath":  {
+                                      "l4":  "삼각함수 관계",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 성질"
+                                  },
+                      "primaryMethod":  "지름 10이 빗변인 직각삼각형에서 sin과 cos의 비를 구해 cos2θ=2cos²θ-1을 적용한다.",
+                      "decisiveStep":  "cosθ=AP/AB=4/5를 배각식에 대입하면 7/25가 된다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  16,
+                      "rpmPath":  {
+                                      "l4":  "변·각 계산",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "코사인법칙"
+                                  },
+                      "primaryMethod":  "b=k,c=2k로 놓고 코사인법칙과 R=√7인 사인법칙으로 k=√3을 결정해 넓이를 구한다.",
+                      "decisiveStep":  "a=√7k를 얻은 뒤 사인법칙에서 k=√3으로 정하고 1/2·bc·sin120도를 계산한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  }
+              ],
+    "createdAt":  "2026-11-12T17:53:44+09:00"
+}

@@ -27,6 +27,171 @@ const parent = {
 };
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
+// Exercise the real synchronous test loader with in-memory manifest inputs.
+// Non-JSON dependencies retain exactly the builder's digest and version rules.
+function scopeHarnessFixture() {
+  const archiveDir = path.join(root, "archive");
+  const raw = new Map([
+    ["data/synthetic-resolver.json", Buffer.from('\uFEFF{\r\n"synthetic":true\r\n}\r\n')],
+    ["../docs/operations/synthetic/given.png", Buffer.from([137, 80, 78, 71, 13, 10, 26, 10, 0, 255, 128])],
+    ["assets/images/synthetic.svg", Buffer.from('<svg><path d="M0 0"/></svg>\r\n')],
+    ["exams/synthetic.js", Buffer.from('window.questionBank = [];\r\n')],
+  ]);
+  const digest = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
+  const normalized = bytes => bytes.toString("utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+  const files = [...raw].map(([path, bytes]) => ({ path, sha256: digest(normalized(bytes)) }));
+  const manifest = { resolverVersion: canonical.RESOLVER_VERSION, files };
+  manifest.projectionVersion = "archive2-canonical-v1:" + digest(JSON.stringify({
+    resolverVersion: manifest.resolverVersion,
+    files: files.slice().sort((a, b) => a.path.localeCompare(b.path)),
+  }));
+  const harnessSource = fs.readFileSync(path.join(root, "tests/helpers/archive2-scope-harness.cjs"), "utf8");
+  const run = () => {
+    const fakeFs = { readFileSync(file, encoding) {
+      let bytes;
+      if (file === path.join(archiveDir, "archive2-workspace.js")) bytes = Buffer.from("");
+      else if (file === path.join(archiveDir, "data/archive2-canonical-input-manifest.json"))
+        bytes = Buffer.from(JSON.stringify(manifest));
+      else {
+        const entry = [...raw].find(([relative]) => path.resolve(archiveDir, relative) === file);
+        if (!entry) throw new Error("SYNTHETIC_DEPENDENCY_MISSING");
+        bytes = entry[1];
+      }
+      return encoding ? bytes.toString(encoding) : bytes;
+    } };
+    const module = { exports: {} };
+    vm.runInNewContext(harnessSource, {
+      __dirname: path.join(root, "tests/helpers"), module, Buffer,
+      require(name) {
+        if (name === "node:fs") return fakeFs;
+        if (name === "../../archive/archive2-core.js")
+          return { Canonical: { resolveCatalog: ({ versionBundle }) => versionBundle } };
+        return require(name);
+      },
+    }, { filename: "archive2-scope-harness.cjs", timeout: 1000 });
+    return module.exports.catalog;
+  };
+  return { raw, manifest, digest, normalized, run };
+}
+
+test("scope harness verifies PNG/SVG/JS dependencies without treating them as JSON resources", () => {
+  const fixture = scopeHarnessFixture(), result = fixture.run();
+  assert.equal(result.projectionVersion, fixture.manifest.projectionVersion);
+  assert.deepEqual(Object.keys(result.resources), ["data/synthetic-resolver.json"]);
+  assert.equal(result.resources["data/synthetic-resolver.json"].synthetic, true);
+  assert.deepEqual(Object.keys(result.files).sort(), [...fixture.raw.keys()].sort());
+  for (const entry of fixture.manifest.files) assert.equal(result.files[entry.path].sha256, entry.sha256);
+});
+
+for (const file of ["../docs/operations/synthetic/given.png", "assets/images/synthetic.svg", "exams/synthetic.js"]) {
+  test(`scope harness rejects changed digest-only dependency ${path.extname(file)}`, () => {
+    const fixture = scopeHarnessFixture();
+    fixture.raw.set(file, Buffer.concat([fixture.raw.get(file), Buffer.from("SYNTHETIC_CHANGE")]));
+    assert.throws(fixture.run, /Archive2 test input digest mismatch/);
+  });
+  test(`scope harness rejects missing digest-only dependency ${path.extname(file)}`, () => {
+    const fixture = scopeHarnessFixture(); fixture.raw.delete(file);
+    assert.throws(fixture.run, /SYNTHETIC_DEPENDENCY_MISSING/);
+  });
+}
+
+test("scope harness keeps malformed JSON rejection even when its digest is correct", () => {
+  const fixture = scopeHarnessFixture(), file = "data/synthetic-resolver.json";
+  fixture.raw.set(file, Buffer.from("{ malformed JSON"));
+  fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.raw.get(file));
+  assert.throws(fixture.run, /JSON/);
+});
+
+test("scope harness refuses a binary body renamed as a JSON resolver resource", () => {
+  const fixture = scopeHarnessFixture(), file = "data/synthetic-resolver.json";
+  const bytes = fixture.raw.get("../docs/operations/synthetic/given.png");
+  fixture.raw.set(file, bytes);
+  fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.normalized(bytes));
+  assert.throws(fixture.run, /JSON/);
+});
+
+test("scope harness binds a non-JSON dependency digest into the complete projection version", () => {
+  const fixture = scopeHarnessFixture(), file = "../docs/operations/synthetic/given.png";
+  const bytes = Buffer.concat([fixture.raw.get(file), Buffer.from("RESEALED_SYNTHETIC_CHANGE")]);
+  fixture.raw.set(file, bytes);
+  fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.normalized(bytes));
+  assert.throws(fixture.run, /Archive2 test manifest version mismatch/);
+});
+
+test("scope harness refuses removal of a dependency from the committed manifest", () => {
+  const fixture = scopeHarnessFixture(); fixture.manifest.files.pop();
+  assert.throws(fixture.run, /Archive2 test manifest version mismatch/);
+});
+
+function canonicalLoaderBoundary(kind) {
+  const fixture = scopeHarnessFixture(), archiveDir = path.join(root, "archive");
+  const fakeFs = { readFileSync(file, encoding) {
+    let bytes;
+    if (file === path.join(archiveDir, "data/archive2-canonical-input-manifest.json"))
+      bytes = Buffer.from(JSON.stringify(fixture.manifest));
+    else {
+      const entry = [...fixture.raw].find(([relative]) => path.resolve(archiveDir, relative) === file);
+      if (!entry) throw new Error("SYNTHETIC_DEPENDENCY_MISSING");
+      bytes = entry[1];
+    }
+    return encoding ? bytes.toString(encoding) : bytes;
+  } };
+  const run = async () => {
+    if (kind === "readiness") {
+      const relative = "archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs";
+      const source = fs.readFileSync(path.join(root, relative), "utf8");
+      const start = source.indexOf("const archiveRoot ="), end = source.indexOf("const catalog =");
+      assert.ok(start > 0 && end > start, "exercise the actual readiness loader before catalog resolution");
+      const code = source.slice(start, end).replaceAll("import.meta.url", JSON.stringify(new URL("../" + relative, import.meta.url).href));
+      return vm.runInNewContext(code + "\n({files,resources,projectionVersion});", {
+        fs: fakeFs, path, crypto, Buffer, fileURLToPath, core: { normalizeFile: value => value },
+      }, { filename: relative, timeout: 1000 });
+    }
+    const relative = "archive/tools/report-archive2-canonical-impact.mjs";
+    const source = fs.readFileSync(path.join(root, relative), "utf8");
+    const start = source.indexOf("async function loadFinalCatalog("), end = source.indexOf("export async function buildImpactReport(");
+    assert.ok(start > 0 && end > start, "exercise the complete actual impact-report loader");
+    return vm.runInNewContext(source.slice(start, end) + "\nloadFinalCatalog(root);", {
+      fs: fakeFs, path, Buffer, root, sha256: fixture.digest,
+      core: { Canonical: { computeProjectionVersion: canonical.computeProjectionVersion,
+        resolveCatalog: ({ versionBundle }) => versionBundle } },
+    }, { filename: relative, timeout: 1000 });
+  };
+  return { ...fixture, run };
+}
+
+for (const kind of ["readiness", "impact-report"]) {
+  test(`canonical manifest ${kind} loader verifies binary/source dependencies and parses only JSON`, async () => {
+    const fixture = canonicalLoaderBoundary(kind), result = await fixture.run();
+    assert.equal(result.projectionVersion, fixture.manifest.projectionVersion);
+    assert.deepEqual(Object.keys(result.resources), ["data/synthetic-resolver.json"]);
+    assert.deepEqual(Object.keys(result.files).sort(), [...fixture.raw.keys()].sort());
+  });
+  for (const file of ["../docs/operations/synthetic/given.png", "assets/images/synthetic.svg", "exams/synthetic.js"]) {
+    test(`canonical manifest ${kind} loader rejects changed ${path.extname(file)} bytes`, async () => {
+      const fixture = canonicalLoaderBoundary(kind);
+      fixture.raw.set(file, Buffer.concat([fixture.raw.get(file), Buffer.from("SYNTHETIC_CHANGE")]));
+      await assert.rejects(fixture.run, /canonical input digest mismatch/);
+    });
+    test(`canonical manifest ${kind} loader rejects missing ${path.extname(file)} bytes`, async () => {
+      const fixture = canonicalLoaderBoundary(kind); fixture.raw.delete(file);
+      await assert.rejects(fixture.run, /SYNTHETIC_DEPENDENCY_MISSING/);
+    });
+  }
+  test(`canonical manifest ${kind} loader binds resealed binary digests into its projection version`, async () => {
+    const fixture = canonicalLoaderBoundary(kind), file = "../docs/operations/synthetic/given.png";
+    const bytes = Buffer.concat([fixture.raw.get(file), Buffer.from("RESEALED_CHANGE")]);
+    fixture.raw.set(file, bytes); fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(fixture.normalized(bytes));
+    await assert.rejects(fixture.run, /projection version mismatch/);
+  });
+  test(`canonical manifest ${kind} loader still rejects malformed JSON with a matching digest`, async () => {
+    const fixture = canonicalLoaderBoundary(kind), file = "data/synthetic-resolver.json";
+    const bytes = Buffer.from("{ malformed JSON"); fixture.raw.set(file, bytes);
+    fixture.manifest.files.find(row => row.path === file).sha256 = fixture.digest(bytes);
+    await assert.rejects(fixture.run, /JSON/);
+  });
+}
+
 function fixture({ validAssignment = true, catalogSeed = false } = {}) {
   const row = {
     questionUid: uid,
@@ -748,4 +913,204 @@ test("canonical manifest digests use stable LF authority bytes in CRLF worktrees
     const digest = crypto.createHash("sha256").update(canonicalText).digest("hex");
     assert.equal(digest, entry.sha256, entry.path);
   }
+});
+
+// The UID/parent tuple is the existing E023 Q21 approval. All hashes and receipt
+// bytes below are synthetic contract inputs, never a claim about an unissued
+// source-preservation request on main.
+function issuedM2ParentFixture() {
+  const input = fixture({ validAssignment: false });
+  const resources = input.versionBundle.resources;
+  const targetUid = "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3";
+  const file = "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js";
+  const target = { grade: "중2", curriculumKey: "2015", courseKey: "M2-2",
+    standardUnitKey: "M2-05", subUnitKey: "M2-05-TRIANGLE_PROPERTIES",
+    L1: "삼각형의 성질", L2: "삼각형의 외심과 내심" };
+  const proofPath = "data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-m2-parent-fixture.json";
+  const revision = "meta-foundation:MIDDLE_GEOMETRY@1.0.0:exam-final_qa-v2:issued-m2-parent-fixture";
+  const accepted = {
+    questionUid: targetUid, sourceArchiveFile: file, sourceOrdinal: 21, ...target,
+    sourceFingerprint, contentFingerprint: assignmentFingerprint,
+    metadataStatus: "approved_semantic_review", metadataApprovalType: "FINAL_QA", metadataRevision: revision,
+    reviewStatus: "reviewed_pass", level: "중", difficultyBucket: 2,
+    difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", legacyLevelCompatibility: "NORMAL",
+    standardCourse: "중2 수학", standardUnit: "삼각형의 성질", subUnit: "삼각형의 성질",
+    L3: "검증된 개념", L4: "검증된 유형", problemTypeKey: "PT_ISSUED_PARENT", templateKey: "TPL_ISSUED_PARENT",
+    crossConceptKeys: [], secondaryConceptKeys: [], conditionKeys: [], integrationPattern: "NONE",
+    curriculumApplicability: "BOTH", defaultSelectable: false,
+    fieldStatus: Object.fromEntries(["standardUnit", "subUnit", "problemType", "template", "difficulty", "crossConcept", "condition"]
+      .map(field => [field, "approved_final_qa"])),
+    approvalEvidence: ["archive/" + proofPath],
+  };
+  const source = {
+    questionUid: targetUid, sourceFile: file, sourceOrdinal: 21, sourceGrade: "중2",
+    identityStatus: "VERIFIED", sourceIntegrityStatus: "VERIFIED", sourceStatus: "VERIFIED",
+    sourceFingerprint, assignmentFingerprint, approvedSourceFingerprint: sourceFingerprint,
+    metadataRevision: revision, automatic: false, defaultSelectable: false, reviewStatus: "reviewed_pass",
+    metaProjectionStatus: "DISPLAY_PROJECTION_UNAVAILABLE", metaProjectionFailureReason: "DISPLAY_PROJECTION_PARENT_AMBIGUOUS",
+    metaProjection: null,
+    metadataAssignmentEvidence: { questionUid: targetUid, sourceFile: file, sourceOrdinal: 21,
+      sourceFingerprint, assignmentFingerprint, metadataRevision: revision, metadataStatus: accepted.metadataStatus,
+      fieldStatus: structuredClone(accepted.fieldStatus), evidenceRefs: [...accepted.approvalEvidence] },
+  };
+  const scopeParents = ["이등변삼각형", target.L2, "삼각형의 성질"].map(L2 => ({ ...target, L2 }));
+  resources[masterPath] = { records: scopeParents.map(row => ({ curriculum: row.curriculumKey,
+    scope: row.courseKey, majorUnit: row.L1, midUnit: row.L2, concepts: [] })) };
+  resources["data/archive2-canonical-projection-policy.json"].gradeCourseAllowlist = [
+    { grade: "중2", curriculumKey: "2015", courseKey: "M2-2" },
+  ];
+  resources["data/basic-scope-parent-links.json"].records = scopeParents;
+  resources["data/archive2-catalog.json"] = { schemaVersion: "archive2-v1", indexVersion: "fixture",
+    records: [source], exams: [{ file, grade: "중2", qCount: 24 }], sourceHashes: [[file, "c".repeat(64)]] };
+  const runtime = resources["data/meta-foundation/runtime/middle-geometry-v1.json"] = {
+    status: "ACTIVE", packId: "MIDDLE_GEOMETRY", packVersion: "1.0.0", records: [structuredClone(accepted)],
+    generatedFrom: { reviewedExam_fixture: "archive/" + proofPath }, taxonomyRows: [], ownedScopes: [],
+  };
+  resources["data/meta-foundation/compiled/taxonomy_registry.json"] = { status: "DERIVED_READ_ONLY",
+    sourcePacks: [{ packId: runtime.packId, version: runtime.packVersion }],
+    problemTypes: [{ problemTypeKey: accepted.problemTypeKey, status: "ACTIVE" }],
+    templates: [{ templateKey: accepted.templateKey, parentProblemTypeKey: accepted.problemTypeKey, status: "ACTIVE" }],
+  };
+  resources["data/meta-foundation/compiled/curriculum_bindings.json"] = { bindings: [{ curriculum: "2015",
+    standardUnitKey: target.standardUnitKey, subUnitKey: target.subUnitKey, problemTypeKey: accepted.problemTypeKey }] };
+  const receipt = resources[proofPath] = { schemaVersion: "archive-reviewed-exam-meta-registration-v2",
+    metadataRegistrationStatus: "REGISTERED", sourceArchiveFile: file, sourceRawSha256: "c".repeat(64), totalQuestions: 1,
+    approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "EXISTING_APPROVAL_FIXTURE" }, appliedRecords: [accepted] };
+  input.versionBundle.files[proofPath] = { sha256: "b".repeat(64) };
+  return { input, resources, source, runtime, accepted, receipt, targetUid, target, proofPath, file, scopeParents };
+}
+
+test("issued M2 parent display transports only the current approved Q21 parent; default ambiguity and eligibility remain unchanged", () => {
+  const f = issuedM2ParentFixture();
+  const unselectedUid = "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3";
+  const unselected = structuredClone(f.source);
+  unselected.questionUid = unselectedUid; unselected.sourceOrdinal = 3;
+  unselected.metadataAssignmentEvidence.questionUid = unselectedUid; unselected.metadataAssignmentEvidence.sourceOrdinal = 3;
+  f.resources["data/archive2-catalog.json"].records.push(unselected);
+  const otherApproved = { ...structuredClone(f.accepted), questionUid: unselectedUid, sourceOrdinal: 3 };
+  f.receipt.appliedRecords.push(otherApproved); f.receipt.totalQuestions = 2;
+  f.runtime.records.push(structuredClone(otherApproved));
+  const before = structuredClone(f.input);
+  const defaults = ProblemBankMeta.createSourceBoundDisplayProjection({
+    meta: { ...f.accepted, contentFingerprint: assignmentFingerprint },
+    identity: { questionUid: f.targetUid, sourceArchiveFile: f.file, sourceOrdinal: 21 },
+    sourceFile: f.file, sourceOrdinal: 21, sourceGrade: "중2", sourceFingerprint, assignmentFingerprint,
+    gradeCourseAllowlist: f.resources["data/archive2-canonical-projection-policy.json"].gradeCourseAllowlist,
+    scopeParents: f.scopeParents, canonicalParents: f.scopeParents,
+  });
+  assert.equal(defaults.reason, "DISPLAY_PROJECTION_PARENT_AMBIGUOUS", "the generic three-parent rule is unchanged");
+  const resolved = canonical.resolveCatalog(f.input);
+  const selected = resolved.records.find(row => row.questionUid === f.targetUid);
+  assert.deepEqual(selected.canonicalAssignmentReasons, []);
+  assert.equal(selected.metaProjectionStatus, "DISPLAY_ONLY_SOURCE_BOUND");
+  assert.equal(selected.metaProjectionFailureReason, "");
+  assert.equal(selected.metaProjection.parentBinding.resolution, "ISSUED_FINAL_QA_EXACT_PARENT");
+  assert.equal(selected.metaProjection.L2, f.target.L2);
+  assert.equal(selected.metaProjection.parentBinding.reference, f.proofPath);
+  assert.equal(selected.metaProjection.parentBinding.sha256, "b".repeat(64));
+  assert.deepEqual(f.input, before, "no authority, source, runtime or parent-table mutation");
+  assert.equal(resolved.records.find(row => row.questionUid === unselectedUid).metaProjectionFailureReason,
+    "DISPLAY_PROJECTION_PARENT_AMBIGUOUS", "an equally approved unselected UID is unchanged");
+
+  const noRepairInput = structuredClone(f.input);
+  noRepairInput.versionBundle.resources["data/archive2-catalog.json"].records[0].metaProjectionFailureReason = "DISPLAY_PROJECTION_PARENT_MISSING";
+  const withoutRepair = canonical.resolveCatalog(noRepairInput).records.find(row => row.questionUid === f.targetUid);
+  const withoutDisplay = row => Object.fromEntries(Object.entries(row).filter(([key]) =>
+    !["metaProjection", "metaProjectionStatus", "metaProjectionFailureReason"].includes(key)));
+  assert.deepEqual(withoutDisplay(selected), withoutDisplay(withoutRepair));
+  const afterPage = ProblemBankMeta.projectOriginal(selected), beforePage = ProblemBankMeta.projectOriginal(withoutRepair);
+  for (const field of ["verifiedEligible", "automatic", "defaultSelectable", "directSelectable", "reviewStatus", "sourceStatus",
+    "problemTypeKey", "templateKey", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility",
+    "rpmPrimaryRecordId", "rpmL1", "rpmL2", "rpmL3", "rpmL4", "assignmentEvidence", "reviewedExamRegistration"])
+    assert.deepEqual(afterPage[field], beforePage[field], field);
+  assert.equal(afterPage.verifiedEligible, false);
+  assert.equal(afterPage.metaBindingMode, "EXACT");
+  assert.deepEqual(core.basicEligibility(selected, { canonicalAuthority: resolved.canonicalAuthority }),
+    core.basicEligibility(withoutRepair, { canonicalAuthority: resolved.canonicalAuthority }));
+});
+
+test("issued M2 parent display refuses stale, unbound, ambiguous and nonselected authority", async t => {
+  const cases = [
+    ["new whole-source bytes without a newly issued preservation receipt", f => { f.resources["data/archive2-catalog.json"].sourceHashes[0][1] = "d".repeat(64); }],
+    ["current full fingerprint changed while classification fingerprint stayed equal", f => { f.source.sourceFingerprint = "d".repeat(64); }],
+    ["current classification fingerprint changed", f => { f.source.assignmentFingerprint = "d".repeat(64); }],
+    ["current identity is unresolved", f => { f.source.identityStatus = "UNRESOLVED"; }],
+    ["wrong source ordinal", f => { f.source.sourceOrdinal = 20; }],
+    ["metadata revision drift", f => { f.source.metadataAssignmentEvidence.metadataRevision += ":changed"; }],
+    ["source row revision drift", f => { f.source.metadataRevision += ":changed"; }],
+    ["current approval evidence is missing", f => { f.source.metadataAssignmentEvidence.evidenceRefs = []; }],
+    ["runtime revision alone changed", f => { f.runtime.records[0].metadataRevision += ":changed"; }],
+    ["runtime approval evidence alone changed", f => { f.runtime.records[0].approvalEvidence = ["archive/data/evidence/other.json"]; }],
+    ["runtime approval status changed", f => { f.runtime.records[0].metadataStatus = "registration_pending_semantic_review"; }],
+    ["runtime field approval changed", f => { f.runtime.records[0].fieldStatus.template = "manual_review_pending"; }],
+    ["receipt approval not reviewed", f => { f.receipt.approval.metadataReviewed = false; }],
+    ["a different valid approval lane", f => { f.receipt.approval.type = "REVIEW2"; f.receipt.approval.reviewPassCount = 2; }],
+    ["same labels without a receipt digest", f => { delete f.input.versionBundle.files[f.proofPath]; }],
+    ["metadata explicit pending", f => { f.source.metadataAssignmentEvidence.fieldStatus.template = "manual_review_pending"; }],
+    ["explicit source hold", f => { f.source.sourceIssueHold = true; }],
+    ["explicit semantic hold", f => { f.source.semanticDisposition = "HOLD"; }],
+    ["duplicate matching scope parents", f => { f.scopeParents.push({ ...f.target }); }],
+    ["approved parent exists only outside the exact-subunit candidate set", f => { f.scopeParents.find(p => p.L2 === f.target.L2).subUnitKey = ""; }],
+    ["another issued parent is outside the approved repair scope", f => { f.accepted.L2 = "이등변삼각형"; f.runtime.records[0].L2 = f.accepted.L2; }],
+    ["approved parent is missing from current master", f => { f.resources[masterPath].records = f.resources[masterPath].records.filter(p => p.midUnit !== f.target.L2); }],
+    ["an existing valid projection must not be overwritten", f => { f.source.metaProjection = { displayOnly: true, projectionStatus: "DISPLAY_ONLY_SOURCE_BOUND", evidence: "retain" }; }],
+  ];
+  for (const [name, mutate] of cases) await t.test(name, () => {
+    const f = issuedM2ParentFixture(); mutate(f);
+    const beforeProjection = structuredClone(f.source.metaProjection);
+    const result = canonical.resolveCatalog(f.input).records.find(row => row.questionUid === f.targetUid);
+    assert.equal(result.metaProjectionFailureReason, "DISPLAY_PROJECTION_PARENT_AMBIGUOUS");
+    assert.deepEqual(result.metaProjection, beforeProjection);
+  });
+  for (const status of ["HOLD", "STALE", "INVALID", "EVIDENCE_DEBT", "PENDING", "UNKNOWN"]) await t.test("explicit field " + status, () => {
+    const f = issuedM2ParentFixture(); f.source.metaFieldEvidence = { problemTypeKey: { status } };
+    const result = canonical.resolveCatalog(f.input).records[0];
+    assert.equal(result.metaProjectionFailureReason, "DISPLAY_PROJECTION_PARENT_AMBIGUOUS");
+    const page = ProblemBankMeta.projectOriginal(result);
+    if (["HOLD", "STALE", "INVALID", "EVIDENCE_DEBT"].includes(status)) assert.equal(page.metaStatus.problemTypeKey, status);
+    assert.equal(page.verifiedEligible, false);
+  });
+});
+
+test("issued M2 parent display keeps existing field evidence and refuses multiple current receipt claims", () => {
+  const f = issuedM2ParentFixture();
+  f.source.metaFieldEvidence = { problemTypeKey: { status: "CONFIRMED", reference: "existing-field-proof" } };
+  const single = canonical.resolveCatalog(f.input).records[0];
+  assert.deepEqual(single.metaProjection.evidenceByField.problemTypeKey, f.source.metaFieldEvidence.problemTypeKey);
+  assert.equal(ProblemBankMeta.projectOriginal(single).metaStatus.problemTypeKey, "CONFIRMED");
+  const otherPath = f.proofPath.replace("fixture.json", "duplicate.json");
+  f.accepted.approvalEvidence.push("archive/" + otherPath);
+  f.runtime.records[0].approvalEvidence = [...f.accepted.approvalEvidence];
+  f.source.metadataAssignmentEvidence.evidenceRefs = [...f.accepted.approvalEvidence];
+  f.resources[otherPath] = structuredClone(f.receipt);
+  f.input.versionBundle.files[otherPath] = { sha256: "e".repeat(64) };
+  f.runtime.generatedFrom.reviewedExam_duplicate = "archive/" + otherPath;
+  const duplicate = canonical.resolveCatalog(f.input).records[0];
+  assert.equal(duplicate.metaProjection, null);
+  assert.equal(duplicate.metaProjectionFailureReason, "DISPLAY_PROJECTION_PARENT_AMBIGUOUS");
+});
+
+test("issued M2 parent display requires the existing loader to verify the exact receipt bytes", async () => {
+  const f = issuedM2ParentFixture();
+  const hash = value => crypto.createHash("sha256").update(value).digest("hex");
+  const actualMasterSha = hash(JSON.stringify(f.resources[masterPath]));
+  f.resources["data/archive2-canonical-projection-policy.json"].canonicalMasterSha256 = actualMasterSha;
+  f.resources["data/basic-scope-parent-links.json"].authority.sha256 = actualMasterSha;
+  const payloads = new Map(canonical.MANIFEST_REQUIRED_PATHS.map(path => [path, JSON.stringify(f.resources[path] || {})]));
+  for (const [path, value] of Object.entries(f.resources)) payloads.set(path, JSON.stringify(value));
+  const files = [...payloads].map(([path, bytes]) => ({ path, sha256: hash(bytes) }));
+  const manifest = { schemaVersion: "archive2-canonical-input-manifest-v1", resolverVersion: canonical.RESOLVER_VERSION,
+    projectionVersion: await canonical.computeProjectionVersion(files), files };
+  const baseUrl = "https://archive.test/archive/workspace.html";
+  const contents = new Map([...payloads].map(([path, bytes]) => [new URL(path, baseUrl).href, bytes]));
+  contents.set(new URL("data/archive2-canonical-input-manifest.json", baseUrl).href, JSON.stringify(manifest));
+  const fetcher = async url => contents.has(String(url)) ? new Response(contents.get(String(url))) : new Response("missing", { status: 404 });
+  const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
+  const row = canonical.resolveCatalog({ versionBundle: bundle }).records[0];
+  assert.equal(row.metaProjectionStatus, "DISPLAY_ONLY_SOURCE_BOUND");
+  assert.equal(row.metaProjection.parentBinding.sha256, hash(payloads.get(f.proofPath)));
+  const altered = structuredClone(f.receipt); altered.approval.metadataReviewed = false;
+  contents.set(new URL(f.proofPath, baseUrl).href, JSON.stringify(altered));
+  await assert.rejects(canonical.loadInputBundle(fetcher, baseUrl),
+    error => error.code === "CANONICAL_INPUT_DIGEST_MISMATCH");
 });

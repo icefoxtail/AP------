@@ -588,7 +588,9 @@ window.questionBank = [
     "curriculum": "2015",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -814,7 +816,9 @@ window.questionBank = [
     "curriculum": "2015",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,

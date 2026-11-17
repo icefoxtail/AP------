@@ -306,7 +306,7 @@ test('teacher output refuses an approved row bound to a different selected sourc
  const {context,getPopup,getPublishCalls,el}=runFixture({session:{role:'teacher',session_token:'test-session'}});await new Promise(resolve=>setTimeout(resolve,25));
  vm.runInContext("sourceExamChoice=SOURCE_EXAM_ROWS.find(exam=>exam.school==='효천고');mockItems=[{row:selectableRows[0],locked:false,question:null}];generatedConfigSnapshot=currentMockConfig();generatedConfigKey=mockConfigKey()",context,{timeout:2000});
  await vm.runInContext("openMockOutput('ans')",context,{timeout:2000});
- assert.equal(getPopup(),null);assert.equal(getPublishCalls(),0);assert.match(el('message').textContent,/기준 시험지 결속/);
+ assert.equal(getPopup(),null);assert.equal(getPublishCalls(),0);assert.match(el('message').textContent,/기준 시험지와의 일치 여부/);
 });
 test('mixed solution renderer gives qpp=1 a full-width single column and retains default two-column layout',()=>{
  assert.match(mixedHtml,/const singleColumn = normalizeMixedQpp\(AppState\.qpp\) === 1/);

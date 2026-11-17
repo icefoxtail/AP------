@@ -109,8 +109,28 @@ function solutionAssetMetadata(questions, directory) {
     totalBytes: files.reduce((sum, file) => sum + file.bytes, 0), largestFileBytes: Math.max(0, ...files.map(file => file.bytes)), files };
 }
 
-async function serve(directory, sharedSourceRoot = directory, sourceOverlay) {
+// 2026-11-16 intentional output change: original exam headers show a readable
+// title ("22_강남여고_1학기_중간_고1_기출" -> "2022 강남여고 고1 1학기 중간")
+// resolved by archive/exam-display-title.js. The immutable references predate
+// the rule, so the reference host gets the same title through the engine's own
+// existing input, `window.examDisplayTitle` (engine.html and the screen runtime
+// both read `window.examDisplayTitle || title`). Nothing is normalised or
+// ignored at comparison time: the reference renders the readable title and every
+// text hash, block geometry and printed pixel is still compared as before. If the
+// current engine stopped resolving the title the same way, parity fails.
+// Opt in only for the reference host: serve(dir, root, overlay, { referenceDisplayTitle: true }).
+function referenceDisplayTitleSnippet() {
+  const rule = fs.readFileSync(path.join(root, 'archive/exam-display-title.js'), 'utf8');
+  return '\n;(function () {\n' + rule + '\n;if (!window.examDisplayTitle && window.ExamDisplayTitle) {' +
+    ' var shown = window.examTitle || (!window.questionBank && (window.examData && (window.examData.title || window.examData.examTitle)));' +
+    ' if (typeof shown === "string" && shown) window.examDisplayTitle = window.ExamDisplayTitle.readableExamTitle(shown); }\n}).call(window);\n';
+}
+
+async function serve(directory, sharedSourceRoot = directory, sourceOverlay, options = {}) {
   const state = { retryRecovered: false, faults: {}, timers: new Set() };
+  const titleRule = options.referenceDisplayTitle ? referenceDisplayTitleSnippet() : '';
+  const withTitleRule = (pathname, bytes) => titleRule && /^\/archive\/exams\/.+\.js$/.test(pathname)
+    ? Buffer.concat([Buffer.from(bytes), Buffer.from(titleRule)]) : bytes;
   const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
     '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2' };
   const server = http.createServer((req, res) => {
@@ -138,7 +158,7 @@ async function serve(directory, sharedSourceRoot = directory, sourceOverlay) {
       const pinnedSource = sourceOverlay?.(pathname);
       if (pinnedSource !== undefined) {
         res.setHeader('Content-Type', mime['.js']);
-        res.end(pinnedSource);
+        res.end(withTitleRule(pathname, pinnedSource));
         return;
       }
       const servingRoot = pathname.startsWith('/archive/exams/') || pathname.startsWith('/archive/assets/') ? sharedSourceRoot : directory;
@@ -147,6 +167,7 @@ async function serve(directory, sharedSourceRoot = directory, sourceOverlay) {
         res.writeHead(404); res.end(); return;
       }
       res.setHeader('Content-Type', mime[path.extname(filename)] || 'application/octet-stream');
+      if (titleRule && /^\/archive\/exams\/.+\.js$/.test(pathname)) { res.end(withTitleRule(pathname, fs.readFileSync(filename))); return; }
       const stream = fs.createReadStream(filename);
       stream.on('error', () => { if (!res.headersSent) res.writeHead(500); res.end(); });
       stream.pipe(res);
@@ -424,7 +445,7 @@ async function main() {
       sources: sourceFiles.map(file => ({ file, sha256: hash(fs.readFileSync(path.join(root, file), 'utf8')) })) };
     report.fixture.solutionAssets = solutionAssetMetadata(actual, root);
     const originalCount = loadBank(root, sourceFiles[0]).length;
-    baselineServer = await serve(baselineRoot, root); currentServer = await serve(root);
+    baselineServer = await serve(baselineRoot, root, undefined, { referenceDisplayTitle: true }); currentServer = await serve(root);
     const { chromium } = require('playwright');
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();

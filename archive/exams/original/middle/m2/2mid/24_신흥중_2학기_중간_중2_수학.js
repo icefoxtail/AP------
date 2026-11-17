@@ -833,7 +833,7 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution-visual-v2.svg",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "crossConceptKeys": [],

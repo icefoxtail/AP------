@@ -136,8 +136,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$\\sqrt{x^2}=-x$이므로 $x<0$, $\\sqrt{(-y)^2}=y$이므로 $y>0$이다.\n따라서 $\\sqrt{y^2}=y$, $\\sqrt{(x-y)^2}=y-x$, $\\sqrt{(-2x)^2}=-2x$이다.\n그러므로 $y+(y-x)-(-2x)=x+2y$이고 정답은 ①이다.",
     "level": "중",
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -349,8 +349,8 @@ window.questionBank = [
     "wide": false,
     "solution": "주어진 근삿값 $\\sqrt2=1.414$, $\\sqrt{20}=4.472$를 이용하여 각각 계산한다.\n\n① $\\sqrt{0.08}=\\sqrt{\\dfrac8{100}}=\\dfrac{2\\sqrt2}{10}$\n$\\approx\\dfrac{2\\cdot1.414}{10}=0.2828$이므로 옳다.\n\n② $\\sqrt{0.2}=\\sqrt{\\dfrac{20}{100}}=\\dfrac{\\sqrt{20}}{10}$\n$\\approx\\dfrac{4.472}{10}=0.4472$이므로 옳다.\n\n③ $\\sqrt{0.5}=\\sqrt{\\dfrac{50}{100}}=\\dfrac{5\\sqrt2}{10}=\\dfrac{\\sqrt2}{2}$\n$\\approx\\dfrac{1.414}{2}=0.707$이므로 옳다.\n\n④ $\\sqrt{18}=\\sqrt{9\\cdot2}=3\\sqrt2$\n$\\approx3\\cdot1.414=4.242$이므로 옳다.\n\n⑤ $\\sqrt{200}=\\sqrt{100\\cdot2}=10\\sqrt2$\n$\\approx10\\cdot1.414=14.14$이므로 $141.4$와 다르다.\n\n따라서 옳지 않은 것은 ⑤이다.",
     "level": "중",
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

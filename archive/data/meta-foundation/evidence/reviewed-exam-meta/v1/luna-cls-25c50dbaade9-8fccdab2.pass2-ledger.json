@@ -1,0 +1,466 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T22:45:13+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/25_순천고_2학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "이항분포 B(100,3/5)의 분산을 구하고 -2X+4의 분산에는 (-2)²을 곱한다.",
+                      "decisiveStep":  "V(X)=100×(3/5)×(2/5)=24이므로 V(-2X+4)=4×24=96이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(X)=7, V(X)=2를 Y=aX+b의 평균 0과 분산 2에 대입하여 a²과 b의 관계를 구한다.",
+                      "decisiveStep":  "2a²=2, 7a+b=0이므로 ab=-7a²=-7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "붙인 두 정육면체에서 A부터 L까지의 이동을 가로 두 번, 깊이 한 번, 높이 한 번의 배열로 세고 C 전후 경로 수를 곱한다.",
+                      "decisiveStep":  "전체 4!/2!=12개 중 C를 지나는 경로는 2!×2!=4개이므로 확률은 1/3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_GRID_SHORTEST_PATH",
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "t²-2(A-1)t+4A-4=0의 판별식을 0으로 놓아 앞면 횟수 A의 가능한 값을 찾는다.",
+                      "decisiveStep":  "판별식 4(A-1)(A-5)=0에서 A=1 또는 5이므로 확률은 (₈C₁+₈C₅)/2⁸=1/4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "이항분포의 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "통학 시간 X가 N(30,5²)을 따르므로 지각 사건 X\u003e40을 Z=(X-30)/5로 표준화한다.",
+                      "decisiveStep":  "40분의 표준점수는 2이므로 지각 확률은 0.5-0.4772=0.0228이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "N(m,σ²)의 평균 m에 대한 좌우 대칭과 (X-m)/σ의 평균·분산을 이용해 세 보기를 확인한다.",
+                      "decisiveStep":  "[m-σ,m+σ]의 확률은 왼쪽 절반의 두 배이고 대칭축은 x=m이며 표준화한 변수는 N(0,1)이므로 세 보기 모두 참이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "표준정규분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "윷가락 네 개 중 평평한 면이 정확히 두 개일 확률을 구하고 250번 시행에서의 기대 횟수를 계산한다.",
+                      "decisiveStep":  "한 번의 성공확률은 ₄C₂(3/5)²(2/5)²=216/625이므로 E(X)=250×216/625=432/5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INDEPENDENT_TRIALS_PROBABILITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "0부터 4까지의 확률을 a,a+r,a+2r,a+3r,a+4r로 두어 확률 합 1과 평균 3을 연립한다.",
+                      "decisiveStep":  "5a+10r=1, 10a+30r=3에서 a=0, r=1/10이고 E(X²)=10이므로 V(X)=10-9=1이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DISTRIBUTION_TABLE"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "주사위 순서쌍 36개에서 |a-3|+|b-2|=3인 사건과 a=b인 사건의 경우 수를 세어 중복을 뺀다.",
+                      "decisiveStep":  "절댓값 조건은 8개, 같은 눈은 6개이고 겹치는 (1,1), (4,4)는 2개이므로 (8+6-2)/36=1/3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DICE_EXPERIMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "점심 한식 비율 0.4와 저녁 선택 비율을 이용해 저녁 양식 전체 및 점심 한식이면서 저녁 양식인 비율을 구한다.",
+                      "decisiveStep":  "저녁 양식 비율은 0.6×0.3+0.4×0.4=0.34이고 원하는 비율은 0.16이므로 8/17에서 p+q=25이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "조건부확률",
+                                      "l4":  "조건부확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PERCENTAGE_PARTITION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "표준편차 2와 P(X≤5)=0.0228에서 5의 표준점수가 -2임을 이용해 평균 m을 구한다.",
+                      "decisiveStep":  "(5-m)/2=-2에서 m=9이므로 P(4≤X≤11)=P(-2.5≤Z≤1)=0.4938+0.3413=0.8351이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "확률밀도 그림의 왼쪽 높이 4/13, 오른쪽 높이 2/b를 이용하여 a 양쪽 삼각형 넓이를 7/13과 6/13으로 놓는다.",
+                      "decisiveStep":  "2a/13=7/13과 (b-a)/b=6/13에서 a=7/2, b=13/2이므로 2(a+b)=20이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_RATIO_EQUATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "0부터 5에서 중복 없이 만든 네 자리 수 300개 중 끝자리가 0 또는 5인 수와 3500 이상인 수를 세어 겹침을 뺀다.",
+                      "decisiveStep":  "5의 배수는 108개, 3500 이상은 132개, 공통은 39개여서 확률은 (108+132-39)/300=67/100이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_DISTINCT_DIGITS"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "Y=X/6-1을 X=6(Y+1)로 바꾸어 표의 Y=0,1,2,3에 대응하는 X²을 확률로 가중한다.",
+                      "decisiveStep":  "E(X²)=36{11/24+4/4+9/8+16/6}=189이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "기댓값"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 주사위 눈의 곱이 홀수인 횟수를 N으로 두어 N이 B(48,1/4)를 따름과 최종 위치가 4N-48임을 이용한다.",
+                      "decisiveStep":  "4N-48≥-8은 N≥10이고 평균 12, 표준편차 3으로 근사하면 P(Z≥-2/3)=0.7454이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION",
+                                               "CC_PARITY_ANALYSIS"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "그림의 전체 넓이 (1/2+5+2)k=1로 k를 구하고 주어진 등식에서 f(x)+g(x)의 x=5 대칭을 얻는다.",
+                      "decisiveStep":  "k=2/15이고 0부터 5까지 f의 넓이는 (1/2+4)k=3/5이므로 같은 구간 g의 넓이는 1-3/5=2/5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DENSITY_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "다섯 번 카드 추출에서 1, 2·3, 4가 나온 횟수를 r,s,t로 두고 r+s+t=5와 r+2s+3t=10을 만족하는 경우의 확률을 센다.",
+                      "decisiveStep":  "가능한 횟수는 (0,5,0), (1,3,1), (2,1,2)이고 흰 공 7개는 마지막 경우뿐이므로 (15/256)/(63/256)=5/21이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "조건부확률",
+                                      "l4":  "조건부확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "45번 중 눈이 2 이하인 횟수를 N으로 두어 최종 좌표 (3N,45-N)에서 직선 3x+4y+5=0까지의 거리를 나타낸다.",
+                      "decisiveStep":  "거리는 {9N+4(45-N)+5}/5=N+37이고 E(N)=45/3=15이므로 평균은 52이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "x²-24x+a=0의 두 근이 평균 12를 중심으로 대칭임을 이용하여 확률 0.8664에 해당하는 표준점수를 구한다.",
+                      "decisiveStep":  "0.8664/2=0.4332는 표준점수 1.5이므로 두 근은 12±3이고 a=9×15=135이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(X²)=916과 평균 30에서 공통 표준편차를 구하고 두 꼬리확률의 합 1 및 밀도곡선의 대칭으로 m,a,b를 정한다.",
+                      "decisiveStep":  "σ=4, m=42이고 f(a)=g(a)에서 a=36, g(a)=g(b)에서 b=48이므로 원하는 확률은 P(-1.5≤Z≤1.5)=0.8664이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "확률 ₙCₓ4ˣ/5ⁿ를 성공확률 4/5인 이항분포로 읽고 평균 합 180으로 n을 구해 정규근사한다.",
+                      "decisiveStep":  "n=225, 분산 36이므로 174의 표준점수는 (174-180)/6=-1이고 주어진 합은 약 0.8413이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "정규밀도값은 평균에 가까울수록 크다는 성질로 f(11)\u003ef(21), f(5)\u003cf(23)을 m의 범위로 바꾼다.",
+                      "decisiveStep":  "14\u003cm\u003c16과 자연수 조건에서 m=15이며 구간 11부터 23의 표준점수는 -1부터 2여서 확률은 0.8185이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "f(x-2)=g(x+2)를 g(t)=f(t-4)로 바꾸고 f(20)=f(16)에서 X의 평균 18을 구해 a와 b의 구간을 맞춘다.",
+                      "decisiveStep":  "b=P(17≤X≤21), a=P(18≤X≤21)이므로 대칭인 P(18≤X≤19)=b-a를 빼면 P(19≤X≤21)=2a-b이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INTERVAL_PROBABILITY_ADDITION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "1부터 5까지의 추출 순서 120개에서 부분합이 처음 5의 배수가 되는 위치를 1부터 5까지 나누어 확률분포를 구한다.",
+                      "decisiveStep":  "각 위치의 경우 수는 24,24,8,16,48이므로 E(X)=10/3, E(X²)=206/15에서 V(X)=118/45이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_DIVISIBILITY"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

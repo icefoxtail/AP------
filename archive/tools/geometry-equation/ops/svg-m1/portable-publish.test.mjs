@@ -17,7 +17,7 @@ test('CLI output remains UTF-8 under a CP949 default',()=>{
 function fixture(){
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'svg 한글 space ')), root=path.join(dir,'repo 한글');
   const tools=path.join(root,'archive/tools/geometry-equation/ops/svg-m1');fs.mkdirSync(tools,{recursive:true});fs.mkdirSync(path.join(root,'.git'));
-  for(const f of ['portable_root.py','publish-exam.py','pubflow.py','ledger-upsert.py'])fs.copyFileSync(path.join(here,f),path.join(tools,f));
+  for(const f of ['portable_root.py','figure_ledger.py','publish-exam.py','pubflow.py','ledger-upsert.py'])fs.copyFileSync(path.join(here,f),path.join(tools,f));
   fs.writeFileSync(path.join(root,'archive/tools/geometry-equation/visual-browser-runtime.mjs'),'');
   const src='archive/exams/original/23_금당중_중2_시험.js';fs.mkdirSync(path.dirname(path.join(root,src)),{recursive:true});
   fs.writeFileSync(path.join(root,src),'window.questionBank=[{id:1, solution:"x"}]');
@@ -43,6 +43,20 @@ test('unicode and spaces work; empty and mismatched reviews fail closed',()=>{
     x.save([{...x.row,A:{...x.row.A,verdict:'FAIL'}}]);assert.notEqual(x.call('publish-exam.py',args).status,0);
     x.save([x.row]);fs.writeFileSync(path.join(path.dirname(x.rows),'run 한글','publish.json'),JSON.stringify({alt:'도형',caption:'수정된 설명'}));
     assert.notEqual(x.call('publish-exam.py',args).status,0);
+  }finally{fs.rmSync(x.dir,{recursive:true,force:true});}
+});
+test('TIE ordinals are checked against that exam ledger file only',()=>{
+  const x=fixture();try{
+    const ties=path.join(x.dir,'ties.json');fs.writeFileSync(ties,'[1]');
+    const args=[x.exam,x.src,x.review,x.rows,ties];
+    assert.notEqual(x.call('publish-exam.py',args).status,0,'no ledger entry');
+    const file=path.join(x.root,'archive/tools/geometry-equation/production/exam-figure-ledger',x.src.replace('archive/exams/original/','').replace(/\.js$/,'.json'));
+    fs.mkdirSync(path.dirname(file),{recursive:true});
+    const entry=state=>({exam:x.exam,src:x.src,items:[{ord:1,state}],status:state==='PUBLISHED'?'CLOSED':'OPEN',closedBy:null,note:''});
+    fs.writeFileSync(file,JSON.stringify(entry('PUBLISHED'),null,2)+'\n');
+    assert.notEqual(x.call('publish-exam.py',args).status,0,'TIE needs an OPEN item');
+    fs.writeFileSync(file,JSON.stringify(entry('OPEN_LAYOUT'),null,2)+'\n');
+    const ok=x.call('publish-exam.py',args);assert.equal(ok.status,0,ok.stderr);
   }finally{fs.rmSync(x.dir,{recursive:true,force:true});}
 });
 test('triage must cover source ords once with allowed decisions',()=>{
@@ -83,15 +97,17 @@ test('render metadata requires bound status, matching identity and matching size
 test('direct ledger rejects partial and duplicate triage and preserves unresolved states',()=>{
   const x=fixture();try{
     fs.writeFileSync(path.join(x.root,x.src),'window.questionBank=[{id:1},{id:2}]');
-    const ledger=path.join(x.root,'archive/tools/geometry-equation/production/exam-figure-ledger.json');
-    fs.mkdirSync(path.dirname(ledger),{recursive:true});fs.writeFileSync(ledger,JSON.stringify({exams:[]}));
+    const dir=path.join(x.root,'archive/tools/geometry-equation/production/exam-figure-ledger');
+    fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'_meta.json'),JSON.stringify({schemaVersion:'exam-figure-ledger-v1'}));
+    const ledger=path.join(dir,x.src.replace('archive/exams/original/','').replace(/\.js$/,'.json'));
     const triage=path.join(x.dir,'triage.json'), spec=path.join(x.dir,'spec.json');
     fs.writeFileSync(spec,JSON.stringify({exam:x.exam,src:x.src,camp:'m2-test',triage,published:{},open:{}}));
     const go=rows=>{fs.writeFileSync(triage,JSON.stringify(rows));return x.call('ledger-upsert.py',[spec]);};
     assert.notEqual(go([{ord:1,decision:'EXEMPT'}]).status,0);
     assert.notEqual(go([{ord:1,decision:'EXEMPT'},{ord:1,decision:'EXEMPT'},{ord:2,decision:'EXEMPT'}]).status,0);
+    assert.ok(!fs.existsSync(ledger),'rejected triage writes no ledger file');
     assert.equal(go([{ord:1,decision:'CONTENT'},{ord:2,decision:'UNSUPPORTED'}]).status,0);
-    const item=JSON.parse(fs.readFileSync(ledger)).exams[0];assert.equal(item.status,'OPEN');
+    const item=JSON.parse(fs.readFileSync(ledger));assert.equal(item.status,'OPEN');
     assert.deepEqual(item.items.map(i=>i.state),['OPEN_CONTENT','OPEN_UNSUPPORTED']);
   }finally{fs.rmSync(x.dir,{recursive:true,force:true});}
 });

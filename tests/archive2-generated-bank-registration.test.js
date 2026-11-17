@@ -239,7 +239,7 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   assert.ok(html.includes('생성 문항 직접 검색·선택'));
   assert.ok(html.includes('id="source-year"')&&html.includes('id="source-school"')&&html.includes('id="source-semester"'));
   assert.ok(html.includes('id="purpose-A"')&&html.includes('id="difficulty-mode-mixed"'));
-  assert.ok(html.includes('메인 등록 문항'));
+  assert.ok(html.includes('개 등록 문항'));
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
   assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));

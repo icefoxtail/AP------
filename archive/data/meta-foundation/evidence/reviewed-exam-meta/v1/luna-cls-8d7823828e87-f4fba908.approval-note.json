@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-8d7823828e87-f4fba908",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그_익힘책_고2_유형확인.js",
+  "createdAt": "2026-11-15T19:38:45.599Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "c4305845c1cf0c6502139fcc05e08a6165806c08",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/비상_대수_지수로그_익힘책_고2_유형확인.js.json",
+      "sourceSha256": "b146a9dc2f61f2b0f11fe4c7c324d789fb42618265cda1af95493669b531dbae",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8d7823828e87-f4fba908.pass1-ledger.json",
+      "repoSha256": "b146a9dc2f61f2b0f11fe4c7c324d789fb42618265cda1af95493669b531dbae",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/비상_대수_지수로그_익힘책_고2_유형확인.json",
+      "sourceSha256": "b1ad3d05255acf0427f3a3594f59857c0329be6dd6cb623ce00ff7bf22c73220",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8d7823828e87-f4fba908.pass2-ledger.json",
+      "repoSha256": "52817f72e6fca05f8d35f37de80301ad95577e8614c6a3934b4e294e2ee1e835",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-1-p3-types-algebra-exam-008.json",
+      "sourceSha256": "592b269dcfe65f540246820763ee7b6007157693e39b9805191e1c5821eecc26",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8d7823828e87-f4fba908.pass3-ledger.json",
+      "repoSha256": "592b269dcfe65f540246820763ee7b6007157693e39b9805191e1c5821eecc26",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard4-128-bisang-high2-algebra-log-skills.json",
+      "sourceSha256": "c23ad55e9ded58dc24afc4f16f44d4801b6745c9c81da955d26b8a88b996a882",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8d7823828e87-f4fba908.pass3-ledger-2.json",
+      "repoSha256": "c23ad55e9ded58dc24afc4f16f44d4801b6745c9c81da955d26b8a88b996a882",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 30,
+    "agree": 60,
+    "luna-k4": 26,
+    "p3": 15,
+    "tera-k67": 4
+  },
+  "itemSources": {
+    "registered+agree+luna-k4": 6,
+    "registered+agree+p3+luna-k4": 1,
+    "registered+p3+tera-k67": 1,
+    "registered+p3+luna-k4": 1
+  },
+  "typeHoldQuestions": 7,
+  "idWarnings": []
+}

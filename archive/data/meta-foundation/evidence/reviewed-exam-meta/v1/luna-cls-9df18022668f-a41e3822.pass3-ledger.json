@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T18:47:00+09:00",
+  "sourceArchiveFile": "original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+  "items": [
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "접점 Q(x₁,y₁)에서 x₁x+y₁y=25이고 P=(5,20/3)을 넣으면 두 접점 모두 3x+4y−15=0을 만족하므로 원의 접선 경로다.",
+      "choiceTableUsed": "H1-수학(상).json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "l3": "원의 접선",
+        "l4": "접점이 주어진 접선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "중심거리 부등식으로 두 번째 원은 m>3/4, 세 번째 원은 m>15/8이고 겹치는 접점이 생기는 m=1을 빼야 네 개의 서로 다른 교점이 남는다.",
+      "choiceTableUsed": "H1-수학(상).json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "l3": "원과 직선",
+        "l4": "교점 개수"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "new",
+      "resolutionReason": "내분점은 AP=AB/(k+1), AQ=kAC/(k+1)이고 외분점은 분모 k−1이어서 7S₁=2S₂에서 ((k−1)/(k+1))²=2/7을 얻는다.",
+      "choiceTableUsed": "H1-수학(상).json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표",
+        "l3": "선분의 내분·외분"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "hold": {
+        "rpmPath": {
+          "l4": "넓이비 계산에 내분점과 외분점을 함께 써야 하지만 선택지 l4는 각각 내분점 또는 외분점 한 가지뿐이라 한 경로로 단정하지 않음."
+        }
+      }
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "new",
+      "resolutionReason": "y=|3x|를 x≥0의 y=3x와 x<0의 y=−3x로 나누면 두 교점이 남는 범위는 2/3<m<3이라 양 끝 a+b=11/3이다.",
+      "choiceTableUsed": "H1-수학(상).json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "직선의 방정식",
+        "l3": "두 직선의 위치 관계",
+        "l4": "교점"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY"
+    }
+  ]
+}

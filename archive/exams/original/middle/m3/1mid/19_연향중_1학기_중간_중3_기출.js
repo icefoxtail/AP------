@@ -317,8 +317,8 @@ window.questionBank = [
     "wide": false,
     "solution": "주어진 값을 소수점 이동에 맞게 사용한다.\n① $\\sqrt{0.3}=\\dfrac{\\sqrt{30}}{10}=0.5447$\n② $\\sqrt{300}=10\\sqrt3=17.32$\n③ $\\sqrt{3000}=10\\sqrt{30}=54.47$\n④ $\\sqrt{0.03}=\\dfrac{\\sqrt3}{10}=0.1732$\n⑤ $\\sqrt{0.003}=\\dfrac{\\sqrt{30}}{100}=0.05447$\n따라서 옳은 것은 ②이다.",
     "level": "중",
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

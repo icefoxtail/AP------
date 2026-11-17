@@ -48,7 +48,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "현을 수직으로 이등분한 반현 8과 반지름 10에서 피타고라스로 중심거리 x를 구한다.",
-    "decisiveStep": "현을 수직으로 이등분한 반현 8과 반지름 10에서 피타고라스로 중심거리 x를 구한다."
+    "decisiveStep": "현을 수직으로 이등분한 반현 8과 반지름 10에서 피타고라스로 중심거리 x를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -97,7 +100,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "세 외부점의 접선 길이 같음을 연결하여 전체 접선 PA와 PB를 x의 두 식으로 표현하고 일차방정식을 푼다.",
-    "decisiveStep": "세 외부점의 접선 길이 같음을 연결하여 전체 접선 PA와 PB를 x의 두 식으로 표현하고 일차방정식을 푼다."
+    "decisiveStep": "세 외부점의 접선 길이 같음을 연결하여 전체 접선 PA와 PB를 x의 두 식으로 표현하고 일차방정식을 푼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -146,7 +152,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "외접사각형의 마주 보는 두 변 합이 같다는 접선 길이 성질에 CD=3+x를 넣어 x를 정한다.",
-    "decisiveStep": "외접사각형의 마주 보는 두 변 합이 같다는 접선 길이 성질에 CD=3+x를 넣어 x를 정한다."
+    "decisiveStep": "외접사각형의 마주 보는 두 변 합이 같다는 접선 길이 성질에 CD=3+x를 넣어 x를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -195,7 +204,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "접점에서 반지름과 접선이 수직임을 이용해 중심각 130°를 만든 뒤 같은 호의 원주각 절반 관계를 적용한다.",
-    "decisiveStep": "접점에서 반지름과 접선이 수직임을 이용해 중심각 130°를 만든 뒤 같은 호의 원주각 절반 관계를 적용한다."
+    "decisiveStep": "접점에서 반지름과 접선이 수직임을 이용해 중심각 130°를 만든 뒤 같은 호의 원주각 절반 관계를 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -392,7 +404,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "두 원주각이 보는 호 중 공통 호 DC를 소거해 차가 나머지 호 DEA의 절반임을 알아낸다.",
-    "decisiveStep": "두 원주각이 보는 호 중 공통 호 DC를 소거해 차가 나머지 호 DEA의 절반임을 알아낸다."
+    "decisiveStep": "두 원주각이 보는 호 중 공통 호 DC를 소거해 차가 나머지 호 DEA의 절반임을 알아낸다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -441,7 +456,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "주어진 두 원주각으로 호를 구하고 반원에서 나머지 호를 복원한 뒤 한 원주각과 교차현의 각을 각각 계산해 합한다.",
-    "decisiveStep": "주어진 두 원주각으로 호를 구하고 반원에서 나머지 호를 복원한 뒤 한 원주각과 교차현의 각을 각각 계산해 합한다."
+    "decisiveStep": "주어진 두 원주각으로 호를 구하고 반원에서 나머지 호를 복원한 뒤 한 원주각과 교차현의 각을 각각 계산해 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -490,7 +508,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "주어진 교차현 각의 이웃각 120°가 보는 두 호 중심각의 합을 240°로 정하고 원주에 비례시켜 호 길이 합을 구한다.",
-    "decisiveStep": "주어진 교차현 각의 이웃각 120°가 보는 두 호 중심각의 합을 240°로 정하고 원주에 비례시켜 호 길이 합을 구한다."
+    "decisiveStep": "주어진 교차현 각의 이웃각 120°가 보는 두 호 중심각의 합을 240°로 정하고 원주에 비례시켜 호 길이 합을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -539,7 +560,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "접현각에서 호 BC를 정하고 호의 3배 조건을 사용해 반대쪽 호 AC를 얻어 원주각을 계산한다.",
-    "decisiveStep": "접현각에서 호 BC를 정하고 호의 3배 조건을 사용해 반대쪽 호 AC를 얻어 원주각을 계산한다."
+    "decisiveStep": "접현각에서 호 BC를 정하고 호의 3배 조건을 사용해 반대쪽 호 AC를 얻어 원주각을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -588,7 +612,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "반원 원주각과 두 수직 조건에서 평행선을 확보하고 접현각·같은 호 원주각을 옮겨 두 각의 차를 구한다.",
-    "decisiveStep": "반원 원주각과 두 수직 조건에서 평행선을 확보하고 접현각·같은 호 원주각을 옮겨 두 각의 차를 구한다."
+    "decisiveStep": "반원 원주각과 두 수직 조건에서 평행선을 확보하고 접현각·같은 호 원주각을 옮겨 두 각의 차를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -1028,7 +1055,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "내접육각형의 번갈아 있는 세 각이 보는 호들을 문자로 표현하고 세 식을 합쳐 전체 호가 두 번씩 포함됨을 확인한다.",
-    "decisiveStep": "내접육각형의 번갈아 있는 세 각이 보는 호들을 문자로 표현하고 세 식을 합쳐 전체 호가 두 번씩 포함됨을 확인한다."
+    "decisiveStep": "내접육각형의 번갈아 있는 세 각이 보는 호들을 문자로 표현하고 세 식을 합쳐 전체 호가 두 번씩 포함됨을 확인한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1072,7 +1102,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "접현각으로 α와 β의 차를 외부각으로 표현하고 각이등분선으로 반으로 나눈 식에서 α+β만 남겨 목표각을 결정한다.",
-    "decisiveStep": "접현각으로 α와 β의 차를 외부각으로 표현하고 각이등분선으로 반으로 나눈 식에서 α+β만 남겨 목표각을 결정한다."
+    "decisiveStep": "접현각으로 α와 β의 차를 외부각으로 표현하고 각이등분선으로 반으로 나눈 식에서 α+β만 남겨 목표각을 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,

@@ -613,8 +613,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $(x+a)(x+b)=x^2+(a+b)x+ab$에서 $ab=-6$을 이용한다.\n1단계: 정수쌍 $(a,b)$는 $(1,-6),(-1,6),(2,-3),(-2,3)$을 생각하면 된다.\n2단계: 이에 따른 $k=a+b$는 $-5,5,-1,1$이다.\n3단계: 가능한 $k$를 모두 곱하면 $(-5)\\times5\\times(-1)\\times1=25$이다.\n∴ 정답: ④",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },

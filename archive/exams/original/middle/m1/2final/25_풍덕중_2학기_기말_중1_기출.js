@@ -346,9 +346,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 색칠한 도형의 부피를 옳게 구한 것은? [5점]",
-    "image": "assets/images/25_풍덕중_2학기_기말_중1_기출/q08-problem-geometry-20261116.svg",
-    "imageSize": "full",
-    "imageAlt": "색칠한 원뿔대의 두 반지름은 3 cm와 6 cm이다. 원뿔대와 그 위 작은 원뿔의 높이는 각각 4 cm이고 모선의 두 부분은 각각 5 cm이다.",
+    "image": "assets/images/25_풍덕중_2학기_기말_중1_기출/q8.png",
     "choices": [
       "$84\\pi\\rm\\,cm^3$",
       "$72\\pi\\rm\\,cm^3$",

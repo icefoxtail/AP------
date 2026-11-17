@@ -36,6 +36,7 @@ const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -762,8 +763,31 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditS
   return [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en'));
 }
 
+// Reuse the official closed E032 subset contract against the immutable input.
+// Selection also runs after registration, so generated worktree post-state must
+// not replace the initial HEAD authority. The official registrar and Consumer
+// still validate every selected native leaf and the actual issued post-state.
+function partialSubsetPreservationDescriptor({ root, headSha, request, bytes, bank, cache }) {
+  if (!isPartialSubsetPreservation(request)) return undefined;
+  const spec = request.approval.sourceRebind, ref = spec.priorReceiptRef;
+  if (!objectKeys(ref, ['path', 'sha256']) || typeof ref.path !== 'string'
+      || !ref.path.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes('/')
+      || !ref.path.endsWith('.json') || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')) fail('PARTIAL_SUBSET_PRIOR_REF');
+  const prior = fixedJson(root, headSha, ref.path, cache);
+  if (prior.sha256 !== ref.sha256) fail('PARTIAL_SUBSET_PRIOR_DRIFT');
+  const metadata = fixedJson(root, headSha, METADATA, cache);
+  const identity = fixedJson(root, headSha, 'archive/data/question_identity_map.json', cache);
+  const runtime = fixedJson(root, headSha, 'archive/data/meta-foundation/runtime/middle2-v1.json', cache);
+  const validated = validatePartialSubsetPreservation({ root, envelope: request, prior: prior.value, bytes, bank,
+    metadata: metadata.value.records, identities: identity.value.records, runtime: runtime.value.records, mode: 'request' });
+  return { schemaVersion: spec.schemaVersion, priorCommit: spec.priorCommit, currentCommit: spec.currentCommit,
+    priorReceiptRef: { ...ref }, priorApprovalCount: validated.priorApprovalCount,
+    preservedMetadataApprovals: validated.preservedMetadataApprovals, newMetadataApprovals: validated.newMetadataApprovals,
+    baselineDigests: { metadata: metadata.sha256, identity: identity.sha256, runtime: runtime.sha256 } };
+}
+
 function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map(), inheritedReassessments = new Map() }) {
-  const requests = [];
+  const requests = [], fixedSubsetInputs = new Map();
   for (const file of files) {
     safe(root, file);
     const raw = fs.readFileSync(path.join(root, file));
@@ -789,7 +813,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || auditSourcePreservation || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
+        !(sourceRebind || auditSourcePreservation || isPartialSubsetPreservation(request)
+          || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial ||
@@ -824,6 +849,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
     } catch { fail('SOURCE_BANK_INVALID'); }
     if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount) fail('SOURCE_DENOMINATOR');
+    const partialSubsetPreservation = partialSubsetPreservationDescriptor({ root, headSha, request,
+      bytes: fs.readFileSync(safe(root, sourcePath)), bank, cache: fixedSubsetInputs });
     requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: selectedItems.length,
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(inherited.has(file) ? { inheritedPreservation: inherited.get(file) } : {}),
@@ -833,6 +860,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(auditSourcePreservation ? { auditSourcePreservation } : {}),
+      ...(partialSubsetPreservation ? { partialSubsetPreservation } : {}),
       ...(historicalRpmEvidence.length ? { historicalRpmEvidence } : {}),
       ...(registryDependency ? { registryDependency } : {}),
       ...(rendererPreservation ? { rendererPreservation } : {}),
@@ -1037,12 +1065,45 @@ export function nativeOutputManifest(root, plans) {
   return sorted(plans.flatMap(p => p.plannedPaths)).map(file => fileRef(root, file));
 }
 
+// Exact immutable references inside the already selected evidence can also
+// name live renderer helpers, runtime files and fonts. Restore only those
+// declared paths from HEAD. Historical-only paths stay in Git, and a current
+// file is never replaced by the older bytes named by a review. This discovers
+// inputs, not approvals: the ordinary registrar still validates every ref and
+// the real checkout's live bytes after the independent shadow replay.
+function referencedNativeHeadInputs(root, headSha, requests) {
+  const paths = new Set();
+  const visit = value => {
+    if (!value || typeof value !== 'object') return;
+    if (typeof value.path === 'string' && /^[a-f0-9]{40}$/.test(value.commit || '')
+        && /^[a-f0-9]{40}$/.test(value.gitBlobSha1 || '') && /^[a-f0-9]{64}$/.test(value.sha256 || '')
+        && Number.isSafeInteger(value.bytes) && value.bytes > 0) paths.add(value.path);
+    for (const child of Object.values(value)) visit(child);
+  };
+  for (const file of sorted(requests.flatMap(r => r.evidence.map(ref => ref.path)))) {
+    if (!file.endsWith('.json')) continue;
+    let doc;
+    try { doc = JSON.parse(gitBytes(root, `${headSha}:${file}`)); }
+    catch { continue; } // Non-JSON evidence remains the registrar's responsibility.
+    visit(doc);
+  }
+  return sorted(paths).filter(file => {
+    safe('/', file);
+    const entry = git(root, 'ls-tree', '-z', headSha, '--', file);
+    if (!entry) return false;
+    if (!/^100(?:644|755) blob [a-f0-9]{40}\t/.test(entry)
+        || entry.slice(entry.indexOf('\t') + 1) !== `${file}\0`) fail(`SHADOW_REFERENCE_NOT_REGULAR:${file}`);
+    return true;
+  });
+}
+
 // Re-derive the *initial* official plan from the immutable Git input. A replay
 // on the post-state returns plannedPaths:[] and cannot authenticate a new
 // allowlist. This shadow has independent bytes; verify-local never writes its
 // actual checkout, consumes inbox files or runs another catalog build.
 export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
   if (!requests.length) return { plans: [], outputs: [] };
+  const headSha = git(root, 'rev-parse', '--verify', 'HEAD').trim();
   const shadow = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-pr-native-plan-'));
   try {
     nativeCommand('git', ['clone', '--quiet', '--shared', '--no-checkout', '--local', root, shadow], root);
@@ -1050,26 +1111,27 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     // reached through an older receipt. Recreate that immutable input tree too;
     // never copy current worktree bytes or share mutable asset inodes.
     const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy']
-      .filter(file => git(root, 'ls-tree', 'HEAD', '--', file).trim());
+      .filter(file => git(root, 'ls-tree', headSha, '--', file).trim());
     // Data plus assets can exceed the child-process memory buffer. Stream Git's
     // exact archive into a private temporary file, removed with this shadow.
     const snapshotPath = path.join(shadow, '.native-input-snapshot.tar');
     const snapshotFd = fs.openSync(snapshotPath, 'wx', 0o600);
     let tar;
     try {
-      tar = spawnSync('git', ['archive', '--format=tar', 'HEAD', '--', ...restore],
+      tar = spawnSync('git', ['archive', '--format=tar', headSha, '--', ...restore],
         { cwd: root, stdio: ['ignore', snapshotFd, 'pipe'], maxBuffer: 1024 * 1024 });
     } finally { fs.closeSync(snapshotFd); }
     if (tar.error || tar.status !== 0) fail('SHADOW_GIT_SNAPSHOT_FAILED');
     const extracted = spawnSync('tar', ['-xf', snapshotPath, '-C', shadow], { maxBuffer: 1024 * 1024 });
     if (extracted.error || extracted.status !== 0) fail('SHADOW_EXTRACT_FAILED');
     fs.unlinkSync(snapshotPath);
-    const inputs = sorted(requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]));
-    const attrs = git(root, 'ls-tree', '-r', '--name-only', 'HEAD').split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
+    const inputs = sorted([...requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]),
+      ...referencedNativeHeadInputs(root, headSha, requests)]);
+    const attrs = git(root, 'ls-tree', '-r', '--name-only', headSha).split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
     for (const file of sorted([...inputs, ...attrs])) {
       const full = safe(shadow, file);
       fs.mkdirSync(path.dirname(full), { recursive: true });
-      fs.writeFileSync(full, gitBytes(root, `HEAD:${file}`));
+      fs.writeFileSync(full, gitBytes(root, `${headSha}:${file}`));
     }
     const plans = applyNativeRequests({ root: shadow, requests, run, scriptRoot: root, guard: false });
     return { plans, outputs: nativeOutputManifest(shadow, plans) };

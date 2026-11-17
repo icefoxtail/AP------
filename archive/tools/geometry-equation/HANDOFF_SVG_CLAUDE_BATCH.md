@@ -36,7 +36,7 @@
 - **위임 금지:** 루나·Sonnet은 OpenCode·deepseek 등 다른 모델에 넘기지 않는다(deepseek은 그림을 못 본다). PC 전역 `~/.codex/AGENTS.md` 위임 규칙은 2026-11-08 삭제(백업: scratchpad `codex-AGENTS.md.bak`).
 - **손으로 SVG 작성 금지.** 렌더는 `node .tmp/work/render.mjs`로만.
 - **정답·보기 번호는 그림·alt에 넣지 않는다.** caption 끝에만 "정답은 …이다." 그림 속 값이 곧 정답이면 그것도 노출이다(예: 20 매산여 고1 Q04 h(1)=3 → "g(0)의 함숫값"으로 바꿈, 23 매산여 수2 Q23 좌표 제거).
-- **원본 JS·archive/assets는 승인 없이 수정하지 않는다.** 커밋에는 시험지 JS의 solutionImage* 필드, 새 SVG, `exam-figure-ledger.json`만.
+- **원본 JS·archive/assets는 승인 없이 수정하지 않는다.** 커밋에는 시험지 JS의 solutionImage* 필드, 새 SVG, 그 시험지의 원장 파일(`production/exam-figure-ledger/<원본 경로>.json`)만.
 - 검사를 완화하지 않는다.
 
 ---
@@ -77,7 +77,8 @@
 - `a11y.sh <qdir>` — 더는 필요 없다(엔진이 composite·number-line·solid 출력에 루트 role=img·title·desc를 직접 쓴다, plan caption·accessibilityDescription). 이 엔진 이전에 렌더한 SVG에만 쓰며, 이미 있으면 METADATA_ALREADY_PRESENT로 무해하게 끝난다.
 - 게시: `PYTHONIOENCODING=utf-8 python .tmp/svg-m1/pubflow.py --batch .tmp/work/pub/manifest-batchNN.json` (형식은 pub/manifest-batch13b.json 참고, 경로는 manifest 기준 상대).
 - 점검: `git -c core.quotepath=off status --porcelain | grep '^ M.*\.js$' | cut -c4- | while read f; do node .tmp/work/jscheck.cjs "$f"; done` (nonImageChanged []이어야 함) → `node tools/check-archive2-runtime.cjs`(180 pass) → `git checkout -- archive/data`.
-- 커밋: `git add archive/exams/original/high archive/tools/geometry-equation/production/exam-figure-ledger.json` + 해당 시험지 새 SVG(`archive/assets/images/<시험지>/…`)만. 커밋 끝에 Co-Authored-By 줄, PR 본문 끝에 Claude Code 줄.
+- 커밋: `git add archive/exams/original/high archive/tools/geometry-equation/production/exam-figure-ledger` + 해당 시험지 새 SVG(`archive/assets/images/<시험지>/…`)만. 커밋 끝에 Co-Authored-By 줄, PR 본문 끝에 Claude Code 줄.
+- 원장(2026-11-17부터): 시험지 하나 = 파일 하나(`production/exam-figure-ledger/<archive/exams/original 아래 경로>.json`, 머리 `_meta.json`). pubflow·ledger-upsert는 그 시험지 파일만 쓴다. 이미 PUBLISHED인 문항은 spec의 published·exempt_override·demote로 번호를 직접 넘길 때만 바뀌므로, 일부 문항만 다시 게시해도 나머지 PUBLISHED가 OPEN으로 덮이지 않는다. 서로 다른 시험지 PR은 원장에서 충돌하지 않으니 순서를 기다리지 않고 각자 CI 녹색이면 병합한다. 같은 시험지 파일이 충돌하면 main 판을 받고 그 시험지 spec으로 `ledger-upsert.py`를 다시 돌린다. 옛 한 파일(`exam-figure-ledger.json`)을 고친 브랜치는 main을 병합한 뒤 `python archive/tools/geometry-equation/ops/svg-m1/figure_ledger.py port-ledger-change --base $(git merge-base HEAD origin/main) --head HEAD`로 옮기고 옛 파일은 `git rm`한다. `.tmp/svg-m1/`은 main을 받은 뒤 다시 복원한다(옛 사본은 옛 한 파일을 다시 만든다; CI 테스트 `tests/figure-ledger-split.test.js`가 막는다).
 
 ### 3-3. 기록 파일
 - `ENGINE_GAPS.md` — 엔진이 못 그려 OPEN으로 남긴 문항과 사유. 엔진 업그레이드 때 쓴다.
@@ -212,7 +213,7 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 - 원본 JS `$` 짝이 깨지면 시험지 렌더가 전부 막힌다(MATH_TYPESET_INCOMPLETE). 원본 수정은 승인 + 공유 데이터 고정값 절차.
 - 한 문항에 `solutionImage` 키가 두 번 있으면 pubflow 글꼴 검사가 옛 그림으로 실패 → 되돌리고 중복 줄 삭제 후 재실행(19 금당 Q17).
 - **pubflow를 같은 시험지에 다시 돌릴 때**는 먼저 그 시험지 JS를 `git checkout --`하고 새로 생긴 SVG(untracked)를 지운다. 안 그러면 publish-exam.py가 실패한다.
-- **부분 결정 금지:** dec는 항상 시험지 전체. 원장 기준 make-dec-open을 쓰면 안전하다.
+- **부분 결정 금지:** dec는 항상 시험지 전체. 원장 기준 make-dec-open을 쓰면 안전하다. (2026-11-17부터 ledger-upsert가 넘기지 않은 기존 PUBLISHED를 지키므로 부분 게시가 원장을 덮지는 않는다. 그래도 dec는 시험지 전체로 만든다.)
 - 루나가 PowerShell로 한글 파일을 읽고 쓰면 깨진다(SUMMARY.md가 ??로 저장되기도 함). 지시서의 node·UTF-8 규칙 유지.
 - 한글 경로: `git -c core.quotepath=off`.
 - 엔진 변경이 main에 들어오면 표본 몇 장을 재렌더해 바이트 비교(#1511 때 동일 확인).

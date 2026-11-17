@@ -30,8 +30,7 @@ function runtime(unit, url = 'https://archive.test/archive/unit-past-exams.html?
     localStorage: { getItem() { return null; } },
   });
   vm.runInContext(source.replace(entryMarker, `
-    window.urlTest = { state, G, getDefaultFilterState, syncFilterUrl,
-      getCollectionDefaultState, syncCollectionUrl, gridApplyStoredSelection };
+    window.urlTest = { state, G, gridSyncUrl, gridApplyStoredSelection, LEGACY_URL_PARAMS };
 ${entryMarker}`), context);
   const api = window.urlTest;
   api.state.profileId = 'm1';
@@ -67,61 +66,33 @@ function selectedKeys(unit) {
     .map(option => option.key);
 }
 
-test('middle RPM chapter selections survive the normal UI URL and a fresh page reader', () => {
+test('old filter-screen links keep grade and course; the table screen drops every old parameter from the address', () => {
   const unit = currentUnit();
   const keys = selectedKeys(unit);
   assert.equal(keys.length, 2);
-  assert.ok(keys.every(key => key.includes(',') && key.includes('"')),
-    'exercise the structured keys that a comma-separated serializer corrupts');
-  assert.equal(core.getSubUnitOptions(unit.records).length, 3);
-  const page = runtime(unit);
-  page.api.state.filterState = { ...page.api.getDefaultFilterState(unit), subUnitKeys: keys };
-  page.api.syncFilterUrl();
-  assert.deepEqual(JSON.parse(new URL(page.url).searchParams.get('subUnit')), keys);
-
-  const reloaded = runtime(unit, page.url);
-  const restored = reloaded.api.getDefaultFilterState(unit);
-  assert.deepEqual(plain(restored.subUnitKeys), keys);
-  const selected = core.filterUnitRecords(unit.records, restored);
-  assert.equal(selected.length, 3, 'reload must not widen the selection to all four questions');
-  assert.ok(selected.every(record => keys.includes(core.getSelectionSubUnitKey(record))));
-});
-
-test('school collection chapter selections survive the collection UI URL and a fresh page reader', () => {
-  const unit = currentUnit();
-  const keys = selectedKeys(unit);
-  const page = runtime(unit);
-  page.api.state.collectionState = { ...page.api.getCollectionDefaultState(unit), subUnitKeys: keys };
-  page.api.syncCollectionUrl();
-  assert.deepEqual(JSON.parse(new URL(page.url).searchParams.get('collectionSubUnit')), keys);
-
-  const reloaded = runtime(unit, page.url);
-  const restored = reloaded.api.getCollectionDefaultState(unit);
-  assert.deepEqual(plain(restored.subUnitKeys), keys);
-  assert.equal(core.filterUnitRecords(unit.records, restored).length, 3,
-    'collection reload must retain the requested chapters instead of matching no records');
-});
-
-test('existing comma-separated legacy chapter links still restore both selection modes', () => {
-  const unit = currentUnit();
-  const keys = ['M1-05-BASIC_FIGURE', 'M1-05-POSITION_RELATION'];
-  unit.records = keys.map((subUnitKey, index) => ({
-    id: index + 1, sourceOrdinal: index + 1, questionUid: `legacy-url-fixture-${index + 1}`,
-    sourceFile: 'original/middle/m1/2mid/22_url_fixture.js', sourceGrade: '중1',
-    year: 2022, curriculumKey: '2015', mappedUnitKey: unit.key,
-    subUnitKey, subUnit: index ? '위치 관계' : '점, 선, 면',
-    generalUseEligible: true, level: '중',
-  }));
-  const url = new URL('https://archive.test/archive/unit-past-exams.html?grade=m1');
-  url.searchParams.set('subUnit', keys.join(','));
-  url.searchParams.set('collectionSubUnit', keys.join(','));
+  assert.ok(keys.every(key => key.includes(',') && key.includes('"')), 'structured middle chapter keys');
+  const url = new URL('https://archive.test/archive/unit-past-exams.html?grade=m1&ready=1');
+  url.searchParams.set('unit', unit.key);
+  url.searchParams.set('course', unit.course);
+  url.searchParams.set('step', 'confirm');
+  url.searchParams.set('mode', 'advanced');
+  url.searchParams.set('blueprint', '[]');
+  url.searchParams.set('subUnit', JSON.stringify(keys));
+  url.searchParams.set('difficulty', '중,상');
+  url.searchParams.set('metaApproved', '1');
+  url.searchParams.set('collection', '1');
+  url.searchParams.set('collectionSubUnit', JSON.stringify(keys));
+  url.searchParams.set('collectionSchools', 'a,b');
   const page = runtime(unit, url.href);
-  const normal = page.api.getDefaultFilterState(unit);
-  const collection = page.api.getCollectionDefaultState(unit);
-  assert.deepEqual(plain(normal.subUnitKeys), keys);
-  assert.deepEqual(plain(collection.subUnitKeys), keys);
-  assert.equal(core.filterUnitRecords(unit.records, normal).length, 2);
-  assert.equal(core.filterUnitRecords(unit.records, collection).length, 2);
+  page.api.G.profileId = 'm1';
+  page.api.G.course = unit.course;
+  page.api.gridSyncUrl('replace');
+  const next = new URL(page.url).searchParams;
+  assert.equal(next.get('grade'), 'm1');
+  assert.equal(next.get('ready'), '1', 'the table screen leaves unrelated parameters alone');
+  for (const key of ['unit', 'step', 'mode', 'blueprint', 'subUnit', 'difficulty', 'metaApproved', 'collection', 'collectionSubUnit', 'collectionSchools'])
+    assert.equal(next.has(key), false, key + ' is removed');
+  assert.ok(page.api.LEGACY_URL_PARAMS.includes('collectionIncludeUnclassified') && page.api.LEGACY_URL_PARAMS.includes('adjacentDifficulty'));
 });
 
 test('stored middle grid cells and checked units restore through a one-to-one unit alias', () => {

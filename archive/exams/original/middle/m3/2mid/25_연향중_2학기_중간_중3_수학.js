@@ -48,7 +48,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "큰 직각삼각형에서 한 변을 복원하고 중점으로 반을 얻은 뒤 작은 직각삼각형의 빗변을 복원하여 최종 sin 값을 구한다.",
-    "decisiveStep": "큰 직각삼각형에서 한 변을 복원하고 중점으로 반을 얻은 뒤 작은 직각삼각형의 빗변을 복원하여 최종 sin 값을 구한다."
+    "decisiveStep": "큰 직각삼각형에서 한 변을 복원하고 중점으로 반을 얻은 뒤 작은 직각삼각형의 빗변을 복원하여 최종 sin 값을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -95,7 +98,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "일차식에서 sin A를 정하고 같은 예각의 cos·tan 및 여각인 B의 cos를 차례로 복원하여 주어진 식에 대입한다.",
-    "decisiveStep": "일차식에서 sin A를 정하고 같은 예각의 cos·tan 및 여각인 B의 cos를 차례로 복원하여 주어진 식에 대입한다."
+    "decisiveStep": "일차식에서 sin A를 정하고 같은 예각의 cos·tan 및 여각인 B의 cos를 차례로 복원하여 주어진 식에 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -140,7 +146,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "삼각형의 내각합으로 A=30도를 먼저 정한 뒤 특수각 탄젠트를 두 분수의 합에 대입한다.",
-    "decisiveStep": "삼각형의 내각합으로 A=30도를 먼저 정한 뒤 특수각 탄젠트를 두 분수의 합에 대입한다."
+    "decisiveStep": "삼각형의 내각합으로 A=30도를 먼저 정한 뒤 특수각 탄젠트를 두 분수의 합에 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -183,7 +192,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "주어진 x의 범위를 합성된 각의 예각 범위로 옮겨 cos값에 대응하는30도를 정하고 일차방정식으로 x를 복원한다.",
-    "decisiveStep": "주어진 x의 범위를 합성된 각의 예각 범위로 옮겨 cos값에 대응하는30도를 정하고 일차방정식으로 x를 복원한다."
+    "decisiveStep": "주어진 x의 범위를 합성된 각의 예각 범위로 옮겨 cos값에 대응하는30도를 정하고 일차방정식으로 x를 복원한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -228,7 +240,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "반지름1인 직각삼각형에서 OH를 cos35로 직접 구한 뒤 같은 반지름 OB에서 빼 BH를 정한다.",
-    "decisiveStep": "반지름1인 직각삼각형에서 OH를 cos35로 직접 구한 뒤 같은 반지름 OB에서 빼 BH를 정한다."
+    "decisiveStep": "반지름1인 직각삼각형에서 OH를 cos35로 직접 구한 뒤 같은 반지름 OB에서 빼 BH를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -271,7 +286,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "예각 범위에서 탄젠트와 코사인에 대응하는 특수각 x와 y를 바로 읽고 그 차의 사인을 적용한다.",
-    "decisiveStep": "예각 범위에서 탄젠트와 코사인에 대응하는 특수각 x와 y를 바로 읽고 그 차의 사인을 적용한다."
+    "decisiveStep": "예각 범위에서 탄젠트와 코사인에 대응하는 특수각 x와 y를 바로 읽고 그 차의 사인을 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -359,7 +377,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "삼각비표의 탄젠트 열을 역조회하여 x를 읽고 코사인 열을 정조회하여 y를 읽은 뒤 합한다.",
-    "decisiveStep": "삼각비표의 탄젠트 열을 역조회하여 x를 읽고 코사인 열을 정조회하여 y를 읽은 뒤 합한다."
+    "decisiveStep": "삼각비표의 탄젠트 열을 역조회하여 x를 읽고 코사인 열을 정조회하여 y를 읽은 뒤 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -397,14 +418,17 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
   ,
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_SPECIFIED_APPROXIMATIONS"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "빗변9에 주어진 sin34와 cos34의 근삿값을 각각 곱하여 두 직각변을 구한 뒤 합한다.",
-    "decisiveStep": "빗변9에 주어진 sin34와 cos34의 근삿값을 각각 곱하여 두 직각변을 구한 뒤 합한다."
+    "decisiveStep": "빗변9에 주어진 sin34와 cos34의 근삿값을 각각 곱하여 두 직각변을 구한 뒤 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -446,14 +470,17 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_SPECIFIED_APPROXIMATIONS"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "수평거리50과 올려본각38도로 눈높이 위의 높이를 탄젠트로 구한 뒤 눈높이1.5를 더해 전체 높이를 정한다.",
-    "decisiveStep": "수평거리50과 올려본각38도로 눈높이 위의 높이를 탄젠트로 구한 뒤 눈높이1.5를 더해 전체 높이를 정한다."
+    "decisiveStep": "수평거리50과 올려본각38도로 눈높이 위의 높이를 탄젠트로 구한 뒤 눈높이1.5를 더해 전체 높이를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -502,7 +529,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "주어진 변과45도로 수선 높이를 삼각비로 구한 뒤 밑변10과 결합하여 삼각형 넓이를 계산한다.",
-    "decisiveStep": "주어진 변과45도로 수선 높이를 삼각비로 구한 뒤 밑변10과 결합하여 삼각형 넓이를 계산한다."
+    "decisiveStep": "주어진 변과45도로 수선 높이를 삼각비로 구한 뒤 밑변10과 결합하여 삼각형 넓이를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -551,7 +581,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 호의 비로 중심각120도를 정하고 이등변삼각형의 수선으로60도 직각삼각형을 만들어 밑변과 높이를 삼각비로 복원한 뒤 넓이를 구한다.",
-    "decisiveStep": "세 호의 비로 중심각120도를 정하고 이등변삼각형의 수선으로60도 직각삼각형을 만들어 밑변과 높이를 삼각비로 복원한 뒤 넓이를 구한다."
+    "decisiveStep": "세 호의 비로 중심각120도를 정하고 이등변삼각형의 수선으로60도 직각삼각형을 만들어 밑변과 높이를 삼각비로 복원한 뒤 넓이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -598,7 +631,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "수선 높이로 첫 삼각형 넓이를 구하고 피타고라스로 대각선을 복원하여 다른 끼인각의 삼각비 높이를 만든 뒤 두 삼각형 넓이를 합한다.",
-    "decisiveStep": "수선 높이로 첫 삼각형 넓이를 구하고 피타고라스로 대각선을 복원하여 다른 끼인각의 삼각비 높이를 만든 뒤 두 삼각형 넓이를 합한다."
+    "decisiveStep": "수선 높이로 첫 삼각형 넓이를 구하고 피타고라스로 대각선을 복원하여 다른 끼인각의 삼각비 높이를 만든 뒤 두 삼각형 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -647,7 +683,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "중심에서 현에 내린 수선이 현을 반으로 나눈다는 성질로 직각삼각형을 잡고 반지름과 중심거리에서 반현을 구해 두 배로 한다.",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 반으로 나눈다는 성질로 직각삼각형을 잡고 반지름과 중심거리에서 반현을 구해 두 배로 한다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 반으로 나눈다는 성질로 직각삼각형을 잡고 반지름과 중심거리에서 반현을 구해 두 배로 한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -695,7 +734,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "현의 수직이등분선 위에 중심을 놓고 반지름r와 중심거리r−2를 피타고라스 식으로 연결하여 r를 결정한다.",
-    "decisiveStep": "현의 수직이등분선 위에 중심을 놓고 반지름r와 중심거리r−2를 피타고라스 식으로 연결하여 r를 결정한다."
+    "decisiveStep": "현의 수직이등분선 위에 중심을 놓고 반지름r와 중심거리r−2를 피타고라스 식으로 연결하여 r를 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -744,7 +786,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원 위 점과 중심을 겹치는 접는 선이 반지름의 수직이등분선임을 이용하여 중심에서 현까지 거리2를 정하고 반현의 직각삼각형으로 길이를 구한다.",
-    "decisiveStep": "원 위 점과 중심을 겹치는 접는 선이 반지름의 수직이등분선임을 이용하여 중심에서 현까지 거리2를 정하고 반현의 직각삼각형으로 길이를 구한다."
+    "decisiveStep": "원 위 점과 중심을 겹치는 접는 선이 반지름의 수직이등분선임을 이용하여 중심에서 현까지 거리2를 정하고 반현의 직각삼각형으로 길이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -841,7 +886,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선과 반지름의 직각 및 두 접선의 대칭으로30도 직각삼각형을 만들고 탄젠트로 접선 길이를 구하여 두 삼각형 넓이를 합한다.",
-    "decisiveStep": "접선과 반지름의 직각 및 두 접선의 대칭으로30도 직각삼각형을 만들고 탄젠트로 접선 길이를 구하여 두 삼각형 넓이를 합한다."
+    "decisiveStep": "접선과 반지름의 직각 및 두 접선의 대칭으로30도 직각삼각형을 만들고 탄젠트로 접선 길이를 구하여 두 삼각형 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -889,7 +937,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "반지름과 접선의 직각으로 바깥 접선 길이를 복원하고 세 꼭짓점의 등접선 관계를 적용하여 삼각형 둘레를 바깥 두 접선 길이의 합으로 묶는다.",
-    "decisiveStep": "반지름과 접선의 직각으로 바깥 접선 길이를 복원하고 세 꼭짓점의 등접선 관계를 적용하여 삼각형 둘레를 바깥 두 접선 길이의 합으로 묶는다."
+    "decisiveStep": "반지름과 접선의 직각으로 바깥 접선 길이를 복원하고 세 꼭짓점의 등접선 관계를 적용하여 삼각형 둘레를 바깥 두 접선 길이의 합으로 묶는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,
@@ -937,7 +988,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "primaryMethod": "반원의 지름10을 구하고 두 외부점의 등접선 관계로 AD+BC를 DC에 대응시켜 둘레 전체를10+2DC로 정리한다.",
-    "decisiveStep": "반원의 지름10을 구하고 두 외부점의 등접선 관계로 AD+BC를 DC에 대응시켜 둘레 전체를10+2DC로 정리한다."
+    "decisiveStep": "반원의 지름10을 구하고 두 외부점의 등접선 관계로 AD+BC를 DC에 대응시켜 둘레 전체를10+2DC로 정리한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -979,7 +1033,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직육면체의 밑면 대각선과 공간 대각선을 차례로 피타고라스로 복원하고 지정된 공간각이 속한 직각삼각형의 두 변 비로 cos를 구한다.",
-    "decisiveStep": "직육면체의 밑면 대각선과 공간 대각선을 차례로 피타고라스로 복원하고 지정된 공간각이 속한 직각삼각형의 두 변 비로 cos를 구한다."
+    "decisiveStep": "직육면체의 밑면 대각선과 공간 대각선을 차례로 피타고라스로 복원하고 지정된 공간각이 속한 직각삼각형의 두 변 비로 cos를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1022,7 +1079,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "좌표로 세 변 길이를 구하고 수선발을 도입하여 두 피타고라스 방정식을 연립한 뒤 밑변 일부와 높이의 비로 tan을 구한다.",
-    "decisiveStep": "좌표로 세 변 길이를 구하고 수선발을 도입하여 두 피타고라스 방정식을 연립한 뒤 밑변 일부와 높이의 비로 tan을 구한다."
+    "decisiveStep": "좌표로 세 변 길이를 구하고 수선발을 도입하여 두 피타고라스 방정식을 연립한 뒤 밑변 일부와 높이의 비로 tan을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1064,6 +1124,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "등접선으로 두 직각변을8+r와12+r로 표현하고 피타고라스 이차방정식에서 반지름을 구해 삼각형 넓이에서 원 넓이를 뺀다.",
-    "decisiveStep": "등접선으로 두 직각변을8+r와12+r로 표현하고 피타고라스 이차방정식에서 반지름을 구해 삼각형 넓이에서 원 넓이를 뺀다."
+    "decisiveStep": "등접선으로 두 직각변을8+r와12+r로 표현하고 피타고라스 이차방정식에서 반지름을 구해 삼각형 넓이에서 원 넓이를 뺀다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   }
 ];

@@ -4,6 +4,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const analysisPath = path.join(root, 'archive', 'assessment', 'assessment-analysis.html');
 const analysisHtml = fs.readFileSync(analysisPath, 'utf8');
+const sharedCss = fs.readFileSync(path.join(root, 'archive', 'archive2-standalone.css'), 'utf8');
 
 function assert(condition, message) {
   if (!condition) {
@@ -11,23 +12,27 @@ function assert(condition, message) {
   }
 }
 
+// The analysis page wears the Archive 2.0 frame: tokens, standalone shapes, the shared menu.
 [
-  'class="content-wrap"',
-  '.exam-card',
-  'border-radius: 22px',
-  'background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 100%)',
-  'box-shadow: var(--shadow-card)',
-  '--shadow-card: 0 14px 32px rgba(15, 23, 42, 0.06)',
-  '.card-top',
-  'linear-gradient(90deg, var(--blue-main) 0%, #7db8ff 100%)',
+  'class="archive2-standalone archive2-assessment archive2-shell"',
+  '../archive2-tokens.css',
+  '../archive2-standalone.css',
+  '../archive2-navigation.css',
+  '../archive2-navigation.js',
+  '../archive2-session.js',
+  'data-archive-navigation="standalone"',
+  'data-archive-base="../"',
+  'data-archive-view="saved"',
+  'class="sa-main content-wrap"',
   '.action-btn',
-  'min-height: 48px',
-  '.action-btn + .action-btn',
-  '.action-btn:hover',
-  '.meta-badge',
-  '.card-type-chip',
+  '.result-btn',
 ].forEach((requiredStyle) => {
-  assert(analysisHtml.includes(requiredStyle), `assessment-analysis.html should reuse archive card/button style marker: ${requiredStyle}`);
+  assert(analysisHtml.includes(requiredStyle), `assessment-analysis.html should use the Archive 2.0 frame marker: ${requiredStyle}`);
+});
+
+// The shared card family lives in archive2-standalone.css.
+['.exam-card', '.card-body', '.card-grade-row', '.card-main-title', '.meta-badge', '.card-type-chip', '.empty-state'].forEach((selector) => {
+  assert(sharedCss.includes(`body.archive2-assessment ${selector}`), `archive2-standalone.css should define ${selector} for the assessment pages`);
 });
 
 [
@@ -42,9 +47,18 @@ function assert(condition, message) {
   'class="grid"',
   'class="card"',
   'button class="action ',
+  'linear-gradient',
+  'radial-gradient',
+  'box-shadow',
 ].forEach((forbiddenStyle) => {
-  assert(!analysisHtml.includes(forbiddenStyle), `assessment-analysis.html should not introduce standalone/CDN/SaaS style marker: ${forbiddenStyle}`);
+  assert(!analysisHtml.includes(forbiddenStyle), `assessment-analysis.html should not introduce standalone/CDN/SaaS/old-design marker: ${forbiddenStyle}`);
 });
+
+// No hard-coded colors in the page style: tokens only (white text on ink is the only literal).
+const styleBlock = analysisHtml.slice(analysisHtml.indexOf('<style>'), analysisHtml.indexOf('</style>'));
+const literalColors = (styleBlock.match(/#[0-9a-fA-F]{3,8}\b/g) || []).filter((value) => value.toLowerCase() !== '#fff');
+assert(literalColors.length === 0, `assessment-analysis.html style should use tokens, found ${literalColors.join(', ')}`);
+assert(!/style="/.test(analysisHtml.slice(analysisHtml.indexOf('<body'))), 'assessment-analysis.html should not carry inline style attributes');
 
 [
   'assessment_analysis_snapshots',
@@ -60,12 +74,17 @@ function assert(condition, message) {
 
 assert(
   analysisHtml.includes('.result-btn.is-selected[data-status="correct"]') &&
-  analysisHtml.includes('var(--archive-green)') &&
+  analysisHtml.includes('var(--good)') &&
   analysisHtml.includes('.result-btn.is-selected[data-status="wrong"]') &&
-  analysisHtml.includes('var(--archive-red)') &&
+  analysisHtml.includes('var(--danger)') &&
   !analysisHtml.includes('.result-btn.is-selected[data-status="partial"]') &&
   !analysisHtml.includes('data-status="partial"'),
   'assessment-analysis.html should keep clear O/X selected states only'
 );
+
+// Internal names are not shown to teachers.
+['sourceFile</th>', 'sourceQuestionNo</th>', '내부 상세', '내부용 분석표'].forEach((internal) => {
+  assert(!analysisHtml.includes(internal), `assessment-analysis.html should not show internal wording: ${internal}`);
+});
 
 console.log('assessment analysis style guard checks passed');
