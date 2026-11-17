@@ -157,7 +157,7 @@ test("PC: svg solution figures are shown at natural width x k capped at 90% of t
   // a 120-wide hand-made figure is shown at 120 (not 72), a 300-wide one at min(300, column)
   assert.ok(Math.abs(byName(rows, "hand-made 120 svg").width - 120) <= 1, JSON.stringify(byName(rows, "hand-made 120 svg")));
   const hand300 = byName(rows, "hand-made 300 svg");
-  assert.ok(Math.abs(hand300.width - Math.min(300, hand300.column)) <= 1, JSON.stringify(hand300));
+  assert.ok(Math.abs(hand300.width - Math.min(300, hand300.column * MAX_WIDTH_RATIO)) <= 1, JSON.stringify(hand300));
   // a wide canvas reaches 90% of the column and no further
   const wide = byName(rows, "wide medium svg");
   assert.ok(Math.abs(wide.width - wide.column * MAX_WIDTH_RATIO) <= 1.5, JSON.stringify(wide));
