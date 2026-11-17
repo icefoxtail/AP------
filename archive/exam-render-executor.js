@@ -5,6 +5,54 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createExamRenderExecutor(root) {
     'use strict';
 
+    const CLIP_TOLERANCE_PX = 3;
+
+    // Fallback ladder for a question that still clips at the smallest text/figure size. Steps are tried
+    // one at a time, only for the clipped question: (1) the same column, taller (2 rows, ... up to the whole
+    // column), (2) one full-width row, (3) a page of its own. A full page is the last resort.
+    function fallbackLadder(qpp) {
+        const rows = Math.max(1, Math.ceil(Number(qpp) / 2));
+        const ladder = [];
+        if (Number(qpp) >= 2) for (let span = 2; span <= rows; span += 1) ladder.push({ span });
+        if (rows >= 2) ladder.push({ row: true });
+        ladder.push({ page: true });
+        return ladder;
+    }
+    // forced: Map(item -> step). A bare Set (older callers/tests) means "own page".
+    function fallbackStep(forced, item) {
+        if (!forced) return null;
+        if (typeof forced.get === 'function') return forced.get(item) || null;
+        return forced.has(item) ? { page: true } : null;
+    }
+    function injectGridRowStyle(document) {
+        if (!document?.head || typeof document.getElementById !== 'function' || document.getElementById('ap-exam-grid-row-style')) return;
+        const style = document.createElement('style');
+        style.id = 'ap-exam-grid-row-style';
+        style.textContent = '.grid-container.ap-grid-row-page::after{display:none}'
+            + '.grid-container.ap-grid-row-page>.grid-col.ap-grid-row-left{border-right:1px solid #000}';
+        document.head.appendChild(style);
+    }
+
+    // Question boxes whose content is still cut off after every fit step. Same test as
+    // Archive2PdfReadiness.assertLayoutReady (clipping overflow + scroll size beyond client size + 3px),
+    // restricted to elements inside a question box. The readiness check itself is not changed.
+    function clippedQuestionBoxes(page) {
+        const view = page.ownerDocument?.defaultView || root;
+        const clipped = [];
+        page.querySelectorAll('.q-box').forEach(box => {
+            const hit = [box, ...box.querySelectorAll('*')].some(element => {
+                const tooTall = element.scrollHeight > element.clientHeight + CLIP_TOLERANCE_PX;
+                const tooWide = element.scrollWidth > element.clientWidth + CLIP_TOLERANCE_PX;
+                if (!tooTall && !tooWide) return false;
+                const style = view.getComputedStyle(element);
+                const clips = value => value === 'hidden' || value === 'clip';
+                return (tooWide && clips(style.overflowX)) || (tooTall && clips(style.overflowY));
+            });
+            if (hit) clipped.push(box);
+        });
+        return clipped;
+    }
+
     function usesEqualSlots(qpp, questions, deps) {
         const url = deps.engineUrl || root.location?.href || 'https://ap.invalid/';
         const params = new URL(url, 'https://ap.invalid/').searchParams;
@@ -14,7 +62,7 @@
         return root.APEqualSlotEngine.enabled(qpp, url, questions);
     }
 
-    function buildSlotPages(items, qpp) {
+    function buildSlotPages(items, qpp, forcedWide) {
         const rowCount = Math.max(1, Math.ceil(Number(qpp) / 2));
         const slotColumnCount = Number(qpp) === 1 ? 1 : 2;
         const spanFor = item => {
@@ -27,14 +75,16 @@
             placements: [],
             occupied: Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false))
         });
-        const findSlot = (pageData, span) => {
+        const findSlot = (pageData, span, colSpan = 1) => {
             for (let row = 0; row <= rowCount - span; row += 1) {
-                for (let col = 0; col < slotColumnCount; col += 1) {
+                for (let col = 0; col <= slotColumnCount - colSpan; col += 1) {
                     let fits = true;
-                    for (let offset = 0; offset < span; offset += 1) {
-                        if (pageData.occupied[row + offset][col]) { fits = false; break; }
+                    for (let offset = 0; offset < span && fits; offset += 1) {
+                        for (let c = 0; c < colSpan; c += 1) {
+                            if (pageData.occupied[row + offset][col + c]) { fits = false; break; }
+                        }
                     }
-                    if (fits) return { row, col, span };
+                    if (fits) return { row, col, span, colSpan };
                 }
             }
             return null;
@@ -47,16 +97,18 @@
         };
         for (const item of items) {
             const tag = item.q.layoutTag || '';
-            if (tag === 'fullwidth') {
+            const step = fallbackStep(forcedWide, item);
+            if (tag === 'fullwidth' || step?.page) {
                 flushSlotPage();
                 slotPages.push({ wideItem: item });
                 continue;
             }
-            const span = Math.min(rowCount, spanFor(item));
-            let placement = findSlot(slotPage, span);
-            if (!placement && span === rowCount) {
+            const span = Math.min(rowCount, Math.max(spanFor(item), step?.span || 1));
+            const colSpan = step?.row && slotColumnCount > 1 ? 2 : 1;
+            let placement = findSlot(slotPage, span, colSpan);
+            if (!placement && span === rowCount && colSpan === 1) {
                 const usedSpan = slotPage.placements.reduce((sum, entry) => sum + entry.span, 0);
-                if (usedSpan <= rowCount) {
+                if (usedSpan <= rowCount && slotPage.placements.every(entry => (entry.colSpan || 1) === 1)) {
                     slotPage.occupied = Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false));
                     let packedRow = 0;
                     slotPage.placements.forEach(entry => {
@@ -65,14 +117,16 @@
                         for (let offset = 0; offset < entry.span; offset += 1) slotPage.occupied[packedRow + offset][0] = true;
                         packedRow += entry.span;
                     });
-                    placement = findSlot(slotPage, span);
+                    placement = findSlot(slotPage, span, colSpan);
                 }
             }
             if (!placement) {
                 flushSlotPage();
-                placement = findSlot(slotPage, span);
+                placement = findSlot(slotPage, span, colSpan);
             }
-            for (let offset = 0; offset < span; offset += 1) slotPage.occupied[placement.row + offset][placement.col] = true;
+            for (let offset = 0; offset < span; offset += 1) {
+                for (let c = 0; c < colSpan; c += 1) slotPage.occupied[placement.row + offset][placement.col + c] = true;
+            }
             slotPage.placements.push({ item, ...placement });
         }
         flushSlotPage();
@@ -162,20 +216,55 @@
         };
         if (deps.layoutPlannerMode?.() === 'authority') return deps.renderExamPlan({ area, items, usableHeight: usablePageHeight });
 
-        const usesSlotLayout = items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
+        // A question that still overflows its slot at the smallest text/figure size must not stop the whole
+        // paper ("PDF readiness failed: content clipped"). Only that question moves down the fallback ladder
+        // (taller in its own column -> one full-width row -> a page of its own) and the paper is paginated
+        // again; questions that fit keep their placement.
+        const forcedWide = new Map();
+        const ladder = fallbackLadder(appState.qpp);
+        injectGridRowStyle(document);
+        const cloneItems = new WeakMap();
+        let builtPages = [];
+        const cloneFor = item => {
+            const clone = item.box.cloneNode(true);
+            const step = forcedWide.get(item);
+            if (step) clone.dataset.apFallback = step.page ? 'page' : step.row ? 'row' : `tall-${step.span}`;
+            cloneItems.set(clone, item);
+            return clone;
+        };
+        const trackPage = page => { builtPages.push(page); return page; };
+        const layoutPass = async () => {
+        pNum = 1;
+        const needsSlotPlacement = Array.from(forcedWide.values()).some(step => !step.page);
+        const usesSlotLayout = needsSlotPlacement || items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
         if (usesSlotLayout) {
             const rowCount = Math.max(1, Math.ceil(appState.qpp / 2));
             const slotColumnCount = Number(appState.qpp) === 1 ? 1 : 2;
-            const slotPages = buildSlotPages(items, appState.qpp);
+            const slotPages = buildSlotPages(items, appState.qpp, forcedWide);
 
             let slotPageNumber = 1;
             for (const slotPageData of slotPages) {
-                const page = deps.makePage(area, 'exam', slotPageNumber++);
+                const page = trackPage(deps.makePage(area, 'exam', slotPageNumber++));
                 if (slotPageData.wideItem) {
                     const wideCol = document.createElement('div');
                     wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                    wideCol.appendChild(slotPageData.wideItem.box.cloneNode(true));
+                    wideCol.appendChild(cloneFor(slotPageData.wideItem));
                     page.body.appendChild(wideCol);
+                } else if (slotPageData.placements.some(entry => (entry.colSpan || 1) > 1)) {
+                    // A full-width row cannot live in a two-column flow: place every cell on an explicit grid.
+                    const grid = document.createElement('div');
+                    grid.className = 'grid-container ap-grid-row-page';
+                    grid.style.cssText = `flex:1 1 0; grid-template-rows:repeat(${rowCount}, minmax(0, 1fr));`;
+                    slotPageData.placements.forEach(entry => {
+                        const cell = document.createElement('div');
+                        cell.className = 'grid-col';
+                        if (entry.col === 0 && (entry.colSpan || 1) === 1) cell.classList.add('ap-grid-row-left');
+                        cell.style.gridRow = `${entry.row + 1} / span ${entry.span}`;
+                        cell.style.gridColumn = `${entry.col + 1} / span ${entry.colSpan || 1}`;
+                        cell.appendChild(cloneFor(entry.item));
+                        grid.appendChild(cell);
+                    });
+                    page.body.appendChild(grid);
                 } else {
                     const grid = document.createElement('div');
                     grid.className = 'grid-container';
@@ -191,15 +280,15 @@
                     if (!hasSpecialPlacement) {
                         const ordered = slotPageData.placements.map(entry => entry.item);
                         const split = Math.ceil(ordered.length / 2);
-                        ordered.slice(0, split).forEach(item => columns[0].appendChild(item.box.cloneNode(true)));
-                        ordered.slice(split).forEach(item => columns[1]?.appendChild(item.box.cloneNode(true)));
+                        ordered.slice(0, split).forEach(item => columns[0].appendChild(cloneFor(item)));
+                        ordered.slice(split).forEach(item => columns[1]?.appendChild(cloneFor(item)));
                     } else {
                         for (let col = 0; col < slotColumnCount; col += 1) {
                             let row = 0;
                             while (row < rowCount) {
                                 const placement = slotPageData.placements.find(entry => entry.col === col && entry.row === row);
                                 if (placement) {
-                                    const clone = placement.item.box.cloneNode(true);
+                                    const clone = cloneFor(placement.item);
                                     clone.style.flex = `${placement.span} 1 0`;
                                     columns[col].appendChild(clone);
                                     row += placement.span;
@@ -259,7 +348,7 @@
             const layoutTag = item.q.layoutTag || '';
             let qType = 'normal';
             let limit = appState.qpp;
-            if (layoutTag === 'fullwidth') { qType = 'wide'; limit = 1; }
+            if (layoutTag === 'fullwidth' || fallbackStep(forcedWide, item)?.page) { qType = 'wide'; limit = 1; }
             else if (layoutTag === 'subjective-2up') { qType = 'subj2'; limit = 2; }
             else if (layoutTag === 'subjective-4up') { qType = 'subj4'; limit = 4; }
             const isSpecialType = ['subj2', 'subj4', 'wide'].includes(qType);
@@ -279,12 +368,12 @@
         if (currentPage.blocks.length > 0) pages.push(currentPage);
         for (let pIdx = 0; pIdx < pages.length; pIdx += 1) {
             const pageData = pages[pIdx];
-            const page = !firstPage ? (firstPage = deps.makePage(area, 'exam', pNum)) : deps.makePage(area, 'exam', ++pNum);
+            const page = !firstPage ? (firstPage = trackPage(deps.makePage(area, 'exam', pNum))) : trackPage(deps.makePage(area, 'exam', ++pNum));
             pageData.blocks.forEach((block, bIdx) => {
                 if (block.type === 'wide') {
                     const wideCol = document.createElement('div');
                     wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                    wideCol.appendChild(block.items[0].box.cloneNode(true));
+                    wideCol.appendChild(cloneFor(block.items[0]));
                     page.body.appendChild(wideCol);
                 } else {
                     const bGrid = document.createElement('div');
@@ -299,8 +388,8 @@
                     bGrid.appendChild(bRight);
                     page.body.appendChild(bGrid);
                     const split = Math.ceil(block.items.length / 2);
-                    block.items.slice(0, split).forEach(item => bLeft.appendChild(item.box.cloneNode(true)));
-                    block.items.slice(split).forEach(item => bRight.appendChild(item.box.cloneNode(true)));
+                    block.items.slice(0, split).forEach(item => bLeft.appendChild(cloneFor(item)));
+                    block.items.slice(split).forEach(item => bRight.appendChild(cloneFor(item)));
                 }
             });
             if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-page', [page]);
@@ -312,6 +401,37 @@
                 await deps.raf();
                 if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-page-overflow', [page]);
             }
+        }
+        return area;
+        };
+        // A stretchy math bar (overline/arrow) draws a spacer a few px past its box; MathJax only clips it with
+        // clip-path, so the spacer still counts as scrollable overflow. First retry such a question with the
+        // paint-only clip (mixed_engine.html [data-ap-mjx-clip]) before moving it down the ladder. Questions that
+        // do not clip never get the attribute, so their output is unchanged.
+        const mjxClipTried = new Set();
+        for (let pass = 0; ; pass += 1) {
+            builtPages = [];
+            await layoutPass();
+            if (pass > ladder.length + 1) break;
+            const escalate = new Map();
+            let marked = false;
+            builtPages.forEach(page => clippedQuestionBoxes(page).forEach(box => {
+                const item = cloneItems.get(box);
+                if (!item || item.q.layoutTag === 'fullwidth') return;
+                if (!mjxClipTried.has(item) && typeof box.querySelector === 'function' && box.querySelector('mjx-stretchy-h > mjx-ext')
+                    && typeof item.box.setAttribute === 'function') {
+                    mjxClipTried.add(item);
+                    item.box.setAttribute('data-ap-mjx-clip', '1');
+                    marked = true;
+                    return;
+                }
+                const current = forcedWide.get(item);
+                const next = ladder[current ? ladder.indexOf(current) + 1 : 0];
+                if (next) escalate.set(item, next);
+            }));
+            if (!escalate.size && !marked) break;
+            escalate.forEach((step, item) => forcedWide.set(item, step));
+            builtPages.forEach(page => page.remove());
         }
         return area;
     }
@@ -478,5 +598,5 @@ async function renderComposed({ area, items, deps }) {
         return items;
     }
 
-    return Object.freeze({ render, renderComposed, measureProfiles, buildSlotPages });
+    return Object.freeze({ render, renderComposed, measureProfiles, buildSlotPages, fallbackLadder });
 });
