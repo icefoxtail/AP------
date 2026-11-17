@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "250",
+          "-20"
+        ],
+        "domain": [
+          "0",
+          "25/4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "150",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "25/4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "250",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "5",
+          "y": "150",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "25/4",
+          "y": "125",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/20"
+    }
+  },
+  "caption": "점P는0≤x≤25/4초 동안 움직인다. 넓이는250−20x이며150은5초. 도착시 삼각형으로 퇴화한 끝점의 넓이125까지 연속 발췌한다. 정답⑤. 세로 표시 배율은1/20이며 눈금·좌표·넓이값은 실제 cm² 값 그대로 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같은 가로 25 cm, 세로 10 cm인 직사각형 $ABCD$에서 점 P는 점 B를 출발하여 점 C까지 $\\overline{BC}$를 따라 1초에 4 cm씩 움직인다. 점 P가 출발한 지 $x$초 후 사다리꼴 $APCD$의 넓이를 $y$ cm$^2$라 할 때, 보기의 설명 중 옳은 것을 모두 고르시오. [5점]\n<div class=\"note-box\">ㄱ. $y=-20x+250$<br>ㄴ. 사다리꼴의 넓이는 1초에 $20$ cm$^2$씩 줄어든다.<br>ㄷ. 사다리꼴 $APCD$의 넓이가 $150$ cm$^2$가 되는 것은 점 P가 출발한 지 5초 후이다.</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "점P는0≤x≤25/4초 동안 움직인다. 넓이는250−20x이며150은5초. 도착시 삼각형으로 퇴화한 끝점의 넓이125까지 연속 발췌한다. 정답⑤. 세로 표시 배율은1/20이며 눈금·좌표·넓이값은 실제 cm² 값 그대로 읽는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "점P는0≤x≤25/4초 동안 움직인다. 넓이는250−20x이며150은5초. 도착시 삼각형으로 퇴화한 끝점의 넓이125까지 연속 발췌한다. 정답⑤. 세로 표시 배율은1/20이며 눈금·좌표·넓이값은 실제 cm² 값 그대로 읽는다."
+  ]
+}

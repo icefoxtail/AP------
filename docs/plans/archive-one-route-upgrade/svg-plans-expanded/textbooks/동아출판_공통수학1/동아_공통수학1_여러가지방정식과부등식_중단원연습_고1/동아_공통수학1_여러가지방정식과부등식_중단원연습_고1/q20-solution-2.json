@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1/2",
+        "y": "5/2"
+      },
+      {
+        "x": "3",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "1/2",
+        "y": "5/2"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "D",
+        "x": "4",
+        "y": "8"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=2",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "⑵ 실제y=|2x−1|+|x−3|의세조각을표시한다. x1/2에서최솟값5/2이고수평선y2보다항상위라해없음.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $|x+1|+|x-2|>9$\n⑵ $|2x-1|+|x-3|\\le 2$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 꺾이는점−1,2사이합은3. 왼쪽은1−2x>9→x<−4,오른쪽은2x−1>9→x>5. ⑵ 실제y=|2x−1|+|x−3|의세조각을표시한다. x1/2에서최솟값5/2이고수평선y2보다항상위라해없음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 실제y=|2x−1|+|x−3|의세조각을표시한다. x1/2에서최솟값5/2이고수평선y2보다항상위라해없음."
+  ]
+}

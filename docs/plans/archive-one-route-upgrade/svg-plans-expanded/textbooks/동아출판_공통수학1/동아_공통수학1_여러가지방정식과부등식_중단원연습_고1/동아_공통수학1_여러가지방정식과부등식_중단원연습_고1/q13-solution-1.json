@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑴ 각각x≤6,x>3. 교집합3<x≤6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} x+5\\ge 2x-1 \\\\ 3x+1>x+7 \\end{cases}$\n⑵ $\\begin{cases} 4x+1\\ge 3(x+1) \\\\ x+3\\le 2x-1 \\end{cases}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 각각x≤6,x>3. 교집합3<x≤6. ⑵ 각각x≥2,x≥4. 교집합x≥4.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ 각각x≤6,x>3. 교집합3<x≤6."
+  ]
+}

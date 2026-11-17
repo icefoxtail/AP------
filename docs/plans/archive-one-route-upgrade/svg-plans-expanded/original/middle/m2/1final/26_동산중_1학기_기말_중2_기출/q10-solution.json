@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "a>0,b≤0이나 분모b≠0이므로 b<0이다. a=1,b=−1은 부호 대표값이며 새 직선은 음의 기울기·음의 절편으로 제1사분면을 지나지 않는다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프가 제2사분면을 지나지 않을 때, 일차함수 $y=\\dfrac{a}{b}x-a$의 그래프가 지나지 않는 사분면을 구하시오. [4.5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a>0,b≤0이나 분모b≠0이므로 b<0이다. a=1,b=−1은 부호 대표값이며 새 직선은 음의 기울기·음의 절편으로 제1사분면을 지나지 않는다. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a>0,b≤0이나 분모b≠0이므로 b<0이다. a=1,b=−1은 부호 대표값이며 새 직선은 음의 기울기·음의 절편으로 제1사분면을 지나지 않는다. 정답①."
+  ]
+}

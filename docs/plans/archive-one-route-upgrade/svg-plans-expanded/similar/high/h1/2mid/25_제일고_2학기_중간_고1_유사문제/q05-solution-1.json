@@ -1,0 +1,34 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [],
+    "shade": "A∩B"
+  },
+  "caption": "A∩B의 실제 원소 소속 영역 비교. ㄱ의A−(A−B)는 공통영역,ㄴ은A전체. ㄷ의 여집합은 합집합이므로 두 뒤쪽 패널이 다르다. ㄱ/ㄴ 참,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 부분집합 $A$, $B$에 대하여 다음 보기의 성질 중 옳은 것만을 있는 대로 고른 것은? [4.5점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $A\\cap B=A-(A-B)$<br>ㄴ. $A\\cup(A\\cap B)=A$<br>ㄷ. $(A\\cap B)^C=A^C\\cap B^C$<br>ㄹ. $A\\subset B$이면 $A^C\\subset B^C$</div>",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "A∩B의 실제 원소 소속 영역 비교. ㄱ의A−(A−B)는 공통영역,ㄴ은A전체. ㄷ의 여집합은 합집합이므로 두 뒤쪽 패널이 다르다. ㄱ/ㄴ 참,정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "A∩B의 실제 원소 소속 영역 비교. ㄱ의A−(A−B)는 공통영역,ㄴ은A전체. ㄷ의 여집합은 합집합이므로 두 뒤쪽 패널이 다르다. ㄱ/ㄴ 참,정답①."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "0",
+        "y": "-16"
+      },
+      {
+        "id": "P3",
+        "x": "-5",
+        "y": "9"
+      },
+      {
+        "id": "P4",
+        "x": "5",
+        "y": "9"
+      }
+    ],
+    "formula": "x^2 - 16",
+    "axisScale": {
+      "x": "1",
+      "y": "1/4"
+    },
+    "functionName": "f",
+    "axisTitles": {
+      "x": "x",
+      "y": "f"
+    }
+  },
+  "caption": "x=y+k 대입하면3y²+3ky+k²−4=0. 유일한실수해쌍은판별식48−3k²0,즉k²16일때. 가로x는매개변수k,세로f(x)=x²−16이며영점k±4. 각해는(2,−2),(−2,2). 가로축척1에대한세로축척1/4을명시한그림으로원함수값과정확좌표를보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} x-y=k \\\\ x^2+xy+y^2=4 \\end{cases}$가 오직 한 쌍의 해를 가질 때, 실수 $k$의 값을 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=y+k 대입하면3y²+3ky+k²−4=0. 유일한실수해쌍은판별식48−3k²0,즉k²16일때. 가로x는매개변수k,세로f(x)=x²−16이며영점k±4. 각해는(2,−2),(−2,2). 가로축척1에대한세로축척1/4을명시한그림으로원함수값과정확좌표를보존한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x=y+k 대입하면3y²+3ky+k²−4=0. 유일한실수해쌍은판별식48−3k²0,즉k²16일때. 가로x는매개변수k,세로f(x)=x²−16이며영점k±4. 각해는(2,−2),(−2,2). 가로축척1에대한세로축척1/4을명시한그림으로원함수값과정확좌표를보존한다."
+  ]
+}

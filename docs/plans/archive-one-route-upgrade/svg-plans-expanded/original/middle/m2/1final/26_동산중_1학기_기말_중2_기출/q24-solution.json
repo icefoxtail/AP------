@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2/3"
+        ],
+        "domain": [
+          "-7",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-4/3"
+        ],
+        "domain": [
+          "-7",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-6",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-3/2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-3",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "area",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "height",
+          "from": "P2",
+          "to": "P3",
+          "dashed": true,
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "두 x절편−6,−3/2에서 밑변9/2, 공통점(−3,2)에서 높이2. 삼각형 넓이9/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 3. 두 직선 $2x-3y+12=0$, $4x+3y+6=0$과 $x$축으로 둘러싸인 도형의 넓이를 구하고, 그 풀이 과정을 자세하게 서술하시오. [7점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두 x절편−6,−3/2에서 밑변9/2, 공통점(−3,2)에서 높이2. 삼각형 넓이9/2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 x절편−6,−3/2에서 밑변9/2, 공통점(−3,2)에서 높이2. 삼각형 넓이9/2이다."
+  ]
+}

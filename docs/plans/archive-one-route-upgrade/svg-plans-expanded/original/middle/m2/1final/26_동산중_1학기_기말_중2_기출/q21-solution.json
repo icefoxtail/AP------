@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-3/2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "-3/2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "3/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "1/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "a3,b−5에서 첫째와 셋째 식은 같은 위 직선, 둘째는 절편이 다른 평행선이다. 일치와 평행을 구별해 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+2y-3=0$의 그래프가 다음 조건을 만족시킬 때, 0이 아닌 상수 $a,b$의 값을 각각 구하시오. [5점]\n<div class=\"note-box\">· 직선 $(b+2)x-2y+1=0$과 만나지 않는다.<br>· 직선 $(-2b-1)x+6y-9=0$과 두 개 이상의 점에서 만난다.</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a3,b−5에서 첫째와 셋째 식은 같은 위 직선, 둘째는 절편이 다른 평행선이다. 일치와 평행을 구별해 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a3,b−5에서 첫째와 셋째 식은 같은 위 직선, 둘째는 절편이 다른 평행선이다. 일치와 평행을 구별해 정답③."
+  ]
+}

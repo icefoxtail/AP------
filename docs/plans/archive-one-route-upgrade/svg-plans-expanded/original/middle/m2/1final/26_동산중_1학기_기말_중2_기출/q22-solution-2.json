@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "P2",
+        "x": "2",
+        "y": "10"
+      },
+      {
+        "id": "P3",
+        "x": "3",
+        "y": "13"
+      },
+      {
+        "id": "P4",
+        "x": "4",
+        "y": "16"
+      },
+      {
+        "id": "P5",
+        "x": "5",
+        "y": "19"
+      }
+    ],
+    "formula": "3*x + 4"
+  },
+  "caption": "초기0~5분 확대: (0,4),(1,7),(2,10),(3,13),(4,16),(5,19)를 원래 표와 대조한다. 매분3°C 증가, 전체 가열의100°C 도달32분은 다음 전체 패널에서 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 1. 주전자에 담긴 물을 가열하면서 1분마다 물의 온도를 재었더니 다음 표와 같이 일정하게 온도가 올라갔다. 물을 가열하기 시작한 지 $x$분 후의 온도를 $y^\\circ$C라고 하자. [6점]\n<table><tr><th>$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><th>$y$</th><td>4</td><td>7</td><td>10</td><td>13</td><td>16</td><td>19</td></tr></table>\n(1) $x$와 $y$ 사이의 관계식을 구하시오. [3점]\n(2) 물의 온도가 $100^\\circ$C가 되는 것은 물을 가열하기 시작한 지 몇 분 후인지 구하시오. [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

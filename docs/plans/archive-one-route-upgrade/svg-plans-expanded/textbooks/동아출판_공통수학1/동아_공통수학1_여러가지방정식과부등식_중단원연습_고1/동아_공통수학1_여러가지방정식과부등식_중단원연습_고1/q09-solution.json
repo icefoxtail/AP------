@@ -1,0 +1,84 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "caption": "(2x−y)(2x+3y)=0에서x,y모두양수이므로y2x만가능. 둘째식에대입해2x²2, x1,y2. 원문양수조건때문에음의대칭점은제외하고정답a+b3.",
+  "coordinateLabels": [
+    "O",
+    "P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} 4x^2+4xy-3y^2=0 \\\\ 2x^2+2xy-y^2=2 \\end{cases}$의 해를 $x=a$, $y=b$라고 할 때, $a+b$의 값을 구하시오. (단, $a>0, b>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(2x−y)(2x+3y)=0에서x,y모두양수이므로y2x만가능. 둘째식에대입해2x²2, x1,y2. 원문양수조건때문에음의대칭점은제외하고정답a+b3.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "(2x−y)(2x+3y)=0에서x,y모두양수이므로y2x만가능. 둘째식에대입해2x²2, x1,y2. 원문양수조건때문에음의대칭점은제외하고정답a+b3."
+  ]
+}

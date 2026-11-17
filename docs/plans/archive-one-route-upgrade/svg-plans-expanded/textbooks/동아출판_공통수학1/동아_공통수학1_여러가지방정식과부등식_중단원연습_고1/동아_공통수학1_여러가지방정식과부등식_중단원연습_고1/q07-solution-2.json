@@ -1,0 +1,84 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "⑵ x+y5를제곱해x²+y²=25−2xy,원식에서25−3xy7이므로xy6. t²−5t+6=0의두값2,3을교환한해(2,3),(3,2). 표시선은x+y5이며이타원전체를그렸다는뜻은아니다.",
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식을 푸시오.\n⑴ $\\begin{cases} y=x+2 \\\\ x^2+y^2=4 \\end{cases}$\n⑵ $\\begin{cases} x+y=5 \\\\ x^2-xy+y^2=7 \\end{cases}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 직선y=x+2와원x²+y²4의교점은(−2,0),(0,2). 대입하면2x(x+2)=0이므로두점뿐이다. ⑵ x+y5를제곱해x²+y²=25−2xy,원식에서25−3xy7이므로xy6. t²−5t+6=0의두값2,3을교환한해(2,3),(3,2). 표시선은x+y5이며이타원전체를그렸다는뜻은아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ x+y5를제곱해x²+y²=25−2xy,원식에서25−3xy7이므로xy6. t²−5t+6=0의두값2,3을교환한해(2,3),(3,2). 표시선은x+y5이며이타원전체를그렸다는뜻은아니다."
+  ]
+}

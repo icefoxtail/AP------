@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "100",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "제동거리70이하는x²+40x−14000=(x+140)(x−100)≤0. 실제속력x>0과교집합0<x≤100. 최대100km/h.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[연결] 주행 중인 자동차에서 브레이크가 작동한 순간부터 완전히 멈출 때까지 자동차가 움직인 거리를 제동 거리라고 한다. 자동차가 시속 $x\\text{ km}$로 주행 중일 때, 제동 거리를 $y\\text{ m}$라고 하면 다음이 성립한다.\n$$y=\\frac{1}{200}x^2+\\frac{1}{5}x\\text{ (단, }x>0\\text{)}$$\n제동 거리가 $70\\text{ m}$ 이하가 되도록 하는 자동차의 최대 속력을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "제동거리70이하는x²+40x−14000=(x+140)(x−100)≤0. 실제속력x>0과교집합0<x≤100. 최대100km/h.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "제동거리70이하는x²+40x−14000=(x+140)(x−100)≤0. 실제속력x>0과교집합0<x≤100. 최대100km/h."
+  ]
+}

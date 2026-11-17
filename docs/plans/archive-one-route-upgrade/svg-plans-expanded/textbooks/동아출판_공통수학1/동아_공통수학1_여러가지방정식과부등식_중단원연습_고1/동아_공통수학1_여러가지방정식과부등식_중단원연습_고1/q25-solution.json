@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "-4"
+      },
+      {
+        "id": "P3",
+        "x": "-2",
+        "y": "5"
+      },
+      {
+        "id": "P4",
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "formula": "x^2 - 2*x - 3",
+    "axisScale": {
+      "x": "1",
+      "y": "1/2"
+    }
+  },
+  "caption": "양의최고차항과해의경계−1,3으로다항식(x+1)(x−3)=x²−2x−3. a−2,b−3이므로a+b−5. 음수가아닌바깥구간과경계를읽는다. 가로축척1에대한세로축척1/2을명시한그림으로원함수값과정확좌표를보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2+ax+b\\ge 0$의 해가 $x\\le -1$ 또는 $x\\ge 3$일 때, $a+b$의 값을 구하시오. (단, $a, b$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양의최고차항과해의경계−1,3으로다항식(x+1)(x−3)=x²−2x−3. a−2,b−3이므로a+b−5. 음수가아닌바깥구간과경계를읽는다. 가로축척1에대한세로축척1/2을명시한그림으로원함수값과정확좌표를보존한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "양의최고차항과해의경계−1,3으로다항식(x+1)(x−3)=x²−2x−3. a−2,b−3이므로a+b−5. 음수가아닌바깥구간과경계를읽는다. 가로축척1에대한세로축척1/2을명시한그림으로원함수값과정확좌표를보존한다."
+  ]
+}

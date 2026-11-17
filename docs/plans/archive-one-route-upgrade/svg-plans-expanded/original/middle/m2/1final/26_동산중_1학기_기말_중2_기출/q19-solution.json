@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4/3",
+          "5/3"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-9/2",
+          "-3/2"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "소수·분모를 제거한5x−3y4와3x+2y−9의 공통해(−1,−3), 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}0.5x-0.3y=0.4\\\\ \\dfrac{x}{2}+\\dfrac{y}{3}=-\\dfrac{3}{2}\\end{cases}$을 푸시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "소수·분모를 제거한5x−3y4와3x+2y−9의 공통해(−1,−3), 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "소수·분모를 제거한5x−3y4와3x+2y−9의 공통해(−1,−3), 정답①."
+  ]
+}

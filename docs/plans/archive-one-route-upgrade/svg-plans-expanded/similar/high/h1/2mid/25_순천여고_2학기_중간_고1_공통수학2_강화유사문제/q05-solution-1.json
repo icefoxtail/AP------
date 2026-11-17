@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "22명",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "10명",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "17명",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "11명",
+        "in": []
+      }
+    ]
+  },
+  "caption": "전체60명 중 밖11명이므로 합집합49. 32+27−49=10명은 공통영역, 각 영역22/10/17/11을 모두 표시. 정답10.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $n(U)=60$, $n(A)=32$, $n(B)=27$, $n(A^C\\cap B^C)=11$일 때, $n(A\\cap B)$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "전체60명 중 밖11명이므로 합집합49. 32+27−49=10명은 공통영역, 각 영역22/10/17/11을 모두 표시. 정답10.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "전체60명 중 밖11명이므로 합집합49. 32+27−49=10명은 공통영역, 각 영역22/10/17/11을 모두 표시. 정답10."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "상수 예시의 실제 네입력 대응. 상수4가지/항등1가지/일대일24가지를 별도로 센 뒤4+1+24=29. 항등함수도 일대일에속하지만 문제는 세개수를 더하므로 중복제거하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 집합 $X=\\{1,2,3,4\\}$에서 집합 $Y=\\{1,2,3,4\\}$로의 함수 중에서 상수함수의 개수를 $a$, 항등함수의 개수를 $b$, 일대일대응의 개수를 $c$라 할 때, $a+b+c$의 값을 구하는 과정을 서술하시오. [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "상수 예시의 실제 네입력 대응. 상수4가지/항등1가지/일대일24가지를 별도로 센 뒤4+1+24=29. 항등함수도 일대일에속하지만 문제는 세개수를 더하므로 중복제거하지 않는다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "상수 예시의 실제 네입력 대응. 상수4가지/항등1가지/일대일24가지를 별도로 센 뒤4+1+24=29. 항등함수도 일대일에속하지만 문제는 세개수를 더하므로 중복제거하지 않는다."
+  ]
+}

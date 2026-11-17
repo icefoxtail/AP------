@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-4"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "H",
+    "U",
+    "V",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "PK",
+      "refs": [
+        "P",
+        "K"
+      ]
+    },
+    {
+      "id": "KH",
+      "refs": [
+        "K",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P",
+    "H",
+    "U",
+    "V",
+    "K"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "P",
+        "H",
+        "U"
+      ]
+    },
+    {
+      "id": "k",
+      "refs": [
+        "P",
+        "K",
+        "H"
+      ]
+    }
+  ],
+  "caption": "원본 일반 수선 그림을 유지하고 a=3,b=4,c=0,P(3,4)의 명시적 예시로 수평·수직 변화3,4와 거리5를 확인한다. 일반 수선 기울기는 b/a이며 정답④. S=ax₁+by₁+c에서 x₂−x₁=−aS/(a²+b²),y₂−y₁=−bS/(a²+b²),거리|S|/√(a²+b²). 예시 수치가 일반 계수를 제한하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $l:ax+by+c=0$ ($a\\ne0$, $b\\ne0$) 밖의 점 $P(x_1,y_1)$에서 $l$에 내린 수선의 발을 $H(x_2,y_2)$라 하자. 아래 그림을 참고하여 $(가)$, $(나)$, $(다)$에 들어갈 것을 순서대로 바르게 나열한 것은?<br><br>$PH$의 기울기 $=(가)$<br>$x_2-x_1=(나)$<br>$\\overline{PH}=(다)$",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원본 일반 수선 그림을 유지하고 a=3,b=4,c=0,P(3,4)의 명시적 예시로 수평·수직 변화3,4와 거리5를 확인한다. 일반 수선 기울기는 b/a이며 정답④. S=ax₁+by₁+c에서 x₂−x₁=−aS/(a²+b²),y₂−y₁=−bS/(a²+b²),거리|S|/√(a²+b²). 예시 수치가 일반 계수를 제한하지 않는다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 일반 수선 그림을 유지하고 a=3,b=4,c=0,P(3,4)의 명시적 예시로 수평·수직 변화3,4와 거리5를 확인한다. 일반 수선 기울기는 b/a이며 정답④. S=ax₁+by₁+c에서 x₂−x₁=−aS/(a²+b²),y₂−y₁=−bS/(a²+b²),거리|S|/√(a²+b²). 예시 수치가 일반 계수를 제한하지 않는다."
+  ]
+}

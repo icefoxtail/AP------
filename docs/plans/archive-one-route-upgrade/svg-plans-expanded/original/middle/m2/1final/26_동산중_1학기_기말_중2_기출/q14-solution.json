@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-4/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "formula": "4 - 4*x/3"
+  },
+  "caption": "기울기−4/3, 두 절편3과4로 제1·2·4사분면을 지난다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $4x+3y-12=0$의 그래프에 대한 설명으로 옳은 것을 고르시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기울기−4/3, 두 절편3과4로 제1·2·4사분면을 지난다. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기−4/3, 두 절편3과4로 제1·2·4사분면을 지난다. 정답⑤."
+  ]
+}

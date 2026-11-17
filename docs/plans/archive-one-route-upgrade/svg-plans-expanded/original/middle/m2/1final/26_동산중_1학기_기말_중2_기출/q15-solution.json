@@ -1,0 +1,110 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displaySegments": [],
+  "caption": "모든 점의 가로좌표4인 수직선 x=4, 정답②. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+  "displayLines": [
+    "v"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 직선의 방정식으로 옳은 것을 고르시오. [3점]",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "모든 점의 가로좌표4인 수직선 x=4, 정답②. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 점의 가로좌표4인 수직선 x=4, 정답②. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다."
+  ]
+}

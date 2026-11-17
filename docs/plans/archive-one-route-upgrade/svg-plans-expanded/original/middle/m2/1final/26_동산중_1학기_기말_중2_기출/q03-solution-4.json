@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "5",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-5",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-5/2",
+        "y": "-25/4"
+      }
+    ],
+    "formula": "x^2 + 5*x"
+  },
+  "caption": "⑤ y=x²+5x도 곡선이다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$에 대한 일차함수인 것을 고르시오. [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "⑤ y=x²+5x도 곡선이다. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑤ y=x²+5x도 곡선이다. 정답③."
+  ]
+}

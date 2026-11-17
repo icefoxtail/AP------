@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-5"
+              },
+              {
+                "kind": "integer",
+                "value": "-6"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "-1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-5"
+              },
+              {
+                "kind": "integer",
+                "value": "-6"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "-1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "HU",
+      "refs": [
+        "H",
+        "U"
+      ]
+    },
+    {
+      "id": "HV",
+      "refs": [
+        "H",
+        "V"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "H",
+    "U",
+    "V"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "U",
+        "H",
+        "V"
+      ]
+    }
+  ],
+  "caption": "a=4의 실제 두 직선 교점과 각 방향을 표시한다. 법선 내적(a−3)²+a−5=0→(a−1)(a−4)=0,해1/4의곱4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $(a-3)x-(a-5)y+7=0$, $(a-3)x-y+5=0$이 서로 수직이 되도록 하는 모든 실수 $a$값의 곱은? [4.5점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a=4의 실제 두 직선 교점과 각 방향을 표시한다. 법선 내적(a−3)²+a−5=0→(a−1)(a−4)=0,해1/4의곱4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a=4의 실제 두 직선 교점과 각 방향을 표시한다. 법선 내적(a−3)²+a−5=0→(a−1)(a−4)=0,해1/4의곱4."
+  ]
+}

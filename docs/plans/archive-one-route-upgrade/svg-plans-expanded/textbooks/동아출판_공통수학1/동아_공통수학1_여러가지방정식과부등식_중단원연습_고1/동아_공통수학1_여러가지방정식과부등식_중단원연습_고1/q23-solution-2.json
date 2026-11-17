@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "4/3",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4/3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ (3x−4)²>0이므로x≠4/3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차부등식을 푸시오.\n⑴ $x^2-4x+3\\le 0$\n⑵ $9x^2-24x+16>0$\n⑶ $-x^2+4x-4\\ge 0$\n⑷ $-2x^2+2x-1<0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ (x−1)(x−3)≤0이므로1≤x≤3. ⑵ (3x−4)²>0이므로x≠4/3. ⑶ −(x−2)²≥0은x2하나. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다. ⑷ −2x²+2x−1=−2(x−1/2)²−1/2。최댓값−1/2도0보다작으므로모든실수에서음수이다. 꼭짓점과x축관계로해가전체실수임을읽는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ (3x−4)²>0이므로x≠4/3."
+  ]
+}

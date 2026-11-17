@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(1)*x+(1)",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "-3"
+      }
+    ]
+  },
+  "caption": "Q(4,−3)을 지나는 m=1 직선 비교. m0과3/4는 제1사분면에 들어가지 않는 포함 경계, m−1은 오른쪽에서,m1은 양의 세로절편 가까이에서 들어간다. 정확 범위0≤m≤3/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $m$에 대하여 점 $Q(4,-3)$을 지나고 기울기가 $-m$인 직선 $l_m$이 제1사분면을 지나지 않도록 하는 $m$의 값의 범위를 구하고, 그 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "Q(4,−3)을 지나는 m=1 직선 비교. m0과3/4는 제1사분면에 들어가지 않는 포함 경계, m−1은 오른쪽에서,m1은 양의 세로절편 가까이에서 들어간다. 정확 범위0≤m≤3/4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "Q(4,−3)을 지나는 m=1 직선 비교. m0과3/4는 제1사분면에 들어가지 않는 포함 경계, m−1은 오른쪽에서,m1은 양의 세로절편 가까이에서 들어간다. 정확 범위0≤m≤3/4."
+  ]
+}

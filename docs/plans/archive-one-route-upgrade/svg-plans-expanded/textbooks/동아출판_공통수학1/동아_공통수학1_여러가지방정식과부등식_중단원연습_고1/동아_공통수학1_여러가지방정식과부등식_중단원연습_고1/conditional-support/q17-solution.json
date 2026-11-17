@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "30",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "20",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "50",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원본에서보이는5월1일의50−x가좋음이므로0≤50−x≤30,즉20≤x≤50까지만확정된다. 3일째행이잘려없어최종x범위와5월2일의등급은결정할수없다. 이수직선은보존된조건만설명하는조건부보조이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[연결] 미세 먼지 농도에 따른 미세 먼지 예보 등급은 다음과 같이 분류한다.\n<img src=\"q17.png\" />\n\n어느 지역의 3일간의 미세 먼지 농도와 예보 등급이 다음과 같을 때, $x$의 값의 범위와 5월 2일의 미세 먼지 예보 등급을 각각 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본에서보이는5월1일의50−x가좋음이므로0≤50−x≤30,즉20≤x≤50까지만확정된다. 3일째행이잘려없어최종x범위와5월2일의등급은결정할수없다. 이수직선은보존된조건만설명하는조건부보조이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에서보이는5월1일의50−x가좋음이므로0≤50−x≤30,즉20≤x≤50까지만확정된다. 3일째행이잘려없어최종x범위와5월2일의등급은결정할수없다. 이수직선은보존된조건만설명하는조건부보조이다."
+  ]
+}

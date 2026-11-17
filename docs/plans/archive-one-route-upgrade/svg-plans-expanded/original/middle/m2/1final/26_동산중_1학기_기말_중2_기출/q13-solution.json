@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "5"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "2"
+      },
+      {
+        "id": "P3",
+        "x": "6",
+        "y": "1"
+      },
+      {
+        "id": "P4",
+        "x": "8",
+        "y": "0"
+      }
+    ],
+    "formula": "4 - x/2"
+  },
+  "caption": "해 전체는 직선이지만 자연수 해는(2,3),(4,2),(6,1) 세 개뿐이다. (−2,5)는 실수 해이며 ㄱㄷ 참, 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "보기에서 일차방정식 $x+2y-8=0$의 해에 대한 설명으로 옳은 것을 모두 고르시오. [4점]\n<div class=\"note-box\">ㄱ. $(-2,5)$는 해이다.<br>ㄴ. $x,y$가 자연수인 경우는 해는 무수히 많다.<br>ㄷ. $x$와 $y$의 값의 범위가 수 전체일 때, 해를 좌표로 하는 점을 좌표평면에 나타내면 직선이 된다.</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "해 전체는 직선이지만 자연수 해는(2,3),(4,2),(6,1) 세 개뿐이다. (−2,5)는 실수 해이며 ㄱㄷ 참, 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "해 전체는 직선이지만 자연수 해는(2,3),(4,2),(6,1) 세 개뿐이다. (−2,5)는 실수 해이며 ㄱㄷ 참, 정답③."
+  ]
+}

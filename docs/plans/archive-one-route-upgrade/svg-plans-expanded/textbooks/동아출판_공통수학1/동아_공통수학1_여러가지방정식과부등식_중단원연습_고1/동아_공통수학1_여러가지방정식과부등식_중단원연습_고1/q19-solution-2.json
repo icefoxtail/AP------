@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ −5<2x−3<5이므로−1<x<4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $|x-2|\\ge 5$\n⑵ $|2x-3|<5$\n⑶ $|5-3x|>1$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 중심2에서거리5이상. x≤−3또는x≥7. ⑵ −5<2x−3<5이므로−1<x<4. ⑶ 5−3x>1또는5−3x<−1. x<4/3또는x>2.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ −5<2x−3<5이므로−1<x<4."
+  ]
+}

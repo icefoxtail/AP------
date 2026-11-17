@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ 첫조건x≤3,둘째조건x≥1. 1≤x≤3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립부등식을 푸시오.\n⑴ $2x-5<3x-1\\le x+5$\n⑵ $x-5\\le\\frac{-3x+5}{2}\\le\\frac{x+2}{3}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 첫부등식x>−4,둘째x≤3. −4<x≤3. ⑵ 첫조건x≤3,둘째조건x≥1. 1≤x≤3.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 첫조건x≤3,둘째조건x≥1. 1≤x≤3."
+  ]
+}

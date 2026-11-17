@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-4",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑴ 꺾이는점−1,2사이합은3. 왼쪽은1−2x>9→x<−4,오른쪽은2x−1>9→x>5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $|x+1|+|x-2|>9$\n⑵ $|2x-1|+|x-3|\\le 2$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 꺾이는점−1,2사이합은3. 왼쪽은1−2x>9→x<−4,오른쪽은2x−1>9→x>5. ⑵ 실제y=|2x−1|+|x−3|의세조각을표시한다. x1/2에서최솟값5/2이고수평선y2보다항상위라해없음.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ 꺾이는점−1,2사이합은3. 왼쪽은1−2x>9→x<−4,오른쪽은2x−1>9→x>5."
+  ]
+}

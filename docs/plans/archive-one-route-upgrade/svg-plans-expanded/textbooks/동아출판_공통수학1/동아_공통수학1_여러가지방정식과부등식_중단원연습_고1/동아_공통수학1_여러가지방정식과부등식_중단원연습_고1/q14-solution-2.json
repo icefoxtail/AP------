@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "Z",
+            "value": "0",
+            "name": "기준",
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ 5(x+1)≥4(x+2)에서x≥3,둘째x≤3. 교집합은x3하나. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} x-4<4x+2 \\\\ 3x+7<-2x-3 \\end{cases}$\n⑵ $\\begin{cases} \\frac{x+1}{4}\\ge\\frac{x+2}{5} \\\\ 5(x-1)\\le 3x+1 \\end{cases}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ x>−2와x<−2의교집합은공집합. 경계도포함하지않는다. ⑵ 5(x+1)≥4(x+2)에서x≥3,둘째x≤3. 교집합은x3하나. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 5(x+1)≥4(x+2)에서x≥3,둘째x≤3. 교집합은x3하나. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다."
+  ]
+}

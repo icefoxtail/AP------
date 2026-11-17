@@ -1,0 +1,58 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "X",
+        "name": "X"
+      },
+      {
+        "id": "P",
+        "name": "P"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2개",
+        "in": [
+          "X"
+        ]
+      },
+      {
+        "text": "2개",
+        "in": [
+          "X",
+          "P"
+        ]
+      },
+      {
+        "text": "3개",
+        "in": [
+          "P"
+        ]
+      },
+      {
+        "text": "5개",
+        "in": []
+      }
+    ],
+    "shade": "X∪P^c"
+  },
+  "caption": "P는소수5개,Pᶜ는비소수7개. X의 비소수a와소수b를 나눠 a(7+b)=18,유일a2,b2. 영역 숫자는원소개수이며 유일한원소선택이라는뜻아님. 정답210.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. 전체집합 $U$는 $12$ 이하의 자연수 전체의 집합이고, $P$는 $12$ 이하의 소수 전체의 집합이다. $n(X-P)\\cdot n(X\\cup P^C)=18$을 만족시키는 $U$의 부분집합 $X$의 개수를 구하는 과정을 서술하시오. [6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "P는소수5개,Pᶜ는비소수7개. X의 비소수a와소수b를 나눠 a(7+b)=18,유일a2,b2. 영역 숫자는원소개수이며 유일한원소선택이라는뜻아님. 정답210.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "P는소수5개,Pᶜ는비소수7개. X의 비소수a와소수b를 나눠 a(7+b)=18,유일a2,b2. 영역 숫자는원소개수이며 유일한원소선택이라는뜻아님. 정답210."
+  ]
+}

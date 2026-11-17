@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "11",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "자연수a이면정수반경a+3에서열린구간의정수개수2(a+3)−1=17. a6이고−7<x<11의정수−6부터10까지17개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[추론] 부등식 $|x-2|<a+3$을 만족시키는 정수 $x$의 개수가 $17$이 되도록 하는 자연수 $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "자연수a이면정수반경a+3에서열린구간의정수개수2(a+3)−1=17. a6이고−7<x<11의정수−6부터10까지17개.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "자연수a이면정수반경a+3에서열린구간의정수개수2(a+3)−1=17. a6이고−7<x<11의정수−6부터10까지17개."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-4"
+      }
+    ],
+    "formula": "-4"
+  },
+  "caption": "④는 정리하면 상수 y=−4. 기울기0이라 일차함수가 아니다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$에 대한 일차함수인 것을 고르시오. [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "④는 정리하면 상수 y=−4. 기울기0이라 일차함수가 아니다. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "④는 정리하면 상수 y=−4. 기울기0이라 일차함수가 아니다. 정답③."
+  ]
+}

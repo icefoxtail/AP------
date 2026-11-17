@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "3",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원문정수후보−1,0,1,2,3이고둘째식(x−a)(x−4)<0. 이후보들은x<4이므로x>a인정수만남는다. 정확히2개가되려면2와3만남아1≤a<2. 마지막줄은x가아니라매개변수a범위이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[추론] 연립부등식 $\\begin{cases} |x-1|\\le 2 \\\\ x^2-(a+4)x+4a<0 \\end{cases}$을 만족시키는 정수 $x$의 개수가 2가 되도록 하는 실수 $a$의 값의 범위를 구하시오.\n\n[단계1] 부등식 $|x-1|\\le 2$의 해를 구하시오.\n[단계2] 실수 $a$의 값의 범위를 나누어 부등식 $x^2-(a+4)x+4a<0$의 해를 구하시오.\n[단계3] 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문정수후보−1,0,1,2,3이고둘째식(x−a)(x−4)<0. 이후보들은x<4이므로x>a인정수만남는다. 정확히2개가되려면2와3만남아1≤a<2. 마지막줄은x가아니라매개변수a범위이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "원문정수후보−1,0,1,2,3이고둘째식(x−a)(x−4)<0. 이후보들은x<4이므로x>a인정수만남는다. 정확히2개가되려면2와3만남아1≤a<2. 마지막줄은x가아니라매개변수a범위이다."
+  ]
+}

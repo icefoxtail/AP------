@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1/3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1/3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑴ x≥−1/2와−2<x<1/3의교집합 −1/2≤x<1/3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} 2x+1\\ge 0 \\\\ 3x^2+5x-2<0 \\end{cases}$\n⑵ $x+1<x^2-x+1<x+9$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ x≥−1/2와−2<x<1/3의교집합 −1/2≤x<1/3. ⑵ x(x−2)>0과(x−4)(x+2)<0. 교집합−2<x<0또는2<x<4.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ x≥−1/2와−2<x<1/3의교집합 −1/2≤x<1/3."
+  ]
+}

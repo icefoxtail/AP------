@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "Z",
+            "value": "0",
+            "name": "기준",
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫조건x≥2,둘째x≤(5−a)/3. 교집합이한점이려면(5−a)/3=2. a−1,b2. 두닫힌경계가만난다. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} 1-2x\\le -x-1 \\\\ 5-4x\\ge a-x \\end{cases}$의 해가 $x=b$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫조건x≥2,둘째x≤(5−a)/3. 교집합이한점이려면(5−a)/3=2. a−1,b2. 두닫힌경계가만난다. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫조건x≥2,둘째x≤(5−a)/3. 교집합이한점이려면(5−a)/3=2. a−1,b2. 두닫힌경계가만난다. 추가눈금의기준점은해가아니고채워진점만한점해를뜻한다."
+  ]
+}
