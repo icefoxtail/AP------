@@ -8,17 +8,16 @@
     const host = document.querySelector("[data-archive-navigation]");
     if (!host) return;
     const mode = host.dataset.archiveNavigation;
-    if (
-      mode === "unit" &&
-      new URLSearchParams(location.search).get("ready") !== "1"
-    ) {
-      host.remove();
-      return;
-    }
     document.body.classList.add("archive2-shell");
     if (mode === "unit") document.body.classList.add("archive2-unit-surface");
     host.className = "archive-navigation";
-    host.innerHTML = api.markup(mode, { session: api.readSession() });
+    // Standalone pages in a sub folder (assessment/) say where the archive root is and which entry is current.
+    host.innerHTML = api.markup(mode, {
+      session: api.readSession(),
+      view: host.dataset.archiveView || undefined,
+      title: host.dataset.archiveTitle,
+      base: host.dataset.archiveBase || "",
+    });
     host.hidden = false;
     api.bind(host);
     api.watchLogin(host);
@@ -34,12 +33,13 @@
     { key: "quick", label: "빠른 평가", view: "five-minute", url: "workspace.html?view=five-minute" },
     { key: "library", label: "보관함 · 출제 내역", view: "saved", url: "workspace.html?view=saved" },
   ];
-  // Phone: 빠른 평가 is reached from the 홈 and 만들기 screens, so 만들기 stays current there.
+  // Phone: the same six destinations with short names (the bottom bar is six equal cells).
   const TABS = [
     { key: "home", label: "홈", view: "home", url: "workspace.html?view=home" },
     { key: "find", label: "학교별", view: "find", url: "workspace.html?view=find" },
     { key: "unit", label: "단원별", view: "", url: "unit-past-exams.html?ready=1" },
     { key: "make", label: "만들기", view: "compose", url: "workspace.html?view=compose" },
+    { key: "quick", label: "빠른평가", view: "five-minute", url: "workspace.html?view=five-minute" },
     { key: "library", label: "보관함", view: "saved", url: "workspace.html?view=saved" },
   ];
   // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share the 빠른 평가 menu entry.
@@ -69,7 +69,7 @@
 
   function matches(key, view) {
     if (key === "quick") return QUICK_VIEWS.includes(view);
-    if (key === "make") return view === "compose" || QUICK_VIEWS.includes(view);
+    if (key === "make") return view === "compose";
     if (key === "library") return view === "saved" || view === "recent";
     if (key === "unit") return view === "unit";
     return key === view;
@@ -102,53 +102,47 @@
     return Session?.state ? Session.state(session, now) : { loggedIn: false, needsTeacher: false, name: "" };
   }
 
-  function loginMarkup(session, role) {
+  function loginMarkup(session, role, base = "") {
     const state = loginState(session);
+    const loginUrl = base + LOGIN_URL;
     const cls = `archive-login ${role}`;
     if (state.needsTeacher) {
       // The phone top bar is narrow: the short text there, the full sentence for the side menu and screen readers.
       const text = role === "archive-login-top" ? "선생님 로그인" : "선생님 계정으로 로그인해 주세요";
-      return `<a class="${cls}" data-login="teacher" href="${LOGIN_URL}" target="_blank" rel="noopener" title="선생님 계정으로 로그인해 주세요">${text}</a>`;
+      return `<a class="${cls}" data-login="teacher" href="${loginUrl}" target="_blank" rel="noopener" title="선생님 계정으로 로그인해 주세요">${text}</a>`;
     }
     if (!state.loggedIn)
-      return `<a class="${cls}" data-login="out" href="${LOGIN_URL}" target="_blank" rel="noopener">선생님 로그인</a>`;
+      return `<a class="${cls}" data-login="out" href="${loginUrl}" target="_blank" rel="noopener">선생님 로그인</a>`;
     return `<span class="${cls} is-in" data-login="in">${state.name ? `<strong>${esc(state.name)}</strong> ` : ""}로그인됨</span>`;
   }
 
-  function itemMarkup(mode, item, view, role) {
+  function itemMarkup(mode, item, view, role, base = "") {
     const active = matches(item.key, view);
     const current = active ? ' aria-current="page" class="active"' : "";
     const keyAttr = ` data-nav-key="${item.key}"`;
     const body = `<span class="archive-nav-label">${item.label}</span>`;
     if (mode === "workspace" && item.view)
       return `<button type="button" data-view="${item.view}"${keyAttr}${current} data-nav-role="${role}">${body}</button>`;
-    return `<a href="${item.url}"${keyAttr}${current} data-nav-role="${role}">${body}</a>`;
-  }
-
-  function toolsMarkup(mode) {
-    const health =
-      mode === "workspace"
-        ? '<button type="button" data-view="health">자료 점검</button>'
-        : '<a href="workspace.html?view=health">자료 점검</a>';
-    return `<a href="index.html?legacy=1">아카이브 1.0</a>${health}<a href="problem-bank-search.html">유형·개념으로 문항 찾기</a>`;
+    return `<a href="${base}${item.url}"${keyAttr}${current} data-nav-role="${role}">${body}</a>`;
   }
 
   function markup(mode, options = {}) {
     const view = options.view || currentView(mode);
     const session = options.session || null;
+    const base = options.base || "";
     const home = view === "home";
-    const title = titleFor(view);
+    const title = options.title ?? titleFor(view);
     return `<aside class="archive-sidebar">
-        <a class="archive-navigation-brand" href="workspace.html?view=home">JS 아카이브</a>
-        <nav class="archive-navigation-tasks" aria-label="주 메뉴">${SIDEBAR.map((item) => itemMarkup(mode, item, view, "task")).join("")}</nav>
-        <div class="archive-sidebar-foot">${loginMarkup(session, "archive-login-side")}<div class="archive-navigation-tools">${toolsMarkup(mode)}</div></div>
+        <a class="archive-navigation-brand" href="${base}workspace.html?view=home">JS 아카이브</a>
+        <nav class="archive-navigation-tasks" aria-label="주 메뉴">${SIDEBAR.map((item) => itemMarkup(mode, item, view, "task", base)).join("")}</nav>
+        <div class="archive-sidebar-foot">${loginMarkup(session, "archive-login-side", base)}</div>
       </aside>
       <div class="archive-mobile-topbar${home ? " is-home" : ""}">
-        <a class="archive-mobile-brand" href="workspace.html?view=home">JS 아카이브</a>
+        <a class="archive-mobile-brand" href="${base}workspace.html?view=home">JS 아카이브</a>
         <span class="archive-mobile-title">${esc(title)}</span>
-        ${loginMarkup(session, "archive-login-top")}
+        ${loginMarkup(session, "archive-login-top", base)}
       </div>
-      <nav class="archive-mobile-tabs" aria-label="하단 메뉴">${TABS.map((item) => itemMarkup(mode, item, view, "mobile")).join("")}</nav>`;
+      <nav class="archive-mobile-tabs" aria-label="하단 메뉴">${TABS.map((item) => itemMarkup(mode, item, view, "mobile", base)).join("")}</nav>`;
   }
 
   // The workspace is one page: it tells the shell which screen is showing.
@@ -210,7 +204,7 @@
       const session = readSession();
       host.querySelectorAll?.(".archive-login").forEach((el) => {
         const role = el.classList.contains("archive-login-top") ? "archive-login-top" : "archive-login-side";
-        el.outerHTML = loginMarkup(session, role);
+        el.outerHTML = loginMarkup(session, role, host.dataset?.archiveBase || "");
       });
     };
     window.addEventListener("storage", (event) => {

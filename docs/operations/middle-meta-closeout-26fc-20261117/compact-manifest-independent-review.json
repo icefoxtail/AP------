@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "archive-independent-compact-input-manifest-review-v1",
+  "decision": "STATIC_ACCEPT_OFFICIAL_NODE_AND_PACKAGE_GATES_PENDING",
+  "reviewer": "/root/m3s2_release",
+  "authors": [
+    "/root/m1_release_closeout",
+    "/root"
+  ],
+  "reviewDate": "2026-11-17",
+  "reviewedBaseCommit": "9fbcf190fd8abaa03f330def331afc7c7c27ba60",
+  "integrationHeadReportedByRoot": "a3ef35dd8886d82a230044efa063fa754b2124c3",
+  "integrationHeadBoundary": "Root reports data/request-only subsequent changes and unchanged original manifest raw09e1f6a. This review independently authenticates the exact listed frozen blobs; fresh integrated tree CAS and required CI remain root obligations.",
+  "ownerManifest": {
+    "gitBlobSha": "d4838c3140fe9a5b7355014483d22048bfa77ffb",
+    "sha256": "2b3e5eddcfea61080b32b7b3e9ae182cfec78992d606f3dbbba58152bd23a440",
+    "bytes": 8259
+  },
+  "reviewedInputs": [
+    {
+      "key": "canonical",
+      "git": "093b678432351748b620725b193443e620d065f0",
+      "rawSha256": "018e6f6021703b99808cedb2ab15ea0807b8d151af23631b0cbc6c07346ae874",
+      "bytes": 104308,
+      "path": "archive/archive2-canonical.js"
+    },
+    {
+      "key": "builder",
+      "git": "adbde493e5ebb455e4802df59183e1bc92693a79",
+      "rawSha256": "f46fa99c9184eb9709be9cd1b4f0f46f6fca63e30c9a5ac9523497a591ccba85",
+      "bytes": 58060,
+      "path": "archive/tools/build-archive2-catalog.mjs"
+    },
+    {
+      "key": "test",
+      "git": "e0fbe355e154d65ef9d05007caca9d44736baaff",
+      "rawSha256": "fc9e3e91170566938aca8cd1b011f15431b1f81aef2e8828535022e44ec0ec97",
+      "bytes": 39297,
+      "path": "tests/archive2-original-source-verification-shard.test.mjs"
+    },
+    {
+      "key": "data",
+      "git": "60c10074678d49f3e2b2b239affd2b555f556530",
+      "rawSha256": "b941a0299a5d20baa8752e5568b22272433258b3cec3c25859319c2342c83211",
+      "bytes": 64411,
+      "path": "archive/data/archive2-canonical-input-manifest.compact.json"
+    },
+    {
+      "key": "original-manifest",
+      "git": "2ac148a5ec48eca6799557f7d606f9eab4ee1ecf",
+      "rawSha256": "09e1f6a04eed7e3acfa6bd9c699f5324c0120ab5dc15c23d2c005682d8675853",
+      "bytes": 96997,
+      "path": "archive/data/archive2-canonical-input-manifest.json"
+    },
+    {
+      "key": "pages-paths",
+      "git": "e2eda50d16c840409e80196b115024f7f7488f94",
+      "rawSha256": "0379112b3024102acba0310e4c0c905ab8d56a36cd959fba128b70d1ce6b01ca",
+      "bytes": 965,
+      "path": "tools/ci/archive-pages-registration.paths"
+    },
+    {
+      "key": "reviewed-paths",
+      "git": "7de1fd84d9c7272a58a794ae1a95800a3266268a",
+      "rawSha256": "2cc8406937df6eff3ad5deeaf536a7d800192b7d8cc9024952646339d855c47c",
+      "bytes": 1347,
+      "path": "tools/ci/archive-meta-register-commit.paths"
+    },
+    {
+      "key": "pages-package",
+      "git": "ccb5efeffb1a0ad352b07813ef70b03018e54778",
+      "rawSha256": "cf307a560c7d5eac6e5e530d0edb3dcc1d26294adebecdf9c4ef9f4217e62ef8",
+      "bytes": 8844,
+      "path": "tools/archive-pages-release-manifest.json"
+    },
+    {
+      "key": "apply-staging",
+      "rawSha256": "18ca646f8829a5820d0d9508d5c62c7a5df7e5f732bd046912e1ad511f20ba46",
+      "bytes": 13243,
+      "path": "archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs",
+      "git": "f25476730794dbefb3175503a2bdafda5e91b9dc"
+    },
+    {
+      "key": "package-materializer",
+      "git": "f7f9818ef9b3a37f4e64dcb245ab092ca65161d9",
+      "rawSha256": "389b22874292cfc2558f491e23831475df50ccf0025d2c8b3f37058dd229ac7a",
+      "bytes": 1493,
+      "path": "archive/tools/materialize-archive-package-shards.mjs"
+    }
+  ],
+  "independentMechanical": {
+    "kind": "INDEPENDENT_PURE_JSON_METADATA_COMPARISON_NO_REPOSITORY_CODE_EXECUTION",
+    "files": 544,
+    "directories": 34,
+    "originalRawSha256": "09e1f6a04eed7e3acfa6bd9c699f5324c0120ab5dc15c23d2c005682d8675853",
+    "compactRawSha256": "b941a0299a5d20baa8752e5568b22272433258b3cec3c25859319c2342c83211",
+    "originalBytes": 96997,
+    "compactBytes": 64411,
+    "decodeWholeBytesExact": true,
+    "reencodeWholeBytesExact": true,
+    "projectionHeaderExact": true,
+    "originalWholeHeadersAndFileOrderExact": true,
+    "selfInputAbsent": true,
+    "wholeCodeInverseExact": {
+      "canonical": true,
+      "builder": true,
+      "test": true
+    },
+    "rootOutputDeltas": [
+      {
+        "key": "pages-paths",
+        "onlyExactLineAdded": true,
+        "rawSha256": "0379112b3024102acba0310e4c0c905ab8d56a36cd959fba128b70d1ce6b01ca",
+        "bytes": 965
+      },
+      {
+        "key": "reviewed-paths",
+        "onlyExactLineAdded": true,
+        "rawSha256": "2cc8406937df6eff3ad5deeaf536a7d800192b7d8cc9024952646339d855c47c",
+        "bytes": 1347
+      },
+      {
+        "key": "pages-package",
+        "onlyExactLineAdded": true,
+        "rawSha256": "cf307a560c7d5eac6e5e530d0edb3dcc1d26294adebecdf9c4ef9f4217e62ef8",
+        "bytes": 8844
+      },
+      {
+        "key": "apply-staging",
+        "onlyExactLineAdded": true,
+        "rawSha256": "18ca646f8829a5820d0d9508d5c62c7a5df7e5f732bd046912e1ad511f20ba46",
+        "bytes": 13243
+      }
+    ],
+    "repositoryExecution": 0
+  },
+  "findings": {
+    "blockerCount": 0,
+    "authorityBytes": "Original manifest remains present and unmodified. Compact data decodes to every header, ordered file path and whole hash byte-exactly; original manifest SHA and projection header unchanged.",
+    "codec": "Exact top keys and version headers; file tuples length3, integer nonnegative/non-negative-zero bounded directory index, first-use directory ordering, unique directories and reconstructed paths, no unused directories, safe normalized relative paths, lowercase SHA256, only existing ../docs/ parent namespace. Unknown original file fields and compact self-input reject.",
+    "sourceLoader": "Only loadSourceVerificationShard changes. Exact HTTP404 from companion enables legacy manifest read. Corrupt JSON/schema/tuple/digest, network error and any other non-OK status do not downgrade.",
+    "originalGuards": "Existing required manifest paths, expected projection version, full manifest projection hash, index SHA/version/catalog header, selected shard SHA/path/row checks remain after decode. Other full and mixed loaders retain their original code.",
+    "generator": "Companion explicitly excluded from allInputPaths and encoder self-input rejected. It is derived after final original manifest; builder asserts decode equality. Regular write emits it; --check rejects missing/drift; packageOnly includes it among registeredFiles.",
+    "packaging": "Unchanged materializePackageShards verifies every registeredFile before any temporary mixed shard writes. Companion is a registered artifact, never silently repaired during packaging.",
+    "outputBoundary": "pages registration, reviewed commit allowlist, Pages archiveDataFiles and reviewed apply staging each add only the one exact companion path. Reversing each new line gives original full bytes.",
+    "tests": "New lossless roundtrip/self-cycle, malformed tuple/header/path/directory/hash, duplicate, network/non404, digest and catalog mismatch cases; corruption fixtures now override actual companion; legacy fixtures force HTTP404; old source/full/mixed cases remain. Existing total<500000 and total<670580.78 limits unchanged."
+  },
+  "transportAccounting": {
+    "originalManifestBytes": 96997,
+    "compactManifestBytes": 64411,
+    "actualWholeReductionVerified": 32586,
+    "unchangedIndexBytes": 386244,
+    "unchangedSelectedShardBytes": 21382,
+    "indexAndShardProvenance": {
+      "originalManifest": {
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "gitBlobSha1": "2ac148a5ec48eca6799557f7d606f9eab4ee1ecf",
+        "sha256": "09e1f6a04eed7e3acfa6bd9c699f5324c0120ab5dc15c23d2c005682d8675853",
+        "bytes": 96997
+      },
+      "sourceIndex": {
+        "path": "archive/data/archive2-source-verification-index.json",
+        "gitBlobSha1": "0eebeb7677cb47aec6c1fb7612374d21261e4b80",
+        "sha256": "f8cfea28e234a63dfd9934726067f081fa22510c984d0dab46366f484ee9c842",
+        "bytes": 386244
+      },
+      "selectedShard": {
+        "sourceFile": "original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js",
+        "path": "archive/data/archive2-source-verification/v1/7cf2d32d67d07da7f480aa21bccc04da7e693e6297c07bc18a5348f4ae587f8f.json",
+        "expectedSha256": "2f2e8ee936b79bdbfc3525ad7e0bf3a8bcf4daf2ffe30ac036cfda82844f86cc",
+        "gitBlobSha1": "4f89c5e4b4471e55f8e4d3968c7b479f87dc7045",
+        "sha256": "2f2e8ee936b79bdbfc3525ad7e0bf3a8bcf4daf2ffe30ac036cfda82844f86cc",
+        "bytes": 21382
+      },
+      "sourceQuestionBodiesRead": 0,
+      "sourceEvaluation": 0
+    },
+    "coldTotalBefore": 504623,
+    "coldTotalAfter": 472037,
+    "strict500000Margin": 27963,
+    "expectedCurrentRequestCount": 3,
+    "measurementBoundary": "Companion/original byte counts independently verified here. Index/shard byte counts and immutable pins are owner/root supplied actual9f metadata; no source body read and no runtime network benchmark.",
+    "legacyFallback": "404 fallback compatibility does not assert the current cold-budget result when companion absent."
+  },
+  "validation": {
+    "immutableBlobsRead": true,
+    "fullDeltaRead": true,
+    "independentJsonTransforms": "PASS",
+    "wholeInverseComparison": "PASS",
+    "repositoryJavaScriptExecuted": 0,
+    "localShellCalls": 0,
+    "nodeBuild": "NOT_RUN",
+    "nodeTests": "NOT_RUN",
+    "packageCheck": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "sourceQuestionBodiesRead": 0,
+    "sourceEvaluation": 0,
+    "mathReview": 0,
+    "uiReview": 0,
+    "registrarExecution": 0,
+    "newApproval": 0,
+    "remoteRefWrites": 0,
+    "requiredNext": "Root integrate exact8 candidate files, preserve original manifest/index formats, run official build/check/package and original-source tests on integrated head."
+  }
+}

@@ -37,7 +37,7 @@ function bankFromBytes(bytes) {
   vm.runInContext(bytes.toString("utf8"), context, { timeout: 3000 });
   return JSON.parse(vm.runInContext("JSON.stringify(window.questionBank || window.questions || globalThis.questions || globalThis.questionBank || window.examData?.questions)", context, { timeout: 1000 }));
 }
-function fixture(selectedKey) {
+function fixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-family3-")); git(root, ["init", "-q"]);
   const common = path.resolve(REPO, git(REPO, ["rev-parse", "--git-common-dir"]).toString().trim());
   fs.writeFileSync(path.join(root, ".git/objects/info/alternates"), path.join(common, "objects") + "\n");
@@ -61,7 +61,7 @@ function fixture(selectedKey) {
     const bytes = git(root, ["show", ref.commit + ":" + ref.path]);
     assert.equal(blob(bytes), ref.gitBlobSha1); assert.equal(sha(bytes), ref.sha256); write(ref.path, bytes);
   }
-  for (const row of staticDoc.rows.filter(row => selectedKey === undefined || row.key === selectedKey)) {
+  for (const row of staticDoc.rows) {
     materialize(row.currentSourceRef);
     row.nativeProblemAssets.forEach(materialize); row.currentProblemAssets.forEach(materialize);
   }
@@ -235,43 +235,34 @@ test("family3 immutable static and actual UI evidence bounds memory-only normali
   } finally { f.close(); }
 });
 
-test("generated SVG index preserves all fixed family3 asset records and strict local input boundaries", async t => {
-  const f = fixture("E017-Q06"), relative = "archive/data/svg-accessibility-index.js";
-  const full = path.join(f.root, relative), original = fs.readFileSync(full);
-  const match = original.toString("utf8").match(/Object\.freeze\((\{[\s\S]*\})\);/);
-  assert.ok(match);
-  const index = JSON.parse(match[1]);
-  const encode = records => Buffer.from(original.toString("utf8").replace(match[1], JSON.stringify({ ...index, records })));
-  const fixedAssets = ITEMS.map(item => f.technical.items.find(row => row.questionUid === item.questionUid).assetRef.path.slice("archive/".length));
-  const run = () => validate(f.args("E017-Q06"));
+// The generated SVG accessibility index is rebuilt by every main snapshot, so it
+// is compared by the entries the question's own image consumes (rules in
+// svg-index-continuity.mjs); every other served file stays a byte pin.
+test("family3 compares consumed SVG index entries, not the whole generated file", async t => {
+  const f = fixture(), INDEX = "archive/data/svg-accessibility-index.js", PREFIX = "(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+  const SUFFIX = ");\n}(typeof window !== 'undefined' ? window : globalThis));\n", file = path.join(f.root, INDEX);
+  const rewrite = mutate => { const text = fs.readFileSync(file, "utf8"), doc = JSON.parse(text.slice(PREFIX.length, -SUFFIX.length));
+    mutate(doc); fs.writeFileSync(file, PREFIX + JSON.stringify(doc) + SUFFIX); };
+  const mine = doc => doc.records.filter(row => decodeURIComponent(row.assetRef).endsWith("/24_연향중_2학기_중간_중2_수학/q6-problem-visual-v2.svg"));
+  const other = doc => doc.records.filter(row => !decodeURIComponent(row.assetRef).includes("/24_연향중_2학기_중간_중2_수학/"));
+  const restore = () => f.restore(INDEX);
   try {
-    const baseline = run();
-    await t.test("nonselected generated rows may advance", () => {
-      fs.writeFileSync(full, encode([...index.records, { ...index.records[0], assetRef: "assets/images/generated-reader-fixture/unrelated.svg" }]));
-      try { assert.deepEqual(run(), baseline); } finally { fs.writeFileSync(full, original); }
+    await t.test("unrelated added, removed or changed entries still pass", () => {
+      rewrite(doc => { const rows = other(doc); rows[0].descriptionKo = "unrelated change"; doc.records.splice(doc.records.indexOf(rows[1]), 1);
+        doc.records.push({ ...rows[2], assetRef: "assets/images/zz_unrelated/q1.svg" }); });
+      try { assert.ok(validate(f.args())); } finally { restore(); }
     });
-    await t.test("another fixed family3 member remains protected", () => {
-      const other = fixedAssets.find(asset => !asset.endsWith("/q6-problem-visual-v2.svg"));
-      const hits = index.records.filter(row => row.assetRef === other && row.visualRole === "problem"); assert.equal(hits.length, 1);
-      fs.writeFileSync(full, encode(index.records.map(row => row === hits[0] ? { ...row, unapprovedField: true } : row)));
-      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    for (const [label, mutate] of [
+      ["changed consumed entry", doc => { mine(doc)[0].descriptionKo += " changed"; }],
+      ["removed consumed entry", doc => { doc.records.splice(doc.records.indexOf(mine(doc)[0]), 1); }],
+      ["consumed key gains a second role entry", doc => { doc.records.push({ ...mine(doc)[0], visualRole: "solution" }); }],
+    ]) await t.test(label + " fails", () => {
+      rewrite(mutate);
+      try { assert.throws(() => validate(f.args()), /LIVE_SERVED_CODE_DRIFT/); } finally { restore(); }
     });
-    await t.test("a fixed member cannot disappear", () => {
-      fs.writeFileSync(full, encode(index.records.filter(row => row.assetRef !== fixedAssets[0] || row.visualRole !== "problem")));
-      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    await t.test("an appended byte to the index fails", () => {
+      fs.appendFileSync(file, " ");
+      try { assert.throws(() => validate(f.args()), /LIVE_SERVED_CODE_DRIFT/); } finally { restore(); }
     });
-    await t.test("current index file symlinks are refused", () => {
-      const outside = fs.mkdtempSync(path.join(os.tmpdir(), "family-svg-input-"));
-      fs.writeFileSync(path.join(outside, "index.js"), original);
-      fs.unlinkSync(full); fs.symlinkSync(path.join(outside, "index.js"), full);
-      try { assert.throws(run, /SYMLINK_PATH/); }
-      finally { fs.unlinkSync(full); fs.writeFileSync(full, original); fs.rmSync(outside, { recursive: true, force: true }); }
-    });
-    await t.test("missing current bytes do not fall back to captured bytes", () => {
-      fs.unlinkSync(full);
-      try { assert.throws(run, /LIVE_SVG_INDEX_UNAVAILABLE/); } finally { fs.writeFileSync(full, original); }
-    });
-    f.verifyUnchanged();
   } finally { f.close(); }
 });
-

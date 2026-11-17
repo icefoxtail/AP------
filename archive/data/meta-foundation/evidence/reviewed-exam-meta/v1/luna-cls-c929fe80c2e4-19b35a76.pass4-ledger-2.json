@@ -1,0 +1,39 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:50:08.679+00:00",
+ "sourceArchiveFile": "original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 19,
+   "chosenFrom": "new",
+   "resolutionReason": "AB=6, BC=8 직각삼각형에 B를 꼭짓점으로 내접한 직사각형이 닮음 x/6+y/8=1로 넓이 xy가 x=3, y=4에서 최대 12이고 둘레 14이므로 이차함수 최대·최소 항목이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "방정식과 부등식",
+    "midUnit": "이차방정식과 이차함수",
+    "l3": "최대·최소",
+    "l4": "조건식 활용"
+   }
+  },
+  {
+   "ordinal": 20,
+   "chosenFrom": "new",
+   "resolutionReason": "h(x)=f(|x|)가 h(-x)=h(x)인 y축 대칭이고 h(x)=3의 세 실근에서 b=3, y좌표가 양의 정수인 점 9개로 a=2, f(4)=-5를 구하는 우함수 조건이다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "l3": "함수의 성질",
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수의 성질 아래 기함수·우함수 조건 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "기함수 조건",
+     "label": "기함수·우함수 조건",
+     "parent": "함수 > 함수 > 함수의 성질",
+     "why": "가장 가까운 '일대일함수'는 서로 다른 값 대응이고 '항등함수·상수함수'는 특수함수라, h(-x)=h(x)인 y축 대칭 조건과 맞지 않는다."
+    }
+   }
+  }
+ ]
+}

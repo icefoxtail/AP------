@@ -1,0 +1,117 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T16:27:52+09:00",
+    "sourceArchiveFile":  "original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+    "items":  [
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "양의 약수 개수는 2부터 11까지 차례로 2,2,3,2,4,2,4,3,4,2라 합은 28이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수",
+                                      "midUnit":  "함수",
+                                      "l3":  "함수의 뜻",
+                                      "l4":  "대응과 함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "S₁=9/(2m), S₂=2m (m\u003e0)이므로 S₁+S₂≥2√9=6이고 등호 m=3/2에서 최솟값 6이다.",
+                      "choiceTableUsed":  "H1-공통수학1.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "방정식과 부등식",
+                                      "midUnit":  "여러 가지 부등식",
+                                      "l3":  "절대부등식",
+                                      "l4":  "산술·기하평균"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  {
+                                   "crossConceptKeys":  "H1-공통수학1 crossConcepts 목록에 좌표 삼각형 넓이와 산술·기하평균을 잇는 적절한 키가 없다."
+                               }
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "P와 Q가 모두 거짓인 x는 (k−1,k+1)과 (k/2−1,k/2+1)의 교집합이므로 k/2\u003c2, 즉 자연수 k=1,2,3이다.",
+                      "choiceTableUsed":  "H1-공통수학1.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "hold":  {
+                                   "rpmPath":  "H1-공통수학1 선택지 표에 명제의 부정과 두 부등식 해구간의 교집합을 나타내는 정확한 RPM 경로가 없다."
+                               }
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "k=-1이면 B=A+1={4,5,6,9}, 교집합 {4,5}, 합집합 합 35, B의 합 m=24이므로 k+m=23이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "집합과 명제",
+                                      "midUnit":  "집합의 연산",
+                                      "l3":  "교집합과 합집합",
+                                      "l4":  "원소 개수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_SET_INTERSECTION_UNION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "미신청자 수 200−u가 신청자 합집합 u보다 80 적어 u=140이고 A만의 수 140−|B|는 |A∩B|≥0에서 |B|≥50이므로 최댓값 90이다.",
+                      "choiceTableUsed":  "H1-공통수학1.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "hold":  {
+                                   "rpmPath":  "H1-공통수학1 선택지 표에는 A,B 두 집합의 신청자 수와 포함배제로 A만의 최대 개수를 구하는 집합 RPM 경로가 없다."
+                               }
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "a=2이면 A={1,2,3}, B={0,1,2}여서 대칭차집합은 {0,3}이고 조건을 만족한다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "집합과 명제",
+                                      "midUnit":  "집합의 연산",
+                                      "l3":  "여집합과 차집합",
+                                      "l4":  "차집합"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_SET_DIFFERENCE_COMPLEMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

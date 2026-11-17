@@ -1,0 +1,26 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T20:31:06+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "resolutionReason":  "PEOPLE의 6글자에는 P와 E가 각각 두 번 있으므로 서로 같은 문자의 교환을 나누어 6!/(2!·2!)=180가지다.",
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "ordinal":  3,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "서로 구별되는 3명이 각각 3종류 중 하나를 고르므로 독립 선택의 곱 3·3·3=27이다.",
+                      "chosenFrom":  "new",
+                      "hold":  [
+                                   "rpmPath.l3/rpmPath.l4: H2-확률과통계.json에 구별되는 학생별 독립 반복 선택(곱의 법칙)을 나타내는 허용 RPM 항목이 없어 선택하지 못했다."
+                               ],
+                      "ordinal":  4,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  }
+              ]
+}

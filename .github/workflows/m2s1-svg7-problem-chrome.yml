@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/m2s1-svg7-problem-chrome.yml'
       - 'tools/check-m2s1-svg7-problem-browser.cjs'
+      - 'tools/emit-protected9-ui-log-transport.cjs'
+      - 'tests/protected9-ui-log-transport.test.cjs'
       - 'tools/capture-m1s2-problem-surface.cjs'
       - 'tools/capture-m2s1-svg7-problem-surface.cjs'
       - 'tools/check-reviewed-problem-renderer-browser.cjs'
@@ -59,6 +61,8 @@ jobs:
             /apmath/js/student-navigation.js
             /tools/check-reviewed-problem-renderer-browser.cjs
             /tools/check-m2s1-svg7-problem-browser.cjs
+            /tools/emit-protected9-ui-log-transport.cjs
+            /tests/protected9-ui-log-transport.test.cjs
             /tools/capture-m1s2-problem-surface.cjs
             /tools/capture-m2s1-svg7-problem-surface.cjs
             /tests/archive-m2s1-svg7-problem-browser.test.cjs
@@ -75,12 +79,15 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/m2-svg7-driver" --no-save --package-lock=false playwright@1.62.1
       - name: Check exact selection and provenance refusal guards
-        run: node --test tests/archive-m2s1-svg7-problem-browser.test.cjs
+        run: node --test tests/archive-m2s1-svg7-problem-browser.test.cjs tests/protected9-ui-log-transport.test.cjs
       - name: Capture seven existing repaired problem surfaces
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           ARCHIVE_M2S1_SVG7_UI_EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
         run: NODE_PATH="$RUNNER_TEMP/m2-svg7-driver/node_modules" node tools/check-m2s1-svg7-problem-browser.cjs --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/m2s1-svg7-problem-ui"
+      - name: Preserve exact technical JSON and problem tiles in bounded log frames
+        if: always()
+        run: node tools/emit-protected9-ui-log-transport.cjs --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/m2s1-svg7-problem-ui" --profile svg7 --expected-head "${{ github.event.pull_request.head.sha }}"
       - name: Preserve technical evidence and original scroll tiles
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,9 +1,10 @@
+import { readE015IssuedSourceContinuation } from './native-e015-source-cc-continuity.mjs';
 import fs from "node:fs";
-import SvgIndexContinuity from "../../../tools/4slot/existing-vector-svg-index-continuity.cjs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { validateM2ProblemRendererUiTileEvidence } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import { verifySvgIndexFootprint } from "./svg-index-continuity.mjs";
 
 
 // Exact problem-display comparison for the three frozen family follow-ups.
@@ -142,20 +143,6 @@ function live(ctx, ref, code = "LIVE_REF_DRIFT") {
   } catch (error) { if (String(error.message).startsWith("M2_FAMILY3_PROBLEM:")) throw error; fail(code); }
   finally { if (fd !== undefined) fs.closeSync(fd); }
 }
-function liveGeneratedSvgIndex(ctx) {
-  // This exact file is generated before four-slot/Native reads in the writer.
-  // Authenticate its captured version separately; compare only authenticated
-  // problem assets below instead of treating current derived data as code.
-  let fd;
-  try {
-    fd = fs.openSync(safe(ctx.root, "archive/data/svg-accessibility-index.js"), "r");
-    if (!fs.fstatSync(fd).isFile()) fail("LIVE_SVG_INDEX_UNAVAILABLE");
-    return fs.readFileSync(fd);
-  } catch (error) {
-    if (String(error.message).startsWith("M2_FAMILY3_PROBLEM:")) throw error;
-    fail("LIVE_SVG_INDEX_UNAVAILABLE");
-  } finally { if (fd !== undefined) fs.closeSync(fd); }
-}
 function bindEvidence(ctx, ref) {
   const narrow = { path: ref.path, sha256: ref.sha256 };
   for (const refs of [ctx.request.approval.evidenceRefs, ctx.patch.evidenceRefs])
@@ -267,6 +254,7 @@ function validateStatic(ctx, document) {
   for (const ref of witness.currentProblemAssets) immutable(ctx, { ...ref, commit: STATIC_CURRENT });
   return { witness, original, committed, current, oldProblem, currentProblem, ownedFields: [...OWNED_FIELDS] };
 }
+const SVG_INDEX_PATH = "archive/data/svg-accessibility-index.js";
 function validateUi(ctx, bound, current) {
   const { studentUiTechnicalRef: technical, studentUiObservedRef: visual } = bound.documents;
   if (technical.schemaVersion !== "archive-m2-problem24-student-ui-preview-v1" || technical.checkoutCommit !== UI_COMMIT ||
@@ -289,19 +277,16 @@ function validateUi(ctx, bound, current) {
   }
   const dynamic = new Set(["archive/data/question_metadata.json", ...technical.items.map(item => item.sourceRef.path)]);
   if (technical.servedFiles?.length !== 98 || new Set(technical.servedFiles.map(ref => ref.path)).size !== 98) fail("SERVED_INVENTORY");
+  // The generated index is rebuilt by every main snapshot: compare the entries
+  // this question's own images consume (rules in svg-index-continuity.mjs).
+  const indexAssetRefs = [...new Set([...current.witness.currentProblemAssets.map(ref => ref.path),
+    ...technical.results.filter(row => row.questionUid === ctx.patch.questionUid).map(row => row.assetRef?.path)])]
+    .filter(value => typeof value === "string").sort().map(value => ({ path: value }));
   for (const ref of technical.servedFiles) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
-    if (ref.path === "archive/data/svg-accessibility-index.js") {
-      const assetPaths = M2_FAMILY3_PROBLEM_ITEMS.map(item => {
-        const matches = technical.items.filter(row => row.questionUid === item.questionUid && row.sourceOrdinal === item.sourceOrdinal);
-        if (matches.length !== 1) fail("UI_IDENTITY_CASE_INVENTORY");
-        return matches[0].assetRef?.path;
-      });
-      const assetRefs = assetPaths.map(path => ({ path }));
-      if (!same(SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(immutable(ctx, ref, true)), assetRefs),
-        SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(liveGeneratedSvgIndex(ctx)), assetRefs)))
-        fail("SELECTED_SVG_INDEX_DRIFT");
-    } else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    if (ref.path === SVG_INDEX_PATH) verifySvgIndexFootprint({ frozenBytes: immutable(ctx, ref, true), root: ctx.root,
+      indexPath: ref.path, assetRefs: indexAssetRefs, safe, fail });
+    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {
@@ -387,7 +372,11 @@ export function validateM2Family3ProblemContinuity(args) {
       row.sourceOrdinal !== patch.sourceOrdinal || PROBLEM_FIELDS.some(field => Object.hasOwn(patch.after || {}, field))) fail("NATIVE_IDENTITY_OR_METADATA_ONLY_SCOPE");
   const bound = evidence(ctx), validated = validateStatic(ctx, bound.documents.staticRef), ui = validateUi(ctx, bound, validated);
   let bytes;
-  try { bytes = fs.readFileSync(safe(ctx.root, validated.current.ref.path)); } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
+  try {
+    bytes = readE015IssuedSourceContinuation({ context:ctx.e015IssuedSourceContinuation, root:ctx.root,
+      request, patch, current:ctx.final, question, relativePath:validated.current.ref.path })
+      ?? fs.readFileSync(safe(ctx.root, validated.current.ref.path));
+  } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
   if (blob(bytes) !== request.expectedSourceBlobSha1) fail("LIVE_SOURCE_CAS");
   const bank = ctx.bankFromBytes(bytes), n = patch.sourceOrdinal - 1;
   if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount || !same(projection(bank[n]), projection(question))) fail("LIVE_ARGUMENT_OR_DENOMINATOR");

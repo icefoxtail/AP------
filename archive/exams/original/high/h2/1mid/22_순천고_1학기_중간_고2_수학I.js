@@ -526,7 +526,7 @@ window.questionBank = [
   {
     "id": 11,
     "questionType": "객관식",
-    "content": "다음 그림과 같이 두 곡선 $y=\\log_4 x$, $y=\\log_2 x$가 두 직선 $x=4$, $x=6$과 만나서 생기는 네 점을 $A$, $B$, $C$, $D$라고 할 때, 사각형 $ABCD$의 넓이는? [4.3점]\n\n<img src=\"assets/images/22_순천고_1학기_중간_고2_수학I/q11.png\" alt=\"q11\" />",
+    "content": "다음 그림과 같이 두 곡선 $y=\\log_4 x$, $y=\\log_2 x$가 두 직선 $x=4$, $x=6$과 만나서 생기는 네 점을 $A$, $B$, $C$, $D$라고 할 때, 사각형 $ABCD$의 넓이는? [4.3점]\n\n<img src=\"assets/images/22_순천고_1학기_중간_고2_수학I/q11.png\" alt=\"좌표평면에서 y=log₂x(위쪽), y=log₄x(아래쪽)와 수직선 x=4, x=6이 만난다. x=4에서는 위 A와 아래 B, x=6에서는 위 D와 아래 C가 표시되어 있다.\" data-archive-mobile-figure=\"true\" />",
     "choices": [
       "$\\log_2 6$",
       "$\\dfrac{1}{2}(1+\\log_2 6)$",

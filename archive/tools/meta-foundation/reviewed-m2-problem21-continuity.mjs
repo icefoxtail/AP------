@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import SvgIndexContinuity from "../../../tools/4slot/existing-vector-svg-index-continuity.cjs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { validateM2ProblemRendererUiTileEvidence } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import { verifySvgIndexFootprint } from "./svg-index-continuity.mjs";
 
 // A comparison view for the frozen problem-only review. This is separate from
 // the three-item renderer contract and grants no semantic or solution authority.
@@ -128,20 +128,6 @@ function live(ctx, ref, code = "LIVE_REF_DRIFT") {
   } catch (error) { if (String(error.message).startsWith("M2_PROBLEM21:")) throw error; fail(code); }
   finally { if (fd !== undefined) fs.closeSync(fd); }
 }
-function liveGeneratedSvgIndex(ctx) {
-  // This exact file is generated before four-slot/Native reads in the writer.
-  // Authenticate its captured version separately; compare only authenticated
-  // problem assets below instead of treating current derived data as code.
-  let fd;
-  try {
-    fd = fs.openSync(safe(ctx.root, "archive/data/svg-accessibility-index.js"), "r");
-    if (!fs.fstatSync(fd).isFile()) fail("LIVE_SVG_INDEX_UNAVAILABLE");
-    return fs.readFileSync(fd);
-  } catch (error) {
-    if (String(error.message).startsWith("M2_PROBLEM21:")) throw error;
-    fail("LIVE_SVG_INDEX_UNAVAILABLE");
-  } finally { if (fd !== undefined) fs.closeSync(fd); }
-}
 function bindEvidence(ctx, ref) {
   const narrow = { path: ref.path, sha256: ref.sha256 };
   for (const refs of [ctx.request.approval.evidenceRefs, ctx.patch.evidenceRefs])
@@ -250,6 +236,17 @@ function validateStatic(ctx, document) {
   if (!same(witness.problemFieldDelta.map(row => row.field).sort(), allowed.slice().sort())) fail("OWNED_PROBLEM_FIELDS_CHANGED");
   return { witness, original, current, oldProblem, currentProblem, ownedFields: allowed };
 }
+const SVG_INDEX_PATH = "archive/data/svg-accessibility-index.js";
+// The generated index is rebuilt by every main snapshot, so it is compared by
+// the entries this question's screen consumed instead of by bytes (rules in
+// svg-index-continuity.mjs). The frozen file is authenticated by its pinned
+// hashes first. Every other served file keeps its exact live byte pin.
+function svgIndexFootprint(ctx, ref, assetRefs) {
+  verifySvgIndexFootprint({ frozenBytes: immutable(ctx, ref, true), root: ctx.root, indexPath: ref.path, assetRefs, safe, fail });
+}
+// Exposed so the test can corrupt the frozen-index authentication directly; the
+// sealed evidence capsule cannot be edited and resealed through the public path.
+export { svgIndexFootprint as verifyFrozenSvgIndexFootprint };
 function validateUi(ctx, bound, current) {
   const { studentUiTechnicalRef: technical, studentUiObservedRef: visual, q10IndependentRef: q10 } = bound.documents;
   if (technical.schemaVersion !== "archive-m2-problem24-student-ui-preview-v1" || technical.checkoutCommit !== UI_COMMIT ||
@@ -272,14 +269,15 @@ function validateUi(ctx, bound, current) {
   }
   const dynamic = new Set(["archive/data/question_metadata.json", ...technical.items.map(item => item.sourceRef.path)]);
   if (technical.servedFiles?.length !== 98 || new Set(technical.servedFiles.map(ref => ref.path)).size !== 98) fail("SERVED_INVENTORY");
+  // Derive the consumed asset keys from what this question's evidence actually
+  // displays: its captured UI assets and its frozen current problem assets.
+  const indexAssetRefs = [...new Set([...current.witness.currentProblemAssets.map(ref => ref.path),
+    ...technical.results.filter(row => row.questionUid === ctx.patch.questionUid).map(row => row.assetRef?.path)])]
+    .filter(value => typeof value === "string").sort().map(value => ({ path: value }));
   for (const ref of technical.servedFiles) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
-    if (ref.path === "archive/data/svg-accessibility-index.js") {
-      const assetRefs = current.witness.currentProblemAssets;
-      if (!same(SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(immutable(ctx, ref, true)), assetRefs),
-        SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(liveGeneratedSvgIndex(ctx)), assetRefs)))
-        fail("SELECTED_SVG_INDEX_DRIFT");
-    } else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    if (ref.path === SVG_INDEX_PATH) svgIndexFootprint(ctx, ref, indexAssetRefs);
+    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {

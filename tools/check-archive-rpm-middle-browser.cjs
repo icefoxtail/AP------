@@ -55,74 +55,80 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
     }
     await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 960, deviceScaleFactor: 1, mobile: false });
   };
-  const selectedState = () => evaluate(() => {
-    const U = window.UnitPastExamsCore;
-    const params = new URLSearchParams(location.search);
-    const unit = window.__rpmMiddleBrowserQA.catalogs[params.get('grade')]?.units.find(row => row.key === params.get('unit'));
-    if (!unit) throw Error('Actual selected unit catalog missing');
-    const keys = [...document.querySelectorAll('input[name="unit-subunit"]:checked')].map(el => el.value).sort();
-    const difficultyBuckets = [...document.querySelectorAll('input[name="unit-difficulty"]:checked')].map(el => el.value);
-    const includeUnclassified = document.getElementById('unit-include-unclassified')?.checked || difficultyBuckets.includes('미분류');
-    const records = U.filterUnitRecords(unit.records, { subUnitKeys: keys, difficultyBuckets, includeUnclassified });
-    return { url: location.href, grade: params.get('grade'), unitKey: params.get('unit'), checkedKeys: keys,
-      urlKeys: params.has('subUnit') ? JSON.parse(params.get('subUnit')).sort() : [],
-      questionUids: [...new Set(records.map(U.getQuestionUid))].sort(),
-      summary: document.getElementById('unit-filter-summary')?.textContent || '' };
-  });
+  // 단원별 기출은 단원 x 단계 표 한 화면이다: 학년 버튼, 과목 버튼, 단원 행. 표를 그리기 전의 뼈대(.ug-loading)가 아니라 자료가 준비된 표를 기다린다.
+  const TABLE_READY = '!!window.UnitPastExams && !!document.querySelector(".ug-grades") && !document.querySelector(".ug-loading")';
   const openGrade = async grade => {
-    await navigate('/archive/unit-past-exams.html', 'window.UnitPastExams && document.querySelector(".unit-grade-card")');
+    await navigate('/archive/unit-past-exams.html', TABLE_READY);
     await evaluate(id => {
-      const button = [...document.querySelectorAll('.unit-grade-card')].find(el => el.dataset.profile === id);
+      const button = [...document.querySelectorAll('.ug-grade')].find(el => el.dataset.profile === id);
       if (!button) throw Error(`Grade button absent: ${id}`);
       button.click();
     }, grade);
-    await wait(`window.__rpmMiddleBrowserQA.catalogs[${JSON.stringify(grade)}] && document.querySelector('.unit-card')`, `${grade} real unit cards`);
+    await wait(`window.__rpmMiddleBrowserQA.catalogs[${JSON.stringify(grade)}] && document.querySelector('.ug-grade[aria-pressed="true"]')?.dataset.profile === ${JSON.stringify(grade)} && !!document.querySelector('.ug-row')`, `${grade} real unit rows`);
     const view = await evaluate(id => {
       const T = window.ArchiveRpmMiddleToc;
       const catalog = window.__rpmMiddleBrowserQA.catalogs[id];
+      // Rows are listed per course button (1학기 / 2학기); the courses together are the grade's units in order.
+      const readRows = () => [...document.querySelectorAll('.ug-row')].map(row => {
+        const input = row.querySelector('input[data-focus^="k:"]');
+        const cells = [...row.querySelectorAll('.ug-cell')];
+        return { key: input.dataset.focus.slice(2), label: row.querySelector('.ug-check span').textContent.trim(),
+          disabled: cells.every(cell => cell.classList.contains('is-zero')), text: row.innerText };
+      });
+      const courseCount = document.querySelectorAll('.ug-courses .ug-seg').length;
+      const cards = [];
+      if (courseCount < 2) cards.push(...readRows());
+      else for (let index = 0; index < courseCount; index += 1) {
+        document.querySelectorAll('.ug-courses .ug-seg')[index].click();
+        cards.push(...readRows());
+      }
       return { grade: id, url: location.href,
         expected: T.units(id.toUpperCase()).map(row => ({ key: row.key, label: row.L1 })),
-        cards: [...document.querySelectorAll('.unit-card')].map(el => ({ key: el.dataset.unitKey,
-          label: el.querySelector('h3')?.textContent || '', disabled: el.disabled, text: el.innerText })),
+        cards,
         units: catalog.units.map(row => ({ key: row.key, label: row.name, count: row.count, selectableCount: row.selectableCount })),
       };
     }, grade);
-    assert.deepEqual(view.cards.map(row => ({ key: row.key, label: row.label })), view.expected, `${grade} actual L1 card order`);
+    assert.deepEqual(view.cards.map(row => ({ key: row.key, label: row.label })), view.expected, `${grade} actual L1 row order`);
     report.unitViews.push(view);
     await layout(`unit-${grade}`);
     return view;
   };
+  // 단원 행을 체크한다(예전 단원 카드 누르기). 자료가 없는 단원이면 null.
   const openUnit = async (grade, unitKey) => {
     const opened = await evaluate(key => {
-      const card = [...document.querySelectorAll('.unit-card')].find(el => el.dataset.unitKey === key);
-      if (!card) throw Error(`Unit card absent: ${key}`);
-      if (card.disabled) return false;
-      card.click(); return true;
+      const buttons = () => [...document.querySelectorAll('.ug-courses .ug-seg')];
+      const find = () => [...document.querySelectorAll('.ug-row')].find(row => row.querySelector('input[data-focus^="k:"]')?.dataset.focus === `k:${key}`);
+      for (let index = 0; index < Math.max(1, buttons().length); index += 1) {
+        if (buttons().length > 1) buttons()[index].click();
+        const row = find();
+        if (!row) continue;
+        if (row.querySelectorAll('.ug-cell:not(.is-zero)').length === 0) return false;
+        if (!row.classList.contains('is-checked')) row.querySelector('input').click();
+        return !!find().classList.contains('is-checked');
+      }
+      throw Error(`Unit row absent: ${key}`);
     }, unitKey);
     if (!opened) {
       report.dataGaps.push({ grade, unitKey, status: 'NO_SELECTABLE_UNIT_RECORDS' });
       return null;
     }
-    await wait('!!document.getElementById("unit-subunits")', `${grade} chapter controls`);
+    // 소단원(챕터) 선택 칸은 옛 3단계 화면과 함께 사라졌다. 다음 묶음(표 안 소단원 행)이 돌아오기 전까지는 같은 자료를 코어 계산으로 확인한다.
     const view = await evaluate(({ grade, unitKey }) => {
       const U = window.UnitPastExamsCore, T = window.ArchiveRpmMiddleToc;
       const unit = window.__rpmMiddleBrowserQA.catalogs[grade].units.find(row => row.key === unitKey);
       const options = U.getSubUnitOptions(unit.records);
-      const controls = [...document.querySelectorAll('input[name="unit-subunit"]')].map(el => ({
-        key: el.value, count: Number(el.closest('label').querySelector('.unit-chip-count')?.textContent || 0),
-        label: el.closest('label').innerText,
-      }));
       const parents = T.parents(grade.toUpperCase()).filter(row => row.unitKey === unitKey).map(parent => {
         const records = U.filterUnitRecords(unit.records, { subUnitKeys: [parent.key], includeUnclassified: true });
         return { parentKey: parent.key, label: parent.L2, count: records.length,
           questionUids: [...new Set(records.map(U.getQuestionUid))].sort(),
-          uiPresent: controls.some(row => row.key === parent.key) };
+          uiPresent: options.some(row => row.key === parent.key) };
       });
-      return { grade, unitKey, url: location.href, controls, options: options.map(row => ({ key: row.key, count: row.count })), parents };
+      return { grade, unitKey, url: location.href, checkedRows: [...document.querySelectorAll('.ug-row.is-checked input')].map(el => el.dataset.focus.slice(2)),
+        options: options.map(row => ({ key: row.key, count: row.count })), parents };
     }, { grade, unitKey });
-    assert.deepEqual(view.controls.map(row => ({ key: row.key, count: row.count })), view.options, `${grade} actual chapter controls`);
+    assert.ok(view.checkedRows.includes(unitKey), `${grade} unit row is checked in the table`);
     for (const parent of view.parents) {
-      assert.equal(parent.uiPresent, parent.count > 0, `${parent.label}: visible control must reflect real records`);
+      assert.equal(parent.uiPresent, parent.count > 0, `${parent.label}: chapter option must reflect real records`);
       assert.equal(parent.questionUids.length, parent.count, `${parent.label}: missing or duplicate real UID`);
       if (!parent.count) report.dataGaps.push({ grade, unitKey, parentKey: parent.parentKey, label: parent.label, status: 'NO_CURRENT_PARENT_RECORDS' });
     }
@@ -255,38 +261,26 @@ module.exports = async function checkArchiveRpmMiddleBrowser({ send, run, wait, 
       }
       assert.equal(targets[0].questionUids.some(uid => targets[1].questionUids.includes(uid)), false, 'Basic and construction pools must have distinct real UIDs');
       report.m1DistinctPools = { status: targets.every(row => row.count > 0) ? 'PASS' : 'PARTIAL_EMPTY_PARENT', parents: targets };
+      // 옛 세분 출제 주소(챕터·난이도·모아뽑기 값이 붙은 즐겨찾기)는 표 화면으로 열려 그 단원이 체크되고, 옛 값은 주소에서 지워진다.
       const keys = targets.filter(row => row.uiPresent).map(row => row.parentKey).sort();
-      if (keys.length) {
-        await evaluate(keys => { for (const input of document.querySelectorAll('input[name="unit-subunit"]')) if (input.checked !== keys.includes(input.value)) input.click(); }, keys);
-        // Keep current-parent records with an unrecorded difficulty in this UID
-        // round trip too. This is a visible existing user control, not a fixture.
-        await evaluate(() => {
-          const include = document.getElementById('unit-include-unclassified');
-          if (include && !include.checked) {
-            const details = include.closest('details');
-            if (details && !details.open) details.querySelector('summary').click();
-            include.click();
-          }
-        });
-        const before = await selectedState();
-        assert.deepEqual(before.checkedKeys, keys); assert.deepEqual(before.urlKeys, keys);
-        assert.equal(before.questionUids.length, targets.reduce((sum, row) => sum + row.count, 0), 'Visible filters retain every actual selected-parent UID');
-        await layout('m1-current-chapters');
-        await navigate(new URL(before.url).pathname + new URL(before.url).search, 'window.__rpmMiddleBrowserQA.catalogs.m1 && document.getElementById("unit-subunits")');
-        const after = await selectedState();
-        assert.deepEqual(after.checkedKeys, before.checkedKeys, 'Chapter checkboxes survive a fresh document');
-        assert.deepEqual(after.urlKeys, before.urlKeys, 'Structured parent keys survive the URL');
-        assert.deepEqual(after.questionUids, before.questionUids, 'Reload must not widen or change the real UID pool');
-        report.urlRoundTrip = { status: 'PASS', before, after };
-        // A real checkbox transition followed by browser history exercises popstate too.
-        await evaluate(key => [...document.querySelectorAll('input[name="unit-subunit"]')].find(el => el.value === key).click(), keys[0]);
-        await run('history.back()');
-        await wait(`JSON.stringify([...document.querySelectorAll('input[name="unit-subunit"]:checked')].map(el => el.value).sort()) === ${JSON.stringify(JSON.stringify(keys))}`, 'chapter popstate restoration');
-        const restored = await selectedState();
-        assert.deepEqual(restored.questionUids, before.questionUids, 'Back restores the exact UID pool');
-        report.urlRoundTrip.back = restored;
-        await snapshot('m1-chapters-restored');
-      } else report.urlRoundTrip = { status: 'NOT_RUN_NO_CURRENT_PARENT_RECORDS' };
+      const legacy = new URL('/archive/unit-past-exams.html', origin);
+      legacy.searchParams.set('grade', 'm1'); legacy.searchParams.set('unit', basicUnit); legacy.searchParams.set('step', 'confirm');
+      legacy.searchParams.set('mode', 'advanced'); legacy.searchParams.set('collection', '1');
+      if (keys.length) legacy.searchParams.set('subUnit', JSON.stringify(keys));
+      await navigate(legacy.pathname + legacy.search, TABLE_READY + ' && !!document.querySelector(".ug-row.is-checked")');
+      const reopened = await evaluate(() => ({ search: location.search, menu: !!document.querySelector('.archive-sidebar'),
+        checked: [...document.querySelectorAll('.ug-row.is-checked input')].map(el => el.dataset.focus.slice(2)),
+        oldScreen: !!document.querySelector('#unit-stepper, .unit-back, .unit-grade-card, #unit-subunits'),
+        fineLink: /세분 출제/.test(document.body.innerText) }));
+      assert.ok(reopened.checked.includes(basicUnit), 'The old address opens the table with its unit checked');
+      assert.equal(reopened.menu, true, 'The left menu is there');
+      assert.equal(reopened.oldScreen || reopened.fineLink, false, 'No old screen or 세분 출제 link');
+      const params = new URLSearchParams(reopened.search);
+      for (const key of ['unit', 'step', 'mode', 'collection', 'subUnit']) assert.equal(params.has(key), false, `old parameter ${key} is cleaned from the address`);
+      assert.equal(params.get('grade'), 'm1');
+      report.urlRoundTrip = { status: 'PASS_OLD_LINK_OPENS_TABLE', reopened };
+      await snapshot('m1-old-link-table');
+      await layout('m1-old-link-table');
     }
     for (const [grade, unitLabels] of [['m2', ['일차함수', '삼각형의 성질', '사각형의 성질']], ['m3', ['실수와 그 연산', '다항식의 곱셈과 인수분해', '원의 성질']]]) {
       for (const label of unitLabels) {

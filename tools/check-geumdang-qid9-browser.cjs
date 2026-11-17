@@ -22,7 +22,7 @@ async function main(){
   await evaluate("(()=>{document.querySelector('#manual-section').open=true;const x=document.querySelector('#generated-search');x.value='ALITE-GEUMDANG25-2FINAL-Q02-C2';x.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
   await wait("document.querySelectorAll('#generated-results article').length===1",'exact UID search');
   const search=await evaluate("(()=>({text:document.querySelector('#generated-results article').innerText,summary:document.querySelector('#generated-search-summary').innerText}))()");
-  if(!search.text.includes('금당고')||!search.text.includes('ALITE-GEUMDANG25-2FINAL-Q02-C2')||!search.text.includes('기술 상태: READY'))throw Error('Search result not operational '+JSON.stringify(search));
+  if(!search.text.includes('금당고')||!search.text.includes('ALITE-GEUMDANG25-2FINAL-Q02-C2')||!search.text.includes('사용 상태: 사용 가능'))throw Error('Search result not operational '+JSON.stringify(search));
   await evaluate("document.querySelector('#generated-results article button').click()");await wait("document.querySelector('#generated-preview')?.innerText.includes('ALITE-GEUMDANG25-2FINAL-Q02-C2')",'problem preview');
   const problem=await evaluate("(()=>({choices:document.querySelectorAll('#generated-preview .choice').length,math:document.querySelectorAll('#generated-preview mjx-container').length,solutionButton:!!document.querySelector('#generated-preview .solution-preview')}))()");
   if(problem.choices!==5||!problem.solutionButton)throw Error('Problem choices/solution controls missing '+JSON.stringify(problem));

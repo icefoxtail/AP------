@@ -1,0 +1,42 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:49:09.936+00:00",
+ "sourceArchiveFile": "original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 13,
+   "chosenFrom": "pass2",
+   "resolutionReason": "U={1,...,1020}의 부분집합 A가 1,2를 포함하고 곱셈에 닫혀 있을 때 2⁰부터 2⁹=512까지 10개가 최소 집합 X이므로 집합의 연산법칙 중 복합 연산 항목에 둔다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "l4": "복합 연산"
+   }
+  },
+  {
+   "ordinal": 21,
+   "chosenFrom": "new",
+   "resolutionReason": "f(x)=x²-4ax와 g(x)=x/a의 교점 A의 x좌표 4a+1/a와 꼭짓점 B의 x좌표 2a의 평균 CH=3a+1/(2a)≥√6을 구하는 그래프 교점 문제인데 함수 아래 해당 l3·l4가 없다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수>함수 아래 그래프의 교점을 다루는 l3·l4 항목이 표에 없음(앞서 제안한 함수의 그래프 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "함수의 그래프",
+     "label": "함수의 그래프",
+     "parent": "함수 > 함수",
+     "why": "가장 가까운 '합성함수'와 '역함수'는 함수 사이의 연산이고, 이 문항은 이차함수와 직선 그래프의 교점 좌표를 쓴다."
+    },
+    "rpmPath.l4": {
+     "value": "그래프의 교점",
+     "label": "함수 그래프의 교점",
+     "parent": "함수 > 함수 > 함수의 그래프",
+     "why": "가장 가까운 '그래프 대칭'은 역함수 그래프의 대칭이고, 이 문항은 x²-4ax=x/a를 풀어 교점의 x좌표를 구한다."
+    }
+   }
+  }
+ ]
+}

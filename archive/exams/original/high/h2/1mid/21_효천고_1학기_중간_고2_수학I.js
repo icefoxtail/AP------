@@ -331,7 +331,7 @@ window.questionBank = [
   {
     "id": 6,
     "questionType": "객관식",
-    "content": "다음은 함수 $f(x)=\\log x$의 그래프이다. $f(M)=0.3$, $f(N)=0.4$일 때 상수 $M,N$에 대하여 $MN$의 값은?<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q06.png\" class=\"exam-img\"></div> [4.3점]",
+    "content": "다음은 함수 $f(x)=\\log x$의 그래프이다. $f(M)=0.3$, $f(N)=0.4$일 때 상수 $M,N$에 대하여 $MN$의 값은?<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q06.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"상용로그 곡선 y=log x에 y=0.1부터 0.7까지의 수평 점선이 그려져 있고, 각 곡선 교점에서 x축으로 수직 점선이 내려온다. y=0.3과 0.4의 수직선은 각각 x축의 M, N 표식에 닿고, y=0.7의 수직선은 e 표식에 닿는다. x축에는 a, b, M, N, c, d, e가 표시되어 있다.\"></div> [4.3점]",
     "choices": [
       "$a$",
       "$b$",
@@ -1061,7 +1061,7 @@ window.questionBank = [
   {
     "id": 17,
     "questionType": "객관식",
-    "content": "다음 그림은 $y=a\\cos(bx+c)-1$의 그래프이다. 주기를 $p$라 할 때, $ab+\\dfrac pc$의 값은?<br>(단, $a>0$, $b>0$, $0<c<\\pi$)<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\"></div> [5.3점]",
+    "content": "다음 그림은 $y=a\\cos(bx+c)-1$의 그래프이다. 주기를 $p$라 할 때, $ab+\\dfrac pc$의 값은?<br>(단, $a>0$, $b>0$, $0<c<\\pi$)<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"좌표축에 y=a cos(bx+c)−1의 그래프가 그려져 있다. 수평 점선은 y=1과 y=−3을 나타내며, x축에는 −π/3, π/3, 3π가 표시되어 있다. 곡선은 꼭대기에서 내려와 x축을 지나 최저점에 이른 뒤 다시 올라간다.\"></div> [5.3점]",
     "choices": [
       "21",
       "22",
@@ -1126,7 +1126,7 @@ window.questionBank = [
   {
     "id": 18,
     "questionType": "객관식",
-    "content": "다음 그림과 같이 $y=\\sin\\dfrac\\pi4 x$의 그래프와 $x$축 사이에 직사각형 $\\mathrm{ABCD}$가 내접하고 있다. 직사각형의 밑변 $\\mathrm{BC}$의 길이가 $\\dfrac83$일 때, 직사각형 $\\mathrm{ABCD}$의 넓이를 구하면?<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q18.png\" class=\"exam-img\"></div> [5.2점]",
+    "content": "다음 그림과 같이 $y=\\sin\\dfrac\\pi4 x$의 그래프와 $x$축 사이에 직사각형 $\\mathrm{ABCD}$가 내접하고 있다. 직사각형의 밑변 $\\mathrm{BC}$의 길이가 $\\dfrac83$일 때, 직사각형 $\\mathrm{ABCD}$의 넓이를 구하면?<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q18.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"좌표축에 y=sin(πx/4)의 곡선이 그려져 있다. x축 위에 직사각형 ABCD가 놓이고, A와 D는 곡선 위의 같은 높이에 있으며 B와 C는 x축 위에 있다. 곡선의 꼭대기 높이 1도 점선으로 표시되어 있다.\"></div> [5.2점]",
     "choices": [
       "1",
       "$\\dfrac43$",
@@ -1194,7 +1194,7 @@ window.questionBank = [
   {
     "id": 19,
     "questionType": "서술형",
-    "content": "그림과 같이 $y=\\sin\\dfrac{k}{3}x$ $(x>0)$의 그래프와 직선 $y=a$ $(0<a<1)$의 교점의 $x$좌표 중 가장 작은 수를 $\\alpha$, 두 번째로 작은 수를 $\\beta$라 하고, 직선 $y=-a$의 교점의 $x$좌표 중 가장 작은 수를 $\\gamma$, 두 번째로 작은 수를 $\\delta$라 하자.<br>이 때, $\\sin(\\alpha+\\beta+\\gamma+\\delta)=\\dfrac{\\sqrt3}{2}$을 만족시키는 양수 $k$의 최댓값을 풀이와 함께 구하시오.<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q19.png\" class=\"exam-img\"></div> [6.0점]",
+    "content": "그림과 같이 $y=\\sin\\dfrac{k}{3}x$ $(x>0)$의 그래프와 직선 $y=a$ $(0<a<1)$의 교점의 $x$좌표 중 가장 작은 수를 $\\alpha$, 두 번째로 작은 수를 $\\beta$라 하고, 직선 $y=-a$의 교점의 $x$좌표 중 가장 작은 수를 $\\gamma$, 두 번째로 작은 수를 $\\delta$라 하자.<br>이 때, $\\sin(\\alpha+\\beta+\\gamma+\\delta)=\\dfrac{\\sqrt3}{2}$을 만족시키는 양수 $k$의 최댓값을 풀이와 함께 구하시오.<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q19.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"x>0인 좌표평면에 y=sin(kx/3)의 곡선과 y=a, y=−a 수평선이 그려져 있다. y=a와 만나는 첫 두 점의 x좌표 α, β 및 y=−a와 만나는 첫 두 점의 x좌표 γ, δ가 점선으로 x축에 내려 표시되어 있다. 원점은 열린 점이다.\"></div> [6.0점]",
     "choices": [],
     "answer": "36",
     "solution": "사인곡선과 수평선의 첫 두 교점을 각각 찾되, 각을 먼저 구한 뒤 $x$좌표로 바꾸면 복잡한 미지수 $a$가 소거됩니다.<br>$0<a<1$이므로 $\\sin\\theta=a$인 $0<\\theta<\\frac\\pi2$를 하나 정합니다. 또 $k>0$이므로 $x$가 커질수록 $\\frac{kx}{3}$도 커집니다.<br><b>① $y=a$와의 첫 두 교점</b><br>양의 각에서 $\\sin t=a$를 처음 만족시키는 각은 $\\theta$, 다음은 $\\pi-\\theta$입니다. 따라서<br>$$\\frac{k\\alpha}{3}=\\theta,\\quad\\frac{k\\beta}{3}=\\pi-\\theta$$<br>$$\\alpha=\\frac{3\\theta}{k},\\qquad\\beta=\\frac{3(\\pi-\\theta)}{k}$$<br><b>② $y=-a$와의 첫 두 교점</b><br>사인값이 처음 음수가 되는 곳은 각 $\\pi$ 이후입니다. 처음 $-a$가 되는 각은 $\\pi+\\theta$, 다음은 $2\\pi-\\theta$이므로<br>$$\\gamma=\\frac{3(\\pi+\\theta)}{k},\\qquad\\delta=\\frac{3(2\\pi-\\theta)}{k}$$<br><b>③ 네 좌표의 합</b><br>$$\\alpha+\\beta=\\frac3k\\{\\theta+\\pi-\\theta\\}=\\frac{3\\pi}{k}$$<br>$$\\gamma+\\delta=\\frac3k\\{\\pi+\\theta+2\\pi-\\theta\\}=\\frac{9\\pi}{k}$$<br>$$\\alpha+\\beta+\\gamma+\\delta=\\frac{12\\pi}{k}$$<br>따라서 $a$가 어떤 값이든 조건은<br>$$\\sin\\frac{12\\pi}{k}=\\frac{\\sqrt3}{2}$$<br>로 바뀝니다.<br><b>④ $k$의 최댓값</b><br>$k>0$이므로 $t=\\frac{12\\pi}{k}>0$입니다. 사인값이 $\\frac{\\sqrt3}{2}$인 양의 각은<br>$$t=\\frac\\pi3+2m\\pi\\quad\\text{또는}\\quad t=\\frac{2\\pi}3+2m\\pi\\quad(m\\text{은 정수})$$<br>이 가운데 가장 작은 양의 각은 $\\frac\\pi3$입니다. $k=\\frac{12\\pi}{t}$는 $t$가 작을수록 커지므로<br>$$k_{\\max}=\\frac{12\\pi}{\\pi/3}=36$$<br>따라서 최댓값은 $\\boxed{36}$입니다.",
@@ -1257,7 +1257,7 @@ window.questionBank = [
   {
     "id": 20,
     "questionType": "서술형",
-    "content": "그림과 같이 두 함수 $y=\\log_2 x$와 $y=2^x$의 그래프가 있다. 곡선 $y=\\log_2 x$ 위의 점 $P(4,2)$와 $Q(a,\\log_2 a)$에서 각각 $y$축에 평행한 직선을 그어 $x$축과 만나는 점을 각각 $P_1,Q_1$이라 하고, 각각 $x$축에 평행한 직선을 그어 곡선 $y=2^x$과 만나는 점을 각각 $P_2,Q_2$라 하자. 또 점 $P_2,Q_2$에서 각각 $y$축에 평행한 직선을 그어 $x$축과 만나는 점을 각각 $P_3,Q_3$라 하자.<br>두 사각형 $P_1PP_2P_3$와 $Q_1QQ_2Q_3$의 공통 부분의 넓이를 $S(a)$, 두 사각형의 넓이의 차를 $D(a)$라 하자.<br>2보다 큰 자연수 $n$에 대하여 $S(2^n)=4$일 때, $D(2^n)$의 값을 풀이와 함께 쓰시오. (단, $a>4$이다.)<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q20.png\" class=\"exam-img\"></div> [7.0점]",
+    "content": "그림과 같이 두 함수 $y=\\log_2 x$와 $y=2^x$의 그래프가 있다. 곡선 $y=\\log_2 x$ 위의 점 $P(4,2)$와 $Q(a,\\log_2 a)$에서 각각 $y$축에 평행한 직선을 그어 $x$축과 만나는 점을 각각 $P_1,Q_1$이라 하고, 각각 $x$축에 평행한 직선을 그어 곡선 $y=2^x$과 만나는 점을 각각 $P_2,Q_2$라 하자. 또 점 $P_2,Q_2$에서 각각 $y$축에 평행한 직선을 그어 $x$축과 만나는 점을 각각 $P_3,Q_3$라 하자.<br>두 사각형 $P_1PP_2P_3$와 $Q_1QQ_2Q_3$의 공통 부분의 넓이를 $S(a)$, 두 사각형의 넓이의 차를 $D(a)$라 하자.<br>2보다 큰 자연수 $n$에 대하여 $S(2^n)=4$일 때, $D(2^n)$의 값을 풀이와 함께 쓰시오. (단, $a>4$이다.)<div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_수학I/q20.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" style=\"width:240px;max-width:100%;height:auto;max-height:230px;object-fit:contain\" alt=\"지수곡선과 로그곡선이 그려져 있다. 로그곡선 위의 두 점 P와 Q에서 수평선으로 지수곡선에, 수직선으로 x축에 연결한다. 지수곡선 쪽 교점에서도 x축으로 수직선을 내리면 두 직사각형이 생기며, 겹치는 부분은 음영으로 표시되어 있다.\"></div> [7.0점]",
     "choices": [],
     "answer": "50",
     "solution": "두 사각형은 모두 밑변이 $x$축 위에 있으므로 **가로 구간과 높이**를 따로 정하면 겹치는 넓이를 구할 수 있습니다.<br><b>① 첫 직사각형 $P_1PP_2P_3$</b><br>$P=(4,2)$에서 수평선 $y=2$가 $y=2^x$와 만나는 점은 $2^x=2$에서 $x=1$이므로 $P_2=(1,2)$입니다.<br>$$1\\le x\\le4,\\quad0\\le y\\le2,\\qquad A_P=(4-1)\\times2=6$$<br><b>② 둘째 직사각형 $Q_1QQ_2Q_3$</b><br>$a=2^n$이고 $n>2$이므로 $Q=(2^n,n)$입니다. 수평선 $y=n$과 $y=2^x$의 교점은 $2^x=n$에서 $Q_2=(\\log_2n,n)$입니다.<br>$$\\log_2n\\le x\\le2^n,\\quad0\\le y\\le n$$<br>$$A_Q=(2^n-\\log_2n)\\times n$$<br><b>③ 공통 부분의 넓이로 $n$ 결정</b><br>$n>2$이므로 $\\log_2n>1$, $2^n>4$, $n>2$입니다. 따라서 두 사각형의 오른쪽 경계 중 작은 값은 $4$, 위쪽 높이 중 작은 값은 $2$이고, 겹치는 부분의 왼쪽 경계는 $\\log_2n$입니다.<br>만약 $\\log_2n\\ge4$라면 겹치는 넓이는 $0$입니다. 그러나 문제에서 $S(2^n)=4>0$이므로 $\\log_2n<4$이고, 겹친 직사각형의 가로 길이는 $4-\\log_2n$입니다.<br>$$S(2^n)=2(4-\\log_2n)=4$$<br>$$4-\\log_2n=2\\quad\\Longrightarrow\\quad\\log_2n=2\\quad\\Longrightarrow\\quad n=2^2=4$$<br>실제로 $n=4$는 $n>2$와 $\\log_2n<4$를 모두 만족합니다.<br><b>④ 두 넓이의 차</b><br>$a=2^4=16$이고 둘째 사각형은 $2\\le x\\le16$, 높이 $4$입니다.<br>$$A_Q=(16-2)\\times4=56,\\qquad A_P=6$$<br>$$D(2^4)=|A_Q-A_P|=|56-6|=\\boxed{50}$$<br>따라서 구하는 값은 $50$입니다.",

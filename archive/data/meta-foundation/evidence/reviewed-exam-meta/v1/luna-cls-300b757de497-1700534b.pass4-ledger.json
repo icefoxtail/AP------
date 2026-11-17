@@ -1,0 +1,29 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:19:09.410+00:00",
+ "sourceArchiveFile": "similar/high/h1/2final/25_효천고_2학기_기말_고1_유사.js",
+ "items": [
+  {
+   "ordinal": 9,
+   "chosenFrom": "new",
+   "resolutionReason": "f(m+n)=f(m)+f(n)+kmn에 n=-m을 넣어 f(m)+f(-m)=km², f(2)+f(-2)=12로 k=3, f(4)+f(-4)=48을 구하는 함수방정식인데 함수의 성질 아래 해당 l4가 없다.",
+   "choiceTableUsed": "H1-공통수학2.json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "함수",
+    "l3": "함수의 성질",
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수의 성질 아래 함수방정식(값 대입) 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "함수방정식(대입법)",
+     "label": "함수방정식과 값 대입",
+     "parent": "함수 > 함수 > 함수의 성질",
+     "why": "가장 가까운 '일대일함수'는 값 대응이고 '항등함수·상수함수'는 특수 함수 분류이지만, 이 문항은 n=-m 같은 값을 대입해 관계식을 만든다."
+    }
+   }
+  }
+ ]
+}

@@ -60,6 +60,8 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "tall",
+    "imageAlt": "C는 직각이다. B에서 그은 이등분선은 AC 위의 D에 닿는다. D에서 빗변 AB로 내린 수선은 E에서 만난다. DBC는 24도이고 A의 각은 x이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -68,7 +70,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형의 성질",
@@ -87,7 +89,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 직각삼각형 BDE와 BDC는 빗변 BD가 공통이고 BE=BC이므로 RHS 합동이다. 따라서 \\angle EBD=\\angle DBC이고 E가 선분 AB 위에 있으므로 \\angle ABD=\\angle DBC이다.\n그림에서 \\angle DBC=24^\\circ이므로 \\angle ABD=24^\\circ이다. 따라서\n\\angle ABC=24^\\circ+24^\\circ=48^\\circ이다.\n또 \\triangle ABC는 C에서 직각이므로\nx+48^\\circ+90^\\circ=180^\\circ이다.\n따라서 x=42^\\circ이다.\n그러므로 정답은 ②이다.",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
-    "image": "assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+    "image": "assets/images/24_연향중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",

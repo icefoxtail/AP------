@@ -7,7 +7,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
-import { validateM2ProblemRenderer21Continuity, M2_PROBLEM21_CONTINUITY_SCHEMA,
+import { validateM2ProblemRenderer21Continuity, verifyFrozenSvgIndexFootprint, M2_PROBLEM21_CONTINUITY_SCHEMA,
   M2_PROBLEM21_BINDING_SCHEMA, M2_PROBLEM21_SCOPE, M2_PROBLEM21_ITEMS } from "../archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -33,7 +33,7 @@ const allProblemFields = ["id", "number", "sourceQuestionNo", "sourceQid", "sour
   "content", "question", "choices", "image", "images", "figureSvg", "layoutTag", "wide", "imageAlt", "imageCaption", "imageSize", "score"];
 const problem = question => Object.fromEntries(allProblemFields.filter(key => Object.hasOwn(question, key)).map(key => [key, question[key]]));
 const without = (question, fields) => Object.fromEntries(Object.entries(question).filter(([key]) => !fields.includes(key)));
-function fixture(selectedKey) {
+function fixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-m2-problem21-")); git(root, ["init", "-q"]);
   const common = path.resolve(repo, git(repo, ["rev-parse", "--git-common-dir"]).toString().trim());
   fs.writeFileSync(path.join(root, ".git/objects/info/alternates"), `${path.join(common, "objects")}\n`);
@@ -54,7 +54,7 @@ function fixture(selectedKey) {
     const bytes = git(root, ["show", `${ref.commit}:${ref.path}`]); assert.equal(blob(bytes), ref.gitBlobSha1); assert.equal(sha(bytes), ref.sha256);
     write(ref.path, bytes);
   }
-  for (const row of staticDoc.rows.filter(row => selectedKey === undefined || row.key === selectedKey)) { materialize(row.currentSourceRef); row.nativeProblemAssets.forEach(materialize); row.currentProblemAssets.forEach(materialize); }
+  for (const row of staticDoc.rows) { materialize(row.currentSourceRef); row.nativeProblemAssets.forEach(materialize); row.currentProblemAssets.forEach(materialize); }
   for (const ref of technical.servedFiles) if (ref.path !== "archive/data/question_metadata.json" && !ref.path.startsWith("archive/exams/")) materialize(ref);
   for (const ref of technical.studentFontResources) materialize(ref);
   let wrapper;
@@ -246,64 +246,114 @@ test("frozen public problem21 uses real immutable Git and original UI evidence",
   } finally { f.close(); }
 });
 
-test("generated SVG index uses only the authenticated problem21 target while retaining strict file boundaries", async t => {
-  const f = fixture("E017-Q10"), relative = "archive/data/svg-accessibility-index.js";
-  const full = path.join(f.root, relative), original = fs.readFileSync(full);
-  const match = original.toString("utf8").match(/Object\.freeze\((\{[\s\S]*\})\);/);
-  assert.ok(match);
-  const index = JSON.parse(match[1]);
-  const encode = records => Buffer.from(original.toString("utf8").replace(match[1], JSON.stringify({ ...index, records })));
-  const target = f.staticDoc.rows.find(row => row.key === "E017-Q10").currentProblemAssets[0].path.slice("archive/".length);
-  const unrelated = { ...index.records[0], assetRef: "assets/images/generated-reader-fixture/unrelated.svg" };
-  const run = () => validateM2ProblemRenderer21Continuity(f.args("E017-Q10"));
+// The generated SVG accessibility index is rebuilt by every main snapshot, so it
+// is compared by the entries this question's screen consumed, not by bytes. Every
+// other served file stays an exact live byte pin.
+const INDEX_PATH = "archive/data/svg-accessibility-index.js";
+const INDEX_PREFIX = "(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+const INDEX_SUFFIX = ");\n}(typeof window !== 'undefined' ? window : globalThis));\n";
+const indexDoc = f => { const text = fs.readFileSync(path.join(f.root, INDEX_PATH), "utf8");
+  return JSON.parse(text.slice(INDEX_PREFIX.length, -INDEX_SUFFIX.length)); };
+const rewriteIndex = (f, mutate) => { const doc = indexDoc(f); mutate(doc);
+  fs.writeFileSync(path.join(f.root, INDEX_PATH), INDEX_PREFIX + JSON.stringify(doc) + INDEX_SUFFIX); };
+const entryFor = (doc, name) => doc.records.filter(row => decodeURIComponent(row.assetRef).endsWith("/24_연향중_2학기_중간_중2_수학/" + name));
+
+test("problem21 compares the consumed SVG index entries instead of the whole generated file", async t => {
+  const f = fixture();
   try {
-    const baseline = run();
-    await t.test("generated nonselected data advances without changing issued proof", () => {
-      fs.writeFileSync(full, encode([...index.records, unrelated]));
-      try { assert.deepEqual(run(), baseline); } finally { fs.writeFileSync(full, original); }
+    const q1 = "q1-problem-visual-v2.svg", q10 = "q10-problem-visual-v2.svg";
+    assert.equal(entryFor(indexDoc(f), q1).length, 1, "fixture sanity: Q1 has a consumed entry in the frozen index");
+    assert.equal(entryFor(indexDoc(f), q10).length, 0, "fixture sanity: Q10 has no entry in the frozen index");
+    const passes = key => { const result = validateM2ProblemRenderer21Continuity(f.args(key)); assert.equal(result.proof.ui.liveServedCodeVerified, true); };
+    const restoreIndex = () => f.restore(INDEX_PATH);
+    const mutateOther = doc => {
+      const others = doc.records.filter(row => !decodeURIComponent(row.assetRef).includes("/24_연향중_2학기_중간_중2_수학/"));
+      others[0].descriptionKo = "unrelated change"; doc.records.splice(doc.records.indexOf(others[1]), 1);
+      doc.records.push({ ...others[2], assetRef: "assets/images/zz_unrelated_exam/q1-added.svg" });
+      doc.sourceIndexSha256 = "sha256:" + "e".repeat(64);
+    };
+
+    await t.test("unrelated entries added, removed or changed still pass (Q1 with an entry, Q10 without)", () => {
+      rewriteIndex(f, mutateOther);
+      try { passes("E017-Q01"); passes("E017-Q10"); } finally { restoreIndex(); }
     });
-    await t.test("previously absent selected record cannot be added", () => {
-      assert.equal(index.records.filter(row => row.assetRef === target && row.visualRole === "problem").length, 0);
-      fs.writeFileSync(full, encode([...index.records, { ...unrelated, assetRef: target, visualRole: "problem" }]));
-      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    await t.test("a sibling question's re-versioned entry does not affect this question", () => {
+      rewriteIndex(f, doc => { const sibling = entryFor(doc, "q3-problem-visual-v2.svg"); assert.equal(sibling.length, 1);
+        sibling[0].assetRef = sibling[0].assetRef.replace("q3-problem-visual-v2.svg", "q3-problem-visual-v3.svg"); });
+      try { passes("E017-Q01"); } finally { restoreIndex(); }
     });
-    await t.test("an unrelated global duplicate still fails closed", () => {
-      fs.writeFileSync(full, encode([...index.records, index.records[0]]));
-      try { assert.throws(run, /SVG_INDEX_RUNTIME_LOOKUP_REJECTED/); } finally { fs.writeFileSync(full, original); }
+    for (const [label, mutate] of [
+      ["Q1 entry text changed", doc => { entryFor(doc, q1)[0].descriptionKo += " changed"; }],
+      ["Q1 entry provenance changed", doc => { entryFor(doc, q1)[0].svgSha256 = "f".repeat(64); }],
+      ["Q1 entry removed", doc => { doc.records.splice(doc.records.indexOf(entryFor(doc, q1)[0]), 1); }],
+      ["Q1 entry re-versioned away", doc => { const row = entryFor(doc, q1)[0]; row.assetRef = row.assetRef.replace(q1, "q1-problem-visual-v3.svg"); }],
+      ["Q1 gains a solution-role entry", doc => { doc.records.push({ ...entryFor(doc, q1)[0], visualRole: "solution" }); }],
+    ]) await t.test(`${label} fails`, () => {
+      rewriteIndex(f, mutate);
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
-    await t.test("normalized aliases cannot hide an unrelated duplicate", () => {
-      const originalRow = index.records.find(row => row.visualRole === "problem" && row.assetRef.startsWith("assets/"));
-      assert.ok(originalRow);
-      fs.writeFileSync(full, encode([...index.records, { ...originalRow, assetRef: "/archive/" + encodeURI(originalRow.assetRef) }]));
-      try { assert.throws(run, /SVG_INDEX_RUNTIME_LOOKUP_REJECTED/); } finally { fs.writeFileSync(full, original); }
+    // Allowed: a key with NO frozen entry gains a valid problem-role entry that is
+    // SOURCE_BOUND, answerHintFree and digest-bound to the displayed asset bytes.
+    const q10Path = "archive/assets/images/24_연향중_2학기_중간_중2_수학/" + q10;
+    const q10Entry = (doc, change = {}) => { const bytes = fs.readFileSync(path.join(f.root, q10Path)), base = entryFor(doc, q1)[0];
+      return { ...base, assetRef: base.assetRef.replace(q1, q10), visualRole: "problem", titleKo: "새 접근성 제목", descriptionKo: "새 접근성 설명",
+        svgSha256: "sha256:" + sha(bytes), gitBlobSha: blob(bytes), ...change }; };
+    await t.test("a key with no frozen entry may gain one valid SOURCE_BOUND answer-hint-free entry", () => {
+      rewriteIndex(f, doc => { doc.records.push(q10Entry(doc)); });
+      try { passes("E017-Q10"); } finally { restoreIndex(); }
     });
-    await t.test("selected solution-role additions cannot bypass the footprint", () => {
-      fs.writeFileSync(full, encode([...index.records, { ...unrelated, assetRef: target, visualRole: "solution" }]));
-      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    for (const [label, change] of [
+      ["answerHintFree is not true", { answerHintFree: false }],
+      ["provenance is not SOURCE_BOUND", { provenanceStatus: "ASSET_ONLY" }],
+      ["it is a solution-role entry", { visualRole: "solution" }],
+      ["its svgSha256 is not the displayed asset's digest", { svgSha256: "sha256:" + "0".repeat(64) }],
+      ["its gitBlobSha is not the displayed asset's blob", { gitBlobSha: "1".repeat(40) }],
+      ["its description is empty", { descriptionKo: " " }],
+      ["its digest field is malformed", { svgSha256: "not-a-digest" }],
+    ]) await t.test(`a new entry is rejected when ${label}`, () => {
+      rewriteIndex(f, doc => { doc.records.push(q10Entry(doc, change)); });
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
-    await t.test("generated data cannot become executable code", () => {
-      fs.writeFileSync(full, Buffer.concat([Buffer.from("outside();"), original]));
-      try { assert.throws(run, /SVG_INDEX_WRAPPER/); } finally { fs.writeFileSync(full, original); }
+    await t.test("a key that had a frozen entry cannot gain a second entry, even a valid one", () => {
+      rewriteIndex(f, doc => { const base = entryFor(doc, q1)[0], bytes = fs.readFileSync(path.join(f.root, "archive/assets/images/24_연향중_2학기_중간_중2_수학/" + q1));
+        doc.records.push({ ...base, visualRole: "solution", svgSha256: "sha256:" + sha(bytes), gitBlobSha: blob(bytes) }); });
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
-    await t.test("a symlink cannot transport the current index outside the fixture", () => {
-      const outside = fs.mkdtempSync(path.join(os.tmpdir(), "outside-svg-input-"));
-      fs.writeFileSync(path.join(outside, "index.js"), original);
-      fs.unlinkSync(full); fs.symlinkSync(path.join(outside, "index.js"), full);
-      try { assert.throws(run, /SYMLINK_PATH/); }
-      finally { fs.unlinkSync(full); fs.writeFileSync(full, original); fs.rmSync(outside, { recursive: true, force: true }); }
+    await t.test("a changed unrelated entry in the same index does not hide a changed consumed entry", () => {
+      rewriteIndex(f, doc => { mutateOther(doc); entryFor(doc, q1)[0].titleKo += " changed"; });
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
-    await t.test("a directory cannot stand in for generated index bytes", () => {
-      fs.unlinkSync(full); fs.mkdirSync(full);
-      try { assert.throws(run, /LIVE_SVG_INDEX_UNAVAILABLE/); }
-      finally { fs.rmdirSync(full); fs.writeFileSync(full, original); }
+    for (const [label, apply] of [
+      ["an appended byte breaks the generated wrapper", () => fs.appendFileSync(path.join(f.root, INDEX_PATH), " ")],
+      ["a schema change", () => rewriteIndex(f, doc => { doc.schemaVersion = "SVG_STUDENT_ACCESSIBILITY_V2"; })],
+      ["a normalized duplicate key and role rejected by the student runtime", () => rewriteIndex(f, doc => {
+        const other = doc.records.find(row => !decodeURIComponent(row.assetRef).includes("/24_연향중_2학기_중간_중2_수학/"));
+        doc.records.push({ ...other, assetRef: "/archive/" + other.assetRef }); })],
+      ["an unreadable index", () => fs.rmSync(path.join(f.root, INDEX_PATH))],
+    ]) await t.test(`${label} fails`, () => {
+      apply();
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
-    await t.test("missing generated bytes are refused", () => {
-      fs.unlinkSync(full);
-      try { assert.throws(run, /LIVE_SVG_INDEX_UNAVAILABLE/); }
-      finally { fs.writeFileSync(full, original); }
+    for (const relative of ["archive/svg-accessibility.js", "archive/screen-runtime.js", "archive/question-meta.js"])
+      await t.test(`a one-byte change to ${relative} still fails even beside an unrelated index change`, () => {
+        rewriteIndex(f, mutateOther); fs.appendFileSync(path.join(f.root, relative), " ");
+        try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); }
+        finally { f.restore(relative); restoreIndex(); }
+      });
+    await t.test("the frozen index must still authenticate by its pinned hashes", () => {
+      const ref = f.technical.servedFiles.find(row => row.path === INDEX_PATH), ctx = f.args("E017-Q01"), assets = [{ path: "archive/assets/images/24_연향중_2학기_중간_중2_수학/" + q1 }];
+      assert.doesNotThrow(() => verifyFrozenSvgIndexFootprint({ ...ctx, cache: new Map() }, ref, assets));
+      for (const [label, bad, pattern] of [
+        ["raw sha256", { ...ref, sha256: "a".repeat(64) }, /IMMUTABLE_RAW_DIGEST/],
+        ["byte length", { ...ref, bytes: ref.bytes + 1 }, /IMMUTABLE_REF_BINDING/],
+        ["git blob", { ...ref, gitBlobSha1: "b".repeat(40) }, /IMMUTABLE_REF_BINDING|IMMUTABLE_BLOB_MODE/],
+        ["commit", { ...ref, commit: "c".repeat(40) }, /IMMUTABLE_GIT_INPUT_UNAVAILABLE/],
+      ]) assert.throws(() => verifyFrozenSvgIndexFootprint({ ...ctx, cache: new Map() }, bad, assets), pattern, label);
     });
-    assert.equal(sha(fs.readFileSync(full)), sha(original));
-    assert.deepEqual(f.beforeDigests(), f.baseline);
+    await t.test("an unsafe or non-asset consumed path is rejected, never silently skipped", () => {
+      const ref = f.technical.servedFiles.find(row => row.path === INDEX_PATH), ctx = { ...f.args("E017-Q01"), cache: new Map() };
+      for (const assets of [[], [{ path: "archive/data/question_metadata.json" }], [{ path: "archive/assets/../x.svg" }]])
+        assert.throws(() => verifyFrozenSvgIndexFootprint(ctx, ref, assets), /PROBLEM_ASSET_PATH/);
+    });
   } finally { f.close(); }
 });
-

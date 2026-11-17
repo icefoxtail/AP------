@@ -71,8 +71,8 @@
       "version": "1.0.11"
     }
   ],
-  "problemTypeCount": 435,
-  "templateCount": 1010,
+  "problemTypeCount": 436,
+  "templateCount": 1021,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -13825,6 +13825,33 @@
       ]
     },
     {
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "canonicalLabelKo": "산점도와 상관관계",
+      "definition": "산점도에서 점의 위치와 분포를 읽어 두 변량 사이의 관계를 해석하고 상관관계의 종류를 판정하는 중등 유형.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+          "examUids": [
+            "25_풍덕중_2학기_기말_중3_유사"
+          ],
+          "questionOrdinals": [
+            18,
+            19,
+            20,
+            24
+          ]
+        }
+      ]
+    },
+    {
       "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
       "canonicalLabelKo": "함수와 일차함수 판별",
       "definition": "여러 관계식이 함수인지, 또 일차함수인지를 각각 판별하고 그 개수를 세는 과제.",
@@ -26978,6 +27005,27 @@
       ]
     },
     {
+      "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM",
+      "canonicalLabelKo": "내접다각형의 교대 내각과 호의 합",
+      "definition": "원에 내접하는 다각형에서 각 내각이 바라보는 호들이 원둘레 전체를 이룬다는 원주각과 호의 관계로 교대 내각의 합 등 미지의 각을 구한다.",
+      "internalSkeleton": "각 내각이 바라보는 호를 확인하고 호의 합이 원 전체임을 세워 미지의 각을 계산한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          9
+        ]
+      }
+    },
+    {
       "templateKey": "TPL_ABSOLUTE_VALUE_SIGN_EXTREMES_CORE",
       "parentProblemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
       "canonicalLabelKo": "절댓값 조건에서 가능한 극값 — 기본 풀이 골격",
@@ -33246,6 +33294,74 @@
       "observedIntegrationPatterns": [
         "SEQUENTIAL"
       ]
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_REPRESENTATIVE_VALUE_SELECTION",
+      "canonicalLabelKo": "자료에 적절한 대푯값 선택과 근거",
+      "definition": "한 자료의 평균·중앙값·최빈값을 구하고 극단값·치우침 등 자료의 특징을 근거로 대푯값으로 가장 적절한 것을 고르며 나머지가 부적절한 이유를 설명한다.",
+      "internalSkeleton": "세 대푯값을 구하고 분포의 특징(극단값, 치우침)을 파악해 적절한 대푯값을 고른 뒤 근거를 서술한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE1",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_신흥중_2학기_기말_중1_유사",
+          "25_풍덕중_2학기_기말_중1_유사"
+        ],
+        "questionOrdinals": [
+          22,
+          11,
+          23
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M1_ROTATION_SOLID_IDENTIFY_FROM_SECTIONS_MEASURE",
+      "canonicalLabelKo": "단면으로 회전체를 정해 겉넓이·부피 구하기",
+      "definition": "회전축에 수직인 단면과 축을 포함하는 단면의 모양에서 회전체의 종류와 반지름·높이를 읽어 겉넓이나 부피를 구한다.",
+      "internalSkeleton": "두 단면의 모양으로 회전체의 종류를 정하고 반지름·높이를 읽은 뒤 공식에 대입한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE1",
+      "parentProblemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중1_유사",
+          "25_연향중_2학기_기말_중1_유사"
+        ],
+        "questionOrdinals": [
+          5,
+          13
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_FREQUENCY_FROM_RELATIVE",
+      "canonicalLabelKo": "상대도수로 계급의 도수 구하기",
+      "definition": "전체 도수와 한 계급의 상대도수를 곱해 그 계급의 실제 도수(인원 수)를 구한다.",
+      "internalSkeleton": "전체 도수와 상대도수를 확인하고 (도수) = (전체 도수) × (상대도수)로 계산한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE1",
+      "parentProblemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중1_유사"
+        ],
+        "questionOrdinals": [
+          18
+        ]
+      }
     },
     {
       "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
@@ -40650,6 +40766,155 @@
           }
         }
       ]
+    },
+    {
+      "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS",
+      "canonicalLabelKo": "평균·중앙값 조건으로 미지 변량 결정",
+      "definition": "평균 조건으로 변량의 합을, 중앙값 조건으로 크기순 자리를 정해 미지의 변량 값을 확정한다.",
+      "internalSkeleton": "평균 조건으로 변량의 합을 세우고 중앙값이 놓이는 자리 조건으로 값을 고정한 뒤 남은 변량을 계산한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          14
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M3_FIND_MEAN_AND_UNKNOWN_FROM_DEVIATIONS",
+      "canonicalLabelKo": "편차로 평균과 미지 변량 구하기",
+      "definition": "편차가 변량에서 평균을 뺀 값이고 편차의 합이 0임을 이용해 평균과 미지의 변량 또는 편차를 차례로 구한다.",
+      "internalSkeleton": "주어진 변량과 편차로 평균을 구하고 편차의 합이 0임을 이용해 남은 변량·편차를 계산한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          15
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
+      "canonicalLabelKo": "대푯값·산포도 진술의 참 개수 판정",
+      "definition": "편차·분산·중앙값·최빈값의 정의와 변량 변환에 따른 변화를 각 진술에 적용해 참(또는 거짓)인 진술의 개수를 센다.",
+      "internalSkeleton": "진술마다 정의와 성질을 대조해 참·거짓을 표시하고 개수를 센다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          16
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS",
+      "canonicalLabelKo": "편차 제곱합을 이용한 바뀐 자료의 분산",
+      "definition": "주어진 분산과 변량의 개수로 편차 제곱합을 구하고, 일부 변량이 바뀐 새 자료의 편차 제곱합을 다시 모아 분산을 구한다.",
+      "internalSkeleton": "분산과 개수로 편차 제곱합을 구한 뒤 바뀐 변량의 몫을 분리·교체해 새 분산을 계산한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          17
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS",
+      "canonicalLabelKo": "두 자료의 분산 비교",
+      "definition": "두 자료의 평균과 편차를 각각 구해 분산을 계산하고 분산이 작은 쪽이 더 고르다고 판단한다.",
+      "internalSkeleton": "자료별 평균, 편차, 편차 제곱의 평균(분산)을 구하고 대소를 비교해 결론을 낸다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          23
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+      "canonicalLabelKo": "산점도에서 조건을 만족하는 점의 비율",
+      "definition": "산점도에서 주어진 조건(두 변량의 값이 같음, 기준선 위 등)을 만족하는 점의 개수를 세어 전체 자료 수로 나누어 비율을 구한다.",
+      "internalSkeleton": "조건을 만족하는 점을 찾아 개수를 세고 전체 개수로 나누어 백분율로 나타낸다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          18
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
+      "canonicalLabelKo": "상관관계의 종류 판정과 근거 설명",
+      "definition": "산점도의 점 분포나 실생활의 두 변량에서 한 변량이 커질 때 다른 변량의 증감을 읽어 양의·음의 상관관계 또는 상관없음을 판정하고, 진술을 가리거나 이유를 설명한다.",
+      "internalSkeleton": "점들이 이루는 띠의 방향 또는 변량 쌍의 증감을 확인해 상관관계의 종류를 정하고 근거를 쓴다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          19,
+          20,
+          24
+        ]
+      }
     },
     {
       "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",

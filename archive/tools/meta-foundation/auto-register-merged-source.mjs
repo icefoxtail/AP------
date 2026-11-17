@@ -17,6 +17,7 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, native
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { replayE015IssuedSourceContinuation, assertE015IssuedSourceContinuationLeaf } from './native-e015-source-cc-continuity.mjs';
 import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
 import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
@@ -187,6 +188,20 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
     ||current.metaFoundationStatus!=='ACTIVE'||current.metaFoundationPackId!==ownerPack
     ||!String(current.L1||'').trim()||!String(current.L2||'').trim()
     ||current.L3!==pt.canonicalLabelKo||current.L4!==tpl.canonicalLabelKo)return null;
+  // A private exact-source view is available only for the two original E015
+  // receipts after the authenticated Q10-only metadata transport. The recursive
+  // call retains every ordinary Native, current ACTIVE and renderer check.
+  if(Object.hasOwn(nativeSource,'e015IssuedSourceContinuation')) {
+    try { assertE015IssuedSourceContinuationLeaf({context:nativeSource.e015IssuedSourceContinuation,
+      nativeSource,current,identity,source,ordinal,question}); } catch { return null; }
+  } else {
+    try {
+      const replayed=replayE015IssuedSourceContinuation({nativeSource,question,previous,current,identity,source,ordinal,
+        revalidateLeaf:leaf=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,
+          pt,tpl,registry,ownerPack,...leaf})});
+      if(replayed!==null)return replayed;
+    } catch { return null; }
+  }
   const boundRead=relative=>{
     if(typeof relative!=='string'||path.isAbsolute(relative)||relative.includes('\\')
       ||relative.split('/').some(p=>!p||p==='.'||p==='..'))throw Error('NATIVE_EVIDENCE_PATH_INVALID');

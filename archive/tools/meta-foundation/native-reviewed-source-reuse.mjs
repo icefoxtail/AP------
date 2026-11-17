@@ -1,3 +1,4 @@
+import { assertE015IssuedSourceContinuationLeaf } from './native-e015-source-cc-continuity.mjs';
 import { M3_Q5_COMPLETE_GIVEN_SCHEMA, M3_Q5_UID, loadM3Q5CompleteGivenBank } from "./reviewed-m3-e052-q5-complete-given.mjs";
 import { M2_E017_RHS_SCHEMA, M2_E017_RHS_UID, M2_E017_RHS_SOURCE } from "./reviewed-m2-e017-rhs-continuity.mjs";
 // Revalidate an issued opt-in source review before AutoMeta reuses its approval.
@@ -177,7 +178,7 @@ function validateDirect(receipt, context) {
   const beforeTables = restoreReviewedReplayCanonicalBefore({request, currentTables:tables, root});
   const proof = validateReviewedSourceReassessment({root, request, patch, metadata:{...current,...patch.before},
     question, final:current, supportedFields, canonicalBefore:beforeTables, canonicalAfter:tables,
-    issuedSourceReview:repair.sourceReview, cache});
+    issuedSourceReview:repair.sourceReview, cache, e015IssuedSourceContinuation:context.e015IssuedSourceContinuation});
   if (!same(proof, repair.sourceReview)) fail('current source-review proof differs from issued proof');
   // This current-target application requires its original compound renderer
   // contract as well as the typed source review. A source-only ancestor may
@@ -337,9 +338,13 @@ function validateQ5OriginalTypedAncestor(receipt, context, wanted) {
 // the old review's witness/asset obligations.
 export function validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) {
   const root = fs.realpathSync(nativeSource.root), runtimeRecord = nativeSource.runtimeRecord;
+  if (Object.hasOwn(nativeSource, 'e015IssuedSourceContinuation'))
+    assertE015IssuedSourceContinuationLeaf({context:nativeSource.e015IssuedSourceContinuation, nativeSource,
+      current,identity,source:receipt.sourceArchiveFile,ordinal,question,receipt});
   if (!hasNativeReviewedSourceClaim({root, current, runtimeRecord}) && !typedProof(receipt, identity.questionUid)) return null;
   if (!caches.has(root)) caches.set(root, new Map());
-  const context = {root,current,runtimeRecord,question,identity,ordinal,tables:currentTables(root,registry),cache:caches.get(root)};
+  const context = {root,current,runtimeRecord,question,identity,ordinal,tables:currentTables(root,registry),cache:caches.get(root),
+    e015IssuedSourceContinuation:nativeSource.e015IssuedSourceContinuation};
   let cursor = receipt, state = selected(cursor, identity.questionUid, ordinal);
   if (!same(state.row,current) || !same(state.runtime,runtimeRecord) || !same(state.identity,identity) ||
       !Buffer.isBuffer(nativeSource.bytes) || !Array.isArray(nativeSource.bank) ||

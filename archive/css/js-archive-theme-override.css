@@ -515,7 +515,6 @@ button.primary {
 }
 
 .modal-box button:focus-visible,
-.mode-tab:focus-visible,
 .fb-mixer:focus-visible,
 .fb-original-toggle:focus-visible,
 .gtab:focus-visible {
@@ -523,77 +522,9 @@ button.primary {
   box-shadow: 0 0 0 4px var(--archive-accent-soft);
 }
 
-/* engine.html / mixed_engine.html: only the screen control bar is restyled.
-   Printed question pages and page internals remain untouched. */
+/* engine.html / mixed_engine.html: 출력 창 조작줄은 archive2-output-bar.css가 맡는다.
+   여기서는 종이 바깥 화면 바탕만 다룬다. Printed question pages and page internals remain untouched. */
 @media screen {
-  #mode-ctrl {
-    height: 58px;
-    background: rgba(255,255,255,0.96);
-    border-bottom: 1px solid var(--archive-border);
-    box-shadow: var(--archive-shadow-md);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  #ctrl-title {
-    color: var(--archive-text);
-    letter-spacing: -0.02em;
-  }
-
-  .mode-tabs {
-    background: var(--archive-surface-soft);
-    border: 1px solid var(--archive-border);
-    border-radius: var(--archive-radius-lg);
-    padding: 4px;
-  }
-
-  .mode-tab {
-    border-radius: var(--archive-radius-sm);
-    color: var(--archive-text-soft);
-    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
-  }
-
-  .mode-tab:hover {
-    color: var(--archive-text);
-    background: var(--archive-surface);
-  }
-
-  .mode-tab.active {
-    background: var(--archive-accent);
-    color: var(--archive-on-dark);
-    box-shadow: none;
-  }
-
-  #qpp-display,
-  .qpp-selector {
-    color: var(--archive-text-muted) !important;
-  }
-
-  #btn-qr-output,
-  .print-header-editor-btn,
-  #qppSelect,
-  .ctrl-right .mode-tab {
-    background: var(--archive-surface) !important;
-    color: var(--archive-text) !important;
-    border: 1px solid var(--archive-border) !important;
-    box-shadow: none;
-  }
-
-  #btn-qr-output:hover,
-  .print-header-editor-btn:hover,
-  #qppSelect:hover,
-  .ctrl-right .mode-tab:hover {
-    background: var(--archive-surface-soft) !important;
-    border-color: var(--archive-accent-ring) !important;
-  }
-
-  #btn-qr-output:focus-visible,
-  .print-header-editor-btn:focus-visible,
-  #qppSelect:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px var(--archive-accent-soft);
-  }
-
   #print-area {
     background: var(--archive-bg);
   }

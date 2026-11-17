@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T16:40:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/21_강남여고_1학기_기말_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass1",
+      "resolutionReason": "log₃(x+2)=3은 x+2=3³=27이므로 x=25이고 진수 x+2=27은 양수다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "rpmPath": {
+        "midUnit": "로그",
+        "l3": "로그의 뜻",
+        "l4": "로그와 지수 관계"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass1",
+      "resolutionReason": "코사인법칙으로 c²=(2√2)²+3²−2(2√2)(3)cos45°=8+9−12=5다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIGONOMETRIC_RELATION",
+      "hold": {
+        "rpmPath": {
+          "majorUnit": "H2-수학I.json의 2015 RPM 경로에 코사인법칙 항목이 없어 대응 경로를 확인할 수 없음.",
+          "midUnit": "해당 표의 사용 과목 경로에 삼각형 변·각 계산 하위 단원이 없음.",
+          "l3": "코사인법칙의 l3가 표에 없음.",
+          "l4": "두 변과 끼인각을 이용하는 l4가 표에 없음."
+        }
+      }
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "a₈−a₅=25−16=3d에서 공차 d=3이고 제13항은 a₅에서 여덟 번 이동한 16+8·3=40이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+      "hold": {
+        "integrationPattern": "H2-수학I.json의 activeTypes에 등차수열 항 구하기를 나타내는 항목이 없다."
+      }
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "부채꼴 넓이 4²θ/2=4π/3에서 θ=π/6, 호 길이는 l=4θ=2π/3이어서 π²/(θl)=9다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "일반각과 호도법",
+        "l4": "호도법"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "PT_RADIAN_SECTOR_GEOMETRY"
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "네 번째 도형은 세 번 반복한 뒤라 둘레가 최초 3에 매회 4/3을 곱한 3(4/3)³=64/9이고, 도형의 각 변은 1/3로 분할된다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-09",
+      "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "일반항"
+      },
+      "conditionKeys": [
+        "COND_ITERATION_COUNT"
+      ],
+      "hold": {
+        "integrationPattern": "H2-수학I.json의 activeTypes 목록에 기하급수 둘레 반복을 나타내는 수열 유형이 없음.",
+        "crossConceptKeys": "기하 도형의 둘레 변화와 등비수열을 연결하는 선택지가 이 표의 crossConcepts에 없음."
+      }
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass1",
+      "resolutionReason": "반지름 2인 원의 두 내접 정삼각형은 각각 넓이 3√3이고 그림에서 겹치는 중앙 정육각형은 2√3이므로 색칠한 넓이는 4π−4√3, a²+b²=32다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIGONOMETRIC_RELATION",
+      "hold": {
+        "rpmPath": {
+          "majorUnit": "선택지 표의 H15 삼각함수 경로에 원·삼각형 복합 넓이 항목이 없다.",
+          "midUnit": "원의 넓이와 내접 정삼각형이 함께 있는 단원이 없다.",
+          "l3": "삼각형 넓이·복합도형 경로가 H15 RPM 표에 없음.",
+          "l4": "내접 정삼각형과 중첩도형의 넓이 계산 경로가 없음."
+        },
+        "crossConceptKeys": "원의 넓이와 내접 정삼각형 넓이를 결합하는 키가 H2-수학I.json crossConcepts에 없음."
+      }
+    },
+    {
+      "ordinal": 23,
+      "chosenFrom": "pass1",
+      "resolutionReason": "AB=BC=2와 ∠B=120°에서 AC=2√3, 외접반지름 R=2이며 AP=3t, CP=2t와 ∠APC=60°에서 AC²=7t²이므로 7S/R=9√3이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIGONOMETRIC_RELATION",
+      "hold": {
+        "rpmPath": {
+          "majorUnit": "사용 과목의 H15 RPM 선택지에 사인·코사인법칙을 원주각과 결합하는 경로가 없다.",
+          "midUnit": "외접반지름과 현의 비를 삼각형 넓이로 잇는 경로가 이 표에 없다.",
+          "l3": "삼각형 법칙·원주각 계산 경로가 없음.",
+          "l4": "해당 계산의 l4가 표에 없음."
+        },
+        "crossConceptKeys": "원주각·외접원과 삼각법을 연결하는 키가 선택지 표 crossConcepts에 없음."
+      }
+    },
+    {
+      "ordinal": 24,
+      "chosenFrom": "pass2",
+      "resolutionReason": "n이 홀수이면 aₙ=n², 짝수이면 aₙ=3n²/2이므로 홀수항 합 165와 짝수항 합 330을 더한 Σₙ₌₁¹⁰aₙ=495다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "여러 가지 수열의 합",
+        "l4": "자연수 거듭제곱의 합"
+      },
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "hold": {
+        "integrationPattern": "H2-수학I.json의 activeTypes에 조건에 따라 정의된 수열의 합을 나타내는 항목이 없음.",
+        "crossConceptKeys": "이차함수의 점·거리 조건으로 정의한 수열을 연결하는 키가 표에 없음."
+      }
+    },
+    {
+      "ordinal": 25,
+      "chosenFrom": "pass2",
+      "resolutionReason": "2aₙ₊₁=aₙ+aₙ₊₂와 처음 두 지정 항에서 aₘ=16−2m이므로 m≥2에서 공통항 후보는 12,10,8,6,4,2이며 이를 br^(k−1)로 만드는 서로 다른 자연수쌍 (b,r)은 23개다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-09",
+      "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_LOWER_BOUND"
+      ],
+      "hold": {
+        "integrationPattern": "H2-수학I.json의 activeTypes에 등차·등비수열의 공통항 개수 세기를 나타내는 항목이 없다."
+      }
+    },
+    {
+      "ordinal": 27,
+      "chosenFrom": "pass2",
+      "resolutionReason": "S₁=3이고 n≥2에서 aₙ=Sₙ−Sₙ₋₁=6n−2라서 a₁+a₄+a₆=3+22+34=59다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-08",
+      "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+      "rpmPath": {
+        "l3": "계차수열",
+        "l4": "일반항 구하기"
+      },
+      "hold": {
+        "integrationPattern": "H2-수학I.json의 activeTypes에 부분합 공식에서 일반항·특정항을 구하는 수열 유형이 없다."
+      }
+    },
+    {
+      "ordinal": 28,
+      "chosenFrom": "pass1",
+      "resolutionReason": "사인법칙으로 R=8√2/(2·2√2/3)=6이고, O가 삼각형 내부이므로 중심에서 현까지 거리비는 cos C:cos B=1:2라 cos C=1/3, cos B=2/3, sin B=√5/3이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIGONOMETRIC_RELATION",
+      "hold": {
+        "rpmPath": {
+          "majorUnit": "H15 삼각함수 표에 현까지 중심거리와 사인법칙을 결합한 경로가 없다.",
+          "midUnit": "원과 삼각형의 결합 경로가 H2-수학I RPM에 없음.",
+          "l3": "사인법칙과 중심-현 거리 비 결합 항목이 없음.",
+          "l4": "외접반지름과 두 현 거리의 비를 함께 다루는 항목이 없음."
+        },
+        "crossConceptKeys": "원의 현 거리비와 삼각함수 관계식을 잇는 키가 선택지 표 crossConcepts에 없음."
+      }
+    }
+  ]
+}

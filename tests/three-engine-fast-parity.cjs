@@ -62,11 +62,15 @@ if (process.env.AP_EXTENDED_ONLY) {
                         const key = source === 'unitpast' ? 'unitpast_fast_parity' : 'clinic_fast_parity';
                         if (source === 'unitpast') {
                             const code = await (await fetch('/archive/unit-past-exams.js')).text();
-                            const fn = code.slice(code.indexOf('function storeMixedPayload'), code.indexOf('function appendSessionHash'));
-                            const store = new Function('getProfile', 'getPaperSources', 'core', fn + '; return storeMixedPayload;')(
-                                () => ({ grade: 'M3', gradeLabel: '중3' }), () => [{ label: '단원별 기출 출처' }],
-                                { getSubUnitLabel: () => '다항식', getDifficultyBucket: () => '중', getQuestionUid: q => q.sourceQuestionUid });
-                            store({ key: 'poly', name: '다항식', course: '수학' }, { title: '단원별 기출 통합 검수', snapshotKey: key, records: [] }, questions);
+                            // storeMixedPayload는 없어졌다(출력 포장·출제 패널이 문항을 직접 싣는다). 단원별 기출이 만드는 meta는 buildMixedMeta이므로 그것을
+                            // 실제 소스에서 잘라 실행하고, 믹서 엔진이 읽는 옛 보관 키(mixedQuestions_/mixedMeta_)는 이 검사가 직접 채운다.
+                            const fn = code.slice(code.indexOf('function buildMixedMeta'), code.indexOf('async function prepareOutputEnvelope'));
+                            const build = new Function('getProfile', 'getPaperSources', 'getQpp', 'ensurePaperPrintHeaderOptions', 'core', fn + '; return buildMixedMeta;')(
+                                () => ({ grade: 'M3', gradeLabel: '중3' }), () => [{ label: '단원별 기출 출처' }], () => '4', () => ({ title: '단원별 기출 통합 검수' }),
+                                { getSelectionSubUnitKey: () => 'poly', getSelectionSubUnitLabel: () => '다항식', getDifficultyBucket: () => '중', getProblemTypeKey: () => '', getTemplateKey: () => '', getQuestionUid: q => q.sourceQuestionUid });
+                            const meta = build({ key: 'poly', name: '다항식', course: '수학' }, { title: '단원별 기출 통합 검수', snapshotKey: key, records: [] }, questions);
+                            localStorage.setItem('mixedQuestions_' + key, JSON.stringify(questions));
+                            localStorage.setItem('mixedMeta_' + key, JSON.stringify(meta));
                         } else {
                             const code = await (await fetch('/apmath/js/core.js')).text();
                             const fn = code.slice(code.indexOf('function saveClinicMixedPayload'), code.indexOf('async function openClinicWorksheet'));

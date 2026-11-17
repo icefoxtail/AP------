@@ -189,10 +189,12 @@ export function bindUnchangedReviewedPrimary({ native, row, accepted, patch, que
 }
 
 export function validateReviewedSourceReassessment({ root, request, patch, metadata, question, final, supportedFields,
-  canonicalBefore, canonicalAfter, issuedSourceReview, cache = new Map() }) {
+  canonicalBefore, canonicalAfter, issuedSourceReview, cache = new Map(), e015IssuedSourceContinuation }) {
   if (request.scope !== "PARTIAL_UIDS" || request.approval?.type !== "FINAL_QA" ||
       request.approval.sourceRebind || patch.rebind !== undefined || !Object.hasOwn(patch.after, "sourceFingerprint"))
     fail("requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
+  if (e015IssuedSourceContinuation !== undefined && !patch.sourceReview?.m2Family3ProblemContinuity)
+    fail("E015 issued-source context requires its original family3 option");
   const loaded = loadReview({ root, request, patch, cache });
   const { review, rows, reviewedBank, committedBank } = loaded, ordinal = patch.sourceOrdinal;
   const row = rows.get(ordinal);
@@ -236,7 +238,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
   const m2Family3 = validateM2Family3ProblemContinuity({ root, request, patch, native: loaded, row,
-    question, bankFromBytes, cache });
+    question, final, bankFromBytes, cache, e015IssuedSourceContinuation });
   if (m2Family3) {
     // Preserve the existing retained-fields/scope options. The ordinary Native
     // recursion still checks every non-display value and the current parent.

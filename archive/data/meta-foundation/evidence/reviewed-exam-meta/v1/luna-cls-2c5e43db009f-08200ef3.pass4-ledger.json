@@ -1,0 +1,43 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:19:39.861+00:00",
+ "sourceArchiveFile": "similar/high/h1/2mid/25_효천고_2학기_중간_고1_유사문제.js",
+ "items": [
+  {
+   "ordinal": 21,
+   "chosenFrom": "pass2",
+   "resolutionReason": "A(-5,2), B(5,7)과 직선 AB 위 점 C가 3BC=2AC일 때 C=A+t(B-A)로 두고 3|1-t|=2|t|에서 (1,5), (25,17)을 구하는 내분점 항목이다.",
+   "choiceTableUsed": "H1-공통수학2.json",
+   "rpmPath": {
+    "l4": "내분점"
+   }
+  },
+  {
+   "ordinal": 23,
+   "chosenFrom": "new",
+   "resolutionReason": "y=|x|를 (a,b)만큼 평행이동한 그래프가 원의 중심을 지나 원 넓이를 이등분하도록 꼭짓점이 원 밖인 정수 쌍을 세는 문제라 앞서 제안한 함수의 그래프 아래 평행이동 항목이며 순서 풀이다.",
+   "choiceTableUsed": "H1-공통수학2.json",
+   "rpmPath": {
+    "l3": "",
+    "l4": ""
+   },
+   "integrationPattern": "SEQUENTIAL",
+   "hold": "신규 제안: 함수>함수 아래 그래프의 평행이동 항목이 표에 없음(l3 함수의 그래프 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "함수의 그래프",
+     "label": "함수의 그래프",
+     "parent": "함수 > 함수",
+     "why": "가장 가까운 '함수의 성질'은 일대일·항등함수 분류이고, 이 문항은 절댓값 함수 그래프의 평행이동이다."
+    },
+    "rpmPath.l4": {
+     "value": "그래프의 평행이동",
+     "label": "그래프의 평행이동",
+     "parent": "함수 > 함수 > 함수의 그래프",
+     "why": "가장 가까운 '그래프 대칭'은 역함수 대칭이고, 이 문항은 y=|x-a|+b 꼴로 그래프를 옮긴다."
+    }
+   }
+  }
+ ]
+}

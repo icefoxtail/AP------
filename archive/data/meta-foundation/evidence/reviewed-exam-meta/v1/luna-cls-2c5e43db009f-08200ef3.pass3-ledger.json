@@ -1,0 +1,132 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T17:24:49+09:00",
+    "sourceArchiveFile":  "similar/high/h1/2mid/25_효천고_2학기_중간_고1_유사문제.js",
+    "items":  [
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "f의 점 (1,2),(4,2),(4,6)을 x축 대칭 후 왼쪽 6·위쪽 3만큼 옮기면 g의 점 (−5,1),(−2,1),(−2,−3)이 되어 g(x,y)=f(x+6,−y+3)이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "도형의 방정식",
+                                      "midUnit":  "도형의 이동",
+                                      "l3":  "이동의 합성",
+                                      "l4":  "조건으로 원래 도형 찾기"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COORDINATE_DISPLACEMENT",
+                                               "CC_LINE_SYMMETRY_REFLECTION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "AB=5, AC=10이므로 각의 이등분선 정리에 따라 BD:DC=1:2이고 D=B+(C−B)/3=(1,−4/3)이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "도형의 방정식",
+                                      "midUnit":  "평면좌표",
+                                      "l3":  "선분의 내분·외분",
+                                      "l4":  "내분점"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "P(−2,3)을 직사각형 네 변에 반사하면 (2,3),(−26,3),(−2,19),(−2,−3)이고 이 네 점에서 등거리인 점은 수직이등분선 x=−12,y=8의 교점 Q=(−12,8)이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "도형의 방정식",
+                                      "midUnit":  "도형의 이동",
+                                      "l3":  "대칭이동",
+                                      "l4":  "직선에 대한 대칭"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINE_SYMMETRY_REFLECTION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "C=A+t(B−A)로 놓으면 3|1−t|=2|t|에서 t=3/5 또는 3이므로 좌표는 (1,5),(25,17)이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "도형의 방정식",
+                                      "midUnit":  "평면좌표",
+                                      "l3":  "선분의 내분·외분",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  {
+                                   "rpmPath.l4":  "두 해 중 t=3/5는 내분점이고 t=3은 외분점이어서 H1 표의 단일 l4 값 하나로 두 경우를 함께 표현할 수 없다."
+                               }
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "중심이 (εr,δr)인 축에 접하는 원이 (−3,4)를 지나려면 r²+(6ε−8δ)r+25=0이며 양의 해가 생기는 부호 조합은 ε=−1,δ=1로 두 반지름은 7±2√6이다; 중심 거리=√2·4√6=8√3이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "도형의 방정식",
+                                      "midUnit":  "원의 방정식",
+                                      "l3":  "원의 방정식",
+                                      "l4":  "중심과 반지름"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CIRCLE_TANGENT_LINE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "원은 (x−3)²+(y−1)²=4라 중심이 (3,1)이고, 중심을 지나는 y=|x−a|+b가 원을 이등분하려면 |a−3|≥2이므로 허용 정수와 b=1−|a−3|에서 제시된 여덟 쌍을 얻는다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수",
+                                      "midUnit":  "함수",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_ABSOLUTE_VALUE_GRAPH_FOLDING"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_RANGE"
+                                        ],
+                      "integrationPattern":  "",
+                      "hold":  {
+                                   "rpmPath.l3":  "H1 공통수학2 표에 절댓값 함수 그래프의 세부 l3 항목이 없어 가장 좁은 RPM 분류를 특정할 수 없다.",
+                                   "rpmPath.l4":  "절댓값 그래프의 원 넓이 이등분 세부 항목이 선택지 표에 없다.",
+                                   "integrationPattern":  "함수 그래프의 원 넓이 이등분 결합을 나타내는 선택 가능한 integrationPattern 값이 이 표에 없어 추측하지 않는다."
+                               }
+                  }
+              ]
+}
