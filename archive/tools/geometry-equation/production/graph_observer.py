@@ -6468,6 +6468,48 @@ def multi_curve_label_audit(plan,svg,transform):
             if own>reach or closer:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id)
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
+def _own_slopes(plan):
+    """Independent copy of the slope inventory: every straight line or linear piece the plan draws (a number, nan when unreadable, None for a vertical overlay line)."""
+    out=[]
+    def add(text):
+        try:out.append(float(_pp_coeff(str(text))))
+        except Exception:out.append(math.nan)
+    for row in plan.get('referenceLines') or []:
+        if isinstance(row,dict):add(row['slope']) if 'slope' in row else out.append(0.0)
+    for row in plan.get('lines') or []:
+        if isinstance(row,dict) and 'slope' in row:add(row['slope'])
+    overlays=plan.get('overlays')
+    for row in (overlays.get('lines') if isinstance(overlays,dict) else None) or []:
+        if isinstance(row,dict):out.append(None) if 'x' in row else add(row.get('slope','nan'))
+    def pieces_of(rows):
+        for row in rows or []:
+            values=row.get('coefficients') if isinstance(row,dict) else None
+            if not isinstance(values,list) or not values:continue
+            degree=max([index for index,value in enumerate(values) if str(value) not in ('0','-0','0.0')] or [0])
+            if degree==0:out.append(0.0)
+            elif degree==1:add(values[1])
+    pieces_of(plan.get('pieces'))
+    for curve in plan.get('referenceCurves') or []:
+        if isinstance(curve,dict):pieces_of(curve.get('pieces'))
+    return out
+
+def axis_squeeze_audit(plan,svg,transform):
+    """An automatic squeeze (plan['axisRatioReason']=='TALL': a figure taller than 1:1.2 drawn at y/x 2/3 or 1/2) is refused when the figure only reads right at one scale: a slope of
+    +-1, two perpendicular slanted lines, an authored equalUnits, circles, angles or polygons. The slopes are re-read from the plan's own fields. None without the field."""
+    reason=plan.get('axisRatioReason')
+    if reason is None:return None
+    ratio=plan.get('axisRatio')
+    if reason not in ('TALL','FAILURE_SQUEEZE') or isinstance(ratio,bool) or not isinstance(ratio,(int,float)) or not .5-1e-12<=ratio<1:return {'status':'FAIL','errors':['AXIS_SQUEEZE_REASON_INVALID']}
+    if reason!='TALL':return {'status':'PASS','errors':[]}
+    errors=[]
+    overlays=plan.get('overlays')
+    if isinstance(overlays,dict) and set(overlays)&{'circles','circleRegions','rightAngles','angles','equalAngles','polygons'}:errors.append('AXIS_SQUEEZE_FORBIDDEN:ROUND_OR_ANGLE')
+    if plan.get('axisScale') is not None or plan.get('applicationAxes') is True:errors.append('AXIS_SQUEEZE_FORBIDDEN:OWN_SCALE')
+    slanted=[m for m in _own_slopes(plan) if m is not None and (math.isnan(m) or abs(m)>1e-12)]
+    if any(not math.isnan(m) and abs(abs(m)-1)<1e-9 for m in slanted):errors.append('AXIS_SQUEEZE_FORBIDDEN:SLOPE_ONE')
+    if any(not math.isnan(a) and not math.isnan(b) and abs(a*b+1)<1e-9 for index,a in enumerate(slanted) for b in slanted[index+1:]):errors.append('AXIS_SQUEEZE_FORBIDDEN:PERPENDICULAR')
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 AXIS_FOLD_MIN_GAP_PX=12.0
 AXIS_FOLD_AXIS_GAP_MIN_PX=10.0   # the other axis stops 10 to 14 px (the engine draws 12) short of a folded axis
 AXIS_FOLD_AXIS_GAP_MAX_PX=14.0
@@ -6486,6 +6528,7 @@ def axis_fold_audit(plan,svg,transform):
         if plan.get('axisScale') is not None or plan.get('applicationAxes') is True:errors.append('AXIS_FOLD_FORBIDDEN:SCALE')
         if plan.get('regions'):errors.append('AXIS_FOLD_FORBIDDEN:REGIONS')
         if any(isinstance(line,dict) and 'slope' in line for line in plan.get('referenceLines') or []):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')
+        if any(m is not None and (math.isnan(m) or abs(m)>1e-12) for m in _own_slopes({'referenceCurves':plan.get('referenceCurves')})):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')   # a slanted piece of a reference curve is a slanted line
         overlays=plan.get('overlays')
         if overlays:
             if not isinstance(overlays,dict) or set(overlays)-{'points','lines','names'}:errors.append('AXIS_FOLD_FORBIDDEN:OVERLAYS')
@@ -6585,7 +6628,7 @@ def audit(plan,svg,transform,*,model=False):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform,model=model)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'

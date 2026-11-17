@@ -221,4 +221,64 @@ class ObserverFold(unittest.TestCase):
         result=audit(bad,self.svg,self.t)
         self.assertTrue(any(error.startswith('AXIS_FOLD_') for error in result.get('errors',[])),result)
 
+class SlantedLines(unittest.TestCase):
+    """A slanted line keeps the origin (no fold) but does not by itself stop the squeeze; one scale is kept only where the figure needs it (slope +-1, perpendicular lines, circles)."""
+    TALL={'family':'piecewise-polynomial','pieces':[{'coefficients':['0','0','3']}],'breakpoints':[],'sourceDomain':{'kind':'INTERVAL','range':['-1','1'],'states':['CLOSED','CLOSED']},
+          'requiredPoints':[{'id':'V','x':'0','y':'0'}],'axisTickValues':{'x':[],'y':[]}}
+    def line(self,ident,slope,roots):return {'id':ident,'slope':slope,'intercept':'0','intersectionX':roots}
+    def test_a_secant_or_tangent_does_not_stop_the_squeeze(self):
+        plan=fitted(plan_with(self.TALL,referenceLines=[self.line('m','3',['0','1'])]))
+        self.assertIn(plan['axisRatio'],(2/3,.5));self.assertEqual(plan['axisRatioReason'],'TALL');self.assertNotIn('axisFold',plan)
+    def test_a_slope_of_one_needs_one_scale(self):
+        for slope,roots in (('1',['0','1/3']),('-1',['0','-1/3'])):
+            plan=fitted(plan_with(self.TALL,referenceLines=[self.line('m',slope,roots)]))
+            self.assertEqual(plan['axisRatio'],1.0,slope);self.assertNotIn('axisRatioReason',plan)
+    def test_perpendicular_slanted_lines_need_one_scale(self):
+        plan=fitted(plan_with(self.TALL,referenceLines=[self.line('a','2',['0','2/3']),self.line('b','-1/2',['0','-1/6'])]))
+        self.assertEqual(plan['axisRatio'],1.0)
+        parallel=fitted(plan_with(self.TALL,referenceLines=[self.line('a','2',['0','2/3']),self.line('b','3',['0','1'])]))
+        self.assertIn(parallel['axisRatio'],(2/3,.5))
+    def test_a_linear_reference_curve_counts_like_a_line(self):
+        def curve(slope,roots):return {'id':'g','name':'g','pieces':[{'coefficients':['0',slope]}],'breakpoints':[],'sourceDomain':{'kind':'ALL_REALS'},'intersectionX':roots}
+        self.assertEqual(fitted(plan_with(self.TALL,referenceCurves=[curve('1',['0','1/3'])]))['axisRatio'],1.0)               # y=x as a reference curve: one scale
+        self.assertIn(fitted(plan_with(self.TALL,referenceCurves=[curve('3',['0','1'])]))['axisRatio'],(2/3,.5))              # a secant of slope 3: squeezed
+    def test_a_slanted_reference_curve_never_folds(self):
+        from graph_framing import axis_fold_allowed
+        curve={'id':'g','pieces':[{'coefficients':['0','3']}]}
+        self.assertFalse(axis_fold_allowed({**QUARTIC,'referenceCurves':[curve]}))
+        self.assertTrue(axis_fold_allowed({**QUARTIC,'referenceCurves':[{'id':'h','pieces':[{'coefficients':['5']}]}]}))        # a horizontal piece may stay
+    def test_circles_and_angles_need_one_scale(self):
+        from graph_framing import axis_squeeze_allowed
+        self.assertTrue(axis_squeeze_allowed(self.TALL))
+        for overlays in ({'circles':[{'id':'c'}]},{'angles':[{'id':'a'}]},{'polygons':[{'id':'p'}]}):self.assertFalse(axis_squeeze_allowed({**self.TALL,'overlays':overlays}),overlays)
+        self.assertFalse(axis_squeeze_allowed({**self.TALL,'equalUnits':True}))
+        self.assertFalse(axis_squeeze_allowed({**self.TALL,'axisFold':False}))
+
+class ObserverSqueeze(unittest.TestCase):
+    TALL=SlantedLines.TALL
+    def test_a_tall_squeeze_of_a_figure_that_needs_one_scale_is_refused(self):
+        from graph_observer import axis_squeeze_audit
+        ok=fitted(plan_with(self.TALL,referenceLines=[{'id':'m','slope':'3','intercept':'0','intersectionX':['0','1']}]))
+        self.assertEqual(axis_squeeze_audit(ok,'',{}),{'status':'PASS','errors':[]})
+        self.assertIsNone(axis_squeeze_audit(fitted(plan_with(self.TALL,axisFold=False)),'',{}))
+        for slope in ('1','-1'):
+            bad={**ok,'referenceLines':[{'id':'m','slope':slope,'intercept':'0','intersectionX':[]}]}
+            self.assertIn('AXIS_SQUEEZE_FORBIDDEN:SLOPE_ONE',axis_squeeze_audit(bad,'',{})['errors'])
+        perpendicular={**ok,'referenceLines':[{'id':'a','slope':'2','intercept':'0','intersectionX':[]},{'id':'b','slope':'-1/2','intercept':'0','intersectionX':[]}]}
+        self.assertIn('AXIS_SQUEEZE_FORBIDDEN:PERPENDICULAR',axis_squeeze_audit(perpendicular,'',{})['errors'])
+        curve={**ok,'referenceCurves':[{'id':'g','pieces':[{'coefficients':['0','1']}]}]}
+        self.assertIn('AXIS_SQUEEZE_FORBIDDEN:SLOPE_ONE',axis_squeeze_audit(curve,'',{})['errors'])
+        self.assertIn('AXIS_SQUEEZE_FORBIDDEN:ROUND_OR_ANGLE',axis_squeeze_audit({**ok,'overlays':{'circles':[]}},'',{})['errors'])
+        self.assertIn('AXIS_SQUEEZE_FORBIDDEN:OWN_SCALE',axis_squeeze_audit({**ok,'axisScale':{'x':1,'y':2}},'',{})['errors'])
+        self.assertEqual(axis_squeeze_audit({**ok,'axisRatioReason':'?'},'',{})['errors'],['AXIS_SQUEEZE_REASON_INVALID'])
+        self.assertEqual(axis_squeeze_audit({**ok,'axisRatio':1.0},'',{})['errors'],['AXIS_SQUEEZE_REASON_INVALID'])
+    def test_a_slanted_reference_curve_on_a_folded_figure_is_refused(self):
+        plan=fitted(QUARTIC);svg,t=drawn(plan)
+        bad={**plan,'referenceCurves':[{'id':'g','pieces':[{'coefficients':['0','3']}]}]}
+        self.assertIn('AXIS_FOLD_FORBIDDEN:SLANTED_LINE',axis_fold_audit(bad,svg,t)['errors'])
+    def test_the_full_audit_runs_the_squeeze_check(self):
+        ok=fitted(plan_with(self.TALL,referenceLines=[{'id':'m','slope':'3','intercept':'0','intersectionX':['0','1']}]))
+        model=produce(ok);bad={**ok,'referenceLines':[{'id':'m','slope':'1','intercept':'0','intersectionX':['0','1/3']}]}
+        self.assertTrue(any(e.startswith('AXIS_SQUEEZE_FORBIDDEN') for e in audit(bad,model['svg'],model['transform']).get('errors',[])))
+
 if __name__=='__main__':unittest.main()

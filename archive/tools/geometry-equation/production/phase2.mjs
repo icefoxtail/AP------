@@ -1214,7 +1214,7 @@ function piecewisePolynomialSpec(plan,id){
   if(headerPx)objects.push({id:'formula',kind:'EQUATION_LABEL',text:headerText,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]});
   if(headerText===null&&functionName!==undefined){
     const x=v[0]+spanX*.16,row=anchorOnRows(features.pieces,x);
-    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'('+nameVariable+')',at:[x,clampY(evalCoefficients(row.coefficients,x)-spanY*.14)],math:true,priority:0});
+    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'('+nameVariable+')',at:[x,clampY(evalCoefficients(row.coefficients,x)-((p.axisFold||p.axisRatioReason)?Math.min(spanY*.14,32*spanY/plot.height):spanY*.14))],math:true,priority:0});   // below the curve: 14 % of the window; a folded or squeezed figure is tall, so there never more than 32 px
   }
   // A sample-value note the author writes for a parameter case (for example "a=2"), shown inside the plot instead of only in the caption.
   if(p.sampleNote!==undefined)objects.push({id:'sample-note',kind:'GRAPH_ANNOTATION',text:p.sampleNote,at:[v[0]+spanX*.10,v[3]-spanY*.10],math:true,priority:0});
