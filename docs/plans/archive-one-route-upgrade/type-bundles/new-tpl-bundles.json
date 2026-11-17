@@ -5536,13 +5536,11 @@
     "bundle": "NTPL_M1_COORD_TRIANGLE_AREA_DIRECT",
     "pt": "PT_M1_COORD_TRIANGLE_AREA",
     "nameKo": "좌표 넓이",
-    "definition": "축 위 점이나 직선 교점을 구한 뒤 좌표차를 밑변과 높이로 삼각형 넓이를 구한다.",
+    "definition": "중1 좌표축 위 조건으로 좌표를 복원한 뒤 좌표차를 밑변과 높이로 삼각형 넓이를 계산한다.",
     "absorbInto": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT",
-    "count": 4,
+    "count": 1,
     "examples": [
-      "qid_v1_3a02ab6b7c95fb7d1551c25997f97f36b6aa8952ed64ad90b6ef6f57a183408f",
-      "qid_v1_1e86fe684aa9067c7eddbc36fb97d94976245e41e50eedb231e3e6421de897a7",
-      "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520"
+      "qid_v1_3a02ab6b7c95fb7d1551c25997f97f36b6aa8952ed64ad90b6ef6f57a183408f"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9657,6 +9655,23 @@
     ],
     "relatedKeys": [
       "TPL_EXPECTATION_TRANSFORM"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NTPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
+    "pt": "PT_M1_COORD_TRIANGLE_AREA",
+    "nameKo": "중2 직선 교점 좌표 넓이",
+    "definition": "중2 시험지에서 직선들의 교점과 절편을 구하고 좌표차를 밑변·높이로 삼각형 넓이를 계산한다.",
+    "absorbInto": null,
+    "count": 3,
+    "examples": [
+      "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
+      "qid_v1_1e86fe684aa9067c7eddbc36fb97d94976245e41e50eedb231e3e6421de897a7",
+      "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520"
+    ],
+    "relatedKeys": [
+      "TPL_M1_COORD_TRIANGLE_AREA_DIRECT"
     ],
     "narrowExisting": []
   }
