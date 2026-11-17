@@ -433,6 +433,9 @@ function run(root,output){
    ensureCommit(ref.commit);
    const entry=git(root,['ls-tree','-z',ref.commit,'--',ref.path]).toString();
    const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+   if(!(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path))report.immutablePathFailure={
+    expected:ref,observed:{singleRegularBlob:Boolean(match),gitBlobSha1:match?match[2]:null,
+     path:match?match[3]:null,treeEntrySha256:sha(entry),treeEntryBytes:Buffer.byteLength(entry)}};
    need(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path,'IMMUTABLE_PATH');
    let bytes=null;const known=rawPins.get(ref.gitBlobSha1);
    if(known)need(known.bytes===ref.bytes&&known.sha256===ref.sha256,'IMMUTABLE_RAW_ALIAS');
@@ -486,19 +489,30 @@ function run(root,output){
    for(const ref of refsIn(value))hydrateRef(ref);
    for(const rel of new Set(leafPaths(value)))if(fs.existsSync(path.join(root,rel)))hydrateMetadataDocument(rel);
   }
+  function hydrateOriginalNativeSource(carrier){
+   // Only the existing exact application declares which review commit owns the
+   // original Native bank. A relocated document's publication commit is not a
+   // source-version declaration. Every actual strong reference stays strict.
+   const basis=json(immutable(carrier.refs.applicationRef));
+   need(basis.schemaVersion==='archive-m3-e052-q5-complete-given-application-basis-v1'&&
+    basis.scope==='EXACT_E052_Q5_COMPLETE_GIVEN_ONLY'&&basis.questionUid===Q5.UID&&
+    basis.sourceOrdinal===5,'ORIGINAL_NATIVE_BASIS');
+   const nativeRef=refShape(basis.nativeReviewRef),review=json(immutable(nativeRef));
+   need(review.schemaVersion==='m3-s2-complete-semantic-review-v1'&&
+    review.sourceArchiveFile===Q5.SOURCE&&review.questionCount===25,'ORIGINAL_NATIVE_REVIEW_SCOPE');
+   const bytes=object(review.sourceAfterBlob);
+   need(sha(bytes)===review.sourceAfterSha256,'NATIVE_REVIEW_SOURCE_BYTES');
+   const sourceRef={commit:nativeRef.commit,path:'archive/exams/'+Q5.SOURCE,
+    gitBlobSha1:review.sourceAfterBlob,sha256:review.sourceAfterSha256,bytes:bytes.length};
+   immutable(sourceRef);
+   report.originalNativeSourceHydration={applicationRef:carrier.refs.applicationRef,
+    nativeReviewRef:nativeRef,sourceRef,contract:'EXACT_APPLICATION_NATIVE_REVIEW_COMMIT',
+    originalNativeAuthorityExecuted:false};
+  }
   function drain(){
    while(queue.length){
     const item=queue.shift();if(parsedDocs.has(item.key))continue;parsedDocs.add(item.key);
-    const data=json(item.bytes);hydrateDocument(data);
-    // The complete original Native review declares its selected bank by blob and
-    // digest rather than a five-field ref. Authenticate this exact bank only.
-    if(data.schemaVersion==='m3-s2-complete-semantic-review-v1'&&data.sourceAfterBlob){
-     need(data.sourceArchiveFile===undefined||data.sourceArchiveFile===Q5.SOURCE,'NATIVE_REVIEW_SOURCE');
-     const bytes=object(data.sourceAfterBlob);
-     need(sha(bytes)===data.sourceAfterSha256,'NATIVE_REVIEW_SOURCE_BYTES');
-     immutable({commit:item.ref.commit,path:'archive/exams/'+Q5.SOURCE,gitBlobSha1:data.sourceAfterBlob,
-      sha256:data.sourceAfterSha256,bytes:bytes.length});
-    }
+    hydrateDocument(json(item.bytes));
    }
   }
   function copyPrefix(prefix,filter=()=>true){
@@ -605,6 +619,7 @@ function run(root,output){
     s.sourceOrdinal===doc.sourceOrdinal),'CLAIM_SCOPE');
    for(const ref of refsIn(doc))hydrateRef(ref);
   }
+  hydrateOriginalNativeSource(q5Carrier);
   drain();
   report.closure={currentFileCount:currentInputs.size,immutableRefCount:immutableInputs.size,declaredMetadataDocuments:parsedDocs.size,
    scope:'source2/current canonical+runtime metadata; fixed original Q5 receipt/binding and exact UI refs; no outputDigests recursion'};

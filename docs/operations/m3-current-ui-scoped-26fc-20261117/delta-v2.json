@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "archive-source49-native-source-hydration-delta-v2",
+  "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+  "before": {
+    "gitBlobSha1": "5868dad02eec45e9dd35ec36b364d8538c1e36ba",
+    "sha256": "086c2d57f08cde9edb587a6d639fe95f5b0dc8c19e2ba258c691d5cad1e02cc5",
+    "bytes": 45539
+  },
+  "after": {
+    "gitBlobSha1": "79d35e79b07f5901936ce847af171afb8d7c76d7",
+    "sha256": "07c9e8342a6df86f3312aa03ff9b98f746ac29e6393704d65c364b373e78bfb8",
+    "bytes": 46576
+  },
+  "inverseExact": true,
+  "edits": [
+    {
+      "id": "exact-immutable-path-diagnostic",
+      "before": "   need(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path,'IMMUTABLE_PATH');",
+      "after": "   if(!(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path))report.immutablePathFailure={\n    expected:ref,observed:{singleRegularBlob:Boolean(match),gitBlobSha1:match?match[2]:null,\n     path:match?match[3]:null,treeEntrySha256:sha(entry),treeEntryBytes:Buffer.byteLength(entry)}};\n   need(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path,'IMMUTABLE_PATH');"
+    },
+    {
+      "id": "native-source-only-from-authenticated-application",
+      "before": "  function drain(){\n   while(queue.length){\n    const item=queue.shift();if(parsedDocs.has(item.key))continue;parsedDocs.add(item.key);\n    const data=json(item.bytes);hydrateDocument(data);\n    // The complete original Native review declares its selected bank by blob and\n    // digest rather than a five-field ref. Authenticate this exact bank only.\n    if(data.schemaVersion==='m3-s2-complete-semantic-review-v1'&&data.sourceAfterBlob){\n     need(data.sourceArchiveFile===undefined||data.sourceArchiveFile===Q5.SOURCE,'NATIVE_REVIEW_SOURCE');\n     const bytes=object(data.sourceAfterBlob);\n     need(sha(bytes)===data.sourceAfterSha256,'NATIVE_REVIEW_SOURCE_BYTES');\n     immutable({commit:item.ref.commit,path:'archive/exams/'+Q5.SOURCE,gitBlobSha1:data.sourceAfterBlob,\n      sha256:data.sourceAfterSha256,bytes:bytes.length});\n    }\n   }\n  }",
+      "after": "  function hydrateOriginalNativeSource(carrier){\n   // Only the existing exact application declares which review commit owns the\n   // original Native bank. A relocated document's publication commit is not a\n   // source-version declaration. Every actual strong reference stays strict.\n   const basis=json(immutable(carrier.refs.applicationRef));\n   need(basis.schemaVersion==='archive-m3-e052-q5-complete-given-application-basis-v1'&&\n    basis.scope==='EXACT_E052_Q5_COMPLETE_GIVEN_ONLY'&&basis.questionUid===Q5.UID&&\n    basis.sourceOrdinal===5,'ORIGINAL_NATIVE_BASIS');\n   const nativeRef=refShape(basis.nativeReviewRef),review=json(immutable(nativeRef));\n   need(review.schemaVersion==='m3-s2-complete-semantic-review-v1'&&\n    review.sourceArchiveFile===Q5.SOURCE&&review.questionCount===25,'ORIGINAL_NATIVE_REVIEW_SCOPE');\n   const bytes=object(review.sourceAfterBlob);\n   need(sha(bytes)===review.sourceAfterSha256,'NATIVE_REVIEW_SOURCE_BYTES');\n   const sourceRef={commit:nativeRef.commit,path:'archive/exams/'+Q5.SOURCE,\n    gitBlobSha1:review.sourceAfterBlob,sha256:review.sourceAfterSha256,bytes:bytes.length};\n   immutable(sourceRef);\n   report.originalNativeSourceHydration={applicationRef:carrier.refs.applicationRef,\n    nativeReviewRef:nativeRef,sourceRef,contract:'EXACT_APPLICATION_NATIVE_REVIEW_COMMIT',\n    originalNativeAuthorityExecuted:false};\n  }\n  function drain(){\n   while(queue.length){\n    const item=queue.shift();if(parsedDocs.has(item.key))continue;parsedDocs.add(item.key);\n    hydrateDocument(json(item.bytes));\n   }\n  }"
+    },
+    {
+      "id": "hydrate-declared-original-native-before-drain",
+      "before": "  drain();\n  report.closure=",
+      "after": "  hydrateOriginalNativeSource(q5Carrier);\n  drain();\n  report.closure="
+    }
+  ],
+  "productionEdits": 0,
+  "Node": "NOT_RUN",
+  "actualRerun": "NOT_RUN"
+}
