@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "named-partial-two-negative-gates-v1",
+  "status": "PASS",
+  "rows": [
+    {
+      "name": "original compact vector cannot be changed",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:ORIGINAL_COMPACT_WHOLE",
+      "durationMs": 258
+    },
+    {
+      "name": "caller source bytes cannot substitute historical source",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:CALLER_CURRENT_SOURCE",
+      "durationMs": 63
+    },
+    {
+      "name": "caller bank cannot substitute another item",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:CALLER_CURRENT_BANK",
+      "durationMs": 67
+    },
+    {
+      "name": "caller identity duplicates are not accepted",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:CALLER_IDENTITY_RECORDS",
+      "durationMs": 1209
+    },
+    {
+      "name": "sidecar bytes cannot change authority or held scope",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:REF_BYTES",
+      "durationMs": 10
+    },
+    {
+      "name": "current bank nonselected bytes cannot drift",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:REF_BYTES",
+      "durationMs": 56
+    },
+    {
+      "name": "original receipt bytes cannot drift",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:REF_BYTES",
+      "durationMs": 163
+    },
+    {
+      "name": "selected original asset bytes cannot drift",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:REF_BYTES",
+      "durationMs": 1289
+    },
+    {
+      "name": "forged historical context is not a capability",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_TOKEN_NOT_ACTIVE",
+      "durationMs": 0
+    },
+    {
+      "name": "genuine context cannot cross root",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_TOKEN_NOT_ACTIVE",
+      "durationMs": 965
+    },
+    {
+      "name": "genuine context cannot validate another compact",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_COMPACT_SCOPE",
+      "durationMs": 1014
+    },
+    {
+      "name": "genuine context cannot substitute source argument",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_SOURCE_ARGUMENTS",
+      "durationMs": 935
+    },
+    {
+      "name": "genuine context cannot substitute identity argument",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_IDENTITY_ARGUMENTS",
+      "durationMs": 1020
+    },
+    {
+      "name": "genuine context cannot substitute dictionary argument",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_DICTIONARY_ARGUMENTS",
+      "durationMs": 1126
+    },
+    {
+      "name": "genuine context cannot be reused after its complete chain",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_COMPACT_SCOPE",
+      "durationMs": 1580
+    },
+    {
+      "name": "asynchronous original result is refused and token expires",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:SYNCHRONOUS_ORIGINAL_VALIDATION_REQUIRED",
+      "durationMs": 1386
+    },
+    {
+      "name": "escaped token is expired after callback completion",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:HISTORICAL_TOKEN_NOT_ACTIVE",
+      "durationMs": 0
+    },
+    {
+      "name": "callback input mutation is rejected before original chain",
+      "status": "REJECTED",
+      "code": "NAMED_PARTIAL_SOURCE:REF_BYTES",
+      "durationMs": 765
+    },
+    {
+      "name": "delete m1s1-geumdang19-final-five opt-in",
+      "status": "REJECTED",
+      "code": "PARTIAL_4SLOT:CURRENT_SOURCE_BLOB_MISMATCH",
+      "removedOnly": 5,
+      "outsideWholeUnchanged": true
+    },
+    {
+      "name": "delete m3s2-sinheung19-mid-eleven opt-in",
+      "status": "REJECTED",
+      "code": "PARTIAL_4SLOT:CURRENT_SOURCE_BLOB_MISMATCH",
+      "removedOnly": 11,
+      "outsideWholeUnchanged": true
+    }
+  ],
+  "sourceWritesToShared": 0,
+  "newApprovals": 0,
+  "productionSourceEvaluationCalls": 0,
+  "preservation": {
+    "files": 55,
+    "indexBytesUnchanged": true,
+    "allInputsRestored": true,
+    "remainingQ8Hold": "STALE_STUDENT_PAYLOAD",
+    "originalUnsubmitted": 30
+  }
+}

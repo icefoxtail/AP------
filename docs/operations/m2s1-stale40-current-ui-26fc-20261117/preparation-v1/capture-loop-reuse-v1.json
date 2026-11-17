@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "archive-stale40-capture-loop-exact-reuse-v1",
+  "originalPath": "tools/capture-m1s2-problem-surface.cjs",
+  "originalGitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+  "originalFunctionSha256": "954f57b3cdeae5c702bc99dc9163ff566613b04c738e62a0b15064221770a5c4",
+  "candidateFunctionSha256": "cfb7a9073cd4f9827f229f405afdb5685833878daac39628cda86c3476797e84",
+  "inverseByteExact": true,
+  "edits": [
+    {
+      "before": "async function captureM1ProblemTiles(page, target, file) {",
+      "after": "async function captureObservedTiles(page, target, file, policy) {\n  assert(issued.has(policy),'UI_STALE40_POLICY_NOT_ISSUED');\n  assert(policy.surface==='SOLUTION'||policy.nativeAtoms,'UI_STALE40_ADAPTER_SCOPE');\n  const measure=policy.surface==='PROBLEM'?measureNativeAtoms:measureSingleSolution;\n  const assertTile=policy.surface==='PROBLEM'?assertProblemTileCapture:assertSolutionTile;",
+      "count": 1
+    },
+    {
+      "before": "target.evaluate(measureM1ProblemCapture)",
+      "after": "target.evaluate(measure,policy)",
+      "count": 3
+    },
+    {
+      "before": "documentM1ProblemFrame(frame)",
+      "after": "documentFrame(frame,policy)",
+      "count": 2
+    },
+    {
+      "before": "documentM1ProblemFrame(after)",
+      "after": "documentFrame(after,policy)",
+      "count": 1
+    },
+    {
+      "before": "assertProblemTileCapture(frame, tile)",
+      "after": "assertTile(frame, tile)",
+      "count": 1
+    },
+    {
+      "before": "assertProblemTileCapture(after, tile)",
+      "after": "assertTile(after, tile)",
+      "count": 1
+    },
+    {
+      "before": "schemaVersion: TILE_SCHEMA",
+      "after": "schemaVersion: policy.surface==='PROBLEM'?TILE_SCHEMA:'archive-solution-scroll-coverage-v1'",
+      "count": 1
+    }
+  ],
+  "unchanged": [
+    "tile limit 8",
+    "overlap 32",
+    "scroll attempts 3",
+    "original document geometry",
+    "DOM digest",
+    "pre/post screenshot hit-test",
+    "full original PNG",
+    "coverage"
+  ],
+  "chromeExecution": "NOT_RUN"
+}

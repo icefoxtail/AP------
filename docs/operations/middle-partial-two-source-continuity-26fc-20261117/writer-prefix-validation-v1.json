@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "partial-two-writer-prefix-validation-v1",
+  "status": "PASS",
+  "productionBeforeGit": "f57f1833e24045ed325fe5cf129a63990802b2e6",
+  "productionAfterGit": "80960f796b4d49242b1048ac8de25781ad6ef6dd",
+  "cases": [
+    {
+      "case": "only exact named prefix added to fourSlot inputs",
+      "status": "PASS"
+    },
+    {
+      "case": "add change and delete alter input fingerprint",
+      "status": "PASS"
+    },
+    {
+      "case": "unchanged named sidecar preserved",
+      "status": "PASS"
+    },
+    {
+      "case": "named sidecar byte mutation rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "named sidecar deletion rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "named sidecar mode mutation rejected",
+      "status": "PASS"
+    }
+  ],
+  "method": "EXACT_PRODUCTION_FUNCTION_BODIES_WITH_TEST_ONLY_ADDED_EXPORT",
+  "readonlyLaneMetadataHead": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "fullWriterOrRegistrarRun": false,
+  "sourceWrites": 0,
+  "approvals": 0,
+  "remoteRefWrites": 0
+}

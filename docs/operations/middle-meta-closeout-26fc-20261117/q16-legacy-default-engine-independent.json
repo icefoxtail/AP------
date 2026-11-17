@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "archive-q16-default-engine-fixture-independent-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "ci_m2s2",
+  "decision": "STATIC_ACCEPT_EXACT_SYNTHETIC_FIXTURE_DELTA",
+  "subject": {
+    "path": "tests/archive-m3s2-layout-continuity.test.cjs",
+    "before": {
+      "bytes": 21906,
+      "sha256": "6908f5aa84eeaa03d8ee3148baaa9b8ec36b76bb2a695d0ecd370e08a6dd537a",
+      "gitBlobSha1": "9e92316828fefd06f09ccd3f36a62f2cd6d827df"
+    },
+    "after": {
+      "bytes": 21999,
+      "sha256": "6e9a68625e1729197cc8e1aec12e94185a5cb3c2b8254d3404958e44c0699020",
+      "gitBlobSha1": "128795874942edc0b60ec4897509968f2562d3b5"
+    },
+    "authorManifest": {
+      "bytes": 1719,
+      "sha256": "ac0fc16699cf423aaf9aa7aea959b907a95d1afa4335a6fc611a7384c6c4c310",
+      "gitBlobSha1": "1f4bc23693fec0e0925515de9d2a592c9185c05f"
+    }
+  },
+  "baseCommit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "production": {
+    "path": "tools/4slot/m3s2-layout-continuity.cjs",
+    "gitBlobSha1": "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130",
+    "defaultUiEngine": {
+      "path": "archive/engine.html",
+      "gitBlobSha1": "226342544e896cd6a6f35aa946947b89ef3c893e",
+      "sha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+      "bytes": 196085
+    }
+  },
+  "verification": {
+    "independentRawGitBytesChecks": "EXACT",
+    "uniqueHunkCount": 1,
+    "forwardWholeEquality": true,
+    "inverseWholeEquality": true,
+    "fixtureChanges": [
+      "immutable engine Git object",
+      "expected byte length",
+      "expected Git blob hash",
+      "expected raw SHA256",
+      "explanatory comment"
+    ],
+    "oldFixture": {
+      "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+      "sha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+      "bytes": 201060
+    },
+    "newFixtureMatchesCurrentProductionDefault": true,
+    "allOtherTestBytesUnchanged": true,
+    "refusalAssertionsUnchanged": true,
+    "productionModified": false,
+    "currentUiTokenRouteModified": false,
+    "approvalOrRegistrationChanged": false
+  },
+  "dynamicEvidence": {
+    "authorReported": {
+      "cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "durationMs": 313,
+      "scope": "3 dependency drift and 5 inventory cases"
+    },
+    "independentReexecutionCount": 0,
+    "rawAuthorLogIndependentlyRetrieved": false
+  },
+  "limits": [
+    "Static review of the sole fixture hunk and exact production default only.",
+    "Author-reported scoped test outcome is recorded separately; no reviewer Node/Native/Chrome/registration execution.",
+    "No new display, mathematical, approval or current registration PASS is inferred."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "AP_PHYSICAL_OBSERVER_V7_INDEPENDENT_REVIEW_V1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "m3s2_release",
+  "verdict": "STATIC_ACCEPT_READONLY_NUMBERING_PIN_DELTA",
+  "before": {
+    "gitBlobSha1": "4e24aaf84891e8954c43057df6c6c9c54dce0797",
+    "sha256": "27ae32aafd309c492662f2ad4b18c4818e2f2bc464ba7e722a330aca5cce7055",
+    "bytes": 99624
+  },
+  "after": {
+    "gitBlobSha1": "96566541ee68876b3bd55448d8ec9434662ef4a6",
+    "sha256": "0ed0d4e1be37d669f52a01bc2877345493e55411562d12473038fc9eb437f76e",
+    "bytes": 101258
+  },
+  "delta": {
+    "gitBlobSha1": "2b50c07b3e886bcde403197f1ea6cd4f01e825c5",
+    "sha256": "daa3fa706534fdcc877495bf9321b98fcf3c7bc994ea624d73991bfb60eaa757",
+    "bytes": 7127
+  },
+  "resolvedBlocker": {
+    "proof": {
+      "gitBlobSha1": "5345c9b064bbdf5915c1b546a6c873017aec56b5",
+      "sha256": "330baf8ce2fcb582f9be58b994ccb43eeda40fc64fe2009c54e3516b5aaee58a",
+      "bytes": 4230
+    },
+    "priorCandidatePublished": false,
+    "reason": "Separate immutable-baseline and current-source pin lists; no mixed-edition fallback."
+  },
+  "checks": {
+    "allFourHunksWholeInverseExact": true,
+    "originalBaselineFivePinsByteExact": true,
+    "newCurrentFivePinsMatchPriorAuthenticatedMetadata": true,
+    "currentPinConstantReferences": 2,
+    "baselineCallUsesUnchangedDefault": true,
+    "onlyCurrentCallExplicitlyUsesCurrentFivePins": true,
+    "sources": 5,
+    "questionNumberMetadataRows": 116,
+    "changedSourcePins": 2,
+    "sourcePathsAndQuestionCountsUnchanged": true,
+    "originalParserBodyBeyondPinParameterAndIterationUnchanged": true,
+    "ConsumerAndApprovalChecksUnchanged": true
+  },
+  "reasoning": [
+    "The exact v7 code and reversible delta were fetched by immutable Git blobs and raw/Git hashes checked. Four reverse substitutions reproduce the entire v5 observer byte for byte.",
+    "The original LEGACY_NUMBERING_PINS JSON bytes remain unchanged and remain the default for the baseline22f79c call.",
+    "The new CURRENT_LEGACY_NUMBERING_PINS is exactly the five-source current table already covered by root's 711 metadata projection. It is passed explicitly at only the current snapshot call.",
+    "The parser still requires exact source Git/raw/byte pins, whole bank count, a strict JSON-only window.examData wrapper, unique display numbers, and exact UID/sourceOrdinal/cohort joins. Known numeric contradictions and collisions remain rejected.",
+    "The change does not equate raw source content, assign new approvals, or change registered/D5/FINAL_QA interpretation. It repairs only which authenticated byte edition supplies read-only display-number metadata."
+  ],
+  "metadataReuse": {
+    "evidence": {
+      "gitBlobSha1": "2b50c07b3e886bcde403197f1ea6cd4f01e825c5",
+      "sha256": "daa3fa706534fdcc877495bf9321b98fcf3c7bc994ea624d73991bfb60eaa757",
+      "bytes": 7127
+    },
+    "baseSnapshot": "71104dabf173369d973c71e155e62f25af6ff235",
+    "originalCurrentNumberingWholeEqual": true,
+    "qualification": "Root independently computed the five-source 116-number equality; this reviewer binds that exact metadata without re-reading student source or rerunning the observer."
+  },
+  "execution": {
+    "reviewerNodeRuns": 0,
+    "reviewerNativeRuns": 0,
+    "reviewerConsumerRuns": 0,
+    "rootReportedNodeSyntax": "PASS",
+    "actualObserverSuccess": "NOT_ASSERTED"
+  },
+  "boundaries": {
+    "sourceBodyReads": 0,
+    "sourceEvaluation": 0,
+    "sourceWrites": 0,
+    "newSemanticOrMathApprovals": 0,
+    "remoteRefWrites": 0
+  }
+}

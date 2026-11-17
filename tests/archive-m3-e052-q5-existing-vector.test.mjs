@@ -96,7 +96,13 @@ function setup(extra = false) {
   put(r, C.ID, serial({ schemaVersion: 'bounded-test-identity-v1', records: identities }));
   const rt = json(BASE, C.RUNTIME); rt.records = structuredClone(prior.runtimeRecords); put(r, C.RUNTIME, serial(rt));
   put(r, C.REQUEST_WITNESS, serial(req)); put(r, C.FILE, serial(C.descriptor()));
-  git(r, ['add', '--', C.REQUEST_WITNESS]); const tree = git(r, ['write-tree']).toString().trim();
+  // The current-UI guard reads the actual HEAD engine before selecting the
+  // original captured branch. This synthetic ledger commits the original
+  // authenticated engine as well as its request witness.
+  const engineRef = technical.servedFiles.find(ref => ref.path === 'archive/engine.html');
+  assert.equal(engineRef?.gitBlobSha1, '905952ae39138e1f6dc0aa2d7c7c8a64403f527b');
+  assert.equal(git(r, ['hash-object', '--', engineRef.path]).toString().trim(), engineRef.gitBlobSha1);
+  git(r, ['add', '--', C.REQUEST_WITNESS, engineRef.path]); const tree = git(r, ['write-tree']).toString().trim();
   const commit = git(r, ['commit-tree', tree, '-m', 'Exact synthetic Git request witness']).toString().trim();
   fs.writeFileSync(path.join(r, '.git/HEAD'), commit + '\n');
   const issued = registerReviewedExamV2({ root: r, request: req, write: true }); assert.equal(issued.status, 'PASS');

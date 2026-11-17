@@ -126,6 +126,15 @@ before(() => {
     for (const row of doc[def.collection]) canonical[mapping[0]].set(mapping[1] ? row[mapping[1]] :
       stable([row.curriculum, row.standardCourse, row.standardUnitKey, row.subUnitKey ?? null, row.problemTypeKey]), row);
   }
+  // Give this original-UI fixture a real HEAD with the exact captured engine.
+  // Production still rejects absent, rolled-back or unknown current engines.
+  const engineRef = technical.servedFiles.find(ref => ref.path === 'archive/engine.html');
+  assert.equal(engineRef?.gitBlobSha1, '905952ae39138e1f6dc0aa2d7c7c8a64403f527b');
+  assert.equal(blob(baseFiles.get(engineRef.path)), engineRef.gitBlobSha1);
+  git(fixture, ['add', '--', engineRef.path]);
+  const engineTree = git(fixture, ['write-tree']).toString().trim();
+  const engineHead = git(fixture, ['commit-tree', engineTree, '-m', 'Exact original captured engine fixture']).toString().trim();
+  fs.writeFileSync(path.join(fixture, '.git/HEAD'), engineHead + '\n');
 });
 after(() => { if (fixture) fs.rmSync(fixture, { recursive: true, force: true }); });
 
@@ -335,6 +344,15 @@ function ensureIssued() {
   const runtimePath = 'archive/data/meta-foundation/runtime/middle-geometry-v1.json';
   const rt = gitJson(CURRENT, runtimePath); rt.records = clone(prior.runtimeRecords); putIssued(runtimePath, serialized(rt));
   const req = clone(request); req.requestId = 'm3-q5-issued-ancestor-contract-test';
+  // This second disposable writer ledger also needs its own authenticated
+  // original-engine HEAD; it does not inherit the first fixture's Git HEAD.
+  const engineRef = technical.servedFiles.find(ref => ref.path === 'archive/engine.html');
+  assert.equal(engineRef?.gitBlobSha1, '905952ae39138e1f6dc0aa2d7c7c8a64403f527b');
+  assert.equal(git(issuedRoot, ['hash-object', '--', engineRef.path]).toString().trim(), engineRef.gitBlobSha1);
+  git(issuedRoot, ['add', '--', engineRef.path]);
+  const engineTree = git(issuedRoot, ['write-tree']).toString().trim();
+  const engineHead = git(issuedRoot, ['commit-tree', engineTree, '-m', 'Exact original engine in issued fixture']).toString().trim();
+  fs.writeFileSync(path.join(issuedRoot, '.git/HEAD'), engineHead + '\n');
   const result = registerReviewedExamV2({ root: issuedRoot, request: req, write: true });
   assert.equal(result.status, 'PASS'); assert.equal(result.replay, false);
   issuedReceipt = JSON.parse(fs.readFileSync(path.join(issuedRoot,

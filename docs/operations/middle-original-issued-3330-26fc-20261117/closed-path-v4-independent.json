@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "AP_ISSUED3330_CLOSED_MANIFEST_PATHS_INDEPENDENT_REVIEW_V1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "m3s2_release",
+  "verdict": "STATIC_ACCEPT_READONLY_OBSERVER_DELTA_ONLY",
+  "change": {
+    "key": "observer3330-v4",
+    "wholeInverseExact": true,
+    "hunks": 1,
+    "before": {
+      "gitBlobSha1": "4f86104a006545bd55b7a61399c9492a94003780",
+      "sha256": "3707a275812a61b65a36d616090c4db526c56138a5513eb5e775f47cf7dc56a4",
+      "bytes": 53895
+    },
+    "after": {
+      "gitBlobSha1": "031fbb35c5a3ae6f1bf90b1e8b7ee634121fb5f8",
+      "sha256": "6891267ec6af81fb9ed56d300a9bdcb166a1ff434e9067715f1613254899ad6c",
+      "bytes": 54856
+    }
+  },
+  "exactDelta": {
+    "gitBlobSha1": "9a30b224847cc4897455ad722fc1a42c9ee25f1f",
+    "sha256": "16fc4d2292930b7fdf42363e8d9192a2d08acfd5fe5ff94428da6feb9121f10b",
+    "bytes": 3400
+  },
+  "actualCanonicalManifest": {
+    "commit": "71104dabf173369d973c71e155e62f25af6ff235",
+    "path": "archive/data/archive2-canonical-input-manifest.json",
+    "gitBlobSha1": "4b7ea82e65674a02567ee282ba57cb2f44a98bf4",
+    "sha256": "e72e70c136947a40c0b4e8c04e8e50152b7be867781d694f7d393632c48e3edf",
+    "bytes": 122332,
+    "declaredFiles": 689
+  },
+  "mapping": {
+    "formerlyAllowed": 1,
+    "allowedNow": 11,
+    "allAndOnlyActualDeclaredExternalToArchivePaths": true,
+    "paths": [
+      "docs/architecture/4slot/term-dictionary-v1.5.json",
+      "docs/operations/m1-s2-meta-b01-a-20261114/a1-exam2.review.json",
+      "docs/operations/m1-s2-meta-b01-a-20261114/a2-cross-exam2.json",
+      "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.applied.json",
+      "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.overrides.json",
+      "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.validation.json",
+      "docs/operations/m1-s2-meta-full-20261114/followups/25-wangun-final-q23-unresolved.json",
+      "docs/operations/m2s1-e034-original-source-negative-20261116/original-given-observation.json",
+      "docs/operations/m2s1-e034-original-source-negative-20261116/original-given-only.png",
+      "docs/operations/m2s1-e034-original-source-negative-20261116/root-negative-review.json",
+      "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+    ]
+  },
+  "independentlyVerified": [
+    "The two immutable code bodies and delta were fetched and raw/Git hashes checked. Replacing the single new function body with its recorded before body reproduces the entire original observer byte for byte.",
+    "The exact 711 canonical manifest contains 689 declared inputs, of which exactly eleven use ../docs/. Their path set equals the new closed mapping with no extra or missing entry.",
+    "Only one literal ../ prefix followed by one of the eleven exact strings maps to a repository-root path. The mapped string still passes relativePath; every other path remains under the unchanged normalized archive-relative path rule.",
+    "Absolute paths, dot segments, double separators, backslashes, NUL, and non-NFC forms remain rejected by the unchanged relativePath checks. No general ../ or docs namespace is authorized.",
+    "Official consumer resource loading still requires declaration in the authenticated canonical manifest, input SHA equality, regular Git/file inputs, and the original loadResolvedConsumer/catalog boundary. Canonical path acceptance does not confer source approval or registered status.",
+    "The official Consumer, issued/current row comparisons, query code, output whitelists and write boundaries are unchanged outside the single mapping function."
+  ],
+  "reportedExecution": {
+    "reportingOwner": "root",
+    "nodeSyntax": "PASS_REPORTED",
+    "protocolChecks": 38,
+    "actual3330": "NOT_PROVEN_BY_THIS_REVIEW",
+    "reviewerExecutions": 0
+  },
+  "scopeLimits": {
+    "sourceBodyReads": 0,
+    "sourceEvaluation": 0,
+    "sourceWrites": 0,
+    "newApprovals": 0,
+    "NativeRuns": 0,
+    "ConsumerRuns": 0,
+    "ChromeRuns": 0,
+    "remoteRefWrites": 0
+  }
+}

@@ -41,7 +41,7 @@ function nativeBindings(n,q,compact,dict){
  }
  P.verifyBindings(bindings,compact,q);return bindings;
 }
-function validate(root,inputRef,acceptanceRef,{checkCurrentCompact=false}={}){
+function validate(root,inputRef,acceptanceRef,{checkCurrentCompact=false,historicalContext}={}){
  root=path.resolve(root);const {raw:inputRaw,data:d}=publicRef(root,inputRef),{raw:acceptanceRaw,data:a}=publicRef(root,acceptanceRef);
  P.keys(d,['schemaVersion','requestId','author','preparedAtUtc','source','dictionary','priorCompact','baselineSourceCommit','expectedCompactSha256','submission','items','newSemanticApproval','newMathQa','sourceChanges'],'PUBLIC_INPUT_FIELDS');
  check(d.schemaVersion===INPUT_SCHEMA&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(d.requestId||'')&&typeof d.author==='string'&&d.author.trim()&&Number.isFinite(Date.parse(d.preparedAtUtc))&&d.newSemanticApproval===0&&d.newMathQa===0&&d.sourceChanges===0,'INPUT_SCHEMA');
@@ -52,15 +52,16 @@ function validate(root,inputRef,acceptanceRef,{checkCurrentCompact=false}={}){
  check(a.candidates.filter(r=>r.requestId===d.requestId&&r.inputSha256===hash(inputRaw)).length===1,'ACCEPTANCE_EXACT_INPUT');
  P.keys(d.source,['path','gitBlobSha','rawSha256'],'PUBLIC_SOURCE_FIELDS');
  check(/^archive\/exams\/original\/middle\/m3\/2(?:mid|final)\/[^/]+\.js$/.test(d.source.path||'')&&P.GIT.test(d.source.gitBlobSha)&&P.SHA.test(d.source.rawSha256),'SOURCE_SCOPE');
- const sourceArchiveFile=d.source.path.slice('archive/exams/'.length),sourceRaw=fs.readFileSync(P.safe(root,d.source.path)),bank=P.loadBank(sourceRaw);
- check(P.blob(sourceRaw)===d.source.gitBlobSha&&hash(sourceRaw)===d.source.rawSha256&&git(root,['rev-parse','HEAD:'+d.source.path]).toString().trim()===d.source.gitBlobSha,'CURRENT_SOURCE_HEAD');
+ const historical=historicalContext===undefined?null:require('./named-partial-source-continuity.cjs').historicalRebindView(historicalContext,{root,inputRef,acceptanceRef,input:d,acceptance:a});
+ const sourceArchiveFile=d.source.path.slice('archive/exams/'.length),sourceRaw=historical?historical.sourceRaw:fs.readFileSync(P.safe(root,d.source.path)),bank=historical?historical.bank:P.loadBank(sourceRaw);
+ check(P.blob(sourceRaw)===d.source.gitBlobSha&&hash(sourceRaw)===d.source.rawSha256&&git(root,['rev-parse',(historical?historical.sourceCommit:'HEAD')+':'+d.source.path]).toString().trim()===d.source.gitBlobSha,'CURRENT_SOURCE_HEAD');
  P.keys(d.dictionary,['path','version','gitBlobSha','rawSha256'],'PUBLIC_DICTIONARY_FIELDS');check(/^docs\/architecture\/4slot\/term-dictionary-v[0-9]+(?:\.[0-9]+)*\.json$/.test(d.dictionary.path||''),'DICTIONARY_PATH');
  const dictRaw=fs.readFileSync(P.safe(root,d.dictionary.path)),dict=JSON.parse(dictRaw);
  check(dict.dictionaryVersion===d.dictionary.version&&P.blob(dictRaw)===d.dictionary.gitBlobSha&&hash(dictRaw)===d.dictionary.rawSha256&&git(root,['rev-parse','HEAD:'+d.dictionary.path]).toString().trim()===d.dictionary.gitBlobSha,'CURRENT_DICTIONARY_HEAD');
  const compactPath='archive/data/item-4slot/'+sourceArchiveFile.replace(/\.js$/,'.4slot.json');check(d.priorCompact.path===compactPath,'PRIOR_COMPACT_PATH');
  const {raw:priorRaw,data:prior}=gitRef(root,d.priorCompact);
  check(d.expectedCompactSha256===hash(priorRaw)&&prior.schemaVersion==='archive-meta-4slot-compact-v1'&&!P.hasScope(prior)&&prior.sourceArchiveFile===sourceArchiveFile&&prior.dictionaryVersion===d.dictionary.version&&P.GIT.test(prior.sourceGitBlobSha)&&Array.isArray(prior.items)&&prior.items.length===bank.length,'PRIOR_COMPLETE_COMPACT');
- check(P.GIT.test(d.baselineSourceCommit),'BASELINE_COMMIT');const oldRaw=git(root,['show',d.baselineSourceCommit+':'+d.source.path]);check(P.blob(oldRaw)===prior.sourceGitBlobSha,'PRIOR_SOURCE_BASELINE');const oldBank=P.loadBank(oldRaw);check(oldBank.length===bank.length,'PRIOR_SOURCE_DENOMINATOR');
+ check(P.GIT.test(d.baselineSourceCommit),'BASELINE_COMMIT');const oldRaw=git(root,['show',d.baselineSourceCommit+':'+d.source.path]);check(P.blob(oldRaw)===prior.sourceGitBlobSha,'PRIOR_SOURCE_BASELINE');const oldBank=historical?historical.baselineBank:P.loadBank(oldRaw);check(oldBank.length===bank.length,'PRIOR_SOURCE_DENOMINATOR');
  if(checkCurrentCompact)check(hash(fs.readFileSync(P.safe(root,compactPath)))===d.expectedCompactSha256,'COMPACT_CAS');
  P.keys(d.submission,['scope','expectedQuestionCount','selected','unsubmitted'],'PUBLIC_PARTITION_FIELDS');
  const scoped={...d.submission,sourceArchiveFile,sourceGitBlobSha:d.source.gitBlobSha};const partition=P.partition(root,scoped,{bank,sourceRaw});
@@ -98,9 +99,9 @@ function validate(root,inputRef,acceptanceRef,{checkCurrentCompact=false}={}){
  const output={schemaVersion:'archive-meta-4slot-compact-v1',sourceArchiveFile,sourceGitBlobSha:d.source.gitBlobSha,dictionaryVersion:d.dictionary.version,evidence:{schemaVersion:EVIDENCE_SCHEMA,receipt:{path:receiptPath,sha256:hash(receiptBytes)}},reviewedBy:{agent:a.reviewer,at:a.reviewedAtUtc,sampled:outputItems.map(i=>i.ordinal)},...d.submission,items:outputItems};
  return{input:d,output,receipt,receiptBytes,compactPath,receiptPath,summary:{sourceCount:1,expectedQuestionCount:bank.length,selected:outputItems.length,unchanged,renderer,unsubmitted:partition.unsubmitted.length,newSemanticApproval:0,newMathQa:0,sourceMutation:0,originalNativeMutation:0,originalVectorMutation:0}};
 }
-function verifyPublicReceipt(root,compact,receipt){
+function verifyPublicReceipt(root,compact,receipt,historicalContext){
  check(receipt.schemaVersion===RECEIPT_SCHEMA&&compact.evidence?.schemaVersion===EVIDENCE_SCHEMA,'RECEIPT_TYPE');P.keys(receipt.publicEvidence,['input','acceptance'],'PUBLIC_RECEIPT_EVIDENCE');
- const plan=validate(root,receipt.publicEvidence.input,receipt.publicEvidence.acceptance);check(eq(plan.receipt,receipt)&&eq(plan.output,compact),'PUBLISHED_DERIVATION_MISMATCH');
+ const plan=validate(root,receipt.publicEvidence.input,receipt.publicEvidence.acceptance,{historicalContext});check(eq(plan.receipt,receipt)&&eq(plan.output,compact),'PUBLISHED_DERIVATION_MISMATCH');
  const refs=[receipt.publicEvidence.input,receipt.publicEvidence.acceptance,...plan.input.items.filter(r=>r.kind===ADDED).map(r=>r.rendererReview)],unique=new Map();
  for(const ref of refs){check(!unique.has(ref.path)||unique.get(ref.path).sha256===ref.sha256,'PUBLIC_EVIDENCE_PATH_CONFLICT');unique.set(ref.path,ref);}
  return{evidenceDigests:[...unique.values()]};

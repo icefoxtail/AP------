@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "named-partial-two-source-code-delta-v1",
+  "beforeCommit": "a395dc9d22848ce173ae14d331cd0824dc2cf30e",
+  "modifiedFiles": [
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "before": {
+        "gitBlobSha1": "b7d0b82cd851405a63d604ba289bc815cfd59475",
+        "sha256": "48f01a02593511320d7795a8dc350109c4aa0a4aa28ee2f0ec58de02560d36a8",
+        "bytes": 20528
+      },
+      "after": {
+        "gitBlobSha1": "aac0d6e8ebadb89c7ec0913e46e1932541e9875b",
+        "sha256": "9c8f705ab52ea0bd60fd9e7eef6a23f3ef69c0b90b9ed9dadf715b01393fa095",
+        "bytes": 20966
+      },
+      "hunks": [
+        {
+          "beforeStart": 91,
+          "beforeEnd": 92,
+          "afterStart": 91,
+          "afterEnd": 92,
+          "before": "function verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath,receiptSha256,stack}){\n",
+          "after": "function verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath,receiptSha256,stack,historicalContext}){\n"
+        },
+        {
+          "beforeStart": 109,
+          "beforeEnd": 110,
+          "afterStart": 109,
+          "afterEnd": 110,
+          "before": " const prev=publicEvidence(root,prior,{bank:p.bank,identity,sourceRaw:p.sourceRaw,dictRaw,dictPath},stack);\n",
+          "after": " const prev=publicEvidence(root,prior,{bank:p.bank,identity,sourceRaw:p.sourceRaw,dictRaw,dictPath,historicalContext},stack);\n"
+        },
+        {
+          "beforeStart": 131,
+          "beforeEnd": 132,
+          "afterStart": 131,
+          "afterEnd": 135,
+          "before": "function publicEvidence(root,d,{bank,identity,sourceRaw,dictRaw,dictPath}={},stack=new Set()){\n",
+          "after": "function publicEvidence(root,d,{bank,identity,sourceRaw,dictRaw,dictPath,historicalContext}={},stack=new Set()){\n const named=require('./named-partial-source-continuity.cjs');\n if(historicalContext!==undefined)named.assertHistoricalContext(historicalContext,{root,d,bank,identity,sourceRaw,dictRaw,dictPath,stack});\n else {const continuity=named.verifyNamedSourceContinuation(root,d,{bank,identity,sourceRaw,dictRaw,dictPath});if(continuity)return continuity;}\n"
+        },
+        {
+          "beforeStart": 142,
+          "beforeEnd": 143,
+          "afterStart": 145,
+          "afterEnd": 146,
+          "before": " if(r.schemaVersion===APPEND_RECEIPT_SCHEMA){if(publicRebind)fail('RECEIPT_SCHEMA');return verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath:ref.path,receiptSha256:ref.sha256,stack:nextStack});}\n",
+          "after": " if(r.schemaVersion===APPEND_RECEIPT_SCHEMA){if(publicRebind)fail('RECEIPT_SCHEMA');return verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath:ref.path,receiptSha256:ref.sha256,stack:nextStack,historicalContext});}\n"
+        },
+        {
+          "beforeStart": 155,
+          "beforeEnd": 156,
+          "afterStart": 158,
+          "afterEnd": 159,
+          "before": " let contractSha256=null,publicDigests=[];if(publicRebind){publicDigests=require('./rebind-reviewed-partial.cjs').verifyPublicReceipt(root,d,r).evidenceDigests;contractSha256=sha(fs.readFileSync(require.resolve('./rebind-reviewed-partial.cjs')));}\n",
+          "after": " let contractSha256=null,publicDigests=[];if(publicRebind){publicDigests=require('./rebind-reviewed-partial.cjs').verifyPublicReceipt(root,d,r,historicalContext).evidenceDigests;contractSha256=sha(fs.readFileSync(require.resolve('./rebind-reviewed-partial.cjs')));}\n"
+        }
+      ],
+      "inverseByteExact": true
+    },
+    {
+      "path": "tools/4slot/rebind-reviewed-partial.cjs",
+      "before": {
+        "gitBlobSha1": "a145cd9d39d31b341212de433d0baa7f6608ba04",
+        "sha256": "b28ea547422cf5698411840114e15291cf04e9bb5bb6ffea08bdf521ac03c33f",
+        "bytes": 17781
+      },
+      "after": {
+        "gitBlobSha1": "fc8d2cca54d4fb93d69d3be5e3a1ba356628d5ca",
+        "sha256": "e213ced0823ff54881eaaa64ffcaec20c0a25a1d6bed5e958d2b6e0d403b457e",
+        "bytes": 18165
+      },
+      "hunks": [
+        {
+          "beforeStart": 43,
+          "beforeEnd": 44,
+          "afterStart": 43,
+          "afterEnd": 44,
+          "before": "function validate(root,inputRef,acceptanceRef,{checkCurrentCompact=false}={}){\n",
+          "after": "function validate(root,inputRef,acceptanceRef,{checkCurrentCompact=false,historicalContext}={}){\n"
+        },
+        {
+          "beforeStart": 54,
+          "beforeEnd": 56,
+          "afterStart": 54,
+          "afterEnd": 57,
+          "before": " const sourceArchiveFile=d.source.path.slice('archive/exams/'.length),sourceRaw=fs.readFileSync(P.safe(root,d.source.path)),bank=P.loadBank(sourceRaw);\n check(P.blob(sourceRaw)===d.source.gitBlobSha&&hash(sourceRaw)===d.source.rawSha256&&git(root,['rev-parse','HEAD:'+d.source.path]).toString().trim()===d.source.gitBlobSha,'CURRENT_SOURCE_HEAD');\n",
+          "after": " const historical=historicalContext===undefined?null:require('./named-partial-source-continuity.cjs').historicalRebindView(historicalContext,{root,inputRef,acceptanceRef,input:d,acceptance:a});\n const sourceArchiveFile=d.source.path.slice('archive/exams/'.length),sourceRaw=historical?historical.sourceRaw:fs.readFileSync(P.safe(root,d.source.path)),bank=historical?historical.bank:P.loadBank(sourceRaw);\n check(P.blob(sourceRaw)===d.source.gitBlobSha&&hash(sourceRaw)===d.source.rawSha256&&git(root,['rev-parse',(historical?historical.sourceCommit:'HEAD')+':'+d.source.path]).toString().trim()===d.source.gitBlobSha,'CURRENT_SOURCE_HEAD');\n"
+        },
+        {
+          "beforeStart": 62,
+          "beforeEnd": 63,
+          "afterStart": 63,
+          "afterEnd": 64,
+          "before": " check(P.GIT.test(d.baselineSourceCommit),'BASELINE_COMMIT');const oldRaw=git(root,['show',d.baselineSourceCommit+':'+d.source.path]);check(P.blob(oldRaw)===prior.sourceGitBlobSha,'PRIOR_SOURCE_BASELINE');const oldBank=P.loadBank(oldRaw);check(oldBank.length===bank.length,'PRIOR_SOURCE_DENOMINATOR');\n",
+          "after": " check(P.GIT.test(d.baselineSourceCommit),'BASELINE_COMMIT');const oldRaw=git(root,['show',d.baselineSourceCommit+':'+d.source.path]);check(P.blob(oldRaw)===prior.sourceGitBlobSha,'PRIOR_SOURCE_BASELINE');const oldBank=historical?historical.baselineBank:P.loadBank(oldRaw);check(oldBank.length===bank.length,'PRIOR_SOURCE_DENOMINATOR');\n"
+        },
+        {
+          "beforeStart": 100,
+          "beforeEnd": 101,
+          "afterStart": 101,
+          "afterEnd": 102,
+          "before": "function verifyPublicReceipt(root,compact,receipt){\n",
+          "after": "function verifyPublicReceipt(root,compact,receipt,historicalContext){\n"
+        },
+        {
+          "beforeStart": 102,
+          "beforeEnd": 103,
+          "afterStart": 103,
+          "afterEnd": 104,
+          "before": " const plan=validate(root,receipt.publicEvidence.input,receipt.publicEvidence.acceptance);check(eq(plan.receipt,receipt)&&eq(plan.output,compact),'PUBLISHED_DERIVATION_MISMATCH');\n",
+          "after": " const plan=validate(root,receipt.publicEvidence.input,receipt.publicEvidence.acceptance,{historicalContext});check(eq(plan.receipt,receipt)&&eq(plan.output,compact),'PUBLISHED_DERIVATION_MISMATCH');\n"
+        }
+      ],
+      "inverseByteExact": true
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "before": {
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+        "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+        "bytes": 41001
+      },
+      "after": {
+        "gitBlobSha1": "459e7880f6a213a812cbdac6878993d671a6285c",
+        "sha256": "22614970c68ad0328b9ea92988a16799e8ce769bd71ebd284c21bbdb74369e09",
+        "bytes": 41230
+      },
+      "hunks": [
+        {
+          "beforeStart": 8,
+          "beforeEnd": 8,
+          "afterStart": 8,
+          "afterEnd": 9,
+          "before": "",
+          "after": "const namedPartialSource = require('./named-partial-source-continuity.cjs');\n"
+        },
+        {
+          "beforeStart": 29,
+          "beforeEnd": 30,
+          "afterStart": 30,
+          "afterEnd": 31,
+          "before": "const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-original-text-solution3.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('../m2s1-text3-solution-fragments.cjs'),require.resolve('./existing-registered-vector-svg7-ui.cjs'),require.resolve('./existing-vector-svg-index-continuity.cjs'),require.resolve('./existing-registered-vector-svg7-derived-continuity.cjs'),require.resolve('../../archive/svg-accessibility.js'),require.resolve('./original-source-error-hold.cjs'),require.resolve('./m1s2-problem-renderer-continuity.cjs'),require.resolve('./m1s2-problem-renderer-ui.cjs'),require.resolve('./m3s2-layout-continuity.cjs'),require.resolve('./m3-e052-q5-complete-given-continuity.cjs'),q5CompleteGiven.worker].map(p=>fs.readFileSync(p))));\n",
+          "after": "const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./named-partial-source-continuity.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-original-text-solution3.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('../m2s1-text3-solution-fragments.cjs'),require.resolve('./existing-registered-vector-svg7-ui.cjs'),require.resolve('./existing-vector-svg-index-continuity.cjs'),require.resolve('./existing-registered-vector-svg7-derived-continuity.cjs'),require.resolve('../../archive/svg-accessibility.js'),require.resolve('./original-source-error-hold.cjs'),require.resolve('./m1s2-problem-renderer-continuity.cjs'),require.resolve('./m1s2-problem-renderer-ui.cjs'),require.resolve('./m3s2-layout-continuity.cjs'),require.resolve('./m3-e052-q5-complete-given-continuity.cjs'),q5CompleteGiven.worker].map(p=>fs.readFileSync(p))));\n"
+        },
+        {
+          "beforeStart": 213,
+          "beforeEnd": 214,
+          "afterStart": 214,
+          "afterEnd": 215,
+          "before": "      const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank), holdDigests=holdEvidenceDigests(root,d);\n",
+          "after": "      const bank=namedPartialSource.parseNamedSource(d,sourceRaw)||loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank), holdDigests=holdEvidenceDigests(root,d);\n"
+        },
+        {
+          "beforeStart": 258,
+          "beforeEnd": 259,
+          "afterStart": 259,
+          "afterEnd": 260,
+          "before": "        if(text&&blob(text)===d.sourceGitBlobSha)historical=sourceNumbers(loadBank(text));\n",
+          "after": "        if(text&&blob(text)===d.sourceGitBlobSha)historical=sourceNumbers(namedPartialSource.parseNamedSource(d,text)||loadBank(text));\n"
+        }
+      ],
+      "inverseByteExact": true
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "before": {
+        "gitBlobSha1": "f57f1833e24045ed325fe5cf129a63990802b2e6",
+        "sha256": "516c7bf91abee54e911be4944bc3a388bccb13fa30a4b99534168be67e83f2ee",
+        "bytes": 34600
+      },
+      "after": {
+        "gitBlobSha1": "80960f796b4d49242b1048ac8de25781ad6ef6dd",
+        "sha256": "e993f12438c8ca319ab6837db56dbc8fb886cb1f3a744fdcdcb2bb66dc4ce9c2",
+        "bytes": 34718
+      },
+      "hunks": [
+        {
+          "beforeStart": 164,
+          "beforeEnd": 164,
+          "afterStart": 164,
+          "afterEnd": 165,
+          "before": "",
+          "after": "      'archive/data/item-4slot-partial-source-continuity/',\n"
+        },
+        {
+          "beforeStart": 208,
+          "beforeEnd": 208,
+          "afterStart": 209,
+          "afterEnd": 210,
+          "before": "",
+          "after": "    'archive/data/item-4slot-partial-source-continuity/',\n"
+        }
+      ],
+      "inverseByteExact": true
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "tools/4slot/named-partial-source-continuity.cjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "a4983d22ec01095ba46c32c3b521c485556a2aed",
+        "sha256": "813ceb2f5d5946d77ee552cb4d6eb89537b09ccc07960c29182448837deb25cd",
+        "bytes": 16071
+      }
+    },
+    {
+      "path": "tests/item-4slot-named-partial-source-continuity.test.cjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "362833d72f31b67bb03496b7413aad168430b490",
+        "sha256": "099e84c36a2aeab9a142085d8f5db1d106cfb6d28d370d3b09a0625d5fa48e79",
+        "bytes": 3584
+      }
+    },
+    {
+      "path": "archive/data/item-4slot-partial-source-continuity/v1/m1s1-geumdang19-final-five-source-only-26fc-20261117.json",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "53562a65c97961c20670222c67b7206d9f48011f",
+        "sha256": "99e9e5930ebda7e96bf15ec99e7ffe4881771b7526da5a3e0dd0c8fa9bb2c480",
+        "bytes": 24210
+      }
+    },
+    {
+      "path": "archive/data/item-4slot-partial-source-continuity/v1/m3s2-sinheung19-mid-eleven-source-only-26fc-20261117.json",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "d2e18bd591b0249f21496648adea92c06da99f41",
+        "sha256": "0a39181475f4c900b4526ad975e311f47ad171a2103f9b875c9819cb7e7196ec",
+        "bytes": 30595
+      }
+    }
+  ]
+}

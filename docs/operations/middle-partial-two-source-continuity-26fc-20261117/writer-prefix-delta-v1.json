@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "named-partial-two-writer-prefix-delta-v1",
+  "path": "tools/ci/archive-registration-writer.mjs",
+  "beforeGitBlobSha1": "f57f1833e24045ed325fe5cf129a63990802b2e6",
+  "afterGitBlobSha1": "80960f796b4d49242b1048ac8de25781ad6ef6dd",
+  "edits": [
+    {
+      "before": "{id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',",
+      "after": "{id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',\n      'archive/data/item-4slot-partial-source-continuity/',"
+    },
+    {
+      "before": "const immutable=['archive/exams/','archive/assets/images/','archive/data/item-4slot/','alive/',",
+      "after": "const immutable=['archive/exams/','archive/assets/images/','archive/data/item-4slot/','alive/',\n    'archive/data/item-4slot-partial-source-continuity/',"
+    }
+  ],
+  "inverseByteExact": true
+}

@@ -1,0 +1,131 @@
+--- a/tools/check-m2s1-stale-forty-current-browser.cjs
++++ b/tools/check-m2s1-stale-forty-current-browser.cjs
+@@ -55,6 +55,30 @@
+   assert.deepEqual(cases.filter(c=>c.surface==='SOLUTION').map(c=>c.key),['E044-Q21','E044-Q24','E051-Q15'],'UI_STALE40_SOLUTION_PLAN');
+   return groups;
+ }
++function assertScopedScreenshotInventory(results,artifacts,manifest){
++  // The raw proof keeps the question key. Only this closed adapter adds the
++  // captured surface to the filename key consumed by the unchanged H guard.
++  const expected=new Map(planCases(manifest).flatMap(group=>group.items.map(item=>{
++    const id=[item.key,group.surface,group.viewport.name].join(':');
++    return[id,{item,surface:group.surface,mode:group.mode,viewport:group.viewport}];
++  })));
++  assert(Array.isArray(results)&&results.length===83&&expected.size===83,'UI_STALE40_SCREENSHOT_CASE_COUNT');
++  const seen=new Set();
++  const adapted=results.map(row=>{
++    const id=[row?.key,row?.surface,row?.viewport?.name].join(':');
++    const bound=expected.get(id);
++    assert(bound&&!seen.has(id),'UI_STALE40_SCREENSHOT_CASE_BINDING');seen.add(id);
++    assert.equal(row.questionUid,bound.item.questionUid,'UI_STALE40_SCREENSHOT_UID');
++    assert.equal(row.sourceOrdinal,bound.item.sourceOrdinal,'UI_STALE40_SCREENSHOT_ORDINAL');
++    assert.equal(row.mode,bound.mode,'UI_STALE40_SCREENSHOT_MODE');
++    assert.deepEqual(row.viewport,bound.viewport,'UI_STALE40_SCREENSHOT_VIEWPORT');
++    const key=bound.surface==='SOLUTION'&&bound.item.questionUid===Fragments.UID
++      ?bound.item.key:`${bound.item.key}-${bound.surface}`;
++    return{...row,key};
++  });
++  assert.equal(seen.size,expected.size,'UI_STALE40_SCREENSHOT_COMPLETE_PLAN');
++  return assertScreenshotInventory(adapted,artifacts);
++}
+ function validateIdentity(identity,item){
+   assert(Array.isArray(identity?.records),'UI_STALE40_IDENTITY_RECORDS');
+   const rows=identity.records.filter(r=>r.sourceArchiveFile===item.sourcePath.slice('archive/exams/'.length)&&Number(r.sourceOrdinal)===item.sourceOrdinal);
+@@ -186,7 +210,7 @@
+     newFullMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0, newReviewPassCount: 0, newFourSlotApprovals: 0 };
+   const writeProof = (status, code = null) => {
+     const screenshotArtifacts = readScreenshotArtifacts(out);
+-    if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertScreenshotInventory(results, screenshotArtifacts);
++    if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertScopedScreenshotInventory(results, screenshotArtifacts,manifest);
+     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases:manifest.expectedLogicalCases,expectedProblemCases:80,expectedSolutionCases:3,
+       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
+       results, surfaceDiagnostics, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
+@@ -359,7 +383,7 @@
+     assert.equal(new Set(results.map(row=>`${row.key}:${row.surface}:${row.viewport.name}`)).size,83,'UI_STALE40_UNIQUE_EIGHTY_THREE_REQUIRED');
+     assert.equal(results.filter(r=>r.surface==='PROBLEM').length,80,'UI_STALE40_ALL_PROBLEM_CASES');
+     assert.equal(results.filter(r=>r.surface==='SOLUTION').length,3,'UI_STALE40_ALL_SOLUTION_CASES');
+-    assertScreenshotInventory(results, readScreenshotArtifacts(out));
++    assertScopedScreenshotInventory(results, readScreenshotArtifacts(out),manifest);
+     // Re-read all served and bound inputs after the screenshots. No cache can
+     // turn a mutable working-tree file into immutable provenance.
+     for (const ref of [proofBase.manifestRef,proofBase.checkerRef,proofBase.captureHelperRef,proofBase.surfaceHelperRef,proofBase.scopedSurfaceHelperRef,proofBase.fragmentHelperRef,proofBase.fragmentManifestRef,inputs.identityRef,inputs.metadataRef,fontLicenseRef,...fontRefs.values(),...inputs.items.flatMap(row=>[row.sourceRef,...row.assets.map(a=>a.ref)]),...served.values(),...mirrored.values()]) {
+@@ -390,5 +414,5 @@
+     expectedLogicalCases:83,completedLogicalCases:0,sourceWrites:0,metadataWrites:0,newApprovals:0},null,2)+'\n');throw error;}
+ }
+ module.exports={MANIFEST_PATH,MANIFEST_SHA,CHECKER_PATH,ADAPTER_PATH,OPS_REF,SCHEMA,EXPECTED_UIDS,REQUIRED_HELPERS,
+-  validateManifest,planCases,loadQuestions,shape,validateIdentity,validateAssetPointers,preflight,executionProvenance,checkoutEvidence,safeFailureCode,inspectStudentUi};
++  validateManifest,planCases,assertScopedScreenshotInventory,loadQuestions,shape,validateIdentity,validateAssetPointers,preflight,executionProvenance,checkoutEvidence,safeFailureCode,inspectStudentUi};
+ if(require.main===module)main().catch(error=>{console.error(JSON.stringify({status:'FAIL',failureCode:safeFailureCode(error),errorMessageSha256:sha256(error.message||'')}));process.exitCode=1;});
+--- a/tests/m2s1-stale-forty-current-browser.test.cjs
++++ b/tests/m2s1-stale-forty-current-browser.test.cjs
+@@ -171,3 +171,70 @@
+ for(const failure of ['dom','scroll','geometry','hidden','roles','foreign'])test('capture loop rejects post-screenshot '+failure,async()=>{
+   await assert.rejects(runSyntheticCapture(failure),/UI_/);
+ });
++
++// Inventory-only fixtures: no browser, PNG generation, source reads or review.
++// The logical rows retain their original question keys and surface fields.
++function surfaceInventory(tileOverrides={}){
++  const rows=C.planCases(fixture).flatMap(group=>group.items.map(subject=>{
++    const id=[subject.key,group.surface,group.viewport.name].join(':');
++    const count=tileOverrides[id]??1;
++    const fileKey=group.surface==='SOLUTION'&&subject.key==='E051-Q15'
++      ?subject.key:subject.key+'-'+group.surface;
++    const shots=Array.from({length:count},(_,index)=>({tileIndex:index+1,
++      path:`${fileKey}-${group.viewport.name}-tile-${String(index+1).padStart(2,'0')}.png`,
++      sha256:'c'.repeat(64),bytes:index+1}));
++    return{key:subject.key,questionUid:subject.questionUid,sourceOrdinal:subject.sourceOrdinal,
++      surface:group.surface,mode:group.mode,viewport:clone(group.viewport),screenshots:shots,
++      capture:{tileCount:count,tiles:shots.map(shot=>({tileIndex:shot.tileIndex,filename:shot.path}))}};
++  }));
++  const artifacts=rows.flatMap(row=>row.screenshots.map(({tileIndex,...shot})=>shot));
++  return{rows,artifacts};
++}
++const runInventory=x=>C.assertScopedScreenshotInventory(x.rows,x.artifacts,fixture);
++const findInventory=(x,key,surface='PROBLEM',viewport='desktop')=>x.rows.find(row=>row.key===key&&row.surface===surface&&row.viewport.name===viewport);
++function renameInventoryShot(x,row,to){
++  const old=row.screenshots[0].path;row.screenshots[0].path=to;row.capture.tiles[0].filename=to;
++  x.artifacts.find(shot=>shot.path===old).path=to;
++}
++test('surface inventory maps exact 83 cases and keeps raw results and artifacts unchanged',()=>{
++  const x=surfaceInventory(),before=clone(x);
++  assert.throws(()=>require('../tools/check-reviewed-problem-renderer-browser.cjs').assertScreenshotInventory(x.rows,x.artifacts),/UI_SCREENSHOT_TILE_BINDING/);
++  assert.equal(runInventory(x),83);assert.deepEqual(x,before);
++});
++for(const [label,id]of[
++  ['ordinary problem','E037-Q22:PROBLEM:desktop'],
++  ['ordinary solution','E044-Q21:SOLUTION:desktop'],
++  ['unchanged E051 fragments','E051-Q15:SOLUTION:desktop']
++])test('surface inventory accepts all original tiles for '+label,()=>{
++  const x=surfaceInventory({[id]:8});assert.equal(runInventory(x),90);
++});
++for(const [name,mutate]of[
++  ['missing logical case',x=>{x.rows.pop();}],
++  ['duplicate logical case',x=>{x.rows[1]=clone(x.rows[0]);}],
++  ['question key',x=>{x.rows[0].key='E000-Q1';}],
++  ['UID cross-binding',x=>{x.rows[0].questionUid=x.rows[1].questionUid;}],
++  ['ordinal cross-binding',x=>{x.rows[0].sourceOrdinal++;}],
++  ['unknown surface',x=>{x.rows[0].surface='OTHER';}],
++  ['problem as solution',x=>{findInventory(x,'E044-Q21').surface='SOLUTION';}],
++  ['unknown viewport',x=>{x.rows[0].viewport.name='tablet';}],
++  ['solution width in problem viewport',x=>{x.rows[0].viewport.width=1440;}],
++  ['wrong mode',x=>{x.rows[0].mode='sol';}],
++  ['problem filename without surface',x=>{const r=x.rows[0];renameInventoryShot(x,r,`${r.key}-desktop-tile-01.png`);}],
++  ['solution filename labelled problem',x=>{const r=findInventory(x,'E044-Q21','SOLUTION');renameInventoryShot(x,r,'E044-Q21-PROBLEM-desktop-tile-01.png');}],
++  ['problem filename labelled solution',x=>{const r=findInventory(x,'E044-Q21');renameInventoryShot(x,r,'E044-Q21-SOLUTION-desktop-tile-01.png');}],
++  ['filename viewport cross-binding',x=>{const r=x.rows[0];renameInventoryShot(x,r,`${r.key}-PROBLEM-mobile-tile-01.png`);}],
++  ['E051 fragment filename changed',x=>{const r=findInventory(x,'E051-Q15','SOLUTION');renameInventoryShot(x,r,'E051-Q15-SOLUTION-desktop-tile-01.png');}],
++  ['capture filename differs from screenshot',x=>{x.rows[0].capture.tiles[0].filename='other.png';}],
++  ['tile index skipped',x=>{x.rows[0].screenshots[0].tileIndex=2;}],
++  ['missing screenshot',x=>{x.rows[0].screenshots=[];}],
++  ['missing artifact',x=>{x.artifacts.pop();}],
++  ['duplicate artifact',x=>{x.artifacts.push(clone(x.artifacts[0]));}],
++  ['extra artifact',x=>{x.artifacts.push({path:'unselected.png',sha256:'d'.repeat(64),bytes:1});}],
++  ['artifact hash mismatch',x=>{x.artifacts[0].sha256='d'.repeat(64);}],
++  ['artifact byte count mismatch',x=>{x.artifacts[0].bytes++;}]
++])test('surface inventory rejects '+name,()=>{
++  const x=surfaceInventory();mutate(x);assert.throws(()=>runInventory(x),/UI_(?:STALE40_SCREENSHOT|SCREENSHOT)/);
++});
++test('surface inventory keeps the existing eight-tile limit',()=>{
++  const x=surfaceInventory({'E051-Q15:SOLUTION:desktop':9});assert.throws(()=>runInventory(x),/UI_SCREENSHOT_TILE_COUNT/);
++});

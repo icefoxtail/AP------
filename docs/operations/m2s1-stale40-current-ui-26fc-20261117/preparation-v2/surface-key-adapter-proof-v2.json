@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "archive-stale40-surface-key-adapter-proof-v1",
+  "status": "FOCUSED_PASS_ACTUAL_CHROME_REQUIRED",
+  "priorManifest": {
+    "gitBlobSha1": "a362b4a5f032f558af34695ab9f0b95623ed5b3e",
+    "sha256": "586730675c12b2c1b2728624fc10ea93482d91a677e3c568f10bc322f2921e48",
+    "bytes": 7326
+  },
+  "finding": "H expects row.key/viewport filenames; 82 ordinary cases include the surface in filenames while raw row.key intentionally remains the question key. E051 solution uses its original fragment filename.",
+  "repair": "Validate exactly 83 unique sealed fixture case tuples, UID, ordinal, mode and whole viewport. Pass copied rows with a derived filename key to unchanged H. Original proof rows, capture geometry, screenshot metadata and files remain unchanged.",
+  "keyContract": {
+    "ordinary": "questionKey + surface",
+    "E051Q15Solution": "original questionKey",
+    "rawRowKey": "UNCHANGED"
+  },
+  "editCount": 4,
+  "inverseWholeExact": true,
+  "oldTestWholePrefixExact": true,
+  "priorCompletedTestsReused": {
+    "firstFocused": 71,
+    "captureLoop": 7,
+    "rerun": false,
+    "combinedCleanRunClaimed": false
+  },
+  "newFocused": {
+    "command": "node --test --test-name-pattern='^surface inventory ' tests/m2s1-stale-forty-current-browser.test.cjs",
+    "tests": 28,
+    "pass": 28,
+    "fail": 0,
+    "durationMs": 390.695666,
+    "log": {
+      "path": "docs/operations/m2s1-stale40-current-ui-26fc-20261117/preparation-v2/focused-inventory-v2.log",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v2/focused-inventory-v2.log",
+      "gitBlobSha1": "dce5482ed2e77b5339865ba4b39e8dd053f8c843",
+      "sha256": "291f65a986006456b85eca172748638631d3b0f4433c325a46f720afafcff023",
+      "bytes": 2075
+    }
+  },
+  "newFocusedScope": [
+    "all exact83 with unmutated rows/artifacts",
+    "ordinary problem eight original tiles",
+    "ordinary solution eight original tiles",
+    "E051 original fragment filenames/eight original tiles",
+    "logical missing/duplicate/key/UID/ordinal/surface/mode/viewport contradictions",
+    "surface and viewport filename cross-binding",
+    "tile index/count/filename mismatch and eight-tile limit",
+    "artifact missing/duplicate/extra/hash/byte mismatch"
+  ],
+  "nodeSyntaxCheck": "PASS",
+  "captureSurfaceHelperChanged": false,
+  "sharedHChanged": false,
+  "fixtureSourceAssetRowsChanged": false,
+  "Chrome": "NOT_RUN",
+  "newPixelOrVisualAcceptance": false,
+  "NativeBuilderConsumer": "NOT_RUN",
+  "sourceWrites": 0,
+  "metadataWrites": 0,
+  "newApprovals": 0
+}

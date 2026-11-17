@@ -1,0 +1,337 @@
+{
+  "schemaVersion": "AP_M1_PALMA24_ACTUAL_SCOPED_GATE_RECEIPT_V1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "m3s2_release",
+  "parentOwner": "GPT_ROOT_26FC42390A50",
+  "verdict": "ACTUAL_PRIVATE_SCOPE24_EXISTING_AUTHORITY2_AND_CONSUMER_PASS",
+  "execution": {
+    "runId": "44067598559",
+    "jobId": 133985215520,
+    "attempt": 1,
+    "head": "327f59823f49ab3245838d1d1aa94cadf5946eaf",
+    "event": "push",
+    "ref": "refs/heads/ops/m1-palma-two-current-source-registration-26fc-20261117",
+    "jobName": "palma-two-existing-authority",
+    "runConclusion": "success",
+    "jobConclusion": "success",
+    "apiRunMetadata": {
+      "gitBlobSha1": "ea28c0d05e7fc1601fcd2b57335b733a9c147f2b",
+      "sha256": "77578e4b842d7508937f5c57819270975aa3188ede9799da2ff828fe51e2ac57",
+      "bytes": 12526
+    },
+    "reportExecution": {
+      "provider": "GITHUB_ACTIONS",
+      "eventName": "push",
+      "ref": "refs/heads/ops/m1-palma-two-current-source-registration-26fc-20261117",
+      "repository": "icefoxtail/AP------",
+      "checkoutCommit": "327f59823f49ab3245838d1d1aa94cadf5946eaf",
+      "eventCommit": "327f59823f49ab3245838d1d1aa94cadf5946eaf",
+      "runId": "44067598559",
+      "runAttempt": 1,
+      "job": "palma-two-existing-authority",
+      "existingEvidenceCommit": "41f0037c41ac2276c7444bfff82c7aadc858d68f",
+      "integrationAncestor": "71104dabf173369d973c71e155e62f25af6ff235"
+    }
+  },
+  "immutableEvidence": {
+    "originalDecodedJobLog": {
+      "gitBlobSha1": "53cb4608ca50209987dcd770c703b9e5efddc7f4",
+      "sha256": "eb97428a4e087ba832ba5188b217605bf8dc0bafaf6fa57c67848947715d2ef0",
+      "bytes": 627581
+    },
+    "producerFrames": {
+      "gitBlobSha1": "b6cd01c8c2c961136832b73da332ec37d7c0ba0e",
+      "sha256": "3ab4af081d3b5f173782096398d0ce893ee34ef2ae17fd7269ac7a3b72ccb0cf",
+      "bytes": 337062
+    },
+    "originalReport": {
+      "gitBlobSha1": "bebbbb2995f8f81160fa58209c13bab44da3573e",
+      "sha256": "052e19f1505e7ed80cce9c75fc989a71febabba8aa4be1e82a3bd3c9c80621fc",
+      "bytes": 250241
+    },
+    "evidenceBytesReadback": "All three full strings independently hash-checked, immutable Git-created, and fetched byte-exact.",
+    "extraction": "One completed-job log retrieval. Only Actions timestamps were removed for the separate frame document; the original decoded log is preserved. No artifact ZIP download or image recapture."
+  },
+  "framing": {
+    "schemaVersion": "archive-scoped-metadata-log-v1",
+    "profile": "M1_PALMA24_EXISTING_AUTHORITY",
+    "beginEndIdentical": true,
+    "frames": 58,
+    "chunks": 56,
+    "strictSequentialChunkIndices": true,
+    "chunkWidth": 6000,
+    "base64CanonicalAndLengthExact": true,
+    "utf8ReencodeExact": true,
+    "reportSha256GitBlobAndBytesExact": true,
+    "rawReportBytes": 250241,
+    "reportJsonFormattingPreserved": true
+  },
+  "executedCode": {
+    "gate": {
+      "gitBlobSha1": "411b128718d5412794fc93725e6eba9b5c187395",
+      "sha256": "0d7919f2c8c6bb55270ad2b63e17b46575a565305a3dda07e010b9dc53d1831c",
+      "bytes": 44906
+    },
+    "workflow": {
+      "gitBlobSha1": "cdeddc23aa5119d4ade5edc0d70b59a5a1b24f9c",
+      "sha256": "9aa32ed740917c287f4c9ea2a0903c6d4750457fecdb6fa0a1a162a5d058e65c",
+      "bytes": 1675
+    },
+    "bothExactAtActualHeadAndFrozenCandidate": true,
+    "production4Manifest": {
+      "gitBlobSha1": "fe60eae7cb69d3be69ca41937e2fb28bbbcddd9c",
+      "sha256": "9718faa164d19e2aa1814f0da98f14ec90ac2072fa66a8bdec16d0d4f45c52b3",
+      "bytes": 15386
+    },
+    "scope24Gate2Manifest": {
+      "gitBlobSha1": "d62bd6b30461d97086762c33a6ea5b5118106d1c",
+      "sha256": "09e35c8d2dbfe559229ef5fa218a61f6f9b17b2f105bfae99702ea910c667663",
+      "bytes": 8692
+    },
+    "actualPinnedRuntimeInputs": [
+      "tools/4slot/build-4slot-runtime.cjs",
+      "archive/item-4slot.js",
+      "tools/4slot/m1s2-problem-renderer-continuity.cjs",
+      "tools/4slot/m1s2-problem-renderer-ui.cjs",
+      ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json",
+      ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json",
+      "tools/check-m1s2-palma-two-current-source-browser.cjs",
+      "tests/fixtures/archive-m1s2-palma-two-current-source-ui.json",
+      "tools/check-reviewed-problem-renderer-browser.cjs",
+      "tools/capture-m1s2-problem-surface.cjs"
+    ]
+  },
+  "scope": {
+    "sources": 1,
+    "questions": 24,
+    "selected": 2,
+    "outside": 22,
+    "selectedUids": [
+      "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246"
+    ],
+    "oldAuthorityBindings": [
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      }
+    ],
+    "currentExistingAuthorityBindings": [
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6,
+        "registered": true,
+        "recordSha256": "06c0f0b3af15469e07e513d370b1a8aad90e91deb5f976dd622795246ab6b813",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8,
+        "registered": true,
+        "recordSha256": "91c4f0d4d826761ee682b8289b9015766383d5deef453d04f432e6bc6ef6f344",
+        "pending": []
+      }
+    ],
+    "beforeCounts": {
+      "files": 1,
+      "items": 24,
+      "registered": 21,
+      "pending": 3,
+      "withCandidates": 1,
+      "identityFingerprintHistorical": 0
+    },
+    "afterCounts": {
+      "files": 1,
+      "items": 24,
+      "registered": 23,
+      "pending": 1,
+      "withCandidates": 1,
+      "identityFingerprintHistorical": 2
+    }
+  },
+  "preservation": {
+    "outside22WholeStateSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894",
+    "actualOutsideRegistered": 21,
+    "actualOutsidePending": 1,
+    "lastOutsideCheck": {
+      "phase": "INDIVIDUAL_SIDECAR_DELETION_REFUSAL",
+      "expectedSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894",
+      "observedSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894",
+      "changed": []
+    },
+    "selectedCurrentData": {
+      "metadata": [
+        {
+          "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+          "wholeSha256": "da647f6e59ddb25df00387d4a628bc1e30949c069ded62e890ae3eb74ad01c26"
+        },
+        {
+          "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+          "wholeSha256": "71c0e2b10181bf8d3333d731974a10a841e9a7e1e800fede0c5eab244295ac85"
+        }
+      ],
+      "identity": [
+        {
+          "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+          "wholeSha256": "020925384d334e143ceea59acbb9ee3d3e43f0f1d6c165b260ad34470ea342a6"
+        },
+        {
+          "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+          "wholeSha256": "d51f15d61f42c7af69069c3e306a61e7f3bf7c985556cf3a1dd54da054f7117f"
+        }
+      ],
+      "source24IdentityWholeSha256": "dc86bd81f3bbd71de0d9e3e7a5c6d52ead4fcac60cc49910e707f62890d0959e",
+      "globalMetadataSha256": "94460966000a09f776be6002ea43d38f9bf7ea7f9180901d71025225c6df9b16",
+      "capturedGlobalMetadataWholeEqualityRequired": false
+    },
+    "actualMD": {
+      "path": "archive/data/question_metadata.json",
+      "gitBlobSha1": "67bc91bca230aa12bbf92e43457dd825c50b5916",
+      "sha256": "94460966000a09f776be6002ea43d38f9bf7ea7f9180901d71025225c6df9b16",
+      "bytes": 74997668
+    },
+    "actualID": {
+      "path": "archive/data/question_identity_map.json",
+      "gitBlobSha1": "4058e548f3904b710dc24b798f0469c91f55e1ef",
+      "sha256": "f0e9a4596390766e00b002b4b7c06029a88827b59d26f1c7dc69d46095efd970",
+      "bytes": 27938431
+    },
+    "actualSVG": {
+      "path": "archive/data/svg-accessibility-index.js",
+      "gitBlobSha1": "41a9a30f0f9d1e8a429a05df73c71806fcafb1e8",
+      "sha256": "16ca9a6d0942962787476b9136283c9664b5fb5e497a1849cadc902cba174828",
+      "bytes": 5689821
+    },
+    "globalMetadataHistoricalWholeEqualityRequired": false
+  },
+  "authority": {
+    "verified": 2,
+    "route": "official build -> m1Problem.verify -> prior REGISTERED/source/MD/ID/vector/original review/current UI guards",
+    "coreGitBlobSha1": "b073bac3a47ceee4fd69d52e91f37252bf61e60a",
+    "newFinalQaNativeApprovals": 0,
+    "newSemanticApprovals": 0,
+    "newFourSlotVectors": 0,
+    "namedAuthorityDebtsPreserved": []
+  },
+  "consumer": {
+    "selected": 2,
+    "queries": 17,
+    "officialVerifyStatus": "PASS_WITH_SUPPLEMENTS",
+    "officialScopeVerified": 23,
+    "pendingPreserved": 1,
+    "outsideWholeStateSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894"
+  },
+  "cold": {
+    "changed": false,
+    "revalidatedFiles": 1,
+    "reusedFiles": 0,
+    "counts": {
+      "files": 1,
+      "items": 24,
+      "registered": 23,
+      "pending": 1,
+      "withCandidates": 1,
+      "identityFingerprintHistorical": 2
+    },
+    "indexSha256": "47b7841262bfbc838571ab244e47afb95328091ecb32db33686507f2b9aab827"
+  },
+  "negativeEvidence": {
+    "currentVisualDeletion": {
+      "removedPath": "docs/operations/m1s2-palma-two-current-ui-26fc-20261117/visual-current-reuse-v1.json",
+      "selectedRejected": 2,
+      "selected": [
+        {
+          "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+          "pending": [
+            {
+              "code": "ENOENT",
+              "sha256": "a6574b188ded6165bba0c1a499cbbcdea6bc29e92ea760807bd78ab6a0f05d7c"
+            }
+          ]
+        },
+        {
+          "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+          "pending": [
+            {
+              "code": "ENOENT",
+              "sha256": "a6574b188ded6165bba0c1a499cbbcdea6bc29e92ea760807bd78ab6a0f05d7c"
+            }
+          ]
+        }
+      ],
+      "outsideWholeStateSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894"
+    },
+    "individualSidecarDeletion": [
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "removedPath": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json",
+        "registered": false,
+        "reason": {
+          "code": "M1S2_PROBLEM_CONTINUITY_CLAIM_MISSING_OR_MIXED",
+          "sha256": "4caeff0c908210f5f5e121db8eee1134c81ffbdbfd14ee36f02cfaf853978cc6"
+        },
+        "otherSelectedWholeUnchanged": true,
+        "outsideWholeStateSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894"
+      },
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "removedPath": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json",
+        "registered": false,
+        "reason": {
+          "code": "M1S2_PROBLEM_CONTINUITY_CLAIM_MISSING_OR_MIXED",
+          "sha256": "4caeff0c908210f5f5e121db8eee1134c81ffbdbfd14ee36f02cfaf853978cc6"
+        },
+        "otherSelectedWholeUnchanged": true,
+        "outsideWholeStateSha256": "0ce6da4a04ad88cc96aa260f7c796fbf0f33bf62e76085eaf31dae3458ab4894"
+      }
+    ]
+  },
+  "inputClosure": {
+    "currentFiles": 174,
+    "immutableRefs": 570,
+    "privateNonDerivedFilesUnchanged": 147,
+    "sharedWritableHardlinks": 0,
+    "rootTrackedAndHeadFinalComparisons": "Reached unchanged gate final input/HEAD/worktree assertions before PASS report emission.",
+    "publicDocuments": {
+      "authenticatedDocuments": 13,
+      "immutableSummaryPins": 41,
+      "summaryPinsPromotedToHeadReferences": 0,
+      "liveDependencies": "EXACT_SIDECARS_CURRENT_CAPTURE_FIXED_LIVE_DOCUMENTS"
+    }
+  },
+  "boundaries": {
+    "actualMainRegistration": "NOT_PERFORMED",
+    "mainWrites": 0,
+    "sourceApprovalMutation": 0,
+    "newMathQa": 0,
+    "newSemanticApprovals": 0,
+    "newFourSlotVectors": 0,
+    "newFinalQaNativeApprovals": 0,
+    "newChromeCaptureRuns": 0,
+    "priorMetadata76Reruns": 0,
+    "originalFourPNGRereviews": 0,
+    "reviewerAdditionalGateExecutions": 0,
+    "remoteRefWrites": 0
+  },
+  "nextAction": "Root may integrate the already independently reviewed four production/test/sidecar files and obtain actual main writer/Consumer/Pages evidence. This private scope receipt alone is not a main registration claim."
+}

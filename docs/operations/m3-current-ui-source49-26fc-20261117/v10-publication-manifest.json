@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "archive-m3-source49-v10-publication-manifest-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "author": "GPT_M3S2_RELEASE",
+  "repository": "icefoxtail/AP------",
+  "publisher": "/root",
+  "status": "FROZEN_GATE_INPUT_FIX_AND_AUTHENTICATED_FOCUSED_REUSE_NOT_EXECUTED",
+  "base": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "composedCodeNotice": "Root current candidate4d2f8af25fecf7059e621f8df046c76dc4a9780c contains Closed8 production3; remote tree CAS remains the publisher's final gate.",
+  "requestedRef": "refs/heads/ops/m3-current-ui-registration-26fc-20261117",
+  "operations": [
+    {
+      "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+      "action": "replace",
+      "before": {
+        "gitBlobSha1": "53fb919e8f6112394a931bca73b61d148c2a0a6b",
+        "sha256": "e6b4b19dede67ebf432b2bbfc84c2fe62a084ffdb0974c596f84a6a4183a1273",
+        "bytes": 53316
+      },
+      "after": {
+        "gitBlobSha1": "b0fe07e31dc99959c231b60cfd3a087388ec8cb3",
+        "sha256": "11206295a3e556a6cc1582c511e2b932683c35ae276666f59a95cc41f71443f3",
+        "bytes": 64846
+      }
+    },
+    {
+      "path": "docs/operations/m3-current-ui-source49-26fc-20261117/run-44052082242/scoped-report.json",
+      "action": "add-exact-existing-actual-report",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "55b4d012fb9a3c828169fdcc252501947cdf4c2c",
+        "sha256": "19a81e954085c7e993e88afb1269cd324c3d8b2e2dead1608300480f888384da",
+        "bytes": 9581
+      },
+      "originalBytesUnchanged": true
+    }
+  ],
+  "requiredWorkflowChanges": 0,
+  "delta": {
+    "gitBlobSha1": "e278ffe4cdec2091807cc0b2e87c528397f0f297",
+    "sha256": "8763bd8cd4f67465491880724c9958ea70029b4064eed497d82698a9968d1296",
+    "bytes": 16196
+  },
+  "inputOnlyIntermediate": {
+    "gitBlobSha1": "4abe4758528c51322217646335de713105e772d8",
+    "sha256": "2849b58e8dd73c7f25ed13cb5530042d6b65a6e01bec9e5c0890d42ca07db265",
+    "bytes": 55284
+  },
+  "actualFailure": {
+    "source49Report": {
+      "gitBlobSha1": "55b4d012fb9a3c828169fdcc252501947cdf4c2c",
+      "sha256": "19a81e954085c7e993e88afb1269cd324c3d8b2e2dead1608300480f888384da",
+      "bytes": 9581
+    },
+    "runId": "44052082242",
+    "head": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+    "originalStatus": "FAIL",
+    "actualFocusedPassed": 150,
+    "privateBuilderRegistered": 48,
+    "privateBuilderPending": 1,
+    "diagnostic": {
+      "gitBlobSha1": "d5447cf027a0e9924db460a889bccc71848869c0",
+      "sha256": "f630c90a5d43ec57ef4ff162b6600162aefef2ff98c965f96d9c4b5dfe31a0e7",
+      "bytes": 2277
+    },
+    "diagnosticReason": "Original Native reads fixed prior receipt and binding as live files; the sparse fixture omitted them. Diagnostic caught ENOENT at native-reviewed-source-reuse:254/268, not a source or authority failure."
+  },
+  "inputRepair": {
+    "liveAncestorDocuments": [
+      {
+        "commit": "50d001f8ab5a9a4dbfc749edb30916fb15c8dc0a",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.json",
+        "gitBlobSha1": "e01550ad3fde0f4970467a9386c3a8c06bd6f12c",
+        "sha256": "c44a99b1b1b09bfdde74d46819115d1369fb9bbbc7f602c79477375450848be3",
+        "bytes": 29781
+      },
+      {
+        "commit": "50d001f8ab5a9a4dbfc749edb30916fb15c8dc0a",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.source-review-binding.json",
+        "gitBlobSha1": "119bcc32412c805aa144700a4652be195c650092",
+        "sha256": "de13eeb7e26812fdf3970cf15cb54c49b8f0e39f53884ac5808af963ea195126",
+        "bytes": 15753
+      }
+    ],
+    "historicalSourceObjectOnly": {
+      "commit": "d422885a338e06169739815f0f717d7d035ef7a1",
+      "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "533c93f017e1640ba9764925b2f164aaeaae9bb7",
+      "sha256": "cc6c9ac3347716da154d24321207395cc24539b34a6b99087ae2e5866e087c27",
+      "bytes": 66316
+    },
+    "newCurrentReassessmentPin": {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "gitBlobSha1": "67a469c022bf3e04049723098d659b025eaa9c88",
+      "sha256": "9efe04730bf2e2d54081a9c255c0d1d6e6de6926826cddf7db28e36b8658da46",
+      "bytes": 37364
+    },
+    "guards": "Each prior document must match its immutable commit:path/Git/raw/bytes and current HEAD/live bytes before copying into the private fixture. The original source is read as an immutable Git object only. Existing bounded declared-metadata traversal remains strict; outputDigests and global recursion remain excluded.",
+    "productionChanged": false
+  },
+  "focusedReuse": {
+    "requiredReport": {
+      "gitBlobSha1": "55b4d012fb9a3c828169fdcc252501947cdf4c2c",
+      "sha256": "19a81e954085c7e993e88afb1269cd324c3d8b2e2dead1608300480f888384da",
+      "bytes": 9581
+    },
+    "publishedPath": "docs/operations/m3-current-ui-source49-26fc-20261117/run-44052082242/scoped-report.json",
+    "originalRunMetadataAndWholeReportAuthenticated": true,
+    "originalGate53fbImmutableAuthenticated": true,
+    "scope49BaselineStateHashesMustMatch": true,
+    "allCurrentInputsComparedWithOriginalHead": true,
+    "allowedDifferentInputs": [
+      {
+        "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+        "before": {
+          "gitBlobSha1": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+          "sha256": "b9485fb7db68ea6f15b9e2b4d0f7c0567c9457faa5ab82dfceba903e1a5a6c0b",
+          "bytes": 65666
+        },
+        "after": {
+          "gitBlobSha1": "7a2cc6c166deef9d2664f8d4ff29835c3854ea3d",
+          "sha256": "c1fcd1eacfcb5a1737396bbf3433028a60af6346ef4fe24e0b3d2c04e4615079",
+          "bytes": 68629
+        }
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "before": {
+          "gitBlobSha1": "02549be443e029f094ae9e0213865b91063d6930",
+          "sha256": "324d1d6bc33f4ad13928f80cb59eab1270c946457e76f2dc494e6fae6c7ed89b",
+          "bytes": 36945
+        },
+        "after": {
+          "gitBlobSha1": "67a469c022bf3e04049723098d659b025eaa9c88",
+          "sha256": "9efe04730bf2e2d54081a9c255c0d1d6e6de6926826cddf7db28e36b8658da46",
+          "bytes": 37364
+        }
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2-native-rpm-course.mjs",
+        "before": {
+          "gitBlobSha1": "df188f7e3666cfa71c7ec9caaed21ee138734bcf",
+          "sha256": "2d49c620ea3387f8779d198c351af38f3f4dc962a3f9fad6303c952f37bcef0d",
+          "bytes": 41786
+        },
+        "after": {
+          "gitBlobSha1": "8a5fce2336624f24866ba32133a92aabdc25b52e",
+          "sha256": "f4a4581b14aa3c370fc288184b7876e7493a2340fa1ce570365572f6cac8d09d",
+          "bytes": 42180
+        }
+      }
+    ],
+    "allowedDeltaBasis": {
+      "gitBlobSha1": "be639bd37a7f8e5a06a1ef2cf4456610549bfaf6",
+      "sha256": "a5a854dbb106a72331f78c462d5de4b7d07b6ecc87125eb915adbc2694540132",
+      "bytes": 6798
+    },
+    "unknownNewPathOrOtherInputDrift": "FAIL_CLOSED",
+    "counts": {
+      "sourceReportObserved": 150,
+      "shadowReused": 61,
+      "q5MetadataReused": 44,
+      "q16MetadataAndOriginalAuthorityReused": 44,
+      "reusedTotal": 149,
+      "freshUnitTests": 0,
+      "freshOriginalQ5PrivateCliExecutions": 1
+    },
+    "classification": "REUSED_FROM_RUN_44052082242 is emitted explicitly. The original failed source49 gate remains FAIL in the cited evidence. No reused test is represented as a fresh PASS.",
+    "freshPrivateNative": "The original MJS CLI receives the authenticated private fixture root using the same arguments as its CJS dispatcher. Full original Native/GIVEN/UI/ancestor/issued-proof predicates execute, and all observed inputs and declared current UI/render refs are rehashed and required.",
+    "remainingActual": "Existing source49 builder, selected2 Consumer queries, outside47 whole-state preservation, cold replay, visual deletion and sidecar deletion code remains whole byte exact after the old focused block."
+  },
+  "validation": {
+    "fiveHunkWholeInverseTo53fb": true,
+    "inputDeltaHunks": 3,
+    "reuseDeltaHunks": 2,
+    "originalTestsFilesUnchanged": true,
+    "originalNativeAndProductionFilesUnchangedByThisCandidate": true,
+    "originalPostFocusedGateBodyWholeExact": true,
+    "remoteFullReadbackGate": true,
+    "remoteFullReadbackDelta": true,
+    "nodeSyntax": "NOT_RUN",
+    "focusedTests": "NOT_RUN",
+    "originalNative": "NOT_RUN_BY_AUTHOR",
+    "privateBuilderConsumerColdDeletion": "NOT_RUN"
+  },
+  "limits": {
+    "newMathematicalQa": false,
+    "newSemanticApproval": false,
+    "newFourSlotApproval": false,
+    "sourceWrites": 0,
+    "metadataIdentityRuntimeWrites": 0,
+    "remoteRefWrites": 0,
+    "fullConsumerRerun": false,
+    "actualReadyClaim": false
+  },
+  "nextAction": "Root independently reviews the exact reuse/input delta, stages unchanged report55b4 at the declared path with gateb0fe, checks Node syntax, then runs this scoped job. It reuses149 authenticated prior tests and executes original Q5 once on the repaired private fixture before the unchanged builder/Consumer/cold/deletion sequence."
+}

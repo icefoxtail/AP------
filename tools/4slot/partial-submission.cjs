@@ -89,7 +89,7 @@ function verifyStructureBindings(bindings,item,q){
 }
 const tuple=r=>({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,sourceQuestionNo:r.sourceQuestionNo});
 const sorted=rows=>[...rows].sort((a,b)=>a.sourceOrdinal-b.sourceOrdinal);
-function verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath,receiptSha256,stack}){
+function verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath,receiptSha256,stack,historicalContext}){
  keys(r,['schemaVersion','requestId','digestAlgorithm','source','dictionary','submission','append','acceptance','items'],'APPEND_RECEIPT_FIELDS');
  if(r.schemaVersion!==APPEND_RECEIPT_SCHEMA||receiptPath!==RECEIPTS+r.requestId+'.json'||r.digestAlgorithm!=='sha256-stable-json-utf8-v1')fail('APPEND_RECEIPT_SCHEMA');
  keys(r.source,['path','gitBlobSha','rawSha256'],'SOURCE_REFERENCE');
@@ -107,7 +107,7 @@ function verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath,r
  if(sha(priorRaw)!==op.priorCompact.sha256||blob(priorRaw)!==op.priorCompact.gitBlobSha)fail('APPEND_PRIOR_COMPACT_SHA');
  const prior=JSON.parse(priorRaw);
  if(prior.sourceArchiveFile!==d.sourceArchiveFile||prior.sourceGitBlobSha!==d.sourceGitBlobSha||prior.dictionaryVersion!==d.dictionaryVersion||!eq(prior.evidence?.receipt,op.priorReceipt))fail('APPEND_PRIOR_BINDING');
- const prev=publicEvidence(root,prior,{bank:p.bank,identity,sourceRaw:p.sourceRaw,dictRaw,dictPath},stack);
+ const prev=publicEvidence(root,prior,{bank:p.bank,identity,sourceRaw:p.sourceRaw,dictRaw,dictPath,historicalContext},stack);
  if(!Array.isArray(op.addedSelected)||!op.addedSelected.length||!Array.isArray(op.preservedSelected)||!eq(op.preservedSelected,prior.selected))fail('APPEND_SELECTION');
  const previousUids=new Set(prior.selected.map(x=>x.questionUid));
  if(op.addedSelected.some(x=>previousUids.has(x.questionUid)||!prior.unsubmitted.some(y=>eq(x,y))))fail('APPEND_OVERLAP_OR_NOT_PREVIOUSLY_UNSUBMITTED');
@@ -129,7 +129,10 @@ function verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath,r
  if(new Set(evidenceDigests.map(x=>x.path)).size!==evidenceDigests.length)fail('APPEND_EVIDENCE_PATH_REUSED');
  return {...p,receiptPath,receiptSha256,evidenceDigests};
 }
-function publicEvidence(root,d,{bank,identity,sourceRaw,dictRaw,dictPath}={},stack=new Set()){
+function publicEvidence(root,d,{bank,identity,sourceRaw,dictRaw,dictPath,historicalContext}={},stack=new Set()){
+ const named=require('./named-partial-source-continuity.cjs');
+ if(historicalContext!==undefined)named.assertHistoricalContext(historicalContext,{root,d,bank,identity,sourceRaw,dictRaw,dictPath,stack});
+ else {const continuity=named.verifyNamedSourceContinuation(root,d,{bank,identity,sourceRaw,dictRaw,dictPath});if(continuity)return continuity;}
  keys(d,['schemaVersion','sourceArchiveFile','sourceGitBlobSha','dictionaryVersion','evidence','reviewedBy','scope','expectedQuestionCount','selected','unsubmitted','items'],'COMPACT_FIELDS');
  const p=partition(root,d,{bank,identity,sourceRaw});selectedItems(d,p,true);
  keys(d.reviewedBy,['agent','at','sampled'],'REVIEWER_FIELDS');
@@ -140,7 +143,7 @@ function publicEvidence(root,d,{bank,identity,sourceRaw,dictRaw,dictPath}={},sta
  const ref=d.evidence.receipt;keys(ref,['path','sha256'],'RECEIPT_REFERENCE');if(!SHA.test(ref.sha256||'')||!new RegExp('^'+RECEIPTS+'[A-Za-z0-9][A-Za-z0-9_-]{0,100}\\.json$').test(ref.path||''))fail('RECEIPT_REFERENCE');
  if(stack.has(ref.path)||stack.size>=p.bank.length)fail('APPEND_RECEIPT_CYCLE');const nextStack=new Set([...stack,ref.path]);
  const raw=fs.readFileSync(safe(root,ref.path));if(sha(raw)!==ref.sha256)fail('RECEIPT_SHA_MISMATCH');const r=JSON.parse(raw);
- if(r.schemaVersion===APPEND_RECEIPT_SCHEMA){if(publicRebind)fail('RECEIPT_SCHEMA');return verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath:ref.path,receiptSha256:ref.sha256,stack:nextStack});}
+ if(r.schemaVersion===APPEND_RECEIPT_SCHEMA){if(publicRebind)fail('RECEIPT_SCHEMA');return verifyAppendReceipt(root,d,r,p,{identity,dictRaw,dictPath,receiptPath:ref.path,receiptSha256:ref.sha256,stack:nextStack,historicalContext});}
  keys(r,['schemaVersion','requestId','digestAlgorithm','source','dictionary','submission','acceptance','items',...(publicRebind?['publicEvidence','continuity']:[])],'RECEIPT_FIELDS');
  if(r.schemaVersion!==(publicRebind?PUBLIC_RECEIPT_SCHEMA:RECEIPT_SCHEMA)||ref.path!==RECEIPTS+r.requestId+'.json'||r.digestAlgorithm!=='sha256-stable-json-utf8-v1')fail('RECEIPT_SCHEMA');
  keys(r.source,['path','gitBlobSha','rawSha256'],'SOURCE_REFERENCE');if(r.source.path!=='archive/exams/'+d.sourceArchiveFile||r.source.gitBlobSha!==d.sourceGitBlobSha||r.source.rawSha256!==sha(p.sourceRaw))fail('RECEIPT_SOURCE_MISMATCH');
@@ -153,7 +156,7 @@ function publicEvidence(root,d,{bank,identity,sourceRaw,dictRaw,dictPath}={},sta
  if(!Array.isArray(r.items)||r.items.length!==d.items.length)fail('RECEIPT_ITEM_DENOMINATOR');const seen=new Set();
  for(const row of r.items){keys(row,['questionUid','sourceOrdinal','sourceQuestionNo','compactItemSha256','quoteBindings'],'RECEIPT_ITEM_FIELDS');const s=p.selected.find(x=>x.questionUid===row.questionUid&&x.sourceOrdinal===row.sourceOrdinal&&x.sourceQuestionNo===row.sourceQuestionNo),it=d.items.find(x=>x.ordinal===s?.displayNumber);
   if(!s||!it||seen.has(s.questionUid)||row.compactItemSha256!==sha(stable(it)))fail('RECEIPT_VECTOR_MISMATCH');seen.add(s.questionUid);verifyBindings(row.quoteBindings,it,p.bank[s.sourceOrdinal-1]);}
- let contractSha256=null,publicDigests=[];if(publicRebind){publicDigests=require('./rebind-reviewed-partial.cjs').verifyPublicReceipt(root,d,r).evidenceDigests;contractSha256=sha(fs.readFileSync(require.resolve('./rebind-reviewed-partial.cjs')));}
+ let contractSha256=null,publicDigests=[];if(publicRebind){publicDigests=require('./rebind-reviewed-partial.cjs').verifyPublicReceipt(root,d,r,historicalContext).evidenceDigests;contractSha256=sha(fs.readFileSync(require.resolve('./rebind-reviewed-partial.cjs')));}
  return {...p,receiptPath:ref.path,receiptSha256:ref.sha256,evidenceDigests:[{path:ref.path,sha256:ref.sha256},...publicDigests],...(publicRebind?{contractSha256}:{})};
 }
 module.exports={SLOTS,SCOPE,EVIDENCE_SCHEMA,RECEIPT_SCHEMA,PUBLIC_EVIDENCE_SCHEMA,PUBLIC_RECEIPT_SCHEMA,isEvidenceSchema,RECEIPTS,DECISION,APPEND_RECEIPT_SCHEMA,STRUCTURE_DECISION,STRUCTURE_CLASS,SHA,GIT,UID,stable,sha,blob,eq,fail,keys,safe,loadBank,scopeFields,hasScope,partition,selectedItems,textFor,verifyBindings,verifyStructureBindings,publicEvidence};

@@ -761,6 +761,8 @@ const CONFIG = {
   "publicBase": "https://icefoxtail.github.io/AP------/",
   "publicPaths": [
     "archive/data/archive2-canonical-input-manifest.json",
+    "archive/data/archive2-canonical-input-manifest.compact.json",
+    "archive/archive2-canonical.js",
     "archive/data/archive2-catalog.json",
     "archive/data/archive2-source-verification-index.json",
     "archive/data/item-4slot-index.json",
@@ -1008,9 +1010,47 @@ function identityCohort(data) {
 function displayForIdentity(cohort, row) {
   return row ? cohort.displayByUid.get(row.questionUid) ?? null : null;
 }
-function attachClosedSourceNumbering(cohort, commit) {
+// Current exact bytes are distinct from the unchanged baseline capture.
+const CURRENT_LEGACY_NUMBERING_PINS = [
+  {
+    "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+    "gitBlobSha1": "7d4e76c9f31bf7c02aa82e7fc47df46f91b8ed3e",
+    "sha256": "c32cd38506b3da4ff50f83789d0907b106920a47edc66b38d81ad2017738c939",
+    "bytes": 11847,
+    "questionCount": 24
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2final/19_동산여중_2학기_기말_중3_수학.js",
+    "gitBlobSha1": "c9efd5c9641d21127bbbeb0b77f69cd270e7b632",
+    "sha256": "b97ed85296292713204bb12a4cdbb6f47f40892922da35df005dd12cd46975a4",
+    "bytes": 80832,
+    "questionCount": 25
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+    "gitBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+    "sha256": "593994b906e074da4f6e39ba956b976534f9654add9404fe24de69f8aded72bb",
+    "bytes": 58424,
+    "questionCount": 21
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "0a2b4a0ffb487e85a2b00a6f8203556adb0e375a",
+    "sha256": "325b015724d732bdbe9b258116bbf220aed2fc0f316c1fca5e076d1ce1ae50b7",
+    "bytes": 61507,
+    "questionCount": 23
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "3ed7e176c96dad786c537edf260a5ce881f59009",
+    "sha256": "f04308babc2accacfef4f080a3570442638175cb519f388d8f585f3980029ff2",
+    "bytes": 134945,
+    "questionCount": 23
+  }
+];
+function attachClosedSourceNumbering(cohort, commit, pins = LEGACY_NUMBERING_PINS) {
   const observations = [];
-  for (const pin of LEGACY_NUMBERING_PINS) {
+  for (const pin of pins) {
     const source = pin.sourceArchiveFile;
     const identityRows = cohort.bySource.get(source);
     must(identityRows?.length === pin.questionCount, 'CLOSED_NUMBER_SOURCE_IDENTITY_COUNT_MISMATCH');
@@ -1740,6 +1780,13 @@ async function observePublic() {
     expectedOption: '--public-base ' + CONFIG.publicBase,
     globalDeploymentApprovalInferred: false
   };
+  const releaseMapping = readJson(options.snapshot, 'tools/archive-pages-release-manifest.json');
+  must(releaseMapping.data?.schemaVersion === 'ARCHIVE_PAGES_SITE_MANIFEST_V1' &&
+    Array.isArray(releaseMapping.data.archiveRootFiles) &&
+    releaseMapping.data.archiveRootFiles.includes('archive2-canonical.js') &&
+    Array.isArray(releaseMapping.data.archiveDataFiles) &&
+    releaseMapping.data.archiveDataFiles.includes('archive2-canonical-input-manifest.compact.json'),
+    'PUBLIC_COMPANION_RELEASE_MAPPING_MISSING');
   const started = Date.now(), deadline = started + 240000;
   const before = await publicMarker(options.publicBase, Math.min(30000, deadline - Date.now())), files = [];
   for (const p of CONFIG.publicPaths) {
@@ -1770,7 +1817,9 @@ async function observePublic() {
   const exactSnapshotMarker = markerStable && before.registeredMainSHA === options.snapshot;
   return {
     status: filesExact && exactSnapshotMarker ? 'PASS_SCOPED_PUBLIC_BYTES_AND_SNAPSHOT_MARKER' : 'PENDING_PUBLIC',
-    pathScope: 'NINE_PREVIOUSLY_VERIFIED_PUBLIC20_METADATA_RUNTIME_AND_BASIC_PARENT_PATHS',
+    pathScope: 'NINE_PRIOR_PUBLIC20_PATHS_PLUS_EXPLICIT_CANONICAL_LOADER_AND_COMPACT_COMPANION',
+    currentReleaseMappingRef: releaseMapping.ref,
+    additionalPaths: ['archive/archive2-canonical.js', 'archive/data/archive2-canonical-input-manifest.compact.json'],
     totalPublicBudgetMs: 240000, elapsedPublicMs: Date.now() - started,
     sourceOrAnswerBodyOutput: 0, identityPublicPath: 'NOT_IN_PRIOR_PUBLIC20_MAPPING; GIT_CAS_ONLY',
     publicFileBytes: filesExact ? 'PASS_EXACT_SELECTED_BYTES' : 'NOT_YET_EXACT',
@@ -1846,7 +1895,7 @@ async function observe() {
     actualIndex.counts?.files === actualIndex.globalFileCount);
   report.closedSourceNumbering = {
     baseline: attachClosedSourceNumbering(baseline, CONFIG.baselineCommit),
-    current: attachClosedSourceNumbering(current, options.snapshot),
+    current: attachClosedSourceNumbering(current, options.snapshot, CURRENT_LEGACY_NUMBERING_PINS),
     scope: 'FIVE_OBSERVED_LEGACY_BANKS_ONLY; RAW_ID_IS_NOT_ASSUMED_TO_BE_DISPLAY_NUMBER'
   };
   const basePending = pendingAssignments(baseIndex, baseline, CONFIG.baselineCommit);
