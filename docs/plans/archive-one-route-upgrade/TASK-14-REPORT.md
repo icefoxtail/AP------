@@ -265,3 +265,8 @@ z Q9는순서없는두수의차와원해설절댓값문맥으로CONTENT를EXEMPT
 결과6ff09c3993b10fdb48cbcb77f952f7484b4600af, 원격36파일blob일치. 유사·유형3시험지58문항 FIGURE19 EXEMPT39,27계획. 독립검수및공식최종표시검사통과. 고2삼각Q10캡션이참조한대칭선을추가후실제점선/라벨검증,중2실제단항식25문항모두그림불필요확인.
 광양제철고Q13 HTML격자는5+5+4구조/독립열거확인했으나원문HTML시각렌더는환경실패·대체도구부재로NOT_RUN. 원본을시각열람했다고과장하지않음. 모든신규SVG전체렌더/출판도NOT_RUN/UNVERIFIED.
 확장누적60/351시험지1062/9093문항258계획(FIGURE239 CONTENT185 EXEMPT595 KEEP42 UNSUPPORTED1). 원본재개누적26시험지418OPEN문항247계획은별도. 원문/엔진/SVG/운영장부/PR/main불변,잔여계속. 상세BATCH15-REPORT.md/INDEX.json.
+
+
+## 2026-11-17 재개 batch16 원본 저장
+결과55ee2fca5f643019b5af6e4af7b8402337093edb, 원격41파일blob일치. 원본8시험지31문항 FIGURE17 EXEMPT10 CONTENT4,23계획. 모든시험지독립검수완료,기존그림직접확인·독립풀이및지원계획공식끝단검사PASS. 조건부수형도확률/로그삼각경계교점/칠교재배치/기존그림충분성 검증. ag원본직각4개표시보완, af불필요점이름숨김/계수충돌CONTENT, ah실제PNG·해설충돌3건보존.
+재개원본누적34시험지449OPEN문항270계획. 확장누적60시험지1062문항258계획은별도. 실제전체렌더NOT_RUN/출판UNVERIFIED. 원문·SVG·운영장부·엔진·PR·main불변. 상세BATCH16-REPORT.md/INDEX.json. 남은OPEN과확장시험지계속.
