@@ -1,0 +1,926 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "luna-cls-aad7b9a15467-54e2f776",
+  "examUid": "24_수피아여고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "sourceArchiveFile": "original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "273b88ea242652926e43203c2afad00a20199a17",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "REVIEW2",
+    "metadataReviewed": true,
+    "reviewPassCount": 2,
+    "approvedBy": "사용자 지시 2026-11-14: 분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+        "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+        "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+        "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+        "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.approval-note.json",
+        "sha256": "c2408c9d8ed9524fae61b53e32c0da591a5e1fae59946608e9e31ea6fabde7c1"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e222b142a8d1bd144781e0403e7220e5625dfb317b42ef63d5898e2fde0460a8",
+      "sourceOrdinal": 2,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "조합 핵심 개념",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 1,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "subUnit": "조합",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "하",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "rpmL1": "경우의 수",
+        "rpmL2": "순열과 조합",
+        "rpmL3": "중복조합",
+        "rpmL4": "중복을 허용한 선택",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "서로 다른 가방 3개에 같은 책 5권을 넣는 방법을 세 가방의 음이 아닌 책 권수의 합으로 나타낸다.",
+        "decisiveStep": "가방별 권수가 합 5인 해는 중복조합 3H5=7C5이므로 순서를 세는 3Π5와 다르다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-02",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-02-CORE",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+p3+luna-k4; PT/TPL resolver:H2-PS-RPM-005(DIRECT_ACTIVE)) — 서로 다른 가방 3개에 같은 책 5권을 넣는 방법을 세 가방의 음이 아닌 책 권수의 합으로 나타낸다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_63bc0b4ad42696a3742264250220928cfb9b877525f0881a0b85bd558fdaee64",
+      "sourceOrdinal": 3,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "조합 핵심 개념",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 1,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+        "subUnit": "이항정리",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "하",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "rpmL1": "경우의 수",
+        "rpmL2": "이항정리",
+        "rpmL3": "이항정리",
+        "rpmL4": "전개식의 항",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "(a+b)^n의 각 인수에서 b를 고를 r개의 위치를 정하여 a^(n-r)b^r의 계수를 확인한다.",
+        "decisiveStep": "b가 나오는 위치의 선택은 nCr가지이고 나머지는 모두 a이므로 제시된 계수식은 참이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-02",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-02-CORE",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+luna-k1; PT/TPL resolver:H2-PS-RPM-007(DIRECT_ACTIVE)) — (a+b)^n의 각 인수에서 b를 고를 r개의 위치를 정하여 a^(n-r)b^r의 계수를 확인한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6f1e8c900c62791eb481d5c6bb2274ca091533ec386385ec7d4f42e9f2969c57",
+      "sourceOrdinal": 4,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 1,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 활용",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "하",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "rpmL1": "확률",
+        "rpmL2": "확률의 뜻과 활용",
+        "rpmL3": "확률의 기본",
+        "rpmL4": "표본공간과 사건",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "주사위 한 개의 표본공간 {1,2,3,4,5,6}에서 7보다 큰 눈에 해당하는 사건을 찾는다.",
+        "decisiveStep": "7보다 큰 눈은 하나도 없어 사건이 공집합이며 그 확률은 0이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-03",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-03-PROBABILITY_BASIC",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+luna-k1; PT/TPL resolver:H2-PS-RPM-011(DIRECT_ACTIVE)) — 주사위 한 개의 표본공간 {1,2,3,4,5,6}에서 7보다 큰 눈에 해당하는 사건을 찾는다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2eb99c0e27b67c1e6abae31e26ca7547877851fa6225e64bfaf970e67b4a6aa0",
+      "sourceOrdinal": 7,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열 핵심 개념",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H15-PS-01-PERMUTATION",
+        "subUnit": "순열",
+        "crossConceptKeys": [
+          "CC_IDENTICAL_OBJECT_PERMUTATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "중",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "rpmL1": "경우의 수",
+        "rpmL2": "순열과 조합",
+        "rpmL3": "순열",
+        "rpmL4": "일렬 배열",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "문자 s,p,e,e,r의 다섯 자리 배열에서 같은 e 두 개를 서로 바꾼 중복을 제거한다.",
+        "decisiveStep": "서로 다른 문자로 센 5!을 e 두 개의 2!로 나누면 60이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-01",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-01-CORE",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+luna-k1; PT/TPL resolver:H2-PS-RPM-001(DIRECT_ACTIVE)) — 문자 s,p,e,e,r의 다섯 자리 배열에서 같은 e 두 개를 서로 바꾼 중복을 제거한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6c03f041a11620997e3f7f40ca299e06c07b70485c7a0fe38ad0e276b96a07dc",
+      "sourceOrdinal": 8,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 활용",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "중",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "rpmL1": "확률",
+        "rpmL2": "확률의 뜻과 활용",
+        "rpmL3": "확률의 기본",
+        "rpmL4": "확률 계산",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "서로 다른 동전 3개의 앞뒤 결과 2³개 중 앞면 세 개와 뒷면 세 개를 센다.",
+        "decisiveStep": "모두 같은 면인 결과는 두 개이므로 확률은 2/8=1/4이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-03",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-03-PROBABILITY_BASIC",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+tera-k3; PT/TPL resolver:H2-PS-RPM-012(DIRECT_ACTIVE)) — 서로 다른 동전 3개의 앞뒤 결과 2³개 중 앞면 세 개와 뒷면 세 개를 센다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_01c0e35e9d66a6e1b3a5dd4c5f400c296deb32456fb92eb0ad4c69f34a5295ff",
+      "sourceOrdinal": 12,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "조합 핵심 개념",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "subUnit": "조합",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "중",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "rpmL1": "경우의 수",
+        "rpmL2": "순열과 조합",
+        "rpmL3": "중복조합",
+        "rpmL4": "정수해 개수",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "짝수 자연수 x,y,z를 2a,2b,2c로 놓아 x+y+z=18을 양의 정수 해 a+b+c=9로 바꾼다.",
+        "decisiveStep": "a,b,c에서 각각 1을 빼면 합 6인 음이 아닌 세 정수의 해이므로 8C2=28개이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-02",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-02-CORE",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+luna-k4+p3; PT/TPL resolver:H2-PS-RPM-006(DIRECT_ACTIVE)) — 짝수 자연수 x,y,z를 2a,2b,2c로 놓아 x+y+z=18을 양의 정수 해 a+b+c=9로 바꾼다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1cfd855b142b3e43b29902141febd702effff18336a136f3d387abe53c38b4ee",
+      "sourceOrdinal": 15,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 활용",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "중",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "rpmL1": "확률",
+        "rpmL2": "확률의 뜻과 활용",
+        "rpmL3": "확률의 기본",
+        "rpmL4": "표본공간과 사건",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "표본공간과 공집합의 확률, 합집합의 확률 범위, 확률의 대소와 집합 포함관계에 대한 세 명제를 각각 판단한다.",
+        "decisiveStep": "P(S)=1과 P(∅)=0으로 첫째·둘째 명제는 참이며 같은 확률의 서로 다른 한 원소 사건으로 셋째 명제는 반박된다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-03",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-03-PROBABILITY_BASIC",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+tera-k3; PT/TPL resolver:H2-PS-RPM-011(DIRECT_ACTIVE)) — 표본공간과 공집합의 확률, 합집합의 확률 범위, 확률의 대소와 집합 포함관계에 대한 세 명제를 각각 판단한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b8fff6b7e3727d111031a292dc1e4d92c20bcfdca9e079948fe502f54169e07e",
+      "sourceOrdinal": 23,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "조합 핵심 개념",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 4,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "subUnit": "조합",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_MONOTONIC_ORDER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "상",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "rpmL1": "경우의 수",
+        "rpmL2": "순열과 조합",
+        "rpmL3": "중복조합",
+        "rpmL4": "중복을 허용한 선택",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "비감소 조건과 f(3)f(4)=16으로 (f(3),f(4))를 (1,16),(2,8),(4,4)로 나누고 앞뒤 두 함숫값을 중복조합으로 센다.",
+        "decisiveStep": "세 경우에서 앞뒤 선택 수의 곱은 1×1, 3×3, 6×6이므로 함수는 총 46개이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-02",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-02-CORE",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+luna-k1+p3; PT/TPL resolver:H2-PS-RPM-005(DIRECT_ACTIVE)) — 비감소 조건과 f(3)f(4)=16으로 (f(3),f(4))를 (1,16),(2,8),(4,4)로 나누고 앞뒤 두 함숫값을 중복조합으로 센다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b341c03bd71811be55fb7d6a265de281f4ea0d31464b073de40f22b39439860f",
+      "sourceOrdinal": 24,
+      "before": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 3,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 활용",
+        "crossConceptKeys": [
+          "CC_INCLUSION_EXCLUSION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과통계",
+        "level": "중",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "rpmL1": "확률",
+        "rpmL2": "확률의 뜻과 활용",
+        "rpmL3": "확률의 기본",
+        "rpmL4": "확률 계산",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "15x²-8nx+n²를 (3x-n)(5x-n)으로 인수분해하고 1부터 30까지 n 중 정수근을 주는 수를 센다.",
+        "decisiveStep": "n/3 또는 n/5가 정수이려면 n이 3 또는 5의 배수여야 하므로 확률은 (10+6-2)/30=7/15이다."
+      },
+      "fieldCandidates": {
+        "standardUnitKey": [
+          {
+            "value": "H22-PS-03",
+            "source": "registered"
+          }
+        ],
+        "subUnitKey": [
+          {
+            "value": "H22-PS-03-PROBABILITY_BASIC",
+            "source": "registered"
+          }
+        ]
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+        "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+      },
+      "reason": "분류 확정(registered+agree+p3+luna-k4; PT/TPL resolver:H2-PS-RPM-012(DIRECT_ACTIVE)) — 15x²-8nx+n²를 (3x-n)(5x-n)으로 인수분해하고 1부터 30까지 n 중 정수근을 주는 수를 센다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass1-ledger.json",
+          "sha256": "f1e3157409547007bd246b6106d9714f3fc8f6309305a21faa4753a61a24d5f4"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass2-ledger.json",
+          "sha256": "0360251e8bfed8c32579b03b677be6e448dd882ce84215ad7c17b88e62f4f97c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger.json",
+          "sha256": "c723c82ff356a4608e410e18c8c26ba2cb795717a30570a7c2cc905ffe5d898d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.pass3-ledger-2.json",
+          "sha256": "1fb31aae8f6c4f0093e3d8fd58bcafd29eb714203c156e06ed58dc2f31be1377"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aad7b9a15467-54e2f776.parent-labels.json",
+          "sha256": "aec452193882b83b8c97649b07c80ef3611bafa45b738ffd1f94d39c713b0e23"
+        }
+      ]
+    }
+  ]
+}
