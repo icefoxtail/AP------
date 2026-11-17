@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "95%",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "62.16",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "77.84",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "99%",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "59.68",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "80.32",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "같은 중심 70을 유지한 채 신뢰도를 높이면 구간이 넓어진다. 아래 구간 안에 들어가는 자연수는 끝점의 포함 여부를 확인하여 센다.",
+  "accessibilityDescription": "같은 중심 70을 유지한 채 신뢰도를 높이면 구간이 넓어진다. 아래 구간 안에 들어가는 자연수는 끝점의 포함 여부를 확인하여 센다.",
+  "newVisualInformation": [
+    "같은 중심 70을 유지한 채 신뢰도를 높이면 구간이 넓어진다. 아래 구간 안에 들어가는 자연수는 끝점의 포함 여부를 확인하여 센다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 모평균 $m$을 신뢰도 95%로 추정한 신뢰구간이 $62.16\\le m\\le77.84$이다. 같은 표본을 이용하여 모평균 $m$을 신뢰도 99%로 추정한 신뢰구간에 속하는 자연수 $m$의 개수를 구하는 풀이 과정과 답을 서술하시오.<br>(단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(|Z|\\le1.96)=0.95$, $P(|Z|\\le2.58)=0.99$로 계산한다.) (7점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "표준오차4. 99%끝점59.68,80.32는 개수를 세기 위한 중간값. 최종 개수21 및 정수점 전부 표시는 생략.",
+      "mappedTo": "numberLine"
+    }
+  ]
+}

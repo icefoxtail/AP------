@@ -1,0 +1,51 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "-2",
+      "1/2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS_WITH_TAN_POLES"
+    },
+    "domain": [
+      -7,
+      7
+    ],
+    "viewport": [
+      -7,
+      7,
+      -6,
+      6
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": []
+    }
+  },
+  "caption": "탄젠트 곡선이 두 점근선 사이에서 감소하는 모습을 살펴본다. 그림의 위아래 잘림은 최댓값과 최솟값을 뜻하지 않는다.",
+  "accessibilityDescription": "탄젠트 곡선이 두 점근선 사이에서 감소하는 모습을 살펴본다. 그림의 위아래 잘림은 최댓값과 최솟값을 뜻하지 않는다.",
+  "newVisualInformation": [
+    "탄젠트 곡선이 두 점근선 사이에서 감소하는 모습을 살펴본다. 그림의 위아래 잘림은 최댓값과 최솟값을 뜻하지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=-2\\tan\\dfrac{x}{2}$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? (4점)\n[보기]\nㄱ. 함수 $y=-2\\tan\\dfrac{x}{2}$를 $x$축의 방향으로 $\\dfrac{\\pi}{3}$만큼 평행이동하면 $y=-2\\tan\\left(\\dfrac{x}{2}-\\dfrac{\\pi}{3}\\right)$이다.\nㄴ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 주기는 $2\\pi$이다.\nㄷ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 점근선은 직선 $x=2n\\pi+\\dfrac43\\pi$이다.\nㄹ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 최솟값은 $-2$, 최댓값은 $2$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=-2tan(x/2), 주기2π, 극 x=(2n+1)π. 참거짓/선택지 번호는 표시하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

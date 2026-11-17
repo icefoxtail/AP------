@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "highlight": {
+      "expr": "a*b",
+      "in": [
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        36
+      ]
+    }
+  },
+  "caption": "곱이 4의 배수인 조건 사건을 먼저 색칠하고, 그 칸 중 두 눈의 합이 9 이상인 순서쌍을 찾는다.",
+  "accessibilityDescription": "곱이 4의 배수인 조건 사건을 먼저 색칠하고, 그 칸 중 두 눈의 합이 9 이상인 순서쌍을 찾는다.",
+  "newVisualInformation": [
+    "곱이 4의 배수인 조건 사건을 먼저 색칠하고, 그 칸 중 두 눈의 합이 9 이상인 순서쌍을 찾는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던질 때 나오는 눈의 수를 차례로 $a, b$라 하자. $a \\times b$가 4의 배수일 때, $a+b \\ge 9$일 확률은? (4.5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "조건 사건15개, 합9이상5개를 직접 순서쌍 대조. 그림에는 조건 사건만 칠하며 최종확률1/3은 숨김.",
+      "mappedTo": "chart"
+    }
+  ]
+}

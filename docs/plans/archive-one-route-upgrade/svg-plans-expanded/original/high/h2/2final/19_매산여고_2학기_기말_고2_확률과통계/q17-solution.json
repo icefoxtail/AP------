@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-7/8",
+      "0",
+      "7/8"
+    ],
+    "shades": [
+      {
+        "from": 0,
+        "to": 2,
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "처음 신뢰구간 길이에서 얻은 임계값은 7/8이다. 중앙구간 경계 ±7/8과 새 표본의 표준화 경계 ±√n/8을 비교한다. 중앙확률이 같으므로 양의 경계가 일치해야 하며 n은 표시하지 않는다.",
+  "accessibilityDescription": "처음 신뢰구간 길이에서 얻은 임계값은 7/8이다. 중앙구간 경계 ±7/8과 새 표본의 표준화 경계 ±√n/8을 비교한다. 중앙확률이 같으므로 양의 경계가 일치해야 하며 n은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 정규분포 $N(m, \\sigma^2)$을 따르는 모집단에서 크기가 $4$인 표본을 임의추출하여 신뢰도 $\\alpha\\%$로 모평균을 추정할 때, 신뢰구간의 길이가 $\\frac{7}{8}\\sigma$이었다. 크기가 $n$인 표본의 표본평균을 $\\overline{X_n}$이라 할 때,<br>$P(|\\overline{X_n}-m| \\le \\frac{\\sigma}{8}) = \\frac{\\alpha}{100}$가 성립하기 위한 자연수 $n$의 값은?<br>(단, 모평균 $m$의 신뢰구간이 $\\alpha \\le m \\le \\beta$일 때, $\\beta-\\alpha$를 신뢰구간의 길이라고 한다.) [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "처음에는 표본의 크기가 4이다. 신뢰도 $\\alpha\\%$에 대응하는 양측 임계값을 $z$라고 하면 모평균 신뢰구간의 길이는\n$L=2z\\frac{\\sigma}{\\sqrt4}=z\\sigma$이다.\n문제에서 $L=\\frac78\\sigma$이고 표준편차 $\\sigma>0$이므로 $z=\\frac78$이다.\n따라서 처음 신뢰도는 표준정규분포에서 중앙의 $-\\frac78\\le Z\\le\\frac78$에 들어갈 확률, 즉 $P(|Z|\\le\\frac78)=\\frac\\alpha{100}$이다.\n이제 표본 크기를 $n$으로 바꾸면 표본평균은 평균 $m$, 표준편차 $\\frac\\sigma{\\sqrt n}$인 정규분포를 따른다.\n따라서\n$P\\left(|\\overline X_n-m|\\le\\frac\\sigma8\\right)$\n$=P\\left(\\left|\\frac{\\overline X_n-m}{\\sigma/\\sqrt n}\\right|\\le\\frac{\\sigma/8}{\\sigma/\\sqrt n}\\right)$\n$=P\\left(|Z|\\le\\frac{\\sqrt n}{8}\\right)$이다.\n표준정규분포의 중앙구간 확률은 양의 경계가 커질수록 엄격히 증가한다. 두 중앙구간의 확률이 같으려면 경계도 같아야 하므로\n$\\frac{\\sqrt n}{8}=\\frac78$,\n$\\sqrt n=7$, $n=49$이다.\n따라서 정답은 ②이다. 표본 크기 4와 새 표본 크기 $n$을 같은 기호로 혼동하지 않는다.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "처음 신뢰구간 길이에서 얻은 임계값은 7/8이다. 중앙구간 경계 ±7/8과 새 표본의 표준화 경계 ±√n/8을 비교한다. 중앙확률이 같으므로 양의 경계가 일치해야 하며 n은 표시하지 않는다."
+  ]
+}

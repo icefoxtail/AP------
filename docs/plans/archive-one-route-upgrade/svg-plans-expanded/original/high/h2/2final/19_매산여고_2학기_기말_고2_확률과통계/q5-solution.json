@@ -1,0 +1,74 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1",
+        "text": "-a"
+      },
+      "0",
+      {
+        "x": "1",
+        "text": "a"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "a",
+        "color": "BLUE"
+      },
+      {
+        "from": "-a",
+        "to": null,
+        "color": "WARM"
+      }
+    ],
+    "symmetry": [
+      {
+        "pair": [
+          "-a",
+          "a"
+        ]
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "p"
+      },
+      {
+        "shade": 1,
+        "text": "p"
+      }
+    ]
+  },
+  "caption": "표준화 경계 a=5/σ를 쓰면 왼쪽 누적넓이와 반대쪽 오른쪽 누적넓이가 대칭이다. 그림은 σ=5인 예시 배치이며 일반 σ에서는 경계가 이동한다. k의 수치는 표시하지 않는다.",
+  "accessibilityDescription": "표준화 경계 a=5/σ를 쓰면 왼쪽 누적넓이와 반대쪽 오른쪽 누적넓이가 대칭이다. 그림은 σ=5인 예시 배치이며 일반 σ에서는 경계가 이동한다. k의 수치는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 두 확률변수 $X, Y$가 각각 정규분포 $N(120, 4\\sigma^2), N(100, 9\\sigma^2)$을 따를 때, $P(X \\le 130) = P(Y \\ge k)$를 만족시키는 상수 $k$의 값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "$X\\sim N(120,4\\sigma^2)$이므로 표준편차는 $2\\sigma$이고, $Y\\sim N(100,9\\sigma^2)$의 표준편차는 $3\\sigma$이다.\n$P(X\\le130)=P\\left(Z\\le\\frac{130-120}{2\\sigma}\\right)=P\\left(Z\\le\\frac5\\sigma\\right)$이다.\n정규분포의 대칭성으로 $P(Y\\ge k)=P\\left(Z\\le\\frac{100-k}{3\\sigma}\\right)$이므로 $\\frac5\\sigma=\\frac{100-k}{3\\sigma}$이다.\n$15=100-k$, 따라서 $k=85$이다. 다른 선택지 70, 100, 115, 120은 이 표준화 경계에 맞지 않는다. 정답은 ②이다.",
+      "mappedTo": [
+        "chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "표준화 경계 a=5/σ를 쓰면 왼쪽 누적넓이와 반대쪽 오른쪽 누적넓이가 대칭이다. 그림은 σ=5인 예시 배치이며 일반 σ에서는 경계가 이동한다. k의 수치는 표시하지 않는다."
+  ]
+}

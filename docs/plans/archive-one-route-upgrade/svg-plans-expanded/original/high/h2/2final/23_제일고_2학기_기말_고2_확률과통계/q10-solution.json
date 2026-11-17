@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "오분류",
+              "p": "1/50"
+            },
+            {
+              "label": "정분류",
+              "p": "49/50"
+            }
+          ]
+        },
+        {
+          "label": "B",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "오분류",
+              "p": "3/100"
+            },
+            {
+              "label": "정분류",
+              "p": "97/100"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true
+  },
+  "caption": "오분류로 끝나는 두 경로를 합쳐 조건의 전체 확률을 만든다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 과일 가게에 감귤 제품은 A 농장과 B 농장에서 각각 전체 제품의 $60\\%$, $40\\%$가 생산되고, 두 감귤 농장 A, B에서 생산된 감귤을 무게에 따라 분류하는데 잘못 분류할 비율은 각각 $2\\%$, $3\\%$라고 한다. 그 과일 가게의 감귤 제품 중에서 임의로 한 개를 택하였더니 잘못 분류된 감귤일 때, 그 감귤이 A 농장에서 생산되었을 확률을 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A 오분류=3/250, B 오분류=3/250, 전체3/125. 경로의 중간 확률만 표시하고 조건부 최종비는 숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "A 오분류=3/250, B 오분류=3/250, 전체3/125. 경로의 중간 확률만 표시하고 조건부 최종비는 숨김."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "0",
+          "6",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -16,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 0,
+        "y": -12
+      },
+      {
+        "id": "M",
+        "x": 2,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "k"
+    },
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "M"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "-8",
+          "label": "k=-8"
+        }
+      ]
+    }
+  },
+  "caption": "접점 매개변수 t에 따른 K(t)와 예시 수평선 k=-8의 세 교점을 비교한다. 두 극값 높이와의 대소는 본문에서 판단한다.",
+  "accessibilityDescription": "접점 매개변수 t에 따른 K(t)와 예시 수평선 k=-8의 세 교점을 비교한다. 두 극값 높이와의 대소는 본문에서 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<단답형 1> 점 $(2, k)$에서 곡선 $y=x^3-6x$에 서로 다른 세 개의 접선을 그을 수 있도록 하는 실수 $k$의 값의 범위를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solve",
+      "condition": "접점의 $x$좌표를 $t$라 두면 접선의 기울기는 $3t^2-6$이고, 접선이 $(2,k)$를 지나므로 $k=t^3-6t+(2-t)(3t^2-6)=-2t^3+6t^2-12$이다. $K(t)$라 하면 $K^{\\prime}(t)=-6t(t-2)$이다. 따라서 $K$는 $t=0$에서 극솟값 $-12$, $t=2$에서 극댓값 $-4$를 갖는다. 수평선 $y=k$가 그래프와 서로 다른 세 점에서 만나려면 $-12<k<-4$이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 매개변수 t에 따른 K(t)와 예시 수평선 k=-8의 세 교점을 비교한다. 두 극값 높이와의 대소는 본문에서 판단한다."
+  ]
+}

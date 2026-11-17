@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "안전한틈",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "F",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "예시 배열 00011에서 눈금은 왼쪽부터 카드가 지난 개수인 틈 번호다. 0, 1, 2번 틈만 숫자 2를 넣기에 안전하며 이 중 서로 다른 두 틈을 고른다.",
+  "accessibilityDescription": "예시 배열 00011에서 눈금은 왼쪽부터 카드가 지난 개수인 틈 번호다. 0, 1, 2번 틈만 숫자 2를 넣기에 안전하며 이 중 서로 다른 두 틈을 고른다.",
+  "newVisualInformation": [
+    "예시 배열 00011에서 눈금은 왼쪽부터 카드가 지난 개수인 틈 번호다. 0, 1, 2번 틈만 숫자 2를 넣기에 안전하며 이 중 서로 다른 두 틈을 고른다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "숫자 0, 0, 0, 1, 1, 2, 2가 하나씩 적힌 7장의 카드가 있다. 이 7장의 카드를 모두 한 번씩 사용하여 일렬로 나열할 때, 이웃하는 두 장의 카드에 적힌 수의 곱이 1 이하일 확률은? (단, 같은 숫자가 적힌 카드끼리는 구별하지 않는다.) (4.6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "00011의 안전틈0,1,2와 불가틈3,4,5 비교. 한 틈에2 두장을 놓을 수 없음. 최종18/210=3/35 숨김.",
+      "mappedTo": "numberLine"
+    }
+  ]
+}

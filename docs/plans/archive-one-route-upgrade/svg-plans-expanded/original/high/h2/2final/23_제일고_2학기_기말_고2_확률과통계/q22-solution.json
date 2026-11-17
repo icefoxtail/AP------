@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "554",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "946",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-258",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "258",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "N",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sNQ",
+      "refs": [
+        "N",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "같은 표본의 중심은 유지하고 신뢰도에 따라 양쪽 반길이만 늘린다. 위는 구십오 퍼센트, 아래는 구십구 퍼센트이다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "half95",
+        "ownerSegment": "sMB",
+        "text": "7.84",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "half99",
+        "ownerSegment": "sNQ",
+        "text": "10.32",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "meanM",
+        "at": "M",
+        "text": "30",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "meanN",
+        "at": "N",
+        "text": "30",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n$인 표본을 임의 추출하여 추정한 모평균 $m$에 대한 신뢰도 95%의 신뢰구간이 $22.16\\le m\\le37.84$이다. 같은 표본을 이용하여 추정한 모평균 $m$의 신뢰도 99%의 신뢰구간을 구하는 과정을 서술하시오. (단, $P(|Z|\\le1.96)=0.95$, $P(|Z|\\le2.58)=0.99$) (7점, 부분 점수 있음.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원구간 중심30,반길이7.84로 표준오차4. 같은 중심에서99% 반길이10.32를 비교; 구하는 최종 양 끝점은 이름 P,Q로만 표시한다. source 기반 정밀 좌표이며 임의 비율 도식 아님.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원구간 중심30,반길이7.84로 표준오차4. 같은 중심에서99% 반길이10.32를 비교; 구하는 최종 양 끝점은 이름 P,Q로만 표시한다. source 기반 정밀 좌표이며 임의 비율 도식 아님."
+  ]
+}

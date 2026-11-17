@@ -1,0 +1,105 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "9",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ]
+      },
+      {
+        "id": "low",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "id": "high",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "0"
+        ]
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1",
+        "9"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "3",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "같은 높이에서 두 지수곡선 사이 가로 길이는 일정하다. 예시 높이의 선분 AB를 비교한다.",
+  "accessibilityDescription": "같은 높이에서 두 지수곡선 사이 가로 길이는 일정하다. 예시 높이의 선분 AB를 비교한다.",
+  "newVisualInformation": [
+    "같은 높이에서 두 지수곡선 사이 가로 길이는 일정하다. 예시 높이의 선분 AB를 비교한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $y=3^x$, $y=9\\times3^x$의 그래프와 두 직선 $y=1$, $y=9$로 둘러싸인 도형의 넓이는? (3.5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=3에서 x=-1,1. 일반 높이 y에서 두 역함수 차2. 넓이16은 표시하지 않음. 기존 해설 적분은 대수 범위 밖 표현이나 가로폭 일정 사실은 초등적 넓이 비교로 설명 가능; 해설 수정 없음.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}
