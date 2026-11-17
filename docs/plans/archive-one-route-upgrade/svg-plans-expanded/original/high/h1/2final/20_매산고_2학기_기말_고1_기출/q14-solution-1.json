@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -2,
+      6
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-4",
+          "3"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-9/2",
+          "9/2"
+        ],
+        "label": "F",
+        "color": "BLUE"
+      },
+      {
+        "id": "G",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "9/4",
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "3/2",
+          "9/2"
+        ],
+        "branch": "POSITIVE",
+        "label": "G",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "E",
+          "x": "9/2",
+          "y": "3/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a=3/2인 내부 예시이다. 파란 F는 각 가지에서 증가하고 주황 G는 감소하여 음수와 양수 구간의 교점을 나누어 살핀다. G의 오른쪽 끝점은 정의역에 포함된다. 이 예시는 가능한 모든 a의 범위를 증명하는 대신이 아니며, 양수 구간 교점 여부는 다음 끝점 차로 판정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\dfrac{3x-4}{x}$의 그래프와 함수 $y=\\sqrt{3a-x}+a$의 그래프가 서로 다른 두 점에서 만날 때, 실수 $a$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M+m$의 값은? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존해설SVG직접확인: a3/2대표예시검은두곡선/작은식라벨,음양교점있음. 색구분및끝점포함을정확엔진으로보존하고추가H(a)부호그래프로전체허용범위를연결한다. G=a+sqrt(3a−x)의a3/2형은x9/4+3y−y²,y≥3/2로정확재표현. F증가/G감소이므로음수교점항상1;양수교점은a>0및3−4/(3a)−a≥0. H=−3a²+9a−4≥0에서a범위(9±sqrt33)/6,끝점포함,최종합3숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3/2인 내부 예시이다. 파란 F는 각 가지에서 증가하고 주황 G는 감소하여 음수와 양수 구간의 교점을 나누어 살핀다. G의 오른쪽 끝점은 정의역에 포함된다. 이 예시는 가능한 모든 a의 범위를 증명하는 대신이 아니며, 양수 구간 교점 여부는 다음 끝점 차로 판정한다."
+  ]
+}

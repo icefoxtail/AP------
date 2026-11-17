@@ -1,0 +1,65 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "R",
+        "name": "빨강",
+        "count": "22",
+        "countUnit": "명"
+      },
+      {
+        "id": "Y",
+        "name": "노랑",
+        "count": "15",
+        "countUnit": "명"
+      }
+    ],
+    "universe": {
+      "name": "U",
+      "count": "34",
+      "countUnit": "명"
+    },
+    "elements": [
+      {
+        "text": "7명",
+        "in": [
+          "R"
+        ]
+      },
+      {
+        "text": "15명",
+        "in": [
+          "R",
+          "Y"
+        ]
+      },
+      {
+        "text": "12명",
+        "in": []
+      }
+    ],
+    "shade": "R∩Y",
+    "subset": [
+      "Y",
+      "R"
+    ]
+  },
+  "caption": "노란색을 좋아하는 학생이 모두 빨간색도 좋아하는 경우를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 반 학생 34명 중에서 빨간색을 좋아하는 학생이 22명, 노란색을 좋아하는 학생이 15명일 때, 빨간색과 노란색을 모두 좋아하는 학생의 수의 최댓값과 최솟값의 차를 구하면? [4.1점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "counts",
+      "condition": "빨강만/둘다/노랑만/둘다아님=[7, 15, 0, 12]. 총34, 빨강22, 노랑15. 개수 표기는 실제 사람의 이름이 아니라 영역 인원이다. 최종 두 경계값의 차는 표시하지 않는다.",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "두 경계 구성을 집합의 포함·겹침으로 비교하고 전체 인원 제한이 어떻게 작용하는지 보인다."
+  ]
+}

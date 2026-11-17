@@ -1,0 +1,345 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "M",
+    "N",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sPM",
+      "refs": [
+        "P",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPN",
+      "refs": [
+        "P",
+        "N"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "P",
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "P",
+        "N",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sDE",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sDF",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sPM",
+        "text": "8-t",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sPN",
+        "text": "4+4t/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원문 도형을 돌려 D에서 A쪽을 가로, C쪽을 세로 방향으로 보았다. D를 기준으로 P의 가로 이동을 t라 두면 세로 이동은 4−4t/3이다. 따라서 직사각형의 두 변은 8−t와 4+4t/3이며 이 곱의 최댓값을 구한다. 그림은 P가 EF의 중점인 t=3/2 예시로 최적 배치가 아니고, 허용범위는 0≤t≤3이다. 마지막 최대넓이는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 8인 정사각형 $ABCD$에 $DE=4, DF=3$이 되도록 점 $E, F$가 각각 변 $CD$와 $AD$ 위에 있다. 선분 $EF$ 위에 한 점 $P$를 잡고 점 $P$에서 변 $AB, BC$에 내린 수선의 발을 각각 $M, N$이라 할 때, 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]<br/><div style='text-align:center; margin:10px 0;'><svg width='235' height='235' viewBox='-20 -20 340 340' style='background:white; max-width:100%; height:auto;'><rect x='0' y='0' width='300' height='300' fill='none' stroke='black' stroke-width='2'/><text x='-15' y='15' font-size='14'>A</text><text x='-15' y='315' font-size='14'>B</text><text x='305' y='315' font-size='14'>C</text><text x='305' y='15' font-size='14'>D</text><circle cx='300' cy='150' r='3' fill='black'/><text x='310' y='155' font-size='14'>E</text><circle cx='187.5' cy='0' r='3' fill='black'/><text x='180' y='-5' font-size='14'>F</text><line x1='300' y1='150' x2='187.5' y2='0' stroke='black' stroke-width='2'/><circle cx='243.75' cy='75' r='4' fill='black'/><text x='250' y='70' font-size='14' font-weight='bold'>P</text><line x1='243.75' y1='75' x2='0' y2='75' stroke='black' stroke-width='1' stroke-dasharray='4'/><line x1='243.75' y1='75' x2='243.75' y2='300' stroke='black' stroke-width='1' stroke-dasharray='4'/><text x='-15' y='80' font-size='14'>M</text><text x='238' y='320' font-size='14'>N</text><rect x='0' y='75' width='243.75' height='225' fill='#f0f0f0' stroke='black' stroke-width='1.5'/><text x='150' y='320' font-size='14' text-anchor='middle'>8</text></svg></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본content내inlineSVG1개직접래스터열람. 자산파일참조0과그림없음을혼동하지않음. 원문정사각형8/DE4/DF3/수선발M,N와직사각형일치. 새도식은180도회전된동일도형이며D원점은배치게이지,나머지모든점공식이동/벡터합/중점/수선발. P중점(t3/2)예시는최적배치아님을캡션에명시. S=(8−t)(4+4t/3)=−4t²/3+20t/3+32,꼭짓점5/2∈[0,3],최대121/3. 기존inline작은14px텍스트에는중간길이관계가없어정확길이/수선표식/변길이식으로개선한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 도형을 돌려 D에서 A쪽을 가로, C쪽을 세로 방향으로 보았다. D를 기준으로 P의 가로 이동을 t라 두면 세로 이동은 4−4t/3이다. 따라서 직사각형의 두 변은 8−t와 4+4t/3이며 이 곱의 최댓값을 구한다. 그림은 P가 EF의 중점인 t=3/2 예시로 최적 배치가 아니고, 허용범위는 0≤t≤3이다. 마지막 최대넓이는 표시하지 않는다."
+  ]
+}

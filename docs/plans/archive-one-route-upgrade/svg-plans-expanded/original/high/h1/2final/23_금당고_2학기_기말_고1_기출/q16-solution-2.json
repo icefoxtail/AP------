@@ -1,0 +1,96 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "u",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "U",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-3",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "label": "A",
+        "within": 1,
+        "points": [
+          {
+            "id": "L",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "1",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "B",
+        "within": 1,
+        "points": [
+          {
+            "id": "L",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "3",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "C",
+        "within": 1,
+        "points": [
+          {
+            "id": "L",
+            "value": "-4",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "u=1/x+q의 치역에서 닫힌 구간 [-3,0]가 빠지는 경우이다. 첫 줄은 치역이고 아래 세 줄은 순서대로 t=1,3,4일 때의 −t와 t를 대조한다. 치역 안의 점과 밖의 점을 구별하면 |u|=t의 해 개수를 알 수 있다. 원문의 제곱근 가지는 t≥0에서 언제나 교점 하나를 더한다. t=0은 두 부호를 서로 다른 해로 세지 않으며, 경계에서의 제외 여부를 확인한다. 마지막 p−q의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $p,q$ $(p\\ge0)$에 대하여 함수 $f(x)=\\begin{cases}\\sqrt{x-p}&(x\\ge p)\\\\\\left|\\dfrac1x+q\\right|&(x<p)\\end{cases}$이다. 실수 $t$에 대하여 함수 $y=f(x)$의 그래프와 직선 $y=t$의 교점의 개수를 $g(t)$라 하면 $\\{t\\mid g(t)=2\\}=\\{t\\mid0\\lt t\\le3\\}$일 때, $p-q$의 값으로 가능한 모든 수의 합은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "모든자산참조0. p0이면u치역한쪽반직선이라정확1해t집합이상방유계(0,3]일수없음. p>0일때u치역(−∞,q)∪(q+1/p,∞),t0이g2가아니므로0은빠진닫힌구간안.두경계의0까지거리{0,3}을두수직선사례로표시. [0,3]또는[−3,0]을빼면t1/3에서는한부호만포함,t4는둘포함. 실제원함수근호가지1개추가. p1/3,q0/−3, p−q1/3·10/3,최종11/3숨김.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "u=1/x+q의 치역에서 닫힌 구간 [-3,0]가 빠지는 경우이다. 첫 줄은 치역이고 아래 세 줄은 순서대로 t=1,3,4일 때의 −t와 t를 대조한다. 치역 안의 점과 밖의 점을 구별하면 |u|=t의 해 개수를 알 수 있다. 원문의 제곱근 가지는 t≥0에서 언제나 교점 하나를 더한다. t=0은 두 부호를 서로 다른 해로 세지 않으며, 경계에서의 제외 여부를 확인한다. 마지막 p−q의 합은 표시하지 않는다."
+  ]
+}

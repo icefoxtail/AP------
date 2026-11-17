@@ -1,0 +1,87 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3.4304993252361675,
+        "depth": 0.7827260458839406
+      },
+      "height": 0.786774628879892,
+      "names": "EFGHABCD"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "a"
+    },
+    {
+      "edge": "BC",
+      "label": "b"
+    },
+    {
+      "edge": "AE",
+      "label": "c"
+    },
+    {
+      "edge": "AG",
+      "label": "\\sqrt{13}"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "caption": "세 모서리의 길이를 a, b, c라 두고 공간 대각선과 밑면 대각선으로 이루어진 직각삼각형을 비교한다. 모서리 비는 조건을 만족하는 한 예이며 개별 길이는 고정되지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 모든 모서리 길이의 합이 $20$인 직육면체 ABCD-EFGH가 있다. $\\overline{AG}=\\sqrt{13}$일 때, 직육면체 ABCD-EFGH의 겉넓이는? [4점]",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "example",
+      "condition": "실현용 a=2542/741,b=580/741,c=583/741은 a+b+c=5와 a²+b²+c²=13을 정확히 만족한다. 수치는 화면에 표시하지 않고 기호 길이와 주어진 공간대각선만 표시한다. 원문 입체 꼭짓점 ABCD 위, EFGH 아래의 대응을 보존한다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑면 대각선 EG와 높이 AE가 이루는 직각삼각형을 강조하여 피타고라스 정리를 두 번 사용하는 이유를 보여 준다."
+  ]
+}
