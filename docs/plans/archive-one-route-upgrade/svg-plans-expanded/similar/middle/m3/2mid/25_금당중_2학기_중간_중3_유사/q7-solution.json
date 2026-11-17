@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "bd",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "dc",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rightD",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "style": "ARC",
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleB",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "style": "ARC",
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "aclen",
+        "ownerSegment": "ac",
+        "text": "8√2",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "side": "LEFT"
+      },
+      {
+        "id": "middleBC",
+        "ownerSegment": "bc",
+        "text": "8"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 515,
+    "height": 445
+  },
+  "caption": "먼저 위 직각이등변삼각형에서 공통변 BC를 구하고, 아래 직각삼각형에서 BC를 빗변으로 사용한다.",
+  "newVisualInformation": [
+    "공통변8을 유지하고 BD의 답은 숨긴다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABC는 B 직각·C45°, AC=8√2; BDC는 D직각·B60°.",
+      "mappedTo": [
+        "mathPlan"
+      ]
+    }
+  ],
+  "accessibilityDescription": "먼저 위 직각이등변삼각형에서 공통변 BC를 구하고, 아래 직각삼각형에서 BC를 빗변으로 사용한다."
+}
