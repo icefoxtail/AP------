@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "archive-svg7-existing-evidence-gate-candidate-v1",
+  "status": "IMMUTABLE_CANDIDATE_STATIC_REVIEW_PENDING_LOCAL_NOT_RUN",
+  "owner": "/root/ci_m2s2",
+  "publisher": "/root",
+  "date": "2026-11-17",
+  "base": {
+    "preparedIntegration": "c816d2d39e5218d7a6547956c73e4463ae7e6377",
+    "preparedTree": "15d9282f9e7d6a0ed31f0380dde72a5b948fda07",
+    "preferredOpsBase": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "visualAncestor": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+    "observedNewPaths404At": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "branchRefWritesByAuthor": 0
+  },
+  "exactOpsRef": "refs/heads/ops/middle-existing-evidence-gate-26fc-20261117",
+  "operations": [
+    {
+      "path": "tools/4slot/check-svg7-current-ui-scoped.cjs",
+      "localPath": null,
+      "bytes": 40980,
+      "sha256": "e7e851bba035d2a5fa4495c6aefca8e45ff5f7574bd9fb0cf43598a0f3e9d492",
+      "gitBlobSha1": "81d8f90e1fb1e8b2b513db3fb9d22e2a0e0c9c0f",
+      "expectedBeforeGitBlobSha1": null,
+      "fullStringReadback": true,
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/middle-existing-evidence-gate.yml",
+      "localPath": null,
+      "bytes": 1599,
+      "sha256": "5b0034f3d724baf1626655d377fdcdcdc1ce5dff66c74bdfabb86e296e6f06a3",
+      "gitBlobSha1": "c4552c58ac9e7843a355bc85662fda6c0f5ef088",
+      "expectedBeforeGitBlobSha1": null,
+      "fullStringReadback": true,
+      "mode": "100644"
+    }
+  ],
+  "command": "node tools/4slot/check-svg7-current-ui-scoped.cjs --root \"$GITHUB_WORKSPACE\" --output \"$RUNNER_TEMP/svg7-existing-authority/scoped-result.json\"",
+  "fixture": {
+    "sourceBanks": 3,
+    "sourceRows": 75,
+    "selected": 7,
+    "outside": 68,
+    "baseline": "actual checked-out item-4slot-index.json records/pending whole state",
+    "optionalOutsideContinuities": "Existing-vector claims for these 75 UID only; an unsupported other continuity lane refuses explicitly.",
+    "currentData": "whole MD/ID/SVG exact copied from actual checkout; no projection rewrite",
+    "authority": "unchanged official builder -> existingVector.verify -> private validateNativeAuthority; not new FINAL_QA Native receipts",
+    "immutableHydration": "declared exact commit/path/Git/raw/bytes refs; full Git history; UI document closure only; no global outputDigests recursion",
+    "sourceAssets": "whole source3/compact3 pinned; all current local referenced assets for those 75 rows copied as exact HEAD bytes",
+    "worktree": "private shared-object no-checkout clone; no mutable hardlinks; only private selected7 sidecars and derived index vary"
+  },
+  "gates": [
+    "Root repository/event/ref/GITHUB_SHA/expected/HEAD equality and c816+C ancestry",
+    "D production10 and unchanged official core4 Git/raw/size pins",
+    "Actual outside68 full registered rows and pending reasons",
+    "Old seven sidecar bindings must still refuse under current renderer",
+    "New seven bindings all pass unchanged official existing native/vector/UI authority path",
+    "Selected vector hashes, existingVectorContinuityRef hashes, no new semantic/FINAL_QA authority",
+    "Official builder.verify plus Consumer get/hasTerm for selected7",
+    "Cold official run(check:true) must report changed=false and3 revalidated/0cache",
+    "Remove seven private sidecars: all7 refuse exact CLAIM_MISSING_OR_MIXED; outside68 unchanged",
+    "Private nonderived inputs and root tracked inputs/HEAD/status unchanged"
+  ],
+  "output": {
+    "metadataOnly": true,
+    "noQuestionOrSolutionBodies": true,
+    "report": "scoped-result.json",
+    "artifact": true,
+    "boundedLogFrames": "ARCHIVE_SCOPED_REPORT_BEGIN/CHUNK/END; SHA256/Git/bytes; 2MiB cap; 6000char chunks"
+  },
+  "authoredBoundaries": {
+    "newSourceReviews": 0,
+    "newMathQa": 0,
+    "newSemanticApprovals": 0,
+    "newFourSlotVectors": 0,
+    "newFinalQaNativeApprovals": 0,
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "compactWrites": 0,
+    "canonicalWrites": 0,
+    "mainWrites": 0,
+    "screenshotRuns": 0
+  },
+  "evidence": {
+    "DManifest": {
+      "gitBlobSha1": "8adc903324846a7b9166d3728f2a68db05bb27b8",
+      "sha256": "052a182985caa117256518ff140f1cf9438ac5e530a438ea26ec01efedeb46ee"
+    },
+    "currentTechnical": {
+      "gitBlobSha1": "c18655b38cb8adef217781e6b6bbf65ba8570758",
+      "sha256": "576c49a84a24ea53412817d8ab19868b59b8b4ac5f9775bc93e3619e747e4e03"
+    },
+    "parallelFocusedUnitOps": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "unitNodeResults": "OWNED_BY_ROOT_PENDING_ACTUAL",
+    "rootPreparedDCodeParse": "root reported V8 parse only; not owner execution"
+  },
+  "validation": {
+    "fullBlobReadback": "EXACT",
+    "nodeSyntax": "NOT_RUN",
+    "officialBuilder": "NOT_RUN",
+    "nativeExistingAuthority7": "NOT_RUN",
+    "Consumer7": "NOT_RUN",
+    "outside68": "NOT_RUN",
+    "coldAndDelete": "NOT_RUN",
+    "mainRegistration": "NOT_PERFORMED"
+  },
+  "nextAction": "Independent static review, root overlays exact2 on prepared ancestry, pushes closed ops ref, collects actual job report; no main registration claim."
+}
