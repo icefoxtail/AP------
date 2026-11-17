@@ -85,7 +85,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>세 다항식 $A, B, C$ 의 연산 결과 조립제법을 통해 얻은 미정계수 $a, b$ 에 대하여 $a+b$ 의 값은? (단, 연산 결과 $a=-2, b=1$ 이 도출됨) [4.1점]</div>",
+    "content": "<div>다항식 $x^{3}+ax^{2}+bx-2$ 가 $(x-1)(x+2)$ 로 나누어떨어질 때, 조립제법을 이용하여 상수 $a, b$ 에 대하여 $a+b$ 의 값을 구하면? [4.1점]</div>",
     "choices": [
       "-3",
       "-2",
@@ -93,8 +93,8 @@ window.questionBank = [
       "0",
       "1"
     ],
-    "answer": "③",
-    "solution": "주어진 조건에 따라 조립제법 연산 결과 $a=-2, b=1$ 이 도출되었다. 따라서 최종 합산 값은 $a+b = -2+1 = -1$ 이다.",
+    "answer": "⑤",
+    "solution": "$P(x)=x^{3}+ax^{2}+bx-2$ 라 하자. 조립제법으로 $x-1$ 로 나누면 나머지가 $a+b-1$ 이므로 $a+b-1=0$ 이다.<br>$x+2$ 로 나눈 나머지는 $P(-2)=-8+4a-2b-2=0$ 에서 $2a-b=5$ 이다.<br>두 식을 연립하면 $a=2$, $b=-1$ 이므로 $a+b=1$ 이다.",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
     "subUnitConfidence": "rule_inferred",

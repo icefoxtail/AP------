@@ -457,7 +457,7 @@ window.questionBank = [
       "복수정답"
     ],
     "wide": false,
-    "content": "**(1)** $\\dfrac{1}{2}x^2 + 1$\n**(2)** $\\dfrac{x-3}{2}$\n**(3)** $x^3 - x$\n**(4)** $2$",
+    "content": "다음 식은 각각 몇 차식인지 구하여라. (단, 상수는 0차로 본다.)\n**(1)** $\\dfrac{1}{2}x^2 + 1$\n**(2)** $\\dfrac{x-3}{2}$\n**(3)** $x^3 - x$\n**(4)** $2$",
     "choices": [],
     "answer": "(1) 2차 / (2) 1차 / (3) 3차 / (4) 0차",
     "solution": "[키포인트] 구하는 값은 (1) 2차 / (2) 1차 / (3) 3차 / (4) 0차이다.",
@@ -1222,7 +1222,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "$x = -\\dfrac{1}{2}$, $y = -\\dfrac{2}{3}$, $z = \\dfrac{3}{4}$일 때, $\\dfrac{2}{x^2} + \\dfrac{4y^3}{z} - x$의 값을 구하면?",
+    "content": "$x = -\\dfrac{1}{2}$, $y = -\\dfrac{2}{3}$, $z = \\dfrac{3}{4}$일 때, $\\dfrac{1}{x^2} + 12yz - x$의 값을 구하면?",
     "choices": [
       "$\\dfrac{5}{3}$",
       "12",
@@ -1231,7 +1231,7 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $\\dfrac{2}{(-\\frac{1}{2})^2} + \\dfrac{4(-\\frac{2}{3})}{^3}{\\frac{3}{4}} - (-\\dfrac{1}{2}) = 8 + (-6) - 4 + \\dfrac{1}{2} = -\\dfrac{3}{2}$\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] $\\dfrac{1}{\\left(-\\frac{1}{2}\\right)^2} + 12 \\times \\left(-\\dfrac{2}{3}\\right) \\times \\dfrac{3}{4} - \\left(-\\dfrac{1}{2}\\right) = 4 + (-6) + \\dfrac{1}{2} = -\\dfrac{3}{2}$\n따라서 정답은 ④이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -1390,7 +1390,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$$5 + \\dfrac{1}{n + \\dfrac{1}{m + \\dfrac{1}{2}}} = \\dfrac{227}{44}$$",
+    "content": "$$5 + \\dfrac{1}{n + \\dfrac{1}{m + \\dfrac{1}{2}}} = \\dfrac{227}{44}$$\n일 때, 자연수 $m, n$에 대하여 $m+n$의 값을 구하여라.",
     "choices": [],
     "answer": "9",
     "solution": "[키포인트] $\\dfrac{227}{44} = 5 + \\dfrac{7}{44} = 5 + \\dfrac{1}{6+\\frac{2}{7}} = 5 + \\dfrac{1}{6+\\frac{1}{3+\\frac{1}{2}}}$\n→ $m = 3$, $n = 6$ → $m + n = 9$\n따라서 구하는 값은 9이다.",

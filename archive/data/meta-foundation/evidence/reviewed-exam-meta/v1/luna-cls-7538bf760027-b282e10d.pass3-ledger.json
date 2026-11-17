@@ -1,0 +1,107 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T21:14:25+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/23_제일고_1학기_기말_고2_수학I.js",
+    "items":  [
+                  {
+                      "hold":  "integrationPattern: 선택지 표에 integrationPattern 허용 목록이 없음",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "두 변과 끼인각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "삼각형의 넓이"
+                                  },
+                      "resolutionReason":  "BC=2√5, 외접원 반지름 3이므로 sin∠BDC=√5/3, cos∠BDC=2/3이고 BD=3CD를 코사인법칙에 넣으면 CD²=10/3, S=5√5/3, 9S²=125다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "hold":  "integrationPattern: 선택지 표에 integrationPattern 허용 목록이 없음",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "변·각 계산",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "사인법칙"
+                                  },
+                      "resolutionReason":  "사인법칙으로 AC/sin45°=BC/sin60°이므로 AC=5(√2/2)/(√3/2)=5√6/3이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "resolutionReason":  "|sin2x|의 범위는 [0,1], 주기는 π/2이므로 y=3|sin2x|−1의 범위는 [−1,2]이고 최솟값 −1, 최댓값 2다.",
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수"
+                                  },
+                      "ordinal":  20,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "hold":  "integrationPattern: 선택지 표에 integrationPattern 허용 목록이 없음",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "변·각 계산",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "코사인법칙"
+                                  },
+                      "resolutionReason":  "사인법칙에서 변의 비는 BC:CA:AB=2√2:2:1이므로 코사인법칙으로 cos A=(2²+1²−(2√2)²)/(2·2·1)=−3/4다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "rpmPath":  {
+                                      "l4":  "변·각 계산",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "코사인법칙"
+                                  },
+                      "resolutionReason":  "반지름 5, 모선 15인 원뿔의 전개 부채꼴 각은 2π/3이고 최단 펼친 경로 21과 모선 15에 코사인법칙을 써 AC=9, CB=6을 얻어 m:n=3:2, 2m+n=8이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "hold":  "conditionKeys: 선택지 표에 서로 간의 최대공약수가 1인 두 자연수 조건을 나타내는 항목이 없음; integrationPattern: 선택지 표에 integrationPattern 허용 목록이 없음",
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+
+                                           ]
+                  },
+                  {
+                      "hold":  "rpmPath.l4: 선택지 표에 tan 그래프의 수직점근선을 구분하는 세부 경로가 없음; integrationPattern: 선택지 표에 integrationPattern 허용 목록이 없음",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수"
+                                  },
+                      "resolutionReason":  "tan(ax+b)의 주기로 a=3이고 첫 양의 점근선 x=π/12에서 3x+b=π/2라 b=π/4, 따라서 f(−π/36)=tan(π/6)=√3/3이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE",
+                                            "COND_RANGE"
+                                        ]
+                  }
+              ]
+}

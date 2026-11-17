@@ -1194,10 +1194,10 @@ window.questionBank = [
       "복수정답"
     ],
     "wide": false,
-    "content": "다음 $\\square$ 안에 $+$ 또는 $-$ 부호를 넣어 등식이 성립하도록 하여라. $$\\left(-\\frac{1}{2}\\right) \\quad \\square \\quad \\frac{1}{4} \\quad \\square \\quad \\left(-\\frac{1}{2}\\right) \\quad \\square \\quad \\left(-\\frac{1}{2}\\right) = -\\frac{1}{4}$$",
+    "content": "다음 $\\square$ 안에 $+$ 또는 $-$ 부호를 넣어 등식이 성립하도록 하여라. $$\\left(-\\frac{1}{2}\\right) \\quad \\square \\quad \\frac{1}{4} \\quad \\square \\quad \\left(-\\frac{1}{2}\\right) \\quad \\square \\quad \\left(-\\frac{1}{2}\\right) = \\frac{3}{4}$$",
     "choices": [],
-    "answer": "차례대로 $-, +, -$",
-    "solution": "[솔포인트] 각 빈칸에 부호를 대입하여 계산했을 때 $-\\frac{1}{4}$이 나오는 조합을 찾아 수식을 구성합니다.",
+    "answer": "차례대로 $+, -, -$",
+    "solution": "[솔포인트] $\\left(-\\dfrac{1}{2}\\right)+\\dfrac{1}{4}-\\left(-\\dfrac{1}{2}\\right)-\\left(-\\dfrac{1}{2}\\right)=-\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{2}+\\dfrac{1}{2}=\\dfrac{3}{4}$이므로 부호는 차례대로 $+, -, -$입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -74,9 +74,9 @@ window.questionBank = [
     "content": "<div class=\"box\">$\\log_a b \\times \\log_b c \\times \\log_c a$의 값은? [3.8]</div>",
     "choices": [
       "0",
-      "$\\log_a a$",
-      "$\\log_c c$",
-      "$\\log_b b$",
+      "$\\log_a c$",
+      "$\\log_c b$",
+      "$\\log_b a$",
       "1"
     ],
     "answer": "⑤",
@@ -663,7 +663,7 @@ window.questionBank = [
     "solutionImageCaption": "abs_sine",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "content": "<div class=\"box\">실수 $t$에 대하여 직선 $y=t$와 함수 $y=|a\\sin 2x + b|\\ (0 \\le x \\le 2\\pi)$의 그래프가 만나는 서로 다른 교점의 개수를 $f(t)$라 하자. $f(3)=7$일 때, $f(t)=4$를 만족시키는 모든 실수 $t$의 범위를 구하시오. (단, $a>0$, $b>0$) [5.0]</div>",
+    "content": "<div class=\"box\">실수 $t$에 대하여 직선 $y=t$와 함수 $y=|a\\sin 2x + b|\\ (0 \\le x \\le 2\\pi)$의 그래프가 만나는 서로 다른 교점의 개수를 $f(t)$라 하자. $f(3)=7$일 때, $f(t)=4$를 만족시키는 모든 양수 $t$의 범위를 구하시오. (단, $a>0$, $b>0$) [5.0]</div>",
     "choices": [],
     "answer": "3<t<9",
     "category": "삼각함수",

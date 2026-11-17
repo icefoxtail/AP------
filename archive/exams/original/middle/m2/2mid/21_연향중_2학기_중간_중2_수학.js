@@ -151,7 +151,7 @@ window.examData = {
   {
     "id": 5,
     "score": 4,
-    "question": "<p>5. 다음은 오른쪽 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$일 때, $\\square\\mathrm{ABCD}$가 평행사변형임을 설명하는 과정이다. 다음 $\\square$안에 옳지 않은 것은?(4점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q05.png\" /></p>",
+    "question": "<p>5. 다음은 오른쪽 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$일 때, $\\square\\mathrm{ABCD}$가 평행사변형임을 설명하는 과정이다.</p><p>△ABC와 △CDA에서 $\\overline{\\mathrm{BC}}=$ ㄱ (가정), $\\angle\\mathrm{ACB}=$ ㄴ (엇각), ㄷ은 공통이므로 △ABC≡△CDA (SAS 합동)이다. 따라서 $\\angle\\mathrm{BAC}=$ ㄹ (엇각)이므로 $\\overline{\\mathrm{AB}}\\ //$ ㅁ 이다.</p><p>다음 $\\square$안에 옳지 않은 것은?(4점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q05.png\" /></p>",
     "choices": [
       "ㄱ = $\\overline{\\mathrm{AD}}$",
       "ㄴ = $\\angle\\mathrm{CAD}$",
@@ -159,8 +159,8 @@ window.examData = {
       "ㄹ = $\\angle\\mathrm{DCA}$",
       "ㅁ = $\\overline{\\mathrm{CD}}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "ㄷ은 두 삼각형 △ABC, △CDA의 공통인 변 $\\overline{\\mathrm{AC}}$이므로 ③ ㄷ = $\\overline{\\mathrm{BD}}$는 옳지 않다. (ㄱ = $\\overline{\\mathrm{AD}}$, ㄴ = $\\angle\\mathrm{CAD}$, ㄹ = $\\angle\\mathrm{DCA}$, ㅁ = $\\overline{\\mathrm{CD}}$는 옳다.)"
   },
   {
     "id": 6,

@@ -1809,7 +1809,7 @@ window.questionBank = [
       "대표문제 다시 풀기"
     ],
     "wide": false,
-    "content": "△ABC에서 AH⊥BC이다. AC=17 cm, AH=8 cm, BC=21 cm일 때, AB의 길이를 구하시오.",
+    "content": "△ABC에서 AH⊥BC이고 점 H는 선분 BC 위에 있다. AC=17 cm, AH=8 cm, BC=21 cm일 때, AB의 길이를 구하시오.",
     "choices": [],
     "image": "",
     "answer": "10 cm",
