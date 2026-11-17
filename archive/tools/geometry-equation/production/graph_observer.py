@@ -3492,13 +3492,13 @@ def _ov_surd_terms(value):
     return ([(a,None)] if a else [])+[(int(q*d),int(radicand))],int(d)
 
 def _ov_surd_form(value):
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))   # an exact curve value such as (-3-sqrt(5))**2+6*(-3-sqrt(5))+4 is the rational 0 only once expanded
     return value.is_Rational or _ov_surd_terms(value) is not None
 
 def _ov_coordinate_codes(value):
     """(G5b) Glyph codes of a coordinate written as an integer, a fraction or p+q*sqrt(r) over a denominator: terms in reading order (+ is U+002B, - is U+2212), the radicand
     digits before the radical U+221A (MathJax draws the radicand first), then the denominator digits (a stacked fraction reads numerator first)."""
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))
     if value.is_Rational:return _ov_int_codes(value)
     rows=_ov_surd_terms(value)
     if rows is None:raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')

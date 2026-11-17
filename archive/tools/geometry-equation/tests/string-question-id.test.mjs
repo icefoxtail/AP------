@@ -139,3 +139,11 @@ test('publish tool writes solutionImage fields into an examData-only exam (scrat
     assert.ok(fs.existsSync(path.join(dir,'archive/assets/images/examdata_only_publish_test/q01-solution.svg')));
   }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('question UID: the textbook bank content-hash id qid_v1_<64 hex> is accepted, any other long id is still refused',()=>{
+  const qid='qid_v1_'+'1560637dc58248b8da018f2ac85b048e9e68fdb91d0d7ce704bfb0892dc2c58b';
+  assert.equal(qid.length,71);
+  assert.equal(questionUidV2(EXAM,qid),`${EXAM}|${qid}`);
+  assert.deepEqual(parseQuestionUidV2(`${EXAM}|${qid}`),{sourceExamId:EXAM,sourceQuestionOrdinal:qid});
+  for(const bad of [qid.slice(0,-1),qid+'0',qid.toUpperCase(),'qid_v2_'+qid.slice(7),'qid_v1_'+'g'.repeat(64),'x'.repeat(71)])assert.throws(()=>questionUidV2(EXAM,bad),/QUESTION_ORDINAL_INVALID/);
+});

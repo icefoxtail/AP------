@@ -201,6 +201,8 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(![unresolved,suppressed,repairs].every(Array.isArray))throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_WITNESS_LAYOUT_INVALID'});
     // Opt-in diagnostic: keep the incomplete candidate beside the failure so a person can see what the layout could not place (never read by any gate).
     if(process.env.APMS_DRAFT_DIR&&(unresolved.length||suppressed.length))(await import('node:fs')).writeFileSync((process.env.APMS_DRAFT_DIR)+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-'+Date.now()+'.svg',svg);
+    // Opt-in diagnostic: the inputs of the build call (spec, measurements, fragments) beside the draft, so the label layout can be re-run offline without the browser stages.
+    if(process.env.APMS_DRAFT_DIR&&(unresolved.length||suppressed.length))(await import('node:fs')).writeFileSync((process.env.APMS_DRAFT_DIR)+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-'+Date.now()+'.build.json',JSON.stringify({spec:bridged.spec,measurements,fragments,lastResort:lastResort===true,unresolved,suppressed,trace:witness.layout?.trace}));
     // (G11) a path total-length label (pathLabels[].id) found no place even in the second round (or leader:NEVER forbids it): its own code with the label's id
     const pathRowIds=new Set((Array.isArray(plan?.planeMarks?.pathLabels)?plan.planeMarks.pathLabels:[]).map(row=>row?.id));
     const stuckIds=[...unresolved,...suppressed].map(id=>String(id?.id??id)),stuckPath=stuckIds.length&&stuckIds.every(id=>id.endsWith('-label')&&pathRowIds.has(id.slice(0,-'-label'.length)))?stuckIds[0]:null;

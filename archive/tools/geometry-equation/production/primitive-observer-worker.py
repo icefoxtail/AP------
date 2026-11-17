@@ -100,7 +100,11 @@ def audit(p):
         for oid in sorted(unmarked&set(expected_points)):
             if oid in elements:errors.append('HIDDEN_POINT_MARKER_PRESENT:'+oid)
             ex,ey=ox+sx*expected_points[oid][0],oy-sy*expected_points[oid][1]
-            if any(math.hypot(cx-ex,cy-ey)<=max(1.5,r) for _,cx,cy,r in dots):errors.append('HIDDEN_POINT_MARKER_AT_POINT:'+oid)
+            # A dot that is the marker of another, displayed point standing at the very same place (a hidden framing point on the circle at the spot of a drawn point E) is that point's own dot, not a marker of the hidden one.
+            def owned_by_shown(n):
+                other=n.get('id');pos=expected_points.get(other)
+                return other is not None and other!=oid and other not in unmarked and pos is not None and math.hypot(ox+sx*pos[0]-ex,oy-sy*pos[1]-ey)<=1.5
+            if any(math.hypot(cx-ex,cy-ey)<=max(1.5,r) for n,cx,cy,r in dots if not owned_by_shown(n)):errors.append('HIDDEN_POINT_MARKER_AT_POINT:'+oid)
         kept={oid for oid in expected_points if oid not in unmarked}|set(p.get('extraPoints') or [])   # E37: the dots of a callout's copies are the plan's own (planeMarks.callouts)
         for n,_,_,_ in dots:
             if n.get('data-role')=='point' and n.get('id') not in kept:errors.append('UNEXPECTED_POINT_MARKER:'+str(n.get('id')))

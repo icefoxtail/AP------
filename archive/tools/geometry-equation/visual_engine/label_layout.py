@@ -241,8 +241,23 @@ def leader_crossed_strokes(start,end,obstacles,owner_ids):
         if hits:crossed[ident]=hits
     return crossed if sum(crossed.values())<=CROSSING_LEADER_MAX_CROSSINGS else None
 
-def crossing_leader_placement(at,w,h,occupied,acceptable,owner_ids):
-    """(box, leader end, number of crossings, compass direction) of the nearest free box for a point name reached by a leader that crosses the fewest thin strokes, or None."""
+def nearest_free_box(at,w,h,safe_area,acceptable,step=6.0):
+    """The free box (acceptable) of size w x h inside safe_area whose centre is nearest `at`, scanned on a grid of `step` px, or None."""
+    best=None
+    nx=int((safe_area.width-w)//step)+1;ny=int((safe_area.height-h)//step)+1
+    if nx<=0 or ny<=0:return None
+    for i in range(nx):
+        for j in range(ny):
+            x=safe_area.x+i*step;y=safe_area.y+j*step
+            distance=math.hypot(x+w/2-at[0],y+h/2-at[1])
+            if best is not None and distance>=best[0]:continue
+            box=Box(x,y,w,h)
+            if acceptable(box):best=(distance,box)
+    return best[1] if best else None
+
+def crossing_leader_placement(at,w,h,occupied,acceptable,owner_ids,allow_zero=False):
+    """(box, leader end, number of crossings, compass direction) of the nearest free box for a point name reached by a leader that crosses the fewest thin strokes, or None.
+    allow_zero (a segment or line label's last resort): a clear leader that crosses nothing counts too (the ordinary search of such a label stops at a short reach)."""
     best=None
     ticks=frozenset(o['id'] for o in occupied if (o.get('kind')=='tick' or o.get('role')=='tick') and isinstance(o.get('id'),str))   # a 4 px tick stub beside the point is brushed, not avoided
     for radius in POINT_NAME_RING_RADII:
@@ -253,7 +268,8 @@ def crossing_leader_placement(at,w,h,occupied,acceptable,owner_ids):
             if not acceptable(box,owner_check=False):continue
             end=owner_leader_endpoint(box,at,(box.x+box.width/2,box.y+box.height/2))
             crossed=leader_crossed_strokes(at,end,occupied,owner_ids)
-            if not crossed:continue                       # no crossing at all: the ordinary search already tried this place
+            if crossed is None:continue
+            if not crossed and not allow_zero:continue    # no crossing at all: the ordinary search already tried this place
             if not leader_clear(at,end,occupied,owner_ids,near_start=True,skip_ids=frozenset(crossed)|ticks):continue
             key=(sum(crossed.values()),radius,step)
             if best is None or key<best[0]:best=(key,box,end,step)
@@ -956,7 +972,9 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             trial=[]
             for label in current:
                 label=copy.deepcopy(label)
-                if label['id'] in stuck_ids:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
+                if label['id'] in stuck_ids:
+                    label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
+                    if label.get('lineOwned'):label['crossFallbackAllowed']=True       # (FC) a segment or line label may also take a leader that crosses a thin stroke or two
                 trial.append(label)
             try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,*order(v)))
             except ValueError:retry=None
@@ -1423,6 +1441,23 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                         if chosen:break
                     if chosen:break
+        if chosen is None and label.get('id')=='formula' and label.get('kind')=='EQUATION_LABEL' and label.get('target') is None and tick_owner is None and 'wedgeSearch' not in label:
+            # (FC) The formula text of a graph belongs to no stroke: when no box beside its usual place is free (the y axis runs through the top strip and the text is wider than
+            # either side of it), the nearest free box anywhere in the plot area takes it, so a long formula is never dropped. Reached only after every ordinary place failed.
+            found=nearest_free_box(label['at'],w,h,safe_area,acceptable)
+            if found is not None:chosen=found;method='FREE_AREA_NEAREST'
+        if chosen is None and line_owner is not None and label.get('crossFallbackAllowed') is True and not leader_only:
+            # (FC) Last resort of a segment or line label (only layout(last_resort=True) sets crossFallbackAllowed): no box beside its line, no clear leader. The nearest free box
+            # on a leader that starts on the label's own line and crosses at most CROSSING_LEADER_MAX_CROSSINGS thin strokes (an axis, a tick, a segment, a circle) at a clear angle.
+            # The leader is marked crossFallback, which the rendered-layout check already allows; the observer still ties the label back to its line by that leader.
+            best=None
+            for anchor in [tuple(label['at'])]+[tuple(v) for v in label.get('alternateAt',())]:
+                incident=owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']}
+                found=crossing_leader_placement(anchor,w,h,occupied,acceptable,incident,allow_zero=True)
+                if found is not None and (best is None or found[2]<best[0][2]):best=(found,anchor)
+            if best is not None:
+                (box,end,_crossings,direction),anchor=best
+                label={**label,'at':list(anchor)};tie_to_owner(end);leaders[-1]['crossFallback']=True;chosen=box;method='OWNER_LEADER_'+direction
         repair=None
         if (chosen is None and require_measurements and owner_marker is not None and label['kind'] in OWNER_BOUND_POINT_LABELS
             and not label.get('candidateCenters') and isinstance(label.get('measuredFragmentSha256'),str)
