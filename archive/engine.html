@@ -353,7 +353,9 @@
         .question-note-box,
         .note-box,
         .box {
-            display: inline-block;
+            /* html2canvas (평탄화 인쇄)가 inline-block 안 블록 자식의 글자 노드를 그리지 못해 상자 안 한글이 빠졌다. 블록 상자를 내용 폭으로 줄여 같은 모양을 유지한다. */
+            display: block;
+            width: fit-content;
             max-width: 100%;
             box-sizing: border-box;
             margin: 5px 0 6px 0;
