@@ -166,7 +166,9 @@ export function createWorkspace(workerHandle) {
         }
         const res = await workerHandle.mf.dispatchFetch("http://local/api" + route, { ...init, ...(body ? { body } : {}), headers: { ...(init.headers || {}), "X-Fixture-Role": "admin" } });
         const text = await res.text();
-        wire.log.push({ route, method: init.method || "GET", status: res.status });
+        let error = "";
+        try { error = String(JSON.parse(text).error || ""); } catch { /* not JSON */ }
+        wire.log.push({ route, method: init.method || "GET", status: res.status, error });
         return { ok: res.ok, status: res.status, json: async () => JSON.parse(text) };
       }
       if (u.startsWith(BASE)) {
@@ -247,14 +249,14 @@ export function configureSample(ws, seedMode, grade, scopeKeys, perUnit) {
 
 // Two units of one grade (screen order), `perUnit` questions each, whose paper stays well under the server limit.
 // Preference: the pair that also exercises an image and a catalog/source metadata difference. Returns null when no pair fits.
-export async function chooseSample(grade, { perUnit = 10, maxPairs = 10, budget = MAX_SAVED_PAPER_BYTES * 0.6 } = {}) {
+export async function chooseSample(grade, { perUnit = 10, maxUnits = 10, budget = MAX_SAVED_PAPER_BYTES * 0.6 } = {}) {
   const { ws, seedMode } = createWorkspace({ mf: null });
   ws.state.filters = { grade, semanticSubject: "", originalCurriculum: "", curriculumKey: "", courseKey: "" };
   ws.state.sources = []; ws.state.buckets = [];
-  const units = ws.scopeOptions().filter((scope) => scope.count >= perUnit && !scope.unclassified);
-  let best = null, probed = 0;
-  for (let i = 0; i < units.length && probed < maxPairs; i++) for (let j = i + 1; j < units.length && probed < maxPairs; j++) {
-    probed++;
+  // Every pair among the first `maxUnits` usable units, in screen order (deterministic): one image-heavy unit cannot empty the search.
+  const units = ws.scopeOptions().filter((scope) => scope.count >= perUnit && !scope.unclassified).slice(0, maxUnits);
+  let best = null;
+  for (let i = 0; i < units.length; i++) for (let j = i + 1; j < units.length; j++) {
     const keys = [units[i].key, units[j].key];
     configureSample(ws, seedMode, grade, keys, perUnit);
     if (!ws.state.selected.length) continue;

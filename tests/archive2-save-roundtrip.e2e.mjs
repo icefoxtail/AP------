@@ -6,6 +6,7 @@
 // Assertions are defect conditions (no rejection, same order, no duplicate rows, hash verified) and never fix data counts.
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
+import fs from "node:fs";
 import { after, before, test } from "node:test";
 import { MAX_SAVED_PAPER_BYTES, catalog, chooseSample, configureSample, core, createWorker, createWorkspace } from "./helpers/archive2-save-roundtrip-harness.mjs";
 
@@ -18,6 +19,7 @@ let server;
 before(async () => { server = await createWorker(); });
 after(async () => { await server?.dispose(); });
 
+const knownDefectGrades = [];
 const samples = new Map();
 async function sampleFor(grade) {
   if (!samples.has(grade)) samples.set(grade, await chooseSample(grade, { perUnit: PER_UNIT }));
@@ -75,18 +77,32 @@ for (const grade of GRADES) {
     await revision.ws.openSavedPaperRevision(paperId);
     assert.deepEqual(revision.ws.state.selected.map((r) => r.questionUid), sentUids, `${grade}: revision restores a different paper`);
     assert.equal(revision.ws.state.derivationSource?.parentId, paperId);
-    // Saving the revision re-sends the saved questions. A saved question whose images were embedded (data: URLs) is refused today:
-    // the Worker's assignment fingerprint (content/choices/image) no longer matches the catalog. Known defect, tracked as todo below.
-    const hasEmbeddedImages = paper.snapshot.questions.some((q) => JSON.stringify(q).includes("data:image/"));
-    const saveRevision = async () => {
+    // Saving the revision re-sends the saved questions. Everything here is strict except ONE known defect (repair list 34):
+    // a saved paper whose PROBLEM side (content/choices/image) carries embedded data: images is refused by the Worker with
+    // "assignment fingerprint가 일치하지 않습니다" (its fingerprint covers exactly content/choices/image). A paper with images only
+    // in the solution saves fine. The allowance below is that single condition; any other failure, or the same failure on a paper
+    // without problem-side images, fails the check. When a fix makes the re-save succeed, the strict assertions below run
+    // unchanged. Completion criterion of the fixing PR = delete the allowance (knownRevisionResaveDefect) and its summary test.
+    await t.test(`${grade}: save the revision`, async () => {
+      const rowsBefore = (await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n;
       await revision.ws.savePapers();
-      assert.equal(revision.ws.state.saveResultState, "SAVED", sendFailure(revision.ws, grade + " (revision)"));
+      if (revision.ws.state.saveResultState !== "SAVED") {
+        const hasProblemSideImage = paper.snapshot.questions.some((q) =>
+          (typeof q.image === "string" && q.image.startsWith("data:")) || JSON.stringify([q.content, q.choices]).includes("data:image/"));
+        const knownRevisionResaveDefect = hasProblemSideImage && /assignment fingerprint가 일치하지 않습니다/.test(revision.ws.state.saveError);
+        if (!knownRevisionResaveDefect) assert.fail(sendFailure(revision.ws, grade + " (revision)"));
+        const refusal = revision.wire.log.filter((l) => l.route === "/archive-saved-papers" && l.method === "POST").at(-1);
+        assert.equal(refusal?.status, 409, "the known refusal is a 409 about the question fingerprint");
+        assert.equal((await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n, rowsBefore, "a refused revision stores nothing (no half save)");
+        knownDefectGrades.push(grade);
+        return;
+      }
       const lineage = await server.db.prepare("SELECT parent_id, derivation_type FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?").bind(revision.ws.state.savedPaperIds[0]).first();
       assert.equal(lineage?.parent_id, paperId, "the revision is linked to its parent");
-    };
-    if (hasEmbeddedImages)
-      await t.test(`${grade}: saving a revision of a paper with embedded images`, { todo: "known defect: 수정본 저장이 이미지 내장 문항에서 '승인된 분류 assignment fingerprint가 일치하지 않습니다' 409로 거절됨 - 후속 PR에서 고치면 todo를 지운다" }, saveRevision);
-    else await saveRevision();
+      assert.ok(["REVISION", "FORK"].includes(lineage.derivation_type));
+      const savedRevision = await (await api("/archive-saved-papers/" + revision.ws.state.savedPaperIds[0])).json();
+      assert.deepEqual(savedRevision.paper.snapshot.questions.map((q) => q.questionUid), sentUids, `${grade}: the saved revision changed the question order`);
+    });
 
     // f. one question's source changed after saving: the revision must not open silently with the old content
     const changed = createWorkspace(server);
@@ -123,6 +139,17 @@ for (const grade of GRADES) {
   });
 }
 
+// Printed every run (and into the job summary) so the known defect (repair list 34) can never be forgotten or silently fixed.
+test("known defect summary (수리 목록 34)", () => {
+  const line = knownDefectGrades.length
+    ? `알려진 결함 ${knownDefectGrades.length}건: 그림 있는 저장본의 수정본 재저장 409 (수리 목록 34) — ${knownDefectGrades.join(", ")}`
+    : "알려진 결함 (34)이 재현되지 않음 — 허용 코드를 지워도 됨 (knownRevisionResaveDefect)";
+  console.log(line);
+  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `### Archive2 save round trip
+${line}
+`);
+});
+
 test("negative: metadata that differs from the catalog, or a stale list version, is still refused by the server", async () => {
   const grade = GRADES[0];
   const sample = await sampleFor(grade);
@@ -139,7 +166,9 @@ test("negative: metadata that differs from the catalog, or a stale list version,
   };
   const before = (await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n;
   await tampered.ws.savePapers();
-  assert.equal(tampered.wire.log.find((l) => l.method === "POST").status, 409, "altered metadata must be refused");
+  const refusedMeta = tampered.wire.log.find((l) => l.method === "POST");
+  assert.equal(refusedMeta.status, 409, "altered metadata must be refused");
+  assert.match(refusedMeta.error, /canonical metadata parity mismatch/, "refused for the metadata mismatch, not for another reason");
   assert.notEqual(tampered.ws.state.saveResultState, "SAVED");
   assert.equal((await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n, before, "nothing was stored");
 
@@ -150,5 +179,6 @@ test("negative: metadata that differs from the catalog, or a stale list version,
   await good.ws.savePapers();
   const stale = good.wire.log.find((l) => l.method === "POST");
   assert.equal(stale.status, 409, "a stale list version must be refused");
+  assert.match(stale.error, /분류 기준이 갱신/, "refused because the list version is stale, not for another reason");
   assert.notEqual(good.ws.state.saveResultState, "SAVED");
 });
