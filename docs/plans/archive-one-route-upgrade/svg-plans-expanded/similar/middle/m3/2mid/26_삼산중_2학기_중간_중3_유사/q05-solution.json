@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "38"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 38,
+        "label": "38",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "hyp",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원본 SVG 상단에 실제 존재하는 AB=4, A=38도, C직각을 그대로 보존한 별도 해설 보조도이다. AC는 A의 이웃변, BC는 대변이다. 원본 표의 cos38=0.7880과 sin38=0.6157을 각각 곱하되 최종 합은 그림에 쓰지 않는다. 표 값은 반올림 근삿값이고 도형은 정확38도로 작도한다. 문제 그림의 표 겹침은 별도 표시복구가 필요하다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 직각삼각형 $ABC$에서 $\\overline{AB} = 4$, $\\angle A = 38^\\circ$일 때, $\\overline{AC} + \\overline{BC}$의 값은? (단, 주어진 삼각비의 표를 이용하여 계산하시오.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본 q5.svg 전체래스터에서는 표가 A/C/직각을 가리지만 첫 nested SVG 자체에 rightC, givenA(owner C A B,38도), hypotenuse4, A/C이름이 정확히 존재한다. 원본 조각 분리열람으로 직접 확인하였으므로 내용미확정이 아니다. 해당 관계의 보조plan은 작성하고, 문제 자산의 도형/표 분리배치는 후속 표시복구 대상으로 남긴다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q5.svg 전체래스터에서는 표가 A/C/직각을 가리지만 첫 nested SVG 자체에 rightC, givenA(owner C A B,38도), hypotenuse4, A/C이름이 정확히 존재한다. 원본 조각 분리열람으로 직접 확인하였으므로 내용미확정이 아니다. 해당 관계의 보조plan은 작성하고, 문제 자산의 도형/표 분리배치는 후속 표시복구 대상으로 남긴다."
+  ]
+}

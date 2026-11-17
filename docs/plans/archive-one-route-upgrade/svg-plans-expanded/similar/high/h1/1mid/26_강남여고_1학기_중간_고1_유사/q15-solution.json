@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-2",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "-1"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "5/4"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-3/4"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "6",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "0",
+        "y": "3",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "5/4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "A",
+        "B",
+        "C",
+        "D",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "0"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "x1",
+          "x": "1",
+          "style": "DASHED",
+          "label": "x=1"
+        },
+        {
+          "id": "x3",
+          "x": "3",
+          "style": "DASHED",
+          "label": "x=3"
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "m=4인 허용 예시이다. 세로선 x=1, x=3에서 함수값의 양·음 부호를 비교한다. 예시의 두 근은 일반 m의 근을 뜻하지 않으며 최댓값 m은 표시하지 않는다. 세로축은 S=f/4로 정규화했다. 양의 상수배이므로 영점·부호·최대최소가 되는 가로 위치는 바뀌지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2-2mx+m+8=0$의 한 근은 $1$과 $3$ 사이에 있고, 또 한 근은 $3$보다 크도록 하는 정수 $m$의 최댓값은? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "m=4인 허용 예시이다. 세로선 x=1, x=3에서 함수값의 양·음 부호를 비교한다. 예시의 두 근은 일반 m의 근을 뜻하지 않으며 최댓값 m은 표시하지 않는다. 세로축은 S=f/4로 정규화했다. 양의 상수배이므로 영점·부호·최대최소가 되는 가로 위치는 바뀌지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 긴 세로 그림의 좌표 헤더5개가 작은 글씨로 모인다. 핵심은 x1/3에서 함수 부호이므로 이 두 세로선을 점선과 라벨로 직접 강조한다. m4는 예시이며 최댓값8 숨김."
+  ]
+}

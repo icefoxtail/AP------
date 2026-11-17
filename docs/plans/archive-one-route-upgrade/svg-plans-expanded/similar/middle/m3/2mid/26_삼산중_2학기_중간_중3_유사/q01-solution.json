@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sAC",
+        "text": "13",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 피타고라스 정리로 얻은 AB12를 표시한다. 기준각 A에서 대변 BC와 빗변 AC를 굵기 차이로 구분하며 최종 삼각비나 보기 번호는 쓰지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 직각삼각형 $ABC$에서 $\\angle A, \\angle C$의 삼각비의 값으로 옳은 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 피타고라스 정리로 얻은 AB12를 표시한다. 기준각 A에서 대변 BC와 빗변 AC를 굵기 차이로 구분하며 최종 삼각비나 보기 번호는 쓰지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 피타고라스 정리로 얻은 AB12를 표시한다. 기준각 A에서 대변 BC와 빗변 AC를 굵기 차이로 구분하며 최종 삼각비나 보기 번호는 쓰지 않는다."
+  ]
+}

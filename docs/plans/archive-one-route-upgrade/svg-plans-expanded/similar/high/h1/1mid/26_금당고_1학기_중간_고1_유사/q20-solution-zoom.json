@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-6",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "1/4"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "breakpoints": [
+      {
+        "x": "3/2",
+        "y": "1/4"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "H"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h1",
+          "slope": "0",
+          "intercept": "1/4",
+          "label": "H=1/4",
+          "style": "DASHED"
+        },
+        {
+          "id": "h2",
+          "slope": "0",
+          "intercept": "1",
+          "label": "H=1",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "낮은 세 수평선의 차이를 읽기 위해 1≤t≤2에서 H=g(t)−2를 확대했다. 가로축 H=0은 g=2, H=1/4은 g=9/4, H=1은 g=3에 대응한다. g=12는 앞의 전체 그림에서 확인한다. 이 확대만으로 바깥 구간의 교점 유무를 판단하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 3]\n실수 $t$에 대하여 $t \\le x \\le t+3$에서 이차함수 $f(x)=x^2-6x+5$의 최댓값과 최솟값의 차를 $g(t)$라 하자. $t$에 대한 방정식 $g(t)-2=0,\\ g(t)-\\dfrac{9}{4}=0,\\ g(t)-3=0,\\ g(t)-12=0$의 서로 다른 실근의 개수를 각각 $a,\\ b,\\ c,\\ d$라 할 때, $a+b+c+d$의 값을 풀이과정과 함께 상세하게 서술하시오. [12점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "낮은 세 수평선의 차이를 읽기 위해 1≤t≤2에서 H=g(t)−2를 확대했다. 가로축 H=0은 g=2, H=1/4은 g=9/4, H=1은 g=3에 대응한다. g=12는 앞의 전체 그림에서 확인한다. 이 확대만으로 바깥 구간의 교점 유무를 판단하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "g=2와9/4의 가까운 높이를 이동축 확대에서 분리"
+  ]
+}

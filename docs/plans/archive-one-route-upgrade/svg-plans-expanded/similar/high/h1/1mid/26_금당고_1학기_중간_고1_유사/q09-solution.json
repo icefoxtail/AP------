@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9/16",
+          "3/2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3/4",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "25/16",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "49/16",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "세로축 S=y/2로 정규화했다. x축과 한 번 만나는 경우에는 꼭짓점이 x축 위에 놓이고 판별식이 0이다. 접점의 중간 가로 좌표는 −3/4이며 구하는 k의 수치와 완성된 함수식은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=2x^2+3x+k$의 그래프가 $x$축과 한 점에서 만나도록 하는 실수 $k$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "세로축 S=y/2로 정규화했다. x축과 한 번 만나는 경우에는 꼭짓점이 x축 위에 놓이고 판별식이 0이다. 접점의 중간 가로 좌표는 −3/4이며 구하는 k의 수치와 완성된 함수식은 표시하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 긴 그래프와 완성식 헤더를 없애고 정규화한 접함 관계를 중심으로 보여준다. 최종 k9/8 직접 표시 금지."
+  ]
+}

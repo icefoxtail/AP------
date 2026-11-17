@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sHO",
+      "refs": [
+        "H",
+        "O"
+      ]
+    },
+    {
+      "id": "sDO",
+      "refs": [
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "H",
+        "O"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sDO",
+        "text": "2sqrt(3)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sHO",
+        "text": "2sqrt(3)",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "H",
+          "B",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "o",
+        "refs": [
+          "D",
+          "O",
+          "H"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 원래 색칠 영역과 원은 유지한다. 접점 두 직각과 B의60도에서 부채꼴 중심각120도를 얻는 사각형만 확대한다. 제거할 부채꼴의 면적과 최종 차는 표시하지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $12$인 정삼각형 $ABC$의 내접원 $O$의 반지름은 $2\\sqrt{3}$이다. 원 $O$는 변 $AB,BC$와 각각 점 $D,H$에서 접한다. 부채꼴 $DOH$ 부분을 제외하고 정삼각형 내부에 색칠된 부분의 넓이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 원래 색칠 영역과 원은 유지한다. 접점 두 직각과 B의60도에서 부채꼴 중심각120도를 얻는 사각형만 확대한다. 제거할 부채꼴의 면적과 최종 차는 표시하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 원래 색칠 영역과 원은 유지한다. 접점 두 직각과 B의60도에서 부채꼴 중심각120도를 얻는 사각형만 확대한다. 제거할 부채꼴의 면적과 최종 차는 표시하지 않는다."
+  ]
+}

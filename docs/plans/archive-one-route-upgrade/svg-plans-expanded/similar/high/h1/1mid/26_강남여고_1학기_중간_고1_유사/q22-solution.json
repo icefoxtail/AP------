@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "4",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "T",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "f-g"
+    }
+  },
+  "caption": "이 그림은 원문 f와 g 자체가 아니라 두 그래프의 차가 중근을 갖는 모습을 접점으로 평행이동한 t좌표의 대표 도식이다. 모든 k에서 접하려면 판별식의 k계수와 상수항이 모두 0이어야 한다. 특정 한 그림만으로 모든 k 조건을 증명하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 이차함수 $y=x^2-4kx+a$의 그래프와 직선 $y=2bx-4k^2+8k-5$가 실수 $k$의 값에 관계없이 항상 한 점에서 만나게 할 때, 실수 $a$, $b$의 값을 구하는 풀이 과정과 답을 쓰시오. (5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이 그림은 원문 f와 g 자체가 아니라 두 그래프의 차가 중근을 갖는 모습을 접점으로 평행이동한 t좌표의 대표 도식이다. 모든 k에서 접하려면 판별식의 k계수와 상수항이 모두 0이어야 한다. 특정 한 그림만으로 모든 k 조건을 증명하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 특정 k1 포물선/직선 식이 최종 a−1,b−2를 직접 드러낸다. 원문과 혼동하지 않도록 접점 이동한 차함수 대표 도식임을 명시하고, 모든 k 조건은 판별식 항등식으로 연결한다."
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "U",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "W",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "-2",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "5/2",
+        "y": "19/4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "U",
+        "W",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "curveX": "-1"
+        },
+        {
+          "id": "D",
+          "curveX": "2"
+        }
+      ],
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "5",
+          "label": "y=5",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "둘째 패널은 g=−x²+2x+6이다. C,D는 첫 패널과 같은 좌표의 공통점이다. y=5는 예시이며 전체 허용 t를 뜻하지 않는다. 각 곡선의 꼭짓점과 C,D 높이에서 교점의 중복 여부를 따로 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 직선 $y=t$가 두 이차함수 $y=x^2+2$, $y=-x^2+2x+6$의 그래프와 만날 때, 서로 다른 교점의 개수가 $4$가 되게 하는 모든 실수 $t$의 값의 범위를 구하시오. [5.8점]\n",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 패널은 f=x²+2이다. 두 패널은 같은 x,y 좌표 값을 사용하되 화면 배율은 각각 다를 수 있으며 점 C,D는 동일한 두 그래프의 공통점이다. 예시 수평선 y=5의 교점을 비교하되, 꼭짓점 높이에서는 접점 수가 줄고 공통점 높이에서는 중복되는 x를 한 번만 센다. 최종 t의 범위는 쓰지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 두 곡선 중첩을 별도 동일 좌표 패널로 분리하고 공통점 C,D 소유를 일치시켜 중복 근을 구분."
+  ]
+}

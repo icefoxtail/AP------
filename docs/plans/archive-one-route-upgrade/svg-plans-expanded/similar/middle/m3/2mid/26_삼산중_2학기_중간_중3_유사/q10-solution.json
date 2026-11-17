@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "A",
+    "D",
+    "B",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sDK",
+      "refs": [
+        "D",
+        "K"
+      ]
+    },
+    {
+      "id": "sKB",
+      "refs": [
+        "K",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "D",
+        "K",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sHD",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sKB",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "H",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d",
+        "refs": [
+          "K",
+          "D",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 첫 경로의 높이차는3−2=1이고 다음은2이다. 두 빗변을 각각 구해 더하되 전체 이동거리의 최종값은 쓰지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "배구 선수가 지면으로부터 높이 $3\\text{ m}$인 $A$지점에서 스파이크한 공이 높이 $2\\text{ m}$인 네트의 상단 끝 $D$지점에 걸린 후, 꺾여서 바닥의 $B$지점에 떨어졌다. $A$지점에서 $D$지점으로 향하는 공의 경로는 수평선과 $30^\\circ$의 각을 이루고, $D$지점에서 바닥의 $B$지점으로 떨어지는 공의 경로는 수평선과 $45^\\circ$의 각을 이룬다고 한다. 이때 공이 이동한 총거리는? (단, 공의 궤적은 직선이며 다른 외부 요인은 무시한다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 첫 경로의 높이차는3−2=1이고 다음은2이다. 두 빗변을 각각 구해 더하되 전체 이동거리의 최종값은 쓰지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 첫 경로의 높이차는3−2=1이고 다음은2이다. 두 빗변을 각각 구해 더하되 전체 이동거리의 최종값은 쓰지 않는다."
+  ]
+}

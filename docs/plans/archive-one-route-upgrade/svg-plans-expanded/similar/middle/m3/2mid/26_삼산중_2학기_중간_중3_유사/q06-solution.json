@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true,
+      "emphasis": "BOLD"
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sCD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sBD",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sAB",
+        "text": "2sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 공유 대각선 BD를 굵은 점선으로 강조하여 두 직각삼각형의 넓이를 따로 계산한다. 넓이의 합은 쓰지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 사각형 $ABCD$에서 $\\angle A = 30^\\circ$, $\\angle C = 45^\\circ$, $\\angle ABD = \\angle BDC = 90^\\circ$이고 $\\overline{DC} = 2$일 때, 사각형 $ABCD$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 공유 대각선 BD를 굵은 점선으로 강조하여 두 직각삼각형의 넓이를 따로 계산한다. 넓이의 합은 쓰지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 공유 대각선 BD를 굵은 점선으로 강조하여 두 직각삼각형의 넓이를 따로 계산한다. 넓이의 합은 쓰지 않는다."
+  ]
+}

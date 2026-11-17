@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "5"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-1"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "5"
+      ]
+    }
+  },
+  "caption": "감소하는 경우에는 끝점 대응의 방향이 반대다. 1이 5로, 3이 −1로 대응해야 공역 전체를 빠짐없이 한 번씩 지난다. 완성된 일차식과 최종 순서쌍은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $X=\\{x \\mid 1 \\le x \\le 3\\}$과 $Y=\\{y \\mid -1 \\le y \\le 5\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=ax+b$가 일대일대응일 때, 상수 $a$와 $b$의 순서쌍 $(a,\\, b)$를 모두 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "일대일대응이므로 a≠0,증가때 a3,b−4 감소때 a−3,b8. 두 그림은 서로 다른 경우이며 임의 예시가 아니다. 정의역[1,3] 밖 연장 없음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "감소하는 경우에는 끝점 대응의 방향이 반대다. 1이 5로, 3이 −1로 대응해야 공역 전체를 빠짐없이 한 번씩 지난다. 완성된 일차식과 최종 순서쌍은 표시하지 않는다."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5/3",
+          "-2",
+          "1/5"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5",
+        "y": "-10/3"
+      },
+      {
+        "id": "A",
+        "x": "0",
+        "y": "5/3"
+      },
+      {
+        "id": "B",
+        "x": "10",
+        "y": "5/3"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "58/15",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "11",
+        "y": "58/15",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "A",
+        "B",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0",
+        "10"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "low",
+          "slope": "0",
+          "intercept": "-10/3",
+          "label": "L",
+          "style": "DASHED"
+        },
+        {
+          "id": "high",
+          "slope": "0",
+          "intercept": "5/3",
+          "label": "H",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "S=f(x)/5로 세로 정규화했다. 수평선 L은 꼭짓점 접함, 수평선 H는 t=0,10이 주는 공통 f(t) 높이이다. L=−2f(t)/5, H=f(t)/5이므로 L=−2H이다. 곱의 두 인수에서 나오는 근을 중복 없이 세는 관계를 구분한다. 수치 높이와 f(9)는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 이차함수 $f(x)$가 있다. $x$에 대한 방정식\n$$f(x)\\times\\left(f(x)+2f(t)\\right)=0$$\n의 서로 다른 실근의 개수가 $3$이 되도록 하는 모든 실수 $t$의 값이 $0, 10$일 때, $f(9)$의 값을 구하는 과정을 서술하시오. [12점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "S=f(x)/5로 세로 정규화했다. 수평선 L은 꼭짓점 접함, 수평선 H는 t=0,10이 주는 공통 f(t) 높이이다. L=−2f(t)/5, H=f(t)/5이므로 L=−2H이다. 곱의 두 인수에서 나오는 근을 중복 없이 세는 관계를 구분한다. 수치 높이와 f(9)는 표시하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 긴 분수 좌표 헤더를 줄이고 두 수평선의 역할을 텍스트로 구분. 최종 f9 숨김."
+  ]
+}

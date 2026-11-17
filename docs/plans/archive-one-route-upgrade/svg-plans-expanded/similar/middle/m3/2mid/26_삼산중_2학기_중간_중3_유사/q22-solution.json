@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "11"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ],
+      "dashed": true,
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAD",
+        "text": "h",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sDB",
+        "text": "h/11",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sDC",
+        "text": "h",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 문제의 tan85≈11 약정을 적용한 비례모형이며 실제85도를 정확히 작도한 그림은 아니다. h를 높이라 두고 AD=h, DB=h/11과 전체48의 관계를 비교한다. 원래 정확 각도 그림은 유지한다. h의 최종값은 쓰지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형2> 어느 유명한 건축물은 지면의 수직선으로부터 $5^\\circ$ 기울어져 있다. 지면 위의 $A$지점에서 건축물의 밑동인 $B$지점까지의 거리는 $48\\text{ m}$이고, $A$지점에서 건축물의 꼭대기 $C$지점을 올려다본 각의 크기는 $45^\\circ$이다. 건축물의 꼭대기 $C$에서 지면에 내린 수선의 발을 $D$라 하고 선분 $CD$의 길이를 이 건축물의 높이라고 할 때, 건축물의 높이를 구하고 그 과정을 서술하시오. (단, 점 $A, D, B$는 지면 위에서 일직선상에 있고, $\\tan 85^\\circ = 11$로 계산한다.) [5점, 부분점수 있음]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 문제의 tan85≈11 약정을 적용한 비례모형이며 실제85도를 정확히 작도한 그림은 아니다. h를 높이라 두고 AD=h, DB=h/11과 전체48의 관계를 비교한다. 원래 정확 각도 그림은 유지한다. h의 최종값은 쓰지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 문제의 tan85≈11 약정을 적용한 비례모형이며 실제85도를 정확히 작도한 그림은 아니다. h를 높이라 두고 AD=h, DB=h/11과 전체48의 관계를 비교한다. 원래 정확 각도 그림은 유지한다. h의 최종값은 쓰지 않는다."
+  ]
+}

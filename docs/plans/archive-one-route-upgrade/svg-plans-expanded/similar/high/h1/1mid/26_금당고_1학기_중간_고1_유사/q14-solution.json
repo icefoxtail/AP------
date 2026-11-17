@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "0",
+          "-2/3"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "F",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "F"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1"
+        },
+        {
+          "id": "Q",
+          "curveX": "-1"
+        },
+        {
+          "id": "R",
+          "axis": "x",
+          "value": "1"
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "value": "-1"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "P",
+            "Q",
+            "S",
+            "R"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "밑변의 가운데를 원점으로 잡았다. t=1인 한 예시 직사각형이며 최대 둘레를 만드는 도형이라고 가정하지 않는다. 일반 가로 길이는 2t, 세로 길이는 6−2t²/3이므로 둘레식을 세워 최적화한다. 최댓값은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 폭이 $6$이고 높이가 $6$인 포물선 모양의 도형 안에, 한 변이 포물선의 밑변 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있는 직사각형을 그리려고 한다. 이 직사각형의 둘레의 길이의 최댓값은? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "밑변의 가운데를 원점으로 잡았다. t=1인 한 예시 직사각형이며 최대 둘레를 만드는 도형이라고 가정하지 않는다. 일반 가로 길이는 2t, 세로 길이는 6−2t²/3이므로 둘레식을 세워 최적화한다. 최댓값은 쓰지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 직사각형은 최적 t3/2로 계산되어 있으나 중간 t와 일반 관계 라벨이 없어 대표도형인지 불명확하다. t1 예시라고 명시하고 원문의 폭/높이6 및 직사각형 음영·네 꼭짓점 관계를 보존한다."
+  ]
+}

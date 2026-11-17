@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "O",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAM",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sOM",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sOA",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "half",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 전체 원 그림은 유지하고 반현과 중심거리의 직각삼각형을 확대한다. 같은 현의 두 절반을 동일틱으로 표시한다. 피타고라스 정리로 r=√(6²+8²)=10을 얻는다. 둘레의 최종값은 표시하지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $O$에서 현의 길이가 $16\\text{ cm}$이고, 원의 중심에서 현에 이르는 거리가 $6\\text{ cm}$일 때, 원 $O$의 둘레의 길이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 전체 원 그림은 유지하고 반현과 중심거리의 직각삼각형을 확대한다. 같은 현의 두 절반을 동일틱으로 표시한다. 피타고라스 정리로 r=√(6²+8²)=10을 얻는다. 둘레의 최종값은 표시하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 전체 원 그림은 유지하고 반현과 중심거리의 직각삼각형을 확대한다. 같은 현의 두 절반을 동일틱으로 표시한다. 피타고라스 정리로 r=√(6²+8²)=10을 얻는다. 둘레의 최종값은 표시하지 않는다."
+  ]
+}

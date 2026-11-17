@@ -1,0 +1,161 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "N",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sNE",
+      "refs": [
+        "N",
+        "E"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "N",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sON",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sEO",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 두 번째 현 EF의 중점 N에서 수선을 이용한다. 앞 그림과 같은 반지름 r을 사용한다. EN과 EF의 계산 결과는 표시하지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 원 $O$ 내부에 길이가 각각 같은 두 쌍의 평행한 현 $AB, CD$와 현 $EF, GH$가 있다. 현 $AB$와 현 $EF$는 서로 수직이고, 두 현 $AB, CD$ 사이의 거리는 $8\\text{ cm}$, 두 현 $EF, GH$ 사이의 거리는 $12\\text{ cm}$이다. $\\overline{AB} = 16\\text{ cm}$일 때, $\\overline{EF}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두 쌍 간격8/12를 중심거리4/6으로 바꾸는 두 보조 직각삼각형. 같은 r 공유, EN과EF 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 쌍 간격8/12를 중심거리4/6으로 바꾸는 두 보조 직각삼각형. 같은 r 공유, EN과EF 숨김."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-3",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "6",
+        "y": "-4"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "10",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "0",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "12",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "A",
+        "B",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "자연수 a=2인 한 예시에서 S=y/4를 그렸다. 일반 a의 근 존재 조건은 14a²−40>0이며 근의 제곱합은 46a²−80이다. 예시 그림만으로 최소성을 결론내지 않고 허용 자연수에서 이 식의 증가를 확인한다. 최종 제곱합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2-6ax+40-5a^2$의 그래프가 $x$축과 서로 다른 두 점 $(\\alpha, 0), (\\beta, 0)$에서 만날 때, $\\alpha^2+\\beta^2$의 최솟값은? (단, $a$는 자연수이다.) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "자연수 a=2인 한 예시에서 S=y/4를 그렸다. 일반 a의 근 존재 조건은 14a²−40>0이며 근의 제곱합은 46a²−80이다. 예시 그림만으로 최소성을 결론내지 않고 허용 자연수에서 이 식의 증가를 확인한다. 최종 제곱합은 쓰지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 긴 세로 그림과 a값 불명확성을 개선. a2 예시임과 일반 최소성 증명 별개임 명시."
+  ]
+}

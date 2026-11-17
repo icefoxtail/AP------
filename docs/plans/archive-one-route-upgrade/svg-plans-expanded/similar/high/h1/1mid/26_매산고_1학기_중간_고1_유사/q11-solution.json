@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-31/16",
+          "-1/8",
+          "1/16"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-2"
+      },
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "17/16",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "8",
+        "y": "17/16",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "S"
+    }
+  },
+  "caption": "두 함수의 차 2x²+(k−1)x+4의 판별식을 D라 하고 S=D/16을 그렸다. 두 영점은 접함을 만드는 서로 다른 k에 대응한다. 원래 포물선과 직선 자체의 그림이 아니며 두 k의 값과 곱은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=2x^2+kx+3$의 그래프와 직선 $y=x-1$이 접하도록 하는 모든 실수 $k$의 값의 곱은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두 함수의 차 2x²+(k−1)x+4의 판별식을 D라 하고 S=D/16을 그렸다. 두 영점은 접함을 만드는 서로 다른 k에 대응한다. 원래 포물선과 직선 자체의 그림이 아니며 두 k의 값과 곱은 표시하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 한 접함 예시만 보이는 그림을 판별식의 두 영점으로 보완하여 두 k 모두 고려하게 함."
+  ]
+}

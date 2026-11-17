@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "3/2",
+          "-3/16"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "12"
+      },
+      {
+        "id": "L",
+        "x": "1/4",
+        "y": "2397/256",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "47/4",
+        "y": "189/256",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0",
+        "12"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "기존 문제 그림과 색칠한 세 영역의 해설 그림은 삭제하지 않고 유지하며, 이 그래프만 별도로 덧붙인다. AP=x에서 넓이 A(x)=72−x²/2−(12−x)²/4를 세우고 세로축 S=A(x)/4로 정규화했다. P는 변의 내부이므로 0<x<12이며 양 끝은 포함하지 않는다. 꼭짓점 높이와 원래 넓이의 최댓값은 라벨에 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식2 (서술형)] [7점] (부분점수 있음)<br>아래의 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{AB}=\\overline{AC}=12$인 직각이등변삼각형 $ABC$가 있다. $\\overline{AB}$의 내부의 한 점 $P$에서 $\\overline{BC}$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 $\\overline{BC}$와 평행한 직선이 $\\overline{AC}$와 만나는 점을 $R$이라 할 때, 사각형 $PQCR$의 넓이의 최댓값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존 문제 그림과 색칠한 세 영역의 해설 그림은 삭제하지 않고 유지하며, 이 그래프만 별도로 덧붙인다. AP=x에서 넓이 A(x)=72−x²/2−(12−x)²/4를 세우고 세로축 S=A(x)/4로 정규화했다. P는 변의 내부이므로 0<x<12이며 양 끝은 포함하지 않는다. 꼭짓점 높이와 원래 넓이의 최댓값은 라벨에 쓰지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 도형은 관계가 명료하므로 그대로 보존하되 세 영역의 넓이 차에서 얻은 이차식과 최대성의 연결을 추가 그래프로 보완한다. 도형을 그래프로 대체하지 않으며 열린 정의역을 명시한다."
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAB",
+        "text": "u",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sAD",
+        "text": "4u",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sAC",
+        "text": "3v",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v3",
+        "ownerSegment": "sAE",
+        "text": "2v",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "theta",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. θ=60도이고 AB=6,AC=12인 조건을 만족하는 한 예시다. 일반 θ에서도 공통 sinθ가 약분됨을 사용한다. 두 대응변의 기호를 직접 붙여 긴 중첩 그림에서 소유를 분리한다. 최종 넓이는 표시하지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형3> 다음 그림의 $\\triangle ABC$와 $\\triangle ADE$에 대하여 $\\overline{AC} : \\overline{AE} = 3 : 2$, $\\overline{AB} : \\overline{AD} = 1 : 4$이고 $\\triangle ABC$의 넓이가 $18\\sqrt{3}$일 때, $\\triangle ADE$의 넓이를 구하고, <조건>에 맞게 풀이과정을 서술하시오. [4점, 부분점수 있음]\n<조건>\n- $\\triangle ABC$, $\\triangle ADE$의 넓이를 삼각비를 이용한 식으로 나타낼 것. (단, 문자를 사용할 때는 문자가 무엇을 뜻하는지 반드시 표현할 것.)\n- $\\triangle ABC$, $\\triangle ADE$의 넓이 사이의 관계식을 풀이과정에 포함할 것.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. θ=60도이고 AB=6,AC=12인 조건을 만족하는 한 예시다. 일반 θ에서도 공통 sinθ가 약분됨을 사용한다. 두 대응변의 기호를 직접 붙여 긴 중첩 그림에서 소유를 분리한다. 최종 넓이는 표시하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. θ=60도이고 AB=6,AC=12인 조건을 만족하는 한 예시다. 일반 θ에서도 공통 sinθ가 약분됨을 사용한다. 두 대응변의 기호를 직접 붙여 긴 중첩 그림에서 소유를 분리한다. 최종 넓이는 표시하지 않는다."
+  ]
+}

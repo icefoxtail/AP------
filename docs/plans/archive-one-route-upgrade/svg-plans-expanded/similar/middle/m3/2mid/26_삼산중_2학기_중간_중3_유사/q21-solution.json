@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "F",
+    "G",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "F",
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAF",
+        "text": "sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sFG",
+        "text": "3/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "halves",
+        "count": 1,
+        "segments": [
+          "sFG",
+          "sGE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "E",
+          "A",
+          "F"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleE",
+        "refs": [
+          "A",
+          "E",
+          "F"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 접기에서 AF=DF를 얻은 뒤 삼각형 AEF만 따로 돌려 그렸다. G는 F에서 AE에 내린 수선의 발이다. 각 A=60도, 각 E=45도이므로 EG=FG를 적용하며 EF의 값은 쓰지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형1> 다음 그림과 같이 정삼각형 모양의 종이를 $\\overline{EF}$를 접는 선으로 하여 접었더니 $\\overline{CF} = 2\\text{ cm}$, $\\angle CDF = 90^\\circ$이었다. 이때 $\\overline{EF}$의 길이를 구하고, 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존 접기 전체도 보존. 삼각형 AEF에서 수선FG를 새로 그려 AF√3와 FG3/2를 연결, EF 최종값 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 접기 전체도 보존. 삼각형 AEF에서 수선FG를 새로 그려 AF√3와 FG3/2를 연결, EF 최종값 숨김."
+  ]
+}

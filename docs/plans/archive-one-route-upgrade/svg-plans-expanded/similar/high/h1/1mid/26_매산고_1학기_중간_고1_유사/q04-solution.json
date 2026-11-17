@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "2"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "V",
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0",
+        "3"
+      ],
+      "y": []
+    }
+  },
+  "caption": "주어진 닫힌 구간의 양 끝점과 내부 꼭짓점의 높이를 비교한다. 최댓값과 최솟값의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x \\le 3$에서 이차함수 $y=x^2-4x+5$의 최솟값과 최댓값의 합은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "주어진 닫힌 구간의 양 끝점과 내부 꼭짓점의 높이를 비교한다. 최댓값과 최솟값의 합은 표시하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 상단 좌표 나열을 줄이고 구간 끝점 소유를 x축 눈금으로 연결. 끝점과 꼭짓점 비교 관계 유지."
+  ]
+}

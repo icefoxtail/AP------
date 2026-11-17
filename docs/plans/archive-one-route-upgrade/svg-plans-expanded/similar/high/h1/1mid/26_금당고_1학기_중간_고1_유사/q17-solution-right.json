@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      2,
+      3.5
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "2",
+        "7/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "C",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-1/4"
+      },
+      {
+        "id": "R",
+        "x": "7/2",
+        "y": "3/4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "C",
+        "D",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f-g"
+    }
+  },
+  "caption": "앞의 a=3 예시에서 오른쪽 구간만 2≤x≤7/2로 확대했다. 여기서는 세로축을 정규화하지 않은 f−g로 표시한다. 두 영점 사이의 음수 부분을 읽기 위한 확대이며 함수 전체 정의역을 이 구간으로 바꾸는 뜻은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-2x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} a(x+3) & (x < -3) \\\\ 0 & (-3 \\le x < 2) \\\\ a(x-2) & (x \\ge 2) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 정수 $a$의 개수는? [5.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "앞의 a=3 예시에서 오른쪽 구간만 2≤x≤7/2로 확대했다. 여기서는 세로축을 정규화하지 않은 f−g로 표시한다. 두 영점 사이의 음수 부분을 읽기 위한 확대이며 함수 전체 정의역을 이 구간으로 바꾸는 뜻은 아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 예시에서 좁게 보이는 두 오른쪽 영점 사이 부호를 별도 확대"
+  ]
+}

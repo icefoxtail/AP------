@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "13/8",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "21/8",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "-11/8",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "m",
+      "y": "S"
+    }
+  },
+  "caption": "가로축은 m, 세로축 S=D/8이다. 원래 포물선이 x축과 만나려면 판별식 D가 0 이상이어야 한다. S의 영점에서는 접하는 경우도 포함된다. 영점의 수치와 최종 m은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차함수 $y=x^2+(2m-5)x+m^2-3m+3$의 그래프가 $x$축과 만나도록 하는 모든 실수 $m$의 최댓값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가로축은 m, 세로축 S=D/8이다. 원래 포물선이 x축과 만나려면 판별식 D가 0 이상이어야 한다. S의 영점에서는 접하는 경우도 포함된다. 영점의 수치와 최종 m은 숨긴다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 특정 접점만 보이는 그림을 매개변수-판별식으로 보완하여 접함 포함 여부를 명확히 함."
+  ]
+}

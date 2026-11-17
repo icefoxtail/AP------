@@ -1,0 +1,393 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "add",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "1"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "5"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "1"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "-1",
+                        "denominator": "4"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "expression",
+                            "op": "mul",
+                            "args": [
+                              {
+                                "kind": "rational",
+                                "numerator": "1",
+                                "denominator": "2"
+                              },
+                              {
+                                "kind": "expression",
+                                "op": "add",
+                                "args": [
+                                  {
+                                    "kind": "integer",
+                                    "value": "1"
+                                  },
+                                  {
+                                    "kind": "expression",
+                                    "op": "sqrt",
+                                    "args": [
+                                      {
+                                        "kind": "integer",
+                                        "value": "5"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "mul",
+                            "args": [
+                              {
+                                "kind": "rational",
+                                "numerator": "1",
+                                "denominator": "2"
+                              },
+                              {
+                                "kind": "expression",
+                                "op": "add",
+                                "args": [
+                                  {
+                                    "kind": "integer",
+                                    "value": "1"
+                                  },
+                                  {
+                                    "kind": "expression",
+                                    "op": "sqrt",
+                                    "args": [
+                                      {
+                                        "kind": "integer",
+                                        "value": "5"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "A",
+    "B",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDM",
+      "refs": [
+        "D",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAD",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sBD",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sAM",
+        "text": "x/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 36,
+        "label": "36",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "halves",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      }
+    ]
+  },
+  "caption": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 원문 삼각형과 이등분선은 보존하고 이등변삼각형 ABD에 수선 DM을 추가한 마지막 단계를 확대한다. 닮음식 x(x−1)=1에서 AB=x=(1+√5)/2를 얻는다. 이 중간값을 사용하되 cos36의 최종값은 쓰지 않는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\overline{BC} = 1$, $\\angle A = 36^\\circ$이고, $\\angle B$의 이등분선과 $\\overline{AC}$의 교점을 $D$라고 할 때, $\\cos 36^\\circ$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 원문 삼각형과 이등분선은 보존하고 이등변삼각형 ABD에 수선 DM을 추가한 마지막 단계를 확대한다. 닮음식 x(x−1)=1에서 AB=x=(1+√5)/2를 얻는다. 이 중간값을 사용하되 cos36의 최종값은 쓰지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림은 그대로 유지하며, 이 그림은 해설에 추가하는 보조 그림이다. 원문 삼각형과 이등분선은 보존하고 이등변삼각형 ABD에 수선 DM을 추가한 마지막 단계를 확대한다. 닮음식 x(x−1)=1에서 AB=x=(1+√5)/2를 얻는다. 이 중간값을 사용하되 cos36의 최종값은 쓰지 않는다."
+  ]
+}

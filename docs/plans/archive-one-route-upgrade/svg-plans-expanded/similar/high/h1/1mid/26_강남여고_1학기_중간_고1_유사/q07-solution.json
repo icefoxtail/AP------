@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "9/4",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "25/4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "secant",
+          "slope": "1/2",
+          "intercept": "3/2",
+          "style": "SOLID",
+          "label": "S=(ax+b)/4"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1-sqrt(7)"
+        },
+        {
+          "id": "Q",
+          "curveX": "1+sqrt(7)"
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "포물선과 직선의 두 교점을 비교한다. P의 가로 좌표가 1−√7이고 유리수 계수 이차식이므로 다른 근은 켤레가 된다. 두 근의 합과 곱으로 계수를 구하되 최종 a+b는 쓰지 않는다. 세로축은 S=y/4로 정규화했다. 양의 상수배이므로 영점·부호·최대최소가 되는 가로 위치는 바뀌지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2$의 그래프와 직선 $y=ax+b$가 서로 다른 두 점 $P$, $Q$에서 만난다. 점 $P$의 $x$좌표가 $1-\\sqrt7$일 때, 두 유리수 $a$, $b$에 대하여 $a+b$의 값은? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "포물선과 직선의 두 교점을 비교한다. P의 가로 좌표가 1−√7이고 유리수 계수 이차식이므로 다른 근은 켤레가 된다. 두 근의 합과 곱으로 계수를 구하되 최종 a+b는 쓰지 않는다. 세로축은 S=y/4로 정규화했다. 양의 상수배이므로 영점·부호·최대최소가 되는 가로 위치는 바뀌지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 높고 좁은 도식과 긴 근호 좌표 헤더가 모바일에서 작아진다. 정량 좌표 헤더 없이 두 곡선의 교점 관계를 단일 프레임으로 구성. 최종 합8 숨김."
+  ]
+}

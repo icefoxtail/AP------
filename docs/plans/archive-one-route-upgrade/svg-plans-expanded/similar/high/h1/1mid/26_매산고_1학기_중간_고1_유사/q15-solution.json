@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3/2",
+          "7/4",
+          "-1/4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "7/2",
+        "y": "25/16"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "0",
+        "y": "-3/2",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "-3/2",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "A",
+        "B",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "6"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "원래 문제 그림은 보존하고 차함수 h=f−g를 S=h/4로 정규화한 별도 해설이다. 두 교점의 가로 좌표 1,6이 h의 영점이 된다. 꼭짓점 좌표와 구하는 결합값은 라벨로 직접 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $a, b, m, n$에 대하여 두 함수 $f(x)=-x^2+ax+b, g(x)=mx+n$의 그래프가 그림과 같을 때, 이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$의 교점의 $x$좌표는 $1, 6$이다. 이차함수 $f(x)-g(x)$는 $x=\\alpha$일 때 최댓값 $\\beta$를 갖는다. 상수 $\\alpha, \\beta$에 대하여 $4\\alpha+8\\beta$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원래 문제 그림은 보존하고 차함수 h=f−g를 S=h/4로 정규화한 별도 해설이다. 두 교점의 가로 좌표 1,6이 h의 영점이 된다. 꼭짓점 좌표와 구하는 결합값은 라벨로 직접 쓰지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 꼭짓점 수치 직접 노출을 숨기고 원문 교점1,6을 차함수 영점으로 대응. 문제 그림 유지."
+  ]
+}

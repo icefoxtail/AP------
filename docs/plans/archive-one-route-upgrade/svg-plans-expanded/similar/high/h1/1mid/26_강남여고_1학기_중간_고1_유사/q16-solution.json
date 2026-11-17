@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-8/5",
+          "1/5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "1"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0",
+        "3"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "조건에 맞는 a를 대입한 뒤 정의역 0≤x≤3만 표시했다. 오른쪽 끝점은 원래 함수의 주어진 최솟값 5에 해당하며 S축에서는 1이다. 감소하므로 최대가 되는 끝점을 찾되 그 높이의 숫자는 쓰지 않는다. 세로축은 S=f/5로 정규화했다. 양의 상수배이므로 영점·부호·최대최소가 되는 가로 위치는 바뀌지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0\\le x\\le3$에서 정의된 이차함수 $f(x)=x^2-4ax+5a^2$의 최솟값이 $5$일 때, 함수 $f(x)$의 최댓값은? (단, $a$는 양수이다.) (4.2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "조건에 맞는 a를 대입한 뒤 정의역 0≤x≤3만 표시했다. 오른쪽 끝점은 원래 함수의 주어진 최솟값 5에 해당하며 S축에서는 1이다. 감소하므로 최대가 되는 끝점을 찾되 그 높이의 숫자는 쓰지 않는다. 세로축은 S=f/5로 정규화했다. 양의 상수배이므로 영점·부호·최대최소가 되는 가로 위치는 바뀌지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 y20 가로선과 A(0,20)가 구하는 최댓값을 그대로 노출한다. 원문 정의역과 최솟값5만 수치로 표시하고 A의 높이를 숨긴다."
+  ]
+}

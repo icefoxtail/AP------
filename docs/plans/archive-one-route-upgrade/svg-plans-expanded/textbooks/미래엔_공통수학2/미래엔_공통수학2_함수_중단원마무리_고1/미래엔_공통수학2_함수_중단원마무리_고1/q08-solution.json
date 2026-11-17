@@ -1,0 +1,64 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력",
+        "elements": [
+          "-1",
+          "-2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "출력",
+        "elements": [
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "주어진 두 조건을 같은 방향의 함수 대응으로 옮겼다. 역함수 조건은 3의 원상이 −2라는 뜻이다. 두 대응을 일차식에 대입해 계수를 구한 뒤 새로운 입력 4의 출력을 계산한다. 구하는 출력은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=ax+b$가 $f(-1)=1$과 $f^{-1}(3)=-2$를 만족시킬 때, $f(4)$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(−1)=1,f(−2)=3에서 a=−2,b=−1,최종f4=−9. 그림은 주어진 대응2개만 표시.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 두 조건을 같은 방향의 함수 대응으로 옮겼다. 역함수 조건은 3의 원상이 −2라는 뜻이다. 두 대응을 일차식에 대입해 계수를 구한 뒤 새로운 입력 4의 출력을 계산한다. 구하는 출력은 표시하지 않는다."
+  ]
+}

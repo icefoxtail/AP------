@@ -1,0 +1,149 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-2",
+          "1/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "3/2",
+        "y": "3/4"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "x": "3/2",
+        "y": "3/4"
+      },
+      {
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "S"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h0",
+          "slope": "0",
+          "intercept": "2/3",
+          "label": "S=2/3",
+          "style": "DASHED"
+        },
+        {
+          "id": "h1",
+          "slope": "0",
+          "intercept": "3/4",
+          "label": "S=3/4",
+          "style": "DASHED"
+        },
+        {
+          "id": "h2",
+          "slope": "0",
+          "intercept": "1",
+          "label": "S=1",
+          "style": "DASHED"
+        },
+        {
+          "id": "h3",
+          "slope": "0",
+          "intercept": "4",
+          "label": "S=4",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "가로축은 이동구간의 왼쪽 끝 t, 세로축은 S=g(t)/3이다. 네 수평선 S=2/3,3/4,1,4는 원문의 g(t)=2,9/4,3,12에 각각 대응한다. 각 선과 그래프의 교점을 세되 네 개수와 그 합은 라벨로 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 3]\n실수 $t$에 대하여 $t \\le x \\le t+3$에서 이차함수 $f(x)=x^2-6x+5$의 최댓값과 최솟값의 차를 $g(t)$라 하자. $t$에 대한 방정식 $g(t)-2=0,\\ g(t)-\\dfrac{9}{4}=0,\\ g(t)-3=0,\\ g(t)-12=0$의 서로 다른 실근의 개수를 각각 $a,\\ b,\\ c,\\ d$라 할 때, $a+b+c+d$의 값을 풀이과정과 함께 상세하게 서술하시오. [12점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가로축은 이동구간의 왼쪽 끝 t, 세로축은 S=g(t)/3이다. 네 수평선 S=2/3,3/4,1,4는 원문의 g(t)=2,9/4,3,12에 각각 대응한다. 각 선과 그래프의 교점을 세되 네 개수와 그 합은 라벨로 쓰지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 그림에 g=2 선이 빠져 있고 낮은 9/4,3선은 가깝게 붙어 있다. 원문 네 수준 모두 명시하며 정규화축과 구간경계를 분명히 한다. 최소점 주변이 너무 작아지지 않는지 최종프레임 검토. 최종합5는 표시하지 않는다."
+  ]
+}
