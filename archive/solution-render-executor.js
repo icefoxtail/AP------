@@ -62,7 +62,7 @@
     // question it belongs to. Put "<number>. (이어짐)" at its top; the continuation overhead measured from the shell
     // then includes this line, so the fit math stays correct.
     function labelContinuationShell(shell, sourceBox, qNo, doc) {
-        if (!shell || !doc || typeof shell.querySelector !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
+        if (!shell || !doc || typeof shell.querySelector !== 'function' || typeof shell.insertBefore !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
         const numNode = typeof sourceBox?.querySelector === 'function' ? sourceBox.querySelector('.q-num') : null;
         const num = String(numNode?.textContent || '').trim().replace(/\.\s*$/, '') || (Number(qNo) > 0 ? String(qNo) : '');
         if (!num) return shell;
