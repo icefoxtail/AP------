@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1",
+        "marker": "NONE"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "-2",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4/3",
+        "2"
+      ],
+      "y": [
+        "1",
+        "-2"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "g(x)"
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "4/3",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      },
+      {
+        "id": "S3",
+        "upper": "axis",
+        "lower": "f",
+        "from": "4/3",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_3"
+      }
+    ]
+  },
+  "caption": "주기3에 의해 원래 [3,5] 구간은 [0,2]와 같다. g(x)=f(x)/a의 이 부분 넓이를 한 주기 넓이에 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 만족시키는 함수 $f(x)=\\begin{cases}ax&(0\\le x<1)\\\\-3ax+4a&(1\\le x<2)\\\\a(x^2-3x)&(2\\le x<3)\\end{cases}$에 대하여 양수 $a$의 값은? [4.4점]<br><div class=\"question-note-box\">(가) 모든 실수 $x$에 대하여 $f(x+3)=f(x)$이다.<br>(나) $\\displaystyle\\int_0^5|f(x)|dx=23$</div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "normalization",
+      "condition": "a>0이므로 g=f/a는 x,4−3x,x²−3x 조각이며 부호를 보존한다. a=1이 정답이라는 주장이 아니다. x=3의 값0은 주기성과 f(0)=0으로 정해진다. x=2는 원래 세 번째 조각의 값−2로 앞쪽 극한과 일치한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x=4/3 부호 전환과 원래 0~5 적분을 한 주기+같은 시작 부분으로 나누는 구조를 보인다."
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          2
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "B",
+        "at": [
+          2,
+          0,
+          2
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          2,
+          2
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "p",
+        "name": "\\alpha",
+        "point": "O",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "extent": {
+          "center": "O",
+          "u": [
+            3,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            3,
+            0
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "A",
+          "C"
+        ]
+      }
+    ],
+    "segments": []
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "α는 원문의 평면 P이다. 평면 위쪽 같은 높이에서 서로 수직인 두 직선 l, m을 놓은 대표 반례이다. m이 P와 평행하고 l이 m과 수직이어도 l이 P와 수직일 필요는 없다. 이 그림은 공간의 모든 배치를 뜻하지 않는다. 나머지 조건은 평행·수직의 전이 여부로 따로 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "공간에서 서로 다른 두 직선 $l,m$과 서로 다른 두 평면 $\\mathrm{P},\\mathrm{Q}$에 대해 '㉠이면 $l \\perp \\mathrm{P}$이다.'를 항상 만족하는 ㉠을 모두 고른 것은? (정답 2개) [5점] ['㉠: $l \\\\perp m$, $m \\\\perp \\\\mathrm{P}$', '㉠: $l \\\\perp \\\\mathrm{Q}$, $\\\\mathrm{P} \\\\parallel \\\\mathrm{Q}$', '㉠: $l \\\\perp m$, $m \\\\parallel \\\\mathrm{P}$', '㉠: $l \\\\parallel m$, $m \\\\parallel \\\\mathrm{P}$', '㉠: $l \\\\parallel m$, $m \\\\perp \\\\mathrm{P}$']",
+      "mappedTo": "space"
+    },
+    {
+      "id": "representative",
+      "condition": "공간 명제의 대표 반례로 l과 m이 P 위쪽의 같은 높이에 놓여 서로 수직이면서 둘 다 P와 평행할 수 있음을 보인다. 이는 한 직선에 수직이라는 조건만으로 평면에 수직이 되지 않음을 설명한다. 원문③의 반례이며 정답 두 번호는 표시하지 않는다. ①도 l은 P에 평행하거나 포함,④도 동일.②⑤만 법선 방향이 전이되어 성립. 좌표는 반례를 구체화하는 임의 대표 배치일 뿐 원문 수치 조건이 아니고 학생에게 좌표나 추가 점 이름은 노출하지 않는다.",
+      "mappedTo": "space"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 직교하는 두 직선이 같은 평면에 평행할 수 있는 공간 반례."
+  ]
+}

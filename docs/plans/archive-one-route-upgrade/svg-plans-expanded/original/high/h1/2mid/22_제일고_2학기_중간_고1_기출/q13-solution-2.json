@@ -1,0 +1,31 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "(A^c∪B^c)∩(A∪B^c)"
+  },
+  "caption": "두 번째 괄호에 해당하는 영역을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$일 때 $\\{(A\\cup B)\\cap(A^c\\cup B)\\}\\cup\\{(A^c\\cup B^c)\\cap(A\\cup B^c)\\}$를 간단히 하면? [3.7점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "bracket",
+      "condition": "(A^c∪B^c)∩(A∪B^c)의 영역만 표시한다. 두 영역을 합친 최종 그림 또는 최종 결과 식은 표시하지 않는다.",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "각 괄호의 교집합을 따로 색칠해 포함되는 원자 영역을 직접 대조한다."
+  ]
+}
