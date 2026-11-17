@@ -259,3 +259,9 @@ PR·main 병합·정본 JS·SVG·운영장부·엔진 변경 없음. 다음은 �
 결과bce5dc9606d321ba322683d87d3a6f0262c772e4, 원격68파일blob일치. 원본5시험지64문항 FIGURE46 EXEMPT14 CONTENT3 UNSUPPORTED1,50계획. 신규고1 x14계획의파생점을원시좌표대신공식operation으로보완하여모든동명점정확기호차0/최종spec14PASS. 기존저장중3 r4계획도같은파생점보완,독립계약검토및정확좌표동일/표시불변검증후같은커밋에저장(신규계획수에더하지않음).
 z Q9는순서없는두수의차와원해설절댓값문맥으로CONTENT를EXEMPT로교정,조건없는과잉보류방지. 나머지원문CONTENT는독립검수근거유지. v공식교점파생, w정규화축명확화, y상징count제약재현도완료.
 재개원본누적26시험지418OPEN문항247계획. 확장누적57시험지1004문항231계획은별도. 모든지원계획공식최종부분검사통과,실제전체렌더NOT_RUN/출판UNVERIFIED. 엔진·원문·SVG·운영장부·PR·main변경없음. 상세BATCH14-REPORT.md/INDEX.json 및 R-PROVENANCE-REPAIR.md/CHECK.json. 잔여원본·유사·교과서계속.
+
+
+## 2026-11-17 재개 batch15 확장 저장
+결과6ff09c3993b10fdb48cbcb77f952f7484b4600af, 원격36파일blob일치. 유사·유형3시험지58문항 FIGURE19 EXEMPT39,27계획. 독립검수및공식최종표시검사통과. 고2삼각Q10캡션이참조한대칭선을추가후실제점선/라벨검증,중2실제단항식25문항모두그림불필요확인.
+광양제철고Q13 HTML격자는5+5+4구조/독립열거확인했으나원문HTML시각렌더는환경실패·대체도구부재로NOT_RUN. 원본을시각열람했다고과장하지않음. 모든신규SVG전체렌더/출판도NOT_RUN/UNVERIFIED.
+확장누적60/351시험지1062/9093문항258계획(FIGURE239 CONTENT185 EXEMPT595 KEEP42 UNSUPPORTED1). 원본재개누적26시험지418OPEN문항247계획은별도. 원문/엔진/SVG/운영장부/PR/main불변,잔여계속. 상세BATCH15-REPORT.md/INDEX.json.
