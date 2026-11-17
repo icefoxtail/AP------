@@ -66,7 +66,8 @@ class FoldDecision(unittest.TestCase):
                        {'referenceLines':[{'id':'m','slope':'1','intercept':'0'}]},{'overlays':{'guides':[{'id':'g'}]}},{'overlays':{'quadrants':[{'id':'q'}]}},
                        {'overlays':{'lines':[{'id':'d','slope':'1','intercept':'0'}]}}):
             self.assertFalse(axis_fold_allowed({**QUARTIC,**change}),change)
-        self.assertTrue(axis_fold_allowed({**QUARTIC,'overlays':{'points':[{'id':'A','x':'0','y':'3'}],'lines':[{'id':'h','slope':'0','intercept':'3'},{'id':'v','x':'1'}]}}))
+        self.assertTrue(axis_fold_allowed({**QUARTIC,'overlays':{'points':[{'id':'A','x':'0','y':'3'}],'lines':[{'id':'h','slope':'0','intercept':'3'}]}}))
+        self.assertFalse(axis_fold_allowed({**QUARTIC,'overlays':{'lines':[{'id':'v','x':'1'}]}}))
         self.assertNotIn('axisFold',fitted(plan_with(QUARTIC,axisScale={'x':1,'y':2})))
     def test_the_author_can_keep_the_origin_with_axis_fold_false(self):
         plan=fitted(plan_with(QUARTIC,axisFold=False))
@@ -94,16 +95,51 @@ class TallFigure(unittest.TestCase):
         plan=fitted(self.TALL);self.assertEqual(plan['axisRatio'],1.0)
         self.assertEqual(plan,{key:value for key,value in fitted(plan_with(self.TALL,axisFold=False)).items() if key!='axisFold'})   # the old frame, field for field
 
+class PolynomialPaths(unittest.TestCase):
+    """The same fold and squeeze for a quadratic on all reals and on an interval (graph_framing._fit_quadratic_equal_unit / _fit_quadratic_interval)."""
+    UP={'family':'polynomial','coefficients':['10','-2','1'],'domain':[-2,4],'viewport':[-3,5,-2,20],'sourceDomain':{'kind':'ALL_REALS'},
+        'requiredPoints':[{'id':'V','x':1,'y':9}],'axisTickValues':{'x':[],'y':[]}}
+    def test_a_parabola_far_above_the_x_axis_folds_it_below_the_vertex(self):
+        plan=fitted(self.UP);self.assertEqual(plan['axisFold']['x']['edge'],'BOTTOM');self.assertEqual(plan['axisFold']['x']['at'],plan['viewport'][2]);self.assertGreater(plan['viewport'][2],0)
+        self.assertNotIn('y',plan['axisFold'])
+        scale=plan['plotCanvas']['width']/(plan['viewport'][1]-plan['viewport'][0]);self.assertGreaterEqual((9-plan['viewport'][2])*scale*plan['axisRatio'],AXIS_FOLD_CLEAR_PX-1e-6)
+    def test_the_arms_never_run_into_the_folded_axis(self):
+        down={**self.UP,'coefficients':['8','4','-1'],'requiredPoints':[{'id':'V','x':2,'y':12}]}         # opens down, vertex far above the axis: the arms run toward it
+        self.assertNotIn('axisFold',fitted(down))
+        below={**self.UP,'coefficients':['-10','2','-1'],'requiredPoints':[{'id':'V','x':1,'y':-9}]}      # vertex below, opens down: the x axis folds on top
+        self.assertEqual(fitted(below)['axisFold']['x']['edge'],'TOP')
+    def test_a_root_or_the_origin_among_the_features_keeps_the_axis(self):
+        roots={**self.UP,'coefficients':['-4','0','1'],'requiredPoints':[{'id':'V','x':0,'y':-4},{'id':'P','x':-2,'y':0},{'id':'Q','x':2,'y':0}]}
+        self.assertNotIn('axisFold',fitted(roots))
+    def test_added_lines_keep_the_origin(self):
+        self.assertNotIn('axisFold',fitted({**self.UP,'linePoints':[{'id':'L','x':3,'y':10}]}))
+    def test_an_interval_far_from_an_axis_folds_it(self):
+        interval={**self.UP,'coefficients':['10','0','1'],'domain':[8,10],'viewport':[0,12,0,120],'sourceDomain':{'kind':'INTERVAL','range':['8','10'],'states':['CLOSED','CLOSED']},'requiredPoints':[]}
+        plan=fitted(interval);self.assertEqual(plan['axisFold']['x']['edge'],'BOTTOM');self.assertEqual(plan['axisFold']['y']['edge'],'LEFT')
+        self.assertEqual(refused({**interval,'axisFold':False}),'EQUAL_UNIT_CURVE_TOO_NARROW')                  # with the origin framed the curve was too narrow to draw at all
+    def test_an_application_axes_figure_is_never_folded(self):
+        from graph_framing import axis_fold_allowed
+        self.assertFalse(axis_fold_allowed({**self.UP,'applicationAxes':True}))
+
 # ---- the independent observer on a drawn figure ----
-def drawn(plan,*,x_axis=None,y_axis=None,extra='',labels=''):
-    """The model figure of a folded plan plus the axes the final figure draws (at the edge the plan names unless moved): an SVG the audit can read."""
+def drawn(plan,*,x_axis=None,y_axis=None,extra='',labels='',touch=False):
+    """The model figure of a folded plan plus the axes the final figure draws (at the edge the plan names unless moved; the other axis stops 12 px short of a folded
+    one unless touch): an SVG the audit can read."""
     model=produce(plan);t=model['transform'];fold=plan['axisFold']
     xmin,xmax,ymin,ymax=plan['viewport']
     ox,oy,sx,sy=t['originX'],t['originY'],t['sx'],t['sy']
+    gap=0 if touch else 12
     y_of_x_axis=oy-(fold['x']['at'] if 'x' in fold else 0)*sy if x_axis is None else x_axis
     x_of_y_axis=ox+(fold['y']['at'] if 'y' in fold else 0)*sx if y_axis is None else y_axis
-    axes=(f'<line id="x-axis" data-role="axis" data-axis="x" x1="{ox+xmin*sx}" y1="{y_of_x_axis}" x2="{ox+xmax*sx}" y2="{y_of_x_axis}"/>'
-          f'<line id="y-axis" data-role="axis" data-axis="y" x1="{x_of_y_axis}" y1="{oy-ymin*sy}" x2="{x_of_y_axis}" y2="{oy-ymax*sy}"/>')
+    x_from,x_to=ox+xmin*sx,ox+xmax*sx;y_from,y_to=oy-ymin*sy,oy-ymax*sy          # y_from is the lower end
+    if 'x' in fold:
+        if fold['x']['edge']=='BOTTOM':y_from-=gap
+        else:y_to+=gap
+    if 'y' in fold:
+        if fold['y']['edge']=='LEFT':x_from+=gap
+        else:x_to-=gap
+    axes=(f'<line id="x-axis" data-role="axis" data-axis="x" x1="{x_from}" y1="{y_of_x_axis}" x2="{x_to}" y2="{y_of_x_axis}"/>'
+          f'<line id="y-axis" data-role="axis" data-axis="y" x1="{x_of_y_axis}" y1="{y_from}" x2="{x_of_y_axis}" y2="{y_to}"/>')
     return model['svg'].replace('</svg>',axes+extra+labels+'</svg>'),t
 
 class ObserverFold(unittest.TestCase):
@@ -121,6 +157,14 @@ class ObserverFold(unittest.TestCase):
         self.assertIn('AXIS_FOLD_AXIS_MISPLACED:x',self.errors(svg=svg)['errors'])
         bad=copy.deepcopy(self.plan);bad['axisFold']['x']['at']+=.01
         self.assertIn('AXIS_FOLD_NOT_ON_WINDOW_EDGE:x',self.errors(bad)['errors'])
+    def test_the_other_axis_must_not_touch_the_folded_one(self):
+        self.assertIn('AXIS_FOLD_AXES_TOUCH',self.errors(svg=drawn(self.plan,touch=True)[0])['errors'])
+        # the left edge too: both axes folded, neither reaches the other
+        shifted=copy.deepcopy(QUARTIC);shifted['pieces']=[{'coefficients':['104332','-23256','1942','-72','1']}]
+        shifted['requiredPoints']=[{'id':'E0','x':'17','y':'3'},{'id':'E1','x':'18','y':'4'},{'id':'E2','x':'19','y':'3'}];shifted['referenceLines']=[]
+        both=fitted(shifted);svg,t=drawn(both)
+        self.assertEqual(axis_fold_audit(both,svg,t)['errors'],[])
+        self.assertIn('AXIS_FOLD_AXES_TOUCH',axis_fold_audit(both,drawn(both,touch=True)[0],t)['errors'])
     def test_a_fold_that_is_not_needed_is_refused(self):
         bad=copy.deepcopy(self.plan);bad['viewport']=[bad['viewport'][0],bad['viewport'][1],-1.0,bad['viewport'][3]];bad['axisFold']['x']['at']=-1.0
         self.assertIn('AXIS_FOLD_NOT_NEEDED:x',self.errors(bad)['errors'])
@@ -166,7 +210,8 @@ class ObserverFold(unittest.TestCase):
                                  ('overlays',{'guides':[{'id':'g'}]},'AXIS_FOLD_FORBIDDEN:OVERLAYS'),
                                  ('overlays',{'lines':[{'id':'d','slope':'1','intercept':'0'}]},'AXIS_FOLD_FORBIDDEN:SLANTED_LINE')):
             bad={**self.plan,field:value};self.assertIn(code,self.errors(bad)['errors'],field)
-        self.assertEqual(axis_fold_audit({**self.plan,'overlays':{'points':[{'id':'A','x':'-2','y':'4'}],'lines':[{'id':'h','slope':'0','intercept':'3'},{'id':'v','x':'-1'}]}},self.svg,self.t)['errors'],[])
+        self.assertEqual(axis_fold_audit({**self.plan,'overlays':{'points':[{'id':'A','x':'-2','y':'4'}],'lines':[{'id':'h','slope':'0','intercept':'3'}]}},self.svg,self.t)['errors'],[])
+        self.assertIn('AXIS_FOLD_FORBIDDEN:VERTICAL_LINE',axis_fold_audit({**self.plan,'overlays':{'lines':[{'id':'v','x':'-1'}]}},self.svg,self.t)['errors'])
     def test_a_malformed_fold_is_refused(self):
         for fold in ({'schemaVersion':'AXIS_FOLD_v1'},{'schemaVersion':'v0','x':{'edge':'BOTTOM','at':1}},{'schemaVersion':'AXIS_FOLD_v1','x':{'edge':'LEFT','at':1}},
                      {'schemaVersion':'AXIS_FOLD_v1','x':{'edge':'BOTTOM'}},'fold',{'schemaVersion':'AXIS_FOLD_v1','x':{'edge':'BOTTOM','at':self.plan['axisFold']['x']['at']},'z':1}):

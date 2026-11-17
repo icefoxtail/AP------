@@ -15,6 +15,8 @@ from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
 OPEN_POINT_STROKE_WIDTH=1.8   # a hollow overlay point (markerState OPEN): the ring is heavier than a filled dot's 0.8 outline so it reads as a circle on a phone
 
+AXIS_FOLD_AXIS_GAP_PX=12.0   # a folded axis and the other axis never touch: the other one ends this far short (observer: axis_fold_audit)
+
 def _exact_float(text):
     """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
     try:return float(Fraction(text))
@@ -498,9 +500,18 @@ def prepare(spec):
                 edge_value={'BOTTOM':ymin,'TOP':ymax,'LEFT':xmin,'RIGHT':xmax}[row['edge']]
                 if abs(row['at']-edge_value)>1e-6*max(1,abs(edge_value)):raise ValueError('AXIS_FOLD_NOT_ON_WINDOW_EDGE')
                 axis_at[axis]=edge_value
+        # The other axis stops AXIS_FOLD_AXIS_GAP_PX short of a folded axis, so their corner is not read as the origin (0,0).
+        x_from,x_to,y_from,y_to=xmin,xmax,ymin,ymax
+        if axis_fold is not None:
+            if 'x' in axis_fold:
+                if axis_fold['x']['edge']=='BOTTOM':y_from=ymin+AXIS_FOLD_AXIS_GAP_PX/vp.sy
+                else:y_to=ymax-AXIS_FOLD_AXIS_GAP_PX/vp.sy
+            if 'y' in axis_fold:
+                if axis_fold['y']['edge']=='LEFT':x_from=xmin+AXIS_FOLD_AXIS_GAP_PX/vp.sx
+                else:x_to=xmax-AXIS_FOLD_AXIS_GAP_PX/vp.sx
         axes=[]
-        if show_x:axes.append(('x-axis',(xmin,axis_at['x']),(xmax,axis_at['x'])))
-        if show_y:axes.append(('y-axis',(axis_at['y'],ymin),(axis_at['y'],ymax)))
+        if show_x:axes.append(('x-axis',(x_from,axis_at['x']),(x_to,axis_at['x'])))
+        if show_y:axes.append(('y-axis',(axis_at['y'],y_from),(axis_at['y'],y_to)))
         zero_pole=any(pole.get('boundary') and pole['x']=='0' for pole in (trig_interval_features or {}).get('poles',[]))
         for oid,a,b in axes:
             # An excluded tangent pole on x=0 shares the y-axis; the axis must leave its dashes visible.

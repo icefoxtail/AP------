@@ -6469,6 +6469,8 @@ def multi_curve_label_audit(plan,svg,transform):
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
 AXIS_FOLD_MIN_GAP_PX=12.0
+AXIS_FOLD_AXIS_GAP_MIN_PX=10.0   # the other axis stops 10 to 14 px (the engine draws 12) short of a folded axis
+AXIS_FOLD_AXIS_GAP_MAX_PX=14.0
 
 def axis_fold_audit(plan,svg,transform):
     """A folded axis (plan['axisFold'], AXIS_FOLD_v1) is read back from the final SVG on its own: the fold is allowed for this figure, the axis stands on the window edge
@@ -6487,7 +6489,10 @@ def axis_fold_audit(plan,svg,transform):
         overlays=plan.get('overlays')
         if overlays:
             if not isinstance(overlays,dict) or set(overlays)-{'points','lines','names'}:errors.append('AXIS_FOLD_FORBIDDEN:OVERLAYS')
-            elif any(not isinstance(entry,dict) or ('x' not in entry and str(entry.get('slope')) not in ('0','0.0')) for entry in overlays.get('lines') or []):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')
+            else:
+                for entry in overlays.get('lines') or []:
+                    if not isinstance(entry,dict) or 'x' in entry:errors.append('AXIS_FOLD_FORBIDDEN:VERTICAL_LINE')   # nothing frames a vertical line but the origin
+                    elif str(entry.get('slope')) not in ('0','0.0'):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')
         ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
         edges={'x':{'BOTTOM':ymin,'TOP':ymax},'y':{'LEFT':xmin,'RIGHT':xmax}}
         # where each axis stands (model units); an unfolded axis keeps the origin line, which the window must then hold
@@ -6520,10 +6525,23 @@ def axis_fold_audit(plan,svg,transform):
                 try:a=(float(node.get('x1')),float(node.get('y1')));b=(float(node.get('x2')),float(node.get('y2')))
                 except (TypeError,ValueError):errors.append('AXIS_FOLD_AXIS_MISPLACED:'+str(node.get('data-axis')));continue
                 axis=node.get('data-axis')
+                # the other axis ends AXIS_FOLD_AXIS_GAP_MIN_PX..MAX short of a folded axis (never touching it: the corner would read as the origin); its far end is the window edge
                 if axis=='x':
-                    if abs(a[1]-folded_px['x'])>tol or abs(b[1]-folded_px['x'])>tol or abs(min(a[0],b[0])-left)>tol or abs(max(a[0],b[0])-right)>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
+                    near_edge=fold.get('y',{}).get('edge');xs=sorted((a[0],b[0]));want_low,want_high=left,right
+                    if abs(a[1]-folded_px['x'])>tol or abs(b[1]-folded_px['x'])>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
+                    elif near_edge in ('LEFT','RIGHT'):
+                        gap=(xs[0]-folded_px['y']) if near_edge=='LEFT' else (folded_px['y']-xs[1]);far=abs(xs[1]-right) if near_edge=='LEFT' else abs(xs[0]-left)
+                        if gap<AXIS_FOLD_AXIS_GAP_MIN_PX:errors.append('AXIS_FOLD_AXES_TOUCH')
+                        elif gap>AXIS_FOLD_AXIS_GAP_MAX_PX or far>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
+                    elif abs(xs[0]-left)>tol or abs(xs[1]-right)>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
                 elif axis=='y':
-                    if abs(a[0]-folded_px['y'])>tol or abs(b[0]-folded_px['y'])>tol or abs(min(a[1],b[1])-top)>tol or abs(max(a[1],b[1])-bottom)>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
+                    near_edge=fold.get('x',{}).get('edge');ys=sorted((a[1],b[1]))
+                    if abs(a[0]-folded_px['y'])>tol or abs(b[0]-folded_px['y'])>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
+                    elif near_edge in ('BOTTOM','TOP'):
+                        gap=(folded_px['x']-ys[1]) if near_edge=='BOTTOM' else (ys[0]-folded_px['x']);far=abs(ys[0]-top) if near_edge=='BOTTOM' else abs(ys[1]-bottom)
+                        if gap<AXIS_FOLD_AXIS_GAP_MIN_PX:errors.append('AXIS_FOLD_AXES_TOUCH')
+                        elif gap>AXIS_FOLD_AXIS_GAP_MAX_PX or far>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
+                    elif abs(ys[0]-top)>tol or abs(ys[1]-bottom)>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
                 continue
             if role=='tick':
                 # a tick mark stands on its axis line (the window edge for a folded axis) at a real value inside the window
