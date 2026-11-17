@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-m2-problem21-current-eight-scoped-gate-v1",
+  "status": "FAIL",
+  "phase": "AUTHENTICATED_ACTUAL_INPUTS",
+  "sourceQuestionCount": 47,
+  "selected": 8,
+  "outside": 39,
+  "newMathematicalQa": 0,
+  "newSemanticApprovals": 0,
+  "newFourSlotVectors": 0,
+  "sourceWrites": 0,
+  "metadataOrIdentityWrites": 0,
+  "globalBuilderRun": false,
+  "mainWrites": 0,
+  "screenshotRuns": 0,
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "eventName": "push",
+    "repository": "icefoxtail/AP------",
+    "ref": "refs/heads/ops/m2-closed8-current-native-26fc-20261117",
+    "checkoutCommit": "deb5606c7398c7f42a5acedfbdafdd02427e3474",
+    "runId": "44034956098",
+    "runAttempt": 1,
+    "job": "closed8-existing-authority"
+  },
+  "actualBaseline": {
+    "index": {
+      "path": "archive/data/item-4slot-index.json",
+      "gitBlobSha1": "278bdc2631a3f8681cc74f726986857c9455ec58",
+      "sha256": "9242e81afa544accfce88d629b85e5a13eb822f69060f03ce0a29308cb4648df",
+      "bytes": 20297653
+    },
+    "globalInputs": [
+      {
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "b0f9f54ccc3ecb4b5a62d4fe835671d93bb276d2",
+        "sha256": "651b40880dae37b851be1ee348b72c6d878dd109bb078cb5df572a606ad00d9c",
+        "bytes": 74737223
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "gitBlobSha1": "4a7890a5d683e7f11e568b2a7d250069716caee6",
+        "sha256": "54109424643693dd8cf1914d61624e3d4ecf9b6546ce086bb00b6d8dc5635511",
+        "bytes": 27938431
+      }
+    ],
+    "selectedPending": 8,
+    "outsideRegistered": 36,
+    "outsidePending": 3,
+    "outsideWholeSha256": "95be58914b62c1eabd50fb2c63166b19ea484709d134c53bd69b1469e7997337",
+    "selectedWholeSha256": "bcb2a47fd914184b0964508fd9979b5adae95219f9eeb2ebf495f4ccc62c972c"
+  },
+  "error": {
+    "code": "M2_CURRENT8_SCOPE_PATH",
+    "messageSha256": "6a50b1ef8c03d10be342f8c7fc938507086e1d349ae8f6e379e295450a5fa8ea"
+  },
+  "actualMainRegistration": "NOT_PERFORMED",
+  "rootHeadUnchanged": true,
+  "rootStatusUnchanged": true
+}

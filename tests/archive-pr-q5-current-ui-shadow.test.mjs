@@ -358,4 +358,33 @@ test('Unknown renderer editions are refused, including when all current proofs a
 test('Source bytes are never hydrated from the current display bundle', t => reject(t, f => {
   fs.appendFileSync(path.join(f.root, PROFILE.sourceRef.path), '\n');
 }, /Q5_SHADOW_LIVE_PIN/));
+// A published original proof is not a new current-display approval. Recreate
+// the real topology: all current refs are ancestors, while the original sealed
+// publication exists in the object store on its independent review branch.
+test('Exact original Q5 publications may remain outside current display ancestry', t => {
+  const f = fixture(t);
+  seal(f, PROFILE.currentRefs[0].commit);
+  const isAncestor = commit => {
+    try { git(f.root, 'merge-base', '--is-ancestor', commit, f.head); return true; }
+    catch (error) { if (error.status === 1) return false; throw error; }
+  };
+  for (const ref of PROFILE.priorRefs) {
+    assert.equal(str(f.root, 'cat-file', '-t', ref.commit), 'commit');
+    assert.equal(isAncestor(ref.commit), false, 'Original publication is present but not a current ancestor');
+  }
+  for (const ref of [...PROFILE.currentRefs, ...PROFILE.extraServed, PROFILE.sourceRef, PROFILE.engineRef])
+    assert.equal(isAncestor(ref.commit), true, 'Every new display/source/renderer ref keeps its ancestry contract');
+  const original = fileHashes(f.root);
+  assert.equal(run(f).length, 9);
+  assert.equal(countStaged(f), 9);
+  assert.deepEqual(fileHashes(f.root), original);
+});
+for (const ref of PROFILE.priorRefs) {
+  test('Original publication live tamper is still refused: ' + ref.path, t => reject(t, f => {
+    fs.appendFileSync(path.join(f.root, ref.path), '\n');
+  }, /Q5_SHADOW_LIVE_PIN/));
+  test('Original publication HEAD tamper is still refused: ' + ref.path, t => reject(t, f => {
+    fs.appendFileSync(path.join(f.root, ref.path), '\n'); seal(f);
+  }, /Q5_SHADOW_HEAD_PIN/));
+}
 test('Public inputs are unchanged after the bounded hydration tests', assertPublicInputs);

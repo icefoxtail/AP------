@@ -7,7 +7,8 @@ const crypto = require("crypto");
 const { execFileSync } = require("child_process");
 const Archive2Core = require("../archive/archive2-core.js");
 const { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
-  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes } = require("./helpers/middle-geometry-issued-approval.cjs");
+  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
+  readOriginalReceiptSource, assertOriginalReceiptSourceBytes } = require("./helpers/middle-geometry-issued-approval.cjs");
 
 async function main() {
 const { loadBank, nativeReviewReceipt, planQuestion, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
@@ -762,6 +763,167 @@ if (rhsRetainedInputs.length) {
     (cases.length + fileRejections + protocolRejections) +
     " rejected corruptions; current Native approvals 0; current UI continuity NOT_ASSERTED");
 }
+const originalReceiptInputs = retainedInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).kind === "EXACT_ISSUED_ORIGINAL_RECEIPT_SOURCE_BLOCK");
+assert.strictEqual(originalReceiptInputs.length, 11, "the actual observed original-receipt scope must remain eleven");
+assert.strictEqual(originalReceiptInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "CANONICAL_LABELS_MISSING").length, 9);
+assert.strictEqual(originalReceiptInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "IDENTITY_SOURCE_FINGERPRINT_MISMATCH").length, 2);
+const originalGroups = new Map();
+for (const input of originalReceiptInputs) {
+  const proof = retainedApprovals.get(input.current.questionUid);
+  const key = proof.declaredInputs.originalRequestId;
+  originalGroups.set(key, [...(originalGroups.get(key) || []), input]);
+  assert.strictEqual(proof.proof.currentNativeReady, false);
+  assert.strictEqual(proof.proof.currentPlan.status, "SUPPLEMENT_PENDING");
+  assert.deepStrictEqual(proof.proof.currentPlan.reasons, [proof.expectedPlanReason]);
+  assert.strictEqual(proof.proof.newMetadataApprovals, 0);
+}
+assert.deepStrictEqual([...originalGroups.values()].map(rows => rows.length).sort((a, b) => a - b), [1, 10]);
+let originalReceiptRejections = 0;
+for (const inputs of originalGroups.values()) {
+  const input = inputs.find(value => value.ordinal === 4) || inputs[0];
+  const baseline = retainedApprovals.get(input.current.questionUid);
+  const refuses = (candidate, label) => {
+    assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+    originalReceiptRejections += 1;
+  };
+  for (const [label, change] of [
+    ["original metadata whole change", { current: { ...input.current, tagStatus: "unreviewed" } }],
+    ["original identity UID change", { identity: { ...input.identity, questionUid: "qid_v1_" + "0".repeat(64) } }],
+    ["original runtime whole change", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metadataRevision: "UNISSUED" } } }],
+    ["original ACTIVE owner change", { runtimeOwner: "MIDDLE1" }],
+    ["original unissued revision", { current: { ...input.current,
+      metadataRevision: input.current.metadataRevision + "-unissued" } }]
+  ]) refuses({ ...input, ...change }, label);
+  const other = inputs.find(value => value.current.questionUid !== input.current.questionUid) || input;
+  const changedCurrentMember = createIssuedApprovalObserver({ ...issuedObserverApi, currentRows(uid) {
+    const value = issuedObserverApi.currentRows(uid);
+    return uid === other.current.questionUid
+      ? { ...value, metadata: { ...value.metadata, reviewStatus: "unreviewed" } } : value;
+  } });
+  assert.throws(() => changedCurrentMember.assertKnownInputs(input,
+    "all members of the original receipt must retain their complete current approval"));
+  originalReceiptRejections += 1;
+
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-original-receipt-"));
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
+    for (const relative of baseline.readPaths) {
+      const target = path.join(fixtureRoot, relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    const copied = issuedObserver.assertKnownInputs(candidate, "exact copied original receipt input closure");
+    assert.deepStrictEqual(copied.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(copied.authenticatedDrifts, baseline.authenticatedDrifts);
+    const paths = [...new Set([baseline.receiptPath, ...baseline.receipt.approval.evidenceRefs.map(ref => ref.path)])];
+    for (const relative of paths) {
+      assert(baseline.readPaths.has(relative), relative);
+      const file = path.join(fixtureRoot, relative), bytes = fs.readFileSync(file);
+      fs.appendFileSync(file, "\n");
+      refuses(candidate, "known source change cannot hide changed issued evidence: " + relative);
+      fs.writeFileSync(file, bytes);
+    }
+    const firstEvidence = baseline.receipt.approval.evidenceRefs[0].path;
+    const evidenceFile = path.join(fixtureRoot, firstEvidence), evidenceBytes = fs.readFileSync(evidenceFile);
+    fs.unlinkSync(evidenceFile);
+    refuses(candidate, "missing original evidence must fail");
+    fs.symlinkSync(path.join(root, firstEvidence), evidenceFile);
+    refuses(candidate, "same-byte original evidence symlink must fail");
+    fs.unlinkSync(evidenceFile); fs.writeFileSync(evidenceFile, evidenceBytes);
+
+    // The absence of a binding is accepted only through a byte-pinned original
+    // receipt. A forged receipt with a newly declared binding cannot qualify.
+    const receiptFile = path.join(fixtureRoot, baseline.receiptPath), receiptBytes = fs.readFileSync(receiptFile);
+    const forged = JSON.parse(receiptBytes);
+    forged.outputDigests.push({ path: baseline.receiptPath.replace(/\.json$/, ".source-review-binding.json"),
+      sha256: "0".repeat(64) });
+    fs.writeFileSync(receiptFile, JSON.stringify(forged, null, 2) + "\n");
+    refuses(candidate, "original receipt cannot acquire a forged typed output");
+    fs.writeFileSync(receiptFile, receiptBytes);
+
+    const masterFile = path.join(fixtureRoot, "archive/data/master_tables/js_archive_tag_master.json");
+    const masterBytes = fs.readFileSync(masterFile);
+    fs.appendFileSync(masterFile, "\n");
+    refuses(candidate, "unknown current MASTER drift must fail");
+    fs.writeFileSync(masterFile, masterBytes);
+    const sourceRelative = "archive/exams/" + input.source, sourceFile = path.join(fixtureRoot, sourceRelative);
+    const sourceBytes = fs.readFileSync(sourceFile), unknownBytes = Buffer.concat([sourceBytes, Buffer.from("\n")]);
+    const blobOf = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+    fs.writeFileSync(sourceFile, unknownBytes);
+    refuses({ ...candidate, nativeSource: { ...candidate.nativeSource, bytes: unknownBytes, blobSha1: blobOf(unknownBytes) } },
+      "unobserved original source bytes must fail");
+    fs.writeFileSync(sourceFile, sourceBytes);
+    fs.unlinkSync(sourceFile);
+    refuses(candidate, "missing current source must fail");
+    fs.symlinkSync(path.join(root, sourceRelative), sourceFile);
+    refuses(candidate, "same-byte current source symlink must fail");
+    fs.unlinkSync(sourceFile); fs.writeFileSync(sourceFile, sourceBytes);
+    const issuedBytes = execFileSync("git", ["show", "f9e49a0e0c18f18c63f31d7547bd504f07a821c6:" + sourceRelative],
+      { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    const issuedBank = loadBank(issuedBytes.toString("utf8"), sourceRelative);
+    fs.writeFileSync(sourceFile, issuedBytes);
+    refuses({ ...candidate, question: issuedBank[input.ordinal - 1], previous: issuedBank[input.ordinal - 1],
+      nativeSource: { ...candidate.nativeSource, bytes: issuedBytes, blobSha1: blobOf(issuedBytes), bank: issuedBank } },
+      "old source restoration cannot be described as the observed current block");
+    fs.writeFileSync(sourceFile, sourceBytes);
+
+    for (let index = 0; index < baseline.declaredInputs.originalSources.length; index++) {
+      const raw = readOriginalReceiptSource(root, baseline.declaredInputs.originalRequestId, index);
+      assert.throws(() => assertOriginalReceiptSourceBytes(Buffer.concat([raw, Buffer.from("\n")]),
+        baseline.declaredInputs.originalRequestId, index), /ORIGINAL_RECEIPT_SOURCE_BYTES/);
+      originalReceiptRejections += 1;
+      const emptyRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-original-receipt-missing-object-"));
+      try {
+        execFileSync("git", ["init", "--quiet", emptyRoot], { stdio: ["ignore", "pipe", "pipe"] });
+        assert.throws(() => readOriginalReceiptSource(emptyRoot, baseline.declaredInputs.originalRequestId, index),
+          /Command failed: git/, "original immutable source must exist in the caller Git context");
+        originalReceiptRejections += 1;
+      } finally { fs.rmSync(emptyRoot, { recursive: true, force: true }); }
+    }
+    assert.throws(() => readOriginalReceiptSource(fixtureRoot, "UNDECLARED_RECEIPT", 0),
+      /FIXED_ORIGINAL_RECEIPT/);
+    originalReceiptRejections += 1;
+
+    // These doubles test refusal-shape handling only. The actual eleven Native
+    // and planQuestion calls were already made above from untouched production.
+    const basePlan = { status: "SUPPLEMENT_PENDING", reasons: [baseline.expectedPlanReason],
+      questionUid: input.current.questionUid, sourceArchiveFile: input.source, sourceOrdinal: input.ordinal };
+    const differentKnownReason = baseline.expectedPlanReason === "CANONICAL_LABELS_MISSING"
+      ? "IDENTITY_SOURCE_FINGERPRINT_MISMATCH" : "CANONICAL_LABELS_MISSING";
+    for (const [label, overrides] of [
+      ["original positive Native cannot become an accepted null", {
+        nativeReviewReceipt: () => baseline.receiptPath, planQuestion: () => basePlan }],
+      ["original unknown refusal is not accepted", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: ["UNKNOWN_FAILURE"] }) }],
+      ["another known profile's refusal is not accepted", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: [differentKnownReason] }) }],
+      ["an additional known refusal is not accepted", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: [...basePlan.reasons, differentKnownReason] }) }],
+      ["ordinary APPLY is not an observed refusal", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, status: "APPLY" }) }],
+      ["ordinary ALREADY_REGISTERED is not an observed refusal", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, status: "ALREADY_REGISTERED" }) }],
+      ["original refusal cannot carry generated metadata", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, final: { metadataApprovalType: "FINAL_QA" } }) }]
+    ]) {
+      const observer = createIssuedApprovalObserver({ ...issuedObserverApi, ...overrides });
+      assert.throws(() => observer.assertBlocked(candidate, label), label);
+      originalReceiptRejections += 1;
+    }
+    const restored = issuedObserver.assertKnownInputs(candidate, "restored complete original receipt closure");
+    assert.deepStrictEqual(restored.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(restored.authenticatedDrifts, baseline.authenticatedDrifts);
+  } finally { fs.rmSync(fixtureRoot, { recursive: true, force: true }); }
+}
+console.log("PASS retained issued original receipt11 whole approvals with current Native BLOCKED; " +
+  originalReceiptRejections + " rejected corruptions; current Native approvals 0; new metadata approvals 0");
+
 console.log("CURRENT_NATIVE_READINESS " + JSON.stringify({
   ready: nativeApprovals.size, blockedRetained: retainedApprovals.size,
   blocked: [...retainedApprovals.values()].map(value => ({

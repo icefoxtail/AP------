@@ -237,6 +237,420 @@ const RHS_ONLY = Object.freeze({
   "typedProofSha256": "010cd67a316b38b058aee0949f6cea26e55dda4b964b14aacd9547e79445bde5"
 });
 
+// Fixed actual readonly run 44031397094: all11 Native null, nine
+// CANONICAL_LABELS_MISSING and two ID fingerprint refusals; no generated final.
+// This records retained approvals only. Other no-binding receipts remain closed.
+const ORIGINAL_RECEIPT_BLOCKS = Object.freeze({
+  "schemaVersion": "EXACT_ISSUED_ORIGINAL_RECEIPT_SOURCE_BLOCK",
+  "observation": {
+    "snapshot": "b4dc3bf65c37106ef2661173a0d1b83dc0e0417b",
+    "runId": "44031397094",
+    "job": "observe-current-main",
+    "report": {
+      "gitBlobSha1": "3806aeae18d0112ad93b848df2411c9775d690b6",
+      "sha256": "1643e7eb9c55739ff1933addcb8a9a00e6b2e1e8fca41e0b77c3ee38cc993b3e",
+      "bytes": 57929
+    }
+  },
+  "profiles": [
+    {
+      "key": "E034_ORDINARY_FINAL_QA_10",
+      "requestId": "m3s2-e034-residual-exclude-q22-d5-26fc-20261116",
+      "source": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+      "expectedQuestions": 25,
+      "receipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e034-residual-exclude-q22-d5-26fc-20261116.json",
+        "bytes": 177976,
+        "sha256": "9c93ebc1a234322a2f166a973401124de385f1f816c77b4f4d62eb825e9020f2",
+        "gitBlobSha1": "17af77b58b75ecfe11bab8f08fe0771a06b0ad25"
+      },
+      "issuedSource": {
+        "bytes": 60370,
+        "sha256": "dc9825f384aae4907f9b5f7c305f89a64a5146dba4ec2c7513954c66b8d5da4d",
+        "gitBlobSha1": "8108aa4a2cf717e85b45c5f4c27cdf74eca77c3f"
+      },
+      "observedSource": {
+        "bytes": 60399,
+        "sha256": "95b0866ca1c8b1aa99e79cffc7caa386a999106f8f25606122bc1e263347eac4",
+        "gitBlobSha1": "66e8619639246f6d37d3042501eeeb7d29d447d2"
+      },
+      "changes": [
+        {
+          "sourceOrdinal": 3,
+          "fields": [
+            "solution"
+          ],
+          "beforeWholeSha256": "c51d0943e0723590164ec7b56479d4ebd31660a265a4e98811af443689a0f6c7",
+          "afterWholeSha256": "1cadc29d1b05fe51873319edf2bf16e27f8089722485b67457c298444420f9bc"
+        }
+      ],
+      "subjects": [
+        {
+          "questionUid": "qid_v1_a26c7d6f842a730adcaa3d42d71cbe72075494e97bab0468f3a4203f82bee4d6",
+          "sourceOrdinal": 1,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "0596a35262a5c52fb7b6e6bef60e90de6ce9ee6cf7f6576bfcaf5a2f0974784a",
+          "identityWholeSha256": "fc41c9a0e80a3d8375827a5b44d021f8f4ae92b30699cb02f9bb418c5ecd677e",
+          "runtimeWholeSha256": "9d67e1e0fcaab0f67817bf33f8b66f34ab99f833489142f719e48b1d967c40da",
+          "currentQuestionWholeSha256": "e1dd9e62300f89f6fb78055e9ac6e3eda0bba0fbb125221e5e55a564a05fdcb9"
+        },
+        {
+          "questionUid": "qid_v1_7066d139739ae9c4b2fb16b4a772e952fa8f6143475934c317643980919abc8b",
+          "sourceOrdinal": 2,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "4788f859335b18e5d8e6c81d4e23d75f88e3661c22ed0aac12f8168ca997e3c2",
+          "identityWholeSha256": "bbfd9dbcf54816cab0a2f9303c32d701492255415546cbb81f58ea9ced9001e4",
+          "runtimeWholeSha256": "dce1378c64d73bc9983b4c8cf79be1e6842e07e528abf4c24262300320d9d19e",
+          "currentQuestionWholeSha256": "b232c07d77a71acb797d9581e94a83414a1993326edd206661a6e3da0e1146b0"
+        },
+        {
+          "questionUid": "qid_v1_5b5b90743fb6bec35ef5986475b04e9a14a689b472da9757ccfa92732b4678c0",
+          "sourceOrdinal": 3,
+          "expectedPlanReason": "IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
+          "metadataWholeSha256": "af40af24bb2b461af8e6a63a00129e12c836e8b6c6b8847a1fb53b940438b761",
+          "identityWholeSha256": "ae12dd5efb98db394aea419feb415dd57acd72823ac8dcb6ad18f947b9638e9d",
+          "runtimeWholeSha256": "575e9b659b3cb85095399513c69656c8e9bfaf25d4e976d703da7178fe19848b",
+          "currentQuestionWholeSha256": "1cadc29d1b05fe51873319edf2bf16e27f8089722485b67457c298444420f9bc"
+        },
+        {
+          "questionUid": "qid_v1_0bdbb9d2ce4f341a9d117bcf188d05e143790a9637d0a50d598f0e15dbafe4a6",
+          "sourceOrdinal": 4,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "73fec5b5dcb59a18ae8b7d7926c3f6cb3c85388ec2697b115352d2fc2372e05d",
+          "identityWholeSha256": "77d6c725f88bb91e403be2b9d1b3f49ab5a2088ead927aaaef9112fde63a1189",
+          "runtimeWholeSha256": "2195492df667c5cf9ee956792cb4597ef5c6cc95d65a0eef92e36d39a7f9ca12",
+          "currentQuestionWholeSha256": "d804b3c334a3553b7f4f2ac50289852525d8407afd53167d638025c634f48203"
+        },
+        {
+          "questionUid": "qid_v1_7c79820d88c11aef337163cec75f347205403c7f8e7b67035dcc91e0e02a0122",
+          "sourceOrdinal": 5,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "85e88f553c3084f952c07b02ef07b8898b2d3e041059bcb3abac5a7c52b0a839",
+          "identityWholeSha256": "1b098d99d3dfb0786e04eed52140fb25eff072f5174a58b0db3726316d79f9fd",
+          "runtimeWholeSha256": "f21bb0d0e785c18cf9bd456eec2db8b6faf209701ad940041a7a04fbd9c1783d",
+          "currentQuestionWholeSha256": "1c3d078dce9589ffcfc9bbc14db0c47a079bee93443b8cefa4a46a8a49343440"
+        },
+        {
+          "questionUid": "qid_v1_c32668aa2b2154aa78729796280b217d09bd39192ef30100931b02dd96efc488",
+          "sourceOrdinal": 6,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "4657cac88606bc251193938ddcf2889fdce15007a7e429504c1c2c843419e545",
+          "identityWholeSha256": "196c3c6fdc4601c399cfe01d828195b7e0831e31ac885f588c25822411a2bb56",
+          "runtimeWholeSha256": "b7c4f3a6d6d5b99829c3d4382b927cd6f59397c9472c05307fe5661b4f135d78",
+          "currentQuestionWholeSha256": "7c17e52e1beca34a8b640a1228f4b39af67c2cfb8d42f098ebcc8e40883abc13"
+        },
+        {
+          "questionUid": "qid_v1_55930b3d0fc2a8cce684c54cc2471649b40dbba7fff48e8cc721e86f82290d41",
+          "sourceOrdinal": 8,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "75ba0228798ae988162cbbe14656d9cea5f7ba2273a52e48ed15e99014b2bc6e",
+          "identityWholeSha256": "0b6447fc1c480f561243ec7b2a9ae547b7d732ffea56a5df95d87308125308c7",
+          "runtimeWholeSha256": "e5026a91a2e735ecdd4f051da874956960203d9ebbc5cb868294c9da007c6711",
+          "currentQuestionWholeSha256": "4f548d427260cbb3e1174ef07b9d67c4b7ebe7792fb6938eb5311d760ae9beb0"
+        },
+        {
+          "questionUid": "qid_v1_7a5833ac5d37d022a6e5491e026b6905e36ce9af61437cd7e93700646f61c876",
+          "sourceOrdinal": 9,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "68a2d72d85b048054e7a8e04130f076875bf47a31a50fe688c0f34cc6e957e6f",
+          "identityWholeSha256": "6d012ba8d0db31eac1bb6c34e30b16a3004a6641d38eeb968b491739cc139cdf",
+          "runtimeWholeSha256": "b38dc1396d3f54fda2673b32d9cd04eb0f264c50a5084f263fd635ec28ba943a",
+          "currentQuestionWholeSha256": "ed9e3085b0c5c8469b29230b4aee35e2b3ce051f6050007258f3189f2003d0c9"
+        },
+        {
+          "questionUid": "qid_v1_c0e1f59be8499e6f2f4fd0d4bf07911c922b5ab3861139c80cd91fd8d6dff631",
+          "sourceOrdinal": 10,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "c65279e0653a8ddf4422808e2e18214ddb45b51bc7255e57d595b5d7d796cce5",
+          "identityWholeSha256": "10714b9fb1ffb28ec996b19f2d4fcd7bba0fb25161722f0ed79961e56ab08f96",
+          "runtimeWholeSha256": "f603c9d61551d9499c523d1c33bf7fe9bbd675a09b3c8e418a93a4d31209b081",
+          "currentQuestionWholeSha256": "8cc9edbd862028b02898e4ae363bdff5b74cab9834a49e679c487aabc0a11d1f"
+        },
+        {
+          "questionUid": "qid_v1_64661daf2fea0bc0430a163d82c8fbb7340274320504caa149dc5927fd0411c6",
+          "sourceOrdinal": 23,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "e1642b2941ee0e101616b4e3595e9eea5e84852036e248514eb01534c53795d5",
+          "identityWholeSha256": "4a1c5418bc2a0c2606ff05174f4338dcd341837af9b37113d6c8383f7805fb61",
+          "runtimeWholeSha256": "e61f1cc46abc51f8acd0288669d214d53402654fcaf0e1f8e00138d1df0588d2",
+          "currentQuestionWholeSha256": "224fe7d6e82869eb4a2841214049660b3db8847dafcec31fca1a2a6b19f2f7e8"
+        }
+      ],
+      "originalSources": [
+        {
+          "bytes": 51120,
+          "sha256": "2ca0e2ffb3ed82fca6ff7a679cf9422f90be354c76837e4806b9676a48fbf17c",
+          "gitBlobSha1": "6b30a6ed97c0e44560ff1bdedcd719224f4f2e66"
+        }
+      ],
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+        "livePath": ".archive-meta-register/evidence/m3s2-follow428-native-20261115/E034.meta.json",
+        "bytes": 186411,
+        "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e",
+        "gitBlobSha1": "85c5b82703c539380279fa7b9d3beb9651f12c11"
+      },
+      "sourceReviewSha256ByUid": {
+        "qid_v1_a26c7d6f842a730adcaa3d42d71cbe72075494e97bab0468f3a4203f82bee4d6": "9f9a09b63c21e2f355ea10950d3878f5d2ae358b8824a18c71558852709c1fcd",
+        "qid_v1_7066d139739ae9c4b2fb16b4a772e952fa8f6143475934c317643980919abc8b": "71250db66ad9174e47a664b93e43496c9b97b376ba6bd8681ee67002470482dc",
+        "qid_v1_5b5b90743fb6bec35ef5986475b04e9a14a689b472da9757ccfa92732b4678c0": "1241bb402945608174facaa7de1504892c6e7412811e68109629a1d57a4f6350",
+        "qid_v1_0bdbb9d2ce4f341a9d117bcf188d05e143790a9637d0a50d598f0e15dbafe4a6": "6f40ff49a2dbdf901b9fe37fa81da32bf0558d889d6eca4b70d0bbf111c5ecf8",
+        "qid_v1_7c79820d88c11aef337163cec75f347205403c7f8e7b67035dcc91e0e02a0122": "4602a2e95bd45c137c67b3da580dfe93eb15468fe50262bb38b4db69069e52c8",
+        "qid_v1_c32668aa2b2154aa78729796280b217d09bd39192ef30100931b02dd96efc488": "3b5742fec5bf9a980997c2b60273592248ae0b857daebe7605b080ce6aec4f13",
+        "qid_v1_55930b3d0fc2a8cce684c54cc2471649b40dbba7fff48e8cc721e86f82290d41": "2acd72b5199d908859b26c6c46e53cfcb44b42add4ac237eb9ce783a531013f3",
+        "qid_v1_7a5833ac5d37d022a6e5491e026b6905e36ce9af61437cd7e93700646f61c876": "d163761e0e0654c198c7d1db69c27e851213357332cf7211efa9c43a97a667d8",
+        "qid_v1_c0e1f59be8499e6f2f4fd0d4bf07911c922b5ab3861139c80cd91fd8d6dff631": "8c487a0d51af516a7b09a2194545174ed456ffc651cae1a17012183239b7cff9",
+        "qid_v1_64661daf2fea0bc0430a163d82c8fbb7340274320504caa149dc5927fd0411c6": "d951c04a5ca322dd9e4d0c68714a9740c205249b46e45423a178df4a165e7117"
+      }
+    },
+    {
+      "key": "HYANGRIM_Q5_SOURCE_PRESERVATION_1",
+      "requestId": "m2s2-closeout-20261115-E013-Q5-preserve",
+      "source": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "expectedQuestions": 24,
+      "receipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-closeout-20261115-E013-Q5-preserve.json",
+        "bytes": 9339,
+        "sha256": "4f091bd3276b2b014468a91e3540b2a93d39a12249090dac4c04414d63844c74",
+        "gitBlobSha1": "061942ba4cdc674e9147885e392d63ffd8343843"
+      },
+      "issuedSource": {
+        "bytes": 58496,
+        "sha256": "a4748d233f9150752ac0c6d2c11dd576f51871310689e698f9076ff6129cf44e",
+        "gitBlobSha1": "dc90dee3aa1373c5842241324db00a3753a80cfd"
+      },
+      "observedSource": {
+        "bytes": 62388,
+        "sha256": "12fe8f1e2f4970a8c9cae76b0f558e80b92cda4258c94d300afe30c6e638fd23",
+        "gitBlobSha1": "2e5c6dfa390ff329c4982e3dfc5b3df3429c2b05"
+      },
+      "changes": [
+        {
+          "sourceOrdinal": 1,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "f484cf3290b502178c9f95c2cd448faa49ab57326e3c1c116a6932a07561de04",
+          "afterWholeSha256": "57d991843dbd3d98b982284b1d1527797bb962388af01dcbcf7182c33d3e5775"
+        },
+        {
+          "sourceOrdinal": 2,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "6d3cdfc60670ed159c0f066f018b6562e7651e1ed1199ad2ea87e9b34df7e48f",
+          "afterWholeSha256": "73d0bf9758bcef7c5b7ef7e4fa7b580cc291305b0a6f223fbe4f256149e2091b"
+        },
+        {
+          "sourceOrdinal": 3,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "882f4977b6d74537b51335fc91a484ef0a42ad68356181fb14624e9fc49f819c",
+          "afterWholeSha256": "305ae9ccb4eb012f511209d41dd98dec4fded0ac9059552b8cdae42be3c37f30"
+        },
+        {
+          "sourceOrdinal": 4,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "ed3a63354b0ae128bfbda3746b28007ea957d198ead0570b89423d0ad716dd54",
+          "afterWholeSha256": "b9cfe31bb984119cd83d76acf6487df6b4aa8e5e4f3c50163e485083248a0b17"
+        },
+        {
+          "sourceOrdinal": 5,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "ace73e6d31df907896be57cfcf46ad2573a77b14c80a5a296018833c9cb1c4f9",
+          "afterWholeSha256": "79d8fccf30a82dc8fe8dc6743ada631d4f48b4e6eb7b604c5e665394ec01155e"
+        },
+        {
+          "sourceOrdinal": 6,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "dda244e16eae0aba6fe899a9790b29b9a1396d76e649fda9f71e81819fcabb20",
+          "afterWholeSha256": "905ee5dd19e62c38ee763bff889c98b46cd6499ab4c3d38a00433e4d55a12950"
+        },
+        {
+          "sourceOrdinal": 7,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "6db57fdd0eea2df287e82dfcdd499259d4c20411fac1c2f71221a483fa122154",
+          "afterWholeSha256": "19473846101b016d6727866e6429cd2d06ef55cd33819c09a370d91b30798d38"
+        },
+        {
+          "sourceOrdinal": 8,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "4a706817854a6507ec21ba84e0fe980e2b45e4be95e1fe61972da139d918908b",
+          "afterWholeSha256": "277bb376205158fa744e6e0a30a325a7c4460be438a64e52ac0fbb5f695679d3"
+        },
+        {
+          "sourceOrdinal": 9,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "f8101bb993e81e939adccc3d7ae67c4097131156753cd101b6cd46d518d4e2d2",
+          "afterWholeSha256": "ae8e285bda7c56497f00b68fac14627596c4ef62c45731dbc93c97535214fd43"
+        },
+        {
+          "sourceOrdinal": 10,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "5fbbad3688426ad797669f9a2a2db1242c4181396d86058177ec9415fea86ed9",
+          "afterWholeSha256": "05e14c6dc9ea24ac460e02c3e4c83c09c5e5c42c2c8d88b35e2a5194875ac1c3"
+        },
+        {
+          "sourceOrdinal": 11,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "346d0876afec76f3d90b6a87517e6eefa0c36032503d8e821bf70686bf24f963",
+          "afterWholeSha256": "c252a1541a4cbb55a86cccd2cddcea605639c9668e68e3929f30e9ea35624056"
+        },
+        {
+          "sourceOrdinal": 12,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "686f0f9f219283e878b01847de4ef0b9c0f960945648bc175f1a4cade5900dca",
+          "afterWholeSha256": "fc8a5b1c4a265e91dcd6e1cc0312cd1f731033c86b1e0d5160a99a0360bd8417"
+        },
+        {
+          "sourceOrdinal": 13,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "eb93a6dc8c02bc792dbe63a0ddebaa262d201207660457e7a3d768b2c6f9517d",
+          "afterWholeSha256": "eeccbcda9bfc0dde1723852a2ab8db7dc401c00e9827cf379e872f8368e23f40"
+        },
+        {
+          "sourceOrdinal": 16,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag",
+            "solutionImage",
+            "solutionImageAlt",
+            "solutionImageCaption",
+            "solutionImageSize"
+          ],
+          "beforeWholeSha256": "06b85b478f01d17ce61266cd0a441e624ff14b70630a6a5d68046f0b7013afdb",
+          "afterWholeSha256": "123bf0aea44e381a2d954e05dc866d9abfe0ebfe34eec0088bf7f0ff0fcdde6a"
+        },
+        {
+          "sourceOrdinal": 19,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "5e1731b4c43afcb2e80d33fbe3a8f72b772a17b6c2edfd0b8c0e735e39d8dbc1",
+          "afterWholeSha256": "3440cea7178c175cf6a8e7f0911cd50beab52bfc1b4db68463d384a83dc38fc2"
+        },
+        {
+          "sourceOrdinal": 21,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "561ebc7c4ab929450be775ade1865f0a58253f383cd75b71eaf090a209004059",
+          "afterWholeSha256": "728d5b8f49f9510db6220183daad4e36850f53f3251f93ce84267f882596e7de"
+        },
+        {
+          "sourceOrdinal": 22,
+          "fields": [
+            "image",
+            "imageAlt",
+            "imageSize",
+            "layoutTag"
+          ],
+          "beforeWholeSha256": "dffb7fc4b1032567b5ab43a01e7532729398ab7b1f97b455217b7383ee45b73b",
+          "afterWholeSha256": "487ca175d2f5571c7a3623c69bee6590e6cfff6e6a79882d89367cc5c8b5d019"
+        }
+      ],
+      "subjects": [
+        {
+          "questionUid": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+          "sourceOrdinal": 5,
+          "expectedPlanReason": "IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
+          "metadataWholeSha256": "13448c17f6da10d59f4f11c5aa8007b9248b97e2a30787aafb0a919724ac0ec5",
+          "identityWholeSha256": "fe72b3e52a856840cc7c158dd1624447ae90488fc1c5ea7c89f84c1c6b0e8a1c",
+          "runtimeWholeSha256": "a9d7597a67b56a113f6d0b8329450df6cdb86953ca34f4467b881c7310594f1d",
+          "currentQuestionWholeSha256": "79d8fccf30a82dc8fe8dc6743ada631d4f48b4e6eb7b604c5e665394ec01155e"
+        }
+      ],
+      "originalSources": [
+        {
+          "bytes": 53090,
+          "sha256": "d124fc5e5bd036bacfec7f3cd290cafbfd41fcfaf21af07b76932df70a1a341f",
+          "gitBlobSha1": "db4faa58133e8e3919ae21802bc0102aa100ae4a"
+        },
+        {
+          "bytes": 53399,
+          "sha256": "11ff710f7beaf7801952e66dc5016bea73e982f93414e5d7899e2804fb774918",
+          "gitBlobSha1": "15ba5f4da8db32a7ec7d8219a0a1063a8db8cdeb"
+        }
+      ],
+      "priorReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2-s2-partial-e013-q5-20261114.json",
+        "bytes": 9347,
+        "sha256": "1142df9a34c2970ff2b6d89cc496292e74538bb57e9f26cfd14cf2493dbf962a",
+        "gitBlobSha1": "063f37d2fe3a161eaf16e6f90d9c795f574c3e12"
+      }
+    }
+  ]
+});
+
 const PROOF_KINDS = Object.freeze([
   ["m2ProblemRenderer21Continuity", "archive-reviewed-m2-problem21-continuity-v1", "archive-m2-problem24-student-ui-preview-v1"],
   ["m2Family3ProblemContinuity", "archive-m2-family3-problem-continuity-v1", "archive-m2-problem24-student-ui-preview-v1"],
@@ -317,6 +731,30 @@ function readRhsOriginalNativeSource(root) {
   assert.strictEqual(entry, "100644 blob " + ref.gitBlobSha1 + "\t" + ref.path + "\0",
     "ISSUED_RETENTION:RHS_ORIGINAL_SOURCE_PATH");
   return assertRhsOriginalNativeSourceBytes(execFileSync("git", ["cat-file", "blob", ref.gitBlobSha1], options));
+}
+function originalReceiptProfile(requestId) {
+  return single(ORIGINAL_RECEIPT_BLOCKS.profiles, value => value.requestId === requestId,
+    "ISSUED_RETENTION:FIXED_ORIGINAL_RECEIPT");
+}
+function assertOriginalReceiptSourceBytes(raw, requestId, index) {
+  const profile = originalReceiptProfile(requestId);
+  assert(Number.isSafeInteger(index) && index >= 0 && index < profile.originalSources.length,
+    "ISSUED_RETENTION:ORIGINAL_RECEIPT_SOURCE_INDEX");
+  assert(Buffer.isBuffer(raw), "ISSUED_RETENTION:ORIGINAL_RECEIPT_SOURCE_BYTES");
+  assert.deepStrictEqual(pins(raw), profile.originalSources[index],
+    "ISSUED_RETENTION:ORIGINAL_RECEIPT_SOURCE_BYTES");
+  return raw;
+}
+function readOriginalReceiptSource(root, requestId, index) {
+  const profile = originalReceiptProfile(requestId);
+  assert(Number.isSafeInteger(index) && index >= 0 && index < profile.originalSources.length,
+    "ISSUED_RETENTION:ORIGINAL_RECEIPT_SOURCE_INDEX");
+  const raw = execFileSync("git", ["cat-file", "blob", profile.originalSources[index].gitBlobSha1], {
+    cwd: root, maxBuffer: 1024 * 1024, timeout: 30000,
+    env: { ...process.env, GIT_NO_LAZY_FETCH: "1", GIT_OPTIONAL_LOCKS: "0" },
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  return assertOriginalReceiptSourceBytes(raw, requestId, index);
 }
 function createIssuedApprovalObserver(api) {
   const immutableCache = new Map(), ancestorCache = new Set();
@@ -404,6 +842,27 @@ function createIssuedApprovalObserver(api) {
     }).filter(Boolean);
     assert.deepStrictEqual(changes, edition.changes, label + ": exact known source field inventory");
     return { commit: edition.commit, pins: edition.pins, changes, beforeBank, currentBank };
+  }
+  function assertOriginalReceiptSourceEdition(root, profile, relative, issued, actual, label) {
+    assert.strictEqual(relative, "archive/exams/" + profile.source, label + ": fixed original source path");
+    assert.deepStrictEqual(pins(issued), profile.issuedSource, label + ": fixed issued original source");
+    assert.deepStrictEqual(pins(actual), profile.observedSource, label + ": unobserved original source edition");
+    const commit = ORIGINAL_RECEIPT_BLOCKS.observation.snapshot, head = ancestor(root, commit);
+    assert(actual.equals(immutable(root, commit, relative)) && actual.equals(immutable(root, head, relative)),
+      label + ": actual observed edition and current HEAD source bytes");
+    const beforeBank = api.loadBank(issued.toString("utf8"), relative);
+    const currentBank = api.loadBank(actual.toString("utf8"), relative);
+    assert.strictEqual(beforeBank.length, profile.expectedQuestions, label);
+    assert.strictEqual(currentBank.length, profile.expectedQuestions, label);
+    const changes = beforeBank.map((before, index) => {
+      const after = currentBank[index];
+      if (same(before, after)) return null;
+      return { sourceOrdinal: index + 1, fields: [...new Set([...Object.keys(before), ...Object.keys(after)])]
+        .filter(field => !same(before[field], after[field])).sort(),
+        beforeWholeSha256: sha(stable(before)), afterWholeSha256: sha(stable(after)) };
+    }).filter(Boolean);
+    assert.deepStrictEqual(changes, profile.changes, label + ": exact observed whole-bank change inventory");
+    return { commit, pins: profile.observedSource, changes, beforeBank, currentBank };
   }
   function assertRetained(input, label) {
     const { current, identity, source, ordinal, question, previous, registry, runtimeOwner, nativeSource } = input;
@@ -494,6 +953,7 @@ function createIssuedApprovalObserver(api) {
       assert.strictEqual(sha(raw), ref.sha256, label + ": issued evidence digest");
       assert(live(ref.path).equals(raw), label + ": current evidence bytes");
     }
+    const originalReceipt = ORIGINAL_RECEIPT_BLOCKS.profiles.find(value => value.requestId === requestId);
     const sourceOnly = requestId === SOURCE_ONLY.child.requestId;
     let bindingPath = null, patch = null;
     if (sourceOnly) {
@@ -501,6 +961,11 @@ function createIssuedApprovalObserver(api) {
       assert.deepStrictEqual(pins(issuedBytes), pinsOnly(SOURCE_ONLY.child), label + ": closed issued source receipt");
       assert(source === SOURCE_ONLY.source && SOURCE_ONLY.subjects.some(value =>
         value.questionUid === current.questionUid && value.sourceOrdinal === ordinal), label + ": closed source target");
+    } else if (originalReceipt) {
+      assert.strictEqual(receiptPath, originalReceipt.receipt.path, label + ": fixed original receipt path");
+      assert.deepStrictEqual(pins(issuedBytes), pinsOnly(originalReceipt.receipt), label + ": fixed original issued receipt bytes");
+      assert(source === originalReceipt.source && originalReceipt.subjects.some(value =>
+        value.questionUid === current.questionUid && value.sourceOrdinal === ordinal), label + ": fixed original receipt subject");
     } else {
       bindingPath = RECEIPTS + requestId + ".source-review-binding.json";
       const digest = single(receipt.outputDigests, ref => ref.path === bindingPath, label + ": source-review output");
@@ -533,7 +998,8 @@ function createIssuedApprovalObserver(api) {
     const anchorSource = immutable(root, OBSERVATION.anchor, sourcePath);
     const sourceChangedSinceAnchor = !currentSource.equals(anchorSource);
     const sourceEdition = sourceChangedSinceAnchor
-      ? assertObservedSourceEdition(root, sourcePath, anchorSource, currentSource, label) : null;
+      ? originalReceipt ? assertOriginalReceiptSourceEdition(root, originalReceipt, sourcePath, anchorSource, currentSource, label)
+        : assertObservedSourceEdition(root, sourcePath, anchorSource, currentSource, label) : null;
     if (sourceEdition) assert.deepStrictEqual(sourceEdition.currentBank, nativeSource.bank, label + ": observed caller source bank");
     const rhsOnly = requestId === RHS_ONLY.requestId;
     if (rhsOnly) {
@@ -541,7 +1007,7 @@ function createIssuedApprovalObserver(api) {
         current.questionUid === RHS_ONLY.questionUid, label + ": exact issued RHS singleton");
       assert.deepStrictEqual(pins(issuedBytes), pinsOnly(RHS_ONLY.receipt), label + ": fixed RHS issued receipt");
     }
-    return { kind: sourceOnly ? SOURCE_ONLY.schemaVersion : rhsOnly ? RHS_ONLY.schemaVersion : "ISSUED_TYPED_UI",
+    return { kind: originalReceipt ? ORIGINAL_RECEIPT_BLOCKS.schemaVersion : sourceOnly ? SOURCE_ONLY.schemaVersion : rhsOnly ? RHS_ONLY.schemaVersion : "ISSUED_TYPED_UI",
       receiptPath, receipt, bindingPath, patch, context, readPaths, sourceChangedSinceAnchor, sourceEdition, live,
       proof: { approval: "RETAINED_ISSUED_APPROVAL", anchor: OBSERVATION.anchor,
         receipt: { path: receiptPath, ...pins(issuedBytes) }, questionUid: current.questionUid,
@@ -784,9 +1250,149 @@ function createIssuedApprovalObserver(api) {
         changes: edition.changes, currentQuestionSha256: sha(stable(input.question)), currentNativeAuthority: "NOT_GRANTED" }
     }, authenticatedDrifts: [{ path: sourcePath, issued: OBSERVATION.source.before, current: edition.pins }] };
   }
+  function assertKnownOriginalReceiptInputs(input, kept, label) {
+    const { current, identity, source, ordinal, nativeSource, registry } = input, root = nativeSource.root;
+    const profile = originalReceiptProfile(kept.receipt.requestId), receipt = kept.receipt;
+    assert(kept.kind === ORIGINAL_RECEIPT_BLOCKS.schemaVersion && source === profile.source &&
+      kept.sourceChangedSinceAnchor && kept.sourceEdition, label + ": exact original receipt source block");
+    const subject = single(profile.subjects, value => value.questionUid === current.questionUid &&
+      value.sourceOrdinal === ordinal, label + ": fixed observed original subject");
+    assert(receipt.scope === "PARTIAL_UIDS" && receipt.partialUidCount === profile.subjects.length &&
+      receipt.totalQuestions === profile.subjects.length && receipt.expectedQuestionCount === profile.expectedQuestions &&
+      receipt.approval.type === "FINAL_QA" && receipt.registryChanges?.length === 0,
+      label + ": original closed issuance scope");
+    assert.strictEqual(receipt.sourceBlobSha1, profile.issuedSource.gitBlobSha1, label);
+    assert.strictEqual(receipt.sourceRawSha256, profile.issuedSource.sha256, label);
+    assert.deepStrictEqual(receipt.appliedRecords.map(value => ({
+      questionUid: value.questionUid, sourceOrdinal: value.sourceOrdinal
+    })).sort((a, b) => a.sourceOrdinal - b.sourceOrdinal),
+    profile.subjects.map(value => ({ questionUid: value.questionUid, sourceOrdinal: value.sourceOrdinal })), label);
+    const bindingPath = RECEIPTS + receipt.requestId + ".source-review-binding.json";
+    assert(!receipt.outputDigests.some(value => value.path === bindingPath) &&
+      [...receipt.appliedRecords, ...receipt.runtimeRecords].every(value => !value.approvalEvidence.includes(bindingPath)),
+      label + ": fixed original issuance did not declare a typed binding");
+    assertAuthorityInputs(input, kept, label);
+    for (const expected of profile.subjects) {
+      const actual = api.currentRows(expected.questionUid);
+      assert(actual.runtimeStatus === "ACTIVE" && actual.runtimeOwner === "MIDDLE_GEOMETRY",
+        label + ": all original receipt targets retain their owner");
+      for (const [key, collection, digestKey] of [
+        ["metadata", "appliedRecords", "metadataWholeSha256"],
+        ["identity", "appliedIdentityRecords", "identityWholeSha256"],
+        ["runtime", "runtimeRecords", "runtimeWholeSha256"]
+      ]) {
+        const issued = single(receipt[collection], value => value.questionUid === expected.questionUid &&
+          value.sourceOrdinal === expected.sourceOrdinal, label + ": original subject " + key);
+        assert.deepStrictEqual(actual[key], issued, label + ": all original receipt targets retain whole " + key);
+        assert.strictEqual(sha(stable(actual[key])), expected[digestKey], label + ": observed whole " + key);
+      }
+      const classification = Object.fromEntries([
+        "problemTypeKey", "templateKey", "curriculum", "curriculumKey", "standardCourse",
+        "standardUnitKey", "subUnitKey", "sourceArchiveFile"
+      ].map(field => [field, actual.metadata[field]]));
+      const check = api.validateActiveMetaFields(classification, registry, { requireFields: false });
+      assert(check.status === "VALIDATED" && check.activeBinding, label + ": original current classification");
+      const context = api.activeBindingContext({ candidate: actual.metadata, check, registry, runtimeOwner: actual.runtimeOwner });
+      assert(!context.reason && context.ownerPack === actual.runtimeOwner, label + ": original current ACTIVE owner");
+      assert.strictEqual(sha(stable(nativeSource.bank[expected.sourceOrdinal - 1])),
+        expected.currentQuestionWholeSha256, label + ": exact observed target question bytes");
+    }
+    const sourcePath = "archive/exams/" + source, edition = kept.sourceEdition;
+    const originalSources = profile.originalSources.map((ref, index) =>
+      readOriginalReceiptSource(root, receipt.requestId, index));
+    if (profile.key === "E034_ORDINARY_FINAL_QA_10") {
+      assert(receipt.approval.sourceRebind === undefined && receipt.registrationMode === undefined &&
+        receipt.fingerprintRepairs.length === profile.subjects.length, label + ": original ordinary FINAL_QA");
+      const ref = profile.nativeReview, reviewBytes = boundImmutable(root, ref);
+      assert(kept.live(ref.livePath).equals(reviewBytes), label + ": original Native review witness bytes");
+      const reviewedSource = immutable(root, ref.commit, sourcePath);
+      assert(reviewedSource.equals(originalSources[0]), label + ": original review source commit/path");
+      for (const expected of profile.subjects) {
+        const repair = single(receipt.fingerprintRepairs, value => value.questionUid === expected.questionUid &&
+          value.sourceOrdinal === expected.sourceOrdinal, label + ": original ordinary reassessment");
+        assert(repair.rebind === undefined, label + ": original ordinary reassessment kind");
+        const review = repair.sourceReview;
+        assert.strictEqual(sha(stable(review)), profile.sourceReviewSha256ByUid[expected.questionUid],
+          label + ": whole original Native review descriptor");
+        assert(review.schemaVersion === "archive-reviewed-source-reassessment-v1" &&
+          review.nativeSchemaVersion === "m3-s2-complete-semantic-review-v1" &&
+          review.reviewCommit === ref.commit && review.reviewPath === ref.path &&
+          review.reviewRef.path === ref.livePath && review.reviewRef.sha256 === ref.sha256 &&
+          review.reviewedSourceBlobSha1 === profile.originalSources[0].gitBlobSha1 &&
+          review.reviewCommitSourceBlobSha1 === profile.originalSources[0].gitBlobSha1 &&
+          review.reviewedSourceSha256 === profile.originalSources[0].sha256 &&
+          review.scope === "METADATA_SOURCE_BINDING_ONLY" && review.newMathematicalQa === false, label);
+      }
+    } else {
+      assert.strictEqual(profile.key, "HYANGRIM_Q5_SOURCE_PRESERVATION_1", label);
+      assert(receipt.newMetadataApprovals === 0 && receipt.preservedMetadataApprovals === 1 &&
+        receipt.fingerprintRepairs.length === 0, label + ": original single approval preservation");
+      assert.deepStrictEqual(receipt.approval.sourceRebind,
+        { priorReceiptRef: { path: profile.priorReceipt.path, sha256: profile.priorReceipt.sha256 } }, label);
+      const priorBytes = immutable(root, OBSERVATION.anchor, profile.priorReceipt.path);
+      assert.deepStrictEqual(pins(priorBytes), pinsOnly(profile.priorReceipt), label + ": fixed original prior receipt");
+      assert(kept.live(profile.priorReceipt.path).equals(priorBytes), label + ": current original prior receipt");
+      const prior = JSON.parse(priorBytes);
+      assert(prior.schemaVersion === "archive-reviewed-exam-meta-registration-v2" &&
+        prior.metadataRegistrationStatus === "REGISTERED" && prior.scope === "PARTIAL_UIDS" &&
+        prior.totalQuestions === 1 && prior.partialUidCount === 1 && prior.expectedQuestionCount === profile.expectedQuestions &&
+        prior.approval.type === "FINAL_QA" && prior.approval.metadataReviewed === true &&
+        prior.sourceArchiveFile === source && prior.examUid === receipt.examUid &&
+        prior.sourceBlobSha1 === profile.originalSources[0].gitBlobSha1 &&
+        prior.sourceRawSha256 === profile.originalSources[0].sha256, label + ": original prior authority");
+      const withoutTransport = value => {
+        const copy = { ...value }; delete copy.metadataRevision; delete copy.approvalEvidence; return copy;
+      };
+      for (const collection of ["appliedRecords", "appliedIdentityRecords", "runtimeRecords"]) {
+        assert.strictEqual(prior[collection].length, 1, label);
+        const before = prior[collection][0], after = receipt[collection][0];
+        assert(before.questionUid === current.questionUid && before.sourceOrdinal === ordinal, label);
+        assert.deepStrictEqual(collection === "appliedIdentityRecords" ? after : withoutTransport(after),
+          collection === "appliedIdentityRecords" ? before : withoutTransport(before), label + ": original approved whole row");
+        if (collection !== "appliedIdentityRecords")
+          assert.deepStrictEqual(after.approvalEvidence,
+            [...new Set([...before.approvalEvidence, kept.receiptPath])], label + ": exact preservation evidence append");
+      }
+      for (const ref of prior.approval.evidenceRefs) {
+        assert(SHA256.test(ref.sha256), label);
+        const original = immutable(root, OBSERVATION.anchor, ref.path);
+        assert.strictEqual(sha(original), ref.sha256, label + ": original prior evidence");
+        assert(kept.live(ref.path).equals(original), label + ": current prior evidence");
+      }
+      const priorBank = api.loadBank(originalSources[0].toString("utf8"), sourcePath);
+      assert.strictEqual(priorBank.length, profile.expectedQuestions, label);
+      assert.deepStrictEqual(priorBank[ordinal - 1], edition.beforeBank[ordinal - 1],
+        label + ": source preservation kept the original whole selected question");
+      const repair = single(prior.fingerprintRepairs, value => value.questionUid === current.questionUid &&
+        value.sourceOrdinal === ordinal, label + ": original solution repair");
+      assert.strictEqual(prior.fingerprintRepairs.length, 1, label);
+      assert.strictEqual(repair.rebind.priorSourceBlobSha1, profile.originalSources[1].gitBlobSha1, label);
+      assert.strictEqual(api.loadBank(originalSources[1].toString("utf8"), sourcePath).length,
+        profile.expectedQuestions, label + ": original solution input denominator");
+    }
+    assert.deepStrictEqual(edition.currentBank, nativeSource.bank, label);
+    assert.strictEqual(sha(stable(input.question)), subject.currentQuestionWholeSha256, label);
+    if (subject.expectedPlanReason === "CANONICAL_LABELS_MISSING")
+      assert.strictEqual(api.sourceFingerprint(input.question), identity.sourceFingerprint, label);
+    else {
+      assert.strictEqual(subject.expectedPlanReason, "IDENTITY_SOURCE_FINGERPRINT_MISMATCH", label);
+      assert.notStrictEqual(api.sourceFingerprint(input.question), identity.sourceFingerprint, label);
+    }
+    return { ...kept, expectedPlanReason: subject.expectedPlanReason,
+      declaredInputs: { readonlyPaths: [...kept.readPaths].filter(relative => relative !== sourcePath).sort(),
+        fontPaths: [], assetPaths: [], sourcePaths: [sourcePath], inventorySize: kept.readPaths.size,
+        originalSources: profile.originalSources, originalRequestId: receipt.requestId,
+        actualReadonlyObservation: ORIGINAL_RECEIPT_BLOCKS.observation,
+        originalReceiptShape: profile.key,
+        selectedSource: { anchor: OBSERVATION.anchor, path: sourcePath, observedCommit: edition.commit,
+          changes: edition.changes, currentQuestionSha256: subject.currentQuestionWholeSha256,
+          currentNativeAuthority: "NOT_GRANTED", currentDisplayQuality: "NOT_REVIEWED" } },
+      authenticatedDrifts: [{ path: sourcePath, issued: profile.issuedSource, current: profile.observedSource }] };
+  }
   function assertKnownInputs(input, label) {
     const kept = assertRetained(input, label), { current, identity, source, ordinal, nativeSource, registry } = input;
     const root = nativeSource.root, head = ancestor(root, OBSERVATION.observed);
+    if (kept.kind === ORIGINAL_RECEIPT_BLOCKS.schemaVersion) return assertKnownOriginalReceiptInputs(input, kept, label);
     if (kept.kind === SOURCE_ONLY.schemaVersion) return assertKnownSourceOnlyInputs(input, kept, label);
     if (kept.kind === RHS_ONLY.schemaVersion) return assertKnownRhsInputs(input, kept, label);
     const repair = single(kept.receipt.fingerprintRepairs,
@@ -931,15 +1537,16 @@ function createIssuedApprovalObserver(api) {
     assert.strictEqual(result.sourceArchiveFile, source, label);
     assert.strictEqual(result.sourceOrdinal, ordinal, label);
     const sourceOnly = kept.kind === SOURCE_ONLY.schemaVersion;
-    const allowed = new Set([sourceOnly ? SOURCE_ONLY.currentRejection : "NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED"]);
+    const allowed = new Set([kept.kind === ORIGINAL_RECEIPT_BLOCKS.schemaVersion ? kept.expectedPlanReason
+      : sourceOnly ? SOURCE_ONLY.currentRejection : "NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED"]);
     if (!sourceOnly && kept.sourceChangedSinceAnchor) {
       allowed.add("IDENTITY_SOURCE_FINGERPRINT_MISMATCH");
       allowed.add("METADATA_SOURCE_FINGERPRINT_CONFLICT");
     }
     assert(Array.isArray(result.reasons) && result.reasons.length > 0 &&
       result.reasons.every(reason => allowed.has(reason)), label + ": unknown current refusal");
-    if (kept.kind === RHS_ONLY.schemaVersion)
-      assert.deepStrictEqual(result.reasons, [kept.expectedPlanReason], label + ": exact RHS current refusal");
+    if (kept.kind === RHS_ONLY.schemaVersion || kept.kind === ORIGINAL_RECEIPT_BLOCKS.schemaVersion)
+      assert.deepStrictEqual(result.reasons, [kept.expectedPlanReason], label + ": exact observed current refusal");
     assert.strictEqual(sha(stable({ current, identity, runtime: nativeSource.runtimeRecord,
       question: input.question, previous: input.previous, sourceBytes: sha(nativeSource.bytes) })), before,
       label + ": original producer probe must not mutate issued inputs");
@@ -951,4 +1558,5 @@ function createIssuedApprovalObserver(api) {
   return { assertRetained, assertKnownInputs, assertBlocked };
 }
 module.exports = { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
-  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes };
+  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
+  readOriginalReceiptSource, assertOriginalReceiptSourceBytes };

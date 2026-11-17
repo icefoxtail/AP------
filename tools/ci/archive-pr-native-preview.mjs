@@ -1529,6 +1529,16 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
     if (tree(ref.commit, ref.path) !== ref.gitBlobSha1) fail('Q5_SHADOW_IMMUTABLE_PIN:' + ref.path);
     return readHead(ref.path, ref);
   };
+  // The issued request names these three exact publications. The original
+  // Native reference contract authenticates their immutable bytes and current
+  // live copies, but does not require their publication branch to be an ancestor.
+  // Current display/source/renderer refs still use pinned() and its ancestry gate.
+  const originalPrior = ref => {
+    five(ref);
+    if (!p.priorRefs.some(expected => same(ref, expected))) fail('Q5_SHADOW_ORIGINAL_REF');
+    if (tree(ref.commit, ref.path) !== ref.gitBlobSha1) fail('Q5_SHADOW_IMMUTABLE_PIN:' + ref.path);
+    return readHead(ref.path, ref);
+  };
   const descriptor = selected[0];
   if (!flatInboxPath(descriptor.path)) fail('Q5_SHADOW_REQUEST_PATH');
   const requestRaw = readHead(descriptor.path), request = parsed(requestRaw.toString('utf8'));
@@ -1566,7 +1576,7 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
   });
   if (!currentRequested && engineOid === p.legacyEngineBlob) return [];
   if (engineOid !== p.engineRef.gitBlobSha1) fail('Q5_SHADOW_RENDERER_EDITION');
-  const [basisRaw, priorRaw] = p.priorRefs.map(pinned);
+  const [basisRaw, priorRaw] = p.priorRefs.map(originalPrior);
   const basis = parsed(basisRaw.toString('utf8')), prior = parsed(priorRaw.toString('utf8'));
   const currentRaw = p.currentRefs.map(pinned);
   const visual = parsed(currentRaw[0].toString('utf8')), technical = parsed(currentRaw[1].toString('utf8'));

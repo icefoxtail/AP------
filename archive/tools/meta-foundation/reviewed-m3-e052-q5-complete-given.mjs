@@ -385,7 +385,11 @@ function currentM3Q5Ui(ctx, prior, visual) {
   if (!requested) return null;
   ensure(headEngine === c.code[5].gitBlobSha1, 'CURRENT_UI_HEAD_ENGINE_DRIFT');
   ensure(same(ctx.spec.technicalRef, c.priorTechnicalRef) && same(ctx.spec.visualRef, c.priorVisualRef), 'CURRENT_UI_ORIGINAL_AUTHORITY_REF');
-  for (const ref of [c.technicalRef, c.visualRef, c.priorTechnicalRef, c.priorVisualRef, c.witnessRef, c.framesRef, ...c.artifacts])
+  // Original publication refs are fixed above and already authenticated by
+  // evidence()/reference() against their immutable trees and current live bytes.
+  // Their publication commits need not be ancestors of this checkout. Current
+  // UI evidence still requires ancestry from the actual checkout.
+  for (const ref of [c.technicalRef, c.visualRef, c.witnessRef, c.framesRef, ...c.artifacts])
     git(ctx, ['merge-base', '--is-ancestor', ref.commit, 'HEAD']);
   for (const ref of [c.technicalRef, c.visualRef, c.witnessRef, c.framesRef, ...c.artifacts])
     ensure(git(ctx, ['rev-parse', 'HEAD:' + ref.path]).toString().trim() === ref.gitBlobSha1, 'CURRENT_UI_HEAD_EVIDENCE_DRIFT');

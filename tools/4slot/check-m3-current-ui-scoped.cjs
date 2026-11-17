@@ -12,9 +12,9 @@ const CONFIG={
   "files": [
     {
       "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
-      "gitBlobSha1": "71eb98b06f359f1f1a18f62fa281b01e1ea94eec",
-      "sha256": "695298b878666f01aafbce21378f991b82b865e8b359849df0627200fd255b7d",
-      "bytes": 50755
+      "gitBlobSha1": "a725d9af4e25f4c118a6e743ad95cb01bec5cf8c",
+      "sha256": "489a8089bd53ca5ca3823c932561381d40971b15038c13a8bd3ef8dc6cf8f5d3",
+      "bytes": 51020
     },
     {
       "path": "tools/4slot/m3-e052-q5-complete-given-continuity.cjs",
@@ -54,15 +54,15 @@ const CONFIG={
     },
     {
       "path": "tools/ci/archive-pr-native-preview.mjs",
-      "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
-      "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
-      "bytes": 116137
+      "gitBlobSha1": "5960a0744db1e3979c95b1108856d56a834ab118",
+      "sha256": "a495f97b108967ee291cebc84e8a1942d8b09f52ff1025baa698b1618b8f52c8",
+      "bytes": 116747
     },
     {
       "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
-      "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
-      "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
-      "bytes": 21269
+      "gitBlobSha1": "132b230ab813a07659f0b07d11f3ae8bffccb2f3",
+      "sha256": "786cd692fcfd2485b91f72ff3a205a0e482aa14d89f03857d3717797ae6cb3ce",
+      "bytes": 22883
     },
     {
       "path": ".archive-meta-register/4slot-m3-e052-q5-complete-given/qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1.json",
@@ -380,6 +380,31 @@ function reportOutput(p){
 function safeError(error){
  const raw=String(error?.message||error||''),code=raw.split(':')[0];
  return {code:/^[A-Z][A-Z0-9_+|-]{0,179}$/.test(code)?code:'UNCLASSIFIED_FAILURE',sha256:sha(raw)};
+}
+function focusedFailureMetadata(stdout,stderr){
+ const source=String(stdout),lines=source.split(/\r?\n/),starts=[];
+ for(let i=0;i<lines.length;i++)if(/^\s*not ok [0-9]+ - /.test(lines[i]))starts.push(i);
+ const enumTokens=text=>[...new Set(String(text).match(/\b(?:PR_NATIVE_PREVIEW:[A-Z][A-Z0-9_]*|Q5_SHADOW_[A-Z0-9_]+|M3_[A-Z0-9_]+|M2_[A-Z0-9_]+|ERR_[A-Z0-9_]+|ENOENT|ENOTDIR|EISDIR|EACCES|ETIMEDOUT)\b/g)||[])].slice(0,16);
+ const failed=starts.slice(0,64).map(start=>{
+  const header=lines[start].match(/^\s*not ok ([0-9]+) - (.*)$/),name=header[2];
+  let end=start+1;
+  while(end<lines.length&&!/^\s*(?:# Subtest:|(?:not )?ok [0-9]+ - |1\.\.[0-9]+|# (?:tests|pass|fail) [0-9]+)/.test(lines[end]))end++;
+  const block=lines.slice(start,end).join('\n'),fields={},locations=[];
+  for(const line of lines.slice(start+1,end)){
+   const field=line.match(/^\s+(failureType|code|operator):\s*['"]?([A-Za-z][A-Za-z0-9_]{0,79})['"]?\s*$/);
+   if(field)fields[field[1]]=field[2];
+  }
+  for(const match of block.matchAll(/((?:tests|tools|archive\/tools)\/[A-Za-z0-9_./-]+\.(?:mjs|cjs|js)):([0-9]+):([0-9]+)/g)){
+   const value={path:match[1],line:Number(match[2]),column:Number(match[3])};
+   if(!locations.some(x=>x.path===value.path&&x.line===value.line&&x.column===value.column))locations.push(value);
+   if(locations.length===8)break;
+  }
+  return{testNumber:Number(header[1]),testName:/^[A-Za-z0-9 _./:#(),+\[\]-]{1,360}$/.test(name)?name:null,
+   testNameSha256:sha(name),...fields,guardTokens:enumTokens(block),locations,blockSha256:sha(block)};
+ });
+ return{schemaVersion:'archive-focused-test-failure-metadata-v1',observedFailureHeaders:starts.length,
+  reportedFailureHeaders:failed.length,truncated:starts.length>failed.length,failed,
+  stderrGuardTokens:enumTokens(stderr),freeErrorTextIncluded:false,actualExpectedValuesIncluded:false,sourcePayloadIncluded:false};
 }
 function phase(report,name){report.phase=name;console.log(JSON.stringify({schemaVersion:CONFIG.schemaVersion,phase:name,status:'RUNNING'}));}
 function provenance(root){
@@ -704,10 +729,12 @@ function run(root,output){
    const get=label=>{const matches=[...stdout.matchAll(new RegExp('^# '+label+' ([0-9]+)$','gm'))];return matches.length?Number(matches.at(-1)[1]):null;};
    const item={name,exitCode:child.status,tests:get('tests'),pass:get('pass'),fail:get('fail'),stdoutSha256:sha(stdout),stderrSha256:sha(stderr),
     error:child.error?safeError(child.error):null};
+   if(child.error||child.status!==0||item.tests!==expected||item.pass!==expected||item.fail!==0)
+    item.failureDiagnostics=focusedFailureMetadata(stdout,stderr);
    report.focused.push(item);
    need(!child.error&&child.status===0&&item.tests===expected&&item.pass===expected&&item.fail===0,'FOCUSED_'+name);
   }
-  command('Q5_SHADOW_READONLY54',['--test','tests/archive-pr-q5-current-ui-shadow.test.mjs'],54);
+  command('Q5_SHADOW_READONLY61',['--test','tests/archive-pr-q5-current-ui-shadow.test.mjs'],61);
   command('Q5_FOCUSED44_AND_ORIGINAL_NATIVE1',['tests/archive-m3-e052-q5-current-ui-reuse.test.mjs','--actual-native'],45);
   command('Q16_FOCUSED43_AND_EXISTING_AUTHORITY1',['tests/archive-m3s2-current-ui-reuse.test.cjs','--actual-authority'],44);
   report.authority={q5OriginalNativeGivenUiAndAncestor:true,q5ExistingVectorCount:25,q5Outside24WholeUnchanged:true,
