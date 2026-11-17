@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "29"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "caption": "그림에서 x는∠OAB,29°는∠ABO이다. 외심의반지름OA=OB이므로이등변삼각형OAB의두밑각은같다. 따라서x=29°(보기②). 반지름을1로정규화한 보조삼각형이며 실제길이1을 새조건으로넣지않는다. 저장된30°와충돌하므로 원본의각호/정답을확인하기전게시하지않는다.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 29,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "derived",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 29,
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 다음 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심이다. $\\angle x$의 크기는? (4점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q07.png\" alt=\"삼각형 ABC의 외심 O에서 각 꼭짓점을 잇는 선분이 그어져 있고 꼭짓점 A, B, C 주위의 각도가 표시된 그림\" /></p>",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "png",
+      "condition": "직접 본 PNG의 두 각호 소유∠OAB/∠ABO에 따름. 저장해설의 출제의도는 근거로 사용하지않음.",
+      "mappedTo": "planeMarks"
+    },
+    {
+      "id": "gauge",
+      "condition": "B원점 및BU방향은평행이동/회전 자유도 고정. 외심반지름을1로양의정규화. U,H는구성용비표시점이며 A는B의수선발H중심점대칭으로OA=OB를정확보존한다.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

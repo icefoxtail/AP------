@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1.5,
+      2.5,
+      0,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "7/4"
+      },
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "formula": "x^2-x+2",
+    "axisTitles": {
+      "x": "t",
+      "y": "L"
+    }
+  },
+  "caption": "본문 y=x²+2를 채택할 때 P(t,t²+2),Q(t,t)이다. PQ=L(t)=t²−t+2=(t−1/2)²+7/4>0이므로 P는 항상 Q보다 위다. 길이 함수의 꼭짓점은(1/2,7/4), 최솟값7/4이고 원래 점P는(1/2,9/4), 본문 기준 답①이다. 이 패널은 원래 포물선이 아니라 세로 길이 L의 그래프다. 원본 그림에 적힌 y=(1/2)x²+2와 충돌하므로 본문/그림 중 어느 조건이 원본인지 확인 전 게시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>",
+      "mappedTo": "graphPlan and caption"
+    },
+    {
+      "id": "CONDITIONAL_CONTENT_RESTORATION",
+      "condition": "원본 PNG 직접 확인 결과 y=(1/2)x²+2이고 본문은 y=x²+2이다. 본문이면 L=(t−1/2)²+7/4, P=(1/2,9/4)이나 그림이면 L=(1/2)(t−1)²+3/2,P=(1,5/2)로 다르다. 본문 기준 풀이 계획은 조건부이며 원본 충돌을 정답①로 해소한 것으로 간주하지 않는다. 원본 확인 전 게시 금지.",
+      "mappedTo": "publication gate"
+    }
+  ],
+  "assetRole": "SOLUTION"
+}
