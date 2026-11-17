@@ -1,0 +1,122 @@
+--- a/archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs
++++ b/archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs
+@@ -1012,6 +1012,47 @@
+       !same(question,ctx.oldBank[ctx.item.sourceOrdinal-1]))fail('PRIVATE_ORIGINAL_P21_READER');
+   assertLive(ctx);return Buffer.from(ctx.oldBytes);
+ }
++// The ordinary RPM leaf replays the issued course proof after P21/E023 have
++// authenticated and removed only their display options. Keep the real current
++// file bound as well; the bytes returned here are explicitly the issued view.
++// This cannot mint a token, normalize a question, or grant course authority.
++export function readM2Problem21CurrentRpmSource({context,root,request,patch,metadata,final,issuedProof,relativePath,currentSourceBytes}){
++  if(context===undefined)return null;
++  const ctx=context&&contexts.get(context);
++  if(!ctx||fs.realpathSync(root)!==ctx.root||relativePath!==ctx.item.currentSourceRef.path||
++      ctx.item.issuedSourceRef.path!==relativePath||!same(request,ctx.issuedBinding.requestSnapshot)||
++      request.expectedSourceBlobSha1!==ctx.item.issuedSourceRef.gitBlobSha1||
++      patch?.questionUid!==ctx.item.questionUid||patch?.sourceOrdinal!==ctx.item.sourceOrdinal)
++    fail('PRIVATE_ISSUED_RPM_SOURCE_CONTEXT');
++  const original=exactOne(ctx.issuedBinding.requestSnapshot.items,
++    row=>row.questionUid===ctx.item.questionUid&&row.sourceOrdinal===ctx.item.sourceOrdinal,'PRIVATE_ISSUED_RPM_ITEM');
++  const normalized=structuredClone(original);
++  if(!normalized.sourceReview?.m2ProblemRenderer21Continuity||!normalized.targetParentRef?.nativeRpmCourseTransport)
++    fail('PRIVATE_ISSUED_RPM_OPTIONS');
++  delete normalized.sourceReview.m2ProblemRenderer21Continuity;
++  if(Object.hasOwn(normalized.sourceReview,'e023SolutionDisplayContinuity')){
++    if(ctx.item.sourceArchiveFile!=='original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js')
++      fail('PRIVATE_ISSUED_RPM_COMPANION');
++    delete normalized.sourceReview.e023SolutionDisplayContinuity;
++  }
++  if(!same(patch,normalized)||!same(final,ctx.current)||!same(metadata,{...ctx.current,...original.before}))
++    fail('PRIVATE_ISSUED_RPM_NORMALIZED_PATCH');
++  const repair=exactOne(ctx.receipt.fingerprintRepairs,
++    row=>row.questionUid===ctx.item.questionUid&&row.sourceOrdinal===ctx.item.sourceOrdinal,'PRIVATE_ISSUED_RPM_REPAIR');
++  const expected=repair.sourceReview?.nativeRpmCourseTransport;
++  if(!expected||!issuedProof||!same(issuedProof,expected)||
++      expected.questionUid!==ctx.item.questionUid||expected.sourceOrdinal!==ctx.item.sourceOrdinal||
++      expected.currentSource?.path!==relativePath||expected.currentSource?.gitBlobSha1!==ctx.item.issuedSourceRef.gitBlobSha1||
++      expected.currentSource?.sha256!==ctx.item.issuedSourceRef.sha256)
++    fail('PRIVATE_ISSUED_RPM_PROOF');
++  assertLive(ctx);
++  const actual=currentSourceBytes===undefined?fs.readFileSync(localPath(ctx.root,relativePath)):currentSourceBytes;
++  if(!Buffer.isBuffer(actual))fail('PRIVATE_ISSUED_RPM_CURRENT_BYTES');
++  checked(actual,ctx.item.currentSourceRef);
++  if(!actual.equals(ctx.sources.get(ctx.item.sourceArchiveFile).currentBytes))fail('PRIVATE_ISSUED_RPM_CURRENT_BYTES');
++  checked(ctx.oldBytes,ctx.item.issuedSourceRef);
++  return Buffer.from(ctx.oldBytes);
++}
+ function replay(args,expected){
+   const ctx=authenticate(args);if(!ctx)return null;
+   if(typeof args.revalidateLeaf!=='function')fail('ORDINARY_NATIVE_CALLBACK');
+--- a/archive/tools/meta-foundation/reviewed-source-reassessment.mjs
++++ b/archive/tools/meta-foundation/reviewed-source-reassessment.mjs
+@@ -1,3 +1,4 @@
++import { readM2Problem21CurrentRpmSource } from "./m2-problem21-current-ui-continuity.mjs";
+ import fs from "node:fs";
+ import path from "node:path";
+ import vm from "node:vm";
+@@ -195,9 +196,13 @@
+     fail("requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
+   if (e015IssuedSourceContinuation !== undefined && !patch.sourceReview?.m2Family3ProblemContinuity)
+     fail("E015 issued-source context requires its original family3 option");
+-  if (m2Problem21CurrentUiContinuation !== undefined &&
+-      (!patch.sourceReview?.m2ProblemRenderer21Continuity || e015IssuedSourceContinuation !== undefined))
+-    fail("current problem21 context requires its exclusive original option");
++  if (m2Problem21CurrentUiContinuation !== undefined) {
++    if (e015IssuedSourceContinuation !== undefined)
++      fail("current problem21 context requires its exclusive original option");
++    if (!patch.sourceReview?.m2ProblemRenderer21Continuity)
++      readM2Problem21CurrentRpmSource({context:m2Problem21CurrentUiContinuation,root,request,patch,metadata,final,
++        issuedProof:issuedSourceReview?.nativeRpmCourseTransport,relativePath:`archive/exams/${request.sourceArchiveFile}`});
++  }
+   const loaded = loadReview({ root, request, patch, cache });
+   const { review, rows, reviewedBank, committedBank } = loaded, ordinal = patch.sourceOrdinal;
+   const row = rows.get(ordinal);
+@@ -278,7 +283,8 @@
+       delete normalizedPatch.sourceReview[option];
+     }
+     const inner = validateReviewedSourceReassessment({ root, request, patch: normalizedPatch, metadata,
+-      question: normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter, issuedSourceReview, cache });
++      question: normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter, issuedSourceReview, cache,
++      m2Problem21CurrentUiContinuation });
+     const originalSourceReviewSha256 = sha256(stable(inner));
+     return { ...inner, studentPayloadSha256: sha256(stable(payload)),
+       ...(m2Problem21 ? { m2ProblemRenderer21Continuity: { ...m2Problem21.proof, originalSourceReviewSha256 } } : {}),
+@@ -427,7 +433,7 @@
+   if (nativeFamilyCourseTransport) Object.assign(accepted, nativeFamilyCourseTransport.fields);
+   const nativeRpmCourseTransport = bindReviewedM2NativeRpmCourse({ root, request, patch, native: loaded, row,
+     metadata, question, committedQuestion: committedBank[ordinal - 1], accepted, final, canonicalBefore, canonicalAfter,
+-    issuedProof: issuedSourceReview?.nativeRpmCourseTransport });
++    issuedProof: issuedSourceReview?.nativeRpmCourseTransport, m2Problem21CurrentUiContinuation });
+   if (nativeRpmCourseTransport) Object.assign(accepted, nativeRpmCourseTransport.fields);
+   for (const [key, value] of Object.entries(patch.after)) {
+     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
+--- a/archive/tools/meta-foundation/reviewed-m2-native-rpm-course.mjs
++++ b/archive/tools/meta-foundation/reviewed-m2-native-rpm-course.mjs
+@@ -1,3 +1,4 @@
++import {readM2Problem21CurrentRpmSource} from './m2-problem21-current-ui-continuity.mjs';
+ import fs from 'node:fs';
+ import path from 'node:path';
+ import crypto from 'node:crypto';
+@@ -476,7 +477,7 @@
+ // after-values, ordinary parent validation, receipt/sidecar and replay checks
+ // remain mandatory in the caller. In particular GAP/RPM_ONLY is not a PT/TPL grant.
+ export function bindReviewedM2NativeRpmCourse({ root, request, patch, native, row, metadata,
+-  question, committedQuestion, accepted, final, canonicalBefore, canonicalAfter, issuedProof }) {
++  question, committedQuestion, accepted, final, canonicalBefore, canonicalAfter, issuedProof, m2Problem21CurrentUiContinuation }) {
+   if (!own(patch?.targetParentRef, 'nativeRpmCourseTransport')) return null;
+   const target = patch.targetParentRef, spec = target.nativeRpmCourseTransport;
+   const item = M2_NATIVE_RPM_COURSE_ITEMS.find(x => x.questionUid === patch.questionUid);
+@@ -553,7 +554,11 @@
+   const originalSource = gitBytes(root, review.baseSha, sourcePath), committedSource = gitBytes(root, NATIVE_COMMIT, sourcePath);
+   if (originalSource.gitBlobSha1 !== review.sourceGitBlobSha || native.sourceBlob !== originalSource.gitBlobSha1 ||
+       native.committedBlob !== committedSource.gitBlobSha1 || native.sourceSha256 !== sha(originalSource.bytes)) fail('NATIVE_SOURCE_REF_MISMATCH');
+-  const reviewedBank = bank(originalSource.bytes), committedBank = bank(committedSource.bytes), currentSource = localBytes(root, sourcePath), currentBank = bank(currentSource);
++  const liveSource = localBytes(root, sourcePath);
++  const issuedSourceView = readM2Problem21CurrentRpmSource({context:m2Problem21CurrentUiContinuation,root,request,patch,
++    metadata,final,issuedProof,relativePath:sourcePath,currentSourceBytes:liveSource});
++  const currentSource = issuedSourceView ?? liveSource;
++  const reviewedBank = bank(originalSource.bytes), committedBank = bank(committedSource.bytes), currentBank = bank(currentSource);
+   if ([reviewedBank, committedBank, currentBank].some(x => x.length !== item.expectedQuestionCount) ||
+       !same(native.reviewedBank, reviewedBank) || !same(native.committedBank, committedBank) ||
+       !same(committedQuestion, committedBank[item.sourceOrdinal - 1]) || blob(currentSource) !== request.expectedSourceBlobSha1)

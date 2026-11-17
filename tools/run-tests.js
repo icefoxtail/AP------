@@ -41,6 +41,7 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/m2-closed8-issued-rpm-view.test.cjs', args: ['--test', 'tests/m2-closed8-issued-rpm-view.test.cjs'], timeout: 60000 },
   { label: 'tests/archive-m2-problem21-current-ui-continuity.test.mjs', args: ['--test', 'tests/archive-m2-problem21-current-ui-continuity.test.mjs'], timeout: 60000 },
   { label: 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs', args: ['--test', 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs'], timeout: 180000 },
   { label: 'tests/archive-m3s2-current-ui-reuse.test.cjs', args: ['--test', 'tests/archive-m3s2-current-ui-reuse.test.cjs'], timeout: 60000 },
