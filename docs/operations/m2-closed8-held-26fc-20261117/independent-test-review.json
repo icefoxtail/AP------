@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "archive-closed8-reconstructed-tests-independent-static-review-v1",
+  "owner": "/root/m3s2_release",
+  "dateUtc": "2026-11-17",
+  "repository": "icefoxtail/AP------",
+  "remoteOnly": true,
+  "safety": {
+    "shellCalls": 0,
+    "repositoryJavascriptExecutions": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "newNativeExecutions": 0,
+    "newConsumerExecutions": 0,
+    "sourceOrApprovalEdits": 0,
+    "refWrites": 0,
+    "branchWrites": 0,
+    "prWrites": 0,
+    "mainWrites": 0
+  },
+  "status": "STATIC_ACCEPT_NEW_TEST_BYTES_DYNAMIC_UNEXECUTED_HELD_FROM_READY_RELEASE",
+  "source47": {
+    "path": "tests/item-4slot-m2-problem21-source-review.test.mjs",
+    "sha256": "7f195bd3a7a09a3a34a7a6ec93ce33910951026ba9cb6eca032c1ee20aa0bfa7",
+    "gitBlobSha1": "426f696a595c5202986bc6e86c3e42e791aeca15",
+    "bytes": 35697
+  },
+  "helperTest": {
+    "path": "tests/archive-reviewed-m2-problem21-continuity.test.mjs",
+    "sha256": "f9d9acdb7763748a4fb118bb6709797d5a9824ac761aa94da05c8b853dddd90b",
+    "gitBlobSha1": "d763a56ed76e2b659f7c6a7bde5004f644efe9e2",
+    "bytes": 31181,
+    "prior": {
+      "sha256": "7574813f8f0e9e9b5231b8b5014a0aafb93d0c648383387726310f68d95ea8a6",
+      "gitBlobSha1": "a8dc4ecf51d688f604e88ca67e375675f95522d4",
+      "bytes": 30973
+    },
+    "inverseDeltaExact": true,
+    "delta": "The helper test now reads exact immutable22f SVG and asserts Gitb5c174cce6838a5f575b15eac289c5076912e0d8 instead of accepting a mutable current index as a test fixture. All other bytes equal the original a8dc test."
+  },
+  "priorStaticNotInherited": {
+    "sha256": "64dfe25e32f6f6b846bed43dbbcaf1099b917b959544aace3412e8fa4a56d896",
+    "rawUnavailable": true,
+    "newSource47BodyReadInFull": true
+  },
+  "reviewedBoundaries": {
+    "hiddenEvidencePrefixExplicit": ".archive-meta-register/evidence/",
+    "currentSourceBankFilter": "startsWith archive/exams/ only; review paths containing /exams/ elsewhere remain evidence",
+    "globalProofJsonRecursionExcluded": [
+      "metadata",
+      "identity",
+      "runtime",
+      "canonical",
+      "compiled"
+    ],
+    "fixedSourceBanks": 2,
+    "currentScopedQuestions": 47,
+    "selectedFixedUids": 8,
+    "actualOutsideRows": 39,
+    "originalOutsideWholeRowsBoundTo": "22f79c4ffd5ad5f811c2840a532422e0ecabd3e1:a74519a13b233a1d774c8e8b8699465590aff7a9ea8c21d63fb5c0ba55fda422",
+    "outsideWholeComparedBeforeAfterAndRemoval": true,
+    "originalNativeRouteRequired": true,
+    "existingVectorAndCandidateContents47Exact": true,
+    "consumerAll47GetAndTermQueries": true,
+    "generatedSvg": "Official productionRows, exact source2/asset8/generator Git, eight fixed whole-record hashes; committed zero is not a derived8 PASS.",
+    "coldNoCacheVerifiedFromBuilder": "builder9fb98cdddc54bd5474ccf81b68d589617396de1c run(check=true) calls build(reuseCache=false).",
+    "removedSidecars": "write39/pending8; API get of every selected UID becomes null; outside39 remains exact",
+    "readOnlyWarmNegativesLeaveOutputBytesExact": true,
+    "checkoutAndPrivateOriginalInputHashesRechecked": true
+  },
+  "negativeCoverage": [
+    "schema/scope/new-approval/new-math/UID/ordinal/unknown-field/ref substitution",
+    "compact/dictionary/current source/receipt/source-review binding/static proof/asset raw drift",
+    "current metadata/identity/runtime row drift and duplicate UID",
+    "generated selected SVG full-record drift",
+    "MASTER mutation and deletion invalidates cache; deletion replays strict Native refusal",
+    "same-byte metadata/SVG/proof-parent symlink refusal and cache invalidation",
+    "engine/CSS/font/native-code cache mutation in the synthetic collector test",
+    "legacy collector path remains unchanged",
+    "helper: role/alias/unknown record/derived text/asset/other UID refusals"
+  ],
+  "knownLimitations": [
+    "Both fetched tests are new reconstructed bytes. Local syntax, actual Native8 and source47 execution were not completed and are not reported PASS.",
+    "Current735 changed source/engine inputs conflict with fixed captured authority. Strict source and served-code guards remain mandatory; these tests are not retargeted to make current735 pass.",
+    "Full fixture completeness still requires actual CI. Missing optional references are recorded and the original Native verifier must reject any missing mandatory proof; there is no success fallback."
+  ],
+  "rootDisposition": {
+    "heldBranch": "review/m2-s2-closed8-held-26fc-20261117",
+    "reportedCommit": "7ac41d95ebfe32641f2df45ebf3a86af9a649bc7",
+    "readyPr2330IncludesTheseTests": false,
+    "ownerOfRefs": "root"
+  }
+}

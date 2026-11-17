@@ -1,11 +1,11 @@
 {
-  "schemaVersion": "m2-closed8-recovery18-frozen-publication-manifest-v1",
+  "schemaVersion": "m2-closed8-recovery18-frozen-publication-manifest-v2",
   "owner": "/root/ci_m2s2",
   "repository": "icefoxtail/AP------",
   "candidateBase": "d40792bfd31aeab4d104bdde4b81dbbfbb088dd5",
   "previousPreintegrationTree": "5dadbefbcd9eefe5eabcf31bedbf9a9c29527aab",
   "currentObservedMain": "735596ae7fdf37e920569271def0c2bc4add6f86",
-  "status": "FROZEN_REVIEW_CANDIDATE_CURRENT_MAIN_BLOCKED",
+  "status": "HELD_REVIEW_CANDIDATE_NOT_CURRENT735_RELEASE",
   "operations": [
     {
       "path": "archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs",
@@ -222,7 +222,14 @@
       "gitBlobSha1": "d5aa8f38fc780d6628b5616d30ba85d3abf6fe00",
       "sha256": "a2457780bfd04d5a88ba5b677e4139eb9aa3aef6fd6076c984364e62ded09331"
     },
-    "newTestReview": "PENDING"
+    "newTestReview": {
+      "status": "STATIC_ACCEPT_ONLY",
+      "gitBlobSha1": "bb16d972a6eb9d39ad1e2f9293e34b958c620206",
+      "sha256": "073402083e3c97dc71a3d3591642699e9e0d7f644c340f17132ed4871504ac89",
+      "actualSyntax": "UNEXECUTED",
+      "actualNative8": "UNEXECUTED",
+      "actualSource47": "UNEXECUTED"
+    }
   },
   "currentMainCompatibility": {
     "bytes": 10239,
@@ -240,5 +247,11 @@
     "globalRegistrationPass": false
   },
   "publicationBoundary": "Only root may compose/modify PR refs or merge. This manifest is immutable recovery, not permission to bypass current source/renderer pins.",
-  "nextAction": "Independent static review of reconstructed tests; keep current735 incompatibility explicit. Run actual selected8/source47 only on a root-selected compatible review revision; no latest-main PASS or merge until required gates pass."
+  "nextAction": "Root preserves this separate review candidate. It is excluded from the ready PR2330 release while current735 source/renderer pins conflict. No guard change or current approval is inferred from static acceptance.",
+  "supersedes": {
+    "bytes": 10863,
+    "sha256": "883f67d4e5e9565afd29adfad26fa67bc818170907b58061551ea0cfca2e5677",
+    "gitBlobSha1": "6c5a1e1e0940cbfdacabc1ee692ef78e737d3df1",
+    "reason": "Attach new independent static acceptance; candidate operation bytes unchanged."
+  }
 }
