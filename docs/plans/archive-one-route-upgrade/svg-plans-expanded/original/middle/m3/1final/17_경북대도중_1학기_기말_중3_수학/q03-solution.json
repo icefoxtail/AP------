@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "4/9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4.5,
+      4.5,
+      -1,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "Q",
+        "x": "-3",
+        "y": "4"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "O",
+        "P",
+        "Q"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "4"
+      ]
+    }
+  },
+  "caption": "원점이 꼭짓점인 곡선과 주어진 점 (−3,4), (3,4)를 함께 본다. 한 점의 좌표를 y=ax²에 대입하는 관계를 확인한다. 표시창 끝은 곡선의 실제 끝이 아니다.",
+  "accessibilityDescription": "원점이 꼭짓점인 곡선과 주어진 점 (−3,4), (3,4)를 함께 본다. 한 점의 좌표를 y=ax²에 대입하는 관계를 확인한다. 표시창 끝은 곡선의 실제 끝이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. 다음 이차함수 그래프의 식은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png\" alt=\"원점을 꼭짓점으로 하고 아래로 볼록하며 점 (3, 4)를 지나는 포물선 그래프\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "최신 답④·양의 계수 해설이 실제 PNG(원점 꼭짓점,(±3,4))와 정합해 CONTENT 해소. 스캔 점노이즈/거친 축선을 선명한 현 엔진 곡선과 주어진 좌표 안내로 개선한다. 식의 계수와 정답선지는 숨긴다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원점이 꼭짓점인 곡선과 주어진 점 (−3,4), (3,4)를 함께 본다. 한 점의 좌표를 y=ax²에 대입하는 관계를 확인한다. 표시창 끝은 곡선의 실제 끝이 아니다."
+  ]
+}

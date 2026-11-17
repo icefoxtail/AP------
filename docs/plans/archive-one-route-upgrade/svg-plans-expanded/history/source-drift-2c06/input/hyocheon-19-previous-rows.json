@@ -1,0 +1,82 @@
+{
+  "decision": {
+    "exam": "archive/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+    "no": 19,
+    "decision": "FIGURE",
+    "plans": [
+      "q19-solution.json"
+    ],
+    "capability": "piecewise-polynomial-spike-v1",
+    "why": "원본PNG f원점통과·양수에서축접함,교점0αβ,S1<S2확인. 주어진g는이차함수이므로직선처럼보이는스캔을새직선으로단정하지않음. 예시f=x(x−2)²,g=x²,차x(x−1)(x−4)는조건충족. 선택지정답개수는표시안함.",
+    "selfcheck": {
+      "answerHidden": true,
+      "midValuesKept": true,
+      "coordsVerified": true,
+      "captionNamesPresent": true
+    },
+    "render": "NOT_RUN",
+    "note": "원문OPEN18한정. 해당PNG직접열람. graph_framing.fit_overview PASS, 렌더NOT_RUN."
+  },
+  "ledger": {
+    "schemaVersion": "svg-plan-ledger-v1",
+    "source": {
+      "exam": "archive/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 19,
+      "sourceId": 19,
+      "uid": null,
+      "sourceCommit": "782966ffb38c969f1f54fc2f328f046741f5ff4a",
+      "sourceBlobSha": "9a3ee917376a15f6a951d272d1f26a3034dd8130"
+    },
+    "scope": "original",
+    "existing": {
+      "inventoryStatus": "INVENTORIED",
+      "problemAssets": [
+        "assets/images/22_효천고_2학기_기말_고2_수학II/q19.png"
+      ],
+      "solutionAssets": [],
+      "productionLedgerState": "OPEN_UNSUPPORTED",
+      "checkedCommit": "782966ffb38c969f1f54fc2f328f046741f5ff4a",
+      "visualReview": "VIEWED_EXISTING_PNG",
+      "missingAssets": []
+    },
+    "need": {
+      "problem": "KEEP",
+      "solution": "FIGURE",
+      "why": "원본PNG f원점통과·양수에서축접함,교점0αβ,S1<S2확인. 주어진g는이차함수이므로직선처럼보이는스캔을새직선으로단정하지않음. 예시f=x(x−2)²,g=x²,차x(x−1)(x−4)는조건충족. 선택지정답개수는표시안함."
+    },
+    "plan": {
+      "decisionPath": "docs/plans/archive-one-route-upgrade/svg-plans-expanded/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II/_decisions.jsonl",
+      "files": [
+        "q19-solution.json"
+      ],
+      "capability": "piecewise-polynomial-spike-v1",
+      "status": "PLAN_WRITTEN",
+      "render": "NOT_RUN"
+    },
+    "pedagogy": {
+      "decisiveRelation": "원본PNG f원점통과·양수에서축접함,교점0αβ,S1<S2확인. 주어진g는이차함수이므로직선처럼보이는스캔을새직선으로단정하지않음. 예시f=x(x−2)²,g=x²,차x(x−1)(x−4)는조건충족. 선택지정답개수는표시안함.",
+      "hiddenAnswerValues": [
+        "②"
+      ],
+      "sourceEvidence": {
+        "content": "19. 삼차함수 $f(x)$와 이차함수 $g(x)$에 대하여 양의 실수 $\\alpha, \\beta$와 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같다. 두 함수로 둘러싸인 부분의 넓이를 각각 $S_1$, $S_2$ ($S_1 < S_2$)라고 하고 $h(x) = \\int_0^x (f(t)-g(t))dt$ 라고 할 때, <보기>에서 옳은 것의 개수는? [5.0점]\n(단, $y=f(x)$의 그래프는 $x$축에 접하며 두 함수 $y=f(x)$, $y=g(x)$ 모두 원점을 지난다.)\n\n<보기>\nㄱ. $y=h(x)$는 4차 함수이며, 최고차항의 계수는 양수이다.\nㄴ. $y=h(x)$는 $x=\\alpha, x=\\beta$에서만 극값을 가진다.\nㄷ. $S_1+S_2 = 2h(\\alpha)-h(\\beta)$\nㄹ. $f'(\\frac{\\alpha+\\beta}{2}) + f(\\frac{\\alpha+\\beta}{2}) = 0$\nㅁ. $h(x)$의 최솟값은 $S_2-S_1$이다.",
+        "solution": "$h'(x)=f(x)-g(x)$이므로 $h$의 증감은 두 그래프의 위아래 관계로 결정한다.\n그림에서 $f-g$는 $x=0,\\alpha,\\beta$에서 0이고, $0<x<\\alpha$에서는 양수, $\\alpha<x<\\beta$에서는 음수, $x>\\beta$에서는 양수다. 왼쪽 구간에서는 음수다.\nㄱ. $f-g$는 최고차항 계수가 양수인 삼차함수이므로 적분한 $h$는 최고차항 계수가 양수인 사차함수다. 참.\nㄴ. $h'$의 부호는 $x=0$에서도 음수에서 양수로 바뀌므로 $x=0$에서도 극솟값을 갖는다. 따라서 $\\alpha,\\beta$에서만이라는 말은 거짓.\nㄷ. $h(0)=0$, $h(\\alpha)=\\int_0^\\alpha(f-g)dx=S_1$이고 $h(\\beta)=S_1-S_2$이다. 따라서 $2h(\\alpha)-h(\\beta)=2S_1-(S_1-S_2)=S_1+S_2$로 참.\nㄹ. 이 식은 그래프 조건만으로 성립하지 않는다. 반례로 $f(x)=x(x-2)^2$, $g(x)=x^2$를 잡으면 교점은 $0,1,4$이고 $f$는 $x=2$에서 $x$축에 접한다. 이때 $\\alpha=1$, $\\beta=4$, $m=\\frac52$에 대해 $f'(m)+f(m)=\\frac{11}{4}+\\frac58=\\frac{27}{8}\\ne0$이다. 따라서 거짓이다.\nㅁ. $S_2>S_1$이므로 $h(\\beta)=S_1-S_2<0$인데 제시한 $S_2-S_1>0$과 다르다. 거짓.\n참인 것은 ㄱ, ㄷ 두 개이므로 정답은 ②이다.\n\n[다른 보기 확인]\n① ㄷ도 참이므로 1개가 아니다.\n③ ㄴ은 x=0의 극값을 놓친 진술이다.\n④ ㄹ의 등식은 그래프 정보만으로 보장되지 않는다.\n⑤ ㅁ은 최소값의 부호를 반대로 적었다.",
+        "readDirectly": true
+      }
+    },
+    "checks": {
+      "answerHidden": true,
+      "midValuesKept": true,
+      "coordsVerified": true,
+      "captionNamesPresent": true,
+      "existingVisualReviewed": true,
+      "newPlanVisualReviewed": false,
+      "planContract": "PASS_PARTIAL",
+      "mathematicalRelation": "PASS"
+    },
+    "publication": {
+      "state": "UNVERIFIED",
+      "evidence": "새SVG미제작;렌더NOT_RUN"
+    }
+  }
+}
