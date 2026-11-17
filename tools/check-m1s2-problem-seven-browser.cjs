@@ -45,8 +45,29 @@ function preflight(reader, manifest) {
   return { identityRef: reader.ref(IDENTITY_PATH, identityBytes), items };
 }
 
+const OPS_PUSH_REF='refs/heads/ops/middle-protected9-current-renderer-26fc-20261117';
 function executionProvenance(expectedCommit,env=process.env,event=null){
   assert.equal(env.GITHUB_ACTIONS,'true','UI_GITHUB_ACTIONS_REQUIRED');
+  if(env.GITHUB_EVENT_NAME==='push'){
+    const payload=event||JSON.parse(fs.readFileSync(env.GITHUB_EVENT_PATH,'utf8'));
+    assert(payload&&typeof payload==='object'&&!Array.isArray(payload),'UI_PUSH_PAYLOAD');
+    assert.equal(env.GITHUB_REPOSITORY,'icefoxtail/AP------','UI_REPOSITORY');
+    assert(payload.repository&&typeof payload.repository==='object'&&!Array.isArray(payload.repository),'UI_PUSH_REPOSITORY');
+    assert.equal(payload.repository.full_name,'icefoxtail/AP------','UI_PUSH_REPOSITORY');
+    assert.equal(payload.repository.fork,false,'UI_PUSH_FORK');
+    assert.equal(env.GITHUB_REF,OPS_PUSH_REF,'UI_PUSH_REF');
+    assert.equal(payload.ref,OPS_PUSH_REF,'UI_PUSH_REF');
+    assert.equal(payload.deleted,false,'UI_PUSH_DELETED');
+    assert(/^[a-f0-9]{40}$/.test(expectedCommit||'')&&/^[a-f0-9]{40}$/.test(env.GITHUB_SHA||''),'UI_HEAD_SHA');
+    assert.equal(env.GITHUB_SHA,expectedCommit,'UI_PUSH_HEAD_SHA');
+    assert.equal(payload.after,expectedCommit,'UI_PUSH_AFTER');
+    assert(/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ID||''),'UI_RUN_ID');
+    assert(/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ATTEMPT||'')&&Number.isSafeInteger(Number(env.GITHUB_RUN_ATTEMPT)),'UI_RUN_ATTEMPT');
+    assert(String(env.GITHUB_WORKFLOW||'').trim()&&/^[A-Za-z0-9_-]+$/.test(env.GITHUB_JOB||''),'UI_WORKFLOW_JOB');
+    return{provider:'GITHUB_ACTIONS',eventName:'push',repository:env.GITHUB_REPOSITORY,workflow:env.GITHUB_WORKFLOW,job:env.GITHUB_JOB,
+      runId:env.GITHUB_RUN_ID,runAttempt:Number(env.GITHUB_RUN_ATTEMPT),pullRequest:null,headSha:expectedCommit,baseSha:null,eventSha:env.GITHUB_SHA,
+      runUrl:'https://github.com/'+env.GITHUB_REPOSITORY+'/actions/runs/'+env.GITHUB_RUN_ID,ref:OPS_PUSH_REF,capturedHead:expectedCommit};
+  }
   assert.equal(env.GITHUB_EVENT_NAME,'pull_request','UI_PR_EVENT_REQUIRED');
   assert.equal(env.GITHUB_REPOSITORY,'icefoxtail/AP------','UI_REPOSITORY');
   assert(/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ID||''),'UI_RUN_ID');
@@ -66,6 +87,10 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   const execution=executionProvenance(expectedCommit);
   assert(executablePath && path.isAbsolute(executablePath) && fs.statSync(executablePath).isFile(), 'UI_SUPPORTED_CHROME_REQUIRED');
   const reader = createGitReader(root, expectedCommit);
+  if(execution.eventName==='push'){
+    assert.equal(reader.commit,execution.capturedHead,'UI_PUSH_CAPTURED_HEAD');
+    assert.equal(reader.commit,execution.eventSha,'UI_PUSH_CHECKOUT_SHA');
+  }
   const manifestBytes = reader.read(MANIFEST_PATH), manifest = JSON.parse(manifestBytes);
   const inputs = preflight(reader, manifest);
   assert.equal(reader.ref(SHARED_CHECKER_PATH).sha256, CAPTURE_SHA, 'UI_CAPTURE_HELPER_DRIFT');
@@ -73,7 +98,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [], surfaceDiagnostics=[];
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
-  const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD', execution, checkoutCommit: reader.commit, baseCommit: BASE_COMMIT,
+  const proofBase = { schemaVersion: SCHEMA, executionOwner: execution.eventName==='push'?'GITHUB_ACTIONS_CHROMIUM_CLOSED_OPS_PUSH_HEAD':'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD', execution, checkoutCommit: reader.commit, baseCommit: BASE_COMMIT,
     manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef: reader.ref(SHARED_CHECKER_PATH), surfaceHelperRef:reader.ref(SURFACE_PATH), ...inputs,
     mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,

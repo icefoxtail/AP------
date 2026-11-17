@@ -1,5 +1,5 @@
 'use strict';
-// Read-only transport for the closed SVG7 current-renderer capture. This does not
+// Read-only transport for four explicit current-renderer capture profiles. This does not
 // capture, crop, render, inspect mathematics, create approval or change raw proof.
 // The original technical JSON and original problem PNG bytes are framed for
 // lossless recovery from GitHub logs when artifact ZIP access is unavailable.
@@ -61,6 +61,92 @@ const PROFILES = Object.freeze({
         "sourceOrdinal": 15
       }
     ]
+  },
+  "q16": {
+    "schema": "archive-m3s2-q16-layout-raw-ui-v2",
+    "checkerPath": "tools/check-m3s2-q16-layout-browser.cjs",
+    "manifestPath": "tests/fixtures/archive-m3s2-q16-layout-ui.json",
+    "cases": 2,
+    "subjects": [
+      {
+        "key": "E008-Q16",
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+        "sourceOrdinal": 16,
+        "sourcePath": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js"
+      }
+    ]
+  },
+  "q5": {
+    "schema": "archive-m3-e052-q5-student-ui-preview-v1",
+    "checkerPath": "tools/check-m3-e052-q5-problem-browser.cjs",
+    "manifestPath": "tests/fixtures/archive-m3-e052-q5-problem-ui.json",
+    "cases": 2,
+    "subjects": [
+      {
+        "key": "E052-Q5",
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+        "sourceOrdinal": 5,
+        "sourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "assetPath": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png"
+      }
+    ]
+  },
+  "m1": {
+    "schema": "archive-m1s2-problem-seven-github-ui-raw-v1",
+    "checkerPath": "tools/check-m1s2-problem-seven-browser.cjs",
+    "manifestPath": "tests/fixtures/archive-m1s2-problem-seven-ui.json",
+    "cases": 14,
+    "subjects": [
+      {
+        "key": "P04",
+        "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+        "sourceOrdinal": 13,
+        "sourcePath": "archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+        "assetPath": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q13-problem-geometry-20261116.svg"
+      },
+      {
+        "key": "P08",
+        "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+        "sourceOrdinal": 17,
+        "sourcePath": "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+        "assetPath": "archive/assets/images/25_팔마중_2학기_기말_중1_기출/q17-problem-geometry-20261116.svg"
+      },
+      {
+        "key": "P10",
+        "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+        "sourceOrdinal": 18,
+        "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+        "assetPath": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q18-problem-geometry-20261116.svg"
+      },
+      {
+        "key": "P11",
+        "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+        "sourceOrdinal": 19,
+        "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+        "assetPath": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q19-problem-geometry-20261116.svg"
+      },
+      {
+        "key": "P12",
+        "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+        "sourceOrdinal": 6,
+        "sourcePath": "archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+        "assetPath": "archive/assets/images/23_향림중_2학기_중간_중1_기출/q06-problem-geometry-20261116.svg"
+      },
+      {
+        "key": "P13",
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6,
+        "sourcePath": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+        "assetPath": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q06-problem-geometry-20261116.svg"
+      },
+      {
+        "key": "P14",
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8,
+        "sourcePath": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+        "assetPath": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q08-problem-geometry-20261116.svg"
+      }
+    ]
   }
 });
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -117,7 +203,8 @@ function executionContext(expectedCommit,env=process.env,event){
   runAttempt:Number(env.GITHUB_RUN_ATTEMPT),workflow:env.GITHUB_WORKFLOW,job:env.GITHUB_JOB};
 }
 function assertExecution(proof,profile,context){
- requireThat(profile==='svg7'&&proof.checkoutCommit===context.checkoutCommit,'PROOF_HEAD');
+ requireThat(proof.checkoutCommit===context.checkoutCommit,'PROOF_HEAD');
+ if(profile==='svg7'){
  const p=proof.execution;
  requireThat(p&&p.provider===context.provider&&p.repository===context.repository&&p.eventName===context.eventName&&
   p.headSha===context.checkoutCommit&&p.eventSha===context.eventCommit&&p.runId===context.runId&&
@@ -125,6 +212,34 @@ function assertExecution(proof,profile,context){
  requireThat(context.eventName==='push'?p.ref===REVIEW_REF:p.pullRequest===context.pullRequest&&p.baseSha===context.baseSha,'SVG7_EVENT_BINDING');
  requireThat(proof.executionOwner===(context.eventName==='push'?'GITHUB_ACTIONS_CHROMIUM_EXACT_REVIEW_PUSH':
   'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'),'SVG7_EXECUTION_OWNER');
+  return;
+ }
+ // The additional profiles are only transported from this closed ops push.
+ // In particular Q5's original raw schema has no run/job fields: those actual
+ // identities belong in the external transport receipt, never in edited JSON.
+ requireThat(['m1','q16','q5'].includes(profile)&&context.eventName==='push'&&
+  context.ref===REVIEW_REF&&context.eventCommit===context.checkoutCommit,'CLOSED_OPS_PROFILE');
+ if(profile==='m1'){
+  const p=proof.execution;
+  requireThat(proof.executionOwner==='GITHUB_ACTIONS_CHROMIUM_CLOSED_OPS_PUSH_HEAD'&&p&&
+   p.provider===context.provider&&p.repository===context.repository&&p.eventName==='push'&&p.ref===REVIEW_REF&&
+   p.headSha===context.checkoutCommit&&p.capturedHead===context.checkoutCommit&&p.eventSha===context.eventCommit&&
+   p.runId===context.runId&&p.runAttempt===context.runAttempt&&p.job===context.job&&p.workflow===context.workflow&&
+   p.pullRequest===null&&p.baseSha===null,'M1_EXECUTION');
+ }else if(profile==='q16'){
+  const p=proof.executionProvenance?.checkout;
+  requireThat(proof.executionOwner==='GITHUB_ACTIONS_SUPPORTED_CHROME'&&
+   proof.executionProvenance?.executionOwner==='GITHUB_ACTIONS_SUPPORTED_CHROME'&&p&&
+   p.executionOwner==='GITHUB_ACTIONS_SUPPORTED_CHROME'&&p.expectedCheckoutCommit===context.checkoutCommit&&
+   p.actualCheckoutCommit===context.checkoutCommit&&p.githubEventCommit===context.eventCommit&&
+   p.repository===context.repository&&p.runId===context.runId&&p.runAttempt===String(context.runAttempt)&&
+   p.job===context.job&&p.eventName==='push'&&p.headCommit===context.checkoutCommit,'Q16_EXECUTION');
+ }else{
+  const p=proof.checkout;
+  requireThat(proof.executionOwner==='GITHUB_ACTIONS_SUPPORTED_CHROME'&&p&&
+   p.expectedCheckoutCommit===context.checkoutCommit&&p.actualCheckoutCommit===context.checkoutCommit&&
+   p.githubEventCommit===context.eventCommit,'Q5_EXECUTION');
+ }
 }
 function validShot(shot,profile){
  const pattern=new RegExp('^('+PROFILES[profile].subjects.map(s=>s.key).join('|')+')-(desktop|mobile)-tile-(0[1-8])\\.png$');
@@ -139,6 +254,12 @@ function validateProof(proof,profile,context){
  requireThat(proof.problemOnlyScreenshots===true&&proof.solutionsOpened===false&&
   proof.sourceOverlay===false&&proof.sourceWrites===0&&proof.mode==='exam'&&proof.newFullMathematicalQa===false&&
   proof.newMetadataApprovals===0&&proof.newDifficultyJudgments===0&&proof.newReviewPassCount===0&&proof.newFourSlotApprovals===0,'PROBLEM_ONLY');
+ if(profile!=='svg7'){
+  requireThat(proof.screenshotsScope==='SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY','ORIGINAL_PROBLEM_TILES');
+  if(profile==='q16')requireThat(proof.surface==='PROBLEM','Q16_SURFACE');
+  if(profile==='q5')requireThat(proof.surface===undefined&&proof.newParentApprovals===0&&
+   proof.newNativeApprovals===0&&proof.releaseGate==='PENDING_INDEPENDENT_VISUAL_REVIEW','Q5_NO_APPROVAL');
+ }
  requireThat(proof.expectedLogicalCases===spec.cases&&Array.isArray(proof.results)&&
   proof.completedLogicalCases===proof.results.length&&proof.results.length<=spec.cases,'CASE_COUNT');
  requireThat(Array.isArray(proof.screenshotArtifacts)&&proof.screenshotArtifactCount===proof.screenshotArtifacts.length&&
@@ -148,13 +269,29 @@ function validateProof(proof,profile,context){
  for(const item of proof.items){
   const fixed=subjects.get(item.questionUid);
   requireThat(fixed&&item.key===fixed.key&&item.sourceOrdinal===fixed.sourceOrdinal&&!itemSeen.has(item.questionUid),'ITEM_SCOPE');
+  if(profile!=='svg7'){
+   requireThat(item.sourceRef?.path===fixed.sourcePath&&item.sourceRef.commit===context.checkoutCommit,'ITEM_SOURCE');
+   if(profile==='q16')requireThat(Array.isArray(item.assetRefs)&&item.assetRefs.length===0,'Q16_NO_FILE_ASSETS');
+   else requireThat(item.assetRef?.path===fixed.assetPath&&item.assetRef.commit===context.checkoutCommit,'ITEM_ASSET');
+  }
   itemSeen.add(item.questionUid);
  }
  const completedShots=[];
  for(const row of proof.results){
   const fixed=subjects.get(row.questionUid),viewport=VIEWPORTS.find(v=>v.name===row.viewport?.name);
   requireThat(fixed&&row.key===fixed.key&&row.sourceOrdinal===fixed.sourceOrdinal&&viewport&&
-   stable(row.viewport)===stable(viewport)&&row.status==='PASS'&&row.surface==='PROBLEM'&&row.mode==='exam','RESULT_SCOPE');
+   stable(row.viewport)===stable(viewport)&&row.status==='PASS','RESULT_SCOPE');
+  if(profile==='svg7'||profile==='m1')requireThat(row.surface==='PROBLEM'&&row.mode==='exam','RESULT_SCOPE');
+  else requireThat(row.surface===undefined&&row.mode===undefined,'RESULT_SCOPE');
+  if(profile!=='svg7'){
+   const item=proof.items.find(item=>item.questionUid===row.questionUid);
+   requireThat(stable(row.sourceRef)===stable(item.sourceRef),'RESULT_SOURCE');
+   if(profile==='q16')requireThat(Array.isArray(row.assetRefs)&&row.assetRefs.length===0,'Q16_NO_FILE_ASSETS');
+   else{
+    requireThat(stable(row.assetRef)===stable(item.assetRef),'RESULT_ASSET');
+    if(profile==='m1')requireThat(stable(row.assetRefs)===stable([item.assetRef]),'RESULT_ASSET');
+   }
+  }
   const key=row.key+':'+viewport.name;requireThat(!caseSeen.has(key),'DUPLICATE_CASE');caseSeen.add(key);
   requireThat(row.technical?.solutionNodes===0&&row.technical.mode==='exam'&&
    row.pageErrors?.length===0&&row.requestFailures?.length===0&&row.externalRequests?.length===0,'RESULT_PROBLEM_ONLY');
