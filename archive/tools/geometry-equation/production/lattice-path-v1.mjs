@@ -10,7 +10,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 // that may not be used (drawn broken), roads that must be used (drawn bold), an optional highlighted path and, on request, the number of shortest paths
 // from the start to every crossing. The author states only the grid, the named points and the road lists; the engine counts the shortest (monotone)
 // paths itself with a forward/backward dynamic programme over the set of "must use" roads, so a crossing's number is the number of ways to reach it that
-// can still be completed into a valid path. The final answer (the number at the target) is hidden unless hideTargetCount is false.
+// can still be completed into a valid path. The final count (the number at the target) is shown in a solution figure; hideTargetCount:true hides it (a problem figure).
 // lattice_path_observer.py enumerates the valid paths by brute force from the same plan and checks the final SVG bytes (the numbers drawn, the roads
 // drawn / broken / bold at their exact pixel positions, the points and the highlighted path); nothing this module computes is trusted.
 export const FIGURE_CAPABILITY='lattice-path-figure-v1';
@@ -118,7 +118,7 @@ export function solveLattice(lat){
   const countsRaw=lat.counts??false;
   if(!(countsRaw===true||countsRaw===false||(Array.isArray(countsRaw)&&countsRaw.length>=1&&countsRaw.length<=40)))bad('LATTICE_COUNTS_INVALID');
   if(lat.hideTargetCount!==undefined&&typeof lat.hideTargetCount!=='boolean')bad('LATTICE_COUNTS_INVALID');
-  const hideTarget=lat.hideTargetCount!==false;
+  const hideTarget=lat.hideTargetCount===true;   // a solution figure shows the final count (the process value) unless the author asks to hide it
   const needsPaths=countsRaw!==false||via.length>0;
   let start=null,target=null,counts=[],shown=[],total=null;
   if(needsPaths){
