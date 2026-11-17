@@ -837,7 +837,7 @@ window.questionBank = [
       "$\\dfrac{\\sqrt{6}+\\sqrt{2}}{8}$"
     ],
     "answer": "③",
-    "solution": "$75^\\circ = 45^\\circ + 30^\\circ$이므로 삼각함수의 덧셈정리를 이용하면\n$\\sin 75^\\circ = \\sin(45^\\circ + 30^\\circ) = \\sin 45^\\circ \\cos 30^\\circ + \\cos 45^\\circ \\sin 30^\\circ$\n$= \\dfrac{\\sqrt{2}}{2} \\times \\dfrac{\\sqrt{3}}{2} + \\dfrac{\\sqrt{2}}{2} \\times \\dfrac{1}{2} = \\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$\n정답은 ③이다.",
+    "solution": "$\\angle A=30^\\circ$, $\\angle B=\\angle C=75^\\circ$이고 $\\overline{AB}=\\overline{AC}=2$인 이등변삼각형 $ABC$를 생각한다.\n$C$에서 $AB$에 내린 수선의 발을 $H$라 하면 $\\overline{CH}=2\\sin30^\\circ=1$, $\\overline{AH}=2\\cos30^\\circ=\\sqrt{3}$이므로 $\\overline{BH}=2-\\sqrt{3}$이다.\n따라서 $\\overline{BC}^2=1^2+(2-\\sqrt{3})^2=8-4\\sqrt{3}$이므로 $\\overline{BC}=\\sqrt{6}-\\sqrt{2}$이다.\n직각삼각형 $CBH$에서 $\\sin75^\\circ=\\dfrac{\\overline{CH}}{\\overline{BC}}=\\dfrac{1}{\\sqrt{6}-\\sqrt{2}}=\\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$이다.\n정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q20-quality-v4.svg",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q20-solution.svg",
     "solutionImageAlt": "직각삼각형 투영과 sin 75도",

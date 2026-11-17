@@ -1082,7 +1082,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다음 식에서 가장 먼저 계산하여야 할 곳은?\n$5$ ① $+\\ 4$ ② $\\times\\left\\{6$ ③ $-\\left(1$ ④ $-\\dfrac{1}{3}\\right)\\times 2\\right\\}$ ⑤ $\\div 3$",
+    "content": "다음 식에서 가장 먼저 계산하여야 할 곳은?\n$5$ ① $+\\ 4$ ② $\\times\\{6$ ③ $-(1$ ④ $-\\dfrac{1}{3})\\times 2\\}$ ⑤ $\\div 3$",
     "choices": [
       "①",
       "②",

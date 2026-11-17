@@ -24,7 +24,7 @@ window.questionBank = [
     "content": "두 행렬 \\(A=\\begin{pmatrix}2&1\\\\0&3\\end{pmatrix}\\), \\(B=\\begin{pmatrix}1&-1\\\\2&0\\end{pmatrix}\\)에 대하여 \\(5A-3B\\)를 구하시오.",
     "choices": [],
     "image": "",
-    "answer": "\\(\\begin{pmatrix}7&8\\\\-6&15\\end{pmatrix}\\)",
+    "answer": "[[7,8],[-6,15]]",
     "solution": "$5A=\\begin{pmatrix}10&5\\\\0&15\\end{pmatrix}$, $3B=\\begin{pmatrix}3&-3\\\\6&0\\end{pmatrix}$이므로 $5A-3B=\\begin{pmatrix}7&8\\\\-6&15\\end{pmatrix}$이다.",
     "displayNo": "1104",
     "questionNo": 1104,
