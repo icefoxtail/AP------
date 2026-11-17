@@ -31,7 +31,7 @@ SVG를 글로 읽기: node .tmp/work/ds-svgtext.cjs <svg 파일> — viewBox, �
 1) 구형 그림(OLD_SVG, OLD_PNG)이 있는 문항 = **UPGRADE: 예외 없이 신형 엔진으로 다시 만든다.**
    - 구형 판별 기준: solutionImage가 .svg인데 파일 앞부분에 data-engine-version=, data-publication-profile=, data-composite=, data-<무엇>="<무엇>-figure-v1" 중 어느 것도 없으면 구형이다. PNG 같은 래스터 해설 그림도 구형이다. (분류표가 이미 계산해 두었다.)
    - **재작업 전에 구형이 보여 주던 핵심 관계(함수·교점·주기·구간·넓이·점 좌표·보조선·색 구분 등)를 먼저 목록으로 적는다**(SUMMARY.md에 남김). 구형 SVG(OLD_SVG)는 ds-svgtext.cjs 와 SVG 원문(grep으로 <text>, <path d=, 색)을 읽어 추출한다. 구형 PNG(OLD_PNG)는 네가 읽을 수 없으니 해설 글(q.solution)과 원문에서 관계를 추정하고 메모에 "OLD_PNG: 그림 미확인, Sonnet A가 PNG 보고 관계 확인"이라고 적는다. 신형은 그 관계를 **반드시 모두 담는다.** 담지 못하는 것이 있으면 그 이유(엔진 공백 코드)를 적는다.
-   - 구형의 결함은 고친다: 정답 노출(그림 속 값이 곧 정답인 경우 포함), 영어 글자, 빗금 분수(세로 분수만 쓴다), 틀린 축척·틀린 값, 겹친 라벨.
+   - 구형의 결함은 고친다: (문제 그림의) 정답 노출, 영어 글자, 빗금 분수(세로 분수만 쓴다), 틀린 축척·틀린 값, 겹친 라벨.
    - 구형 파일은 읽기만 한다(수정·삭제 금지).
    - compare.png는 **만들기만** 한다(Sonnet A가 본다): PYTHONIOENCODING=utf-8 python .tmp/work/compare.py <구형 파일(svg/png, archive/ 아래 경로)> <OUT>/qNN/out/figure-solution.svg <OUT>/qNN/compare.png . 열어 보지 않는다.
    - 신형이 구형의 핵심 관계를 담지 못하면 plan을 고쳐 다시 렌더한다. 정말 못 그리면 UNSUPPORTED(빠진 엔진 기능 정확히 기재)로 두고 구형 그대로 두지 않는다.
@@ -44,7 +44,7 @@ SVG를 글로 읽기: node .tmp/work/ds-svgtext.cjs <svg 파일> — viewBox, �
 [구현 규칙]
  1) 시험지 JS에서 문항 원문·정답·해설·기존 그림(solutionImage*)을 읽는다(문항별로 필요한 필드만).
  2) FIGURE·REPLACE 문항은 <OUT>/qNN/ 에 item.json, plan.json, publish.json, figure.png 를 둔다. item.json 은 {"sourcePath": 시험지 JS 저장소 상대경로, "ordinal": 문항 id} 형식이다(통과 사례의 qNN/item.json 과 같게). 렌더는 --out <OUT>/qNN/out 으로 한다(최종 성공본이 out/에 있게). EXEMPT·KEEP_EXISTING·CONTENT 문항은 qNN 폴더를 만들지 않는다. **렌더가 끝내 안 되어 UNSUPPORTED 후보가 된 문항은 마지막 item.json·plan.json 과 render-N.log 를 qNN/ 에 남긴다**(Sonnet A가 이어서 고친다).
- 3) publish.json: {"alt": 그림 설명(정답 없음), "caption": 풀이 요약 2~4문장 + 끝에 "정답은 …이다."(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}. alt·caption은 한국어 평문($…$ LaTeX·영어 문장 금지)이고 수식·변수는 기호로 쓴다. **alt는 그림을 보지 못한 네가 쓰는 것이므로 plan.json에 넣은 대상(점·선·곡선·구간·색)만 설명하고, plan에 없는 것을 지어내지 않는다.**
+ 3) publish.json: {"alt": 그림 설명(정답은 있어도 없어도 됨), "caption": 풀이 요약 2~4문장 + 끝에 "정답은 …이다."(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}. alt·caption은 한국어 평문($…$ LaTeX·영어 문장 금지)이고 수식·변수는 기호로 쓴다. **alt는 그림을 보지 못한 네가 쓰는 것이므로 plan.json에 넣은 대상(점·선·곡선·구간·색)만 설명하고, plan에 없는 것을 지어내지 않는다.**
  4) <OUT>/TABLE.md — 전 문항 한 줄씩, 정확히 이 형식(다른 판정어·누락 문항 금지, 파서가 `^| Q?(\d+) | ([A-Z_]+)`로 읽는다):
       | 문항 | 판정 | 이유 |
       |---|---|---|
@@ -88,7 +88,7 @@ SVG를 글로 읽기: node .tmp/work/ds-svgtext.cjs <svg 파일> — viewBox, �
 - 분수는 세로 분수로만 쓴다(빗금 a/b를 그림에 쓰지 않는다). 영어 글자(period, max 등)를 그림에 쓰지 않는다.
 - 좌표 라벨은 다른 라벨과 같은 수식 글꼴로 쓴다. callout 글자에 쉼표가 있으면 일반 글꼴(TEXT)로 강제되므로 "(3,5)"는 callout 대신 그 점(overlays.points)에 "coordinates":true(+labelDirection)를 쓴다. 축 눈금 곁이라 자리가 안 맞으면 callout으로 "x=1" 같은 쉼표 없는 식을 쓴다.
 - 세로 점근선 라벨(x=a)이 y축이나 "y" 축 이름 곁에 붙으면 y축 라벨처럼 읽힌다. verticalAsymptoteLabelAt로 점선 바로 곁에 두고 y축과 떨어뜨린다. 가로 점근선 라벨(y=b)도 다른 눈금 숫자와 떨어져 점선 곁에 있게 한다(asymptoteLabelAt).
-- 그림 속 값이 곧 정답이면(예: "호의 길이 = 2.5π", 확률값 표기) 그것도 노출이다. 정답 값은 그림에 쓰지 말고 caption 끝에서만 밝힌다.
+- 해설 그림은 값이 곧 정답이어도(예: "호의 길이 = 2.5π") 반려하지 않는다. 풀이 과정 정보를 최대한 넣고 caption 끝에도 정답을 둔다(2026-11-17 사용자 결정). 문제 그림만 정답을 노출하지 않는다.
 - 문제에 없는 함수 이름(g, h, l)을 그림에 쓰면 caption에서 정의한다. 해설이 분수인데 그림이 소수면 caption에 분수를 밝힌다.
 - 근호가 든 좌표·교점은 엔진 자동 표기(SELECT_POINT 결과)가 "−1+(−1√10)", "(0,(−1√10))"처럼 어색하게 나온다. 좌표를 아는 점은 SOURCE_POINT로 좌표를 식(add/sub+sqrt)으로 직접 주어 "−1−√10"으로 보이게 한다(예: 20 매산여고 1학기 기말 Q18). 직선 식 라벨이 "y=x+(−√10)"이면 라벨을 끄고 caption에 기호로 쓴다.
 - 구분 표현(사용자 지시 2026-11-10): 직선·곡선·원·영역이 여럿 있어 학생이 구분해야 하면 **색을 1순위로**(그림 안에서 직관적으로 구분하는 가장 효율적인 방법) 대상마다 다른 색을 주고, 필요하면 선 종류(실선·점선·굵기)·면 채움(음영)을 더해 확실히 구분하고 각각 라벨을 붙인다(예: 원래 도형과 이동한 도형, 두 원, 공통 영역과 나머지, 보조선과 본 그래프). 쓸 수 있는 옵션은 AUTHOR_GUIDE.md에서 찾는다. 옵션이 없어 구분이 약하면 ENGINE_GAPS에 "구분 표현 부족: 무엇"으로 SUMMARY 메모에 적는다. 구형이 색으로 구분하던 것(예: 두 원 파랑·주황, 직선별 다른 색, 이동 전후)은 신형에서도 색 구분을 유지한다. UPGRADE 관계 목록에 "색 구분"도 넣는다.

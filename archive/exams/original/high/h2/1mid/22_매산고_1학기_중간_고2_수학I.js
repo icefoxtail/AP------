@@ -840,9 +840,9 @@ window.questionBank = [
     "questionUid": "qid_v1_4f595f3dabe33f7697c1a891c6dde572880f109e3c1df4ed4d304d1285c805e6",
     "sourceQid": 18,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q18-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 수직선은 u=4θ/π−1을 나타낸다. θ_n=nπ/32와 θ_{16−n}=(16−n)π/32는 u=0(θ=π/4)의 양쪽 대칭 위치 −d,d로 대응한다. 표시된 d의 간격은 수치 예가 아니라 대칭 관계를 나타내는 도식이다. 각 쌍의 sin²값 합은 1이고, 중앙항은 sin²(π/4)=1/2이다. 열린 끝은 각도 0과 π/2에 해당한다.",
-    "solutionImageCaption": "θ=πx/8로 두면 0≤θ<2π이다. t>0에서 sinθ=t의 두 해가 a,π−a이면 cosθ=t의 두 해와의 간격 차는 g(t)−f(t)=32a/π이며, 0<a<π/2이므로 이 차는 0과 16 사이에서 변한다. t≤0에서는 차가 0이다. 따라서 양의 정수 차 n마다 a_n=sin(nπ/32)이다. n과 16−n의 항을 짝지으면 각각의 sin² 합은 1이고, 중앙 n=8은 sin²(π/4)=1/2이다. 일곱 쌍과 중앙항으로 S=15/2가 된다. 따라서 (1) m=15, (2) 8S=60이다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q18-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 왼쪽 열린 끝은 θ=0, 오른쪽 열린 끝은 θ=π/2이고, 가운데 채운 점은 θ=π/4이다. 가운데에서 같은 거리 d만큼 떨어진 두 눈금이 각각 θₙ과 θ₁₆₋ₙ이며, 가운데에서 두 눈금까지의 구간에 각각 d를 나타내는 괄호가 있어 두 거리가 같음을 보인다.",
+    "solutionImageCaption": "θ=πx/8로 두면 0≤θ<2π이고, t>0에서 g(t)−f(t)=32a/π (0<a<π/2)이므로 이 차는 0과 16 사이에서 변한다. 양의 정수 n마다 aₙ=sin(nπ/32)이고, n과 16−n의 항을 짝지으면 sin²의 합이 1이며 가운데 n=8의 값은 1/2이다. 일곱 쌍과 가운데항으로 S=15/2이고 8S=60이다. 따라서 (1) m=15, (2) 8S=60이다.",
     "solutionImageSize": "full"
   },
   {
@@ -927,9 +927,9 @@ window.questionBank = [
     "questionUid": "qid_v1_5546de92fbb1a66b01488b09d4c4f3714cd1a923d03584330a0e62bb49ffaf1f",
     "sourceQid": 20,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 직선 y=x를 기준으로 A와 B가 서로 대칭이다. C=(β,β)는 직선 y=x 위에서 A와 원점 사이에 놓인다.",
-    "solutionImageCaption": "g와 g^{-1}의 교점은 대칭쌍 (-t,t), (t,-t)와 고정점 (β,β)이며 -t<β<t이다. 주어진 식의 값은 56이다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=x가 있고, A(−t, t)와 B(t, −t)가 원점에 대하여 서로 대칭인 위치에 있다. C(β, β)는 직선 y=x 위에서 원점의 음수 쪽에 있으며 −t<β<0이다.",
+    "solutionImageCaption": "g와 g⁻¹의 그래프는 직선 y=x에 대하여 대칭이므로 교점은 (−t, t), (t, −t)와 y=x 위의 고정점 (β, β)이고 −t<β<0이다. 예: t=3/5, β=−1/2의 위치로 그린 개략도이며 α=−t이다. 6|g(1/α)·g(1/α²)|=56이다.",
     "solutionImageSize": "full"
   }
 ];
