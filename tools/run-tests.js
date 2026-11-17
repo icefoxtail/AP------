@@ -41,6 +41,17 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/archive-m2-problem21-current-ui-continuity.test.mjs', args: ['--test', 'tests/archive-m2-problem21-current-ui-continuity.test.mjs'], timeout: 60000 },
+  { label: 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs', args: ['--test', 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs'], timeout: 180000 },
+  { label: 'tests/archive-m3s2-current-ui-reuse.test.cjs', args: ['--test', 'tests/archive-m3s2-current-ui-reuse.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-m3s2-q16-current-renderer-provenance.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-current-renderer-provenance.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-pr-q5-current-ui-shadow.test.mjs', args: ['--test', 'tests/archive-pr-q5-current-ui-shadow.test.mjs'], timeout: 180000 },
+  { label: 'tests/item-4slot-m1s2-current-ui-reuse.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-current-ui-reuse.test.cjs'], timeout: 60000 },
+  { label: 'tests/item-4slot-svg7-current-ui-binding.test.cjs', args: ['--test', 'tests/item-4slot-svg7-current-ui-binding.test.cjs'], timeout: 60000 },
+  { label: 'tests/m2-closed8-scoped-input-paths.test.cjs', args: ['--test', 'tests/m2-closed8-scoped-input-paths.test.cjs'], timeout: 60000 },
+  { label: 'tests/m2s2-closed-eight-current-browser.test.cjs', args: ['--test', 'tests/m2s2-closed-eight-current-browser.test.cjs'], timeout: 60000 },
+  { label: 'tests/protected-current-ui-log-transport.test.cjs', args: ['--test', 'tests/protected-current-ui-log-transport.test.cjs'], timeout: 60000 },
+  { label: 'tests/protected9-ui-log-transport.test.cjs', args: ['--test', 'tests/protected9-ui-log-transport.test.cjs'], timeout: 60000 },
   { label: 'tests/archive-e015-issued-source-continuity.test.mjs', args: ['--test', 'tests/archive-e015-issued-source-continuity.test.mjs'], timeout: 60000 },
   { label: 'tests/archive-m2s1-svg7-problem-browser.test.cjs', args: ['--test', 'tests/archive-m2s1-svg7-problem-browser.test.cjs'] },
   { label: 'tests/archive-completion-check.test.mjs', args: ['--test', 'tests/archive-completion-check.test.mjs'] },
