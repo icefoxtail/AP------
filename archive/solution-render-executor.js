@@ -57,6 +57,22 @@
         return applied;
     }
 
+    // A rescued continuation shell holds only the tail of a solution, so without a heading a student cannot tell which
+    // question it belongs to. Put "<number>. (이어짐)" at its top. Only shells created by the rescue path are labelled;
+    // ordinary continuation shells keep their original DOM.
+    function labelContinuationShell(shell, sourceBox, qNo, doc) {
+        if (!shell || !doc || typeof shell.querySelector !== 'function' || typeof shell.insertBefore !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
+        const numNode = typeof sourceBox?.querySelector === 'function' ? sourceBox.querySelector('.q-num') : null;
+        const num = String(numNode?.textContent || '').trim().replace(/\.\s*$/, '') || (Number(qNo) > 0 ? String(qNo) : '');
+        if (!num) return shell;
+        const label = doc.createElement('div');
+        label.className = 'sol-cont-label';
+        label.style.cssText = 'font-size:8.5pt;font-weight:700;color:#555;margin:0 0 3px 0;line-height:1.4;';
+        label.textContent = `${num}. (이어짐)`;
+        shell.insertBefore(label, shell.firstChild);
+        return shell;
+    }
+
     async function measureSolutionBatch(boxes, staging, deps, document) {
         const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
         boxes.forEach(box => box.classList.add('fit-tight'));
@@ -233,6 +249,8 @@
             let targetCol = cols[colIdx];
             targetCol.appendChild(shell);
             markSolutionPlacement(shell, false);
+            let primaryShell = true;
+            let rescued = false;
 
             for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
                 const chunk = preparedChunks[chunkIndex];
@@ -255,6 +273,9 @@
                         : [];
                     targetCol = advanceColumn();
                     shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                    // Only after a rescue (below) are the following shells labelled too, so layouts that were
+                    // fine before keep their exact DOM.
+                    if (rescued) labelContinuationShell(shell, sourceBox, qNo, document);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     markSolutionPlacement(shell, true);
@@ -264,10 +285,36 @@
                     }
                     exp.appendChild(chunk);
                     if (deps.rendererMode() === 'legacy') await deps.raf();
+                    primaryShell = false;
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     deps.autoCompress(shell);
                     await deps.raf();
+                    // Rescue: the first shell carries the question reminder, figures and answer, so its only chunk
+                    // can still clip the column after compression (readiness: more than 3px). Hand that chunk to a
+                    // labelled continuation shell, but only when the header alone fits. Anything that fit before
+                    // (including after the compression above) is laid out exactly as it always was.
+                    if (primaryShell && exp.children.length === 1 && targetCol.scrollHeight > targetCol.clientHeight + 3) {
+                        exp.removeChild(chunk);
+                        if (deps.rendererMode() === 'legacy') await deps.raf();
+                        if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                            rescued = true;
+                            targetCol = advanceColumn();
+                            shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
+                            exp = shell.querySelector('.sol-exp');
+                            targetCol.appendChild(shell);
+                            markSolutionPlacement(shell, true);
+                            exp.appendChild(chunk);
+                            if (deps.rendererMode() === 'legacy') await deps.raf();
+                            primaryShell = false;
+                            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                                deps.autoCompress(shell);
+                                await deps.raf();
+                            }
+                        } else {
+                            exp.appendChild(chunk);
+                        }
+                    }
                 }
             }
         };
