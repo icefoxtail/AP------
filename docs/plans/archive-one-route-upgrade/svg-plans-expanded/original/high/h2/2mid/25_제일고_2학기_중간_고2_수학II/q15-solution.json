@@ -1,0 +1,129 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "3/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "6",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-11/2",
+          "3/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-58",
+          "16",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "5"
+      },
+      {
+        "x": "5",
+        "y": "2"
+      },
+      {
+        "x": "7",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "6"
+      },
+      {
+        "id": "Q",
+        "x": "5",
+        "y": "2"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "5"
+      },
+      {
+        "id": "S",
+        "x": "7",
+        "y": "5"
+      },
+      {
+        "id": "U",
+        "x": "8",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "3",
+        "6"
+      ],
+      "Q": [
+        "5",
+        "2"
+      ],
+      "R": [
+        "2",
+        "5"
+      ],
+      "S": [
+        "7",
+        "5"
+      ],
+      "U": [
+        "8",
+        "6"
+      ]
+    }
+  },
+  "caption": "x=2에서 연속이므로 4a+b=-7, f(0)=f(5)이므로 25a+b=-28이다. a=-1, b=-3이다. 그림은 한 주기 [0,5]와 다음 주기 [5,10]이다. 18=3+5·3이므로 f(18)=f(3)=-9+18-3=6이고 그림의 점 P(3,6)이 그 값이다 (정답 ⑤).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌구간 $[0,5]$에서 $f(x)=\\begin{cases}\\dfrac32x+2&(0\\le x\\le2)\\\\ax^2+6x+b&(2\\lt x\\le5)\\end{cases}$로 정의되고, 모든 실수 $x$에 대하여 $f(x)=f(x+5)$를 만족시키는 함수 $f(x)$가 실수 전체의 집합에서 연속일 때, $f(18)$의 값은? (단, $a$, $b$는 상수) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "주기 5로 이어지는 f의 두 주기와 f(3)=6을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=2에서 연속이므로 4a+b=-7, f(0)=f(5)이므로 25a+b=-28이다. a=-1, b=-3이다. 그림은 한 주기 [0,5]와 다음 주기 [5,10]이다. 18=3+5·3이므로 f(18)=f(3)=-9+18-3=6이고 그림의 점 P(3,6)이 그 값이다 (정답 ⑤)."
+  ],
+  "accessibilityDescription": "주기 5로 반복되는 연속 함수의 그래프 두 주기이다."
+}

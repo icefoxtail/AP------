@@ -1,0 +1,124 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=6: x=2에서 접함"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-12",
+                "12",
+                "-3"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-1",
+              "5"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "2"
+            ],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": "2",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "V": [
+              "2",
+              "0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=-6: x=-2에서 접함"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-12",
+                "-12",
+                "-3"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-5",
+              "1"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "-2"
+            ],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": "-2",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "V": [
+              "-2",
+              "0"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "f′(x)=-3x²+2ax-12가 모든 x에서 0 이하이려면 판별식 4a²-144≤0이어야 하므로 -6≤a≤6이다. 경계 a=6(y=-3(x-2)², x=2에서 x축에 접함)과 a=-6(y=-3(x+2)², x=-2에서 접함)에서 포물선이 x축에 접하고 그 사이 값에서는 x축 아래에 있다. 따라서 m=-6, n=6이고 n-m=12이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 1번] 함수 $f(x)=-x^3+ax^2-12x+8$이 모든 실수에서 감소하도록 하는 실수 $a$의 값의 범위는 $m\\le a\\le n$일 때, $n-m$의 값을 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′의 그래프가 x축에 접하는 두 경계값 a=6, a=-6을 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f′(x)=-3x²+2ax-12가 모든 x에서 0 이하이려면 판별식 4a²-144≤0이어야 하므로 -6≤a≤6이다. 경계 a=6(y=-3(x-2)², x=2에서 x축에 접함)과 a=-6(y=-3(x+2)², x=-2에서 접함)에서 포물선이 x축에 접하고 그 사이 값에서는 x축 아래에 있다. 따라서 m=-6, n=6이고 n-m=12이다."
+  ],
+  "accessibilityDescription": "도함수의 그래프가 x축에 접하는 두 경우(a=6, a=-6)를 나란히 나타낸 그림이다."
+}

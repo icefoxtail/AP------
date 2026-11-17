@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "12"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "-8"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": [
+        "-8"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-2",
+        "y": "-8"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-2",
+        "-8"
+      ]
+    }
+  },
+  "caption": "x=-2에서 미분가능하면 함숫값이 이어지고(-2a+b=(-2)³=-8) 좌우 미분계수가 같다(a=3·(-2)²=12). 따라서 a=12, b=16이고 왼쪽 직선 y=12x+16은 x=-2에서 곡선 y=x³의 접선이다. 점 P(-2,-8)에서 두 조각이 이어진다. a와 b의 차는 |12-16|=4이다 (정답 ④).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}ax+b&(x\\le-2)\\\\x^3&(x\\gt -2)\\end{cases}$가 $x=-2$에서 미분가능하도록 하는 상수 $a,b$의 차를 구한 것은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-2에서 직선 조각과 x³이 값 -8과 기울기 12로 이어짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-2에서 미분가능하면 함숫값이 이어지고(-2a+b=(-2)³=-8) 좌우 미분계수가 같다(a=3·(-2)²=12). 따라서 a=12, b=16이고 왼쪽 직선 y=12x+16은 x=-2에서 곡선 y=x³의 접선이다. 점 P(-2,-8)에서 두 조각이 이어진다. a와 b의 차는 |12-16|=4이다 (정답 ④)."
+  ],
+  "accessibilityDescription": "직선 y=12x+16과 곡선 y=x³이 점 P(-2,-8)에서 기울기가 같게 이어지는 그래프이다."
+}

@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3/2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-1/2"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "9/2"
+      },
+      {
+        "id": "N",
+        "x": "3/4",
+        "y": "-9/16"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "1"
+      ],
+      "A": [
+        "1",
+        "-1/2"
+      ],
+      "B": [
+        "3",
+        "9/2"
+      ],
+      "N": [
+        "3/4",
+        "-9/16"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1/2",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "조건(원점과 점 P에서 직선 y=x/2와 만남, 0<a<p<b)을 만족하는 예시 f(x)=x²-3x/2에서 P(2,1)이고 a=1, b=3이다. A(1,-1/2)는 직선 아래, B(3,9/2)는 직선 위이므로 ㄴ은 거짓이다. P에서 f′(2)=5/2>1/2이므로 ㄱ은 참이다. h(x)=f(x)-x/2는 h(0)=h(p)=0이므로 롤의 정리로 f′(α)=1/2인 α가 구간 (0,p)에 있어 ㄷ도 참이다 (정답 ④).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "미분가능한 함수 $f(x)$의 그래프와 직선 $y=\\dfrac12x$가 다음 그림과 같이 점 $P$에서 만난다. 함수 $y=f(x)$의 그래프 위의 두 점 $A,B$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? (단, $0\\lt a\\lt p\\lt b$) [4.6점]<br><img src=\"assets/images/25_매산고_2학기_중간_고2_수학II/q8.png\" style=\"display:block;max-width:100%;height:auto;margin:8px auto;\"><div class=\"note-box\">ㄱ. $f'(p)\\gt \\dfrac12$<br>ㄴ. $f(a)-f(b)\\gt \\dfrac12(a-b)$<br>ㄷ. $f'(\\alpha)=\\dfrac12$인 $\\alpha$가 적어도 하나 존재한다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "조건을 만족하는 예시 곡선으로 P에서의 기울기와 A, B의 위치를 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "조건(원점과 점 P에서 직선 y=x/2와 만남, 0<a<p<b)을 만족하는 예시 f(x)=x²-3x/2에서 P(2,1)이고 a=1, b=3이다. A(1,-1/2)는 직선 아래, B(3,9/2)는 직선 위이므로 ㄴ은 거짓이다. P에서 f′(2)=5/2>1/2이므로 ㄱ은 참이다. h(x)=f(x)-x/2는 h(0)=h(p)=0이므로 롤의 정리로 f′(α)=1/2인 α가 구간 (0,p)에 있어 ㄷ도 참이다 (정답 ④)."
+  ],
+  "accessibilityDescription": "원점과 점 P에서 직선 y=(1/2)x와 만나는 곡선과 그 위의 점 A, B의 위치를 나타낸 그래프이다."
+}

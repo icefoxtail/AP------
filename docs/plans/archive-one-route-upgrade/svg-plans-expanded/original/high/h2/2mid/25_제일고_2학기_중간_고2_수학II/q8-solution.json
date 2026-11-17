@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1000"
+        ],
+        "domain": [
+          0,
+          10
+        ]
+      },
+      {
+        "coefficients": [
+          "1100"
+        ],
+        "domain": [
+          10,
+          15
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1200"
+        ],
+        "domain": [
+          15,
+          20
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1300"
+        ],
+        "domain": [
+          20,
+          25
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1400"
+        ],
+        "domain": [
+          25,
+          30
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1500"
+        ],
+        "domain": [
+          30,
+          38
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1600"
+        ],
+        "domain": [
+          38,
+          46
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1700"
+        ],
+        "domain": [
+          46,
+          54
+        ],
+        "start": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1800"
+        ],
+        "domain": [
+          54,
+          62
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "10",
+        "20",
+        "30",
+        "54"
+      ],
+      "y": [
+        "1000",
+        "1200",
+        "1800"
+      ]
+    }
+  },
+  "caption": "10km 이하는 1000원, 10km 초과 30km 이하는 5km마다 100원, 30km 초과는 8km마다 100원이 오른다. 요금은 구간의 오른쪽 끝에서 닫히는 계단이다. x→20-에서는 (15,20]의 1200원이므로 극한은 1200이고, x→54+에서는 (54,62]의 1800원이므로 1800이다. 합은 3000이다 (정답 ③).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 도시의 지하철 요금은 이용 거리에 따라 다르다고 한다. 이용 거리가 $10$km 이하이면 $1{,}000$원이고, $10$km 초과 $30$km 이하이면 $5$km마다 $100$원씩 요금이 추가되고, $30$km 초과이면 $8$km마다 $100$원씩 요금이 추가된다. 이용 거리가 $x$km일 때의 요금을 $f(x)$원이라 할 때, $\\displaystyle\\lim_{x\\to20-}f(x)+\\lim_{x\\to54+}f(x)$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "요금 계단 함수에서 x→20-의 값 1200과 x→54+의 값 1800을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "10km 이하는 1000원, 10km 초과 30km 이하는 5km마다 100원, 30km 초과는 8km마다 100원이 오른다. 요금은 구간의 오른쪽 끝에서 닫히는 계단이다. x→20-에서는 (15,20]의 1200원이므로 극한은 1200이고, x→54+에서는 (54,62]의 1800원이므로 1800이다. 합은 3000이다 (정답 ③)."
+  ],
+  "accessibilityDescription": "이용 거리에 따라 요금이 계단 모양으로 오르는 함수의 그래프이다."
+}

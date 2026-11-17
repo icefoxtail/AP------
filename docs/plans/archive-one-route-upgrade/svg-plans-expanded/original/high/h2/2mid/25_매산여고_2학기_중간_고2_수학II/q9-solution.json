@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "E",
+        "x": "-sqrt(6)/3",
+        "y": "4*sqrt(6)/9"
+      },
+      {
+        "id": "F",
+        "x": "sqrt(6)/3",
+        "y": "-4*sqrt(6)/9"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "-1"
+      ],
+      "E": [
+        "-sqrt(6)/3",
+        "4*sqrt(6)/9"
+      ],
+      "F": [
+        "sqrt(6)/3",
+        "-4*sqrt(6)/9"
+      ]
+    }
+  },
+  "caption": "x=1에서 연속이려면 1+a=b-2, 미분가능이려면 3+a=2b-1이다. 연립하면 a=-2, b=1이다. 그림은 f(x)=x³-2x(x<1)와 x²-x-1(x≥1)이고 P(1,-1)에서 값과 기울기(둘 다 1)가 같게 이어진다. a+b=-1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}x^3+ax&(x\\lt 1)\\\\bx^2-x-1&(x\\ge1)\\end{cases}$이 $x=1$에서 미분가능할 때, $a+b$의 값은? (단, $a$, $b$는 상수) [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=-2, b=1일 때 x=1에서 이어지고 기울기가 같은 두 조각을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 연속이려면 1+a=b-2, 미분가능이려면 3+a=2b-1이다. 연립하면 a=-2, b=1이다. 그림은 f(x)=x³-2x(x<1)와 x²-x-1(x≥1)이고 P(1,-1)에서 값과 기울기(둘 다 1)가 같게 이어진다. a+b=-1."
+  ],
+  "accessibilityDescription": "x=1에서 값과 기울기가 이어지는 삼차 조각과 이차 조각으로 된 함수의 그래프이다."
+}

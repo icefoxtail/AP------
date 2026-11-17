@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-4"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "2/3",
+        "y": "4/3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "-4"
+      ],
+      "B": [
+        "1",
+        "1"
+      ],
+      "O": [
+        "0",
+        "0"
+      ],
+      "V": [
+        "2/3",
+        "4/3"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "s",
+        "slope": "5/3",
+        "intercept": "-2/3",
+        "intersectionX": [
+          "-2",
+          "-1/3",
+          "1"
+        ]
+      }
+    ]
+  },
+  "caption": "점 A(-2,-4)와 B(a,f(a))를 잇는 할선의 기울기 S=(f(a)-f(-2))/(a+2)와 같은 f′(c)가 구간 (-2,a)에 정확히 두 개이려면 a>0이고 구간 (-2,0)에서 0<S<4, 구간 (0,a)에서 S>4-6a여야 한다. 그림은 a=1일 때(S=5/3)이며 c=-7/6, c=7/18이 두 개이다. 조건을 풀면 -2+4√3/3<a<2이고 p+q=4√3/3이므로 3(p+q)=4√3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 4번] $f(x)=\\begin{cases}x^2+4x&(x\\le0)\\\\-3x^2+4x&(x\\gt 0)\\end{cases}$에 대하여 $\\dfrac{f(a)-f(-2)}{a+2}=f'(c)$를 만족시키고 열린구간 $(-2,a)$에 속하는 상수 $c$의 개수가 $2$가 되도록 하는 모든 실수 $a$의 값의 범위는 $p\\lt a\\lt q$이다. $3(p+q)$의 값을 구하고 그 과정을 서술하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=1일 때 할선과 f′(c)=할선의 기울기인 두 c를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "점 A(-2,-4)와 B(a,f(a))를 잇는 할선의 기울기 S=(f(a)-f(-2))/(a+2)와 같은 f′(c)가 구간 (-2,a)에 정확히 두 개이려면 a>0이고 구간 (-2,0)에서 0<S<4, 구간 (0,a)에서 S>4-6a여야 한다. 그림은 a=1일 때(S=5/3)이며 c=-7/6, c=7/18이 두 개이다. 조건을 풀면 -2+4√3/3<a<2이고 p+q=4√3/3이므로 3(p+q)=4√3이다."
+  ],
+  "accessibilityDescription": "원점에서 이어지는 두 포물선 조각의 그래프와 두 점 A, B를 지나는 직선을 나타낸 그래프이다."
+}

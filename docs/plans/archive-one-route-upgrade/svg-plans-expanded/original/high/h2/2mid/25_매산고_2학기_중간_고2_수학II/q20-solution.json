@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1/2",
+        "y": "-47/8"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "11"
+      },
+      {
+        "id": "E",
+        "x": "-2",
+        "y": "16"
+      },
+      {
+        "id": "F",
+        "x": "2",
+        "y": "-16"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1/2",
+        "-47/8"
+      ],
+      "B": [
+        "-1",
+        "11"
+      ],
+      "E": [
+        "-2",
+        "16"
+      ],
+      "F": [
+        "2",
+        "-16"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "-45/4",
+        "intercept": "-1/4",
+        "intersectionX": [
+          "-1",
+          "1/2"
+        ]
+      }
+    ]
+  },
+  "caption": "(가)는 (a, f(a))에서의 접선이 곡선과 다시 만나는 점의 x좌표가 g(a)임을 뜻한다. a²+ag(a)+g(a)²=3a² 에서 g(a)=-2a이고 g(x)=-2x이다. (나)에서 x²(12x²+5k)=0의 0이 아닌 두 근의 곱이 5k/12=-5이므로 k=-12이다. 그림은 f(x)=x³-12x에서 a=1/2일 때 A(1/2,-47/8)의 접선과 곡선이 다시 만나는 B(-1,11)(=-2a)를 보인다. g(k/12)=g(-1)=2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 6번] 삼차함수 $f(x)=x^3+kx$에 대하여 다항함수 $g(x)$가 다음 조건을 만족시킨다.<br><div class=\"note-box\">(가) $a\\ne0$에 대하여 $f'(a)=\\dfrac{f(a)-f(g(a))}{a-g(a)}$이다.<br>(나) 방정식 $f'(x)\\times f'(g(x))=k^2$의 실근 중 $0$이 아닌 두 실근이 존재하며, 곱은 $-5$이다.</div><br>$0$이 아닌 실수 $x$에 대하여 $g(x)\\ne x$일 때, $g\\left(\\dfrac{k}{12}\\right)$의 값을 구하고 그 과정을 서술하시오. [8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(x)=x³-12x에서 접점 a=1/2의 접선이 곡선과 다시 만나는 점이 x=-2a=-1임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "(가)는 (a, f(a))에서의 접선이 곡선과 다시 만나는 점의 x좌표가 g(a)임을 뜻한다. a²+ag(a)+g(a)²=3a² 에서 g(a)=-2a이고 g(x)=-2x이다. (나)에서 x²(12x²+5k)=0의 0이 아닌 두 근의 곱이 5k/12=-5이므로 k=-12이다. 그림은 f(x)=x³-12x에서 a=1/2일 때 A(1/2,-47/8)의 접선과 곡선이 다시 만나는 B(-1,11)(=-2a)를 보인다. g(k/12)=g(-1)=2."
+  ],
+  "accessibilityDescription": "삼차함수의 그래프와 점 A에서의 접선이 곡선과 다시 만나는 점 B를 나타낸 그래프이다."
+}
