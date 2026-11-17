@@ -222,7 +222,10 @@
         .question-note-box,
         .note-box,
         .box {
-            display: inline-block;
+            /* block + fit-content (not inline-block): html2canvas (page-image print) drops the text nodes that sit directly
+               in a block child div of an inline-block box, so the Korean in a <조건>/<보기> box vanished from prints. */
+            display: block;
+            width: fit-content;
             max-width: 100%;
             box-sizing: border-box;
             margin: 5px 0 6px 0;
