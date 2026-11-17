@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-17T10:08:51.589Z",
+  "updatedAt": "2026-11-17T10:16:39.095Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
-    "oldestObservedAt": "2026-11-16T13:10:03Z",
+    "oldestObservedAt": "2026-11-16T13:10:11Z",
     "seenRegistrationRuns": 0,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
@@ -43319,7 +43319,8 @@
     "release:43982292661:1:22f79c4ffd5ad5f811c2840a532422e0ecabd3e1": {
       "key": "release:43982292661:1:22f79c4ffd5ad5f811c2840a532422e0ecabd3e1",
       "status": "unverified",
-      "attempts": 2,
+      "attempts": 3,
+      "reason": "배포 결과 단계 미검증",
       "run": {
         "id": 43982292661,
         "attempt": 1,
@@ -43330,13 +43331,12 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
-      "reason": "배포 결과 단계 미검증",
-      "nextRetryAt": "2026-11-17T10:14:30.471Z"
+      "nextRetryAt": "2026-11-17T10:36:37.038Z"
     },
     "release:43953538825:1:351bb4810aa2aa057dbc2b17a91686bf0c3106a0": {
       "key": "release:43953538825:1:351bb4810aa2aa057dbc2b17a91686bf0c3106a0",
       "status": "unverified",
-      "attempts": 1,
+      "attempts": 2,
       "reason": "증거 실행/차수/SHA 불일치",
       "run": {
         "id": 43953538825,
@@ -43348,12 +43348,13 @@
         "event": "workflow_dispatch",
         "branch": "main"
       },
-      "nextRetryAt": "2026-11-17T10:13:50.830Z"
+      "nextRetryAt": "2026-11-17T10:26:38.512Z"
     },
     "release:43965279990:1:56b9da73484799c7b6b47965ae6fc4cec4216fac": {
       "key": "release:43965279990:1:56b9da73484799c7b6b47965ae6fc4cec4216fac",
       "status": "unverified",
-      "attempts": 1,
+      "attempts": 2,
+      "reason": "배포 결과 단계 미검증",
       "run": {
         "id": 43965279990,
         "attempt": 1,
@@ -43364,13 +43365,14 @@
         "event": "unknown",
         "branch": "main"
       },
-      "reason": "배포 결과 단계 미검증",
-      "nextRetryAt": "2026-11-17T10:09:31.428Z"
+      "nextRetryAt": "2026-11-17T10:26:37.769Z"
     },
     "release:44052930142:1:384c559626ae17b87e8d4410a59df4372107ba1b": {
       "key": "release:44052930142:1:384c559626ae17b87e8d4410a59df4372107ba1b",
       "status": "partial",
-      "attempts": 2,
+      "fileProofState": "retryable",
+      "attempts": 3,
+      "verifiedAt": "2026-11-17T10:16:34.582Z",
       "run": {
         "id": 44052930142,
         "attempt": 1,
@@ -43391,8 +43393,6 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
-      "fileProofState": "retryable",
-      "verifiedAt": "2026-11-17T10:04:27.182Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -44559,12 +44559,14 @@
         "test-fixtures"
       ],
       "reason": "Pages ZIP 다운로드 실패",
-      "nextRetryAt": "2026-11-17T10:14:27.182Z"
+      "nextRetryAt": "2026-11-17T10:36:34.582Z"
     },
     "release:44059590151:1:71104dabf173369d973c71e155e62f25af6ff235": {
       "key": "release:44059590151:1:71104dabf173369d973c71e155e62f25af6ff235",
       "status": "partial",
-      "attempts": 1,
+      "fileProofState": "retryable",
+      "attempts": 2,
+      "verifiedAt": "2026-11-17T10:16:32.391Z",
       "run": {
         "id": 44059590151,
         "attempt": 1,
@@ -44585,8 +44587,6 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
-      "fileProofState": "retryable",
-      "verifiedAt": "2026-11-17T10:04:19.990Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -45754,7 +45754,7 @@
         "test-fixtures"
       ],
       "reason": "Pages ZIP 다운로드 실패",
-      "nextRetryAt": "2026-11-17T10:09:19.990Z"
+      "nextRetryAt": "2026-11-17T10:26:32.391Z"
     },
     "release:43997325616:2:f9e49a0e0c18f18c63f31d7547bd504f07a821c6": {
       "key": "release:43997325616:2:f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
