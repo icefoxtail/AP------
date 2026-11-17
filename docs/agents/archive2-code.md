@@ -47,7 +47,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 그림 기본 크기는 large와 full 사이 (2026-11-17 사용자 지시)
 
-- 문제 그림 `.q-image-wrap`의 `image-large`·`image-full`·`image-tall`(자동 분류가 붙인 것 포함)은 모두 폭 90%·높이 240px, 가운데 정렬이다. 해설 그림 `.sol-image-wrap`은 SVG 포함 모든 등급이 칸 폭 90%·높이 340px 이내(휴대폰은 `archive2-preview-mobile.css`에서 92%·340px)이다. 위 "해설 SVG는 라벨 크기 기준" 절의 폭 계산(자연 폭 x 0.6)은 그대로이고, 칸 폭·높이 상한이 그 위에서 누른다. 높이 무제한 해설 그림은 없앴다.
+- 문제 그림 `.q-image-wrap`의 `image-large`·`image-full`(자동 분류가 붙인 것 포함)은 폭 90%·높이 240px, `image-tall`만 폭 90%·높이 280px(2026-11-17 사용자 결정), 모두 가운데 정렬이다. 해설 그림 `.sol-image-wrap`은 SVG 포함 모든 등급이 칸 폭 90%·높이 340px 이내(휴대폰은 `archive2-preview-mobile.css`에서 92%·340px)이다. 위 "해설 SVG는 라벨 크기 기준" 절의 폭 계산(자연 폭 x 0.6)은 그대로이고, 칸 폭·높이 상한이 그 위에서 누른다. 높이 무제한 해설 그림은 없앴다.
 - 크게 보여야 하는 그림만 데이터 필드로 허용한다: 문제 `imageSizeOverride`(`full`=폭 100%·240px, `tall`=폭 100%·320px), 해설 `solutionImageSizeOverride`(`full`=칸 폭 전체·높이 무제한). 클래스 `image-override-full|tall`로 렌더하며, 이 필드는 `print-contract.js`·`render-authority.js`·`render-state-normalizer.js`를 지나간다. 기존 데이터의 `imageSize`·`solutionImageSize` 값은 바꾸지 않았다(원본 JS 해시 고정값). 명시적 `solutionImageLayout: "fullwidth"`는 특별한 경우로 그대로 둔다.
 - 이유: 그림이 단 폭을 꽉 채우고 높이 제한이 없거나(`tall` 320px·해설 `full`) 커서 시험지가 읽기 불편했다.
 
