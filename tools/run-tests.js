@@ -362,6 +362,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pages-image-r2-gate.test.mjs']
   },
   {
+    label: 'tests/r2-archive-assets-copy-workflow.test.mjs',
+    args: ['--test', 'tests/r2-archive-assets-copy-workflow.test.mjs']
+  },
+  {
     label: 'tests/archive-pages-release-reg-commit.test.mjs',
     args: ['--test', 'tests/archive-pages-release-reg-commit.test.mjs']
   },

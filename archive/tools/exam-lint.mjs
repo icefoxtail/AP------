@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '..');
@@ -282,9 +283,9 @@ for (const file of files) {
   }
 
   if (!sandbox.window.examTitle) entry.warn.push('examTitle 없음');
-  const bank = sandbox.window.questionBank;
+  const bank = examSourceReader.readQuestionArray(sandbox.window);
   if (!Array.isArray(bank) || bank.length === 0) {
-    entry.fail.push('questionBank 없음/비어있음');
+    entry.fail.push('문항 배열(questions/questionBank/examData) 없음/비어있음');
     continue;
   }
   entry.count = bank.length;
