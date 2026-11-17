@@ -543,7 +543,15 @@ export function specFor(plan,model,id){
   // planeMarks are facts read off named points and drawn segments, so they belong to the construction/plane-figure path only.
   if(plan.planeMarks!==undefined&&plan.capability!=='construction-spike-v1')throw Error('PLANE_MARKS_UNSUPPORTED_ON_GRAPH');
   const spec=specForFamily(plan,model,id);
-  return addAxisTitles(plan,addGraphOverlays(plan,spec));
+  return withLabelHints(plan,addAxisTitles(plan,addGraphOverlays(plan,spec)));
+}
+// plan.labelHints {"<labelId>": {prefer?, nudge?, leader?}}: the author's fine tuning of single labels, the same shape for every label kind. The engine checks the label ids and the values
+// (visual_engine.label_layout.apply_label_hints) and applies them while it lays the labels out, so every overlap, distance and leader check still judges the place a label ends in.
+function withLabelHints(plan,spec){
+  const hints=plan.labelHints;
+  if(hints===undefined)return spec;
+  if(!hints||typeof hints!=='object'||Array.isArray(hints)||!Object.keys(hints).length)throw Error('LABEL_HINTS_INVALID');
+  return {...spec,displayFacts:{...spec.displayFacts,labelHints:JSON.parse(JSON.stringify(hints))}};
 }
 // graphPlan.axisTitles {x?,y?}: a short Korean title (with its unit, for example 시간(분) or 거리(km)) at the end of a drawn axis instead of the letter x or y.
 const AXIS_TITLE_PATTERN=/^[가-힣A-Za-z0-9 ()·/.,%-]{1,10}$/;

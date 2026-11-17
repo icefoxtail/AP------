@@ -1954,6 +1954,65 @@ def _region_label_box(elements,label_id):
             except (TypeError,ValueError):return None
     return None
 
+GRAPH_REGION_LEADER_TOLERANCE_PX=2.5
+GRAPH_REGION_LEADER_PROBE_PX=3.0
+
+def _grl_dist(point,a,b):
+    dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
+    t=0.0 if length2<=1e-18 else max(0.0,min(1.0,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2))
+    return math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy))
+
+def _grl_cross(a,b,c,d):
+    u=(b[0]-a[0],b[1]-a[1]);v=(d[0]-c[0],d[1]-c[1]);w=(c[0]-a[0],c[1]-a[1])
+    det=u[0]*v[1]-u[1]*v[0]
+    if abs(det)<1e-9:return False
+    t=(w[0]*v[1]-w[1]*v[0])/det;s=(w[0]*u[1]-w[1]*u[0])/det
+    return 1e-6<t<1-1e-6 and 1e-6<s<1-1e-6
+
+def _graph_region_leader_labels(entries,polygons,transform,root):
+    """A graph-region label that stands outside its band (the band is too thin or crowded to hold it) must be tied to that band by a drawn leader (data-role=leader,
+    data-owner-label): the leader starts on the band's own boundary and runs away from it, the label box lies outside every band, the leader ends on the label box,
+    never enters a band after its start and never properly crosses a drawn stroke. A label outside its band with no such leader stays an error (GRAPH_REGION_LABEL_OUTSIDE)."""
+    errors=[]
+    if not entries:return errors
+    px=lambda point:(transform['originX']+transform['sx']*point[0],transform['originY']-transform['sy']*point[1])
+    areas={region_id:[px(point) for point in polygon] for region_id,polygon in polygons}
+    leaders={node.get('data-owner-label'):node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='leader' and node.get('data-owner-label')}
+    strokes=[]
+    for node in root.iter():
+        kind=node.tag.split('}')[-1]
+        if node.get('data-role')=='leader' or node.get('data-mark')=='graph-region':continue
+        try:
+            if kind=='line':strokes.append((node.get('id'),[(float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))]))
+            elif kind=='polyline' and node.get('points'):
+                nums=[float(v) for v in re.split(r'[\s,]+',node.get('points').strip()) if v];strokes.append((node.get('id'),list(zip(nums[0::2],nums[1::2]))))
+        except (TypeError,ValueError):continue
+    for region_id,box in entries:
+        own=areas.get(region_id);leader=leaders.get('region-'+region_id+'-label')
+        if own is None or leader is None:errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id);continue
+        try:a=(float(leader.get('x1')),float(leader.get('y1')));b=(float(leader.get('x2')),float(leader.get('y2')))
+        except (TypeError,ValueError):errors.append('GRAPH_REGION_LEADER_UNREADABLE:'+region_id);continue
+        x,y,w,h=box
+        probes=[(x+w*i/4,y+h*j/2) for i in range(5) for j in range(3)]
+        if any(_region_inside(poly,p) for poly in areas.values() for p in probes):errors.append('GRAPH_REGION_LABEL_NOT_OUTSIDE:'+region_id)
+        edges=[((x,y),(x+w,y)),((x+w,y),(x+w,y+h)),((x+w,y+h),(x,y+h)),((x,y+h),(x,y))]
+        if min(_grl_dist(b,c,d) for c,d in edges)>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_NOT_ON_LABEL:'+region_id)
+        if min(_grl_dist(a,c,d) for c,d in zip(own,own[1:]+own[:1]))>GRAPH_REGION_LEADER_TOLERANCE_PX:errors.append('GRAPH_REGION_LEADER_NOT_ON_REGION:'+region_id)
+        length=math.dist(a,b)
+        if length<=1e-9:errors.append('GRAPH_REGION_LEADER_EMPTY:'+region_id);continue
+        unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
+        if _region_inside(own,(a[0]+unit[0]*GRAPH_REGION_LEADER_PROBE_PX,a[1]+unit[1]*GRAPH_REGION_LEADER_PROBE_PX)):errors.append('GRAPH_REGION_LEADER_ENTERS_REGION:'+region_id)
+        steps=max(2,int(length//4))
+        for k in range(steps+1):
+            d=length*k/steps
+            if d<GRAPH_REGION_LEADER_PROBE_PX:continue
+            point=(a[0]+unit[0]*d,a[1]+unit[1]*d)
+            if any(_region_inside(poly,point) for poly in areas.values()):errors.append('GRAPH_REGION_LEADER_IN_REGION:'+region_id);break
+        for stroke_id,points in strokes:
+            # the stroke the leader starts on (the band's own boundary curve) is touched only at the start
+            if any(_grl_cross(a,b,c,d) and _grl_dist(a,c,d)>GRAPH_REGION_LEADER_TOLERANCE_PX for c,d in zip(points,points[1:])):errors.append('GRAPH_REGION_LEADER_CROSSES:'+region_id+':'+str(stroke_id));break
+    return errors
+
 def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
     """Independent graph-region check on the FINAL SVG: the expected band is rebuilt from the plan's exact fields; the drawn fill path must
     follow both boundaries, stay inside [from,to], be painted beneath every stroke, carry the declared fill and hold its label inside."""
@@ -1966,7 +2025,7 @@ def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
     elements={node.get('id'):node for node in root.iter() if node.get('id')}
     order={id(node):index for index,node in enumerate(root.iter())}
     paths={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='path' and node.get('data-mark')=='graph-region'}
-    declared_ids=set();polygons=[]
+    declared_ids=set();polygons=[];label_leaders=[]
     for entry in declared:
         if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
         region_id=entry.get('id')
@@ -2030,10 +2089,11 @@ def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
                 x,y,w,h=box
                 to_model=lambda px,py:((px-transform['originX'])/transform['sx'],(transform['originY']-py)/transform['sy'])
                 corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
-                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):label_leaders.append((region_id,box))
         observations.append({'id':region_id,'type':'GRAPH_REGION','fill':fill,'from':float(from_x),'to':float(to_x),'samples':checks,'areaPx2':abs(0.5*sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(polygon,polygon[1:]+polygon[:1])))})
     for path_id in paths:
         if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    errors.extend(_graph_region_leader_labels(label_leaders,polygons,transform,root))
     for index,(left_id,left) in enumerate(polygons):
         for right_id,right in polygons[index+1:]:
             xs=sorted({point[0] for point in left});ys=sorted({point[1] for point in left})
@@ -5142,7 +5202,7 @@ def multi_curve_region_errors(plan,transform,root,by_id,features,model=False):
     sx,sy,display=transform['sx'],transform['sy'],transform['displayScale']
     xtol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,sx*display);ytol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,sy*display)
     to_model=lambda px,py:((px-transform['originX'])/sx,(transform['originY']-py)/sy)
-    polygons=[];declared_ids=set()
+    polygons=[];declared_ids=set();label_leaders=[]
     for entry in declared:
         if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
         region_id=entry.get('id')
@@ -5214,9 +5274,10 @@ def multi_curve_region_errors(plan,transform,root,by_id,features,model=False):
             else:
                 x,y,w,h=box
                 corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
-                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):label_leaders.append((region_id,box))
     for path_id in paths:
         if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    errors.extend(_graph_region_leader_labels(label_leaders,polygons,transform,root))
     for index,(left_id,left) in enumerate(polygons):
         for right_id,right in polygons[index+1:]:
             xs=sorted({point[0] for point in left});ys=sorted({point[1] for point in left});found=False
@@ -5254,7 +5315,7 @@ def rational_region_errors(plan,transform,root):
     numerator=[Fraction(value) for value in plan['numerator']];denominator=[Fraction(value) for value in plan['denominator']]
     k=numerator[0];pole=-denominator[0]/denominator[1];c=k/denominator[1]
     curve=lambda x:float(c)/(x-float(pole))
-    polygons=[];declared_ids=set()
+    polygons=[];declared_ids=set();label_leaders=[]
     for entry in declared:
         if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
         region_id=entry.get('id')
@@ -5313,9 +5374,10 @@ def rational_region_errors(plan,transform,root):
             else:
                 x,y,w,h=box
                 corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
-                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):label_leaders.append((region_id,box))
     for path_id in paths:
         if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    errors.extend(_graph_region_leader_labels(label_leaders,polygons,transform,root))
     for index,(left_id,left_polygon) in enumerate(polygons):
         for right_id,right_polygon in polygons[index+1:]:
             xs=sorted({point[0] for point in left_polygon});ys=sorted({point[1] for point in left_polygon});found=False

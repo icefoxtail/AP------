@@ -864,6 +864,41 @@ def arc_leader_placement(label,w,h,occupied,acceptable):
                     return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
     return None
 
+# ---- labelHints (spec side fine tuning of one label, the same shape for every label kind) ---------------------------------------------------------------------
+# labelHints: {"<labelId>": {"prefer": "above"|"below"|"left"|"right"|"above-right"|"above-left"|"below-right"|"below-left" (or N NE E SE S SW W NW),
+#                           "nudge": [dx, dy] figure px (to the right / down are positive, at most 60 each), "leader": true}}
+# prefer: the side tried first. nudge: after the layout has chosen the box, it is moved by [dx,dy] - kept only when the moved box is still free (no other label, mark or curve), and
+# for a label tied to its object by a leader the leader is drawn again to the moved box (otherwise the unmoved box stays). leader: the label stands outside its object on a leader
+# (a region label: LEADER placement). The hint never removes a label and every check of the layout and of the observers still applies to the place it ends in.
+HINT_DIRECTIONS={'above':'N','below':'S','left':'W','right':'E','above-right':'NE','above-left':'NW','below-right':'SE','below-left':'SW',**{name:name for name in DIRECTIONS}}
+HINT_NUDGE_MAX_PX=60.0
+HINT_KEYS={'prefer','nudge','leader'}
+
+def apply_label_hints(labels,hints):
+    """Validate spec['labelHints'] against the label inventory and write the hints into the labels they name (before the layout runs)."""
+    if not isinstance(hints,dict):raise ValueError('LABEL_HINTS_INVALID')
+    by_id={label['id']:label for label in labels}
+    for label_id,hint in hints.items():
+        if label_id not in by_id:raise ValueError('LABEL_HINT_UNKNOWN_LABEL:'+str(label_id))
+        if not isinstance(hint,dict) or not hint or set(hint)-HINT_KEYS:raise ValueError('LABEL_HINT_FIELD_INVALID:'+label_id)
+        label=by_id[label_id]
+        if 'prefer' in hint:
+            if hint['prefer'] not in HINT_DIRECTIONS:raise ValueError('LABEL_HINT_PREFER_INVALID:'+label_id)
+            direction=HINT_DIRECTIONS[hint['prefer']]
+            label['preferred']=direction
+            if 'candidateCenters' in label:
+                # a label written inside a region / beside a curve: the candidate centres lying farthest in that direction come first
+                dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                norm=math.hypot(dx,dy)
+                label['candidateCenters']=sorted(label['candidateCenters'],key=lambda c:-(c[0]*dx+c[1]*dy)/norm)
+        if 'nudge' in hint:
+            nudge=hint['nudge']
+            if (not isinstance(nudge,list) or len(nudge)!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or abs(v)>HINT_NUDGE_MAX_PX for v in nudge)):raise ValueError('LABEL_HINT_NUDGE_INVALID:'+label_id)
+            label['hintNudge']=[float(nudge[0]),float(nudge[1])]
+        if 'leader' in hint:
+            if hint['leader'] is not True:raise ValueError('LABEL_HINT_LEADER_INVALID:'+label_id)
+            if 'regionLeader' in label:label['regionLeader']['only']=True;label['candidateCenters']=[]
+
 def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,last_resort=False):
     """The placement pass, and - only when some angle label found no place in it - a second pass that places the angle labels narrowest angle first
     (a vertex with several nested angles); the second result replaces the first only when it leaves fewer labels unresolved, so a layout that
@@ -1482,6 +1517,20 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
+        if label.get('hintNudge') is not None and chosen is not None:
+            # labelHints nudge: the chosen box moved by the author's [dx,dy] when the moved place is still free; a leader of this label is drawn again to the moved box
+            tied=[row for row in leaders if row.get('ownerLabelId')==label['id']]
+            moved=Box(chosen.x+label['hintNudge'][0],chosen.y+label['hintNudge'][1],w,h)
+            kept=None
+            if tied:
+                start=tuple(tied[0]['from']);saved=(list(leaders),list(occupied));leaders[:]=[row for row in leaders if row.get('ownerLabelId')!=label['id']]
+                occupied[:]=[row for row in occupied if row.get('id')!=label['id']+'-owner-leader']
+                end=visible_owner_leader(start,moved,occupied,owner_incident_ids(start,owner_marker,occupied) if owner_marker is not None else leader_owned_ids|{o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2 and any(point_segment_distance(start,c,d)<=0.5 for c,d in zip(o['geometry'],o['geometry'][1:]))}) if acceptable(moved,owner_check=False) else None
+                if end is None:leaders[:]=saved[0];occupied[:]=saved[1]
+                else:tie_to_owner(end);kept=moved
+            elif acceptable(moved):kept=moved
+            if kept is not None:chosen=kept;trace.append({'id':label['id'],'fallback':'HINT_NUDGE_APPLIED'})
+            else:trace.append({'id':label['id'],'fallback':'HINT_NUDGE_REFUSED'})
         placed_label={**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method}
         placed.append(placed_label)
         occupied.append({'id':label['id'],'kind':'label','geometry':chosen})

@@ -136,7 +136,16 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       }
       stage='compose';
-      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
+      // A tree whose branch labels found no room at the first leaf pitch is composed at a wider pitch (composed.rowScale): measure again at that size and compose at it.
+      let composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
+      for(let wider=1;wider<=3&&composed.status==='COMPOSED'&&composed.rowScale>1&&!(composed.rowScale===(composed.settledScale??1));wider++){
+        const rowScale=composed.rowScale,exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx,rowScale});
+        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-s${wider}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size,rowScale});
+        composed.settledScale=rowScale;
+      }
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});

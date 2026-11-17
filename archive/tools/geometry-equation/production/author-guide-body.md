@@ -1118,6 +1118,11 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - `EQUAL_UNIT_PARABOLA_TOO_NARROW` / `EQUAL_UNIT_CURVE_TOO_NARROW`: 이 풀이는 같은 배율로 못 그린다. 단위가 다른 두 축의 문장제이면 3-5절의 `applicationAxes`, 아니면 UNSUPPORTED를 쓴다.
 - `APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL` / `INVALID_APPLICATION_AXES` / `APPLICATION_AXES_TICKS_INVALID:x|y` / `APPLICATION_AXES_CURVE_TOO_NARROW`: 3-5절의 조건(이차함수, INTERVAL, 1·2·5 눈금)에 맞게 plan을 고친다.
 - 같은 오류가 반복되면 plan을 고치는 대신 EXEMPT 또는 UNSUPPORTED로 마무리한다. 다른 문항의 plan을 참고하지 않는다.
+- **라벨이 아직 조금 겹치거나 자리가 마음에 안 들면 `labelHints`로 한 줄만 고친다 (SVG를 손으로 고치지 않는다).** 엔진은 라벨을 스스로 배치한다(곁에 둘 자리가 없으면 지시선으로 밖에 뺀다. 그래프 영역·평면 영역·점 이름과 좌표·곡선 이름·눈금·통계 나무 가지 확률). 그래도 겹치면 plan 최상위에 라벨 id별 힌트를 넣고 한 번만 다시 렌더한다. id는 결과 SVG의 라벨 `id`(예: `region-A-label`, `A-coordinate`, `f-curve-name`)다.
+  - `prefer`: 먼저 시도할 쪽. `"above"|"below"|"left"|"right"|"above-right"|"above-left"|"below-right"|"below-left"`(또는 `N NE E SE S SW W NW`).
+  - `nudge`: `[dx, dy]` 픽셀(오른쪽·아래가 양수, 각각 60 이하). 엔진이 고른 자리에서 그만큼 옮기고, 옮긴 자리도 다른 라벨·표시·곡선과 겹치지 않을 때만 쓴다. 지시선이 있는 라벨은 지시선을 새 자리로 다시 잇는다. 겹치면 옮기지 않고 원래 자리를 쓴다.
+  - `leader`: `true`이면 영역 라벨을 영역 밖에 지시선으로 둔다(그래프 영역·평면 영역). 라벨을 지우지는 못한다.
+  - 예: `"labelHints":{"region-B-label":{"prefer":"below-right","nudge":[8,0]},"region-A-label":{"leader":true}}`. 모르는 라벨 id는 `LABEL_HINT_UNKNOWN_LABEL:<id>`, 값이 틀리면 `LABEL_HINT_*_INVALID:<id>`로 거절된다. 통계 그림(stat-chart)에는 쓰지 않는다(가지 확률은 엔진이 스스로 옮긴다).
 
 ## 7. 출력
 
