@@ -4676,6 +4676,8 @@
         throw new Error("저장 전에 안내를 확인해 주세요.");
       }
       const papers = await prepare();
+      // 전송 사본: 저장본에서 온(수정본의) 문항은 서버가 내장해 둔 그림(data: URL)을 원래 경로로 되돌려 보낸다(화면용 문항은 그대로).
+      const wireQuestions = await Promise.all(papers.map((paper) => saveWireQuestionsFor(paper)));
       const filters = saveRequestFilters(request(true).filters);
       // 보내는 값은 "이 화면이 문항을 대조한 목록의 버전"이다: prepare()가 문항마다 지금 카탈로그(state.catalog)와 지문(fingerprint)을
       // 대조해 만들므로 그 카탈로그의 버전이 맞고, 초안을 만든 때의 값(state.indexVersion)은 옛 값일 수 있어 보내지 않는다.
@@ -4711,9 +4713,9 @@
         index_version: version,
         selection_filters: filters,
         include_extended: state.includeExtended === true,
-        papers: papers.map((paper) => ({
+        papers: papers.map((paper, paperIndex) => ({
           part_index: paper.index,
-          questions: paper.questions.map(saveWireQuestion),
+          questions: wireQuestions[paperIndex].map(saveWireQuestion),
           meta: { ...paper.meta, indexVersion: version },
           ...(state.derivationSource ? {
             lineage: {
@@ -4892,6 +4894,51 @@
   // 출력용으로 원본 JS의 값을 남기지만, 서버는 정본(카탈로그) 값과 한 글자라도 다르면(빈 문자열 포함) 409로 거절한다.
   // 그래서 보내는 사본의 정본 메타 필드(C.META_FIELDS)를 브라우저 카탈로그 레코드 값 그대로 맞춘다: 값이 비어 있으면 빈 값 그대로,
   // 필드가 없으면 사본에서도 뺀다. 카탈로그 레코드가 없는 문항은 손대지 않는다. 필드를 통째로 빼지 않으므로 서버 검사는 그대로 살아 있다.
+  // 수정본(state.derivationSource)의 문항은 prepare()가 저장 당시의 스냅샷 문항을 그대로 쓴다(저장본을 현재 문항으로 바꾸지 않기 위해).
+  // 스냅샷에는 서버가 저장 때 내장한 그림(data: URL)이 들어 있어, 그대로 다시 보내면 서버가 content·choices·image로 다시 계산하는 지문이
+  // 카탈로그와 어긋나 409("assignment fingerprint가 일치하지 않습니다")가 된다. 그래서 전송 사본에서만, 그 문항의 원본 파일에서 복원한
+  // 같은 UID 문항(저장 당시 지문 = 지금 카탈로그 지문임은 prepare()가 이미 확인했다)의 그림 자리를 원래 경로로 되돌린다.
+  // 그림 자리를 빼고 본문이 한 글자라도 다르면(스냅샷이 바뀌었거나 원본이 달라졌으면) 조용히 보내지 않고 막는다. 서버 검사는 그대로다.
+  // 같은 경로의 그림 파일이 저장 뒤 교정됐다면 서버가 지금 파일을 다시 내장하므로 수정본에는 교정된 그림이 들어간다(알려진 한계).
+  const SAVE_EMBEDDED_FIELDS = ["content", "question", "solution", "image", "solutionImage"];
+  const SAVE_DATA_URL = /data:image\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]*/gi;
+  const SAVE_HTML_IMAGE_REF = /(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi;
+  const SAVE_IMAGE_MARK = "\u0000IMG\u0000";
+  // 서버(archive-saved-papers.js sourceAssetPath)가 내장하는 참조인가: 시험지 그림 경로이고 data/blob/http가 아니다.
+  const saveEmbeddableRef = (value) => {
+    const raw = String(value ?? "").trim().replace(/\\/g, "/");
+    return Boolean(raw) && !/^(?:data:|blob:|https?:)/i.test(raw) && raw.split(/[?#]/, 1)[0].toLowerCase().includes("assets/images/");
+  };
+  // 저장본 값에서 내장 그림을 빼고 원본 값에서 시험지 그림 참조를 뺀 것이 같을 때만 원본 값을 돌려준다(아니면 null).
+  function saveOriginalIfOnlyImagesDiffer(field, frozenValue, originalValue) {
+    if (typeof frozenValue !== "string" || typeof originalValue !== "string") return null;
+    if (field === "image" || field === "solutionImage")
+      return /^data:image\//i.test(frozenValue) && saveEmbeddableRef(originalValue) ? originalValue : null;
+    const left = frozenValue.replace(SAVE_DATA_URL, SAVE_IMAGE_MARK);
+    const right = originalValue.replace(SAVE_HTML_IMAGE_REF, (match, srcPrefix, quote, srcRef, urlQuote, urlRef, urlSuffix) => {
+      const ref = srcRef || urlRef;
+      if (!saveEmbeddableRef(ref)) return match;
+      return srcRef ? `${srcPrefix}${quote}${SAVE_IMAGE_MARK}${quote}` : `url(${urlQuote}${SAVE_IMAGE_MARK}${urlSuffix}`;
+    });
+    return left === right ? originalValue : null;
+  }
+  async function saveWireQuestionsFor(paper) {
+    const base = new Set((state.derivedBaseQuestions || []).map((question) => question.questionUid));
+    return Promise.all(paper.questions.map(async (question) => {
+      const embedded = SAVE_EMBEDDED_FIELDS.filter((field) => typeof question[field] === "string" && /data:image\//i.test(question[field]));
+      if (!state.derivationSource || !embedded.length || !base.has(question.questionUid)) return question;
+      const record = state.byUid.get(question.questionUid);
+      const original = record ? (await Source.restore([record], state.catalog))[0] : null;
+      const copy = { ...question };
+      for (const field of embedded) {
+        const value = original ? saveOriginalIfOnlyImagesDiffer(field, question[field], original[field]) : null;
+        if (value === null)
+          throw new Error("원본 문항이 바뀌어, 저장 당시 내용 그대로는 저장할 수 없습니다. 새로고침한 뒤 수정본을 다시 열어 주세요.");
+        copy[field] = value;
+      }
+      return copy;
+    }));
+  }
   function saveWireQuestion(question) {
     const record = state.byUid.get(question?.questionUid);
     if (!record) return question;

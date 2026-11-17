@@ -578,7 +578,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261111-one-lane-difficulty-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261118-save-fresh-1'],
+    ['archive2-workspace.js', '20261118-revision-resave-1'],
     ['archive2-quick-pools.js', '20261117-middle-parent-1'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
@@ -1210,11 +1210,25 @@ test("HTTP 502 and network failures keep the same save result unresolved", async
   }
 });
 
-test('Saved Paper revision Draft preserves the immutable source snapshot and lineage parent', async () => {
+test('Saved Paper revision Draft preserves the immutable source snapshot and lineage parent', async t => {
   const { w, ctx } = harness();
-  const record = catalog.records.find(row => core.basicEligibility(row, {
-    canonicalAuthority: catalog.canonicalAuthority,
-  }).ok);
+  // Re-saving a revision restores the question's original image path from its source file (the Worker embeds it again),
+  // so the fixture question needs a real school-exam image field and the source files must be readable.
+  const previousDocument = global.document;
+  const previousFetch = global.fetch;
+  global.document = { baseURI: "https://archive.test/archive/workspace.html" };
+  global.fetch = async input => ({
+    ok: true,
+    status: 200,
+    text: async () => fs.readFileSync(path.join(root, "archive/exams",
+      decodeURIComponent(new URL(String(input)).pathname.replace("/archive/exams/", ""))), "utf8"),
+  });
+  t.after(() => {
+    if (previousDocument === undefined) delete global.document; else global.document = previousDocument;
+    if (previousFetch === undefined) delete global.fetch; else global.fetch = previousFetch;
+  });
+  const record = findImageFieldQuestion();
+  assert.ok(record, 'the data has a question with an image field');
   const uid = record.questionUid;
   const pathKey = core.pathKey(record, 4);
   const frozenQuestion = {
@@ -1294,6 +1308,10 @@ test('Saved Paper revision Draft preserves the immutable source snapshot and lin
   assert.equal(savedPayload.papers[0].lineage.parent_snapshot_hash, paper.snapshot_hash);
   assert.equal(savedPayload.papers[0].lineage.derivation_type, "REVISION");
   assert.equal(savedPayload.papers[0].questions[0].content, frozenQuestion.content);
+  const [originalQuestion] = await archiveSource.restore([record], catalog);
+  assert.equal(savedPayload.papers[0].questions[0].image, originalQuestion.image,
+    'the image the Worker embedded goes back as its original path (the Worker embeds it again)');
+  assert.notEqual(savedPayload.papers[0].questions[0].image, frozenQuestion.image);
 
   w.applyDraft(persistedDraft);
   assert.equal(w.state.derivationSource.parentId, paper.id);
@@ -1614,4 +1632,93 @@ test('기준 갱신이 아닌 409·413은 자동으로 다시 보내지 않는�
 
 test('낡은 초안 버전은 저장 버튼 옆에 개발자식 안내를 내지 않는다', () => {
   assert.doesNotMatch(read('archive2-workspace.js'), /문항 목록 버전이 달라/);
+});
+
+// ---- 수정본 재저장: 저장본에 서버가 내장한 그림(data: URL)은 전송 사본에서만 원래 경로로 되돌린다 (수리 목록 34) ----
+// 본문·해설 HTML 안에 시험지 그림(<img src="assets/images/...">)이 있는 실제 문항을 찾는다(없는 자료면 이 검사가 실패해 알린다).
+// An eligible record whose source question has a school-exam image in its `image` field (used by the revision draft test above).
+function findImageFieldQuestion() {
+  const byFile = new Map();
+  for (const row of catalog.records) {
+    if (!row.automatic) continue;
+    if (!byFile.has(row.sourceFile)) byFile.set(row.sourceFile, []);
+    byFile.get(row.sourceFile).push(row);
+  }
+  for (const [file, records] of [...byFile].slice(0, 600)) {
+    const bank = archiveSource.evaluate(fs.readFileSync(path.join(root, 'archive/exams', file), 'utf8'), file);
+    const hit = records.find(record => {
+      const q = bank[record.sourceOrdinal - 1];
+      return typeof q?.image === 'string' && q.image.startsWith('assets/images/') &&
+        core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok;
+    });
+    if (hit) return hit;
+  }
+  return null;
+}
+function findHtmlImageQuestion() {
+  const seen = new Set();
+  for (const row of catalog.records) {
+    if (!row.automatic || seen.has(row.sourceFile) || seen.size > 600) continue;
+    if (!core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok) continue;
+    seen.add(row.sourceFile);
+    const bank = archiveSource.evaluate(fs.readFileSync(path.join(root, 'archive/exams', row.sourceFile), 'utf8'), row.sourceFile);
+    for (const record of catalog.records) {
+      if (record.sourceFile !== row.sourceFile || !record.automatic) continue;
+      const q = bank[record.sourceOrdinal - 1];
+      if (q && ['content', 'solution'].some(field => /<img\b[^>]*\bsrc\s*=\s*["'][^"']*assets\/images\//i.test(String(q[field] || ''))) &&
+          core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok) return record;
+    }
+  }
+  return null;
+}
+async function derivedHarness(t) {
+  const { w, ctx } = configureSaveHarness(t);
+  const record = findHtmlImageQuestion();
+  assert.ok(record, 'the data has a question with an HTML image to test the revision re-save');
+  const rowId = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [rowId];
+  w.state.rows = [{ id: rowId, paths: [rowId], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId }];
+  const [original] = await archiveSource.restore([record], catalog);
+  // What the Worker stored at the first save: every school-exam image reference became a data: URL.
+  const embed = value => typeof value === 'string'
+    ? value.replace(/(\bsrc\s*=\s*["'])[^"']*assets\/images\/[^"']*(["'])/gi, '$1data:image/png;base64,AQID$2')
+    : value;
+  const frozen = structuredClone(original);
+  for (const field of ['content', 'question', 'solution']) frozen[field] = embed(frozen[field]);
+  if (typeof frozen.image === 'string' && frozen.image.includes('assets/images/')) frozen.image = 'data:image/png;base64,AQID';
+  if (typeof frozen.solutionImage === 'string' && frozen.solutionImage.includes('assets/images/')) frozen.solutionImage = 'data:image/png;base64,AQID';
+  assert.notDeepEqual(plain(frozen), plain(original), 'the frozen snapshot question carries embedded images');
+  w.state.derivationSource = { parentKind: 'SAVED_PAPER', parentId: crypto.randomUUID(), parentRevision: null, parentSnapshotHash: 'a'.repeat(64), derivationType: 'REVISION' };
+  w.state.derivedBaseQuestions = [frozen];
+  w.state.prepared = [];
+  return { w, ctx, frozen, original };
+}
+
+test('수정본 재저장: 내장된 그림은 원래 경로로 되돌려 보내고, 화면·미리보기용 문항은 바뀌지 않는다', async t => {
+  const { w, ctx, frozen, original } = await derivedHarness(t);
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  const sent = bodies[0].papers[0].questions[0];
+  for (const field of ['content', 'question', 'solution', 'image', 'solutionImage'])
+    if (typeof original[field] === 'string') assert.equal(sent[field], original[field], field + ' goes back with the original image paths');
+  assert.doesNotMatch(JSON.stringify(sent), /data:image\//, 'no embedded image is sent back');
+  assert.deepEqual(plain(sent.choices), plain(original.choices));
+  assert.equal(sent.answer, original.answer);
+  // the object used for preview/print keeps the saved (embedded) content
+  assert.deepEqual(plain(w.state.prepared[0].questions[0]), plain(frozen));
+});
+
+test('수정본 재저장: 저장본 문항의 본문이 달라졌으면(그림 자리 밖) 조용히 보내지 않고 막는다', async t => {
+  const { w, ctx, frozen } = await derivedHarness(t);
+  const field = ['content', 'solution', 'question'].find(f => typeof frozen[f] === 'string' && frozen[f].includes('data:image/'));
+  assert.ok(field, 'an embedded HTML field exists');
+  frozen[field] += ' 바뀐 문장';
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.notEqual(w.state.saveResultState, 'SAVED');
+  assert.equal(bodies.length, 0, 'nothing was sent');
+  assert.match(w.state.saveError, /원본 문항이 바뀌어/);
 });
