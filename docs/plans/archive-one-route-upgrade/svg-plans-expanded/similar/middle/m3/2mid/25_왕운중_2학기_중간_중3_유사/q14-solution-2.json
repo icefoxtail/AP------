@@ -1,0 +1,365 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "U"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "h",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "U",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "h"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "meet",
+        "op": "INTERSECTION",
+        "inputs": [
+          "h",
+          "circ"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "meet"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "meet"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "N",
+    "S",
+    "E",
+    "W",
+    "U",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "N",
+    "S",
+    "E",
+    "W",
+    "U",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "rightAngles": [
+    {
+      "id": "leftRight",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rightRight",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 원의 중심에서 현에 내린 수선은 그 현을 수직이등분함을 증명하는 과정이다. (가)~(마)에 들어갈 것으로 옳지 않은 것은?\n\n[증명]\n오른쪽 그림과 같이 원 $O$의 중심에서 현 $AB$에 내린 수선의 발을 $M$이라 하면\n$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = (가)^\\circ$\n$OA = (나)$ (반지름)\n$OM$은 (다)\n따라서 $\\triangle OAM \\equiv \\triangle OBM$ ((라) 합동)\n그러므로 $AM = (마)$ [4점]",
+      "mappedTo": "O A B M circ"
+    },
+    {
+      "id": "representative",
+      "condition": "직접 본 기존 문제 SVG와 같은 대표비: 중심에서 현까지 거리/반지름=1/2. O=(0,2),h:y=0,반지름4는 배치·축척을 정한 예시이며 원문 길이가 아니다. 숫자좌표를 표시하지 않는다. U=O+(0,−2), T=U+(1,0)는 비표시 배치점이며 이 둘을 이은 h에 내린 M은 수선발, A/B는 원-직선 교점 선택으로 계산한다. 원문은 일반 원의 성질이므로 증명은 이 수치와 무관한 RHS만 사용한다.",
+      "mappedTo": "construction"
+    },
+    {
+      "id": "proof",
+      "condition": "OM수선으로 양쪽90°,OA=OB 반지름,OM공통으로 RHS 합동. 그 뒤에만 AM=BM을 결론으로 표시한다. ASA라는 보기④는 틀린 합동조건이다.",
+      "mappedTo": "equalLengths and captions"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 직각·반지름·공통변을 먼저 확인한 뒤 RHS와 현의 이등분 결론을 분리한다."
+  ],
+  "equalLengths": [
+    {
+      "id": "radii",
+      "count": 1,
+      "segments": [
+        "OA",
+        "OB"
+      ]
+    },
+    {
+      "id": "halves",
+      "count": 2,
+      "segments": [
+        "AM",
+        "MB"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "shared",
+        "ownerSegment": "OM",
+        "text": "공통",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "RHS 합동을 얻은 뒤 대응변 AM=BM을 결론으로 표시한다. (가)90°, (나)OB, (다)공통, (라)RHS, (마)BM이 들어간다. ASA라고 쓴 선택지가 옳지 않다. 정답 ④."
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "s",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": false
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": false
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "1"
+          },
+          {
+            "id": "B",
+            "value": "-2"
+          },
+          {
+            "id": "C",
+            "value": "3"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "α−β=3−s≠5에서s≠−2,서로 다른 두 근에서s≠3이다. 첫 두 행을 모두 만족해야 한다. 최소를 주는 s=1은 두 제외점과 달라 허용된다. 정답 계수합 최소31.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사차방정식 $x^4+ax^3+bx^2+cx+d=0$의 서로 다른 두 근 $\\alpha,\\beta$가 다음 조건을 만족시킨다. 실수 $a,b,c,d$에 대하여 $a+b+c+d$의 최솟값은? [5점]<br><div class='note-box'>(가) $\\alpha+\\overline\\alpha=6$, $\\beta-\\overline\\beta=4i$<br>(나) $\\alpha-\\beta$는 5가 아닌 실수이다.</div>",
+      "mappedTo": "latest source"
+    },
+    {
+      "id": "method",
+      "condition": "α−β=3−s≠5에서s≠−2,서로 다른 두 근에서s≠3이다. 첫 두 행을 모두 만족해야 한다. 최소를 주는 s=1은 두 제외점과 달라 허용된다. 정답 계수합 최소31.",
+      "mappedTo": "independent math"
+    }
+  ],
+  "newVisualInformation": [
+    "α−β=3−s≠5에서s≠−2,서로 다른 두 근에서s≠3이다. 첫 두 행을 모두 만족해야 한다. 최소를 주는 s=1은 두 제외점과 달라 허용된다. 정답 계수합 최소31."
+  ]
+}

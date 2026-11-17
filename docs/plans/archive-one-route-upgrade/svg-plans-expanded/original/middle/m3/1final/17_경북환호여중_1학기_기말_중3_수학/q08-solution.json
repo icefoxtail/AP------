@@ -38,8 +38,16 @@
       17
     ],
     "axisTickValues": {
-      "x": [],
-      "y": []
+      "x": [
+        -3,
+        0,
+        3
+      ],
+      "y": [
+        0,
+        9,
+        15
+      ]
     },
     "overlays": {
       "points": [
@@ -47,25 +55,25 @@
           "id": "A",
           "x": "3",
           "y": "9",
-          "coordinates": false
+          "coordinates": true
         },
         {
           "id": "B",
           "x": "3",
           "y": "15",
-          "coordinates": false
+          "coordinates": true
         },
         {
           "id": "C",
           "x": "-3",
           "y": "15",
-          "coordinates": false
+          "coordinates": true
         },
         {
           "id": "D",
           "x": "-3",
           "y": "9",
-          "coordinates": false
+          "coordinates": true
         }
       ],
       "segments": [
@@ -92,21 +100,21 @@
       ]
     }
   },
-  "caption": "A,D는 포물선 위, B,C는 y=15 위에 있다. A의 양의 x좌표를 t라 하면 가로는 2t, 세로는 15−t²이다. 정사각형이므로 두 길이를 같게 놓는다. 꼭짓점 좌표의 계산 결과와 최종 넓이는 표시하지 않는다.",
-  "accessibilityDescription": "A,D는 포물선 위, B,C는 y=15 위에 있다. A의 양의 x좌표를 t라 하면 가로는 2t, 세로는 15−t²이다. 정사각형이므로 두 길이를 같게 놓는다. 꼭짓점 좌표의 계산 결과와 최종 넓이는 표시하지 않는다.",
+  "caption": "A=(t,t²),D=(−t,t²),B=(t,15),C=(−t,15)이므로 가로2t, 세로15−t²이다. 정사각형 조건2t=15−t²에서(t+5)(t−3)=0, t>0이므로t=3이다. 그림의 실제 꼭짓점은(±3,9),(±3,15), 한 변6이므로 넓이36, 정답⑤.",
+  "accessibilityDescription": "A=(t,t²),D=(−t,t²),B=(t,15),C=(−t,15)이므로 가로2t, 세로15−t²이다. 정사각형 조건2t=15−t²에서(t+5)(t−3)=0, t>0이므로t=3이다. 그림의 실제 꼭짓점은(±3,9),(±3,15), 한 변6이므로 넓이36, 정답⑤.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "8. 다음 그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=15$로 둘러싸인 부분에 내접하는 정사각형 $\\text{ABCD}$의 넓이는? [5.0점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "graphPlan"
     },
     {
       "id": "method",
-      "condition": "최신 발문이 직사각형에서 정사각형으로 바뀌어 넓이 미결정 CONTENT 해소. A=(t,t²),D=(−t,t²),B=(t,15),C=(−t,15)이고 2t=15−t²,양수근t3. 두 길이 동일 관계를 명확히 보완하되 넓이36 숨김.",
-      "mappedTo": "graphPlan"
+      "condition": "정사각형의 한 변을 $2t$라 하면 $A, D$는 $y=x^2$ 위에 있으므로 높이는 $15-t^2$이다. 정사각형이므로 $2t=15-t^2$, 즉 $(t+5)(t-3)=0$에서 $t=3$이다. 한 변이 $6$이므로 넓이는 $36$이다. 정답은 ⑤이다.",
+      "mappedTo": "graphPlan and caption"
     }
   ],
   "newVisualInformation": [
-    "A,D는 포물선 위, B,C는 y=15 위에 있다. A의 양의 x좌표를 t라 하면 가로는 2t, 세로는 15−t²이다. 정사각형이므로 두 길이를 같게 놓는다. 꼭짓점 좌표의 계산 결과와 최종 넓이는 표시하지 않는다."
+    "A=(t,t²),D=(−t,t²),B=(t,15),C=(−t,15)이므로 가로2t, 세로15−t²이다. 정사각형 조건2t=15−t²에서(t+5)(t−3)=0, t>0이므로t=3이다. 그림의 실제 꼭짓점은(±3,9),(±3,15), 한 변6이므로 넓이36, 정답⑤."
   ]
 }

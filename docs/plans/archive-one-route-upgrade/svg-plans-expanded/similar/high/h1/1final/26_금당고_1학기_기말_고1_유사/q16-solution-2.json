@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "axisTitles": {
+      "x": "s",
+      "y": "T"
+    },
+    "formula": "(x-1)^2"
+  },
+  "caption": "구하는 계수합 A=P(1)−1=8(s−1)²+31이다. 가독성을 위해 세로축 T=(A−31)/8로 평행이동·축척변환한 T=(s−1)²를 그렸다. 꼭짓점(1,0)은 실제 계수합 A=31을 뜻한다. s1은 제외점−2,3과 다르므로 달성된다. 그림 수식의 x는 s, y는 T를 뜻한다. 정답31.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사차방정식 $x^4+ax^3+bx^2+cx+d=0$의 서로 다른 두 근 $\\alpha,\\beta$가 다음 조건을 만족시킨다. 실수 $a,b,c,d$에 대하여 $a+b+c+d$의 최솟값은? [5점]<br><div class='note-box'>(가) $\\alpha+\\overline\\alpha=6$, $\\beta-\\overline\\beta=4i$<br>(나) $\\alpha-\\beta$는 5가 아닌 실수이다.</div>",
+      "mappedTo": "latest source"
+    },
+    {
+      "id": "method",
+      "condition": "구하는 계수합 A=P(1)−1=8(s−1)²+31이다. 가독성을 위해 세로축 T=(A−31)/8로 평행이동·축척변환한 T=(s−1)²를 그렸다. 꼭짓점(1,0)은 실제 계수합 A=31을 뜻한다. s1은 제외점−2,3과 다르므로 달성된다. 정답31.",
+      "mappedTo": "independent math"
+    }
+  ],
+  "newVisualInformation": [
+    "구하는 계수합 A=P(1)−1=8(s−1)²+31이다. 가독성을 위해 세로축 T=(A−31)/8로 평행이동·축척변환한 T=(s−1)²를 그렸다. 꼭짓점(1,0)은 실제 계수합 A=31을 뜻한다. s1은 제외점−2,3과 다르므로 달성된다. 정답31."
+  ]
+}
