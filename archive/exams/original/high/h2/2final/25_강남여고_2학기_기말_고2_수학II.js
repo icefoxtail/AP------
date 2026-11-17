@@ -406,14 +406,15 @@ window.questionBank = [
       "$\\dfrac{13}{6}$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q13-solution.svg",
-    "solutionImageAlt": "수직선을 −2, 0, 1로 나눈 도식에서 왼쪽 구간의 f−g 넓이 7/6을 붉은 직사각형, 오른쪽 구간의 g−f 넓이 2/3을 푸른 직사각형으로 나타내고 전체 11/6을 보여 준다.",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림. 수직선 위의 −2, 0, 1을 기준으로 왼쪽 구간에는 f−g, 오른쪽 구간에는 g−f를 표시했다.",
     "solutionImageSize": "full",
     "solution": "그림에서 $-2<x<0$에서는 $f(x)$가 위쪽, $0<x<1$에서는 $g(x)$가 위쪽이다.\n따라서 넓이는 $x=0$을 기준으로 나누어 구한다.\n\n먼저 $[-2,0]$에서 필요한 $g(x)$의 정적분을 구하면\n$\\displaystyle\\int_{-2}^0g(x)\\,dx=\\int_{-2}^1g(x)\\,dx-\\int_0^1g(x)\\,dx$\n$=5-\\dfrac83=\\dfrac73$\n첫 번째 넓이는\n$S_1=\\displaystyle\\int_{-2}^0\\{f(x)-g(x)\\}\\,dx$\n$=\\dfrac72-\\dfrac73=\\dfrac76$\n\n다음으로 $[0,1]$에서 필요한 $f(x)$의 정적분은\n$\\displaystyle\\int_0^1f(x)\\,dx=\\int_{-2}^1f(x)\\,dx-\\int_{-2}^0f(x)\\,dx$\n$=\\dfrac{11}2-\\dfrac72=2$\n두 번째 넓이는\n$S_2=\\displaystyle\\int_0^1\\{g(x)-f(x)\\}\\,dx$\n$=\\dfrac83-2=\\dfrac23$\n\n전체 넓이는\n$S=S_1+S_2=\\dfrac76+\\dfrac46=\\dfrac{11}6$\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "왼쪽 구간에서 위 곡선은 f이므로 넓이는 7/6, 오른쪽에서 위 곡선은 g이므로 넓이는 2/3이다. 따라서 전체 넓이는 11/6이며 정답은 ③이다."
   },
   {
     "id": 14,
