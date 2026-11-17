@@ -6,14 +6,16 @@
   "expectedSourceBlobSha1": "aa838d1326031517f05e1ce7610aa50d4c2dd653",
   "expectedQuestionCount": 25,
   "approval": {
-    "type": "CANDIDATE_CREATION_GATE",
-    "metadataReviewed": false,
-    "approvedBy": "claude-similar-high-gen",
-    "reviewStatus": "review_required",
-    "reviewPassCount": 0,
-    "evidenceRefs": []
+    "type": "INDEPENDENT_REVIEW_GATE",
+    "metadataReviewed": true,
+    "approvedBy": "claude-similar-high-reviewer",
+    "reviewStatus": "reviewed_pass",
+    "reviewPassCount": 1,
+    "evidenceRefs": [
+      "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사.review-receipt.json"
+    ]
   },
-  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "pipelineState": "INDEPENDENT_REVIEW_PASS",
   "registryChanges": [
     {
       "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_강남여고_1학기_2차_고2_대수_유사.registry.json",
