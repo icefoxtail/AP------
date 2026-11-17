@@ -173,9 +173,12 @@
         .q-image-wrap.image-small  img { width: 50%; max-width: 50%; max-height: 95px; object-fit: contain; }
         .q-image-wrap.image-half   img { width: 65%; max-width: 65%; max-height: 125px; object-fit: contain; }
         .q-image-wrap.image-medium img { width: 80%; max-width: 80%; max-height: 150px; object-fit: contain; }
-        .q-image-wrap.image-large  img { width: 94%; max-width: 94%; max-height: 190px; object-fit: contain; }
-        .q-image-wrap.image-full   img { width: 100%; max-width: 100%; max-height: 240px; object-fit: contain; }
-        .q-image-wrap.image-tall   img { width: 100%; max-width: 100%; max-height: 320px; object-fit: contain; }
+        /* 2026-11-17 사용자 지시: 문제 그림 기본 상한은 large와 full 사이(폭 90%·높이 240px, 가운데 정렬). large·full(자동 분류 포함)은 이 상한이고, 세로로 긴 tall만 높이 280px(2026-11-17 사용자 결정, 폭 90% 유지).
+           데이터가 imageSizeOverride: "full"/"tall"로 명시한 그림만 아래 override 상한으로 키운다. */
+        .q-image-wrap.image-large img, .q-image-wrap.image-full img { width: 90%; max-width: 90%; max-height: 240px; object-fit: contain; }
+        .q-image-wrap.image-tall img { width: 90%; max-width: 90%; max-height: 280px; object-fit: contain; }
+        .q-image-wrap.image-override-full img { width: 100%; max-width: 100%; max-height: 240px; object-fit: contain; }
+        .q-image-wrap.image-override-tall img { width: 100%; max-width: 100%; max-height: 320px; object-fit: contain; }
 
         /* [v1.9] 보기(Choices) 시스템 */
         .choices { margin-top: 10px; font-size: 9pt; }
@@ -236,6 +239,18 @@
             text-align: left;
             vertical-align: top;
         }
+        /* normalizeViewBlocks가 .note-box 안의 ㄱ. ㄴ. 줄을 다시 .question-note-box로 감싸 상자 안에 상자가 생긴다. 안쪽 상자는 테두리 없이 안의 글로만 취급한다. */
+        .question-note-box .question-note-box, .question-note-box .note-box, .question-note-box .box,
+        .note-box .question-note-box, .note-box .note-box, .note-box .box,
+        .box .question-note-box, .box .note-box, .box .box {
+            display: block;
+            width: auto;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
         /* html2canvas (page-image print) drops the text nodes that sit directly in a block child div of an inline-block box,
            so the Korean in a <조건>/<보기> box vanished from that print. prepareRasterPrint adds .ap-h2c-clone to html2canvas's
            private clone only; screen and Chrome-PDF output keep the inline-block box above, pixel for pixel. */
@@ -263,13 +278,17 @@
         .sol-image-wrap.image-small img { max-width: 48%; max-height: 105px; }
         .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
         .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
-        .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        .sol-image-wrap.image-full img { max-width: 90%; max-height: 340px; }
         /* 2026-11-11 사용자 결정: 해설 SVG는 크기 등급(small/medium/large)과 무관하게 라벨이 읽히는 크기로 보인다.
            표시 폭 = 자연 폭 x 0.6(solution-render-executor.js가 쪽 나누기 전에 img 폭으로 지정), 칸 폭이 상한, 높이는 auto.
            아래 규칙은 그 스크립트가 못 돌아도 SVG가 105/145/180px 높이 상한에 눌리지 않게 하는 대비책이다(칸 폭까지, 높이 제한 없음).
            래스터(png/jpg)는 위의 기존 상한을 그대로 쓴다. layout-fullwidth(자체 640px 상한)는 건드리지 않는다.
            그림 엔진의 표시 크기 측정(data: SVG 포함)도 이 실제 CSS를 읽는다. */
-        .sol-image-wrap:is(.image-small, .image-medium, .image-large):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 100%; max-height: none; }
+        /* 2026-11-17 사용자 지시: 해설 그림이 너무 크다 -> SVG도 크기 등급과 무관하게 칸 폭 90%·높이 340px 이내, 가운데 정렬(높이 무제한 제거).
+           표시 폭은 위 스크립트가 자연 폭 x 0.6으로 정하고 이 상한이 누른다. 크기를 data가 solutionImageSizeOverride: "full"로 명시한 그림만 칸 폭 전체·높이 무제한. */
+        .sol-image-wrap:is(.image-small, .image-medium, .image-large, .image-full):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 90%; max-height: 340px; object-fit: contain; }
+        .sol-image-wrap.image-override-full:not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]),
+        .sol-image-wrap.image-override-full:not(.layout-fullwidth) img { max-width: 100%; max-height: none; }
         .sol-image-wrap.layout-fullwidth { width: 100%; }
         .sol-image-wrap.layout-fullwidth img { width: 100%; max-width: 100%; height: auto; max-height: none; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
@@ -384,7 +403,7 @@
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
-    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261116-mobile-figure-1">
+    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
@@ -2020,7 +2039,8 @@ function stripInlineImagesFromContent(content, hasImageField) {
 function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
-    const sizeClass = size ? ` image-${size}` : '';
+    const sizeOverride = ['full', 'tall'].includes(q.imageSizeOverride) ? q.imageSizeOverride : '';
+    const sizeClass = (size ? ` image-${size}` : '') + (sizeOverride ? ` image-override-${sizeOverride}` : '');
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
     const imageSrc = withArchiveAssetCacheBuster(q.image);
     // External (R2) exam images are requested in CORS mode (archive-asset-base.js): print code reads their pixels.
@@ -2053,6 +2073,7 @@ function escapeArchiveHtmlAttribute(value) {
 function renderSolutionImageHTML(q) {
     if (!q || !q.solutionImage) return '';
     const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
+    const solOverride = q.solutionImageSizeOverride === 'full' ? ' image-override-full' : '';
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.solutionImage, 'solutionImage', q, q.solutionImageAlt || '', '해설 그림') || q.solutionImageAlt || '해설 그림';
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
@@ -2060,7 +2081,7 @@ function renderSolutionImageHTML(q) {
     const layout = q.solutionImageLayout === 'fullwidth' ? ' layout-fullwidth' : '';
     const imageSrc = withArchiveAssetCacheBuster(q.solutionImage);
     const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
-    return `<span class="sol-image-wrap image-${size}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    return `<span class="sol-image-wrap image-${size}${solOverride}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];

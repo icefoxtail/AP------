@@ -941,8 +941,10 @@ async function knownReal50Clipping(session, initial) {
     const cause = call.causes[0];
     // page 8 -> 9 (2026-11-11, solution SVG display rule naturalWidth x 0.6): the larger solution figures before this reminder
     // image add one solution page, so the same clipped image now sits on page 9. Every other pinned value is unchanged.
+    // page 9 -> 8 (2026-11-17, figure default size change #2399: solution SVGs capped at 90%/340px): the smaller solution
+    // figures before this reminder image remove one solution page. Same image, same 92px clip; every other value unchanged.
     requireThat(call.causes.length === 1 && call.qpp === 4 && call.attemptedMode === 'sol' &&
-      cause?.sourceRef === expectedSourceRef && cause.tag === 'IMG' && cause.page === 9 &&
+      cause?.sourceRef === expectedSourceRef && cause.tag === 'IMG' && cause.page === 8 &&
       cause.columnClientWidth === 340 && cause.columnScrollWidth === 432 &&
       Math.abs(cause.imageX - 12) <= 1 && Math.abs(cause.imageWidth - 420) <= 1 && Math.abs(cause.imageHeight - 300) <= 1 &&
       cause.imageNaturalWidth === 420 && cause.imageNaturalHeight === 300 && cause.imageLoaded,
