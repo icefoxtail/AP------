@@ -25,7 +25,9 @@ def plan_for(d):
         d = os.path.dirname(d)
     return None
 # 2) 장부의 PUBLISHED 그림
-L = json.loads(git('show', 'origin/main:archive/tools/geometry-equation/production/exam-figure-ledger.json'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from figure_ledger import load_all_at  # 시험지별 장부 파일을 git cat-file 한 번으로 읽는다
+L = load_all_at('origin/main')
 tot = hit = 0; out = []; per = collections.Counter(); perhit = collections.Counter()
 for e in L['exams']:
     lv = '/'.join(e['src'].split('/')[3:6])

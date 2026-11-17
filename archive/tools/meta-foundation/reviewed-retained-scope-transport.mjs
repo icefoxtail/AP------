@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { readM2Family7RpmRowContinuity } from "./reviewed-m2-family7-rpm-row-continuity.mjs";
 
 const SCHEMA = "archive-reviewed-retained-scope-transport-v1";
 const PARENT_SCHEMA = "archive-reviewed-retained-primary-parent-v1";
@@ -98,7 +99,12 @@ export function bindReviewedRetainedScopeTransport({ root, request, patch, nativ
 
   const rpm = gitFile(root, native.spec.reviewCommit, RPM, cache), nativeRpm = retained.nativeRpmRef;
   const rpmRef = { path: RPM, sha256: rpm.sha256 };
-  boundLocal(root, request, patch, rpmRef);
+  const rpmRowContinuity = readM2Family7RpmRowContinuity({ root, request, patch,
+    nativeSpec: native.spec, nativeRow: row, cache });
+  if (rpmRowContinuity) {
+    if (!same(rpmRowContinuity.proof, retained.rpmRowContinuity) || rpmRowContinuity.historical.ref.sha256 !== rpm.sha256)
+      fail("fresh retained RPM row continuity proof required");
+  } else boundLocal(root, request, patch, rpmRef);
   const matches = rpm.value.records?.filter(r => r.id === row.rpmRecordId), record = matches?.[0];
   const recordIndex = rpm.value.records?.indexOf(record);
   if (matches?.length !== 1 || nativeRpm?.commit !== native.spec.reviewCommit || nativeRpm.path !== RPM ||
@@ -129,7 +135,8 @@ export function bindReviewedRetainedScopeTransport({ root, request, patch, nativ
   const parent = patch.targetParentRef;
   const parentSpec = parent?.retainedScopeParent;
   const parentKeys = ["path", "curriculum", "scope", "majorUnit", "midUnit",
-    ...(parentSpec === undefined ? [] : ["retainedScopeParent"])];
+    ...(parentSpec === undefined ? [] : ["retainedScopeParent"]),
+    ...(rpmRowContinuity ? ["nativeRpmRowContinuity"] : [])];
   if (!keys(parent, parentKeys) || parent.path !== MASTER ||
       parent.curriculum !== record.curriculum || parent.scope !== record.scope ||
       parent.majorUnit !== record.rpmPath?.majorUnit || parent.midUnit !== record.rpmPath?.midUnit ||
@@ -194,6 +201,7 @@ export function bindReviewedRetainedScopeTransport({ root, request, patch, nativ
     independentCurriculumField: `applications[${applicationIndex}].existingPrimary.exactBinding.curriculum`,
     independentStandardCourseField: `applications[${applicationIndex}].existingPrimary.exactBinding.standardCourse`,
     independentCourseKeyExplicitlyDeclared: false,
+    ...(rpmRowContinuity ? { rpmRowContinuity: rpmRowContinuity.proof } : {}),
     nativeRpmRef: { ...nativeRpm, recordIndex }, nativeCurriculumField: `records[${recordIndex}].curriculum`,
     nativeCourseField: `records[${recordIndex}].scope`, exactBindingSha256: sha(stable(binding)),
     masterRef, masterParentSelectionSha256: sha(stable(masterMatches)), sourcePresence, metadataBeforeScopePresence,
@@ -228,6 +236,10 @@ export function validateReviewedRetainedScopeParent({ request, patch, row, resol
       authority?.schemaVersion !== PARENT_SCHEMA || authority.nativeAfterPrimaryInvented !== false ||
       authority.templateCandidatesUsedAsApproval !== false || authority.newPrimaryJudgment !== false)
     fail("retained parent requires freshly validated exact independent scope authority");
+  if (Object.hasOwn(target, "nativeRpmRowContinuity") && (!scope.rpmRowContinuity ||
+      !same(scope.rpmRowContinuity, retained.rpmRowContinuity) ||
+      !same(target.nativeRpmRowContinuity, Object.fromEntries(["schemaVersion", "historicalRef", "currentRef", "recordId", "recordSha256"]
+        .map(key => [key, scope.rpmRowContinuity[key]]))))) fail("retained parent RPM row continuity drift");
   const parent = { curriculum: target.curriculum, scope: target.scope, L1: target.majorUnit, L2: target.midUnit };
   const { binding, pt, tpl, pack } = resolved;
   if (target.path !== MASTER || !same(parent, authority.parent) || target.curriculum !== resolved.curriculum ||
@@ -248,6 +260,7 @@ export function validateReviewedRetainedScopeParent({ request, patch, row, resol
     fail("retained parent differs from the independently validated current tuple or master authority");
   return { schemaVersion: PARENT_SCHEMA, questionUid: patch.questionUid, sourceOrdinal: patch.sourceOrdinal,
     nativeRpmRef: scope.nativeRpmRef, independentReviewRef: scope.independentReviewRef,
+    ...(scope.rpmRowContinuity ? { rpmRowContinuity: scope.rpmRowContinuity } : {}),
     applicationSha256: scope.applicationSha256, masterRef: scope.masterRef,
     masterParentSelectionSha256: scope.masterParentSelectionSha256, parent,
     exactActiveTuple: { curriculum: resolved.curriculum, standardCourse: resolved.course,

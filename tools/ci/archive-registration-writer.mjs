@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { BOUNDED_RENDERER_UI_INPUTS } from '../4slot/bounded-renderer-ui-inputs.mjs';
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
@@ -113,9 +114,9 @@ export function nativeLanes(root) {
     {id:'reviewed',inputs:[...code,...registration,'.archive-meta-register/inbox/',
       'tools/ci/reviewed-meta-register-pass.sh','tools/ci/register-reviewed-meta-requests.mjs',
       'tools/ci/archive-pr-native-preview.mjs',
-      'tools/ci/collect-reviewed-consumer-refusals.mjs',
+      'tools/ci/collect-reviewed-consumer-refusals.mjs','tools/ci/verify-reviewed-projection-requests.mjs',
       'tools/ci/archive-meta-register-trigger-paths.txt','tools/ci/verify-registered-consumer-approval.sh',
-      'tests/archive-reviewed-exam-registration-v2.test.mjs','tests/archive-basic-scope-rebind.test.mjs',
+      'tests/archive-reviewed-exam-registration-v2.test.mjs','tests/archive-reviewed-projection-phase.test.mjs','tests/archive-basic-scope-rebind.test.mjs',
       'tests/archive-difficulty5-register.test.mjs','tests/archive-finalqa-nonpt-register.test.mjs',
       'tests/archive-finalqa-nonpt-real-geumdang.test.mjs'],outputs:reviewed,scopedInputs:reviewedScoped,
       commands:[{...cmd('bash','tools/ci/reviewed-meta-register-pass.sh'),timeoutMs:55*60000}],alwaysFinal:true,
@@ -160,7 +161,7 @@ export function nativeLanes(root) {
       parameters:{accessibilityBase},
       commands:[cmd('node','archive/tools/build-svg-accessibility-index.cjs','--base',accessibilityBase),
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
-    {id:'fourSlot',inputs:['archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
+    {id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
       '.archive-meta-register/4slot-existing-vector-continuity/',
       '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
       'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',

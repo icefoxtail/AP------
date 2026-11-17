@@ -1,80 +1,136 @@
-# 시험지별 해설 그림 작업 큐 (2026-10-24)
+# 시험지별 해설 그림 작업 큐 (2026-11-17 생성)
 
-**닫는 법:** 시험지 하나를 끝낼 때마다 `exam-figure-ledger.json`의 해당 시험지 항목을 갱신한다. 문항 `state`를 최종값(PUBLISHED/EXEMPT, 또는 최종 사유를 단 OPEN_*)으로 바꾸고 `figures`에 게시 에셋 경로를 넣는다. OPEN_* 문항이 하나도 없으면 `status`를 `CLOSED`로, `closedBy`에 PR 번호를 적는다. CLOSED 시험지는 다시 작업하지 않는다. 이 큐 파일의 해당 줄도 함께 지운다. 엔진 확장(#778~#790)으로 UNSUPPORTED/LIMIT 문항 일부가 그릴 수 있게 되었을 수 있으므로 해당 클러스터부터 확인한다.
+이 파일은 `python archive/tools/geometry-equation/ops/svg-m1/figure_ledger.py queue`로 만든 요약이다. 게시할 때마다 고치지 않는다. 기준은 `production/exam-figure-ledger/`(시험지별 파일)다.
 
 ## 현황
 
-- 시험지 141개: CLOSED 139 / OPEN 2 (남은 2개는 골든 샘플, batch5 마감)
-- 문항 422개(시험지+번호 기준 중복 제거): EXEMPT 97, OPEN_LAYOUT 28, OPEN_OTHER 6, OPEN_UNSUPPORTED 67, PUBLISHED 224
-- 원 캠페인 461건 중 39쌍이 재실행으로 중복되어 최종 상태 하나로 합쳤다.
+- 시험지 682개: CLOSED 557 / OPEN 125
+- 문항 15485개: EXEMPT 8070, FIGURE 2, OPEN_CONTENT 62, OPEN_LAYOUT 3, OPEN_OTHER 1, OPEN_SOURCE 202, OPEN_UNSUPPORTED 283, PUBLISHED 6861, UNSUPPORTED 1
 
 ## OPEN 큐 (열린 문항 수 내림차순, 같으면 시험지명순)
 
-- [x] **19_금당고_1학기_기말_고1_기출** (4건): q3 OPEN_LAYOUT capture:ARCHIVE_BANK_RESPONSE_MISMATCH — ABANDONED(저작 4회 실패) · q4 OPEN_LAYOUT capture:ARCHIVE_BANK_RESPONSE_MISMATCH — ABANDONED(저작 4회 실패) · q8 OPEN_UNSUPPORTED other — a=2, a=-11 두 경우의 직선을 비교하는 그림은 이차함수가 아닌 직선이라 composite-panels · q16 OPEN_LAYOUT capture:ARCHIVE_BANK_RESPONSE_MISMATCH — LIMIT
-- [x] **19_매산고_1학기_기말_고1_기출** (4건): q4 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q11 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q13 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q15 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
-- [x] **21_금당고_1학기_기말_고2_수학I** (4건): q1 OPEN_UNSUPPORTED D_exp_log_trig — 사인 함수 그래프와 직선 y=-1/2의 교점을 보여야 하는데 삼각함수 곡선은 지원되지 않는다. · q13 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q14 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q19 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
-- [x] **19_강남여고_1학기_기말_고1_기출** (3건): q4 OPEN_UNSUPPORTED A_construction_ops — 원점 대칭이동한 중심(원래 원의 중심)을 만드는 파생 연산이 없어 두 원과 대칭 관계를 계약으로 표현할 수  · q11 OPEN_UNSUPPORTED A_construction_ops — 외분점 D, E, F와 무게중심 G를 계약의 연산으로 도출할 수 없고 도출점에 원시 좌표를 쓸 수 없다. · q23 OPEN_UNSUPPORTED A_construction_ops — 선분 AB를 2:3으로 내분·외분하는 점을 도출하는 연산이 계약에 없어 도출점을 좌표 없이 만들 수 없다.
-- [x] **20_순천고_1학기_중간_고1_기출** (3건): q12 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q13 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q14 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
-- [x] **21_강남여고_1학기_중간_고1_기출** (3건): q3 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q8 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT · q25 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
-- [x] **21_매산여고_1학기_기말_고1_기출** (3건): q11 OPEN_UNSUPPORTED other — 기울기가 같은 직선족의 k 범위와 두 원의 배치를 한 그림으로 표현할 수 없다. · q13 OPEN_UNSUPPORTED F_irrational_coefficients — 같은 중심의 두 원(반지름 3√2, 6)과 임의의 점 P에서 그은 접선을 한 그림에 그려야 하나 임의 점 P · q21 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패)
-- [x] **22_강남여고_1학기_기말_고1_기출** (3건): q10 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패) · q21 OPEN_UNSUPPORTED F_irrational_coefficients — 원과 기울기가 같은 두 접선을 한 그림에 그리려면 구하는 직선 √3x-y±6=0을 GIVEN 직선으로 두어야 · q23 OPEN_UNSUPPORTED A_construction_ops — 선분의 내분점·외분점을 작도하는 연산이 지원 범위에 없다.
-- [x] **26_순천고_1학기_기말_고1_기출** (3건): q11 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT · q15 OPEN_UNSUPPORTED C_number_line — 해가 매개변수 n에 따라 3과 n 사이 구간으로 바뀌는 경우 나눔(n=1, n=2~4, n≥5)이라, 수직선 · q20 OPEN_UNSUPPORTED G_axis_scale — x 범위 0~50 대비 이익 0~45000으로 두 축의 단위 길이가 같아야 하는 엔진에서 곡선이 지나치게 좁
-- [x] **21_강남여고_1학기_기말_고1_기출** (2건): q10 OPEN_UNSUPPORTED C_number_line — 수직선 위 구간의 교집합 표시가 필요하나 계약에 수직선 도식이 없다. · q21 OPEN_UNSUPPORTED other — 매개변수 m에 따라 변하는 직선군과 고정점 (3,6)을 한 그림에 나타내야 한다.
-- [x] **21_고흥고_1학기_기말_고1_기출** (2건): q4 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패) · q7 OPEN_UNSUPPORTED A_construction_ops — 2:1 내분점과 외분점은 계약의 점 생성 연산(중점 등)으로 정확히 표현할 수 없다.
-- [x] **21_복성고_1학기_기말_고1_기출** (2건): q12 OPEN_UNSUPPORTED A_construction_ops — 선분의 내분점·외분점(3:2)을 작도하는 연산이 없어 P, Q를 정확히 유도할 수 없음 · q18 OPEN_UNSUPPORTED A_construction_ops — A가 문자 좌표(u,v)인 일반 삼각형의 내분점·외분점 구성이라 지원하는 연산으로 표현할 수 없다.
-- [x] **21_제일고_1학기_중간_고1_기출** (2건): q21 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패) · q22 OPEN_UNSUPPORTED G_axis_scale — x축 값(0~10)과 y축 값(최대 38400)의 크기 차가 너무 커서 같은 눈금 단위의 그래프로 그릴 수 
-- [x] **22_금당고_1학기_기말_고1_기출** (2건): q3 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패) · q17 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값으로 이루어진 구간별 이차함수 그래프와 직선 p(x-3)+3의 비교가 필요함
-- [x] **23_매산여고_1학기_중간_고1_기출** (2건): q11 OPEN_UNSUPPORTED F_irrational_coefficients — 접하는 두 경우 m=3±sqrt(7)의 이차함수 계수가 무리수라 정수·유리수 계수만 허용하는 그래프로 그릴  · q23 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별로 정의된 두 이차함수 f,g를 이어 붙인 h(x)와 직선 y=mx+12를 한 그림에 그려야 하는데 두
-- [x] **23_팔마고_1학기_기말_고1_기출** (2건): q1 OPEN_UNSUPPORTED A_construction_ops — 선분 AB를 2:1로 나누는 내분점은 파생점이라 좌표를 줄 수 없고, 비율 분할을 만드는 연산이 계약에 없다 · q10 OPEN_UNSUPPORTED C_number_line — 수직선 위에서 두 부등식의 해 구간과 가우스 기호 조건의 공통 범위를 겹쳐 보이는 그림이 필요하지만 계약의 
-- [x] **24_매산여고_1학기_중간_고1_기출** (2건): q18 OPEN_LAYOUT composite-panels:COMPOSITE_PLAN_INVALID — ABANDONED(저작 4회 실패) · q23 OPEN_UNSUPPORTED F_irrational_coefficients — 구간별로 다른 두 포물선과 매개변수 직선을 한 그림에 그려야 하며 무리수 경계값도 필요해 지원되지 않음
-- [x] **24_효천고_1학기_중간_고1_기출** (2건): q11 OPEN_UNSUPPORTED G_shaded_region — 둘레 P와 넓이 S의 관계 S<=(P/4)^2를 나타내는 포물선과 그 아래 영역(음영) 표현이 필요함 · q22 OPEN_UNSUPPORTED F_irrational_coefficients — 경우마다 a=2-√2, √2 같은 무리수 계수의 이차함수와 구간 최대·최소 비교가 필요해 정수·유리수 계수만
-- [x] **25_강남여고_1학기_기말_고1_기출c** (2건): q9 OPEN_UNSUPPORTED G_symbolic_coefficient — 최고차항 계수 a가 주어지지 않아 포물선의 구체적 모양을 확정할 수 없음 · q19 OPEN_UNSUPPORTED C_number_line — 수직선 위에 정수해의 범위를 나타내는 그림이 필요한데 지원되지 않는다.
-- [x] **25_매산고_1학기_기말_고1_기출c** (2건): q15 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 그래프 y=x^2-2/x/+1(두 포물선 조각)과 움직이는 직선 y=x+k의 교점 개수 비교가 필요하 · q18 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 겹쳐 그리고 /f/=1, /g/=1의 근 관계를 나타내야 하므로 
-- [x] **26_금당고_1학기_중간_고1_기출_c** (2건): q17 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별 정의 함수(이차식과 일차식 조각)를 한 그림에 겹쳐 그려야 하며 계약이 지원하지 않는다. · q20 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별로 정의된 g(t)의 그래프(이차식과 일차식이 이어진 조각 함수)와 수평선 y=1/2, 1, 3/2가 
-- [x] **26_매산고_1학기_중간_고1_기출c** (2건): q11 OPEN_UNSUPPORTED F_irrational_coefficients — k=-3±2√3 이 무리수라 두 포물선 계수를 정확한 정수·유리수로 줄 수 없고, 접선 포함 두 경우 그림이 · q18 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 그래프와 수평선 y=t를 한 그림에 함께 그려야 하는데, 한 그림에 두 곡선을 그리거나 수평선을
-- [x] **26_복성고_1학기_중간_고1_기출** (2건): q7 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 직선을 한 그림에 함께 그려야 하는데 계약이 지원하지 않는다 · q22 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT
-- [x] **19_순천고_1학기_기말_고1_기출** (1건): q1 OPEN_UNSUPPORTED A_construction_ops — 수직선 위에서 외분점이 선분 AB 바깥에 놓이는 관계를 보이는 1차원 수직선 그림이 필요하나 계약으로 표현할
-- [x] **20_금당고_2학기_중간_고1_기출** (1건): q1 OPEN_UNSUPPORTED A_construction_ops — 도형의 평행이동으로 얻은 직선과 이동 벡터를 표현하는 연산이 계약에 없음
-- [x] **20_매산고_2학기_중간_고2_수학II** (1건): q7 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
-- [x] **20_매산여고_1학기_기말_고2_수학I** (1건): q21 OPEN_OTHER AUTHORING — 상태 AUTHORING
-- [x] **20_매산여고_1학기_중간_고1_기출** (1건): q11 OPEN_OTHER BOUND_NOT_PUBLISHED — solutionImageAlt/Caption/Size만 있고 solutionImage 참조·에셋 없음(반등록
-- [x] **20_효천고_1학기_기말_고1_기출** (1건): q4 OPEN_UNSUPPORTED A_construction_ops — 2:3 내분점은 계약의 점 생성 연산(중점 등)으로 정확히 표현할 수 없다.
-- [x] **21_강남여고_1학기_기말_고2_수학I** (1건): q26 OPEN_UNSUPPORTED D_exp_log_trig — 서로 다른 두 사인·코사인 곡선의 교점을 한 그림에 그려야 한다.
-- [x] **21_금당고_1학기_중간_고2_수학I** (1건): q13 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수 곡선과 수직이등분선 x=-3(수직선)이 필요하나 지원되지 않음
-- [x] **21_순천고_1학기_기말_고1_기출** (1건): q7 OPEN_UNSUPPORTED other — x축과 y축에 접하는 두 원의 중심 (1,1),(5,5)는 이차방정식으로 구한 유도점이라 원본 좌표 없이 만
-- [x] **21_순천고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — a의 값마다 달라지는 여러 포물선이 한 직선에 접하는 관계를 한 그림에 그려야 하는데 한 그림에 두 곡선 이
-- [x] **21_제일고_1학기_중간_고2_수학I** (1건): q9 OPEN_UNSUPPORTED D_exp_log_trig — 지수함수 곡선과 그 평행이동·대칭이동 그래프(a에 따른 곡선 족)는 지원되지 않는다
-- [x] **22_금당고_1학기_기말_고2_수학I** (1건): q19 OPEN_UNSUPPORTED D_exp_log_trig — 사인 그래프와 수평선의 교점 개수를 보이는 삼각함수 그래프가 필요하다.
-- [x] **22_매산고_1학기_중간_고1_기출** (1건): q20 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 함께 그리고 수평선 y=k까지 보여야 함
-- [x] **22_매산여고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 함께 그려야 하므로 지원되지 않는다.
-- [x] **22_복성고_1학기_기말_고1_기출** (1건): q18 OPEN_UNSUPPORTED C_number_line — 수직선 위 해집합 4<x<a 와 정수 5, 6의 위치를 나타내야 하며 수직선 도식은 계약에 없다.
-- [x] **22_복성고_1학기_중간_고1_기출** (1건): q10 OPEN_UNSUPPORTED A_construction_ops — 변을 2:1로 내분하는 점을 만드는 연산이 없어 D,E,F를 정확히 작도할 수 없다
-- [x] **22_순천고_1학기_기말_고2_수학I** (1건): q2 OPEN_UNSUPPORTED other — 변의 길이가 없고 각 두 개와 한 변만 주어진 삼각형이라 좌표 없이 그릴 수 없다.
-- [x] **22_순천여고_1학기_중간_고1_기출** (1건): q8 OPEN_UNSUPPORTED F_irrational_coefficients — 접하는 포물선의 계수 k=-2±2sqrt2가 무리수라 정확한 유리 계수 그래프 계획으로 표현할 수 없음
-- [x] **22_팔마고_1학기_기말_고1_기출** (1건): q3 OPEN_UNSUPPORTED A_construction_ops — 1:3 내분점 D,E,F와 삼각형 DEF의 무게중심을 작도하는 연산(일반 내분점·무게중심)이 계약에 없고 파
-- [x] **23_강남여고_1학기_기말_고1_기출** (1건): q3 OPEN_UNSUPPORTED A_construction_ops — 2:1 내분점과 외분점은 계약의 작도 연산(중점, 수선의 발 등)으로 정확히 표현할 수 없다.
-- [x] **23_금당고_1학기_기말_고1_기출** (1건): q16 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g를 한 그림에 겹쳐 그려야 하고 계수 a가 문자로 남음
-- [x] **23_금당고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — y=/f(x)/ 절댓값 그래프와 직선의 교점 개수 비교가 필요하며 절댓값 함수는 표현할 수 없다.
-- [x] **23_매산고_1학기_기말_고2_수학I** (1건): q15 OPEN_UNSUPPORTED D_exp_log_trig — 이차함수, 지수함수 y=3^x, 로그함수 y=log_3 x 세 곡선과 점 A,B,C가 한 그림에 필요하다.
-- [x] **23_매산고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패)
-- [x] **23_여천고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED B_two_curves — 계수가 문자인 두 이차함수 곡선을 한 그림에 함께 그려야 하며 구체적인 좌표가 없어 지원되지 않음
-- [x] **23_제일고_1학기_중간_고1_기출** (1건): q12 OPEN_UNSUPPORTED A_construction_ops — 수직선 위 내분점·외분점을 구성하는 연산이 계약에 없어 파생 점 P(1), Q(-8)을 정확히 구성할 수 없
-- [x] **24_매산고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED other — 두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다
-- [x] **24_순천여고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 함수 그래프(꺾인 곡선)와 직선의 교점 개수 비교가 필요하며 이는 지원되지 않는다.
-- [x] **25_강남여고_1학기_중간_고1_기출** (1건): q14 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패)
-- [x] **25_매산고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED F_irrational_coefficients — 포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 
-- [x] **25_매산고_1학기_중간_고2_대수** (1건): q7 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수와 지수함수 그래프(역함수 대칭)가 필요하나 다항 그래프만 지원된다.
-- [x] **25_매산여고_1학기_기말_고1_기출c** (1건): q16 OPEN_UNSUPPORTED C_number_line — 끝점이 a에 따라 움직이는 두 부등식 해집합의 수직선 구간 그림이 필요함
-- [x] **25_제일고_1학기_기말_고1_기출c** (1건): q6 OPEN_UNSUPPORTED G_symbolic_coefficient — 문자 a를 포함한 이차함수의 그래프(f(-1)<0, f(2)>0 위치 관계)는 계수를 정할 수 없어 그릴 수
-- [x] **26_강남여고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT
-- [x] **26_금당고_2학기_중간_고1_기출** (1건): q7 OPEN_UNSUPPORTED A_construction_ops — 주어진 직선에 수직이고 한 점을 지나는 직선을 작도하는 연산이 계약에 없다
-- [x] **26_매산여고_1학기_중간_고1_기출_c** (1건): q19 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 수평선 y=t를 한 그림에 그려야 하는데 두 곡선을 한 그림에 그리는 형식이 없다
-- [x] **26_순천여고_1학기_기말_고1_기출** (1건): q12 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 y=2x^2-4/x/-3의 구간 그래프(두 이차식 조각이 이어진 함수)가 필요함
-- [x] **26_효천고_1학기_중간_고1_기출c** (1건): q26 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별 함수(두 이차곡선을 이어 붙인 그래프)와 직선을 한 그림에 그려야 하는데 계약이 지원하지 않는다
-
-## 골든 샘플 (마지막 순서)
-
-- **25_매산여고_2학기_중간_고1_기출** (4건): q1 OPEN_UNSUPPORTED A_construction_ops — 선분 AB를 2:1로 나누는 내분점 P를 작도하는 연산이 지원되지 않는다. · q2 OPEN_OTHER BOUND_NOT_PUBLISHED — 골든 샘플: #777이 그림 제거(CREATE 게이트 골든 SHA 고정). 재고정은 별도 결정 · q3 OPEN_OTHER BOUND_NOT_PUBLISHED — 골든 샘플: #777이 그림 제거(CREATE 게이트 골든 SHA 고정). 재고정은 별도 결정 · q4 OPEN_OTHER BOUND_NOT_PUBLISHED — 골든 샘플: #777이 그림 제거(CREATE 게이트 골든 SHA 고정). 재고정은 별도 결정  
-  메모: figures removed by #777 (CREATE-gate golden SHA pin); re-pinning is a separate decision
-- **25_효천고_2학기_중간_고1_기출** (1건): q1 OPEN_OTHER BOUND_NOT_PUBLISHED — 골든 샘플: #777이 그림 제거(CREATE 게이트 골든 SHA 고정). 재고정은 별도 결정  
-  메모: figures removed by #777 (CREATE-gate golden SHA pin); re-pinning is a separate decision
+- **17_경북환호여중_1학기_기말_중3_수학** (26건): q1 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q2 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q3 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q4 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q5 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q6 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q7 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q8 OPEN_CONTENT — 반폭 u인 내접 직사각형의 넓이는 2u(15−u²)이다. u=1, 2에서 서로 다른 28, 44가 나와 추가 조건 없이 넓이  · q9 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q10 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q11 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q12 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q13 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q14 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q15 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q16 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q17 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q18 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q19 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q20 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q21 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q22 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q23 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q24 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q25 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q26 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다.
+- **17_경북창포중_1학기_기말_중3_수학** (25건): q1 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q2 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q3 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q4 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q5 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q6 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q7 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q8 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q9 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q10 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q11 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q12 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q13 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q14 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q15 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q16 OPEN_CONTENT — 자료는 색칠한 부분의 넓이 변화를 묻지만 고정된 스캔에서 색칠 경계가 구분되지 않는다. 닫힌 곡선 사이와 수평선에서 자른 부분 · q17 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q18 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q19 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q20 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q21 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q22 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q23 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q24 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q25 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다.
+- **17_대구동도중_1학기_기말_중3_수학** (24건): q1 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q2 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q3 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q4 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q5 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q6 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q7 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q8 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q9 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q10 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q11 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q12 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q13 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q14 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q15 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q16 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q17 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q18 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q19 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q20 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q21 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q22 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q23 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q24 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다.
+- **17_대구오성중_1학기_기말_중3_수학** (24건): q1 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q2 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q3 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q4 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q5 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q6 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q7 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q8 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q9 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q10 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q11 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q12 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q13 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q14 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q15 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q16 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q17 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q18 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q19 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q20 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q21 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q22 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q23 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다. · q24 OPEN_SOURCE — 원문 수록본이라 정답·해설 집필 근거가 확인되지 않았다.
+- **17_이수중_1학기_중간_중3_수학** (23건): q1 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q2 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q3 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q4 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q5 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q6 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q7 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q8 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q9 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q10 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q11 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q12 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q13 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q14 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q15 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q16 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q17 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q18 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q19 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q20 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q21 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q22 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q23 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다.
+- **18_연향중_1학기_중간_중3_수학** (23건): q1 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q2 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q3 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q4 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q5 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q6 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q7 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q8 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q9 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q10 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q11 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q12 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q13 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q14 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q15 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q16 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q17 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q18 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q19 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q20 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q21 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q22 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q23 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다.
+- **16_경기은계중_1학기_기말_중3_수학** (21건): q1 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q2 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q3 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q4 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q5 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q6 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q7 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q8 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q9 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q10 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q11 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q12 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q13 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q14 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q15 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q16 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q17 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q18 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q19 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q20 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다. · q21 OPEN_SOURCE — 원문만 제공되어 기존 정답과 해설은 빈 상태다.
+- **17_대구교동중_1학기_중간_중3_수학** (21건): q1 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q2 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q3 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q4 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q5 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q6 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q7 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q8 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q9 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q10 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q11 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q12 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q13 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q14 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q15 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q16 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q17 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q18 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q19 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q20 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다. · q21 OPEN_SOURCE — 원문 수록본이며 기존 답·해설은 미작성이다.
+- **19_복성고_2학기_기말_고2_수학II** (20건): q3 OPEN_UNSUPPORTED · q4 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q7 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED
+- **21_매산여고_2학기_기말_고2_수학II** (18건): q4 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q7 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_CONTENT · q23 OPEN_UNSUPPORTED
+- **22_복성고_2학기_기말_고2_수학II** (18건): q1 OPEN_UNSUPPORTED · q2 OPEN_UNSUPPORTED · q3 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_CONTENT · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED
+- **22_효천고_2학기_기말_고2_수학II** (18건): q2 OPEN_UNSUPPORTED · q4 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED · q24 OPEN_UNSUPPORTED
+- **19_금당고_2학기_기말_고2_수학II** (16건): q3 OPEN_UNSUPPORTED · q4 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q7 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED
+- **19_순천여고_2학기_기말_고2_수학II** (16건): q1 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q7 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED
+- **20_매산여고_2학기_기말_고2_수학II** (16건): q5 OPEN_UNSUPPORTED · q7 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED
+- **21_순천여고_2학기_기말_고2_수학II** (16건): q1 OPEN_UNSUPPORTED · q4 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q9 OPEN_CONTENT · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED
+- **22_팔마고_2학기_기말_고2_수학II** (16건): q1 OPEN_UNSUPPORTED · q2 OPEN_UNSUPPORTED · q3 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED
+- **20_금당고_1학기_기말_고1_기출** (15건): q2 OPEN_UNSUPPORTED · q3 OPEN_UNSUPPORTED · q4 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q11 OPEN_CONTENT
+- **19_매산여고_2학기_기말_고2_확률과통계** (10건): q5 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q7 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED
+- **20_매산여고_2학기_기말_고2_확률과통계** (9건): q2 OPEN_UNSUPPORTED · q8 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED · q15 OPEN_CONTENT · q16 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED
+- **23_순천여고_2학기_기말_고2_확률과통계** (9건): q4 OPEN_UNSUPPORTED · q5 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q20 OPEN_CONTENT · q23 OPEN_UNSUPPORTED
+- **23_제일고_2학기_기말_고2_확률과통계** (9건): q1 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED
+- **24_효천고_2학기_기말_고1_수학** (9건): q2 OPEN_UNSUPPORTED · q3 OPEN_UNSUPPORTED · q4 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED
+- **23_매산여고_2학기_기말_고2_확률과통계** (8건): q2 OPEN_UNSUPPORTED · q4 OPEN_CONTENT · q7 OPEN_UNSUPPORTED · q9 OPEN_CONTENT · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q17 OPEN_CONTENT · q19 OPEN_UNSUPPORTED
+- **2019_매산고_2학기_기말_고2_확률과통계** (6건): q8 OPEN_UNSUPPORTED · q9 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED · q12 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED
+- **19_서울안천중_1학기_중간_중3_수학** (5건): q10 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q12 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q23 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q24 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q26 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다.
+- **19_서울시흥중_1학기_중간_중3_수학** (4건): q5 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q13 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q18 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다. · q21 OPEN_SOURCE — 문제 그림의 원래 조건을 검수했다. 이 판본은 원본 정답과 해설이 공란이다.
+- **25_금당고_1학기_기말_고2_수학II** (4건): q17 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED
+- **26_강남여고_1학기_중간_고2_대수** (4건): q8 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q25 OPEN_UNSUPPORTED
+- **26_금당고_1학기_중간_고2_대수** (4건): q15 OPEN_UNSUPPORTED · q16 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED
+- **16_장흥중_1학기_기말_중3_수학** (3건): q7 FIGURE · q11 FIGURE · q20 OPEN_CONTENT — 본문 y=x²+2와 그림 y=x²/2+2의 조건이 다르다. 두 식에서 최솟값을 얻는 P의 x좌표는 각각 1/2과 1로 다르다.
+- **17_경북대도중_1학기_기말_중3_수학** (3건): q3 OPEN_CONTENT — 원본 그림은 위로 열린 포물선이 (−3,4), (3,4)를 지난다. y=4x²/9인 ④가 맞으며 현재 답 ③은 음의 계수이다. · q7 OPEN_CONTENT — 원본 꼭짓점은 (−1,6), y절편 3인 아래 열린 포물선이다. a=−3, p=−1, q=6이다. 기존 해설은 다른 꼭짓점과  · q21 OPEN_CONTENT — 원본 막대의 분산은 A=2, B=2.6, C=1.2이고 평균은 모두 5이다. 기존 해설이 ㅁ을 참이라고 쓰고 A와 B의 분산 
+- **19_금당고_2학기_중간_고1_기출** (3건): q18 OPEN_UNSUPPORTED · q21 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED
+- **21_제일고_2학기_중간_고1_기출** (3건): q4 OPEN_UNSUPPORTED · q10 OPEN_UNSUPPORTED · q11 OPEN_UNSUPPORTED
+- **26_제일고_1학기_중간_고2_대수** (3건): q18 OPEN_UNSUPPORTED · q19 OPEN_UNSUPPORTED · q23 OPEN_UNSUPPORTED
+- **19_복성고_2학기_중간_고1_기출** (2건): q13 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED
+- **19_순천여고_1학기_중간_고1_기출** (2건): q10 OPEN_UNSUPPORTED · q22 OPEN_UNSUPPORTED
+- **19_연향중_1학기_중간_중3_기출** (2건): q9 OPEN_CONTENT — 문항의 √30 근삿값은 5.447로 되어 있으나 소수 셋째 자리까지 반올림하면 5.477이다. 올바른 보기 ②는 다른 입력 √ · q22 OPEN_CONTENT — 원본에서 P는 −3과 −2 사이, Q는 −1의 오른쪽 약 0.41칸이다. 같은 정사각형 대각선의 이동 중심은 P가 −1, Q가
+- **20_복성고_2학기_중간_고1_기출** (2건): q14 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED
+- **20_효천고_2학기_중간_고1_기출** (2건): q5 OPEN_UNSUPPORTED · q15 OPEN_UNSUPPORTED
+- **21_강남여고_2학기_기말_고1_기출** (2건): q11 OPEN_UNSUPPORTED · q20 OPEN_UNSUPPORTED
+- **21_금당중_2학기_중간_중3_수학** (2건): q7 OPEN_SOURCE — 왼쪽·아래 A/B/D와 각 위치 일부의 원본 픽셀이 잘려 정확한 표기 소유를 판정하기 어렵다. · q12 OPEN_SOURCE — CROP/OPEN_CONTENT: q12.png clips the only BC=6√3 length label at the b
+- **21_왕운중_2학기_중간_중2_수학** (2건): q3 OPEN_CONTENT — 기존 본문과 원본 그림에는 어느 위치에 ①–⑤의 빈칸이 있었는지 보여 주는 증명 문장이 없다. 기존 도식과 해설을 보존한다. · q5 OPEN_CONTENT — 원문의 두 직각 및 AC=CE를 따르면 두 직각삼각형이 합동이다. AB=8, DE=12이면 tan CED=2/3이므로 원문 3
+- **21_팔마고_2학기_기말_고1_기출** (2건): q2 OPEN_UNSUPPORTED · q6 OPEN_UNSUPPORTED
+- **21_향림중_2학기_중간_중2_수학** (2건): q14 OPEN_CONTENT — BC의 길이를 표시한 아래 부분이 이미지 밖으로 잘렸다. 각 68°는 읽히지만 길이 x를 구하는 데 필요한 치수는 확인되지 않 · q20 OPEN_CONTENT — 그림의 세 이등분선은 각자 맞은쪽 변에도 수직으로 이어져 정삼각형을 강제한다. 이 경우 다섯 보기 모두 참으로 원문의 요구와 
+- **22_금당고_2학기_중간_고1_기출** (2건): q1 OPEN_UNSUPPORTED · q14 OPEN_UNSUPPORTED
+- **22_매산고_2학기_기말_고2_수학II** (2건): q12 OPEN_UNSUPPORTED · q18 OPEN_UNSUPPORTED
+- **22_복성고_2학기_기말_고1_기출** (2건): q12 OPEN_UNSUPPORTED · q19 OPEN_LAYOUT — plan 대기
+- **23_금당중_1학기_중간_중2_수학** (2건): q11 OPEN_CONTENT — 지문은 ∠x=130°라고 적고 같은 ∠x를 구하라고 하지만 원본 그림은 꼭짓각에 x를 적고 C 외각에 130°를 따로 적었다. · q20 OPEN_CONTENT — 둘레 24 cm인 삼각형의 반둘레는 12 cm이다. 세 차이의 합이 12이므로 헤론 공식에 따라 넓이는 최대 16√3 cm²이
+- **25_순천여고_1학기_중간_고1_기출** (2건): q6 OPEN_CONTENT · q16 OPEN_CONTENT
+- **16_부산만덕중_1학기_중간_중3_수학** (1건): q18 OPEN_CONTENT — 원본은 203 cm 정사각형의 오른쪽 위에서 103 cm 정사각형을 뺀 ㄱ자 색칠 도형이다. 현행 해설은 동심원 두 개의 원환
+- **16_창포중_1학기_기말_중3_수학** (1건): q11 OPEN_CONTENT — 원본 그림이 잘려 풀이가 쓰는 x=3에서의 교점과 꼭짓점 정보를 함께 확인할 수 없다.
+- **16_환호여중_1학기_기말_중3_수학** (1건): q15 OPEN_CONTENT — 원본 포물선은 위로 열리고 꼭짓점이 x축 음의 부분에 있다. y=a(x+p)²에서 a>0,p>0인 ①이며 현재 답 ⑤와 다르다
+- **17_팔마중_2학기_기말_중3_수학** (1건): q22 OPEN_CONTENT — AB=6, AD=8, CD=10, CE=4 및 ∠B=90°로부터 BC=8과 반지름 4이다. 원에 외접하려면 B=(0,0), A
+- **19_강남여고_2학기_기말_고1_기출** (1건): q13 OPEN_UNSUPPORTED
+- **19_금당고_2학기_기말_고1_기출** (1건): q9 OPEN_UNSUPPORTED
+- **19_복성고_1학기_중간_고1_기출** (1건): q16 OPEN_UNSUPPORTED
+- **19_서울가산중_1학기_기말_중3_수학** (1건): q20 OPEN_SOURCE — 문제 SVG는 원본과 일치하는 모습으로 검수했다. 이 판본에는 원본 정답과 해설이 미입력이라 해설 그림을 확정할 근거가 없다.
+- **19_신흥중_2학기_중간_중3_수학** (1건): q8 OPEN_CONTENT — 편차와 도수의 가중합이 −4이므로 이 자료가 한 평균에서 나온 편차일 수 없다.
+- **20_금당고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED
+- **20_매산고_2학기_기말_고1_기출** (1건): q14 OPEN_CONTENT
+- **20_매산여고_1학기_기말_고1_기출** (1건): q13 OPEN_UNSUPPORTED
+- **20_순천여고_2학기_기말_고1_기출** (1건): q18 OPEN_UNSUPPORTED
+- **20_연향중_2학기_기말_중3_기출** (1건): q18 OPEN_CONTENT
+- **20_연향중_2학기_중간_중3_수학** (1건): q10 OPEN_CONTENT — 원문 그림의 두 삼각형이 공통으로 가지는 BD의 제곱이 A의 조건에서 17+2√39, C의 조건에서 28로 서로 다르다.
+- **20_제일고_2학기_중간_고1_기출** (1건): q5 OPEN_UNSUPPORTED
+- **21_금당중_1학기_중간_중3_수학** (1건): q23 OPEN_SOURCE — 제곱근표 59행 하단이 보존된 원본 이미지에서 잘려 원래 셀 행 전체를 확정하기 어렵다. 문제에 필요한 55행 3열과 5.5행
+- **21_동산중_1학기_중간_중3_기출** (1건): q24 OPEN_CONTENT — 원본 수직선에서 B는 −2이고 C는 4인데 저장된 풀이에서는 B를 2, C를 5로 놓아 답과 대조가 필요하다.
+- **21_매산고_2학기_중간_고1_기출** (1건): q9 OPEN_UNSUPPORTED
+- **21_매산여고_1학기_기말_고1_기출** (1건): q19 OPEN_CONTENT
+- **21_매산중_1학기_중간_중3_수학** (1건): q23 OPEN_CONTENT — 원본 꽃밭 그림의 12 cm² 정사각형이 24 cm² 위, 48 cm² 오른쪽에 놓인다. 답에 쓰인 접합 길이가 그림과 일치하
+- **21_매산중_2학기_기말_중2_수학** (1건): q18 OPEN_CONTENT — 목·금요일 각각의 강수 확률만 주어졌다. 두 날의 독립 또는 교집합 확률이 명시되지 않아 적어도 하루의 확률이 정해지지 않는다
+- **21_신흥중_1학기_중간_중3_수학** (1건): q10 OPEN_SOURCE — 제곱근표 오른쪽 경계가 잘려 표의 마지막 열 범위를 확정할 수 없다.
+- **21_연향중_2학기_기말_중2_기출** (1건): q14 OPEN_CONTENT — 한 판의 승률만 주어졌고 두 판의 독립 여부나 공동 확률은 명시하지 않아 두 사람이 한 번씩 이길 확률을 정할 수 없다. 원문
+- **21_연향중_2학기_중간_중2_수학** (1건): q5 OPEN_CONTENT — 본문과 보기는 증명 빈칸 ㄱ부터 ㅁ을 참조하지만 현행 원문과 문제 사진에는 증명 문장과 빈칸이 없다. 두 원 도식을 보존한다.
+- **21_제일고_1학기_기말_고1_기출** (1건): q13 OPEN_UNSUPPORTED
+- **21_팔마고_2학기_중간_고1_기출** (1건): q19 OPEN_UNSUPPORTED
+- **21_팔마중_2학기_중간_중2_수학** (1건): q18 OPEN_CONTENT — 사진 하단이 잘렸다. 같은 AB=6, AD=4, DC=5 조건에서 각 A를 다르게 하면 BD가 바뀌어 보기의 참거짓이 달라진다
+- **21_팔마중_2학기_중간_중3_수학** (1건): q13 OPEN_CONTENT — 원본 그림의 AB=12, BC=8, ∠ABC=60°이면 AC²=112이다. AD=CD=2√7, ∠ADC=120°이면 같은 AC
+- **21_풍덕중_1학기_기말_중3_수학** (1건): q7 OPEN_CONTENT — 질문의 위로 볼록은 아래로 열린 a<0인 포물선을 뜻한다. 저장 해설은 a>0인 두 선택지 중 ④를 골랐다. 원문 조건대로 계
+- **21_향림중_2학기_기말_중2_수학** (1건): q1 OPEN_CONTENT — 원문 CD=7 cm, 각 BAC=60°, CAD=50°를 함께 만족하는 평행사변형에서 BD는 약 12.228 cm이다. 원문 
+- **21_효천고_1학기_기말_고1_기출** (1건): q8 OPEN_UNSUPPORTED
+- **21_효천고_2학기_중간_고1_기출** (1건): q19 OPEN_CONTENT
+- **22_매산중_1학기_기말_중2_수학** (1건): q23 OPEN_CONTENT — 3-1의 구할 항목이 현행 본문에 없고, 3-2 그림은 B의 세로좌표를 −2로 표기하지만 본문은 −1로 주어진다. 원본 두 그
+- **22_신흥중_2학기_중간_중3_수학** (1건): q3 OPEN_SOURCE — 보기 ②·④ 그래프의 오른쪽과 좌표 라벨이 잘렸고 동일 원본을 찾지 못했다.
+- **22_왕운중_1학기_중간_중3_기출** (1건): q4 OPEN_CONTENT — 발문은 직사각형 타일 변을 2와 2a라고 쓰지만 목표식 x²+4ax와 해설은 각각 x×2a인 타일 두 개를 전제한다. lite
+- **22_이수중_1학기_기말_중3_기출c** (1건): q23 OPEN_CONTENT — The keyed result 2 follows from a horizontal-projection/rearrangement 
+- **22_제일고_2학기_중간_고1_기출** (1건): q13 OPEN_UNSUPPORTED
+- **22_팔마중_1학기_기말_중3_기출c** (1건): q16 OPEN_CONTENT — 해설이 두 포물선의 평행이동만으로 AB=7이라고 단정하지만 원본 그림의 안쪽 가지 대응에서는 높이 t에 따라 |AB|=|7-2
+- **22_향림중_1학기_기말_중2_수학** (1건): q18 OPEN_CONTENT — 원본 그림에서 (−2,−7)과 (3,3)을 지나므로 기울기는 2이나 주어진 다섯 보기에는 2가 없다. 원문 그림과 보기를 보존
+- **22_효천고_2학기_중간_고1_기출** (1건): q19 OPEN_UNSUPPORTED
+- **23_금당고_2학기_기말_고1_기출** (1건): q16 OPEN_CONTENT
+- **23_매산고_1학기_기말_고1_기출** (1건): q13 OPEN_UNSUPPORTED
+- **23_매산중_1학기_기말_중3_기출c** (1건): q6 OPEN_SOURCE — 아홉 직사각형의 종류·길이·개수와 배치를 확인할 수 있는 기존 이미지가 없다. 기출본 q6.png는 Q19와 같은 포물선 그림
+- **23_매산중_1학기_기말_중3_수학c** (1건): q6 OPEN_SOURCE — 아홉 직사각형의 종류·길이·개수와 배치를 확인할 수 있는 기존 이미지가 없다. 기출본 q6.png는 Q19와 같은 포물선 그림
+- **23_순천여고_2학기_기말_고2_수학II** (1건): q18 OPEN_UNSUPPORTED
+- **23_왕운중_2학기_중간_중2_수학** (1건): q22 OPEN_CONTENT — 문제에서 B각과 C각이 같고 AB=7 cm이므로 AC도 7 cm이다. 삼각형의 넓이는 최대 49/2 cm²이므로 제시된 42 
+- **24_금당중_1학기_기말_중2_기출** (1건): q11 OPEN_CONTENT — 원본의 BAC 65°, AOD 115°, ADB 30°를 동시에 만족하는 평행사변형이 없다. 대각선 각에서 ACB 35°, A
+- **25_강남여고_2학기_기말_고2_수학II** (1건): q13 OPEN_UNSUPPORTED
+- **25_매산고_1학기_중간_고2_확률과통계** (1건): q19 OPEN_CONTENT
+- **25_매산고_2학기_기말_고2_수학II** (1건): q4 OPEN_UNSUPPORTED
+- **25_매산여고_2학기_기말_고2_수학II** (1건): q23 OPEN_UNSUPPORTED
+- **25_삼산중_2학기_기말_중2_기출** (1건): q2 OPEN_CONTENT — 원문과 그림에는 닮음과 BC=16 cm, EF=8 cm, DE=6 cm만 주어진다. AB=12 cm는 정해지지만 ∠B 또는 ∠
+- **25_순천고_2학기_기말_고2_수학II** (1건): q10 OPEN_UNSUPPORTED
+- **25_연향중_1학기_중간_중2_기출** (1건): q14 OPEN_OTHER — 미처리: NO_SOURCE_FIGURE
+- **25_연향중_2학기_기말_중2_기출** (1건): q2 OPEN_CONTENT — 원래 보기 ②에는 AD:AB=2:6과 AE:AC=3:9가 같아 평행하다. 보기 ⑤의 전체 EA=10 cm, EC=2 cm, D
+- **25_연향중_2학기_중간_중1_기출** (1건): q1 OPEN_LAYOUT — 관광지 이름 없음·지도 밖 점 (-2,-1) 구분 안 됨(독립 검토 FAIL) — 엔진 E19 대기
+- **25_왕운중_2학기_기말_중2_기출** (1건): q5 OPEN_CONTENT — 원본 왼쪽 12 cm는 l–n 전체, 4 cm는 l–m이다. 따라서 m–n은 8 cm이고 x=12 cm이다. 기존 정답은 12
+- **25_왕운중_2학기_중간_중1_수학** (1건): q18 OPEN_UNSUPPORTED — 공간의 직선·평면 위치 관계 반례 그림 — 엔진 확장 대기
+- **25_제일고_1학기_중간_고1_기출** (1건): q18 OPEN_CONTENT
+- **25_팔마고_1학기_중간_고1_기출** (1건): q14 OPEN_CONTENT
+- **26_강남여고_2학기_중간_고2_미적분I** (1건): q12 OPEN_UNSUPPORTED — 5차(식 없는) 곡선 위 접선 4개: polynomial-spike 4차 한도, 엔진 확장 후보
+- **26_금당고_2학기_중간_고2_기하** (1건): q5 OPEN_LAYOUT — 보류: 렌더 ELLIPSE_LABEL_NO_ROOM(초점 좌표 라벨 자리). conic 라벨 자리 보강 후.
+- **26_동산중_1학기_기말_중2_기출** (1건): q20 OPEN_CONTENT — 원본의 두 직선은 (2,3)에서 교차하며 그중 한 직선은 감소한다. 식 x−y=a의 기울기는 언제나 +1이고 bx−y=1에 (
+- **26_매산고_2학기_중간_고2_미적분I** (1건): q20 OPEN_UNSUPPORTED — 기존 그림 유지. 접선 이름 l1~l3는 해결(phase0)했으나 y 70까지 늘어나 l1·l2 겹침·접점 뭉침: 무리수 접선
+- **26_복성고_2학기_중간_고1_기출** (1건): q12 OPEN_UNSUPPORTED
+- **26_왕의중_2학기_중간_중2_기출** (1건): q21 OPEN_CONTENT — 원문과 문제 그림에서 D가 AB 위에 있고 ∠B=33°, ∠ADC=66°이므로 삼각형 BDC에서 ∠BCD=33°, BD=DC=
+- **26_팔마고_1학기_기말_고2_대수** (1건): q21 OPEN_UNSUPPORTED
+- **26_효천고_1학기_기말_고1_기출** (1건): q17 OPEN_CONTENT
+- **26_효천고_1학기_중간_고2_대수** (1건): q23 OPEN_UNSUPPORTED
+- **26_효천고_1학기_중간_고2_확률과통계** (1건): q10 OPEN_CONTENT
+- **26_효천고_2학기_중간_고2_미적분I** (1건): q21 UNSUPPORTED — 엔진 기능 없음: 유리식 조각 -1/(3+|x|)을 포함한 구간별 함수. 해설은 약분·극한 계산이라 그림 없이 따라갈 수 있음
+- **19_강남여고_1학기_중간_고1_기출** (0건): 열린 문항 없음, status OPEN
+- **19_매산여고_1학기_기말_고1_기출** (0건): 열린 문항 없음, status OPEN
+- **24_매산여고_1학기_기말_고2_확률과통계** (0건): 열린 문항 없음, status OPEN

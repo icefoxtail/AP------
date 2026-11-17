@@ -8,6 +8,7 @@ const stable = value => JSON.stringify(value, (_, v) => v && typeof v === "objec
 const sha = value => crypto.createHash("sha256").update(value).digest("hex");
 
 export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
+  Object.freeze({ requestKey: "q5CompleteGivenApplication", proofKey: "q5CompleteGivenApplication" }),
   Object.freeze({ requestKey: "proposalFinalization", proofKey: "proposalFinalization" }),
   Object.freeze({ requestKey: "retainedFields", proofKey: "retainedNativeFields" }),
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
@@ -17,8 +18,10 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "prerequisiteExistingApplication", proofKey: "prerequisiteExistingApplication" }),
   Object.freeze({ requestKey: "currentTargetApplication", proofKey: "currentTargetApplication" }),
   Object.freeze({ requestKey: "m2ProblemRendererContinuity", proofKey: "m2ProblemRendererContinuity" }),
+  Object.freeze({ requestKey: "m2E006ProblemContinuity", proofKey: "m2E006ProblemContinuity" }),
   Object.freeze({ requestKey: "e017RhsContinuity", proofKey: "e017RhsContinuity" }),
   Object.freeze({ requestKey: "m2ProblemRenderer21Continuity", proofKey: "m2ProblemRenderer21Continuity" }),
+  Object.freeze({ requestKey: "m2Family3ProblemContinuity", proofKey: "m2Family3ProblemContinuity" }),
   Object.freeze({ requestKey: "e023SolutionDisplayContinuity", proofKey: "e023SolutionDisplayContinuity" }),
 ]);
 

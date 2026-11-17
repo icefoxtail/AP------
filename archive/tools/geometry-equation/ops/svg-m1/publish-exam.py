@@ -2,6 +2,7 @@
 import hashlib, json, sys, tempfile
 from pathlib import Path
 from portable_root import repo_root, run, require_hash, valid_ord, asset_name
+from figure_ledger import load_exam
 ROOT=repo_root()
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 def main():
@@ -22,10 +23,9 @@ def main():
     rv=indexed(reviews); rr=indexed(rows)
     if rv.keys()!=rr.keys(): raise ValueError('review and rows ords differ')
     if allowed:
-        ledger=read(ROOT/'archive/tools/geometry-equation/production/exam-figure-ledger.json')
-        entries=[e for e in ledger['exams'] if e['exam']==exam]
-        if len(entries)!=1: raise ValueError('TIE requires existing ledger entry')
-        open_ords={i['ord'] for i in entries[0]['items'] if i['state'] not in ('PUBLISHED','EXEMPT')}
+        entry=load_exam(src,ROOT)  # 그 시험지 장부 파일 하나만 읽는다
+        if entry is None or entry['exam']!=exam: raise ValueError('TIE requires existing ledger entry')
+        open_ords={i['ord'] for i in entry['items'] if i['state'] not in ('PUBLISHED','EXEMPT')}
         if not allowed <= open_ords: raise ValueError('TIE requires OPEN ledger item')
     script="const vm=require('vm'),fs=require('fs');const c={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),c);console.log(JSON.stringify((c.window.questionBank??c.window.examData?.questions).map(q=>({id:q.id,has:Object.prototype.hasOwnProperty.call(q,'solutionImage'),image:q.solutionImage||''}))))"
     bank=json.loads(run(['node','-e',script,ROOT/src],cwd=ROOT).stdout)

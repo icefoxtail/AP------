@@ -7,7 +7,8 @@ const md=fs.readFileSync(`${W}/triage-20261107/${key}.md`,'utf8');const base={};
 for(const m of md.matchAll(/^\|\s*Q?(\d+)\s*\|\s*([A-Z_-]+)/gm))base[+m[1]]=m[2]==='OPEN'?'UNSUPPORTED':m[2]==='CONTENT-OPEN'?'CONTENT':m[2]==='KEEP_HISTORY'?'KEEP':m[2];
 const pf=`${W}/dec-${key}.json`;const prev=fs.existsSync(pf)?JSON.parse(fs.readFileSync(pf,'utf8')):{};for(const [k,v] of Object.entries(prev))base[+k]=v;
 // current ledger state wins over old tables (later OPEN fills publish more items; 2026-11-09 19 금당 bug)
-{const L=JSON.parse(fs.readFileSync('archive/tools/geometry-equation/production/exam-figure-ledger.json','utf8'));const nm=js.split('/').pop().replace(/\.js$/,'');const e=L.exams.find(x=>x.exam===nm);
+{const FL=require(require('path').resolve('archive/tools/geometry-equation/ops/svg-m1/figure-ledger.cjs'));const rel=js.replace(/\\/g,'/').replace(/^\.\//,'');const nm=rel.split('/').pop().replace(/\.js$/,'');
+ const e=rel.startsWith(FL.SRC_PREFIX)?FL.loadExam(rel,process.cwd()):FL.findExam(nm,process.cwd()); // 그 시험지 장부 파일 하나만 읽는다
  if(e)for(const i of e.items)base[i.ord]=i.state==='PUBLISHED'?'FIGURE':i.state==='EXEMPT'?'EXEMPT':i.state==='OPEN_CONTENT'?'CONTENT':i.state.startsWith('OPEN')?'UNSUPPORTED':base[i.ord];}
 global.window={};eval(fs.readFileSync(js,'utf8'));const img=new Set((window.questionBank??window.examData?.questions).filter(q=>q.solutionImage).map(q=>q.id));
 const ro=fs.readdirSync(`${W}/runs/${key}/${srcSub||"rev-open"}`).filter(d=>/^q\d+$/.test(d)).map(d=>+d.slice(1));
