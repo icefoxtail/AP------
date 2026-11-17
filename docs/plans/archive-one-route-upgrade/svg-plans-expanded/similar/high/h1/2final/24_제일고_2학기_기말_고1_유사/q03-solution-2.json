@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "R",
+        "name": "R"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "subset": [
+      "R",
+      "Q"
+    ]
+  },
+  "caption": "r⇒q는 R⊆Q이다. Q안 R밖의원소가있을수있어 q⇒r는보장되지않는다. 대우¬q⇒¬r와p⇒¬q를연결하면p⇒¬r. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 조건 $p,q,r,s$에 대하여 $p\\Rightarrow\\sim q$, $r\\Rightarrow q$, $s\\Rightarrow\\sim r$이라고 할 때, 보기 중 옳지 않은 것은? [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "r⇒q는 R⊆Q이다. Q안 R밖의원소가있을수있어 q⇒r는보장되지않는다. 대우¬q⇒¬r와p⇒¬q를연결하면p⇒¬r. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "r⇒q는 R⊆Q이다. Q안 R밖의원소가있을수있어 q⇒r는보장되지않는다. 대우¬q⇒¬r와p⇒¬q를연결하면p⇒¬r. 정답⑤."
+  ]
+}

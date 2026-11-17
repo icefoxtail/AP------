@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "-3/2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫식을둘째에대입하면−4y−8,y2,x−1. 두직선교점(−1,2)에서a+b1. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식<br><div class=\"note-box\">$x=-2y+3$<br>$3x+2y=1$</div>의 해를 $(a,b)$와 같이 나타낼 때, $a+b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-6",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-18",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "18",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-18",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ef",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "E",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ef",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "E를 지나AB에 평행한 EF를 그리면 △ADE∼△EFC(AA). 따라서 AD:EF=AE:EC. DBFE는 두 쌍의 대변이 평행한 평행사변형이므로 EF=DB를 대입해 AD:DB=AE:EC. 대표 분할2:3은 설명용일 뿐 일반 비례증명을 대신하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4]\n다음 그림에서 $\\overline{AD}:\\overline{DB}=\\overline{AE}:\\overline{EC}$이다. 그 이유를 다음 단계에 따라 설명하여 보시오. (6점)<br><img src=\"assets/images/23_신흥중_2학기_기말_중2_기출/q21-problem-visual-v2.svg\" alt=\"D는 AB 위, E는 AC 위에 있다. DE와 밑변 BC는 평행하다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br>(1) 점 $E$를 지나고 변 $AB$에 평행한 직선을 그리고, 변 $BC$와의 교점을 $F$라고 하자. (2점)\n(2) 이때 $\\triangle ADE$와 $\\triangle EFC$는 닮은 삼각형이다. 닮음 조건을 말하시오. (1점)\n(3) (3점)\n$\\triangle ADE\\sim\\triangle EFC$이므로 $\\overline{AD}:(\\qquad)=\\overline{AE}:(\\qquad)$\n또, $\\square DBFE$는 $(\\qquad)$이므로 $\\overline{EF}=(\\qquad)$\n따라서 $\\overline{AD}:(\\qquad)=\\overline{AE}:(\\qquad)$",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "label": "α",
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "e",
+        "refs": [
+          "F",
+          "E",
+          "C"
+        ],
+        "label": "α",
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "regions": [
+      {
+        "id": "parallelgram",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "B",
+              "F",
+              "E"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

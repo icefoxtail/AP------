@@ -1,0 +1,104 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "25",
+          "-10",
+          "1"
+        ],
+        "domain": [
+          "5",
+          "8"
+        ],
+        "branch": "POSITIVE",
+        "label": "y=sqrt(x)+5"
+      },
+      {
+        "id": "c2",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "branch": "POSITIVE",
+        "label": "y=sqrt(x)"
+      },
+      {
+        "id": "c3",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "5",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "branch": "POSITIVE",
+        "label": "y=sqrt(x-5)"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-1",
+          "intercept": "35/4",
+          "label": "y=-x+35/4"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "9/4",
+          "y": "13/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "25/4",
+          "y": "5/2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "29/4",
+          "y": "3/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "caption": "세원래곡선과실제교점A(9/4,13/2),B(25/4,5/2),C(29/4,3/2)를모두복원한다. x차4와1이길이비4:1이며전체x차5이다. t=sqrt(xA)=3/2,정답k35/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 세 곡선 $y=\\sqrt{x}+5$, $y=\\sqrt{x}$, $y=\\sqrt{x-5}$가 직선 $y=-x+k$와 만나는 점을 각각 A, B, C라 하고 $\\overline{AB}=4\\overline{BC}$일 때 상수 $k$의 값은? [4.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "세원래곡선과실제교점A(9/4,13/2),B(25/4,5/2),C(29/4,3/2)를모두복원한다. x차4와1이길이비4:1이며전체x차5이다. t=sqrt(xA)=3/2,정답k35/4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "세원래곡선과실제교점A(9/4,13/2),B(25/4,5/2),C(29/4,3/2)를모두복원한다. x차4와1이길이비4:1이며전체x차5이다. t=sqrt(xA)=3/2,정답k35/4."
+  ]
+}

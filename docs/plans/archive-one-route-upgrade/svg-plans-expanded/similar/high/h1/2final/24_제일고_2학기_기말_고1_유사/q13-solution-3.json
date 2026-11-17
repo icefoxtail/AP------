@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "20/3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "1",
+            "8"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "자연수k를1부터세어20/3이하의정수1,2,3,4,5,6만선택한다. 정답6개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\dfrac{5x-3k+20}{x+2}$의 그래프가 제4사분면을 지나지 않도록 하는 모든 자연수 $k$의 개수는? [4.4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "자연수k를1부터세어20/3이하의정수1,2,3,4,5,6만선택한다. 정답6개.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "자연수k를1부터세어20/3이하의정수1,2,3,4,5,6만선택한다. 정답6개."
+  ]
+}

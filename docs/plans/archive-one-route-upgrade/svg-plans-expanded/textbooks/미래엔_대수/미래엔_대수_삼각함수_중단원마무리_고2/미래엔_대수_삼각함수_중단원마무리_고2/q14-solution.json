@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "10",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5",
+        "y": "25"
+      }
+    ],
+    "formula": "-x^2 + 10*x",
+    "axisTitles": {
+      "x": "r",
+      "y": "S"
+    }
+  },
+  "caption": "반지름r>0,호길이l=20−2r>0이므로0<r<10. 넓이S=rl/2=10r−r²는r5에서최대25. 이때호10이므로중심각l/r=2라디안. 표시식x는반지름r,y는넓이S. 정답2라디안.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둘레의 길이가 $20$인 부채꼴 중에서 그 넓이가 최대인 부채꼴의 중심각의 크기를 호도법으로 나타내시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "반지름r>0,호길이l=20−2r>0이므로0<r<10. 넓이S=rl/2=10r−r²는r5에서최대25. 이때호10이므로중심각l/r=2라디안. 표시식x는반지름r,y는넓이S. 정답2라디안.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름r>0,호길이l=20−2r>0이므로0<r<10. 넓이S=rl/2=10r−r²는r5에서최대25. 이때호10이므로중심각l/r=2라디안. 표시식x는반지름r,y는넓이S. 정답2라디안."
+  ]
+}

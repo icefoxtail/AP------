@@ -1,0 +1,76 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "5",
+      "1"
+    ],
+    "sign": -1,
+    "offset": "6",
+    "sourceDomain": {
+      "kind": "CLOSED_INTERVAL",
+      "range": [
+        "4",
+        "11"
+      ]
+    },
+    "domain": [
+      4,
+      11
+    ],
+    "viewport": [
+      3,
+      12,
+      1,
+      4
+    ],
+    "domainRangeLabels": false,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 11,
+        "y": 2
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "lower",
+          "slope": "1/11",
+          "intercept": "1",
+          "style": "DASHED",
+          "label": "y=x/11+1"
+        },
+        {
+          "id": "upper",
+          "slope": "1/2",
+          "intercept": "1",
+          "style": "DASHED",
+          "label": "y=x/2+1"
+        }
+      ]
+    }
+  },
+  "caption": "실제구간4≤x≤11에서곡선6−√(x+5)를두직선사이에둔다. 위쪽최소기울기b1/2는(4,3),아래쪽최대기울기a1/11은(11,2)를지난다. R(x)=(5−√(x+5))/x의양의분자감소·분모증가로단조감소를증명한다. 정답a−b=−9/22.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$4\\le x\\le11$에서 $ax+1\\le-\\sqrt{x+5}+6\\le bx+1$이 항상 성립할 때, 상수 $a,b$에 대하여 $a-b$의 최댓값은? [4.5점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제구간4≤x≤11에서곡선6−√(x+5)를두직선사이에둔다. 위쪽최소기울기b1/2는(4,3),아래쪽최대기울기a1/11은(11,2)를지난다. R(x)=(5−√(x+5))/x의양의분자감소·분모증가로단조감소를증명한다. 정답a−b=−9/22.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제구간4≤x≤11에서곡선6−√(x+5)를두직선사이에둔다. 위쪽최소기울기b1/2는(4,3),아래쪽최대기울기a1/11은(11,2)를지난다. R(x)=(5−√(x+5))/x의양의분자감소·분모증가로단조감소를증명한다. 정답a−b=−9/22."
+  ]
+}

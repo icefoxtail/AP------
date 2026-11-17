@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A꽝",
+        "elements": [
+          "5/9"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "이후B꽝",
+        "elements": [
+          "4/8"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "둘다꽝",
+        "elements": [
+          "5/18"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "적어도당첨",
+        "elements": [
+          "13/18"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "비복원에서 A꽝5/9 뒤 B꽝4/8. 두 확률의 곱5/18을1에서 빼면13/18. 마지막 화살표는 여사건1−이며 앞 두 단계의 곱과 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$9$개의 제비 중에서 $4$개의 당첨 제비가 들어 있다. $A$, $B$ 두 사람이 차례대로 한 개씩 제비를 뽑을 때, 적어도 한 사람이 당첨될 확률은? (단, 뽑은 제비는 다시 넣지 않는다.) (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "고정한 x",
+        "elements": [
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "y 일부",
+        "elements": [
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "x6일때작은짝수y2와4가둘다가능하므로②는함수가아니다. 짝수의범위해석과무관하게이두양의반례만으로충분하다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$의 함수가 아닌 것은? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

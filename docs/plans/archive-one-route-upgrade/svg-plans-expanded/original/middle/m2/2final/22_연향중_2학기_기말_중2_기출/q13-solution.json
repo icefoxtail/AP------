@@ -1,0 +1,91 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "묶음 순서",
+        "elements": [
+          "초중",
+          "중초"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "초 내부",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "중 내부",
+        "elements": [
+          "6"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "합계",
+        "elements": [
+          "24"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "초등학생2명과 중학생3명을 각 한 묶음으로 두고 묶음순서2×초 내부2!×중 내부3!=24. 화살표는 계산 연결이며 함수가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "초등학생 $2$명과 중학생 $3$명이 한 줄로 설 때, 초등학생은 초등학생끼리, 중학생은 중학생끼리 이웃하여 서는 경우의 수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

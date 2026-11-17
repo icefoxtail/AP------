@@ -1,0 +1,38 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "S",
+        "name": "S"
+      },
+      {
+        "id": "R",
+        "name": "R"
+      }
+    ],
+    "disjoint": [
+      [
+        "S",
+        "R"
+      ]
+    ]
+  },
+  "caption": "s⇒¬r는S∩R=∅,대우r⇒¬s와같다. 세패널은각조건을따로도식화하며하나의원소배치라고섞지않는다. q만참이고p,r,s가거짓인반례로역명제q⇒r는거짓,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 조건 $p,q,r,s$에 대하여 $p\\Rightarrow\\sim q$, $r\\Rightarrow q$, $s\\Rightarrow\\sim r$이라고 할 때, 보기 중 옳지 않은 것은? [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "s⇒¬r는S∩R=∅,대우r⇒¬s와같다. 세패널은각조건을따로도식화하며하나의원소배치라고섞지않는다. q만참이고p,r,s가거짓인반례로역명제q⇒r는거짓,정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "s⇒¬r는S∩R=∅,대우r⇒¬s와같다. 세패널은각조건을따로도식화하며하나의원소배치라고섞지않는다. q만참이고p,r,s가거짓인반례로역명제q⇒r는거짓,정답⑤."
+  ]
+}

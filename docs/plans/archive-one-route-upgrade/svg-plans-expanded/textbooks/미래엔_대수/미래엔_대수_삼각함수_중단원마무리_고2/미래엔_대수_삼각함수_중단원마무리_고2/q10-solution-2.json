@@ -1,0 +1,59 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "-1",
+      "1"
+    ],
+    "ratePi": "6",
+    "phasePi": "1/2",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1/3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0.0,
+      0.3333333333333333
+    ],
+    "viewport": [
+      -1.0,
+      1.3333333333333333,
+      -3,
+      3
+    ],
+    "keyPoints": true,
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [],
+      "lines": []
+    }
+  },
+  "caption": "y=−cos(6x+π/2)+1의 주기는π/3,최댓값2,최솟값0. 정답 주기π/3,최대2,최소0. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 함수의 주기와 최댓값, 최솟값을 구하시오.\n⑴ $y=2\\sin\\left(x-\\frac{\\pi}{3}\\right)$\n⑵ $y=-\\cos\\left(6x+\\frac{\\pi}{2}\\right)+1$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=2sin(x−π/3)의 주기는2π,최댓값2,최솟값−2. 한 주기의 극값과 중심선 교점을 표시한다. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다. y=−cos(6x+π/2)+1의 주기는π/3,최댓값2,최솟값0. 정답 주기π/3,최대2,최소0. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−cos(6x+π/2)+1의 주기는π/3,최댓값2,최솟값0. 정답 주기π/3,최대2,최소0. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다."
+  ]
+}

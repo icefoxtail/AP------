@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      10
+    ],
+    "viewport": [
+      -1,
+      11,
+      -1,
+      6
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "id": "D",
+        "x": 9,
+        "y": 3
+      }
+    ]
+  },
+  "caption": "아래곡선y=√x의B(4,2),D(9,3)이다. 사다리꼴의위아래변은곡선호가아닌선분AC/BD이며넓이를곡선사이적분으로바꾸지않는다. 다음정확도형에서넓이를읽고정답n4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=\\sqrt{3x}$, $g(x)=\\sqrt{x}$의 그래프와 직선 $x=n$이 만나는 점을 각각 A, B라 하고, 직선 $x=n+5$가 만나는 점을 각각 C, D라 할 때, 사각형 ACDB의 넓이가 $\\dfrac{25(\\sqrt3-1)}2$일 때, $n$의 값을 구하는 과정을 서술하시오. (단, $n$은 자연수) [6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "아래곡선y=√x의B(4,2),D(9,3)이다. 사다리꼴의위아래변은곡선호가아닌선분AC/BD이며넓이를곡선사이적분으로바꾸지않는다. 다음정확도형에서넓이를읽고정답n4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "아래곡선y=√x의B(4,2),D(9,3)이다. 사다리꼴의위아래변은곡선호가아닌선분AC/BD이며넓이를곡선사이적분으로바꾸지않는다. 다음정확도형에서넓이를읽고정답n4."
+  ]
+}

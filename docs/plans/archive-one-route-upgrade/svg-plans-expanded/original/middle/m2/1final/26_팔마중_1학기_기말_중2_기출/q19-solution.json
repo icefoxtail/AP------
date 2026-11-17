@@ -1,0 +1,63 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "-1/2"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-7",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "5/4",
+          "-3/4"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "앞의두직선교점(3,−1)을셋째에대입해9−a5,a4. 세직선모두같은점을지남을보인다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 직선 $x+2y=1$, $2x-y=7$, $3x+ay=5$가 한 점에서 만날 때, 상수 $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

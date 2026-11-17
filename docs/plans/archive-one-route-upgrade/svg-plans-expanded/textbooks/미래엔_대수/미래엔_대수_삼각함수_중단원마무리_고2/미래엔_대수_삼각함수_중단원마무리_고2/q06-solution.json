@@ -1,0 +1,61 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "style": "TICK",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2/3",
+            "style": "FILLED",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "4/3",
+            "style": "TICK",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "동경이 같으면4θ−θ=2nπ,θ/π=2n/3. 조건1/2<θ/π<1에 들어가는 정수n은1뿐이다. 정답θ=2π/3. 수직선 값은θ/π이며 후보2/3이 범위 안에 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\frac{\\pi}{2} < \\theta < \\pi$이고 각 $\\theta$를 나타내는 동경과 각 $4\\theta$를 나타내는 동경이 일치할 때, 각 $\\theta$의 크기를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "동경이 같으면4θ−θ=2nπ,θ/π=2n/3. 조건1/2<θ/π<1에 들어가는 정수n은1뿐이다. 정답θ=2π/3. 수직선 값은θ/π이며 후보2/3이 범위 안에 있다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "동경이 같으면4θ−θ=2nπ,θ/π=2n/3. 조건1/2<θ/π<1에 들어가는 정수n은1뿐이다. 정답θ=2π/3. 수직선 값은θ/π이며 후보2/3이 범위 안에 있다."
+  ]
+}

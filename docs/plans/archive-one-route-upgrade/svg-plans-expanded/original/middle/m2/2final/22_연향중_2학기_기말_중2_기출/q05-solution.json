@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "P",
+    "Q",
+    "R",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "BR",
+      "refs": [
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AG:GQ2:1이라ㄱ참. GAP와GBP는 넓이는 같아도 일반적으로 합동이 아니므로ㄴ거짓. 여섯 등넓이 부분으로 GBQ1:GCA2라ㄷ참. ABQ3:GQC1이므로ㄹ의2배가 아니라3배. 정답ㄱ,ㄷ. 비대칭 대표형은 합동 오해를 피한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 점 $G$는 $\\triangle ABC$의 무게중심이다. 다음 보기 중 옳은 것을 모두 고르시오. (4점)<br><img src=\"assets/images/22_연향중_2학기_기말_중2_기출/q5-problem-visual-v2.svg\" alt=\"삼각형 ABC의 세 중선 AQ, BR, CP가 G에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br>&lt;보기&gt;<br>ㄱ. $\\overline{AG}=2\\overline{GQ}$<br>ㄴ. $\\triangle GAP\\equiv\\triangle GBP$<br>ㄷ. $\\triangle GBQ=\\dfrac12\\triangle GCA$<br>ㄹ. $\\triangle ABQ=2\\triangle GQC$",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r0",
+        "fill": "LIGHT",
+        "label": "1 part",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "P",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r1",
+        "fill": "LIGHT",
+        "label": "1 part",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "B",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "LIGHT",
+        "label": "1 part",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "Q",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "label": "1 part",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "Q",
+              "C",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r4",
+        "fill": "LIGHT",
+        "label": "1 part",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "R",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r5",
+        "fill": "LIGHT",
+        "label": "1 part",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "R",
+              "A",
+              "G"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

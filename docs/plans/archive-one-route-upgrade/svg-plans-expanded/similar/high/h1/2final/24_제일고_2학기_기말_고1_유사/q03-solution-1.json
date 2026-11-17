@@ -1,0 +1,38 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "disjoint": [
+      [
+        "P",
+        "Q"
+      ]
+    ]
+  },
+  "caption": "p⇒¬q는 P∩Q=∅와같다. 대우q⇒¬p도성립한다. 다른조건과연결하면r⇒q⇒¬p. 정답은보장되지않는역명제q⇒r,⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 조건 $p,q,r,s$에 대하여 $p\\Rightarrow\\sim q$, $r\\Rightarrow q$, $s\\Rightarrow\\sim r$이라고 할 때, 보기 중 옳지 않은 것은? [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "p⇒¬q는 P∩Q=∅와같다. 대우q⇒¬p도성립한다. 다른조건과연결하면r⇒q⇒¬p. 정답은보장되지않는역명제q⇒r,⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "p⇒¬q는 P∩Q=∅와같다. 대우q⇒¬p도성립한다. 다른조건과연결하면r⇒q⇒¬p. 정답은보장되지않는역명제q⇒r,⑤."
+  ]
+}

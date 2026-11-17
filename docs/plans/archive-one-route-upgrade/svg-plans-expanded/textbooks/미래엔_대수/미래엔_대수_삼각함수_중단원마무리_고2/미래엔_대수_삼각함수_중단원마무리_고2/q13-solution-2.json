@@ -1,0 +1,91 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "ratePi": "1",
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0.0,
+      2.0
+    ],
+    "viewport": [
+      -1.0,
+      3.0,
+      -3,
+      3
+    ],
+    "keyPoints": true,
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1/4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2/3",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "curveX": "4/3",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "curveX": "7/4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "upper",
+          "slope": "0",
+          "intercept": "sqrt(2)/2"
+        },
+        {
+          "id": "lower",
+          "slope": "0",
+          "intercept": "-1/2"
+        }
+      ]
+    }
+  },
+  "caption": "cosx=√2/2의경계π/4,7π/4는포함하고,cosx=−1/2의경계2π/3,4π/3는제외한다. 정답[π/4,2π/3)∪(4π/3,7π/4]. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < 2\\pi$일 때, 다음 방정식과 부등식을 푸시오.\n⑴ $\\tan\\frac{x}{2} - \\sqrt{3} = 0$\n⑵ $-\\frac{1}{2} < \\cos x \\le \\frac{\\sqrt{2}}{2}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "tan(x/2)=√3에서 x/2=π/3+nπ. 원문0≤x<2π에서x=2π/3만가능하다. x=π는탄젠트가정의되지않는다. 정답2π/3. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다. cosx=√2/2의경계π/4,7π/4는포함하고,cosx=−1/2의경계2π/3,4π/3는제외한다. 정답[π/4,2π/3)∪(4π/3,7π/4]. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다. 가로값t=x/π. 위그래프의포함/제외경계를그대로옮긴다. 원래각의해는[π/4,2π/3)∪(4π/3,7π/4].",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "cosx=√2/2의경계π/4,7π/4는포함하고,cosx=−1/2의경계2π/3,4π/3는제외한다. 정답[π/4,2π/3)∪(4π/3,7π/4]. 가로축 t는 원래 각 x 또는 θ를 π로 나눈 값이며, 실제 각은 πt이다."
+  ]
+}

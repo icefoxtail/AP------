@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "9/4"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "formula": "-x^2 + x + 2",
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    }
+  },
+  "caption": "t=sinx라놓으면−π/2≤x≤π/2에서−1≤t≤1이고원함수는2+t−t². 꼭짓점t1/2에서최대b9/4. 이각구간에서sin은증가하므로aπ/6. 정답ab=3π/8. 표시식x는보조변수t다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\cos^2 x + \\sin x + 1$이 $x=a$에서 최댓값 $b$를 갖는다. 이때 $ab$의 값을 구하시오. (단, $-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=sinx라놓으면−π/2≤x≤π/2에서−1≤t≤1이고원함수는2+t−t². 꼭짓점t1/2에서최대b9/4. 이각구간에서sin은증가하므로aπ/6. 정답ab=3π/8. 표시식x는보조변수t다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t=sinx라놓으면−π/2≤x≤π/2에서−1≤t≤1이고원함수는2+t−t². 꼭짓점t1/2에서최대b9/4. 이각구간에서sin은증가하므로aπ/6. 정답ab=3π/8. 표시식x는보조변수t다."
+  ]
+}

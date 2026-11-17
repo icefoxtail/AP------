@@ -1,0 +1,117 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "HO",
+      "refs": [
+        "H",
+        "O"
+      ]
+    }
+  ],
+  "caption": "sinθcosθ<0이면 제2 또는 제4사분면. sinθtanθ=sin²θ/cosθ<0이면 cosθ<0. 교집합은 제2사분면이다. 대표점P(−1,1)은 부호만 나타내는 예시이며 각 크기를45°로 제한하지 않는다. 정답 제2사분면. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "coordinateLabels": [
+    "P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sin\\theta\\cos\\theta < 0$과 $\\sin\\theta\\tan\\theta < 0$을 만족시키는 $\\theta$는 제몇 사분면의 각인지 말하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "sinθcosθ<0이면 제2 또는 제4사분면. sinθtanθ=sin²θ/cosθ<0이면 cosθ<0. 교집합은 제2사분면이다. 대표점P(−1,1)은 부호만 나타내는 예시이며 각 크기를45°로 제한하지 않는다. 정답 제2사분면. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "sinθcosθ<0이면 제2 또는 제4사분면. sinθtanθ=sin²θ/cosθ<0이면 cosθ<0. 교집합은 제2사분면이다. 대표점P(−1,1)은 부호만 나타내는 예시이며 각 크기를45°로 제한하지 않는다. 정답 제2사분면. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

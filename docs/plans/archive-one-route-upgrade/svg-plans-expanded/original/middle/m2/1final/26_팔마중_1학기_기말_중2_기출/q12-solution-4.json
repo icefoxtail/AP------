@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "5/3"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "P1",
+        "x": "-3",
+        "y": "0"
+      }
+    ],
+    "formula": "5*x/3 + 5"
+  },
+  "caption": "보기4의x절편과y절편합은−3+5=2. 합10인③이정답. 두절편은서로다른축위의점이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $x$절편과 $y$절편의 합이 10인 일차함수의 식은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

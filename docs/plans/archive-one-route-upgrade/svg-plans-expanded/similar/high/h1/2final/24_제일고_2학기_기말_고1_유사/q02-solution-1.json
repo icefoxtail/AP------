@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "P^c"
+      },
+      {
+        "id": "B",
+        "name": "Q"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A라는 내부식별자는 P의여집합이고 B는Q이다. P^c⊆Q이므로 P밖의 모든원소가Q에들어있다. P와합치면전체U를덮어P∪Q=U,정답③. 엄밀부분집합을강제하는그림이아니며같아도가능하다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하고 전체집합을 $U$라고 하자. $\\sim p\\Rightarrow q$일 때, 다음 중 항상 옳은 것은? [4.1점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "A라는 내부식별자는 P의여집합이고 B는Q이다. P^c⊆Q이므로 P밖의 모든원소가Q에들어있다. P와합치면전체U를덮어P∪Q=U,정답③. 엄밀부분집합을강제하는그림이아니며같아도가능하다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "A라는 내부식별자는 P의여집합이고 B는Q이다. P^c⊆Q이므로 P밖의 모든원소가Q에들어있다. P와합치면전체U를덮어P∪Q=U,정답③. 엄밀부분집합을강제하는그림이아니며같아도가능하다."
+  ]
+}

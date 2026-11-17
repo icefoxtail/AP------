@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "P3",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "formula": "x - 1"
+  },
+  "caption": "목표사분면1·3·4를모두지나려면기울기2a−1>0,절편4b−3<0. 따라서a>1/2,b<3/4. 이그림은기울기1/절편−1의대표형일뿐실제계수를확정하지않는다. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=(2a-1)x+4b-3$의 그래프가 제1사분면, 제3사분면, 제4사분면을 지나기 위한 상수 $a,b$의 값의 범위를 올바르게 짝지은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

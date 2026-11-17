@@ -1,0 +1,97 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "일의 자리",
+        "elements": [
+          "0",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "백 자리 수",
+        "elements": [
+          "5",
+          "4"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "십 자리 수",
+        "elements": [
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "일의 자리0이면5×4=20,2이면4×4=16,4이면4×4=16. 백의 자리0 금지와 중복 숫자 금지를 적용해 합52. 같은 선택 수4를 공유해도 일의자리2/4는 별개 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0$부터 $5$까지 숫자가 각각 하나씩 적힌 $6$장의 카드가 있다. 이 중 $3$장을 뽑아 세 자리 자연수를 만들 때, 짝수의 개수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "2/3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "1/2",
+            "hideName": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "−16π/3에3×2π를 더하면2π/3. π/2<2π/3<π이므로 제2사분면. 일반각2nπ+2π/3(n정수). 가로값은 θ/π라서 표시 구간은(1/2,1).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 각의 동경이 나타내는 일반각을 구하고, 제몇 사분면의 각인지 말하시오.\n⑴ $1004^\\circ$\n⑵ $-\\frac{16}{3}\\pi$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "1004°=2×360°+284°. 270°<284°<360°이므로 제4사분면. 같은 동경의 일반각은360°n+284°(n정수). 이 수직선은 기준각284°가 놓이는 사분면의 각도 구간이다. −16π/3에3×2π를 더하면2π/3. π/2<2π/3<π이므로 제2사분면. 일반각2nπ+2π/3(n정수). 가로값은 θ/π라서 표시 구간은(1/2,1).",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "−16π/3에3×2π를 더하면2π/3. π/2<2π/3<π이므로 제2사분면. 일반각2nπ+2π/3(n정수). 가로값은 θ/π라서 표시 구간은(1/2,1)."
+  ]
+}

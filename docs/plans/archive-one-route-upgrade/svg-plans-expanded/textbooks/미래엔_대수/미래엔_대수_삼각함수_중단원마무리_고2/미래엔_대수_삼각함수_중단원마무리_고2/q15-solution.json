@@ -1,0 +1,92 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "2",
+      "0"
+    ],
+    "ratePi": "1/4",
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0.0,
+      4.0
+    ],
+    "viewport": [
+      -1.0,
+      5.0,
+      -3,
+      3
+    ],
+    "keyPoints": true,
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "0"
+        }
+      ],
+      "lines": [],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "이패널만 가로축은 원래 x를 그대로쓴다(π로 나누지 않음). 원본의 양의 반주기0≤x≤4와 대칭축x2에서BC2이면B1,C3. A(1,√2),D(3,√2),직사각형넓이2√2. 정답2√2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 함수 $y=2\\sin\\frac{\\pi}{4}x$의 그래프와 $x$축으로 둘러싸인 부분에 직사각형 $\\mathrm{ABCD}$가 내접하고 있다. $\\overline{\\mathrm{BC}}=2$일 때, 직사각형 $\\mathrm{ABCD}$의 넓이를 구하시오.\n<img src=\"q15.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이패널만 가로축은 원래 x를 그대로쓴다(π로 나누지 않음). 원본의 양의 반주기0≤x≤4와 대칭축x2에서BC2이면B1,C3. A(1,√2),D(3,√2),직사각형넓이2√2. 정답2√2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이패널만 가로축은 원래 x를 그대로쓴다(π로 나누지 않음). 원본의 양의 반주기0≤x≤4와 대칭축x2에서BC2이면B1,C3. A(1,√2),D(3,√2),직사각형넓이2√2. 정답2√2."
+  ]
+}

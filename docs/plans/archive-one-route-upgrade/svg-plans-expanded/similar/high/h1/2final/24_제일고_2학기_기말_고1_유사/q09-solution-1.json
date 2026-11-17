@@ -1,0 +1,61 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "36",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      12
+    ],
+    "viewport": [
+      0,
+      13,
+      0,
+      13
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "6",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sum",
+          "slope": "-1",
+          "intercept": "12",
+          "style": "DASHED",
+          "label": "y=-x+12"
+        }
+      ]
+    }
+  },
+  "caption": "가로u=4y/x,세로v=9x/y라놓으면uv=36이고양수이다. 이그림은원래x/y좌표가아닌u/v보조좌표이며u+v최소12는u=v6에서접한다. 10(4/x+9/y)=13+u+v≥25,원래x4,y6에서달성. 정답5/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x,y$가 양수이고 $x+y=10$일 때, $\\dfrac4x+\\dfrac9y$의 최솟값은? [4.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "가로u=4y/x,세로v=9x/y라놓으면uv=36이고양수이다. 이그림은원래x/y좌표가아닌u/v보조좌표이며u+v최소12는u=v6에서접한다. 10(4/x+9/y)=13+u+v≥25,원래x4,y6에서달성. 정답5/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "가로u=4y/x,세로v=9x/y라놓으면uv=36이고양수이다. 이그림은원래x/y좌표가아닌u/v보조좌표이며u+v최소12는u=v6에서접한다. 10(4/x+9/y)=13+u+v≥25,원래x4,y6에서달성. 정답5/2."
+  ]
+}

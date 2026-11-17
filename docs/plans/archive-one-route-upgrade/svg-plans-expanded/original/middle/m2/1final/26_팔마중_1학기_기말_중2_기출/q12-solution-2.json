@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-18",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-18"
+      },
+      {
+        "id": "P1",
+        "x": "9",
+        "y": "0"
+      }
+    ],
+    "formula": "2*x - 18"
+  },
+  "caption": "보기2의x절편과y절편합은9−18=−9. 합10인③이정답. 두절편은서로다른축위의점이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $x$절편과 $y$절편의 합이 10인 일차함수의 식은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

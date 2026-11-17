@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "DP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "답의시각x3초에서BP9,PC6. 원문직사각형15×8,사각형ABPD와제외삼각형DPC를보존한다. 제외넓이24,남은96. 정확배치이며좌표는추가원문조건아니다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vBA",
+        "ownerSegment": "BA",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCB",
+        "ownerSegment": "CB",
+        "text": "15",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target",
+        "fill": "LIGHT",
+        "label": "96",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "P",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 $BC$를 따라 초속 3 cm로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후의 사각형 $ABPD$의 넓이를 $y$ cm$^2$라 할 때, 사각형 $ABPD$의 넓이가 96 cm$^2$가 되는 것은 점 $P$가 점 $B$를 출발한 지 몇 초 후인가? [5점]",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT 원점은 평행이동 배치 자유도 고정이며 원문 좌표 조건이 아니다. 나머지 점은 원문 길이와 정사각형/직사각형 관계를 TRANSLATE_POINT로 구성한다.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

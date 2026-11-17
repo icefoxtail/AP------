@@ -1,0 +1,58 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "-3"
+    ],
+    "sign": 1,
+    "offset": "-2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -3,
+      3
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": -2
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "Z",
+          "curveX": "2/3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "끝점(2,−2),정의역x≤2,치역y≥−2이다. 역함수의정의역은이치역인x≥−2이며원래정의역을그대로쓰면틀린다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\sqrt{-3x+6}-2$의 그래프에 대한 설명으로 옳지 않은 것은? [4.3점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "끝점(2,−2),정의역x≤2,치역y≥−2이다. 역함수의정의역은이치역인x≥−2이며원래정의역을그대로쓰면틀린다. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점(2,−2),정의역x≤2,치역y≥−2이다. 역함수의정의역은이치역인x≥−2이며원래정의역을그대로쓰면틀린다. 정답④."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2/3",
+          "-4/3",
+          "-1/3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(x+2)^2/3+2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-1"
+      }
+    ]
+  },
+  "caption": "역함수식−(x+2)²/3+2의실제허용부는x≥−2이다. 이다항식의전체연장과역함수를구별하고꼭짓점(−2,2)에서오른쪽가지만읽는다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\sqrt{-3x+6}-2$의 그래프에 대한 설명으로 옳지 않은 것은? [4.3점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수식−(x+2)²/3+2의실제허용부는x≥−2이다. 이다항식의전체연장과역함수를구별하고꼭짓점(−2,2)에서오른쪽가지만읽는다. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수식−(x+2)²/3+2의실제허용부는x≥−2이다. 이다항식의전체연장과역함수를구별하고꼭짓점(−2,2)에서오른쪽가지만읽는다. 정답④."
+  ]
+}
