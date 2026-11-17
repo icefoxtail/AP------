@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-2/3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "triangle",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "수준별②:높이|m−1|,밑변4|m−1|/3,넓이2(m−1)²/3. 이패널은m=-1인위/아래경우. 넓이6미만은−2<m<4이고삼각형퇴화m1은제외. 정수−1,0,2,3의합4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-stem-2-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "수준별②:높이|m−1|,밑변4|m−1|/3,넓이2(m−1)²/3. 이패널은m=-1인위/아래경우. 넓이6미만은−2<m<4이고삼각형퇴화m1은제외. 정수−1,0,2,3의합4.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "수준별②:높이|m−1|,밑변4|m−1|/3,넓이2(m−1)²/3. 이패널은m=-1인위/아래경우. 넓이6미만은−2<m<4이고삼각형퇴화m1은제외. 정수−1,0,2,3의합4."
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "34"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "34"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "K",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AK",
+      "refs": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "id": "KB",
+      "refs": [
+        "K",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "caption": "수평거리와고도차를담은정확수직단면이다. 단위100m,KB=(700−500)/100=2. AB²=34+4=38이므로실제직선거리100√38m. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenAK",
+        "ownerSegment": "AK",
+        "text": "sqrt(34)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenKB",
+        "ownerSegment": "KB",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBA",
+        "ownerSegment": "BA",
+        "text": "sqrt(38)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "k",
+      "refs": [
+        "A",
+        "K",
+        "B"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q07.png\" />\n\n다음 지도에서 눈금 한 칸의 실제 거리는 $100\\,\\mathrm{m}$이고, 두 지점 $\\mathrm{A}, \\mathrm{B}$의 해발 고도는 각각 $500\\,\\mathrm{m}, 700\\,\\mathrm{m}$이다. 두 지점 $\\mathrm{A}, \\mathrm{B}$ 사이의 실제 직선거리를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "지도직접확인: 가로5칸,세로3칸이며한단위100m. 수평면에서AK=√34단위=100√34m. 실제공간거리는고도차2단위를다음단면에서더한다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다. 수평거리와고도차를담은정확수직단면이다. 단위100m,KB=(700−500)/100=2. AB²=34+4=38이므로실제직선거리100√38m. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "수평거리와고도차를담은정확수직단면이다. 단위100m,KB=(700−500)/100=2. AB²=34+4=38이므로실제직선거리100√38m. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "11",
+        "y": "55"
+      }
+    ],
+    "formula": "5*x",
+    "axisTitles": {
+      "x": "x",
+      "y": "Y"
+    },
+    "functionName": "g",
+    "nameVariable": "x"
+  },
+  "caption": "수준별①:생수비용은f(x)=500x원,11병5500원. 세로Y=f/100으로정규화하여점(11,55). 실제병수비음수정수,선은연속보조. 정규화 함수 g(x)=f(x)/100=5x이며 세로축 Y=g(x)이다. 원래 비용 함수 f(x)=500x와 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"같은 길이의 성냥개비로 정육각형 넷을 옆으로 이어 그렸다. 각 육각형은 바로 옆 육각형과 세로 변 하나를 공유한다. 같은 모양이 오른쪽으로 계속 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "수준별①:생수비용은f(x)=500x원,11병5500원. 세로Y=f/100으로정규화하여점(11,55). 실제병수비음수정수,선은연속보조. 정규화 함수 g(x)=f(x)/100=5x이며 세로축 Y=g(x)이다. 원래 비용 함수 f(x)=500x와 구별한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "수준별①:생수비용은f(x)=500x원,11병5500원. 세로Y=f/100으로정규화하여점(11,55). 실제병수비음수정수,선은연속보조. 정규화 함수 g(x)=f(x)/100=5x이며 세로축 Y=g(x)이다. 원래 비용 함수 f(x)=500x와 구별한다."
+  ]
+}

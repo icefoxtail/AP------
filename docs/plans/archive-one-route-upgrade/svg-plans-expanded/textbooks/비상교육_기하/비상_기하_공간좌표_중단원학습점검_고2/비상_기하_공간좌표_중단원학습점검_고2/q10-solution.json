@@ -1,0 +1,128 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "xy정사영이다. 실제A(5,−3,6),B(−2,6,−2)를잇는선분의yz평면교점은x0. AP:PB=5:2이며공간좌표P(0,24/7,2/7). 정사영도같은내분비를보존하므로m+n7.",
+  "coordinateLabels": [
+    "A",
+    "B",
+    "O",
+    "P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $\\mathrm{A}(5, -3, 6)$, $\\mathrm{B}(-2, 6, -2)$에 대하여 선분 $\\mathrm{AB}$가 $yz$평면과 만나는 점을 $\\mathrm{P}$라고 하자. $\\overline{\\mathrm{AP}} : \\overline{\\mathrm{BP}} = m : n$일 때, $m+n$의 값을 구하시오. (단, $m, n$은 서로소인 자연수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "xy정사영이다. 실제A(5,−3,6),B(−2,6,−2)를잇는선분의yz평면교점은x0. AP:PB=5:2이며공간좌표P(0,24/7,2/7). 정사영도같은내분비를보존하므로m+n7.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "xy정사영이다. 실제A(5,−3,6),B(−2,6,−2)를잇는선분의yz평면교점은x0. AP:PB=5:2이며공간좌표P(0,24/7,2/7). 정사영도같은내분비를보존하므로m+n7."
+  ]
+}

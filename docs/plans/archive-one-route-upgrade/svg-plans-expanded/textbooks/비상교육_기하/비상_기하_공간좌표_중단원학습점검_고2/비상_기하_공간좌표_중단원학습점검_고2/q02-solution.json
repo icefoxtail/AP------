@@ -1,0 +1,162 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "P",
+    "Q",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "HP",
+      "refs": [
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "P(−1,2,3),yz대칭Q(1,2,3),x축수선발H(−1,0,0). 이그림은x축과(0,2,3)방향이만드는정확수직단면: 가로x,세로ρ=(y,z)방향거리다. PH=√13,평면x0의교선은세로축이며PM=MQ=1. 평면표시좌표를원래xyz좌표로바꾸지않는다.",
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenHP",
+        "ownerSegment": "HP",
+        "text": "sqrt(13)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenPQ",
+        "ownerSegment": "PQ",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $\\mathrm{P}(-1, 2, 3)$에 대하여 다음 점의 좌표를 구하시오.\n⑴ $yz$평면에 대하여 대칭이동한 점\n⑵ $x$축에 내린 수선의 발",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P(−1,2,3),yz대칭Q(1,2,3),x축수선발H(−1,0,0). 이그림은x축과(0,2,3)방향이만드는정확수직단면: 가로x,세로ρ=(y,z)방향거리다. PH=√13,평면x0의교선은세로축이며PM=MQ=1. 평면표시좌표를원래xyz좌표로바꾸지않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "P(−1,2,3),yz대칭Q(1,2,3),x축수선발H(−1,0,0). 이그림은x축과(0,2,3)방향이만드는정확수직단면: 가로x,세로ρ=(y,z)방향거리다. PH=√13,평면x0의교선은세로축이며PM=MQ=1. 평면표시좌표를원래xyz좌표로바꾸지않는다."
+  ]
+}

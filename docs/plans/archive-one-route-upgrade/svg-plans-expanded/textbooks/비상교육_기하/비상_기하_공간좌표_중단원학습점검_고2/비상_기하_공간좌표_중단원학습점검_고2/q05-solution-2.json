@@ -1,0 +1,105 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "BT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    }
+  ],
+  "caption": "두번째변환의xy정사영이다. B(−2,2,−2)→T(−2,−2,−2)에서y만반전하고z−2는보존한다. 첫변환과같은T에이르므로a2,b−2,c−2.",
+  "coordinateLabels": [
+    "O",
+    "B",
+    "T"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $\\mathrm{A}(a, b, 2)$를 $y$축에 대하여 대칭이동한 점과 점 $\\mathrm{B}(a-4, 2b+6, c)$를 $zx$평면에 대하여 대칭이동한 점이 서로 같을 때, 실수 $a, b, c$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y축대칭은x,z두성분의부호를바꾼다. 해a2,b−2,c−2에서 A(2,−2,2)→T(−2,−2,−2)의xz정사영을그린다. xy그림이아니며화면세로성분은z이다. B(−2,2,−2)를zx평면대칭해도T가된다. 정답a2,b−2,c−2. 두번째변환의xy정사영이다. B(−2,2,−2)→T(−2,−2,−2)에서y만반전하고z−2는보존한다. 첫변환과같은T에이르므로a2,b−2,c−2.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두번째변환의xy정사영이다. B(−2,2,−2)→T(−2,−2,−2)에서y만반전하고z−2는보존한다. 첫변환과같은T에이르므로a2,b−2,c−2."
+  ]
+}

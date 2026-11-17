@@ -1,0 +1,110 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displaySegments": [],
+  "caption": "원본점(−4,1)을지나세로축에평행한직선x=−4. 따라서x+4=0,정답③. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+  "displayLines": [
+    "v"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>16. 점 $(-4, 1)$를 지나고 $y$축에 평행한 직선은? (3점)</p>",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본점(−4,1)을지나세로축에평행한직선x=−4. 따라서x+4=0,정답③. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본점(−4,1)을지나세로축에평행한직선x=−4. 따라서x+4=0,정답③. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다."
+  ]
+}

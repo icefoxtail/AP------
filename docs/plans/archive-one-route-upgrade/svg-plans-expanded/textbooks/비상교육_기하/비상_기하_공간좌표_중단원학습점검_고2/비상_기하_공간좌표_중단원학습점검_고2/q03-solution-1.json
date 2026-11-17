@@ -1,0 +1,114 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "⑴ x=1인평면의yz좌표도. A(1,0,−2),B(1,2,0),내분P(1,3/2,−1/2),중점M(1,1,−1). P는3:1 내분, M은1:1 내분이며정사영은내분비를보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 점 $\\mathrm{A}, \\mathrm{B}$에 대하여 선분 $\\mathrm{AB}$를 $3:1$로 내분하는 점과 선분 $\\mathrm{AB}$의 중점의 좌표를 각각 구하시오.\n⑴ $\\mathrm{A}(1, 0, -2)$, $\\mathrm{B}(1, 2, 0)$\n⑵ $\\mathrm{A}(4, 3, 2)$, $\\mathrm{B}(8, 5, -2)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ x=1인평면의yz좌표도. A(1,0,−2),B(1,2,0),내분P(1,3/2,−1/2),중점M(1,1,−1). P는3:1 내분, M은1:1 내분이며정사영은내분비를보존한다. ⑵ xy정사영이며실제높이는A2,B−2,P−1,M0이다. 내분P(7,9/2,−1),중점M(6,4,0). P는3:1 내분, M은1:1 내분이며정사영은내분비를보존한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ x=1인평면의yz좌표도. A(1,0,−2),B(1,2,0),내분P(1,3/2,−1/2),중점M(1,1,−1). P는3:1 내분, M은1:1 내분이며정사영은내분비를보존한다."
+  ]
+}
