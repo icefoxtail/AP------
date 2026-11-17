@@ -1,0 +1,74 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:01:46.693+00:00",
+ "sourceArchiveFile": "original/high/h2/1final/20_매산고_1학기_기말_고2_확률과통계.js",
+ "items": [
+  {
+   "ordinal": 1,
+   "chosenFrom": "new",
+   "resolutionReason": "5H3=7C3=35와 6C2=15를 각각 계산해 합 50을 구하는 중복조합과 조합의 값 계산이라 중복조합의 중복을 허용한 선택 항목이다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "중복조합",
+    "l4": "중복을 허용한 선택"
+   }
+  },
+  {
+   "ordinal": 3,
+   "chosenFrom": "new",
+   "resolutionReason": "P(A)=1/2, P(B)=1/3, P(A∪B)=2/3에서 P(A∩B)=1/2+1/3-2/3=1/6을 구하는 일반 덧셈정리인데 표의 덧셈정리 l4는 배반사건·여사건뿐이다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "확률",
+    "midUnit": "확률의 뜻과 활용",
+    "l3": "확률의 덧셈정리",
+    "l4": ""
+   },
+   "hold": "신규 제안: 확률의 덧셈정리 아래 합사건의 일반 덧셈정리 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "합사건의 확률",
+     "label": "합사건의 확률(일반 덧셈정리)",
+     "parent": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리",
+     "why": "가장 가까운 '배반사건'은 교집합이 공집합일 때이고 '여사건'은 1-P(A)이며, 이 문항은 교집합이 있는 P(A∪B)=P(A)+P(B)-P(A∩B)이다."
+    }
+   }
+  },
+  {
+   "ordinal": 5,
+   "chosenFrom": "new",
+   "resolutionReason": "X={a,b,c,d}에서 Y={1,...,5}로의 일대일 함수 5P4=120과 g(a)=1인 함수 5³=125를 세어 n/m=24/25를 구하므로 중복순열 항목에 둔다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "순열",
+    "l4": "중복·원순열"
+   }
+  },
+  {
+   "ordinal": 18,
+   "chosenFrom": "new",
+   "resolutionReason": "AΔB=(A-B)∪(B-A)에서 (A∪B)-(AΔB)=A∩B이고 P(A∩B)=1/6, P(AΔB)=7/9P(A∪B)로 P(A)+P(B)를 구하는 합사건 확률이라 앞서 제안한 합사건의 확률을 쓴다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "확률",
+    "midUnit": "확률의 뜻과 활용",
+    "l3": "확률의 덧셈정리",
+    "l4": ""
+   },
+   "hold": "신규 제안: 확률의 덧셈정리 아래 합사건의 일반 덧셈정리 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "합사건의 확률",
+     "label": "합사건의 확률(일반 덧셈정리)",
+     "parent": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리",
+     "why": "가장 가까운 '배반사건'은 A∩B가 공집합일 때이지만 이 문항은 P(A∩B)=1/6이 있는 경우다."
+    }
+   }
+  }
+ ]
+}

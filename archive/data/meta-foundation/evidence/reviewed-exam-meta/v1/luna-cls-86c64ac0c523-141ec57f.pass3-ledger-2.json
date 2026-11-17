@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:23:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/25_효천고_1학기_기말_고2_대수c.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "항이 1,3,9,3의 네 항 주기로 반복되므로 첫 24항의 합은 6×16=96이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "관계 추론"
+      }
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "A=8r<0이고 1+r-2r²=0이므로 r=-1/2, A=-4여서 a₂=2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "수열의 활용"
+      },
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "n=1부터 9까지 bₙ=n-1이고 a₁₀은 20자리이므로 합은 36+19=55이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "상용로그표·자릿수"
+      }
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "341-253=m²-3m=88에서 (m-11)(m+8)=0이므로 자연수 m은 11이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "합이 5/(6d²)=5/54이므로 양의 공차 d=3이고 일반항은 3n-21이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "a₁₂-a₁₅=2c+2=6에서 c=2이므로 a₂=c+2=4이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "점화식으로 항 구하기"
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "6(1+r²)=30에서 자연수 공비 r=2이고 a₁(1+2)=6이므로 aₙ=2ⁿ이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "b²=a²이므로 a=-b이고 a/b+b=2ab에서 2b²+b-1=0이 되어 b=1/2, a=-1/2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "n=1을 대입한 S₁=3+1-1=3이 곧 a₁이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "계차수열",
+        "l4": "일반항 구하기"
+      }
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "p=1, a₁=4이므로 a₉=4+8×2=20이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "합"
+      }
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T17:55:00+09:00",
+    "sourceArchiveFile":  "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "√[n]{2^6}√[3]{4}를 2^(6/n+2/3)으로 바꾸어 2^(4/3)과 지수를 맞춘다.",
+                      "decisiveStep":  "6/n+2/3=4/3에서 6/n=2/3이므로 n=9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "n제곱근"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "a-a^(-1)=3과 aa^(-1)=1을 세제곱 차 공식에 넣어 a^3-a^(-3)을 구한다.",
+                      "decisiveStep":  "a^3-a^(-3)=(a-a^(-1))^3+3aa^(-1)(a-a^(-1))=27+9=36이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "조건식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "a^2bc를 2^(1/2)3^(1/6)5^(1/9)으로 고쳐 n을 곱할 때 각 지수가 정수가 되게 한다.",
+                      "decisiveStep":  "n은 2, 6, 9의 공배수여야 하므로 최소공배수 18을 택한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수의 확장",
+                                      "l4":  "유리수 지수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 번 축소한 반지름 1/4에서 한 번의 축소 비율을 구해 다섯 번 반복한 길이를 계산한다.",
+                      "decisiveStep":  "축소 비율은 1/2이므로 다섯 번 뒤 반지름은 1(1/2)^5=1/32이다.",
+                      "hold":  "반복 축소 비율을 이용한 모델링에 맞는 지수함수 선택 경로 조합을 표에서 찾지 못했다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "로그 조건에서 a=√3, b=1/3을 얻어 a^2b를 계산한다.",
+                      "decisiveStep":  "a^2=3이고 b=27^(-1/3)=1/3이므로 a^2b=1이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "-2.2091을 -3+0.7909로 나눈 뒤 주어진 상용로그 값으로 진수를 복원한다.",
+                      "decisiveStep":  "log x=log 6.18-3이므로 x=6.18×10^(-3)=0.00618이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "상용로그",
+                                      "l4":  "소수점 위치"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "로그 두 값이 이차방정식의 근이므로 근 4와 5를 구하고 a,b를 각각 3^4, 3^5로 바꾼다.",
+                      "decisiveStep":  "a=81,b=243에서 log_a b=5/4, log_3(ab)=9를 더해 41/4를 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "y를 적분 변수로 두고 두 곡선 x좌표 log_2 y와 log_2(y/8) 사이의 가로 간격을 구한다.",
+                      "decisiveStep":  "두 x좌표의 차는 3이고 y 범위의 길이는 32-4이므로 넓이는 3×28=84이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 활용",
+                                      "l4":  "그래프 교점"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "t=3^x로 치환하여 9^x-8·3^x+a를 t^2-8t+a로 바꾼다.",
+                      "decisiveStep":  "꼭짓점에서 t=4이고 최솟값 a-16=1이므로 a=17, b=log_3 4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 활용",
+                                      "l4":  "최대·최소"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "A가 y=2^x 위에 있어 d=8이고 B가 y=log_2 x 위에 있어 b=8임을 이용한다.",
+                      "decisiveStep":  "bd=8×8=64이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 그래프",
+                                      "l4":  "증가·감소"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "점근선 x=2에서 a=2로 두고 두 점을 대입하여 로그함수의 세로 이동량을 정한다.",
+                      "decisiveStep":  "(5,3)을 대입하면 3=log_3 3+b라서 b=2이고 a+b=4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그함수의 그래프",
+                                      "l4":  "평행이동"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "공통값 81을 3^4로 바꾸어 세 등식에서 지수 x,y,z를 각각 비교한다.",
+                      "decisiveStep":  "x=4, 2y=4, -3z=4이므로 x+y+z=4+2-4/3=14/3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "조건식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "몸무게 비 200의 3/4제곱을 로그로 계산하여 대사량 비를 근사한다.",
+                      "decisiveStep":  "log(200^(3/4))=(3/4)(3·0.30+2·0.70)=1.725이므로 대사량 비는 10^1.725로 약 53배이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수의 확장",
+                                      "l4":  "실수 지수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "log_a b=3에서 b=a^3을 얻고 2^x+8^(1-x)를 u+8/u^3로 바꾸어 최솟값을 구한다.",
+                      "decisiveStep":  "u=2^x로 두면 도함수가 1-24/u^4이므로 u^4=24에서 최소값 4·24^(1/4)/3을 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "b=a^t로 두어 3/2\u003ct\u003c2를 얻고 네 로그를 t와 1/t의 꼴로 바꾸어 비교한다.",
+                      "decisiveStep":  "네 값은 1/t, t, t/2, 2/t이며 3/2\u003ct\u003c2에서 순서는 1/t\u003ct/2\u003c2/t\u003ct이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "A=[3,7]로 구한 뒤 u=log_2 x가 A에서 움직이는 범위와 u^2-4u+k≤0의 해가 겹치는지 본다.",
+                      "decisiveStep":  "u 범위에 2가 포함되어 이차식의 최솟값 k-4가 양수여야 하므로 k\u003e4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그부등식",
+                                      "l4":  "정의역·밑 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

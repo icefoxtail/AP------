@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T15:36:10+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "서로 다른 네 색의 4! 배치가 네 회전씩 중복되므로 4!/4=6가지다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "hold": "crossConceptKeys: 표의 crossConcepts에 서로 다른 네 색의 사각 영역을 회전 동치로 묶는 값이 없다(CC_POLYGON_TABLE_PERMUTATION도 목록에 없음)."
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "허용된 최단경로 62개에서 P를 지나는 5·6=30개를 빼면 32개다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l4": "일렬 배열"
+      },
+      "crossConceptKeys": [
+        "CC_GRID_SHORTEST_PATH",
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass1",
+      "resolutionReason": "8로 가는 입력은 7가지이고 나머지 여섯 입력의 허용 분배는 41+156=197가지여서 7·197=1379다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "조합",
+        "l4": "분할·분배"
+      },
+      "crossConceptKeys": [
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass1",
+      "resolutionReason": "1을 고정한 뒤 나머지 여덟 원소 중 짝수 개를 고르므로 2⁸/2=128개다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "conditionKeys": [
+        "COND_ODD"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass1",
+      "resolutionReason": "각 원소의 소속은 A만·B만·둘 다 3가지이고 공집합 교집합인 2⁵가지를 빼므로 3⁵−2⁵=211이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "조합",
+        "l4": "선택"
+      }
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "정확히 두 명이 한 개를 받을 조건과 A>B를 함께 세면 가능한 분배가 20가지다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE"
+      ],
+      "conditionKeys": [
+        "COND_FREQUENCY_CONSTRAINTS",
+        "COND_INEQUALITY_CONSTRAINT",
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x⁷ 계수 조건은 10a²+5a=225이며 정수 해는 a=−5다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_COEFFICIENT_EQUATION"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "f(2)=1과 f(2)=2로 나눈 두 경우가 각각 20개여서 전체는 40개다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l4": "중복을 허용한 선택"
+      },
+      "crossConceptKeys": [
+        "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+      ],
+      "conditionKeys": [
+        "COND_MONOTONIC_ORDER",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass1",
+      "resolutionReason": "파란 펜 수령자 3명에 빨간 펜 분배를 결합하면 전체 108가지, 세 학생 모두 받는 경우 63가지다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l4": "중복을 허용한 선택"
+      }
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "회전 동치 배열마다 2!·3!·3! 사람 배치를 곱해 144가지다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "hold": "conditionKeys: 각 학년의 이웃 금지는 COND_NO_CONSECUTIVE_ELEMENTS로 표기되지만 마주보는 두 좌석 금지에 대응하는 허용 키가 없어 조건 전체를 매핑할 수 없다."
+    },
+    {
+      "ordinal": 23,
+      "chosenFrom": "pass2",
+      "resolutionReason": "밑면 색 6가지와 남은 네 옆면의 원순열 3! 및 다섯 색 고르기 5가지를 곱해 180이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_POLYHEDRON_COLORING_ROTATION",
+        "CC_COMBINATION_SELECTION"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "chosenFrom": "pass2",
+      "resolutionReason": "끝 두 자리 0 포함 세 경우는 각 4!, 미포함 네 경우는 각 3·3!이므로 3·24+4·18=144다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "conditionKeys": [
+        "COND_DISTINCT_DIGITS",
+        "COND_DIVISIBILITY"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "suncheon의 n 두 글자를 같은 것으로 보면 배열 수는 8!/2!=4·7!이어서 k=4다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l4": "중복·원순열"
+      }
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "숫자 2의 출현을 0,1,2회로 나누면 2⁴+4·2³+3·2²=60가지다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_NON_CONSECUTIVE_SELECTION"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "resolutionReason": "확통과 독서의 앞 네 자리 선택 6가지, 영어 자리 3가지, 나머지 과목 4!을 곱해 432다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL",
+        "COND_MONOTONIC_ORDER"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "무기명 득표수는 8가지이고 기명 투표는 2⁷=128가지이므로 b−a=120이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "중복조합",
+        "l4": "정수해 개수"
+      }
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "엄격 증가 눈은 C(6,3)=20, 비감소 눈은 C(8,3)=56이어서 합은 76이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "중복조합",
+        "l4": "중복을 허용한 선택"
+      },
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "conditionKeys": [
+        "COND_MONOTONIC_ORDER"
+      ]
+    }
+  ]
+}

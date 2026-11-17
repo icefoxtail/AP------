@@ -1,0 +1,35 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:46:34.370+00:00",
+ "sourceArchiveFile": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 2,
+   "chosenFrom": "new",
+   "resolutionReason": "(1-1/x)×x/(1-x)=(x-1)/x×x/(1-x)=-1로 약분하는 유리식 계산인데 수학(하) 표의 유리함수 항목에는 유리식 계산이 없어 l3, l4를 새로 제안한다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "유리함수",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 유리식의 계산(약분·통분) 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "유리식의 계산",
+     "label": "유리식의 사칙연산",
+     "parent": "함수 > 유리함수",
+     "why": "가장 가까운 '유리함수의 그래프'는 그래프 모양을 다루고, 이 문항은 식을 약분해 간단히 하는 대수 계산이라 맞지 않는다."
+    },
+    "rpmPath.l4": {
+     "value": "약분과 통분",
+     "label": "유리식의 약분과 통분",
+     "parent": "함수 > 유리함수 > 유리식의 계산",
+     "why": "가장 가까운 '기본 그래프'는 y=k/x 그래프를 다루고, 이 문항은 인수를 약분하는 식의 정리라 맞지 않는다."
+    }
+   }
+  }
+ ]
+}

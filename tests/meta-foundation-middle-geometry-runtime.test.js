@@ -274,6 +274,7 @@ if (reviewedInput) {
 
   // Copy an existing approval, never issue a new one. Prove that a readable proof file with
   // changed bytes is rejected even when its receipt and all metadata flags remain intact.
+  let copiedDependencyRejections = 0;
   const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-native-proof-"));
   try {
     // Preserved approvals replay their immutable Git ancestry as well as the
@@ -283,20 +284,53 @@ if (reviewedInput) {
       { stdio: ["ignore", "pipe", "pipe"] });
     const receiptPath = nativeApprovals.get(input.current.questionUid);
     const receipt = readJson(receiptPath);
-    for (const relative of [receiptPath, ...receipt.approval.evidenceRefs.map(ref => ref.path)]) {
+    // A preservation receipt also verifies its predecessor's evidence. Copy the
+    // declared receipt closure so the positive fixture has the same immutable
+    // inputs as the real checkout; all proof bytes remain independent copies.
+    const copiedProofs = new Map();
+    const nativeReceiptPrefix = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
+    const copyProof = (relative, expectedSha256, depth = 0) => {
       const target = path.resolve(fixtureRoot, relative);
       assert(target.startsWith(fixtureRoot + path.sep), relative);
+      const original = path.resolve(root, relative);
+      assert(original.startsWith(root + path.sep), relative);
+      const bytes = fs.readFileSync(original);
+      const digest = sha256(bytes);
+      if (expectedSha256 !== undefined) assert.strictEqual(digest, expectedSha256, relative);
+      if (copiedProofs.has(relative)) {
+        assert.strictEqual(copiedProofs.get(relative).digest, digest, relative);
+        return;
+      }
       fs.mkdirSync(path.dirname(target), { recursive: true });
-      fs.copyFileSync(path.join(root, relative), target);
-    }
+      fs.copyFileSync(original, target);
+      assert.strictEqual(sha256(fs.readFileSync(target)), digest, relative);
+      const document = relative.startsWith(nativeReceiptPrefix) && relative.endsWith(".json")
+        ? JSON.parse(bytes) : null;
+      const nativeReceipt = document?.schemaVersion === "archive-reviewed-exam-meta-registration-v2";
+      copiedProofs.set(relative, { digest, depth, nativeReceipt });
+      if (nativeReceipt) {
+        for (const ref of document.approval.evidenceRefs) copyProof(ref.path, ref.sha256, depth + 1);
+      }
+    };
+    copyProof(receiptPath);
     const fixture = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
     assertNativeApproval(fixture, "unchanged copied native proof");
+    const inheritedProof = [...copiedProofs].find(([, value]) => value.depth > 1 && !value.nativeReceipt);
+    if (inheritedProof) {
+      const inheritedPath = path.join(fixtureRoot, inheritedProof[0]);
+      const originalBytes = fs.readFileSync(inheritedPath);
+      fs.appendFileSync(inheritedPath, "\n");
+      rejects(fixture, "predecessor approval proof SHA drift");
+      copiedDependencyRejections += 1;
+      fs.writeFileSync(inheritedPath, originalBytes);
+      assertNativeApproval(fixture, "restored copied native proof");
+    }
     fs.appendFileSync(path.join(fixtureRoot, receipt.approval.evidenceRefs[0].path), "\n");
     rejects(fixture, "approval proof SHA drift");
   } finally {
     fs.rmSync(fixtureRoot, { recursive: true, force: true });
   }
-  console.log(`PASS ${nativeInputs.length} byte-bound native approvals and ${cases.length + 1} rejection cases`);
+  console.log(`PASS ${nativeInputs.length} byte-bound native approvals and ${cases.length + 1 + copiedDependencyRejections} rejection cases`);
 }
 
 const preservedAuditInputs = nativeInputs.filter(input => input.current.metadataApprovalType === "META_PIPELINE_AUDIT");
@@ -364,7 +398,19 @@ assert(q513);
 assert.strictEqual(q513.standardUnitKey, "M3-05");
 assert.strictEqual(q513.subUnitKey, "M3-05-TRIG_RATIO_APPLICATION");
 assert.strictEqual(q513.problemTypeKey, "PT_TRIG_RATIO_APPLICATION");
-assert.strictEqual(q513.templateKey, "TPL_TRIG_APPLICATION_DIRECT_MEASURE");
+// A reviewed transition is accepted only after the exact production receipt and
+// ACTIVE binding checks above; otherwise retain the historical DIRECT contract.
+const q513ReceiptPath = nativeApprovals.get(uid513);
+if (q513ReceiptPath) {
+  const applied = readJson(q513ReceiptPath).appliedRecords.filter(row => row.questionUid === uid513);
+  assert.strictEqual(applied.length, 1, uid513);
+  assert.strictEqual(applied[0].sourceArchiveFile, historicalByUid.get(uid513).source, uid513);
+  assert.strictEqual(Number(applied[0].sourceOrdinal), historicalByUid.get(uid513).ordinal, uid513);
+  assert.deepStrictEqual(applied[0], currentQuestionMetadata.get(uid513), uid513);
+  assert.strictEqual(q513.templateKey, applied[0].templateKey, uid513);
+} else {
+  assert.strictEqual(q513.templateKey, "TPL_TRIG_APPLICATION_DIRECT_MEASURE");
+}
 
 const globalRuntime = [
   "geometry-equations-v1.json", "sets-propositions-v1.json", "functions-graphs-v1.json",

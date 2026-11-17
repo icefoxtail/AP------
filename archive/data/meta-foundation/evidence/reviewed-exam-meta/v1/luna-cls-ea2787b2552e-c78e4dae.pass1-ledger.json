@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass1",
+  "createdAt": "2026-11-11T21:00:00+09:00",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_대단원_고2_유형심화.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "",
+      "primaryMethod": "θ와 7θ의 동경이 반대 방향이므로 6θ가 홀수배의 π가 되도록 놓고 0<θ<π에서 가능한 각을 찾는다.",
+      "decisiveStep": "θ=(2n+1)π/6에 범위를 적용하면 n=0, 1, 2만 남아 세 보기의 각이 모두 나온다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "일반각과 호도법", "l4": "일반각" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "",
+      "primaryMethod": "반지름을 r이라 두면 호의 길이는 24−2r이고 넓이는 −r²+12r이므로 이차함수의 꼭짓점에서 넓이와 중심각을 구한다.",
+      "decisiveStep": "넓이 −(r−6)²+36은 r=6에서 최대가 되고, 이때 호의 길이 12를 r로 나누면 중심각 2가 된다.",
+      "hold": "부채꼴의 둘레와 넓이 최적화에 해당하는 유형 경로 조합이 선택지 표에 없다.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "",
+      "primaryMethod": "제2사분면에서 cosθ<0임을 두고 주어진 두 분수의 합을 통분해 cos²θ를 구한 뒤 sinθ와 목표식을 계산한다.",
+      "decisiveStep": "통분한 합은 2/cos²θ이므로 cos²θ=4/5이며, 제2사분면 조건이 cosθ의 음의 부호를 정한다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "삼각함수의 성질", "l4": "삼각함수 관계" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "",
+      "primaryMethod": "π/12와 5π/12, π/6과 π/3을 각각 여각으로 짝지어 sin²과 cos²의 합으로 바꾸고 가운데 π/4 항을 더한다.",
+      "decisiveStep": "두 여각 쌍은 각각 sin²x+cos²x=1이 되고, 남은 sin²(π/4)는 1/2이므로 전체가 5/2이다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "삼각함수의 성질", "l4": "삼각함수 관계" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "",
+      "primaryMethod": "sin(ax)의 주기 2π/a와 |tan x|의 주기 π를 같게 놓고 양수 a를 결정한다.",
+      "decisiveStep": "2π/a=π에서 a=2이며, 절댓값은 tan x의 기본 주기 π를 바꾸지 않는다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 그래프", "l3": "그래프 변환", "l4": "주기·진폭" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "",
+      "primaryMethod": "π/20부터 9π/20까지의 sin² 값을 양끝에서 여각끼리 묶어 네 쌍을 1로 만들고 가운데 π/4 항을 더한다.",
+      "decisiveStep": "네 쌍은 sin²x+cos²x=1이고, 중앙 항 sin²(π/4)=1/2이므로 합은 9/2이다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "삼각함수의 성질", "l4": "삼각함수 관계" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "",
+      "primaryMethod": "0≤x≤π에서 sin x를 cos(π/2−x)로 바꾸고 cos 두 값이 같아지는 두 각의 관계를 풀어 구간 안의 근을 모은다.",
+      "decisiveStep": "3x=2nπ±(π/2−x)의 두 경우에서 구간 안 근은 π/8, 5π/8, 3π/4이고 이들의 합을 계산한다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "삼각방정식·부등식", "l4": "주기 구간의 해" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "",
+      "primaryMethod": "cos²x를 1−sin²x로 바꾸어 sin x의 이차부등식으로 정리한 뒤 0≤x<2π에서 경계각을 찾는다.",
+      "decisiveStep": "인수분해 결과는 sin x<1/2이고, 구간의 경계각 π/6과 5π/6을 α와 β에 대입한다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "삼각방정식·부등식", "l4": "주기 구간의 해" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "",
+      "primaryMethod": "AB=3, BC=4와 CD=3, DA=2인 두 삼각형에 코사인법칙을 쓰고 원에 내접한 사각형의 마주 보는 각 관계로 cos B를 구한다.",
+      "decisiveStep": "공통 대각선 AC의 제곱을 두 식으로 같게 놓고 cos D=−cos B를 대입하면 25−24cos B=13+12cos B가 된다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 활용", "l3": "코사인법칙", "l4": "변·각 계산" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "",
+      "primaryMethod": "(b+c):(c+a):(a+b)=4:5:6에서 a:b:c=7:5:3을 얻고 코사인법칙으로 cos A를 구해 sin A로 바꾼다.",
+      "decisiveStep": "코사인법칙은 cos A=−1/2를 주며, 삼각형의 내각이라 sin A는 양수인 √3/2이다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 활용", "l3": "코사인법칙", "l4": "변·각 계산" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "",
+      "primaryMethod": "AB=4, AC=5, 넓이 5√3에서 sin A를 구하고 가능한 두 각에 코사인법칙을 적용해 BC의 짧은 길이를 고른다.",
+      "decisiveStep": "sin A=√3/2는 A=60° 또는 120°를 주며, 두 경우의 BC²은 각각 21과 61이므로 작은 값은 √21이다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 활용", "l3": "코사인법칙", "l4": "변·각 계산" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "",
+      "primaryMethod": "θ와 6θ의 동경이 y축 대칭이면 두 각의 합이 홀수배의 π임을 이용하고 제4사분면 범위에서 가능한 θ를 찾는다.",
+      "decisiveStep": "7θ=(2n+1)π를 3π/2<θ<2π에 맞추면 n=5, 6만 가능해 θ는 11π/7과 13π/7이다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수", "l3": "일반각과 호도법", "l4": "일반각" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "",
+      "primaryMethod": "f(x)=a cos(x−π)+c로 보고 주기 2π에서 b를 정한 다음 (0,1)과 (π,5)를 대입해 a와 c를 구한다.",
+      "decisiveStep": "두 점의 식 −a+c=1, a+c=5를 더하고 빼면 c=3, a=2이며 주기 조건에서 b=1이다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 그래프", "l3": "그래프 변환", "l4": "주기·진폭" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "",
+      "primaryMethod": "반지름 6인 호 위의 P에서 OA=OP=6을 쓰고 삼각형 OAP의 넓이 9로 ∠AOP를 정한 뒤 코사인법칙으로 AP²을 구한다.",
+      "decisiveStep": "넓이 식 18sinα=9와 호의 각 범위 0<α≤π/3을 함께 쓰면 α=π/6만 남는다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 활용", "l3": "코사인법칙", "l4": "변·각 계산" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "",
+      "primaryMethod": "외접원 반지름 5로 사인법칙에서 BC=10sin A를 얻고, AB=6과 AC=8을 넣은 코사인법칙과 결합해 cos A를 푼다.",
+      "decisiveStep": "식 정리로 cos A(100cos A−96)=0이 되고 예각삼각형 조건이 cos A=0을 제외해 24/25를 남긴다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 활용", "l3": "사인법칙", "l4": "외접원 반지름" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "",
+      "primaryMethod": "a=7, b=5, c=3을 코사인법칙에 넣어 cos A와 sin A를 구하고, 넓이 15√3/4를 넓이와 내접원 반지름의 관계에 대입한다.",
+      "decisiveStep": "cos A=−1/2이므로 sin A=√3/2이고, 15√3/4=(15/2)r에서 r=√3/2가 나온다.",
+      "rpmPath": { "majorUnit": "삼각함수", "midUnit": "삼각함수의 활용", "l3": "삼각형의 넓이", "l4": "두 변과 끼인각" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

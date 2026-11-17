@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-d8a498ef3ac5-da962a07",
+  "sourceArchiveFile": "types/high/h2/비상_대수_사인코사인법칙_고2_유형심화.js",
+  "createdAt": "2026-11-15T19:38:25.712Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "3e03d5f190d06a3a11ee45eb70c13320a3cda824",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/비상_대수_사인코사인법칙_고2_유형심화.json",
+      "sourceSha256": "a62c42b0ae26efd813674fea433e469f1829f09e57c4c29aa332c0de8e40667b",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-d8a498ef3ac5-da962a07.pass1-ledger.json",
+      "repoSha256": "65bf1b56008d8e8f1f129b6217df239e8b4b522013471906ba5e7360329ed6ef",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/비상_대수_사인코사인법칙_고2_유형심화.json",
+      "sourceSha256": "3e306126ae6695b40f6a3d211e329d0df8379a2c0aff46e94dff253e92896012",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-d8a498ef3ac5-da962a07.pass2-ledger.json",
+      "repoSha256": "1db320609cd652303bdce5bb8087c5b8ca4906eaaee00020d56fe3b6f808838a",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard3-076-types-high-h2-sine-cosine-laws.json",
+      "sourceSha256": "acf2d1f0fda5157c3dc29b7797b56899d291812ebd92546c63e7fa0654af9c09",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-d8a498ef3ac5-da962a07.pass3-ledger.json",
+      "repoSha256": "acf2d1f0fda5157c3dc29b7797b56899d291812ebd92546c63e7fa0654af9c09",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard4-104-bisang-algebra-sine-cosine.json",
+      "sourceSha256": "7395d755755ee1047ef20deb84cab4b610ada18741df121338a17bc50a277d3b",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-d8a498ef3ac5-da962a07.pass3-ledger-2.json",
+      "repoSha256": "7395d755755ee1047ef20deb84cab4b610ada18741df121338a17bc50a277d3b",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 36,
+    "agree": 74,
+    "luna-k4": 8,
+    "p3": 16,
+    "tera-k67": 28
+  },
+  "itemSources": {
+    "registered+agree+luna-k4": 3,
+    "registered+agree+p3+tera-k67": 6,
+    "registered+agree+tera-k67": 8,
+    "registered+p3+luna-k4": 1
+  },
+  "typeHoldQuestions": 13,
+  "idWarnings": []
+}

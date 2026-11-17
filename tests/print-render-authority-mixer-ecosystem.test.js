@@ -25,14 +25,13 @@ function memoryStorage() {
   };
 }
 
-test('unit-past producer writes the real mixed storage contract with canonical provenance header metadata', () => {
+test('unit-past producer builds the output meta with canonical provenance header metadata and writes no legacy storage keys', () => {
   const storeMixedPayload = sourceBetween(unitPast, 'function getDefaultPaperPrintHeaderOptions', 'function appendSessionHash');
   const localStorage = memoryStorage();
   const context = {
     String, Number, Date, JSON, Map, Set, localStorage,
     getProfile: () => ({ grade: 'M3', gradeLabel: '중3' }),
     getQpp: () => 4,
-    readyShelf: () => false,
     getPaperSources: () => [{ label: '2026 · Fixture School · 1학기 중간' }],
     core: {
       getSelectionSubUnitKey: record => record.subUnitKey || '',
@@ -58,10 +57,10 @@ test('unit-past producer writes the real mixed storage contract with canonical p
     records: [{ sourceFile: 'exams/fixture.js', school: 'Fixture School', examYear: 2026, semester: 1, examType: 'mid', subUnitKey: 'poly', subUnitLabel: '다항식', difficulty: '중', problemTypeKey: 'poly-type', templateKey: 'poly-template', metadataRevision: 'archive-metadata-v1' }]
   };
   const questions = [{ id: 1, sourceQuestionUid: 'unit-past-q-1' }];
-  const meta = context.storeMixedPayload(unit, paper, questions);
+  const meta = context.buildMixedMeta(unit, paper, questions);
 
-  assert.deepEqual(JSON.parse(localStorage.getItem('mixedQuestions_unit-past-fixture-key')), questions);
-  const storedMeta = JSON.parse(localStorage.getItem('mixedMeta_unit-past-fixture-key'));
+  assert.equal(localStorage.values.size, 0, 'the questions travel in the output envelope, not in the old mixedQuestions_/mixedMeta_ keys');
+  const storedMeta = JSON.parse(JSON.stringify(meta));
   assert.equal(storedMeta.title, paper.title);
   assert.equal(storedMeta.printHeaderOptions.metaRight, '중3 수학 단원별 기출');
   assert.deepEqual(storedMeta.questionUids, ['unit-past-q-1']);

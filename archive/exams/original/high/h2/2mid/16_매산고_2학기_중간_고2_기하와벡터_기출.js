@@ -45,7 +45,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하"
   ,
-        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q01-solution.svg"
+        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q1-solution-v2.svg",
+        "solutionImageAlt": "꼭짓점 O가 원점인 오른쪽 열린 포물선에서 초점 F는 (4,0)에 있고, 준선 x=-4는 F와 O를 기준으로 반대쪽에 있다.",
+        "solutionImageCaption": "초점과 준선으로부터 꼭짓점까지의 거리는 4이므로 포물선의 방정식은 $y^2=16x$이다.",
+        "solutionImageSize": "full"
       },
   {
     "id": 2,
@@ -91,7 +94,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중"
   ,
-        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q02-solution.svg"
+        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q2-solution-v2.svg",
+        "solutionImageAlt": "원점을 중심으로 한 두 타원은 x축 위의 같은 두 초점 F′, F를 공유한다. 주어진 타원의 반축 길이는 3과 √5이고, 새 타원의 단축 길이는 2이다.",
+        "solutionImageCaption": "두 타원이 초점을 공유하고 새 타원의 단축 길이가 2이므로 $a^2+b^2=6$이다.",
+        "solutionImageSize": "full"
       },
   {
     "id": 3,
@@ -137,7 +143,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중"
   ,
-        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q03-solution.svg"
+        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q3-solution-v2.svg",
+        "solutionImageAlt": "쌍곡선 위 점 P(3,1)에서 그은 접선과 Q(2,4)를 지나는 수직선을 같은 좌표평면에 표시했다.",
+        "solutionImageCaption": "P에서 접선 기울기가 1이므로 수직인 직선의 기울기는 −1이고, Q(2,4)를 지나므로 직선의 방정식은 $y=-x+6$이다.",
+        "solutionImageSize": "full"
       },
   {
     "id": 4,
@@ -183,7 +192,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하"
   ,
-        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q04-solution.svg"
+        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q4-solution-v2.svg",
+        "solutionImageAlt": "같은 점에서 벡터 a와 b가 출발하며, 길이는 각각 2와 3이다. 두 벡터가 이루는 각은 120도이다.",
+        "solutionImageCaption": "$a\\cdot b=|a||b|\\cos120^\\circ=2\\cdot3\\cdot(-1/2)=-3$이다.",
+        "solutionImageSize": "full"
       },
   {
     "id": 5,
@@ -273,7 +285,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중"
   ,
-        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q06-solution.svg"
+        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q6-solution-v2.svg",
+        "solutionImageAlt": "좌표축에서 세 화살표 a, b, c가 공통 시점 O에서 출발한다. 각 화살표의 가로·세로 성분은 각각 (2,3), (1,−1), (−1,6)이다.",
+        "solutionImageCaption": "$a=(2,3)$, $b=(1,-1)$, $c=(-1,6)$이므로 $2k+l=-1$, $3k-l=6$이다. 따라서 $k=1$, $l=-3$이고 $k+l=-2$이다.",
+        "solutionImageSize": "full"
       },
   {
     "id": 7,
@@ -322,9 +337,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q07-solution.svg",
-    "solutionImageAlt": "쌍곡선 x²/5−y²/4=1 위의 제1사분면 점 P(5,4)와 원점 대칭점 Q(−5,−4)를 초점 F′(−3,0), F(3,0)과 이어 사각형 F′QFP를 그린 그림. 사각형의 넓이가 24임을 보여준다.",
-    "solutionImageCaption": "쌍곡선의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "쌍곡선 위의 제1사분면 점 P와 원점 대칭점 Q를 두 초점 F′, F와 이어 사각형 F′QFP를 만든다. 대각선 F′F와 QP는 원점 O에서 서로를 이등분한다.",
+    "solutionImageCaption": "사각형 넓이 $6b=24$에서 $b=4$, 쌍곡선 식에서 $a=5$이므로 $P=(5,4)$이다.",
     "solutionImageSize": "full"
   },
   {
@@ -371,7 +386,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상"
   ,
-        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q08-solution.svg"
+        "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q8-solution-v2.svg",
+        "solutionImageAlt": "매개곡선 C 위 점 P(2,2)에서 접선을 그린 예시이다. 접선은 P에서 곡선과 접하고 y축과도 만난다.",
+        "solutionImageCaption": "$g(a)=-2a(a+1)^2$이므로 극한값은 $-8$이다.",
+        "solutionImageSize": "full"
       },
   {
     "id": 9,
@@ -418,9 +436,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q09-solution.svg",
-    "solutionImageAlt": "반지름 1인 단위원 위의 점 P(cos t, sin t)에서 접선 방향 속도 v와 중심을 향하는 가속도 a를 화살표로 표시한 그림. 두 벡터가 수직이라 내적 v·a=0임을 나타낸다.",
-    "solutionImageCaption": "삼각함수의 미분의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "단위원 위 예시 위치 P에서 속도 v는 접선 방향, 가속도 a는 중심 O 방향이며 두 벡터가 직각을 이룬다.",
+    "solutionImageCaption": "v=(-sin t,cos t)는 접선 방향이고 a=(-cos t,-sin t)는 중심 방향이므로 v·a=0이다. 정답은 ①.",
     "solutionImageSize": "full"
   },
   {
@@ -470,9 +488,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q10-solution.svg",
-    "solutionImageAlt": "타원 x²/4+y²/3=1의 두 초점 F′(−1,0), F(1,0)과 타원 위의 점 P를 잇고, 장축 끝 A′, A로 만든 삼각형과 두 초점으로 만든 삼각형을 함께 표시한 그림. 넓이비 a/c=2와 둘레 2a+2c=6에서 a²+b²=7임을 보여준다.",
-    "solutionImageCaption": "타원의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "타원 위의 예시점 P에서 장축 끝 A′, A와 두 초점 F′, F를 연결해 두 삼각형을 겹쳐 그린다. 두 삼각형은 P에서 x축까지의 같은 높이를 가진다.",
+    "solutionImageCaption": "두 밑변은 $A'A=2a$, $F'F=2c$이고 높이는 같으므로 $a=2c$이다. 둘레에서 $a+c=3$이므로 $a^2+b^2=7$이다.",
     "solutionImageSize": "full"
   },
   {
@@ -522,9 +540,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q11-solution.svg",
-    "solutionImageAlt": "쌍곡선 y²−x²=1 위의 점 P(1/2,√5/2)에서 그은 접선이 A(−2,0)을 지나는 모습을 그린 그림. 접선의 기울기 aₙ=√(n/5)이고 Σ1/(aₙ+aₙ₊₁)=8√5임을 나타낸다.",
-    "solutionImageCaption": "쌍곡선의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "n=1인 예시 쌍곡선 y²−x²=1 위의 제1사분면 점 P와 외부점 A(−2,0)를 잇는 직선 t가 P에서 쌍곡선에 접한다.",
+    "solutionImageCaption": "일반항은 $a_n=\\sqrt{n/5}$이므로 합은 망원합 $\\sqrt5(\\sqrt{81}-1)=8\\sqrt5$이다.",
     "solutionImageSize": "full"
   },
   {
@@ -570,9 +588,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q12-solution.svg",
-    "solutionImageAlt": "삼각형 ABC 내부의 점 P에서 A, B, C로 그은 선분을 연장해 변 BC, CA, AB와 만나는 점 D, E, F를 표시한 그림. AB 위의 F가 AF:FB=1:2를 만족하고 세 선분이 P에서 만남을 보여준다.",
-    "solutionImageCaption": "벡터의 연산의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "삼각형 ABC 내부의 점 P에서 A, B, C로 향하는 벡터와 계수 2, 1, 3을 나타낸다. AP, BP, CP의 연장선은 각각 BC, CA, AB와 D, E, F에서 만난다.",
+    "solutionImageCaption": "벡터 조건에서 P=(2A+B+3C)/6이므로 AF:FB=1:2, AE:EC=3:2, BD:DC=3:1이다. 넓이비까지 확인하면 ㄱ, ㄴ, ㄷ이 모두 참이므로 정답은 ⑤.",
     "solutionImageSize": "full"
   },
   {
@@ -620,9 +638,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q13-solution.svg",
-    "solutionImageAlt": "좌표평면에 벡터 조건 |xp+yq|=2√5가 만드는 타원 x²+y²/4=1을 그린 그림. 원점에서 타원까지의 거리가 장축 끝에서 최대 2, 단축 끝에서 최소 1이고 그 합이 3임을 표시한다.",
-    "solutionImageCaption": "평면벡터의 성분과 내적의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "벡터 조건이 만드는 타원 x²+y²/4=1과 원점 O를 나타낸 그림이다. 장축 방향의 반지름은 2, 단축 방향의 반지름은 1이다.",
+    "solutionImageCaption": "타원에서 원점까지의 최댓값은 2, 최솟값은 1이다. 두 값의 합은 3이며 정답은 ①.",
     "solutionImageSize": "full"
   },
   {
@@ -670,9 +688,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q14-solution.svg",
-    "solutionImageAlt": "매개곡선 위의 t=π/2인 점 (1,1)과 t=3π/2인 점 (−1,1)을 지나며 접선 l: y=1에 접하는 모습을 그린 그림. 두 점 사이를 움직인 거리가 π임을 보여준다.",
-    "solutionImageCaption": "여러 가지 적분법의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "매개곡선 C의 x,y 궤적이 아니라 시각 t에 따른 속력 v(t)=1+½sin(2t) 그래프이다. 구간은 π/2부터 3π/2까지이며 수평 기준선 v=1이 표시되어 있다.",
+    "solutionImageCaption": "이동거리는 속력 그래프 아래 넓이인 $\\int_{\\pi/2}^{3\\pi/2}(1+\\frac12\\sin2t)\\,dt=\\pi$이다.",
     "solutionImageSize": "full"
   },
   {
@@ -714,9 +732,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q15-solution.svg",
-    "solutionImageAlt": "삼각형 OAB에서 OA의 중점 M, OB를 1:2로 내분하는 점 N을 잡고 BM과 AN의 교점 P를 표시한 그림. OP=(2a+b)/5이므로 m+n=3/5임을 나타낸다.",
-    "solutionImageCaption": "벡터의 연산의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "삼각형 OAB에서 M은 OA의 중점이고 N은 OB를 ON:NB=1:2로 내분한다. 벡터 OA, OB와 선분 BM, AN의 교점 P를 나타낸 그림이다.",
+    "solutionImageCaption": "직선 BM과 AN의 교점 P를 기준으로 벡터 OP를 OA와 OB의 합으로 나타내면, 각각의 계수는 2/5와 1/5이다. 정답은 3/5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -796,9 +814,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q17-solution.svg",
-    "solutionImageAlt": "두 원 C₁(중심 (0,2), 반지름 5)과 C₂(중심 (0,−1), 반지름 1)에 접하는 움직이는 원의 중심 P를 표시한 그림. PC₁+PC₂=6이 일정해 초점 (0,2), (0,−1)인 타원 4x²/27+(y−1/2)²/9=1을 이룸을 보여준다.",
-    "solutionImageCaption": "타원의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "두 고정 원의 중심 C₁과 C₂를 초점으로 하는 타원 위에 움직이는 원의 중심 P가 있다. d₂는 선분 PC₂에 붙은 거리 표시이다.",
+    "solutionImageCaption": "PC₁=5−r, d₂=PC₂=1+r이므로 PC₁+PC₂=6이다. 타원 E의 방정식은 4x²/27+(y−1/2)²/9=1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -840,9 +858,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q18-solution.svg",
-    "solutionImageAlt": "포물선 y²=4px와 점 (p,0)을 지나 기울기 p인 직선의 두 교점 A, B를 표시한 그림. 현 AB의 길이가 4(p+1/p)임을 나타낸다.",
-    "solutionImageCaption": "포물선의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "예시 p=1에서 포물선 y²=4x와 점 (1,0)을 지나는 기울기 1의 직선 l이 서로 다른 두 점 A, B에서 만나고 선분 AB가 그어진다.",
+    "solutionImageCaption": "일반 p>0에서 두 교점 사이의 거리는 $|AB|=4\\left(p+\\dfrac1p\\right)$이다.",
     "solutionImageSize": "full"
   },
   {
@@ -882,9 +900,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q19-solution.svg",
-    "solutionImageAlt": "곡선 y=x² 위의 점 P(2,4)에서 x축에 내린 수선의 발 Q(2,0)와, 곡선·x축·PQ로 둘러싸인 넓이 S=x³/3을 표시한 그림. 이때 점 P의 속력이 √17/2임을 보여준다.",
-    "solutionImageCaption": "도함수의 활용의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "P(2,4)를 지나는 순간, 원점 O에서 P까지 그린 곡선 y=x²의 일부와 x축, 수선 PQ 사이를 S로 색칠했다. 그 순간의 넓이 변화율은 2이다.",
+    "solutionImageCaption": "넓이는 $S(x)=\\int_0^x t^2\\,dt=\\dfrac{x^3}{3}$이다. $dS/dt=x^2\\cdot dx/dt=2$이므로 $x=2$에서 $dx/dt=1/2$, $dy/dt=2$이다. 따라서 속력은 $\\sqrt{17}/2$.",
     "solutionImageSize": "full"
   },
   {
@@ -924,9 +942,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
-    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q20-solution.svg",
-    "solutionImageAlt": "∠AOB=90°인 직각삼각형 OAB에서 빗변 AB의 중점 P를 표시한 그림. AB=6이므로 외심인 P까지의 거리 BP=3임을 나타낸다.",
-    "solutionImageCaption": "평면벡터의 성분과 내적의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
+    "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "조건을 만족하는 한 배치의 직각삼각형 OAB에서 벡터 OA와 OB, O의 직각, 외심 P와 세 반지름 OP, PA, PB를 나타낸다.",
+    "solutionImageCaption": "두 내적 조건으로 P는 OA와 OB의 수직이등분선 위에 있으므로 △OAB의 외심이다. ∠AOB=90°이어서 P는 AB의 중점이고, 구하는 길이는 3.",
     "solutionImageSize": "full"
   }
 ];

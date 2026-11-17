@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다.",
-    "decisiveStep": "중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다."
+    "decisiveStep": "중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -93,7 +96,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다.",
-    "decisiveStep": "접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다."
+    "decisiveStep": "접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -234,7 +240,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다.",
-    "decisiveStep": "현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다."
+    "decisiveStep": "현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -328,7 +337,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다.",
-    "decisiveStep": "지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다."
+    "decisiveStep": "지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -375,7 +387,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다.",
-    "decisiveStep": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다."
+    "decisiveStep": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -469,7 +484,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다.",
-    "decisiveStep": "반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다."
+    "decisiveStep": "반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -516,7 +534,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다.",
-    "decisiveStep": "높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다."
+    "decisiveStep": "높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -958,7 +979,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다.",
-    "decisiveStep": "접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다."
+    "decisiveStep": "접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1000,7 +1024,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다.",
-    "decisiveStep": "같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다."
+    "decisiveStep": "같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

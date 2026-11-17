@@ -69,3 +69,40 @@ test('both comparison servers send the verified JS and leave live assets and def
   assert.equal(await (await fetch(defaultServer.origin + sourceUrl)).text(), currentSource);
   assert.equal(loadBank(current, source).length, 0);
 });
+
+test('the reference comparison host receives the readable original-exam title through examDisplayTitle and changes nothing else', async t => {
+  const vm = require('node:vm');
+  const { readableExamTitle } = require('../archive/exam-display-title.js');
+  const { fixtures, sourceOverlay } = loadQualificationFixtures(root);
+  const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-reference-title-'));
+  const server = await serve(folder, root, sourceOverlay, { referenceDisplayTitle: true });
+  t.after(async () => { await server.close(); fs.rmSync(folder, { recursive: true, force: true }); });
+  const seen = new Set();
+  let readable = 0;
+  for (const source of fixtures.flatMap(fixture => fixture.sources)) {
+    if (seen.has(source.file)) continue;
+    seen.add(source.file);
+    const bytes = Buffer.from(await (await fetch(server.origin + '/' + source.file.split('/').map(encodeURIComponent).join('/'))).arrayBuffer());
+    const verified = sourceOverlay('/' + source.file);
+    assert.ok(bytes.subarray(0, verified.length).equals(Buffer.from(verified)), 'the verified exam bytes stay an exact prefix: ' + source.file);
+    const sandbox = {}; sandbox.window = sandbox;
+    vm.runInNewContext(bytes.toString('utf8'), sandbox);
+    const title = sandbox.examTitle;
+    if (typeof title === 'string' && title) { assert.equal(sandbox.examDisplayTitle, readableExamTitle(title), source.file); if (sandbox.examDisplayTitle !== title) readable += 1; }
+  }
+  assert.ok(seen.size > 0 && readable > 0, 'at least one pinned exam title is resolved to the readable form');
+  // An exam that sets its own display title keeps it; other files are never touched.
+  const exams = path.join(folder, 'archive/exams');
+  fs.mkdirSync(exams, { recursive: true });
+  fs.writeFileSync(path.join(exams, 'own.js'), 'window.examTitle = "22_강남여고_1학기_중간_고1_기출"; window.examDisplayTitle = "직접 지정한 제목";');
+  fs.writeFileSync(path.join(exams, 'note.txt'), 'plain');
+  const own = {}; own.window = own;
+  const isolated = await serve(folder, folder, undefined, { referenceDisplayTitle: true });
+  t.after(() => isolated.close());
+  vm.runInNewContext(await (await fetch(isolated.origin + '/archive/exams/own.js')).text(), own);
+  assert.equal(own.examDisplayTitle, '직접 지정한 제목');
+  assert.equal(await (await fetch(isolated.origin + '/archive/exams/note.txt')).text(), 'plain');
+  const plain = await serve(folder, folder);
+  t.after(() => plain.close());
+  assert.equal(await (await fetch(plain.origin + '/archive/exams/own.js')).text(), fs.readFileSync(path.join(exams, 'own.js'), 'utf8'));
+});

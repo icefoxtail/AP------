@@ -1,0 +1,206 @@
+{
+    "sourceArchiveFile":  "original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "items":  [
+                  {
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_ROLLE_THEOREM_PRECONDITIONS"
+                                           ],
+                      "resolutionReason":  "f(0)=f(2)=7이고 f′(x)=2x−2이므로 유일한 내부 정지점 c=1이 롤 정리를 만족한다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_VOLUME_MODELING_POLYNOMIAL"
+                                           ],
+                      "resolutionReason":  "잘라낸 길이 x에서 부피 V=x(6−2x)², 0\u003cx\u003c3이고 V′=12(3−x)(1−x)는 x=1에서 양에서 음으로 바뀌어 최대 16이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_HORIZONTAL_LINE_INTERSECTIONS"
+                                           ],
+                      "resolutionReason":  "두 번 미분한 가속도 등식은 k=−3(t−1)²+6이고 t\u003e0에서 두 교점이 생기는 정수 k는 4,5라 합은 9다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ],
+                      "rpmPath":  {
+                                      "l3":  "정적분의 성질"
+                                  },
+                      "resolutionReason":  "주기 4에서 한 주기 [−1,3]의 두 적분은 3/2와 9/2라 합 6이고 길이 20의 적분은 다섯 배인 30이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  12,
+                      "chosenFrom":  "pass1",
+                      "crossConceptKeys":  [
+                                               "CC_INTERVAL_ADDITIVITY_PROPERTY"
+                                           ]
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_INTEGRAL_AREA_PARAMETER_BOUND"
+                                           ],
+                      "resolutionReason":  "교점 9−u²=k에서 두 넓이 적분의 등식은 u²=3을 주어 k=6,S₂=2√3,k/S₂=√3이다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  14,
+                      "choiceTableUsed":  "H2-수학II.json"
+                  },
+                  {
+                      "rpmPath":  {
+                                      "l4":  "접점 조건"
+                                  },
+                      "resolutionReason":  "f′(0)=f′(a)에서 a=2, f′의 최대 1에서 A=−1, 접선 y절편 6에서 D=7이므로 f(3)=1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+                                               "CC_CUBIC_POLYNOMIAL_COEFFICIENTS_RECOVERY"
+                                           ]
+                  },
+                  {
+                      "resolutionReason":  "f′=6(x−1)(x−2)라 최솟값 4에는 t≥2가 필요하고 f(t)−5=(t−1)²(2t−5)에서 t≤5/2이므로 ab=5다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "ordinal":  16,
+                      "choiceTableUsed":  "H2-수학II.json"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_CRITICAL_POINTS_SIGN_CHANGE"
+                                           ],
+                      "resolutionReason":  "f′=(x−a)²(4x−a−3b)에서 극소점 3은 단순근이므로 a+3b=12, 정수 b≥4이고 근합 15−3b의 최대는 3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "resolutionReason":  "원점 대칭으로 음수 쪽 f=x²+2x이고 구간별 최댓값 함수와의 넓이는 1/4+4/3=19/12라서 p+q=31이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "ordinal":  19,
+                      "choiceTableUsed":  "H2-수학II.json"
+                  },
+                  {
+                      "resolutionReason":  "h=x^{n+1}−(n+1)x는 x\u003e1에서 증가해 하한 −n을 가지므로 −n≥n²−10n+14, 즉 2≤n≤7의 자연수 6개다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ],
+                      "ordinal":  20,
+                      "choiceTableUsed":  "H2-수학II.json"
+                  },
+                  {
+                      "rpmPath":  {
+                                      "l3":  "정적분의 뜻",
+                                      "l4":  "정적분 계산"
+                                  },
+                      "resolutionReason":  "A=∫₀¹f(t)dt로 두면 f(x)=3x²+2A를 다시 적분해 A=1+2A, A=−1을 얻으므로 f(2)=10이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+                                               "CC_DEFINITE_INTEGRAL_PARAMETER_SOLVING"
+                                           ]
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_LOCAL_EXTREMA_INTERSECTION_BOUNDS"
+                                           ],
+                      "resolutionReason":  "도함수 그래프를 f′=3−3x²/4로 복원해 적분하면 f의 극값은 −4,4라 그 사이 정수 k 일곱 개가 서로 다른 세 실근을 준다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_HORIZONTAL_LINE_INTERSECTIONS"
+                                           ],
+                      "resolutionReason":  "h′=12x(x+2)(x−1)에서 극솟값은 −32,−5이고 극댓값은 0이라 −5\u003ca\u003c0의 정수 a는 네 개다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_DEFINITION_LIMIT"
+                                           ],
+                      "resolutionReason":  "F(x)=∫₂ˣf(t)dt로 두면 극한은 F′(2)=f(2)=2³−2·2+1=5다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  5,
+                      "choiceTableUsed":  "H2-수학II.json"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_INTEGRAL_AREA_PARAMETER_BOUND"
+                                           ],
+                      "resolutionReason":  "ax−x²의 양의 영점은 0,a라 넓이는 ∫₀ᵃ(ax−x²)dx=a³/6=9/2이고 양수 a=3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_DIRECTION_CHANGE_ZERO_VELOCITY"
+                                           ],
+                      "resolutionReason":  "속도 그래프 부호는 t=2,4에서만 바뀌고 변위·절댓값 넓이로 t=5 위치 1, 전체 거리 8, 첫 원점 복귀 거리 4를 얻는다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_UPPER_BOUND"
+                                        ],
+                      "rpmPath":  {
+                                      "l4":  "증감표",
+                                      "midUnit":  "도함수의 활용(2)",
+                                      "l3":  "증가·감소와 극값"
+                                  },
+                      "resolutionReason":  "f=c(x−1)(x−10)²과 f′=3c(x−4)(x−10)의 부호를 곱하면 1,4,5,6,7,8,9,10만 포함되어 8개다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2"
+                  }
+              ],
+    "createdAt":  "2026-11-13T12:12:00+09:00"
+}

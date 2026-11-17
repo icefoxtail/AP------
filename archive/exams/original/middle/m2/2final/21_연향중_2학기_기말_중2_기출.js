@@ -674,7 +674,8 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",

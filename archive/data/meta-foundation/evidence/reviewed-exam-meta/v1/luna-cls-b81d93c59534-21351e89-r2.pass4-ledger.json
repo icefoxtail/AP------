@@ -1,0 +1,44 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:04:43.392+00:00",
+ "sourceArchiveFile": "original/high/h2/1mid/22_순천고_1학기_중간_고2_수학I.js",
+ "items": [
+  {
+   "ordinal": 19,
+   "chosenFrom": "new",
+   "resolutionReason": "T=25+ka^t에서 T(0)=125로 k=100, T(1)=105로 a=4/5를 구하고 T=89일 때 (4/5)^t=16/25로 t=2분을 얻는 냉각 모형이라 지수함수의 활용 중 최대·최소나 교점에 맞지 않는다.",
+   "choiceTableUsed": "H2-대수.json",
+   "rpmPath": {
+    "l4": ""
+   },
+   "hold": "신규 제안: 지수함수의 활용 아래 실생활 모형(냉각) 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "실생활 모형",
+     "label": "지수함수 실생활 모형",
+     "parent": "지수함수와 로그함수 > 지수함수 > 지수함수의 활용",
+     "why": "가장 가까운 '최대·최소'는 값의 범위를 구하고 '그래프 교점'은 두 그래프의 교점을 구하지만, 이 문항은 냉각식에 값을 넣어 시간 t를 푼다."
+    }
+   }
+  },
+  {
+   "ordinal": 21,
+   "chosenFrom": "new",
+   "resolutionReason": "f(x)=log₃(x²-6x+10)=log₃((x-3)²+1)의 바닥함수 [f(1)]+...+[f(22)]를 |n-3|별로 묶어 합하는 문제라 로그함수의 활용 아래 가우스 기호 항목이 필요하다.",
+   "choiceTableUsed": "H2-수학I.json",
+   "rpmPath": {
+    "l4": ""
+   },
+   "hold": "신규 제안: 로그함수의 활용 아래 가우스 기호와 로그 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "가우스 기호와 로그",
+     "label": "가우스 기호와 로그의 합",
+     "parent": "지수함수와 로그함수 > 로그함수 > 로그함수의 활용",
+     "why": "가장 가까운 '최대·최소'는 극값을 구하고 '그래프 교점'은 교점 개수를 세지만, 이 문항은 바닥함수 값을 구간별로 더한다."
+    }
+   }
+  }
+ ]
+}

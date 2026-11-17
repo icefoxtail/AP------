@@ -9,14 +9,16 @@ test('Archive 2 unit preparation does not duplicate the question snapshot in leg
   const root = { UnitPastExamsCore: core, location: new URL('https://archive.test/archive/unit-past-exams.html?ready=1'), addEventListener() {} };
   const source = fs.readFileSync(require.resolve('../archive/unit-past-exams.js'), 'utf8');
   const end = source.lastIndexOf('})();');
-  vm.runInNewContext(source.slice(0, end) + 'window.testUnit = { state, storeMixedPayload }; })();', {
+  vm.runInNewContext(source.slice(0, end) + 'window.testUnit = { state, buildMixedMeta }; })();', {
     window: root, URL, URLSearchParams, document: { getElementById: () => null }, localStorage: blockedStorage,
   });
   root.testUnit.state.profileId = 'h1';
   const unit = core.PROFILES.h1.units[0];
-  const meta = root.testUnit.storeMixedPayload(unit, { title: '단원 시험지', snapshotKey: 'unit-test', records: [{ questionUid: 'q-1', sourceFile: 'test.js' }] }, [{ questionUid: 'q-1', content: 'question' }]);
+  const meta = root.testUnit.buildMixedMeta(unit, { title: '단원 시험지', snapshotKey: 'unit-test', records: [{ questionUid: 'q-1', sourceFile: 'test.js' }] }, [{ questionUid: 'q-1', content: 'question' }]);
   assert.equal(meta.count, 1);
   assert.equal(meta.questionUids[0], 'q-1');
+  // The page never writes the questions to the old mixedQuestions_/mixedMeta_ keys (quota-blocked storage must not matter).
+  assert.doesNotMatch(source, /mixedQuestions_|mixedMeta_|APMATH_UNIT_PAST_ASSIGN_/);
 });
 
 function indexFunction(name) {

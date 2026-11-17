@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-86c64ac0c523-141ec57f",
+  "sourceArchiveFile": "original/high/h2/1final/25_효천고_1학기_기말_고2_대수c.js",
+  "createdAt": "2026-11-15T19:32:54.900Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "f2bce50dd3cf7009e7c9647c130ce9f9a98a590f",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/25_효천고_1학기_기말_고2_대수c.json",
+      "sourceSha256": "3a620271bd426a20bc78f4734b39e22a7ed27afeed2ea67126b7e70b5c134fce",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-86c64ac0c523-141ec57f.pass1-ledger.json",
+      "repoSha256": "3a620271bd426a20bc78f4734b39e22a7ed27afeed2ea67126b7e70b5c134fce",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/25_효천고_1학기_기말_고2_대수c.json",
+      "sourceSha256": "de5946f7802487e7861c1b5eb271ff91bc65255a9774eb91275f7df26bec5b61",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-86c64ac0c523-141ec57f.pass2-ledger.json",
+      "repoSha256": "52f6ced8a755599387e821dcc3b599cd28a9cf9e2a1f4d058adedbdf9feb9cbc",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-2-055.json",
+      "sourceSha256": "e4fea40327c5d7f8cc0faa469cee88edb84069b469d22f7dccadf6d7e10785ad",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-86c64ac0c523-141ec57f.pass3-ledger.json",
+      "repoSha256": "1fcebbd354a11d38631b1f6c7fbfc2f4a4359fc3a7745b20b944678bd684ed75",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard4-065-hyochon-high2-algebra-final.json",
+      "sourceSha256": "37a971df616c73ea4ac0f40beb6c20e9a7347bd657f5eade78685442dff406e6",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-86c64ac0c523-141ec57f.pass3-ledger-2.json",
+      "repoSha256": "37a971df616c73ea4ac0f40beb6c20e9a7347bd657f5eade78685442dff406e6",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 46,
+    "agree": 75,
+    "luna-k4": 36,
+    "p3": 40,
+    "tera-k67": 10
+  },
+  "itemSources": {
+    "registered+agree+luna-k4": 7,
+    "registered+agree+p3+luna-k4": 4,
+    "registered+p3+luna-k4": 4,
+    "registered+agree+p3+tera-k67": 1,
+    "registered+agree+luna-k4+p3": 2,
+    "registered+agree+tera-k67+p3": 2,
+    "registered+agree+tera-k67": 1,
+    "registered+p3+tera-k67": 1
+  },
+  "typeHoldQuestions": 14,
+  "idWarnings": []
+}
