@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      0,
+      2,
+      0,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "R0",
+        "x": "1",
+        "y": "4",
+        "marker": "NONE"
+      },
+      {
+        "id": "R1",
+        "x": "3/2",
+        "y": "31/4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "h=1/2",
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3/2",
+        "label": "S"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "left",
+          "x": "1",
+          "style": "DASHED"
+        },
+        {
+          "id": "right",
+          "x": "3/2",
+          "style": "DASHED"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "R0",
+        "R1"
+      ]
+    }
+  },
+  "caption": "h=1/2로 둔 폭의 예시이다. 좁은 띠의 넓이를 폭으로 나눈 값이 왼쪽 끝 높이로 가까워지는 관계를 본다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 곡선 $y=3x^2+1$과 $x$축 및 두 직선 $x=1$, $x=1+h$ ($h>0$)로 둘러싸인 도형의 넓이를 $S(h)$라고 할 때, $\\lim_{h \\to 0+} \\frac{S(h)}{h}$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "S(h)=∫1^{1+h}(3x²+1),폭h. h1/2 예시만 제시하고 최종극한4나 x1점높이4 라벨 없음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "S(h)=∫1^{1+h}(3x²+1),폭h. h1/2 예시만 제시하고 최종극한4나 x1점높이4 라벨 없음."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-18",
+          "-24",
+          "-6"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.5,
+      0.5
+    ],
+    "viewport": [
+      -3.5,
+      0.5,
+      -20,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-2",
+        "y": "6"
+      },
+      {
+        "id": "R0",
+        "x": "-3",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "R1",
+        "x": "-1",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "R2",
+        "x": "0",
+        "y": "-18",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "L",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-3",
+        "to": "-1",
+        "label": "8"
+      },
+      {
+        "id": "R",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-1",
+        "to": "0",
+        "label": "8"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "R0",
+        "R1",
+        "R2"
+      ]
+    }
+  },
+  "caption": "도함수의 두 영점 사이 양수 영역과 오른쪽 음수 영역의 절댓값 넓이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 4. 최고차항의 계수가 $k(k<0)$인 이차함수 $f'(x)$의 그래프가 다음 그림과 같다.\n\n이때, 실수 전체의 집합에서 정의된 함수\n$g(x) = \\begin{cases} f(x) & (x < -3) \\\\ \\int_0^x |f'(t)|dt & (x \\ge -3) \\end{cases}$\n이 다음 조건을 만족시킨다.\n\n(가) $g(-3)=-16$, $g(a)=-8$\n(나) 함수 $g(x)$는 실수 전체의 집합에서 연속이다.\n(다) 함수 $g(x)$는 극솟값을 갖는다.\n\n$\\int_a^2 \\{f(x)+g(x)\\}dx$의 값을 구하는 과정을 서술하시오. (단, $a > -3$) [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG 아래로열린도함수,근−3,a<0확인. 적분조건으로a−1,k−6을도출한모델. 두넓이8은주어진g조건의중간값. 최종적분−48및f+g상수값−16은라벨로안씀.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG 아래로열린도함수,근−3,a<0확인. 적분조건으로a−1,k−6을도출한모델. 두넓이8은주어진g조건의중간값. 최종적분−48및f+g상수값−16은라벨로안씀."
+  ]
+}

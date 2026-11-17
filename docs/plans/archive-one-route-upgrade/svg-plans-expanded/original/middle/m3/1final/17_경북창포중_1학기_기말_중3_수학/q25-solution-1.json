@@ -1,0 +1,115 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "12",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "27",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "9",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "D",
+          "x": "9",
+          "y": "27",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ],
+      "lines": [
+        {
+          "id": "axis",
+          "x": "6",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "예시 a=3인 직사각형이다. 대칭축을 기준으로 같은 높이의 두 꼭짓점을 잡아 너비와 높이의 관계를 비교한다.",
+  "accessibilityDescription": "예시 a=3인 직사각형이다. 대칭축을 기준으로 같은 높이의 두 꼭짓점을 잡아 너비와 높이의 관계를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형5] 아래 그림과 같이 두 점 $\\text{A}, \\text{D}$는 직선 $x=6$를 축으로 하는 이차함수 $y=-x^2+bx$의 그래프 위에 있고, 두 점 $\\text{B}, \\text{C}$는 $x$축 위에 있다. 다음 물음에 답하여라. [6.0점]\n(1) 상수 $b$의 값을 구하시오.\n(2) 점 $\\text{B}$의 좌표를 $\\text{B}(a,0)\\;(a>0)$이라고 할 때, $a$를 사용하여 $\\overline{\\text{AB}}, \\overline{\\text{BC}}$의 길이를 각각 구하시오.\n(3) $\\square\\text{ABCD}$의 둘레의 길이의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인. 축6→b12. 0<a<6,높이−a²+12a,폭12−2a,둘레−2a²+20a+24→최대74. 첫그림 a3의예시이며 최종길이식/계수/둘레는라벨미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 a=3인 직사각형이다. 대칭축을 기준으로 같은 높이의 두 꼭짓점을 잡아 너비와 높이의 관계를 비교한다."
+  ]
+}

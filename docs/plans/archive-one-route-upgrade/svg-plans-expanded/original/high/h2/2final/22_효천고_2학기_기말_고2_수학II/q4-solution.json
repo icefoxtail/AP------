@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      -2.5,
+      2.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "v(t)"
+    },
+    "regions": [
+      {
+        "id": "A",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "2",
+        "label": "B"
+      },
+      {
+        "id": "C",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "3",
+        "label": "C"
+      }
+    ]
+  },
+  "caption": "가로축 아래 두 조각과 위 한 조각의 넓이를 모두 양수로 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "4. 원점을 출발하여 수직선 위를 $3$초 동안 움직이는 점 $\\mathrm{P}$의 시각 $t$초에서 속도 $v(t)$의 그래프가 다음 그림과 같을 때, 시각 $t=0$에서 $t=3$까지 점 $\\mathrm{P}$가 움직인 거리는? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG 꼭짓점(0,0),(1,−2),(3,2),영점2 확인. 각삼각형넓이1이지만최종이동거리3은표시하지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG 꼭짓점(0,0),(1,−2),(3,2),영점2 확인. 각삼각형넓이1이지만최종이동거리3은표시하지않음."
+  ]
+}

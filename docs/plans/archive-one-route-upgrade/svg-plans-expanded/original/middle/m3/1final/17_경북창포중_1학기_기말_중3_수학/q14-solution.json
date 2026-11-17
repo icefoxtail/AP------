@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7/2",
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "1",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "7/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "axis",
+          "x": "1",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "대칭축과 꼭짓점, 세로축과 만나는 위치를 구별하여 각 설명을 확인한다.",
+  "accessibilityDescription": "대칭축과 꼭짓점, 세로축과 만나는 위치를 구별하여 각 설명을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 이차함수 $y=\\dfrac{1}{2}x^2-x+\\dfrac{7}{2}$의 그래프에 대한 설명으로 옳지 않은 것은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "1/2(x−1)²+3, y절편7/2. 거짓보기 번호 미표시. 정답은보기식별이므로 중간특징 보존.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭축과 꼭짓점, 세로축과 만나는 위치를 구별하여 각 설명을 확인한다."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "3",
+          "y": "-7",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "주어진 꼭짓점을 가진 예시 a=1이다. 세로축 왼쪽으로 갈수록 높아지는 부분과 세로축에서의 높이를 비교한다.",
+  "accessibilityDescription": "주어진 꼭짓점을 가진 예시 a=1이다. 세로축 왼쪽으로 갈수록 높아지는 부분과 세로축에서의 높이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "19. 이차함수 $y=ax^2+bx+c$는 $x=3$일 때 최솟값이 $-7$이다. 이 이차함수의 그래프가 제 3사분면을 지나지 않을 때, 상수 $a$의 값의 범위는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=a(x−3)²−7,a>0. x<0에음수없으려면f0=9a−7≥0, a≥7/9. 예시a1명시,최종경계 미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 꼭짓점을 가진 예시 a=1이다. 세로축 왼쪽으로 갈수록 높아지는 부분과 세로축에서의 높이를 비교한다."
+  ]
+}

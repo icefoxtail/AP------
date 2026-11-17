@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -8,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "caption": "완전제곱 형태는 포물선의 축과 꼭짓점 위치를 드러낸다. 구하는 꼭짓점 좌표는 숨기고 형태와 대칭을 확인한다.",
+  "accessibilityDescription": "완전제곱 형태는 포물선의 축과 꼭짓점 위치를 드러낸다. 구하는 꼭짓점 좌표는 숨기고 형태와 대칭을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형1] 이차함수 $y=x^2-4x-2$을 $y=a(x-p)^2+q$의 꼴로 고치고, 꼭짓점의 좌표를 구하여라. [3.0점]\n(단, 풀이과정을 자세히 쓰시오.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "완전제곱 x²−4x−2=(x−2)²−6, 꼭짓점(2,−6).",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "완전제곱 형태는 포물선의 축과 꼭짓점 위치를 드러낸다. 구하는 꼭짓점 좌표는 숨기고 형태와 대칭을 확인한다."
+  ]
+}

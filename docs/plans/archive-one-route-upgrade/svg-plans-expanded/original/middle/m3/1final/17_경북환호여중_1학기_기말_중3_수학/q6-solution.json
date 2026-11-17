@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "0",
+          "1/5"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      6
+    ],
+    "viewport": [
+      -7,
+      6,
+      -5,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "-6"
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점과 주어진 점 (5,1)로 포물선의 계수를 정한다. x=−6에서 읽어야 하는 높이는 숨긴다.",
+  "accessibilityDescription": "꼭짓점과 주어진 점 (5,1)로 포물선의 계수를 정한다. x=−6에서 읽어야 하는 높이는 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 꼭짓점의 좌표가 $(0, -4)$인 이차함수의 그래프가 두 점 $(5, 1)$, $(-6, m)$을 지날 때, 상수 $m$의 값은 얼마인가? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "y=ax²−4에(5,1)을 대입해a=1/5, x=−6에서16/5로③.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 주어진 점 (5,1)로 포물선의 계수를 정한다. x=−6에서 읽어야 하는 높이는 숨긴다."
+  ]
+}

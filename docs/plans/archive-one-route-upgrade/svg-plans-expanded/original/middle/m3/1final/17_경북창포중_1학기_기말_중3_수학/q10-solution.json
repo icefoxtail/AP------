@@ -1,0 +1,118 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "9"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "9",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "caption": "대칭인 네 교점 사이의 같은 길이를 수평선에서 비교하고 안쪽 교점의 좌표를 대입한다.",
+  "accessibilityDescription": "대칭인 네 교점 사이의 같은 길이를 수평선에서 비교하고 안쪽 교점의 좌표를 대입한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 다음 그림과 같이 직선 $y=9$가 두 이차함수 $y=x^2, y=ax^2$의 그래프와 만나는 네 점을 각각 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$라 할 때, $\\overline{\\text{AB}}=\\overline{\\text{BC}}=\\overline{\\text{CD}}$이기 위한 상수 $a$의 값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG 바깥y=x²,안쪽y=ax². 전체6을삼등분→안쪽±1. a9는수식라벨/답으로표시하지않고 중립g.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭인 네 교점 사이의 같은 길이를 수평선에서 비교하고 안쪽 교점의 좌표를 대입한다."
+  ]
+}

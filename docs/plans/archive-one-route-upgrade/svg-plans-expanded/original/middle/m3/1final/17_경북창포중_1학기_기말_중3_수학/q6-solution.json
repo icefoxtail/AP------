@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "3/2",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "1",
+          "y": "9",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "같은 높이의 수평선에서 중점 C와 삼등분점 D의 가로좌표를 읽어 각각의 이차함수에 대입한다.",
+  "accessibilityDescription": "같은 높이의 수평선에서 중점 C와 삼등분점 D의 가로좌표를 읽어 각각의 이차함수에 대입한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 다음 그림과 같이 직선 $y=9$가 $y$축과 만나는 점을 $\\text{A}$, 이차함수 $y=x^2$의 그래프와 제1사분면에서 만나는 점을 $\\text{B}$라고 하자. $\\overline{\\text{AB}}$를 2등분하는 점을 $\\text{C}$라 하고, $\\overline{\\text{AB}}$를 3등분하는 점 중에서 점 $\\text{A}$에 가까운 점을 $\\text{D}$라고 하자. 두 이차함수 $y=ax^2, y=bx^2$의 그래프가 각각 점 $\\text{C}, \\text{D}$를 지날 때, 두 상수 $a+b$의 값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG 직접확인. B3,9 C3/2,9 D1,9. a4 b9 합13; 중간좌표보존, 최종합 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 높이의 수평선에서 중점 C와 삼등분점 D의 가로좌표를 읽어 각각의 이차함수에 대입한다."
+  ]
+}

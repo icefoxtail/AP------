@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -1,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "3",
+        "y": "9"
+      },
+      {
+        "id": "R0",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "R1",
+        "x": "6",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "R0",
+        "R1"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "6",
+        "label": "S"
+      }
+    ]
+  },
+  "caption": "두 곡선의 높이 차를 나타낸 포물선의 좌우 대칭을 이용해 두 넓이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 2. 다음 그림과 같이 $f(x)=-x^2+4x$와 $g(x)=-2x$로 둘러싸인 부분의 넓이를 $x=k$가 이등분할 때, 상수 $k$를 구하는 과정을 서술하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG 포물선과음의직선확인. 높이차6x−x²로넓이보존;교점0,6. 최종이등분축k3은눈금·꼭짓점좌표에쓰지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG 포물선과음의직선확인. 높이차6x−x²로넓이보존;교점0,6. 최종이등분축k3은눈금·꼭짓점좌표에쓰지않음."
+  ]
+}

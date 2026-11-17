@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "48",
+          "-24",
+          "3"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "25",
+          "-18",
+          "3"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "4",
+          "y": "1",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "이동 전후의 꼭짓점과 주어진 점을 비교한다. 왼쪽 한 칸과 아래 두 칸의 이동을 거꾸로 되짚는다.",
+  "accessibilityDescription": "이동 전후의 꼭짓점과 주어진 점을 비교한다. 왼쪽 한 칸과 아래 두 칸의 이동을 거꾸로 되짚는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 이차함수 $y=a(x-p)^2$의 그래프를 $x$축의 방향으로 $-1$만큼, $y$축의 방향으로 $-2$만큼 평행이동 한 그래프는 꼭짓점의 좌표가 $(3,-2)$이고 점 $(4,1)$를 지난다고 한다. 이때 상수 $a+p$의 값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이동후3(x−3)²−2,원래3(x−4)². a3 p4 합7. 원래/이동후 식라벨없이 중간꼭짓점/주어진점만.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이동 전후의 꼭짓점과 주어진 점을 비교한다. 왼쪽 한 칸과 아래 두 칸의 이동을 거꾸로 되짚는다."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "11",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      -7,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "2 - sqrt(3)/3",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "E1",
+        "x": "sqrt(3)/3 + 2",
+        "y": "-2*sqrt(3)/9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "center",
+          "x": "2",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "대칭 중심 x=2의 좌우에서 원함수의 부호 있는 넓이가 서로 상쇄된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 최고차항의 계수가 1인 삼차함수 $f(x)$가 $f(1)=0$이고, 모든 실수 $x$에 대하여 $f(2-x)=-f(2+x)$를 만족시킨다.\n$\\int_0^4 (f(x)-g(x))dx = 0$을 만족하는 직선을\n$g(x)=ax-6$라고 할 때 $a$의 값은? (단, $a$는 양수) [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f=(x−2)³−(x−2), 중심2 점대칭. 직선g의 최종기울기a3은표시하지않고 f의 적분상쇄만설명.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f=(x−2)³−(x−2), 중심2 점대칭. 직선g의 최종기울기a3은표시하지않고 f의 적분상쇄만설명."
+  ]
+}

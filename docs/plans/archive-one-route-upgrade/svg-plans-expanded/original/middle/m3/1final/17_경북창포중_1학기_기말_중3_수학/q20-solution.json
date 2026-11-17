@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "49/5",
+          "-49/10"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "3"
+      ]
+    }
+  },
+  "caption": "처음 두 초의 높이 변화를 살펴보고 꼭짓점의 세로 위치를 읽는다. 가로 구간은 비행 전체가 아닌 비교용 표시 구간이다.",
+  "accessibilityDescription": "처음 두 초의 높이 변화를 살펴보고 꼭짓점의 세로 위치를 읽는다. 가로 구간은 비행 전체가 아닌 비교용 표시 구간이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 지상 $3\\text{ m}$의 높이에서 지면에 수직인 방향으로 초속 $9.8\\text{ m}$로 던진 공의 $x$초 후의 높이 $y\\text{ m}$는 $y=-4.9x^2+9.8x+3$라고 한다. 공이 가장 높이 올라갔을 때, 지면으로부터의 높이는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=−4.9(x−1)²+7.9. 0..2초는꼭짓점전후의검토구간이며 실제비행의전체정의역으로주장않음. 최종7.9숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "처음 두 초의 높이 변화를 살펴보고 꼭짓점의 세로 위치를 읽는다. 가로 구간은 비행 전체가 아닌 비교용 표시 구간이다."
+  ]
+}

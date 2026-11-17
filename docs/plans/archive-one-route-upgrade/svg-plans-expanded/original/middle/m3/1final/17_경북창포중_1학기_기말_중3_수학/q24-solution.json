@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-5",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "-9",
+          "coordinates": false
+        },
+        {
+          "id": "H",
+          "x": "2",
+          "y": "0",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        },
+        {
+          "id": "CH",
+          "from": "C",
+          "to": "H"
+        }
+      ]
+    }
+  },
+  "caption": "가로축과 만나는 두 점 사이를 밑변으로 잡고 꼭짓점에서 가로축까지의 수직 거리를 높이로 비교한다.",
+  "accessibilityDescription": "가로축과 만나는 두 점 사이를 밑변으로 잡고 꼭짓점에서 가로축까지의 수직 거리를 높이로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 다음 그림은 이차함수 $y=x^2-4x-5$의 그래프이다. 이 그래프가 $x$축과 만나는 점을 각각 $\\text{A}, \\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, 다음 물음에 답하시오. (단, 점 $\\text{A}$의 $x$값은 음수, 점 $\\text{B}$의 $x$값은 양수이다.) [5.0점]\n(1) 이차함수 식 $y=x^2-4x-5$를 $y=a(x-p)^2+q$의 꼴로 고치시오.\n(2) 점 $\\text{A}, \\text{B}, \\text{C}$의 좌표를 각각 구하시오.\n(3) $\\triangle\\text{ACB}$의 넓이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인. 식(x−2)²−9, A−1,0 B5,0 C2,−9, 면적27. 소문항좌표모두최종답이라 점이름만유지하고좌표라벨숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축과 만나는 두 점 사이를 밑변으로 잡고 꼭짓점에서 가로축까지의 수직 거리를 높이로 비교한다."
+  ]
+}

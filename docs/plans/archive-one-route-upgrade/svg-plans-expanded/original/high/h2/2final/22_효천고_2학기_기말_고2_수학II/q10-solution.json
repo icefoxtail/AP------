@@ -1,0 +1,103 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "top",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=2-x^2"
+      },
+      {
+        "id": "bottom",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "2",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "branch": "BOTH"
+      },
+      {
+        "id": "left",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "branch": "BOTH"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "sym1",
+          "slope": "1",
+          "intercept": "0"
+        },
+        {
+          "id": "sym2",
+          "slope": "-1",
+          "intercept": "0"
+        }
+      ]
+    }
+  },
+  "caption": "네 포물선의 대칭으로 한 사분면을 나누어 적분한 뒤 같은 영역 네 개를 합친다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 함수 $y=-x^2+2$와 두 직선 $y=x$, $y=-x$로 둘러싸인 도형이 있다. 이 도형을 $y=x$와 $y=-x$ 대칭이동을 시켜 완성한 도형이 그림과 같을 때, 네 곡선으로 둘러싸인 부분의 넓이는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG 네 포물선 및 대칭선 확인. 공식 AUTHOR_GUIDE와 같은 X_OF_Y/Y_OF_X 네경계; 교점±1,±1. 면적최종값28/3 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "PNG 네 포물선 및 대칭선 확인. 공식 AUTHOR_GUIDE와 같은 X_OF_Y/Y_OF_X 네경계; 교점±1,±1. 면적최종값28/3 숨김."
+  ]
+}

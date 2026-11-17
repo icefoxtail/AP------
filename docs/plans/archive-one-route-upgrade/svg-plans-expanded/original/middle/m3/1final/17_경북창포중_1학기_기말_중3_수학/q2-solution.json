@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "60",
+          "14",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "60",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "y=60"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "시간에 따른 넓이와 처음 넓이를 나타내는 수평선을 비교한다. 출발 순간을 제외한 만남을 찾는다.",
+  "accessibilityDescription": "시간에 따른 넓이와 처음 넓이를 나타내는 수평선을 비교한다. 출발 순간을 제외한 만남을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 다음 그림과 같이 가로와 세로의 길이가 각각 $6\\text{ cm}$, $10\\text{ cm}$인 직사각형 $\\text{ABCD}$가 있다. 가로의 길이는 매초 $2\\text{ cm}$씩 늘어나고 세로의 길이는 매초 $1\\text{ cm}$씩 줄어들 때, 몇 초 후에 처음 직사각형과 넓이가 같아지는가? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본SVG 직접확인. 넓이(6+2t)(10−t),0≤t<10. 처음60과같으면2t(7−t)=0, 양의해7. 교점 좌표와 최종시간 미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "시간에 따른 넓이와 처음 넓이를 나타내는 수평선을 비교한다. 출발 순간을 제외한 만남을 찾는다."
+  ]
+}

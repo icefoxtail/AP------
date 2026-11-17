@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-8",
+          "-4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -3,
+      1,
+      -12,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "m"
+    }
+  },
+  "caption": "x에 대한 최솟값 m을 k의 함수로 다시 그린다. 아래로 열린 포물선에서 최고점의 높이를 찾되 그 수치는 숨긴다.",
+  "accessibilityDescription": "x에 대한 최솟값 m을 k의 함수로 다시 그린다. 아래로 열린 포물선에서 최고점의 높이를 찾되 그 수치는 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 이차함수 $y=x^2+4kx-8k+1$의 최솟값을 $m$이라 할 때, $m$의 최댓값은 얼마인가? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "x에 대한 최소m=−4k²−8k+1=−4(k+1)²+5이므로 최대5,③.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x에 대한 최솟값 m을 k의 함수로 다시 그린다. 아래로 열린 포물선에서 최고점의 높이를 찾되 그 수치는 숨긴다."
+  ]
+}
