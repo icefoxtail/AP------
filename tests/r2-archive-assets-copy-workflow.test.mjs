@@ -445,10 +445,89 @@ test("runs are serialized without cancelling an upload in progress", () => {
 });
 
 test("rclone is pinned to an exact version with a checksum and is not installed from the moving install script", () => {
-  assert.match(workflow, /RCLONE_VERSION: v\d+\.\d+\.\d+\n/);
-  assert.match(workflow, /RCLONE_ZIP_SHA256: [0-9a-f]{64}\n/);
+  assert.match(workflow, /R2_RCLONE_VERSION: v\d+\.\d+\.\d+\n/);
+  assert.match(workflow, /R2_RCLONE_ZIP_SHA256: [0-9a-f]{64}\n/);
   assert.match(code, /sha256sum -c -/);
   assert.doesNotMatch(code, /install\.sh/);
+});
+
+// rclone reads every RCLONE_<FLAG> environment variable as its own command-line flag. RCLONE_VERSION=v1.76.0 became
+// `--version v1.76.0` and run 44099228641 failed in the install step. No RCLONE_* variable may be defined in the
+// workflow or the helper script. Allow-list: none (the remote is configured by a config file, not RCLONE_CONFIG_*).
+const ALLOWED_RCLONE_ENV = new Set();
+
+test("no variable named RCLONE_* is defined anywhere the rclone process could inherit it", () => {
+  const definitions = [];
+  for (const [label, text] of [["workflow", code], ["script", scriptCode]]) {
+    for (const line of text.split("\n")) {
+      // YAML env keys (`  RCLONE_X: value`), shell assignments, and `echo RCLONE_X=... >> $GITHUB_ENV`.
+      for (const match of line.matchAll(/(?:^|[\s"'{;|&(])(RCLONE_[A-Za-z0-9_]*)(?=\s*[:=])/g)) {
+        if (!ALLOWED_RCLONE_ENV.has(match[1])) definitions.push(`${label}: ${match[1]} in "${line.trim()}"`);
+      }
+      for (const match of line.matchAll(/\b(?:export|declare\s+-x|typeset\s+-x)\s+(RCLONE_[A-Za-z0-9_]*)/g)) {
+        if (!ALLOWED_RCLONE_ENV.has(match[1])) definitions.push(`${label}: export ${match[1]}`);
+      }
+    }
+  }
+  assert.deepEqual(definitions, []);
+  assert.doesNotMatch(code, /GITHUB_ENV[^\n]*RCLONE_|RCLONE_[^\n]*GITHUB_ENV/, "nothing exported through GITHUB_ENV");
+});
+
+test("the Install rclone final command runs with the job env and a rclone that rejects any RCLONE_* variable", () => {
+  const lines = workflow.split("\n");
+  // Job-level env: simple `KEY: value` lines between `    env:` and `    steps:`; secrets are replaced by dummies.
+  const envStart = lines.findIndex(line => /^    env:\s*$/.test(line));
+  const stepsStart = lines.findIndex(line => /^    steps:\s*$/.test(line));
+  assert.ok(envStart > 0 && stepsStart > envStart);
+  const env = {};
+  for (const line of lines.slice(envStart + 1, stepsStart)) {
+    const m = /^      ([A-Za-z_][A-Za-z0-9_]*): (.*)$/.exec(line);
+    if (m) env[m[1]] = /\$\{\{/.test(m[2]) ? "dummy" : m[2].replace(/^"(.*)"$/, "$1");
+  }
+  // The Install rclone step has no step-level env, so the process sees exactly the job env.
+  const stepStart = lines.findIndex(line => /- name: Install rclone \(pinned\)/.test(line));
+  assert.ok(stepStart > stepsStart);
+  let stepEnd = lines.findIndex((line, i) => i > stepStart && /^      (- name:|#)/.test(line));
+  if (stepEnd < 0) stepEnd = lines.length;
+  const step = lines.slice(stepStart, stepEnd).join("\n");
+  assert.doesNotMatch(step, /\n        env:/, "the install step must stay env-free so the job env is what it sees");
+  const runLines = step.split("\n").filter(line => /^          \S/.test(line));
+  const last = runLines[runLines.length - 1].trim();
+  assert.match(last, /^rclone version\b/);
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "fake-rclone-"));
+  try {
+    const fake = path.join(dir, "rclone");
+    fs.writeFileSync(fake, [
+      "#!/bin/sh",
+      "for name in $(env | cut -d= -f1); do",
+      "  case \"$name\" in",
+      "    RCLONE_*) echo \"CRITICAL: Invalid value when setting --version from environment variable $name\" >&2; exit 1 ;;",
+      "  esac",
+      "done",
+      "echo \"rclone v0.0.0-fake\"",
+      "echo \"- os/version: fake\"",
+      ""
+    ].join("\n"), { mode: 0o755 });
+    const childEnv = { ...process.env, PATH: `${dir}${path.delimiter}${process.env.PATH}` };
+    for (const key of Object.keys(childEnv)) if (key.startsWith("RCLONE_")) delete childEnv[key];
+    Object.assign(childEnv, env);
+    const result = spawnSync("bash", ["-eo", "pipefail", "-c", last], { env: childEnv, encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /rclone v0\.0\.0-fake/);
+
+    // The fake really is strict: the old variable name makes it fail.
+    const bad = spawnSync("bash", ["-eo", "pipefail", "-c", last], { env: { ...childEnv, RCLONE_VERSION: "v1.76.0" }, encoding: "utf8" });
+    assert.notEqual(bad.status, 0);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("the plan step has what a real runner needs: GH_TOKEN for gh, actions:read, and the gh run listing", () => {
+  assert.match(workflow, /\npermissions:\n\s+contents: read\n\s+actions: read\n/);
+  assert.match(workflow, /id: plan[\s\S]*?env:\n\s+GH_TOKEN: \$\{\{ github\.token \}\}/);
+  assert.match(code, /gh api "repos\/\$\{GITHUB_REPOSITORY\}\/actions\/workflows\/r2-archive-assets-copy\.yml\/runs/);
 });
 
 test("the run log carries what was planned and uploaded, and nothing secret; the policy is stated at the top", () => {
