@@ -50,6 +50,7 @@
         };
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script src="mathjax-atomic-inline.js?v=20261117-atomic-inline-1"></script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="vendor/qrious/qrious.min.js"></script><!-- QRious v4.0.2, shared with the original engine. -->
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
@@ -139,6 +140,12 @@
         /* [Box] Question Style */
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
+        /* MathJax clips a stretchy bar's oversized spacer only with clip-path (paint), so the spacer still counts as scrollable
+           overflow and an overline/arrow can make a box a few px "wider" than its column. contain:paint clips the same edges
+           (left/right at the bar, 1em above/below via padding+negative margin, as MathJax's clip-path does) without a new
+           overflow:hidden/clip element. Applied only to a question the exam executor found clipped (data-ap-mjx-clip), never
+           globally: contain:paint on every bar changes Chrome's painted PDF pixels, so unflagged output stays as it was. */
+        [data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint; }
         /* Optional section headings (meta.sections, e.g. difficulty step). Absent => no element, no change. */
         .q-section { display: flex; align-items: baseline; gap: 8px; margin: 0 0 5px; padding: 1px 7px; border-left: 3px solid #1d4ed8; background: #eef2ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; line-height: 1.35; break-after: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         .q-section-sub { color: #475569; font-size: 8.5pt; font-weight: 600; }
@@ -229,7 +236,12 @@
             text-align: left;
             vertical-align: top;
         }
-
+        /* html2canvas (page-image print) drops the text nodes that sit directly in a block child div of an inline-block box,
+           so the Korean in a <조건>/<보기> box vanished from that print. prepareRasterPrint adds .ap-h2c-clone to html2canvas's
+           private clone only; screen and Chrome-PDF output keep the inline-block box above, pixel for pixel. */
+        .ap-h2c-clone .question-note-box,
+        .ap-h2c-clone .note-box,
+        .ap-h2c-clone .box { display: block; width: fit-content; }
         /* [Fit] Compression Classes */
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
         .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
@@ -379,8 +391,8 @@
     <script src="common-fast-runtime.js?v=20261106-output-performance-2"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261106-output-performance-1"></script>
-    <script src="solution-render-executor.js?v=20261111-svg-k-2"></script>
+    <script src="exam-render-executor.js?v=20261117-wide-fallback-2"></script>
+    <script src="solution-render-executor.js?v=20261117-cont-label-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261116-output-bar-1"></script>
@@ -3214,7 +3226,8 @@ async function prepareRasterPrint() {
                 useCORS: true,
                 allowTaint: false,
                 imageTimeout: 10000,
-                logging: false
+                logging: false,
+                onclone: cloneDocument => { cloneDocument.documentElement.classList.add('ap-h2c-clone'); }
             });
             const blob = usePngFallback
                 ? await canvasToPngBlob(canvas)
