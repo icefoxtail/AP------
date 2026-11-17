@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "0",
+            "4"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "r²=4k²+12≤36에서 k²≤6. 자연수1과2만 포함하고3은 제외, 정답합3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자연수 $k$에 대하여 방정식 $x^2+y^2-6kx-4y+5k^2-8=0$이 나타내는 원의 반지름의 길이가 $6$ 이하일 때, 가능한 모든 자연수 $k$의 합은? [3.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "r²=4k²+12≤36에서 k²≤6. 자연수1과2만 포함하고3은 제외, 정답합3.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "r²=4k²+12≤36에서 k²≤6. 자연수1과2만 포함하고3은 제외, 정답합3."
+  ]
+}

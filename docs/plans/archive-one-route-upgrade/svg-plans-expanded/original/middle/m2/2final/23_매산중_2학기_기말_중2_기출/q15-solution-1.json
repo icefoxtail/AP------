@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫눈",
+        "elements": [
+          "1"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "둘째눈",
+        "elements": [
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "두눈합2인실제순서쌍만표시. 합2는1개,합7은6개이고서로겹치지않아총7가지,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위를 던질 때, 두 눈의 수의 합이 $2$ 또는 $7$이 되는 경우의 수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

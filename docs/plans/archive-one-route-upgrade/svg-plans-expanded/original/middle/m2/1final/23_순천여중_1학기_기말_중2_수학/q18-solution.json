@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본은a>0,b>0. 대표예시a=b1에서원선x−1과새선−x−1을비교한다. 새선은음기울기/음절편이라제1사분면없음,정답②. 예시값은원문계수확정아님.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 일차함수 $y=ax-b$의 그래프가 아래 그림과 같을 때, 일차함수 $y=-ax-b$의 그래프가 지나지 않는 사분면을 구하시오. (단, $a, b$는 수) (5점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q18-problem-visual-v2.svg\" alt=\"직선의 식은 y=ax−b이다. 직선은 세로축의 음의 쪽과 가로축의 양의 쪽을 지나 오른쪽 위로 올라간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본은a>0,b>0. 대표예시a=b1에서원선x−1과새선−x−1을비교한다. 새선은음기울기/음절편이라제1사분면없음,정답②. 예시값은원문계수확정아님.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은a>0,b>0. 대표예시a=b1에서원선x−1과새선−x−1을비교한다. 새선은음기울기/음절편이라제1사분면없음,정답②. 예시값은원문계수확정아님."
+  ]
+}

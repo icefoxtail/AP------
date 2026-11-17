@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "15/2",
+          "-3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "Y=-3X+15/2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/2",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "Y=-X+7/2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "3/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "X",
+      "y": "Y"
+    }
+  },
+  "caption": "가로X=x/1000,세로Y=y/1000인 천원 단위. 3X+Y7.5와X+Y3.5의 공통점(2,1.5),차2X4에서샌드위치2000원. 원본아이콘의 두샌드위치차4000원/우유동일소거 보존. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>4. 민이가 샌드위치 3개, 우유 1컵을 사고 지불한 금액은 7500원이고, 찬영이가 샌드위치 1개, 우유 1컵을 사고 지불한 금액은 3500원이라고 한다. 이 때, 샌드위치 한 개의 가격을 $x$원, 우유 한 컵의 가격을 $y$원이라고 할 때, 다음 그림에서 샌드위치 한 개의 가격을 구하시오. (4점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q4-problem-visual-v2.svg\" alt=\"민이의 샌드위치 세 개와 우유 한 컵은 7500원이고 식이 3x+y=7500이다. 찬영이의 샌드위치 한 개와 우유 한 컵은 3500원이다. 아래 차이 줄에는 샌드위치 두 개와 금액·식 빈칸이 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로X=x/1000,세로Y=y/1000인 천원 단위. 3X+Y7.5와X+Y3.5의 공통점(2,1.5),차2X4에서샌드위치2000원. 원본아이콘의 두샌드위치차4000원/우유동일소거 보존. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로X=x/1000,세로Y=y/1000인 천원 단위. 3X+Y7.5와X+Y3.5의 공통점(2,1.5),차2X4에서샌드위치2000원. 원본아이콘의 두샌드위치차4000원/우유동일소거 보존. 정답⑤."
+  ]
+}

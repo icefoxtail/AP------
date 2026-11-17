@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "30",
+          "1/5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      50
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "50"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "30"
+      },
+      {
+        "id": "P1",
+        "x": "5",
+        "y": "31"
+      },
+      {
+        "id": "P2",
+        "x": "40",
+        "y": "38"
+      }
+    ],
+    "formula": "x/5 + 30"
+  },
+  "caption": "무게x≥0에서길이30+x/5. 실제(40,38)로38cm 정답④. 표시0..50은발췌이며50이실제상한이아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 용수철의 길이는 $30\\,\\text{cm}$이고 $5\\,\\text{g}$인 물체를 매달 때마다 $1\\,\\text{cm}$씩 일정하게 늘어난다고 한다. 무게가 $x\\,\\text{g}$인 물체를 매달았을 때 용수철의 길이를 $y\\,\\text{cm}$라고 하면 $40\\,\\text{g}$의 물체를 매달았을 때, 용수철의 길이를 구하시오. (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "무게x≥0에서길이30+x/5. 실제(40,38)로38cm 정답④. 표시0..50은발췌이며50이실제상한이아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "무게x≥0에서길이30+x/5. 실제(40,38)로38cm 정답④. 표시0..50은발췌이며50이실제상한이아니다."
+  ]
+}

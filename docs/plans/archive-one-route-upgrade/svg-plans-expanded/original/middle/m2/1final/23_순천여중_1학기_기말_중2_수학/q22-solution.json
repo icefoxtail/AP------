@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "label": "c=7-a"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "label": "c=a+3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "c"
+    }
+  },
+  "caption": "가로백의자리a,세로일의자리c. a+c7과99(c−a)=297 즉c−a3의공통정수점(2,5). 십의자리7이므로비밀번호275. 선은실수보조이고자릿수조건보존.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 2] 선우는 학교 사물함의 비밀번호를 세 자리 수로 정하고 수첩에 다음과 같이 적어 두었다. 선우가 정한 비밀번호를 구하시오. (5점)<br><div style=\"border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: #fafafa;\">십의 자리의 숫자는 백의 자리의 숫자와 일의 자리의 숫자의 합 7과 같고, 백의 자리의 숫자와 일의 자리의 숫자를 바꾼 수는 처음 수보다 297만큼 크다.</div><br>(1) 문제의 상황에 맞게 미지수를 정하면. [1점]<br>(2) 문제의 뜻에 따라 연립방정식을 세우면. [2점]<br>(3) 연립방정식을 풀어 선우의 비밀번호를 구하면. [2점]</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로백의자리a,세로일의자리c. a+c7과99(c−a)=297 즉c−a3의공통정수점(2,5). 십의자리7이므로비밀번호275. 선은실수보조이고자릿수조건보존.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로백의자리a,세로일의자리c. a+c7과99(c−a)=297 즉c−a3의공통정수점(2,5). 십의자리7이므로비밀번호275. 선은실수보조이고자릿수조건보존."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-3*x+3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "3"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "parallel",
+          "slope": "-3",
+          "intercept": "4",
+          "style": "DASHED",
+          "label": "y=-3*x+4"
+        }
+      ]
+    }
+  },
+  "caption": "기준 y=−3x+4와 실제 평행선 y=−3x+3을 비교. 점(−1,6)을 지나 a−3,b3, 정답0.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $3x+y-4=0$과 평행하고 점 $(-1,6)$을 지나는 직선의 방정식을 $y=ax+b$라 할 때, $a+b$의 값은? [3.5점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "기준 y=−3x+4와 실제 평행선 y=−3x+3을 비교. 점(−1,6)을 지나 a−3,b3, 정답0.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "기준 y=−3x+4와 실제 평행선 y=−3x+3을 비교. 점(−1,6)을 지나 a−3,b3, 정답0."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "y",
+        "elements": [
+          "1000"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "① 만두2개의 값1000원 하나. 한 입력에 여러 출력인③⑤는 함수가 아니다. 각 물량 단위는 원문 그대로이며 숫자 크기를 동일 단위로 비교하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 $y$가 $x$의 함수가 아닌 것은? (정답 2개)",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "① 만두2개의 값1000원 하나. 한 입력에 여러 출력인③⑤는 함수가 아니다. 각 물량 단위는 원문 그대로이며 숫자 크기를 동일 단위로 비교하지 않는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "① 만두2개의 값1000원 하나. 한 입력에 여러 출력인③⑤는 함수가 아니다. 각 물량 단위는 원문 그대로이며 숫자 크기를 동일 단위로 비교하지 않는다."
+  ]
+}

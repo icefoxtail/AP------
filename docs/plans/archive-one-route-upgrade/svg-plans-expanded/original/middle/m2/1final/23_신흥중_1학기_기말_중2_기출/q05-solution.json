@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "-4"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "② 두 식을 동시에 만족하는 공통점(−2,3). 한 식만 맞는 다른 보기는 해가 아니다. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식 중에서 해가 $x=-2$, $y=3$인 것은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "② 두 식을 동시에 만족하는 공통점(−2,3). 한 식만 맞는 다른 보기는 해가 아니다. 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "② 두 식을 동시에 만족하는 공통점(−2,3). 한 식만 맞는 다른 보기는 해가 아니다. 정답②."
+  ]
+}

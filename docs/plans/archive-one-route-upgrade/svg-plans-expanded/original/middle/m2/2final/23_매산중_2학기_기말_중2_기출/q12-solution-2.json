@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "25배넓이",
+        "elements": [
+          "3600"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "25배자식",
+        "elements": [
+          "2304",
+          "1296"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "원본피타고라스나무의넓이전달보조도이다. BC²12²+9²225. 첫단계144+81=225이고두다음가지합도144와81로보존되어각단계225씩총675,정답③. 첫패널은실제넓이이고둘째·셋째패널은모든넓이에25를곱한정확정수표시다. 실제넓이는표시수를25로나눈다. 같은1296/25도서로다른정사각형이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 $\\overline{AB}=12$, $\\overline{AC}=9$인 직각삼각형 $ABC$를 이용하여 피타고라스 나무를 그린 것이다. 색칠한 부분의 넓이는? (단, 세 직각삼각형은 모두 닮은 도형이다.) (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

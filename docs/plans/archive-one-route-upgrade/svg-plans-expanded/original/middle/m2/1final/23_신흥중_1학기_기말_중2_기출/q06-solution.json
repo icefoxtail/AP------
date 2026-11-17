@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6/5",
+          "-1/5"
+        ],
+        "domain": [
+          "-5",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-10",
+          "-3"
+        ],
+        "domain": [
+          "-5",
+          "0"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y2에서 첫식과 만나는x−4를 구해−4a−2=10,a−3. 복원된 둘째선도 같은 점을 지난다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}x+5y=6\\\\ax-y=10\\end{cases}$을 만족시키는 $y$의 값이 $2$일 때, 수 $a$의 값을 구하라.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "y2에서 첫식과 만나는x−4를 구해−4a−2=10,a−3. 복원된 둘째선도 같은 점을 지난다. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y2에서 첫식과 만나는x−4를 구해−4a−2=10,a−3. 복원된 둘째선도 같은 점을 지난다. 정답③."
+  ]
+}

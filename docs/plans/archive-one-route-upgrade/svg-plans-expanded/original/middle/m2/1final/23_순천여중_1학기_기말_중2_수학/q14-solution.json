@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-3/4"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "formula": "3 - 3*x/4"
+  },
+  "caption": "원래직선의 실제점(4,0)은(4,−3)이아니다. 절편4와3,4증가당3감소를보존. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 다음은 일차함수 $y=-\\frac{3}{4}x+3$의 그래프에 대한 설명으로 옳지 않은 것을 고르시오. (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원래직선의 실제점(4,0)은(4,−3)이아니다. 절편4와3,4증가당3감소를보존. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원래직선의 실제점(4,0)은(4,−3)이아니다. 절편4와3,4증가당3감소를보존. 정답①."
+  ]
+}

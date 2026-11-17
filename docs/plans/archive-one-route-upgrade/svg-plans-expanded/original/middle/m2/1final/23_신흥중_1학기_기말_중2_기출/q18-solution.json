@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "-3/2",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "0",
+        "y": "-3"
+      }
+    ],
+    "formula": "-2*x - 3"
+  },
+  "caption": "실제점(−1,−1),절편(−3/2,0),(0,−3)을 표시해 제2·3·4사분면과 오른쪽아래 방향을 읽는다. 정답①③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차함수 $y=-2x-3$의 그래프에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개)",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제점(−1,−1),절편(−3/2,0),(0,−3)을 표시해 제2·3·4사분면과 오른쪽아래 방향을 읽는다. 정답①③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제점(−1,−1),절편(−3/2,0),(0,−3)을 표시해 제2·3·4사분면과 오른쪽아래 방향을 읽는다. 정답①③."
+  ]
+}

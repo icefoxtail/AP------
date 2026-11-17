@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "60",
+          "-1/20"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      1200
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1200"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "60"
+      },
+      {
+        "id": "P1",
+        "x": "600",
+        "y": "30"
+      },
+      {
+        "id": "P2",
+        "x": "1200",
+        "y": "0"
+      }
+    ],
+    "formula": "60 - x/20",
+    "axisScale": {
+      "x": "1/20",
+      "y": "1"
+    }
+  },
+  "caption": "연비20km/L이므로1km당1/20L. 1200km완전소모로처음60L,실제0≤x≤1200에서y60−x/20. 남은30L에서600km. 가로km/세로L는다른물리량으로가로1/20배율이며좌표값은실제거리보존.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 4] 연비가 $20\\,\\text{km/L}$인 어떤 자동차의 연료 탱크에 연료를 가득 채운 후, 일정한 속력으로 주행하였더니 $1200\\,\\text{km}$를 주행한 후에 연료가 완전히 소모되었다. 이 자동차의 연료 탱크에 연료를 가득 채운 후, $x\\,\\text{km}$ 주행하였을 때 남은 연료의 양을 $y\\,\\text{L}$라고 하자. (4점)<br>(1) $1\\,\\text{km}$ 주행하는데 소모되는 연료의 양을 구하시오. (1점)<br>(2) 연료 탱크에 가득 채운 연료의 양을 구하시오. (1점)<br>(3) $y$를 $x$에 대한 식으로 나타내시오. (1점)<br>(4) 남은 연료가 $30\\,\\text{L}$일 때 이 자동차가 주행한 거리를 구하시오. (1점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "연비20km/L이므로1km당1/20L. 1200km완전소모로처음60L,실제0≤x≤1200에서y60−x/20. 남은30L에서600km. 가로km/세로L는다른물리량으로가로1/20배율이며좌표값은실제거리보존.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "연비20km/L이므로1km당1/20L. 1200km완전소모로처음60L,실제0≤x≤1200에서y60−x/20. 남은30L에서600km. 가로km/세로L는다른물리량으로가로1/20배율이며좌표값은실제거리보존."
+  ]
+}

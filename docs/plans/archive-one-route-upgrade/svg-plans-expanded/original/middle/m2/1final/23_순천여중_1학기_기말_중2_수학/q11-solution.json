@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "56",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "56"
+        ],
+        "label": "C=56-M"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-11/2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "56"
+        ],
+        "label": "C=M/2-11/2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "41",
+          "y": "15",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "M",
+      "y": "C"
+    }
+  },
+  "caption": "가로처음어머니나이M,세로이이나이C. M+C56,7년후조건M−2C11의공통점(41,15). 나이차26,정답⑤. 실제나이는비음수이며선은조건확인용.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 조선 시대의 뛰어난 예술가였던 신사임당은 아들 이이를 훌륭한 학자로 키웠다. 이이가 진사 초시에 합격하였을 때 신사임당과 이이의 나이의 합은 56세였고, 7년이 지난 후 신사임당이 세상을 떠날 때의 나이는 이이의 나이의 2배보다 4세가 더 많았다. 이이가 진사 초시에 합격하였을 때, 이이와 신사임당의 나이의 차를 구하시오. (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로처음어머니나이M,세로이이나이C. M+C56,7년후조건M−2C11의공통점(41,15). 나이차26,정답⑤. 실제나이는비음수이며선은조건확인용.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로처음어머니나이M,세로이이나이C. M+C56,7년후조건M−2C11의공통점(41,15). 나이차26,정답⑤. 실제나이는비음수이며선은조건확인용."
+  ]
+}

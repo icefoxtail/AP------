@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3/5",
+          "y": "-12/5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "④에서 y−4x를 대입하면 x−(−4x)=3,즉5x3이지x−4x3이아니다. 실제교점(3/5,−12/5)로 부호를 확인. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>3. 다음 중에서 옳지 않은 것을 고르시오. (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "④에서 y−4x를 대입하면 x−(−4x)=3,즉5x3이지x−4x3이아니다. 실제교점(3/5,−12/5)로 부호를 확인. 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "④에서 y−4x를 대입하면 x−(−4x)=3,즉5x3이지x−4x3이아니다. 실제교점(3/5,−12/5)로 부호를 확인. 정답④."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2/5",
+          "3/5"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/4",
+          "3/4"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "첫식×15는3x−5y2,둘째×10은3x−4y1. 차로y−1,x−1,합−2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>※ 다음은 서술형 문항입니다. [ 1번 ~ 4번 ]<br>OMR카드 뒷면에 풀이 과정과 정답을 쓰세요.<br><br>[서술형 1] 다음 연립방정식을 풀어서 $x+y$의 값을 구하시오. (5점)<br>$$\\begin{cases} \\frac{x}{5} - \\frac{y}{3} = \\frac{2}{15} \\\\ 0.3x - 0.4y = 0.1 \\end{cases}$$<br>(1) $x$의 값을 구하면. [2점]<br>(2) $y$의 값을 구하면. [2점]<br>(3) $x+y$의 값을 구하면. [1점]</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "첫식×15는3x−5y2,둘째×10은3x−4y1. 차로y−1,x−1,합−2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "첫식×15는3x−5y2,둘째×10은3x−4y1. 차로y−1,x−1,합−2."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5/2",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-5"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-7/9",
+          "y": "26/9",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "현수의①×5+②는y소거가아니라x소거9y26으로 옳고 찬영의x=−2y+5대입도옳다. 다혜의②×(−2)+①는y계수가둘다2로 남으며 세민은y−5x−1을+1로오독했다. 정답현수·찬영⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 다음은 연립방정식 $\\begin{cases} x+2y=5 \\cdots \\text{①} \\\\ -5x-y=1 \\cdots \\text{②} \\end{cases}$의 풀이에 대한 학생들의 대화이다. 옳게 설명한 학생을 모두 찾으시오. (4점)</p><div style=\"border: 1px solid #ccc; padding: 10px; margin: 10px 0;\"><p><b>현수:</b> ①의 양변에 5를 곱한 식에서 ②를 변끼리 더하면 $x$를 없애서 풀 수 있어.</p><p><b>다혜:</b> ②의 양변에 $-2$를 곱한 식과 ①을 변끼리 더한 후, 정리하면 $x$의 값을 구할 수 있어.</p><p><b>찬영:</b> ①을 $x=-2y+5$로 변형한 다음 ②에 대입한 후, 정리하면 $y$의 값을 구할 수 있지.</p><p><b>세민:</b> ②를 $y=-5x+1$로 변형한 다음 ①에 대입해서 풀면 돼.</p></div>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "현수의①×5+②는y소거가아니라x소거9y26으로 옳고 찬영의x=−2y+5대입도옳다. 다혜의②×(−2)+①는y계수가둘다2로 남으며 세민은y−5x−1을+1로오독했다. 정답현수·찬영⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "현수의①×5+②는y소거가아니라x소거9y26으로 옳고 찬영의x=−2y+5대입도옳다. 다혜의②×(−2)+①는y계수가둘다2로 남으며 세민은y−5x−1을+1로오독했다. 정답현수·찬영⑤."
+  ]
+}

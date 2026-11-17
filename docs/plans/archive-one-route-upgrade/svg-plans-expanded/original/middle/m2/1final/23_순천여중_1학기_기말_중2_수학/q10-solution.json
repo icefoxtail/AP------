@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-2/3"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "주어진x−3에서b=y−1. −3a−3(−1)=9로a−2,2a−b−3. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 연립방정식 $\\begin{cases} x-y=-2 \\\\ ax-3y=9 \\end{cases}$의 해가 $(-3, b)$일 때, 두 수 $2a-b$의 값을 구하시오. (4점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진x−3에서b=y−1. −3a−3(−1)=9로a−2,2a−b−3. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진x−3에서b=y−1. −3a−3(−1)=9로a−2,2a−b−3. 정답①."
+  ]
+}
