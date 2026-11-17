@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_강남여고_1학기_2차_고2_대수_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사.meta-q01-q25.json",
+  "candidateGitBlobSha1": "aa838d1326031517f05e1ce7610aa50d4c2dd653",
+  "reviewTimestamp": "2026-11-17T19:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewerSession": "claude-similar-high-reviewer (Sonnet 서브에이전트, 생성 세션과 다른 인스턴스)",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS",
+  "blindFirstPass": {
+    "totalSolved": 25,
+    "answerMatches": 25,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rv/blind_frozen.json (세션 스크래치패드, 커밋하지 않음)",
+    "freezeFileSha1": "204ac711256357be7599941e4abb29ef72a1c6a1",
+    "method": "학생에게 보이는 필드(content, choices)와 문항 그림 3개(q03,q12,q20 SVG를 Chrome으로 렌더한 PNG)만 덤프해 손풀이와 python Fraction 검산으로 25문항 답을 동결(blind_frozen.json)한 뒤에야 answer/solution/meta/원본 JS를 열어 대조했다. 객관식 21문항 답 번호 일치, 서술형 Q22~Q24 결과 일치, Q25는 증명 완결성 확인.",
+    "disclosure": "동결 전에 answer·solution·meta를 열지 않았다. 원본 JS와 원본 그림은 동결 뒤에 열었다.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "⑤",
+      "3": "②",
+      "4": "④",
+      "5": "②",
+      "6": "③",
+      "7": "②",
+      "8": "①",
+      "9": "⑤",
+      "10": "④",
+      "11": "③",
+      "12": "⑤",
+      "13": "①",
+      "14": "④",
+      "15": "①",
+      "16": "②",
+      "17": "①",
+      "18": "⑤",
+      "19": "④",
+      "20": "③",
+      "21": "①",
+      "22": "C=90 right triangle (a^2+b^2=c^2)",
+      "23": "m=2,3,4,5 (a1=-4, a_n=12-2n n>=2)",
+      "24": "p=2,q=13,p+q=15",
+      "25": "induction proof, standard"
+    }
+  },
+  "questionsReview": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "B=180-70-50=60도, 사인법칙 CA=2R sinB=6*sin60=3sqrt3 -> ③"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "넓이 pi R^2=25pi에서 R=5, BC=2R sinA=10 sinA=8이므로 sinA=4/5 -> ⑤"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "그림의 AB=6, BC=8, 끼인각 5pi/6(150도): 1/2*6*8*sin150=12 -> ②"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "f(n)=-3+4(n-1)=4n-7, f(3)=5; g(n)=6-3(n-1)=9-3n, g(2)=3; 합 8 -> ④"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "32*(-1/2)^4=2, (2/27)*3^4=6, 합 8 -> ②"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "a12-a4=8d=24에서 d=3, a1=-6, S20=10(2*(-6)+19*3)=450 -> ③"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "S8=S4(1+r^4)에서 r^4=16, r=2 또는 -2; r=-2이면 a=-2<0이라 탈락, r=2에서 15a=10, a=2/3, 합 8/3 -> ②"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "보기 ②③④⑤는 합의 성질로 -5,12,13,30이 맞고, 곱의 합 ①은 두 합만으로 정해지지 않음 -> ①"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "(a+4d)^2=(a+d)(a+10d) -> 3d(a-2d)=0, a=2d; a15/a3=16d/4d=4 -> ⑤"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "ABC: C=30도, BC=3sqrt2*sin45/sin30=6; DEF 코사인법칙 25=b^2+18-6b, b=7(음수 탈락); 합 13 -> ④"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "호 비 3:4:5면 중심각 90,120,150도; 넓이=1/2*16*(1+sqrt3/2+1/2)=12+4sqrt3, p/q=3 -> ③"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "AC^2을 두 삼각형 코사인법칙으로 세워 cosD=-cosB에서 cosB=1/2, B=60도; 넓이=sqrt3/4*(143+49)=48sqrt3 -> ⑤"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "2a1+9d=14, S4+S12=16a1+72d=8(2a1+9d)=112 -> ①"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "n>=2에서 an=S_n-S_{n-1}=5*2^n, a1=10도 식과 일치; a2+a4+a6=5(4+16+64)=420 -> ④"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "sum a_{2k}=6*21-12=114; b_{3k}=(3/2)8^k, 합=(12/7)(8^6-1); (114,8,6) -> ①"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "d=(10-38)/4=-7, an=45-7n; a6=3, a7=-4이므로 |a_n| 최소는 n=6 -> ②"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "a_{2n-1}=3*2^{n-1}; S_{2n}=5 상수라 a_{2n-1}+a_{2n}=0(n>=2); a8=-24, a12=-96, 차 72 -> ①"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "3r^3=36r+3r^2에서 r=4; S12=4^12-1; log4(4^12)+6=18 -> ⑤"
+    },
+    {
+      "qid": 19,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "매월 초 적립(기시급): A=10만*1.005*(0.09/0.005)=1,809,000, B=20만*1.004*(0.04/0.004)=2,008,000; 차 199,000 -> ④"
+    },
+    {
+      "qid": 20,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "sin pi x=sqrt3/2 해 2k+1/3, 2k+2/3; 항별 2(n-1)-1/3, 12항 합 132-4=128 -> ③"
+    },
+    {
+      "qid": 21,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "부호 주기 4 (-,-,+,+), 4항 가중합 4, 24항 24; n=25,26은 -25-26; 합 -27 -> ①"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "C=90 right triangle (a^2+b^2=c^2)",
+      "candidateAnswer": "∠C=90°, 직각삼각형",
+      "match": true,
+      "method": "sinB/sinC=b/c=cosA, 코사인법칙 대입 a^2=c^2-b^2, a^2+b^2=c^2, C=90도 직각삼각형"
+    },
+    {
+      "qid": 23,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "m=2,3,4,5 (a1=-4, a_n=12-2n n>=2)",
+      "candidateAnswer": "m=2, 3, 4, 5",
+      "match": true,
+      "method": "a1=S1=-4(제외), n>=2에서 an=12-2n>0이면 n<6, m=2,3,4,5"
+    },
+    {
+      "qid": 24,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "p=2,q=13,p+q=15",
+      "candidateAnswer": "p=2, q=13, p+q=15",
+      "match": true,
+      "method": "부분분수 (1/3)(1/(3k-1)-1/(3k+2)), 합 (1/3)(1/2-1/26)=2/13, p=2,q=13,p+q=15"
+    },
+    {
+      "qid": 25,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "induction proof, standard",
+      "candidateAnswer": "주어진 등식은 모든 자연수 n에 대해 성립한다.",
+      "match": true,
+      "method": "증명형: n=1 성립(1/3), 가정 후 k/(2k+1)+1/((2k+1)(2k+3))=(k+1)/(2k+3) 확인 가능"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "25 vs 25",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "모든 문항 배점 원본과 동일(3점x5, 3.5점x4, 4점x6, 4.5점x6, 서술형 4/5/5/6)",
+    "questionTypes": "객관식 1-21, 서술형 22-25 모두 동일",
+    "notes": [
+      "Q1~Q9, Q13~Q18, Q21~Q24 원본의 풀이 구조(사인법칙, 등차·등비 연립, 시그마 성질, 부분합→일반항, 합의 합 등) 그대로 수치·상수만 교체됨.",
+      "Q10 원본(a=4, b=5)과 같이 사인법칙으로 한 변, 코사인법칙 이차방정식으로 다른 변을 구하는 두 삼각형 합 구조 유지(a=6,b=7).",
+      "Q11 원본 호의 비 5:5:2(중심각 150,150,60)에서 3:4:5(90,120,150)로 바뀌었으나 중심각 비례+세 삼각형 넓이 합 구조 동일.",
+      "Q12 원본 B=120도(16sqrt3)에서 B=60도(48sqrt3)로 바뀌었으나 대각선을 두 번 코사인법칙으로 세워 cosD=-cosB를 쓰는 구조 동일.",
+      "Q20 원본 y=1/2(교점 1/6,5/6+2k)에서 y=sqrt3/2(교점 1/3,2/3+2k)로 바뀌었고 홀수·짝수번째 항 일반항→시그마 구조 동일.",
+      "Q25 원본 1/(n(n+1))에서 1/((2n-1)(2n+1))로 바뀌어 약간 계산이 늘지만 귀납 3단계 구조·6점 역할 유지, 고2 학생이 따라갈 수 있는 수준."
+    ]
+  },
+  "answerDistribution": {
+    "①": 5,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 4,
+    "note": "객관식 1-21, max-min=1, 3연속 없음(3,5,2,4,2,3,2,1,5,4,3,5,1,4,1,2,1,5,4,3,1)"
+  },
+  "mathReview": "25문항 전수 블라인드 독립 풀이 후 저장된 해설을 끝까지 읽어 논리·중간계산·교육과정(2022 개정 대수) 확인. 해설 오류 0건, 정답 불일치 0건, 5지 유일정답 확인. Q7 r=-2 탈락(첫째항 양수), Q10 DE 음근 탈락, Q17 S_{2n}=5가 a1=3,a2=2와 모순 없음, Q23 a1은 n>=2 식에 포함되지 않아 m=1 제외까지 확인. Q8 반례(a1=4,b2=-9, 나머지 0)가 두 합 조건을 만족함을 확인. 해설은 조건 → 식 전개 → 판정 → 정답 순으로 학생이 따라갈 수 있다.",
+  "reviewerEdits": [],
+  "metaReview": {
+    "jsMetaConsistency": "JS 25문항의 level/difficultyBucket/단원/PT/TPL/크로스개념/조건/통합패턴/sourceQid/variationType/rpm 라벨이 meta와 일치. expectedSourceBlobSha1은 JS blob과 일치.",
+    "emptyFields": "PT/TPL·RPM·난이도·4칸(given/goal/method) 25/25 채움. crossConceptKeys는 단일 개념 문항 10개(Q4,5,6,7,8,13,14,23,24,25)가 해당 없음 사유와 함께 빈 배열, conditionKeys 13/25 채움. hold 0건.",
+    "uniqueness": "primaryMethod·decisiveStep·difficultyReason 25개 모두 서로 다르고 문항 식·수를 담음(중복 0).",
+    "difficulty": "1:5, 2:7, 3:13 (경계 플래그 5건). Q24는 원본 라벨 하(서술형)에 맞춰 보수적으로 2.",
+    "keys": "RPM 25문항 중 23문항이 크로스워크 DIRECT_ACTIVE 레코드, Q14·Q23은 GENERATED_EXTENSION L4(EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM, parent H2-M1-RPM-128). 새 크로스개념 7개 registryChanges로 등록(registry.json 실재). 4칸 용어는 term-dictionary-v1.6에 있고 quote가 발문·해설에 실재(불일치 0).",
+    "changes": "검수 결과 메타 값 수정 없음. approval 블록만 독립 검수 결과(reviewed_pass)로 갱신."
+  },
+  "visualReview": {
+    "problemFigures": "Q3, Q12, Q20 문항 그림 3개를 Chrome으로 실제 렌더해 PNG로 확인. Q3: AB=6, BC=8, 각 B=5π/6 라벨 판독 가능, 호가 둔각을 표시하고 정답 누설 없음. Q12: 사각형 ABCD, 변 11·13·7·7 라벨과 비례(AB:BC=0.85≈11/13, ∠B≈60도 실측)가 발문과 일치. Q20: y=sin πx와 y=√3/2 및 5개 교점 점이 표시되어 판독 가능. 수학적으로 정확하다. 원본 그림의 a1~a5 첨자 라벨은 엔진이 지원하지 않아 없지만 발문이 순서를 정의하고 교점이 점으로 보여 풀이에 지장 없음.",
+    "solutionFigures": "사용자 지시(2026-11-17)에 따라 해설 SVG·해설 그림은 이번 범위 밖(별도 작업). 해설에 그림 참조가 없고 그림에서 읽은 값(Q3 AB·BC·각 B, Q12 변의 길이)이 해설 글에 다시 적혀 있어 해설은 그림 없이 완결됨.",
+    "planAudit": "50개 plan 모두 유효 JSON, 문제 plan 22개 EXEMPT+사유, Q3·Q12·Q20 construction/trigonometric plan에 sourceQuote·caption·engineEvidence 결속(하네스 통과)."
+  },
+  "harness": {
+    "draftPhase": "node tools/harness/verify_similar_exam.mjs 26_강남여고_1학기_2차_고2_대수_유사 --phase=draft : GATE_PASS(25문항 100점)",
+    "release": "node tools/harness/verify_similar_exam.mjs 26_강남여고_1학기_2차_고2_대수_유사 : GATE_PASS exit 0, WARN 0건 (25문항 100점, MCQ 분포 5/4/4/4/4)"
+  },
+  "NOT_RUN": [
+    "engine.html 화면 전체 캡처 검사(서버 기동이 이 환경에서 거부되어 문항 SVG 렌더만 Chrome으로 확인)",
+    "main_merge_master.py 운영병합(이번 지시는 병합하지 않음, 메인이 결정)",
+    "해설 SVG·해설 그림 검수(사용자 지시로 별도 작업)"
+  ],
+  "unresolvedDefects": [],
+  "summary": "블라인드 25/25 일치, JS 수정 0건, 메타 정합 확인, 문항 그림 3개 PNG 직접 확인, 잔존 결함 0건(해설 그림은 범위 밖)."
+}
