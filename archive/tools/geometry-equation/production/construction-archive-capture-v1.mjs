@@ -5,7 +5,7 @@ import {objectSha,bytesSha,canonicalJson,fileRef,readBoundFile} from '../../pipe
 import {compositePanelBytes} from './composite-candidate-svg-v1.mjs';
 import {parseQuestionUidV2,SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
 import {loadBank,bankAliasSuffix} from '../build-visual-render-matrix.mjs';
-import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath,archiveAssetSha256} from '../record-visual-browser-evidence.mjs';
+import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath,archiveAssetSha256,isArchiveExamSourcePath} from '../record-visual-browser-evidence.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
@@ -64,7 +64,7 @@ function checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProg
   if(!(Number.isSafeInteger(ordinal)&&ordinal>=1)&&!(typeof ordinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(ordinal)))invalid('ORDINAL');
   if(typeof runId!=='string'||!RUN_ID.test(runId))invalid('RUN_ID');
   if(onProgress!==undefined&&typeof onProgress!=='function')invalid('ON_PROGRESS');
-  if(typeof sourcePath!=='string'||!sourcePath.startsWith('archive/exams/')||!sourcePath.endsWith('.js')||requireOriginal&&!sourcePath.startsWith('archive/exams/original/'))invalid('SOURCE_SCOPE');
+  if(typeof sourcePath!=='string'||!sourcePath.startsWith('archive/exams/')||!sourcePath.endsWith('.js')||requireOriginal&&!isArchiveExamSourcePath(sourcePath,root))invalid('SOURCE_SCOPE');
   let sourceRef,raw;
   try{sourceRef=fileRef(root,sourcePath);raw=readBoundFile(root,sourceRef).toString('utf8');}catch(error){invalid('SOURCE_NOT_A_FILE',{code:errorText(error)});}
   // Structural binding only: the UID is not checked against the source-exam registry (uidAuthority STRUCTURAL_ONLY).
@@ -95,7 +95,7 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
   const state={policy:null,policySha256:null,provenance:null,paths:null,evidence:{observationSha256:null,matrixSha256:null,archiveRow:null,screenshot:null,engineSha256:null}};
   const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,policy:state.policy,policySha256:state.policySha256,provenance:state.provenance,evidence:{...state.evidence},paths:state.paths,...flags(onProgress)});
   try{
-    const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress,requireOriginal:true});// measureArchiveDisplayEnvelope takes archive/exams/original/ only
+    const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress,requireOriginal:true});// measureArchiveDisplayEnvelope takes any .js under archive/exams/ (original, similar, textbooks, other folders; no path escape or link out of it)
     if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1)throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'INTRINSIC_SVG'});
     createRun(input.runRoot,runId);
     const preflightRun=path.join(input.productionDir,'display-envelope-preflight');fs.mkdirSync(preflightRun,{recursive:true});
