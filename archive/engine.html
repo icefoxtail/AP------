@@ -127,11 +127,11 @@
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="layout-materializer.js?v=20261102.2"></script>
-    <script src="solution-render-executor.js?v=20261117-cont-label-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="solution-render-executor.js?v=20261111-svg-k-2" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261117-wide-fallback-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="exam-render-executor.js?v=20261106-output-performance-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
     <script src="side-effect-ledger.js?v=20260911.5"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
@@ -363,20 +363,6 @@
             line-height: 1.45;
             text-align: left;
             vertical-align: top;
-        }
-        /* A box inside a box is one frame, not two: when the data (or the view-block normalizer) nests a
-           .box/.note-box/.question-note-box in another one, the inner one renders as plain lines. Real tables and
-           figure frames use other classes (.question-table, .box-content, ...) and are not matched here. */
-        .question-note-box .question-note-box, .question-note-box .note-box, .question-note-box .box,
-        .note-box .question-note-box, .note-box .note-box, .note-box .box,
-        .box .question-note-box, .box .note-box, .box .box {
-            display: block;
-            width: auto;
-            max-width: none;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            background: transparent;
         }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
