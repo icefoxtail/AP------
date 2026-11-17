@@ -253,3 +253,9 @@ PR·main 병합·정본 JS·SVG·운영장부·엔진 변경 없음. 다음은 �
 ## 2026-11-17 재개 batch13 확장 저장
 결과adb9fda0af1deb2d8fec33c4ba7ff6deed86749e, 원격34파일blob일치. 유사·교과서·유형3시험지53문항 FIGURE22 KEEP6 EXEMPT24 CONTENT1,25계획. 교과서해설SVG12개실제존재·직접열람·누락장부정정완료,기존그림유지6건과최종답노출개선6건분리해중복계획5개제거. Q1기존두소문항모두KEEP. 유형2caption모델가정/경계조건보완후공식끝단검사및독립재검통과.
 확장누적57/351시험지1004/9093문항231계획(FIGURE220 CONTENT185 EXEMPT556 KEEP42 UNSUPPORTED1). 원본누적21시험지354OPEN문항197계획별도. 실제전체렌더NOT_RUN/출판UNVERIFIED,원본·SVG·운영장부·엔진·PR·main변경없음. 잔여원본·유사·교과서계속. 상세BATCH13-REPORT.md/INDEX.json.
+
+
+## 2026-11-17 재개 batch14 및 파생점 보완 저장
+결과bce5dc9606d321ba322683d87d3a6f0262c772e4, 원격68파일blob일치. 원본5시험지64문항 FIGURE46 EXEMPT14 CONTENT3 UNSUPPORTED1,50계획. 신규고1 x14계획의파생점을원시좌표대신공식operation으로보완하여모든동명점정확기호차0/최종spec14PASS. 기존저장중3 r4계획도같은파생점보완,독립계약검토및정확좌표동일/표시불변검증후같은커밋에저장(신규계획수에더하지않음).
+z Q9는순서없는두수의차와원해설절댓값문맥으로CONTENT를EXEMPT로교정,조건없는과잉보류방지. 나머지원문CONTENT는독립검수근거유지. v공식교점파생, w정규화축명확화, y상징count제약재현도완료.
+재개원본누적26시험지418OPEN문항247계획. 확장누적57시험지1004문항231계획은별도. 모든지원계획공식최종부분검사통과,실제전체렌더NOT_RUN/출판UNVERIFIED. 엔진·원문·SVG·운영장부·PR·main변경없음. 상세BATCH14-REPORT.md/INDEX.json 및 R-PROVENANCE-REPAIR.md/CHECK.json. 잔여원본·유사·교과서계속.
