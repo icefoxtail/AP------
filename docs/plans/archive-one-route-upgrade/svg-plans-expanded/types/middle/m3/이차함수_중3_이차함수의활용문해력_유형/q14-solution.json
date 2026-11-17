@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "80",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -0.2,
+      7.2,
+      0,
+      85
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "80",
+        "intersectionX": [
+          "0"
+        ],
+        "labelIntersections": false
+      }
+    ]
+  },
+  "caption": "시간이 지날수록 넓이가 감소하는 양상을 목표 넓이의 수평선과 비교한다. 오른쪽 끝은 양의 세로 길이를 유지하는 표시 범위의 일부이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "천재 파티시에 제임스는 새로운 식감의 디저트를 개발하기 위해 오븐 속에서 열을 받아 팽창하는 마카롱 반죽의 넓이 변화를 정밀하게 관찰하고 있다. 제임스는 처음 가로의 길이가 10 cm, 세로의 길이가 8 cm인 직사각형 모양의 특수 반죽을 오븐에 넣었다. 오븐의 상하 조절 팬 유동으로 인해, 오븐이 가동되면 이 반죽의 가로 길이는 매초 1 cm씩 일정하게 늘어나는 반면, 세로 길이는 매초 1 cm씩 일정하게 줄어드는 독특한 열역학적 수축 현상이 발생한다. 제임스는 반죽의 표면적이 너무 넓어지면 식감이 질겨지고, 너무 좁으면 속이 익지 않는다는 점을 고려하여, '반죽의 넓이가 정확히 80 cm²가 되는 순간' 오븐의 전원을 차단하고 건조 과정을 시작하려 한다. 반죽이 오븐 속에서 변화를 시작한 지 몇 초 후에 전원을 차단해야 하는지 구하시오. (단, 세로의 길이가 0 cm가 되기 전까지만 고려한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "S=80−2t−t²,물리정의역0≤t<8. 표시창0..7. 해설이허용한시작시점0외에양의시간해없음. 최종시간0의교점라벨과S(0)좌표밴드는추가하지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "S=80−2t−t²,물리정의역0≤t<8. 표시창0..7. 해설이허용한시작시점0외에양의시간해없음. 최종시간0의교점라벨과S(0)좌표밴드는추가하지않음."
+  ]
+}

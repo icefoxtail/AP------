@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "-8",
+            "showValue": false
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "A",
+            "value": "8",
+            "showValue": false
+          }
+        ],
+        "spans": [
+          {
+            "from": "B",
+            "to": "A",
+            "label": "16",
+            "style": "DOUBLE_ARROW"
+          },
+          {
+            "from": "B",
+            "to": "O",
+            "label": "r",
+            "side": "BELOW"
+          },
+          {
+            "from": "O",
+            "to": "A",
+            "label": "r",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "B와 A는 각각 b와 a의 점이다. 원점에서 같은 거리에 있고 두 점 사이의 주어진 거리는 16이므로 같은 두 구간으로 나눈다. 구하는 a의 값은 숨긴다.",
+  "accessibilityDescription": "B와 A는 각각 b와 a의 점이다. 원점에서 같은 거리에 있고 두 점 사이의 주어진 거리는 16이므로 같은 두 구간으로 나눈다. 구하는 a의 값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 정수 $a$와 $b$는 절댓값이 같고 부호가 서로 다르다. 수직선 위에서 $a$를 나타내는 점이 $b$를 나타내는 점보다 $16$만큼 오른쪽에 있을 때, $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "절댓값이 같고 부호가 다른 두 정수 $a, b$에 대하여, $a$가 $b$보다 오른쪽에 위치하므로 $a$는 양수이고 $b$는 음수이다.\n따라서 $b = -a$이다.\n$a$가 $b$보다 $16$만큼 크므로\n$a - b = 16$\n$a - (-a) = 16$\n$2a = 16$\n$a = 8$\n(이때 $b = -8$로 $|8| = |-8| = 8$을 만족한다.)\n따라서 $a$의 값은 $8$이다. 정답은 ③이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "B와 A는 각각 b와 a의 점이다. 원점에서 같은 거리에 있고 두 점 사이의 주어진 거리는 16이므로 같은 두 구간으로 나눈다. 구하는 a의 값은 숨긴다."
+  ]
+}

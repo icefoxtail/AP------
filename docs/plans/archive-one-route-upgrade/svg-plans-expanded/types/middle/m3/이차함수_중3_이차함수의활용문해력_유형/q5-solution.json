@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "50",
+          "24",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      12
+    ],
+    "viewport": [
+      -0.3,
+      12.3,
+      45,
+      125
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "6",
+        "y": "122"
+      },
+      {
+        "id": "G0",
+        "x": "0",
+        "y": "50"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "114",
+        "intersectionX": [
+          "4",
+          "8"
+        ],
+        "labelIntersections": false
+      }
+    ]
+  },
+  "caption": "주어진 최고점과 초기 수확량으로 포물선을 복원하고 목표 수확량과의 두 교점 중 작은 투입량을 고른다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "비밀의 숲 속, 연금술사 엘라라는 황금 영약을 제조하기 위해 마법 식물인 '만드라고라'를 특별 재배 구역에서 키우고 있다. 만드라고라는 토양 내의 마력 농도에 극도로 예민하여, 마력 비료를 전혀 주지 않아도 기본적으로 50 kg은 자라나지만, 비료를 적절히 추가하면 수확량이 늘어난다. 연금술 일지의 통계에 따르면, 비료를 6 kg 투입했을 때 토양의 마력 활성도가 정점에 달하여 최대 수확량인 122 kg을 얻을 수 있다고 한다. 그러나 이 임계점을 넘어 비료를 과도하게 많이 주면 오히려 뿌리가 마력 폭주로 타버려 수확량이 다시 감소하는 포물선 형태의 변화를 보인다. 엘라라가 오늘 밤 영약을 달이기 위해 정확히 114 kg의 만드라고라를 수확하고자 할 때, 투입할 수 있는 '비료의 양 중 가장 적은 양'은 몇 kg인지 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=−2(x−6)²+122,교점4/8. 두투입량좌표와최종4kg미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−2(x−6)²+122,교점4/8. 두투입량좌표와최종4kg미표시."
+  ]
+}

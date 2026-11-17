@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "circle",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "H",
+    "P",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l",
+    "xaxis"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "A"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "제2사분면의 접점에서 내린 수선과 반지름을 표시한다. H가 AB의 중점이라는 조건과 접선의 수직 관계를 함께 사용한다.",
+  "accessibilityDescription": "제2사분면의 접점에서 내린 수선과 반지름을 표시한다. H가 AB의 중점이라는 조건과 접선의 수직 관계를 함께 사용한다.",
+  "newVisualInformation": [
+    "제2사분면의 접점에서 내린 수선과 반지름을 표시한다. H가 AB의 중점이라는 조건과 접선의 수직 관계를 함께 사용한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "P",
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "halves",
+        "count": 1,
+        "segments": [
+          "AH",
+          "HB"
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $x^2+y^2=4$에 대하여 원과 $x$축의 양의 부분의 교점을 $A$, 제2사분면 위에 있는 원 위의 한 점 $P$를 지나는 접선 $l$과 $x$축의 교점을 $B$라고 하자. 점 $P$에서 $x$축에 내린 수선의 발 $H$가 선분 $AB$의 중점일 때, 접선 $l$의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "중간계산P(-1,√3),H(-1,0),B(-4,0). 최종접선식숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "17/2",
+          "-17/16"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -0.2,
+      8.2,
+      -0.2,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "17"
+      },
+      {
+        "id": "G0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "16",
+        "intersectionX": [
+          "4 - 4*sqrt(17)/17",
+          "4*sqrt(17)/17 + 4"
+        ],
+        "labelIntersections": false
+      }
+    ]
+  },
+  "caption": "노즐과 최고점을 지나는 물줄기에서 목표 높이 수평선의 두 교점을 찾는다. 오르는 쪽과 내려오는 쪽 모두 조건에 포함된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "달빛이 비추는 엘프의 숲 한가운데에는 요정들이 모이는 은빛 분수대가 있다. 분수대의 노즐은 지면(높이 0 m)에 설치되어 있으며, 여기서 뿜어져 나오는 물줄기는 아름다운 포물선을 그리며 반대편 지면으로 떨어진다. 정령학자들의 관측에 따르면, 이 물줄기는 분수 노즐(출발점)로부터 가로 방향으로 정확히 4 m 이동했을 때 최고 고도인 17 m에 도달한다고 한다. 숲의 어린 요정 루크는 날개에 물을 묻히며 노는 것을 좋아하여, 지면으로부터 정확히 16 m 높이에 고정되어 있는 정령의 나무 발판 위에 앉아 물줄기를 기다리고 있다. 루크가 앉아 있는 발판의 높이와 물줄기의 높이가 정확히 일치하여 '루크가 물줄기를 정면으로 맞이하게 되는 위치'는 물이 뿜어져 나오는 노즐로부터 가로 방향으로 몇 m 떨어진 곳들인지 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=17−17(x−4)²/16,교점4±4√17/17. 근호를소수근사하지않고교점labelIntersections=false로최종거리숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=17−17(x−4)²/16,교점4±4√17/17. 근호를소수근사하지않고교점labelIntersections=false로최종거리숨김."
+  ]
+}

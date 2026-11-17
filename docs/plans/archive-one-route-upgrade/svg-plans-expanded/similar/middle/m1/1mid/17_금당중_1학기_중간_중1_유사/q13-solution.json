@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "-2",
+            "showValue": false
+          },
+          {
+            "id": "M",
+            "value": "-1",
+            "showValue": false
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "A",
+            "value": "1",
+            "showValue": false
+          }
+        ],
+        "spans": [
+          {
+            "from": "M",
+            "to": "O",
+            "label": "a",
+            "side": "BELOW"
+          },
+          {
+            "from": "O",
+            "to": "A",
+            "label": "a",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=1, b=-2로 둔 위치 예시이다. A는 a, B는 b, M은 −a를 나타내며 B가 M보다 왼쪽에 있는 조건을 보인다. 보기의 최종 부호 조합은 쓰지 않는다.",
+  "accessibilityDescription": "a=1, b=-2로 둔 위치 예시이다. A는 a, B는 b, M은 −a를 나타내며 B가 M보다 왼쪽에 있는 조건을 보인다. 보기의 최종 부호 조합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위에서 양수 $a$에 대응하는 점을 $A$, 음수 $b$에 대응하는 점을 $B$라 하자. 점 $B$가 $-a$에 대응하는 점보다 왼쪽에 위치할 때, 다음 중 항상 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "조건을 수직선 상의 대소 관계로 분석한다.\n- $a$는 양수이므로 $a > 0$이고, 그 반대 부호 $-a$는 음수이다 ($-a < 0$).\n- $b$가 $-a$보다 왼쪽에 있으므로 $b < -a$이다.\n따라서 $b < -a < 0 < a$가 성립한다.\n\n각 식의 부호를 확인한다:\n1) $b < -a$의 양변에 $a$를 더하면 $a + b < 0$이다. (음수의 절댓값이 양수의 절댓값보다 크므로 합은 음수이다.)\n2) $a > 0$이고 $b < 0$이므로, $a - b = a + (-b)$는 양수와 양수의 합이 되어 $a - b > 0$이다.\n3) $a$와 $b$는 부호가 서로 다르므로 $ab < 0$이다.\n따라서 항상 옳은 것은 $a + b < 0, a - b > 0$이다.\n정답은 ③이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a=1, b=-2로 둔 위치 예시이다. A는 a, B는 b, M은 −a를 나타내며 B가 M보다 왼쪽에 있는 조건을 보인다. 보기의 최종 부호 조합은 쓰지 않는다."
+  ]
+}

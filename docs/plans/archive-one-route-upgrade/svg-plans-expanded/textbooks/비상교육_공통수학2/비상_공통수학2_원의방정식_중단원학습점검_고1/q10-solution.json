@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aux",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "17"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ints",
+        "op": "INTERSECTION",
+        "inputs": [
+          "circle",
+          "aux"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "ints"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "Q",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "ints"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l1",
+    "l2"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "A",
+    "C"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "외부 점에서 그은 두 접선의 접점에서는 반지름과 접선이 수직이다. 두 가능한 기울기를 같은 접선 조건의 두 근으로 본다.",
+  "accessibilityDescription": "외부 점에서 그은 두 접선의 접점에서는 반지름과 접선이 수직이다. 두 가능한 기울기를 같은 접선 조건의 두 근으로 본다.",
+  "newVisualInformation": [
+    "외부 점에서 그은 두 접선의 접점에서는 반지름과 접선이 수직이다. 두 가능한 기울기를 같은 접선 조건의 두 근으로 본다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "A",
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "A",
+        "Q",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(0,-3)$에서 원 $(x-1)^2+(y-1)^2=4$에 그은 두 접선의 기울기의 곱을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점을 지름AC인 보조원과 원의 교점으로 파생. 최종기울기곱−4와 기울기수치미표시.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "C",
+    "H",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "a=0인 한 사례에서 중심과 직선 사이 거리와 반지름을 비교한다. 접할 때도 만나는 경우이므로 일반 조건은 d≤4이다.",
+  "accessibilityDescription": "a=0인 한 사례에서 중심과 직선 사이 거리와 반지름을 비교한다. 접할 때도 만나는 경우이므로 일반 조건은 d≤4이다.",
+  "newVisualInformation": [
+    "a=0인 한 사례에서 중심과 직선 사이 거리와 반지름을 비교한다. 접할 때도 만나는 경우이므로 일반 조건은 d≤4이다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "R"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $(x-1)^2+(y-a)^2=16$과 직선 $4x-3y+5a-2=0$이 만나도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한사례a0이며최종경계−11,9미표시. 일반거리|2a+2|/5.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-8",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "-2",
+            "showValue": true
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "11/3",
+            "showValue": true
+          },
+          {
+            "id": "D",
+            "value": "6",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "보기의 다섯 수를 같은 수직선에 놓고 원점으로부터의 거리를 비교한다. 숫자는 모두 주어진 값이며 특정 후보를 색칠하거나 정답 번호를 표시하지 않는다.",
+  "accessibilityDescription": "보기의 다섯 수를 같은 수직선에 놓고 원점으로부터의 거리를 비교한다. 숫자는 모두 주어진 값이며 특정 후보를 색칠하거나 정답 번호를 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 수 중에서 절댓값이 가장 큰 수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "각 수의 절댓값을 구하여 대소를 비교한다.\n- $|-2| = 2$\n- $\\left|+\\dfrac{11}{3}\\right| = \\dfrac{11}{3} = 3.666\\dots$\n- $|+6| = 6$\n- $|-8| = 8$\n- $|0| = 0$\n구한 절댓값들의 크기를 비교하면\n$0 < 2 < 3.666\\dots < 6 < 8$\n이므로, 절댓값이 가장 큰 수는 $-8$이다.\n정답은 ④이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "보기의 다섯 수를 같은 수직선에 놓고 원점으로부터의 거리를 비교한다. 숫자는 모두 주어진 값이며 특정 후보를 색칠하거나 정답 번호를 표시하지 않는다."
+  ]
+}

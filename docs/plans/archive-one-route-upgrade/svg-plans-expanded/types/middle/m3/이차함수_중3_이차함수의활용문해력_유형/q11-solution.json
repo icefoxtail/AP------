@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "40",
+          "18",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.2,
+      6.2,
+      38,
+      70
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "67"
+      },
+      {
+        "id": "G0",
+        "x": "0",
+        "y": "40"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "64",
+        "intersectionX": [
+          "2",
+          "4"
+        ],
+        "labelIntersections": false
+      }
+    ]
+  },
+  "caption": "초기 밝기와 최고 밝기를 지나는 포물선에서 목표 밝기 수평선과 만나는 두 위치를 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "요리 서바이벌 '흑백 요리사'의 파이널 라운드 현장. 심사위원들의 날카로운 미각을 자극하기 위해 메인 연출가 강 피디는 무대 조명 세팅에 심혈을 기울이고 있다. 무대의 왼쪽 끝 바닥면을 기준점($x=0$)으로 잡았을 때, 가로 방향으로 $x$ (m) 떨어진 스팟의 조명 밝기 수치 $y$는 포물선 형태의 특성을 보인다. 조명 감독의 데이터에 따르면, 무대 왼쪽 끝($x=0$)에서의 기본 밝기는 40이며, 왼쪽 끝에서 오른쪽으로 정확히 3 m 이동한 스팟에서 조명의 밝기가 최고 수치인 67까지 치솟는다고 한다. 강 피디는 심사위원이 요리의 색감과 질감을 가장 정확하게 감상할 수 있도록, 조명의 밝기 수치가 정확히 64가 되는 스팟에 최종 시식용 테이블을 설치하고자 한다. 이 조건을 만족하는 '시식 테이블의 설치 위치'는 무대 왼쪽 끝에서부터 오른쪽으로 몇 m 떨어진 곳들인지 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=67−3(x−3)². 목표64의두위치2/4는최종답이므로교점좌표라벨미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=67−3(x−3)². 목표64의두위치2/4는최종답이므로교점좌표라벨미표시."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "24",
+          "-4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.2,
+      6.2,
+      0,
+      42
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "39"
+      },
+      {
+        "id": "G0",
+        "x": "5",
+        "y": "23"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "35",
+        "intersectionX": [
+          "2",
+          "4"
+        ],
+        "labelIntersections": false
+      }
+    ]
+  },
+  "caption": "주어진 최고점과 다섯 초의 측정 높이로 고도 함수를 복원한다. 목표 높이를 상승할 때와 하강할 때 모두 통과한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지구 성층권에 미확인 외계 전함이 출현하여 도시를 위협하고 있다. 연합방위군의 관제사 데이비드가 요격 시스템을 가동하여 대공 미사일을 수직으로 발사했다. 이 미사일은 추진체가 연소하며 상승하다가 최고점에 도달한 뒤 중력에 의해 다시 지면으로 떨어지는 포물선 궤도를 그린다. 관제 시스템의 레이더 추적 결과, 미사일은 발사된 지 정확히 3초 만에 최고 고도인 39 m에 도달하는 것으로 확인되었다. 또한, 발사 후 정확히 5초가 지난 시점의 고도를 측정했더니 23 m를 지나고 있었다. 외계 전함의 방어막(실드) 하단부에 치명적인 타격을 입히기 위한 최적의 폭파 고도는 지상으로부터 정확히 35 m 높이이다. 미사일이 상승하거나 하강하면서 '이 취약 고도 35 m를 통과하게 되는 시각'은 발사 후 몇 초 뒤인지 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h=39−4(t−3)². 초기높이는3으로추론되며지상발사높이0을추가가정하지않음. 최종시각2/4는교점좌표미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "h=39−4(t−3)². 초기높이는3으로추론되며지상발사높이0을추가가정하지않음. 최종시각2/4는교점좌표미표시."
+  ]
+}
