@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-stale40-ui83-independent-review-v2",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_CI_M2S2_26FC42390A50",
+  "decision": "STATIC_ACCEPT_BOUNDED_CAPTURE_PRODUCER_ACTUAL_CHROME_PENDING",
+  "manifest": {
+    "gitBlobSha1": "8cd428c74693326c583ad85479fc661068d83d8e",
+    "sha256": "1874ba149245a27bf97e51d1d0b9b738239696fe3f3ed04379f0032c10eb4e60",
+    "bytes": 9789
+  },
+  "delta": {
+    "gitBlobSha1": "09dd38a354f5a731b277eba8fc0a3032e8623d07",
+    "sha256": "24380713cd8502cba07150fcff311a9c06653c189627f48270191d25c081568c",
+    "bytes": 6853
+  },
+  "operationalFiles": [
+    {
+      "path": "tools/check-m2s1-stale-forty-current-browser.cjs",
+      "gitBlobSha1": "ea71e8f716737b2dddf315590aea5cee900fdfaf",
+      "sha256": "2429945d42f65ce6d30b7afdbc9ea01bfc739add592b047b3005b57a80e1a399",
+      "bytes": 38476
+    },
+    {
+      "path": "tools/capture-m2s1-stale-forty-surfaces.cjs",
+      "gitBlobSha1": "eacabe15d962858a3f95b59ee94daece3e7fb7cf",
+      "sha256": "d1e29325ffa367938b9ecba4eab8df2d295858bfd68920c0f05229186f2eb4bc",
+      "bytes": 28377
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-stale-forty-current-ui.json",
+      "gitBlobSha1": "063f7fc0a807c01b77a64755d7e43c5770eea824",
+      "sha256": "43d1a52c55d7a9407e8b6bfcab15443158de53aa792f71cb68d46c1d961741a3",
+      "bytes": 98644
+    },
+    {
+      "path": "tests/m2s1-stale-forty-current-browser.test.cjs",
+      "gitBlobSha1": "083fc5a261920787306ff62ce516e4ee3419a609",
+      "sha256": "2e62948a1e1bdb9ef1b327781123e182dc5f00d23dfd513717e556e66795b4dc",
+      "bytes": 20293
+    },
+    {
+      "path": ".github/workflows/m2s1-stale-forty-current-renderer-chrome.yml",
+      "gitBlobSha1": "4d9a352874fa9bb2a1beffc087ae61eb9090052c",
+      "sha256": "34d4946a94ea685893c8f8603bf1f9c64990f2215bbb97b142c34ab238a45f27",
+      "bytes": 7471
+    }
+  ],
+  "scope": {
+    "fixedUidCount": 40,
+    "sourceBanks": 12,
+    "assets": 43,
+    "logicalViews": 83,
+    "problemViews": 80,
+    "solutionViews": 3,
+    "solutionKeys": [
+      "E044-Q21",
+      "E044-Q24",
+      "E051-Q15"
+    ],
+    "opsRef": "refs/heads/ops/m2s1-stale40-current-renderer-26fc-20261117"
+  },
+  "independentRead": {
+    "originalFiveFilesFullRead": true,
+    "finalTwoDeltaRead": true,
+    "sharedCaptureHelperUnchanged": true,
+    "originalCaptureLoopSevenSubstitutionWholeInverseExact": true,
+    "sealedManifestStableSha256": "69cc73bd5f3a1d4b32a46ef016b6e44efbb1a9cca5e7144a49069f96be78e8f6",
+    "sourceAndAssetCurrentGitRawSizeChecks": true,
+    "sourceParserDoesNotExecuteRepositoryJavascript": true,
+    "exactPushCheckoutEventIdentity": true,
+    "credentialsPersistFalse": true,
+    "contentsReadOnly": true,
+    "onlyOriginalProblemOrExplicitThreeSolutionTiles": true,
+    "noDomContentCssMutation": true,
+    "captureWholeTilesAndGeometryGuard": true,
+    "outputExternalToCheckout": true,
+    "fixtureSourceIdentityMetadataAssetPinsPreserved": true
+  },
+  "findingClosed": {
+    "id": "SCREENSHOT_KEY_SURFACE_FILENAME_MISMATCH",
+    "before": "Producer filenames included surface while unchanged shared H required row.key plus viewport; the original row key omitted surface.",
+    "repair": "Bind all 83 rows to the sealed exact case plan, then change only temporary key passed to unchanged H; E051 solution retains its original fragment key.",
+    "strictFields": [
+      "question key",
+      "UID",
+      "source ordinal",
+      "surface",
+      "mode",
+      "complete viewport",
+      "unique case",
+      "complete 83-case plan"
+    ],
+    "rawResultsPngPathsAndArtifactsUnchanged": true,
+    "sharedHUnchanged": true,
+    "inverse": {
+      "restored": {
+        "bytes": 36950,
+        "sha256": "4cc9162da65e488796eb35c8865558555324c9456caf609ddc8c8c577b2d2c61",
+        "gitBlobSha1": "01b28ea64d9973d0ad3b3c7fe44f00c23e520112"
+      },
+      "beforeWholeEqual": true,
+      "oldTestWholePrefixExact": true,
+      "priorTestBytes": 15726,
+      "newSuffix": {
+        "bytes": 4567,
+        "sha256": "18605b6c44e79abfb825e3c01afbf1e96f6e11c09b6065540ff80cd88f9763ff",
+        "gitBlobSha1": "57ebe57c2246d007f5c1f19a0ece1fb80426014e"
+      }
+    }
+  },
+  "authorExecutionEvidence": {
+    "original71": {
+      "gitBlobSha1": "8bd21530fccbef79c824b74e11df414fb18dcf36",
+      "sha256": "13141cc5cb7164801255a7af436c0bd23c7885ed0845af726119bfcb97b24cc9",
+      "passed": 71,
+      "failed": 0
+    },
+    "captureLoop7": {
+      "gitBlobSha1": "1663a62a353b80bfd3a28ec6bafe7e93991e7ef9",
+      "sha256": "ef6682e403afd52b3a0010de1ea28f0973147b68873b9075ea9e811cdf3c6c31",
+      "passed": 7,
+      "failed": 0
+    },
+    "newInventory28": {
+      "gitBlobSha1": "dce5482ed2e77b5339865ba4b39e8dd053f8c843",
+      "sha256": "291f65a986006456b85eca172748638631d3b0f4433c325a46f720afafcff023",
+      "bytes": 2075,
+      "passed": 28,
+      "failed": 0,
+      "durationMs": 390.695666
+    },
+    "distinctExecutionsNotOneCombinedRun": true,
+    "old78NotRerun": true,
+    "logsReadByReviewer": true,
+    "newNegativeBoundaries": [
+      "missing or duplicate case",
+      "key UID ordinal mismatch",
+      "surface viewport mode mismatch",
+      "filename cross-binding",
+      "E051 fragment filename",
+      "capture filename",
+      "tile index/count",
+      "missing duplicate extra artifact",
+      "artifact digest/size mismatch"
+    ]
+  },
+  "limitations": {
+    "reviewerNodeRuns": 0,
+    "reviewerChromeRuns": 0,
+    "actualChrome": "NOT_RUN",
+    "actualVisualReview": "PENDING",
+    "newMathReviews": 0,
+    "newApprovals": 0,
+    "nativeBuilderConsumerRuns": 0,
+    "sourceMetadataIdentityVectorWrites": 0,
+    "remoteRefWrites": 0
+  }
+}
