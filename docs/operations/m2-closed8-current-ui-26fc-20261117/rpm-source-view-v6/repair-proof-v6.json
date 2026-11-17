@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "m2-closed8-issued-rpm-source-view-repair-v6",
+  "status": "FOCUSED36_PASS_ACTUAL_NATIVE8_AND_SOURCE47_PENDING",
+  "baseCommit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "actualFailure": {
+    "runId": "44052078894",
+    "jobId": "133932114823",
+    "reportGitBlobSha1": "86bc902f749e9c8d42a3d3866e2214197870682b",
+    "reportSha256": "dca554356bd5d10f97493d14ae6d7fe6525f8fb361f80feccfafb837cb06ecc0",
+    "reportBytes": 8350,
+    "phase": "ORIGINAL_NATIVE_EIGHT_AND_PRIVATE_TOKEN_BOUNDARY",
+    "code": "M2_NATIVE_RPM_COURSE:EXACT_SOURCE_BANK_OR_AFTER_BLOB_REQUIRED"
+  },
+  "confirmedMetadata": {
+    "sourceRequestDiagnostic": {
+      "path": "source-request-rpm-boundary-v1.json",
+      "gitBlobSha1": "a1bfc3ef8a074618e9dbe0757e9477e4da5d84da",
+      "sha256": "60b243d2da168be64e9210ce5533dec7a85bcf8ffcd57b4ea727e00bb7f6b824",
+      "bytes": 7849
+    },
+    "E017Six": {
+      "issuedAndRequest": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+      "current": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+      "literalEquality": false
+    },
+    "E023Two": {
+      "issuedAndRequestAndCurrent": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+      "literalEquality": true
+    }
+  },
+  "cause": "The existing P21 callback presents the authenticated issued bank to ordinary Native. Its normalized recursive call dropped the private token, and the RPM course leaf reread actual current bytes while comparing the original issued after-blob. The required original equality therefore fails for E0176.",
+  "ownership": {
+    "production": [
+      "m2-problem21-current-ui-continuity.mjs",
+      "reviewed-source-reassessment.mjs",
+      "reviewed-m2-native-rpm-course.mjs"
+    ],
+    "gate": "check-m2-closed8-current-ui-scoped.cjs",
+    "newFocusedTest": "m2-closed8-issued-rpm-view.test.cjs",
+    "publisher": "/root",
+    "otherSharedOwnersEdited": 0
+  },
+  "repair": {
+    "privateAuthority": "Existing module-private WeakMap token; no token minting API added.",
+    "request": "Whole original issued request, selected UID/ordinal, root and exact source path required.",
+    "normalizedPatch": "Whole issued patch with only original P21 marker removed; original E023 companion may additionally be removed only for the fixed E023 source.",
+    "rowBinding": "Exact current final MD and exact original patch.before overlay; exact existing selected fingerprint-repair RPM proof.",
+    "currentSource": "RPM still reads localBytes. The private reader authenticates full current source Git/raw/bytes and live source inventory before returning a copy of already authenticated issued bytes.",
+    "ordinaryChecks": "Original reviewed/committed/current-view bank counts, complete banks, expected after-blob, selected source fingerprint, original RPM/master/current canonical checks and whole issued course-proof equality remain mandatory.",
+    "lifetime": "Only synchronous callback lifetime; original WeakMap invalidation, runtime inventory, input rehash and no async result rules unchanged."
+  },
+  "validation": {
+    "syntaxFiles": 5,
+    "syntax": "PASS",
+    "focused": {
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "durationMs": 815.036321,
+      "scope": "Actual new reader body with test-only seeded authenticated-context map and immutable real eight request/receipt/source bytes; not a replacement for production context authentication or complete Native.",
+      "log": {
+        "path": "focused-v6.log",
+        "gitBlobSha1": "e6174c7b17d37e6c48dd3ad52eed5406b19fb548",
+        "sha256": "f9dda8524c2dcf6ce1ce4150a4fe25fb6b9a7449a3bab0d9ca98261ec2f63cc3",
+        "bytes": 2570
+      }
+    },
+    "productionInverseWholeExact": true,
+    "gateInverseWholeExact": true,
+    "oldFocused88Rerun": false,
+    "oldPath19Rerun": false,
+    "actualNative8": "NOT_RUN",
+    "actualSource47": "NOT_RUN",
+    "actualConsumer8": "NOT_RUN",
+    "actualColdAndSidecarRemoval": "NOT_RUN",
+    "newGateDefinitions": {
+      "positiveIssuedViews": 8,
+      "negativeRpmArgumentAndOutside39": 50,
+      "expiredRpmTokens": 8,
+      "asyncRpmTokenEscape": 1
+    }
+  },
+  "unchanged": {
+    "AutoAndNativeReuseAndP21": true,
+    "worker2": true,
+    "sidecars8": true,
+    "current16UiAndOriginal48AndQ10AndE023Evidence": true,
+    "ordinaryNoContextRpmPath": "localBytes with the original equality guards",
+    "studentSourceWrites": 0,
+    "metadataIdentityRuntimeWrites": 0,
+    "newApprovals": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "remoteRefWrites": 0
+  },
+  "nextAction": "Independent delta review, root publishes exact5 + evidence and runs the existing scoped47 job. Only that real result can complete original Native8/builder/Consumer/cold/removal gates."
+}

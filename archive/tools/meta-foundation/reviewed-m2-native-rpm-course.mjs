@@ -1,3 +1,4 @@
+import {readM2Problem21CurrentRpmSource} from './m2-problem21-current-ui-continuity.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -476,7 +477,7 @@ function activeTuple(before, after, final, nativeAfter) {
 // after-values, ordinary parent validation, receipt/sidecar and replay checks
 // remain mandatory in the caller. In particular GAP/RPM_ONLY is not a PT/TPL grant.
 export function bindReviewedM2NativeRpmCourse({ root, request, patch, native, row, metadata,
-  question, committedQuestion, accepted, final, canonicalBefore, canonicalAfter, issuedProof }) {
+  question, committedQuestion, accepted, final, canonicalBefore, canonicalAfter, issuedProof, m2Problem21CurrentUiContinuation }) {
   if (!own(patch?.targetParentRef, 'nativeRpmCourseTransport')) return null;
   const target = patch.targetParentRef, spec = target.nativeRpmCourseTransport;
   const item = M2_NATIVE_RPM_COURSE_ITEMS.find(x => x.questionUid === patch.questionUid);
@@ -553,7 +554,11 @@ export function bindReviewedM2NativeRpmCourse({ root, request, patch, native, ro
   const originalSource = gitBytes(root, review.baseSha, sourcePath), committedSource = gitBytes(root, NATIVE_COMMIT, sourcePath);
   if (originalSource.gitBlobSha1 !== review.sourceGitBlobSha || native.sourceBlob !== originalSource.gitBlobSha1 ||
       native.committedBlob !== committedSource.gitBlobSha1 || native.sourceSha256 !== sha(originalSource.bytes)) fail('NATIVE_SOURCE_REF_MISMATCH');
-  const reviewedBank = bank(originalSource.bytes), committedBank = bank(committedSource.bytes), currentSource = localBytes(root, sourcePath), currentBank = bank(currentSource);
+  const liveSource = localBytes(root, sourcePath);
+  const issuedSourceView = readM2Problem21CurrentRpmSource({context:m2Problem21CurrentUiContinuation,root,request,patch,
+    metadata,final,issuedProof,relativePath:sourcePath,currentSourceBytes:liveSource});
+  const currentSource = issuedSourceView ?? liveSource;
+  const reviewedBank = bank(originalSource.bytes), committedBank = bank(committedSource.bytes), currentBank = bank(currentSource);
   if ([reviewedBank, committedBank, currentBank].some(x => x.length !== item.expectedQuestionCount) ||
       !same(native.reviewedBank, reviewedBank) || !same(native.committedBank, committedBank) ||
       !same(committedQuestion, committedBank[item.sourceOrdinal - 1]) || blob(currentSource) !== request.expectedSourceBlobSha1)

@@ -1,3 +1,4 @@
+import { readM2Problem21CurrentRpmSource } from "./m2-problem21-current-ui-continuity.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -195,9 +196,13 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     fail("requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
   if (e015IssuedSourceContinuation !== undefined && !patch.sourceReview?.m2Family3ProblemContinuity)
     fail("E015 issued-source context requires its original family3 option");
-  if (m2Problem21CurrentUiContinuation !== undefined &&
-      (!patch.sourceReview?.m2ProblemRenderer21Continuity || e015IssuedSourceContinuation !== undefined))
-    fail("current problem21 context requires its exclusive original option");
+  if (m2Problem21CurrentUiContinuation !== undefined) {
+    if (e015IssuedSourceContinuation !== undefined)
+      fail("current problem21 context requires its exclusive original option");
+    if (!patch.sourceReview?.m2ProblemRenderer21Continuity)
+      readM2Problem21CurrentRpmSource({context:m2Problem21CurrentUiContinuation,root,request,patch,metadata,final,
+        issuedProof:issuedSourceReview?.nativeRpmCourseTransport,relativePath:`archive/exams/${request.sourceArchiveFile}`});
+  }
   const loaded = loadReview({ root, request, patch, cache });
   const { review, rows, reviewedBank, committedBank } = loaded, ordinal = patch.sourceOrdinal;
   const row = rows.get(ordinal);
@@ -278,7 +283,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       delete normalizedPatch.sourceReview[option];
     }
     const inner = validateReviewedSourceReassessment({ root, request, patch: normalizedPatch, metadata,
-      question: normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter, issuedSourceReview, cache });
+      question: normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter, issuedSourceReview, cache,
+      m2Problem21CurrentUiContinuation });
     const originalSourceReviewSha256 = sha256(stable(inner));
     return { ...inner, studentPayloadSha256: sha256(stable(payload)),
       ...(m2Problem21 ? { m2ProblemRenderer21Continuity: { ...m2Problem21.proof, originalSourceReviewSha256 } } : {}),
@@ -427,7 +433,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   if (nativeFamilyCourseTransport) Object.assign(accepted, nativeFamilyCourseTransport.fields);
   const nativeRpmCourseTransport = bindReviewedM2NativeRpmCourse({ root, request, patch, native: loaded, row,
     metadata, question, committedQuestion: committedBank[ordinal - 1], accepted, final, canonicalBefore, canonicalAfter,
-    issuedProof: issuedSourceReview?.nativeRpmCourseTransport });
+    issuedProof: issuedSourceReview?.nativeRpmCourseTransport, m2Problem21CurrentUiContinuation });
   if (nativeRpmCourseTransport) Object.assign(accepted, nativeRpmCourseTransport.fields);
   for (const [key, value] of Object.entries(patch.after)) {
     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
