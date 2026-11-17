@@ -354,6 +354,10 @@ const requiredCommands = [
     args: ['--test', 'tests/apms-worker-deploy.test.mjs']
   },
   {
+    label: 'tests/apms-exam-blueprint-examdata-sync.test.mjs',
+    args: ['--test', 'tests/apms-exam-blueprint-examdata-sync.test.mjs']
+  },
+  {
     label: 'tests/archive-pages-image-r2-gate.test.mjs',
     args: ['--test', 'tests/archive-pages-image-r2-gate.test.mjs']
   },
