@@ -4679,7 +4679,7 @@
         throw new Error("저장 전에 안내를 확인해 주세요.");
       }
       const papers = await prepare();
-      const filters = compactSaveFilters(request(true).filters);
+      const filters = saveRequestFilters(request(true).filters);
       const saveIndexVersion = state.indexVersion || state.catalog?.indexVersion || "";
       if (!saveIndexVersion) throw new Error("현재 문항 목록 버전을 확인할 수 없습니다.");
       const signature = JSON.stringify({
@@ -4711,7 +4711,7 @@
         include_extended: state.includeExtended === true,
         papers: papers.map((paper) => ({
           part_index: paper.index,
-          questions: paper.questions,
+          questions: paper.questions.map(saveWireQuestion),
           meta: paper.meta,
           ...(state.derivationSource ? {
             lineage: {
@@ -4752,6 +4752,11 @@
         state.saveResultState = keepUnknown ? "RESULT_UNKNOWN" : "FAILED";
         state.saveMessage = "";
         state.saveError = error.message || "저장 요청에 실패했습니다.";
+        // 서버가 분류 자료(정본 메타)가 다르다고 거절한 경우: 영어 원문은 화면에 내지 않고 콘솔에만 남긴다.
+        if (SAVE_PARITY_MISMATCH.test(state.saveError)) {
+          console.warn("[archive2] save rejected by canonical metadata check:", state.saveError);
+          state.saveError = SAVE_PARITY_MESSAGE;
+        }
         save();
         status(
           keepUnknown
@@ -4857,6 +4862,30 @@
       }
     }
   }
+  // 전송 본문만 서버 계약에 맞춘다(화면·미리보기·인쇄에 쓰는 문항 객체는 그대로 둔다). Source.restore는 카탈로그 값이 비어 있으면
+  // 출력용으로 원본 JS의 값을 남기지만, 서버는 정본(카탈로그) 값과 한 글자라도 다르면(빈 문자열 포함) 409로 거절한다.
+  // 그래서 보내는 사본의 정본 메타 필드(C.META_FIELDS)를 브라우저 카탈로그 레코드 값 그대로 맞춘다: 값이 비어 있으면 빈 값 그대로,
+  // 필드가 없으면 사본에서도 뺀다. 카탈로그 레코드가 없는 문항은 손대지 않는다. 필드를 통째로 빼지 않으므로 서버 검사는 그대로 살아 있다.
+  function saveWireQuestion(question) {
+    const record = state.byUid.get(question?.questionUid);
+    if (!record) return question;
+    const copy = { ...question };
+    for (const field of C.META_FIELDS) {
+      if (record[field] === undefined) delete copy[field];
+      else copy[field] = record[field];
+    }
+    return copy;
+  }
+  // 찾기 화면의 선택(시험지 종류 material, 시험지 file, similarOnly)은 문제지 만들기로 넘어올 때 state.filters에 같이 복사된다.
+  // 서버는 이 키들을 허용하지 않는다(409 "허용되지 않은 출제 조건"). 문항을 뽑는 데는 쓰이지 않으므로 저장 요청에서만 뺀다.
+  const SAVE_FINDER_ONLY_FILTER_KEYS = ["material", "file", "similarOnly"];
+  function saveRequestFilters(filters) {
+    const next = { ...filters };
+    for (const key of SAVE_FINDER_ONLY_FILTER_KEYS) delete next[key];
+    return compactSaveFilters(next);
+  }
+  const SAVE_PARITY_MISMATCH = /canonical metadata parity mismatch/i;
+  const SAVE_PARITY_MESSAGE = "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.";
   // The saved-paper endpoint rejects selection filters above 200 KB. A unified unit can hold
   // thousands of UIDs, so when the filters would not fit, record only the UIDs the papers use
   // (the server still replays every saved question against them).
