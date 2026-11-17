@@ -329,15 +329,36 @@ function pin(raw,expected,label){
  need(Buffer.isBuffer(raw)&&raw.length===expected.bytes&&blob(raw)===expected.gitBlobSha1&&sha(raw)===expected.sha256,'PIN_'+label);
 }
 function refShape(ref){
- need(ref&&OID.test(ref.commit||'')&&OID.test(ref.gitBlobSha1||'')&&SHA.test(ref.sha256||'')&&
-  Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=128*1024*1024,'IMMUTABLE_REF');
+ const valid=ref&&OID.test(ref.commit||'')&&OID.test(ref.gitBlobSha1||'')&&SHA.test(ref.sha256||'')&&
+  Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=128*1024*1024;
+ if(!valid){
+  const fields={};
+  for(const key of['commit','path','gitBlobSha1','sha256','bytes']){
+   const value=ref?.[key],type=value===null?'null':Array.isArray(value)?'array':typeof value;
+   const entry={present:!!ref&&Object.hasOwn(ref,key),type};
+   if(type==='string'){
+    const safeValue=key==='path'?value.length<=512&&!/[\x00-\x1f]/.test(value):
+     key==='sha256'?SHA.test(value):key==='commit'||key==='gitBlobSha1'?OID.test(value):false;
+    if(safeValue)entry.value=value;else{entry.characters=value.length;entry.valueSha256=sha(value);}
+   }else if(type==='number'&&Number.isFinite(value))entry.value=value;
+   fields[key]=entry;
+  }
+  const error=Error('M3_SOURCE49_IMMUTABLE_REF');error.referenceShapeFailure={fields};throw error;
+ }
  return {commit:ref.commit,path:safeRelative(ref.path),gitBlobSha1:ref.gitBlobSha1,sha256:ref.sha256,bytes:ref.bytes};
 }
-function refsIn(value,out=[]){
- if(Array.isArray(value)){for(const x of value)refsIn(x,out);}
+function refsIn(value,out=[],pointer='$',owner=null){
+ if(Array.isArray(value)){for(let i=0;i<value.length;i++)refsIn(value[i],out,pointer+'['+i+']',owner);}
  else if(value&&typeof value==='object'){
-  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path'))out.push(refShape(value));
-  else for(const [k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out);
+  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path')){
+   try{out.push(refShape(value));}
+   catch(error){
+    if(error.referenceShapeFailure)error.referenceShapeFailure.location={
+     document:owner?{commit:owner.commit||null,path:owner.path||null}:null,
+     pointer:pointer.length<=2048?pointer:null,pointerSha256:sha(pointer)};
+    throw error;
+   }
+  }else for(const[k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out,pointer+'.'+k,owner);
  }
  return out;
 }
@@ -485,8 +506,8 @@ function run(root,output){
    safeRelative(rel);need(docScope(rel),'METADATA_SCOPE');const bytes=copy(rel);
    queueDoc(bytes,{commit:rootHead,path:rel},true);return bytes;
   }
-  function hydrateDocument(value){
-   for(const ref of refsIn(value))hydrateRef(ref);
+  function hydrateDocument(value,owner=null){
+   for(const ref of refsIn(value,[],'$',owner))hydrateRef(ref);
    for(const rel of new Set(leafPaths(value)))if(fs.existsSync(path.join(root,rel)))hydrateMetadataDocument(rel);
   }
   function hydrateOriginalNativeSource(carrier){
@@ -512,7 +533,7 @@ function run(root,output){
   function drain(){
    while(queue.length){
     const item=queue.shift();if(parsedDocs.has(item.key))continue;parsedDocs.add(item.key);
-    hydrateDocument(json(item.bytes));
+    hydrateDocument(json(item.bytes),item.ref);
    }
   }
   function copyPrefix(prefix,filter=()=>true){
@@ -556,7 +577,7 @@ function run(root,output){
      assets.add(match[0].startsWith('archive/')?match[0]:'archive/'+match[0]);
    }
    for(const rel of[...assets].sort())copy(rel);
-   for(const it of compact.items)if(it.registrationHold)hydrateDocument(it.registrationHold);
+   for(const it of compact.items)if(it.registrationHold)hydrateDocument(it.registrationHold,{commit:rootHead,path:group.compactRef.path});
   }
   need(states.length===49&&new Set(states.map(s=>s.questionUid)).size===49,'SOURCE49');
   const selected=new Set(CONFIG.selected.map(s=>s.questionUid)),allUids=new Set(states.map(s=>s.questionUid));
@@ -580,9 +601,10 @@ function run(root,output){
    outsideWholeStateSha256:sha(stable(actualOutside)),selectedWholeStateSha256:sha(stable(actualSelected))};
   const q5CarrierRaw=copy(Q5.FILE),q5Carrier=json(q5CarrierRaw);Q5.assertDescriptor(q5Carrier);
   const q16Path=CONFIG.selected[1].path,q16Raw=copy(q16Path),q16Doc=json(q16Raw);Q16.assertSubject(q16Doc);
-  for(const doc of[q5Carrier,q16Doc])for(const ref of refsIn(doc))hydrateRef(ref);
+  for(const[doc,relative]of[[q5Carrier,Q5.FILE],[q16Doc,q16Path]])
+   for(const ref of refsIn(doc,[],'$',{commit:rootHead,path:relative}))hydrateRef(ref);
   immutable(CONFIG.q5OldCursorRef);
-  const oldQ16Raw=immutable(CONFIG.oldQ16SidecarRef);for(const ref of refsIn(json(oldQ16Raw)))hydrateRef(ref);
+  const oldQ16Raw=immutable(CONFIG.oldQ16SidecarRef);for(const ref of refsIn(json(oldQ16Raw),[],'$',CONFIG.oldQ16SidecarRef))hydrateRef(ref);
   // Follow only the exact issued Q5 packet and explicit Native provenance; global
   // runtime/canonical documents and output inventories never enter this queue.
   for(const rel of[Q5.REQUEST_WITNESS,Q5.RECEIPT,Q5.SOURCE_BINDING])hydrateMetadataDocument(rel);
@@ -605,7 +627,7 @@ function run(root,output){
    }
    const tech=json(immutable(spec.technicalRef));
    need(tech.completedLogicalCases===2&&tech.results.length===2,'CURRENT_CASE2');
-   for(const ref of refsIn(tech))hydrateRef(ref);
+   for(const ref of refsIn(tech,[],'$',spec.technicalRef))hydrateRef(ref);
   }
   // Other existing claims are included only when their filename and declared
   // identity belong to these exact 49 rows; no unrelated packet is inspected.
@@ -617,7 +639,7 @@ function run(root,output){
    const bytes=copy(rel),doc=json(bytes);
    need(allUids.has(doc.questionUid)&&states.some(s=>s.questionUid===doc.questionUid&&s.sourceArchiveFile===doc.sourceArchiveFile&&
     s.sourceOrdinal===doc.sourceOrdinal),'CLAIM_SCOPE');
-   for(const ref of refsIn(doc))hydrateRef(ref);
+   for(const ref of refsIn(doc,[],'$',{commit:rootHead,path:rel}))hydrateRef(ref);
   }
   hydrateOriginalNativeSource(q5Carrier);
   drain();
@@ -752,6 +774,7 @@ function run(root,output){
   return report;
  }catch(error){
   report.status='FAIL';report.error=safeError(error);report.actualMainRegistration='NOT_PERFORMED';
+  if(error.referenceShapeFailure)report.failedReferenceShape=error.referenceShapeFailure;
   if(rootHead)try{
    report.rootHeadUnchanged=git(root,['rev-parse','HEAD']).toString().trim()===rootHead;
    report.rootStatusUnchanged=git(root,['status','--porcelain=v1','--untracked-files=all']).toString()===rootStatus;
