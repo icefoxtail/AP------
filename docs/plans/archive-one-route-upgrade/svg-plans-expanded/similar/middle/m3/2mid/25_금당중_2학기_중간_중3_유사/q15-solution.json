@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lM"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "r"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "r-2"
+      },
+      {
+        "id": "lAM",
+        "ownerSegment": "sAM",
+        "text": "6"
+      },
+      {
+        "id": "lMC",
+        "ownerSegment": "sMC",
+        "text": "2"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rm",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "caption": "원래 중심 O를 복원하면 반지름 r, 중심에서 현까지 r−2, 반쪽 현6이 직각삼각형을 이룬다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB12, 수직이등분선상의 호 점 C, CM2.",
+      "mappedTo": [
+        "mathPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수선의 발은 파생점으로 구성하고 최종 길이·넓이는 숨긴다."
+  ],
+  "accessibilityDescription": "원래 중심 O를 복원하면 반지름 r, 중심에서 현까지 r−2, 반쪽 현6이 직각삼각형을 이룬다."
+}
