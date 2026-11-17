@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 36,
-  "templateCount": 126,
+  "templateCount": 127,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -3148,6 +3148,36 @@
       "sourceUnit": "FIGURE_TRANSFORM",
       "status": "ACTIVE",
       "ownerPack": "GEOMETRY_EQUATIONS"
+    },
+    {
+      "templateKey": "TPL_CENTROID_NESTED_MEDIAN_AREA_PARTITION",
+      "parentProblemTypeKey": "PT_COORD_CENTROID",
+      "canonicalLabelKo": "중첩 무게중심의 중선과 높이비에 의한 넓이 분할",
+      "definition": "한 삼각형의 무게중심을 꼭짓점으로 하는 부분삼각형에 다시 정해진 무게중심의 중선2:1 성질과 공통 밑변에 대한 높이비를 반복하여 부분삼각형의 넓이 관계를 구한다.",
+      "internalSkeleton": "바깥 삼각형과 부분삼각형의 중선을 확인한다 → 두 무게중심의 중선 분할을 차례로 적용한다 → 공통 밑변·높이의 비로 목표 부분넓이를 연결한다.",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "status": "ACTIVE",
+      "aliases": [],
+      "sourceUnits": [
+        "M2-06"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_69f5f572e65435ddbb310ce81278e9a301b36aba92b7ca2cacec3c8d65f8c1f1"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_FINALIZATION_20261115",
+          "questionUid": "qid_v1_69f5f572e65435ddbb310ce81278e9a301b36aba92b7ca2cacec3c8d65f8c1f1",
+          "nativeReviewRef": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E048/review.json",
+            "sha256": "46aa00f1f280e826326b1ae62227a660947232e8eea1bbe5bc7ca659a80dd047"
+          },
+          "sourceOrdinal": 14,
+          "newMathematicalQa": false
+        }
+      ]
     }
   ],
   "droppedTemplates": [

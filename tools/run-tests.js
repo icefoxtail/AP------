@@ -41,6 +41,17 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
+  { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
+  { label: 'tests/item-4slot-m1s2-problem-continuity.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-problem-continuity.test.cjs'] },
+  { label: 'tests/item-4slot-m1s2-ui-provenance.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-ui-provenance.test.cjs'] },
+  { label: 'tests/item-4slot-m1-m3-transport.test.cjs', args: ['--test', 'tests/item-4slot-m1-m3-transport.test.cjs'] },
+  { label: 'tests/archive-m3s2-layout-continuity.test.cjs', args: ['--test', 'tests/archive-m3s2-layout-continuity.test.cjs'] },
+  { label: 'tests/archive-renderer-continuity-writer-inputs.test.mjs', args: ['--test', 'tests/archive-renderer-continuity-writer-inputs.test.mjs'] },
+  {
+    label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-problem21-continuity.test.mjs']
+  },
   {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
@@ -160,6 +171,36 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
   },
   {
+    label: 'tests/archive-existing-registered-vector-svg7-derived-continuity.test.cjs',
+    args: ['--test', 'tests/archive-existing-registered-vector-svg7-derived-continuity.test.cjs']
+  },
+  {
+    label: 'tests/archive-existing-vector-svg-index-continuity.test.cjs',
+    args: ['--test', 'tests/archive-existing-vector-svg-index-continuity.test.cjs']
+  },
+  {
+    label: 'tests/archive-svg7-named-problem-continuity.test.cjs',
+    args: ['--test', 'tests/archive-svg7-named-problem-continuity.test.cjs']
+  },
+  {
+    label: 'tests/archive-m2s1-text3-fragment-ui.test.cjs',
+    args: ['--test', 'tests/archive-m2s1-text3-fragment-ui.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-text3-fragment-ui.test.cjs',
+    args: ['--test', 'tests/item-4slot-text3-fragment-ui.test.cjs']
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-existing-vector.test.mjs',
+    args: ['--test', 'tests/archive-m3-e052-q5-existing-vector.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/item-4slot-existing-original-text-solution3.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-original-text-solution3.test.cjs'],
+    timeout: 60000
+  },
+  {
     label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
     args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
     timeout: 180000
@@ -169,8 +210,20 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
   },
   {
+    label: 'tests/archive-reviewed-projection-phase.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-projection-phase.test.mjs']
+  },
+  {
+    label: 'tests/meta-foundation-geometry-issued-rows.test.mjs',
+    args: ['--test', 'tests/meta-foundation-geometry-issued-rows.test.mjs']
+  },
+  {
     label: 'tests/archive-registration-writer.test.mjs',
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
+  },
+  {
+    label: 'tests/archive-registration-build-db.test.mjs',
+    args: ['--test', 'tests/archive-registration-build-db.test.mjs']
   },
   {
     label: 'tests/archive-single-writer-workflows.test.mjs',
@@ -336,6 +389,21 @@ const requiredCommands = [
     label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
     args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
     timeout: 300000
+  },
+  {
+    label: 'tests/archive-m2-e006-problem-continuity.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-m2-e006-problem-continuity.test.mjs'],
+    timeout: 60000
+  },
+  {
+    label: 'tests/archive-reviewed-m2-family3-problem-continuity.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-reviewed-m2-family3-problem-continuity.test.mjs'],
+    timeout: 240000
+  },
+  {
+    label: 'tests/archive-reviewed-m2-family7-rpm-row-continuity.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-reviewed-m2-family7-rpm-row-continuity.test.mjs'],
+    timeout: 240000
   },
   {
     label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
@@ -551,10 +619,32 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
   },
   {
+    label: 'tests/archive-svg7-existing-vector-ui.test.cjs',
+    args: ['--max-old-space-size=128', '--test', 'tests/archive-svg7-existing-vector-ui.test.cjs'],
+    timeout: 60000
+  },
+  {
     label: 'tests/archive-m2s1-svg7-image-pointer.test.mjs',
     // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
     args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
     timeout: 240000
+  },
+  {
+    label: 'tests/archive-e041-original-choice-correction.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-e041-original-choice-correction.test.mjs'],
+    timeout: 120000
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs',
+    // Bound the immutable Git fixture like the neighboring SVG7 contract.
+    args: ['--max-old-space-size=256', 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs'],
+    timeout: 240000
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-complete-given.test.mjs',
+    // Exact public Git evidence and source views; no global data generation.
+    args: ['--max-old-space-size=384', 'tests/archive-m3-e052-q5-complete-given.test.mjs'],
+    timeout: 180000
   }
 ];
 

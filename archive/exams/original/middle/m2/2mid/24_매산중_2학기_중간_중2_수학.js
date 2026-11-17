@@ -465,7 +465,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_INTERIOR_RAY_CIRCLE_INTERSECTION_UNIQUENESS"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,

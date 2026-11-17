@@ -1,0 +1,695 @@
+{
+  "schemaVersion": "archive-independent-problem-figure-continuity-review-v1",
+  "reviewer": "GPT_ROOT_26FC_M3S2_INDEPENDENT",
+  "createdAt": "2026-11-16T12:45:07.119399+00:00",
+  "scope": "M1S2_PREVIOUSLY_REGISTERED_VECTOR_PROBLEM_FIGURE_ONLY",
+  "baselineRegisteredCommit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+  "currentSourceCommit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+  "originalInputSha256": "3d5e6807a5ccd07da96db15f0b27b0b6412dec088ca52c1b8c08ded3388f97e5",
+  "originalObservationSha256": "51dba85292ee12564d270b2cadd6fd181d2da93ac7f0ce1a4093234d8b2b1132",
+  "currentInputSha256": "dbdee1e9d5acd4088938cf8b2e796f05fd5465114cc5180de37c0258a9928bc5",
+  "currentObservationSha256": "cc4ea7db873ea7c58f40a4fccf13e9a0f9985cb21c30e52cc3c123968a457e95",
+  "renderManifestSha256": "640d27aacf0183c084b3058ea78db5b649655c601dd14881a9808ef44b9825fe",
+  "supplementalGivenSha256": "f1564ce164e70b780a6546bbb73960228d4753c0c2b46a4f2071e31c8945b63a",
+  "phaseOrder": [
+    "Given metadata: unchanged non-renderer payload assertion and hashes only",
+    "Original PNG14 directly viewed and original observation frozen",
+    "Current SVG14 input received after original freeze",
+    "Current SVG14 rendered and current observations frozen",
+    "Requested short noun-phrase supplement7 for five axis/series labels received and hash checked",
+    "Separate renderer-only comparison decision frozen"
+  ],
+  "engine": {
+    "name": "librsvg/cairo",
+    "librsvgVersion": "2.60.0",
+    "cairoVersion": "1.18.4",
+    "scale": 2
+  },
+  "counts": {
+    "selectedProblemFigures": 14,
+    "acceptedProblemFigureContinuityOnly": 9,
+    "holdClearDisplayDifference": 5,
+    "unresolvedAfterMinimalGiven": 0,
+    "wholeItemApproved": 0,
+    "newMathQa": 0,
+    "newSemanticApproval": 0,
+    "newFourSlotVector": 0,
+    "sourceBankReads": 0,
+    "fullQuestionReads": 0,
+    "minimalGivenSpansRead": 7,
+    "answerSolutionReads": 0,
+    "acceptedVectorReads": 0,
+    "solutionImagesReviewed": 0,
+    "browserRuns": 0,
+    "sourceOrAssetWrites": 0,
+    "registrationRuns": 0
+  },
+  "limitations": [
+    "This is an independent static problem-figure comparison, not actual browser/mobile verification or a whole-item approval.",
+    "The owner must intersect the accepted problem figures with unchanged or separately accepted solution surfaces and all existing authority/binding guards.",
+    "The original/current observations are immutable. The later minimal-given supplement is not claimed to predate either freeze.",
+    "P03 preliminary axis-placement concern was not retained after direct comparison; the confirmed refusal concerns missing rotation/right-angle markings."
+  ],
+  "records": [
+    {
+      "observationId": "P01",
+      "questionUid": "qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90",
+      "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "0f3b05966c71d8781f784e209de2e51f3838fc83",
+      "currentSourceGitBlobSha1": "d6616cca26b4fcf8e2fd952ec6d2e25cf52d8c41",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/23_금당중_2학기_기말_중1_기출/q20.png",
+        "gitBlobSha1": "2d554352efffe77a3fe420885c87b8cbf65315f2",
+        "sha256": "3dd7edef290351d5ca1fed9e6fad5b334f3f83ce0e314d0d7e22640e31d5e1fc",
+        "bytes": 41690
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/23_금당중_2학기_기말_중1_기출/q20-problem-geometry-20261116.svg",
+        "gitBlobSha1": "348cbd3e452df29f528db6484a096d2eff04f1fb",
+        "sha256": "2c267002e59b994961db80e7e852dd215819ad8f8095069dd4f4d8cf851f35d9",
+        "bytes": 16441
+      },
+      "currentRasterSha256": "c30eb0886b478e531f7503ed82592d99a3a540f4b3d1a47699ff54b4e6f08c57",
+      "currentRasterDimensions": [
+        768,
+        640
+      ],
+      "decision": "HOLD_CLEAR_DISPLAY_DIFFERENCE",
+      "findings": [
+        "원본의 하부 사선이 축 끝까지 이어지는 부분이 현재 그림에서 빠졌다.",
+        "원본의 여러 치수 표기/보조선이 현재 세 표기로 줄었고, 곡선 회전 화살표가 축의 직선 화살표로 바뀌었다.",
+        "원본 스캔에서 불명확한 일부 숫자는 해석하지 않았으며, 명확한 윤곽·표시 누락만으로 보류한다."
+      ],
+      "nextAction": "원본의 하부 윤곽·회전 표시·누락 치수/보조선을 복원한 한정 후보를 제시하고, 흐린 원본 표기는 필요한 자료로만 확인한 뒤 문제그림 재비교.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P02",
+      "questionUid": "qid_v1_957c3b3bfe04be724b389d76145bd21ccf7cfa6289d7d3188cf2612ddc37ef0a",
+      "sourceArchiveFile": "original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 19,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "500deda821ab7b84f67ab745f84ddbbd3e04457e",
+      "currentSourceGitBlobSha1": "2fda9e4cc8482d864dea29b4d8dedf9ae40ead45",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/23_연향중_2학기_기말_중1_기출/q19.png",
+        "gitBlobSha1": "39b468a6927322658c561084a34c90d797dc0a91",
+        "sha256": "7d98f389a5e04a5e55a450a6d1c1ec770f7d2c08c5338cf6b2dcf89d62dad039",
+        "bytes": 229378
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/23_연향중_2학기_기말_중1_기출/q19-problem-geometry-20261116.svg",
+        "gitBlobSha1": "a25f9b52bfecea231fafe3a39af0d007f63a6592",
+        "sha256": "4cfdd7c76c497eec0969be6c6e1b059d7e7dda9b7ef37791ae27096e48b0fd7b",
+        "bytes": 58342
+      },
+      "currentRasterSha256": "f9767b66239667819634b75c73f6e38b7ee6510296c597d8c05443311e9c887b",
+      "currentRasterDimensions": [
+        1096,
+        674
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "원본 두 계열의 점 위치와 연결, 계열 이름의 대응, 축 눈금/단위가 현재 그림에 유지된다.",
+        "범례를 바깥으로 옮기고 선을 정리한 변경은 두 계열의 대응을 바꾸지 않는다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 해설/문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P03",
+      "questionUid": "qid_v1_f396d65be774ad30b02478c81036d0c742e9a26db49362a463356d6bc8fe66b4",
+      "sourceArchiveFile": "original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 10,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "5a882f85179ced5eff8e6389f4ee2fd6287b1152",
+      "currentSourceGitBlobSha1": "c1626280969277112b06a21f4569b8ea476d784d",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/23_왕운중_2학기_기말_중1_기출/q10.png",
+        "gitBlobSha1": "a48bd2ffe7236afeee819b5891d45112993656e7",
+        "sha256": "6a7703fc8f964192217b0b0dcc4b817677d720817e9dbb4d0adf59b2b84dd420",
+        "bytes": 894955
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/23_왕운중_2학기_기말_중1_기출/q10-problem-geometry-20261116.svg",
+        "gitBlobSha1": "3bb7ecc20fd63f038743f56be1c901c8a5105462",
+        "sha256": "4d0534ae860275c1e8d4b05fec7482ab33994a294dbe06ca28c6a1fea6ea4986",
+        "bytes": 82458
+      },
+      "currentRasterSha256": "e2f657c011b9daf8081be146c63dc3d471d9d0953bdca12e251a08d51aa0009a",
+      "currentRasterDimensions": [
+        1552,
+        2406
+      ],
+      "decision": "HOLD_CLEAR_DISPLAY_DIFFERENCE",
+      "findings": [
+        "다섯 패널의 곡선 회전 화살표가 현재 그림에서 빠졌다.",
+        "원본 일부 평면형에 명시된 직각 표시들이 현재 그림에서 빠졌다.",
+        "평면형과 입체의 다섯 패널·오른쪽 연결 화살표는 유지되지만, 명시 표시 누락 때문에 수용하지 않는다."
+      ],
+      "nextAction": "원본의 회전 및 직각 표시만 정확히 복원한 후보를 제시하여 해당 표시를 재비교. 선택지 정답이나 수학 판정 변경 금지.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P04",
+      "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+      "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "7f2a5b3b3af7ac34b38305d9d9fa5ba9bf5be749",
+      "currentSourceGitBlobSha1": "6ecbf64fcfcb2e28f7e6fa6d293acb41592f15ef",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q13.png",
+        "gitBlobSha1": "2778ea3161fba37f668df3e06749bf49f0285a13",
+        "sha256": "8f45b58ed2a0a9812460bd382c67b7f04f8131135b1165b15ab981f82584a772",
+        "bytes": 147911
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q13-problem-geometry-20261116.svg",
+        "gitBlobSha1": "4f61645c550d740d02a1d8067a4bf9a811659989",
+        "sha256": "1ca5dd694455f62ee90f2c09a230f390475b63b66bd6f9efee7f0f0de0f5102c",
+        "bytes": 41687
+      },
+      "currentRasterSha256": "860aa7e6f8a830dc351cb207736b74a496535d28862d27e0a6acd9c505be7ee1",
+      "currentRasterDimensions": [
+        1098,
+        674
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "여섯 구간의 막대 경계와 높이, 눈금 및 단위가 원본과 대응한다.",
+        "추가된 가로축 설명은 요청 후 제공된 원/현재 동일 명사구 근거와 일치한다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true,
+      "supplementalGiven": {
+        "sha256": "f1564ce164e70b780a6546bbb73960228d4753c0c2b46a4f2071e31c8945b63a",
+        "role": "horizontal-measurement",
+        "originalSourceRef": {
+          "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+          "path": "archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "7f2a5b3b3af7ac34b38305d9d9fa5ba9bf5be749",
+          "sha256": "6cf5b9b96c6fe661e797b124228d1b20bc7d849e1121af18de283263fe393487"
+        },
+        "currentSourceRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "6ecbf64fcfcb2e28f7e6fa6d293acb41592f15ef",
+          "sha256": "ba50e2d4c4d8002c4012b99f51f6aaeb472291d59efa39a63abd4715e7c8f420"
+        },
+        "contentSha256": "8ad2841d7e4f796765bc770058c5f6f546d05f1856c42d080150f91870056776",
+        "spanHashes": [
+          "20b2888a5fcdf8f3fb6f960f50388bb5840646a8f7563f6bc8eb225db88ecbd6"
+        ],
+        "originalAndCurrentExact": true,
+        "receivedAfterObservationFreezes": true,
+        "fullQuestionRead": false
+      }
+    },
+    {
+      "observationId": "P05",
+      "questionUid": "qid_v1_9194f2667ed473c402677062a770c695c172fb4b15542a27a6f981b00539bb27",
+      "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 24,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "7f2a5b3b3af7ac34b38305d9d9fa5ba9bf5be749",
+      "currentSourceGitBlobSha1": "6ecbf64fcfcb2e28f7e6fa6d293acb41592f15ef",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q24.png",
+        "gitBlobSha1": "4681506d8b4aedd74cc43fef307bfa9a1b71f31d",
+        "sha256": "50e567a39b0d503e0b3a4605cb5ac5de61e02bff2ce093edfe5d29bb3fdb6ba9",
+        "bytes": 381399
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q24-problem-geometry-20261116.svg",
+        "gitBlobSha1": "19aaa9b1d3382dd399e000ef3e94fc4bbe07ec7c",
+        "sha256": "7e4ed11904d41e332324c5fecdc88d17a49329809a09865b46050106a7a2e215",
+        "bytes": 100408
+      },
+      "currentRasterSha256": "4582e45f0f5fe2d4d330092903ca19aaaf3256690a22973985f4f1b5e46ba2fe",
+      "currentRasterDimensions": [
+        768,
+        640
+      ],
+      "decision": "HOLD_CLEAR_DISPLAY_DIFFERENCE",
+      "findings": [
+        "위쪽 수치 배열의 둘째 행 마지막 셀 표기가 원본과 다르다.",
+        "아래 표의 머리행/빈 본문 구분선도 원본 구성과 다르게 표시된다.",
+        "수치의 계산·정렬·답 도출 없이 보이는 글자 및 표 구조 차이만 확인했다."
+      ],
+      "nextAction": "해당 한 셀 글자와 표의 머리행 구분을 원본대로 복원한 후보를 제시하여 제한 재비교. 원 수치/답을 공개 증거에 전사하지 않음.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P06",
+      "questionUid": "qid_v1_f498f0a348a7c01027483e35fad90b8059a6243c26167ad801c30d4f45326a67",
+      "sourceArchiveFile": "original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+      "currentSourceGitBlobSha1": "a8343e4b77b011d5f0a0220869dbf81971dcfb95",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q20.png",
+        "gitBlobSha1": "6c3a356314d84b69991ded33bd9db342dd2c2f98",
+        "sha256": "86ff9d7be7cdae242d0d8defaa456d4e8b8b2a3eb0f722825675c5c032f3d00a",
+        "bytes": 79732
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q20-problem-geometry-20261116.svg",
+        "gitBlobSha1": "18ec87a5e87e241154d50ce41a79d67cf1d04781",
+        "sha256": "bd12027e73d20a3b95eaa20610412f316e11c1ded8d1d9577882a1b1e23481ad",
+        "bytes": 50850
+      },
+      "currentRasterSha256": "9ebd3d07432181361a42f97d82e35eae090b11285e7e07296a558428447fb418",
+      "currentRasterDimensions": [
+        1178,
+        674
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "두 계열의 점 위치·연결과 이름의 대응, 축 눈금/단위가 원본과 대응한다.",
+        "바깥 범례의 계열 명칭 및 측정대상은 요청 후 제공된 짧은 원/현재 동일 span으로 확인했다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 해설/문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true,
+      "supplementalGiven": {
+        "sha256": "f1564ce164e70b780a6546bbb73960228d4753c0c2b46a4f2071e31c8945b63a",
+        "role": "measurement-and-two-series",
+        "originalSourceRef": {
+          "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+          "path": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+          "sha256": "f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb"
+        },
+        "currentSourceRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "a8343e4b77b011d5f0a0220869dbf81971dcfb95",
+          "sha256": "f3a51d70663a207c0077163389df5109d7ce548676fcafffb2e82d0b2f68b0c5"
+        },
+        "contentSha256": "6c6fe04a9862ab2261bb9ad900e96b60556c48cdd9e9e0165d9bd67e06d1935e",
+        "spanHashes": [
+          "523bc3ec203459085ac4cd718089cdcbc0f49fc53dfdaa8a95b236ca224941b1",
+          "171c7718e0b2fdcae9e74f1bfa2266ab8dc417bdbcc84e0860479626cd7c5733",
+          "a39fe2148637f2537889ad96fa4025daa5d4605b440426495b55ef322aa6c390"
+        ],
+        "originalAndCurrentExact": true,
+        "receivedAfterObservationFreezes": true,
+        "fullQuestionRead": false
+      }
+    },
+    {
+      "observationId": "P07",
+      "questionUid": "qid_v1_3fd69cfc2c3ccb74b00dcf9a3d8f100ea3c92eed09c007523934726f071afcc1",
+      "sourceArchiveFile": "original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "1808ca0a61527e2e9892825ab82062c7f808b4ee",
+      "currentSourceGitBlobSha1": "ddbd3ee509562f27c4f2499e0724f14fb2007226",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/25_팔마중_2학기_기말_중1_기출/q8.png",
+        "gitBlobSha1": "cc93d882e2c67c3afb8a5e55cccb5a101a4e3a9a",
+        "sha256": "1c9d980f96a3a654b9a27c5c9fc80264faac50f868a617ae20fd4538ae9c35e9",
+        "bytes": 52615
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/25_팔마중_2학기_기말_중1_기출/q08-problem-geometry-20261116.svg",
+        "gitBlobSha1": "868a376e3b7e4d9a2c77342a3416b0711a1c075a",
+        "sha256": "b4e5ba9cbecb20f40c677ba64d695fa2cc2101add1bc8c04e1d1f518853a8523",
+        "bytes": 19251
+      },
+      "currentRasterSha256": "e2f78736b3ca57698a659e2472d2cf5db8adaee63bca3e8f3d3a171fa12cdd1d",
+      "currentRasterDimensions": [
+        960,
+        802
+      ],
+      "decision": "HOLD_CLEAR_DISPLAY_DIFFERENCE",
+      "findings": [
+        "윗변의 변수 표기에서 원본에 있던 길이 단위가 빠졌다.",
+        "위쪽 두 점선이 해당 꼭짓점에 닿지 않고 떨어져 끝나, 원본의 선 접속이 유지되지 않는다.",
+        "점선 접속 및 단위의 시각 차이만 판정했으며 새 입체 관계를 추론하지 않았다."
+      ],
+      "nextAction": "두 점선 끝을 원본의 꼭짓점에 결속하고 누락 단위를 복원한 후보의 해당 부분만 재비교.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P08",
+      "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+      "sourceArchiveFile": "original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "1808ca0a61527e2e9892825ab82062c7f808b4ee",
+      "currentSourceGitBlobSha1": "ddbd3ee509562f27c4f2499e0724f14fb2007226",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/25_팔마중_2학기_기말_중1_기출/q17.png",
+        "gitBlobSha1": "8b8ec38b534d25306cac7577385b317f2fb24301",
+        "sha256": "0a23de500bfa57391fb1b50faccfe573268a0d70b5a657130804bad2dcb115a0",
+        "bytes": 27036
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/25_팔마중_2학기_기말_중1_기출/q17-problem-geometry-20261116.svg",
+        "gitBlobSha1": "ed9ada5b292e2de114c66b18cd7a2cb735e4cb7c",
+        "sha256": "4e568c90d8fd2f7c5ba6e10404c81f2f5b44f69a030691540488dace464811fa",
+        "bytes": 50248
+      },
+      "currentRasterSha256": "236ed1c3d91535399edc3d87141b8c43d28415e31c6984f30de4d684aec0b907",
+      "currentRasterDimensions": [
+        1096,
+        674
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "두 계열의 점 위치·연결, 남녀 계열 대응, 축 눈금/횟수 단위가 원본과 대응한다.",
+        "추가 측정대상 표현은 요청 후 제공된 원/현재 동일 명사구 근거와 일치한다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 해설/문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true,
+      "supplementalGiven": {
+        "sha256": "f1564ce164e70b780a6546bbb73960228d4753c0c2b46a4f2071e31c8945b63a",
+        "role": "count-measurement",
+        "originalSourceRef": {
+          "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+          "path": "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "1808ca0a61527e2e9892825ab82062c7f808b4ee",
+          "sha256": "a317aee006f69898368d234ddeafcb34fb0e5afcaa2d7f2b0f54f4c918b3e17a"
+        },
+        "currentSourceRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "ddbd3ee509562f27c4f2499e0724f14fb2007226",
+          "sha256": "e5cb4257fe461af9bf1c2a3e8e0323b50ff993b8c6f811af052be890511249c2"
+        },
+        "contentSha256": "010dc9e9ec50053a5e0c83a955bbb791b85c6fac2d878c251c395933f36d4a92",
+        "spanHashes": [
+          "7b7595ca910abc9455b4cffef76c626fea9b76b2a4ff700f294dad98d53ab0ea"
+        ],
+        "originalAndCurrentExact": true,
+        "receivedAfterObservationFreezes": true,
+        "fullQuestionRead": false
+      }
+    },
+    {
+      "observationId": "P09",
+      "questionUid": "qid_v1_0e2c7aa4fc34b42aa0782b80ff5c5085f2eaa97a6f6d143d51ce7e1ec39c29d4",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+      "currentSourceGitBlobSha1": "1ac871eed751e06473d3056a61224ad290338579",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q8.png",
+        "gitBlobSha1": "de34bb5845f07c2776d7110849b77c4eab75bac9",
+        "sha256": "62d5635340a91a53796637e24d0555daee750af81fe5102b9afd64a0a845ace6",
+        "bytes": 58581
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q08-problem-geometry-20261116.svg",
+        "gitBlobSha1": "e32cb6859ddd044f796b0ed84a2bb17b556f23d0",
+        "sha256": "ea7aaf5f620c3977868d330e1445c65b2bb92644c711ca9d70c150ff64c5b69b",
+        "bytes": 24870
+      },
+      "currentRasterSha256": "33c6f4e3a8f95b6ebf2fe5fa5af53eeb205f67f8dca04b7adc7693d98f77fa37",
+      "currentRasterDimensions": [
+        960,
+        564
+      ],
+      "decision": "HOLD_CLEAR_DISPLAY_DIFFERENCE",
+      "findings": [
+        "원본의 위쪽 연장 경계는 점선인데 현재는 실선으로 표시된다.",
+        "원본 중앙의 세로 점선과 아래 중심의 직각 표시가 현재 그림에서 보이지 않는다.",
+        "여섯 길이 표기는 보이나, 원본의 명시 선종류·표시를 보존한 것으로 수용하지 않는다."
+      ],
+      "nextAction": "원본에 명시된 점선 경계·중앙선·직각 표시를 보존하는 제한 후보를 제시해 재비교. 새로운 치수나 수학 관계 추가 금지.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P10",
+      "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 18,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+      "currentSourceGitBlobSha1": "1ac871eed751e06473d3056a61224ad290338579",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q18.png",
+        "gitBlobSha1": "bad711bed9dc580c3bc1f0e950ec62e2f81b75fd",
+        "sha256": "c96cb836c2851b1c4b852b20f0802b8eb1040c3338b6b6801ceebb81274755d4",
+        "bytes": 44490
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q18-problem-geometry-20261116.svg",
+        "gitBlobSha1": "d93fbbe1822099c4a76295413f6c5ba746b152d0",
+        "sha256": "c3696144c58b177c983b3396c81563e48888048d459335297517d1b710a0fa22",
+        "bytes": 45565
+      },
+      "currentRasterSha256": "f507680b2b8a0183706e397b120d589b0ca9acf94b3534750ea8933eb919192d",
+      "currentRasterDimensions": [
+        1096,
+        674
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "한 계열의 모든 보이는 점과 연결선, 원본 눈금 및 단위의 대응이 유지된다.",
+        "추가 기록축 설명은 요청 후 제공된 측정대상 span과 일치한다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true,
+      "supplementalGiven": {
+        "sha256": "f1564ce164e70b780a6546bbb73960228d4753c0c2b46a4f2071e31c8945b63a",
+        "role": "count-measurement",
+        "originalSourceRef": {
+          "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+          "path": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6"
+        },
+        "currentSourceRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "1ac871eed751e06473d3056a61224ad290338579",
+          "sha256": "83c69051040adae2476787e8b4d519f2128f9808ee96fcddff5e6ef975c9df45"
+        },
+        "contentSha256": "1531c34821e1b9f72788267e0f1ac759412d2ef6865a07c9cbdf107b7288258c",
+        "spanHashes": [
+          "3d8bf83d12a1e6d71e9957ae7967394763e69a27cff0d0def46c12f7b331edaa"
+        ],
+        "originalAndCurrentExact": true,
+        "receivedAfterObservationFreezes": true,
+        "fullQuestionRead": false
+      }
+    },
+    {
+      "observationId": "P11",
+      "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 19,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+      "currentSourceGitBlobSha1": "1ac871eed751e06473d3056a61224ad290338579",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q19.png",
+        "gitBlobSha1": "145c7b7c6e1341ec480ea7a8f2ac11026ccf7fc0",
+        "sha256": "ce31eb3365afa5fbe50dedf0d04f28300866900aed97c1bf611ffc0403b931ef",
+        "bytes": 43462
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/25_풍덕중_2학기_기말_중1_기출/q19-problem-geometry-20261116.svg",
+        "gitBlobSha1": "5db2cf10eb170130fa86e980bea3f984b8e4833e",
+        "sha256": "eaace411aaabb6282a5094776bb73d7dacafd42b1c983291d82f26c136a694f3",
+        "bytes": 62814
+      },
+      "currentRasterSha256": "22344b8b686841076a04c03883313093d61f188fcdcb929609f9a885fd688c76",
+      "currentRasterDimensions": [
+        1106,
+        674
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "두 학교 계열의 점 위치·연결과 계열 이름 대응, 원본 눈금/단위가 유지된다.",
+        "추가 측정대상 표현은 요청 후 제공된 원/현재 동일 명사구 근거와 일치한다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true,
+      "supplementalGiven": {
+        "sha256": "f1564ce164e70b780a6546bbb73960228d4753c0c2b46a4f2071e31c8945b63a",
+        "role": "centimetre-measurement",
+        "originalSourceRef": {
+          "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+          "path": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6"
+        },
+        "currentSourceRef": {
+          "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+          "path": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "gitBlobSha1": "1ac871eed751e06473d3056a61224ad290338579",
+          "sha256": "83c69051040adae2476787e8b4d519f2128f9808ee96fcddff5e6ef975c9df45"
+        },
+        "contentSha256": "87ffe07e0d6c8a2ffe0f76af1702f7a989de86232c4b45361d0d181399ec1d69",
+        "spanHashes": [
+          "e37db65fd90db469af33b4cbf6eb275e78ee1dfef6f4825ef0dd0b28497bb396"
+        ],
+        "originalAndCurrentExact": true,
+        "receivedAfterObservationFreezes": true,
+        "fullQuestionRead": false
+      }
+    },
+    {
+      "observationId": "P12",
+      "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+      "sourceArchiveFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 6,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "f01e63a4ce6d0948e8b36ac79d206add39f4ccd1",
+      "currentSourceGitBlobSha1": "8f15e842a390907fda9122cf9cda4e6a42ec8317",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/23_향림중_2학기_중간_중1_기출/q6.png",
+        "gitBlobSha1": "24737653744db43aaee340b7aad778fbfbe7e9af",
+        "sha256": "dc29c60a384ba878c934b37255e16e5641a91fe33459188f5a4304d75aa95cee",
+        "bytes": 76126
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/23_향림중_2학기_중간_중1_기출/q06-problem-geometry-20261116.svg",
+        "gitBlobSha1": "6860d4e089e42094762efdafa1c5e944372db841",
+        "sha256": "2ee3efa1bd1ad633813c30e42b257be6ed3191b5137cb226be27ec2158e284ab",
+        "bytes": 12391
+      },
+      "currentRasterSha256": "48c9d3a410f28281afc9695872cd1fe6d07fc0da816c0789bc4836814302d799",
+      "currentRasterDimensions": [
+        960,
+        802
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "여섯 꼭짓점 문자와 모서리 접속, 뒤쪽 숨은선, 두 직각 표시가 원본과 대응한다.",
+        "도형의 투영 비율과 글자 배치 정리는 명시된 모서리/표시의 대응을 바꾸지 않는다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 해설/문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P13",
+      "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 6,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "37ea0edbc9cf0ca64eebe8e123d71a977183b004",
+      "currentSourceGitBlobSha1": "8d58d972e74dbf781f8a7588c2ebcbc978e9d476",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q06.png",
+        "gitBlobSha1": "42ccd1c715d2c0d3ac22fcc7da7fc8c985d190b3",
+        "sha256": "cd4ebed8ffcfc6b14748e476f2706b1a674ec2756d324bb166e1b5a1e4f835b4",
+        "bytes": 115686
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q06-problem-geometry-20261116.svg",
+        "gitBlobSha1": "b9c1c949071c75c6dbc3de71e9e81ccc01d58dec",
+        "sha256": "6035c121191cc7f9814f3698fd83a2cea68a184ac47b0fa3ec9414a4d5545ef4",
+        "bytes": 16398
+      },
+      "currentRasterSha256": "a90e1b904b6fc6306cedef3da726b9fa3aa4511f319e7c3f61b6939c1058885e",
+      "currentRasterDimensions": [
+        960,
+        802
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "여덟 꼭짓점 문자와 모든 외곽/숨은선의 접속이 원본과 대응한다.",
+        "원본의 음영과 바깥 스캔 흔적 제거를 새로운 기하 조건으로 사용하지 않았다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 해설/문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    },
+    {
+      "observationId": "P14",
+      "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "originalSourceGitBlobSha1": "37ea0edbc9cf0ca64eebe8e123d71a977183b004",
+      "currentSourceGitBlobSha1": "8d58d972e74dbf781f8a7588c2ebcbc978e9d476",
+      "originalAssetRef": {
+        "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q08.png",
+        "gitBlobSha1": "42907f74d6680726fe46470e3ee380a8ccbfac83",
+        "sha256": "e4c14889a582b5b5f1ae53e51901e7f86fe355be391175a10eb22f8da49282ee",
+        "bytes": 172641
+      },
+      "currentAssetRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q08-problem-geometry-20261116.svg",
+        "gitBlobSha1": "e7de079e8df8f50bf1b729414c4c04602817f286",
+        "sha256": "b39aa65ee7880c6dd997fb0d76397a056aa205d4395d96957d93514c5080d529",
+        "bytes": 23907
+      },
+      "currentRasterSha256": "343fa457acd5f0152dd7c45cdfac63df1ab689e9132229d338c346d5c56f8a9b",
+      "currentRasterDimensions": [
+        960,
+        800
+      ],
+      "decision": "ACCEPT_PROBLEM_FIGURE_CONTINUITY_ONLY",
+      "findings": [
+        "열두 꼭짓점 문자, 위아래 모서리 및 대응 세로변/숨은선의 연결이 원본과 대응한다.",
+        "투영 배치 및 음영 정리는 명시된 꼭짓점과 모서리의 대응을 바꾸지 않는다."
+      ],
+      "nextAction": "문제그림 수용 근거만 기존 승인 운반에 사용. 해설/문항 전체 및 공식 등록은 별도 조건.",
+      "wholeItemApproval": false,
+      "solutionContinuity": "NOT_REVIEWED_SEPARATE_OWNER_GATE",
+      "originalAndCurrentProblemAssetsDirectlyViewed": true
+    }
+  ]
+}
