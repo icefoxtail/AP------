@@ -14,6 +14,9 @@ import { M2S1_SVG7_IMAGE_POINTER_PROFILE, M2S1_SVG7_Q24_ORIGIN_PROFILE, validate
 import { M3_E052_Q5_ORIGINAL_DIAGRAM_PROFILE, validateM3E052Q5OriginalDiagramCandidate,
   materializeM3E052Q5OriginalDiagram } from '../../archive/tools/meta-foundation/materialize-reviewed-m3-e052-q5-original-diagram.mjs';
 
+import { E041_CHOICE_CORRECTION_PROFILE, validateE041OriginalChoiceCorrectionCandidate,
+  materializeE041OriginalChoiceCorrection } from '../../archive/tools/meta-foundation/materialize-reviewed-e041-original-choice-correction.mjs';
+
 export const CANDIDATE_ENVELOPE = '.archive-source-metadata/candidate.json';
 export const CANDIDATE_SCHEMA = 'archive-reviewed-source-candidate-input-v1';
 const SHA1 = /^[0-9a-f]{40}$/;
@@ -841,7 +844,9 @@ export function inspectSourceMetadataCandidate({ repoRoot, inputCommit, eventRef
   verifiedRef(envelope.manifestRef, manifestFile);
   requireThat(manifestFile.value.materializationId === envelope.materializationId &&
     manifestFile.value.baseCommit === baseCommit, 'MANIFEST_IDENTITY');
-  const closure = manifestFile.value.transportProfile === M3_E052_Q5_ORIGINAL_DIAGRAM_PROFILE
+  const closure = manifestFile.value.transportProfile === E041_CHOICE_CORRECTION_PROFILE
+    ? validateE041OriginalChoiceCorrectionCandidate({ root, baseCommit, inputCommit, envelope, manifestFile, files })
+    : manifestFile.value.transportProfile === M3_E052_Q5_ORIGINAL_DIAGRAM_PROFILE
     ? validateM3E052Q5OriginalDiagramCandidate({ root, baseCommit, inputCommit, envelope, manifestFile, files })
     : [M2S1_SVG7_IMAGE_POINTER_PROFILE, M2S1_SVG7_Q24_ORIGIN_PROFILE].includes(manifestFile.value.transportProfile)
       ? validateM2s1Svg7ImagePointerCandidate({ root, baseCommit, inputCommit, envelope, manifestFile, files })
@@ -868,7 +873,8 @@ export async function buildSourceMetadataCandidate({ repoRoot, inputCommit, even
   const { root, baseCommit, manifestFile, materializationId, candidateBranch } = inspected;
   const target = outsideNewDirectory(root, outputRoot);
   const { materializeReviewedSourceMetadata } = await import('../../archive/tools/meta-foundation/materialize-reviewed-source-metadata.mjs');
-  const materialize = manifestFile.value.transportProfile === M3_E052_Q5_ORIGINAL_DIAGRAM_PROFILE
+  const materialize = manifestFile.value.transportProfile === E041_CHOICE_CORRECTION_PROFILE
+    ? materializeE041OriginalChoiceCorrection : manifestFile.value.transportProfile === M3_E052_Q5_ORIGINAL_DIAGRAM_PROFILE
     ? materializeM3E052Q5OriginalDiagram : [M2S1_SVG7_IMAGE_POINTER_PROFILE, M2S1_SVG7_Q24_ORIGIN_PROFILE].includes(manifestFile.value.transportProfile)
       ? materializeM2s1Svg7ImagePointer : manifestFile.value.transportProfile === M2_PROBLEM_IMAGE_REPAIR8_PROFILE
         ? materializeM2ProblemImageRepair8 : materializeReviewedSourceMetadata;

@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { isDeepStrictEqual } from "node:util";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "../../..");
@@ -236,13 +237,50 @@ function sameGeometryMapping(a, b) {
     sameArray(a.conditionKeys, b.conditionKeys);
 }
 
-function approvedSourceBoundGeometryMetadata(metadata, actual, runtimePackVersion) {
+function versionAtMost(issued, current) {
+  const parse = value => /^\d+\.\d+\.\d+$/.test(String(value)) ? String(value).split(".").map(Number) : null;
+  const a = parse(issued), b = parse(current);
+  if (!a || !b || [...a, ...b].some(n => !Number.isSafeInteger(n))) return false;
+  for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] < b[i];
+  return true;
+}
+
+// A compiler version bump cannot reissue a registrar's approved row. Preserve
+// the whole issued row only when its exact Native receipt still contains it;
+// request replay and Consumer validation remain separate mandatory gates.
+function issuedReviewedGeometryRecord(record, currentVersion, read) {
+  const match = String(record.metadataRevision || "").match(
+    /^meta-foundation:GEOMETRY_EQUATIONS@(\d+\.\d+\.\d+):exam-[a-z0-9_]+-v2:([a-zA-Z0-9._-]+)$/);
+  if (!match || record.metaFoundationPackId !== "GEOMETRY_EQUATIONS" ||
+      record.metaFoundationPackVersion !== match[1] || !versionAtMost(match[1], currentVersion)) return false;
+  const evidenceRoot = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
+  const evidence = Array.isArray(record.approvalEvidence) ? record.approvalEvidence : [];
+  const direct = evidenceRoot + match[2] + ".json";
+  const paths = [...new Set([direct, ...evidence])].filter(file => typeof file === "string" && evidence.includes(file) &&
+    file.startsWith(evidenceRoot) && /^[^/\\]+\.json$/.test(file.slice(evidenceRoot.length)));
+  for (const file of paths) {
+    let receipt;
+    try { receipt = read(file); } catch (error) { if (error.code === "ENOENT") continue; throw error; }
+    if (receipt.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" ||
+        receipt.metadataRegistrationStatus !== "REGISTERED" || file !== evidenceRoot + receipt.requestId + ".json" ||
+        receipt.sourceArchiveFile !== record.sourceArchiveFile) continue;
+    const rows = (receipt.runtimeRecords || []).filter(row => row.questionUid === record.questionUid);
+    const metadata = (receipt.appliedRecords || []).filter(row => row.questionUid === record.questionUid);
+    if (rows.length === 1 && metadata.length === 1 && isDeepStrictEqual(rows[0], record) &&
+        ["sourceArchiveFile", "sourceOrdinal", "sourceFingerprint", "metadataRevision", "metaFoundationPackId", "metaFoundationPackVersion"]
+          .every(key => metadata[0][key] === record[key])) return true;
+  }
+  return false;
+}
+
+function approvedSourceBoundGeometryMetadata(metadata, actual, runtimePackVersion, read) {
   if (!metadata || !actual ||
       metadata.metadataStatus !== "approved_semantic_review" ||
       metadata.metadataApprovalType !== "META_PIPELINE_AUDIT" ||
       metadata.sourceMetadataVerification !== "MOTHER_SOURCE_BOUND_FINAL" ||
       metadata.metaFoundationPackId !== "GEOMETRY_EQUATIONS" ||
-      metadata.metaFoundationPackVersion !== runtimePackVersion ||
+      metadata.metaFoundationPackVersion !== actual.metaFoundationPackVersion ||
+      !issuedReviewedGeometryRecord(actual, runtimePackVersion, read) ||
       metadata.sourceArchiveFile !== actual.sourceArchiveFile ||
       Number(metadata.sourceOrdinal) !== Number(actual.sourceOrdinal) ||
       !metadata.sourceFingerprint ||
@@ -260,21 +298,23 @@ function approvedSourceBoundGeometryMetadata(metadata, actual, runtimePackVersio
     typeof item === "string" && item.startsWith("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/") &&
     item.endsWith(".source-parity.json")
   );
-  if (!reviewPaths.length || !parityPath || !fs.existsSync(abs(parityPath))) return false;
+  if (!reviewPaths.length || !parityPath) return false;
+  let parityDocument;
+  try { parityDocument = read(parityPath); } catch (error) { if (error.code === "ENOENT") return false; throw error; }
 
-  const reviewed = reviewPaths.flatMap((reviewPath) => findQuestionUidRows(readJson(reviewPath), metadata.questionUid))
+  const reviewed = reviewPaths.flatMap((reviewPath) => findQuestionUidRows(read(reviewPath), metadata.questionUid))
     .find((row) => row.metadataRevision === metadata.metadataRevision && sameGeometryMapping(row, metadata));
-  const parity = findQuestionUidRows(readJson(parityPath), metadata.questionUid)
+  const parity = findQuestionUidRows(parityDocument, metadata.questionUid)
     .find((row) => Number(row.sourceOrdinal) === Number(metadata.sourceOrdinal) && row.studentPayloadEqual === true);
   return Boolean(reviewed && parity);
 }
 
-function buildGeometryRegression(canonical, compiled) {
+export function buildGeometryRegression(canonical, compiled, read = readJson) {
   const assignmentPath = rel(geometryEvidenceRoot, "item_metadata_assignments_400.json");
   const runtimePath = geometryRuntimePath;
-  const assignments = readJson(assignmentPath);
-  const runtime = readJson(runtimePath);
-  const questionMetadata = readJson("archive/data/question_metadata.json");
+  const assignments = read(assignmentPath);
+  const runtime = read(runtimePath);
+  const questionMetadata = read("archive/data/question_metadata.json");
   const metadataByUid = new Map((questionMetadata.records || []).map((row) => [row.questionUid, row]));
   if (metadataByUid.size !== (questionMetadata.records || []).length) throw new Error("duplicate current question metadata UID");
   const problemTypes = new Set(compiled.taxonomy.problemTypes.map((x) => x.problemTypeKey));
@@ -325,7 +365,7 @@ function buildGeometryRegression(canonical, compiled) {
     const currentMetadata = metadataByUid.get(record.questionUid);
     const frozenMappingChanged = actual && currentMetadata && !sameGeometryMapping(record, currentMetadata);
     const sourceOverride = frozenMappingChanged &&
-      approvedSourceBoundGeometryMetadata(currentMetadata, actual, runtime.packVersion);
+      approvedSourceBoundGeometryMetadata(currentMetadata, actual, runtime.packVersion, read);
     if (sourceOverride) counts.approvedSourceMappingOverrideCount += 1;
     if (!actual || !sameGeometryMapping(actual, sourceOverride ? currentMetadata : record)) {
       counts.runtimeMappingMismatchCount += 1;
@@ -454,17 +494,22 @@ function expectedEvidence(canonical, regression) {
   return new Map([[auditPath, jsonText(audit)], [receiptPath, jsonText(receipt)]]);
 }
 
-function expectedRuntime(canonical) {
+export function expectedRuntime(canonical, read = readJson) {
   const geometryPack = canonical.packs.find((pack) => pack.meta.packId === "GEOMETRY_EQUATIONS");
   const version = geometryPack.meta.packVersion;
-  const runtime = readJson(geometryRuntimePath);
+  const runtime = clone(read(geometryRuntimePath));
   const runtimeVersionMatch = String(runtime.runtimeVersion || "").match(/^GEOMETRY_EQUATIONS@[0-9.]+\/(runtime-bridge-v1|reviewed-exam-v2)$/);
   if (!runtimeVersionMatch) throw new Error(`unsupported geometry runtime version: ${runtime.runtimeVersion}`);
   runtime.packVersion = version;
   runtime.runtimeVersion = `GEOMETRY_EQUATIONS@${version}/${runtimeVersionMatch[1]}`;
   const revision = `meta-foundation:GEOMETRY_EQUATIONS@${version}`;
   for (const record of runtime.records) {
-    // Reviewed-apply appends provenance to this revision; preserve it while checking the pack version.
+    if (/:exam-[^:]+-v2:/.test(String(record.metadataRevision || ""))) {
+      if (!issuedReviewedGeometryRecord(record, version, read))
+        throw new Error(`geometry reviewed runtime does not match its issued Native receipt: ${record.questionUid}`);
+      continue;
+    }
+    // Legacy bridge rows retain the existing canonical-version normalization.
     if (!String(record.metadataRevision || "").startsWith(revision + ":")) record.metadataRevision = revision;
     record.metaFoundationPackVersion = version;
   }
