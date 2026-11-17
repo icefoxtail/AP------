@@ -1063,7 +1063,7 @@ window.questionBank = [
     "id": 14,
     "questionType": "객관식",
     "score": 4.9,
-    "content": "14. $\\sqrt{2\\sqrt[4]{7^a}} \\times \\sqrt[3]{2^{2b}\\sqrt{28}} = 2$를 만족하는 실수 $a, b$에 대하여 $-ab$의 값을 구하면? [4.9점]",
+    "content": "14. $\\sqrt{2\\sqrt[4]{7^a}} \\times \\sqrt[3]{2^{2b}\\sqrt{28}} = 2$를 만족하는 유리수 $a, b$에 대하여 $-ab$의 값을 구하면? [4.9점]",
     "choices": [
       "$\\frac{1}{6}$",
       "$\\frac{1}{5}$",
@@ -1072,7 +1072,7 @@ window.questionBank = [
       "$\\frac{1}{2}$"
     ],
     "answer": "④",
-    "solution": "각 근호를 소인수의 거듭제곱으로 바꾼다.\n$\\sqrt{2\\sqrt[4]{7^a}}=2^{\\frac{1}{2}}7^{\\frac{a}{8}}$이고, $\\sqrt[3]{2^{2b}\\sqrt{28}}=2^{\\frac{2b+1}{3}}7^{\\frac{1}{6}}$이다.\n곱이 $2=2^1 7^0$이므로 소인수 $7$의 지수와 $2$의 지수를 각각 비교한다.\n$\\dfrac a8+\\dfrac16=0$에서 $a=-\\dfrac43$.\n$\\dfrac12+\\dfrac{2b+1}{3}=1$에서 $b=\\dfrac14$.\n따라서 $-ab=-(-\\frac{4}{3})(\\frac{1}{4})=\\frac{1}{3}$이다.\n\n따라서 정답은 ④이다.",
+    "solution": "각 근호를 소인수의 거듭제곱으로 바꾼다.\n$\\sqrt{2\\sqrt[4]{7^a}}=2^{\\frac{1}{2}}7^{\\frac{a}{8}}$이고, $\\sqrt[3]{2^{2b}\\sqrt{28}}=2^{\\frac{2b+1}{3}}7^{\\frac{1}{6}}$이다.\n곱이 $2=2^1 7^0$이고 $a, b$가 유리수이므로 소인수 $7$의 지수와 $2$의 지수를 각각 비교한다.\n$\\dfrac a8+\\dfrac16=0$에서 $a=-\\dfrac43$.\n$\\dfrac12+\\dfrac{2b+1}{3}=1$에서 $b=\\dfrac14$.\n따라서 $-ab=-(-\\frac{4}{3})(\\frac{1}{4})=\\frac{1}{3}$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
     "meta": {
       "standardCourse": "수학I",
