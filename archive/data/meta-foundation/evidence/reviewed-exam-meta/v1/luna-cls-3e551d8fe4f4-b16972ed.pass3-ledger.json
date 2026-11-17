@@ -1,0 +1,143 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T18:02:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/2final/25_강남여고_2학기_기말_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "속도 그래프의 음의 면적 8, 양의 면적 2에서 위치변화량 a=−8+2=−6, 거리 b=8+2=10이므로 a+b=4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_INTEGRAL_DISPLACEMENT_AND_DISTANCE"
+                                           ]
+                  },
+                  {
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′=3x²−4ax+a가 모든 x에서 0 이상이려면 판별식 16a²−12a≤0이라 0≤a≤3/4이고 끝값 합은 3/4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_ALWAYS_POSITIVE_QUADRATIC_DERIVATIVE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_FUNCTION_INJECTIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "3x³−9x의 극값은 x=−1,1에서 각각 6,−6이므로 수평선 k가 극값을 지날 때만 서로 다른 실근 두 개가 되고 두 k의 합은 0이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_EXACT_INTERSECTION_COUNT"
+                                        ]
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x\u003e0에서 a≤x³−x²−x+5이고 도함수 (3x+1)(x−1)은 x=1에서 음에서 양으로 바뀌므로 최솟값 4에서 a의 최대는 4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_RESTRICTED_DOMAIN_DERIVATIVE_OPTIMIZATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "구간별 적분차의 절댓값은 [−2,0]에서 |7/2−7/3|=7/6, [0,1]에서 |2−8/3|=2/3이므로 합은 11/6이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_DEFINITE_INTEGRAL_INTERVAL_ADDITIVITY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "홀수 삼차함수 f=ax³+bx에서 3a+b=18과 6a/5+2b/3=8을 풀면 a=5,b=3이라 f(−1)=−8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_POLYNOMIAL_DERIVATIVE_RULE"
+                                           ]
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "평균값정리에서 (f(4)−f(1))/3=f′(c)≥4이고 f(1)=−3이므로 f(4)≥9이며 f(x)=4x−7이 등호를 이룬다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "기울기 조건"
+                                  }
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "증감표의 극솟값 a+6과 극댓값 a+11이 y=9에 닿을 때 각각 a=3,−2로 세 교점이 생겨 합은 1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_LOCAL_EXTREMA_INTERSECTION_BOUNDS"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_EXACT_INTERSECTION_COUNT"
+                                        ]
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "g=f−x²로 두면 전제는 g가 엄격히 감소함이고 g′=−3x²+2(k−1)x−12≤0 전구간에서 성립하려면 (k−1)²≤36이라 정수 k는 −5~7, 합은 2다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "도함수의 활용(2)",
+                                      "l3":  "증가·감소와 극값",
+                                      "l4":  "증감표"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_ALWAYS_POSITIVE_QUADRATIC_DERIVATIVE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "닮음으로 원기둥 높이는 h(1−r)라 부피합은 2πhr²(1−r)이고 도함수 2πhr(2−3r)는 r=2/3에서 양에서 음으로 바뀌어 p+q=5다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_VOLUME_MODELING_POLYNOMIAL"
+                                           ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x=−2에서 접하므로 f(−2)=f′(−2)=0에서 a=−12,b=−20이고 f′=6(x+2)(x−1)의 부호로 x=1에서 극솟값 −27을 얻는다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_CURVE_POINT_COEFFICIENT_SYSTEM"
+                                           ]
+                  },
+                  {
+                      "ordinal":  24,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "적분함수의 도함수는 (x+1)(x−3)라 x=3에서 극소이고 f(3)=∫₀³(t²−2t−3)dt=−9이므로 a+b=−6이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_FUNDAMENTAL_THEOREM_OF_CALCULUS_LEIBNIZ"
+                                           ]
+                  },
+                  {
+                      "ordinal":  25,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f+g가 f−g의 부정적분이므로 g′+g=f−f′=4x³−3x²−26x+9를 계수 비교하면 g=4x³−15x²+4x+5다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_POLYNOMIAL_DERIVATIVE_RULE"
+                                           ]
+                  }
+              ]
+}

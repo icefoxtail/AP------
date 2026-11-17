@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T23:36:33+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js",
+  "items": [
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass1",
+      "resolutionReason": "4회 신호에서 빨강으로 끝나는 경우가 45, 비빨강으로 끝나는 경우가 171이어서 연속 빨강 금지 신호는 45+171=216개다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass1",
+      "resolutionReason": "자음 p,c,t,r을 4!가지로 놓고 생기는 5틈에서 모음 i,u,e를 5P3가지로 배치하므로 확률은 4!·5P3/7!=2/7이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "일렬 배열"
+      },
+      "crossConceptKeys": [
+        "CC_NON_CONSECUTIVE_SELECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "resolutionReason": "4명의 가족이 각각 A,B,C 가운데 한 편을 고르므로 선택은 서로 독립인 4자리이고 경우의 수는 3^4=81이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

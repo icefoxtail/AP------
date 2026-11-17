@@ -31,6 +31,7 @@ import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
+import { DIRECT_JUDGMENT, registerTypeJudgment } from "./register-type-judgment.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -2138,8 +2139,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode !== undefined && req.registrationMode !== "IDENTITY_FINGERPRINT_ONLY") fail("unsupported registration mode");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
-  if (!["REVIEW2", "FINAL_QA", "META_PIPELINE_AUDIT"].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
+  if (!["REVIEW2", "FINAL_QA", "META_PIPELINE_AUDIT", DIRECT_JUDGMENT].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
   if (req.approval.type === "REVIEW2" && req.approval.reviewPassCount !== 2) fail("REVIEW2 count must be 2");
+  if (req.approval.type === DIRECT_JUDGMENT && req.approval.reviewPassCount !== 1) fail("DIRECT_JUDGMENT count must be 1");
   requireText(req.approval.approvedBy, "approvedBy");
   const evidenceRefs = refs => {
     if (!Array.isArray(refs) || !refs.length) fail("evidenceRefs required");
@@ -2238,6 +2240,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read, projectionPhase });
+  // Direct type judgment (type fields only): its own lane, replay and receipt; it shares only the registry planner and the checks above.
+  if (req.approval.type === DIRECT_JUDGMENT) return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields,
+    h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
+      sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
+        isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {
