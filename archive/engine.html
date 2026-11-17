@@ -367,6 +367,18 @@
             text-align: left;
             vertical-align: top;
         }
+        /* normalizeViewBlocks가 .note-box 안의 ㄱ. ㄴ. 줄을 다시 .question-note-box로 감싸 상자 안에 상자가 생긴다. 안쪽 상자는 테두리 없이 안의 글로만 취급한다. */
+        .question-note-box .question-note-box, .question-note-box .note-box, .question-note-box .box,
+        .note-box .question-note-box, .note-box .note-box, .note-box .box,
+        .box .question-note-box, .box .note-box, .box .box {
+            display: block;
+            width: auto;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; min-height: 40px; height: auto; align-items: center; padding: 6px 10px; box-sizing: border-box; break-inside: avoid; }
