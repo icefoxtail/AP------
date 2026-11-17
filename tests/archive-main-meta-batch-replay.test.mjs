@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {registerMergedSource,summarizeBacklog,topCounts,sourceFingerprint,contentFingerprint} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {registerMergedSource,summarizeBacklog,safeInstrumentation,topCounts,sourceFingerprint,contentFingerprint} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
 
 const source='original/middle/m3/1mid/batch-fixture.js';
 const metaPath='archive/data/question_metadata.json',identityPath='archive/data/question_identity_map.json';
@@ -251,4 +251,19 @@ test('backlog summary counts reasons per atom, flags multi-reason entries and fi
   const many=new Map(Array.from({length:30},(_,i)=>['n'+String(i).padStart(2,'0'),i+1]));
   const top=topCounts(many);assert.equal(top.top.length,20);assert.equal(top.otherNames,10);
   assert.equal(top.top.reduce((n,r)=>n+r.count,0)+top.otherCount,465);assert.equal(top.top[0].name,'n29');
+});
+
+test('a pending entry with unexpected values never stops registration or the other report fields',async t=>{
+  const f=fixture(t,{count:2,max:2,pending:()=>false});
+  const state=f.read(statePath);
+  Object.assign(state.pending[source+'#2'],{lastReasons:'oops',attemptSignature:{}});
+  f.put(statePath,state);
+  const r=await f.first();
+  assert.equal(r.applied,2,'both questions still register');assert.ok(r.instrumentation);
+  assert.ok(r.results.every(x=>x.status==='APPLY'));
+  const s=summarizeBacklog(f.root,{a:null,b:'x',c:{lastReasons:[null,{}],baseCommit:{}},d:{lastReasons:'oops'}});
+  assert.equal(s.pendingTotal,4);assert.equal(s.malformedEntries,2);assert.ok(s.reasonAtomTotal>=2);
+  const broken=safeInstrumentation(()=>{throw Error('boom '+'x'.repeat(500));});
+  assert.equal(broken.schemaVersion,'archive-main-merge-meta-instrumentation-v1');assert.ok(broken.error.startsWith('boom'));assert.ok(broken.error.length<=160);
+  assert.deepEqual(safeInstrumentation(()=>({ok:1})),{ok:1});
 });

@@ -12,24 +12,31 @@ mkdir -p "$work"
 # copy on stderr, so stdout that later steps parse (compile/materialize/verify JSON) is untouched. The writer reads
 # the file; a failing command still records its stage through the EXIT trap.
 stage_log="$work/stage-times.jsonl"
-: > "$stage_log"
+: > "$stage_log" 2>/dev/null || true
 stage_name=''
 stage_start=0
+stage_rc=''
 now_ms() {
   local t
   t=$(date +%s%3N 2>/dev/null) || t=''
-  [[ "$t" =~ ^[0-9]+$ ]] || t=$(( $(date +%s) * 1000 ))
+  [[ "$t" =~ ^[0-9]+$ ]] || t=$(( $(date +%s 2>/dev/null || echo 0) * 1000 ))
   printf '%s' "$t"
 }
+# Recording is best effort: nothing in here may fail the script or change its exit code, even when $work is
+# not writable. stage_rc is set by the one branch (failed verify before its retry) whose command status the
+# surrounding `if !` would otherwise hide.
 stage_end() {
   [[ -n "$stage_name" ]] || return 0
-  local ms=$(( $(now_ms) - stage_start ))
-  printf '{"stage":"%s","durationMs":%s,"exitCode":%s}\n' "$stage_name" "$ms" "${1:-0}" >> "$stage_log"
-  printf '[stage-time] %s %sms exit=%s\n' "$stage_name" "$ms" "${1:-0}" >&2
+  local code="${stage_rc:-${1:-0}}" ms=0
+  ms=$(( $(now_ms) - stage_start )) 2>/dev/null || ms=0
+  { printf '{"stage":"%s","durationMs":%s,"exitCode":%s}\n' "$stage_name" "$ms" "$code" >> "$stage_log"; } 2>/dev/null || true
+  printf '[stage-time] %s %sms exit=%s\n' "$stage_name" "$ms" "$code" >&2 2>/dev/null || true
   stage_name=''
+  stage_rc=''
+  return 0
 }
-stage() { stage_end 0; stage_name="$1"; stage_start=$(now_ms); }
-trap 'stage_end "$?"' EXIT
+stage() { stage_end 0; stage_name="$1"; stage_start=$(now_ms) || stage_start=0; return 0; }
+trap 'rc=$?; stage_end "$rc"; exit "$rc"' EXIT
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=6144}"
 report="$work/report.json"
 cat tools/ci/archive-pages-registration.paths > "$work/commit.paths"
@@ -52,6 +59,7 @@ stage build-db-after
 node tools/ci/archive-registration-build-db.mjs > "$work/build-after.log" 2>&1
 stage verify
 if ! node archive/tools/meta-foundation/auto-register-merged-source.mjs --verify --report "$report" > "$work/verify.json" 2> "$work/verify-error.log"; then
+  stage_rc=1
   stage build-db-fixed-point
   node tools/ci/archive-registration-build-db.mjs > "$work/build-fixed-point.log" 2>&1
   stage verify-after-fixed-point

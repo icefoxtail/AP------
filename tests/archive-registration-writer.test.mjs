@@ -663,12 +663,13 @@ test('the AutoMeta pass script keeps its commands and only adds stage markers th
     'verify-after-fixed-point','identity-contract-test','identity-runtime-test','registration-parity','git-diff-checks','replay','postchecks']);
   for(const line of ['node archive/tools/meta-foundation/compile-meta-foundation.mjs --write > "$work/compile.json"',
     'node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write > "$work/materialize.json"'])assert.ok(script.includes(line),line);
-  const block=script.slice(script.indexOf('stage_log='),script.indexOf("trap 'stage_end"));
-  assert.ok(block.length>0&&/trap 'stage_end "\$\?"' EXIT/.test(script));
+  const start=script.indexOf('stage_log='),trapAt=script.indexOf("trap 'rc=$?; stage_end");
+  assert.ok(start>0&&trapAt>start,'the stage helper block and its EXIT trap are present');
+  const block=script.slice(start,script.indexOf('\n',trapAt));
   const bash=spawnSync('bash',['-c','exit 0'],{encoding:'utf8'});
   if(bash.error||bash.status!==0)return t.skip('bash is not available');
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'stage-pass-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
-  const harness=`set -euo pipefail\nwork=${JSON.stringify(dir.replace(/\\/g,'/'))}\n${block}\ntrap 'stage_end "$?"' EXIT\nstage first\nstage second\necho STDOUT_PAYLOAD\nfalse\nstage never\n`;
+  const harness=`set -euo pipefail\nwork=${JSON.stringify(dir.replace(/\\/g,'/'))}\n${block}\nstage first\nstage second\necho STDOUT_PAYLOAD\nfalse\nstage never\n`;
   const run=spawnSync('bash',['-c',harness],{encoding:'utf8'});
   assert.equal(run.status,1,'set -e semantics are unchanged: the failing command ends the script');
   assert.equal(run.stdout,'STDOUT_PAYLOAD\n','stage output never reaches stdout');
@@ -676,4 +677,46 @@ test('the AutoMeta pass script keeps its commands and only adds stage markers th
   const rows=fs.readFileSync(path.join(dir,'stage-times.jsonl'),'utf8').trim().split('\n').map(l=>JSON.parse(l));
   assert.deepEqual(rows.map(r=>[r.stage,r.exitCode]),[['first',0],['second',1]]);
   assert.ok(rows.every(r=>Number.isInteger(r.durationMs)&&r.durationMs>=0));
+});
+
+// ---- fault injection: instrumentation may lose its numbers but can never fail, block or re-code a registration run ----
+function stageHarness(t,body,{work}={}) {
+  const script=fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/archive-main-auto-meta-pass.sh'),'utf8');
+  const start=script.indexOf('stage_log='),trapAt=script.indexOf("trap 'rc=$?; stage_end");
+  const block=script.slice(start,script.indexOf('\n',trapAt));
+  const bash=spawnSync('bash',['-c','exit 0'],{encoding:'utf8'});
+  if(bash.error||bash.status!==0){t.skip('bash is not available');return null;}
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'stage-fault-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const w=(work??dir).replace(/\\/g,'/');
+  return {dir,run:()=>spawnSync('bash',['-c',`set -euo pipefail\nwork=${JSON.stringify(w)}\n${block}\n${body}\n`],{encoding:'utf8'})};
+}
+test('stage recording that cannot write keeps the original exit code and a clean stdout',t=>{
+  const unwritable='/nonexistent-stage-dir-'+process.pid+'/sub';
+  const failing=stageHarness(t,'stage a\necho OUT\n(exit 5)\nstage never',{work:unwritable});
+  if(!failing)return;
+  const bad=failing.run();
+  assert.equal(bad.status,5,'the failing command keeps its own exit code when the log cannot be written');
+  assert.equal(bad.stdout,'OUT\n');
+  const ok=stageHarness(t,'stage a\necho OUT',{work:unwritable}).run();
+  assert.equal(ok.status,0);assert.equal(ok.stdout,'OUT\n');
+  assert.equal(stageHarness(t,'stage a\n(exit 7)').run().status,7,'and the same code is kept when logging works');
+});
+
+test('a failed verify that continues to its retry is recorded with its real exit code',t=>{
+  const h=stageHarness(t,'stage verify\nif ! (exit 3); then\n  stage_rc=1\n  stage retry\n  true\nfi\n');
+  if(!h)return;
+  assert.equal(h.run().status,0);
+  const rows=fs.readFileSync(path.join(h.dir,'stage-times.jsonl'),'utf8').trim().split('\n').map(l=>JSON.parse(l));
+  assert.deepEqual(rows.map(r=>[r.stage,r.exitCode]),[['verify',1],['retry',0]]);
+});
+
+test('a malformed instrumentation object never makes the summary renderer throw',()=>{
+  const bad=[{stages:5,autoMeta:{run:{},origin:{available:true}}},{staleMetaV2Payloads:{files:null}},{autoMeta:{run:{targets:1},attemptedByFile:{top:'x'},backlogAfterRun:{reasons:{top:null}}}},{commands:'x',stages:{}}];
+  for(const instrumentation of bad) {
+    let text;
+    assert.doesNotThrow(()=>{text=renderRegistrationSummary({status:'PREPARED',registrationReady:true,changedPaths:[],lanes:[{id:'semantic',status:'VERIFIED',durationMs:1,instrumentation}]});});
+    assert.match(text,/### Archive registration writer: PREPARED/);
+  }
+  const text=renderRegistrationSummary({status:'PREPARED',lanes:[{id:'semantic',status:'VERIFIED',instrumentation:{autoMeta:{run:{},origin:{available:true}}}}]});
+  assert.match(text,/Instrumentation summary could not be rendered/);
 });

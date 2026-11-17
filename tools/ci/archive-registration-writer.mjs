@@ -361,7 +361,9 @@ export function renderRegistrationSummary(result) {
     '| lane | result | error code |','| --- | --- | --- |',
     ...shown.map(r=>`| ${cell(r.id,64)} | ${cell(r.status,48)} | ${cell(r.error,100)} |`)];
   if(shown.length<lanes.length)lines.push('',`${lanes.length-shown.length} additional lane records are in report.json.`);
-  lines.push(...renderInstrumentation(lanes,cell));
+  // A malformed instrumentation object must never turn a finished preparation into a failed run.
+  try { lines.push(...renderInstrumentation(lanes,cell)); }
+  catch { lines.push('','Instrumentation summary could not be rendered (see report.json).'); }
   if(result.whitespace)lines.push('',`Git whitespace: ${cell(result.whitespace.status)}; raw Git exit=${cell(result.whitespace.rawGitExitCode,12)}; inherited source lines=${Number(result.whitespace.inheritedLineCount)||0}; byte-bound assets=${result.whitespace.inheritedAssets?.length||0}.`);
   lines.push('','Full report.json, native-step-summary.md and native command logs are retained in the archive-main-registration workflow artifact.','');
   return lines.join('\n');

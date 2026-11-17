@@ -492,6 +492,7 @@ export function summarizeBacklog(root, pending) {
   const out={pendingTotal:entries.length,withoutAttemptSignature:0,attemptedRefused:0,neverTried:0,entriesWithMultipleReasons:0,
     reasonAtomTotal:0,reasonsNote:'one pending entry may carry several reasons, so reason counts sum to at least attemptedRefused'};
   for(const e of entries) {
+    if(!e||typeof e!=='object'){out.malformedEntries=(out.malformedEntries||0)+1;continue;}
     if(!e.attemptSignature)out.withoutAttemptSignature++;
     if(Array.isArray(e.lastReasons)&&e.lastReasons.length) {
       out.attemptedRefused++;
@@ -566,6 +567,11 @@ function replayBatch(root, file, {config,state,head}) {
   return binding;
 }
 
+// Instrumentation must never decide whether a registration run succeeds: any failure only drops the numbers.
+export function safeInstrumentation(build) {
+  try { return build(); }
+  catch(error) { return {schemaVersion:INSTRUMENTATION_VERSION,error:String(error?.message||error).slice(0,160)}; }
+}
 const newTally = targets => ({targets,attempted:0,applied:0,alreadyRegistered:0,refused:0,unchangedSkipped:0,notReachedBudget:0});
 function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,tally,origins,files,unchangedFiles,outputs,touched}) {
   const o=name=>({targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0,...origins.get(name)});
@@ -610,8 +616,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];
     if(replay){report.replayVerified=true;report.replayed=0;report.replayOf=replay.sha256;}
     else report.replayBatch={...batch,sha256:hash(batch),stateAfterSha256:hash(state)};
-    if(!replay)report.instrumentation=buildInstrumentation({root,max:config.maxQuestionsPerRun||100,originStats,pendingBefore:Object.keys(state.pending||{}).length,
-      pendingAfter:state.pending,tally:newTally(0),origins:new Map(),files:new Map(),unchangedFiles:new Map(),outputs:new Map(),touched:0});
+    if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max:config.maxQuestionsPerRun||100,originStats,pendingBefore:Object.keys(state.pending||{}).length,
+      pendingAfter:state.pending,tally:newTally(0),origins:new Map(),files:new Map(),unchangedFiles:new Map(),outputs:new Map(),touched:0}));
     if(reportPath)fs.writeFileSync(reportPath,json(report));return report;
   }
   const c=await context(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
@@ -752,8 +758,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
   report.applied=touched.size;report.pending=Object.keys(nextState.pending).length;report.plannedPaths=[...outputs.keys()];
-  if(!replay)report.instrumentation=buildInstrumentation({root,max,originStats,pendingBefore:Object.keys(state.pending||{}).length,pendingAfter:nextState.pending,
-    tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size});
+  if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max,originStats,pendingBefore:Object.keys(state.pending||{}).length,pendingAfter:nextState.pending,
+    tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size}));
   if(doWrite)for(const [rel,obj]of outputs)write(root,rel,obj);
   if(reportPath)fs.writeFileSync(reportPath,json(report));
   return report;
