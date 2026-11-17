@@ -1,0 +1,60 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:45:23.896+00:00",
+ "sourceArchiveFile": "original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 12,
+   "chosenFrom": "new",
+   "resolutionReason": "A(6,3), B(2,1), C(3,0)에서 D(t,0)으로 두고 삼각형 ADC=ABC=3이 되는 t=1, 5를 구해 D1D2=4이므로 좌표 도형 활용 항목이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l3": "삼각형의 무게중심",
+    "l4": "좌표 도형 활용"
+   }
+  },
+  {
+   "ordinal": 17,
+   "chosenFrom": "new",
+   "resolutionReason": "중심 (a,b)에서 x축과 y=x까지 거리 |b|=|a-b|/√2가 같다는 조건으로 b/a를 구하는 접하는 원의 중심 조건 문제라 새 l4를 쓴다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": ""
+   },
+   "hold": "신규 제안: 접점·기울기가 주어진 접선만 있고 직선·축에 접하는 원의 중심 조건 항목이 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "접하는 원의 중심 조건",
+     "label": "직선·좌표축에 접하는 원의 중심 조건",
+     "parent": "도형의 방정식 > 원의 방정식 > 원의 접선",
+     "why": "가장 가까운 '기울기가 주어진 접선'은 접선의 기울기가 정해진 경우이고, 이 문항은 원이 x축과 y=x에 동시에 접할 때 중심의 비 b/a를 구한다."
+    }
+   }
+  },
+  {
+   "ordinal": 4,
+   "chosenFrom": "new",
+   "resolutionReason": "수직선 위 A(-2), B(7)을 2:1로 내분한 P(4)와 외분한 Q(16)에서 a+b=20이므로 내분점 항목, 한 개념의 공식 적용이라 조건·교차개념 없이 NONE이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": "내분점"
+   },
+   "crossConceptKeys": [],
+   "conditionKeys": [],
+   "integrationPattern": "NONE"
+  },
+  {
+   "ordinal": 6,
+   "chosenFrom": "new",
+   "resolutionReason": "(a-1)x+y-1=0이 3x-y-2=0과 수직이라 a=4/3, 2x+(b+1)y+1=0과 평행이라 b=5로 ab=20/3이며 수직 조건과 평행 조건을 차례로 쓴다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": "수직"
+   },
+   "crossConceptKeys": [],
+   "conditionKeys": [],
+   "integrationPattern": "SEQUENTIAL"
+  }
+ ]
+}

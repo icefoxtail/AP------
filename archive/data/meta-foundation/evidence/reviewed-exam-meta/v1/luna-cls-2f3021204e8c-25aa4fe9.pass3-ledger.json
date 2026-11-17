@@ -1,0 +1,56 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T18:58:40+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/24_팔마고_1학기_기말_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "resolutionReason":  "공 6개 중 2개를 고르는 전체 15쌍에서 같은 색인 세 쌍을 빼면 서로 다른 색 쌍은 12개이므로 확률은 12/15=4/5이다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l4":  "확률 계산",
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본"
+                                  },
+                      "ordinal":  13,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "전체 C(6,2)=15쌍에서 라이언이 없거나 인형이 없는 실패쌍은 C(4,2)+C(3,2)-1=8개이므로 조건을 만족하는 확률은 7/15이다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l4":  "여사건",
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리"
+                                  },
+                      "ordinal":  15,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "원탁의 6명 배치에서 6이 4 또는 5와 이웃하는 두 사건의 확률은 각각 2/5이고 교집합은 1/10이어서 여사건은 1−(2/5+2/5−1/10)=3/10이다.",
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열",
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열"
+                                  },
+                      "ordinal":  20,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "양 끝자리에 놓을 짝수 3장 중 서로 다른 두 장을 순서 있게 놓는 경우는 3×2이고 전체 끝자리 배열은 7×6이므로 확률은 1/7이다.",
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "일렬 배열",
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열"
+                                  },
+                      "ordinal":  3,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  }
+              ]
+}

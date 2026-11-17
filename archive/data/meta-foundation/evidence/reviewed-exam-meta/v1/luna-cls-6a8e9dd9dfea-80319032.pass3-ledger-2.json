@@ -1,0 +1,158 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T16:11:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(x²+kx−2k²)=(x−k)(x+2k)와 1−k/x=(x−k)/x를 약분하면 1/(3k²)=1/24이므로 k²=8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "미정계수"
+                                  }
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x→4에서 분자 영점 때문에 4a+b=0이고 유리화한 극한은 4/(5a)=4/5이므로 a+b=−3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "미정계수"
+                                  }
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "접점 t는 t(t−2)=0을 만족하고 p\u003c0이므로 t=2, 접선 y=−3x+7에서 pq=−21이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_NEGATIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "[-1,1]의 평균변화율 a+2를 f′(k)=6k²+a와 같게 두면 k=±1/√3이 모두 열린구간 안에 있어 곱은 −1/3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "두 경계식은 각각 x+1과 x²+1로 약분되어 x→1+에서 2로 모이므로 끼워넣기로 f(x)/(x+3)→2, 따라서 a=8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "g(x)=√(x−1)−1을 유리화해 x−2를 약분하면 x→2에서 1/((1+1)·7)=1/14이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x=k에서 f(x−k)의 좌우극한이 2와 −1이므로 k≠0이면 f(k)=0이어야 하며, k=0은 f(x)^2의 좌우극한이 달라 제외된다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "계수 비교로 f(x)=−4x²/3−x+3이 되어 f(3)=−12이고 식은 모든 실수 x에 대한 항등식으로 주어졌다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "도함수 계산"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x=1 연속성에서 d=2, c=1/4, 왼쪽 극한 a+2=c가 되어 a=−7/4,b=3/4이고 함수가 x=1 전후로 나뉜다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "구간별 함수"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "두 극한으로 f(x)=(x+1)²(x+5)/4를 얻고 x=−3 접선 y=−x−1에 x=−11을 넣으면 a=10이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "접선의 방정식"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CUBIC_POLYNOMIAL_COEFFICIENTS_RECOVERY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "t=2에서 g(2)=−4와 g′(2)=−12를 맞추면 4a+b=−4, 2a=−12라서 a+b=14이며 h는 t=2에서 두 식으로 정의된다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_TANGENT_LINE_SLOPE_AT_POINT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(k)=1의 두 해는 1/2,5/2라 합 a=3이고 교점 개수 함수 g의 불연속 입력은 2/3과 2라 ab=8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "연속의 뜻",
+                                      "l4":  "한 점에서의 연속"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_VALUE_EVALUATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x=3에서 f의 좌극한은 2이고 우극한·함숫값은 1이므로 곱의 연속 조건 2(3+a)=3+a에서 a=−3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "구간별 함수"
+                                  }
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(2)=0에서 b=−12−4a이고 f(x)−8x=x(x²+ax+b−8)의 실근이 둘이면 b=8,a=−5여서 x=2의 극솟값은 4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "도함수의 활용(2)",
+                                      "l3":  "증가·감소와 극값",
+                                      "l4":  "극대·극소"
+                                  }
+                  }
+              ]
+}
