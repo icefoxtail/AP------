@@ -2,8 +2,11 @@
 
 // Real-Chrome check of the solution-figure display rule (2026-11-11 user decision):
 // solution SVGs are sized by label size, not by class: whatever the stored class, an .svg solution figure is shown at
-// naturalWidth x 0.6 capped at the column width, height auto (never the 105/145/180px class caps), while raster (.png)
+// naturalWidth x 0.6 (never the 105/145/180px class caps), while raster (.png)
 // solution images keep the old caps (small 48%/105px, medium 72%/145px, large 92%/180px).
+// 2026-11-17 user decision (figures were too large): an svg solution figure is also capped at 90% of the column width and
+// 340px tall on PC (phone: 92% / 340px), centered. Only solutionImageSizeOverride "full" lifts that (column width, no height
+// cap); solutionImageLayout "fullwidth" keeps its own rule (PC 100% / 640px, phone 100% / no cap).
 // Run: node --test tests/archive-solution-svg-size.test.cjs   (AP_PLAYWRIGHT_MODULE overrides the playwright path)
 const test = require("node:test");
 const assert = require("node:assert/strict");
@@ -54,13 +57,22 @@ const cases = [
   { id: 12, name: "hand-made 120 svg", image: "/__fx/hand-120.svg", size: "medium", bytes: svg(120, 120) },
   { id: 13, name: "hand-made 300 svg", image: "/__fx/hand-300.svg", size: "full", bytes: svg(300, 240) },
   { id: 14, name: "hand-made 383 svg", image: "/__fx/hand-383.svg", size: "large", bytes: svg(383, 300) },
+  // 2026-11-17: the only two exceptions to the 90% / 340px cap
+  { id: 15, name: "override full tall svg", image: "/__fx/override-full.svg", size: "full", override: "full", bytes: svg(900, 1100) },
+  { id: 16, name: "fullwidth layout svg", image: "/__fx/fullwidth.svg", size: "full", layout: "fullwidth", bytes: svg(900, 1100) },
+  // same canvas as the override case without the override: capped
+  { id: 17, name: "capped tall svg", image: "/__fx/capped-tall.svg", size: "full", bytes: svg(900, 1100) },
 ];
+const MAX_WIDTH_RATIO = 0.9;
+const MAX_HEIGHT = 340;
 const K = 0.6;
 const SCALED_MIN_WIDTH = 384;
 const factorFor = (naturalWidth) => (naturalWidth >= SCALED_MIN_WIDTH ? K : 1);
 const bank = cases.map((item) => ({
   id: item.id, content: `fixture ${item.id}`, choices: [], answer: "1", solution: "해설 $x=1$이다.",
   solutionImage: item.image, solutionImageSize: item.size, solutionImageAlt: item.name,
+  ...(item.override ? { solutionImageSizeOverride: item.override } : {}),
+  ...(item.layout ? { solutionImageLayout: item.layout } : {}),
 }));
 
 let server;
@@ -117,7 +129,7 @@ async function measure(width) {
 // the engine may replace the alt text, so rows are matched by their image file
 const byName = (rows, name) => { const fixture = cases.find((item) => item.name === name); return rows.find((row) => (row.src || "").includes(fixture.image.split("?")[0])); };
 
-test("PC: svg solution figures are shown at natural width x k capped at the column, never class-capped", async () => {
+test("PC: svg solution figures are shown at natural width x k capped at 90% of the column and 340px tall, never class-capped", async () => {
   const rows = await measure(1440);
   const natural = { "tall medium svg": [420, 480], "wide medium svg": [900, 600], "large svg": [520, 400], "small svg": [520, 400], "full svg": [520, 400],
     "medium svg with cache buster": [420, 480], "small canvas full svg": [384, 320], "small canvas medium svg": [384, 320],
@@ -126,14 +138,16 @@ test("PC: svg solution figures are shown at natural width x k capped at the colu
   for (const [name, [naturalWidth, naturalHeight]] of Object.entries(natural)) {
     const row = byName(rows, name);
     assert.ok(row, name);
-    // fails if a 145px / 180px / 105px height cap or a 72% / 92% / 48% width cap is back for an svg
-    assert.equal(row.maxHeight, "none", `${name} must not be height-capped: ${JSON.stringify(row)}`);
-    assert.equal(row.maxWidth, "100%", `${name} must not be width-capped: ${JSON.stringify(row)}`);
-    const expectedWidth = Math.min(naturalWidth * factorFor(naturalWidth), row.column);
-    assert.ok(Math.abs(row.width - expectedWidth) <= 1, `${name} should be ${expectedWidth}px wide: ${JSON.stringify(row)}`);
-    assert.ok(Math.abs(row.height - expectedWidth * naturalHeight / naturalWidth) <= 1.5, `${name} keeps its aspect ratio: ${JSON.stringify(row)}`);
+    // fails if a 145px / 180px / 105px height cap or a 72% / 92% / 48% width cap is back for an svg, or if the
+    // 2026-11-17 cap (90% wide, 340px tall) is lost (height none / width 100% again)
+    assert.equal(row.maxHeight, `${MAX_HEIGHT}px`, `${name} must be capped at ${MAX_HEIGHT}px tall: ${JSON.stringify(row)}`);
+    assert.equal(row.maxWidth, "90%", `${name} must be capped at 90% of the column: ${JSON.stringify(row)}`);
+    const expectedWidth = Math.min(naturalWidth * factorFor(naturalWidth), row.column * MAX_WIDTH_RATIO);
+    assert.ok(Math.abs(row.width - expectedWidth) <= 1.5, `${name} should be ${expectedWidth}px wide: ${JSON.stringify(row)}`);
+    assert.ok(row.height <= MAX_HEIGHT + 1, `${name} must stay within ${MAX_HEIGHT}px: ${JSON.stringify(row)}`);
+    assert.ok(Math.abs(row.height - Math.min(expectedWidth * naturalHeight / naturalWidth, MAX_HEIGHT)) <= 1.5, `${name} keeps its aspect ratio (or hits the height cap): ${JSON.stringify(row)}`);
   }
-  // 420x480 medium was 127x145 before this rule; it must now be well above the old height cap
+  // 420x480 medium was 127x145 before the label-size rule; it must stay well above the old height cap
   assert.ok(byName(rows, "tall medium svg").height > 200, JSON.stringify(byName(rows, "tall medium svg")));
   // a small canvas displays narrower than the column, whatever its stored class (full included): never larger than before
   for (const name of ["small canvas full svg", "small canvas medium svg"]) {
@@ -143,9 +157,26 @@ test("PC: svg solution figures are shown at natural width x k capped at the colu
   // a 120-wide hand-made figure is shown at 120 (not 72), a 300-wide one at min(300, column)
   assert.ok(Math.abs(byName(rows, "hand-made 120 svg").width - 120) <= 1, JSON.stringify(byName(rows, "hand-made 120 svg")));
   const hand300 = byName(rows, "hand-made 300 svg");
-  assert.ok(Math.abs(hand300.width - Math.min(300, hand300.column)) <= 1, JSON.stringify(hand300));
-  // a wide canvas still reaches the column and no further
-  assert.ok(Math.abs(byName(rows, "wide medium svg").width - byName(rows, "wide medium svg").column) <= 1);
+  assert.ok(Math.abs(hand300.width - Math.min(300, hand300.column * MAX_WIDTH_RATIO)) <= 1, JSON.stringify(hand300));
+  // a wide canvas reaches 90% of the column and no further
+  const wide = byName(rows, "wide medium svg");
+  assert.ok(Math.abs(wide.width - wide.column * MAX_WIDTH_RATIO) <= 1.5, JSON.stringify(wide));
+});
+
+test("PC: only solutionImageSizeOverride full lifts the 90% / 340px cap; fullwidth layout keeps its own cap", async () => {
+  const rows = await measure(1440);
+  const capped = byName(rows, "capped tall svg");
+  assert.equal(capped.maxHeight, `${MAX_HEIGHT}px`, JSON.stringify(capped));
+  assert.ok(capped.height <= MAX_HEIGHT + 1, JSON.stringify(capped));
+  const override = byName(rows, "override full tall svg");
+  assert.equal(override.maxHeight, "none", JSON.stringify(override));
+  assert.equal(override.maxWidth, "100%", JSON.stringify(override));
+  assert.ok(Math.abs(override.width - Math.min(900 * K, override.column)) <= 1.5, JSON.stringify(override));
+  assert.ok(override.height > MAX_HEIGHT, `override must be taller than the cap: ${JSON.stringify(override)}`);
+  const fullwidth = byName(rows, "fullwidth layout svg");
+  assert.equal(fullwidth.maxHeight, "640px", JSON.stringify(fullwidth));
+  assert.equal(fullwidth.maxWidth, "100%", JSON.stringify(fullwidth));
+  assert.ok(Math.abs(fullwidth.width - fullwidth.column) <= 1.5, JSON.stringify(fullwidth));
 });
 
 test("PC: raster (png) solution figures keep the old size-class caps", async () => {
@@ -159,11 +190,21 @@ test("PC: raster (png) solution figures keep the old size-class caps", async () 
   }
 });
 
-test("phone 375: svg solution figures stay at full column width (the reader mode already did this; must not regress)", async () => {
+test("phone 375: svg solution figures are capped at 92% of the column and 340px tall; override full and fullwidth layout are the exceptions", async () => {
   const rows = await measure(375);
-  for (const name of ["tall medium svg", "large svg", "full svg"]) {
+  for (const name of ["tall medium svg", "large svg", "full svg", "capped tall svg"]) {
     const row = byName(rows, name);
-    assert.equal(row.maxHeight, "none", JSON.stringify(row));
-    assert.ok(row.width >= row.column - 1, JSON.stringify(row));
+    assert.equal(row.maxHeight, `${MAX_HEIGHT}px`, JSON.stringify(row));
+    assert.equal(row.maxWidth, "92%", JSON.stringify(row));
+    assert.ok(row.width <= row.column * 0.92 + 1, `${name} must not exceed 92% of the column: ${JSON.stringify(row)}`);
+    assert.ok(row.height <= MAX_HEIGHT + 1, `${name} must stay within ${MAX_HEIGHT}px: ${JSON.stringify(row)}`);
   }
+  const override = byName(rows, "override full tall svg");
+  assert.equal(override.maxHeight, "none", JSON.stringify(override));
+  assert.equal(override.maxWidth, "100%", JSON.stringify(override));
+  assert.ok(override.width >= override.column - 1, JSON.stringify(override));
+  const fullwidth = byName(rows, "fullwidth layout svg");
+  assert.equal(fullwidth.maxHeight, "none", JSON.stringify(fullwidth));
+  assert.equal(fullwidth.maxWidth, "100%", JSON.stringify(fullwidth));
+  assert.ok(fullwidth.width >= fullwidth.column - 1, JSON.stringify(fullwidth));
 });
