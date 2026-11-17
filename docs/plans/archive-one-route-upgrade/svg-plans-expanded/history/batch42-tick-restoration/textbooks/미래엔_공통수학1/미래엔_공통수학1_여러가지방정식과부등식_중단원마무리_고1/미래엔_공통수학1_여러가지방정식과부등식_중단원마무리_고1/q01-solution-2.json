@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "0",
+          "-4",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "-5"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "40"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "40"
+      },
+      {
+        "id": "A",
+        "x": "-sqrt(2)",
+        "y": "-9"
+      },
+      {
+        "id": "B",
+        "x": "sqrt(2)",
+        "y": "-9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^4 - 4*x^2 - 5",
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "-sqrt(5)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "curveX": "sqrt(5)",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/5"
+    }
+  },
+  "caption": "⑵ (x²−5)(x²+1)=0이다. 그래프의 실근은 ±√5이고 복소수 범위에서는 x=±i도 해이다. 실수 평면의 그래프가 비실근을 교점으로 보여주지는 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 방정식을 푸시오.\n⑴ $x^3-x^2-5x-3=0$\n⑵ $x^4-4x^2-5=0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ x³−x²−5x−3=(x+1)²(x−3)이다. x=−1에서 중근으로 x축에 닿고 x=3에서 지난다. 해는 x=−1 또는3이다. ⑵ (x²−5)(x²+1)=0이다. 그래프의 실근은 ±√5이고 복소수 범위에서는 x=±i도 해이다. 실수 평면의 그래프가 비실근을 교점으로 보여주지는 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ (x²−5)(x²+1)=0이다. 그래프의 실근은 ±√5이고 복소수 범위에서는 x=±i도 해이다. 실수 평면의 그래프가 비실근을 교점으로 보여주지는 않는다."
+  ]
+}

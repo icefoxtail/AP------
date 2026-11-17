@@ -1,0 +1,51 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "3",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -1.0,
+      4.0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "-15/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "-x^2 + 3*x - 6"
+  },
+  "caption": "y=−(x−3/2)²−15/4이므로 최댓값도 음수이며 x축과 만나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 $x$축의 위치 관계를 말하시오.\n⑴ $y=x^2-7x+8$\n⑵ $y=x^2+8x+16$\n⑶ $y=-x^2+3x-6$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=−(x−3/2)²−15/4이므로 최댓값도 음수이며 x축과 만나지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−(x−3/2)²−15/4이므로 최댓값도 음수이며 x축과 만나지 않는다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

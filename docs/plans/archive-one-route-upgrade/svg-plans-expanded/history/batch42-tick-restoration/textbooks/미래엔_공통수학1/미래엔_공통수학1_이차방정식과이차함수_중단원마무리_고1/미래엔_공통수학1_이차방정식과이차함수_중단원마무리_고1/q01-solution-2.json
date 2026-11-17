@@ -1,0 +1,51 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "8",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -7.0,
+      -1.0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-4",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^2 + 8*x + 16"
+  },
+  "caption": "y=(x+4)²이므로 꼭짓점(−4,0)에서 x축에 접한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 $x$축의 위치 관계를 말하시오.\n⑴ $y=x^2-7x+8$\n⑵ $y=x^2+8x+16$\n⑶ $y=-x^2+3x-6$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=(x+4)²이므로 꼭짓점(−4,0)에서 x축에 접한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=(x+4)²이므로 꼭짓점(−4,0)에서 x축에 접한다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

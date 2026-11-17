@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      "-6/5",
+      "6/5"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "V1",
+        "x": "-sqrt(3)/3",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "V2",
+        "x": "sqrt(3)/3",
+        "y": "-2*sqrt(3)/9"
+      }
+    ],
+    "formula": "x^3-x",
+    "axisTitles": {
+      "x": "u",
+      "y": "V"
+    }
+  },
+  "caption": "u=x/5,V=(x³−25x)/125로 축척변환하면 V=u³−u=u(u−1)(u+1). 표시근u−1,0,1은 실제x−5,0,5이다. 원점의 근을 놓치지 않도록 x로 나누지 않고 인수의 곱으로 푼다. 그림 식의x는u,y는V이다. 정답 x=−5,0,5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $x^3-25x=0$을 풀면? [4.5점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "u=x/5,V=(x³−25x)/125로 축척변환하면 V=u³−u=u(u−1)(u+1). 표시근u−1,0,1은 실제x−5,0,5이다. 원점의 근을 놓치지 않도록 x로 나누지 않고 인수의 곱으로 푼다. 그림 식의x는u,y는V이다. 정답 x=−5,0,5.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "u=x/5,V=(x³−25x)/125로 축척변환하면 V=u³−u=u(u−1)(u+1). 표시근u−1,0,1은 실제x−5,0,5이다. 원점의 근을 놓치지 않도록 x로 나누지 않고 인수의 곱으로 푼다. 그림 식의x는u,y는V이다. 정답 x=−5,0,5."
+  ]
+}

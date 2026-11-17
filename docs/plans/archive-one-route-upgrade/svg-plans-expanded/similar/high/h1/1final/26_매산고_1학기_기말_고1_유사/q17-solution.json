@@ -1,0 +1,74 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1/4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2/9",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2/9",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 행 k≠0은 삼차 차수 보존, 둘째 k<1/4는 남은 이차식의 서로 다른 실근, 셋째 k≠2/9는 고정근2와의 중복 배제이다. 세 조건을 동시에 적용한다. 정답 k<1/4이면서 k≠0,2/9. 가까운2/9와1/4는 별도 행으로 분리하여 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;단답형2&gt;<br>삼차방정식 $kx^3-2x^2+(6-3k)x-2k-4=0$이 서로 다른 세 실근을 갖도록 하는 모든 실수 $k$의 범위를 구하시오. [5점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "첫 행 k≠0은 삼차 차수 보존, 둘째 k<1/4는 남은 이차식의 서로 다른 실근, 셋째 k≠2/9는 고정근2와의 중복 배제이다. 세 조건을 동시에 적용한다. 정답 k<1/4이면서 k≠0,2/9. 가까운2/9와1/4는 별도 행으로 분리하여 구별한다.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 행 k≠0은 삼차 차수 보존, 둘째 k<1/4는 남은 이차식의 서로 다른 실근, 셋째 k≠2/9는 고정근2와의 중복 배제이다. 세 조건을 동시에 적용한다. 정답 k<1/4이면서 k≠0,2/9. 가까운2/9와1/4는 별도 행으로 분리하여 구별한다."
+  ]
+}

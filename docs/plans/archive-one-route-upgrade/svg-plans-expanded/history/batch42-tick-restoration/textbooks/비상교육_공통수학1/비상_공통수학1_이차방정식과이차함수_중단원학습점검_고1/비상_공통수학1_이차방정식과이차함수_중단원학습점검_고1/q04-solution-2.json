@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "1",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "-5"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "3*x^2 + x - 5"
+  },
+  "caption": "⑵ 꼭짓점x=−1/6은구간밖,0≤x≤2에서증가한다. 양끝(0,−5),(2,9)에서최솟값−5,최댓값9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 $x$의 값의 범위에서 이차함수의 최댓값과 최솟값을 구하시오.\n⑴ $y=-x^2+6x-8$ ($1\\le x\\le6$)\n⑵ $y=3x^2+x-5$ ($0\\le x\\le2$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 닫힌구간에서꼭짓점(3,1),양끝(1,−3),(6,−8)을비교한다. 최댓값1,최솟값−8. ⑵ 꼭짓점x=−1/6은구간밖,0≤x≤2에서증가한다. 양끝(0,−5),(2,9)에서최솟값−5,최댓값9.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 꼭짓점x=−1/6은구간밖,0≤x≤2에서증가한다. 양끝(0,−5),(2,9)에서최솟값−5,최댓값9."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "executable": false,
+  "requirements": [
+    {
+      "status": "ENGINE_UPGRADE_REQUIREMENT",
+      "executable": false,
+      "sourceOrdinal": 17,
+      "diagram": "시간층별 점유수 상태 전이",
+      "nodes": [
+        {
+          "step": 0,
+          "occupied": 0,
+          "count": 1
+        },
+        {
+          "step": 1,
+          "occupied": 1,
+          "count": 6
+        },
+        {
+          "step": 2,
+          "occupied": 2,
+          "count": 30
+        },
+        {
+          "step": 2,
+          "occupied": 0,
+          "count": 6
+        },
+        {
+          "step": 3,
+          "occupied": 3,
+          "count": 120
+        },
+        {
+          "step": 3,
+          "occupied": 1,
+          "count": 96
+        },
+        {
+          "step": 4,
+          "occupied": 2,
+          "count": 840
+        },
+        {
+          "step": 4,
+          "occupied": 0,
+          "count": 96
+        },
+        {
+          "step": 5,
+          "occupied": 3,
+          "count": 3360
+        },
+        {
+          "step": 5,
+          "occupied": 1,
+          "count": 2256
+        },
+        {
+          "step": 6,
+          "occupied": 4,
+          "count": 10080
+        },
+        {
+          "step": 6,
+          "occupied": 2,
+          "count": 21360
+        },
+        {
+          "step": 6,
+          "occupied": 0,
+          "count": 2256
+        }
+      ],
+      "rules": [
+        "점유수k에서 빈 바구니 선택6−k가지로k+1",
+        "차 있는 바구니 선택k가지로k−1",
+        "시행1~5에서k4 도달은 탈락으로 별도 표시하고 이후 전이를 중단",
+        "시행6에서k4의 가중 경로수10080만 집계"
+      ],
+      "presentation": "전체6^6 완전트리 대신 시간0..6 층과 점유수 상태를 합친 DAG. 화살표에 선택수6−k 또는k를 표시하고 허용경로/조기4도달을 선 스타일로 구분한다. 상태의 경로수와 답10080 표시.",
+      "support": "가중 상태 DAG의 노드/간선/시간층 표시를 기존 geometry source-point 연결로 임의 위장하지 않는다. 지원 capability 확정 필요.",
+      "render": "NOT_RUN"
+    }
+  ],
+  "render": "NOT_RUN"
+}

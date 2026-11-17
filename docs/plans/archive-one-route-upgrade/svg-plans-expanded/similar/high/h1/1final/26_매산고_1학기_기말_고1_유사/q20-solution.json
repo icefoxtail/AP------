@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      "-1",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "T",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "formula": "x^2+1",
+    "overlays": {
+      "lines": [
+        {
+          "id": "lower",
+          "slope": "2",
+          "intercept": "0",
+          "label": "y=2x",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "항상 x²+1≥2x이며 x1에서만 접한다. 공통해는 x>0이고 두 부등식의 합에서(a+c)(x²+1)<4bx. 보조그래프의 하한2x를 적용하면 a+c<2b가 필요하다. 반대로 x1은 두 원식 모두 a+c−2b<0으로 만드는 실제 공통해이다. 이 그림은 일반 하한 증명용으로 특정 a,b,c 값을 가정하지 않는다. 정답 필요충분조건2b>a+c.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형2&gt;<br>양의 실수 $a,b,c$에 대하여 연립부등식 $\\begin{cases}ax^2-2bx+c\\lt0\\\\cx^2-2bx+a\\lt0\\end{cases}$의 해가 존재하기 위한 조건을 모두 구하는 과정을 서술하시오. [6점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "항상 x²+1≥2x이며 x1에서만 접한다. 공통해는 x>0이고 두 부등식의 합에서(a+c)(x²+1)<4bx. 보조그래프의 하한2x를 적용하면 a+c<2b가 필요하다. 반대로 x1은 두 원식 모두 a+c−2b<0으로 만드는 실제 공통해이다. 이 그림은 일반 하한 증명용으로 특정 a,b,c 값을 가정하지 않는다. 정답 필요충분조건2b>a+c.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "항상 x²+1≥2x이며 x1에서만 접한다. 공통해는 x>0이고 두 부등식의 합에서(a+c)(x²+1)<4bx. 보조그래프의 하한2x를 적용하면 a+c<2b가 필요하다. 반대로 x1은 두 원식 모두 a+c−2b<0으로 만드는 실제 공통해이다. 이 그림은 일반 하한 증명용으로 특정 a,b,c 값을 가정하지 않는다. 정답 필요충분조건2b>a+c."
+  ]
+}

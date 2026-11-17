@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "-6"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "10"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^2 - 6*x + 3",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3-sqrt(6)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "3+sqrt(6)",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "⑴ D=36−12=24>0. x軸과두점에서만나며서로다른두실근3±√6이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차방정식의 근을 판별하시오.\n⑴ $x^2-6x+3=0$\n⑵ $2x^2+5x+5=0$\n⑶ $9x^2-12x+4=0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ D=36−12=24>0. x軸과두점에서만나며서로다른두실근3±√6이다. ⑵ D=25−40=−15<0. 최솟값15/8>0으로실수x축과만나지않는다. 서로다른두허근(−5±√15 i)/4이며이복소수근을실수교점으로그리지않는다. ⑶ D=0,(3x−2)²=0이므로x축에접하는중근2/3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ D=36−12=24>0. x軸과두점에서만나며서로다른두실근3±√6이다."
+  ]
+}

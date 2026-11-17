@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-12",
+          "9"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2/3",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "25"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "16"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "9*x^2 - 12*x + 4"
+  },
+  "caption": "⑶ D=0,(3x−2)²=0이므로x축에접하는중근2/3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차방정식의 근을 판별하시오.\n⑴ $x^2-6x+3=0$\n⑵ $2x^2+5x+5=0$\n⑶ $9x^2-12x+4=0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ D=36−12=24>0. x軸과두점에서만나며서로다른두실근3±√6이다. ⑵ D=25−40=−15<0. 최솟값15/8>0으로실수x축과만나지않는다. 서로다른두허근(−5±√15 i)/4이며이복소수근을실수교점으로그리지않는다. ⑶ D=0,(3x−2)²=0이므로x축에접하는중근2/3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑶ D=0,(3x−2)²=0이므로x축에접하는중근2/3이다."
+  ]
+}

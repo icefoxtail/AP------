@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-5",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-24"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "25"
+      },
+      {
+        "id": "V",
+        "x": "5/3",
+        "y": "-256/27"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^3 - x^2 - 5*x - 3",
+    "axisScale": {
+      "x": "1",
+      "y": "1/5"
+    }
+  },
+  "caption": "⑴ x³−x²−5x−3=(x+1)²(x−3)이다. x=−1에서 중근으로 x축에 닿고 x=3에서 지난다. 해는 x=−1 또는3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 방정식을 푸시오.\n⑴ $x^3-x^2-5x-3=0$\n⑵ $x^4-4x^2-5=0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ x³−x²−5x−3=(x+1)²(x−3)이다. x=−1에서 중근으로 x축에 닿고 x=3에서 지난다. 해는 x=−1 또는3이다. ⑵ (x²−5)(x²+1)=0이다. 그래프의 실근은 ±√5이고 복소수 범위에서는 x=±i도 해이다. 실수 평면의 그래프가 비실근을 교점으로 보여주지는 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ x³−x²−5x−3=(x+1)²(x−3)이다. x=−1에서 중근으로 x축에 닿고 x=3에서 지난다. 해는 x=−1 또는3이다."
+  ]
+}

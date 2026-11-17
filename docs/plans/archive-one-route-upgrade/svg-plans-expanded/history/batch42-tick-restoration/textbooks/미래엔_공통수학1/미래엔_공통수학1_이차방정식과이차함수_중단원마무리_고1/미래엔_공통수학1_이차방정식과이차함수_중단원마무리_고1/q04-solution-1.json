@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0.0,
+      5.0
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "V",
+        "x": "4",
+        "y": "-10"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "-9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "4",
+        "5"
+      ],
+      "y": []
+    },
+    "formula": "x^2 - 8*x + 6"
+  },
+  "caption": "꼭짓점(4,−10),왼쪽 끝(0,6),오른쪽 끝(5,−9)을 비교한다. 최댓값6,최솟값−10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주어진 $x$의 값의 범위에서 다음 이차함수의 최댓값과 최솟값을 구하시오.\n⑴ $y=x^2-8x+6$ ($0\\le x\\le 5$)\n⑵ $y=-x^2+10x-20$ ($1\\le x\\le 4$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "꼭짓점(4,−10),왼쪽 끝(0,6),오른쪽 끝(5,−9)을 비교한다. 최댓값6,최솟값−10이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점(4,−10),왼쪽 끝(0,6),오른쪽 끝(5,−9)을 비교한다. 최댓값6,최솟값−10이다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

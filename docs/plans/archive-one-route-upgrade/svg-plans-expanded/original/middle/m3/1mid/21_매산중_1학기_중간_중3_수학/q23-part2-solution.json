@@ -1,0 +1,503 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "48"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "48"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "48"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "48"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "24"
+                  }
+                ]
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "24"
+                  }
+                ]
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "24"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "LT",
+    "T",
+    "M",
+    "U",
+    "V",
+    "W",
+    "R",
+    "RB"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "LT",
+    "T",
+    "M",
+    "U",
+    "V",
+    "W",
+    "R",
+    "RB"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "L",
+        "LT"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "LT",
+        "T"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "T",
+        "U"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "U",
+        "V"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "V",
+        "W"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "W",
+        "R"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "R",
+        "RB"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "RB",
+        "O"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "O",
+        "L"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "inner1",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "inner2",
+      "refs": [
+        "M",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "inner3",
+      "refs": [
+        "M",
+        "W"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "a",
+        "ownerSegment": "s0",
+        "text": "4sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b",
+        "ownerSegment": "s7",
+        "text": "2sqrt(6)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "ownerSegment": "s3",
+        "text": "2sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "수준별 3-②만 나타냈다. 넓이가 48, 24, 12인 세 정사각형의 한 변은 각각 a=4√3, b=2√6, c=2√3 cm이다. 굵은 외곽만 둘레에 포함하고 점선 공유변은 제외한다. 공유길이 합은 b+(a−b)+c=a+c이므로 둘레는 4(a+b+c)−2(a+c)=2a+4b+2c이다. 정답 12√3+8√6 cm. 3-①의 P/Q 끝점 미확정 문제는 이 계획으로 해결하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source-part2",
+      "condition": "넓이48,24,12의 정사각형. 실제 PNG s03_2의 아래변 맞춤·24위12·48오른쪽 접합을 보존. s03_1의 P/Q 불확정 소문항은 이 계획 대상이 아니다.",
+      "mappedTo": "part2 only"
+    },
+    {
+      "id": "gauge",
+      "condition": "O는48과24가 만나는 아래쪽 비표시 평행이동 기준점이다. 세 길이 a=√48,b=√24,c=√12로 모든 꼭짓점을 정확 TRANSLATE_POINT로 생성한다. b<a<b+c이므로 48의 오른쪽은24와길이b,12와길이a−b만큼 공유하며 24/12공유길이는c다.",
+      "mappedTo": "all nodes"
+    },
+    {
+      "id": "boundary",
+      "condition": "외곽은 L→LT→T→U→V→W→R→RB→O→L. 공유변OM,MT,MW는점선이다. O,L등 도구용 이름·좌표는 표시하지 않는다.",
+      "mappedTo": "segments"
+    },
+    {
+      "id": "publication-partial",
+      "condition": "해설 ②의 중간값과 정답을 표시한다. 원문에 없는 좌표와 도구용 점이름만 비표시한다. ①은 P/Q 끝점 근거 부족으로 CONTENT 유지하며 전체 문항 게시 승인이 아니다.",
+      "mappedTo": "caption/part2"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 잘린 오른쪽 정사각형 경계는 넓이와 정사각형 조건으로 정확 완성하되 P/Q 끝점은 추정하지 않는다. 외곽/공유변을 굵기와 점선으로 구별한다.",
+    "세 변의 근호 길이, 공유변 합 a+c 및 최종 둘레 12√3+8√6을 연결해 제시한다."
+  ]
+}

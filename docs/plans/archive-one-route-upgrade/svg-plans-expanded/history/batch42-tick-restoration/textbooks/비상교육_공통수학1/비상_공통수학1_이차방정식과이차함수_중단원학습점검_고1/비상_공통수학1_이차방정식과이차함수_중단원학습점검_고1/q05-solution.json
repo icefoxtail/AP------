@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "9/2"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "-8"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "-8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "-2*x^2 + 2*x + 4"
+  },
+  "caption": "A(2,0)을대입해−8+2a+4=0, a=2. −2x²+2x+4=−2(x−2)(x+1)이므로다른근b=−1. 정답a=2,b=−1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=-2x^2+ax+4$의 그래프와 $x$축이 서로 다른 두 점 $\\mathrm{A}(2, 0)$, $\\mathrm{B}(b, 0)$에서 만날 때, 실수 $a$, $b$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A(2,0)을대입해−8+2a+4=0, a=2. −2x²+2x+4=−2(x−2)(x+1)이므로다른근b=−1. 정답a=2,b=−1.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A(2,0)을대입해−8+2a+4=0, a=2. −2x²+2x+4=−2(x−2)(x+1)이므로다른근b=−1. 정답a=2,b=−1."
+  ]
+}

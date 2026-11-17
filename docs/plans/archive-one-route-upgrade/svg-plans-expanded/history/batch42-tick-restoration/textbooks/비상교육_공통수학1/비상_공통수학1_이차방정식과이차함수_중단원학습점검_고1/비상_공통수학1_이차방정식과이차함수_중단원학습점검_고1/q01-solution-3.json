@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "12",
+          "-4"
+        ]
+      }
+    ],
+    "domain": [
+      0.5,
+      2.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "1/2",
+        "y": "-4"
+      },
+      {
+        "id": "R",
+        "x": "5/2",
+        "y": "-4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "-4*x^2 + 12*x - 9"
+  },
+  "caption": "⑶ y=−(2x−3)²이므로(3/2,0)에서접한다. 교점1개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 $x$축의 교점의 개수를 구하시오.\n⑴ $y=x^2+x-1$\n⑵ $y=x^2+3x+4$\n⑶ $y=-4x^2+12x-9$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ D=5>0이므로두교점. 근은(−1±√5)/2이다. ⑵ 최솟값7/4>0이므로x축과교점0개이다. ⑶ y=−(2x−3)²이므로(3/2,0)에서접한다. 교점1개.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑶ y=−(2x−3)²이므로(3/2,0)에서접한다. 교점1개."
+  ]
+}
