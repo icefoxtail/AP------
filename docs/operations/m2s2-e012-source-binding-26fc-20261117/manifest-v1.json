@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "archive-immutable-candidate-operations-v1",
+  "owner": "ci_m2s2",
+  "task": "E012_CURRENT_SOURCE_RECONCILIATION_PARTIAL13",
+  "status": "CANDIDATE_FROZEN_FOR_READONLY_OFFICIAL_GATE",
+  "observedInputCommit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+  "opsBranch": "refs/heads/ops/m2s2-e012-source-binding-26fc-20261117",
+  "publicationOwner": "root",
+  "operations": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m2/2final/24_왕운중_2학기_기말_중2_수학.4slot.json",
+      "expectedBeforeGitBlobSha1": "1f5c527e0c4c4dd63933bae3b420203ad878c552",
+      "bytes": 11313,
+      "sha256": "2634e18108133e6593e5f9f2998954fe91ddd563afab4d25c3c73ce0351946b9",
+      "gitBlobSha1": "1b7a0b8c8f6330313e5bef5a0630aed616969896"
+    },
+    {
+      "path": "tools/4slot/check-m2s2-e012-source-binding.cjs",
+      "expectedBeforeGitBlobSha1": null,
+      "bytes": 40390,
+      "sha256": "79c78e10bc0541595588c4f197e80c512a7678067ca2f96ffafc87c35cf57e9f",
+      "gitBlobSha1": "2108688a6464e160a3d710ad55fefedd741a5f5d"
+    },
+    {
+      "path": ".github/workflows/m2s2-e012-source-binding-gate.yml",
+      "expectedBeforeGitBlobSha1": null,
+      "bytes": 1592,
+      "sha256": "5048182374246929a8ed70982d397e2f5b70ec1c017cea8f9cfe99b1f39e1845",
+      "gitBlobSha1": "b9e9f4aef533bf8332cd6cdb553361d2364c3305"
+    }
+  ],
+  "proof": {
+    "gitBlobSha1": "f795b1a6c8ea043f48b76e1d021e499fe78bb9ae",
+    "sha256": "220605c84931fa743ea363ba8be6974507140a0fe6c3459ed35c318630ad30d2",
+    "bytes": 38642
+  },
+  "inputPins": {
+    "source": {
+      "path": "archive/exams/original/middle/m2/2final/24_왕운중_2학기_기말_중2_수학.js",
+      "bytes": 102886,
+      "sha256": "ea7d66ca1fc7d8cb60a36642d5376950ea985768948a92e830eca5c7eb2dcf0b",
+      "gitBlobSha1": "3df2e3fc31c0c705f04c8d68bf984e3dc9e70781"
+    },
+    "previousReconciliationSource": {
+      "bytes": 100592,
+      "sha256": "b3ffe557712a1df740e79af2ecb123f623312ac15b955aa5cdbc10aedec48c37",
+      "gitBlobSha1": "8977d242917ad9dbdc18319a46ac4a8df5dd2485"
+    },
+    "originalReviewedSource": {
+      "bytes": 97606,
+      "sha256": "a6d23bd4c8b7b49d5fbb53e9980b346ad2ca5078bfbb13f8ba458788285a1932",
+      "gitBlobSha1": "7e52d7f9ea8911f3a9c9fffdd000f653ec16a272"
+    },
+    "dictionary": {
+      "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+      "bytes": 311356,
+      "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+      "gitBlobSha1": "f25c84d3d8dd84f2987317c13f59a63aa20fd4f0"
+    },
+    "officialCode": [
+      {
+        "path": "tools/4slot/build-4slot-runtime.cjs",
+        "bytes": 41001,
+        "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c"
+      },
+      {
+        "path": "archive/item-4slot.js",
+        "bytes": 8639,
+        "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+        "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27"
+      },
+      {
+        "path": "tools/4slot/exam-items.cjs",
+        "bytes": 2234,
+        "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2",
+        "gitBlobSha1": "debef5587df86821c04e543afb72a72b2e0fc1e4"
+      }
+    ],
+    "declaredLocalAssets": 27,
+    "unchangedSelectedAssets": 5
+  },
+  "denominator": {
+    "source": 24,
+    "expectedRestoredOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      8,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      22,
+      23
+    ],
+    "expectedHeldOrdinals": [
+      5,
+      6,
+      7,
+      9,
+      10,
+      15,
+      18,
+      19,
+      20,
+      21,
+      24
+    ]
+  },
+  "changeBoundary": {
+    "compactJsonPointers": [
+      "/identityReconciliation/sourceGitBlobSha"
+    ],
+    "records24": "UNCHANGED",
+    "items24": "UNCHANGED",
+    "originalReviewedSourceHeader": "7e52d7f9ea8911f3a9c9fffdd000f653ec16a272",
+    "approvalAndEvidence": "UNCHANGED",
+    "productionCodeChanges": 0,
+    "sourceIdentityMetadataRuntimeEdits": 0,
+    "newSemanticReview": 0,
+    "newFourSlotVectors": 0
+  },
+  "validation": {
+    "candidateOneFieldInverse": "BYTE_EXACT",
+    "sourceDataOnlyComparison": "13_WHOLE_IDENTITY_AND_ORIGINAL_PAYLOAD_EXACT_11_DIFFERENT",
+    "immutableOperationsFullReadback": "EXACT",
+    "ownHarnessV8ParseOnly": "CONSTRUCTED_NOT_INVOKED",
+    "nodeSyntax": "NOT_RUN",
+    "officialBuilderConsumerColdNegative": "NOT_RUN",
+    "actualRegisteredCount": "NOT_ESTABLISHED",
+    "newFilesAbsenceBeforePublication": "ROOT_CAS_REQUIRED",
+    "independentReview": "PENDING"
+  },
+  "command": "node tools/4slot/check-m2s2-e012-source-binding.cjs --root \"$GITHUB_WORKSPACE\" --output \"$RUNNER_TEMP/e012-source-binding/scoped-result.json\"",
+  "workflowJob": "e012-source-binding",
+  "artifactName": "e012-source-binding-${github.sha}",
+  "outputFraming": "ARCHIVE_SCOPED_REPORT_BEGIN/CHUNK/END with full bytes/Git/SHA256",
+  "nextAction": "Root independently reviews and composes these3exact blobs onto a current-compatible readonly ops HEAD; no main publication before actual13/11 official result."
+}
