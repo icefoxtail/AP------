@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ],
+    "variable": "a"
+  },
+  "caption": "위로열린포물선이음수가되는x가없으려면D≤0. D/4=(a−1)²−(2a+1)=a(a−4)≤0이므로정답0≤a≤4. 양끝에서는중근만있고엄격한<0의해는없다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2-2(a-1)x+2a+1<0$의 해가 존재하지 않도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "위로열린포물선이음수가되는x가없으려면D≤0. D/4=(a−1)²−(2a+1)=a(a−4)≤0이므로정답0≤a≤4. 양끝에서는중근만있고엄격한<0의해는없다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "위로열린포물선이음수가되는x가없으려면D≤0. D/4=(a−1)²−(2a+1)=a(a−4)≤0이므로정답0≤a≤4. 양끝에서는중근만있고엄격한<0의해는없다."
+  ]
+}

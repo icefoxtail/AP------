@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ −(2x−1)(x−1)>0이므로두근사이1/2<x<1. 두경계제외.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $|2x-7|>5$\n⑵ $-2x^2+3x-1>0$\n⑶ $x^2+6x+10<0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 2x−7>5 또는2x−7<−5이므로x>6또는x<1. 두경계제외. ⑵ −(2x−1)(x−1)>0이므로두근사이1/2<x<1. 두경계제외. ⑶ x²+6x+10=(x+3)²+1≥1. 음수가되는구간이없으므로해가없다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ −(2x−1)(x−1)>0이므로두근사이1/2<x<1. 두경계제외."
+  ]
+}

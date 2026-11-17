@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "9/2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9/2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "첫조건x>1,둘째x<(a−1)/2. 이그림은a=10의예시로정수2,3,4세개를포함한다. 일반적으로4는포함하고5는제외해야하므로4<(a−1)/2≤5이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} 2x+7<3(x+2) \\\\ 4x<2x+a-1 \\end{cases}$을 만족시키는 정수 $x$가 3개가 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫조건x>1,둘째x<(a−1)/2. 이그림은a=10의예시로정수2,3,4세개를포함한다. 일반적으로4는포함하고5는제외해야하므로4<(a−1)/2≤5이다. 4<(a−1)/2≤5를풀면9<a≤11. a9에서는4가제외되어정수두개,a11에서는5가열린경계라제외되어세개이다. 정답9<a≤11.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫조건x>1,둘째x<(a−1)/2. 이그림은a=10의예시로정수2,3,4세개를포함한다. 일반적으로4는포함하고5는제외해야하므로4<(a−1)/2≤5이다."
+  ]
+}

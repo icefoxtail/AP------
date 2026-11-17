@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "1",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/4",
+        "y": "31/8"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "10"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "14"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "2*x^2 + x + 4",
+    "overlays": {
+      "lines": [
+        {
+          "id": "comparison",
+          "slope": "1",
+          "intercept": "3",
+          "label": "y=1x+3",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "⑶ 두식의차2x²+1>0이므로포물선이항상직선보다위이고만나지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 직선의 위치 관계를 판단하시오.\n⑴ $y=x^2-2x+3$, $y=4x-6$\n⑵ $y=x^2+5x+8$, $y=-2x+4$\n⑶ $y=2x^2+x+4$, $y=x+3$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 두식의차(x−3)²=0이므로(3,6)에서접한다. 교점1개. ⑵ 차식x²+7x+4의판별식33>0이므로서로다른두점에서만난다. 교점x좌표(−7±√33)/2, y좌표11∓√33이다. 두교점과꼭짓점보존을위해세로척도를가로의1/4로선언했으므로축수치로읽는다. ⑶ 두식의차2x²+1>0이므로포물선이항상직선보다위이고만나지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑶ 두식의차2x²+1>0이므로포물선이항상직선보다위이고만나지않는다."
+  ]
+}

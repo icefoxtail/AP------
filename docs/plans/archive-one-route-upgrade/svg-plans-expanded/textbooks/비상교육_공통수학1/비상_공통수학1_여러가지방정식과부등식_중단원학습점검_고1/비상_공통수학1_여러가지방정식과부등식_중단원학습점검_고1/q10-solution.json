@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ],
+    "variable": "a"
+  },
+  "caption": "첫방정식D/4=−a−2<0에서a>−2. 둘째D/4=a²+4a−5=(a+5)(a−1)<0에서−5<a<1. 공통범위−2<a<1. 정답−2<a<1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차방정식 $x^2+4x+a+6=0$, $x^2-2ax-4a+5=0$이 모두 허근을 갖도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫방정식D/4=−a−2<0에서a>−2. 둘째D/4=a²+4a−5=(a+5)(a−1)<0에서−5<a<1. 공통범위−2<a<1. 정답−2<a<1.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫방정식D/4=−a−2<0에서a>−2. 둘째D/4=a²+4a−5=(a+5)(a−1)<0에서−5<a<1. 공통범위−2<a<1. 정답−2<a<1."
+  ]
+}

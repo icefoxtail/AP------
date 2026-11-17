@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "-5/4"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "1"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "11"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^2 + x - 1",
+    "overlays": {
+      "lines": [
+        {
+          "id": "comparison",
+          "slope": "3",
+          "intercept": "-2",
+          "label": "y=3x-2",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "차식x²−2x−1−k의판별식4(k+2)=0이므로k=−2. 접점x=1을원식에대입하면y=1. 정답교점(1,1).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2+x-1$의 그래프와 직선 $y=3x+k$가 한 점에서 만날 때, 교점의 좌표를 구하시오. (단, $k$는 실수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "차식x²−2x−1−k의판별식4(k+2)=0이므로k=−2. 접점x=1을원식에대입하면y=1. 정답교점(1,1).",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "차식x²−2x−1−k의판별식4(k+2)=0이므로k=−2. 접점x=1을원식에대입하면y=1. 정답교점(1,1)."
+  ]
+}

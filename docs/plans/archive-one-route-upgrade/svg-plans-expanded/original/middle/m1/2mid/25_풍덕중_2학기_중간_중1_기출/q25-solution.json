@@ -1,0 +1,382 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "360",
+            "denominator": "7"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "720",
+            "denominator": "7"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "1080",
+            "denominator": "7"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "1440",
+            "denominator": "7"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "1800",
+            "denominator": "7"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "2160",
+            "denominator": "7"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": false
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "dashed": false
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": false
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": false
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "dashed": false
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ],
+      "dashed": false
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ],
+      "dashed": false
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "일곱 팀을 원래 이웃 순서대로 칠각형 꼭짓점에 대응시킨다. 두 팀 쌍은7×6÷2=21, 이웃7쌍은 변이므로 제외한다. 남은14개 대각선이 실제 경기이며 정답14경기.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 5] 순천에 있는 중학교 7개 배구 대표팀이 서로 한 번씩 경기하려고 한다. 이웃한 대표팀끼리는 경기하지 않는다고 할 때, 7개 배구 대표팀 간에 이루어지는 총 경기 수를 구하고 그 과정을 서술하시오. [5점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE"
+}

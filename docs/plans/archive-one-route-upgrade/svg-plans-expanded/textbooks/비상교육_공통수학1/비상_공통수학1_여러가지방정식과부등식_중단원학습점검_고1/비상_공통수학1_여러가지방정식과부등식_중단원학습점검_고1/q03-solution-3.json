@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      -1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "1"
+      },
+      {
+        "id": "L",
+        "x": "-5",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "-1",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^2 + 6*x + 10"
+  },
+  "caption": "⑶ x²+6x+10=(x+3)²+1≥1. 음수가되는구간이없으므로해가없다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $|2x-7|>5$\n⑵ $-2x^2+3x-1>0$\n⑶ $x^2+6x+10<0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 2x−7>5 또는2x−7<−5이므로x>6또는x<1. 두경계제외. ⑵ −(2x−1)(x−1)>0이므로두근사이1/2<x<1. 두경계제외. ⑶ x²+6x+10=(x+3)²+1≥1. 음수가되는구간이없으므로해가없다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑶ x²+6x+10=(x+3)²+1≥1. 음수가되는구간이없으므로해가없다."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "x≤1에서5−3x≤4로x≥1/3,1≤x≤2에서는3−x≤4로전부가능,x≥2에서는3x−5≤4로x≤3. 위세행은분기영역,마지막은각영역의조건을적용해합친최종해1/3≤x≤3이다. 최댓값3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|x-1|+2|x-2|\\le4$를 만족시키는 실수 $x$의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x≤1에서5−3x≤4로x≥1/3,1≤x≤2에서는3−x≤4로전부가능,x≥2에서는3x−5≤4로x≤3. 위세행은분기영역,마지막은각영역의조건을적용해합친최종해1/3≤x≤3이다. 최댓값3.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "x≤1에서5−3x≤4로x≥1/3,1≤x≤2에서는3−x≤4로전부가능,x≥2에서는3x−5≤4로x≤3. 위세행은분기영역,마지막은각영역의조건을적용해합친최종해1/3≤x≤3이다. 최댓값3."
+  ]
+}

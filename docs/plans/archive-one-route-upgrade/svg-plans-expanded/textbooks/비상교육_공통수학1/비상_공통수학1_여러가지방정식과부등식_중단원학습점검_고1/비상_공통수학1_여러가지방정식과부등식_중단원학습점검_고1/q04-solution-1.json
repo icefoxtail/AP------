@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑴ 첫조건x>−2,둘째5x−3≤2에서x≤1. 교집합−2<x≤1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} -3x-2<4 \\\\ 2x+3(x-1)\\le2 \\end{cases}$\n⑵ $\\begin{cases} x^2+5x+4\\le0 \\\\ 2x^2+5x-3>0 \\end{cases}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 첫조건x>−2,둘째5x−3≤2에서x≤1. 교집합−2<x≤1. ⑵ 첫조건(x+4)(x+1)≤0에서−4≤x≤−1. 둘째(2x−1)(x+3)>0에서x<−3또는x>1/2. 교집합−4≤x<−3.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ 첫조건x>−2,둘째5x−3≤2에서x≤1. 교집합−2<x≤1."
+  ]
+}

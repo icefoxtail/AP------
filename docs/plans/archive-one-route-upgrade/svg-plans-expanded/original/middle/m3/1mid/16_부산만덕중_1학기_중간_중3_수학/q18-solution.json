@@ -1,0 +1,319 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "203"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "203"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "100"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "100"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "203"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "203"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "203"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "203"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "E",
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "remaining",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vOA",
+        "ownerSegment": "OA",
+        "text": "203 cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vEO",
+        "ownerSegment": "EO",
+        "text": "203 cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "103 cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "103 cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원본은 두 원이 아니라 한 변203 cm인 정사각형에서 오른쪽 위 한 변103 cm인 정사각형을 뺀 ㄱ자 도형이다. 점선으로 잘린 정사각형을 보충하면 넓이는203²−103²=(203+103)(203−103)=306×100=30600 cm². 적용하는 공식은 a²−b²=(a+b)(a−b). 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 다음 도형에서 색칠한 부분의 넓이를 인수분해 공식을 이용하여 구하고자 할 때, 가장 알맞은 공식은? [3.0점]\n\n<img src=\"assets/images/16_부산만덕중_1학기_중간_중3_수학/q18.png\" alt=\"반지름의 길이가 각각 주어진 두 동심원으로 이루어진 원환에서 색칠한 부분의 넓이를 나타낸 그림\" width=\"350\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "evidence",
+      "condition": "원본 PNG 직각 및203/103 치수 직접 확인. O는 평행이동 자유도 고정 기준점, x축은 밑변. 잘린 왼쪽/아래 폭203−103=100. 모든 좌표는 이 치수로 유도. F는 누락 모서리 복원 보조점. 원문에 좌표를 추가하지 않음.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "defect",
+      "condition": "저장 alt/solution은 동심원으로 잘못 설명하지만 실제 그림과 공식①은 일치. 그림 기반 보완 사양이며 원문 해설 수정은 별도 필요.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 ㄱ자 경계 보존, 잘린 정사각형 보충선으로 제곱 차와 합차공식 연결"
+  ]
+}

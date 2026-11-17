@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "CM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DM",
+      "refs": [
+        "D",
+        "M"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB∥CD에서 ∠BAM=∠CDM이고 맞꼭지각 ∠BMA=∠CMD이다. AM=DM과 함께 한 변과 그 양 끝각이 같으므로 ASA 합동이다. 따라서 BM=CM,AB=CD도 성립하며 SAS라고 한 설명이 틀리다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림에서 점 $M$은 $\\overline{AD}$와 $\\overline{BC}$의 교점이고 $\\overline{AM}=\\overline{DM}$, $\\overline{AB}\\parallel\\overline{CD}$일 때, 제시된 설명 중 옳지 않은 것은? [4점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "shape",
+      "condition": "중심M 기준으로 A,D와 B,C가 서로 반대인 대표 배치이다. 위아래 선은 y=±2로 평행하고 M은 AD·BC 중점이므로 원문 조건을 정확히 만족한다. 두 삼각형 합동 결론은 ASA이며 좌표 수치에 의존하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "given",
+      "count": 1,
+      "segments": [
+        "AM",
+        "DM"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "M"
+        ],
+        "value": 33.690067525979785,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "C",
+          "D",
+          "M"
+        ],
+        "value": 33.690067525979785,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "style": "ARC"
+      },
+      {
+        "id": "m1",
+        "refs": [
+          "A",
+          "M",
+          "B"
+        ],
+        "value": 112.61986494804043,
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true,
+        "style": "ARC"
+      },
+      {
+        "id": "m2",
+        "refs": [
+          "D",
+          "M",
+          "C"
+        ],
+        "value": 112.61986494804043,
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true,
+        "style": "ARC"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "GFEHNKLM"
+    }
+  ],
+  "caption": "접으면 M=A=I, L=J, F=D, G=C, H=B가 같은 꼭짓점이다. 접힌 도형에서는 대표 이름 M,L,F,G,H를 썼다. 파란색 NL은 윗면 대각선이다. 주황색 아랫면 네 모서리 GF,FE,EH,HG와 대각선FH 다섯 개가 NL과 꼬인다. 앞의 세로2개와 합해 정답7개(④).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 전개도로 만들어지는 직육면체에 대하여 $\\overline{NL}$과 꼬인 위치에 있는 선분의 개수는? [4점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "shape",
+      "condition": "치수는 원문에 없는 대표 배치 척도이다. 수치길이 표시 없이 원문의 인접·평행·꼬인 관계만 사용한다. 엔진이 입체와 숨은 모서리를 계산하며 원본 문제 그림은 유지한다.",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "fold",
+      "condition": "띠의 앞면 NKFG를 기준으로 접으면 위 N,K,L,M와 아래 G,F,E,H가 대응한다. NL은 윗면 대각선, FH는 그와 평행하지 않은 아랫면 대각선이다. 공간에서 교차하지도 평행하지도 않음을 각 선분의 좌표방향과 평면으로 검산한다. 외형 투영 겹침만으로 꼬임을 판단하지 않는다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "접으면 M=A=I, L=J, F=D, G=C, H=B가 같은 꼭짓점이다. 접힌 도형에서는 대표 이름 M,L,F,G,H를 썼다. 파란색 NL은 윗면 대각선이다. 주황색 아랫면 네 모서리 GF,FE,EH,HG와 대각선FH 다섯 개가 NL과 꼬인다. 앞의 세로2개와 합해 정답7개(④)."
+  ],
+  "segments": [
+    {
+      "from": "N",
+      "to": "L",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "G",
+      "to": "F",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "F",
+      "to": "E",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "E",
+      "to": "H",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "H",
+      "to": "G",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "color": "WARM"
+    }
+  ]
+}

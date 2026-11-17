@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ],
+    "variable": "a"
+  },
+  "caption": "양수a전체를분류하면a≥1에서만공통해가없다. 경계a=1포함. 정답a≥1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases} x^2-(a-1)x-a<0 \\\\ x^2+(a+5)x+5a<0 \\end{cases}$의 해가 존재하지 않도록 하는 양수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=1/2는0<a<1인예시. 첫식(x+1)(x−a)<0은−1<x<a,둘째(x+a)(x+5)<0은−5<x<−a. 공통부분−1<x<−a가존재한다. 따라서0<a<1은탈락. a=2는a≥1인예시로두열린구간이겹치지않는다. 일반적으로1≤a≤5에서는둘째상한−a≤−1,a>5에서는둘째상한−5<−1이므로공통부분없음. a=1에서도두구간이−1에서닿지만열린경계여서공통해없음. 양수a전체를분류하면a≥1에서만공통해가없다. 경계a=1포함. 정답a≥1.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "양수a전체를분류하면a≥1에서만공통해가없다. 경계a=1포함. 정답a≥1."
+  ]
+}
