@@ -252,10 +252,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "③",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q06-solution.svg",
-    "solutionImageAlt": "포물선 초점 통과 현과 준선 발",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "조건을 만족하는 한 예의 포물선에서 초점 F와 A, B를 잇고 준선까지의 수선 AH, BH'를 그렸다. AF와 AH는 같은 길이 1이고, BF와 BH'는 같은 길이 9이다. AHH'B는 넓이 30인 사다리꼴이다.",
+    "solutionImageCaption": "한 예에서 AF=AH=1, BF=BH'=9이며 두 평행변의 합은 AB=10이다. 사다리꼴 넓이가 30이므로 HH'=6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -383,9 +383,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "②",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q09-solution.svg",
-    "solutionImageAlt": "쌍곡선 초점 지름 원과 PF PF′",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "쌍곡선 h(3x²−4y²=12)와 중심 O, 지름 FF′인 원 c의 제1사분면 교점 P, 두 초점과 삼각형 FPF′를 나타낸다.",
+    "solutionImageCaption": "h는 3x²−4y²=12, c는 FF′를 지름으로 하는 원이다. FF′=2√7이고 |PF−PF′|=4이므로 PF×PF′=6이다.",
     "solutionImageSize": "full"
   },
   {
@@ -557,9 +557,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "②",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q13-solution.svg",
-    "solutionImageAlt": "쌍곡선 위 P와 원점 대칭점 Q",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "쌍곡선 위의 P와 원점에 대칭인 Q를 두 초점 F′, F와 이어 평행사변형을 만들었다. 길이 12인 대각선 F′F에 P와 Q에서 각각 수선을 내렸다.",
+    "solutionImageCaption": "P=(5,2), Q=(−5,−2), F′F=12, PS=QT=b=2이다. 대각선 F′F가 넓이를 12인 삼각형 두 개로 나눈다. 쌍곡선에서 a=5, b=2이므로 a+b=7 (②).",
     "solutionImageSize": "full"
   },
   {
@@ -604,9 +604,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q14-solution.svg",
-    "solutionImageAlt": "포물선과 타원의 교점 P와 수선 발 R",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "포물선과 타원의 제2사분면 교점 P, 직선 x=4 위의 Q와 P에서 내린 수선의 발 R, 선분 PQ와 PR을 나타낸다.",
+    "solutionImageCaption": "P=(−5/9,4√5/3), Q=(4,0), R=(4,4√5/3)이고 PQ=49/9, PR=41/9이다. 따라서 PQ+PR=10, 정답은 ①.",
     "solutionImageSize": "full"
   },
   {
@@ -651,9 +651,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "①",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q15-solution.svg",
-    "solutionImageAlt": "포물선 위 초점 거리로 A와 B 결정",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "포물선 y²=8x, 초점 F, 준선 l, A·B와 삼각형 AOB. u는 AF의 길이이며 u=10, BF=4이다.",
+    "solutionImageCaption": "u=AF=10, BF=4에서 A=(8,8), B=(2,−4)를 얻는다. 따라서 삼각형 AOB의 넓이는 24이다.",
     "solutionImageSize": "full"
   },
   {
@@ -698,10 +698,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "⑤",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q16-solution.svg",
-    "solutionImageAlt": "포물선과 직선 교점 및 중점",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "포물선 x²=4y와 대표 직선 y=x/2+1의 교점 P,Q, 그리고 현 PQ의 중점 R(1,3/2)를 나타낸다. 기울기 −1/2인 다른 경우는 y축 대칭이다.",
+    "solutionImageCaption": "대표 경우 m=1/2에서 R은 PQ의 중점이고, m=−1/2인 경우는 대칭이다. 두 경우 모두 PQ=5이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -745,9 +745,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "③",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q17-solution.svg",
-    "solutionImageAlt": "쌍곡선 접선과 두 점근선 교점",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "쌍곡선 4x²−y²=15 위의 T(2,1)에서 접선 t:8x−y=15를 긋는다. 점근선 s₁:y=2x, s₂:y=−2x와 t의 교점은 A=(3/2,−3), B=(5/2,5)이다. 원점 O와 A, B가 이루는 삼각형 안에 무게중심 G가 점으로 표시되어 있다.",
+    "solutionImageCaption": "접선 t:8x−y=15, 점근선 s₁:y=2x, s₂:y=−2x이다. A=t∩s₂=(3/2,−3), B=t∩s₁=(5/2,5)이고, 삼각형 OAB의 무게중심은 G=(4/3,2/3)이다. 정답은 ③.",
     "solutionImageSize": "full"
   },
   {
@@ -792,10 +792,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "④",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q18-solution.svg",
-    "solutionImageAlt": "두 포물선 접선과 P Q R",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "포물선 C₁(y²=16x)와 C₂(x²=2y)의 비원점 교점 P=(4,8)에서 두 접선을 그렸다. 첫 접선의 x절편은 Q=(−4,0), 둘째 접선의 y절편은 R=(0,−8)이며 PQ=8√2, QR=4√5이다.",
+    "solutionImageCaption": "C₁:y²=16x, C₂:x²=2y이다. P=(4,8)에서 그은 두 접선의 축 절편은 Q=(−4,0), R=(0,−8)이고 PQ=8√2, QR=4√5이다. 따라서 정답은 ④, 32√10이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -839,10 +839,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "③",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q19-solution.svg",
-    "solutionImageAlt": "정육각형 점근선과 쌍곡선 교점",
-    "solutionImageCaption": "좌표와 실제 길이 관계를 표시한 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "한 변이 4인 정육각형의 꼭짓점 A, B, C, D, E, F가 차례로 표시되어 있다. 쌍곡선 H의 초점은 A와 D이고, 점근선은 B와 E를 잇는 직선 및 C와 F를 잇는 직선이다. 변 AB와 H의 교점은 P=(5/2,3√3/2)이며 AP=3, DP=7이다.",
+    "solutionImageCaption": "정육각형의 배치와 두 점근선으로 정한 쌍곡선은 변 AB에서 P와 만나며, AP=3, DP=7이다. 따라서 DP−AP=4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -958,9 +958,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "answer": "타원",
-    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q22-solution.svg",
-    "solutionImageAlt": "한 배치에서 원 위 A, 내부점 F, 접은 선 l과 타원 자취 P,O,F",
-    "solutionImageCaption": "AP=PF, OP+PF=OA=r와 타원의 한 배치",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "원 위의 점 A와 내부점 F를 겹치도록 접었다. 접은 선 l은 선분 AF의 중점 M에서 AF에 수직이다. 직선 OA와 l의 교점 P가 움직이는 자취를 함께 그렸다.",
+    "solutionImageCaption": "예시 교점 P=(63/38,42/19), AM=MF=√17/2. 접은 선 l은 AF의 수직이등분선이므로 AP=PF이고 OP+PF=OA=5이다. 따라서 P의 자취는 타원 E: 4(x−1)²/25+4y²/21=1이다.",
+    "solutionImageSize": "medium"
   }
 ];

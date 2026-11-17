@@ -495,7 +495,7 @@ window.questionBank = [
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q13.png",
     "imageAlt": "좌표축 위의 타원에서 A는 y축 위쪽 교점이다. x축의 원점 왼쪽에 F′, 오른쪽에 F가 있으며 A와 두 초점을 이었다.",
     "answer": "①",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q13-solution.svg",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q13-solution-v2.svg",
     "solution": "타원의 장축의 길이가 6이므로 긴 반축의 길이는\n$a=\\dfrac62=3$이다.\n\n$A$는 $y$축 위의 점이고 두 초점 $F,F'$은 $x$축 위에 있다.\n$AO=b$, $OF=OF'=c$라 두면\n타원의 관계 $a^2=b^2+c^2$에서\n$b^2+c^2=3^2=9$이다.\n\n삼각형 $AFF'$의 밑변은\n$F'F=OF'+OF=2c$이고\n높이는 $AO=b$이다.\n따라서\n$[AFF']=\\dfrac12\\cdot F'F\\cdot AO$\n$=\\dfrac12\\cdot2c\\cdot b=bc$이다.\n\n넓이가 $2\\sqrt5$이므로\n$bc=2\\sqrt5$이다.\n\n따라서\n$(AO+OF)^2=(b+c)^2$\n$=b^2+c^2+2bc$\n$=9+4\\sqrt5$이다.\n\n따라서 정답은 ①이다.", decisiveStep: "삼각형 AFF′의 넓이는 bc이므로 bc=2√5이고, 따라서 (AO+OF)^2=b^2+c^2+2bc=9+4√5이다.",
     "level": "상",
     "category": "기하",
@@ -518,7 +518,10 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImageAlt": "예시 타원에서 O는 중심, A는 y축 위의 꼭짓점, F와 F′은 x축 위 초점이다. OA=b=√5, OF=c=2, AF=a=3이고 삼각형 AFF′의 밑변은 2c이다.",
+    "solutionImageCaption": "한 가능한 예 b=√5, c=2에서 $(AO+OF)^2=(b+c)^2=9+4\\sqrt5$이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -654,7 +657,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q17-solution.svg",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q17-solution-v2.svg",
     "standardCourse": "기하",
     "standardUnitKey": "H15-GV-05",
     "standardUnitOrder": 5,
@@ -668,8 +671,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "solutionImageAlt": "직각삼각형 ABC에서 P는 BC의 중점이고 AB=4, 각 C=30도이다.",
-    "solutionImageCaption": "벡터 조건으로 P가 BC의 중점임을 확인하고 PB=PC=2√3을 보인다."
+    "solutionImageAlt": "삼각형 ABC는 B에서 직각이고 C의 각이 30°이다. AB=4이며 P는 BC의 중점으로 BP=PC=2√3이다.",
+    "solutionImageCaption": "직각삼각형 ABP에서 $PA^2=AB^2+BP^2=4^2+(2\\sqrt3)^2=28$이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
