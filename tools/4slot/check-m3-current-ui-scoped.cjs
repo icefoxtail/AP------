@@ -347,18 +347,18 @@ function refShape(ref){
  }
  return {commit:ref.commit,path:safeRelative(ref.path),gitBlobSha1:ref.gitBlobSha1,sha256:ref.sha256,bytes:ref.bytes};
 }
-function refsIn(value,out=[],pointer='$',owner=null){
- if(Array.isArray(value)){for(let i=0;i<value.length;i++)refsIn(value[i],out,pointer+'['+i+']',owner);}
+function refsIn(value,out=[],pointer='$',owner=null,resolveDeclared=null){
+ if(Array.isArray(value)){for(let i=0;i<value.length;i++)refsIn(value[i],out,pointer+'['+i+']',owner,resolveDeclared);}
  else if(value&&typeof value==='object'){
   if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path')){
-   try{out.push(refShape(value));}
+   try{out.push(refShape(resolveDeclared?resolveDeclared(value,owner,pointer):value));}
    catch(error){
     if(error.referenceShapeFailure)error.referenceShapeFailure.location={
      document:owner?{commit:owner.commit||null,path:owner.path||null}:null,
      pointer:pointer.length<=2048?pointer:null,pointerSha256:sha(pointer)};
     throw error;
    }
-  }else for(const[k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out,pointer+'.'+k,owner);
+  }else for(const[k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out,pointer+'.'+k,owner,resolveDeclared);
  }
  return out;
 }
@@ -506,8 +506,58 @@ function run(root,output){
    safeRelative(rel);need(docScope(rel),'METADATA_SCOPE');const bytes=copy(rel);
    queueDoc(bytes,{commit:rootHead,path:rel},true);return bytes;
   }
+  function declaredFourFieldRef(ref,owner,pointer){
+   // One authenticated preparation document declares four-field references.
+   // Do not generalize absence of bytes to any other document or reference.
+   const spec={
+     "schemaVersion": "archive-issued-source-continuity-preparation-v1",
+     "owner": {
+       "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+       "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+       "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+       "bytes": 6031
+     },
+     "references": {
+       "$.beforeSourceRef": {
+         "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+         "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+         "gitBlobSha1": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+         "sha256": "ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9"
+       },
+       "$.actualPriorReceipts[0].inputRef": {
+         "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+         "path": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json",
+         "gitBlobSha1": "2b80a243176fe3168f360ce72572184fdcfd0641",
+         "sha256": "79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338"
+       },
+       "$.actualPriorReceipts[0].receiptRef": {
+         "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-current-source-20261116.json",
+         "gitBlobSha1": "4405ebae958741e97c4e24639655780ab1ff8441",
+         "sha256": "0148fc582202473ca7a5d78d1f9c75f259aab7ab611192d5cb70a7b3e5e5c325"
+       }
+     }
+   };
+   if(Object.hasOwn(ref,'bytes')||owner?.path!==spec.owner.path||!Object.hasOwn(spec.references,pointer))return ref;
+   const expected=spec.references[pointer];
+   need(Object.keys(ref).length===4&&stable(ref)===stable(expected),'DECLARED_FOUR_FIELD_REF');
+   const ownerRef={commit:owner.commit,...spec.owner};
+   const ownerBytes=immutable(ownerRef);need(json(ownerBytes).schemaVersion===spec.schemaVersion,'DECLARED_FOUR_FIELD_SCHEMA');
+   ensureCommit(ref.commit);
+   const entry=git(root,['ls-tree','-z',ref.commit,'--',ref.path]).toString();
+   const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+   need(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path,'DECLARED_FOUR_FIELD_TREE');
+   const size=Number(git(root,['cat-file','-s',ref.gitBlobSha1]).toString().trim());
+   need(Number.isSafeInteger(size)&&size>0&&size<=128*1024*1024,'DECLARED_FOUR_FIELD_SIZE');
+   const authenticated={...expected,bytes:size};pin(object(ref.gitBlobSha1),authenticated,'DECLARED_FOUR_FIELD');
+   const observed={owner:ownerRef,pointer,reference:authenticated};
+   report.authenticatedFourFieldReferences??=[];
+   if(!report.authenticatedFourFieldReferences.some(row=>row.owner.commit===ownerRef.commit&&row.pointer===pointer))
+    report.authenticatedFourFieldReferences.push(observed);
+   return authenticated;
+  }
   function hydrateDocument(value,owner=null){
-   for(const ref of refsIn(value,[],'$',owner))hydrateRef(ref);
+   for(const ref of refsIn(value,[],'$',owner,declaredFourFieldRef))hydrateRef(ref);
    for(const rel of new Set(leafPaths(value)))if(fs.existsSync(path.join(root,rel)))hydrateMetadataDocument(rel);
   }
   function hydrateOriginalNativeSource(carrier){
