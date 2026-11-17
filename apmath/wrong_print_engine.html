@@ -914,7 +914,9 @@ async function fetchArchiveText(file) {
 }
 
 function extractQuestionBank(jsText) {
-    const sandboxWindow = { questionBank: null, __questionBank: null };
+    // 호출마다 새 sandbox window라 앞 파일의 questionBank/examData가 섞이지 않는다.
+    // 원본 시험지 중 window.examData = { questions: [...] } 형식도 같은 규칙(questionBank → examData)으로 읽는다.
+    const sandboxWindow = { questionBank: null, __questionBank: null, examData: null };
     const sandboxDocument = {
         createElement: () => ({ style: {}, setAttribute() {}, appendChild() {}, innerHTML: '' }),
         head: { appendChild() {} },
@@ -924,7 +926,7 @@ function extractQuestionBank(jsText) {
         querySelectorAll: () => []
     };
     try {
-        const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null);`);
+        const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null) || window.examData || null;`);
         return fn(sandboxWindow, sandboxDocument);
     } catch (e) {
         console.warn('[wrong_print_engine] questionBank extract failed:', e);
@@ -936,6 +938,7 @@ function normalizeQuestionBank(bank) {
     if (Array.isArray(bank)) return bank;
     if (!bank || typeof bank !== 'object') return [];
     if (Array.isArray(bank.questions)) return bank.questions;
+    if (Array.isArray(bank.problems)) return bank.problems;
     if (Array.isArray(bank.items)) return bank.items;
     if (Array.isArray(bank.data)) return bank.data;
     return [];

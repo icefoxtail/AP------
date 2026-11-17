@@ -38,6 +38,7 @@ const isGeneratedPath = (file) => [
   "archive/question-index-audit.md",
   "archive/data/archive2-catalog.json",
   "archive/data/archive2-canonical-input-manifest.json",
+  "archive/data/archive2-canonical-input-manifest.compact.json",
   "archive/data/archive2-source-verification-index.json",
   "archive/data/archive2-source-verification-index-v2.json",
   "archive/data/archive2-crosswalk-inventory.json"

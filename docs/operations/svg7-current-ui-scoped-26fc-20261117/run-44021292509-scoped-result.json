@@ -1,0 +1,3733 @@
+{
+  "schemaVersion": "archive-svg7-current-ui-scoped-gate-v1",
+  "status": "PASS_PRIVATE_SCOPED_EXISTING_AUTHORITY",
+  "phase": "COMPLETE",
+  "sourceQuestionCount": 75,
+  "selectedQuestionCount": 7,
+  "outsideQuestionCount": 68,
+  "newMathQa": 0,
+  "newSemanticApprovals": 0,
+  "newFourSlotVectors": 0,
+  "newFinalQaNativeApprovals": 0,
+  "globalBuilderRun": false,
+  "mainWrites": 0,
+  "trackedInputWrites": 0,
+  "screenshotRuns": 0,
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "eventName": "push",
+    "ref": "refs/heads/ops/middle-existing-evidence-gate-26fc-20261117",
+    "repository": "icefoxtail/AP------",
+    "checkoutCommit": "f4ab4440384fc958ea7d7239a36d81ed600e7983",
+    "eventCommit": "f4ab4440384fc958ea7d7239a36d81ed600e7983",
+    "runId": "44021292509",
+    "runAttempt": 1,
+    "job": "svg7-existing-authority",
+    "existingEvidenceCommit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+    "integrationAncestor": "c816d2d39e5218d7a6547956c73e4463ae7e6377"
+  },
+  "actualBaseline": {
+    "index": {
+      "path": "archive/data/item-4slot-index.json",
+      "gitBlobSha1": "9cc464f152ec344b441c951e4826ab7f1fed8d2b",
+      "sha256": "a921e89c5694d009baf18bff11e6ebb1b5ab1bd88cadb9462f6c47f6ffd0ffd8",
+      "bytes": 20318703
+    },
+    "sourceRows": 75,
+    "selectedRegistered": 0,
+    "selectedPending": 7,
+    "outsideRegistered": 53,
+    "outsidePending": 15,
+    "outsideWholeStateSha256": "a843f19e7733379b0c9e005ef4ea3e71b26e880be7f85f5efaa70eba8e0eb8c7",
+    "selectedWholeStateSha256": "fa02487a2643263ba8fe17183e91a9222eb52f74b1e7b07f8e884fc7ef4b4682"
+  },
+  "lastOutsideCheck": {
+    "phase": "SIDECAR_DELETION_REFUSAL",
+    "expectedSha256": "a843f19e7733379b0c9e005ef4ea3e71b26e880be7f85f5efaa70eba8e0eb8c7",
+    "observedSha256": "a843f19e7733379b0c9e005ef4ea3e71b26e880be7f85f5efaa70eba8e0eb8c7",
+    "changed": []
+  },
+  "before": {
+    "counts": {
+      "files": 3,
+      "items": 75,
+      "registered": 53,
+      "pending": 22,
+      "withCandidates": 2,
+      "identityFingerprintHistorical": 21
+    },
+    "selected": [
+      {
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "sourceOrdinal": 15,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+        "sourceOrdinal": 24,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+        "sourceOrdinal": 3,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+        "sourceOrdinal": 15,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+        "sourceOrdinal": 11,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+        "sourceOrdinal": 13,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+        "sourceOrdinal": 24,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED",
+            "sha256": "5b52bd62cb014abd8cdbe2849ae2523840a03a8d26374dfcdb466207ddff66c5"
+          }
+        ]
+      }
+    ],
+    "outsideWholeStateSha256": "a843f19e7733379b0c9e005ef4ea3e71b26e880be7f85f5efaa70eba8e0eb8c7"
+  },
+  "after": {
+    "counts": {
+      "files": 3,
+      "items": 75,
+      "registered": 60,
+      "pending": 15,
+      "withCandidates": 3,
+      "identityFingerprintHistorical": 28
+    },
+    "selected": [
+      {
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "sourceOrdinal": 15,
+        "registered": true,
+        "recordSha256": "84801b1f29755df11f85b002eaccdfe22cc7354ebe7b0cfee39d89132335f5be",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+        "sourceOrdinal": 24,
+        "registered": true,
+        "recordSha256": "a18345c459ec540c098ab0834c57f4d6efdcb9e5541ea2871af6744f6b17aba8",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+        "sourceOrdinal": 3,
+        "registered": true,
+        "recordSha256": "5b4d58809865183a0a8bc366d615d79b2411d6c952bccdb03bfa9561e6e52caf",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+        "sourceOrdinal": 15,
+        "registered": true,
+        "recordSha256": "2fc3a5e572a8ba65371ba10aaaa3d09099610562e3dd9ade42f59ea432e06cba",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+        "sourceOrdinal": 11,
+        "registered": true,
+        "recordSha256": "4c8849634679f129aee1a892c8b0193d18068219b8252a97ac155ebdfa2df433",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+        "sourceOrdinal": 13,
+        "registered": true,
+        "recordSha256": "e05902620e332d5bebe54cbd2cb9434653991a042351b7549536708bbb1e5a30",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+        "sourceOrdinal": 24,
+        "registered": true,
+        "recordSha256": "54537ff280efe4854a19af36b39ab553d41507fbd9c217574e9eb0d268da0a55",
+        "pending": []
+      }
+    ]
+  },
+  "existingNativeAuthority": {
+    "verified": 7,
+    "route": "official build -> existingVector.verify -> private validateNativeAuthority",
+    "coreGitBlobSha1": "524c9628f90438930774fd5b15df36f43eb4e903",
+    "newFinalQaNativeApprovals": 0,
+    "newSemanticApprovals": 0,
+    "newFourSlotVectors": 0,
+    "namedAuthorityDebtsPreserved": [
+      "E045-Q15",
+      "E045-Q24"
+    ]
+  },
+  "consumer": {
+    "selected": 7,
+    "queries": 49,
+    "officialVerifyStatus": "PASS_WITH_SUPPLEMENTS",
+    "officialScopeVerified": 60,
+    "pendingPreserved": 15,
+    "outsideWholeStateSha256": "a843f19e7733379b0c9e005ef4ea3e71b26e880be7f85f5efaa70eba8e0eb8c7"
+  },
+  "cold": {
+    "changed": false,
+    "revalidatedFiles": 3,
+    "reusedFiles": 0,
+    "counts": {
+      "files": 3,
+      "items": 75,
+      "registered": 60,
+      "pending": 15,
+      "withCandidates": 3,
+      "identityFingerprintHistorical": 28
+    },
+    "indexSha256": "c86a8e7c06940ee79c6c6250df1bdf9795fef825a9a6154604616f6cb4514794"
+  },
+  "deleted": {
+    "selectedRegistered": 0,
+    "selectedRejected": 7,
+    "counts": {
+      "files": 3,
+      "items": 75,
+      "registered": 53,
+      "pending": 22,
+      "withCandidates": 2,
+      "identityFingerprintHistorical": 21
+    },
+    "outsideWholeStateSha256": "a843f19e7733379b0c9e005ef4ea3e71b26e880be7f85f5efaa70eba8e0eb8c7"
+  },
+  "inputProof": {
+    "checkoutCurrent": [
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6.json",
+        "gitBlobSha1": "28d269a294b015c70d32c196ec7989b9b5857af5",
+        "sha256": "fd84b83888c2046b6557a1a59335e5fa47327e99087c6d7e3c8020f5a91e9ae8",
+        "bytes": 11473
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569.json",
+        "gitBlobSha1": "2115da491383d19f093e93a130b29c30215133a5",
+        "sha256": "ce6ef1a851f8fa0aa2950621acda706d6ac48c07eff1059d19eaacdf4e84c6c7",
+        "bytes": 14605
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec.json",
+        "gitBlobSha1": "df107391e2c68df5871e01c777060d1fc0eaef95",
+        "sha256": "23eb8659d6c99bc9e0f5f0fabc6ff00f8a98ae2d221674ec4fb291eab29a122b",
+        "bytes": 13929
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad.json",
+        "gitBlobSha1": "406f3c44b5a30d6f45f771a1ba38ec28614bb269",
+        "sha256": "f23ff4a001221eeefd336b947ac0ac0926dc7ca01837d0c4640cb945db51ae68",
+        "bytes": 13931
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637.json",
+        "gitBlobSha1": "8bb003fd3eb01ed8e2f9af66532537e7fac3d35b",
+        "sha256": "931256a612d871214f0f4c70ae12fd3e945ab72bab089da3f748792143d0e1cb",
+        "bytes": 13928
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5.json",
+        "gitBlobSha1": "14628a32fa0c60d0412c082c4fb53fe2fe37e7d1",
+        "sha256": "ec2dc71cfe34a9f1cf56df2ed0d37d80cf7d3883a34686c4677257ca61a4ff98",
+        "bytes": 11479
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd.json",
+        "gitBlobSha1": "f476cec42037470f1a1ad6ba61d56e6f624c1495",
+        "sha256": "b2070ffb9505a7011029560b75485322e69deade7b4b5d87cf64b976ffcc5e4e",
+        "bytes": 10870
+      },
+      {
+        "path": "apmath/css/student-navigation.css",
+        "gitBlobSha1": "afaddbc2f19f8c9507d592dc610adac9adce6abf",
+        "sha256": "845ec493b33bb82b93accc6036850595f3870ddcb0594055b741c5799bf5ad55",
+        "bytes": 4432
+      },
+      {
+        "path": "apmath/js/student-navigation.js",
+        "gitBlobSha1": "0530727c087b526cb10ad9a76f04e03c9ecbefcf",
+        "sha256": "05ea337bc52311fb8acd13ff6fdd3a9d437cb28594a69696f5da29d47ecebe95",
+        "bytes": 7463
+      },
+      {
+        "path": "archive/answer-render-executor.js",
+        "gitBlobSha1": "7d5798d9c542174ff4730b06243dea9d52403f25",
+        "sha256": "3327b441fffad769f80440e9f71c929d631a500376c7062e95ab234ce8dacc47",
+        "bytes": 3320
+      },
+      {
+        "path": "archive/archive-asset-base.js",
+        "gitBlobSha1": "51bb78820b2356911551bde45485070b22a924fa",
+        "sha256": "bca6f850bcfbe0d5cc032faff5b5aedd80f4bb98d42dbb99fd2de655438432d6",
+        "bytes": 13711
+      },
+      {
+        "path": "archive/archive2-output-bar.css",
+        "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+        "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+        "bytes": 9673
+      },
+      {
+        "path": "archive/archive2-output-contract.js",
+        "gitBlobSha1": "c8c6c9144444d2b997fd259b6578bd06a2e08459",
+        "sha256": "89aad418459a73bdbbe7d8a3834f39fda8c8ebf9788abcf551ec846199197976",
+        "bytes": 9035
+      },
+      {
+        "path": "archive/archive2-output.js",
+        "gitBlobSha1": "c10a9e36b40ae2ab0022afa1e2d2fbc0bd4d2f03",
+        "sha256": "7110c184f40ca77a202fd33a4af2e8645734027f89e27cbdb58630c47f149a2f",
+        "bytes": 22873
+      },
+      {
+        "path": "archive/archive2-pdf-readiness.js",
+        "gitBlobSha1": "7ec2488d834ea5656e6dab78a9a9609ad1733951",
+        "sha256": "d3843aa30001883bb6dd9076398075c9b3494cbbea63dd6c1d226a46521829c1",
+        "bytes": 7024
+      },
+      {
+        "path": "archive/archive2-preview-mobile.css",
+        "gitBlobSha1": "dd63e6a8a0abf39ed38a4dad94d842ea92d8b071",
+        "sha256": "1a32df12641e6acd829ae1c434fc9745693e1a0febd2d2eaa790c2180f6eba0c",
+        "bytes": 14214
+      },
+      {
+        "path": "archive/archive2-reader-controls.css",
+        "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+        "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+        "bytes": 4905
+      },
+      {
+        "path": "archive/archive2-reader-controls.js",
+        "gitBlobSha1": "0544768b1d44dbe7eb62bef67aef2aae369182a7",
+        "sha256": "48c2f35da451d882bc98c1ce41f615b7b304f52da51d716a1912089c47066392",
+        "bytes": 9241
+      },
+      {
+        "path": "archive/archive2-review.css",
+        "gitBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+        "bytes": 476
+      },
+      {
+        "path": "archive/archive2-review.js",
+        "gitBlobSha1": "ffaadeababca6797270f1bae6482ed1a4d0a9949",
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce",
+        "bytes": 407
+      },
+      {
+        "path": "archive/archive2-tokens.css",
+        "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+        "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+        "bytes": 2241
+      },
+      {
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      {
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      {
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q17-problem-visual-v2.svg",
+        "gitBlobSha1": "bdeb894ead56dbfa6ed256e62f2882839db10408",
+        "sha256": "f329257bda65fa8e7ace82e6f35fc6c7fd24000bdd7d91336043fc92f31cc397",
+        "bytes": 2504
+      },
+      {
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q20-problem-visual-v2.svg",
+        "gitBlobSha1": "55cc6ce6b54a69ac55ff6538874ed566905d8033",
+        "sha256": "1a3a0f35ee8b50ff834e9028df58a7786136e48b96d2432582cf039f8bcac817",
+        "bytes": 3010
+      },
+      {
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+        "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+        "bytes": 3555
+      },
+      {
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+        "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+        "bytes": 12366
+      },
+      {
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+        "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+        "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+        "bytes": 10634
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q11-problem-visual-v2.svg",
+        "gitBlobSha1": "f621b1e3a44b486594dc3a310c82400251b4696f",
+        "sha256": "a6b567d9f894d69d0759234760b7fe020ac2460c404f0cb12d7b780ebd98306f",
+        "bytes": 1726
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q12-problem-visual-v2.svg",
+        "gitBlobSha1": "e521f28206f35a1c60e6be034f4605b93385999f",
+        "sha256": "abcd13d02e5612a201a5e06379b66f347c67ed97ba71ee764e4d787be2ea1447",
+        "bytes": 4181
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
+        "gitBlobSha1": "be012bda6bcfbca69796a3d5fafb74c628c95853",
+        "sha256": "6801338afc1647675a07f75ba0c0f88e52b71861aacf540ef4a5a51cc1be3bf1",
+        "bytes": 2176
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q14-problem-visual-v2.svg",
+        "gitBlobSha1": "9d2a68c2ff79e253d35f73010015fdeeb5844d26",
+        "sha256": "f7be092e914c37714c07dcab45a868b921cd230576febf2e79e78674d0df5789",
+        "bytes": 2614
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
+        "gitBlobSha1": "4c7bb7983c6348295590f52961ee388ada88cd9e",
+        "sha256": "90c46b378d18869ce319241513c2c732d6b930d4081de4671902bb3a126f6dc3",
+        "bytes": 2181
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q17-problem-visual-v2.svg",
+        "gitBlobSha1": "1edb263cb282e97c929d3beb121aacc8d0e1f342",
+        "sha256": "f40da76ce3db583b529d39d5648af3efb45556a6da6d3b75ce72ae56347e0da9",
+        "bytes": 3119
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q18-problem-visual-v2.svg",
+        "gitBlobSha1": "f7deb7d9dc5d4c2559af13ee45c3e95b9db66db4",
+        "sha256": "c33a3a5e470aff78a0faa13d0df6862148b7734563ec58b70997a35a71c1e4b3",
+        "bytes": 2601
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q2-problem-visual-v2.svg",
+        "gitBlobSha1": "e36f10255f6e7516d003ffc69d31666eab2181af",
+        "sha256": "b74b9b709acbea9a0a248d5197b41864f321e14c4e8fc779c1a1193bfb312624",
+        "bytes": 1921
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q20-problem-visual-v2.svg",
+        "gitBlobSha1": "eea57fda95cf8bb2a33774df7ae317b5e18000e3",
+        "sha256": "d5bfe63a06b6bc1a7461ab8f6960070da5307e5e101ddcc0b64e71676ace247d",
+        "bytes": 2200
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q21-problem-visual-v2.svg",
+        "gitBlobSha1": "efe28c279e4cc70f2863e66a56fe524708ef00c6",
+        "sha256": "58ddc01aacdf752e649cc574955c71b68ef068c6fc7f8b0afc97a14c4ca3a1f3",
+        "bytes": 2773
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q22-problem-visual-v2.svg",
+        "gitBlobSha1": "3d816b57bd17dd8197e24f4194e457f4eaf266c0",
+        "sha256": "8d9a69b0df6f6bc9546b7f6761fb8b670015999aceb976fbf32f3017c6eaff24",
+        "bytes": 3346
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q24-problem-visual-v2.svg",
+        "gitBlobSha1": "2f12ad0d0533dfe97b56278859210639911d557e",
+        "sha256": "9db1b3edba1ca9c032e71ef4b959e803a7bd1772385b1ee1e05c827567e1097e",
+        "bytes": 2205
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q25-problem-visual-v2.svg",
+        "gitBlobSha1": "bab052ad30a06900e35a93d3423385014cb0dad0",
+        "sha256": "52e9c80b6ee8e63d170fa727e8f74463bf234982bef551b61fd341ba71362a96",
+        "bytes": 5743
+      },
+      {
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      {
+        "path": "archive/concept_map.js",
+        "gitBlobSha1": "ec34be175c586437acff1c9e0b9caf9b7fbef349",
+        "sha256": "7972e247e5b1379bd837f720a6607bc60d48e42a9d987a5c6e7a342f6d5cefe9",
+        "bytes": 8232
+      },
+      {
+        "path": "archive/css/ap-table.css",
+        "gitBlobSha1": "4c1645171537c57cceef4b537951d3226adb37e1",
+        "sha256": "9596269fedc5dde8870fa7e039a5917352050fd28a9b435944a73f52d5950e47",
+        "bytes": 4776
+      },
+      {
+        "path": "archive/css/js-archive-theme-override.css",
+        "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+        "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+        "bytes": 13947
+      },
+      {
+        "path": "archive/data/item-4slot-index.json",
+        "gitBlobSha1": "9cc464f152ec344b441c951e4826ab7f1fed8d2b",
+        "sha256": "a921e89c5694d009baf18bff11e6ebb1b5ab1bd88cadb9462f6c47f6ffd0ffd8",
+        "bytes": 20318703
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.4slot.json",
+        "gitBlobSha1": "a9aceaf29233b879eea905dc28b3a4757dda59ce",
+        "sha256": "324142b835720eda1bb25f706259699faa1633b93f9b703befd6ff6f8057c3bf",
+        "bytes": 3758
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.4slot.json",
+        "gitBlobSha1": "e9d4200fcf08470b13ea6227fba357202d0915a2",
+        "sha256": "20bb8b2c9cd2437fbdb412b1a9b7e027c5fa03e19b8dc1b3107abb4b1031f99a",
+        "bytes": 4141
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.4slot.json",
+        "gitBlobSha1": "f19f05d11d35fb7af53ae6232e716f0755ca5ac1",
+        "sha256": "5073e0edf0afb742d59c56a4bd4cbc2c4752ff79de1ec100011a1f8b517ba644",
+        "bytes": 3958
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "gitBlobSha1": "d7d486fc5972c3236c19e3b3e4cf33232a194ed6",
+        "sha256": "7ace9a81bc33b45e69692808d4a4180fa67ac6a6b821defd3c4d6753eee24b95",
+        "bytes": 27938431
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "f28fb72f0099ad4cbe031fb1f652aaf457699d51",
+        "sha256": "377f95d2d0f829a2fe2607fff49125f624b6e5401d4d8a6dc8b1ff79316310b3",
+        "bytes": 74271150
+      },
+      {
+        "path": "archive/data/svg-accessibility-index.js",
+        "gitBlobSha1": "6cdfe2562ba3520d6cb5c55fdb8209e85a8afd4a",
+        "sha256": "3d1ca0fb8b4e5b3381d42b4edad1b7dc5e8e0e8a2afa5eacec4fd3da4380710d",
+        "bytes": 5687723
+      },
+      {
+        "path": "archive/engine.html",
+        "gitBlobSha1": "226342544e896cd6a6f35aa946947b89ef3c893e",
+        "sha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+        "bytes": 196085
+      },
+      {
+        "path": "archive/equal-slot-engine.css",
+        "gitBlobSha1": "7b3cf785367b628a05bdf08f634ecd86f2c7c4eb",
+        "sha256": "a31fe14fbd28a306ee2f052dc9b0dc51c4fd54c850aa6baf1274974993a7c261",
+        "bytes": 1828
+      },
+      {
+        "path": "archive/equal-slot-engine.js",
+        "gitBlobSha1": "c826512ff61d4969c7ce45ba8f4ee002286bcf10",
+        "sha256": "4979ccfd129470e076965bf93bb86e089d53c4ea875a17b011760886f967177a",
+        "bytes": 20518
+      },
+      {
+        "path": "archive/exam-display-title.js",
+        "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+        "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+        "bytes": 2358
+      },
+      {
+        "path": "archive/exam-render-executor.js",
+        "gitBlobSha1": "583a72ae2c960d485cdcd1c1aec1329f204067b6",
+        "sha256": "e4ac35518351fd89d16222df4221e64a32121213f5b99c831407a61d90b573d7",
+        "bytes": 24896
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+        "bytes": 44656
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      {
+        "path": "archive/js/ap-table-engine.js",
+        "gitBlobSha1": "d5c80eb60683b74a427f48b3ef1030d9d5f0cec6",
+        "sha256": "47b84007d59e289655004b129e3a713ae3dae1247393efc5e28f5a152951148c",
+        "bytes": 29907
+      },
+      {
+        "path": "archive/layout-authority.js",
+        "gitBlobSha1": "d7b75dc389c9ec8a010243d8e18e893482fa4185",
+        "sha256": "797c7ea7541a886dc3a6098ba23791fe4a7861de6f1d14d412e515605a5c3c73",
+        "bytes": 86382
+      },
+      {
+        "path": "archive/layout-materializer.js",
+        "gitBlobSha1": "8ee08f4a5111ac8ac66a8aba1c54a5bb8cecdc90",
+        "sha256": "e77bfda088c4500f5231bfd860f322c26c251a56c2ea0c27cdd6873b4235aaad",
+        "bytes": 22711
+      },
+      {
+        "path": "archive/mathjax_render_loop.js",
+        "gitBlobSha1": "72e04091383ed119aa6e4d3dd262e8c885aa4a8c",
+        "sha256": "384d3ac3e8871a4d81cc03ca2a74e046c58b18de957302d09c60f18df2631053",
+        "bytes": 3546
+      },
+      {
+        "path": "archive/native_print.js",
+        "gitBlobSha1": "3ee0c4cc26e40239fac3db5c8807a47f2dce82ab",
+        "sha256": "ff79950e52285419d9b88ea4c5ef3bdbbd2acb564bce851c3542f7b53aa48072",
+        "bytes": 18120
+      },
+      {
+        "path": "archive/print_image_optimizer.js",
+        "gitBlobSha1": "da8d3ea82fcfde59511630982d319b6edde5c368",
+        "sha256": "e56743edbe629b45bb4b5cc3b81d048a68c1518b56c87b71111030b46eec03ed",
+        "bytes": 7810
+      },
+      {
+        "path": "archive/print-contract.js",
+        "gitBlobSha1": "00a423d6005fde16173c18969d0df2f934eb1f1d",
+        "sha256": "e40182bdbb423f4d72a7664f5b597d4c88a58ee5e5851fb6dca2d372922d6ad1",
+        "bytes": 27160
+      },
+      {
+        "path": "archive/print-runtime.js",
+        "gitBlobSha1": "e74bdfc75b6fe4c0d5aa23c70849586993bc3739",
+        "sha256": "9ef9af4073c7f9685c74060ca81c9116cf7ed9a133e6973ac099da892a9f125b",
+        "bytes": 4086
+      },
+      {
+        "path": "archive/question-image-readiness.js",
+        "gitBlobSha1": "4b3d1a8b309aa720db59ef33d481881fa825fcad",
+        "sha256": "6742a03a0a9fd3733a5dfdc7aa676c9aea52992dc45ae50c324e346964baf400",
+        "bytes": 9995
+      },
+      {
+        "path": "archive/question-meta.js",
+        "gitBlobSha1": "e685586e39047c7d68bf1dba13d928611a53caa2",
+        "sha256": "b00ed61b6ff3e1ec69827d43cb634d9091c4d643bee352ede5dcb41154f247f6",
+        "bytes": 27308
+      },
+      {
+        "path": "archive/render-authority.js",
+        "gitBlobSha1": "399e98832bfe7ccdc453dedf5d41bfbfd61b7a47",
+        "sha256": "0bc269bba107c2ef13c2af6669b6bbd2c16634a3c0981a5882d2323792e9b951",
+        "bytes": 28141
+      },
+      {
+        "path": "archive/render-feedback.js",
+        "gitBlobSha1": "bba4a0a028b08260de01ae66a936dd9b77a849af",
+        "sha256": "324177edefdcb996b4717a7853fc8bd542ac98098e3c6b8eabd42124eb424631",
+        "bytes": 7461
+      },
+      {
+        "path": "archive/render-state-normalizer.js",
+        "gitBlobSha1": "c1112b6b4a8b90a3deb5ae876f484aa3e9a2989c",
+        "sha256": "949d119d4895a7a096ffba7ed5163bb2ca3691b9019b714a2349df04733d81f7",
+        "bytes": 7168
+      },
+      {
+        "path": "archive/review-preview-bridge.js",
+        "gitBlobSha1": "77e5be38f9e4a2ad280108d7a697e9adb6ce2c93",
+        "sha256": "cb648c3f3ad29300e8ee5b2e8dff8196b42df9ed1b7bcdd7842ca16f7adf62f8",
+        "bytes": 20086
+      },
+      {
+        "path": "archive/screen-runtime-adapter.js",
+        "gitBlobSha1": "fb0ee7afc7eed48b30975874c5536eb283f308c9",
+        "sha256": "ed0b267dc3b27675c2c0ed0aa985991a0aad3d3863ce5bcd43f0acb28033d709",
+        "bytes": 53393
+      },
+      {
+        "path": "archive/screen-runtime.js",
+        "gitBlobSha1": "085b48bee4a35f8f065f1808e1c0f8918c23ec74",
+        "sha256": "69ebf42311b2035c106bbe033bb5e145893b2dafb96e003775c7a791dbc2e850",
+        "bytes": 20210
+      },
+      {
+        "path": "archive/side-effect-ledger.js",
+        "gitBlobSha1": "cbafe31d265b473738c68539223e774592c6c2d5",
+        "sha256": "00cb757605d329bad73e5ff53c1c3ee71c2ceb54083661303a2a440c6e7cc9ff",
+        "bytes": 2816
+      },
+      {
+        "path": "archive/snapshot-contract.js",
+        "gitBlobSha1": "fc107a97f2c29d6d42e8f79371a40f7baaef4fec",
+        "sha256": "b3aba93b43c81980fec9ef336aa5c33b6f38e628635a344b8637293e7b9a1cc1",
+        "bytes": 5845
+      },
+      {
+        "path": "archive/solution-render-executor.js",
+        "gitBlobSha1": "f2036816290173c45dc656e0df360ac30483a8cd",
+        "sha256": "3ab2a681ac54edeffebd2d9fc0d14ce28ff22a58a368448d7674130e0ae0ccf7",
+        "bytes": 41090
+      },
+      {
+        "path": "archive/student-svg-refresh.js",
+        "gitBlobSha1": "23c1727a967b7cc1de4ff9e5beda37cd03c8c307",
+        "sha256": "3375d3d722cc5831f8d4412c2c4dcf3a92b50bd1e8591918ba148cb573d62b6f",
+        "bytes": 6585
+      },
+      {
+        "path": "archive/svg-accessibility.js",
+        "gitBlobSha1": "f8ad8adf08f3051a7cac241b54806209471cca63",
+        "sha256": "a2d75ee1c5b44ad70d74bf147464ad6af8ded3d56308ce25d7e0dce571b32e81",
+        "bytes": 6746
+      },
+      {
+        "path": "archive/vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2",
+        "gitBlobSha1": "48f9ef1a2f2f544ce1614fadebccc4335fb2de95",
+        "sha256": "79403a2023f44e801e2dbe9b50f2263500aad6750677b6ef2996ea3251a5ce95",
+        "bytes": 5100
+      },
+      {
+        "path": "archive/vendor/html2canvas/html2canvas.min.js",
+        "gitBlobSha1": "aed6bfd70defa322824e5cba11b3ad5d6061ee28",
+        "sha256": "e87e550794322e574a1fda0c1549a3c70dae5a93d9113417a429016838eab8cb",
+        "bytes": 198689
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+        "gitBlobSha1": "63ed17c42a35fe234368fed5731760cc871d5825",
+        "sha256": "4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d",
+        "bytes": 980
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+        "gitBlobSha1": "734f41d2c3636dfa70140d350611d39dbe44ea15",
+        "sha256": "fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133",
+        "bytes": 164864
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+        "gitBlobSha1": "ba96f1971613e0e721e4fbf1b5127c7250b6db68",
+        "sha256": "07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83",
+        "bytes": 2560
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-so.woff2",
+        "gitBlobSha1": "3b99ab827a175bb7be9a3d039db150df8733e772",
+        "sha256": "0e9f0e5baa090d44c728e2ddaa39b4c465ff15d349e3547488503eb318628a45",
+        "bytes": 6472
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+        "gitBlobSha1": "c4591a7ecbac3a1e516e5cae4c1bc952045991aa",
+        "sha256": "2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb",
+        "bytes": 960
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+        "gitBlobSha1": "cb684fe45eac8761d91e57ddc26358b4e45cb28d",
+        "sha256": "b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185",
+        "bytes": 968520
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+        "gitBlobSha1": "ab3b4734669ac1620e7ff63be5c0d7b849b9d0b9",
+        "sha256": "baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10",
+        "bytes": 2460
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/base.json",
+        "gitBlobSha1": "7d6714323d15deb2c47d7e7aa84b5ce05a242303",
+        "sha256": "72558700556d997a95e9281044e330eba9a472dda43642a9b5cc0483294d875f",
+        "bytes": 217157
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/en.json",
+        "gitBlobSha1": "06d1fbcd59e1af0a34b722306bea6c69dcfdcb6b",
+        "sha256": "5e60d1843351966a159cc409eb73e9abc7c7e375a3311c40d35843d70fee79fb",
+        "bytes": 364204
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+        "gitBlobSha1": "fe4cda20b329c9262d923a223c61b748bd7ab199",
+        "sha256": "16f30ad5bc7db02bbcce4623b108626f1a73d65660799891f23efd76dcaa333e",
+        "bytes": 227472
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/speech-worker.js",
+        "gitBlobSha1": "57c3e8a3467ef4ca2f83bfbd60f11e2a1271fc61",
+        "sha256": "80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b",
+        "bytes": 425256
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.104.woff2",
+        "gitBlobSha1": "b4bafaeb2c41b7c08f24ffb88bca768968e638e8",
+        "sha256": "2dd59d13b370a5ec217ca607d87b8aa4ab6719f53181daa54e9161e9b935b365",
+        "bytes": 15664
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.105.woff2",
+        "gitBlobSha1": "6549c49b057c004304665ba3bde12cb11b8d88ca",
+        "sha256": "a9d0277a278bcbc8b513de551f11de63f427fd358d2a40cf3a54d2d912bc7762",
+        "bytes": 17492
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.106.woff2",
+        "gitBlobSha1": "02b634c75772dc446abacf80c29f772d85f1f5d6",
+        "sha256": "98020cadd1d47eee9b600da8e32140db022c4ed5a0424fa97aa37f08e83b0531",
+        "bytes": 19736
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.107.woff2",
+        "gitBlobSha1": "4ad149de369f3afcfd18c4987f652883bb274f1c",
+        "sha256": "ff5e3fd95c34f9cc5384c22881c51a166627e47ce3942a62da3703e0e0d42984",
+        "bytes": 23848
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.108.woff2",
+        "gitBlobSha1": "af9860a48263575e4fb2e6bf8516666578eed392",
+        "sha256": "b861428b5a996d429fe7a73002426d127354f2f151a52d58faae6fe72689317b",
+        "bytes": 22740
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.109.woff2",
+        "gitBlobSha1": "52b23b5b5595bec7e682721f677169d12db3f221",
+        "sha256": "2805039b3fee063ed1ad5d08a54e061b4437cbeea99441f9fa5ee9f065a0dc50",
+        "bytes": 23644
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.110.woff2",
+        "gitBlobSha1": "da23b61736145f511090b0b77f6ae8c532b31298",
+        "sha256": "027d00a21469971fa7107a795f3f668ebaf6860330acdeec8c7377125db616b8",
+        "bytes": 24136
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.111.woff2",
+        "gitBlobSha1": "4a59b256848f591f38f20b51d169252585cab7bf",
+        "sha256": "b69b059cefe86011ae33af0f0914fb7416dac14959dbe0021ae7ff4b6d8c9a83",
+        "bytes": 24280
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.112.woff2",
+        "gitBlobSha1": "f6dcf7162d934e665c0af360877b5966237c91e0",
+        "sha256": "c262b0bafc548eb29cce6588c56c143a42e36629fc2c708e4b1f9403ab7e0ba2",
+        "bytes": 22900
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.113.woff2",
+        "gitBlobSha1": "772422b715d440e1e6d26757538af594fd246b84",
+        "sha256": "098447b7e259fb49893d5658607a747420324923aad03a7856fb48ca672aeba6",
+        "bytes": 24120
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.114.woff2",
+        "gitBlobSha1": "0a6499a3b03248cda6babeaecd62ccc1a7f76989",
+        "sha256": "fed8cac93890cf0df6f8e715e88119bae2bba997c2c87719687e89cb026436cc",
+        "bytes": 23328
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.115.woff2",
+        "gitBlobSha1": "efbf04855e76e2e9dfcef258179ce89ad9517d81",
+        "sha256": "5b972b2d82119a487f978854d350a4625f0c1ec0d2b6d8a542ec8db9b9bd5b1a",
+        "bytes": 22808
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.116.woff2",
+        "gitBlobSha1": "d2c6215dd1f11ace948facb6103130aaef304c0e",
+        "sha256": "5d20dde8a441380b91a8a4a4b622fde018fafd036ac4a380c666f680daa53908",
+        "bytes": 22904
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.117.woff2",
+        "gitBlobSha1": "6d879594435901f3ded443b605e80c0db282bc07",
+        "sha256": "23ac7e808a1780bbc7a87a870b4e5165b31728b7498187b8803dfcecb336e45e",
+        "bytes": 21256
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.118.woff2",
+        "gitBlobSha1": "c8be8e4c3e9088bcd3c2033cdd870507101aa11a",
+        "sha256": "850a17b0a3a93741cd363aef3d86aebe630835907ce191fba63f20bc2b789ed4",
+        "bytes": 19156
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.119.woff2",
+        "gitBlobSha1": "18386f00cf5be4d4896034a5e560654d4b332d8d",
+        "sha256": "4c2914a5f494334916e70fbdc379d9bd3522d6bce4a82c298a16a7433b1dfcf4",
+        "bytes": 15320
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.38.woff2",
+        "gitBlobSha1": "aa97fe4fb76fddc82a4f9fbf57c4abacb47e90e5",
+        "sha256": "3c2c8a3595ae565783734cdb435fa707c537e921d98c6c36134ff8f96f069d38",
+        "bytes": 19688
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.94.woff2",
+        "gitBlobSha1": "e6bdd44893761289e0443a55aca97a8412d1aab4",
+        "sha256": "6b7e73643df8e05a027a5d1bf11320b6095b19cc9aa6b2136484835f363a100a",
+        "bytes": 19372
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy2LscnU.woff2",
+        "gitBlobSha1": "3104f5d799d124973b1173fc6d60e11c3b537f95",
+        "sha256": "e1c889a6e7588ddcbea36e306b593d2098214028229fa3d82e0df6ec6469d1f3",
+        "bytes": 21304
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.114.woff2",
+        "gitBlobSha1": "7996357849bdc9cb765a5367b38bab29b0034e79",
+        "sha256": "974b9e3a8c6af71eda94748f1d30aa1a476200f68a94d2133ece6093e8ebe4cb",
+        "bytes": 28916
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.116.woff2",
+        "gitBlobSha1": "1aa187912632fad1619a7cdd8aeba0f84d30f4ca",
+        "sha256": "c0559c714ecb33c0c1eac4bdc6a3cb746fd538ef241d83a6ea2312e540c80574",
+        "bytes": 27804
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.117.woff2",
+        "gitBlobSha1": "84a3ffd5ad9f0ce2cf16b41b74504823f3e791da",
+        "sha256": "2078525d631677e14ff45f01f4be91a68a5d4e1a10b7c9207c0ba56c20e114ff",
+        "bytes": 25496
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.118.woff2",
+        "gitBlobSha1": "d34016ffeda7c683debfe8a37812c7ffc70c73d4",
+        "sha256": "0837e4f9faf19b125f741cc033c2242b19041a4fd24ebb67d2692b360cc40adf",
+        "bytes": 22288
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.119.woff2",
+        "gitBlobSha1": "30aa36a4aa8013373ecd5d4a83a557d12eb5da1d",
+        "sha256": "03d4149c6d78fe0710f328d1e1d44925ad1e4519faac203f7ce9cde299ab94a1",
+        "bytes": 15324
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVGAzr_E.woff2",
+        "gitBlobSha1": "2913e7dedcf5e1c9d348fc7420b6ce7f956fd147",
+        "sha256": "ac70cab6382745ce7b594399abe704f2e381e13b60917daa0bb8fb66162b6750",
+        "bytes": 20968
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.104.woff2",
+        "gitBlobSha1": "85af094ffb8b03f590110b27116b0567d1d3d3e9",
+        "sha256": "48f2975dcf6232f2800f0d1b4009a652393abb946db2cf4919118ea2a8827a23",
+        "bytes": 16108
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.105.woff2",
+        "gitBlobSha1": "315daa58304de6c13a62b31a04d796ec9afc38c2",
+        "sha256": "b7a42dba1fee0eb0b2d4883514cb0833a3492f57fdee3bccdcf388ce96292a8d",
+        "bytes": 18364
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.107.woff2",
+        "gitBlobSha1": "944e7a850755fcf061fe5ad1946bbd5c042b5488",
+        "sha256": "43b8d0a90360a27dbc7c14e84cd234b4a29bb9832d148aa7235ea9f405af6eb7",
+        "bytes": 24844
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.108.woff2",
+        "gitBlobSha1": "6a6c73e0cd046f4cdaa09f5d094ae5a9c2e55de6",
+        "sha256": "384be67e425089be22ab2d7b0aa146a6323ae03b3b200aab1c4a1511d81dbd68",
+        "bytes": 24200
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.111.woff2",
+        "gitBlobSha1": "3e3be5ce5f8e50ad344b605fc7366e1055ee46dc",
+        "sha256": "68db3c4109cc7f13117702b10594b72e5d58b62e673082b876b440c7f0633231",
+        "bytes": 26212
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.115.woff2",
+        "gitBlobSha1": "f25fbac3d3539e3c3e837b79f44ff40a17bbe468",
+        "sha256": "5c6665edab3748f58e3b88b5648f737c3d73b7219eb849debf9b57293c7eb6a1",
+        "bytes": 24064
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.116.woff2",
+        "gitBlobSha1": "949d2946c9e8618f469b89f432c248e52a79de6f",
+        "sha256": "4a7f3dcb2cc3aaaaf5921db31a884824fb4c64db5afbeca3f088dce048f534d4",
+        "bytes": 24292
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.117.woff2",
+        "gitBlobSha1": "672e738133d42524f6306d82a6714c98606cc94d",
+        "sha256": "5aaab50eeb5d981441adf9699ac04791fc628dc9ce7e2f4dc0df95eb62955b03",
+        "bytes": 22536
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.118.woff2",
+        "gitBlobSha1": "0875c82cb998efe1e40815f895faa5b07f8cb9be",
+        "sha256": "0fa5719f73236674c259de5b1c5e004376085b7c8cea74f0a5d7aed7372e4c9e",
+        "bytes": 20380
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.119.woff2",
+        "gitBlobSha1": "b635956661ccc81f7315d1129799962702209b53",
+        "sha256": "22b54ce7f9da4746ea4a8ecc6693a7f3d750d38761edaf05957e74c8b5488a06",
+        "bytes": 15192
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV2Azr_E.woff2",
+        "gitBlobSha1": "0dbd019bfee980ae0ef16058e0eeaad2fff136cd",
+        "sha256": "84a60324a3b8f916547358b0a0e07e80b5826f2890f0df4b29f744dda135230a",
+        "bytes": 21024
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/nanum-myeongjo.css",
+        "gitBlobSha1": "bf584df93c7fc59224d04536e3b7b1b0bd3ce786",
+        "sha256": "2adc8e3a93a6c54cfd800c51158737f3ca6bbcf7ad0f4145e5102864c9b06e2a",
+        "bytes": 161431
+      },
+      {
+        "path": "archive/vendor/nanum-myeongjo/OFL.txt",
+        "gitBlobSha1": "82d0775d4944f4838a651548cf52cf4652f87966",
+        "sha256": "a06fb4706bd70da776e78c0df4fc08e49f12e604668d1da26abd689661e2ba4d",
+        "bytes": 4457
+      },
+      {
+        "path": "archive/vendor/qrious/qrious.min.js",
+        "gitBlobSha1": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+        "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+        "bytes": 17579
+      },
+      {
+        "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+        "gitBlobSha1": "f25c84d3d8dd84f2987317c13f59a63aa20fd4f0",
+        "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+        "bytes": 311356
+      },
+      {
+        "path": "tests/fixtures/archive-m2s1-svg7-problem-ui.json",
+        "gitBlobSha1": "7557df94d518fe36dde9426ec928eb880747c07e",
+        "sha256": "2723900e7f2868a6cc034fd09b8faa449c7e04056732e713c7caccb9e433700f",
+        "bytes": 11980
+      },
+      {
+        "path": "tools/capture-m1s2-problem-surface.cjs",
+        "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+        "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+        "bytes": 10218
+      },
+      {
+        "path": "tools/capture-m2s1-svg7-problem-surface.cjs",
+        "gitBlobSha1": "31a72c9fddc140157adf15714cf1812cb52a2bf9",
+        "sha256": "e135c6d3de2c982a0d2a04f09e791f74b727d7b5431ceb5aa17c1c950518712f",
+        "bytes": 51447
+      },
+      {
+        "path": "tools/check-m2s1-svg7-problem-browser.cjs",
+        "gitBlobSha1": "027e8da7549a2c8b63d5dd913d3023dfb14f7589",
+        "sha256": "9ffb9952d031ac774bc59326e74d7e39774950078ee32d45aaed2c4674eb9613",
+        "bytes": 39798
+      },
+      {
+        "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+        "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+        "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+        "bytes": 56735
+      }
+    ],
+    "immutable": [
+      {
+        "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/independent-byte-equivalence-v1.json",
+        "gitBlobSha1": "a6c0daa99d012b5980c9911a0bdfecbd2a25a27d",
+        "sha256": "136fb3e586c1b6ac76d910ca74d630cebea534eb9b0bb66e17951a4039a718e5",
+        "bytes": 43820
+      },
+      {
+        "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+        "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+        "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+        "bytes": 74569
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2.svg",
+        "gitBlobSha1": "1ed914150e78821b483b64c3199b769c4b047a6e",
+        "sha256": "51b55f0c613e748e0603830aba7545e52c83191b9c8c4dc9d0ec7371a5feba9f",
+        "bytes": 3585
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2.svg",
+        "gitBlobSha1": "4b608d172c395890ddb98cdf2510ec09aa81653b",
+        "sha256": "c807820458c76f031f8e3931e4d604ec2d5d8083966a6b979f1e8ccb45390a82",
+        "bytes": 1715
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2.svg",
+        "gitBlobSha1": "7f6ebc1954127191b3bc1f15674d3d9ce7aa8dd4",
+        "sha256": "60bf21c0223580f9e3eb70649a1e33f0714e084e9e2bc0704007b9b41abd3d4c",
+        "bytes": 2802
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2.svg",
+        "gitBlobSha1": "7fea8a225505940091563772a0edec5f6ae5957f",
+        "sha256": "ba26f74e47f3e5026d767b35ac501f848ff970c327e3b8f964f6cd2044616fbe",
+        "bytes": 12000
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2.svg",
+        "gitBlobSha1": "44f4562ad4d8121bd42a90dd29e533f4ab7f2062",
+        "sha256": "ad1adb7fac2b8ca221a368128eb44b2d03f5a9f931c30b9db6b4ce00ff1e9943",
+        "bytes": 9906
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2.svg",
+        "gitBlobSha1": "b5313cdfe0eaefb4a1e1e66fd891a894dd1f4a13",
+        "sha256": "ada2f5277fbefe53a6c2430f9496e24726baceec5e1f4e3da5802408f53c701a",
+        "bytes": 3800
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2.svg",
+        "gitBlobSha1": "448ffe347b4b0eca2e6341a12feecd7c947e89c5",
+        "sha256": "725ba8aba41346b89141ef56fec498446d459724298c20ed7868cc4f3a1fdb79",
+        "bytes": 4833
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "3cbdb607dca83425e506413bd993205c06089be8",
+        "sha256": "9617fc74fc0a109307a0bef5dbf16a06577fd9a1a19139b89ecd892f2681f4cb",
+        "bytes": 44622
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "a7fc0cdc6da6bfd0adc32ab9349167aa7b20aa60",
+        "sha256": "ea388ffaf7d2476b6d8711a0441ea230c9ef48791aab424f334dbae25b9b7091",
+        "bytes": 43785
+      },
+      {
+        "commit": "13c39484af09ca5fc0606f1e219daf7412b80be3",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a4f1f4afd4883225ca50546b087753350e23f5e",
+        "sha256": "d76f1a3f1d461400d9b7d1a81f5fd8b2c42757bd4e907b40de3706e9d22a8292",
+        "bytes": 40746
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15.png",
+        "gitBlobSha1": "694cf60ffd6c1ba661ff2732b0c108ab8c307108",
+        "sha256": "fa4b5d271533f39c091189c7ccb00805d2c85cd339fcfe475fb3e76b5a81b272",
+        "bytes": 150607
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/s04.png",
+        "gitBlobSha1": "53f7bb58d6e8ecb1aa3e19fc0599326eeb6fc9b3",
+        "sha256": "3284ed0043ef60c20ebf57133649585175bc1e64b2f0fdac90e85adb318175dc",
+        "bytes": 138264
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "a2d48ee6c1414eb9b5e89ca5f6824ebe0368a4d2",
+        "sha256": "eb6f8d268dba2b23b8375d87bc61c48de9cf252912675dde20854af588f59506",
+        "bytes": 43798
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+        "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+        "bytes": 39003
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E037/four-slot.json",
+        "gitBlobSha1": "2fbc413721fad223d411ab3702d792e4c3440f94",
+        "sha256": "9d2f4000a1ab11ad3d373685aa429b953bcfe93b9b5f27b44286f4ab8d25be32",
+        "bytes": 57108
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E037/independent.json",
+        "gitBlobSha1": "99cf69665015f2bbf71d8cf92711e83617af8d27",
+        "sha256": "1d88b66b8d8aae7d849cfc660b5e2e0a9bcccb08898bcebb346bb7dde1bda000",
+        "bytes": 32631
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E037/review.json",
+        "gitBlobSha1": "6da22db53e0fd4452b87bf4e6ccaac6fe7ba6fb6",
+        "sha256": "079bc75bfb34b55fb9cbcd0308fafa47e4a5d1a492aec8d54b208a6af60898c3",
+        "bytes": 157867
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E037/root-review.json",
+        "gitBlobSha1": "6f23a8ab67f13b655dac12362f99ab8b0703305d",
+        "sha256": "78edca037467abb03edf5d7940ae77e3028e2e1fe3f6940a0694bebc9791f8fb",
+        "bytes": 169291
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E045/four-slot.json",
+        "gitBlobSha1": "a572072a150552b6c6b83bb55d2720dddd97f452",
+        "sha256": "16457a8e7e41d13fa3f6ab562e0232be62943ba26cecd9335f26c3b055c6b4d8",
+        "bytes": 59653
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E045/independent.json",
+        "gitBlobSha1": "e929d8821fd7ebb3b7d76ebcbb407e22887918af",
+        "sha256": "10169d69bf5308ee8a7ede05880058b66cb12befd6f3eeebe865cefd7507d77e",
+        "bytes": 34096
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E045/review.json",
+        "gitBlobSha1": "ddbe8fc1c86eecccc7073f691a0f0d060e8caca3",
+        "sha256": "81646a429e264ad1f26160acd86857515a908c47e71c705fa9bc86066ff209bd",
+        "bytes": 147814
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E045/root-review.json",
+        "gitBlobSha1": "f7eaa41be1f4cef71e7504e6b5d3e65a88113732",
+        "sha256": "ffe81646d792814ca2ea94278a39fb22c98b2e303e1b78007d922e35ac2522e4",
+        "bytes": 139908
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E048/four-slot.json",
+        "gitBlobSha1": "c058edfa20bdf7e26386c39852cea9e812815f62",
+        "sha256": "152feddb4cca6ed500b1f51525c6f7bf5ce0b7075fc5a4b74bf1aa7ba9b38f75",
+        "bytes": 61795
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E048/independent.json",
+        "gitBlobSha1": "12a8cf11f5131aacf48413407d004134a8604864",
+        "sha256": "4e99d56cd5549aaeeeafc67bc7b0d1136c7d48fc65e8b383514671b5ef13e08e",
+        "bytes": 38702
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E048/review.json",
+        "gitBlobSha1": "aac84c7643ab14b80b9e5cd3147d8559cc51d41a",
+        "sha256": "bc0eb8047bbf4788c21a800f068c839d3e4f047ce6b26e1d63f40228489c8dcd",
+        "bytes": 141467
+      },
+      {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E048/root-review.json",
+        "gitBlobSha1": "f37dcdf983871888ba4b5c4f7fe3043effe552ad",
+        "sha256": "190707e87a6573808fadc28282abfc2aac6b6cad6166049ed43d19e9d2d888ab",
+        "bytes": 92524
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/artifact-receipt.json",
+        "gitBlobSha1": "f708d724013a73990a5d8b21003c013fb3e4626b",
+        "sha256": "ceaef11fd110023b142e60c7a0947e4f95e0a3338abdf2f507ecc5cb0f567fec",
+        "bytes": 1206
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/capture-transport-manifest.json",
+        "gitBlobSha1": "b9609b1538593a119a4ef51781f5d837fa984d1f",
+        "sha256": "8efd39886dcce55b70b1259cfce0c4b8f04776cf6404796d814d2046741a360b",
+        "bytes": 8521
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E037-Q15-desktop-tile-01.png",
+        "gitBlobSha1": "d29a745adbcc4f9d4757c616066b571b8bf1d376",
+        "sha256": "c90a802923f038733d4aa97f14e02f50ea0d3e50308b1888d985a4f411aa233a",
+        "bytes": 50526
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E037-Q15-mobile-tile-01.png",
+        "gitBlobSha1": "129de53874bc366ca6edd7d38885363a4c342b62",
+        "sha256": "e2fa4affd2543ca3058bbda316f97a0ee86ff78927070dec5b7b6955d07f5206",
+        "bytes": 35289
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E037-Q3-desktop-tile-01.png",
+        "gitBlobSha1": "2730eaf8657ea120a0f8868b7daa896adbbf186e",
+        "sha256": "aac21a97166ebe69b6acd513b5ca429fd54e79ac6534f51dab3f686dd6f9bded",
+        "bytes": 36757
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E037-Q3-mobile-tile-01.png",
+        "gitBlobSha1": "dfc746502e3eec1ecd7b263d1ba3a42c13a62c86",
+        "sha256": "7a411b8b3b53f26154a60cbe2629d6fbbaabe237c67865941bee1a22282ea2e8",
+        "bytes": 28592
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E045-Q15-desktop-tile-01.png",
+        "gitBlobSha1": "d34ee036668130073edcfe3f7327e28af692a407",
+        "sha256": "7c977efa2b997f1300aa1bbd00d777653a0c174bec0ba99b33e0c8033c97f2f7",
+        "bytes": 40071
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E045-Q15-mobile-tile-01.png",
+        "gitBlobSha1": "d4bd00aacad4361bbfb03d12cf64f83eaad1c210",
+        "sha256": "6cbdda3f54ee8ec868fc64cc680e66f1bb6f15acc19e95f00134ce67cf790a96",
+        "bytes": 26079
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E045-Q24-desktop-tile-01.png",
+        "gitBlobSha1": "3b8d11f2832b9d34ee5ca8ec206140e0daa781f9",
+        "sha256": "549bc45c2aaf2123700bdb1a1ace16afbee47b4d008923aa18b4efe537ba4b0f",
+        "bytes": 69036
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E045-Q24-desktop-tile-02.png",
+        "gitBlobSha1": "4c50513e49fe15df2175f5d50a4258def67a9648",
+        "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+        "bytes": 652
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E045-Q24-mobile-tile-01.png",
+        "gitBlobSha1": "2357e4de5ddd6247f8c0a41f6668725cd796fd32",
+        "sha256": "54b5c8578028d2654afcc5290f76934514d7ae8e8cdb1aff2f30b027587499dd",
+        "bytes": 56710
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q11-desktop-tile-01.png",
+        "gitBlobSha1": "bc50074d96bb6a036834585a0b301b88f7e7bee8",
+        "sha256": "7d3396f64e5a953a1e020fcd667b8f2fadf84b94e457a7848573f1980983fcc7",
+        "bytes": 32775
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q11-mobile-tile-01.png",
+        "gitBlobSha1": "6dc8fedd29d50dd22c5f6a87cc79b617085fe5b3",
+        "sha256": "b3e952e7bdebc6db6c4a96b6263cdb9a537bd586715cefea30a8e14d5a8ceef5",
+        "bytes": 25221
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q13-desktop-tile-01.png",
+        "gitBlobSha1": "98ed3fdf796f8508b27d7f302348104720ca495d",
+        "sha256": "967f3071f6f730c11bd2a3d735f9fe6d00fec5b7ab97607f69d4f6f859c84b9b",
+        "bytes": 16786
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q13-mobile-tile-01.png",
+        "gitBlobSha1": "2c7bbcc69038f7ad8a7f212ebdec59c2277e9232",
+        "sha256": "d7b40cd8dd9123214916894e9c38a566bda554f231763a73381372ff39af5634",
+        "bytes": 15263
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q24-desktop-tile-01.png",
+        "gitBlobSha1": "0c7f011fc8c7540ffd227f3d86141b600472ce71",
+        "sha256": "697295115a924f136ebd948a00281c440923285b56e8fbbd3f80549208021187",
+        "bytes": 75512
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q24-desktop-tile-02.png",
+        "gitBlobSha1": "4c50513e49fe15df2175f5d50a4258def67a9648",
+        "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+        "bytes": 652
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/E048-Q24-mobile-tile-01.png",
+        "gitBlobSha1": "c348deeff497581718e4a56ffaffeefd199d85b2",
+        "sha256": "0a869edb4d6385c1c78a392e9803a389c3f518564912843462d150acbf0da426",
+        "bytes": 58842
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/root-byte-equivalence.json",
+        "gitBlobSha1": "476f95d1cafda399a7c3fb87df94c5bbffde7bbb",
+        "sha256": "77c1153ad7bf567a31046200541ded10781bd379aa259d677a174c3127548a7c",
+        "bytes": 19191
+      },
+      {
+        "commit": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-proof.json",
+        "gitBlobSha1": "c18655b38cb8adef217781e6b6bbf65ba8570758",
+        "sha256": "576c49a84a24ea53412817d8ab19868b59b8b4ac5f9775bc93e3619e747e4e03",
+        "bytes": 204380
+      },
+      {
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive-work/m2s1-4slot-current-20261115/exams/E037.4slot.json",
+        "gitBlobSha1": "a592333a39eebb0b964e8121fb66b66addd8cba2",
+        "sha256": "ba1b3bce30da0e3db680216eda52723d764d794074af9ef929a3bd3e9e968a8a",
+        "bytes": 57761
+      },
+      {
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive-work/m2s1-4slot-current-20261115/independent-review.json",
+        "gitBlobSha1": "b2575f04561e8c73710d3d1583f8edc6585ec88f",
+        "sha256": "cee36d67cc324d0f5bbda83db9f084917cfeeee2f42a9be20f59d55a44ed8e02",
+        "bytes": 12375
+      },
+      {
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive-work/m2s1-4slot-current-20261115/proposal.json",
+        "gitBlobSha1": "1c8ae8385440f1cc900c024bec49526782d563fe",
+        "sha256": "805cd541a2fa1b57058773f3eeca657467b90bd41ffc2b1d5fc7116c54805b28",
+        "bytes": 36245
+      },
+      {
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png",
+        "gitBlobSha1": "6eca62e1a8c031e37e72461ed762b2079872b101",
+        "sha256": "fb80fd524869c4a608c7e631d0b77c7e1f08ff2e971d2b9389eb6fdb06c3c4e9",
+        "bytes": 2581
+      },
+      {
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png",
+        "gitBlobSha1": "97321984b3f94c20f125b16d4b276125a4750bc1",
+        "sha256": "208edb0a257805a167a869a24d6a20bcd94f3c1603c9271618485caf3013a675",
+        "bytes": 1119
+      },
+      {
+        "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "61aa989f31c9db4467573f3246aedf30492d8bd7",
+        "sha256": "e84499cd71a66aa5db5ba3836f053392f26852cb3d194a57150e5858477ec5e2",
+        "bytes": 41248
+      },
+      {
+        "commit": "34b9e6ab851d78f90bba4975416cbeb5ee8817e3",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json",
+        "gitBlobSha1": "c0f84ef234a430067e79e563712bb2c95b0ae3a0",
+        "sha256": "2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e",
+        "bytes": 13196
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "apmath/css/student-navigation.css",
+        "gitBlobSha1": "afaddbc2f19f8c9507d592dc610adac9adce6abf",
+        "sha256": "845ec493b33bb82b93accc6036850595f3870ddcb0594055b741c5799bf5ad55",
+        "bytes": 4432
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "apmath/js/student-navigation.js",
+        "gitBlobSha1": "0530727c087b526cb10ad9a76f04e03c9ecbefcf",
+        "sha256": "05ea337bc52311fb8acd13ff6fdd3a9d437cb28594a69696f5da29d47ecebe95",
+        "bytes": 7463
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/answer-render-executor.js",
+        "gitBlobSha1": "7d5798d9c542174ff4730b06243dea9d52403f25",
+        "sha256": "3327b441fffad769f80440e9f71c929d631a500376c7062e95ab234ce8dacc47",
+        "bytes": 3320
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive-asset-base.js",
+        "gitBlobSha1": "51bb78820b2356911551bde45485070b22a924fa",
+        "sha256": "bca6f850bcfbe0d5cc032faff5b5aedd80f4bb98d42dbb99fd2de655438432d6",
+        "bytes": 13711
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-output-contract.js",
+        "gitBlobSha1": "c8c6c9144444d2b997fd259b6578bd06a2e08459",
+        "sha256": "89aad418459a73bdbbe7d8a3834f39fda8c8ebf9788abcf551ec846199197976",
+        "bytes": 9035
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-output.js",
+        "gitBlobSha1": "c10a9e36b40ae2ab0022afa1e2d2fbc0bd4d2f03",
+        "sha256": "7110c184f40ca77a202fd33a4af2e8645734027f89e27cbdb58630c47f149a2f",
+        "bytes": 22873
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-pdf-readiness.js",
+        "gitBlobSha1": "7ec2488d834ea5656e6dab78a9a9609ad1733951",
+        "sha256": "d3843aa30001883bb6dd9076398075c9b3494cbbea63dd6c1d226a46521829c1",
+        "bytes": 7024
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-preview-mobile.css",
+        "gitBlobSha1": "dd63e6a8a0abf39ed38a4dad94d842ea92d8b071",
+        "sha256": "1a32df12641e6acd829ae1c434fc9745693e1a0febd2d2eaa790c2180f6eba0c",
+        "bytes": 14214
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-reader-controls.css",
+        "gitBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+        "sha256": "24631292b2c7a8831fd6cb01de7eb4662d2c69d3c6542d380a5abaa0c43bafe3",
+        "bytes": 3687
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-reader-controls.js",
+        "gitBlobSha1": "0544768b1d44dbe7eb62bef67aef2aae369182a7",
+        "sha256": "48c2f35da451d882bc98c1ce41f615b7b304f52da51d716a1912089c47066392",
+        "bytes": 9241
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-review.css",
+        "gitBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+        "bytes": 476
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/archive2-review.js",
+        "gitBlobSha1": "ffaadeababca6797270f1bae6482ed1a4d0a9949",
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce",
+        "bytes": 407
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q17-problem-visual-v2.svg",
+        "gitBlobSha1": "bdeb894ead56dbfa6ed256e62f2882839db10408",
+        "sha256": "f329257bda65fa8e7ace82e6f35fc6c7fd24000bdd7d91336043fc92f31cc397",
+        "bytes": 2504
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q20-problem-visual-v2.svg",
+        "gitBlobSha1": "55cc6ce6b54a69ac55ff6538874ed566905d8033",
+        "sha256": "1a3a0f35ee8b50ff834e9028df58a7786136e48b96d2432582cf039f8bcac817",
+        "bytes": 3010
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+        "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+        "bytes": 3555
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+        "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+        "bytes": 12366
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+        "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+        "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+        "bytes": 10634
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q11-problem-visual-v2.svg",
+        "gitBlobSha1": "f621b1e3a44b486594dc3a310c82400251b4696f",
+        "sha256": "a6b567d9f894d69d0759234760b7fe020ac2460c404f0cb12d7b780ebd98306f",
+        "bytes": 1726
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q12-problem-visual-v2.svg",
+        "gitBlobSha1": "e521f28206f35a1c60e6be034f4605b93385999f",
+        "sha256": "abcd13d02e5612a201a5e06379b66f347c67ed97ba71ee764e4d787be2ea1447",
+        "bytes": 4181
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
+        "gitBlobSha1": "be012bda6bcfbca69796a3d5fafb74c628c95853",
+        "sha256": "6801338afc1647675a07f75ba0c0f88e52b71861aacf540ef4a5a51cc1be3bf1",
+        "bytes": 2176
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q14-problem-visual-v2.svg",
+        "gitBlobSha1": "9d2a68c2ff79e253d35f73010015fdeeb5844d26",
+        "sha256": "f7be092e914c37714c07dcab45a868b921cd230576febf2e79e78674d0df5789",
+        "bytes": 2614
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
+        "gitBlobSha1": "4c7bb7983c6348295590f52961ee388ada88cd9e",
+        "sha256": "90c46b378d18869ce319241513c2c732d6b930d4081de4671902bb3a126f6dc3",
+        "bytes": 2181
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q17-problem-visual-v2.svg",
+        "gitBlobSha1": "1edb263cb282e97c929d3beb121aacc8d0e1f342",
+        "sha256": "f40da76ce3db583b529d39d5648af3efb45556a6da6d3b75ce72ae56347e0da9",
+        "bytes": 3119
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q18-problem-visual-v2.svg",
+        "gitBlobSha1": "f7deb7d9dc5d4c2559af13ee45c3e95b9db66db4",
+        "sha256": "c33a3a5e470aff78a0faa13d0df6862148b7734563ec58b70997a35a71c1e4b3",
+        "bytes": 2601
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q2-problem-visual-v2.svg",
+        "gitBlobSha1": "e36f10255f6e7516d003ffc69d31666eab2181af",
+        "sha256": "b74b9b709acbea9a0a248d5197b41864f321e14c4e8fc779c1a1193bfb312624",
+        "bytes": 1921
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q20-problem-visual-v2.svg",
+        "gitBlobSha1": "eea57fda95cf8bb2a33774df7ae317b5e18000e3",
+        "sha256": "d5bfe63a06b6bc1a7461ab8f6960070da5307e5e101ddcc0b64e71676ace247d",
+        "bytes": 2200
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q21-problem-visual-v2.svg",
+        "gitBlobSha1": "efe28c279e4cc70f2863e66a56fe524708ef00c6",
+        "sha256": "58ddc01aacdf752e649cc574955c71b68ef068c6fc7f8b0afc97a14c4ca3a1f3",
+        "bytes": 2773
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q22-problem-visual-v2.svg",
+        "gitBlobSha1": "3d816b57bd17dd8197e24f4194e457f4eaf266c0",
+        "sha256": "8d9a69b0df6f6bc9546b7f6761fb8b670015999aceb976fbf32f3017c6eaff24",
+        "bytes": 3346
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q24-problem-visual-v2.svg",
+        "gitBlobSha1": "2f12ad0d0533dfe97b56278859210639911d557e",
+        "sha256": "9db1b3edba1ca9c032e71ef4b959e803a7bd1772385b1ee1e05c827567e1097e",
+        "bytes": 2205
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q25-problem-visual-v2.svg",
+        "gitBlobSha1": "bab052ad30a06900e35a93d3423385014cb0dad0",
+        "sha256": "52e9c80b6ee8e63d170fa727e8f74463bf234982bef551b61fd341ba71362a96",
+        "bytes": 5743
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/concept_map.js",
+        "gitBlobSha1": "ec34be175c586437acff1c9e0b9caf9b7fbef349",
+        "sha256": "7972e247e5b1379bd837f720a6607bc60d48e42a9d987a5c6e7a342f6d5cefe9",
+        "bytes": 8232
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/css/ap-table.css",
+        "gitBlobSha1": "4c1645171537c57cceef4b537951d3226adb37e1",
+        "sha256": "9596269fedc5dde8870fa7e039a5917352050fd28a9b435944a73f52d5950e47",
+        "bytes": 4776
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/css/js-archive-theme-override.css",
+        "gitBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+        "sha256": "4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2",
+        "bytes": 15557
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/data/question_identity_map.json",
+        "gitBlobSha1": "24c9016c5910d188c5665f2f837d47dbd6ae3e77",
+        "sha256": "ec6938bd2ad20bad6242fb24f2be84c563ae047abd0e01bffec32e48e9d454f5",
+        "bytes": 27938431
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "f705bba21cd6eaad71f9317cd55ee4ce85e187c7",
+        "sha256": "d31132c09f3d18ba31e22ff77d19a41f496dc6f528e62b8692776f404625bbce",
+        "bytes": 72167163
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/data/svg-accessibility-index.js",
+        "gitBlobSha1": "336b40d677ec4e44e179046f22fa777566f15e42",
+        "sha256": "24cfc360122f8a8ce7292bed979076dbdfa8153b93b27b78618e3d41870c79ff",
+        "bytes": 5556055
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/engine.html",
+        "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+        "sha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+        "bytes": 201060
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/equal-slot-engine.css",
+        "gitBlobSha1": "7b3cf785367b628a05bdf08f634ecd86f2c7c4eb",
+        "sha256": "a31fe14fbd28a306ee2f052dc9b0dc51c4fd54c850aa6baf1274974993a7c261",
+        "bytes": 1828
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/equal-slot-engine.js",
+        "gitBlobSha1": "c826512ff61d4969c7ce45ba8f4ee002286bcf10",
+        "sha256": "4979ccfd129470e076965bf93bb86e089d53c4ea875a17b011760886f967177a",
+        "bytes": 20518
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/exam-render-executor.js",
+        "gitBlobSha1": "583a72ae2c960d485cdcd1c1aec1329f204067b6",
+        "sha256": "e4ac35518351fd89d16222df4221e64a32121213f5b99c831407a61d90b573d7",
+        "bytes": 24896
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+        "bytes": 44656
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/js/ap-table-engine.js",
+        "gitBlobSha1": "d5c80eb60683b74a427f48b3ef1030d9d5f0cec6",
+        "sha256": "47b84007d59e289655004b129e3a713ae3dae1247393efc5e28f5a152951148c",
+        "bytes": 29907
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/layout-authority.js",
+        "gitBlobSha1": "d7b75dc389c9ec8a010243d8e18e893482fa4185",
+        "sha256": "797c7ea7541a886dc3a6098ba23791fe4a7861de6f1d14d412e515605a5c3c73",
+        "bytes": 86382
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/layout-materializer.js",
+        "gitBlobSha1": "8ee08f4a5111ac8ac66a8aba1c54a5bb8cecdc90",
+        "sha256": "e77bfda088c4500f5231bfd860f322c26c251a56c2ea0c27cdd6873b4235aaad",
+        "bytes": 22711
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/mathjax_render_loop.js",
+        "gitBlobSha1": "72e04091383ed119aa6e4d3dd262e8c885aa4a8c",
+        "sha256": "384d3ac3e8871a4d81cc03ca2a74e046c58b18de957302d09c60f18df2631053",
+        "bytes": 3546
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/native_print.js",
+        "gitBlobSha1": "3ee0c4cc26e40239fac3db5c8807a47f2dce82ab",
+        "sha256": "ff79950e52285419d9b88ea4c5ef3bdbbd2acb564bce851c3542f7b53aa48072",
+        "bytes": 18120
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/print_image_optimizer.js",
+        "gitBlobSha1": "da8d3ea82fcfde59511630982d319b6edde5c368",
+        "sha256": "e56743edbe629b45bb4b5cc3b81d048a68c1518b56c87b71111030b46eec03ed",
+        "bytes": 7810
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/print-contract.js",
+        "gitBlobSha1": "00a423d6005fde16173c18969d0df2f934eb1f1d",
+        "sha256": "e40182bdbb423f4d72a7664f5b597d4c88a58ee5e5851fb6dca2d372922d6ad1",
+        "bytes": 27160
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/print-runtime.js",
+        "gitBlobSha1": "e74bdfc75b6fe4c0d5aa23c70849586993bc3739",
+        "sha256": "9ef9af4073c7f9685c74060ca81c9116cf7ed9a133e6973ac099da892a9f125b",
+        "bytes": 4086
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/question-image-readiness.js",
+        "gitBlobSha1": "4b3d1a8b309aa720db59ef33d481881fa825fcad",
+        "sha256": "6742a03a0a9fd3733a5dfdc7aa676c9aea52992dc45ae50c324e346964baf400",
+        "bytes": 9995
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/question-meta.js",
+        "gitBlobSha1": "e685586e39047c7d68bf1dba13d928611a53caa2",
+        "sha256": "b00ed61b6ff3e1ec69827d43cb634d9091c4d643bee352ede5dcb41154f247f6",
+        "bytes": 27308
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/render-authority.js",
+        "gitBlobSha1": "399e98832bfe7ccdc453dedf5d41bfbfd61b7a47",
+        "sha256": "0bc269bba107c2ef13c2af6669b6bbd2c16634a3c0981a5882d2323792e9b951",
+        "bytes": 28141
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/render-feedback.js",
+        "gitBlobSha1": "d1dd28351e42c887269744fa127f5979b81f213c",
+        "sha256": "a55be90c452de08090ba648c1e8150f6fdecbfc9e10a9bd2e1ed59ccad727052",
+        "bytes": 7419
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/render-state-normalizer.js",
+        "gitBlobSha1": "c1112b6b4a8b90a3deb5ae876f484aa3e9a2989c",
+        "sha256": "949d119d4895a7a096ffba7ed5163bb2ca3691b9019b714a2349df04733d81f7",
+        "bytes": 7168
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/review-preview-bridge.js",
+        "gitBlobSha1": "77e5be38f9e4a2ad280108d7a697e9adb6ce2c93",
+        "sha256": "cb648c3f3ad29300e8ee5b2e8dff8196b42df9ed1b7bcdd7842ca16f7adf62f8",
+        "bytes": 20086
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/screen-runtime-adapter.js",
+        "gitBlobSha1": "3d8f3159934c99637c4df893649adbc331065d96",
+        "sha256": "2834bd3d0f3b40264921e15a85840df3d2374c7fcc6158844ce12883fb7cdd93",
+        "bytes": 52980
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/screen-runtime.js",
+        "gitBlobSha1": "085b48bee4a35f8f065f1808e1c0f8918c23ec74",
+        "sha256": "69ebf42311b2035c106bbe033bb5e145893b2dafb96e003775c7a791dbc2e850",
+        "bytes": 20210
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/side-effect-ledger.js",
+        "gitBlobSha1": "cbafe31d265b473738c68539223e774592c6c2d5",
+        "sha256": "00cb757605d329bad73e5ff53c1c3ee71c2ceb54083661303a2a440c6e7cc9ff",
+        "bytes": 2816
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/snapshot-contract.js",
+        "gitBlobSha1": "fc107a97f2c29d6d42e8f79371a40f7baaef4fec",
+        "sha256": "b3aba93b43c81980fec9ef336aa5c33b6f38e628635a344b8637293e7b9a1cc1",
+        "bytes": 5845
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/solution-render-executor.js",
+        "gitBlobSha1": "f2036816290173c45dc656e0df360ac30483a8cd",
+        "sha256": "3ab2a681ac54edeffebd2d9fc0d14ce28ff22a58a368448d7674130e0ae0ccf7",
+        "bytes": 41090
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/student-svg-refresh.js",
+        "gitBlobSha1": "23c1727a967b7cc1de4ff9e5beda37cd03c8c307",
+        "sha256": "3375d3d722cc5831f8d4412c2c4dcf3a92b50bd1e8591918ba148cb573d62b6f",
+        "bytes": 6585
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/svg-accessibility.js",
+        "gitBlobSha1": "f8ad8adf08f3051a7cac241b54806209471cca63",
+        "sha256": "a2d75ee1c5b44ad70d74bf147464ad6af8ded3d56308ce25d7e0dce571b32e81",
+        "bytes": 6746
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2",
+        "gitBlobSha1": "48f9ef1a2f2f544ce1614fadebccc4335fb2de95",
+        "sha256": "79403a2023f44e801e2dbe9b50f2263500aad6750677b6ef2996ea3251a5ce95",
+        "bytes": 5100
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/html2canvas/html2canvas.min.js",
+        "gitBlobSha1": "aed6bfd70defa322824e5cba11b3ad5d6061ee28",
+        "sha256": "e87e550794322e574a1fda0c1549a3c70dae5a93d9113417a429016838eab8cb",
+        "bytes": 198689
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+        "gitBlobSha1": "63ed17c42a35fe234368fed5731760cc871d5825",
+        "sha256": "4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d",
+        "bytes": 980
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+        "gitBlobSha1": "734f41d2c3636dfa70140d350611d39dbe44ea15",
+        "sha256": "fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133",
+        "bytes": 164864
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+        "gitBlobSha1": "ba96f1971613e0e721e4fbf1b5127c7250b6db68",
+        "sha256": "07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83",
+        "bytes": 2560
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-so.woff2",
+        "gitBlobSha1": "3b99ab827a175bb7be9a3d039db150df8733e772",
+        "sha256": "0e9f0e5baa090d44c728e2ddaa39b4c465ff15d349e3547488503eb318628a45",
+        "bytes": 6472
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+        "gitBlobSha1": "c4591a7ecbac3a1e516e5cae4c1bc952045991aa",
+        "sha256": "2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb",
+        "bytes": 960
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+        "gitBlobSha1": "cb684fe45eac8761d91e57ddc26358b4e45cb28d",
+        "sha256": "b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185",
+        "bytes": 968520
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+        "gitBlobSha1": "ab3b4734669ac1620e7ff63be5c0d7b849b9d0b9",
+        "sha256": "baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10",
+        "bytes": 2460
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax/sre/mathmaps/base.json",
+        "gitBlobSha1": "7d6714323d15deb2c47d7e7aa84b5ce05a242303",
+        "sha256": "72558700556d997a95e9281044e330eba9a472dda43642a9b5cc0483294d875f",
+        "bytes": 217157
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax/sre/mathmaps/en.json",
+        "gitBlobSha1": "06d1fbcd59e1af0a34b722306bea6c69dcfdcb6b",
+        "sha256": "5e60d1843351966a159cc409eb73e9abc7c7e375a3311c40d35843d70fee79fb",
+        "bytes": 364204
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+        "gitBlobSha1": "fe4cda20b329c9262d923a223c61b748bd7ab199",
+        "sha256": "16f30ad5bc7db02bbcce4623b108626f1a73d65660799891f23efd76dcaa333e",
+        "bytes": 227472
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/mathjax/sre/speech-worker.js",
+        "gitBlobSha1": "57c3e8a3467ef4ca2f83bfbd60f11e2a1271fc61",
+        "sha256": "80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b",
+        "bytes": 425256
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.103.woff2",
+        "gitBlobSha1": "65856aa708381159da53fc28096a618c2ab5e805",
+        "sha256": "2dc5eb10cbca716b87fd82f5ca68a040427c4ba4fdf86819acfd0c311e340754",
+        "bytes": 16820
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.104.woff2",
+        "gitBlobSha1": "b4bafaeb2c41b7c08f24ffb88bca768968e638e8",
+        "sha256": "2dd59d13b370a5ec217ca607d87b8aa4ab6719f53181daa54e9161e9b935b365",
+        "bytes": 15664
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.105.woff2",
+        "gitBlobSha1": "6549c49b057c004304665ba3bde12cb11b8d88ca",
+        "sha256": "a9d0277a278bcbc8b513de551f11de63f427fd358d2a40cf3a54d2d912bc7762",
+        "bytes": 17492
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.106.woff2",
+        "gitBlobSha1": "02b634c75772dc446abacf80c29f772d85f1f5d6",
+        "sha256": "98020cadd1d47eee9b600da8e32140db022c4ed5a0424fa97aa37f08e83b0531",
+        "bytes": 19736
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.107.woff2",
+        "gitBlobSha1": "4ad149de369f3afcfd18c4987f652883bb274f1c",
+        "sha256": "ff5e3fd95c34f9cc5384c22881c51a166627e47ce3942a62da3703e0e0d42984",
+        "bytes": 23848
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.108.woff2",
+        "gitBlobSha1": "af9860a48263575e4fb2e6bf8516666578eed392",
+        "sha256": "b861428b5a996d429fe7a73002426d127354f2f151a52d58faae6fe72689317b",
+        "bytes": 22740
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.109.woff2",
+        "gitBlobSha1": "52b23b5b5595bec7e682721f677169d12db3f221",
+        "sha256": "2805039b3fee063ed1ad5d08a54e061b4437cbeea99441f9fa5ee9f065a0dc50",
+        "bytes": 23644
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.110.woff2",
+        "gitBlobSha1": "da23b61736145f511090b0b77f6ae8c532b31298",
+        "sha256": "027d00a21469971fa7107a795f3f668ebaf6860330acdeec8c7377125db616b8",
+        "bytes": 24136
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.111.woff2",
+        "gitBlobSha1": "4a59b256848f591f38f20b51d169252585cab7bf",
+        "sha256": "b69b059cefe86011ae33af0f0914fb7416dac14959dbe0021ae7ff4b6d8c9a83",
+        "bytes": 24280
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.112.woff2",
+        "gitBlobSha1": "f6dcf7162d934e665c0af360877b5966237c91e0",
+        "sha256": "c262b0bafc548eb29cce6588c56c143a42e36629fc2c708e4b1f9403ab7e0ba2",
+        "bytes": 22900
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.113.woff2",
+        "gitBlobSha1": "772422b715d440e1e6d26757538af594fd246b84",
+        "sha256": "098447b7e259fb49893d5658607a747420324923aad03a7856fb48ca672aeba6",
+        "bytes": 24120
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.114.woff2",
+        "gitBlobSha1": "0a6499a3b03248cda6babeaecd62ccc1a7f76989",
+        "sha256": "fed8cac93890cf0df6f8e715e88119bae2bba997c2c87719687e89cb026436cc",
+        "bytes": 23328
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.115.woff2",
+        "gitBlobSha1": "efbf04855e76e2e9dfcef258179ce89ad9517d81",
+        "sha256": "5b972b2d82119a487f978854d350a4625f0c1ec0d2b6d8a542ec8db9b9bd5b1a",
+        "bytes": 22808
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.116.woff2",
+        "gitBlobSha1": "d2c6215dd1f11ace948facb6103130aaef304c0e",
+        "sha256": "5d20dde8a441380b91a8a4a4b622fde018fafd036ac4a380c666f680daa53908",
+        "bytes": 22904
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.117.woff2",
+        "gitBlobSha1": "6d879594435901f3ded443b605e80c0db282bc07",
+        "sha256": "23ac7e808a1780bbc7a87a870b4e5165b31728b7498187b8803dfcecb336e45e",
+        "bytes": 21256
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.118.woff2",
+        "gitBlobSha1": "c8be8e4c3e9088bcd3c2033cdd870507101aa11a",
+        "sha256": "850a17b0a3a93741cd363aef3d86aebe630835907ce191fba63f20bc2b789ed4",
+        "bytes": 19156
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.119.woff2",
+        "gitBlobSha1": "18386f00cf5be4d4896034a5e560654d4b332d8d",
+        "sha256": "4c2914a5f494334916e70fbdc379d9bd3522d6bce4a82c298a16a7433b1dfcf4",
+        "bytes": 15320
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.38.woff2",
+        "gitBlobSha1": "aa97fe4fb76fddc82a4f9fbf57c4abacb47e90e5",
+        "sha256": "3c2c8a3595ae565783734cdb435fa707c537e921d98c6c36134ff8f96f069d38",
+        "bytes": 19688
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.94.woff2",
+        "gitBlobSha1": "e6bdd44893761289e0443a55aca97a8412d1aab4",
+        "sha256": "6b7e73643df8e05a027a5d1bf11320b6095b19cc9aa6b2136484835f363a100a",
+        "bytes": 19372
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.98.woff2",
+        "gitBlobSha1": "2498a1ce9304c3853e6809fd341123663a3fd732",
+        "sha256": "88a7a240566b8ca39cf86d6122ef9efe3cbbedf3fc4854dc9993b97c302aae43",
+        "bytes": 11692
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy2LscnU.woff2",
+        "gitBlobSha1": "3104f5d799d124973b1173fc6d60e11c3b537f95",
+        "sha256": "e1c889a6e7588ddcbea36e306b593d2098214028229fa3d82e0df6ec6469d1f3",
+        "bytes": 21304
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.114.woff2",
+        "gitBlobSha1": "7996357849bdc9cb765a5367b38bab29b0034e79",
+        "sha256": "974b9e3a8c6af71eda94748f1d30aa1a476200f68a94d2133ece6093e8ebe4cb",
+        "bytes": 28916
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.116.woff2",
+        "gitBlobSha1": "1aa187912632fad1619a7cdd8aeba0f84d30f4ca",
+        "sha256": "c0559c714ecb33c0c1eac4bdc6a3cb746fd538ef241d83a6ea2312e540c80574",
+        "bytes": 27804
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.117.woff2",
+        "gitBlobSha1": "84a3ffd5ad9f0ce2cf16b41b74504823f3e791da",
+        "sha256": "2078525d631677e14ff45f01f4be91a68a5d4e1a10b7c9207c0ba56c20e114ff",
+        "bytes": 25496
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.118.woff2",
+        "gitBlobSha1": "d34016ffeda7c683debfe8a37812c7ffc70c73d4",
+        "sha256": "0837e4f9faf19b125f741cc033c2242b19041a4fd24ebb67d2692b360cc40adf",
+        "bytes": 22288
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.119.woff2",
+        "gitBlobSha1": "30aa36a4aa8013373ecd5d4a83a557d12eb5da1d",
+        "sha256": "03d4149c6d78fe0710f328d1e1d44925ad1e4519faac203f7ce9cde299ab94a1",
+        "bytes": 15324
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVGAzr_E.woff2",
+        "gitBlobSha1": "2913e7dedcf5e1c9d348fc7420b6ce7f956fd147",
+        "sha256": "ac70cab6382745ce7b594399abe704f2e381e13b60917daa0bb8fb66162b6750",
+        "bytes": 20968
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.104.woff2",
+        "gitBlobSha1": "85af094ffb8b03f590110b27116b0567d1d3d3e9",
+        "sha256": "48f2975dcf6232f2800f0d1b4009a652393abb946db2cf4919118ea2a8827a23",
+        "bytes": 16108
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.105.woff2",
+        "gitBlobSha1": "315daa58304de6c13a62b31a04d796ec9afc38c2",
+        "sha256": "b7a42dba1fee0eb0b2d4883514cb0833a3492f57fdee3bccdcf388ce96292a8d",
+        "bytes": 18364
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.107.woff2",
+        "gitBlobSha1": "944e7a850755fcf061fe5ad1946bbd5c042b5488",
+        "sha256": "43b8d0a90360a27dbc7c14e84cd234b4a29bb9832d148aa7235ea9f405af6eb7",
+        "bytes": 24844
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.108.woff2",
+        "gitBlobSha1": "6a6c73e0cd046f4cdaa09f5d094ae5a9c2e55de6",
+        "sha256": "384be67e425089be22ab2d7b0aa146a6323ae03b3b200aab1c4a1511d81dbd68",
+        "bytes": 24200
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.111.woff2",
+        "gitBlobSha1": "3e3be5ce5f8e50ad344b605fc7366e1055ee46dc",
+        "sha256": "68db3c4109cc7f13117702b10594b72e5d58b62e673082b876b440c7f0633231",
+        "bytes": 26212
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.114.woff2",
+        "gitBlobSha1": "26d7f6c33f21856129b9f354069e25451c2eece3",
+        "sha256": "972d74532ce4a5561ea808b633859007d1581819fc3bcfa686295baea7c19e87",
+        "bytes": 24968
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.115.woff2",
+        "gitBlobSha1": "f25fbac3d3539e3c3e837b79f44ff40a17bbe468",
+        "sha256": "5c6665edab3748f58e3b88b5648f737c3d73b7219eb849debf9b57293c7eb6a1",
+        "bytes": 24064
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.116.woff2",
+        "gitBlobSha1": "949d2946c9e8618f469b89f432c248e52a79de6f",
+        "sha256": "4a7f3dcb2cc3aaaaf5921db31a884824fb4c64db5afbeca3f088dce048f534d4",
+        "bytes": 24292
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.117.woff2",
+        "gitBlobSha1": "672e738133d42524f6306d82a6714c98606cc94d",
+        "sha256": "5aaab50eeb5d981441adf9699ac04791fc628dc9ce7e2f4dc0df95eb62955b03",
+        "bytes": 22536
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.118.woff2",
+        "gitBlobSha1": "0875c82cb998efe1e40815f895faa5b07f8cb9be",
+        "sha256": "0fa5719f73236674c259de5b1c5e004376085b7c8cea74f0a5d7aed7372e4c9e",
+        "bytes": 20380
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.119.woff2",
+        "gitBlobSha1": "b635956661ccc81f7315d1129799962702209b53",
+        "sha256": "22b54ce7f9da4746ea4a8ecc6693a7f3d750d38761edaf05957e74c8b5488a06",
+        "bytes": 15192
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV2Azr_E.woff2",
+        "gitBlobSha1": "0dbd019bfee980ae0ef16058e0eeaad2fff136cd",
+        "sha256": "84a60324a3b8f916547358b0a0e07e80b5826f2890f0df4b29f744dda135230a",
+        "bytes": 21024
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/nanum-myeongjo.css",
+        "gitBlobSha1": "bf584df93c7fc59224d04536e3b7b1b0bd3ce786",
+        "sha256": "2adc8e3a93a6c54cfd800c51158737f3ca6bbcf7ad0f4145e5102864c9b06e2a",
+        "bytes": 161431
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/nanum-myeongjo/OFL.txt",
+        "gitBlobSha1": "82d0775d4944f4838a651548cf52cf4652f87966",
+        "sha256": "a06fb4706bd70da776e78c0df4fc08e49f12e604668d1da26abd689661e2ba4d",
+        "bytes": 4457
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "archive/vendor/qrious/qrious.min.js",
+        "gitBlobSha1": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+        "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+        "bytes": 17579
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json",
+        "gitBlobSha1": "c0f84ef234a430067e79e563712bb2c95b0ae3a0",
+        "sha256": "2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e",
+        "bytes": 13196
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/q24-origin-label-static-v2.json",
+        "gitBlobSha1": "488a87750eb5075d7d4f24eff4d295c71833f817",
+        "sha256": "a754f9bbb97df32d07a109592673194cd4b28a1c9d24a90fccbfa89a36735c54",
+        "bytes": 1986
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "docs/operations/source-metadata-candidates/m2s1-svg7-q24-origin-v2-20261116/transport-receipt.json",
+        "gitBlobSha1": "b11a02184ffecb00ff641b5e6539cafcdb479ae0",
+        "sha256": "1c63bf0a61bdcab08a9926d6948a8c0b46b18390b145653e7d0768285864ee11",
+        "bytes": 9062
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "tests/fixtures/archive-m2s1-svg7-problem-ui.json",
+        "gitBlobSha1": "ee309be654c7f340edced96d44d7f3fcd13aa228",
+        "sha256": "d13bd86db38720754b4ad529209be63c29362a3bf5b04003dbfd88ef883e372b",
+        "bytes": 12696
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "tools/check-m2s1-svg7-problem-browser.cjs",
+        "gitBlobSha1": "be14c9e38e6dd1723f5d0ea73fcf737badb9e516",
+        "sha256": "e61acb948ba77a524e0d68b58bf91e9feced84710f92069b7bfc8f8a322a90be",
+        "bytes": 44065
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+        "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+        "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+        "bytes": 56735
+      },
+      {
+        "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+        "path": "tools/m2s1-svg7-problem-capture.cjs",
+        "gitBlobSha1": "cefa31e9e775e3ca8cd07ac52b77fb5f825207ca",
+        "sha256": "a4092b992d01f5069a4a084598d7c4fe7d20488d122e120ec718bf226c44d585",
+        "bytes": 30109
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+        "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+        "bytes": 3555
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+        "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+        "bytes": 12366
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+        "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+        "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+        "bytes": 10634
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/engine.html",
+        "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+        "sha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+        "bytes": 201060
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+        "bytes": 44656
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/render-feedback.js",
+        "gitBlobSha1": "d1dd28351e42c887269744fa127f5979b81f213c",
+        "sha256": "a55be90c452de08090ba648c1e8150f6fdecbfc9e10a9bd2e1ed59ccad727052",
+        "bytes": 7419
+      },
+      {
+        "commit": "72504638b72051c54fc6ba1a05289836cd38fff6",
+        "path": "archive/screen-runtime-adapter.js",
+        "gitBlobSha1": "3d8f3159934c99637c4df893649adbc331065d96",
+        "sha256": "2834bd3d0f3b40264921e15a85840df3d2374c7fcc6158844ce12883fb7cdd93",
+        "bytes": 52980
+      },
+      {
+        "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+        "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+        "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+        "bytes": 3867
+      },
+      {
+        "commit": "987990e2452af47732dc62e1925c1bc397d474e4",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+        "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+        "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+        "bytes": 10634
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E037-Q15-desktop-tile-01.png",
+        "gitBlobSha1": "d29a745adbcc4f9d4757c616066b571b8bf1d376",
+        "sha256": "c90a802923f038733d4aa97f14e02f50ea0d3e50308b1888d985a4f411aa233a",
+        "bytes": 50526
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E037-Q15-mobile-tile-01.png",
+        "gitBlobSha1": "129de53874bc366ca6edd7d38885363a4c342b62",
+        "sha256": "e2fa4affd2543ca3058bbda316f97a0ee86ff78927070dec5b7b6955d07f5206",
+        "bytes": 35289
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E037-Q3-desktop-tile-01.png",
+        "gitBlobSha1": "2730eaf8657ea120a0f8868b7daa896adbbf186e",
+        "sha256": "aac21a97166ebe69b6acd513b5ca429fd54e79ac6534f51dab3f686dd6f9bded",
+        "bytes": 36757
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E037-Q3-mobile-tile-01.png",
+        "gitBlobSha1": "dfc746502e3eec1ecd7b263d1ba3a42c13a62c86",
+        "sha256": "7a411b8b3b53f26154a60cbe2629d6fbbaabe237c67865941bee1a22282ea2e8",
+        "bytes": 28592
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E045-Q15-desktop-tile-01.png",
+        "gitBlobSha1": "d34ee036668130073edcfe3f7327e28af692a407",
+        "sha256": "7c977efa2b997f1300aa1bbd00d777653a0c174bec0ba99b33e0c8033c97f2f7",
+        "bytes": 40071
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E045-Q15-mobile-tile-01.png",
+        "gitBlobSha1": "d4bd00aacad4361bbfb03d12cf64f83eaad1c210",
+        "sha256": "6cbdda3f54ee8ec868fc64cc680e66f1bb6f15acc19e95f00134ce67cf790a96",
+        "bytes": 26079
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E045-Q24-desktop-tile-01.png",
+        "gitBlobSha1": "3b8d11f2832b9d34ee5ca8ec206140e0daa781f9",
+        "sha256": "549bc45c2aaf2123700bdb1a1ace16afbee47b4d008923aa18b4efe537ba4b0f",
+        "bytes": 69036
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E045-Q24-desktop-tile-02.png",
+        "gitBlobSha1": "4c50513e49fe15df2175f5d50a4258def67a9648",
+        "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+        "bytes": 652
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E045-Q24-mobile-tile-01.png",
+        "gitBlobSha1": "2357e4de5ddd6247f8c0a41f6668725cd796fd32",
+        "sha256": "54b5c8578028d2654afcc5290f76934514d7ae8e8cdb1aff2f30b027587499dd",
+        "bytes": 56710
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q11-desktop-tile-01.png",
+        "gitBlobSha1": "bc50074d96bb6a036834585a0b301b88f7e7bee8",
+        "sha256": "7d3396f64e5a953a1e020fcd667b8f2fadf84b94e457a7848573f1980983fcc7",
+        "bytes": 32775
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q11-mobile-tile-01.png",
+        "gitBlobSha1": "6dc8fedd29d50dd22c5f6a87cc79b617085fe5b3",
+        "sha256": "b3e952e7bdebc6db6c4a96b6263cdb9a537bd586715cefea30a8e14d5a8ceef5",
+        "bytes": 25221
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q13-desktop-tile-01.png",
+        "gitBlobSha1": "98ed3fdf796f8508b27d7f302348104720ca495d",
+        "sha256": "967f3071f6f730c11bd2a3d735f9fe6d00fec5b7ab97607f69d4f6f859c84b9b",
+        "bytes": 16786
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q13-mobile-tile-01.png",
+        "gitBlobSha1": "2c7bbcc69038f7ad8a7f212ebdec59c2277e9232",
+        "sha256": "d7b40cd8dd9123214916894e9c38a566bda554f231763a73381372ff39af5634",
+        "bytes": 15263
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q24-desktop-tile-01.png",
+        "gitBlobSha1": "0c7f011fc8c7540ffd227f3d86141b600472ce71",
+        "sha256": "697295115a924f136ebd948a00281c440923285b56e8fbbd3f80549208021187",
+        "bytes": 75512
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q24-desktop-tile-02.png",
+        "gitBlobSha1": "4c50513e49fe15df2175f5d50a4258def67a9648",
+        "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+        "bytes": 652
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/E048-Q24-mobile-tile-01.png",
+        "gitBlobSha1": "c348deeff497581718e4a56ffaffeefd199d85b2",
+        "sha256": "0a869edb4d6385c1c78a392e9803a389c3f518564912843462d150acbf0da426",
+        "bytes": 58842
+      },
+      {
+        "commit": "a41f5a7642d18450f441e93c3a6b2dd052e12f53",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/technical-ui14.json",
+        "gitBlobSha1": "b2eab4df5eaa3adf028045fd57036290e611b29d",
+        "sha256": "9f2f5d13c903a7c34fb83c4ce7cabad32493b929a20be13b85b45a52cdb0bfdd",
+        "bytes": 54969
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "apmath/css/student-navigation.css",
+        "gitBlobSha1": "afaddbc2f19f8c9507d592dc610adac9adce6abf",
+        "sha256": "845ec493b33bb82b93accc6036850595f3870ddcb0594055b741c5799bf5ad55",
+        "bytes": 4432
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "apmath/js/student-navigation.js",
+        "gitBlobSha1": "0530727c087b526cb10ad9a76f04e03c9ecbefcf",
+        "sha256": "05ea337bc52311fb8acd13ff6fdd3a9d437cb28594a69696f5da29d47ecebe95",
+        "bytes": 7463
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/answer-render-executor.js",
+        "gitBlobSha1": "7d5798d9c542174ff4730b06243dea9d52403f25",
+        "sha256": "3327b441fffad769f80440e9f71c929d631a500376c7062e95ab234ce8dacc47",
+        "bytes": 3320
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive-asset-base.js",
+        "gitBlobSha1": "51bb78820b2356911551bde45485070b22a924fa",
+        "sha256": "bca6f850bcfbe0d5cc032faff5b5aedd80f4bb98d42dbb99fd2de655438432d6",
+        "bytes": 13711
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-output-bar.css",
+        "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+        "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+        "bytes": 9673
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-output-contract.js",
+        "gitBlobSha1": "c8c6c9144444d2b997fd259b6578bd06a2e08459",
+        "sha256": "89aad418459a73bdbbe7d8a3834f39fda8c8ebf9788abcf551ec846199197976",
+        "bytes": 9035
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-output.js",
+        "gitBlobSha1": "c10a9e36b40ae2ab0022afa1e2d2fbc0bd4d2f03",
+        "sha256": "7110c184f40ca77a202fd33a4af2e8645734027f89e27cbdb58630c47f149a2f",
+        "bytes": 22873
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-pdf-readiness.js",
+        "gitBlobSha1": "7ec2488d834ea5656e6dab78a9a9609ad1733951",
+        "sha256": "d3843aa30001883bb6dd9076398075c9b3494cbbea63dd6c1d226a46521829c1",
+        "bytes": 7024
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-preview-mobile.css",
+        "gitBlobSha1": "dd63e6a8a0abf39ed38a4dad94d842ea92d8b071",
+        "sha256": "1a32df12641e6acd829ae1c434fc9745693e1a0febd2d2eaa790c2180f6eba0c",
+        "bytes": 14214
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-reader-controls.css",
+        "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+        "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+        "bytes": 4905
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-reader-controls.js",
+        "gitBlobSha1": "0544768b1d44dbe7eb62bef67aef2aae369182a7",
+        "sha256": "48c2f35da451d882bc98c1ce41f615b7b304f52da51d716a1912089c47066392",
+        "bytes": 9241
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-review.css",
+        "gitBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+        "bytes": 476
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-review.js",
+        "gitBlobSha1": "ffaadeababca6797270f1bae6482ed1a4d0a9949",
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce",
+        "bytes": 407
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/archive2-tokens.css",
+        "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+        "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+        "bytes": 2241
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q17-problem-visual-v2.svg",
+        "gitBlobSha1": "bdeb894ead56dbfa6ed256e62f2882839db10408",
+        "sha256": "f329257bda65fa8e7ace82e6f35fc6c7fd24000bdd7d91336043fc92f31cc397",
+        "bytes": 2504
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q20-problem-visual-v2.svg",
+        "gitBlobSha1": "55cc6ce6b54a69ac55ff6538874ed566905d8033",
+        "sha256": "1a3a0f35ee8b50ff834e9028df58a7786136e48b96d2432582cf039f8bcac817",
+        "bytes": 3010
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+        "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+        "bytes": 3555
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+        "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+        "bytes": 12366
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+        "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+        "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+        "bytes": 10634
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q11-problem-visual-v2.svg",
+        "gitBlobSha1": "f621b1e3a44b486594dc3a310c82400251b4696f",
+        "sha256": "a6b567d9f894d69d0759234760b7fe020ac2460c404f0cb12d7b780ebd98306f",
+        "bytes": 1726
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q12-problem-visual-v2.svg",
+        "gitBlobSha1": "e521f28206f35a1c60e6be034f4605b93385999f",
+        "sha256": "abcd13d02e5612a201a5e06379b66f347c67ed97ba71ee764e4d787be2ea1447",
+        "bytes": 4181
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
+        "gitBlobSha1": "be012bda6bcfbca69796a3d5fafb74c628c95853",
+        "sha256": "6801338afc1647675a07f75ba0c0f88e52b71861aacf540ef4a5a51cc1be3bf1",
+        "bytes": 2176
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q14-problem-visual-v2.svg",
+        "gitBlobSha1": "9d2a68c2ff79e253d35f73010015fdeeb5844d26",
+        "sha256": "f7be092e914c37714c07dcab45a868b921cd230576febf2e79e78674d0df5789",
+        "bytes": 2614
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
+        "gitBlobSha1": "4c7bb7983c6348295590f52961ee388ada88cd9e",
+        "sha256": "90c46b378d18869ce319241513c2c732d6b930d4081de4671902bb3a126f6dc3",
+        "bytes": 2181
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q17-problem-visual-v2.svg",
+        "gitBlobSha1": "1edb263cb282e97c929d3beb121aacc8d0e1f342",
+        "sha256": "f40da76ce3db583b529d39d5648af3efb45556a6da6d3b75ce72ae56347e0da9",
+        "bytes": 3119
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q18-problem-visual-v2.svg",
+        "gitBlobSha1": "f7deb7d9dc5d4c2559af13ee45c3e95b9db66db4",
+        "sha256": "c33a3a5e470aff78a0faa13d0df6862148b7734563ec58b70997a35a71c1e4b3",
+        "bytes": 2601
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q2-problem-visual-v2.svg",
+        "gitBlobSha1": "e36f10255f6e7516d003ffc69d31666eab2181af",
+        "sha256": "b74b9b709acbea9a0a248d5197b41864f321e14c4e8fc779c1a1193bfb312624",
+        "bytes": 1921
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q20-problem-visual-v2.svg",
+        "gitBlobSha1": "eea57fda95cf8bb2a33774df7ae317b5e18000e3",
+        "sha256": "d5bfe63a06b6bc1a7461ab8f6960070da5307e5e101ddcc0b64e71676ace247d",
+        "bytes": 2200
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q21-problem-visual-v2.svg",
+        "gitBlobSha1": "efe28c279e4cc70f2863e66a56fe524708ef00c6",
+        "sha256": "58ddc01aacdf752e649cc574955c71b68ef068c6fc7f8b0afc97a14c4ca3a1f3",
+        "bytes": 2773
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q22-problem-visual-v2.svg",
+        "gitBlobSha1": "3d816b57bd17dd8197e24f4194e457f4eaf266c0",
+        "sha256": "8d9a69b0df6f6bc9546b7f6761fb8b670015999aceb976fbf32f3017c6eaff24",
+        "bytes": 3346
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q24-problem-visual-v2.svg",
+        "gitBlobSha1": "2f12ad0d0533dfe97b56278859210639911d557e",
+        "sha256": "9db1b3edba1ca9c032e71ef4b959e803a7bd1772385b1ee1e05c827567e1097e",
+        "bytes": 2205
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q25-problem-visual-v2.svg",
+        "gitBlobSha1": "bab052ad30a06900e35a93d3423385014cb0dad0",
+        "sha256": "52e9c80b6ee8e63d170fa727e8f74463bf234982bef551b61fd341ba71362a96",
+        "bytes": 5743
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/concept_map.js",
+        "gitBlobSha1": "ec34be175c586437acff1c9e0b9caf9b7fbef349",
+        "sha256": "7972e247e5b1379bd837f720a6607bc60d48e42a9d987a5c6e7a342f6d5cefe9",
+        "bytes": 8232
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/css/ap-table.css",
+        "gitBlobSha1": "4c1645171537c57cceef4b537951d3226adb37e1",
+        "sha256": "9596269fedc5dde8870fa7e039a5917352050fd28a9b435944a73f52d5950e47",
+        "bytes": 4776
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/css/js-archive-theme-override.css",
+        "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+        "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+        "bytes": 13947
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/data/question_identity_map.json",
+        "gitBlobSha1": "204b995d4f584f7d8e7bf6127289993c49871b90",
+        "sha256": "7c2d85935d452e4f50d5668050bc3496eb770cb34f6ba559577413f1546c2070",
+        "bytes": 27938431
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "7cd8b7ef9e9c25d4bc2168b8f59ec3543aebb0fa",
+        "sha256": "46bbcbe2467246560d96da60d17de92c50931065d0411b1421bf88cc4c7c5402",
+        "bytes": 73644489
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/data/svg-accessibility-index.js",
+        "gitBlobSha1": "6cdfe2562ba3520d6cb5c55fdb8209e85a8afd4a",
+        "sha256": "3d1ca0fb8b4e5b3381d42b4edad1b7dc5e8e0e8a2afa5eacec4fd3da4380710d",
+        "bytes": 5687723
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/engine.html",
+        "gitBlobSha1": "226342544e896cd6a6f35aa946947b89ef3c893e",
+        "sha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+        "bytes": 196085
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/equal-slot-engine.css",
+        "gitBlobSha1": "7b3cf785367b628a05bdf08f634ecd86f2c7c4eb",
+        "sha256": "a31fe14fbd28a306ee2f052dc9b0dc51c4fd54c850aa6baf1274974993a7c261",
+        "bytes": 1828
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/equal-slot-engine.js",
+        "gitBlobSha1": "c826512ff61d4969c7ce45ba8f4ee002286bcf10",
+        "sha256": "4979ccfd129470e076965bf93bb86e089d53c4ea875a17b011760886f967177a",
+        "bytes": 20518
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/exam-display-title.js",
+        "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+        "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+        "bytes": 2358
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/exam-render-executor.js",
+        "gitBlobSha1": "583a72ae2c960d485cdcd1c1aec1329f204067b6",
+        "sha256": "e4ac35518351fd89d16222df4221e64a32121213f5b99c831407a61d90b573d7",
+        "bytes": 24896
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+        "bytes": 44656
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/js/ap-table-engine.js",
+        "gitBlobSha1": "d5c80eb60683b74a427f48b3ef1030d9d5f0cec6",
+        "sha256": "47b84007d59e289655004b129e3a713ae3dae1247393efc5e28f5a152951148c",
+        "bytes": 29907
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/layout-authority.js",
+        "gitBlobSha1": "d7b75dc389c9ec8a010243d8e18e893482fa4185",
+        "sha256": "797c7ea7541a886dc3a6098ba23791fe4a7861de6f1d14d412e515605a5c3c73",
+        "bytes": 86382
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/layout-materializer.js",
+        "gitBlobSha1": "8ee08f4a5111ac8ac66a8aba1c54a5bb8cecdc90",
+        "sha256": "e77bfda088c4500f5231bfd860f322c26c251a56c2ea0c27cdd6873b4235aaad",
+        "bytes": 22711
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/mathjax_render_loop.js",
+        "gitBlobSha1": "72e04091383ed119aa6e4d3dd262e8c885aa4a8c",
+        "sha256": "384d3ac3e8871a4d81cc03ca2a74e046c58b18de957302d09c60f18df2631053",
+        "bytes": 3546
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/native_print.js",
+        "gitBlobSha1": "3ee0c4cc26e40239fac3db5c8807a47f2dce82ab",
+        "sha256": "ff79950e52285419d9b88ea4c5ef3bdbbd2acb564bce851c3542f7b53aa48072",
+        "bytes": 18120
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/print_image_optimizer.js",
+        "gitBlobSha1": "da8d3ea82fcfde59511630982d319b6edde5c368",
+        "sha256": "e56743edbe629b45bb4b5cc3b81d048a68c1518b56c87b71111030b46eec03ed",
+        "bytes": 7810
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/print-contract.js",
+        "gitBlobSha1": "00a423d6005fde16173c18969d0df2f934eb1f1d",
+        "sha256": "e40182bdbb423f4d72a7664f5b597d4c88a58ee5e5851fb6dca2d372922d6ad1",
+        "bytes": 27160
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/print-runtime.js",
+        "gitBlobSha1": "e74bdfc75b6fe4c0d5aa23c70849586993bc3739",
+        "sha256": "9ef9af4073c7f9685c74060ca81c9116cf7ed9a133e6973ac099da892a9f125b",
+        "bytes": 4086
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/question-image-readiness.js",
+        "gitBlobSha1": "4b3d1a8b309aa720db59ef33d481881fa825fcad",
+        "sha256": "6742a03a0a9fd3733a5dfdc7aa676c9aea52992dc45ae50c324e346964baf400",
+        "bytes": 9995
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/question-meta.js",
+        "gitBlobSha1": "e685586e39047c7d68bf1dba13d928611a53caa2",
+        "sha256": "b00ed61b6ff3e1ec69827d43cb634d9091c4d643bee352ede5dcb41154f247f6",
+        "bytes": 27308
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/render-authority.js",
+        "gitBlobSha1": "399e98832bfe7ccdc453dedf5d41bfbfd61b7a47",
+        "sha256": "0bc269bba107c2ef13c2af6669b6bbd2c16634a3c0981a5882d2323792e9b951",
+        "bytes": 28141
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/render-feedback.js",
+        "gitBlobSha1": "bba4a0a028b08260de01ae66a936dd9b77a849af",
+        "sha256": "324177edefdcb996b4717a7853fc8bd542ac98098e3c6b8eabd42124eb424631",
+        "bytes": 7461
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/render-state-normalizer.js",
+        "gitBlobSha1": "c1112b6b4a8b90a3deb5ae876f484aa3e9a2989c",
+        "sha256": "949d119d4895a7a096ffba7ed5163bb2ca3691b9019b714a2349df04733d81f7",
+        "bytes": 7168
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/review-preview-bridge.js",
+        "gitBlobSha1": "77e5be38f9e4a2ad280108d7a697e9adb6ce2c93",
+        "sha256": "cb648c3f3ad29300e8ee5b2e8dff8196b42df9ed1b7bcdd7842ca16f7adf62f8",
+        "bytes": 20086
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/screen-runtime-adapter.js",
+        "gitBlobSha1": "fb0ee7afc7eed48b30975874c5536eb283f308c9",
+        "sha256": "ed0b267dc3b27675c2c0ed0aa985991a0aad3d3863ce5bcd43f0acb28033d709",
+        "bytes": 53393
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/screen-runtime.js",
+        "gitBlobSha1": "085b48bee4a35f8f065f1808e1c0f8918c23ec74",
+        "sha256": "69ebf42311b2035c106bbe033bb5e145893b2dafb96e003775c7a791dbc2e850",
+        "bytes": 20210
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/side-effect-ledger.js",
+        "gitBlobSha1": "cbafe31d265b473738c68539223e774592c6c2d5",
+        "sha256": "00cb757605d329bad73e5ff53c1c3ee71c2ceb54083661303a2a440c6e7cc9ff",
+        "bytes": 2816
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/snapshot-contract.js",
+        "gitBlobSha1": "fc107a97f2c29d6d42e8f79371a40f7baaef4fec",
+        "sha256": "b3aba93b43c81980fec9ef336aa5c33b6f38e628635a344b8637293e7b9a1cc1",
+        "bytes": 5845
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/solution-render-executor.js",
+        "gitBlobSha1": "f2036816290173c45dc656e0df360ac30483a8cd",
+        "sha256": "3ab2a681ac54edeffebd2d9fc0d14ce28ff22a58a368448d7674130e0ae0ccf7",
+        "bytes": 41090
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/student-svg-refresh.js",
+        "gitBlobSha1": "23c1727a967b7cc1de4ff9e5beda37cd03c8c307",
+        "sha256": "3375d3d722cc5831f8d4412c2c4dcf3a92b50bd1e8591918ba148cb573d62b6f",
+        "bytes": 6585
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/svg-accessibility.js",
+        "gitBlobSha1": "f8ad8adf08f3051a7cac241b54806209471cca63",
+        "sha256": "a2d75ee1c5b44ad70d74bf147464ad6af8ded3d56308ce25d7e0dce571b32e81",
+        "bytes": 6746
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2",
+        "gitBlobSha1": "48f9ef1a2f2f544ce1614fadebccc4335fb2de95",
+        "sha256": "79403a2023f44e801e2dbe9b50f2263500aad6750677b6ef2996ea3251a5ce95",
+        "bytes": 5100
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/html2canvas/html2canvas.min.js",
+        "gitBlobSha1": "aed6bfd70defa322824e5cba11b3ad5d6061ee28",
+        "sha256": "e87e550794322e574a1fda0c1549a3c70dae5a93d9113417a429016838eab8cb",
+        "bytes": 198689
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+        "gitBlobSha1": "63ed17c42a35fe234368fed5731760cc871d5825",
+        "sha256": "4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d",
+        "bytes": 980
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+        "gitBlobSha1": "734f41d2c3636dfa70140d350611d39dbe44ea15",
+        "sha256": "fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133",
+        "bytes": 164864
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+        "gitBlobSha1": "ba96f1971613e0e721e4fbf1b5127c7250b6db68",
+        "sha256": "07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83",
+        "bytes": 2560
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-so.woff2",
+        "gitBlobSha1": "3b99ab827a175bb7be9a3d039db150df8733e772",
+        "sha256": "0e9f0e5baa090d44c728e2ddaa39b4c465ff15d349e3547488503eb318628a45",
+        "bytes": 6472
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+        "gitBlobSha1": "c4591a7ecbac3a1e516e5cae4c1bc952045991aa",
+        "sha256": "2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb",
+        "bytes": 960
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+        "gitBlobSha1": "cb684fe45eac8761d91e57ddc26358b4e45cb28d",
+        "sha256": "b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185",
+        "bytes": 968520
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+        "gitBlobSha1": "ab3b4734669ac1620e7ff63be5c0d7b849b9d0b9",
+        "sha256": "baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10",
+        "bytes": 2460
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax/sre/mathmaps/base.json",
+        "gitBlobSha1": "7d6714323d15deb2c47d7e7aa84b5ce05a242303",
+        "sha256": "72558700556d997a95e9281044e330eba9a472dda43642a9b5cc0483294d875f",
+        "bytes": 217157
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax/sre/mathmaps/en.json",
+        "gitBlobSha1": "06d1fbcd59e1af0a34b722306bea6c69dcfdcb6b",
+        "sha256": "5e60d1843351966a159cc409eb73e9abc7c7e375a3311c40d35843d70fee79fb",
+        "bytes": 364204
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+        "gitBlobSha1": "fe4cda20b329c9262d923a223c61b748bd7ab199",
+        "sha256": "16f30ad5bc7db02bbcce4623b108626f1a73d65660799891f23efd76dcaa333e",
+        "bytes": 227472
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/mathjax/sre/speech-worker.js",
+        "gitBlobSha1": "57c3e8a3467ef4ca2f83bfbd60f11e2a1271fc61",
+        "sha256": "80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b",
+        "bytes": 425256
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.104.woff2",
+        "gitBlobSha1": "b4bafaeb2c41b7c08f24ffb88bca768968e638e8",
+        "sha256": "2dd59d13b370a5ec217ca607d87b8aa4ab6719f53181daa54e9161e9b935b365",
+        "bytes": 15664
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.105.woff2",
+        "gitBlobSha1": "6549c49b057c004304665ba3bde12cb11b8d88ca",
+        "sha256": "a9d0277a278bcbc8b513de551f11de63f427fd358d2a40cf3a54d2d912bc7762",
+        "bytes": 17492
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.106.woff2",
+        "gitBlobSha1": "02b634c75772dc446abacf80c29f772d85f1f5d6",
+        "sha256": "98020cadd1d47eee9b600da8e32140db022c4ed5a0424fa97aa37f08e83b0531",
+        "bytes": 19736
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.107.woff2",
+        "gitBlobSha1": "4ad149de369f3afcfd18c4987f652883bb274f1c",
+        "sha256": "ff5e3fd95c34f9cc5384c22881c51a166627e47ce3942a62da3703e0e0d42984",
+        "bytes": 23848
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.108.woff2",
+        "gitBlobSha1": "af9860a48263575e4fb2e6bf8516666578eed392",
+        "sha256": "b861428b5a996d429fe7a73002426d127354f2f151a52d58faae6fe72689317b",
+        "bytes": 22740
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.109.woff2",
+        "gitBlobSha1": "52b23b5b5595bec7e682721f677169d12db3f221",
+        "sha256": "2805039b3fee063ed1ad5d08a54e061b4437cbeea99441f9fa5ee9f065a0dc50",
+        "bytes": 23644
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.110.woff2",
+        "gitBlobSha1": "da23b61736145f511090b0b77f6ae8c532b31298",
+        "sha256": "027d00a21469971fa7107a795f3f668ebaf6860330acdeec8c7377125db616b8",
+        "bytes": 24136
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.111.woff2",
+        "gitBlobSha1": "4a59b256848f591f38f20b51d169252585cab7bf",
+        "sha256": "b69b059cefe86011ae33af0f0914fb7416dac14959dbe0021ae7ff4b6d8c9a83",
+        "bytes": 24280
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.112.woff2",
+        "gitBlobSha1": "f6dcf7162d934e665c0af360877b5966237c91e0",
+        "sha256": "c262b0bafc548eb29cce6588c56c143a42e36629fc2c708e4b1f9403ab7e0ba2",
+        "bytes": 22900
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.113.woff2",
+        "gitBlobSha1": "772422b715d440e1e6d26757538af594fd246b84",
+        "sha256": "098447b7e259fb49893d5658607a747420324923aad03a7856fb48ca672aeba6",
+        "bytes": 24120
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.114.woff2",
+        "gitBlobSha1": "0a6499a3b03248cda6babeaecd62ccc1a7f76989",
+        "sha256": "fed8cac93890cf0df6f8e715e88119bae2bba997c2c87719687e89cb026436cc",
+        "bytes": 23328
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.115.woff2",
+        "gitBlobSha1": "efbf04855e76e2e9dfcef258179ce89ad9517d81",
+        "sha256": "5b972b2d82119a487f978854d350a4625f0c1ec0d2b6d8a542ec8db9b9bd5b1a",
+        "bytes": 22808
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.116.woff2",
+        "gitBlobSha1": "d2c6215dd1f11ace948facb6103130aaef304c0e",
+        "sha256": "5d20dde8a441380b91a8a4a4b622fde018fafd036ac4a380c666f680daa53908",
+        "bytes": 22904
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.117.woff2",
+        "gitBlobSha1": "6d879594435901f3ded443b605e80c0db282bc07",
+        "sha256": "23ac7e808a1780bbc7a87a870b4e5165b31728b7498187b8803dfcecb336e45e",
+        "bytes": 21256
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.118.woff2",
+        "gitBlobSha1": "c8be8e4c3e9088bcd3c2033cdd870507101aa11a",
+        "sha256": "850a17b0a3a93741cd363aef3d86aebe630835907ce191fba63f20bc2b789ed4",
+        "bytes": 19156
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.119.woff2",
+        "gitBlobSha1": "18386f00cf5be4d4896034a5e560654d4b332d8d",
+        "sha256": "4c2914a5f494334916e70fbdc379d9bd3522d6bce4a82c298a16a7433b1dfcf4",
+        "bytes": 15320
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.38.woff2",
+        "gitBlobSha1": "aa97fe4fb76fddc82a4f9fbf57c4abacb47e90e5",
+        "sha256": "3c2c8a3595ae565783734cdb435fa707c537e921d98c6c36134ff8f96f069d38",
+        "bytes": 19688
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.94.woff2",
+        "gitBlobSha1": "e6bdd44893761289e0443a55aca97a8412d1aab4",
+        "sha256": "6b7e73643df8e05a027a5d1bf11320b6095b19cc9aa6b2136484835f363a100a",
+        "bytes": 19372
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy2LscnU.woff2",
+        "gitBlobSha1": "3104f5d799d124973b1173fc6d60e11c3b537f95",
+        "sha256": "e1c889a6e7588ddcbea36e306b593d2098214028229fa3d82e0df6ec6469d1f3",
+        "bytes": 21304
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.114.woff2",
+        "gitBlobSha1": "7996357849bdc9cb765a5367b38bab29b0034e79",
+        "sha256": "974b9e3a8c6af71eda94748f1d30aa1a476200f68a94d2133ece6093e8ebe4cb",
+        "bytes": 28916
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.116.woff2",
+        "gitBlobSha1": "1aa187912632fad1619a7cdd8aeba0f84d30f4ca",
+        "sha256": "c0559c714ecb33c0c1eac4bdc6a3cb746fd538ef241d83a6ea2312e540c80574",
+        "bytes": 27804
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.117.woff2",
+        "gitBlobSha1": "84a3ffd5ad9f0ce2cf16b41b74504823f3e791da",
+        "sha256": "2078525d631677e14ff45f01f4be91a68a5d4e1a10b7c9207c0ba56c20e114ff",
+        "bytes": 25496
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.118.woff2",
+        "gitBlobSha1": "d34016ffeda7c683debfe8a37812c7ffc70c73d4",
+        "sha256": "0837e4f9faf19b125f741cc033c2242b19041a4fd24ebb67d2692b360cc40adf",
+        "bytes": 22288
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVFAxzeau69lCAWDrAgLCcAPYKgRK4K8.119.woff2",
+        "gitBlobSha1": "30aa36a4aa8013373ecd5d4a83a557d12eb5da1d",
+        "sha256": "03d4149c6d78fe0710f328d1e1d44925ad1e4519faac203f7ce9cde299ab94a1",
+        "bytes": 15324
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pLVGAzr_E.woff2",
+        "gitBlobSha1": "2913e7dedcf5e1c9d348fc7420b6ce7f956fd147",
+        "sha256": "ac70cab6382745ce7b594399abe704f2e381e13b60917daa0bb8fb66162b6750",
+        "bytes": 20968
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.104.woff2",
+        "gitBlobSha1": "85af094ffb8b03f590110b27116b0567d1d3d3e9",
+        "sha256": "48f2975dcf6232f2800f0d1b4009a652393abb946db2cf4919118ea2a8827a23",
+        "bytes": 16108
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.105.woff2",
+        "gitBlobSha1": "315daa58304de6c13a62b31a04d796ec9afc38c2",
+        "sha256": "b7a42dba1fee0eb0b2d4883514cb0833a3492f57fdee3bccdcf388ce96292a8d",
+        "bytes": 18364
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.107.woff2",
+        "gitBlobSha1": "944e7a850755fcf061fe5ad1946bbd5c042b5488",
+        "sha256": "43b8d0a90360a27dbc7c14e84cd234b4a29bb9832d148aa7235ea9f405af6eb7",
+        "bytes": 24844
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.108.woff2",
+        "gitBlobSha1": "6a6c73e0cd046f4cdaa09f5d094ae5a9c2e55de6",
+        "sha256": "384be67e425089be22ab2d7b0aa146a6323ae03b3b200aab1c4a1511d81dbd68",
+        "bytes": 24200
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.111.woff2",
+        "gitBlobSha1": "3e3be5ce5f8e50ad344b605fc7366e1055ee46dc",
+        "sha256": "68db3c4109cc7f13117702b10594b72e5d58b62e673082b876b440c7f0633231",
+        "bytes": 26212
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.115.woff2",
+        "gitBlobSha1": "f25fbac3d3539e3c3e837b79f44ff40a17bbe468",
+        "sha256": "5c6665edab3748f58e3b88b5648f737c3d73b7219eb849debf9b57293c7eb6a1",
+        "bytes": 24064
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.116.woff2",
+        "gitBlobSha1": "949d2946c9e8618f469b89f432c248e52a79de6f",
+        "sha256": "4a7f3dcb2cc3aaaaf5921db31a884824fb4c64db5afbeca3f088dce048f534d4",
+        "bytes": 24292
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.117.woff2",
+        "gitBlobSha1": "672e738133d42524f6306d82a6714c98606cc94d",
+        "sha256": "5aaab50eeb5d981441adf9699ac04791fc628dc9ce7e2f4dc0df95eb62955b03",
+        "bytes": 22536
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.118.woff2",
+        "gitBlobSha1": "0875c82cb998efe1e40815f895faa5b07f8cb9be",
+        "sha256": "0fa5719f73236674c259de5b1c5e004376085b7c8cea74f0a5d7aed7372e4c9e",
+        "bytes": 20380
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV1Axzeau69lCAWDrAgLCcAPYKgRK4K8.119.woff2",
+        "gitBlobSha1": "b635956661ccc81f7315d1129799962702209b53",
+        "sha256": "22b54ce7f9da4746ea4a8ecc6693a7f3d750d38761edaf05957e74c8b5488a06",
+        "bytes": 15192
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/9Bty3DZF0dXLMZlywRbVRNhxy2pXV2Azr_E.woff2",
+        "gitBlobSha1": "0dbd019bfee980ae0ef16058e0eeaad2fff136cd",
+        "sha256": "84a60324a3b8f916547358b0a0e07e80b5826f2890f0df4b29f744dda135230a",
+        "bytes": 21024
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/nanum-myeongjo.css",
+        "gitBlobSha1": "bf584df93c7fc59224d04536e3b7b1b0bd3ce786",
+        "sha256": "2adc8e3a93a6c54cfd800c51158737f3ca6bbcf7ad0f4145e5102864c9b06e2a",
+        "bytes": 161431
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/nanum-myeongjo/OFL.txt",
+        "gitBlobSha1": "82d0775d4944f4838a651548cf52cf4652f87966",
+        "sha256": "a06fb4706bd70da776e78c0df4fc08e49f12e604668d1da26abd689661e2ba4d",
+        "bytes": 4457
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "archive/vendor/qrious/qrious.min.js",
+        "gitBlobSha1": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+        "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+        "bytes": 17579
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "docs/operations/m2s1-svg7-source-ui-26fc-20261116/run-43924133281/independent-visual-ui14.json",
+        "gitBlobSha1": "aaadffbcfe70fe28bf09c3c58ec9f565860a5f3a",
+        "sha256": "9f5b007a5eb0d75363a03da9ca0998ca45e5f2f4077a06cd32eb91181da64937",
+        "bytes": 10977
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "tests/fixtures/archive-m2s1-svg7-problem-ui.json",
+        "gitBlobSha1": "7557df94d518fe36dde9426ec928eb880747c07e",
+        "sha256": "2723900e7f2868a6cc034fd09b8faa449c7e04056732e713c7caccb9e433700f",
+        "bytes": 11980
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "tools/capture-m1s2-problem-surface.cjs",
+        "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+        "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+        "bytes": 10218
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "tools/capture-m2s1-svg7-problem-surface.cjs",
+        "gitBlobSha1": "31a72c9fddc140157adf15714cf1812cb52a2bf9",
+        "sha256": "e135c6d3de2c982a0d2a04f09e791f74b727d7b5431ceb5aa17c1c950518712f",
+        "bytes": 51447
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "tools/check-m2s1-svg7-problem-browser.cjs",
+        "gitBlobSha1": "027e8da7549a2c8b63d5dd913d3023dfb14f7589",
+        "sha256": "9ffb9952d031ac774bc59326e74d7e39774950078ee32d45aaed2c4674eb9613",
+        "bytes": 39798
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+        "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+        "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+        "bytes": 56735
+      },
+      {
+        "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+        "path": "tools/emit-protected9-ui-log-transport.cjs",
+        "gitBlobSha1": "2ec7712541ee6977e6482fb94d474d21d85c97ae",
+        "sha256": "e6043571213b7cd67010968796b0b3a524ebea81595f9d54c92a1b57b90315f0",
+        "bytes": 17220
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15.png",
+        "gitBlobSha1": "694cf60ffd6c1ba661ff2732b0c108ab8c307108",
+        "sha256": "fa4b5d271533f39c091189c7ccb00805d2c85cd339fcfe475fb3e76b5a81b272",
+        "bytes": 150607
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/s04.png",
+        "gitBlobSha1": "53f7bb58d6e8ecb1aa3e19fc0599326eeb6fc9b3",
+        "sha256": "3284ed0043ef60c20ebf57133649585175bc1e64b2f0fdac90e85adb318175dc",
+        "bytes": 138264
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png",
+        "gitBlobSha1": "6eca62e1a8c031e37e72461ed762b2079872b101",
+        "sha256": "fb80fd524869c4a608c7e631d0b77c7e1f08ff2e971d2b9389eb6fdb06c3c4e9",
+        "bytes": 2581
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png",
+        "gitBlobSha1": "97321984b3f94c20f125b16d4b276125a4750bc1",
+        "sha256": "208edb0a257805a167a869a24d6a20bcd94f3c1603c9271618485caf3013a675",
+        "bytes": 1119
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/item-4slot-index.json",
+        "gitBlobSha1": "5ec035caf91fcb09a56034068eb689e5e6044233",
+        "sha256": "1590405c7435df8e0bcce43f3047e5375ff7350a27ea853155dd111d8be0aada",
+        "bytes": 11425621
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.4slot.json",
+        "gitBlobSha1": "a9aceaf29233b879eea905dc28b3a4757dda59ce",
+        "sha256": "324142b835720eda1bb25f706259699faa1633b93f9b703befd6ff6f8057c3bf",
+        "bytes": 3758
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.4slot.json",
+        "gitBlobSha1": "e9d4200fcf08470b13ea6227fba357202d0915a2",
+        "sha256": "20bb8b2c9cd2437fbdb412b1a9b7e027c5fa03e19b8dc1b3107abb4b1031f99a",
+        "bytes": 4141
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/item-4slot/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.4slot.json",
+        "gitBlobSha1": "f19f05d11d35fb7af53ae6232e716f0755ca5ac1",
+        "sha256": "5073e0edf0afb742d59c56a4bd4cbc2c4752ff79de1ec100011a1f8b517ba644",
+        "bytes": 3958
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/question_identity_map.json",
+        "gitBlobSha1": "6e8e29b4333bfd541d942f04c4b6dac6d6762fde",
+        "sha256": "226b9937aec7ad16287c9ff67866cf90df26e9db5b26e79517f8232da8098d89",
+        "bytes": 27938431
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "67ec820bc3028e6f20cec6331638bb0fdd17dad5",
+        "sha256": "c2c73655a5dc59415b2d774bbab39e7c03d51ebb88e59856df64df1b2d39c349",
+        "bytes": 71936829
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "e2d87dde2c1f96cebe86ca8ae06c858f0e1adacc",
+        "sha256": "5df6a0d6f052889a0ffedca7ba5b8361e9f0fec69401e3a52b04d2f77ae6bb25",
+        "bytes": 44299
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "61aa989f31c9db4467573f3246aedf30492d8bd7",
+        "sha256": "e84499cd71a66aa5db5ba3836f053392f26852cb3d194a57150e5858477ec5e2",
+        "bytes": 41248
+      },
+      {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "5a9f269222f1b7a2a685a8c0c88ad845a234b493",
+        "sha256": "5149180b31ceeec68c9ec4ab92bbccd4e6dafb35f3f0226b7c1861149bd16c02",
+        "bytes": 39003
+      },
+      {
+        "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+        "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+        "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+        "bytes": 5966
+      },
+      {
+        "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+        "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+        "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+        "bytes": 303157
+      },
+      {
+        "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.4slot.json",
+        "gitBlobSha1": "a9aceaf29233b879eea905dc28b3a4757dda59ce",
+        "sha256": "324142b835720eda1bb25f706259699faa1633b93f9b703befd6ff6f8057c3bf",
+        "bytes": 3758
+      },
+      {
+        "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.4slot.json",
+        "gitBlobSha1": "e9d4200fcf08470b13ea6227fba357202d0915a2",
+        "sha256": "20bb8b2c9cd2437fbdb412b1a9b7e027c5fa03e19b8dc1b3107abb4b1031f99a",
+        "bytes": 4141
+      },
+      {
+        "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+        "path": "archive/data/item-4slot/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.4slot.json",
+        "gitBlobSha1": "f19f05d11d35fb7af53ae6232e716f0755ca5ac1",
+        "sha256": "5073e0edf0afb742d59c56a4bd4cbc2c4752ff79de1ec100011a1f8b517ba644",
+        "bytes": 3958
+      },
+      {
+        "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+        "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+        "gitBlobSha1": "f25c84d3d8dd84f2987317c13f59a63aa20fd4f0",
+        "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+        "bytes": 311356
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+        "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+        "bytes": 3555
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+        "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+        "bytes": 12366
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a8d2ae54732aa2dfaa70ab1bf921546ad7ed0443",
+        "sha256": "81bfacebf6caae6165866314c38d456602cd4ef6894450dbf6076f5db0cfdb3c",
+        "bytes": 10634
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      {
+        "commit": "c39e2b8a727d1b170980b9decd2288a56102622f",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      {
+        "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+        "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+        "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+        "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+        "bytes": 20912
+      },
+      {
+        "commit": "fe358c718d68de9d73cc9d0990b7a4df716bf4e3",
+        "path": "docs/operations/m2s1-svg7-source-repair-20261116/root-original7-observation-v1.json",
+        "gitBlobSha1": "49dad86c674e9d8b63ca69f5b32422f665b2e0c3",
+        "sha256": "4fd7aaedd5666a65ccb32c5eefaf413cddd6e38f43b422f47ab146d23bf07344",
+        "bytes": 3793
+      }
+    ],
+    "currentFileCount": 140,
+    "immutableRefCount": 375,
+    "privateNonDerivedFilesUnchanged": 132,
+    "sharedWritableHardlinks": 0,
+    "scope": "three immutable source banks; declared evidence only; no global outputDigests recursion"
+  },
+  "actualMainRegistration": "NOT_PERFORMED",
+  "sourceApprovalMutation": 0
+}

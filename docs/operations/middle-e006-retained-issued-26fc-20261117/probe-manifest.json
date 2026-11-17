@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-e006-retained-issued-probe-manifest-v1",
+  "owner": "ci_m2s2",
+  "publicationOwner": "root",
+  "status": "FROZEN_READONLY_PROBE_NODE_SYNTAX_PASS_ACTUAL_TWELVE_NOT_RUN",
+  "operations": [
+    {
+      "path": "tools/ci/observe-e006-retained-issued-native-plan.cjs",
+      "bytes": 23230,
+      "sha256": "b7e711e1b65b4f18fa4674b2a3fa2f656e140e54042ea755ec62f28981948a90",
+      "gitBlobSha1": "72709a1e7ae444a89182571ec556bd1f2b1a26fa",
+      "expectedBeforeGitBlobSha1": null
+    },
+    {
+      "path": ".github/workflows/middle-e006-retained-issued-native-plan-probe.yml",
+      "bytes": 1865,
+      "sha256": "e9662538a5cd371b123ba9eff7778067aba728e436b6257a6696e21188d05aa6",
+      "gitBlobSha1": "79846b1cb1032cba5d81f6147fba58c732e37640",
+      "expectedBeforeGitBlobSha1": null
+    }
+  ],
+  "ref": "refs/heads/ops/middle-e006-retained-issued-probe-26fc-20261117",
+  "fixedSnapshot": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+  "expectedBeforePaths": "TWO_404_ON_FIXED90",
+  "diagnostic": {
+    "bytes": 2280,
+    "sha256": "e5e19e310f1be7dac387a50a2f9d192662876171b0ad68c9425bcca734c67e90",
+    "gitBlobSha1": "95a0bfdf21cc98fa74d08c92b1c3d526f3273c30"
+  },
+  "delta": {
+    "bytes": 10410,
+    "sha256": "8103eee1480f8aad9431dcfaed7d6fc64bed01bcb16659a54d35c944a01c0755",
+    "gitBlobSha1": "e51140343221eb657282031c6cc180d36bda3a18"
+  },
+  "currentSource": {
+    "bytes": 64226,
+    "sha256": "b0e801cecba43ad4cffd2009a1a5cb1a5e533330481bfd24e9401e0d7480470e",
+    "gitBlobSha1": "a06c36b865b617f8c327cc90e1f4a931668a3e19"
+  },
+  "receipt": {
+    "bytes": 208512,
+    "sha256": "73176562cdc8dd91b7025f23cd9d9595c5acbfa6470c3403876367b9f7068677",
+    "gitBlobSha1": "253c5aeae229085d9bf6bb51942f114743981d44"
+  },
+  "command": "node tools/ci/observe-e006-retained-issued-native-plan.cjs --root ACTUAL_MAIN_CHECKOUT --output EXTERNAL_REPORT_JSON",
+  "boundaries": {
+    "currentSnapshot": "Exact main90 source tree with committed data; no prepare or generated reprojection.",
+    "observedCiHead": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+    "sourceSameBetweenObservedCiAnd90": true,
+    "productionAuto": "Fixed actual main90 dfc382; not an execution of candidate13d5 ecdb4.",
+    "exactCurrentRowsBeforeNative": "Unique current MD/ID/runtime must equal issued receipt whole rows for every selected UID.",
+    "nativeAndPlan": "Original APIs only; APPLY/final may be observed but are never applied or approved.",
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "applyCalls": 0,
+    "registrationCalls": 0,
+    "fullPrepareRuns": 0,
+    "wholeRuntimeTestRuns": 0,
+    "currentNativeResult": "NOT_RUN",
+    "currentPlanResult": "NOT_RUN",
+    "newRetentionExceptionAdded": false
+  },
+  "nextAction": "Independent narrow config/denominator review, then root readonly ops execution. No retention exception without actual twelve results."
+}

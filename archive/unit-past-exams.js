@@ -190,6 +190,17 @@
       };
     });
   }
+  // 원본 엔진(engine.html)과 같은 규칙: questions → questionBank → examData(배열 또는 .questions/.problems).
+  // window.examData = {...} 형식 원본은 questionBank 별칭 줄이 없다.
+  function readSourceQuestionArray() {
+    if (Array.isArray(window.questions)) return window.questions;
+    if (Array.isArray(window.questionBank)) return window.questionBank;
+    const examData = window.examData;
+    if (Array.isArray(examData)) return examData;
+    if (Array.isArray(examData?.questions)) return examData.questions;
+    if (Array.isArray(examData?.problems)) return examData.problems;
+    return null;
+  }
   function loadQuestionFile(sourceFile) {
     if (state.fileCache.has(sourceFile)) return state.fileCache.get(sourceFile);
     const promise = (async () => {
@@ -198,15 +209,16 @@
       for (const candidate of candidates) {
         delete window.questions;
         delete window.questionBank;
+        delete window.examData;
         try {
           await loadScript(`exams/${candidate}?v=20260827b`);
         } catch (error) {
           failures.push(`${candidate}: ${error.message || error}`);
           continue;
         }
-        const data = Array.isArray(window.questions) ? window.questions : window.questionBank;
+        const data = readSourceQuestionArray();
         if (Array.isArray(data)) return data.map(question => ({ ...question }));
-        failures.push(`${candidate}: questionBank 배열 없음`);
+        failures.push(`${candidate}: 문항 배열(questions/questionBank/examData) 없음`);
       }
       const attempted = failures.length > 1 ? ` 시도 경로: ${candidates.join(', ')}` : '';
       throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.${attempted}`);

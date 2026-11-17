@@ -1727,6 +1727,39 @@ async function loadConceptMapForRecommend() {
     return state.ui.conceptMapCache;
 }
 
+// window.examData 형식 원본 전용 문항 번호 규칙: number → id → 배열 순번+1.
+// number/id는 "숫자" 또는 "Q/q+숫자"(Q01, q01) 꼴일 때만 번호로 인정한다.
+// questionBank 형식 원본·교재(id가 "BV-...-COM2-P10-Q01-T1-R1" 같은 긴 문자열)에는 쓰지 않는다:
+// 첫 숫자열을 뽑으면 번호가 겹치므로, 그쪽은 기존 Number(q.id) 동작을 그대로 둔다.
+function getArchiveQuestionNumber(q, index) {
+    for (const value of [q?.number, q?.id]) {
+        const match = String(value ?? '').match(/^\s*[Qq]?0*(\d+)\s*$/);
+        if (match) return Number(match[1]);
+    }
+    return Number(index) + 1;
+}
+
+// 추천 후보 루프가 문항 하나의 번호를 정하는 곳. null이면 건너뛴다.
+// questionBank 형식: 기존 그대로(q.id, id 없으면 건너뜀). examData 형식: getArchiveQuestionNumber.
+function getBankQuestionId(bankData, q, index) {
+    if (!q) return null;
+    if (bankData?.fromExamData) return getArchiveQuestionNumber(q, index);
+    if (q.id === undefined || q.id === null) return null;
+    return q.id;
+}
+
+// 원본 엔진(archive/engine.html)과 같은 규칙으로 문항 배열을 찾는다.
+// window.questionBank가 있으면 기존 방식(배열만), 없으면 window.examData(배열 / .questions / .problems).
+// fromExamData=true면 호출한 쪽이 getArchiveQuestionNumber 규칙을 써야 한다.
+function pickArchiveQuestionList(win) {
+    if (win?.questionBank) {
+        return { list: Array.isArray(win.questionBank) ? win.questionBank : [], fromExamData: false };
+    }
+    const qb = win?.examData;
+    const list = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
+    return { list: Array.isArray(list) ? list : [], fromExamData: !!qb };
+}
+
 async function loadArchiveQuestionBank(file) {
     const path = normalizeArchivePath(file);
     if (!path) return { examTitle: '', questionBank: [] };
@@ -1734,11 +1767,14 @@ async function loadArchiveQuestionBank(file) {
     if (state.ui.archiveQuestionBankCache[path]) return state.ui.archiveQuestionBankCache[path];
 
     const text = await fetchArchiveScriptText(path);
-    const sandbox = {};
-    const data = new Function('window', `${text}\n;return { examTitle: window.examTitle || '', questionBank: window.questionBank || [] };`)(sandbox);
+    // sandbox는 호출마다 새 객체라 앞 파일의 window.examData/questionBank가 섞이지 않는다.
+    const sandbox = { questionBank: null, examData: null };
+    const data = new Function('window', `${text}\n;return { examTitle: window.examTitle || '', win: window };`)(sandbox);
+    const picked = pickArchiveQuestionList(data.win);
     const normalized = {
-        examTitle: data.examTitle || path.replace(/^exams\//, '').replace(/\.js$/, ''),
-        questionBank: Array.isArray(data.questionBank) ? data.questionBank : []
+        examTitle: data.examTitle || (picked.fromExamData && data.win.examData && data.win.examData.title) || path.replace(/^exams\//, '').replace(/\.js$/, ''),
+        questionBank: picked.list,
+        fromExamData: picked.fromExamData
     };
     state.ui.archiveQuestionBankCache[path] = normalized;
     return normalized;
@@ -2057,13 +2093,15 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
         const file = normalizeArchivePath(entry.file);
         try {
             const bankData = await loadArchiveQuestionBank(file);
-            for (const q of bankData.questionBank) {
-                if (!q || q.id === undefined || q.id === null) continue;
-                if (isOriginalWrongQuestion(item, file, q.id)) continue;
+            // examData 형식만 새 번호 규칙을 쓰고, questionBank 형식은 기존(q.id, id 없으면 건너뜀) 그대로다.
+            for (const [qIndex, q] of bankData.questionBank.entries()) {
+                const qId = getBankQuestionId(bankData, q, qIndex);
+                if (qId === null) continue;
+                if (isOriginalWrongQuestion(item, file, qId)) continue;
 
                 const qUnitKey = q.standardUnitKey || '';
                 const qCluster = q.conceptClusterKey || conceptMap[qUnitKey] || '';
-                const key = `${file}::${Number(q.id)}`;
+                const key = `${file}::${Number(qId)}`;
                 if (seen.has(key)) continue;
 
                 const isExact = unitKey && qUnitKey === unitKey;
@@ -2075,8 +2113,8 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
                     archiveFile: file,
                     examTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
                     sourceTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
-                    questionId: q.id,
-                    questionNo: q.id,
+                    questionId: qId,
+                    questionNo: qId,
                     level: q.level || '',
                     standardUnitKey: qUnitKey,
                     standardUnit: q.standardUnit || qUnitKey || '',
@@ -2205,9 +2243,11 @@ function getQuestionNumberFromClinicItem(item) {
     return Number.isFinite(n) ? n : null;
 }
 
-function findQuestionInBank(questionBank, questionNo) {
+function findQuestionInBank(questionBank, questionNo, fromExamData = false) {
     if (!Array.isArray(questionBank) || questionNo === null || questionNo === undefined) return null;
-    const byId = questionBank.find(q => Number(q?.id) === Number(questionNo));
+    const byId = fromExamData
+        ? questionBank.find((q, i) => getArchiveQuestionNumber(q, i) === Number(questionNo))
+        : questionBank.find(q => Number(q?.id) === Number(questionNo));
     if (byId) return byId;
     const idx = Number(questionNo) - 1;
     if (Number.isInteger(idx) && idx >= 0 && idx < questionBank.length) return questionBank[idx];
@@ -2255,7 +2295,7 @@ async function hydrateClinicBasketItems(items = []) {
         try {
             if (!bankCache[file]) bankCache[file] = await loadArchiveQuestionBank(file);
             const bankData = bankCache[file];
-            const original = findQuestionInBank(bankData.questionBank, qNo);
+            const original = findQuestionInBank(bankData.questionBank, qNo, !!bankData.fromExamData);
             if (!original) {
                 failures.push({ item, reason: `${file} ${qNo}번 문항 없음` });
                 continue;

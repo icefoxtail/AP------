@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "archive-runtime-original-receipt-retention-manifest-v1",
+  "status": "FROZEN_TEST_ONLY_INDEPENDENT_REVIEW_PENDING",
+  "owner": "ci_m2s2",
+  "publicationOwner": "root",
+  "beforeCommit": "dcae6fbaf588ec59c9c0f5448eb7f23bbd3e886d",
+  "integrationMustPreserveLatestMain": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+  "operations": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "bytes": 95547,
+      "sha256": "c7597fac19a5d24210738db3b4ee41dfc6b1270e7098ff714977637cafb1b057",
+      "gitBlobSha1": "fa42fee9e8ea485a240c004d1a68d9f09daf90cf",
+      "expectedBeforeGitBlobSha1": "1a14104093e8b5e1aa81ddcc6d1cfef852227afc",
+      "expectedBeforeSha256": "faea3ed904d3341f0a2ef06454eae775bfe81ded2de1d660d829f8209bf0a79a",
+      "expectedBeforeBytes": 60901
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "bytes": 73516,
+      "sha256": "fe1386eee8af21fe84382b8a4593b21e82bf6799a1d51c92904fab3f4baf6329",
+      "gitBlobSha1": "b5c9b77bc742240d54a0a6cb984ebd419f1361b6",
+      "expectedBeforeGitBlobSha1": "9184cec336850364a72474bea52a84fb05289566",
+      "expectedBeforeSha256": "a3c9b16ed47d82d2b8b5a2267de630c0698d39042a019a4f7b20dd576ae8905d",
+      "expectedBeforeBytes": 62331
+    }
+  ],
+  "evidence": {
+    "bytes": 25538,
+    "sha256": "883e7b8822dfe5f02fc198965cb02a96c3b86eda5b16f6f55323e8660b79e8d7",
+    "gitBlobSha1": "094b45d54d3cc65504708a9900599661e622e302"
+  },
+  "delta": {
+    "bytes": 52877,
+    "sha256": "b79be67d3cd447d879481602d76a26770f6cffdaad78fd64c7e9df6e37c45247",
+    "gitBlobSha1": "4de99f286755b67dc840eb3d5f0c2d5bf45da2d0"
+  },
+  "actualProbe": {
+    "bytes": 57929,
+    "sha256": "1643e7eb9c55739ff1933addcb8a9a00e6b2e1e8fca41e0b77c3ee38cc993b3e",
+    "gitBlobSha1": "3806aeae18d0112ad93b848df2411c9775d690b6"
+  },
+  "validation": {
+    "node": {
+      "node": "v24.22.1",
+      "commands": [
+        "node --check /tmp/ap-middle-meta-26fc-runtime21/ci-m2/middle-geometry-issued-approval.cjs",
+        "node --check /tmp/ap-middle-meta-26fc-runtime21/ci-m2/meta-foundation-middle-geometry-runtime.test.js"
+      ],
+      "result": "2_CHECKS_PASS",
+      "repositoryCodeEvaluated": false,
+      "testDefinitionsExecuted": 0,
+      "actualNativeRuns": 0
+    },
+    "reversibleInverseExact": true,
+    "originalNativeBodyExact": true,
+    "newNegativeDefinitions": 64,
+    "actualTestRun": "NOT_RUN"
+  },
+  "execute": "node tests/meta-foundation-middle-geometry-runtime.test.js",
+  "scope": {
+    "originalReceipts": 2,
+    "retainedSubjects": 11,
+    "currentNativeApprovalsGranted": 0,
+    "newApprovals": 0,
+    "productionChanges": 0,
+    "sourceMetadataIdentityRuntimeWrites": 0,
+    "other437TransitionsAutomaticallyAccepted": 0
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "archive-m3-q5-q16-current-ui-external-source-impact-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "GPT_M3S2_RELEASE_20261116",
+  "snapshot": "5a20d765998a2101899572ba84a359fef751ecfb",
+  "parents": [
+    "2849bb59e61a9242c47a24ab9bddeb61ab5cb2d6",
+    "59b6d1aca5ad9d796250ba3beb1710de219f012b"
+  ],
+  "candidateManifest": {
+    "gitBlobSha1": "4f2744955009bcba3b42260d8e91f2c3e98157ba",
+    "sha256": "1ac0ea3caa07e3e6279596669bf8a904d05ac7a3cac1e7c0f2a568452f927bf5",
+    "bytes": 13722
+  },
+  "method": "Read exact commit changed-path metadata and source-directory Git metadata; compare with frozen candidate code source literals and fixed current-source refs. No source body parsed.",
+  "externalChange": {
+    "totalPaths": 41,
+    "m3SecondSemester": [
+      {
+        "path": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+        "sha": "66e8619639246f6d37d3042501eeeb7d29d447d2",
+        "status": "modified"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/21_연향중_2학기_중간_중3_수학.js",
+        "sha": "f0c8e60bfeb36409dac13503f3304fa71381082a",
+        "status": "modified"
+      },
+      {
+        "path": "archive/tools/geometry-equation/production/exam-figure-ledger/middle/m3/2mid/21_연향중_2학기_중간_중3_수학.json",
+        "sha": "6ee73e78f668d1ebdb82c51298752b1950f0e0fa",
+        "status": "modified"
+      }
+    ],
+    "outsideScopePathCount": 38,
+    "outsideScopeContentRead": 0
+  },
+  "selectedSources": [
+    {
+      "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+      "bytes": 66658,
+      "type": "file",
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "expectedGit": "82c627bacb59105e9bd3a5397d4828757308d587",
+      "expectedBytes": 66658,
+      "exact": true
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "80043be4a26d379664740f0846720bba38f31d5a",
+      "bytes": 63188,
+      "type": "file",
+      "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+      "expectedGit": "80043be4a26d379664740f0846720bba38f31d5a",
+      "expectedBytes": 63188,
+      "exact": true
+    }
+  ],
+  "candidatePathIntersection": [],
+  "protectedFamilyChangesInThisCommit": [],
+  "authorityImpact": {
+    "q5OriginalGivenSourceAndAncestorConditions": "UNCHANGED",
+    "q16ExactCurrentSourceAndLayoutConditions": "UNCHANGED",
+    "publicSourceWrites": 0,
+    "approvalOrReceiptEdits": 0
+  },
+  "bounds": {
+    "newNativeExecution": 0,
+    "newBuilderExecution": 0,
+    "newConsumerExecution": 0,
+    "newMathReview": 0,
+    "newImageReview": 0,
+    "sourceContentEvaluation": 0,
+    "remoteRefWrites": 0
+  },
+  "conclusion": "The external first-parent source delta does not intersect selected Q5/Q16 current sources or frozen candidate paths. Exact source guards remain mandatory; current Native and full scoped gates are still pending."
+}

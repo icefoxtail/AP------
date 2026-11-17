@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "archive-retained-issued-native-plan-probe-manifest-v1",
+  "status": "IMMUTABLE_CANDIDATE_NODE_AND_ACTUAL_NOT_RUN",
+  "owner": "ci_m2s2",
+  "publicationOwner": "root",
+  "branch": "ops/middle-retained-issued-producer-probe-26fc-20261117",
+  "observedActualSnapshot": "b4dc3bf65c37106ef2661173a0d1b83dc0e0417b",
+  "scope": {
+    "sources": 2,
+    "subjects": 11,
+    "e034": 10,
+    "hyangrimQ5": 1,
+    "originalIssuedRowsMustRemainWhole": true
+  },
+  "operations": [
+    {
+      "path": "tools/ci/observe-retained-issued-native-plan.cjs",
+      "bytes": 24228,
+      "sha256": "2b5d3676b6eee3f08c339c62e34ba5aacde7ec44c2109f0866f6c433402069f1",
+      "gitBlobSha1": "2f8d02db2a5f6789cd8cfe9b9ca77cbc7a97d0b7",
+      "expectedBeforeGitBlobSha1": null,
+      "mode": "100644",
+      "readback": "FULL_STRING_EXACT"
+    },
+    {
+      "path": ".github/workflows/middle-retained-issued-native-plan-probe.yml",
+      "bytes": 1823,
+      "sha256": "3161df9c49c059f34043d19f8c9915b1473322915c37cc683a8333159de1fe21",
+      "gitBlobSha1": "8c36f5952c28ea367324921087f160253e82d0bc",
+      "expectedBeforeGitBlobSha1": null,
+      "mode": "100644",
+      "readback": "FULL_STRING_EXACT"
+    }
+  ],
+  "exactCurrentInputs": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 60529,
+      "sha256": "dbcb5bc3b7e999793e7f9a321872ec58e0f50c0c2e2cf2cd63adaadbde6141f8",
+      "gitBlobSha1": "dfc382f28643fd5fe9e2ca6a719beddd42fc0c55"
+    },
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "bytes": 13944,
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed",
+      "gitBlobSha1": "93ed7214a5e4dc0b0cdd9853d388bca26e64a172"
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+      "bytes": 60399,
+      "sha256": "95b0866ca1c8b1aa99e79cffc7caa386a999106f8f25606122bc1e263347eac4",
+      "gitBlobSha1": "66e8619639246f6d37d3042501eeeb7d29d447d2"
+    },
+    {
+      "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "bytes": 62388,
+      "sha256": "12fe8f1e2f4970a8c9cae76b0f558e80b92cda4258c94d300afe30c6e638fd23",
+      "gitBlobSha1": "2e5c6dfa390ff329c4982e3dfc5b3df3429c2b05"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e034-residual-exclude-q22-d5-26fc-20261116.json",
+      "bytes": 177976,
+      "sha256": "9c93ebc1a234322a2f166a973401124de385f1f816c77b4f4d62eb825e9020f2",
+      "gitBlobSha1": "17af77b58b75ecfe11bab8f08fe0771a06b0ad25"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-closeout-20261115-E013-Q5-preserve.json",
+      "bytes": 9339,
+      "sha256": "4f091bd3276b2b014468a91e3540b2a93d39a12249090dac4c04414d63844c74",
+      "gitBlobSha1": "061942ba4cdc674e9147885e392d63ffd8343843"
+    }
+  ],
+  "invocation": "node tools/ci/observe-retained-issued-native-plan.cjs --root <fixed-b4-actual-checkout> --output <external-temp-report>",
+  "workflowContract": {
+    "event": "push",
+    "exactRef": "refs/heads/ops/middle-retained-issued-producer-probe-26fc-20261117",
+    "repository": "icefoxtail/AP------",
+    "contents": "read",
+    "checkoutCode": "github.sha",
+    "checkoutActual": "b4dc3bf65c37106ef2661173a0d1b83dc0e0417b",
+    "fetchDepthActual": 0,
+    "prepare": false,
+    "registration": false,
+    "apply": false,
+    "codeImport": "fixed actual main only",
+    "logs": "bounded metadata report BASE64 frames with raw/Git/bytes",
+    "artifact": true
+  },
+  "guards": [
+    "fixed current Auto/ACTIVE module SHA+snapshot paths",
+    "fixed source2/issued receipt2 raw and Git",
+    "unique metadata/identity/runtime joins",
+    "all11 current metadata identity runtime whole equal issued rows",
+    "current ACTIVE registry and declared canonical/compiled digests",
+    "current direct issued evidence digests",
+    "original Native and planQuestion no mocks",
+    "Native null and APPLY observed without execution",
+    "input object/file/HEAD/status unchanged",
+    "body/answer/solution/rationale/final output omitted; only hashes and metadata"
+  ],
+  "diagnostics": {
+    "declaredReceiptShapes": {
+      "gitBlobSha1": "318f33945b0479979b15dca2bab25f39c9d29c45",
+      "sha256": "00f46354371cbae2e73fb5bbea34b9beed973afcb6dfc01121285949c7695b4d",
+      "bytes": 90755
+    }
+  },
+  "verification": {
+    "ownV8ConstructionParse": "PASS_CONSTRUCTION_ONLY_NOT_INVOKED",
+    "node": "NOT_RUN",
+    "native": "NOT_RUN",
+    "planQuestion": "NOT_RUN",
+    "officialRegistration": 0,
+    "metadataApprovalChanges": 0,
+    "wholeRuntimeTest": 0,
+    "productionCodeChanges": 0,
+    "branchRefChanges": 0
+  }
+}

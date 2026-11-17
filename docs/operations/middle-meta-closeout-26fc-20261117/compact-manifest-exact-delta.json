@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "archive-selected-source-compact-exact-delta-v1",
+  "baseCommit": "9fbcf190fd8abaa03f330def331afc7c7c27ba60",
+  "changes": [
+    {
+      "path": "archive/archive2-canonical.js",
+      "beforeGit": "733bede611518556c0b7eebf0680e30cf8d56afd",
+      "afterGit": "093b678432351748b620725b193443e620d065f0",
+      "inverseExact": true,
+      "edits": [
+        {
+          "label": "pure_compact_codec",
+          "before": "  async function loadInputBundle(fetcher, baseUrl, expectedVersion = \"\") {",
+          "after": "\n  const COMPACT_INPUT_MANIFEST_PATH = \"data/archive2-canonical-input-manifest.compact.json\";\n  const COMPACT_INPUT_MANIFEST_SCHEMA = \"archive2-canonical-input-manifest-compact-v1\";\n  const INPUT_MANIFEST_SCHEMA = \"archive2-canonical-input-manifest-v1\";\n  const INPUT_MANIFEST_KEYS = [\n    \"schemaVersion\", \"resolverVersion\", \"generatedFromCatalogIndexVersion\", \"projectionVersion\", \"files\",\n  ];\n  const COMPACT_INPUT_MANIFEST_KEYS = [\n    \"schemaVersion\", \"manifestSchemaVersion\", \"resolverVersion\", \"generatedFromCatalogIndexVersion\",\n    \"projectionVersion\", \"directories\", \"files\",\n  ];\n  function compactManifestInvalid(why) {\n    return makeError(\"CANONICAL_INPUT_DIGEST_MISMATCH\", \"canonical compact input manifest is invalid: \" + why);\n  }\n  function exactManifestKeys(value, keys) {\n    return value !== null && typeof value === \"object\" && !Array.isArray(value) &&\n      Object.keys(value).length === keys.length &&\n      keys.every((key) => Object.prototype.hasOwnProperty.call(value, key));\n  }\n  function compactManifestHeaders(value, compact) {\n    const keys = compact ? COMPACT_INPUT_MANIFEST_KEYS : INPUT_MANIFEST_KEYS;\n    if (!exactManifestKeys(value, keys))\n      throw compactManifestInvalid(\"header shape\");\n    if (\n      value.schemaVersion !== (compact ? COMPACT_INPUT_MANIFEST_SCHEMA : INPUT_MANIFEST_SCHEMA) ||\n      (compact && value.manifestSchemaVersion !== INPUT_MANIFEST_SCHEMA) ||\n      value.resolverVersion !== RESOLVER_VERSION\n    )\n      throw makeError(\"CANONICAL_RESOLVER_VERSION_MISMATCH\", \"canonical compact input manifest version mismatch\");\n    if (\n      typeof value.generatedFromCatalogIndexVersion !== \"string\" ||\n      !/^[a-f0-9]{64}$/.test(value.generatedFromCatalogIndexVersion) ||\n      typeof value.projectionVersion !== \"string\" ||\n      !/^archive2-canonical-v1:[a-f0-9]{64}$/.test(value.projectionVersion) ||\n      !Array.isArray(value.files) || !value.files.length\n    )\n      throw compactManifestInvalid(\"header value\");\n  }\n  function compactManifestPathParts(value) {\n    if (\n      typeof value !== \"string\" || !value || value !== value.trim() ||\n      value !== value.normalize(\"NFC\") || value.startsWith(\"/\") ||\n      /[\\\\\\x00-\\x1f\\x7f?#%:]/.test(value)\n    )\n      throw compactManifestInvalid(\"path\");\n    const parts = value.split(\"/\");\n    // Existing authority manifests legitimately reference ../docs/. Preserve that\n    // exact namespace; no other parent traversal or URL interpretation is accepted.\n    const checked = parts[0] === \"..\" && parts[1] === \"docs\" ? parts.slice(1) : parts;\n    if (checked.some((part) => !part || part === \".\" || part === \"..\" || part !== part.trim()))\n      throw compactManifestInvalid(\"path segment\");\n    if (value === COMPACT_INPUT_MANIFEST_PATH)\n      throw compactManifestInvalid(\"companion cannot be an input to itself\");\n    const slash = value.lastIndexOf(\"/\");\n    return { directory: slash < 0 ? \"\" : value.slice(0, slash + 1), basename: value.slice(slash + 1) };\n  }\n  function compactManifestHash(value) {\n    if (typeof value !== \"string\" || !/^[a-f0-9]{64}$/.test(value))\n      throw compactManifestInvalid(\"file hash\");\n    return value;\n  }\n\n  // This companion is a transport view of the original manifest, not a new\n  // authority/projection format. File order, headers and every path/hash survive\n  // exactly; all existing manifest/index/shard checks run on the decoded object.\n  function encodeCompactInputManifest(manifest) {\n    compactManifestHeaders(manifest, false);\n    const directories = [], directoryIndices = new Map(), seenPaths = new Set();\n    const files = manifest.files.map((row) => {\n      if (!exactManifestKeys(row, [\"path\", \"sha256\"]))\n        throw compactManifestInvalid(\"original file shape\");\n      const { directory, basename } = compactManifestPathParts(row.path);\n      if (seenPaths.has(row.path)) throw compactManifestInvalid(\"duplicate path\");\n      seenPaths.add(row.path);\n      if (!directoryIndices.has(directory)) {\n        directoryIndices.set(directory, directories.length);\n        directories.push(directory);\n      }\n      return [directoryIndices.get(directory), basename, compactManifestHash(row.sha256)];\n    });\n    return {\n      schemaVersion: COMPACT_INPUT_MANIFEST_SCHEMA,\n      manifestSchemaVersion: manifest.schemaVersion,\n      resolverVersion: manifest.resolverVersion,\n      generatedFromCatalogIndexVersion: manifest.generatedFromCatalogIndexVersion,\n      projectionVersion: manifest.projectionVersion,\n      directories,\n      files,\n    };\n  }\n  function decodeCompactInputManifest(compact) {\n    compactManifestHeaders(compact, true);\n    if (!Array.isArray(compact.directories) || !compact.directories.length ||\n        compact.directories.length > compact.files.length)\n      throw compactManifestInvalid(\"directory table\");\n    const seenDirectories = new Set();\n    for (const directory of compact.directories) {\n      if (typeof directory !== \"string\" || (directory && !directory.endsWith(\"/\")) ||\n          seenDirectories.has(directory))\n        throw compactManifestInvalid(\"directory entry\");\n      // Validate the prefix with a fixed safe basename without normalizing it.\n      if (compactManifestPathParts(directory + \"__manifest_prefix_check__.json\").directory !== directory)\n        throw compactManifestInvalid(\"directory prefix\");\n      seenDirectories.add(directory);\n    }\n    const seenPaths = new Set(), usedDirectories = new Set();\n    const files = compact.files.map((tuple) => {\n      if (!Array.isArray(tuple) || tuple.length !== 3 ||\n          !Number.isInteger(tuple[0]) || Object.is(tuple[0], -0) ||\n          tuple[0] < 0 || tuple[0] >= compact.directories.length ||\n          typeof tuple[1] !== \"string\" || !tuple[1] || /[\\/\\\\]/.test(tuple[1]))\n        throw compactManifestInvalid(\"file tuple\");\n      if (!usedDirectories.has(tuple[0])) {\n        if (tuple[0] !== usedDirectories.size)\n          throw compactManifestInvalid(\"directory order\");\n        usedDirectories.add(tuple[0]);\n      }\n      const directory = compact.directories[tuple[0]], path = directory + tuple[1];\n      const decoded = compactManifestPathParts(path);\n      if (decoded.directory !== directory || decoded.basename !== tuple[1] || seenPaths.has(path))\n        throw compactManifestInvalid(\"reconstructed path\");\n      seenPaths.add(path);\n      return { path, sha256: compactManifestHash(tuple[2]) };\n    });\n    if (usedDirectories.size !== compact.directories.length)\n      throw compactManifestInvalid(\"unused directory\");\n    return {\n      schemaVersion: compact.manifestSchemaVersion,\n      resolverVersion: compact.resolverVersion,\n      generatedFromCatalogIndexVersion: compact.generatedFromCatalogIndexVersion,\n      projectionVersion: compact.projectionVersion,\n      files,\n    };\n  }\n\n  async function loadInputBundle(fetcher, baseUrl, expectedVersion = \"\") {"
+        },
+        {
+          "label": "scoped_404_read",
+          "before": "    const read = async (relativePath) => {",
+          "after": "    const read = async (relativePath, allow404 = false) => {",
+          "scope": "loadSourceVerificationShard ONLY"
+        },
+        {
+          "label": "only_actual_http404",
+          "before": "      if (!response || !response.ok)\n        throw makeError(\"CANONICAL_AUTHORITY_UNAVAILABLE\", \"canonical source unavailable: \" + relativePath);",
+          "after": "      if (allow404 && response?.status === 404) return null;\n      if (!response || !response.ok)\n        throw makeError(\"CANONICAL_AUTHORITY_UNAVAILABLE\", \"canonical source unavailable: \" + relativePath);",
+          "scope": "loadSourceVerificationShard ONLY"
+        },
+        {
+          "label": "source_only_manifest_preference",
+          "before": "      manifest = JSON.parse(await read(\"data/archive2-canonical-input-manifest.json\"));",
+          "after": "      const compactBody = await read(COMPACT_INPUT_MANIFEST_PATH, true);\n      manifest = compactBody === null\n        ? JSON.parse(await read(\"data/archive2-canonical-input-manifest.json\"))\n        : decodeCompactInputManifest(JSON.parse(compactBody));",
+          "scope": "loadSourceVerificationShard ONLY"
+        },
+        {
+          "label": "codec_exports",
+          "before": "    computeProjectionVersion,\n    loadInputBundle,",
+          "after": "    computeProjectionVersion,\n    COMPACT_INPUT_MANIFEST_PATH,\n    encodeCompactInputManifest,\n    decodeCompactInputManifest,\n    loadInputBundle,"
+        }
+      ]
+    },
+    {
+      "path": "archive/tools/build-archive2-catalog.mjs",
+      "beforeGit": "72a9babc8bb30ed99a1dcb545a47722662e76403",
+      "afterGit": "adbde493e5ebb455e4802df59183e1bc92693a79",
+      "inverseExact": true,
+      "edits": [
+        {
+          "name": "derive_after_all_inputs",
+          "before": "const manifestTarget = path.join(root, \"archive/data/archive2-canonical-input-manifest.json\");",
+          "after": "const manifestTarget = path.join(root, \"archive/data/archive2-canonical-input-manifest.json\");\nconst compactManifest = core.Canonical.encodeCompactInputManifest(manifest);\nif (JSON.stringify(core.Canonical.decodeCompactInputManifest(compactManifest)) !== JSON.stringify(manifest))\n  throw new Error(\"Canonical compact input manifest did not preserve the original manifest exactly\");\nconst compactManifestText = JSON.stringify(compactManifest) + \"\\n\";\nconst compactManifestTarget = path.join(root, \"archive\", core.Canonical.COMPACT_INPUT_MANIFEST_PATH);"
+        },
+        {
+          "name": "package_registered_exact_companion",
+          "before": "      [relative(manifestTarget), JSON.stringify(manifest) + \"\\n\"],",
+          "after": "      [relative(manifestTarget), JSON.stringify(manifest) + \"\\n\"],\n      [relative(compactManifestTarget), compactManifestText],"
+        },
+        {
+          "name": "check_companion",
+          "before": "  if (actualManifest !== JSON.stringify(manifest) + \"\\n\")\n    throw new Error(\"Archive 2.0 canonical input manifest is stale\");",
+          "after": "  if (actualManifest !== JSON.stringify(manifest) + \"\\n\")\n    throw new Error(\"Archive 2.0 canonical input manifest is stale\");\n  const actualCompactManifest = fs.existsSync(compactManifestTarget)\n    ? fs.readFileSync(compactManifestTarget, \"utf8\").replace(/\\r\\n/g, \"\\n\")\n    : null;\n  if (actualCompactManifest !== compactManifestText)\n    throw new Error(\"Archive 2.0 canonical compact input manifest is stale\");"
+        },
+        {
+          "name": "write_companion",
+          "before": "  fs.writeFileSync(manifestTarget, JSON.stringify(manifest) + \"\\n\");",
+          "after": "  fs.writeFileSync(manifestTarget, JSON.stringify(manifest) + \"\\n\");\n  fs.writeFileSync(compactManifestTarget, compactManifestText);"
+        },
+        {
+          "name": "explicit_transport_companion_exclusion",
+          "before": "  ...sourceQualityHolds.manifestPaths,\n])].sort();",
+          "after": "  ...sourceQualityHolds.manifestPaths,\n])].filter((inputPath) => inputPath !== core.Canonical.COMPACT_INPUT_MANIFEST_PATH).sort();"
+        }
+      ]
+    },
+    {
+      "path": "tests/archive2-original-source-verification-shard.test.mjs",
+      "beforeGit": "ff25d98dec98828fd6b370208fae3ec1e7fd3f56",
+      "afterGit": "e0fbe355e154d65ef9d05007caca9d44736baaff",
+      "inverseExact": true,
+      "edits": [
+        {
+          "name": "compact_path",
+          "before": "const manifestRelative = \"archive/data/archive2-canonical-input-manifest.json\";",
+          "after": "const manifestRelative = \"archive/data/archive2-canonical-input-manifest.json\";\nconst compactManifestRelative = \"archive/\" + canonical.COMPACT_INPUT_MANIFEST_PATH;"
+        },
+        {
+          "name": "exact_companion_input",
+          "before": "const manifest = JSON.parse(manifestText);",
+          "after": "const manifest = JSON.parse(manifestText);\nconst compactManifestText = fs.readFileSync(path.join(root, compactManifestRelative), \"utf8\");\nconst compactManifest = JSON.parse(compactManifestText);"
+        },
+        {
+          "name": "explicit_http_failure_fixture",
+          "before": "function createAssetEnv({ overrides = new Map(), missing = new Set() } = {}) {",
+          "after": "function createAssetEnv({ overrides = new Map(), missing = new Set(), statuses = new Map() } = {}) {"
+        },
+        {
+          "name": "http_status_fixture_response",
+          "before": "    if (missing.has(relative))\n      return new Response(\"Not found\", { status: 404 });",
+          "after": "    if (missing.has(relative))\n      return new Response(\"Not found\", { status: 404 });\n    if (statuses.has(relative))\n      return new Response(\"Unavailable\", { status: statuses.get(relative) });"
+        },
+        {
+          "name": "rebased_fixture_modifies_used_companion",
+          "before": "      [manifestRelative, nextManifestText],",
+          "after": "      [manifestRelative, nextManifestText],\n      [compactManifestRelative, JSON.stringify(canonical.encodeCompactInputManifest(nextManifest)) + \"\\n\"],"
+        },
+        {
+          "name": "legacy_fixture_explicit404",
+          "before": "      [manifestRelative, JSON.stringify(legacyManifest) + \"\\n\"],",
+          "after": "      [manifestRelative, JSON.stringify(legacyManifest) + \"\\n\"],\n      [compactManifestRelative, null],"
+        },
+        {
+          "name": "three_fetch_test_label",
+          "before": "test(\"original snapshot validation fetches only the manifest, index, and selected source shard\", async () => {",
+          "after": "test(\"original snapshot validation fetches only the compact manifest, index, and selected source shard\", async () => {"
+        },
+        {
+          "name": "true_current_three_fetch_budget",
+          "before": "  assert.deepEqual(assets.requests, [manifestRelative, indexRelative, shardRelative]);\n  assert.ok(assets.bytesFetched() < 500_000, \"selected exam verification stays below 500 KB\");",
+          "after": "  assert.deepEqual(assets.requests, [compactManifestRelative, indexRelative, shardRelative]);\n  assert.equal(assets.bytesFetched(), Buffer.byteLength(compactManifestText) + Buffer.byteLength(indexText) + Buffer.byteLength(shardText));\n  assert.ok(assets.bytesFetched() < 500_000, \"selected exam verification stays below 500 KB\");"
+        },
+        {
+          "name": "stale_version_uses_companion",
+          "before": "    assert.deepEqual(assets.requests, [manifestRelative]);",
+          "after": "    assert.deepEqual(assets.requests, [compactManifestRelative]);"
+        },
+        {
+          "name": "three_current_index_failure_assertions",
+          "before": "    assert.deepEqual(assets.requests, [manifestRelative, indexRelative]);",
+          "after": "    assert.deepEqual(assets.requests, [compactManifestRelative, indexRelative]);",
+          "count": 3
+        },
+        {
+          "name": "corrupt_shard_used_companion",
+          "before": "    assert.deepEqual(assets.requests, [manifestRelative, indexRelative, shardRelative]);",
+          "after": "    assert.deepEqual(assets.requests, [compactManifestRelative, indexRelative, shardRelative]);"
+        },
+        {
+          "name": "legacy_full_fixture_404",
+          "before": "    overrides: new Map([[manifestRelative, legacyText]])",
+          "after": "    overrides: new Map([[manifestRelative, legacyText], [compactManifestRelative, null]])"
+        },
+        {
+          "name": "legacy_request_trace",
+          "before": "    [manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => path.posix.normalize(\"archive/\" + p))].sort(),",
+          "after": "    [compactManifestRelative, manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => path.posix.normalize(\"archive/\" + p))].sort(),"
+        },
+        {
+          "name": "mixed_loader_unmodified_contract",
+          "before": "  assert.deepEqual(result.sourceGrades, [record.sourceGrade]);",
+          "after": "  assert.deepEqual(result.sourceGrades, [record.sourceGrade]);\n  assert.ok(assets.requests.includes(manifestRelative));\n  assert.equal(assets.requests.includes(compactManifestRelative), false, \"mixed loader keeps the original manifest contract\");"
+        },
+        {
+          "name": "textbook_current_manifest",
+          "before": "  assert.deepEqual(assets.requests, [manifestRelative, indexRelative, \"archive/\" + shardPathOf(textbookFile)]);",
+          "after": "  assert.deepEqual(assets.requests, [compactManifestRelative, indexRelative, \"archive/\" + shardPathOf(textbookFile)]);"
+        },
+        {
+          "name": "new_companion_contract_tests",
+          "before": "test(\"source verification index binds every source row to the full canonical resolver output\", async () => {",
+          "after": "\ntest(\"compact canonical manifest is a deterministic lossless companion without a projection hash cycle\", async () => {\n  const before = JSON.stringify(manifest);\n  const encoded = canonical.encodeCompactInputManifest(manifest);\n  assert.equal(JSON.stringify(encoded) + \"\\n\", compactManifestText);\n  assert.deepEqual(encoded, canonical.encodeCompactInputManifest(manifest));\n  assert.equal(JSON.stringify(manifest), before, \"encoding cannot modify the authority manifest\");\n  const decoded = canonical.decodeCompactInputManifest(compactManifest);\n  assert.deepEqual(decoded, manifest, \"every header, ordered path and whole hash must survive\");\n  assert.equal(JSON.stringify(decoded) + \"\\n\", manifestText, \"current original bytes round trip exactly\");\n  assert.equal(await canonical.computeProjectionVersion(decoded.files, decoded.resolverVersion), manifest.projectionVersion);\n  assert.equal(manifest.files.some((row) => row.path === canonical.COMPACT_INPUT_MANIFEST_PATH), false);\n  assert.ok(Buffer.byteLength(compactManifestText) < Buffer.byteLength(manifestText));\n  assert.equal(new Set(compactManifest.directories).size, compactManifest.directories.length);\n  assert.ok(manifest.files.some((row) => row.path.startsWith(\"../docs/\")), \"the existing authority namespace stays lossless\");\n});\n\ntest(\"compact manifest rejects malformed tuples, headers, directories, paths and hashes\", async (t) => {\n  const cases = [\n    [\"tuple length\", (value) => { value.files[0].push(\"extra\"); }],\n    [\"tuple object\", (value) => { value.files[0] = { path: \"data/a.json\", sha256: \"0\".repeat(64) }; }],\n    [\"directory index string\", (value) => { value.files[0][0] = \"0\"; }],\n    [\"directory index fractional\", (value) => { value.files[0][0] = 0.5; }],\n    [\"directory index negative\", (value) => { value.files[0][0] = -1; }],\n    [\"directory index negative zero\", (value) => { value.files[0][0] = -0; }],\n    [\"directory index out of range\", (value) => { value.files[0][0] = value.directories.length; }],\n    [\"filename slash\", (value) => { value.files[0][1] = \"other/file.json\"; }],\n    [\"filename backslash\", (value) => { value.files[0][1] = \"other\\\\file.json\"; }],\n    [\"filename parent segment\", (value) => { value.files[0][1] = \"..\"; }],\n    [\"filename dot segment\", (value) => { value.files[0][1] = \".\"; }],\n    [\"filename empty\", (value) => { value.files[0][1] = \"\"; }],\n    [\"filename query\", (value) => { value.files[0][1] += \"?x=1\"; }],\n    [\"filename encoded traversal\", (value) => { value.files[0][1] = \"%2e%2e\"; }],\n    [\"filename control\", (value) => { value.files[0][1] += \"\\u0000\"; }],\n    [\"file hash format\", (value) => { value.files[0][2] = \"not-a-sha256\"; }],\n    [\"file hash type\", (value) => { value.files[0][2] = 0; }],\n    [\"duplicate reconstructed path\", (value) => { value.files.push([...value.files[0]]); }],\n    [\"directory duplicate\", (value) => { value.directories[1] = value.directories[0]; }],\n    [\"directory absolute\", (value) => { value.directories[0] = \"/data/\"; }],\n    [\"directory unsupported traversal\", (value) => { value.directories[0] = \"../private/\"; }],\n    [\"directory interior traversal\", (value) => { value.directories[0] = \"data/../\"; }],\n    [\"directory encoded traversal\", (value) => { value.directories[0] = \"%2e%2e/\"; }],\n    [\"directory missing slash\", (value) => { value.directories[0] = \"data\"; }],\n    [\"directory unused\", (value) => { value.directories.push(\"data/unused/\"); }],\n    [\"directory noncanonical order\", (value) => { value.files[0][0] = 1; }],\n    [\"extra header\", (value) => { value.extra = true; }],\n    [\"missing header\", (value) => { delete value.generatedFromCatalogIndexVersion; }],\n    [\"catalog version format\", (value) => { value.generatedFromCatalogIndexVersion = \"invalid\"; }],\n    [\"projection version format\", (value) => { value.projectionVersion = \"invalid\"; }],\n  ];\n  for (const [name, mutate] of cases) await t.test(name, () => {\n    const value = clone(compactManifest);\n    mutate(value);\n    assert.throws(() => canonical.decodeCompactInputManifest(value),\n      (error) => error.code === \"CANONICAL_INPUT_DIGEST_MISMATCH\");\n  });\n  for (const field of [\"schemaVersion\", \"manifestSchemaVersion\", \"resolverVersion\"]) await t.test(field, () => {\n    const value = clone(compactManifest);\n    value[field] = \"unsupported\";\n    assert.throws(() => canonical.decodeCompactInputManifest(value),\n      (error) => error.code === \"CANONICAL_RESOLVER_VERSION_MISMATCH\");\n  });\n  const extraHeader = { ...manifest, extra: true };\n  assert.throws(() => canonical.encodeCompactInputManifest(extraHeader));\n  const extraFileField = clone(manifest);\n  extraFileField.files[0].extra = true;\n  assert.throws(() => canonical.encodeCompactInputManifest(extraFileField), \"encoding must not silently drop original fields\");\n  const cycle = clone(manifest);\n  cycle.files.push({ path: canonical.COMPACT_INPUT_MANIFEST_PATH, sha256: \"0\".repeat(64) });\n  assert.throws(() => canonical.encodeCompactInputManifest(cycle), \"companion must not create an input hash cycle\");\n});\n\ntest(\"only an HTTP 404 compact companion uses the unchanged original-manifest source path\", async () => {\n  const assets = createAssetEnv({ missing: new Set([compactManifestRelative]) });\n  const result = await validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput());\n  assert.deepEqual(assets.requests, [compactManifestRelative, manifestRelative, indexRelative, shardRelative]);\n  assert.equal(result.exam.file, sourceFile);\n  assert.equal(result.questions.length, sourceQuestions.length);\n  assert.deepEqual(result.questions.map((row) => row.questionUid), sourceRows.map((row) =>\n    row.identityStatus === \"VERIFIED\" ? row.questionUid : null));\n});\n\ntest(\"an existing but corrupt or unavailable companion never downgrades to the original manifest\", async (t) => {\n  const malformed = createAssetEnv({ overrides: new Map([[compactManifestRelative, \"{not JSON\"]]) });\n  await assert.rejects(validateOriginalSnapshot(malformed.env, { questions: sourceQuestions }, makeInput()),\n    (error) => error.status === 503);\n  assert.deepEqual(malformed.requests, [compactManifestRelative]);\n  for (const status of [403, 410, 500, 503]) await t.test(\"HTTP \" + status, async () => {\n    const assets = createAssetEnv({ statuses: new Map([[compactManifestRelative, status]]) });\n    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),\n      (error) => error.status === 503);\n    assert.deepEqual(assets.requests, [compactManifestRelative]);\n  });\n  const transportRequests = [];\n  const networkFailure = { ...createAssetEnv().env, ARCHIVE2_ASSETS: { fetch: async (url) => {\n    transportRequests.push(String(url));\n    throw new Error(\"test transport unavailable\");\n  } } };\n  await assert.rejects(validateOriginalSnapshot(networkFailure, { questions: sourceQuestions }, makeInput()),\n    (error) => error.status === 503);\n  assert.equal(transportRequests.length, 1);\n  assert.ok(transportRequests[0].endsWith(\"/\" + canonical.COMPACT_INPUT_MANIFEST_PATH));\n  for (const [name, mutate] of [\n    [\"tuple hash changes the existing projection digest\", (value) => { value.files[0][2] = \"0\".repeat(64); }],\n    [\"projection header differs\", (value) => { value.projectionVersion = \"archive2-canonical-v1:\" + \"0\".repeat(64); }],\n  ]) await t.test(name, async () => {\n    const value = clone(compactManifest);\n    mutate(value);\n    const assets = createAssetEnv({ overrides: new Map([[compactManifestRelative, JSON.stringify(value) + \"\\n\"]]) });\n    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),\n      (error) => error.status === 503 && /canonical input manifest digest mismatch/.test(error.message));\n    assert.deepEqual(assets.requests, [compactManifestRelative]);\n  });\n  await t.test(\"catalog header still binds to the index\", async () => {\n    const value = clone(compactManifest);\n    value.generatedFromCatalogIndexVersion = \"0\".repeat(64);\n    const assets = createAssetEnv({ overrides: new Map([[compactManifestRelative, JSON.stringify(value) + \"\\n\"]]) });\n    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),\n      (error) => error.status === 503 && /canonical source index does not match the current projection/.test(error.message));\n    assert.deepEqual(assets.requests, [compactManifestRelative, indexRelative]);\n  });\n});\n\ntest(\"source verification index binds every source row to the full canonical resolver output\", async () => {"
+        },
+        {
+          "name": "malformed_actual_used_companion_never_downgrades",
+          "before": "  const transportRequests = [];",
+          "after": "  for (const [name, mutate] of [\n    [\"invalid tuple does not downgrade\", (value) => { value.files[0][0] = \"0\"; }],\n    [\"duplicate path does not downgrade\", (value) => { value.files.push([...value.files[0]]); }],\n    [\"unsupported compact schema does not downgrade\", (value) => { value.schemaVersion = \"unsupported\"; }],\n  ]) await t.test(name, async () => {\n    const value = clone(compactManifest);\n    mutate(value);\n    const assets = createAssetEnv({ overrides: new Map([[compactManifestRelative, JSON.stringify(value) + \"\\n\"]]) });\n    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),\n      (error) => error.status === 503);\n    assert.deepEqual(assets.requests, [compactManifestRelative]);\n  });\n  const transportRequests = [];"
+        }
+      ]
+    }
+  ]
+}

@@ -16,6 +16,7 @@ const SOURCE_BINDING = RECEIPT.replace(/\.json$/, '.source-review-binding.json')
 const MD = 'archive/data/question_metadata.json', ID = 'archive/data/question_identity_map.json';
 const RUNTIME = 'archive/data/meta-foundation/runtime/middle-geometry-v1.json';
 const worker = path.join(__dirname, 'm3-e052-q5-complete-given-continuity.mjs');
+const CURRENT_UI_PATHS = Object.freeze(["docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/technical-proof.json","docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/visual-current-reuse-v1.json","docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json","docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/producer-frames.jsonl","docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-desktop-tile-01.png","docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-mobile-tile-01.png"]);
 const stable = v => JSON.stringify(v, (_, x) => x && typeof x === 'object' && !Array.isArray(x)
   ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x);
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -43,7 +44,7 @@ function collect(root, { safe, walk, sha: digest }) {
   // The prior index and original review are immutable Git witnesses. In
   // particular, the live output index must never become its own cache input.
   const liveRefs = ['compactRef', 'dictionaryRef', 'currentSourceRef', 'applicationRef', 'technicalRef', 'visualRef'];
-  const paths = [FILE, MD, ID, RUNTIME, RECEIPT, SOURCE_BINDING, REQUEST_WITNESS, ...liveRefs.map(key => PINS.refs[key].path)];
+  const paths = [FILE, MD, ID, RUNTIME, RECEIPT, SOURCE_BINDING, REQUEST_WITNESS, ...liveRefs.map(key => PINS.refs[key].path), ...CURRENT_UI_PATHS];
   for (const prefix of ['archive/data/meta-foundation/canonical', 'archive/data/meta-foundation/compiled',
     'archive/tools/meta-foundation']) for (const f of walk(safe(root, prefix))) paths.push(path.relative(root, f).split(path.sep).join('/'));
   const digests = [...new Set(paths)].sort().map(p => {
@@ -70,4 +71,4 @@ function verify(root, entry, context) {
   } catch (e) { fail('ISSUED_PROOF_REJECTED:' + String(e.stderr || e.message).trim().slice(0, 300)); }
 }
 module.exports = { DIR, FILE, UID, SOURCE, ORDINAL, SCHEMA, BINDING, REQUEST_ID, REQUEST_WITNESS, RECEIPT,
-  SOURCE_BINDING, MD, ID, RUNTIME, PINS, worker, descriptor, assertDescriptor, collect, verify };
+  SOURCE_BINDING, MD, ID, RUNTIME, PINS, CURRENT_UI_PATHS, worker, descriptor, assertDescriptor, collect, verify };

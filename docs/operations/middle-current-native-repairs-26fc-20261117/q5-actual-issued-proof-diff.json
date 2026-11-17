@@ -1,0 +1,132 @@
+{
+  "head": "48c507ef5b8830ff71ef398fd54029ca730ebfa7",
+  "diagnosticOnly": true,
+  "approvalsGranted": 0,
+  "exitCode": 1,
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "1595df440b8da10ebcd45da22794b9e1c72c1961905330f3e2c33a19c98e49b5",
+  "diagnostics": [
+    {
+      "kind": "LOCAL_DIAGNOSTIC",
+      "stage": "ISSUED_SOURCE_REVIEW_WHOLE_COMPARISON",
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "sourceOrdinal": 5,
+      "expectedWholeSha256": "cc9124e49b321cfd8d1d26aa42745e64f6c942ba9f8487a0b2e1b7008219334a",
+      "observedWholeSha256": "d672323a98a64990824205e829fd9549e21b5ef61358eeef0f6e00e3711b9f3c",
+      "differences": [
+        {
+          "path": "$.q5CompleteGivenApplication.ui.checkoutCommit",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "33a1179646deb182cd19c5c549dbf22e42674ac401a778c4cd7fc74be1347570",
+          "observedSha256": "d03173c6f3a77c14e8340d5d09b58656c2a6c7b657e6ad526f6b4370d94bc46d"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.currentDisplayEquivalenceRef",
+          "expectedType": "undefined",
+          "observedType": "object",
+          "expectedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "observedSha256": "6d21b14844395d1bb3a47eb0645dd886cba8a3c2516209872a59d3cfc91373fd"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.originalAuthorityTechnicalRef",
+          "expectedType": "undefined",
+          "observedType": "object",
+          "expectedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "observedSha256": "f6d6eb20c28397f8f4989503a324b574b71b3f4dfb4c4bf862f16b2e1c1595f7"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.originalAuthorityVisualRef",
+          "expectedType": "undefined",
+          "observedType": "object",
+          "expectedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "observedSha256": "4a6741287a4b6602ceda6ee465230bc2ffc995bdf9dc9cb523ea1aae94da01ab"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.originalVisualRecordsReused",
+          "expectedType": "undefined",
+          "observedType": "boolean",
+          "expectedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "observedSha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.technicalRef.bytes",
+          "expectedType": "number",
+          "observedType": "number",
+          "expectedSha256": "46852391fa2b1df8746ad7afc77713dcfbdd6363937988392fe48fa98a81bc15",
+          "observedSha256": "ef367c4fec771b9ea0b9633fd68cb05af9d37de356477910356258aaf9d9ad5c"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.technicalRef.commit",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "638a9b4d08c36ab1b392174ea925eaf6d319ed98a9902056368a224702f083e3",
+          "observedSha256": "3427c3fb3ce6d3a7e4ab9b280d4975aefe6748ca51280ac2b593714fdddbbc21"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.technicalRef.gitBlobSha1",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "6888b59653e6b492dcb76d94dcbd80bc2d71090de8aaef9e9de022a5429c4ef7",
+          "observedSha256": "7e4592e39ebf60b3c77e0aaf634abcef0f2bed912803cf35934ef01e78cb21d1"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.technicalRef.path",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "b28613c4c2ea85e96c268b35d29592eb85ad68f7ebed9a29354c8cb4b858147b",
+          "observedSha256": "dbc7bf71ef410b62b124afab3eaa71857528cb190bd0b9b1865a32b33faf82e5"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.technicalRef.sha256",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "3551e51c4436cb790293e3cb4d36e829a5a096330add158045fa7a79f973418e",
+          "observedSha256": "4135beb9a1768019f9eb0cee82fb4bf8c832307ba41da85308b7025aa75ecdac"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.visualRef.bytes",
+          "expectedType": "number",
+          "observedType": "number",
+          "expectedSha256": "96a1a93e19030f5f93783143ab66d333a0ee8e97c4d2d1eccc7d831d5fb4e2d9",
+          "observedSha256": "a338ed179728f4c293158c8828a13dfbc6d420eb5bd31a7c768cf0267fcaa04a"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.visualRef.commit",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "638a9b4d08c36ab1b392174ea925eaf6d319ed98a9902056368a224702f083e3",
+          "observedSha256": "d6924917a31a73542a09b794207be3368f2eb461c9ea0e78f0d1142adbd25ab8"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.visualRef.gitBlobSha1",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "77ffcdbdfca3c12b237e4c6af5e1dfb4dca8eea7f76b5a2e1ea54e3dec2163eb",
+          "observedSha256": "7a414f66557bbaa1be195c436d08edac9b28e6d858d754946eb5e8137f86f3d5"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.visualRef.path",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "bb69f950f8379c38b01dec8df7334ab77b2a2fdf3b67390c05d25b090dd00e9a",
+          "observedSha256": "2d3da231c6279fd3cadeaa74b985f4a79733b8bd94ec681cfa37679bdb2931df"
+        },
+        {
+          "path": "$.q5CompleteGivenApplication.ui.visualRef.sha256",
+          "expectedType": "string",
+          "observedType": "string",
+          "expectedSha256": "ec78ebdbb471a2c23df4ab65e9efdcbfe428ea01d940ade7a479cfaf88d66b01",
+          "observedSha256": "e3c69bf04a2bcc9f6886aab4ba9d56a13b81772fd8d34464c5dcdd3fd182d5c2"
+        }
+      ],
+      "visited": 20,
+      "truncated": false,
+      "originalComparisonRefusalPreserved": true,
+      "newApprovals": 0
+    }
+  ],
+  "restoredExact": true,
+  "headAfter": "48c507ef5b8830ff71ef398fd54029ca730ebfa7",
+  "worktreeClean": true
+}

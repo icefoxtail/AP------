@@ -970,7 +970,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "168c9a788554bd8f56bc66fb95299d6965af7b1ddeef86e42d981ca649efce34"
+    "solutionSha256": "168c9a788554bd8f56bc66fb95299d6965af7b1ddeef86e42d981ca649efce34",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 −1인 점 A, 1인 점 B와 그 오른쪽의 점 x가 표시되어 있다.",
+    "solutionImageCaption": "x<1에서는 f(t)=5이므로 g(x)=−1부터 x까지 5(t−2)를 적분한 (5/2)x²−10x−25/2이고 이것이 (나)이다. g(1)=−20을 이어 x≥1에서 g(x)=x³−2x²−4x−15이므로 답은 (가) x³−2x²−4x−15, (나) (5/2)x²−10x−25/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

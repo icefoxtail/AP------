@@ -133,13 +133,21 @@ export function verifyM3Q5ExistingVector(root, relative = C.FILE) {
   const trackRefs = value => {
     if (!value || typeof value !== 'object') return;
     if (typeof value.path === 'string' && /^[a-f0-9]{64}$/.test(value.sha256 || '') &&
-      /^(?:archive\/|docs\/|tools\/|\.archive-meta-register\/)/.test(value.path)) {
+      (/^(?:archive\/|docs\/|tools\/|\.archive-meta-register\/)/.test(value.path) ||
+       value.path === 'apmath/css/student-navigation.css' || value.path === 'apmath/js/student-navigation.js')) {
       const p = safe(root, value.path);
       if (fs.existsSync(p) && !observed.has(value.path)) read(value.path);
     }
     for (const child of Object.values(value)) if (child && typeof child === 'object') trackRefs(child);
   };
   for (const value of [basis, technical, receipt.approval, binding.requestSnapshot]) trackRefs(value);
+  // The original Native call below must validate the same current-display files.
+  // Observe them first and rehash every dependency again before returning PASS.
+  for (const p of C.CURRENT_UI_PATHS) {
+    if (!fs.existsSync(safe(root, p))) continue; // Missing mandatory evidence is rejected by the original Native resolver.
+    const bytes = read(p);
+    if (p.endsWith('/q5/technical-proof.json') || p.endsWith('/q5/visual-current-reuse-v1.json')) trackRefs(JSON.parse(bytes));
+  }
   const metadata = json(C.MD), identity = json(C.ID);
   demand(Array.isArray(identity.records) && Array.isArray(metadata.records), 'CURRENT_RECORDS');
   const identityBank = identity.records.filter(r => r.sourceArchiveFile === C.SOURCE);
