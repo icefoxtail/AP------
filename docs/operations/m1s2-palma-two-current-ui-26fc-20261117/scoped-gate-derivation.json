@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "archive-m1-palma24-gate-derivation-v1",
+  "sourceGate": {
+    "commit": "3ba36e8956d6b62de8517284233389e18656c02b",
+    "path": "tools/4slot/check-m1s2-current-ui-scoped.cjs",
+    "gitBlobSha1": "f7436505aeb7b16efc3ed1e1ed8e681ca786927f",
+    "sha256": "b2f22e5ff3fb39d4a6b6f610ac2bbc555fa0d47ad7e31580e5452520b750b4f1",
+    "bytes": 45348,
+    "actualPriorRun": "44022762541",
+    "commitPathBytesDirectlyVerified": true
+  },
+  "gate": {
+    "path": "tools/4slot/check-m1-palma-two-current-ui-scoped.cjs",
+    "after": {
+      "gitBlobSha1": "411b128718d5412794fc93725e6eba9b5c187395",
+      "sha256": "0d7919f2c8c6bb55270ad2b63e17b46575a565305a3dda07e010b9dc53d1831c",
+      "bytes": 44906
+    },
+    "edits": [
+      {
+        "label": "closed-source24-config",
+        "before": "const CONFIG={\n  \"schemaVersion\": \"archive-m1s2-current-ui-scoped-gate-v1\",\n  \"repository\": \"icefoxtail/AP------\",\n  \"branch\": \"refs/heads/ops/m1-current-ui-registration-26fc-20261117\",\n  \"integrationAncestor\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n  \"visualAncestor\": \"d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed\",\n  \"previousCapture\": \"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502\",\n  \"rawTechnicalRef\": {\n    \"commit\": \"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3\",\n    \"path\": \"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json\",\n    \"gitBlobSha1\": \"82fe4a6929e1d7b800bbba4f3a2634ffea04cc77\",\n    \"sha256\": \"6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42\",\n    \"bytes\": 222310\n  },\n  \"files\": [\n    {\n      \"path\": \"tools/4slot/m1s2-problem-renderer-ui.cjs\",\n      \"gitBlobSha1\": \"4321e8e5e1a10d158e4ab8ac87e0e17bc2c82836\",\n      \"sha256\": \"9839283ab1b0f1affa7919618d7bea9fd3e9f5b2d8f5123812fc840546039223\",\n      \"bytes\": 32395\n    },\n    {\n      \"path\": \"tests/item-4slot-m1s2-current-ui-reuse.test.cjs\",\n      \"gitBlobSha1\": \"6c64f558090dae1e9b58adee42904155fb5f22b4\",\n      \"sha256\": \"354b4d9cb518d82d10df42781daa8e87ae5d934ddd7347e21782b5491d2565de\",\n      \"bytes\": 15066\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json\",\n      \"gitBlobSha1\": \"37ae75f016b1ea7ef950df4e90f6f57e1a1f0daf\",\n      \"sha256\": \"f61852df9d4ed2ccd9c06074b8ccc701fe10df7bff4f3dd3a8904b0494dd2e95\",\n      \"bytes\": 6678\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6.json\",\n      \"gitBlobSha1\": \"11c13b3f9994d8840c41e62cf63bf1e611686dbd\",\n      \"sha256\": \"b4051411a73e21e004684c6865e466ed5ac24ba83d5f611a07d8e303a7772f9c\",\n      \"bytes\": 6676\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3.json\",\n      \"gitBlobSha1\": \"7677883751409a30eb7b9835423bcb1b724dd450\",\n      \"sha256\": \"7d8bbc1aaaccf40a47b6d2c2e574f5bf19f0f2f3f329ffd9ad39211a4e4974c0\",\n      \"bytes\": 6697\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e.json\",\n      \"gitBlobSha1\": \"a4cfb2cb9ce6ed5ebbb92b5527d1e3a4448a622e\",\n      \"sha256\": \"85cdb1c5583d19ab9def4165b3b8e9aa3119d5ebd1b79fd19b342f2aad38eafb\",\n      \"bytes\": 6691\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15.json\",\n      \"gitBlobSha1\": \"aa0fd6b93e5a9022f565bc04ae794f0f8fb01ff3\",\n      \"sha256\": \"e0ced2ce4d5797544bce3b858d8b398b2d72ac96044342d3430582f6714f5c55\",\n      \"bytes\": 6697\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140.json\",\n      \"gitBlobSha1\": \"662b480e1560d7ffa759e100005a5bed42022d79\",\n      \"sha256\": \"0443bd24448aa4462ecf179bc10ab6f0add2c8120f7d2e853d477e0f3a9c3264\",\n      \"bytes\": 6692\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json\",\n      \"gitBlobSha1\": \"3a361820e3ac959c759aed8bb421c319df6b0ae7\",\n      \"sha256\": \"c060e456198a7fef9407723378b231b3f9cd52babcf483b7c6556d269f96ab82\",\n      \"bytes\": 6676\n    },\n    {\n      \"path\": \"tools/check-m1s2-problem-seven-browser.cjs\",\n      \"gitBlobSha1\": \"b575897d190a512b48b04e03719bd3cc0cc02654\",\n      \"sha256\": \"130fcab0be811c537ddce05f5c1f17a26e18cf9862ea690dbefcea419bde73e9\",\n      \"bytes\": 25233\n    },\n    {\n      \"path\": \"tools/check-reviewed-problem-renderer-browser.cjs\",\n      \"gitBlobSha1\": \"56c80b40d53fa88e8054a16f7b7267f968696f3f\",\n      \"sha256\": \"e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673\",\n      \"bytes\": 56735\n    },\n    {\n      \"path\": \"tools/capture-m1s2-problem-surface.cjs\",\n      \"gitBlobSha1\": \"ffeb072d7b94df6491ab7eeacb73ed1750f598ca\",\n      \"sha256\": \"86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf\",\n      \"bytes\": 10218\n    },\n    {\n      \"path\": \"tests/fixtures/archive-m1s2-problem-seven-ui.json\",\n      \"gitBlobSha1\": \"15b517839daec65eff8fc401b1c5a7fd1be9c3f5\",\n      \"sha256\": \"a315e169b8b4666f54c81a68a2579ccab1fa85d4de8521b7002373e82f8802ef\",\n      \"bytes\": 7830\n    }\n  ],\n  \"codePins\": [\n    {\n      \"path\": \"tools/4slot/build-4slot-runtime.cjs\",\n      \"bytes\": 41001,\n      \"sha256\": \"1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873\",\n      \"gitBlobSha1\": \"9fb98cdddc54bd5474ccf81b68d589617396de1c\"\n    },\n    {\n      \"path\": \"archive/item-4slot.js\",\n      \"bytes\": 8639,\n      \"sha256\": \"0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d\",\n      \"gitBlobSha1\": \"249e0af23b6a011d1247399ef487a635222e1e27\"\n    },\n    {\n      \"path\": \"tools/4slot/m1s2-problem-renderer-continuity.cjs\",\n      \"bytes\": 21244,\n      \"sha256\": \"38556d0a9be5ab9582f3c0fc3a9c2a9401d34c46371f01574e88a0e5fffb84d2\",\n      \"gitBlobSha1\": \"b073bac3a47ceee4fd69d52e91f37252bf61e60a\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"sourceArchiveFile\": \"original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js\",\n      \"count\": 24,\n      \"sourceRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js\",\n        \"gitBlobSha1\": \"d0256aaf7b87627591de65458a1e635f9a506f53\",\n        \"sha256\": \"b41f6ead7ff854bc353e2968ce3967e35c709acd400068aaf88c819bfbe4ce98\",\n        \"bytes\": 71132\n      },\n      \"compactRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/data/item-4slot/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.4slot.json\",\n        \"gitBlobSha1\": \"0dcc9c92bf7a4a059308ee0de7a8f278ac01a9ea\",\n        \"sha256\": \"446ed95dac6d9469432bc6144efcc70986c287ea3b6e9462554542aa6b5c2706\",\n        \"bytes\": 7820\n      },\n      \"dictionaryRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n        \"gitBlobSha1\": \"f25c84d3d8dd84f2987317c13f59a63aa20fd4f0\",\n        \"sha256\": \"c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be\",\n        \"bytes\": 311356\n      }\n    },\n    {\n      \"sourceArchiveFile\": \"original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js\",\n      \"count\": 24,\n      \"sourceRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js\",\n        \"gitBlobSha1\": \"f8cf25ac8c1b83019a62ad44bf13120cd540407a\",\n        \"sha256\": \"97adbc97cb254aa121ad4ee5b783d482de6f0a2008f437bd0d31e0d08e36333a\",\n        \"bytes\": 80650\n      },\n      \"compactRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/data/item-4slot/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.4slot.json\",\n        \"gitBlobSha1\": \"f3b8a15997ffc9c77d8d7df476a2fe9c422f4099\",\n        \"sha256\": \"5cfb9e509082b900073bba0942992c411596501a961195c169782a7ef1f43793\",\n        \"bytes\": 3723\n      },\n      \"dictionaryRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n        \"gitBlobSha1\": \"f25c84d3d8dd84f2987317c13f59a63aa20fd4f0\",\n        \"sha256\": \"c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be\",\n        \"bytes\": 311356\n      }\n    },\n    {\n      \"sourceArchiveFile\": \"original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js\",\n      \"count\": 23,\n      \"sourceRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js\",\n        \"gitBlobSha1\": \"afa0d8e82b9ff6e64269217f0ad43e386a114dc3\",\n        \"sha256\": \"890a1bb8c329b7a47d8112ab4311c894e283f6a4ace151747e50a1dedf675230\",\n        \"bytes\": 61534\n      },\n      \"compactRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/data/item-4slot/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.4slot.json\",\n        \"gitBlobSha1\": \"5dcaad558592ef918c09e992a5daca9ba58e9a1f\",\n        \"sha256\": \"c8017d9fe3e3a23d81c13a036c994f3598c5455afe4f79e3f7aaa669dd949d26\",\n        \"bytes\": 4641\n      },\n      \"dictionaryRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n        \"gitBlobSha1\": \"f25c84d3d8dd84f2987317c13f59a63aa20fd4f0\",\n        \"sha256\": \"c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be\",\n        \"bytes\": 311356\n      }\n    },\n    {\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js\",\n      \"count\": 26,\n      \"sourceRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js\",\n        \"gitBlobSha1\": \"8f15e842a390907fda9122cf9cda4e6a42ec8317\",\n        \"sha256\": \"b3c9531e8e32135316fed2bc4dd6b30a614a6b01644560364471b00d0de0d100\",\n        \"bytes\": 69724\n      },\n      \"compactRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/data/item-4slot/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.4slot.json\",\n        \"gitBlobSha1\": \"663c8ee8554671b36c800e46f3d503e2977bd7fb\",\n        \"sha256\": \"0680f3f61709c645c6a61d4ef014a5599e26d2d0ebda69cce570065b5c50fbb3\",\n        \"bytes\": 9213\n      },\n      \"dictionaryRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n        \"gitBlobSha1\": \"f25c84d3d8dd84f2987317c13f59a63aa20fd4f0\",\n        \"sha256\": \"c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be\",\n        \"bytes\": 311356\n      }\n    },\n    {\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n      \"count\": 24,\n      \"sourceRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n        \"gitBlobSha1\": \"8d58d972e74dbf781f8a7588c2ebcbc978e9d476\",\n        \"sha256\": \"8bf40a9c8c891ab34bf668fdd903aa8ada10108771f53a187f26e2210d68b492\",\n        \"bytes\": 77213\n      },\n      \"compactRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/data/item-4slot/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.4slot.json\",\n        \"gitBlobSha1\": \"3d05e038b14f29901355effbf8e23870ae2f4101\",\n        \"sha256\": \"2d1c703373568c6a12378306d66b02f630bbce0277297e1c99294f02093ebf82\",\n        \"bytes\": 8611\n      },\n      \"dictionaryRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n        \"gitBlobSha1\": \"f25c84d3d8dd84f2987317c13f59a63aa20fd4f0\",\n        \"sha256\": \"c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be\",\n        \"bytes\": 311356\n      }\n    }\n  ],\n  \"selected\": [\n    {\n      \"questionUid\": \"qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246\",\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n      \"sourceOrdinal\": 8,\n      \"sourceQuestionNo\": \"8\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json\",\n      \"beforeGitBlobSha1\": \"62f472da789f277afe9f6603058e048509ffd8ec\",\n      \"vectorSha256\": \"7ece9382a2d167c5daa97e4cc959f853a6e379c09d11bc869ddf6d44abf5aa5c\"\n    },\n    {\n      \"questionUid\": \"qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6\",\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js\",\n      \"sourceOrdinal\": 6,\n      \"sourceQuestionNo\": \"6\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6.json\",\n      \"beforeGitBlobSha1\": \"47d21b5867150454cf6f00fa6fc11c7f0d85bc3c\",\n      \"vectorSha256\": \"e49e55767cce8325583564cbd76cd1445f71c19312467a60d10c0ee59a3bd6c9\"\n    },\n    {\n      \"questionUid\": \"qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3\",\n      \"sourceArchiveFile\": \"original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js\",\n      \"sourceOrdinal\": 19,\n      \"sourceQuestionNo\": \"19\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3.json\",\n      \"beforeGitBlobSha1\": \"e9c235775dd2b66cdbb91f75a03ebb6339fb5acf\",\n      \"vectorSha256\": \"a2b79a4f214e12a61b676e68fb339ecbff708331b80ff86fb3c0d49006a4f635\"\n    },\n    {\n      \"questionUid\": \"qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e\",\n      \"sourceArchiveFile\": \"original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js\",\n      \"sourceOrdinal\": 18,\n      \"sourceQuestionNo\": \"18\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e.json\",\n      \"beforeGitBlobSha1\": \"acd6443f3c167a6274b8f7ff46a71f58e1c959ac\",\n      \"vectorSha256\": \"e0fadac57a25497634ad4e76f1572860799b1386caf884119c457dcb8a2188e9\"\n    },\n    {\n      \"questionUid\": \"qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15\",\n      \"sourceArchiveFile\": \"original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js\",\n      \"sourceOrdinal\": 17,\n      \"sourceQuestionNo\": \"17\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15.json\",\n      \"beforeGitBlobSha1\": \"9bed94ffd50cd9a6ee4a739a786472567e8a002e\",\n      \"vectorSha256\": \"fd34adb02c89406ceae43e6ad2ffe804820c91a45d6e222a4bf22c1445fef545\"\n    },\n    {\n      \"questionUid\": \"qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140\",\n      \"sourceArchiveFile\": \"original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js\",\n      \"sourceOrdinal\": 13,\n      \"sourceQuestionNo\": \"13\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140.json\",\n      \"beforeGitBlobSha1\": \"30f89918905b9a4fdbc77ad0d817e071a8bab690\",\n      \"vectorSha256\": \"2d2b128c9c2f900da053cf93977fbb0467e8c1907513adc7c8920dca50a97658\"\n    },\n    {\n      \"questionUid\": \"qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c\",\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n      \"sourceOrdinal\": 6,\n      \"sourceQuestionNo\": \"6\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json\",\n      \"beforeGitBlobSha1\": \"779fc4f6766d8b900408c7b0881ffcfd33f55a06\",\n      \"vectorSha256\": \"56a2413062616754756dd4d17b6dc256654a7167b415e24cf924a9a24d767538\"\n    }\n  ],\n  \"generatedPaths\": [\n    \"archive/data/question_metadata.json\",\n    \"archive/data/question_identity_map.json\",\n    \"archive/data/svg-accessibility-index.js\"\n  ],\n  \"preservedNamedDebts\": [],\n  \"sourceQuestionCount\": 121\n};",
+        "after": "const CONFIG={\n  \"schemaVersion\": \"archive-m1-palma-two-current-ui-scoped-gate-v1\",\n  \"repository\": \"icefoxtail/AP------\",\n  \"branch\": \"refs/heads/ops/m1-palma-two-current-source-registration-26fc-20261117\",\n  \"integrationAncestor\": \"71104dabf173369d973c71e155e62f25af6ff235\",\n  \"visualAncestor\": \"41f0037c41ac2276c7444bfff82c7aadc858d68f\",\n  \"captureCommit\": \"02a634765f2947f34c8ce4193ee6da4143c515e4\",\n  \"previousSidecarCommit\": \"41f0037c41ac2276c7444bfff82c7aadc858d68f\",\n  \"rawTechnicalRef\": {\n    \"commit\": \"4d2f8af25fecf7059e621f8df046c76dc4a9780c\",\n    \"path\": \"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/technical-proof.json\",\n    \"gitBlobSha1\": \"f3bdd7c6e42ae57475a01f633aa0060e34226545\",\n    \"sha256\": \"4271759b72b7ad9ddaabe964a92b702c108b413aea1649d69d8359359d50d32d\",\n    \"bytes\": 92485\n  },\n  \"currentVisualRef\": {\n    \"commit\": \"41f0037c41ac2276c7444bfff82c7aadc858d68f\",\n    \"path\": \"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/visual-current-reuse-v1.json\",\n    \"gitBlobSha1\": \"9f2e2ecbca0a3b50d1d82b4147531409a2a7377c\",\n    \"sha256\": \"e9fea7a643b7963228b77bdebf3d3aae71636bf01c05cfac41dd96fb53dd3ffb\",\n    \"bytes\": 9462\n  },\n  \"liveDocuments\": [\n    {\n      \"commit\": \"4d2f8af25fecf7059e621f8df046c76dc4a9780c\",\n      \"path\": \"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/technical-proof.json\",\n      \"gitBlobSha1\": \"f3bdd7c6e42ae57475a01f633aa0060e34226545\",\n      \"sha256\": \"4271759b72b7ad9ddaabe964a92b702c108b413aea1649d69d8359359d50d32d\",\n      \"bytes\": 92485\n    },\n    {\n      \"commit\": \"41f0037c41ac2276c7444bfff82c7aadc858d68f\",\n      \"path\": \"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/visual-current-reuse-v1.json\",\n      \"gitBlobSha1\": \"9f2e2ecbca0a3b50d1d82b4147531409a2a7377c\",\n      \"sha256\": \"e9fea7a643b7963228b77bdebf3d3aae71636bf01c05cfac41dd96fb53dd3ffb\",\n      \"bytes\": 9462\n    },\n    {\n      \"commit\": \"4d2f8af25fecf7059e621f8df046c76dc4a9780c\",\n      \"path\": \"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/prior-four-equivalence.json\",\n      \"gitBlobSha1\": \"222c16ed5b817da398dd14b5dbd45ca1280a8038\",\n      \"sha256\": \"d7fd05d3f49668d753cfc4a17664fc780d876f15ec672c926508408d5179e30a\",\n      \"bytes\": 40692\n    },\n    {\n      \"commit\": \"4d2f8af25fecf7059e621f8df046c76dc4a9780c\",\n      \"path\": \"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/artifact-integrity.json\",\n      \"gitBlobSha1\": \"1c1bea4c5351fd1ba46629ad43d2dc2c82e13d12\",\n      \"sha256\": \"0950055fa2758505e451eca54f9fd5e261040b3d5565c8550d2bd05d9046220b\",\n      \"bytes\": 3513\n    },\n    {\n      \"commit\": \"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3\",\n      \"path\": \"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json\",\n      \"gitBlobSha1\": \"82fe4a6929e1d7b800bbba4f3a2634ffea04cc77\",\n      \"sha256\": \"6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42\",\n      \"bytes\": 222310\n    },\n    {\n      \"commit\": \"d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed\",\n      \"path\": \"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json\",\n      \"gitBlobSha1\": \"e626233f7aeaddf7d7d81bab5daf59e7ed2996bc\",\n      \"sha256\": \"ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807\",\n      \"bytes\": 18296\n    }\n  ],\n  \"artifactPrefix\": \"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/\",\n  \"artifactCommit\": \"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3\",\n  \"files\": [\n    {\n      \"path\": \"tools/4slot/m1s2-problem-renderer-ui.cjs\",\n      \"gitBlobSha1\": \"bf9a41fbca580050da23547a87c5a8c3c0096a80\",\n      \"sha256\": \"357978aedd5b6a6f2db26641486c955ed0e385d462c1a334e8f95189cfff5e69\",\n      \"bytes\": 60514\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json\",\n      \"gitBlobSha1\": \"baa8d283dd39fc93ba814944fd6e7db7913817fa\",\n      \"sha256\": \"cf284c9c75ea09e69abdf994a2f4fec1c46b8e724e0dd8e9769adb91cb0ab5b4\",\n      \"bytes\": 6652\n    },\n    {\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json\",\n      \"gitBlobSha1\": \"3b17ffb198afd09936ab920f7f2b6545ae0ad498\",\n      \"sha256\": \"5685cfce97cc8ae5469f636e55be70148f727a1ab980677cff2d06c915f88e9e\",\n      \"bytes\": 6654\n    },\n    {\n      \"path\": \"tests/item-4slot-m1s2-palma-two-current-ui.test.cjs\",\n      \"gitBlobSha1\": \"def1798bc13a35fe09ea4b26141665591b7da7ac\",\n      \"sha256\": \"67a5c9391ce5621a96c02ab94b31199e22f7090cc6fc51b135da4f33627a8e93\",\n      \"bytes\": 10365\n    },\n    {\n      \"path\": \"tools/check-m1s2-palma-two-current-source-browser.cjs\",\n      \"gitBlobSha1\": \"c805b5fb65e66933a4c409fd7976b96ef7571916\",\n      \"sha256\": \"0be78ded64f0f75c5da5767aca742219d1187d242e1617fc0d211999042f3053\",\n      \"bytes\": 23509\n    },\n    {\n      \"path\": \"tests/fixtures/archive-m1s2-palma-two-current-source-ui.json\",\n      \"gitBlobSha1\": \"1976f6c7e825e196082845f7230776f044be5579\",\n      \"sha256\": \"dc41bcdd392f3bb20b7962628cdc04839b5073f04a1da1a0b90e25a549167ba9\",\n      \"bytes\": 2477\n    },\n    {\n      \"path\": \"tools/check-reviewed-problem-renderer-browser.cjs\",\n      \"gitBlobSha1\": \"56c80b40d53fa88e8054a16f7b7267f968696f3f\",\n      \"sha256\": \"e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673\",\n      \"bytes\": 56735\n    },\n    {\n      \"path\": \"tools/capture-m1s2-problem-surface.cjs\",\n      \"gitBlobSha1\": \"ffeb072d7b94df6491ab7eeacb73ed1750f598ca\",\n      \"sha256\": \"86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf\",\n      \"bytes\": 10218\n    },\n    {\n      \"path\": \"tools/check-m1s2-problem-seven-browser.cjs\",\n      \"gitBlobSha1\": \"b575897d190a512b48b04e03719bd3cc0cc02654\",\n      \"sha256\": \"130fcab0be811c537ddce05f5c1f17a26e18cf9862ea690dbefcea419bde73e9\",\n      \"bytes\": 25233\n    },\n    {\n      \"path\": \"tests/fixtures/archive-m1s2-problem-seven-ui.json\",\n      \"gitBlobSha1\": \"15b517839daec65eff8fc401b1c5a7fd1be9c3f5\",\n      \"sha256\": \"a315e169b8b4666f54c81a68a2579ccab1fa85d4de8521b7002373e82f8802ef\",\n      \"bytes\": 7830\n    }\n  ],\n  \"codePins\": [\n    {\n      \"path\": \"tools/4slot/build-4slot-runtime.cjs\",\n      \"bytes\": 41001,\n      \"sha256\": \"1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873\",\n      \"gitBlobSha1\": \"9fb98cdddc54bd5474ccf81b68d589617396de1c\"\n    },\n    {\n      \"path\": \"archive/item-4slot.js\",\n      \"bytes\": 8639,\n      \"sha256\": \"0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d\",\n      \"gitBlobSha1\": \"249e0af23b6a011d1247399ef487a635222e1e27\"\n    },\n    {\n      \"path\": \"tools/4slot/m1s2-problem-renderer-continuity.cjs\",\n      \"bytes\": 21244,\n      \"sha256\": \"38556d0a9be5ab9582f3c0fc3a9c2a9401d34c46371f01574e88a0e5fffb84d2\",\n      \"gitBlobSha1\": \"b073bac3a47ceee4fd69d52e91f37252bf61e60a\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n      \"count\": 24,\n      \"sourceRef\": {\n        \"commit\": \"02a634765f2947f34c8ce4193ee6da4143c515e4\",\n        \"path\": \"archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n        \"gitBlobSha1\": \"5ee9cbf10fa9af98a4e1cd13ca7adb3948482e72\",\n        \"sha256\": \"f744e3bfba4ada1d31dcbc33711f536b700dfb8f54cbb3350284e9b1087ca273\",\n        \"bytes\": 77225\n      },\n      \"compactRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"archive/data/item-4slot/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.4slot.json\",\n        \"gitBlobSha1\": \"3d05e038b14f29901355effbf8e23870ae2f4101\",\n        \"sha256\": \"2d1c703373568c6a12378306d66b02f630bbce0277297e1c99294f02093ebf82\",\n        \"bytes\": 8611\n      },\n      \"dictionaryRef\": {\n        \"commit\": \"6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458\",\n        \"path\": \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n        \"gitBlobSha1\": \"f25c84d3d8dd84f2987317c13f59a63aa20fd4f0\",\n        \"sha256\": \"c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be\",\n        \"bytes\": 311356\n      },\n      \"compactSourceRef\": {\n        \"commit\": \"4af0d3e08addac84ac833afc7cbc3519979f79a3\",\n        \"path\": \"archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n        \"gitBlobSha1\": \"37ea0edbc9cf0ca64eebe8e123d71a977183b004\",\n        \"sha256\": \"a5f24d7f62c74dc0cf166883c27242b81c6ac4033a1383912fef53fbb67820a8\",\n        \"bytes\": 76871\n      }\n    }\n  ],\n  \"selected\": [\n    {\n      \"questionUid\": \"qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c\",\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n      \"sourceOrdinal\": 6,\n      \"sourceQuestionNo\": \"6\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json\",\n      \"beforeGitBlobSha1\": \"3a361820e3ac959c759aed8bb421c319df6b0ae7\",\n      \"vectorSha256\": \"56a2413062616754756dd4d17b6dc256654a7167b415e24cf924a9a24d767538\",\n      \"priorMetadataRowSha256\": \"da647f6e59ddb25df00387d4a628bc1e30949c069ded62e890ae3eb74ad01c26\",\n      \"priorIdentityRowSha256\": \"020925384d334e143ceea59acbb9ee3d3e43f0f1d6c165b260ad34470ea342a6\"\n    },\n    {\n      \"questionUid\": \"qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246\",\n      \"sourceArchiveFile\": \"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js\",\n      \"sourceOrdinal\": 8,\n      \"sourceQuestionNo\": \"8\",\n      \"path\": \".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json\",\n      \"beforeGitBlobSha1\": \"37ae75f016b1ea7ef950df4e90f6f57e1a1f0daf\",\n      \"vectorSha256\": \"7ece9382a2d167c5daa97e4cc959f853a6e379c09d11bc869ddf6d44abf5aa5c\",\n      \"priorMetadataRowSha256\": \"71c0e2b10181bf8d3333d731974a10a841e9a7e1e800fede0c5eab244295ac85\",\n      \"priorIdentityRowSha256\": \"d51f15d61f42c7af69069c3e306a61e7f3bf7c985556cf3a1dd54da054f7117f\"\n    }\n  ],\n  \"generatedPaths\": [\n    \"archive/data/question_metadata.json\",\n    \"archive/data/question_identity_map.json\",\n    \"archive/data/svg-accessibility-index.js\"\n  ],\n  \"preservedNamedDebts\": [],\n  \"sourceQuestionCount\": 24,\n  \"selectedQuestionCount\": 2,\n  \"outsideQuestionCount\": 22,\n  \"focusedTests\": \"New metadata76 executed separately; this gate does not rerun tests or browser captures.\"\n};",
+        "count": 1
+      },
+      {
+        "label": "scope-header",
+        "before": "// Private read-only M1S2 scope gate: the official existing registered-vector\n// verifier remains authoritative. This runner never issues FINAL_QA approvals.",
+        "after": "// Private Palma Q6/Q8 transport gate. The original M1 existing-vector verifier\n// keeps authority; only these two bindings and their source24 state are exercised.\n// No fresh browser or mathematical review is performed.",
+        "count": 1
+      },
+      {
+        "label": "own-error-prefix",
+        "before": "M1S2_SCOPE_",
+        "after": "M1_PALMA24_",
+        "count": 2
+      },
+      {
+        "label": "own-env-contract",
+        "before": "ARCHIVE_M1S2_GATE_EXPECTED_SHA",
+        "after": "ARCHIVE_M1_PALMA24_EXPECTED_SHA",
+        "count": 1
+      },
+      {
+        "label": "own-job",
+        "before": "m1s2-existing-authority",
+        "after": "palma-two-existing-authority",
+        "count": 1
+      },
+      {
+        "label": "scope-report-counts",
+        "before": "sourceQuestionCount:121,selectedQuestionCount:7,outsideQuestionCount:114,",
+        "after": "sourceQuestionCount:24,selectedQuestionCount:2,outsideQuestionCount:22,",
+        "count": 1
+      },
+      {
+        "label": "own-log-profile",
+        "before": "profile:'M1S2_EXISTING_AUTHORITY'",
+        "after": "profile:'M1_PALMA24_EXISTING_AUTHORITY'",
+        "count": 1
+      },
+      {
+        "label": "own-private-directory",
+        "before": "'m1s2-authority-scope-'",
+        "after": "'m1-palma24-authority-'",
+        "count": 1
+      },
+      {
+        "label": "regular-immutable-read",
+        "before": "const raw=git(fixture,['cat-file','blob',ref.gitBlobSha1]);pin(raw,ref,'IMMUTABLE');",
+        "after": "const raw=git(fixture,['show',ref.commit+':'+ref.path]);pin(raw,ref,'IMMUTABLE');",
+        "count": 1
+      },
+      {
+        "label": "current-head-regular-tree",
+        "before": "const raw=fs.readFileSync(file(root,rel)),oid=git(root,['rev-parse',rootHead+':'+safeRelative(rel)]).toString().trim();\n      need(OID.test(oid)&&blob(raw)===oid,'CURRENT_HEAD_BYTES');",
+        "after": "const raw=fs.readFileSync(file(root,rel));\n      const entry=git(root,['ls-tree','-z',rootHead,'--',safeRelative(rel)]).toString();\n      const match=/^(100644|100755) blob ([a-f0-9]{40})\\t([^\\0]+)\\0$/.exec(entry);\n      need(match&&match[3]===rel&&blob(raw)===match[2],'CURRENT_HEAD_BYTES');const oid=match[2];",
+        "count": 1
+      },
+      {
+        "label": "private-file-inode-separation",
+        "before": "fs.writeFileSync(target,raw,{flag:'wx'});fs.chmodSync(target,0o444);\n      fixtureInputs.set",
+        "after": "fs.writeFileSync(target,raw,{flag:'wx'});fs.chmodSync(target,0o444);\n      const a=fs.statSync(target),b=fs.statSync(file(root,rel));need(a.dev!==b.dev||a.ino!==b.ino,'SHARED_WRITABLE_INODE');\n      fixtureInputs.set",
+        "count": 1
+      },
+      {
+        "label": "new-published-document-prefix-only",
+        "before": "    function uiDocument(pathname){\n      return pathname.endsWith('.json')&&\n        (/^docs\\/operations\\/m1s2-problem-seven-ui-26fc-20261116\\//.test(pathname)||\n        /^docs\\/operations\\/middle-current-ui-26fc-20261117\\/run-44015662986\\//.test(pathname));\n    }",
+        "after": "    function uiDocument(pathname){\n      return pathname.endsWith('.json')&&\n        (/^docs\\/operations\\/m1s2-problem-seven-ui-26fc-20261116\\//.test(pathname)||\n        /^docs\\/operations\\/middle-current-ui-26fc-20261117\\/run-44015662986\\//.test(pathname)||\n        /^docs\\/operations\\/m1s2-palma-two-current-ui-26fc-20261117\\//.test(pathname));\n    }",
+        "count": 1
+      },
+      {
+        "label": "four-published-original-pngs",
+        "before": "        need(visual.schemaVersion==='archive-independent-m1s2-current-ui-reuse-v1'&&\n          Array.isArray(visual.artifactRefs)&&visual.artifactRefs.length===14,'CURRENT_PNG14');\n        const seen=new Set();\n        for(const ref of visual.artifactRefs){\n          need(ref.commit===CONFIG.rawTechnicalRef.commit&&\n            ref.path.startsWith('docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/')&&\n            ref.path.endsWith('.png')&&!seen.has(ref.path),'CURRENT_PNG_SCOPE');\n          seen.add(ref.path);live(ref);\n        }",
+        "after": "        need(visual.schemaVersion==='archive-m1-palma-two-current-source-visual-reuse-v1'&&\n          Array.isArray(visual.artifactRefs)&&visual.artifactRefs.length===4,'CURRENT_PNG4');\n        const seen=new Set();\n        for(const ref of visual.artifactRefs){\n          need(ref.commit===CONFIG.artifactCommit&&ref.path.startsWith(CONFIG.artifactPrefix)&&\n            ref.path.endsWith('.png')&&!seen.has(ref.path),'CURRENT_PNG_SCOPE');\n          seen.add(ref.path);live(ref);\n        }",
+        "count": 1
+      },
+      {
+        "label": "authenticated-live-document-and-code-closure",
+        "before": "    phase(report,'AUTHENTICATED_INPUTS');\n    const actualRaw=copy(INDEX),actualIndex=JSON.parse(actualRaw.toString());",
+        "after": "    phase(report,'AUTHENTICATED_INPUTS');\n    for(const filename of Object.keys(require.cache))if(filename.startsWith(root+path.sep))current(path.relative(root,filename).split(path.sep).join('/'));\n    for(const ref of CONFIG.liveDocuments){live(ref);queueDoc(ref);}\n    const actualRaw=copy(INDEX),actualIndex=JSON.parse(actualRaw.toString());",
+        "count": 1
+      },
+      {
+        "label": "current-md-two-metadata-only",
+        "before": "    copy(MD);copy(SVG);\n    need(identity.schemaVersion",
+        "after": "    const metadata=JSON.parse(copy(MD).toString());copy(SVG);\n    need(Array.isArray(metadata.records),'METADATA');\n    need(identity.schemaVersion",
+        "count": 1
+      },
+      {
+        "label": "compact-original-source-strong-reference",
+        "before": "      const old=git(fixture,['cat-file','blob',compact.sourceGitBlobSha]);\n      need(blob(old)===compact.sourceGitBlobSha,'COMPACT_BASELINE_BYTES');",
+        "after": "      need(group.compactSourceRef.gitBlobSha1===compact.sourceGitBlobSha,'COMPACT_BASELINE_REF');\n      const old=immutable(group.compactSourceRef);\n      need(blob(old)===compact.sourceGitBlobSha,'COMPACT_BASELINE_BYTES');",
+        "count": 1
+      },
+      {
+        "label": "one-compact-hold-comment",
+        "before": "// Explicit holds are read only from these exact five compact files.",
+        "after": "// Explicit holds are read only from this exact source24 compact.",
+        "count": 1
+      },
+      {
+        "label": "denominator-source24",
+        "before": "need(states.length===121&&new Set(states.map(s=>s.questionUid)).size===121,'SOURCE121');",
+        "after": "need(states.length===24&&new Set(states.map(s=>s.questionUid)).size===24,'SOURCE24');",
+        "count": 1
+      },
+      {
+        "label": "outside22-count",
+        "before": "need(outside.length===114,'OUTSIDE114');",
+        "after": "need(outside.length===22,'OUTSIDE22');",
+        "count": 1
+      },
+      {
+        "label": "actual-baseline-two",
+        "before": "sourceRows:121,selectedRegistered:0,selectedPending:7,",
+        "after": "sourceRows:24,selectedRegistered:0,selectedPending:2,",
+        "count": 1
+      },
+      {
+        "label": "prior-source-sidecar-negative-kept",
+        "before": "      ensureCommit(CONFIG.previousCapture);\n      const before=git(fixture,['show',CONFIG.previousCapture+':'+item.path]);\n      need(blob(before)===item.beforeGitBlobSha1,'OLD_SIDECAR');\n      beforeBytes.set(item.path,before);hydrateSidecar(JSON.parse(before.toString()));",
+        "after": "      ensureCommit(CONFIG.previousSidecarCommit);\n      const before=git(fixture,['show',CONFIG.previousSidecarCommit+':'+item.path]);\n      need(blob(before)===item.beforeGitBlobSha1,'OLD_SIDECAR');\n      // The original currentSourceRef is intentionally stale; do not hydrate it\n      // as live or normalize it. All unchanged authority refs are in the new\n      // exact sidecar and the prior UI chain has already been authenticated.\n      beforeBytes.set(item.path,before);\n      const oldDoc=JSON.parse(before.toString()),expected={...oldDoc,currentSourceRef:doc.currentSourceRef,\n        uiTechnicalRef:doc.uiTechnicalRef,uiVisualRef:doc.uiVisualRef};\n      need(stable(expected)===stable(doc),'SIDECAR_ONLY_THREE_FIELDS');\n      const mdRows=metadata.records.filter(r=>r.questionUid===item.questionUid),idRows=identity.records.filter(r=>r.questionUid===item.questionUid);\n      need(mdRows.length===1&&idRows.length===1&&sha(stable(mdRows[0]))===item.priorMetadataRowSha256&&\n        sha(stable(idRows[0]))===item.priorIdentityRowSha256,'SELECTED_MD_ID_WHOLE');",
+        "count": 1
+      },
+      {
+        "label": "one-actual-compact",
+        "before": "need(relevantFiles.length===5,'ACTUAL_FILES5');",
+        "after": "need(relevantFiles.length===1,'ACTUAL_FILE1');",
+        "count": 1
+      },
+      {
+        "label": "actual-four-inputs",
+        "before": "    need(technical.checkoutCommit===CONFIG.previousCapture&&technical.items.length===7&&technical.results.length===14&&\n      technical.servedFiles.length===101&&technical.mirroredAssets.length===92&&technical.studentFontResources.length===38,'CAPTURE_SCOPE');",
+        "after": "    need(technical.checkoutCommit===CONFIG.captureCommit&&technical.items.length===2&&technical.results.length===4&&\n      technical.servedFiles.length===89&&technical.mirroredAssets.length===17&&technical.studentFontResources.length===31,'CAPTURE_SCOPE');",
+        "count": 1
+      },
+      {
+        "label": "two-sidecar-closure-comment",
+        "before": "// authenticated by the complete seven sidecars and official verifier.",
+        "after": "// authenticated by the two exact sidecars and original official verifier.",
+        "count": 1
+      },
+      {
+        "label": "one-output-denominator",
+        "before": "need(index.counts.files===5&&index.counts.items===121&&index.records.length+index.pending.length===121,'RESULT_DENOMINATOR');",
+        "after": "need(index.counts.files===1&&index.counts.items===24&&index.records.length+index.pending.length===24,'RESULT_DENOMINATOR');",
+        "count": 1
+      },
+      {
+        "label": "outside-rejection-code",
+        "before": "'OUTSIDE114_CHANGED'",
+        "after": "'OUTSIDE22_CHANGED'",
+        "count": 1
+      },
+      {
+        "label": "official-two-phase",
+        "before": "'OFFICIAL_EXISTING_AUTHORITY7'",
+        "after": "'OFFICIAL_EXISTING_AUTHORITY2'",
+        "count": 1
+      },
+      {
+        "label": "exact-two-recovered",
+        "before": "need(rows.length===7&&after.index.counts.registered===before.index.counts.registered+7&&\n      after.index.counts.pending===before.index.counts.pending-7,'EXPECTED_SEVEN_RECOVERED');",
+        "after": "need(rows.length===2&&after.index.counts.registered===before.index.counts.registered+2&&\n      after.index.counts.pending===before.index.counts.pending-2,'EXPECTED_TWO_RECOVERED');",
+        "count": 1
+      },
+      {
+        "label": "authority-count-two",
+        "before": "report.existingRegisteredAuthority={verified:7,",
+        "after": "report.existingRegisteredAuthority={verified:2,",
+        "count": 1
+      },
+      {
+        "label": "consumer-count-two",
+        "before": "report.consumer={selected:7,",
+        "after": "report.consumer={selected:2,",
+        "count": 1
+      },
+      {
+        "label": "cold-one-source",
+        "before": "cold.revalidatedFiles===5",
+        "after": "cold.revalidatedFiles===1",
+        "count": 1
+      },
+      {
+        "label": "proof-and-each-sidecar-deletion-boundary",
+        "before": "    phase(report,'SIDECAR_DELETION_REFUSAL');\n    for(const rel of candidateBytes.keys())fs.unlinkSync(file(fixture,rel));\n    const removed=builder.build(fixture,{previous:after.index,reuseCache:false});\n    observedStable(removed);outsideSame(removed.index);\n    need(removed.index.records.filter(r=>selected.has(r.questionUid)).length===0,'DELETED_CLAIM_REGISTERED');\n    for(const s of states.filter(s=>selected.has(s.questionUid))){\n      const row=stateOf(removed.index,s);\n      need(row.pending.length===1&&row.pending[0].reason==='M1S2_PROBLEM_CONTINUITY_CLAIM_MISSING_OR_MIXED','DELETE_REASON');\n    }\n    report.deleted={selectedRegistered:0,selectedRejected:7,counts:removed.index.counts,\n      outsideWholeStateSha256:sha(stable(actualOutside))};\n    for(const [rel,raw]of candidateBytes){fs.writeFileSync(path.join(fixture,rel),raw,{flag:'wx'});fs.chmodSync(path.join(fixture,rel),0o444);}",
+        "after": "    phase(report,'CURRENT_VISUAL_DELETION_REFUSAL');\n    const visualPath=CONFIG.currentVisualRef.path,visualBytes=fs.readFileSync(file(fixture,visualPath));\n    fs.unlinkSync(file(fixture,visualPath));\n    const withoutVisual=builder.build(fixture,{previous:after.index,reuseCache:false});\n    observedStable(withoutVisual);outsideSame(withoutVisual.index);\n    need(withoutVisual.index.records.filter(r=>selected.has(r.questionUid)).length===0,'DELETED_VISUAL_REGISTERED');\n    const rejectedVisual=states.filter(s=>selected.has(s.questionUid)).map(s=>stateOf(withoutVisual.index,s));\n    need(rejectedVisual.every(s=>s.record===null&&s.pending.length===1),'DELETED_VISUAL_PARTITION');\n    report.visualDeletion={removedPath:visualPath,selectedRejected:2,\n      selected:rejectedVisual.map(s=>({questionUid:s.questionUid,pending:s.pending.map(p=>safeReason(p.reason))})),\n      outsideWholeStateSha256:sha(stable(actualOutside))};\n    fs.writeFileSync(path.join(fixture,visualPath),visualBytes,{flag:'wx',mode:0o444});\n    phase(report,'INDIVIDUAL_SIDECAR_DELETION_REFUSAL');\n    report.sidecarDeletion=[];\n    for(const item of CONFIG.selected){\n      fs.unlinkSync(file(fixture,item.path));\n      const removed=builder.build(fixture,{previous:after.index,reuseCache:false});\n      observedStable(removed);outsideSame(removed.index);\n      const s=states.find(s=>s.questionUid===item.questionUid),lost=stateOf(removed.index,s);\n      need(lost.record===null&&lost.pending.length===1&&\n        lost.pending[0].reason==='M1S2_PROBLEM_CONTINUITY_CLAIM_MISSING_OR_MIXED','DELETE_REASON');\n      const other=CONFIG.selected.find(x=>x.questionUid!==item.questionUid);\n      const kept=removed.index.records.find(r=>r.questionUid===other.questionUid),old=rows.find(r=>r.questionUid===other.questionUid);\n      need(kept&&stable(kept)===stable(old),'OTHER_SELECTED_CHANGED');\n      report.sidecarDeletion.push({questionUid:item.questionUid,removedPath:item.path,registered:false,\n        reason:safeReason(lost.pending[0].reason),otherSelectedWholeUnchanged:true,\n        outsideWholeStateSha256:sha(stable(actualOutside))});\n      fs.writeFileSync(path.join(fixture,item.path),candidateBytes.get(item.path),{flag:'wx',mode:0o444});\n    }\n    need(report.sidecarDeletion.length===2,'DELETION_COUNT');\n    report.deleted={selectedRejectedIndividually:2,outsideWholeStateSha256:sha(stable(actualOutside))};\n    for(const [rel,bytes]of candidateBytes)need(sha(fs.readFileSync(file(fixture,rel)))===sha(bytes),'SIDECAR_RESTORED');",
+        "count": 1
+      },
+      {
+        "label": "scope-safety-final-report",
+        "before": "scope:'five immutable source banks; declared evidence only; no global outputDigests recursion'",
+        "after": "scope:'one current source24 bank; unchanged original seven-item authority documents read as metadata/history; no other current question bank staged; no global outputDigests recursion'",
+        "count": 1
+      },
+      {
+        "label": "final-counts",
+        "before": "status:report.status,selectedExistingAuthority:7,\n      selectedConsumer:7,sourceQuestionCount:121,outsideWholeStatePreserved:114,coldChanged:false,deletionRejected:7,",
+        "after": "status:report.status,selectedExistingAuthority:2,\n      selectedConsumer:2,sourceQuestionCount:24,outsideWholeStatePreserved:22,coldChanged:false,deletionRejected:2,",
+        "count": 1
+      },
+      {
+        "label": "selected-data-report",
+        "before": "    const byPath=new Map(CONFIG.files.map(f=>[f.path,f])),candidateBytes=new Map(),beforeBytes=new Map();",
+        "after": "    report.currentSelectedData={metadata:CONFIG.selected.map(item=>({questionUid:item.questionUid,\n      wholeSha256:sha(stable(metadata.records.find(r=>r.questionUid===item.questionUid)))})),\n      identity:CONFIG.selected.map(item=>({questionUid:item.questionUid,\n      wholeSha256:sha(stable(identity.records.find(r=>r.questionUid===item.questionUid)))})),\n      source24IdentityWholeSha256:sha(stable(states.map(s=>identity.records.find(r=>r.questionUid===s.questionUid)))),\n      globalMetadataSha256:currentInputs.get(MD).sha256,capturedGlobalMetadataWholeEqualityRequired:false};\n    const byPath=new Map(CONFIG.files.map(f=>[f.path,f])),candidateBytes=new Map(),beforeBytes=new Map();",
+        "count": 1
+      },
+      {
+        "label": "immutable-failure-ref-metadata",
+        "before": "      ref=refShape(ref);const key=ref.commit+':'+ref.path;\n      ensureCommit(ref.commit);",
+        "after": "      ref=refShape(ref);const key=ref.commit+':'+ref.path;\n      report.activeImmutableReference=ref;\n      ensureCommit(ref.commit);",
+        "count": 1
+      },
+      {
+        "label": "immutable-failure-clear",
+        "before": "      return raw;\n    }\n    function current(rel){",
+        "after": "      delete report.activeImmutableReference;return raw;\n    }\n    function current(rel){",
+        "count": 1
+      },
+      {
+        "label": "current-failure-path-metadata",
+        "before": "    function current(rel){\n      const raw=fs.readFileSync(file(root,rel));",
+        "after": "    function current(rel){\n      safeRelative(rel);report.activeCurrentPath=rel;\n      const raw=fs.readFileSync(file(root,rel));",
+        "count": 1
+      },
+      {
+        "label": "current-failure-clear",
+        "before": "      else currentInputs.set(rel,observed);\n      return raw;",
+        "after": "      else currentInputs.set(rel,observed);\n      delete report.activeCurrentPath;return raw;",
+        "count": 1
+      },
+      {
+        "label": "public-summary-pins-are-not-head-references",
+        "before": "    while(queue.length){\n      const ref=queue.shift(),doc=JSON.parse(immutable(ref).toString());\n      for(const nested of refsIn(doc)){const normalized=declared(nested);if(uiDocument(normalized.path))queueDoc(normalized);}\n      need(queued.size<=96,'DOCUMENT_BOUND');\n    }",
+        "after": "    let summaryPinCount=0;\n    while(queue.length){\n      const ref=queue.shift(),doc=JSON.parse(immutable(ref).toString());\n      for(const nested of refsIn(doc)){\n        if(Object.hasOwn(nested,'commit')){\n          const normalized=refShape(nested);immutable(normalized);\n          if(uiDocument(normalized.path))queueDoc(normalized);\n        }else{\n          // Published equivalence documents contain before/current digest summaries,\n          // not HEAD references. Never reinterpret a historical summary as live.\n          // Required live files were copied from the exact sidecars, current capture,\n          // and fixed liveDocuments above. The production verifier still reads them.\n          need(OID.test(nested.gitBlobSha1||'')&&SHA.test(nested.sha256||'')&&\n            Number.isSafeInteger(nested.bytes)&&nested.bytes>0&&nested.bytes<=128*1024*1024,'SUMMARY_PIN_SHAPE');\n          safeRelative(nested.path);summaryPinCount++;\n        }\n      }\n      need(queued.size<=96,'DOCUMENT_BOUND');\n    }\n    report.publicDocumentInputs={authenticatedDocuments:queued.size,immutableSummaryPins:summaryPinCount,\n      summaryPinsPromotedToHeadReferences:0,liveDependencies:'EXACT_SIDECARS_CURRENT_CAPTURE_FIXED_LIVE_DOCUMENTS'};",
+        "count": 1
+      },
+      {
+        "label": "metadata-report-only-after-validated-joins",
+        "before": "    report.currentSelectedData={metadata:CONFIG.selected.map(item=>({questionUid:item.questionUid,\n      wholeSha256:sha(stable(metadata.records.find(r=>r.questionUid===item.questionUid)))})),\n      identity:CONFIG.selected.map(item=>({questionUid:item.questionUid,\n      wholeSha256:sha(stable(identity.records.find(r=>r.questionUid===item.questionUid)))})),\n      source24IdentityWholeSha256:sha(stable(states.map(s=>identity.records.find(r=>r.questionUid===s.questionUid)))),\n      globalMetadataSha256:currentInputs.get(MD).sha256,capturedGlobalMetadataWholeEqualityRequired:false};\n    const byPath=new Map(CONFIG.files.map(f=>[f.path,f])),candidateBytes=new Map(),beforeBytes=new Map();",
+        "after": "    const byPath=new Map(CONFIG.files.map(f=>[f.path,f])),candidateBytes=new Map(),beforeBytes=new Map();",
+        "count": 1
+      },
+      {
+        "label": "record-verified-selected-data",
+        "before": "    const relevantFiles=actualIndex.files.filter(f=>CONFIG.groups.some(g=>g.compactRef.path===f.path));",
+        "after": "    report.currentSelectedData={metadata:CONFIG.selected.map(item=>({questionUid:item.questionUid,\n      wholeSha256:sha(stable(metadata.records.find(r=>r.questionUid===item.questionUid)))})),\n      identity:CONFIG.selected.map(item=>({questionUid:item.questionUid,\n      wholeSha256:sha(stable(identity.records.find(r=>r.questionUid===item.questionUid)))})),\n      source24IdentityWholeSha256:sha(stable(states.map(s=>identity.records.find(r=>r.questionUid===s.questionUid)))),\n      globalMetadataSha256:currentInputs.get(MD).sha256,capturedGlobalMetadataWholeEqualityRequired:false};\n    const relevantFiles=actualIndex.files.filter(f=>CONFIG.groups.some(g=>g.compactRef.path===f.path));",
+        "count": 1
+      }
+    ],
+    "wholeInverseExact": true
+  },
+  "workflow": {
+    "path": ".github/workflows/m1-palma-two-current-source-registration-gate.yml",
+    "after": {
+      "gitBlobSha1": "cdeddc23aa5119d4ade5edc0d70b59a5a1b24f9c",
+      "sha256": "9aa32ed740917c287f4c9ea2a0903c6d4750457fecdb6fa0a1a162a5d058e65c",
+      "bytes": 1675
+    },
+    "edits": [
+      {
+        "label": "name",
+        "before": "name: M1S2 Current UI Registration Scoped Gate",
+        "after": "name: M1 Palma Two Current Source Registration Gate",
+        "count": 1
+      },
+      {
+        "label": "branch",
+        "before": "ops/m1-current-ui-registration-26fc-20261117",
+        "after": "ops/m1-palma-two-current-source-registration-26fc-20261117",
+        "count": 2
+      },
+      {
+        "label": "concurrency",
+        "before": "m1s2-current-ui-registration-scoped-",
+        "after": "m1-palma24-current-ui-registration-",
+        "count": 1
+      },
+      {
+        "label": "job",
+        "before": "m1s2-existing-authority",
+        "after": "palma-two-existing-authority",
+        "count": 4
+      },
+      {
+        "label": "environment",
+        "before": "ARCHIVE_M1S2_GATE_EXPECTED_SHA",
+        "after": "ARCHIVE_M1_PALMA24_EXPECTED_SHA",
+        "count": 1
+      },
+      {
+        "label": "gate-file",
+        "before": "tools/4slot/check-m1s2-current-ui-scoped.cjs",
+        "after": "tools/4slot/check-m1-palma-two-current-ui-scoped.cjs",
+        "count": 2
+      },
+      {
+        "label": "scope-description",
+        "before": "Official existing authority and Consumer for M1S2 seven only",
+        "after": "Official existing authority and Consumer for Palma two only",
+        "count": 1
+      }
+    ],
+    "wholeInverseExact": true
+  },
+  "derivationOnly": true,
+  "originalPriorGateModified": false,
+  "newScopeActualExecution": "NOT_RUN",
+  "newScopeNodeSyntax": "NOT_RUN",
+  "noMathOrBrowserReview": true
+}

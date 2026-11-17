@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "archive-original-issued3330-current-consumer-observation-v1",
+  "status": "OBSERVATION_FAILED",
+  "phase": "CURRENT_AUTHENTICATED_INPUTS",
+  "provenance": {
+    "repository": "icefoxtail/AP------",
+    "eventName": "push",
+    "ref": "refs/heads/ops/middle-original-issued-consumer-26fc-20261117",
+    "codeSha": "9479e168bdb79bb3c5d7e356209cbf400819f6e3",
+    "snapshot": "a395dc9d22848ce173ae14d331cd0824dc2cf30e",
+    "runId": "44064205551",
+    "runAttempt": "1",
+    "job": "observe-current"
+  },
+  "membership": {
+    "commit": "aeabffcc23c70286f7862d69e815080c13490ad0",
+    "path": "docs/operations/middle-original-issued-membership-26fc-20261117.json",
+    "bytes": 730713,
+    "sha256": "5b16b7203a7915373971d1f9849e496dafbedf020ed7360605cb1023f6e8ed73",
+    "gitBlobSha1": "34d33edda213f63b9fd11cdf5f36b9952f5b31d3"
+  },
+  "reuse": {
+    "historicalConsumerAnchor": "96ded37d2d79768962e9f5075e7711cbfd249de5",
+    "missingPriorFingerprint": {
+      "gitBlobSha1": "1dec75aa752b4e4e7afbc671ec750cf81ee16b86",
+      "recovery": "NOT_FOUND_PREVIOUSLY_REPORTED",
+      "reuseClaims": 0
+    },
+    "reusedPreviousConsumerResults": 0,
+    "currentQueriesRequiredForAllSelectedUids": 3330
+  },
+  "limits": {
+    "requestReplays": 0,
+    "registrationCalls": 0,
+    "nativeCalls": 0,
+    "applyCalls": 0,
+    "builderCalls": 0,
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "runtimeWrites": 0,
+    "newApprovals": 0,
+    "mathematicalReviews": 0,
+    "sourceQuestionEvaluation": 0,
+    "displayOrVisualReviews": 0,
+    "historicalRetainedValuesAreNotNewApproval": true,
+    "d5DoesNotApproveSemanticOrFourSlotMetadata": true,
+    "currentPageMatchMeans": "APPROVED_QUERY_FIELDS_AND_CURRENT_SOURCE_BINDING_ONLY",
+    "nonQueryFields": "LITERAL_STORED_VALUES_VERIFIED_SEPARATELY_DISPLAY_DIFFERENCES_REPORTED"
+  },
+  "lastImmutableInput": {
+    "kind": "ORIGINAL_REQUEST",
+    "requestIndex": 159,
+    "path": ".archive-meta-register/inbox/m3s2-e070-release-20261115.json",
+    "gitBlobSha1": "c62a8723398eec15e5155510c24880656ed3ca54"
+  },
+  "objectCacheHydration": {
+    "commitHydrated": false,
+    "membershipObjects": 1,
+    "requestObjects": 160,
+    "remoteRefWrites": 0,
+    "worktreeWrites": 0
+  },
+  "failure": {
+    "code": "UNSAFE_PATH",
+    "errorSha256": "723605dc09c30107274fb06b54f78dc84a89f5c1fe6e77a050a1ad234df9cece",
+    "questionUid": null,
+    "declaredPath": null,
+    "lastAuthenticatedReadAttempt": {
+      "path": "archive/archive2-canonical.js",
+      "bytes": 107993,
+      "sha256": "5d2085695a151d7a4630c2b3e7fc8550aebe26fa15bc59d8ac8af8e90385c73c",
+      "gitBlobSha1": "4a568d9c483f72783707e50ce99d4fb37be01684"
+    }
+  },
+  "readonlyInputs": {
+    "head": "UNCHANGED",
+    "worktree": "UNCHANGED",
+    "authenticatedReadFiles": 7,
+    "authenticatedReadFilesSha256": "5fc866e703cde924ff7f2d8ec8d2a04c0cc5942ce1bd87e6e2add4e3a23e0937"
+  },
+  "codeAndSnapshotWorktrees": "UNCHANGED"
+}

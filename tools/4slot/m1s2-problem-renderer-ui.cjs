@@ -104,6 +104,7 @@ function coverage(c,screenshots,viewport){
 }
 function verify({reader,doc,current,subjects,ancestor}){
  const t=reader.json(doc.uiTechnicalRef,true),v=reader.json(doc.uiVisualRef,true);
+ if(palmaCurrentUiRequested(doc,t,v))return verifyPalmaTwoCurrentUi({reader,doc,current,subjects,ancestor,t,v});
  const currentBinding=currentReuseRequested(doc,t,v);
  if(currentBinding)verifyCurrentVisualReuse({reader,doc,t,v,ancestor});
  if(t.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.executionOwner!==(currentBinding?CURRENT_OWNER:'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD')||
@@ -290,6 +291,238 @@ function verifyCurrentVisualReuse({reader,doc,t,v,ancestor}){
  return true;
 }
 
-module.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData,
+
+// Exact Palma Q6/Q8 current-source capture. Original seven-item routes stay intact.
+function palmaFreeze(value){if(value&&typeof value==='object'){for(const child of Object.values(value))palmaFreeze(child);Object.freeze(value);}return value;}
+const PALMA_OWNER="GITHUB_ACTIONS_CHROMIUM_CLOSED_OPS_PUSH_HEAD";
+const PALMA_TECHNICAL_SCHEMA="archive-m1s2-palma-two-current-source-ui-raw-v1";
+const PALMA_VISUAL_SCHEMA="archive-m1-palma-two-current-source-visual-reuse-v1";
+const PALMA_EXECUTION=palmaFreeze({"provider":"GITHUB_ACTIONS","eventName":"push","repository":"icefoxtail/AP------","workflow":"M1 Palma Two Current Source Chrome","job":"palma-two","runId":"44054906969","runAttempt":1,"pullRequest":null,"headSha":"02a634765f2947f34c8ce4193ee6da4143c515e4","baseSha":null,"eventSha":"02a634765f2947f34c8ce4193ee6da4143c515e4","runUrl":"https://github.com/icefoxtail/AP------/actions/runs/44054906969","ref":"refs/heads/ops/m1-palma-two-current-source-ui-26fc-20261117","capturedHead":"02a634765f2947f34c8ce4193ee6da4143c515e4"});
+const PALMA_BASE_COMMIT="a66a389b96525f67e2868a000184039e08627e9f";
+const PALMA_REFS=palmaFreeze({"technical":{"commit":"4d2f8af25fecf7059e621f8df046c76dc4a9780c","path":"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/technical-proof.json","gitBlobSha1":"f3bdd7c6e42ae57475a01f633aa0060e34226545","sha256":"4271759b72b7ad9ddaabe964a92b702c108b413aea1649d69d8359359d50d32d","bytes":92485},"visual":{"commit":"41f0037c41ac2276c7444bfff82c7aadc858d68f","path":"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/visual-current-reuse-v1.json","gitBlobSha1":"9f2e2ecbca0a3b50d1d82b4147531409a2a7377c","sha256":"e9fea7a643b7963228b77bdebf3d3aae71636bf01c05cfac41dd96fb53dd3ffb","bytes":9462},"equivalence":{"commit":"4d2f8af25fecf7059e621f8df046c76dc4a9780c","path":"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/prior-four-equivalence.json","gitBlobSha1":"222c16ed5b817da398dd14b5dbd45ca1280a8038","sha256":"d7fd05d3f49668d753cfc4a17664fc780d876f15ec672c926508408d5179e30a","bytes":40692},"integrity":{"commit":"4d2f8af25fecf7059e621f8df046c76dc4a9780c","path":"docs/operations/m1s2-palma-two-current-ui-26fc-20261117/artifact-integrity.json","gitBlobSha1":"1c1bea4c5351fd1ba46629ad43d2dc2c82e13d12","sha256":"0950055fa2758505e451eca54f9fd5e261040b3d5565c8550d2bd05d9046220b","bytes":3513}});
+const PALMA_SUBJECTS=palmaFreeze([{"questionUid":"qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c","sourceArchiveFile":"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js","sourceOrdinal":6,"priorSidecarRef":{"commit":"41f0037c41ac2276c7444bfff82c7aadc858d68f","path":".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json","gitBlobSha1":"3a361820e3ac959c759aed8bb421c319df6b0ae7","sha256":"c060e456198a7fef9407723378b231b3f9cd52babcf483b7c6556d269f96ab82","bytes":6676}},{"questionUid":"qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246","sourceArchiveFile":"original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js","sourceOrdinal":8,"priorSidecarRef":{"commit":"41f0037c41ac2276c7444bfff82c7aadc858d68f","path":".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json","gitBlobSha1":"37ae75f016b1ea7ef950df4e90f6f57e1a1f0daf","sha256":"f61852df9d4ed2ccd9c06074b8ccc701fe10df7bff4f3dd3a8904b0494dd2e95","bytes":6678}}]);
+const PALMA_PINS=palmaFreeze({"checker":{"path":"tools/check-m1s2-palma-two-current-source-browser.cjs","sha256":"0be78ded64f0f75c5da5767aca742219d1187d242e1617fc0d211999042f3053"},"capture":{"path":"tools/check-reviewed-problem-renderer-browser.cjs","sha256":"e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673"},"surface":{"path":"tools/capture-m1s2-problem-surface.cjs","sha256":"86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf"},"manifest":{"path":"tests/fixtures/archive-m1s2-palma-two-current-source-ui.json","sha256":"dc41bcdd392f3bb20b7962628cdc04839b5073f04a1da1a0b90e25a549167ba9"}});
+const PALMA_MANIFEST=palmaFreeze({"schemaVersion":"archive-m1s2-palma-two-ui-manifest-v1","scope":"M1S2_PALMA_TWO_EXISTING_PROBLEM_RENDERERS_ONLY","expectedCases":4,"viewports":[{"name":"desktop","width":1365,"height":1000},{"name":"mobile","width":390,"height":844}],"items":[{"key":"P13","questionUid":"qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c","sourceOrdinal":6,"sourcePath":"archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js","sourceGitBlobSha1":"5ee9cbf10fa9af98a4e1cd13ca7adb3948482e72","sourceSha256":"f744e3bfba4ada1d31dcbc33711f536b700dfb8f54cbb3350284e9b1087ca273","sourceBytes":77225,"expectedBankCount":24,"questionSha256":"9b88570a23ca79122aa8fa01ba087879d56ef79f8013f4a7163487b287abe330","problemPayloadSha256":"7afb4a8e9d4c69e9e60e0583f62f642404908a0b3c5313ec16b54bb86b37b778","presentationSha256":"b3fd22356e5679d5636f7ad0c49ae96837cf6aa842616af2e0692e11a9a4ee70","assetPath":"archive/assets/images/26_팔마중_2학기_중간_중1_기출/q06-problem-geometry-20261116.svg","assetSha256":"6035c121191cc7f9814f3698fd83a2cea68a184ac47b0fa3ec9414a4d5545ef4","assetGitBlobSha1":"b9c1c949071c75c6dbc3de71e9e81ccc01d58dec","assetBytes":16398},{"key":"P14","questionUid":"qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246","sourceOrdinal":8,"sourcePath":"archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js","sourceGitBlobSha1":"5ee9cbf10fa9af98a4e1cd13ca7adb3948482e72","sourceSha256":"f744e3bfba4ada1d31dcbc33711f536b700dfb8f54cbb3350284e9b1087ca273","sourceBytes":77225,"expectedBankCount":24,"questionSha256":"508c45c4727372bbbfbe7e21c6d6041f79bcd56f5bb45e91a40d07f41c2b16bf","problemPayloadSha256":"ead7bcf7685b6e2cccd9839e429f5e42bfcc76ac7c1e5abcaaf7e509402082c4","presentationSha256":"a9d4d2cf27382dd12d94f6e74aa40e4f8789ccbbe5c3e636577528641f635c06","assetPath":"archive/assets/images/26_팔마중_2학기_중간_중1_기출/q08-problem-geometry-20261116.svg","assetSha256":"b39aa65ee7880c6dd997fb0d76397a056aa205d4395d96957d93514c5080d529","assetGitBlobSha1":"e7de079e8df8f50bf1b729414c4c04602817f286","assetBytes":23907}]});
+const PALMA_SOURCE_REF=palmaFreeze({"commit":"02a634765f2947f34c8ce4193ee6da4143c515e4","path":"archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js","gitBlobSha1":"5ee9cbf10fa9af98a4e1cd13ca7adb3948482e72","sha256":"f744e3bfba4ada1d31dcbc33711f536b700dfb8f54cbb3350284e9b1087ca273","bytes":77225});
+const PALMA_VISUAL_KEYS=palmaFreeze(["schemaVersion","reviewer","derivationAuthor","decision","reviewMethod","technicalRef","priorTechnicalRef","priorVisualRef","originalVisualRef","equivalenceRef","rootArtifactIntegrityRef","actualExecution","scope","currentSourceRef","priorSourceRef","records","artifactRefs","priorVisualRecordsCopiedExactly","currentRawTechnicalUnchanged","currentOriginalPngBytesUnchanged","newVisualInspection","newMathQa","newSemanticApproval","newFourSlotVector","newMetadataApproval","newDifficultyApproval","newReviewPassCount","currentRuntimeFontSourceAssetAndIdentityGuardsRequired","currentGlobalCodeEquivalenceClaimed","oldFiveBindingsModified","sourceWholeBankEquivalenceClaimed","selectedQuestionPayloadAndAssetsExact","sourceContinuityProof","identity24Proof","officialAuthorityBuilderConsumerStatus"]);
+
+function palmaCurrentUiRequested(doc,t,v){
+ return doc.uiTechnicalRef?.path===PALMA_REFS.technical.path||doc.uiVisualRef?.path===PALMA_REFS.visual.path||
+  t?.schemaVersion===PALMA_TECHNICAL_SCHEMA||v?.schemaVersion===PALMA_VISUAL_SCHEMA;
+}
+function verifyPalmaExecution(t){
+ exact(t.execution,Object.keys(PALMA_EXECUTION),'PALMA_EXECUTION');
+ if(t.executionOwner!==PALMA_OWNER||t.checkoutCommit!==PALMA_EXECUTION.headSha||
+  t.baseCommit!==PALMA_BASE_COMMIT||!eq(t.execution,PALMA_EXECUTION))fail('PALMA_EXECUTION');
+}
+// Metadata comparison only. Calling this helper does not grant source or vector
+// authority; verifyPalmaBoundRefs and the original outer verifier remain required.
+function assertPalmaCurrentUiDocuments({doc,t,v,priorDoc,priorTechnical,priorVisual,manifest,witness,integrity}){
+ const subject=unique(PALMA_SUBJECTS,x=>x.questionUid===doc?.questionUid,'PALMA_UID');
+ if(doc.sourceArchiveFile!==subject.sourceArchiveFile||doc.sourceOrdinal!==subject.sourceOrdinal||
+  !eq(doc.uiTechnicalRef,withoutCommit(PALMA_REFS.technical))||
+  !eq(doc.uiVisualRef,withoutCommit(PALMA_REFS.visual))||
+  !eq(doc.currentSourceRef,withoutCommit(PALMA_SOURCE_REF)))fail('PALMA_SCOPE');
+ if(priorDoc.questionUid!==subject.questionUid||priorDoc.sourceOrdinal!==subject.sourceOrdinal||
+  priorDoc.sourceArchiveFile!==subject.sourceArchiveFile||
+  !eq(priorDoc.uiTechnicalRef,withoutCommit(CURRENT_TECHNICAL_REF))||
+  !eq(priorDoc.uiVisualRef,withoutCommit(CURRENT_VISUAL_REF))||
+  !eq(doc,{...priorDoc,currentSourceRef:withoutCommit(PALMA_SOURCE_REF),
+   uiTechnicalRef:withoutCommit(PALMA_REFS.technical),uiVisualRef:withoutCommit(PALMA_REFS.visual)}))fail('PALMA_PRIOR_AUTHORITY');
+ if(!eq(manifest,PALMA_MANIFEST)||t.schemaVersion!==PALMA_TECHNICAL_SCHEMA||
+  t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.expectedLogicalCases!==4||t.completedLogicalCases!==4||
+  !Array.isArray(t.results)||t.results.length!==4||!Array.isArray(t.screenshotArtifacts)||
+  t.screenshotArtifactCount!==4||t.screenshotArtifacts.length!==4||
+  !Array.isArray(t.servedFiles)||t.servedFiles.length!==89||
+  !Array.isArray(t.mirroredAssets)||t.mirroredAssets.length!==17||
+  !Array.isArray(t.studentFontResources)||t.studentFontResources.length!==31)fail('PALMA_TECHNICAL_SCOPE');
+ verifyPalmaExecution(t);
+ exact(v,PALMA_VISUAL_KEYS,'PALMA_VISUAL');
+ if(v.schemaVersion!==PALMA_VISUAL_SCHEMA||v.decision!==DECISION||v.derivationAuthor!=='GPT_M3S2_RELEASE'||
+  v.reviewMethod!=="EXACT_PRIOR_FOUR_VISUAL_RECORDS_AND_ORIGINAL_PNG_BYTES_REUSED_WITH_CURRENT_SOURCE_CAPTURE"||
+  !eq(v.sourceContinuityProof,{"gitBlobSha1":"ca98a70fd169c36c4eceb3a4506af673d6dc2702","sha256":"4aa4887b6d6f53a21825bc6590cb68a92d008d0e9b126f6a642490bd764994f3","bytes":13278})||
+  !eq(v.identity24Proof,{"gitBlobSha1":"114f3387cbbe2d608d93f9e70cc46a843ebe406b","sha256":"d7560a8447409d9feb638ba7fc49f5e00b1d149aa11f3fda1e01f9250c76b511","bytes":8956})||
+  !eq(v.technicalRef,PALMA_REFS.technical)||!eq(v.priorTechnicalRef,CURRENT_TECHNICAL_REF)||
+  !eq(v.priorVisualRef,CURRENT_VISUAL_REF)||!eq(v.originalVisualRef,PRIOR_VISUAL_REF)||
+  !eq(v.equivalenceRef,PALMA_REFS.equivalence)||!eq(v.rootArtifactIntegrityRef,PALMA_REFS.integrity)||
+  !eq(v.actualExecution,PALMA_EXECUTION)||v.newVisualInspection!==false||v.newMathQa!==false||
+  v.newSemanticApproval!==false||v.newFourSlotVector!==false||v.newMetadataApproval!==false||
+  v.newDifficultyApproval!==false||v.newReviewPassCount!==0||
+  v.priorVisualRecordsCopiedExactly!==true||v.currentRawTechnicalUnchanged!==true||
+  v.currentOriginalPngBytesUnchanged!==true||v.currentRuntimeFontSourceAssetAndIdentityGuardsRequired!==true||
+  v.currentGlobalCodeEquivalenceClaimed!==false||v.oldFiveBindingsModified!==false||
+  v.sourceWholeBankEquivalenceClaimed!==false||v.selectedQuestionPayloadAndAssetsExact!==true||
+  v.officialAuthorityBuilderConsumerStatus!=='NOT_RUN_FOR_NEW_TWO_ITEM_BINDING')fail('PALMA_VISUAL');
+ if(priorVisual.schemaVersion!==CURRENT_VISUAL_SCHEMA||priorVisual.decision!==DECISION||
+  !eq(priorVisual.technicalRef,CURRENT_TECHNICAL_REF)||priorVisual.records?.length!==14||
+  v.reviewer!==priorVisual.reviewer||!String(v.reviewer||'').trim()||
+  v.reviewer===doc.author||v.reviewer===t.executionOwner||
+  priorTechnical.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||
+  priorTechnical.results?.length!==14||priorTechnical.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING')fail('PALMA_PRIOR_VISUAL');
+ const ids=new Set(PALMA_SUBJECTS.map(x=>x.questionUid));
+ const oldItems=priorTechnical.items.filter(x=>ids.has(x.questionUid));
+ const oldCases=priorTechnical.results.filter(x=>ids.has(x.questionUid));
+ const oldRecords=priorVisual.records.filter(x=>ids.has(x.questionUid));
+ if(oldItems.length!==2||oldCases.length!==4||oldRecords.length!==4||!eq(v.records,oldRecords)||
+  !eq(v.scope,{questionUids:[...ids],sourceOrdinals:[6,8],logicalCases:4,screenshotFiles:4,
+   sourceArchiveFile:subject.sourceArchiveFile})||!eq(v.currentSourceRef,PALMA_SOURCE_REF)||
+  !eq(v.priorSourceRef,oldCases[0].sourceRef))fail('PALMA_EXACT_PRIOR_FOUR');
+ const expectedItems=oldItems.map(x=>({...x,sourceRef:PALMA_SOURCE_REF,
+  assetRef:{...x.assetRef,commit:PALMA_EXECUTION.headSha}}));
+ if(!eq(t.items,expectedItems))fail('PALMA_SELECTED_INPUTS');
+ const seen=new Set();
+ for(let i=0;i<4;i++){
+  const before=oldCases[i],after=t.results[i],key=after.questionUid+':'+after.viewport?.name;
+  if(seen.has(key))fail('PALMA_CASE_DUPLICATE');seen.add(key);
+  const expected={...before,sourceRef:PALMA_SOURCE_REF,
+   assetRef:{...before.assetRef,commit:PALMA_EXECUTION.headSha},
+   assetRefs:before.assetRefs.map(x=>({...x,commit:PALMA_EXECUTION.headSha}))};
+  if(!eq(after,expected))fail('PALMA_EXACT_CAPTURE_REUSE');
+ }
+ const oldFonts=new Map((priorTechnical.studentFontResources||[]).map(x=>[x.resourceId,x]));
+ const currentFonts=new Map(t.studentFontResources.map(x=>[x.resourceId,x]));
+ const selectedFontIds=[...new Set(oldCases.flatMap(x=>x.technical.fontResourceIds))].sort();
+ if(oldFonts.size!==priorTechnical.studentFontResources?.length||currentFonts.size!==31||
+  !eq([...currentFonts.keys()].sort(),selectedFontIds)||
+  [...currentFonts].some(([id,f])=>!oldFonts.has(id)||!eq(withoutCommit(f),withoutCommit(oldFonts.get(id)))))fail('PALMA_SELECTED_FONT_RESPONSES');
+ const artifacts=oldCases.flatMap(x=>x.screenshots.map(({tileIndex,...a})=>a));
+ const sorted=rows=>rows.slice().sort((a,b)=>a.path.localeCompare(b.path));
+ if(!eq(sorted(artifacts),sorted(t.screenshotArtifacts)))fail('PALMA_SCREENSHOT_INVENTORY');
+ const oldArtifacts=priorVisual.artifactRefs.filter(x=>artifacts.some(a=>path.posix.basename(x.path)===a.path));
+ if(oldArtifacts.length!==4||!eq(sorted(v.artifactRefs),sorted(oldArtifacts)))fail('PALMA_PNG_BYTES_REUSE');
+ const technicalBlob={gitBlobSha1:PALMA_REFS.technical.gitBlobSha1,sha256:PALMA_REFS.technical.sha256,
+  bytes:PALMA_REFS.technical.bytes};
+ if(witness.schemaVersion!=='archive-m1-palma-two-current-four-display-equivalence-v1'||
+  witness.decision!=='ACCEPT_REUSE_OF_EXISTING_FOUR_DISPLAY_DECISIONS'||
+  !eq(witness.actual?.technicalBlob,technicalBlob))fail('PALMA_EQUIVALENCE');
+ if(!eq(witness.actual.execution,PALMA_EXECUTION)||witness.cases?.length!==4||
+  witness.oldSelectedFontIdsExact!==true||witness.currentFontInventoryIsExactlyPriorSelectedFourUnion!==true||
+  witness.globalInventoryCounts?.fontsPrior!==38||witness.globalInventoryCounts?.fontsCurrent!==31)fail('PALMA_EQUIVALENCE_BINDING');
+ for(const result of t.results){
+  const entry=unique(witness.cases,x=>x.questionUid===result.questionUid&&eq(x.viewport,result.viewport),'PALMA_EQUIVALENCE_CASE');
+  if(entry.sourceOrdinal!==result.sourceOrdinal||entry.captureSha256!==sha(stable(result.capture))||
+   entry.geometrySha256!==sha(stable(result.geometry))||entry.surfaceStructureSha256!==sha(stable(result.surfaceStructure))||
+   entry.technicalSha256!==sha(stable(result.technical))||entry.fontCount!==31||
+   !eq(entry.screenshots,result.screenshots)||!Object.values(entry.checks||{}).length||
+   Object.values(entry.checks).some(x=>x!==true)||Object.values(entry.itemChecks||{}).some(x=>x!==true))fail('PALMA_EQUIVALENCE_CASE');
+ }
+ if(integrity.schemaVersion!=='archive-m1-palma-two-root-artifact-integrity-v1'||
+  integrity.owner!=='GPT_ROOT_26FC42390A50'||String(integrity.runId)!==PALMA_EXECUTION.runId||
+  integrity.jobId!==133941657714||integrity.checkoutCommit!==PALMA_EXECUTION.headSha||
+  integrity.artifactId!==14314533640||integrity.zipBytes!==123051||
+  integrity.zipSha256!=='edd0441952a3df0fcd977047528bc538ec19b7e5c9ec4980d4976ffd3191700c'||
+  integrity.apiArtifactDigestExact!==true||integrity.driveOriginalByteReadback!==true||
+  !eq(integrity.rawTechnical,technicalBlob)||
+  integrity.artifactRefs?.length!==4||integrity.selectedCases?.length!==4||
+  integrity.newScreenshotsReadVisually!==0||integrity.newMathematicalOrSemanticApproval!==0||
+  integrity.actualRegisteredClaim!==false)fail('PALMA_ARTIFACT_INTEGRITY');
+ const integrityRefs=integrity.artifactRefs.map(({currentRunOriginalBytesWholeExact,...ref})=>{
+  if(currentRunOriginalBytesWholeExact!==true)fail('PALMA_ORIGINAL_PNG_BYTES');return ref;});
+ if(!eq(sorted(integrityRefs),sorted(v.artifactRefs)))fail('PALMA_ARTIFACT_PNG_REFS');
+ for(const result of t.results){
+  const entry=unique(integrity.selectedCases,x=>x.questionUid===result.questionUid&&x.viewport===result.viewport.name,'PALMA_ARTIFACT_CASE');
+  if(entry.sourceOrdinal!==result.sourceOrdinal||entry.compared8GroupsWholeExact!==true)fail('PALMA_ARTIFACT_CASE');
+ }
+ return true;
+}
+function verifyPalmaBoundRefs({reader,doc,t,v,ancestor}){
+ const subject=unique(PALMA_SUBJECTS,x=>x.questionUid===doc.questionUid,'PALMA_UID');
+ if(!eq(doc.uiTechnicalRef,withoutCommit(PALMA_REFS.technical))||
+  !eq(doc.uiVisualRef,withoutCommit(PALMA_REFS.visual)))fail('PALMA_REF_SCOPE');
+ for(const ref of[...Object.values(PALMA_REFS),subject.priorSidecarRef])ancestor(ref.commit,reader.head);
+ const sealedTechnical=reader.json(PALMA_REFS.technical,true),sealedVisual=reader.json(PALMA_REFS.visual,true);
+ if(!eq(t,sealedTechnical)||!eq(v,sealedVisual))fail('PALMA_RAW_BINDING');
+ const priorDoc=reader.json(subject.priorSidecarRef),priorTechnical=reader.json(CURRENT_TECHNICAL_REF),
+  priorVisual=reader.json(CURRENT_VISUAL_REF);
+ // Authenticate the unchanged original14 visual chain using its actual prior
+ // sidecar. No capture or source is rewritten into another schema or edition.
+ verifyCurrentVisualReuse({reader,doc:priorDoc,t:priorTechnical,v:priorVisual,ancestor});
+ const manifest=reader.json(t.manifestRef,true),witness=reader.json(PALMA_REFS.equivalence,true),
+  integrity=reader.json(PALMA_REFS.integrity,true);
+ assertPalmaCurrentUiDocuments({doc,t,v,priorDoc,priorTechnical,priorVisual,manifest,witness,integrity});
+ return true;
+}
+function palmaCurrentUiRefs(){return JSON.parse(JSON.stringify({refs:PALMA_REFS,subjects:PALMA_SUBJECTS,
+ manifest:PALMA_MANIFEST,pins:PALMA_PINS,execution:PALMA_EXECUTION,sourceRef:PALMA_SOURCE_REF}));}
+
+function verifyPalmaTwoCurrentUi({reader,doc,current,subjects:providedSubjects,ancestor,t,v}){
+ const subjects=PALMA_SUBJECTS;
+ for(const subject of subjects){const provided=unique(providedSubjects,x=>x.questionUid===subject.questionUid,'PALMA_CALLER_SUBJECT');
+  if(provided.sourceArchiveFile!==subject.sourceArchiveFile||provided.sourceOrdinal!==subject.sourceOrdinal)fail('PALMA_CALLER_SUBJECT');}
+ verifyPalmaBoundRefs({reader,doc,t,v,ancestor});
+ if(t.schemaVersion!==PALMA_TECHNICAL_SCHEMA||t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.executionOwner!==PALMA_OWNER||
+    !OID.test(t.checkoutCommit)||!OID.test(t.baseCommit)||!String(t.browserVersion||'').trim()||t.mode!=='exam'||t.studentReview!==true||t.problemOnlyScreenshots!==true||
+    t.sourceOverlay!==false||t.sourceOverlayCount!==0||t.sourceWrites!==0||t.solutionsOpened!==false||t.productionCdnTest!==false||t.newFullMathematicalQa!==false||
+    t.newMetadataApprovals!==0||t.newDifficultyJudgments!==0||t.newReviewPassCount!==0||t.newFourSlotApprovals!==0||
+    t.expectedLogicalCases!==4||t.completedLogicalCases!==4||!Array.isArray(t.results)||t.results.length!==4||!Array.isArray(t.screenshotArtifacts)||t.screenshotArtifactCount!==t.screenshotArtifacts.length||
+    !Array.isArray(t.failures)||t.failures.length||!Array.isArray(t.externalFontResources)||t.externalFontResources.length)fail('TECHNICAL');
+ verifyPalmaExecution(t);
+ if(v.schemaVersion!==PALMA_VISUAL_SCHEMA||v.decision!==DECISION||!String(v.reviewer||'').trim()||v.reviewer===doc.author||v.reviewer===t.executionOwner||
+    v.newMathQa!==false||v.newSemanticApproval!==false||v.newFourSlotVector!==false||!Array.isArray(v.records)||v.records.length!==4)fail('VISUAL');
+ visualTechnicalRef(reader,v.technicalRef,doc.uiTechnicalRef,ancestor);
+ ancestor(doc.reviewedSourceRef.commit,t.baseCommit);ancestor(t.baseCommit,t.checkoutCommit);ancestor(t.checkoutCommit,reader.head);
+ const implementationPins=PALMA_PINS;
+ for(const[ref,pin]of[[t.checkerRef,implementationPins.checker],[t.captureHelperRef,implementationPins.capture],[t.surfaceHelperRef,implementationPins.surface],[t.manifestRef,implementationPins.manifest]]){
+  if(ref?.commit!==t.checkoutCommit||ref.path!==pin.path||ref.sha256!==pin.sha256)fail('IMPLEMENTATION');capturedRef(reader,ref,t.checkoutCommit,true);
+ }
+ const manifest=reader.json(withoutCommit(t.manifestRef),true);
+ if(manifest.schemaVersion!=='archive-m1s2-palma-two-ui-manifest-v1'||manifest.scope!=='M1S2_PALMA_TWO_EXISTING_PROBLEM_RENDERERS_ONLY'||manifest.expectedCases!==4||manifest.items?.length!==2)fail('MANIFEST');
+ if(!Array.isArray(t.servedFiles)||!Array.isArray(t.mirroredAssets)||!Array.isArray(t.studentFontResources))fail('RUNTIME_INVENTORY');
+ const mdRef=unique(t.servedFiles,r=>r.path===MD,'METADATA_REQUIRED');
+ if(mdRef.commit!==t.checkoutCommit||t.identityRef?.commit!==t.checkoutCommit||t.identityRef.path!==ID)fail('DATA_CAPTURE_REF');
+ // Full captured Git bytes stay authenticated. Only these two selected rows
+ // are compared with current data; unrelated generated rows may advance.
+ selectedDataRows(reader.projection(mdRef,'metadata'),reader.projection(null,'metadata'),subjects,'METADATA');
+ selectedDataRows(reader.projection(t.identityRef,'identity'),reader.projection(null,'identity'),subjects,'IDENTITY');
+ const svgRef=unique(t.servedFiles,r=>r.path===SVG_INDEX,'SVG_INDEX_REQUIRED'),assets=new Set(manifest.items.map(r=>r.assetPath));
+ svgContinuity(capturedRef(reader,svgRef,t.checkoutCommit),currentData(reader,SVG_INDEX),assets);
+ const runtimePaths=new Set();let engine=0;
+ for(const ref of t.servedFiles){if(ref.commit!==t.checkoutCommit||runtimePaths.has(ref.path))fail('RUNTIME_INVENTORY');runtimePaths.add(ref.path);
+  // Own source/assets are checked by each selected sidecar. Recheck the exact
+  // shared student runtime without coupling one UID to another exam's bytes.
+  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/'));
+  if(ref.path==='archive/engine.html')engine++;
+ }if(engine!==1)fail('ENGINE_REQUIRED');
+ const mirroredPaths=new Set();for(const ref of t.mirroredAssets){if(!ref.path?.startsWith('archive/assets/images/')||mirroredPaths.has(ref.path))fail('MIRRORED_INVENTORY');mirroredPaths.add(ref.path);capturedRef(reader,ref,t.checkoutCommit);}
+ if(t.fontLicenseRef?.path!=='archive/vendor/nanum-myeongjo/OFL.txt')fail('FONT_LICENSE');capturedRef(reader,t.fontLicenseRef,t.checkoutCommit,true);
+ const fontResources=new Map();
+ for(const f of t.studentFontResources){
+  if(!HEX.test(f.resourceId)||fontResources.has(f.resourceId)||f.commit!==t.checkoutCommit||f.status!==200||!['STYLESHEET','FONT'].includes(f.kind)||
+     !f.path?.startsWith('archive/vendor/nanum-myeongjo/')||f.kind==='FONT'&&![400,700,800].includes(f.weight)||f.kind==='STYLESHEET'&&f.weight!==null)fail('FONT_RESOURCE');
+  const ref=Object.fromEntries(['commit','path','gitBlobSha1','sha256','bytes'].map(k=>[k,f[k]]));
+  if(f.resourceId!==sha(stable({path:f.path,responseSha256:f.sha256,mime:f.mime})))fail('FONT_RESOURCE_ID');capturedRef(reader,ref,t.checkoutCommit,true);fontResources.set(f.resourceId,f);
+ }
+ const byUid=new Map(subjects.map(s=>[s.questionUid,s])),seen=new Set(),visualSeen=new Set(),artifacts=[];
+ for(const r of t.results){
+  const subject=byUid.get(r.questionUid),key=r.questionUid+':'+r.viewport?.name,viewport=r.viewport?.name==='desktop'?{name:'desktop',width:1365,height:1000}:{name:'mobile',width:390,height:844};
+  if(!subject||r.sourceOrdinal!==subject.sourceOrdinal||seen.has(key)||!eq(r.viewport,viewport)||r.surface!=='PROBLEM'||r.mode!=='exam'||r.status!=='PASS'||r.visualReview!=='PENDING')fail('CASE');seen.add(key);
+  if(!Array.isArray(r.pageErrors)||r.pageErrors.length||!Array.isArray(r.requestFailures)||r.requestFailures.length||!Array.isArray(r.externalRequests)||r.externalRequests.length)fail('CASE_ERRORS');
+  const item=unique(manifest.items,x=>x.questionUid===r.questionUid,'MANIFEST_ITEM');
+  if(item.sourceOrdinal!==r.sourceOrdinal||item.sourcePath!=='archive/exams/'+subject.sourceArchiveFile||r.sourceRef?.path!==item.sourcePath||r.sourceRef.commit!==t.checkoutCommit||
+     r.sourceRef.gitBlobSha1!==item.sourceGitBlobSha1||r.sourceRef.sha256!==item.sourceSha256||r.sourceRef.bytes!==item.sourceBytes||r.questionSha256!==item.questionSha256||
+     !Array.isArray(r.assetRefs)||r.assetRefs.length!==1||r.assetRefs[0].commit!==t.checkoutCommit||r.assetRefs[0].path!==item.assetPath||r.assetRefs[0].gitBlobSha1!==item.assetGitBlobSha1||r.assetRefs[0].sha256!==item.assetSha256||r.assetRefs[0].bytes!==item.assetBytes)fail('MANIFEST_BINDING');
+  capturedRef(reader,r.sourceRef,t.checkoutCommit,true);for(const ref of r.assetRefs)capturedRef(reader,ref,t.checkoutCommit,true);
+  const tech=r.technical;
+  if(tech?.mode!=='exam'||tech.questions!==item.expectedBankCount||tech.readiness!=='RENDER_READY'||!integer(tech.pages,1)||tech.imagesComplete!==true||tech.mathErrors!==0||tech.unrenderedMath!==0||tech.mathJaxSource!=='local'||tech.solutionNodes!==0||
+     tech.fontReadiness?.status!=='loaded'||tech.fontReadiness.family!=='Nanum Myeongjo'||tech.fontReadiness.weights?.length!==3||
+     tech.fontReadiness.weights.some((f,i)=>f.weight!==[400,700,800][i]||!integer(f.loadedFaces,1)||f.allLoaded!==true||f.checked!==true)||
+     !Array.isArray(tech.fontReadiness.problemFontFamilies)||!tech.fontReadiness.problemFontFamilies.length||tech.fontReadiness.problemFontFamilies.some(f=>!f.includes('Nanum Myeongjo'))||
+     !Array.isArray(tech.fontResourceIds)||new Set(tech.fontResourceIds).size!==tech.fontResourceIds.length||tech.fontResourceIds.some(k=>!fontResources.has(k)))fail('RENDER_STATE');
+  const fonts=tech.fontResourceIds.map(k=>fontResources.get(k));
+  if(!fonts.some(f=>f.kind==='STYLESHEET')||tech.fontReadiness.weights.some(w=>fonts.filter(f=>f.kind==='FONT'&&f.weight===w.weight).length<w.loadedFaces))fail('FONT_RESPONSES');
+  if(!Array.isArray(r.screenshots))fail('SCREENSHOTS');surfaceTopology(r.surfaceStructure,r.capture?.visibleChildren);coverage(r.capture,r.screenshots,r.viewport);artifacts.push(...r.screenshots.map(screenshot));
+  const visual=unique(v.records,x=>x.questionUid===r.questionUid&&x.viewport?.name===r.viewport.name,'VISUAL_CASE');visualSeen.add(key);
+  if(visual.sourceOrdinal!==r.sourceOrdinal||visual.surface!=='PROBLEM'||!eq(visual.viewport,r.viewport)||visual.captureSha256!==sha(stable(r.capture))||visual.decision!==DECISION||
+     !Array.isArray(visual.screenshots)||!eq(visual.screenshots.map(s=>{if(s.decision!==DECISION)fail('VISUAL_TILE');const{decision,...ref}=s;return ref;}),r.screenshots))fail('VISUAL_BINDING');
+  if(r.questionUid===doc.questionUid&&(!eq(withoutCommit(r.sourceRef),doc.currentSourceRef)||r.questionSha256!==sha(stable(current))||
+     !eq(r.assetRefs.map(withoutCommit),doc.currentAssets.filter(a=>a.path==='archive/'+current.image))))fail('SELECTED_SOURCE_BINDING');
+ }
+ const sorted=rows=>rows.slice().sort((a,b)=>a.path.localeCompare(b.path));
+ if(seen.size!==4||visualSeen.size!==4||new Set(artifacts.map(x=>x.path)).size!==artifacts.length||!eq(sorted(artifacts),sorted(t.screenshotArtifacts.map(artifact))))fail('ARTIFACT_INVENTORY');
+ capturedArtifacts(reader,v.artifactRefs,artifacts,ancestor);
+ return{logicalCases:2,newSemanticApproval:0,newFourSlotVector:0};
+}
+
+module.exports={palmaCurrentUiRequested,assertPalmaCurrentUiDocuments,verifyPalmaTwoCurrentUi,palmaCurrentUiRefs,verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData,
  currentReuseRequested,verifyCurrentCaptureExecution,verifyCurrentVisualReuse,CURRENT_OWNER,CURRENT_VISUAL_SCHEMA,CURRENT_CAPTURE_HEAD,CURRENT_PINS,
  CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF,CURRENT_EQUIVALENCE_REF,CURRENT_INDEPENDENT_REF,CURRENT_REASSEMBLY_REF,PRIOR_TECHNICAL_REF,PRIOR_VISUAL_REF};

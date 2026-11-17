@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "archive-stale40-inventory-key-reversible-delta-v1",
+  "checkerPath": "tools/check-m2s1-stale-forty-current-browser.cjs",
+  "before": {
+    "path": "tools/check-m2s1-stale-forty-current-browser.cjs",
+    "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v1/files/tools/check-m2s1-stale-forty-current-browser.cjs",
+    "gitBlobSha1": "01b28ea64d9973d0ad3b3c7fe44f00c23e520112",
+    "sha256": "4cc9162da65e488796eb35c8865558555324c9456caf609ddc8c8c577b2d2c61",
+    "bytes": 36950
+  },
+  "after": {
+    "path": "tools/check-m2s1-stale-forty-current-browser.cjs",
+    "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v2/files/tools/check-m2s1-stale-forty-current-browser.cjs",
+    "gitBlobSha1": "ea71e8f716737b2dddf315590aea5cee900fdfaf",
+    "sha256": "2429945d42f65ce6d30b7afdbc9ea01bfc739add592b047b3005b57a80e1a399",
+    "bytes": 38476
+  },
+  "edits": [
+    {
+      "before": "",
+      "after": "function assertScopedScreenshotInventory(results,artifacts,manifest){\n  // The raw proof keeps the question key. Only this closed adapter adds the\n  // captured surface to the filename key consumed by the unchanged H guard.\n  const expected=new Map(planCases(manifest).flatMap(group=>group.items.map(item=>{\n    const id=[item.key,group.surface,group.viewport.name].join(':');\n    return[id,{item,surface:group.surface,mode:group.mode,viewport:group.viewport}];\n  })));\n  assert(Array.isArray(results)&&results.length===83&&expected.size===83,'UI_STALE40_SCREENSHOT_CASE_COUNT');\n  const seen=new Set();\n  const adapted=results.map(row=>{\n    const id=[row?.key,row?.surface,row?.viewport?.name].join(':');\n    const bound=expected.get(id);\n    assert(bound&&!seen.has(id),'UI_STALE40_SCREENSHOT_CASE_BINDING');seen.add(id);\n    assert.equal(row.questionUid,bound.item.questionUid,'UI_STALE40_SCREENSHOT_UID');\n    assert.equal(row.sourceOrdinal,bound.item.sourceOrdinal,'UI_STALE40_SCREENSHOT_ORDINAL');\n    assert.equal(row.mode,bound.mode,'UI_STALE40_SCREENSHOT_MODE');\n    assert.deepEqual(row.viewport,bound.viewport,'UI_STALE40_SCREENSHOT_VIEWPORT');\n    const key=bound.surface==='SOLUTION'&&bound.item.questionUid===Fragments.UID\n      ?bound.item.key:`${bound.item.key}-${bound.surface}`;\n    return{...row,key};\n  });\n  assert.equal(seen.size,expected.size,'UI_STALE40_SCREENSHOT_COMPLETE_PLAN');\n  return assertScreenshotInventory(adapted,artifacts);\n}\n",
+      "anchor": "function validateIdentity(identity,item){"
+    },
+    {
+      "before": "if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertScreenshotInventory(results, screenshotArtifacts);",
+      "after": "if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertScopedScreenshotInventory(results, screenshotArtifacts,manifest);"
+    },
+    {
+      "before": "assertScreenshotInventory(results, readScreenshotArtifacts(out));",
+      "after": "assertScopedScreenshotInventory(results, readScreenshotArtifacts(out),manifest);"
+    },
+    {
+      "before": "validateManifest,planCases,loadQuestions,shape,",
+      "after": "validateManifest,planCases,assertScopedScreenshotInventory,loadQuestions,shape,"
+    }
+  ],
+  "inverseWholeExact": true,
+  "testPath": "tests/m2s1-stale-forty-current-browser.test.cjs",
+  "oldTestWholePrefixExact": true,
+  "oldTest": {
+    "path": "tests/m2s1-stale-forty-current-browser.test.cjs",
+    "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v1/files/tests/m2s1-stale-forty-current-browser.test.cjs",
+    "gitBlobSha1": "b5148c3a48adabb86f252238ce6959b39de7d2ac",
+    "sha256": "75e8fb07f7ac0d999708c9d6ad4f3aa2526883823daf9d4a6d75ee68b00b95ff",
+    "bytes": 15726
+  },
+  "newTest": {
+    "path": "tests/m2s1-stale-forty-current-browser.test.cjs",
+    "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v2/files/tests/m2s1-stale-forty-current-browser.test.cjs",
+    "gitBlobSha1": "083fc5a261920787306ff62ce516e4ee3419a609",
+    "sha256": "2e62948a1e1bdb9ef1b327781123e182dc5f00d23dfd513717e556e66795b4dc",
+    "bytes": 20293
+  },
+  "unchangedOperational3": [
+    {
+      "path": "tools/capture-m2s1-stale-forty-surfaces.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v2/files/tools/capture-m2s1-stale-forty-surfaces.cjs",
+      "gitBlobSha1": "eacabe15d962858a3f95b59ee94daece3e7fb7cf",
+      "sha256": "d1e29325ffa367938b9ecba4eab8df2d295858bfd68920c0f05229186f2eb4bc",
+      "bytes": 28377
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-stale-forty-current-ui.json",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v2/files/tests/fixtures/archive-m2s1-stale-forty-current-ui.json",
+      "gitBlobSha1": "063f7fc0a807c01b77a64755d7e43c5770eea824",
+      "sha256": "43d1a52c55d7a9407e8b6bfcab15443158de53aa792f71cb68d46c1d961741a3",
+      "bytes": 98644
+    },
+    {
+      "path": ".github/workflows/m2s1-stale-forty-current-renderer-chrome.yml",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v2/files/.github/workflows/m2s1-stale-forty-current-renderer-chrome.yml",
+      "gitBlobSha1": "4d9a352874fa9bb2a1beffc087ae61eb9090052c",
+      "sha256": "34d4946a94ea685893c8f8603bf1f9c64990f2215bbb97b142c34ab238a45f27",
+      "bytes": 7471
+    }
+  ],
+  "unchangedRuntime4": [
+    {
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v1/inputs/tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "bytes": 56735
+    },
+    {
+      "path": "tools/capture-m1s2-problem-surface.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v1/inputs/tools/capture-m1s2-problem-surface.cjs",
+      "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+      "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+      "bytes": 10218
+    },
+    {
+      "path": "tools/m2s1-text3-solution-fragments.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v1/inputs/tools/m2s1-text3-solution-fragments.cjs",
+      "gitBlobSha1": "8ccfc5b09602b3f348b8b842007123cbc7d9ecd1",
+      "sha256": "b7fbc927ec795bca33fd923c971efee8ec94cd6aeb1a606f6be6ec3760caa4d9",
+      "bytes": 22828
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-text-solution3-ui.json",
+      "localPath": "/tmp/ap-middle-meta-26fc-recovery17/m1-stale40-current-ui-v1/inputs/tests/fixtures/archive-m2s1-text-solution3-ui.json",
+      "gitBlobSha1": "6c8859829f369a0843bcd0a9faeb77cc293ca2ff",
+      "sha256": "043f04f67127dd003e79432e7c72c21bf7f29ee8e364d66e371fbae5557970dd",
+      "bytes": 3325
+    }
+  ]
+}
