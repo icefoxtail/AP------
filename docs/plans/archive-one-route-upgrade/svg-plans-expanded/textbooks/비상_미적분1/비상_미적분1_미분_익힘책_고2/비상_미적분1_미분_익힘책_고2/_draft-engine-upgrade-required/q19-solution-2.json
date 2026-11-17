@@ -1,0 +1,84 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "id": "B",
+        "x": 6.0,
+        "y": 0.0
+      }
+    ],
+    "coefficients": [
+      "0",
+      "9",
+      "0",
+      "-1/4"
+    ],
+    "formula": "-x^3/4 + 9*x",
+    "viewport": [
+      -0.72,
+      6.72,
+      -3.3255375505322444,
+      24.110147241358774
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "2*sqrt(3)",
+          "coordinates": false
+        }
+      ],
+      "callouts": [
+        {
+          "id": "tx",
+          "point": "T",
+          "text": "h=2*√3",
+          "direction": "NE",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "ty",
+          "point": "T",
+          "text": "V/pi=12*√3",
+          "direction": "SE",
+          "labelKind": "MATH"
+        }
+      ]
+    },
+    "overviewWindowPolicy": "FEATURE_BAND",
+    "axisTitles": {
+      "x": "h",
+      "y": "V/pi"
+    }
+  },
+  "caption": "가로좌표h,세로좌표V/π=9h−h³/4. 0<h<6에서도함수9−3h²/4의부호가h=2√3에서+→−로변하므로부피최대. 최대V=12√3π,구하는높이2√3cm. 양끝은퇴화경계V0이며물리적원기둥높이는열린범위다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $3\\text{ cm}$인 구에 내접하는 원기둥이 있다. 이 원기둥의 부피가 최대일 때, 원기둥의 높이를 구하시오.\n<img src=\"q19.png\" width=\"240\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "가로좌표h,세로좌표V/π=9h−h³/4. 0<h<6에서도함수9−3h²/4의부호가h=2√3에서+→−로변하므로부피최대. 최대V=12√3π,구하는높이2√3cm. 양끝은퇴화경계V0이며물리적원기둥높이는열린범위다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "가로좌표h,세로좌표V/π=9h−h³/4. 0<h<6에서도함수9−3h²/4의부호가h=2√3에서+→−로변하므로부피최대. 최대V=12√3π,구하는높이2√3cm. 양끝은퇴화경계V0이며물리적원기둥높이는열린범위다."
+  ]
+}

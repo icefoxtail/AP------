@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      2.4,
+      2.8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2.5,
+        "y": -52.3125
+      }
+    ],
+    "coefficients": [
+      "-22",
+      "-9",
+      "0",
+      "-3",
+      "1"
+    ],
+    "formula": "x^4 - 3*x^3 - 9*x - 22",
+    "overlays": {
+      "lines": [
+        {
+          "id": "low",
+          "slope": "0",
+          "intercept": "-53"
+        },
+        {
+          "id": "high",
+          "slope": "0",
+          "intercept": "-52"
+        }
+      ]
+    },
+    "viewport": [
+      2.35,
+      2.85,
+      -53.5,
+      -51.5
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "caption": "앞패널의전역제곱합증명은유지하고경계−53/−52와반례(5/2,−837/16)를확대한다. 가로범위는국소확대창일뿐원래x≥0전체조건을줄이지않는다. g는−53보다항상크지만−52아래로내려가므로최대정수k=−53.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "음이 아닌 모든 실수 $x$에 대하여 부등식\n$$x^4-5x^3-9x-22 \\ge -2x^3+k$$\n가 성립할 때, 정수 $k$의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "앞패널의전역제곱합증명은유지하고경계−53/−52와반례(5/2,−837/16)를확대한다. 가로범위는국소확대창일뿐원래x≥0전체조건을줄이지않는다. g는−53보다항상크지만−52아래로내려가므로최대정수k=−53.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "앞패널의전역제곱합증명은유지하고경계−53/−52와반례(5/2,−837/16)를확대한다. 가로범위는국소확대창일뿐원래x≥0전체조건을줄이지않는다. g는−53보다항상크지만−52아래로내려가므로최대정수k=−53."
+  ]
+}

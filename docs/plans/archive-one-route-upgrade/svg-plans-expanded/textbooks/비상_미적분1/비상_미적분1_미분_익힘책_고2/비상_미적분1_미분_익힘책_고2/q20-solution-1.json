@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "domain": [
+      -2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "Y",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "4"
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "formula": "-x^2 + 2*x + 3"
+  },
+  "caption": "주어진 도함수의 근은 −1,3이고 y절편은 3이다. f′=−(x+1)(x−3)=−x²+2x+3. 음수→양수→음수로원함수의극소/극대를결정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같다. $f(0)=0$일 때, 방정식 $f(x)=k$가 서로 다른 $3$개의 실근을 갖도록 하는 실수 $k$의 값의 범위를 구하시오.\n<img src=\"q20.png\" width=\"280\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "주어진 도함수의 근은 −1,3이고 y절편은 3이다. f′=−(x+1)(x−3)=−x²+2x+3. 음수→양수→음수로원함수의극소/극대를결정한다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 도함수의 근은 −1,3이고 y절편은 3이다. f′=−(x+1)(x−3)=−x²+2x+3. 음수→양수→음수로원함수의극소/극대를결정한다."
+  ]
+}

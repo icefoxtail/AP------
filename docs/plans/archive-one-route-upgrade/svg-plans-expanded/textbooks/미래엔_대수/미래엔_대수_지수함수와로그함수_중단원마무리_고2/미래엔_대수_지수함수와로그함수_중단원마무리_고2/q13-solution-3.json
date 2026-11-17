@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "PR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "QS",
+      "refs": [
+        "Q",
+        "S"
+      ]
+    },
+    {
+      "id": "RS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "RH",
+      "refs": [
+        "R",
+        "H"
+      ]
+    },
+    {
+      "id": "HS",
+      "refs": [
+        "H",
+        "S"
+      ]
+    }
+  ],
+  "caption": "k2일때P(2,1),Q(8,1),R(2,0),S(8,2). H(8,0)는S의x축수선발이다. 수평거리RH6,수직거리HS2라RS=2√10. 실제두곡선은앞두패널에보존하고이패널은거리계산에필요한점과직각변만보인다. 정답2√10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "R",
+        "H",
+        "S"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q13.png\" />\n[서술형]\n다음 그림과 같이 두 함수 $y=\\log_2 \\sqrt{kx}$와 $y=\\log_4 \\frac{x}{k}$의 그래프가 직선 $y=1$과 만나는 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 하고, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$를 지나면서 $y$축에 평행한 두 직선이 다른 함수의 그래프와 만나는 점을 각각 $\\mathrm{R}$과 $\\mathrm{S}$라 하자. $\\overline{\\mathrm{PQ}}=6$일 때, 선분 $\\mathrm{RS}$의 길이를 구하는 풀이 과정과 답을 쓰시오. (단, $k>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "위함수는log2√(kx)=log4(kx). 그림의P왼쪽Q오른쪽에서4k−4/k=6이라k2. P(2,1),Q(8,1),R(2,0),S(8,2). 이패널은위곡선log4(2x)의P,S와기준선y1을표시한다. RS는아래곡선패널과보조도에서구한다. log4(x/2)+1=log4(2x)라는정확항등식으로같은곡선을표시한다. 아래곡선log4(x/2)의R(2,0),Q(8,1)을표시한다. 두세로선의가로거리6,RS의세로차2이므로RS=√(6²+2²)=2√10. 정답2√10. k2일때P(2,1),Q(8,1),R(2,0),S(8,2). H(8,0)는S의x축수선발이다. 수평거리RH6,수직거리HS2라RS=2√10. 실제두곡선은앞두패널에보존하고이패널은거리계산에필요한점과직각변만보인다. 정답2√10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "k2일때P(2,1),Q(8,1),R(2,0),S(8,2). H(8,0)는S의x축수선발이다. 수평거리RH6,수직거리HS2라RS=2√10. 실제두곡선은앞두패널에보존하고이패널은거리계산에필요한점과직각변만보인다. 정답2√10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

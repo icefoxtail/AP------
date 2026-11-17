@@ -1,0 +1,59 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      0.5,
+      3.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 2.0,
+        "y": -15.0
+      }
+    ],
+    "coefficients": [
+      "1",
+      "0",
+      "-6",
+      "1"
+    ],
+    "formula": "x^3 - 6*x^2 + 1",
+    "overlays": {
+      "lines": [
+        {
+          "id": "tan",
+          "slope": "-12",
+          "intercept": "9"
+        }
+      ]
+    },
+    "viewport": [
+      0.14,
+      3.86,
+      -34.305,
+      4.305
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "caption": "최소기울기−12를 원래 곡선의 점(2,−15)에 적용한다. y+15=−12(x−2),정답접선 y=−12x+9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-6x^2+1$ 위의 점에서의 접선 중에서 기울기가 최소인 접선의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "최소기울기−12를 원래 곡선의 점(2,−15)에 적용한다. y+15=−12(x−2),정답접선 y=−12x+9.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "최소기울기−12를 원래 곡선의 점(2,−15)에 적용한다. y+15=−12(x−2),정답접선 y=−12x+9."
+  ]
+}

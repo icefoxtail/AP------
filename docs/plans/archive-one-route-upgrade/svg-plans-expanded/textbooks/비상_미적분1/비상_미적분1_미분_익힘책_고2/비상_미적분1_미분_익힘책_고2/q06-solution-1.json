@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "domain": [
+      -1.8,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1/2",
+        "y": "7/4"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "3/2",
+        "y": "27/4"
+      },
+      {
+        "id": "V",
+        "x": "-3/2",
+        "y": "-9/4"
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "formula": "x^2 + 3*x",
+    "overlays": {
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "5",
+          "intercept": "-3/4"
+        }
+      ]
+    }
+  },
+  "caption": "대칭 차분의 가로 간격은2h다. 주어진 극한은2f′(x)=4x+6, f′(1)=5. 대표 C=0인 f=x²+3x(가법상수는 차분에 영향 없음), x=1,h=1/2에서 L(1/2,7/4),R(3/2,27/4)의 할선기울기5를 보인다. 분모h로 나누면10,2h로 나누면5임을 구별. 정답5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$가 모든 실수 $x$에 대하여\n$$\\lim_{h \\to 0} \\frac{f(x+h)-f(x-h)}{h}=4x+6$$\n을 만족시킬 때, $f'(1)$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "대칭 차분의 가로 간격은2h다. 주어진 극한은2f′(x)=4x+6, f′(1)=5. 대표 C=0인 f=x²+3x(가법상수는 차분에 영향 없음), x=1,h=1/2에서 L(1/2,7/4),R(3/2,27/4)의 할선기울기5를 보인다. 분모h로 나누면10,2h로 나누면5임을 구별. 정답5.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭 차분의 가로 간격은2h다. 주어진 극한은2f′(x)=4x+6, f′(1)=5. 대표 C=0인 f=x²+3x(가법상수는 차분에 영향 없음), x=1,h=1/2에서 L(1/2,7/4),R(3/2,27/4)의 할선기울기5를 보인다. 분모h로 나누면10,2h로 나누면5임을 구별. 정답5."
+  ]
+}

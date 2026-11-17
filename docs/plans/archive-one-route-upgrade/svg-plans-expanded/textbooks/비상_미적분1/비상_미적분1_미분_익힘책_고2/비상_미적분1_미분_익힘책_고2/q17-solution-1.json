@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      -4,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3.0,
+        "y": 30.0
+      },
+      {
+        "id": "B",
+        "x": 1.0,
+        "y": -2.0
+      }
+    ],
+    "coefficients": [
+      "3",
+      "-9",
+      "3",
+      "1"
+    ],
+    "formula": "x^3 + 3*x^2 - 9*x + 3",
+    "viewport": [
+      -4.72,
+      2.7199999999999998,
+      -7.12,
+      35.12
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "caption": "f′(−3)=0과f(−3)=30에서a=3,b=−9. f′=3(x+3)(x−1),극댓점(−3,30) 이후 감소하여(1,−2)에서극소. 정답극솟값−2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3+ax^2+bx+3$이 $x=-3$에서 극댓값 $30$을 가질 때, 함수 $f(x)$의 극솟값을 구하시오. (단, $a, b$는 실수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "f′(−3)=0과f(−3)=30에서a=3,b=−9. f′=3(x+3)(x−1),극댓점(−3,30) 이후 감소하여(1,−2)에서극소. 정답극솟값−2.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "f′(−3)=0과f(−3)=30에서a=3,b=−9. f′=3(x+3)(x−1),극댓점(−3,30) 이후 감소하여(1,−2)에서극소. 정답극솟값−2."
+  ]
+}

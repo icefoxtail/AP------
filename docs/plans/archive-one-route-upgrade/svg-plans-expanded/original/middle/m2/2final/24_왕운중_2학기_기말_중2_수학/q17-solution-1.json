@@ -1,0 +1,110 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "label": "b=a"
+      },
+      {
+        "id": "base",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "label": "b=0"
+      }
+    ],
+    "axisTitles": {
+      "x": "a",
+      "y": "b"
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P12",
+          "x": "1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P13",
+          "x": "1",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P14",
+          "x": "1",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P15",
+          "x": "1",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P16",
+          "x": "1",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P23",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "이패널은a=1~2의허용정수결과6개만표시한다. 먼저a≠b의30가지에서a2이고b가2,3이아닌4가지를뺀다. (2,3)은두직선이일치하므로공통점이있다는의미의만난다에포함한다. 총26/36=13/18,정답②. 한점에서만난다는다른해석이면25/36이지만원문해설은일치를포함한다. 대각선은제외조건표시이며연속선전체가표본공간아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주사위 한 개를 두 번 던져 첫 번째 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라고 할 때, 다음 두 조건을 동시에 만족시킬 확률은? [5점]<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\"><b>&lt;조건&gt;</b><br>(가) $\\dfrac{a}{b} \\ne 1$<br>(나) 두 직선 $y=2x+3$과 $y=ax+b$는 만난다.</div>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

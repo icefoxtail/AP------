@@ -1,0 +1,73 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "4",
+    "coefficients": [
+      "1",
+      "1/2",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.25,
+      10
+    ],
+    "viewport": [
+      -1,
+      11,
+      -2,
+      3
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "curveX": "8",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "1"
+        },
+        {
+          "id": "l",
+          "x": "2",
+          "style": "DASHED"
+        },
+        {
+          "id": "r",
+          "x": "8",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "위함수는log2√(kx)=log4(kx). 그림의P왼쪽Q오른쪽에서4k−4/k=6이라k2. P(2,1),Q(8,1),R(2,0),S(8,2). 이패널은위곡선log4(2x)의P,S와기준선y1을표시한다. RS는아래곡선패널과보조도에서구한다. log4(x/2)+1=log4(2x)라는정확항등식으로같은곡선을표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q13.png\" />\n[서술형]\n다음 그림과 같이 두 함수 $y=\\log_2 \\sqrt{kx}$와 $y=\\log_4 \\frac{x}{k}$의 그래프가 직선 $y=1$과 만나는 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 하고, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$를 지나면서 $y$축에 평행한 두 직선이 다른 함수의 그래프와 만나는 점을 각각 $\\mathrm{R}$과 $\\mathrm{S}$라 하자. $\\overline{\\mathrm{PQ}}=6$일 때, 선분 $\\mathrm{RS}$의 길이를 구하는 풀이 과정과 답을 쓰시오. (단, $k>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "위함수는log2√(kx)=log4(kx). 그림의P왼쪽Q오른쪽에서4k−4/k=6이라k2. P(2,1),Q(8,1),R(2,0),S(8,2). 이패널은위곡선log4(2x)의P,S와기준선y1을표시한다. RS는아래곡선패널과보조도에서구한다. log4(x/2)+1=log4(2x)라는정확항등식으로같은곡선을표시한다. 아래곡선log4(x/2)의R(2,0),Q(8,1)을표시한다. 두세로선의가로거리6,RS의세로차2이므로RS=√(6²+2²)=2√10. 정답2√10. k2일때P(2,1),Q(8,1),R(2,0),S(8,2). H(8,0)는S의x축수선발이다. 수평거리RH6,수직거리HS2라RS=2√10. 실제두곡선은앞두패널에보존하고이패널은거리계산에필요한점과직각변만보인다. 정답2√10. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "위함수는log2√(kx)=log4(kx). 그림의P왼쪽Q오른쪽에서4k−4/k=6이라k2. P(2,1),Q(8,1),R(2,0),S(8,2). 이패널은위곡선log4(2x)의P,S와기준선y1을표시한다. RS는아래곡선패널과보조도에서구한다. log4(x/2)+1=log4(2x)라는정확항등식으로같은곡선을표시한다."
+  ]
+}

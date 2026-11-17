@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "x-2y=2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "3/2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "3x-2y=2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "소문항2의 두 직선만 분리하여 교점(0, -1)를 읽는다. 원문의 네 직선 전체 그림은 보존하며 선택한 두 식의 공통 해가 이 교점이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음 제시된 그래프를 이용하여 제시된 연립방정식의 해의 순서쌍 $(x,y)$를 구하여라.\n1) $\\begin{cases}x-2y=2\\\\x+2y=2\\end{cases}$의 해의 순서쌍 $(x,y)$를 구하시오.(단답형) [1점]\n2) $\\begin{cases}x-2y=2\\\\3x-2y=2\\end{cases}$의 해의 순서쌍 $(x,y)$를 구하시오.(단답형) [1점]\n3) $\\begin{cases}3x-2y=2\\\\3x+2y=10\\end{cases}$의 해의 순서쌍 $(x,y)$를 구하시오.(단답형) [1점]\n4) $\\begin{cases}3x+2y=10\\\\x+2y=2\\end{cases}$의 해의 순서쌍 $(x,y)$를 구하시오.(단답형) [1점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

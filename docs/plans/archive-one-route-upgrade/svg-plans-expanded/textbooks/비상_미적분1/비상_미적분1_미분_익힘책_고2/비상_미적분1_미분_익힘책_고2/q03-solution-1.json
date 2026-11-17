@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "domain": [
+      -0.5,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "3"
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "left",
+          "slope": "4",
+          "intercept": "-2"
+        },
+        {
+          "id": "right",
+          "slope": "1",
+          "intercept": "1"
+        }
+      ]
+    }
+  },
+  "caption": "x=1 양쪽 함수값은2이므로 연속. 왼쪽 접선기울기4, 오른쪽1은 달라 미분 불가능. 분기점(1,2)와 두 접선 y=4x−2,y=x+1을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수\n$$f(x)=\\begin{cases} x+1 & (x \\ge 1) \\\\ 2x^2 & (x<1) \\end{cases}$$\n에 대하여 $x=1$에서 연속성과 미분가능성을 조사하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "x=1 양쪽 함수값은2이므로 연속. 왼쪽 접선기울기4, 오른쪽1은 달라 미분 불가능. 분기점(1,2)와 두 접선 y=4x−2,y=x+1을 비교한다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1 양쪽 함수값은2이므로 연속. 왼쪽 접선기울기4, 오른쪽1은 달라 미분 불가능. 분기점(1,2)와 두 접선 y=4x−2,y=x+1을 비교한다."
+  ]
+}

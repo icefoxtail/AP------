@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "P3",
+        "x": "2",
+        "y": "-1"
+      }
+    ],
+    "formula": "1 - x"
+  },
+  "caption": "원본 평행한 상승선에서 a>0,아래쪽 절편에서b<0. 따라서 목표의 기울기−a<0,절편−b>0이다. 이 도식은 a1,b−1을 택한 부호 설명용 대표형이며 실제 계수의 값을 정하지 않는다. 절편은 둘 다 양수여서 제2·1·4사분면을 지나고 제3사분면은 지나지 않는다. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 일차함수 $y = ax + b, y = ax + b + 3, y = -ax + b - 1$의 그래프가 다음과 같을 때, 일차함수 $y = -ax - b$의 그래프가 지나지 <u>않는</u> 사분면을 구하면? (3점)<br><br>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

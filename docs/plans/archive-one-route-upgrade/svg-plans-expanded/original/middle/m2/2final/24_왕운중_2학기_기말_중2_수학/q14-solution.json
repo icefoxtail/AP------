@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "15"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "1"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "universe": {
+      "name": "U",
+      "count": "16"
+    }
+  },
+  "caption": "A는앞면적어도한번,B는모두뒷면사건이다. 동전4번의전체16가지중모두뒷면인1가지가여사건이다. 적어도한번앞면은15가지이므로15/16,정답④. 두영역숫자는원소이름이아닌경우의수다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1개의 동전을 네 번 던질 때, 적어도 한 번은 앞면이 나올 확률은? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

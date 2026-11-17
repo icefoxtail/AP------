@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      2.4,
+      3.6,
+      21,
+      40
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "3",
+          "2"
+        ],
+        "domain": [
+          "5/2",
+          "7/2"
+        ],
+        "label": "y=2*x^2+3*x+3",
+        "color": "BLUE"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": [
+          "-15",
+          "15"
+        ],
+        "domain": [
+          "5/2",
+          "7/2"
+        ],
+        "label": "y=15*x-15",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "5/2",
+        "3",
+        "7/2"
+      ],
+      "y": [
+        "25",
+        "30",
+        "35"
+      ]
+    }
+  },
+  "caption": "a=3이므로원래함수의x=3점(3,30)에서미분계수f′(3)=4·3+3=15. 접선y=15x−15가곡선과접하며앞패널할선의3과다름을구별한다. 정답15.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2x^2+ax+3$에서 $x$의 값이 $-1$에서 $1$까지 변할 때, 평균변화율이 $3$이다. 이때 함수 $f(x)$의 $x=a$에서의 미분계수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "a=3이므로원래함수의x=3점(3,30)에서미분계수f′(3)=4·3+3=15. 접선y=15x−15가곡선과접하며앞패널할선의3과다름을구별한다. 정답15.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3이므로원래함수의x=3점(3,30)에서미분계수f′(3)=4·3+3=15. 접선y=15x−15가곡선과접하며앞패널할선의3과다름을구별한다. 정답15."
+  ]
+}

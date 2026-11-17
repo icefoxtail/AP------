@@ -1,0 +1,137 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "T",
+        "name": "십의 자리",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "U",
+        "name": "짝수 일의 자리",
+        "elements": [
+          "0",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "같은카드를두번쓰지않고십의자리는0을제외한다. 전체4×4=16가지중짝수일의자리0/2/4별경우는4/3/3가지. 화살표10개가실제짝수결과이며확률10/16=5/8. 이그림은함수가아니라허용결과관계다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 0, 1, 2, 3, 4의 숫자가 하나씩 적힌 5장의 카드 중에서 두 장을 임의로 뽑아 두 자리 자연수를 만들 때, 짝수일 확률 [2점]을 구하고 그 과정[3점]을 서술하시오. [총 5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

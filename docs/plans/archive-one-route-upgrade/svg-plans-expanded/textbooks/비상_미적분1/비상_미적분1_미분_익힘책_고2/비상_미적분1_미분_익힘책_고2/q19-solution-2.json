@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "0",
+          "-3/4"
+        ]
+      }
+    ],
+    "formula": "9-3*x^2/4",
+    "axisTitles": {
+      "x": "h",
+      "y": "V prime/pi"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "9"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "-18"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "2*sqrt(3)",
+          "coordinates": false
+        }
+      ],
+      "callouts": [
+        {
+          "id": "t",
+          "point": "T",
+          "text": "h=2*√3",
+          "labelKind": "MATH",
+          "direction": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "물리적 범위 0<h<6에서 V(h)/π=9h−h³/4, (V/π)′=9−3h²/4이다. 도함수의 양의 근 h=2√3 전후로 +에서 −로 바뀌므로 부피 최대. 그래프의 h≤0 부분은 같은 다항식의 보조 연장이며 물리적 높이가 아니다. 최댓값 V=12√3π, 다음 단면 배치에서 높이2√3와 반지름√6를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $3\\text{ cm}$인 구에 내접하는 원기둥이 있다. 이 원기둥의 부피가 최대일 때, 원기둥의 높이를 구하시오.\n<img src=\"q19.png\" width=\"240\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "물리적 범위 0<h<6에서 V(h)/π=9h−h³/4, (V/π)′=9−3h²/4이다. 도함수의 양의 근 h=2√3 전후로 +에서 −로 바뀌므로 부피 최대. 그래프의 h≤0 부분은 같은 다항식의 보조 연장이며 물리적 높이가 아니다. 최댓값 V=12√3π, 다음 단면 배치에서 높이2√3와 반지름√6를 확인한다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "물리적 범위 0<h<6에서 V(h)/π=9h−h³/4, (V/π)′=9−3h²/4이다. 도함수의 양의 근 h=2√3 전후로 +에서 −로 바뀌므로 부피 최대. 그래프의 h≤0 부분은 같은 다항식의 보조 연장이며 물리적 높이가 아니다. 최댓값 V=12√3π, 다음 단면 배치에서 높이2√3와 반지름√6를 확인한다."
+  ]
+}

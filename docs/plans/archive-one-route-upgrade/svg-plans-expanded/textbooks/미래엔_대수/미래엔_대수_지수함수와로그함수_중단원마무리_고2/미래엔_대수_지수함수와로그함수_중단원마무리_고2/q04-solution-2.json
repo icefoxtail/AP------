@@ -1,0 +1,35 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3/2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "1/125=(1/5)³. 감소하는밑이므로2x<3,x<3/2. 등호는포함하지않는다. 정답x<3/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $2^{x+1} \\le 16$\n⑵ $\\left(\\frac{1}{5}\\right)^{2x} > \\frac{1}{125}$\n⑶ $\\log_3(x+2) < 3$\n⑷ $\\log_{\\frac{1}{2}}(x-1) \\ge 3$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "밑2>1이므로x+1≤4,x≤3. 정답x≤3. 1/125=(1/5)³. 감소하는밑이므로2x<3,x<3/2. 등호는포함하지않는다. 정답x<3/2. 정의역x>−2와밑3의증가성에따른x+2<27을함께적용. 정답−2<x<25. 진수x−1>0,밑1/2의감소성으로x−1≤(1/2)³=1/8. 정답1<x≤9/8.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "1/125=(1/5)³. 감소하는밑이므로2x<3,x<3/2. 등호는포함하지않는다. 정답x<3/2."
+  ]
+}

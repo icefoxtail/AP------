@@ -1,0 +1,48 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "P2",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "formula": "x^2 + 2*x"
+  },
+  "caption": "ㅁ y=x²+2x는 꼭짓점(−1,−1)인 포물선으로 일차함수가 아니다. ㄹ은x5라는 수직선이므로 y를x의 함수로 정하지 못한다. 정답ㄱ,ㄴ.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 일차함수인 것을 모두 찾은 것을 고르면? (5점)<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">ㄱ. $y = 3x + 5$<br>ㄴ. $y = 3x$<br>ㄷ. $y = \\dfrac{2}{x}$<br>ㄹ. $y = -x + y + 5$<br>ㅁ. $y = x(x + 2)$</div>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2/3",
+          "5/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "ax+3y=2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2/3",
+          "5/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "5x-2y=b"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "2/3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a=−15/2,b=−4/3에서 두 식은 같은 직선 y=5x/2+2/3이 되어 겹친다. 무수히 많은 교점은 모든 직선 위 점이다. 2a−15b=−15+20=5. 겹쳐 한 선만 보이는 것은 의도된 일치이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}ax+3y=2\\\\5x-2y=b\\end{cases}$의 해가 무수히 많을 때, $2a-15b$로 옳은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

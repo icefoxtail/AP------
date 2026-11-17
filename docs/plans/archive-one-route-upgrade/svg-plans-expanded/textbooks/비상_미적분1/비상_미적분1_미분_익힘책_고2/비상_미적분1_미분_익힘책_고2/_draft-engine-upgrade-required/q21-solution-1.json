@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2.5,
+        "y": -52.3125
+      }
+    ],
+    "coefficients": [
+      "-22",
+      "-9",
+      "0",
+      "-3",
+      "1"
+    ],
+    "formula": "x^4 - 3*x^3 - 9*x - 22",
+    "overlays": {
+      "lines": [
+        {
+          "id": "low",
+          "slope": "0",
+          "intercept": "-53"
+        },
+        {
+          "id": "high",
+          "slope": "0",
+          "intercept": "-52"
+        }
+      ]
+    },
+    "viewport": [
+      -0.48,
+      4.48,
+      -61.78292390828866,
+      15.349368814936367
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "caption": "g=x⁴−3x³−9x−22. 정확히g+53=(x−5/2)²(x+1)²+(11/4)(x−3)²>0이므로k=−53은모든x≥0에가능. 반면g(5/2)=−837/16<−52이므로정수k≥−52는불가능. 정답최대정수−53. 두수평선−53/−52와반례점을비교하며최솟값을−53이라고단정하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "음이 아닌 모든 실수 $x$에 대하여 부등식\n$$x^4-5x^3-9x-22 \\ge -2x^3+k$$\n가 성립할 때, 정수 $k$의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "g=x⁴−3x³−9x−22. 정확히g+53=(x−5/2)²(x+1)²+(11/4)(x−3)²>0이므로k=−53은모든x≥0에가능. 반면g(5/2)=−837/16<−52이므로정수k≥−52는불가능. 정답최대정수−53. 두수평선−53/−52와반례점을비교하며최솟값을−53이라고단정하지않는다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "g=x⁴−3x³−9x−22. 정확히g+53=(x−5/2)²(x+1)²+(11/4)(x−3)²>0이므로k=−53은모든x≥0에가능. 반면g(5/2)=−837/16<−52이므로정수k≥−52는불가능. 정답최대정수−53. 두수평선−53/−52와반례점을비교하며최솟값을−53이라고단정하지않는다."
+  ]
+}

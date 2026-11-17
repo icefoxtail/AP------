@@ -1,0 +1,64 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 2.0,
+        "y": 17.0
+      }
+    ],
+    "coefficients": [
+      "45",
+      "-12",
+      "-5",
+      "0",
+      "1"
+    ],
+    "formula": "x^4 - 5*x^2 - 12*x + 45",
+    "overlays": {
+      "lines": [
+        {
+          "id": "min",
+          "slope": "0",
+          "intercept": "17"
+        }
+      ]
+    },
+    "viewport": [
+      -0.36,
+      3.36,
+      12.52,
+      49.480000000000004
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND",
+    "axisTitles": {
+      "x": "x",
+      "y": "D 제곱"
+    }
+  },
+  "caption": "원중심C(6,−2)와포물선점P(x,x²−5)의거리제곱D²=x⁴−5x²−12x+45. 도함수2(x−2)(2x²+4x+3)의뒤인수는항상양수이므로x2에서유일최소17. 다음패널에서반지름1을뺀다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 곡선 $y=x^2-5$ 위를 움직이는 점 $\\mathrm{P}$와 원 $(x-6)^2+(y+2)^2=1$ 위를 움직이는 점 $\\mathrm{Q}$에 대하여 선분 $\\mathrm{PQ}$의 길이의 최솟값을 구하시오.\n<img src=\"q23.png\" width=\"300\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "원중심C(6,−2)와포물선점P(x,x²−5)의거리제곱D²=x⁴−5x²−12x+45. 도함수2(x−2)(2x²+4x+3)의뒤인수는항상양수이므로x2에서유일최소17. 다음패널에서반지름1을뺀다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원중심C(6,−2)와포물선점P(x,x²−5)의거리제곱D²=x⁴−5x²−12x+45. 도함수2(x−2)(2x²+4x+3)의뒤인수는항상양수이므로x2에서유일최소17. 다음패널에서반지름1을뺀다."
+  ]
+}

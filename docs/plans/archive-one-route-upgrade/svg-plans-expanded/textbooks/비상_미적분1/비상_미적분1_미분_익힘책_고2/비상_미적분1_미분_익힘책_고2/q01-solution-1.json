@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1.2,
+      1.2,
+      1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "3",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=2*x^2+3*x+3",
+        "color": "BLUE"
+      },
+      {
+        "id": "s",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=3*x+5",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "0",
+        "1"
+      ],
+      "y": [
+        "2",
+        "5",
+        "8"
+      ]
+    }
+  },
+  "caption": "평균변화율=(f(1)−f(−1))/2=a=3. 함수f=2x²+3x+3 위의두점(−1,2),(1,8)을잇는할선y=3x+5의기울기3을보인다. 다음패널은다른점x=a=3에서의접선이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2x^2+ax+3$에서 $x$의 값이 $-1$에서 $1$까지 변할 때, 평균변화율이 $3$이다. 이때 함수 $f(x)$의 $x=a$에서의 미분계수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "평균변화율=(f(1)−f(−1))/2=a=3. 함수f=2x²+3x+3 위의두점(−1,2),(1,8)을잇는할선y=3x+5의기울기3을보인다. 다음패널은다른점x=a=3에서의접선이다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "평균변화율=(f(1)−f(−1))/2=a=3. 함수f=2x²+3x+3 위의두점(−1,2),(1,8)을잇는할선y=3x+5의기울기3을보인다. 다음패널은다른점x=a=3에서의접선이다."
+  ]
+}

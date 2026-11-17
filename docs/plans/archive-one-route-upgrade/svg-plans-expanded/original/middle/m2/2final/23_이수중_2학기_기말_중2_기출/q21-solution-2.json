@@ -1,0 +1,35 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 8,
+      "height": 15
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "radius": "bottom"
+    },
+    {
+      "solid": "cone",
+      "height": true,
+      "side": "LEFT"
+    },
+    {
+      "solid": "cone",
+      "slant": true
+    }
+  ],
+  "caption": "회전으로 생긴 원뿔의 반지름8,높이15,모선17. 부피(1/3)π×8²×15=320π cm³.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 그림과 같은 직각삼각형을 직선 $l$을 회전축으로 하여 $1$회전시킬 때 생기는 입체도형의 부피를 구하여라. [6점]\n조건1) 원뿔의 높이를 $h\\rm\\,cm$라 하고 풀이과정에 적으시오.",
+      "mappedTo": "solids"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "같은 색",
+        "elements": [
+          "노랑",
+          "빨강",
+          "검정"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "첫 확률",
+        "elements": [
+          "4/10",
+          "3/10"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "둘째 확률",
+        "elements": [
+          "3/9",
+          "2/9"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "경로 확률",
+        "elements": [
+          "12/90",
+          "6/90"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 1
+        },
+        "to": {
+          "column": 3,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "비복원 첫째/둘째확률은 노랑4/10·3/9, 빨강과 검정 각각3/10·2/9이다. 빨강/검정은 같은 확률값을 공유하나 서로 다른 두 사건이므로6/90을 두 번 더한다. 합(12+6+6)/90=4/15. 다른색 경로는 생략했다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주머니에 노란 공 $4$개, 빨간 공 $3$개, 검은 공 $3$개가 들어 있다. 공을 한 개씩 연속하여 두 번 꺼낼 때 두 번 모두 같은 색의 공을 꺼낼 확률은?(단, 꺼낸 공은 다시 넣지 않는다.) [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

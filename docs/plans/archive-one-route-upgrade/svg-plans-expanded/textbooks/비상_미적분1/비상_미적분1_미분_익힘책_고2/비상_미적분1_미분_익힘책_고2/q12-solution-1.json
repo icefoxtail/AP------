@@ -1,0 +1,64 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      -0.25,
+      1.25
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "id": "B",
+        "x": 1.0,
+        "y": 0.0
+      },
+      {
+        "id": "C",
+        "x": 0.3333333333333333,
+        "y": 0.14814814814814814
+      }
+    ],
+    "coefficients": [
+      "0",
+      "1",
+      "-2",
+      "1"
+    ],
+    "formula": "x^3 - 2*x^2 + x",
+    "viewport": [
+      -0.43,
+      1.43,
+      -1.390625,
+      1.1481481481481481
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND",
+    "axisTitles": {
+      "x": "t",
+      "y": "Y"
+    }
+  },
+  "caption": "f=K(x−a)(x−b)²,K≠0. f′=K(x−b)(3x−2a−b)여서 서로다른 c=(2a+b)/3. 그림은 t=(x−a)/(b−a),Y=f/[K(b−a)³]로 정규화한 Y=t(t−1)²이며 a=0,b=1을 원문값으로 가정하지 않는다. t=1/3의 다른 극점이 원래 c다. 정답(2a+b)/3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)$가 서로 다른 세 실수 $a, b, c$에 대하여\n$$f(a)=f(b)=f'(b)=f'(c)=0$$\n을 만족시킬 때, $c$를 $a$와 $b$로 나타낸 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "f=K(x−a)(x−b)²,K≠0. f′=K(x−b)(3x−2a−b)여서 서로다른 c=(2a+b)/3. 그림은 t=(x−a)/(b−a),Y=f/[K(b−a)³]로 정규화한 Y=t(t−1)²이며 a=0,b=1을 원문값으로 가정하지 않는다. t=1/3의 다른 극점이 원래 c다. 정답(2a+b)/3.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "f=K(x−a)(x−b)²,K≠0. f′=K(x−b)(3x−2a−b)여서 서로다른 c=(2a+b)/3. 그림은 t=(x−a)/(b−a),Y=f/[K(b−a)³]로 정규화한 Y=t(t−1)²이며 a=0,b=1을 원문값으로 가정하지 않는다. t=1/3의 다른 극점이 원래 c다. 정답(2a+b)/3."
+  ]
+}

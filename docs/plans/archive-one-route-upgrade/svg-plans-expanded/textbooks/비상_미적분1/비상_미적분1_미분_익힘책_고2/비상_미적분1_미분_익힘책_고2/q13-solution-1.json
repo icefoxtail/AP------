@@ -1,0 +1,59 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      -1.7,
+      0.2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": -1.0,
+        "y": 5.0
+      }
+    ],
+    "coefficients": [
+      "5",
+      "-1",
+      "0",
+      "1"
+    ],
+    "formula": "x^3 - x + 5",
+    "overlays": {
+      "lines": [
+        {
+          "id": "tan",
+          "slope": "2",
+          "intercept": "7"
+        }
+      ]
+    },
+    "viewport": [
+      -1.928,
+      0.428,
+      0.7870000000000006,
+      6.38490017945975
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "caption": "f′(x)=3x²−1, f′(−1)=2. 점(−1,5)을 지나는 기울기2의 접선 y−5=2(x+1),즉y=2x+7을 곡선과 함께 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-x+5$ 위의 점 $(-1, 5)$에서의 접선의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "f′(x)=3x²−1, f′(−1)=2. 점(−1,5)을 지나는 기울기2의 접선 y−5=2(x+1),즉y=2x+7을 곡선과 함께 보인다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "f′(x)=3x²−1, f′(−1)=2. 점(−1,5)을 지나는 기울기2의 접선 y−5=2(x+1),즉y=2x+7을 곡선과 함께 보인다."
+  ]
+}

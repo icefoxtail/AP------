@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-12"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "3"
+        ]
+      }
+    ],
+    "formula": "3*x^2 - 12*x"
+  },
+  "caption": "접선기울기 f′=3(x−2)²−12의 최소는−12,x=2에서 얻는다. 다음패널에서원래함수의접점과접선으로복원한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-6x^2+1$ 위의 점에서의 접선 중에서 기울기가 최소인 접선의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "접선기울기 f′=3(x−2)²−12의 최소는−12,x=2에서 얻는다. 다음패널에서원래함수의접점과접선으로복원한다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "접선기울기 f′=3(x−2)²−12의 최소는−12,x=2에서 얻는다. 다음패널에서원래함수의접점과접선으로복원한다."
+  ]
+}

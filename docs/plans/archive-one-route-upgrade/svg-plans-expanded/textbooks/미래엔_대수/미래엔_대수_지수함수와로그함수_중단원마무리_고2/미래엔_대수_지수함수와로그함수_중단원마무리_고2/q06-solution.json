@@ -1,0 +1,56 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "1/5",
+    "coefficients": [
+      "1",
+      "1",
+      "-5"
+    ],
+    "shiftX": "1",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.25,
+      3
+    ],
+    "viewport": [
+      -1,
+      4,
+      -6,
+      3
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "x>0에서0<(1/5)^(x−1)<5. 제1사분면을지나지않으려면k≤−5. 최대k−5일때x0의값은0이지만x>0이면항상음수다. x0은제1사분면에포함되지않는다. 정답−5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\left(\\frac{1}{5}\\right)^{x-1}+k$의 그래프가 제$1$사분면을 지나지 않도록 하는 상수 $k$의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x>0에서0<(1/5)^(x−1)<5. 제1사분면을지나지않으려면k≤−5. 최대k−5일때x0의값은0이지만x>0이면항상음수다. x0은제1사분면에포함되지않는다. 정답−5.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x>0에서0<(1/5)^(x−1)<5. 제1사분면을지나지않으려면k≤−5. 최대k−5일때x0의값은0이지만x>0이면항상음수다. x0은제1사분면에포함되지않는다. 정답−5."
+  ]
+}

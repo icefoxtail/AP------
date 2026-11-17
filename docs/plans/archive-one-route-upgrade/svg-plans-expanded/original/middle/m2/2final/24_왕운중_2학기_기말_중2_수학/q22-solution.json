@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "flowA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "flowB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "flowC",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "flowD",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "flowE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "flowA",
+    "flowB",
+    "flowC",
+    "flowD",
+    "flowE"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "flowA",
+        "flowB"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "flowA",
+        "flowC"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "flowB",
+        "flowD"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "flowC",
+        "flowE"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "금요일비에서토요일비확률2/3,토요일맑음1/3. 일요일비로끝나는두경로는(2/3)(2/3)=4/9와(1/3)(1/4)=1/12. 합19/36. 일요일맑음으로끝나는나머지경로는생략했다. 노드좌표와길이는순서도배치일뿐수학적거리조건이아니다. 위경로: 금요일 비→토요일 비→일요일 비; 아래경로: 금요일 비→토요일 맑음→일요일 비.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 어느 지역에서 비가 온 다음 날 비가 오지 않을 확률은 $\\dfrac{1}{3}$이고, 비가 오지 않은 다음 날 비가 올 확률은 $\\dfrac{1}{4}$이라고 한다. 금요일에 비가 올 때, 이틀 후인 일요일에 비가 올 확률[2점]을 구하고 그 과정[3점]을 서술하시오. [총 5점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "hiddenPointNames": [
+    "flowA",
+    "flowB",
+    "flowC",
+    "flowD",
+    "flowE"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "2/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "1/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "2/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "1/4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

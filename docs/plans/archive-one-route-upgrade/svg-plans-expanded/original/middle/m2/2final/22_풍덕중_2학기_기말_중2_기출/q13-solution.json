@@ -1,0 +1,115 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "묶음",
+        "elements": [
+          "학생둘",
+          "교사1",
+          "교사2",
+          "교사3"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "네 묶음 순서",
+        "elements": [
+          "24"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "내부 순서",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "전체",
+        "elements": [
+          "48"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "학생둘을 한 묶음으로 보면 네 개의 배열4!=24에 내부 학생 순서2를 곱해48이다. 화살표는 계산 단계 연결이며 함수가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "학생 $2$명과 선생님 $3$명을 일렬로 세울 때 학생끼리 이웃하도록 세우는 경우의 수는? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

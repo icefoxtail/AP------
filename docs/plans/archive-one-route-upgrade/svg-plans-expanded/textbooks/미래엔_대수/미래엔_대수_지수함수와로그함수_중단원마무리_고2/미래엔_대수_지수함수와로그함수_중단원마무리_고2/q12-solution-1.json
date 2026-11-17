@@ -1,0 +1,68 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "1/2",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "shiftX": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -3,
+      4,
+      -1,
+      5
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "x": "-2",
+          "style": "DASHED"
+        },
+        {
+          "id": "r",
+          "x": "3",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "0<a<1에서f감소,g증가. 원문구간−2≤x≤3의끝점을비교하면M=a^−2,m=a⁴,곱a²1/4라a1/2. 이패널은정해진f=(1/2)^x의보조연장이고세로경계안만문제범위. 최대4,최소1/8. 정답a1/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0<a<1$일 때, 정의역이 $\\{x \\mid -2 \\le x \\le 3\\}$인 두 함수 $f(x)=a^x$과 $g(x)=\\left(\\frac{1}{a^2}\\right)^x$에 대하여 $f(x)$의 최댓값을 $M$, $g(x)$의 최솟값을 $m$이라 하자. $Mm=\\frac{1}{4}$일 때, $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "0<a<1에서f감소,g증가. 원문구간−2≤x≤3의끝점을비교하면M=a^−2,m=a⁴,곱a²1/4라a1/2. 이패널은정해진f=(1/2)^x의보조연장이고세로경계안만문제범위. 최대4,최소1/8. 정답a1/2. 곡선식 g(x)=4^x (최소점 패널: (1/16)·4^(x+2), 최대점 패널: 64·4^(x−3)). g(x)=4^x는 증가하며 원문 정의역은 −2≤x≤3이다. 최소 g(−2)=1/16, 최대 g(3)=64. 이 패널은 왼끝 x=-2의 경계 가이드와 닫힌 끝점을 보여 주는 보조 연장곡선이다. 반대쪽 끝점은 별도 패널에서 확인한다. M=4, m=1/16, Mm=1/4이므로 정답 a=1/2. 곡선식 g(x)=4^x (최소점 패널: (1/16)·4^(x+2), 최대점 패널: 64·4^(x−3)). g(x)=4^x는 증가하며 원문 정의역은 −2≤x≤3이다. 최소 g(−2)=1/16, 최대 g(3)=64. 이 패널은 오른끝 x=3의 경계 가이드와 닫힌 끝점을 보여 주는 보조 연장곡선이다. 반대쪽 끝점은 별도 패널에서 확인한다. M=4, m=1/16, Mm=1/4이므로 정답 a=1/2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "0<a<1에서f감소,g증가. 원문구간−2≤x≤3의끝점을비교하면M=a^−2,m=a⁴,곱a²1/4라a1/2. 이패널은정해진f=(1/2)^x의보조연장이고세로경계안만문제범위. 최대4,최소1/8. 정답a1/2."
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "flowA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "flowB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "flowC",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "flowD",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "flowE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "flowA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "flowA",
+    "flowB",
+    "flowC",
+    "flowD",
+    "flowE"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "flowA",
+        "flowB"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "flowA",
+        "flowC"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "flowB",
+        "flowD"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "flowC",
+        "flowE"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "A빨/B파의확률4/7×4/6=16/42, A파/B빨은3/7×2/6=6/42. 서로겹치지않는두경로를더해22/42=11/21,정답②. 반대색으로끝나는경로만보여주며같은색경로는여기서생략했다. 노드좌표와길이는순서도배치일뿐수학적거리조건이아니다. 위경로: A 추출→A 빨강→B 파랑; 아래경로: A 추출→A 파랑→B 빨강.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$A$ 주머니에는 빨간 공 4개, 파란 공 3개가 들어 있고, $B$ 주머니에는 빨간 공 2개, 파란 공 4개가 들어 있다. 두 주머니 $A, B$에서 각각 한 개씩 공을 임의로 꺼낼 때, 두 공의 색깔이 다를 확률은? [5점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "hiddenPointNames": [
+    "flowA",
+    "flowB",
+    "flowC",
+    "flowD",
+    "flowE"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "4/7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "3/7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "4/6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "2/6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

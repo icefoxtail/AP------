@@ -1,0 +1,83 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "진수양수는x<2또는x>4, f≤4는0≤x≤6. 교집합[0,2)∪(4,6]에서정수0,1,5,6. 근2,4는진수0이어서제외한다. 정답4개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q15.png\" />\n이차함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 부등식\n$$\\log_{\\frac{1}{4}} f(x) \\ge -1$$\n을 만족시키는 정수 $x$의 개수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본근2,4와y절편4에서f(x)=(x−2)(x−4)/2. 로그밑1/4<1이라부등식은0<f(x)≤4. 곡선의영점2,4와높이4교점0,6을모두표시한다. 최종정수0,1,5,6의4개. 진수양수는x<2또는x>4, f≤4는0≤x≤6. 교집합[0,2)∪(4,6]에서정수0,1,5,6. 근2,4는진수0이어서제외한다. 정답4개.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "진수양수는x<2또는x>4, f≤4는0≤x≤6. 교집합[0,2)∪(4,6]에서정수0,1,5,6. 근2,4는진수0이어서제외한다. 정답4개."
+  ]
+}

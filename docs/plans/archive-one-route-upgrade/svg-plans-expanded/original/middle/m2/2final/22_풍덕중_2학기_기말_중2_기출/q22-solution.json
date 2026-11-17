@@ -1,0 +1,97 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "일의 자리",
+        "elements": [
+          "0",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "백 자리 수",
+        "elements": [
+          "5",
+          "4"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "십 자리 수",
+        "elements": [
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "일의 자리0이면5×4=20, 2이면4×4=16, 4이면4×4=16이다. 백의 자리0 금지를 반영하여 총52. 같은 수4를 공유해도 일의자리2/4는 별개 두 경우다. 두 자리 자연수는5×5=25. 화살표는 자리별 선택 수의 계산 연결이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 상자 안에 $0$,$1$,$2$,$3$,$4$,$5$가 적힌 $6$장의 카드가 있다. 다음 물음에 답하시오\n(1) 서로 다른 두 장 뽑아 두자리 자연수를 만들 수 있는 경우의 수를 구하시오. (단답형) [2점]\n(2) 세 장을 뽑아 세 자리 자연수를 만들 때 짝수가 되는 경우의 수를 구하시오. (풀이과정 서술) [3점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

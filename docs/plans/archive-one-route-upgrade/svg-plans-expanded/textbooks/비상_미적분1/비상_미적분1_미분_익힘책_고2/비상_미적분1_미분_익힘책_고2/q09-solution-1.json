@@ -1,0 +1,69 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "domain": [
+      -4,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2.0,
+        "y": 3.0
+      },
+      {
+        "id": "B",
+        "x": 0.0,
+        "y": 1.0
+      }
+    ],
+    "coefficients": [
+      "1",
+      "3",
+      "3",
+      "1/2"
+    ],
+    "formula": "x^3/2 + 3*x^2 + 3*x + 1",
+    "overlays": {
+      "lines": [
+        {
+          "id": "tanA",
+          "slope": "-3",
+          "intercept": "-3"
+        },
+        {
+          "id": "tanB",
+          "slope": "3",
+          "intercept": "1"
+        }
+      ]
+    },
+    "viewport": [
+      -4.6,
+      1.6,
+      -1.0009754647055804,
+      8.672548339959391
+    ],
+    "overviewWindowPolicy": "FEATURE_BAND"
+  },
+  "caption": "극한에서 f(0)=1,f′(0)=3. f=Ax³+Bx²+3x+1에 f(−2)=3,f′(−2)=−3을 대입하면 A=1/2,B=3. 두 점과 접선 y=−3x−3,y=3x+1로 조건을 교차 확인한다. 정답f=x³/2+3x²+3x+1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)$가\n$$\\lim_{x \\to 0} \\frac{f(x)-1}{x}=3$$\n을 만족시키고, 함수 $y=f(x)$의 그래프 위의 점 $(-2, 3)$에서의 접선의 기울기가 $-3$일 때, 함수 $f(x)$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "극한에서 f(0)=1,f′(0)=3. f=Ax³+Bx²+3x+1에 f(−2)=3,f′(−2)=−3을 대입하면 A=1/2,B=3. 두 점과 접선 y=−3x−3,y=3x+1로 조건을 교차 확인한다. 정답f=x³/2+3x²+3x+1.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "극한에서 f(0)=1,f′(0)=3. f=Ax³+Bx²+3x+1에 f(−2)=3,f′(−2)=−3을 대입하면 A=1/2,B=3. 두 점과 접선 y=−3x−3,y=3x+1로 조건을 교차 확인한다. 정답f=x³/2+3x²+3x+1."
+  ]
+}

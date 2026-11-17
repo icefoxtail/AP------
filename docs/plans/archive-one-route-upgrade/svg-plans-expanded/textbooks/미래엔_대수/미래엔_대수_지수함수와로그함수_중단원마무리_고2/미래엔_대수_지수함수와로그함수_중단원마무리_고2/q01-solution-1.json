@@ -1,0 +1,56 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "5",
+    "coefficients": [
+      "-1",
+      "1",
+      "0"
+    ],
+    "shiftX": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      1
+    ],
+    "viewport": [
+      -3,
+      2,
+      -6,
+      1
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=−5^x는5^x를x축대칭한감소곡선. (0,−1)을지나며치역y<0,점근선y=0. 정답점근선y0.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 각 함수에 대하여 그래프를 그리고, 점근선을 구하시오.\n⑴ $y=-5^x$\n⑵ $y=\\log_2 (-x)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=−5^x는5^x를x축대칭한감소곡선. (0,−1)을지나며치역y<0,점근선y=0. 정답점근선y0. y=log2(−x)는log2x를y축대칭. 정의역x<0, (−1,0),(−2,1)을지나며점근선x=0. 정답점근선x0.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−5^x는5^x를x축대칭한감소곡선. (0,−1)을지나며치역y<0,점근선y=0. 정답점근선y0."
+  ]
+}

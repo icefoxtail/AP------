@@ -1,0 +1,56 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "-1/8"
+    ],
+    "shiftX": "3",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -2,
+      5,
+      -1,
+      3
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "이동후y=2^(x−3)+m. 원점대입0=1/8+m이라m−1/8. 점근선y−1/8과원점통과를확인한다. 정답−1/8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=2^x$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $m$만큼 평행이동한 그래프가 원점을 지날 때, $m$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이동후y=2^(x−3)+m. 원점대입0=1/8+m이라m−1/8. 점근선y−1/8과원점통과를확인한다. 정답−1/8.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이동후y=2^(x−3)+m. 원점대입0=1/8+m이라m−1/8. 점근선y−1/8과원점통과를확인한다. 정답−1/8."
+  ]
+}

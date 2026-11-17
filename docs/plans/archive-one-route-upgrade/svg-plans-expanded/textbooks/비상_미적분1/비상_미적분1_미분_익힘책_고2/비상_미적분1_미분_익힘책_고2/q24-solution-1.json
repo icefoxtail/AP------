@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T",
+    "B",
+    "L",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "BL",
+      "refs": [
+        "B",
+        "L"
+      ]
+    },
+    {
+      "id": "LT",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "TB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "DH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBL",
+        "ownerSegment": "BL",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lDH",
+        "ownerSegment": "DH",
+        "text": "8/5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lTB",
+        "ownerSegment": "TB",
+        "text": "x+s=3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "가로등은 오른쪽, 사람과 그림자는 왼쪽에 있다. x는가로등-사람거리,s는그림자길이. 닮음에서3/(x+s)=1.6/s,즉s=8x/7. x′=1.4이므로s′=1.6m/s. 그림은출발1초후x=1.4,s=1.6인대표배치이며새로운고정조건이아니다. 전체밑변3은이대표시각의x+s이고가로등높이3과우연히같음을구별한다. 원점 T는 배치 기준이며 추가 원문 좌표가 아니다. ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 키가 $1.6\\text{ m}$인 사람이 높이가 $3\\text{ m}$인 가로등의 바로 밑에서 출발하여 매초 $1.4\\text{ m}$의 속도로 일직선으로 걸어가고 있다. 이때 이 사람의 그림자의 길이의 변화율을 구하시오.\n<img src=\"q24.png\" width=\"300\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "가로등은 오른쪽, 사람과 그림자는 왼쪽에 있다. x는가로등-사람거리,s는그림자길이. 닮음에서3/(x+s)=1.6/s,즉s=8x/7. x′=1.4이므로s′=1.6m/s. 그림은출발1초후x=1.4,s=1.6인대표배치이며새로운고정조건이아니다. 전체밑변3은이대표시각의x+s이고가로등높이3과우연히같음을구별한다. 원점 T는 배치 기준이며 추가 원문 좌표가 아니다. ",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "가로등은 오른쪽, 사람과 그림자는 왼쪽에 있다. x는가로등-사람거리,s는그림자길이. 닮음에서3/(x+s)=1.6/s,즉s=8x/7. x′=1.4이므로s′=1.6m/s. 그림은출발1초후x=1.4,s=1.6인대표배치이며새로운고정조건이아니다. 전체밑변3은이대표시각의x+s이고가로등높이3과우연히같음을구별한다. 원점 T는 배치 기준이며 추가 원문 좌표가 아니다. "
+  ]
+}

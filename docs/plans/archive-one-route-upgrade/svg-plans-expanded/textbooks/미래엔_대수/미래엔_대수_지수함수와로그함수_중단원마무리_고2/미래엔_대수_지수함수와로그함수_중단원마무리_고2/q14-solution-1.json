@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ],
+    "variable": "t"
+  },
+  "caption": "t=3^a>0로놓으면판별식D=(t−1)²−4(t+7)=(t−9)(t+3). 모든실수x에서엄격히양수이려면D<0이므로−3<t<9와t>0의교집합0<t<9. 정답a<2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 실수 $x$에 대하여 이차부등식\n$$x^2 - (3^a - 1)x + 3^a + 7 > 0$$\n이 성립하도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=3^a>0로놓으면판별식D=(t−1)²−4(t+7)=(t−9)(t+3). 모든실수x에서엄격히양수이려면D<0이므로−3<t<9와t>0의교집합0<t<9. 정답a<2. 3^a<9=3²이고밑3>1이므로a<2. 경계a2는이차식이x4에서0이되어엄격한양수조건을만족하지않는다. 정답a<2.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "t=3^a>0로놓으면판별식D=(t−1)²−4(t+7)=(t−9)(t+3). 모든실수x에서엄격히양수이려면D<0이므로−3<t<9와t>0의교집합0<t<9. 정답a<2."
+  ]
+}

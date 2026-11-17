@@ -1,0 +1,358 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "F",
+    "G",
+    "H",
+    "I",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "I",
+        "B"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "직각 C에서 AB²=AC²+BC². 정사각형 AHIB169와 ACFG25의 차169−25=144가 BC 위 정사각형 넓이이다. 세 변5/12/13과 바깥 정사각형을 정확히 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 두 정사각형 $\\square ACFG$, $\\square AHIB$에 대하여 $\\square ACFG=25\\rm\\,cm^2$, $\\square AHIB=169\\rm\\,cm^2$일 때, $\\square BDCE$의 넓이를 구하시오. [4점]",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "area0",
+        "fill": "LIGHT",
+        "label": "169",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "H",
+              "I",
+              "B"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "area1",
+        "fill": "LIGHT",
+        "label": "25",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "area2",
+        "fill": "LIGHT",
+        "label": "144",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "D",
+              "E",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "formula": "3*x^2 - 3"
+  },
+  "caption": "앞 패널 함수의 도함수 y=f′(x)=3x²−3이다. 두 근−1,1의 바깥에서양수·안에서음수인 부호가 f의 증가·감소와 대응한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3-3x+1$의 증가와 감소를 조사하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "앞 패널 함수의 도함수 y=f′(x)=3x²−3이다. 두 근−1,1의 바깥에서양수·안에서음수인 부호가 f의 증가·감소와 대응한다.",
+      "mappedTo": "INDEPENDENT_EXACT_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "앞 패널 함수의 도함수 y=f′(x)=3x²−3이다. 두 근−1,1의 바깥에서양수·안에서음수인 부호가 f의 증가·감소와 대응한다."
+  ]
+}

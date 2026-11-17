@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "11/5",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "x+y=2.2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5/3",
+          "-2/3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "2x+3y=5"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "8/5",
+          "y": "3/5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "x는 풍덕중→순천역 거리,y는 순천역→아랫장 거리(km). 거리합2.2와 시간 x/3+y/2=5/6에서2x+3y5. 교점 x1.6,y0.6이며32분+18분=50분이다. 원래 경로 지도와 별개의 조건 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 풍덕중학교에서 순천역을 경유하여 아랫장까지의 거리는 $2.2\\rm\\,km$이다. 예진이가 풍덕중학교에서 순천역까지 시속 $3\\rm\\,km$로 달리고 순천역에서 아랫장까지 시속 $2\\rm\\,km$로 걸었더니 총 $50$분 걸려서 도착하였다.\n1) 풍덕중학교에서 순천역까지의 거리를 $x\\rm\\,km$, 순천역에서 아랫장까지의 거리를 $y\\rm\\,km$라고 할 때, 식을 세우기 위한 두 가지 조건을 문제상황에서 찾아 서술하고 연립방정식을 세우시오. (풀이과정 서술) [3점]\n2) 예진이가 풍덕중학교에서 순천역까지 이동한 거리와 순천역에서 아랫장까지 이동한 거리를 각각 구하시오. (풀이과정 서술) [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}
