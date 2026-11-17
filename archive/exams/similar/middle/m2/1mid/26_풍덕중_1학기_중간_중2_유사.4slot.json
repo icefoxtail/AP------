@@ -1,0 +1,2252 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+  "sourceGitBlobSha": "9eea7e53d32cf0c0fe5891f784bffc6b80ca8ea7",
+  "sourceSha256": "a823d3d1a1700bb77543bf18c0ae693a001dafc7e826b32990c6ee08b76ead02",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex stage-local MD migration",
+    "at": "2026-11-12",
+    "role": "source transfer and citation/fingerprint materialization; self-check only"
+  },
+  "stage": "CREATE_4SLOT_STAGE_LOCAL",
+  "review": {
+    "status": "UNREVIEWED",
+    "independentReview": "NOT_RUN",
+    "scope": "4-slot semantics; independent review not claimed"
+  },
+  "selfCheck": {
+    "status": "SOURCE_TRANSFER_ONLY",
+    "itemsChecked": 24,
+    "sourceRead": "MD 4-slot terms transferred and bound to final JS fingerprints.",
+    "visualReview": "NOT_RUN",
+    "identityBinding": "Official UID formula used; identity-map registration NOT_RUN.",
+    "registration": "NOT_RUN"
+  },
+  "scope": {
+    "items": 24,
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "operation": "CREATE",
+    "before": null,
+    "after": "MD transfer into JS + cited 4-slot stage-local companion",
+    "reason": "User-requested migration of existing MD exam."
+  },
+  "handoff": {
+    "status": "REGISTER_PENDING",
+    "nextOwner": "authorized metadata identity-map / registration owner",
+    "firstMissingStep": "official Resolver and identity-map / metadata registration",
+    "productionIntegration": "NOT_RUN",
+    "notes": [
+      "Drive hydration controls preserved as TeX commands.",
+      "Questions transferred from the Drive Markdown; see review fields for outstanding pipeline stages.",
+      "Official resolver, 4-slot semantic review, identity-map, registration, visual review, and consumer validation remain NOT_RUN."
+    ],
+    "artifactRef": "archive/exams/similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.meta-q01-q24.json",
+    "revision": "stage-local-4slot-v1-source-transfer"
+  },
+  "candidates": [],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "다음 중에서 무한소수를 모두 고른 것은? [3점]\nㄱ. $2.71",
+            "termId": 428
+          }
+        ],
+        "goal": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "음 중에서 무한소수를 모두 고른 것은? ",
+            "termId": 9
+          }
+        ],
+        "method": [
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": " 소수점 아래 자릿수가 $3$자리로 유한",
+            "termId": 559,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "다음 중에서 무한소수를 모두 고른 것은? [3점]\nㄱ. $2.71",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소수점 아래 자릿수의 유한성 여부와 무리수(파이), 순환소수의 무한성을 점검한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b028b1c0da911adfd7731157ae8b5ebabe69a28719a68536cf9b736e4561ea36",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 1
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d3af6b0b794b8a7ea406bcccfa7a74b6ef47e32d1af0001f05dd0cccb5fd8fb8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "04c639b1abafaf45335986d962a52d370a3c7af3136b57eba291e2f7b638c19e"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "소수 $2.481481481\\cdots$에 대한 설명 중 옳지 않",
+            "termId": 428
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "소수 $2.481481481\\cdots$에 대한 설명 중 옳지 않",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "주어진 소수 $2.481481481\\cdots$는 소수점 아래에서",
+            "termId": 559,
+            "evidenceType": "IMPLIED",
+            "justification": "순환마디는 소수점 아래 부분에서만 정의된다는 원리를 적용하여 보기의 오류를 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "소수 $2.48148148",
+            "termId": 9
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환마디는 소수점 아래 부분에서만 정의된다는 원리를 적용하여 보기의 오류를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_dc224f143bfa0344ad2e2ec76904ee1508b1ecf948676fe141dee525b73a21ba",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 2
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b91ec50e49b1bb7b58b50503fcfdc6e37544f530bee0bec8a8a8d75876de0783"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6814f407efab9f8450dbe1809b4457e039894cb0f2e3f5d7962186eedf4e6287"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{73}",
+            "termId": 27
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{73}{11}$을 소수로 나타낼 때, 순환마디",
+            "termId": 1
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{73}{11}$을 소수로 나타낼 때, 순환마디",
+            "termId": 428
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "분자 $73$을 분모 $11$로 직접 나누어 소수로 나타낸다. $",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "분자를 분모로 나눗셈하여 순환소수를 구하고 반복되는 순환마디를 추출한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약분",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{73}{11}$을 소수로 나타낼 때, 순환마디",
+            "termId": 58
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분자를 분모로 나눗셈하여 순환소수를 구하고 반복되는 순환마디를 추출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_84f11aa3e3b547f701b23e9e13f28a33fb9735f4df0a39b83db2013bb971e673",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 3
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cd772a2232211cb06df500c07d16d1e3053f790a8bc33f0e19c5be61607a3093"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4eb4a238966fb4fcbfb037ddfe9cc6fc0dd28bade47b7ee10d5a34845d83970a"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "다음 분수 중 소수로 나타내었을",
+            "termId": 27
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "다음 분수 중 소수로 나타내었을 때 유한소수로 나타낼 수 있는 것",
+            "termId": 558
+          }
+        ],
+        "goal": [
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "나타내었을 때 유한소수로 나타낼 수 있는",
+            "termId": 426
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면",
+            "termId": 14,
+            "evidenceType": "IMPLIED",
+            "justification": "약분하여 기약분수로 만든 후 분모의 소인수가 2 또는 5만 남는지 검증한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "기약분수로 나타내었을 때 분",
+            "termId": 58,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "다음 분수 중 소수로 나타내었을 때 유한",
+            "termId": 9
+          }
+        ]
+      },
+      "reasons": {
+        "method": "약분하여 기약분수로 만든 후 분모의 소인수가 2 또는 5만 남는지 검증한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f75da37f79f669cff3fa604af0def999bebd1d81792b835207ab0e90e4b9b735",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 4
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3821c3c84cf7761750c041397ae7201225f0558262ac92685f2f17437048bcbe"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d70509886a799683170b083e669b6612e9b1e32b748670c067efcfcdea9ebeb"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{18}",
+            "termId": 27
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "있는 두 자리 자연수의 개수는? [5점]",
+            "termId": 1
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "수로 나타내면 순환소수가 된다. 이때 $",
+            "termId": 428
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "주어진 분수를 기약분수 형태로 정리하면 $$ \\frac{18}{2",
+            "termId": 14,
+            "evidenceType": "IMPLIED",
+            "justification": "전체 90개 두 자리 자연수에서 유한소수가 되는 2^m·5^n·c (c=1, 3, 9)인 22개를 제외한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "어진 분수를 기약분수 형태로 정리하면 $",
+            "termId": 58,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{18}{2 \\times 5^2 \\times a",
+            "termId": 13
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 90개 두 자리 자연수에서 유한소수가 되는 2^m·5^n·c (c=1, 3, 9)인 22개를 제외한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_cdfc3021ccc43440c5eb7fc73632b00ded94453638c261de54a9ceefd3f6714f",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 5
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8c2240a997d0ffabe05dfb329c8dae76288f7a5e5836e79eabb4b3fe97a7881"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a45183a5cc3bf405dc5d8b081023355ac57143037c2792213a3626432485c15d"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 $0.7\\dot{",
+            "termId": 428
+          }
+        ],
+        "goal": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "ot{8}$을 분수로 나타내는 과정이다.",
+            "termId": 27
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "순환소수 $0.7\\dot{3}\\dot{8}$을 분수로 나타내는 과",
+            "termId": 558
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "순환소수 $x = 0.7383838\\cdots$에서 소수점을 첫 ",
+            "termId": 58,
+            "evidenceType": "IMPLIED",
+            "justification": "소수점을 첫 번째 순환마디 끝점 뒤로 이동시키기 위해 10^3 = 1000을 곱함을 확인한다."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "순환소수 $x = 0.7383838\\cdots$에서 소수점을 첫 ",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "소수점을 첫 번째 순환마디 끝점 뒤로 이동시키기 위해 10^3 = 1000을 곱함을 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "순환소수 $0.7\\dot{3}\\dot{8}$을 분수로 나타내는 과",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소수점을 첫 번째 순환마디 끝점 뒤로 이동시키기 위해 10^3 = 1000을 곱함을 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f3720496a7948ea3e2b068fa8f649028023cea9b8008cb82f25bfc6be0f0f1a2",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 6
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97de0ec1aab301daed07a2ed1a574b5e44cd6f812c143b62549d0caa5c7bc5fa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4396c21f15be87afd60fb53f00b04353b891311820be286034c267ec21042ee"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "식 $2.8\\dot{3} + \\dfrac{7}{6}$을 계산한 값",
+            "termId": 428
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "식 $2.8\\dot{3} + \\dfrac{7}{6}$을 계산한 값",
+            "termId": 27
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "식 $2.8\\dot{3} + \\dfrac{7}{6}$을 계산한 값",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "를 $15$로 약분하면 $$ \\frac{",
+            "termId": 58,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "순환소수 $2.8\\dot{3}$을 분수로 고쳐서 계산한다. $$ ",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "순환소수를 분수로 고치고 기약분수로 나타낸 뒤 통분하여 유리수 덧셈을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "식 $2.8\\dot{3} + \\dfrac{7}{6}$을 계산한 값",
+            "termId": 3
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환소수를 분수로 고치고 기약분수로 나타낸 뒤 통분하여 유리수 덧셈을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_69d1e91cce35b99718aaf62c4df4b066cbdb93616728d3e6e8438b483cdb9a8a",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 7
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f22520a7ad6c2aa09c7b7b997acdc32991d438b953c97e97960faddc77f19ae5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19cc8f641369c5d968dbbfc5dd39aeb477948305875b595a2a39a4e92939f6cf"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": " 수 있으므로 유리수이다.\nㄹ. 유한소수",
+            "termId": 3
+          },
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "한소수는 모두 순환소수이다.\nㄴ. 기약분",
+            "termId": 428
+          }
+        ],
+        "goal": [
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "수이다.\nㄹ. 유한소수 중에는 유리수가 ",
+            "termId": 426
+          }
+        ],
+        "method": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "짓) ㄴ. 기약분수의 분모에 $2$ 또는",
+            "termId": 27,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "$5$ 이외의 소인수가 있는 분수는 순환",
+            "termId": 13
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리수, 유한소수, 순환소수, 무한소수의 정의와 포함 관계를 바탕으로 각 진술을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_97da33af1e5c89b2ec6778e1b4f8cdec278aebd0f51a7616a4fa909cbafe2a4b",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 8
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ccf5ad66fea31bedaa3427da762454eddca844d1fee7bf21be4455d59402191"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "75a8001f573f585c9c463521c21c7d5d69aec8434f9246718dc6da9791971b6b"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{a}{",
+            "termId": 27
+          },
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{a}{18}$를 소수로 나타내면 $0.\\dot",
+            "termId": 428
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$가 한 자리 자연수이고 $a$가 짝수일",
+            "termId": 1
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{a}{18}$를 소수로 나타내면 $0.\\dot",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "순환소수 $0.\\dot{b}$를 분수로 나타내면 $$ 0.\\dot",
+            "termId": 349,
+            "evidenceType": "IMPLIED",
+            "justification": "0.(b) = b/9로 고쳐 a = 2b를 도출하고 한 자리 자연수 범위에서 최댓값을 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{a}{18}$를 소수로 나타내면 $0.\\dot",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "0.(b) = b/9로 고쳐 a = 2b를 도출하고 한 자리 자연수 범위에서 최댓값을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_218a60e856a663cbb3580a12a319b3ecaad34b6e7017f71fd9c0216595afb997",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 9
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "43641c431cd2178c44f9eb00fb910a9792cf6d3c76b22f6a64e6fe4a3292ded4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ae94029f2b18c3ed13ec1672fdf08fec4426129026022cb65f631a0b65bfde15"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? [4점]\n<",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "지수법칙",
+            "src": "stem",
+            "quote": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? [4점]\n<",
+            "termId": 277
+          }
+        ],
+        "method": [
+          {
+            "term": "단항식",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 <보기>의 각 식을 계산한다. ㄱ. $x^4 ",
+            "termId": 430,
+            "evidenceType": "IMPLIED",
+            "justification": "지수의 곱셈, 나눗셈, 부호 거듭제곱과 거듭제곱의 합 공식을 적용하여 진위를 가린다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? [4점]\n<",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지수의 곱셈, 나눗셈, 부호 거듭제곱과 거듭제곱의 합 공식을 적용하여 진위를 가린다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a4bdc09b8a7c80137f695d0578741c08eaa274ec91b0ea7af1f5433cf5bcf06e",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 10
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a11c32ead2e2753f5ef83b9cd37710de9dec287a77f8cb4530dce1ad0b865042"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9603d3519b2351c9c3dcf21a838db497ee8694c386f979eafecbd9a357496b5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$3(2x^2 - 3x + 1) - 2(x^2 - 4)$를 계산한",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$3(2x^2 - 3x + 1) - 2(x^2 - 4)$를 계산한",
+            "termId": 35
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": " 괄호를 풀고 동류항끼리 모아 계산한다.",
+            "termId": 698,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "분배법칙을 이용하여 괄호를",
+            "termId": 454,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$3(2x^2 - 3x + 1) - 2(x^2 - 4)$를 계산한",
+            "termId": 50
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분배법칙으로 괄호를 풀고 음수 부호 분배 후 동류항을 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e27ce5dd598690bd29a20fd3d21e3bbb6a46af4c4fe754d52d09902727fd5f2d",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 11
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2c33963f76dcbc2c1e86eefe56b4b756aa6274987b0656fad8d19a8c82f44fc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "99ac8396d276b716b298b75aa385b00e50b5f313a3d2f95550cdb0f0623281c8"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "$3x^4y^3 \\times 4x^2 \\div x^5 \\div x",
+            "termId": 430
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "$3x^4y^3 \\times 4x^2 \\div x^5 \\div x",
+            "termId": 430
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "나눗셈을 분모로 보내거나 역수의 곱셈으로 바꾸어 한 번에 계산한다",
+            "termId": 277,
+            "evidenceType": "IMPLIED",
+            "justification": "곱셈과 나눗셈을 분수 꼴로 합쳐 계수와 각 문자의 지수를 약분한다."
+          },
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "나눗셈을 분모로 보내거나 역수의 곱셈으로 바꾸어 한 번에 계산한다",
+            "termId": 46,
+            "evidenceType": "IMPLIED",
+            "justification": "곱셈과 나눗셈을 분수 꼴로 합쳐 계수와 각 문자의 지수를 약분한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$3x^4y^3 \\times 4x^2 \\div x^5 \\div x",
+            "termId": 50
+          }
+        ]
+      },
+      "reasons": {
+        "method": "곱셈과 나눗셈을 분수 꼴로 합쳐 계수와 각 문자의 지수를 약분한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c8089584e98e611d94780990cc2ce00c30a42b0e4f9f5000087adbd5c02e4857",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 12
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "baf341ae615c9150ffe27d30a55648ce42169a202fcd2e44a4d59e6540799211"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0defee1590c61fa6a086d7d5d92e5f656d9992249608928463cf0f7c78eb23c1"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$x = 3$, $y = \\dfrac{1}{2}$일 때, $\\df",
+            "termId": 35
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "$x = 3$, $y = \\dfrac{1}{2}$일 때, $\\df",
+            "termId": 3
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x = 3$, $y = \\dfrac{1}{2}$일 때, $\\df",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "주어진 식의 각 항을 먼저 단항식으로 나누어 간단히 정리한다.\n첫",
+            "termId": 46,
+            "evidenceType": "IMPLIED",
+            "justification": "각 분수를 나눗셈하여 2x - 4y^2과 x + 4y^2으로 분리한 뒤 차를 구하고 x=3, y=1/2을 대입한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "주어진 식의 각 항을 먼저 단항식으로 나누어 간단히 정리한다.\n첫",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "각 분수를 나눗셈하여 2x - 4y^2과 x + 4y^2으로 분리한 뒤 차를 구하고 x=3, y=1/2을 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$x = 3$, $y = \\dfrac{1}{2}$일 때, $\\df",
+            "termId": 309
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 분수를 나눗셈하여 2x - 4y^2과 x + 4y^2으로 분리한 뒤 차를 구하고 x=3, y=1/2을 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_95faa6c761364b6a2e9433bc104c0dcee636a70b59c3cda4b7e75ec299c85f22",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 13
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10b0f26867a4e308eff27e420c59c0e36679759330a56d0bb4f846cc77fb1ebb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "221ee30ef82a8e4c26ebb6930b5f03706cb318349b43772abf0f5221219fb1a4"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$3^4 = A$라고 할 때, $9^8$을 $A$를 사용하여 나타",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "$3^4 = A$라고 할 때, $9^8$을 $A$를 사용하여 나타",
+            "termId": 430
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "밑 $9$를 $3$의 거듭제곱으로 나타내면 $9 = 3^2$이므로",
+            "termId": 277,
+            "evidenceType": "IMPLIED",
+            "justification": "9^8 = 3^16 = (3^4)^4로 밑과 지수를 맞추어 A^4로 치환한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$3^4 = A$라고 할 때, $9^8$을 $A$를 사용하여 나타",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "9^8 = 3^16 = (3^4)^4로 밑과 지수를 맞추어 A^4로 치환한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e00b934ef35b287152320c4dd39771517b44c0b2b54d5fca00dce258baf3b957",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 14
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed77ce71a9b8d6dc3b85e5e7686efc68fc5fb2b8c2ad0b96652ca352e504834a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2d2190242570845d4c8067049f0f81735c18bf758357b756b21f2792e5605c5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "어떤 직육면체의 밑면의 세로의 ",
+            "termId": 603
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "이 직육면체의 부피는? (단, 모든 모서",
+            "termId": 219
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "직육면체의 밑면의 가로의 길이를 $A$라 하자. 직육면체의 옆넓이",
+            "termId": 46,
+            "evidenceType": "IMPLIED",
+            "justification": "옆넓이 공식 4xA + 12x^2y = 8x^2 + 12x^2y에서 가로 A=2x를 구한 뒤 부피를 곱셈 계산한다."
+          },
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "직육면체의 밑면의 가로의 길이를 $A$라 하자. 직육면체의 옆넓이",
+            "termId": 35,
+            "evidenceType": "IMPLIED",
+            "justification": "옆넓이 공식 4xA + 12x^2y = 8x^2 + 12x^2y에서 가로 A=2x를 구한 뒤 부피를 곱셈 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": " 직육면체의 옆넓이가 $8x^2 + 12",
+            "termId": 213
+          }
+        ]
+      },
+      "reasons": {
+        "method": "옆넓이 공식 4xA + 12x^2y = 8x^2 + 12x^2y에서 가로 A=2x를 구한 뒤 부피를 곱셈 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a564ecafa4cf42d3e0b3fe87905f43ec9e6ae9ad63b517912bd317d5a40473a6",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 15
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5fb83ab060cd97c3e7fdbd0bce2e30fea38bf2cfcd5ed4e632969fefb72583d6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5d8e5710f872d1fbc9be7d946350cad3d23c0093ad9d762f891be34df3456d1"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "세 자연수 $a, b, c$에 대하여 등식 $(x^a y^b)^c",
+            "termId": 20
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자연수 $a, b, c$에",
+            "termId": 1
+          }
+        ],
+        "goal": [
+          {
+            "term": "지수법칙",
+            "src": "stem",
+            "quote": "세 자연수 $a, b, c$에 대하여 등식 $(x^a y^b)^c",
+            "termId": 277
+          }
+        ],
+        "method": [
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "는 $18$의 약수이자 $30$의 약수,",
+            "termId": 11,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "c$에 대하여 등식 $(x^a y^b)^",
+            "termId": 349
+          }
+        ]
+      },
+      "reasons": {
+        "method": "ac=18, bc=30에서 c가 두 지수의 공약수임을 파악하고 최대공약수 성질을 대조한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_cc36d4b3d2b5c19c37e70f7906d11c634f88ff58f398580b84c07ffb7ad2cc20",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 16
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "54421c4174edecb9b30a80de2ebd5399c42198835aea12fb0a8e9555c5e1c961"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df030077678ee89e17edfe69e3a61f7d8ad931e67f291d41cb54207a033926e6"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "다음을 부등식으로 바르게 나타낸 것은? [4점]\n어떤 수 $x$에",
+            "termId": 745
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음을 부등식으로 바르게 나타낸 ",
+            "termId": 63
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "문장의 수량 관계를 순서대로 수식으로 표현한다.\n'어떤 수 $x$",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "'크지 않다'의 의미가 이하(≤)임을 파악하고 괄호 2배 연산을 정확히 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "다음을 부등식으로 바르게 나타낸 것은? [4점]\n어떤 수 $x$에",
+            "termId": 28
+          }
+        ]
+      },
+      "reasons": {
+        "method": "'크지 않다'의 의미가 이하(≤)임을 파악하고 괄호 2배 연산을 정확히 세운다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5d2db454bfa3099ae293669ad33f87209e582cf21258fd22c2c1e27bc1596081",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 17
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c41bd5a752a0d30453d358a8cc27d3d3ea19a7da59dd86090d1d6248713671ca"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6ce93d9d38c6d43c8eb40427fee1dc9c4fd27be10ea300575bb1b4e7bd677fe"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$a < b$일 때, 다음 중 $\\bigcirc$ 안에 들어갈 부",
+            "termId": 63
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "$a < b$일 때, 다음 중 $\\bigcirc$ 안에 들어갈 부",
+            "termId": 28
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$a < b$일 때 각 선지의 부등호 방향을 판정한다. ① $a ",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "문자의 계수가 양수인지 음수인지에 따라 부등호 방향의 반전 여부를 판단한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "$a < b$일 때, 다음 중 $\\bigcirc$ 안에 들어갈 부",
+            "termId": 397
+          }
+        ]
+      },
+      "reasons": {
+        "method": "문자의 계수가 양수인지 음수인지에 따라 부등호 방향의 반전 여부를 판단한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_864d414b640fc0590a20883d7057f9ee4bc0082f3909223c78f5427dcd4fcc1a",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 18
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccd7b85c151a7ec37ed542d873747375bc3bba2cc30788b650c1435abc84a901"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5a17b6b006c01c2df16d97fafb95bc4dfdb64cde6aaaf4d34dfcc08c42ea788a"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음 중 일차부등식을 모두 고른 것은?",
+            "termId": 63
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "다음 중 일차부등식을 모두 고른 것",
+            "termId": 355
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "항을 좌변으로 이항하여 일차부등식의 형태",
+            "termId": 432,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "각 식의 모든 항을 좌변으로 이항하여 일차부등식의 형태인지를 확인",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "모든 항을 좌변으로 이항하여 정리했을 때 ax + b > 0 (a≠0) 꼴이 되는지 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "차수",
+            "src": "stem",
+            "quote": "다음 중 일차부등식을 모두 고른 것은? [3점]\nㄱ. $x - 3",
+            "termId": 431
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모든 항을 좌변으로 이항하여 정리했을 때 ax + b > 0 (a≠0) 꼴이 되는지 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f25b4480cb77cd69e5ba27b511553d85cc3699eb9b3b3a29d20190512193a860",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 19
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad9c38cad67728fac0162be78823fb9e2a900998871517b1ea3594fc788e4a54"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "603160ba1e7874e899676fe42cf61bc0aef2770183035e61e24fdde3b63a86c1"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "일차부등식 $2x - 7 ",
+            "termId": 355
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "에서 가장 큰 정수는? [4점]",
+            "termId": 2
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "일차부등식 $2x - 7 \\le -x + 8$을 만족시키는 $x$",
+            "termId": 78
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "항을 우변으로 이항하여 부등식을 푼다. ",
+            "termId": 432,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$x$항을 좌변으로, 상수항을 우변으로 이항하여 부등식을 푼다. ",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "부등식을 이항 정리하여 x ≤ 5를 구하고 범위 내 최대 정수 5를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "일차부등식 $2x - 7 \\le -x + 8$을 만족시키는 $x$",
+            "termId": 28
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부등식을 이항 정리하여 x ≤ 5를 구하고 범위 내 최대 정수 5를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4141ecc2813f778ab024132504d33caaf84ca423d5208422b43c4aefd2736581",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 20
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b2c4ddc695ff7f4853c0b81596b92070ac21abd0ecb0bb74bc6293e8b0b81a1b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "67da73267adc04ad603603d6b991cf72aac5772c50bb57230751facf2d2d4fc5"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "떤 기약분수를 순환소수로 각각 나타내고 ",
+            "termId": 428
+          }
+        ],
+        "goal": [
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "서연이가 어떤 기약분수를 순환소수로 각각",
+            "termId": 558
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": " 순환소수를 기약분수로 나타내어 바른 분",
+            "termId": 58,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "1단계: 민호가 본 순환소수를 기약분수로 나타내어 바른 분자를 구",
+            "termId": 32,
+            "evidenceType": "IMPLIED",
+            "justification": "두 순환소수를 각각 기약분수로 고쳐 바른 분자와 분모를 추출한 뒤 올바른 순환소수로 변환한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "기약분수를 순환소수로 각각 나타내고 나눈",
+            "termId": 9
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 순환소수를 각각 기약분수로 고쳐 바른 분자와 분모를 추출한 뒤 올바른 순환소수로 변환한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_dab75a10200805a4d558602578fa6eff68f9561b8246f22670ecf084b04975e6",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 21
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e7dcb5955e3a34ceee77bdc04cbabaf682ba3b5ec4bda68c5d11dc9e96aab84"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e239d28d677e4212973d6d03d5985e4de5e89b2a1061264f9877cd83893820ed"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "[서술형 2]\n어떤 식에 $2a^2 - 3ab + b^2$을 더해",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "[서술형 2]\n어떤 식에 $2a^2 - 3ab + b^2$을 더해",
+            "termId": 35
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "b^2) $$ 동류항끼리 묶어 계산하면 ",
+            "termId": 698,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "1단계: 어떤 식을 구한다. 어떤 식을 $A$라 하면 잘못 계산한",
+            "termId": 432,
+            "evidenceType": "IMPLIED",
+            "justification": "뺄셈의 역연산인 덧셈으로 A를 구한 뒤 원래 의도된 덧셈을 다시 적용하여 바른 식을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "[서술형 2]\n어떤 식에 $2a^2 - 3ab + b^2$을 더해",
+            "termId": 349
+          }
+        ]
+      },
+      "reasons": {
+        "method": "뺄셈의 역연산인 덧셈으로 A를 구한 뒤 원래 의도된 덧셈을 다시 적용하여 바른 식을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_81351cb849017a280d61db29696bc5dabd19eaa0397e3a4ac9e359d8d30be829",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 22
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec01215da72aa05b87eb1cfdd852dab29e1a61f85e8f5be77ed177e1152325e1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "75423737c4b2c57bb00f5902b313f562393aee4e1155b34ef1dae90e48d0bdb2"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "[서술형 3]\n일차부등식 $4(2 - x",
+            "termId": 355
+          }
+        ],
+        "goal": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "고, 그 해를 수직선 위에 나타내는 과정",
+            "termId": 295
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "를 풀고, 그 해를 수직선 위에 나타내는",
+            "termId": 78
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "$을 우변으로 이항하면 $$ -4x + ",
+            "termId": 432,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "1단계: 일차부등식을 푼다. 양변의 괄호를 분배법칙으로 풀면 $$",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "괄호 분배 후 음수 계수 나눗셈 시 부등호 역전을 적용하여 풀고 수직선에 폐구간 화살표로 표현한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "술형 3]\n일차부등식 $4(2 - x) ",
+            "termId": 63
+          }
+        ]
+      },
+      "reasons": {
+        "method": "괄호 분배 후 음수 계수 나눗셈 시 부등호 역전을 적용하여 풀고 수직선에 폐구간 화살표로 표현한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4ba7ea2b5421cbedd4f57ddc927f5ea81c1ab8c3a4a4f932bc3088fa067c1fc4",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 23
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05edf6260da02efb6745e13ef7ae654deffdfc2e1f63dd2120d74b78e912c8fd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e1f17b610f7b49f28e7356972fd50c73a5612718df8909ec089bc9138633a96d"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "술형 4]\n두 일차부등식 $15 - x ",
+            "termId": 355
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": " - 2x$의 해가 서로 같을 때, 상수",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "로 같을 때, 상수 $a$의 값을 구하고",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "$를 좌변으로 이항하면 $$-4x + 2",
+            "termId": 432,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "1단계: 두 번째 일차부등식을 푼다. $$-4x < 6 - 2x$",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "두 부등식을 각각 풀어 x > -3과 x > (a - 15)/2를 얻고 경계값을 같다고 놓아 a를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "4]\n두 일차부등식 $15 - x > a",
+            "termId": 349
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 부등식을 각각 풀어 x > -3과 x > (a - 15)/2를 얻고 경계값을 같다고 놓아 a를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9d432158478df908613a68761fb1d3de47a40989399c117c63fd71c76c63b58d",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+          "sourceOrdinal": 24
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "Official questionUidForSource formula; identity-map row not registered."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "49d44c6628b706271fb2903e25cf8a44dc2c50cb43b0c0fde36eee4e334d539d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7a7aa634ed9621bd40fd2253edbd32652e93a57e66c39483a9389fe7ba749bbc"
+        }
+      ],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-12",
+        "role": "source transfer; semantic 4-slot review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Independent math review performed by a separate reviewer; 4-slot semantics were not."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "MD terms transferred and bound to final JS.",
+        "visualReview": "NOT_RUN",
+        "registration": "NOT_RUN"
+      }
+    }
+  ],
+  "sourceBindingHistory": [
+    {
+      "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+      "sourceGitBlobSha": "9eea7e53d32cf0c0fe5891f784bffc6b80ca8ea7",
+      "sourceSha256": "a823d3d1a1700bb77543bf18c0ae693a001dafc7e826b32990c6ee08b76ead02",
+      "basedOnDriveFileId": "1LKAz4Eqq_EPx2Utc_mq_xVQE-TLoZAhUdM5upWr6Jlg",
+      "basedOnDriveRevision": "NOT_READ"
+    }
+  ]
+}

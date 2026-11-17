@@ -1,0 +1,1693 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-26-pungdeok-m2-1mid-candidate-v1",
+  "examUid": "26_풍덕중_1학기_중간_중2_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/26_풍덕중_1학기_중간_중2_유사.js",
+  "expectedSourceBlobSha1": "9eea7e53d32cf0c0fe5891f784bffc6b80ca8ea7",
+  "expectedSourceSha256": "a823d3d1a1700bb77543bf18c0ae693a001dafc7e826b32990c6ee08b76ead02",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "sourceEvidence": {
+    "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/26_풍덕중_1학기_중간_중2_기출.js",
+    "sourceBlobSha1": null,
+    "sourceMDFileId": "1LKAz4Eqq_EPx2Utc_mq_xVQE-TLoZAhUdM5upWr6Jlg",
+    "sourceRevision": "NOT_READ",
+    "note": "Drive MD read; the MD-referenced original exam JS is absent from current main, so source blob binding and resolver identity remain pending."
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b028b1c0da911adfd7731157ae8b5ebabe69a28719a68536cf9b736e4561ea36",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "FINITE_VS_INFINITE_DECIMAL_IDENTIFICATION",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "수 체계 표기를 대조하여 무한소수를 찾는 1단계 기본 문항",
+        "primaryMethod": "소수점 아래 자릿수의 유한성 여부와 무리수(파이), 순환소수의 무한성을 점검한다.",
+        "decisiveStep": "ㄴ, ㄷ, ㄹ이 소수점 아래 숫자가 끝없이 계속되는 무한소수임을 식별한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "유한소수와 무한소수",
+        "rpmL4Label": "유한소수 판별",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 1,
+      "sourceUid": "qid_v1_5b66c185391c4173585a8460573aa3b9d412f3d984694a8952739eb379772066",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_DECIMAL_CLASSIFICATION_BASIC",
+        "templateKey": "TPL_FINITE_INFINITE_DECIMAL_IDENTIFICATION",
+        "why": "유한소수와 무한소수를 선별하는 기본 개념 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "순환소수"
+        ],
+        "goal": [
+          "소수"
+        ],
+        "method": [
+          "자릿수"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_dc224f143bfa0344ad2e2ec76904ee1508b1ecf948676fe141dee525b73a21ba",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_DEFINITION_PROPERTIES",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순환마디의 기본 개념(소수점 아래 반복)을 확인하는 1단계 개념 문항",
+        "primaryMethod": "순환마디는 소수점 아래 부분에서만 정의된다는 원리를 적용하여 보기의 오류를 찾는다.",
+        "decisiveStep": "순환마디가 248이 아니라 481임을 식별한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "순환소수",
+        "rpmL4Label": "순환마디와 표현",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 2,
+      "sourceUid": "qid_v1_a340b2c95e5eb03a8c26aaf93e1b021c449c2a543077c1bffdaab217f7bf8a83",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_PERIOD_BASIC",
+        "templateKey": "TPL_REPEATING_DECIMAL_PROPERTY_AUDIT",
+        "why": "순환소수의 개념과 성질 진술의 진위를 판별하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "순환소수"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "자릿수"
+        ],
+        "condition": [
+          "소수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_84f11aa3e3b547f701b23e9e13f28a33fb9735f4df0a39b83db2013bb971e673",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "FRACTION_DIVISION_PERIOD",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "자연수 나눗셈 계산 후 순환마디를 식별하는 1단계 연산 문항",
+        "primaryMethod": "분자를 분모로 나눗셈하여 순환소수를 구하고 반복되는 순환마디를 추출한다.",
+        "decisiveStep": "73 ÷ 11 = 6.6363...로부터 순환마디 63을 확인한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "유리수와 소수 표현",
+        "rpmL4Label": "분수를 소수로",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로"
+        },
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 3,
+      "sourceUid": "qid_v1_5b940a22aad35eba1762468c9e77d7e652c1b3b66a35032f18a69b3702c7aa47",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FRACTION_TO_REPEATING_DECIMAL",
+        "templateKey": "TPL_FRACTION_DIVISION_PERIOD",
+        "why": "분수를 소수로 고쳐 순환마디를 찾는 기본 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "분수",
+          "자연수"
+        ],
+        "goal": [
+          "순환소수"
+        ],
+        "method": [
+          "사칙연산"
+        ],
+        "condition": [
+          "약분"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_f75da37f79f669cff3fa604af0def999bebd1d81792b835207ab0e90e4b9b735",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "FINITE_DECIMAL_FACTOR_IDENTIFICATION",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "약분 후 분모의 소인수 조건을 적용하는 1단계 기본 문항",
+        "primaryMethod": "약분하여 기약분수로 만든 후 분모의 소인수가 2 또는 5만 남는지 검증한다.",
+        "decisiveStep": "15 / (2^3·3·5) = 1/2^3으로 분모 소인수가 2뿐임을 확인한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "유한소수와 무한소수",
+        "rpmL4Label": "유한소수 판별",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별"
+        },
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "PARALLEL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 4,
+      "sourceUid": "qid_v1_4eda38fb67649933aebe06a2457b888b0a163f25f228f95ed05666586d24e903",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FINITE_DECIMAL_IDENTIFICATION",
+        "templateKey": "TPL_FINITE_DECIMAL_PRIME_FACTORS",
+        "why": "기약분수의 분모 소인수로 유한소수를 판정하는 기본 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "분수",
+          "기약분수"
+        ],
+        "goal": [
+          "유한소수"
+        ],
+        "method": [
+          "소인수분해",
+          "약분"
+        ],
+        "condition": [
+          "소수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_cdfc3021ccc43440c5eb7fc73632b00ded94453638c261de54a9ceefd3f6714f",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "TWO_DIGIT_REPEATING_DECIMAL_COUNTING",
+        "level": "중상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "분자 9와 약분 가능한 3의 거듭제곱(1, 3, 9)을 포함하는 두 자리 수를 빠짐없이 분류하는 고난도 문항",
+        "primaryMethod": "전체 90개 두 자리 자연수에서 유한소수가 되는 2^m·5^n·c (c=1, 3, 9)인 22개를 제외한다.",
+        "decisiveStep": "유한소수가 되는 a=22개를 체계적으로 센 뒤 90 - 22 = 68개를 산출한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "유한소수와 무한소수",
+        "rpmL4Label": "분모의 소인수 조건",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "crossConceptKeys": [
+          "CC_NUMBER_OF_ELEMENTS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 5,
+      "sourceUid": "qid_v1_267050fda86ac5d46cbdad233e1b4746841418017f289c48b86fd457d7040286",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_CONDITIONS",
+        "templateKey": "TPL_REPEATING_DECIMAL_UNKNOWN_DENOMINATOR",
+        "why": "분모의 미지수 조건에 따른 순환소수 개수를 여사건으로 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "분수",
+          "자연수"
+        ],
+        "goal": [
+          "순환소수"
+        ],
+        "method": [
+          "소인수분해",
+          "약분"
+        ],
+        "condition": [
+          "소인수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_f3720496a7948ea3e2b068fa8f649028023cea9b8008cb82f25bfc6be0f0f1a2",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_CONVERSION_BLANK",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "자릿수 이동에 필요한 10의 거듭제곱을 바로 찾는 1단계 기본 문항",
+        "primaryMethod": "소수점을 첫 번째 순환마디 끝점 뒤로 이동시키기 위해 10^3 = 1000을 곱함을 확인한다.",
+        "decisiveStep": "소수점 아래 3자리 이동에 대응하는 1000 식별",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "순환소수",
+        "rpmL4Label": "순환소수를 분수로",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 6,
+      "sourceUid": "qid_v1_1e817efbd5ef06a6ce75ab2b94c9c4cb5f3e2c72fc66ea78756c915f4688987e",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_CONVERSION_PROOF",
+        "templateKey": "TPL_POWERS_OF_TEN_MULTIPLIER_MATCH",
+        "why": "순환소수의 분수 변환 과정에서 곱해야 할 10의 거듭제곱을 찾는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "순환소수"
+        ],
+        "goal": [
+          "분수",
+          "기약분수"
+        ],
+        "method": [
+          "약분",
+          "사칙연산"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_69d1e91cce35b99718aaf62c4df4b066cbdb93616728d3e6e8438b483cdb9a8a",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_ADDITION",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순환소수 분수화 공식 적용과 분수 덧셈 및 약분을 결합한 전형 문항",
+        "primaryMethod": "순환소수를 분수로 고치고 기약분수로 나타낸 뒤 통분하여 유리수 덧셈을 계산한다.",
+        "decisiveStep": "2.8(3) = 17/6으로 변환하여 17/6 + 7/6 = 24/6 = 4를 계산한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "순환소수",
+        "rpmL4Label": "순환소수를 분수로",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b971d6dc2d254d1246048078428023e9b3277ca9391d055062a4b11a7d9f2a47",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_ARITHMETIC",
+        "templateKey": "TPL_REPEATING_DECIMAL_FRACTION_ADDITION",
+        "why": "순환소수와 분수의 덧셈 연산을 수행하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "순환소수",
+          "분수"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "약분",
+          "사칙연산"
+        ],
+        "condition": [
+          "유리수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_97da33af1e5c89b2ec6778e1b4f8cdec278aebd0f51a7616a4fa909cbafe2a4b",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "RATIONAL_AND_DECIMAL_CONCEPTS_AUDIT",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "유한소수, 순환소수, 비순환무한소수의 유리수 포함 관계를 정밀하게 대조하는 문항",
+        "primaryMethod": "유리수, 유한소수, 순환소수, 무한소수의 정의와 포함 관계를 바탕으로 각 진술을 판정한다.",
+        "decisiveStep": "ㄴ(분모 소인수 조건)과 ㄷ(순환소수의 유리수성)이 참임을 식별한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "유리수와 소수 표현",
+        "rpmL4Label": "유리수와 소수 표현",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "유리수와 소수 표현"
+        },
+        "crossConceptKeys": [
+          "CC_CLASSIFICATION"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_9cf5863253c163719a3c90207471fa9ae0bd1cc590555cfd54cb8f38e27e582d",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_RATIONAL_DECIMAL_TRUE_FALSE",
+        "templateKey": "TPL_RATIONAL_DECIMAL_PROPERTIES",
+        "why": "소수의 분류 및 유리수의 개념적 정의를 판별하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "유리수",
+          "순환소수"
+        ],
+        "goal": [
+          "유한소수"
+        ],
+        "method": [
+          "분수"
+        ],
+        "condition": [
+          "소인수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_218a60e856a663cbb3580a12a319b3ecaad34b6e7017f71fd9c0216595afb997",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_EQUATION_UNKNOWN",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순환소수 분수화와 한 자리 자연수 조건을 조합하여 미지수의 차를 구하는 문항",
+        "primaryMethod": "0.(b) = b/9로 고쳐 a = 2b를 도출하고 한 자리 자연수 범위에서 최댓값을 결정한다.",
+        "decisiveStep": "a=2b에서 a의 최댓값 8, b=4를 찾아 a-b=4를 계산한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "순환소수",
+        "rpmL4Label": "순환소수를 분수로",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_82ba16d87afc860bdc7242915537190d96ab235e2f5a876b9930b4786710b7de",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_EQUATION",
+        "templateKey": "TPL_EQUATION_REPEATING_FRACTION_INTEGER",
+        "why": "순환소수 등식을 분수로 고쳐 미지수를 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "분수",
+          "순환소수",
+          "자연수"
+        ],
+        "goal": [
+          "식의값"
+        ],
+        "method": [
+          "등식"
+        ],
+        "condition": [
+          "상수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_a4bdc09b8a7c80137f695d0578741c08eaa274ec91b0ea7af1f5433cf5bcf06e",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "EXPONENT_LAWS_TRUE_FALSE",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "거듭제곱의 합(2^4+2^4)과 음수 부호 거듭제곱 오류를 감별하는 전형 문항",
+        "primaryMethod": "지수의 곱셈, 나눗셈, 부호 거듭제곱과 거듭제곱의 합 공식을 적용하여 진위를 가린다.",
+        "decisiveStep": "ㄹ(2^4 + 2^4 = 2^5)과 ㅁ(x^(12+3-10) = x^5)이 성립함을 확인한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "단항식의 계산",
+        "rpmL3Label": "지수법칙",
+        "rpmL4Label": "거듭제곱의 곱·몫",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "crossConceptKeys": [
+          "CC_ALGEBRAIC_SIMPLIFICATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 10,
+      "sourceUid": "qid_v1_f6cd83eff21e62da3859f4700478d20b29a17f84de844c2d520a47ac3d0f9b74",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS_BASIC",
+        "templateKey": "TPL_EXPONENT_LAWS_VERIFICATION",
+        "why": "기본 지수법칙의 정합성을 판별하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "거듭제곱"
+        ],
+        "goal": [
+          "지수법칙"
+        ],
+        "method": [
+          "단항식"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_e27ce5dd598690bd29a20fd3d21e3bbb6a46af4c4fe754d52d09902727fd5f2d",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_EXPANSION_SUBTRACTION",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "상수항 곱셈 시 음수 부호 처리(-2 * -4 = +8)와 동류항 정리를 평가하는 문항",
+        "primaryMethod": "분배법칙으로 괄호를 풀고 음수 부호 분배 후 동류항을 정리한다.",
+        "decisiveStep": "6x^2 - 9x + 3 - 2x^2 + 8 = 4x^2 - 9x + 11 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "다항식의 계산",
+        "rpmL3Label": "다항식의 덧셈과 뺄셈",
+        "rpmL4Label": "동류항 정리",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리"
+        },
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_SUBTRACTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_6917f88d8e3d04a08841f800032002fbdecd166de42384812aad993129208d52",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION",
+        "templateKey": "TPL_POLYNOMIAL_DISTRIBUTION_SIMPLIFY",
+        "why": "다항식의 분배와 동류항 정리를 수행하는 기본 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "다항식"
+        ],
+        "goal": [
+          "다항식"
+        ],
+        "method": [
+          "동류항",
+          "분배법칙"
+        ],
+        "condition": [
+          "계수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_c8089584e98e611d94780990cc2ce00c30a42b0e4f9f5000087adbd5c02e4857",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "MONOMIAL_CHAIN_OPERATIONS",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "2회 연속 나눗셈의 분모 결합과 문자별 지수 차분 계산을 확인하는 문항",
+        "primaryMethod": "곱셈과 나눗셈을 분수 꼴로 합쳐 계수와 각 문자의 지수를 약분한다.",
+        "decisiveStep": "12x^6 y^3 / (x^7 y) = 12y^2 / x 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "단항식의 계산",
+        "rpmL3Label": "단항식의 곱셈과 나눗셈",
+        "rpmL4Label": "혼합 계산",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "crossConceptKeys": [
+          "CC_MONOMIAL_DIVISION"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_10cd7e15b0b3040d35c052cca2b5c31ad54edf32a5a514f9c7262f956b4d6a93",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_MONOMIAL_CHAIN_SIMPLIFICATION",
+        "why": "단항식의 연속된 곱셈과 나눗셈을 정리하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "단항식"
+        ],
+        "goal": [
+          "단항식"
+        ],
+        "method": [
+          "지수법칙",
+          "다항식의나눗셈"
+        ],
+        "condition": [
+          "계수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_95faa6c761364b6a2e9433bc104c0dcee636a70b59c3cda4b7e75ec299c85f22",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_DIVISION_EVALUATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "다항식을 단항식으로 나눌 때 분수 괄호 뺄셈의 부호 처리와 분수 수치 대입을 결합한 문항",
+        "primaryMethod": "각 분수를 나눗셈하여 2x - 4y^2과 x + 4y^2으로 분리한 뒤 차를 구하고 x=3, y=1/2을 대입한다.",
+        "decisiveStep": "x - 8y^2 = 3 - 8(1/4) = 1 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "다항식의 계산",
+        "rpmL3Label": "식의 값과 활용",
+        "rpmL4Label": "식의 값",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 13,
+      "sourceUid": "qid_v1_d86ed8eaba4be5655d2b5d1f97236aa5ff2e8b05e9c9f99e7df73bc8504e8507",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_EVALUATION",
+        "templateKey": "TPL_SIMPLIFY_THEN_EVALUATE",
+        "why": "다항식을 전개 및 나눗셈으로 정리한 후 식의 값을 구하는 유형"
+      },
+      "item4slot": {
+        "given": [
+          "다항식",
+          "유리수"
+        ],
+        "goal": [
+          "식의값"
+        ],
+        "method": [
+          "다항식의나눗셈",
+          "동류항"
+        ],
+        "condition": [
+          "상수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_e00b934ef35b287152320c4dd39771517b44c0b2b54d5fca00dce258baf3b957",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "POWER_SUBSTITUTION_BASE_TRANSFORMATION",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "밑 9를 3^2으로 고치고 지수 16을 4의 배수로 분해하는 2단계 문항",
+        "primaryMethod": "9^8 = 3^16 = (3^4)^4로 밑과 지수를 맞추어 A^4로 치환한다.",
+        "decisiveStep": "3^16 = (3^4)^4 = A^4 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "단항식의 계산",
+        "rpmL3Label": "지수법칙",
+        "rpmL4Label": "거듭제곱의 거듭제곱",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_302a286d9fa59d20431c3978e5845efe7e88c616a29ebe0a044dfd00eb059730",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_EXPONENT_SUBSTITUTION",
+        "templateKey": "TPL_EXPONENT_POWER_REPLACE",
+        "why": "거듭제곱의 밑 변환 및 지수 치환 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "거듭제곱"
+        ],
+        "goal": [
+          "단항식"
+        ],
+        "method": [
+          "지수법칙"
+        ],
+        "condition": [
+          "자연수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_a564ecafa4cf42d3e0b3fe87905f43ec9e6ae9ad63b517912bd317d5a40473a6",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "CUBOID_LATERAL_AREA_AND_VOLUME",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "직육면체의 옆넓이 전개도 원리를 문자로 모델링하여 다항식 나눗셈과 부피 곱셈을 연결하는 문항",
+        "primaryMethod": "옆넓이 공식 4xA + 12x^2y = 8x^2 + 12x^2y에서 가로 A=2x를 구한 뒤 부피를 곱셈 계산한다.",
+        "decisiveStep": "A = 2x를 도출하고 2x * 3xy * 2x = 12x^3y를 계산한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "다항식의 계산",
+        "rpmL3Label": "식의 값과 활용",
+        "rpmL4Label": "조건식 활용",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 15,
+      "sourceUid": "qid_v1_8ab9d704a2187d84082d79f2b907741283410fba1e3b1595caff6db298edde39",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_GEOMETRIC_ALGEBRAIC_MODELING",
+        "templateKey": "TPL_CUBOID_DIMENSION_FROM_AREA",
+        "why": "입체도형의 넓이 관계식으로부터 모서리 길이를 역산하여 부피를 구하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "직육면체"
+        ],
+        "goal": [
+          "부피"
+        ],
+        "method": [
+          "다항식의나눗셈",
+          "다항식"
+        ],
+        "condition": [
+          "넓이"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_cc36d4b3d2b5c19c37e70f7906d11c634f88ff58f398580b84c07ffb7ad2cc20",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "EXPONENT_GREATEST_COMMON_DIVISOR",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "지수법칙과 약수/공약수 개념을 융합하여 선지의 참 거짓을 판정하는 문항",
+        "primaryMethod": "ac=18, bc=30에서 c가 두 지수의 공약수임을 파악하고 최대공약수 성질을 대조한다.",
+        "decisiveStep": "18과 30의 최대공약수가 6이므로 가장 큰 c가 9라는 ②가 거짓임을 판별한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "단항식의 계산",
+        "rpmL3Label": "지수법칙",
+        "rpmL4Label": "거듭제곱의 거듭제곱",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "crossConceptKeys": [
+          "CC_LEAST_COMMON_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 16,
+      "sourceUid": "qid_v1_7ee06178e7b1cd16c9266c253345880675d2b0b712b92e497432eacfa89c3bb5",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_EXPONENT_COMMON_DIVISOR",
+        "templateKey": "TPL_EXPONENT_DIVISOR_ANALYSIS",
+        "why": "거듭제곱 지수 방정식에서 지수의 공약수 성질을 감사하는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "거듭제곱",
+          "자연수"
+        ],
+        "goal": [
+          "지수법칙"
+        ],
+        "method": [
+          "약수"
+        ],
+        "condition": [
+          "등식"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_5d2db454bfa3099ae293669ad33f87209e582cf21258fd22c2c1e27bc1596081",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "INEQUALITY_TRANSLATION_NOT_GREATER",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "'크지 않다(≤)'의 수학적 부등호와 괄호 사용을 확인하는 1단계 문항",
+        "primaryMethod": "'크지 않다'의 의미가 이하(≤)임을 파악하고 괄호 2배 연산을 정확히 세운다.",
+        "decisiveStep": "2(x - 4) ≤ x 식 수립",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차부등식",
+        "rpmL2Label": "일차부등식",
+        "rpmL3Label": "부등식의 성질",
+        "rpmL4Label": "부등식의 성질",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "DIRECT",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 17,
+      "sourceUid": "qid_v1_01e397e32d08552d8466892782f01e77b3c44c183832b9ff0a6ab1443bb6a109",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITY_EXPRESSION_MODELING",
+        "templateKey": "TPL_STATEMENT_TO_INEQUALITY",
+        "why": "문장제를 부등식으로 변환하는 기본 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "미지수"
+        ],
+        "goal": [
+          "부등식"
+        ],
+        "method": [
+          "부등식의성질"
+        ],
+        "condition": [
+          "대소비교"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_864d414b640fc0590a20883d7057f9ee4bc0082f3909223c78f5427dcd4fcc1a",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "INEQUALITY_DIRECTION_COMPARISON",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "음수 곱셈(부등호 역전)과 양수 곱셈(부등호 유지)의 차이를 구별하는 기본 문항",
+        "primaryMethod": "문자의 계수가 양수인지 음수인지에 따라 부등호 방향의 반전 여부를 판단한다.",
+        "decisiveStep": "③만 양수 계수(+3)가 곱해져 부등호 방향이 <로 유지됨을 식별한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차부등식",
+        "rpmL2Label": "일차부등식",
+        "rpmL3Label": "부등식의 성질",
+        "rpmL4Label": "부등식의 성질",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "crossConceptKeys": [
+          "CC_DIRECTION_OF_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_e688aa07fa768121773ec1231d5801e28c1adbf63094ba6e66aeb6d0c8370806",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_INEQUALITY_DIRECTION_IDENTIFICATION",
+        "why": "부등식의 양변 연산에 따른 부등호 방향의 상이성을 찾는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "부등식"
+        ],
+        "goal": [
+          "대소비교"
+        ],
+        "method": [
+          "부등식의성질"
+        ],
+        "condition": [
+          "음수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_f25b4480cb77cd69e5ba27b511553d85cc3699eb9b3b3a29d20190512193a860",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "LINEAR_INEQUALITY_IDENTIFICATION_BASIC",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "일차항 소거 여부를 전개 후 확인하는 일차부등식 판별 1단계 문항",
+        "primaryMethod": "모든 항을 좌변으로 이항하여 정리했을 때 ax + b > 0 (a≠0) 꼴이 되는지 확인한다.",
+        "decisiveStep": "ㄷ에서 2x가 소거되어 일차부등식이 아님을 식별하고 ㄱ, ㄴ을 고른다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차부등식",
+        "rpmL2Label": "일차부등식",
+        "rpmL3Label": "일차부등식의 풀이",
+        "rpmL4Label": "기본형",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형"
+        },
+        "crossConceptKeys": [
+          "CC_INEQUALITY_IDENTIFICATION"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL_DEGREE_ONE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_502d1ec1712a6c4fcef8ac2b953a3d9717cf302ef1cd712b76f47455fdde15d9",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templateKey": "TPL_LINEAR_INEQUALITY_CLASSIFICATION",
+        "why": "기본 식들 중에서 일차부등식을 가려내는 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "부등식"
+        ],
+        "goal": [
+          "일차부등식"
+        ],
+        "method": [
+          "이항",
+          "동류항"
+        ],
+        "condition": [
+          "차수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_4141ecc2813f778ab024132504d33caaf84ca423d5208422b43c4aefd2736581",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "LINEAR_INEQUALITY_MAX_INTEGER",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "부등식 풀이와 닫힌 경계점의 최대 정수를 직관적으로 읽어내는 1단계 문항",
+        "primaryMethod": "부등식을 이항 정리하여 x ≤ 5를 구하고 범위 내 최대 정수 5를 결정한다.",
+        "decisiveStep": "3x ≤ 15로부터 x ≤ 5를 풀고 최대 정수 5를 도출한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차부등식",
+        "rpmL2Label": "일차부등식",
+        "rpmL3Label": "해의 조건",
+        "rpmL4Label": "정수해 개수",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "정수해 개수"
+        },
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_e682b62132a3708a57b688e23db47db3915121904385fb31b80b0af004bcbe34",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "templateKey": "TPL_INEQUALITY_EXTREMAL_INTEGER",
+        "why": "일차부등식을 풀고 정수해의 최댓값을 구하는 기본 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "일차부등식"
+        ],
+        "goal": [
+          "정수",
+          "해"
+        ],
+        "method": [
+          "이항",
+          "부등식의성질"
+        ],
+        "condition": [
+          "대소비교"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_dab75a10200805a4d558602578fa6eff68f9561b8246f22670ecf084b04975e6",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "RECONSTRUCT_ORIGINAL_FRACTION_ESSAY",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기약분수로 약분한 후 분자·분모를 채택해야 한다는 조건을 단계별 채점 기준에 맞춰 서술",
+        "primaryMethod": "두 순환소수를 각각 기약분수로 고쳐 바른 분자와 분모를 추출한 뒤 올바른 순환소수로 변환한다.",
+        "decisiveStep": "0.4(6) = 7/15에서 분자 7, 0.(41) = 41/99에서 분모 99를 추출하여 7/99 = 0.(0)(7)을 도출한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "유리수와 순환소수",
+        "rpmL2Label": "유리수와 순환소수",
+        "rpmL3Label": "순환소수",
+        "rpmL4Label": "순환소수를 분수로",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "crossConceptKeys": [
+          "CC_ERROR_CORRECTION",
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_1da03a2f3e09c45dc382a94c9bfc83cdcb8b0380939d1eb83595cd2638f70259",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_ESSAY_REPEATING_DECIMAL_ERROR_RECOVERY",
+        "templateKey": "TPL_MISTAKEN_FRACTION_RECOVERY_ESSAY",
+        "why": "잘못 본 두 학생의 결과로부터 원래 기약분수를 복원하는 서술형 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "순환소수"
+        ],
+        "goal": [
+          "기약분수"
+        ],
+        "method": [
+          "약분",
+          "사칙연산"
+        ],
+        "condition": [
+          "소수"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_81351cb849017a280d61db29696bc5dabd19eaa0397e3a4ac9e359d8d30be829",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_ERROR_CORRECTION_ESSAY",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "2단계 다항식 덧셈·뺄셈 연산 과정을 채점 배점에 맞춰 명확히 기술하는 문항",
+        "primaryMethod": "뺄셈의 역연산인 덧셈으로 A를 구한 뒤 원래 의도된 덧셈을 다시 적용하여 바른 식을 구한다.",
+        "decisiveStep": "A = 3a^2 + ab - 2b^2 도출 후 바른 결과 5a^2 - 2ab - b^2 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "식의 계산",
+        "rpmL2Label": "다항식의 계산",
+        "rpmL3Label": "다항식의 덧셈과 뺄셈",
+        "rpmL4Label": "동류항 정리",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리"
+        },
+        "crossConceptKeys": [
+          "CC_ERROR_CORRECTION",
+          "CC_POLYNOMIAL_ADDITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 22,
+      "sourceUid": "qid_v1_1e805a4803e99d0beae263716ba7a35ab3056df6a483df92ad66292d36992247",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "templateKey": "TPL_POLYNOMIAL_CORRECTION_TWO_STEP",
+        "why": "잘못 뺀 다항식을 역산하여 바르게 계산하는 서술형 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "다항식"
+        ],
+        "goal": [
+          "다항식"
+        ],
+        "method": [
+          "동류항",
+          "이항"
+        ],
+        "condition": [
+          "등식"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_4ba7ea2b5421cbedd4f57ddc927f5ea81c1ab8c3a4a4f932bc3088fa067c1fc4",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "SOLVE_AND_GRAPH_INEQUALITY_ESSAY",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "음수 나눗셈 부등호 반전과 수직선의 닫힌 경계 표현을 단계별로 기술하는 문항",
+        "primaryMethod": "괄호 분배 후 음수 계수 나눗셈 시 부등호 역전을 적용하여 풀고 수직선에 폐구간 화살표로 표현한다.",
+        "decisiveStep": "-3x ≥ -9로부터 x ≤ 3을 풀고 수직선 위 3에 칠해진 점과 왼쪽 방향을 표시한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차부등식",
+        "rpmL2Label": "일차부등식",
+        "rpmL3Label": "부등식의 성질",
+        "rpmL4Label": "수직선으로 해 표현",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "수직선으로 해 표현"
+        },
+        "crossConceptKeys": [
+          "CC_NUMBER_LINE",
+          "CC_LINEAR_INEQUALITIES"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 23,
+      "sourceUid": "qid_v1_3ccf5b5b27f894311f7c22b0130b03fc3e892983662fa4febbd22c24cf8e7451",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITY_SOLVING_GRAPH",
+        "templateKey": "TPL_SOLVE_AND_GRAPH_NUMBER_LINE",
+        "why": "일차부등식의 풀이 과정과 수직선 도식을 단계별로 평가하는 서술형 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "일차부등식"
+        ],
+        "goal": [
+          "수직선",
+          "해"
+        ],
+        "method": [
+          "이항",
+          "부등식의성질"
+        ],
+        "condition": [
+          "부등식"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_9d432158478df908613a68761fb1d3de47a40989399c117c63fd71c76c63b58d",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "SAME_SOLUTION_INEQUALITIES_ESSAY",
+        "level": "중하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 부등식을 정확히 풀고 경계값 상등 일차방정식을 해결하는 서술형 문항",
+        "primaryMethod": "두 부등식을 각각 풀어 x > -3과 x > (a - 15)/2를 얻고 경계값을 같다고 놓아 a를 계산한다.",
+        "decisiveStep": "(a - 15)/2 = -3으로부터 a = 9를 도출한다.",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "일차부등식",
+        "rpmL2Label": "일차부등식",
+        "rpmL3Label": "해의 조건",
+        "rpmL4Label": "계수 조건",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "crossConceptKeys": [
+          "CC_COEFFICIENT_DETERMINATION"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 24,
+      "sourceUid": "qid_v1_66859a0426100cbdf9064a3507e69bf3e3ad0eccb107298097d8bc33018e5aaf",
+      "sourceFileBlobSha1": null,
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITIES_SAME_SOLUTION",
+        "templateKey": "TPL_COEFFICIENT_DETERMINATION_FROM_SOLUTION",
+        "why": "공통해 조건으로부터 미정계수를 도출하는 서술형 템플릿"
+      },
+      "item4slot": {
+        "given": [
+          "일차부등식",
+          "해"
+        ],
+        "goal": [
+          "상수"
+        ],
+        "method": [
+          "이항",
+          "부등식의성질"
+        ],
+        "condition": [
+          "등식"
+        ]
+      },
+      "hold": "Source archive file missing from current main; original-source identity and official resolver remain pending.",
+      "reason": "Source MD candidate metadata carried forward; official resolver and registration not run."
+    }
+  ]
+}
