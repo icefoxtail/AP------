@@ -545,7 +545,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\begin{cases}-(x-1)^2+1&(x\\lt1)\\\\\\dfrac13(x-1)^2+1&(x\\ge1)\\end{cases}$과 직선 $y=tx$의 교점의 개수를 $g(t)$라 하자. 함수 $f(x),g(t)$가 다음 조건을 만족시킬 때, 상수 $a,b$에 대하여 $a\\times b$의 값은? [4.8점]<br><div class=\"note-box\">(가) $\\dfrac{f(4)-f(1)}3=f\\'(k)$를 만족시키는 모든 실수 $k$의 합의 값은 $a$이다.<br>(나) $\\displaystyle\\lim_{t\\to k}g(t)\\ne g(k)$인 서로 다른 $k$의 값의 합은 $b$이다.</div>",
+    "content": "함수 $f(x)=\\begin{cases}-(x-1)^2+1&(x\\lt1)\\\\\\dfrac13(x-1)^2+1&(x\\ge1)\\end{cases}$과 직선 $y=tx$의 교점의 개수를 $g(t)$라 하자. 함수 $f(x),g(t)$가 다음 조건을 만족시킬 때, 상수 $a,b$에 대하여 $a\\times b$의 값은? [4.8점]<br><div class=\"note-box\">(가) $\\dfrac{f(4)-f(1)}3=f'(k)$를 만족시키는 모든 실수 $k$의 합의 값은 $a$이다.<br>(나) $\\displaystyle\\lim_{t\\to k}g(t)\\ne g(k)$인 서로 다른 $k$의 값의 합은 $b$이다.</div>",
     "choices": [
       "$7$",
       "$8$",
