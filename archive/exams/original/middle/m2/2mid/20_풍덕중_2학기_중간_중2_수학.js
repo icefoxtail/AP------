@@ -486,8 +486,8 @@ window.examData = {
       "도형"
     ],
     "wide": false,
-    "content": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 가로 6cm가 표시된 그림\" /></p>",
-    "question": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 가로 6cm가 표시된 그림\" /></p>",
+    "content": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 높이 8cm가 표시된 그림\" /></p>",
+    "question": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 높이 8cm가 표시된 그림\" /></p>",
     "choices": [
       "면 $\\mathrm{EFGH}$에 대응하는 면 $\\mathrm{MNOP}$이다",
       "두 사각기둥의 닮음비는 $1:2$ 이다",
@@ -499,7 +499,7 @@ window.examData = {
       "assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png"
     ],
     "answer": "④",
-    "solution": "두 닮은 사각기둥 (가), (나)에 대하여 옳지 않은 설명을 고른다.\n조건: 대응변 $\\overline{\\mathrm{AB}} = 3\\text{ cm}, \\overline{\\mathrm{IJ}} = 6\\text{ cm}$, (가)의 세로 $\\overline{\\mathrm{BC}} = 3\\text{ cm}$, 높이 $\\overline{\\mathrm{BF}} = 4\\text{ cm}$.\n\n닮음비가 $m : n$인 두 입체도형에서:\n1. 대응하는 모서리의 길이의 비는 $m : n$이다.\n2. 대응하는 면의 넓이의 비는 $m^2 : n^2$이다.\n3. 부피의 비는 $m^3 : n^3$이다.\n\n1단계: 닮음비 계산\n대응하는 모서리 $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{IJ}} = 3 : 6 = 1 : 2$.\n\n2단계: 선지별 검토\n- 선지 ①: 밑면 $\\mathrm{EFGH}$에 대응하는 면은 밑면 $\\mathrm{MNOP}$이다. (참)\n- 선지 ②: 두 사각기둥의 닮음비는 $1 : 2$이다. (참)\n- 선지 ③: $\\overline{\\mathrm{JK}}$는 $\\overline{\\mathrm{BC}}$에 대응하므로 $\\overline{\\mathrm{JK}} = 2 \\times \\overline{\\mathrm{BC}} = 2 \\times 3 = 6\\text{ cm}$이다. (참)\n- 선지 ⑤: 넓이의 비는 $1^2 : 2^2 = 1 : 4$이다. (참)\n- 선지 ④: 닮음비가 $1:2$일 때 부피의 비는 $1^3 : 2^3 = 1 : 8$이다.\n따라서 (가)의 부피가 $12\\text{cm}^3$일 때, (나)의 부피는:\n$12 \\times 8 = 96\\text{cm}^3$이어야 한다.\n선지의 $36\\text{cm}^3$은 거짓이다.\n\n① 옳음\n② 옳음\n③ 옳음\n④ 옳지 않음 (부피는 $96\\text{cm}^3$이어야 함)\n⑤ 옳음\n\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "두 닮은 사각기둥 (가), (나)에 대하여 옳지 않은 설명을 고른다.\n조건: (가)의 $\\overline{\\mathrm{BC}} = 3\\text{ cm}$, 높이 $\\overline{\\mathrm{BF}} = 4\\text{ cm}$이고 (나)의 높이 $\\overline{\\mathrm{JN}} = 8\\text{ cm}$이다.\n\n닮음비가 $m : n$인 두 입체도형에서:\n1. 대응하는 모서리의 길이의 비는 $m : n$이다.\n2. 대응하는 면의 넓이의 비는 $m^2 : n^2$이다.\n3. 부피의 비는 $m^3 : n^3$이다.\n\n1단계: 닮음비 계산\n대응하는 모서리 $\\overline{\\mathrm{BF}} : \\overline{\\mathrm{JN}} = 4 : 8 = 1 : 2$.\n\n2단계: 선지별 검토\n- 선지 ①: 밑면 $\\mathrm{EFGH}$에 대응하는 면은 밑면 $\\mathrm{MNOP}$이다. (참)\n- 선지 ②: 두 사각기둥의 닮음비는 $1 : 2$이다. (참)\n- 선지 ③: $\\overline{\\mathrm{JK}}$는 $\\overline{\\mathrm{BC}}$에 대응하므로 $\\overline{\\mathrm{JK}} = 2 \\times \\overline{\\mathrm{BC}} = 2 \\times 3 = 6\\text{ cm}$이다. (참)\n- 선지 ⑤: 넓이의 비는 $1^2 : 2^2 = 1 : 4$이다. (참)\n- 선지 ④: 닮음비가 $1:2$일 때 부피의 비는 $1^3 : 2^3 = 1 : 8$이다.\n따라서 (가)의 부피가 $12\\text{cm}^3$일 때, (나)의 부피는:\n$12 \\times 8 = 96\\text{cm}^3$이어야 한다.\n선지의 $36\\text{cm}^3$은 거짓이다.\n\n① 옳음\n② 옳음\n③ 옳음\n④ 옳지 않음 (부피는 $96\\text{cm}^3$이어야 함)\n⑤ 옳음\n\n따라서 옳지 않은 것은 ④이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

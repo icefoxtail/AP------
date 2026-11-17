@@ -232,10 +232,10 @@ window.questionBank = [
       "대단원 학습 평가"
     ],
     "wide": false,
-    "content": "$0 < x < 2\\pi$에서 부등식 $|\\cos x| > \\frac{1}{3}$의 해가 $0 \\le x < a$ 또는 $b < x < c$ 또는 $d < x < 2\\pi$일 때, $a + b + c + d$의 값을 구하시오.",
+    "content": "$0 < x < 2\\pi$에서 부등식 $|\\cos x| > \\frac{1}{3}$의 해가 $0 < x < a$ 또는 $b < x < c$ 또는 $d < x < 2\\pi$일 때, $a + b + c + d$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4\\pi$",
+    "solution": "$a=\\cos^{-1}\\dfrac{1}{3}$이라 하면 $0<x<2\\pi$에서 $|\\cos x|>\\dfrac{1}{3}$의 해는 $0<x<a$ 또는 $\\pi-a<x<\\pi+a$ 또는 $2\\pi-a<x<2\\pi$이다. 따라서 $a+b+c+d=a+(\\pi-a)+(\\pi+a)+(2\\pi-a)=4\\pi$이다."
   },
   {
     "id": 9,

@@ -278,7 +278,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "함수 $y = a \\cos(bx - c)$의 그래프가 최댓값 $3$, 최솟값 $-3$을 갖고 두 점 $\\left(\\frac{\\pi}{6}, 3\\right)$, $\\left(\\frac{\\pi}{2}, -3\\right)$을 지날 때, $a + b + \\frac{c}{\\pi}$의 값을 구하시오. (단, $a > 0, b > 0, 0 < c < \\pi$)",
+    "content": "함수 $y = a \\cos(bx - c)$의 그래프가 최댓값 $3$, 최솟값 $-3$을 갖고 두 점 $\\left(\\frac{\\pi}{6}, 3\\right)$, $\\left(\\frac{\\pi}{2}, -3\\right)$을 지날 때, $a + b + \\frac{c}{\\pi}$의 값을 구하시오. (단, $a > 0, b > 0, 0 < c < \\pi$이고, 두 점 사이에서 이 함수는 최댓값이나 최솟값을 갖지 않는다.)",
     "choices": [],
     "answer": "$\\dfrac{13}{2}$",
     "solution": "[키포인트] 최댓값과 최솟값으로 진폭을 구하고, 최댓점과 최솟점 사이의 간격으로 $b$를 구한다.\\n조건 정리: 최댓값은 $3$, 최솟값은 $-3$이고 두 점은 각각 최댓점과 최솟점이다.\\n풀이 방향: $a$, $b$, $c$를 차례로 결정한다.\\n정석 풀이: 최댓값이 $3$, 최솟값이 $-3$이고 $a>0$이므로 $a=3$이다.\\n함수는 $y=3\\cos(bx-c)$이다.\\n점 $\\left(\\dfrac\\pi6,3\\right)$과 $\\left(\\dfrac\\pi2,-3\\right)$은 인접한 최댓점과 최솟점이므로 두 $x$좌표의 차는 반 주기이다.\\n따라서 $\\dfrac\\pi b=\\dfrac\\pi2-\\dfrac\\pi6=\\dfrac\\pi3$이므로 $b=3$이다.\\n점 $\\left(\\dfrac\\pi6,3\\right)$을 대입하면 $3\\cos\\left(3\\cdot\\dfrac\\pi6-c\\right)=3$이므로 $\\cos\\left(\\dfrac\\pi2-c\\right)=1$이다.\\n$0<c<\\pi$에서 $c=\\dfrac\\pi2$이다.\\n따라서 $a+b+\\dfrac c\\pi=3+3+\\dfrac12=\\dfrac{13}{2}$이다.\\n따라서 구하는 값은 $\\dfrac{13}{2}$이다.",

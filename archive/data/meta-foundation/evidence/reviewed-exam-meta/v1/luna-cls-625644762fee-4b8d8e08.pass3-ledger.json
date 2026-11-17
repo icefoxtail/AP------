@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T16:22:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
+  "items": [
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(171-175)/4=-1이므로 500(0.5-0.34)=80명이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_EXPECTED_FREQUENCY_COUNT"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "정규밀도는 평균에서 멀어질수록 작아지므로 x+10=40일 때 구간 확률이 최대이며 x=30이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "평균 180, 분산 36이므로 192의 표준점수는 2이고 근사 확률은 0.5-0.48=0.02이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "정규분포",
+        "l4": "정규분포 확률"
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_NORMAL_APPROXIMATION"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "1-p=2/6=1/3이므로 p=2/3이고 n=6/(2/3)=9이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "651과 672의 표준점수는 1과 2이므로 구간 확률은 0.48-0.34=0.14이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "정규분포",
+        "l4": "정규분포 확률"
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_NORMAL_APPROXIMATION"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "평균은 2, 분산은 8×(1/4)×(3/4)=3/2이므로 합은 3/2+4=11/2이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_EXPECTATION_SECOND_MOMENT"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "E(N)=20/4=5이므로 좌표의 기댓값은 (2×5,20-5)=(10,15)이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "이항분포",
+        "l4": "평균·분산"
+      },
+      "crossConceptKeys": [
+        "CC_EXPECTATION_LINEARITY"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "중앙 확률 0.96은 표준점수 2까지이므로 8/√(2n/9)≥2에서 n≤72이고 최댓값은 72이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l3": "정규분포",
+        "l4": "정규분포 확률"
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_NORMAL_APPROXIMATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "X=0,1,2의 확률은 1/10,6/10,3/10이므로 E(X)=6/5, E(X²)=9/5에서 V(X)=9/25이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_COMBINATION_PROBABILITY",
+        "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "chosenFrom": "pass2",
+      "resolutionReason": "표준화한 변수의 평균은 0, 표준편차는 1이므로 E(H)=50, σ(H)=14이고 해당 응시자의 H는 50+14×2=78이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_LINEAR_EXPECTATION_PROPERTY"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "chosenFrom": "pass2",
+      "resolutionReason": "불량 확률은 2(0.5-0.48)=0.04이고 불량 수의 평균 150, 표준편차 12에서 168의 표준점수는 1.5이므로 근사 확률은 0.07이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_NORMAL_APPROXIMATION"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "E(X)=1, V(X)=1/2이므로 E(Y)=1, V(Y)=2이고 합은 3이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION_MOMENTS"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "V(X)=920-30²=20이므로 1-p=2/3, p=1/3이고 n=90이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "crossConceptKeys": [
+        "CC_EXPECTATION_SECOND_MOMENT"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "100p⁹⁹(1-p)=100p¹⁰⁰에서 p=1/2이므로 평균 50과 표준편차 5의 합은 55이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l4": "평균·분산"
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_PROBABILITY_FORMULA"
+      ]
+    }
+  ]
+}

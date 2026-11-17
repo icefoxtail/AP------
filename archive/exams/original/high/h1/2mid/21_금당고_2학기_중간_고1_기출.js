@@ -169,7 +169,7 @@ window.questionBank = [
     "content": "두 조건 $p,q$에 대하여 $\\sim p\\to q$의 역이 참일 때 항상 참인 명제는? [3.8점]",
     "choices": [
       "$\\sim p\\to\\sim q$",
-      "$p\\to\\sim q$",
+      "$p\\to q$",
       "$\\sim p\\to q$",
       "$\\sim q\\to p$",
       "$q\\to\\sim p$"

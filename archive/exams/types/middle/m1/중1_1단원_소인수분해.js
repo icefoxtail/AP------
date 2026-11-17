@@ -178,7 +178,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 옳지 않은 것은?",
     "choices": [
-      "두 소수는 서로소이다.",
+      "서로 다른 두 소수는 서로소이다.",
       "두 수 모두 합성수일지라도 서로소가 될 수 있다.",
       "$3 \\times 3 \\times 3 \\times 5 \\times 5 = 3^3 \\times 5^2$ 이다.",
       "1은 소수도 합성수도 아니다.",

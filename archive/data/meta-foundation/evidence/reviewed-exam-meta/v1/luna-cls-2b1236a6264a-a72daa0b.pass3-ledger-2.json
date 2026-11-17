@@ -1,0 +1,55 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T15:10:46+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/23_순천고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "흰 두 개, 파란 두 개, 빨간 하나의 일렬 배열은 5!/(2!·2!)=30가지다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  }
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "네 자리마다 1,2,3 중 하나를 독립적으로 놓을 수 있어 중복 허용 배열 수는 3⁴=81이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  }
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "양수 빈도합 5와 3의 배수 조건을 만족하는 빈도 구성의 순열 수는 (1,1,3)형 20과 (1,2,2)형 30이라 합은 50이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  }
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "두 사람이 같은 속도로 만나려면 8번 이동 뒤 네 번째 이동에서 만나는 중간점이 같아야 하므로 네 중간점별 경로 수 곱 16+576+576+16=1184이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  }
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "전체 배열은 6!/3!=120이고 C,D가 붙는 배열은 2·5!/3!=40이므로 이웃하지 않는 배열은 80이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  }
+                  }
+              ]
+}

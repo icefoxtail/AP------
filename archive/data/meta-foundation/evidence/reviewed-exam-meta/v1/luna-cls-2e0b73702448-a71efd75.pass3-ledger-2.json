@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:15:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "평균변화율이 3이므로 a(3a−4)=0이고 양수 조건에 따라 a=4/3이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "l4": "기울기 조건"
+      },
+      "crossConceptKeys": [
+        "CC_AVERAGE_RATE_OF_CHANGE"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "−2+a=−4에서 a=−2이고 1−a+b=4에서 b=1이므로 a²−b²=3이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "−1에서 f의 극한은 −1과 1이어서 제곱하면 일치하지만 (x−1)을 곱하면 2와 −2가 되므로 ㄱ과 ㄴ만 옳다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "l3": "연속 조건",
+        "l4": "구간별 함수"
+      },
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "중근도 합성함수의 극한 1과 함수값 −1을 다르게 하므로 판별식은 엄격히 음수여야 하며 0<a<4의 정수는 3개이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "l3": "연속 조건",
+        "l4": "미정계수"
+      },
+      "conditionKeys": [
+        "COND_INTEGER"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "−f′(2)/12=3에서 f′(2)=−36이며 목표 차분의 배율은 −5−2=−7이므로 극한은 252이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "l4": "정의로 미분계수"
+      },
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_QUOTIENT_SCALING"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "k<2를 배제한 뒤 (x−5)²+6k−21≥0으로부터 최소 k=7/2를 얻어 p+q=9이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "오른쪽에서 해가 0개에서 2개로 늘려면 양의 꼭짓점의 높이가 −18이어야 하므로 b=18, a=−12에서 a+b=6이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "crossConceptKeys": [
+        "CC_HORIZONTAL_LINE_INTERSECTIONS"
+      ],
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "u²−2u−8=0에서 u=4 또는 −2이므로 접선은 y=7x−11과 y=−5x+1이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "l4": "접선의 방정식"
+      }
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "공통 함수값이 −1이므로 g′(−2)=6+8f′(−2)이고 도함수 차와 연립하면 g′(−2)=−2이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "crossConceptKeys": [
+        "CC_DERIVATIVE_DEFINITION_LIMIT"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "유리화한 1/(2+√(4−x²))의 x→0 극한은 1/4이므로 2라고 쓴 네 번째 식이 틀리다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "l3": "극한의 성질",
+        "l4": "대수적 계산"
+      }
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "f′(x)=4x(x−1)(x−2)이므로 롤의 정리가 주는 점은 0,1,2이고 합은 3이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "crossConceptKeys": [
+        "CC_ROLLE_THEOREM_PRECONDITIONS"
+      ],
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ]
+    }
+  ]
+}

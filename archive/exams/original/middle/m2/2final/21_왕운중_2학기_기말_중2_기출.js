@@ -128,13 +128,13 @@ window.questionBank = [
     "choices": [
       "$\\angle F=50^\\circ$",
       "$\\overline{EF}=15\\text{ cm}$",
-      "$\\angle A=90^\\circ$",
+      "$\\overline{AB}:\\overline{DE}=5:3$",
       "$\\overline{AC}:\\overline{DF}=3:5$",
       "$\\angle B:\\angle E=3:5$"
     ],
     "image": "assets/images/21_왕운중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
     "answer": "③,⑤",
-    "solution": "$\\triangle ABC\\sim\\triangle DEF$에서 대응점은 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$이다.\n닮음비는 $3:5$이고 그림에서 $BC=9$ cm, $\\angle C=50^\\circ$이다.\n\n① $\\angle F=\\angle C=50^\\circ$이므로 옳다.\n② $EF=BC\\times\\dfrac53=9\\times\\dfrac53=15$ cm이므로 옳다.\n③ 그림에서 $\\angle A$는 직각이 아니므로 옳지 않다.\n④ $AC$와 $DF$는 대응변이므로 $AC:DF=3:5$여서 옳다.\n⑤ 대응각 $\\angle B$와 $\\angle E$는 크기가 같아 그 비가 $1:1$이므로 옳지 않다.\n따라서 옳지 않은 것은 ③, ⑤이고 정답은 ③, ⑤이다.",
+    "solution": "$\\triangle ABC\\sim\\triangle DEF$에서 대응점은 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$이다.\n닮음비는 $3:5$이고 그림에서 $BC=9$ cm, $\\angle C=50^\\circ$이다.\n\n① $\\angle F=\\angle C=50^\\circ$이므로 옳다.\n② $EF=BC\\times\\dfrac53=9\\times\\dfrac53=15$ cm이므로 옳다.\n③ 대응변 $AB$와 $DE$의 길이의 비는 닮음비인 $3:5$이므로 $5:3$은 옳지 않다.\n④ $AC$와 $DF$는 대응변이므로 $AC:DF=3:5$여서 옳다.\n⑤ 대응각 $\\angle B$와 $\\angle E$는 크기가 같아 그 비가 $1:1$이므로 옳지 않다.\n따라서 옳지 않은 것은 ③, ⑤이고 정답은 ③, ⑤이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
