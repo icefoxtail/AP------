@@ -1,0 +1,102 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "정수 a",
+        "elements": [
+          "1",
+          "2",
+          "4",
+          "−1",
+          "−2",
+          "−4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "정수 b",
+        "elements": [
+          "4",
+          "2",
+          "1",
+          "−4",
+          "−2",
+          "−1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      }
+    ]
+  },
+  "caption": "행렬식0조건24−6ab=0에서ab4의정수쌍6개를빠짐없이대응시킨다. 같은상수항5에서동일선은(2,2)뿐이라A4. 그한쌍을제외한나머지5개는서로다른평행선이므로B5. a0/b0은행렬식이0아니어서해없음경우에빠진것이아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}4x+3ay=5\\\\2bx+6y=5\\end{cases}$의 해가 무수히 많을 때 $ab$의 값을 $A$라 하고, 해가 없을 때의 정수 순서쌍 $(a,b)$의 개수를 $B$라 하자. $A$, $B$의 값을 풀이과정과 함께 각각 구하시오. (단, $a,b$는 정수이다.) [5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

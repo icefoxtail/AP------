@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-3/4"
+        ],
+        "domain": [
+          "-2",
+          "10"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-3/4"
+        ],
+        "domain": [
+          "-2",
+          "10"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "6",
+          "y": "3/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "8",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "기울기−3/4인기준선과평행선을비교한다. x0→6에서y6→3/2,감소량9/2이지8아니다. 원문(4,3),절편(0,6),(8,0)을모두보존. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차함수 $y=-\\dfrac34x+6$의 그래프에 대한 설명으로 옳지 않은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

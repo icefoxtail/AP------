@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-1)*(x-4)",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "5/2",
+        "y": "-9/4"
+      },
+      {
+        "id": "C",
+        "x": "4",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "모든 실수에서0이상이라는 주장의 부정은 어떤 x에서0미만이라는 존재문장이다. 실제1<x<4의 음수구간에서 x2는 값−2인 반례. 부정문 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "명제 ‘모든 실수 $x$에 대하여 $x^2-5x+4\\ge0$이다.’의 부정은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "모든 실수에서0이상이라는 주장의 부정은 어떤 x에서0미만이라는 존재문장이다. 실제1<x<4의 음수구간에서 x2는 값−2인 반례. 부정문 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 실수에서0이상이라는 주장의 부정은 어떤 x에서0미만이라는 존재문장이다. 실제1<x<4의 음수구간에서 x2는 값−2인 반례. 부정문 정답③."
+  ]
+}

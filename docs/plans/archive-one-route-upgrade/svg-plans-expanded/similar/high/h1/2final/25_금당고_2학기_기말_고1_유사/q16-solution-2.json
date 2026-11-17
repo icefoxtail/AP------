@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "3",
+      "2"
+    ],
+    "sign": 1,
+    "offset": "3",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -1.5,
+      3
+    ],
+    "viewport": [
+      -3,
+      4,
+      2,
+      7
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1.5,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 0.5,
+        "y": 5
+      }
+    ]
+  },
+  "caption": "실제 y=√(2x+3)+3의 시작점(−3/2,3)이 포함된다. 자연정의역 x≥−3/2,치역y≥3이며 p+q3/2. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=\\dfrac{ax+b}{x+c}$의 그래프가 아래 그림과 같다. 무리함수 $y=\\sqrt{ax+b}+c$의 그래프의 끝점을 $(p,q)$라 할 때, $p+q$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 y=√(2x+3)+3의 시작점(−3/2,3)이 포함된다. 자연정의역 x≥−3/2,치역y≥3이며 p+q3/2. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 y=√(2x+3)+3의 시작점(−3/2,3)이 포함된다. 자연정의역 x≥−3/2,치역y≥3이며 p+q3/2. 정답②."
+  ]
+}

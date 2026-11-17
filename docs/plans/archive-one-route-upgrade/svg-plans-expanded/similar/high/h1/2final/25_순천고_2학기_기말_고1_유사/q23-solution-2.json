@@ -1,0 +1,65 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-3",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "4",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      3,
+      7
+    ],
+    "viewport": [
+      0,
+      8,
+      2,
+      7
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 5
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "1",
+          "intercept": "1",
+          "style": "DASHED",
+          "label": "y=x+1"
+        }
+      ]
+    }
+  },
+  "caption": "오른쪽 실제 가지√(x−3)+4,x≥3. k1일 때 교점(3,4),(4,5). 두 가지는 정의역 사이(2,3)가 비어 이어그리지 않는다. 정답k1,x합10.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $\\{x\\mid x\\le2\\}\\cup\\{x\\mid x\\ge3\\}$에서 정의된 함수 $f(x)=\\begin{cases}3-\\sqrt{2-x}&(x\\le2)\\\\\\sqrt{x-3}+4&(x\\ge3)\\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 총 7점]<br>(1) 함수 $y=f(x)$의 그래프를 그리시오. [3점]<br>(2) 함수 $y=f(x)$의 그래프와 직선 $y=x+k$가 서로 다른 네 점에서 만나도록 하는 실수 $k$와, 그 네 교점의 $x$좌표의 합을 차례로 구하시오. [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "오른쪽 실제 가지√(x−3)+4,x≥3. k1일 때 교점(3,4),(4,5). 두 가지는 정의역 사이(2,3)가 비어 이어그리지 않는다. 정답k1,x합10.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 실제 가지√(x−3)+4,x≥3. k1일 때 교점(3,4),(4,5). 두 가지는 정의역 사이(2,3)가 비어 이어그리지 않는다. 정답k1,x합10."
+  ]
+}

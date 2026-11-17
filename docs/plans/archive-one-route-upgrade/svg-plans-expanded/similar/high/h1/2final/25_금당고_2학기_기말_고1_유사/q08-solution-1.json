@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*x-1",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "5"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "11"
+      }
+    ]
+  },
+  "caption": "역함수 조건 f⁻¹(11)=4는 실제 점(4,11)이다. 점(2,5)와 기울기3,절편−1을 얻어 a+b=2. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=ax+b$가 $f(2)=5$, $f^{-1}(11)=4$를 만족시킬 때, $a+b$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수 조건 f⁻¹(11)=4는 실제 점(4,11)이다. 점(2,5)와 기울기3,절편−1을 얻어 a+b=2. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수 조건 f⁻¹(11)=4는 실제 점(4,11)이다. 점(2,5)와 기울기3,절편−1을 얻어 a+b=2. 정답③."
+  ]
+}

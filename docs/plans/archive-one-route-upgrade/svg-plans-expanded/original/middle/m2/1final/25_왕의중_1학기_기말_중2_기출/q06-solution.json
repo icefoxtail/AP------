@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4200",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "4200"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4800",
+          "-5/4"
+        ],
+        "domain": [
+          "0",
+          "4200"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2400",
+          "y": "1800",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x는 핫도그 가격 원,y는 음료 가격 원. 두 구매조건의 교점(2400,1800)이 가격이다. 5배한 첫 식에서 둘째를 빼면 y1800. 정답⑤. 직선은 조건의 연장, 가격은 비음수.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "핫도그 가게에서 영희는 핫도그 3개와 음료수 3개를 사고 12600원을 지불하였다. 철수는 핫도그 5개와 음료수 4개를 사고 19200원을 지불하였다. 이 때, 음료수 1개의 가격은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "x는 핫도그 가격 원,y는 음료 가격 원. 두 구매조건의 교점(2400,1800)이 가격이다. 5배한 첫 식에서 둘째를 빼면 y1800. 정답⑤. 직선은 조건의 연장, 가격은 비음수.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x는 핫도그 가격 원,y는 음료 가격 원. 두 구매조건의 교점(2400,1800)이 가격이다. 5배한 첫 식에서 둘째를 빼면 y1800. 정답⑤. 직선은 조건의 연장, 가격은 비음수."
+  ]
+}

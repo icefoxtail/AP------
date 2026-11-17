@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "90",
+          "10"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "90"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "130"
+      },
+      {
+        "id": "P2",
+        "x": "9",
+        "y": "180"
+      }
+    ],
+    "formula": "10*x + 90",
+    "axisScale": {
+      "x": "1",
+      "y": "1/10"
+    }
+  },
+  "caption": "초당2cm 이동하므로 실제시간0≤x≤9. 사각형넓이90+10x의(4,130)이 목표이다. 정답4초. 시간과넓이는다른양,세로축1/10배율의실제좌표를쓴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 점 $\\text{B}$를 출발하여 점 $\\text{C}$까지 초속 $2\\text{cm}$로 일정하게 움직이고 있다. 사각형 $\\text{ABPD}$의 넓이가 $130\\text{ cm}^2$가 되는 것은 점 $\\text{P}$가 꼭짓점 $\\text{B}$를 출발한 지 몇 초 후인가? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "초당2cm 이동하므로 실제시간0≤x≤9. 사각형넓이90+10x의(4,130)이 목표이다. 정답4초. 시간과넓이는다른양,세로축1/10배율의실제좌표를쓴다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "초당2cm 이동하므로 실제시간0≤x≤9. 사각형넓이90+10x의(4,130)이 목표이다. 정답4초. 시간과넓이는다른양,세로축1/10배율의실제좌표를쓴다."
+  ]
+}

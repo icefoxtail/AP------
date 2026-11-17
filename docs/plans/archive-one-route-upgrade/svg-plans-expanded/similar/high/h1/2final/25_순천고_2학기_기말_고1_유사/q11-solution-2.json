@@ -1,0 +1,38 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "Q",
+        "name": "Q"
+      },
+      {
+        "id": "R",
+        "name": "R"
+      }
+    ],
+    "disjoint": [
+      [
+        "Q",
+        "R"
+      ]
+    ]
+  },
+  "caption": "둘째 공집합 Q∩R=∅에서 Q⊆R^c이므로 q→¬r. 두 패널은 같은R을 공유하는 조건을 따로 표현한 것이며 P/Q가 교차한다는 뜻이 아니다. 정답ㄱㄴ.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자. $(P\\cap R^c)\\cup(Q\\cap R)=\\varnothing$일 때, 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은? <div class=\"question-note-box\">&lt;보기&gt;<br>ㄱ. $p\\to r$<br>ㄴ. $q\\to\\neg r$<br>ㄷ. $r\\to p$<br>ㄹ. $p\\to q$<br>ㅁ. $q\\to r$</div>",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "둘째 공집합 Q∩R=∅에서 Q⊆R^c이므로 q→¬r. 두 패널은 같은R을 공유하는 조건을 따로 표현한 것이며 P/Q가 교차한다는 뜻이 아니다. 정답ㄱㄴ.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "둘째 공집합 Q∩R=∅에서 Q⊆R^c이므로 q→¬r. 두 패널은 같은R을 공유하는 조건을 따로 표현한 것이며 P/Q가 교차한다는 뜻이 아니다. 정답ㄱㄴ."
+  ]
+}

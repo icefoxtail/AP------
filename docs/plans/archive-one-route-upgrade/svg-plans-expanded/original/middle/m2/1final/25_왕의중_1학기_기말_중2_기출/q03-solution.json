@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/4",
+          "1/4"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "5/3"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x=4y+1을 대입해17y=−17, y−1. 두 직선 공통점(−3,−1)의 좌표합−4. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} x=4y+1 \\\\ 5x-3y=-12 \\end{cases}$의 해가 $(a, b)$일 때, $a+b$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "x=4y+1을 대입해17y=−17, y−1. 두 직선 공통점(−3,−1)의 좌표합−4. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x=4y+1을 대입해17y=−17, y−1. 두 직선 공통점(−3,−1)의 좌표합−4. 정답①."
+  ]
+}

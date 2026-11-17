@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/2",
+          "-1/2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "셋째선의기울기a=-2인경우. a2/−1/2면각각평행,a−2면기존교점(1,−1)을지나삼각형없음. 합2−1/2−2=−1/2. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $y=2x-3$, $y=-\\dfrac12x-\\dfrac12$과 직선 $y=ax+1$이 삼각형을 만들지 않도록 하는 상수 $a$의 값들의 합은? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

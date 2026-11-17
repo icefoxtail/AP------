@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "평행조건 기울기−2, x절편3에서 절편6. 실제y−2x+6은 제3사분면을 지나지 않는다. 비교원선y−2x+5도 보존. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프는 $y=-2x+5$의 그래프와 평행하고 $x$절편이 3이다. 이때 이 그래프가 지나지 않는 사분면은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "평행조건 기울기−2, x절편3에서 절편6. 실제y−2x+6은 제3사분면을 지나지 않는다. 비교원선y−2x+5도 보존. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평행조건 기울기−2, x절편3에서 절편6. 실제y−2x+6은 제3사분면을 지나지 않는다. 비교원선y−2x+5도 보존. 정답③."
+  ]
+}

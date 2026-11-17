@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2/3",
+          "2/3"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "height",
+          "from": "P2",
+          "to": "P3",
+          "length": true,
+          "dashed": true
+        },
+        {
+          "id": "base",
+          "from": "P0",
+          "to": "P1",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "두선교점(2,2),x절편−1과4. 밑변5/높이2로 삼각형넓이5,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $x+y-4=0$, $2x-3y+2=0$과 $x$축으로 둘러싸인 도형의 넓이는? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두선교점(2,2),x절편−1과4. 밑변5/높이2로 삼각형넓이5,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두선교점(2,2),x절편−1과4. 밑변5/높이2로 삼각형넓이5,정답③."
+  ]
+}

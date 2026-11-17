@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "⑤의a−1,b2는기울기같고절편달라해없음. ③a−2,b4는첫식의2배라직선이완전히일치하여무수한해. 일치한선을두개로억지분리하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\begin{cases}-x+2y=-2\\\\ax+by=-4\\end{cases}$의 해에 대한 설명으로 옳지 않은 것은? (단, $b\\ne0$) [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

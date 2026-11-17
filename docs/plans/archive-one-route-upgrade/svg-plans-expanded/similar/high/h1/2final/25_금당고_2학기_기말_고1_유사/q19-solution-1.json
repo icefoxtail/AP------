@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "x": "5",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "formula": "abs((x-1)*(x-5))",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "height",
+          "slope": "0",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=0"
+        }
+      ]
+    }
+  },
+  "caption": "수평높이 k=0에서 서로 다른 교점은 2개. 일반 네교점 조건0<k<4,최대정수3. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 네 실수 $a,b,c,d$로 이루어진 집합 $X=\\{a,b,c,d\\}$를 정의역으로 하는 함수 $f(x)=|(x-1)(x-5)|$가 상수함수라고 하자. 이 상수함수의 함숫값을 $k$라 할 때, 가능한 정수 $k$의 최댓값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "수평높이 k=0에서 서로 다른 교점은 2개. 일반 네교점 조건0<k<4,최대정수3. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "수평높이 k=0에서 서로 다른 교점은 2개. 일반 네교점 조건0<k<4,최대정수3. 정답③."
+  ]
+}

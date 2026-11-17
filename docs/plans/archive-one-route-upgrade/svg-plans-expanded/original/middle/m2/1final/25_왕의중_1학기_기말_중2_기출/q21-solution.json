@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -7,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-6",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-6"
+      }
+    ],
+    "formula": "-x - 6",
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "-6",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-6"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "O",
+            "A",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A",
+          "length": true
+        },
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "a<0이라 x절편6/a도음수. 삼각형넓이−18/a=18에서a−1. 실제두절편−6과−6,밑변높이각6으로18. 정답−1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 1] 일차함수 $y=ax-6$의 그래프와 $x$축, $y$축으로 둘러싸인 도형의 넓이가 $18$일 때, $a$의 값을 구하시오. (단, $a<0$) [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a<0이라 x절편6/a도음수. 삼각형넓이−18/a=18에서a−1. 실제두절편−6과−6,밑변높이각6으로18. 정답−1.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a<0이라 x절편6/a도음수. 삼각형넓이−18/a=18에서a−1. 실제두절편−6과−6,밑변높이각6으로18. 정답−1."
+  ]
+}

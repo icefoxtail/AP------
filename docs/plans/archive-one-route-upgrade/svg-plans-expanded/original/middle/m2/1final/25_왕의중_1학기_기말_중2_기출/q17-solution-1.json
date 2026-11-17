@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "8/3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "4/7"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "3",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "7",
+          "y": "5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "고정점 P(0,1)에서 A(3,9),B(7,5)로 향하는 경계 기울기8/3,4/7. 닫힌 선분과 만나려면 4/7≤a≤8/3. 정수1,2 두개,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 두 점 $\\text{A}, \\text{B}$를 양 끝점으로 하는 선분 $\\text{AB}$와 일차함수 $y=ax+1$의 그래프가 만날 때, 이를 만족하는 정수 $a$의 개수는? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "고정점 P(0,1)에서 A(3,9),B(7,5)로 향하는 경계 기울기8/3,4/7. 닫힌 선분과 만나려면 4/7≤a≤8/3. 정수1,2 두개,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "고정점 P(0,1)에서 A(3,9),B(7,5)로 향하는 경계 기울기8/3,4/7. 닫힌 선분과 만나려면 4/7≤a≤8/3. 정수1,2 두개,정답②."
+  ]
+}

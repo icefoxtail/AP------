@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-3/4"
+        ],
+        "domain": [
+          "-8",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-3/4"
+        ],
+        "domain": [
+          "-8",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-8",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래선은 제2·3·4사분면을 지나며 평행한 비교선과 기울기−3/4가 같다. 절편−4,−3과 주어진 점 보존. 옳지 않은②가정답.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 일차함수 $y=-\\dfrac{3}{4}x-3$의 그래프에 대한 설명으로 옳지 않은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원래선은 제2·3·4사분면을 지나며 평행한 비교선과 기울기−3/4가 같다. 절편−4,−3과 주어진 점 보존. 옳지 않은②가정답.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원래선은 제2·3·4사분면을 지나며 평행한 비교선과 기울기−3/4가 같다. 절편−4,−3과 주어진 점 보존. 옳지 않은②가정답."
+  ]
+}

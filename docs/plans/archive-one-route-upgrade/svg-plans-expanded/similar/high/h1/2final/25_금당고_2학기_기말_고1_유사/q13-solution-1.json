@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "10",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "formula": "25-(x-5)^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "5",
+        "y": "25"
+      }
+    ]
+  },
+  "caption": "양수 x,y에서 y10−x이므로 실제0<x<10이다. xy=25−(x−5)²의 꼭짓점(5,25)에서 M25,a5,b5. 경계0/10은 열린점이며 최종35.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 양수 $x,y$가 $x+y=10$을 만족할 때, $xy$의 최댓값을 $M$, 그때의 $x,y$를 각각 $a,b$라 하자. $M+a+b$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "양수 x,y에서 y10−x이므로 실제0<x<10이다. xy=25−(x−5)²의 꼭짓점(5,25)에서 M25,a5,b5. 경계0/10은 열린점이며 최종35.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "양수 x,y에서 y10−x이므로 실제0<x<10이다. xy=25−(x−5)²의 꼭짓점(5,25)에서 M25,a5,b5. 경계0/10은 열린점이며 최종35."
+  ]
+}

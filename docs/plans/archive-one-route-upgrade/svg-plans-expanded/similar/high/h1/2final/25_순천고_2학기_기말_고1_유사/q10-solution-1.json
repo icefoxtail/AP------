@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "c"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "b"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "d"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "원본문자그래프의 실제 경로 c→b→d를 확대한다. 좌표 숫자를 임의로 가정하지 않는다. 원래 곡선·y=x·문자축은 보존하며 이 대응은 보완용이다. 정답 k=c.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프와 직선 $y=x$가 그림과 같을 때, $(f\\circ f)(k)=d$를 만족하는 $k$를 고르면?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원본문자그래프의 실제 경로 c→b→d를 확대한다. 좌표 숫자를 임의로 가정하지 않는다. 원래 곡선·y=x·문자축은 보존하며 이 대응은 보완용이다. 정답 k=c.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본문자그래프의 실제 경로 c→b→d를 확대한다. 좌표 숫자를 임의로 가정하지 않는다. 원래 곡선·y=x·문자축은 보존하며 이 대응은 보완용이다. 정답 k=c."
+  ]
+}

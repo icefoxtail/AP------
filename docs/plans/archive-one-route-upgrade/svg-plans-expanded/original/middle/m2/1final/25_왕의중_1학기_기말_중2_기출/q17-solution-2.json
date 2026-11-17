@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4/7",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8/3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "0",
+            "3"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "양 끝점도 선분에 포함하므로 닫힌 경계. 그 안 정수1,2를 선택해 정답2개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 두 점 $\\text{A}, \\text{B}$를 양 끝점으로 하는 선분 $\\text{AB}$와 일차함수 $y=ax+1$의 그래프가 만날 때, 이를 만족하는 정수 $a$의 개수는? [5점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝점도 선분에 포함하므로 닫힌 경계. 그 안 정수1,2를 선택해 정답2개.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점도 선분에 포함하므로 닫힌 경계. 그 안 정수1,2를 선택해 정답2개."
+  ]
+}

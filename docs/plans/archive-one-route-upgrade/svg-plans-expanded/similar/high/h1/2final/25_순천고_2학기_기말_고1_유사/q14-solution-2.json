@@ -1,0 +1,57 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-4",
+      "-2"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -7,
+      5
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a=-2의 경계 비교이다. x<0에서 값범위는(a,a+4)이며 음양을 모두 가지려면−4<a<0. 예시−2만 네 사분면을 통과하고 양끝−4/0은 제외한다. 정답정수3개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=-\\dfrac{8}{x-2}+a$의 그래프가 모든 사분면을 지나도록 하는 정수 $a$의 개수는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a=-2의 경계 비교이다. x<0에서 값범위는(a,a+4)이며 음양을 모두 가지려면−4<a<0. 예시−2만 네 사분면을 통과하고 양끝−4/0은 제외한다. 정답정수3개.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a=-2의 경계 비교이다. x<0에서 값범위는(a,a+4)이며 음양을 모두 가지려면−4<a<0. 예시−2만 네 사분면을 통과하고 양끝−4/0은 제외한다. 정답정수3개."
+  ]
+}

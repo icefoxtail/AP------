@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3*x+4",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "4"
+      }
+    ]
+  },
+  "caption": "실제 정의역 x≥−2에서 증가하는 직선 가지이다. 다항식의 왼쪽 연장은 실제 함수에 포함하지 않는다. 끝점(−2,−2)을 일치시키면 치역도[−2,∞),a−4. 정답③. 이 패널은 실제 반직선 정의역의 유한 표시 발췌이며 오른쪽 표시 끝은 원문의 상한이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $A=\\{x\\mid x\\ge-2\\}$에 대하여 $A$에서 $A$로의 함수 $f(x)=3x-a$가 일대일 대응이 되도록 하는 상수 $a$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 정의역 x≥−2에서 증가하는 직선 가지이다. 다항식의 왼쪽 연장은 실제 함수에 포함하지 않는다. 끝점(−2,−2)을 일치시키면 치역도[−2,∞),a−4. 정답③. 이 패널은 실제 반직선 정의역의 유한 표시 발췌이며 오른쪽 표시 끝은 원문의 상한이 아니다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 정의역 x≥−2에서 증가하는 직선 가지이다. 다항식의 왼쪽 연장은 실제 함수에 포함하지 않는다. 끝점(−2,−2)을 일치시키면 치역도[−2,∞),a−4. 정답③. 이 패널은 실제 반직선 정의역의 유한 표시 발췌이며 오른쪽 표시 끝은 원문의 상한이 아니다."
+  ]
+}

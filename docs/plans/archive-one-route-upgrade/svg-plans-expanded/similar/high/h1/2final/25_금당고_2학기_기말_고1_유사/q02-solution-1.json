@@ -1,0 +1,83 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "math": true,
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "math": true,
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "4",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "math": true,
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "6",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "subset": [
+      "B",
+      "A"
+    ]
+  },
+  "caption": "B={2,4,6}는 A 안의 짝수 모임이다. 후보 {2,4,5}의 5는 B 밖 A 안에 있으므로 부분집합이 아니다. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $A=\\{1,2,3,4,5,6\\}$에 대하여 $A$의 원소 중 짝수만을 모은 집합을 $B$라 하자. 다음 중 $B$의 부분집합이 아닌 것은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "B={2,4,6}는 A 안의 짝수 모임이다. 후보 {2,4,5}의 5는 B 밖 A 안에 있으므로 부분집합이 아니다. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "B={2,4,6}는 A 안의 짝수 모임이다. 후보 {2,4,5}의 5는 B 밖 A 안에 있으므로 부분집합이 아니다. 정답②."
+  ]
+}

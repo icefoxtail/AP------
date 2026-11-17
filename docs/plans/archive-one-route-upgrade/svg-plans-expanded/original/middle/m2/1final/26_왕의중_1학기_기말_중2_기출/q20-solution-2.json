@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "30",
+          "-3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "30"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "18"
+      },
+      {
+        "id": "P2",
+        "x": "6",
+        "y": "12"
+      },
+      {
+        "id": "P3",
+        "x": "7",
+        "y": "9"
+      },
+      {
+        "id": "P4",
+        "x": "10",
+        "y": "0"
+      }
+    ],
+    "formula": "30 - 3*x"
+  },
+  "caption": "B는분당3L감소,10분후빈다. 4분후A14/B18,7분후A11/B9. 6분후둘다12L. 빈뒤음수로연장하지않는다. 더빨리줄어드는B가⑤의정답.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 물통 A, B에 각각 18 L, 30 L의 물이 들어 있다. 마개를 열면 A에서는 1분에 1 L, B에서는 1분에 3 L씩 물이 흘러나온다. 동시에 마개를 연 지 $x$분 후가 지났을 때, 다음 중 옳은 것은? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

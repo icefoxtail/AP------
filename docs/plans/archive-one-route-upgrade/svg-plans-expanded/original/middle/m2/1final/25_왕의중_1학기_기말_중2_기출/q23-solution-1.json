@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-8"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "-8"
+      }
+    ],
+    "formula": "-8"
+  },
+  "caption": "a−1의경계는수평선y−8. 제1사분면없으려면기울기≤0,절편≤0. 따라서−1≤a≤7,정수9개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 3] $x, y$에 대한 일차방정식 $(a+1)x+y-a+7=0$의 그래프가 제1사분면을 지나지 않도록 하는 정수 $a$의 개수를 구하시오. [6점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a−1의경계는수평선y−8. 제1사분면없으려면기울기≤0,절편≤0. 따라서−1≤a≤7,정수9개.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a−1의경계는수평선y−8. 제1사분면없으려면기울기≤0,절편≤0. 따라서−1≤a≤7,정수9개."
+  ]
+}

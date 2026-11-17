@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-15/8",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "끝점근 t0도 유효하므로 −2 포함,중근 t1/4인 −15/8은 제외한다. p+q−31/8을8배하여 정답−31.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=\\sqrt{x-1}$의 그래프와 직선 $y=2x+k$가 서로 다른 두 점에서 만나도록 하는 $k$의 범위를 $p\\le k\\lt q$라 하자. $8(p+q)$의 값을 구하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "끝점근 t0도 유효하므로 −2 포함,중근 t1/4인 −15/8은 제외한다. p+q−31/8을8배하여 정답−31.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점근 t0도 유효하므로 −2 포함,중근 t1/4인 −15/8은 제외한다. p+q−31/8을8배하여 정답−31."
+  ]
+}

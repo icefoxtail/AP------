@@ -1,0 +1,116 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3/2",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "-3/2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "left",
+          "x": "-3/2"
+        },
+        {
+          "id": "right",
+          "x": "2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "width",
+          "from": "P0",
+          "to": "P1",
+          "length": true
+        },
+        {
+          "id": "height",
+          "from": "P1",
+          "to": "P2",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "네 직선은 x=−3/2, x=2, y=−3, y=2. 가로7/2,세로5인직사각형넓이35/2. 원본빈좌표평면은유지하고이해설에만네선을완성한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 4] 네 개의 일차방정식 $x-2=0$, $2x+3=0$, $y+3=0$, $6-3y=0$이 주어질 때 다음 물음에 답하시오.\n\n(1) 네 개의 일차방정식의 그래프를 좌표평면 위에 그리시오. [2점]\n\n(2) 네 그래프로 둘러싸인 도형의 넓이를 구하시오. [2점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "네 직선은 x=−3/2, x=2, y=−3, y=2. 가로7/2,세로5인직사각형넓이35/2. 원본빈좌표평면은유지하고이해설에만네선을완성한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "네 직선은 x=−3/2, x=2, y=−3, y=2. 가로7/2,세로5인직사각형넓이35/2. 원본빈좌표평면은유지하고이해설에만네선을완성한다."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "9",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "8",
+            "13"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "반례 방지 k≥9와 주어진0≤k≤12를 교차하면 정수9,10,11,12이다. k9도 반례영역의 상한이 미달성이라 포함. 정답4개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 실수 $x,y$에 대한 명제 ‘$4x+y\\ge k$이면 $x\\ge2$ 또는 $y\\ge1$이다.’가 참이 되도록 하는 정수 $k$ 중 $0\\le k\\le12$인 것의 개수는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "반례 방지 k≥9와 주어진0≤k≤12를 교차하면 정수9,10,11,12이다. k9도 반례영역의 상한이 미달성이라 포함. 정답4개.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "반례 방지 k≥9와 주어진0≤k≤12를 교차하면 정수9,10,11,12이다. k9도 반례영역의 상한이 미달성이라 포함. 정답4개."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "44",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "22"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "20",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "22"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "8",
+          "y": "36",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로는 현재 연수 나이,세로는 아버지 나이. 20년 후 조건 y+20=2(x+20)이 y=2x+20으로 바뀐다. 공통점(8,36),정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현재 연수와 아버지의 나이의 합은 44살이고, 20년 후에는 아버지의 나이는 연수의 나이의 2배라고 한다. 이때, 현재 아버지의 나이는? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로는 현재 연수 나이,세로는 아버지 나이. 20년 후 조건 y+20=2(x+20)이 y=2x+20으로 바뀐다. 공통점(8,36),정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로는 현재 연수 나이,세로는 아버지 나이. 20년 후 조건 y+20=2(x+20)이 y=2x+20으로 바뀐다. 공통점(8,36),정답③."
+  ]
+}

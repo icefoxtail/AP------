@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(x-1)^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "-1"
+      }
+    ],
+    "axisTitles": {
+      "x": "u",
+      "y": "K"
+    }
+  },
+  "caption": "t=√(x−1)≥0에서 u=4t,K=8k+15로 확대하면 K=−(u−1)²이다. 그림 수식의 x는u,y는K이며 실제 u≥0이다. 끝점(0,−1)과 다른교점(2,−1),꼭짓점(1,0)을 비교한다. −1≤K<0은 −2≤k<−15/8로 복원되고 정답−31.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "무리함수 $y=\\sqrt{x-1}$의 그래프와 직선 $y=2x+k$가 서로 다른 두 점에서 만나도록 하는 $k$의 범위를 $p\\le k\\lt q$라 하자. $8(p+q)$의 값을 구하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "t=√(x−1)≥0에서 u=4t,K=8k+15로 확대하면 K=−(u−1)²이다. 그림 수식의 x는u,y는K이며 실제 u≥0이다. 끝점(0,−1)과 다른교점(2,−1),꼭짓점(1,0)을 비교한다. −1≤K<0은 −2≤k<−15/8로 복원되고 정답−31.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "t=√(x−1)≥0에서 u=4t,K=8k+15로 확대하면 K=−(u−1)²이다. 그림 수식의 x는u,y는K이며 실제 u≥0이다. 끝점(0,−1)과 다른교점(2,−1),꼭짓점(1,0)을 비교한다. −1≤K<0은 −2≤k<−15/8로 복원되고 정답−31."
+  ]
+}

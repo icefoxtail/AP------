@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "elements": [
+      {
+        "text": "6",
+        "math": true,
+        "in": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "text": "12",
+        "math": true,
+        "in": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "text": "3",
+        "math": true,
+        "in": [
+          "Q"
+        ]
+      }
+    ],
+    "subset": [
+      "P",
+      "Q"
+    ]
+  },
+  "caption": "P는6의 배수, Q는3의 배수로 P⊂Q이다. 표시 숫자는 대표 예시이며 전체 집합의 원소 목록이 아니다. 반례3은 Q에만 속하므로 역방향은 거짓. 정답 충분조건이지만 필요조건은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정수 $x$에 대하여 $p$: ‘$x$는 $6$의 배수이다.’, $q$: ‘$x$는 $3$의 배수이다.’라 하자. $p$는 $q$이기 위한 어떤 조건인가?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "P는6의 배수, Q는3의 배수로 P⊂Q이다. 표시 숫자는 대표 예시이며 전체 집합의 원소 목록이 아니다. 반례3은 Q에만 속하므로 역방향은 거짓. 정답 충분조건이지만 필요조건은 아니다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "P는6의 배수, Q는3의 배수로 P⊂Q이다. 표시 숫자는 대표 예시이며 전체 집합의 원소 목록이 아니다. 반례3은 Q에만 속하므로 역방향은 거짓. 정답 충분조건이지만 필요조건은 아니다."
+  ]
+}

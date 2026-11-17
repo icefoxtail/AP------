@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "6",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "④의a0,b−2이면수평선y2와(6,2)에서만난다. 해없다는설명이틀려정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\begin{cases}-x+2y=-2\\\\ax+by=-4\\end{cases}$의 해에 대한 설명으로 옳지 않은 것은? (단, $b\\ne0$) [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

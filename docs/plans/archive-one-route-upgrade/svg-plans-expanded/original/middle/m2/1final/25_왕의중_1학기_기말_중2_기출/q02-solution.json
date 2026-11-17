@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "③의 두 식은 y=x+1, y=5−3x이다. 공통점 (1,2)가 두 식을 동시에 만족한다. 다른 보기는 한 식 이상 불일치. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식 중에서 $x=1, y=2$이 해인 것은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "③의 두 식은 y=x+1, y=5−3x이다. 공통점 (1,2)가 두 식을 동시에 만족한다. 다른 보기는 한 식 이상 불일치. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "③의 두 식은 y=x+1, y=5−3x이다. 공통점 (1,2)가 두 식을 동시에 만족한다. 다른 보기는 한 식 이상 불일치. 정답③."
+  ]
+}

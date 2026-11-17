@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "4"
+      }
+    ],
+    "formula": "2*x - 2"
+  },
+  "caption": "준서는절편만오독하여기울기2는실제와같다. 원문두사람이틀린것과맞게읽은것을분리한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프를 그리는데 준서는 $y$절편을 잘못 보고 두 점 $(1,0)$, $(3,4)$를 지나는 그래프를 그렸고, 지우는 기울기를 잘못 보고 두 점 $(1,-2)$, $(3,6)$을 지나는 그래프를 그렸다. 이때 실제 일차함수 $y=ax+b$의 그래프의 $x$절편을 풀이과정과 함께 구하시오. (단, $a,b$는 상수) [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

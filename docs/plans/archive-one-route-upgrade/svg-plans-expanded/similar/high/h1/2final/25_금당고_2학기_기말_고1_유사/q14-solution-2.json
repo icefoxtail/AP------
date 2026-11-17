@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "0"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "세 번째와 네 번째 값2,0을 얻는다. 4는 별도 고정점이지만 시작0의 궤도에 들어오지 않는다. f³0+f⁴0=2,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X=\\{0,1,2,3,4\\}$에서 함수 $f:X\\to X$의 함숫값 $f(x)$를 $2x+1$을 $5$로 나눈 나머지로 정한다. $f^3(0)+f^4(0)$의 값은? (단, $f^n$은 $f$를 $n$번 합성한 함수를 뜻한다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "세 번째와 네 번째 값2,0을 얻는다. 4는 별도 고정점이지만 시작0의 궤도에 들어오지 않는다. f³0+f⁴0=2,정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "세 번째와 네 번째 값2,0을 얻는다. 4는 별도 고정점이지만 시작0의 궤도에 들어오지 않는다. f³0+f⁴0=2,정답②."
+  ]
+}

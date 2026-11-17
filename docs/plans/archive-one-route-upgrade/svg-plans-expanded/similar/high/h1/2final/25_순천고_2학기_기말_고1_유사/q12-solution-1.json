@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x+3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "9"
+      },
+      {
+        "id": "C",
+        "x": "5",
+        "y": "13"
+      }
+    ]
+  },
+  "caption": "두 원문점으로 기울기2,절편3을 구한다. 역함수13의 입력은 원함수점(5,13)의 x5. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $f(x)$가 $f(-1)=1$, $f(3)=9$를 만족시킬 때, $f^{-1}(13)$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "두 원문점으로 기울기2,절편3을 구한다. 역함수13의 입력은 원함수점(5,13)의 x5. 정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원문점으로 기울기2,절편3을 구한다. 역함수13의 입력은 원함수점(5,13)의 x5. 정답③."
+  ]
+}

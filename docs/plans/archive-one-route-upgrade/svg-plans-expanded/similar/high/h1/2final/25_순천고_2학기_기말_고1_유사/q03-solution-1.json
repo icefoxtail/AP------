@@ -1,0 +1,69 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "-2",
+            "8"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "세 진수 조건 x≥−1,x≤7,x≥−2의 교집합은[−1,7]. 끝점을 포함한 정수9개,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 무리식 $\\sqrt{x+1}$, $\\sqrt{7-x}$, $\\sqrt{2x+4}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "세 진수 조건 x≥−1,x≤7,x≥−2의 교집합은[−1,7]. 끝점을 포함한 정수9개,정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "세 진수 조건 x≥−1,x≤7,x≥−2의 교집합은[−1,7]. 끝점을 포함한 정수9개,정답④."
+  ]
+}

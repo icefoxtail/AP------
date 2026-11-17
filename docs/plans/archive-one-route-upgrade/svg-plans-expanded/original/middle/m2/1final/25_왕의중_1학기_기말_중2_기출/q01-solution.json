@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "8"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "P3",
+        "x": "4",
+        "y": "2"
+      }
+    ],
+    "formula": "10 - 2*x"
+  },
+  "caption": "자연수 해는 (1,8),(2,6),(3,4),(4,2). 표시 직선은 관계의 연속 보조 연장이고 자연수 점만 원문 해이다. 보기 중 (2,6)만 있으므로 ②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $2x+y=10$이 참이 되게 하는 자연수 $x$와 $y$의 값을 순서쌍 $(x, y)$로 나타낸 것은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "자연수 해는 (1,8),(2,6),(3,4),(4,2). 표시 직선은 관계의 연속 보조 연장이고 자연수 점만 원문 해이다. 보기 중 (2,6)만 있으므로 ②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "자연수 해는 (1,8),(2,6),(3,4),(4,2). 표시 직선은 관계의 연속 보조 연장이고 자연수 점만 원문 해이다. 보기 중 (2,6)만 있으므로 ②."
+  ]
+}

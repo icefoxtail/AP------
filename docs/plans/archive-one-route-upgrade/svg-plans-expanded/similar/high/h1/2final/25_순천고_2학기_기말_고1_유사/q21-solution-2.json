@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "2",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "g:1→2,2→3,3→1.두 일대일대응을 원문조건으로 유일하게 확정한다. 정답(1)3,(2)1,(3)3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f$와 $g$가 모두 일대일대응이고, 아래 조건을 모두 만족시킬 때, 다음 물음에 답하여라. <div class=\"question-note-box\">(가) $f^{-1}(1)=1$<br>(나) $(g\\circ f)(1)=2$<br>(다) $(f\\circ g)(2)=2$</div>(1) $f(2)$의 값을 구하시오. [2점]<br>(2) $g(3)$의 값을 구하시오. [2점]<br>(3) $f^{-1}(3)+(g\\circ f)(2)$의 값을 구하시오. [2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "g:1→2,2→3,3→1.두 일대일대응을 원문조건으로 유일하게 확정한다. 정답(1)3,(2)1,(3)3.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "g:1→2,2→3,3→1.두 일대일대응을 원문조건으로 유일하게 확정한다. 정답(1)3,(2)1,(3)3."
+  ]
+}

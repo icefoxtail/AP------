@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "3/2"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-2/3"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "6",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "AO:OB=b:(−a)=2:3. C의x좌표−2a/3=b, D는3b/2. CD=b/2=2에서 b4,a−6,합−2. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차함수 $y=\\dfrac{3}{2}x+a$, $y=-\\dfrac{2}{3}x+b$의 그래프는 다음과 같다. 이때 $\\overline{\\text{AO}}:\\overline{\\text{OB}}=2:3$이고, $\\overline{\\text{CD}}=2$일 때, $a+b$의 값은? (단, $a, b$는 수이다.) [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "AO:OB=b:(−a)=2:3. C의x좌표−2a/3=b, D는3b/2. CD=b/2=2에서 b4,a−6,합−2. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "AO:OB=b:(−a)=2:3. C의x좌표−2a/3=b, D는3b/2. CD=b/2=2에서 b4,a−6,합−2. 정답③."
+  ]
+}

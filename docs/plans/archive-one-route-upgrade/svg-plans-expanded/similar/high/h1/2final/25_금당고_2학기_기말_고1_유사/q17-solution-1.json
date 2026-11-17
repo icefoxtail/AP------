@@ -1,0 +1,85 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "C",
+        "name": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2",
+        "math": true,
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "math": true,
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "7",
+        "math": true,
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "math": true,
+        "in": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "text": "10",
+        "math": true,
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "15",
+        "math": true,
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "20",
+        "math": true,
+        "in": [
+          "C"
+        ]
+      }
+    ],
+    "shade": "A∪C"
+  },
+  "caption": "k20의 실제 집합배치 A={2,3,5,7},C={5,10,15,20}이다. 먼저 합집합7에서 floor(k/5)=4 즉20≤k≤24를 구한 뒤 후보검사를 거쳐 이 배치를 확정한다. 최종 k20.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $A=\\{2,3,5,7\\}$에 대하여 자연수 $k$의 양의 약수 전체의 집합을 $B$, $k$ 이하인 $5$의 양의 배수 전체의 집합을 $C$라 하자. $A\\cap B$의 모든 원소의 합이 $7$이고 $n(A\\cup C)=7$일 때, 자연수 $k$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "k20의 실제 집합배치 A={2,3,5,7},C={5,10,15,20}이다. 먼저 합집합7에서 floor(k/5)=4 즉20≤k≤24를 구한 뒤 후보검사를 거쳐 이 배치를 확정한다. 최종 k20.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "k20의 실제 집합배치 A={2,3,5,7},C={5,10,15,20}이다. 먼저 합집합7에서 floor(k/5)=4 즉20≤k≤24를 구한 뒤 후보검사를 거쳐 이 배치를 확정한다. 최종 k20."
+  ]
+}

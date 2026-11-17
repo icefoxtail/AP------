@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-3/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "2",
+        "y": "7"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "id": "P2",
+        "x": "6",
+        "y": "1"
+      }
+    ],
+    "formula": "10 - 3*x/2"
+  },
+  "caption": "자연수해는(2,7),(4,4),(6,1)의세점이다. 짝수x조건과양의y조건을함께적용하며연속선전체가자연수해는아니다. 정답3개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x, y$가 자연수일 때, 일차방정식 $3x+2y=20$의 해의 개수는? [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

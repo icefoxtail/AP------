@@ -1,0 +1,66 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-12",
+      "2"
+    ],
+    "sign": 1,
+    "offset": "6",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      6,
+      10
+    ],
+    "viewport": [
+      5,
+      11,
+      5,
+      10
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "6",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "8",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "역함수는√(2x−12)+6이다. 자연정의역x≥6,두 고정점(6,6),(8,8)을 보존한다. 증가함수 f와 역함수의 교점이므로 y=x로 조사하는 근거가 있다. 정답38.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\dfrac12x^2-6x+a\\;(x\\ge6)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 $2$개의 점에서 만나도록 하는 자연수 $a$를 구하자. 이때 $a$와 두 교점의 $x$좌표의 합을 더한 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수는√(2x−12)+6이다. 자연정의역x≥6,두 고정점(6,6),(8,8)을 보존한다. 증가함수 f와 역함수의 교점이므로 y=x로 조사하는 근거가 있다. 정답38.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수는√(2x−12)+6이다. 자연정의역x≥6,두 고정점(6,6),(8,8)을 보존한다. 증가함수 f와 역함수의 교점이므로 y=x로 조사하는 근거가 있다. 정답38."
+  ]
+}

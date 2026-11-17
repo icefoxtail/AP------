@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P2",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "P3",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "formula": "x - 1"
+  },
+  "caption": "원본은증가선이며절편음수. −1/b<0에서b>0,−a/b>0에서a<0. 이그림은a−1,b1의대표형일뿐실제값단정아님. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+by+1=0$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? (단, $a,b$는 상수) [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

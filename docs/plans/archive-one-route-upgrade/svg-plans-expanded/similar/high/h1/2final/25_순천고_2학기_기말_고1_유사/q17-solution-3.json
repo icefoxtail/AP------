@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x-x^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1/2",
+        "y": "1/4"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "F"
+    }
+  },
+  "caption": "k−1일 때 왼쪽 교점식 t−t²0의 허용근은0,1이다. k<−1에서는 추가근 −1−1/k<0으로 제외되고 오른쪽 t≥2 가지도 교점이 없다. 따라서 최소 k−1,작은 원래x−1,정답−2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\left|\\sqrt{x+1}-2\\right|$의 그래프와 직선 $y=kx+1$이 서로 다른 두 점에서 만나도록 하는 실수 $k$의 최솟값을 $k_0$라 하자. $k=k_0$일 때 두 교점 중 $x$좌표가 작은 점의 $x$좌표를 $r$라 하면 $k_0+r$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "k−1일 때 왼쪽 교점식 t−t²0의 허용근은0,1이다. k<−1에서는 추가근 −1−1/k<0으로 제외되고 오른쪽 t≥2 가지도 교점이 없다. 따라서 최소 k−1,작은 원래x−1,정답−2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "k−1일 때 왼쪽 교점식 t−t²0의 허용근은0,1이다. k<−1에서는 추가근 −1−1/k<0으로 제외되고 오른쪽 t≥2 가지도 교점이 없다. 따라서 최소 k−1,작은 원래x−1,정답−2."
+  ]
+}

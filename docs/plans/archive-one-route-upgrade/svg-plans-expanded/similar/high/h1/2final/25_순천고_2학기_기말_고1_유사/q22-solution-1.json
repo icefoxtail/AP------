@@ -1,0 +1,53 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      0
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "0"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "formula": "x+2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "x<0에서는 x+2의 별도 패널이다. 첫 패널−2와 셋째2는 표시창 경계이며 실제 무한 가지를 자르는 정의역 상한/하한이 아니다. 점프를 잇지 않고 원본 전체 그래프를 보존한다. 정답 세 구간식 그대로.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 함수 $f(x)=\\begin{cases}x+1&(x\\lt1)\\\\2x+1&(x\\ge1)\\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 총 7점]<br>(1) $f(x)\\lt1$을 만족하는 $x$의 범위를 구하시오. [2점]<br>(2) (1)의 결과를 이용하여 함수 $y=(f\\circ f)(x)$를 $x$의 범위에 따라 나누어 나타내시오. [5점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "x<0에서는 x+2의 별도 패널이다. 첫 패널−2와 셋째2는 표시창 경계이며 실제 무한 가지를 자르는 정의역 상한/하한이 아니다. 점프를 잇지 않고 원본 전체 그래프를 보존한다. 정답 세 구간식 그대로.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "x<0에서는 x+2의 별도 패널이다. 첫 패널−2와 셋째2는 표시창 경계이며 실제 무한 가지를 자르는 정의역 상한/하한이 아니다. 점프를 잇지 않고 원본 전체 그래프를 보존한다. 정답 세 구간식 그대로."
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "3/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3/4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "기울기−2는 유지,절편0→a. 새x절편3/4에 대입해a3/2. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=-2x$의 그래프를 $y$축 방향으로 $a$만큼 평행이동한 그래프의 $x$절편이 $\\dfrac{3}{4}$일 때, $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기울기−2는 유지,절편0→a. 새x절편3/4에 대입해a3/2. 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기−2는 유지,절편0→a. 새x절편3/4에 대입해a3/2. 정답①."
+  ]
+}
