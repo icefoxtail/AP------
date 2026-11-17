@@ -32,10 +32,11 @@ test('the engine counts the shortest paths exactly: binomial totals, a forbidden
   assert.equal(solveLattice(grid(4,4,{points:{P:[1,0],Q:[1,1],R:[3,2],S:[3,3]},via:[['P','Q'],['R','S']],counts:true})).total,6);
 });
 
-test('the final count is hidden by default and shown only when asked; a list of crossings narrows the numbers',()=>{
+test('a solution figure shows the final count by default and hides it only when asked; a list of crossings narrows the numbers',()=>{
   const m=solveLattice(q12);
-  assert.ok(!m.shown.some(c=>c[0]===6&&c[1]===3));assert.ok(m.shown.some(c=>c[0]===0&&c[1]===0));
-  assert.ok(solveLattice({...q12,hideTargetCount:false}).shown.some(c=>c[0]===6&&c[1]===3&&c[2]===69));
+  assert.ok(m.shown.some(c=>c[0]===6&&c[1]===3&&c[2]===69));assert.ok(m.shown.some(c=>c[0]===0&&c[1]===0));
+  const hidden=solveLattice({...q12,hideTargetCount:true});
+  assert.ok(!hidden.shown.some(c=>c[0]===6&&c[1]===3));assert.ok(hidden.shown.some(c=>c[0]===0&&c[1]===0));
   assert.deepEqual(solveLattice({...q12,counts:['P','Q']}).shown,[[4,1,5],[4,2,10]]);
   assert.equal(solveLattice(grid(2,2,{highlightPath:['A',[1,0],[1,1],[2,1],'B']})).shown.length,0);   // no numbers unless asked
 });
@@ -90,7 +91,7 @@ test('the figure composes, the brute-force observer passes it, and it catches a 
     const edit=(svg,re,fn)=>{const m=re.exec(svg);assert.ok(m,String(re));return svg.replace(m[0],fn(m[0]));};
     const svg=await compose(q12,1);
     const pass=await audit(q12,svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
-    assert.ok(!/id="count-6-3"/.test(svg));                              // the answer is not drawn
+    assert.ok(/id="count-6-3"/.test(svg));                               // a solution figure shows the final count (hideTargetCount:true would hide it)
     // one digit changed in a number
     const wrong=edit(svg,/<g id="count-4-2"[^>]*>/,tag=>tag.replace('data-tex="10"','data-tex="11"').replace('data-count="10"','data-count="11"'));
     assert.ok(has(await audit(q12,wrong),'LP_COUNT_MISMATCH:4,2'));
@@ -100,10 +101,22 @@ test('the figure composes, the brute-force observer passes it, and it catches a 
     assert.ok(has(await audit(q12,edit(svg,/<line id="road-4-1-4-2"[^>]*>/,tag=>tag.replace(/ stroke-dasharray="[^"]*"/,''))),'LP_FORBIDDEN_NOT_BROKEN'));
     assert.ok(has(await audit(q12,edit(svg,/<line id="road-4-1-4-2"[^>]*>/,tag=>tag.replace('road-forbidden','road'))),'LP_ROAD_STYLE_MISMATCH'));
     assert.ok(has(await audit(q12,edit(svg,/<g data-layer="30"><line id="road-0-0-0-1"[^>]*\/><\/g>/,()=>'')),'LP_ROAD_MISSING'));
-    // the plan hides the final count: a figure that wrote it is caught
-    const shown=await compose({...q12,hideTargetCount:false},2);
+    // the plan hides the final count (hideTargetCount:true): a figure that wrote it is caught
+    const shown=await compose(q12,2);
     assert.ok(/id="count-6-3"/.test(shown));
-    assert.ok(has(await audit(q12,shown),'LP_TARGET_COUNT_SHOWN:6,3'));
+    assert.ok(has(await audit({...q12,hideTargetCount:true},shown),'LP_TARGET_COUNT_SHOWN:6,3'));
+    // a problem figure hides the final count even when the plan says nothing (or asks to show it): the answer is never drawn there
+    for(const lattice of [q12,{...q12,hideTargetCount:false}]){
+      const problem=await composeLatticePathFigure({plan:plan(lattice),model:solveLattice(lattice),identity:assetIdentity('18_테스트|9','PROBLEM_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+      assert.equal(problem.status,'COMPOSED',JSON.stringify(problem.detail));
+      assert.ok(!/id="count-6-3"/.test(problem.svg),'the final count is not drawn in a problem figure');
+      assert.ok(/id="count-0-0"/.test(problem.svg),'the other counts stay');
+      assert.equal((await audit({...q12,hideTargetCount:true},problem.svg)).status,'PASS');
+      assert.ok(has(await audit(q12,problem.svg),'LP_COUNT_'),'a plan that shows the count does not match the hidden figure');
+    }
+    // the observer itself refuses the final count on a problem figure, whatever the plan says
+    const onProblem=(await pythonWorker({lattice:q12,svg:shown,surface:'PROBLEM_VISUAL'},{script:observer})).result;
+    assert.ok(has(onProblem,'LP_TARGET_COUNT_SHOWN:6,3'),JSON.stringify(onProblem.errors));
     // a point moved, and a plan asking for another forbidden road than the one drawn
     assert.ok(has(await audit(q12,edit(svg,/<circle id="point-P"[^>]*>/,tag=>tag.replace(/cx="[\d.]+"/,'cx="150"'))),'LP_POINT_MISPLACED:P'));
     assert.ok(has(await audit({...q12,forbidden:[[[3,1],[3,2]]]},svg),'LP_'));
