@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "83"
+      },
+      {
+        "id": "B",
+        "count": "70"
+      }
+    ],
+    "universe": {
+      "name": "U",
+      "count": "120"
+    },
+    "elements": [
+      {
+        "text": "83-x",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "x",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "70-x",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": []
+      }
+    ]
+  },
+  "caption": "겹침의 개수를 x로 놓고 네 영역의 개수를 표시했다. 원 안의 83−x와 70−x는 각 집합 전체 개수가 아니라 한쪽에만 들어 있는 원소 수이다. 바깥7을 빼면 합집합은113이므로 전체/합집합의 합계를 비교해 x를 구한다. 최종 x는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 $n(U)=120$, $n(A)=83$, $n(B)=70$, $n(A^c\\cap B^c)=7$일 때, $n(A\\cap B)$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "합집합113,83+70−x113→x40. 중간113보존,최종40미표시. 원안의기호는원소이름아닌영역개수.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "겹침의 개수를 x로 놓고 네 영역의 개수를 표시했다. 원 안의 83−x와 70−x는 각 집합 전체 개수가 아니라 한쪽에만 들어 있는 원소 수이다. 바깥7을 빼면 합집합은113이므로 전체/합집합의 합계를 비교해 x를 구한다. 최종 x는 쓰지 않는다."
+  ]
+}

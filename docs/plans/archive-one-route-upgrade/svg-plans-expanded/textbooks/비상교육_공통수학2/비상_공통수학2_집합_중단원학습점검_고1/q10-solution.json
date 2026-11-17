@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "20",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "A의 두 원소는 X에 반드시 포함되고 B에서 A를 뺀 네 원소는 각각 선택할 수 있다. X의 원을 임의 위치로 고정하지 않고 필수와 선택 원소만 구별했다. A⊆X⊆B는 양 끝의 등호도 허용하며 최종 집합 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $A=\\{1,5\\}$, $B=\\{1,2,4,5,10,20\\}$에 대하여 $A\\cap X=A$, $B\\cup X=B$를 만족시키는 집합 $X$의 개수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "필수1,5/선택2,4,10,20 네개. 최종2^4=16숨김. X를실제원으로그려특정부분집합만강제하지않음.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A의 두 원소는 X에 반드시 포함되고 B에서 A를 뺀 네 원소는 각각 선택할 수 있다. X의 원을 임의 위치로 고정하지 않고 필수와 선택 원소만 구별했다. A⊆X⊆B는 양 끝의 등호도 허용하며 최종 집합 개수는 쓰지 않는다."
+  ]
+}

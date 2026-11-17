@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "universe": {
+      "name": "U"
+    }
+  },
+  "caption": "교집합을 취해도 A가 그대로 남는다는 조건을 포함 관계로 바꾸었다. 그림의 간격은 진부분집합을 강요하지 않으며 A=B인 경우도 허용한다. 여집합의 방향과 U 바깥/안 관계를 살펴 각 보기를 판단한다. 최종 보기 조합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 $A\\cap B=A$일 때, 다음 보기 중 항상 옳은 것을 모두 고르시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A∩B=A⇔A⊆B. ㄱㄹ참,ㄴ포함방향반대,ㄷB=U보장X. 등호포함관계.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "교집합을 취해도 A가 그대로 남는다는 조건을 포함 관계로 바꾸었다. 그림의 간격은 진부분집합을 강요하지 않으며 A=B인 경우도 허용한다. 여집합의 방향과 U 바깥/안 관계를 살펴 각 보기를 판단한다. 최종 보기 조합은 표시하지 않는다."
+  ]
+}
