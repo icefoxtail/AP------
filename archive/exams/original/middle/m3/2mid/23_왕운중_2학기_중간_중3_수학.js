@@ -43,7 +43,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각C에서 AB가 빗변이고 BC가 A의 맞은편 변이므로 주어진9와15의 비를 사인 정의로 바로 읽는다.",
-    "decisiveStep": "직각C에서 AB가 빗변이고 BC가 A의 맞은편 변이므로 주어진9와15의 비를 사인 정의로 바로 읽는다."
+    "decisiveStep": "직각C에서 AB가 빗변이고 BC가 A의 맞은편 변이므로 주어진9와15의 비를 사인 정의로 바로 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -85,7 +88,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "sin60과tan60의 알려진 특수각 값을 대입하여 곱을 계산한다.",
-    "decisiveStep": "sin60과tan60의 알려진 특수각 값을 대입하여 곱을 계산한다."
+    "decisiveStep": "sin60과tan60의 알려진 특수각 값을 대입하여 곱을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -173,7 +179,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "sin제곱과cos제곱의 합1에 주어진cos값을 넣고 예각에서 사인이 양수임을 사용해 다른 삼각비를 구한다.",
-    "decisiveStep": "sin제곱과cos제곱의 합1에 주어진cos값을 넣고 예각에서 사인이 양수임을 사용해 다른 삼각비를 구한다."
+    "decisiveStep": "sin제곱과cos제곱의 합1에 주어진cos값을 넣고 예각에서 사인이 양수임을 사용해 다른 삼각비를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -395,7 +404,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 삼각비표의24도 행과cos열이 만나는0.9135를 읽는다.",
-    "decisiveStep": "주어진 삼각비표의24도 행과cos열이 만나는0.9135를 읽는다."
+    "decisiveStep": "주어진 삼각비표의24도 행과cos열이 만나는0.9135를 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -441,7 +453,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "빗변20과65도에서 BC=20cos65로 나타내고 표에 있는여각25도의sin값을 사용해 목표 길이를 계산한다.",
-    "decisiveStep": "빗변20과65도에서 BC=20cos65로 나타내고 표에 있는여각25도의sin값을 사용해 목표 길이를 계산한다."
+    "decisiveStep": "빗변20과65도에서 BC=20cos65로 나타내고 표에 있는여각25도의sin값을 사용해 목표 길이를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,

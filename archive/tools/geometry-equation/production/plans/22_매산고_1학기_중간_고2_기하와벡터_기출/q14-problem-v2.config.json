@@ -1,0 +1,198 @@
+{
+  "sourcePath": "archive/exams/original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+  "questionId": 14,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "D",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sBA",
+            "refs": [
+              "B",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aB",
+              "refs": [
+                "C",
+                "B",
+                "A"
+              ],
+              "arcs": 1,
+              "style": "ARC",
+              "equalGroup": 1,
+              "noLabel": true,
+              "value": 63.43494882292201
+            },
+            {
+              "id": "aC",
+              "refs": [
+                "D",
+                "C",
+                "B"
+              ],
+              "arcs": 1,
+              "style": "ARC",
+              "equalGroup": 1,
+              "noLabel": true,
+              "value": 63.43494882292201
+            }
+          ]
+        },
+        "caption": "사다리꼴 ABCD에서 윗변 AD와 아랫변 BC는 평행하고, 두 밑각 ∠CBA와 ∠DCB는 같다.",
+        "accessibilityDescription": "A와 D가 위쪽, B와 C가 아래쪽인 사다리꼴 ABCD이다. 윗변 AD와 아랫변 BC는 평행하고, 밑각 ∠CBA와 ∠DCB에 같은 호 표시가 있다.",
+        "coordinateCanvas": {
+          "width": 560,
+          "height": 340
+        },
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "사다리꼴 ABCD에서 AD∥BC",
+            "mappedTo": "displaySegments"
+          },
+          {
+            "id": "c2",
+            "condition": "∠CBA=∠DCB",
+            "mappedTo": "planeMarks.angles"
+          },
+          {
+            "id": "c3",
+            "condition": "원본 그림은 B의 라벨이 잘려 있으나 B가 왼쪽 아래 꼭짓점이다",
+            "mappedTo": "displayPoints"
+          }
+        ],
+        "newVisualInformation": [
+          "원본에서 잘려 보이지 않던 B 라벨을 복원하고, 네 꼭짓점과 같은 밑각 표시를 또렷하게 재현한다."
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

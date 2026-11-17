@@ -1,0 +1,54 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T21:45:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "그래프에서 x→0−와 x→1+의 접근값은 각각 -1이므로 두 극한의 합은 -2다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수의 극한과 연속",
+                                      "midUnit":  "함수의 극한",
+                                      "l3":  "함수의 극한",
+                                      "l4":  "좌극한·우극한"
+                                  }
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "무한대 극한에서 f=x⁴+5x³+ax²+bx+c이고 f(1)=2, f′(1)=-3, f′(-1)=21을 대입하면 a=-8,b=-6,c=10이어서 f′(0)+f(-1)=-2다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분",
+                                      "midUnit":  "미분계수와 도함수",
+                                      "l3":  "도함수",
+                                      "l4":  "도함수 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "연속인 전단사 f는 감소함수여야 하며 고정점 해 0,2,3은 f(0)=3,f(2)=2,f(3)=0을 주어 a=-1/2,b=3,c=-1이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "conditionKeys":  [
+                                            "COND_FUNCTION_BIJECTION"
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "함수",
+                                      "midUnit":  "함수",
+                                      "l3":  "역함수",
+                                      "l4":  "역함수 구하기"
+                                  }
+                  }
+              ]
+}

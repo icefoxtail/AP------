@@ -31,7 +31,8 @@
 - `publish.mjs`: 게시 rows의 SVG를 시험지 JS에 넣는다(`solutionImage*` 네 필드와 SVG 복사). `--apply` 없이는 쓰지 않는다. 따옴표 없는 `id:` 키를 쓰는 시험지도 처리한다. pubflow가 부른다.
 - `verify-published.mjs`: 게시한 시험지의 해설 페이지(mode=sol)가 오류 없이 열리고 그림이 로드되는지 확인한다. `APMS_ROOT=<트리> node verify-published.mjs <publish-report.json> <out.json>`
 - `verify-publication-fonts.mjs`: 실제 게시 화면의 SVG 응답 해시, 표시 크기 및 라벨별 글자 크기를 검사한다. `pubflow.py`가 호출하며 결과는 `runs/font-batch-result.json`에 남긴다.
-- `ledger-upsert.py`: 시험지 마감 원장(`production/exam-figure-ledger.json`)을 spec JSON으로 갱신한다. `ledger-upsert.py <spec.json>`
+- `ledger-upsert.py`: 시험지 마감 원장의 그 시험지 파일(`production/exam-figure-ledger/<원본 경로>.json`)을 spec JSON으로 갱신한다. `ledger-upsert.py <spec.json>`. 문항 단위 병합: 이미 PUBLISHED인 문항은 spec의 `published`·`exempt_override`·`demote`(`{ord:[OPEN_*,사유]}`)로 번호를 직접 넘길 때만 바뀐다.
+- `figure_ledger.py` / `figure-ledger.cjs`: 원장 공용 읽기·쓰기(`load_exam`·`find_exam`·`save_exam`·`upsert_item`·`load_all`·`load_all_at`). 명령: `split-ledger [--from 파일|--rev 커밋]`(옛 한 파일을 시험지별 파일로 다시 만든다, 왕복 확인 포함), `join-ledger --out <파일> [--rev 커밋]`, `check-ledger`, `queue [--out]`(전체 요약 `exam-figure-queue.md`), `port-ledger-change --base <갈라진 main> --head <브랜치> [--dry-run]`(옛 한 파일을 고친 브랜치의 변경만 옮긴다; PUBLISHED를 내리거나 양쪽이 같은 문항을 다르게 고치면 그 시험지는 쓰지 않고 종료 코드 2).
 
 해설 내용 수정
 - `apply-patches.py`: 문항 블록 안에서 `old`→`new` 문자열을 바꾼다(old는 블록에 정확히 한 번). `apply-patches.py <시험 js> <content-check.json> <ord,ord,...>`

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T23:34:30+09:00",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형심화.js",
+  "items": [
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "A의 정수 범위는 -4≤x≤2^k−5이고 B는 x≤0 또는 x≥5이므로 교집합이 정확히 5개가 되려면 5≤2^k<10, 즉 k=3이어야 한다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "27=3^3과 1/9=3^-2에서 x=-2/3이므로 (a,b)=(2,3)이고, 밑 1/2 로그부등식은 1<x≤5라 c=5여서 합은 10이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "증가함수 2^(x-b)+1의 양끝에서 최소 3은 a−b=1, 최대 17은 a−b=1을 주며, a+b=5와 풀어 (a,b)=(3,2), ab=6이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 활용",
+        "l4": "최대·최소"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 그래프의 차는 log₃(3a)로 일정하고 x=2와 x=5 사이 폭 3, 넓이 12이므로 log₃(3a)=4에서 a=27이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 활용",
+        "l4": "그래프 교점"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

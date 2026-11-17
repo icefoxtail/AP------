@@ -1,0 +1,467 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T23:11:27+09:00",
+    "sourceArchiveFile":  "original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "6의 약수 1, 2, 3, 6이 나올 확률을 2/3로 두어 X의 이항분포 평균과 분산을 구한다.",
+                      "decisiveStep":  "E(X²)=V(X)+E(X)²=20+60²=3620으로 계산한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 동전이 모두 앞면일 확률 1/4과 시행 횟수 200으로 X의 평균을 구하고 Y=2X+3으로 변환한다.",
+                      "decisiveStep":  "E(X)=50이므로 E(Y)=2×50+3=103이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "모평균 60과 모표준편차 3을 표본 크기 36에 맞추어 표본평균의 정규분포로 옮긴다.",
+                      "decisiveStep":  "a=60, b=3/√36=1/2이므로 ab=30이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "분포표의 X=1, 2, 3과 확률 1/8, a, 1/8에서 모집단 분산을 구해 표본 크기 4로 나눈다.",
+                      "decisiveStep":  "평균 2에서 양끝 값의 제곱편차 기여가 각각 1/8이므로 V(X̄)=(1/4)/4=1/16이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본평균"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DISTRIBUTION_TABLE"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "통조림 표본평균 170에 표준편차 5와 표본 크기 100을 이용한 95% 오차한계를 더하고 뺀다.",
+                      "decisiveStep":  "1.96×5/√100=0.98이므로 신뢰구간은 169.02≤m≤170.98이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "신뢰구간"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "표준편차 3, 표본 크기 81인 99% 신뢰구간의 길이를 구해 하한 2.14에 더한다.",
+                      "decisiveStep":  "상한 a는 2.14+2×2.58×3/9=3.86이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "신뢰구간"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CONFIDENCE_INTERVAL_LENGTH"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "공부 시간 표본평균의 표준편차를 5/√100=0.5로 놓고 상위 확률 0.0228에 대응하는 표준화 값을 찾는다.",
+                      "decisiveStep":  "(160-m)/0.5=2이므로 모평균 m=159분이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "N(65, 5²)에서 25개를 뽑은 표본평균의 표준편차 1로 63과 66.5를 표준화한다.",
+                      "decisiveStep":  "구간이 -2≤Z≤1.5로 바뀌므로 확률은 0.4772+0.4332=0.9104이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_STANDARD_NORMAL_TABLE_READING"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "동전 4개의 앞면 수 X의 평균 2와 표준편차 1을 Y=aX+b의 평균 4와 표준편차 1에 연결한다.",
+                      "decisiveStep":  "a\u003e0에서 a=1이고 2a+b=4이므로 b=2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "무게 40 이상일 확률을 N(30, 5²)에서 구한 뒤 2500개 중 불량품 수를 이항분포의 정규근사로 계산한다.",
+                      "decisiveStep":  "불량 확률 0.0228에서 개수의 평균은 57, 분산은 55.7004가 되어 64 이상을 약 Z≥0.94로 바꾼다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "x=0, 1, 2, 3의 확률 |4x-3|/20의 합으로 a를 정하고 X의 분산을 1/a²배 한다.",
+                      "decisiveStep":  "a=1/10, E(X)=23/10, E(X²)=67/10이므로 V(10X)=141이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DISTRIBUTION_TABLE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NONZERO"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "건전지 100개의 표본평균이 N(300, 0.5²)을 따름을 이용해 오른쪽 확률 0.98인 경계를 찾는다.",
+                      "decisiveStep":  "P(Z≥-2)=0.98이므로 (a-300)/0.5=-2에서 a=299이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_CURVE_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "1/((x+1)(x+2))를 1/(x+1)-1/(x+2)로 분해해 x=1부터 10까지 확률의 합을 계산한다.",
+                      "decisiveStep":  "a=12/5이므로 X\u003e3a는 X≥8이고 확률은 (12/5)(1/9-1/12)=1/15이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률질량함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "12를 경계로 한 두 오른쪽 확률의 합이 1인 조건에서 모평균을 정하고 16과 10의 표준화 값의 대칭성을 비교한다.",
+                      "decisiveStep":  "m=12이고 4/σ=2√n/σ이므로 n=4, m+2n=20이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "0부터 3까지 높이 3a인 삼각형과 3부터 6까지 높이 b인 삼각형의 넓이를 확률로 나타낸다.",
+                      "decisiveStep":  "9a/2=3b와 9a/2+3b/2=1을 풀어 a+b=10/27을 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_FUNCTION_AREA"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "신뢰도가 같을 때 신뢰구간 길이에 비례하는 σ/√n을 다섯 표본 조건에서 비교한다.",
+                      "decisiveStep":  "각 비는 1/3, 1, 9/5, 4/3, 11/10이며 최대는 n=25, σ=9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "표본크기"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CONFIDENCE_INTERVAL_LENGTH"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "연필 무게의 표준편차 8로 만든 95% 신뢰구간의 길이 2×1.96×8/√n을 4 이하로 제한한다.",
+                      "decisiveStep":  "n≥7.84²=61.4656이므로 자연수 n의 최솟값은 62이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "표본크기"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CONFIDENCE_INTERVAL_LENGTH"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "소금빵 16개의 총무게를 평균 3200, 표준편차 80인 정규분포로 보고 3120부터 3360까지의 확률 p를 구한다.",
+                      "decisiveStep":  "p=P(-1≤Z≤2)=0.8185이며 두 상자 중 하나만 조건을 만족할 확률은 2p(1-p)이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INDEPENDENT_EVENTS_MULTIPLICATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "표본평균 X̄의 표준편차 2로 23을 표준화하고 두 누적확률의 합이 1인 조건으로 Ȳ의 표준편차를 구한다.",
+                      "decisiveStep":  "(94-100)/(σ/4)=-1.5에서 σ=16이므로 P(Ȳ≤110)=P(Z≤2.5)=0.9938이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "표본 10개의 합 30에서 평균 3을 구하고 신뢰구간 0.42부터 5.58까지의 반길이로 모표준편차를 역산한다.",
+                      "decisiveStep":  "2.58σ/√10=2.58이므로 σ²=10, 곧 V(X)=10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "신뢰구간"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "f의 원점 대칭과 g의 x=3 대칭을 이용해 두 확률밀도함수의 전체 넓이를 a, b로 나타낸다.",
+                      "decisiveStep":  "16a+8b=1과 12b=1에서 a=1/48, b=1/12이므로 16(9a+6b)=11이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DENSITY_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "지역 A의 표본평균에서 215의 누적확률 0.1587로 표준오차를 구한 뒤 표본 크기 9n과 표준편차 비 1.5를 지역 B에 반영한다.",
+                      "decisiveStep":  "σ/√n=5이고 B의 표준오차는 2.5이므로 P(Ȳ≥237.5)=P(Z≥-1)=0.8413이다.",
+                      "standardUnitKey":  "H15-PS-06",
+                      "subUnitKey":  "H15-PS-06-ESTIMATION_BASIC",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "a와 b 각각이 두 선택 집합의 교집합에 들어갈 확률 1/4로 교집합 크기가 1일 확률을 구하고 8640회 횟수를 정규근사한다.",
+                      "decisiveStep":  "성공 확률은 3/8이므로 평균 3240, 표준편차 45이고 3330 이상은 Z≥2에 대응하여 1000k=22.8이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_SET_INTERSECTION",
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "3, 4, 6이 나올 확률 1/2, 1/3, 1/6으로 세 번 시행의 범위 X=0, 1, 2, 3별 확률을 구성한다.",
+                      "decisiveStep":  "확률은 차례로 1/6, 5/12, 1/12, 1/3이므로 V(X)=15/4-(19/12)²=179/144이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

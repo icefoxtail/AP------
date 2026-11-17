@@ -1,0 +1,582 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "luna-cls-80d68e80d5d0-fea03abf",
+  "examUid": "25_제일고_1학기_중간_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "sourceArchiveFile": "original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "c1b47e79eb8694b0a94e7fd6dddcba59bfc725d4",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "REVIEW2",
+    "metadataReviewed": true,
+    "reviewPassCount": 2,
+    "approvedBy": "사용자 지시 2026-11-14: 분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+        "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+        "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+        "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+        "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+        "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.approval-note.json",
+        "sha256": "dca32441af148806f30caf8a66c17ef81bac111c51af0b065e4bf1cef47f2d2a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_13cc1c6b1955bbcb57daa35118f93e84d07d0a1fb90a36749836f17e9b86a623",
+      "sourceOrdinal": 2,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 1,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "하",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "rpmL1": "지수함수와 로그함수",
+        "rpmL2": "로그함수",
+        "rpmL3": "로그함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "log₃(x+1)-1을 log₃(x-(-1))+(-1)로 읽어 두 축 방향의 이동량을 구한다.",
+        "decisiveStep": "가로 이동량 a=-1, 세로 이동량 b=-1이므로 a+b=-2이다."
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      "reason": "분류 확정(registered+agree+luna-k4; PT/TPL resolver:H2-M1-RPM-088(DIRECT_ACTIVE)) — log₃(x+1)-1을 log₃(x-(-1))+(-1)로 읽어 두 축 방향의 이동량을 구한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+          "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+          "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+          "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+          "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+          "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+          "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0929508cbf7c8f6efebf02f9e70ee7ea268a75a81303acb9e23b27e126192c28",
+      "sourceOrdinal": 6,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "중",
+        "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+        "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수",
+        "rpmL3": "삼각함수의 성질",
+        "rpmL4": "삼각함수 관계",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "sinθ cosθ>0과 sinθ tanθ=sin²θ/cosθ<0의 부호를 결합해 동경의 사분면을 정한다.",
+        "decisiveStep": "cosθ<0이고 sinθ도 음수이므로 셋째 사분면의 각 4π/3을 고른다."
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      "reason": "분류 확정(registered+agree+luna-k4; PT/TPL resolver:H2-M1-RPM-100(DIRECT_ACTIVE)) — sinθ cosθ>0과 sinθ tanθ=sin²θ/cosθ<0의 부호를 결합해 동경의 사분면을 정한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+          "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+          "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+          "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+          "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+          "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+          "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9a3e49f7dc1ff18cb396a83ac13fe9e444a067b88a868c1ac282b873bba01b79",
+      "sourceOrdinal": 7,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "중",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "rpmL1": "지수함수와 로그함수",
+        "rpmL2": "로그함수",
+        "rpmL3": "로그함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "y=log₃(x-1)의 점근선 x=1과 x축의 교점 (1,0)을 y=2^(-x)+t에 대입한다.",
+        "decisiveStep": "0=2^(-1)+t이므로 t=-1/2이다."
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      "reason": "분류 확정(registered+agree+luna-k4; PT/TPL resolver:H2-M1-RPM-088(DIRECT_ACTIVE)) — y=log₃(x-1)의 점근선 x=1과 x축의 교점 (1,0)을 y=2^(-x)+t에 대입한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+          "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+          "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+          "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+          "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+          "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+          "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_61794eefcbb188e4c4a831773e526836f18cfb4bedd4e468e8bd95cf55f369da",
+      "sourceOrdinal": 9,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "중",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "rpmL1": "지수함수와 로그함수",
+        "rpmL2": "로그함수",
+        "rpmL3": "로그함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "log₃x의 축 대칭과 역함수 대칭 및 평행이동으로 다섯 함수를 만들 수 있는지 비교한다.",
+        "decisiveStep": "3^(2x)-1=9^x-1은 밑이 9로 바뀌므로 밑 3의 기본 그래프를 주어진 이동으로 겹칠 수 없다."
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      "reason": "분류 확정(registered+agree+luna-k4; PT/TPL resolver:H2-M1-RPM-088(DIRECT_ACTIVE)) — log₃x의 축 대칭과 역함수 대칭 및 평행이동으로 다섯 함수를 만들 수 있는지 비교한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+          "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+          "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+          "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+          "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+          "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+          "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_75ec04672703171d25900cad8d0c2c670e3aa80609e3078408de90d0e0e14122",
+      "sourceOrdinal": 12,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "중",
+        "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+        "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수",
+        "rpmL3": "일반각과 호도법",
+        "rpmL4": "호도법",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "둘레가 16인 부채꼴의 반지름을 r로 놓아 호의 길이 16-2r와 넓이 r(16-2r)/2를 구한다.",
+        "decisiveStep": "넓이는 -(r-4)²+16이므로 반지름 r=4에서 최대가 된다."
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      "reason": "분류 확정(registered+sonnet-pass4+luna-k4+p3; PT/TPL resolver:H2-M1-RPM-096(DIRECT_ACTIVE)) — 둘레가 16인 부채꼴의 반지름을 r로 놓아 호의 길이 16-2r와 넓이 r(16-2r)/2를 구한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+          "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+          "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+          "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+          "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+          "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+          "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8446f854f0d20a7c2eeef8c160d733df041e66b7eae01a747eb0f5344a61f4e0",
+      "sourceOrdinal": 16,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "sourceFingerprint": "00a783bb795b3cd77db723a5d59a0fe649089e9354e5b888059a2995ddbd88a3",
+        "contentFingerprint": "c8293182afea70eda2ac47ba63d9687cd521bb9876514afd4041f1f1aa711c3c",
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "중",
+        "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+        "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수",
+        "rpmL3": "삼각함수의 성질",
+        "rpmL4": "삼각함수 관계",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "sinθ-cosθ=√3/3을 제곱해 sinθ cosθ를 구하고 tanθ+1/tanθ를 그 역수로 바꾼다.",
+        "decisiveStep": "1-2 sinθ cosθ=1/3에서 sinθ cosθ=1/3이므로 구하는 값은 3이다.",
+        "sourceFingerprint": "68cd3328dfd25bb73fdf86e85f100ba449d3324edb0ce9dbc19269c6afd73d69",
+        "contentFingerprint": "c8293182afea70eda2ac47ba63d9687cd521bb9876514afd4041f1f1aa711c3c"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "00a783bb795b3cd77db723a5d59a0fe649089e9354e5b888059a2995ddbd88a3"
+      },
+      "rebind": {
+        "priorSourceBlobSha1": "79b354d1c19aa6fa32fdc253a515d44d945a1946",
+        "priorContentFingerprint": "c8293182afea70eda2ac47ba63d9687cd521bb9876514afd4041f1f1aa711c3c"
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+        "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+      },
+      "reason": "분류 확정(registered+agree+luna-k4; PT/TPL resolver:H2-M1-RPM-100(DIRECT_ACTIVE)) — sinθ-cosθ=√3/3을 제곱해 sinθ cosθ를 구하고 tanθ+1/tanθ를 그 역수로 바꾼다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass1-ledger.json",
+          "sha256": "aa50b76bb84519cf7ac50e49d4d614c42e5eb4cba25a2350cfece353a93c6d6e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass2-ledger.json",
+          "sha256": "6f08ed30ea93eb593175c8d9cb20ce7b685eb000880e7afd0ef75e79c8dcfb6d"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger.json",
+          "sha256": "f11499adbb739f1f42066ec3054ccad6bd9c5e4c45ed7353fedd08eac2ebc2fd"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass3-ledger-2.json",
+          "sha256": "c710ce423c82edc9094b0cb24496ef7b6ff215fa25d395cb405cd8a5bbc34bee"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.pass4-ledger.json",
+          "sha256": "4fca92437319d1940a9b45e62ff29c12c4999dca3eb51f495bd192110936ad58"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-80d68e80d5d0-fea03abf.parent-labels.json",
+          "sha256": "104ba73e06c76dd749d54efb6e778cf9b7cd4069e3e83228cc910e66f3fe2d3e"
+        }
+      ]
+    }
+  ]
+}

@@ -1290,7 +1290,7 @@
           return `<li><label><input type="checkbox" data-assign-action="student" data-class-id="${id}" data-student-id="${esc(student.id)}" data-focus="student-${id}-${esc(student.id)}"${on ? " checked" : ""}><span>${esc(student.name)}${student.submitted && model.canCompareSubmitted() ? ' <small class="assign-muted">응시함</small>' : ""}</span></label></li>`;
         }).join("")}</ul>`
         : "";
-      studentsBlock = `<div class="assign-students"><p><span>${summary}</span> <button type="button" class="assign-link" data-assign-action="students-toggle" data-class-id="${id}" data-focus="students-${id}" aria-expanded="${cls.expanded ? "true" : "false"}">${cls.expanded ? "학생 목록 접기" : "학생 고르기"}</button></p>${grid}</div>`;
+      studentsBlock = `<div class="assign-students"><p><span>${summary}</span></p><button type="button" class="assign-pill" data-assign-action="students-toggle" data-class-id="${id}" data-focus="students-${id}" aria-expanded="${cls.expanded ? "true" : "false"}">${cls.expanded ? "학생 목록 접기" : "학생 개별 선택"}</button>${grid}</div>`;
     }
     const teacher = cls.teacher ? `<small>${esc(cls.teacher)}</small>` : "";
     return `<li class="assign-class${cls.checked ? " is-checked" : ""}" data-class-row="${id}"><label class="assign-class-main"><input type="checkbox" data-assign-action="class" data-class-id="${id}" data-focus="class-${id}"${cls.checked ? " checked" : ""}${empty ? " disabled" : ""}><span class="assign-class-name">${esc(cls.name)}${teacher}</span><span class="assign-class-count">${esc(count)}</span></label>${noteMarkup(notes)}${studentsBlock}</li>`;

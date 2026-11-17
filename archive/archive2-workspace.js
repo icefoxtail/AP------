@@ -533,6 +533,7 @@
     previewOpen: true,
     outputSettingsOpen: false,
     scopeGroupOpen: {},
+    scopeUnitOpen: {},
     composeAnnounce: "",
     assignBusy: false,
   };
@@ -541,7 +542,8 @@
   // unified unit layer (archive2-quick-pools.js) and use the existing catalog and output engine
   // without changing the compose draft or its selection controls.
   const Quick = window.Archive2QuickPools;
-  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(),
+  const QuickTree = window.Archive2UnitTree;
+  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
     presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";
@@ -583,8 +585,7 @@
     previewOutputEnvelope = null,
     candidateRecords = [],
     replacementIndex = -1,
-    classRows = [],
-    rosterRows = [];
+    classRows = [];
   function session() {
     try {
       return JSON.parse(localStorage.getItem("APMATH_SESSION") || "null");
@@ -1017,8 +1018,12 @@
       // Scope keys from the previous (per-curriculum) list are not valid unit keys any more.
       // Drop them with a visible notice instead of rejecting the whole draft; selected
       // questions and their frozen rows are kept as saved.
-      const currentKeys = new Set(currentScopes.map(scope => scope.key));
-      restoredScopeKeys = data.scopes.filter(key => currentKeys.has(key));
+      const currentKeys = new Set(currentScopes.flatMap(scope => [scope.key, ...(scope.children || []).map(child => child.key)]));
+      // 고등 소단원 묶음표를 아직 못 읽었으면 자식 키(대단원 키~묶음 키)를 버리지 않고 둔다(읽으면 그대로 살아난다).
+      const groupsPending = !/^중[123]$/.test(restoredFilters.grade || "") && Boolean(QuickTree?.loadGroups) && !QuickTree.groupsLoaded?.();
+      const parentKeys = new Set(currentScopes.map(scope => scope.key));
+      restoredScopeKeys = data.scopes.filter(key => currentKeys.has(key) ||
+        (groupsPending && key.includes("~") && parentKeys.has(key.slice(0, key.indexOf("~")))));
       droppedScopeCount = data.scopes.length - restoredScopeKeys.length;
     } else {
       const currentScopePaths = new Set(currentScopes.flatMap(scope => scope.paths));
@@ -1316,10 +1321,82 @@
   // PRIMARY scope source (user decision 2026-10-29): one 2022-based unit list per grade built by
   // Archive2UnifiedUnits. 2015 and 2022 items share a unit; a UID is counted once; items without
   // unit evidence stay selectable in a per-subject "단원 미분류" scope instead of disappearing.
+  // 문제지 만들기 단원 목록의 둘째 층(2026-11-16, 계획 작업 3b): 대단원 아래 중단원(고등은 소단원 묶음).
+  // 이름·순서·소속은 빠른 평가와 단원별 기출 표가 쓰는 공용 모듈(Archive2UnitTree)과 같은 규칙이다
+  // (한 문항은 자기 대단원의 자식 한 줄에만 들어가고, 정할 수 없는 문항은 "중단원 미지정"/"기타" 줄이다).
+  // 자식 구조는 조건(학교·연도·난이도)에 따라 바뀌지 않게 학년 전체 문항으로 한 번 만들고, 조건은 숫자에만 반영한다.
+  // 자식 키는 `${대단원 키}~${자식 키}`이고 자식 키는 다시 계산해도 같은 안정 키다(m<8자리 해시> / 묶음 키 / __none__).
+  let composeTreeCache = null;
+  let composeGroupsRequested = false;
+  function composeLoadGroups() {
+    if (composeGroupsRequested || !QuickTree?.loadGroups) return;
+    composeGroupsRequested = true;
+    QuickTree.loadGroups().then(() => {
+      composeTreeCache = null;
+      if (state.catalog && state.view === "compose") render();
+    });
+  }
+  function composeTree(index, grade) {
+    if (!Quick?.wrapRecord || !QuickTree?.createTree || !index || !Unified.GRADE_PROFILE[grade]) return null;
+    const middle = /^중[123]$/.test(grade);
+    if (!middle) composeLoadGroups();
+    const groupsReady = middle || Boolean(QuickTree.groupsLoaded?.());
+    const metaIndex = ensureMetaIndex();
+    const hit = composeTreeCache;
+    if (hit && hit.index === index && hit.meta === metaIndex && hit.grade === grade && hit.groupsReady === groupsReady) return hit;
+    const metaByUid = new Map((metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+    const seen = new Set(), placed = [], byUnit = new Map();
+    for (const entry of index.views[grade] || []) {
+      if (entry.unclassified || !entry.unitKey || !entry.uid || seen.has(entry.uid)) continue;
+      seen.add(entry.uid);
+      const wrapped = Quick.wrapRecord(entry.record, middle, index, metaByUid);
+      placed.push([entry, wrapped]);
+      if (!byUnit.has(entry.unitKey)) byUnit.set(entry.unitKey, []);
+      byUnit.get(entry.unitKey).push(wrapped);
+    }
+    let tree = null;
+    try {
+      tree = QuickTree.createTree(Unified.GRADE_PROFILE[grade], Unified.unitsForGrade(grade).map(unit =>
+        ({ key: unit.key, name: unit.name, course: unit.course, selectableRecords: byUnit.get(unit.key) || [] })));
+    } catch (error) { tree = null; }
+    const childOf = new Map();
+    if (tree) for (const [entry, wrapped] of placed) childOf.set(entry.uid, tree.childKeyOf(entry.unitKey, wrapped));
+    composeTreeCache = { index, meta: metaIndex, grade, groupsReady, tree, childOf };
+    return composeTreeCache;
+  }
+  // 대단원 범위(draft)의 문항 묶음으로 자식 범위를 만든다. 자식은 대단원 목록(scopeOptions)에는 넣지 않고 `children`에만 둔다.
+  function composeChildScopes(parent, draft, built) {
+    if (!built?.tree || !built.tree.hasChildren(draft.entry.unitKey)) return [];
+    return built.tree.childrenOf(draft.entry.unitKey).map(child => {
+      const kid = draft.kids?.get(child.key);
+      const uids = kid ? kid.uids : [];
+      return {
+        key: `${parent.key}~${child.key}`,
+        parentKey: parent.key,
+        childKey: child.key,
+        childKind: child.kind,
+        L1: parent.L1,
+        L2: parent.L2,
+        label: child.name,
+        fullLabel: `${parent.fullLabel} › ${child.name}`,
+        basicScope: false,
+        unified: true,
+        child: true,
+        unclassified: false,
+        paths: kid ? [...kid.paths] : [],
+        scopeQuestionUids: uids,
+        facetQuestionUids: kid?.facet || uids,
+        count: uids.length,
+        eligibleCount: uids.length,
+        supplemental: false,
+      };
+    });
+  }
   function unifiedScopeOptions(index) {
     if (renderingScopes && scopeRenderCache) return scopeRenderCache;
     const grade = state.filters.grade || "";
     const structure = grade ? Unified.structure(grade) : [];
+    const built = grade ? composeTree(index, grade) : null;
     const excluded = C.composeExclusions(context()).union;
     const selectionFilters = {
       ...state.filters,
@@ -1357,10 +1434,20 @@
           };
           drafts.set(key, draft);
         }
+        const childKey = built?.tree && !entry.unclassified ? built.childOf.get(uid) : "";
+        let kid = null;
+        if (childKey) {
+          if (!draft.kids) draft.kids = new Map();
+          kid = draft.kids.get(childKey);
+          if (!kid) draft.kids.set(childKey, kid = { uids: [], facet: metaActive ? [] : null, paths: new Set() });
+        }
         if (draft.facetUids) draft.facetUids.push(uid);
+        if (kid?.facet) kid.facet.push(uid);
         if (metaActive && !C.metaFacetMatches(record, selectionFilters)) continue;
         draft.uids.push(uid);
-        draft.paths.add(C.generalPathKey(record));
+        const pathKey = C.generalPathKey(record);
+        draft.paths.add(pathKey);
+        if (kid) { kid.uids.push(uid); kid.paths.add(pathKey); }
       }
     }
     const singleSubject = structure.length === 1;
@@ -1368,22 +1455,27 @@
       .sort((a, b) => a.subjectIndex - b.subjectIndex ||
         Number(a.entry.unclassified) - Number(b.entry.unclassified) ||
         a.entry.unitOrder - b.entry.unitOrder)
-      .map((draft) => ({
-        key: draft.key,
-        L1: draft.entry.subjectLabel,
-        L2: draft.entry.unitLabel,
-        label: draft.entry.unitLabel,
-        fullLabel: singleSubject ? draft.entry.unitLabel : `${draft.entry.subjectLabel} · ${draft.entry.unitLabel}`,
-        basicScope: true,
-        unified: true,
-        unclassified: draft.entry.unclassified,
-        paths: [...draft.paths],
-        scopeQuestionUids: draft.uids,
-        facetQuestionUids: draft.facetUids || draft.uids,
-        count: draft.uids.length,
-        eligibleCount: draft.uids.length,
-        supplemental: false,
-      }));
+      .map((draft) => {
+        const scope = {
+          key: draft.key,
+          L1: draft.entry.subjectLabel,
+          L2: draft.entry.unitLabel,
+          label: draft.entry.unitLabel,
+          fullLabel: singleSubject ? draft.entry.unitLabel : `${draft.entry.subjectLabel} · ${draft.entry.unitLabel}`,
+          basicScope: true,
+          unified: true,
+          unclassified: draft.entry.unclassified,
+          paths: [...draft.paths],
+          scopeQuestionUids: draft.uids,
+          facetQuestionUids: draft.facetUids || draft.uids,
+          count: draft.uids.length,
+          eligibleCount: draft.uids.length,
+          supplemental: false,
+        };
+        const children = composeChildScopes(scope, draft, built);
+        if (children.length) scope.children = children;
+        return scope;
+      });
     if (renderingScopes) {
       scopeRenderCache = result;
       displayedScopes = result;
@@ -1508,8 +1600,23 @@
       (!scope.unified && scope.paths.some((path) => state.scopes.includes(path)))
     );
   }
+  // 고른 범위: 대단원을 고르면 그 단원 전체(자식 키가 함께 있어도 대단원이 우선), 아니면 고른 중단원(소단원 묶음)들.
+  function pickedScopeNodes(scopes = scopeOptions()) {
+    const picked = [];
+    for (const scope of scopes) {
+      if (scopeIsSelected(scope)) picked.push(scope);
+      else for (const child of scope.children || []) if (state.scopes.includes(child.key)) picked.push(child);
+    }
+    return picked;
+  }
   function selectedScopeOptions() {
-    return scopeOptions().filter((scope) => scopeIsSelected(scope) && scope.count > 0);
+    return pickedScopeNodes().filter((scope) => scope.count > 0);
+  }
+  // 대단원 키 목록에서 같은 대단원의 자식 키를 뺀다(대단원이 자식을 포함한다).
+  function withoutShadowedChildren(keys, scopes) {
+    const parents = new Set(keys);
+    const shadowed = new Set(scopes.filter(scope => parents.has(scope.key)).flatMap(scope => (scope.children || []).map(child => child.key)));
+    return keys.filter(key => !shadowed.has(key));
   }
   function selectedScopePaths() {
     const scopes = selectedScopeOptions();
@@ -2368,8 +2475,34 @@
     if (quickPoolCache.index !== index || quickPoolCache.meta !== metaIndex) {
       const metaByUid = new Map((metaIndex || []).map(row => [row.questionUid || row.uid, row]));
       quickPoolCache = { index, meta: metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
+      quickScopeCache = null;
     }
     return quickPoolCache.pools;
+  }
+  // 중단원 / 소단원 scopes of the chosen grade and subject (shared unit tree). Built once per pool / selection /
+  // 소단원 묶음표 load and read by every render and click. The 묶음표 (high school 소단원, a small JSON) is requested
+  // at boot; until it is there a high school list shows its 단원 only and says so.
+  let quickScopeCache = null;
+  let quickGroupsRequested = false;
+  function quickLoadGroups() {
+    if (quickGroupsRequested || !QuickTree?.loadGroups) return;
+    quickGroupsRequested = true;
+    QuickTree.loadGroups().then((doc) => {
+      quickState.groupsFailed = !doc;
+      quickScopeCache = null;
+      if (state.catalog && isQuickAssessmentView()) render();
+    });
+  }
+  function quickScopes(pools) {
+    if (!pools || !quickState.grade || !quickState.subject) return null;
+    const middle = /^중[123]$/.test(quickState.grade);
+    if (!middle) quickLoadGroups();
+    const groupsReady = middle || Boolean(QuickTree?.groupsLoaded?.());
+    const key = `${quickState.grade}|${quickState.subject}|${groupsReady}`;
+    if (quickScopeCache?.pools !== pools || quickScopeCache.key !== key)
+      quickScopeCache = { pools, key, scopes: Quick.buildScopes(pools, quickState.grade, quickState.subject,
+        { index: quickPoolCache.index, metaByUid: quickPoolCache.metaByUid }) };
+    return quickScopeCache.scopes;
   }
   // The grade / subject choice is shared by the four products; the difficulty preset is per product.
   function quickEnsureSelection(pools) {
@@ -2379,68 +2512,146 @@
       quickState.subject = (subjects.find(subject => subject.items > 0) || subjects[0] || {}).value || "";
     return subjects;
   }
+  const quickGradeClass = (grade) => `grade-${({ 중1: "m1", 중2: "m2", 중3: "m3", 고1: "h1", 고2: "h2", 고3: "h3" })[grade] || "none"}`;
+  const QUICK_INTRO = {
+    "five-minute": (grade) => `대단원 전체나 ${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 4문항, 수업 앞뒤 5분 확인용입니다.`,
+    "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
+    "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
+    "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
+  };
+  // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
+  function quickRowMarkup(item, product, picked, busy) {
+    const { node, role } = item;
+    const name = role === "root" && node.kind !== "unclassified" ? `${node.label} 전체` : node.label;
+    const counts = quickCountsText(node, product);
+    const body = `<span class="qk-row-name">${esc(name)}</span><small>${counts}</small>`;
+    if (product.combine) {
+      const implied = role === "child" && picked.has(node.root.key);
+      return `<label class="qk-row qk-check${role === "root" ? " is-root" : ""}${implied ? " is-implied" : ""}"><input type="checkbox" data-quick-bundle="${esc(node.key)}"
+        ${picked.has(node.key) || implied ? "checked" : ""}${implied ? " disabled" : ""}><span>${body}</span></label>`;
+    }
+    return `<button type="button" class="qk-row${role === "root" ? " is-root" : ""}" data-action="quick-pick" data-unit-key="${esc(node.key)}"
+      aria-pressed="${picked.has(node.key)}" ${busy ? "disabled" : ""}>${body}</button>`;
+  }
   function renderQuick() {
     const product = quickProduct();
-    const tabs = `<div class="quick-tabs" role="group" aria-label="평가 종류">${Quick?.VIEWS.map(view =>
-      `<button type="button" class="quick-tab" data-view="${view}" aria-pressed="${view === state.view}">${esc(Quick.PRODUCTS[view].title)}</button>`).join("") || ""}</div>`;
+    const tabs = `<div class="qk-seg" role="group" aria-label="평가 종류">${Quick?.VIEWS.map(view =>
+      `<button type="button" class="qk-seg-btn" data-view="${view}" aria-pressed="${view === state.view}">${esc(Quick.PRODUCTS[view].title)}</button>`).join("") || ""}</div>`;
     const pools = quickPools();
-    if (!pools) return `${tabs}<section class="panel"><h1>${esc(product?.title || "빠른 평가")}</h1><p class="muted">단원 목록을 준비하지 못했습니다. 페이지를 새로 고쳐 주세요.</p></section>`;
+    if (!pools) return `<div class="qk">${tabs}<section class="panel"><h1>${esc(product?.title || "빠른 평가")}</h1><p class="muted">단원 목록을 준비하지 못했습니다. 페이지를 새로 고쳐 주세요.</p></section></div>`;
     const subjects = quickEnsureSelection(pools);
     const preset = quickPreset();
     const busy = quickState.busy;
     const mix = Quick.presetMix(product, preset);
-    const units = quickState.grade && quickState.subject
-      ? Quick.unitsFor(pools, state.view, quickState.grade, quickState.subject) : [];
-    const gradeChips = Unified.GRADES.map(grade =>
-      `<button type="button" class="quick-chip" data-action="quick-grade" data-grade="${grade}" aria-pressed="${grade === quickState.grade}">${grade}</button>`).join("");
+    const grade = quickState.grade;
+    const scopes = quickScopes(pools);
+    const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
+    const noun = Quick.unitNoun(state.view, grade);
+    const gradeButtons = Unified.GRADES.map(label =>
+      `<button type="button" class="find-grade ${quickGradeClass(label)}" data-action="quick-grade" data-grade="${label}" aria-pressed="${label === grade}">${label}</button>`).join("");
     const subjectChips = subjects.length > 1 ? `<div class="quick-chips" role="group" aria-label="과목">${subjects.map(subject =>
-      `<button type="button" class="quick-chip" data-action="quick-subject" data-subject="${esc(subject.value)}" aria-pressed="${subject.value === quickState.subject}"${subject.items || subject.value === quickState.subject ? "" : " disabled"}>${esc(subject.label)} <small>${subject.items}</small></button>`).join("")}</div>` : "";
-    let body;
-    if (!quickState.grade) body = '<p class="muted">학년을 선택하세요.</p>';
-    else if (!units.length)
-      body = `<p class="muted">이 과목에는 ${esc(product.title)}에 쓸 수 있는 ${esc(product.unitLabel)}가 아직 없습니다.</p>`;
-    else if (product.combine) {
-      const selectedUnits = units.filter(unit => quickState.bundle.has(unit.key));
-      const verdictAll = Quick.evaluate(units, product, preset);
-      const verdictSel = Quick.evaluate(selectedUnits, product, preset);
-      const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
-      const rows = units.map(unit => `<label class="quick-unit quick-unit-check"><input type="checkbox" data-quick-bundle="${esc(unit.key)}"
-        ${quickState.bundle.has(unit.key) ? "checked" : ""}><span><strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small></span></label>`).join("");
-      body = `<p class="muted">범위를 고르세요. 과목 전체에서 출제하거나, 원하는 단원만 골라 묶을 수 있습니다.</p>
-        <div class="quick-units">${rows}</div>
-        <div class="quick-actions">
-          ${button("quick-open-all", `${esc(subjectLabel)} 전체에서 ${product.count}문항 출력`,
-            `type="button" class="primary" ${verdictAll.ok && !busy ? "" : "disabled"}`)}
-          ${button("quick-open-selected", `선택한 단원 ${selectedUnits.length}개에서 ${product.count}문항 출력`,
-            `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
-        </div>
-        ${!verdictAll.ok ? `<p class="muted quick-reason">과목 전체: ${esc(Quick.shortageText(verdictAll.shortages))}</p>` : ""}
-        ${selectedUnits.length && !verdictSel.ok ? `<p class="muted quick-reason">선택한 단원: ${esc(Quick.shortageText(verdictSel.shortages))}</p>` : ""}`;
+      `<button type="button" class="quick-chip" data-action="quick-subject" data-subject="${esc(subject.value)}" aria-pressed="${subject.value === quickState.subject}"${subject.items || subject.value === quickState.subject ? "" : " disabled"}>${esc(subject.label)} <small>${subject.items}</small></button>`).join("")}</div>`
+      : (subjects.length ? `<p class="qk-subject-note">${esc(subjectLabel)}</p>` : "");
+    // ---- unit list (left) and what it will make (right)
+    let list = "", result = "", bar = "";
+    const openAll = (label, ok) => button("quick-open-all", label, `type="button" class="primary" ${ok && !busy ? "" : "disabled"}`);
+    if (!grade) {
+      list = '<p class="muted">학년을 선택하세요.</p>';
+      result = `<p class="muted">학년과 ${esc(noun)}을 고르면 만들 시험지가 여기에 보입니다.</p>`;
+    } else if (!scopes?.roots.length) {
+      list = `<p class="muted">이 과목에는 ${esc(product.title)}에 쓸 수 있는 ${esc(noun)}가 아직 없습니다.</p>`;
+      result = `<p class="muted">고를 수 있는 ${esc(noun)}가 없습니다. 다른 학년이나 과목을 선택해 보세요.</p>`;
     } else {
-      const { ready, short } = Quick.partition(units, product, preset);
-      const itemsReady = ready.reduce((sum, row) => sum + row.unit.total, 0);
-      const parent = unit => product.unitKind === "subunit" ? `<span class="quick-unit-parent">${esc(unit.unitLabel)}</span>` : "";
-      const readyCards = ready.map(({ unit }) => `<button type="button" class="quick-unit" data-action="quick-unit"
-        data-unit-key="${esc(unit.key)}" ${busy ? "disabled" : ""}>${parent(unit)}<strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small></button>`).join("");
-      const shortCards = short.map(({ unit, verdict }) => `<button type="button" class="quick-unit is-short" disabled aria-disabled="true">
-        ${parent(unit)}<strong>${esc(unit.label)}</strong><small>${quickCountsText(unit, product)}</small><em class="quick-reason">${esc(Quick.shortageText(verdict.shortages))}</em></button>`).join("");
-      body = `<p class="muted" id="quick-ready-summary">이 난이도로 만들 수 있는 ${esc(product.unitLabel)} ${ready.length}개 (문항 ${itemsReady}개) · 전체 ${units.length}개</p>
-        ${ready.length ? `<div class="quick-units">${readyCards}</div>` : '<p class="callout">이 난이도로 만들 수 있는 단원이 없습니다. 난이도를 바꾸거나 다른 과목을 선택해 보세요.</p>'}
-        ${short.length ? `<details class="quick-short" open><summary>문항이 부족한 ${esc(product.unitLabel)} ${short.length}개</summary><div class="quick-units">${shortCards}</div></details>` : ""}`;
+      const groups = Quick.pickableGroups(scopes, state.view);
+      const items = groups.flatMap(group => group.items.map(item => ({ ...item, section: group.section, unclassified: group.unclassified })));
+      const known = new Set(items.map(item => item.node.key));
+      // A choice made on another product stays only where this product can pick it.
+      if (!known.has(quickState.pick)) quickState.pick = "";
+      for (const key of [...quickState.bundle]) if (!known.has(key)) quickState.bundle.delete(key);
+      const picked = new Set(product.combine ? quickState.bundle : (quickState.pick ? [quickState.pick] : []));
+      // Which rows can make this product at this difficulty. 종합평가 unions units, so a row is only "empty" or not.
+      const verdicts = new Map(items.map(item => [item.node.key, product.combine
+        ? { ok: item.node.total > 0, shortages: [] } : Quick.evaluate([item.node], product, preset)]));
+      const readyCount = items.filter(item => verdicts.get(item.node.key).ok).length;
+      const groupMarkup = (group, ready) => {
+        const rows = group.items.filter(item => verdicts.get(item.node.key).ok === ready);
+        if (!rows.length) return "";
+        const head = `<h3 class="qk-group-title">${esc(group.section.label)}<small>${group.section.unit.total}문항</small></h3>`;
+        if (ready) return `<div class="qk-group">${head}<div class="qk-rows">${rows.map(item => quickRowMarkup(item, product, picked, busy)).join("")}</div></div>`;
+        return `<div class="qk-group">${head}<div class="qk-rows">${rows.map(item => {
+          const { node, role } = item, verdict = verdicts.get(node.key);
+          const name = role === "root" && node.kind !== "unclassified" ? `${node.label} 전체` : node.label;
+          return `<div class="qk-row is-short" aria-disabled="true"><span class="qk-row-name">${esc(name)}</span><em class="qk-reason">${esc(product.combine ? "문항 없음" : Quick.shortReason(verdict.shortages))}</em></div>`;
+        }).join("")}</div></div>`;
+      };
+      const readyMarkup = groups.map(group => groupMarkup(group, true)).join("");
+      const shortRows = items.length - readyCount;
+      const shortNoun = product.combine ? "문항이 없는" : "문항이 모자란";
+      const shortMarkup = shortRows ? `<div class="qk-short"><button type="button" class="qk-short-toggle" data-action="quick-short-toggle" aria-expanded="${quickState.shortOpen}">${shortNoun} ${esc(noun)} ${shortRows}개</button>
+        ${quickState.shortOpen ? `<div class="qk-short-body">${groups.map(group => groupMarkup(group, false)).join("")}</div>` : ""}</div>` : "";
+      const groupNote = !scopes.middle && scopes.groupsMissing && state.view !== "unit-test"
+        ? `<p class="callout qk-note">${quickState.groupsFailed ? "소단원 목록을 불러오지 못해 단원 단위로 보입니다." : "소단원 목록을 불러오는 중입니다. 단원 단위로 먼저 보입니다."}</p>` : "";
+      const hint = product.combine
+        ? "범위를 고르세요. 대단원을 고르면 그 안의 중단원이 모두 들어갑니다. 고르지 않으면 과목 전체에서 냅니다."
+        : `${esc(noun)} 하나를 고르세요. 숫자는 단계별 기출 문항 수입니다.`;
+      list = `${groupNote}<p class="muted qk-hint" id="quick-ready-summary">이 난이도로 만들 수 있는 ${esc(noun)} ${readyCount}개 · 전체 ${items.length}개</p>
+        <p class="muted qk-hint">${hint}</p>
+        ${readyCount ? `<div class="qk-groups">${readyMarkup}</div>` : '<p class="callout">이 난이도로 만들 수 있는 단원이 없습니다. 난이도를 바꾸거나 다른 과목을 선택해 보세요.</p>'}${shortMarkup}`;
+      // ---- result
+      const info = (heading, count, lines, actions) => `<h2 class="qk-r-title">${esc(heading)}</h2>${lines}<p class="qk-r-count"><span class="qk-big">${count}</span>문항</p>
+        <p class="muted qk-r-mix">${esc(Quick.PRESET_LABELS[preset])} · ${mix}</p><div class="qk-actions">${actions}</div>
+        <p class="muted qk-r-after">열리는 창에서 출력 · 보관함 저장 · 반에 출제를 할 수 있습니다.</p>`;
+      if (product.combine) {
+        const selectedUnits = Quick.selectNodes(scopes, [...quickState.bundle]);
+        const verdictAll = Quick.evaluate(scopes.roots, product, preset);
+        const verdictSel = Quick.evaluate(selectedUnits, product, preset);
+        const names = selectedUnits.slice(0, 3).map(unit => unit.label).join(" · ") + (selectedUnits.length > 3 ? ` 외 ${selectedUnits.length - 3}개` : "");
+        const reason = (verdict) => verdict.ok ? "" : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`;
+        const actions = `${button("quick-open-selected", `선택한 ${esc(noun)} ${selectedUnits.length}개로 시험지 열기`,
+          `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
+          ${openAll(`${esc(subjectLabel)} 전체로 시험지 열기`, verdictAll.ok)}`;
+        const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(subjectLabel)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
+          ${selectedUnits.length ? reason(verdictSel) : reason(verdictAll)}`;
+        result = info(product.title, product.count, lines, actions);
+        bar = { text: selectedUnits.length ? `${product.count}문항 · ${selectedUnits.length}개 ${noun}` : `${product.count}문항 · 과목 전체`,
+          action: selectedUnits.length ? "quick-open-selected" : "quick-open-all",
+          disabled: busy || (selectedUnits.length ? !verdictSel.ok : !verdictAll.ok) };
+      } else {
+        const node = quickState.pick ? scopes.byKey.get(quickState.pick) : null;
+        if (!node) {
+          result = `<h2 class="qk-r-title">${esc(product.title)}</h2><p class="muted">왼쪽에서 ${esc(noun)}을 고르면 만들 시험지가 여기에 보입니다.</p>`;
+          bar = { text: `${noun}을 고르세요`, action: "quick-open-pick", disabled: true };
+        } else {
+          const verdict = Quick.evaluate([node], product, preset);
+          const path = node.root ? `${node.root.label} › ${node.label}` : node.label;
+          const lines = `<p class="qk-r-scope"><strong>${esc(path)}</strong></p>${verdict.ok ? "" : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`}`;
+          result = info(product.title, product.count, lines, button("quick-open-pick", "시험지 열기", `type="button" class="primary" ${verdict.ok && !busy ? "" : "disabled"}`));
+          bar = { text: `${product.count}문항 · ${node.label}`, action: "quick-open-pick", disabled: busy || !verdict.ok };
+        }
+      }
     }
-    return `${tabs}<div class="intro"><div><h1>${esc(product.title)}</h1></div>${state.view === "subunit-test"
-      ? '<a href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
-      <section class="panel"><h2>학년 · 과목</h2>
-        <div class="quick-chips" role="group" aria-label="학년">${gradeChips}</div>${subjectChips}
-        <p class="muted">2015·2022 개정 문항은 2022 개정 단원 기준으로 함께 묶어 보여줍니다.</p></section>
-      <section class="panel"><h2>난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
-        <div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
-          <div class="five-minute-slider-rail">${product.order.map(() => "<span></span>").join("")}
-            <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
-              value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
-          </div>
-        </div><p class="muted" id="quick-assessment-mix">${mix}</p><p class="muted">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></section>
-      <section class="panel"><h2>${esc(product.unitLabel)}</h2>${body}</section>`;
+    const barMarkup = bar ? `<div class="qk-bar" role="region" aria-label="시험지 열기"><div class="qk-bar-text"><strong class="qk-bar-count">${esc(bar.text)}</strong></div>
+      ${button(bar.action, "시험지 열기", `type="button" class="qk-bar-main" ${bar.disabled ? "disabled" : ""}`)}</div>` : "";
+    const levelOpen = quickState.levelOpen ? " is-open" : "";
+    return `<div class="qk">${tabs}<div class="qk-intro"><h1>${esc(product.title)}</h1><p class="muted">${esc(QUICK_INTRO[state.view]?.(grade) || "")}</p>${state.view === "subunit-test"
+      ? '<a class="qk-pack-link" href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
+      <div class="qk-grid">
+        <div class="qk-cond">
+          <section class="qk-block"><h2 class="qk-h">학년 · 과목</h2>
+            <div class="qk-grades" role="group" aria-label="학년">${gradeButtons}</div>${subjectChips}</section>
+          <section class="qk-block qk-level${levelOpen}"><div class="qk-level-head"><h2 class="qk-h">난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
+            <button type="button" class="qk-fold" data-action="quick-level-toggle" aria-expanded="${quickState.levelOpen}">바꾸기</button></div>
+            <p class="muted" id="quick-assessment-mix">${mix}</p>
+            <div class="qk-level-body"><div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
+              <div class="five-minute-slider-rail">${product.order.map(() => "<span></span>").join("")}
+                <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
+                  value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
+              </div></div>
+              <p class="muted qk-note">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></div></section>
+          <section class="qk-block qk-scope"><h2 class="qk-h">${esc(noun)}</h2>${list}</section>
+        </div>
+        <aside class="qk-result" aria-label="만들어질 평가">${result}</aside>
+      </div>${barMarkup}</div>`;
   }
   function fiveMinuteShuffle(rows) {
     const result = rows.slice();
@@ -2528,7 +2739,7 @@
   }
   function quickUnitsLabel(units, subjectLabel, all) {
     if (all) return `${subjectLabel} 전체`;
-    const names = units.map(unit => unit.kind === "subunit" ? unit.label : unit.label);
+    const names = units.map(unit => unit.label);
     return names.length > 3 ? `${names.slice(0, 3).join(" · ")} 외 ${names.length - 3}개` : names.join(" · ");
   }
   // unitKeys: an array of unit keys, or "all" (every unit of the chosen subject, 종합평가).
@@ -2538,9 +2749,10 @@
     const pools = quickPools();
     if (!pools || !quickState.grade || !quickState.subject) return;
     const preset = quickPreset();
-    const all = Quick.unitsFor(pools, state.view, quickState.grade, quickState.subject);
+    const scopes = quickScopes(pools);
+    if (!scopes) return;
     const everything = unitKeys === "all";
-    const units = everything ? all : all.filter(unit => unitKeys.includes(unit.key));
+    const units = everything ? scopes.roots : Quick.selectNodes(scopes, unitKeys);
     const subjectLabel = Unified.subjectByValue(quickState.grade, quickState.subject)?.label || "";
     const label = quickUnitsLabel(units, subjectLabel, everything);
     if (!units.length || (!product.combine && units.length !== 1)) return;
@@ -2812,7 +3024,7 @@
   function preparingMarkup() {
     const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || PREPARING_TITLES[state.view] || "아카이브";
     if (state.bootError)
-      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.bootError)}</p><p>${button("boot-retry", "다시 시도", 'class="primary"')} <a href="index.html?legacy=1">기존 아카이브 열기</a></p></section>`;
+      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.bootError)}</p><p>${button("boot-retry", "다시 시도", 'class="primary"')}</p></section>`;
     return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1>${bootWaitText}<p class="muted">자료 준비가 끝나면 이 화면이 저절로 열립니다.</p></section>`;
   }
   function renderHome() {
@@ -2866,7 +3078,6 @@
           <div class="home-quick-list">${products.map(productMarkup).join("")}</div>
         </section>
       </div>
-      <nav class="home-tools" aria-label="그 밖의 도구"><a href="problem-bank-search.html">유형·개념으로 문항 찾기</a><button type="button" class="home-link" data-view="health">자료 점검</button><a href="index.html?legacy=1">아카이브 1.0</a></nav>
     </div>`;
   }
 
@@ -2928,6 +3139,42 @@
       ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기", 'data-use-sources="true"')}</div></div>` : ""}</div>`;
   }
 
+  // 대단원 한 줄(체크 + 문항 수 + 중단원 펼침 단추)과, 펼쳤을 때 그 아래 중단원(소단원 묶음) 줄들.
+  // 대단원을 체크하면 중단원 줄은 "포함됨"이고, 중단원은 체크 해제한 대단원 아래에서만 따로 고른다.
+  // 0문항 중단원은 흐리게 보이고 고를 수 없다. "중단원 미지정"/"기타" 줄은 문항이 있을 때만 나온다.
+  function scopeOpenState(scope) {
+    const kids = scope.children || [];
+    if (!kids.length) return false;
+    const explicit = state.scopeUnitOpen[scope.key];
+    return explicit !== undefined ? explicit : kids.some(child => state.scopes.includes(child.key));
+  }
+  function scopeUnitMarkup(s) {
+    const kids = s.children || [];
+    const parentOn = scopeIsSelected(s);
+    const pickedKids = kids.filter(child => state.scopes.includes(child.key));
+    const open = scopeOpenState(s);
+    const disabled = state.sealed ? "disabled" : "";
+    const noun = /^중[123]$/.test(state.filters.grade || "") ? "중단원" : "소단원";
+    const hint = s.unclassified ? ' <span class="scope-hint">단원 정보가 아직 없는 문항 · 선택하면 함께 출제</span>'
+      : kids.length ? ` <span class="scope-hint" data-scope-sub-hint>${parentOn ? `${noun} ${kids.length}개 모두 포함`
+        : pickedKids.length ? `${noun} ${pickedKids.length}개 선택` : `${noun} ${kids.length}개`}</span>` : "";
+    const partial = !parentOn && pickedKids.length ? " data-scope-partial" : "";
+    const toggle = kids.length
+      ? button("scope-expand", "", `class="scope-expand" data-scope-key="${esc(s.key)}" aria-expanded="${open}" aria-label="${esc(s.label)} ${noun} ${open ? "접기" : "펼치기"}" title="${noun} ${open ? "접기" : "펼치기"}"`)
+      : "";
+    const head = `<div class="scope-item${kids.length ? " has-subs" : ""}"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}"${partial} ${parentOn ? "checked" : ""} ${disabled}><span class="scope-name">${esc(s.label)}${hint}</span></label><small>${s.count}문항</small>${toggle}</div>`;
+    if (!open) return kids.length ? `<div class="scope-unit">${head}</div>` : head;
+    const rows = kids.filter(child => child.count > 0 || state.scopes.includes(child.key) ||
+      !["none", "other"].includes(child.childKind)).map(child => {
+      const on = parentOn || state.scopes.includes(child.key);
+      const zero = child.count === 0 && !state.scopes.includes(child.key);
+      const cls = `scope-item scope-sub${parentOn ? " is-implied" : ""}${zero ? " is-zero" : ""}`;
+      // 대단원이 체크된 채로도 중단원 하나를 풀 수 있다(나머지 중단원이 그대로 남는다).
+      const off = state.sealed || zero ? "disabled" : "";
+      return `<div class="${cls}" data-scope-sub="${esc(child.key)}"><label class="check"><input type="checkbox" data-scope="${esc(child.key)}" ${on ? "checked" : ""} ${off}><span class="scope-name">${esc(child.label)}${parentOn ? ' <span class="scope-hint">대단원에 포함됨</span>' : ""}</span></label><small>${child.count}문항</small></div>`;
+    }).join("");
+    return `<div class="scope-unit is-open">${head}<div class="scope-subs" data-scope-subs="${esc(s.key)}">${rows}</div></div>`;
+  }
   function renderScopes() {
     if (state.uidRoute) return renderUidRoute();
     if (
@@ -2953,13 +3200,11 @@
         const explicit = state.scopeGroupOpen[g];
         const open = explicit !== undefined ? explicit
           : wideScreen || names.length === 1 || g === names[0] || g === currentSubject || members.some(scopeIsSelected);
-        return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(s =>
-          `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}${s.unclassified ? ' <span class="scope-hint">단원 정보가 아직 없는 문항 · 선택하면 함께 출제</span>' : ""}</label><small>${s.count}문항</small></div>`
-        ).join("")}</details>`;
+        return `<details class="scope-group" data-scope-group="${esc(g)}"${open ? " open" : ""}><summary class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</summary>${members.map(scopeUnitMarkup).join("")}</details>`;
       }).join("")}</div>`;
     };
     const unifiedNotice = unifiedIndex()
-      ? `<p class="muted">단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
+      ? `<p class="muted">단원을 고르세요. 숫자는 지금 낼 수 있는 문항 수입니다.${scopes.some(scope => scope.children?.length) ? " 줄 끝의 화살표를 누르면 중단원을 따로 고를 수 있습니다." : ""}</p>${state.scopeNotice ? `<div class="callout" role="status">${esc(state.scopeNotice)}</div>` : ""}${!scopes.length ? '<p class="muted">현재 조건에 맞는 단원이 없습니다. 세부 조건(학교·시험 시기·연도·난이도)을 넓혀 보세요.</p>' : ""}`
       : "";
     return `<div class="resultbar"><h2>단원</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
       ${unifiedNotice || '<p class="muted">학년의 1·2학기 전체 단원입니다. 숫자는 지금 출제할 수 있는 문항 수이며, 같은 문항은 한 번만 셉니다. 난이도를 고르지 않으면 난이도가 정해지지 않은 문항까지 포함해 전체에서 고릅니다.</p>'}
@@ -3004,7 +3249,7 @@
   // Faceted: each list ignores its own selection and honours the other selections.
   function composeMetaFacets() {
     const scopes = scopeOptions();
-    const picked = scopes.filter(scopeIsSelected);
+    const picked = pickedScopeNodes(scopes);
     const uids = new Set((picked.length ? picked : scopes).flatMap((scope) => scope.facetQuestionUids || scope.scopeQuestionUids || []));
     const index = unifiedIndex();
     const records = index
@@ -3044,7 +3289,7 @@
       : record.L4);
   function renderDerivedComposition() {
     const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
-    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
+    return `<section class="compose-composition cz-derived"><h2 class="cz-derived-title">원본 저장 시험지의 고정된 범위</h2><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
   }
   // ---- 문제지 만들기 한 화면 (2026-11-10) -----------------------------------------------------------------
   // 왼쪽은 조건(renderPrimary·renderScopes·renderComposition), 오른쪽은 결과와 마무리(renderResult). 로직(선택 엔진·저장·
@@ -3498,8 +3743,8 @@
           a.subjectLabel, otherGrade].filter(Boolean);
       const lifecycle = [
         a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
-        a.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(a.replacementAssignmentId)}</span>` : "",
-        a.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(a.replacesAssignmentId)}</span>` : "",
+        a.replacementAssignmentId ? `<span class="history-state-chip">대체됨</span>` : "",
+        a.replacesAssignmentId ? `<span class="history-state-chip">다른 출제를 대체한 출제</span>` : "",
         a.isReviewOnly ? `<span class="history-state-chip review-only">열람 전용${a.reviewOnlyCount === null ? "" : ` · ${a.reviewOnlyCount}명`}</span>` : "",
       ].filter(Boolean).join("");
       const pdfLabel = a.pdfReady ? "" : a.pdfStatus === "failed"
@@ -3789,8 +4034,8 @@
     const summary = state.recentRows.find((row) => row.id === assignmentId);
     const lifecycle = [
       a.cancelled_at ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
-      summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(summary.replacementAssignmentId)}</span>` : "",
-      summary?.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(summary.replacesAssignmentId)}</span>` : "",
+      summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨</span>` : "",
+      summary?.replacesAssignmentId ? `<span class="history-state-chip">다른 출제를 대체한 출제</span>` : "",
       (summary?.reviewOnlyCount || 0) > 0 ? `<span class="history-state-chip review-only">열람 전용 · ${summary.reviewOnlyCount}명</span>` : "",
     ].filter(Boolean).join("");
     const studentStatus = (student) => student.session_id
@@ -4002,10 +4247,10 @@
       fmt = (n) => Number(n || 0).toLocaleString(),
       composeScope = state.healthComposeScope,
       rows = healthExclusionRows(h.exclusionReasons);
-    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료, 자동출제 승인 범위, 문제지 만들기 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
+    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료, 검수까지 끝난 범위, 문제지 만들기 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
       ["시험", h.exams],
       ["전체 문항", h.questions],
-      ["자동출제 승인", h.automatic],
+      ["검수까지 끝난 문항", h.automatic],
       ["문제지 만들기 범위에 포함", composeScope],
       ...(state.healthUnified
         ? [["단원에 배치", state.healthUnified.unit], ["단원 미분류로 제공", state.healthUnified.unclassified], ["학년 근거 없어 제외", state.healthUnified.unplaced]]
@@ -4018,14 +4263,14 @@
       )
       .join(
         "",
-      )}</div><section class="panel"><h2>자동출제 승인 제외 근거</h2><table class="health-table"><tbody>${rows.length
+      )}</div><section class="panel"><h2>검수까지 끝난 문항에서 빠진 이유</h2><table class="health-table"><tbody>${rows.length
       ? rows
           .map(
             ({ code, count, label }) =>
               `<tr><th>${label ? `${esc(label)} <span class="muted">(${esc(code)})</span>` : esc(code)}</th><td>${fmt(count)}${total ? ` <span class="muted">· ${((count / total) * 100).toFixed(1)}%</span>` : ""}</td></tr>`,
           )
           .join("")
-      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>${renderUnlinkedSimilar()}`;
+      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">검수까지 끝난 문항은 단원 분류와 검수가 모두 끝난 문항입니다(엄격한 기준이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>${renderUnlinkedSimilar()}`;
   }
   // Similar sets whose original exam could not be told for certain (see archive2-similar.js).
   function renderUnlinkedSimilar() {
@@ -4186,10 +4431,11 @@
     const focusedFilter = document.activeElement?.dataset?.group === "compose"
       ? document.activeElement.dataset.filter : null;
     const focusedScope = document.activeElement?.dataset?.scope;
-    const focusedAction = ["scope-all", "scope-clear", "scope-group", "scope-range"]
+    const focusedAction = ["scope-all", "scope-clear", "scope-group", "scope-range", "scope-expand"]
       .includes(document.activeElement?.dataset?.action)
       ? document.activeElement.dataset.action : null;
-    const focusedGroupIndex = document.activeElement?.dataset?.groupIndex;
+    const focusedGroupIndex = document.activeElement?.dataset?.groupIndex ?? document.activeElement?.dataset?.scopeKey;
+    const scopeListScroll = document.querySelector(".cz-scope .scope-list")?.scrollTop || 0;
     document.querySelectorAll("[data-view]").forEach((b) => {
       b.classList.toggle("active", navViewActive(b));
       b.setAttribute(
@@ -4199,6 +4445,7 @@
     });
     document.body.dataset.archiveView = state.view;
     window.Archive2Navigation?.sync?.(state.view);
+    const quickFocus = isQuickAssessmentView() ? quickFocusKey() : null;
     $("content").innerHTML =
       state.view === "home"
         ? renderHome()
@@ -4215,10 +4462,29 @@
       const focusTarget = [...document.querySelectorAll('[data-group="compose"][data-filter], [data-scope]')]
         .find((el) => focusedFilter ? el.dataset.filter === focusedFilter : focusedScope && el.dataset.scope === focusedScope)
         || [...document.querySelectorAll('[data-action]')]
-          .find((el) => focusedAction && el.dataset.action === focusedAction && el.dataset.groupIndex === focusedGroupIndex);
+          .find((el) => focusedAction && el.dataset.action === focusedAction && (el.dataset.groupIndex ?? el.dataset.scopeKey) === focusedGroupIndex);
       focusTarget?.focus?.({ preventScroll: true });
+      // 목록 안쪽 스크롤은 다시 그려도 그 자리에 둔다(중단원을 펼칠 때마다 맨 위로 돌아가지 않게).
+      const scopeList = document.querySelector(".cz-scope .scope-list");
+      if (scopeList && scopeListScroll) scopeList.scrollTop = scopeListScroll;
+      document.querySelectorAll("input[data-scope-partial]").forEach((input) => { input.indeterminate = true; });
     }
     if (state.view === "compose" && state.selected.length) updatePreview();
+    if (quickFocus) quickFocusRestore(quickFocus);
+  }
+  // A quick-assessment click re-draws the screen; keyboard focus returns to the same button or check box.
+  function quickFocusKey() {
+    const el = document.activeElement;
+    if (!el?.closest?.(".qk") || !el.dataset) return null;
+    const key = el.dataset.unitKey || el.dataset.quickBundle || el.dataset.grade || el.dataset.subject || el.dataset.view || "";
+    return { action: el.dataset.action || "", key, id: el.id || "" };
+  }
+  function quickFocusRestore(focus) {
+    const all = [...document.querySelectorAll(".qk [data-action], .qk [data-quick-bundle], .qk [data-view], .qk input[id]")];
+    const target = all.find(el => el.id && el.id === focus.id)
+      || all.find(el => (el.dataset.action || "") === focus.action
+        && (el.dataset.unitKey || el.dataset.quickBundle || el.dataset.grade || el.dataset.subject || el.dataset.view || "") === focus.key);
+    target?.focus?.({ preventScroll: true });
   }
   async function prepare() {
     const records = state.selected,
@@ -4783,70 +5049,6 @@
       popup?.close();
       throw e;
     }
-  }
-  async function targets() {
-    if (state.receipts.length)
-      throw new Error(
-        "확정 회차의 대상은 변경할 수 없습니다. 다음 회차를 시작하세요.",
-      );
-    try {
-      const data = await api("/qr-classes");
-      classRows = data.classes || data.data || [];
-      if (!Array.isArray(classRows)) classRows = [];
-      rosterRequestSeq++;
-      rosterLoading = false;
-      rosterRows = [];
-      showDialog(
-        "출제 대상 학생",
-        `<label>반<select id="target-class" aria-label="반">${options(
-          classRows.map((r) => ({
-            value: r.id,
-            label: r.name || r.class_name || r.id,
-          })),
-          state.classId,
-          "반 선택",
-        )}</select></label><div id="target-roster"><p class="muted">반을 선택하면 현재 명단을 불러옵니다.</p></div>${button("target-apply", "선택한 학생 적용", 'class="primary"')}`,
-      );
-      if (state.classId) await loadRoster(state.classId);
-    } catch (e) {
-      showDialog(
-        "교사 로그인",
-        `<p>${esc(teacherErrorMessage(e))}</p><a href="index.html" target="_blank">기존 아카이브에서 로그인</a><p class="muted">로그인 후 이 창으로 돌아와 학생 선택을 다시 누르세요.</p>`,
-      );
-    }
-  }
-  // Only the newest class selection may fill the roster; a slow answer for an earlier class
-  // must never show (or apply) that class's students under the class now selected.
-  let rosterRequestSeq = 0;
-  let rosterLoading = false;
-  async function loadRoster(id) {
-    const seq = ++rosterRequestSeq;
-    rosterRows = [];
-    const box = $("target-roster");
-    if (!id) {
-      rosterLoading = false;
-      if (box) box.innerHTML = '<p class="muted">반을 선택하면 현재 명단을 불러옵니다.</p>';
-      return;
-    }
-    rosterLoading = true;
-    if (box) box.innerHTML = '<p class="muted">명단을 불러오는 중입니다.</p>';
-    let data;
-    try {
-      data = await api(
-        "/class-exam-assignments/roster?class_id=" + encodeURIComponent(id),
-      );
-    } catch (error) {
-      if (seq !== rosterRequestSeq) return;
-      rosterLoading = false;
-      if (box) box.innerHTML = '<p class="muted">명단을 불러오지 못했습니다. 반을 다시 선택해 주세요.</p>';
-      throw error;
-    }
-    if (seq !== rosterRequestSeq) return;
-    rosterLoading = false;
-    rosterRows = Array.isArray(data.students) ? data.students : [];
-    if (!$("target-roster")) return;
-    $("target-roster").innerHTML =
-      `<div class="actions" style="margin-top:12px">${button("target-all", "전체 선택", 'class="small"')}</div><div class="roster">${rosterRows.map((s, i) => `<label class="check"><input type="checkbox" data-target-index="${i}" aria-label="${esc(s.name)}" ${state.studentIds.includes(s.id) ? "checked" : ""}>${esc(s.name)} <span class="muted">${esc(s.school_name || "")}</span></label>`).join("")}</div>`;
   }
   async function assign() {
     if (!state.studentIds.length || !state.classId)
@@ -5572,8 +5774,17 @@
         const target = product.routeResolver();
         if (target && !state.catalog && openRouteInPage(target)) return;
         if (target) location.href = String(target);
-      } else if (a === "quick-unit") {
-        await openQuickAssessment([b.dataset.unitKey]);
+      } else if (a === "quick-pick") {
+        quickState.pick = b.dataset.unitKey || "";
+        render();
+      } else if (a === "quick-open-pick") {
+        await openQuickAssessment(quickState.pick ? [quickState.pick] : []);
+      } else if (a === "quick-short-toggle") {
+        quickState.shortOpen = !quickState.shortOpen;
+        render();
+      } else if (a === "quick-level-toggle") {
+        quickState.levelOpen = !quickState.levelOpen;
+        render();
       } else if (a === "quick-open-all") {
         await openQuickAssessment("all");
       } else if (a === "quick-open-selected") {
@@ -5582,11 +5793,15 @@
         quickState.grade = b.dataset.grade || "";
         quickState.subject = "";
         quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         replaceUrlState();
         render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
         quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         replaceUrlState();
         render();
       } else if (a === "home-school" || a === "home-all-schools") {
@@ -5749,6 +5964,10 @@
         invalidate();
         clearUidRoute();
         render();
+      } else if (a === "scope-expand") {
+        const scope = (displayedScopes || scopeOptions()).find((item) => item.key === b.dataset.scopeKey);
+        if (scope) state.scopeUnitOpen[scope.key] = !scopeOpenState(scope);
+        render();
       } else if (
         a === "scope-all" ||
         a === "scope-clear" ||
@@ -5775,6 +5994,7 @@
             throw new Error("끝 단원은 시작 단원 뒤에 있어야 합니다.");
           state.scopes = scopes.slice(from, to + 1).filter(s => s.basicScope && !s.unclassified).map((s) => s.key);
         }
+        state.scopes = withoutShadowedChildren(state.scopes, scopes);
         invalidate();
         render();
       } else if (a === "bucket" || a === "bucket-all") {
@@ -5857,27 +6077,6 @@
       } else if (a === "output-mode") {
         state.outputMode = b.dataset.mode;
         render();
-      } else if (a === "targets") await targets();
-      else if (a === "target-all")
-        $("target-roster")
-          .querySelectorAll("input[type=checkbox]")
-          .forEach((i) => {
-            i.checked = true;
-          });
-      else if (a === "target-apply") {
-        if (rosterLoading) {
-          status("학생 명단을 불러오는 중입니다. 잠시 뒤 다시 눌러 주세요.", true);
-          return;
-        }
-        state.classId = $("target-class").value;
-        const selected = [
-          ...$("target-roster").querySelectorAll("input:checked"),
-        ].map((i) => rosterRows[Number(i.dataset.targetIndex)]);
-        state.studentIds = selected.map((s) => s.id);
-        state.studentLabels = selected.map((s) => s.name);
-        $("modal").close();
-        scheduleSave();
-        await refreshHistory();
       } else if (a === "targets-clear") {
         if (state.sealed) return;
         state.studentIds = [];
@@ -6030,9 +6229,22 @@
       } else if (el.dataset.scope) {
         const scope = (displayedScopes || scopeOptions()).find((item) => item.key === el.dataset.scope);
         const legacyPaths = scope?.unified ? [] : scope?.paths || [];
-        state.scopes = el.checked
+        // 대단원을 고르면 그 안의 중단원 키는 뺀다(대단원이 전체를 포함한다).
+        const ownChildren = (scope?.children || []).map((child) => child.key);
+        // 대단원이 체크된 채로 중단원 하나를 풀면, 대단원 체크는 "나머지 중단원 전부(+ 중단원 미지정)"로 바뀐다.
+        const checkedParent = !el.checked && !scope
+          ? (displayedScopes || scopeOptions()).find((item) => scopeIsSelected(item) &&
+              (item.children || []).some((child) => child.key === el.dataset.scope))
+          : null;
+        if (checkedParent) {
+          const keep = checkedParent.children.filter((child) => child.key !== el.dataset.scope && child.count > 0).map((child) => child.key);
+          state.scopes = [
+            ...state.scopes.filter((x) => x !== checkedParent.key && !(!checkedParent.unified && checkedParent.paths.includes(x))),
+            ...keep,
+          ];
+        } else state.scopes = el.checked
           ? [
-              ...state.scopes.filter((x) => !legacyPaths.includes(x)),
+              ...state.scopes.filter((x) => !legacyPaths.includes(x) && !ownChildren.includes(x)),
               el.dataset.scope,
             ]
           : state.scopes.filter(
@@ -6065,8 +6277,7 @@
         $("original-issue-frame")?.contentWindow?.setArchive2OriginalQpp?.(
           value,
         );
-      } else if (el.id === "target-class") await loadRoster(el.value);
-      else if (el.id === "qpp") {
+      } else if (el.id === "qpp") {
         if (state.sealed) return;
         state.qpp = Number(el.value);
         state.prepared = [];
@@ -6342,6 +6553,7 @@
       quickState.grade = Unified?.GRADES.includes(grade) ? grade : "";
       quickState.subject = quickState.grade ? p.get(QUICK_URL_KEYS.subject) || "" : "";
       quickState.bundle.clear();
+      quickState.pick = "";
     }
     state.savedPaperId = p.get("paper_id") || "";
     state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(p.get("status"))
@@ -6493,19 +6705,18 @@
   }
   function renderUidRoute() {
     const route = state.uidRoute;
-    const back = '<a href="problem-bank-search.html">검색으로 돌아가기</a>';
     const clear = button("uid-route-clear", "전체 범위에서 직접 고르기", 'class="small"');
     if (route.error) {
       const rows = route.rejected.slice(0, 10).map((item) =>
         `<li><code>${esc(item.uid.length > 24 ? item.uid.slice(0, 24) + "…" : item.uid)}</code> · ${esc(UID_ROUTE_REASONS[item.reason] || item.reason)}</li>`).join("");
       const more = route.rejected.length > 10 ? `<li>외 ${route.rejected.length - 10}문항</li>` : "";
-      return `<div class="resultbar"><h2>단원</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${back} · ${clear}</p></div>`;
+      return `<div class="resultbar"><h2>단원</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${clear}</p></div>`;
     }
     const names = route.records.slice(0, 8).map((record, i) =>
       `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
     const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
     const scope = route.scopes[0];
-    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${back} · ${clear}</p></div>
+    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
       <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {
@@ -6572,7 +6783,7 @@
   // while the progress text ("문항 목록 정리 중") is already on screen. The rest builds them when idle.
   const viewNeedsUnifiedIndex = () => ["find", "compose", "health"].includes(state.view) || isQuickAssessmentView();
   async function settleIndexesForView() {
-    const unified = viewNeedsUnifiedIndex(), meta = isQuickAssessmentView();
+    const unified = viewNeedsUnifiedIndex(), meta = isQuickAssessmentView() || state.view === "compose";
     if (!unified && !meta) return;
     Boot?.setStage?.("index");
     await Boot?.nextPaint?.();
@@ -6594,6 +6805,8 @@
   }
   (async () => {
     readUrl();
+    if (isQuickAssessmentView()) quickLoadGroups();
+    else if (state.view === "compose") composeLoadGroups();
     Boot?.mountProgress?.($("boot-progress"));
     // 1) First screen: home / 보관함 / 출제 내역 are drawn now; every other screen shows its progress.
     render();

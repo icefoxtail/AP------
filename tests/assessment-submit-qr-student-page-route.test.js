@@ -12,6 +12,7 @@ const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const engine = read('archive/engine.html');
 const mixedEngine = read('archive/mixed_engine.html');
+const outputBarCss = read('archive/archive2-output-bar.css');
 const adapter = read('archive/screen-runtime-adapter.js');
 const studentPortal = read('apmath/student/index.html');
 const checkPage = read('check/index.html');
@@ -45,7 +46,9 @@ for (const [label, source] of [
   // 선생님만 보는 출력 설정 안의 선택지이고, 해설 QR 선택지는 그대로다.
   assert(/id="chk-submit-qr"/.test(source) && /id="chk-sol-qr"/.test(source), `${label} keeps both QR choices in the teacher output popover`);
   assert(/function shouldRenderSolutionQr\(/.test(source) && /function injectQrToLastExamPage\(/.test(source), `${label} keeps the solution QR`);
-  assert(/body\.screen-fit-mode \.qr-output-wrap \{ display: none !important; \}/.test(source), `${label} hides the QR choice on student (fit=screen) views`);
+  // 2026-11-16: 이 규칙은 두 엔진이 함께 쓰는 조작줄 CSS(archive2-output-bar.css)로 옮겼다. 규칙이 있고 엔진이 그 CSS를 불러와야 숨는다.
+  assert(/body\.screen-fit-mode \.qr-output-wrap \{ display: none !important; \}/.test(outputBarCss), 'the shared output bar CSS hides the QR choice on student (fit=screen) views');
+  assert(/<link rel="stylesheet" href="archive2-output-bar\.css[^"]*">/.test(source), `${label} loads the output bar CSS that hides the QR choice on student views`);
   // 반 출제 등록 신호는 그대로 submitQr=1.
   assert(/function shouldRenderSubmitQr\(/.test(source), `${label} keeps the class assignment registration signal`);
 }

@@ -160,7 +160,7 @@ test('relative day labels', () => {
   assert.equal(home.relativeDayLabel(day(20), now), '10월 21일');
 });
 
-test('home keeps the draft resume and quick assessment entries and the moved tool links', () => {
+test('home keeps the draft resume and quick assessment entries and shows no tool links', () => {
   const { home } = loadHome();
   home.state.catalog = { exams: [exam('a.js', '가나고')], records: [], taxonomy: [] };
   const markup = home.renderHome();
@@ -168,9 +168,7 @@ test('home keeps the draft resume and quick assessment entries and the moved too
   assert.match(markup, /data-product-key="generated-bank"/);
   for (const key of ['five-minute-test', 'subunit-assessment', 'unit-assessment', 'exam-prep'])
     assert.match(markup, new RegExp(`data-product-key="${key}"`));
-  assert.match(markup, /href="problem-bank-search\.html"/);
-  assert.match(markup, /data-view="health"/);
-  assert.match(markup, /href="index\.html\?legacy=1"/);
+  assert.doesNotMatch(markup, /problem-bank-search|data-view="health"|legacy=1|home-tools/);
 });
 
 test('the three screens that moved into the 보관함 · 출제 내역 switch show it', () => {

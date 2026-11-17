@@ -259,7 +259,9 @@ test('mixed_engine과 시험·해설 렌더러가 같은 섹션 제목 계약을
   }
   const unitPage = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.js'), 'utf8');
   assert.match(unitPage, /meta\.sections = core\.buildStepSections\(paper\.records\)/);
-  assert.match(unitPage, /name="unit-step"/);
+  // The old per-unit step checkboxes are gone: the unit x step table is the only way to choose steps.
+  assert.doesNotMatch(unitPage, /name="unit-step"|renderStepSelector/);
+  assert.match(unitPage, /meta\.sections = core\.buildSelectionSections\(paper\.records, paper\.sectionOptions\)/);
 });
 
 test('실제 아카이브: 고1 공통수학2 함수의 단계별 개수와 기존 분류 개수가 선택 가능 문항과 일치한다', () => {

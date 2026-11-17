@@ -1,0 +1,616 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-11T21:00:00+09:00",
+    "sourceArchiveFile":  "types/high/h1/항등식과나머지정리_고1_유형.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "2A+B와 A-B를 더해 A를 구한 뒤 두 번째 식으로 B를 없애고 A-2B의 계수를 계산한다.",
+                      "decisiveStep":  "두 식을 더하면 3A=3x²+6xy+6y²이므로 A=x²+2xy+2y²이고, 여기서 B=xy+6y²를 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 덧셈과 뺄셈",
+                                      "l4":  "다항식의 덧셈·뺄셈"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "x²+1/x²=7에서 (x+1/x)²=9를 만들고 x\u003e0으로 합을 3으로 정한 뒤 세제곱 합을 구한다.",
+                      "decisiveStep":  "x+1/x=3을 x³+1/x³=(x+1/x)³−3(x+1/x)에 넣어 18을 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 곱셈",
+                                      "l4":  "곱셈공식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "3x−2의 근 2/3을 이용해 나눗셈을 하고, x−2/3 기준 몫을 3x−2 기준 몫으로 환산한다.",
+                      "decisiveStep":  "x−2/3의 몫 6x²+3x−3을 3으로 나누어 Q(x)=2x²+x−1로 고친 뒤 Q(1)+1을 계산한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 나눗셈",
+                                      "l4":  "몫과 나머지"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "인수 x+1에 대응하는 x=−1을 대입해 조립제법으로 이차 몫의 계수를 찾는다.",
+                      "decisiveStep":  "몫이 2x²−11x+7이므로 b+c=−11+7=−4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "인수분해",
+                                      "l3":  "인수정리",
+                                      "l4":  "미정계수 결정"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "(a+b)(b+c)(c+a)를 합 a+b+c=3을 써서 (3−a)(3−b)(3−c)로 바꾸고 대칭합 ab+bc+ca를 구한다.",
+                      "decisiveStep":  "제곱합 조건에서 ab+bc+ca=−2를 얻어 곱을 전개하면 27−27−6+7=1이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 곱셈",
+                                      "l4":  "고차식 전개"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "나머지 조건을 x=2에 먼저 대입하고, 남은 식에서 x−2를 약분한 다음 다시 x=2를 대입해 a와 b를 정한다.",
+                      "decisiveStep":  "두 번째 대입에서 a=−3, 첫 관계에서 b=2가 되어 a+b=−1이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "삼차식을 이차식으로 나눈 몫을 x+1로 두고 나머지를 일차식으로 놓아 R(2)와 나눗셈 관계를 식으로 만든다.",
+                      "decisiveStep":  "f가 Q=x+1로 나누어떨어져 f(−1)=0이고, R(2)=6과 함께 풀면 a=−2, b=0이 된다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 나눗셈",
+                                      "l4":  "몫과 나머지"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 다항식 관계를 더해 A를 구하고 A−B에서 B를 구한 뒤 A+2B의 계수 합을 계산한다.",
+                      "decisiveStep":  "A+2B=4x²−6xy−6y²이므로 세 계수의 합은 −8이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 덧셈과 뺄셈",
+                                      "l4":  "차수·계수 정리"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "x³+y³를 (x+y)³−3xy(x+y)로 바꾸어 주어진 합과 곱을 대입한다.",
+                      "decisiveStep":  "4³−3·2·4=40으로 바로 정리된다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 곱셈",
+                                      "l4":  "곱셈공식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "항등식에 x=0, 1, −1을 차례로 넣어 각각 a, c, b를 구한 뒤 −a+2b+2c를 계산한다.",
+                      "decisiveStep":  "대입값으로 a=−4, b=3/2, c=9/2가 되어 요구한 값은 16이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "항등식",
+                                      "l4":  "수치대입법"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "식을 x에 대한 이차식으로 보고 상수항을 y의 곱으로 인수분해해 두 일차인수를 맞춘다.",
+                      "decisiveStep":  "(x−2y−3)(x+y+2)이므로 a=−2, b=1, c=2이고 −2a+3b+c=9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "인수분해",
+                                      "l3":  "인수분해 공식",
+                                      "l4":  "이차식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "x²−x−6=(x+2)(x−3)의 두 근에서 f의 값을 구해 일차 나머지 R(x)=ax+b의 계수를 정한다.",
+                      "decisiveStep":  "f(−2)=−4와 f(3)=11이므로 −2a+b=−4, 3a+b=11이고 R(1)=5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "최고차항 계수가 1인 이차식 f를 (x+2)(x−k)로 놓고 f(x²)의 나머지 조건에 x=−2를 대입한다.",
+                      "decisiveStep":  "f(4)=−18에서 k=7을 얻고 f(2)=4(−5)=−20이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "x−2의 거듭제곱 꼴 계수를 x=2를 반복한 조립제법의 나머지로 차례로 구한다.",
+                      "decisiveStep":  "연속 나머지로 a=1, b=2, c=−1, d=−7을 얻어 ab+cd=9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "항등식",
+                                      "l4":  "미정계수법"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "2x³−4x²+5를 x²−3x−1로 직접 나누어 몫과 나머지를 구하고 문제에서 지정한 항들을 더한다.",
+                      "decisiveStep":  "몫은 2x+2, 나머지는 8x+7이므로 2+2x+(8x+7)=10x+9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 나눗셈",
+                                      "l4":  "몫과 나머지"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "x⁴+5x²+9에서 x²을 더하고 빼 완전제곱의 차로 만든 뒤 합차 공식으로 인수분해한다.",
+                      "decisiveStep":  "(x²+3)²−x²=(x²+x+3)(x²−x+3)이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "인수분해",
+                                      "l3":  "인수분해 공식",
+                                      "l4":  "합과 차"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "나머지정리로 f(1)=3, f(−2)=−3을 얻고 두 근을 갖는 나머지를 ax+b로 놓아 계수를 구한다.",
+                      "decisiveStep":  "a+b=3, −2a+b=−3에서 a=2, b=1이므로 R(3)=7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "삼차식의 나머지를 a(x−1)²+x+2로 놓고 x=2에서의 나머지 값 조건으로 a를 찾는다.",
+                      "decisiveStep":  "x=2 대입에서 4=a+4라서 a=0이고 R(3)=5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "(x+y)²에서 xy를 구한 다음 x⁴+y⁴=(x²+y²)²−2x²y²를 사용한다.",
+                      "decisiveStep":  "xy=1이므로 7²−2·1²=47이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 곱셈",
+                                      "l4":  "곱셈공식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "(x−1)²으로 나누어떨어지는 조건을 나머지정리에 따라 f(1)=0과 몫을 다시 x−1로 나눈 나머지가 0인 조건으로 계수를 정한다.",
+                      "decisiveStep":  "f(1)=a+b+1=0과 몫을 한 번 더 나눈 나머지 a+3=0에서 a=−3, b=2를 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "인수정리",
+                                      "l4":  "미정계수 결정"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 이차식의 공통 부분 x²−4x를 X로 치환해 낮은 차수의 식으로 인수분해한다.",
+                      "decisiveStep":  "(X+3)(X−2)−6=(X+4)(X−3)이므로 원래 식은 (x−2)²(x²−4x−3)이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "인수분해",
+                                      "l3":  "인수분해의 활용",
+                                      "l4":  "식의 값"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "x+y와 x²+y²에서 xy를 구하고 세제곱합과 다섯제곱합의 점화 관계를 차례로 쓴다.",
+                      "decisiveStep":  "xy=−1, x³+y³=4이므로 (x²+y²)(x³+y³)−x²y²(x+y)=11이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 곱셈",
+                                      "l4":  "고차식 전개"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "나머지 조건으로 f=(x²+1)(ax+b)+x+1로 놓고 f(0)=2와 f(1)=0을 이용해 a,b를 정한다.",
+                      "decisiveStep":  "b=1, a=−2가 되어 f(2)=−3·5+3=−12이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "x=2를 기준으로 계수 2, −5, 5, 4에 조립제법을 적용해 몫과 나머지를 읽는다.",
+                      "decisiveStep":  "계수 결과가 2, −1, 3, 10이어서 몫 2x²−x+3과 나머지 10을 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 나눗셈",
+                                      "l4":  "다항식을 일차식으로 나누기"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  25,
+                      "questionUid":  "",
+                      "primaryMethod":  "2024=2023+1로 보고 거듭제곱을 일차식 x−1로 나눈 나머지 문제로 바꾸어 x=1을 대입한다.",
+                      "decisiveStep":  "x¹⁰의 x=1 값은 1이므로 2024¹⁰을 2023으로 나눈 나머지도 1이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "일차식으로 나눈 나머지"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  26,
+                      "questionUid":  "",
+                      "primaryMethod":  "구하는 나머지를 a(x−1)²+2x−1로 두고 x=−1에서 f(−1)=1을 대입해 a를 정한다.",
+                      "decisiveStep":  "4a−3=1에서 a=1이므로 R(2)=1+4−1=4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  27,
+                      "questionUid":  "",
+                      "primaryMethod":  "x²−1의 두 근 1과 −1에서 다항식 값을 구해 일차 나머지 ax+b의 계수를 연립한다.",
+                      "decisiveStep":  "대입 결과 a+b=4, −a+b=0이므로 R(x)=2x+2, R(2)=6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  28,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 나눗셈 조건에서 f(2)=7, f(3)=8을 얻은 뒤 구하는 나머지 ax+b의 두 값을 맞춘다.",
+                      "decisiveStep":  "2a+b=7, 3a+b=8에서 a=1, b=5이므로 나머지는 x+5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "나머지정리",
+                                      "l4":  "고차식 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  29,
+                      "questionUid":  "",
+                      "primaryMethod":  "x³−y³를 (x−y)³+3xy(x−y)로 나타내어 차와 곱을 대입한다.",
+                      "decisiveStep":  "2³+3·3·2=26이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 곱셈",
+                                      "l4":  "곱셈공식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  30,
+                      "questionUid":  "",
+                      "primaryMethod":  "항등식에서 x−1이 1이 되도록 x=2를 대입해 우변을 a+b+c 형태로 만든다.",
+                      "decisiveStep":  "좌변 2²−2−2가 0이므로 a+b+c=0이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "항등식",
+                                      "l4":  "수치대입법"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  31,
+                      "questionUid":  "",
+                      "primaryMethod":  "a³+b³+c³−3abc를 세 변의 차 제곱들의 합에 비례하는 식으로 인수분해하고 변의 길이가 양수임을 쓴다.",
+                      "decisiveStep":  "세 제곱의 합이 0이 되려면 a=b=c여야 하므로 삼각형은 정삼각형이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "인수분해",
+                                      "l3":  "인수분해 공식",
+                                      "l4":  "이차식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  32,
+                      "questionUid":  "",
+                      "primaryMethod":  "나눗셈 관계 f(x)=(x²+1)(x−1)+2x+1에 x=2를 대입해 함수값을 계산한다.",
+                      "decisiveStep":  "(5)(1)+5=10이므로 f(2)=10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "다항식의 연산",
+                                      "l3":  "다항식의 나눗셈",
+                                      "l4":  "몫과 나머지"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

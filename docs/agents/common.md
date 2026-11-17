@@ -3,6 +3,16 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## CURRENT — 먼저 병합하고, 수리는 마지막에 관제가 모아서 한다 (2026-11-17, 사용자 결정)
+
+이 절이 아래 "공유 데이터 고정값" 6번과 다른 문서의 "병합 전에 PR CI가 전부 녹색인지 확인" 문구보다 우선한다.
+
+- **CI 녹색은 병합 조건이 아니다.** 검수를 통과한 변경은 CI 결과와 관계없이 병합한다. CI를 고치느라 병합을 세워 두지 않는다.
+- **수리는 병합이 끝난 뒤 마지막에 한다.** 병합 중에 보인 CI 실패는 그 자리에서 고치지 않고 수리 목록에 적어 둔다(실패한 검사, 처음 빨개진 커밋·PR, 짐작되는 원인). 병합 묶음이 끝나면 목록을 한꺼번에 고친다.
+- **수리는 관제 세션(병합 순서를 잡는 Claude 메인)이 맡는다.** 각 작업 줄은 자기 PR의 CI를 고치느라 멈추지 않고, 실패를 관제에 알리고 다음 일을 한다. 관제가 수정 작업자와 검수자를 붙여 고친다. 다른 줄이 낸 영수증·고정값이 승인된 변경으로 낡은 경우도 관제가 수정 절차로 갱신한다(사용자 승인 범위 안에서, 갱신 기록을 남긴다).
+- **유지하는 것:** 수정자와 다른 검수자의 검수, 바꾼 부분의 관련 테스트 실행, 아래 고정값 절차 1~5번, 테스트·검사를 약하게 만들어 통과시키지 않는 원칙, 보호 규칙 우회·강제 push 금지. 학생 화면이 실제로 깨지는 결함(문항이 안 열림, 그림 깨짐, 정답 오류)은 CI와 별개로 검수에서 잡는다.
+- 이유: 2026-11-16~17 밤사이 다른 작업 줄의 병합으로 main CI가 계속 빨갰고, 검수를 통과한 변경 여러 건이 CI 수리를 기다리며 하루 가까이 멈췄다. 한 건을 고치는 사이 다음 병합이 새 실패를 만들어 끝이 없었다. 사용자: "맨날 CI 고치고 있냐. 병합 후에 제일 마지막에 고칠 거 고치자. 수리 필요한 건 여기서 다 수리."
+
 ## CURRENT HARD — 공유 데이터 고정값: 원본 시험지·공유 크로스워크·생성문항 Meta (2026-11-03, 사용자 지시)
 
 Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](metadata.md) "공유 크로스워크" CURRENT 절에 있다.
@@ -14,7 +24,7 @@ Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](me
 4. CROSSWALK_DIGEST_NOT_SEALED가 나오면 검사를 끄거나 우회하지 않는다. 해당 공식 도구를 `--write`로 다시 돌려 봉인을 만들고 `--check`로 확인한다. EXISTING_APPROVED_UID_REQUIRES_PINPOINT_REPAIR가 나오면 원인을 조사해 보고한다. 승인 영수증(alive/)과 metaFinalSha256은 고치지 않는다.
 5. 원본 시험지 JS(`archive/exams/original`)를 고칠 때는 바뀐 필드(content·answer·choices·solution)를 확인하고, 그 시험지를 고정한 생성문항·테스트 해시가 있는지 grep으로 찾는다(예: `tests/archive2-generated-bank-registration.test.js`). solution만 바뀌었으면 같은 PR에서 고정 해시를 갱신하고 "해설만 수정, 문제·정답·보기 변경 없음" 주석을 단다. content·answer·choices가 바뀌었으면 고정값을 바꾸지 말고 멈춰서 보고한다. 그 문항에서 나온 생성문항을 다시 검토해야 하기 때문이다.
    골든 표본 시험지(`25_효천고_2학기_중간_고1_기출.js`, `25_매산여고_2학기_중간_고1_기출.js`)의 해설 그림(solutionImage*, imageSize*)만 바꿨다면 m2 CREATE gate 테스트 10개가 GOLDEN_SAMPLE_SHA256_MISMATCH로 깨지므로, 같은 PR에서 `node archive/tools/rebind-m2-create-golden-sample-evidence.mjs --source <시험지 경로>`(dry-run) → 같은 명령에 `--write` → `tests/m2-*create-gate*.test.js` 순서로 고정값을 다시 묶는다. 이유: 그림 필드 외(content·answer·choices·solution·문항 수)가 바뀌었으면 도구가 REFUSE하므로 검사를 약하게 하지 않고 안전하게 재고정할 수 있다.
-6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI가 전부 녹색인지 확인한다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime contract"를 본다. 빨간 CI로는 병합하지 않는다. 내 변경과 무관한 기존 실패라면 main에서도 실패한다는 근거를 PR에 적고 사용자에게 보고한다. PR 기술검사는 고정 event base와 실제 검증 snapshot에 결속한다. 이후 main 이동은 병합 충돌·보호 규칙과 별도로 확인하며, 바뀐 입력·직접 의존성·검사기에 해당하는 검사만 재실행한다. 무관한 main 이동만으로 전체 Archive 검사를 반복하지 않는다(이력 재작성·강제 push 금지).
+6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI의 실패 목록을 읽는다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime contract"를 본다. 실패가 있어도 병합하고, 실패한 검사와 짐작되는 원인을 PR에 한 줄 적어 관제의 수리 목록에 넘긴다(2026-11-17 사용자 결정, 위 절). PR 기술검사는 고정 event base와 실제 검증 snapshot에 결속한다. 이후 main 이동은 병합 충돌·보호 규칙과 별도로 확인하며, 바뀐 입력·직접 의존성·검사기에 해당하는 검사만 재실행한다. 무관한 main 이동만으로 전체 Archive 검사를 반복하지 않는다(이력 재작성·강제 push 금지).
 7. 보고에는 한 일, 확인 근거(실행한 명령과 결과), 남은 일, 사용자 결정이 필요한 것을 쓴다. 돌리지 않은 검사는 NOT_RUN으로 적는다.
 
 ## CURRENT TOP — 작업별 진입 / 과거 Notion 필독 해제 (2026-10-22)

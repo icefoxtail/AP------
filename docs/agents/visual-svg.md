@@ -28,6 +28,14 @@
 
 해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)과 기출 해설 그림 캠페인의 기존 현황·공통 품질 기준은 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 읽는다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`다. Claude 실행 방식과 Codex 실행 방식을 혼용하지 않는다.
 
+### 해설 그림 장부 (2026-11-17)
+
+- 장부는 시험지 하나에 파일 하나다: `archive/tools/geometry-equation/production/exam-figure-ledger/<archive/exams/original 아래 경로>.json`(머리는 `_meta.json`). 옛 한 파일 `exam-figure-ledger.json`은 없앴다. 읽기·쓰기는 `ops/svg-m1/figure_ledger.py`·`figure-ledger.cjs`와 그것을 쓰는 도구(`ledger-upsert.py` 등)로만 하고 손으로 고치지 않는다.
+- 쓰기는 문항 단위다. 이미 PUBLISHED인 문항은 spec의 `published`·`exempt_override`·`demote`로 그 번호를 직접 넘길 때만 바뀐다. 일부 문항만 다시 게시해도 나머지 PUBLISHED는 그대로다. CLOSED는 모든 문항이 PUBLISHED/EXEMPT일 때만 저장된다.
+- 서로 다른 시험지의 그림 PR은 장부에서 충돌하지 않으므로 순서를 기다리지 않고 각자 CI 녹색이면 병합한다. 같은 시험지 파일이 충돌하면 main 판을 받고 그 시험지에 `ledger-upsert.py`를 다시 돌린다. 옛 한 파일을 고친 열린 PR은 `python archive/tools/geometry-equation/ops/svg-m1/figure_ledger.py port-ledger-change --base <갈라진 main 커밋> --head <브랜치>`로 옮긴다(PUBLISHED를 내리는 변경은 충돌로 멈춘다).
+- 전체 요약 `production/exam-figure-queue.md`는 게시 때 고치지 않고, 필요할 때 `figure_ledger.py queue`로 다시 만든다.
+- 이유: 한 파일 장부를 모든 그림 PR이 고쳐 서로 다른 시험지 PR도 하나씩만 병합됐고, 부분 게시가 기존 PUBLISHED를 OPEN으로 덮은 사고(22개 시험지 402문항, PR #1778로 복구)가 있었다.
+
 ### Codex 실행 경로 (2026-11-04, 사용자 지시)
 
 Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/HANDOFF_SVG_CODEX.md)을 먼저 읽는다. 현재 관리자는 Astra medium이며, ROOT가 원문과 실제 문제 그림을 확인해 시험지와 정확한 문항별로 쓰기 경로가 겹치지 않게 배정한다. 제작은 서로 다른 `gpt-6-luna` high 인스턴스 여러 명이 맡고, 각 제작자는 배정된 문항의 원문·해설·실제 그림을 읽어 자기 run 안에서만 초안과 지적 수리를 한다. 별도 `gpt-6-luna` xhigh가 실제 렌더된 SVG·PNG와 alt·caption을 독립 검수하고, 바뀐 해시만 재검한다. ROOT는 모든 최종 SVG와 PNG를 직접 확인하고 전체 렌더 큐·게시·원장·Git을 책임진다. 엔진 업그레이드·엔진 공백 진단·어려운 문항이나 배치 차단은 `gpt-6.1-sol` high가 맡는다. 어려움·범위·실패 횟수에 따라 Astra로 자동 승격하지 않으며, 담당을 바꾸려면 사용자의 별도 지시가 필요하다. 기존 Astra 완료 진단은 과거 이력으로 보존한다. 관리자 추론 수준은 Astra medium으로 유지한다. 이 라인에서는 DeepSeek·OpenCode를 사용하지 않으며 모델 연결 실패를 조용히 대체하지 않는다. 이유: 현재 담당을 분명히 하면서 기존 완료 기록과 별도 사용자 승인 경계를 보존하기 위해서다.

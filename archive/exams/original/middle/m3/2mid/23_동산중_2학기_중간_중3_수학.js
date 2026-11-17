@@ -348,7 +348,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "코사인으로 한 직각변을 구한 뒤 피타고라스로 나머지 변을 얻어 탄젠트로 바꾼다.",
-    "decisiveStep": "코사인으로 한 직각변을 구한 뒤 피타고라스로 나머지 변을 얻어 탄젠트로 바꾼다."
+    "decisiveStep": "코사인으로 한 직각변을 구한 뒤 피타고라스로 나머지 변을 얻어 탄젠트로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -486,7 +489,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "특수각의 삼각비 값을 각각 대입하여 계산 결과의 일치를 확인한다.",
-    "decisiveStep": "특수각의 삼각비 값을 각각 대입하여 계산 결과의 일치를 확인한다."
+    "decisiveStep": "특수각의 삼각비 값을 각각 대입하여 계산 결과의 일치를 확인한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -579,7 +585,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "사분원의 반지름을 직각삼각형의 이웃변으로 읽고 탄젠트 정의에서 목표 수선을 바로 표현한다.",
-    "decisiveStep": "사분원의 반지름을 직각삼각형의 이웃변으로 읽고 탄젠트 정의에서 목표 수선을 바로 표현한다."
+    "decisiveStep": "사분원의 반지름을 직각삼각형의 이웃변으로 읽고 탄젠트 정의에서 목표 수선을 바로 표현한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -621,7 +630,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내각비와 내각합으로 A=30°를 얻고 tan·cos 관계로 식을 2tan A로 단순화하여 특수값을 대입한다.",
-    "decisiveStep": "내각비와 내각합으로 A=30°를 얻고 tan·cos 관계로 식을 2tan A로 단순화하여 특수값을 대입한다."
+    "decisiveStep": "내각비와 내각합으로 A=30°를 얻고 tan·cos 관계로 식을 2tan A로 단순화하여 특수값을 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -666,7 +678,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 각의 이웃변을 기준으로 코사인과 탄젠트의 정의를 각각 써서 빗변과 맞은편 변을 표시한다.",
-    "decisiveStep": "주어진 각의 이웃변을 기준으로 코사인과 탄젠트의 정의를 각각 써서 빗변과 맞은편 변을 표시한다."
+    "decisiveStep": "주어진 각의 이웃변을 기준으로 코사인과 탄젠트의 정의를 각각 써서 빗변과 맞은편 변을 표시한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -711,7 +726,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다.",
-    "decisiveStep": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다."
+    "decisiveStep": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -852,7 +870,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다.",
-    "decisiveStep": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다."
+    "decisiveStep": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,
@@ -943,7 +964,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "탄젠트로 눈높이 위의 건물 높이를 구하고 눈높이를 더해 전체 높이를 구한다.",
-    "decisiveStep": "탄젠트로 눈높이 위의 건물 높이를 구하고 눈높이를 더해 전체 높이를 구한다."
+    "decisiveStep": "탄젠트로 눈높이 위의 건물 높이를 구하고 눈높이를 더해 전체 높이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
