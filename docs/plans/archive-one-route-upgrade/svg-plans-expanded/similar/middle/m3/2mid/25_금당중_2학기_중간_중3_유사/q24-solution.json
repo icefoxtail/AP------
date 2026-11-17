@@ -1,0 +1,540 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "같은 현의 절반과 반지름"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "co",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lM",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O",
+                "lM"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lN",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O",
+                "lN"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "M",
+          "N"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "co"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sOC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "sOM",
+            "refs": [
+              "O",
+              "M"
+            ]
+          },
+          {
+            "id": "sON",
+            "refs": [
+              "O",
+              "N"
+            ]
+          },
+          {
+            "id": "sAM",
+            "refs": [
+              "A",
+              "M"
+            ]
+          },
+          {
+            "id": "sCN",
+            "refs": [
+              "C",
+              "N"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "radii",
+              "count": 1,
+              "segments": [
+                "sOA",
+                "sOC"
+              ]
+            },
+            {
+              "id": "halves",
+              "count": 2,
+              "segments": [
+                "sAM",
+                "sCN"
+              ]
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rm",
+            "refs": [
+              "O",
+              "M",
+              "A"
+            ]
+          },
+          {
+            "id": "rn",
+            "refs": [
+              "O",
+              "N",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "같은 방향으로 놓은 두 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "M",
+          "P",
+          "C",
+          "N"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sAM",
+            "refs": [
+              "A",
+              "M"
+            ]
+          },
+          {
+            "id": "sMO",
+            "refs": [
+              "M",
+              "O"
+            ]
+          },
+          {
+            "id": "sPC",
+            "refs": [
+              "P",
+              "C"
+            ]
+          },
+          {
+            "id": "sCN",
+            "refs": [
+              "C",
+              "N"
+            ]
+          },
+          {
+            "id": "sNP",
+            "refs": [
+              "N",
+              "P"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lOA",
+              "ownerSegment": "sOA",
+              "text": "r"
+            },
+            {
+              "id": "lPC",
+              "ownerSegment": "sPC",
+              "text": "r"
+            },
+            {
+              "id": "lAM",
+              "ownerSegment": "sAM",
+              "text": "a"
+            },
+            {
+              "id": "lCN",
+              "ownerSegment": "sCN",
+              "text": "a"
+            }
+          ]
+        },
+        "pointNames": {
+          "P": "O′"
+        },
+        "rightAngles": [
+          {
+            "id": "rm",
+            "refs": [
+              "O",
+              "M",
+              "A"
+            ]
+          },
+          {
+            "id": "rn",
+            "refs": [
+              "P",
+              "N",
+              "C"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "같은 반지름과 같은 반쪽 현을 대응시켜 두 직각삼각형을 비교한다. 오른쪽은 원래 삼각형을 같은 축척·방향으로 옮겨 놓은 것이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=CD, M,N은 중심에서 각 현에 내린 수선의 발.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "5·3·4는 증명 설명용 실현값이며 그림에는 일반 길이 r,a로 표시한다. 합동의 결론과 OM=ON은 미리 적지 않는다."
+  ],
+  "accessibilityDescription": "같은 반지름과 같은 반쪽 현을 대응시켜 두 직각삼각형을 비교한다. 오른쪽은 원래 삼각형을 같은 축척·방향으로 옮겨 놓은 것이다."
+}
