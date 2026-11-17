@@ -177,9 +177,9 @@ export function nativeLanes(root) {
 }
 
 export function executeCommands({root, work, lane, env}) {
-  const advisories=[];
+  const advisories=[],commandTimings=[];
   for(const [n,command] of lane.commands.entries()) {
-    const logfile=path.join(work,`${lane.logId||lane.id}-${n+1}.log`),fd=fs.openSync(logfile,'w');
+    const logfile=path.join(work,`${lane.logId||lane.id}-${n+1}.log`),fd=fs.openSync(logfile,'w'),startedAt=Date.now();
     let result;
     const isolatedGroup=process.platform!=='win32';
     try { result=spawnSync(command.program,command.args,{cwd:root,env:{...env,...command.env},stdio:['ignore',fd,fd],
@@ -193,14 +193,16 @@ export function executeCommands({root, work, lane, env}) {
       }
       fs.closeSync(fd);
     }
+    // Instrumentation only: wall time of this native command, bounded label, never part of any digest.
+    commandTimings.push({n:n+1,command:[command.program,...command.args].join(' ').slice(0,120),durationMs:Date.now()-startedAt,exitCode:result.status});
     if(result.status!==0) {
       const detail={command:[command.program,...command.args],exitCode:result.status,signal:result.signal,
         log:logfile,error:String(result.error?.message||fs.readFileSync(logfile,'utf8').slice(-3000))};
       if(command.advisory){advisories.push(detail);continue;}
-      const e=Error(`NATIVE_COMMAND_FAILED:${lane.id}:${n+1}`);e.detail=detail;throw e;
+      const e=Error(`NATIVE_COMMAND_FAILED:${lane.id}:${n+1}`);e.detail=detail;e.commandTimings=commandTimings;throw e;
     }
   }
-  return {advisories};
+  return {advisories,commandTimings};
 }
 
 function checkPreserved(root,beforeRows,beforeSeals) {
@@ -255,6 +257,98 @@ function writeEvidence(work,report,outputs) {
   if(outputs)fs.writeFileSync(path.join(work,'commit.paths'),[...outputs,STATE].join('\n')+'\n');
 }
 
+// Read-only run instrumentation. Everything below only reads the native producers' uncommitted run files and
+// writes into this writer's evidence report; no lane digest, writer-state.json or committed output uses it.
+const TOP_N=20;
+const readJsonSafe=file=>{try{return JSON.parse(fs.readFileSync(file,'utf8'));}catch{return null;}};
+const embeddedJson=text=>{const a=text.indexOf('{'),b=text.lastIndexOf('}');if(a<0||b<a)return null;try{return JSON.parse(text.slice(a,b+1));}catch{return null;}};
+export function readStageTimes(file) {
+  let text;try{text=fs.readFileSync(file,'utf8');}catch{return null;}
+  const rows=[];
+  for(const line of text.split(/\r?\n/)) {
+    if(!line.trim()||rows.length>=40)continue;
+    try{const r=JSON.parse(line);if(typeof r.stage==='string'&&Number.isFinite(r.durationMs))rows.push({stage:r.stage.slice(0,64),durationMs:r.durationMs,exitCode:Number(r.exitCode)||0});}catch{/* partial last line */}
+  }
+  return rows;
+}
+// materialize-meta-v2-payloads silently skips a META_V2 payload whose recorded exam blob differs from the current
+// exam source (it only lists them in its own stdout JSON). Lift that list: per payload file, with its question count.
+export function staleMaterializedPayloads(root, summary) {
+  if(!summary||typeof summary!=='object'||!Array.isArray(summary.stalePayloads))return null;
+  const base=path.resolve(root),files=summary.stalePayloads.map(rel=>{
+    const row={payload:String(rel).slice(0,200),sourceArchiveFile:null,rows:null},full=path.resolve(base,String(rel));
+    if(full.startsWith(base+path.sep)) {
+      const p=readJsonSafe(full);
+      if(p){row.sourceArchiveFile=typeof p.sourceArchiveFile==='string'?p.sourceArchiveFile.slice(0,200):null;row.rows=Array.isArray(p.rows)?p.rows.length:null;}
+    }
+    return row;
+  }).sort((a,b)=>(b.rows??0)-(a.rows??0)||(a.payload<b.payload?-1:a.payload>b.payload?1:0));
+  return {reason:'SOURCE_BLOB_MISMATCH',count:Number.isInteger(summary.stalePayloadCount)?summary.stalePayloadCount:files.length,
+    questions:files.reduce((n,f)=>n+(f.rows||0),0),questionsUnknownFor:files.filter(f=>f.rows===null).length,
+    files:files.slice(0,TOP_N),otherFiles:Math.max(0,files.length-TOP_N),otherQuestions:files.slice(TOP_N).reduce((n,f)=>n+(f.rows||0),0)};
+}
+export function laneInstrumentation({laneId, nativeWork, sharedEvidence, root, result}) {
+  const out={};
+  if(Array.isArray(result?.commandTimings)&&result.commandTimings.length)out.commands=result.commandTimings.slice(0,24);
+  try {
+    if(laneId==='semantic') {
+      const dir=path.join(nativeWork,'archive-main-auto-meta'),stages=readStageTimes(path.join(dir,'stage-times.jsonl'));
+      if(stages)out.stages=stages;
+      const auto=readJsonSafe(path.join(dir,'report.json'))?.instrumentation;
+      if(auto)out.autoMeta=auto;
+      const stale=staleMaterializedPayloads(root,readJsonSafe(path.join(dir,'materialize.json')));
+      if(stale)out.staleMetaV2Payloads=stale;
+    } else if(laneId==='shared') {
+      let text=null;try{text=fs.readFileSync(path.join(sharedEvidence,'meta-v2-materializer-write.log'),'utf8');}catch{/* lane did not materialize */}
+      const stale=text&&staleMaterializedPayloads(root,embeddedJson(text));
+      if(stale)out.staleMetaV2Payloads=stale;
+    }
+  } catch(error) { out.collectionError=String(error.message||error).slice(0,200); }
+  return Object.keys(out).length?out:undefined;
+}
+
+// Bounded human-readable view of the run instrumentation (tables are cut; full data stays in report.json).
+function renderInstrumentation(lanes, cell) {
+  const lines=[],sec=n=>Number.isFinite(n)?(n/1000).toFixed(1):'-',withInstr=lanes.filter(r=>r.instrumentation);
+  const timed=lanes.filter(r=>Number.isFinite(r.durationMs));
+  if(timed.length)lines.push('','#### Lane time','','| lane | result | seconds |','| --- | --- | ---: |',
+    ...timed.slice(0,24).map(r=>`| ${cell(r.id,64)} | ${cell(r.status,32)} | ${sec(r.durationMs)} |`));
+  for(const r of withInstr.slice(0,8)) {
+    const i=r.instrumentation;
+    if(i.stages?.length)lines.push('',`#### ${cell(r.id,40)}: time per step`,'','| step | seconds | exit |','| --- | ---: | ---: |',
+      ...i.stages.slice(0,24).map(s=>`| ${cell(s.stage,48)} | ${sec(s.durationMs)} | ${Number(s.exitCode)||0} |`));
+    else if(i.commands?.length>1)lines.push('',`#### ${cell(r.id,40)}: time per command`,'','| command | seconds | exit |','| --- | ---: | ---: |',
+      ...i.commands.slice(0,12).map(c=>`| ${cell(c.command,64)} | ${sec(c.durationMs)} | ${Number(c.exitCode)||0} |`));
+  }
+  const auto=[...withInstr].reverse().find(r=>r.instrumentation.autoMeta)?.instrumentation.autoMeta;
+  if(auto?.run) {
+    const run=auto.run,o=auto.origin,b=auto.backlogAfterRun;
+    lines.push('','#### Automatic registration (this run)','',
+      `targets=${run.targets}; attempted=${run.attempted} (limit ${run.batchLimit}); registered=${run.applied} UIDs (${run.requestFiles} request, ${run.receiptFiles} receipt files); already registered=${run.alreadyRegistered}; refused=${run.refused}; skipped unchanged=${run.unchangedSkipped}; not reached (limit)=${run.notReachedBudget}`);
+    if(o?.available)lines.push('',`This merge's questions: ${o.thisMergeDiff.questions} (${o.thisMergeDiff.changedExamFiles} exam files; attempted ${o.thisMergeDiff.attempted}; not reached because of the limit ${o.thisMergeQuestionsNotReachedBecauseOfBudget}). Queued backlog questions in this run: ${o.queuedBacklog.questions} (attempted ${o.queuedBacklog.attempted}).`);
+    const files=auto.attemptedByFile;
+    if(files?.top?.length)lines.push('','| attempted exam file | attempted | registered | already | refused |','| --- | ---: | ---: | ---: | ---: |',
+      ...files.top.slice(0,TOP_N).map(f=>`| ${cell(f.name,80)} | ${f.total} | ${f.registered} | ${f.alreadyRegistered} | ${f.refused} |`),
+      ...(files.otherFiles?[`| (${files.otherFiles} more files) | ${files.otherCount} | | | |`]:[]));
+    if(b) {
+      lines.push('',`Backlog after run: pending=${b.pendingTotal} (before run ${auto.pendingBeforeRun}); never signed/attempted=${b.withoutAttemptSignature}; attempted and refused=${b.attemptedRefused}; refusal reason atoms=${b.reasonAtomTotal} (an entry can carry several reasons: ${b.entriesWithMultipleReasons} do); distinct base commits=${b.distinctBaseCommits}`);
+      if(b.oldestBaseCommit)lines.push(`Oldest base commit: ${cell(b.oldestBaseCommit.commit,12)} (${cell(b.oldestBaseCommit.committedAt,25)}), ${b.oldestBaseCommit.count} entries.`);
+      if(b.reasons?.top?.length)lines.push('','| refusal reason | entries |','| --- | ---: |',
+        ...b.reasons.top.slice(0,10).map(x=>`| ${cell(x.name,80)} | ${x.count} |`),
+        ...(b.reasons.top.length>10||b.reasons.otherNames?[`| (other reasons) | ${b.reasons.top.slice(10).reduce((n,x)=>n+x.count,0)+b.reasons.otherCount} |`]:[]));
+    }
+  }
+  for(const r of withInstr.slice(0,8)) {
+    const s=r.instrumentation.staleMetaV2Payloads;
+    if(!s)continue;
+    lines.push('',`#### Reviewed payloads skipped because the exam source changed (${cell(r.id,40)}): ${s.count} payloads, ${s.questions} questions`);
+    if(s.files.length)lines.push('','| payload | exam file | questions |','| --- | --- | ---: |',
+      ...s.files.slice(0,10).map(f=>`| ${cell(f.payload,80)} | ${cell(f.sourceArchiveFile,60)} | ${f.rows??'?'} |`),
+      ...(s.files.length>10||s.otherFiles?[`| (${Math.max(0,s.files.length-10)+s.otherFiles} more payloads) | | ${s.files.slice(10).reduce((n,f)=>n+(f.rows||0),0)+s.otherQuestions} |`]:[]));
+  }
+  return lines;
+}
+
 // Native producers retain their complete JSON/error summaries in the uploaded
 // evidence directory. Only this bounded overview reaches GitHub's 1 MiB step
 // summary, including when a main race repeats preparation in the persist step.
@@ -267,6 +361,7 @@ export function renderRegistrationSummary(result) {
     '| lane | result | error code |','| --- | --- | --- |',
     ...shown.map(r=>`| ${cell(r.id,64)} | ${cell(r.status,48)} | ${cell(r.error,100)} |`)];
   if(shown.length<lanes.length)lines.push('',`${lanes.length-shown.length} additional lane records are in report.json.`);
+  lines.push(...renderInstrumentation(lanes,cell));
   if(result.whitespace)lines.push('',`Git whitespace: ${cell(result.whitespace.status)}; raw Git exit=${cell(result.whitespace.rawGitExitCode,12)}; inherited source lines=${Number(result.whitespace.inheritedLineCount)||0}; byte-bound assets=${result.whitespace.inheritedAssets?.length||0}.`);
   lines.push('','Full report.json, native-step-summary.md and native command logs are retained in the archive-main-registration workflow artifact.','');
   return lines.join('\n');
@@ -348,6 +443,8 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
         report.lanes.push(finalRecord);
         try {
           const result=await execute({root,work,lane:finalLane,env:executionEnv,prior:laneState});
+          const finalInstrumentation=regenerated?laneInstrumentation({laneId:lane.id,nativeWork,sharedEvidence:writerEnv.RELEASE_EVIDENCE_DIR,root,result}):undefined;
+          if(finalInstrumentation)finalRecord.instrumentation=finalInstrumentation;
           // AutoMeta's native verify persists its deterministic last-verification record.
           const files=unstaged(root);guardFiles(files,lane.outputs,'FINAL_CONSUMER');stage(root,files);
           checkPreserved(root,before,initialSeals);
@@ -387,16 +484,20 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     try {
       const executionEnv=environmentFor(lane,record,current);
       const result=await execute({root,work,lane,env:executionEnv,prior:laneState});
+      const instrumentation=laneInstrumentation({laneId:lane.id,nativeWork,sharedEvidence:writerEnv.RELEASE_EVIDENCE_DIR,root,result});
       const files=unstaged(root);guardFiles(files,lane.outputs,lane.id.toUpperCase());stage(root,files);
       checkPreserved(root,before,initialSeals);
       Object.assign(record,{status:'VERIFIED',durationMs:Date.now()-started,changedCount:files.length,advisories:result?.advisories||[],
+        ...(instrumentation?{instrumentation}:{}),
         verifiedInputDigest:inputFingerprint(indexRows(root),lane),verifiedOutputDigest:fingerprint(indexRows(root),lane.outputs),
         needsContinuation:lane.continuation?lane.continuation({root,env:executionEnv}):false});
     } catch(error) {
       // Unexpected source writes are never waived or hidden behind lane isolation.
       if(/^UNEXPECTED_|^IMMUTABLE_|^EXISTING_CROSSWALK/.test(error.message))throw error;
+      const instrumentation=laneInstrumentation({laneId:lane.id,nativeWork,sharedEvidence:writerEnv.RELEASE_EVIDENCE_DIR,root,result:error});
       rollbackUnstaged(root,lane.outputs);
-      Object.assign(record,{status:'FAILED',durationMs:Date.now()-started,error:error.message,...(error.detail?{detail:error.detail}:{})});
+      Object.assign(record,{status:'FAILED',durationMs:Date.now()-started,error:error.message,...(error.detail?{detail:error.detail}:{}),
+        ...(instrumentation?{instrumentation}:{})});
       if(lane.id==='shared')rollbackShared();
     }
   }
