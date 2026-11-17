@@ -644,8 +644,10 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');
+  // ExamSourceReader must load before Archive2Source in the clinic print loader.
+  assert.ok(clinic.indexOf("'exam-source-reader'") > 0 && clinic.indexOf("'exam-source-reader'") < clinic.indexOf("'archive2-source'"));
   assert.match(clinic, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(clinic, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // APMS moved clinic-print.js on with the clinic workspace (M7, 2026-11-02).
-  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=20261102-(ws-clinic|perf)-1/);
+  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=(20261102-(ws-clinic|perf)-1|20261117-reader-1)/);
 });
