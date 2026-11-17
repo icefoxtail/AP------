@@ -51,3 +51,44 @@ test('visual technical pin cannot claim a Git tree without the captured file',t=
 test('visual technical pin cannot claim an unavailable publication commit',t=>{const f=gitFixture(t),r=f.ref('capture-only.js');assert.throws(()=>ui.visualTechnicalRef(f.reader,{...r,commit:'e'.repeat(40)},currentRef(r),f.ancestor));});
 test('visual technical reference cannot disagree with sidecar path or digest',t=>{const f=gitFixture(t),r=f.ref('capture-only.js');for(const mismatch of [{...currentRef(r),path:'runtime.js'},{...currentRef(r),sha256:'0'.repeat(64)}])assert.throws(()=>ui.visualTechnicalRef(f.reader,r,mismatch,f.ancestor),/VISUAL_TECHNICAL_REF/);});
 test('visual technical historical pin does not waive a changed live file',t=>{const f=gitFixture(t),r=f.ref('capture-only.js');f.save('capture-only.js','changed after review');assert.throws(()=>ui.visualTechnicalRef(f.reader,r,currentRef(r),f.ancestor),/LIVE_BYTES_CHANGED/);});
+
+const SVG_INDEX='archive/data/svg-accessibility-index.js';
+function generatedSvgFixture(t){
+ const f=gitFixture(t);f.save(SVG_INDEX,svg([record]));f.run('add',SVG_INDEX);
+ f.run('-c','user.name=Synthetic','-c','user.email=fixture@example.invalid','commit','-qm','synthetic captured SVG data');
+ const capture=f.run('rev-parse','HEAD'),captured=f.ref(SVG_INDEX,capture);
+ const walk=p=>fs.readdirSync(p,{withFileTypes:true}).flatMap(d=>d.isDirectory()?walk(path.join(p,d.name)):[path.join(p,d.name)]);
+ const reader=route.collect(f.root,{safe:(r,p)=>path.join(r,p),walk,sha:route.sha}).get(route.SUBJECTS[0].sourceArchiveFile)[0].reader;
+ const stage=rows=>{const bytes=svg(rows);f.save(SVG_INDEX,bytes);f.run('add',SVG_INDEX);return bytes;};
+ const check=()=>ui.svgContinuity(ui.capturedRef(reader,captured,capture),ui.currentData(reader,SVG_INDEX),assets);
+ return{...f,reader,capture,captured,stage,check};
+}
+test('generated SVG accepts staged outside-row updates before the writer commits',t=>{
+ const f=generatedSvgFixture(t),bytes=f.stage([record,{...record,assetRef:'assets/outside.svg',titleKo:'OTHER'}]);
+ assert.equal(f.run('rev-parse','HEAD'),f.capture);assert.notEqual(route.blob(bytes),f.captured.gitBlobSha1);
+ const liveRef={path:SVG_INDEX,gitBlobSha1:route.blob(bytes),sha256:route.sha(bytes),bytes:bytes.length};
+ assert.throws(()=>f.reader.read(liveRef,true),/GIT_PATH_BINDING/);
+ f.check();assert.equal(f.reader.observed.get(SVG_INDEX),route.sha(bytes));assert.equal(f.run('rev-parse','HEAD'),f.capture);
+});
+for(const[name,rows]of[
+ ['selected record changed',[{...record,titleKo:'CHANGED'}]],
+ ['selected record missing',[]],
+ ['selected record duplicated',[record,clone(record)]],
+ ['outside record duplicated',[record,{...record,assetRef:'assets/outside.svg'},{...record,assetRef:'assets/outside.svg'}]]
+])test('generated SVG rejects '+name+' before commit',t=>{const f=generatedSvgFixture(t);f.stage(rows);assert.throws(f.check,/SVG_INDEX/);});
+test('generated SVG never treats another current Git input as generated data',t=>{
+ let reads=0;assert.throws(()=>ui.currentData({local:()=>{reads++;return Buffer.from('ignored');}},'runtime.js'),/GENERATED_DATA_PATH/);assert.equal(reads,0);
+});
+test('generated SVG retains regular-file and no-symlink protection',t=>{
+ const f=generatedSvgFixture(t),target=path.join(f.root,SVG_INDEX);f.save('other-svg.js',svg([record]));fs.unlinkSync(target);fs.symlinkSync(path.join(f.root,'other-svg.js'),target);
+ assert.throws(f.check,/SYMLINK/);fs.unlinkSync(target);fs.mkdirSync(target);assert.throws(f.check,/NOT_REGULAR/);
+});
+test('generated SVG still rejects a forged captured Git pin',t=>{
+ const f=generatedSvgFixture(t),bytes=f.stage([record,{...record,assetRef:'assets/outside.svg'}]);
+ const forged={...f.captured,gitBlobSha1:route.blob(bytes),sha256:route.sha(bytes),bytes:bytes.length};
+ assert.throws(()=>ui.capturedRef(f.reader,forged,f.capture),/GIT_PATH_BINDING/);
+});
+test('generated SVG current data still requires the exact non-executable wrapper',t=>{
+ const f=generatedSvgFixture(t);f.save(SVG_INDEX,Buffer.concat([Buffer.from('globalThis.__m1GeneratedBad=true;'),svg([record])]));f.run('add',SVG_INDEX);
+ assert.throws(f.check,/SVG_INDEX_WRAPPER/);assert.equal(globalThis.__m1GeneratedBad,undefined);
+});

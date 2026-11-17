@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-independent-q5-original-publication-shadow-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "m3s2_release",
+  "author": "ci_m2s2",
+  "decision": "STATIC_ACCEPT_EXACT_PRIOR_THREE_PUBLICATION_CONTRACT_ACTUAL_61_PENDING",
+  "inputs": {
+    "manifest": {
+      "gitBlobSha1": "0eb54b3512ae6cba15530ada7ce5bc56da4fecdb",
+      "sha256": "de0ce5c44c60ac9f2c03c1a8d7f695550b5f12f2114c950bdd4ce94a657e316b",
+      "bytes": 1773
+    },
+    "delta": {
+      "gitBlobSha1": "e5c75f01fbe63c2964b56ac63d9925775a735b1c",
+      "sha256": "c3c8c0f490448023be06e8d45a994595f5c862c9954dc3d3f698c1896b67243f",
+      "bytes": 4068
+    },
+    "proof": {
+      "gitBlobSha1": "5490ce85309b694793132673647a6b261f3c744f",
+      "sha256": "f9aa0fb4dd77048fff1d7baa343f4ddd84083adadf25373e4a8a10bec8e9f31b",
+      "bytes": 2768
+    },
+    "preview": {
+      "gitBlobSha1": "5960a0744db1e3979c95b1108856d56a834ab118",
+      "sha256": "a495f97b108967ee291cebc84e8a1942d8b09f52ff1025baa698b1618b8f52c8",
+      "bytes": 116747
+    },
+    "test": {
+      "gitBlobSha1": "132b230ab813a07659f0b07d11f3ae8bffccb2f3",
+      "sha256": "786cd692fcfd2485b91f72ff3a205a0e482aa14d89f03857d3717797ae6cb3ce",
+      "bytes": 22883
+    }
+  },
+  "directlyVerified": {
+    "candidateRawAndGitHashes": 5,
+    "fullCandidateBytesRead": true,
+    "productionMinimalEdits": 2,
+    "testAppendOnlyBlocks": 1,
+    "wholeInverse": [
+      {
+        "path": "tools/ci/archive-pr-native-preview.mjs",
+        "before": {
+          "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+          "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
+          "bytes": 116137
+        },
+        "after": {
+          "gitBlobSha1": "5960a0744db1e3979c95b1108856d56a834ab118",
+          "sha256": "a495f97b108967ee291cebc84e8a1942d8b09f52ff1025baa698b1618b8f52c8",
+          "bytes": 116747
+        },
+        "edits": 2,
+        "inverseExact": true
+      },
+      {
+        "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
+        "before": {
+          "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
+          "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
+          "bytes": 21269
+        },
+        "after": {
+          "gitBlobSha1": "132b230ab813a07659f0b07d11f3ae8bffccb2f3",
+          "sha256": "786cd692fcfd2485b91f72ff3a205a0e482aa14d89f03857d3717797ae6cb3ce",
+          "bytes": 22883
+        },
+        "edits": 1,
+        "inverseExact": true
+      }
+    ],
+    "currentPinnedFunctionWholeExact": true,
+    "currentPinnedFunctionPin": {
+      "gitBlobSha1": "94c973dede2ae836782ef32b3d316ef933a48273",
+      "sha256": "6df5e27621335dfdc2fcc1959b611030183cd22bbae55657dca3b307be2a69c5",
+      "bytes": 549
+    }
+  },
+  "authorityBoundary": {
+    "selector": "One exact requestId and source, Q5/Q12 selected descriptor, unchanged approved-request canonical equality.",
+    "originalMarker": "Original typed application/technical/visual refs and both approval/item evidence plus descriptor evidence all authenticate before originalPrior() is called.",
+    "priorAllowSet": "Only the exact three full five-field tuples in the fixed profile are accepted. No caller-provided other commit, path or content receives the separated publication contract.",
+    "originalPublication": "Fixed commit:path must name the expected regular Git blob. Current HEAD:path must retain expected Git blob, SHA256 and byte count; current regular live file must match HEAD raw bytes.",
+    "originalNativeContract": "Matches existing Q5 Native evidence()/reference(): original immutable publication commit is authenticated, but no publication-branch ancestry predicate is part of that contract.",
+    "currentAncestry": "Existing pinned() body is byte unchanged for all current proof6, current served3, current source and engine. Existing malformed/orphan/unknown-current-ancestor refusals remain.",
+    "writeScope": "Missing-only restore of closed nine readonly current proof/render paths; existing drift, symlink, hardlink, root boundary and final observed rehash unchanged.",
+    "approval": "Hydration grants no Native/registration/semantic approval; original resolver and registrar remain mandatory."
+  },
+  "testDelta": {
+    "previousDefinitions": 54,
+    "newPositive": 1,
+    "newNegatives": 6,
+    "totalExpected": 61,
+    "positive": "Private fixture uses the already real current visual publication as its parent. It requires original publication commit objects present but non-ancestor, and every current ref/source/engine commit to be an ancestor before testing exactly nine copied files and unchanged inputs.",
+    "negatives": "Each of the three original publications independently refuses live-byte append and committed HEAD append.",
+    "preserved": "All original test bodies and definitions inverse byte-exact; no assertions removed.",
+    "privateHistory": "No added parent edge from the original publication is used to force ancestry."
+  },
+  "evidenceLimits": {
+    "historicalGitHub": {
+      "run": "44032859243",
+      "job": "133868687926",
+      "tests": 54,
+      "passed": 40,
+      "failed": 14
+    },
+    "historicalRootLocal": {
+      "tests": 54,
+      "passed": 39,
+      "failed": 15,
+      "stdoutSha256": "a44a85ae2180e5b56408b5e414897467de37d7f7ce2ccdb6a83a7d7066373a4b"
+    },
+    "rootActualGitObservation": {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "head": "af280b2578f743f1ad671f475e77f13f17dbaa87",
+      "commitExistsExit": 0,
+      "ancestorExit": 1
+    },
+    "authorNodeSyntax": "Reported PASS for two files in reviewed proof; reviewer did not execute",
+    "new61": "NOT_RUN_AT_REVIEW",
+    "originalNative": "NOT_RUN_AT_REVIEW",
+    "source49": "NOT_COMPLETE",
+    "historicalFailureCountsDeclaredEquivalent": false
+  },
+  "reviewerActions": {
+    "repoJavaScriptEvaluation": 0,
+    "nodeOrTestExecution": 0,
+    "sourceOrStudentContentReview": 0,
+    "visualOrMathReview": 0,
+    "codeMutation": 0,
+    "refsOrBranches": 0,
+    "main": 0
+  },
+  "nextAction": "Root runs focused61 with exact candidate bytes. Separate author-owned Native correction receives its own independent review; then actual original Native and the existing source49 gate remain required."
+}

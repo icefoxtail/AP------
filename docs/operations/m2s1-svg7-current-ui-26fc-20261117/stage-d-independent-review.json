@@ -1,0 +1,881 @@
+{
+  "schemaVersion": "archive-independent-svg7-current-binding-d-review-v1",
+  "reviewer": "/root/m3s2_release",
+  "reviewedAt": "2026-11-17",
+  "decision": "STATIC_ACCEPT_CLOSED_DISPLAY_REBINDING_SCOPED_EXECUTION_PENDING",
+  "inputPins": {
+    "special-after": {
+      "gitBlobSha1": "ca4f1d36a6c758a5984226c9091e9bb01b38157f",
+      "sha256": "b97aedb8e2752bbebc8feaf324ec1254b07cbde41e5f115daaf2b80cb1a63a90",
+      "bytes": 57228
+    },
+    "generic-after": {
+      "gitBlobSha1": "118b051856ae773e3209d2c1cffdd836ffaf3fcd",
+      "sha256": "b7e02e16d03c1bafe7c77ad42be9d6c81d9b7623dbc10508c17f7a72536d0162",
+      "bytes": 19543
+    },
+    "test-after": {
+      "gitBlobSha1": "1c219cf8e38e983a83dd70efb8021404b498e944",
+      "sha256": "236d3c11a507dcec04cc8e391ec5d6f3535c9a3e9fc62c86fcf05da456ca91a1",
+      "bytes": 16919
+    },
+    "manifest": {
+      "gitBlobSha1": "8adc903324846a7b9166d3728f2a68db05bb27b8",
+      "sha256": "052a182985caa117256518ff140f1cf9438ac5e530a438ea26ec01efedeb46ee",
+      "bytes": 12475
+    },
+    "delta": {
+      "gitBlobSha1": "a23eb251422a66cff9d941e740a8cec326313eea",
+      "sha256": "d838bc0e2b03b98d0a978ff52ef4798297ab849a99c67105efe2809f89c1e917",
+      "bytes": 60122
+    },
+    "authority-physical-axis": {
+      "gitBlobSha1": "3e551265bfe6034a2243bd867293ea42fd2372f3",
+      "sha256": "563b74fa04f9e0c2040c822c203ba5d37079eb7cb6b46161e1640d5563e967f4",
+      "bytes": 6796
+    },
+    "typed": {
+      "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+      "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+      "bytes": 74569
+    },
+    "visual": {
+      "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+      "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+      "bytes": 20912
+    },
+    "artifact-receipt": {
+      "gitBlobSha1": "f708d724013a73990a5d8b21003c013fb3e4626b",
+      "sha256": "ceaef11fd110023b142e60c7a0947e4f95e0a3338abdf2f507ecc5cb0f567fec",
+      "bytes": 1206
+    },
+    "transport-manifest": {
+      "gitBlobSha1": "b9609b1538593a119a4ef51781f5d837fa984d1f",
+      "sha256": "8efd39886dcce55b70b1259cfce0c4b8f04776cf6404796d814d2046741a360b",
+      "bytes": 8521
+    },
+    "builder": {
+      "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+      "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+      "bytes": 41001
+    },
+    "collector": {
+      "gitBlobSha1": "524c9628f90438930774fd5b15df36f43eb4e903",
+      "sha256": "db4012f752fce8ad81ab0149b1ec79dc49f197247f7d9601dc9ac20e9064d9f4",
+      "bytes": 36977
+    },
+    "derived-helper": {
+      "gitBlobSha1": "8822c007ecd2f87cf108d9d75a756547a25b9524",
+      "sha256": "b1cbfb5e1bb38654719a2af739fe920b03165e8dba017f4d4ce95b361eecd81e",
+      "bytes": 11956
+    }
+  },
+  "exactCandidateFiles": [
+    {
+      "path": "tools/4slot/existing-registered-vector-svg7-ui.cjs",
+      "gitBlobSha1": "ca4f1d36a6c758a5984226c9091e9bb01b38157f",
+      "sha256": "b97aedb8e2752bbebc8feaf324ec1254b07cbde41e5f115daaf2b80cb1a63a90",
+      "bytes": 57228,
+      "beforeGit": "e53f1b703531632694708c00737a1b6815a2bd41"
+    },
+    {
+      "path": "tools/4slot/existing-registered-vector-ui.cjs",
+      "gitBlobSha1": "118b051856ae773e3209d2c1cffdd836ffaf3fcd",
+      "sha256": "b7e02e16d03c1bafe7c77ad42be9d6c81d9b7623dbc10508c17f7a72536d0162",
+      "bytes": 19543,
+      "beforeGit": "78d61d0005999cbb789563c146e93d04d173ad6f"
+    },
+    {
+      "path": "tests/item-4slot-svg7-current-ui-binding.test.cjs",
+      "gitBlobSha1": "1c219cf8e38e983a83dd70efb8021404b498e944",
+      "sha256": "236d3c11a507dcec04cc8e391ec5d6f3535c9a3e9fc62c86fcf05da456ca91a1",
+      "bytes": 16919,
+      "beforeGit": null
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6.json",
+      "beforeGit": "5f997e86a464ac67216987dc7e56d7d8b7bc572c",
+      "gitBlobSha1": "28d269a294b015c70d32c196ec7989b9b5857af5",
+      "sha256": "fd84b83888c2046b6557a1a59335e5fa47327e99087c6d7e3c8020f5a91e9ae8",
+      "bytes": 11473,
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569.json",
+      "beforeGit": "d48c040c8eea1fec49287703a37b5b74a61128d5",
+      "gitBlobSha1": "2115da491383d19f093e93a130b29c30215133a5",
+      "sha256": "ce6ef1a851f8fa0aa2950621acda706d6ac48c07eff1059d19eaacdf4e84c6c7",
+      "bytes": 14605,
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "sourceOrdinal": 15
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec.json",
+      "beforeGit": "a7069890d93453194b7f172971344c66c02cc027",
+      "gitBlobSha1": "df107391e2c68df5871e01c777060d1fc0eaef95",
+      "sha256": "23eb8659d6c99bc9e0f5f0fabc6ff00f8a98ae2d221674ec4fb291eab29a122b",
+      "bytes": 13929,
+      "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+      "sourceOrdinal": 11
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad.json",
+      "beforeGit": "77ba241dcc1c1937501e1b234415e7b52e668903",
+      "gitBlobSha1": "406f3c44b5a30d6f45f771a1ba38ec28614bb269",
+      "sha256": "f23ff4a001221eeefd336b947ac0ac0926dc7ca01837d0c4640cb945db51ae68",
+      "bytes": 13931,
+      "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+      "sourceOrdinal": 24
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637.json",
+      "beforeGit": "556908100f09236210831b8d86ce8b2a2faf37c3",
+      "gitBlobSha1": "8bb003fd3eb01ed8e2f9af66532537e7fac3d35b",
+      "sha256": "931256a612d871214f0f4c70ae12fd3e945ab72bab089da3f748792143d0e1cb",
+      "bytes": 13928,
+      "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+      "sourceOrdinal": 13
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5.json",
+      "beforeGit": "d3cf525329e1c767b867179651187937d56b5186",
+      "gitBlobSha1": "14628a32fa0c60d0412c082c4fb53fe2fe37e7d1",
+      "sha256": "ec2dc71cfe34a9f1cf56df2ed0d37d80cf7d3883a34686c4677257ca61a4ff98",
+      "bytes": 11479,
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceOrdinal": 15
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd.json",
+      "beforeGit": "cc6274ec9ba5dccb85f115d793aba4547824fb62",
+      "gitBlobSha1": "f476cec42037470f1a1ad6ba61d56e6f624c1495",
+      "sha256": "b2070ffb9505a7011029560b75485322e69deade7b4b5d87cf64b976ffcc5e4e",
+      "bytes": 10870,
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "sourceOrdinal": 24
+    }
+  ],
+  "immutableEvidenceCommits": {
+    "A": "30d0245666fc6d85c73f2ef25fe6796560c64843",
+    "B": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+    "C": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+    "technical": {
+      "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+      "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+      "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+      "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+      "bytes": 74569
+    },
+    "visual": {
+      "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+      "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+      "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+      "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+      "bytes": 20912
+    }
+  },
+  "priorIndependentDisplayReuse": {
+    "gitBlobSha1": "a6c0daa99d012b5980c9911a0bdfecbd2a25a27d",
+    "sha256": "136fb3e586c1b6ac76d910ca74d630cebea534eb9b0bb66e17951a4039a718e5",
+    "bytes": 43820,
+    "reopenedImages": 0,
+    "newMathematicalReview": 0,
+    "scope": "Already verified current14 capture/16 original PNG equality is reused, not performed again."
+  },
+  "independentByteChecks": {
+    "codeInverse": {
+      "special": true,
+      "generic": true,
+      "specialEdits": 3,
+      "genericEdits": 1
+    },
+    "sidecarPinsAndWholeOutsideUi": [
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6.json",
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+        "sourceOrdinal": 3,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569.json",
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "sourceOrdinal": 15,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec.json",
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+        "sourceOrdinal": 11,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad.json",
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+        "sourceOrdinal": 24,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637.json",
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+        "sourceOrdinal": 13,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5.json",
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+        "sourceOrdinal": 15,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd.json",
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+        "sourceOrdinal": 24,
+        "beforeGitExact": true,
+        "afterGitExact": true,
+        "afterRawExact": true,
+        "afterBytesExact": true,
+        "wholeOutsideDisplayReviewsExact": true,
+        "displayCount": [
+          1,
+          1
+        ],
+        "surface": "PROBLEM",
+        "independentRefWholeExact": true,
+        "continuityKeys": [
+          "schemaVersion",
+          "questionUid",
+          "sourceOrdinal",
+          "surface",
+          "capturedSourceRef",
+          "capturedAssetRefs",
+          "currentSourceRef",
+          "currentAssetRefs"
+        ],
+        "sourcePinEqual": true,
+        "assetPinsEqual": true
+      }
+    ],
+    "typedItems": [
+      {
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+        "sourceOrdinal": 3,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 25,
+        "identityRowSha256": "72f373c0695724a565e3601b197e974fb51ed22f8c1d3e25aea4cb7644b16945"
+      },
+      {
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+        "sourceOrdinal": 15,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 25,
+        "identityRowSha256": "c0a394a83a439d4e351b955a1830bd4162aca1f97640e88b9c815bdf3884dca4"
+      },
+      {
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+        "sourceOrdinal": 11,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 26,
+        "identityRowSha256": "7ac02fc20c0d81bed90c074c821933328dfd587272034d8fa536a062c105797f"
+      },
+      {
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+        "sourceOrdinal": 13,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 26,
+        "identityRowSha256": "a8e1ba0168a100be810770d57f22a73a0c0419cd564f7d317d6d2753508ad6bb"
+      },
+      {
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+        "sourceOrdinal": 24,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 26,
+        "identityRowSha256": "28456b048976cd4aeb0b2e7ff942c2d867fd03d4fac1d17393045d427723e506"
+      },
+      {
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+        "sourceOrdinal": 24,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 24,
+        "identityRowSha256": "02642a57330b5a79f73cf915179e6544e606e933e24d97faaeada5629945d9ab"
+      },
+      {
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "sourceOrdinal": 15,
+        "typedItemWholeExpectedExact": true,
+        "expectedBankCount": 24,
+        "identityRowSha256": "8a7c9d1e222770b9ee1d03101c876dfed0834972e6d8d6dd9c8213ba369f55c0"
+      }
+    ],
+    "typedAndVisualMechanicalBinding": {
+      "cases": [
+        {
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 35,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "0b7775ef6ebf7b0d0fc6d000be5d90ed8b7408407885b65f0ecf9173d7580cef",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 35,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "0b7775ef6ebf7b0d0fc6d000be5d90ed8b7408407885b65f0ecf9173d7580cef",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+          "sourceOrdinal": 11,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 33,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "5c92ee555c22a6641c5e4e742a764b5f1e743a96f2a04e8ac33d2cefe84e119b",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+          "sourceOrdinal": 13,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 33,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "5c92ee555c22a6641c5e4e742a764b5f1e743a96f2a04e8ac33d2cefe84e119b",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+          "sourceOrdinal": 24,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 33,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "5c92ee555c22a6641c5e4e742a764b5f1e743a96f2a04e8ac33d2cefe84e119b",
+          "tiles": 2
+        },
+        {
+          "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+          "sourceOrdinal": 24,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 31,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "74c27cc3ffe2dd97c326998c22d00eb254c01159d6708bd67d8e7a57dfb0d91a",
+          "tiles": 2
+        },
+        {
+          "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+          "sourceOrdinal": 15,
+          "viewport": "desktop",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 31,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "74c27cc3ffe2dd97c326998c22d00eb254c01159d6708bd67d8e7a57dfb0d91a",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 35,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "0b7775ef6ebf7b0d0fc6d000be5d90ed8b7408407885b65f0ecf9173d7580cef",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 35,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "0b7775ef6ebf7b0d0fc6d000be5d90ed8b7408407885b65f0ecf9173d7580cef",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+          "sourceOrdinal": 11,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 30,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "ae96042e50495b10f985518755e113671fee97ea537a32102cedb5b892ac39d9",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+          "sourceOrdinal": 13,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 33,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "5c92ee555c22a6641c5e4e742a764b5f1e743a96f2a04e8ac33d2cefe84e119b",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+          "sourceOrdinal": 24,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 33,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "5c92ee555c22a6641c5e4e742a764b5f1e743a96f2a04e8ac33d2cefe84e119b",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+          "sourceOrdinal": 24,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 31,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "74c27cc3ffe2dd97c326998c22d00eb254c01159d6708bd67d8e7a57dfb0d91a",
+          "tiles": 1
+        },
+        {
+          "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+          "sourceOrdinal": 15,
+          "viewport": "mobile",
+          "typedWholeExpectedExact": true,
+          "capturePriorExact": true,
+          "visualCaptureShaExact": true,
+          "screenshotsPriorVisualExact": true,
+          "fontIds": 31,
+          "fontIdsUnique": true,
+          "allFontIdsKnown": true,
+          "caseFontDigest": "74c27cc3ffe2dd97c326998c22d00eb254c01159d6708bd67d8e7a57dfb0d91a",
+          "tiles": 1
+        }
+      ],
+      "png": [
+        {
+          "path": "E037-Q15-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E037-Q15-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E037-Q3-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E037-Q3-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E045-Q15-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E045-Q15-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E045-Q24-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E045-Q24-desktop-tile-02.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E045-Q24-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q11-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q11-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q13-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q13-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q24-desktop-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q24-desktop-tile-02.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        },
+        {
+          "path": "E048-Q24-mobile-tile-01.png",
+          "priorDecodedBindingExact": true,
+          "publicCommit": "30d0245666fc6d85c73f2ef25fe6796560c64843"
+        }
+      ],
+      "sidecars": [
+        {
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "ordinal": 3,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        },
+        {
+          "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+          "ordinal": 15,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        },
+        {
+          "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+          "ordinal": 11,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        },
+        {
+          "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+          "ordinal": 24,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        },
+        {
+          "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+          "ordinal": 13,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        },
+        {
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "ordinal": 15,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        },
+        {
+          "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+          "ordinal": 24,
+          "onlyThreeUIFieldsChanged": true,
+          "typedRefExact": true,
+          "visualRefExact": true,
+          "capturedSourceMatchesCase": true,
+          "capturedAssetMatchesCase": true
+        }
+      ],
+      "priorVisualRecordsWholeExact": true,
+      "visualReferencesIndependentOriginal": true,
+      "inventoryCounts": {
+        "served": 99,
+        "servedUnique": 99,
+        "mirror": 22,
+        "mirrorUnique": 22,
+        "fonts": 37,
+        "fontUniquePaths": 37,
+        "fontCaseCounts": [
+          30,
+          31,
+          33,
+          35
+        ]
+      }
+    },
+    "metadataParsingOnly": true,
+    "repositoryCodeEvaluation": false
+  },
+  "codeBoundary": [
+    "A new exact schema routes only to the closed SVG7 reader; old generic and legacy/embedded/inline bodies are byte-exact after reversing three special edits and one generic condition.",
+    "Fixed technical B and visual C refs authenticate raw A, original artifact/transport, root byte evidence and the unchanged independent a6c0 observation.",
+    "Seven fixed UIDs and ordinals, problem-only scope, exact current capture/run/head,14 cases/16 original PNGs are mandatory.",
+    "All99 actual served refs,22 mirrored assets and37 font refs authenticate immutable bytes. Live render code/font/assets and producer/helper/license refs remain exact.",
+    "Only MD, ID and generated SVG bypass full-file live equality. Both MD/ID retain all75 whole rows from the fixed three banks, unique global UIDs, exact bank ordinals and selected7 identity hashes.",
+    "Generated SVG uses existing production parser and both-role footprint selection with duplicate rejection, requiring the captured/current consumed footprint to match.",
+    "Each of14 typed results is an exact raw projection, including independently recomputed selected resource-ID font digest; actual font counts30/31/33/35 are retained.",
+    "Every prior visual record remains whole-equal, every current capture and ordered tile inventory matches the old accepted observation, and all16 immutable current PNG refs match previously decoded byte/Git evidence.",
+    "The existing outer validator still verifies prior REGISTERED rows, original native/root/semantic/static authority, exact compact vectors, source/assets and named embedded-choice conditions."
+  ],
+  "cacheBoundary": {
+    "directCodeRead": true,
+    "currentMain": "8c5b782f706f7c47bbbce56129844899c1697075",
+    "collectScope": "Existing collector tracks sidecar and current MD/ID digests, not recursively the new raw served inventory.",
+    "whyNoBypass": "Builder9fb98cdd forbids cache reuse when vectorEntries or prior existingVectorContinuityClaims exist. All7 claims re-enter verify on every build.",
+    "readers": "Collector524c creates a fresh makeReader per collect; readLiveRef invokes local(), which records each live byte digest.",
+    "writeBoundary": "Builder appends verifier observed refs and run() rehashes every observed path before output/write. Missing, changed or same-byte symlink inputs remain subject to existing safe-reader rules.",
+    "productionCacheModification": 0,
+    "dynamicVerification": "NOT_RUN"
+  },
+  "authorityAxes": {
+    "metadataProofRef": {
+      "gitBlobSha1": "3e551265bfe6034a2243bd867293ea42fd2372f3",
+      "sha256": "563b74fa04f9e0c2040c822c203ba5d37079eb7cb6b46161e1640d5563e967f4",
+      "bytes": 6796
+    },
+    "additionalLegacySemanticHoldUids": [
+      "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd"
+    ],
+    "existingPhysicalVectorRestoration": "May be considered only after unchanged original authority and full scoped validator pass; UI rebinding itself does not issue authority.",
+    "legacyHoldMeaning": "No additional semantic or legacy-extra-field authority is granted by UI success; this is not an assertion that an already registered physical vector must be absent.",
+    "changedAuthorityFields": 0,
+    "newSemanticApproval": 0,
+    "newDifficultyApproval": 0,
+    "newFinalQa": 0,
+    "newFourSlotVector": 0
+  },
+  "testsReviewed": {
+    "path": "tests/item-4slot-svg7-current-ui-binding.test.cjs",
+    "actualExecution": "NOT_RUN",
+    "coverage": [
+      "fixed7 positive14/16",
+      "actual variable font inventories",
+      "wrong schema/ref/UID/surface/reader",
+      "immutable raw/visual/independent/PNG tamper and missing PNG",
+      "live render code/font/source/asset/helper drift",
+      "selected and nonselected same-bank MD/ID drift, missing row and global duplicate UID",
+      "unrelated generated global additions allowed with75 whole rows unchanged",
+      "selected problem and solution-role SVG additions and global duplicates rejected",
+      "all7 sidecars only three UI fields changed"
+    ],
+    "testPassClaim": false
+  },
+  "boundaries": {
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "runtimeWrites": 0,
+    "approvalWrites": 0,
+    "newSourceQuestionReview": 0,
+    "newMathematicalReview": 0,
+    "newImageInspection": 0,
+    "remoteRefWrites": 0
+  },
+  "verification": {
+    "repositoryNodeSyntax": "NOT_RUN",
+    "focusedTests": "NOT_RUN",
+    "scopedBuilder": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "actualRegistration": "NOT_RUN"
+  },
+  "nextAction": "Root may integrate this exact10-file candidate with evidence A/B/C ancestry and run focused test plus scoped builder/Consumer. Preserve existing native/semantic boundaries and report actual physical outcome only after execution."
+}

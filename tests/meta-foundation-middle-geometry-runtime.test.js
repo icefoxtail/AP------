@@ -6,9 +6,12 @@ const path = require("path");
 const crypto = require("crypto");
 const { execFileSync } = require("child_process");
 const Archive2Core = require("../archive/archive2-core.js");
+const { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
+  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
+  readOriginalReceiptSource, assertOriginalReceiptSourceBytes } = require("./helpers/middle-geometry-issued-approval.cjs");
 
 async function main() {
-const { loadBank, nativeReviewReceipt, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
+const { loadBank, nativeReviewReceipt, planQuestion, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
 const { loadActiveMetaRegistry, validateActiveMetaFields } = await import("../archive/tools/meta-foundation/active-registry.mjs");
 const { isUnambiguousLegacySourceUidAlias } = await import("../archive/tools/intelligence/question-identity-contract.mjs");
 const root = path.resolve(__dirname, "..");
@@ -98,15 +101,33 @@ assert.strictEqual(l3Evidence.filter((row) => row.l3ReviewStatus === "OUT_OF_SCO
 assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "FINAL").length, runtime.counts.finalL4);
 assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "EXPLICIT_HOLD").length, runtime.counts.explicitL4Hold);
 
-const currentQuestionMetadata = new Map(readJson("archive/data/question_metadata.json").records.map((row) => [row.questionUid, row]));
+const metadataRows = readJson("archive/data/question_metadata.json").records;
+const currentQuestionMetadata = new Map(metadataRows.map((row) => [row.questionUid, row]));
+assert.strictEqual(currentQuestionMetadata.size, metadataRows.length, "metadata UID must be unique");
+assert.strictEqual(new Set(metadataRows.map(row => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size,
+  metadataRows.length, "metadata source identity must be unique");
 const identityMap = readJson("archive/data/question_identity_map.json");
 const identityByUid = new Map(identityMap.records.map((row) => [row.questionUid, row]));
 const identityByJoin = new Map(identityMap.records.map((row) => [sourceKey(row.sourceArchiveFile, row.sourceOrdinal), row]));
+assert.strictEqual(identityByUid.size, identityMap.records.length, "identity UID must be unique");
+assert.strictEqual(identityByJoin.size, identityMap.records.length, "identity source identity must be unique");
 const registry = loadActiveMetaRegistry(root);
 assert.strictEqual(registry.status, "ACTIVE", registry.errors.join("|"));
 const nativeSources = new Map();
-const nativeApprovals = new Map();
-const nativeInputs = [];
+// Current Native success is kept separate from historical issued-state retention.
+const nativeApprovals = new Map(), issuedApprovals = new Map(), retainedApprovals = new Map();
+const nativeInputs = [], retainedInputs = [];
+const issuedObserverApi = {
+  nativeReviewReceipt, planQuestion, validateActiveMetaFields, activeBindingContext,
+  loadBank, sourceFingerprint, isUnambiguousLegacySourceUidAlias,
+  currentRows(uid) {
+    const entries = activeRuntimeByUid.get(uid) || [];
+    assert.strictEqual(entries.length, 1, "retained source-pair runtime UID must be unique");
+    return { metadata: currentQuestionMetadata.get(uid), identity: identityByUid.get(uid),
+      runtime: entries[0].row, runtimeStatus: entries[0].status, runtimeOwner: entries[0].packId };
+  }
+};
+const issuedObserver = createIssuedApprovalObserver(issuedObserverApi);
 function nativeInput(metadata, row, owner = runtime) {
   const source = sourcePath(metadata.sourceArchiveFile);
   if (!nativeSources.has(source)) {
@@ -174,8 +195,34 @@ function assertNativeApproval(input, label) {
   return receiptPath;
 }
 
+function assertReviewedState(input, label) {
+  try {
+    return { receiptPath: assertNativeApproval(input, label), currentNativeReady: true };
+  } catch (error) {
+    if (!(error instanceof assert.AssertionError)) throw error;
+    // This is an independently checked issued-state assertion, not a Native
+    // fallback approval. Unknown nulls, changed evidence/rows/owners and new
+    // post-anchor approvals still throw. The original producer must refuse.
+    const retained = issuedObserver.assertBlocked(input, label);
+    return { receiptPath: retained.receiptPath, currentNativeReady: false, retained };
+  }
+}
+function rememberReviewedState(input, state) {
+  const uid = input.current.questionUid;
+  issuedApprovals.set(uid, state.receiptPath);
+  if (state.currentNativeReady) {
+    assert(!retainedApprovals.has(uid), "current readiness changed during read-only test: " + uid);
+    nativeApprovals.set(uid, state.receiptPath);
+    if (!nativeInputs.some(value => value.current.questionUid === uid)) nativeInputs.push(input);
+  } else {
+    assert(!nativeApprovals.has(uid), "current readiness changed during read-only test: " + uid);
+    retainedApprovals.set(uid, state.retained);
+    if (!retainedInputs.some(value => value.current.questionUid === uid)) retainedInputs.push(input);
+  }
+}
+
 function verifyHistoricalCohorts(index, remember = false) {
-  let unchanged = 0, reviewedTransitions = 0;
+  let unchanged = 0, reviewedTransitions = 0, currentNativeReady = 0, retainedBlocked = 0;
   for (const [uid, baseline] of historicalByUid) {
     const entries = index.get(uid) || [];
     assert.strictEqual(entries.length, 1, "historical runtime UID missing/duplicated: " + uid);
@@ -186,24 +233,24 @@ function verifyHistoricalCohorts(index, remember = false) {
       unchanged += 1;
       continue;
     }
-    // A flag or version string is insufficient. Use the production verifier
-    // against the current source bytes, UID map, exact ACTIVE binding, metadata,
-    // runtime owner and applied receipt, including any legitimate pack move.
+    // A flag or version is insufficient. Current Native reuse must pass the
+    // original verifier. Retention after the observed renderer change additionally
+    // requires immutable issued receipt/evidence and exact current MD/ID/runtime;
+    // it is counted separately and never grants current source reuse.
     const metadata = currentQuestionMetadata.get(uid);
     // The production verifier also supports exact preservation of an existing
     // META_PIPELINE_AUDIT. It replays the immutable prior audit and reviewed D5
     // receipt; the approval kind alone never authorizes a historical transition.
     assert(metadata && ["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(metadata.metadataApprovalType), uid);
     const input = nativeInput(metadata, row, entry);
-    const receiptPath = assertNativeApproval(input, "historical reviewed transition: " + uid);
-    if (remember) {
-      nativeApprovals.set(uid, receiptPath);
-      nativeInputs.push(input);
-    }
+    const state = assertReviewedState(input, "historical reviewed transition: " + uid);
+    if (remember) rememberReviewedState(input, state);
+    if (state.currentNativeReady) currentNativeReady += 1; else retainedBlocked += 1;
     reviewedTransitions += 1;
   }
   assert.strictEqual(unchanged + reviewedTransitions, historicalByUid.size);
-  return { unchanged, reviewedTransitions };
+  assert.strictEqual(currentNativeReady + retainedBlocked, reviewedTransitions);
+  return { unchanged, reviewedTransitions, currentNativeReady, retainedBlocked };
 }
 const preservedCohorts = verifyHistoricalCohorts(activeRuntimeByUid, true);
 const currentReviewedRows = historical.cohorts["1.0.3"].map(([uid]) => activeRuntimeByUid.get(uid)[0]);
@@ -213,10 +260,9 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   const row = entry.row;
   const metadata = currentQuestionMetadata.get(row.questionUid);
   assert(metadata, row.questionUid);
-  if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType) || nativeApprovals.has(row.questionUid)) {
+  if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType) || issuedApprovals.has(row.questionUid)) {
     const input = nativeInput(metadata, row, entry);
-    nativeApprovals.set(row.questionUid, assertNativeApproval(input, row.questionUid));
-    if (!nativeInputs.some(existing => existing.current.questionUid === row.questionUid)) nativeInputs.push(input);
+    rememberReviewedState(input, assertReviewedState(input, row.questionUid));
   } else {
     assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
     assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
@@ -248,10 +294,11 @@ for (const [label, entries] of invalidCohortCases) {
   const invalid = new Map(activeRuntimeByUid).set(historicalUid, entries);
   assert.throws(() => verifyHistoricalCohorts(invalid), { name: "AssertionError" }, label);
 }
-console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} byte-bound reviewed transitions; ${invalidCohortCases.length} rejected corruptions`);
+console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} issued transitions (${preservedCohorts.currentNativeReady} current Native READY, ${preservedCohorts.retainedBlocked} retained approval/current reuse BLOCKED); ${invalidCohortCases.length} rejected corruptions`);
 
 const reviewedInput = nativeInputs.find(input => ["FINAL_QA", "REVIEW2"].includes(input.current.metadataApprovalType));
-if (reviewedInput) {
+assert(reviewedInput, "at least one current Native FINAL_QA/REVIEW2 positive is required; retained BLOCKED rows cannot substitute");
+{
   const input = reviewedInput;
   const rejects = (candidate, label) => {
     assert.throws(() => assertNativeApproval(candidate, label), { name: "AssertionError" }, label);
@@ -333,6 +380,576 @@ if (reviewedInput) {
   console.log(`PASS ${nativeInputs.length} byte-bound native approvals and ${cases.length + 1 + copiedDependencyRejections} rejection cases`);
 }
 
+const uiRetainedInputs = retainedInputs.filter(input => retainedApprovals.get(input.current.questionUid).kind === "ISSUED_TYPED_UI");
+if (uiRetainedInputs.length) {
+  const input = uiRetainedInputs[0], baseline = retainedApprovals.get(input.current.questionUid);
+  const rejectsRetained = (candidate, label) =>
+    assert.throws(() => issuedObserver.assertRetained(candidate, label), { name: "AssertionError" }, label);
+  const cases = [
+    ["retained metadata whole changed", { current: { ...input.current, fieldStatus: { ...input.current.fieldStatus, problemType: "manual_review_pending" } } }],
+    ["retained approval kind changed", { current: { ...input.current, metadataApprovalType: input.current.metadataApprovalType === "REVIEW2" ? "FINAL_QA" : "REVIEW2" } }],
+    ["retained evidence list removed", { current: { ...input.current, approvalEvidence: [] } }],
+    ["retained identity whole changed", { identity: { ...input.identity, sourceFingerprint: "0".repeat(64) } }],
+    ["retained UID changed", { identity: { ...input.identity, questionUid: "qid_v1_" + "0".repeat(64) } }],
+    ["retained ordinal changed", { identity: { ...input.identity, sourceOrdinal: input.ordinal + 1 } }],
+    ["retained duplicate identity", { nativeSource: { ...input.nativeSource,
+      identityMap: { ...input.nativeSource.identityMap, records: [...input.nativeSource.identityMap.records, input.identity] } } }],
+    ["retained runtime whole changed", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metadataRevision: input.nativeSource.runtimeRecord.metadataRevision + ":changed" } } }],
+    ["retained runtime version changed", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metaFoundationPackVersion: "999.0.0" } } }],
+    ["retained runtime owner changed", { runtimeOwner: "MIDDLE1" }],
+    ["retained inactive runtime", { nativeSource: { ...input.nativeSource, runtimeStatus: "INACTIVE" } }],
+    ["retained ACTIVE owner changed", { registry: { ...input.registry,
+      templates: new Map(input.registry.templates).set(input.current.templateKey,
+        { ...input.registry.templates.get(input.current.templateKey), ownerPack: "NOT_THE_ISSUED_OWNER" }) } }],
+    ["retained ACTIVE binding ambiguous", { registry: { ...input.registry,
+      bindingRows: [...input.registry.bindingRows, baseline.context.binding] } }],
+    ["retained unissued receipt revision", { current: { ...input.current,
+      metadataRevision: input.current.metadataRevision + "-not-issued-in-anchor" } }]
+  ];
+  for (const [label, changes] of cases) rejectsRetained({ ...input, ...changes }, label);
+  // A current Native positive cannot be recounted as an accepted null or BLOCKED
+  // result. The helper never supplies a receipt to the production registration path.
+  assert.throws(() => issuedObserver.assertBlocked(reviewedInput, "current Native positive cannot become retained BLOCKED"));
+
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-retained-proof-"));
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
+    // Only already-read exact dependencies of this issued row are copied.
+    // No global registry, metadata, identity or runtime is generated or rewritten.
+    for (const relative of baseline.readPaths) {
+      const target = path.resolve(fixtureRoot, relative);
+      assert(target.startsWith(fixtureRoot + path.sep), relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    const copiedInputs = issuedObserver.assertKnownInputs(candidate, "unchanged copied declared-input closure");
+    assert.deepStrictEqual(copiedInputs.authenticatedDrifts, baseline.authenticatedDrifts,
+      "the negative fixture keeps the same exact known renderer differences");
+    const evidencePath = baseline.receipt.approval.evidenceRefs[0].path;
+    const evidenceFile = path.join(fixtureRoot, evidencePath), originalEvidence = fs.readFileSync(evidenceFile);
+    fs.appendFileSync(evidenceFile, "\n");
+    rejectsRetained(candidate, "retained evidence bytes changed");
+    fs.writeFileSync(evidenceFile, originalEvidence);
+    issuedObserver.assertRetained(candidate, "restored copied retained proof");
+    const receiptFile = path.join(fixtureRoot, baseline.receiptPath), originalReceipt = fs.readFileSync(receiptFile);
+    fs.appendFileSync(receiptFile, "\n");
+    rejectsRetained(candidate, "retained receipt bytes changed");
+    fs.writeFileSync(receiptFile, originalReceipt);
+    const bindingFile = path.join(fixtureRoot, baseline.bindingPath), originalBinding = fs.readFileSync(bindingFile);
+    fs.appendFileSync(bindingFile, "\n");
+    rejectsRetained(candidate, "retained typed binding bytes changed");
+    fs.writeFileSync(bindingFile, originalBinding);
+    fs.unlinkSync(evidenceFile);
+    fs.symlinkSync(path.join(root, evidencePath), evidenceFile);
+    rejectsRetained(candidate, "retained same-byte evidence symlink");
+    fs.unlinkSync(evidenceFile);
+    fs.writeFileSync(evidenceFile, originalEvidence);
+    issuedObserver.assertKnownInputs(candidate, "restored declared-input closure before unknown-drift negatives");
+    const refusesUnknownDependency = label => assert.throws(
+      () => issuedObserver.assertKnownInputs(candidate, label), label);
+    const cssPaths = [
+      "archive/archive2-reader-controls.css",
+      "archive/css/js-archive-theme-override.css"
+    ];
+    const cssDrifts = baseline.authenticatedDrifts.filter(value => cssPaths.includes(value.path));
+    assert.deepStrictEqual(cssDrifts.map(value => value.path).sort(), cssPaths,
+      "both exact observed CSS changes belong to this issued technical inventory");
+    for (const drift of cssDrifts) {
+      const file = path.join(fixtureRoot, drift.path), currentBytes = fs.readFileSync(file);
+      assert.strictEqual(sha256(currentBytes), drift.current.sha256, drift.path);
+      fs.appendFileSync(file, "\n");
+      assert.throws(() => issuedObserver.assertKnownInputs(candidate, "unobserved CSS edition"),
+        /unknown live renderer change/, "a known path does not permit changed CSS bytes");
+      fs.writeFileSync(file, currentBytes);
+      const capturedBytes = execFileSync("git", ["-C", root, "cat-file", "blob", drift.captured.gitBlobSha1],
+        { stdio: ["ignore", "pipe", "pipe"] });
+      assert.strictEqual(sha256(capturedBytes), drift.captured.sha256, drift.path);
+      fs.writeFileSync(file, capturedBytes);
+      assert.throws(() => issuedObserver.assertKnownInputs(candidate, "captured CSS restored in current fixture"),
+        /unknown live renderer change/, "old CSS cannot masquerade as the exact observed current edition");
+      fs.writeFileSync(file, currentBytes);
+    }
+    const fontPath = baseline.declaredInputs.fontPaths.find(relative => relative.endsWith(".woff2"));
+    const assetPath = baseline.declaredInputs.assetPaths[0];
+    assert(fontPath && assetPath, "actual issued typed UI must declare a font and an asset");
+    for (const [kind, relative] of [["font", fontPath], ["asset", assetPath]]) {
+      const file = path.join(fixtureRoot, relative), original = fs.readFileSync(file);
+      fs.unlinkSync(file);
+      refusesUnknownDependency("known renderer drift plus unknown " + kind + " deletion");
+      fs.writeFileSync(file, original);
+      fs.appendFileSync(file, "\n");
+      refusesUnknownDependency("known renderer drift plus unknown " + kind + " byte change");
+      fs.writeFileSync(file, original);
+      fs.unlinkSync(file);
+      fs.symlinkSync(path.join(root, relative), file);
+      refusesUnknownDependency("known renderer drift plus same-byte " + kind + " symlink");
+      fs.unlinkSync(file);
+      fs.writeFileSync(file, original);
+    }
+    const fontParent = path.dirname(path.join(fixtureRoot, fontPath)), savedParent = fontParent + ".retained-negative";
+    fs.renameSync(fontParent, savedParent);
+    fs.symlinkSync(savedParent, fontParent, "dir");
+    refusesUnknownDependency("known renderer drift plus same-byte parent-directory symlink");
+    fs.unlinkSync(fontParent); fs.renameSync(savedParent, fontParent);
+    const masterFile = path.join(fixtureRoot, "archive/data/master_tables/js_archive_tag_master.json");
+    const masterBytes = fs.readFileSync(masterFile);
+    fs.appendFileSync(masterFile, "\n");
+    refusesUnknownDependency("known renderer drift plus unknown master change");
+    fs.writeFileSync(masterFile, masterBytes);
+    const svgFile = path.join(fixtureRoot, "archive/data/svg-accessibility-index.js"), svgBytes = fs.readFileSync(svgFile);
+    fs.appendFileSync(svgFile, "\n");
+    refusesUnknownDependency("known renderer drift plus unknown generated-index wrapper");
+    fs.writeFileSync(svgFile, svgBytes);
+    fs.unlinkSync(svgFile); fs.symlinkSync(path.join(root, "archive/data/svg-accessibility-index.js"), svgFile);
+    refusesUnknownDependency("known renderer drift plus same-byte generated-index symlink");
+    fs.unlinkSync(svgFile); fs.writeFileSync(svgFile, svgBytes);
+    const restoredInputs = issuedObserver.assertKnownInputs(candidate, "restored entire copied input closure");
+    assert.deepStrictEqual(restoredInputs.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(restoredInputs.authenticatedDrifts, baseline.authenticatedDrifts);
+  } finally {
+    fs.rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+  console.log("PASS " + uiRetainedInputs.length + " immutable typed-UI issued approvals retained; current Native reuse BLOCKED, new approvals 0; " +
+    (cases.length + 19) + " rejected corruptions");
+}
+const sourceRetainedInputs = retainedInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).kind === "EXACT_E017_Q11_Q15_SOURCE_PRESERVATION");
+if (sourceRetainedInputs.length) {
+  const input = sourceRetainedInputs[0], baseline = retainedApprovals.get(input.current.questionUid);
+  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+  const changedBank = structuredClone(input.nativeSource.bank);
+  changedBank[input.ordinal - 1] = { ...changedBank[input.ordinal - 1], content: "unapproved selected-source fixture" };
+  const cases = [
+    ["source-pair metadata whole changed", { current: { ...input.current, fieldStatus: { ...input.current.fieldStatus, problemType: "manual_review_pending" } } }],
+    ["source-pair identity UID changed", { identity: { ...input.identity, questionUid: "qid_v1_" + "f".repeat(64) } }],
+    ["source-pair runtime whole changed", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metaFoundationPackVersion: "999.0.0" } } }],
+    ["source-pair approval evidence removed", { current: { ...input.current, approvalEvidence: [] } }],
+    ["source-pair ACTIVE owner changed", { runtimeOwner: "MIDDLE1" }],
+    ["source-pair ordinal changed", { identity: { ...input.identity, sourceOrdinal: input.ordinal + 1 } }],
+    ["source-pair unissued child revision", { current: { ...input.current,
+      metadataRevision: input.current.metadataRevision + "-unissued" } }],
+    ["source-pair question and bank do not match actual source bytes", {
+      question: changedBank[input.ordinal - 1], previous: changedBank[input.ordinal - 1],
+      nativeSource: { ...input.nativeSource, bank: changedBank } }]
+  ];
+  for (const [label, changes] of cases) rejects({ ...input, ...changes }, label);
+  const otherUid = baseline.declaredInputs.selectedSource.subjects
+    .find(value => value.questionUid !== input.current.questionUid).questionUid;
+  const other = issuedObserverApi.currentRows(otherUid);
+  const companionChanges = [
+    { metadata: { ...other.metadata, metadataRevision: other.metadata.metadataRevision + ":changed" } },
+    { identity: { ...other.identity, sourceFingerprint: "0".repeat(64) } },
+    { runtime: { ...other.runtime, tagStatus: "review_required" } },
+    { runtimeOwner: "MIDDLE1" }
+  ];
+  for (const changes of companionChanges) {
+    const observer = createIssuedApprovalObserver({ ...issuedObserverApi, currentRows(uid) {
+      const actual = issuedObserverApi.currentRows(uid);
+      return uid === otherUid ? { ...actual, ...changes } : actual;
+    } });
+    assert.throws(() => observer.assertKnownInputs(input, "the other member of the issued pair must also remain exact"));
+  }
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-source-pair-"));
+  let fileRejections = 0;
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
+    for (const relative of baseline.readPaths) {
+      const target = path.resolve(fixtureRoot, relative);
+      assert(target.startsWith(fixtureRoot + path.sep), relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    const copied = issuedObserver.assertKnownInputs(candidate, "unchanged copied source-pair proof closure");
+    assert.deepStrictEqual(copied.declaredInputs, baseline.declaredInputs);
+    const refuseFile = (value, label) => { rejects(value, label); fileRejections += 1; };
+    const priorPath = baseline.receipt.approval.sourceRebind.priorReceiptRef.path;
+    const priorFile = path.join(fixtureRoot, priorPath), priorBytes = fs.readFileSync(priorFile);
+    const prior = JSON.parse(priorBytes), originalSourceBytes = readOriginalNativeSource(fixtureRoot, prior);
+    assert.strictEqual(sha256(originalSourceBytes), baseline.declaredInputs.originalNativeSource.sha256);
+    assert.throws(() => assertOriginalNativeSourceBytes(
+      Buffer.concat([originalSourceBytes, Buffer.from("\n")]), prior),
+      /ISSUED_RETENTION:ORIGINAL_NATIVE_SOURCE_BYTES/, "original Native source byte tampering must be rejected");
+    fileRejections += 1;
+    const missingObjectRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-prior-object-"));
+    try {
+      execFileSync("git", ["init", "--quiet", missingObjectRoot], { stdio: ["ignore", "pipe", "pipe"] });
+      assert.throws(() => readOriginalNativeSource(missingObjectRoot, prior),
+        /Command failed: git cat-file blob/, "missing immutable original Native source must be rejected");
+      fileRejections += 1;
+    } finally {
+      fs.rmSync(missingObjectRoot, { recursive: true, force: true });
+    }
+    fs.appendFileSync(priorFile, "\n");
+    refuseFile(candidate, "changed exact original Native receipt");
+    fs.writeFileSync(priorFile, priorBytes);
+    const evidencePath = baseline.declaredInputs.priorEvidencePaths[0];
+    const evidenceFile = path.join(fixtureRoot, evidencePath), evidenceBytes = fs.readFileSync(evidenceFile);
+    fs.appendFileSync(evidenceFile, "\n");
+    refuseFile(candidate, "changed terminal original Native evidence");
+    fs.writeFileSync(evidenceFile, evidenceBytes);
+    fs.unlinkSync(evidenceFile);
+    refuseFile(candidate, "missing terminal original Native evidence");
+    fs.symlinkSync(path.join(root, evidencePath), evidenceFile);
+    refuseFile(candidate, "same-byte terminal original Native evidence symlink");
+    fs.unlinkSync(evidenceFile); fs.writeFileSync(evidenceFile, evidenceBytes);
+    const masterFile = path.join(fixtureRoot, "archive/data/master_tables/js_archive_tag_master.json");
+    const masterBytes = fs.readFileSync(masterFile);
+    fs.appendFileSync(masterFile, "\n");
+    refuseFile(candidate, "source-pair master drift cannot hide behind known source change");
+    fs.writeFileSync(masterFile, masterBytes);
+    const sourceRelative = "archive/exams/" + input.source, sourceFile = path.join(fixtureRoot, sourceRelative);
+    const sourceBytes = fs.readFileSync(sourceFile), unknownBytes = Buffer.concat([sourceBytes, Buffer.from("\n")]);
+    const blobOf = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+    fs.writeFileSync(sourceFile, unknownBytes);
+    refuseFile({ ...candidate, nativeSource: { ...candidate.nativeSource, bytes: unknownBytes, blobSha1: blobOf(unknownBytes) } },
+      "an unobserved source edition is not a known source CAS block");
+    fs.writeFileSync(sourceFile, sourceBytes);
+    const issuedBytes = execFileSync("git", ["show", "f9e49a0e0c18f18c63f31d7547bd504f07a821c6:" + sourceRelative],
+      { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    const issuedBank = loadBank(issuedBytes.toString("utf8"), sourceRelative);
+    fs.writeFileSync(sourceFile, issuedBytes);
+    refuseFile({ ...candidate, question: issuedBank[input.ordinal - 1], previous: issuedBank[input.ordinal - 1],
+      nativeSource: { ...candidate.nativeSource, bytes: issuedBytes, blobSha1: blobOf(issuedBytes), bank: issuedBank } },
+      "old issued source bytes cannot masquerade as a current observed BLOCKED result");
+    fs.writeFileSync(sourceFile, sourceBytes);
+    const restored = issuedObserver.assertKnownInputs(candidate, "restored source-pair proof closure");
+    assert.deepStrictEqual(restored.declaredInputs, baseline.declaredInputs);
+  } finally {
+    fs.rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+  console.log("PASS " + sourceRetainedInputs.length +
+    " exact issued Q11/Q15 approvals retained with current source reuse BLOCKED; " +
+    (cases.length + companionChanges.length + fileRejections) + " rejected corruptions; new approvals 0");
+}
+const rhsRetainedInputs = retainedInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).kind === "EXACT_E017_Q2_ISSUED_RHS_SOURCE_BLOCK");
+if (rhsRetainedInputs.length) {
+  assert.strictEqual(rhsRetainedInputs.length, 1, "the observed RHS source block is one fixed issued UID");
+  const input = rhsRetainedInputs[0], baseline = retainedApprovals.get(input.current.questionUid);
+  assert.strictEqual(input.current.questionUid, "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9");
+  assert.strictEqual(input.ordinal, 2);
+  assert.strictEqual(baseline.proof.currentNativeReady, false);
+  assert.strictEqual(baseline.declaredInputs.originalSolutionUi.currentUiContinuity, "NOT_ASSERTED");
+  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+  const changedBank = structuredClone(input.nativeSource.bank);
+  changedBank[1] = { ...changedBank[1], content: "unknown selected question fixture" };
+  const cases = [
+    ["RHS retained metadata whole changed", { current: { ...input.current, tagStatus: "unreviewed" } }],
+    ["RHS retained identity UID changed", { identity: { ...input.identity, questionUid: "qid_v1_" + "0".repeat(64) } }],
+    ["RHS retained runtime whole changed", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metadataRevision: input.nativeSource.runtimeRecord.metadataRevision + ":changed" } } }],
+    ["RHS original evidence removed", { current: { ...input.current, approvalEvidence: [] } }],
+    ["RHS owner changed", { runtimeOwner: "MIDDLE1" }],
+    ["RHS ordinal changed", { ordinal: 3 }],
+    ["RHS unissued receipt", { current: { ...input.current, metadataRevision: input.current.metadataRevision + "-unissued" } }],
+    ["RHS unknown source bank hidden behind observed byte pins", { question: changedBank[1], previous: changedBank[1],
+      nativeSource: { ...input.nativeSource, bank: changedBank } }]
+  ];
+  for (const [label, changes] of cases) rejects({ ...input, ...changes }, label);
+
+  let fileRejections = 0, protocolRejections = 0;
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-rhs-retention-"));
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
+    for (const relative of baseline.readPaths) {
+      const target = path.resolve(fixtureRoot, relative);
+      assert(target.startsWith(fixtureRoot + path.sep), relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    const copied = issuedObserver.assertKnownInputs(candidate, "unchanged copied exact RHS authority closure");
+    assert.deepStrictEqual(copied.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(copied.authenticatedDrifts, baseline.authenticatedDrifts);
+    const refuse = (value, label) => { rejects(value, label); fileRejections += 1; };
+    const nativeSourceBytes = readRhsOriginalNativeSource(fixtureRoot);
+    assert.strictEqual(sha256(nativeSourceBytes), baseline.declaredInputs.originalNativeSource.sha256);
+    assert.throws(() => assertRhsOriginalNativeSourceBytes(
+      Buffer.concat([nativeSourceBytes, Buffer.from("\n")])), /RHS_ORIGINAL_SOURCE_BYTES/,
+      "changed original Native source cannot hide behind the current whole-source refusal");
+    fileRejections += 1;
+    const emptyRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-rhs-missing-object-"));
+    try {
+      execFileSync("git", ["init", "--quiet", emptyRoot], { stdio: ["ignore", "pipe", "pipe"] });
+      assert.throws(() => readRhsOriginalNativeSource(emptyRoot),
+        /Command failed: git|RHS_ORIGINAL_SOURCE_PATH/, "the original Native source must exist in the caller's Git context");
+      fileRejections += 1;
+    } finally { fs.rmSync(emptyRoot, { recursive: true, force: true }); }
+
+    const documentPaths = [baseline.receiptPath, baseline.bindingPath,
+      "docs/operations/m2-e017-rhs-continuity-20261116/final-ui-binding-r1.json",
+      ".archive-meta-register/evidence/m2s2-display21-current626-20261116/e017-native-review.json"];
+    for (const relative of documentPaths) {
+      assert(baseline.readPaths.has(relative), relative);
+      const file = path.join(fixtureRoot, relative), bytes = fs.readFileSync(file);
+      fs.appendFileSync(file, "\n");
+      refuse(candidate, "known source block plus changed original RHS authority: " + relative);
+      fs.writeFileSync(file, bytes);
+    }
+    const reviewRelative = documentPaths[3], reviewFile = path.join(fixtureRoot, reviewRelative);
+    const reviewBytes = fs.readFileSync(reviewFile);
+    fs.unlinkSync(reviewFile);
+    refuse(candidate, "known source block plus missing original Native review");
+    fs.symlinkSync(path.join(root, reviewRelative), reviewFile);
+    refuse(candidate, "same-byte original Native review symlink");
+    fs.unlinkSync(reviewFile); fs.writeFileSync(reviewFile, reviewBytes);
+
+    for (const relative of baseline.declaredInputs.assetPaths) {
+      const file = path.join(fixtureRoot, relative), bytes = fs.readFileSync(file);
+      fs.unlinkSync(file);
+      refuse(candidate, "known source block plus missing original RHS asset");
+      fs.writeFileSync(file, Buffer.concat([bytes, Buffer.from("\n")]));
+      refuse(candidate, "known source block plus changed original RHS asset");
+      fs.unlinkSync(file); fs.symlinkSync(path.join(root, relative), file);
+      refuse(candidate, "same-byte original RHS asset symlink");
+      fs.unlinkSync(file); fs.writeFileSync(file, bytes);
+    }
+    const masterFile = path.join(fixtureRoot, "archive/data/master_tables/js_archive_tag_master.json");
+    const masterBytes = fs.readFileSync(masterFile);
+    fs.appendFileSync(masterFile, "\n");
+    refuse(candidate, "RHS current master drift is not an observed source change");
+    fs.writeFileSync(masterFile, masterBytes);
+    const sourceRelative = "archive/exams/" + input.source, sourceFile = path.join(fixtureRoot, sourceRelative);
+    const sourceBytes = fs.readFileSync(sourceFile), unknownBytes = Buffer.concat([sourceBytes, Buffer.from("\n")]);
+    const blobOf = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+    fs.writeFileSync(sourceFile, unknownBytes);
+    refuse({ ...candidate, nativeSource: { ...candidate.nativeSource, bytes: unknownBytes, blobSha1: blobOf(unknownBytes) } },
+      "RHS unobserved source bytes are rejected");
+    fs.writeFileSync(sourceFile, sourceBytes);
+    fs.unlinkSync(sourceFile); fs.symlinkSync(path.join(root, sourceRelative), sourceFile);
+    refuse(candidate, "same-byte observed source symlink is rejected");
+    fs.unlinkSync(sourceFile); fs.writeFileSync(sourceFile, sourceBytes);
+    const issuedBytes = execFileSync("git", ["show", "f9e49a0e0c18f18c63f31d7547bd504f07a821c6:" + sourceRelative],
+      { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    const issuedBank = loadBank(issuedBytes.toString("utf8"), sourceRelative);
+    fs.writeFileSync(sourceFile, issuedBytes);
+    refuse({ ...candidate, question: issuedBank[1], previous: issuedBank[1],
+      nativeSource: { ...candidate.nativeSource, bytes: issuedBytes, blobSha1: blobOf(issuedBytes), bank: issuedBank } },
+      "old issued source is not an observed current RHS BLOCKED condition");
+    fs.writeFileSync(sourceFile, sourceBytes);
+
+    // These explicit protocol doubles exercise only the refusal gate. They
+    // cannot issue metadata or replace the real Native/plan calls above.
+    const basePlan = { status: "SUPPLEMENT_PENDING", reasons: [baseline.expectedPlanReason],
+      questionUid: input.current.questionUid, sourceArchiveFile: input.source, sourceOrdinal: input.ordinal };
+    const protocolCases = [
+      ["current Native receipt cannot be counted as BLOCKED", {
+        nativeReviewReceipt: () => baseline.receiptPath, planQuestion: () => basePlan }],
+      ["unknown RHS refusal stays a failure", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: ["UNKNOWN_NATIVE_INPUT_FAILURE"] }) }],
+      ["RHS refusal cannot become already registered", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, status: "ALREADY_REGISTERED" }) }],
+      ["RHS refusal cannot carry generated metadata", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, final: { metadataApprovalType: "FINAL_QA" } }) }]
+    ];
+    for (const [label, overrides] of protocolCases) {
+      const observer = createIssuedApprovalObserver({ ...issuedObserverApi, ...overrides });
+      assert.throws(() => observer.assertBlocked(candidate, label), label);
+      protocolRejections += 1;
+    }
+    const restored = issuedObserver.assertKnownInputs(candidate, "restored entire original RHS input closure");
+    assert.deepStrictEqual(restored.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(restored.authenticatedDrifts, baseline.authenticatedDrifts);
+  } finally { fs.rmSync(fixtureRoot, { recursive: true, force: true }); }
+  console.log("PASS exact issued RHS1 approval retained with current source reuse BLOCKED; " +
+    (cases.length + fileRejections + protocolRejections) +
+    " rejected corruptions; current Native approvals 0; current UI continuity NOT_ASSERTED");
+}
+const originalReceiptInputs = retainedInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).kind === "EXACT_ISSUED_ORIGINAL_RECEIPT_SOURCE_BLOCK");
+assert.strictEqual(originalReceiptInputs.length, 23, "the actual observed original-receipt scope must remain twenty-three");
+assert.strictEqual(originalReceiptInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "CANONICAL_LABELS_MISSING").length, 20);
+assert.strictEqual(originalReceiptInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "IDENTITY_SOURCE_FINGERPRINT_MISMATCH").length, 3);
+const originalGroups = new Map();
+for (const input of originalReceiptInputs) {
+  const proof = retainedApprovals.get(input.current.questionUid);
+  const key = proof.declaredInputs.originalRequestId;
+  originalGroups.set(key, [...(originalGroups.get(key) || []), input]);
+  assert.strictEqual(proof.proof.currentNativeReady, false);
+  assert.strictEqual(proof.proof.currentPlan.status, "SUPPLEMENT_PENDING");
+  assert.deepStrictEqual(proof.proof.currentPlan.reasons, [proof.expectedPlanReason]);
+  assert.strictEqual(proof.proof.newMetadataApprovals, 0);
+}
+assert.deepStrictEqual([...originalGroups.values()].map(rows => rows.length).sort((a, b) => a - b), [1, 10, 12]);
+const e006OriginalInputs = originalGroups.get("m3s2-e006-residual-current410-r8-20261116");
+assert.deepStrictEqual(e006OriginalInputs.map(input => input.ordinal).sort((a, b) => a - b),
+  [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 21, 22], "only the actual E006 twelve may enter the added source block");
+for (const input of e006OriginalInputs) {
+  const kept = retainedApprovals.get(input.current.questionUid);
+  assert.strictEqual(kept.expectedPlanReason,
+    input.ordinal === 3 ? "IDENTITY_SOURCE_FINGERPRINT_MISMATCH" : "CANONICAL_LABELS_MISSING");
+  assert.strictEqual(kept.declaredInputs.actualReadonlyObservation.snapshot,
+    "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f");
+  assert.strictEqual(kept.declaredInputs.actualReadonlyObservation.report.gitBlobSha1,
+    "d4f20db9affab008ad98ace5cff40f6bacff990e");
+  assert.strictEqual(kept.proof.currentNativeReady, false);
+}
+let originalReceiptRejections = 0;
+for (const inputs of originalGroups.values()) {
+  const input = inputs.find(value => value.ordinal === 4) || inputs[0];
+  const baseline = retainedApprovals.get(input.current.questionUid);
+  const refuses = (candidate, label) => {
+    assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+    originalReceiptRejections += 1;
+  };
+  for (const [label, change] of [
+    ["original metadata whole change", { current: { ...input.current, tagStatus: "unreviewed" } }],
+    ["original identity UID change", { identity: { ...input.identity, questionUid: "qid_v1_" + "0".repeat(64) } }],
+    ["original runtime whole change", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metadataRevision: "UNISSUED" } } }],
+    ["original ACTIVE owner change", { runtimeOwner: "MIDDLE1" }],
+    ["original unissued revision", { current: { ...input.current,
+      metadataRevision: input.current.metadataRevision + "-unissued" } }]
+  ]) refuses({ ...input, ...change }, label);
+  const other = inputs.find(value => value.current.questionUid !== input.current.questionUid) || input;
+  const changedCurrentMember = createIssuedApprovalObserver({ ...issuedObserverApi, currentRows(uid) {
+    const value = issuedObserverApi.currentRows(uid);
+    return uid === other.current.questionUid
+      ? { ...value, metadata: { ...value.metadata, reviewStatus: "unreviewed" } } : value;
+  } });
+  assert.throws(() => changedCurrentMember.assertKnownInputs(input,
+    "all members of the original receipt must retain their complete current approval"));
+  originalReceiptRejections += 1;
+
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-original-receipt-"));
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
+    for (const relative of baseline.readPaths) {
+      const target = path.join(fixtureRoot, relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    const copied = issuedObserver.assertKnownInputs(candidate, "exact copied original receipt input closure");
+    assert.deepStrictEqual(copied.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(copied.authenticatedDrifts, baseline.authenticatedDrifts);
+    const paths = [...new Set([baseline.receiptPath, ...baseline.receipt.approval.evidenceRefs.map(ref => ref.path)])];
+    for (const relative of paths) {
+      assert(baseline.readPaths.has(relative), relative);
+      const file = path.join(fixtureRoot, relative), bytes = fs.readFileSync(file);
+      fs.appendFileSync(file, "\n");
+      refuses(candidate, "known source change cannot hide changed issued evidence: " + relative);
+      fs.writeFileSync(file, bytes);
+    }
+    const firstEvidence = baseline.receipt.approval.evidenceRefs[0].path;
+    const evidenceFile = path.join(fixtureRoot, firstEvidence), evidenceBytes = fs.readFileSync(evidenceFile);
+    fs.unlinkSync(evidenceFile);
+    refuses(candidate, "missing original evidence must fail");
+    fs.symlinkSync(path.join(root, firstEvidence), evidenceFile);
+    refuses(candidate, "same-byte original evidence symlink must fail");
+    fs.unlinkSync(evidenceFile); fs.writeFileSync(evidenceFile, evidenceBytes);
+
+    // The absence of a binding is accepted only through a byte-pinned original
+    // receipt. A forged receipt with a newly declared binding cannot qualify.
+    const receiptFile = path.join(fixtureRoot, baseline.receiptPath), receiptBytes = fs.readFileSync(receiptFile);
+    const forged = JSON.parse(receiptBytes);
+    forged.outputDigests.push({ path: baseline.receiptPath.replace(/\.json$/, ".source-review-binding.json"),
+      sha256: "0".repeat(64) });
+    fs.writeFileSync(receiptFile, JSON.stringify(forged, null, 2) + "\n");
+    refuses(candidate, "original receipt cannot acquire a forged typed output");
+    fs.writeFileSync(receiptFile, receiptBytes);
+
+    const masterFile = path.join(fixtureRoot, "archive/data/master_tables/js_archive_tag_master.json");
+    const masterBytes = fs.readFileSync(masterFile);
+    fs.appendFileSync(masterFile, "\n");
+    refuses(candidate, "unknown current MASTER drift must fail");
+    fs.writeFileSync(masterFile, masterBytes);
+    const sourceRelative = "archive/exams/" + input.source, sourceFile = path.join(fixtureRoot, sourceRelative);
+    const sourceBytes = fs.readFileSync(sourceFile), unknownBytes = Buffer.concat([sourceBytes, Buffer.from("\n")]);
+    const blobOf = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+    fs.writeFileSync(sourceFile, unknownBytes);
+    refuses({ ...candidate, nativeSource: { ...candidate.nativeSource, bytes: unknownBytes, blobSha1: blobOf(unknownBytes) } },
+      "unobserved original source bytes must fail");
+    fs.writeFileSync(sourceFile, sourceBytes);
+    fs.unlinkSync(sourceFile);
+    refuses(candidate, "missing current source must fail");
+    fs.symlinkSync(path.join(root, sourceRelative), sourceFile);
+    refuses(candidate, "same-byte current source symlink must fail");
+    fs.unlinkSync(sourceFile); fs.writeFileSync(sourceFile, sourceBytes);
+    const issuedBytes = execFileSync("git", ["show", "f9e49a0e0c18f18c63f31d7547bd504f07a821c6:" + sourceRelative],
+      { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    const issuedBank = loadBank(issuedBytes.toString("utf8"), sourceRelative);
+    fs.writeFileSync(sourceFile, issuedBytes);
+    refuses({ ...candidate, question: issuedBank[input.ordinal - 1], previous: issuedBank[input.ordinal - 1],
+      nativeSource: { ...candidate.nativeSource, bytes: issuedBytes, blobSha1: blobOf(issuedBytes), bank: issuedBank } },
+      "old source restoration cannot be described as the observed current block");
+    fs.writeFileSync(sourceFile, sourceBytes);
+
+    for (let index = 0; index < baseline.declaredInputs.originalSources.length; index++) {
+      const raw = readOriginalReceiptSource(root, baseline.declaredInputs.originalRequestId, index);
+      assert.throws(() => assertOriginalReceiptSourceBytes(Buffer.concat([raw, Buffer.from("\n")]),
+        baseline.declaredInputs.originalRequestId, index), /ORIGINAL_RECEIPT_SOURCE_BYTES/);
+      originalReceiptRejections += 1;
+      const emptyRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-original-receipt-missing-object-"));
+      try {
+        execFileSync("git", ["init", "--quiet", emptyRoot], { stdio: ["ignore", "pipe", "pipe"] });
+        assert.throws(() => readOriginalReceiptSource(emptyRoot, baseline.declaredInputs.originalRequestId, index),
+          /Command failed: git/, "original immutable source must exist in the caller Git context");
+        originalReceiptRejections += 1;
+      } finally { fs.rmSync(emptyRoot, { recursive: true, force: true }); }
+    }
+    assert.throws(() => readOriginalReceiptSource(fixtureRoot, "UNDECLARED_RECEIPT", 0),
+      /FIXED_ORIGINAL_RECEIPT/);
+    originalReceiptRejections += 1;
+
+    // These doubles test refusal-shape handling only. The actual twenty-three Native
+    // and planQuestion calls were already made above from untouched production.
+    const basePlan = { status: "SUPPLEMENT_PENDING", reasons: [baseline.expectedPlanReason],
+      questionUid: input.current.questionUid, sourceArchiveFile: input.source, sourceOrdinal: input.ordinal };
+    const differentKnownReason = baseline.expectedPlanReason === "CANONICAL_LABELS_MISSING"
+      ? "IDENTITY_SOURCE_FINGERPRINT_MISMATCH" : "CANONICAL_LABELS_MISSING";
+    for (const [label, overrides] of [
+      ["original positive Native cannot become an accepted null", {
+        nativeReviewReceipt: () => baseline.receiptPath, planQuestion: () => basePlan }],
+      ["original unknown refusal is not accepted", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: ["UNKNOWN_FAILURE"] }) }],
+      ["another known profile's refusal is not accepted", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: [differentKnownReason] }) }],
+      ["an additional known refusal is not accepted", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: [...basePlan.reasons, differentKnownReason] }) }],
+      ["ordinary APPLY is not an observed refusal", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, status: "APPLY" }) }],
+      ["ordinary ALREADY_REGISTERED is not an observed refusal", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, status: "ALREADY_REGISTERED" }) }],
+      ["original refusal cannot carry generated metadata", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, final: { metadataApprovalType: "FINAL_QA" } }) }]
+    ]) {
+      const observer = createIssuedApprovalObserver({ ...issuedObserverApi, ...overrides });
+      assert.throws(() => observer.assertBlocked(candidate, label), label);
+      originalReceiptRejections += 1;
+    }
+    const restored = issuedObserver.assertKnownInputs(candidate, "restored complete original receipt closure");
+    assert.deepStrictEqual(restored.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(restored.authenticatedDrifts, baseline.authenticatedDrifts);
+  } finally { fs.rmSync(fixtureRoot, { recursive: true, force: true }); }
+}
+console.log("PASS retained issued original receipt23 whole approvals with current Native BLOCKED; " +
+  originalReceiptRejections + " rejected corruptions; current Native approvals 0; new metadata approvals 0");
+
+console.log("CURRENT_NATIVE_READINESS " + JSON.stringify({
+  ready: nativeApprovals.size, blockedRetained: retainedApprovals.size,
+  blocked: [...retainedApprovals.values()].map(value => ({
+    questionUid: value.proof.questionUid, sourceArchiveFile: value.proof.sourceArchiveFile,
+    sourceOrdinal: value.proof.sourceOrdinal, status: value.proof.currentReadiness,
+    readinessBasis: value.proof.readinessBasis,
+    reasons: value.proof.currentPlan.reasons,
+    changedDeclaredInputs: value.proof.authenticatedDrifts.map(row => row.path),
+    sourceChangedSinceIssuedAnchor: value.proof.sourceChangedSinceAnchor,
+    currentDisplayQuality: value.proof.currentDisplayQuality, newMetadataApprovals: 0
+  })).sort((a, b) => a.questionUid.localeCompare(b.questionUid))
+}));
+
 const preservedAuditInputs = nativeInputs.filter(input => input.current.metadataApprovalType === "META_PIPELINE_AUDIT");
 for (const input of preservedAuditInputs) {
   const changes = [
@@ -382,7 +999,7 @@ for (const row of runtime.records) {
   } else {
     assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion) ||
       currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT" ||
-      nativeApprovals.has(row.questionUid), row.questionUid);
+      issuedApprovals.has(row.questionUid), row.questionUid);
     assert.strictEqual(row.l4Disposition, "ASSIGNED", row.questionUid);
     assert(activeTemplates.has(row.templateKey), row.templateKey);
     }
@@ -398,9 +1015,9 @@ assert(q513);
 assert.strictEqual(q513.standardUnitKey, "M3-05");
 assert.strictEqual(q513.subUnitKey, "M3-05-TRIG_RATIO_APPLICATION");
 assert.strictEqual(q513.problemTypeKey, "PT_TRIG_RATIO_APPLICATION");
-// A reviewed transition is accepted only after the exact production receipt and
-// ACTIVE binding checks above; otherwise retain the historical DIRECT contract.
-const q513ReceiptPath = nativeApprovals.get(uid513);
+// The current classification must match its exact issued receipt and ACTIVE
+// binding. Current Native readiness remains a separate result above.
+const q513ReceiptPath = issuedApprovals.get(uid513);
 if (q513ReceiptPath) {
   const applied = readJson(q513ReceiptPath).appliedRecords.filter(row => row.questionUid === uid513);
   assert.strictEqual(applied.length, 1, uid513);
@@ -423,7 +1040,7 @@ assert.strictEqual(new Set(globalRuntime.map((row) => sourceKey(row.sourceArchiv
 const maesan = catalog.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_기출.js"));
 assert.strictEqual(maesan.length, 23);
 
-console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUTE_OUT policy, and Archive2 join");
+console.log("PASS Middle Geometry retained runtime approval, canonical joins, HOLD/ROUTE_OUT policy, and Archive2 join; current Native readiness reported separately");
 
 
   const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');

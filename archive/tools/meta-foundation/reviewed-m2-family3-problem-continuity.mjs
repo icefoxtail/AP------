@@ -1,3 +1,4 @@
+import { readE015IssuedSourceContinuation } from './native-e015-source-cc-continuity.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -371,7 +372,11 @@ export function validateM2Family3ProblemContinuity(args) {
       row.sourceOrdinal !== patch.sourceOrdinal || PROBLEM_FIELDS.some(field => Object.hasOwn(patch.after || {}, field))) fail("NATIVE_IDENTITY_OR_METADATA_ONLY_SCOPE");
   const bound = evidence(ctx), validated = validateStatic(ctx, bound.documents.staticRef), ui = validateUi(ctx, bound, validated);
   let bytes;
-  try { bytes = fs.readFileSync(safe(ctx.root, validated.current.ref.path)); } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
+  try {
+    bytes = readE015IssuedSourceContinuation({ context:ctx.e015IssuedSourceContinuation, root:ctx.root,
+      request, patch, current:ctx.final, question, relativePath:validated.current.ref.path })
+      ?? fs.readFileSync(safe(ctx.root, validated.current.ref.path));
+  } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
   if (blob(bytes) !== request.expectedSourceBlobSha1) fail("LIVE_SOURCE_CAS");
   const bank = ctx.bankFromBytes(bytes), n = patch.sourceOrdinal - 1;
   if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount || !same(projection(bank[n]), projection(question))) fail("LIVE_ARGUMENT_OR_DENOMINATOR");

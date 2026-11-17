@@ -24,6 +24,7 @@ function safe(root,rel){demand(typeof rel==='string'&&rel&&!/[\\\0-\x1f]/.test(r
 function git(root,args){try{return execFileSync('git',['-C',root,...args],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:160*1024*1024,timeout:15000,stdio:['ignore','pipe','pipe']});}catch{fail('IMMUTABLE_GIT_REQUIRED');}}
 function validRef(r){exactKeys(r,['commit','path','gitBlobSha1','sha256','bytes'],'REF_KEYS');demand(/^[a-f0-9]{40}$/.test(r.commit)&&/^[a-f0-9]{40}$/.test(r.gitBlobSha1)&&/^[a-f0-9]{64}$/.test(r.sha256)&&Number.isSafeInteger(r.bytes)&&r.bytes>0,'REF');}
 function reader(root){const observed=new Map();return{observed,
+ ancestor(commit){demand(/^[a-f0-9]{40}$/.test(commit),'CURRENT_UI_ANCESTRY_COMMIT');git(root,['merge-base','--is-ancestor',commit,'HEAD']);},
  ref(r,live=false){validRef(r);safe(root,r.path);const b=git(root,['show',r.commit+':'+r.path]);demand(b.length===r.bytes&&blob(b)===r.gitBlobSha1&&sha(b)===r.sha256,'REF_BYTES');if(live){const p=safe(root,r.path);demand(fs.existsSync(p)&&sha(fs.readFileSync(p))===r.sha256,'LIVE_EVIDENCE_MISSING_OR_CHANGED');observed.set(r.path,r.sha256);}return b;},
  current(p){const file=safe(root,p);demand(fs.existsSync(file),'CURRENT_INPUT_MISSING');const b=fs.readFileSync(file),h=git(root,['rev-parse','HEAD:'+p]).toString().trim();demand(blob(b)===h,'CURRENT_UNTRACKED_CHANGE');observed.set(p,sha(b));return b;},
  // These three generated data carriers have a separately mandatory, fixed Q16 projection.
@@ -65,11 +66,12 @@ function assertEmptySvgProjection(bytes){
  demand(text.startsWith(prefix)&&text.endsWith(suffix),'UI_SVG_INDEX_DATA_WRAPPER');const d=JSON.parse(text.slice(prefix.length,-suffix.length));exactKeys(d,['schemaVersion','sourceIndexSha256','manifestSha256','buildScope','records'],'UI_SVG_INDEX_DATA_KEYS');demand(d.schemaVersion==='SVG_STUDENT_ACCESSIBILITY_V1'&&Array.isArray(d.records)&&d.buildScope&&typeof d.buildScope==='object'&&/^sha256:[a-f0-9]{64}$/.test(d.sourceIndexSha256)&&/^sha256:[a-f0-9]{64}$/.test(d.manifestSha256),'UI_SVG_INDEX_DATA');
  const seen=new Set();for(const row of d.records){demand(row&&typeof row==='object'&&typeof row.assetRef==='string'&&row.assetRef.startsWith('assets/')&&!/[\\\x00-\x1f?#]/.test(row.assetRef)&&row.assetRef.split('/').every(x=>x&&x!=='.'&&x!=='..')&&['problem','solution'].includes(row.visualRole),'UI_SVG_INDEX_ASSET_KEY');const key=row.assetRef+'\0'+row.visualRole;demand(!seen.has(key),'UI_SVG_INDEX_DUPLICATE_KEY');seen.add(key);}return [];
 }
-function assertUiRenderDependencies(technical,read){
+function assertUiRenderDependencies(technical,read,currentUiToken){
+ const expectedEngine=currentUiToken===CURRENT_Q16_UI_TOKEN?CURRENT_Q16_UI.engine:UI_ENGINE;
  const served=technical.servedFiles,mirrored=technical.mirroredAssets,fonts=technical.studentFontResources;demand(Array.isArray(served)&&served.length>0&&Array.isArray(mirrored)&&Array.isArray(fonts)&&fonts.length>0,'UI_RENDER_INPUTS');
  const all=new Map();for(const list of[served,mirrored]){const seen=new Set();for(const r of list){validRef(r);demand(r.commit===technical.checkoutCommit&&!seen.has(r.path),'UI_RENDER_INPUT_REF');seen.add(r.path);if(all.has(r.path))demand(eq(all.get(r.path),r),'UI_RENDER_INPUT_CONFLICT');else all.set(r.path,r);}}
  const byServed=new Map(served.map(r=>[r.path,r]));for(const p of[UI_ENGINE.path,REF_PINS.currentSourceRef.path,MD,SVG_INDEX,'archive/svg-accessibility.js',FONT_CSS,MATHJAX])demand(byServed.has(p),'UI_RENDER_INPUT_REQUIRED');
- demand(sameFile(byServed.get(UI_ENGINE.path),UI_ENGINE),'UI_ENGINE');
+ demand(sameFile(byServed.get(UI_ENGINE.path),expectedEngine),'UI_ENGINE');
  const projection={schemaVersion:'archive-m3s2-q16-ui-data-projection-v1',questionUid:UID,sourceArchiveFile:SOURCE,sourceOrdinal:ORDINAL,metadataSha256:HASH_PINS.selectedMetadataSha256,identitySha256:HASH_PINS.selectedIdentitySha256};demand(eq(technical.selectedDataProjections,projection),'UI_SELECTED_DATA_PROJECTION');
  for(const [r,p]of[[technical.metadataRef,MD],[technical.identityRef,ID]]){validRef(r);demand(r.commit===technical.checkoutCommit&&r.path===p,'UI_SELECTED_DATA_REF');if(all.has(p))demand(eq(all.get(p),r),'UI_SELECTED_DATA_CONFLICT');all.set(p,r);}
  demand(Array.isArray(technical.results)&&technical.results.length===2&&technical.results.every(r=>eq(r.assetRefs,[])&&r.geometry?.selectedFigureAssetCount===0),'UI_EMPTY_SELECTED_ASSET_PROJECTION');
@@ -85,13 +87,18 @@ function assertUiRenderDependencies(technical,read){
  return{renderDependencyPaths:[...all.keys()].sort(),generatedProjectionPaths:[MD,ID,SVG_INDEX]};
 }
 function assertUi(technical,visual,ui,read){
+ const currentBinding=currentUiRequested(technical,visual,ui);
+ if(currentBinding)assertCurrentUiReuse(technical,visual,ui,read);
  demand(technical.schemaVersion==='archive-m3s2-q16-layout-raw-ui-v2'&&technical.status==='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'&&technical.fixedScope==='E008_Q16_HTML_LAYOUT_DESKTOP_MOBILE_ONLY'&&technical.surface==='PROBLEM'&&technical.mode==='exam'&&technical.sourceOverlay===false&&technical.sourceOverlayCount===0&&technical.sourceWrites===0&&technical.solutionsOpened===false&&technical.problemOnlyScreenshots===true&&technical.newFullMathematicalQa===false&&technical.newMetadataApprovals===0&&technical.newDifficultyJudgments===0&&technical.newFourSlotApprovals===0,'UI_SCOPE');
  demand(['LOCAL_CHROMIUM','GITHUB_ACTIONS_SUPPORTED_CHROME'].includes(technical.executionOwner)&&technical.executionProvenance?.schemaVersion==='archive-m3s2-q16-browser-execution-v1'&&technical.executionProvenance.executionOwner===technical.executionOwner&&technical.executionProvenance.headless===true&&eq(technical.executionProvenance.launchArgumentsAdded,[])&&technical.executionProvenance.networkPolicy==='TRACKED_LOCALHOST_AND_EXACT_ASSET_MIRROR_ONLY','UI_EXECUTION');
  const e=technical.executionProvenance.checkout;demand(e?.expectedCheckoutCommit===technical.checkoutCommit&&e.actualCheckoutCommit===technical.checkoutCommit&&e.executionOwner===technical.executionOwner,'UI_CHECKOUT');
+ if(currentBinding)demand(eq(technical.executionProvenance,CURRENT_Q16_UI.execution),'CURRENT_UI_EXACT_EXECUTION');
+ else{
  if(technical.executionOwner==='GITHUB_ACTIONS_SUPPORTED_CHROME')demand(e.repository==='icefoxtail/AP------'&&e.eventName==='pull_request'&&e.headCommit===technical.checkoutCommit&&/^[a-f0-9]{40}$/.test(e.githubEventCommit)&&/^\d+$/.test(e.runId)&&/^\d+$/.test(e.runAttempt)&&typeof e.job==='string'&&e.job.length>0,'UI_ACTIONS');else demand(e.githubEventCommit===null,'UI_LOCAL');
+ }
  demand(/^[a-f0-9]{64}$/.test(technical.executionProvenance.executableSha256)&&typeof technical.executionProvenance.version==='string'&&technical.executionProvenance.version.length>0,'UI_BROWSER');
- for(const [r,pin] of[[technical.checkerRef,UI_PRODUCER],[technical.manifestRef,UI_MANIFEST],[technical.captureHelperRef,UI_CAPTURE]]){demand(r?.commit===technical.checkoutCommit&&sameFile(r,pin),'UI_PRODUCER_REF');read.ref(r);}
- const dependencies=assertUiRenderDependencies(technical,read);
+ for(const [r,pin] of[[technical.checkerRef,currentBinding?CURRENT_Q16_UI.producer:UI_PRODUCER],[technical.manifestRef,UI_MANIFEST],[technical.captureHelperRef,UI_CAPTURE]]){demand(r?.commit===technical.checkoutCommit&&sameFile(r,pin),'UI_PRODUCER_REF');read.ref(r);}
+ const dependencies=assertUiRenderDependencies(technical,read,currentBinding?CURRENT_Q16_UI_TOKEN:undefined);
  demand(eq(technical.failures,[])&&eq(technical.externalFontResources,[])&&technical.expectedLogicalCases===2&&technical.completedLogicalCases===2&&Array.isArray(technical.results)&&technical.results.length===2,'UI_COMPLETE');
  const artifacts=[],seen=new Set();for(const r of technical.results){const v=VIEWPORTS.find(v=>v.name===r.viewport?.name);demand(v&&!seen.has(v.name)&&eq(v,r.viewport),'UI_VIEWPORT');seen.add(v.name);demand(r.key==='E008-Q16'&&r.questionUid===UID&&r.sourceOrdinal===ORDINAL&&r.status==='PASS'&&r.visualReview==='PENDING'&&eq(r.assetRefs,[])&&r.sourceRef?.commit===technical.checkoutCommit&&sameFile(r.sourceRef,{path:REF_PINS.currentSourceRef.path,gitBlobSha1:REF_PINS.currentSourceRef.gitBlobSha1,sha256:REF_PINS.currentSourceRef.sha256,bytes:REF_PINS.currentSourceRef.bytes}),'UI_SUBJECT');read.ref(r.sourceRef);
   const t=r.technical,f=t?.fontReadiness,g=r.geometry;demand(t&&t.mode==='exam'&&t.questions===24&&t.pages>0&&t.readiness==='RENDER_READY'&&t.imagesComplete===true&&t.mathErrors===0&&t.unrenderedMath===0&&t.mathJaxSource==='local'&&t.solutionNodes===0&&f?.status==='loaded'&&f.family==='Nanum Myeongjo'&&Array.isArray(f.weights)&&eq(f.weights.map(w=>w.weight).sort(),[400,700,800])&&f.weights.every(w=>w.allLoaded===true&&w.checked===true)&&Array.isArray(f.problemFontFamilies)&&f.problemFontFamilies.length>0&&f.problemFontFamilies.every(x=>x.includes('Nanum Myeongjo')),'UI_FONTS_OR_RENDER');
@@ -101,7 +108,9 @@ function assertUi(technical,visual,ui,read){
  for(const a of artifacts){const refs=ui.artifactRefs.filter(r=>path.posix.basename(r.path)===a.path&&r.sha256===a.sha256&&r.bytes===a.bytes);demand(refs.length===1,'UI_ARTIFACT_REF');read.ref(refs[0],true);}
  // Reviewer independence is established by the separate review process and immutable visual reference.
  // A label comparison with a browser execution kind cannot prove authorship independence.
+ if(!currentBinding){
  exactKeys(visual,['schemaVersion','reviewer','decision','technicalRef','newMathQa','newSemanticApproval','newFourSlotVector','records'],'VISUAL_KEYS');demand(visual.schemaVersion==='archive-independent-m3s2-layout-ui-review-v1'&&typeof visual.reviewer==='string'&&visual.reviewer.trim()&&visual.decision==='ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY'&&visual.newMathQa===0&&visual.newSemanticApproval===0&&visual.newFourSlotVector===0&&eq(visual.technicalRef,ui.technicalRef)&&Array.isArray(visual.records)&&visual.records.length===2,'VISUAL');
+ }
  const vs=new Set();for(const v of visual.records){exactKeys(v,['questionUid','sourceOrdinal','surface','viewport','captureSha256','decision','screenshots'],'VISUAL_ROW_KEYS');const t=technical.results.find(t=>eq(t.viewport,v.viewport));demand(t&&!vs.has(v.viewport.name)&&v.questionUid===UID&&v.sourceOrdinal===ORDINAL&&v.surface==='PROBLEM'&&v.captureSha256===hash(t.capture)&&v.decision==='ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY'&&Array.isArray(v.screenshots),'VISUAL_BINDING');vs.add(v.viewport.name);demand(eq(v.screenshots.map(s=>{demand(s.decision==='ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY','VISUAL_TILE');const{decision,...rest}=s;return rest;}),t.screenshots),'VISUAL_SCREENSHOTS');}return{logicalCases:2,originalTiles:artifacts.length,...dependencies};
 }
 // The issued raw identity schema has no derived `status` field. Authenticate
@@ -127,4 +136,69 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
  exactKeys(doc.ui,['technicalRef','visualRef','artifactRefs'],'UI_REFS');const technical=JSON.parse(read.ref(doc.ui.technicalRef,true)),visual=JSON.parse(read.ref(doc.ui.visualRef,true));const ui=assertUi(technical,visual,doc.ui,read);
  return{ref:{path:entry.path,sha256:entry.sha256},observed:[...read.observed],scope:'EXISTING_VECTOR_LAYOUT_ONLY',newApprovals:0,...ui};
 }
-module.exports={DIR,SCHEMA,BINDING,UID,SOURCE,ORDINAL,collect,verify,assertCurrentTuple,assertSubject,assertLayoutOnly,assertCompact,assertCapture,assertUi,assertUiRenderDependencies,assertLiveRenderRef,assertSelectedDataRows,assertEmptySvgProjection,containsHold};
+
+// One separately published current display binding. The original source,
+// registered vector24, metadata/identity and old renderer contract stay fixed.
+const CURRENT_Q16_UI=freezeCurrentUi({"head":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","technicalRef":{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/technical-proof.json","gitBlobSha1":"93f7d450d8c025a0e9e13f8fe7d2e853fcdf16e5","sha256":"f3aed5e059efdb74b542c9ff3ca71f5668d5b4505599af628307d76f57297a12","bytes":72140},"visualRef":{"commit":"e371e50ba8cb3e317c32cf1d1478b832bb0444c2","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/visual-current-reuse-v1.json","gitBlobSha1":"e97b9239521286baa7dec7216de745b30c3f55a5","sha256":"587e750ec40543da076f3f1129a02a34e3caaf509696043d2629ffd78a4dcca5","bytes":6909},"priorTechnicalRef":{"commit":"29494e8d5a1dac11a542b0b402d0f854c5cb452e","path":"docs/operations/m3s2-q16-layout-ui-26fc-20261116/technical-proof.json","gitBlobSha1":"ed5e933876e02bbbe597f4df34e3d85ce3cc47ab","sha256":"31cdd2904799b243ff7d85e43756f27c5c055e2c4e9f5bac4a648652db23fce1","bytes":72254},"priorVisualRef":{"commit":"933fb9238f617d1924aa823633ff6f23fde8a37d","path":"docs/operations/m3s2-q16-layout-ui-26fc-20261116/independent-visual-review.json","gitBlobSha1":"9030d5bdbd75858eff6af3884ae806ee30088510","sha256":"7faa8035dcc9b6b3f2d608588adb39a5fb242de22ae33347bfd84ef2678f73d3","bytes":2048},"witnessRef":{"commit":"006e6455f69c092c3251d440daf0c4b07da7a469","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json","gitBlobSha1":"56ec9409ca900e94a46d6562e6e9189aedac7d43","sha256":"07632bee16334ab68a80b3433db7b32daa145053b68156b68244b9145ebeaa7e","bytes":37970},"framesRef":{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/producer-frames.jsonl","gitBlobSha1":"f321736234b755d5acd5173fc8a00276389ef659","sha256":"aba4b5c5555269eb8187241f576914c833b487ebeca8820e3d2d8cb0c4b9d17b","bytes":161762},"artifacts":[{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/E008-Q16-desktop-tile-01.png","gitBlobSha1":"9b2057478538aae62881fc434f4ca825ce7e7256","sha256":"b12e1f0ac18d5d903518afa714a311c67cdcfda191c3bf9ee5d20b67df32fc61","bytes":28361},{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/E008-Q16-mobile-tile-01.png","gitBlobSha1":"d4353601dda1f361da12e3b885861be0e64096dc","sha256":"3fe2010b0513b607f302625dfb2298f1dbe370d9237d6d728b8e56c1bd03ce1f","bytes":10552}],"producer":{"path":"tools/check-m3s2-q16-layout-browser.cjs","gitBlobSha1":"f7426f61f7cd783b52cfe5c279fcee8cb8200ee7","sha256":"71f2cab9234d4a80ada7e79c7b03df288079fd39f8e806a6fce1255324951958","bytes":26602},"engine":{"path":"archive/engine.html","gitBlobSha1":"226342544e896cd6a6f35aa946947b89ef3c893e","sha256":"671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5","bytes":196085},"execution":{"schemaVersion":"archive-m3s2-q16-browser-execution-v1","executionOwner":"GITHUB_ACTIONS_SUPPORTED_CHROME","checkout":{"expectedCheckoutCommit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","actualCheckoutCommit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","executionOwner":"GITHUB_ACTIONS_SUPPORTED_CHROME","githubEventCommit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","repository":"icefoxtail/AP------","runId":"44015662986","runAttempt":"1","job":"current-ui","eventName":"push","headCommit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"},"executableName":"chrome","executableSha256":"91e519ce83eac12740d54398364583b3131116055eca863d0a240d6062e84053","version":"Google Chrome 157.0.8103.78","playwrightVersion":"1.62.1","headless":true,"launchArgumentsAdded":[],"networkPolicy":"TRACKED_LOCALHOST_AND_EXACT_ASSET_MIRROR_ONLY"},"visualSchema":"archive-independent-m3s2-q16-current-ui-reuse-v1","omittedFontResourceId":"cf3f7bcae01e00f44158a8856b11c7c8a30174647e6181b4dc402c6121b6a20c"});
+const CURRENT_Q16_UI_TOKEN=Object.freeze({});
+function freezeCurrentUi(value){for(const x of Object.values(value))if(x&&typeof x==='object')freezeCurrentUi(x);return Object.freeze(value);}
+function withoutUiCommit({commit,...r}){return r;}
+function currentUiRequested(technical,visual,ui){
+ return ui?.technicalRef?.path===CURRENT_Q16_UI.technicalRef.path||
+  visual?.schemaVersion===CURRENT_Q16_UI.visualSchema||technical?.checkoutCommit===CURRENT_Q16_UI.head;
+}
+function assertCurrentUiReuse(technical,visual,ui,read){
+ const c=CURRENT_Q16_UI;
+ demand(eq(ui,{technicalRef:c.technicalRef,visualRef:c.visualRef,artifactRefs:c.artifacts}),'CURRENT_UI_CLOSED_REFS');
+ demand(typeof read.ancestor==='function','CURRENT_UI_ANCESTRY_READER');
+ for(const ref of[c.technicalRef,c.visualRef,c.priorTechnicalRef,c.priorVisualRef,c.witnessRef,c.framesRef,...c.artifacts])read.ancestor(ref.commit);
+ const sealed=JSON.parse(read.ref(c.technicalRef,true)),sealedVisual=JSON.parse(read.ref(c.visualRef,true));
+ demand(eq(sealed,technical)&&eq(sealedVisual,visual),'CURRENT_UI_SEALED_DOCUMENT');
+ const prior=JSON.parse(read.ref(c.priorTechnicalRef,true)),oldVisual=JSON.parse(read.ref(c.priorVisualRef,true)),witness=JSON.parse(read.ref(c.witnessRef,true));
+ read.ref(c.framesRef,true);
+ demand(technical.checkoutCommit===c.head&&eq(technical.executionProvenance,c.execution),'CURRENT_UI_EXACT_EXECUTION');
+ demand(witness.decision==='ACCEPT_EXACT_CURRENT_FOUR_PNG_DISPLAY_BY_PRIOR_OBSERVATION_REUSE_ONLY'&&
+  witness.actualCapture?.head===c.head&&witness.actualCapture?.publicationCommit===c.technicalRef.commit&&
+  eq(witness.priorEvidence?.q16?.technical,c.priorTechnicalRef)&&eq(witness.priorEvidence?.q16?.visual,c.priorVisualRef),'CURRENT_UI_INDEPENDENT_REUSE');
+ exactKeys(oldVisual,['schemaVersion','reviewer','decision','technicalRef','newMathQa','newSemanticApproval','newFourSlotVector','records'],'CURRENT_UI_PRIOR_VISUAL_KEYS');
+ demand(oldVisual.schemaVersion==='archive-independent-m3s2-layout-ui-review-v1'&&oldVisual.decision==='ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY'&&
+  eq(oldVisual.technicalRef,c.priorTechnicalRef)&&oldVisual.newMathQa===0&&oldVisual.newSemanticApproval===0&&oldVisual.newFourSlotVector===0&&
+  Array.isArray(oldVisual.records)&&oldVisual.records.length===2,'CURRENT_UI_PRIOR_VISUAL');
+ demand(visual.schemaVersion===c.visualSchema&&visual.scope==='EXACT_E008_Q16_LAYOUT_CURRENT_DISPLAY_ONLY'&&
+  visual.decision===oldVisual.decision&&visual.reviewer===oldVisual.reviewer&&visual.derivationAuthor==='GPT_M3S2_RELEASE'&&
+  visual.decisionOrigin==='IMMUTABLE_PRIOR_SEPARATE_VISUAL_INSPECTION_REUSED_FOR_IDENTICAL_CURRENT_PNG_BYTES'&&
+  eq(visual.technicalRef,c.technicalRef)&&eq(visual.priorTechnicalRef,c.priorTechnicalRef)&&eq(visual.priorVisualRef,c.priorVisualRef)&&
+  eq(visual.displayEquivalenceRef,c.witnessRef)&&eq(visual.currentProducerFramesRef,c.framesRef)&&
+  eq(visual.records,oldVisual.records)&&eq(visual.artifactRefs,c.artifacts)&&visual.oldVisualRecordsCopiedExactly===true&&
+  visual.currentRawTechnicalUnchanged===true&&visual.originalPngBytesUnmodified===true&&
+  ['newVisualInspection','newMathematicalQa','newSemanticApproval','newNativeApproval','newMetadataApproval','newDifficultyApproval','newFourSlotVector'].every(k=>visual[k]===0)&&
+  visual.sharedRendererCodeEquivalenceClaimed===false&&visual.currentFullLiveCodeFontAssetGuardsRequired===true&&
+  visual.officialCurrentNativeBuilderConsumer==='NOT_RUN_CURRENT_UI_BINDING','CURRENT_UI_VISUAL_REUSE');
+ demand(prior.schemaVersion===technical.schemaVersion&&prior.status==='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'&&
+  Array.isArray(prior.results)&&prior.results.length===2&&Array.isArray(technical.results)&&technical.results.length===2&&
+  eq(prior.screenshotArtifacts,technical.screenshotArtifacts)&&eq(prior.selectedDataProjections,technical.selectedDataProjections),'CURRENT_UI_CAPTURE_INVENTORY');
+ const stripItem=x=>({...x,sourceRef:withoutUiCommit(x.sourceRef),assetRefs:(x.assetRefs||[]).map(withoutUiCommit)});
+ demand(eq(prior.items.map(stripItem),technical.items.map(stripItem))&&
+  eq(prior.mirroredAssets.map(withoutUiCommit),technical.mirroredAssets.map(withoutUiCommit)),'CURRENT_UI_APPROVED_INPUTS');
+ const beforeFonts=new Map(prior.studentFontResources.map(f=>[f.resourceId,f])),afterFonts=new Map(technical.studentFontResources.map(f=>[f.resourceId,f]));
+ demand(beforeFonts.size===34&&afterFonts.size===33&&beforeFonts.size===prior.studentFontResources.length&&afterFonts.size===technical.studentFontResources.length&&
+  eq([...beforeFonts.keys()].filter(id=>!afterFonts.has(id)),[c.omittedFontResourceId])&&
+  [...afterFonts].every(([id,f])=>beforeFonts.has(id)&&eq(withoutUiCommit(f),withoutUiCommit(beforeFonts.get(id)))),'CURRENT_UI_FONT_REUSE');
+ for(let i=0;i<2;i++){
+  const a=prior.results[i],b=technical.results[i],binding=visual.captureBindings?.[i];
+  demand(a.questionUid===UID&&b.questionUid===UID&&a.sourceOrdinal===ORDINAL&&b.sourceOrdinal===ORDINAL&&eq(a.viewport,b.viewport)&&
+   eq(withoutUiCommit(a.sourceRef),withoutUiCommit(b.sourceRef))&&eq(a.assetRefs,b.assetRefs)&&
+   ['capture','screenshots','geometry','pageErrors','requestFailures','externalRequests'].every(k=>eq(a[k],b[k])),'CURRENT_UI_CAPTURE_CHANGED');
+  const before={...a.technical},after={...b.technical};delete before.fontResourceIds;delete after.fontResourceIds;
+  demand(eq(before,after)&&Array.isArray(b.technical.fontResourceIds)&&new Set(b.technical.fontResourceIds).size===b.technical.fontResourceIds.length&&
+   b.technical.fontResourceIds.every(id=>a.technical.fontResourceIds.includes(id)&&afterFonts.has(id)),'CURRENT_UI_CASE_FONT_REUSE');
+  demand(binding?.questionUid===UID&&binding.sourceOrdinal===ORDINAL&&binding.viewport===b.viewport.name&&
+   binding.priorCaptureSha256===hash(a.capture)&&binding.currentCaptureSha256===hash(b.capture)&&
+   binding.originalScreenshotsExactlyReused===true&&binding.wholeCaptureExactlyReused===true,'CURRENT_UI_CAPTURE_BINDING');
+ }
+ demand(eq(visual.captureProvenanceDelta,{entireCaptureEqual:true,measurementAndCoverageFieldsChanged:0}),'CURRENT_UI_CAPTURE_PROVENANCE');
+ for(const ref of c.artifacts){const bytes=read.ref(ref,true);demand(bytes.length>=8&&bytes.subarray(0,8).equals(Buffer.from('89504e470d0a1a0a','hex')),'CURRENT_UI_PNG_BYTES');}
+ return true;
+}
+
+module.exports={DIR,SCHEMA,BINDING,UID,SOURCE,ORDINAL,collect,verify,assertCurrentTuple,assertSubject,assertLayoutOnly,assertCompact,assertCapture,assertUi,assertUiRenderDependencies,assertLiveRenderRef,assertSelectedDataRows,assertEmptySvgProjection,containsHold,currentUiRequested,assertCurrentUiReuse,currentUiPins:()=>structuredClone(CURRENT_Q16_UI)};

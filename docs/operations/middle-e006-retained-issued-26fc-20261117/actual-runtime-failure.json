@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-middle-runtime-focused-e006-failure-v1",
+  "owner": "ci_m2s2",
+  "runId": 44037304307,
+  "jobId": 133883158017,
+  "head": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+  "officialProjection": "SUCCESS",
+  "runtimeResult": "FAILURE",
+  "logDownloadCount": 1,
+  "log": {
+    "bytes": 704716,
+    "sha256": "cf47c2c9dc105ceac8cbe3234ce9b33480383138298bb4b8c497f3e3d78b3dc6",
+    "gitBlobSha1": "a07396bdb69fe36875e78bdeaba798eaed75aa90"
+  },
+  "logPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-run44037304307/completed-job133883158017.log",
+  "failure": {
+    "uid": "qid_v1_006d3d7fb3c9f11a0355c15b8df9cc7ec43e9de53da5b4e7d3171318ff7e23d3",
+    "source": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+    "ordinal": 8,
+    "assertion": "source-review output",
+    "actual": 0,
+    "expected": 1,
+    "stack": [
+      "single:681",
+      "assertRetained:971",
+      "assertKnownInputs:1393",
+      "assertBlocked:1527",
+      "assertReviewedState:206",
+      "verifyHistoricalCohorts:246"
+    ]
+  },
+  "receipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e006-residual-current410-r8-20261116.json",
+    "bytes": 208512,
+    "sha256": "73176562cdc8dd91b7025f23cd9d9595c5acbfa6470c3403876367b9f7068677",
+    "gitBlobSha1": "253c5aeae229085d9bf6bb51942f114743981d44",
+    "requestId": "m3s2-e006-residual-current410-r8-20261116",
+    "scope": "PARTIAL_UIDS",
+    "subjects": 12,
+    "expectedQuestions": 23,
+    "sourceReviewBindingDeclared": false,
+    "sourceRebind": false
+  },
+  "currentSource": {
+    "bytes": 64226,
+    "sha256": "b0e801cecba43ad4cffd2009a1a5cb1a5e533330481bfd24e9401e0d7480470e",
+    "gitBlobSha1": "a06c36b865b617f8c327cc90e1f4a931668a3e19",
+    "sameBetween13d5And90": true
+  },
+  "issuedSource": {
+    "gitBlobSha1": "305e21cf2fb3155b46d3fa7937cde4e4c0e5de18",
+    "sha256": "c2a0244074bd4257961b5facb672786361ae88526c6b35f55beb3b1c595d93fb"
+  },
+  "boundary": {
+    "originalReceiptBytesUnchanged": true,
+    "currentNativeNullFromWrapper": "NO_PRECISE_INNER_REASON_REPORTED",
+    "precisePlanResult": "NOT_OBSERVED",
+    "newRetentionExceptionAdded": false,
+    "sourceChangeCause": "NOT_YET_PROVEN",
+    "originalSuccessfulScopedTestsRepeated": 0
+  }
+}

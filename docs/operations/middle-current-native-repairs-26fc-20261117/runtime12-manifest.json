@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-runtime-e006-original-issued-retention-candidate-manifest-v1",
+  "owner": "/root/ci_m2s2",
+  "repository": "icefoxtail/AP------",
+  "rootReportedIntegrationHead": "48c507ef5b8830ff71ef398fd54029ca730ebfa7",
+  "rootReportedMain": "e5ec3fb52b0f5f412ceab224bf165e7eb1d48999",
+  "operations": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/e006-fix/middle-geometry-issued-approval.cjs",
+      "bytes": 107417,
+      "sha256": "63d0e2669d6fd5314cbecdddc7d330b1e1001d5fa1b1505b2b4627e883285555",
+      "gitBlobSha1": "9317117d747304c4ad314538a41035fc87e22a31",
+      "expectedBeforeGitBlobSha1": "fa42fee9e8ea485a240c004d1a68d9f09daf90cf"
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/e006-fix/meta-foundation-middle-geometry-runtime.test.js",
+      "bytes": 74400,
+      "sha256": "ea06eeb8585f4f0a0171956571d4f4c86ac7c6227a35acdb4016463437995f55",
+      "gitBlobSha1": "2ac1caca326c9b08935640e13566b97ef724e3ef",
+      "expectedBeforeGitBlobSha1": "b5c9b77bc742240d54a0a6cb984ebd419f1361b6"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "ACTUAL_READONLY_PROBE",
+      "bytes": 55235,
+      "sha256": "09d60da9a770ee2c3440612b12acf4746f7f5cadc8c33122a421518bbc24a87a",
+      "gitBlobSha1": "d4f20db9affab008ad98ace5cff40f6bacff990e"
+    },
+    {
+      "kind": "REVERSIBLE_TWO_FILE_DELTA",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/e006-fix/delta-v1.json",
+      "bytes": 21167,
+      "sha256": "894fb443ec583f0579e0492a96924580becd013f4de7672140aae2d193166a2b",
+      "gitBlobSha1": "0693bd81cc3711ef80bed130c22ab676bd52793b"
+    },
+    {
+      "kind": "AUTHOR_VALIDATION_AND_SCOPE",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/e006-fix/evidence-v1.json",
+      "bytes": 17140,
+      "sha256": "0ca386f286b548fd97362c115d14967f1d85f9ca820beaae7b64a663998bce0c",
+      "gitBlobSha1": "cd2ab02f96fa862918c05c25f920aa2b13be8b9a"
+    }
+  ],
+  "validation": {
+    "immutableFullReadback": true,
+    "beforeInverseExact": true,
+    "originalNativeFunctionWholeSha256": "bc114f8009a23f1031acbce92e193bfaaa5fde80eb2ed2f15a4c7ed26cc8d8a7",
+    "nodeSyntaxFilesPassed": 2,
+    "newOriginalSourceChecksPassed": 4,
+    "newOriginalSourceChecksFailed": 0,
+    "wholeRuntime": "NOT_RUN",
+    "independentReview": "ROOT_PENDING",
+    "currentNativeApprovalGranted": 0
+  },
+  "actualBoundary": {
+    "observedSnapshot": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+    "issuedRowsPreserved": 12,
+    "currentNativeNull": 12,
+    "planSupplementPending": 12,
+    "planReasons": {
+      "CANONICAL_LABELS_MISSING": 11,
+      "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": 1
+    },
+    "fullCandidateRuntimeResult": "NOT_RUN",
+    "actualLatestMainResultNotClaimed": true
+  },
+  "intendedFocusedCommand": "node tests/meta-foundation-middle-geometry-runtime.test.js",
+  "changes": {
+    "production": 0,
+    "source": 0,
+    "metadata": 0,
+    "identity": 0,
+    "runtime": 0,
+    "approval": 0,
+    "branchOrRef": 0
+  },
+  "nextAction": "Root independent review, exact two-file integration, official generated inputs plus focused runtime test; reject unknown Native null or plan shape."
+}

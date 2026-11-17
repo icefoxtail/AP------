@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "archive-independent-q16-immutable-test-fixture-review-v1",
+  "reviewer": "/root/m3s2_release",
+  "reviewedAtUtc": "2026-11-17T02:48:42.754Z",
+  "decision": "STATIC_ACCEPT_TEST_ONLY_REQUIRED_CI_PENDING",
+  "operation": {
+    "path": "tests/archive-m3s2-layout-continuity.test.cjs",
+    "beforeGitBlobSha1": "49ce6dfddd2705565efc6a184465da4b61613403",
+    "gitBlobSha1": "9e92316828fefd06f09ccd3f36a62f2cd6d827df",
+    "sha256": "6908f5aa84eeaa03d8ee3148baaa9b8ec36b76bb2a695d0ecd370e08a6dd537a",
+    "bytes": 21906
+  },
+  "production": {
+    "path": "tools/4slot/m3s2-layout-continuity.cjs",
+    "gitBlobSha1": "cb7e91df70472e1d6dcd60e70ee725822cf83c20",
+    "readCommit": "735596ae7fdf37e920569271def0c2bc4add6f86",
+    "change": 0
+  },
+  "inverseProof": "Removing appended test and its one separating LF, and reversing the fixture engine initialization reconstructs the old test byte-for-byte; every existing test and rejection remains.",
+  "fixture": {
+    "change": "Replace live engine read with git cat-file of exact historical UI contract blob plus Git/raw/size assertions.",
+    "engine": {
+      "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+      "sha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+      "bytes": 201060
+    },
+    "purpose": "Make independent font/CSS/other dependency negatives reach their intended unchanged production guards instead of failing early at unrelated current engine drift."
+  },
+  "newGuardCase": "Current live engine bytes still pass through real assertLiveRenderRef and must reject drift. Merely replacing the technical reference with newly computed live pins is rejected by fixed UI_ENGINE. If actual live engine equals the original pin, its exact hash and live-ref validator are checked.",
+  "productionOrderConfirmed": "Mandatory input inventory and fixed UI_ENGINE precede selected-data/font/asset/current byte checks.",
+  "execution": {
+    "syntax": "NOT_RUN",
+    "tests": "NOT_RUN",
+    "sourceEvaluation": 0,
+    "sourceBodyReview": 0,
+    "mathOrUiReview": 0,
+    "consumer": 0,
+    "registrar": 0,
+    "remoteRefWrites": 0
+  },
+  "limits": "Root reported seven actual early UI_ENGINE fixture failures; no duplicate log download or reproduction. Current Q16 UI readiness/physical registration is not restored or approved by this test-only change."
+}

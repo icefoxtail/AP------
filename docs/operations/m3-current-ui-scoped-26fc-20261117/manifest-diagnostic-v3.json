@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "archive-m3-source49-reference-shape-diagnostic-manifest-v3",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "status": "DIAGNOSTIC_ONLY_INPUT_ACCEPTANCE_UNCHANGED",
+  "file": {
+    "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+    "before": {
+      "gitBlobSha1": "79d35e79b07f5901936ce847af171afb8d7c76d7",
+      "sha256": "07c9e8342a6df86f3312aa03ff9b98f746ac29e6393704d65c364b373e78bfb8",
+      "bytes": 46576
+    },
+    "after": {
+      "gitBlobSha1": "dec28db6283f318bec99dca6c30a6f8328a8b0b5",
+      "sha256": "abb5fae96125d37ea8c51f9499b9ba5620dfea5fae9fc16c701d7a5a3d3711d2",
+      "bytes": 48010
+    },
+    "fullRemoteReadbackExact": true
+  },
+  "actualV2Failure": {
+    "runId": "44028084410",
+    "jobId": "133853152798",
+    "phase": "AUTHENTICATED_INPUTS",
+    "code": "M3_SOURCE49_IMMUTABLE_REF",
+    "rootUnchanged": true,
+    "reportedByRoot": {
+      "gitBlobSha1": "1881a8749002de86eec64ac505707b3723189990",
+      "sha256": "223dc4e83a1aae3c2dd9a38840db807ad391faf6c2976b8c8ff841187fe9cdf7",
+      "bytes": 3062
+    },
+    "rawIndependentlyFetched": false
+  },
+  "diagnostic": {
+    "fields": [
+      "commit",
+      "path",
+      "gitBlobSha1",
+      "sha256",
+      "bytes"
+    ],
+    "fieldPresenceAndTypes": true,
+    "values": "Only valid hash/commit strings, bounded control-free path, finite bytes number; otherwise string length/hash only",
+    "location": "Exact referring document commit:path and JSON pointer; no document payload",
+    "firstInvalidObject": "NOT_YET_OBSERVED",
+    "knownCarrierBasisNativePartialRefs": 0
+  },
+  "verification": {
+    "inverseBeforeWholeExact": true,
+    "originalFiveFieldPredicateUnchanged": true,
+    "refsInDetectionPredicateUnchanged": true,
+    "allUnknownReferencesStillRefused": true,
+    "production7Unchanged": true,
+    "shadow2Unchanged": true,
+    "workflowUnchanged": true,
+    "semanticApprovalChanges": 0,
+    "sourceChanges": 0,
+    "Node": "NOT_RUN",
+    "syntax": "NOT_RUN",
+    "actualRerun": "NOT_RUN"
+  },
+  "edits": [
+    {
+      "id": "record-five-field-shape-and-json-location-without-relaxation",
+      "before": "function refShape(ref){\n need(ref&&OID.test(ref.commit||'')&&OID.test(ref.gitBlobSha1||'')&&SHA.test(ref.sha256||'')&&\n  Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=128*1024*1024,'IMMUTABLE_REF');\n return {commit:ref.commit,path:safeRelative(ref.path),gitBlobSha1:ref.gitBlobSha1,sha256:ref.sha256,bytes:ref.bytes};\n}\nfunction refsIn(value,out=[]){\n if(Array.isArray(value)){for(const x of value)refsIn(x,out);}\n else if(value&&typeof value==='object'){\n  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path'))out.push(refShape(value));\n  else for(const [k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out);\n }\n return out;\n}\n",
+      "after": "function refShape(ref){\n const valid=ref&&OID.test(ref.commit||'')&&OID.test(ref.gitBlobSha1||'')&&SHA.test(ref.sha256||'')&&\n  Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=128*1024*1024;\n if(!valid){\n  const fields={};\n  for(const key of['commit','path','gitBlobSha1','sha256','bytes']){\n   const value=ref?.[key],type=value===null?'null':Array.isArray(value)?'array':typeof value;\n   const entry={present:!!ref&&Object.hasOwn(ref,key),type};\n   if(type==='string'){\n    const safeValue=key==='path'?value.length<=512&&!/[\\x00-\\x1f]/.test(value):\n     key==='sha256'?SHA.test(value):key==='commit'||key==='gitBlobSha1'?OID.test(value):false;\n    if(safeValue)entry.value=value;else{entry.characters=value.length;entry.valueSha256=sha(value);}\n   }else if(type==='number'&&Number.isFinite(value))entry.value=value;\n   fields[key]=entry;\n  }\n  const error=Error('M3_SOURCE49_IMMUTABLE_REF');error.referenceShapeFailure={fields};throw error;\n }\n return {commit:ref.commit,path:safeRelative(ref.path),gitBlobSha1:ref.gitBlobSha1,sha256:ref.sha256,bytes:ref.bytes};\n}\nfunction refsIn(value,out=[],pointer='$',owner=null){\n if(Array.isArray(value)){for(let i=0;i<value.length;i++)refsIn(value[i],out,pointer+'['+i+']',owner);}\n else if(value&&typeof value==='object'){\n  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path')){\n   try{out.push(refShape(value));}\n   catch(error){\n    if(error.referenceShapeFailure)error.referenceShapeFailure.location={\n     document:owner?{commit:owner.commit||null,path:owner.path||null}:null,\n     pointer:pointer.length<=2048?pointer:null,pointerSha256:sha(pointer)};\n    throw error;\n   }\n  }else for(const[k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out,pointer+'.'+k,owner);\n }\n return out;\n}\n"
+    },
+    {
+      "id": "metadata-owner-context",
+      "before": "  function hydrateDocument(value){\n   for(const ref of refsIn(value))hydrateRef(ref);",
+      "after": "  function hydrateDocument(value,owner=null){\n   for(const ref of refsIn(value,[],'$',owner))hydrateRef(ref);"
+    },
+    {
+      "id": "drained-owner-context",
+      "before": "    hydrateDocument(json(item.bytes));",
+      "after": "    hydrateDocument(json(item.bytes),item.ref);"
+    },
+    {
+      "id": "compact-owner-context",
+      "before": "   for(const it of compact.items)if(it.registrationHold)hydrateDocument(it.registrationHold);",
+      "after": "   for(const it of compact.items)if(it.registrationHold)hydrateDocument(it.registrationHold,{commit:rootHead,path:group.compactRef.path});"
+    },
+    {
+      "id": "carrier-owner-context",
+      "before": "  for(const doc of[q5Carrier,q16Doc])for(const ref of refsIn(doc))hydrateRef(ref);",
+      "after": "  for(const[doc,relative]of[[q5Carrier,Q5.FILE],[q16Doc,q16Path]])\n   for(const ref of refsIn(doc,[],'$',{commit:rootHead,path:relative}))hydrateRef(ref);"
+    },
+    {
+      "id": "old-sidecar-owner-context",
+      "before": "  const oldQ16Raw=immutable(CONFIG.oldQ16SidecarRef);for(const ref of refsIn(json(oldQ16Raw)))hydrateRef(ref);",
+      "after": "  const oldQ16Raw=immutable(CONFIG.oldQ16SidecarRef);for(const ref of refsIn(json(oldQ16Raw),[],'$',CONFIG.oldQ16SidecarRef))hydrateRef(ref);"
+    },
+    {
+      "id": "technical-owner-context",
+      "before": "   for(const ref of refsIn(tech))hydrateRef(ref);",
+      "after": "   for(const ref of refsIn(tech,[],'$',spec.technicalRef))hydrateRef(ref);"
+    },
+    {
+      "id": "other-current-claim-owner-context",
+      "before": "   for(const ref of refsIn(doc))hydrateRef(ref);",
+      "after": "   for(const ref of refsIn(doc,[],'$',{commit:rootHead,path:rel}))hydrateRef(ref);"
+    },
+    {
+      "id": "preserve-failed-shape-in-safe-report",
+      "before": "  report.status='FAIL';report.error=safeError(error);report.actualMainRegistration='NOT_PERFORMED';",
+      "after": "  report.status='FAIL';report.error=safeError(error);report.actualMainRegistration='NOT_PERFORMED';\n  if(error.referenceShapeFailure)report.failedReferenceShape=error.referenceShapeFailure;"
+    }
+  ],
+  "remoteRefWrites": 0,
+  "nextAction": "Root reviews and publishes only this gate diagnostic; rerun until exact failed object is recorded. Do not skip or normalize unknown partial reference without its declared contract."
+}

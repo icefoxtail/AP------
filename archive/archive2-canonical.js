@@ -503,6 +503,141 @@
     return "archive2-canonical-v1:" + await sha256(projectionManifestPayload(files, resolverVersion));
   }
 
+
+  const COMPACT_INPUT_MANIFEST_PATH = "data/archive2-canonical-input-manifest.compact.json";
+  const COMPACT_INPUT_MANIFEST_SCHEMA = "archive2-canonical-input-manifest-compact-v1";
+  const INPUT_MANIFEST_SCHEMA = "archive2-canonical-input-manifest-v1";
+  const INPUT_MANIFEST_KEYS = [
+    "schemaVersion", "resolverVersion", "generatedFromCatalogIndexVersion", "projectionVersion", "files",
+  ];
+  const COMPACT_INPUT_MANIFEST_KEYS = [
+    "schemaVersion", "manifestSchemaVersion", "resolverVersion", "generatedFromCatalogIndexVersion",
+    "projectionVersion", "directories", "files",
+  ];
+  function compactManifestInvalid(why) {
+    return makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical compact input manifest is invalid: " + why);
+  }
+  function exactManifestKeys(value, keys) {
+    return value !== null && typeof value === "object" && !Array.isArray(value) &&
+      Object.keys(value).length === keys.length &&
+      keys.every((key) => Object.prototype.hasOwnProperty.call(value, key));
+  }
+  function compactManifestHeaders(value, compact) {
+    const keys = compact ? COMPACT_INPUT_MANIFEST_KEYS : INPUT_MANIFEST_KEYS;
+    if (!exactManifestKeys(value, keys))
+      throw compactManifestInvalid("header shape");
+    if (
+      value.schemaVersion !== (compact ? COMPACT_INPUT_MANIFEST_SCHEMA : INPUT_MANIFEST_SCHEMA) ||
+      (compact && value.manifestSchemaVersion !== INPUT_MANIFEST_SCHEMA) ||
+      value.resolverVersion !== RESOLVER_VERSION
+    )
+      throw makeError("CANONICAL_RESOLVER_VERSION_MISMATCH", "canonical compact input manifest version mismatch");
+    if (
+      typeof value.generatedFromCatalogIndexVersion !== "string" ||
+      !/^[a-f0-9]{64}$/.test(value.generatedFromCatalogIndexVersion) ||
+      typeof value.projectionVersion !== "string" ||
+      !/^archive2-canonical-v1:[a-f0-9]{64}$/.test(value.projectionVersion) ||
+      !Array.isArray(value.files) || !value.files.length
+    )
+      throw compactManifestInvalid("header value");
+  }
+  function compactManifestPathParts(value) {
+    if (
+      typeof value !== "string" || !value || value !== value.trim() ||
+      value !== value.normalize("NFC") || value.startsWith("/") ||
+      /[\\\x00-\x1f\x7f?#%:]/.test(value)
+    )
+      throw compactManifestInvalid("path");
+    const parts = value.split("/");
+    // Existing authority manifests legitimately reference ../docs/. Preserve that
+    // exact namespace; no other parent traversal or URL interpretation is accepted.
+    const checked = parts[0] === ".." && parts[1] === "docs" ? parts.slice(1) : parts;
+    if (checked.some((part) => !part || part === "." || part === ".." || part !== part.trim()))
+      throw compactManifestInvalid("path segment");
+    if (value === COMPACT_INPUT_MANIFEST_PATH)
+      throw compactManifestInvalid("companion cannot be an input to itself");
+    const slash = value.lastIndexOf("/");
+    return { directory: slash < 0 ? "" : value.slice(0, slash + 1), basename: value.slice(slash + 1) };
+  }
+  function compactManifestHash(value) {
+    if (typeof value !== "string" || !/^[a-f0-9]{64}$/.test(value))
+      throw compactManifestInvalid("file hash");
+    return value;
+  }
+
+  // This companion is a transport view of the original manifest, not a new
+  // authority/projection format. File order, headers and every path/hash survive
+  // exactly; all existing manifest/index/shard checks run on the decoded object.
+  function encodeCompactInputManifest(manifest) {
+    compactManifestHeaders(manifest, false);
+    const directories = [], directoryIndices = new Map(), seenPaths = new Set();
+    const files = manifest.files.map((row) => {
+      if (!exactManifestKeys(row, ["path", "sha256"]))
+        throw compactManifestInvalid("original file shape");
+      const { directory, basename } = compactManifestPathParts(row.path);
+      if (seenPaths.has(row.path)) throw compactManifestInvalid("duplicate path");
+      seenPaths.add(row.path);
+      if (!directoryIndices.has(directory)) {
+        directoryIndices.set(directory, directories.length);
+        directories.push(directory);
+      }
+      return [directoryIndices.get(directory), basename, compactManifestHash(row.sha256)];
+    });
+    return {
+      schemaVersion: COMPACT_INPUT_MANIFEST_SCHEMA,
+      manifestSchemaVersion: manifest.schemaVersion,
+      resolverVersion: manifest.resolverVersion,
+      generatedFromCatalogIndexVersion: manifest.generatedFromCatalogIndexVersion,
+      projectionVersion: manifest.projectionVersion,
+      directories,
+      files,
+    };
+  }
+  function decodeCompactInputManifest(compact) {
+    compactManifestHeaders(compact, true);
+    if (!Array.isArray(compact.directories) || !compact.directories.length ||
+        compact.directories.length > compact.files.length)
+      throw compactManifestInvalid("directory table");
+    const seenDirectories = new Set();
+    for (const directory of compact.directories) {
+      if (typeof directory !== "string" || (directory && !directory.endsWith("/")) ||
+          seenDirectories.has(directory))
+        throw compactManifestInvalid("directory entry");
+      // Validate the prefix with a fixed safe basename without normalizing it.
+      if (compactManifestPathParts(directory + "__manifest_prefix_check__.json").directory !== directory)
+        throw compactManifestInvalid("directory prefix");
+      seenDirectories.add(directory);
+    }
+    const seenPaths = new Set(), usedDirectories = new Set();
+    const files = compact.files.map((tuple) => {
+      if (!Array.isArray(tuple) || tuple.length !== 3 ||
+          !Number.isInteger(tuple[0]) || Object.is(tuple[0], -0) ||
+          tuple[0] < 0 || tuple[0] >= compact.directories.length ||
+          typeof tuple[1] !== "string" || !tuple[1] || /[\/\\]/.test(tuple[1]))
+        throw compactManifestInvalid("file tuple");
+      if (!usedDirectories.has(tuple[0])) {
+        if (tuple[0] !== usedDirectories.size)
+          throw compactManifestInvalid("directory order");
+        usedDirectories.add(tuple[0]);
+      }
+      const directory = compact.directories[tuple[0]], path = directory + tuple[1];
+      const decoded = compactManifestPathParts(path);
+      if (decoded.directory !== directory || decoded.basename !== tuple[1] || seenPaths.has(path))
+        throw compactManifestInvalid("reconstructed path");
+      seenPaths.add(path);
+      return { path, sha256: compactManifestHash(tuple[2]) };
+    });
+    if (usedDirectories.size !== compact.directories.length)
+      throw compactManifestInvalid("unused directory");
+    return {
+      schemaVersion: compact.manifestSchemaVersion,
+      resolverVersion: compact.resolverVersion,
+      generatedFromCatalogIndexVersion: compact.generatedFromCatalogIndexVersion,
+      projectionVersion: compact.projectionVersion,
+      files,
+    };
+  }
+
   async function loadInputBundle(fetcher, baseUrl, expectedVersion = "") {
     if (typeof fetcher !== "function")
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input loader is unavailable");
@@ -597,7 +732,7 @@
     if (!normalizedSource || normalizedSource.split("/").some((part) => part === ".." || part === "."))
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source path is invalid");
     const base = new URL(String(baseUrl));
-    const read = async (relativePath) => {
+    const read = async (relativePath, allow404 = false) => {
       let url;
       try { url = new URL(relativePath, base); }
       catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source URL is invalid"); }
@@ -606,6 +741,7 @@
       let response;
       try { response = await fetcher(url.toString()); }
       catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source request failed: " + relativePath); }
+      if (allow404 && response?.status === 404) return null;
       if (!response || !response.ok)
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source unavailable: " + relativePath);
       return response.text();
@@ -613,7 +749,10 @@
 
     let manifest;
     try {
-      manifest = JSON.parse(await read("data/archive2-canonical-input-manifest.json"));
+      const compactBody = await read(COMPACT_INPUT_MANIFEST_PATH, true);
+      manifest = compactBody === null
+        ? JSON.parse(await read("data/archive2-canonical-input-manifest.json"))
+        : decodeCompactInputManifest(JSON.parse(compactBody));
     } catch (error) {
       if (error.code) throw error;
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is invalid");
@@ -1849,6 +1988,9 @@
     validateBasicAssignment,
     validateAdvancedAssignment,
     computeProjectionVersion,
+    COMPACT_INPUT_MANIFEST_PATH,
+    encodeCompactInputManifest,
+    decodeCompactInputManifest,
     loadInputBundle,
     loadSourceVerificationShard,
     loadMixedVerificationRecords,

@@ -1,0 +1,57 @@
+name: Middle Current UI Unit Contracts
+
+on:
+  push:
+    branches:
+      - 'ops/middle-current-ui-unit-26fc-20261117'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: middle-current-ui-unit-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/middle-current-ui-unit-26fc-20261117' && github.event.repository.fork == false && github.event.deleted == false
+    name: Current ${{ matrix.scope }} UI contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - scope: svg7
+            file: tests/item-4slot-svg7-current-ui-binding.test.cjs
+          - scope: m1seven
+            file: tests/item-4slot-m1s2-current-ui-reuse.test.cjs
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Authenticate exact immutable ops head
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+          EVENT_AFTER: ${{ github.event.after }}
+          EXPECTED_REF: ${{ github.ref }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$EXPECTED_HEAD" = "$EVENT_AFTER"
+          test "$EXPECTED_REF" = 'refs/heads/ops/middle-current-ui-unit-26fc-20261117'
+          test -z "$(git status --porcelain)"
+      - name: Run selected current UI contracts
+        env:
+          CONTRACT_FILE: ${{ matrix.file }}
+        run: |
+          set -euo pipefail
+          node --test "$CONTRACT_FILE"
+      - name: Verify no tracked worktree mutation
+        if: always()
+        run: git diff --exit-code
