@@ -24,7 +24,7 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "다음 중에서 무한소수를 모두 고른 것은? [3점]\nㄱ. $2.718$\nㄴ. $-1.4142142\\cdots$\nㄷ. $\\pi$\nㄹ. $0.\\dot{2}\\dot{7}$",
+    "content": "다음 중에서 무한소수를 모두 고른 것은? [3점]\nㄱ. $2.718$\nㄴ. $-1.4142142\\cdots$\nㄷ. $0.1010010001\\cdots$\nㄹ. $0.\\dot{2}\\dot{7}$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",
@@ -37,8 +37,23 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "FINITE_VS_INFINITE_DECIMAL_IDENTIFICATION",
-    "solution": "소수점 아래의 $0$이 아닌 숫자가 끝없이 계속되는 소수를 무한소수라고 한다. 각 보기의 수를 살펴보면 다음과 같다. ㄱ. $2.718$은 소수점 아래 자릿수가 $3$자리로 유한하므로 유한소수이다. ㄴ. $-1.4142142\\cdots$는 소수점 아래 숫자가 끝없이 계속되므로 무한소수이다. ㄷ. $\\pi = 3.141592\\cdots$는 순환하지 않는 무한소수이다. ㄹ. $0.\\dot{2}\\dot{7} = 0.272727\\cdots$은 순환소수이므로 무한소수이다. 따라서 무한소수는 ㄴ, ㄷ, ㄹ이다. 그러므로 정답은 ⑤이다.",
-    "points": 3
+    "solution": "소수점 아래의 $0$이 아닌 숫자가 끝없이 계속되는 소수를 무한소수라고 한다. 각 보기의 수를 살펴보면 다음과 같다.\nㄱ. $2.718$은 소수점 아래 자릿수가 $3$자리로 유한하므로 유한소수이다.\nㄴ. $-1.4142142\\cdots$는 소수점 아래 숫자가 끝없이 계속되므로 무한소수이다.\nㄷ. $0.1010010001\\cdots$은 이웃한 $1$ 사이의 $0$의 개수가 $1, 2, 3, \\dots$으로 계속 늘어나며 끝없이 이어지므로 순환하지 않는 무한소수이다.\nㄹ. $0.\\dot{2}\\dot{7} = 0.272727\\cdots$은 순환소수이므로 무한소수이다.\n따라서 무한소수는 ㄴ, ㄷ, ㄹ이다.\n그러므로 정답은 ⑤이다.",
+    "points": 3,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "유한소수와 무한소수",
+    "rpmL4Label": "유한소수 판별",
+    "difficultyReason": "유한소수·무한소수의 정의를 각 보기에 그대로 대입해 판정하는 한 단계 문항이다."
   },
   {
     "id": 2,
@@ -74,8 +89,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_DEFINITION_PROPERTIES",
-    "solution": "주어진 소수 $2.481481481\\cdots$는 소수점 아래에서 $481$이 끝없이 반복된다. 각 선지를 검토하면 다음과 같다. ① 일정한 숫자의 배열이 끝없이 반복되므로 순환소수이다. (참) ② 순환소수의 순환마디는 소수점 아래에서 일정하게 되풀이되는 숫자 묶음이므로 순환마디는 $481$이다. 정수 부분 $2$는 순환마디에 포함되지 않는다. 따라서 ②는 옳지 않다. ③ 순환마디가 $481$이므로 양 끝 숫자 $4$와 $1$ 위에 점을 찍어 $2.\\dot{4}8\\dot{1}$로 나타낼 수 있다. (참) ④ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. (참) ⑤ 소수점 아래 숫자가 끝없이 이어지므로 무한소수이다. (참) 따라서 옳지 않은 것은 ②이다.",
-    "points": 4
+    "solution": "주어진 소수 $2.481481481\\cdots$는 소수점 아래에서 $481$이 끝없이 반복된다. 각 선지를 검토하면 다음과 같다.\n① 일정한 숫자의 배열이 끝없이 반복되므로 순환소수이다. (참)\n② 순환소수의 순환마디는 소수점 아래에서 일정하게 되풀이되는 숫자 묶음이므로 순환마디는 $481$이다. 정수 부분 $2$는 순환마디에 포함되지 않는다.\n따라서 ②는 옳지 않다.\n③ 순환마디가 $481$이므로 양 끝 숫자 $4$와 $1$ 위에 점을 찍어 $2.\\dot{4}8\\dot{1}$로 나타낼 수 있다. (참)\n④ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. (참)\n⑤ 소수점 아래 숫자가 끝없이 이어지므로 무한소수이다. (참)\n따라서 옳지 않은 것은 ②이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_TRUTH_VALUE_JUDGMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "순환소수",
+    "rpmL4Label": "순환마디와 표현",
+    "difficultyReason": "순환마디는 소수점 아래 반복 묶음이라는 정의를 선지에 바로 적용하는 개념 확인 문항이다."
   },
   {
     "id": 3,
@@ -111,8 +143,23 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "FRACTION_DIVISION_PERIOD",
-    "solution": "분자 $73$을 분모 $11$로 직접 나누어 소수로 나타낸다. $$ 73 \\div 11 = 6.636363\\cdots $$ 소수점 아래에서 두 숫자 $6, 3$이 차례로 끝없이 반복된다. 따라서 순환마디는 $63$이다. 그러므로 정답은 ④이다.",
-    "points": 4
+    "solution": "분자 $73$을 분모 $11$로 직접 나누어 소수로 나타낸다.\n$$\n73 \\div 11 = 6.636363\\cdots\n$$\n소수점 아래에서 두 숫자 $6, 3$이 차례로 끝없이 반복된다.\n따라서 순환마디는 $63$이다.\n그러므로 정답은 ④이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "유리수와 소수 표현",
+    "rpmL4Label": "분수를 소수로",
+    "difficultyReason": "분수를 소수로 바꾸는 나눗셈을 한 번 수행해 순환마디를 읽는 한 단계 계산이다."
   },
   {
     "id": 4,
@@ -148,8 +195,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "FINITE_DECIMAL_FACTOR_IDENTIFICATION",
-    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다. 각 선지를 기약분수로 나타내어 분모의 소인수를 확인한다. ① $\\frac{1}{3 \\times 5}$ 분모에 $2$와 $5$ 이외의 소인수 $3$이 있으므로 순환소수이다. ② $\\frac{15}{2^3 \\times 3 \\times 5}$ 분자의 $15 = 3 \\times 5$와 분모의 $3 \\times 5$가 완전히 약분되므로 $$ \\frac{15}{2^3 \\times 3 \\times 5} = \\frac{1}{2^3} $$ 기약분수의 분모의 소인수가 $2$뿐이므로 유한소수로 나타낼 수 있다. ③ $\\frac{11}{36} = \\frac{11}{2^2 \\times 3^2}$ 분모에 소인수 $3$이 있으므로 순환소수이다. ④ $\\frac{3 \\times 7}{2 \\times 3^2 \\times 5 \\times 7} = \\frac{1}{2 \\times 3 \\times 5}$ 약분 후에도 분모에 소인수 $3$이 남으므로 순환소수이다. ⑤ $\\frac{3 \\times 13}{5 \\times 11} = \\frac{39}{5 \\times 11}$ 분모에 소인수 $11$이 있으므로 순환소수이다. 따라서 유한소수로 나타낼 수 있는 것은 ②이다.",
-    "points": 4
+    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다. 각 선지를 기약분수로 나타내어 분모의 소인수를 확인한다.\n① $\\frac{1}{3 \\times 5}$ 분모에 $2$와 $5$ 이외의 소인수 $3$이 있으므로 순환소수이다.\n② $\\frac{15}{2^3 \\times 3 \\times 5}$ 분자의 $15 = 3 \\times 5$와 분모의 $3 \\times 5$가 완전히 약분되므로\n$$\n\\frac{15}{2^3 \\times 3 \\times 5} = \\frac{1}{2^3}\n$$\n기약분수의 분모의 소인수가 $2$뿐이므로 유한소수로 나타낼 수 있다.\n③ $\\frac{11}{36} = \\frac{11}{2^2 \\times 3^2}$ 분모에 소인수 $3$이 있으므로 순환소수이다.\n④ $\\frac{3 \\times 7}{2 \\times 3^2 \\times 5 \\times 7} = \\frac{1}{2 \\times 3 \\times 5}$ 약분 후에도 분모에 소인수 $3$이 남으므로 순환소수이다.\n⑤ $\\frac{3 \\times 13}{5 \\times 11} = \\frac{39}{5 \\times 11}$ 분모에 소인수 $11$이 있으므로 순환소수이다.\n따라서 유한소수로 나타낼 수 있는 것은 ②이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_FRACTION_ARITHMETIC"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "유한소수와 무한소수",
+    "rpmL4Label": "유한소수 판별",
+    "difficultyReason": "기약분수 분모의 소인수 조건을 각 선지에 바로 적용하는 판별 문항으로, 약분은 그 조건 확인을 위한 짧은 절차이다."
   },
   {
     "id": 5,
@@ -185,8 +249,28 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "TWO_DIGIT_REPEATING_DECIMAL_COUNTING",
-    "solution": "주어진 분수를 기약분수 형태로 정리하면 $$ \\frac{18}{2 \\times 5^2 \\times a} = \\frac{9}{5^2 \\times a} = \\frac{3^2}{25a} $$ 이 분수가 순환소수가 되려면 기약분수의 분모에 $2$와 $5$ 이외의 소인수가 존재해야 한다. 두 자리 자연수는 $10$부터 $99$까지로 전체 개수는 $$ 99 - 10 + 1 = 90\\text{ (개)} $$ 전체 $90$개 중에서 이 분수가 유한소수가 되는 경우를 구하여 제외한다. 분수가 유한소수가 되려면 $a$의 소인수 중 $2, 5$ 이외의 소인수는 분자의 $9 = 3^2$과 약분되어 없어져야 하므로 $a$는 다음과 같은 꼴이어야 한다. $$ a = 2^m \\times 5^n \\times c \\quad (c \\in {1, 3, 9},\\ m, n\\text{은 음이 아닌 정수}) $$ $10 \\le a \\le 99$ 범위에서 유한소수가 되는 $a$를 $c$의 값에 따라 세면 다음과 같다.\n$c = 1$일 때 ($a = 2^m \\times 5^n$):\n$n = 0$: $2^m \\in {16, 32, 64}$ (3개)\n$n = 1$: $5 \\times 2^m \\in {10, 20, 40, 80}$ (4개)\n$n = 2$: $25 \\times 2^m \\in {25, 50}$ (2개) 소계: $3 + 4 + 2 = 9$개\n$c = 3$일 때 ($a = 3 \\times 2^m \\times 5^n$):\n$n = 0$: $3 \\times 2^m \\in {12, 24, 48, 96}$ (4개)\n$n = 1$: $15 \\times 2^m \\in {15, 30, 60}$ (3개)\n$n = 2$: $75 \\times 2^m \\in {75}$ (1개) 소계: $4 + 3 + 1 = 8$개\n$c = 9$일 때 ($a = 9 \\times 2^m \\times 5^n$):\n$n = 0$: $9 \\times 2^m \\in {18, 36, 72}$ (3개)\n$n = 1$: $45 \\times 2^m \\in {45, 90}$ (2개) 소계: $3 + 2 = 5$개 따라서 유한소수가 되는 두 자리 자연수 $a$의 총 개수는 $$ 9 + 8 + 5 = 22\\text{ (개)} $$ 순환소수가 되는 $a$의 개수는 전체 $90$개에서 유한소수가 되는 $22$개를 뺀 것과 같으므로 $$ 90 - 22 = 68\\text{ (개)} $$ 그러므로 정답은 ③이다.",
-    "points": 5
+    "solution": "주어진 분수를 기약분수 형태로 정리하면\n$$\n\\frac{18}{2 \\times 5^2 \\times a} = \\frac{9}{5^2 \\times a} = \\frac{3^2}{25a}\n$$\n이 분수가 순환소수가 되려면 기약분수의 분모에 $2$와 $5$ 이외의 소인수가 존재해야 한다.\n두 자리 자연수는 $10$부터 $99$까지로 전체 개수는\n$$\n99 - 10 + 1 = 90\\text{ (개)}\n$$\n전체 $90$개 중에서 이 분수가 유한소수가 되는 경우를 구하여 제외한다.\n분수가 유한소수가 되려면 $a$의 소인수 중 $2, 5$ 이외의 소인수는 분자의 $9 = 3^2$과 약분되어 없어져야 하므로 $a$는 $2^m \\times 5^n \\times c$ 꼴이어야 한다.\n여기서 $c$는 $1, 3, 9$ 중 하나이고 $m, n$은 음이 아닌 정수이다.\n$10 \\le a \\le 99$ 범위에서 유한소수가 되는 $a$를 $c$의 값에 따라 세면 다음과 같다.\n$c = 1$일 때 ($a = 2^m \\times 5^n$):\n$n = 0$일 때 $2^m$은 $16, 32, 64$ (3개)\n$n = 1$일 때 $5 \\times 2^m$은 $10, 20, 40, 80$ (4개)\n$n = 2$일 때 $25 \\times 2^m$은 $25, 50$ (2개)\n소계: $3 + 4 + 2 = 9$개\n$c = 3$일 때 ($a = 3 \\times 2^m \\times 5^n$):\n$n = 0$일 때 $3 \\times 2^m$은 $12, 24, 48, 96$ (4개)\n$n = 1$일 때 $15 \\times 2^m$은 $15, 30, 60$ (3개)\n$n = 2$일 때 $75 \\times 2^m$은 $75$ (1개)\n소계: $4 + 3 + 1 = 8$개\n$c = 9$일 때 ($a = 9 \\times 2^m \\times 5^n$):\n$n = 0$일 때 $9 \\times 2^m$은 $18, 36, 72$ (3개)\n$n = 1$일 때 $45 \\times 2^m$은 $45, 90$ (2개)\n소계: $3 + 2 = 5$개\n따라서 유한소수가 되는 두 자리 자연수 $a$의 총 개수는\n$$\n9 + 8 + 5 = 22\\text{ (개)}\n$$\n순환소수가 되는 $a$의 개수는 전체 $90$개에서 유한소수가 되는 $22$개를 뺀 것과 같으므로\n$$\n90 - 22 = 68\\text{ (개)}\n$$\n그러므로 정답은 ③이다.",
+    "points": 5,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_NUMBER_OF_ELEMENTS"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "유한소수와 무한소수",
+    "rpmL4Label": "분모의 소인수 조건",
+    "difficultyReason": "순환소수 조건을 분모 소인수로 해석하고 유한소수인 a를 3의 거듭제곱별로 분류해 여사건으로 세는 여러 단계 문항이다."
   },
   {
     "id": 6,
@@ -222,8 +306,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_CONVERSION_BLANK",
-    "solution": "순환소수 $x = 0.7383838\\cdots$에서 소수점을 첫 번째 순환마디의 끝자리 바로 뒤로 옮기려면 소수점 아래 세 자리까지 정수 부분으로 만들어야 한다. 따라서 ㉠의 양변에 $10^3 = 1000$을 곱해야 한다. $$ 1000 \\times x = 738.383838\\cdots $$ 따라서 $\\square$ 안에 들어갈 알맞은 수는 $1000$이다. 그러므로 정답은 ③이다.",
-    "points": 3
+    "solution": "순환소수 $x = 0.7383838\\cdots$에서 소수점을 첫 번째 순환마디의 끝자리 바로 뒤로 옮기려면 소수점 아래 세 자리까지 정수 부분으로 만들어야 한다.\n따라서 ㉠의 양변에 $10^3 = 1000$을 곱해야 한다.\n$$\n1000 \\times x = 738.383838\\cdots\n$$\n따라서 $\\square$ 안에 들어갈 알맞은 수는 $1000$이다.\n그러므로 정답은 ③이다.",
+    "points": 3,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_PLACE_VALUE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "순환소수",
+    "rpmL4Label": "순환소수를 분수로",
+    "difficultyReason": "순환소수를 분수로 바꾸는 절차에서 소수점 이동 자릿수만 보고 10의 거듭제곱을 바로 읽는 한 단계 문항이다."
   },
   {
     "id": 7,
@@ -259,8 +360,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_ADDITION",
-    "solution": "순환소수 $2.8\\dot{3}$을 분수로 고쳐서 계산한다. $$ 2.8\\dot{3} = \\frac{283 - 28}{90} = \\frac{255}{90} $$ 분모와 분자를 $15$로 약분하면 $$ \\frac{255 \\div 15}{90 \\div 15} = \\frac{17}{6} $$ 따라서 구하는 식의 값은 $$ 2.8\\dot{3} + \\frac{7}{6} = \\frac{17}{6} + \\frac{7}{6} = \\frac{17 + 7}{6} = \\frac{24}{6} = 4 $$ 그러므로 정답은 ①이다.",
-    "points": 4
+    "solution": "순환소수 $2.8\\dot{3}$을 분수로 고쳐서 계산한다.\n$$\n2.8\\dot{3} = \\frac{283 - 28}{90} = \\frac{255}{90}\n$$\n분모와 분자를 $15$로 약분하면\n$$\n\\frac{255 \\div 15}{90 \\div 15} = \\frac{17}{6}\n$$\n따라서 구하는 식의 값은\n$$\n2.8\\dot{3} + \\frac{7}{6} = \\frac{17}{6} + \\frac{7}{6} = \\frac{17 + 7}{6} = \\frac{24}{6} = 4\n$$\n그러므로 정답은 ①이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_FRACTION_ARITHMETIC"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "순환소수",
+    "rpmL4Label": "순환소수를 분수로",
+    "difficultyReason": "순환소수 분수화 공식을 대입하는 단계와 통분 덧셈 단계가 이어지는 전형적인 두 단계 계산이다."
   },
   {
     "id": 8,
@@ -296,8 +414,26 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "RATIONAL_AND_DECIMAL_CONCEPTS_AUDIT",
-    "solution": "<보기>의 각 설명의 참, 거짓을 확인한다. ㄱ. 무한소수 중에는 $\\pi$와 같이 순환하지 않는 무한소수도 있으므로 모든 무한소수가 순환소수인 것은 아니다. (거짓) ㄴ. 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 유한소수로 나타낼 수 없고 순환소수로 나타내어진다. (참) ㄷ. 모든 순환소수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있으므로 유리수이다. (참) ㄹ. 유한소수는 모두 분모가 $10$의 거듭제곱인 분수로 나타낼 수 있으므로 모두 유리수이다. 유리수가 아닌 유한소수는 없다. (거짓) ㅁ. 순환소수가 아닌 무한소수는 분수로 나타낼 수 없으므로 유리수가 아니다. (거짓) 따라서 옳은 것은 ㄴ, ㄷ이다. 그러므로 정답은 ⑤이다.",
-    "points": 4
+    "solution": "<보기>의 각 설명의 참, 거짓을 확인한다.\nㄱ. 무한소수 중에는 $0.1010010001\\cdots$과 같이 순환하지 않는 무한소수도 있으므로 모든 무한소수가 순환소수인 것은 아니다. (거짓)\nㄴ. 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 유한소수로 나타낼 수 없고 순환소수로 나타내어진다. (참)\nㄷ. 모든 순환소수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있으므로 유리수이다. (참)\nㄹ. 유한소수는 모두 분모가 $10$의 거듭제곱인 분수로 나타낼 수 있으므로 모두 유리수이다. 유리수가 아닌 유한소수는 없다. (거짓)\nㅁ. 순환소수가 아닌 무한소수는 분수로 나타낼 수 없으므로 유리수가 아니다. (거짓)\n따라서 옳은 것은 ㄴ, ㄷ이다.\n그러므로 정답은 ⑤이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_CLASSIFICATION",
+      "CC_TRUTH_VALUE_JUDGMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "유한소수와 무한소수",
+    "rpmL4Label": "분모의 소인수 조건",
+    "difficultyReason": "계산은 없지만 유한·무한·순환소수와 유리수의 포함 관계를 함께 대조해야 해 정의 하나를 확인하는 수준을 넘는다."
   },
   {
     "id": 9,
@@ -333,8 +469,26 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_EQUATION_UNKNOWN",
-    "solution": "순환소수 $0.\\dot{b}$를 분수로 나타내면 $$ 0.\\dot{b} = \\frac{b}{9} $$ 문제에서 주어진 식은 $$ \\frac{a}{18} = \\frac{b}{9} $$ 양변에 $18$을 곱하면 $$ a = 2b $$ $a$와 $b$는 한 자리 자연수($1 \\le a, b \\le 9$)이고 $a$는 짝수이므로 가능한 순서쌍 $(a, b)$는 다음과 같다. $$ (a, b) \\in {(2, 1), (4, 2), (6, 3), (8, 4)} $$ $a$가 될 수 있는 가장 큰 값은 $8$이고, 이때 $b = 4$이다. 따라서 구하는 $a - b$의 값은 $$ a - b = 8 - 4 = 4 $$ 그러므로 정답은 ④이다.",
-    "points": 4
+    "solution": "순환소수 $0.\\dot{b}$를 분수로 나타내면\n$$\n0.\\dot{b} = \\frac{b}{9}\n$$\n문제에서 주어진 식은\n$$\n\\frac{a}{18} = \\frac{b}{9}\n$$\n양변에 $18$을 곱하면\n$$\na = 2b\n$$\n$a$와 $b$는 한 자리 자연수($1 \\le a, b \\le 9$)이고 $a$는 짝수이므로 가능한 순서쌍 $(a, b)$는 $(2, 1)$, $(4, 2)$, $(6, 3)$, $(8, 4)$이다. $a$가 될 수 있는 가장 큰 값은 $8$이고, 이때 $b = 4$이다.\n따라서 구하는 $a - b$의 값은\n$$\na - b = 8 - 4 = 4\n$$\n그러므로 정답은 ④이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "BOUNDARY",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "순환소수",
+    "rpmL4Label": "순환소수를 분수로",
+    "difficultyReason": "분수화 뒤 조건을 만족하는 순서쌍을 열거하는 2단계와 경계값 선택까지 이어져 3단계로 볼 여지가 있으나, 계산 부담이 작아 낮은 2단계로 둔다."
   },
   {
     "id": 10,
@@ -370,8 +524,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "EXPONENT_LAWS_TRUE_FALSE",
-    "solution": "지수법칙을 적용하여 <보기>의 각 식을 계산한다. ㄱ. $x^4 \\times y^3 \\times x = (x^4 \\times x) \\times y^3 = x^{4+1}y^3 = x^5y^3 \\ne x^4y^3$ (거짓) ㄴ. $a^9 \\div a^3 = a^{9-3} = a^6 \\ne a^3$ (거짓) ㄷ. $(-3a^2b)^3 = (-3)^3 \\times (a^2)^3 \\times b^3 = -27a^6b^3 \\ne 27a^6b^3$ (부호 오류, 거짓) ㄹ. $2^4 + 2^4 = 2 \\times 2^4 = 2^{1+4} = 2^5$ (참) ㅁ. $(x^3)^4 \\times x^3 \\div (x^5)^2 = x^{12} \\times x^3 \\div x^{10} = x^{12+3-10} = x^5$ (참) 따라서 옳은 것은 ㄹ, ㅁ이다. 그러므로 정답은 ⑤이다.",
-    "points": 4
+    "solution": "지수법칙을 적용하여 <보기>의 각 식을 계산한다.\nㄱ. $x^4 \\times y^3 \\times x = (x^4 \\times x) \\times y^3 = x^{4+1}y^3 = x^5y^3 \\ne x^4y^3$ (거짓)\nㄴ. $a^9 \\div a^3 = a^{9-3} = a^6 \\ne a^3$ (거짓)\nㄷ. $(-3a^2b)^3 = (-3)^3 \\times (a^2)^3 \\times b^3 = -27a^6b^3 \\ne 27a^6b^3$ (부호 오류, 거짓)\nㄹ. $2^4 + 2^4 = 2 \\times 2^4 = 2^{1+4} = 2^5$ (참)\nㅁ. $(x^3)^4 \\times x^3 \\div (x^5)^2 = x^{12} \\times x^3 \\div x^{10} = x^{12+3-10} = x^5$ (참)\n따라서 옳은 것은 ㄹ, ㅁ이다.\n그러므로 정답은 ⑤이다.",
+    "points": 4,
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+    "crossConceptKeys": [
+      "CC_TRUTH_VALUE_JUDGMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "단항식의 계산",
+    "rpmL3Label": "지수법칙",
+    "rpmL4Label": "거듭제곱의 곱·몫",
+    "difficultyReason": "지수법칙을 각 보기에 적용하는 데 더해, 같은 수의 합을 곱으로 고치는 변형이 필요해 단순 공식 대입을 넘는 두 단계다."
   },
   {
     "id": 11,
@@ -407,8 +578,23 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_EXPANSION_SUBTRACTION",
-    "solution": "분배법칙을 이용하여 괄호를 풀고 동류항끼리 모아 계산한다. $$ 3(2x^2 - 3x + 1) - 2(x^2 - 4) = 6x^2 - 9x + 3 - 2x^2 + 8 $$ 동류항끼리 묶으면 $$ (6 - 2)x^2 - 9x + (3 + 8) = 4x^2 - 9x + 11 $$ 따라서 옳은 것은 ③이다.",
-    "points": 4
+    "solution": "분배법칙을 이용하여 괄호를 풀고 동류항끼리 모아 계산한다.\n$$\n3(2x^2 - 3x + 1) - 2(x^2 - 4) = 6x^2 - 9x + 3 - 2x^2 + 8\n$$\n동류항끼리 묶으면\n$$\n(6 - 2)x^2 - 9x + (3 + 8) = 4x^2 - 9x + 11\n$$\n따라서 옳은 것은 ③이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "다항식의 계산",
+    "rpmL3Label": "다항식의 덧셈과 뺄셈",
+    "rpmL4Label": "괄호가 있는 계산",
+    "difficultyReason": "분배법칙과 동류항 정리를 한 번씩 적용하는 기본 계산으로, 공식을 그대로 쓰는 1단계다."
   },
   {
     "id": 12,
@@ -431,7 +617,7 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "$3x^4y^3 \\times 4x^2 \\div x^5 \\div x^2y$를 계산한 식은? [4점]",
+    "content": "$3x^4y^3 \\times 4x^2 \\div x^5 \\div (x^2y)$를 계산한 식은? [4점]",
     "choices": [
       "$\\dfrac{12y^2}{x}$",
       "$12xy^2$",
@@ -444,8 +630,23 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "MONOMIAL_CHAIN_OPERATIONS",
-    "solution": "나눗셈을 분모로 보내거나 역수의 곱셈으로 바꾸어 한 번에 계산한다. $$ 3x^4y^3 \\times 4x^2 \\div x^5 \\div x^2y = \\frac{3x^4y^3 \\times 4x^2}{x^5 \\times x^2y} $$ 분자와 분모의 계수 및 문자를 각각 정리하면 $$ \\text{분자} = (3 \\times 4) \\times x^{4+2} \\times y^3 = 12x^6y^3 $$ $$ \\text{분모} = x^{5+2} \\times y = x^7y $$ 따라서 주어진 식은 $$ \\frac{12x^6y^3}{x^7y} = \\frac{12y^{3-1}}{x^{7-6}} = \\frac{12y^2}{x} $$ 그러므로 정답은 ①이다.",
-    "points": 4
+    "solution": "나눗셈을 분모로 보내거나 역수의 곱셈으로 바꾸어 한 번에 계산한다.\n$$\n3x^4y^3 \\times 4x^2 \\div x^5 \\div (x^2y) = \\frac{3x^4y^3 \\times 4x^2}{x^5 \\times x^2y}\n$$\n분자와 분모의 계수 및 문자를 각각 정리하면\n$$\n\\text{분자} = (3 \\times 4) \\times x^{4+2} \\times y^3 = 12x^6y^3\n$$\n$$\n\\text{분모} = x^{5+2} \\times y = x^7y\n$$\n따라서 주어진 식은\n$$\n\\frac{12x^6y^3}{x^7y} = \\frac{12y^{3-1}}{x^{7-6}} = \\frac{12y^2}{x}\n$$\n그러므로 정답은 ①이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "단항식의 계산",
+    "rpmL3Label": "단항식의 곱셈과 나눗셈",
+    "rpmL4Label": "혼합 계산",
+    "difficultyReason": "두 번의 나눗셈을 분모로 모은 뒤 두 문자에 각각 지수 차분을 적용하는 두 단계 계산이다."
   },
   {
     "id": 13,
@@ -481,8 +682,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_DIVISION_EVALUATION",
-    "solution": "주어진 식의 각 항을 먼저 단항식으로 나누어 간단히 정리한다.\n첫 번째 분수의 나눗셈: $$ \\frac{6x^2 - 12xy^2}{3x} = \\frac{6x^2}{3x} - \\frac{12xy^2}{3x} = 2x - 4y^2 $$\n두 번째 분수의 나눗셈: $$ \\frac{3x^2y + 12xy^3}{3xy} = \\frac{3x^2y}{3xy} + \\frac{12xy^3}{3xy} = x + 4y^2 $$\n두 식의 차 계산: $$ (2x - 4y^2) - (x + 4y^2) = 2x - 4y^2 - x - 4y^2 = x - 8y^2 $$\n간단히 정리된 식에 $x = 3, y = \\frac{1}{2}$을 대입: $$ x - 8y^2 = 3 - 8 \\times \\left(\\frac{1}{2}\\right)^2 = 3 - 8 \\times \\frac{1}{4} = 3 - 2 = 1 $$ 따라서 구하는 식의 값은 $1$이다. 그러므로 정답은 ②이다.",
-    "points": 5
+    "solution": "주어진 식의 각 항을 먼저 단항식으로 나누어 간단히 정리한다.\n첫 번째 분수의 나눗셈:\n$$\n\\frac{6x^2 - 12xy^2}{3x} = \\frac{6x^2}{3x} - \\frac{12xy^2}{3x} = 2x - 4y^2\n$$\n두 번째 분수의 나눗셈:\n$$\n\\frac{3x^2y + 12xy^3}{3xy} = \\frac{3x^2y}{3xy} + \\frac{12xy^3}{3xy} = x + 4y^2\n$$\n두 식의 차 계산:\n$$\n(2x - 4y^2) - (x + 4y^2) = 2x - 4y^2 - x - 4y^2 = x - 8y^2\n$$\n간단히 정리된 식에 $x = 3, y = \\frac{1}{2}$을 대입:\n$$\nx - 8y^2 = 3 - 8 \\times \\left(\\frac{1}{2}\\right)^2 = 3 - 8 \\times \\frac{1}{4} = 3 - 2 = 1\n$$\n따라서 구하는 식의 값은 $1$이다.\n그러므로 정답은 ②이다.",
+    "points": 5,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_POLYNOMIAL_SUBTRACTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "BOUNDARY",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "다항식의 계산",
+    "rpmL3Label": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmL4Label": "다항식을 단항식으로 나누기",
+    "difficultyReason": "항별 나눗셈과 부호를 맞춘 뺄셈, 유리수 대입이 정해진 순서로 이어질 뿐 새로운 개념의 결합이나 전략 선택이 없어 2단계로 보되, 3단계와 경계가 애매해 BOUNDARY로 표시했다."
   },
   {
     "id": 14,
@@ -518,8 +736,23 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "POWER_SUBSTITUTION_BASE_TRANSFORMATION",
-    "solution": "밑 $9$를 $3$의 거듭제곱으로 나타내면 $9 = 3^2$이므로 $$ 9^8 = (3^2)^8 = 3^{2 \\times 8} = 3^{16} $$ $3^{16}$을 $3^4$의 거듭제곱 꼴로 변형하면 $$ 3^{16} = (3^4)^4 $$ $3^4 = A$이므로 이를 대입하면 $$ (3^4)^4 = A^4 $$ 따라서 $9^8$을 $A$를 사용하여 나타낸 것은 ①이다.",
-    "points": 4
+    "solution": "밑 $9$를 $3$의 거듭제곱으로 나타내면 $9 = 3^2$이므로\n$$\n9^8 = (3^2)^8 = 3^{2 \\times 8} = 3^{16}\n$$\n$3^{16}$을 $3^4$의 거듭제곱 꼴로 변형하면\n$$\n3^{16} = (3^4)^4\n$$\n$3^4 = A$이므로 이를 대입하면\n$$\n(3^4)^4 = A^4\n$$\n따라서 $9^8$을 $A$를 사용하여 나타낸 것은 ①이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "단항식의 계산",
+    "rpmL3Label": "지수법칙",
+    "rpmL4Label": "거듭제곱의 거듭제곱",
+    "difficultyReason": "밑을 3으로 통일하고 지수 16을 다시 4의 배수로 묶는 두 번의 지수법칙 적용이 필요해 2단계이다."
   },
   {
     "id": 15,
@@ -555,8 +788,30 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "CUBOID_LATERAL_AREA_AND_VOLUME",
-    "solution": "직육면체의 밑면의 가로의 길이를 $A$라 하자. 직육면체의 옆넓이는 밑면의 둘레의 길이와 높이의 곱과 같다. $$ (\\text{밑면의 둘레}) = 2(A + 3xy) = 2A + 6xy $$ 높이가 $2x$이므로 옆넓이는 $$ \\text{옆넓이} = (2A + 6xy) \\times 2x = 4xA + 12x^2y $$ 이 옆넓이가 $8x^2 + 12x^2y$와 같으므로 $$ 4xA + 12x^2y = 8x^2 + 12x^2y $$ 양변에서 $12x^2y$를 빼면 $$ 4xA = 8x^2 $$ 양변을 $4x$ ($x \\ne 0$)로 나누면 밑면의 가로의 길이는 $$ A = \\frac{8x^2}{4x} = 2x $$ 이제 직육면체의 부피 $V$는 $(\\text{가로}) \\times (\\text{세로}) \\times (\\text{높이})$이므로 $$ V = 2x \\times 3xy \\times 2x = 12x^3y $$ 따라서 직육면체의 부피는 $12x^3y$이다. 그러므로 정답은 ⑤이다.",
-    "points": 5
+    "solution": "직육면체의 밑면의 가로의 길이를 $A$라 하자. 직육면체의 옆넓이는 밑면의 둘레의 길이와 높이의 곱과 같다.\n$$\n(\\text{밑면의 둘레}) = 2(A + 3xy) = 2A + 6xy\n$$\n높이가 $2x$이므로 옆넓이는\n$$\n\\text{옆넓이} = (2A + 6xy) \\times 2x = 4xA + 12x^2y\n$$\n이 옆넓이가 $8x^2 + 12x^2y$와 같으므로\n$$\n4xA + 12x^2y = 8x^2 + 12x^2y\n$$\n양변에서 $12x^2y$를 빼면\n$$\n4xA = 8x^2\n$$\n양변을 $4x$ ($x \\ne 0$)로 나누면 밑면의 가로의 길이는\n$$\nA = \\frac{8x^2}{4x} = 2x\n$$\n이제 직육면체의 부피 $V$는 $(\\text{가로}) \\times (\\text{세로}) \\times (\\text{높이})$이므로\n$$\nV = 2x \\times 3xy \\times 2x = 12x^3y\n$$\n따라서 직육면체의 부피는 $12x^3y$이다.\n그러므로 정답은 ⑤이다.",
+    "points": 5,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_ALGEBRAIC_MODELING",
+      "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+      "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "다항식의 계산",
+    "rpmL3Label": "식의 값과 활용",
+    "rpmL4Label": "조건식 활용",
+    "difficultyReason": "옆넓이를 도형 공식으로 문자화해 조건식과 비교하는 모델링, 가로 역산, 부피 계산의 세 단계가 서로 다른 개념을 이어 붙여 3단계이다."
   },
   {
     "id": 16,
@@ -592,8 +847,27 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "EXPONENT_GREATEST_COMMON_DIVISOR",
-    "solution": "지수법칙에 의해 좌변을 전개하면 $$ (x^a y^b)^c = x^{ac} y^{bc} $$ 이 식이 $x^{18}y^{30}$과 같으므로 $$ ac = 18, \\quad bc = 30 $$ $a, b, c$가 모두 자연수이므로 $c$는 $18$의 약수이자 $30$의 약수, 즉 $18$과 $30$의 공약수이어야 한다. $18$과 $30$의 최대공약수는 $6$이므로 공약수는 $1, 2, 3, 6$이다. $c \\ne 1$이므로 가능한 $c$의 값은 $2, 3, 6$이다. 각 선지를 검토하면 다음과 같다. ① $c$는 $18$과 $30$의 공약수이다. (참) ② 등식을 만족시키는 가장 큰 자연수 $c$의 값은 최대공약수인 $6$이다. 선지의 $9$는 $30$의 약수가 아니므로 옳지 않다. ③ $ac = 18$이다. (참) ④ $bc = 30$이다. (참) ⑤ $c = 2$일 때, $2a = 18 \\implies a = 9$이고 $2b = 30 \\implies b = 15$이므로 $a + b = 9 + 15 = 24$이다. (참) 따라서 옳지 않은 것은 ②이다.",
-    "points": 4
+    "solution": "지수법칙에 의해 좌변을 전개하면\n$$\n(x^a y^b)^c = x^{ac} y^{bc}\n$$\n이 식이 $x^{18}y^{30}$과 같으므로\n$$\nac = 18, \\quad bc = 30\n$$\n$a, b, c$가 모두 자연수이므로 $c$는 $18$의 약수이자 $30$의 약수, 즉 $18$과 $30$의 공약수이어야 한다. $18$과 $30$의 최대공약수는 $6$이므로 공약수는 $1, 2, 3, 6$이다. $c \\ne 1$이므로 가능한 $c$의 값은 $2, 3, 6$이다. 각 선지를 검토하면 다음과 같다.\n① $c$는 $18$과 $30$의 공약수이다. (참)\n② 등식을 만족시키는 가장 큰 자연수 $c$의 값은 최대공약수인 $6$이다. 선지의 $9$는 $30$의 약수가 아니므로 옳지 않다.\n③ $ac = 18$이다. (참)\n④ $bc = 30$이다. (참)\n⑤ $c = 2$일 때, $2a = 18$에서 $a = 9$이고 $2b = 30$에서 $b = 15$이므로 $a + b = 9 + 15 = 24$이다. (참)\n따라서 옳지 않은 것은 ②이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_TRUTH_VALUE_JUDGMENT"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "단항식의 계산",
+    "rpmL3Label": "지수법칙",
+    "rpmL4Label": "거듭제곱의 거듭제곱",
+    "difficultyReason": "지수법칙으로 지수 방정식을 세운 뒤 공약수 판정으로 넘어가는 두 개념의 연결이 필요해 2단계이다."
   },
   {
     "id": 17,
@@ -606,8 +880,8 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -629,8 +903,23 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_TRANSLATION_NOT_GREATER",
-    "solution": "문장의 수량 관계를 순서대로 수식으로 표현한다.\n'어떤 수 $x$에서 $4$를 뺀 것': $(x - 4)$\n'그것의 $2$배': $2(x - 4)$\n'크지 않다'는 '작거나 같다($\\le$)'와 같은 뜻이다. 따라서 '$2(x - 4)$는 $x$보다 크지 않다'를 부등식으로 나타내면 $$ 2(x - 4) \\le x $$ 그러므로 옳은 것은 ①이다.",
-    "points": 4
+    "solution": "문장의 수량 관계를 순서대로 수식으로 표현한다.\n'어떤 수 $x$에서 $4$를 뺀 것': $(x - 4)$\n'그것의 $2$배': $2(x - 4)$\n'크지 않다'는 '작거나 같다($\\le$)'와 같은 뜻이다.\n따라서 '$2(x - 4)$는 $x$보다 크지 않다'를 부등식으로 나타내면\n$$\n2(x - 4) \\le x\n$$\n그러므로 옳은 것은 ①이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "일차부등식",
+    "rpmL2Label": "일차부등식의 활용",
+    "rpmL3Label": "수량 관계",
+    "rpmL4Label": "이상·이하 조건",
+    "difficultyReason": "'크지 않다'를 ≤로 바꾸어 한 줄의 부등식으로 옮기면 끝나는 1단계 문항이다."
   },
   {
     "id": 18,
@@ -655,19 +944,36 @@ window.questionBank = [
     "wide": false,
     "content": "$a < b$일 때, 다음 중 $\\bigcirc$ 안에 들어갈 부등호의 방향이 나머지와 다른 것은? [4점]",
     "choices": [
-      "$-\\dfrac{a}{4} + 2 ;\\bigcirc; -\\dfrac{b}{4} + 2$",
-      "$5 - 3a ;\\bigcirc; 5 - 3b$",
-      "$-4 + 3a ;\\bigcirc; -4 + 3b$",
-      "$-a + 6 ;\\bigcirc; -b + 6$",
-      "$-5a ;\\bigcirc; -5b$"
+      "$-\\dfrac{a}{4} + 2 \\;\\bigcirc\\; -\\dfrac{b}{4} + 2$",
+      "$5 - 3a \\;\\bigcirc\\; 5 - 3b$",
+      "$-4 + 3a \\;\\bigcirc\\; -4 + 3b$",
+      "$-a + 6 \\;\\bigcirc\\; -b + 6$",
+      "$-5a \\;\\bigcirc\\; -5b$"
     ],
     "answer": "③",
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_DIRECTION_COMPARISON",
-    "solution": "$a < b$일 때 각 선지의 부등호 방향을 판정한다. ① $a < b$의 양변에 음수 $-\\frac{1}{4}$을 곱하면 부등호 방향이 바뀌어 $-\\frac{a}{4} > -\\frac{b}{4}$이고, $2$를 더하면 $$ -\\frac{a}{4} + 2 > -\\frac{b}{4} + 2 \\quad (\\bigcirc\\text{ 안은 } >) $$ ② $a < b$의 양변에 음수 $-3$을 곱하면 $-3a > -3b$이고, $5$를 더하면 $$ 5 - 3a > 5 - 3b \\quad (\\bigcirc\\text{ 안은 } >) $$ ③ $a < b$의 양변에 양수 $3$을 곱하면 부등호 방향이 바뀌지 않으므로 $3a < 3b$이고, $4$를 빼면 $$ -4 + 3a < -4 + 3b \\quad (\\bigcirc\\text{ 안은 } <) $$ ④ $a < b$의 양변에 음수 $-1$을 곱하면 $-a > -b$이고, $6$을 더하면 $$ -a + 6 > -b + 6 \\quad (\\bigcirc\\text{ 안은 } >) $$ ⑤ $a < b$의 양변에 음수 $-5$를 곱하면 $$ -5a > -5b \\quad (\\bigcirc\\text{ 안은 } >) $$ 따라서 부등호의 방향이 $<$로 나머지와 다른 것은 ③이다.",
-    "points": 4
+    "solution": "$a < b$일 때 각 선지의 부등호 방향을 판정한다.\n① $a < b$의 양변에 음수 $-\\frac{1}{4}$을 곱하면 부등호 방향이 바뀌어 $-\\frac{a}{4} > -\\frac{b}{4}$이고, $2$를 더하면\n$$\n-\\frac{a}{4} + 2 > -\\frac{b}{4} + 2 \\quad (\\bigcirc\\text{ 안은 } >)\n$$\n② $a < b$의 양변에 음수 $-3$을 곱하면 $-3a > -3b$이고, $5$를 더하면\n$$\n5 - 3a > 5 - 3b \\quad (\\bigcirc\\text{ 안은 } >)\n$$\n③ $a < b$의 양변에 양수 $3$을 곱하면 부등호 방향이 바뀌지 않으므로 $3a < 3b$이고, $4$를 빼면\n$$\n-4 + 3a < -4 + 3b \\quad (\\bigcirc\\text{ 안은 } <)\n$$\n④ $a < b$의 양변에 음수 $-1$을 곱하면 $-a > -b$이고, $6$을 더하면\n$$\n-a + 6 > -b + 6 \\quad (\\bigcirc\\text{ 안은 } >)\n$$\n⑤ $a < b$의 양변에 음수 $-5$를 곱하면\n$$\n-5a > -5b \\quad (\\bigcirc\\text{ 안은 } >)\n$$\n따라서 부등호의 방향이 $<$로 나머지와 다른 것은 ③이다.",
+    "points": 4,
+    "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INEQUALITY_CONSTRAINT"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "일차부등식",
+    "rpmL2Label": "일차부등식",
+    "rpmL3Label": "부등식의 성질",
+    "rpmL4Label": "부등식의 성질",
+    "difficultyReason": "음수를 곱하면 부등호 방향이 바뀐다는 성질 하나를 각 선지에 적용해 방향만 비교하면 되므로 1단계이다."
   },
   {
     "id": 19,
@@ -703,8 +1009,27 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "LINEAR_INEQUALITY_IDENTIFICATION_BASIC",
-    "solution": "각 식의 모든 항을 좌변으로 이항하여 일차부등식의 형태인지를 확인한다. ㄱ. $x - 3 > 4 \\implies x - 7 > 0$ 좌변이 $x$에 대한 일차식이므로 일차부등식이다. (참) ㄴ. $3x - 2 \\le x + 4 \\implies 3x - x - 2 - 4 \\le 0 \\implies 2x - 6 \\le 0$ 좌변이 $x$에 대한 일차식이므로 일차부등식이다. (참) ㄷ. $2(x - 2) < 2x + 1 \\implies 2x - 4 < 2x + 1 \\implies -4 < 1$ 양변의 $2x$가 소거되어 미지수 $x$의 일차항이 남지 않으므로 일차부등식이 아니다. (거짓) 따라서 일차부등식은 ㄱ, ㄴ이다. 그러므로 정답은 ④이다.",
-    "points": 3
+    "solution": "각 식의 모든 항을 좌변으로 이항하여 일차부등식의 형태인지를 확인한다.\nㄱ. $x - 3 > 4$를 정리하면 $x - 7 > 0$이고, 좌변이 $x$에 대한 일차식이므로 일차부등식이다. (참)\nㄴ. $3x - 2 \\le x + 4$를 정리하면 $3x - x - 2 - 4 \\le 0$, 즉 $2x - 6 \\le 0$이고, 좌변이 $x$에 대한 일차식이므로 일차부등식이다. (참)\nㄷ. $2(x - 2) < 2x + 1$을 정리하면 $2x - 4 < 2x + 1$, 즉 $-4 < 1$이고, 양변의 $2x$가 소거되어 미지수 $x$의 일차항이 남지 않으므로 일차부등식이 아니다. (거짓)\n따라서 일차부등식은 ㄱ, ㄴ이다.\n그러므로 정답은 ④이다.",
+    "points": 3,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+    "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+    "crossConceptKeys": [
+      "CC_ALGEBRAIC_SIMPLIFICATION"
+    ],
+    "conditionKeys": [
+      "COND_POLYNOMIAL_DEGREE_ONE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "일차부등식",
+    "rpmL2Label": "일차부등식",
+    "rpmL3Label": "일차부등식의 풀이",
+    "rpmL4Label": "기본형",
+    "difficultyReason": "이항과 동류항 정리만으로 일차항의 잔존 여부를 확인하는 기본 판별 문항이다."
   },
   {
     "id": 20,
@@ -740,8 +1065,28 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "LINEAR_INEQUALITY_MAX_INTEGER",
-    "solution": "$x$항을 좌변으로, 상수항을 우변으로 이항하여 부등식을 푼다. $$ 2x + x \\le 8 + 7 $$ 동류항을 정리하면 $$ 3x \\le 15 $$ 양변을 양수 $3$으로 나누면 부등호의 방향은 변하지 않으므로 $$ x \\le 5 $$ 따라서 $x \\le 5$를 만족시키는 $x$의 값 중에서 가장 큰 정수는 $5$이다. 그러므로 정답은 ④이다.",
-    "points": 4
+    "solution": "$x$항을 좌변으로, 상수항을 우변으로 이항하여 부등식을 푼다.\n$$\n2x + x \\le 8 + 7\n$$\n동류항을 정리하면\n$$\n3x \\le 15\n$$\n양변을 양수 $3$으로 나누면 부등호의 방향은 변하지 않으므로\n$$\nx \\le 5\n$$\n따라서 $x \\le 5$를 만족시키는 $x$의 값 중에서 가장 큰 정수는 $5$이다.\n그러므로 정답은 ④이다.",
+    "points": 4,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_INEQUALITY_PROPERTIES",
+      "CC_BOUNDARY_VALUE_ANALYSIS"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "BOUNDARY",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "일차부등식",
+    "rpmL2Label": "일차부등식",
+    "rpmL3Label": "해의 조건",
+    "rpmL4Label": "정수해 개수",
+    "difficultyReason": "기본형 부등식을 푸는 데 최대 정수를 읽는 한 단계가 더해져 1단계와 2단계 사이로 보이므로 낮은 단계를 준다."
   },
   {
     "id": 21,
@@ -772,8 +1117,26 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "RECONSTRUCT_ORIGINAL_FRACTION_ESSAY",
-    "solution": "1단계: 민호가 본 순환소수를 기약분수로 나타내어 바른 분자를 구한다. $$ 0.4\\dot{6} = \\frac{46 - 4}{90} = \\frac{42}{90} $$ 분모와 분자를 $6$으로 약분하면 $$ \\frac{42 \\div 6}{90 \\div 6} = \\frac{7}{15} $$ 민호는 분모를 잘못 보았으므로 원래 기약분수의 분자는 $7$이다. [2점]\n2단계: 서연이가 본 순환소수를 기약분수로 나타내어 바른 분모를 구한다. $$ 0.\\dot{4}\\dot{1} = \\frac{41}{99} $$ $41$과 $99$는 서로소이므로 기약분수이다. 서연이는 분자를 잘못 보았으므로 원래 기약분수의 분모는 $99$이다. [2점]\n3단계: 처음의 기약분수를 구하고 순환소수로 바르게 나타낸다. 처음의 기약분수는 분모가 $99$이고 분자가 $7$이므로 $$ \\frac{7}{99} $$ 이를 순환소수로 나타내면 $$ \\frac{7}{99} = 0.070707\\cdots = 0.\\dot{0}\\dot{7} \\quad [1점] $$ 따라서 처음의 기약분수를 순환소수로 바르게 나타내면 $0.\\dot{0}\\dot{7}$이다.",
-    "points": 5
+    "solution": "1단계: 민호가 본 순환소수를 기약분수로 나타내어 바른 분자를 구한다.\n$$\n0.4\\dot{6} = \\frac{46 - 4}{90} = \\frac{42}{90}\n$$\n분모와 분자를 $6$으로 약분하면\n$$\n\\frac{42 \\div 6}{90 \\div 6} = \\frac{7}{15}\n$$\n민호는 분모를 잘못 보았으므로 원래 기약분수의 분자는 $7$이다. [2점]\n2단계: 서연이가 본 순환소수를 기약분수로 나타내어 바른 분모를 구한다.\n$$\n0.\\dot{4}\\dot{1} = \\frac{41}{99}\n$$\n$41$과 $99$는 서로소이므로 기약분수이다. 서연이는 분자를 잘못 보았으므로 원래 기약분수의 분모는 $99$이다. [2점]\n3단계: 처음의 기약분수를 구하고 순환소수로 바르게 나타낸다. 처음의 기약분수는 분모가 $99$이고 분자가 $7$이므로\n$$\n\\frac{7}{99}\n$$\n이를 순환소수로 나타내면\n$$\n\\frac{7}{99} = 0.070707\\cdots = 0.\\dot{0}\\dot{7} \\quad [1점]\n$$\n따라서 처음의 기약분수를 순환소수로 바르게 나타내면 $0.\\dot{0}\\dot{7}$이다.",
+    "points": 5,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_FRACTION_ARITHMETIC",
+      "CC_ERROR_CORRECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "유리수와 순환소수",
+    "rpmL2Label": "유리수와 순환소수",
+    "rpmL3Label": "순환소수",
+    "rpmL4Label": "순환소수를 분수로",
+    "difficultyReason": "두 순환소수를 각각 분수로 고친 뒤 어느 성분이 바른지 판단하고 다시 순환소수로 나타내는 세 단계 구성이다."
   },
   {
     "id": 22,
@@ -804,8 +1167,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_ERROR_CORRECTION_ESSAY",
-    "solution": "1단계: 어떤 식을 구한다. 어떤 식을 $A$라 하면 잘못 계산한 식은 $$ A - (2a^2 - 3ab + b^2) = a^2 + 4ab - 3b^2 $$ 이므로 어떤 식 $A$는 $$ A = (a^2 + 4ab - 3b^2) + (2a^2 - 3ab + b^2) $$ 동류항끼리 묶어 계산하면 $$ A = (1 + 2)a^2 + (4 - 3)ab + (-3 + 1)b^2 = 3a^2 + ab - 2b^2 \\quad [3점] $$\n2단계: 바르게 계산한 결과를 구한다. 바르게 계산한 결과는 어떤 식 $A$에 $(2a^2 - 3ab + b^2)$을 더해야 하므로 $$ \\text{(바른 식)} = A + (2a^2 - 3ab + b^2) $$ $$ = (3a^2 + ab - 2b^2) + (2a^2 - 3ab + b^2) $$ 동류항끼리 계산하면 $$ = (3 + 2)a^2 + (1 - 3)ab + (-2 + 1)b^2 = 5a^2 - 2ab - b^2 \\quad [2점] $$ 따라서 바르게 계산한 결과는 $5a^2 - 2ab - b^2$이다.",
-    "points": 5
+    "solution": "1단계: 어떤 식을 구한다. 어떤 식을 $A$라 하면 잘못 계산한 식은\n$$\nA - (2a^2 - 3ab + b^2) = a^2 + 4ab - 3b^2\n$$\n이므로 어떤 식 $A$는\n$$\nA = (a^2 + 4ab - 3b^2) + (2a^2 - 3ab + b^2)\n$$\n동류항끼리 묶어 계산하면\n$$\nA = (1 + 2)a^2 + (4 - 3)ab + (-3 + 1)b^2 = 3a^2 + ab - 2b^2 \\quad [3점]\n$$\n2단계: 바르게 계산한 결과를 구한다. 바르게 계산한 결과는 어떤 식 $A$에 $(2a^2 - 3ab + b^2)$을 더해야 하므로\n$$\n\\text{(바른 식)} = A + (2a^2 - 3ab + b^2)\n$$\n$$\n= (3a^2 + ab - 2b^2) + (2a^2 - 3ab + b^2)\n$$\n동류항끼리 계산하면\n$$\n= (3 + 2)a^2 + (1 - 3)ab + (-2 + 1)b^2 = 5a^2 - 2ab - b^2 \\quad [2점]\n$$\n따라서 바르게 계산한 결과는 $5a^2 - 2ab - b^2$이다.",
+    "points": 5,
+    "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+    "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+    "crossConceptKeys": [
+      "CC_ERROR_CORRECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "식의 계산",
+    "rpmL2Label": "다항식의 계산",
+    "rpmL3Label": "다항식의 덧셈과 뺄셈",
+    "rpmL4Label": "동류항 정리",
+    "difficultyReason": "역연산으로 원래 식을 구하고 다시 덧셈을 하는 두 단계 다항식 계산이다."
   },
   {
     "id": 23,
@@ -836,8 +1216,26 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "SOLVE_AND_GRAPH_INEQUALITY_ESSAY",
-    "solution": "1단계: 일차부등식을 푼다. 양변의 괄호를 분배법칙으로 풀면 $$ 8 - 4x \\ge -1 - x $$ $-x$를 좌변으로, $8$을 우변으로 이항하면 $$ -4x + x \\ge -1 - 8 $$ 동류항을 계산하면 $$ -3x \\ge -9 $$ 양변을 음수 $-3$으로 나누면 부등호의 방향이 반대로 바뀌므로 $$ x \\le 3 \\quad [3점] $$\n2단계: 해를 수직선 위에 나타낸다. 수직선 위에서 경계값인 점 $3$에 등호가 포함되므로 색칠한 점(●)을 찍고, $3$ 이하의 영역이므로 왼쪽 방향으로 화살표를 그어 해의 범위를 나타낸다. [2점] 따라서 일차부등식의 해는 $x \\le 3$이다.",
-    "points": 5
+    "solution": "1단계: 일차부등식을 푼다. 양변의 괄호를 분배법칙으로 풀면\n$$\n8 - 4x \\ge -1 - x\n$$\n$-x$를 좌변으로, $8$을 우변으로 이항하면\n$$\n-4x + x \\ge -1 - 8\n$$\n동류항을 계산하면\n$$\n-3x \\ge -9\n$$\n양변을 음수 $-3$으로 나누면 부등호의 방향이 반대로 바뀌므로\n$$\nx \\le 3 \\quad [3점]\n$$\n2단계: 해를 수직선 위에 나타낸다. 수직선 위에서 경계값인 점 $3$에 등호가 포함되므로 색칠한 점(●)을 찍고, $3$ 이하의 영역이므로 왼쪽 방향으로 화살표를 그어 해의 범위를 나타낸다. [2점] 따라서 일차부등식의 해는 $x \\le 3$이다.",
+    "points": 5,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_DIRECTION_OF_INEQUALITY",
+      "CC_NUMBER_LINE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "일차부등식",
+    "rpmL2Label": "일차부등식",
+    "rpmL3Label": "일차부등식의 풀이",
+    "rpmL4Label": "괄호·분수·소수가 있는 부등식",
+    "difficultyReason": "괄호를 푼 일차부등식을 계산하고 그 해를 수직선에 옮기는 두 단계 문항이다."
   },
   {
     "id": 24,
@@ -868,7 +1266,25 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "M2",
     "conceptClusterKey": "SAME_SOLUTION_INEQUALITIES_ESSAY",
-    "solution": "1단계: 두 번째 일차부등식을 푼다. $$-4x < 6 - 2x$$ $-2x$를 좌변으로 이항하면 $$-4x + 2x < 6 \\implies -2x < 6$$ 양변을 음수 $-2$로 나누면 부등호의 방향이 반대로 바뀌므로 $$x > -3 \\quad [2점]$$\n2단계: 첫 번째 일차부등식을 푼다. $$15 - x > a - 3x$$ $-3x$를 좌변으로, $15$를 우변으로 이항하면 $$-x + 3x > a - 15 \\implies 2x > a - 15$$ 양변을 양수 $2$로 나누면 $$x > \\frac{a - 15}{2} \\quad [2점]$$\n3단계: 두 부등식의 해가 같음을 이용하여 상수 $a$의 값을 구한다. 두 부등식의 해가 서로 같으므로 경계값이 일치해야 한다. $$\\frac{a - 15}{2} = -3$$ 양변에 $2$를 곱하면 $$a - 15 = -6$$ $$a = 15 - 6 = 9 \\quad [1점]$$ 따라서 상수 $a$의 값은 $9$이다.",
-    "points": 5
+    "solution": "1단계: 두 번째 일차부등식을 푼다.\n$$\n-4x < 6 - 2x\n$$\n$-2x$를 좌변으로 이항하면\n$$\n-4x + 2x < 6\n$$\n$$\n-2x < 6\n$$\n양변을 음수 $-2$로 나누면 부등호의 방향이 반대로 바뀌므로\n$$\nx > -3 \\quad [2점]\n$$\n2단계: 첫 번째 일차부등식을 푼다.\n$$\n15 - x > a - 3x\n$$\n$-3x$를 좌변으로, $15$를 우변으로 이항하면\n$$\n-x + 3x > a - 15\n$$\n$$\n2x > a - 15\n$$\n양변을 양수 $2$로 나누면\n$$\nx > \\frac{a - 15}{2} \\quad [2점]\n$$\n3단계: 두 부등식의 해가 같음을 이용하여 상수 $a$의 값을 구한다. 두 부등식의 해가 서로 같으므로 경계값이 일치해야 한다.\n$$\n\\frac{a - 15}{2} = -3\n$$\n양변에 $2$를 곱하면\n$$\na - 15 = -6\n$$\n$$\na = 15 - 6 = 9 \\quad [1점]\n$$\n따라서 상수 $a$의 값은 $9$이다.",
+    "points": 5,
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_DIRECTION_OF_INEQUALITY",
+      "CC_COEFFICIENT_DETERMINATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "reviewStatus": "UNREVIEWED",
+    "solutionStatus": "UNREVIEWED",
+    "rpmL1Label": "일차부등식",
+    "rpmL2Label": "일차부등식",
+    "rpmL3Label": "해의 조건",
+    "rpmL4Label": "계수 조건",
+    "difficultyReason": "두 부등식을 각각 푼 뒤 경계값을 비교해 일차방정식으로 푸는 두 단계 문항이다."
   }
 ];
