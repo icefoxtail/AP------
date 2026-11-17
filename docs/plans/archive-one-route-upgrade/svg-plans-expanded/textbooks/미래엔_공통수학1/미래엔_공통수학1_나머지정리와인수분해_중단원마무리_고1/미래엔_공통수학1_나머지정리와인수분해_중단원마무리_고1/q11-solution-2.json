@@ -1,0 +1,157 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "sideAB",
+        "ownerSegment": "AB",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sideAC",
+        "ownerSegment": "AC",
+        "text": "c",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sideBC",
+        "ownerSegment": "BC",
+        "text": "b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "앞 단계에서 얻은 b²=a²+c²를 피타고라스 정리의 역으로 해석한다. b가 가장 긴 변이며 그 맞은편 각이 직각이다. 따라서 답은 b를 빗변으로 하는 직각삼각형이다. 이 도형은 결론을 시각화한 한 비율 예시이고 a,b,c의 구체적인 길이가 유일하게 정해진다는 뜻은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형의 세 변의 길이 $a, b, c$에 대하여\n$$a^3-ab^2-b^2c+a^2c+c^3+ac^2=0$$\n이 성립할 때, 이 삼각형은 어떤 삼각형인지 말하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "앞 단계에서 얻은 b²=a²+c²를 피타고라스 정리의 역으로 해석한다. b가 가장 긴 변이며 그 맞은편 각이 직각이다. 따라서 답은 b를 빗변으로 하는 직각삼각형이다. 이 도형은 결론을 시각화한 한 비율 예시이고 a,b,c의 구체적인 길이가 유일하게 정해진다는 뜻은 아니다.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "placement",
+      "condition": "앞 단계에서 얻은 b²=a²+c²를 피타고라스 정리의 역으로 해석한다. b가 가장 긴 변이며 그 맞은편 각이 직각이다. 따라서 답은 b를 빗변으로 하는 직각삼각형이다. 이 도형은 결론을 시각화한 한 비율 예시이고 a,b,c의 구체적인 길이가 유일하게 정해진다는 뜻은 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "앞 단계에서 얻은 b²=a²+c²를 피타고라스 정리의 역으로 해석한다. b가 가장 긴 변이며 그 맞은편 각이 직각이다. 따라서 답은 b를 빗변으로 하는 직각삼각형이다. 이 도형은 결론을 시각화한 한 비율 예시이고 a,b,c의 구체적인 길이가 유일하게 정해진다는 뜻은 아니다."
+  ]
+}

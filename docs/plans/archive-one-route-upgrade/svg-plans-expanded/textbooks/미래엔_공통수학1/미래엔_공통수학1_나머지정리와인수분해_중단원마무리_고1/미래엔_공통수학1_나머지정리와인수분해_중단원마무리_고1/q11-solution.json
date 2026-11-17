@@ -1,0 +1,441 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q0P0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q0P1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q0P2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q0P3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1P0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1P1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1P2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1P3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2P0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2P1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "17"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2P2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "17"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2P3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q0P0",
+    "Q0P1",
+    "Q0P2",
+    "Q0P3",
+    "Q1P0",
+    "Q1P1",
+    "Q1P2",
+    "Q1P3",
+    "Q2P0",
+    "Q2P1",
+    "Q2P2",
+    "Q2P3"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "Q0P0",
+    "Q0P1",
+    "Q0P2",
+    "Q0P3",
+    "Q1P0",
+    "Q1P1",
+    "Q1P2",
+    "Q1P3",
+    "Q2P0",
+    "Q2P1",
+    "Q2P2",
+    "Q2P3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "q0s0",
+      "refs": [
+        "Q0P0",
+        "Q0P1"
+      ]
+    },
+    {
+      "id": "q0s1",
+      "refs": [
+        "Q0P1",
+        "Q0P2"
+      ]
+    },
+    {
+      "id": "q0s2",
+      "refs": [
+        "Q0P2",
+        "Q0P3"
+      ]
+    },
+    {
+      "id": "q0s3",
+      "refs": [
+        "Q0P3",
+        "Q0P0"
+      ]
+    },
+    {
+      "id": "q1s0",
+      "refs": [
+        "Q1P0",
+        "Q1P1"
+      ]
+    },
+    {
+      "id": "q1s1",
+      "refs": [
+        "Q1P1",
+        "Q1P2"
+      ]
+    },
+    {
+      "id": "q1s2",
+      "refs": [
+        "Q1P2",
+        "Q1P3"
+      ]
+    },
+    {
+      "id": "q1s3",
+      "refs": [
+        "Q1P3",
+        "Q1P0"
+      ]
+    },
+    {
+      "id": "q2s0",
+      "refs": [
+        "Q2P0",
+        "Q2P1"
+      ]
+    },
+    {
+      "id": "q2s1",
+      "refs": [
+        "Q2P1",
+        "Q2P2"
+      ]
+    },
+    {
+      "id": "q2s2",
+      "refs": [
+        "Q2P2",
+        "Q2P3"
+      ]
+    },
+    {
+      "id": "q2s3",
+      "refs": [
+        "Q2P3",
+        "Q2P0"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "Q0P0",
+        "Q0P1",
+        "Q0P2"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "Q1P0",
+        "Q1P1",
+        "Q1P2"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "Q2P0",
+        "Q2P1",
+        "Q2P2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "side0",
+        "ownerSegment": "q0s0",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "side1",
+        "ownerSegment": "q1s0",
+        "text": "c",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "side2",
+        "ownerSegment": "q2s0",
+        "text": "b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "주어진 식을 (a+c)(a²+c²−b²)=0으로 인수분해한다. 세 변은 양수이므로 a+c>0이고 a²+c²=b²이다. 세 변을 각각 한 변으로 하는 보조 정사각형의 넓이로 보면 왼쪽 둘의 넓이 합이 오른쪽 하나의 넓이와 같다. 피타고라스 정리의 역에 따라 원래 삼각형은 b를 빗변으로 하는 직각삼각형이다. 그림의 비율은 이를 만족하는 한 예시이며 세 변 길이가 유일하게 정해지는 것은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형의 세 변의 길이 $a, b, c$에 대하여\n$$a^3-ab^2-b^2c+a^2c+c^3+ac^2=0$$\n이 성립할 때, 이 삼각형은 어떤 삼각형인지 말하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "주어진 식을 (a+c)(a²+c²−b²)=0으로 인수분해한다. 세 변은 양수이므로 a+c>0이고 a²+c²=b²이다. 세 변을 각각 한 변으로 하는 보조 정사각형의 넓이로 보면 왼쪽 둘의 넓이 합이 오른쪽 하나의 넓이와 같다. 피타고라스 정리의 역에 따라 원래 삼각형은 b를 빗변으로 하는 직각삼각형이다. 그림의 비율은 이를 만족하는 한 예시이며 세 변 길이가 유일하게 정해지는 것은 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 식을 (a+c)(a²+c²−b²)=0으로 인수분해한다. 세 변은 양수이므로 a+c>0이고 a²+c²=b²이다. 세 변을 각각 한 변으로 하는 보조 정사각형의 넓이로 보면 왼쪽 둘의 넓이 합이 오른쪽 하나의 넓이와 같다. 피타고라스 정리의 역에 따라 원래 삼각형은 b를 빗변으로 하는 직각삼각형이다. 그림의 비율은 이를 만족하는 한 예시이며 세 변 길이가 유일하게 정해지는 것은 아니다."
+  ]
+}
