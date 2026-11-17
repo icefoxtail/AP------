@@ -43,36 +43,33 @@
         "y": "11"
       }
     ],
-    "coordinateBand": {
-      "hide": [
-        "L",
-        "V",
-        "R"
+    "formula": "2*x^2+x+1",
+    "overlays": {
+      "lines": [
+        {
+          "id": "max",
+          "slope": "0",
+          "intercept": "16",
+          "label": "k=16",
+          "style": "DASHED"
+        }
       ]
-    },
-    "axisTickValues": {
-      "x": [
-        "-3",
-        "-1/4",
-        "2"
-      ],
-      "y": []
     }
   },
-  "caption": "부등식은 g(x)=2x²+x+1≤k로 정리된다. 제한구간−3≤x≤2에서 모든 높이보다 k가 크거나 같아야 한다. 축 x=−1/4에서 더 먼 끝점과 다른 끝점의 높이를 비교한다. 최종 필요한 k의 수치는 쓰지 않는다.",
+  "caption": "g(x)=2x²+x+1을 −3≤x≤2에서 비교한다. 실제 꼭짓점(−1/4,7/8), 왼쪽 끝(−3,16), 오른쪽 끝(2,11)을 표시한다. 항상 g(x)≤k이려면 k≥16이므로 정답 최솟값16.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "$-3\\le x\\le2$에서 이차부등식 $x^2+x+1\\le -x^2+k$가 항상 성립할 때, 실수 $k$의 최솟값은? [4.4점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original"
     },
     {
       "id": "method",
-      "condition": "끝값g−3=16,g2=11 ->kmin16②. 최종값과같은높이16은내부좌표만,visibley라벨없음.",
-      "mappedTo": "independent-math"
+      "condition": "g(x)=2x²+x+1을 −3≤x≤2에서 비교한다. 실제 꼭짓점(−1/4,7/8), 왼쪽 끝(−3,16), 오른쪽 끝(2,11)을 표시한다. 항상 g(x)≤k이려면 k≥16이므로 정답 최솟값16.",
+      "mappedTo": "solution"
     }
   ],
   "newVisualInformation": [
-    "부등식은 g(x)=2x²+x+1≤k로 정리된다. 제한구간−3≤x≤2에서 모든 높이보다 k가 크거나 같아야 한다. 축 x=−1/4에서 더 먼 끝점과 다른 끝점의 높이를 비교한다. 최종 필요한 k의 수치는 쓰지 않는다."
+    "g(x)=2x²+x+1을 −3≤x≤2에서 비교한다. 실제 꼭짓점(−1/4,7/8), 왼쪽 끝(−3,16), 오른쪽 끝(2,11)을 표시한다. 항상 g(x)≤k이려면 k≥16이므로 정답 최솟값16."
   ]
 }

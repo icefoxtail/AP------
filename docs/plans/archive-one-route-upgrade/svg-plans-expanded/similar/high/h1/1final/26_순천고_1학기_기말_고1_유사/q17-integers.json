@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-5",
+            "6"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "닫힌 구간−5≤x≤6의 실제 정수12개를 센다. 정답12.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서답형 1.(단답형)<br>부등식 $|x+2|+|x-3|\\le11$을 만족시키는 정수 $x$의 개수를 구하시오. [3점]",
+      "mappedTo": "source"
+    }
+  ]
+}

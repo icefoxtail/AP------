@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-5",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "9",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "9",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "breakpoints": [
+      {
+        "x": "5/2",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "7",
+          "label": "y=7",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "y=|2x−5|와 주어진 높이7을 비교한다. 같거나 높은 곳을 고르므로 경계는 포함한다. 두 바깥쪽 가지의 높이를 살피되 최종 경계값과 해구간은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|2x-5|\\ge7$을 풀면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "2x−5≤−7 또는≥7 ->x≤−1 또는x≥6①. 최종root라벨/음영 없음.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "y=|2x−5|와 주어진 높이7을 비교한다. 같거나 높은 곳을 고르므로 경계는 포함한다. 두 바깥쪽 가지의 높이를 살피되 최종 경계값과 해구간은 쓰지 않는다."
+  ]
+}

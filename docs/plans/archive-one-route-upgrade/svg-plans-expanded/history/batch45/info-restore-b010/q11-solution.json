@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-2",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "5"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "-2",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "axisTitles": {
+      "x": "a",
+      "y": "m"
+    }
+  },
+  "caption": "가로축은 매개변수 a, 세로축 m은0≤x≤2에서의 f(x) 최솟값이다. a<0에서는 왼쪽 끝,0≤a≤2에서는 꼭짓점, a>2에서는 오른쪽 끝이 최소를 담당한다. 정답: 최소함수가0 이상인 조건은−2≤a≤4이고 최소 a는−2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2-2ax+2a+4\\ge0$ $(0\\le x\\le2)$이 항상 성립하도록 하는 $a$의 최솟값을 구하면? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가로축은 매개변수 a, 세로축 m은0≤x≤2에서의 f(x) 최솟값이다. a<0에서는 왼쪽 끝,0≤a≤2에서는 꼭짓점, a>2에서는 오른쪽 끝이 최소를 담당한다. 정답: 최소함수가0 이상인 조건은−2≤a≤4이고 최소 a는−2.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 매개변수 a, 세로축 m은0≤x≤2에서의 f(x) 최솟값이다. a<0에서는 왼쪽 끝,0≤a≤2에서는 꼭짓점, a>2에서는 오른쪽 끝이 최소를 담당한다. 정답: 최소함수가0 이상인 조건은−2≤a≤4이고 최소 a는−2."
+  ]
+}

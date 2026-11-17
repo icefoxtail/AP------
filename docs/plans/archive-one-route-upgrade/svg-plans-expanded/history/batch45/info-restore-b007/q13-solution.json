@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "6"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "10",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "-4",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "10",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "A",
+        "B",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-1",
+        "2"
+      ],
+      "y": [
+        "6",
+        "8"
+      ]
+    },
+    "breakpoints": [
+      {
+        "x": "-4",
+        "y": "6"
+      },
+      {
+        "x": "2",
+        "y": "6"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "8",
+          "label": "2a=8",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "H(x)=|x−2|+|x+4|는−4와2 사이에서 높이6으로 일정하다. 점선2a=8은 a=4인 비교 예시이며 요구되는 a의 범위 자체가 아니다. 일반 a>3에서 허용구간의 중심은−1이고 양쪽으로 같은 거리만큼 늘어난다. 정수11개를 포함하고 다음 정수를 제외하는 순간을 생각하되 최종 a의 경계는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|x-2|+|x+4|\\le2a$를 만족시키는 정수 $x$의 개수가 11개가 되도록 하는 실수 $a$의 값의 범위는? (단, $a>3$) [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a>3에서−1−a≤x≤a−1. 정수11개 iff5≤a<6⑤. a4는허용예시지만최종11개조건아님,9개예시.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "H(x)=|x−2|+|x+4|는−4와2 사이에서 높이6으로 일정하다. 점선2a=8은 a=4인 비교 예시이며 요구되는 a의 범위 자체가 아니다. 일반 a>3에서 허용구간의 중심은−1이고 양쪽으로 같은 거리만큼 늘어난다. 정수11개를 포함하고 다음 정수를 제외하는 순간을 생각하되 최종 a의 경계는 쓰지 않는다."
+  ]
+}

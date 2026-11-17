@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "10",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "-2",
+            "5"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "k=7의 실제 공통 정수해는 5 하나로 합5. p=5를 만족하는 두 k는1과7이며 최종 합8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서논술형2&gt;<br>$x$에 대한 연립부등식 $\\begin{cases}|x-k|\\lt3\\\\x^2-3x-10\\le0\\end{cases}$을 만족시키는 정수 $x$가 존재할 때, 이 연립부등식을 만족시키는 모든 정수 $x$값의 합을 $p$라고 하자. $p=5$가 되도록 하는 모든 정수 $k$값의 합을 풀이과정과 함께 구하시오. (7점, 부분점수 있음)\\n",
+      "mappedTo": "source"
+    }
+  ]
+}

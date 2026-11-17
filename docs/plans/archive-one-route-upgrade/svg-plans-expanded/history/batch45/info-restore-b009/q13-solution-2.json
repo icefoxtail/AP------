@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "a=1인 비교 예시이다. 첫 행은 첫 부등식의 두 근 사이, 둘째 행은 둘째 부등식의 두 바깥쪽이다. 목표구간(2,6)이 모두 남는지와 그 밖의 추가 공통부분이 생기는지를 별개로 확인한다. 예시 두 값만으로 일반 범위를 확정하지 않으며 최종 M+m은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases}(x+a)(x-6)\\lt0\\\\(x-a)(x-2)\\gt0\\end{cases}$의 해가 $2\\lt x\\lt6$일 때, 실수 $a$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M+m$의 값을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "목표포함으로a≥−2, a>2불가; a2도(x−2)²>0라양쪽추가해존재. a≤2에서추가(−a,a)는a>0일때존재. 따라서−2≤a≤0,합−2④. 원문해설 a≥2면전부누락이라는문장은a2에서엄밀히부정확하지만최종조건은검산일치.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "a=1인 비교 예시이다. 첫 행은 첫 부등식의 두 근 사이, 둘째 행은 둘째 부등식의 두 바깥쪽이다. 목표구간(2,6)이 모두 남는지와 그 밖의 추가 공통부분이 생기는지를 별개로 확인한다. 예시 두 값만으로 일반 범위를 확정하지 않으며 최종 M+m은 쓰지 않는다."
+  ]
+}

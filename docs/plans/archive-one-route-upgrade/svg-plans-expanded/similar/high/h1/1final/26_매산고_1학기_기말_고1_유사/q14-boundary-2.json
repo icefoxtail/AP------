@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-2",
+            "7"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "a=4의 실제 해구간 [-2,7]에서 정수 10개를 센다. 다음 경계는 요구 정수 개수를 초과하므로 제외한다. 정답3≤a<4, p+q=7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^2-x-6$에 대하여 $\\dfrac{|f(x)|+f(x)}{2}\\le a(x+2)$를 만족시키는 정수 $x$의 개수가 9개가 되도록 하는 실수 $a$의 범위를 모두 구하여 $p\\le a\\lt q$라 하자. 상수 $p,q$에 대하여 $p+q$의 값은? (단, $a\\gt0$) [4.8점]",
+      "mappedTo": "source"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "3",
+            "8"
+          ]
+        }
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "13/2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "3",
+            "8"
+          ]
+        }
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "3",
+            "8"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "a=8에서 x>3과 x<(a+5)/2를 비교한다. 정수4,5,6이 들어가고7은 빠지려면6<(a+5)/2≤7이다. 오른쪽 경계가7인 경우에도7은 열린 점이라 제외된다. 정답7<a≤9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<strong>서술형 1. [5점]</strong><br>부등식 $3x-2<4x-5<2x+a$를 만족시키는 정수 $x$가 3개가 되도록 하는 실수 $a$의 값의 범위를 구하는 과정을 서술하시오.",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "a=7에서 x>3과 x<(a+5)/2를 비교한다. 정수4,5,6이 들어가고7은 빠지려면6<(a+5)/2≤7이다. 오른쪽 경계가7인 경우에도7은 열린 점이라 제외된다. 정답7<a≤9. a=8에서 x>3과 x<(a+5)/2를 비교한다. 정수4,5,6이 들어가고7은 빠지려면6<(a+5)/2≤7이다. 오른쪽 경계가7인 경우에도7은 열린 점이라 제외된다. 정답7<a≤9. a=9에서 x>3과 x<(a+5)/2를 비교한다. 정수4,5,6이 들어가고7은 빠지려면6<(a+5)/2≤7이다. 오른쪽 경계가7인 경우에도7은 열린 점이라 제외된다. 정답7<a≤9. a=10에서 x>3과 x<(a+5)/2를 비교한다. 정수4,5,6이 들어가고7은 빠지려면6<(a+5)/2≤7이다. 오른쪽 경계가7인 경우에도7은 열린 점이라 제외된다. 정답7<a≤9.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "a=8에서 x>3과 x<(a+5)/2를 비교한다. 정수4,5,6이 들어가고7은 빠지려면6<(a+5)/2≤7이다. 오른쪽 경계가7인 경우에도7은 열린 점이라 제외된다. 정답7<a≤9."
+  ]
+}

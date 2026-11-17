@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-6",
+            "4"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "a=5의 실제 해구간 [-6,4]에서 정수 11개를 센다. 최솟값 경계는 포함한다. 정답5≤a<6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|x-2|+|x+4|\\le2a$를 만족시키는 정수 $x$의 개수가 11개가 되도록 하는 실수 $a$의 값의 범위는? (단, $a>3$) [4.8점]",
+      "mappedTo": "source"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-9",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "9",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": "6"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "9",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "A",
+        "B",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "5"
+      ],
+      "y": [
+        "6"
+      ]
+    },
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "x": "5",
+        "y": "6"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "6",
+          "label": "y=6",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "H(x)=2|x−2|+|x−5|를 그렸다. 분기점2,5에서 기울기가 바뀌며 주어진 높이6 이하인 부분을 읽는다. 각 구간에서 구한 경계를 이어 붙이고 최종 두 경계의 곱은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $2|x-2|+|x-5|\\le6$의 해가 $a\\le x\\le b$일 때, $ab$의 값은? (단, $a,b$는 상수이다.) [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "세분기9−3x,x+1,3x−9에서1≤x≤5,ab5⑤. 분기점5는 주어진 중간 기준으로 보존.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "H(x)=2|x−2|+|x−5|를 그렸다. 분기점2,5에서 기울기가 바뀌며 주어진 높이6 이하인 부분을 읽는다. 각 구간에서 구한 경계를 이어 붙이고 최종 두 경계의 곱은 쓰지 않는다."
+  ]
+}

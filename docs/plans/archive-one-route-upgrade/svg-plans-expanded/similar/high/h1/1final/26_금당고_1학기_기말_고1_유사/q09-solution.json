@@ -51,23 +51,17 @@
         "x": "6",
         "y": "9",
         "marker": "NONE"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "6"
       }
     ],
     "coordinateBand": {
       "hide": [
         "L",
-        "A",
-        "B",
         "R"
-      ]
-    },
-    "axisTickValues": {
-      "x": [
-        "2",
-        "5"
-      ],
-      "y": [
-        "6"
       ]
     },
     "breakpoints": [
@@ -90,22 +84,28 @@
           "style": "DASHED"
         }
       ]
-    }
+    },
+    "formula": "2*abs(x-2)+abs(x-5)"
   },
-  "caption": "H(x)=2|x−2|+|x−5|를 그렸다. 분기점2,5에서 기울기가 바뀌며 주어진 높이6 이하인 부분을 읽는다. 각 구간에서 구한 경계를 이어 붙이고 최종 두 경계의 곱은 쓰지 않는다.",
+  "caption": "H(x)=2|x−2|+|x−5|는 분기점(2,3),(5,6)에서 기울기가 바뀐다. 높이6과 교점(1,6),(5,6) 사이가 허용되므로1≤x≤5, a=1,b=5이다. 정답 ab=5.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "부등식 $2|x-2|+|x-5|\\le6$의 해가 $a\\le x\\le b$일 때, $ab$의 값은? (단, $a,b$는 상수이다.) [4.7점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original question"
     },
     {
       "id": "method",
-      "condition": "세분기9−3x,x+1,3x−9에서1≤x≤5,ab5⑤. 분기점5는 주어진 중간 기준으로 보존.",
-      "mappedTo": "independent-math"
+      "condition": "H(x)=2|x−2|+|x−5|는 분기점(2,3),(5,6)에서 기울기가 바뀐다. 높이6과 교점(1,6),(5,6) 사이가 허용되므로1≤x≤5, a=1,b=5이다. 정답 ab=5.",
+      "mappedTo": "solution panels"
+    },
+    {
+      "id": "display",
+      "condition": "풀이의 실제 근·좌표·중간값·최종답을 표시한다. L/R은 표시창 끝점이라 좌표 라벨만 생략하며 Q12의 추상 좌표는 실제 거리값으로 제시하지 않는다.",
+      "mappedTo": "display policy"
     }
   ],
   "newVisualInformation": [
-    "H(x)=2|x−2|+|x−5|를 그렸다. 분기점2,5에서 기울기가 바뀌며 주어진 높이6 이하인 부분을 읽는다. 각 구간에서 구한 경계를 이어 붙이고 최종 두 경계의 곱은 쓰지 않는다."
+    "H(x)=2|x−2|+|x−5|는 분기점(2,3),(5,6)에서 기울기가 바뀐다. 높이6과 교점(1,6),(5,6) 사이가 허용되므로1≤x≤5, a=1,b=5이다. 정답 ab=5."
   ]
 }

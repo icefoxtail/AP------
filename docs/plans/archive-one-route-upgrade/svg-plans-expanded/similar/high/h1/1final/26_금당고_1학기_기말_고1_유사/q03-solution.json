@@ -40,18 +40,23 @@
         "x": "7",
         "y": "9",
         "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "7"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "7"
       }
     ],
     "coordinateBand": {
       "hide": [
         "L",
-        "V",
         "R"
       ]
-    },
-    "axisTickValues": {
-      "x": [],
-      "y": []
     },
     "breakpoints": [
       {
@@ -69,22 +74,28 @@
           "style": "DASHED"
         }
       ]
-    }
+    },
+    "formula": "abs(2*x-5)"
   },
-  "caption": "y=|2x−5|와 주어진 높이7을 비교한다. 같거나 높은 곳을 고르므로 경계는 포함한다. 두 바깥쪽 가지의 높이를 살피되 최종 경계값과 해구간은 쓰지 않는다.",
+  "caption": "y=|2x−5|의 꼭짓점은(5/2,0), 높이7과 교점은(−1,7),(6,7)이다. 같거나 높은 두 바깥 가지를 선택하고 경계를 포함한다. 정답 x≤−1 또는 x≥6.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "부등식 $|2x-5|\\ge7$을 풀면? [4.5점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original question"
     },
     {
       "id": "method",
-      "condition": "2x−5≤−7 또는≥7 ->x≤−1 또는x≥6①. 최종root라벨/음영 없음.",
-      "mappedTo": "independent-math"
+      "condition": "y=|2x−5|의 꼭짓점은(5/2,0), 높이7과 교점은(−1,7),(6,7)이다. 같거나 높은 두 바깥 가지를 선택하고 경계를 포함한다. 정답 x≤−1 또는 x≥6.",
+      "mappedTo": "solution panels"
+    },
+    {
+      "id": "display",
+      "condition": "풀이의 실제 근·좌표·중간값·최종답을 표시한다. L/R은 표시창 끝점이라 좌표 라벨만 생략하며 Q12의 추상 좌표는 실제 거리값으로 제시하지 않는다.",
+      "mappedTo": "display policy"
     }
   ],
   "newVisualInformation": [
-    "y=|2x−5|와 주어진 높이7을 비교한다. 같거나 높은 곳을 고르므로 경계는 포함한다. 두 바깥쪽 가지의 높이를 살피되 최종 경계값과 해구간은 쓰지 않는다."
+    "y=|2x−5|의 꼭짓점은(5/2,0), 높이7과 교점은(−1,7),(6,7)이다. 같거나 높은 두 바깥 가지를 선택하고 경계를 포함한다. 정답 x≤−1 또는 x≥6."
   ]
 }

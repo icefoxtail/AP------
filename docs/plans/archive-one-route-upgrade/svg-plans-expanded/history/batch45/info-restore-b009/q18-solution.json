@@ -1,0 +1,323 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-60"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-60"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "65"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-65"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-65"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "65"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "R",
+    "T",
+    "L",
+    "U"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "R",
+    "T",
+    "L",
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "diag",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "diag",
+        "text": "130",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "width",
+        "from": "A",
+        "to": "B",
+        "label": "12k",
+        "side": "BELOW",
+        "offset": 3
+      },
+      {
+        "id": "height",
+        "from": "B",
+        "to": "C",
+        "label": "5k",
+        "side": "RIGHT",
+        "offset": 2
+      }
+    ]
+  },
+  "caption": "원에 내접한 직사각형의 대각선은 지름130이다. 가로와 세로를12k,5k로 두어 직각삼각형의 피타고라스 관계를 세운다. 그림은 주어진 조건을 만족하는 정확한 비율이고 최종 넓이는 쓰지 않는다.",
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서답형 2.(단답형)<br>지름의 길이가 $130$인 원에 내접하는 직사각형의 가로와 세로의 길이의 비가 $12:5$일 때, 직사각형의 넓이를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "대각선130,169k²16900 ->k10,변120/50,넓이6000. 변라벨외부dimension,대각선130중앙소유;사방원프레임보존.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "O=(0,0)은 평면도형의 평행이동 자유도를 고정하는 추상 배치 기준점이다. 원문 원과 직사각형의 정확한 길이 관계를 사용한다. 나머지 모든 점은 O에서 해당 정수 칸수만큼 TRANSLATE_POINT로 유도한다. 숫자 좌표와 점 이름은 숨긴다.",
+      "mappedTo": "O and derived geometry nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "원에 내접한 직사각형의 대각선은 지름130이다. 가로와 세로를12k,5k로 두어 직각삼각형의 피타고라스 관계를 세운다. 그림은 주어진 조건을 만족하는 정확한 비율이고 최종 넓이는 쓰지 않는다."
+  ]
+}

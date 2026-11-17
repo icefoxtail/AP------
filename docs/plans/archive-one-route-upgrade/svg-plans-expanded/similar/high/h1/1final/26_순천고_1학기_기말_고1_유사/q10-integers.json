@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-16",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-12",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-16",
+            "-12"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "허용a는−16≤a<−12. 정수−16,−15,−14,−13 중 최대−13.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases}7x-2\\lt4x+10\\\\x+4\\gt-3x+a\\end{cases}$를 만족시키는 모든 정수 $x$의 값의 합이 $-4$가 되도록 하는 정수 $a$의 최댓값은? [4.2점]",
+      "mappedTo": "source"
+    }
+  ]
+}

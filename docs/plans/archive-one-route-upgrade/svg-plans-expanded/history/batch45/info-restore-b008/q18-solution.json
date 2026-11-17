@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "R",
+    "T",
+    "L",
+    "U"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "R",
+    "T",
+    "L",
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "radius",
+      "refs": [
+        "O",
+        "R"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "AB",
+        "text": "b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "radius",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원기둥 윗면의 원과 정사각형 관통 구멍을 위에서 본 한 가능한 배치이다. 구멍 중심을 원 중심에 둔 것은 예시이며 원문이 중심 일치를 요구한 것은 아니다. 실제 넓이식은 구멍 위치와 무관하다. 위·아래 각각의 남은 면적은 πa²−b², 바깥 옆면은2πab, 안쪽 네 벽은4b²이다. 이 항들을 합해 유리수 조건을 적용하며 최종 a−b는 쓰지 않는다.",
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $a$이고 높이가 $b$인 원기둥 모양의 입체도형이 있다. 이 입체도형에서 윗면과 아랫면을 관통하도록 한 모서리의 길이가 $b$인 정육면체 모양의 구멍을 뚫었다. 구멍의 윗면과 아랫면은 원기둥의 윗면과 아랫면에 놓이고, 구멍은 원기둥 안에 완전히 들어 있다. 남아 있는 입체도형의 겉넓이가 $90\\pi+32$일 때, 두 유리수 $a,b$에 대하여 $a-b$의 값은? (단, $b\\lt\\sqrt{2}a$) [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "표면2πab+2(πa²−b²)+4b²=2a(a+b)π+2b².유리수로π계수분리 b4,a5(양수),조건4<5√2.차1②. 치수는확정해정확,위치만가능한중앙예시. a,b라벨보존·숫자좌표/최종차숨김.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "O=(0,0)은 평면도형의 평행이동 자유도를 고정하는 추상 배치 기준점이다. Q18은 원문 길이 단위의 정확한 치수이나 구멍 중앙 배치는 가능한 한 예시다. Q19는 인접성만 나타내는 추상 네트워크다. 나머지 모든 점은 O에서 해당 정수 칸수만큼 TRANSLATE_POINT로 유도한다. 숫자 좌표는 숨기며 Q19에서 영역 이름 A,B,C,D만 표시한다.",
+      "mappedTo": "O and derived geometry nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "원기둥 윗면의 원과 정사각형 관통 구멍을 위에서 본 한 가능한 배치이다. 구멍 중심을 원 중심에 둔 것은 예시이며 원문이 중심 일치를 요구한 것은 아니다. 실제 넓이식은 구멍 위치와 무관하다. 위·아래 각각의 남은 면적은 πa²−b², 바깥 옆면은2πab, 안쪽 네 벽은4b²이다. 이 항들을 합해 유리수 조건을 적용하며 최종 a−b는 쓰지 않는다."
+  ]
+}

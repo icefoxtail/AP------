@@ -19,8 +19,7 @@
             },
             "hi": null
           }
-        ],
-        "hideSetLabel": true
+        ]
       },
       {
         "kind": "SET",
@@ -35,25 +34,38 @@
               "state": "OPEN"
             }
           }
-        ],
-        "hideSetLabel": true
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "-7",
+            "-5"
+          ]
+        }
       }
     ]
   },
-  "caption": "기존 문제 그림은 반드시 유지한다. 첫 행은 원본 f의 두 x절편과 위로 열린 모양에서 읽은 f>0, 둘째 행은 두 교점 사이에서 g가 더 높은 조건이다. 두 행의 공통부분에 속하는 정수를 찾되 최종 정수값은 표시하지 않는다.",
+  "caption": "기존 문제 그림은 반드시 유지한다. f>0은 x<−5 또는 x>1, f<g는−7<x<0. 공통−7<x<−5 안의 정수−6 하나를 표시한다. 정답−6.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "서답형 3.(단답형)<br>두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 부등식 $0\\lt f(x)\\lt g(x)$를 만족시키는 정수 $x$의 값을 구하시오. [4점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "source"
     },
     {
       "id": "method",
-      "condition": "원본SVG직접열람:f절편−5,1,위로열림;교점x−7,0,사이g위.공통(−7,−5),정수−6. 새그림은보조수직선만,SUPPLEMENT_ONLY_KEEP_ORIGINAL.",
-      "mappedTo": "independent-math"
+      "condition": "기존 문제 그림은 반드시 유지한다. f>0은 x<−5 또는 x>1, f<g는−7<x<0. 공통−7<x<−5 안의 정수−6 하나를 표시한다. 정답−6.",
+      "mappedTo": "solution"
+    },
+    {
+      "id": "gauge",
+      "condition": "표시창 보조점 좌표만 비표시하며 실제 근·극점·수치·최종답은 표시한다. 도형 원점과 점이름은 배치 자유도일 뿐 원문 정보가 아니므로 비표시 유지한다.",
+      "mappedTo": "display"
     }
   ],
   "newVisualInformation": [
-    "기존 문제 그림은 반드시 유지한다. 첫 행은 원본 f의 두 x절편과 위로 열린 모양에서 읽은 f>0, 둘째 행은 두 교점 사이에서 g가 더 높은 조건이다. 두 행의 공통부분에 속하는 정수를 찾되 최종 정수값은 표시하지 않는다."
+    "기존 문제 그림은 반드시 유지한다. f>0은 x<−5 또는 x>1, f<g는−7<x<0. 공통−7<x<−5 안의 정수−6 하나를 표시한다. 정답−6."
   ]
 }

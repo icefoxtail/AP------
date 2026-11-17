@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2-2*sqrt(3)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2+2*sqrt(3)",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-1",
+            "5"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "H(k)<0인 열린 구간 안의 정수−1,0,1,2,3,4,5를 표시한다. 합은14라 보기(다)의15는 거짓이고, 정답은(나)만이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2+2(2-k)x+12\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=6$일 때, 이차부등식의 해는 $x\\le2$ 또는 $x\\ge6$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $k\\le2-2\\sqrt3$ 또는 $k\\ge2+2\\sqrt3$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 15이다.</div>",
+      "mappedTo": "source"
+    }
+  ]
+}

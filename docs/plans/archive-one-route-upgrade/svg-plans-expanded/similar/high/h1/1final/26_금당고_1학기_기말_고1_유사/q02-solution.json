@@ -12,8 +12,7 @@
             },
             "hi": null
           }
-        ],
-        "hideSetLabel": true
+        ]
       },
       {
         "kind": "SET",
@@ -25,25 +24,32 @@
               "state": "OPEN"
             }
           }
-        ],
-        "hideSetLabel": true
+        ]
+      },
+      {
+        "kind": "RESULT"
       }
     ]
   },
-  "caption": "첫 부등식의 x>3과 둘째 부등식의 x<7을 서로 다른 행에 표시했다. 두 조건을 동시에 만족하는 부분을 찾고 경계의 열린 점을 구별한다. 최종 공통 구간 표기는 쓰지 않는다.",
+  "caption": "첫 행 x>3, 둘째 행 x<7의 공통 범위는3<x<7이다. 열린 끝점3과7은 포함하지 않는다. 정답⑤.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "연립부등식 $\\begin{cases}3x-4>5\\\\2x+5<19\\end{cases}$을 풀면? [4.5점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original question"
     },
     {
       "id": "method",
-      "condition": "3<x<7⑤. 두 원래 조건만 표시, 최종교집합행 없음.",
-      "mappedTo": "independent-math"
+      "condition": "첫 행 x>3, 둘째 행 x<7의 공통 범위는3<x<7이다. 열린 끝점3과7은 포함하지 않는다. 정답⑤.",
+      "mappedTo": "solution panels"
+    },
+    {
+      "id": "display",
+      "condition": "풀이의 실제 근·좌표·중간값·최종답을 표시한다. L/R은 표시창 끝점이라 좌표 라벨만 생략하며 Q12의 추상 좌표는 실제 거리값으로 제시하지 않는다.",
+      "mappedTo": "display policy"
     }
   ],
   "newVisualInformation": [
-    "첫 부등식의 x>3과 둘째 부등식의 x<7을 서로 다른 행에 표시했다. 두 조건을 동시에 만족하는 부분을 찾고 경계의 열린 점을 구별한다. 최종 공통 구간 표기는 쓰지 않는다."
+    "첫 행 x>3, 둘째 행 x<7의 공통 범위는3<x<7이다. 열린 끝점3과7은 포함하지 않는다. 정답⑤."
   ]
 }

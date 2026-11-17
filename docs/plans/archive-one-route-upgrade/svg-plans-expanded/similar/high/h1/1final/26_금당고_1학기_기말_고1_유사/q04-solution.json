@@ -35,38 +35,49 @@
         "x": "5",
         "y": "8",
         "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
       }
     ],
     "coordinateBand": {
       "hide": [
         "L",
-        "V",
         "R"
       ]
-    },
-    "axisTickValues": {
-      "x": [],
-      "y": []
     },
     "axisTitles": {
       "x": "x",
       "y": "H"
-    }
+    },
+    "formula": "x^2-x-12"
   },
-  "caption": "우변을 옮긴 H(x)=x²−x−12의 부호를 살핀다. 위로 열린 이차곡선이므로 두 영점 사이에서 음수가 된다. 원래 부등호가 엄격하므로 영점 자체는 제외한다. 최종 경계 수치와 해구간 표기는 쓰지 않는다.",
+  "caption": "H(x)=x²−x−12=(x+3)(x−4)는 두 근−3,4 사이에서 음수이다. 꼭짓점(1/2,−49/4)과 실제 영점을 표시한다. 정답−3<x<4.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "이차부등식 $x^2-12<x$를 풀면? [4.5점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original question"
     },
     {
       "id": "method",
-      "condition": "(x+3)(x−4)<0 ->−3<x<4④. 최종영점좌표미표시.",
-      "mappedTo": "independent-math"
+      "condition": "H(x)=x²−x−12=(x+3)(x−4)는 두 근−3,4 사이에서 음수이다. 꼭짓점(1/2,−49/4)과 실제 영점을 표시한다. 정답−3<x<4.",
+      "mappedTo": "solution panels"
+    },
+    {
+      "id": "display",
+      "condition": "풀이의 실제 근·좌표·중간값·최종답을 표시한다. L/R은 표시창 끝점이라 좌표 라벨만 생략하며 Q12의 추상 좌표는 실제 거리값으로 제시하지 않는다.",
+      "mappedTo": "display policy"
     }
   ],
   "newVisualInformation": [
-    "우변을 옮긴 H(x)=x²−x−12의 부호를 살핀다. 위로 열린 이차곡선이므로 두 영점 사이에서 음수가 된다. 원래 부등호가 엄격하므로 영점 자체는 제외한다. 최종 경계 수치와 해구간 표기는 쓰지 않는다."
+    "H(x)=x²−x−12=(x+3)(x−4)는 두 근−3,4 사이에서 음수이다. 꼭짓점(1/2,−49/4)과 실제 영점을 표시한다. 정답−3<x<4."
   ]
 }

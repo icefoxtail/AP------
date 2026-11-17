@@ -12,8 +12,7 @@
               "state": "CLOSED"
             }
           }
-        ],
-        "hideSetLabel": true
+        ]
       },
       {
         "kind": "SET",
@@ -25,25 +24,33 @@
             },
             "hi": null
           }
-        ],
-        "hideSetLabel": true
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "2",
+            "9"
+          ]
+        }
       }
     ]
   },
-  "caption": "x≤9와 x>2를 각각의 수직선에 표시했다. 두 행에 공통으로 포함되는 정수를 세고 열린 끝점과 닫힌 끝점을 구별한다. 최종 정수 개수는 쓰지 않는다.",
+  "caption": "x≤9와x>2의 공통 구간은2<x≤9이다. 정수점3,4,5,6,7,8,9를 표시하여 정답7개를 센다.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "연립부등식 $\\begin{cases}x+3\\le12\\\\2x-1>3\\end{cases}$을 만족하는 정수 $x$의 개수는? [4.2점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original"
     },
     {
       "id": "method",
-      "condition": "2<x≤9 정수3..9 총7⑤. 원래개별조건만표시.",
-      "mappedTo": "independent-math"
+      "condition": "x≤9와x>2의 공통 구간은2<x≤9이다. 정수점3,4,5,6,7,8,9를 표시하여 정답7개를 센다.",
+      "mappedTo": "solution"
     }
   ],
   "newVisualInformation": [
-    "x≤9와 x>2를 각각의 수직선에 표시했다. 두 행에 공통으로 포함되는 정수를 세고 열린 끝점과 닫힌 끝점을 구별한다. 최종 정수 개수는 쓰지 않는다."
+    "x≤9와x>2의 공통 구간은2<x≤9이다. 정수점3,4,5,6,7,8,9를 표시하여 정답7개를 센다."
   ]
 }

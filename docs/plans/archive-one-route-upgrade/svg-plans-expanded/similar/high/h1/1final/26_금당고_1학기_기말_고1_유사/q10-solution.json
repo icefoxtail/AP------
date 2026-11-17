@@ -16,25 +16,35 @@
             }
           }
         ],
-        "hideSetLabel": true
+        "integerPoints": {
+          "range": [
+            "11",
+            "13"
+          ]
+        }
       }
     ],
     "variable": "n"
   },
-  "caption": "가장 작은 자연수를 n이라 하면 합은4n+6이다. 50<4n+6<58을 정리한 열린 구간을 표시했다. 내부 자연수를 찾은 뒤 가장 큰 수 n+3으로 돌아가며 최종 큰 수는 쓰지 않는다.",
+  "caption": "가장 작은 자연수 n의 합4n+6에50<4n+6<58을 적용하면11<n<13이다. 내부 정수점은 n=12 하나이며 가장 큰 수는 n+3이다. 정답15.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "연속하는 네 자연수의 합이 50보다 크고 58보다 작을 때, 네 자연수 중 가장 큰 자연수는? [4.7점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "original question"
     },
     {
       "id": "method",
-      "condition": "11<n<13 ->n12,가장큰15②.",
-      "mappedTo": "independent-math"
+      "condition": "가장 작은 자연수 n의 합4n+6에50<4n+6<58을 적용하면11<n<13이다. 내부 정수점은 n=12 하나이며 가장 큰 수는 n+3이다. 정답15.",
+      "mappedTo": "solution panels"
+    },
+    {
+      "id": "display",
+      "condition": "풀이의 실제 근·좌표·중간값·최종답을 표시한다. L/R은 표시창 끝점이라 좌표 라벨만 생략하며 Q12의 추상 좌표는 실제 거리값으로 제시하지 않는다.",
+      "mappedTo": "display policy"
     }
   ],
   "newVisualInformation": [
-    "가장 작은 자연수를 n이라 하면 합은4n+6이다. 50<4n+6<58을 정리한 열린 구간을 표시했다. 내부 자연수를 찾은 뒤 가장 큰 수 n+3으로 돌아가며 최종 큰 수는 쓰지 않는다."
+    "가장 작은 자연수 n의 합4n+6에50<4n+6<58을 적용하면11<n<13이다. 내부 정수점은 n=12 하나이며 가장 큰 수는 n+3이다. 정답15."
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-4",
+            "3"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "t=a²+a≤12에서(a+4)(a−3)≤0, 즉−4≤a≤3이다. 표시한 정수점8개가 답이다. 경계 a=−4,3도 t=12여서 첫 식과 공통해가 생기지 않으므로 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases}x^2-10x-24>0\\\\x^2+a^2+a<(a^2+a+1)x\\end{cases}$가 해를 갖지 않도록 하는 정수 $a$의 개수는? [4.9점]",
+      "mappedTo": "source"
+    }
+  ]
+}

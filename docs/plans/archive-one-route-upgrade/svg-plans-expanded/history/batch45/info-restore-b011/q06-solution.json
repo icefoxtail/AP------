@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "−9≤2x+3≤9를 정리하면−6≤x≤3. 양끝을 포함한 정수를 세면 정답10개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|2x+3|\\le9$를 만족시키는 정수 $x$의 개수는? [4.2점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "−9≤2x+3≤9를 정리하면−6≤x≤3. 양끝을 포함한 정수를 세면 정답10개.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "−9≤2x+3≤9를 정리하면−6≤x≤3. 양끝을 포함한 정수를 세면 정답10개."
+  ]
+}

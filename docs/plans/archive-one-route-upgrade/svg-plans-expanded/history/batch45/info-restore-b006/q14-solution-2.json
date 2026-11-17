@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "가로축은 t이다. 첫 부등식의 해는 두 바깥쪽 반직선이다. t=a²+a로 두면 둘째 식은 (x−1)(x−t)<0이므로1과 t 사이이다. 공통 해가 없으려면 움직이는 t가 닫힌 가운데 범위에 있어야 하며, t=1은 둘째 식 자체의 해가 없다. 최종 정수 a의 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases}x^2-10x-24>0\\\\x^2+a^2+a<(a^2+a+1)x\\end{cases}$가 해를 갖지 않도록 하는 정수 $a$의 개수는? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "−2≤t≤12,t=a²+a≥−1/4 ->a²+a≤12 ->−4≤a≤3,8개②. 경계t12허용.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 t이다. 첫 부등식의 해는 두 바깥쪽 반직선이다. t=a²+a로 두면 둘째 식은 (x−1)(x−t)<0이므로1과 t 사이이다. 공통 해가 없으려면 움직이는 t가 닫힌 가운데 범위에 있어야 하며, t=1은 둘째 식 자체의 해가 없다. 최종 정수 a의 개수는 쓰지 않는다."
+  ]
+}

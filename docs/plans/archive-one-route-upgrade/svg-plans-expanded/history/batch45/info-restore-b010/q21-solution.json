@@ -1,0 +1,80 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-5",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "a"
+  },
+  "caption": "첫 행은 이차 인수 x²+10x+a²가 서로 다른 실근을 갖는 판별식 조건이다. 둘째·셋째 행은 고정근 x=a가 그 두 근과 겹치지 않도록 a≠−5, a≠0을 각각 나타낸다. 각 행은 매개변수 a에 대한 조건이며 세 행의 공통 부분을 직접 비교한다. 끝점−5는 첫 행에서도 제외되어 있고0은 별도의 중복근 배제점이다. 정답: −5<a<5에서 중복근 a=0을 제외하면 (−5,0)∪(0,5).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형1.<br>$x$에 대한 방정식 $x^3+(10-a)x^2+(a^2-10a)x-a^3=0$이 서로 다른 세 실근을 갖기 위한 실수 $a$의 값의 범위를 구하고, 그 과정을 서술하시오. [5.0점, 부분점수 있음]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 행은 이차 인수 x²+10x+a²가 서로 다른 실근을 갖는 판별식 조건이다. 둘째·셋째 행은 고정근 x=a가 그 두 근과 겹치지 않도록 a≠−5, a≠0을 각각 나타낸다. 각 행은 매개변수 a에 대한 조건이며 세 행의 공통 부분을 직접 비교한다. 끝점−5는 첫 행에서도 제외되어 있고0은 별도의 중복근 배제점이다. 정답: −5<a<5에서 중복근 a=0을 제외하면 (−5,0)∪(0,5).",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 행은 이차 인수 x²+10x+a²가 서로 다른 실근을 갖는 판별식 조건이다. 둘째·셋째 행은 고정근 x=a가 그 두 근과 겹치지 않도록 a≠−5, a≠0을 각각 나타낸다. 각 행은 매개변수 a에 대한 조건이며 세 행의 공통 부분을 직접 비교한다. 끝점−5는 첫 행에서도 제외되어 있고0은 별도의 중복근 배제점이다. 정답: −5<a<5에서 중복근 a=0을 제외하면 (−5,0)∪(0,5)."
+  ]
+}
