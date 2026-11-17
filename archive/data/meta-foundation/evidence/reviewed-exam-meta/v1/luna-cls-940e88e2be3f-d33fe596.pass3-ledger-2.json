@@ -1,0 +1,94 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T13:50:48+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x²+4x+3=(x+1)(x+3), 약분하면 x+3이고 x→−1에서 극한은 2다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "Sₙ=3n²−4n+2에서 a₁=S₁=1, a₁₁=S₁₁−S₁₀=321−262=59라 합은60이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "hold":  "rpmPath.l4: H2-수학II.json에 이 수열 합 문항을 정확히 분류할 허용 l4 행이 없어 보류함"
+                  },
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(x)=8x−5이므로 x=1의 미분계수는 3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "도함수",
+                                      "l4":  "도함수 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "S₉−S₅와 S₆−S₂는 네 항씩 세 칸 이동한 합이라 비는 r³=2, a₁₀=7(r³)³=56이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "hold":  "rpmPath.midUnit, rpmPath.l3, rpmPath.l4: H2-수학II.json에 수열의 조건 결정 문제를 분류할 행이 없어 세 칸을 보류함"
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "y=s일 때 곡선의 x=s/(s−√2)이므로 A,B의 좌표 차로 정리한 AH/BH는 t→2+에서 3√2−4, 즉 a+b=−1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "직선과 두 조각의 교점 수는 m=2,4에서 바뀌므로 연속 곱을 위해 h(2)=h(4)=0이고 h=(x−2)(x−4), h(7)=15다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "구간별 함수"
+                                  }
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x→1+에서 f(x)g(x)=(2−x)g(x)/(x−1)가 0으로 가려면 g에 (x−1)² 인수가 있어 g=2(x−1)²이고 g(4)=18이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "구간별 함수"
+                                  }
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "0\u003ck\u003c1에서 세 평균변화율의 같음은 2k=1을 주어 k=1/2,a=−3/2이고 f(−1)=−1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "미분계수와 도함수",
+                                      "l3":  "미분계수",
+                                      "l4":  "평균변화율·순간변화율"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "무한대 극한에서 f=x³−2x²+bx+c, x→3에서 f(3)=0,f′(3)=4이므로 b=−11,c=24다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "미정계수"
+                                  }
+                  }
+              ]
+}
