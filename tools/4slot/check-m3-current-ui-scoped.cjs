@@ -83,6 +83,12 @@ const CONFIG={
       "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
       "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
       "bytes": 8639
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "gitBlobSha1": "67a469c022bf3e04049723098d659b025eaa9c88",
+      "sha256": "9efe04730bf2e2d54081a9c255c0d1d6e6de6926826cddf7db28e36b8658da46",
+      "bytes": 37364
     }
   ],
   "groups": [
@@ -292,6 +298,109 @@ const CONFIG={
     "gitBlobSha1": "0874eaad4c591ab35ad0996c1e445ade67f98c61",
     "sha256": "1b25e5e592d05428e6818d63f27f0f18c20940524622bd3928e14623e64fad6a",
     "bytes": 6568
+  },
+  "focusedReuse": {
+    "report": {
+      "path": "docs/operations/m3-current-ui-source49-26fc-20261117/run-44052082242/scoped-report.json",
+      "gitBlobSha1": "55b4d012fb9a3c828169fdcc252501947cdf4c2c",
+      "sha256": "19a81e954085c7e993e88afb1269cd324c3d8b2e2dead1608300480f888384da",
+      "bytes": 9581
+    },
+    "runId": "44052082242",
+    "head": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+    "gate": {
+      "commit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+      "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+      "gitBlobSha1": "53fb919e8f6112394a931bca73b61d148c2a0a6b",
+      "sha256": "e6b4b19dede67ebf432b2bbfc84c2fe62a084ffdb0974c596f84a6a4183a1273",
+      "bytes": 53316
+    },
+    "focusedGroups": [
+      {
+        "name": "Q5_SHADOW_READONLY61",
+        "observed": 61,
+        "reuse": 61
+      },
+      {
+        "name": "Q5_FOCUSED44_AND_ORIGINAL_NATIVE1",
+        "observed": 45,
+        "reuse": 44
+      },
+      {
+        "name": "Q16_FOCUSED43_AND_EXISTING_AUTHORITY1",
+        "observed": 44,
+        "reuse": 44
+      }
+    ],
+    "allowedCodeDeltas": [
+      {
+        "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+        "before": {
+          "gitBlobSha1": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+          "sha256": "b9485fb7db68ea6f15b9e2b4d0f7c0567c9457faa5ab82dfceba903e1a5a6c0b",
+          "bytes": 65666
+        },
+        "after": {
+          "gitBlobSha1": "7a2cc6c166deef9d2664f8d4ff29835c3854ea3d",
+          "sha256": "c1fcd1eacfcb5a1737396bbf3433028a60af6346ef4fe24e0b3d2c04e4615079",
+          "bytes": 68629
+        }
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "before": {
+          "gitBlobSha1": "02549be443e029f094ae9e0213865b91063d6930",
+          "sha256": "324d1d6bc33f4ad13928f80cb59eab1270c946457e76f2dc494e6fae6c7ed89b",
+          "bytes": 36945
+        },
+        "after": {
+          "gitBlobSha1": "67a469c022bf3e04049723098d659b025eaa9c88",
+          "sha256": "9efe04730bf2e2d54081a9c255c0d1d6e6de6926826cddf7db28e36b8658da46",
+          "bytes": 37364
+        }
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2-native-rpm-course.mjs",
+        "before": {
+          "gitBlobSha1": "df188f7e3666cfa71c7ec9caaed21ee138734bcf",
+          "sha256": "2d49c620ea3387f8779d198c351af38f3f4dc962a3f9fad6303c952f37bcef0d",
+          "bytes": 41786
+        },
+        "after": {
+          "gitBlobSha1": "8a5fce2336624f24866ba32133a92aabdc25b52e",
+          "sha256": "f4a4581b14aa3c370fc288184b7876e7493a2340fa1ce570365572f6cac8d09d",
+          "bytes": 42180
+        }
+      }
+    ],
+    "codeDeltaIndependentReview": {
+      "gitBlobSha1": "be639bd37a7f8e5a06a1ef2cf4456610549bfaf6",
+      "sha256": "a5a854dbb106a72331f78c462d5de4b7d07b6ecc87125eb915adbc2694540132",
+      "bytes": 6798
+    }
+  },
+  "q5OriginalTypedAncestorLiveRefs": [
+    {
+      "commit": "50d001f8ab5a9a4dbfc749edb30916fb15c8dc0a",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.json",
+      "gitBlobSha1": "e01550ad3fde0f4970467a9386c3a8c06bd6f12c",
+      "sha256": "c44a99b1b1b09bfdde74d46819115d1369fb9bbbc7f602c79477375450848be3",
+      "bytes": 29781
+    },
+    {
+      "commit": "50d001f8ab5a9a4dbfc749edb30916fb15c8dc0a",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.source-review-binding.json",
+      "gitBlobSha1": "119bcc32412c805aa144700a4652be195c650092",
+      "sha256": "de13eeb7e26812fdf3970cf15cb54c49b8f0e39f53884ac5808af963ea195126",
+      "bytes": 15753
+    }
+  ],
+  "q5OriginalTypedSourceRef": {
+    "commit": "d422885a338e06169739815f0f717d7d035ef7a1",
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "gitBlobSha1": "533c93f017e1640ba9764925b2f164aaeaae9bb7",
+    "sha256": "cc6c9ac3347716da154d24321207395cc24539b34a6b99087ae2e5866e087c27",
+    "bytes": 66316
   },
   "generatedPaths": [
     "archive/data/question_metadata.json",
@@ -683,6 +792,15 @@ function run(root,output){
   // Follow only the exact issued Q5 packet and explicit Native provenance; global
   // runtime/canonical documents and output inventories never enter this queue.
   for(const rel of[Q5.REQUEST_WITNESS,Q5.RECEIPT,Q5.SOURCE_BINDING])hydrateMetadataDocument(rel);
+  // Native's original typed ancestor requires this fixed live pair as well as
+  // its immutable source object. No historical source is staged as current.
+  for(const ref of CONFIG.q5OriginalTypedAncestorLiveRefs){
+   const bytes=live(ref);queueDoc(bytes,ref,true);
+  }
+  immutable(CONFIG.q5OriginalTypedSourceRef);
+  report.originalTypedAncestorInputs={liveRefs:CONFIG.q5OriginalTypedAncestorLiveRefs,
+   immutableSourceRef:CONFIG.q5OriginalTypedSourceRef,liveDocuments:2,
+   historicalSourceCopiedAsCurrent:false,originalNativeExecuted:false};
   copyPrefix('archive/data/meta-foundation/canonical');
   copyPrefix('archive/data/meta-foundation/compiled');
   copyPrefix('archive/data/meta-foundation/runtime',p=>p.endsWith('.json'));
@@ -734,11 +852,100 @@ function run(root,output){
    report.focused.push(item);
    need(!child.error&&child.status===0&&item.tests===expected&&item.pass===expected&&item.fail===0,'FOCUSED_'+name);
   }
-  command('Q5_SHADOW_READONLY61',['--test','tests/archive-pr-q5-current-ui-shadow.test.mjs'],61);
-  command('Q5_FOCUSED44_AND_ORIGINAL_NATIVE1',['tests/archive-m3-e052-q5-current-ui-reuse.test.mjs','--actual-native'],45);
-  command('Q16_FOCUSED43_AND_EXISTING_AUTHORITY1',['tests/archive-m3s2-current-ui-reuse.test.cjs','--actual-authority'],44);
+  // The original run passed all 150 focused cases before its sparse builder
+  // refused Q5. Reuse only the named 149; do not turn the failed gate into PASS.
+  const reuseSpec=CONFIG.focusedReuse;
+  const priorRaw=current(reuseSpec.report.path);pin(priorRaw,reuseSpec.report,'FOCUSED_REUSE_REPORT');
+  const prior=json(priorRaw);immutable(reuseSpec.gate);
+  need(prior.schemaVersion===CONFIG.schemaVersion&&prior.status==='FAIL'&&
+   prior.phase==='OFFICIAL_BUILDER_SOURCE49'&&prior.execution?.provider==='GITHUB_ACTIONS'&&
+   prior.execution.repository===CONFIG.repository&&prior.execution.ref===CONFIG.branch&&
+   prior.execution.eventName==='push'&&prior.execution.checkoutCommit===reuseSpec.head&&
+   prior.execution.eventCommit===reuseSpec.head&&prior.execution.runId===reuseSpec.runId&&
+   prior.execution.runAttempt===1&&prior.execution.job==='m3-current-authority'&&
+   prior.rootHeadUnchanged===true&&prior.rootStatusUnchanged===true&&
+   prior.sourceQuestionCount===49&&prior.selectedQuestionCount===2&&prior.outsideQuestionCount===47,
+   'FOCUSED_REUSE_PROVENANCE');
+  need(prior.focused?.length===3&&reuseSpec.focusedGroups.every((spec,i)=>{
+   const item=prior.focused[i];
+   return item.name===spec.name&&item.exitCode===0&&item.tests===spec.observed&&
+    item.pass===spec.observed&&item.fail===0&&item.error===null&&
+    SHA.test(item.stdoutSha256)&&SHA.test(item.stderrSha256);
+  }),'FOCUSED_REUSE_RESULT');
+  need(prior.actualBaseline.selectedWholeStateSha256===report.actualBaseline.selectedWholeStateSha256&&
+   prior.actualBaseline.outsideWholeStateSha256===report.actualBaseline.outsideWholeStateSha256,
+   'FOCUSED_REUSE_SOURCE49_STATE');
+  // exam-items is a direct dependency of the original Q5 resolver. Native's
+  // complete code directory and its data/font/asset closure were read above.
+  current('tools/4slot/exam-items.cjs');
+  const reuseInputs=[...currentInputs.values()].filter(x=>x.path!==reuseSpec.report.path)
+   .sort((a,b)=>a.path.localeCompare(b.path,'en'));
+  const entries=git(root,['ls-tree','-z',reuseSpec.head,'--',...reuseInputs.map(x=>x.path)])
+   .toString().split('\0').filter(Boolean),priorFiles=new Map();
+  for(const entry of entries){
+   const m=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)$/.exec(entry);
+   need(m&&!priorFiles.has(m[3]),'FOCUSED_REUSE_TREE');priorFiles.set(m[3],m[2]);
+  }
+  const codeDeltas=new Map(reuseSpec.allowedCodeDeltas.map(x=>[x.path,x])),changed=[];
+  for(const actual of reuseInputs){
+   const oldBlob=priorFiles.get(actual.path),delta=codeDeltas.get(actual.path);
+   if(delta){
+    need(oldBlob===delta.before.gitBlobSha1&&actual.gitBlobSha1===delta.after.gitBlobSha1&&
+     actual.sha256===delta.after.sha256&&actual.bytes===delta.after.bytes,'FOCUSED_REUSE_CLOSED_M2_DELTA');
+    changed.push({path:actual.path,before:delta.before,after:delta.after});
+   }else need(oldBlob===actual.gitBlobSha1,'FOCUSED_REUSE_INPUT_DRIFT');
+  }
+  need(changed.length===3&&codeDeltas.size===3,'FOCUSED_REUSE_CLOSED_M2_INVENTORY');
+  report.focusedReuse={status:'REUSED_FROM_RUN_44052082242',report:reuseSpec.report,
+   originalExecution:prior.execution,originalGateStatus:prior.status,originalGateFailure:prior.error,
+   originalObservedFocusedTests:150,reusedTests:149,originalQ5Native1CountedAsFresh:false,
+   currentInputCount:reuseInputs.length,unchangedInputCount:reuseInputs.length-changed.length,
+   inputWholeSha256:sha(stable(reuseInputs)),allowedCodeDeltas:changed,
+   codeDeltaIndependentReview:reuseSpec.codeDeltaIndependentReview,
+   codeDeltaScope:'Closed M2 private continuation only; ordinary undefined-context paths preserve original guards.',
+   currentSource49StateExact:true};
+  report.focused=reuseSpec.focusedGroups.map((spec,i)=>({
+   name:spec.name,status:'REUSED_FROM_RUN_44052082242',reusedTests:spec.reuse,reusedPass:spec.reuse,
+   freshTests:0,sourceObservedGroup:prior.focused[i],sourceReport:reuseSpec.report,
+   sourceRunId:reuseSpec.runId,subset:spec.observed===45?'metadata44 only; original Native1 is not reused as a new execution':'whole original group'
+  }));
+  // Run exactly the original dispatcher CLI against the newly authenticated
+  // private fixture. The existing test modules and original Native stay intact.
+  const nativeArgs=[path.join(root,'tools/4slot/m3-e052-q5-complete-given-continuity.mjs'),fixture,Q5.FILE];
+  const nativeChild=spawnSync(process.execPath,nativeArgs,{cwd:root,encoding:'utf8',timeout:240000,
+   maxBuffer:8*1024*1024,env:{...process.env,NODE_OPTIONS:'--max-old-space-size=6144'}});
+  const nativeStdout=String(nativeChild.stdout||''),nativeStderr=String(nativeChild.stderr||'');
+  report.privateOriginalNative={status:'RUNNING',executions:1,rootKind:'AUTHENTICATED_PRIVATE_FIXTURE',
+   cli:'tools/4slot/m3-e052-q5-complete-given-continuity.mjs',exitCode:nativeChild.status,
+   stdoutSha256:sha(nativeStdout),stderrSha256:sha(nativeStderr),
+   error:nativeChild.error?safeError(nativeChild.error):null,
+   stderrGuardTokens:[...new Set(nativeStderr.match(/\b(?:M3_Q5_VECTOR_[A-Z0-9_]+|ENOENT|ERR_[A-Z0-9_]+)\b/g)||[])].slice(0,16)};
+  need(!nativeChild.error&&nativeChild.status===0,'PRIVATE_ORIGINAL_NATIVE_COMMAND');
+  const nativeResult=json(Buffer.from(nativeStdout));
+  need(nativeResult.status==='PASS'&&nativeResult.questionUid===Q5.UID&&nativeResult.sourceOrdinal===5&&
+   nativeResult.existingVectorCount===25&&nativeResult.outside24WholeQuestionsUnchanged===true&&
+   nativeResult.newFourSlotApprovals===0&&nativeResult.newMathematicalQa===false&&nativeResult.newMetadataApprovals===0&&
+   Array.isArray(nativeResult.observed),'PRIVATE_ORIGINAL_NATIVE_RESULT');
+  const nativeSeen=new Map();
+  for(const entry of nativeResult.observed){
+   need(Array.isArray(entry)&&entry.length===2&&typeof entry[0]==='string'&&SHA.test(entry[1])&&
+    !nativeSeen.has(entry[0]),'PRIVATE_ORIGINAL_NATIVE_OBSERVED');
+   need(sha(fs.readFileSync(file(fixture,entry[0])))===entry[1],'PRIVATE_ORIGINAL_NATIVE_INPUT_CHANGED');
+   nativeSeen.set(entry[0],entry[1]);
+  }
+  for(const rel of Q5.CURRENT_UI_PATHS)need(nativeSeen.has(rel),'PRIVATE_ORIGINAL_NATIVE_UI_UNOBSERVED');
+  const nativeTechnical=json(fs.readFileSync(file(fixture,CONFIG.q5Refs.technicalRef.path)));
+  for(const ref of[...nativeTechnical.servedFiles,...nativeTechnical.mirroredAssets,...nativeTechnical.studentFontResources])
+   need(nativeSeen.has(ref.path),'PRIVATE_ORIGINAL_NATIVE_RENDER_UNOBSERVED');
+  Object.assign(report.privateOriginalNative,{status:'PASS',questionUid:Q5.UID,sourceOrdinal:5,
+   existingVectorCount:25,outside24WholeQuestionsUnchanged:true,observedInputs:nativeSeen.size,
+   observedWholeSha256:sha(stable([...nativeSeen].sort((a,b)=>a[0].localeCompare(b[0],'en'))))});
+  report.focusedSummary={reusedTests:149,freshFocusedTests:0,freshPrivateOriginalNativeExecutions:1,
+   actualCurrentBuilderAndConsumer:'NEXT_PHASE'};
   report.authority={q5OriginalNativeGivenUiAndAncestor:true,q5ExistingVectorCount:25,q5Outside24WholeUnchanged:true,
-   q16OriginalVectorCount:24,q16SelectedMdIdAndLiveUi:true,source:'actual optional resolver tests, not metadata helper alone',
+   q5Observation:'FRESH_ORIGINAL_CLI_ON_AUTHENTICATED_PRIVATE_FIXTURE',
+   q16OriginalVectorCount:24,q16SelectedMdIdAndLiveUi:true,q16Observation:'REUSED_FROM_RUN_44052082242',
+   source:'149 authenticated prior cases plus one fresh original Q5 resolver; current scoped builder follows',
    newNativeApprovals:0,newFourSlotVectors:0};
 
   checkpoint=[...fixtureInputs.values()].filter(x=>x.path!==INDEX);

@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "archive-m3-current-ui-source49-scoped-gate-v1",
+  "status": "FAIL",
+  "phase": "OFFICIAL_BUILDER_SOURCE49",
+  "sourceQuestionCount": 49,
+  "selectedQuestionCount": 2,
+  "outsideQuestionCount": 47,
+  "newMathematicalQa": 0,
+  "newSemanticApprovals": 0,
+  "newFourSlotVectors": 0,
+  "newNativeApprovals": 0,
+  "globalBuilderRun": false,
+  "mainWrites": 0,
+  "sourceWrites": 0,
+  "trackedCheckoutWrites": 0,
+  "ChromeRuns": 0,
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "repository": "icefoxtail/AP------",
+    "eventName": "push",
+    "ref": "refs/heads/ops/m3-current-ui-registration-26fc-20261117",
+    "checkoutCommit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+    "eventCommit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+    "runId": "44052082242",
+    "runAttempt": 1,
+    "job": "m3-current-authority",
+    "integrationAncestor": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "visualAncestor": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2"
+  },
+  "actualBaseline": {
+    "index": {
+      "path": "archive/data/item-4slot-index.json",
+      "gitBlobSha1": "4716f1bc50d0853a684f7da4b518159c4e89a886",
+      "sha256": "473c6594a0e3591290d1da927ea1d3b6011f22f1510655548f784c7ad85c7562",
+      "bytes": 20230255
+    },
+    "selectedRegistered": 0,
+    "selectedPending": 2,
+    "outsideRegistered": 47,
+    "outsidePending": 0,
+    "outsideWholeStateSha256": "35e73740d7ed9e9e194d83368a82a9d1c5bfa500a3eb76ca067fedeae69a89c9",
+    "selectedWholeStateSha256": "3126234a533b88a5497507289f6225c7a232a38f416f43ceb2a7598ae1776892"
+  },
+  "originalNativeSourceHydration": {
+    "applicationRef": {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/application-basis-v1.json",
+      "gitBlobSha1": "f2a96c282b365405c05ae7ad78c04c710ed635bc",
+      "sha256": "5c1cca89666988ba8e5f500c1eddac525d6dcc4f5ad01f17eb4c6e7bbf7a025a",
+      "bytes": 9022
+    },
+    "nativeReviewRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+      "gitBlobSha1": "5b7b2a3ff2fc8322e2e16b056479e71ea37a9bfa",
+      "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a",
+      "bytes": 205465
+    },
+    "sourceRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "2011de7254193dddb99c157992d8e22f2a435d1c",
+      "sha256": "38ca8a9b20b389181c3b7d7f67d436211f6e602aa7f5d237589a91ed2a8a9261",
+      "bytes": 57523
+    },
+    "contract": "EXACT_APPLICATION_NATIVE_REVIEW_COMMIT",
+    "originalNativeAuthorityExecuted": false
+  },
+  "authenticatedFourFieldReferences": [
+    {
+      "owner": {
+        "commit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+        "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+        "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+        "bytes": 6031
+      },
+      "pointer": "$.beforeSourceRef",
+      "reference": {
+        "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "gitBlobSha1": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+        "sha256": "ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9",
+        "bytes": 66266
+      }
+    },
+    {
+      "owner": {
+        "commit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+        "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+        "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+        "bytes": 6031
+      },
+      "pointer": "$.actualPriorReceipts[0].inputRef",
+      "reference": {
+        "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+        "path": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json",
+        "gitBlobSha1": "2b80a243176fe3168f360ce72572184fdcfd0641",
+        "sha256": "79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338",
+        "bytes": 2257
+      }
+    },
+    {
+      "owner": {
+        "commit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+        "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+        "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+        "bytes": 6031
+      },
+      "pointer": "$.actualPriorReceipts[0].receiptRef",
+      "reference": {
+        "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-current-source-20261116.json",
+        "gitBlobSha1": "4405ebae958741e97c4e24639655780ab1ff8441",
+        "sha256": "0148fc582202473ca7a5d78d1f9c75f259aab7ab611192d5cb70a7b3e5e5c325",
+        "bytes": 15777
+      }
+    }
+  ],
+  "closure": {
+    "currentFileCount": 513,
+    "immutableRefCount": 403,
+    "declaredMetadataDocuments": 36,
+    "scope": "source2/current canonical+runtime metadata; fixed original Q5 receipt/binding and exact UI refs; no outputDigests recursion"
+  },
+  "focused": [
+    {
+      "name": "Q5_SHADOW_READONLY61",
+      "exitCode": 0,
+      "tests": 61,
+      "pass": 61,
+      "fail": 0,
+      "stdoutSha256": "aa730ce016bf3f8f3d6290afc52af8240345cca9cfb043ad60fca016c46da55c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "name": "Q5_FOCUSED44_AND_ORIGINAL_NATIVE1",
+      "exitCode": 0,
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "stdoutSha256": "a9e9efb84e4cf9b56a2e9dfa599d5e02449379a70a48cf89f1c872d33168045b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "name": "Q16_FOCUSED43_AND_EXISTING_AUTHORITY1",
+      "exitCode": 0,
+      "tests": 44,
+      "pass": 44,
+      "fail": 0,
+      "stdoutSha256": "e748344e19437eb8e92d2942e178b2323f81fec2abf5f2acf513cab3df99ba6f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    }
+  ],
+  "authority": {
+    "q5OriginalNativeGivenUiAndAncestor": true,
+    "q5ExistingVectorCount": 25,
+    "q5Outside24WholeUnchanged": true,
+    "q16OriginalVectorCount": 24,
+    "q16SelectedMdIdAndLiveUi": true,
+    "source": "actual optional resolver tests, not metadata helper alone",
+    "newNativeApprovals": 0,
+    "newFourSlotVectors": 0
+  },
+  "lastOutsideCheck": {
+    "phase": "OFFICIAL_BUILDER_SOURCE49",
+    "expectedSha256": "35e73740d7ed9e9e194d83368a82a9d1c5bfa500a3eb76ca067fedeae69a89c9",
+    "observedSha256": "35e73740d7ed9e9e194d83368a82a9d1c5bfa500a3eb76ca067fedeae69a89c9",
+    "changed": []
+  },
+  "before": {
+    "counts": {
+      "files": 2,
+      "items": 49,
+      "registered": 47,
+      "pending": 2,
+      "withCandidates": 9,
+      "identityFingerprintHistorical": 22
+    },
+    "selected": [
+      {
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+        "sourceOrdinal": 5,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M3_Q5_VECTOR_ISSUED_PROOF_REJECTED",
+            "sha256": "1609dc5cb84dc900174ff21859247e3d15c5b4828b9c38b1954985af0b40901e"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+        "sourceOrdinal": 16,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M3S2_LAYOUT_UI_PRODUCER_REF",
+            "sha256": "6f58793e06fe2390c56032891b2b60c178aa6d15d8af33dede8f0020709a6e26"
+          }
+        ]
+      }
+    ],
+    "outsideWholeStateSha256": "35e73740d7ed9e9e194d83368a82a9d1c5bfa500a3eb76ca067fedeae69a89c9"
+  },
+  "after": {
+    "counts": {
+      "files": 2,
+      "items": 49,
+      "registered": 48,
+      "pending": 1,
+      "withCandidates": 9,
+      "identityFingerprintHistorical": 23
+    },
+    "selected": [
+      {
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+        "sourceOrdinal": 5,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M3_Q5_VECTOR_ISSUED_PROOF_REJECTED",
+            "sha256": "1609dc5cb84dc900174ff21859247e3d15c5b4828b9c38b1954985af0b40901e"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+        "sourceOrdinal": 16,
+        "registered": true,
+        "recordSha256": "baaf220e5bb509adbf7337e24dd67095867c1d34ebfb49bc431347406bca40eb",
+        "pending": []
+      }
+    ]
+  },
+  "error": {
+    "code": "M3_SOURCE49_EXACT_TWO_RECOVERED",
+    "sha256": "30df7b0025cdfcb779fb2ad4de38282fc710e0e1303edae25bfa6c4fd4ea2172"
+  },
+  "actualMainRegistration": "NOT_PERFORMED",
+  "rootHeadUnchanged": true,
+  "rootStatusUnchanged": true,
+  "currentInputCount": 513,
+  "immutableRefCount": 403
+}
