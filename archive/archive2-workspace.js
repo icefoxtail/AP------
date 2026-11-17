@@ -3535,12 +3535,9 @@
       : state.saveError && saveResultCurrent
         ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}</div>`
         : ""; // 저장했다는 안내는 위의 "마지막 저장본"이 이미 말한다(같은 문장을 두 곳에 쓰지 않는다).
-    const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
-      ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
-      : "";
     // 저장 결과를 모를 때는 위 복구 영역의 버튼(저장 결과 확인·출력·백업)만 쓴다.
     if (state.saveResultState === "RESULT_UNKNOWN") return `<div class="cz-finish" data-cz-finish>${savedResult}</div>`;
-    return `<div class="cz-finish" data-cz-finish>${saveStaleNotice}${savedResult}<div class="cz-actions" role="group" aria-label="마무리">${buttons.print}${buttons.save}${buttons.assign}<details class="cz-more cz-finish-more"><summary>더보기</summary><div class="cz-more-menu">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div></details></div></div>`;
+    return `<div class="cz-finish" data-cz-finish>${savedResult}<div class="cz-actions" role="group" aria-label="마무리">${buttons.print}${buttons.save}${buttons.assign}<details class="cz-more cz-finish-more"><summary>더보기</summary><div class="cz-more-menu">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div></details></div></div>`;
   }
   // 예전 오른쪽 패널(요약 + 마무리). 화면은 요약과 마무리를 따로 놓지만 함수명은 유지한다.
   function renderInspector() {
@@ -4680,14 +4677,18 @@
       }
       const papers = await prepare();
       const filters = saveRequestFilters(request(true).filters);
-      const saveIndexVersion = state.indexVersion || state.catalog?.indexVersion || "";
+      // 보내는 값은 "이 화면이 문항을 대조한 목록의 버전"이다: prepare()가 문항마다 지금 카탈로그(state.catalog)와 지문(fingerprint)을
+      // 대조해 만들므로 그 카탈로그의 버전이 맞고, 초안을 만든 때의 값(state.indexVersion)은 옛 값일 수 있어 보내지 않는다.
+      // 서버가 이미 더 새 버전으로 앞서간 것을 한 번 확인했다면(아래 자동 재전송) 이 화면에서는 그 값을 계속 쓴다.
+      let saveIndexVersion = savedIndexVersionFor(state.catalog?.indexVersion || "");
       if (!saveIndexVersion) throw new Error("현재 문항 목록 버전을 확인할 수 없습니다.");
-      const signature = JSON.stringify({
-        indexVersion: saveIndexVersion,
+      const signatureFor = (version) => JSON.stringify({
+        indexVersion: version,
         filters,
         includeExtended: state.includeExtended === true,
         papers: papers.map((paper) => ({ part_index: paper.index, questions: paper.questions, meta: paper.meta })),
       });
+      const signature = signatureFor(saveIndexVersion);
       if (recoveringUnknown && state.saveSignature !== signature)
         throw new Error("저장 결과를 확인하는 중에 작업 내용이 바뀌었습니다. 원래 내용으로 되돌린 뒤 '저장 결과 확인'을 다시 눌러 주세요.");
       if (!recoveringUnknown && (state.saveSignature !== signature || !state.saveBatchId)) {
@@ -4703,16 +4704,17 @@
       state.saveResultState = "SAVING";
       save();
       status("시험지 문항과 출제 범위를 서버에서 확인하고 저장하고 있습니다.");
-      const payload = {
+      // 한 요청에는 버전 값이 하나만 들어간다: index_version과 papers[].meta.indexVersion이 같다.
+      const payloadFor = (version) => ({
         schema_version: "archive-saved-paper-v1",
         save_batch_id: state.saveBatchId,
-        index_version: saveIndexVersion,
+        index_version: version,
         selection_filters: filters,
         include_extended: state.includeExtended === true,
         papers: papers.map((paper) => ({
           part_index: paper.index,
           questions: paper.questions.map(saveWireQuestion),
-          meta: paper.meta,
+          meta: { ...paper.meta, indexVersion: version },
           ...(state.derivationSource ? {
             lineage: {
               parent_kind: state.derivationSource.parentKind,
@@ -4723,9 +4725,29 @@
             },
           } : {}),
         })),
-      };
+      });
       requestStarted = true;
-      const data = await api("/archive-saved-papers", payload);
+      let data;
+      try {
+        data = await api("/archive-saved-papers", payloadFor(saveIndexVersion));
+      } catch (first) {
+        // 서버가 "분류 기준 갱신"(409)으로 거절한 경우: 서버는 저장 전에 거절하므로 만들어진 건이 없다. 현재 배포된 기준 버전만 다시 읽어
+        // 한 번만 다시 보낸다(원본 출제의 자동 재전송과 같은 방식, 무한 반복 없음). 서버가 문항·메타를 새 기준으로 다시 검증하므로
+        // 문항은 그대로 보낸다: 분류가 실제로 바뀌었다면 서버가 다시 거절하고 교사는 새로고침 안내를 받는다.
+        // 저장 결과를 확인하던 중(RESULT_UNKNOWN 복구)에는 같은 요청을 유지해야 하므로 자동으로 바꿔 보내지 않는다.
+        if (recoveringUnknown || Number(first?.status) !== 409 || !SAVE_STALE_VERSION.test(String(first?.data?.error || first?.message || ""))) throw first;
+        let fresh = "";
+        try { fresh = String(await fetchCurrentProjectionVersion() || ""); } catch (refreshError) { console.warn("[archive2] could not read the current projection version:", refreshError?.message); }
+        if (!fresh || fresh === saveIndexVersion) throw first;
+        status("문항 목록이 새로 갱신되어 다시 확인하고 있습니다.");
+        saveIndexVersion = fresh;
+        savedIndexVersionCache = { catalog: state.catalog?.indexVersion || "", version: fresh };
+        // 값이 바뀌면 요청 내용이 달라지므로(서버의 요청 해시에 index_version이 들어간다) 새 batch id로 보낸다. 첫 요청은 저장 전에 거절됐다.
+        state.saveSignature = signatureFor(saveIndexVersion);
+        state.saveBatchId = crypto.randomUUID();
+        save();
+        data = await api("/archive-saved-papers", payloadFor(saveIndexVersion));
+      }
       setConfirmed(data, papers.length, attemptedWorkSignature);
     } catch (error) {
       let recovered = false;
@@ -4752,6 +4774,10 @@
         state.saveResultState = keepUnknown ? "RESULT_UNKNOWN" : "FAILED";
         state.saveMessage = "";
         state.saveError = error.message || "저장 요청에 실패했습니다.";
+        if (SAVE_STALE_VERSION.test(String(error?.data?.error || error?.message || "")) && Number(error?.status) === 409) {
+          console.warn("[archive2] save rejected: classification version is stale:", state.saveError);
+          state.saveError = SAVE_STALE_MESSAGE;
+        }
         // 서버가 분류 자료(정본 메타)가 다르다고 거절한 경우: 영어 원문은 화면에 내지 않고 콘솔에만 남긴다.
         if (SAVE_PARITY_MISMATCH.test(state.saveError)) {
           console.warn("[archive2] save rejected by canonical metadata check:", state.saveError);
@@ -4884,6 +4910,15 @@
     for (const key of SAVE_FINDER_ONLY_FILTER_KEYS) delete next[key];
     return compactSaveFilters(next);
   }
+  // 서버의 기준 버전이 이 화면의 목록보다 앞선 것을 이미 한 번 확인했다면 그 값을 저장에 계속 쓴다(같은 목록 버전일 때만).
+  let savedIndexVersionCache = { catalog: "", version: "" };
+  function savedIndexVersionFor(catalogVersion) {
+    return savedIndexVersionCache.catalog === catalogVersion && savedIndexVersionCache.version
+      ? savedIndexVersionCache.version
+      : catalogVersion;
+  }
+  const SAVE_STALE_VERSION = /분류 기준이 갱신/;
+  const SAVE_STALE_MESSAGE = "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.";
   const SAVE_PARITY_MISMATCH = /canonical metadata parity mismatch/i;
   const SAVE_PARITY_MESSAGE = "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.";
   // The saved-paper endpoint rejects selection filters above 200 KB. A unified unit can hold
