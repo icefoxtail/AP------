@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "k=4인 한 예시의 닫힌 구간이다. 일반적으로 (x−2)(x−k)≤0이므로 두 근 사이를 양 끝 포함하여 읽는다. 이 예시를 정수 해5개의 답으로 가정하지 않으며 k<2인 자연수 경우도 따로 확인한다. 최종 k는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차부등식 $x^2-(k+2)x+2k \\le 0$ 을 만족시키는 정수 해의 개수가 $5$개가 되도록 하는 자연수 $k$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k≥2면정수개수k−1=5 ->k6; k1일때2개라불가.③.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "k=4인 한 예시의 닫힌 구간이다. 일반적으로 (x−2)(x−k)≤0이므로 두 근 사이를 양 끝 포함하여 읽는다. 이 예시를 정수 해5개의 답으로 가정하지 않으며 k<2인 자연수 경우도 따로 확인한다. 최종 k는 표시하지 않는다."
+  ]
+}

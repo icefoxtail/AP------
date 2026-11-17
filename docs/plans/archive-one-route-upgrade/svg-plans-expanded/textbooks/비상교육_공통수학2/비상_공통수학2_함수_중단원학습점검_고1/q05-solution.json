@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-7",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "8",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "O",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0"
+      ],
+      "y": [
+        "-1"
+      ]
+    }
+  },
+  "caption": "a=0인 허용 예시이다. 왼쪽 가지는 y<−1의 값들을, 오른쪽 가지는 y≥−1의 값들을 맡아 치역에 틈이나 중복이 없는 모습을 비교한다. 일반 a에 대해서는 왼쪽 기울기의 부호를 따로 판단하며 이 예시를 최종 범위로 읽지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 함수\n$f(x)=\\begin{cases}3x-1&(x\\ge0)\\\\(a+2)x-1&(x<0)\\end{cases}$\n이 일대일대응이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "왼쪽기울기a+2가양수여야전사와단사동시에성립. a0예시2/3양기울기,최종a>−2미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=0인 허용 예시이다. 왼쪽 가지는 y<−1의 값들을, 오른쪽 가지는 y≥−1의 값들을 맡아 치역에 틈이나 중복이 없는 모습을 비교한다. 일반 a에 대해서는 왼쪽 기울기의 부호를 따로 판단하며 이 예시를 최종 범위로 읽지 않는다."
+  ]
+}

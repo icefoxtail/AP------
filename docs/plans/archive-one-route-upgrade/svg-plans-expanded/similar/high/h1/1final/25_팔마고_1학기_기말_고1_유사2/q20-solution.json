@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      3,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "0"
+      },
+      {
+        "id": "F",
+        "x": "8",
+        "y": "-1",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R",
+        "F"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "3",
+        "7"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "y"
+    }
+  },
+  "caption": "원식을 (k−3)(x−1)²+7−k로 고쳤다. k<3은 x가 멀어질 때 음수가 되어 불가하고 k=3은 상수4로 허용된다. 보조직선 y=7−k 자체는 모든 실수 k에서 정의되며, 원식의 최솟값으로 사용하는 범위는 k≥3이다. 양수인 높이와 k의 정수조건을 함께 읽고 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 부등식 $(k-3)x^2-2(k-3)x+4>0$ 이 모든 실수 $x$에 대하여 성립하도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k3상수허용,k>3이면7−k>0.정수3..6합18.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "aux-domain",
+      "condition": "보조직선 7−k의 정의역은 모든 실수다. 원식 최소값 해석은 k≥3에서만 적용하며 [3,8]은 표시 범위일 뿐 원문 제한 조건이 아니다.",
+      "mappedTo": "sourceDomain and display domain"
+    }
+  ],
+  "newVisualInformation": [
+    "원식을 (k−3)(x−1)²+7−k로 고쳤다. k<3은 x가 멀어질 때 음수가 되어 불가하고 k=3은 상수4로 허용된다. 보조직선 y=7−k 자체는 모든 실수 k에서 정의되며, 원식의 최솟값으로 사용하는 범위는 k≥3이다. 양수인 높이와 k의 정수조건을 함께 읽고 최종 합은 쓰지 않는다."
+  ]
+}

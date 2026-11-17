@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4-2*sqrt(2)",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4+2*sqrt(2)",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "원래 해의 경계 −2,4로부터 a=−2,b=−8을 얻는다. 새 부등식은 (x−4)²≤8이며 표시한 두 경계를 포함한다. 경계 안의 정수만 세고 최종 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차부등식 $x^2+ax+b<0$ 의 해가 $-2<x<4$ 일 때, $x$에 대한 이차부등식 $x^2+bx-4a \\le 0$ 을 만족시키는 정수 $x$의 개수는? (단, $a, b$는 실수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "근4±2√2≈1.1716,6.8284 사이정수2..6 다섯,②.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 해의 경계 −2,4로부터 a=−2,b=−8을 얻는다. 새 부등식은 (x−4)²≤8이며 표시한 두 경계를 포함한다. 경계 안의 정수만 세고 최종 개수는 쓰지 않는다."
+  ]
+}

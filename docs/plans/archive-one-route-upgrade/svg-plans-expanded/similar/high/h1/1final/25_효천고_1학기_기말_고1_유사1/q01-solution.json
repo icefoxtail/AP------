@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-1/4"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "2",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "2",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "D/4"
+    }
+  },
+  "caption": "가로축은 k, 세로축은 판별식의4분의1인 k²−k이다. x축과 접하려면 이 값이0이어야 하므로 두 영점 k=0,1을 읽는다. 원래 x변수의 포물선을 그린 것이 아니며 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2+2kx+k$의 그래프가 $x$축에 접하도록 하는 실수 $k$값의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "D4k²−4k0에서k0,1.합1④.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 k, 세로축은 판별식의4분의1인 k²−k이다. x축과 접하려면 이 값이0이어야 하므로 두 영점 k=0,1을 읽는다. 원래 x변수의 포물선을 그린 것이 아니며 최종 합은 쓰지 않는다."
+  ]
+}

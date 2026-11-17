@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2*sqrt(41)",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "가장 긴 변이 10인 경우와 x인 경우를 나누어 예각조건을 적용하면 6<x<2√41이다. 경계의 직각삼각형은 포함하지 않는다. 최종 정수 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 변의 길이가 $x, 8, 10$ 인 삼각형이 예각삼각형이 되도록 하는 정수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x≤10에서x²+64>100 ->x>6; x≥10에서x²<164 ->x<2√41. 삼각부등식2<x<18 자동충족,7..12 여섯①.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "가장 긴 변이 10인 경우와 x인 경우를 나누어 예각조건을 적용하면 6<x<2√41이다. 경계의 직각삼각형은 포함하지 않는다. 최종 정수 개수는 쓰지 않는다."
+  ]
+}

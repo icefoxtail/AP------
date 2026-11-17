@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-3"
+      },
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "-4"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "5"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "y": [
+        "-4",
+        "5"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "이차항 계수를 c>0이라 하고 세로축 S=h(x)/c로 정규화했다. 두 영점0,−4를 갖는 기본곡선 x(x+4)의 제한구간에서 최고높이는5,최저높이는−4이다. 두 높이의 차에 c를 곱해 주어진18과 비교하며 최종 c는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표가 $0$과 $-4$이다. $h(x)=f(x)-g(x)$라 할 때, $-3\\leq x\\leq1$에서 $y=h(x)$의 최댓값과 최솟값의 차가 $18$이다. 이때 $h(x)$의 이차항 계수는? (단, 이차항 계수는 양수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h=cx(x+4),범위차9c=18 ->c2①.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "이차항 계수를 c>0이라 하고 세로축 S=h(x)/c로 정규화했다. 두 영점0,−4를 갖는 기본곡선 x(x+4)의 제한구간에서 최고높이는5,최저높이는−4이다. 두 높이의 차에 c를 곱해 주어진18과 비교하며 최종 c는 쓰지 않는다."
+  ]
+}

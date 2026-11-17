@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "10",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "5/2"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "11",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "B",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "3"
+      ],
+      "y": []
+    },
+    "breakpoints": [
+      {
+        "x": "1/2",
+        "y": "5/2"
+      },
+      {
+        "x": "3",
+        "y": "5"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "bound",
+          "slope": "0",
+          "intercept": "8",
+          "label": "y=8",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "절댓값 안이 0인 x=1/2,3에서 기울기가 바뀐다. 수평선 y=8 이하인 곡선 부분을 읽고 그 범위의 정수만 더한다. 정수들의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|x-3|+|2x-1| \\le 8$ 을 만족시키는 모든 정수 $x$의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x≤.5:4−3x≤8->x≥−4/3;.5..3:x+2≤8모두; x≥3:3x−4≤8->x≤4. 정수−1..4합9.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 안이 0인 x=1/2,3에서 기울기가 바뀐다. 수평선 y=8 이하인 곡선 부분을 읽고 그 범위의 정수만 더한다. 정수들의 합은 표시하지 않는다."
+  ]
+}

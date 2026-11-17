@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2.5,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "U",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-5/2",
+        "y": "-49/8",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "U",
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "m=1인 첫 양의 정수 후보의 그래프이다. 식은 (x−1)²(x+2)로 인수분해되므로 한 영점에서 접하며 서로 다른 세 근이 아니다. 다음 후보에서 부호가 바뀌는 세 구간을 따로 확인하며 최종 최소 m은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차방정식 $x^3-3mx+2=0$이 서로 다른 세 실근을 가질 때, 이를 만족하는 양의 정수 $m$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "m1때근−2,1(중근)두개. m2때f(−3)=−7,f(−2)=6,f0=2,f1=−3,f2=−2,f3=11로세분리구간영점있고삼차이므로정확3.최소2②.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "m=1인 첫 양의 정수 후보의 그래프이다. 식은 (x−1)²(x+2)로 인수분해되므로 한 영점에서 접하며 서로 다른 세 근이 아니다. 다음 후보에서 부호가 바뀌는 세 구간을 따로 확인하며 최종 최소 m은 쓰지 않는다."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-3"
+      },
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "-4"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "5"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "y": [
+        "5"
+      ]
+    }
+  },
+  "caption": "h(x)=c x(x+4),c>0이다. 구간 끝값은−3c와5c이고 꼭짓점은x=−2이다. 주어진 최댓값5에서 c=1임을 얻은 실제 그래프를 그렸다. 최솟값의 세로 좌표는 라벨에 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표가 $0$과 $-4$이다. $h(x)=f(x)-g(x)$라 하면 $-3\\leq x\\leq1$에서 이차함수 $y=h(x)$의 최댓값이 $5$일 때, 같은 범위에서 $y=h(x)$의 최솟값은? (단, $y=f(x)$의 그래프는 아래로 볼록하다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h=cx(x+4),끝5c최대5 ->c1,꼭짓점−2에서−4③.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "h(x)=c x(x+4),c>0이다. 구간 끝값은−3c와5c이고 꼭짓점은x=−2이다. 주어진 최댓값5에서 c=1임을 얻은 실제 그래프를 그렸다. 최솟값의 세로 좌표는 라벨에 쓰지 않는다."
+  ]
+}

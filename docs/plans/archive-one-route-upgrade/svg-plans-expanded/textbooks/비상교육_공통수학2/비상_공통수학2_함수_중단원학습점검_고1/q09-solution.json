@@ -1,0 +1,69 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "C0",
+        "name": "입력",
+        "elements": [
+          "a"
+        ]
+      },
+      {
+        "id": "C1",
+        "name": "중간",
+        "elements": [
+          "8"
+        ]
+      },
+      {
+        "id": "C2",
+        "name": "출력",
+        "elements": [
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "첫 화살표는 g, 둘째는 f의 역함수이다. f(2)=8이므로 중간값8을 보존했다. g(a)=8을 이용해 미지 입력을 구하되 a의 최종 수치는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=2x+4$, $g(x)=3x-1$에 대하여 $(f^{-1}\\circ g)(a)=2$를 만족시키는 실수 $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f2=8,3a−1=8→a3. 중간8/주어진최종합성값2는보존,요구입력a3미표시.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 화살표는 g, 둘째는 f의 역함수이다. f(2)=8이므로 중간값8을 보존했다. g(a)=8을 이용해 미지 입력을 구하되 a의 최종 수치는 쓰지 않는다."
+  ]
+}

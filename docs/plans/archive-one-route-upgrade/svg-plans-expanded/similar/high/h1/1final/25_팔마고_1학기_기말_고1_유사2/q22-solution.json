@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "A",
+        "points": [
+          {
+            "id": "L",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "M",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "6",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "B",
+        "points": [
+          {
+            "id": "L",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "M",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "R",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 줄은 선택한 상자번호 (1,3,6)의 한 예시이고 둘째 줄은 각각 0,1,2를 빼서 (1,2,4)로 압축한 것이다. 일반적으로 i<j<k와 두 간격≥2를 i<j−1<k−2의 보통 세 수 선택으로 옮긴다. 압축 후 가능한 번호는1부터6이며 최종 경우의 수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$번부터 $8$번까지 번호가 붙은 $8$개의 상자에 서로 같은 공 $3$개를 넣으려고 한다. 한 상자에 많아야 $1$개의 공만 들어갈 수 있고, 공이 들어간 상자의 번호 중 어느 두 개도 서로 이웃하지 않도록 공을 넣는 모든 방법의 수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "i<j<k 비인접 ->i,j−1,k−2를1..6중3개선택전단사,C6,3=20.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 줄은 선택한 상자번호 (1,3,6)의 한 예시이고 둘째 줄은 각각 0,1,2를 빼서 (1,2,4)로 압축한 것이다. 일반적으로 i<j<k와 두 간격≥2를 i<j−1<k−2의 보통 세 수 선택으로 옮긴다. 압축 후 가능한 번호는1부터6이며 최종 경우의 수는 쓰지 않는다."
+  ]
+}

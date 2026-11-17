@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-1/4"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "2",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "2",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(−2)=f(2)에서 a=0을 얻는다. 직선과의 교점은 x²−x=1−b의 해이므로 이 곡선과 수평높이1−b를 비교한다. 최솟값−1/4에 닿는 경계까지 허용하여 b≤5/4를 얻되 최종 f(3)은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $a$, $b$에 대하여 이차함수 $f(x)=x^2+ax+b$의 그래프가 다음 조건을 만족시킬 때, $f(3)$의 최댓값은?<br><br>가) $f(-2)=f(2)$<br>나) 이차함수 $y=f(x)$의 그래프와 직선 $y=x+1$은 만난다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a0,D1−4(b−1)≥0,b≤5/4.f3최대41/4⑤.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "f(−2)=f(2)에서 a=0을 얻는다. 직선과의 교점은 x²−x=1−b의 해이므로 이 곡선과 수평높이1−b를 비교한다. 최솟값−1/4에 닿는 경계까지 허용하여 b≤5/4를 얻되 최종 f(3)은 쓰지 않는다."
+  ]
+}

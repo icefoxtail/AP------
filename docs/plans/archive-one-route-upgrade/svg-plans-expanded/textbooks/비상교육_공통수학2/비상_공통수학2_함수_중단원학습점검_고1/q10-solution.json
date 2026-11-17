@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "C0",
+        "name": "입력",
+        "elements": [
+          "b",
+          "c",
+          "d",
+          "e"
+        ]
+      },
+      {
+        "id": "C1",
+        "name": "출력",
+        "elements": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "원본 곡선과 점선을 통해 읽은 네 대응만 따로 정리했다. 실제 x,y 수치를 임의로 정하지 않고 원문의 문자 눈금을 보존한다. 합성은 출력을 다시 입력에서 찾고 역함수는 거꾸로 읽는다. 각 소문항의 답에 해당하는 화살표를 따로 강조하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 직선 $y=x$와 함수 $y=f(x)$의 그래프를 나타낸 것이다. 함수 $f$의 역함수가 존재할 때, 다음을 구하시오.\n(단, 모든 점선은 $x$축 또는 $y$축에 평행하다.)\n⑴ $f(c)$\n⑵ $(f\\circ f)(c)$\n⑶ $f^{-1}(d)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본직접: f(b)=a,f(c)=b,f(d)=c,f(e)=d. (1)b,(2)a,(3)e,도식은주어진관계전체만동등표시. 원본그래프반드시보존.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 곡선과 점선을 통해 읽은 네 대응만 따로 정리했다. 실제 x,y 수치를 임의로 정하지 않고 원문의 문자 눈금을 보존한다. 합성은 출력을 다시 입력에서 찾고 역함수는 거꾸로 읽는다. 각 소문항의 답에 해당하는 화살표를 따로 강조하지 않는다."
+  ]
+}

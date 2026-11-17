@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/12",
+          "-1/2",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "23/6"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-1/6"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "세로축 S=y/12로 정규화했다. 대칭축은 x=1이고 주어진 구간에서 감소하여 오른쪽 끝점이 꼭짓점과 일치한다. 끝점이 포함됨을 확인하고 원래 y의 최솟값은 좌표 라벨에 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$값의 범위가 $-3\\leq x\\leq1$일 때, 이차함수 $y=3x^2-6x+1$의 최솟값을 구하고 그 풀이과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "3(x−1)²−2,구간끝1에서최소−2.왼끝46/12=23/6정규화.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "세로축 S=y/12로 정규화했다. 대칭축은 x=1이고 주어진 구간에서 감소하여 오른쪽 끝점이 꼭짓점과 일치한다. 끝점이 포함됨을 확인하고 원래 y의 최솟값은 좌표 라벨에 쓰지 않는다."
+  ]
+}

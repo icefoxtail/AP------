@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "f(x)=(x+1)(x−3)이고 f(1−x)=x²−4이다. 새 부등식은 두 근 바깥을 포함하며 자연수인 해만 남겨 가장 작은 것을 찾는다. 최종 답 문장은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $f(x)<0$의 해가 $-1<x<3$이고 $x^2$의 계수가 $1$인 이차식 $f(x)$에 대하여, 부등식 $f(-x+1)\\ge0$을 만족시키는 자연수 $x$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(1−x)=x²−4≥0 ->x≤−2또는x≥2. 자연수최소2②.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "f(x)=(x+1)(x−3)이고 f(1−x)=x²−4이다. 새 부등식은 두 근 바깥을 포함하며 자연수인 해만 남겨 가장 작은 것을 찾는다. 최종 답 문장은 쓰지 않는다."
+  ]
+}

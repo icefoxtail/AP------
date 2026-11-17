@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "C0",
+        "name": "X",
+        "elements": [
+          "-1",
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "C1",
+        "name": "Y",
+        "elements": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "원본의 네 화살표를 그대로 옮겼다. 왼쪽 집합 전체, 오른쪽 집합 전체, 실제 화살표가 도착하는 값들을 서로 구분한다. 도착하지 않는 오른쪽 원소도 삭제하지 않으며 세 정답 집합은 별도로 나열하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림의 대응은 집합 $X$에서 집합 $Y$로의 함수이다. 이 함수의 정의역, 공역, 치역을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본직접:−1→1,0→0,1→1,2→3. 공역원소2는도착없지만보존. 최종정의역/공역/치역집합은본문질문.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 네 화살표를 그대로 옮겼다. 왼쪽 집합 전체, 오른쪽 집합 전체, 실제 화살표가 도착하는 값들을 서로 구분한다. 도착하지 않는 오른쪽 원소도 삭제하지 않으며 세 정답 집합은 별도로 나열하지 않는다."
+  ]
+}

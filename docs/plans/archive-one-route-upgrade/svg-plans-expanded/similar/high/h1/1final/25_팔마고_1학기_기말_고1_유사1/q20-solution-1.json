@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "4",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    }
+  },
+  "caption": "첫 부등식의 해가 하나면 포물선의 꼭짓점이 가로축에 접한다. 여기서는 t=x−k로 평행이동한 t²의 모양을 그렸다. 실제 k를 0이라고 가정하지 않으며 원식의 판별식 k²−3k−4=0에서 양수근 a=4를 따로 구한다. 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차부등식 $x^2-2kx+3k+4 \\le 0$ 의 해가 단 하나 존재할 때, 양수 $k$의 값을 $a$라 하자. 또한 이차부등식 $-x^2+4x-b<0$ 이 모든 실수 $x$에 대하여 성립하도록 하는 정수 $b$의 최솟값을 $c$라 할 때, $a+c$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k4,−1중양수a4. b>4 최소정수c5. 합9.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식의 해가 하나면 포물선의 꼭짓점이 가로축에 접한다. 여기서는 t=x−k로 평행이동한 t²의 모양을 그렸다. 실제 k를 0이라고 가정하지 않으며 원식의 판별식 k²−3k−4=0에서 양수근 a=4를 따로 구한다. 최종 합은 쓰지 않는다."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      1.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "3/2",
+        "y": "2"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "breakpoints": [
+      {
+        "x": "1/2",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "u",
+      "y": "y"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=u",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "k>0이므로 u=x/k로 두고 k로 나누면 |2u−1|≤u이다. 두 그래프의 높이를 비교해 허용구간을 찾고 원래 두 경계가 같은 k배임을 이용한다. 최종 b/a는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$k>0$인 상수 $k$에 대하여 부등식 $|2x-k|\\leq x$의 해가 $a\\leq x\\leq b$일 때, $\\dfrac{b}{a}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x≥0,−x≤2x−k≤x ->k/3≤x≤k,비3③.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "k>0이므로 u=x/k로 두고 k로 나누면 |2u−1|≤u이다. 두 그래프의 높이를 비교해 허용구간을 찾고 원래 두 경계가 같은 k배임을 이용한다. 최종 b/a는 쓰지 않는다."
+  ]
+}

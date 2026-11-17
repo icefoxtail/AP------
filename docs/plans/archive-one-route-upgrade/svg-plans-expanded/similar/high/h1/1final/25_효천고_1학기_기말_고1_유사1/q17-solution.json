@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "P",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "Q",
+            "value": "3",
+            "hideName": true
+          }
+        ],
+        "within": 1
+      }
+    ]
+  },
+  "caption": "첫 부등식이 허용하는 정수는 아래 줄의 두 점이다. 둘째 식은 (x−1)(x−b+1)>0이고 b>2이므로 x>1에서는 x>b−1만 남는다. 움직이는 열린 경계가 두 점을 모두 제외하는 조건을 확인하되 최종10M은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $$\\begin{cases} x^2-5x+4<0 \\\\ x^2-bx+b-1>0 \\end{cases}$$을 만족시키는 정수 $x$가 존재하지 않기 위한 실수 $b$의 최솟값을 $M$이라 할 때, $10M$의 값은? (단, $b>2$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫구간1<x<4 정수2,3.둘째x>b−1에서없으려면b−1≥3,b≥4,M4,10M40⑤.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식이 허용하는 정수는 아래 줄의 두 점이다. 둘째 식은 (x−1)(x−b+1)>0이고 b>2이므로 x>1에서는 x>b−1만 남는다. 움직이는 열린 경계가 두 점을 모두 제외하는 조건을 확인하되 최종10M은 쓰지 않는다."
+  ]
+}

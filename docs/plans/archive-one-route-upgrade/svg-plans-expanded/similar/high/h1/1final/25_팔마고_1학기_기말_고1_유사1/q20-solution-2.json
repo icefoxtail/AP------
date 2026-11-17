@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "-5",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "-5",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "둘째 조건은 b>−x²+4x가 모든 x에서 성립하는 것이다. 이 곡선의 꼭짓점 (2,4)에서 가장 큰 높이를 읽고 엄격한 부등호를 적용한다. 엄격부등식과 정수조건에서 c=5를 얻으며 최종 a+c는 직접 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차부등식 $x^2-2kx+3k+4 \\le 0$ 의 해가 단 하나 존재할 때, 양수 $k$의 값을 $a$라 하자. 또한 이차부등식 $-x^2+4x-b<0$ 이 모든 실수 $x$에 대하여 성립하도록 하는 정수 $b$의 최솟값을 $c$라 할 때, $a+c$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k4,−1중양수a4. b>4 최소정수c5. 합9.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "둘째 조건은 b>−x²+4x가 모든 x에서 성립하는 것이다. 이 곡선의 꼭짓점 (2,4)에서 가장 큰 높이를 읽고 엄격한 부등호를 적용한다. 엄격부등식과 정수조건에서 c=5를 얻으며 최종 a+c는 직접 쓰지 않는다."
+  ]
+}

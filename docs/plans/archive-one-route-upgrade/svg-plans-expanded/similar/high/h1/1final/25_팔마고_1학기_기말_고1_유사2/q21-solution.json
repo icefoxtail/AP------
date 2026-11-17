@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "9"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "6"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "12"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "B",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1"
+      ],
+      "y": []
+    },
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "6"
+      },
+      {
+        "x": "1",
+        "y": "3"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "h6",
+          "slope": "0",
+          "intercept": "6",
+          "label": "y=6",
+          "style": "DASHED"
+        },
+        {
+          "id": "h9",
+          "slope": "0",
+          "intercept": "9",
+          "label": "y=9",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "절댓값의 경계 −2와1에서 기울기가 바뀐다. 정수 x의 함수값을 비교하면 3,4,5 뒤에 높이6이 두 번 나오고 다음은 높이9가 두 번이다. 엄격한 조건 y<a에 맞게 두 묶음이 들어오거나 빠지는 경계를 읽는다. 최종 자연수 a들의 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|x+2|+2|x-1|<a$ 를 만족시키는 정수 $x$의 개수가 $5$개가 되도록 하는 모든 자연수 $a$의 값의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정수−2..2의값6,5,4,3,6.다음−3,3값9.5개조건6<a≤9,자연수7,8,9합24.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값의 경계 −2와1에서 기울기가 바뀐다. 정수 x의 함수값을 비교하면 3,4,5 뒤에 높이6이 두 번 나오고 다음은 높이9가 두 번이다. 엄격한 조건 y<a에 맞게 두 묶음이 들어오거나 빠지는 경계를 읽는다. 최종 자연수 a들의 합은 쓰지 않는다."
+  ]
+}

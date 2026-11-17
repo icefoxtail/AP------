@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-3/2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "m>0으로 나누고 n/m=1일 때 첫 줄은 2x²−x−6≥0, 둘째 줄은 x≥0이다. 두 줄의 공통 부분을 읽는다. 다른 비율에서는 두 꼬리가 함께 남거나 오른쪽으로 끝없이 갈 수 없음을 별도 논증하며 최종 k값은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases} (m+n)x^2-mx-6n \\ge 0 \\\\ (m-n)x^2+nx+m-n \\ge 0 \\end{cases}$ 의 해가 $x\\ge k$ 인 단일 구간으로 나타날 때, 상수 $k$의 값은? (단, $m,n$은 $m>0$인 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "r=n/m.오른꼬리필요−1≤r≤1.내부는두꼬리모두해,r−1은첫식−x+6≥0으로우반직선불가.r1때x≥2④.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "m>0으로 나누고 n/m=1일 때 첫 줄은 2x²−x−6≥0, 둘째 줄은 x≥0이다. 두 줄의 공통 부분을 읽는다. 다른 비율에서는 두 꼬리가 함께 남거나 오른쪽으로 끝없이 갈 수 없음을 별도 논증하며 최종 k값은 쓰지 않는다."
+  ]
+}

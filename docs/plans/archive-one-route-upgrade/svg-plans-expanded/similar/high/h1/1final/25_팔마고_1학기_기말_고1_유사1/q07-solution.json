@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "절댓값 부등식의 닫힌 구간과 x>0의 열린 반직선을 비교한다. 공통 부분에서 정수를 세되 최종 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases} |x-2| \\le 4 \\\\ x > 0 \\end{cases}$ 을 만족시키는 정수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "공통0<x≤6 정수6개,⑤ 일치.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 부등식의 닫힌 구간과 x>0의 열린 반직선을 비교한다. 공통 부분에서 정수를 세되 최종 개수는 쓰지 않는다."
+  ]
+}

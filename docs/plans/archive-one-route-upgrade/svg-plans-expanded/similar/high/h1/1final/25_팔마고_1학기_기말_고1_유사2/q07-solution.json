@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "첫 줄은 절댓값 조건으로 생기는 두 닫힌 반직선이고 둘째 줄은 주어진 하한 −2이다. 여기에 열린 상한 x<a를 적용한다. 음수쪽 정수 두 개는 고정이고 양수쪽에서 필요한 나머지 개수를 채운다. 최종 a범위는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases} |x-1| \\ge 2 \\\\ -2 \\le x<a \\end{cases}$ 를 만족시키는 정수 해가 정확히 $4$개가 되도록 하는 양수 $a$의 값의 범위는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "−2,−1고정,3,4만추가되려면4<a≤5①.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 줄은 절댓값 조건으로 생기는 두 닫힌 반직선이고 둘째 줄은 주어진 하한 −2이다. 여기에 열린 상한 x<a를 적용한다. 음수쪽 정수 두 개는 고정이고 양수쪽에서 필요한 나머지 개수를 채운다. 최종 a범위는 쓰지 않는다."
+  ]
+}

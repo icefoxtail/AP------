@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "points": [
+          {
+            "id": "P",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "Q",
+            "value": "3",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 부등식의 정수 후보는 아래 두 점이다. b>1인 양의 정수에 대해 둘째 식은 (x−1)(x−b+1)>0이고 두 후보가 x>1임을 이용한다. 움직이는 경계 b−1에 의해 하나만 남는 때를 찾되 최종 b의 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $$\\begin{cases} x^2-5x+4<0 \\\\ x^2-bx+b-1>0 \\end{cases}$$을 만족시키는 정수 $x$가 정확히 $1$개가 되도록 하는 양의 정수 $b$의 개수는? (단, $b>1$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "b2면2,3모두,b3면3만,b≥4면없음.총1⑤.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식의 정수 후보는 아래 두 점이다. b>1인 양의 정수에 대해 둘째 식은 (x−1)(x−b+1)>0이고 두 후보가 x>1임을 이용한다. 움직이는 경계 b−1에 의해 하나만 남는 때를 찾되 최종 b의 개수는 쓰지 않는다."
+  ]
+}

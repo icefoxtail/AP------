@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1/10",
+        "y": "9/100",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "1/4"
+      },
+      {
+        "id": "R",
+        "x": "9/10",
+        "y": "9/100",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "S"
+    }
+  },
+  "caption": "모든 내접 직사각형 중 최대넓이를 달성하는 직각변 평행 배치에서 t=a/h라 두면 가로길이는60(1−t),넓이는60h·t(1−t)이다. 이 그래프의 세로축은 넓이/(60h),가로축은 t이며0<t<1이다. 꼭짓점의 높이에60h를 곱해 주어진 최대넓이150과 비교한다. 최종 h는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각을 낀 두 변의 길이가 $h\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 넓이가 최대인 직사각형의 넓이가 $150\\text{cm}^2$이다. 이때 $h$의 값은? (단, $h>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문에 평행 배치 조건은 없으며 이를 추가 가정하지 않는다. 일반 내접 직사각형의 변 u,v 및 회전 θ∈[0,π/2]에서 x,y 최소를0으로 평행이동하면 포함조건 uA+vB≤1, A=cosθ/60+sinθ/h, B=max(sinθ/60,cosθ/h). 두 max 분기에서 각각 tanθ≥60/h 또는 ≤60/h이므로 AB≥1/(60h). 따라서 uv≤1/(4AB)≤15h. θ=0인 직각변 평행 배치와 a=h/2에서 달성된다. 그러므로 최댓값15h=150 ->h10③. 보조곡선은 일반 문제의 최대를 달성하는 배치만 시각화하며 원래 그림이 있다고 주장하지 않는다.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 내접 직사각형 중 최대넓이를 달성하는 직각변 평행 배치에서 t=a/h라 두면 가로길이는60(1−t),넓이는60h·t(1−t)이다. 이 그래프의 세로축은 넓이/(60h),가로축은 t이며0<t<1이다. 꼭짓점의 높이에60h를 곱해 주어진 최대넓이150과 비교한다. 최종 h는 쓰지 않는다."
+  ]
+}

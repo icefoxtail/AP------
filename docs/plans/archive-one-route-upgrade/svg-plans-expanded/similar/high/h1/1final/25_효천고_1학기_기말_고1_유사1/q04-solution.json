@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "왼쪽 부등식은 x≥−1이고 오른쪽은 x≤−1/2이다. 두 닫힌 반직선의 공통 부분을 읽고 최종 두 경계의 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $-1\\leq 3x+2\\leq -x$의 해가 $a\\leq x\\leq b$일 때, $a+b$의 값은? (단, $a$, $b$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "공통[−1,−1/2],합−3/2①.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 부등식은 x≥−1이고 오른쪽은 x≤−1/2이다. 두 닫힌 반직선의 공통 부분을 읽고 최종 두 경계의 합은 쓰지 않는다."
+  ]
+}

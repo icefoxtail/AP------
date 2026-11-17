@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "이차식을 (x−2)(x−7)로 인수분해하여 두 근 사이를 읽는다. 양 끝 포함 여부를 확인한 뒤 정수만 세며 개수는 라벨에 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차부등식 $x^2-9x+14 \\le 0$ 을 만족시키는 정수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "2≤x≤7,정수6개,④ 일치.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "이차식을 (x−2)(x−7)로 인수분해하여 두 근 사이를 읽는다. 양 끝 포함 여부를 확인한 뒤 정수만 세며 개수는 라벨에 쓰지 않는다."
+  ]
+}

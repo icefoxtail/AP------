@@ -1,0 +1,119 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "C0",
+        "name": "X",
+        "elements": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "C1",
+        "name": "X",
+        "elements": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "C2",
+        "name": "X",
+        "elements": [
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "(1)의 f∘g는 먼저 g, 다음 f 순서로 읽는다. 마지막3의 원상을 찾을 때는 이 두 단계를 오른쪽에서 왼쪽으로 거슬러 읽는다. 모든 입력의 화살표를 동등하게 표시하며 답에 해당하는 경로는 강조하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같은 두 함수 $f$, $g$에 대하여 다음을 구하시오.\n⑴ $(f\\circ g)^{-1}(3)$\n⑵ $(f^{-1}\\circ g^{-1}\\circ f)(2)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본f2→4,3→2,4→3;g2→2,3→4,4→3. (1)g후f mapping2→4,3→3,4→2로역3=3. (2)2→4→3→4,최종4미강조. 세역/합성단계를패널별분리해4열축소회피.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "(1)의 f∘g는 먼저 g, 다음 f 순서로 읽는다. 마지막3의 원상을 찾을 때는 이 두 단계를 오른쪽에서 왼쪽으로 거슬러 읽는다. 모든 입력의 화살표를 동등하게 표시하며 답에 해당하는 경로는 강조하지 않는다."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "19/9",
+          "-16/9",
+          "4/9"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "13/3"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1/3"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "7/9"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1/3",
+        "13/3"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    }
+  },
+  "caption": "원식의 대칭축은 x=2이고 a>0이다. 주어진 최솟값1은 꼭짓점,최댓값13은 더 먼 왼쪽 끝점에서 얻어진다. 세로축은 S=y/3으로 정규화하여13/3과1/3의 높이를 비교한다. 이 두 조건으로 계수 방정식을 세우며 완성식이나 최종 a,b는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$값의 범위가 $-1\\leq x\\leq3$일 때, 이차함수 $y=ax^2-4ax+b$ $(a>0)$의 최솟값이 $1$이고 최댓값이 $13$이다. 상수 $a$, $b$의 값을 구하고 그 풀이과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원식a(x−2)²+b−4a,최소b−4a1,최대b+5a13.9a12 ->a4/3,b19/3.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "원식의 대칭축은 x=2이고 a>0이다. 주어진 최솟값1은 꼭짓점,최댓값13은 더 먼 왼쪽 끝점에서 얻어진다. 세로축은 S=y/3으로 정규화하여13/3과1/3의 높이를 비교한다. 이 두 조건으로 계수 방정식을 세우며 완성식이나 최종 a,b는 쓰지 않는다."
+  ]
+}

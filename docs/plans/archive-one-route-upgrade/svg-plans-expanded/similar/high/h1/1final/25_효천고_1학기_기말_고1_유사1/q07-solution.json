@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1/15"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "30"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "15",
+        "y": "15"
+      },
+      {
+        "id": "L",
+        "x": "1",
+        "y": "29/15",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "29",
+        "y": "29/15",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "S"
+    }
+  },
+  "caption": "원래 삼각형/직사각형 그림은 그대로 유지한다. 닮음으로 가로길이는60−2a,넓이는 a(60−2a)이다. 세로축 S는 넓이를30으로 나눈 값이며 가로축 a의 꼭짓점 위치를 찾는다. 끝점0,30에서는 직사각형이 퇴화하므로 제외하고 최종 a값은 직접 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각을 낀 두 변의 길이가 $30\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 직사각형의 넓이가 최대가 되도록 하는 $a$의 값은?<br><img src=\"assets/images/25_효천고_1학기_기말_고1_유사1/q07-audit-rework.svg\" alt=\"30cm와 60cm인 직각변이 있는 직각삼각형 안의 직사각형, 세로 변의 길이는 a cm\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본SVG직접확인:가로60세로30,직사각형높이a.가로60−2a,넓이60a−2a² 최대a15③.새그래프는보조이며기존도형보존.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 삼각형/직사각형 그림은 그대로 유지한다. 닮음으로 가로길이는60−2a,넓이는 a(60−2a)이다. 세로축 S는 넓이를30으로 나눈 값이며 가로축 a의 꼭짓점 위치를 찾는다. 끝점0,30에서는 직사각형이 퇴화하므로 제외하고 최종 a값은 직접 쓰지 않는다."
+  ]
+}

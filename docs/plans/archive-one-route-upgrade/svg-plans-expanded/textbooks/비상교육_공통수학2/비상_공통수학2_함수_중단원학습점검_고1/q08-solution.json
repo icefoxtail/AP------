@@ -1,0 +1,64 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "C0",
+        "name": "입력",
+        "elements": [
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "C1",
+        "name": "출력",
+        "elements": [
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "역함수 조건은 f(2)=3이라는 같은 방향의 대응으로 바꾸었다. 두 주어진 대응을 일차식에 각각 대입하여 계수를 비교한다. 구하는 a,b의 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=ax+b$가\n$f(1)=2,\\quad f^{-1}(3)=2$\n를 만족시킬 때, 실수 $a$, $b$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a+b2,2a+b3→a1,b1. 주어진조건만화살표로정리.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수 조건은 f(2)=3이라는 같은 방향의 대응으로 바꾸었다. 두 주어진 대응을 일차식에 각각 대입하여 계수를 비교한다. 구하는 a,b의 값은 표시하지 않는다."
+  ]
+}

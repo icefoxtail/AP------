@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "오른쪽 무한대까지 해가 있으면서 왼쪽 꼬리는 없어야 하므로 둘째 식의 이차항이 사라지는 b=−2를 검토한다. 수직선에는 첫 부등식 2x²−2>0의 두 꼬리와 경계 후보만 표시했다. 둘째 부등식은 −2x+2<0으로 정리된다. 이 조건과 공통인 쪽을 스스로 골라 경계를 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립이차부등식 $\\begin{cases} ax^2+(a+b)x+a+b-2>0 \\\\ (a+b)x^2+(a+b-2)x+a<0 \\end{cases}$ 을 만족시키는 모든 실수 $x$값의 범위가 $x>p$이다. $a=2$일 때, $p$의 값을 구하시오. (단, $a, b, p$는 실수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "b<−2면두꼬리모두해,b>−2면둘째가유계라불가. b−2때x>1,④.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 무한대까지 해가 있으면서 왼쪽 꼬리는 없어야 하므로 둘째 식의 이차항이 사라지는 b=−2를 검토한다. 수직선에는 첫 부등식 2x²−2>0의 두 꼬리와 경계 후보만 표시했다. 둘째 부등식은 −2x+2<0으로 정리된다. 이 조건과 공통인 쪽을 스스로 골라 경계를 판단한다."
+  ]
+}

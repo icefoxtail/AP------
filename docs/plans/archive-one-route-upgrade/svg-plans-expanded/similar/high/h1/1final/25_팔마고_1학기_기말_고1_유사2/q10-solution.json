@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "삼각형 부등식은 x>4이고 가장 긴 변은 x+2이다. 둔각조건 (x+2)²>(x−2)²+x²를 동시에 만족하는 열린 구간을 표시한다. 양 끝의 퇴화/직각 경우는 제외하며 정수들의 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 변의 길이가 $x-2, x, x+2$ 인 삼각형이 둔각삼각형이 되기 위한 모든 정수 $x$의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x>4및0<x<8공통(4,8).5,6,7합18②.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 부등식은 x>4이고 가장 긴 변은 x+2이다. 둔각조건 (x+2)²>(x−2)²+x²를 동시에 만족하는 열린 구간을 표시한다. 양 끝의 퇴화/직각 경우는 제외하며 정수들의 합은 쓰지 않는다."
+  ]
+}
