@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T11:20:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+  "items": [
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "rpmPath": {
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "구간에서의 연속"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) 유리함수 $\\dfrac1{f(x)}$은 $x\\ne-2$인 실수 전체의 집합에서 연속이다.\n(나) $\\displaystyle\\lim_{x\\to-2}\\dfrac{x+2}{f(x)}=1$\n\n$f(0)$이 자연수일 때, $f(2)$의 최댓값은? [4.9점]”에서 극한 조건으로 q−2p+4=1을 얻고 이차 인수가 실근 없으며 f(0)이 자연수인 조건 아래 f(2)를 최대로 한다."
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "rpmPath": {
+        "l4": "변화율"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “실수 전체의 집합에서 미분가능하고 다음 조건을 만족시키는 함수 $f(x)$에 대하여 $f(1)$의 최솟값은? [4.2점]\n\n(가) $f(-2)=1$\n(나) $-2\\lt x\\lt 1$인 모든 실수 $x$에 대하여 $f'(x)\\ge4$이다.”에서 구간 길이가 3이므로 f(1)−1≥12이고 최솟값은 13이다."
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “두 함수 $f(x)=\\begin{cases}x+1&(x\\ge1)\\\\-x-1&(x\\lt 1)\\end{cases}$, $g(x)=\\begin{cases}2|x|-2&(|x|\\ge2)\\\\-x^2+1&(|x|\\lt 2)\\end{cases}$에 대하여 $\\displaystyle\\lim_{x\\to1+}g(f(x))+\\lim_{x\\to1-}g(f(x))$의 값은? [4.4점]”에서 첫 극한은 g의 |x|≥2 식에서, 둘째는 |x|<2 식에서 평가해 두 값을 합한다."
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT"
+      ],
+      "rpmPath": {
+        "l3": "연속의 뜻",
+        "l4": "한 점에서의 연속"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “실수 $t$에 대하여 직선 $y=t$와 함수 $y=\\left|\\dfrac{-2x}{x+3}-2\\right|$의 그래프의 교점의 개수를 $f(t)$라 하자. 함수 $f(x)$와 함수 $g(x)=|-x+a|+b$에 대하여 함수 $f(x)g(x)$가 모든 실수 $x$에서 연속일 때, $g(a+2b)$의 값은? [5점]\n(단, $a,b$는 상수이다.)”에서 f가 점프하는 곳마다 곱을 연속으로 만들려면 g의 절댓값 그래프가 0이 되어야 하므로 a,b 조건을 정한다."
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_ITERATION_COUNT",
+        "COND_RESTRICTED_INTERVAL"
+      ],
+      "rpmPath": {
+        "l4": "구간에서의 연속"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “$x\\ge0$일 때, $\\sqrt{\\dfrac12x+\\dfrac12}$보다 크지 않은 최대의 정수를 $f(x)$라 하자. $0\\le x\\lt 200$에서 함수 $f(f(x))$가 불연속이 되는 $x$의 값을 $a$라 할 때, 모든 $a$의 값의 합은? [5.1점]”에서 0≤x<200에서 두 번째 적용 후 값이 바뀌는 경계의 x좌표를 합한다."
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l4": "정의로 미분계수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “두 다항함수 $f(x)$, $g(x)$가 다음 조건을 만족시킨다.\n\n(가) $\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)-g(x)}x=3$\n(나) $\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)+g(x)-2f(0)}x=5$\n\n두 실수 $a,b$에 대하여 $\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)-a}{x}=b\\times g(0)$일 때, $ab$의 값은? [4.8점]”에서 유한한 첫 극한에서 f(0)=g(0)을 얻고 두 미분계수를 연립해 a,b를 정한다."
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "극한의 성질",
+        "l4": "대수적 계산"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “$\\displaystyle\\lim_{x\\to2}\\dfrac{x^2-5x+6}{x-2}$의 값은? [3.5점]”에서 약분 뒤 남는 x−3에 2를 대입하면 −1이다."
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "무한대에서의 극한",
+        "l4": "다항·유리함수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “[서술형 2] 두 이차함수 $f(x)$, $g(x)$가 $\\displaystyle\\lim_{x\\to0}f(x)=5$, $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{g(x)-2x^2}=1$, $\\displaystyle\\lim_{x\\to3}\\dfrac{g(x)-f(x)}{x-3}=10$을 만족시킬 때, $g(0)$의 값을 구하는 풀이 과정과 답을 서술하시오. [부분점수 있음, 7점]”에서 x→3의 차분몫으로 g−f의 도함숫값 조건을 세워 남은 계수를 정하고 g(0)을 계산한다."
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "rpmPath": {
+        "midUnit": "도함수의 활용(3)",
+        "l3": "방정식과 부등식",
+        "l4": "부등식 증명"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “[서술형 3] 함수 $f(x)$는 실수 전체에서 미분가능하고, 모든 실수 $a,b$에 대하여 $f(a+b)\\le f(a)+f(b)+(ab-1)^2$을 만족하며 $f(0)\\le-1$, $f'(0)=1$일 때, $f'(2)$의 값을 구하는 풀이 과정과 답을 서술하시오. [부분점수 있음, 7점]”에서 f(0)=−1을 확정한 뒤 양쪽 부등식의 차분몫 한계가 같아져 f′(2)=1임을 얻는다."
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "연속 조건",
+        "l4": "미정계수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)$가 $(x-2)f(x)=2x^2-2x-4$를 만족시킨다. 함수 $f(x)$가 $x=2$에서 연속일 때, $f(2)$의 값은? [3.6점]”에서 연속 조건에 따라 f(2)는 lim x→2 2(x+1)=6과 같아야 한다."
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "극한의 성질",
+        "l4": "미정계수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “$\\displaystyle\\lim_{x\\to1}\\dfrac{x^4+2x^3+3x^2+4x-10}{5x-5}$의 값은? [3.6점]”에서 나눈 몫을 x=1에서 계산하고 분모 5(x−1)의 계수 5로 나누어 극한을 얻는다."
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)=\\begin{cases}x^2&(x\\ge2)\\\\x&(x\\lt 2)\\end{cases}$에서 $x$의 값이 $2$에서 $2-h$까지 변할 때의 평균변화율이 $3$일 때, 상수 $h$의 값은? [3.8점]\n(단, $h\\gt 0$)”에서 (f(2−h)−f(2))/((2−h)−2)=3에 4와 2−h를 대입해 h를 푼다."
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "rpmPath": {
+        "l4": "구간별 함수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)=\\dfrac{x+1}{x^2+ax+3}$이 모든 실수 $x$에서 연속이 되도록 하는 자연수 $a$의 개수는? [4.2점]”에서 −√12<a<√12인 자연수는 1,2,3이므로 개수는 3이다."
+    }
+  ]
+}
