@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-7515fa0ca4ff-b1f05686",
+  "sourceArchiveFile": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
+  "createdAt": "2026-11-15T19:33:23.896Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "e726e9bd47eddefa0cdb20efe96bd2611f3f5b18",
+  "ledgers": [
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-2-004.json",
+      "sourceSha256": "659bdb1c8c9ed27ea4393afb34aed26a07301d4b07f1ade8289ae085122516d3",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-7515fa0ca4ff-b1f05686.pass3-ledger.json",
+      "repoSha256": "659bdb1c8c9ed27ea4393afb34aed26a07301d4b07f1ade8289ae085122516d3",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass4",
+      "source": "classify-final/p3/s/ledgers/shard-1-exam-0079.json",
+      "sourceSha256": "31c0eb42b7435bbb292bdd598124870b3bd5500a09a06b5ef7c9005f4c0da67e",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-7515fa0ca4ff-b1f05686.pass4-ledger.json",
+      "repoSha256": "31c0eb42b7435bbb292bdd598124870b3bd5500a09a06b5ef7c9005f4c0da67e",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "p3": 136,
+    "luna-k1": 16,
+    "luna-k4": 20,
+    "sonnet-pass4": 14,
+    "tera-k67": 4,
+    "tera-k3": 4,
+    "proposed-new": 4
+  },
+  "itemSources": {
+    "p3+luna-k1": 8,
+    "p3+luna-k4": 8,
+    "p3+sonnet-pass4+luna-k4": 2,
+    "p3+sonnet-pass4+tera-k67": 1,
+    "p3+tera-k3": 2,
+    "sonnet-pass4+proposed-new+tera-k67+p3": 1
+  },
+  "typeHoldQuestions": 13,
+  "idWarnings": []
+}

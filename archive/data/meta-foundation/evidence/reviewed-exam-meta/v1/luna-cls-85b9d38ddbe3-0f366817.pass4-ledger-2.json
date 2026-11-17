@@ -1,0 +1,64 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:44:00.896+00:00",
+ "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 10,
+   "chosenFrom": "pass1",
+   "resolutionReason": "√(x²+(y+2)²)+√((x-2)²+(y+5)²)을 P에서 A(0,-2), B(2,-5)까지의 거리 합으로 읽어 AB=√13, m²=13이므로 평면좌표의 거리 공식 항목이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": "거리 공식"
+   }
+  },
+  {
+   "ordinal": 19,
+   "chosenFrom": "pass2",
+   "resolutionReason": "y=2, 4x-3y+2=0, 3x+4y-15=0 세 직선의 교점 (1,2), (7/3,2), (37/25,66/25)를 꼭짓점으로 잡고 내심을 구하므로 두 직선의 교점 항목에 둔다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": "교점"
+   }
+  },
+  {
+   "ordinal": 20,
+   "chosenFrom": "pass2",
+   "resolutionReason": "l:3x+4y+4=0과 m:4x+3y-3=0의 각의 이등분선 y=x-7을 구하고 그 위 중심에서 반지름 7인 원을 이어 정하는 차례 풀이라 교점 계열 직선 관계 항목과 SEQUENTIAL이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": "교점"
+   },
+   "integrationPattern": "SEQUENTIAL"
+  },
+  {
+   "ordinal": 21,
+   "chosenFrom": "new",
+   "resolutionReason": "x-2y+6=0과 x축에 동시에 접하는 반지름 2인 원 C2의 중심 x좌표 최대·최소를 구하는 문제인데 접점이나 기울기가 주어진 접선 두 l4 모두 맞지 않는다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": ""
+   },
+   "hold": "신규 제안: rpmPath.l4 접점·기울기가 주어진 접선만 있고 직선과 축에 동시에 접하는 원의 중심 조건 항목이 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "접하는 원의 중심 조건",
+     "label": "직선·좌표축에 접하는 원의 중심 조건",
+     "parent": "도형의 방정식 > 원의 방정식 > 원의 접선",
+     "why": "가장 가까운 '기울기가 주어진 접선'은 원 밖 직선의 기울기가 주어져 접선을 세우는 것이고, 이 문항은 접선 l과 x축에 접하는 원의 중심까지 거리=반지름으로 중심을 구해 맞지 않는다."
+    }
+   }
+  },
+  {
+   "ordinal": 9,
+   "chosenFrom": "pass2",
+   "resolutionReason": "직선 y=mx+2가 A(0,2)를 지나며 삼각형 ABC의 넓이를 이등분하려면 BC의 중점 (1,3)을 지나야 하므로 m=1이고 선분의 내분점(중점) 항목에 맞는다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l3": "선분의 내분·외분",
+    "l4": "내분점"
+   }
+  }
+ ]
+}
