@@ -142,6 +142,7 @@
     "archive2-crosswalk-inventory.json",
     "archive2-extension-keys.json",
     "archive2-item-review-overrides.json",
+    "archive2-source-verification-index-v2.json",
     "archive2-source-verification-index.json",
     "archive2-subunit-groups.json",
     "archive2-unified-unit-policy.json",
@@ -165,7 +166,9 @@
     },
     "sourceVerification": {
       "index": "archive/data/archive2-source-verification-index.json",
-      "pathPrefix": "data/archive2-source-verification/v1/"
+      "pathPrefix": "data/archive2-source-verification/v1/",
+      "topIndex": "archive/data/archive2-source-verification-index-v2.json",
+      "bucketPrefix": "data/archive2-source-verification/index-v2/"
     },
     "reviewOverrides": {
       "index": "archive/data/archive2-item-review-overrides.json",
