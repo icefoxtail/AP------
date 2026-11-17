@@ -1,0 +1,143 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "T"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "원점 O에서 직선 3x−4y+10=0에 내린 수선의 발은 H(−6/5,8/5)이다. OH가 최단거리이며 |10|/√(3²+4²)=2이다. 정답: 2.",
+  "accessibilityDescription": "원점 O에서 직선 3x−4y+10=0에 내린 수선의 발은 H(−6/5,8/5)이다. OH가 최단거리이며 |10|/√(3²+4²)=2이다. 정답: 2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원점 $(0,0)$과 직선 $3x-4y+10=0$ 사이의 거리는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "H는 주어진 원점과 직선으로 PERPENDICULAR_FOOT 연산. T는 직선의 방향벡터(4,3)로 얻는 직각표식 보조점. 최종 거리2는 표시한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 O에서 직선 3x−4y+10=0에 내린 수선의 발은 H(−6/5,8/5)이다. OH가 최단거리이며 |10|/√(3²+4²)=2이다. 정답: 2."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateLabels": [
+    "O",
+    "H"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l",
+      "form": "GENERAL"
+    }
+  ]
+}

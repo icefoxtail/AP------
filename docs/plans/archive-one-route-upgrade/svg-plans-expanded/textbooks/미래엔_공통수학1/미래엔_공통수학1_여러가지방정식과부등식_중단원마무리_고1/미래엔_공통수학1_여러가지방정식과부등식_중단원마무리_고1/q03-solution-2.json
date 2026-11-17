@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ 4x−6≤3x+2에서x≤8,3x+2<5x−4에서x>3이다. 공통범위는3<x≤8이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} 6x+1\\ge 2x+17 \\\\ 5(x-1)\\le x+11 \\end{cases}$\n⑵ $4x-6\\le 3x+2<5x-4$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 첫 조건은 x≥4,둘째는 x≤4이다. 위 두 행의 공통부분은 닫힌 점 하나이므로 정답 x=4. ⑵ 4x−6≤3x+2에서x≤8,3x+2<5x−4에서x>3이다. 공통범위는3<x≤8이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 4x−6≤3x+2에서x≤8,3x+2<5x−4에서x>3이다. 공통범위는3<x≤8이다."
+  ]
+}

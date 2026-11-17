@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "11/2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑵ x≤1에서는5−2x≤6으로x≥−1/2,1≤x≤4에서는합3으로항상만족,x≥4에서는2x−5≤6으로x≤11/2이다. 위 세 행은 절댓값의 분기영역이고 마지막 행은 각 영역과 조건을 교차한 뒤 합친 최종해−1/2≤x≤11/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 부등식을 푸시오.\n⑴ $|3x+1|>5$\n⑵ $|x-1|+|x-4|\\le 6$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 3x+1>5 또는3x+1<−5이므로 x>4/3 또는x<−2이다. 두 경계는 엄격한 부등호라 포함하지 않는다. ⑵ x≤1에서는5−2x≤6으로x≥−1/2,1≤x≤4에서는합3으로항상만족,x≥4에서는2x−5≤6으로x≤11/2이다. 위 세 행은 절댓값의 분기영역이고 마지막 행은 각 영역과 조건을 교차한 뒤 합친 최종해−1/2≤x≤11/2이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ x≤1에서는5−2x≤6으로x≥−1/2,1≤x≤4에서는합3으로항상만족,x≥4에서는2x−5≤6으로x≤11/2이다. 위 세 행은 절댓값의 분기영역이고 마지막 행은 각 영역과 조건을 교차한 뒤 합친 최종해−1/2≤x≤11/2이다."
+  ]
+}

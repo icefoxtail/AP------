@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-11"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "H"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "N",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C",
+    "H",
+    "N",
+    "F",
+    "E",
+    "W",
+    "U",
+    "V"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "NF",
+      "refs": [
+        "N",
+        "F"
+      ]
+    }
+  ],
+  "caption": "중심C(3,4),반지름2의원에서 CH=14/5이다. 원전체가직선한쪽에있으므로높이h는4/5~24/5이고 밑변10인넓이 S=5h는4~24이다. N,F는각각높이최솟값/최댓값의위치다. 정답:1)14/5,2)40개.",
+  "accessibilityDescription": "중심C(3,4),반지름2의원에서 CH=14/5이다. 원전체가직선한쪽에있으므로높이h는4/5~24/5이고 밑변10인넓이 S=5h는4~24이다. N,F는각각높이최솟값/최댓값의위치다. 정답:1)14/5,2)40개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 원 $x^2+y^2-6x-8y+21=0$ 위의 임의의 점 $P$와 직선 $3x+4y-11=0$에 대하여 다음 물음에 답하고, 그 과정을 서술하시오.<br>1) 원의 중심에서 직선 $3x+4y-11=0$까지의 거리를 구하시오. [2점]<br>2) 직선 $3x+4y-11=0$ 위에 $\\overline{AB}=10$인 두 점 $A,B$가 있다. 원 위의 점 $P$를 꼭짓점으로 하는 삼각형 $PAB$의 넓이가 자연수가 되도록 하는 점 $P$의 개수를 풀이 과정과 함께 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "C는완전제곱으로도출, H는공식수선의발. CH14/5이므로CN:NH=2:4/5=5:2로내분N, C대칭F. 최솟값N과최댓값F의좌표도정확파생이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "중심C(3,4),반지름2의원에서 CH=14/5이다. 원전체가직선한쪽에있으므로높이h는4/5~24/5이고 밑변10인넓이 S=5h는4~24이다. N,F는각각높이최솟값/최댓값의위치다. 정답:1)14/5,2)40개."
+  ],
+  "coordinateLabels": [
+    "C",
+    "H",
+    "N",
+    "F"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l",
+      "form": "GENERAL"
+    }
+  ],
+  "coordinatePlacement": "PANEL",
+  "hiddenPointNames": [
+    "E",
+    "W",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE"
+}

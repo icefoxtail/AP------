@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "가장 긴 변은x+2이다. 삼각형 조건x+(x+1)>x+2에서x>1. 둔각 조건x²+(x+1)²<(x+2)²은x²−2x−3=(x−3)(x+1)<0,즉−1<x<3이다. 공통범위1<x<3. x=1은퇴화하고x=3은직각이므로양끝제외.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $x$, $x+1$, $x+2$가 둔각삼각형의 세 변의 길이가 되도록 하는 $x$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가장 긴 변은x+2이다. 삼각형 조건x+(x+1)>x+2에서x>1. 둔각 조건x²+(x+1)²<(x+2)²은x²−2x−3=(x−3)(x+1)<0,즉−1<x<3이다. 공통범위1<x<3. x=1은퇴화하고x=3은직각이므로양끝제외.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "가장 긴 변은x+2이다. 삼각형 조건x+(x+1)>x+2에서x>1. 둔각 조건x²+(x+1)²<(x+2)²은x²−2x−3=(x−3)(x+1)<0,즉−1<x<3이다. 공통범위1<x<3. x=1은퇴화하고x=3은직각이므로양끝제외."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-12",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "-5",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "compare",
+          "slope": "1",
+          "intercept": "5",
+          "label": "y=x+5",
+          "style": "DASHED"
+        }
+      ]
+    },
+    "formula": "(3) + (2)*x + (-1)*x^2"
+  },
+  "caption": "y=−x²+2x+3과 y=x+5를 비교한다. 세 경우의 교점 방정식 판별식은 각각16,−7,17이다. 교점이 있는 것은(가),(다), 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=-x^2+2x+3$의 그래프와 만나는 직선만 보기에서 있는 대로 고른 것은? (3.2점)\n<보기>\n(가) $x$축\n(나) $y=x+5$\n(다) $y=3x-1$",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "y=−x²+2x+3과 y=0를 비교한다. 세 경우의 교점 방정식 판별식은 각각16,−7,17이다. 교점이 있는 것은(가),(다), 정답④. y=−x²+2x+3과 y=x+5를 비교한다. 세 경우의 교점 방정식 판별식은 각각16,−7,17이다. 교점이 있는 것은(가),(다), 정답④. y=−x²+2x+3과 y=3x-1를 비교한다. 세 경우의 교점 방정식 판별식은 각각16,−7,17이다. 교점이 있는 것은(가),(다), 정답④.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−x²+2x+3과 y=x+5를 비교한다. 세 경우의 교점 방정식 판별식은 각각16,−7,17이다. 교점이 있는 것은(가),(다), 정답④."
+  ]
+}

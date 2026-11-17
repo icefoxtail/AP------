@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-8"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "h"
+    }
+  },
+  "caption": "h=f−g의 최고차항 계수는2이다. h≤0의 경계−1,3에서 h=2(x+1)(x−3). h(1)=−8이므로 정답 g(1)−f(1)=8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 각각 $3$, $1$인 두 이차함수 $f(x)$, $g(x)$가 다음 조건을 만족시킨다.<br><div class='note-box'>(가) $f(0)=f(2)$, $g(-1)=g(3)$<br>(나) 부등식 $f(x)\\le g(x)$의 해는 $-1\\le x\\le3$이다.</div>이때, $g(1)-f(1)$의 값을 구하면? [3.9점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "h=f−g의 최고차항 계수는2이다. h≤0의 경계−1,3에서 h=2(x+1)(x−3). h(1)=−8이므로 정답 g(1)−f(1)=8.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "h=f−g의 최고차항 계수는2이다. h≤0의 경계−1,3에서 h=2(x+1)(x−3). h(1)=−8이므로 정답 g(1)−f(1)=8."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -4,
+      7
+    ],
+    "curves": [
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3/2"
+        ],
+        "domain": [
+          "-2/3",
+          "6"
+        ],
+        "label": "y=(3/2)x-3"
+      },
+      {
+        "id": "lp",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2/3"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "y=(2/3)x+2"
+      },
+      {
+        "id": "mirror",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "y": [
+        -2,
+        0,
+        2,
+        4,
+        6
+      ]
+    }
+  },
+  "caption": "둘째 단계는 y=x 대칭이다. x와 y를 바꾸어 x=ay−4a+3을 얻고, a≠0일 때 y=x/a+4−3/a이다. 점 (2,0)은 (0,2)로 대칭된다. 대칭축과 두 직선을 구분해 읽는다. 최종 정답 a=3/2. 표시창의 잘린 끝은 직선의 실제 끝점이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $l:y=ax+2$를 $(4,1)$만큼 옮긴 후 $y=x$에 대칭한 $l'$과 $l$의 교점이 $y$축 위일 때 $a$를 구하시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "derivation",
+      "condition": "$l:y=ax+2$를 $(4,1)$만큼 평행이동하면 $y-1=a(x-4)+2$, 즉 $y=ax-4a+3$이다.\\n이를 직선 $y=x$에 대하여 대칭이동하면 $x=ay-4a+3$이다.\\n$a=0$이면 $l':x=3$이고 $l:y=2$와의 교점은 $(3,2)$이므로 $y$축 위에 있지 않다.\\n$a\\ne0$이면 $l':y=\\dfrac1ax+4-\\dfrac3a$이다.\\n두 직선의 교점이 $y$축 위에 있으려면 $x=0$에서 두 직선의 $y$값이 같아야 하므로 $2=4-\\dfrac3a$이고 $a=\\dfrac32$이다.\\n이때 $l:y=\\dfrac32x+2$, $l':y=\\dfrac23x+2$는 기울기가 달라 $(0,2)$에서 한 점으로 만난다.\\n따라서 $a=\\dfrac32$이다.",
+      "mappedTo": "curves and coordinate overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "최신 교정 원문의 실제 직선식과 좌표, 풀이 단계와 최종 정답을 표시한다."
+  ]
+}

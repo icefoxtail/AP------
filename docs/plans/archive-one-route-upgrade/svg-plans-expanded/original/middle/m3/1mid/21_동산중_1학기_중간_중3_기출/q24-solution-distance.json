@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "B",
+    "C",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 440
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len0",
+        "ownerSegment": "PB",
+        "text": "√5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "len1",
+        "ownerSegment": "BC",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "len2",
+        "ownerSegment": "CQ",
+        "text": "√10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "수직선에서 P,B,C,Q 순서로 놓인다. PB=√5, BC=4−(−2)=6, CQ=√10을 더한다. 정답 p=−2−√5, q=4+√10, PQ=6+√5+√10.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$AB=PB, CD=CQ$일 때 점 P에 대응하는 수, Q에 대응하는 수, $PQ$의 길이를 구하여라. [7점]",
+      "mappedTo": "source geometry"
+    },
+    {
+      "id": "image",
+      "condition": "직접 본 최신 PNG의 격자에서 A(−4,1),B(−2,0),C(4,0),D(7,1). E는 해당 점의 수직선 수선발이며 새 보조점. 도형 윗부분/정사각형을 새로 그리지 않고 길이계산에 필요한 직각삼각형만 분리한다.",
+      "mappedTo": "nodes"
+    },
+    {
+      "id": "method",
+      "condition": "AB=√5,CD=√10 정확 피타고라스 계산. P=B−(√5,0),Q=C+(√10,0)는 주어진 등거리와 그림의 방향에서 파생. 최신 정답/해설은 이 원그림 관계와 일치하도록 교정되었다.",
+      "mappedTo": "P Q and lengths"
+    }
+  ],
+  "newVisualInformation": [
+    "두 피타고라스 계산과 수직선 길이 합을 단계별 분리하여 최종 좌표 및 길이까지 설명한다."
+  ]
+}

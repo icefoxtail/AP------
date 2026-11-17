@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "s",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "넓이",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "24",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수 넓이와 원 위 점 개수"
+  },
+  "caption": "가로축 s는 삼각형 넓이 S와 같은 값을 나타낸다. 넓이S의범위는닫힌구간[4,24]이다. 양끝4,24는접하는평행선이라점각1개, 내부정수5~23은원과두점에서만난다. 내부19개×2와양끝2개를더한다. 정답:1)14/5,2)40개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": null,
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derive",
+      "condition": "h범위4/5~24/5에5를곱하면S범위4~24. 원위레벨단면은끝점하나/내부둘이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이S의범위는닫힌구간[4,24]이다. 양끝4,24는접하는평행선이라점각1개, 내부정수5~23은원과두점에서만난다. 내부19개×2와양끝2개를더한다. 정답:1)14/5,2)40개."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-14",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-81/4"
+      },
+      {
+        "id": "B",
+        "x": "7",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "y=(x+2)(x−7)에서 두 x절편은−2,7이다. 정답 a+b=5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2-5x-14$의 그래프와 $x$축이 만나는 두 점의 $x$좌표를 각각 $a,b$라 할 때, $a+b$의 값은? [3점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "y=(x+2)(x−7)에서 두 x절편은−2,7이다. 정답 a+b=5.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "y=(x+2)(x−7)에서 두 x절편은−2,7이다. 정답 a+b=5."
+  ]
+}

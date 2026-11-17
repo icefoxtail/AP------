@@ -1,0 +1,433 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "diag",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "18",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "P",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "P",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "direct",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P1",
+          "P2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "direct",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "direct",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circW",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circU",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circV",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "P1",
+    "P2",
+    "R",
+    "Q",
+    "circE",
+    "circW",
+    "circU",
+    "circV"
+  ],
+  "displayLines": [
+    "xaxis",
+    "diag"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "P1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "P1O",
+      "refs": [
+        "O",
+        "P1"
+      ]
+    },
+    {
+      "id": "P2O",
+      "refs": [
+        "O",
+        "P2"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    }
+  ],
+  "caption": "전체 원과 두 반사축의 배치를 먼저 본다. 호안의대표점 P(24/5,18/5)를두경계직선에대칭해 P₁,P₂를잡는다. PR=P₁R,PQ=P₂Q이므로둘레는꺾인경로P₁RQ P₂의길이와같고 P₁P₂이상이다. 두대칭점중심각90°로 P₁P₂=6√2이며직선경로가OA,OB안에서만나등호가능하다. 정답:6√2.",
+  "accessibilityDescription": "호안의대표점 P(24/5,18/5)를두경계직선에대칭해 P₁,P₂를잡는다. PR=P₁R,PQ=P₂Q이므로둘레는꺾인경로P₁RQ P₂의길이와같고 P₁P₂이상이다. 두대칭점중심각90°로 P₁P₂=6√2이며직선경로가OA,OB안에서만나등호가능하다. 정답:6√2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형3] 원 $x^2+y^2=36$에 대하여 원과 $x$축의 교점 중 하나를 $A(6,0)$, 원과 직선 $y=x$의 교점 중 하나를 $B(3\\sqrt2,3\\sqrt2)$라고 하자. 호 $AB$ 위를 움직이는 점을 $P$, 선분 $OB$ 위를 움직이는 점을 $Q$, 선분 $OA$ 위를 움직이는 점을 $R$이라고 할 때, 삼각형 $PQR$의 둘레의 길이에 대한 최솟값을 구하시오. (단, $O$는 원점이고, 호 $AB$는 짧은 길이의 호이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "P=(24/5,18/5)는원위호내부의정확대표점(3-4-5방향을6배)이지원문고정점아님. 두반사와직선교점은공식연산. 반사각90° 및길이6√2는임의호내부P에성립, 특정대표값으로최적값을가정한것이아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "호안의대표점 P(24/5,18/5)를두경계직선에대칭해 P₁,P₂를잡는다. PR=P₁R,PQ=P₂Q이므로둘레는꺾인경로P₁RQ P₂의길이와같고 P₁P₂이상이다. 두대칭점중심각90°로 P₁P₂=6√2이며직선경로가OA,OB안에서만나등호가능하다. 정답:6√2."
+  ],
+  "coordinateLabels": [
+    "P",
+    "P1",
+    "P2",
+    "Q",
+    "R"
+  ],
+  "pointNames": {
+    "P1": "P₁",
+    "P2": "P₂"
+  },
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "P1",
+        "O",
+        "P2"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "circE",
+    "circW",
+    "circU",
+    "circV"
+  ],
+  "hiddenPointStyle": "NONE"
+}

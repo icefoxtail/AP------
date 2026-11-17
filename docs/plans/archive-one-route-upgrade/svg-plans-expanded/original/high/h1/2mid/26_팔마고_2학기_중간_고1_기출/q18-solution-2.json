@@ -1,0 +1,361 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ap",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Pm",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "8",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "Ap"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "Pm",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hu",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "U",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "Ap",
+    "Pm",
+    "Hm",
+    "Hu",
+    "E",
+    "W",
+    "U",
+    "V"
+  ],
+  "displayLines": [
+    "base"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OPm",
+      "refs": [
+        "O",
+        "Pm"
+      ]
+    },
+    {
+      "id": "ApPm",
+      "refs": [
+        "Ap",
+        "Pm"
+      ]
+    },
+    {
+      "id": "OU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "ApU",
+      "refs": [
+        "Ap",
+        "U"
+      ]
+    },
+    {
+      "id": "heightM",
+      "refs": [
+        "Pm",
+        "Hm"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "heightU",
+      "refs": [
+        "U",
+        "Hu"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "△A′QP와△OA′P는같은넓이이므로 S=(2x+y)/2이다. 사분원에서최대는x=2y인Pm(8√5/5,4√5/5)에서2√5, 최소는U(0,4)에서2이다. 다른원주부분은보조원일뿐P의범위가아니다. Mm=4√5여서ㄷ은거짓. 정답:②(ㄱ,ㄴ).",
+  "accessibilityDescription": "△A′QP와△OA′P는같은넓이이므로 S=(2x+y)/2이다. 사분원에서최대는x=2y인Pm(8√5/5,4√5/5)에서2√5, 최소는U(0,4)에서2이다. 다른원주부분은보조원일뿐P의범위가아니다. Mm=4√5여서ㄷ은거짓. 정답:②(ㄱ,ㄴ).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에 사분원의 호 $C:x^2+y^2=16\\ (x\\ge0,\\ y\\ge0)$과 점 $A(-1,2)$가 있다. 호 $C$ 위를 움직이는 점 $P$에 대하여 점 $Q$를 삼각형 $APQ$의 무게중심이 원점과 일치하도록 잡는다. 점 $A$를 원점에 대하여 대칭이동한 점을 $A\\prime$이라 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은?<br>&lt;보기&gt;<br>ㄱ. 선분 $PQ$의 중점의 좌표는 $\\left(\\dfrac12,-1\\right)$이다.<br>ㄴ. 선분 $A\\prime Q$의 길이는 항상 일정하다.<br>ㄷ. 삼각형 $A\\prime QP$의 넓이의 최댓값과 최솟값을 각각 $M,m$이라 할 때, $Mm=8\\sqrt5$이다. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "Pm는Cauchy등호x=2y와반지름4에서정확도출해O에서TRANSLATE. U는반지름만큼이동한정확끝점. 수선의발공식으로높이를비교한다. 전체원은보조이며정의호이외를최적화에넣지않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "△A′QP와△OA′P는같은넓이이므로 S=(2x+y)/2이다. 사분원에서최대는x=2y인Pm(8√5/5,4√5/5)에서2√5, 최소는U(0,4)에서2이다. 다른원주부분은보조원일뿐P의범위가아니다. Mm=4√5여서ㄷ은거짓. 정답:②(ㄱ,ㄴ)."
+  ],
+  "coordinateLabels": [
+    "Ap",
+    "Pm",
+    "U"
+  ],
+  "pointNames": {
+    "Ap": "A′"
+  },
+  "coordinatePlacement": "PANEL",
+  "hiddenPointNames": [
+    "E",
+    "W",
+    "V",
+    "Hm",
+    "Hu"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "domain",
+        "circle": "circ",
+        "center": "O",
+        "from": "E",
+        "to": "U",
+        "side": "MINOR"
+      }
+    ]
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Left",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "X",
+    "Y",
+    "N",
+    "Left"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "N",
+    "Left"
+  ],
+  "displaySegments": [
+    {
+      "id": "real",
+      "refs": [
+        "Left",
+        "X"
+      ]
+    },
+    {
+      "id": "imag",
+      "refs": [
+        "N",
+        "Y"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "re",
+        "ownerSegment": "real",
+        "text": "Re",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "im",
+        "ownerSegment": "imag",
+        "text": "Im",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "복소평면에서 a²+b²4는 원점 중심 반지름2의 원이다. a²−b²2와 함께 a=±√3,b=±1의 네 점을 얻고 같은 실수부의 켤레 두 점씩 한 이차식의 근이다. m=−2a,n4이므로 m²+n²=12+16=28. 정답28.",
+  "hiddenPointStyle": "NONE",
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinatePanel": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.) (4.3점)\n<조건>\n가. $z^2+\\bar z^2=z\\bar z$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=4$이다.",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "복소평면에서 a²+b²4는 원점 중심 반지름2의 원이다. a²−b²2와 함께 a=±√3,b=±1의 네 점을 얻고 같은 실수부의 켤레 두 점씩 한 이차식의 근이다. m=−2a,n4이므로 m²+n²=12+16=28. 정답28.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "첫 점은 좌표 배치 기준이고 나머지는 정확 기호좌표로 유도한다. 실제 해/허용 대표예시는 caption에 구별했으며 단순 평면도형 점좌표를 새 원문 조건으로 추가하지 않는다.",
+      "mappedTo": "construction nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "복소평면에서 a²+b²4는 원점 중심 반지름2의 원이다. a²−b²2와 함께 a=±√3,b=±1의 네 점을 얻고 같은 실수부의 켤레 두 점씩 한 이차식의 근이다. m=−2a,n4이므로 m²+n²=12+16=28. 정답28."
+  ]
+}

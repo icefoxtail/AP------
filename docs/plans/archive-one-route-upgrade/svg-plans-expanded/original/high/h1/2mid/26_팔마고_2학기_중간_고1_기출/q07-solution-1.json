@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "F1",
+    "F2"
+  ],
+  "displayLines": [
+    "l",
+    "m"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "평행인 경우 두 기울기3/2가 같아 p=−9이다. 두 경우를 별도 패널로 비교하면 p+q=−9+4=−5이다. 정답: −5.",
+  "accessibilityDescription": "평행인 경우를 따로 표시해 두 직선의 방향을 비교한다. 서로 다른 두 경우를 한 축에 겹쳐 혼동하지 않으며 p,q의 값과 최종 합은 라벨로 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에 두 직선 $3x-2y+1=0$과 $ax+6y-5=0$이 있다. 이 두 직선이 서로 평행할 때 상수 $a$의 값을 $p$, 서로 수직일 때 상수 $a$의 값을 $q$라고 할 때, $p+q$의 값은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "3x−2y+1=0의 기울기3/2와 둘째직선의 −a/6을 비교해 평행 조건의 매개변수-9를 정확히 대입한 별도 패널. 서로 다른두경우를같은조건으로주장하지않는다.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "frame",
+      "condition": "F1/F2는 좌표축 원점에서 정확히 옮긴 표시창 끝점이며 원문 지정점 또는 수학 추가조건이 아니다. 직선 두 개와 식라벨을 표시창에서 확인하기 위한 숨은 배치점이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평행인 경우 두 기울기3/2가 같아 p=−9이다. 두 경우를 별도 패널로 비교하면 p+q=−9+4=−5이다. 정답: −5."
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l",
+      "form": "GENERAL"
+    },
+    {
+      "nodeId": "m",
+      "form": "GENERAL"
+    }
+  ],
+  "hiddenPointNames": [
+    "F1",
+    "F2"
+  ],
+  "hiddenPointStyle": "NONE"
+}

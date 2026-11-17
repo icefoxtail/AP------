@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "⑴ (x+1)(x−9)<0,아래로 볼록한 이차식은 두 근 사이에서 음수다. 정답−1<x<9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차부등식을 푸시오.\n⑴ $x^2-8x-9<0$\n⑵ $-x^2+7x-10\\le 0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ (x+1)(x−9)<0,아래로 볼록한 이차식은 두 근 사이에서 음수다. 정답−1<x<9. ⑵ −(x−2)(x−5)≤0이므로(x−2)(x−5)≥0이다. 정답x≤2 또는x≥5,두 근 포함.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ (x+1)(x−9)<0,아래로 볼록한 이차식은 두 근 사이에서 음수다. 정답−1<x<9."
+  ]
+}

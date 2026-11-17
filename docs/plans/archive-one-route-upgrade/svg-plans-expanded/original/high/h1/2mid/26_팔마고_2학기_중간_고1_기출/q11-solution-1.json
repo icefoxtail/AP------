@@ -1,0 +1,31 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "A∩B^c"
+  },
+  "caption": "A∩B^c는 B 밖의 A 영역이다. 이 부분은 둘째 부분 A^c∪B^c에 이미 포함된다. 최종 영역은 별도 패널에서 확인한다. 정답: ①, A∩B.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 다음 중 벤다이어그램의 색칠한 부분이 집합 $\\{(A\\cap B^C)\\cup(A^C\\cup B^C)\\}^C\\cap A$와 항상 같은 것은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 부분 A∩B의 여집합이 아니라 A∩B^c를 따로 본다. B 바깥의 A 부분임을 확인한다. 아직 전체 식의 최종 영역을 칠한 것이 아니다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A∩B^c는 B 밖의 A 영역이다. 이 부분은 둘째 부분 A^c∪B^c에 이미 포함된다. 최종 영역은 별도 패널에서 확인한다. 정답: ①, A∩B."
+  ]
+}

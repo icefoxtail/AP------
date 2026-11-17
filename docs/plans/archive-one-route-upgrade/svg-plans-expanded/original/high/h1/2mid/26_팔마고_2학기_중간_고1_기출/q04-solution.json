@@ -1,0 +1,133 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "H",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "HB",
+      "refs": [
+        "H",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "A(3,2)에서 가로 −4 이동해 H(−1,2), 다시 세로3 이동해 B(−1,5)에 이른다. a=−1,b=3이므로 ab=−3이다. 정답: −3.",
+  "accessibilityDescription": "A(3,2)에서 가로 −4 이동해 H(−1,2), 다시 세로3 이동해 B(−1,5)에 이른다. a=−1,b=3이므로 ab=−3이다. 정답: −3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 점 $(3,2)$를 $x$축의 방향으로 $-4$만큼, $y$축의 방향으로 $b$만큼 평행이동한 점의 좌표가 $(a,5)$일 때, 실수 $ab$의 값은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "y좌표2에서5로 이동하므로 b3을 내부 정확기하에 사용하되 화면에는 b만 표시한다. H와B는 공식 TRANSLATE_POINT 파생이며 최종a−1/b3/곱−3 라벨은 표시한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A(3,2)에서 가로 −4 이동해 H(−1,2), 다시 세로3 이동해 B(−1,5)에 이른다. a=−1,b=3이므로 ab=−3이다. 정답: −3."
+  ],
+  "coordinateLabels": [
+    "A",
+    "H",
+    "B"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dx",
+        "ownerSegment": "AH",
+        "text": "-4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dy",
+        "ownerSegment": "HB",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

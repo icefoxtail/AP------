@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "9",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "8"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "18"
+      },
+      {
+        "id": "V",
+        "x": "9/2",
+        "y": "81/4"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "20",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "R"
+      ]
+    },
+    "formula": "(0) + (9)*x + (-1)*x^2"
+  },
+  "caption": "최댓값18 조건에서 실제 a=9/4, f=−x²+9x를 얻는다. 원래 허용범위1≤x≤3은 축9/2 왼쪽이므로 증가한다. 축까지 보인 부분은 비교용일 뿐 원래 정의역이 아니다. 정답 x1에서 최솟값8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1\\le x\\le3$에서 $f(x)=-x^2+4ax$의 최댓값이 $18$일 때 최솟값을 풀이과정과 함께 구하시오. (단, $a>1$) (5점, 부분점수 있음)",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "최댓값18 조건에서 실제 a=9/4, f=−x²+9x를 얻는다. 원래 허용범위1≤x≤3은 축9/2 왼쪽이므로 증가한다. 축까지 보인 부분은 비교용일 뿐 원래 정의역이 아니다. 정답 x1에서 최솟값8.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "최댓값18 조건에서 실제 a=9/4, f=−x²+9x를 얻는다. 원래 허용범위1≤x≤3은 축9/2 왼쪽이므로 증가한다. 축까지 보인 부분은 비교용일 뿐 원래 정의역이 아니다. 정답 x1에서 최솟값8."
+  ]
+}

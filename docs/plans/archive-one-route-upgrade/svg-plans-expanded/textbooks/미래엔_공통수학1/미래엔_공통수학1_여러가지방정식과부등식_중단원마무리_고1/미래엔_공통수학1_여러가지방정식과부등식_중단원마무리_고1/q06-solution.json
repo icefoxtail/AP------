@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 조건(x−1)(x−3)≥0은x≤1 또는x≥3,둘째(4x+1)(x−2)<0은−1/4<x<2이다. 공통해는−1/4<x≤1이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} x^2+3\\ge 4x \\\\ 4x^2-7x-2<0 \\end{cases}$을 푸시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 조건(x−1)(x−3)≥0은x≤1 또는x≥3,둘째(4x+1)(x−2)<0은−1/4<x<2이다. 공통해는−1/4<x≤1이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 조건(x−1)(x−3)≥0은x≤1 또는x≥3,둘째(4x+1)(x−2)<0은−1/4<x<2이다. 공통해는−1/4<x≤1이다."
+  ]
+}

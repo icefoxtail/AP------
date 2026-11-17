@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-3/2",
+        "y": "-25/4"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "H"
+    }
+  },
+  "caption": "H=(f−g)/c=(x+4)(x−1),c>0인 부호 비교용 보조모형이다. 원본 두 그래프는 대체하지 않는다. 교점 사이 H<0이고 정답 정수4개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 이차부등식 $f(x)\\lt g(x)$를 만족시키는 정수 $x$의 개수는? [3점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "H=(f−g)/c=(x+4)(x−1),c>0인 부호 비교용 보조모형이다. 원본 두 그래프는 대체하지 않는다. 교점 사이 H<0이고 정답 정수4개. 원본 그림에서 f가 g보다 낮은 곳은 두 교점 사이 열린 구간이다. 경계−4,1 제외, 정수−3,−2,−1,0 네 개. 정답4개.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "H=(f−g)/c=(x+4)(x−1),c>0인 부호 비교용 보조모형이다. 원본 두 그래프는 대체하지 않는다. 교점 사이 H<0이고 정답 정수4개."
+  ]
+}

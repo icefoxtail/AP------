@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "b>0이면 a<0이고 c<b에서 a,b와 중복되는 카드를 제외한다. 별도 b=0 경우도 양변0으로 성립하므로 누락하지 않는다. b>0은36개,b=0은15개, 정답51. 첫 행은 음수 a,둘째 양수 b,셋째는 b0일 때 음수 c의 위치 비교이며 정수 카드만 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-3$부터 $3$까지의 정수가 각각 하나씩 적혀 있는 $7$장의 카드가 있다. 이 중 서로 다른 $3$장의 카드를 한 장씩 뽑아 카드에 적힌 숫자를 차례로 $a,b,c$라 할 때, 아래 <조건>을 만족시키는 순서쌍 $(a,b,c)$의 개수는? (단, $i=\\sqrt{-1}$이고, 음수 $x$에 대하여 $\\sqrt{x}=\\sqrt{-x}\\,i$이다.) (4.2점)\n<조건>\n가. $\\dfrac{\\sqrt{b}}{\\sqrt{a}}=-\\sqrt{\\dfrac{b}{a}}$\n나. $|b-c|=b-c$",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "b>0이면 a<0이고 c<b에서 a,b와 중복되는 카드를 제외한다. 별도 b=0 경우도 양변0으로 성립하므로 누락하지 않는다. b>0은36개,b=0은15개, 정답51. 첫 행은 음수 a,둘째 양수 b,셋째는 b0일 때 음수 c의 위치 비교이며 정수 카드만 센다.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "b>0이면 a<0이고 c<b에서 a,b와 중복되는 카드를 제외한다. 별도 b=0 경우도 양변0으로 성립하므로 누락하지 않는다. b>0은36개,b=0은15개, 정답51. 첫 행은 음수 a,둘째 양수 b,셋째는 b0일 때 음수 c의 위치 비교이며 정수 카드만 센다."
+  ]
+}

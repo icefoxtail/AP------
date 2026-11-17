@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 조건의 해는−1≤x≤5이다. 둘째는a≤3일 때x<a 또는x>3. 예시는a=−2이며 공통해3<x≤5를 보여준다. 왼쪽 여분해를 없애려면a≤−1이다. a=−1에서도x<a가엄격하므로−1은포함되지않아가능. a>−1이면왼쪽여분해또는오른쪽해누락이발생한다. 최종a≤−1. 이 한 예시가 전체 a값을 고정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} x^2-4x-5\\le 0 \\\\ (x-a)(x-3)>0 \\end{cases}$의 해가 $3<x\\le 5$가 되도록 하는 실수 $a$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 조건의 해는−1≤x≤5이다. 둘째는a≤3일 때x<a 또는x>3. 예시는a=−2이며 공통해3<x≤5를 보여준다. 왼쪽 여분해를 없애려면a≤−1이다. a=−1에서도x<a가엄격하므로−1은포함되지않아가능. a>−1이면왼쪽여분해또는오른쪽해누락이발생한다. 최종a≤−1. 이 한 예시가 전체 a값을 고정하지 않는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 조건의 해는−1≤x≤5이다. 둘째는a≤3일 때x<a 또는x>3. 예시는a=−2이며 공통해3<x≤5를 보여준다. 왼쪽 여분해를 없애려면a≤−1이다. a=−1에서도x<a가엄격하므로−1은포함되지않아가능. a>−1이면왼쪽여분해또는오른쪽해누락이발생한다. 최종a≤−1. 이 한 예시가 전체 a값을 고정하지 않는다."
+  ]
+}

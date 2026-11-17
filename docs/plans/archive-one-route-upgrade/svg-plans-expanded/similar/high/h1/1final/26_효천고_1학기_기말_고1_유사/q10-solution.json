@@ -1,0 +1,105 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "F",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "G",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "H",
+            "value": "7",
+            "hideName": true
+          },
+          {
+            "id": "I",
+            "value": "8",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "첫 행은 출발0,돌1..7,도착8의 총8칸이다. 다음 두 행은 마지막 이동이6→8의 두 칸 또는7→8의 한 칸임을 비교한다. 도착 방법은 a8=a6+a7=13+21=34, 정답34가지.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "출발 지점과 도착 지점 사이에 7개의 돌이 일직선으로 같은 간격으로 놓여 있는 징검다리가 있다. 출발 지점에서 첫째 돌까지, 이웃한 두 돌 사이, 마지막 돌에서 도착 지점까지의 간격은 모두 한 칸이다. 한 번에 한 칸 또는 두 칸을 건널 수 있다고 할 때, 출발 지점에서 도착 지점까지 가는 방법의 수를 구하면? [3.7점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "첫 행은 출발0,돌1..7,도착8의 총8칸이다. 다음 두 행은 마지막 이동이6→8의 두 칸 또는7→8의 한 칸임을 비교한다. 도착 방법은 a8=a6+a7=13+21=34, 정답34가지.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 행은 출발0,돌1..7,도착8의 총8칸이다. 다음 두 행은 마지막 이동이6→8의 두 칸 또는7→8의 한 칸임을 비교한다. 도착 방법은 a8=a6+a7=13+21=34, 정답34가지."
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "A는입구,B는매점,C는출구다. 원본산책로를보존하고같은두지점사이길을한선으로묶었다. 선의숫자는거리나길이가아니라산책로개수이다. 매점을거치지않는A→C는4가지,매점을거치는A→B→C는3×2=6가지이다. 같은지점재방문금지이므로다른방문순서는없다. 합4+6=10가지. A원점과B/C좌표는연결관계배치용이며원문좌표가아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 어느 공원의 산책로를 나타낸 것이다. 입구에서 출구로 가는 경우의 수를 구하시오. (단, 같은 지점을 다시 가지 않는다.)\n<img src=\"q04.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A는입구,B는매점,C는출구다. 원본산책로를보존하고같은두지점사이길을한선으로묶었다. 선의숫자는거리나길이가아니라산책로개수이다. 매점을거치지않는A→C는4가지,매점을거치는A→B→C는3×2=6가지이다. 같은지점재방문금지이므로다른방문순서는없다. 합4+6=10가지. A원점과B/C좌표는연결관계배치용이며원문좌표가아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A는입구,B는매점,C는출구다. 원본산책로를보존하고같은두지점사이길을한선으로묶었다. 선의숫자는거리나길이가아니라산책로개수이다. 매점을거치지않는A→C는4가지,매점을거치는A→B→C는3×2=6가지이다. 같은지점재방문금지이므로다른방문순서는없다. 합4+6=10가지. A원점과B/C좌표는연결관계배치용이며원문좌표가아니다."
+  ]
+}

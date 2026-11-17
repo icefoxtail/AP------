@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "원본 그림에서 f가 g보다 낮은 곳은 두 교점 사이 열린 구간이다. 경계−4,1 제외, 정수−3,−2,−1,0 네 개. 정답4개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 이차부등식 $f(x)\\lt g(x)$를 만족시키는 정수 $x$의 개수는? [3점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "H=(f−g)/c=(x+4)(x−1),c>0인 부호 비교용 보조모형이다. 원본 두 그래프는 대체하지 않는다. 교점 사이 H<0이고 정답 정수4개. 원본 그림에서 f가 g보다 낮은 곳은 두 교점 사이 열린 구간이다. 경계−4,1 제외, 정수−3,−2,−1,0 네 개. 정답4개.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 그림에서 f가 g보다 낮은 곳은 두 교점 사이 열린 구간이다. 경계−4,1 제외, 정수−3,−2,−1,0 네 개. 정답4개."
+  ]
+}

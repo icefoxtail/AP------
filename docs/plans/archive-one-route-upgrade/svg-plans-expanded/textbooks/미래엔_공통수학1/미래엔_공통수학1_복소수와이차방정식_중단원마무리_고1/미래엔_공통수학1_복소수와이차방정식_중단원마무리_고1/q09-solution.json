@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "3",
+            "7"
+          ]
+        }
+      }
+    ],
+    "variable": "k"
+  },
+  "caption": "D/4=k²−(k²+k−3)=3−k. 서로다른두허근의조건은D<0,즉k>3이다. 열린경계3오른쪽정수중처음은4. 정답4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차방정식 $x^2-2kx+k^2+k-3=0$이 서로 다른 두 허근을 갖도록 하는 정수 $k$의 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "D/4=k²−(k²+k−3)=3−k. 서로다른두허근의조건은D<0,즉k>3이다. 열린경계3오른쪽정수중처음은4. 정답4.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "D/4=k²−(k²+k−3)=3−k. 서로다른두허근의조건은D<0,즉k>3이다. 열린경계3오른쪽정수중처음은4. 정답4."
+  ]
+}

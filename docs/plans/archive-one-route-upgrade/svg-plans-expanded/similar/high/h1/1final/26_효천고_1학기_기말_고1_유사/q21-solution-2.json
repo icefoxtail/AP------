@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "U",
+    "P",
+    "Q",
+    "X",
+    "Y",
+    "N"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "Y",
+    "N"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "real",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "imag",
+      "refs": [
+        "N",
+        "Y"
+      ]
+    },
+    {
+      "id": "pq",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "realname",
+        "ownerSegment": "real",
+        "text": "Re",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "imagname",
+        "ownerSegment": "imag",
+        "text": "Im",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "복소평면이다. 가로 방향은 실수부, 세로 방향은 허수부이다. U=(1,0)은 실근1, P=(2,3),Q=(2,−3)은 서로 켤레인2±3i를 나타낸다. 점선은 실수부가 같음을 보일 뿐 방정식의 실수 함수 그래프가 아니다. 정답1,2+3i,2−3i.",
+  "coordinateLabels": [
+    "U",
+    "P",
+    "Q"
+  ],
+  "coordinatePanel": [
+    "U",
+    "P",
+    "Q"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<strong>단답형 3. [3점]</strong><br>삼차방정식 $x^3-5x^2+17x-13=0$의 해를 복소수의 범위에서 모두 구하시오. [각 1점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "실수 그래프는 x=1의 한 교점만 보인다. f=(x−1)((x−2)²+9)이므로 나머지 두 해는 실수 x축 교점으로 그리지 않는다. 복소수 범위의 정답1,2+3i,2−3i. 복소평면이다. 가로 방향은 실수부, 세로 방향은 허수부이다. U=(1,0)은 실근1, P=(2,3),Q=(2,−3)은 서로 켤레인2±3i를 나타낸다. 점선은 실수부가 같음을 보일 뿐 방정식의 실수 함수 그래프가 아니다. 정답1,2+3i,2−3i.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "O는 복소평면 원점이며 나머지는 정확 실수부/허수부 좌표로 유도한다. 실제 실수함수 교점과 복소근을 혼동하지 않는다.",
+      "mappedTo": "nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "복소평면이다. 가로 방향은 실수부, 세로 방향은 허수부이다. U=(1,0)은 실근1, P=(2,3),Q=(2,−3)은 서로 켤레인2±3i를 나타낸다. 점선은 실수부가 같음을 보일 뿐 방정식의 실수 함수 그래프가 아니다. 정답1,2+3i,2−3i."
+  ]
+}

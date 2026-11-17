@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "15/4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "15/4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "두 비접촉 조건의 교집합은 열린 구간(−3,15/4). 접점의 경계는 포함하지 않는다. 정답 정수6개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=-x+k$가 이차함수 $y=x^2+2x+6$의 그래프와 만나지 않고, 이차함수 $y=-x^2+x-4$의 그래프와도 만나지 않도록 하는 모든 정수 $k$의 개수는? (3.8점)",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "위로 열린 포물선 y=x²+2x+6에 기울기−1인 접선의 절편은15/4이다. y=−x+k가 만나지 않으려면 k<15/4. 다음 아래 포물선 조건과 결합하여 정답 정수 k6개. 아래 포물선 y=−x²+x−4의 기울기−1 접선은 y=−x−3이다. 만나지 않으려면 k>−3이며 접하는 k=−3은 제외. 두 조건을 결합하면−3<k<15/4, 정답−2,−1,0,1,2,3의6개. 두 비접촉 조건의 교집합은 열린 구간(−3,15/4). 접점의 경계는 포함하지 않는다. 정답 정수6개.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "두 비접촉 조건의 교집합은 열린 구간(−3,15/4). 접점의 경계는 포함하지 않는다. 정답 정수6개."
+  ]
+}

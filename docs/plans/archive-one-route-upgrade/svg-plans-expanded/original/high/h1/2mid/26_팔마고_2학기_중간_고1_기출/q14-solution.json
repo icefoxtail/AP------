@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-8",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "6",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cW",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cU",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cV",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t1",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "c",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t2",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "c",
+          "T2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t2",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "T1",
+    "T2",
+    "I",
+    "cE",
+    "cW",
+    "cU",
+    "cV"
+  ],
+  "displayLines": [
+    "axis",
+    "t1",
+    "t2"
+  ],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "OT1",
+      "refs": [
+        "O",
+        "T1"
+      ]
+    },
+    {
+      "id": "OT2",
+      "refs": [
+        "O",
+        "T2"
+      ]
+    }
+  ],
+  "caption": "P(2,6)에서 그은 접선 중 세로선 x=2를 먼저 확인한다. 나머지는 y−6=m(x−2)와 원점까지 거리2로 m=4/3, 즉4x−3y+10=0이다. 두 x절편은2와−5/2이다. 정답: p+q=−1/2.",
+  "accessibilityDescription": "P(2,6)에서 그은 접선 중 세로선 x=2를 먼저 확인한다. 나머지는 y−6=m(x−2)와 원점까지 거리2로 m=4/3, 즉4x−3y+10=0이다. 두 x절편은2와−5/2이다. 정답: p+q=−1/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(2,6)$에서 원 $x^2+y^2=4$에 그은 두 접선의 $x$절편을 각각 $p$, $q$라 할 때, $p+q$의 값은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "세로접점T1(2,0). 두번째 기울기4/3은(6−2m)^2=4(m²+1)에서유도, 원점의수선발T2=(−8/5,6/5). 이두파생점을O에서TRANSLATE로만들고공식TANGENT_AT_POINT로실제접선생성. I는공식직선교점.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "P(2,6)에서 그은 접선 중 세로선 x=2를 먼저 확인한다. 나머지는 y−6=m(x−2)와 원점까지 거리2로 m=4/3, 즉4x−3y+10=0이다. 두 x절편은2와−5/2이다. 정답: p+q=−1/2."
+  ],
+  "coordinateLabels": [
+    "P",
+    "T1",
+    "T2",
+    "I"
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "T1",
+        "P"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "T2",
+        "P"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "cE",
+    "cW",
+    "cU",
+    "cV"
+  ],
+  "hiddenPointStyle": "NONE"
+}

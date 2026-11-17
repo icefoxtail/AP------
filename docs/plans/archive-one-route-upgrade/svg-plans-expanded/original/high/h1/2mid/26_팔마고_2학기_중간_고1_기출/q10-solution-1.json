@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "F1",
+    "F2"
+  ],
+  "displayLines": [
+    "v",
+    "h"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "caption": "ㄱ의 세로선과 ㄴ의 가로선을 x=2,y=2라는 대표값으로 비교한다. 계수조건에맞는예시이지원문에서특정값2를준것은아니다. ㄷ은k3에서5=0이되어도형없음, ㄹ은다음쌍곡선패널이다. 정답: ㄱ,ㄴ,ㄹ(③).",
+  "accessibilityDescription": "ㄱ의 세로선과 ㄴ의 가로선을 x=2,y=2라는 대표값으로 비교한다. 계수조건에맞는예시이지원문에서특정값2를준것은아니다. ㄷ은k3에서5=0이되어도형없음, ㄹ은다음쌍곡선패널이다. 정답: ㄱ,ㄴ,ㄹ(③).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 $x$, $y$에 대한 방정식이 나타내는 도형에 대한 설명이다. 보기에서 옳은 것만을 있는 대로 고른 것은?<br>&lt;보기&gt;<br>ㄱ. 방정식 $ax+by+c=0$에서 $a\\ne0$, $b=0$, $c\\ne0$일 때, 이 방정식은 $y$축에 평행한 직선을 나타낸다.<br>ㄴ. 방정식 $ax+by+c=0$에서 $a=0$, $b\\ne0$, $c\\ne0$일 때, 이 방정식은 $x$축에 평행한 직선을 나타낸다.<br>ㄷ. 실수 $k$에 대하여 방정식 $(k-3)x+(k^2-9)y+5=0$은 $k$의 값에 관계없이 항상 직선을 나타낸다.<br>ㄹ. 방정식 $xy+2=0$은 직선을 나타내지 않는다. [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "상수x/y의 대표예시2, 숨은F1/F2는좌표축 표시창만 정함. 원문k3에서는방정식불가능으로직선그리기를하지않음.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "ㄱ의 세로선과 ㄴ의 가로선을 x=2,y=2라는 대표값으로 비교한다. 계수조건에맞는예시이지원문에서특정값2를준것은아니다. ㄷ은k3에서5=0이되어도형없음, ㄹ은다음쌍곡선패널이다. 정답: ㄱ,ㄴ,ㄹ(③)."
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "v",
+      "form": "GENERAL"
+    },
+    {
+      "nodeId": "h",
+      "form": "GENERAL"
+    }
+  ],
+  "hiddenPointNames": [
+    "F1",
+    "F2"
+  ],
+  "hiddenPointStyle": "NONE"
+}

@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -4,
+      7
+    ],
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "3/2"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=(3/2)x+2"
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3/2"
+        ],
+        "domain": [
+          "-2/3",
+          "6"
+        ],
+        "label": "y=(3/2)x-3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "y": [
+        -2,
+        0,
+        2,
+        4,
+        6
+      ]
+    }
+  },
+  "caption": "첫 단계는 평행이동이다. 일반식은 y−1=a(x−4)+2에서 y=ax−4a+3이다. 그림은 조건에서 결정되는 실제 a=3/2를 대입한 모습이며, (-2,-1)이 (2,0)으로 이동한다. 이는 예시로 다른 a를 가정한 것이 아니다. 최종 정답 a=3/2. 표시창의 잘린 끝은 직선의 실제 끝점이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $l:y=ax+2$를 $(4,1)$만큼 옮긴 후 $y=x$에 대칭한 $l'$과 $l$의 교점이 $y$축 위일 때 $a$를 구하시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "derivation",
+      "condition": "$l:y=ax+2$를 $(4,1)$만큼 평행이동하면 $y-1=a(x-4)+2$, 즉 $y=ax-4a+3$이다.\\n이를 직선 $y=x$에 대하여 대칭이동하면 $x=ay-4a+3$이다.\\n$a=0$이면 $l':x=3$이고 $l:y=2$와의 교점은 $(3,2)$이므로 $y$축 위에 있지 않다.\\n$a\\ne0$이면 $l':y=\\dfrac1ax+4-\\dfrac3a$이다.\\n두 직선의 교점이 $y$축 위에 있으려면 $x=0$에서 두 직선의 $y$값이 같아야 하므로 $2=4-\\dfrac3a$이고 $a=\\dfrac32$이다.\\n이때 $l:y=\\dfrac32x+2$, $l':y=\\dfrac23x+2$는 기울기가 달라 $(0,2)$에서 한 점으로 만난다.\\n따라서 $a=\\dfrac32$이다.",
+      "mappedTo": "curves and coordinate overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "최신 교정 원문의 실제 직선식과 좌표, 풀이 단계와 최종 정답을 표시한다."
+  ]
+}

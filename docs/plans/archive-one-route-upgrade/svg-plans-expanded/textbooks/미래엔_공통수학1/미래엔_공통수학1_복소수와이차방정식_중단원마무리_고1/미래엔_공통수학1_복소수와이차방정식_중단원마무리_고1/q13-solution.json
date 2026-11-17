@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "18/5",
+          "-47/5",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2/5",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "9",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "47/10",
+        "y": "-1849/100"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "14"
+      },
+      {
+        "id": "R",
+        "x": "11",
+        "y": "106/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^2 - 47*x/5 + 18/5"
+  },
+  "caption": "b를잘못읽은경우근의곱c/a=18·(1/5)=18/5는유효하다. c를잘못읽은경우근의합−b/a=8+7/5=47/5는유효하다. 원식은5x²−47x+18=(5x−2)(x−9)=0. 그래프는원식을a로나눈식이며근은2/5,9이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $ax^2+bx+c=0$에서 $b$를 잘못 보고 풀었더니 두 근이 $18$과 $\\dfrac{1}{5}$이 되었고, $c$를 잘못 보고 풀었더니 두 근이 $8$과 $\\dfrac{7}{5}$이 되었다. 처음 이차방정식의 근을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "b를잘못읽은경우근의곱c/a=18·(1/5)=18/5는유효하다. c를잘못읽은경우근의합−b/a=8+7/5=47/5는유효하다. 원식은5x²−47x+18=(5x−2)(x−9)=0. 그래프는원식을a로나눈식이며근은2/5,9이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "b를잘못읽은경우근의곱c/a=18·(1/5)=18/5는유효하다. c를잘못읽은경우근의합−b/a=8+7/5=47/5는유효하다. 원식은5x²−47x+18=(5x−2)(x−9)=0. 그래프는원식을a로나눈식이며근은2/5,9이다."
+  ]
+}

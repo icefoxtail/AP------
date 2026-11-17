@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "-10",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "55",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "5",
+        "y": "-9"
+      },
+      {
+        "id": "B",
+        "x": "8",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "-5"
+      },
+      {
+        "id": "R",
+        "x": "9",
+        "y": "7",
+        "marker": "NONE"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "16"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "formula": "(16) + (-10)*x + (1)*x^2"
+  },
+  "caption": "축 m=5인 후보 y=(x−5)²−9이다. f(3)=−5를 만족하지만 두 근 모두 양수라는 조건은 m5만 만족한다. 실제 두 근2,8, 정답 f(0)=16.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 이차함수 $f(x)$의 그래프와 $x$축의 두 교점의 $x$좌표를 각각 $\\alpha,\\beta$ ($0<\\alpha<\\beta$)라 하자. $f\\left(\\dfrac{\\alpha+\\beta}{2}\\right)=-9$이고 $f(3)=-5$를 만족할 때, $f(0)$의 값은? (4.2점)",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "축 m=1인 후보 y=(x−1)²−9이다. f(3)=−5를 만족하지만 두 근 모두 양수라는 조건은 m5만 만족한다. 실제 두 근2,8, 정답 f(0)=16. 축 m=5인 후보 y=(x−5)²−9이다. f(3)=−5를 만족하지만 두 근 모두 양수라는 조건은 m5만 만족한다. 실제 두 근2,8, 정답 f(0)=16.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "축 m=5인 후보 y=(x−5)²−9이다. f(3)=−5를 만족하지만 두 근 모두 양수라는 조건은 m5만 만족한다. 실제 두 근2,8, 정답 f(0)=16."
+  ]
+}

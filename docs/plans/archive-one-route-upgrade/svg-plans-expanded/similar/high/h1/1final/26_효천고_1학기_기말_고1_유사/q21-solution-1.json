@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-13",
+          "17",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "-36",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "39",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    }
+  },
+  "caption": "실수 그래프는 x=1의 한 교점만 보인다. f=(x−1)((x−2)²+9)이므로 나머지 두 해는 실수 x축 교점으로 그리지 않는다. 복소수 범위의 정답1,2+3i,2−3i.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<strong>단답형 3. [3점]</strong><br>삼차방정식 $x^3-5x^2+17x-13=0$의 해를 복소수의 범위에서 모두 구하시오. [각 1점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "실수 그래프는 x=1의 한 교점만 보인다. f=(x−1)((x−2)²+9)이므로 나머지 두 해는 실수 x축 교점으로 그리지 않는다. 복소수 범위의 정답1,2+3i,2−3i. 복소평면이다. 가로 방향은 실수부, 세로 방향은 허수부이다. U=(1,0)은 실근1, P=(2,3),Q=(2,−3)은 서로 켤레인2±3i를 나타낸다. 점선은 실수부가 같음을 보일 뿐 방정식의 실수 함수 그래프가 아니다. 정답1,2+3i,2−3i.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "실수 그래프는 x=1의 한 교점만 보인다. f=(x−1)((x−2)²+9)이므로 나머지 두 해는 실수 x축 교점으로 그리지 않는다. 복소수 범위의 정답1,2+3i,2−3i."
+  ]
+}

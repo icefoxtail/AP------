@@ -1,0 +1,380 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirror",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "D",
+          "mirror"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "old",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oldE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oldW",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oldU",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oldV",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "new",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "newE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "newW",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "newU",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "newV",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C",
+    "D",
+    "E",
+    "oldE",
+    "oldW",
+    "oldU",
+    "oldV",
+    "newE",
+    "newW",
+    "newU",
+    "newV"
+  ],
+  "displayLines": [
+    "mirror"
+  ],
+  "displayCircles": [
+    "old",
+    "new"
+  ],
+  "displaySegments": [
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "원래 중심 C(−5,3)와 반지름2를 구한다. 최종 원은 두 축에 접하고 제4사분면이므로 중심 E(2,−2)이다. 대칭 전 중심 D(−2,2)까지 C를 (3,−1)만큼 옮긴 뒤 y=x에 대해 대칭한다. 정답: a+b=2.",
+  "accessibilityDescription": "원래 중심 C(−5,3)와 반지름2를 구한다. 최종 원은 두 축에 접하고 제4사분면이므로 중심 E(2,−2)이다. 대칭 전 중심 D(−2,2)까지 C를 (3,−1)만큼 옮긴 뒤 y=x에 대해 대칭한다. 정답: a+b=2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $x^2+y^2+10x-6y+30=0$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 후, 직선 $y=x$에 대하여 대칭이동한 원을 $C$라고 하자. 원 $C$가 $x$축과 $y$축에 동시에 접하고 그 원의 중심이 제$4$사분면 위에 있을 때, 실수 $a+b$의 값은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "derivation",
+      "condition": "완전제곱으로 C(−5,3),r2. 최종중심E=(2,−2)에서거꾸로대칭전D=(−2,2),이동량(3,−1)도출. 원점기준TRANSLATE와LINE_REFLECTION으로생성. 두원의극점은정확반지름으로파생해전체경계보존.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 중심 C(−5,3)와 반지름2를 구한다. 최종 원은 두 축에 접하고 제4사분면이므로 중심 E(2,−2)이다. 대칭 전 중심 D(−2,2)까지 C를 (3,−1)만큼 옮긴 뒤 y=x에 대해 대칭한다. 정답: a+b=2."
+  ],
+  "coordinateLabels": [
+    "C",
+    "D",
+    "E"
+  ],
+  "hiddenPointNames": [
+    "oldE",
+    "oldW",
+    "oldU",
+    "oldV",
+    "newE",
+    "newW",
+    "newU",
+    "newV"
+  ],
+  "hiddenPointStyle": "NONE"
+}

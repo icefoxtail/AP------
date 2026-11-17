@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "1/4"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "T"
+    },
+    "formula": "(0) + (1)*x + (-1)*x^2"
+  },
+  "caption": "t=u/β, T=S/(αβ)로 정규화하면 T=t(1−t)이다. 실제 직사각형은0<t<1로 양끝은 퇴화 비교점이다. t1/2에서T1/4,αβ7을 곱해 정답7/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2-6x+7=0$의 두 실근을 $\\alpha,\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\angle B=90^\\circ$이고 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$ 안에 직사각형을 그리려 한다. 직사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있고, 점 $D$는 직사각형의 한 꼭짓점이면서 선분 $AC$ 위에 있다. 이 직사각형의 넓이의 최댓값은? (4.3점)",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "원본 삼각형을 보존하고 최대 넓이를 달성하는 BP=β/2,BQ=α/2의 정확 배치를 추가했다. 닮음에서 v=α(1−u/β), 넓이 uv=αu−αu²/β. 두 근의 곱αβ7이므로 최대αβ/4=7/4. 정답7/4. t=u/β, T=S/(αβ)로 정규화하면 T=t(1−t)이다. 실제 직사각형은0<t<1로 양끝은 퇴화 비교점이다. t1/2에서T1/4,αβ7을 곱해 정답7/4.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "t=u/β, T=S/(αβ)로 정규화하면 T=t(1−t)이다. 실제 직사각형은0<t<1로 양끝은 퇴화 비교점이다. t1/2에서T1/4,αβ7을 곱해 정답7/4."
+  ]
+}

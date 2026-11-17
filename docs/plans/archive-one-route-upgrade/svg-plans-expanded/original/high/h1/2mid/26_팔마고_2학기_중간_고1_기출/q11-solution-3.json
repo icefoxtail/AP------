@@ -1,0 +1,31 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "앞 단계에서 얻은 A^c∪B^c의 여집합은 A∩B이다. 이를 다시 A와 교집합해도 공통 부분이 유지된다. 정답: ①, A∩B.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 다음 중 벤다이어그램의 색칠한 부분이 집합 $\\{(A\\cap B^C)\\cup(A^C\\cup B^C)\\}^C\\cap A$와 항상 같은 것은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "둘째 부분 A^c∪B^c를 본다. 첫 부분이 이 영역 안에 이미 들어가는지 비교한 뒤 전체 바깥의 여집합 연산과 A와의 교집합은 학생이 이어 판단한다. 최종 영역은 표시한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "앞 단계에서 얻은 A^c∪B^c의 여집합은 A∩B이다. 이를 다시 A와 교집합해도 공통 부분이 유지된다. 정답: ①, A∩B."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-4"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "-4"
+      }
+    ],
+    "axisTitles": {
+      "x": "k",
+      "y": "D/4"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T1",
+          "curveX": "-sqrt(5)",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SW"
+        },
+        {
+          "id": "T2",
+          "curveX": "sqrt(5)",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SE"
+        }
+      ]
+    },
+    "formula": "(5) + (0)*x + (-1)*x^2"
+  },
+  "caption": "두 허용(P,Q)쌍 모두 교점 방정식의 D/4=5−k²로 귀결된다. 중근 조건은 이 포물선의 두 영점 k=±√5이다. 두 근의 곱은−5, 정답−5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 정수인 이차다항식 $P(x),\\ Q(x)$에 대하여\n$P(x)Q(x)=-x(x-1)(x-2)(x-3)+15$\n이고, 방정식 $P(x)=Q(x+k)$는 중근을 갖는다. $P(2)<Q(2)$일 때, 모든 상수 $k$의 곱은? (단, $P(x),\\ Q(x)$의 계수는 모두 실수이다.) (4.9점)",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "두 허용(P,Q)쌍 모두 교점 방정식의 D/4=5−k²로 귀결된다. 중근 조건은 이 포물선의 두 영점 k=±√5이다. 두 근의 곱은−5, 정답−5.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "두 허용(P,Q)쌍 모두 교점 방정식의 D/4=5−k²로 귀결된다. 중근 조건은 이 포물선의 두 영점 k=±√5이다. 두 근의 곱은−5, 정답−5."
+  ]
+}

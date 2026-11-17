@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/6",
+        "y": "47/12"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "8"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "14"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "3*x^2 - x + 4"
+  },
+  "caption": "⑶ D=1−48=−47<0이다. 최솟값47/12>0이라실수x축과만나지않는다. 서로다른두허근(1±√47 i)/6이다. 비실근은실수그래프의교점이아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차방정식의 근을 판별하시오.\n⑴ $2x^2-4x-3=0$\n⑵ $9x^2-12x+4=0$\n⑶ $3x^2-x+4=0$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ D=(−4)²−4·2·(−3)=40>0. 그래프는 x축과 서로 다른 두 점에서 만나며 근은1±√10/2인 서로 다른 두 실근이다. ⑵ D=144−144=0,9x²−12x+4=(3x−2)²이므로x=2/3에서x축에접한다. 중근x=2/3이다. ⑶ D=1−48=−47<0이다. 최솟값47/12>0이라실수x축과만나지않는다. 서로다른두허근(1±√47 i)/6이다. 비실근은실수그래프의교점이아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑶ D=1−48=−47<0이다. 최솟값47/12>0이라실수x축과만나지않는다. 서로다른두허근(1±√47 i)/6이다. 비실근은실수그래프의교점이아니다."
+  ]
+}

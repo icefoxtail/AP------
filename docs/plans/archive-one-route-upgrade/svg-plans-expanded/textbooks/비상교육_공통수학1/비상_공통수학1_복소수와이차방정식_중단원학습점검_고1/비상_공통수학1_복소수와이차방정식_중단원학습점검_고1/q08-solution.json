@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "2",
+            "6"
+          ]
+        }
+      }
+    ],
+    "variable": "k"
+  },
+  "caption": "이차방정식이므로k≠0이고D/4=(k−2)²−k(k−2)=−2(k−2). 서로다른두허근은D<0,즉k>2이다. 이범위는k≠0도자동만족한다. 가장작은정수는3. 정답3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $kx^2-2(k-2)x+k-2=0$이 서로 다른 두 허근을 갖도록 하는 정수 $k$의 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이차방정식이므로k≠0이고D/4=(k−2)²−k(k−2)=−2(k−2). 서로다른두허근은D<0,즉k>2이다. 이범위는k≠0도자동만족한다. 가장작은정수는3. 정답3.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "이차방정식이므로k≠0이고D/4=(k−2)²−k(k−2)=−2(k−2). 서로다른두허근은D<0,즉k>2이다. 이범위는k≠0도자동만족한다. 가장작은정수는3. 정답3."
+  ]
+}
