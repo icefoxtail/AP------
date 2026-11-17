@@ -56,6 +56,14 @@ function context() {
     canonicalBefore: clone(canonical), canonicalAfter: clone(canonical), cache: immutableCache,
     supportedFields: new Set(Object.keys(patch.after)) };
 }
+// The tool authenticates the renderer at HEAD:archive/engine.html, so the same
+// engine bytes preserved in the working tree must be in the HEAD tree as well.
+function commitEngineAtHead(root) {
+  git(root, ['add', '--', 'archive/engine.html']);
+  const tree = git(root, ['write-tree']).toString().trim();
+  const commit = git(root, ['commit-tree', tree, '-m', 'Synthetic HEAD carrying the renderer']).toString().trim();
+  fs.writeFileSync(path.join(root, '.git/HEAD'), commit + '\n');
+}
 function reseal(ctx, key, value) {
   const relative = ctx.patch.sourceReview.q5CompleteGivenApplication[key].path, bytes = serialized(value);
   write(relative, bytes);
@@ -114,6 +122,7 @@ before(() => {
   preserve(basis.originalSourceReview.proposalFinalization.proposalSelections[0].documentRef.path,
     gitBytes(basis.nativeReviewRef.commit, basis.originalSourceReview.proposalFinalization.proposalSelections[0].documentRef.path));
   for (const change of binding.requestSnapshot.registryChanges) preserve(change.path, gitBytes(BASE, change.path));
+  commitEngineAtHead(fixture);
   const review = gitJson(basis.nativeReviewRef.commit, basis.nativeReviewRef.path);
   const original = bank(gitBytes(basis.nativeReviewRef.commit, basis.sourceBeforeRef.path));
   native = { spec: clone(q5.sourceReview), review, sourceBlob: review.sourceAfterBlob, sourceSha256: review.sourceAfterSha256,
@@ -310,6 +319,7 @@ function ensureIssued() {
     const dest = path.join(issuedRoot, p); fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.linkSync(path.join(fixture, p), dest);
   }
+  commitEngineAtHead(issuedRoot);
   for (const p of [RECEIPT + '.json', OLD_BINDING]) putIssued(p, gitBytes(CURRENT, p));
   const indexPath = 'archive/data/meta-foundation/canonical/registry_index.json';
   const index = gitJson(CURRENT, indexPath);
