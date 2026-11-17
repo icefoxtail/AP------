@@ -162,6 +162,7 @@ export function nativeLanes(root) {
       commands:[cmd('node','archive/tools/build-svg-accessibility-index.cjs','--base',accessibilityBase),
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
     {id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
+      'archive/data/item-4slot-partial-source-continuity/',
       '.archive-meta-register/4slot-existing-vector-continuity/',
       '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
       'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',
@@ -206,6 +207,7 @@ export function executeCommands({root, work, lane, env}) {
 function checkPreserved(root,beforeRows,beforeSeals) {
   const afterRows=indexRows(root), byPath=new Map(afterRows.map(r=>[r.path,r]));
   const immutable=['archive/exams/','archive/assets/images/','archive/data/item-4slot/','alive/',
+    'archive/data/item-4slot-partial-source-continuity/',
     '.archive-meta-register/auto/receipts/','.archive-meta-register/auto/4slot/receipts/',
     'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/',
     'archive/data/generated-lite-consumer/v1/meta-browse-alias-receipt-20261009.json',

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "archive-original3330-actual-44067605974-envelope-v1",
+  "status": "OBSERVED_CURRENT_BINDING_DEBT",
+  "phase": "COMPLETE",
+  "runId": 44067605974,
+  "jobId": 133985240955,
+  "provenance": {
+    "repository": "icefoxtail/AP------",
+    "eventName": "push",
+    "ref": "refs/heads/ops/middle-original-issued-consumer-26fc-20261117",
+    "codeSha": "327f59823f49ab3245838d1d1aa94cadf5946eaf",
+    "snapshot": "a395dc9d22848ce173ae14d331cd0824dc2cf30e",
+    "runId": "44067605974",
+    "runAttempt": "1",
+    "job": "observe-current"
+  },
+  "archive": {
+    "gitBlobSha1": "7c00724c3d5a22b22ead6131be4a6021fb8a7c91",
+    "path": "docs/operations/middle-original-issued-3330-26fc-20261117/run-44067605974/original-artifact.zip",
+    "sha256": "89f72d6b900f850445a3a1bbf3955bdf118a1969abef69818ed652c6d8b3179e",
+    "bytes": 952553,
+    "artifactId": 14321317357
+  },
+  "raw": {
+    "gitBlobSha1": "ef843f1aa296c02b18ca3d5a9d17156d1a854b0b",
+    "sha256": "efee46b192319a72bacd1c412c78a2c71c282e6450a2c332a86edbd3dfbe46fa",
+    "bytes": 4574844,
+    "name": "observation.json",
+    "jobFramingAndOriginalZipExact": true
+  },
+  "summary": {
+    "total": 3330,
+    "retainedOriginalFields": 3327,
+    "currentPageMatch": 2304,
+    "fullyObservedCurrentBinding": 2276,
+    "blockedOrChanged": 1054,
+    "byAxis": {
+      "D5": {
+        "total": 2866,
+        "retainedOriginalFields": 2866,
+        "currentPageMatch": 1863,
+        "fullyObservedCurrentBinding": 1838,
+        "blockedOrChanged": 1028
+      },
+      "ORIGINAL_FINAL_QA_FIELDS": {
+        "total": 464,
+        "retainedOriginalFields": 461,
+        "currentPageMatch": 441,
+        "fullyObservedCurrentBinding": 438,
+        "blockedOrChanged": 26
+      }
+    },
+    "byPr": {
+      "2075": {
+        "total": 464,
+        "retainedOriginalFields": 461,
+        "currentPageMatch": 441,
+        "fullyObservedCurrentBinding": 438,
+        "blockedOrChanged": 26
+      },
+      "2080": {
+        "total": 1299,
+        "retainedOriginalFields": 1299,
+        "currentPageMatch": 1134,
+        "fullyObservedCurrentBinding": 1122,
+        "blockedOrChanged": 177
+      },
+      "2103": {
+        "total": 1567,
+        "retainedOriginalFields": 1567,
+        "currentPageMatch": 729,
+        "fullyObservedCurrentBinding": 716,
+        "blockedOrChanged": 851
+      }
+    },
+    "findings": {
+      "CURRENT_STORED_SOURCE_BINDING_UNAVAILABLE": 821,
+      "D5_EXPOSED_RUNTIME_VALUES_CHANGED": 244,
+      "CATALOG_CURRENT_SOURCE_BYTES_MISMATCH": 219,
+      "PAGE_CURRENT_SOURCE_BYTES_MISMATCH": 219,
+      "PAGE_OR_RESOLVED_APPROVED_VALUE_MISMATCH": 12,
+      "ORIGINAL_APPROVED_FIELDS_CHANGED": 3,
+      "ORIGINAL_FINAL_QA_RUNTIME_VALUES_CHANGED": 3
+    }
+  },
+  "actualQueries": {
+    "uniqueApiCalls": 382,
+    "selectedUidObservations": 3330,
+    "queryCacheOnlyReusesSameCurrentInvocation": true,
+    "historicalQueryReuse": 0
+  },
+  "canonicalConsumedInputs": {
+    "scope": "EXACT_OFFICIAL_LOAD_RESOLVED_CONSUMER_CATALOG_RESOURCE_BOUNDARY",
+    "manifestDeclaredFiles": 689,
+    "consumedFiles": 619,
+    "unconsumedDeclaredFiles": 70,
+    "runtimeFiles": 17,
+    "reviewedProofPaths": 595,
+    "consumedWholeSha256": "44a06eb953db0a5acfd957f849758abf2625ccdab6cb50c4daed03c4b2bdaf22",
+    "unconsumedResourcesClaimedVerified": false,
+    "officialConsumerExecution": "REQUIRED_NEXT"
+  },
+  "readonlyInputs": {
+    "head": "UNCHANGED",
+    "worktree": "UNCHANGED",
+    "authenticatedReadFiles": 877,
+    "authenticatedReadFilesSha256": "11cec06799b6c8b1537560996134962a41e608d95657759507a25ded2c8bee61"
+  },
+  "limits": {
+    "requestReplays": 0,
+    "registrationCalls": 0,
+    "nativeCalls": 0,
+    "applyCalls": 0,
+    "builderCalls": 0,
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "runtimeWrites": 0,
+    "newApprovals": 0,
+    "mathematicalReviews": 0,
+    "sourceQuestionEvaluation": 0,
+    "displayOrVisualReviews": 0,
+    "historicalRetainedValuesAreNotNewApproval": true,
+    "d5DoesNotApproveSemanticOrFourSlotMetadata": true,
+    "currentPageMatchMeans": "APPROVED_QUERY_FIELDS_AND_CURRENT_SOURCE_BINDING_ONLY",
+    "nonQueryFields": "LITERAL_STORED_VALUES_VERIFIED_SEPARATELY_DISPLAY_DIFFERENCES_REPORTED"
+  },
+  "axisInterpretation": {
+    "currentPageMatchIsSeparateFromStoredApprovedFieldRetention": true,
+    "unexposedHistoricalRuntimeDifferenceIsNotNewDifficultyApproval": true,
+    "pageMatchesWithHistoricalRuntimeDifferences": {
+      "2080": 12,
+      "2103": 13
+    },
+    "originalFinalQaFingerprintOnlyDifferences": {
+      "2075": 3
+    },
+    "noOriginalRequestReplay": true,
+    "remainingSourceAndCanonicalBindingDebtsRequireTheirOwnEvidence": true
+  }
+}

@@ -1,0 +1,140 @@
+name: M2S1 Stale Forty Current Renderer
+
+on:
+  push:
+    branches:
+      - 'ops/m2s1-stale40-current-renderer-26fc-20261117'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: m2s1-stale40-current-ui-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    name: Forty-item scope and read-only capture contracts
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/m2s1-stale40-current-renderer-26fc-20261117' && github.event.repository.fork == false && github.event.deleted == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/check-reviewed-problem-renderer-browser.cjs
+            /tools/capture-m1s2-problem-surface.cjs
+            /tools/m2s1-text3-solution-fragments.cjs
+            /tools/check-m2s1-stale-forty-current-browser.cjs
+            /tools/capture-m2s1-stale-forty-surfaces.cjs
+            /tests/fixtures/archive-m2s1-stale-forty-current-ui.json
+            /tests/fixtures/archive-m2s1-text-solution3-ui.json
+            /tests/m2s1-stale-forty-current-browser.test.cjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify the exact repository push and checkout
+        env:
+          ARCHIVE_M2S1_STALE40_UI_EXPECTED_SHA: ${{ github.sha }}
+        run: node -e "const cp=require('node:child_process');const C=require('./tools/check-m2s1-stale-forty-current-browser.cjs');C.checkoutEvidence(cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());"
+      - name: Verify the new scope, parser, native geometry and solution-state guards
+        run: node --test tests/m2s1-stale-forty-current-browser.test.cjs
+      - name: Confirm no tracked or untracked checkout changes
+        if: always()
+        run: test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+  current-ui:
+    name: Forty problems and three required solution surfaces
+    needs: contract
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/m2s1-stale40-current-renderer-26fc-20261117' && github.event.repository.fork == false && github.event.deleted == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /archive/*.js
+            /archive/*.css
+            /archive/engine.html
+            /archive/css/
+            /archive/js/
+            /archive/vendor/
+            /archive/data/svg-accessibility-index.js
+            /archive/data/question_metadata.json
+            /archive/data/question_identity_map.json
+            /apmath/css/student-navigation.css
+            /apmath/js/student-navigation.js
+            /tools/check-reviewed-problem-renderer-browser.cjs
+            /tools/capture-m1s2-problem-surface.cjs
+            /tools/m2s1-text3-solution-fragments.cjs
+            /tools/check-m2s1-stale-forty-current-browser.cjs
+            /tools/capture-m2s1-stale-forty-surfaces.cjs
+            /tests/fixtures/archive-m2s1-stale-forty-current-ui.json
+            /tests/fixtures/archive-m2s1-text-solution3-ui.json
+            /tests/m2s1-stale-forty-current-browser.test.cjs
+            /archive/exams/original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js
+            /archive/exams/original/middle/m2/1final/21_신흥중_1학기_기말_중2_수학.js
+            /archive/exams/original/middle/m2/1final/21_이수중_1학기_기말_중2_수학.js
+            /archive/exams/original/middle/m2/1final/21_향림중_1학기_기말_중2_수학.js
+            /archive/exams/original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js
+            /archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js
+            /archive/exams/original/middle/m2/1final/22_왕운중_1학기_기말_중2_기출.js
+            /archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js
+            /archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js
+            /archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js
+            /archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js
+            /archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js
+            /archive/assets/images/21_금당중_1학기_중간_중2_기출/
+            /archive/assets/images/21_매산중_1학기_기말_중2_수학/
+            /archive/assets/images/21_신흥중_1학기_기말_중2_수학/
+            /archive/assets/images/21_연향중_1학기_중간_중2_기출/
+            /archive/assets/images/21_왕운중_1학기_중간_중2_기출/
+            /archive/assets/images/21_이수중_1학기_기말_중2_수학/
+            /archive/assets/images/21_팔마중_1학기_중간_중2_기출/
+            /archive/assets/images/21_향림중_1학기_기말_중2_수학/
+            /archive/assets/images/22_매산중_1학기_기말_중2_수학/
+            /archive/assets/images/22_연향중_1학기_기말_중2_기출/
+            /archive/assets/images/22_왕운중_1학기_기말_중2_기출/
+            /archive/assets/images/22_풍덕중_1학기_기말_중2_수학/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify the exact repository push and checkout
+        env:
+          ARCHIVE_M2S1_STALE40_UI_EXPECTED_SHA: ${{ github.sha }}
+        run: node -e "const cp=require('node:child_process');const C=require('./tools/check-m2s1-stale-forty-current-browser.cjs');C.checkoutEvidence(cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());"
+      - name: Confirm clean capture inputs
+        run: test -z "$(git status --porcelain=v1 --untracked-files=all)"
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the isolated browser driver
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/m2s1-stale40-current-driver" --no-save --package-lock=false playwright@1.62.1
+      - name: Capture the fixed eighty-three logical views and every original tile
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          ARCHIVE_M2S1_STALE40_UI_EXPECTED_SHA: ${{ github.sha }}
+          NODE_PATH: ${{ runner.temp }}/m2s1-stale40-current-driver/node_modules
+        run: node tools/check-m2s1-stale-forty-current-browser.cjs --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/m2s1-stale40-current-ui"
+      - name: Confirm capture changed no checkout input
+        if: always()
+        run: test -z "$(git status --porcelain=v1 --untracked-files=all)"
+      - name: Preserve original technical JSON and every original scroll tile
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2s1-stale40-current-${{ github.sha }}
+          path: ${{ runner.temp }}/m2s1-stale40-current-ui/
+          if-no-files-found: error
+          retention-days: 14

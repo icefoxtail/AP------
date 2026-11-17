@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "stale40-initial-font-diagnostic-delta-v1",
+  "edits": [
+    {
+      "before": "function validateManifest(m){",
+      "after": "async function observeInitialFontFailure(page,group,manifest,readiness,error){\n  const code=safeFailureCode(error);\n  if(!['UI_DOCUMENT_FONTS_READY','UI_STUDENT_FONT_NOT_LOADED','UI_STUDENT_FONT_NOT_APPLIED'].includes(code))return null;\n  try{\n    const first=planCases(manifest)[0];\n    const scope=g=>({surface:g.surface,mode:g.mode,viewport:g.viewport,sourcePath:g.sourcePath,keys:g.items.map(i=>i.key)});\n    assert.deepEqual(scope(group),scope(first),'UI_STALE40_INITIAL_FONT_DIAGNOSTIC_SCOPE');\n    const font=value=>({sha256:sha256(String(value??'')),appliesExpected:typeof value==='string'&&value.includes(FONT_FAMILY)});\n    const families=Array.isArray(readiness?.problemFontFamilies)?readiness.problemFontFamilies:[];\n    const observed={schemaVersion:'archive-stale40-initial-font-failure-v1',status:'FAILURE_METADATA_ONLY',failureCode:code,\n      surface:first.surface,mode:first.mode,viewport:{...first.viewport},sourcePath:first.sourcePath,\n      keys:first.items.map(i=>i.key),originalGuardObservation:{status:readiness?.status==='loaded'?'loaded':'OTHER',\n        familyCount:families.length,families:families.slice(0,64).map(font),familyListTruncated:families.length>64,\n        weights:[400,700,800].map(weight=>{const rows=(Array.isArray(readiness?.weights)?readiness.weights:[]).filter(r=>r?.weight===weight);\n          const r=rows.length===1?rows[0]:null;return{weight,unique:rows.length===1,loadedFaces:Number.isSafeInteger(r?.loadedFaces)?r.loadedFaces:null,\n            allLoaded:r?.allLoaded===true,checked:r?.checked===true};})},\n      afterFailureDom:null,domWrites:0,cssWrites:0,sourceWrites:0,newApproval:0};\n    try{\n      const dom=await page.evaluate(()=>{\n        const selectors=['#print-area .q-content','#print-area [data-semantic-content=\"1\"]','#print-area .sol-exp'];\n        const nodes=[...document.querySelectorAll(selectors.join(','))];\n        const rect=n=>{const r=n.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};\n        return{printAreaCount:document.querySelectorAll('#print-area').length,pageCount:document.querySelectorAll('#print-area .page').length,\n          questionBoxCount:document.querySelectorAll('#print-area .q-box').length,selectorCounts:selectors.map(s=>document.querySelectorAll(s).length),\n          unionCount:nodes.length,bodyFamily:getComputedStyle(document.body).fontFamily,\n          nodes:nodes.slice(0,128).map(n=>{const s=getComputedStyle(n);return{roles:[n.matches('.q-content'),n.matches('[data-semantic-content=\"1\"]'),n.matches('.sol-exp')],\n            family:s.fontFamily,rect:rect(n),displayNone:s.display==='none',visibilityHidden:s.visibility==='hidden',opacityZero:Number(s.opacity)===0};})};\n      });\n      const count=x=>{assert(Number.isSafeInteger(x)&&x>=0&&x<=10000,'UI_STALE40_FONT_DIAGNOSTIC_COUNT');return x;};\n      assert(Array.isArray(dom.selectorCounts)&&dom.selectorCounts.length===3&&Array.isArray(dom.nodes)&&dom.nodes.length<=128,'UI_STALE40_FONT_DIAGNOSTIC_SHAPE');\n      observed.afterFailureDom={observationTiming:'AFTER_ORIGINAL_FONT_GUARD_FAILURE',printAreaCount:count(dom.printAreaCount),pageCount:count(dom.pageCount),\n        questionBoxCount:count(dom.questionBoxCount),selectorCounts:dom.selectorCounts.map(count),unionCount:count(dom.unionCount),\n        truncated:dom.unionCount>128,bodyFont:font(dom.bodyFamily),nodes:dom.nodes.map(n=>{\n          assert(Array.isArray(n.roles)&&n.roles.length===3&&n.roles.every(v=>typeof v==='boolean'),'UI_STALE40_FONT_DIAGNOSTIC_ROLE');\n          const rect={};for(const key of ['x','y','width','height']){const value=n.rect?.[key];assert(Number.isFinite(value)&&Math.abs(value)<=1e7,'UI_STALE40_FONT_DIAGNOSTIC_RECT');rect[key]=value;}\n          return{roles:n.roles.slice(),font:font(n.family),rect,displayNone:n.displayNone===true,visibilityHidden:n.visibilityHidden===true,opacityZero:n.opacityZero===true};})};\n    }catch(diagnosticError){observed.afterFailureDom={status:'UNAVAILABLE',errorMessageSha256:sha256(String(diagnosticError?.message||''))};}\n    return observed;\n  }catch(diagnosticError){return{schemaVersion:'archive-stale40-initial-font-failure-v1',status:'UNAVAILABLE',failureCode:code,\n    errorMessageSha256:sha256(String(diagnosticError?.message||'')),domWrites:0,cssWrites:0,sourceWrites:0,newApproval:0};}\n}\n\nfunction validateManifest(m){"
+    },
+    {
+      "before": "surfaceDiagnostics=[];",
+      "after": "surfaceDiagnostics=[],fontDiagnostics=[];"
+    },
+    {
+      "before": "...(code ? { failureCode: code, activeCase } : {}),",
+      "after": "...(code ? { failureCode: code, activeCase,...(fontDiagnostics.length?{fontDiagnostics}:{} ) } : {}),"
+    },
+    {
+      "before": "let page, casesCompleted = false, caseFailure = null;",
+      "after": "let page, casesCompleted = false, caseFailure = null, groupFontReadiness = null;"
+    },
+    {
+      "before": "const fontReadiness = await page.evaluate(async family => {",
+      "after": "const fontReadiness = groupFontReadiness = await page.evaluate(async family => {"
+    },
+    {
+      "before": "      } catch (error) {\n        caseFailure = error;\n        throw error;",
+      "after": "      } catch (error) {\n        caseFailure = error;\n        const diagnostic=await observeInitialFontFailure(page,group,manifest,groupFontReadiness,error);\n        if(diagnostic)fontDiagnostics.push(diagnostic);\n        throw error;"
+    },
+    {
+      "before": "validateManifest,planCases,assertScopedScreenshotInventory,",
+      "after": "validateManifest,planCases,observeInitialFontFailure,assertScopedScreenshotInventory,"
+    }
+  ],
+  "inverseByteExact": true
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "archive-stale40-font-diagnostic-publication-v3",
+  "status": "CANDIDATE_DIAGNOSTIC_ONLY",
+  "actualBase": {
+    "head": "54429566859f2e7700108a3c7297c039846d36c2",
+    "runId": "44063454401",
+    "contractJob": "133970964249",
+    "chromeJob": "133971042819",
+    "technical": {
+      "gitBlobSha1": "56986cae00dfcaefd3b38dbb80a0ea9183120e64",
+      "sha256": "f4549130f9dca435ce82f957999d967080f16ed72b9cb4be75d0eb358ef69f1e",
+      "bytes": 114443
+    },
+    "failureCode": "UI_STUDENT_FONT_NOT_APPLIED",
+    "completedCases": 0,
+    "pngs": 0,
+    "studentFontResources": 32,
+    "externalFontResources": 0
+  },
+  "files": [
+    {
+      "path": "tools/check-m2s1-stale-forty-current-browser.cjs",
+      "before": {
+        "gitBlobSha1": "ea71e8f716737b2dddf315590aea5cee900fdfaf",
+        "sha256": "2429945d42f65ce6d30b7afdbc9ea01bfc739add592b047b3005b57a80e1a399",
+        "bytes": 38476
+      },
+      "after": {
+        "gitBlobSha1": "2feccc891bd3f505b73cb49cb6f84f56397468f1",
+        "sha256": "d266b774346c550495b78700b01f509a723d9ea2d0275398b2e335421a5ec0a0",
+        "bytes": 43092
+      }
+    },
+    {
+      "path": "tests/m2s1-stale-forty-current-browser.test.cjs",
+      "before": {
+        "gitBlobSha1": "083fc5a261920787306ff62ce516e4ee3419a609",
+        "sha256": "2e62948a1e1bdb9ef1b327781123e182dc5f00d23dfd513717e556e66795b4dc",
+        "bytes": 20293
+      },
+      "after": {
+        "gitBlobSha1": "2709c408504eb30df331fc38c0b31b11f52f2672",
+        "sha256": "699d3e9a9593826bc2b82dcc560042a4639251b436ddfbaf0ae9f06da291cbbb",
+        "bytes": 25181
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "name": "diagnostic-only.patch",
+      "gitBlobSha1": "c28d82ca9718529c06472048820cb7172ba6197d",
+      "sha256": "4e24595d98404e2b63b34c08d77ce614732a6a95de0d168bd38827e8810a9e9c",
+      "bytes": 14938
+    },
+    {
+      "name": "diagnostic-delta.json",
+      "gitBlobSha1": "220873309e0fc74a3eff697115bbf90956e2a09a",
+      "sha256": "a20b52a1cc72d09bb650bfafc29d0542645367790f12d7ec6a2bb619ac94ec4f",
+      "bytes": 5828
+    },
+    {
+      "name": "focused-font-diagnostic-v3.log",
+      "gitBlobSha1": "daa0aa41bf856c0cc69c917ddd80240ec7f78b56",
+      "sha256": "c0ca77b41531baa3bacab57538194a7d759cb9511d8e0448714acb429f2f0455",
+      "bytes": 1403
+    },
+    {
+      "name": "validation-v3.json",
+      "gitBlobSha1": "c9ea198822bc1b9d76c8d1be3f4813a0b5498d8c",
+      "sha256": "901f6307f182c2c967c6982f766510da93090041683715cd0e4dc0d737738db0",
+      "bytes": 3702
+    }
+  ],
+  "requiredUnchangedDependencies": [
+    {
+      "path": "tools/capture-m2s1-stale-forty-surfaces.cjs",
+      "gitBlobSha1": "eacabe15d962858a3f95b59ee94daece3e7fb7cf",
+      "sha256": "d1e29325ffa367938b9ecba4eab8df2d295858bfd68920c0f05229186f2eb4bc",
+      "bytes": 28377
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-stale-forty-current-ui.json",
+      "gitBlobSha1": "063f7fc0a807c01b77a64755d7e43c5770eea824",
+      "sha256": "43d1a52c55d7a9407e8b6bfcab15443158de53aa792f71cb68d46c1d961741a3",
+      "bytes": 98644
+    },
+    {
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "bytes": 56735
+    },
+    {
+      "path": "tools/capture-m1s2-problem-surface.cjs",
+      "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+      "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+      "bytes": 10218
+    },
+    {
+      "path": "tools/m2s1-text3-solution-fragments.cjs",
+      "gitBlobSha1": "8ccfc5b09602b3f348b8b842007123cbc7d9ecd1",
+      "sha256": "b7fbc927ec795bca33fd923c971efee8ec94cd6aeb1a606f6be6ec3760caa4d9",
+      "bytes": 22828
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-text-solution3-ui.json",
+      "gitBlobSha1": "6c8859829f369a0843bcd0a9faeb77cc293ca2ff",
+      "sha256": "043f04f67127dd003e79432e7c72c21bf7f29ee8e364d66e371fbae5557970dd",
+      "bytes": 3325
+    }
+  ],
+  "limits": {
+    "HOrCSSOrFontGuardChange": false,
+    "sourceFixtureChange": false,
+    "success83CaseChange": false,
+    "actualCause": "UNRESOLVED",
+    "actualChrome": "NOT_RUN",
+    "authorityChange": false
+  },
+  "rootOwnsPublicationAndChrome": true
+}

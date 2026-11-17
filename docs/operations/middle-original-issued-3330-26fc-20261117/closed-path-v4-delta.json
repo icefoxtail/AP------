@@ -1,0 +1,36 @@
+{
+  "after": {
+    "bytes": 54856,
+    "gitBlobSha1": "031fbb35c5a3ae6f1bf90b1e8b7ee634121fb5f8",
+    "sha256": "6891267ec6af81fb9ed56d300a9bdcb166a1ff434e9067715f1613254899ad6c"
+  },
+  "baseSnapshot": "71104dabf173369d973c71e155e62f25af6ff235",
+  "before": {
+    "bytes": 53895,
+    "gitBlobSha1": "4f86104a006545bd55b7a61399c9492a94003780",
+    "sha256": "3707a275812a61b65a36d616090c4db526c56138a5513eb5e775f47cf7dc56a4"
+  },
+  "edits": [
+    {
+      "after": "function canonicalInputPath(relative) {\n  // Closed repository-root resources actually declared by the authenticated\n  // current canonical manifest. All other traversal forms remain rejected.\n  const external = [\n    \"docs/architecture/4slot/term-dictionary-v1.5.json\",\n    \"docs/operations/m1-s2-meta-b01-a-20261114/a1-exam2.review.json\",\n    \"docs/operations/m1-s2-meta-b01-a-20261114/a2-cross-exam2.json\",\n    \"docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.applied.json\",\n    \"docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.overrides.json\",\n    \"docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.validation.json\",\n    \"docs/operations/m1-s2-meta-full-20261114/followups/25-wangun-final-q23-unresolved.json\",\n    \"docs/operations/m2s1-e034-original-source-negative-20261116/original-given-observation.json\",\n    \"docs/operations/m2s1-e034-original-source-negative-20261116/original-given-only.png\",\n    \"docs/operations/m2s1-e034-original-source-negative-20261116/root-negative-review.json\",\n    \"docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json\"\n];\n  if (typeof relative === 'string' && relative.startsWith('../') && external.includes(relative.slice(3))) {\n    const repoRelative = relative.slice(3);relativePath(repoRelative);return repoRelative;\n  }\n  relativePath(relative);\n  return 'archive/' + relative;\n}",
+      "before": "function canonicalInputPath(relative) {\n  // This is the one external-to-archive resource declared by the official\n  // canonical resolver. Every other path remains a normalized archive path.\n  const master = \"docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json\";\n  if (relative === \"../\" + master) return master;\n  relativePath(relative);\n  return \"archive/\" + relative;\n}"
+    }
+  ],
+  "externalPaths": [
+    "docs/architecture/4slot/term-dictionary-v1.5.json",
+    "docs/operations/m1-s2-meta-b01-a-20261114/a1-exam2.review.json",
+    "docs/operations/m1-s2-meta-b01-a-20261114/a2-cross-exam2.json",
+    "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.applied.json",
+    "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.overrides.json",
+    "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.validation.json",
+    "docs/operations/m1-s2-meta-full-20261114/followups/25-wangun-final-q23-unresolved.json",
+    "docs/operations/m2s1-e034-original-source-negative-20261116/original-given-observation.json",
+    "docs/operations/m2s1-e034-original-source-negative-20261116/original-given-only.png",
+    "docs/operations/m2s1-e034-original-source-negative-20261116/root-negative-review.json",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+  ],
+  "officialConsumerChanged": false,
+  "queryOrSourceWrites": 0,
+  "schemaVersion": "archive-issued3330-closed-external-manifest-paths-v4",
+  "wholeInverseExact": true
+}

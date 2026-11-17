@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "archive-m1-palma24-scoped-gate-publication-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_M3S2_RELEASE",
+  "status": "FROZEN_NEW_GATE_UNEXECUTED_INDEPENDENT_REVIEW_REQUIRED",
+  "operations": [
+    {
+      "path": "tools/4slot/check-m1-palma-two-current-ui-scoped.cjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "411b128718d5412794fc93725e6eba9b5c187395",
+        "sha256": "0d7919f2c8c6bb55270ad2b63e17b46575a565305a3dda07e010b9dc53d1831c",
+        "bytes": 44906
+      }
+    },
+    {
+      "path": ".github/workflows/m1-palma-two-current-source-registration-gate.yml",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "cdeddc23aa5119d4ade5edc0d70b59a5a1b24f9c",
+        "sha256": "9aa32ed740917c287f4c9ea2a0903c6d4750457fecdb6fa0a1a162a5d058e65c",
+        "bytes": 1675
+      }
+    }
+  ],
+  "bothPathsAbsentAt": "71104dabf173369d973c71e155e62f25af6ff235",
+  "exactAbsenceMethod": "GitHub contents exact immutable main returned NOT_FOUND for each new path.",
+  "productionDependencyManifest": {
+    "gitBlobSha1": "fe60eae7cb69d3be69ca41937e2fb28bbbcddd9c",
+    "sha256": "9718faa164d19e2aa1814f0da98f14ec90ac2072fa66a8bdec16d0d4f45c52b3",
+    "bytes": 15386
+  },
+  "productionFilesUnchangedByGate": true,
+  "derivation": {
+    "gitBlobSha1": "1ce90f41d08820c53e37cfcdc09ea93edb28ccc0",
+    "sha256": "39970f5e5cfb13d0526376fb006de380e0cf1f25f2778dec996fe646c2883214",
+    "bytes": 52692
+  },
+  "priorActualGate": {
+    "commit": "3ba36e8956d6b62de8517284233389e18656c02b",
+    "path": "tools/4slot/check-m1s2-current-ui-scoped.cjs",
+    "gitBlobSha1": "f7436505aeb7b16efc3ed1e1ed8e681ca786927f",
+    "sha256": "b2f22e5ff3fb39d4a6b6f610ac2bbc555fa0d47ad7e31580e5452520b750b4f1",
+    "bytes": 45348,
+    "actualRun": "44022762541",
+    "byteExactCommitPathVerified": true,
+    "priorGateRemainsUnmodified": true,
+    "newGateResultsNotInferredFromPrior": true
+  },
+  "scope": {
+    "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "sourceQuestionCount": 24,
+    "selectedOrdinals": [
+      6,
+      8
+    ],
+    "selectedQuestionUids": [
+      "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246"
+    ],
+    "outsideQuestionCount": 22,
+    "currentQuestionBanksStaged": 1,
+    "historicalContext": "Unchanged original seven-item UI metadata/Git evidence chain; historical bytes remain immutable and are not re-reviewed.",
+    "newBrowserCapture": 0,
+    "newVisualInspection": 0,
+    "newMathematicalQa": 0,
+    "newSemanticApproval": 0,
+    "newFinalQaNativeApproval": 0,
+    "newFourSlotApproval": 0,
+    "globalConsumerRun": false,
+    "globalBuilderOutput": false,
+    "trackedRootWrites": 0,
+    "remoteRefWrites": 0
+  },
+  "executionContract": {
+    "branch": "refs/heads/ops/m1-palma-two-current-source-registration-26fc-20261117",
+    "job": "palma-two-existing-authority",
+    "repository": "icefoxtail/AP------",
+    "strictHeadEventAfterAndExpectedShaEquality": true,
+    "requiredAncestors": [
+      "71104dabf173369d973c71e155e62f25af6ff235",
+      "41f0037c41ac2276c7444bfff82c7aadc858d68f"
+    ],
+    "permissions": "contents:read",
+    "fullHistory": true,
+    "persistCredentials": false,
+    "node": "22",
+    "timeoutMinutes": 35,
+    "privateFixture": true,
+    "reportOutsideCheckout": true,
+    "command": "node tools/4slot/check-m1-palma-two-current-ui-scoped.cjs --root \"$GITHUB_WORKSPACE\" --output \"$RUNNER_TEMP/palma-two-existing-authority/scoped-result.json\""
+  },
+  "expectedChecks": [
+    "Authenticate fixed production/runtime/sidecar bytes and all declared immutable/live proof dependencies.",
+    "Keep current MD/ID/SVG as actual HEAD inputs; authenticate old complete captured blobs separately. Compare selected MD2 and ID2 whole to original issued hashes; keep the original outer ID24 inventory guard.",
+    "Read source24 through official builder and copy only one compact/dictionary/source with its declared assets.",
+    "Observe actual current-index partition and whole states for all 24 UIDs. Require selected2 still unregistered; preserve every outside22 whole state.",
+    "Install unchanged previous sidecars as negative baseline; stale source is not hydrated or normalized to pass.",
+    "Apply only the two exact candidate sidecars, call official builder and original outer verifier, require exactly two restored vectors with unchanged authority.",
+    "Use official Consumer get and slot term queries only for selected2.",
+    "Cold official check must change nothing, revalidate one file, and reuse zero cached result files.",
+    "Remove the shared current visual file and require both selected2 to refuse; restore original bytes.",
+    "Delete each selected sidecar independently, require only that selected UID to refuse, preserve the other selected record and all outside22.",
+    "Restore and hash every private nonderived input, both candidate sidecars, current imported code, and all root input files; root HEAD/status unchanged."
+  ],
+  "dependencyInterpretation": {
+    "exactLiveDocuments": [
+      {
+        "commit": "4d2f8af25fecf7059e621f8df046c76dc4a9780c",
+        "path": "docs/operations/m1s2-palma-two-current-ui-26fc-20261117/technical-proof.json",
+        "gitBlobSha1": "f3bdd7c6e42ae57475a01f633aa0060e34226545",
+        "sha256": "4271759b72b7ad9ddaabe964a92b702c108b413aea1649d69d8359359d50d32d",
+        "bytes": 92485
+      },
+      {
+        "commit": "41f0037c41ac2276c7444bfff82c7aadc858d68f",
+        "path": "docs/operations/m1s2-palma-two-current-ui-26fc-20261117/visual-current-reuse-v1.json",
+        "gitBlobSha1": "9f2e2ecbca0a3b50d1d82b4147531409a2a7377c",
+        "sha256": "e9fea7a643b7963228b77bdebf3d3aae71636bf01c05cfac41dd96fb53dd3ffb",
+        "bytes": 9462
+      },
+      {
+        "commit": "4d2f8af25fecf7059e621f8df046c76dc4a9780c",
+        "path": "docs/operations/m1s2-palma-two-current-ui-26fc-20261117/prior-four-equivalence.json",
+        "gitBlobSha1": "222c16ed5b817da398dd14b5dbd45ca1280a8038",
+        "sha256": "d7fd05d3f49668d753cfc4a17664fc780d876f15ec672c926508408d5179e30a",
+        "bytes": 40692
+      },
+      {
+        "commit": "4d2f8af25fecf7059e621f8df046c76dc4a9780c",
+        "path": "docs/operations/m1s2-palma-two-current-ui-26fc-20261117/artifact-integrity.json",
+        "gitBlobSha1": "1c1bea4c5351fd1ba46629ad43d2dc2c82e13d12",
+        "sha256": "0950055fa2758505e451eca54f9fd5e261040b3d5565c8550d2bd05d9046220b",
+        "bytes": 3513
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+        "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+        "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+        "bytes": 222310
+      },
+      {
+        "commit": "d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+        "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+        "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+        "bytes": 18296
+      }
+    ],
+    "opaqueDigestSummaries": "Bare before/current pins in immutable public equivalence metadata are validated as summary shape but never interpreted as live HEAD refs. Actual live dependencies come from exact current sidecars, fixed liveDocuments, and current capture.",
+    "productionGuardsWeakened": false,
+    "unknownStrongReferencesAccepted": false,
+    "privateOldSourceRefNormalization": false,
+    "currentGlobalMdEqualityRequired": false,
+    "oldFiveProducerFixtureFilesPinnedUnchanged": true,
+    "codeInputs": "All root require.cache files are recorded against actual regular HEAD blobs and rehashed at completion."
+  },
+  "validation": {
+    "gateInverseToActualPriorWholeExact": true,
+    "gateDerivationEdits": 42,
+    "workflowInverseWholeExact": true,
+    "fullRemoteReadback": true,
+    "authorNodeSyntax": "NOT_RUN",
+    "focused76": "ROOT_EXECUTION_PENDING",
+    "freshAuthority2": "NOT_RUN",
+    "freshConsumer2": "NOT_RUN",
+    "freshSource24Builder": "NOT_RUN",
+    "existingOldSevenGateNotRerun": true,
+    "focusedTestsNotInvokedInsideNewGate": true
+  },
+  "nextAction": "Root independently checks exact gate/workflow and runs syntax. After the separate new metadata76 result, publish only the closed ops branch at an integration HEAD preserving current711 and actual Palma C41f, then execute this new source24 gate once."
+}

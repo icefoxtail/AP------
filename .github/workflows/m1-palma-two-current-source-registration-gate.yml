@@ -1,0 +1,43 @@
+name: M1 Palma Two Current Source Registration Gate
+on:
+  push:
+    branches:
+      - ops/m1-palma-two-current-source-registration-26fc-20261117
+permissions:
+  contents: read
+concurrency:
+  group: m1-palma24-current-ui-registration-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  palma-two-existing-authority:
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/m1-palma-two-current-source-registration-26fc-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      ARCHIVE_M1_PALMA24_EXPECTED_SHA: ${{ github.sha }}
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout exact closed ops HEAD with immutable history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse the scoped gate
+        run: node --check tools/4slot/check-m1-palma-two-current-ui-scoped.cjs
+      - name: Official existing authority and Consumer for Palma two only
+        run: >-
+          node tools/4slot/check-m1-palma-two-current-ui-scoped.cjs
+          --root "$GITHUB_WORKSPACE"
+          --output "$RUNNER_TEMP/palma-two-existing-authority/scoped-result.json"
+      - name: Preserve bounded metadata even on refusal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: palma-two-existing-authority-${{ github.sha }}
+          path: ${{ runner.temp }}/palma-two-existing-authority/scoped-result.json
+          if-no-files-found: error

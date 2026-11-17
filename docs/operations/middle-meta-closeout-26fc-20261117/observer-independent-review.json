@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-independent-readonly-observer-review-v1",
+  "reviewer": "/root/m3s2_release",
+  "reviewedAtUtc": "2026-11-17T02:24:53.780Z",
+  "decision": "STATIC_ACCEPT_ACTUAL_JOB_REQUIRED",
+  "targetRepository": "icefoxtail/AP------",
+  "observationCode": {
+    "path": "docs/operations/middle-meta-closeout-26fc-20261117/observe-registered-snapshot.mjs",
+    "gitBlobSha1": "26d6710a5e8e45afc859de45b4e242b2e3d91251",
+    "sha256": "d868c6cf8a9c5608ff64e693ff558c4daa776a25c1a48d432c028d1b6d69780a",
+    "bytes": 87030,
+    "readBasis": "Full v1 source and pinned Consumer read; exact v1-v2 and v2-v3 deltas read. Repository code was not evaluated or executed."
+  },
+  "workflow": {
+    "path": ".github/workflows/middle-meta-closeout-observation.yml",
+    "gitBlobSha1": "ba0f8e7f00fa7487e8982701d25b902e2041cb0b",
+    "sha256": "9244d76bba1ee96850a309ed981509b993b10ddfd66fc6b5f3801516df4fa010",
+    "bytes": 2727,
+    "fixedPublicBase": "https://icefoxtail.github.io/AP------/",
+    "jobScope": "PR2330_ONLY",
+    "permissions": {
+      "contents": "read"
+    },
+    "sparseCheckout": [
+      "archive/item-4slot.js"
+    ],
+    "checkoutRef": "main",
+    "fetchDepth": 0,
+    "persistCredentials": false,
+    "currentSnapshotSelection": "Latest first-parent commit matching the writer subject, required ancestor of fetched origin/main. Subject alone is not approval evidence.",
+    "actualDataCodeSeparation": "PR head observer is copied to runner.temp and authenticated against OBSERVATION_CODE_SHA. Cwd/HEAD must match explicit registered snapshot; metadata is read at that snapshot.",
+    "worktreeBeforeAndAfter": "git status --porcelain --untracked-files=all must be empty",
+    "output": "Absolute new file outside the repository in an existing real directory, exclusive write; artifact upload always."
+  },
+  "resolutions": [
+    {
+      "id": "D5_AUTHORITY_VS_PHYSICAL",
+      "introducedIn": "observer-v2",
+      "result": "Original36 and M3 hold2 require exact whole metadata and D5/authority fields; preserve vector only when baseline registered. Physical state remains a separate observation. No blanket physical registration ban inferred from D5 hold."
+    },
+    {
+      "id": "PENDING_EXPLICIT_SOURCE_AND_PATH",
+      "introducedIn": "observer-v2",
+      "result": "Explicit source/path that contradict each other or fall outside fixed cohort are rejected. Index file source/path disagreement is rejected."
+    },
+    {
+      "id": "PENDING_DISPLAY_JOIN",
+      "introducedIn": "observer-v2",
+      "result": "Explicit display number must match authenticated sourceQuestionNo even when UID or sourceOrdinal already identifies a row. Missing authenticated display join remains unresolved and makes observation fail; no invented ordinal mapping."
+    },
+    {
+      "id": "BOUNDED_PUBLIC_OBSERVATION",
+      "introducedIn": "observer-v2",
+      "result": "Public total budget240000ms, per request<=45000ms, marker<=30000ms with final marker reservation. Missing/late/mismatched public evidence is PENDING_PUBLIC."
+    },
+    {
+      "id": "SPARSE_LAZY_BLOB_READ",
+      "introducedIn": "observer-v3",
+      "result": "git() explicitly unsets GIT_NO_LAZY_FETCH while retaining GIT_OPTIONAL_LOCKS=0. Fixed commit/path, regular Git blob, computed raw/Git hash validation remain. Anonymous immutable Git object-cache hydration allowed; tracked and remote-ref writes remain zero.",
+      "primaryImplementation": {
+        "repository": "actions/checkout",
+        "ref": "v4",
+        "path": "src/git-source-provider.ts",
+        "gitBlobSha1": "2d3513897655e0ea2eb4efc2b2c9d6132a69549f",
+        "observation": "When sparseCheckout is supplied, fetchOptions.filter is blob:none."
+      }
+    }
+  ],
+  "staticContracts": {
+    "baseline": {
+      "commit": "22f79c4ffd5ad5f811c2840a532422e0ecabd3e1",
+      "inputPins": {
+        "archive/data/question_identity_map.json": {
+          "gitBlobSha1": "e455443e6348ec1f04a7b2bad726cb5bef66a110",
+          "sha256": "4b917f2f33cb01104710d475ba4f8a957d7f7c18028777bdea4921ebab671f85",
+          "bytes": 27938431
+        },
+        "archive/data/question_metadata.json": {
+          "gitBlobSha1": "1064850acded7cc6169f285971d397faa2e21ee1",
+          "sha256": "d4f4190b5901d37b00f84beb4076bd5ed9833f3d03204a6f50e38c9ce8a3f337",
+          "bytes": 72794957
+        },
+        "archive/data/item-4slot-index.json": {
+          "gitBlobSha1": "8af67c9067ea855b3898e0cc196fc4efc01641ab",
+          "sha256": "a74519a13b233a1d774c8e8b8699465590aff7a9ea8c21d63fb5c0ba55fda422",
+          "bytes": 20402039
+        }
+      },
+      "total": 6389,
+      "denominators": {
+        "M1S1": 286,
+        "M1S2": 761,
+        "M2S1": 1780,
+        "M2S2": 1604,
+        "M3S2": 1958
+      }
+    },
+    "membership": "Baseline immutable ID pins, target UID+source+ordinal uniqueness, global selected UID uniqueness and current identical sorted membership tuples are mandatory.",
+    "excludedScope": "M3S1 source/packet not opened. Metadata target extraction only covers the five declared semester prefixes.",
+    "dataRead": "Git show of explicit authenticated commits; regular-file and hash checks. No question bank JS evaluation.",
+    "scopedConsumer": {
+      "path": "archive/item-4slot.js",
+      "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+      "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+      "bytes": 8639,
+      "checks": "Pinned checkout bytes; pure createIndex of target rows; whole-record get, every slot term posting, pending get exclusion.",
+      "scope": "Stored 4slot data only; current source/Native/UI readiness not certified.",
+      "moduleRead": "Whole pinned module read: no imports, filesystem mutation or source evaluation."
+    },
+    "receipt": "Last-verification and receipt path derived from exact index hash must agree on schema/status/hash/inputDigest/counts/Consumer/replay/mutation fields; sourceCommit must be ancestor. Global counts and fixed-scope counts remain distinct.",
+    "selectedM3Three": "Each fixed target MD and identity whole row and unique runtime owner/path/packId/whole row must equal baseline. Not a new Native or UI approval.",
+    "storedAxes": "FINAL_QA/MAIN_MERGE labels and literal D5 fields separately counted; issuedD5 count/current semantic Native/whole quality remain NOT_EVALUATED.",
+    "remainingReasons": "NOT_SUBMITTED only with exact snapshot compact absence or authenticated display-number omission; unresolved mappings not counted as proven absence. Source absence not inferred.",
+    "public": {
+      "paths": [
+        "archive/data/archive2-canonical-input-manifest.json",
+        "archive/data/archive2-catalog.json",
+        "archive/data/archive2-source-verification-index.json",
+        "archive/data/item-4slot-index.json",
+        "archive/data/svg-accessibility-index.js",
+        "archive/data/basic-scope-parent-links.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/question_metadata.json"
+      ],
+      "bytes": "Each selected file compared to exact registered-snapshot Git/raw/byte inventory.",
+      "marker": "schemaVersion=ARCHIVE_PAGES_RELEASE_V1, registeredMainSHA and RELEASE_GATE_PASS; same marker before/after required.",
+      "noOp": "Different stable marker is NOT_PROVEN/PENDING_PUBLIC and may represent a valid NO_OP; no global deployment failure or approval inferred."
+    },
+    "outputWhitelist": "UID/source/ordinal/counts/field names/enums/hashes/public paths only; source text, answers, solutions, approval vectors and credentials are not emitted."
+  },
+  "execution": {
+    "reviewerNode": 0,
+    "reviewerTests": 0,
+    "reviewerNative": 0,
+    "reviewerConsumer": 0,
+    "reviewerBuilder": 0,
+    "reviewerRegistrar": 0,
+    "reviewerPublicReads": 0,
+    "sourceMathOrUiRereview": 0,
+    "syntaxOrActualJobResult": "NOT_RUN_BY_REVIEWER; AUTHOR_NODE_NOT_RUN",
+    "actualCountsOrPublicPass": "NOT_ESTABLISHED_BY_STATIC_REVIEW"
+  },
+  "remainingGates": [
+    "Exact final observer+workflow must pass the actual PR job on a real registered snapshot.",
+    "Observe current 6389 membership, counts, protected rows and selected3 CAS from job output; do not substitute prior counts.",
+    "Public9/marker observations remain separate from operational stored-data result.",
+    "Named E032 four UID subgroup is explicitly omitted due unavailable recovered fixed list; its fixed-cohort rows still participate in aggregate and delta checks."
+  ],
+  "repositoryOrRemoteChangesByReviewer": {
+    "source": 0,
+    "code": 0,
+    "approval": 0,
+    "registration": 0,
+    "refs": 0,
+    "immutableReviewBlobOnly": true
+  }
+}

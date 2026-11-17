@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "archive-middle-physical-actual-44067608292-envelope-v1",
+  "status": "PASS_OPERATIONAL_DATA",
+  "runId": 44067608292,
+  "jobId": 133985249150,
+  "codeCommit": "327f59823f49ab3245838d1d1aa94cadf5946eaf",
+  "snapshot": "71104dabf173369d973c71e155e62f25af6ff235",
+  "archive": {
+    "gitBlobSha1": "66dfdccbe777ba95210ba2fd60d049a8f90f4987",
+    "path": "docs/operations/middle-meta-closeout-26fc-20261117/run-44067608292/original-artifact.zip",
+    "sha256": "ba54ae772a18b3cf9aaaffba7f79fc0daa0f51736aec743bc714e512b48d2e42",
+    "bytes": 468541,
+    "artifactId": 14319889086
+  },
+  "raw": {
+    "sha256": "422dad995c64596480e3c8fc498624cd8c53e18cb8c569789986695449701f5b",
+    "bytes": 3622797,
+    "gitBlobSha1": "e64bbe27607ebce25d41452370ec2327bd7c6164",
+    "name": "middle-meta-observation.json",
+    "jobLogAndOriginalZipExact": true
+  },
+  "summary": {
+    "status": "PASS_OPERATIONAL_DATA",
+    "snapshot": "71104dabf173369d973c71e155e62f25af6ff235",
+    "registered": 5440,
+    "remaining": 949,
+    "semesters": {
+      "M1S1": {
+        "total": 286,
+        "registered": 236,
+        "remaining": 50,
+        "notSubmitted": 24,
+        "pendingReasonMemberships": {
+          "PARTIAL_4SLOT:CURRENT_SOURCE_BLOB_MISMATCH": 24,
+          "NOT_SUBMITTED": 24,
+          "STALE_STUDENT_PAYLOAD": 2
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M1S2": {
+        "total": 761,
+        "registered": 754,
+        "remaining": 7,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING": 2,
+          "STALE_STUDENT_PAYLOAD": 5
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M2S1": {
+        "total": 1780,
+        "registered": 1727,
+        "remaining": 53,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 52,
+          "EXPLICIT_REVIEW_HOLD:ORIGINAL_SOURCE_CONTRADICTION_UNRESOLVED": 1
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M2S2": {
+        "total": 1604,
+        "registered": 1030,
+        "remaining": 574,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 532,
+          "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED": 25,
+          "SOURCE_UID_CONFLICT": 11,
+          "REGISTERED_RENDERER_CONTINUITY_INVALID:M2_NATIVE_SOURCE_REUSE_NOT_ESTABLISHED": 6
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M3S2": {
+        "total": 1958,
+        "registered": 1693,
+        "remaining": 265,
+        "notSubmitted": 41,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 201,
+          "PARTIAL_4SLOT:CURRENT_SOURCE_BLOB_MISMATCH": 23,
+          "NOT_SUBMITTED": 41
+        },
+        "reasonCountsMayOverlap": true
+      }
+    },
+    "consumer": {
+      "status": "PASS_STORED_FOUR_SLOT_CONSUMER_ONLY",
+      "wholeRecordGets": 5440,
+      "exactTermPostingQueries": 33770,
+      "pendingGetExclusions": 949
+    },
+    "public": {
+      "status": "PASS_SCOPED_PUBLIC_BYTES_AND_SNAPSHOT_MARKER",
+      "files": 11,
+      "marker": "PASS_EXACT_SNAPSHOT_MARKER"
+    },
+    "protected": {}
+  },
+  "officialReceipt": {
+    "verificationRef": {
+      "commit": "71104dabf173369d973c71e155e62f25af6ff235",
+      "path": ".archive-meta-register/auto/4slot/last-verification.json",
+      "gitBlobSha1": "6e4b8288506abec7d7efe31abfca05b2c92507ee",
+      "sha256": "65e3f4ee14e0e271df9b06629046155d13e0847764898911e913b2567e8dbc1c",
+      "bytes": 623
+    },
+    "receiptRef": {
+      "commit": "71104dabf173369d973c71e155e62f25af6ff235",
+      "path": ".archive-meta-register/auto/4slot/receipts/88ba90b35c4a1c1a7fdf60c19634b76075295cc95c3492529f7a3fbda0ba7fb0.json",
+      "gitBlobSha1": "9c076c11d16c9b1e84306c172af6755fadab4d31",
+      "sha256": "18374c9b6ae48eb598557491350dec1f452177669516ae96b382fbdf084af6db",
+      "bytes": 685
+    },
+    "status": "PASS",
+    "reportedStatus": "PASS_WITH_SUPPLEMENTS",
+    "sourceCommit": "ca5644a44f62d8917c2df9a1b7d95353491589cc",
+    "sourceCommitIsAncestorOfSnapshot": true,
+    "indexSha256": "88ba90b35c4a1c1a7fdf60c19634b76075295cc95c3492529f7a3fbda0ba7fb0",
+    "inputDigest": "83f063c32e9e72487774d2d441dad71d375a84b35c9c3683acb9a12af61c5afd",
+    "consumerVerified": 18259,
+    "counts": {
+      "files": 954,
+      "items": 21699,
+      "registered": 18259,
+      "pending": 3490,
+      "withCandidates": 753,
+      "identityFingerprintHistorical": 6017
+    },
+    "replayChanged": false,
+    "sourceMutation": 0,
+    "authored4SlotMutation": 0,
+    "semanticApprovalMutation": 0,
+    "independentReviewClaim": false,
+    "currentScopedConsumerExecutionIsSeparate": true
+  },
+  "publicFiles": [
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-canonical-input-manifest.json",
+      "expectedGitBlobSha1": "4b7ea82e65674a02567ee282ba57cb2f44a98bf4",
+      "expectedSha256": "e72e70c136947a40c0b4e8c04e8e50152b7be867781d694f7d393632c48e3edf",
+      "expectedBytes": 122332,
+      "observedSha256": "e72e70c136947a40c0b4e8c04e8e50152b7be867781d694f7d393632c48e3edf",
+      "observedBytes": 122332,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.compact.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-canonical-input-manifest.compact.json",
+      "expectedGitBlobSha1": "265ed6e1b42dba6a958a954ee7666249197da057",
+      "expectedSha256": "4aeafab7c4b6493137fdcffa128db9037d2d5bf8eb18d90db68009a0a41a1674",
+      "expectedBytes": 80367,
+      "observedSha256": "4aeafab7c4b6493137fdcffa128db9037d2d5bf8eb18d90db68009a0a41a1674",
+      "observedBytes": 80367,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/archive2-canonical.js",
+      "url": "https://icefoxtail.github.io/AP------/archive/archive2-canonical.js",
+      "expectedGitBlobSha1": "4a568d9c483f72783707e50ce99d4fb37be01684",
+      "expectedSha256": "5d2085695a151d7a4630c2b3e7fc8550aebe26fa15bc59d8ac8af8e90385c73c",
+      "expectedBytes": 107993,
+      "observedSha256": "5d2085695a151d7a4630c2b3e7fc8550aebe26fa15bc59d8ac8af8e90385c73c",
+      "observedBytes": 107993,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-catalog.json",
+      "expectedGitBlobSha1": "3e61aafb9659a4004bf8f9e4da8a6258cedd8eca",
+      "expectedSha256": "f2dc01e3b6fea031b55df3221ceca716eb523b2f15466a4f9962250be8023eab",
+      "expectedBytes": 72221313,
+      "observedSha256": "f2dc01e3b6fea031b55df3221ceca716eb523b2f15466a4f9962250be8023eab",
+      "observedBytes": 72221313,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/archive2-source-verification-index.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-source-verification-index.json",
+      "expectedGitBlobSha1": "bd17932aaa4b39e10c727b09ecec86c45f6674dd",
+      "expectedSha256": "6b81f82dbee2a81d49a628e8ad3a50e6cb1e8948b4326f86d41fe876c2aa6175",
+      "expectedBytes": 386258,
+      "observedSha256": "6b81f82dbee2a81d49a628e8ad3a50e6cb1e8948b4326f86d41fe876c2aa6175",
+      "observedBytes": 386258,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/item-4slot-index.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/item-4slot-index.json",
+      "expectedGitBlobSha1": "9eebc53d7a76f0304910630d0a3410fced0b4cbc",
+      "expectedSha256": "88ba90b35c4a1c1a7fdf60c19634b76075295cc95c3492529f7a3fbda0ba7fb0",
+      "expectedBytes": 20256676,
+      "observedSha256": "88ba90b35c4a1c1a7fdf60c19634b76075295cc95c3492529f7a3fbda0ba7fb0",
+      "observedBytes": 20256676,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/svg-accessibility-index.js",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/svg-accessibility-index.js",
+      "expectedGitBlobSha1": "41a9a30f0f9d1e8a429a05df73c71806fcafb1e8",
+      "expectedSha256": "16ca9a6d0942962787476b9136283c9664b5fb5e497a1849cadc902cba174828",
+      "expectedBytes": 5689821,
+      "observedSha256": "16ca9a6d0942962787476b9136283c9664b5fb5e497a1849cadc902cba174828",
+      "observedBytes": 5689821,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/basic-scope-parent-links.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/basic-scope-parent-links.json",
+      "expectedGitBlobSha1": "25a6ac388e9a171823dce32582cc75b8dab07b13",
+      "expectedSha256": "5a8de854b14cf69f848d5f1ecc9205c1a11377787ec5d4202c478897342148cf",
+      "expectedBytes": 1917269,
+      "observedSha256": "5a8de854b14cf69f848d5f1ecc9205c1a11377787ec5d4202c478897342148cf",
+      "observedBytes": 1917269,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "expectedGitBlobSha1": "c42ff5c9189dc837eb5ec938cb6ae022671eaa24",
+      "expectedSha256": "1763c3bb136b131b9de1eadb4c95ea962df3343ef1c23dbef7fd1910bf3b1fd9",
+      "expectedBytes": 6976077,
+      "observedSha256": "1763c3bb136b131b9de1eadb4c95ea962df3343ef1c23dbef7fd1910bf3b1fd9",
+      "observedBytes": 6976077,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/meta-foundation/runtime/middle1-v1.json",
+      "expectedGitBlobSha1": "8a096d74050fd2b1f1da8244ddcd9744e1ae14da",
+      "expectedSha256": "7ac466ae29ead3287d67bbb9589a45ae21f1356d3027b40860e8c7811cab3827",
+      "expectedBytes": 1643163,
+      "observedSha256": "7ac466ae29ead3287d67bbb9589a45ae21f1356d3027b40860e8c7811cab3827",
+      "observedBytes": 1643163,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "url": "https://icefoxtail.github.io/AP------/archive/data/question_metadata.json",
+      "expectedGitBlobSha1": "67bc91bca230aa12bbf92e43457dd825c50b5916",
+      "expectedSha256": "94460966000a09f776be6002ea43d38f9bf7ea7f9180901d71025225c6df9b16",
+      "expectedBytes": 74997668,
+      "observedSha256": "94460966000a09f776be6002ea43d38f9bf7ea7f9180901d71025225c6df9b16",
+      "observedBytes": 74997668,
+      "transportStatus": "HTTP_200",
+      "exactBytes": true
+    }
+  ],
+  "checks": {
+    "total": 74,
+    "passed": 74
+  },
+  "boundaries": {
+    "physicalRegistrationIsSemanticApproval": false,
+    "storedFinalQaIsCurrentNativeValidation": false,
+    "literalDifficultyIsIssuedD5Request": false,
+    "currentNativeValidation": "NOT_EVALUATED",
+    "issuedSemanticReceiptStock": "NOT_RECOUNTED",
+    "wholeSemanticQuality": "NOT_EVALUATED",
+    "sourceQuestionEvaluation": 0,
+    "sourceTextOutput": 0,
+    "answersOrSolutionsOutput": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "builderRuns": 0,
+    "registrarRuns": 0,
+    "registrationWrites": 0,
+    "approvalWrites": 0,
+    "trackedRepositoryWrites": 0,
+    "remoteRefWrites": 0,
+    "gitObjectCacheHydration": "ALLOWED_READ_CACHE_ONLY_FROM_PUBLIC_ORIGIN",
+    "excludedSemesterClassification": 0
+  },
+  "observedAtUtc": "2026-11-17T10:44:38.048Z",
+  "finishedAtUtc": "2026-11-17T10:45:03.959Z"
+}

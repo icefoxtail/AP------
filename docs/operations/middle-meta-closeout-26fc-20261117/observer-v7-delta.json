@@ -1,0 +1,130 @@
+{
+  "after": {
+    "bytes": 101258,
+    "gitBlobSha1": "96566541ee68876b3bd55448d8ec9434662ef4a6",
+    "sha256": "0ed0d4e1be37d669f52a01bc2877345493e55411562d12473038fc9eb437f76e"
+  },
+  "baselineOriginalFivePinsUnchanged": true,
+  "before": {
+    "bytes": 99624,
+    "gitBlobSha1": "4e24aaf84891e8954c43057df6c6c9c54dce0797",
+    "sha256": "27ae32aafd309c492662f2ad4b18c4818e2f2bc464ba7e722a330aca5cce7055"
+  },
+  "currentFivePinsExplicitCallOnly": true,
+  "edits": [
+    {
+      "after": "function attachClosedSourceNumbering(cohort, commit, pins = LEGACY_NUMBERING_PINS) {",
+      "before": "function attachClosedSourceNumbering(cohort, commit) {"
+    },
+    {
+      "after": "  for (const pin of pins) {",
+      "before": "  for (const pin of LEGACY_NUMBERING_PINS) {"
+    },
+    {
+      "after": "    current: attachClosedSourceNumbering(current, options.snapshot, CURRENT_LEGACY_NUMBERING_PINS),",
+      "before": "    current: attachClosedSourceNumbering(current, options.snapshot),"
+    },
+    {
+      "after": "// Current exact bytes are distinct from the unchanged baseline capture.\nconst CURRENT_LEGACY_NUMBERING_PINS = [\n  {\n    \"sourceArchiveFile\": \"original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js\",\n    \"gitBlobSha1\": \"7d4e76c9f31bf7c02aa82e7fc47df46f91b8ed3e\",\n    \"sha256\": \"c32cd38506b3da4ff50f83789d0907b106920a47edc66b38d81ad2017738c939\",\n    \"bytes\": 11847,\n    \"questionCount\": 24\n  },\n  {\n    \"sourceArchiveFile\": \"original/middle/m3/2final/19_동산여중_2학기_기말_중3_수학.js\",\n    \"gitBlobSha1\": \"c9efd5c9641d21127bbbeb0b77f69cd270e7b632\",\n    \"sha256\": \"b97ed85296292713204bb12a4cdbb6f47f40892922da35df005dd12cd46975a4\",\n    \"bytes\": 80832,\n    \"questionCount\": 25\n  },\n  {\n    \"sourceArchiveFile\": \"original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js\",\n    \"gitBlobSha1\": \"3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7\",\n    \"sha256\": \"593994b906e074da4f6e39ba956b976534f9654add9404fe24de69f8aded72bb\",\n    \"bytes\": 58424,\n    \"questionCount\": 21\n  },\n  {\n    \"sourceArchiveFile\": \"original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js\",\n    \"gitBlobSha1\": \"0a2b4a0ffb487e85a2b00a6f8203556adb0e375a\",\n    \"sha256\": \"325b015724d732bdbe9b258116bbf220aed2fc0f316c1fca5e076d1ce1ae50b7\",\n    \"bytes\": 61507,\n    \"questionCount\": 23\n  },\n  {\n    \"sourceArchiveFile\": \"original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js\",\n    \"gitBlobSha1\": \"3ed7e176c96dad786c537edf260a5ce881f59009\",\n    \"sha256\": \"f04308babc2accacfef4f080a3570442638175cb519f388d8f585f3980029ff2\",\n    \"bytes\": 134945,\n    \"questionCount\": 23\n  }\n];\nfunction attachClosedSourceNumbering(cohort, commit, pins = LEGACY_NUMBERING_PINS) {",
+      "before": "function attachClosedSourceNumbering(cohort, commit, pins = LEGACY_NUMBERING_PINS) {"
+    }
+  ],
+  "schemaVersion": "archive-physical-closed-numbering-current-pins-v7",
+  "sourceProjectionEvidence": {
+    "baseSnapshot": "71104dabf173369d973c71e155e62f25af6ff235",
+    "currentConsumerQueries": 0,
+    "currentNumberingWholeEqual": true,
+    "numberingSources": [
+      {
+        "after": {
+          "bytes": 11847,
+          "gitBlobSha1": "7d4e76c9f31bf7c02aa82e7fc47df46f91b8ed3e",
+          "sha256": "c32cd38506b3da4ff50f83789d0907b106920a47edc66b38d81ad2017738c939"
+        },
+        "before": {
+          "bytes": 11847,
+          "gitBlobSha1": "a370abb83cfa7bb65a8de980422c5b4869c3490f",
+          "sha256": "d6930f0aab817111af7c25fce3cfdbf7a4b5002269523719e004734e6c3c245d"
+        },
+        "numberCount": 24,
+        "numberingSha256": "904ec72ba0031a303931e492f394c2b2bb084425d4bce5a0a10ddfb46d558b8c",
+        "numberingWholeEqual": true,
+        "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+        "sourceChanged": true
+      },
+      {
+        "after": {
+          "bytes": 80832,
+          "gitBlobSha1": "c9efd5c9641d21127bbbeb0b77f69cd270e7b632",
+          "sha256": "b97ed85296292713204bb12a4cdbb6f47f40892922da35df005dd12cd46975a4"
+        },
+        "before": {
+          "bytes": 80832,
+          "gitBlobSha1": "c9efd5c9641d21127bbbeb0b77f69cd270e7b632",
+          "sha256": "b97ed85296292713204bb12a4cdbb6f47f40892922da35df005dd12cd46975a4"
+        },
+        "numberCount": 25,
+        "numberingSha256": "b58eddc00677c98787946c07123a7e5397ea283397467306528235e791bb4e0f",
+        "numberingWholeEqual": true,
+        "sourceArchiveFile": "original/middle/m3/2final/19_동산여중_2학기_기말_중3_수학.js",
+        "sourceChanged": false
+      },
+      {
+        "after": {
+          "bytes": 58424,
+          "gitBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+          "sha256": "593994b906e074da4f6e39ba956b976534f9654add9404fe24de69f8aded72bb"
+        },
+        "before": {
+          "bytes": 58424,
+          "gitBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+          "sha256": "593994b906e074da4f6e39ba956b976534f9654add9404fe24de69f8aded72bb"
+        },
+        "numberCount": 21,
+        "numberingSha256": "58fce163c550d446ba30136f8dc2d567ff444b8e451ee248125f595fd4d672ed",
+        "numberingWholeEqual": true,
+        "sourceArchiveFile": "original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+        "sourceChanged": false
+      },
+      {
+        "after": {
+          "bytes": 61507,
+          "gitBlobSha1": "0a2b4a0ffb487e85a2b00a6f8203556adb0e375a",
+          "sha256": "325b015724d732bdbe9b258116bbf220aed2fc0f316c1fca5e076d1ce1ae50b7"
+        },
+        "before": {
+          "bytes": 61507,
+          "gitBlobSha1": "0a2b4a0ffb487e85a2b00a6f8203556adb0e375a",
+          "sha256": "325b015724d732bdbe9b258116bbf220aed2fc0f316c1fca5e076d1ce1ae50b7"
+        },
+        "numberCount": 23,
+        "numberingSha256": "0b4345afa875b3506c5d7fcb199938f1b6e3b4443ab5391c14834f3370150cfe",
+        "numberingWholeEqual": true,
+        "sourceArchiveFile": "original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+        "sourceChanged": false
+      },
+      {
+        "after": {
+          "bytes": 134945,
+          "gitBlobSha1": "3ed7e176c96dad786c537edf260a5ce881f59009",
+          "sha256": "f04308babc2accacfef4f080a3570442638175cb519f388d8f585f3980029ff2"
+        },
+        "before": {
+          "bytes": 134945,
+          "gitBlobSha1": "36c738026dc11bd0483ece6039154d43e624eafc",
+          "sha256": "0e9f0f3e3c9e413f62ff38090b4022b45951887a57131651ce9573cfa735c098"
+        },
+        "numberCount": 23,
+        "numberingSha256": "0b4345afa875b3506c5d7fcb199938f1b6e3b4443ab5391c14834f3370150cfe",
+        "numberingWholeEqual": true,
+        "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+        "sourceChanged": true
+      }
+    ],
+    "semanticApproval": 0,
+    "sourceBodyOutput": 0,
+    "sourceEvaluation": 0
+  },
+  "v6UnpublishedRejected": "Shared pin list would incorrectly require current bytes at baseline22f79c; independently caught before publication.",
+  "wholeInverseExact": true
+}

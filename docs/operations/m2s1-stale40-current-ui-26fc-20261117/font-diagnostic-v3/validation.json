@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "archive-stale40-font-diagnostic-validation-v3",
+  "status": "DIAGNOSTIC_ONLY_UNIT_PASS_ACTUAL_CAUSE_UNRESOLVED",
+  "actual": {
+    "head": "54429566859f2e7700108a3c7297c039846d36c2",
+    "runId": "44063454401",
+    "contractJob": "133970964249",
+    "chromeJob": "133971042819",
+    "technical": {
+      "gitBlobSha1": "56986cae00dfcaefd3b38dbb80a0ea9183120e64",
+      "sha256": "f4549130f9dca435ce82f957999d967080f16ed72b9cb4be75d0eb358ef69f1e",
+      "bytes": 114443
+    },
+    "failureCode": "UI_STUDENT_FONT_NOT_APPLIED",
+    "completedCases": 0,
+    "pngs": 0,
+    "studentFontResources": 32,
+    "externalFontResources": 0
+  },
+  "diagnosis": {
+    "precedingDocumentFontsAndWeightsGuardsPassed": true,
+    "originalFamilyArrayNotRecorded": true,
+    "emptySelectorVersusDifferentFamily": "UNRESOLVED",
+    "renderCSSOrFontChange": false
+  },
+  "scope": {
+    "firstGroupOnly": "E037/PROBLEM/desktop",
+    "evidence": "COUNTS_RECTS_EXPECTED_FONT_FLAGS_AND_HASHES_ONLY",
+    "readsBodyTextOrHTML": false,
+    "originalErrorRethrown": true,
+    "successOutputUnchanged": true,
+    "sourceWrites": 0,
+    "domWrites": 0,
+    "cssWrites": 0,
+    "newApprovals": 0
+  },
+  "validation": {
+    "syntax": "PASS",
+    "newUnitCounts": {
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0
+    },
+    "newUnitDurationMs": 263.504935,
+    "log": {
+      "gitBlobSha1": "daa0aa41bf856c0cc69c917ddd80240ec7f78b56",
+      "sha256": "c0ca77b41531baa3bacab57538194a7d759cb9511d8e0448714acb429f2f0455",
+      "bytes": 1403
+    },
+    "original106": "REUSED_ACTUAL_CONTRACT_SUCCESS_NO_RERUN",
+    "chrome": "NOT_RUN"
+  },
+  "codeInverse": {
+    "edits": 7,
+    "exactOriginalProducer": {
+      "gitBlobSha1": "ea71e8f716737b2dddf315590aea5cee900fdfaf",
+      "sha256": "2429945d42f65ce6d30b7afdbc9ea01bfc739add592b047b3005b57a80e1a399",
+      "bytes": 38476
+    },
+    "originalGuardExpressionsUnchanged": true,
+    "originalCaptureAndFontLoadBodyUnchanged": true
+  },
+  "testOldPrefixExact": {
+    "gitBlobSha1": "083fc5a261920787306ff62ce516e4ee3419a609",
+    "sha256": "2e62948a1e1bdb9ef1b327781123e182dc5f00d23dfd513717e556e66795b4dc",
+    "bytes": 20293
+  },
+  "unchangedInputs": [
+    {
+      "path": "tools/capture-m2s1-stale-forty-surfaces.cjs",
+      "gitBlobSha1": "eacabe15d962858a3f95b59ee94daece3e7fb7cf",
+      "sha256": "d1e29325ffa367938b9ecba4eab8df2d295858bfd68920c0f05229186f2eb4bc",
+      "bytes": 28377
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-stale-forty-current-ui.json",
+      "gitBlobSha1": "063f7fc0a807c01b77a64755d7e43c5770eea824",
+      "sha256": "43d1a52c55d7a9407e8b6bfcab15443158de53aa792f71cb68d46c1d961741a3",
+      "bytes": 98644
+    },
+    {
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "bytes": 56735
+    },
+    {
+      "path": "tools/capture-m1s2-problem-surface.cjs",
+      "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+      "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+      "bytes": 10218
+    },
+    {
+      "path": "tools/m2s1-text3-solution-fragments.cjs",
+      "gitBlobSha1": "8ccfc5b09602b3f348b8b842007123cbc7d9ecd1",
+      "sha256": "b7fbc927ec795bca33fd923c971efee8ec94cd6aeb1a606f6be6ec3760caa4d9",
+      "bytes": 22828
+    },
+    {
+      "path": "tests/fixtures/archive-m2s1-text-solution3-ui.json",
+      "gitBlobSha1": "6c8859829f369a0843bcd0a9faeb77cc293ca2ff",
+      "sha256": "043f04f67127dd003e79432e7c72c21bf7f29ee8e364d66e371fbae5557970dd",
+      "bytes": 3325
+    }
+  ]
+}

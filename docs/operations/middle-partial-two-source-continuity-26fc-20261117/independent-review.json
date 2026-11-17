@@ -1,0 +1,383 @@
+{
+  "schemaVersion": "AP_NAMED_PARTIAL_TWO_SOURCE_INDEPENDENT_REVIEW_V1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "m3s2_release",
+  "author": "m1_release_closeout",
+  "verdict": "STATIC_ACCEPT_CLOSED_EXISTING_AUTHORITY_SOURCE_CONTINUITY",
+  "baseCommit": "a395dc9d22848ce173ae14d331cd0824dc2cf30e",
+  "manifest": {
+    "gitBlobSha1": "c63814da146ef0500e9ef800b1ad8bfc17abfaae",
+    "sha256": "0bd3ef3ccd99d8043a14256e08ac23baabfd5d7dc6d2c1649b7317167b5f7594",
+    "bytes": 9929
+  },
+  "delta": {
+    "gitBlobSha1": "b3da90a70b213b5e2054f64c5fbbbd2d755f10e2",
+    "sha256": "2fca937a2497c811b57490af7c9fdada9229636d28dec80271858590ceeaf693",
+    "bytes": 14014
+  },
+  "authorValidation": {
+    "gitBlobSha1": "05249e7e42c6af110eb6553097f732a9703e6a28",
+    "sha256": "9ba3e2f221187b955bc3ff064bad0deb0faf7e7506b03fef9860301515202c15",
+    "bytes": 15343
+  },
+  "files": [
+    {
+      "path": "tools/4slot/named-partial-source-continuity.cjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "a4983d22ec01095ba46c32c3b521c485556a2aed",
+        "sha256": "813ceb2f5d5946d77ee552cb4d6eb89537b09ccc07960c29182448837deb25cd",
+        "bytes": 16071
+      }
+    },
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "before": {
+        "gitBlobSha1": "b7d0b82cd851405a63d604ba289bc815cfd59475",
+        "sha256": "48f01a02593511320d7795a8dc350109c4aa0a4aa28ee2f0ec58de02560d36a8",
+        "bytes": 20528
+      },
+      "after": {
+        "gitBlobSha1": "aac0d6e8ebadb89c7ec0913e46e1932541e9875b",
+        "sha256": "9c8f705ab52ea0bd60fd9e7eef6a23f3ef69c0b90b9ed9dadf715b01393fa095",
+        "bytes": 20966
+      }
+    },
+    {
+      "path": "tools/4slot/rebind-reviewed-partial.cjs",
+      "before": {
+        "gitBlobSha1": "a145cd9d39d31b341212de433d0baa7f6608ba04",
+        "sha256": "b28ea547422cf5698411840114e15291cf04e9bb5bb6ffea08bdf521ac03c33f",
+        "bytes": 17781
+      },
+      "after": {
+        "gitBlobSha1": "fc8d2cca54d4fb93d69d3be5e3a1ba356628d5ca",
+        "sha256": "e213ced0823ff54881eaaa64ffcaec20c0a25a1d6bed5e958d2b6e0d403b457e",
+        "bytes": 18165
+      }
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "before": {
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+        "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+        "bytes": 41001
+      },
+      "after": {
+        "gitBlobSha1": "459e7880f6a213a812cbdac6878993d671a6285c",
+        "sha256": "22614970c68ad0328b9ea92988a16799e8ce769bd71ebd284c21bbdb74369e09",
+        "bytes": 41230
+      }
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "before": {
+        "gitBlobSha1": "f57f1833e24045ed325fe5cf129a63990802b2e6",
+        "sha256": "516c7bf91abee54e911be4944bc3a388bccb13fa30a4b99534168be67e83f2ee",
+        "bytes": 34600
+      },
+      "after": {
+        "gitBlobSha1": "80960f796b4d49242b1048ac8de25781ad6ef6dd",
+        "sha256": "e993f12438c8ca319ab6837db56dbc8fb886cb1f3a744fdcdcb2bb66dc4ce9c2",
+        "bytes": 34718
+      }
+    },
+    {
+      "path": "tests/item-4slot-named-partial-source-continuity.test.cjs",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "362833d72f31b67bb03496b7413aad168430b490",
+        "sha256": "099e84c36a2aeab9a142085d8f5db1d106cfb6d28d370d3b09a0625d5fa48e79",
+        "bytes": 3584
+      }
+    },
+    {
+      "path": "archive/data/item-4slot-partial-source-continuity/v1/m1s1-geumdang19-final-five-source-only-26fc-20261117.json",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "53562a65c97961c20670222c67b7206d9f48011f",
+        "sha256": "99e9e5930ebda7e96bf15ec99e7ffe4881771b7526da5a3e0dd0c8fa9bb2c480",
+        "bytes": 24210
+      }
+    },
+    {
+      "path": "archive/data/item-4slot-partial-source-continuity/v1/m3s2-sinheung19-mid-eleven-source-only-26fc-20261117.json",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "d2e18bd591b0249f21496648adea92c06da99f41",
+        "sha256": "0a39181475f4c900b4526ad975e311f47ad171a2103f9b875c9819cb7e7196ec",
+        "bytes": 30595
+      }
+    }
+  ],
+  "wholeInverse": [
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "hunks": 5,
+      "before": {
+        "gitBlobSha1": "b7d0b82cd851405a63d604ba289bc815cfd59475",
+        "sha256": "48f01a02593511320d7795a8dc350109c4aa0a4aa28ee2f0ec58de02560d36a8",
+        "bytes": 20528
+      },
+      "after": {
+        "gitBlobSha1": "aac0d6e8ebadb89c7ec0913e46e1932541e9875b",
+        "sha256": "9c8f705ab52ea0bd60fd9e7eef6a23f3ef69c0b90b9ed9dadf715b01393fa095",
+        "bytes": 20966
+      },
+      "wholeInverseExact": true,
+      "method": "Exact line-span reversal; literal duplicate prefix insertions distinguished by position."
+    },
+    {
+      "path": "tools/4slot/rebind-reviewed-partial.cjs",
+      "hunks": 5,
+      "before": {
+        "gitBlobSha1": "a145cd9d39d31b341212de433d0baa7f6608ba04",
+        "sha256": "b28ea547422cf5698411840114e15291cf04e9bb5bb6ffea08bdf521ac03c33f",
+        "bytes": 17781
+      },
+      "after": {
+        "gitBlobSha1": "fc8d2cca54d4fb93d69d3be5e3a1ba356628d5ca",
+        "sha256": "e213ced0823ff54881eaaa64ffcaec20c0a25a1d6bed5e958d2b6e0d403b457e",
+        "bytes": 18165
+      },
+      "wholeInverseExact": true,
+      "method": "Exact line-span reversal; literal duplicate prefix insertions distinguished by position."
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "hunks": 4,
+      "before": {
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+        "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+        "bytes": 41001
+      },
+      "after": {
+        "gitBlobSha1": "459e7880f6a213a812cbdac6878993d671a6285c",
+        "sha256": "22614970c68ad0328b9ea92988a16799e8ce769bd71ebd284c21bbdb74369e09",
+        "bytes": 41230
+      },
+      "wholeInverseExact": true,
+      "method": "Exact line-span reversal; literal duplicate prefix insertions distinguished by position."
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "hunks": 2,
+      "before": {
+        "gitBlobSha1": "f57f1833e24045ed325fe5cf129a63990802b2e6",
+        "sha256": "516c7bf91abee54e911be4944bc3a388bccb13fa30a4b99534168be67e83f2ee",
+        "bytes": 34600
+      },
+      "after": {
+        "gitBlobSha1": "80960f796b4d49242b1048ac8de25781ad6ef6dd",
+        "sha256": "e993f12438c8ca319ab6837db56dbc8fb886cb1f3a744fdcdcb2bb66dc4ce9c2",
+        "bytes": 34718
+      },
+      "wholeInverseExact": true,
+      "method": "Exact line-span reversal; literal duplicate prefix insertions distinguished by position."
+    }
+  ],
+  "currentIntegrationBeforeCAS": {
+    "head": "327f59823f49ab3245838d1d1aa94cadf5946eaf",
+    "method": "Direct immutable Git contents-directory metadata; no source bytes fetched.",
+    "rows": [
+      {
+        "path": "tools/4slot/partial-submission.cjs",
+        "gitBlobSha1": "b7d0b82cd851405a63d604ba289bc815cfd59475",
+        "modeType": "file",
+        "bytes": 20528
+      },
+      {
+        "path": "tools/4slot/rebind-reviewed-partial.cjs",
+        "gitBlobSha1": "a145cd9d39d31b341212de433d0baa7f6608ba04",
+        "modeType": "file",
+        "bytes": 17781
+      },
+      {
+        "path": "tools/4slot/build-4slot-runtime.cjs",
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+        "modeType": "file",
+        "bytes": 41001
+      },
+      {
+        "path": "tools/ci/archive-registration-writer.mjs",
+        "gitBlobSha1": "f57f1833e24045ed325fe5cf129a63990802b2e6",
+        "modeType": "file",
+        "bytes": 34600
+      }
+    ],
+    "allFourSharedBeforePinsExact": true
+  },
+  "closedScope": {
+    "sources": 2,
+    "totalSourceQuestions": 47,
+    "originalSelectedCompactItems": 17,
+    "restoredUnchangedWholeItems": 16,
+    "changedSelectedHeld": 1,
+    "unsubmittedPreserved": 30,
+    "subjects": [
+      {
+        "subjectId": "m1s1-geumdang19-final-five",
+        "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+        "claim": {
+          "gitBlobSha1": "53562a65c97961c20670222c67b7206d9f48011f",
+          "sha256": "99e9e5930ebda7e96bf15ec99e7ffe4881771b7526da5a3e0dd0c8fa9bb2c480",
+          "bytes": 24210
+        },
+        "sourceQuestions": 24,
+        "originalSelected": 5,
+        "restored": 5,
+        "held": [],
+        "unsubmitted": 19,
+        "allowedSourceDeltas": [
+          {
+            "ordinal": 15,
+            "fields": [
+              "question"
+            ],
+            "beforeWholeSha256": "97b4aad301b16a91a37901aa32881b1ffd0b3d484a5183abdbe2a19be3d1d432",
+            "afterWholeSha256": "3e8fe55cb619df346030bdc7f8111772620aa83924d202d95a402818d7240fa9"
+          }
+        ],
+        "originalCompactItemHashesCount": 5,
+        "originalChainCalls": 2,
+        "selectedWholeHashesAndActualConsumerItemHashesExact": true
+      },
+      {
+        "subjectId": "m3s2-sinheung19-mid-eleven",
+        "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+        "claim": {
+          "gitBlobSha1": "d2e18bd591b0249f21496648adea92c06da99f41",
+          "sha256": "0a39181475f4c900b4526ad975e311f47ad171a2103f9b875c9819cb7e7196ec",
+          "bytes": 30595
+        },
+        "sourceQuestions": 23,
+        "originalSelected": 12,
+        "restored": 11,
+        "held": [
+          {
+            "questionUid": "qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1",
+            "sourceOrdinal": 8
+          }
+        ],
+        "unsubmitted": 11,
+        "allowedSourceDeltas": [
+          {
+            "ordinal": 8,
+            "fields": [
+              "question",
+              "solution"
+            ],
+            "beforeWholeSha256": "ffaf6de8cc1259aae7d4035b3a6edb8c1bcf6f8a9ba49b6acf69f31c437c1064",
+            "afterWholeSha256": "7a1390f6a10888189245c94ff5eeb31ce80721addb11567f8ce1ade183697aca"
+          }
+        ],
+        "originalCompactItemHashesCount": 12,
+        "originalChainCalls": 1,
+        "selectedWholeHashesAndActualConsumerItemHashesExact": true
+      }
+    ]
+  },
+  "directlyReviewed": [
+    "All eight candidate full bodies, all four shared-file before bodies, the reversible delta and authored validation metadata were fetched by exact immutable Git blobs and checked for Git blob/SHA256/byte equality.",
+    "Five partial-submission hunks, five public-rebind hunks, four builder hunks and two writer prefix insertions reverse to their complete original files byte for byte. Duplicate literal prefix insertions were distinguished by exact line spans.",
+    "The helper admits only the two literal source paths and two exact sidecar whole-byte pins. Historical source and original compact are authenticated from immutable commits; the source-change commit is fixed and ancestry to current HEAD is mandatory. Current source, dictionary, authority files and identity inputs are authenticated as current regular files with exact HEAD binding.",
+    "The current full source banks have fixed byte pins and exact per-row historical/current whole hashes. All47 canonical UID/ordinal/display joins are checked. Only5 plus11 selected questions are whole-equal; changed M3Q8 stays in the original12-item partition and is explicitly excluded from the restored11.",
+    "Original evidence is not synthesized. The helper calls the unchanged partial receipt, quote/structure binding, original append acceptance and public mixed-rebind/native/renderer checks using an authenticated historical source view. The original private append5 and public mixed12 contracts must complete, including their exact prior compact chains.",
+    "The historical token is an opaque module-private WeakMap capability. It binds root, current HEAD, complete compact arguments, source bytes/bank, identity records, dictionary and chain depth. The public-rebind view is available only once for the fixed M3 subject and exact original input/acceptance refs. Tokens are deleted in finally, synchronous results are required, and live files are rehashed before/after original validation.",
+    "The ordinary path with undefined historical context retains its original source, acceptance, quote, native, asset and whole-output checks. Unrelated sources return no named continuation; a missing sidecar falls back to the original rejection of the current source mismatch. No caller-supplied boolean or fabricated context can authorize history.",
+    "The builder parses only the two named banks using strict JSON-data parsing, for both current and historical source bytes; unrelated bank parsing is unchanged. Original evidence verification occurs before cache reuse. The helper participates in BUILDER_SHA, and current authority/input hashes enter evidenceDigests/contractSha256 and the ordinary final observed-input checks.",
+    "The builder's existing current-versus-historical student-payload guard is unchanged and still rejects M3Q8. No vector, compact, original receipt, source, identity, or unsubmitted partition is rewritten.",
+    "The two writer additions are the identical exact directory prefix in fourSlot input fingerprinting and immutable input preservation. They add no generated-output allowance, producer command, registration permission, or new authority."
+  ],
+  "metadataCrossChecks": {
+    "sidecarFullPinsEqualHelperClosedTable": true,
+    "all47UIDsUnique": true,
+    "selected16HistoricalCurrentWholeHashesEqual": true,
+    "actualConsumer16UIDOrdinalSourceAndOriginalCompactItemHashesEqualSidecars": true,
+    "heldQ8": {
+      "questionUid": "qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1",
+      "sourceOrdinal": 8,
+      "reason": "STALE_STUDENT_PAYLOAD",
+      "consumerExcluded": true,
+      "newApproval": false
+    },
+    "unsubmitted": {
+      "M1": 19,
+      "M3": 11,
+      "total": 30
+    }
+  },
+  "boundAuthorExecutionEvidence": {
+    "qualification": "Existing author executions were read and hash-bound; this reviewer performed no new Node/Native/Consumer/build execution.",
+    "official": {
+      "gitBlobSha1": "382bba88eda97739d8e919171f99ebcc5e34b159",
+      "sha256": "88fbaf002798d39927db9f0ec91499d6ef914b180b7673e6205277402774d290",
+      "bytes": 52000
+    },
+    "officialSummary": {
+      "dataHead": "a395dc9d22848ce173ae14d331cd0824dc2cf30e",
+      "status": "PASS",
+      "registered": 16,
+      "pending": 31,
+      "consumerWholeRows": 16,
+      "consumerTermQueries": 107,
+      "coldChanged": false,
+      "newApprovals": 0,
+      "sourceWrites": 0,
+      "compactWrites": 0,
+      "productionSourceEvaluationCalls": 0,
+      "preservedInputs": 55
+    },
+    "negative": {
+      "gitBlobSha1": "9e85f512fdcf39e8a0c2f99156d54f861a063f26",
+      "sha256": "2d32273d61aa8b9995d8cc2d962472ba57c4411ca902d82191790ec344a19134",
+      "bytes": 4242
+    },
+    "negativeCases": 20,
+    "negativeCoverage": [
+      "original compact mutation",
+      "caller source/bank/identity substitution",
+      "sidecar/current bank/receipt/selected asset byte drift",
+      "forged/cross-root/other-compact token",
+      "historical source/identity/dictionary argument substitution",
+      "whole-chain repeated token use",
+      "Promise return and token expiry",
+      "callback-time live input mutation",
+      "delete each opt-in with outside whole-state preservation"
+    ],
+    "unit25": {
+      "gitBlobSha1": "feb2550dbc504b7cf97b3e25cde2adc5052aa907",
+      "sha256": "2305292ac6cdee3fa2a099866f8d7b17c82fabcddc157041d4678945518dd969",
+      "bytes": 2048
+    },
+    "ordinaryRegression75": {
+      "gitBlobSha1": "94fe9127b36c3aef2b71b22c156aedc37e3c535b",
+      "sha256": "79a683e8b32449c7af21b2cb9d6c69e0ceb150e83bdc3a67f83c73cc009c1d6b",
+      "bytes": 6734
+    },
+    "writerPrefix6": {
+      "gitBlobSha1": "ced3731744298e868491c44535cbf4860738775d",
+      "sha256": "c1fb206d86bbf0b337f3b0e90b5f83ef74128972c914e614095091ffe16073be",
+      "bytes": 1042
+    },
+    "writerPrefix6RawLog": {
+      "gitBlobSha1": "47667ec4c3c0c1bf38187b3850f54e368821362c",
+      "sha256": "aae379c18506cdaa06a13813fee320df54ce92d2edf8ef79e8ded96d175723ad",
+      "bytes": 28
+    },
+    "writerBoundary": "Exact production function bodies with test-only export; no full writer or registrar run was claimed."
+  },
+  "limits": {
+    "reviewerExecutions": 0,
+    "sourceBodyReview": 0,
+    "mathOrMeaningQA": 0,
+    "newUiReview": 0,
+    "newVectorAuthority": 0,
+    "productionEditsByReviewer": 0,
+    "remoteRefWrites": 0,
+    "mainRegistration": "NOT_PERFORMED",
+    "newSourceChangesAllowed": false,
+    "globalAuthorityOrM3S1ScopeExpanded": false
+  },
+  "integrationNote": "The builder byte/SHA dependency changes and the two new opt-in files must be included together. Root retains final CAS, actual writer/Consumer/Pages ownership. Existing private local results are not promoted to actual main registration."
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "AP_MIDDLE_Q5_LEGACY_FIXTURE_INDEPENDENT_REVIEW_V1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "reviewer": "m3s2_release",
+  "verdict": "STATIC_ACCEPT_TEST_FIXTURE_ONLY",
+  "repository": "icefoxtail/AP------",
+  "baseCommit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "exactFiles": [
+    {
+      "path": "tests/archive-m3-e052-q5-existing-vector.test.mjs",
+      "before": {
+        "gitBlobSha1": "193d7a0f6786954e22cde09b2c41950efda78d73",
+        "sha256": "d6bf12e14211610ded264861f4a006f17922e64e3fe78cebd5eeb0bdca75f841",
+        "bytes": 21674
+      },
+      "after": {
+        "gitBlobSha1": "9ca4ac038aaa10d810baa457783aa688b12e3d8e",
+        "sha256": "1d5bd5b38fc802042163cdc0246ed28695c6d15f8c5190a19df732e28fb5f4f0",
+        "bytes": 22177
+      },
+      "setupHunks": 1,
+      "wholeInverseExact": true,
+      "existingTestAndThrowsLinesExact": true
+    },
+    {
+      "path": "tests/archive-m3-e052-q5-complete-given.test.mjs",
+      "before": {
+        "gitBlobSha1": "5881c85f2a2f1ac714e334151c31d0f85c3e717e",
+        "sha256": "971395c937e2aea7a6d9a4986f68d5f5eb31c23b4a745e2de212c28ee4ad16c6",
+        "bytes": 36860
+      },
+      "after": {
+        "gitBlobSha1": "fa6f3aaca67ce930a291c3daedf3f9bfbbe14d63",
+        "sha256": "a565c82df32458fdcf4ad112290151ce2d3b3dc6fbdbc925962e34e2ed5fa07d",
+        "bytes": 38357
+      },
+      "setupHunks": 2,
+      "wholeInverseExact": true,
+      "existingTestAndThrowsLinesExact": true
+    }
+  ],
+  "unchangedProduction": {
+    "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+    "gitBlobSha1": "9395012e8c6c7af8cae33586b3e39f3081ffea04",
+    "sha256": "904f664a60ffb4c6e5503916a8a3f60d664318633018fec8f8d35a7d4c6a64e2",
+    "bytes": 50976
+  },
+  "originalCapturedEngine": {
+    "path": "archive/engine.html",
+    "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b"
+  },
+  "directlyVerified": [
+    "Both before files were read at the exact e053 commit and both candidate raw bodies were read by immutable Git blob. Each entire file reverses byte-exact to its before body using only the recorded setup edits.",
+    "The vector fixture already copies the immutable technical served bytes. The new setup selects the declared archive/engine.html ref, requires its fixed original captured Git blob, verifies local hash-object against that ref, and stages only that exact engine in addition to the existing request witness.",
+    "The complete-given shared fixture selects the same declared captured engine, requires its exact fixed Git blob and hashes baseFiles bytes before committing engine into its disposable ledger HEAD.",
+    "The complete-given ensureIssued fixture is a separate private ledger. It independently checks the declared engine ref and copied local bytes, then creates its own engine-containing HEAD before the unchanged registerRequests invocation.",
+    "All three edits operate on mkdtemp fixture ledgers. They add no fabricated ancestry, do not change remote refs, and do not modify source, question data, approval evidence, renderer code, or production authority.",
+    "currentM3Q5Ui reads HEAD:archive/engine.html before selecting a branch. The unchanged original engine with no current binding uses the original evidence route; missing HEAD/engine is not a valid old fixture. Current bindings, unknown engine bytes, and current live drift remain subject to the unchanged production checks.",
+    "Existing tests and assertions, including original authority and rejection cases, are byte-preserved outside the three setup edits."
+  ],
+  "rejectedInterpretations": [
+    "No current renderer readiness is inferred from staging the original captured engine in a synthetic fixture.",
+    "No original Native guard, current UI ref, issued proof, or existing negative assertion is relaxed.",
+    "The reviewer did not run Node, Native, Consumer, Chrome, or any student/source review."
+  ],
+  "executionEvidence": {
+    "independenceExecutionCount": 0,
+    "rootReportedResults": {
+      "distinctGroups": [
+        5,
+        11,
+        13,
+        1
+      ],
+      "sumDistinctTests": 30,
+      "lastCasePass": 1,
+      "lastCaseFail": 0,
+      "lastCaseSeconds": 8.207,
+      "sourceNativeGate149Rerun": 0
+    },
+    "qualification": "The execution counts are a root report received during this review, not a new reviewer execution or independent readback of the original test logs. The immutable candidate acceptance here is static; original logs and runtime binding remain root-owned."
+  },
+  "boundaries": {
+    "productionEdits": 0,
+    "sourceEdits": 0,
+    "questionContentReads": 0,
+    "mathOrMeaningApprovals": 0,
+    "visualRechecks": 0,
+    "newAuthority": 0,
+    "remoteRefWrites": 0,
+    "mainWriter": false
+  }
+}
