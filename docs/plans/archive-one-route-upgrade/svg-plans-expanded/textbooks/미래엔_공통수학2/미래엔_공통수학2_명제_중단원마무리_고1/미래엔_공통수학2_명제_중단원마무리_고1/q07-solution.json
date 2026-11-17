@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "-2",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "2",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "parameter": {
+      "name": "a",
+      "value": "5"
+    }
+  },
+  "caption": "역명제는 q이면 p라는 뜻이다. a=5인 허용 예시에서 Q 전체가 P 안에 놓이는지 확인한 뒤, 양 끝점을 비교하여 가능한 자연수 중 가장 작은 값을 찾는다. 이 예시는 최솟값을 뜻하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $x^2-4a^2 \\le 0$, $q$: $|x-3| \\le 4$\n일 때, 명제 $p \\longrightarrow q$의 역이 참이 되도록 하는 자연수 $a$의 최솟값을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P=[−2a,2a],Q=[−1,7];역참 Q⊆P이므로2a≥7. 최솟값4숨김,예시는a5.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "역명제는 q이면 p라는 뜻이다. a=5인 허용 예시에서 Q 전체가 P 안에 놓이는지 확인한 뒤, 양 끝점을 비교하여 가능한 자연수 중 가장 작은 값을 찾는다. 이 예시는 최솟값을 뜻하지 않는다."
+  ]
+}

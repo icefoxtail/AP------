@@ -1,0 +1,345 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H",
+    "E",
+    "F",
+    "G",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGI",
+      "refs": [
+        "G",
+        "I"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "v0",
+        "ownerSegment": "sAB",
+        "text": "4a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v1",
+        "ownerSegment": "sCD",
+        "text": "2a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v2",
+        "ownerSegment": "sDH",
+        "text": "6b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v3",
+        "ownerSegment": "sEF",
+        "text": "3a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "v4",
+        "ownerSegment": "sIE",
+        "text": "2b",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "F",
+        "E",
+        "I"
+      ]
+    }
+  ],
+  "caption": "두 도형을 같은 판에 놓고 가로를 a, 세로를 b 각각의 단위로 나누어 그렸다. 실제 a와 b가 같다는 뜻은 아니며, 두 도형에 같은 변환을 적용하여 넓이비는 유지된다. 사다리꼴의 점선 높이와 평행한 두 밑변, 직사각형의 가로와 세로를 넓이 공식에 사용한다. 윗변은 가운데 둔 대표 위치이며 좌우 위치는 넓이에 영향을 주지 않는다.",
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H",
+    "E",
+    "F",
+    "G",
+    "I"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2]<br>아래 조건과 같은 사다리꼴의 넓이는 직사각형 넓이의 몇 배인지 풀이 과정과 함께 구하시오.<br>(풀이 과정 4점, 답 1점, 총 5점)\n<br>\n<div style=\"border: 1px solid #333; padding: 10px; margin: 8px 0;\">\n• 사다리꼴: 윗변의 길이가 $2a$, 아랫변의 길이가 $4a$, 높이가 $6b$이다.<br>\n• 직사각형: 가로의 길이가 $3a$, 세로의 길이가 $2b$이다.<br>\n(단, $a > 0, b > 0$)\n</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "사다리꼴밑변2a/4a와높이6b,직사각형3a/2b를같은가로a·세로b정규화로비교. 높이수선과직각보존. 좌우윗변위치자유도는대표중앙배치로고정. 최종비3을숫자로제시하지않음.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "사다리꼴밑변2a/4a와높이6b,직사각형3a/2b를같은가로a·세로b정규화로비교. 높이수선과직각보존. 좌우윗변위치자유도는대표중앙배치로고정. 최종비3을숫자로제시하지않음."
+  ]
+}

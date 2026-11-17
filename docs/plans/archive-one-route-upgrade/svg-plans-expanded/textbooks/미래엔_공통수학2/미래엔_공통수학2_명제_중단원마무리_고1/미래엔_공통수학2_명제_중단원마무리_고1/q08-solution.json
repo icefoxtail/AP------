@@ -1,0 +1,61 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "parameter": {
+      "name": "a",
+      "value": "10"
+    }
+  },
+  "caption": "a=10인 허용 예시이다. p가 q의 충분조건이려면 P 전체가 Q 안에 놓여야 한다. P의 양 끝점과 Q의 닫힌 끝점을 비교하되, 이 그림 하나를 a의 전체 범위로 읽지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $x^2-10x+9 \\le 0$, $q$: $x \\le a$\n일 때, $p$가 $q$이기 위한 충분조건이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P=[1,9],Q=(−∞,a];P⊆Q이면a≥9. 중간끝점1/9보존,최종a범위미표시.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a=10인 허용 예시이다. p가 q의 충분조건이려면 P 전체가 Q 안에 놓여야 한다. P의 양 끝점과 Q의 닫힌 끝점을 비교하되, 이 그림 하나를 a의 전체 범위로 읽지 않는다."
+  ]
+}

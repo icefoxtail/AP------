@@ -1,0 +1,38 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      },
+      {
+        "id": "R"
+      }
+    ],
+    "subset": [
+      "P",
+      "Q",
+      "R"
+    ]
+  },
+  "caption": "P, Q, R은 p, q, r의 진리집합이다. 둘째 명제의 대우를 먼저 취한 뒤 첫째 명제와 연결하여 포함 관계를 읽는다. 원의 넓이는 원소 수를 뜻하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 조건 $p$, $q$, $r$에 대하여 두 명제 $p \\longrightarrow q$와 $\\sim r \\longrightarrow \\sim q$가 모두 참일 때, 항상 참인 명제를 보기에서 모두 고르시오.\n<보기>\nㄱ. $q \\longrightarrow r$\nㄴ. $\\sim p \\longrightarrow \\sim q$\nㄷ. $\\sim r \\longrightarrow \\sim p$\nㄹ. $p \\longrightarrow \\sim r$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "~r→~q의대우q→r와p→q로 P⊆Q⊆R. ㄱ과ㄷ참,반대방향이나부정결론보장X. 선택조합미표시.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "P, Q, R은 p, q, r의 진리집합이다. 둘째 명제의 대우를 먼저 취한 뒤 첫째 명제와 연결하여 포함 관계를 읽는다. 원의 넓이는 원소 수를 뜻하지 않는다."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "(A∩B)^c",
+    "elements": [],
+    "labelGap": 5,
+    "universe": {
+      "name": "U",
+      "count": "99"
+    }
+  },
+  "caption": "U는 100 미만의 자연수, A는 7의 배수, B는 5로 나눈 나머지가 3인 수의 집합이다. A가 아니거나 B가 아닌 영역은 두 조건을 동시에 만족하는 공통 부분의 바깥이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$100$ 미만의 자연수 중에서 $7$의 배수가 아니거나 $5$로 나누었을 때의 나머지가 $3$이 아닌 자연수의 개수를 구하시오.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "U는 100 미만의 자연수, A는 7의 배수, B는 5로 나눈 나머지가 3인 수의 집합이다. A가 아니거나 B가 아닌 영역은 두 조건을 동시에 만족하는 공통 부분의 바깥이다."
+  ]
+}

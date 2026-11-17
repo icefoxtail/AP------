@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "(1)의 조건 p, q의 진리집합을 각각 P, Q로 표시했다. Q에 들어가는 모든 수가 P에도 들어가는지와 그 역을 구별한다. (2)는 제곱의 부호, (3)은 절댓값의 정의로 따로 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 조건 $p$와 $q$가 다음과 같을 때, $p$는 $q$이기 위한 어떤 조건인지 말하시오.\n⑴ $p$: $x \\le 1$, $q$: $-3 \\le x \\le 0$\n⑵ $p$: $a=b$, $q$: $a^2=b^2$\n⑶ $p$: $|x| \\le 1$, $q$: $-1 \\le x \\le 1$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(1) Q=[−3,0]⊂P=(−∞,1], 필요조건. (2) a=b→a²=b²이지만 a=−b 반례, 충분조건. (3)동치. 그림에 최종 조건명은 쓰지 않는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "(1)의 조건 p, q의 진리집합을 각각 P, Q로 표시했다. Q에 들어가는 모든 수가 P에도 들어가는지와 그 역을 구별한다. (2)는 제곱의 부호, (3)은 절댓값의 정의로 따로 판단한다."
+  ]
+}

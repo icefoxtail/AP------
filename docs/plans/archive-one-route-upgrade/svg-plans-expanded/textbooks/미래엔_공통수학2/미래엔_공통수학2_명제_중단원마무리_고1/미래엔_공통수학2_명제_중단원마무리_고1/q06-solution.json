@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "disjoint": [
+      [
+        "P",
+        "Q"
+      ]
+    ]
+  },
+  "caption": "p이면 q가 아니라는 조건을 두 진리집합이 겹치지 않는 관계로 옮겼다. 각 보기의 집합 연산을 이 관계와 전체집합 U에 비추어 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 두 조건 $p$와 $q$의 진리집합을 각각 $P$와 $Q$라 하자. 명제 $p \\longrightarrow \\sim q$가 참일 때, 옳은 것을 보기에서 모두 고르시오.\n<보기>\nㄱ. $P \\subset Q^c$\nㄴ. $P \\cap Q=Q$\nㄷ. $P^c \\cap Q=Q$\nㄹ. $P^c \\cup Q^c=U$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P∩Q=∅. P⊆Q^c, Q⊆P^c, P^c∪Q^c=U. ㄴ은 Q가공집합일때만참. 최종보기조합미표시.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "p이면 q가 아니라는 조건을 두 진리집합이 겹치지 않는 관계로 옮겼다. 각 보기의 집합 연산을 이 관계와 전체집합 U에 비추어 판단한다."
+  ]
+}

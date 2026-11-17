@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "15/2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "두 구매 비용을 비교하여 얻은 경계는 포함하지 않는다. 표시한 경계 오른쪽에서 권수가 자연수여야 한다는 조건을 적용한다. 가장 작은 자연수의 점과 값은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "동네 문구점에서 1권에 1500원에 판매하는 노트를 온라인 쇼핑몰에서는 1권에 1100원에 판매한다. 온라인 쇼핑몰은 구매 권수와 관계없이 배송비가 3000원이라고 한다. 노트를 최소 몇 권 이상 구매해야 온라인 쇼핑몰에서 구매하는 것이 더 경제적인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "엄격한경계x>15/2와자연수권수의차이를열린반직선으로보인다. 최종8점표시없음.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "엄격한경계x>15/2와자연수권수의차이를열린반직선으로보인다. 최종8점표시없음."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A3"
+      },
+      {
+        "id": "B",
+        "name": "A8"
+      },
+      {
+        "id": "C",
+        "name": "A10"
+      }
+    ],
+    "shade": "C∩(A∪B)",
+    "elements": [
+      {
+        "text": "0",
+        "math": true,
+        "in": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "labelGap": 5,
+    "showUniverse": false
+  },
+  "caption": "A3, A8, A10은 각각 3, 8, 10의 배수 집합이다. A10 안에서 다른 두 집합과 겹친 부분을 합친다. 세 집합의 공통 원소는 120의 배수여야 하므로 이 범위에는 없다. 공통 부분의 0은 원소의 개수이고, 영역 넓이는 원소 수에 비례하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$100$ 이하의 자연수 중에서 자연수 $k$의 배수의 집합을 $A_k$로 나타낼 때, 세 집합 $A_3$, $A_8$, $A_{10}$에 대하여 $n(A_{10} \\cap (A_3 \\cup A_8))$을 구하시오.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A3, A8, A10은 각각 3, 8, 10의 배수 집합이다. A10 안에서 다른 두 집합과 겹친 부분을 합친다. 세 집합의 공통 원소는 120의 배수여야 하므로 이 범위에는 없다. 공통 부분의 0은 원소의 개수이고, 영역 넓이는 원소 수에 비례하지 않는다."
+  ]
+}

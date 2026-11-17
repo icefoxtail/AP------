@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "5"
+      },
+      {
+        "id": "B",
+        "count": "8"
+      }
+    ],
+    "shade": "(A∪B)^c",
+    "elements": [
+      {
+        "text": "6",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "12",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "24",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "labelGap": 5,
+    "universe": {
+      "name": "U",
+      "count": "30"
+    }
+  },
+  "caption": "전체 U에서 A 또는 B에 속한 부분을 제외한다. A와 B의 겹친 원소는 합집합의 개수를 셀 때 한 번만 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{x \\mid x\\text{는 } 30\\text{ 이하의 자연수}\\}$의 두 부분집합\n$A=\\{x \\mid x\\text{는 } 6\\text{의 배수}\\}$,\n$B=\\{x \\mid x\\text{는 } 24\\text{의 약수}\\}$\n에 대하여 $n(A^c \\cap B^c)$를 구하시오.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 U에서 A 또는 B에 속한 부분을 제외한다. A와 B의 겹친 원소는 합집합의 개수를 셀 때 한 번만 센다."
+  ]
+}

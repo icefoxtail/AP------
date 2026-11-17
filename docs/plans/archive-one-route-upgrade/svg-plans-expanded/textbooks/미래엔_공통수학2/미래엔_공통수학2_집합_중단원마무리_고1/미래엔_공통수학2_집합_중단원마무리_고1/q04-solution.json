@@ -1,0 +1,40 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "18"
+      },
+      {
+        "id": "B",
+        "count": "23"
+      }
+    ],
+    "shade": "A∩B",
+    "elements": [
+      {
+        "text": "x",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "labelGap": 5,
+    "showUniverse": false
+  },
+  "caption": "겹친 부분을 두 번 세는 이유: 두 집합의 원소 수를 더한 뒤 합집합의 원소 수 30과 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $A$와 $B$에 대하여\n$n(A)=18$, $n(B)=23$, $n(A \\cup B)=30$\n일 때, $n(A \\cap B)$를 구하시오.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "겹친 부분을 두 번 세는 이유: 두 집합의 원소 수를 더한 뒤 합집합의 원소 수 30과 비교한다."
+  ]
+}

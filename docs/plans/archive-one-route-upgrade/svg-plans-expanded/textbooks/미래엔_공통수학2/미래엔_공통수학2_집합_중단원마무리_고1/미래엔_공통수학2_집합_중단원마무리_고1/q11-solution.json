@@ -1,0 +1,44 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "28"
+      },
+      {
+        "id": "B",
+        "count": "21"
+      }
+    ],
+    "shade": "A∩B",
+    "elements": [
+      {
+        "text": "x",
+        "math": true,
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "labelGap": 5,
+    "universe": {
+      "name": "U",
+      "count": "40",
+      "countUnit": "명"
+    }
+  },
+  "caption": "겹친 회원 수를 x로 둔다. 겹침은 어느 한 코스의 회원 수보다 클 수 없고, 두 코스 경험자의 합집합은 전체 40명을 넘을 수 없다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 자전거 동아리 회원 $40$명을 대상으로 두 코스 $\\mathrm{A}$와 $\\mathrm{B}$를 다녀온 경험이 있는 회원 수를 조사하였더니 $\\mathrm{A}$ 코스는 $28$명이고 $\\mathrm{B}$ 코스는 $21$명이었다. 두 코스 $\\mathrm{A}$와 $\\mathrm{B}$를 모두 다녀온 회원 수의 최댓값과 최솟값을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "겹친 회원 수를 x로 둔다. 겹침은 어느 한 코스의 회원 수보다 클 수 없고, 두 코스 경험자의 합집합은 전체 40명을 넘을 수 없다."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "showValue": false
+          },
+          {
+            "id": "N",
+            "value": "-1",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "-1/2",
+            "showValue": false
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "1",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "A, B, C는 각각 a, b, c의 위치이다. 표시한 간격은 실제 수의 차를 뜻하지 않으며 주어진 순서와 부호만 나타낸 대표 배치이다. 같은 수를 더하거나 양수·음수를 곱할 때 부등호 방향을 따로 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 실수 $a, b, c$가 $a < -1 < b < 0 < c$를 만족할 때, <보기>에서 항상 옳은 것만을 있는 대로 고른 것은?\n<br>\n<div style=\"border: 1px solid #333; padding: 10px; margin: 8px 0;\">\n㉠ $ab > 0$<br>\n㉡ $a + c < b + c$<br>\n㉢ $ac < bc$<br>\n㉣ $\\frac{b}{a} < \\frac{c}{a}$\n</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "주어진순서와부호를대표수직선으로보존. A−2/B−1/2/C1은그림배치용이며실제값아님을caption명시,보기참거짓이나정답조합은표시안함.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진순서와부호를대표수직선으로보존. A−2/B−1/2/C1은그림배치용이며실제값아님을caption명시,보기참거짓이나정답조합은표시안함."
+  ]
+}
