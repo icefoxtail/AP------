@@ -309,6 +309,67 @@ test("409는 그 건만 실패하고 나머지는 계속 진행하며 서버 문
   assert.match(Assign.friendlyMessage(httpError(409, { error: "대상 반보다 높은 학년의 source 문항은 기본 출제할 수 없습니다." }), 409), /반 학년보다 높은/);
 });
 
+test("문항 목록 기준 갱신(409)은 모든 경로에서 새로고침 안내로 바뀌고 다시 시도 대상에서 빠진다", async () => {
+  const STALE = "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.";
+  const MSG = /문항 목록 기준이 새로 바뀌었습니다\. 페이지를 새로고침/;
+  for (const ctx of [{}, { original: true }, { unit: true }]) {
+    const info = Assign.classifyError(httpError(409, { error: STALE }), ctx);
+    assert.equal(info.kind, "failed");
+    assert.equal(info.stale, true);
+    assert.match(info.message, MSG);
+    assert.doesNotMatch(info.message, /관리자/);
+    assert.match(Assign.friendlyMessage(httpError(409, { error: `CANONICAL_STALE: ${STALE}` }), 409, ctx), MSG);
+  }
+  assert.equal(Assign.classifyError(httpError(409, { error: "SOMETHING_ELSE broke" })).stale, undefined, "다른 실패는 그대로");
+  const post = (call) => {
+    if (call.body.class_id === "c1") throw httpError(409, { error: STALE });
+    return okAssignment(call);
+  };
+  const { model, api } = await build({ api: makeApi({ post }) });
+  await pick(model, "c1");
+  await pick(model, "c2");
+  await model.start();
+  assert.deepEqual(model.state.jobs.map((j) => j.status), ["failed", "ok"]);
+  assert.match(model.state.jobs[0].message, MSG);
+  assert.equal(model.results().stale, 1);
+  assert.equal(model.results().retryable, 0, "같은 요청은 다시 보내도 또 거절되므로 다시 시도 대상이 아니다");
+  const foot = Assign.renderFoot(model);
+  assert.match(foot, /data-assign-action="refresh-page"/);
+  assert.match(foot, />페이지 새로고침</);
+  assert.doesNotMatch(foot, /data-assign-action="retry"/);
+  const before = api.posts().length;
+  assert.equal(await model.retryFailed(), false);
+  assert.equal(api.posts().length, before, "자동 POST 0회");
+});
+
+test("기준 갱신이 아닌 실패는 계속 다시 시도할 수 있고 새로고침 버튼이 없다", async () => {
+  const post = (call, n) => { if (n === 1) throw httpError(409, { error: "기존 Assignment의 고정 roster는 변경할 수 없습니다." }); return okAssignment(call); };
+  const { model } = await build({ api: makeApi({ post }) });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(model.results().retryable, 1);
+  assert.equal(model.results().stale, 0);
+  const foot = Assign.renderFoot(model);
+  assert.match(foot, /data-assign-action="retry"/);
+  assert.doesNotMatch(foot, /refresh-page/);
+});
+
+test("패널 화면: 페이지 새로고침 버튼은 location.reload를 부른다", async () => {
+  const dom = fakeDom();
+  let reloads = 0;
+  dom.win.location = { href: "https://t.test/archive/workspace.html", reload() { reloads += 1; } };
+  const api = makeApi({ post: () => { throw httpError(409, { error: "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요." }); } });
+  const handle = Assign.open({ document: dom.doc, papers: [paper(P1)], request: api.request, uuid, now: () => NOW, storage: memoryStorage() });
+  await tick(); await tick();
+  await handle.model.toggleClass("c1", true);
+  dom.fire("click", clickOn("submit"));
+  for (let i = 0; i < 8; i += 1) await tick();
+  assert.match(dom.regions.foot.innerHTML, /data-assign-action="refresh-page"/);
+  dom.fire("click", clickOn("refresh-page"));
+  assert.equal(reloads, 1);
+  dom.fire("click", clickOn("close"));
+});
+
 test("취소된 출제와 같은 키(409)는 자동으로 다시 보내지 않고, 교사가 '새로 출제'를 누르면 새 번호로 한 번 보낸다", async () => {
   const post = (call, n) => { if (n === 1 && call.body.class_id === "c1") throw httpError(409, { error: "취소된 Assignment는 RETRY로 다시 배포할 수 없습니다." }); return okAssignment(call); };
   const { model, api } = await build({ api: makeApi({ post }) });
@@ -885,7 +946,7 @@ test("배포 꾸러미와 workspace.html에 새 파일이 같은 버전으로 �
   assert.ok(manifest.archiveRootFiles.includes("archive2-assign.css"));
   const html = read("archive", "workspace.html");
   assert.match(html, /archive2-assign\.css\?v=20261116-polish-1/);
-  assert.match(html, /archive2-assign\.js\?v=20261116-polish-1/);
+  assert.match(html, /archive2-assign\.js\?v=20261117-stale-1/);
   assert.ok(html.indexOf("archive2-assign.js") < html.indexOf("archive2-library.js"), "패널은 보관함보다 먼저 올라온다");
   for (const file of ["archive2-assign.js", "archive2-assign.css"]) assert.ok(fs.existsSync(path.join(root, "archive", file)));
   const css = read("archive", "archive2-assign.css");

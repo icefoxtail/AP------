@@ -226,6 +226,9 @@
   ];
   // 원본 시험지 출제에서만 나오는 서버 문구(archive2.js·archive2-questions.js validateOriginalSnapshot). 저장본 문구와 겹치면 이쪽이 먼저다.
   const SOURCE_CHANGED_MESSAGE = "시험 자료가 새로 바뀌어 지금 화면과 맞지 않습니다. 페이지를 새로고침한 뒤 다시 출제해 주세요.";
+  // 서버가 브라우저의 문항 목록 기준(index_version)이 현재 배포와 다르다고 거절하는 문구. 다시 보내도 같은 기준을 보내므로 새로고침만 답이다.
+  const INDEX_STALE_PATTERN = /분류 기준이 갱신/;
+  const INDEX_STALE_MESSAGE = "문항 목록 기준이 새로 바뀌었습니다. 페이지를 새로고침한 뒤 다시 출제해 주세요.";
   const ORIGINAL_CANCELLED_MESSAGE = "이 반에 같은 날 낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다. 출제일을 바꿔 주세요.";
   const ORIGINAL_MESSAGES = [
     [/취소된 Assignment/, ORIGINAL_CANCELLED_MESSAGE],
@@ -249,6 +252,7 @@
   const SOURCE_COUNT_MESSAGE = "시험지 원본의 문항 수가 목록과 달라 출제하지 않았습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.";
   function friendlyMessage(error, status, ctx = {}) {
     const raw = text(error?.data?.error || error?.message).replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+    if (INDEX_STALE_PATTERN.test(raw)) return INDEX_STALE_MESSAGE;
     if (ctx.original) for (const [pattern, message] of ORIGINAL_MESSAGES) if (pattern.test(raw)) return message;
     if (ctx.unit) for (const [pattern, message] of UNIT_MESSAGES) if (pattern.test(raw)) return message;
     for (const [pattern, message] of KNOWN_MESSAGES) if (pattern.test(raw)) return message;
@@ -279,7 +283,8 @@
     }
     if (/취소된 Assignment/.test(text(error?.data?.error || error?.message)))
       return { kind: "cancelled", message: ctx.original || ctx.unit ? ORIGINAL_CANCELLED_MESSAGE : CANCELLED_MESSAGE };
-    return { kind: "failed", message: friendlyMessage(error, status, ctx) };
+    const stale = INDEX_STALE_PATTERN.test(text(error?.data?.error || error?.message));
+    return { kind: "failed", message: friendlyMessage(error, status, ctx), ...(stale ? { stale: true } : {}) };
   }
 
   // ---- 상태 기계 ------------------------------------------------------------------------------------
@@ -893,6 +898,9 @@
       job.noReissue = job.kind !== "saved";
       // 단원별: 같은 날 같은 이름의 확정 배부가 이미 있어 서버가 바꿀 수 없다고 하면 같은 본문을 다시 보내도 같은 409다.
       job.noRetry = job.kind === "unit" && info.kind === "failed" && /확정 배부는 원본을 변경할 수 없/.test(text(error?.data?.error || error?.message));
+      // 문항 목록 기준이 갱신됐다는 거절: 같은 요청을 다시 보내도 또 거절되므로 다시 시도에서 빼고 페이지 새로고침을 안내한다.
+      job.stale = info.kind === "failed" && Boolean(info.stale);
+      if (job.stale) job.noRetry = true;
       if (info.kind === "ok-pdf" && job.kind === "unit" && isCancelledAssignment(error?.data?.assignment)) {
         job.assignmentId = text(error.data.assignment.id);
         job.status = "cancelled";
@@ -936,6 +944,7 @@
       job.message = "";
       job.auth = false;
       job.noRetry = false;
+      job.stale = false;
       const startedAt = now();
       store.mark(job.paperId, job.classId, job.date, "sent");
       emit();
@@ -1209,6 +1218,7 @@
       return {
         total: state.jobs.length, ok: count("ok"), okPdf: count("ok-pdf"), failed: count("failed"), cancelled: count("cancelled"),
         unknown: count("unknown"), queued: count("queued"), running: count("running"), excludeFailed: count("exclude-failed"),
+        stale: state.jobs.filter((job) => job.status === "failed" && job.stale).length,
         retryable: state.jobs.filter((job) => (job.status === "failed" && !job.noRetry) || job.status === "queued").length,
       };
     }
@@ -1439,6 +1449,7 @@
       const buttons = [];
       if (r.excludeFailed) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="exclude-retry-all" data-focus="exclude-all">다시 빼기</button>`);
       if (needRetry) buttons.push(`<button type="button" class="primary assign-submit" data-assign-action="retry" data-focus="retry">${r.queued && r.retryable === r.queued ? "남은 건 이어서 출제" : "실패한 건 다시 시도"}</button>`);
+      if (r.stale) buttons.push(`<button type="button" class="${buttons.length ? "" : "primary "}assign-submit" data-assign-action="refresh-page" data-focus="refresh-page">페이지 새로고침</button>`);
       if (r.unknown) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="confirm-all" data-focus="confirm-all">${r.unknown > 1 ? "모두 확인하기" : "확인하기"}</button>`);
       buttons.push(`<button type="button" class="${buttons.length ? "" : "primary "}assign-submit" data-assign-action="close" data-focus="done-close">닫기</button>`);
       const closeWarn = model.state.closeWarn && r.excludeFailed
@@ -1590,6 +1601,7 @@
       if (action === "close") attemptClose();
       else if (action === "submit") { el.disabled = true; model.start().catch(() => {}); }
       else if (action === "reload") model.load().catch(() => {});
+      else if (action === "refresh-page") { try { win.location.reload(); } catch { /* 새로고침이 막히면 안내 문구대로 직접 누른다 */ } }
       else if (action === "roster-retry") model.retryRoster(classId);
       else if (action === "students-toggle") model.toggleStudentList(classId);
       else if (action === "students-all") model.selectAllStudents(classId);
