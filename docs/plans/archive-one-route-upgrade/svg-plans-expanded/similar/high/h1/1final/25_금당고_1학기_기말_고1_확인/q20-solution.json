@@ -1,15 +1,31 @@
 {
   "capability": "number-line-figure-v1",
   "numberLine": {
+    "variable": "m",
     "rows": [
       {
         "kind": "SET",
+        "label": "대칭축",
         "pieces": [
           {
             "lo": {
               "value": "2",
               "state": "OPEN"
             },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "경계값",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": null,
             "hi": {
               "value": "3",
               "state": "OPEN"
@@ -19,6 +35,8 @@
       },
       {
         "kind": "SET",
+        "label": "판별식",
+        "color": "GREEN",
         "pieces": [
           {
             "lo": {
@@ -31,8 +49,8 @@
       }
     ]
   },
-  "caption": "대칭축과 경계 부호 조건을 첫째 줄에, 판별식의 양수 조건 중 해당 가지를 둘째 줄에 놓고 공통 범위를 비교한다.",
-  "accessibilityDescription": "대칭축과 경계 부호 조건을 첫째 줄에, 판별식의 양수 조건 중 해당 가지를 둘째 줄에 놓고 공통 범위를 비교한다.",
+  "caption": "근의 분리 조건은 대칭축에서 2<m<6, f(1)>0에서 m<3, 판별식에서 m>2√2이다. f(3)>0에서 얻는 m<11/3은 m<3에 포함된다. 공통 범위는 2√2<m<3이므로 α=2√2, β=3이고 α²+β=11이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "수직선 위에 대칭축, 경계값, 판별식 조건의 범위를 한 줄씩 놓아 세 범위가 겹치는 부분을 비교하는 그림이다.",
   "sourceConditions": [
     {
       "id": "source",

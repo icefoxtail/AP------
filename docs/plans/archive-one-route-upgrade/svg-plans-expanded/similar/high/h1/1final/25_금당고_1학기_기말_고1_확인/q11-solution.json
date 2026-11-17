@@ -1,9 +1,11 @@
 {
   "capability": "number-line-figure-v1",
   "numberLine": {
+    "variable": "p",
     "rows": [
       {
         "kind": "SET",
+        "label": "곱 조건",
         "pieces": [
           {
             "lo": {
@@ -19,6 +21,8 @@
       },
       {
         "kind": "SET",
+        "label": "합 조건",
+        "color": "WARM",
         "pieces": [
           {
             "lo": null,
@@ -34,13 +38,17 @@
             },
             "hi": null
           }
-        ],
-        "color": "WARM"
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
       }
     ]
   },
-  "caption": "근의 곱 조건과 합 조건을 두 줄로 나타내어 겹치는 열린 구간을 찾는다. 정수의 합은 그림에 적지 않는다.",
-  "accessibilityDescription": "근의 곱 조건과 합 조건을 두 줄로 나타내어 겹치는 열린 구간을 찾는다. 정수의 합은 그림에 적지 않는다.",
+  "caption": "두 근의 곱 p²−4p−5<0에서 −1<p<5이고, 두 근의 합 −(p²−5p+4)<0에서 p<1 또는 p>4이다. 공통 범위는 −1<p<1 또는 4<p<5이고 이 범위의 정수 p는 0뿐이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "수직선 위에 곱 조건과 합 조건의 범위를 한 줄씩 놓고, 공통 범위와 그 안의 정수 p를 마지막 줄에 표시한 그림이다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -49,6 +57,6 @@
     }
   ],
   "newVisualInformation": [
-    "근의 곱 조건과 합 조건을 두 줄로 나타내어 겹치는 열린 구간을 찾는다. 정수의 합은 그림에 적지 않는다."
+    "근의 곱 조건과 합 조건을 두 줄로 나타내어 겹치는 열린 구간을 찾는다."
   ]
 }

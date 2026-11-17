@@ -1,11 +1,14 @@
 {
   "capability": "number-line-figure-v1",
-  "caption": "치환한 변수의 범위는 [3,7]이다. 최솟값5를 얻으려면 축 a가 구간 밖에서 가까운 끝점까지2만큼 떨어져야 한다. L=1과 R=9를 비교하고 두 값의 합은 쓰지 않는다.",
-  "accessibilityDescription": "치환한 변수의 범위는 [3,7]이다. 최솟값5를 얻으려면 축 a가 구간 밖에서 가까운 끝점까지2만큼 떨어져야 한다. L=1과 R=9를 비교하고 두 값의 합은 쓰지 않는다.",
+  "caption": "t=(x−2)²+3이므로 0≤x≤3에서 3≤t≤7이고 y=(t−a)²+1이다. 최솟값이 5이려면 축 t=a가 구간 [3, 7]의 가까운 끝에서 2만큼 떨어져야 하므로 a=1 또는 a=9이다. 두 값의 합은 10이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "수직선에 t의 범위 3≤t≤7을 놓고, 구간의 양 끝에서 거리 2만큼 떨어진 축의 위치 1과 9를 표시한 그림이다.",
   "numberLine": {
+    "variable": "t",
     "rows": [
       {
         "kind": "SET",
+        "label": "t 범위",
+        "color": "BLUE",
         "pieces": [
           {
             "lo": {
@@ -17,27 +20,31 @@
               "state": "CLOSED"
             }
           }
-        ],
-        "color": "BLUE"
+        ]
       },
       {
         "kind": "POINTS",
+        "label": "축 a",
         "points": [
           {
             "id": "L",
-            "value": "1"
+            "value": "1",
+            "hideName": true
           },
           {
             "id": "A",
-            "value": "3"
+            "value": "3",
+            "hideName": true
           },
           {
             "id": "B",
-            "value": "7"
+            "value": "7",
+            "hideName": true
           },
           {
             "id": "R",
-            "value": "9"
+            "value": "9",
+            "hideName": true
           }
         ],
         "spans": [
@@ -74,6 +81,6 @@
     }
   ],
   "newVisualInformation": [
-    "(t−a)²+1의 최소가5인 조건을 구간에서 축까지의 최단거리2로 바꾸어 양쪽 경우를 함께 보여 준다."
+    "치환한 변수의 범위는 [3,7]이다. 최솟값5를 얻으려면 축 a가 구간 밖에서 가까운 끝점까지2만큼 떨어져야 한다."
   ]
 }

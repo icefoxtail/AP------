@@ -1,26 +1,124 @@
 {
-  "capability": "number-line-figure-v1",
-  "numberLine": {
-    "rows": [
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "kind": "SET",
-        "pieces": [
-          {
-            "lo": {
-              "value": "-3",
-              "state": "CLOSED"
-            },
-            "hi": {
-              "value": "5",
-              "state": "CLOSED"
-            }
-          }
+        "coefficients": [
+          "-1",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1"
         ]
       }
-    ]
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "domain": [
+      -4,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-4",
+        "y": "3",
+        "marker": "NONE"
+      },
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "S",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "3",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": "2"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=2",
+          "style": "DASHED"
+        },
+        {
+          "id": "vx1",
+          "x": "-3",
+          "label": "x=-3",
+          "style": "DASHED"
+        },
+        {
+          "id": "vx2",
+          "x": "5",
+          "label": "x=5",
+          "style": "DASHED"
+        }
+      ]
+    },
+    "formula": "abs(abs(x-1)-2)"
   },
-  "caption": "주어진 닫힌 구간을 중심 1에서 양쪽으로 같은 거리인 범위로 읽는다.",
-  "accessibilityDescription": "주어진 닫힌 구간을 중심 1에서 양쪽으로 같은 거리인 범위로 읽는다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -30,5 +128,7 @@
   ],
   "newVisualInformation": [
     "주어진 닫힌 구간을 중심 1에서 양쪽으로 같은 거리인 범위로 읽는다."
-  ]
+  ],
+  "caption": "k=2일 때 y=||x−1|−2|의 꺾임점은 (−1, 0), (1, 2), (3, 0)이다. 높이 2의 가로선과 만나는 점이 (−3, 2), (5, 2)이므로 그래프가 y=2 이하인 구간이 −3≤x≤5이다. 이 구간의 가운데 x=1에서 양 끝까지 거리가 4=k+2이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "이중 절댓값 그래프 y=||x−1|−2|와 가로선 y=2가 세 점에서 만나고, 해 구간의 양 끝 x값을 세로 점선으로 표시한 그림이다."
 }
