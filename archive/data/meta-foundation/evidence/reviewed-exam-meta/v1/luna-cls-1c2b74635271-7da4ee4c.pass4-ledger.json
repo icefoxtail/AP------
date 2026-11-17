@@ -1,0 +1,56 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass4",
+    "createdAt":  "2026-11-14T06:49:34+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/23_복성고_1학기_중간_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "u=log₃a,v=log₃b라 두면 u+v=10, uv=4가 함께 주어져 (v/u)+(u/v)=(u²+v²)/uv=23이다.",
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "3π/2\u003cθ\u003c2π이면 θ는 제4사분면, θ/2는 3π/4와 π 사이이므로 각 부등식의 부호를 구간별로 판정한다.",
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "u=2^(x/2),v=2^(y/2)로 놓아 u²+v²=17과 u+v=5를 결합하고 uv=4=2^((x+y)/2)를 얻는다.",
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "log₃8·log₂(a/∛3)을 밑변환해 3log₃a−1로 다시 읽은 뒤 가장 작은 자연수의 4배수 조건을 찾는다.",
+                      "integrationPattern":  "REINTERPRETATION"
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "t=logₓy\u003e0를 두어 3t−1/t+2=0에서 t=1/3, 즉 x=y³를 얻고 4x−x²의 최댓값을 구한다.",
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "a²\u003ca에서 0\u003ca\u003c1임을 먼저 확인하면 밑 a인 지수함수가 감소하므로 a\u003cb에서 aᵇ\u003caᵃ\u003c1이다.",
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "sinθ+cosθ=1/5와 제2사분면 조건을 함께 써서 sinθcosθ=−12/25 및 sinθ−cosθ=7/5를 얻고 세제곱 차를 계산한다.",
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "근 −4,4 및 직선과의 교점 x=3으로 f(x)=5(16−x²)/14를 정한 뒤 로그의 진수조건과 이차부등식으로 정수 x를 추린다.",
+                      "integrationPattern":  "DEEP_COMPOSITE"
+                  }
+              ]
+}

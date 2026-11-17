@@ -1,0 +1,431 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T22:32:12+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "서로 다른 주사위의 눈 차가 3인 여섯 경우를 세어 성공확률 1/6인 180회의 이항분포를 세운다.",
+                      "decisiveStep":  "평균은 180/6=30, 분산은 180×(1/6)×(5/6)=25이므로 평균과 표준편차의 합은 35이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DICE_EXPERIMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "이항분포 B(45,1/3)의 평균과 분산을 구한 뒤 E(X²)=V(X)+E(X)²에 대입한다.",
+                      "decisiveStep":  "E(X)=15, V(X)=10이므로 E(X²)=10+225=235이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "명중률 1/3인 네 발 중 정확히 세 발과 네 발을 명중시키는 독립시행 확률을 더한다.",
+                      "decisiveStep":  "4×(1/3)³×(2/3)+(1/3)⁴=8/81+1/81=1/9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "독립시행",
+                                      "l4":  "이항형 시행"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "흰 공 4개와 검은 공 3개에서 두 공이 같은 색일 확률을 조합으로 구하고 98회 복원시행의 이항분산을 계산한다.",
+                      "decisiveStep":  "성공확률은 (6+3)/21=3/7이고 V(X)=24이므로 σ(5X+2)=5√24=10√6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY",
+                                               "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(2X+5)=95와 V(2X+5)=36에서 정규분포의 평균과 표준편차를 복원하고 양쪽 꼬리확률의 대칭을 쓴다.",
+                      "decisiveStep":  "m=45, σ=3이며 (3+a)+(5−b)=90이므로 a−b+σ=82+3=85이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "N(m,7²)의 곡선이 N(4,σ²)보다 왼쪽에 있고 낮고 넓다는 그림에서 m과 σ의 자연수 범위를 읽는다.",
+                      "decisiveStep":  "평균의 위치로 m\u003c4, 높이와 폭으로 σ\u003c7이므로 m은 3개, σ는 6개여서 순서쌍은 18개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "표준정규분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INEQUALITY_ORDERED_PAIRS"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "평균 m을 중심으로 2σ와 3σ 사이 양쪽 띠의 확률이 같음을 이용해 주어진 a와 b를 분해한다.",
+                      "decisiveStep":  "중앙 2σ 구간의 확률을 c, 한쪽 띠를 t라 하면 a=c+2t, b=c+t이므로 c=2b−a이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+                                               "CC_INTERVAL_PROBABILITY_ADDITION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "주사위 눈과 지각 학생 수의 셀 수 있는 값들을 몸무게의 연속적인 값들과 구분한다.",
+                      "decisiveStep":  "주사위 눈은 이산, 몸무게는 연속이며 지각 학생 수도 이산이므로 ㄱ과 ㄴ만 옳다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "이산확률변수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "X=1,2,3의 확률 1/4, a, 1/4의 합을 1로 놓고 평균을 가중합으로 계산한다.",
+                      "decisiveStep":  "a=1/2, b=1이고 E(X)=1/4+1+3/4=2이므로 ㄴ과 ㄷ만 옳다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률질량함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DISCRETE_EXPECTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "검정 3개와 하양 2개 중 두 공을 꺼낼 때 하얀 공 수의 평균을 구한 뒤 10X+1의 기댓값을 계산한다.",
+                      "decisiveStep":  "E(X)=2×2/5=4/5이므로 E(10X+1)=10×4/5+1=9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "기댓값"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(X)=6, V(X)=18을 일차변환의 평균과 분산 공식에 대입하여 양수 a와 b를 결정한다.",
+                      "decisiveStep":  "18b²=18과 b\u003e0에서 b=1이고 6a+1=43에서 a=7이므로 ab=7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "분산의 정의 E((X−m)²)를 전개하여 일차항의 계수 A와 상수항 B를 찾는다.",
+                      "decisiveStep":  "A=2m, B=m²이므로 f(m)=m²+2m이고 f(−1)=−1이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(2X+1)=11, V(2X+1)=16에서 E(X)와 V(X)를 구해 제곱의 기댓값을 복원한다.",
+                      "decisiveStep":  "E(X)=5, V(X)=4이므로 E(X²)=4+5²=29이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "꼬리확률 P(X≥k)=1−k²/30의 이웃한 차로 X=0부터 5까지의 확률을 구해 x²을 가중합한다.",
+                      "decisiveStep":  "확률은 차례로 (1,3,5,7,9,5)/30이므로 E(X²)=(3+20+63+144+125)/30=71/6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "기댓값"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "직선 10x−X/2와 포물선 −Xx²−X의 교점 방정식 판별식을 음수로 놓고 가능한 세 공의 숫자 합을 센다.",
+                      "decisiveStep":  "100−2X²\u003c0과 4≤X≤8에서 X=8만 가능하며 2,3,3을 뽑는 경우는 2개이므로 확률은 2/20=1/10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "숫자 k가 k장 있는 카드의 확률을 k/(1+⋯+n)으로 놓고 거듭제곱의 합으로 평균과 제곱의 평균을 계산한다.",
+                      "decisiveStep":  "평균 (2n+1)/3=9에서 n=13이고 E(X²)=13×14/2=91이므로 분산은 91−81=10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "둘레 12인 직사각형의 가로를 X라 놓아 넓이를 X(6−X)로 나타내고 평균 4와 분산 2를 사용한다.",
+                      "decisiveStep":  "E(X²)=2+4²=18이므로 넓이의 평균은 6E(X)−E(X²)=24−18=6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "기댓값"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT",
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "비복원 추출에서 두 번째 흰 구슬이 다섯 번째 이후에 나오는 사건을 처음 네 번에 흰 구슬이 0개 또는 1개인 사건으로 바꾼다.",
+                      "decisiveStep":  "처음 네 구슬의 조합에서 유리한 경우는 5+3×10=35개, 전체는 70개이므로 확률은 1/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "0부터 6까지 높이가 3k인 삼각형 확률밀도곡선의 전체 넓이를 1로 놓고 3부터 9/2까지의 사다리꼴 넓이를 구한다.",
+                      "decisiveStep":  "9k=1에서 k=1/9이고 구간 양끝 높이가 1/3, 1/6이므로 확률은 (1/3+1/6)×(3/2)/2=3/8이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_FUNCTION_AREA"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "450번 중 6의 약수가 아닌 5, 4가 나온 횟수를 Y로 놓아 총점을 1350+2Y로 나타낸다.",
+                      "decisiveStep":  "Y는 B(450,1/3)이므로 총점의 평균은 1650, 분산은 400이고 a+b=2050이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "P(X=x)=(2x−1)/a의 네 확률을 합해 a를 정한 뒤 E(X)와 E(X²)를 분포표에서 계산한다.",
+                      "decisiveStep":  "a=1+3+5+7=16, E(X)=25/8, E(X²)=85/8이므로 V(X)=85/8−625/64=55/64이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DISTRIBUTION_TABLE",
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "k²가 곱해진 200개 이항계수 항의 합을 B(200,1/4)를 따르는 확률변수의 E(X²)로 해석한다.",
+                      "decisiveStep":  "평균이 50, 분산이 200×(1/4)×(3/4)=75/2이므로 합은 50²+75/2=5075/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

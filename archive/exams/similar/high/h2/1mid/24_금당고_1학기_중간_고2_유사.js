@@ -254,13 +254,13 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "content": "<div class=\"box\">$0 \\le x \\le \\frac{\\pi}{2}$ 에서 부등식 $\\tan(x+\\frac{\\pi}{6}) \\ge 1$ 의 해가 $\\alpha \\le x \\le \\beta$ 일 때, $\\tan(\\beta-\\alpha)$ 의 값은? [4.2]</div>",
+    "content": "<div class=\"box\">$0 \\le x \\le \\frac{\\pi}{2}$ 에서 부등식 $\\tan(x+\\frac{\\pi}{6}) \\ge 1$ 의 해가 $\\alpha \\le x < \\beta$ 일 때, $\\tan(\\beta-\\alpha)$ 의 값은? [4.2]</div>",
     "choices": [
       "0",
-      "\\frac{\\sqrt{3}}{3}",
-      "\\frac{\\sqrt{2}}{2}",
+      "$\\frac{\\sqrt{3}}{3}$",
+      "$\\frac{\\sqrt{2}}{2}$",
       "1",
-      "\\sqrt{3}"
+      "$\\sqrt{3}$"
     ],
     "answer": "④",
     "category": "삼각부등식",
@@ -506,7 +506,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "<div class=\"box\">실수 $t$ 에 대하여 직선 $y=t$ 와 함수 $y=|2 \\sin 2x + 1|$ ($0 \\le x \\le 2\\pi$) 의 그래프가 만나는 서로 다른 교점의 개수를 $f(t)$ 라 하자. $f(2)=5$ 일 때, $f(t)=4$ 를 만족시키는 모든 실수 $t$ 의 범위는 $0 < t < \\alpha$ 또는 $\\beta < t < \\gamma$ 이다. $\\alpha+\\beta+\\gamma$ 의 값은? [5.0]</div>",
+    "content": "<div class=\"box\">실수 $t$ 에 대하여 직선 $y=t$ 와 함수 $y=|2 \\sin 2x + 1|$ ($0 \\le x \\le 2\\pi$) 의 그래프가 만나는 서로 다른 교점의 개수를 $f(t)$ 라 하자. $f(t)=4$ 를 만족시키는 양수 $t$ 의 범위가 $\\alpha < t < \\beta$ 일 때, $\\alpha+\\beta$ 의 값은? [5.0]</div>",
     "choices": [
       "3",
       "4",
@@ -514,7 +514,7 @@ window.questionBank = [
       "6",
       "7"
     ],
-    "answer": "③",
+    "answer": "②",
     "category": "삼각함수",
     "originalCategory": "삼각함수",
     "standardCourse": "수학(상)",
@@ -525,7 +525,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "solution": "함수 $y=|2 \\sin 2x + 1|$ 의 그래프는 $0 \\le x \\le 2\\pi$ 에서 최댓값 $3$, 최솟값 $0$ 을 가진다. $t=0$ 일 때 교점은 $4$ 개, $0 < t < 1$ 일 때 교점은 $8$ 개, $t=1$ 일 때 교점은 $6$ 개, $1 < t < 3$ 일 때 교점은 $4$ 개, $t=3$ 일 때 교점은 $4$ 개이다. 문제의 조건 $f(2)=5$ 는 $f(t)=4$ 가 되는 구간 $1 < t < 3$ 을 의미한다. 따라서 $\\alpha=1, \\beta=3, \\gamma=3$ (경계값)으로 해석하여 합은 $1+3+3$ 이 아닌, 문제의 구조상 $\\alpha=1, \\beta=3$ 이므로 합은 $5$ 이다.",
+    "solution": "$|2\\sin 2x+1|=t$ 에서 $\\sin 2x=\\dfrac{t-1}{2}$ 또는 $\\sin 2x=\\dfrac{-t-1}{2}$ 이다. $0 \\le x \\le 2\\pi$ 에서 $\\sin 2x=s$ 의 해는 $-1<s<1$, $s\\ne0$ 이면 $4$ 개, $s=0$ 이면 $5$ 개, $s=\\pm1$ 이면 $2$ 개이다.<br>$0<t<1$ 이면 두 식이 모두 $4$ 개의 해를 가져 $f(t)=8$, $t=1$ 이면 $f(t)=5+2=7$, $1<t<3$ 이면 첫째 식만 $4$ 개의 해를 가져 $f(t)=4$, $t=3$ 이면 $f(t)=2$ 이다.<br>따라서 $f(t)=4$ 인 양수 $t$ 의 범위는 $1<t<3$ 이므로 $\\alpha=1$, $\\beta=3$ 이고 $\\alpha+\\beta=4$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",

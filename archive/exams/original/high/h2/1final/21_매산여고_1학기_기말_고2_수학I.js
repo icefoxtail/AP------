@@ -614,7 +614,7 @@ window.questionBank = [
     "id": 15,
     "questionNumber": 15,
     "questionType": "객관식",
-    "content": "반지름의 길이가 5인 원에 내접하고 넓이가 $50\\sqrt{2}$인 삼각형 $\\mathrm{ABC}$에서 세 변의 곱 $abc$의 값을 구하면? [4.2점]",
+    "content": "반지름의 길이가 10인 원에 내접하고 넓이가 $25\\sqrt{2}$인 삼각형 $\\mathrm{ABC}$에서 세 변의 곱 $abc$의 값을 구하면? [4.2점]",
     "choices": [
       "$500\\sqrt{2}$",
       "$1000\\sqrt{2}$",
@@ -623,7 +623,7 @@ window.questionBank = [
       "$2500\\sqrt{2}$"
     ],
     "answer": "②",
-    "solution": "삼각형의 넓이를 $\\Delta$, 외접원의 반지름을 $R$이라 하면 사인법칙과 넓이 공식에서 $\\Delta=abc/(4R)$이다.\n따라서 $abc=4R\\Delta$이다.\n$R=5$, $\\Delta=50\\sqrt2$를 대입하면\n$abc=4\\cdot5\\cdot50\\sqrt2=1000\\sqrt2$이다.\n따라서 정답은 ②이다.",
+    "solution": "삼각형의 넓이를 $\\Delta$, 외접원의 반지름을 $R$이라 하면 사인법칙과 넓이 공식에서 $\\Delta=abc/(4R)$이다.\n따라서 $abc=4R\\Delta$이다.\n$R=10$, $\\Delta=25\\sqrt2$를 대입하면\n$abc=4\\cdot10\\cdot25\\sqrt2=1000\\sqrt2$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "category": "삼각함수의 관계",
     "originalCategory": "삼각함수의 뜻과 값",
