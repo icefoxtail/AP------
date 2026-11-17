@@ -133,7 +133,8 @@ export function verifyM3Q5ExistingVector(root, relative = C.FILE) {
   const trackRefs = value => {
     if (!value || typeof value !== 'object') return;
     if (typeof value.path === 'string' && /^[a-f0-9]{64}$/.test(value.sha256 || '') &&
-      /^(?:archive\/|docs\/|tools\/|\.archive-meta-register\/)/.test(value.path)) {
+      (/^(?:archive\/|docs\/|tools\/|\.archive-meta-register\/)/.test(value.path) ||
+       value.path === 'apmath/css/student-navigation.css' || value.path === 'apmath/js/student-navigation.js')) {
       const p = safe(root, value.path);
       if (fs.existsSync(p) && !observed.has(value.path)) read(value.path);
     }

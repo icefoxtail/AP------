@@ -47,3 +47,35 @@ test('unknown history and required current v2 proof receive no historical exempt
     assert.equal(historicalProofRef(ref(p)),false);assert.equal(dependencyPath(p,true),true);
   }
 });
+
+// Current capture de634 declares these two exact immutable renderer refs.
+for(const p of ['apmath/css/student-navigation.css','apmath/js/student-navigation.js']){
+  test('authenticated required navigation dependency is hydrated: '+p,()=>{
+    assert.equal(refShape(ref(p)).path,p);
+    assert.equal(dependencyPath(p,true),true);
+  });
+}
+test('navigation diagnostic path alone still grants no hydration',()=>{
+  for(const p of ['apmath/css/student-navigation.css','apmath/js/student-navigation.js'])
+    assert.equal(dependencyPath(p),false);
+});
+test('navigation admission does not expand either directory or suffixes',()=>{
+  for(const p of ['apmath/css/other.css','apmath/js/other.js','apmath/student-navigation.js',
+    'apmath/css/student-navigation.css.map','apmath/js/student-navigation.js.bak',
+    'apmath/css/student-navigation.css?x=1','apmath/js/student-navigation.js#fragment',
+    'APMath/css/student-navigation.css']){
+    assert.equal(dependencyPath(p,true),false);assert.equal(dependencyPath(p),false);
+  }
+});
+test('navigation traversal absolute slash and control substitutions reject',()=>{
+  for(const p of ['/apmath/css/student-navigation.css','apmath/css/../css/student-navigation.css',
+    'apmath//css/student-navigation.css','apmath\\css\\student-navigation.css',
+    'apmath/css/student-navigation.css'+String.fromCharCode(10)]){
+    assert.throws(()=>dependencyPath(p,true),/M2_CURRENT8_SCOPE_PATH/);
+    assert.throws(()=>refShape(ref(p)),/M2_CURRENT8_SCOPE_PATH/);
+  }
+});
+test('current navigation dependencies never receive a historical-only exemption',()=>{
+  for(const p of ['apmath/css/student-navigation.css','apmath/js/student-navigation.js'])
+    assert.equal(historicalProofRef(ref(p)),false);
+});

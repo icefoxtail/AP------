@@ -138,7 +138,10 @@ function safeRelative(p){
 // refs have already passed refShape; explicitly required paths retain validation.
 function dependencyPath(p,required=false){
   if(typeof p!=='string')return false;
-  const supported=/^(?:(?:archive|tools|tests|docs)\/|\.archive-meta-register\/(?:evidence|4slot-[^/]+)\/)/.test(p);
+  // These exact two current renderer dependencies are declared by authenticated
+  // served-file refs. They are not optional diagnostic/output paths.
+  const closedNavigation=required&&['apmath/css/student-navigation.css','apmath/js/student-navigation.js'].includes(p);
+  const supported=closedNavigation||/^(?:(?:archive|tools|tests|docs)\/|\.archive-meta-register\/(?:evidence|4slot-[^/]+)\/)/.test(p);
   if(!supported&&!required)return false;
   safeRelative(p);return supported;
 }

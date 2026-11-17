@@ -42,11 +42,15 @@ test('Q16 actual current2 reuses whole original captures and separate visual rec
  assert.ok(f.read.reads.some(r=>r.path===f.pins.framesRef.path&&r.live));
  assert.equal(f.read.reads.filter(r=>r.path.endsWith('.png')&&r.live).length,2);
 });
-test('Q16 current selection cannot replace the original engine pin without the private token',()=>{
- const f=fixture();
- assert.throws(()=>ui.assertUiRenderDependencies(f.technical,f.read),/M3S2_LAYOUT_UI_ENGINE/);
- assert.throws(()=>ui.assertUiRenderDependencies(f.technical,f.read,true),/M3S2_LAYOUT_UI_ENGINE/);
- assert.throws(()=>ui.assertUiRenderDependencies(f.technical,f.read,{}),/M3S2_LAYOUT_UI_ENGINE/);
+test('Q16 rejects an unrecognized engine for every untrusted token argument',()=>{
+ const f=fixture(),technical=clone(f.technical);
+ // Main2378 and the exact current capture now share engine226. A valid current
+ // engine is no longer a negative input; arbitrary bytes still require refusal.
+ const engine=technical.servedFiles.find(ref=>ref.path===f.pins.engine.path);assert.ok(engine);
+ engine.gitBlobSha1='0'.repeat(40);engine.sha256='0'.repeat(64);
+ assert.throws(()=>ui.assertUiRenderDependencies(technical,f.read),/M3S2_LAYOUT_UI_ENGINE/);
+ assert.throws(()=>ui.assertUiRenderDependencies(technical,f.read,true),/M3S2_LAYOUT_UI_ENGINE/);
+ assert.throws(()=>ui.assertUiRenderDependencies(technical,f.read,{}),/M3S2_LAYOUT_UI_ENGINE/);
 });
 test('Q16 old and current UI requests remain separate',()=>{
  const f=fixture(),p=JSON.parse(immutable(f.pins.priorTechnicalRef)),v=JSON.parse(immutable(f.pins.priorVisualRef));

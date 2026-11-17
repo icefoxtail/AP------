@@ -24,9 +24,9 @@ const CONFIG={
     },
     {
       "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
-      "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
-      "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
-      "bytes": 15920
+      "gitBlobSha1": "d0f424928ccca3905055bbac0569f0460cfbe376",
+      "sha256": "2cf2b87e7f0dab41a0073edf392e41d8d28c41f18e5463042730685650c2ee42",
+      "bytes": 16035
     },
     {
       "path": "tools/4slot/m3s2-layout-continuity.cjs",
@@ -48,9 +48,9 @@ const CONFIG={
     },
     {
       "path": "tests/archive-m3s2-current-ui-reuse.test.cjs",
-      "gitBlobSha1": "28ba356add45f8620c18eb68189037506e01b8e7",
-      "sha256": "07255f9d2036c99af4966f730080bb0a9ed28bc614e41654760a59ac85bc77b1",
-      "bytes": 10741
+      "gitBlobSha1": "4679eaa3bd8c11589babe4d2f1a741f976063fa7",
+      "sha256": "f6ca2113f54ac97d06954e7c3234ae7c093a35a3dc41e229b90f73e012f598e7",
+      "bytes": 11069
     },
     {
       "path": "tools/ci/archive-pr-native-preview.mjs",
