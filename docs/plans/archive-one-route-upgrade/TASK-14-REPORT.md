@@ -230,3 +230,8 @@ PR·main 병합·정본 JS·SVG·운영장부·엔진 변경 없음. 다음은 �
 ## 2026-11-17 재개 batch9 원격 저장
 결과965cdd734e8897970ba02f512c10e17882cf10cd. 원격55파일blob일치. 중3원본2시험지+고2원본1시험지69OPEN문항: FIGURE43 EXEMPT24 CONTENT2,47계획. 독립검수·공식부분검사·기존그림직접확인 완료. 실제추가조건부족과음영경계불명확2건 CONTENT보존. 재개원본누적12시험지170OPEN문항125계획. 확장누적은별도51/351시험지894/9093문항189계획. 전체렌더NOT_RUN·출판UNVERIFIED유지. 세부BATCH9-REPORT.md/BATCH9-INDEX.json.
 후속 중3검수에서 양수조건누락을CONTENT로고치는중이며 교과서기존해설SVG누락참조를전수확인해보완중. 다른원본계속진행. 원문·운영장부·SVG·엔진·PR·main불변.
+
+
+## 2026-11-17 재개 batch10 저장
+결과1aa934a55b912a9354fdbd7ed84910fe069b7e1e, 원격38파일blob일치. 원본3시험지56문항 FIGURE30 EXEMPT25 CONTENT1,30계획. 독립검수중 양수조건누락을CONTENT로수정,표시계약오류5건(빈coordinateBand4/복합패널1)수정후 graph→specFor/작도→표시계약→specFor재검통과. 재개원본누적15시험지226OPEN문항155계획. 확장누적은별도51시험지894문항189계획. 실제렌더NOT_RUN/출판UNVERIFIED유지.
+기존저장batch5~9도가능최대공식부분검사를끝단표시계약까지재실행중. 신규중3원본과유사·교과서도계속하며,원문·엔진·SVG·운영장부·PR·main변경없음. 세부BATCH10-REPORT.md/BATCH10-INDEX.json.
