@@ -2,6 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { M2_E006_PROBLEM_SCHEMA, M2_E006_PROBLEM_ITEMS, M2_E006_UI_TECHNICAL_REF, M2_E006_UI_VISUAL_REF,
   validateM2E006ProblemUiEvidence, validateM2E006ProblemUiTileEvidence, validateM2E006ProblemContinuity } from '../archive/tools/meta-foundation/reviewed-m2-e006-problem-continuity.mjs';
 import { M2_PROBLEM_RENDERER_ITEMS } from '../archive/tools/meta-foundation/reviewed-m2-problem-renderer-continuity.mjs';
@@ -142,3 +145,41 @@ test('E006 reuse remains unavailable for another UID or an explicit source rebin
  const{receipt,item}=reuseCase();assert.equal(nativeReviewedM2E006ProblemRebind(receipt,{}, {},{}, {questionUid:'qid_v1_'+'0'.repeat(64)},item.sourceOrdinal,{},{}),false);
  receipt.approval.sourceRebind={};assert.equal(nativeReviewedM2E006ProblemRebind(receipt,{}, {},{}, {questionUid:item.questionUid},item.sourceOrdinal,{},{}),false);
 });
+
+// The generated SVG accessibility index is rebuilt by every main snapshot. When the
+// caller can read the live checkout, E006 compares the entries its own image
+// consumes (rules in svg-index-continuity.mjs); without a live reader the exact
+// byte pin remains. Other served files stay exact byte pins in both modes.
+{
+  const INDEX='archive/data/svg-accessibility-index.js',PREFIX="(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+  const SUFFIX=");\n}(typeof window !== 'undefined' ? window : globalThis));\n",repo=fileURLToPath(new URL('..',import.meta.url));
+  const norm=row=>decodeURIComponent(row.assetRef).replace(/^\/?(archive\/)?/,'');
+  const withIndex=(index,mutate,mutateFrozen)=>{
+    const f=setup(index),ref=f.x.technical.servedFiles.find(row=>row.path===INDEX);
+    let frozen=execFileSync('git',['cat-file','blob',ref.gitBlobSha1],{cwd:repo,maxBuffer:64*1024*1024});
+    const doc=JSON.parse(frozen.toString('utf8').slice(PREFIX.length,-SUFFIX.length));
+    if(mutateFrozen){const old=structuredClone(doc);mutateFrozen(old,f.x.currentAsset.path.slice('archive/'.length));frozen=Buffer.from(PREFIX+JSON.stringify(old)+SUFFIX);}mutate(doc,f.x.currentAsset.path.slice('archive/'.length));
+    const live=Buffer.from(PREFIX+JSON.stringify(doc)+SUFFIX),readRef=f.x.readRef;
+    f.x.readRef=r=>r.path===INDEX?frozen:readRef(r);
+    f.x.readLiveFile=rel=>rel===INDEX?live:fs.readFileSync(path.join(repo,rel));
+    f.x.readLiveRef=r=>{if(r.path===INDEX)throw Error('LIVE_INDEX_BYTE_PIN_MUST_NOT_RUN');return f.x.readRef(r);};
+    return f;
+  };
+  const mine=(doc,asset)=>doc.records.filter(row=>norm(row)===asset);
+  test('E006 index continuity passes an unrelated generated-index change',()=>{
+    const f=withIndex(0,(doc,asset)=>{const other=doc.records.find(row=>norm(row)!==asset);other.descriptionKo='unrelated change';doc.records.pop();});
+    assert.equal(validateM2E006ProblemUiEvidence(f.x).logicalCases,4);
+  });
+  test('E006 index continuity rejects a changed or removed consumed entry',()=>{
+    for(const mutate of [(doc,asset)=>{const row=mine(doc,asset)[0];assert(row,'fixture needs a consumed entry');row.descriptionKo+=' changed';},
+      (doc,asset)=>{const row=mine(doc,asset)[0];assert(row);doc.records.splice(doc.records.indexOf(row),1);}])
+      assert.throws(()=>validateM2E006ProblemUiEvidence(withIndex(0,mutate).x),/SVG index continuity: LIVE_SERVED_CODE_DRIFT/);
+  });
+  test('E006 index continuity accepts a new valid entry only where the frozen index had none, and rejects an invalid one',()=>{
+    const dropMine=(doc,asset)=>{for(const row of mine(doc,asset))doc.records.splice(doc.records.indexOf(row),1);};
+    const edit=change=>(doc,asset)=>{const row=mine(doc,asset)[0];assert(row,'fixture needs a consumed entry');Object.assign(row,change);};
+    assert.equal(validateM2E006ProblemUiEvidence(withIndex(1,edit({}),dropMine).x).logicalCases,4);
+    for(const change of [{answerHintFree:false},{provenanceStatus:'ASSET_ONLY'},{svgSha256:'sha256:'+'0'.repeat(64)},{visualRole:'solution'}])
+      assert.throws(()=>validateM2E006ProblemUiEvidence(withIndex(1,edit(change),dropMine).x),/SVG index continuity: LIVE_SERVED_CODE_DRIFT/);
+  });
+}
