@@ -1,0 +1,609 @@
+{
+  "schemaVersion": "archive-m3-existing-renderer-two-binding-publication-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_M3S2_RELEASE_26FC42390A50",
+  "status": "FROZEN_CANDIDATE_SCOPED_ACTUAL_GATE_PENDING",
+  "baseCommit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+  "scope": {
+    "sourceCount": 2,
+    "sourceQuestionCount": 45,
+    "selectedUidCount": 2,
+    "outsideQuestionCount": 43,
+    "selected": [
+      {
+        "examId": "E048",
+        "sourceArchiveFile": "original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "q10",
+        "sourceDisplayNumber": 10,
+        "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+        "expectedQuestionCount": 21
+      },
+      {
+        "examId": "E053",
+        "sourceArchiveFile": "original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceDisplayNumber": 19,
+        "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+        "expectedQuestionCount": 24
+      }
+    ],
+    "excluded": [
+      "Q5/Q16 current UI repair",
+      "M3 frozen remaining3",
+      "E07020",
+      "bulk STALE203",
+      "unsubmitted52",
+      "M3S1"
+    ]
+  },
+  "operations": [
+    {
+      "path": ".archive-meta-register/4slot-renderer-continuity/qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974.json",
+      "operation": "ADD",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "cf085289fd13f82cc357ba62f0a094c84fa79bd3",
+        "sha256": "0d38f5a69c81bff7385e6b5735232bfe0587d93cdabea6fb87f4e46171c8f723",
+        "bytes": 1903
+      },
+      "fullRemoteReadbackExact": true,
+      "category": "EXISTING_RENDERER_CONTINUITY_SIDECAR"
+    },
+    {
+      "path": ".archive-meta-register/4slot-renderer-continuity/qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04.json",
+      "operation": "ADD",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "053eeb61874aeb4a7620f2ffc3917ff4d5696b37",
+        "sha256": "2ffe51858d27fdbf1baf56068df0342dc037d1899e1f2467336e765456056e59",
+        "bytes": 1896
+      },
+      "fullRemoteReadbackExact": true,
+      "category": "EXISTING_RENDERER_CONTINUITY_SIDECAR"
+    },
+    {
+      "path": "tools/4slot/check-m3-existing-renderer-two-scoped.cjs",
+      "operation": "ADD",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "e1b9f9ae5236ee5705bca4b8ab648ccda65bf004",
+        "sha256": "1159ab9a42a429dd3233c88f335650c8f518812ffb27b025683821f8ea272175",
+        "bytes": 53953
+      },
+      "fullRemoteReadbackExact": true,
+      "category": "PRIVATE_SCOPED_GATE"
+    },
+    {
+      "path": ".github/workflows/m3-existing-renderer-two-registration.yml",
+      "operation": "ADD",
+      "before": null,
+      "after": {
+        "gitBlobSha1": "f9ba912ea76a7c6e3d731f8db903d4603445fd45",
+        "sha256": "16b77abeeca8dc7c30dfef77ade559b061175e3b17564bdc4200f6a7941eac2c",
+        "bytes": 1650
+      },
+      "fullRemoteReadbackExact": true,
+      "category": "READONLY_CLOSED_OPS_WORKFLOW"
+    }
+  ],
+  "currentMetadataVerification": {
+    "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+    "priorDiagnosis": {
+      "gitBlobSha1": "19ad3802d2fea84ed4d3d8d37693ab82b60c5c6e",
+      "sha256": "c3a656d5240d0fe4da290070d486c86f17b8603cf4439fed0eefa3305eba42e3",
+      "bytes": 14080
+    },
+    "source2Compact2Asset4GitMatchesPriorDiagnosis": {
+      "current": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+      "checks": [
+        {
+          "examId": "E048",
+          "source": {
+            "path": "archive/exams/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+            "gitBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+            "bytes": 58424
+          },
+          "compact": {
+            "path": "archive/data/item-4slot/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.4slot.json",
+            "gitBlobSha1": "bff8ffcd304022116ba26730883e958131409b0a",
+            "bytes": 4280
+          },
+          "assets": [
+            {
+              "path": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q10-engine-upgrade.svg",
+              "expected": "b3913a04f362a90abf6f712be65a2811c6b09457",
+              "actual": "b3913a04f362a90abf6f712be65a2811c6b09457",
+              "size": 21043
+            },
+            {
+              "path": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q10-solution.svg",
+              "expected": "cf419c4d7e52f0efec5f970c281f550c43b62c5d",
+              "actual": "cf419c4d7e52f0efec5f970c281f550c43b62c5d",
+              "size": 26110
+            }
+          ]
+        },
+        {
+          "examId": "E053",
+          "source": {
+            "path": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+            "gitBlobSha1": "29e8324717f9d94167fdba606124b62dd92e5971",
+            "bytes": 107604
+          },
+          "compact": {
+            "path": "archive/data/item-4slot/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.4slot.json",
+            "gitBlobSha1": "7dbffc581a33736971da26b2af5b081281ffaaad",
+            "bytes": 5197
+          },
+          "assets": [
+            {
+              "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q19-engine-upgrade.svg",
+              "expected": "d96b1f65a757028cae869b4edb308ec25f9706eb",
+              "actual": "d96b1f65a757028cae869b4edb308ec25f9706eb",
+              "size": 17565
+            },
+            {
+              "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q19-solution.svg",
+              "expected": "c7ccad5be9240dba34b938ef9b2e0e5f3b9e384a",
+              "actual": "c7ccad5be9240dba34b938ef9b2e0e5f3b9e384a",
+              "size": 44693
+            }
+          ]
+        }
+      ],
+      "sidecarDir": []
+    },
+    "receiptBindingEvidenceIndependentDictionaryRawFetchedExact": true,
+    "sidecarDirAbsentAtBase": true,
+    "newGatePaths": [
+      {
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "path": "tools/4slot/check-m3-existing-renderer-two-scoped.cjs",
+        "absent": true,
+        "directoryEntries": 27
+      },
+      {
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "path": ".github/workflows/m3-existing-renderer-two-registration.yml",
+        "absent": true,
+        "directoryEntries": 46
+      }
+    ],
+    "dataPins": {
+      "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+      "selectedData": [
+        {
+          "path": "archive/data/question_metadata.json",
+          "gitBlobSha1": "ba94f96cdb46566ed589e1fde03453223576e046",
+          "bytes": 74502366
+        },
+        {
+          "path": "archive/data/question_identity_map.json",
+          "gitBlobSha1": "002a0a23ba507454a3b2cf3c62f3711519879b7b",
+          "bytes": 27938431
+        },
+        {
+          "path": "archive/data/item-4slot-index.json",
+          "gitBlobSha1": "10ac903273bac37da0298b1b40101975bcc6902e",
+          "bytes": 20318514
+        },
+        {
+          "path": "archive/data/svg-accessibility-index.js",
+          "gitBlobSha1": "20f6bffe2a1a4d20bc23fba01545a8cbf9742b25",
+          "bytes": 483619
+        }
+      ],
+      "runtimeFiles": [
+        {
+          "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+          "gitBlobSha1": "1282c359bdb9d32d356aadb4e5ac45978139901b",
+          "bytes": 619372
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+          "gitBlobSha1": "5f2e384664021d16dc85d9b7f1d80017db9e0379",
+          "bytes": 1018673
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+          "gitBlobSha1": "c28451bddff6f931b58bffa0d1af75019b704abb",
+          "bytes": 518859
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+          "gitBlobSha1": "428eb15384d94dd3ee88ffa3afb7eb6725aeabad",
+          "bytes": 2053774
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+          "gitBlobSha1": "81becd1551f6e98bda11b7c61a89d68fe0c4ca14",
+          "bytes": 1328417
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+          "gitBlobSha1": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+          "bytes": 450510
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+          "gitBlobSha1": "7b0d194710675e0477a6478f52a978d1d70e8e29",
+          "bytes": 5674867
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+          "gitBlobSha1": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+          "bytes": 6727222
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+          "gitBlobSha1": "10c08ce06eb44fccf9a2f0389b9d0b38dbc4eb96",
+          "bytes": 587295
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+          "gitBlobSha1": "4cf57da44195ce3fb90e6fbe843dcf549bbd8e08",
+          "bytes": 565410
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "gitBlobSha1": "c42ff5c9189dc837eb5ec938cb6ae022671eaa24",
+          "bytes": 6976077
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "gitBlobSha1": "8a096d74050fd2b1f1da8244ddcd9744e1ae14da",
+          "bytes": 1643163
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "gitBlobSha1": "080ab8bd96254ca63c93b855327e6367d48cd2a8",
+          "bytes": 363789
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+          "gitBlobSha1": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+          "bytes": 845781
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+          "gitBlobSha1": "c0fe1817557e1b15e1a653ce4bc17d7165a35cb6",
+          "bytes": 3840663
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+          "gitBlobSha1": "41dda89e742fd85798b948981651327e2cf9c9f9",
+          "bytes": 196128
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+          "gitBlobSha1": "69db3f1eae73b87c7314f3b8a92a083e4b4aa68a",
+          "bytes": 1107549
+        },
+        {
+          "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+          "gitBlobSha1": "a3f767af73aa1cd8dab3674a3d73f9571417c01d",
+          "bytes": 304551
+        }
+      ],
+      "selectedRowEquality": "NOT_RUN_REQUIRES_SCOPED_GATE"
+    },
+    "currentSelectedMdIdRuntimeEquality": "NOT_RUN_NO_B8_PASS_INHERITANCE"
+  },
+  "existingAuthority": [
+    {
+      "examId": "E048",
+      "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+      "sourcePin": {
+        "path": "archive/exams/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+        "sha256": "593994b906e074da4f6e39ba956b976534f9654add9404fe24de69f8aded72bb",
+        "gitBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+        "bytes": 58424
+      },
+      "compactPin": {
+        "path": "archive/data/item-4slot/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.4slot.json",
+        "gitBlobSha1": "bff8ffcd304022116ba26730883e958131409b0a",
+        "sha256": "e85ec61919947ed1c5b87418a74f5e5cc3f0cd579878f26d820a52da58e9b047",
+        "bytes": 4280
+      },
+      "compactItemSha256": "daea898397cd970d92d10fb6486511cecb2087a3785dc2f0726b596076c78b36",
+      "dictionaryPin": {
+        "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+        "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+        "bytes": 367619
+      },
+      "receiptPin": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e048-current695-native-preserve-20261115.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "e4dc9c621316a901e88eaf43d214d4001b1b6ec3",
+        "sha256": "860f7304f4cee8073797b1b1eed944a3319973c185b3b22766339fe30b3492bf",
+        "bytes": 123356
+      },
+      "rendererBindingPin": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e048-current695-native-preserve-20261115.renderer-binding.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "3710709d8d594219258fa176266e4c422c53f557",
+        "sha256": "1ea6528d749f35c0802bfd90edc7419019b959ad6c5ccc7671b4292c444f6111",
+        "bytes": 920
+      },
+      "rendererEvidencePin": {
+        "path": ".archive-meta-register/evidence/m3s2-current99-extra2-renderer-20261115/E048.renderer-continuity.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "9fee4a4e1ff576e002760be36aaddfe7f5af7bb4",
+        "sha256": "df7cd3fa667fcc871271952ba797152440dad42e77860acd36471bbf0a0bb31a",
+        "bytes": 2063
+      },
+      "independentReviewPin": {
+        "path": ".archive-meta-register/evidence/m3s2-current99-extra2-renderer-20261115/independent-review.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "4fbf07f8104eca4a35196cb29235315e194e72d6",
+        "sha256": "5932ec33bbeeb59d1aa3ec86fe89a8dd73c0ac08c07dcad1c165b6bc0d7030cf",
+        "bytes": 11735
+      },
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E048.meta.json",
+        "sha256": "1faf78a953cf51245ca9b9d9f676e400af4f7a9da592b27b98eb1b1360dc80dc"
+      },
+      "nativeSource": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "archive/exams/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+        "gitBlobSha1": "ad5edce2d6dde313439f8a55828d810a84af032c",
+        "sha256": "7471f1b94a97b91e5613ad84784dbe799b070eb199c93ddf08d6cb10d76e0f27",
+        "reviewCommitSourceBlobSha1": "ad5edce2d6dde313439f8a55828d810a84af032c"
+      },
+      "currentAssets": [
+        {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q10-engine-upgrade.svg",
+          "gitBlobSha1": "b3913a04f362a90abf6f712be65a2811c6b09457",
+          "sha256": "d7e8364aa3521561d9160a24efaa798c129bc93b085deded5f3fe89f3bdcc016"
+        },
+        {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q10-solution.svg",
+          "gitBlobSha1": "cf419c4d7e52f0efec5f970c281f550c43b62c5d",
+          "sha256": "d554039fea11b37056dd83b9c29828e957b424ddad03716ca260aefb4a7fd11b"
+        }
+      ],
+      "issuedWholeSha256": {
+        "metadata": "4a2fecdd4446e4a73ffdfd4d38ce90e43c78c4ad429dcc03265e5a1f3bb1d2d7",
+        "identity": "c32b9dbe04381903c39cf941a412d76806a924bc662073bf5f0244c067c9ca7d",
+        "runtime": "46b82d4fa1d4488832b01becfdb12c53f77b7793b9b6c624128bb6b72103033f"
+      }
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+      "sourcePin": {
+        "path": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+        "sha256": "4ddd22f765e7f221ba26d2ff07ead8cc5c292a4c92ef0ac3510110247939c109",
+        "gitBlobSha1": "29e8324717f9d94167fdba606124b62dd92e5971",
+        "bytes": 107604
+      },
+      "compactPin": {
+        "path": "archive/data/item-4slot/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.4slot.json",
+        "gitBlobSha1": "7dbffc581a33736971da26b2af5b081281ffaaad",
+        "sha256": "99b64ded8752e967efa9217abbd96061cb2ceb85ccaef8e1ed367842a85bd594",
+        "bytes": 5197
+      },
+      "compactItemSha256": "822d381af6565edba8d69813dfb15b96f6c2cba6ef48988e096a664d5f03d3e9",
+      "dictionaryPin": {
+        "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+        "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+        "bytes": 367619
+      },
+      "receiptPin": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e053-current695-native-preserve-20261115.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "4bc59a2ebeb67a7bac8cb02a5c82ebc847a80031",
+        "sha256": "09b43c0882965d7dad5b141ea4ee9d3d5411b53ec1f3714b367cdf897734c4cc",
+        "bytes": 152235
+      },
+      "rendererBindingPin": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e053-current695-native-preserve-20261115.renderer-binding.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "815271268faaac12a53ba9dec446c1faecd1e786",
+        "sha256": "15b0ae38cbe2dd118d557961c2d1d03694554195d98482af3da9cc2735d4624c",
+        "bytes": 918
+      },
+      "rendererEvidencePin": {
+        "path": ".archive-meta-register/evidence/m3s2-current99-extra2-renderer-20261115/E053.renderer-continuity.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "2d80cb88bcda39ef3fcc856e7563299acc81f15d",
+        "sha256": "d0357cd874a58b97ff503c3c5c88eedd99c3c67d6e0c1898b3d5e4309027dc70",
+        "bytes": 2057
+      },
+      "independentReviewPin": {
+        "path": ".archive-meta-register/evidence/m3s2-current99-extra2-renderer-20261115/independent-review.json",
+        "commit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+        "gitBlobSha1": "4fbf07f8104eca4a35196cb29235315e194e72d6",
+        "sha256": "5932ec33bbeeb59d1aa3ec86fe89a8dd73c0ac08c07dcad1c165b6bc0d7030cf",
+        "bytes": 11735
+      },
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E053.meta.json",
+        "sha256": "d4d83b714748dcb61f985806a3e0e2371702823acde32233323b6a0d99b8f60b"
+      },
+      "nativeSource": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "02a3526e43a69cc2a4dd69ebbb694740d43c3567",
+        "sha256": "3fd102595c42ccdf9e32c8c9c498284d842dd46379070c630e2cc2aab365ca25",
+        "reviewCommitSourceBlobSha1": "02a3526e43a69cc2a4dd69ebbb694740d43c3567"
+      },
+      "currentAssets": [
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q19-engine-upgrade.svg",
+          "gitBlobSha1": "d96b1f65a757028cae869b4edb308ec25f9706eb",
+          "sha256": "18e4ea153a2d53d297f2cbc74994215e42cb9bf79ea8649ffe164c00937af4f7"
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q19-solution.svg",
+          "gitBlobSha1": "c7ccad5be9240dba34b938ef9b2e0e5f3b9e384a",
+          "sha256": "e88d0c2e00b5c6016e7554457a40bf817085bea7b6c388de06842ac3b14965fa"
+        }
+      ],
+      "issuedWholeSha256": {
+        "metadata": "28f75951e7a81da89a1bf6743daf5d7fdead74c7120d17f118cf7f6d4873248a",
+        "identity": "7141df080e4058f00e35775977b7dc72a0074c50d037b91c697a435a8c606661",
+        "runtime": "cb13a68accf5e0300ae104b2a419f5f4e32ceaf2758c2646a77865c19d9af18c"
+      }
+    }
+  ],
+  "existingCode": [
+    {
+      "path": "tools/4slot/registered-renderer-continuity.mjs",
+      "gitBlobSha1": "4ced47a9e712cc4b4def9d35d36f7a90f77a8482",
+      "sha256": "b3f447bc44e1283b942eb2f70f778c32ceab667370ed1be2966687bbf573f3e8",
+      "bytes": 8030
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.cjs",
+      "gitBlobSha1": "636508c172e4c2016cd285384d09b467920f4836",
+      "sha256": "482b14918edf02eba8b794bbb350829b5ffc30f2fc89df23c0d360318dc27076",
+      "bytes": 2728
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+      "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+      "bytes": 41001
+    },
+    {
+      "path": "archive/item-4slot.js",
+      "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+      "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+      "bytes": 8639
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "gitBlobSha1": "2a92763df7777114ed403b0fc9e5ca5481171daa",
+      "sha256": "83de1798ec68b90d29271a9bfd7a175eb19e57fd7c93e03d35c6992666a09336",
+      "bytes": 12520
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "gitBlobSha1": "73a5b83ae2411dcafc58bf3103d31937f7ef6ceb",
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83",
+      "bytes": 47223
+    },
+    {
+      "path": "tools/4slot/exam-items.cjs",
+      "gitBlobSha1": "debef5587df86821c04e543afb72a72b2e0fc1e4",
+      "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2",
+      "bytes": 2234
+    }
+  ],
+  "authoringChecks": {
+    "sidecarSchema": "archive-four-slot-registered-renderer-continuity-v1",
+    "scope": "EXISTING_VECTOR_ONLY",
+    "newFourSlotApprovals": 0,
+    "newMathematicalQa": false,
+    "selectedCompactItemHoldsAbsent": true,
+    "selectedItemWholeUnchanged": true,
+    "issuedRowsHashRecomputedExact": [
+      {
+        "examId": "E048",
+        "kind": "metadata",
+        "sha256": "4a2fecdd4446e4a73ffdfd4d38ce90e43c78c4ad429dcc03265e5a1f3bb1d2d7",
+        "exact": true
+      },
+      {
+        "examId": "E048",
+        "kind": "identity",
+        "sha256": "c32b9dbe04381903c39cf941a412d76806a924bc662073bf5f0244c067c9ca7d",
+        "exact": true
+      },
+      {
+        "examId": "E048",
+        "kind": "runtime",
+        "sha256": "46b82d4fa1d4488832b01becfdb12c53f77b7793b9b6c624128bb6b72103033f",
+        "exact": true
+      },
+      {
+        "examId": "E053",
+        "kind": "metadata",
+        "sha256": "28f75951e7a81da89a1bf6743daf5d7fdead74c7120d17f118cf7f6d4873248a",
+        "exact": true
+      },
+      {
+        "examId": "E053",
+        "kind": "identity",
+        "sha256": "7141df080e4058f00e35775977b7dc72a0074c50d037b91c697a435a8c606661",
+        "exact": true
+      },
+      {
+        "examId": "E053",
+        "kind": "runtime",
+        "sha256": "cb13a68accf5e0300ae104b2a419f5f4e32ceaf2758c2646a77865c19d9af18c",
+        "exact": true
+      }
+    ],
+    "e053IdentityNumberCorrection": {
+      "beforePublication": true,
+      "reason": "Unchanged sourceIdentityNumber returns String(q.id ?? q.number ?? ''). E053 identity number is the string 19.",
+      "initialNumericDraftPublishedToRef": false,
+      "finalSourceQuestionNo": "19",
+      "finalSidecarGit": "053eeb61874aeb4a7620f2ffc3917ff4d5696b37"
+    },
+    "repositoryCodeEvaluatedByAuthor": false
+  },
+  "gate": {
+    "path": "tools/4slot/check-m3-existing-renderer-two-scoped.cjs",
+    "branch": "refs/heads/ops/m3-existing-renderer-two-26fc-20261117",
+    "rootOwner": "GPT_ROOT_26FC42390A50",
+    "closedPushProvenance": true,
+    "currentInputs": "Regular bytes must match actual checkout HEAD. Whole global data is observed; selected2 MD/ID/runtime must equal the existing issued rows exactly.",
+    "originalAuthority": "Execute unchanged worker4ced twice with current ACTIVE owner and complete original native renderer proof. No null/fallback acceptance.",
+    "scopeAssertions": [
+      "Actual full-bank ID joins yield exactly45 unique UIDs and selected2 exact identity/display numbers.",
+      "Selected2 must be actual STALE_STUDENT_PAYLOAD before repair; if already registered or status differs, fail and replan.",
+      "Baseline without new sidecars keeps selected2 refused and outside43 whole actual record/pending states exact.",
+      "Official builder recovers exactly2 and preserves the entire existing compact vector/candidates/format.",
+      "Official scoped Consumer verifies all scoped registered records and selected2 get/term queries.",
+      "Cold check revalidates2 files and reports changed=false.",
+      "Removing the exact shared independent-review file rejects both selected UIDs; outside43 unchanged.",
+      "Mutating only one sidecar bound-item hash rejects that UID, preserves the other selected row and outside43.",
+      "Deleting both new sidecars again rejects both as STALE_STUDENT_PAYLOAD.",
+      "All private nonderived files and all read root inputs remain byte exact at completion."
+    ],
+    "hydration": "Current canonical/compiled/runtime/master and native code are readonly copied into a no-hardlink private checkout. Only explicit issued renderer refs and selected2 historical source/asset directories are authenticated; no global outputDigests traversal and no source-publication-commit inference.",
+    "dataEdits": "PRIVATE_DERIVED_INDEX_ONLY; temporary negative edits only private sidecars and independent-review availability",
+    "output": "RUNNER_TEMP JSON plus SHA-bound bounded metadata log frames; no source text, answer, solution, image body or new approval"
+  },
+  "validation": {
+    "Node": "NOT_RUN",
+    "syntax": "NOT_RUN",
+    "actualNative2": "NOT_RUN",
+    "officialBuilder45": "NOT_RUN",
+    "officialConsumer": "NOT_RUN",
+    "coldReplay": "NOT_RUN",
+    "deletionNegatives": "NOT_RUN",
+    "independentReview": "PENDING",
+    "actualMainRegistration": "NOT_PERFORMED",
+    "Pages": "NOT_PERFORMED"
+  },
+  "preserved": {
+    "productionCodeChanges": 0,
+    "sourceChanges": 0,
+    "compactChanges": 0,
+    "dictionaryChanges": 0,
+    "metadataChanges": 0,
+    "identityChanges": 0,
+    "runtimeChanges": 0,
+    "receiptChanges": 0,
+    "independentApprovalChanges": 0,
+    "newMathQa": 0,
+    "newSemanticApprovals": 0,
+    "newFourSlotApprovals": 0,
+    "sharedHardlinkWrites": 0,
+    "remoteRefWrites": 0,
+    "mainWrites": 0
+  },
+  "nextAction": "Independent code/metadata review of these four exact additions, then root publishes the closed ops branch and runs the source45 gate. Only scoped actual PASS permits root to include sidecars2 in a release; do not infer current stored-row equality from b8 observations."
+}
