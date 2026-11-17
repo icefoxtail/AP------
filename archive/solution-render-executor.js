@@ -58,9 +58,9 @@
         return applied;
     }
 
-    // A continuation shell holds only the tail of a solution, so without a heading a student cannot tell which
-    // question it belongs to. Put "<number>. (이어짐)" at its top; the continuation overhead measured from the shell
-    // then includes this line, so the fit math stays correct.
+    // A rescued continuation shell holds only the tail of a solution, so without a heading a student cannot tell which
+    // question it belongs to. Put "<number>. (이어짐)" at its top. Only shells created by the rescue path are labelled;
+    // ordinary continuation shells keep their original DOM.
     function labelContinuationShell(shell, sourceBox, qNo, doc) {
         if (!shell || !doc || typeof shell.querySelector !== 'function' || typeof shell.insertBefore !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
         const numNode = typeof sourceBox?.querySelector === 'function' ? sourceBox.querySelector('.q-num') : null;
@@ -89,7 +89,7 @@
                     const node = document.createElement('span'); node.className = 'sol-chunk'; node.dataset.chunkId = `c${chunkIndex}`; node.innerHTML = html; host.appendChild(node);
                     return { node, chunkId: node.dataset.chunkId };
                 });
-                record.shell = labelContinuationShell(deps.makeLongSolutionShell(record.box, index + 1, true), record.box, index + 1, document);
+                record.shell = deps.makeLongSolutionShell(record.box, index + 1, true);
                 staging.append(host, record.shell); hosts.push(host, record.shell);
             });
             await deps.typesetMath('solution-decision-batch', hosts);
@@ -264,6 +264,7 @@
             targetCol.appendChild(shell);
             markSolutionPlacement(shell, false);
             let primaryShell = true;
+            let rescued = false;
 
             for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
                 const chunk = preparedChunks[chunkIndex];
@@ -285,7 +286,10 @@
                         ? Array.from(exp.children).slice(-borrowCount)
                         : [];
                     targetCol = advanceColumn();
-                    shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
+                    shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                    // Only after a rescue (below) are the following shells labelled too, so layouts that were
+                    // fine before keep their exact DOM.
+                    if (rescued) labelContinuationShell(shell, sourceBox, qNo, document);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     markSolutionPlacement(shell, true);
@@ -297,30 +301,38 @@
                     if (deps.rendererMode() === 'legacy') await deps.raf();
                     else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                     primaryShell = false;
-                } else if (primaryShell) {
-                    // The first shell carries the question reminder, figures and answer, so its only
-                    // chunk can push the column over even though the header alone fits. Hand that one
-                    // chunk to a continuation shell instead of letting the column clip it.
-                    exp.removeChild(chunk);
-                    if (deps.rendererMode() === 'legacy') await deps.raf();
-                    if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
-                        targetCol = advanceColumn();
-                        shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
-                        exp = shell.querySelector('.sol-exp');
-                        targetCol.appendChild(shell);
-                        markSolutionPlacement(shell, true);
-                        exp.appendChild(chunk);
-                        if (deps.rendererMode() === 'legacy') await deps.raf();
-                        else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
-                        primaryShell = false;
-                    } else {
-                        exp.appendChild(chunk);
-                    }
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     deps.autoCompress(shell);
                     if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                     else await deps.raf();
+                    // Rescue: the first shell carries the question reminder, figures and answer, so its only chunk
+                    // can still clip the column after compression (readiness: more than 3px). Hand that chunk to a
+                    // labelled continuation shell, but only when the header alone fits. Anything that fit before
+                    // (including after the compression above) is laid out exactly as it always was.
+                    if (primaryShell && exp.children.length === 1 && targetCol.scrollHeight > targetCol.clientHeight + 3) {
+                        exp.removeChild(chunk);
+                        if (deps.rendererMode() === 'legacy') await deps.raf();
+                        if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                            rescued = true;
+                            targetCol = advanceColumn();
+                            shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
+                            exp = shell.querySelector('.sol-exp');
+                            targetCol.appendChild(shell);
+                            markSolutionPlacement(shell, true);
+                            exp.appendChild(chunk);
+                            if (deps.rendererMode() === 'legacy') await deps.raf();
+                            else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                            primaryShell = false;
+                            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                                deps.autoCompress(shell);
+                                if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                                else await deps.raf();
+                            }
+                        } else {
+                            exp.appendChild(chunk);
+                        }
+                    }
                 }
             }
         };
@@ -468,7 +480,7 @@
             const chunkTotal = measuredChunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0);
             const primaryBlockId = `solution-block:${solutionIndex + 1}:primary`;
             box.dataset.solutionDecisionBlockId = primaryBlockId;
-            const continuationShell = labelContinuationShell(deps.makeLongSolutionShell(box, solutionIndex + 1, true), box, solutionIndex + 1, document);
+            const continuationShell = deps.makeLongSolutionShell(box, solutionIndex + 1, true);
             staging.appendChild(continuationShell);
             await deps.typesetMath('solution-decision-shell', [continuationShell]);
             const continuationShellOverhead = Math.max(1, Number(continuationShell.scrollHeight || 1));

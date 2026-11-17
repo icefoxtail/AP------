@@ -36,7 +36,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - 시험지(`archive/exam-render-executor.js` `render`): 글자·그림을 가장 작은 단계(`fit-micro`)로 줄여도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px)은 그 문항만 단계적으로 키워 다시 쪽 나누기를 한다. 순서: ① 같은 열에서 세로로 길게(칸 2개 높이 … 열 전체, `data-ap-fallback="tall-N"`) → ② 한 줄 전체 폭 칸(`row`) → ③ 쪽 전체(`page`, 진짜 특별한 경우만). 맞는 문항의 배치는 그대로이고, 넘치는 문항이 없으면 한 번만 배치한다. readiness 검사·허용값은 건드리지 않는다. 사용자 결정(2026-11-17): 쪽 전체는 특별한 경우만, 세로로 길게가 기본. 이유: 단원별 기출 「원의 성질 › 원과 직선 · 2단계 · 1권」에서 문항 하나(4번·41번)가 8~170px 넘쳐 `PDF readiness failed: content clipped`로 시험지 전체가 출력되지 않았다.
 - 수식 공백(`mjx-stretchy-h > mjx-ext` 안 `mjx-spacer`)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우(향림중 5번)는 칸을 키우지 않고 `mixed_engine.html` CSS `contain: paint`로 처리한다(MathJax 자체 `clip-path` 영역과 같아 그려지는 모양은 그대로). `overflow:clip/hidden`은 readiness가 잘림으로 보므로 쓰지 않는다.
-- 해설지(`archive/solution-render-executor.js` `renderSplitSolutionBox`): 첫 상자(문제 다시보기+그림+정답)가 칸을 거의 채워 풀이 조각 하나가 안 들어가면, 조각을 다음 칸의 이어짐 상자로 보낸다(머리가 칸에 들어갈 때만). 이유: 같은 1권 해설지 4번이 칸보다 50px 커서 해설지 전체가 열리지 않았다.
+- 해설지(`archive/solution-render-executor.js` `renderSplitSolutionBox`): 첫 상자(문제 다시보기+그림+정답)의 풀이 조각 하나가 기존 `autoCompress`(글자 축소) 뒤에도 칸을 3px 넘게 잘라 먹으면(readiness 기준), 그 조각을 "{번호}. (이어짐)" 라벨이 붙은 다음 칸 이어짐 상자로 보낸다(머리가 칸에 들어갈 때만). 이어짐 라벨은 이 구제 경로로 만든 상자(와 그 뒤 이어지는 상자)에만 붙이고, 기존 경로로 잘 나오던 해설은 main과 DOM·높이가 그대로다. 이유: 같은 1권 해설지 4번이 칸보다 50px 커서 해설지 전체가 열리지 않았고, 처음 구현이 모든 이어짐 상자에 라벨을 달고 구제 전 축소 없이 쪼개 50문항 해설 parity(bodyHash·블록 높이)를 깼다. `mixed_engine.html`의 "상자 안 상자는 한 테두리" CSS도 기존 해설 블록 높이를 23~24px 줄여 같은 parity를 깨므로 이 변경에서 뺐다(필요하면 parity 기준 정정과 함께 따로 한다).
 - 같은 흐름의 `renderComposed`(반 합성·클리닉 출력)와 권위 배치(`layout-authority`)는 이 폴백이 없다. 같은 증상이 나오면 같은 방식으로 옮긴다.
 
 ## 해설·정답 열람은 잠그지 않는다 (2026-11-10 사용자 결정)
