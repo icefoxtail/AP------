@@ -171,6 +171,16 @@ test('home keeps the draft resume and quick assessment entries and shows no tool
   assert.doesNotMatch(markup, /problem-bank-search|data-view="health"|legacy=1|home-tools/);
 });
 
+test('home lists the printable class forms as a static link that needs no catalog', () => {
+  const { home } = loadHome();
+  // Before the catalog is ready the home is already drawn; the 수업 양식 row is plain markup, not a button action.
+  const markup = home.renderHome();
+  assert.match(markup, /<h2 id="home-forms-title">수업 양식<\/h2>/);
+  assert.match(markup, /<a class="home-form-link" href="note-sheet\.html">/);
+  assert.match(markup, /빈 풀이노트 인쇄/);
+  assert.ok(markup.indexOf('home-forms-title') > markup.indexOf('home-quick-title'), 'the forms row comes after the five quick entries');
+});
+
 test('the three screens that moved into the 보관함 · 출제 내역 switch show it', () => {
   assert.match(read('archive2-library.js'), /libraryTabs\?\.\("saved"\)/);
   assert.match(read('archive2-workspace.js'), /libraryTabs\?\.\("recent"\)/);

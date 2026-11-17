@@ -191,7 +191,8 @@
     wrapped.subUnitKey = text(metaByUid?.get(uid)?.subUnitKey) || text(record.subUnitKey);
     if (middle) {
       const entry = index?.byUid?.get(uid);
-      if (entry?.rpmParentStatus) wrapped.rpmParentResolution = { status: entry.rpmParentStatus, parent: entry.rpmParent || null };
+      if (entry?.rpmParentStatus) wrapped.rpmParentResolution = { status: entry.rpmParentStatus, parent: entry.rpmParent || null,
+        ...(entry.reviewedMiddleParent ? { reviewedParent: entry.reviewedMiddleParent } : {}) };
     }
     return wrapped;
   }

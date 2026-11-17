@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ARCHIVE_ROOT = path.resolve(HERE, '..');
@@ -51,7 +52,7 @@ function runArchiveScript(filePath) {
 
 function loadQuestions(filePath) {
   const context = runArchiveScript(filePath);
-  const questions = context.window.questions || context.window.questionBank || context.questions || context.questionBank;
+  const questions = examSourceReader.readQuestionArray(context.window, context);
   if (!Array.isArray(questions)) throw new Error('questions array not found');
   return questions;
 }

@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ARCHIVE_ROOT = path.resolve(HERE, '..');
@@ -100,7 +101,7 @@ function loadExam(filePath) {
     console: { log() {}, warn() {}, error() {} },
   };
   vm.runInNewContext(fs.readFileSync(filePath, 'utf8'), context, { filename: filePath });
-  const questions = Array.isArray(window.questionBank) ? window.questionBank : [];
+  const questions = examSourceReader.readQuestionArray(window) || [];
   return { title: window.examTitle || path.basename(filePath, '.js'), questions };
 }
 

@@ -32,7 +32,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
       mathjax_render_loop: '20261116-enclosed-latin',
       'layout-materializer': '20261117-cont-label-1',
       'solution-render-executor': '20261117-cont-label-1',
-      'exam-render-executor': '20261117-wide-fallback-1',
+      'exam-render-executor': '20261117-wide-fallback-2',
       'question-image-readiness': '20261106-output-performance-1',
       'layout-authority': '20261009\\.1',
       'screen-runtime-adapter': '20261116-polish-1',
@@ -43,7 +43,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   }
   assert.match(engine, /solution-render-executor\.js\?v=20261117-cont-label-1/);
   assert.match(engine, /answer-render-executor\.js\?v=20261029-sections-1/);
-  assert.match(engine, /exam-render-executor\.js\?v=20261117-wide-fallback-1/);
+  assert.match(engine, /exam-render-executor\.js\?v=20261117-wide-fallback-2/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);

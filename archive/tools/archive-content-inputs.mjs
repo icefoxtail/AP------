@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { createHash } from 'node:crypto';
+import examSourceReader from '../exam-source-reader.js';
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const IMAGE_FIELDS = /^(?:image|imageRef|problemImage|problemImageRef|originalProblemImage|solutionImage|solutionImageRef)$/;
 
@@ -13,8 +14,7 @@ export function loadSource(root, source) {
   context.globalThis = context;
   vm.createContext(context);
   vm.runInContext(bytes.toString('utf8'), context, { filename: source, timeout: 3000 });
-  const questions = [context.window.questions, context.window.questionBank, context.window.questionBank?.questions,
-    context.window.examData?.questions, context.questions, context.questionBank].find(Array.isArray);
+  const questions = examSourceReader.readQuestionArray(context.window, context);
   if (!questions?.length || questions.some(question => !question || typeof question !== 'object' || Array.isArray(question))) {
     throw new Error('source has no usable question array: ' + source);
   }

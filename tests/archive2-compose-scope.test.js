@@ -578,17 +578,17 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261111-one-lane-difficulty-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261117-stale-2'],
-    ['archive2-quick-pools.js', '20261116-compose-tree-1'],
-    ['archive2-unit-tree.js', '20261116-unit-source-1'],
+    ['archive2-workspace.js', '20261118-save-fresh-1'],
+    ['archive2-quick-pools.js', '20261117-middle-parent-1'],
+    ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
-    ['archive2-unified-units.js', '20261113-rpm-middle-parents-1'],
+    ['archive2-unified-units.js', '20261117-middle-parent-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
-  assert.match(html, /archive2-source\.js\?v=20261117-examdata-1/);
+  assert.match(html, /archive2-source\.js\?v=20261117-reader-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261116-polish-1/);
+  assert.match(html, /archive2\.css\?v=20261117-home-forms-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261116-standalone-1/);
@@ -1414,4 +1414,204 @@ test('while a save result is unknown, output and backup stay reachable and only 
   statusNode.textContent = '';
   await click({ action: 'close-dialog' });
   assert.doesNotMatch(statusNode.textContent, /잠급니다/, 'closing a dialog is not locked');
+});
+
+// ---- 저장 요청 본문을 서버 계약에 맞춘다 (savePapers: saveWireQuestion / saveRequestFilters / parity 문구) ----
+function savedPaperOk() {
+  return { ok: true, status: 200, json: async () => ({ success: true, saved: true, papers: [{ id: crypto.randomUUID() }] }) };
+}
+function captureSavePost(ctx, reply = savedPaperOk) {
+  const bodies = [];
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname === '/api/archive-saved-papers' && init.method === 'POST') {
+      bodies.push(JSON.parse(init.body));
+      return reply();
+    }
+    throw new Error('unexpected API request: ' + parsed.pathname);
+  };
+  return bodies;
+}
+
+test('저장 요청 본문의 정본 메타 필드는 카탈로그 값이고 미리보기·인쇄용 문항은 바뀌지 않는다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const uid = w.state.selected[0].questionUid;
+  // 카탈로그: courseKey·curriculumKey는 빈 값, L3 필드는 없음. 원본 JS에서 복원한 문항은 그 자리에 원본 값을 남긴다(Source.restore).
+  const catalogRecord = { ...w.state.byUid.get(uid), courseKey: '', curriculumKey: '' };
+  delete catalogRecord.L3;
+  w.state.byUid.set(uid, catalogRecord);
+  const [paper] = await w.prepare();
+  const shown = paper.questions[0];
+  Object.assign(shown, { courseKey: 'SOURCE-ONLY-COURSE', curriculumKey: 'SOURCE-ONLY-CURRICULUM', L3: 'SOURCE-ONLY-L3' });
+  const shownBefore = plain(shown);
+  const bodies = captureSavePost(ctx);
+
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(bodies.length, 1);
+  const sent = bodies[0].papers[0].questions[0];
+  for (const field of core.META_FIELDS) {
+    if (catalogRecord[field] === undefined) assert.equal(Object.hasOwn(sent, field), false, field + ' is absent in the catalog, so it is absent in the request');
+    else assert.deepEqual(sent[field], plain(catalogRecord[field]), field + ' equals the catalog record');
+  }
+  assert.equal(sent.courseKey, '', 'an empty catalog value is sent as empty, not dropped and not replaced by the source value');
+  assert.equal(Object.hasOwn(sent, 'L3'), false);
+  for (const field of ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'content', 'answer', 'solution'])
+    assert.deepEqual(sent[field], plain(shown[field]), field + ' is not a metadata field and is sent unchanged');
+  // Preview/print objects keep the restored (source) values.
+  assert.deepEqual(plain(w.state.prepared[0].questions[0]), shownBefore);
+  assert.equal(shown.courseKey, 'SOURCE-ONLY-COURSE');
+});
+
+test('카탈로그 레코드가 없는 문항(수정본·옛 출제 등)은 전송 본문에서도 그대로 보낸다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const uid = w.state.selected[0].questionUid;
+  const [paper] = await w.prepare();
+  paper.questions[0].courseKey = 'FROZEN-COURSE';
+  w.state.byUid.delete(uid);
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.deepEqual(bodies[0].papers[0].questions[0], plain(paper.questions[0]));
+});
+
+test('찾기 화면에서 넘어온 material·file·similarOnly는 저장 요청의 selection_filters에 넣지 않는다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  w.state.filters = { ...w.state.filters, material: 'exam', file: 'x.js', similarOnly: '1', school: '' };
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  const filters = bodies[0].selection_filters;
+  for (const key of ['material', 'file', 'similarOnly']) assert.equal(Object.hasOwn(filters, key), false, key);
+  assert.ok(filters.grade && Array.isArray(filters.primaryPaths) && Array.isArray(filters.sourceFiles), 'the real range conditions stay');
+});
+
+test('저장이 정본 메타 불일치(409)로 거절되면 화면에는 안내 문구만, 서버 원문은 콘솔에만 남긴다', async t => {
+  const raw = 'canonical metadata parity mismatch: courseKey';
+  const run = async (message, status = 409) => {
+    const { w, ctx } = configureSaveHarness(t);
+    captureSavePost(ctx, () => ({ ok: false, status, json: async () => ({ success: false, error: message }) }));
+    await w.savePapers();
+    return w.state;
+  };
+  const warn = t.mock.method(console, 'warn', () => {});
+  const state = await run(raw);
+  assert.equal(state.saveResultState, 'FAILED');
+  assert.equal(state.saveError, '분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.');
+  assert.doesNotMatch(state.saveError, /parity|courseKey/);
+  assert.ok(warn.mock.calls.some(call => call.arguments.some(arg => String(arg).includes(raw))), 'raw server text goes to console.warn');
+  // 다른 거절은 이 PR 범위 밖이라 그대로 둔다.
+  const other = await run('1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.', 413);
+  assert.equal(other.saveError, '1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.');
+});
+
+// ---- 저장은 "낡은 줄 아는 버전"을 보내지 않고, 서버가 앞서간 경우 한 번만 다시 읽어 다시 보낸다 ----
+const STALE_VERSION_MESSAGE = '분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.';
+// 서버 대역: currentVersion과 같은 index_version만 받는다(archive2-questions.js의 확인과 같은 규칙). 같은 batch id는 같은 본문이면 되풀이 응답한다.
+function versionedSaveServer(ctx, { currentVersion, manifestOk = true, alwaysStale = false }) {
+  const posts = [];
+  let manifestReads = 0;
+  const manifestText = fs.readFileSync(path.join(root, 'archive/data/archive2-canonical-input-manifest.json'), 'utf8');
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname.endsWith('/data/archive2-canonical-input-manifest.json')) {
+      manifestReads++;
+      return manifestOk ? { ok: true, status: 200, text: async () => manifestText } : { ok: false, status: 503, text: async () => '' };
+    }
+    if (parsed.pathname === '/api/archive-saved-papers' && init.method === 'POST') {
+      const body = JSON.parse(init.body);
+      posts.push(body);
+      if (alwaysStale || body.index_version !== currentVersion)
+        return { ok: false, status: 409, json: async () => ({ success: false, error: STALE_VERSION_MESSAGE }) };
+      return { ok: true, status: 200, json: async () => ({ success: true, saved: true, papers: body.papers.map(() => ({ id: crypto.randomUUID() })) }) };
+    }
+    throw new Error('unexpected request: ' + parsed.pathname);
+  };
+  return { posts, manifestReads: () => manifestReads };
+}
+const manifestVersion = () => JSON.parse(fs.readFileSync(path.join(root, 'archive/data/archive2-canonical-input-manifest.json'), 'utf8')).projectionVersion;
+const sentVersions = body => [body.index_version, ...body.papers.map(paper => paper.meta.indexVersion)];
+
+test('초안 버전(state.indexVersion)이 낡아도 화면 목록 버전으로 저장하고, 한 요청에 버전 값은 하나뿐이다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const catalogVersion = w.state.catalog.indexVersion;
+  w.state.indexVersion = 'archive2-canonical-v1:' + '0'.repeat(64); // 초안을 만든 뒤 목록이 새로 읽힌 화면
+  const server = versionedSaveServer(ctx, { currentVersion: catalogVersion });
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(server.posts.length, 1, 'no 409 round trip');
+  assert.deepEqual([...new Set(sentVersions(server.posts[0]))], [catalogVersion], 'index_version and papers[].meta.indexVersion are the same single value');
+  assert.equal(server.manifestReads(), 0);
+});
+
+test('정상이면 같은 버전·같은 batch id로 보내고 다시 저장해도 중복되지 않는다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const server = versionedSaveServer(ctx, { currentVersion: w.state.catalog.indexVersion });
+  await w.savePapers();
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(server.posts.length, 2);
+  assert.equal(server.posts[0].save_batch_id, server.posts[1].save_batch_id, 'an unchanged paper keeps its batch id (idempotent)');
+});
+
+test('서버 기준이 화면보다 앞서면 현재 버전을 다시 읽어 한 번만 다시 보내고, 새 batch id를 쓴다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const serverVersion = manifestVersion();
+  w.state.catalog = { ...w.state.catalog, indexVersion: 'archive2-canonical-v1:' + 'f'.repeat(64) }; // 화면이 연 뒤 배포되어 서버만 앞섬
+  const server = versionedSaveServer(ctx, { currentVersion: serverVersion });
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(server.posts.length, 2, 'one rejected request and exactly one resend');
+  assert.notEqual(server.posts[0].index_version, serverVersion);
+  assert.deepEqual([...new Set(sentVersions(server.posts[1]))], [serverVersion]);
+  assert.deepEqual([...new Set(sentVersions(server.posts[0]))], [server.posts[0].index_version]);
+  assert.notEqual(server.posts[0].save_batch_id, server.posts[1].save_batch_id, 'the content changed (index_version), so the resend is a new batch');
+  assert.equal(w.state.saveBatchId, server.posts[1].save_batch_id);
+  assert.equal(server.manifestReads(), 1);
+  // 같은 화면에서 다시 저장해도 이미 확인한 서버 버전을 바로 쓰고, 같은 batch id라 중복 저장이 생기지 않는다.
+  await w.savePapers();
+  assert.equal(server.posts.length, 3);
+  assert.equal(server.posts[2].index_version, serverVersion);
+  assert.equal(server.posts[2].save_batch_id, server.posts[1].save_batch_id);
+  assert.equal(server.manifestReads(), 1);
+});
+
+test('다시 보내도 서버가 기준 갱신으로 거절하면 안내로 끝나고 요청은 2회를 넘지 않는다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  w.state.catalog = { ...w.state.catalog, indexVersion: 'archive2-canonical-v1:' + 'e'.repeat(64) };
+  const warn = t.mock.method(console, 'warn', () => {});
+  const server = versionedSaveServer(ctx, { currentVersion: manifestVersion(), alwaysStale: true });
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'FAILED');
+  assert.equal(server.posts.length, 2);
+  assert.equal(w.state.saveError, '문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.');
+  assert.ok(warn.mock.calls.length >= 1);
+});
+
+test('현재 버전을 읽지 못하거나 같은 버전이면 다시 보내지 않고 안내로 끝난다', async t => {
+  for (const options of [{ manifestOk: false }, { manifestOk: true, sameVersion: true }]) {
+    const { w, ctx } = configureSaveHarness(t);
+    t.mock.method(console, 'warn', () => {});
+    const own = options.sameVersion ? manifestVersion() : 'archive2-canonical-v1:' + 'd'.repeat(64);
+    w.state.catalog = { ...w.state.catalog, indexVersion: own };
+    const server = versionedSaveServer(ctx, { currentVersion: 'archive2-canonical-v1:' + 'c'.repeat(64), manifestOk: options.manifestOk });
+    await w.savePapers();
+    assert.equal(w.state.saveResultState, 'FAILED');
+    assert.equal(server.posts.length, 1, JSON.stringify(options));
+    assert.equal(w.state.saveError, '문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.');
+  }
+});
+
+test('기준 갱신이 아닌 409·413은 자동으로 다시 보내지 않는다', async t => {
+  for (const [status, message] of [[409, 'save_batch_id was already used for different paper content'], [413, '1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.']]) {
+    const { w, ctx } = configureSaveHarness(t);
+    const bodies = captureSavePost(ctx, () => ({ ok: false, status, json: async () => ({ success: false, error: message }) }));
+    await w.savePapers();
+    assert.equal(bodies.length, 1);
+    assert.equal(w.state.saveResultState, 'FAILED');
+  }
+});
+
+test('낡은 초안 버전은 저장 버튼 옆에 개발자식 안내를 내지 않는다', () => {
+  assert.doesNotMatch(read('archive2-workspace.js'), /문항 목록 버전이 달라/);
 });

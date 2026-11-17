@@ -2,10 +2,12 @@
   const api = factory(typeof module === "object" && module.exports
     ? require("./archive2-core.js") : root.Archive2Core,
     typeof module === "object" && module.exports
-      ? require("./problem-bank-meta.js") : root.ProblemBankMeta);
+      ? require("./problem-bank-meta.js") : root.ProblemBankMeta,
+    typeof module === "object" && module.exports
+      ? require("./exam-source-reader.js") : root.ExamSourceReader);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Source = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (core, problemBankMeta) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (core, problemBankMeta, examSourceReader) {
   "use strict";
   const cache = new Map();
   function evaluate(source, file) {
@@ -16,10 +18,10 @@
       "document",
       source + "\n//# sourceURL=" + encodeURI(file),
     )(scope, { baseURI: typeof document === "object" ? document.baseURI : "" });
-    // 원본 엔진과 같은 규칙: questions → questionBank → examData(배열 또는 .questions/.problems).
-    const examData = scope.examData;
-    const bank = scope.questions || scope.questionBank
-      || (Array.isArray(examData) ? examData : examData?.questions || examData?.problems);
+    // 문항 배열 찾기 규칙은 exam-source-reader.js 한 곳에 있다(원본 엔진·로더·도구 공통).
+    if (!examSourceReader)
+      throw new Error("exam-source-reader.js가 먼저 로드되어야 합니다: " + file);
+    const bank = examSourceReader.readQuestionArray(scope);
     if (!Array.isArray(bank))
       throw new Error("문항 배열을 찾을 수 없습니다: " + file);
     return bank;
