@@ -449,6 +449,28 @@ if (uiRetainedInputs.length) {
     issuedObserver.assertKnownInputs(candidate, "restored declared-input closure before unknown-drift negatives");
     const refusesUnknownDependency = label => assert.throws(
       () => issuedObserver.assertKnownInputs(candidate, label), label);
+    const cssPaths = [
+      "archive/archive2-reader-controls.css",
+      "archive/css/js-archive-theme-override.css"
+    ];
+    const cssDrifts = baseline.authenticatedDrifts.filter(value => cssPaths.includes(value.path));
+    assert.deepStrictEqual(cssDrifts.map(value => value.path).sort(), cssPaths,
+      "both exact observed CSS changes belong to this issued technical inventory");
+    for (const drift of cssDrifts) {
+      const file = path.join(fixtureRoot, drift.path), currentBytes = fs.readFileSync(file);
+      assert.strictEqual(sha256(currentBytes), drift.current.sha256, drift.path);
+      fs.appendFileSync(file, "\n");
+      assert.throws(() => issuedObserver.assertKnownInputs(candidate, "unobserved CSS edition"),
+        /unknown live renderer change/, "a known path does not permit changed CSS bytes");
+      fs.writeFileSync(file, currentBytes);
+      const capturedBytes = execFileSync("git", ["-C", root, "cat-file", "blob", drift.captured.gitBlobSha1],
+        { stdio: ["ignore", "pipe", "pipe"] });
+      assert.strictEqual(sha256(capturedBytes), drift.captured.sha256, drift.path);
+      fs.writeFileSync(file, capturedBytes);
+      assert.throws(() => issuedObserver.assertKnownInputs(candidate, "captured CSS restored in current fixture"),
+        /unknown live renderer change/, "old CSS cannot masquerade as the exact observed current edition");
+      fs.writeFileSync(file, currentBytes);
+    }
     const fontPath = baseline.declaredInputs.fontPaths.find(relative => relative.endsWith(".woff2"));
     const assetPath = baseline.declaredInputs.assetPaths[0];
     assert(fontPath && assetPath, "actual issued typed UI must declare a font and an asset");
@@ -490,7 +512,7 @@ if (uiRetainedInputs.length) {
     fs.rmSync(fixtureRoot, { recursive: true, force: true });
   }
   console.log("PASS " + uiRetainedInputs.length + " immutable typed-UI issued approvals retained; current Native reuse BLOCKED, new approvals 0; " +
-    (cases.length + 15) + " rejected corruptions");
+    (cases.length + 19) + " rejected corruptions");
 }
 const sourceRetainedInputs = retainedInputs.filter(input =>
   retainedApprovals.get(input.current.questionUid).kind === "EXACT_E017_Q11_Q15_SOURCE_PRESERVATION");

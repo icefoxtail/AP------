@@ -78,6 +78,32 @@ const OBSERVATION = Object.freeze({
         "sha256": "324177edefdcb996b4717a7853fc8bd542ac98098e3c6b8eabd42124eb424631",
         "bytes": 7461
       }
+    },
+    {
+      "path": "archive/css/js-archive-theme-override.css",
+      "before": {
+        "gitBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+        "sha256": "4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2",
+        "bytes": 15557
+      },
+      "after": {
+        "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+        "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+        "bytes": 13947
+      }
+    },
+    {
+      "path": "archive/archive2-reader-controls.css",
+      "before": {
+        "gitBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+        "sha256": "24631292b2c7a8831fd6cb01de7eb4662d2c69d3c6542d380a5abaa0c43bafe3",
+        "bytes": 3687
+      },
+      "after": {
+        "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+        "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+        "bytes": 4905
+      }
     }
   ],
   "source": {
