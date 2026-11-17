@@ -80,6 +80,17 @@
   // Shards omit the final projection version to avoid a digest cycle.
   const SOURCE_VERIFICATION_INDEX_PATH = "data/archive2-source-verification-index.json";
   const SOURCE_VERIFICATION_SHARD_PREFIX = "data/archive2-source-verification/v1/";
+  // Original-source verification reads a sharded file list instead of SOURCE_VERIFICATION_INDEX_PATH: the manifest
+  // commits to the small top index, the top index commits to SOURCE_VERIFICATION_INDEX_BUCKET_COUNT hash-prefix
+  // buckets of { sourceFile, sha256, qCount } rows, and a bucket row commits to the source shard. One check reads the
+  // manifest, the top index, one bucket and one shard, so the bytes no longer grow with the number of registered
+  // exams. SOURCE_VERIFICATION_INDEX_PATH (one flat file) is still built, only for Workers deployed before this
+  // layout and for the mixed lookup, which has not moved yet (see docs/agents/archive2-code.md).
+  const SOURCE_VERIFICATION_TOP_INDEX_PATH = "data/archive2-source-verification-index-v2.json";
+  const SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX = "data/archive2-source-verification/index-v2/";
+  const SOURCE_VERIFICATION_INDEX_BUCKET_COUNT = 16;
+  const SOURCE_VERIFICATION_TOP_INDEX_SCHEMA = "archive2-source-verification-top-index-v2";
+  const SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA = "archive2-source-verification-index-bucket-v2";
   const MIXED_VERIFICATION_CONTEXT_PATH = "data/archive2-source-verification/mixed-v1/context.json";
   const MIXED_SOURCE_SHARD_PREFIX = "data/archive2-source-verification/mixed-v1/sources/";
   const MIXED_UID_BUCKET_PREFIX = "data/archive2-source-verification/mixed-v1/uid-buckets/";
@@ -621,55 +632,95 @@
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input manifest digest mismatch");
     if (expectedVersion && expectedVersion !== projectionVersion)
       throw makeError("CANONICAL_PROJECTION_REFRESH_REQUIRED", "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.");
-    if (!listed.has(SOURCE_VERIFICATION_INDEX_PATH))
+    // A manifest without the top index predates the sharded file list and keeps the full resolver path.
+    if (!listed.has(SOURCE_VERIFICATION_TOP_INDEX_PATH))
       return { projectionVersion, sourceIndex: null, shard: null, legacyManifest: true };
 
-    const manifestFiles = Object.fromEntries(manifest.files.map((entry) => [
-      text(entry.path), { sha256: text(entry.sha256).toLowerCase() },
-    ]));
-    const indexEntry = manifestFiles[SOURCE_VERIFICATION_INDEX_PATH];
-    const baseProjectionVersion = await computeProjectionVersion(
-      manifest.files.filter((entry) => text(entry.path) !== SOURCE_VERIFICATION_INDEX_PATH),
+    const topEntry = manifest.files.find((entry) => text(entry.path) === SOURCE_VERIFICATION_TOP_INDEX_PATH);
+    // The top index cannot commit to a version that already contains its own digest, nor to the flat index that
+    // is built alongside it, so its base version leaves both out.
+    const topBaseProjectionVersion = await computeProjectionVersion(
+      manifest.files.filter((entry) => {
+        const entryPath = text(entry.path);
+        return entryPath !== SOURCE_VERIFICATION_INDEX_PATH && entryPath !== SOURCE_VERIFICATION_TOP_INDEX_PATH;
+      }),
       RESOLVER_VERSION,
     );
-    let indexBody;
-    try { indexBody = (await read(SOURCE_VERIFICATION_INDEX_PATH)).replace(/\r\n/g, "\n"); }
+    let topBody;
+    try { topBody = (await read(SOURCE_VERIFICATION_TOP_INDEX_PATH)).replace(/\r\n/g, "\n"); }
     catch (error) {
       if (error.code) throw error;
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index unavailable");
     }
-    if (await sha256(indexBody) !== indexEntry.sha256)
+    if (await sha256(topBody) !== text(topEntry.sha256).toLowerCase())
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index digest mismatch");
-    let sourceIndex;
-    try { sourceIndex = JSON.parse(indexBody); }
+    let topIndex;
+    try { topIndex = JSON.parse(topBody); }
     catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index is invalid"); }
     if (
-      sourceIndex?.schemaVersion !== "archive2-source-verification-index-v1" ||
-      sourceIndex.resolverVersion !== RESOLVER_VERSION ||
-      sourceIndex.baseProjectionVersion !== baseProjectionVersion ||
-      sourceIndex.generatedFromCatalogIndexVersion !== manifest.generatedFromCatalogIndexVersion ||
-      !Array.isArray(sourceIndex.files)
+      topIndex?.schemaVersion !== SOURCE_VERIFICATION_TOP_INDEX_SCHEMA ||
+      topIndex.resolverVersion !== RESOLVER_VERSION ||
+      topIndex.baseProjectionVersion !== topBaseProjectionVersion ||
+      topIndex.generatedFromCatalogIndexVersion !== manifest.generatedFromCatalogIndexVersion ||
+      !Number.isInteger(Number(topIndex.fileCount)) || Number(topIndex.fileCount) < 1 ||
+      !Array.isArray(topIndex.buckets) || topIndex.buckets.length !== SOURCE_VERIFICATION_INDEX_BUCKET_COUNT
     )
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index does not match the current projection");
+    const bucketRows = new Map();
+    let bucketFileCount = 0;
+    for (const row of topIndex.buckets) {
+      const prefix = text(row?.prefix);
+      if (
+        !/^[0-9a-f]$/.test(prefix) || bucketRows.has(prefix) ||
+        !SHA256.test(text(row?.sha256)) ||
+        !Number.isInteger(Number(row?.byteLength)) || Number(row.byteLength) < 1 ||
+        !Number.isInteger(Number(row?.fileCount)) || Number(row.fileCount) < 0
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index bucket row is invalid");
+      bucketRows.set(prefix, row);
+      bucketFileCount += Number(row.fileCount);
+    }
+    if (bucketRows.size !== SOURCE_VERIFICATION_INDEX_BUCKET_COUNT || bucketFileCount !== Number(topIndex.fileCount))
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index bucket coverage is incomplete");
 
+    const shardHash = await sha256(normalizedSource);
+    const bucketRow = bucketRows.get(shardHash.slice(0, 1));
+    let bucketBody;
+    try { bucketBody = (await read(SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX + bucketRow.prefix + ".json")).replace(/\r\n/g, "\n"); }
+    catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index bucket unavailable");
+    }
+    if (
+      new TextEncoder().encode(bucketBody).byteLength !== Number(bucketRow.byteLength) ||
+      await sha256(bucketBody) !== text(bucketRow.sha256).toLowerCase()
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index bucket digest mismatch");
+    let bucket;
+    try { bucket = JSON.parse(bucketBody); }
+    catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index bucket is invalid"); }
+    if (
+      bucket?.schemaVersion !== SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA ||
+      bucket.prefix !== bucketRow.prefix ||
+      !Array.isArray(bucket.files) || bucket.files.length !== Number(bucketRow.fileCount)
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index bucket does not match the top index");
     const seenFiles = new Set();
-    for (const row of sourceIndex.files) {
+    for (const row of bucket.files) {
       const file = normalizeFile(row?.sourceFile);
       if (
         !file || seenFiles.has(file) || file !== text(row?.sourceFile) ||
-        !validOptionalShardPath(row) ||
         !SHA256.test(text(row?.sha256)) ||
-        !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1
+        !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1 ||
+        (await sha256(file)).slice(0, 1) !== bucketRow.prefix
       )
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index row is invalid");
       seenFiles.add(file);
     }
-    const sourceEntry = sourceIndex.files.find((row) => normalizeFile(row.sourceFile) === normalizedSource);
+    const sourceEntry = bucket.files.find((row) => normalizeFile(row.sourceFile) === normalizedSource);
     if (!sourceEntry)
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source is not indexed");
-    const expectedShardPath = SOURCE_VERIFICATION_SHARD_PREFIX + await sha256(normalizedSource) + ".json";
-    if (sourceEntry.path !== undefined && sourceEntry.path !== expectedShardPath)
-      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard path is invalid");
+    const expectedShardPath = SOURCE_VERIFICATION_SHARD_PREFIX + shardHash + ".json";
     let shardBody;
     try { shardBody = (await read(expectedShardPath)).replace(/\r\n/g, "\n"); }
     catch (error) {
@@ -690,7 +741,7 @@
       !Array.isArray(shard.records) || shard.records.length !== Number(sourceEntry.qCount)
     )
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source shard does not match the index");
-    return { projectionVersion, sourceIndex, shard };
+    return { projectionVersion, sourceIndex: topIndex, shard };
   }
 
   // Mixed verification resources come in two layouts that carry the same rows. Schema v1 stores every row as a
@@ -1775,6 +1826,11 @@
     CANONICAL_MASTER_PATH,
     SOURCE_VERIFICATION_INDEX_PATH,
     SOURCE_VERIFICATION_SHARD_PREFIX,
+    SOURCE_VERIFICATION_TOP_INDEX_PATH,
+    SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX,
+    SOURCE_VERIFICATION_INDEX_BUCKET_COUNT,
+    SOURCE_VERIFICATION_TOP_INDEX_SCHEMA,
+    SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA,
     RESOLVER_VERSION,
     MANIFEST_REQUIRED_PATHS,
     REQUIRED_INPUT_PATHS,
