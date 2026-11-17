@@ -3,6 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { validateM2ProblemRendererUiTileEvidence } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import SvgIndexContinuity from "../../../tools/4slot/existing-vector-svg-index-continuity.cjs";
 
 // A comparison view for the frozen problem-only review. This is separate from
 // the three-item renderer contract and grants no semantic or solution authority.
@@ -235,6 +236,35 @@ function validateStatic(ctx, document) {
   if (!same(witness.problemFieldDelta.map(row => row.field).sort(), allowed.slice().sort())) fail("OWNED_PROBLEM_FIELDS_CHANGED");
   return { witness, original, current, oldProblem, currentProblem, ownedFields: allowed };
 }
+const SVG_INDEX_PATH = "archive/data/svg-accessibility-index.js";
+// The captured global index is immutable screen evidence, but the file is a
+// generated derivative that every register-main-snapshot commit rebuilds, so a
+// byte pin can never survive the next snapshot. The captured screen consumed
+// only the entries keyed by this question's own problem image. Authenticate the
+// frozen file by its pinned hashes, then require the full entry (both visual
+// roles, every field) for those keys to be identical in the live index, through
+// the unchanged student resolver. Entries added, removed or changed for other
+// assets cannot alter this question's displayed text and are not compared.
+// Every other served file keeps its exact live byte pin.
+function svgIndexFootprint(ctx, ref, assetRefs) {
+  const frozen = immutable(ctx, ref, true);
+  let before;
+  try { before = SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(frozen), assetRefs); }
+  catch (error) { fail(/_ASSET_(?:PATH|KEY|REFS)$/.test(String(error.message)) ? "PROBLEM_ASSET_PATH" : "FROZEN_SVG_INDEX_INVALID"); }
+  let raw;
+  try {
+    const full = safe(ctx.root, ref.path), stat = fs.lstatSync(full);
+    if (!stat.isFile() || stat.size < 1 || stat.size > 128 * 1024 * 1024) fail("LIVE_SERVED_CODE_DRIFT");
+    raw = fs.readFileSync(full);
+  } catch (error) { if (String(error.message).startsWith("M2_PROBLEM21:")) throw error; fail("LIVE_SERVED_CODE_DRIFT"); }
+  let after;
+  try { after = SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(raw), assetRefs); }
+  catch { fail("LIVE_SERVED_CODE_DRIFT"); }
+  if (!same(before, after)) fail("LIVE_SERVED_CODE_DRIFT");
+}
+// Exposed so the test can corrupt the frozen-index authentication directly; the
+// sealed evidence capsule cannot be edited and resealed through the public path.
+export { svgIndexFootprint as verifyFrozenSvgIndexFootprint };
 function validateUi(ctx, bound, current) {
   const { studentUiTechnicalRef: technical, studentUiObservedRef: visual, q10IndependentRef: q10 } = bound.documents;
   if (technical.schemaVersion !== "archive-m2-problem24-student-ui-preview-v1" || technical.checkoutCommit !== UI_COMMIT ||
@@ -257,9 +287,15 @@ function validateUi(ctx, bound, current) {
   }
   const dynamic = new Set(["archive/data/question_metadata.json", ...technical.items.map(item => item.sourceRef.path)]);
   if (technical.servedFiles?.length !== 98 || new Set(technical.servedFiles.map(ref => ref.path)).size !== 98) fail("SERVED_INVENTORY");
+  // Derive the consumed asset keys from what this question's evidence actually
+  // displays: its captured UI assets and its frozen current problem assets.
+  const indexAssetRefs = [...new Set([...current.witness.currentProblemAssets.map(ref => ref.path),
+    ...technical.results.filter(row => row.questionUid === ctx.patch.questionUid).map(row => row.assetRef?.path)])]
+    .filter(value => typeof value === "string").sort().map(value => ({ path: value }));
   for (const ref of technical.servedFiles) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
-    if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    if (ref.path === SVG_INDEX_PATH) svgIndexFootprint(ctx, ref, indexAssetRefs);
+    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {

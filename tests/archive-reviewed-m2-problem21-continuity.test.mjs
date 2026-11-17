@@ -7,7 +7,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
-import { validateM2ProblemRenderer21Continuity, M2_PROBLEM21_CONTINUITY_SCHEMA,
+import { validateM2ProblemRenderer21Continuity, verifyFrozenSvgIndexFootprint, M2_PROBLEM21_CONTINUITY_SCHEMA,
   M2_PROBLEM21_BINDING_SCHEMA, M2_PROBLEM21_SCOPE, M2_PROBLEM21_ITEMS } from "../archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -243,5 +243,95 @@ test("frozen public problem21 uses real immutable Git and original UI evidence",
     const actual = f.beforeDigests();
     for (const [relative, expected] of f.baseline) if (relative !== ".archive-meta-register/evidence/test-m2-problem21/binding.json")
       assert.equal(actual.get(relative), expected, `input unchanged: ${relative}`);
+  } finally { f.close(); }
+});
+
+// The generated SVG accessibility index is rebuilt by every main snapshot, so it
+// is compared by the entries this question's screen consumed, not by bytes. Every
+// other served file stays an exact live byte pin.
+const INDEX_PATH = "archive/data/svg-accessibility-index.js";
+const INDEX_PREFIX = "(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+const INDEX_SUFFIX = ");\n}(typeof window !== 'undefined' ? window : globalThis));\n";
+const indexDoc = f => { const text = fs.readFileSync(path.join(f.root, INDEX_PATH), "utf8");
+  return JSON.parse(text.slice(INDEX_PREFIX.length, -INDEX_SUFFIX.length)); };
+const rewriteIndex = (f, mutate) => { const doc = indexDoc(f); mutate(doc);
+  fs.writeFileSync(path.join(f.root, INDEX_PATH), INDEX_PREFIX + JSON.stringify(doc) + INDEX_SUFFIX); };
+const entryFor = (doc, name) => doc.records.filter(row => decodeURIComponent(row.assetRef).endsWith("/24_연향중_2학기_중간_중2_수학/" + name));
+
+test("problem21 compares the consumed SVG index entries instead of the whole generated file", async t => {
+  const f = fixture();
+  try {
+    const q1 = "q1-problem-visual-v2.svg", q10 = "q10-problem-visual-v2.svg";
+    assert.equal(entryFor(indexDoc(f), q1).length, 1, "fixture sanity: Q1 has a consumed entry in the frozen index");
+    assert.equal(entryFor(indexDoc(f), q10).length, 0, "fixture sanity: Q10 has no entry in the frozen index");
+    const passes = key => { const result = validateM2ProblemRenderer21Continuity(f.args(key)); assert.equal(result.proof.ui.liveServedCodeVerified, true); };
+    const restoreIndex = () => f.restore(INDEX_PATH);
+    const mutateOther = doc => {
+      const others = doc.records.filter(row => !decodeURIComponent(row.assetRef).includes("/24_연향중_2학기_중간_중2_수학/"));
+      others[0].descriptionKo = "unrelated change"; doc.records.splice(doc.records.indexOf(others[1]), 1);
+      doc.records.push({ ...others[2], assetRef: "assets/images/zz_unrelated_exam/q1-added.svg" });
+      doc.sourceIndexSha256 = "sha256:" + "e".repeat(64);
+    };
+
+    await t.test("unrelated entries added, removed or changed still pass (Q1 with an entry, Q10 without)", () => {
+      rewriteIndex(f, mutateOther);
+      try { passes("E017-Q01"); passes("E017-Q10"); } finally { restoreIndex(); }
+    });
+    await t.test("a sibling question's re-versioned entry does not affect this question", () => {
+      rewriteIndex(f, doc => { const sibling = entryFor(doc, "q3-problem-visual-v2.svg"); assert.equal(sibling.length, 1);
+        sibling[0].assetRef = sibling[0].assetRef.replace("q3-problem-visual-v2.svg", "q3-problem-visual-v3.svg"); });
+      try { passes("E017-Q01"); } finally { restoreIndex(); }
+    });
+    for (const [label, mutate] of [
+      ["Q1 entry text changed", doc => { entryFor(doc, q1)[0].descriptionKo += " changed"; }],
+      ["Q1 entry provenance changed", doc => { entryFor(doc, q1)[0].svgSha256 = "f".repeat(64); }],
+      ["Q1 entry removed", doc => { doc.records.splice(doc.records.indexOf(entryFor(doc, q1)[0]), 1); }],
+      ["Q1 entry re-versioned away", doc => { const row = entryFor(doc, q1)[0]; row.assetRef = row.assetRef.replace(q1, "q1-problem-visual-v3.svg"); }],
+      ["Q1 gains a solution-role entry", doc => { doc.records.push({ ...entryFor(doc, q1)[0], visualRole: "solution" }); }],
+    ]) await t.test(`${label} fails`, () => {
+      rewriteIndex(f, mutate);
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
+    });
+    await t.test("Q10 gaining a first entry fails", () => {
+      rewriteIndex(f, doc => { doc.records.push({ ...entryFor(doc, q1)[0],
+        assetRef: entryFor(doc, q1)[0].assetRef.replace(q1, q10) }); });
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
+    });
+    await t.test("a changed unrelated entry in the same index does not hide a changed consumed entry", () => {
+      rewriteIndex(f, doc => { mutateOther(doc); entryFor(doc, q1)[0].titleKo += " changed"; });
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
+    });
+    for (const [label, apply] of [
+      ["an appended byte breaks the generated wrapper", () => fs.appendFileSync(path.join(f.root, INDEX_PATH), " ")],
+      ["a schema change", () => rewriteIndex(f, doc => { doc.schemaVersion = "SVG_STUDENT_ACCESSIBILITY_V2"; })],
+      ["a normalized duplicate key and role rejected by the student runtime", () => rewriteIndex(f, doc => {
+        const other = doc.records.find(row => !decodeURIComponent(row.assetRef).includes("/24_연향중_2학기_중간_중2_수학/"));
+        doc.records.push({ ...other, assetRef: "/archive/" + other.assetRef }); })],
+      ["an unreadable index", () => fs.rmSync(path.join(f.root, INDEX_PATH))],
+    ]) await t.test(`${label} fails`, () => {
+      apply();
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
+    });
+    for (const relative of ["archive/svg-accessibility.js", "archive/screen-runtime.js", "archive/question-meta.js"])
+      await t.test(`a one-byte change to ${relative} still fails even beside an unrelated index change`, () => {
+        rewriteIndex(f, mutateOther); fs.appendFileSync(path.join(f.root, relative), " ");
+        try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); }
+        finally { f.restore(relative); restoreIndex(); }
+      });
+    await t.test("the frozen index must still authenticate by its pinned hashes", () => {
+      const ref = f.technical.servedFiles.find(row => row.path === INDEX_PATH), ctx = f.args("E017-Q01"), assets = [{ path: "archive/assets/images/24_연향중_2학기_중간_중2_수학/" + q1 }];
+      assert.doesNotThrow(() => verifyFrozenSvgIndexFootprint({ ...ctx, cache: new Map() }, ref, assets));
+      for (const [label, bad, pattern] of [
+        ["raw sha256", { ...ref, sha256: "a".repeat(64) }, /IMMUTABLE_RAW_DIGEST/],
+        ["byte length", { ...ref, bytes: ref.bytes + 1 }, /IMMUTABLE_REF_BINDING/],
+        ["git blob", { ...ref, gitBlobSha1: "b".repeat(40) }, /IMMUTABLE_REF_BINDING|IMMUTABLE_BLOB_MODE/],
+        ["commit", { ...ref, commit: "c".repeat(40) }, /IMMUTABLE_GIT_INPUT_UNAVAILABLE/],
+      ]) assert.throws(() => verifyFrozenSvgIndexFootprint({ ...ctx, cache: new Map() }, bad, assets), pattern, label);
+    });
+    await t.test("an unsafe or non-asset consumed path is rejected, never silently skipped", () => {
+      const ref = f.technical.servedFiles.find(row => row.path === INDEX_PATH), ctx = { ...f.args("E017-Q01"), cache: new Map() };
+      for (const assets of [[], [{ path: "archive/data/question_metadata.json" }], [{ path: "archive/assets/../x.svg" }]])
+        assert.throws(() => verifyFrozenSvgIndexFootprint(ctx, ref, assets), /PROBLEM_ASSET_PATH/);
+    });
   } finally { f.close(); }
 });
