@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-ee0d8696e526-15dfe5ca",
+  "sourceArchiveFile": "original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+  "createdAt": "2026-11-15T19:36:32.737Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "6fa67c00bddfde5240b474505e26a1d35de864ef",
+  "ledgers": [
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-1-exam-0005.json",
+      "sourceSha256": "9a85ad1f5148519dadf0806fcd04110ed4fbda6436d85c1142ae9f71a4950858",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-ee0d8696e526-15dfe5ca.pass3-ledger.json",
+      "repoSha256": "0a1cd09eebe875a615944ff53713629c579f483388254bed9085f61eeb13d67a",
+      "lineEndingNormalized": true
+    }
+  ],
+  "fieldSources": {
+    "p3": 154,
+    "luna-k4": 24,
+    "luna-k1": 10,
+    "tera-k67": 8,
+    "tera-k3": 2
+  },
+  "itemSources": {
+    "p3+luna-k4": 12,
+    "p3+luna-k1": 4,
+    "p3+tera-k67": 4,
+    "p3+tera-k3": 1
+  },
+  "typeHoldQuestions": 14,
+  "idWarnings": []
+}

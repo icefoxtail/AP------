@@ -747,3 +747,54 @@ test("the largest original check stays far below the 500 KB limit", async () => 
   }
   assert.ok(worst < 500_000, "largest original check is " + worst + " bytes (" + worstFile + ")");
 });
+
+// With coordinatedTotal the forger also rewrites the top index total, so only the per-row checks can catch the change.
+async function rebasedBucketFixture(mutateBucket, { coordinatedTotal = false } = {}) {
+  const nextManifest = clone(manifest);
+  const nextTop = clone(topIndex);
+  const nextBucket = clone(sourceBucket);
+  mutateBucket(nextBucket);
+  const nextBucketText = JSON.stringify(nextBucket) + "\n";
+  const topBucketRow = nextTop.buckets.find((row) => row.prefix === nextBucket.prefix);
+  topBucketRow.sha256 = sha256(nextBucketText);
+  topBucketRow.byteLength = Buffer.byteLength(nextBucketText);
+  if (coordinatedTotal) nextTop.fileCount += nextBucket.files.length - topBucketRow.fileCount;
+  topBucketRow.fileCount = nextBucket.files.length;
+  const nextTopText = JSON.stringify(nextTop) + "\n";
+  nextManifest.files.find((row) => row.path === canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH).sha256 = sha256(nextTopText);
+  nextManifest.projectionVersion = await canonical.computeProjectionVersion(nextManifest.files, nextManifest.resolverVersion);
+  return {
+    input: makeInput(nextManifest.projectionVersion),
+    overrides: new Map([
+      [manifestRelative, JSON.stringify(nextManifest) + "\n"],
+      [topRelative, nextTopText],
+      [bucketRelative, nextBucketText],
+    ]),
+  };
+}
+
+test("a bucket that holds another bucket's row or loses a row fails closed even when its digests are rebased", async (t) => {
+  await t.test("a row that belongs to another bucket is rejected", async () => {
+    const foreign = sourceIndex.files.find((row) => sha256(row.sourceFile).slice(0, 1) !== sourceBucket.prefix);
+    assert.ok(foreign, "a row from another bucket exists");
+    const fixture = await rebasedBucketFixture((bucket) => bucket.files.push(clone(foreign)), { coordinatedTotal: true });
+    const assets = createAssetEnv({ overrides: fixture.overrides });
+    await assert.rejects(
+      validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, fixture.input),
+      (error) => error.status === 503 && /canonical source index row is invalid/.test(error.message),
+    );
+    assert.equal(assets.requests.includes(shardRelative), false, "no shard is fetched after a bad bucket");
+  });
+
+  await t.test("a dropped row breaks the top index coverage count", async () => {
+    const dropped = sourceBucket.files.findIndex((row) => row.sourceFile !== sourceFile);
+    assert.ok(dropped >= 0);
+    const fixture = await rebasedBucketFixture((bucket) => bucket.files.splice(dropped, 1));
+    const assets = createAssetEnv({ overrides: fixture.overrides });
+    await assert.rejects(
+      validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, fixture.input),
+      (error) => error.status === 503 && /bucket coverage is incomplete/.test(error.message),
+    );
+    assert.equal(assets.requests.includes(bucketRelative), false, "coverage is checked before any bucket is read");
+  });
+});

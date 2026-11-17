@@ -1,0 +1,125 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:00:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x→8에서 (x−8)/(∛ x−2)=(∛x)²+2∛x+4→12이고 두 번째 극한은 3이라 a/b=4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "|f(x)−2x|\u003c3에서 2−3/x\u003cf(x)/x\u003c2+3/x로 끼워 극한 2를 얻어 원래 몫은 8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "접점 t의 접선이 (−1,−2)를 지나려면 (t−1)(2t²+5t+5)=0이고 이차 인수 판별식이 음수라 t=1, 접선 y=2x에서 k=1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "접점 조건"
+                                  }
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "y=0에서 f(0)=−2이고 미분하면 f′(x)=f′(0)+5x라 f는 위로 열린 이차함수, ㄱ은 참이고 f′(0)=0일 때 도함수는 가법이라 ㄷ도 참이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "미분계수와 도함수",
+                                      "l3":  "미분계수",
+                                      "l4":  "정의로 미분계수"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "주기 5에서 경계 연속성으로 b=5, 4a+b=2라 a=−3/4이고 f(14)−f(12)=f(4)−f(2)=1/4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "접선 y=−x+3에서 g(2)=1,g′(2)=−1이고 (x²−4)f(x)=g(x)−1을 x−2로 나눈 극한에서 f(2)=−1/4라 g(2)/f(2)=−4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "미분계수와 도함수",
+                                      "l3":  "미분계수",
+                                      "l4":  "정의로 미분계수"
+                                  }
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "두 유한 극한에서 f′(1)−g′(1)=6, f′(1)+g′(1)=10이라 f′(1)=8이고 분자 극한 유한성에서 a=g(1), 8=2ab라 ab=4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "정의로 미분계수"
+                                  }
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(x²f)′=x⁴−ax³+4x²이므로 f=x²−ax+4이고 ∫₀⁴f=112/3−8a=0에서 a=14/3, 3/a=9/14다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "부정적분",
+                                      "l3":  "조건을 이용한 함수 결정",
+                                      "l4":  "도함수에서 원함수"
+                                  }
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′=6x²+2ax+2a+1≥0 전구간이어야 하므로 판별식 4(a²−12a−6)≤0, 즉 6−√42≤a≤6+√42에서 정수 a는 13개다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "도함수의 활용(2)",
+                                      "l3":  "증가·감소와 극값",
+                                      "l4":  "증감표"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_FUNCTION_INJECTIVE",
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "경계 x=1,3에서 곱의 연속 조건은 f(1)(2b−6)=0, f(3)(2b−4)=0이고 f(1)=a(a−3), f(3)=(a−8)(a+1)라 해는 (0,2),(3,2),(8,3)이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION",
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "C=(3t/2,√3t/2)와 AB 수직 기울기에서 CD=t/√3이므로 (t²−9)/(f(t)−√3)=√3(t+3)→6√3다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  }
+              ]
+}

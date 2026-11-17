@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T18:14:34.516+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_복성고_2학기_중간_고2_확률과통계.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "주사위에서 3의 배수는 2/6=1/3이고 동전 앞면은 1/2라 독립사건 확률은 1/6이다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "midUnit": "조건부확률",
+        "l3": "사건의 독립",
+        "l4": "독립사건의 확률"
+      }
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "공정한 동전 5회의 앞면 개수는 이항형 분포로 대칭이므로 앞면 0~2개의 확률은 앞면 3~5개와 같아 1/2다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "rpmPath": {
+        "l4": "이항형 시행"
+      }
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "흰 공만 2개 뽑는 여사건 확률 3/C(n+3,2)=3/10에서 C(n+3,2)=10이 되어 자연수 n=2다.",
+      "choiceTableUsed": "H2-확률과통계.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    }
+  ]
+}

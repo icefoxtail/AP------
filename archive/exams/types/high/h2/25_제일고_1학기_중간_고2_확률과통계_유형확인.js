@@ -354,7 +354,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "네 학생 A, B, C, D에게 똑같은 사탕 11개를 나누어 준다. D가 받는 사탕 개수의 3배와 나머지 세 학생이 받는 사탕 개수의 합이 11개일 때, A와 B는 1개 이상, C는 2개 이상의 사탕을 받는 모든 경우의 수를 구하시오. (단, D는 사탕을 받지 못할 수도 있다.)",
+    "content": "네 학생 A, B, C, D에게 똑같은 사탕을 나누어 준다. D가 받는 사탕 개수의 3배와 나머지 세 학생이 받는 사탕 개수의 합이 11개일 때, A와 B는 1개 이상, C는 2개 이상의 사탕을 받는 모든 경우의 수를 구하시오. (단, D는 사탕을 받지 못할 수도 있다.)",
     "choices": [
       "① $48$",
       "② $51$",
@@ -384,7 +384,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "좌표평면 위의 원점에서 출발하여 $x$축의 양의 방향 또는 $y$축의 양의 방향으로 1만큼씩 이동하는 점 P가 있다. 점 P가 6번 이동하여 도달한 점을 $(a, b)$라 할 때, $a$와 $b$가 모두 소수일 확률을 구하시오.<br><svg viewBox=\"0 0 300 300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"50\" y1=\"250\" x2=\"250\" y2=\"250\" stroke=\"#000\" stroke-width=\"2\"/>\n  <line x1=\"50\" y1=\"50\" x2=\"50\" y2=\"250\" stroke=\"#000\" stroke-width=\"2\"/>\n  <path d=\"M50 250 L250 50\" stroke=\"#000\" stroke-dasharray=\"4\" fill=\"none\"/>\n  <circle cx=\"50\" cy=\"250\" r=\"4\" fill=\"#000\"/>\n</svg>",
+    "content": "좌표평면 위의 원점에서 출발하여 $x$축의 양의 방향 또는 $y$축의 양의 방향으로 1만큼씩 이동하는 점 P가 있다. 점 P는 매번 두 방향 중 한 방향을 같은 확률로 택한다. 점 P가 6번 이동하여 도달한 점을 $(a, b)$라 할 때, $a$와 $b$가 모두 소수일 확률을 구하시오.<br><svg viewBox=\"0 0 300 300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"50\" y1=\"250\" x2=\"250\" y2=\"250\" stroke=\"#000\" stroke-width=\"2\"/>\n  <line x1=\"50\" y1=\"50\" x2=\"50\" y2=\"250\" stroke=\"#000\" stroke-width=\"2\"/>\n  <path d=\"M50 250 L250 50\" stroke=\"#000\" stroke-dasharray=\"4\" fill=\"none\"/>\n  <circle cx=\"50\" cy=\"250\" r=\"4\" fill=\"#000\"/>\n</svg>",
     "choices": [
       "① $\\frac{1}{4}$",
       "② $\\frac{3}{8}$",

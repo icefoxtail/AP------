@@ -736,7 +736,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 안에 알맞은 식을 구하여라.",
+    "content": "다음 $\\square$ 안에 알맞은 식을 구하여라. $(3x-2y)-\\square=5x-3y$",
     "choices": [],
     "answer": "$-2x+y$",
     "solution": "[키포인트] 빈칸을 하나의 식으로 두고 양변의 차를 계산한다.\n조건 정리: $(3x-2y)-\\square=5x-3y$이다.\n풀이 방향: 빈칸은 $(3x-2y)-(5x-3y)$와 같다.\n정석 풀이: $(3x-2y)-(5x-3y)=3x-2y-5x+3y=-2x+y$이다.\n따라서 구하는 값은 $-2x+y$이다.",

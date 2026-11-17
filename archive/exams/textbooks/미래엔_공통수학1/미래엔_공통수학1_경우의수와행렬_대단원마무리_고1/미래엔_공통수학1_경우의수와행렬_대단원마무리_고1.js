@@ -517,10 +517,10 @@ window.questionBank = [
       "대단원 마무리"
     ],
     "wide": false,
-    "content": "두 행렬 $A=\\begin{pmatrix} 1 & 0 \\\\ 0 & a \\end{pmatrix}$와 $B=\\begin{pmatrix} 0 & b \\\\ -1 & 0 \\end{pmatrix}$에 대하여 $(A-B)^2=\\begin{pmatrix} -2 & -9 \\\\ -3 & 1 \\end{pmatrix}$일 때, $ab$의 값을 구하시오.",
+    "content": "두 행렬 $A=\\begin{pmatrix} 1 & 0 \\\\ 0 & a \\end{pmatrix}$와 $B=\\begin{pmatrix} 0 & b \\\\ -1 & 0 \\end{pmatrix}$에 대하여 $(A+B)^2=\\begin{pmatrix} -2 & 9 \\\\ -3 & 1 \\end{pmatrix}$일 때, $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
+    "answer": "6",
+    "solution": "$A+B=\\begin{pmatrix} 1 & b \\\\ -1 & a \\end{pmatrix}$이므로 $(A+B)^2=\\begin{pmatrix} 1-b & b+ab \\\\ -1-a & a^2-b \\end{pmatrix}$이다. 성분을 비교하면 $1-b=-2$에서 $b=3$, $-1-a=-3$에서 $a=2$이고, $b+ab=3+6=9$, $a^2-b=4-3=1$로 나머지 성분도 일치한다. 따라서 $ab=6$이다.",
     "setKey": "미래엔_공통수학1_경우의수와행렬_대단원마무리_고1"
   },
   {

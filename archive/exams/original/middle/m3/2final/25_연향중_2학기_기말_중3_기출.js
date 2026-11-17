@@ -117,7 +117,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\triangle ABC$는 $\\overline{AB}=\\overline{AC}$인 이등변삼각형이고, 원 $O$에 내접한다. $\\angle BAC=120^\\circ$, $\\overline{OA}=\\overline{AB}=6$이고, $\\overline{OD}\\perp\\overline{AB}$일 때, $\\overline{OE}$의 길이는? (5점)",
+    "content": "다음 그림에서 $\\triangle ABC$는 $\\overline{AB}=\\overline{AC}$인 이등변삼각형이고, 원 $O$에 내접한다. $\\angle BAC=120^\\circ$, $\\overline{OA}=\\overline{AB}=6$이고, $\\overline{OD}\\perp\\overline{AB}$이고 $\\overline{OD}$와 $\\overline{BC}$의 교점이 $E$일 때, $\\overline{OE}$의 길이는? (5점)",
     "choices": [
       "$\\sqrt3$",
       "$2\\sqrt3$",
@@ -125,8 +125,8 @@ window.questionBank = [
       "$4\\sqrt3$",
       "$5\\sqrt3$"
     ],
-    "answer": "③",
-    "solution": "$E$는 $OD$와 $AB$의 교점이다. 중심 $O$에서 현 $AB$에 내린 수선은 현을 이등분하므로\n$AE=BE=\\dfrac{AB}{2}=3$\n이다. 또 $OA=6$이다.\n직각삼각형 $OEA$에서 피타고라스 정리를 쓰면\n$OE^2+AE^2=OA^2$\n$OE^2+3^2=6^2$\n$OE^2=27$\n이므로\n$OE=3\\sqrt3$\n이다. 따라서 정답은 ③이다.",
+    "answer": "②",
+    "solution": "$\\triangle ABC$는 $AB=AC=6$, $\\angle BAC=120^\\circ$이므로 $\\angle B=30^\\circ$이고, 점 $A$에서 $BC$까지의 거리는 $6\\sin30^\\circ=3$이다.\n$OA\\perp BC$이고 $OA=6$이므로 점 $O$에서 $BC$까지의 거리는 $6-3=3$이다.\n$OD\\perp AB$이므로 $OD$와 $AB$의 교점을 $M$이라 하면 $AM=3$이고, $OM=\\sqrt{6^2-3^2}=3\\sqrt3$이다.\n직각삼각형 $AOM$에서 $\\cos\\angle AOM=\\dfrac{3\\sqrt3}{6}=\\dfrac{\\sqrt3}{2}$이므로 $\\angle AOM=30^\\circ$이다.\n$OA\\perp BC$이므로 직각삼각형 $OEA'$($A'$은 $O$에서 $BC$에 내린 수선의 발)에서 $\\angle A'OE=30^\\circ$이고 $OA'=3$이므로\n$OE=\\dfrac{3}{\\cos30^\\circ}=2\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
     "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q3.png",

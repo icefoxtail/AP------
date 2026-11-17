@@ -363,7 +363,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "지름의 길이가 $10$인 원 위의 점 $P$에 대하여 $\\overline{AP}=8$일 때, $\\angle PAB = \\theta$라 하자. $\\cos 2\\theta$의 값을 구하시오.",
+    "content": "지름 $AB$의 길이가 $10$인 원 위의 점 $P$에 대하여 $\\overline{AP}=8$일 때, $\\angle PAB = \\theta$라 하자. $\\cos 2\\theta$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\frac{7}{25}$",
     "solution": "[키포인트] 지름에 대한 원주각의 성질과 삼각함수의 덧셈정리(배각 공식)를 이용한다.\\n조건 정리: $\\overline{AB}$가 지름이므로 $\\angle APB = 90^\\circ$이다. $\\triangle APB$는 직각삼각형이다.\\n정석 풀이: $\\triangle APB$에서 피타고라스 정리에 의해 $\\overline{BP} = \\sqrt{10^2 - 8^2} = 6$이다.\\n$\\angle PAB = \\theta$이므로 $\\cos\\theta = \\dfrac{\\overline{AP}}{\\overline{AB}} = \\dfrac{8}{10} = \\dfrac{4}{5}$이다.\\n구하고자 하는 값은 $\\cos 2\\theta$이므로 배각 공식에 의해 $\\cos 2\\theta = 2\\cos^2\\theta - 1$이다.\\n대입하면 $\\cos 2\\theta = 2\\left(\\dfrac{4}{5}\\right)^2 - 1 = 2\\left(\\dfrac{16}{25}\\right) - 1 = \\dfrac{32}{25} - \\dfrac{25}{25} = \\dfrac{7}{25}$이다.\\n따라서 구하는 값은 $\\dfrac{7}{25}$이다.",

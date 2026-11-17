@@ -803,7 +803,7 @@ window.examData = {
     {
       "number": 8,
       "score": 4.0,
-      "question": "다음 표는 어떤 자료의 편차와 도수를 나타낸 것이다. 분산을 구하면? (4점)<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center; margin:8px auto;\"><tr><th>편차</th><td>-2</td><td>-1</td><td>0</td><td>1</td><td>2</td></tr><tr><th>도수</th><td>3</td><td>6</td><td>5</td><td>4</td><td>2</td></tr></table>",
+      "question": "다음 표는 어떤 자료의 편차와 도수를 나타낸 것이다. 분산을 구하면? (4점)<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center; margin:8px auto;\"><tr><th>편차</th><td>-2</td><td>-1</td><td>0</td><td>1</td><td>2</td></tr><tr><th>도수</th><td>3</td><td>4</td><td>5</td><td>6</td><td>2</td></tr></table>",
       "choices": [
         "$1.5$",
         "$2$",
@@ -812,7 +812,7 @@ window.examData = {
         "$6$"
       ],
       "answer": "①",
-      "solution": "분산은 편차 제곱의 도수 가중평균이다. $\\{(-2)^2\\cdot3+(-1)^2\\cdot6+0^2\\cdot5+1^2\\cdot4+2^2\\cdot2\\}/20=\\frac{30}{20}=1.5$. ①.",
+      "solution": "분산은 편차 제곱의 도수 가중평균이다. $\\{(-2)^2\\cdot3+(-1)^2\\cdot4+0^2\\cdot5+1^2\\cdot6+2^2\\cdot2\\}/20=\\frac{30}{20}=1.5$. ①.",
       "level": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "high",

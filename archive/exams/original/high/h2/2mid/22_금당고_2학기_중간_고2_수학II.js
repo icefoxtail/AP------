@@ -467,7 +467,7 @@ window.questionBank = [
     "id": 16,
     "questionNumber": 16,
     "questionType": "객관식",
-    "content": "16. 미분가능한 함수 $f(x)$가 다음 조건을 만족시킬 때, $f'(0)$의 값을 구하면? [4.8점]\n\n가. 모든 실수 $x, y$에 대하여\n$$f(x+y) - f(x) - f(y) - xy + 2 = 0$$\n나. $\\lim_{x \\to 2} \\frac{f(x)}{x-2} = 4$",
+    "content": "16. 미분가능한 함수 $f(x)$가 다음 조건을 만족시킬 때, $f'(0)$의 값을 구하면? [4.8점]\n\n가. 모든 실수 $x, y$에 대하여\n$$f(x+y) - f(x) - f(y) - xy - 6 = 0$$\n나. $\\lim_{x \\to 2} \\frac{f(x)}{x-2} = 4$",
     "choices": [
       "$2$",
       "$3$",
@@ -476,8 +476,8 @@ window.questionBank = [
       "$6$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "$x=y=0$을 대입하면 $f(0)-2f(0)-6=0$이므로 $f(0)=-6$이다.\n$f(x+y)-f(x)=f(y)+xy+6=\\{f(y)-f(0)\\}+xy$이므로 양변을 $y$로 나누고 $y\\to0$으로 보내면 $f'(x)=f'(0)+x$이다.\n따라서 $f(x)=\\dfrac12x^2+cx-6$ ($c=f'(0)$)이다.\n(나)에서 $x\\to2$일 때 분모가 $0$이므로 $f(2)=0$이어야 한다. $f(2)=2+2c-6=0$에서 $c=2$이다.\n이때 $f'(2)=2+c=4$이므로 $\\displaystyle\\lim_{x\\to2}\\frac{f(x)}{x-2}=f'(2)=4$가 되어 (나)를 만족시킨다.\n따라서 $f'(0)=c=2$이고 정답은 ①이다.",
     "level": "상",
     "difficultyBucket": 5,
     "standardCourse": "수학II",
