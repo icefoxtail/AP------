@@ -290,6 +290,17 @@ export function isPreservedHistoricalLevel({ approvalType, question, final }) {
     question.difficultyBoundaryFlag === final.difficultyBoundaryFlag &&
     question.legacyLevelCompatibility === "UNKNOWN" && final.legacyLevelCompatibility === "UNKNOWN";
 }
+// Runtime-only catalog identity provenance. These fields live on the runtime record (the metadata row does not carry them) and
+// record that the UID <-> sourceFile#ordinal join was verified/repaired once. Re-registering type/unit/difficulty values must not
+// forget that fact (the runtime tests count these flags), so the registrar carries them over from the record it replaces —
+// only when the request does not state them and the question's identity (UID, file, ordinal, source/content) is unchanged.
+export const RUNTIME_IDENTITY_PROVENANCE_FIELDS = Object.freeze(["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"]);
+export function preservedRuntimeIdentityProvenance({ previous, final, ordinal, identityReplaced }) {
+  if (!previous || identityReplaced || previous.questionUid !== final.questionUid ||
+      previous.sourceArchiveFile !== final.sourceArchiveFile || Number(previous.sourceOrdinal) !== Number(ordinal)) return {};
+  return Object.fromEntries(RUNTIME_IDENTITY_PROVENANCE_FIELDS.filter(key => Object.hasOwn(previous, key) && !Object.hasOwn(final, key))
+    .map(key => [key, structuredClone(previous[key])]));
+}
 const textValue = value => typeof value === "string" && value.trim().length > 0;
 const compactSourceText = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
 const isSvgAsset = value => /\.svg(?:$|[?#])/i.test(String(value ?? ""));
@@ -2583,7 +2594,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const existingRuntime = (runtimes.get(owners.get(current.questionUid))?.data.records || []).find(r => r.questionUid === current.questionUid);
       if (rebindPrior.priorRuntime && !eq(existingRuntime, rebindPrior.priorRuntime.get(current.questionUid)))
         fail(`sourceRebind partial runtime differs from prior receipt: ${current.questionUid}`);
-      const rrPrior = { ...finalPrior, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
+      // This branch only runs when the identity is unchanged (checkedPrior.identityChanged is false), so the replaced record's
+      // catalog identity provenance carries over; the exact comparison below stays as strict as before.
+      const rrPrior = { ...finalPrior, ...preservedRuntimeIdentityProvenance({ previous: existingRuntime, final: finalPrior, ordinal: i + 1, identityReplaced: false }),
+        sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
         approvedSourceFingerprint: checkedPrior.sourceFingerprint, legacyLevel: finalPrior.level,
         runtimeSelectable: finalPrior.defaultSelectable && finalPrior.curriculumApplicability === "DEFAULT_SCOPE" };
       if (owners.get(current.questionUid) !== packIdPrior || !existingRuntime ||
@@ -2836,11 +2850,16 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         runtimeVersion: `${packId}@${pack.meta.packVersion}/reviewed-exam-v2`, counts: {}, records: [], taxonomyRows: [], ownedScopes: [] } });
     }
     const oldOwner = owners.get(current.questionUid);
+    const previousRuntime = oldOwner ? runtimes.get(oldOwner)?.data.records.find(r => r.questionUid === current.questionUid) : undefined;
+    // A fingerprint repair without a content-preserving rebind, or a changed question text, means the identity was replaced.
+    const identityReplaced = checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint") && !patch.rebind ||
+      current.contentFingerprint != null && current.contentFingerprint !== checked.contentFingerprint;
     if (oldOwner && oldOwner !== packId) {
       const old = runtimes.get(oldOwner);
       old.data.records = old.data.records.filter(r => r.questionUid !== current.questionUid); touched.add(oldOwner);
     }
-    const rr = { ...final, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
+    const rr = { ...final, ...preservedRuntimeIdentityProvenance({ previous: previousRuntime, final, ordinal: i + 1, identityReplaced }),
+      sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
       approvedSourceFingerprint: fingerprint, legacyLevel: final.level,
       runtimeSelectable: final.defaultSelectable && final.curriculumApplicability === "DEFAULT_SCOPE" };
     const rt = runtimes.get(packId).data;
