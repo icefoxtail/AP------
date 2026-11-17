@@ -131,9 +131,9 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q5-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 포물선 y=2x²−2x+2와 접선 y=2x가 점 P(1,2)에서 만난다. 같은 점을 지나는 접선에 수직인 직선은 최종 식 대신 n으로 표시한다.",
-    "solutionImageCaption": "점 (1,2)에서 접선에 수직인 직선은 y=−1/2x+5/2이며 정답은 ⑤이다.",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q5-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=2x²−2x+2와 접선 y=2x가 점 P(1,2)에서 만난다. 포물선의 식은 곡선 위의 점에서 지시선으로 이어져 있고, 접선에 수직인 직선은 최종 식 대신 n으로 표시한다.",
+    "solutionImageCaption": "점 (1,2)에서 접선에 수직인 직선은 y=−(1/2)x+5/2이며 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "level": "하",
