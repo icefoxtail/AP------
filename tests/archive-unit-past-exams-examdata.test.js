@@ -1,0 +1,91 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+
+const archiveRoot = path.resolve(__dirname, '..', 'archive');
+const core = require(path.join(archiveRoot, 'unit-past-exams-core.js'));
+const uiSource = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.js'), 'utf8');
+
+// loadQuestionFile은 화면 내부 함수라 소스에서 그 구간만 잘라 가짜 loadScript와 함께 실행한다.
+// 가짜 loadScript는 exams/<경로>?v=... 요청을 파일 내용 실행으로 바꿔 준다(브라우저의 script 태그와 같다).
+function createLoader(sources) {
+  const start = uiSource.indexOf('function readSourceQuestionArray');
+  const end = uiSource.indexOf('async function restorePaperQuestions');
+  assert.ok(start > 0 && end > start, 'loader section must exist');
+  const window = {};
+  const requested = [];
+  const context = {
+    window, core, state: { fileCache: new Map() }, Error, Array, Promise, Number, String, Object, Map,
+    loadScript: async src => {
+      const key = src.replace(/^exams\//, '').replace(/\?.*$/, '');
+      requested.push(key);
+      if (!(key in sources)) throw new Error(`불러오기 실패: ${src}`);
+      vm.runInContext(sources[key], context);
+    }
+  };
+  vm.createContext(context);
+  vm.runInContext(`${uiSource.slice(start, end)}\nthis.loadQuestionFile = loadQuestionFile;`, context);
+  return { load: context.loadQuestionFile, window, requested };
+}
+
+const ids = data => Array.from(data, question => question.id); // 다른 realm 배열이라 값으로 비교한다
+
+test('window.examData = {questions} 형식 원본도 읽는다(questionBank 별칭 줄 없음)', async () => {
+  const loader = createLoader({
+    'original/middle/m3/2mid/a.js': 'window.examData = { id: "a", questions: [{ id: 1, question: "본문1" }, { id: 2, question: "본문2" }] };'
+  });
+  const data = await loader.load('original/middle/m3/2mid/a.js');
+  assert.deepEqual(ids(data), [1, 2]);
+  assert.equal(data[0].question, '본문1');
+});
+
+test('examData가 배열이거나 problems 배열이어도 읽고, 기존 questions·questionBank 형식은 그대로 읽는다', async () => {
+  const loader = createLoader({
+    'p/arr.js': 'window.examData = [{ id: 7 }];',
+    'p/prob.js': 'window.examData = { problems: [{ id: 8 }] };',
+    'p/q.js': 'window.questions = [{ id: 9 }];',
+    'p/qb.js': 'window.questionBank = [{ id: 10 }]; window.examData = { questions: [{ id: 99 }] };'
+  });
+  assert.deepEqual(ids(await loader.load('p/arr.js')), [7]);
+  assert.deepEqual(ids(await loader.load('p/prob.js')), [8]);
+  assert.deepEqual(ids(await loader.load('p/q.js')), [9]);
+  // questionBank가 있으면 examData보다 우선한다(원본 엔진과 같은 순서).
+  assert.deepEqual(ids(await loader.load('p/qb.js')), [10]);
+});
+
+test('앞 파일의 examData가 다음 파일에 섞이지 않는다', async () => {
+  const loader = createLoader({
+    'p/first.js': 'window.examData = { questions: [{ id: 1, question: "앞 파일" }] };',
+    'p/second.js': 'window.__noop = true;'
+  });
+  assert.equal((await loader.load('p/first.js')).length, 1);
+  await assert.rejects(() => loader.load('p/second.js'), /문항 배열을 찾지 못했습니다/);
+  assert.equal(loader.window.examData, undefined);
+});
+
+test('배열이 없는 파일은 실패 메시지를 내고 다시 시도할 수 있게 캐시하지 않는다', async () => {
+  const loader = createLoader({ 'p/empty.js': 'window.examData = { id: "x" };' });
+  await assert.rejects(() => loader.load('p/empty.js'), /문항 배열을 찾지 못했습니다/);
+  await assert.rejects(() => loader.load('p/empty.js'), /문항 배열을 찾지 못했습니다/);
+  assert.equal(loader.requested.length, 2);
+});
+
+test('실제 원본 22_연향중 2학기 중간 중3은 examData 형식이며 21문항을 읽는다', async () => {
+  const sourceFile = 'original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js';
+  const real = fs.readFileSync(path.join(archiveRoot, 'exams', sourceFile), 'utf8');
+  assert.doesNotMatch(real, /questionBank/, '이 원본에는 questionBank 별칭 줄이 없다');
+  const loader = createLoader({ [sourceFile]: real });
+  const data = await loader.load(sourceFile);
+  assert.equal(data.length, 21);
+  assert.ok(data.every(question => Number.isFinite(Number(question.id)) && question.question), '문항 번호와 본문(question)이 있다');
+});
+
+test('같은 규칙이 mixer·Archive2Source에도 있다(원본 엔진과 같은 examData 순서)', () => {
+  const mixer = fs.readFileSync(path.join(archiveRoot, 'mixer.html'), 'utf8');
+  assert.match(mixer, /delete window\.examData;/);
+  assert.match(mixer, /examData\?\.questions \|\| examData\?\.problems/);
+  const sourceJs = fs.readFileSync(path.join(archiveRoot, 'archive2-source.js'), 'utf8');
+  assert.match(sourceJs, /examData\?\.questions \|\| examData\?\.problems/);
+});
