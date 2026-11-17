@@ -6,7 +6,6 @@
 // Assertions are defect conditions (no rejection, same order, no duplicate rows, hash verified) and never fix data counts.
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
-import fs from "node:fs";
 import { after, before, test } from "node:test";
 import { MAX_SAVED_PAPER_BYTES, catalog, chooseSample, configureSample, core, createWorker, createWorkspace } from "./helpers/archive2-save-roundtrip-harness.mjs";
 
@@ -19,7 +18,6 @@ let server;
 before(async () => { server = await createWorker(); });
 after(async () => { await server?.dispose(); });
 
-const knownDefectGrades = [];
 const samples = new Map();
 async function sampleFor(grade) {
   if (!samples.has(grade)) samples.set(grade, await chooseSample(grade, { perUnit: PER_UNIT }));
@@ -77,31 +75,74 @@ for (const grade of GRADES) {
     await revision.ws.openSavedPaperRevision(paperId);
     assert.deepEqual(revision.ws.state.selected.map((r) => r.questionUid), sentUids, `${grade}: revision restores a different paper`);
     assert.equal(revision.ws.state.derivationSource?.parentId, paperId);
-    // Saving the revision re-sends the saved questions. Everything here is strict except ONE known defect (repair list 34):
-    // a saved paper whose PROBLEM side (content/choices/image) carries embedded data: images is refused by the Worker with
-    // "assignment fingerprint가 일치하지 않습니다" (its fingerprint covers exactly content/choices/image). A paper with images only
-    // in the solution saves fine. The allowance below is that single condition; any other failure, or the same failure on a paper
-    // without problem-side images, fails the check. When a fix makes the re-save succeed, the strict assertions below run
-    // unchanged. Completion criterion of the fixing PR = delete the allowance (knownRevisionResaveDefect) and its summary test.
+    // Saving the revision re-sends the saved questions; questions whose images the Worker embedded at save time must go back
+    // to the Worker in a form it can verify (repair list 34: the screen sends the original image paths, the Worker embeds again).
+    const CONTENT_FIELDS = ["content", "question", "choices", "answer", "solution", "image", "solutionImage"];
+    const pick = (q) => Object.fromEntries(CONTENT_FIELDS.map((f) => [f, q[f]]));
     await t.test(`${grade}: save the revision`, async () => {
-      const rowsBefore = (await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n;
       await revision.ws.savePapers();
-      if (revision.ws.state.saveResultState !== "SAVED") {
-        const hasProblemSideImage = paper.snapshot.questions.some((q) =>
-          (typeof q.image === "string" && q.image.startsWith("data:")) || JSON.stringify([q.content, q.choices]).includes("data:image/"));
-        const knownRevisionResaveDefect = hasProblemSideImage && /assignment fingerprint가 일치하지 않습니다/.test(revision.ws.state.saveError);
-        if (!knownRevisionResaveDefect) assert.fail(sendFailure(revision.ws, grade + " (revision)"));
-        const refusal = revision.wire.log.filter((l) => l.route === "/archive-saved-papers" && l.method === "POST").at(-1);
-        assert.equal(refusal?.status, 409, "the known refusal is a 409 about the question fingerprint");
-        assert.equal((await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n, rowsBefore, "a refused revision stores nothing (no half save)");
-        knownDefectGrades.push(grade);
-        return;
-      }
-      const lineage = await server.db.prepare("SELECT parent_id, derivation_type FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?").bind(revision.ws.state.savedPaperIds[0]).first();
+      assert.equal(revision.ws.state.saveResultState, "SAVED", sendFailure(revision.ws, grade + " (revision)"));
+      const revisionId = revision.ws.state.savedPaperIds[0];
+      const lineage = await server.db.prepare("SELECT parent_id, derivation_type FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?").bind(revisionId).first();
       assert.equal(lineage?.parent_id, paperId, "the revision is linked to its parent");
       assert.ok(["REVISION", "FORK"].includes(lineage.derivation_type));
-      const savedRevision = await (await api("/archive-saved-papers/" + revision.ws.state.savedPaperIds[0])).json();
-      assert.deepEqual(savedRevision.paper.snapshot.questions.map((q) => q.questionUid), sentUids, `${grade}: the saved revision changed the question order`);
+      const savedRevision = (await (await api("/archive-saved-papers/" + revisionId)).json()).paper;
+      assert.deepEqual(savedRevision.snapshot.questions.map((q) => q.questionUid), sentUids, `${grade}: the saved revision changed the question order`);
+      // problem text, choices, answer, solution and the (re-embedded) image bytes are the same as in the saved paper
+      assert.deepEqual(savedRevision.snapshot.questions.map(pick), paper.snapshot.questions.map(pick), `${grade}: the revision's content differs from the saved paper`);
+      const revisionBytes = (await server.db.prepare("SELECT length(CAST(snapshot_json AS BLOB)) AS bytes FROM archive_saved_papers WHERE id=?").bind(revisionId).first()).bytes;
+      assert.ok(revisionBytes <= MAX_SAVED_PAPER_BYTES, `${grade}: revision snapshot ${revisionBytes} exceeds the server limit`);
+      assert.ok(Math.abs(revisionBytes - bytes) < bytes * 0.05, `${grade}: revision size ${revisionBytes} differs from the saved paper's ${bytes}`);
+    });
+
+    // e2. replace one question of the revision, then save: the replaced question is the newly chosen one, the others are the saved ones
+    await t.test(`${grade}: replace one question and save`, async () => {
+      const edit = createWorkspace(server);
+      await edit.ws.openSavedPaperRevision(paperId);
+      const candidateUid = (edit.ws.state.rows[0].scopeQuestionUids || []).find((uid) => !sentUids.includes(uid) && edit.ws.state.byUid.has(uid) && core.generalUseEligibility(edit.ws.state.byUid.get(uid)).ok);
+      assert.ok(candidateUid, `${grade}: no replacement candidate in the saved range`);
+      const k = sentUids.length - 1;
+      const next = edit.ws.state.selected.slice();
+      next[k] = { ...edit.ws.state.byUid.get(candidateUid), rowId: next[k].rowId };
+      edit.ws.state.selected = next; // what replaceWith() does
+      edit.ws.state.prepared = [];
+      edit.ws.state.ackWarnings = true;
+      await edit.ws.savePapers();
+      assert.equal(edit.ws.state.saveResultState, "SAVED", sendFailure(edit.ws, grade + " (edited revision)"));
+      const saved = (await (await api("/archive-saved-papers/" + edit.ws.state.savedPaperIds[0])).json()).paper;
+      assert.deepEqual(saved.snapshot.questions.map((q) => q.questionUid), [...sentUids.slice(0, k), candidateUid], `${grade}: wrong question set after the replacement`);
+      assert.deepEqual(saved.snapshot.questions.slice(0, k).map(pick), paper.snapshot.questions.slice(0, k).map(pick), `${grade}: untouched questions changed`);
+    });
+
+    // e3. a snapshot question changed on its way to the Worker is never saved silently
+    await t.test(`${grade}: a changed snapshot question is refused`, async () => {
+      const tamper = async (mutate, expected) => {
+        const bad = createWorkspace(server);
+        await bad.ws.openSavedPaperRevision(paperId);
+        mutate(bad.ws.state.derivedBaseQuestions);
+        const rowsBefore = (await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n;
+        await bad.ws.savePapers();
+        assert.notEqual(bad.ws.state.saveResultState, "SAVED", "a changed question must not be saved");
+        assert.match(bad.ws.state.saveError, expected);
+        assert.equal((await server.db.prepare("SELECT COUNT(*) n FROM archive_saved_papers").first()).n, rowsBefore, "nothing was stored");
+        return bad;
+      };
+      // text changed next to an embedded image: the screen refuses before anything is sent
+      const textIndex = paper.snapshot.questions.findIndex((q) => ["content", "solution"].some((f) => typeof q[f] === "string" && q[f].includes("data:image/")));
+      if (textIndex >= 0) {
+        const field = ["content", "solution"].find((f) => typeof paper.snapshot.questions[textIndex][f] === "string" && paper.snapshot.questions[textIndex][f].includes("data:image/"));
+        const blocked = await tamper((base) => { base[textIndex][field] = String(base[textIndex][field]) + " 바뀐 문장"; }, /원본 문항이 바뀌어/);
+        assert.equal(blocked.wire.posts.length, 0, "nothing was sent");
+      }
+      // problem text changed on a question whose text has no embedded image: the Worker's fingerprint check refuses
+      const plainIndex = paper.snapshot.questions.findIndex((q) => typeof q.content === "string" && !q.content.includes("data:image/"));
+      if (plainIndex >= 0) {
+        const refusedText = await tamper((base) => { base[plainIndex].content = String(base[plainIndex].content) + " 바뀐 문장"; }, /fingerprint/);
+        assert.equal(refusedText.wire.log.find((l) => l.method === "POST").status, 409);
+      }
+      // answer changed: the Worker's fingerprint check refuses
+      const refused = await tamper((base) => { base[0].answer = String(base[0].answer) + "9"; }, /fingerprint/);
+      assert.equal(refused.wire.log.find((l) => l.method === "POST").status, 409);
     });
 
     // f. one question's source changed after saving: the revision must not open silently with the old content
@@ -138,17 +179,6 @@ for (const grade of GRADES) {
     assert.deepEqual(bridge.map((r) => r.question_uid), sentUids, `${grade}: assignment question rows differ from the saved order`);
   });
 }
-
-// Printed every run (and into the job summary) so the known defect (repair list 34) can never be forgotten or silently fixed.
-test("known defect summary (수리 목록 34)", () => {
-  const line = knownDefectGrades.length
-    ? `알려진 결함 ${knownDefectGrades.length}건: 그림 있는 저장본의 수정본 재저장 409 (수리 목록 34) — ${knownDefectGrades.join(", ")}`
-    : "알려진 결함 (34)이 재현되지 않음 — 허용 코드를 지워도 됨 (knownRevisionResaveDefect)";
-  console.log(line);
-  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `### Archive2 save round trip
-${line}
-`);
-});
 
 test("negative: metadata that differs from the catalog, or a stale list version, is still refused by the server", async () => {
   const grade = GRADES[0];
