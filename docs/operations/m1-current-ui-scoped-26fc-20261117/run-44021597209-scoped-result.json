@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "archive-m1s2-current-ui-scoped-gate-v1",
+  "status": "FAIL",
+  "phase": "OFFICIAL_EXISTING_AUTHORITY7",
+  "sourceQuestionCount": 121,
+  "selectedQuestionCount": 7,
+  "outsideQuestionCount": 114,
+  "newMathQa": 0,
+  "newSemanticApprovals": 0,
+  "newFourSlotVectors": 0,
+  "newFinalQaNativeApprovals": 0,
+  "globalBuilderRun": false,
+  "mainWrites": 0,
+  "trackedInputWrites": 0,
+  "screenshotRuns": 0,
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "eventName": "push",
+    "ref": "refs/heads/ops/m1-current-ui-registration-26fc-20261117",
+    "repository": "icefoxtail/AP------",
+    "checkoutCommit": "eb09ce36ba4e76e046e7d8e81510e5f80fea072f",
+    "eventCommit": "eb09ce36ba4e76e046e7d8e81510e5f80fea072f",
+    "runId": "44021597209",
+    "runAttempt": 1,
+    "job": "m1s2-existing-authority",
+    "existingEvidenceCommit": "d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed",
+    "integrationAncestor": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458"
+  },
+  "actualBaseline": {
+    "index": {
+      "path": "archive/data/item-4slot-index.json",
+      "gitBlobSha1": "9cc464f152ec344b441c951e4826ab7f1fed8d2b",
+      "sha256": "a921e89c5694d009baf18bff11e6ebb1b5ab1bd88cadb9462f6c47f6ffd0ffd8",
+      "bytes": 20318703
+    },
+    "sourceRows": 121,
+    "selectedRegistered": 0,
+    "selectedPending": 7,
+    "outsideRegistered": 114,
+    "outsidePending": 0,
+    "outsideWholeStateSha256": "95128126afb6e13b862264cfa046d279188a7a96d37c54df7693b2f30838bfaa",
+    "selectedWholeStateSha256": "5c6aaf2c5918f4df832bb1288729e56889bb2cdebe97f6f0d8f1a3eb8b6e2d98"
+  },
+  "lastOutsideCheck": {
+    "phase": "OFFICIAL_EXISTING_AUTHORITY7",
+    "expectedSha256": "95128126afb6e13b862264cfa046d279188a7a96d37c54df7693b2f30838bfaa",
+    "observedSha256": "95128126afb6e13b862264cfa046d279188a7a96d37c54df7693b2f30838bfaa",
+    "changed": []
+  },
+  "before": {
+    "counts": {
+      "files": 5,
+      "items": 121,
+      "registered": 114,
+      "pending": 7,
+      "withCandidates": 15,
+      "identityFingerprintHistorical": 75
+    },
+    "selected": [
+      {
+        "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+        "sourceOrdinal": 13,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+        "sourceOrdinal": 17,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+        "sourceOrdinal": 18,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+        "sourceOrdinal": 19,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+        "sourceOrdinal": 6,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING",
+            "sha256": "ff108d5d577d730e1dbe30f33c8de70dffa4368ae68235e3da766c3d890df1e4"
+          }
+        ]
+      }
+    ],
+    "outsideWholeStateSha256": "95128126afb6e13b862264cfa046d279188a7a96d37c54df7693b2f30838bfaa"
+  },
+  "after": {
+    "counts": {
+      "files": 5,
+      "items": 121,
+      "registered": 114,
+      "pending": 7,
+      "withCandidates": 15,
+      "identityFingerprintHistorical": 75
+    },
+    "selected": [
+      {
+        "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+        "sourceOrdinal": 13,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+        "sourceOrdinal": 17,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+        "sourceOrdinal": 18,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+        "sourceOrdinal": 19,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+        "sourceOrdinal": 6,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "ENOENT",
+            "sha256": "1186a0043767af7cef15f539fc2d47315b99e7e9c583474d0003c9bc7f74d90c"
+          }
+        ]
+      }
+    ]
+  },
+  "error": {
+    "code": "M1S2_SCOPE_EXPECTED_SEVEN_RECOVERED",
+    "sha256": "f45a589c37209ac208e9c32683ffe250f280a9e1aeb88d17d7b9157ad4dc4ee9"
+  },
+  "actualMainRegistration": "NOT_PERFORMED",
+  "rootHeadUnchanged": true,
+  "rootStatusUnchanged": true,
+  "currentInputCount": 313,
+  "immutableRefCount": 504
+}

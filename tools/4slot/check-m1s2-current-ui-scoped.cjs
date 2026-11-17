@@ -504,6 +504,20 @@ function run(root,reportPath){
       // prior snapshot references retain their own immutable commits.
       for(const ref of refsIn(doc)){const normalized=declared(ref);if(uiDocument(normalized.path))queueDoc(normalized);}
       queueDoc(declared(doc.uiTechnicalRef));queueDoc(declared(doc.uiVisualRef));
+      if(doc.uiTechnicalRef.path===CONFIG.rawTechnicalRef.path){
+        // The unchanged M1 verifier requires every current visual PNG to exist
+        // as a regular live file as well as an authenticated immutable Git blob.
+        const visual=JSON.parse(current(doc.uiVisualRef.path).toString());
+        need(visual.schemaVersion==='archive-independent-m1s2-current-ui-reuse-v1'&&
+          Array.isArray(visual.artifactRefs)&&visual.artifactRefs.length===14,'CURRENT_PNG14');
+        const seen=new Set();
+        for(const ref of visual.artifactRefs){
+          need(ref.commit===CONFIG.rawTechnicalRef.commit&&
+            ref.path.startsWith('docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/')&&
+            ref.path.endsWith('.png')&&!seen.has(ref.path),'CURRENT_PNG_SCOPE');
+          seen.add(ref.path);live(ref);
+        }
+      }
     }
     phase(report,'AUTHENTICATED_INPUTS');
     const actualRaw=copy(INDEX),actualIndex=JSON.parse(actualRaw.toString());

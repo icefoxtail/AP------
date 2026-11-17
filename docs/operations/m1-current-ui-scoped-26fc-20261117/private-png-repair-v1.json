@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "archive-m1s2-scoped-private-png-hydration-repair-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "status": "FIXTURE_REPAIR_CURRENT_AUTHORITY_UNCHANGED",
+  "failure": {
+    "runId": 44021597209,
+    "jobId": 133832107100,
+    "head": "eb09ce36ba4e76e046e7d8e81510e5f80fea072f",
+    "phase": "OFFICIAL_EXISTING_AUTHORITY7",
+    "reason": "Seven ENOENT refusals; exact current visual PNGs authenticated as Git blobs but absent from private regular-file fixture.",
+    "report": {
+      "schemaVersion": "archive-scoped-metadata-log-v1",
+      "profile": "M1S2_EXISTING_AUTHORITY",
+      "bytes": 8208,
+      "sha256": "6061bfe6b9e5a27f13109520dd6e49b679b1fcda4d2c4da8c08fd73ff3f93f1b",
+      "gitBlobSha1": "e2ac4215bcdff05beb922f3f11d8b85e97792dad",
+      "chunks": 2
+    },
+    "outsideWholeStateUnchanged": 114,
+    "rootHeadUnchanged": true,
+    "rootStatusUnchanged": true
+  },
+  "repair": {
+    "path": "tools/4slot/check-m1s2-current-ui-scoped.cjs",
+    "beforeGitBlobSha1": "358793ac3a91484a96723632ad8c9a0514120254",
+    "afterGitBlobSha1": "f7436505aeb7b16efc3ed1e1ed8e681ca786927f",
+    "afterSha256": "b2f22e5ff3fb39d4a6b6f610ac2bbc555fa0d47ad7e31580e5452520b750b4f1",
+    "addition": "\n      if(doc.uiTechnicalRef.path===CONFIG.rawTechnicalRef.path){\n        // The unchanged M1 verifier requires every current visual PNG to exist\n        // as a regular live file as well as an authenticated immutable Git blob.\n        const visual=JSON.parse(current(doc.uiVisualRef.path).toString());\n        need(visual.schemaVersion==='archive-independent-m1s2-current-ui-reuse-v1'&&\n          Array.isArray(visual.artifactRefs)&&visual.artifactRefs.length===14,'CURRENT_PNG14');\n        const seen=new Set();\n        for(const ref of visual.artifactRefs){\n          need(ref.commit===CONFIG.rawTechnicalRef.commit&&\n            ref.path.startsWith('docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/')&&\n            ref.path.endsWith('.png')&&!seen.has(ref.path),'CURRENT_PNG_SCOPE');\n          seen.add(ref.path);live(ref);\n        }\n      }",
+    "inverseExact": true,
+    "currentVisualAuthenticatedFromSidecar": true,
+    "exactCurrentPngs": 14,
+    "existingImmutableAndLivePinFunctionPreserved": true
+  },
+  "boundaries": {
+    "productionReaderChange": 0,
+    "sidecarChange": 0,
+    "sourceChange": 0,
+    "newApproval": 0,
+    "actualRegistration": "PENDING_RERUN",
+    "v8Syntax": "PASS",
+    "NodeSyntax": "PENDING",
+    "mainWrites": 0
+  }
+}
