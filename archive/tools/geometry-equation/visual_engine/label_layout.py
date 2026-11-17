@@ -67,6 +67,16 @@ def segment_hits_box(p,q,box):
             if low>high:return False
     return True
 
+READING_ADJACENT_PX=14.0     # two labels on one text line closer than this read as one expression (the axis name x next to the label y=3 reads as y=3x)
+READING_SAME_LINE_FRACTION=0.4   # their vertical extents overlap by at least this fraction of the shorter box
+
+def reads_as_one(box,other,gap=READING_ADJACENT_PX):
+    """True when the two label boxes stand side by side on one text line with less than `gap` px between them (a reader would join them into one expression)."""
+    overlap=min(box.bottom,other.bottom)-max(box.y,other.y)
+    if overlap<READING_SAME_LINE_FRACTION*min(box.height,other.height):return False
+    between=max(other.x-box.right,box.x-other.right)
+    return between<gap
+
 def collision(box,obstacle,pad=6):
     kind=obstacle['kind'];geometry=obstacle['geometry'];a=box.expand(pad)
     if kind in {'label','conditionBox','tick','indicator','rectangle'}:return a.overlaps(geometry)
@@ -1047,6 +1057,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         other_sectors=label.get('wedgeSearch',{}).get('others',())
         def acceptable(box,owner_check=True):
             return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
+                and not any(o['kind']=='label' and reads_as_one(box,o['geometry']) for o in occupied)
                 and not (other_sectors and box_in_other_sectors(box,other_sectors))
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
