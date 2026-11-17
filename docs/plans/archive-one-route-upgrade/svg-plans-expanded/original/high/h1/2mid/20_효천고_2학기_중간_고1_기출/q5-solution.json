@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-15"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "T"
+  ],
+  "coordinateLabels": [
+    "H"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "O",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "caption": "조건 3x+4y=15를 직선으로 보고, x²+y²를 원점과 직선 위 점 사이 거리의 제곱으로 해석한다. 원점에서 내린 수선 OH가 가장 짧다. H의 좌표는 중간값으로 확인하되 거리 제곱의 최솟값은 표시하지 않는다.",
+  "accessibilityDescription": "조건 3x+4y=15를 직선으로 보고, x²+y²를 원점과 직선 위 점 사이 거리의 제곱으로 해석한다. 원점에서 내린 수선 OH가 가장 짧다. H의 좌표는 중간값으로 확인하되 거리 제곱의 최솟값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 실수 $x,y$에 대하여 $3x+4y=15$일 때, $x^2+y^2$의 최솟값은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "Cauchy상한225≤25(x²+y²). 등호점H=(9/5,12/5),수선거리3,최솟값9.",
+      "mappedTo": [
+        "O",
+        "l",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건 3x+4y=15를 직선으로 보고, x²+y²를 원점과 직선 위 점 사이 거리의 제곱으로 해석한다. 원점에서 내린 수선 OH가 가장 짧다. H의 좌표는 중간값으로 확인하되 거리 제곱의 최솟값은 표시하지 않는다."
+  ]
+}

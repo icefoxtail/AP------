@@ -1,0 +1,361 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "k": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "al",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "L"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bh",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "al",
+          "bh"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "op",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lh",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "L",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "op",
+          "lh"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "diag",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H",
+    "L",
+    "P",
+    "Q",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBL",
+      "refs": [
+        "B",
+        "L"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAL",
+      "refs": [
+        "A",
+        "L"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sLH",
+      "refs": [
+        "L",
+        "H"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "O"
+      ]
+    },
+    {
+      "id": "rL",
+      "refs": [
+        "B",
+        "L",
+        "O"
+      ]
+    }
+  ],
+  "caption": "A=(t,t), B=(-2t,-2t)에서 수선의 발 H,L과 교점 P,Q를 순서대로 만든다. 원의 중심은 OL의 중점 C가 되고 반지름은 t이므로 주어진 반지름3에서 t=3을 대입한 실제 도형이다. AH와 y축, BL과 x축의 직각을 보존한다. 기존 해설의 교점·중심 관계는 유지하고 마지막 길이 곱은 숨긴다.",
+  "accessibilityDescription": "A=(t,t), B=(-2t,-2t)에서 수선의 발 H,L과 교점 P,Q를 순서대로 만든다. 원의 중심은 OL의 중점 C가 되고 반지름은 t이므로 주어진 반지름3에서 t=3을 대입한 실제 도형이다. AH와 y축, BL과 x축의 직각을 보존한다. 기존 해설의 교점·중심 관계는 유지하고 마지막 길이 곱은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "제1사분면 위의 점 $A$와 제3사분면 위의 점 $B$에 대하여 두 점 $A,B$가 다음 조건을 만족시킨다.<br>(가) 두 점 $A,B$는 직선 $y=x$ 위에 있다.<br>(나) $\\overline{OB}=2\\overline{OA}$\\n점 $A$에서 $y$축에 내린 수선의 발을 $H$, 점 $B$에서 $x$축에 내린 수선의 발을 $L$이라 하자. 직선 $AL$과 직선 $BH$가 만나는 점을 $P$, 직선 $OP$가 직선 $LH$와 만나는 점을 $Q$라 하자. 세 점 $O,Q,L$을 지나는 원의 반지름의 길이가 3일 때, $\\overline{OA}\\times\\overline{OB}$의 값을 구하면? [5.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "P=(-2t/7,4t/7),Q=(-2t/5,4t/5). C=(-t,0)는 O,L,Q와등거리t. 반지름3→t3,최종곱4t²36. 소스 모든직각·교점·원조건보존.",
+      "mappedTo": [
+        "O",
+        "xaxis",
+        "yaxis",
+        "A",
+        "B",
+        "H",
+        "L",
+        "al",
+        "bh",
+        "P",
+        "op",
+        "lh",
+        "Q",
+        "C",
+        "circle",
+        "diag"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A=(t,t), B=(-2t,-2t)에서 수선의 발 H,L과 교점 P,Q를 순서대로 만든다. 원의 중심은 OL의 중점 C가 되고 반지름은 t이므로 주어진 반지름3에서 t=3을 대입한 실제 도형이다. AH와 y축, BL과 x축의 직각을 보존한다. 기존 해설의 교점·중심 관계는 유지하고 마지막 길이 곱은 숨긴다."
+  ]
+}

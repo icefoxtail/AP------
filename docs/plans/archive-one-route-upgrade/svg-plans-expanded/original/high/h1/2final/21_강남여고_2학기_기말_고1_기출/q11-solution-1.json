@@ -1,0 +1,168 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 3
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      },
+      {
+        "name": "g",
+        "from": "Y",
+        "to": "Z",
+        "color": "WARM"
+      }
+    ],
+    "highlightPaths": [
+      {
+        "path": [
+          "4",
+          "1",
+          "2"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "caption": "g∘f의 합성 대응이다. 마지막 열의 2에서 시작하여 강조된 경로를 거슬러 올라가 역함수 입력을 찾는다. 모든 원래 화살표를 보존하며 두 역함수값의 최종 합은 표시하지 않는다.",
+  "newVisualInformation": [
+    "g∘f의 합성 대응이다. 마지막 열의 2에서 시작하여 강조된 경로를 거슬러 올라가 역함수 입력을 찾는다. 모든 원래 화살표를 보존하며 두 역함수값의 최종 합은 표시하지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f,g$가 그림과 같을 때, $(g\\circ f)^{-1}(2)+(f\\circ g)^{-1}(2)$의 값을 구하면? [3.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(1,2,3,4)=(2,3,4,1),g=(2,1,4,3) 그림직접확인. gf의역2는4,fg의역2는2,합6.",
+      "mappedTo": "diagram"
+    }
+  ]
+}

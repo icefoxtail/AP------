@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "a=1 b=2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "a=2 b=1"
+      }
+    ],
+    "regions": [
+      {
+        "id": "domain",
+        "halfPlane": {
+          "x": ">",
+          "value": "2"
+        },
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V1",
+          "x": "5/2",
+          "y": "-1/4",
+          "coordinates": true
+        },
+        {
+          "id": "V2",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "ab=2에서 가능한 (a,b)=(1,2)와 (2,1)의 전체 포물선을 보조로 비교한다. 음영 x>2가 실제 조건 구간이며 x=2 경계는 포함하지 않는다. 꼭짓점의 x좌표가 각각 5/2와 2인 점을 비교하여 일대일성을 판단한다. f(5)의 최종값은 표시하지 않는다.",
+  "accessibilityDescription": "ab=2에서 가능한 (a,b)=(1,2)와 (2,1)의 전체 포물선을 보조로 비교한다. 음영 x>2가 실제 조건 구간이며 x=2 경계는 포함하지 않는다. 꼭짓점의 x좌표가 각각 5/2와 2인 점을 비교하여 일대일성을 판단한다. f(5)의 최종값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 자연수 $a,b$에 대하여 $f(x)=a(x-3)(x-b)$가 다음 조건을 만족시킬 때, $f(5)$의 값은? [3.7점]<br>(가) $f(0)=6$<br>(나) $x>2$일 때, 함수 $f(x)$는 일대일대응이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "ab2에서(1,2),(2,1). 두축5/2,2로x>2에서후자만단조증가. f5=16. 공역이명시되지않은일대일대응문구는치역으로의대응해석임을원문주의로기록.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "ab=2에서 가능한 (a,b)=(1,2)와 (2,1)의 전체 포물선을 보조로 비교한다. 음영 x>2가 실제 조건 구간이며 x=2 경계는 포함하지 않는다. 꼭짓점의 x좌표가 각각 5/2와 2인 점을 비교하여 일대일성을 판단한다. f(5)의 최종값은 표시하지 않는다."
+  ]
+}
