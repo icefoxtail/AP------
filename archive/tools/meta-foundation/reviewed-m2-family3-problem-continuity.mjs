@@ -3,6 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { validateM2ProblemRendererUiTileEvidence } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import { verifySvgIndexFootprint } from "./svg-index-continuity.mjs";
 
 
 // Exact problem-display comparison for the three frozen family follow-ups.
@@ -252,6 +253,7 @@ function validateStatic(ctx, document) {
   for (const ref of witness.currentProblemAssets) immutable(ctx, { ...ref, commit: STATIC_CURRENT });
   return { witness, original, committed, current, oldProblem, currentProblem, ownedFields: [...OWNED_FIELDS] };
 }
+const SVG_INDEX_PATH = "archive/data/svg-accessibility-index.js";
 function validateUi(ctx, bound, current) {
   const { studentUiTechnicalRef: technical, studentUiObservedRef: visual } = bound.documents;
   if (technical.schemaVersion !== "archive-m2-problem24-student-ui-preview-v1" || technical.checkoutCommit !== UI_COMMIT ||
@@ -274,9 +276,16 @@ function validateUi(ctx, bound, current) {
   }
   const dynamic = new Set(["archive/data/question_metadata.json", ...technical.items.map(item => item.sourceRef.path)]);
   if (technical.servedFiles?.length !== 98 || new Set(technical.servedFiles.map(ref => ref.path)).size !== 98) fail("SERVED_INVENTORY");
+  // The generated index is rebuilt by every main snapshot: compare the entries
+  // this question's own images consume (rules in svg-index-continuity.mjs).
+  const indexAssetRefs = [...new Set([...current.witness.currentProblemAssets.map(ref => ref.path),
+    ...technical.results.filter(row => row.questionUid === ctx.patch.questionUid).map(row => row.assetRef?.path)])]
+    .filter(value => typeof value === "string").sort().map(value => ({ path: value }));
   for (const ref of technical.servedFiles) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
-    if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    if (ref.path === SVG_INDEX_PATH) verifySvgIndexFootprint({ frozenBytes: immutable(ctx, ref, true), root: ctx.root,
+      indexPath: ref.path, assetRefs: indexAssetRefs, safe, fail });
+    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {

@@ -3,6 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { questionAssetReferences } from "../archive-content-inputs.mjs";
+import { compareSvgIndexContinuity, SvgIndexContinuityError } from "./svg-index-continuity.mjs";
 
 export const M2_E006_PROBLEM_SCHEMA = "archive-m2-e006-problem-continuity-v1";
 const WITNESS_SCHEMA = "archive-independent-m2-e006-problem-continuity-v1";
@@ -224,6 +225,7 @@ export const M2_E006_UI_VISUAL_REF = Object.freeze({ commit: E006_UI_PUBLIC,
   sha256: "eaa4c0ff0adcaf3764cf46867e563d81aa615f2c3357f5becbe4d6c19e1dfe35", bytes: 4054 });
 const E006_UI_MANIFEST_REF = Object.freeze({ commit: E006_UI_COMMIT, path: "tests/fixtures/archive-m2-e006-problem-ui.json",
   gitBlobSha1: "60d0ca76e58fdec8e01c58f372998fcab2921562", sha256: "e329d128441bf6cf58efb8bf0261f977c571067ec408b0972c597a4980b61aad", bytes: 3096 });
+const E006_SVG_INDEX_PATH = "archive/data/svg-accessibility-index.js";
 const E006_REF_KEYS = ["commit", "path", "gitBlobSha1", "sha256", "bytes"];
 const e006Ref = value => Object.fromEntries(E006_REF_KEYS.map(key => [key, value[key]]));
 const e006BytesRef = value => Object.fromEntries(["path", "gitBlobSha1", "sha256", "bytes"].map(key => [key, value[key]]));
@@ -241,7 +243,7 @@ function e006Document(readRef, ref, argument) {
 // The complete four-case observation is immutable. A new capture or another UID
 // requires a separately reviewed profile; callers cannot reseal these pins.
 export function validateM2E006ProblemUiEvidence({ technical, visual, technicalRef, visualRef, questionUid, sourceOrdinal,
-  currentSource, currentAsset, readRef, readLiveRef }) {
+  currentSource, currentAsset, readRef, readLiveRef, readLiveFile }) {
   const subject = M2_E006_PROBLEM_ITEMS.find(item => item.questionUid === questionUid && item.sourceOrdinal === sourceOrdinal);
   e006Need(subject && typeof readRef === "function" && typeof readLiveRef === "function", "exact E006 subject and immutable/live readers required");
   e006Need(same(technicalRef, e006EvidenceRef(M2_E006_UI_TECHNICAL_REF)) && same(visualRef, e006EvidenceRef(M2_E006_UI_VISUAL_REF)),
@@ -276,9 +278,21 @@ export function validateM2E006ProblemUiEvidence({ technical, visual, technicalRe
   }
   const dynamic = new Set(["archive/data/question_metadata.json", ...t.items.map(item => item.sourceRef.path)]);
   e006Need(t.servedFiles.length === 87 && new Set(t.servedFiles.map(ref => ref.path)).size === 87, "E006 served inventory changed");
+  // The generated SVG accessibility index is rebuilt by every main snapshot, so
+  // compare the entries this question's own image consumes (rules in
+  // svg-index-continuity.mjs) when the caller can read the live checkout. Without
+  // a live file reader the exact byte pin remains.
+  const indexAssetRefs = [...new Set([currentAsset.path, ...t.items.filter(item => item.questionUid === questionUid &&
+    item.sourceOrdinal === sourceOrdinal).map(item => item.assetRef?.path)])].filter(value => typeof value === "string").sort()
+    .map(value => ({ path: value }));
   for (const ref of t.servedFiles) {
     e006Need(keys(ref, E006_REF_KEYS) && ref.commit === E006_UI_COMMIT, "E006 served checkout changed");
-    readRef(ref); if (!dynamic.has(ref.path)) readLiveRef(ref);
+    const frozen = readRef(ref);
+    if (ref.path === E006_SVG_INDEX_PATH && typeof readLiveFile === "function") {
+      const read = relative => { try { const bytes = readLiveFile(relative); return Buffer.isBuffer(bytes) ? bytes : null; } catch { return null; } };
+      try { compareSvgIndexContinuity({ frozenBytes: frozen, liveBytes: read(ref.path), assetRefs: indexAssetRefs, readAsset: read }); }
+      catch (error) { if (error instanceof SvgIndexContinuityError) fail(`E006 served SVG index continuity: ${error.code}`); throw error; }
+    } else if (!dynamic.has(ref.path)) readLiveRef(ref);
   }
   const fonts = new Map();
   e006Need(t.fontTransport === "EXACT_CHECKOUT_CHROMIUM_NANUM_MYEONGJO_V31_SUBSETS" && t.studentFontResources.length === 32,
@@ -355,12 +369,17 @@ function technicalUi(ctx, witness, current) {
     try { live = fs.readFileSync(safe(ctx.root, ref.path)); } catch { fail("E006 UI current dependency missing"); }
     e006Need(live.equals(raw), "E006 UI live dependency differs from observed immutable bytes"); return live;
   };
+  const readLiveFile = relative => {
+    const full = safe(ctx.root, relative), stat = fs.lstatSync(full);
+    if (!stat.isFile() || stat.size < 1 || stat.size > 128 * 1024 * 1024) fail("E006 UI live file unreadable");
+    return fs.readFileSync(full);
+  };
   const assetPath = current.question.image.startsWith("archive/") ? current.question.image : `archive/${current.question.image}`;
   const currentAsset = e006One(witness.currentAssets, asset => asset.path === assetPath, "E006 current problem asset missing");
   return validateM2E006ProblemUiEvidence({ technical, visual, technicalRef: witness.studentUiTechnicalRef, visualRef: witness.studentUiVisualRef,
     questionUid: ctx.patch.questionUid, sourceOrdinal: ctx.patch.sourceOrdinal,
     currentSource: { path: current.ref.path, gitBlobSha1: current.file.gitBlobSha1, sha256: current.file.sha256, bytes: current.file.bytes.length },
-    currentAsset, readRef, readLiveRef });
+    currentAsset, readRef, readLiveRef, readLiveFile });
 }
 
 function originalObservations(ctx, witness, prefigure, current) {

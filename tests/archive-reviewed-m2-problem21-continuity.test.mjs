@@ -292,10 +292,32 @@ test("problem21 compares the consumed SVG index entries instead of the whole gen
       rewriteIndex(f, mutate);
       try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
-    await t.test("Q10 gaining a first entry fails", () => {
-      rewriteIndex(f, doc => { doc.records.push({ ...entryFor(doc, q1)[0],
-        assetRef: entryFor(doc, q1)[0].assetRef.replace(q1, q10) }); });
+    // Allowed: a key with NO frozen entry gains a valid problem-role entry that is
+    // SOURCE_BOUND, answerHintFree and digest-bound to the displayed asset bytes.
+    const q10Path = "archive/assets/images/24_연향중_2학기_중간_중2_수학/" + q10;
+    const q10Entry = (doc, change = {}) => { const bytes = fs.readFileSync(path.join(f.root, q10Path)), base = entryFor(doc, q1)[0];
+      return { ...base, assetRef: base.assetRef.replace(q1, q10), visualRole: "problem", titleKo: "새 접근성 제목", descriptionKo: "새 접근성 설명",
+        svgSha256: "sha256:" + sha(bytes), gitBlobSha: blob(bytes), ...change }; };
+    await t.test("a key with no frozen entry may gain one valid SOURCE_BOUND answer-hint-free entry", () => {
+      rewriteIndex(f, doc => { doc.records.push(q10Entry(doc)); });
+      try { passes("E017-Q10"); } finally { restoreIndex(); }
+    });
+    for (const [label, change] of [
+      ["answerHintFree is not true", { answerHintFree: false }],
+      ["provenance is not SOURCE_BOUND", { provenanceStatus: "ASSET_ONLY" }],
+      ["it is a solution-role entry", { visualRole: "solution" }],
+      ["its svgSha256 is not the displayed asset's digest", { svgSha256: "sha256:" + "0".repeat(64) }],
+      ["its gitBlobSha is not the displayed asset's blob", { gitBlobSha: "1".repeat(40) }],
+      ["its description is empty", { descriptionKo: " " }],
+      ["its digest field is malformed", { svgSha256: "not-a-digest" }],
+    ]) await t.test(`a new entry is rejected when ${label}`, () => {
+      rewriteIndex(f, doc => { doc.records.push(q10Entry(doc, change)); });
       try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q10")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
+    });
+    await t.test("a key that had a frozen entry cannot gain a second entry, even a valid one", () => {
+      rewriteIndex(f, doc => { const base = entryFor(doc, q1)[0], bytes = fs.readFileSync(path.join(f.root, "archive/assets/images/24_연향중_2학기_중간_중2_수학/" + q1));
+        doc.records.push({ ...base, visualRole: "solution", svgSha256: "sha256:" + sha(bytes), gitBlobSha: blob(bytes) }); });
+      try { assert.throws(() => validateM2ProblemRenderer21Continuity(f.args("E017-Q01")), /LIVE_SERVED_CODE_DRIFT/); } finally { restoreIndex(); }
     });
     await t.test("a changed unrelated entry in the same index does not hide a changed consumed entry", () => {
       rewriteIndex(f, doc => { mutateOther(doc); entryFor(doc, q1)[0].titleKo += " changed"; });

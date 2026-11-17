@@ -3,7 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { validateM2ProblemRendererUiTileEvidence } from "./reviewed-m2-problem-renderer-continuity.mjs";
-import SvgIndexContinuity from "../../../tools/4slot/existing-vector-svg-index-continuity.cjs";
+import { verifySvgIndexFootprint } from "./svg-index-continuity.mjs";
 
 // A comparison view for the frozen problem-only review. This is separate from
 // the three-item renderer contract and grants no semantic or solution authority.
@@ -237,30 +237,12 @@ function validateStatic(ctx, document) {
   return { witness, original, current, oldProblem, currentProblem, ownedFields: allowed };
 }
 const SVG_INDEX_PATH = "archive/data/svg-accessibility-index.js";
-// The captured global index is immutable screen evidence, but the file is a
-// generated derivative that every register-main-snapshot commit rebuilds, so a
-// byte pin can never survive the next snapshot. The captured screen consumed
-// only the entries keyed by this question's own problem image. Authenticate the
-// frozen file by its pinned hashes, then require the full entry (both visual
-// roles, every field) for those keys to be identical in the live index, through
-// the unchanged student resolver. Entries added, removed or changed for other
-// assets cannot alter this question's displayed text and are not compared.
-// Every other served file keeps its exact live byte pin.
+// The generated index is rebuilt by every main snapshot, so it is compared by
+// the entries this question's screen consumed instead of by bytes (rules in
+// svg-index-continuity.mjs). The frozen file is authenticated by its pinned
+// hashes first. Every other served file keeps its exact live byte pin.
 function svgIndexFootprint(ctx, ref, assetRefs) {
-  const frozen = immutable(ctx, ref, true);
-  let before;
-  try { before = SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(frozen), assetRefs); }
-  catch (error) { fail(/_ASSET_(?:PATH|KEY|REFS)$/.test(String(error.message)) ? "PROBLEM_ASSET_PATH" : "FROZEN_SVG_INDEX_INVALID"); }
-  let raw;
-  try {
-    const full = safe(ctx.root, ref.path), stat = fs.lstatSync(full);
-    if (!stat.isFile() || stat.size < 1 || stat.size > 128 * 1024 * 1024) fail("LIVE_SERVED_CODE_DRIFT");
-    raw = fs.readFileSync(full);
-  } catch (error) { if (String(error.message).startsWith("M2_PROBLEM21:")) throw error; fail("LIVE_SERVED_CODE_DRIFT"); }
-  let after;
-  try { after = SvgIndexContinuity.selectEntries(SvgIndexContinuity.parseIndex(raw), assetRefs); }
-  catch { fail("LIVE_SERVED_CODE_DRIFT"); }
-  if (!same(before, after)) fail("LIVE_SERVED_CODE_DRIFT");
+  verifySvgIndexFootprint({ frozenBytes: immutable(ctx, ref, true), root: ctx.root, indexPath: ref.path, assetRefs, safe, fail });
 }
 // Exposed so the test can corrupt the frozen-index authentication directly; the
 // sealed evidence capsule cannot be edited and resealed through the public path.
