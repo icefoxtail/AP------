@@ -34,7 +34,8 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 문항 하나가 칸에 안 맞아도 시험지 전체를 막지 않는다 (2026-11-17)
 
-- 시험지(`archive/exam-render-executor.js` `render`): 글자·그림을 가장 작은 단계(`fit-micro`)로 줄여도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px)은 그 문항만 기존 전폭 배치(`wide`, 한 쪽을 혼자 씀)로 옮기고 다시 쪽 나누기를 한다(최대 3회). 맞는 문항의 배치는 그대로이고, 넘치는 문항이 없으면 한 번만 배치한다. readiness 검사·허용값은 건드리지 않는다. 이유: 단원별 기출 「원의 성질 › 원과 직선 · 2단계 · 1권」에서 문항 하나(4번·41번)가 8~170px 넘쳐 `PDF readiness failed: content clipped`로 시험지 전체가 출력되지 않았다.
+- 시험지(`archive/exam-render-executor.js` `render`): 글자·그림을 가장 작은 단계(`fit-micro`)로 줄여도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px)은 그 문항만 단계적으로 키워 다시 쪽 나누기를 한다. 순서: ① 같은 열에서 세로로 길게(칸 2개 높이 … 열 전체, `data-ap-fallback="tall-N"`) → ② 한 줄 전체 폭 칸(`row`) → ③ 쪽 전체(`page`, 진짜 특별한 경우만). 맞는 문항의 배치는 그대로이고, 넘치는 문항이 없으면 한 번만 배치한다. readiness 검사·허용값은 건드리지 않는다. 사용자 결정(2026-11-17): 쪽 전체는 특별한 경우만, 세로로 길게가 기본. 이유: 단원별 기출 「원의 성질 › 원과 직선 · 2단계 · 1권」에서 문항 하나(4번·41번)가 8~170px 넘쳐 `PDF readiness failed: content clipped`로 시험지 전체가 출력되지 않았다.
+- 수식 공백(`mjx-stretchy-h > mjx-ext` 안 `mjx-spacer`)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우(향림중 5번)는 칸을 키우지 않고 `mixed_engine.html` CSS `contain: paint`로 처리한다(MathJax 자체 `clip-path` 영역과 같아 그려지는 모양은 그대로). `overflow:clip/hidden`은 readiness가 잘림으로 보므로 쓰지 않는다.
 - 해설지(`archive/solution-render-executor.js` `renderSplitSolutionBox`): 첫 상자(문제 다시보기+그림+정답)가 칸을 거의 채워 풀이 조각 하나가 안 들어가면, 조각을 다음 칸의 이어짐 상자로 보낸다(머리가 칸에 들어갈 때만). 이유: 같은 1권 해설지 4번이 칸보다 50px 커서 해설지 전체가 열리지 않았다.
 - 같은 흐름의 `renderComposed`(반 합성·클리닉 출력)와 권위 배치(`layout-authority`)는 이 폴백이 없다. 같은 증상이 나오면 같은 방식으로 옮긴다.
 
