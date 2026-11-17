@@ -197,13 +197,25 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
   fs.writeFileSync(path.join(folder,'summary.json'),JSON.stringify(result,null,2)+'\n');return result;
 }
 
+// A source exam the Archive can open as engine.html?data=exams/<file>: a .js file anywhere under archive/exams/ (original, similar, textbooks or any other folder).
+// Everything that makes a path unsafe is still refused: a path that is not plain posix relative (.., ., empty parts, backslash, absolute, drive letter), a file that is not
+// .js, a path outside archive/exams/, and a symbolic link (or a parent link) whose real place is outside the real archive/exams folder.
+export function isArchiveExamSourcePath(relative,root=repoRoot){
+  if(typeof relative!=='string'||!relative.startsWith('archive/exams/')||!relative.endsWith('.js'))return false;
+  if(relative.includes('\\')||relative.includes('\0')||/^[a-z]:/i.test(relative)||relative.split('/').some(part=>['','.','..'].includes(part)))return false;
+  try{
+    const examsRoot=fs.realpathSync(path.join(root,'archive/exams')),real=fs.realpathSync(path.join(root,relative));
+    return real.startsWith(examsRoot+path.sep)&&fs.statSync(real).isFile();
+  }catch{return false;}
+}
+
 export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal,targetId,questionUid=null,intrinsicSvg,sizeClasses=['small','medium','large','full'],sourceAuthorityStatus='MEASUREMENT_ONLY',signal,onProgress,blockExternalRequests=false}){
   run=assertOutput(run);
   if(typeof blockExternalRequests!=='boolean')throw Error('ARCHIVE_NETWORK_POLICY_INVALID');
   if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('ARCHIVE_CAPTURE_SIGNAL_INVALID');
   if(signal?.aborted)throw writeArchiveAbortEvidence(run,'envelope-preflight',{serverWasListening:false,browserWasLaunched:false,browserClosed:true,serverClosed:true});
   if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('ARCHIVE_PROGRESS_HOOK_INVALID');
-  if(!sourceRef?.path?.startsWith('archive/exams/original/')||!(Number.isSafeInteger(sourceOrdinal)&&sourceOrdinal>=1||typeof sourceOrdinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(sourceOrdinal))||!/^[-A-Za-z0-9_]{1,96}$/.test(targetId)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||!Array.isArray(sizeClasses)||!sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PREFLIGHT_INPUT_INVALID');
+  if(!isArchiveExamSourcePath(sourceRef?.path)||!(Number.isSafeInteger(sourceOrdinal)&&sourceOrdinal>=1||typeof sourceOrdinal==='string'&&SOURCE_QUESTION_ID_PATTERN.test(sourceOrdinal))||!/^[-A-Za-z0-9_]{1,96}$/.test(targetId)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||!Array.isArray(sizeClasses)||!sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PREFLIGHT_INPUT_INVALID');
   if(sizeClasses.some(v=>!['small','medium','large','full'].includes(v))||new Set(sizeClasses).size!==sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PROFILE_SET_INVALID');
   const sourceBytes=readBoundFile(repoRoot,sourceRef),bank=loadBank(sourceBytes.toString('utf8'));
   const index=bank.findIndex(q=>q.id===sourceOrdinal);if(index<0)throw Error('DISPLAY_ENVELOPE_SOURCE_ORDINAL_MISSING');

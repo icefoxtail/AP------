@@ -1428,7 +1428,8 @@ function slotsSpec(m,ctx){
 }
 const TREE_COLW=150,TREE_ROW=68,TREE_X0=44,TREE_TOP=58;
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
-const treeRow=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
+const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*treeRowBase(m,fontPx));
+const treeRowBase=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
 function treeCenters(m,rowH=TREE_ROW){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
   const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
@@ -1437,7 +1438,7 @@ function treeCenters(m,rowH=TREE_ROW){
 }
 function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
-  const rowH=treeRow(m,fontPx),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
+  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
   const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
   for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
@@ -1845,9 +1846,11 @@ function resolveTree(spec,placed){
     const nb=boxOf.get(prim.data.leaf);
     if(nb){prim.cx=r6(nb.x+nb.width/2);prim.cy=r6(nb.y+nb.height/2);prim.rx=r6(nb.width/2+8);prim.ry=r6(nb.height/2+6);}
   }
+  const branchItems=[];
   for(const item of placed){
     const {label,fragment}=item,{width,height}=fragment.intrinsic;
     if(label.placement==='branch'){
+      branchItems.push(item);
       const ln=lines.get(label.extra.child),mx=(ln.x1+ln.x2)/2,my=(ln.y1+ln.y2)/2,len=Math.hypot(ln.x2-ln.x1,ln.y2-ln.y1);
       // the label stands on the outer side of its branch: above a branch that rises or runs level, below one that falls (siblings never share the gap between them)
       const falls=centers[ln.data.child].y>centers[ln.data.parent].y+.5;
@@ -1859,29 +1862,88 @@ function resolveTree(spec,placed){
       item.box={x:r6(spec.pathColumn?columnX:(nb?nb.x+nb.width:c.x)+16),y:r6(c.y-height/2),width,height};
     }
   }
+  slideBranchLabels(spec,placed,branchItems,lines);
+}
+// Branch probability labels, placed by search. The first place of every label is the middle of its branch on the outer side. When two of those boxes touch (the fractions of the
+// branches fanning out of one node), each label tries the other places beside its own branch - slid along it (nearer the child end or the parent end), on the other side, or farther
+// off - and is taken from the candidates by score (the nearer its own branch middle and the likelier to be read as its own branch's, the better). A place counts only when its box
+// touches no other label, no branch line (its own branch keeps a small gap) and no node ring. The most constrained label is settled first. When some label has no place left the
+// tree is too tight at this leaf pitch: composeStatChartFigure then spaces the leaves wider and tries again.
+const TREE_ROW_SCALES=[1,1.2,1.45,1.8];   // the leaf pitch of a tree is widened step by step when its branch labels find no room
+const BRANCH_LABEL_SLIDES=[.5,.4,.6,.3,.7,.22,.78];
+const BRANCH_LABEL_GAPS=[5,9,14];
+const BRANCH_LABEL_PAD=2;
+const BRANCH_LABEL_REACH=52;   // the observer refuses a probability label farther than 60 from the middle of its branch (SC_BRANCH_PROBABILITY_PLACE)
+const segmentBoxGap=(a,b,box)=>{
+  let best=Infinity;const N=24;
+  for(let i=0;i<=N;i++){const x=a.x+(b.x-a.x)*i/N,y=a.y+(b.y-a.y)*i/N;best=Math.min(best,Math.hypot(Math.max(box.x-x,0,x-box.x-box.width),Math.max(box.y-y,0,y-box.y-box.height)));}
+  return best;
+};
+const touches=(u,v,pad=BRANCH_LABEL_PAD)=>u.x<v.x+v.width+pad&&v.x<u.x+u.width+pad&&u.y<v.y+v.height+pad&&v.y<u.y+u.height+pad;
+function slideBranchLabels(spec,placed,branchItems,lines){
+  if(branchItems.length<2)return;
+  const fixed=placed.filter(item=>item.label.placement!=='branch').map(item=>item.box);
+  const rings=spec.prims.filter(p=>p.role==='leaf-ring').map(p=>({x:p.cx-p.rx,y:p.cy-p.ry,width:2*p.rx,height:2*p.ry}));
+  const draws=[...lines.values()].map(ln=>({id:ln.data.child,a:{x:ln.x1,y:ln.y1},b:{x:ln.x2,y:ln.y2}}));
+  const clash=(items,boxes)=>items.some((u,i)=>boxes.some((v,j)=>i!==j&&touches(u.box,v)));
+  // nothing touches at the first places: keep them exactly (no figure that already reads clearly moves)
+  const first=branchItems.map(i=>i.box);
+  const bad=(box,own)=>fixed.some(f=>touches(box,f))||rings.some(r=>touches(box,r,0))||draws.some(d=>segmentBoxGap(d.a,d.b,box)<(d.id===own?3:BRANCH_LABEL_PAD+1));
+  if(!first.some((u,i)=>first.some((v,j)=>i<j&&touches(u,v))||bad(u,branchItems[i].label.extra.child)))return;
+  const options=branchItems.map(item=>{
+    const {width,height}=item.fragment.intrinsic,ln=lines.get(item.label.extra.child);
+    const len=Math.hypot(ln.x2-ln.x1,ln.y2-ln.y1);let nx=-(ln.y2-ln.y1)/len,ny=(ln.x2-ln.x1)/len;
+    const falls=spec.centers[ln.data.child].y>spec.centers[ln.data.parent].y+.5;if(falls?ny<0:ny>0){nx=-nx;ny=-ny;}   // the outer side
+    const mx=(ln.x1+ln.x2)/2,my=(ln.y1+ln.y2)/2,list=[];
+    for(const side of [1,-1])for(const gap of BRANCH_LABEL_GAPS)for(const t of BRANCH_LABEL_SLIDES){
+      const px=ln.x1+(ln.x2-ln.x1)*t,py=ln.y1+(ln.y2-ln.y1)*t,d=(width/2)*Math.abs(nx)+(height/2)*Math.abs(ny)+gap;
+      const box={x:r6(px+side*nx*d-width/2),y:r6(py+side*ny*d-height/2),width,height};
+      if(Math.hypot(box.x+width/2-mx,box.y+height/2-my)>BRANCH_LABEL_REACH)continue;
+      if(bad(box,item.label.extra.child))continue;
+      list.push({box,score:Math.abs(t-.5)*40+(side===1?0:25)+gap});
+    }
+    return list.sort((u,v)=>u.score-v.score);
+  });
+  const chosen=new Array(branchItems.length).fill(null);
+  for(let round=0;round<branchItems.length;round++){
+    let pick=-1;
+    for(let i=0;i<options.length;i++)if(!chosen[i]&&(pick<0||options[i].length<options[pick].length))pick=i;
+    if(options[pick].length===0)throw new Stop('STAT_BRANCH_LABEL_NO_ROOM',{label:branchItems[pick].label.id});
+    chosen[pick]=options[pick][0];
+    for(let i=0;i<options.length;i++)if(!chosen[i])options[i]=options[i].filter(o=>!touches(o.box,chosen[pick].box));
+  }
+  branchItems.forEach((item,i)=>{item.box=chosen[i].box;});
 }
 /** Typeset every label, place it, build the SVG, run the independent observer on its bytes and the rendered layout check in Chrome. */
-export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize}={}){
+export async function composeStatChartFigure({plan,model,identity,typographyPolicy,browser,minSize,rowScale:startScale=1}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
-  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
+  const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,rowScale:state.rowScale??startScale,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
   let ownBrowser=null;
   try{
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
-    let spec;
-    try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
-    if(minSize)spec.size={width:Math.max(spec.size.width,minSize.width),height:Math.max(spec.size.height,minSize.height)};   // the size the Archive measured (never smaller than the labels need)
-    lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
-    const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
-    for(const label of spec.labels){
-      let fragment;
-      try{fragment=typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
-      catch(error){if(!isDomainCode(error))throw error;throw new Stop('STAT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
-      const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
-      placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
+    let spec,placed;const font=typographyPolicy.baseFontPx;
+    let usedScale=startScale;
+    for(const rowScale of TREE_ROW_SCALES.filter(scale=>scale>=startScale)){
+      usedScale=rowScale;
+      try{spec=statChartSpec(plan,model,{fontPx:typographyPolicy.baseFontPx,rowScale});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='STAT_MODEL_MISMATCH'?error.message:'STAT_SPEC_ERROR',{code:error.message});}
+      if(minSize)spec.size={width:Math.max(spec.size.width,minSize.width),height:Math.max(spec.size.height,minSize.height)};   // the size the Archive measured (never smaller than the labels need)
+      lineage.specSha256=objectSha(JSON.parse(JSON.stringify(spec)));
+      const typeset=typesetter();placed=[];
+      for(const label of spec.labels){
+        let fragment;
+        try{fragment=typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
+        catch(error){if(!isDomainCode(error))throw error;throw new Stop('STAT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+        const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
+        placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
+      }
+      if(spec.tree){
+        // a tree whose branch labels find no free place at this leaf pitch is spaced wider (the labels of the branches fanning out of one node get more room) and composed again
+        try{resolveTree(spec,placed);}catch(error){if(error instanceof Stop&&error.status==='STAT_BRANCH_LABEL_NO_ROOM'&&rowScale!==TREE_ROW_SCALES[TREE_ROW_SCALES.length-1])continue;throw error;}
+      }
+      break;
     }
-    if(spec.tree)resolveTree(spec,placed);
     if(spec.normal)resolveNormal(spec,placed);
     resolveValueLabels(spec,placed);
     cutGrid(spec,placed);
@@ -1916,7 +1978,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
     state.renderedLayout={status:layout.status,display,errors:layout.errors};
     if(layout.status!=='PASS')throw new Stop('STAT_CHART_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
-    state.svg=svg;
+    state.svg=svg;state.rowScale=usedScale;
     return outcome('COMPOSED');
   }catch(error){
     if(!(error instanceof Stop))throw error;
