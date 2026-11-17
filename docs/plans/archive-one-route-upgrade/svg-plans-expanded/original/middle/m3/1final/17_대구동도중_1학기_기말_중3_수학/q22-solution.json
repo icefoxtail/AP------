@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      2
+    ],
+    "viewport": [
+      -4,
+      2,
+      -6,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "-4",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "OABC",
+          "points": [
+            "O",
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "대각선 OB로 사각형 OABC를 두 삼각형으로 나눈다. A,B,C의 좌표와 수직인 축을 이용하여 각 넓이를 구하되 최종 합은 숨긴다.",
+  "accessibilityDescription": "대각선 OB로 사각형 OABC를 두 삼각형으로 나눈다. A,B,C의 좌표와 수직인 축을 이용하여 각 넓이를 구하되 최종 합은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선에서 A는 음의 x절편, B는 아래쪽 꼭짓점, C는 y절편이다. 세 점과 원점 O를 이은 연두색 사각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "A(−3,0),B(−1,−4),C(0,−3),O(0,0). 대각선OB로나눈삼각형넓이6과3/2의합15/2,④.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 OB로 사각형 OABC를 두 삼각형으로 나눈다. A,B,C의 좌표와 수직인 축을 이용하여 각 넓이를 구하되 최종 합은 숨긴다."
+  ]
+}

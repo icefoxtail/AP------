@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -7,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-sqrt(2)",
+        "y": "4*sqrt(2)"
+      },
+      {
+        "id": "E1",
+        "x": "sqrt(2)",
+        "y": "-4*sqrt(2)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "level",
+        "y": "0",
+        "intersectionX": [
+          "-sqrt(6)",
+          "0",
+          "sqrt(6)"
+        ]
+      }
+    ]
+  },
+  "caption": "적분식을 정리한 삼차함수와 수평선의 교점 수를 비교한다. 수평선은 a=0인 예시이며 세 교점이 생기는 높이 범위를 두 극값으로 정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "등식 $\\displaystyle\\int_0^1(3ax^2-10tx+t^3),dx=\\dfrac{d}{dt}\\int t,dt$를 만족시키는 서로 다른 실수 $t$의 개수가 $3$이 되도록 하는 실수 $a$의 값의 범위가 $m<a<n$일 때, $mn$의 값은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P=t³−6t,극점±√2에서높이∓4√2. 수평선−a가그사이에있어야3실근. 최종mn−32는숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "P=t³−6t,극점±√2에서높이∓4√2. 수평선−a가그사이에있어야3실근. 최종mn−32는숨김."
+  ]
+}

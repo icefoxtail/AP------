@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "24",
+          "22",
+          "8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      0
+    ],
+    "viewport": [
+      -4,
+      0,
+      2,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-3",
+        "y": "3"
+      },
+      {
+        "id": "E1",
+        "x": "-2",
+        "y": "4"
+      },
+      {
+        "id": "E2",
+        "x": "-1",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "lower",
+        "y": "3",
+        "intersectionX": [
+          "-3",
+          "-1"
+        ]
+      },
+      {
+        "id": "upper",
+        "y": "4",
+        "intersectionX": [
+          "-2-sqrt(2)",
+          "-2",
+          "-2+sqrt(2)"
+        ]
+      }
+    ]
+  },
+  "caption": "기울기 사를 빼서 두 평행 접선을 수평선으로 바꾸고 두 극소점과 가운데 극대점의 관계를 본다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 사차함수 $f(x)$가 다음 조건을 만족할 때, $f(a)f(b)$의 값은?\n(가) $y=f(x)$의 그래프는 직선 $y=4x+3$과 서로 다른 두 점에서 접한다.\n(나) $y=f(x)$의 그래프는 직선 $y=4x+4$와 한 점에서 접하고, 접점 외의 서로 다른 두 점에서 만난다.\n(다) $-3<a<b<0$인 실수 $a,b$에 대하여 $f'(-3)=f'(a)=f'(b)=4$이다. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h=f−4x=3+(x+3)²(x+1)². 원문주어진높이3/4유지,중간접점−3,−2,−1. 최종f(a)f(b)=4라는결론·f값−4/−1은표시하지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "h=f−4x=3+(x+3)²(x+1)². 원문주어진높이3/4유지,중간접점−3,−2,−1. 최종f(a)f(b)=4라는결론·f값−4/−1은표시하지않음."
+  ]
+}

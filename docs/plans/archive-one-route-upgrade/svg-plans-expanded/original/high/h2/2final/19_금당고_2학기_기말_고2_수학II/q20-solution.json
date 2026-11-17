@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      0,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "E1",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "sampleNote": "a=3/2",
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "3/2",
+          "label": "y=a"
+        }
+      ]
+    }
+  },
+  "caption": "a=3/2로 둔 비교 예시이다. 접점의 매개변수와 점의 높이 관계에서 수평선의 서로 다른 교점 수를 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 점 $P(1,a)$에서 곡선 $y=x^3-2x+3$에 서로 다른 $3$개의 접선을 그을 수 있을 때, 실수 $a$의 값의 범위를 구하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A(t)=−2t³+3t²+1. 극점높이1,2는최종범위경계이므로좌표라벨숨김. 비교예시a1.5에서3교점; 최종범위1<a<2를caption에안씀.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A(t)=−2t³+3t²+1. 극점높이1,2는최종범위경계이므로좌표라벨숨김. 비교예시a1.5에서3교점; 최종범위1<a<2를caption에안씀."
+  ]
+}

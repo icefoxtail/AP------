@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      3
+    ],
+    "viewport": [
+      1,
+      3,
+      -2.5,
+      2.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "P",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "label": "P"
+      },
+      {
+        "id": "N",
+        "upper": "axis",
+        "lower": "f",
+        "from": "2",
+        "to": "3",
+        "label": "N"
+      }
+    ]
+  },
+  "caption": "가로축 위와 아래의 부호 있는 넓이를 더하여 위치변화량을 구한다. 이동거리와 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위를 움직이는 점 $P$의 시각 $t$에서 속도가 $v(t)=4-2t$일 때, $t=1$에서 $t=3$까지 점 $P$의 위치변화량은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두삼각형 넓이각1,부호반대. 합0최종답은라벨에명시안함.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두삼각형 넓이각1,부호반대. 합0최종답은라벨에명시안함."
+  ]
+}

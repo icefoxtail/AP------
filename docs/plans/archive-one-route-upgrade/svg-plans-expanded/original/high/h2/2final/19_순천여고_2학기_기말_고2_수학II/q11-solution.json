@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -6,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "-4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "-2",
+        "intersectionX": [
+          "1-sqrt(3)",
+          "1",
+          "1+sqrt(3)"
+        ]
+      }
+    ]
+  },
+  "caption": "수평선 y=k가 삼차곡선과 세 점에서 만나려면 두 극값 높이 사이를 지나야 한다. 그림의 수평선은 k=-2인 예시이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $x^3-3x^2-k=0$이 서로 다른 세 실근을 갖도록 하는 정수 $k$의 최댓값을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "F=x³−3x²,극대0극소−4;세교점조건−4<k<0. k−2예시이며구하는정수최댓값−1숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "F=x³−3x²,극대0극소−4;세교점조건−4<k<0. k−2예시이며구하는정수최댓값−1숨김."
+  ]
+}
