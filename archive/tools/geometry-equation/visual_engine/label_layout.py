@@ -1452,7 +1452,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             # The leader is marked crossFallback, which the rendered-layout check already allows; the observer still ties the label back to its line by that leader.
             best=None
             for anchor in [tuple(label['at'])]+[tuple(v) for v in label.get('alternateAt',())]:
-                incident=owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']}
+                incident=set(owner_line_incident_ids(line_owner,anchor,occupied) if collinear_owners else {line_owner['id']})
+                # a stroke drawn through the anchor itself (the x axis under a segment lying on it) is the label's own ground: the leader leaves it at the anchor, like its own line
+                incident|={o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+                    and any(point_segment_distance(anchor,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
                 found=crossing_leader_placement(anchor,w,h,occupied,acceptable,incident,allow_zero=True)
                 if found is not None and (best is None or found[2]<best[0][2]):best=(found,anchor)
             if best is not None:

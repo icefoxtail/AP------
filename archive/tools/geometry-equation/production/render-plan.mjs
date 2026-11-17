@@ -15,6 +15,7 @@ import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
 import {fileRef} from '../../pipeline-core/canonical.mjs';
 import {SOURCE_QUESTION_ID_PATTERN} from '../../pipeline-core/question-uid.mjs';
+import {ensureCoordinateFrame} from './coordinate-frame.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
 import {expandPlaneVectors} from './plane-vectors.mjs';
@@ -94,6 +95,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    // A source-coordinate construction without its frame nodes (origin, unit axis) gets them added, so the plan does not fail for bookkeeping it need not carry.
+    if(authored.capability==='construction-spike-v1')authored=ensureCoordinateFrame(authored);
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{

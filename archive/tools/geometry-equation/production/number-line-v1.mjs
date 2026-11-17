@@ -750,8 +750,11 @@ export function numberLineFigureSpec(plan,model){
         for(const [side,end] of [['lo',piece.lower],['hi',piece.upper]]){
           if(!end)continue;
           const id=`r${n}-end-${p}-${side}`;
+          // Two pieces that meet at one excluded value (k<0 and k>0 for k!=0) draw two open dots on the same place; one number below that place names both, so the second dot carries no label of its own
+          // (the independent observer accepts a missing label only when another endpoint dot stands at the same place with the same value and one label).
+          const shared=dots.some(other=>other.role==='endpoint'&&other.value===end.value&&other.state===end.state&&Math.abs(other.x-px(end.approx))<0.5);
           dots.push({id,role:'endpoint',value:end.value,state:end.state,x:px(end.approx),y:axisY,r:END_RADIUS,piece:p,side});
-          labels.push({id:id+'-label',role:'endpoint',owner:id,kind:'MATH',tex:DISPLAY+end.tex,plain:end.text,value:end.value,anchor:{x:px(end.approx),y:r6(axisY+END_RADIUS+LABEL_GAP),align:'below'},rowHeight:belowRow,row:n});
+          if(!shared)labels.push({id:id+'-label',role:'endpoint',owner:id,kind:'MATH',tex:DISPLAY+end.tex,plain:end.text,value:end.value,anchor:{x:px(end.approx),y:r6(axisY+END_RADIUS+LABEL_GAP),align:'below'},rowHeight:belowRow,row:n});
         }
         if(!row.hideSetLabel){
           const text=pieceTex(v,{lo:piece.lower,hi:piece.upper});

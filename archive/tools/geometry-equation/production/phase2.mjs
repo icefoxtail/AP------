@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {tidyPolynomialText} from './polynomial-text.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -1186,7 +1187,12 @@ function piecewisePolynomialSpec(plan,id){
   if(p.sampleNote!==undefined&&(typeof p.sampleNote!=='string'||!/^[0-9A-Za-z=+\-*/(). ]{1,32}$/.test(p.sampleNote)||!p.sampleNote.trim()))throw Error('PIECEWISE_POLY_SAMPLE_NOTE_INVALID');
   const nameVariable=p.nameVariable??'x';
   if(typeof nameVariable!=='string'||!/^[a-z]$/.test(nameVariable)||nameVariable===functionName)throw Error('PIECEWISE_POLY_NAME_VARIABLE_INVALID');
-  const headerText=p.formula!==undefined?(functionName?functionName+'('+nameVariable+')':'y')+'='+p.formula:null;
+  // The header as a person writes it: the formula tidied (coefficient 1 and zero terms left out, falling degree) and written in the letter the x axis carries (an axis titled k reads k, not x);
+  // an unnamed function is named by its y axis title when that is one letter or a letter over a number (D/4), as the axis says.
+  const axisLetter=title=>typeof title==='string'&&/^[A-Za-z](?:\/\d{1,2})?$/.test(title)?title:undefined;
+  const shownVariable=/^[a-z]$/.test(p.axisTitles?.x??'')&&p.axisTitles.x!==functionName&&p.axisTitles.x!=='y'?p.axisTitles.x:'x';
+  const headerLeft=functionName?functionName+'('+nameVariable+')':axisLetter(p.axisTitles?.y)??'y';
+  const headerText=p.formula!==undefined?headerLeft+'='+tidyPolynomialText(p.formula,{shown:functionName?nameVariable:shownVariable}):null;
   const headerPx=headerText===null?0:80,canvas={width:512,height:plot.height+64+headerPx,panel:0,topInset:headerPx};
   const spanX=v[1]-v[0],spanY=v[3]-v[2],clampY=y=>Math.max(v[2]+spanY*.06,Math.min(v[3]-spanY*.06,y));
   const evalCoefficients=(values,x)=>values.reduce((sum,c,index)=>sum+exactValue(c)*x**index,0);
@@ -1238,7 +1244,7 @@ function piecewisePolynomialSpec(plan,id){
       objects.push({id:'f-ref-'+curve.id,kind:'FUNCTION_GRAPH',expression:polyText(curve.coefficients),domain:curve.drawInterval,criticalX:curveKeyX.filter(x=>curve.drawInterval[0]<=x&&x<=curve.drawInterval[1]),branch:'REF_'+curve.id,...(source.color?{color:source.color}:{})});
     }
     const labelId='ref-curve-'+curve.id+'-equation';
-    const labelText=curve.pieces?(source.formula!==undefined?(source.name?source.name+'(x)':'y')+'='+source.formula:source.name?source.name+'(x)':'y'):(source.name?source.name+'(x)':'y')+'='+readablePoly(curve.coefficients);
+    const labelText=curve.pieces?(source.formula!==undefined?(source.name?source.name+'(x)':'y')+'='+tidyPolynomialText(source.formula):source.name?source.name+'(x)':'y'):(source.name?source.name+'(x)':'y')+'='+readablePoly(curve.coefficients);
     if(curve.pieces){
       // The second piecewise curve is named next to its own drawing; a corner (or the middle of its widest piece) anchors the label.
       let at;

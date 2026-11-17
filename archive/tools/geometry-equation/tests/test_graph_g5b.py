@@ -24,6 +24,17 @@ def refused(plan):
     except ValueError as error:return str(error)
     return None
 
+class UnexpandedExactValue(unittest.TestCase):
+    def test_a_curve_value_that_is_rational_only_once_expanded_is_still_a_coordinate(self):
+        root=-3-S.sqrt(5);unexpanded=root**2+6*root+4      # the exact y of x^2+6x+4 at its own root: 0 after expansion
+        self.assertTrue(_ov_surd_form(unexpanded))
+        self.assertEqual(_ov_coordinate_codes(unexpanded),_ov_coordinate_codes(S.Integer(0)))
+        self.assertTrue(_ov_surd_form(root))
+    def test_two_radicals_and_nested_radicals_are_still_refused(self):
+        self.assertFalse(_ov_surd_form(S.sqrt(2)+S.sqrt(3)))
+        self.assertFalse(_ov_surd_form(S.sqrt(1+S.sqrt(2))))
+        with self.assertRaises(ValueError):_ov_coordinate_codes(S.sqrt(2)*S.sqrt(3)+S.sqrt(5))
+
 class Framing(unittest.TestCase):
     def test_surd_coordinates_are_written_as_one_exact_text(self):
         plan=copy.deepcopy(BASE);plan['overlays']['points'].append({'id':'Q','x':'sqrt(2)','y':'-1+2*sqrt(2)','coordinates':True,'unnamed':True})

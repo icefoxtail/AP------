@@ -339,3 +339,21 @@ test('a plan without constructions or letter points draws exactly as before',asy
   assert.ok(/data-value="-2"/.test(composed.svg));
   assert.equal((await audit(composed.svg,plain)).status,'PASS');
 });
+
+test('two pieces that meet at one excluded value (k<0 or k>0) share one number below the place; the observer accepts it and still checks that number',async()=>{
+  const O=value=>({value,state:'OPEN'});
+  const split={variable:'k',rows:[{kind:'SET',pieces:[{lo:null,hi:O('0')},{lo:O('0'),hi:null}]},{kind:'SET',pieces:[{lo:null,hi:O('1/4')}]}]};
+  const composed=await compose(split,'shared-end');
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));assert.equal(composed.renderedLayout.status,'PASS',JSON.stringify(composed.renderedLayout.errors));
+  const svg=composed.svg;
+  assert.equal((svg.match(/id="r1-end-\d-(?:lo|hi)"/g)||[]).length,2,'both open dots are still drawn');
+  assert.equal((svg.match(/id="r1-end-\d-(?:lo|hi)-label"/g)||[]).length,1,'one number names both');
+  assert.equal((await audit(svg,split)).status,'PASS');
+  // the shared number must still be the right one, and a dot with no label and no twin is still a failure
+  const wrong=svg.replace(/(id="r1-end-1-hi-label"[^>]*?data-tex=")[^"]*"/,'$1\displaystyle 2"');
+  assert.notEqual(wrong,svg);
+  assert.ok((await audit(wrong,split)).errors.length>0);
+  const moved=svg.replace(/(id="r1-end-2-lo"[^>]*?cx=")([\d.]+)/,(m,head,x)=>head+(Number(x)+9));
+  assert.ok((await audit(moved,split)).errors.length>0);
+});
