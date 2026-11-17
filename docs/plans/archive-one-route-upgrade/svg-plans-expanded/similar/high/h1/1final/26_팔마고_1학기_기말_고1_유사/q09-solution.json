@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      }
+    ],
+    "variable": "r"
+  },
+  "caption": "장미 수 r은 정수이다. 장미가 튤립보다 많아 r>7, 비용2000r+14000≤34000에서 r≤10. 공통 정수8,9,10이므로 정답 최대10송이.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 송이에 $3000$원인 장미와 한 송이에 $1000$원인 튤립을 합하여 $14$송이를 사려고 한다. 장미를 튤립보다 더 많이 사고, 전체 금액을 $34000$원 이하로 하려고 할 때, 최대로 살 수 있는 장미의 개수는? [4.4점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "장미 수 r은 정수이다. 장미가 튤립보다 많아 r>7, 비용2000r+14000≤34000에서 r≤10. 공통 정수8,9,10이므로 정답 최대10송이.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "장미 수 r은 정수이다. 장미가 튤립보다 많아 r>7, 비용2000r+14000≤34000에서 r≤10. 공통 정수8,9,10이므로 정답 최대10송이."
+  ]
+}

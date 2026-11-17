@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "-49/4"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "-10"
+      }
+    ]
+  },
+  "caption": "y=(x+2)(x−5)의 교점−2,5와 y절편−10을 읽는다. 전개하면 x²−3x−10이므로 정답 a=−3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2+ax-10$의 그래프가 $x$축과 두 점 $A(-2,0)$, $B(5,0)$에서 만날 때, 실수 $a$의 값은? [4점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "y=(x+2)(x−5)의 교점−2,5와 y절편−10을 읽는다. 전개하면 x²−3x−10이므로 정답 a=−3.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "y=(x+2)(x−5)의 교점−2,5와 y절편−10을 읽는다. 전개하면 x²−3x−10이므로 정답 a=−3."
+  ]
+}

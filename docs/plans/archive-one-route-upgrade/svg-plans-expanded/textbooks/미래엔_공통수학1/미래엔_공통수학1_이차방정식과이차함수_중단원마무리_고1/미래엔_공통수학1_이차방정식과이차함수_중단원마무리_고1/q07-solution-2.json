@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "28",
+          "-12"
+        ]
+      }
+    ],
+    "domain": [
+      0.0,
+      6.0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "28",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "-44",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "H"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "7/3",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SW"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    }
+  },
+  "caption": "둘째 곡선과 직선이 만나지 않을 조건은 H₂(k)=28−12k<0,즉 k>7/3이다. 첫 후보1,5중5만 남으므로 정답k=5이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=x-k$가 이차함수 $y=x^2+kx-1$의 그래프와 한 점에서 만나고, 이차함수 $y=3x^2-3x-1$의 그래프와 만나지 않도록 하는 실수 $k$의 값을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "둘째 곡선과 직선이 만나지 않을 조건은 H₂(k)=28−12k<0,즉 k>7/3이다. 첫 후보1,5중5만 남으므로 정답k=5이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "둘째 곡선과 직선이 만나지 않을 조건은 H₂(k)=28−12k<0,즉 k>7/3이다. 첫 후보1,5중5만 남으므로 정답k=5이다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

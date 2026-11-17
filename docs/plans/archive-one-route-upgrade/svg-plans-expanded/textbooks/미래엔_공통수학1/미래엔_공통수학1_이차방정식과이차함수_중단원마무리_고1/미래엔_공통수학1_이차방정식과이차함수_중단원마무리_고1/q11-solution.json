@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "800",
+          "20",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0.0,
+      40.0
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "40"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "800"
+      },
+      {
+        "id": "V",
+        "x": "10",
+        "y": "900"
+      },
+      {
+        "id": "R",
+        "x": "40",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "20",
+        "40"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "S"
+    }
+  },
+  "caption": "감액횟수t에서총액은(20000−500t)(200+10t)이다. S=총액/5000=800+20t−t²=−(t−10)²+900,실제t는0..40의정수이다. 꼭짓점t=10이허용되므로 최대총액4500000원,이때1인당관람료는15000원이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 미술관에서 1인당 하루 관람료가 $20000$원일 때 하루 관람객이 $200$명이라고 한다. 이 관람료를 $500$원씩 내릴 때마다 하루 관람객이 $10$명씩 증가한다고 한다. 이 미술관의 하루 관람료의 총합이 최대일 때의 1인당 하루 관람료를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "감액횟수t에서총액은(20000−500t)(200+10t)이다. S=총액/5000=800+20t−t²=−(t−10)²+900,실제t는0..40의정수이다. 꼭짓점t=10이허용되므로 최대총액4500000원,이때1인당관람료는15000원이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "감액횟수t에서총액은(20000−500t)(200+10t)이다. S=총액/5000=800+20t−t²=−(t−10)²+900,실제t는0..40의정수이다. 꼭짓점t=10이허용되므로 최대총액4500000원,이때1인당관람료는15000원이다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-40",
+          "10",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      -5.0,
+      6.0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "-45"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "-4",
+        "2",
+        "4",
+        "6"
+      ],
+      "y": [
+        "80"
+      ]
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/10"
+    },
+    "formula": "5*x^2 + 10*x - 40",
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "curveX": "4",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SW"
+        },
+        {
+          "id": "A",
+          "curveX": "-4",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "NE"
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "NE"
+        },
+        {
+          "id": "D",
+          "curveX": "-5",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=a(x+4)(x−2)이다. [4,6]에서 최소80>0이므로a>0,구간증가하므로16a=80에서a=5이다. 따라서 f(−5)=5·(−1)·(−7)=35이다. 가로와 세로 표시 척도는 다르므로 축 수치로 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)$가 다음을 모두 만족시킬 때, $f(-5)$의 값을 구하시오.\n㈎ 방정식 $f(x)=0$의 두 근은 $-4$와 $2$이다.\n㈏ $4\\le x\\le 6$일 때, 함수 $f(x)$의 최솟값은 $80$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(x)=a(x+4)(x−2)이다. [4,6]에서 최소80>0이므로a>0,구간증가하므로16a=80에서a=5이다. 따라서 f(−5)=5·(−1)·(−7)=35이다. 가로와 세로 표시 척도는 다르므로 축 수치로 읽는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f(x)=a(x+4)(x−2)이다. [4,6]에서 최소80>0이므로a>0,구간증가하므로16a=80에서a=5이다. 따라서 f(−5)=5·(−1)·(−7)=35이다. 가로와 세로 표시 척도는 다르므로 축 수치로 읽는다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

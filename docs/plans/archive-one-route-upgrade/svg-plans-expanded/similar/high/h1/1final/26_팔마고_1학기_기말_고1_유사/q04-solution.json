@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      3,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "3",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "V",
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "7",
+        "y": "-5"
+      }
+    ]
+  },
+  "caption": "y=−(x−4)²+4의 정의역3≤x≤7 안에 꼭짓점이 있다. 양끝과 꼭짓점 높이를 비교하여 정답 최댓값4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 $x$의 값의 범위에서 이차함수 $y=-x^2+8x-12$의 최댓값은? $(3\\le x\\le7)$ [4.1점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "y=−(x−4)²+4의 정의역3≤x≤7 안에 꼭짓점이 있다. 양끝과 꼭짓점 높이를 비교하여 정답 최댓값4.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−(x−4)²+4의 정의역3≤x≤7 안에 꼭짓점이 있다. 양끝과 꼭짓점 높이를 비교하여 정답 최댓값4."
+  ]
+}

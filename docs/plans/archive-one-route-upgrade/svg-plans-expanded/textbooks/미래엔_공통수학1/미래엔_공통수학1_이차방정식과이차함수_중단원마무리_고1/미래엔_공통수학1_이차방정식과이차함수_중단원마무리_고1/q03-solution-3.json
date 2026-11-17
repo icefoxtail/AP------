@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3.0,
+      1.0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "comparison",
+          "slope": "1",
+          "intercept": "-1",
+          "label": "y=x-1",
+          "style": "DASHED"
+        }
+      ]
+    },
+    "formula": "x^2 + 2*x"
+  },
+  "caption": "두 식의 차는 x²+x+1이고 판별식−3<0이다. 따라서 만나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 직선의 위치 관계를 말하시오.\n⑴ $y=-2x^2-x+1,\\quad y=2x-5$\n⑵ $y=x^2-x+2,\\quad y=3x-2$\n⑶ $y=x^2+2x,\\quad y=x-1$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두 식의 차는 x²+x+1이고 판별식−3<0이다. 따라서 만나지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 식의 차는 x²+x+1이고 판별식−3<0이다. 따라서 만나지 않는다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

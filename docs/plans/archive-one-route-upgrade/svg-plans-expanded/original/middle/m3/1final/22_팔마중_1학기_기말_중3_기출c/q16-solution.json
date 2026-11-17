@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      9,
+      -1,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=(x+1)^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "36",
+          "-12",
+          "1"
+        ],
+        "domain": [
+          "3",
+          "9"
+        ],
+        "label": "y=(x-6)^2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "6"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "8",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선의 오른쪽 가지에서 같은 높이 t인 점을 고른다. A의 x좌표는 −1+√t, B의 x좌표는 6+√t이므로 AB=(6+√t)−(−1+√t)=7이다. 그림은 t=4인 한 예로 A(1,4), B(8,4)를 나타내며 높이를 4로 제한하지 않는다. 원본 그림의 B도 오른쪽 가지에 있다. 정답 ④, 7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=(x+1)^2$, $y=x^2-12x+36$의 그래프 위의 두 점 A, B에 대하여 직선 AB가 $x$축과 평행할 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "f g A B"
+    },
+    {
+      "id": "image",
+      "condition": "원본 PNG 직접 확인: A는 꼭짓점−1 오른쪽 상승 가지, B는 꼭짓점6 오른쪽 상승 가지이다. B를 왼쪽 가지로 보는 기존 장부 사유는 그림과 다르다. 모든 t>0에서 두 오른쪽 가지 x차7이며 예시 t4 선택은 실제 높이 주장 아님.",
+      "mappedTo": "A B"
+    },
+    {
+      "id": "window",
+      "condition": "서로 다른 두 이차함수이므로 multi-curve 사용. 도메인은 표시범위이며 실제 정의역은 모두 실수. 위쪽으로 잘리는 곡선은 계속 이어진다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 방향의 가지를 고르는 조건, x좌표의 공통 √t 소거, 평행이동7과 최종답을 함께 표시한다."
+  ]
+}

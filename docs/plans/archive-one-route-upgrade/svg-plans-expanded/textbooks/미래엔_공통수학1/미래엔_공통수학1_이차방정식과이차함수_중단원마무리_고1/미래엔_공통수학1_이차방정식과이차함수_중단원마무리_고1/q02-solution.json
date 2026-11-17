@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -1.0,
+      3.0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "formula": "3*x^2 - 6*x + 4"
+  },
+  "caption": "y=3(x−1)²+a−3의 최솟값이 양수여야 한다. a=4 예시를 경계 a=3까지 아래로 옮기면 닿는다. 따라서 정답은 a>3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=3x^2-6x+a$의 그래프가 $x$축과 만나지 않도록 하는 실수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=3(x−1)²+a−3의 최솟값이 양수여야 한다. a=4 예시를 경계 a=3까지 아래로 옮기면 닿는다. 따라서 정답은 a>3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=3(x−1)²+a−3의 최솟값이 양수여야 한다. a=4 예시를 경계 a=3까지 아래로 옮기면 닿는다. 따라서 정답은 a>3이다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

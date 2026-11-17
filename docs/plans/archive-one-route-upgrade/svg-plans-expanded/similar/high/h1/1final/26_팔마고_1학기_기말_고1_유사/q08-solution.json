@@ -1,0 +1,80 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-6",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": false,
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "-6",
+            "14"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "첫 두 행은 두 부등식 각각의 해, 셋째 행은 공통부분이다. 열린−2와 닫힌4를 구별하면 정수−1,0,1,2,3,4이며 정답 합9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases}x^2+8x+12\\gt0\\\\x^2+x-20\\le0\\end{cases}$을 만족시키는 모든 정수 $x$의 값의 합은? [4.3점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "첫 두 행은 두 부등식 각각의 해, 셋째 행은 공통부분이다. 열린−2와 닫힌4를 구별하면 정수−1,0,1,2,3,4이며 정답 합9.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 두 행은 두 부등식 각각의 해, 셋째 행은 공통부분이다. 열린−2와 닫힌4를 구별하면 정수−1,0,1,2,3,4이며 정답 합9."
+  ]
+}

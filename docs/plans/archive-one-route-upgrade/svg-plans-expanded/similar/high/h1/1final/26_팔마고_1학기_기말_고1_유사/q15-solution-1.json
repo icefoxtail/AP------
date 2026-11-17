@@ -1,0 +1,582 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0Y1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4Y1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0Y3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4Y3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0Y4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4Y4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1Y1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1Y3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1Y4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2Y1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2Y3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2Y4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3Y0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3Y1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3Y3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3Y4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P4Y0",
+    "P0Y1",
+    "P4Y1",
+    "P0Y3",
+    "P4Y3",
+    "P0Y4",
+    "P4Y4",
+    "P1Y0",
+    "P1Y1",
+    "P1Y3",
+    "P1Y4",
+    "P2Y0",
+    "P2Y1",
+    "P2Y3",
+    "P2Y4",
+    "P3Y0",
+    "P3Y1",
+    "P3Y3",
+    "P3Y4"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "P4Y0",
+    "P0Y1",
+    "P4Y1",
+    "P0Y3",
+    "P4Y3",
+    "P0Y4",
+    "P4Y4",
+    "P1Y0",
+    "P1Y1",
+    "P1Y3",
+    "P1Y4",
+    "P2Y0",
+    "P2Y1",
+    "P2Y3",
+    "P2Y4",
+    "P3Y0",
+    "P3Y1",
+    "P3Y3",
+    "P3Y4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "h0",
+      "refs": [
+        "O",
+        "P4Y0"
+      ]
+    },
+    {
+      "id": "h1",
+      "refs": [
+        "P0Y1",
+        "P4Y1"
+      ]
+    },
+    {
+      "id": "h3",
+      "refs": [
+        "P0Y3",
+        "P4Y3"
+      ]
+    },
+    {
+      "id": "h4",
+      "refs": [
+        "P0Y4",
+        "P4Y4"
+      ]
+    },
+    {
+      "id": "v0Y0",
+      "refs": [
+        "O",
+        "P0Y1"
+      ]
+    },
+    {
+      "id": "v0Y3",
+      "refs": [
+        "P0Y3",
+        "P0Y4"
+      ]
+    },
+    {
+      "id": "v1Y0",
+      "refs": [
+        "P1Y0",
+        "P1Y1"
+      ]
+    },
+    {
+      "id": "v1Y3",
+      "refs": [
+        "P1Y3",
+        "P1Y4"
+      ]
+    },
+    {
+      "id": "v2Y0",
+      "refs": [
+        "P2Y0",
+        "P2Y1"
+      ]
+    },
+    {
+      "id": "v2Y3",
+      "refs": [
+        "P2Y3",
+        "P2Y4"
+      ]
+    },
+    {
+      "id": "v3Y0",
+      "refs": [
+        "P3Y0",
+        "P3Y1"
+      ]
+    },
+    {
+      "id": "v3Y3",
+      "refs": [
+        "P3Y3",
+        "P3Y4"
+      ]
+    },
+    {
+      "id": "v4Y0",
+      "refs": [
+        "P4Y0",
+        "P4Y1"
+      ]
+    },
+    {
+      "id": "v4Y3",
+      "refs": [
+        "P4Y3",
+        "P4Y4"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [],
+    "regions": [
+      {
+        "id": "AB",
+        "fill": "MEDIUM",
+        "pattern": "HATCH",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "P2Y0",
+              "P2Y1",
+              "P0Y1"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "2행4열 좌석에서 아래 줄 끝 두 칸이 A,B의 묶음이다. 다른 줄의 마주보는 좌석은 이웃이 아니다. 사선 두 칸을 빼고 C,D의 이웃쌍을 세면 끝 배치는 같은 줄1쌍+다른 줄3쌍, 가운데 배치는 다른 줄3쌍뿐이다. 전체4320에서 두 사람도 이웃인1056을 빼 정답3264.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 줄에 $4$개씩 두 줄로 모두 $8$개의 좌석이 있는 케이블카가 있다. 네 학생 $A$, $B$, $C$, $D$를 포함한 $6$명의 학생이 서로 다른 좌석에 앉아 $A$, $B$는 같은 줄에서 바로 옆 좌석에 이웃하여 앉고 $C$, $D$는 서로 이웃하지 않게 앉는 경우의 수는? (단, 같은 줄에서 바로 옆 좌석끼리만 이웃한 것으로 보고, 다른 줄에 마주보는 좌석은 이웃하지 않는 것으로 본다. 빈 좌석이 생길 수 있다.) [4.8점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "2행4열 좌석에서 아래 줄 끝 두 칸이 A,B의 묶음이다. 다른 줄의 마주보는 좌석은 이웃이 아니다. 사선 두 칸을 빼고 C,D의 이웃쌍을 세면 끝 배치는 같은 줄1쌍+다른 줄3쌍, 가운데 배치는 다른 줄3쌍뿐이다. 전체4320에서 두 사람도 이웃인1056을 빼 정답3264. 2행4열 좌석에서 아래 줄 가운데 두 칸이 A,B의 묶음이다. 다른 줄의 마주보는 좌석은 이웃이 아니다. 사선 두 칸을 빼고 C,D의 이웃쌍을 세면 끝 배치는 같은 줄1쌍+다른 줄3쌍, 가운데 배치는 다른 줄3쌍뿐이다. 전체4320에서 두 사람도 이웃인1056을 빼 정답3264.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "첫 점은 배치의 평행이동 기준점이다. 좌석은 추상 단위 격자, 정삼각형 도형은 x=1/2인 정확한 예시이며 원문 모든 길이관계 보존. 나머지는 기준점에서 정확 좌표만큼 TRANSLATE_POINT로 유도.",
+      "mappedTo": "construction nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "2행4열 좌석에서 아래 줄 끝 두 칸이 A,B의 묶음이다. 다른 줄의 마주보는 좌석은 이웃이 아니다. 사선 두 칸을 빼고 C,D의 이웃쌍을 세면 끝 배치는 같은 줄1쌍+다른 줄3쌍, 가운데 배치는 다른 줄3쌍뿐이다. 전체4320에서 두 사람도 이웃인1056을 빼 정답3264."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-20",
+          "10",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      1.0,
+      4.0
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1",
+        "y": "-11"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": []
+    },
+    "formula": "-x^2 + 10*x - 20"
+  },
+  "caption": "꼭짓점의 x좌표5는[1,4]밖이다. 구간에서 증가하므로 왼쪽 끝(1,−11)에서 최소−11,오른쪽 끝(4,4)에서 최대4이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주어진 $x$의 값의 범위에서 다음 이차함수의 최댓값과 최솟값을 구하시오.\n⑴ $y=x^2-8x+6$ ($0\\le x\\le 5$)\n⑵ $y=-x^2+10x-20$ ($1\\le x\\le 4$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "꼭짓점의 x좌표5는[1,4]밖이다. 구간에서 증가하므로 왼쪽 끝(1,−11)에서 최소−11,오른쪽 끝(4,4)에서 최대4이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점의 x좌표5는[1,4]밖이다. 구간에서 증가하므로 왼쪽 끝(1,−11)에서 최소−11,오른쪽 끝(4,4)에서 최대4이다."
+  ],
+  "solutionDisplayPolicy": "SHOW_SOLUTION_STEPS_AND_ANSWER"
+}

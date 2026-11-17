@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-9"
+      },
+      {
+        "id": "L",
+        "x": "-4",
+        "y": "-8",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "27"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L"
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "T"
+    }
+  },
+  "caption": "세로축 T=S/3=a²+6a이다. 원래 허용구간1≤a≤3은 축−3 오른쪽이라 증가한다. 음수 a는 보조곡선 모양 비교용일 뿐 허용값이 아니다. S(1)=21,S(3)=81, 정답 M+m=102.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)=x^2-2(a+3)x+a^2+6a$ $(1\\le a\\le3)$의 그래프가 $x$축과 만나는 서로 다른 두 점을 각각 $A$, $B$라 하고, $y$축과 만나는 점을 $C$라 하자. 삼각형 $ABC$의 넓이의 최댓값이 $M$, 최솟값이 $m$일 때, $M+m$의 값은? [4.7점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "a=1의 예시 y=(x−1)(x−7)이다. 일반적으로 A=(a,0),B=(a+6,0),C=(0,a²+6a), 밑변6과 높이 a²+6a로 넓이 S=3a²+18a. 다음 패널에서 범위를 비교하며 정답 M+m=102. 세로축 T=S/3=a²+6a이다. 원래 허용구간1≤a≤3은 축−3 오른쪽이라 증가한다. 음수 a는 보조곡선 모양 비교용일 뿐 허용값이 아니다. S(1)=21,S(3)=81, 정답 M+m=102.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "세로축 T=S/3=a²+6a이다. 원래 허용구간1≤a≤3은 축−3 오른쪽이라 증가한다. 음수 a는 보조곡선 모양 비교용일 뿐 허용값이 아니다. S(1)=21,S(3)=81, 정답 M+m=102."
+  ]
+}
