@@ -462,21 +462,72 @@ async function context(root) {
   return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityMap:identity,identityByJoin,runtimes,owners};
 }
 
-export function selectTargets(root, state, config, head) {
+// Read-only run instrumentation. It is written only into the (uncommitted) run report outside `replayBatch`,
+// so no committed output, cursor, replay digest or planner decision depends on it.
+export const INSTRUMENTATION_VERSION = 'archive-main-merge-meta-instrumentation-v1';
+const TOP_N = 20;
+const byName = (a,b) => a<b?-1:a>b?1:0;
+export function topCounts(counts, limit=TOP_N) {
+  const rows=[...counts.entries()].sort((a,b)=>b[1]-a[1]||byName(a[0],b[0]));
+  const rest=rows.slice(limit);
+  return {top:rows.slice(0,limit).map(([name,count])=>({name,count})),otherNames:rest.length,otherCount:rest.reduce((n,[,c])=>n+c,0)};
+}
+function topFileRows(files, limit=TOP_N) {
+  const rows=[...files.entries()].sort((a,b)=>b[1].total-a[1].total||byName(a[0],b[0])),rest=rows.slice(limit);
+  return {top:rows.slice(0,limit).map(([name,v])=>({name,...v})),otherFiles:rest.length,otherCount:rest.reduce((n,[,v])=>n+v.total,0)};
+}
+// Oldest pending baseCommit by committer date; null when Git cannot resolve it (never fatal for a report).
+function oldestBase(root, counts) {
+  const shas=[...counts.keys()].filter(c=>/^[a-f0-9]{40}$/.test(c));
+  if(!shas.length)return null;
+  try {
+    const rows=execFileSync('git',['log','--no-walk=sorted','--stdin','--format=%H %cI'],{cwd:root,input:shas.join('\n')+'\n',encoding:'utf8',
+      maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']}).trim().split('\n').filter(Boolean);
+    const [commit,committedAt]=rows[rows.length-1].split(' ');
+    return {commit,committedAt,count:counts.get(commit)};
+  } catch { return null; }
+}
+export function summarizeBacklog(root, pending) {
+  const entries=Object.values(pending||{}),bases=new Map(),atoms=new Map(),kinds=new Map();
+  const out={pendingTotal:entries.length,withoutAttemptSignature:0,attemptedRefused:0,neverTried:0,entriesWithMultipleReasons:0,
+    reasonAtomTotal:0,reasonsNote:'one pending entry may carry several reasons, so reason counts sum to at least attemptedRefused'};
+  for(const e of entries) {
+    if(!e||typeof e!=='object'){out.malformedEntries=(out.malformedEntries||0)+1;continue;}
+    if(!e.attemptSignature)out.withoutAttemptSignature++;
+    if(Array.isArray(e.lastReasons)&&e.lastReasons.length) {
+      out.attemptedRefused++;
+      if(e.lastReasons.length>1)out.entriesWithMultipleReasons++;
+      for(const reason of e.lastReasons) {
+        const atom=String(reason).slice(0,120),kind=atom.split(':')[0];
+        out.reasonAtomTotal++;atoms.set(atom,(atoms.get(atom)||0)+1);kinds.set(kind,(kinds.get(kind)||0)+1);
+      }
+    } else if(!e.attemptSignature)out.neverTried++;
+    if(e.baseCommit)bases.set(e.baseCommit,(bases.get(e.baseCommit)||0)+1);
+  }
+  return {...out,reasons:topCounts(atoms,25),reasonKinds:topCounts(kinds,25),distinctBaseCommits:bases.size,oldestBaseCommit:oldestBase(root,bases)};
+}
+
+export function selectTargets(root, state, config, head, stats) {
   const base=state.lastProcessedCommit||config.bootstrapBase;
   if(!/^[a-f0-9]{40}$/.test(base||''))throw Error('BOOTSTRAP_BASE_REQUIRED');
   git(root,'merge-base','--is-ancestor',base,head);
   const files=git(root,'diff','--name-only','-z',base,head,'--','archive/exams/').split('\0').filter(p=>p.endsWith('.js'));
   const selected=new Map(Object.entries(structuredClone(state.pending||{})));
+  // Optional, read-only origin bookkeeping for the run report; the returned targets are unaffected.
+  if(stats){stats.diffKeys=new Set();stats.pilotKeys=new Set();stats.pendingBefore=selected.size;stats.diffFiles=files.length;stats.diffAlsoPending=0;}
   for(const rel of files) {
     const source=sourcePath(rel.slice('archive/exams/'.length));
     if(!fs.existsSync(path.join(root,rel)))continue; // Native identity sync owns deletions; never invent a UID relocation.
     const now=loadBank(fs.readFileSync(path.join(root,rel),'utf8'),rel),before=archived(root,base,source);
-    for(let i=0;i<now.length;i++)if(!equal(now[i],before[i])) selected.set(`${source}#${i+1}`,{sourceArchiveFile:source,sourceOrdinal:i+1,baseCommit:base});
+    for(let i=0;i<now.length;i++)if(!equal(now[i],before[i])) {
+      const key=`${source}#${i+1}`;
+      if(stats){stats.diffKeys.add(key);if(selected.has(key))stats.diffAlsoPending++;}
+      selected.set(key,{sourceArchiveFile:source,sourceOrdinal:i+1,baseCommit:base});
+    }
   }
   for(const seed of config.pilotTargets||[]) {
     const key=`${sourcePath(seed.sourceArchiveFile)}#${seed.sourceOrdinal}`;
-    if(!state.completedPilots?.includes(key))selected.set(key,{...seed,baseCommit:seed.baseCommit||base,pilot:true});
+    if(!state.completedPilots?.includes(key)){if(stats)stats.pilotKeys.add(key);selected.set(key,{...seed,baseCommit:seed.baseCommit||base,pilot:true});}
   }
   return [...selected.entries()].sort(([a],[b])=>a.localeCompare(b,'en'));
 }
@@ -516,6 +567,28 @@ function replayBatch(root, file, {config,state,head}) {
   return binding;
 }
 
+// Instrumentation must never decide whether a registration run succeeds: any failure only drops the numbers.
+export function safeInstrumentation(build) {
+  try { return build(); }
+  catch(error) { return {schemaVersion:INSTRUMENTATION_VERSION,error:String(error?.message||error).slice(0,160)}; }
+}
+const newTally = targets => ({targets,attempted:0,applied:0,alreadyRegistered:0,refused:0,unchangedSkipped:0,notReachedBudget:0});
+function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,tally,origins,files,unchangedFiles,outputs,touched}) {
+  const o=name=>({targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0,...origins.get(name)});
+  const origin=originStats?{available:true,
+    thisMergeDiff:{changedExamFiles:originStats.diffFiles,questions:o('diff').targets,attempted:o('diff').attempted,unchangedSkipped:o('diff').unchangedSkipped,
+      notReachedBudget:o('diff').notReachedBudget,alsoQueuedBefore:originStats.diffAlsoPending},
+    queuedBacklog:{questions:o('backlog').targets,attempted:o('backlog').attempted,unchangedSkipped:o('backlog').unchangedSkipped,notReachedBudget:o('backlog').notReachedBudget},
+    pilot:{questions:o('pilot').targets,attempted:o('pilot').attempted},
+    thisMergeQuestionsNotReachedBecauseOfBudget:o('diff').notReachedBudget}:{available:false};
+  const paths=[...outputs.keys()];
+  return {schemaVersion:INSTRUMENTATION_VERSION,
+    run:{batchLimit:max,...tally,registeredUids:touched,requestFiles:paths.filter(p=>p.startsWith(`${AUTO}/requests/`)).length,
+      receiptFiles:paths.filter(p=>p.startsWith(`${AUTO}/receipts/`)).length},
+    attemptedByFile:topFileRows(files),unchangedSkippedByFile:topCounts(new Map([...unchangedFiles].map(([f,v])=>[f,v.total]))),
+    origin,pendingBeforeRun:pendingBefore,backlogAfterRun:summarizeBacklog(root,pendingAfter)};
+}
+
 export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256}={}) {
   root=path.resolve(root);
   if(replayReportPath&&doWrite)throw Error('AUTO_META_REPLAY_READ_ONLY');
@@ -528,7 +601,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const retryRef=replay?.targets?.[0]?.[1]?.canonicalParentRetry || (canonicalParentRetryRequestPath?{path:canonicalParentRetryRequestPath,sha256:canonicalParentRetryRequestSha256}:null);
   const parentRetry=retryRef?loadCanonicalParentRetry(root,retryRef.path,retryRef.sha256):null;
   if(canonicalParentRetryRequestSha256&&!parentRetry)throw Error('CANONICAL_PARENT_RETRY:REQUEST_REQUIRED');
-  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head);
+  const originStats=replay||parentRetry?null:{};
+  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head,originStats);
   if(parentRetry&&!equal(targets,canonicalParentRetryTargets(parentRetry)))throw Error('CANONICAL_PARENT_RETRY:TARGET_SCOPE');
   if(parentRetry)for(const [key,target]of targets) {
     const queued=state.pending?.[key],item=parentRetry.request.items.find(r=>r.sourceOrdinal===target.sourceOrdinal);
@@ -542,6 +616,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];
     if(replay){report.replayVerified=true;report.replayed=0;report.replayOf=replay.sha256;}
     else report.replayBatch={...batch,sha256:hash(batch),stateAfterSha256:hash(state)};
+    if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max:config.maxQuestionsPerRun||100,originStats,pendingBefore:Object.keys(state.pending||{}).length,
+      pendingAfter:state.pending,tally:newTally(0),origins:new Map(),files:new Map(),unchangedFiles:new Map(),outputs:new Map(),touched:0}));
     if(reportPath)fs.writeFileSync(reportPath,json(report));return report;
   }
   const c=await context(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
@@ -559,9 +635,14 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   if(parentRetry&&targets.length>max)throw Error('CANONICAL_PARENT_RETRY:BATCH_LIMIT');
   const sourceDelta=git(root,'diff','--name-only',state.lastProcessedCommit,head,'--','archive/exams/').trim();
   let acted=0;
+  const tally=newTally(targets.length),origins=new Map(),fileTally=new Map(),unchangedFiles=new Map();
+  const originOf=key=>!originStats?'unknown':originStats.diffKeys.has(key)?'diff':originStats.pilotKeys.has(key)?'pilot':'backlog';
+  const count=(name,field)=>{const row=origins.get(name)||{targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0};row[field]++;origins.set(name,row);};
+  const fileRow=(map,file)=>{let row=map.get(file);if(!row){row={total:0,registered:0,alreadyRegistered:0,refused:0};map.set(file,row);}return row;};
   for(let ti=0;ti<targets.length;ti++) {
     const [key,target]=targets[ti];
-    if(acted>=max){nextState.pending[key]=target;continue;}
+    count(originOf(key),'targets');
+    if(acted>=max){nextState.pending[key]=target;tally.notReachedBudget++;count(originOf(key),'notReachedBudget');continue;}
     const attemptedTarget=structuredClone(target);
     const source=sourcePath(target.sourceArchiveFile),ordinal=Number(target.sourceOrdinal),rel=`archive/exams/${source}`;
     if(!Number.isInteger(ordinal)||ordinal<1)throw Error('INVALID_TARGET_ORDINAL');
@@ -582,6 +663,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
       if(!replay&&state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
+        tally.unchangedSkipped++;count(originOf(key),'unchangedSkipped');fileRow(unchangedFiles,source).total++;
         continue;
       }
       acted++;attempted=true;target.attemptSignature=attemptSignature;
@@ -626,6 +708,11 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         if(target.pilot&&!nextState.completedPilots.includes(key))nextState.completedPilots.push(key);
       } else nextState.pending[key]={...target,lastReasons:result.reasons};
     }catch(e) { if(!attempted)acted++;result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...target,lastReasons:result.reasons}; }
+    tally.attempted++;count(originOf(key),'attempted');
+    {const row=fileRow(fileTally,source);row.total++;
+      if(result.status==='APPLY'){tally.applied++;row.registered++;}
+      else if(result.status==='ALREADY_REGISTERED'){tally.alreadyRegistered++;row.alreadyRegistered++;}
+      else{tally.refused++;row.refused++;}}
     attemptedTargets.push([key,attemptedTarget]);attemptedResults.push(structuredClone(result));
     if(replay) {
       const before=replay.results[ti],expected=before.status==='APPLY'?'ALREADY_REGISTERED':before.status;
@@ -671,6 +758,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
   report.applied=touched.size;report.pending=Object.keys(nextState.pending).length;report.plannedPaths=[...outputs.keys()];
+  if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max,originStats,pendingBefore:Object.keys(state.pending||{}).length,pendingAfter:nextState.pending,
+    tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size}));
   if(doWrite)for(const [rel,obj]of outputs)write(root,rel,obj);
   if(reportPath)fs.writeFileSync(reportPath,json(report));
   return report;
