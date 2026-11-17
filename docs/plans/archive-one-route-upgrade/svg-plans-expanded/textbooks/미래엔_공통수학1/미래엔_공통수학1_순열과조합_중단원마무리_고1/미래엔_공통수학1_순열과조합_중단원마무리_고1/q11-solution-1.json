@@ -1,0 +1,343 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P20",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P30",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P01",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P11",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P21",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P31",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P02",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P12",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P22",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P32",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P00"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P00",
+    "P10",
+    "P20",
+    "P30",
+    "P01",
+    "P11",
+    "P21",
+    "P31",
+    "P02",
+    "P12",
+    "P22",
+    "P32"
+  ],
+  "hiddenPointNames": [
+    "P00",
+    "P10",
+    "P20",
+    "P30",
+    "P01",
+    "P11",
+    "P21",
+    "P31",
+    "P02",
+    "P12",
+    "P22",
+    "P32"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P00",
+        "P30"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P01",
+        "P31"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P02",
+        "P32"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P00",
+        "P02"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P10",
+        "P12"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P20",
+        "P22"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "P30",
+        "P32"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "caption": "원본의 4열×3행 등간격 점 12개를 모두 유지했다. 전체 세 점 선택에서 일직선 위의 세 점을 빼야 삼각형이 된다. 첫 패널은 가로와 세로 방향을 강조한다. 가로 한 줄에는 네 점이 있어 그중 세 점을 고르는 방법을 따로 세어야 한다. 세로 한 줄의 세 점과 구별해 세며 최종 삼각형 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 같은 간격으로 배열된 12개의 점 중에서 세 점을 꼭짓점으로 하는 삼각형의 개수를 구하시오.\n<img src=\"q11.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본 q11.png 직접 확인: 등간격4열3행. 전체12C3=220. 수평3·4C3=12,수직4,기울기±1대각선4,일직선20 제외→200. 기울기1/2등은3행내정수격자에서3점불가. 가로세로패널/대각선패널분리,정답200미표시. P00=(0,0)은 등간격 격자 배치의 기준점이며 원문 좌표가 아니다. 다른 점은 공통 단위 간격으로 평행이동 구성한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 4열×3행 등간격 점 12개를 모두 유지했다. 전체 세 점 선택에서 일직선 위의 세 점을 빼야 삼각형이 된다. 첫 패널은 가로와 세로 방향을 강조한다. 가로 한 줄에는 네 점이 있어 그중 세 점을 고르는 방법을 따로 세어야 한다. 세로 한 줄의 세 점과 구별해 세며 최종 삼각형 개수는 쓰지 않는다."
+  ]
+}
