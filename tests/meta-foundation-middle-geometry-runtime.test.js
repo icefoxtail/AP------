@@ -765,11 +765,11 @@ if (rhsRetainedInputs.length) {
 }
 const originalReceiptInputs = retainedInputs.filter(input =>
   retainedApprovals.get(input.current.questionUid).kind === "EXACT_ISSUED_ORIGINAL_RECEIPT_SOURCE_BLOCK");
-assert.strictEqual(originalReceiptInputs.length, 11, "the actual observed original-receipt scope must remain eleven");
+assert.strictEqual(originalReceiptInputs.length, 23, "the actual observed original-receipt scope must remain twenty-three");
 assert.strictEqual(originalReceiptInputs.filter(input =>
-  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "CANONICAL_LABELS_MISSING").length, 9);
+  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "CANONICAL_LABELS_MISSING").length, 20);
 assert.strictEqual(originalReceiptInputs.filter(input =>
-  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "IDENTITY_SOURCE_FINGERPRINT_MISMATCH").length, 2);
+  retainedApprovals.get(input.current.questionUid).expectedPlanReason === "IDENTITY_SOURCE_FINGERPRINT_MISMATCH").length, 3);
 const originalGroups = new Map();
 for (const input of originalReceiptInputs) {
   const proof = retainedApprovals.get(input.current.questionUid);
@@ -780,7 +780,20 @@ for (const input of originalReceiptInputs) {
   assert.deepStrictEqual(proof.proof.currentPlan.reasons, [proof.expectedPlanReason]);
   assert.strictEqual(proof.proof.newMetadataApprovals, 0);
 }
-assert.deepStrictEqual([...originalGroups.values()].map(rows => rows.length).sort((a, b) => a - b), [1, 10]);
+assert.deepStrictEqual([...originalGroups.values()].map(rows => rows.length).sort((a, b) => a - b), [1, 10, 12]);
+const e006OriginalInputs = originalGroups.get("m3s2-e006-residual-current410-r8-20261116");
+assert.deepStrictEqual(e006OriginalInputs.map(input => input.ordinal).sort((a, b) => a - b),
+  [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 21, 22], "only the actual E006 twelve may enter the added source block");
+for (const input of e006OriginalInputs) {
+  const kept = retainedApprovals.get(input.current.questionUid);
+  assert.strictEqual(kept.expectedPlanReason,
+    input.ordinal === 3 ? "IDENTITY_SOURCE_FINGERPRINT_MISMATCH" : "CANONICAL_LABELS_MISSING");
+  assert.strictEqual(kept.declaredInputs.actualReadonlyObservation.snapshot,
+    "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f");
+  assert.strictEqual(kept.declaredInputs.actualReadonlyObservation.report.gitBlobSha1,
+    "d4f20db9affab008ad98ace5cff40f6bacff990e");
+  assert.strictEqual(kept.proof.currentNativeReady, false);
+}
 let originalReceiptRejections = 0;
 for (const inputs of originalGroups.values()) {
   const input = inputs.find(value => value.ordinal === 4) || inputs[0];
@@ -890,7 +903,7 @@ for (const inputs of originalGroups.values()) {
       /FIXED_ORIGINAL_RECEIPT/);
     originalReceiptRejections += 1;
 
-    // These doubles test refusal-shape handling only. The actual eleven Native
+    // These doubles test refusal-shape handling only. The actual twenty-three Native
     // and planQuestion calls were already made above from untouched production.
     const basePlan = { status: "SUPPLEMENT_PENDING", reasons: [baseline.expectedPlanReason],
       questionUid: input.current.questionUid, sourceArchiveFile: input.source, sourceOrdinal: input.ordinal };
@@ -921,7 +934,7 @@ for (const inputs of originalGroups.values()) {
     assert.deepStrictEqual(restored.authenticatedDrifts, baseline.authenticatedDrifts);
   } finally { fs.rmSync(fixtureRoot, { recursive: true, force: true }); }
 }
-console.log("PASS retained issued original receipt11 whole approvals with current Native BLOCKED; " +
+console.log("PASS retained issued original receipt23 whole approvals with current Native BLOCKED; " +
   originalReceiptRejections + " rejected corruptions; current Native approvals 0; new metadata approvals 0");
 
 console.log("CURRENT_NATIVE_READINESS " + JSON.stringify({

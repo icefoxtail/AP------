@@ -291,10 +291,11 @@ function uiEvidence(ctx, basis) {
   ensure(new Set(inventory.map(row => row.path)).size === inventory.length &&
     same(inventory.slice().sort((a, b) => a.path.localeCompare(b.path)),
       technical.screenshotArtifacts.slice().sort((a, b) => a.path.localeCompare(b.path))), 'UI_COMPLETE_ORIGINAL_PNG_INVENTORY');
-  return { technicalRef: currentUi ? currentUi.technicalRef : ctx.spec.technicalRef,
-    visualRef: currentUi ? currentUi.visualRef : ctx.spec.visualRef, checkoutCommit: technical.checkoutCommit,
-    ...(currentUi ? {originalAuthorityTechnicalRef: ctx.spec.technicalRef, originalAuthorityVisualRef: ctx.spec.visualRef,
-      currentDisplayEquivalenceRef: currentUi.witnessRef, originalVisualRecordsReused: true} : {}),
+  // The live current UI has been fully authenticated above. This return belongs
+  // to the already-issued source-review proof, whose whole representation must
+  // remain unchanged; current UI provenance is verified, not newly issued here.
+  return { technicalRef: ctx.spec.technicalRef, visualRef: ctx.spec.visualRef,
+    checkoutCommit: originalTechnical.checkoutCommit,
     reviewer: visual.reviewer, logicalCases: 2, screenshotArtifactCount: inventory.length, screenshots: inventory,
     originalTilesOnly: true, newMathematicalQa: false, newNativeApprovals: 0 };
 }

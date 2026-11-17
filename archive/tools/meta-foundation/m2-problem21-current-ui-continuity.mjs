@@ -752,11 +752,15 @@ export function verifyM2Problem21CurrentUiMetadata({root,binding,technical,origi
     }else{
       const old=exactOne(originalTechnical.results,r=>r.questionUid===item.questionUid&&r.viewport?.name===viewport,'ORIGINAL_CASE');
       const obs=exactOne(originalObserved.cases,r=>r.questionUid===item.questionUid&&r.viewport===viewport,'ORIGINAL_OBSERVATION');
-      if(bound.observationMode!=='ORIGINAL_OBSERVATION_SAME_PNG_AND_GEOMETRY'||!same(bound.observationRef,binding.originalObservedRef)||
-          bound.observationRecordSha256!==hash(obs)||obs.decision!=='DISPLAY_CONTINUITY_ACCEPTABLE'||
+      // This immutable transport case carries the original observation-record
+      // digest. It is not a digest of the transport case that contains it.
+      if(!exact(obs,['key','questionUid','sourceOrdinal','viewport','decision','observationRecordSha256','screenshots'])||
+          obs.key!==item.key||obs.sourceOrdinal!==item.sourceOrdinal||!SHA256.test(obs.observationRecordSha256||'')||
+          bound.observationMode!=='ORIGINAL_OBSERVATION_SAME_PNG_AND_GEOMETRY'||!same(bound.observationRef,binding.originalObservedRef)||
+          bound.observationRecordSha256!==obs.observationRecordSha256||obs.decision!=='DISPLAY_CONTINUITY_ACCEPTABLE'||
           !same(obs.screenshots,old.screenshots)||!same(result.screenshots,old.screenshots)||!same(result.geometry,old.geometry)||
           r.oldObservationReused!==true||r.newVisualRequired!==false||r.screenshotsWholeExact!==true||r.geometryWholeExact!==true||
-          r.originalObservationRecordSha256!==hash(obs)||r.oldScreenshotInventorySha256!==hash(old.screenshots)||
+          r.originalObservationRecordSha256!==obs.observationRecordSha256||r.oldScreenshotInventorySha256!==hash(old.screenshots)||
           r.currentScreenshotInventorySha256!==hash(result.screenshots))fail('ORIGINAL_SAME_PNG_OBSERVATION_REUSE');
       reused++;
     }

@@ -647,6 +647,189 @@ const ORIGINAL_RECEIPT_BLOCKS = Object.freeze({
         "sha256": "1142df9a34c2970ff2b6d89cc496292e74538bb57e9f26cfd14cf2493dbf962a",
         "gitBlobSha1": "063f37d2fe3a161eaf16e6f90d9c795f574c3e12"
       }
+    },
+    {
+      "key": "E006_ORDINARY_FINAL_QA_12",
+      "requestId": "m3s2-e006-residual-current410-r8-20261116",
+      "source": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "expectedQuestions": 23,
+      "observation": {
+        "snapshot": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+        "runId": "44041254171",
+        "job": "observe-current-main",
+        "report": {
+          "gitBlobSha1": "d4f20db9affab008ad98ace5cff40f6bacff990e",
+          "sha256": "09d60da9a770ee2c3440612b12acf4746f7f5cadc8c33122a421518bbc24a87a",
+          "bytes": 55235
+        }
+      },
+      "receipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e006-residual-current410-r8-20261116.json",
+        "bytes": 208512,
+        "sha256": "73176562cdc8dd91b7025f23cd9d9595c5acbfa6470c3403876367b9f7068677",
+        "gitBlobSha1": "253c5aeae229085d9bf6bb51942f114743981d44"
+      },
+      "issuedSource": {
+        "bytes": 63775,
+        "sha256": "c2a0244074bd4257961b5facb672786361ae88526c6b35f55beb3b1c595d93fb",
+        "gitBlobSha1": "305e21cf2fb3155b46d3fa7937cde4e4c0e5de18"
+      },
+      "observedSource": {
+        "bytes": 64226,
+        "sha256": "b0e801cecba43ad4cffd2009a1a5cb1a5e533330481bfd24e9401e0d7480470e",
+        "gitBlobSha1": "a06c36b865b617f8c327cc90e1f4a931668a3e19"
+      },
+      "changes": [
+        {
+          "sourceOrdinal": 3,
+          "fields": [
+            "answer",
+            "content",
+            "solution"
+          ],
+          "beforeWholeSha256": "9e4b23a6e4af7f4d98a02f0dedd506a3bd92b3f0d51856c053716d1e7b344ec3",
+          "afterWholeSha256": "9b61d0d47383d73f5f09e45e6d9472231fbabaafee73891f2485eb8df06a5813"
+        }
+      ],
+      "subjects": [
+        {
+          "questionUid": "qid_v1_1629824d0b99dd6df92f964bb2f7681caddfbfd33e01e5d02bf92163ea060cda",
+          "sourceOrdinal": 1,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "1b0a4c316246ae9bb2af861345ee968a4c5af2637d1036a9bf6b5080a2fc5cc3",
+          "identityWholeSha256": "2fda55d84515f6cb4647be55b79992f60f49a735fb858b454e0ddbaddf4fcfd9",
+          "runtimeWholeSha256": "1ccc97ec1f7dc9c5d21a5e927fa78a3e6121ecea8df1081ba9a762f05071b8ee",
+          "currentQuestionWholeSha256": "881bd58bfeedebfd455378b90752515806c725c44c91b06ee3f4744964e13cf1"
+        },
+        {
+          "questionUid": "qid_v1_7716a1d4f757041ef0f10c447e3c22d4d1bbeee9d6b01c1cdf531f6ec9fb9c1f",
+          "sourceOrdinal": 2,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "535b909d876f1b258aa1cf828039cfe3ca440140b435db68e8da1eedf0762249",
+          "identityWholeSha256": "f6563076f880c2b04f16b50294c5a6137674c92c18d60206c8f90cbb956ebc68",
+          "runtimeWholeSha256": "d914c929f414bbfb135ca9d0fd53b189fbf94a8a047167f77b0b11c3cde3139a",
+          "currentQuestionWholeSha256": "103f39c23efc41dd28043295b10af6a921ac9b862e1a5fce2fb96bf1c56bcdee"
+        },
+        {
+          "questionUid": "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32",
+          "sourceOrdinal": 3,
+          "expectedPlanReason": "IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
+          "metadataWholeSha256": "e97c38b4f9e82b1b7aebd13ce1c4f895905d501d6424db75de06ec6ca5071baa",
+          "identityWholeSha256": "a69ff87701146ba58077bfdfca8a09b742482f442bfc464f81aa66ce75995e91",
+          "runtimeWholeSha256": "60330133912bc21e6393e37f2207651df40faa3ead9fd8a078603011c4d80cdf",
+          "currentQuestionWholeSha256": "9b61d0d47383d73f5f09e45e6d9472231fbabaafee73891f2485eb8df06a5813"
+        },
+        {
+          "questionUid": "qid_v1_c2f698969ecc2c3a25f4a02f14dedfdac862634ee41cfc129fc818430ad3fb9c",
+          "sourceOrdinal": 4,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "64f6f4e6b21b31769c965a80f8e3699dbc58be709073c61f6203d8fb9a3874fb",
+          "identityWholeSha256": "b2902d975f9be69e4cd76b519628f102621f7fde51de85fb987e5333be207c31",
+          "runtimeWholeSha256": "82ac157d104f561c599cf5b95589749b3d0ef4dc0041b3be61ff8dd8e091399b",
+          "currentQuestionWholeSha256": "4cd8b90c75bf8b28d6941d1135d82b8a3b584b1301ce9c75da7fe0bf20f70824"
+        },
+        {
+          "questionUid": "qid_v1_4b65c4d5f07e51a20f54254f3cb58c9896ffb5937c786ce253157270ef683c1a",
+          "sourceOrdinal": 5,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "04c892c6d909d7d74004427ce5a193cf2b2105758bc1180ad0e0a0e5573b36cd",
+          "identityWholeSha256": "01f120c525f0d832f9ce23841b27d1a4867d7418c8a9154fb790eab7dacfd030",
+          "runtimeWholeSha256": "861a4ea8a9737858a01e4da2c249898da1ca898fd847bdfc06dc787df835446a",
+          "currentQuestionWholeSha256": "05a69be5f5aa3f668068fbca57e326e36115d312322d580c9d12ad8b7f289a1c"
+        },
+        {
+          "questionUid": "qid_v1_12860943ddaef3358660134a0d8d5007891be0a15104be47196a1797e9d5cc61",
+          "sourceOrdinal": 6,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "bbfdf7edd65876b63794fc5570291acda7bf0e0beddaaf4f7942e9ce8342df89",
+          "identityWholeSha256": "760b5999bafe8d07ad7d446846cf19a331aec2a55229f030a0f07e85aab2b6cb",
+          "runtimeWholeSha256": "3c32986bf41c3f0d3782244dcae31fb0da54d7156d9b8356fdeba2a38956ec1a",
+          "currentQuestionWholeSha256": "8544cf9f41c2e2600f950ebbdbb4df1e1e5de538ef59bbf875d114f8de03ec72"
+        },
+        {
+          "questionUid": "qid_v1_8c2f1c37ae92a5f8d9c4248d0b4488395355b22592f7956c514c7af797045a3e",
+          "sourceOrdinal": 7,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "dd30d90fc33a1131af987054e9cbb0b2633cab6441b4169591e14cba8cbe7503",
+          "identityWholeSha256": "2a323be5fe19d56f9d578e13be102a843b9aad2384ee8f1a9d8f6109ad59f656",
+          "runtimeWholeSha256": "b00dd31549abc6e34eb6cd93bc5b2d55d0bfe4555614c5f9b6d67153a818aa58",
+          "currentQuestionWholeSha256": "e2f93e1239d916ae609fe2591e105a0df4bd1ac37dbddc0cad90cc8c344e5df4"
+        },
+        {
+          "questionUid": "qid_v1_006d3d7fb3c9f11a0355c15b8df9cc7ec43e9de53da5b4e7d3171318ff7e23d3",
+          "sourceOrdinal": 8,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "97b0a8051bbc2bd40944caad64ca6e700e079a2e8e9379c7f3659defabb48595",
+          "identityWholeSha256": "dbca474d6f08bfb044a22493a36ecb8741bae1bc4951f3bb44812f1120592246",
+          "runtimeWholeSha256": "805624f706e71ee36cc4511bbc014e4858cf37a5864991d8d13e241e1d4b2998",
+          "currentQuestionWholeSha256": "b99e57e6a75aca02c096ae218404ad7102caa7d9d7992b981d91bc93576e3f9b"
+        },
+        {
+          "questionUid": "qid_v1_f02ca0c6d6f22a766861024269c0d890a68808e08b50949ab0ecc68d1d5268ed",
+          "sourceOrdinal": 10,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "d775755247e7bc544d05e9db22d642441c49af7583f08e0d2af5823c224af42a",
+          "identityWholeSha256": "1ee3fa6eff3d50b28d3cd85a8bd07a7cf232564ae72fbb87a60cbd5d8fa81e4e",
+          "runtimeWholeSha256": "e7b9ee86d024202c307e862674c501acb86a416a830555a80e8db93bcb6586b6",
+          "currentQuestionWholeSha256": "5a1ed553e3556f595235dc4141f3d30a212e978c83522699f3fc78721cfbc521"
+        },
+        {
+          "questionUid": "qid_v1_a2f1a03cd4f81c3ee3d3dcdff678cee5f47b574e3301c902048786b927e22e56",
+          "sourceOrdinal": 11,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "41514f3823b5eb41467d0c00dbb232530ec0a6809988ecf74473986507a6b50f",
+          "identityWholeSha256": "e1a62b8a298c4ff3c3952b7aa07cefa04271933082944075950658d94999f4f2",
+          "runtimeWholeSha256": "cc782ecb30e23397334d1a5b5c4b20fcbae76c6bb9dfe5721998dd486421ce33",
+          "currentQuestionWholeSha256": "6d22f5f5e17813bb8a2b94a578836e8951ae5a7020de5c15fe9fd8c18788a1ba"
+        },
+        {
+          "questionUid": "qid_v1_ab1ed1af925a924cf90ec8f3e94c66f7ae52b07ac17faa277ab571c89c853c09",
+          "sourceOrdinal": 21,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "22cd7995455e33b814ce82f58499f9341c2132d702abdf76e9771f1cfd9a97cb",
+          "identityWholeSha256": "f3e0428963047a0e5ed88de5957229a51cd018b8161ca730159c53af5fe190c8",
+          "runtimeWholeSha256": "83711665c8d339913cc6086f3a6b6f546d405c8d9dc88b7c22457aee9d14e67b",
+          "currentQuestionWholeSha256": "1a58f9ad2cc519019f8cd51c1753f2ff0599153285d837348a9aa4925ae06243"
+        },
+        {
+          "questionUid": "qid_v1_8d53b4019a9c831c7abc15952c4eec1b1c5901130240eaf4119697527a595993",
+          "sourceOrdinal": 22,
+          "expectedPlanReason": "CANONICAL_LABELS_MISSING",
+          "metadataWholeSha256": "01818d9e63f7d276dc29a6c8afdfd058410a819ddf596b4d3727873fd0d90757",
+          "identityWholeSha256": "af8326d2da0e402d5ab20d41e4a8b40c7fc6739ab5a4df27e0a0e350332ee90e",
+          "runtimeWholeSha256": "29710fb31b76cc111c8ed47ba3322b5377c5ebdea851404ef14f583bb04072f6",
+          "currentQuestionWholeSha256": "8c58f057f8307b308f7fa90db77ab1b075f8d1fcb411062c3b1f8057ee536303"
+        }
+      ],
+      "originalSources": [
+        {
+          "bytes": 55265,
+          "sha256": "676734f37b99f50d43c9c3b3eba48c0c2d07bff28a95a2964521f0ab4581cdc8",
+          "gitBlobSha1": "5337c69314c63984522645b9ccbc658cd8e93ec4"
+        }
+      ],
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.meta.json",
+        "livePath": ".archive-meta-register/evidence/m3s2-follow428-native-20261115/E006.meta.json",
+        "bytes": 132701,
+        "sha256": "888a93bffe0cfc4968f9cd6bc0408cea67106e2fd43bd263ea67f4f4ce53ab2c",
+        "gitBlobSha1": "0442f2f5fd975ae4697c9657fb61bd1c72dd83e5"
+      },
+      "sourceReviewSha256ByUid": {
+        "qid_v1_1629824d0b99dd6df92f964bb2f7681caddfbfd33e01e5d02bf92163ea060cda": "e532aea2a3743ac73b35dbfba7f9be788a260bfd0fecb3ca69152e9350e94335",
+        "qid_v1_7716a1d4f757041ef0f10c447e3c22d4d1bbeee9d6b01c1cdf531f6ec9fb9c1f": "e23d49ff89ac090ca89724a2f0692c7060c9b3c60738afcbe389c1af281d3bf6",
+        "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32": "989ca4cc074dbfa6b2661203ad68b9834de3dec800e92bb7c93294ced04a08cb",
+        "qid_v1_c2f698969ecc2c3a25f4a02f14dedfdac862634ee41cfc129fc818430ad3fb9c": "79d53d0c2262c3bcb32a7b27039e189b50531549228cef79f459a58c6974ba5e",
+        "qid_v1_4b65c4d5f07e51a20f54254f3cb58c9896ffb5937c786ce253157270ef683c1a": "431ea06820bef66880eec03c9f4a163356538796c92e3ade4b744b9ecf163d44",
+        "qid_v1_12860943ddaef3358660134a0d8d5007891be0a15104be47196a1797e9d5cc61": "6b0b7ec6593d213d0609133d20e53dc11a05c6368c2cb6027408ba520ab91670",
+        "qid_v1_8c2f1c37ae92a5f8d9c4248d0b4488395355b22592f7956c514c7af797045a3e": "0557e1495752da2a220f610fb2d4df42c43667dc6b4b97e8679ba230d101e309",
+        "qid_v1_006d3d7fb3c9f11a0355c15b8df9cc7ec43e9de53da5b4e7d3171318ff7e23d3": "d95cce3064ea57fb760de590d8829fc7c3778c4552830a30381987ca5bc87b00",
+        "qid_v1_f02ca0c6d6f22a766861024269c0d890a68808e08b50949ab0ecc68d1d5268ed": "92e85b6b2b5c02acd3b40724addc43591c0f9f6ef8f9a0a8a78f4143c4ba975f",
+        "qid_v1_a2f1a03cd4f81c3ee3d3dcdff678cee5f47b574e3301c902048786b927e22e56": "e647af88c604575c74ef1d8f8053d1c4d805c834ad56fcd147171eb24479fbd9",
+        "qid_v1_ab1ed1af925a924cf90ec8f3e94c66f7ae52b07ac17faa277ab571c89c853c09": "715351a19f67fb5fb3744b798d49d211df1dc6b8fa1cb34c244850713ee70dc3",
+        "qid_v1_8d53b4019a9c831c7abc15952c4eec1b1c5901130240eaf4119697527a595993": "5f8f3e540aaa63ffd62ae7a80dee67f4e7a9d128f6bbdda7f312a63aa9efe2bd"
+      }
     }
   ]
 });
@@ -847,7 +1030,7 @@ function createIssuedApprovalObserver(api) {
     assert.strictEqual(relative, "archive/exams/" + profile.source, label + ": fixed original source path");
     assert.deepStrictEqual(pins(issued), profile.issuedSource, label + ": fixed issued original source");
     assert.deepStrictEqual(pins(actual), profile.observedSource, label + ": unobserved original source edition");
-    const commit = ORIGINAL_RECEIPT_BLOCKS.observation.snapshot, head = ancestor(root, commit);
+    const commit = (profile.observation || ORIGINAL_RECEIPT_BLOCKS.observation).snapshot, head = ancestor(root, commit);
     assert(actual.equals(immutable(root, commit, relative)) && actual.equals(immutable(root, head, relative)),
       label + ": actual observed edition and current HEAD source bytes");
     const beforeBank = api.loadBank(issued.toString("utf8"), relative);
@@ -1300,7 +1483,7 @@ function createIssuedApprovalObserver(api) {
     const sourcePath = "archive/exams/" + source, edition = kept.sourceEdition;
     const originalSources = profile.originalSources.map((ref, index) =>
       readOriginalReceiptSource(root, receipt.requestId, index));
-    if (profile.key === "E034_ORDINARY_FINAL_QA_10") {
+    if (profile.key === "E034_ORDINARY_FINAL_QA_10" || profile.key === "E006_ORDINARY_FINAL_QA_12") {
       assert(receipt.approval.sourceRebind === undefined && receipt.registrationMode === undefined &&
         receipt.fingerprintRepairs.length === profile.subjects.length, label + ": original ordinary FINAL_QA");
       const ref = profile.nativeReview, reviewBytes = boundImmutable(root, ref);
@@ -1382,7 +1565,7 @@ function createIssuedApprovalObserver(api) {
       declaredInputs: { readonlyPaths: [...kept.readPaths].filter(relative => relative !== sourcePath).sort(),
         fontPaths: [], assetPaths: [], sourcePaths: [sourcePath], inventorySize: kept.readPaths.size,
         originalSources: profile.originalSources, originalRequestId: receipt.requestId,
-        actualReadonlyObservation: ORIGINAL_RECEIPT_BLOCKS.observation,
+        actualReadonlyObservation: profile.observation || ORIGINAL_RECEIPT_BLOCKS.observation,
         originalReceiptShape: profile.key,
         selectedSource: { anchor: OBSERVATION.anchor, path: sourcePath, observedCommit: edition.commit,
           changes: edition.changes, currentQuestionSha256: subject.currentQuestionWholeSha256,

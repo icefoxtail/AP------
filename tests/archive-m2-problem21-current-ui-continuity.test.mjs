@@ -184,3 +184,49 @@ test('mixed or caller-made continuation is refused before any proof read',()=>{
     assert.throws(()=>replayM2Problem21CurrentUiContinuation({nativeSource:{root,[key]:{}},identity:{questionUid:one.questionUid},
       source:one.sourceArchiveFile,ordinal:one.sourceOrdinal}),/MIXED_PRIVATE_CONTINUATION/);
 });
+
+// The original observed document is already authenticated by bound() above.
+// Its cases transport a digest of the original observation, not of the case.
+const originalReuseCases=value=>value.binding.records
+  .filter(row=>row.observationMode==='ORIGINAL_OBSERVATION_SAME_PNG_AND_GEOMETRY')
+  .map(row=>({bound:row,
+    observed:value.originalObserved.cases.find(r=>r.questionUid===row.questionUid&&r.viewport===row.viewport.name),
+    reuse:value.reuse.records.find(r=>r.questionUid===row.questionUid&&r.viewport===row.viewport.name)}));
+test('original observation transport keeps all ten retained record digests and full16 coverage',()=>{
+  const rows=originalReuseCases(baseline);
+  assert.equal(rows.length,10);
+  const stable=value=>JSON.stringify(value,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)
+    ?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);
+  for(const {bound:row,observed,reuse} of rows){
+    assert.match(observed.observationRecordSha256,/^[a-f0-9]{64}$/);
+    assert.notEqual(sha(stable(observed)),observed.observationRecordSha256);
+    assert.equal(row.observationRecordSha256,observed.observationRecordSha256);
+    assert.equal(reuse.originalObservationRecordSha256,observed.observationRecordSha256);
+  }
+  assert.deepEqual(verifyM2Problem21CurrentUiMetadata(baseline),{
+    status:'PASS',logicalCases:16,pngs:18,reusedOriginalVisual:10,directCurrentVisual:6,newApprovals:0});
+});
+for(const [label,mutate] of [
+  ['missing original record digest',r=>delete r.observed.observationRecordSha256],
+  ['invalid original record digest',r=>r.observed.observationRecordSha256='not-a-digest'],
+  ['different original record digest',r=>r.observed.observationRecordSha256='0'.repeat(64)],
+  ['different binding record digest',r=>r.bound.observationRecordSha256='0'.repeat(64)],
+  ['different reuse record digest',r=>r.reuse.originalObservationRecordSha256='0'.repeat(64)],
+  ['contradictory original key',r=>r.observed.key='E017-Q05'],
+  ['contradictory original ordinal',r=>r.observed.sourceOrdinal++],
+  ['unknown original field',r=>r.observed.unboundObservation=true],
+  ['changed original decision',r=>r.observed.decision='PENDING'],
+  ['changed original PNG bytes',r=>r.observed.screenshots[0].bytes++],
+  ['changed original PNG hash',r=>r.observed.screenshots[0].sha256='0'.repeat(64)],
+  ['missing original PNG tile',r=>r.observed.screenshots.pop()],
+  ['different original immutable ref',r=>r.bound.observationRef.commit='0'.repeat(40)]
+])test('original observation transport guard: '+label,()=>{
+  const value=clone(baseline);mutate(originalReuseCases(value)[0]);
+  assert.throws(()=>verifyM2Problem21CurrentUiMetadata(value),/ORIGINAL_SAME_PNG_OBSERVATION_REUSE/);
+});
+test('original observation transport refuses a duplicated UID and viewport',()=>{
+  const value=clone(baseline),selected=originalReuseCases(value)[0].observed;
+  const other=value.originalObserved.cases.findIndex(row=>row.questionUid!==selected.questionUid);
+  value.originalObserved.cases[other]=clone(selected);
+  assert.throws(()=>verifyM2Problem21CurrentUiMetadata(value),/ORIGINAL_OBSERVATION/);
+});
