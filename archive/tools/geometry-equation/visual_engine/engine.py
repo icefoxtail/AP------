@@ -22,7 +22,7 @@ def _exact_float(text):
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
-from .label_layout import Box,layout,approximate_size,DIRECTIONS,point_segment_distance,segment_segment_distance,measured_tick_ink
+from .label_layout import Box,layout,apply_label_hints,approximate_size,DIRECTIONS,point_segment_distance,segment_segment_distance,measured_tick_ink
 from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
@@ -541,6 +541,9 @@ def prepare(spec):
             elif title is not None and axis_title_parts(title) is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'parts':axis_title_parts(title),'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             elif title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
+        for label in labels:
+            # the x axis name stands below the end of its axis (right and below first): above it, it would sit beside the labels of lines and curves ending there and read as part of them (y=3 and x read as y=3x)
+            if label['id']=='axis-x':label['directions']=('SE','S','E','NE','N','SW','W','NW')
         visible_axes=[];fraction_text={}
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))
@@ -1014,12 +1017,17 @@ def prepare(spec):
             d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
             primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region',**region_paint(obj['fill']),'noStroke':True,'fillRule':'evenodd',
                        'mark':'graph-region','markId':oid,'fillPolygons':[polygon]})
+            region_areas.append({'id':oid,'polygons':[polygon]})
             if obj.get('labelText') is not None:
                 tree=parse(obj['labelText']);markup=serialize(tree,'svg')
                 label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
                        'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[polygon],'labelGap':14}
                 label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
+                # A band too thin or too crowded to hold its name: the label stands outside it on a leader from its outer boundary (the same E32 leader a plane region uses). The anchors are
+                # found after the last object, when every curve is drawn (a leader never crosses another curve).
+                label['regionLeader']={'anchors':[],'gaps':list(REGION_LEADER_GAPS),'polygons':[polygon],'near':None,'only':False,'graphRegion':True,'corners':[list(polygon[0]),list(polygon[len(upper)-1]),list(polygon[len(upper)]),list(polygon[-1])]}
+                region_labels.append(label)
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]),clip_refine=obj.get('clipRefine') is True)
@@ -1367,6 +1375,9 @@ def prepare(spec):
             labels.append(label)
     # An angle label never stands inside another angle mark's sector (it would read as that angle's value): each wedge search knows the other sectors.
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
+    for label in region_labels:
+        site=label['regionLeader']
+        if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots)
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
     # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,
@@ -1458,6 +1469,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
     label_margin=12 if fragments is not None else vp.margin
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
+    if spec['displayFacts'].get('labelHints') is not None:apply_label_hints(labels,spec['displayFacts']['labelHints'])
     result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments,last_resort=last_resort)
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before

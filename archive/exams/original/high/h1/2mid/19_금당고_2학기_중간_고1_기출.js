@@ -854,7 +854,11 @@ window.questionBank = [
       "이차부등식"
     ],
     "answer": "②",
-    "solution": "$(x-1)^2\\le0$에서 제곱은 0 이상이므로\n$(x-1)^2=0,\\quad x=1$이다.\n따라서 $R=\\{1\\}$이다.\n$Q$가 비어 있지 않으면 $q(x)=cx^2-bx+c$가 어떤 실수에서 음수이다. $c>0$이므로 이차식의 최솟값도 음수이고,\n$c-\\dfrac{b^2}{4c}<0$,\n$4c^2-b^2<0$,\n$b^2>4c^2$이다.\n$b,c>0$이므로 $b>2c$이고\n$q(1)=c-b+c=2c-b<0$이다. 따라서 $Q\\ne\\varnothing$이면 $1\\in Q$이다.\nㄱ. $a=10,\\;b=3,\\;c=1$이면 $q(1)=2-3=-1<0$이므로 $R\\subseteq Q$이다. 그러나 $p(1)=10-3+1=8>0$이므로 $R\\not\\subseteq P$이다. 거짓이다.\nㄴ. $P\\cap Q\\ne\\varnothing$이면 $Q\\ne\\varnothing$이다. 따라서 위에서 확인한 대로 $1\\in Q$이고 $R=\\{1\\}\\subseteq Q$이다. 그러므로 참이다.\nㄷ. $a=2,\\;b=3,\\;c=1$로 두면\n$p\\left(\\dfrac34\\right)=2\\cdot\\dfrac9{16}-3\\cdot\\dfrac34+1=-\\dfrac18$,\n$q\\left(\\dfrac34\\right)=\\dfrac9{16}-3\\cdot\\dfrac34+1=-\\dfrac{11}{16}$이다.\n따라서 $\\dfrac34\\in P\\cap Q$이다. 하지만 $p(1)=2-3+1=0$이므로 $1\\notin P$이고 $R\\not\\subseteq P\\cap Q$이다. 거짓이다.\n항상 옳은 것은 ㄴ만이므로 정답은 ②이다."
+    "solution": "$(x-1)^2\\le0$에서 제곱은 0 이상이므로\n$(x-1)^2=0,\\quad x=1$이다.\n따라서 $R=\\{1\\}$이다.\n$Q$가 비어 있지 않으면 $q(x)=cx^2-bx+c$가 어떤 실수에서 음수이다. $c>0$이므로 이차식의 최솟값도 음수이고,\n$c-\\dfrac{b^2}{4c}<0$,\n$4c^2-b^2<0$,\n$b^2>4c^2$이다.\n$b,c>0$이므로 $b>2c$이고\n$q(1)=c-b+c=2c-b<0$이다. 따라서 $Q\\ne\\varnothing$이면 $1\\in Q$이다.\nㄱ. $a=10,\\;b=3,\\;c=1$이면 $q(1)=2-3=-1<0$이므로 $R\\subseteq Q$이다. 그러나 $p(1)=10-3+1=8>0$이므로 $R\\not\\subseteq P$이다. 거짓이다.\nㄴ. $P\\cap Q\\ne\\varnothing$이면 $Q\\ne\\varnothing$이다. 따라서 위에서 확인한 대로 $1\\in Q$이고 $R=\\{1\\}\\subseteq Q$이다. 그러므로 참이다.\nㄷ. $a=2,\\;b=3,\\;c=1$로 두면\n$p\\left(\\dfrac34\\right)=2\\cdot\\dfrac9{16}-3\\cdot\\dfrac34+1=-\\dfrac18$,\n$q\\left(\\dfrac34\\right)=\\dfrac9{16}-3\\cdot\\dfrac34+1=-\\dfrac{11}{16}$이다.\n따라서 $\\dfrac34\\in P\\cap Q$이다. 하지만 $p(1)=2-3+1=0$이므로 $1\\notin P$이고 $R\\not\\subseteq P\\cap Q$이다. 거짓이다.\n항상 옳은 것은 ㄴ만이므로 정답은 ②이다.",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선이 x축과 두 점에서 만나고 그 사이에서 아래로 볼록한 골짜기를 이룬다. 곡선 위에 (1, −1)과 (3/2, −5/4)이 표시되어 있다.",
+    "solutionImageCaption": "q(x)=cx²−bx+c에서 Q가 비어 있지 않으면 4c²<b²이므로 b>2c이고 q(1)=2c−b<0이어서 1이 Q에 들어간다. R={1}이므로 P∩Q가 비어 있지 않을 때 항상 R이 Q에 포함되어 ㄴ만 참이다. 따라서 답은 ② ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1039,6 +1043,10 @@ window.questionBank = [
       "역함수"
     ],
     "answer": "2",
-    "solution": "$x<1$이면 $f(x)=-3x+4>1$이므로\n$f(f(x))=-\\dfrac13(-3x+4)+\\dfrac43$,\n$f(f(x))=x-\\dfrac43+\\dfrac43=x$이다.\n$x>1$이면 $f(x)=-\\dfrac13x+\\dfrac43<1$이므로\n$f(f(x))=-3\\left(-\\dfrac13x+\\dfrac43\\right)+4$,\n$f(f(x))=x-4+4=x$이다.\n경계에서는 $f(1)=1$이므로 $f(f(1))=1$이다.\n따라서 모든 실수에서 $f(f(x))=x$이고 $f^{-1}=f$이다.\n주어진 조건은\n$2g(f(x))=\\dfrac32x+\\dfrac72$가 된다.\n$x=\\dfrac13$이면\n$f\\left(\\dfrac13\\right)=-3\\cdot\\dfrac13+4=3$이다.\n따라서\n$2g(3)=\\dfrac32\\cdot\\dfrac13+\\dfrac72$,\n$2g(3)=\\dfrac12+\\dfrac72=4$,\n$g(3)=2$이다."
+    "solution": "$x<1$이면 $f(x)=-3x+4>1$이므로\n$f(f(x))=-\\dfrac13(-3x+4)+\\dfrac43$,\n$f(f(x))=x-\\dfrac43+\\dfrac43=x$이다.\n$x>1$이면 $f(x)=-\\dfrac13x+\\dfrac43<1$이므로\n$f(f(x))=-3\\left(-\\dfrac13x+\\dfrac43\\right)+4$,\n$f(f(x))=x-4+4=x$이다.\n경계에서는 $f(1)=1$이므로 $f(f(1))=1$이다.\n따라서 모든 실수에서 $f(f(x))=x$이고 $f^{-1}=f$이다.\n주어진 조건은\n$2g(f(x))=\\dfrac32x+\\dfrac72$가 된다.\n$x=\\dfrac13$이면\n$f\\left(\\dfrac13\\right)=-3\\cdot\\dfrac13+4=3$이다.\n따라서\n$2g(3)=\\dfrac32\\cdot\\dfrac13+\\dfrac72$,\n$2g(3)=\\dfrac12+\\dfrac72=4$,\n$g(3)=2$이다.",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: y=x 직선이 원점과 (1, 1)을 지나고, (1, 1)에서 만나는 두 직선 가지가 있다. 한 가지는 왼쪽 위로 급하게, 다른 가지는 오른쪽 아래로 완만하게 뻗어 y=x에 대해 서로 대칭이다.",
+    "solutionImageCaption": "x<1이면 f(x)=−3x+4>1이므로 f(f(x))=x이고, x>1이면 f(x)=−(1/3)x+4/3<1이므로 역시 f(f(x))=x이다. 따라서 f⁻¹=f이고 조건은 2g(f(x))=(3/2)x+7/2가 되며, x=1/3일 때 f(1/3)=3이므로 2g(3)=1/2+7/2=4에서 g(3)=2이다. 따라서 답은 2이다.",
+    "solutionImageSize": "full"
   }
 ];

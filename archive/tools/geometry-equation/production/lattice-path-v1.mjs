@@ -10,7 +10,7 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 // that may not be used (drawn broken), roads that must be used (drawn bold), an optional highlighted path and, on request, the number of shortest paths
 // from the start to every crossing. The author states only the grid, the named points and the road lists; the engine counts the shortest (monotone)
 // paths itself with a forward/backward dynamic programme over the set of "must use" roads, so a crossing's number is the number of ways to reach it that
-// can still be completed into a valid path. The final answer (the number at the target) is hidden unless hideTargetCount is false.
+// can still be completed into a valid path. The final count (the number at the target) is shown in a solution figure; hideTargetCount:true hides it (a problem figure).
 // lattice_path_observer.py enumerates the valid paths by brute force from the same plan and checks the final SVG bytes (the numbers drawn, the roads
 // drawn / broken / bold at their exact pixel positions, the points and the highlighted path); nothing this module computes is trusted.
 export const FIGURE_CAPABILITY='lattice-path-figure-v1';
@@ -118,7 +118,7 @@ export function solveLattice(lat){
   const countsRaw=lat.counts??false;
   if(!(countsRaw===true||countsRaw===false||(Array.isArray(countsRaw)&&countsRaw.length>=1&&countsRaw.length<=40)))bad('LATTICE_COUNTS_INVALID');
   if(lat.hideTargetCount!==undefined&&typeof lat.hideTargetCount!=='boolean')bad('LATTICE_COUNTS_INVALID');
-  const hideTarget=lat.hideTargetCount!==false;
+  const hideTarget=lat.hideTargetCount===true;   // a solution figure shows the final count (the process value) unless the author asks to hide it
   const needsPaths=countsRaw!==false||via.length>0;
   let start=null,target=null,counts=[],shown=[],total=null;
   if(needsPaths){
@@ -278,6 +278,8 @@ export async function composeLatticePathFigure({plan,model,identity,typographyPo
   let ownBrowser=null;
   try{
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
+    // A problem figure never writes the final count (it is the answer): hideTargetCount is forced to true there, whatever the plan says; the observer then reads the same hidden plan.
+    if(identity?.surface==='PROBLEM_VISUAL'&&plan?.lattice&&plan.lattice.hideTargetCount!==true){plan={...plan,lattice:{...plan.lattice,hideTargetCount:true}};model=solveLattice(plan.lattice);}
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
     try{spec=latticePathSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='LATTICE_MODEL_MISMATCH'?error.message:'LATTICE_SPEC_ERROR',{code:error.message});}
@@ -310,7 +312,7 @@ export async function composeLatticePathFigure({plan,model,identity,typographyPo
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-lattice-path-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({lattice:plan.lattice,svg},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({lattice:plan.lattice,svg,surface:identity?.surface},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];

@@ -285,7 +285,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: x축과 y축 위에 삼차함수 곡선이 그려져 있고, x=1에서 높이 7인 봉우리가 점 (1,7), x=3에서 높이 3인 골짜기가 점 (3,3)으로 표시되어 있다.",
+    "solutionImageCaption": "x=3에서 극솟값 3이라는 조건에서 f′(3)=0과 f(3)=3을 세우면 a=−6, b=9이고, f′(x)=3(x−1)(x−3)이므로 극댓값은 k=f(1)=7이다. 따라서 a+b+k=−6+9+7=10이므로 답은 ⑤ 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -322,7 +326,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄에 구간이 나뉘어 표시되어 있고, 윗줄은 x<−1과 0<x<1, 아랫줄은 −1<x<0과 x>1을 각각 도함수가 양수인 구간과 음수인 구간으로 보여 준다.",
+    "solutionImageCaption": "도함수의 부호가 x=−1, 0, 1에서 바뀌므로 f는 x=−1과 x=1에서 극대, x=0에서 극소이고 f(0)=0이라 원점을 지난다. 따라서 이 증가와 감소의 흐름을 나타내는 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -489,7 +497,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간의 양 끝점 (−2,−4)와 (4,32), 구간 안의 점 (−1,7)과 (2,−20)이 표시된 삼차함수 곡선이 그려져 있다.",
+    "solutionImageCaption": "h(x)=2x³−3x²−12x로 두면 h′(x)=6(x−2)(x+1)이고 h(−2)=−4, h(−1)=7, h(2)=−20, h(4)=32이다. 최댓값이 k+35=38에서 k=3이므로 최솟값은 −20+3+3=−14이고 답은 ② −14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -881,7 +893,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 짝함수 곡선이 x축과 점 (−2,0), (2,0)에서 만나고, 그 사이에서 x축 아래에 놓인 영역 S가 옅게 칠해져 표시되어 있다.",
+    "solutionImageCaption": "f를 짝함수 x⁴+ax²+b, g를 홀함수 x로 두면 f(0)=b=−4이고 f′(1)=4+2a=−2에서 a=−3이므로 f(x)=x⁴−3x²−4, g(x)=x이다. −2<x<2에서 f(x)<0이므로 넓이는 −∫f(x)dx=96/5이고 답은 f(x)=x⁴−3x²−4, g(x)=x, 넓이 96/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -919,6 +935,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: x축과 곡선 y=|x²−1| 사이의 두 영역이 S1과 S2로 나뉘어 표시되어 있고, 곡선 위의 점 (−2,3), (−1,0), (0,1)이 찍혀 있다.",
+    "solutionImageCaption": "A=∫₋₂⁰f(x)dx라 두면 f(x)=|x²−1|+A이고, 짝함수이므로 A=∫₀²f(x)dx=(2/3+A)+(4/3+A)=2+2A에서 A=−2이다. k≥1일 때 ∫₀ᵏf(x)dx=k³/3−3k+4/3=4/3에서 k(k²−9)=0이므로 답은 A=−2, k=3이다.",
+    "solutionImageSize": "full"
   }
 ];
