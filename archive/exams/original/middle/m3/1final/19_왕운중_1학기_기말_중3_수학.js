@@ -137,7 +137,6 @@ window.examData = {
     },
     {
       "number": 10,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q10-solution.svg",
       "solutionImageAlt": "안쪽 원은 파랑, 두 원 사이 늘어난 부분은 주황이다. 바깥쪽 반지름 전체는 8+x이다.",
       "solutionImageCaption": "π(8+x)²−64π=57π에서 양수 해는 x=3 cm이다. 정답은 ②이다.",
@@ -220,7 +219,6 @@ window.examData = {
     },
     {
       "number": 15,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q15-solution.svg",
       "solutionImageAlt": "세로축 위의 점에서 삼각형을 두 조각으로 나눴다. 두 삼각형의 공통 밑변이 세로 3, 그 밑변까지의 거리가 각각 가로 1과 3이다.",
       "solutionImageCaption": "교점은 (−1,1), (3,9)이다. 삼각형 넓이는 3×1/2+3×3/2=6이고 정답은 ⑤이다.",
@@ -275,7 +273,6 @@ window.examData = {
     },
     {
       "number": 18,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q18-solution.svg",
       "solutionImageAlt": "왼쪽 예시 직선은 오른쪽으로 올라가고 세로축 위에서 만난다. 오른쪽 예시는 포물선이 위로 열리고 꼭짓점이 세로축 왼쪽에 있다.",
       "solutionImageCaption": "a>0, b>0이므로 위로 열리며 축이 x=−b/(2a)<0이고 y절편 ab>0이다. 가능한 그림은 ⑤이다.",
@@ -312,7 +309,6 @@ window.examData = {
     },
     {
       "number": 20,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q20-solution.svg",
       "solutionImageAlt": "색과 한 눈금이 같은 두 수직 선분의 길이는 각각 5이다. 오른쪽 점에서 주황 가로 3과 세로 5를 읽는다.",
       "solutionImageCaption": "점 (3,5)를 y=ax²에 대입하면 5=9a이다. y=(5/9)x²이고 정답은 ④이다.",
@@ -339,7 +335,6 @@ window.examData = {
     },
     {
       "number": 22,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q22-solution.svg",
       "solutionImageAlt": "위 주황 삼각형의 가로 길이는 10−t, 세로 길이는 3(10−t)이다. 아래 파란 삼각형의 가로와 세로는 t, 3t이다.",
       "solutionImageCaption": "3(10−t)²/2=24에서 t=6이고 P=(6,18)이다. 아래 넓이 54는 위 넓이 24의 9/4배이다.",

@@ -201,7 +201,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],
@@ -245,7 +245,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],
@@ -361,7 +361,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],

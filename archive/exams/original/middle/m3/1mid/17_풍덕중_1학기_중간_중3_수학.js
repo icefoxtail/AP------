@@ -296,7 +296,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": 2,
       "score": 4.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "도형",
@@ -891,7 +891,7 @@ window.examData = {
       "difficultyBucket": 3,
       "level": "중",
       "score": 6.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "도형",
