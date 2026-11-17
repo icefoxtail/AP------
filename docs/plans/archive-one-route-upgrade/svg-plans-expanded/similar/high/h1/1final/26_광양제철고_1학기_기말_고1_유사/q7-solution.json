@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "12",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "16",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ],
+    "variable": "t"
+  },
+  "caption": "사용한 마지막 텐트에는 적어도 한 명이 있어야 한다. 8명씩 배정할 때의 엄격한 하한과 상한을 함께 적용하여 텐트 수의 정수 범위를 읽는다. 학생 수는 이 범위의 양 끝에서 따로 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 학교의 학생들이 텐트에서 야영하려고 한다. 한 텐트에 6명씩 배정하면 8명이 남고, 8명씩 배정하면 텐트가 2개 남는다. 학생 수가 최소일 때와 최대일 때의 합은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "8(t−3)<6t+8≤8(t−2)→12≤t<16. N최솟값80최댓값98은 합178의 중간값이나 본그림은 t범위만 제시.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "8(t−3)<6t+8≤8(t−2)→12≤t<16. N최솟값80최댓값98은 합178의 중간값이나 본그림은 t범위만 제시."
+  ]
+}

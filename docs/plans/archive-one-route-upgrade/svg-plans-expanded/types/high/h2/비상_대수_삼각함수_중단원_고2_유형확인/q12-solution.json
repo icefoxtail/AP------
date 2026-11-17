@@ -1,0 +1,87 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "3",
+      "0"
+    ],
+    "phasePi": "0",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "ratePi": "1/4",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "3/2",
+        "intersectionCount": 2
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "curveX": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "2/3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "10/3",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "사인 곡선과 주어진 수평선의 두 교점을 밑변 양 끝으로 삼는다. 원점에서 수평 밑변까지의 높이는 주어진 수평선의 높이와 같다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y = 3 \\sin\\left(\\frac{\\pi}{4} x\\right)$의 그래프가 직선 $y = \\frac{3}{2}$과 만나는 두 점을 $A, B$라 하자. 점 $O$가 원점일 때, 삼각형 $OAB$의 넓이를 구하시오. (단, 점 $A$의 $x$좌표가 점 $B$의 $x$좌표보다 작고, $0 \\le x \\le 4$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A(2/3,3/2),B(10/3,3/2),AB8/3. 삼각형변과좌표는중간값. 최종넓이2숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A(2/3,3/2),B(10/3,3/2),AB8/3. 삼각형변과좌표는중간값. 최종넓이2숨김."
+  ]
+}

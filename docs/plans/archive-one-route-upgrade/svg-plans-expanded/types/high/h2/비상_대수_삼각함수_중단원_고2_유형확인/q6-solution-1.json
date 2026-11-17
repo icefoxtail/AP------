@@ -1,0 +1,47 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "3",
+      "1/2",
+      "1"
+    ],
+    "phasePi": "1/6",
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickPi": true,
+    "displayWindowPi": [
+      "-1",
+      "4"
+    ]
+  },
+  "caption": "첫 번째 함수의 표시 창이다. 같은 높이와 같은 진행 방향이 되풀이되는 가로 간격, 중심선에서 위아래로 벌어진 폭을 읽는다. 주기와 최고·최저 높이의 수치는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 함수의 주기와 최댓값, 최솟값을 각각 구하시오.\\n(1) $y = 3 \\cos\\left(\\frac{x}{2} + \\frac{\\pi}{6}\\right) + 1$\\n(2) $y = -\\frac{1}{2} \\sin 3\\left(x - \\frac{\\pi}{4}\\right) - 2$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "주기/극값이정답이므로 ALL_REALS의 displayWindowPi crop으로 자동주기 및끝점라벨없애고 눈금숫자도제거. 원문수식·곡선정확유지, 정답4π/4/−2 및2π/3/−3/2/−5/2 직접표시없음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주기/극값이정답이므로 ALL_REALS의 displayWindowPi crop으로 자동주기 및끝점라벨없애고 눈금숫자도제거. 원문수식·곡선정확유지, 정답4π/4/−2 및2π/3/−3/2/−5/2 직접표시없음."
+  ]
+}

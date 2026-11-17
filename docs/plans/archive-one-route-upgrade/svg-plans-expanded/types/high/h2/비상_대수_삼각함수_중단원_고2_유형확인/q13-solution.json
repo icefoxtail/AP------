@@ -1,0 +1,54 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-4",
+          "intercept": "2",
+          "label": "l"
+        }
+      ]
+    },
+    "ratePi": "2"
+  },
+  "caption": "t=x/π로 가로축을 정규화한 k=2의 내부 예시이다. 양 끝 조각의 교점 존재는 직선이 양 끝점을 지나는 경계와 비교하고, 가운데 조각에는 항상 교점이 생긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y = \\tan 2x$ ($0 \\le x \\le \\pi$)의 그래프와 직선 $y = -\\frac{4}{\\pi} x + k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=x/π로 정확정규화하여 tan(2πt)와 y=−4t+2를 같은축에 표시. 각 조각에서 tan(2πt)+4t는 엄격증가. 처음/끝 조각은끝값으로 판단하고중간조각은전실수치역. 최종k범위미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t=x/π로 정확정규화하여 tan(2πt)와 y=−4t+2를 같은축에 표시. 각 조각에서 tan(2πt)+4t는 엄격증가. 처음/끝 조각은끝값으로 판단하고중간조각은전실수치역. 최종k범위미표시."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "ratePi": "2",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1/4",
+        "intersectionCount": 2
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "symmetry",
+          "x": "1/2",
+          "style": "DASHED",
+          "label": "x=1/2"
+        }
+      ]
+    }
+  },
+  "caption": "한 주기 안의 두 교점은 가운데 세로선에 대해 대칭이다. 두 교점의 가로 좌표를 더할 때 이 대칭을 이용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < 1$일 때, 방정식 $\\cos 2\\pi x = \\frac{1}{4}$의 모든 해의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "cos2πx의한주기에서alpha와beta가1/2대칭. 최종합1을주기라벨T=1이우연노출할수있으므로최종spec검사필요.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "cos2πx의한주기에서alpha와beta가1/2대칭. 최종합1을주기라벨T=1이우연노출할수있으므로최종spec검사필요."
+  ]
+}

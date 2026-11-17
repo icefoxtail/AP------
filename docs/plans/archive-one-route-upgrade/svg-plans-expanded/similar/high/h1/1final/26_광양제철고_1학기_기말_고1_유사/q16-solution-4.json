@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "1",
+        "title": "합조건"
+      },
+      {
+        "count": "3",
+        "title": "증가쌍"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "a₁=4인 경우이다. 첫 칸은 a₂+a₄=6−a₁인 순서쌍의 수이고 둘째 칸은 a₁보다 큰 수 중 a₃<a₅가 되게 고르는 수이다. 네 경우는 서로 겹치지 않으므로 각 곱을 마지막에 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1부터 7까지의 자연수가 적혀 있는 7개의 공이 들어 있는 상자에서 공을 한 개 꺼내 수를 확인한 뒤 다시 넣는다. 5번 반복할 때 $i$번째 수를 $a_i$라 하자. $a_1+a_2+a_4=6$, $a_1<a_3<a_5$를 만족시키는 순서쌍 $(a_1,a_2,a_3,a_4,a_5)$의 개수는? [5.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a1=1..4별(a2,a4)4/3/2/1,(a3,a5)15/10/6/3. 복원추출이어서두선택독립,최종105숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "a1=1..4별(a2,a4)4/3/2/1,(a3,a5)15/10/6/3. 복원추출이어서두선택독립,최종105숨김."
+  ]
+}

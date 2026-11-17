@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -0.4,
+      8.4,
+      -1,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "16"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "가로축은 반지름 r, 세로축은 넓이이다. 둘레 조건으로 호의 길이를 없앤 넓이 곡선에서 최고점을 찾은 뒤 다시 둘레 식에 대입한다. 곡선은 둘레 식의 대수적 모델이며, 최고점에서 부채꼴의 중심각 조건도 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둘레의 길이가 $16$인 부채꼴 중에서 넓이가 최대인 부채꼴의 호의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "S=−r²+8r. 반지름4와최대넓이16은 중간값, 묻는호길이8은 미표시. 일반 부채꼴의 중심각≤2π 제약을 더해도 최고점r4는허용되므로최대결론불변. 표시구간은 원해설의대수가능범위이며 전부기하가능이라고단정하지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "S=−r²+8r. 반지름4와최대넓이16은 중간값, 묻는호길이8은 미표시. 일반 부채꼴의 중심각≤2π 제약을 더해도 최고점r4는허용되므로최대결론불변. 표시구간은 원해설의대수가능범위이며 전부기하가능이라고단정하지않음."
+  ]
+}

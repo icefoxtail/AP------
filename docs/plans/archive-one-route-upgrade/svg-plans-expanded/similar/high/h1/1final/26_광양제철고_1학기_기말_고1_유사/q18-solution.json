@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "-6"
+        ]
+      },
+      {
+        "coefficients": [
+          "-7",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2/3",
+        "y": "5"
+      },
+      {
+        "x": "2",
+        "y": "-11"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -16,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2/3",
+        "2"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2/3",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "-11"
+      },
+      {
+        "id": "L0",
+        "x": "-3",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "R0",
+        "x": "4",
+        "y": "-15",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R",
+        "L0",
+        "R0"
+      ]
+    }
+  },
+  "caption": "세로값은 왼쪽 식에서 오른쪽 식을 뺀 값이다. 절댓값 부호가 바뀌는 두 경계에서 세 조각을 이어 그리고 축보다 아래인 부분을 읽는다. 해의 경계값 자체는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 2]<br>부등식 $2|x-2|-\\sqrt{9x^2+12x+4}<x+1$을 만족시키는 범위를 구하는 풀이과정과 답을 쓰시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "차함수는5,1−6x,−2x−7. 분기−2/3,2에서연속. 최종1/6은교점좌표·자동눈금·caption숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "차함수는5,1−6x,−2x−7. 분기−2/3,2에서연속. 최종1/6은교점좌표·자동눈금·caption숨김."
+  ]
+}

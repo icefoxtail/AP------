@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "공통 범위의 왼쪽 끝은 제외하고 오른쪽 끝은 포함한다. 표시한 정수점을 세되 총개수는 적지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases}-2x-1<x+11\\\\3x+8\\le x+6\\end{cases}$를 만족시키는 정수 $x$의 개수는? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두 부등식의 공통범위(-4,-1]에 정수점 표시, 최종개수3 미표시.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 부등식의 공통범위(-4,-1]에 정수점 표시, 최종개수3 미표시."
+  ]
+}

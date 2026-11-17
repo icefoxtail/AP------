@@ -1,0 +1,53 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "5",
+        "title": "남"
+      },
+      {
+        "count": "4",
+        "title": "남"
+      },
+      {
+        "count": "2",
+        "title": "여"
+      },
+      {
+        "count": "1",
+        "title": "여"
+      },
+      {
+        "count": "3",
+        "title": "남"
+      },
+      {
+        "count": "2",
+        "title": "남"
+      },
+      {
+        "count": "1",
+        "title": "남"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "서로 떨어진 두 남학생 묶음 사이에 두 여학생이 이웃한다. 각 칸은 그 성별에서 남은 학생의 선택 수이다. 남학생 묶음의 길이 순서가 다른 두 모양을 구별하여 마지막에 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "남학생 5명, 여학생 2명을 일렬로 세우려고 한다. 여학생 2명은 이웃하고 남학생은 3명, 2명씩 각각 이웃하지만, 5명의 남학생이 모두 이웃하지는 않도록 세우는 방법의 수는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "남3여2남2 또는남2여2남3. 각패턴5!2!,최종480숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "남3여2남2 또는남2여2남3. 각패턴5!2!,최종480숨김."
+  ]
+}

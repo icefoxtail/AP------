@@ -1,0 +1,48 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "3",
+      "2/3",
+      "1"
+    ],
+    "phasePi": "0",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-2",
+        "1",
+        "4"
+      ]
+    },
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    }
+  },
+  "caption": "주어진 최고·최저 높이로 중심과 진폭을 구하고 한 주기의 길이를 맞춘다. 그 곡선에서 원문이 요구한 입력의 위치를 찾아 값을 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x) = a \\cos bx + d$의 최댓값이 $4$, 최솟값이 $-2$이고 주기가 $3\\pi$이다. $f(\\pi)$의 값을 구하시오. (단, $a > 0, b > 0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "진폭3 중심1 주기3π. f(π)=−1/2는새점이나라벨로쓰지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "진폭3 중심1 주기3π. f(π)=−1/2는새점이나라벨로쓰지않는다."
+  ]
+}

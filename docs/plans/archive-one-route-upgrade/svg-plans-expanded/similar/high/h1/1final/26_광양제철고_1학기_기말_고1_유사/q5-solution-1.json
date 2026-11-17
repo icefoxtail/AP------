@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "2",
+        "title": "백"
+      },
+      {
+        "count": "5",
+        "title": "일"
+      },
+      {
+        "count": "8",
+        "title": "십"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "백의 자리가 홀수인 경우이다. 백의 자리, 일의 자리, 십의 자리 순서로 선택한다. 각 칸은 이미 쓴 숫자를 제외한 선택 수이며 서로 겹치지 않는 두 경우를 마지막에 더한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 만족시키는 자연수 $n$의 개수는? [4.6점]<br><div class='note-box'>(가) $n$은 500보다 작은 세 자리 자연수이다.<br>(나) 일의 자리 숫자는 짝수이고 각 자리의 숫자는 모두 다르다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "백의자리홀짝에따라 일의자리 선택수가5/4. 십의자리항상8, 최종144숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "백의자리홀짝에따라 일의자리 선택수가5/4. 십의자리항상8, 최종144숨김."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1.3,
+      1.3,
+      -3.5,
+      3.5
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "가로축은 t=cos x이다. 그림은 a를 더하기 전의 t²−3t−1이며, 허용 구간 전체가 감소하므로 오른쪽 끝을 기준으로 수직 이동량을 판단한다. 허용 구간은 −1≤t≤1이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 실수 $x$에 대하여 부등식 $\\cos^2 x - 3 \\cos x + a - 1 \\ge 0$이 항상 성립하도록 하는 실수 $a$의 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "−1≤t≤1에서h(t)=t²−3t−1감소. h(1)=−3에 a를더해비음수조건. 최소a3정답미표시, basecurve사용임visiblecaption명시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "−1≤t≤1에서h(t)=t²−3t−1감소. h(1)=−3에 a를더해비음수조건. 최소a3정답미표시, basecurve사용임visiblecaption명시."
+  ]
+}

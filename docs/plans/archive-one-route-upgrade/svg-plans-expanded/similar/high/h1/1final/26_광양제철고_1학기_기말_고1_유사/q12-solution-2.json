@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1,
+      1,
+      -3,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "0",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "0",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "L0",
+        "x": "-1",
+        "y": "-3",
+        "marker": "NONE"
+      },
+      {
+        "id": "R0",
+        "x": "1",
+        "y": "1",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L0",
+        "R0"
+      ]
+    }
+  },
+  "caption": "계수 a=-1, b=2, c=0인 조건에 맞는 예시이다. 원점 가까이에서 양의 가로좌표는 양의 세로좌표로, 음의 가로좌표는 음의 세로좌표로 이어진다. 모든 계수를 이 예시 값으로 고정한다는 뜻은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9개의 정수 $-4,-3,-2,-1,0,1,2,3,4$ 중 서로 다른 세 수 $a,b,c$를 택하여 만든 이차함수 $y=ax^2+bx+c$의 그래프 중 원점과 제1사분면 및 제3사분면을 모두 지나는 함수의 개수는? [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "c0,b>0이면 원점근처에서두사분면을통과, a±1예시로열림방향무관. b<0이면 a>0일때III불가/a<0일때I불가. 최종28숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "c0,b>0이면 원점근처에서두사분면을통과, a±1예시로열림방향무관. b<0이면 a>0일때III불가/a<0일때I불가. 최종28숨김."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "9",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -9,
+      0
+    ],
+    "viewport": [
+      -9,
+      0,
+      -13,
+      11
+    ],
+    "axisTickValues": {
+      "x": [
+        "-8",
+        "-7",
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-9/2",
+        "y": "-45/4"
+      },
+      {
+        "id": "L0",
+        "x": "-9",
+        "y": "9",
+        "marker": "NONE"
+      },
+      {
+        "id": "R0",
+        "x": "0",
+        "y": "9",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "L0",
+        "R0"
+      ]
+    }
+  },
+  "caption": "가로축은 계수 a이다. 판별식의 4분의 1인 a²+9a+9의 그래프가 축 아래 또는 축 위에 닿는 범위를 찾고 a<0 조건과 함께 확인한다. 최종 정수 개수는 적지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 부등식 $ax^2-2(a+3)x-3>0$이 해를 갖지 않을 때, 정수 $a$의 개수는? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a>0이면양수가능,a0도선형해존재. a<0에서D≤0. 두근(-9±3√5)/2, 최종개수6숨김. 그래프의가로x는계수a로해석명시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a>0이면양수가능,a0도선형해존재. a<0에서D≤0. 두근(-9±3√5)/2, 최종개수6숨김. 그래프의가로x는계수a로해석명시."
+  ]
+}
