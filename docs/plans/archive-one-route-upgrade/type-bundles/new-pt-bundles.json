@@ -128,7 +128,7 @@
       "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME"
     ],
     "absorbInto": null,
-    "count": 250,
+    "count": 258,
     "examples": [
       "qid_v1_e8c2120351ce1f9c2a197bae8dc4900b9b905d9a38ddd65203e44ae936ecf8f0",
       "qid_v1_a0da2af78e3413b0d54103299f503b9485d44207d5cb65ee38f305753af08d0c",
@@ -146,26 +146,6 @@
       "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
       "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
       "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME"
-    ]
-  },
-  {
-    "bundle": "NPT_M2_SYSTEM_COMMON_SOLUTION_REUSE",
-    "nameKo": "연립방정식의 해",
-    "definition": "연립방정식으로 구한 해를 추가 방정식에 대입하여 계수를 결정한다. 기존의 두 연립방정식 공통해 정의보다 넓어 흡수하지 않는다.",
-    "course": "middle2",
-    "distinctFrom": [
-      "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION"
-    ],
-    "absorbInto": null,
-    "count": 8,
-    "examples": [
-      "qid_v1_a56cb6de5226591fb49af765cbd7176d4019838449386d36f3ea290c0ab123f0",
-      "qid_v1_62b5e5984280ddc94fd0339bae7ffceee81b3ad632196cfe55e0c893a180e247",
-      "qid_v1_9f84108928c12a93a215894072262825ea8e32b031d138d998136a4d9111728b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": [
-      "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION"
     ]
   },
   {
@@ -306,24 +286,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NPT_M2_COUNTING_CASE_SPLIT_REUSE",
-    "nameKo": "경우 분해의 합",
-    "definition": "서로 겹치지 않는 조건별 결과를 세어 합의 법칙으로 전체 경우의 수를 구한다.",
-    "course": "middle2",
-    "distinctFrom": [],
-    "absorbInto": null,
-    "count": 5,
-    "examples": [
-      "qid_v1_3cde11625f9c7fc9aadb4e136a18cd26185afc36302ef7b3af0dfc6fc0a71147",
-      "qid_v1_f2a496665fe83474194330a8d63181413a0d62f4468fed207b07ae31a876241b",
-      "qid_v1_ef258ab2d03d1b5413cc79e0e96b42303633dcb6e0747dad5404fe53c0e8a3b9"
-    ],
-    "relatedKeys": [
-      "PT_M2_BASIC_COUNTING_CASE_SPLIT"
-    ],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NPT_M2_COUNTING",
     "nameKo": "경우의 수",
     "definition": "유한한 선택과 배열의 결과를 빠짐없이 세고 합·곱의 법칙 및 중복 제거로 경우의 수를 구한다.",
@@ -332,14 +294,15 @@
       "PT_M2_BASIC_COUNTING_CASE_SPLIT"
     ],
     "absorbInto": null,
-    "count": 75,
+    "count": 80,
     "examples": [
       "qid_v1_e20875db93c2a1987308d8e97a4b6f1d8dc6b118a430391488dd03e9a57ab089",
       "qid_v1_0195f0a7c4076f164503f61827844a995b8094286b16f652e90ecc40a5c94523",
       "qid_v1_2e9b38adf275bf70341f8c3efd5674694641bbbddf911c4756b8ff4420c7025a"
     ],
     "relatedKeys": [
-      "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+      "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "PT_M2_BASIC_COUNTING_CASE_SPLIT"
     ],
     "narrowExisting": [
       "PT_M2_BASIC_COUNTING_CASE_SPLIT"
@@ -1805,7 +1768,7 @@
       "PT_MOVE_REFLECTION_SHORTEST"
     ],
     "narrowExisting": [],
-    "count": 22,
+    "count": 24,
     "examples": [
       "qid_v1_24094920c7be7fe651cb75a4daf493aa9085ed10e20c6cfb358acf1c392fb651",
       "qid_v1_34601fcc07a7da4276e3df8e2ff8c5188b671596cb97e424040532bb51059597",
@@ -1824,10 +1787,11 @@
     "relatedKeys": [
       "PT_CIRCLE_EQUATION",
       "PT_CIRCLE_TANGENT",
-      "PT_TWO_CIRCLES"
+      "PT_TWO_CIRCLES",
+      "PT_CIRCLE_LINE_RELATION"
     ],
     "narrowExisting": [],
-    "count": 21,
+    "count": 25,
     "examples": [
       "qid_v1_3323e37181d9eb9c26538b4e5a87f6ea4d42fdb532d95e73f2b2576b33565a17",
       "qid_v1_d8c0a447ae047346b3f8ca8151092d685870f5634f5360a782b70d01cb06101b",
@@ -1907,5 +1871,352 @@
       "qid_v1_d52caf375451b879fa6790de377673172bd367d78edb0df61267f4fbd222e5dd",
       "qid_v1_076362cd0d534dafa5dc4a5e390d6430fd1d270cdde1fdc260b22b1bc8e5960d"
     ]
+  },
+  {
+    "bundle": "NPT_H1_EXPONENT_LAWS",
+    "nameKo": "지수법칙",
+    "definition": "거듭제곱의 곱셈 법칙과 나머지의 반복을 이용하여 정수 거듭제곱의 값을 환원한다.",
+    "course": "고1 공통수학1",
+    "distinctFrom": [
+      "PT_H1_REMAINDER_THEOREM",
+      "PT_H1_COMPLEX_POWER_ROOT"
+    ],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_1ae60827eab08be00db21c51f101657a8dc98c793e6f7dfae109cec00eb14440"
+    ],
+    "relatedKeys": [
+      "PT_H22A_01_EXPONENT_LAWS"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_H1_LINEAR_EQUATION",
+    "nameKo": "일차방정식",
+    "definition": "일차방정식의 계수와 상수항을 조사하여 해의 존재와 개수를 판단한다.",
+    "course": "고1 공통수학1",
+    "distinctFrom": [
+      "PT_H1_SYSTEM_EQUATION"
+    ],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_02d86d499dc840d87785b2f9cb851b8136e1ff7738891f531ddf0256ff61f77c"
+    ],
+    "relatedKeys": [
+      "PT_M1_LINEAR_EQUATION_SOLVING"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_H1_QUADRATIC_EQUATION",
+    "nameKo": "이차방정식",
+    "definition": "이차방정식의 근의 식과 근이 만족하는 관계를 이용해 식의 값 또는 근의 조건을 구한다.",
+    "course": "고1 공통수학1",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 2,
+    "examples": [
+      "qid_v1_926b2cb9db71010c9109a63fa28fac34f3666137234cb6bf6cfeb126f2efd19d",
+      "qid_v1_c01cac5296274731d962a98b9e13ddb3cf075cd3ec9cd99fa54b626cab8ab9ae"
+    ],
+    "relatedKeys": [
+      "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+      "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD"
+    ],
+    "narrowExisting": [
+      "PT_H1_QUADRATIC_DISCRIMINANT"
+    ]
+  },
+  {
+    "bundle": "NPT_H1_NEGATION",
+    "nameKo": "조건의 부정",
+    "definition": "조건의 참인 범위의 여집합을 구하여 부정 조건을 나타낸다.",
+    "course": "고1 공통수학2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_010f8f1faae3e08bd5b215e9c6d482b88c2c5da7ba1db2fac725c869ec7e7a0e"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": [
+      "PT_QUANTIFIER_NEGATION"
+    ]
+  },
+  {
+    "bundle": "NPT_PROB_COUNTING",
+    "nameKo": "경우의 수",
+    "definition": "대상을 경우별로 나누거나 독립 선택을 결합하고 중복을 보정하여 가능한 수를 센다.",
+    "course": "고등 확률과통계",
+    "distinctFrom": [
+      "PT_COUNTING_ARRANGEMENT",
+      "PT_COUNTING_REPEATED_ASSIGNMENT"
+    ],
+    "absorbInto": null,
+    "count": 10,
+    "examples": [
+      "qid_v1_0f53d1488a181e9c9eb098d0bb7967c8e7cf28a4c6517d953d9e92cc1b0d6abd",
+      "qid_v1_65793489e226d281cb97c54b9d918285da628569e28580170bb7213deebda422",
+      "qid_v1_6d29aad4547c93ca480d10a06debbb67f8151a937e825cd7a7dfcbccf2f4bb2d"
+    ],
+    "relatedKeys": [
+      "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_PROB_INTEGER_PARTITION",
+    "nameKo": "정수의 분할",
+    "definition": "합이 정해진 자연수들을 순서 없이 나열하며 중복되는 분할을 제외한다.",
+    "course": "고등 확률과통계",
+    "distinctFrom": [
+      "PT_COUNTING_SELECTION_DISTRIBUTION"
+    ],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_402349b0a4d0f33f07d5cd62b6e71e4a100ce80d008dc93acbc76f1b65d3714b"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_PROB_EXPONENT_LAWS",
+    "nameKo": "지수법칙",
+    "definition": "거듭제곱의 나머지를 반복 곱셈과 주기성으로 환원한다.",
+    "course": "고등 확률과통계",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 3,
+    "examples": [
+      "qid_v1_7161624ad59b4e85cd84aacfaf5240828686958ce34ff21a2cbf442efa8e4981",
+      "qid_v1_e81bcd93816875c432a47d3583575da1fcc041c65f3bab6e351b380fdecb68a6",
+      "qid_v1_f63524597168dfed58436ad492482b24437ef35a3248b2280e8109f00521f4ba"
+    ],
+    "relatedKeys": [
+      "PT_H22A_01_EXPONENT_LAWS",
+      "PT_H1_REMAINDER_THEOREM"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_PROB_PERMUTATION_COMBINATION",
+    "nameKo": "순열과 조합",
+    "definition": "순열·조합 및 중복형의 정의를 구별하여 기호를 계산하거나 선택·배정 구조에 맞게 적용한다.",
+    "course": "고등 확률과통계",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 7,
+    "examples": [
+      "qid_v1_81925e4b2d876d85a4f9e3d263d25591bc4d1beaf1d8586bfe11ab882642c0ad",
+      "qid_v1_0d409c3b13fa18111c63b8eb9cd26c070fc90d9e6c42c0a4d40fedfaf77b05ae",
+      "qid_v1_0a0217f9381b64980c103bd3544e35c2bab3ecc47cfd4e5134e12662e98c4155"
+    ],
+    "relatedKeys": [
+      "PT_H1_PERMUTATION_COMBINATION_CALCULATION"
+    ],
+    "narrowExisting": [
+      "PT_COUNTING_ARRANGEMENT",
+      "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "PT_COUNTING_SELECTION_DISTRIBUTION"
+    ]
+  },
+  {
+    "bundle": "NPT_MATH1_SYSTEM_INEQUALITY",
+    "nameKo": "연립부등식",
+    "definition": "각 부등식의 정의역과 단조성을 반영하여 해구간을 구한 뒤 공통해를 교집합으로 결정한다.",
+    "course": "고등 수학Ⅰ",
+    "distinctFrom": [
+      "PT_LOG_FUNCTION_INEQUALITY"
+    ],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_eb4c12e59e16a54bf1c7a623b3040fc7431914b4b44b0cc4cd5a810950c26aff"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": [
+      "PT_LOG_FUNCTION_INEQUALITY"
+    ]
+  },
+  {
+    "bundle": "NPT_ALGEBRA_SET",
+    "nameKo": "집합",
+    "definition": "원소의 닫힘과 유한성 조건을 이용하여 집합을 구성하는 원소의 구조를 정한다.",
+    "course": "고등 대수",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_e83566bb45c86696cbcd8a9f516e207f008fe7c1eede32d5a217c9740ce40fcf"
+    ],
+    "relatedKeys": [
+      "PT_SET_CONSTRUCTION"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_GEOMETRY_VECTOR_DIFFERENTIATION",
+    "nameKo": "미분법",
+    "definition": "음함수 또는 매개변수로 표현된 곡선의 변화율을 연쇄법칙과 미분계수의 비로 구한다.",
+    "course": "고등 기하와벡터",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 3,
+    "examples": [
+      "qid_v1_402cbaf9e4eee2d801efa28d190d2519f161ef414ca5b1f14f8d1141f35a0be9",
+      "qid_v1_1786ee31c996bda90eabecebc0f5e62b9d1ff7603ee057dbeb09108fcfcab666",
+      "qid_v1_8393e5d1ba1c78ff3452cccff659766f8705dfbb3bc30714746335c2a800a9eb"
+    ],
+    "relatedKeys": [
+      "PT_DERIVATIVE_RULE_EVALUATION"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_CALCULUS_SEQUENCE_LIMIT",
+    "nameKo": "수열의 극한",
+    "definition": "수열의 일반항과 공비의 거동을 분석하여 극한값과 수렴 조건을 구한다.",
+    "course": "고등 미적분",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 6,
+    "examples": [
+      "qid_v1_083f6926b91b9a60558ae9b7db465f2125751e8f6618f6be42ce3ffdb43ba139",
+      "qid_v1_0fec87ac765e17ea344fce173ad768a75325d12d72db29148f9957f0c11da64c",
+      "qid_v1_6b7da4ece1a279ffcdc4216b9ef001da7e92f621ff836d199761f3c805bda8f2"
+    ],
+    "relatedKeys": [
+      "PT_H22A_06_GEOMETRIC_SEQUENCE"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_CALCULUS_SERIES",
+    "nameKo": "급수",
+    "definition": "부분합의 극한과 일반항의 수렴 조건을 이용하여 무한급수의 성질과 합을 구한다.",
+    "course": "고등 미적분",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 12,
+    "examples": [
+      "qid_v1_8d260852f80a76868fa27d4e77eb18aefede9cc433315b5321aaef5a153ed201",
+      "qid_v1_8227197a854671a58ad9e3a5265f7f4babd65a8de35b09c3328b59aca2e1e786",
+      "qid_v1_806299108f8841d7918d546621b3c5fc0708d164e299e13855d35a2e10d98325"
+    ],
+    "relatedKeys": [
+      "PT_H22A_07_SEQUENCE_SUM"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_CALCULUS2_SERIES",
+    "nameKo": "급수",
+    "definition": "부분합의 극한과 일반항의 수렴 조건을 이용하여 무한급수의 성질과 합을 구한다.",
+    "course": "고등 미적분Ⅱ",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 11,
+    "examples": [
+      "qid_v1_4c373af2f3e1dbd962dbab623d49339541f7e828967402bd4905f8665c066efa",
+      "qid_v1_f1295ae8fe45e98bd0db5550a84771ab77ccf3cc354c8e4379e5340e522e0c7d",
+      "qid_v1_7667df81767fc2db0ed2609f3b91d8a7260d767901cda0260caa2545b6785344"
+    ],
+    "relatedKeys": [
+      "PT_H22A_07_SEQUENCE_SUM"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_H1_DIVISOR",
+    "nameKo": "약수",
+    "definition": "소인수 지수의 선택 범위를 이용하여 약수의 개수와 합을 구하거나 그 조건을 만족하는 수를 정한다.",
+    "course": "고1 공통수학1",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 4,
+    "examples": [
+      "qid_v1_0844130865d8ff95abeb106e1ea6fac8d61d662f903644802163facc55e0ba91",
+      "qid_v1_6ed8889c577a66b756f4b7daf2bc3baed3b906a35e8ec788ae6d1515d29481a0",
+      "qid_v1_806daad12713c18952804478242cb25404a9a7c012269920c0f5bf43ca0c0db8"
+    ],
+    "relatedKeys": [
+      "PT_DIVISOR_COUNT",
+      "PT_M1_DIVISOR_MULTIPLE_EXPONENT"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_H1_MATRIX",
+    "nameKo": "행렬",
+    "definition": "행렬 연산의 정의와 비가환성·영인자·거듭제곱 성질을 증명 또는 반례로 판정한다.",
+    "course": "고1 공통수학1",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 3,
+    "examples": [
+      "qid_v1_9f5d923ded2406eb80995e1f92c181ad3b79f462358d5b46bbc9ee1a3c09d9ce",
+      "qid_v1_e62816ac4bea5241a243bb01b7e335b3fabf83471256de283c34a85494ee0d4a",
+      "qid_v1_19bc1d3d3c07e1e0a685de3b6935b20a98609f5ab36ced6949abb688916e7123"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": [
+      "PT_H1_MATRIX_BASIC_OPERATION",
+      "PT_H1_MATRIX_MULTIPLICATION",
+      "PT_H1_MATRIX_POWER_IDENTITY"
+    ]
+  },
+  {
+    "bundle": "NPT_GEOMETRY_CONIC",
+    "nameKo": "이차곡선",
+    "definition": "정점과 정직선까지의 거리 조건을 곡선의 정의와 대응시켜 포물선·타원·쌍곡선을 구별한다.",
+    "course": "고등 기하",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_edfe7c4500d81ea131e82ac64bd59b56589b53a4e640897148eb57885d771c8a"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": [
+      "PT_GEO_PARABOLA",
+      "PT_GEO_ELLIPSE",
+      "PT_GEO_HYPERBOLA"
+    ]
+  },
+  {
+    "bundle": "NPT_CALCULUS2_DIFFERENTIATION",
+    "nameKo": "미분법",
+    "definition": "몫과 합성함수의 미분법을 적용하여 도함수와 도함수값을 구한다.",
+    "course": "고등 미적분Ⅱ",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 2,
+    "examples": [
+      "qid_v1_449526528f2ffb963dcbfa783f22ca9d4aa70efb8169e9c075357dd3081265e6",
+      "qid_v1_e69672b9f2bfde7ae9b363f55720cfc63133710fac91f1d15e14eff464bf5125"
+    ],
+    "relatedKeys": [
+      "PT_DERIVATIVE_RULE_EVALUATION"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_CALCULUS2_SEQUENCE_LIMIT",
+    "nameKo": "수열의 극한",
+    "definition": "거듭제곱수열의 밑과 부호에 따라 수렴값을 나누어 극한으로 정의된 함수를 구한다.",
+    "course": "고등 미적분Ⅱ",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_393ecaf113981eeee2fc90b5e8b5e14a75eac747ef912561e9a1cc383c02a1e9"
+    ],
+    "relatedKeys": [
+      "PT_H22A_06_GEOMETRIC_SEQUENCE"
+    ],
+    "narrowExisting": []
   }
 ]
