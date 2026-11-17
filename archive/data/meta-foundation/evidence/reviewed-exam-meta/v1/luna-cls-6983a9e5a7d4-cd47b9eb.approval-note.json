@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-6983a9e5a7d4-cd47b9eb",
+  "sourceArchiveFile": "original/high/h2/1final/21_강남여고_1학기_기말_고2_수학I.js",
+  "createdAt": "2026-11-15T19:31:56.855Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "bc01e0aa4397e7a1383a6e208e7eba0f83f8d841",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/21_강남여고_1학기_기말_고2_수학I.json",
+      "sourceSha256": "9118ce5eba722eb9b5ad592bcef59d17b7647c3fd9544c14dacfd982ed27fe35",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6983a9e5a7d4-cd47b9eb.pass1-ledger.json",
+      "repoSha256": "9118ce5eba722eb9b5ad592bcef59d17b7647c3fd9544c14dacfd982ed27fe35",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/21_강남여고_1학기_기말_고2_수학I.json",
+      "sourceSha256": "bf8de6796dd499c885642582b3cd295fbb9ec63648acffa641e7e72a2f6f7ff7",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6983a9e5a7d4-cd47b9eb.pass2-ledger.json",
+      "repoSha256": "cc6489afc5771f04cde370dd77904a6895ad6cb143b4c05c8d71a82669332a61",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard3-020-original-high-h2-1final-gangnam-math1.json",
+      "sourceSha256": "895b39c3fd1b6e19e9623d757a19c35d4dea433cb7a6e0e88f5bafd58d4f7e71",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6983a9e5a7d4-cd47b9eb.pass3-ledger.json",
+      "repoSha256": "895b39c3fd1b6e19e9623d757a19c35d4dea433cb7a6e0e88f5bafd58d4f7e71",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard3-022.json",
+      "sourceSha256": "fe1744bb67f7eef87c3f2c03f4a47a18fec40d9baa388dd595c7f3209600a66d",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6983a9e5a7d4-cd47b9eb.pass3-ledger-2.json",
+      "repoSha256": "fe1744bb67f7eef87c3f2c03f4a47a18fec40d9baa388dd595c7f3209600a66d",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass4",
+      "source": "classify-final/p3/i/ledgers/shard-3-exam-0004.json",
+      "sourceSha256": "67486a73298ef24b0279ba49e1d69f9d6ea7867967bae297591ac4d8b20ac532",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6983a9e5a7d4-cd47b9eb.pass4-ledger.json",
+      "repoSha256": "67486a73298ef24b0279ba49e1d69f9d6ea7867967bae297591ac4d8b20ac532",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass4",
+      "source": "classify-final/p3/s/ledgers/shard-1-exam-0057.json",
+      "sourceSha256": "0b9f645c4d40d2005d4704a6f201edd8566d78b21cdcd771bf44f9769d1aa3c2",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6983a9e5a7d4-cd47b9eb.pass4-ledger-2.json",
+      "repoSha256": "0b9f645c4d40d2005d4704a6f201edd8566d78b21cdcd771bf44f9769d1aa3c2",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "agree": 130,
+    "p3": 64,
+    "luna-k4": 14,
+    "luna-k1": 36,
+    "sonnet-pass4": 16,
+    "tera-k3": 10
+  },
+  "itemSources": {
+    "agree+p3+luna-k4": 1,
+    "agree+luna-k4": 3,
+    "p3+agree+luna-k4": 1,
+    "agree+luna-k4+p3": 2,
+    "agree+luna-k1+p3": 1,
+    "p3+sonnet-pass4+luna-k1": 3,
+    "agree+p3+luna-k1": 5,
+    "agree+luna-k1": 5,
+    "agree+p3+tera-k3": 1,
+    "p3+luna-k1": 3,
+    "agree+tera-k3": 2,
+    "p3+sonnet-pass4+tera-k3": 1,
+    "p3+agree+tera-k3": 1,
+    "p3+agree+luna-k1": 1
+  },
+  "typeHoldQuestions": 27,
+  "idWarnings": []
+}

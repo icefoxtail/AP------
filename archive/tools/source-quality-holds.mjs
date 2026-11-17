@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import originalSourceError from '../../tools/4slot/original-source-error-hold.cjs';
 
 export const SOURCE_QUALITY_HOLD_SCHEMA = 'archive-source-quality-holds-v1';
 export const SOURCE_QUALITY_HOLD_LEDGER = 'archive/data/meta-foundation/source-quality-holds-v1.json';
@@ -89,7 +90,7 @@ export function sourceQualityHoldDependencyPaths(root) {
     return refs.map(ref => { approvalRefSchema(ref); return ref.path; });
   });
   return [...new Set([SOURCE_QUALITY_HOLD_LEDGER, 'archive/tools/source-quality-holds.mjs',
-    ...receiptEvidence,
+    ...receiptEvidence, ...originalSourceError.dependencyPaths(root),
     ...doc.records.flatMap(row => ['archive/exams/' + row.sourceArchiveFile, row.image.path,
       row.originalReceipt.path, row.pendingRootEvidence.path, row.independentEvidence.path,
       row.unresolvedEvidence.path])])].sort();
@@ -156,6 +157,12 @@ export function loadSourceQualityHolds({ root, identity }) {
         ledgerSha256, sourceBlobSha1: row.sourceBlobSha1, originalReceiptSha256: row.originalReceipt.sha256,
         releasePolicy: row.releasePolicy }) }));
   }
+  if (originalSourceError.relevant(root, identity)) {
+    const held = originalSourceError.verify(root, { identity });
+    ensure(!holds.has(held.questionUid), 'DUPLICATE_NAMED_HOLD');
+    holds.set(held.questionUid, Object.freeze(held));
+    for (const [p] of held.observed) proofPaths.add(p);
+  }
   return { holds, observed, ledgerSha256,
     manifestPaths: [...proofPaths].map(p => path.posix.relative('archive', p)).sort() };
 }
@@ -164,6 +171,14 @@ export function applySourceQualityHold(record, state) {
   const hold = state.holds.get(record.questionUid);
   if (!hold) return record;
   ensure(!state.observed.has(record.questionUid), 'DUPLICATE_CATALOG_UID');
+  if (hold.negativeOnly === true) {
+    // The historical identity fingerprint remains unchanged. This negative
+    // projection cannot turn an unverified source into an approved source.
+    ensure(originalSourceError.isSubject(record) && record.sourceFile === hold.sourceArchiveFile &&
+      Number(record.sourceOrdinal) === hold.sourceOrdinal && record.sourceFingerprint === hold.sourceFingerprint, 'NAMED_CATALOG_BINDING');
+    record.sourceIssueHold = true; record.sourceQualityHold = hold.projection;
+    state.observed.add(record.questionUid); return record;
+  }
   ensure(record.sourceFile === hold.sourceArchiveFile && Number(record.sourceOrdinal) === hold.sourceOrdinal &&
     record.sourceFingerprint === hold.sourceFingerprint && record.identityStatus === 'VERIFIED' &&
     record.sourceIntegrityStatus === 'VERIFIED', 'CATALOG_BINDING');

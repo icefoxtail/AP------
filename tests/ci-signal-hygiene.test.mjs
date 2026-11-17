@@ -117,10 +117,10 @@ test("ci.yml: scoped execution retains the existing blocking gates for their aff
   for (const needle of [
     "node --check", "node tools/skills/verify-skills.mjs --json", "node --test tests/git-growth.test.mjs",
     "node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs",
-    "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 45"
+    "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 90"
   ]) assert.ok(ci.includes(needle), needle);
   assert.match(ci.slice(ci.indexOf("\n  plan:\n"),ci.indexOf("\n  test:\n")), /\n    timeout-minutes: 5\n/);
-  assert.match(ci.slice(ci.indexOf("\n  test:\n")), /\n    timeout-minutes: 45\n/);
+  assert.match(ci.slice(ci.indexOf("\n  test:\n")), /\n    timeout-minutes: 90\n/);
 });
 
 test("ci.yml: skills verification uses the exact PR event base while non-PR runs check their tested commit", () => {
@@ -134,7 +134,7 @@ test("ci.yml: skills verification uses the exact PR event base while non-PR runs
 test("Native registration keeps compiled-artifact isolation; Pages never regenerates shared outputs", () => {
   const derive = read("tools/ci/archive-pages-registration-derive.sh");
   const order = [derive.indexOf("refresh_meta_foundation_compiled\n  node archive/tools/meta-foundation/materialize"),
-    derive.indexOf("python archive/build_db.py")];
+    derive.indexOf("node tools/ci/archive-registration-build-db.mjs")];
   assert.ok(order[0] > 0 && order[1] > order[0], "compile --write must run before the catalog / manifest / readiness rebuild");
   assert.match(derive, /compile-meta-foundation\.mjs --write/);
   assert.match(derive, /::warning title=Meta Foundation compile::/);

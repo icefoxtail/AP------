@@ -5,7 +5,7 @@
 ## 입력
 - 시험지: `{FOLDERS}` 안의 원본 기출 JS(`/home/user/AP------/archive/exams/original/...`). 문항 객체에 content(또는 stem)·choices·answer·solution·`image`(문제 그림, `archive/` 기준 경로)·`solutionImage*`.
 - 엔진 능력: 아래 요약 가이드를 한 번씩 읽는다(전체 AUTHOR_GUIDE는 너무 크니 읽지 않는다): `/home/user/AP------/.tmp/svg-m1/guide/guide-core.md`, `guide-plane.md`, `guide-graph.md`, `guide-solid.md`, `guide-stat.md`, `guide-tips.md`. 이후 추가된 것(E30·E34·진행 중 E31~E35): 좌표 TEXT 라벨, 평각·각 합 표식, 공통 변, 그래프 축별 배율·overlay 한글 이름, 수직선 행 라벨·점 모양·거리 괄호·부등식 라벨 숨김, 통계 미상 계급·떨어진 계급 합·범례·점도표, 주사위 표 묶음 색·수형도 경로 강조, (진행 중) 좌표·그래프 직선 라벨 배치, 평면 좁은 영역·치수선·호 라벨, 입체 쌓기·축 밖 구·높이 표기, 수직선 컴퍼스 작도(√2)·값 없는 문자 점.
-- 이미 처리한 시험지(건너뛴다): `/home/user/AP------/archive/tools/geometry-equation/production/exam-figure-ledger.json`의 exams.
+- 이미 처리한 시험지(건너뛴다): `archive/tools/geometry-equation/production/exam-figure-ledger/` 아래에 파일이 있는 시험지.
 
 ## 방법
 1. 지정 폴더의 시험지를 문항 수·기존 solutionImage 수와 함께 나열하고, 지시한 개수만큼 고른다 — 연도(최근·옛날)·학교·학기·과목을 고르게 섞는다(일부러 그림 많은 시험지만 고르지 않는다: 전체를 대표하는 표본). 해설(solution)이 비어 있는 시험지는 고르지 않고 개수만 센다.

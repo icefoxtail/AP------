@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T18:51:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+  "items": [
+    {
+      "ordinal": 13,
+      "chosenFrom": "new",
+      "resolutionReason": "1과 2를 포함해 곱셈으로 2^0부터 2^9=512까지 강제되고 2^10=1024는 U 밖이므로 이 10개가 최소 닫힌 집합이다.",
+      "choiceTableUsed": "H1-수학(하).json",
+      "rpmPath": {
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 연산",
+        "l3": "집합의 연산법칙"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "PT_SET_CONSTRUCTION",
+      "hold": {
+        "rpmPath": {
+          "l4": "조건은 A의 곱셈 닫힘이며 표의 복합 연산은 집합 연산식의 분기라 의미가 달라 l4를 지정하지 않음."
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "f₁(x)=(x−1)/x, f₂(x)=x라 합성함수 주기가 3이고 40=3·13+1이므로 f₄₀(9)=f₁(9)=8/9이다.",
+      "choiceTableUsed": "H1-수학(하).json",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "PT_H1_ITERATED_COMPOSITE_FUNCTION"
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "new",
+      "resolutionReason": "교점 A의 x좌표는 4a+1/a이고 꼭짓점 B의 x좌표는 2a라서 CH=3a+1/(2a)≥√6이며 a=1/√6에서 최소가 된다.",
+      "choiceTableUsed": "H1-수학(하).json",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "PT_FUNCTION_EXTREMUM",
+      "hold": {
+        "rpmPath": {
+          "l3": "표의 함수 RPM에는 이차함수 꼭짓점 좌표와 직선 교점을 산술기하평균으로 최적화하는 세부 경로가 없음.",
+          "l4": "표의 함수 RPM에 이 형태의 도형거리 최소화 세부 경로가 없음."
+        }
+      }
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "f(x)=(2x−1)^2은 [0,1]을 두 단조 구간으로 나누고 세 번 합성하면 8개 구간마다 y=x와 한 번씩 만나므로 서로 다른 해는 8개다.",
+      "choiceTableUsed": "H1-수학(하).json",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "PT_COMPOSITE_FUNCTION_ANALYSIS"
+    }
+  ]
+}

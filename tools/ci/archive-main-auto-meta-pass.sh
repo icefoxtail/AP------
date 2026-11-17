@@ -19,12 +19,12 @@ fi
 # Native producers remain authoritative; no new canonical definitions or student JS are written.
 node archive/tools/meta-foundation/compile-meta-foundation.mjs --write > "$work/compile.json"
 node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write > "$work/materialize.json"
-python archive/build_db.py > "$work/build-before.log" 2>&1
+node tools/ci/archive-registration-build-db.mjs > "$work/build-before.log" 2>&1
 node archive/tools/meta-foundation/auto-register-merged-source.mjs --write --report "$report" "${retry_args[@]}"
 # Existing build can reach its manifest fixed point on the second pass.
-python archive/build_db.py > "$work/build-after.log" 2>&1
+node tools/ci/archive-registration-build-db.mjs > "$work/build-after.log" 2>&1
 if ! node archive/tools/meta-foundation/auto-register-merged-source.mjs --verify --report "$report" > "$work/verify.json" 2> "$work/verify-error.log"; then
-  python archive/build_db.py > "$work/build-fixed-point.log" 2>&1
+  node tools/ci/archive-registration-build-db.mjs > "$work/build-fixed-point.log" 2>&1
   node archive/tools/meta-foundation/auto-register-merged-source.mjs --verify --report "$report" | tee "$work/verify.json"
 fi
 node tests/archive-question-identity-contract.test.mjs > "$work/identity-contract.log"

@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "50도 원주각이 보는 호에 대한 중심각 x를 두 배로 정한다.",
-    "decisiveStep": "50도 원주각이 보는 호에 대한 중심각 x를 두 배로 정한다."
+    "decisiveStep": "50도 원주각이 보는 호에 대한 중심각 x를 두 배로 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -141,7 +144,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "한 3cm 호의 원주각을 중심각으로 바꾸고 같은 길이인 다른 호의 중심각도 같음을 이용해 두 중심각을 합한다.",
-    "decisiveStep": "한 3cm 호의 원주각을 중심각으로 바꾸고 같은 길이인 다른 호의 중심각도 같음을 이용해 두 중심각을 합한다."
+    "decisiveStep": "한 3cm 호의 원주각을 중심각으로 바꾸고 같은 길이인 다른 호의 중심각도 같음을 이용해 두 중심각을 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -237,7 +243,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각63도를 중심각126도로 바꾼 뒤 두 접점의 직각과 사각형 내각합을 결합해 두 접선의 각을 구한다.",
-    "decisiveStep": "원주각63도를 중심각126도로 바꾼 뒤 두 접점의 직각과 사각형 내각합을 결합해 두 접선의 각을 구한다."
+    "decisiveStep": "원주각63도를 중심각126도로 바꾼 뒤 두 접점의 직각과 사각형 내각합을 결합해 두 접선의 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -285,7 +294,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "작은 반원의 접선현각과 지름의 원주각으로 바깥 반원에서 필요한 원주각을 얻고, 두 중심각의 비를 호 길이의 비로 바꾼다.",
-    "decisiveStep": "작은 반원의 접선현각과 지름의 원주각으로 바깥 반원에서 필요한 원주각을 얻고, 두 중심각의 비를 호 길이의 비로 바꾼다."
+    "decisiveStep": "작은 반원의 접선현각과 지름의 원주각으로 바깥 반원에서 필요한 원주각을 얻고, 두 중심각의 비를 호 길이의 비로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -333,7 +345,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 외부 할선각을 네 호 사이의 차 식으로 세우고 전체 호의 합360도와 결합해 목표 원주각이 보는 두 호의 합을 구한다.",
-    "decisiveStep": "두 외부 할선각을 네 호 사이의 차 식으로 세우고 전체 호의 합360도와 결합해 목표 원주각이 보는 두 호의 합을 구한다."
+    "decisiveStep": "두 외부 할선각을 네 호 사이의 차 식으로 세우고 전체 호의 합360도와 결합해 목표 원주각이 보는 두 호의 합을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -381,7 +396,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 두 원주각을 호의 크기로 바꾸고 같은 두 호 및 전체360도에서 남은 호를 구한 뒤 목표 원주각으로 바꾼다.",
-    "decisiveStep": "주어진 두 원주각을 호의 크기로 바꾸고 같은 두 호 및 전체360도에서 남은 호를 구한 뒤 목표 원주각으로 바꾼다."
+    "decisiveStep": "주어진 두 원주각을 호의 크기로 바꾸고 같은 두 호 및 전체360도에서 남은 호를 구한 뒤 목표 원주각으로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -429,7 +447,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 접선의 각으로 작은 호 AD를 구하고 남은 호를 셋으로 등분한 뒤 삼각형 BQC의 두 원주각으로 목표각을 정한다.",
-    "decisiveStep": "두 접선의 각으로 작은 호 AD를 구하고 남은 호를 셋으로 등분한 뒤 삼각형 BQC의 두 원주각으로 목표각을 정한다."
+    "decisiveStep": "두 접선의 각으로 작은 호 AD를 구하고 남은 호를 셋으로 등분한 뒤 삼각형 BQC의 두 원주각으로 목표각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -476,7 +497,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 원주각이 보는 호의 합을 더하면 전체 한 바퀴와 목표 호 BC가 중복 포함됨을 이용하여 중심각을 구한다.",
-    "decisiveStep": "두 원주각이 보는 호의 합을 더하면 전체 한 바퀴와 목표 호 BC가 중복 포함됨을 이용하여 중심각을 구한다."
+    "decisiveStep": "두 원주각이 보는 호의 합을 더하면 전체 한 바퀴와 목표 호 BC가 중복 포함됨을 이용하여 중심각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -524,7 +548,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 호를 4k,3k,2k로 나타내어 전체360도에서 k를 구한 뒤 목표 호의 절반을 원주각으로 정한다.",
-    "decisiveStep": "세 호를 4k,3k,2k로 나타내어 전체360도에서 k를 구한 뒤 목표 호의 절반을 원주각으로 정한다."
+    "decisiveStep": "세 호를 4k,3k,2k로 나타내어 전체360도에서 k를 구한 뒤 목표 호의 절반을 원주각으로 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -971,7 +998,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "정오각형의 이웃한 꼭짓점 사이 중심각72도를 얻고 같은 호 CD를 보는 원주각을 그 절반으로 구한다.",
-    "decisiveStep": "정오각형의 이웃한 꼭짓점 사이 중심각72도를 얻고 같은 호 CD를 보는 원주각을 그 절반으로 구한다."
+    "decisiveStep": "정오각형의 이웃한 꼭짓점 사이 중심각72도를 얻고 같은 호 CD를 보는 원주각을 그 절반으로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1014,7 +1044,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "수선으로 생긴 두 직각삼각형에서 피타고라스로 AH=CH를 얻고 같은 현의 원주각 및 지름에 대한 직각을 이용해 지름을 복원한다.",
-    "decisiveStep": "수선으로 생긴 두 직각삼각형에서 피타고라스로 AH=CH를 얻고 같은 현의 원주각 및 지름에 대한 직각을 이용해 지름을 복원한다."
+    "decisiveStep": "수선으로 생긴 두 직각삼각형에서 피타고라스로 AH=CH를 얻고 같은 현의 원주각 및 지름에 대한 직각을 이용해 지름을 복원한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

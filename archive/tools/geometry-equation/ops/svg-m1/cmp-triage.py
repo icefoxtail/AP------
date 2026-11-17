@@ -1,6 +1,7 @@
 import json,sys
-L=json.load(open('/home/user/AP------/archive/tools/geometry-equation/production/exam-figure-ledger.json'))
-gt={i['ord']:i['state'] for e in L['exams'] if e['exam']=='25_팔마중_2학기_중간_중1_기출' for i in e['items']}
+from figure_ledger import find_exam
+E=find_exam('25_팔마중_2학기_중간_중1_기출')  # 그 시험지 장부 파일 하나만 읽는다
+gt={i['ord']:i['state'] for i in (E['items'] if E else [])}
 for f in sys.argv[1:]:
     try: t=json.load(open(f))
     except Exception as ex: print(f,'ERR',ex); continue

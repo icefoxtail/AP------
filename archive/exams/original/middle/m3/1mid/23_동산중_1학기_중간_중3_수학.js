@@ -442,7 +442,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": null,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "problemTypeKey": null,
     "templateKey": null,
@@ -2108,7 +2108,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyRationale": "차의 제곱 형태로 수를 구하고 6의 배수 조건으로 보기들을 판정한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -2149,7 +2149,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": null,
     "subUnitKey": "M3-02-FACTORIZATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnit": "인수분해",
     "problemTypeKey": null,
     "templateKey": null,
     "rpmPrimaryId": "M3-RPM-019",

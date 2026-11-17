@@ -30,8 +30,8 @@ window.questionBank = [
     ],
     "answer": "4",
     "solution": "$(-\\sqrt5)^2=5$, $\\sqrt{\\frac9{25}}=\\frac35$, $-\\sqrt{(-4)^2}=-4$이다.<br>따라서 $5\\times\\frac35-(-4)=7$이므로 정답은 ④이다.",
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -64,8 +64,8 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "$(x+b)(x-3)=x^2+(b-3)x-3b$이다.<br>$-3b=-21$에서 $b=7$, $a=b-3=4$이므로 $a-b=-3$이다. 따라서 정답은 ②이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -655,8 +655,8 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "$A=\\sqrt{(x-1)^2}+2\\sqrt{(x+2)^2}=|x-1|+2|x+2|$이다.<br>$x<-2$이면 $A=(1-x)+2(-x-2)=-3x-3$이므로 ㄱ은 참이다.<br>$-2<x<1$이면 $A=(1-x)+2(x+2)=x+5>3$이므로 ㄴ은 거짓이다.<br>$x>1$이면 $A=(x-1)+2(x+2)=3x+3$이므로 ㄷ은 참이다.<br>따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ③이다.",
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -788,7 +788,7 @@ window.questionBank = [
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
+    "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
@@ -805,8 +805,8 @@ window.questionBank = [
     "answer": "-4\\sqrt{5}-12\\sqrt{3}",
     "solution": "$x=\\sqrt5-\\sqrt3$, $y=2(\\sqrt5+\\sqrt3)$이므로 $xy=4$, $x-y=-\\sqrt5-3\\sqrt3$이다.<br>$x^2y-xy^2=xy(x-y)=-4\\sqrt5-12\\sqrt3$이다.",
     "choices": [],
-    "subUnitKey": "M3-02-FACTORIZATION",
-    "subUnit": "인수분해",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

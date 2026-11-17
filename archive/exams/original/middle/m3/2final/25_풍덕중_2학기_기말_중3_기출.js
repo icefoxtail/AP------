@@ -49,7 +49,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심각54도가 보는 호와 같은 호를 보는 원주각을 그 절반으로 구한다.",
-    "decisiveStep": "중심각54도가 보는 호와 같은 호를 보는 원주각을 그 절반으로 구한다."
+    "decisiveStep": "중심각54도가 보는 호와 같은 호를 보는 원주각을 그 절반으로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -98,7 +101,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각40도를 중심각80도로 바꾼 다음 같은 원의 중심각 비와 호 길이 비를 대응하여 미지 호 길이를 정한다.",
-    "decisiveStep": "원주각40도를 중심각80도로 바꾼 다음 같은 원의 중심각 비와 호 길이 비를 대응하여 미지 호 길이를 정한다."
+    "decisiveStep": "원주각40도를 중심각80도로 바꾼 다음 같은 원의 중심각 비와 호 길이 비를 대응하여 미지 호 길이를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -147,7 +153,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름이 정한 반원180도와 외부 두 할선각62도의 관계식에서 작은 호 DC를 구해 그 중심각을 정한다.",
-    "decisiveStep": "지름이 정한 반원180도와 외부 두 할선각62도의 관계식에서 작은 호 DC를 구해 그 중심각을 정한다."
+    "decisiveStep": "지름이 정한 반원180도와 외부 두 할선각62도의 관계식에서 작은 호 DC를 구해 그 중심각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -196,7 +205,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "같은 호 DC와 BC를 보는 원주각을 각각 대응시켜 x와 y를 읽고 차를 구한다.",
-    "decisiveStep": "같은 호 DC와 BC를 보는 원주각을 각각 대응시켜 x와 y를 읽고 차를 구한다."
+    "decisiveStep": "같은 호 DC와 BC를 보는 원주각을 각각 대응시켜 x와 y를 읽고 차를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -287,7 +299,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 호의 합180도에서 두 반중심각이 여각임을 얻고 현의 반길이로 만든 직각삼각형의 합동을 이용해 중심거리와 반지름 제곱을 복원한다. 그 값으로 두 활꼴의 넓이를 합한다.",
-    "decisiveStep": "두 호의 합180도에서 두 반중심각이 여각임을 얻고 현의 반길이로 만든 직각삼각형의 합동을 이용해 중심거리와 반지름 제곱을 복원한다. 그 값으로 두 활꼴의 넓이를 합한다."
+    "decisiveStep": "두 호의 합180도에서 두 반중심각이 여각임을 얻고 현의 반길이로 만든 직각삼각형의 합동을 이용해 중심거리와 반지름 제곱을 복원한다. 그 값으로 두 활꼴의 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -336,7 +351,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각이 보는 두 호의 합과 외부 할선각이 주는 두 호의 차를 전체360도와 함께 정리하여 다른 외부 할선각에 필요한 호의 차를 얻는다.",
-    "decisiveStep": "원주각이 보는 두 호의 합과 외부 할선각이 주는 두 호의 차를 전체360도와 함께 정리하여 다른 외부 할선각에 필요한 호의 차를 얻는다."
+    "decisiveStep": "원주각이 보는 두 호의 합과 외부 할선각이 주는 두 호의 차를 전체360도와 함께 정리하여 다른 외부 할선각에 필요한 호의 차를 얻는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -431,7 +449,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내접 육각형에서 한 칸씩 건너뛴 세 원주각이 보는 호를 더하면 전체 원이 두 번 세어짐을 이용해 세 각의 합360도를 만든다.",
-    "decisiveStep": "내접 육각형에서 한 칸씩 건너뛴 세 원주각이 보는 호를 더하면 전체 원이 두 번 세어짐을 이용해 세 각의 합360도를 만든다."
+    "decisiveStep": "내접 육각형에서 한 칸씩 건너뛴 세 원주각이 보는 호를 더하면 전체 원이 두 번 세어짐을 이용해 세 각의 합360도를 만든다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -480,7 +501,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선 TQ와 현 TB가 이루는55도 각을 같은 현을 보는 원주각 TAB에 바로 대응한다.",
-    "decisiveStep": "접선 TQ와 현 TB가 이루는55도 각을 같은 현을 보는 원주각 TAB에 바로 대응한다."
+    "decisiveStep": "접선 TQ와 현 TB가 이루는55도 각을 같은 현을 보는 원주각 TAB에 바로 대응한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -578,7 +602,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각55도를 중심각110도로 바꾸고 A,O,C의 일직선에서70도를 얻은 뒤 접점 반지름의 직각과 삼각형 내각합으로 x를 정한다.",
-    "decisiveStep": "원주각55도를 중심각110도로 바꾸고 A,O,C의 일직선에서70도를 얻은 뒤 접점 반지름의 직각과 삼각형 내각합으로 x를 정한다."
+    "decisiveStep": "원주각55도를 중심각110도로 바꾸고 A,O,C의 일직선에서70도를 얻은 뒤 접점 반지름의 직각과 삼각형 내각합으로 x를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -727,7 +754,7 @@ window.questionBank=[
       "객관식"
     ],
     "wide": false,
-    "content": "다음 보기 중 옳은 것의 개수는? (4점)<div class='note-box'><div class='note-box-title'>&lt;보기&gt;</div><div>ㄱ. 편차의 합은 항상 $0$이다.</div><div>ㄴ. 최빈값은 자료에 따라 여러 개일 수 있다.</div><div>ㄷ. 변량의 개수가 짝수개이면 중앙값은 $2$개다.</div><div>ㄹ. 각 자료들의 값이 모두 증가하면 표준편차도 증가한다.</div><div>ㅁ. 분산이 클수록 각 자료의 값이 평균을 중심으로 좌우로 넓게 흩어져 있다.</div></div>",
+    "content": "다음 보기 중 옳은 것의 개수는? (4점)<div class='note-box'>&lt;보기&gt;<br>ㄱ. 편차의 합은 항상 $0$이다.<br>ㄴ. 최빈값은 자료에 따라 여러 개일 수 있다.<br>ㄷ. 변량의 개수가 짝수개이면 중앙값은 $2$개다.<br>ㄹ. 각 자료들의 값이 모두 증가하면 표준편차도 증가한다.<br>ㅁ. 분산이 클수록 각 자료의 값이 평균을 중심으로 좌우로 넓게 흩어져 있다.</div>",
     "choices": [
       "$1$개",
       "$2$개",
@@ -971,7 +998,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각으로 작은 호46도를 얻고 원 안의 두 현각에서 다른 호120도를 구한 후 외부 두 할선각의 호 차 관계로 x를 정한다.",
-    "decisiveStep": "원주각으로 작은 호46도를 얻고 원 안의 두 현각에서 다른 호120도를 구한 후 외부 두 할선각의 호 차 관계로 x를 정한다."
+    "decisiveStep": "원주각으로 작은 호46도를 얻고 원 안의 두 현각에서 다른 호120도를 구한 후 외부 두 할선각의 호 차 관계로 x를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1014,7 +1044,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주의1/9인 호를40도로 바꾸고 호 비5:9로 다른 호72도를 정한 뒤 내부 두 현각의 반합으로 목표각을 구한다.",
-    "decisiveStep": "원주의1/9인 호를40도로 바꾸고 호 비5:9로 다른 호72도를 정한 뒤 내부 두 현각의 반합으로 목표각을 구한다."
+    "decisiveStep": "원주의1/9인 호를40도로 바꾸고 호 비5:9로 다른 호72도를 정한 뒤 내부 두 현각의 반합으로 목표각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

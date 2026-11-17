@@ -246,3 +246,75 @@ fixture failure, never a skipped positive test. Negative tests cover fully
 resealed current question/old-asset drift, altered historical A2 bindings,
 scope, identity, reviewer separation, metadata/raw payload mixing and complete
 JavaScript suffix effects.
+
+## Separate M2S1 SVG7 content image pointer profile
+
+`M2S1_SVG7_IMAGE_POINTER_V1` is a separate closed profile, implemented by
+`materialize-reviewed-m2s1-svg7-image-pointer.mjs`. The default metadata fields
+and the existing `M2_PROBLEM_IMAGE_REPAIR8_V1` contract remain unchanged. Its
+scope is exactly E037 Q3/Q15, E048 Q11/Q13/Q24 and E045 Q15/Q24, with the
+canonical UID and ordinal for each row fixed in code. The three current banks
+contain 25, 26 and 24 questions: seven selected pointers and 68 unselected
+whole questions.
+
+The independent static authority is
+`34b9e6ab851d78f90bba4975416cbeb5ee8817e3`, path
+`docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json`,
+raw SHA-256 `2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e`.
+It binds the original expectation freeze, original-image observations, separate
+root static review, and exact seven before/after asset refs. The module verifies
+those fixed hashes, separate producer/reviewer identities, seven static decisions
+and `actualUi: PENDING`. New mathematical, Native, REVIEW2, metadata, difficulty
+or four-slot approvals are all zero. The new assets exist separately at public
+commit `c39e2b8a727d1b170980b9decd2288a56102622f`; the worker never writes assets.
+
+The envelope contains only one input file: a manifest with
+`schemaVersion: archive-m2s1-svg7-image-pointer-materialization-v1` and the exact
+profile above. Its closed top-level fields are `schemaVersion`,
+`transportProfile`, `materializationId`, `baseCommit`, `identityRef`,
+`staticEvidenceRef`, `outputScope` and `files`. File entries retain the five-key
+immutable `sourceBeforeRef`, the expected after blob/raw hash pair, exact bank
+count and complete selected changes. Each change contains only:
+
+```text
+key, questionUid, sourceOrdinal, wholeQuestionBeforeSha256,
+pointerField: content, pointerKind: EXACT_SINGLE_IMG_SRC_URI,
+pointerBefore, pointerAfter, contentBeforeSha256, contentAfterSha256,
+oldAssetRef, newAssetRef
+```
+
+Every immutable ref binds commit, path, Git blob SHA, raw SHA-256 and byte count.
+Current source and old-asset refs must resolve at `baseCommit`; current whole
+selected questions and old assets must equal the independently reviewed
+originals. New asset refs must match the exact published asset commit, path
+and bytes. A newer unrelated source-container change is allowed only when these
+selected objects remain exact and every nonselected current object is preserved.
+The complete current identity denominator and canonical UID/ordinal lookups
+are checked. An existing legacy UID uses the original unambiguous alias
+contract. No UID rewriting, numbering change or metadata insertion is allowed.
+
+Only the existing URI inside the selected `content` string's single `img src`
+is replaced. The original URI must occur exactly once in the content literal
+and entire source; the new URI must be absent. The surrounding HTML, all other
+fields and every byte outside those seven URI ranges remain exact. No generic
+HTML normalization is performed. The module recognizes the existing strict
+JSON `window.questionBank` array and the existing strict JSON
+`window.examData.questions` array followed by its unchanged questionBank alias.
+The literal before/after hashes, complete separately executed banks and inverse
+byte reconstruction must all agree. A suffix that changes another field when
+the URI changes is rejected.
+
+Unknown keys, extra input files, missing/duplicated/foreign scope rows, raw source
+or SVG payloads, and even an empty `preservationRequestRefs` field are rejected.
+The generated candidate changes only the three source files plus the existing
+transport receipt/envelope lifecycle. Its receipt remains `approvalEffect: NONE`
+and `registrationStatus: NOT_REGISTERED`. Actual student UI, independent current
+display review and any registrar continuity request are separate requirements.
+Static acceptance or this source transport cannot substitute for them.
+
+The dedicated regression suite is registered in the full runner and registration
+scope. It uses a 256 MB heap and a finite 240-second command budget after a
+115.4-second complete local boundary run. Original immutable student files are
+read only as opaque Git inputs; no student text or SVG payload is embedded in
+the committed test. Missing historical objects fail the fixture instead of
+skipping a positive case.

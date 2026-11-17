@@ -1,3 +1,4 @@
+import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 // Main-merge metadata registration. It applies declared metadata, never invents a semantic review.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,7 +12,8 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
-  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedE017RhsRebind } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedM2E006ProblemRebind, nativeReviewedE017RhsRebind,
+  nativeReviewedM2Problem21Rebind, nativeReviewedM2Family3Rebind, nativeReviewedM3Q5CompleteGivenRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
@@ -168,6 +170,7 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
+  if(originalSourceError.isSubject({questionUid:current?.questionUid||identity?.questionUid,source,ordinal}))return null;
   if(!nativeSource||!previous)return null;
   if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
@@ -239,9 +242,13 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2Renderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2E006=nativeReviewedM2E006ProblemRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource});
       const reviewedE017Rhs=nativeReviewedE017RhsRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedM2Problem21=nativeReviewedM2Problem21Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2Family3=nativeReviewedM2Family3Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM3Q5=nativeReviewedM3Q5CompleteGivenRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2E006!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&reviewedM2Problem21!==true&&reviewedM2Family3!==true&&reviewedM3Q5!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -274,6 +281,7 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
+  if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
   const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});
   if(authorityHold)return reject(authorityHold.reason);
   if(canonicalParentRetry&&['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current.metadataApprovalType))return reject('CANONICAL_PARENT_RETRY:NATIVE_AUTHORITY_NOT_SUPPORTED');

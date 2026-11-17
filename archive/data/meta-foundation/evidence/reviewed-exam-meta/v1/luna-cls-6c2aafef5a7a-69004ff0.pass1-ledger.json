@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass1",
+  "createdAt": "2026-11-11T21:00:00+09:00",
+  "sourceArchiveFile": "original/high/h1/1mid/19_복성고_1학기_중간_고1_기출.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "",
+      "primaryMethod": "29=28+1이므로 29의 모든 거듭제곱을 28로 나눈 나머지는 1로 남는다.",
+      "decisiveStep": "(28+1)⁹⁹⁹을 전개하면 상수항 1을 뺀 모든 항이 28의 배수이다.",
+      "hold": "거듭제곱의 나머지 주기를 다루는 유형 경로가 해당 선택지 표에 없어 정확한 조합을 고르기 어렵다.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "",
+      "primaryMethod": "f(x)−a는 최고차항 계수가 1이고 1, 2, 3을 근으로 갖는 삼차식이므로 세 일차인수를 곱한 식으로 둔다.",
+      "decisiveStep": "x=0을 대입해 −a=(−1)(−2)(−3)=−6을 얻고, f(0)=8에서 a=14를 정한다.",
+      "rpmPath": { "majorUnit": "다항식", "midUnit": "항등식과 나머지정리", "l3": "나머지정리", "l4": "고차식 조건" },
+      "crossConceptKeys": ["CC_POLYNOMIAL_FACTORIZATION"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "",
+      "primaryMethod": "x²−1=(x−1)(x+1)로 나누어떨어지는 조건을 f(1)=f(−1)=0으로 바꾸고, 먼저 f(1)=0에서 자연수 n 후보를 찾는다.",
+      "decisiveStep": "f(1)=−(n−1)(n−4)이므로 후보는 1,4이고 둘 다 f(−1)=0을 만족해 합은 5이다.",
+      "rpmPath": { "majorUnit": "다항식", "midUnit": "항등식과 나머지정리", "l3": "나머지정리", "l4": "고차식 조건" },
+      "crossConceptKeys": ["CC_POLYNOMIAL_FACTORIZATION"],
+      "conditionKeys": ["COND_NATURAL_NUMBER"],
+      "integrationPattern": "CASE_BRANCH"
+    }
+  ]
+}

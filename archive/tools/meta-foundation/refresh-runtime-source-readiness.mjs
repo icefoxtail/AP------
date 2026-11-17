@@ -30,7 +30,8 @@ for (const row of manifest.files || []) {
   const actualSha = sha256(bytes);
   if (actualSha !== String(row.sha256 || "").toLowerCase())
     throw new Error(`Archive2 canonical input digest mismatch: ${row.path}`);
-  resources[row.path] = JSON.parse(bytes.toString("utf8"));
+  // Non-JSON evidence remains digest-bound without becoming a resolver resource.
+  if (row.path.endsWith(".json")) resources[row.path] = JSON.parse(bytes.toString("utf8"));
   files[row.path] = { sha256: actualSha };
 }
 const sortedFiles = (manifest.files || [])

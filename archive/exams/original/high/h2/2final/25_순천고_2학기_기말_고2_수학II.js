@@ -329,9 +329,9 @@ window.questionBank = [
       "$24$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II/q10-solution.svg",
-    "solutionImageAlt": "접선 기울기를 적분해 함수식을 복원하고 C=4를 구하는 식 연결 그림",
-    "solutionImageCaption": "f′에서 f를 구하고 주어진 점 (−1,−2)을 이용해 적분상수를 정한다.",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 P(−1,−2)를 지나며 모든 실수에서 증가하는 삼차함수 f의 그래프.",
+    "solutionImageCaption": "기울기 함수를 적분하면 f(x)=2x³−x²+3x+C이고, f(−1)=−2에서 C=4이다. 따라서 f(2)=22.",
     "solutionImageSize": "full",
     "solution": "곡선 위의 점에서 접선의 기울기는 도함수의 값이다.\n$f'(x)=6x^2-2x+3$이다.\n\n양변을 적분하면\n$f(x)=\\displaystyle\\int(6x^2-2x+3)\\,dx$\n$=2x^3-x^2+3x+C$이다.\n\n점 $(-1,-2)$를 지나므로 $f(-1)=-2$이다.\n$-2=-2-1-3+C$\n$-2=-6+C$\n$C=4$이다.\n\n따라서\n$f(2)=2\\cdot2^3-2^2+3\\cdot2+4$\n$=16-4+6+4=22$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",

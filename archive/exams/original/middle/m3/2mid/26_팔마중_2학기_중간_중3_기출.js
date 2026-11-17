@@ -273,7 +273,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다.",
-    "decisiveStep": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다."
+    "decisiveStep": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -366,7 +368,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "A에서 BC에 수선을 내려 두 성분을 삼각비로 구하고 남은 밑변 조각과 높이에 피타고라스 정리를 적용한다.",
-    "decisiveStep": "A에서 BC에 수선을 내려 두 성분을 삼각비로 구하고 남은 밑변 조각과 높이에 피타고라스 정리를 적용한다."
+    "decisiveStep": "A에서 BC에 수선을 내려 두 성분을 삼각비로 구하고 남은 밑변 조각과 높이에 피타고라스 정리를 적용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -690,7 +694,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "지름에서 반지름과 중심에서 현까지의 거리를 구하고 피타고라스로 반현을 계산하여 두 배 한다.",
-    "decisiveStep": "지름에서 반지름과 중심에서 현까지의 거리를 구하고 피타고라스로 반현을 계산하여 두 배 한다."
+    "decisiveStep": "지름에서 반지름과 중심에서 현까지의 거리를 구하고 피타고라스로 반현을 계산하여 두 배 한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -829,7 +835,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "외접사각형의 각 꼭짓점에서 접선 길이를 짝지어 맞은편 두 변의 합이 같다는 관계를 세운다.",
-    "decisiveStep": "외접사각형의 각 꼭짓점에서 접선 길이를 짝지어 맞은편 두 변의 합이 같다는 관계를 세운다."
+    "decisiveStep": "외접사각형의 각 꼭짓점에서 접선 길이를 짝지어 맞은편 두 변의 합이 같다는 관계를 세운다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -921,7 +929,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "작은 원의 반지름을 큰 원의 현까지의 중심거리로 해석하여 반현을 구하고 수직인 두 현의 교점 위치만큼 더한다.",
-    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지의 중심거리로 해석하여 반현을 구하고 수직인 두 현의 교점 위치만큼 더한다."
+    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지의 중심거리로 해석하여 반현을 구하고 수직인 두 현의 교점 위치만큼 더한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -1043,7 +1053,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "현의 수직이등분을 이용해 반현을 정하고 중심에서 현까지의 거리를 r−3으로 나타내 피타고라스 방정식을 세운다.",
-    "decisiveStep": "현의 수직이등분을 이용해 반현을 정하고 중심에서 현까지의 거리를 r−3으로 나타내 피타고라스 방정식을 세운다."
+    "decisiveStep": "현의 수직이등분을 이용해 반현을 정하고 중심에서 현까지의 거리를 r−3으로 나타내 피타고라스 방정식을 세운다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,
@@ -1083,6 +1095,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "피타고라스로 CH를 구하고 세 점에서의 같은 접선 조각을 가로 w의 식으로 연결해 DH의 합 조건으로 w와 GH를 정한다.",
-    "decisiveStep": "피타고라스로 CH를 구하고 세 점에서의 같은 접선 조각을 가로 w의 식으로 연결해 DH의 합 조건으로 w와 GH를 정한다."
+    "decisiveStep": "피타고라스로 CH를 구하고 세 점에서의 같은 접선 조각을 가로 w의 식으로 연결해 DH의 합 조건으로 w와 GH를 정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   }
 ];

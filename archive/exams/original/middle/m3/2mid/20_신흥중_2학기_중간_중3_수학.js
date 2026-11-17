@@ -1480,7 +1480,9 @@ window.questionBank = [
 ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "tanA의 비를 직각삼각형 두 직각변의 비로 놓고 나머지 삼각비를 구한다.",
-    "decisiveStep": "변의 비 5:12:13에서 cosA−sinA=(12−5)/13이다."
+    "decisiveStep": "변의 비 5:12:13에서 cosA−sinA=(12−5)/13이다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
 {
   "id": 20,

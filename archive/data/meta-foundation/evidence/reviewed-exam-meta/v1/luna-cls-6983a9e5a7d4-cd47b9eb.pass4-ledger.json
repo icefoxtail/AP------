@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass4",
+  "createdAt": "2026-11-14T00:00:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/21_강남여고_1학기_기말_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass1",
+      "resolutionReason": "a₁=1에서 점화식에 n=1,2,3을 차례로 넣으면 a₂=-4, a₃=14, a₄=-45다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass1",
+      "resolutionReason": "1/((k+1)(k+2))=1/(k+1)-1/(k+2)로 쪼개면 k=1부터 7까지의 합은 1/2-1/9=7/18이다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "new",
+      "resolutionReason": "첫 세 항의 합 a(1+r+r²)=14와 첫 여섯 항의 합 조건을 동시에 사용해 a와 r을 정한다.",
+      "integrationPattern": "INTERDEPENDENT"
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass1",
+      "resolutionReason": "(aₖ+1)²-(aₖ-1)²=4aₖ로 줄인 뒤 aₖ=√(k+1)-√k의 망원합을 계산한다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "new",
+      "resolutionReason": "a₁=b₁=2에 등차·등비 조건 a₂=b₂, a₄=b₄를 동시에 적용해 두 수열의 공차와 공비를 맞춘다.",
+      "integrationPattern": "INTERDEPENDENT"
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "new",
+      "resolutionReason": "네 등차항의 합이 36이라는 식과 첫째·넷째 항 곱이 가운데 곱보다 32 작은 식을 함께 풀어 최대항을 정한다.",
+      "integrationPattern": "INTERDEPENDENT"
+    },
+    {
+      "ordinal": 25,
+      "chosenFrom": "new",
+      "resolutionReason": "2aₙ₊₁=aₙ+aₙ₊₂로 정해지는 등차수열과 bₙ₊₁=rbₙ인 등비수열이 aₘ=bₖ를 만족하는 지수 조건을 자연수 b,r별로 센다.",
+      "integrationPattern": "DEEP_COMPOSITE"
+    },
+    {
+      "ordinal": 27,
+      "chosenFrom": "pass1",
+      "resolutionReason": "Sₙ=3n²+n-1에서 aₙ=Sₙ-Sₙ₋₁로 일반항을 구하고 a₁+a₄+a₆을 더한다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 29,
+      "chosenFrom": "pass1",
+      "resolutionReason": "x²-10x+24=0의 근 m,n을 합의 안팎 합산 한계에 넣고 각 k에 대한 k+i의 합을 차례로 계산한다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 30,
+      "chosenFrom": "pass2",
+      "resolutionReason": "n에서 성립한다고 가정한 1³+⋯+n³=[n(n+1)/2]²에 (n+1)³을 더해 귀납 단계를 보인다.",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass1",
+      "resolutionReason": "등차수열에서 a₈-a₅=3d=9라서 d=3이고 a₁₃=a₈+5d=40이다.",
+      "integrationPattern": "SEQUENTIAL"
+    }
+  ]
+}
