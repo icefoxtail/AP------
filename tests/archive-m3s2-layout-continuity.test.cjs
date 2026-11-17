@@ -49,10 +49,10 @@ function dependencyFixture(){
  // this closed UI contract authenticates. The current live renderer is tested
  // separately below and must still be rejected when its bytes have changed.
  // Main #2378 default renderer; all dependency mutations and refusal assertions stay exact.
- const engine=execFileSync('git',['-C',ROOT,'cat-file','blob','eb7738126ae8c1df50db7f87a88a86b66244f43c'],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:1024*1024,stdio:['ignore','pipe','pipe']});
- assert.equal(engine.length,197058);
- assert.equal(gitBlob(engine),'eb7738126ae8c1df50db7f87a88a86b66244f43c');
- assert.equal(sha(engine),'0d934a0c97dbf0f6590e7385d7f6001819e724e89dff708620487f73810fe149');
+ const engine=execFileSync('git',['-C',ROOT,'cat-file','blob','8e825a357e39cc9c36a37550a48f713b57ff2054'],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:1024*1024,stdio:['ignore','pipe','pipe']});
+ assert.equal(engine.length,197069);
+ assert.equal(gitBlob(engine),'8e825a357e39cc9c36a37550a48f713b57ff2054');
+ assert.equal(sha(engine),'dae6f73f902bfd579b643bdf277f85f7e08c7918d5ba584d22e6878871d5f067');
  const files=new Map([['archive/engine.html',engine],[css,Buffer.from('synthetic css')],[mj,Buffer.from('synthetic mathjax')],[accessibility,Buffer.from('synthetic accessibility')],[FIXED.refs.currentSourceRef.path,Buffer.from('synthetic bank')],[md,recordBytes([])],[id,recordBytes([])],[svg,svgData()]]);
  const fonts=[{path:css,kind:'STYLESHEET',mime:'text/css',weight:null}];for(const weight of[400,700,800]){const p=`archive/vendor/nanum-myeongjo/synthetic-${weight}.woff2`;files.set(p,Buffer.from('font '+weight));fonts.push({path:p,kind:'FONT',mime:'font/woff2',weight});}
  const resources=fonts.map((f,i)=>({...syntheticRef(f.path,files.get(f.path)),...f,resourceId:sha('resource '+i),status:200})),fontResourceIds=resources.map(f=>f.resourceId);

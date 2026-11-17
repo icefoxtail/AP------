@@ -33,8 +33,8 @@ jobs:
           const bytes = fs.readFileSync('archive/engine.html');
           const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
           const gitBlobSha1 = crypto.createHash('sha1').update(Buffer.from('blob ' + bytes.length + '\0')).update(bytes).digest('hex');
-          assert.equal(sha256, '0d934a0c97dbf0f6590e7385d7f6001819e724e89dff708620487f73810fe149', 'Q10_RECAPTURE_ENGINE_RAW_DRIFT');
-          assert.equal(gitBlobSha1, 'eb7738126ae8c1df50db7f87a88a86b66244f43c', 'Q10_RECAPTURE_ENGINE_GIT_DRIFT');
+          assert.equal(sha256, 'dae6f73f902bfd579b643bdf277f85f7e08c7918d5ba584d22e6878871d5f067', 'Q10_RECAPTURE_ENGINE_RAW_DRIFT');
+          assert.equal(gitBlobSha1, '8e825a357e39cc9c36a37550a48f713b57ff2054', 'Q10_RECAPTURE_ENGINE_GIT_DRIFT');
           console.log(JSON.stringify({ status: 'EXACT_ENGINE_BOUND', sha256, gitBlobSha1, expectedLogicalCases: 48 }));
           NODE
       - name: Verify the closed problem capture contract
