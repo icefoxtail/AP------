@@ -1,0 +1,43 @@
+name: M1S2 Current UI Registration Scoped Gate
+on:
+  push:
+    branches:
+      - ops/m1-current-ui-registration-26fc-20261117
+permissions:
+  contents: read
+concurrency:
+  group: m1s2-current-ui-registration-scoped-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  m1s2-existing-authority:
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/m1-current-ui-registration-26fc-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      ARCHIVE_M1S2_GATE_EXPECTED_SHA: ${{ github.sha }}
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout exact closed ops HEAD with immutable history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse the scoped gate
+        run: node --check tools/4slot/check-m1s2-current-ui-scoped.cjs
+      - name: Official existing authority and Consumer for M1S2 seven only
+        run: >-
+          node tools/4slot/check-m1s2-current-ui-scoped.cjs
+          --root "$GITHUB_WORKSPACE"
+          --output "$RUNNER_TEMP/m1s2-existing-authority/scoped-result.json"
+      - name: Preserve bounded metadata even on refusal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m1s2-existing-authority-${{ github.sha }}
+          path: ${{ runner.temp }}/m1s2-existing-authority/scoped-result.json
+          if-no-files-found: error

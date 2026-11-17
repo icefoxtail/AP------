@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "archive-m1s2-existing-evidence-gate-candidate-v1",
+  "owner": "/root/ci_m2s2",
+  "publisher": "/root",
+  "date": "2026-11-17",
+  "status": "IMMUTABLE_CANDIDATE_STATIC_REVIEW_PENDING_LOCAL_NOT_RUN",
+  "base": {
+    "head": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "requiredCurrentEvidenceAncestor": "d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed",
+    "actualBeforeFiles404": true,
+    "sourceCodeOrAuthorityWritesByAuthor": 0,
+    "refWritesByAuthor": 0
+  },
+  "exactOpsRef": "refs/heads/ops/m1-current-ui-registration-26fc-20261117",
+  "operations": [
+    {
+      "path": "tools/4slot/check-m1s2-current-ui-scoped.cjs",
+      "localPath": null,
+      "bytes": 44484,
+      "sha256": "07b0cc79f10114b5e57606670426c003d27f9d82373ea57ac2e09dcd46f1f2fd",
+      "gitBlobSha1": "358793ac3a91484a96723632ad8c9a0514120254",
+      "expectedBeforeGitBlobSha1": null,
+      "mode": "100644",
+      "fullStringReadback": true
+    },
+    {
+      "path": ".github/workflows/m1-current-ui-registration-gate.yml",
+      "localPath": null,
+      "bytes": 1607,
+      "sha256": "84ca0eefab5edce0b1091e060d24615214af335b036af253c15af128a6a55503",
+      "gitBlobSha1": "98bec7dc1eb51abbe067ab4c1f51a9096bbc6c68",
+      "expectedBeforeGitBlobSha1": null,
+      "mode": "100644",
+      "fullStringReadback": true
+    }
+  ],
+  "command": "node tools/4slot/check-m1s2-current-ui-scoped.cjs --root \"$GITHUB_WORKSPACE\" --output \"$RUNNER_TEMP/m1s2-existing-authority/scoped-result.json\"",
+  "productionManifest": {
+    "gitBlobSha1": "0e642c02316bbf769febbc69dd4a710671d93ab5"
+  },
+  "reusedFramework": {
+    "harnessGitBlobSha1": "81d8f90e1fb1e8b2b513db3fb9d22e2a0e0c9c0f",
+    "manifestGitBlobSha1": "fb9d42b285d0bc58dd0c09dfa4175bff9cf0dd51",
+    "dynamicResultReuse": false,
+    "common": "private no-checkout clone; current full MD/ID/SVG; actual outside whole states; before/after/cold/delete; official builder/Consumer; bounded metadata log; input immutability",
+    "changed": "closed M1 schema/refs/5banks; no-commit current refs anchored to actual HEAD; original M1 live dependency boundary; official m1Problem.verify route; 121/7/114; source-bound pending and tombstone checks"
+  },
+  "scope": {
+    "sourceBanks": 5,
+    "sourceRows": 121,
+    "selected": 7,
+    "outside": 114,
+    "bankCounts": [
+      24,
+      24,
+      23,
+      26,
+      24
+    ],
+    "actualBaseline": "current checked-out item-4slot-index.json records and pending whole states",
+    "selectedUIDs": [
+      "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+      "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+      "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+      "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+      "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+      "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c"
+    ],
+    "optionalContinuity": "Only exact seven M1 subjects and their existing source-bank claim files. Unsupported other lanes fail rather than invent fixture authority."
+  },
+  "authority": {
+    "route": "unchanged official build -> m1Problem.verify -> prior REGISTERED/source/MD/ID/vector/original review/current UI",
+    "coreGitBlobSha1": "b073bac3a47ceee4fd69d52e91f37252bf61e60a",
+    "newFinalQaNativeApprovals": 0,
+    "newSemanticApproval": 0,
+    "newFourSlotVector": 0,
+    "comments": "This is existing-vector continuity. It does not call or manufacture a new issued FINAL_QA Native receipt."
+  },
+  "gates": [
+    "exact closed push/head/event/expected provenance and evidence ancestry",
+    "pinned production9 plus producer/H/surface/fixture4 and official core3",
+    "full current inputs copied byte-exact; source5/compact5 fixed, canonical UID joins121 unique",
+    "old sidecar7 refusal and actual outside114 full-state equality",
+    "new sidecar7 official authority + exact vector/ref hashes + Consumer get/hasTerm",
+    "cold official run(check:true), changed=false,5 revalidated/0 reused",
+    "delete sidecar7 -> exact M1S2_PROBLEM_CONTINUITY_CLAIM_MISSING_OR_MIXED for7; outside114 unchanged",
+    "root and private nonderived inputs unchanged"
+  ],
+  "declaredInputBoundary": {
+    "noCommitReferences": "current exact HEAD path/Git/raw/bytes, copied as required by original M1 reader",
+    "historicalReferences": "full original commit/path/Git/raw/bytes, immutable objects only",
+    "uiJsonClosure": "only exact M1 old/current UI proof namespaces; no global outputDigests recursion",
+    "capturedMirrors": "immutable captured92 remain authenticated; current owned assets are authenticated through seven original sidecars",
+    "liveInputs": "original common reader current code/font/top-ref checks; current full generated inputs without rewrite"
+  },
+  "output": {
+    "metadataOnly": true,
+    "artifact": "scoped-result.json",
+    "boundedLogReceipt": true,
+    "noSourceOrSolutionBody": true
+  },
+  "boundaries": {
+    "mainWrites": 0,
+    "sourceWrites": 0,
+    "MDIDWrites": 0,
+    "compactWrites": 0,
+    "canonicalWrites": 0,
+    "newMathQa": 0,
+    "screenshotRuns": 0,
+    "parallelUnitJobs": "Root owns existing53 current-UI unit tests at6d881; this workflow does not rerun them"
+  },
+  "validation": {
+    "blobFullReadback": "EXACT",
+    "nodeSyntax": "NOT_RUN",
+    "official121": "NOT_RUN",
+    "existingAuthority7": "NOT_RUN",
+    "Consumer7": "NOT_RUN",
+    "outside114": "NOT_RUN",
+    "coldDelete": "NOT_RUN",
+    "currentMainRegistration": "NOT_PERFORMED"
+  },
+  "nextAction": "Independent static review and root exact closed ops publication; collect actual scoped report before any current registration claim."
+}
