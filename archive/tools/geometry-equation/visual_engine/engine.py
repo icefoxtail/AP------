@@ -541,6 +541,9 @@ def prepare(spec):
             elif title is not None and axis_title_parts(title) is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'parts':axis_title_parts(title),'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             elif title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
+        for label in labels:
+            # the x axis name stands below the end of its axis (right and below first): above it, it would sit beside the labels of lines and curves ending there and read as part of them (y=3 and x read as y=3x)
+            if label['id']=='axis-x':label['directions']=('SE','S','E','NE','N','SW','W','NW')
         visible_axes=[];fraction_text={}
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))
