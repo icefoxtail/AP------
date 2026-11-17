@@ -16,8 +16,8 @@ window.questionBank = [
       "11"
     ],
     "image": "assets/images/19_신흥중_2학기_기말_중2_기출/q01.png",
-    "solution": "그림에서 $E$는 $AC$의 중점이고 $G$는 무게중심이다.\n따라서 $AE=EC=8\\text{ cm}$이므로 $x=8$이다.\n\n$G$는 중선 $BE$를 $2:1$로 나눈다.\n$BG:GE=2:1$이고 $BG=6\\text{ cm}$이므로\n$GE=6\\div2=3\\text{ cm}$이다.\n따라서 $y=3$이다.\n\n$x+y=8+3=11$\n\n그러므로 정답은 ⑤이다.",
-    "answer": "⑤",
+    "solution": "그림에서 $E$는 $AC$의 중점이고 $G$는 무게중심이다.\n$AC=8\\text{ cm}$이고 $E$는 $AC$의 중점이므로 $x=AE=4$이다.\n\n$G$는 중선 $BE$를 $2:1$로 나눈다.\n$BG:GE=2:1$이고 $BG=6\\text{ cm}$이므로\n$GE=6\\div2=3\\text{ cm}$이다.\n따라서 $y=3$이다.\n\n$x+y=4+3=7$\n\n그러므로 정답은 ③이다.",
+    "answer": "③",
     "layoutTag": "grid",
     "wide": false,
     "level": "하",
@@ -64,7 +64,7 @@ window.questionBank = [
     "rpmL4": "2:1 비",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 중선 AD, BE가 무게중심 G에서 만난다. E는 변 AC의 중점이라 AE와 EC가 같고 길이 8 cm이며, 파란색 BG는 6 cm, 주황색 GE는 3 cm이다. 오른쪽에는 중선 BE를 따로 펴서 BG와 GE의 길이를 나타냈다.",
-    "solutionImageCaption": "E는 AC의 중점이므로 AE=EC=8 cm에서 x=8이다. 무게중심 G는 중선 BE를 2:1로 나누므로 BG=6 cm일 때 GE=3 cm이고 y=3이다. 따라서 x+y를 구하면 된다. 정답은 11이다.",
+    "solutionImageCaption": "E는 AC의 중점이고 AC=8 cm이므로 AE=4 cm에서 x=4이다. 무게중심 G는 중선 BE를 2:1로 나누므로 BG=6 cm일 때 GE=3 cm이고 y=3이다. 따라서 x+y=7이다. 정답은 7이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
@@ -329,7 +329,7 @@ window.questionBank = [
       "$18\\text{ cm}^2$"
     ],
     "image": "assets/images/19_신흥중_2학기_기말_중2_기출/q05.png",
-    "solution": "$G$는 무게중심이므로 $G$를 지나고 $BC$에 평행한 $FE$는 밑변에서 높이의 3분의 2 지점에 있다.\n따라서 $F$는 $AB$를 $AF:FB=2:1$로 나눈다.\n$D$는 $BC$의 중점이다.\n\n$[ABD]=\\dfrac12[ABC]=18\\text{ cm}^2$이다.\n삼각형 $AFD$와 $ABD$는 밑변을 $AD$로 볼 때, 꼭짓점 $F$, $B$가 $AB$ 위에 있으므로 넓이의 비는\n$[AFD]:[ABD]=AF:AB=2:3$이다.\n\n$[AFD]=\\dfrac23\\cdot18=12\\text{ cm}^2$\n\n그러므로 정답은 ④이다.",
+    "solution": "$G$는 무게중심이므로 $G$를 지나고 $BC$에 평행한 $FE$는 꼭짓점 $A$에서 높이의 3분의 2 지점(밑변에서 3분의 1 지점)에 있다.\n따라서 $F$는 $AB$를 $AF:FB=2:1$로 나눈다.\n$D$는 $BC$의 중점이다.\n\n$[ABD]=\\dfrac12[ABC]=18\\text{ cm}^2$이다.\n삼각형 $AFD$와 $ABD$는 밑변을 $AD$로 볼 때, 꼭짓점 $F$, $B$가 $AB$ 위에 있으므로 넓이의 비는\n$[AFD]:[ABD]=AF:AB=2:3$이다.\n\n$[AFD]=\\dfrac23\\cdot18=12\\text{ cm}^2$\n\n그러므로 정답은 ④이다.",
     "answer": "④",
     "layoutTag": "grid",
     "wide": false,

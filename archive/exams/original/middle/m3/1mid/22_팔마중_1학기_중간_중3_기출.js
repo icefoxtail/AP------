@@ -435,15 +435,15 @@ window.questionBank = [
       "$(a+b)(a-b)=a^2+b^2$",
       "$(x+a)(x+b)=x^2+(a+b)x+ab$"
     ],
-    "answer": "3",
-    "solution": "그림은 한 변의 길이가 $a$인 정사각형에서 가로와 세로로 각각 $b$만큼 뺀 정사각형의 넓이를 설명한다.\n따라서 $(a-b)^2=a^2-2ab+b^2$\n\\therefore 3",
+    "answer": "2",
+    "solution": "그림은 가로 $a+b$, 세로 $a-b$인 직사각형을 대각선으로 잘라 다시 배열하여, 한 변의 길이가 $a$인 정사각형에서 한 변의 길이가 $b$인 정사각형을 뺀 도형으로 만든 것이다.\n따라서 $(a+b)(a-b)=a^2-b^2$\n\\therefore 2",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
     "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 한 변이 a인 정사각형을 남는 파란 (a−b)² 정사각형, 같은 주황 띠 두 개, 초록 b² 모서리로 분할한 관계 모식도이다. 도식의 비례는 예시이다.",
-    "solutionImageCaption": "두 띠의 넓이는 각각 b(a−b)이다. 따라서 (a−b)²=a²−2ab+b²이다. 정답은 ③이다.",
+    "solutionImageCaption": "가로 a+b, 세로 a−b인 직사각형을 잘라 옮기면 한 변이 a인 정사각형에서 한 변이 b인 정사각형을 뺀 도형이 되므로 (a+b)(a−b)=a²−b²이다. 정답은 ②이다.",
     "solutionImageSize": "full"
   },
   {

@@ -586,7 +586,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "④",
-    "solution": "직사각형의 높이는 $3$, 밑변 길이와 윗변 길이의 차는 $4-2=2$이다.\n오른쪽 빗변을 $x$라 하면 빗변을 한 변으로 하는 직각삼각형의 두 직각변은 $2$와 $3$이다.\n피타고라스 정리에 따라\n$x^2=2^2+3^2=4+9=13$이다.\n따라서 정답은 ④이다.",
+    "solution": "직각사다리꼴의 높이는 $3$, 밑변 길이와 윗변 길이의 차는 $4-2=2$이다.\n오른쪽 빗변을 $x$라 하면 빗변을 한 변으로 하는 직각삼각형의 두 직각변은 $2$와 $3$이다.\n피타고라스 정리에 따라\n$x^2=2^2+3^2=4+9=13$이다.\n따라서 정답은 ④이다.",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
