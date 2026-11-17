@@ -13,6 +13,10 @@ const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_OUT = path.join(ROOT, 'archive/analysis/palma-mock-builder-20261010/QA');
 const SOURCE_SHA = '4cfce909c023e5c4df4a759945c8cc3e0a63ec76';
 const SOURCE_COUNT = 23;
+// The page lists missing source questions as "17번, 18번" (it was "q17, q18" before the screen rewrite in #2318).
+// Parse the numbers so the check compares the exact set and "7번" is not satisfied by "17번".
+const missingQids = text => [...String(text ?? '').matchAll(/(\d+)\s*번/g)].map(match => Number(match[1]));
+const sameQidList = (actual, expected) => actual.length === expected.length && expected.every(qid => actual.includes(qid));
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const normalize = value => String(value ?? '').replace(/\s+/g, ' ').trim();
 function mathAudit(items) {
@@ -369,7 +373,7 @@ async function main() {
 
     // Simulate the previously incomplete 16/23 data state without changing files.
     const partial = await evaluate(`(()=>{const prior=selectableRows;selectableRows=prior.filter(row=>Number(row.sourceQid)<=16);renderSourceSelection();const out={coverage:document.getElementById('source-coverage').textContent,missing:document.getElementById('source-missing-qids').textContent};selectableRows=prior;renderSourceSelection();return out;})()`);
-    assert(partial.coverage.includes('16/23') && ['q17','q18','q19','q20','q21','q22','q23'].every(qid=>partial.missing.includes(qid)), 'Incomplete source coverage message omitted q17–q23.', partial);
+    assert(partial.coverage.includes('16/23') && sameQidList(missingQids(partial.missing), [17, 18, 19, 20, 21, 22, 23]), 'Incomplete source coverage message omitted q17–q23.', partial);
     check('incomplete coverage names every missing source question', partial);
 
     const yearOptions = await evaluate("[...document.querySelectorAll('#source-year option')].map(option=>option.value)");
@@ -485,7 +489,7 @@ async function main() {
     }))()`);
     const fixedMissing = Array.from({ length: SOURCE_COUNT }, (_, index) => index + 1).filter(qid => !fixedExpected.includes(qid));
     assert(fixedExpected.length < SOURCE_COUNT && fixedCoverage.summary.includes(`${fixedExpected.length}개`) &&
-      fixedMissing.every(qid => fixedCoverage.missing.includes('q' + qid)), 'Fixed difficulty did not make sparse source coverage explicit.', { fixedPair, fixedCoverage, fixedMissing });
+      sameQidList(missingQids(fixedCoverage.missing), fixedMissing), 'Fixed difficulty did not make sparse source coverage explicit.', { fixedPair, fixedCoverage, fixedMissing });
     check('fixed numeric difficulty uses metadata and reports sparse coverage', { purpose: fixedPair.purpose, bucket: fixedPair.bucket, qids: fixedExpected, missing: fixedMissing });
 
     // Mixed quotas: choose two buckets with candidates on distinct source questions.
