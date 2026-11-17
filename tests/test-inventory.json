@@ -219,7 +219,6 @@
   {
    "job": ".github/workflows/problem-bank-meta.yml",
    "match": [
-    "tests/*meta*",
     "tests/generated-meta-backfill.test.cjs",
     "tests/generated-meta-browse-aliases.test.cjs",
     "tests/problem-bank-meta-consumers.test.cjs",
@@ -237,6 +236,12 @@
    "job": ".github/workflows/similar-harness-regression.yml",
    "match": [
     "tests/similar_harness_gate.test.mjs"
+   ]
+  },
+  {
+   "job": ".github/workflows/student-portal-public-browser.yml",
+   "match": [
+    "tests/student-portal-public-release.test.mjs"
    ]
   },
   {
@@ -1576,6 +1581,78 @@
    "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/master-audit/master-key-integrity-report.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
   },
   {
+   "match": "tests/archive-metadata-inventory.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 74,
+    "mode": "node",
+    "signature": "Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/metadata-inventory-latest.json'",
+    "envFactor": "입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/metadata-inventory-latest.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
+  },
+  {
+   "match": "tests/archive-metadata-pilot-low-batch-1-review.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 88,
+    "mode": "node",
+    "signature": "Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json'",
+    "envFactor": "입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
+  },
+  {
+   "match": "tests/archive-metadata-pilot-medium-batch-1-review.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 86,
+    "mode": "node",
+    "signature": "Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json'",
+    "envFactor": "입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
+  },
+  {
+   "match": "tests/archive-metadata-pilot-medium-batch-2-review.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 82,
+    "mode": "node",
+    "signature": "Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json'",
+    "envFactor": "입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
+  },
+  {
+   "match": "tests/archive-metadata-pilot-medium-final-batches.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 79,
+    "mode": "node",
+    "signature": "Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json'",
+    "envFactor": "입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/metadata-pilot-20260820.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
+  },
+  {
+   "match": "tests/archive-metadata-pilot-semantic-review.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 83,
+    "mode": "node",
+    "signature": "Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/review/high-confidence-semantic-review.json'",
+    "envFactor": "입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — Error: ENOENT: no such file or directory, open 'archive/_generated/intelligence/phase1/pilot/review/high-confidence-semantic-review.json' (환경 요인 추정: 입력 자료 없음(archive/_generated는 .gitignore 대상, 5ab9eee438에서 추적 해제))"
+  },
+  {
    "match": "tests/archive-pages-chrome-startup.test.cjs",
    "local": {
     "result": "pass",
@@ -1625,6 +1702,17 @@
    },
    "reason": "pending",
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "tests/archive-question-metadata-consistency.test.mjs",
+   "local": {
+    "result": "fail",
+    "ms": 1753,
+    "mode": "node --test",
+    "signature": "✖ Phase 1B sidecar preserves every non-empty production subunit (796.3107ms)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — ✖ Phase 1B sidecar preserves every non-empty production subunit (796.3107ms)"
   },
   {
    "match": "tests/archive-question-type-coverage.test.mjs",
@@ -1722,6 +1810,16 @@
    "local": {
     "result": "pass",
     "ms": 246,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "tests/archive-reviewed-exam-meta-source-course-labels.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 2200,
     "mode": "node --test"
    },
    "reason": "pending",
@@ -4180,6 +4278,16 @@
    "detail": "지금 돌리면 실패 — }"
   },
   {
+   "match": "tests/archive-weakness-metadata-join.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 824,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
    "match": "tests/archive-weakness-student-view.test.mjs",
    "local": {
     "result": "pass",
@@ -4316,6 +4424,16 @@
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
   },
   {
+   "match": "tests/archive2-meta-advanced-filter.test.cjs",
+   "local": {
+    "result": "pass",
+    "ms": 8771,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
    "match": "tests/archive2-preview-responsive.test.cjs",
    "local": {
     "result": "fail",
@@ -4342,6 +4460,16 @@
    "local": {
     "result": "pass",
     "ms": 192,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "tests/archive2-source-metadata-conflict.test.cjs",
+   "local": {
+    "result": "pass",
+    "ms": 195,
     "mode": "node --test"
    },
    "reason": "pending",
@@ -4439,6 +4567,16 @@
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
   },
   {
+   "match": "tests/convert-meta-pipeline.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 252,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
    "match": "tests/diff5-string-id.test.mjs",
    "local": {
     "result": "pass",
@@ -4520,10 +4658,72 @@
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
   },
   {
+   "match": "tests/generated-meta-backfill-crosswalk-freeze.test.cjs",
+   "local": {
+    "result": "fail",
+    "ms": 1719,
+    "mode": "node --test",
+    "signature": "✖ failing tests:"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — ✖ failing tests:"
+  },
+  {
+   "match": "tests/generated-meta-retention-crosswalk-digest.test.cjs",
+   "local": {
+    "result": "pass",
+    "ms": 1698,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
    "match": "tests/initial-data-analysis-archive-batches.test.mjs",
    "local": {
     "result": "pass",
     "ms": 167,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "tests/main-meta-input-scope.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 171,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "tests/meta-foundation-middle1-b01-b16-promotion.test.cjs",
+   "local": {
+    "result": "fail",
+    "ms": 932,
+    "mode": "node --test",
+    "signature": "✖ B01-B16 canonical keys project by UID through runtime and Archive2 (1.1568ms)"
+   },
+   "reason": "fails-now",
+   "detail": "지금 돌리면 실패 — ✖ B01-B16 canonical keys project by UID through runtime and Archive2 (1.1568ms)"
+  },
+  {
+   "match": "tests/meta-foundation-reviewed-runtime-source-hold.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 177,
+    "mode": "node --test"
+   },
+   "reason": "pending",
+   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "tests/meta-student-access-first.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 436,
     "mode": "node --test"
    },
    "reason": "pending",
@@ -4898,16 +5098,6 @@
    "local": {
     "result": "pass",
     "ms": 194,
-    "mode": "node --test"
-   },
-   "reason": "pending",
-   "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
-  },
-  {
-   "match": "tests/student-portal-public-release.test.mjs",
-   "local": {
-    "result": "pass",
-    "ms": 238,
     "mode": "node --test"
    },
    "reason": "pending",

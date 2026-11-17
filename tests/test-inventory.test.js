@@ -13,6 +13,7 @@ const repo = path.join(__dirname, '..');
 const INVENTORY = 'tests/test-inventory.json';
 const inventory = JSON.parse(fs.readFileSync(path.join(repo, INVENTORY), 'utf8'));
 const { collectTests } = require('../tools/run-tests.js');
+const { stripPathFilters, referencesEntry } = require('./helpers/workflow-references.cjs');
 
 const REASONS = ['pending', 'finished-campaign', 'fails-now', 'quarantined'];
 const TEST_RE = /\.(?:test|e2e)\.(?:js|mjs|cjs)$/;
@@ -100,16 +101,47 @@ test('notRun 항목마다 사실만 적은 이유가 있다', () => {
   assert.deepEqual(bad, [], `notRun 항목에 이유가 빠졌거나 형식이 틀립니다:\n${bad.map(m => `  - ${m}`).join('\n')}`);
 });
 
-test('elsewhere 항목: 가리키는 잡 파일이 있고, 정확한 경로면 그 파일이 실제로 그 테스트를 언급한다', () => {
+test('elsewhere 항목: 잡 파일이 있고, 그 실행 줄(paths: 트리거 제외)이 경로·패턴을 실제로 언급한다', () => {
   const bad = [];
   for (const entry of elsewhereEntries) {
     const jobPath = path.join(repo, entry.job);
     if (!fs.existsSync(jobPath)) { bad.push(`${entry.job}: 잡 파일이 없습니다`); continue; }
-    if (entry.match.includes('*')) continue;
     const text = fs.readFileSync(jobPath, 'utf8');
-    if (!text.includes(entry.match) && !text.includes(path.posix.basename(entry.match))) bad.push(`${entry.job}가 ${entry.match}를 더 이상 언급하지 않습니다(옮겼거나 지웠다면 항목을 고치세요)`);
+    // paths:/paths-ignore: 는 "언제 돌릴지"일 뿐 실행이 아니다. 워크플로(.yml)는 그 줄을 뺀 본문에서만 찾는다.
+    const body = entry.job.endsWith('.yml') ? stripPathFilters(text) : text;
+    if (!referencesEntry(body, entry.match)) {
+      bad.push(`${entry.job}의 실행 줄에 ${entry.match}가 없습니다 (paths: 트리거에만 있거나, 옮겼거나 지운 경우입니다). 실제로 도는 정확한 경로로 고치거나 notRun으로 옮기세요`);
+    }
   }
   assert.deepEqual(bad, [], bad.join('\n'));
+});
+
+test('elsewhere 확인 규칙 자체: paths:에만 있는 패턴·부분 문자열은 거짓으로 보고, 체크아웃 접두 경로는 실행으로 본다', () => {
+  const yml = [
+    'on:',
+    '  push:',
+    "    paths: ['archive/**', 'tests/*meta*']",
+    '  pull_request:',
+    '    paths:',
+    "      - 'tests/*meta*'",
+    "      - 'tests/only-in-paths.test.mjs'",
+    '    branches: [main]',
+    'jobs:',
+    '  t:',
+    '    steps:',
+    '      - run: node --test tests/real.test.mjs apmath/tools/scene-smoke-semantic-calibration.test.mjs',
+    '      - run: node --test verification/tests/prefixed.test.mjs',
+    '      - run: node --test apmath/tools/g7-*.test.mjs',
+  ].join('\n');
+  const body = stripPathFilters(yml);
+  assert.equal(referencesEntry(body, 'tests/*meta*'), false, 'paths:에만 있는 패턴은 실행이 아니다');
+  assert.equal(referencesEntry(body, 'tests/only-in-paths.test.mjs'), false);
+  assert.equal(referencesEntry(body, 'tests/real.test.mjs'), true);
+  assert.equal(referencesEntry(body, 'tests/prefixed.test.mjs'), true, 'verification/ 같은 체크아웃 접두는 실행으로 인정');
+  assert.equal(referencesEntry(body, 'calibration.test.mjs'), false, '다른 파일 이름의 끝부분은 부분 문자열 오탐');
+  assert.equal(referencesEntry(body, 'apmath/tools/g7-*.test.mjs'), true);
+  assert.equal(referencesEntry(body, 'apmath/tools/g8-*.test.mjs'), false);
+  assert.equal(referencesEntry(yml, 'tests/*meta*'), true, '본문 전체로 보면 paths:에도 있어 구분 규칙이 필요하다');
 });
 
 test('실행기의 quarantined 목록은 notRun/elsewhere 중 한 곳에 적혀 있고, 자동 수집 규칙은 *.test.js 하나다', () => {
