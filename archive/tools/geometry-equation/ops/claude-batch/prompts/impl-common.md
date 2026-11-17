@@ -12,9 +12,9 @@ PNG 확인: node .tmp/svg-m1/svg2png.cjs <svg> <png> 600 로 만들어 직접 �
 
 할 일: 아래 시험지의 지정 문항마다
  1) 시험지 JS에서 문항 원문·정답·해설·기존 그림(solutionImage*)을 읽는다. 입력 초안(root-inputs/qNN의 item/plan/publish)은 출발점일 뿐이며 틀리면 고친다.
- 2) 함수·유리·무리함수 그래프는 학생 이해에 조금이라도 도움이 되면 만든다. 기존 그림이 있다는 이유만으로 건너뛰지 않는다. 단, 기존 그림이 이미 새 엔진으로 결함 없이(정답 노출 없음, 틀린 값 없음, 라벨 정상) 만들어져 있으면 재작업하지 않고 STATUS에 KEEP_EXISTING과 이유를 적는다.
+ 2) 함수·유리·무리함수 그래프는 학생 이해에 조금이라도 도움이 되면 만든다. 기존 그림이 있다는 이유만으로 건너뛰지 않는다. 단, 기존 그림이 이미 새 엔진으로 결함 없이(과정 정보 충실, 정답 노출은 해설 그림에서 결함 아님, 틀린 값 없음, 라벨 정상) 만들어져 있으면 재작업하지 않고 STATUS에 KEEP_EXISTING과 이유를 적는다.
  3) 출력 폴더 <OUT>/qNN/에 item.json, plan.json, publish.json, figure.png를 두고, 렌더는 --out <OUT>/qNN/out 으로 한다(최종 성공본이 out/에 있게).
- 4) publish.json: {"alt": 그림 설명(정답 없음), "caption": 풀이 요약 + 끝에 정답(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}
+ 4) publish.json: {"alt": 그림 설명(정답은 있어도 없어도 됨), "caption": 풀이 요약 + 끝에 정답(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}
  5) <OUT>/SUMMARY.md에 문항별 한 줄: qNN | ARCHIVE_BOUND/KEEP_EXISTING/UNSUPPORTED/CONTENT | 렌더 수 | 메모.
 
 금지: 손으로 SVG 작성·수정, 정답·보기 번호를 그림/alt에 넣기, 원본 시험지 JS·archive/assets 수정, 엔진 코드 수정, git commit/push/병합, 검사 완화. 엔진 공백이면 UNSUPPORTED와 빠진 기능을 적고 다음 문항으로 간다. 문제·해설·정답이 서로 맞지 않으면 CONTENT로 적고 그리지 않는다.
