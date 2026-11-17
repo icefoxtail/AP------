@@ -34,6 +34,18 @@
 
 - CI의 Pages/Reviewed 종료 `workflow_run`에 따른 이동 main 전체 재검은 퇴역했다. 원래의 plan/test 체크 이름, 고정 PR/push/manual snapshot 검사와 writer의 매 candidate Git footprint 검사는 유지한다. 메타·출력·등록 도구는 직접 Consumer 검사만 선택하고, 미분류 또는 공통 의존 변경은 기존 전체 기술검사를 유지한다. 제외는 NOT_APPLICABLE이며 PASS로 합산하지 않는다.
 
+## 실행 요약에서 볼 수 있는 숫자 (계측, 동작 변화 없음)
+
+writer가 실행마다 남기는 `report.json`(커밋되지 않는 증거)과 `GITHUB_STEP_SUMMARY`에 다음 숫자가 나온다. 어느 레인이 도는지, 무엇을 등록·거절하는지, 커밋되는 파일은 이 숫자에 영향받지 않는다.
+
+- **시간:** 레인별 시간과 semantic 레인 안의 단계별 시간(compile, materialize, build_db 1·2회차, auto-register, verify, 테스트, replay). `archive-main-auto-meta-pass.sh`가 단계마다 `stage-times.jsonl` 한 줄을 쓰고 writer가 모은다.
+- **이번 실행의 자동 등록:** 대상·시도·등록(UID·요청·영수증 파일 수)·이미 등록됨·거절·변경 없음으로 건너뜀·배치 상한 때문에 못 본 건수, 시험지 파일별 상위 20개.
+- **밀린 것:** pending 총수, 서명 없는 미시도 수, 시도 후 거절 수, 사유별 건수(한 항목이 여러 사유를 가질 수 있어 합이 항목 수보다 크다), 가장 오래된 baseCommit과 그 건수.
+- **이번 병합 대 밀린 것:** `lastProcessedCommit..HEAD`의 시험지 diff에서 온 문항 수와 대기열에서 온 문항 수, 그리고 배치 상한 때문에 이번에 못 본 "이번 병합 유래" 문항 수.
+- **원본이 바뀌어 건너뛴 검수 payload:** `materialize-meta-v2-payloads`가 payload에 적힌 시험지 blob과 현재 원본이 달라 조용히 적용하지 않은 payload 수·문항 수·파일(상위 20). 도구가 자기 출력 JSON에 이미 내는 `stalePayloads`를 올린 것이며 판정은 바꾸지 않는다. auto-register의 native 영수증 재사용 검사(`nativeReviewReceipt`)가 영수증과 원본이 안 맞아 재사용하지 않는 경우는 건수를 따로 내지 않고 거절 사유(예: `NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED`) 건수로만 보인다.
+
+`report.instrumentation`은 `replayBatch` 밖에 있어 replay 비교·`state.json`·`writer-state.json`에 들어가지 않는다.
+
 ## 시범 및 운영 경계
 
 초기 기준 main은 config에 고정하고 이미 병합된 동산중 2022 중3 q01 한 문항만 pilot target으로 지정한다. 같은 시험지 나머지 24문항과 장부 73건 전체를 소급 처리하지 않는다. 새 source 변경은 이후 정상 자동 처리한다. 실제 pilot 성공 증거는 Actions 로그·remote main·자동 영수증·Consumer 확인으로 남긴다.

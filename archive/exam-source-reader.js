@@ -7,7 +7,7 @@
   // 원본 시험지 JS에서 "문항 배열"과 "제목"을 찾는 규칙을 한 곳에 둔다.
   // 원본은 대부분 window.questionBank = [...] 이지만, 중등 일부는 window.examData = {title, questions:[...]}
   // 형식이라 별칭 줄이 없다. 브라우저 로더·원본 엔진·node 도구가 모두 이 함수로 같은 규칙을 쓴다.
-  // 이 모듈은 문항 배열만 찾는다. 본문 필드(content/question) 처리와 지문 계산은 하지 않는다.
+  // 이 모듈은 문항 배열을 찾고(readQuestionArray), 표시용 발문을 읽는다(readQuestionBody). 지문 계산은 하지 않는다.
   function pick(scope) {
     if (!scope || typeof scope !== "object") return null;
     if (Array.isArray(scope.questions)) return scope.questions;
@@ -40,5 +40,17 @@
   }
   // 시험지 스크립트를 실행하기 전에 앞 파일이 남긴 전역을 지우기 위한 이름 목록.
   const SOURCE_GLOBALS = Object.freeze(["questions", "questionBank", "examData"]);
-  return { readQuestionArray, readExamTitle, SOURCE_GLOBALS };
+  // 발문(본문): 중등 일부 원본(examData 형식 등 63개 파일)은 발문을 content가 아니라 question 필드에 둔다.
+  // 화면 표시·검색·인쇄·린트는 이 함수로 읽어 어느 형식이든 발문이 보이게 한다. content가 비어 있지 않으면 content,
+  // 아니면 question, 둘 다 비면 "". 표시용 읽기이다 — 문항 지문(fingerprint)·UID·등록 파생 데이터 계산은
+  // 계속 q.content만 읽는다(바꾸면 저장·배정·등록이 깨진다). 원본 엔진(engine/mixed_engine)은 이미 content||question을 쓴다.
+  function readQuestionBody(question) {
+    if (!question || typeof question !== "object") return "";
+    const content = question.content;
+    if (typeof content === "string" && content.trim()) return content;
+    const stem = question.question;
+    if (typeof stem === "string" && stem.trim()) return stem;
+    return typeof content === "string" ? content : "";
+  }
+  return { readQuestionArray, readExamTitle, readQuestionBody, SOURCE_GLOBALS };
 });

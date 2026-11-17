@@ -6,7 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -562,4 +562,161 @@ for(const unexpected of [false,true])test('reviewed compiler output ownership is
     assert.ok(outputs.every(file=>result.changedPaths.includes(file)));
     assert.equal(git(f.root,'diff','--name-only'),'');
   }
+});
+
+// ---- run instrumentation (PR-1): read-only numbers; none of it may reach a committed output or a digest ----
+const instrumentationFiles=(ctx,{stale=[]}={})=>{
+  const dir=path.join(ctx.env.RUNNER_TEMP,'archive-main-auto-meta');fs.mkdirSync(dir,{recursive:true});
+  fs.writeFileSync(path.join(dir,'stage-times.jsonl'),'{"stage":"compile-meta-foundation","durationMs":1200,"exitCode":0}\n{"stage":"auto-register-write","durationMs":3400,"exitCode":0}\n{"stage":"par');
+  fs.writeFileSync(path.join(dir,'materialize.json'),JSON.stringify({status:'PASS',stalePayloadCount:stale.length,stalePayloads:stale}));
+  fs.writeFileSync(path.join(dir,'report.json'),JSON.stringify({instrumentation:{schemaVersion:'x',run:{targets:5,attempted:3,applied:1,alreadyRegistered:0,refused:2,
+    unchangedSkipped:1,notReachedBudget:1,batchLimit:3,registeredUids:1,requestFiles:1,receiptFiles:1},
+    attemptedByFile:{top:[{name:'a.js',total:3,registered:1,alreadyRegistered:0,refused:2}],otherFiles:0,otherCount:0},
+    origin:{available:true,thisMergeDiff:{changedExamFiles:1,questions:2,attempted:1,unchangedSkipped:0,notReachedBudget:1,alsoQueuedBefore:0},
+      queuedBacklog:{questions:3,attempted:2,unchangedSkipped:1,notReachedBudget:0},pilot:{questions:0,attempted:0},thisMergeQuestionsNotReachedBecauseOfBudget:1},
+    pendingBeforeRun:4,backlogAfterRun:{pendingTotal:4,withoutAttemptSignature:1,attemptedRefused:3,neverTried:1,entriesWithMultipleReasons:1,reasonAtomTotal:4,
+      reasons:{top:[{name:'DECLARED_PT_TPL_MISSING',count:3},{name:'DIFFICULTY_INCOMPLETE',count:1}],otherNames:0,otherCount:0},
+      distinctBaseCommits:1,oldestBaseCommit:{commit:'a'.repeat(40),committedAt:'2026-01-01T00:00:00+00:00',count:4}}}}));
+};
+
+test('instrumentation is evidence only: committed outputs, state and digests are byte-identical with and without it',async t=>{
+  // Identical fixture commits (same content, same dates) so the two repositories share Git object ids and digests.
+  const saved={a:process.env.GIT_AUTHOR_DATE,c:process.env.GIT_COMMITTER_DATE};
+  process.env.GIT_AUTHOR_DATE=process.env.GIT_COMMITTER_DATE='2026-01-01T00:00:00+00:00';
+  let plain,instrumented;
+  try{plain=fixture(t);instrumented=fixture(t);}
+  finally{for(const [k,v] of [['GIT_AUTHOR_DATE',saved.a],['GIT_COMMITTER_DATE',saved.c]]){if(v===undefined)delete process.env[k];else process.env[k]=v;}}
+  assert.equal(git(plain.root,'rev-parse','HEAD'),git(instrumented.root,'rev-parse','HEAD'));
+  const a=await prepareRegistration(plain.options);
+  const b=await prepareRegistration({...instrumented.options,execute:async ctx=>{
+    if(ctx.lane.id==='semantic')instrumentationFiles(ctx,{stale:[]});
+    return {...await instrumented.execute(ctx),commandTimings:[{n:1,command:'node x',durationMs:5,exitCode:0}]};
+  }});
+  const sem=b.lanes.find(l=>l.id==='semantic');
+  assert.deepEqual(sem.instrumentation.stages.map(s=>s.stage),['compile-meta-foundation','auto-register-write'],'a partial last line is ignored');
+  assert.equal(sem.instrumentation.autoMeta.run.attempted,3);assert.equal(sem.instrumentation.staleMetaV2Payloads.count,0);
+  assert.equal(sem.instrumentation.commands[0].durationMs,5);
+  assert.equal(a.lanes.find(l=>l.id==='semantic').instrumentation,undefined,'no files, no field');
+  assert.deepEqual(b.changedPaths,a.changedPaths);assert.equal(b.inputDigest,a.inputDigest);assert.equal(b.outputDigest,a.outputDigest);
+  const readOr=(root,rel)=>fs.existsSync(path.join(root,rel))?read(root,rel):null;
+  for(const rel of [...a.changedPaths,STATE])assert.equal(readOr(instrumented.root,rel),readOr(plain.root,rel),rel);
+  const evidence=JSON.parse(fs.readFileSync(path.join(instrumented.work,'report.json'),'utf8'));
+  assert.deepEqual(evidence,b);
+  assert.equal(JSON.stringify(readJson(instrumented.root,STATE)).includes('instrumentation'),false);
+});
+
+test('stage times and skipped reviewed payloads are read defensively and stay bounded',t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'instr-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  assert.equal(readStageTimes(path.join(dir,'missing.jsonl')),null);
+  fs.writeFileSync(path.join(dir,'s.jsonl'),'not json\n{"stage":"a","durationMs":"x"}\n{"stage":"ok","durationMs":7,"exitCode":2}\n');
+  assert.deepEqual(readStageTimes(path.join(dir,'s.jsonl')),[{stage:'ok',durationMs:7,exitCode:2}]);
+  const names=[];
+  for(let i=0;i<25;i++){const rel=`archive/data/r2e-intake/p${String(i).padStart(2,'0')}.payload.json`;names.push(rel);
+    if(i!==3)write(dir,rel,{sourceArchiveFile:`exam${i}.js`,rows:Array.from({length:i+1})});}
+  names.push('../outside.json');
+  const s=staleMaterializedPayloads(dir,{stalePayloadCount:26,stalePayloads:names});
+  assert.equal(s.count,26);assert.equal(s.files.length,20);assert.equal(s.otherFiles,6);
+  assert.equal(s.files[0].rows,25,'largest payload first');
+  assert.equal(s.questionsUnknownFor,2,'a missing file and an escaping path are unknown, never read');
+  const total=Array.from({length:25},(_,i)=>i===3?0:i+1).reduce((x,y)=>x+y);
+  assert.equal(s.questions,total,'the question total covers every payload, shown or not');
+  assert.equal(s.files.reduce((n,f)=>n+(f.rows||0),0)+s.otherQuestions,total,'shown rows plus the remainder equal the total');
+  assert.equal(staleMaterializedPayloads(dir,{status:'PASS'}),null);assert.equal(staleMaterializedPayloads(dir,null),null);
+});
+
+test('command timings are returned for passes and attached to failures without changing the error text',t=>{
+  const f=fixture(t);fs.mkdirSync(f.work,{recursive:true});
+  const ok=executeCommands({root:f.root,work:f.work,env:process.env,lane:{id:'timed',commands:[{program:process.execPath,args:['-e','0']}]}});
+  assert.deepEqual(ok.advisories,[]);assert.equal(ok.commandTimings.length,1);assert.ok(ok.commandTimings[0].durationMs>=0);assert.equal(ok.commandTimings[0].exitCode,0);
+  let caught;try{executeCommands({root:f.root,work:f.work,env:process.env,lane:{id:'timed-fail',commands:[{program:process.execPath,args:['-e','0']},{program:process.execPath,args:['-e','process.exit(3)']}]}});}catch(e){caught=e;}
+  assert.equal(caught.message,'NATIVE_COMMAND_FAILED:timed-fail:2');assert.deepEqual(caught.commandTimings.map(c=>c.exitCode),[0,3]);
+  assert.equal(caught.detail.commandTimings,undefined,'the existing detail shape is unchanged');
+});
+
+test('the summary shows the instrumentation tables within a hard size bound and without mutating the report',()=>{
+  const files=Array.from({length:1000},(_,i)=>({name:'원본/긴/경로/'+i+'한'.repeat(300),total:1000-i,registered:1,alreadyRegistered:2,refused:3}));
+  const stale=Array.from({length:1000},(_,i)=>({payload:'archive/data/r2e-intake/'+i+'값'.repeat(300),sourceArchiveFile:'x'.repeat(500),rows:1000-i}));
+  const reasons=Array.from({length:1000},(_,i)=>({name:'REASON_'+i+'사'.repeat(300),count:1000-i}));
+  const result={status:'PREPARED',registrationReady:true,changedPaths:[],lanes:[
+    {id:'semantic',status:'VERIFIED',durationMs:330000,instrumentation:{stages:Array.from({length:500},(_,i)=>({stage:'stage'+i,durationMs:i*1000,exitCode:0})),
+      autoMeta:{run:{targets:13238,attempted:100,applied:1,alreadyRegistered:2,refused:97,unchangedSkipped:5400,notReachedBudget:7738,batchLimit:100,registeredUids:1,requestFiles:1,receiptFiles:1},
+        attemptedByFile:{top:files,otherFiles:5,otherCount:50},origin:{available:true,thisMergeDiff:{changedExamFiles:1,questions:2,attempted:1,unchangedSkipped:0,notReachedBudget:1,alsoQueuedBefore:0},
+          queuedBacklog:{questions:13236,attempted:99,unchangedSkipped:5400,notReachedBudget:7737},pilot:{questions:0,attempted:0},thisMergeQuestionsNotReachedBecauseOfBudget:1},
+        pendingBeforeRun:13238,backlogAfterRun:{pendingTotal:13237,withoutAttemptSignature:7738,attemptedRefused:5499,neverTried:7738,entriesWithMultipleReasons:749,reasonAtomTotal:9000,
+          reasons:{top:reasons,otherNames:30,otherCount:120},distinctBaseCommits:143,oldestBaseCommit:{commit:'b'.repeat(40),committedAt:'2026-01-01T00:00:00+00:00',count:7}}},
+      staleMetaV2Payloads:{reason:'SOURCE_BLOB_MISMATCH',count:1000,questions:9999,files:stale,otherFiles:5,otherQuestions:7}}},
+    {id:'shared',status:'VERIFIED',durationMs:1000,instrumentation:{staleMetaV2Payloads:{reason:'SOURCE_BLOB_MISMATCH',count:0,questions:0,files:[],otherFiles:0,otherQuestions:0}}}]};
+  const before=hash(JSON.stringify(result)),summary=renderRegistrationSummary(result);
+  assert.ok(Buffer.byteLength(summary)<32*1024,'summary stays small: '+Buffer.byteLength(summary));
+  for(const expected of ['Lane time','time per step','targets=13238; attempted=100','not reached (limit)=7738','refused=97',
+    "This merge's questions: 2",'not reached because of the limit 1','pending=13237 (before run 13238)','attempted and refused=5499',
+    'refusal reason atoms=9000','749 do','Oldest base commit','Reviewed payloads skipped because the exam source changed (semantic): 1000 payloads, 9999 questions',
+    'Reviewed payloads skipped because the exam source changed (shared): 0 payloads'])assert.ok(summary.includes(expected),expected);
+  assert.equal(hash(JSON.stringify(result)),before);
+  const tableRows=summary.split('\n').filter(l=>l.startsWith('| ')).length;assert.ok(tableRows<260,'tables are cut: '+tableRows);
+});
+
+test('the AutoMeta pass script keeps its commands and only adds stage markers that never touch stdout',t=>{
+  const script=fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/archive-main-auto-meta-pass.sh'),'utf8');
+  const markers=[...script.matchAll(/^\s*stage ([a-z0-9-]+)$/gm)].map(m=>m[1]);
+  assert.deepEqual(markers,['compile-meta-foundation','materialize-meta-v2','build-db-before','auto-register-write','build-db-after','verify','build-db-fixed-point',
+    'verify-after-fixed-point','identity-contract-test','identity-runtime-test','registration-parity','git-diff-checks','replay','postchecks']);
+  for(const line of ['node archive/tools/meta-foundation/compile-meta-foundation.mjs --write > "$work/compile.json"',
+    'node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write > "$work/materialize.json"'])assert.ok(script.includes(line),line);
+  const start=script.indexOf('stage_log='),trapAt=script.indexOf("trap 'rc=$?; stage_end");
+  assert.ok(start>0&&trapAt>start,'the stage helper block and its EXIT trap are present');
+  const block=script.slice(start,script.indexOf('\n',trapAt));
+  const bash=spawnSync('bash',['-c','exit 0'],{encoding:'utf8'});
+  if(bash.error||bash.status!==0)return t.skip('bash is not available');
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'stage-pass-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const harness=`set -euo pipefail\nwork=${JSON.stringify(dir.replace(/\\/g,'/'))}\n${block}\nstage first\nstage second\necho STDOUT_PAYLOAD\nfalse\nstage never\n`;
+  const run=spawnSync('bash',['-c',harness],{encoding:'utf8'});
+  assert.equal(run.status,1,'set -e semantics are unchanged: the failing command ends the script');
+  assert.equal(run.stdout,'STDOUT_PAYLOAD\n','stage output never reaches stdout');
+  assert.match(run.stderr,/\[stage-time\] second \d+ms exit=1/);
+  const rows=fs.readFileSync(path.join(dir,'stage-times.jsonl'),'utf8').trim().split('\n').map(l=>JSON.parse(l));
+  assert.deepEqual(rows.map(r=>[r.stage,r.exitCode]),[['first',0],['second',1]]);
+  assert.ok(rows.every(r=>Number.isInteger(r.durationMs)&&r.durationMs>=0));
+});
+
+// ---- fault injection: instrumentation may lose its numbers but can never fail, block or re-code a registration run ----
+function stageHarness(t,body,{work}={}) {
+  const script=fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../tools/ci/archive-main-auto-meta-pass.sh'),'utf8');
+  const start=script.indexOf('stage_log='),trapAt=script.indexOf("trap 'rc=$?; stage_end");
+  const block=script.slice(start,script.indexOf('\n',trapAt));
+  const bash=spawnSync('bash',['-c','exit 0'],{encoding:'utf8'});
+  if(bash.error||bash.status!==0){t.skip('bash is not available');return null;}
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'stage-fault-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const w=(work??dir).replace(/\\/g,'/');
+  return {dir,run:()=>spawnSync('bash',['-c',`set -euo pipefail\nwork=${JSON.stringify(w)}\n${block}\n${body}\n`],{encoding:'utf8'})};
+}
+test('stage recording that cannot write keeps the original exit code and a clean stdout',t=>{
+  const unwritable='/nonexistent-stage-dir-'+process.pid+'/sub';
+  const failing=stageHarness(t,'stage a\necho OUT\n(exit 5)\nstage never',{work:unwritable});
+  if(!failing)return;
+  const bad=failing.run();
+  assert.equal(bad.status,5,'the failing command keeps its own exit code when the log cannot be written');
+  assert.equal(bad.stdout,'OUT\n');
+  const ok=stageHarness(t,'stage a\necho OUT',{work:unwritable}).run();
+  assert.equal(ok.status,0);assert.equal(ok.stdout,'OUT\n');
+  assert.equal(stageHarness(t,'stage a\n(exit 7)').run().status,7,'and the same code is kept when logging works');
+});
+
+test('a failed verify that continues to its retry is recorded with its real exit code',t=>{
+  const h=stageHarness(t,'stage verify\nif ! (exit 3); then\n  stage_rc=1\n  stage retry\n  true\nfi\n');
+  if(!h)return;
+  assert.equal(h.run().status,0);
+  const rows=fs.readFileSync(path.join(h.dir,'stage-times.jsonl'),'utf8').trim().split('\n').map(l=>JSON.parse(l));
+  assert.deepEqual(rows.map(r=>[r.stage,r.exitCode]),[['verify',1],['retry',0]]);
+});
+
+test('a malformed instrumentation object never makes the summary renderer throw',()=>{
+  const bad=[{stages:5,autoMeta:{run:{},origin:{available:true}}},{staleMetaV2Payloads:{files:null}},{autoMeta:{run:{targets:1},attemptedByFile:{top:'x'},backlogAfterRun:{reasons:{top:null}}}},{commands:'x',stages:{}}];
+  for(const instrumentation of bad) {
+    let text;
+    assert.doesNotThrow(()=>{text=renderRegistrationSummary({status:'PREPARED',registrationReady:true,changedPaths:[],lanes:[{id:'semantic',status:'VERIFIED',durationMs:1,instrumentation}]});});
+    assert.match(text,/### Archive registration writer: PREPARED/);
+  }
+  const text=renderRegistrationSummary({status:'PREPARED',lanes:[{id:'semantic',status:'VERIFIED',instrumentation:{autoMeta:{run:{},origin:{available:true}}}}]});
+  assert.match(text,/Instrumentation summary could not be rendered/);
 });

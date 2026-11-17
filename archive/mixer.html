@@ -40,7 +40,7 @@
 <!-- Phase 4 fingerprint bridge: loaded for contract use only; no preset UI exposure before Gate 4. -->
 <script src="mixer-school-fingerprint.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint bridge 로드 실패 — fingerprint preset 비활성화')"></script>
 <script src="mixer-school-fingerprint-runtime.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint runtime 로드 실패 — fingerprint preset 비활성화')"></script>
-<script src="exam-source-reader.js?v=20261117-reader-1"></script>
+<script src="exam-source-reader.js?v=20261118-body-1"></script>
     <style>
         :root {
             --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
@@ -679,8 +679,12 @@ function getStandardizedUnit(q) {
  * 이미지/시각요소 판정 공통 헬퍼
  * 구형 문항은 별도 image 필드 없이 content 내부에 <img>/<svg>/<table>로 시각요소를 담는 경우가 있다.
  */
+// 발문은 content 또는(중등 일부 원본) question 필드에 있다. 표시·검색 전용 읽기이며 지문 계산에는 쓰지 않는다.
+function mixerQuestionBody(q) {
+    return window.ExamSourceReader.readQuestionBody(q);
+}
 function hasVisualAsset(q) {
-    const content = String(q?.content || '');
+    const content = String(mixerQuestionBody(q) || '');
     return Boolean(
         q?.image ||
         /<img\b/i.test(content) ||
@@ -807,7 +811,7 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
     const unitOrder = Number.isFinite(Number(std.order)) ? Number(std.order) : Number(raw.unitOrder || 999);
     const standardUnitKey = String(raw.standardUnitKey || findStandardUnitKey(course, standardUnit, unitOrder) || '').trim();
     const tags = normalizeTags(raw.tags);
-    const content = String(raw.content || raw.contentText || '');
+    const content = String(mixerQuestionBody(raw) || raw.contentText || '');
     const choices = Array.isArray(raw.choices) ? raw.choices.join(' ') : String(raw.choicesText || '');
     const hasImage = Boolean(raw.hasImage || raw.image || /<img\b/i.test(content) || /<svg\b/i.test(content) || /<table\b/i.test(content));
     const sourceTitle = String(raw._sourceTitle || meta.school || meta.topic || sourceFile || '').trim();
@@ -2055,7 +2059,7 @@ function createQuestionIndexItem(record) {
             ${record.hasImage ? '<span class="q-unit-tag" style="background:#ecfdf5; color:#047857;">이미지 있음</span>' : ''}
         </div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;" class="q-source-file">${escapeMixerHtml(record.sourceFile)}</span></div>
         <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick='toggleIndexCart(${safeKey})'><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
-        <div class="q-content">${escapeMixerHtml(summarizeIndexText(q.contentText || q.content))}</div>`;
+        <div class="q-content">${escapeMixerHtml(summarizeIndexText(q.contentText || mixerQuestionBody(q)))}</div>`;
     return div;
 }
 
@@ -2100,7 +2104,7 @@ function createQuestionItem(record) {
     const safeKey = JSON.stringify(key);
     div.innerHTML = `<div class="q-header"><div><div class="q-tag-line"><span class="q-unit-tag">${escapeMixerHtml(record.course || '기타')}</span><span class="q-unit-tag" style="background:#eee; color:#666;">${escapeMixerHtml(record.standardUnit || '미분류')}</span><span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${escapeMixerHtml(q.level || '미')}</span></div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;">${escapeMixerHtml(record.sourceTitle)}</span></div>
         <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick='toggleCart(${safeKey})'><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
-        <div class="q-content">${mixerExamHtml(mixerApTables(q.content || ''))}</div>${q.image ? mixerExamImageTag(q.image) : ''}${choicesHTML}`;
+        <div class="q-content">${mixerExamHtml(mixerApTables(mixerQuestionBody(q) || ''))}</div>${q.image ? mixerExamImageTag(q.image) : ''}${choicesHTML}`;
     return div;
 }
 
