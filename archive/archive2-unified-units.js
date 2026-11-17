@@ -303,7 +303,13 @@
     const rpmResolution = isMiddle(grade) && UnitCore.MiddleToc
       ? UnitCore.MiddleToc.resolveRecord({ ...record, curriculumKey: curriculum.value }, grade)
       : null;
-    const unit = unitFor(record, grade, rpmResolution);
+    // 문항별 중단원 지정표(카탈로그의 reviewedMiddleParentKey)는 정본 판정이 EXACT가 아닐 때만 쓴다. 지문 확인은 카탈로그 빌더가 이미 했다.
+    // 대단원도 지정된 중단원이 속한 대단원이 된다(같은 학년 안에서만: 지정표 쪽이 학년이 다른 지정은 싣지 않는다).
+    const reviewedParent = rpmResolution && rpmResolution.status !== "EXACT" && UnitCore.reviewedMiddleParent
+      ? UnitCore.reviewedMiddleParent(record, GRADE_PROFILE[grade]) : null;
+    const unit = reviewedParent
+      ? { unitKey: reviewedParent.unitKey, reason: "reviewed-middle-parent" }
+      : unitFor(record, grade, rpmResolution);
     let subject, unitKey = "", unitLabel = UNCLASSIFIED_LABEL, unitOrder = 9999, unitReason = "";
     if (unit) {
       const row = unitsForGrade(grade).find((candidate) => candidate.key === unit.unitKey);
@@ -331,6 +337,7 @@
       curriculumBasis: curriculum.basis,
       ...(rpmResolution ? { rpmParent: rpmResolution.status === "EXACT" ? rpmResolution.parent : null,
         rpmParentStatus: rpmResolution.status } : {}),
+      ...(reviewedParent ? { reviewedMiddleParent: reviewedParent } : {}),
       views: viewGradesFor(record, grade, options.projectionPolicy),
     };
     return { placed: true, entry };

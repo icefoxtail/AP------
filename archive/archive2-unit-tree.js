@@ -5,6 +5,7 @@
  *
  * 중등: 정본 목차 rpm-middle-toc.js(ArchiveRpmMiddleToc, 생성물)의 대단원(L1)·중단원(L2)을 목차 순서 그대로 쓴다.
  *   문항의 중단원 = 문항의 RPM 판정(record.rpmParentResolution, 없으면 core.resolveRpmParent)이 EXACT이고 같은 대단원인 parent의 L2.
+ *   정본 판정이 못 정한 문항 중 문항을 읽고 중단원을 정해 둔 것(resolution.reviewedParent, 출처: 문항별 중단원 지정표)은 그 중단원이다.
  *   옛 2015 키 문항(판정이 OUT_OF_SCOPE)은 정본의 legacySubUnitMappings(옛 소단원 키 -> 현재 중단원)가 같은 대단원의 중단원 하나로
  *   정할 때만 그 중단원으로 접는다. 정할 수 없으면 그 대단원 아래 "중단원 미지정" 한 줄이다(추정 매핑 없음).
  * 고등: core 단원(현재 표 행) 아래에 소단원 묶음표 archive/data/archive2-subunit-groups.json의 묶음을 쓴다. 이름은 묶음표 그대로이고
@@ -125,6 +126,12 @@
       const resolution = record && (record.rpmParentResolution || Core.resolveRpmParent(record, profile));
       if (resolution && resolution.status === 'EXACT' && resolution.parent && resolution.parent.unitKey === unit.key) {
         const child = byParent.get(resolution.parent.parentKey);
+        if (child) return child.key;
+      }
+      // 정본 판정이 못 정한 문항 중 문항을 읽고 중단원을 정해 둔 것(지정표 -> 카탈로그 reviewedMiddleParentKey)은 그 중단원으로 간다.
+      // 지문이 판정 당시와 다른 문항은 카탈로그 빌더가 지정을 싣지 않으므로 여기 오지 않는다. 대단원이 다르면 쓰지 않고 예전 규칙으로 떨어진다.
+      if (resolution && resolution.status !== 'EXACT' && resolution.reviewedParent && resolution.reviewedParent.unitKey === unit.key) {
+        const child = byParent.get(resolution.reviewedParent.parentKey);
         if (child) return child.key;
       }
       if (!resolution || resolution.status === 'OUT_OF_SCOPE' || resolution.status === 'NOT_FOUND') {
