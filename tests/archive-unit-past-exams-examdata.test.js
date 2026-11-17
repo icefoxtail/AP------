@@ -90,7 +90,7 @@ test('mixer·Archive2Source·원본 엔진도 같은 공용 읽기(exam-source-r
   assert.match(mixer, /<script src="exam-source-reader\.js\?v=[^"]+"><\/script>/);
   assert.match(read('archive2-source.js'), /examSourceReader\.readQuestionArray\(scope\)/);
   // 같은 규칙을 다시 인라인으로 적지 않는다.
-  for (const name of ['mixer.html', 'archive2-source.js', 'unit-past-exams.js']) {
+  for (const name of ['mixer.html', 'archive2-source.js', 'unit-past-exams.js', 'engine.html', 'screen-runtime-adapter.js']) {
     assert.doesNotMatch(read(name), /examData\?\.questions \|\| examData\?\.problems|window\.questionBank \|\| window\.examData/, `${name}: 공용 읽기를 쓴다`);
   }
   // 공용 모듈을 쓰는 화면은 그 script를 먼저 로드한다(Archive2Source보다 앞).
@@ -99,5 +99,7 @@ test('mixer·Archive2Source·원본 엔진도 같은 공용 읽기(exam-source-r
     const reader = html.indexOf('exam-source-reader.js'), source = html.indexOf('archive2-source.js');
     assert.ok(reader > 0 && source > reader, `${name}: exam-source-reader.js가 archive2-source.js보다 먼저`);
   }
-  assert.match(read('unit-past-exams.html'), /exam-source-reader\.js\?v=/, 'unit-past-exams.html: exam-source-reader.js 로드');
+  for (const name of ['engine.html', 'unit-past-exams.html']) {
+    assert.match(read(name), /exam-source-reader\.js\?v=/, `${name}: exam-source-reader.js 로드`);
+  }
 });

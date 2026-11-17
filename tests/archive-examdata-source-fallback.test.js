@@ -6,20 +6,23 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const examSourceReader = require('../archive/exam-source-reader.js');
 
 const root = path.resolve(__dirname, '..');
 const adapter = fs.readFileSync(path.join(root, 'archive', 'screen-runtime-adapter.js'), 'utf8');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
 
 // 어댑터의 실제 선택 코드를 그대로 잘라 실행한다(복사본이 아니라 현행 소스를 검사).
-const START = 'const bank = window.questionBank || window.examData;';
+const START = 'raw = window.ExamSourceReader.readQuestionArray(window);';
 const END = "displayTitle = window.examDisplayTitle || window.ExamDisplayTitle?.readableExamTitle?.(title) || title;";
 const startAt = adapter.indexOf(START);
 const endAt = adapter.indexOf(END);
 assert(startAt > 0 && endAt > startAt, 'adapter source selection block should be present');
 const selectionBlock = adapter.slice(startAt, endAt + END.length);
-const resolveSource = new Function('window', 'input',
+const resolveSourceWithWindow = new Function('window', 'input',
   `let raw, title, displayTitle;\n${selectionBlock}\nreturn { raw, title, displayTitle };`);
+// 브라우저에서는 exam-source-reader.js가 window.ExamSourceReader를 먼저 만들어 둔다.
+const resolveSource = (win, input) => resolveSourceWithWindow({ ...win, ExamSourceReader: examSourceReader }, input);
 
 function evalExam(file) {
   const win = {};
@@ -84,8 +87,10 @@ test('어댑터는 시험지를 연속으로 열어도 이전 examData가 남지
 });
 
 test('engine.html 레거시 경로도 questionBank가 없을 때만 examData를 읽는다', () => {
-  assert.match(engine, /const qb = window\.questionBank \|\| window\.examData;/);
-  assert.match(engine, /AppState\.title = window\.examTitle \|\| \(!window\.questionBank && \(window\.examData\?\.title \|\| window\.examData\?\.examTitle\)\)/);
+  // 읽기 규칙(questionBank 우선, 없을 때만 examData)은 공용 exam-source-reader.js 한 곳에 있고 엔진은 그것을 쓴다.
+  assert.match(engine, /window\.ExamSourceReader\.readQuestionArray\(window\)/);
+  assert.match(engine, /AppState\.title = window\.ExamSourceReader\.readExamTitle\(window\) \|\| p\.get\('title'\)/);
+  assert.match(engine, /<script src="exam-source-reader\.js\?v=[^"]+"><\/script>/);
 });
 
 test('원본 시험지 중 questionBank가 없는 파일은 모두 examData에서 비어 있지 않은 문항 배열을 얻는다', () => {
