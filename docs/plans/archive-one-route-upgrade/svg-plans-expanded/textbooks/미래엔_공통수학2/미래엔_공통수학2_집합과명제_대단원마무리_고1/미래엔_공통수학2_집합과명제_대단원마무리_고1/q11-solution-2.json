@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "14",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "p",
+        "points": [
+          {
+            "id": "A",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=7일때 q의구간[0,14]에 p의두근1,2가모두속한다. a≤0이면두번째근16−2a>0이라q=[2a,0]밖이다. a>0에서는0≤a−6≤2a와0≤16−2a≤2a로6≤a≤8. 세정수6,7,8의합21. 정답21.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $x$에 대하여 두 조건 $p$와 $q$가\n$p$: $(x-a+6)(x+2a-16)=0$,\n$q$: $x(x-2a) \\le 0$\n일 때, $p$가 $q$이기 위한 충분조건이 되도록 하는 모든 정수 $a$의 값의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=6일때 q의구간[0,12]에 p의두근0,4가모두속한다. a≤0이면두번째근16−2a>0이라q=[2a,0]밖이다. a>0에서는0≤a−6≤2a와0≤16−2a≤2a로6≤a≤8. 세정수6,7,8의합21. 정답21. a=7일때 q의구간[0,14]에 p의두근1,2가모두속한다. a≤0이면두번째근16−2a>0이라q=[2a,0]밖이다. a>0에서는0≤a−6≤2a와0≤16−2a≤2a로6≤a≤8. 세정수6,7,8의합21. 정답21. a=8일때 q의구간[0,16]에 p의두근2,0가모두속한다. a≤0이면두번째근16−2a>0이라q=[2a,0]밖이다. a>0에서는0≤a−6≤2a와0≤16−2a≤2a로6≤a≤8. 세정수6,7,8의합21. 정답21.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a=7일때 q의구간[0,14]에 p의두근1,2가모두속한다. a≤0이면두번째근16−2a>0이라q=[2a,0]밖이다. a>0에서는0≤a−6≤2a와0≤16−2a≤2a로6≤a≤8. 세정수6,7,8의합21. 정답21."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 5,
+      "height": 12,
+      "names": {
+        "center": "C",
+        "apex": "A"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "height": true,
+      "direct": true,
+      "foot": true
+    },
+    {
+      "solid": "cone",
+      "radius": "bottom"
+    },
+    {
+      "solid": "cone",
+      "slant": true
+    }
+  ],
+  "caption": "AC축으로직각삼각형을회전한원뿔이다. 밑면반지름5,높이12,모선13. 부피=(1/3)π×5²×12=100π cm³.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 1] 다음 그림과 같이 $\\angle C=90^\\circ$인 직각삼각형 $ABC$를 직선 $l$을 축으로 하여 $1$회전 시킬 때 생기는 입체도형의 부피를 구하고, 그 풀이과정을 쓰시오. (4점)",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "derived",
+      "condition": "기존문제SVG의AB13/BC5/축AC를읽고높이12를피타고라스로계산했다. 원뿔의세치수는동일삼각형의회전이다.",
+      "mappedTo": "cone"
+    }
+  ]
+}

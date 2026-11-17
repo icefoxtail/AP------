@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-48",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -7,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-7",
+        "y": "15"
+      },
+      {
+        "id": "R",
+        "x": "9",
+        "y": "15"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-49"
+      },
+      {
+        "id": "A",
+        "x": "-6",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "8",
+        "y": "0"
+      }
+    ],
+    "formula": "x^2-2*x-48",
+    "axisScale": {
+      "x": "1",
+      "y": "1/4"
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "y"
+    }
+  },
+  "caption": "등차조건2b=a+24,등비조건a²=4b를합치면a²−2a−48=(a−8)(a+6)=0. 가로축a이고곡선은y=a²−2a−48이다. 두교점−6,8중a>0조건으로8을택해b16,a+b24. 가로와세로척도는다르며축값으로읽는다. 정답24. 곡선식표시의x는가로축변수a를뜻한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 실수 $a$와 $b$가 다음을 모두 만족시킬 때, $a+b$의 값을 구하시오. (단, $a>0$)\n\n(가) 세 수 $a, b, 24$가 이 순서대로 등차수열을 이룬다.\n(나) 세 수 $4, a, b$가 이 순서대로 등비수열을 이룬다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "등차조건2b=a+24,등비조건a²=4b를합치면a²−2a−48=(a−8)(a+6)=0. 가로축a이고곡선은y=a²−2a−48이다. 두교점−6,8중a>0조건으로8을택해b16,a+b24. 가로와세로척도는다르며축값으로읽는다. 정답24. 곡선식표시의x는가로축변수a를뜻한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "등차조건2b=a+24,등비조건a²=4b를합치면a²−2a−48=(a−8)(a+6)=0. 가로축a이고곡선은y=a²−2a−48이다. 두교점−6,8중a>0조건으로8을택해b16,a+b24. 가로와세로척도는다르며축값으로읽는다. 정답24. 곡선식표시의x는가로축변수a를뜻한다."
+  ]
+}

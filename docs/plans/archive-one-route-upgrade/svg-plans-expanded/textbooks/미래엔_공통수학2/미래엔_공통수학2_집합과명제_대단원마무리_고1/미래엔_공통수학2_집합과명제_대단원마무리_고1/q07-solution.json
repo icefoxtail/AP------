@@ -1,0 +1,54 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "9",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A-B"
+  },
+  "caption": "B만인 영역7,교집합4,합집합20이므로 A만인 영역20−7−4=9. 전체U 밖이나 합집합 밖의 인원은 주어지지 않아 수를 붙이지 않는다. 영역 숫자는 원소 이름이 아니라 개수다. 정답9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 두 부분집합 $A$와 $B$에 대하여\n$n(A^c \\cap B)=7$, $n(A \\cap B)=4$, $n(A \\cup B)=20$\n일 때, $n(A-B)$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "B만인 영역7,교집합4,합집합20이므로 A만인 영역20−7−4=9. 전체U 밖이나 합집합 밖의 인원은 주어지지 않아 수를 붙이지 않는다. 영역 숫자는 원소 이름이 아니라 개수다. 정답9.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "B만인 영역7,교집합4,합집합20이므로 A만인 영역20−7−4=9. 전체U 밖이나 합집합 밖의 인원은 주어지지 않아 수를 붙이지 않는다. 영역 숫자는 원소 이름이 아니라 개수다. 정답9."
+  ]
+}

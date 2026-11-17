@@ -1,0 +1,121 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫 공",
+        "elements": [
+          "첫흰",
+          "첫검"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "첫 확률",
+        "elements": [
+          "4/10",
+          "6/10"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "둘째 검정",
+        "elements": [
+          "6/9",
+          "5/9"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "경로 확률",
+        "elements": [
+          "24/90",
+          "30/90"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 1
+        },
+        "to": {
+          "column": 3,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "비복원 추출은 첫 공에 따라 남은 검은 공 수가 달라진다. 첫흰→둘째검은(4/10)(6/9)=24/90,첫검→둘째검은(6/10)(5/9)=30/90. 두 경로는 배반이므로 합54/90=3/5. 이 연결도는 함수가 아니라 경우분류 흐름이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 주머니 안에 흰 공 4개, 검은 공 6개가 들어 있다. 현정이가 먼저 한 개의 공을 뽑은 후 종성이가 한 개의 공을 뽑을 때, 종성이가 검은 공을 꺼낼 확률을 구하면? (단, 꺼낸 공은 다시 넣지 않는다.) [4점]</p>",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "branch",
+      "condition": "둘째 공이 검정인 두 경로만 표시한다. 첫공확률과 조건부둘째확률을 혼동하지 않으며 화살표는 경우분류 관계이다.",
+      "mappedTo": "MAPPING"
+    }
+  ]
+}

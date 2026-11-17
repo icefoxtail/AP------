@@ -1,0 +1,99 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "밑양수"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "밑일제외"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "진수양수"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "최종",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "밑양수는x>1,밑1제외는x≠2,진수양수는−(x−1)(x−5)>0이라1<x<5. 세조건교집합은(1,2)∪(2,5). 정수는3,4두개. 정답2개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\log_{x-1} (-x^2 + 6x - 5)$가 정의되도록 하는 정수 $x$의 개수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "밑양수는x>1,밑1제외는x≠2,진수양수는−(x−1)(x−5)>0이라1<x<5. 세조건교집합은(1,2)∪(2,5). 정수는3,4두개. 정답2개.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "밑양수는x>1,밑1제외는x≠2,진수양수는−(x−1)(x−5)>0이라1<x<5. 세조건교집합은(1,2)∪(2,5). 정수는3,4두개. 정답2개."
+  ]
+}

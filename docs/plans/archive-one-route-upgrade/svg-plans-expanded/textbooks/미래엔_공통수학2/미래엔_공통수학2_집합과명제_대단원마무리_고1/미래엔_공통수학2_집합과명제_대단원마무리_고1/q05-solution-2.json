@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "110",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "441/4",
+            "hideName": true,
+            "style": "HOLLOW"
+          },
+          {
+            "id": "C",
+            "value": "111",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "전체조건1≤n<441/4의오른쪽경계만확대한도식이다. 110<441/4=110.25<111이며열린경계441/4는제외. 자연수의마지막값은110이고111부터불가하다. 정답110.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자연수 $n$에 대하여\n$A_n = \\{x \\mid x\\text{는 } \\sqrt{4n}\\text{ 이하의 홀수}\\}$\n일 때, $A_n \\subset A_{100}$을 만족시키는 $n$의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A100={1,3,…,19}. 포함은 등호를 허용한다. 다음 홀수21이 들어오지 않을 조건2√n<21에서1≤n<441/4=110.25. 수직선의110은 포함되고111은 벗어난다. 자연수 최대110. 정답110. 전체조건1≤n<441/4의오른쪽경계만확대한도식이다. 110<441/4=110.25<111이며열린경계441/4는제외. 자연수의마지막값은110이고111부터불가하다. 정답110.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "전체조건1≤n<441/4의오른쪽경계만확대한도식이다. 110<441/4=110.25<111이며열린경계441/4는제외. 자연수의마지막값은110이고111부터불가하다. 정답110."
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "barPoint0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "barPoint1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "barPoint2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "barPoint3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "barPoint4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "barPoint5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint4"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "barPoint6",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "barPoint7",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "barPoint6"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "barPoint0",
+    "barPoint1",
+    "barPoint2",
+    "barPoint3",
+    "barPoint4",
+    "barPoint5",
+    "barPoint6",
+    "barPoint7"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "barPoint0",
+        "barPoint1"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "barPoint2",
+        "barPoint3"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "barPoint4",
+        "barPoint5"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "barPoint6",
+        "barPoint7"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "원래두사각형은유지한다. 이보조패널의네막대는실제사각형을재작도한것이아니라대응변의길이만비교한다. AB10:EF5=2:1이므로BC14의대응변FG7. 같은대응각C/G135°,A/E100°는원문그림에서확인한다. 넓이비는길이비의제곱4:1이므로작은넓이100/4=25 cm². 50이라고한④가거짓이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\square ABCD\\sim\\square EFGH$이고, $\\square ABCD$의 넓이가 $100\\rm\\,cm^2$일 때, 다음 중 옳지 않은 것은? (4점)",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "bar0",
+        "ownerSegment": "AB",
+        "text": "AB=10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bar1",
+        "ownerSegment": "EF",
+        "text": "EF=5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bar2",
+        "ownerSegment": "CD",
+        "text": "BC=14",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bar3",
+        "ownerSegment": "GH",
+        "text": "FG=7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "barPoint0",
+    "barPoint1",
+    "barPoint2",
+    "barPoint3",
+    "barPoint4",
+    "barPoint5",
+    "barPoint6",
+    "barPoint7"
+  ],
+  "hiddenPointStyle": "NONE"
+}

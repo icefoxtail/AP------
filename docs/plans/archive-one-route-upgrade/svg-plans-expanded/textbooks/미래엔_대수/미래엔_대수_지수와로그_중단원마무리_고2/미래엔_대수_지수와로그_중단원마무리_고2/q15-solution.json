@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "a",
+        "integerPoints": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "b",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "실수세제곱근은모든a에서한개라f(a)=1. 실수네제곱근개수g(b)는b<0이면0,b0이면1,b>0이면2. 따라서곱2의조건은정수a−5..5와정수b1..5이다. 두행은같은변수의교집합이아니라독립인두정수선택범위다. 11×5=55순서쌍. 정답55.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $x$에 대하여 $x$의 세제곱근 중에서 실수인 것의 개수를 $f(x)$, $x$의 네제곱근 중에서 실수인 것의 개수를 $g(x)$라 하자.\n$|a| \\le 5$와 $|b| \\le 5$를 만족시키는 두 정수 $a$와 $b$에 대하여 $f(a)g(b)=2$를 만족시키는 순서쌍 $(a, b)$의 개수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "실수세제곱근은모든a에서한개라f(a)=1. 실수네제곱근개수g(b)는b<0이면0,b0이면1,b>0이면2. 따라서곱2의조건은정수a−5..5와정수b1..5이다. 두행은같은변수의교집합이아니라독립인두정수선택범위다. 11×5=55순서쌍. 정답55.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "실수세제곱근은모든a에서한개라f(a)=1. 실수네제곱근개수g(b)는b<0이면0,b0이면1,b>0이면2. 따라서곱2의조건은정수a−5..5와정수b1..5이다. 두행은같은변수의교집합이아니라독립인두정수선택범위다. 11×5=55순서쌍. 정답55."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      "-3/2",
+      "3/2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3/2",
+        "y": "65/16"
+      },
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "3/2",
+        "y": "65/16"
+      }
+    ],
+    "formula": "x^4 - 1",
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    }
+  },
+  "caption": "1의실수네제곱근은 t⁴=1의해다. y=t⁴−1의가로축교점은−1,1두개이고다른실수해는없다. 정답−1,1. 곡선식표시의x는가로축변수t를뜻한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 거듭제곱근 중에서 실수인 것을 모두 구하시오.\n⑴ $-27$의 세제곱근\n⑵ $1$의 네제곱근",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "−27의실수세제곱근은 t³=−27의해이다. 그래프y=t³+27은가로축과t−3에서한번만만난다. 정답−3. 가로·세로척도는다르므로축값으로읽는다. 곡선식표시의x는가로축변수t를뜻한다. 1의실수네제곱근은 t⁴=1의해다. y=t⁴−1의가로축교점은−1,1두개이고다른실수해는없다. 정답−1,1. 곡선식표시의x는가로축변수t를뜻한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "1의실수네제곱근은 t⁴=1의해다. y=t⁴−1의가로축교점은−1,1두개이고다른실수해는없다. 정답−1,1. 곡선식표시의x는가로축변수t를뜻한다."
+  ]
+}

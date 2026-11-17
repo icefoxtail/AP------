@@ -1,0 +1,51 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "P"
+        ]
+      }
+    ],
+    "subset": [
+      "Q",
+      "P"
+    ]
+  },
+  "caption": "Q⊂P라는 조건은 q→p를 뜻하고 p→q를 보장하지 않는다. 반례로P={1,2},Q={1}이면2는p이지만q가아니다. 나머지 선택지는 여집합·대우·전칭·존재 정의와 일치한다. 옳지 않은 것은③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 두 조건 $p$와 $q$의 진리집합을 각각 $P$와 $Q$라 할 때, 다음에서 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "Q⊂P라는 조건은 q→p를 뜻하고 p→q를 보장하지 않는다. 반례로P={1,2},Q={1}이면2는p이지만q가아니다. 나머지 선택지는 여집합·대우·전칭·존재 정의와 일치한다. 옳지 않은 것은③.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "Q⊂P라는 조건은 q→p를 뜻하고 p→q를 보장하지 않는다. 반례로P={1,2},Q={1}이면2는p이지만q가아니다. 나머지 선택지는 여집합·대우·전칭·존재 정의와 일치한다. 옳지 않은 것은③."
+  ]
+}

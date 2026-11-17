@@ -1,0 +1,138 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      7,
+      0,
+      7
+    ],
+    "curves": [
+      {
+        "id": "boundary",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-2"
+        ],
+        "domain": [
+          "1",
+          "7/2"
+        ],
+        "label": "2x+y=8"
+      },
+      {
+        "id": "upperRange",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "label": "y=6"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P11",
+          "x": "1",
+          "y": "1",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P12",
+          "x": "1",
+          "y": "2",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P13",
+          "x": "1",
+          "y": "3",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P14",
+          "x": "1",
+          "y": "4",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P15",
+          "x": "1",
+          "y": "5",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P21",
+          "x": "2",
+          "y": "1",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P22",
+          "x": "2",
+          "y": "2",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P23",
+          "x": "2",
+          "y": "3",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P31",
+          "x": "3",
+          "y": "1",
+          "unnamed": false,
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  },
+  "caption": "각 점은 주사위 두 눈의 순서쌍이다. 엄격한 부등식2x+y<8에서 x1일때5점,x2일때3점,x3일때1점. 합9가지,정답⑤. 경계직선 위는 포함하지 않는다. 조건을 만족하는 점만 표시했다. 전체 표본공간은6×6=36개이며 표시된 점이 전체인 것은 아니다. 수평선6은 주사위 눈의 위쪽 범위 안내선이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 주사위 한 개를 두 번 던져서 처음에 나온 수를 $x$, 나중에 나온 수를 $y$라 할 때, $2x+y < 8$을 만족시키는 경우의 수를 구하면? [4점]</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "integer",
+      "condition": "원문 주사위 눈의 정수조건으로36개의점만 가능. 직선은 경계/관계선이며 모든 실수점이 표본공간인 것은 아니다.",
+      "mappedTo": "overlays"
+    }
+  ]
+}

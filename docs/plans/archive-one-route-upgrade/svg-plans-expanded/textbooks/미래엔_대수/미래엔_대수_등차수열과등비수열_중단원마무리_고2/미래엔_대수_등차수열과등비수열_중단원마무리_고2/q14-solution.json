@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "양수항",
+        "integerPoints": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "8",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "음수항"
+      }
+    ],
+    "variable": "n"
+  },
+  "caption": "an=36−5n. 자연수n1~7에서는an>0이고n8이후에는an<0이므로항을더하는누적합은7항까지증가하다그뒤감소한다. a7=1,a8=−4. S6=111,S7=112,S8=108이며정답최댓값112. 그림첫행은양수항첨자,둘째행은음수항첨자다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "첫째항이 $31$이고 공차가 $-5$인 등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "an=36−5n. 자연수n1~7에서는an>0이고n8이후에는an<0이므로항을더하는누적합은7항까지증가하다그뒤감소한다. a7=1,a8=−4. S6=111,S7=112,S8=108이며정답최댓값112. 그림첫행은양수항첨자,둘째행은음수항첨자다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "an=36−5n. 자연수n1~7에서는an>0이고n8이후에는an<0이므로항을더하는누적합은7항까지증가하다그뒤감소한다. a7=1,a8=−4. S6=111,S7=112,S8=108이며정답최댓값112. 그림첫행은양수항첨자,둘째행은음수항첨자다."
+  ]
+}

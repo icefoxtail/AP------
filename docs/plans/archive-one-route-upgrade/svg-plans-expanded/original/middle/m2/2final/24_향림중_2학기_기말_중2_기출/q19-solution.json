@@ -1,0 +1,106 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "원판 A",
+        "elements": [
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "원판 B",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "DASHED"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "DASHED"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "각화살표는두원판의결과순서쌍이다. 전체2×3=6가지에서같은숫자(1,1),(2,2)는점선으로구별한다. 나머지실선4가지가서로다른경우이므로확률4/6=2/3. 이도식은함수가아니라가능한결과관계다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음과 같이 각각 $2$등분, $3$등분한 원판 $A$, $B$의 바늘을 돌려 바늘이 멈춘 후 가리키는 숫자를 읽는다. 바늘이 가리키는 숫자가 서로 다를 확률은? (단, 바늘이 경계선을 가리키는 경우는 생각하지 않는다.) (5점)",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "labels",
+      "condition": "문제SVG의원판A숫자1/2와B숫자1/2/3 및같은크기칸을대조했다.",
+      "mappedTo": "MAPPING"
+    }
+  ]
+}

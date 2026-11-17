@@ -1,0 +1,475 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "EI",
+      "refs": [
+        "E",
+        "I"
+      ]
+    },
+    {
+      "id": "IJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "JK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "KL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "LH",
+      "refs": [
+        "L",
+        "H"
+      ]
+    },
+    {
+      "id": "FJ",
+      "refs": [
+        "F",
+        "J"
+      ]
+    },
+    {
+      "id": "GK",
+      "refs": [
+        "G",
+        "K"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "t=log_a2로놓으면다섯수는t,2t,3t,5t,7t이다. 두세칸줄합을더하면가운데공통칸만두번세므로30=(18+c)t. 나머지네계수를두쌍으로나눠같은합이어야하므로18−c가짝수이고유일한짝수c2이다. 나머지는1+7=3+5=8로짝지어각줄10t15,t=3/2. 따라서a=2^(2/3)=∛4. 원본은십자아닌T자이고상단가운데칸이공통칸이다. 배치는가능한한예시로두줄합15를보인다. 정답∛4. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "val0",
+        "at": [
+          0.5,
+          2.5
+        ],
+        "text": "1.5",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "val1",
+        "at": [
+          1.5,
+          2.5
+        ],
+        "text": "3",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "val2",
+        "at": [
+          2.5,
+          2.5
+        ],
+        "text": "10.5",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "val3",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "text": "4.5",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "val4",
+        "at": [
+          1.5,
+          0.5
+        ],
+        "text": "7.5",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q17.png\" />\n오른쪽 그림과 같은 $5$개의 칸에 $5$개의 수 $\\log_a 2$, $\\log_a 4$, $\\log_a 8$, $\\log_a 32$, $\\log_a 128$을 한 칸에 $1$개씩 적는다. 가로로 나열된 $3$개의 칸에 적힌 세 수의 합과 세로로 나열된 $3$개의 칸에 적힌 세 수의 합이 $15$로 서로 같을 때, $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=log_a2로놓으면다섯수는t,2t,3t,5t,7t이다. 두세칸줄합을더하면가운데공통칸만두번세므로30=(18+c)t. 나머지네계수를두쌍으로나눠같은합이어야하므로18−c가짝수이고유일한짝수c2이다. 나머지는1+7=3+5=8로짝지어각줄10t15,t=3/2. 따라서a=2^(2/3)=∛4. 원본은십자아닌T자이고상단가운데칸이공통칸이다. 배치는가능한한예시로두줄합15를보인다. 정답∛4. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다. t=log_a2로놓으면다섯수는t,2t,3t,5t,7t이다. 두세칸줄합을더하면가운데공통칸만두번세므로30=(18+c)t. 나머지네계수를두쌍으로나눠같은합이어야하므로18−c가짝수이고유일한짝수c2이다. 나머지는1+7=3+5=8로짝지어각줄10t15,t=3/2. 따라서a=2^(2/3)=∛4. 원본은십자아닌T자이고상단가운데칸이공통칸이다. 배치는가능한한예시로두줄합15를보인다. 정답∛4. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t=log_a2로놓으면다섯수는t,2t,3t,5t,7t이다. 두세칸줄합을더하면가운데공통칸만두번세므로30=(18+c)t. 나머지네계수를두쌍으로나눠같은합이어야하므로18−c가짝수이고유일한짝수c2이다. 나머지는1+7=3+5=8로짝지어각줄10t15,t=3/2. 따라서a=2^(2/3)=∛4. 원본은십자아닌T자이고상단가운데칸이공통칸이다. 배치는가능한한예시로두줄합15를보인다. 정답∛4. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}
