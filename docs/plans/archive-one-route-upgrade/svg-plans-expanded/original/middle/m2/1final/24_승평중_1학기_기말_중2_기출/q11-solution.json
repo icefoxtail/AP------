@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본 내리막·음의절편에서 a<0,b<0. 목표 b/a>0,−b>0이라 제4사분면을 지나지 않는다. a=b=−1을 택한 부호 대표형이며 원본의 정확 계수를 추정한 것이 아니다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax+b$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=\\dfrac{b}{a}x-b$의 그래프가 지나지 않는 사분면을 구하면? (단, $a$, $b$는 상수)",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T1",
+          "curveX": "1-sqrt(3)/3",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SW"
+        },
+        {
+          "id": "T2",
+          "curveX": "1+sqrt(3)/3",
+          "coordinates": true,
+          "unnamed": true,
+          "labelDirection": "SE"
+        }
+      ]
+    },
+    "formula": "(2) + (-6)*x + (3)*x^2"
+  },
+  "caption": "원래 방정식3x²−6x+2=0의 두 근 합2,곱2/3. 1/β=3α/2이므로 새 근은5α/2,5β/2로 각각5/2배이다. 다음 패널의 두 근 합5,곱25/6을 확인하며 정답6x²−30x+25=0.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $3x^2-6x+2=0$의 두 근을 $\\alpha,\\beta$라 할 때, $\\alpha+\\dfrac1\\beta,\\ \\beta+\\dfrac1\\alpha$를 두 근으로 하고 $x^2$의 계수가 $6$인 이차방정식을 풀이과정과 함께 구하시오. (4점, 부분점수 있음)",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "원래 방정식3x²−6x+2=0의 두 근 합2,곱2/3. 1/β=3α/2이므로 새 근은5α/2,5β/2로 각각5/2배이다. 다음 패널의 두 근 합5,곱25/6을 확인하며 정답6x²−30x+25=0. 새 근은 원래 두 근의5/2배이고 합5,곱25/6이다. 최고차항 계수6을 맞추면 y=6x²−30x+25의 두 영점이 된다. 정답6x²−30x+25=0.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 방정식3x²−6x+2=0의 두 근 합2,곱2/3. 1/β=3α/2이므로 새 근은5α/2,5β/2로 각각5/2배이다. 다음 패널의 두 근 합5,곱25/6을 확인하며 정답6x²−30x+25=0."
+  ]
+}

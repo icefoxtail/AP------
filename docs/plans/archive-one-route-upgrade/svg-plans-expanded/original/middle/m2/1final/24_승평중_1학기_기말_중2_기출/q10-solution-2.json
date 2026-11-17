@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-4"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "-3/4",
+        "y": "0"
+      }
+    ],
+    "formula": "(-4)*x+(-3)"
+  },
+  "caption": "(나)y=−4x−3의 기울기·절편을 표시한다. (가),(라)의 y절편 차이는4이므로 (라)를 위로4 이동해야(가)이다.3만큼이라는⑤가 틀리다. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기에 해당하는 일차함수의 그래프에 대한 설명으로 옳지 않은 것은?<div style='display:inline-block; margin:8px 0 6px 0; padding:7px 12px; border:1px solid #333; border-radius:4px; line-height:1.75; text-align:left;'><div style='text-align:center; font-weight:700;'>보기</div>(가) $y=2x+3$ &emsp;&emsp; (나) $y=-4x-3$<br>(다) $y=-\\dfrac{3}{2}x+1$ &emsp;&emsp; (라) $y=2x-1$</div>",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

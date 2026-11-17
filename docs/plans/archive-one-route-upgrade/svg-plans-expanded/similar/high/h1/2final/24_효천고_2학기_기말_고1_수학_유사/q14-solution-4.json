@@ -1,0 +1,98 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-10",
+          "8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      1.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "J",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "axisTitles": {
+      "x": "v",
+      "y": "A"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "case1",
+          "slope": "0",
+          "intercept": "-1",
+          "style": "DASHED",
+          "label": "A=-1"
+        },
+        {
+          "id": "case2",
+          "slope": "0",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "A=0"
+        }
+      ],
+      "points": [
+        {
+          "id": "R",
+          "x": "-4+sqrt(26)",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a=3u|2u−1|+2u를v=12u−5,A=24a−25로정규화한경계확대이다. v<1은A=−v²,v≥1은A=v²+8v−10. A−1은a1에서두점,A0은a25/24에서두점,그사이는세점이다. 표시창밖u0(v−5)은제외해야하며이보조곡선전체를원식정의역으로쓰지않는다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x \\mid x \\neq -2\\text{인 실수}\\}$인 함수 $f(x) = \\left| \\dfrac{6}{x+2} - 3 \\right|$에 대한 〈보기〉의 설명 중 옳은 것만을 있는 대로 고른 것은? [4.4점]<br><br>〈보기〉<br>ㄱ. 함수 $y = f(x)$의 그래프와 직선 $y = t$의 교점이 $1$개인 실수 $t$는 $3$개 존재한다.<br>ㄴ. 함수 $y = f(x)$의 그래프와 직선 $y = t$의 교점이 $0$개인 실수 $t$의 값의 범위는 $t<0$이다.<br>ㄷ. 함수 $y = f(x)$의 그래프와 직선 $y = a(x+2) - 2$의 서로 다른 교점이 $2$개인 실수 $a$는 $2$개 존재한다.<br>ㄹ. 함수 $y = f(x)$의 그래프와 직선 $y = 2$의 교점의 $x$좌표의 합은 $\\dfrac{16}{5}$이다.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a=3u|2u−1|+2u를v=12u−5,A=24a−25로정규화한경계확대이다. v<1은A=−v²,v≥1은A=v²+8v−10. A−1은a1에서두점,A0은a25/24에서두점,그사이는세점이다. 표시창밖u0(v−5)은제외해야하며이보조곡선전체를원식정의역으로쓰지않는다. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3u|2u−1|+2u를v=12u−5,A=24a−25로정규화한경계확대이다. v<1은A=−v²,v≥1은A=v²+8v−10. A−1은a1에서두점,A0은a25/24에서두점,그사이는세점이다. 표시창밖u0(v−5)은제외해야하며이보조곡선전체를원식정의역으로쓰지않는다. 정답④."
+  ]
+}

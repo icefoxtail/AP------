@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "-11",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "12"
+      },
+      {
+        "id": "V",
+        "x": "11/2",
+        "y": "-73/4"
+      },
+      {
+        "id": "R",
+        "x": "11",
+        "y": "12"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "F"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V1",
+          "curveX": "(11-sqrt(73))/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "U1",
+          "curveX": "(11+sqrt(73))/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "formula": "(12) + (-11)*x + (1)*x^2"
+  },
+  "caption": "t=x²로 치환한 실제 t²−11t+12이다. 두 영점 v=(11−√73)/2,u=(11+√73)/2는 양수이며 합11,곱12. 따라서 네 x근은−√u,−√v,√v,√u이고 ad+bc=−11. 정답 m3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 사차방정식 $x^4-(m^2+2)x^2+4m=0$이 서로 다른 네 실근 $a, b, c, d$를 갖고, $ad+bc=-11$의 관계가 성립할 때, 양수 $m$의 값은? (단, $a<b<c<d$이다.) [5점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "t=x²로 치환한 실제 t²−11t+12이다. 두 영점 v=(11−√73)/2,u=(11+√73)/2는 양수이며 합11,곱12. 따라서 네 x근은−√u,−√v,√v,√u이고 ad+bc=−11. 정답 m3. 점 A,B,C,D는 각각 소문자 근 a,b,c,d의 위치를 나타낸다. a=−√u,b=−√v,c=√v,d=√u, u=(11+√73)/2,v=(11−√73)/2. 원점 대칭인 바깥근의 곱 ad=−u,안쪽근의 곱 bc=−v이므로 합−11. 정답 m3.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "t=x²로 치환한 실제 t²−11t+12이다. 두 영점 v=(11−√73)/2,u=(11+√73)/2는 양수이며 합11,곱12. 따라서 네 x근은−√u,−√v,√v,√u이고 ad+bc=−11. 정답 m3."
+  ]
+}

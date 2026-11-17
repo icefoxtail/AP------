@@ -1,0 +1,54 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "1",
+      "-1"
+    ],
+    "sign": 1,
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -4,
+      2,
+      1,
+      5
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 3
+      }
+    ]
+  },
+  "caption": "그림과맞는a2,b1,c−1예시 g=√(1−x)+2의끝점(1,2),점(0,3)을보인다. 일반적으로끝점(−b/c,a)은제1사분면이고왼쪽으로뻗으며y≥a>0이다. 정답제1·2사분면.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $f(x)=\\dfrac{ax+b}{x+c}$의 그래프가 그림과 같을 때, 무리함수 $g(x)=\\sqrt{cx+b}+a$의 그래프가 지나는 사분면을 모두 적은 것은? [3.6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "그림과맞는a2,b1,c−1예시 g=√(1−x)+2의끝점(1,2),점(0,3)을보인다. 일반적으로끝점(−b/c,a)은제1사분면이고왼쪽으로뻗으며y≥a>0이다. 정답제1·2사분면.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "그림과맞는a2,b1,c−1예시 g=√(1−x)+2의끝점(1,2),점(0,3)을보인다. 일반적으로끝점(−b/c,a)은제1사분면이고왼쪽으로뻗으며y≥a>0이다. 정답제1·2사분면."
+  ]
+}

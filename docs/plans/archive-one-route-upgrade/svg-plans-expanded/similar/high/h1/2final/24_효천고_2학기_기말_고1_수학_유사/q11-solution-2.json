@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-3)^2-9",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-9"
+      },
+      {
+        "id": "C",
+        "x": "6",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "k"
+    }
+  },
+  "caption": "t=√x≥0로치환하면k=(t−3)²−9이다. 이식의최솟값−9에서중근t3,원래x9를얻는다. 실제허용 t≥0와음수쪽보조연장은구별한다. 정답−9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=6\\sqrt{x}$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 함수를 $y=f(x)$라 하자. $y=f(x)$와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 접할 때, $k$의 값은? [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "t=√x≥0로치환하면k=(t−3)²−9이다. 이식의최솟값−9에서중근t3,원래x9를얻는다. 실제허용 t≥0와음수쪽보조연장은구별한다. 정답−9.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "t=√x≥0로치환하면k=(t−3)²−9이다. 이식의최솟값−9에서중근t3,원래x9를얻는다. 실제허용 t≥0와음수쪽보조연장은구별한다. 정답−9."
+  ]
+}

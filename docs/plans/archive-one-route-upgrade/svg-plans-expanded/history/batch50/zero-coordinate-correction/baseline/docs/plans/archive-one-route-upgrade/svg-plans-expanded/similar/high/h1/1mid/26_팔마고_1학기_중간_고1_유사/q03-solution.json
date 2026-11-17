@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-10",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "7"
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-11/2"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "7"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "(5-sqrt(11))/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "(5+sqrt(11))/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "formula": "(7) + (-10)*x + (2)*x^2"
+  },
+  "caption": "두 영점 α,β의 중점은5/2이고 합5,곱7/2이다. 근 사이 거리의 제곱은 (α+β)²−4αβ=25−14. 정답11.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $2x^2-10x+7=0$의 두 근을 $\\alpha, \\beta$라 할 때, $(\\alpha-\\beta)^2$의 값은? [3.8점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "두 영점 α,β의 중점은5/2이고 합5,곱7/2이다. 근 사이 거리의 제곱은 (α+β)²−4αβ=25−14. 정답11.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "두 영점 α,β의 중점은5/2이고 합5,곱7/2이다. 근 사이 거리의 제곱은 (α+β)²−4αβ=25−14. 정답11."
+  ]
+}

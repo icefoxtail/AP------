@@ -1,0 +1,32 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "10",
+        "title": "동료"
+      },
+      {
+        "count": "280",
+        "title": "나머지조"
+      }
+    ]
+  },
+  "caption": "AB와함께할동료를10명중1명선택한다. 남은9명은이름없는세조로분할하므로9C3·6C3/3!=280이다. AB조까지4!로나누지않는다. 정답2800.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\mathrm{A}$와 $\\mathrm{B}$를 포함한 $12$명을 $3$명씩 $4$개의 조로 나눌 때, $\\mathrm{A}$와 $\\mathrm{B}$가 같은 조에 포함되도록 나누는 경우의 수는? [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "AB와함께할동료를10명중1명선택한다. 남은9명은이름없는세조로분할하므로9C3·6C3/3!=280이다. AB조까지4!로나누지않는다. 정답2800.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "AB와함께할동료를10명중1명선택한다. 남은9명은이름없는세조로분할하므로9C3·6C3/3!=280이다. AB조까지4!로나누지않는다. 정답2800."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "-14"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "11"
+      },
+      {
+        "id": "R",
+        "x": "8",
+        "y": "11"
+      }
+    ],
+    "formula": "x^2 - 6*x - 5",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3-sqrt(14)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "3+sqrt(14)",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "⑵ 두수는t²−6t−5=0의두근이며D=56>0이다. 그래프의교점은3±√14이므로두수는3+√14,3−√14이다. 그림의가로x는위근방정식의미지수t와같은역할이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음을 만족시키는 두 수 $\\alpha$와 $\\beta$를 구하시오.\n⑴ $\\alpha+\\beta=2,\\quad \\alpha\\beta=4$\n⑵ $\\alpha+\\beta=6,\\quad \\alpha\\beta=-5$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ 두수는t²−2t+4=0의두근이다. 실수그래프는최소3>0으로실근이없다. 복소수범위에서두수는1±√3 i이다. 그림의가로x는위근방정식의미지수t와같은역할이다. ⑵ 두수는t²−6t−5=0의두근이며D=56>0이다. 그래프의교점은3±√14이므로두수는3+√14,3−√14이다. 그림의가로x는위근방정식의미지수t와같은역할이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑵ 두수는t²−6t−5=0의두근이며D=56>0이다. 그래프의교점은3±√14이므로두수는3+√14,3−√14이다. 그림의가로x는위근방정식의미지수t와같은역할이다."
+  ]
+}

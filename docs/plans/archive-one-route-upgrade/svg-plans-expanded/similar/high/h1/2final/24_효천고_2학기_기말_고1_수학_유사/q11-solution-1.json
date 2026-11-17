@@ -1,0 +1,71 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "-9",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      16
+    ],
+    "viewport": [
+      -1,
+      17,
+      -10,
+      16
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -9
+      },
+      {
+        "id": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "id": "C",
+        "x": 16,
+        "y": 15
+      }
+    ],
+    "amplitude": "6",
+    "overlays": {
+      "lines": [
+        {
+          "id": "tangent",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "실제k=−9일때 f=6√x−9는(9,9)에서y=x에접한다. f(x)−x=−(√x−3)²≤0이며이점에서만0이다. 정답−9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=6\\sqrt{x}$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 함수를 $y=f(x)$라 하자. $y=f(x)$와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 접할 때, $k$의 값은? [4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제k=−9일때 f=6√x−9는(9,9)에서y=x에접한다. f(x)−x=−(√x−3)²≤0이며이점에서만0이다. 정답−9.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제k=−9일때 f=6√x−9는(9,9)에서y=x에접한다. f(x)−x=−(√x−3)²≤0이며이점에서만0이다. 정답−9."
+  ]
+}

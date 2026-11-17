@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1/2"
+        ],
+        "domain": [
+          "-7",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "-2"
+        ],
+        "domain": [
+          "-7",
+          "3"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-7",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-4",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-6",
+          "y": "7",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "세 교점(2,3),(−4,3),(−6,7)을 표시. 수평밑변6,높이7−3=4이므로 넓이12. 정답12.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 직선 $x+2y-8=0$, $2x+y+5=0$, $y-3=0$이 이루는 삼각형의 넓이를 구하는 과정과 답을 서술하시오.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

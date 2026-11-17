@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "-5/4"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "5"
+      }
+    ],
+    "formula": "x^2 + x - 1",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "(-1-sqrt(5))/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "(-1+sqrt(5))/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "⑴ D=5>0이므로두교점. 근은(−1±√5)/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 $x$축의 교점의 개수를 구하시오.\n⑴ $y=x^2+x-1$\n⑵ $y=x^2+3x+4$\n⑶ $y=-4x^2+12x-9$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "⑴ D=5>0이므로두교점. 근은(−1±√5)/2이다. ⑵ 최솟값7/4>0이므로x축과교점0개이다. ⑶ y=−(2x−3)²이므로(3/2,0)에서접한다. 교점1개.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "⑴ D=5>0이므로두교점. 근은(−1±√5)/2이다."
+  ]
+}

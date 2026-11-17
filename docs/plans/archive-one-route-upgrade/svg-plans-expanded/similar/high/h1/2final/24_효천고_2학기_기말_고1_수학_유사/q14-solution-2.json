@@ -1,0 +1,73 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "0",
+      "-3"
+    ],
+    "denominator": [
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -5,
+      5
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-4/5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "up",
+          "slope": "0",
+          "intercept": "2",
+          "style": "DASHED",
+          "label": "y=2"
+        },
+        {
+          "id": "down",
+          "slope": "0",
+          "intercept": "-2",
+          "style": "DASHED",
+          "label": "y=-2"
+        }
+      ]
+    }
+  },
+  "caption": "t=2에서절댓값전곡선6/(x+2)−3과y=±t의교점을센다. 2에서는x−4/5,4로합16/5. 절댓값함수그자체가아닌동치분기그림이다. 옳은보기ㄴ·ㄷ·ㄹ,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x \\mid x \\neq -2\\text{인 실수}\\}$인 함수 $f(x) = \\left| \\dfrac{6}{x+2} - 3 \\right|$에 대한 〈보기〉의 설명 중 옳은 것만을 있는 대로 고른 것은? [4.4점]<br><br>〈보기〉<br>ㄱ. 함수 $y = f(x)$의 그래프와 직선 $y = t$의 교점이 $1$개인 실수 $t$는 $3$개 존재한다.<br>ㄴ. 함수 $y = f(x)$의 그래프와 직선 $y = t$의 교점이 $0$개인 실수 $t$의 값의 범위는 $t<0$이다.<br>ㄷ. 함수 $y = f(x)$의 그래프와 직선 $y = a(x+2) - 2$의 서로 다른 교점이 $2$개인 실수 $a$는 $2$개 존재한다.<br>ㄹ. 함수 $y = f(x)$의 그래프와 직선 $y = 2$의 교점의 $x$좌표의 합은 $\\dfrac{16}{5}$이다.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "t=2에서절댓값전곡선6/(x+2)−3과y=±t의교점을센다. 2에서는x−4/5,4로합16/5. 절댓값함수그자체가아닌동치분기그림이다. 옳은보기ㄴ·ㄷ·ㄹ,정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "t=2에서절댓값전곡선6/(x+2)−3과y=±t의교점을센다. 2에서는x−4/5,4로합16/5. 절댓값함수그자체가아닌동치분기그림이다. 옳은보기ㄴ·ㄷ·ㄹ,정답④."
+  ]
+}

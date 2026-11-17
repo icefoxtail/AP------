@@ -1,0 +1,66 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "8",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -5,
+      5,
+      -8,
+      8
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "min",
+          "slope": "2",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=2x"
+        }
+      ]
+    }
+  },
+  "caption": "최소k0의실제교점(−2,−4),(2,4)이다. 모든k에서판별식k²+64>0이고거리제곱5k²/4+80≥80이므로최소4√5. 정답4√5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\dfrac{8}{x}$의 그래프와 직선 $y=2x+k$가 만나는 두 점 사이의 거리를 $l(k)$라 할 때, $l(k)$의 최솟값은? (단, $k$는 실수이다.) [3.7점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "최소k0의실제교점(−2,−4),(2,4)이다. 모든k에서판별식k²+64>0이고거리제곱5k²/4+80≥80이므로최소4√5. 정답4√5.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "최소k0의실제교점(−2,−4),(2,4)이다. 모든k에서판별식k²+64>0이고거리제곱5k²/4+80≥80이므로최소4√5. 정답4√5."
+  ]
+}

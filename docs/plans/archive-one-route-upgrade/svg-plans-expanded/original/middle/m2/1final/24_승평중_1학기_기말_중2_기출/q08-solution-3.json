@@ -1,0 +1,64 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "y의 예",
+        "elements": [
+          "2",
+          "3",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "(다) 약수 개수2에 서로 다른 소수2,3,5가 대응. 하나의 입력에 여러 출력이라 함수가 아니다. 나머지(라),(마),(바)는 각각 하나로 정해진다. 함수 아닌 것은3개,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기 중에서 $y$가 $x$의 함수가 아닌 것은 몇 개인가?<div style='display:inline-block; margin:8px 0 6px 0; padding:7px 12px; border:1px solid #333; border-radius:4px; line-height:1.75; text-align:left;'><div style='text-align:center; font-weight:700;'>보기</div>(가) 자연수 $x$의 약수 $y$<br>(나) 절댓값이 자연수 $x$인 수 $y$<br>(다) 약수의 개수가 $x$개인 자연수 $y$<br>(라) 자연수 $x$를 5로 나누었을 때의 나머지 $y$<br>(마) 100 km를 시속 $x$ km로 일정하게 달릴 때, 걸린 시간 $y$<br>(바) 가로의 길이가 $x$ cm이고, 넓이가 12 cm$^2$인 직사각형의 세로의 길이 $y$ cm</div>",
+      "mappedTo": "diagram"
+    }
+  ]
+}

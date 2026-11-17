@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "-22",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      24
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "11",
+        "y": "-128"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "41",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "24",
+        "y": "41",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "R"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "11-8*sqrt(2)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "11+8*sqrt(2)",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "formula": "(-7) + (-22)*x + (1)*x^2"
+  },
+  "caption": "변환한 두 근 합22,곱−7. 새 식은 x²−22x−7=0. 두 패널은 서로 다른 축척으로 근의 위치를 비교한다. 정답 p+q=−29.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2+6x+1=0$의 두 근을 $\\alpha, \\beta$라 할 때,\n$x^2$의 계수가 1이고 두 수 $\\dfrac{\\beta+2}{\\alpha}, \\dfrac{\\alpha+2}{\\beta}$를 두 근으로 하는 이차방정식을 $x^2+px+q=0$이라 할 때, $p+q$의 값은?\n(단, $p, q$는 실수이다.) [4.4점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "원래 두 근 합−6,곱1. 새 식은 x²−22x−7=0. 두 패널은 서로 다른 축척으로 근의 위치를 비교한다. 정답 p+q=−29. 변환한 두 근 합22,곱−7. 새 식은 x²−22x−7=0. 두 패널은 서로 다른 축척으로 근의 위치를 비교한다. 정답 p+q=−29.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "변환한 두 근 합22,곱−7. 새 식은 x²−22x−7=0. 두 패널은 서로 다른 축척으로 근의 위치를 비교한다. 정답 p+q=−29."
+  ]
+}

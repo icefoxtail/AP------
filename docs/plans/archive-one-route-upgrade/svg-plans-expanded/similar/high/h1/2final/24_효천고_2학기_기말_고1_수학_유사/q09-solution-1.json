@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "9"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "-3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "g",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "오른쪽부터5→f5=9→g9=−3→f⁻¹(−3)=−1이다. 마지막단계의대수후보3은x<1분기밖이라제외한다. 정답−1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 정의된 두 함수<br>$$f(x)=\\begin{cases}2x-1 & (x\\ge1)\\\\ -x^2+2x & (x<1)\\end{cases},\\quad g(x)=\\dfrac{1}{3}x-6$$<br>에서 $(f^{-1}\\circ g\\circ f)(5)$를 구하면? [3.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "오른쪽부터5→f5=9→g9=−3→f⁻¹(−3)=−1이다. 마지막단계의대수후보3은x<1분기밖이라제외한다. 정답−1.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽부터5→f5=9→g9=−3→f⁻¹(−3)=−1이다. 마지막단계의대수후보3은x<1분기밖이라제외한다. 정답−1."
+  ]
+}

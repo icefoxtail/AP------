@@ -1,0 +1,4 @@
+# 독립 검수: corrective-zero-coordinates
+18계획34점 최소 패치를 검수했다. 기준 커밋4414223205df4c92240f172c4a0c6afe3d6fa635의 각 경로 blob과 baseline bytes가 모두 일치한다. manifest에 선언된 before→after 점 교체만 적용하면 최종 JSON과 구조가 완전히 동일하므로 다른 필드 변경이 없다. 각 원래 curveX와 새 x의 정확 동일성 및 원함수에 대입한 y를 Sympy로 독립 확인했다. 16개 다항식 계획과 로그함수/지수로그쌍의 로그 가지까지 모두34점 통과.
+공식 frame_graph→graph→specFor 독립18/18 PASS. 동일 basename 덮어쓰기를 피하기 위해 경로 SHA256을 이름으로 사용한18개 고유 spec 파일을 따로 보존했다. 모든34점의 COORDINATE_LABEL.exact가 변경명세의 정확 x/y와 대수적으로 일치한다(엔진의 동치 표준형 변환 포함). 각 spec 전체 문자열에 sqrt(None),NaN,undefined가 없음을 확인했다. 따라서 기존 0*sqrt(None) 표시 오류를 정확 좌표의 명시 입력으로 교정하며 수학·도메인·다른 표시 사양은 불변이다.
+근거: independent-minimality.json(18파일/34점), independent-validation.json(공식18), independent-final-display-check.json(18고유spec/34좌표라벨). 새렌더 NOT_RUN, 원격·원문·엔진 변경 없음. 이 검수는 최소 교정과 최종 표시문자열 정상화의 저장 승인이며 전체 원본에 대한 재판정이나 실제 화면/게시 승인이 아니다.

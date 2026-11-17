@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      16
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "12",
+        "y": "4"
+      },
+      {
+        "id": "P2",
+        "x": "15",
+        "y": "5"
+      }
+    ],
+    "formula": "(1/3)*x+(0)"
+  },
+  "caption": "f(a)=5에서 a=15,f(12)=4에서 b=4. 표시된(15,5),(12,4)를 비교하여 a−b=11. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\dfrac{x}{3}$에 대하여 $f(a)=5$, $f(12)=b$일 때, $a-b$의 값을 구하면?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

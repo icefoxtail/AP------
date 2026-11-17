@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "보기2: a=3,b=1. 앞 두 선 교점은(−1,0).②는 둘째와 평행,③④는 공점(−1,0),①⑤만 삼각형을 만든다. 정답①,⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 직선 $2x+y+2=0$, $3x+y+3=0$, $ax+by-1=0$이 삼각형을 만드는 상수 $a$, $b$의 값을 보기에서 모두 고르면?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

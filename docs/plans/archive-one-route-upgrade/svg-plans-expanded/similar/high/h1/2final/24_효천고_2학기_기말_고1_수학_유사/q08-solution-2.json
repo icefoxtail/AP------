@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "4"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "axisTitles": {
+      "x": "k",
+      "y": "T"
+    }
+  },
+  "caption": "거리제곱을T=(l²−80)/(5/4)로정규화하면T=k²이다. 그림수식x는k,y는T. 최솟값T0을l²80으로복원하여거리4√5,정답4√5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\dfrac{8}{x}$의 그래프와 직선 $y=2x+k$가 만나는 두 점 사이의 거리를 $l(k)$라 할 때, $l(k)$의 최솟값은? (단, $k$는 실수이다.) [3.7점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "거리제곱을T=(l²−80)/(5/4)로정규화하면T=k²이다. 그림수식x는k,y는T. 최솟값T0을l²80으로복원하여거리4√5,정답4√5.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "거리제곱을T=(l²−80)/(5/4)로정규화하면T=k²이다. 그림수식x는k,y는T. 최솟값T0을l²80으로복원하여거리4√5,정답4√5."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "ENGINE_UPGRADE_REQUIREMENTS_v1",
+  "sourceCommit": "35f3023d736d4785de04846605ed5bbbb315425e",
+  "requirements": [
+    {
+      "question": 14,
+      "status": "ENGINE_UPGRADE_REQUIRED",
+      "executable": false,
+      "need": "절댓값 유리함수 |6/(x+2)−3|의 접힌 실제 두 가지와 수평선/기울기직선의 교점",
+      "preservedExecutableHelp": "signed 유리함수±t 분기 및 정확한 u 치환곡선의 경계 확대",
+      "limits": "absolute-value는현재일차내부식,원래유리함수절댓값은허용실행spec에넣지않음",
+      "exactFacts": [
+        "x−2제외",
+        "t0/3만한교점",
+        "t<0무교점",
+        "t2의x−4/5와4",
+        "a1/25/24만두교점"
+      ],
+      "actualRender": "NOT_RUN"
+    },
+    {
+      "question": 17,
+      "status": "ENGINE_UPGRADE_REQUIRED",
+      "executable": false,
+      "need": "합성 절댓값이차의 중첩근 교점 좌표를 수평선과 실제곡선 위에 정확표시",
+      "exactRoots": [
+        "2±sqrt(8−2sqrt(2))",
+        "2±sqrt(2sqrt(2))",
+        "2±sqrt(8+2sqrt(2))",
+        "2±sqrt(8+2sqrt(6))"
+      ],
+      "preservedExecutableHelp": "세 정확한 높이2−√2,2+√2,2+√6 및 전체 절댓값곡선,봉우리2,교점개수4/2/2",
+      "limits": "현재 p+q√r 단일이차체 교점표시 계약을 넘어선 중첩근을 소수로위장하지않음",
+      "actualRender": "NOT_RUN"
+    }
+  ]
+}

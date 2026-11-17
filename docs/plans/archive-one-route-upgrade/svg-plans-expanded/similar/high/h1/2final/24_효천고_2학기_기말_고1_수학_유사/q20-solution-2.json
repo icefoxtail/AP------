@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "-2"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "g⁻¹",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "원래합성으로4→−2→2를확인한다. 따라서(f∘g⁻¹)⁻¹(2)=4. 정답4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2]<br>두 함수 $f(x) = \\dfrac{6}{x+4} - 1$, $g(x) = \\sqrt{10-3x}$에 대하여 $(f \\circ g^{-1})^{-1}(2)$의 값을 구하고 그 과정을 서술하시오. [6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원래합성으로4→−2→2를확인한다. 따라서(f∘g⁻¹)⁻¹(2)=4. 정답4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원래합성으로4→−2→2를확인한다. 따라서(f∘g⁻¹)⁻¹(2)=4. 정답4."
+  ]
+}

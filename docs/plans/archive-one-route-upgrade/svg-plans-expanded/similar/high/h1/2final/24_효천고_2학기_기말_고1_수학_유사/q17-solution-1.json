@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(x^2-4*x)/2",
+    "domain": [
+      -2,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "EL",
+        "x": "-2",
+        "y": "6"
+      },
+      {
+        "id": "ER",
+        "x": "6",
+        "y": "6"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "2-sqrt(2)",
+          "label": "y=2-sqrt(2)",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "f(a)=t의 t=2-sqrt(2) 경우를비교한다. 중앙봉우리높이2보다작은양수면네점,큰값이면바깥두점이다. 세높이의중복없는개수4+2+2=8. 중첩근의정확교점좌표표시는별도요구로남기되곧바로지원되지않는좌표를근삿값으로꾸미지않는다. 정답8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x) = \\dfrac{1}{2}|x^2 - 4x|$에 대하여 $(f \\circ f)(a) = 1$을 만족하는 실수 $a$의 개수는? [4.7점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "f(a)=t의 t=2-sqrt(2) 경우를비교한다. 중앙봉우리높이2보다작은양수면네점,큰값이면바깥두점이다. 세높이의중복없는개수4+2+2=8. 중첩근의정확교점좌표표시는별도요구로남기되곧바로지원되지않는좌표를근삿값으로꾸미지않는다. 정답8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "f(a)=t의 t=2-sqrt(2) 경우를비교한다. 중앙봉우리높이2보다작은양수면네점,큰값이면바깥두점이다. 세높이의중복없는개수4+2+2=8. 중첩근의정확교점좌표표시는별도요구로남기되곧바로지원되지않는좌표를근삿값으로꾸미지않는다. 정답8."
+  ]
+}

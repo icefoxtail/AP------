@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-10/3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": {
+          "range": [
+            "-4",
+            "2"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "두근호조건3x+10≥0,1−x≥0을교집합으로계산한다. 두경계모두포함하고정수−3,−2,−1,0,1을센다. 정답5개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sqrt{3x+10}+\\sqrt{1-x}$의 값이 실수가 되도록 하는 정수 $x$의 개수는? [3.4점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "두근호조건3x+10≥0,1−x≥0을교집합으로계산한다. 두경계모두포함하고정수−3,−2,−1,0,1을센다. 정답5개.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "두근호조건3x+10≥0,1−x≥0을교집합으로계산한다. 두경계모두포함하고정수−3,−2,−1,0,1을센다. 정답5개."
+  ]
+}
