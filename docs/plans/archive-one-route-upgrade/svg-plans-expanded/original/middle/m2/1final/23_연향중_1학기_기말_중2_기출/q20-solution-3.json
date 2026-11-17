@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "셋째선은둘째선과평행하고절편은다르다. 세경우a−2,−1,1의합−2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1]\n세 일차방정식 $x+y+2=0$, $x-y=0$, $ax-y-3=0$의 그래프가 삼각형을 이루지 않도록 하는 수 $a$의 값들의 합을 구하시오. [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "셋째선은둘째선과평행하고절편은다르다. 세경우a−2,−1,1의합−2.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "셋째선은둘째선과평행하고절편은다르다. 세경우a−2,−1,1의합−2."
+  ]
+}

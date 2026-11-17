@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "42",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "21",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T",
+    "A",
+    "P",
+    "H",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "TA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "TE",
+      "refs": [
+        "T",
+        "E"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "TP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "PE",
+      "refs": [
+        "P",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "T/A는나무밑/끝,P/H는사람발/머리,E는같은그림자끝. 전체밑변8.4+2.1=10.5,작은밑변2.1이라닮음비5:1. 나무높이1.5×5=7.5m.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서답형 2] 키가 $1.5\\text{ m}$인 재민이는 나무로부터 $8.4\\text{ m}$ 떨어진 곳에 있으며 재민이 그림자의 길이는 $2.1\\text{ m}$이다. 재민이의 그림자의 끝이 나무의 그림자의 끝과 일치할 때, 나무의 높이를 구하시오. [3점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/s02_question-v2.svg\" alt=\"키 1.5m인 사람이 나무로부터 8.4m 떨어져 있고 그림자 길이가 2.1m로 나무 그림자 끝과 일치하는 닮음 활용 그림\" /></p>",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vTP",
+        "ownerSegment": "TP",
+        "text": "8.4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vPE",
+        "ownerSegment": "PE",
+        "text": "2.1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vPH",
+        "ownerSegment": "PH",
+        "text": "1.5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vTA",
+        "ownerSegment": "TA",
+        "text": "7.5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "t",
+      "refs": [
+        "A",
+        "T",
+        "E"
+      ]
+    },
+    {
+      "id": "p",
+      "refs": [
+        "H",
+        "P",
+        "E"
+      ]
+    }
+  ]
+}

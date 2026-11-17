@@ -1,0 +1,144 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "두끼인변3/4와6/8의비1:2,끼인각40°가같아SAS닮음이다. 이 패널은 (1)(2)의 실제40°도형만 나타낸다. (3)의 CA2 추가가정은 이 도형의 실제길이와 같다고 표시하지 않고 별도 비례패널에서 조건부로 다룬다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서답형 1] 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, 다음 물음에 답하시오. (6점, 부분 점수 있음.)</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/s01.png\" alt=\"두 닮은 삼각형 ABC와 DEF에서 삼각형 ABC는 BC=4cm, BA=3cm, 각 B=40도이고 삼각형 DEF는 ED=6cm, EF=8cm, 각 E=40도가 표시된 그림\" /></p><p>(1) 이때 사용한 닮음 조건을 쓰시오.</p><p>(2) 닮음비를 구하시오.</p><p>(3) $\\overline{\\mathrm{CA}}$의 길이가 $2\\text{cm}$라 할 때, $\\overline{\\mathrm{FD}}$의 길이를 구하시오.</p>",
+      "mappedTo": "archive question"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "DE",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "EF",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "D",
+          "E",
+          "F"
+        ],
+        "value": 40,
+        "label": "40°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

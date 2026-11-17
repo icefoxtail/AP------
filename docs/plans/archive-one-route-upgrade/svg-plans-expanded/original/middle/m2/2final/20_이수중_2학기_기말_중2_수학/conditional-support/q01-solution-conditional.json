@@ -1,0 +1,71 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "S",
+        "name": "AB BC CD",
+        "elements": [
+          "12",
+          "15",
+          "6"
+        ]
+      },
+      {
+        "id": "L",
+        "name": "EF FG GH",
+        "elements": [
+          "8",
+          "10",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "원문의형식적닮음조건을전제로한보조표이다. BC15:FG10=3:2라 EF8,GH4. 각합으로D=360−80−75−85=120°,대응각H120°이어서형식적선택은④. 이표는길이와각이동시에성립하는사각형을재현한것이아니다. 원문수치확인전게시차단.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>1. 다음 그림에서 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$일 때, 다음 중 옳은 것은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q01.png\" alt=\"두 닮은 사각형 ABCD와 EFGH에서 사각형 ABCD는 AB=12cm, BC=15cm, CD=6cm, 각 A=80도, 각 B=75도, 각 C=85도이고 사각형 EFGH는 GF=10cm가 표시된 그림\" /></p>",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "conditional",
+      "condition": "Formal source-value calculation only; exact polygon inconsistency unresolved; publication blocked.",
+      "mappedTo": "diagram"
+    }
+  ]
+}

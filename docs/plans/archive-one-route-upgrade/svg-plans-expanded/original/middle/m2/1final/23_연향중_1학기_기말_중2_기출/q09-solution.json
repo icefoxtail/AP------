@@ -1,0 +1,111 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-17"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-17"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayLines": [
+    "v"
+  ],
+  "displaySegments": [],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "두 점의 x좌표가 같아 5a+3=2a−9, a=−4. 실제 A(−17,4), B(−17,2)를 지나는 수직선의 방정식은 x=−17, 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(5a+3,-a)$, $(2a-9,2)$를 지나고 $y$축에 평행한 직선의 방정식을 구하면? [4점]",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "두 점의 x좌표가 같아 5a+3=2a−9, a=−4. 실제 A(−17,4), B(−17,2)를 지나는 수직선의 방정식은 x=−17, 정답①.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점의 x좌표가 같아 5a+3=2a−9, a=−4. 실제 A(−17,4), B(−17,2)를 지나는 수직선의 방정식은 x=−17, 정답①."
+  ]
+}

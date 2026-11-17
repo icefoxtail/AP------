@@ -1,0 +1,51 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "p",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4.0,
+            0
+          ],
+          [
+            0,
+            6.0
+          ]
+        ]
+      },
+      "height": 8.0,
+      "names": "DEFABC"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "p",
+      "edge": "AB"
+    },
+    {
+      "solid": "p",
+      "edge": "AC"
+    },
+    {
+      "solid": "p",
+      "edge": "AD"
+    }
+  ],
+  "caption": "닮은삼각기둥의대응길이비2:3. 작은AC6/AB4/높이8,큰A′C′9/A′B′6/높이12이므로x8+y6=14. 이 패널은 작은기둥이고 윗면직각은 비례를보이는대표형이지 원문추가조건이아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>4. 다음 그림에서 두 삼각기둥은 서로 닮은 도형이다. $\\overline{\\mathrm{AB}}$에 대응하는 변이 $\\overline{\\mathrm{A'B'}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_이수중_2학기_기말_중2_수학/q04.png\" alt=\"두 닮은 삼각기둥에서 첫 번째 기둥은 윗면의 AC=6cm, AB=4cm, 높이=x이고, 두 번째 기둥은 A 프라임 C 프라임=9cm, A 프라임 B 프라임=y, 높이=12cm가 표시된 그림\" /></p>",
+      "mappedTo": "solids"
+    }
+  ]
+}

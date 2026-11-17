@@ -1,0 +1,118 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-2"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "3"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-1",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "-1",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "base",
+          "from": "P0",
+          "to": "P1",
+          "length": true
+        },
+        {
+          "id": "height",
+          "from": "P2",
+          "to": "P3",
+          "length": true,
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "세교점(−3,−1),(2,−1),(−1,5). 밑변5,높이6으로넓이15.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2]\n세 일차방정식 $2x+y-3=0$, $y+1=0$, $3x-y+8=0$의 그래프가 삼각형을 이룬다고 한다. 세 직선으로 둘러싸인 삼각형의 넓이를 구하시오. [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "세교점(−3,−1),(2,−1),(−1,5). 밑변5,높이6으로넓이15.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "세교점(−3,−1),(2,−1),(−1,5). 밑변5,높이6으로넓이15."
+  ]
+}
