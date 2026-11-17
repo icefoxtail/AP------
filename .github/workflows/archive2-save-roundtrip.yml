@@ -56,8 +56,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # The check reads the checkout only (exam sources, images, catalog); it needs no history.
-          fetch-depth: 1
+          # Full history, like the other Archive2 jobs: the package builder verifies source-quality holds against pinned commits
+          # (a shallow checkout fails with ORIGINAL_SOURCE_ERROR_HOLD:IMMUTABLE_GIT_INPUT_UNAVAILABLE).
+          fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
