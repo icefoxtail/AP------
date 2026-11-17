@@ -517,7 +517,7 @@ window.questionBank = [
       "부분분수"
     ],
     "wide": false,
-    "content": "집합 $A=\\{x\\mid x^2+1<a<x^2+2x+2,\\ x\\text{는 자연수}\\}$가 공집합이 되도록 하는 자연수 $a$를 작은 수부터 나열할 때, $n$번째 수를 $a_n$이라 하자. 예를 들어 $a_1=5$이다. $\\displaystyle\\sum_{n=1}^{\\infty}\\frac2{a_n-2}$의 값은? [4.9점]",
+    "content": "집합 $A=\\{x\\mid x^2+1<a<x^2+2x+2,\\ x\\text{는 자연수}\\}$가 공집합이 되도록 하는 3 이상의 자연수 $a$를 작은 수부터 나열할 때, $n$번째 수를 $a_n$이라 하자. 예를 들어 $a_1=5$이다. $\\displaystyle\\sum_{n=1}^{\\infty}\\frac2{a_n-2}$의 값은? [4.9점]",
     "choices": [
       "1",
       "$\\frac32$",

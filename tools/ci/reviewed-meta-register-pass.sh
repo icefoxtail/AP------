@@ -37,6 +37,7 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
   has_difficulty5=false
   has_basic_rebind=false
   has_binding_course_correction=false
+  has_direct_judgment=false
   for request in "${reqs[@]}"; do
     schema="$(node -e 'try { console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion || "") } catch {}' "$request")"
     if [[ "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
@@ -51,11 +52,19 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
     if [[ "$schema" == "archive-binding-course-correction-request-v1" || "$schema" == "archive-binding-course-correction-request-v2" ]]; then
       has_binding_course_correction=true
     fi
+    # Type-only direct judgments are v2 requests; the approval type tells them apart (their registrar lane has its own tests).
+    approval="$(node -e 'try { console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).approval?.type || "") } catch {}' "$request")"
+    if [[ "$approval" == "DIRECT_JUDGMENT" ]]; then
+      has_direct_judgment=true
+    fi
   done
   node --test tests/archive-reviewed-exam-registration-v2.test.mjs
   node --test tests/archive-reviewed-projection-phase.test.mjs
   if [[ "$has_binding_course_correction" == "true" ]]; then
     node --test tests/archive-binding-course-correction.test.mjs
+  fi
+  if [[ "$has_direct_judgment" == "true" ]]; then
+    node --test tests/archive-type-judgment-registration.test.mjs
   fi
   if [[ "$has_basic_rebind" == "true" ]]; then
     node --test tests/archive-basic-scope-rebind.test.mjs

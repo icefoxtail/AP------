@@ -1,0 +1,514 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T23:51:49+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "원탁에 앉는 사람이 1명일 때 원순열 공식 (1-1)!로 경우의 수를 계산하여 제시된 6과 비교한다.",
+                      "decisiveStep":  "0!=1이므로 한 사람의 배치는 하나이고 경우의 수가 6이라는 명제는 거짓이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "서로 다른 가방 3개에 같은 책 5권을 넣는 방법을 세 가방의 음이 아닌 책 권수의 합으로 나타낸다.",
+                      "decisiveStep":  "가방별 권수가 합 5인 해는 중복조합 3H5=7C5이므로 순서를 세는 3Π5와 다르다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "standardUnitKey":  "H22-PS-01",
+                      "subUnitKey":  "H22-PS-01-CORE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "(a+b)^n의 각 인수에서 b를 고를 r개의 위치를 정하여 a^(n-r)b^r의 계수를 확인한다.",
+                      "decisiveStep":  "b가 나오는 위치의 선택은 nCr가지이고 나머지는 모두 a이므로 제시된 계수식은 참이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "전개식의 항"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_GENERAL_TERM"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "주사위 한 개의 표본공간 {1,2,3,4,5,6}에서 7보다 큰 눈에 해당하는 사건을 찾는다.",
+                      "decisiveStep":  "7보다 큰 눈은 하나도 없어 사건이 공집합이며 그 확률은 0이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "표본공간과 사건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DICE_EXPERIMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "배반사건 A와 B의 조건 P(A∩B)=0과 P(A)+P(B)=1이라는 여사건 조건을 구별한다.",
+                      "decisiveStep":  "주사위의 사건 A={1}, B={2}는 배반이지만 P(A)+P(B)=1/3이므로 주어진 등식은 항상 성립하지 않는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "배반사건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "가족 4명이 각자 영화 A, B, C 중 하나를 고르는 선택을 독립적인 네 자리의 중복순열로 센다.",
+                      "decisiveStep":  "각 가족에게 선택지가 3개씩 있어 전체는 3⁴=81가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "문자 s,p,e,e,r의 다섯 자리 배열에서 같은 e 두 개를 서로 바꾼 중복을 제거한다.",
+                      "decisiveStep":  "서로 다른 문자로 센 5!을 e 두 개의 2!로 나누면 60이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "서로 다른 동전 3개의 앞뒤 결과 2³개 중 앞면 세 개와 뒷면 세 개를 센다.",
+                      "decisiveStep":  "모두 같은 면인 결과는 두 개이므로 확률은 2/8=1/4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COIN_TOSS_EXPERIMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "A∪B를 서로 배반인 A와 B에서 A를 뺀 사건으로 나누어 확률을 더한다.",
+                      "decisiveStep":  "P(B에서 A를 뺀 사건)=2/3-1/6=1/2이므로 합집합의 확률은 1/4+1/2=3/4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "배반사건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "정육각형의 여섯 변에 2·1·2·1·2·1명씩 놓인 아홉 자리를 보존하는 회전의 수로 9!을 나눈다.",
+                      "decisiveStep":  "120°씩의 회전 세 개가 같은 배치를 만들므로 9!/3=24×7!에서 k=24이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_POLYGON_TABLE_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "오른쪽·왼쪽·위·아래 이동 횟수를 R,L,U,D로 놓고 R-L=3, U-D=2와 총 7회를 연립한다.",
+                      "decisiveStep":  "L+D=1이므로 횟수는 (4,1,2,0) 또는 (3,0,3,1)이고 배열 수의 합은 105+140=245이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "짝수 자연수 x,y,z를 2a,2b,2c로 놓아 x+y+z=18을 양의 정수 해 a+b+c=9로 바꾼다.",
+                      "decisiveStep":  "a,b,c에서 각각 1을 빼면 합 6인 음이 아닌 세 정수의 해이므로 8C2=28개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "standardUnitKey":  "H22-PS-01",
+                      "subUnitKey":  "H22-PS-01-CORE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "(1+x)^6에서 x^(6-2r), (1+x²)^4에서 x^(2r)를 택하는 경우를 r=0,1,2,3으로 나누어 더한다.",
+                      "decisiveStep":  "계수는 6C6×4C0+6C4×4C1+6C2×4C2+6C0×4C3=155이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_TERM_COEFFICIENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "양궁 500회의 도수표에서 8점 167회와 9점 133회를 합쳐 상대도수로 확률을 구한다.",
+                      "decisiveStep":  "두 점수의 총횟수가 300회이므로 확률은 300/500=3/5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "표본공간과 공집합의 확률, 합집합의 확률 범위, 확률의 대소와 집합 포함관계에 대한 세 명제를 각각 판단한다.",
+                      "decisiveStep":  "P(S)=1과 P(∅)=0으로 첫째·둘째 명제는 참이며 같은 확률의 서로 다른 한 원소 사건으로 셋째 명제는 반박된다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "표본공간과 사건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_AXIOMS"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "남자인 사건과 짜장면을 주문한 사건을 합집합과 겹치지 않는 부분으로 나누어 교집합 확률을 계산한다.",
+                      "decisiveStep":  "짜장면을 시킨 남자의 비율은 2/3+3/5-4/5=7/15이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "배반사건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "7명이 줄 설 때 양끝이 모두 남학생인 사건을 구한 뒤 여사건으로 적어도 한 여학생이 양끝에 설 확률을 구한다.",
+                      "decisiveStep":  "양끝이 남학생일 확률은 (4/7)(3/6)=2/7이므로 구하는 확률은 5/7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "여사건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMPLEMENT_EVENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "깃발을 네 번 드는 신호에서 빨간색의 횟수를 0·1·2회로 나누고 빨간색끼리 이웃하지 않는 위치를 정한다.",
+                      "decisiveStep":  "빨간색 위치별 수는 3⁴, 4×3³, 3×3²이므로 합은 216이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NO_ADJACENT_SELECTED_SYMBOLS"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "B의 크기를 2,4,6,8,10으로 나누고 각 경우 10Ck로 B를 택한 뒤 그 안의 A를 2^k가지로 고른다.",
+                      "decisiveStep":  "짝수 k의 합 Σ10Ck·2^k=(3^10+1)/2에서 공집합 B에 해당하는 1을 빼면 29524이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항계수",
+                                      "l4":  "이항계수의 성질"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NONEMPTY_SELECTION"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "picture의 자음 네 개를 먼저 배열한 뒤 다섯 틈에서 세 곳을 골라 모음 i,u,e를 배치한다.",
+                      "decisiveStep":  "유리한 배열은 4!×5C3×3!이므로 전체 7!로 나누면 확률은 2/7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NON_CONSECUTIVE_SELECTION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NO_ADJACENT_SELECTED_SYMBOLS"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "옷 10벌에서 3벌을 고를 때 바지가 없거나 청색이 없는 두 사건의 합을 여사건으로 계산한다.",
+                      "decisiveStep":  "유리한 선택 수는 10C3-5C3-6C3+3C3=91이므로 확률은 91/120이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "여사건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "8명의 원탁 배치에서 할머니를 고정하고 마주 보는 할아버지의 자리 또는 양옆 부모의 자리를 먼저 정한다.",
+                      "decisiveStep":  "할아버지가 맞은편이면 나머지는 6!가지이고 부모가 양옆이면 두 자리의 순서 2!와 남은 다섯 자리 5!을 곱한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "비감소 조건과 f(3)f(4)=16으로 (f(3),f(4))를 (1,16),(2,8),(4,4)로 나누고 앞뒤 두 함숫값을 중복조합으로 센다.",
+                      "decisiveStep":  "세 경우에서 앞뒤 선택 수의 곱은 1×1, 3×3, 6×6이므로 함수는 총 46개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_MONOTONIC_ORDER"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "standardUnitKey":  "H22-PS-01",
+                      "subUnitKey":  "H22-PS-01-CORE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "15x²-8nx+n²를 (3x-n)(5x-n)으로 인수분해하고 1부터 30까지 n 중 정수근을 주는 수를 센다.",
+                      "decisiveStep":  "n/3 또는 n/5가 정수이려면 n이 3 또는 5의 배수여야 하므로 확률은 (10+6-2)/30=7/15이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "ordinal":  25,
+                      "questionUid":  "",
+                      "primaryMethod":  "카드를 3장 이상 뽑는 사건의 여사건을 첫 장이 7인 경우와 서로 다른 두 장의 합이 7 또는 14인 경우로 나눈다.",
+                      "decisiveStep":  "첫 장에서 멈출 확률은 1/10, 두 장에서 멈출 확률은 12/90이므로 구하는 확률은 1-1/10-12/90=23/30이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "여사건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMPLEMENT_EVENT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_DIVISIBILITY"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  }
+              ]
+}

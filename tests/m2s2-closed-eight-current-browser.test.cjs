@@ -121,6 +121,7 @@ for (const [name, mutate] of [
   ['another selected asset', m=>{m.items[0].assetPath='archive/assets/images/other.svg';}],
   ['a changed asset digest', m=>{m.items[0].assetSha256='0'.repeat(64);}],
   ['the historical E017 bank', m=>{m.sourceBindings[1].gitBlobSha1='f417b7e4e993ceb1a70c1b85de1e292a52d2b551';}],
+  ['the superseded 2b9 bank after the current source refresh', m=>{m.sourceBindings[1].gitBlobSha1='2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb';}],
   ['a changed current source raw hash', m=>{m.sourceBindings[1].sha256='0'.repeat(64);}],
   ['a changed source byte count', m=>{m.sourceBindings[1].bytes++;}],
   ['duplicate source bindings', m=>{m.sourceBindings[1]=clone(m.sourceBindings[0]);}],

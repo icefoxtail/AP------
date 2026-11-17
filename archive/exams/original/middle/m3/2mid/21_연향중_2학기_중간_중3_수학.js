@@ -345,8 +345,8 @@ window.examData = {
         "$65^\\circ$",
         "$70^\\circ$"
       ],
-      "answer": "④",
-      "solution": "$OE=OF$이므로 중심에서 같은 거리에 있는 두 현은 길이가 같아 $\\overline{BC}=\\overline{AC}$이다. 따라서 두 현이 만드는 중심각도 같으므로 $\\angle AOC=\\angle BOC=115^\\circ$이다. 원의 중심각의 합은 $360^\\circ$이므로 $\\angle AOB=360^\\circ-115^\\circ-115^\\circ=130^\\circ$이다. $\\angle ACB$는 호 $AB$에 대한 원주각이므로 $x=\\dfrac{130^\\circ}{2}=65^\\circ$이다. 정답은 ④이다.",
+      "answer": "②",
+      "solution": "$OE=OF$이므로 중심에서 같은 거리에 있는 두 현은 길이가 같아 $\\overline{BC}=\\overline{AC}$이다. 그림에서 $115^\\circ$는 $\\angle DOE$이다. 사각형 $BDOE$에서 $\\angle BDO=\\angle BEO=90^\\circ$이므로 $\\angle B=360^\\circ-90^\\circ-90^\\circ-115^\\circ=65^\\circ$이다. $\\overline{BC}=\\overline{AC}$이므로 $\\angle A=\\angle B=65^\\circ$이고, 삼각형 $ABC$의 내각의 합에서 $x=\\angle C=180^\\circ-65^\\circ-65^\\circ=50^\\circ$이다. 정답은 ②이다.",
       "level": "중",
       "category": "원의 성질",
       "originalCategory": null,
@@ -371,11 +371,6 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "content": "오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 내접하고, 세 점 $\\mathrm{D, E, F}$는 원 $\\mathrm{O}$의 중심에서 $\\triangle\\mathrm{ABC}$의 각 변에 내린 수선의 발이다. $\\overline{\\mathrm{OE}}=\\overline{\\mathrm{OF}}$일 때, $\\angle x$의 크기는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q08.png\" />",
-      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q8-solution.svg",
-      "solutionImageAlt": "해설 그림: 원의 중심 O에서 두 현에 수선을 내려 각각 E와 F에 닿는다. 두 수선의 길이는 같고 중심각 BOC는 115도이며 꼭짓점 C에 원주각 x가 표시된다.",
-      "solutionImageCaption": "OE=OF이므로 AC=BC이고 ∠AOC=∠BOC=115°이다. 따라서 ∠AOB=130°이고 x=65°이다. 정답은 ④이다.",
-      "solutionImageSize": "full"
-    ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],

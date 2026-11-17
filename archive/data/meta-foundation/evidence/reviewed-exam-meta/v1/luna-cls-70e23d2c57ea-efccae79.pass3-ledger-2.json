@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T12:45:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “다음 설명 중 옳은 것은?”에서 음수 -7의 다섯제곱근도 실수로 존재하며 (-√[5]7)^5=-7임을 확인한다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "rpmPath": {
+        "l4": "호도법"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “반지름의 길이가 5 이고 중심각의 크기가 $\\theta$인 부채꼴이 있다. $\\theta$가 다음 <조건>을 만족시킬 때, 이 부채꼴의 호의 길이의 최댓값은?\n\n<조건>\n(가) $0 < \\theta < \\pi$\n(나) 좌표평면에서 각 $\\theta$를 나타내는 동경과 $4\\theta$를 나타내는 동경이 $y$축에 대하여 대칭이다.”에서 4θ와 θ가 y축 대칭이므로 5θ가 180도에 360도의 배수를 더한 각이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "rpmPath": {
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “두 실수 $a, b$에 대하여 $a^2 < a < b$ 일 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n\n<보기>\nㄱ. $a^a > a^b$\nㄴ. $\\log_a b > 1$\nㄷ. $\\log_{b+1} a \\times \\log_{b+1} (a+1) < 0$”에서 밑 a가 1보다 작아 log_a b<log_a a=1이므로 ㄴ은 거짓이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “실수 $x$에 대하여 방정식 $k \\times 2^x = 4^x + 2^x + 4$가 서로 다른 두 개의 실근을 갖도록 하는 정수 $k$중 절댓값이 10보다 작은 것의 개수는?”에서 k>1과 (1-k)²>16을 함께 써 k>5를 얻는다."
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ],
+      "rpmPath": {
+        "l3": "지수법칙",
+        "l4": "조건식"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “2보다 큰 두 자연수 $a, b$에 대하여 두 양수 $x, y$가 다음 <조건>을 만족시킬 때, $a, b$의 순서쌍 $(a, b)$의 개수는?\n\n<조건>\n(가) $\\sqrt[a]{x} = \\sqrt[b]{y^2} = 216$\n(나) $\\sqrt[3]{xy} = 2^{20} \\times 3^{20}$”에서 a=3부터 18까지 각 값에 b=40-2a가 하나씩 대응해 16쌍이다."
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "rpmPath": {
+        "l3": "지수의 확장",
+        "l4": "실수 지수"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “[서답형3(단답형3)]\n27이하의 양수 $a$에 대하여 $a^{\\log_3 4}$의 값이 2의 거듭제곱이 되도록 하는 모든 $a$의 값의 곱을 구하시오.”에서 3^(n/2)≤3³에서 n=1부터 6까지를 얻어 곱을 3^(21/2)로 계산한다."
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “[서답형6(서술형3)]\n$x$에 대한 부등식\n$$(\\log_2 x)^2 - (\\log_2 n + 2)\\log_2 x + 3(\\log_2 n - 1) < 0$$\n을 만족시키는 정수 $x$의 개수가 2가 되도록 하는 모든 자연수 $n$의 값의 합을 구하는 과정을 서술하시오.”에서 각 구간에서 정수 개수가 2가 되는 n은 10,11,21,22여서 합은 64이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l4": "호도법"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “다음 <보기>에서 옳은 것만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $\\frac{4}{3}\\pi = 240^\\circ$\nㄴ. 시초선 $\\mathrm{OX}$를 고정된 것으로 생각할 때, 동경 $\\mathrm{OP}$의 위치가 정해지면 $\\angle \\mathrm{XOP}$의 크기는 유일하게 결정된다.\nㄷ. $\\theta = 360^\\circ \\times n + 120^\\circ$ ($n$은 정수) 는 제2사분면의 각이다.”에서 동경 위치가 같아도 한 바퀴씩 더한 각은 크기가 달라 ㄴ이 거짓이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$\\log_{(x+1)} (42-x-x^2)$이 정의되도록 하는 정수 $x$의 개수는?”에서 밑 조건 x>-1, x≠0과 진수 조건 -7<x<6의 교집합을 취한다."
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "midUnit": "지수",
+        "l3": "지수법칙",
+        "l4": "조건식"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “세 양수 $a, b, c$가 $a^x = b^{2y} = c^{3z} = 7$, $abc = 49$를 만족할 때 $\\frac{6}{x} + \\frac{3}{y} + \\frac{2}{z}$의 값은?”에서 abc=49=7²에서 1/x+1/(2y)+1/(3z)=2를 얻고 6배한다."
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$x = \\log_2 6 + \\log_4 9$일 때, $2^x$의 값은?”에서 밑변환으로 log_4 9=log_2 3임을 확인한다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ],
+      "rpmPath": {
+        "l3": "거듭제곱근",
+        "l4": "n제곱근"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “2 이상의 두 자연수 $m$, $n$에 대하여 등식\n$$\\sqrt[m]{4}\\times\\sqrt[n]{2}=\\sqrt{2}$$\n가 성립할 때, $m-n$의 최솟값은?”에서 약수쌍 네 경우에서 m-n을 계산해 최솟값 -5를 고른다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    }
+  ]
+}

@@ -607,7 +607,7 @@ window.questionBank = [
       "작도",
       "크기가 같은 각"
     ],
-    "content": "다음 그림은 $\\angle XOY$와 크기가 같고 반직선 $AB$를 한 변으로 하는 각을 작도하는 과정을 나타낸 것이다. 보기에서 옳은 것만을 있는 대로 고른 것은? [4점]<div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $\\overline{OP} = \\overline{OQ}$<br>ㄴ. $\\overline{PQ} = \\overline{CD}$<br>ㄷ. $\\overline{AC} = \\overline{CD}$<br>ㄹ. $\\angle XOY = \\angle CAB$</div>",
+    "content": "다음 그림은 $\\angle XOY$와 크기가 같고 반직선 $AB$를 한 변으로 하는 각을 작도하는 과정을 나타낸 것이다. 보기에서 옳은 것만을 있는 대로 고른 것은? [4점]<div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $\\overline{OP} = \\overline{OQ}$<br>ㄴ. $\\overline{PQ} = \\overline{CD}$<br>ㄷ. $\\overline{AC} = \\overline{CD}$<br>ㄹ. $\\angle XOY = \\angle CAD$</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄴ, ㄹ",
@@ -619,7 +619,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
     "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
-    "solution": "[키포인트] 크기가 같은 각을 작도할 때는 같은 반지름의 호를 그리고, 두 교점 사이의 거리를 컴퍼스로 측정하여 그대로 옮긴다.\n작도 과정의 성질을 확인한다.\nㄱ. 점 $O$를 중심으로 반지름의 길이가 같은 원을 그렸으므로 $\\overline{OP} = \\overline{OQ}$이다. (참)\nㄴ. 점 $P$에서 $Q$까지의 컴퍼스 길이를 그대로 점 $C$에서 $D$로 옮겼으므로 $\\overline{PQ} = \\overline{CD}$이다. (참)\nㄷ. $\\overline{AC}$는 호의 반지름이고 $\\overline{CD}$는 각의 크기에 의해 정해지는 현의 길이이므로 두 길이가 항상 같다고 할 수 없다. (거짓)\nㄹ. 원래의 각 $\\angle XOY$와 작도된 각 $\\angle CAB$는 크기가 같다. (참)\n따라서 옳은 것은 ㄱ, ㄴ, ㄹ이므로 정답은 ②이다.",
+    "solution": "[키포인트] 크기가 같은 각을 작도할 때는 같은 반지름의 호를 그리고, 두 교점 사이의 거리를 컴퍼스로 측정하여 그대로 옮긴다.\n작도 과정의 성질을 확인한다.\nㄱ. 점 $O$를 중심으로 반지름의 길이가 같은 원을 그렸으므로 $\\overline{OP} = \\overline{OQ}$이다. (참)\nㄴ. 점 $P$에서 $Q$까지의 컴퍼스 길이를 그대로 점 $C$에서 $D$로 옮겼으므로 $\\overline{PQ} = \\overline{CD}$이다. (참)\nㄷ. $\\overline{AC}$는 호의 반지름이고 $\\overline{CD}$는 각의 크기에 의해 정해지는 현의 길이이므로 두 길이가 항상 같다고 할 수 없다. (거짓)\nㄹ. 원래의 각 $\\angle XOY$와 작도된 각 $\\angle CAD$는 크기가 같다. (참)\n따라서 옳은 것은 ㄱ, ㄴ, ㄹ이므로 정답은 ②이다.",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q17-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q17-solution.plan.json",

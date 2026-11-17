@@ -33,7 +33,7 @@ window.questionBank = [
       "$3 \\div x \\div 2 \\times y = \\dfrac{3y}{2x}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① $\\dfrac{1}{a}$ ② $0.1a$ ③ $\\dfrac{x}{yz}$ ④ $-a$\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] ① $\\dfrac{1}{a}$ ② $0.1a$ ③ $\\dfrac{xz}{y}$ (보기의 $\\dfrac{x}{yz}$는 옳지 않다) ④ $-a$\n따라서 정답은 ⑤이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -1774,7 +1774,7 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "content": "작년 우리 학교 입학생 수는 $a$명이었고, 작년 남자 입학생 수는 $x$명이었다. 올해는 남학생은 작년보다 6% 증가하고 여학생은 4% 감소하였다고 할 때, 올해 전체 학생 수를 $a$와 $x$를 사용한 식으로 나타내어라.",
+    "content": "작년 우리 학교 입학생 수는 $a$명이었고, 작년 남자 입학생 수는 $x$명이었다. 올해는 남학생은 작년보다 6% 증가하고 여학생은 4% 감소하였다고 할 때, 올해 입학생 수를 $a$와 $x$를 사용한 식으로 나타내어라.",
     "choices": [],
     "answer": "$\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명",
     "solution": "[키포인트] - 올해 남학생 수: $\\dfrac{106}{100}x$\n- 올해 여학생 수: $\\dfrac{96}{100}(a-x)$\n- 올해 전체: $\\dfrac{106}{100}x + \\dfrac{96}{100}(a-x) = \\dfrac{10}{100}x + \\dfrac{96}{100}a = \\dfrac{1}{10}x + \\dfrac{24}{25}a$\n따라서 구하는 값은 $\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명이다.",
