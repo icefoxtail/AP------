@@ -294,7 +294,18 @@ function validateQ5OriginalTypedAncestor(receipt, context, wanted) {
   const nextReceiptPath = RECEIPTS + receipt.requestId + '.json', nextBindingPath = reviewedSourceBindingPath(receipt.requestId);
   for (const [uid, priorRow] of old.records) {
     const isQ5 = uid === M3_Q5_UID, next = issued.records.get(uid), previousRuntime = old.runtimes.get(uid), nextRuntime = issued.runtimes.get(uid);
-    const fields = ['metadataRevision','approvalEvidence',...(isQ5?['sourceFingerprint','contentFingerprint']:[])];
+    // The ordinary issuer resolves the current ACTIVE pack version. Another
+    // approved request in the same writer may advance that descriptor before
+    // this exact pair is issued; it does not change the pair's approval.
+    const pack = tables.packs.get(next.metaFoundationPackId)?.meta;
+    if (pack?.canonicalStatus !== 'ACTIVE' || pack.packId !== next.metaFoundationPackId ||
+        next.metaFoundationPackId !== priorRow.metaFoundationPackId ||
+        nextRuntime.metaFoundationPackId !== next.metaFoundationPackId ||
+        next.metaFoundationPackVersion !== pack.packVersion ||
+        nextRuntime.metaFoundationPackVersion !== pack.packVersion)
+      fail('Q5 original typed ancestor current ACTIVE pack version differs');
+    const fields = ['metadataRevision','approvalEvidence','metaFoundationPackVersion',
+      ...(isQ5?['sourceFingerprint','contentFingerprint']:[])];
     const runtimeFields = [...fields,...(isQ5?['approvedSourceFingerprint']:[])];
     const evidenceAfter = [...new Set([...(priorRow.approvalEvidence||[]),nextReceiptPath,...(isQ5?[nextBindingPath]:[])])];
     const revision = `meta-foundation:${next.metaFoundationPackId}@${next.metaFoundationPackVersion}:exam-final_qa-v2:${receipt.requestId}`;

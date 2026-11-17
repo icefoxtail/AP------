@@ -314,7 +314,18 @@ test("basicParent must be the single canonical parent of the approved sub-unit; 
 test("the registrar, pass script, consumer verifier and commit paths know the rebind schema", () => {
   const read = rel => fs.readFileSync(path.join(repoRoot, rel), "utf8");
   assert.match(read("archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs"), /archive-basic-scope-rebind-request-v1[\s\S]{0,200}register-basic-scope-rebind\.mjs/);
-  assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /"\$schema" == "archive-basic-scope-rebind-request-v1"[^\n]* \]\]; then\n      verify_rc/);
+  // Projection verification moved into the read-only batch phase. Keep the
+  // schema, registrar call and refusal result bound to that current route.
+  const passScript = read("tools/ci/reviewed-meta-register-pass.sh");
+  const projectionPhase = read("tools/ci/verify-reviewed-projection-requests.mjs");
+  assert.match(passScript, /node tools\/ci\/verify-reviewed-projection-requests\.mjs[^\n]*-- "\$\{applied\[@\]\}"/);
+  const projectedSchemas = /const PROJECTED = new Set\(\[([\s\S]*?)\]\);/.exec(projectionPhase);
+  assert.ok(projectedSchemas, "the projection phase declares its supported request schemas");
+  assert.match(projectedSchemas[1], /['"]archive-basic-scope-rebind-request-v1['"]/);
+  const cliProjection = /else if\s*\(PROJECTED\.has\(row\.schema\)\)\s*\{([\s\S]*?)\n\s{6}\}/.exec(projectionPhase);
+  assert.ok(cliProjection, "non-v2 projected requests keep the existing registrar verifier");
+  assert.match(cliProjection[1], /spawnSync\(process\.execPath,\s*\['archive\/tools\/meta-foundation\/register-reviewed-exam-meta-source\.mjs',\s*'--request', row\.request, '--verify-projection'\]/);
+  assert.match(cliProjection[1], /ok = result\.status === 0/);
   assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /node --test tests\/archive-basic-scope-rebind\.test\.mjs/);
   assert.match(read("archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs"), /BASIC_REBIND: "archive-basic-scope-rebind-request-v1"/);
   assert.ok(read("tools/ci/archive-meta-register-commit.paths").split(/\r?\n/).includes("archive/data/basic-scope-source-links.json"), "the link file is committed by the single writer");
