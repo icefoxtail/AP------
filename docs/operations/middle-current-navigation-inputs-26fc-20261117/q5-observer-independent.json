@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "archive-q5-exact-observed-navigation-independent-v1",
+  "reviewer": "/root/m3s2_release",
+  "decision": "STATIC_ACCEPT_EXACT_TWO_OBSERVED_INPUTS_ONLY",
+  "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+  "before": {
+    "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
+    "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
+    "bytes": 15920
+  },
+  "after": {
+    "gitBlobSha1": "d0f424928ccca3905055bbac0569f0460cfbe376",
+    "sha256": "2cf2b87e7f0dab41a0073edf392e41d8d28c41f18e5463042730685650c2ee42",
+    "bytes": 16035
+  },
+  "authorManifest": {
+    "gitBlobSha1": "2ca9d31190a018c8c2fbd4e2b1d33b22061aaa0f",
+    "sha256": "a5d740390c746827cd24f68cbb241603072cc8a79964441718d6f2a23f6d056e",
+    "bytes": 1050
+  },
+  "wholeInverseExact": true,
+  "edits": 1,
+  "scope": {
+    "addedPaths": [
+      {
+        "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "path": "apmath/css/student-navigation.css",
+        "gitBlobSha1": "afaddbc2f19f8c9507d592dc610adac9adce6abf",
+        "sha256": "845ec493b33bb82b93accc6036850595f3870ddcb0594055b741c5799bf5ad55",
+        "bytes": 4432
+      },
+      {
+        "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "path": "apmath/js/student-navigation.js",
+        "gitBlobSha1": "0530727c087b526cb10ad9a76f04e03c9ecbefcf",
+        "sha256": "05ea337bc52311fb8acd13ff6fdd3a9d437cb28594a69696f5da29d47ecebe95",
+        "bytes": 7463
+      }
+    ],
+    "pathMatch": "Two exact literal equality alternatives after the existing path-prefix expression, within the same SHA64 gate.",
+    "broadApmathNamespaceAllowed": false,
+    "arbitraryRefAuthorityCreated": false,
+    "recursiveTraversalUnchanged": true,
+    "existingSafePathReaderUnchanged": true,
+    "allObservedInputsRehashedBeforeReturn": true,
+    "originalNativeStrictTrueAndIssuedProofEqualityUnchanged": true,
+    "sourceReceiptMetadataAndUiPolicyUnchanged": true
+  },
+  "evidence": {
+    "currentTechnical": {
+      "gitBlobSha1": "0cd74ab0be77a70badcabc655b811bb02cbb9209",
+      "sha256": "9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279",
+      "bytes": 76724
+    },
+    "priorActualNativeStdout": {
+      "gitBlobSha1": "03dab47edc3159ffadfaed53b3b737f41d0b016f",
+      "sha256": "16eee599d085ebf21c8da3f53a0c98d756632cc6eddf56d97361c96ac2ab5847",
+      "bytes": 33550
+    },
+    "declaredArrays": {
+      "served": 88,
+      "mirrored": 20,
+      "fontResponses": 30,
+      "totalRows": 138,
+      "uniquePaths": 108
+    },
+    "independentlyConfirmedMissingObservedOnly": [
+      {
+        "path": "apmath/css/student-navigation.css",
+        "sha256": "845ec493b33bb82b93accc6036850595f3870ddcb0594055b741c5799bf5ad55"
+      },
+      {
+        "path": "apmath/js/student-navigation.js",
+        "sha256": "05ea337bc52311fb8acd13ff6fdd3a9d437cb28594a69696f5da29d47ecebe95"
+      }
+    ],
+    "generatedWholeDifferences": [
+      {
+        "path": "archive/data/svg-accessibility-index.js",
+        "statement": "Captured full data and current generated data may differ; unchanged original Native selected-row/SVG-consumption guards are required."
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "statement": "Captured full data and current generated data may differ; unchanged original Native selected-row/SVG-consumption guards are required."
+      }
+    ],
+    "rawOriginalNative": "The earlier actual03dab report was PASS with240 observed inputs; these two declared navigation refs were absent from that observed list.",
+    "source49ActualFailure": {
+      "reportGit": "9a83b947f2a002e2f9c8efb5ebee45be32c2c2d2",
+      "location": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs:103",
+      "testNumber": 45,
+      "code": "ERR_ASSERTION",
+      "interpretation": "Post-Native current-render input coverage assertion; not proof that the original Native returned false."
+    }
+  },
+  "validation": {
+    "reviewerExecution": 0,
+    "rootTargetedActualReported": {
+      "test": "actual Q5 original",
+      "pass": 1,
+      "fail": 0,
+      "seconds": 13.8,
+      "stdoutSha256": "9117600b0d10e40fe14e25d0c446754ae8ca50d0c7fd5154d20dfeb421282dec",
+      "stdoutBytes": 222,
+      "status": "ROOT_REPORTED_NOT_INDEPENDENTLY_FETCHED_RAW_LOG_YET",
+      "rootRestoredClean22cdc": true
+    },
+    "existingShadow61AndQ5Metadata44": "Reuse exact completed observations; no duplicate reviewer execution.",
+    "official49": "PENDING"
+  },
+  "limits": {
+    "newMathQa": 0,
+    "newVisualReview": 0,
+    "newSemanticApproval": 0,
+    "newFourSlotApproval": 0,
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "remoteRefs": 0
+  }
+}

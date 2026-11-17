@@ -30,6 +30,7 @@ import * as lpf from './lattice-path-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
+import {duplicateRequiredPointId} from './duplicate-key-point.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -136,7 +137,16 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       }
       stage='compose';
-      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
+      // A tree whose branch labels found no room at the first leaf pitch is composed at a wider pitch (composed.rowScale): measure again at that size and compose at it.
+      let composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size});
+      for(let wider=1;wider<=3&&composed.status==='COMPOSED'&&composed.rowScale>1&&!(composed.rowScale===(composed.settledScale??1));wider++){
+        const rowScale=composed.rowScale,exact=scf.statChartSize(model,{fontPx:measured.policy.baseFontPx,rowScale});
+        size={width:Math.max(size.width,exact.width),height:Math.max(size.height,exact.height)};
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-s${wider}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy,minSize:size,rowScale});
+        composed.settledScale=rowScale;
+      }
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
@@ -395,6 +405,31 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         plan={...plan,coordinateCanvas:{width:w,height:h}};
         ({size,measured,composed}=await attempt(plan,'-canvas'+w));
         if(composed.status!=='LAYOUT_INVENTORY_INCOMPLETE')break;
+      }
+    }
+    // Fallback 5 (graph key point duplicated by an overlay point): a requiredPoint and an overlays.points point at exactly the same coordinates that both write them cannot satisfy the
+    // owner-Voronoi condition (two dots at one place). The requiredPoint's id goes to graphPlan.coordinateBand.hide once (its dot stays, the overlay point keeps the coordinate label). One
+    // attempt, never repeated for the same id; it is kept only when it composes, otherwise the failure stays exactly as it was.
+    if(composed.status==='LAYOUT_REPAIR_BINDING_FAIL'&&composed.detail?.code==='MEASURED_OWNER_LAYOUT_VORONOI_BOX_FAIL'&&authored.graphPlan&&plan.graphPlan){
+      const dupId=duplicateRequiredPointId(plan.graphPlan,composed.detail?.labelId);
+      const hidden=Array.isArray(authored.graphPlan.coordinateBand?.hide)?authored.graphPlan.coordinateBand.hide:[];
+      if(dupId&&!hidden.includes(dupId)&&hidden.length<8&&(authored.graphPlan.coordinateBand===undefined||Object.keys(authored.graphPlan.coordinateBand).join(',')==='hide')){
+        const bandPlan={...authored.graphPlan,coordinateBand:{hide:[...hidden,dupId]}};
+        try{
+          const f=await pythonWorker({action:'frame_graph',graphPlan:bandPlan});
+          const m2=f.status==='OK'?await pythonWorker({action:'graph',graphPlan:f.result.graphPlan}):null;
+          if(m2?.status==='OK'){
+            const before=composed;
+            const prevPlan=plan,prevModel=model;
+            plan={...plan,graphPlan:f.result.graphPlan};model=m2.result;
+            let tried=null;
+            try{tried=await attempt(plan,'-bandhide');}catch{tried=null;}
+            if(tried&&tried.composed.status==='COMPOSED'){
+              (row.fallback??=[]).push({from:clip(before.detail),to:'COORDINATE_BAND_HIDE_DUPLICATE',points:[dupId]});
+              ({size,measured,composed}=tried);
+            }else{plan=prevPlan;model=prevModel;}
+          }
+        }catch{/* the original failure stays */}
       }
     }
     // (CL) Last resort, only after every step above: the labels still without a place get one more composition in which a point name may take a leader across a thin stroke or two and a

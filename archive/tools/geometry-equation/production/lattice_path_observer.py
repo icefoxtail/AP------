@@ -5,7 +5,7 @@ brute force: every monotone path from the start to the target is walked one road
 dropped, and the number written at a crossing must equal the number of distinct valid prefixes that end there (a prefix that cannot be completed into a
 valid path is not counted). The lattice scale is recovered from the drawn roads themselves (equally spaced distinct x and y values), every road must be
 drawn exactly once at its exact position and in the style of its class (plain, broken, bold), the named points and the highlighted path must sit on the
-right crossings, and no number may state the final answer when it is hidden.
+right crossings, and no number may state the final count when the plan hides it (hideTargetCount:true).
 """
 import hashlib
 import math
@@ -51,7 +51,7 @@ class Plan:
             if self.via: fail('LP_WAYPOINT_ROAD_MIX_UNSUPPORTED')
             self.waypoints = [self.ref(r) for r in refs]
         if self.counts == 'segments' and not self.waypoints: fail('LP_WAYPOINT_INVALID')
-        self.hide_target = lat.get('hideTargetCount') is not False
+        self.hide_target = lat.get('hideTargetCount') is True   # a solution figure shows the final count; hideTargetCount:true hides it (a problem figure)
         self.start = self.target = None
         self.total = None
         self.path = [self.ref(r) for r in lat['highlightPath']] if lat.get('highlightPath') is not None else None
@@ -158,8 +158,10 @@ def recover_lattice(root, plan, errors):
     return u, cx[0], cy[-1]    # unit, x of column 0, y of row 0 (rows grow upward = y decreases)
 
 
-def audit(lat, svg):
+def audit(lat, svg, surface=None):
     plan = Plan(lat)
+    # a problem figure never shows the final count (it is the answer), whatever the plan says (the engine forces the same)
+    if surface == 'PROBLEM_VISUAL': plan.hide_target = True
     expected = plan.expected_counts()
     if plan.start is not None and plan.total == 0: fail('LP_NO_VALID_PATH')
     errors = []

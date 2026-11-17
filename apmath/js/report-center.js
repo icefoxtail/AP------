@@ -771,7 +771,8 @@ function reportCenterEnsureParentOpening(value) {
 }
 
 function reportCenterExtractQuestionBankFromText(jsText) {
-    const sandboxWindow = { questionBank: null, __questionBank: null };
+    // 호출마다 새 sandbox window라 앞 파일 값이 섞이지 않는다. window.examData 형식 원본도 읽는다.
+    const sandboxWindow = { questionBank: null, __questionBank: null, examData: null };
     const sandboxDocument = {
         createElement: () => ({ style: {}, setAttribute() {}, appendChild() {}, innerHTML: '' }),
         head: { appendChild() {} },
@@ -782,7 +783,7 @@ function reportCenterExtractQuestionBankFromText(jsText) {
     };
 
     try {
-        const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null);`);
+        const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null) || window.examData || null;`);
         return fn(sandboxWindow, sandboxDocument);
     } catch (e) {
         console.warn('[reportCenterExtractQuestionBankFromText] failed:', e);
@@ -794,6 +795,7 @@ function reportCenterNormalizeQuestionBank(bank) {
     if (Array.isArray(bank)) return bank;
     if (!bank || typeof bank !== 'object') return [];
     if (Array.isArray(bank.questions)) return bank.questions;
+    if (Array.isArray(bank.problems)) return bank.problems;
     if (Array.isArray(bank.items)) return bank.items;
     if (Array.isArray(bank.data)) return bank.data;
     return Object.values(bank).filter(v => v && typeof v === 'object');

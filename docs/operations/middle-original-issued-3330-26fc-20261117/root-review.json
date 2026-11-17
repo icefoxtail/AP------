@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "archive-root-original3330-observer-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "status": "STATIC_ACCEPT_INDEPENDENT_REVIEW_ACTUAL_POST_WRITER_REQUIRED",
+  "manifest": {
+    "gitBlobSha1": "05717de8394ac9aa57caceb5a114ffbe2ce66ca7",
+    "sha256": "9613fdc512dd275047c0825645a36e1f562291953fbb3b9852303d29ae0d16a3"
+  },
+  "independent": {
+    "gitBlobSha1": "3edd36fae231dc6830fc4a68bda07de87356f4bb",
+    "sha256": "a40f9698c4e9c1feee3e34a6c2a5cad93012d052d2ba2fef043e8552894e5710",
+    "reviewedWholeCode": true
+  },
+  "operations": [
+    {
+      "path": "tools/ci/observe-original-middle-issued-3330.cjs",
+      "bytes": 47670,
+      "sha256": "244d7a03ddea33e2f99e1fa948a60d993ae01630beccac3ee0bf0a03965766db",
+      "gitBlobSha1": "2836ea9b8191533871749b78d596a881b6c6909a",
+      "expectedBeforeGitBlobSha1": null
+    },
+    {
+      "path": ".github/workflows/middle-original-issued-consumer-observe.yml",
+      "bytes": 2648,
+      "sha256": "0a2798b5913151eead11a81da6ea44463032dc172cc4a43d242b37ead74f03ff",
+      "gitBlobSha1": "4437bc53d2278a0106b4d66d3c15db6ff22ed57c",
+      "expectedBeforeGitBlobSha1": null
+    }
+  ],
+  "scope": {
+    "requests": 160,
+    "selected": 3330,
+    "difficulty": 2866,
+    "originalFinalQaFields": 464,
+    "oldFingerprintReuse": 0
+  },
+  "correctionSubmittedWhole2866Match": true,
+  "limits": {
+    "actualSelected3330": "NOT_RUN",
+    "newApproval": 0,
+    "registration": 0,
+    "sourceOrDataWrites": 0,
+    "mainWrites": 0
+  },
+  "workflow": {
+    "readOnlyPermissions": true,
+    "snapshot": "Actual main read at observation checkout, exact HEAD recorded and rechecked",
+    "originalConsumerOnly": true,
+    "branch": "ops/middle-original-issued-consumer-26fc-20261117"
+  },
+  "nextAction": "After merged repair and actual writer finish, create exact ops ref and verify the entire framed observation."
+}

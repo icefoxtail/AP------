@@ -45,7 +45,14 @@ test('global SVG data can change unrelated asset rows only under the empty selec
 for(const [name,make]of [['executable trailer',()=>Buffer.concat([svgData(),Buffer.from('globalThis.changed=true;')])],['executable assignment',()=>Buffer.from('globalThis.changed=true;'+svgData())],['duplicate asset role',()=>svgData([{assetRef:'assets/a.svg',visualRole:'problem'},{assetRef:'assets/a.svg',visualRole:'problem'}])],['traversal key',()=>svgData([{assetRef:'assets/../a.svg',visualRole:'problem'}])],['unknown role',()=>svgData([{assetRef:'assets/a.svg',visualRole:'unreviewed'}])]])test('SVG data projection rejects '+name,()=>assert.throws(()=>H.assertEmptySvgProjection(make())));
 function dependencyFixture(){
  const commit='a'.repeat(40),md='archive/data/question_metadata.json',id='archive/data/question_identity_map.json',svg='archive/data/svg-accessibility-index.js',css='archive/vendor/nanum-myeongjo/nanum-myeongjo.css',mj='archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js',accessibility='archive/svg-accessibility.js';
- const engine=fs.readFileSync(path.join(ROOT,'archive/engine.html'));
+ // Exercise isolated dependency negatives against the immutable renderer that
+ // this closed UI contract authenticates. The current live renderer is tested
+ // separately below and must still be rejected when its bytes have changed.
+ // Main #2378 default renderer; all dependency mutations and refusal assertions stay exact.
+ const engine=execFileSync('git',['-C',ROOT,'cat-file','blob','226342544e896cd6a6f35aa946947b89ef3c893e'],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:1024*1024,stdio:['ignore','pipe','pipe']});
+ assert.equal(engine.length,196085);
+ assert.equal(gitBlob(engine),'226342544e896cd6a6f35aa946947b89ef3c893e');
+ assert.equal(sha(engine),'671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5');
  const files=new Map([['archive/engine.html',engine],[css,Buffer.from('synthetic css')],[mj,Buffer.from('synthetic mathjax')],[accessibility,Buffer.from('synthetic accessibility')],[FIXED.refs.currentSourceRef.path,Buffer.from('synthetic bank')],[md,recordBytes([])],[id,recordBytes([])],[svg,svgData()]]);
  const fonts=[{path:css,kind:'STYLESHEET',mime:'text/css',weight:null}];for(const weight of[400,700,800]){const p=`archive/vendor/nanum-myeongjo/synthetic-${weight}.woff2`;files.set(p,Buffer.from('font '+weight));fonts.push({path:p,kind:'FONT',mime:'font/woff2',weight});}
  const resources=fonts.map((f,i)=>({...syntheticRef(f.path,files.get(f.path)),...f,resourceId:sha('resource '+i),status:200})),fontResourceIds=resources.map(f=>f.resourceId);
@@ -65,3 +72,20 @@ for(const[name,alter]of[
  ['another UID',t=>t.id.questionUid='qid_v1_'+'0'.repeat(64)],
  ['duplicate UID use',t=>t.uidUses.set(H.UID,2)]
 ])test('exact raw identity rejects '+name,()=>{const t=actualTuple();alter(t);assert.throws(()=>H.assertCurrentTuple(t),/CURRENT_TUPLE/);});
+
+// A newer shared renderer never inherits this issued UI contract implicitly.
+test('current renderer drift remains blocked by the real live dependency validator',()=>{
+ const currentEngine=fs.readFileSync(path.join(ROOT,'archive/engine.html'));
+ const f=dependencyFixture(),engineRef=f.technical.servedFiles.find(r=>r.path==='archive/engine.html');
+ f.read.currentFiles.set('archive/engine.html',currentEngine);
+ if(gitBlob(currentEngine)===engineRef.gitBlobSha1){
+  assert.equal(sha(currentEngine),engineRef.sha256);
+  H.assertLiveRenderRef(engineRef,f.read);
+ }else{
+  assert.throws(()=>H.assertLiveRenderRef(engineRef,f.read),/UI_CURRENT_RENDER_DEPENDENCY/);
+  const rebound=dependencyFixture();
+  const changedRef=syntheticRef('archive/engine.html',currentEngine);
+  rebound.technical.servedFiles=rebound.technical.servedFiles.map(r=>r.path==='archive/engine.html'?changedRef:r);
+  assert.throws(()=>H.assertUiRenderDependencies(rebound.technical,rebound.read),/UI_ENGINE/);
+ }
+});

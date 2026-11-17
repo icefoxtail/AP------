@@ -1,0 +1,43 @@
+name: M2S2 E012 Existing Vector Partial Gate
+on:
+  push:
+    branches:
+      - ops/m2s2-e012-source-binding-26fc-20261117
+permissions:
+  contents: read
+concurrency:
+  group: m2s2-e012-source-binding-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  e012-source-binding:
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/m2s2-e012-source-binding-26fc-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ARCHIVE_E012_GATE_EXPECTED_SHA: ${{ github.sha }}
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout exact closed ops HEAD with original source history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse the scoped gate
+        run: node --check tools/4slot/check-m2s2-e012-source-binding.cjs
+      - name: Official one-bank builder and Consumer with eleven refusals retained
+        run: >-
+          node tools/4slot/check-m2s2-e012-source-binding.cjs
+          --root "$GITHUB_WORKSPACE"
+          --output "$RUNNER_TEMP/e012-source-binding/scoped-result.json"
+      - name: Preserve bounded metadata even on refusal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e012-source-binding-${{ github.sha }}
+          path: ${{ runner.temp }}/e012-source-binding/scoped-result.json
+          if-no-files-found: error

@@ -19,16 +19,30 @@ const { catalog } = require("./helpers/archive2-scope-harness.cjs");
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const archiveDir = path.join(root, "archive");
 const manifestRelative = "archive/data/archive2-canonical-input-manifest.json";
+const compactManifestRelative = "archive/" + canonical.COMPACT_INPUT_MANIFEST_PATH;
 const indexRelative = "archive/data/archive2-source-verification-index.json";
+// Original verification reads the sharded file list (top index + one hash-prefix bucket); the flat index above is
+// kept for Workers deployed before the sharded layout and for the mixed lookup.
+const topRelative = "archive/" + canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH;
 const manifestPath = path.join(root, manifestRelative);
 const indexPath = path.join(root, indexRelative);
 const manifestText = fs.readFileSync(manifestPath, "utf8");
 const manifest = JSON.parse(manifestText);
+const compactManifestText = fs.readFileSync(path.join(root, compactManifestRelative), "utf8");
+const compactManifest = JSON.parse(compactManifestText);
 const indexText = fs.readFileSync(indexPath, "utf8");
 const sourceIndex = JSON.parse(indexText);
 const sourceFile = "original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js";
-const sourceEntry = sourceIndex.files.find((row) => row.sourceFile === sourceFile);
+const topText = fs.readFileSync(path.join(root, topRelative), "utf8");
+const topIndex = JSON.parse(topText);
+const bucketRelativeOf = (file) =>
+  "archive/" + canonical.SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX + sha256(file).slice(0, 1) + ".json";
+const bucketRelative = bucketRelativeOf(sourceFile);
+const bucketText = fs.readFileSync(path.join(root, bucketRelative), "utf8");
+const sourceBucket = JSON.parse(bucketText);
+const sourceEntry = sourceBucket.files.find((row) => row.sourceFile === sourceFile);
 assert.ok(sourceEntry, "selected original source must have a verification shard");
+assert.deepEqual(sourceEntry, sourceIndex.files.find((row) => row.sourceFile === sourceFile), "bucket row equals the flat index row");
 // The shard path is derived from the source file; index rows no longer repeat it (index size).
 const shardPathOf = (file) => canonical.SOURCE_VERIFICATION_SHARD_PREFIX + sha256(file) + ".json";
 assert.equal(Object.hasOwn(sourceEntry, "path"), false, "index rows omit the derivable shard path");
@@ -62,7 +76,7 @@ function makeInput(indexVersion = manifest.projectionVersion, file = sourceFile)
   };
 }
 
-function createAssetEnv({ overrides = new Map(), missing = new Set() } = {}) {
+function createAssetEnv({ overrides = new Map(), missing = new Set(), statuses = new Map() } = {}) {
   const requests = [];
   let bytesFetched = 0;
   const fetch = async (input) => {
@@ -79,6 +93,8 @@ function createAssetEnv({ overrides = new Map(), missing = new Set() } = {}) {
     requests.push(relative);
     if (missing.has(relative))
       return new Response("Not found", { status: 404 });
+    if (statuses.has(relative))
+      return new Response("Unavailable", { status: statuses.get(relative) });
     let body;
     if (overrides.has(relative)) {
       body = overrides.get(relative);
@@ -142,19 +158,24 @@ function expectedShardExam(exam, normalizedFile) {
 
 async function rebasedShardFixture(mutator) {
   const nextManifest = clone(manifest);
-  const nextIndex = clone(sourceIndex);
-  const indexRow = nextIndex.files.find((row) => row.sourceFile === sourceFile);
+  const nextTop = clone(topIndex);
+  const nextBucket = clone(sourceBucket);
+  const bucketFileRow = nextBucket.files.find((row) => row.sourceFile === sourceFile);
   const nextShard = clone(sourceShard);
   mutator(nextShard);
 
   const nextShardText = JSON.stringify(nextShard) + "\n";
-  indexRow.sha256 = sha256(nextShardText);
-  const nextIndexText = JSON.stringify(nextIndex) + "\n";
+  bucketFileRow.sha256 = sha256(nextShardText);
+  const nextBucketText = JSON.stringify(nextBucket) + "\n";
+  const topBucketRow = nextTop.buckets.find((row) => row.prefix === nextBucket.prefix);
+  topBucketRow.sha256 = sha256(nextBucketText);
+  topBucketRow.byteLength = Buffer.byteLength(nextBucketText);
+  const nextTopText = JSON.stringify(nextTop) + "\n";
   const manifestIndexRow = nextManifest.files.find(
-    (row) => row.path === canonical.SOURCE_VERIFICATION_INDEX_PATH,
+    (row) => row.path === canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH,
   );
-  assert.ok(manifestIndexRow, "source index digest must be in the outer manifest");
-  manifestIndexRow.sha256 = sha256(nextIndexText);
+  assert.ok(manifestIndexRow, "top index digest must be in the outer manifest");
+  manifestIndexRow.sha256 = sha256(nextTopText);
   nextManifest.projectionVersion = await canonical.computeProjectionVersion(
     nextManifest.files,
     nextManifest.resolverVersion,
@@ -162,22 +183,28 @@ async function rebasedShardFixture(mutator) {
   const nextManifestText = JSON.stringify(nextManifest) + "\n";
   return {
     manifest: nextManifest,
-    index: nextIndex,
+    top: nextTop,
+    bucket: nextBucket,
     shard: nextShard,
     input: makeInput(nextManifest.projectionVersion),
     overrides: new Map([
       [manifestRelative, nextManifestText],
-      [indexRelative, nextIndexText],
+      [compactManifestRelative, JSON.stringify(canonical.encodeCompactInputManifest(nextManifest)) + "\n"],
+      [topRelative, nextTopText],
+      [bucketRelative, nextBucketText],
       [shardRelative, nextShardText],
     ]),
   };
 }
 
+const withoutSourceIndexes = (files) => files.filter(
+  (row) => row.path !== canonical.SOURCE_VERIFICATION_INDEX_PATH &&
+    row.path !== canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH,
+);
+
 async function legacyFullSourceNumberFixture() {
   const legacyManifest = clone(manifest);
-  legacyManifest.files = legacyManifest.files.filter(
-    (row) => row.path !== canonical.SOURCE_VERIFICATION_INDEX_PATH,
-  );
+  legacyManifest.files = withoutSourceIndexes(legacyManifest.files);
   const packedCatalog = JSON.parse(
     fs.readFileSync(path.join(archiveDir, "data/archive2-catalog.json"), "utf8"),
   );
@@ -212,13 +239,150 @@ async function legacyFullSourceNumberFixture() {
     input: makeInput(legacyManifest.projectionVersion),
     overrides: new Map([
       [manifestRelative, JSON.stringify(legacyManifest) + "\n"],
+      [compactManifestRelative, null],
       ["archive/data/archive2-catalog.json", catalogText],
     ]),
   };
 }
 
+
+test("compact canonical manifest is a deterministic lossless companion without a projection hash cycle", async () => {
+  const before = JSON.stringify(manifest);
+  const encoded = canonical.encodeCompactInputManifest(manifest);
+  assert.equal(JSON.stringify(encoded) + "\n", compactManifestText);
+  assert.deepEqual(encoded, canonical.encodeCompactInputManifest(manifest));
+  assert.equal(JSON.stringify(manifest), before, "encoding cannot modify the authority manifest");
+  const decoded = canonical.decodeCompactInputManifest(compactManifest);
+  assert.deepEqual(decoded, manifest, "every header, ordered path and whole hash must survive");
+  assert.equal(JSON.stringify(decoded) + "\n", manifestText, "current original bytes round trip exactly");
+  assert.equal(await canonical.computeProjectionVersion(decoded.files, decoded.resolverVersion), manifest.projectionVersion);
+  assert.equal(manifest.files.some((row) => row.path === canonical.COMPACT_INPUT_MANIFEST_PATH), false);
+  assert.ok(Buffer.byteLength(compactManifestText) < Buffer.byteLength(manifestText));
+  assert.equal(new Set(compactManifest.directories).size, compactManifest.directories.length);
+  assert.ok(manifest.files.some((row) => row.path.startsWith("../docs/")), "the existing authority namespace stays lossless");
+});
+
+test("compact manifest rejects malformed tuples, headers, directories, paths and hashes", async (t) => {
+  const cases = [
+    ["tuple length", (value) => { value.files[0].push("extra"); }],
+    ["tuple object", (value) => { value.files[0] = { path: "data/a.json", sha256: "0".repeat(64) }; }],
+    ["directory index string", (value) => { value.files[0][0] = "0"; }],
+    ["directory index fractional", (value) => { value.files[0][0] = 0.5; }],
+    ["directory index negative", (value) => { value.files[0][0] = -1; }],
+    ["directory index negative zero", (value) => { value.files[0][0] = -0; }],
+    ["directory index out of range", (value) => { value.files[0][0] = value.directories.length; }],
+    ["filename slash", (value) => { value.files[0][1] = "other/file.json"; }],
+    ["filename backslash", (value) => { value.files[0][1] = "other\\file.json"; }],
+    ["filename parent segment", (value) => { value.files[0][1] = ".."; }],
+    ["filename dot segment", (value) => { value.files[0][1] = "."; }],
+    ["filename empty", (value) => { value.files[0][1] = ""; }],
+    ["filename query", (value) => { value.files[0][1] += "?x=1"; }],
+    ["filename encoded traversal", (value) => { value.files[0][1] = "%2e%2e"; }],
+    ["filename control", (value) => { value.files[0][1] += "\u0000"; }],
+    ["file hash format", (value) => { value.files[0][2] = "not-a-sha256"; }],
+    ["file hash type", (value) => { value.files[0][2] = 0; }],
+    ["duplicate reconstructed path", (value) => { value.files.push([...value.files[0]]); }],
+    ["directory duplicate", (value) => { value.directories[1] = value.directories[0]; }],
+    ["directory absolute", (value) => { value.directories[0] = "/data/"; }],
+    ["directory unsupported traversal", (value) => { value.directories[0] = "../private/"; }],
+    ["directory interior traversal", (value) => { value.directories[0] = "data/../"; }],
+    ["directory encoded traversal", (value) => { value.directories[0] = "%2e%2e/"; }],
+    ["directory missing slash", (value) => { value.directories[0] = "data"; }],
+    ["directory unused", (value) => { value.directories.push("data/unused/"); }],
+    ["directory noncanonical order", (value) => { value.files[0][0] = 1; }],
+    ["extra header", (value) => { value.extra = true; }],
+    ["missing header", (value) => { delete value.generatedFromCatalogIndexVersion; }],
+    ["catalog version format", (value) => { value.generatedFromCatalogIndexVersion = "invalid"; }],
+    ["projection version format", (value) => { value.projectionVersion = "invalid"; }],
+  ];
+  for (const [name, mutate] of cases) await t.test(name, () => {
+    const value = clone(compactManifest);
+    mutate(value);
+    assert.throws(() => canonical.decodeCompactInputManifest(value),
+      (error) => error.code === "CANONICAL_INPUT_DIGEST_MISMATCH");
+  });
+  for (const field of ["schemaVersion", "manifestSchemaVersion", "resolverVersion"]) await t.test(field, () => {
+    const value = clone(compactManifest);
+    value[field] = "unsupported";
+    assert.throws(() => canonical.decodeCompactInputManifest(value),
+      (error) => error.code === "CANONICAL_RESOLVER_VERSION_MISMATCH");
+  });
+  const extraHeader = { ...manifest, extra: true };
+  assert.throws(() => canonical.encodeCompactInputManifest(extraHeader));
+  const extraFileField = clone(manifest);
+  extraFileField.files[0].extra = true;
+  assert.throws(() => canonical.encodeCompactInputManifest(extraFileField), "encoding must not silently drop original fields");
+  const cycle = clone(manifest);
+  cycle.files.push({ path: canonical.COMPACT_INPUT_MANIFEST_PATH, sha256: "0".repeat(64) });
+  assert.throws(() => canonical.encodeCompactInputManifest(cycle), "companion must not create an input hash cycle");
+});
+
+test("only an HTTP 404 compact companion uses the unchanged original-manifest source path", async () => {
+  const assets = createAssetEnv({ missing: new Set([compactManifestRelative]) });
+  const result = await validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput());
+  assert.deepEqual(assets.requests, [compactManifestRelative, manifestRelative, topRelative, bucketRelative, shardRelative]);
+  assert.equal(result.exam.file, sourceFile);
+  assert.equal(result.questions.length, sourceQuestions.length);
+  assert.deepEqual(result.questions.map((row) => row.questionUid), sourceRows.map((row) =>
+    row.identityStatus === "VERIFIED" ? row.questionUid : null));
+});
+
+test("an existing but corrupt or unavailable companion never downgrades to the original manifest", async (t) => {
+  const malformed = createAssetEnv({ overrides: new Map([[compactManifestRelative, "{not JSON"]]) });
+  await assert.rejects(validateOriginalSnapshot(malformed.env, { questions: sourceQuestions }, makeInput()),
+    (error) => error.status === 503);
+  assert.deepEqual(malformed.requests, [compactManifestRelative]);
+  for (const status of [403, 410, 500, 503]) await t.test("HTTP " + status, async () => {
+    const assets = createAssetEnv({ statuses: new Map([[compactManifestRelative, status]]) });
+    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
+      (error) => error.status === 503);
+    assert.deepEqual(assets.requests, [compactManifestRelative]);
+  });
+  for (const [name, mutate] of [
+    ["invalid tuple does not downgrade", (value) => { value.files[0][0] = "0"; }],
+    ["duplicate path does not downgrade", (value) => { value.files.push([...value.files[0]]); }],
+    ["unsupported compact schema does not downgrade", (value) => { value.schemaVersion = "unsupported"; }],
+  ]) await t.test(name, async () => {
+    const value = clone(compactManifest);
+    mutate(value);
+    const assets = createAssetEnv({ overrides: new Map([[compactManifestRelative, JSON.stringify(value) + "\n"]]) });
+    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
+      (error) => error.status === 503);
+    assert.deepEqual(assets.requests, [compactManifestRelative]);
+  });
+  const transportRequests = [];
+  const networkFailure = { ...createAssetEnv().env, ARCHIVE2_ASSETS: { fetch: async (url) => {
+    transportRequests.push(String(url));
+    throw new Error("test transport unavailable");
+  } } };
+  await assert.rejects(validateOriginalSnapshot(networkFailure, { questions: sourceQuestions }, makeInput()),
+    (error) => error.status === 503);
+  assert.equal(transportRequests.length, 1);
+  assert.ok(transportRequests[0].endsWith("/" + canonical.COMPACT_INPUT_MANIFEST_PATH));
+  for (const [name, mutate] of [
+    ["tuple hash changes the existing projection digest", (value) => { value.files[0][2] = "0".repeat(64); }],
+    ["projection header differs", (value) => { value.projectionVersion = "archive2-canonical-v1:" + "0".repeat(64); }],
+  ]) await t.test(name, async () => {
+    const value = clone(compactManifest);
+    mutate(value);
+    const assets = createAssetEnv({ overrides: new Map([[compactManifestRelative, JSON.stringify(value) + "\n"]]) });
+    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
+      (error) => error.status === 503 && /canonical input manifest digest mismatch/.test(error.message));
+    assert.deepEqual(assets.requests, [compactManifestRelative]);
+  });
+  await t.test("catalog header still binds to the index", async () => {
+    const value = clone(compactManifest);
+    value.generatedFromCatalogIndexVersion = "0".repeat(64);
+    const assets = createAssetEnv({ overrides: new Map([[compactManifestRelative, JSON.stringify(value) + "\n"]]) });
+    await assert.rejects(validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
+      (error) => error.status === 503 && /canonical source index does not match the current projection/.test(error.message));
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative]);
+  });
+});
+
 test("source verification index binds every source row to the full canonical resolver output", async () => {
   assert.equal(await canonical.computeProjectionVersion(manifest.files, manifest.resolverVersion), manifest.projectionVersion);
+  // Workers deployed before the sharded layout compute their base without the flat index only (it includes the top index).
   assert.equal(
     await canonical.computeProjectionVersion(
       manifest.files.filter((row) => row.path !== canonical.SOURCE_VERIFICATION_INDEX_PATH),
@@ -226,11 +390,23 @@ test("source verification index binds every source row to the full canonical res
     ),
     sourceIndex.baseProjectionVersion,
   );
+  // The top index cannot commit to a version containing itself or the flat index.
+  assert.equal(
+    await canonical.computeProjectionVersion(withoutSourceIndexes(manifest.files), manifest.resolverVersion),
+    topIndex.baseProjectionVersion,
+  );
   const indexManifestRow = manifest.files.find(
     (row) => row.path === canonical.SOURCE_VERIFICATION_INDEX_PATH,
   );
   assert.ok(indexManifestRow);
   assert.equal(sha256(indexText), indexManifestRow.sha256);
+  const topManifestRow = manifest.files.find(
+    (row) => row.path === canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH,
+  );
+  assert.ok(topManifestRow);
+  assert.equal(sha256(topText), topManifestRow.sha256);
+  assert.equal(topIndex.schemaVersion, canonical.SOURCE_VERIFICATION_TOP_INDEX_SCHEMA);
+  assert.equal(topIndex.generatedFromCatalogIndexVersion, manifest.generatedFromCatalogIndexVersion);
   assert.equal(sourceIndex.schemaVersion, "archive2-source-verification-index-v1");
   assert.equal(sourceIndex.resolverVersion, canonical.RESOLVER_VERSION);
   assert.equal(sourceIndex.generatedFromCatalogIndexVersion, manifest.generatedFromCatalogIndexVersion);
@@ -285,7 +461,7 @@ test("source verification index binds every source row to the full canonical res
   assert.ok(shardBytes > 0);
 });
 
-test("original snapshot validation fetches only the manifest, index, and selected source shard", async () => {
+test("original snapshot validation fetches only the compact manifest, top index, one index bucket, and selected source shard", async () => {
   assert.equal(sourceExam.qCount, sourceQuestions.length);
   assert.equal(sourceRows.length, sourceQuestions.length);
   assert.equal(sourceShard.records.length, sourceQuestions.length);
@@ -298,7 +474,8 @@ test("original snapshot validation fetches only the manifest, index, and selecte
     { questions: sourceQuestions },
     makeInput(),
   );
-  assert.deepEqual(assets.requests, [manifestRelative, indexRelative, shardRelative]);
+  assert.deepEqual(assets.requests, [compactManifestRelative, topRelative, bucketRelative, shardRelative]);
+  assert.equal(assets.bytesFetched(), Buffer.byteLength(compactManifestText) + Buffer.byteLength(topText) + Buffer.byteLength(bucketText) + Buffer.byteLength(shardText));
   assert.ok(assets.bytesFetched() < 500_000, "selected exam verification stays below 500 KB");
   assert.ok(assets.bytesFetched() < 67_058_078 / 100, "selected exam verification avoids the 67 MB resolver bundle");
   assert.equal(result.exam.file, sourceFile);
@@ -347,27 +524,54 @@ test("stale versions, corrupt artifacts, and unindexed sources fail closed witho
       ),
       (error) => error.status === 409 && /분류 기준이 갱신되었습니다/.test(error.message),
     );
-    assert.deepEqual(assets.requests, [manifestRelative]);
+    assert.deepEqual(assets.requests, [compactManifestRelative]);
   });
 
-  await t.test("index body digest mismatch does not downgrade to the full catalog", async () => {
+  await t.test("top index body digest mismatch does not downgrade to the full catalog", async () => {
     const assets = createAssetEnv({
-      overrides: new Map([[indexRelative, indexText + " "]])
+      overrides: new Map([[topRelative, topText + " "]])
     });
     await assert.rejects(
       validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
       (error) => error.status === 503 && /canonical source index digest mismatch/.test(error.message),
     );
-    assert.deepEqual(assets.requests, [manifestRelative, indexRelative]);
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative]);
   });
 
-  await t.test("listed but unavailable index does not use legacy fallback", async () => {
-    const assets = createAssetEnv({ missing: new Set([indexRelative]) });
+  await t.test("listed but unavailable top index does not use legacy fallback", async () => {
+    const assets = createAssetEnv({ missing: new Set([topRelative]) });
     await assert.rejects(
       validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
       (error) => error.status === 503,
     );
-    assert.deepEqual(assets.requests, [manifestRelative, indexRelative]);
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative]);
+  });
+
+  await t.test("bucket body digest mismatch does not downgrade to the flat index or the full catalog", async () => {
+    const assets = createAssetEnv({
+      overrides: new Map([[bucketRelative, bucketText + " "]])
+    });
+    await assert.rejects(
+      validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
+      (error) => error.status === 503 && /canonical source index bucket digest mismatch/.test(error.message),
+    );
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative, bucketRelative]);
+  });
+
+  await t.test("listed but unavailable bucket does not use the flat index", async () => {
+    const assets = createAssetEnv({ missing: new Set([bucketRelative]) });
+    await assert.rejects(
+      validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
+      (error) => error.status === 503,
+    );
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative, bucketRelative]);
+  });
+
+  await t.test("the flat index is never read for original verification", async () => {
+    const assets = createAssetEnv({ overrides: new Map([[indexRelative, "not json"]]) });
+    const result = await validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput());
+    assert.equal(result.questions.length, sourceQuestions.length);
+    assert.equal(assets.requests.includes(indexRelative), false);
   });
 
   await t.test("shard body digest mismatch does not downgrade to the full catalog", async () => {
@@ -378,20 +582,21 @@ test("stale versions, corrupt artifacts, and unindexed sources fail closed witho
       validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, makeInput()),
       (error) => error.status === 503 && /canonical source shard digest mismatch/.test(error.message),
     );
-    assert.deepEqual(assets.requests, [manifestRelative, indexRelative, shardRelative]);
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative, bucketRelative, shardRelative]);
   });
 
   await t.test("unknown source is rejected before any shard fetch", async () => {
     const assets = createAssetEnv();
+    const unknownFile = "original/high/h2/1final/not-indexed.js";
     await assert.rejects(
       validateOriginalSnapshot(
         assets.env,
         { questions: sourceQuestions },
-        makeInput(manifest.projectionVersion, "original/high/h2/1final/not-indexed.js"),
+        makeInput(manifest.projectionVersion, unknownFile),
       ),
       (error) => error.status === 503 && /canonical source is not indexed/.test(error.message),
     );
-    assert.deepEqual(assets.requests, [manifestRelative, indexRelative]);
+    assert.deepEqual(assets.requests, [compactManifestRelative, topRelative, bucketRelativeOf(unknownFile)]);
   });
 });
 
@@ -431,16 +636,14 @@ test("raw content, order, and client-supplied identity or Meta cannot replace th
 
 test("a legacy manifest falls back to the existing full canonical loader", async () => {
   const legacyManifest = clone(manifest);
-  legacyManifest.files = legacyManifest.files.filter(
-    (row) => row.path !== canonical.SOURCE_VERIFICATION_INDEX_PATH,
-  );
+  legacyManifest.files = withoutSourceIndexes(legacyManifest.files);
   legacyManifest.projectionVersion = await canonical.computeProjectionVersion(
     legacyManifest.files,
     legacyManifest.resolverVersion,
   );
   const legacyText = JSON.stringify(legacyManifest) + "\n";
   const assets = createAssetEnv({
-    overrides: new Map([[manifestRelative, legacyText]])
+    overrides: new Map([[manifestRelative, legacyText], [compactManifestRelative, null]])
   });
   const result = await validateOriginalSnapshot(
     assets.env,
@@ -465,7 +668,7 @@ test("a legacy manifest falls back to the existing full canonical loader", async
       .map(([, value]) => String(value).replace(/^archive\//, ""))))];
   assert.deepEqual(
     [...assets.requests].sort(),
-    [manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => path.posix.normalize("archive/" + p))].sort(),
+    [compactManifestRelative, manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => path.posix.normalize("archive/" + p))].sort(),
   );
 });
 
@@ -594,6 +797,8 @@ test("mixed assignment validation uses indexed verification with a legacy full-c
     },
   );
   assert.deepEqual(result.sourceGrades, [record.sourceGrade]);
+  assert.ok(assets.requests.includes(manifestRelative));
+  assert.equal(assets.requests.includes(compactManifestRelative), false, "mixed loader keeps the original manifest contract");
   if (sourceIndex.mixedLookup) {
     assert.ok(assets.requests.includes(indexRelative));
     assert.ok(assets.requests.includes("archive/data/archive2-source-verification/mixed-v1/context.json"));
@@ -627,7 +832,7 @@ test("registered textbook sources validate through the Worker original-snapshot 
     { questions },
     { archive_file: "exams/" + textbookFile, question_count: questions.length, index_version: manifest.projectionVersion },
   );
-  assert.deepEqual(assets.requests, [manifestRelative, indexRelative, "archive/" + shardPathOf(textbookFile)]);
+  assert.deepEqual(assets.requests, [compactManifestRelative, topRelative, bucketRelativeOf(textbookFile), "archive/" + shardPathOf(textbookFile)]);
   assert.equal(result.exam.file, textbookFile);
   assert.equal(result.questions.length, questions.length);
   for (let index = 0; index < questions.length; index++) {
@@ -636,4 +841,106 @@ test("registered textbook sources validate through the Worker original-snapshot 
     for (const field of ["content", "choices", "answer", "solution", "image"])
       assert.deepEqual(result.questions[index][field], questions[index][field], "raw question bytes are retained: " + field);
   }
+});
+
+test("sharded file list matches the flat index and every byte it commits to", async () => {
+  const buckets = new Map();
+  const prefixes = new Set();
+  let total = 0;
+  assert.equal(topIndex.buckets.length, canonical.SOURCE_VERIFICATION_INDEX_BUCKET_COUNT);
+  for (const row of topIndex.buckets) {
+    assert.match(row.prefix, /^[0-9a-f]$/);
+    assert.equal(prefixes.has(row.prefix), false, "bucket prefix is repeated: " + row.prefix);
+    prefixes.add(row.prefix);
+    const body = fs.readFileSync(path.join(root, "archive", canonical.SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX + row.prefix + ".json"), "utf8");
+    assert.equal(sha256(body), row.sha256, "bucket digest: " + row.prefix);
+    assert.equal(Buffer.byteLength(body), row.byteLength, "bucket byteLength: " + row.prefix);
+    const bucket = JSON.parse(body);
+    assert.equal(bucket.schemaVersion, canonical.SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA);
+    assert.equal(bucket.prefix, row.prefix);
+    assert.equal(bucket.files.length, row.fileCount);
+    total += bucket.files.length;
+    buckets.set(row.prefix, bucket);
+  }
+  assert.equal(total, topIndex.fileCount, "bucket rows add up to the top index count");
+  assert.equal(total, sourceIndex.files.length, "bucket rows add up to the flat index");
+
+  const seen = new Set();
+  for (const [prefix, bucket] of buckets) {
+    for (const row of bucket.files) {
+      assert.equal(seen.has(row.sourceFile), false, "source is listed twice: " + row.sourceFile);
+      seen.add(row.sourceFile);
+      assert.equal(sha256(row.sourceFile).slice(0, 1), prefix, "source is in the wrong bucket: " + row.sourceFile);
+      assert.equal(Object.hasOwn(row, "path"), false);
+    }
+  }
+  const flat = new Map(sourceIndex.files.map((row) => [row.sourceFile, row]));
+  assert.equal(seen.size, flat.size, "no source is missing or extra");
+  for (const bucket of buckets.values())
+    for (const row of bucket.files)
+      assert.deepEqual(row, flat.get(row.sourceFile), "bucket row equals flat row: " + row.sourceFile);
+});
+
+test("the largest original check stays far below the 500 KB limit", async () => {
+  const sizeOf = (relative) => fs.statSync(path.join(root, relative)).size;
+  const fixed = sizeOf(compactManifestRelative) + sizeOf(topRelative);
+  let worst = 0;
+  let worstFile = "";
+  for (const row of sourceIndex.files) {
+    const bytes = fixed + sizeOf(bucketRelativeOf(row.sourceFile)) + sizeOf("archive/" + shardPathOf(row.sourceFile));
+    if (bytes > worst) { worst = bytes; worstFile = row.sourceFile; }
+  }
+  assert.ok(worst < 500_000, "largest original check is " + worst + " bytes (" + worstFile + ")");
+});
+
+// With coordinatedTotal the forger also rewrites the top index total, so only the per-row checks can catch the change.
+async function rebasedBucketFixture(mutateBucket, { coordinatedTotal = false } = {}) {
+  const nextManifest = clone(manifest);
+  const nextTop = clone(topIndex);
+  const nextBucket = clone(sourceBucket);
+  mutateBucket(nextBucket);
+  const nextBucketText = JSON.stringify(nextBucket) + "\n";
+  const topBucketRow = nextTop.buckets.find((row) => row.prefix === nextBucket.prefix);
+  topBucketRow.sha256 = sha256(nextBucketText);
+  topBucketRow.byteLength = Buffer.byteLength(nextBucketText);
+  if (coordinatedTotal) nextTop.fileCount += nextBucket.files.length - topBucketRow.fileCount;
+  topBucketRow.fileCount = nextBucket.files.length;
+  const nextTopText = JSON.stringify(nextTop) + "\n";
+  nextManifest.files.find((row) => row.path === canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH).sha256 = sha256(nextTopText);
+  nextManifest.projectionVersion = await canonical.computeProjectionVersion(nextManifest.files, nextManifest.resolverVersion);
+  return {
+    input: makeInput(nextManifest.projectionVersion),
+    overrides: new Map([
+      [manifestRelative, JSON.stringify(nextManifest) + "\n"],
+      [compactManifestRelative, JSON.stringify(canonical.encodeCompactInputManifest(nextManifest)) + "\n"],
+      [topRelative, nextTopText],
+      [bucketRelative, nextBucketText],
+    ]),
+  };
+}
+
+test("a bucket that holds another bucket's row or loses a row fails closed even when its digests are rebased", async (t) => {
+  await t.test("a row that belongs to another bucket is rejected", async () => {
+    const foreign = sourceIndex.files.find((row) => sha256(row.sourceFile).slice(0, 1) !== sourceBucket.prefix);
+    assert.ok(foreign, "a row from another bucket exists");
+    const fixture = await rebasedBucketFixture((bucket) => bucket.files.push(clone(foreign)), { coordinatedTotal: true });
+    const assets = createAssetEnv({ overrides: fixture.overrides });
+    await assert.rejects(
+      validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, fixture.input),
+      (error) => error.status === 503 && /canonical source index row is invalid/.test(error.message),
+    );
+    assert.equal(assets.requests.includes(shardRelative), false, "no shard is fetched after a bad bucket");
+  });
+
+  await t.test("a dropped row breaks the top index coverage count", async () => {
+    const dropped = sourceBucket.files.findIndex((row) => row.sourceFile !== sourceFile);
+    assert.ok(dropped >= 0);
+    const fixture = await rebasedBucketFixture((bucket) => bucket.files.splice(dropped, 1));
+    const assets = createAssetEnv({ overrides: fixture.overrides });
+    await assert.rejects(
+      validateOriginalSnapshot(assets.env, { questions: sourceQuestions }, fixture.input),
+      (error) => error.status === 503 && /bucket coverage is incomplete/.test(error.message),
+    );
+    assert.equal(assets.requests.includes(bucketRelative), false, "coverage is checked before any bucket is read");
+  });
 });
