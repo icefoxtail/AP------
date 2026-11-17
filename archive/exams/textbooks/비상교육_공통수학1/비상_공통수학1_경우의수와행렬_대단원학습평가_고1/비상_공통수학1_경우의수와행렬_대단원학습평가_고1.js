@@ -24,7 +24,7 @@ window.questionBank = [
       "대단원 학습 평가"
     ],
     "wide": false,
-    "content": "부등식 $4<x+y<7$을 만족시키는 자연수 $x$, $y$의 순서쌍 $(x, y)$의 개수는?",
+    "content": "부등식 $4\\le x+y<7$을 만족시키는 자연수 $x$, $y$의 순서쌍 $(x, y)$의 개수는?",
     "choices": [
       "$6$",
       "$8$",
@@ -32,8 +32,8 @@ window.questionBank = [
       "$12$",
       "$14$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "$x+y=4$일 때 $(1,3),(2,2),(3,1)$의 3개, $x+y=5$일 때 4개, $x+y=6$일 때 5개이므로 구하는 순서쌍의 개수는 $3+4+5=12$이다. 따라서 정답은 ④이다."
   },
   {
     "id": 2,
@@ -338,10 +338,10 @@ window.questionBank = [
       "대단원 학습 평가"
     ],
     "wide": false,
-    "content": "등식 $_n\\mathrm{P}_3=5\\times {}_{n-1}\\mathrm{P}_2-3\\times {}_n\\mathrm{P}_2$를 만족시키는 자연수 $n$의 값을 구하시오. (단, $n>3$)",
+    "content": "등식 $_n\\mathrm{P}_3=12\\times {}_{n-1}\\mathrm{P}_2-3\\times {}_n\\mathrm{P}_2$를 만족시키는 자연수 $n$의 값을 구하시오. (단, $n>3$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "8",
+    "solution": "$_n\\mathrm{P}_3=n(n-1)(n-2)$, $_{n-1}\\mathrm{P}_2=(n-1)(n-2)$, $_n\\mathrm{P}_2=n(n-1)$이므로 $n(n-1)(n-2)=12(n-1)(n-2)-3n(n-1)$이다. 양변을 $n-1$로 나누면 $n(n-2)=12(n-2)-3n$이므로 $n^2-11n+24=0$, 즉 $(n-3)(n-8)=0$이다. $n>3$이므로 $n=8$이다."
   },
   {
     "id": 13,

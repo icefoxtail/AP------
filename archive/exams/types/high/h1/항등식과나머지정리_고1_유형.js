@@ -338,7 +338,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "content": "최고차항 계수가 $1$인 이차식 $f(x)$가 $x+2$로 나누어떨어진다. $f(x^2)$을 $f(x)$로 나누었을 때의 나머지가 $10x+2$일 때, $f(2)$의 값을 구하시오. [2024 한영고 1-1 중간 15번]",
+    "content": "최고차항 계수가 $1$인 이차식 $f(x)$가 $x+2$로 나누어떨어진다. $f(x^2)$을 $x+2$로 나누었을 때의 나머지가 $-18$일 때, $f(2)$의 값을 구하시오. [2024 한영고 1-1 중간 15번]",
     "choices": [
       "-25",
       "-20",
@@ -357,7 +357,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "solution": "<<b>[Logical Anchor]</b> $f(x)$가 이차식이므로 $f(x)=(x+2)(x-k)$로 설정 후 수치대입법 적용.\\n$f(x^2) = f(x)Q(x) + 10x+2$\\n$x=-2$ 대입 $\\implies f(4) = f(-2)Q(-2) + 10(-2)+2 = -18$\\n$f(x) = (x+2)(x-k) \\implies f(4) = 6(4-k) = -18$\\n$\\implies 4-k = -3 \\implies k=7$\\n$f(x) = (x+2)(x-7)$\\n$\\therefore f(2) = (4)(-5) = -20$",
+    "solution": "<<b>[Logical Anchor]</b> $f(x)$가 이차식이므로 $f(x)=(x+2)(x-k)$로 설정 후 수치대입법 적용.\\n$f(x^2) = (x+2)Q(x) - 18$\\n$x=-2$ 대입 $\\implies f(4) = -18$\\n$f(x) = (x+2)(x-k) \\implies f(4) = 6(4-k) = -18$\\n$\\implies 4-k = -3 \\implies k=7$\\n$f(x) = (x+2)(x-7)$\\n$\\therefore f(2) = (4)(-5) = -20$",
     "level": "중",
     "subUnitKey": "HH15-SA-02-CORE",
     "subUnit": "항등식과 나머지정리 핵심 개념",
@@ -618,7 +618,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "다항식 $f(x)$를 $x^2+1$로 나누었을 때 나머지가 $x+1$이고, $(x-1)^2$으로 나누어떨어지는 3차식이다. $f(0)=2$일 때 $f(2)$를 구하시오. [2024 충무고 1-1 중간 14번]",
+    "content": "다항식 $f(x)$를 $x^2+1$로 나누었을 때 나머지가 $x+1$이고, $x-1$로 나누어떨어지는 3차식이다. $f(0)=2$일 때 $f(2)$를 구하시오. [2024 충무고 1-1 중간 14번]",
     "choices": [
       "-14",
       "-12",
@@ -637,7 +637,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "solution": "<<b>[Logical Anchor]</b> 3차식을 2차식으로 나눈 몫은 1차식이므로 $f(x)=(x^2+1)(ax+b)+x+1$로 설정.\\n$f(0) = 2 \\implies b+1 = 2 \\implies b = 1$\\n$f(x)$는 $(x-1)^2$으로 나누어떨어짐 $\\implies f(1) = 0$\\n$f(1) = 2(a+1) + 2 = 0 \\implies 2a+4 = 0 \\implies a = -2$\\n$f(x) = (-2x+1)(x^2+1) + x+1$\\n$\\therefore f(2) = (-3)(5) + 3 = -12$",
+    "solution": "<<b>[Logical Anchor]</b> 3차식을 2차식으로 나눈 몫은 1차식이므로 $f(x)=(x^2+1)(ax+b)+x+1$로 설정.\\n$f(0) = 2 \\implies b+1 = 2 \\implies b = 1$\\n$f(x)$는 $x-1$로 나누어떨어짐 $\\implies f(1) = 0$\\n$f(1) = 2(a+1) + 2 = 0 \\implies 2a+4 = 0 \\implies a = -2$\\n$f(x) = (-2x+1)(x^2+1) + x+1$\\n$\\therefore f(2) = (-3)(5) + 3 = -12$",
     "level": "중",
     "subUnitKey": "HH15-SA-02-CORE",
     "subUnit": "항등식과 나머지정리 핵심 개념",
@@ -758,7 +758,7 @@ window.questionBank = [
   },
   {
     "id": 28,
-    "content": "$f(x)$를 $x^2-3x+2$로 나눈 나머지는 $4x-1$, $x^2-4x+3$으로 나눈 나머지는 $x+5$일 때 $f(x)$를 $x^2-5x+6$으로 나눈 나머지를 구하시오. [2024 부영여고 1-1 중간 12번]",
+    "content": "$f(x)$를 $x^2-3x+2$로 나눈 나머지는 $4x-1$, $x^2-4x+3$으로 나눈 나머지는 $x+2$일 때 $f(x)$를 $x^2-5x+6$으로 나눈 나머지를 구하시오. [2024 부영여고 1-1 중간 12번]",
     "choices": [
       "  ",
       "  ",
@@ -766,7 +766,7 @@ window.questionBank = [
       "  ",
       "  "
     ],
-    "answer": "x+5",
+    "answer": "-2x+11",
     "category": "나머지 정리의 조합",
     "originalCategory": "나머지 정리의 조합",
     "standardCourse": "수학(상)",
@@ -777,7 +777,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "solution": "<<b>[Logical Anchor]</b> 구하고자 하는 나머지의 기준식 $x^2-5x+6=(x-2)(x-3)$이므로 $f(2)$와 $f(3)$의 함숫값이 필요.\\n$f(x)$를 $(x-1)(x-2)$로 나눈 나머지 $4x-1 \\implies f(2) = 4(2)-1 = 7$\\n$f(x)$를 $(x-1)(x-3)$으로 나눈 나머지 $x+5 \\implies f(3) = 3+5 = 8$\\n$f(x) = (x-2)(x-3)Q(x) + ax+b$\\n$\\implies 2a+b = 7,\\ 3a+b = 8$\\n연립 $\\implies a=1,\\ b=5$\\n$\\therefore R(x) = x+5$",
+    "solution": "[Logical Anchor] $x^2-5x+6=(x-2)(x-3)$이므로 $f(2)$와 $f(3)$의 값이 필요하다.\\n$f(x)$를 $(x-1)(x-2)$로 나눈 나머지가 $4x-1$이므로 $f(2)=4\\cdot2-1=7$이다.\\n$f(x)$를 $(x-1)(x-3)$으로 나눈 나머지가 $x+2$이므로 $f(3)=3+2=5$이다.\\n$f(x)=(x-2)(x-3)Q(x)+ax+b$로 놓으면 $2a+b=7,\\ 3a+b=5$이므로 $a=-2,\\ b=11$이다.\\n$\\therefore$ 나머지는 $-2x+11$",
     "level": "중",
     "subUnitKey": "HH15-SA-02-CORE",
     "subUnit": "항등식과 나머지정리 핵심 개념",

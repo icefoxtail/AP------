@@ -645,7 +645,7 @@ window.questionBank = [
       "합동 조건",
       "SAS 합동"
     ],
-    "content": "두 삼각형 $\\triangle \\text{ABC}$와 $\\triangle \\text{DEF}$에서 $\\overline{\\text{AB}} = \\overline{\\text{DE}} = 4\\text{ cm}$, $\\overline{\\text{BC}} = \\overline{\\text{EF}} = 7\\text{ cm}$일 때, 두 삼각형이 합동($\\triangle \\text{ABC} \\equiv \\triangle \\text{DEF}$)이 되기 위한 조건으로 항상 옳은 것만을 보기에서 모두 고른 것은?\nㄱ. $\\overline{\\text{AC}} = \\overline{\\text{DF}}$ ㄴ. $\\angle \\text{B} = \\angle \\text{E}$ ㄷ. $\\angle \\text{A} = \\angle \\text{D}$ ㄹ. $\\angle \\text{C} = \\angle \\text{F}$",
+    "content": "두 삼각형 $\\triangle \\text{ABC}$와 $\\triangle \\text{DEF}$에서 $\\overline{\\text{AB}} = \\overline{\\text{DE}} = 4\\text{ cm}$, $\\overline{\\text{BC}} = \\overline{\\text{EF}} = 7\\text{ cm}$일 때, 두 삼각형이 합동($\\triangle \\text{ABC} \\equiv \\triangle \\text{DEF}$)이 되기 위한 조건으로 항상 옳은 것만을 보기에서 모두 고른 것은?\nㄱ. $\\overline{\\text{AC}} = \\overline{\\text{DF}}$ ㄴ. $\\angle \\text{B} = \\angle \\text{E}$ ㄷ. $\\angle \\text{A} = \\angle \\text{F}$ ㄹ. $\\angle \\text{C} = \\angle \\text{F}$",
     "choices": [
       "ㄱ",
       "ㄴ",

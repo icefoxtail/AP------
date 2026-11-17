@@ -152,7 +152,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 함수의 그래프 중 함수 $y=\\left(\\dfrac12\\right)^x$의 그래프를 평행이동하거나 대칭이동하여 포개질 수 없는 것은?",
+    "content": "다음 함수의 그래프 중 함수 $y=\\left(\\dfrac12\\right)^x$의 그래프를 평행이동하거나 $x$축, $y$축, 원점에 대하여 대칭이동하여 포개질 수 없는 것은?",
     "choices": [
       "$y=2^x$",
       "$y=\\left(\\dfrac12\\right)^x+4$",

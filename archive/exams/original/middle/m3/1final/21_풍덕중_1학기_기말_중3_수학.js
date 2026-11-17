@@ -369,8 +369,8 @@ window.questionBank = [
       "$y = \\dfrac{3}{2}x^2$",
       "$y = -\\dfrac{1}{3}x^2$"
     ],
-    "answer": "④",
-    "solution": "$y=ax^2$에서 $a>0$이면 그래프는 위로 열린다. 위로 열린 두 그래프 중 $|a|$가 클수록 폭이 좁다. ①의 계수는 $\\frac{1}{2}$, ④의 계수는 $\\frac{3}{2}$이므로 더 큰 계수를 가진 ④가 가장 좁다.",
+    "answer": "②",
+    "solution": "위로 볼록한 그래프는 $y=ax^2$에서 $a<0$인 것이므로 ②, ③, ⑤가 해당한다. 이 중 $|a|$가 클수록 폭이 좁으므로 $|a|$가 가장 큰 $y=-3x^2$인 ②가 폭이 가장 좁다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",

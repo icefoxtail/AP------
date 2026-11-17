@@ -199,21 +199,10 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "$$\\frac{1}{2}x+1=4$$\n$$\\frac{1}{2}x+1+(",
-    "choices": [
-      ")=4+(",
-      ")$$\n$$\\frac{1}{2}x=(",
-      ")$$\n$$\\frac{1}{2}x \\times (",
-      ") = (",
-      ")$$\n$$\\therefore x=6$$",
-      "$-1$",
-      "$-4$",
-      "$3$",
-      "$2$",
-      "$6$"
-    ],
-    "answer": "②",
-    "solution": "[키포인트] ① $-1$, ②는 $-1$ (4에 더하는 것도 $-1$이어야 함, $-4$가 아님), ③ $3$, ④ $2$, ⑤ $6$\n따라서 정답은 ②이다.",
+    "content": "다음은 일차방정식 $\\dfrac{1}{2}x+1=4$를 푸는 과정이다. ㉡에 알맞은 수는?\n$$\\dfrac{1}{2}x+1=4$$\n$$\\dfrac{1}{2}x+1+(㉠)=4+(㉠)$$\n$$\\dfrac{1}{2}x=(㉡)$$\n$$\\dfrac{1}{2}x\\times(㉢)=(㉡)\\times(㉢)$$\n$$\\therefore x=6$$",
+    "choices": ["$-1$","$-4$","$3$","$2$","$6$"],
+    "answer": "③",
+    "solution": "[키포인트] 양변에서 $1$을 빼면(㉠$=-1$) $\\dfrac{1}{2}x=3$이므로 ㉡$=3$이다. 양변에 $2$를 곱하면(㉢$=2$) $x=6$이다.\n따라서 정답은 ③이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -272,7 +261,7 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "$$x+\\frac{2}{3}=-\\frac{1}{3}$$\n$$x+\\frac{2}{3}-\\frac{2}{3}=-\\frac{1}{3}-\\frac{2}{3}$$\n$$x=-1$$",
+    "content": "다음 풀이 과정에서 이용된 등식의 성질로 옳은 것은?\n$$x+\\frac{2}{3}=-\\frac{1}{3}$$\n$$x+\\frac{2}{3}-\\frac{2}{3}=-\\frac{1}{3}-\\frac{2}{3}$$\n$$x=-1$$",
     "choices": [
       "$3a=2b$이면 $\\dfrac{a}{2}=\\dfrac{b}{3}$",
       "$a=b$이면 $a-2=b-2$",
@@ -307,23 +296,10 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "content": "$$\\text{",
-    "choices": [
-      "} -4x-7=5$$\n$$\\text{",
-      "} -4x-7+7=5+7$$\n$$\\text{",
-      "} -4x+(-7+7)=5+7$$\n$$\\text{",
-      "} -4x=12$$\n$$\\text{",
-      "} \\left(-\\frac{1}{4}\\right)\\times(-4x)=\\left(-\\frac{1}{4}\\right)\\times 12$$\n$$\\left\\{\\left(-\\frac{1}{4}\\right)\\times(-4)\\right\\}\\times x=\\left(-\\frac{1}{4}\\right)\\times 12$$\n$$x=-3$$",
-      "~",
-      "각 단계의 설명:",
-      "덧셈의 교환법칙",
-      "곱셈의 결합법칙",
-      "등식의 양변에 같은 수를 곱하여도 등식은 성립한다.",
-      "등식의 양변에서 같은 수를 빼어도 등식은 성립한다.",
-      "등식의 양변에 같은 수를 더하여도 등식은 성립한다."
-    ],
+    "content": "다음은 일차방정식 $-4x-7=5$를 푸는 과정이다. $-4x=12$에서 $x=-3$을 구할 때 이용된 등식의 성질은?\n$$-4x-7=5$$\n$$-4x-7+7=5+7$$\n$$-4x=12$$\n$$\\left(-\\dfrac{1}{4}\\right)\\times(-4x)=\\left(-\\dfrac{1}{4}\\right)\\times 12$$\n$$x=-3$$",
+    "choices": ["등식의 양변에 같은 수를 더하여도 등식은 성립한다.","덧셈의 결합법칙","등식의 양변에 같은 수를 곱하여도 등식은 성립한다.","곱셈의 결합법칙","등식의 양변에서 같은 수를 빼어도 등식은 성립한다."],
     "answer": "③",
-    "solution": "[키포인트] - ①: 등식의 양변에 같은 수를 더하여도 등식은 성립한다.\n- ②: 덧셈의 결합법칙\n- **③: 등식의 양변에 같은 수를 곱하여도 등식은 성립한다.** ✓\n- ④: 곱셈의 결합법칙\n- ⑤: 등식의 양변에 같은 수를 곱하여도 등식은 성립한다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] $-4x=12$의 양변에 $-\\dfrac{1}{4}$을 곱하여 $x=-3$을 얻었으므로 이용된 성질은 '등식의 양변에 같은 수를 곱하여도 등식은 성립한다'이다.\n따라서 정답은 ③이다.",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -453,7 +429,7 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "$$2-0.6x=\\frac{2}{5}x$$\n$$20-6x=(㉠)$$\n$$-6x+(㉡)=-20$$\n$$-10x=-20$$\n$$x=(㉢)$$",
+    "content": "$$2-0.6x=\\frac{2}{5}x$$\n$$20-6x=(㉠)$$\n$$-6x+(㉡)=-20$$\n$$-10x=-20$$\n$$x=(㉢)$$\n㉠+㉡+㉢의 값은?",
     "choices": [
       "$8x+2$",
       "$2$",
@@ -487,7 +463,7 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "**보기**\n㉠ $3x-2=3(x-1)$\n㉡ $x+1=2x+1-x$\n㉢ $2x+3=5x$\n㉣ $3(x-1)=0$\n㉤ $2(x+1)=2+2x$",
+    "content": "다음 보기 중 $x$에 대한 항등식은 모두 몇 개인가?\n**보기**\n㉠ $3x-2=3(x-1)$\n㉡ $x+1=2x+1-x$\n㉢ $2x+3=5x$\n㉣ $3(x-1)=0$\n㉤ $2(x+1)=2+2x$",
     "choices": [
       "1개",
       "2개",
@@ -589,7 +565,7 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "$$\\frac{1}{5}x-2=-\\frac{4}{5}-x \\xrightarrow{(가)}$$\n$$x-10=-4-5x \\xleftarrow{(나)}$$\n$$x+5x-10=-4 \\xleftarrow{(다)}$$\n$$6x=10-4 \\xleftarrow{(라)}$$\n$$6x=6 \\xleftarrow{(마)}$$\n$$\\therefore x=1$$",
+    "content": "$$\\frac{1}{5}x-2=-\\frac{4}{5}-x \\xrightarrow{(가)}$$\n$$x-10=-4-5x \\xleftarrow{(나)}$$\n$$x+5x-10=-4 \\xleftarrow{(다)}$$\n$$6x=10-4 \\xleftarrow{(라)}$$\n$$6x=6 \\xleftarrow{(마)}$$\n$$\\therefore x=1$$\n다음 중 '$a=b$이면 $\\dfrac{a}{c}=\\dfrac{b}{c}$ ($c\\ne0$)'가 이용된 단계는?",
     "choices": [
       "(가)",
       "(나)",
@@ -695,7 +671,7 @@ window.questionBank = [
       "실생활"
     ],
     "wide": false,
-    "content": "(앞차: 시속 90km, 뒷차: 시속 80km, 도착 시간 차이: 30분)",
+    "content": "같은 거리 $x$ km를 앞차는 시속 $90$ km로, 뒤차는 시속 $80$ km로 달렸더니 뒤차가 앞차보다 $30$분 늦게 도착하였다. 이를 만족하는 방정식으로 옳은 것은?",
     "choices": [
       "$\\dfrac{x}{80}-\\dfrac{x}{90}=\\dfrac{1}{2}$",
       "$\\dfrac{x}{80}+\\dfrac{x}{90}=\\dfrac{1}{2}$",
@@ -729,7 +705,7 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "㉠ $a=b$이면 $a-b=0$이다.\n㉡ $2a=3b$이면 $2(a+1)=3(b+1)$이다.\n㉢ $x=-y+1$이면 $-x=y+1$이다.\n㉣ $\\dfrac{x}{3}=\\dfrac{y}{4}$이면 $4x=3y$이다.\n㉤ $a=b$이면 $\\dfrac{a}{c}=\\dfrac{b}{c}$이다.",
+    "content": "㉠ $a=b$이면 $a-b=0$이다.\n㉡ $2a=3b$이면 $2(a+1)=3(b+1)$이다.\n㉢ $x=-y+1$이면 $-x=y+1$이다.\n㉣ $\\dfrac{x}{3}=\\dfrac{y}{4}$이면 $4x=3y$이다.\n㉤ $a=b$이면 $\\dfrac{a}{c}=\\dfrac{b}{c}$이다.\n다음 중 옳은 것끼리 짝지은 것은?",
     "choices": [
       "㉠, ㉡",
       "㉣, ㉤",
@@ -1008,7 +984,7 @@ window.questionBank = [
       "항등식"
     ],
     "wide": false,
-    "content": "㈎ $-(x-2)=-x+2$\n㈏ $x+7=2x+7-x$\n㈐ $\\dfrac{1}{2}(x^2-2)=\\dfrac{1}{2}x^2-1$\n㈑ $2-3(x+4)=-\\dfrac{1}{2}(6x+20)$\n㈒ $5x-3^2-x=4-(13-4x)$",
+    "content": "㈎ $-(x-2)=-x+2$\n㈏ $x+7=2x+7-x$\n㈐ $\\dfrac{1}{2}(x^2-2)=\\dfrac{1}{2}x^2-1$\n㈑ $2-3(x+4)=-\\dfrac{1}{2}(6x+20)$\n㈒ $5x-3^2-x=4-(13-4x)$\n위의 식 중 $x$에 대한 항등식은 모두 몇 개인가?",
     "choices": [
       "1개",
       "2개",
