@@ -58,7 +58,7 @@
       "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION"
     ],
     "absorbInto": null,
-    "count": 68,
+    "count": 69,
     "examples": [
       "qid_v1_1c3319479ccc9cfb4a1460dd0ba45ad6a958e67c684f3e330a1b96ca12bd2e8b",
       "qid_v1_a3afc7179bc5c7c724f3434fa3489fce3f7b283eeaea6283d80f2702d5539128",
@@ -79,7 +79,7 @@
       "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA"
     ],
     "absorbInto": null,
-    "count": 113,
+    "count": 114,
     "examples": [
       "qid_v1_20649e05a6c21273a513883ab801c96650cc206ef93174a99eed4f9dca2d7ef2",
       "qid_v1_e39470743bf0c5d19ebbc55287d7db34c8f8afacd10593747ef941f38f0b162a",
@@ -177,7 +177,7 @@
       "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK"
     ],
     "absorbInto": null,
-    "count": 211,
+    "count": 212,
     "examples": [
       "qid_v1_c75c91feaa525c37af5ee29617911855a598571a0a6b836b64fe9d10fd8ff91b",
       "qid_v1_d291e726c0b72e3ded2a2b076e97525f91f8f454de9cf4d21c85c4e90f0b197c",
@@ -227,7 +227,7 @@
       "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION"
     ],
     "absorbInto": null,
-    "count": 333,
+    "count": 334,
     "examples": [
       "qid_v1_10e2d5367979590042202fff896f58a2d5c3afd9f1950196463692d948b7a422",
       "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
@@ -354,6 +354,138 @@
     ],
     "relatedKeys": [
       "PT_PROBABILITY_PROPERTIES_APPLICATION"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_RATIO_DISTRIBUTION",
+    "nameKo": "비와 비례배분",
+    "definition": "전체량을 주어진 부분의 비로 나누고 비례식을 통해 부분량을 구한다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_c5a5ac819a126b2eb42339852ffbdb5247057d64a16b5c96ddce877919c8b032"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_FIGURE_AREA",
+    "nameKo": "도형의 넓이",
+    "definition": "밑변과 높이, 같은 높이의 넓이비 및 등적변형으로 평면도형의 넓이와 분할 관계를 판단한다.",
+    "course": "middle2",
+    "distinctFrom": [
+      "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION"
+    ],
+    "absorbInto": null,
+    "count": 11,
+    "examples": [
+      "qid_v1_4c730f115259eadb33b9ae1084dcf97a1baf7fa4ceb3dd6a8b7528bd158ec40d",
+      "qid_v1_138ebcaa6468ff5225baa67336226b408f53503bc83696ef593756ec898f5226",
+      "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": [
+      "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION"
+    ]
+  },
+  {
+    "bundle": "NPT_M2_LINEAR_EQUATION",
+    "nameKo": "일차방정식",
+    "definition": "하나의 미지수에 관한 일차방정식으로 수량 관계를 표현하여 해를 구하고 조건을 해석한다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 3,
+    "examples": [
+      "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+      "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "qid_v1_55f0360d0733c988db7c741b540bb907cfe6942ae822fafd89764fe13fba497e"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_CENTROID",
+    "nameKo": "삼각형의 무게중심",
+    "definition": "중선의 교점이 각 중선을 꼭짓점 쪽에서 2:1로 나누는 성질과 중선에 따른 넓이 분할을 이용한다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 65,
+    "examples": [
+      "qid_v1_30c513832a16cca07e200b7faab4962e79f5086701f6df4c0c286e1af0ca117a",
+      "qid_v1_84db4068188ca46cfde122762a625b2e23ad10458dbfc0e6817bd8e54af2d65d",
+      "qid_v1_98e21adc5ec3cde4c873a72430550208f098fd6df18f99d150a797759c237195"
+    ],
+    "relatedKeys": [
+      "PT_COORD_CENTROID"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_LOGICAL_CONSTRAINT",
+    "nameKo": "조건 추론",
+    "definition": "여러 논리 조건을 후보별로 대조하여 모든 조건을 만족하는 대상을 가려낸다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_4e41cd3ef76427e6a2a82b9edf0c400b1e7c40e6d1f8e18ce8fac377b3d5e8df"
+    ],
+    "relatedKeys": [],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_TRIANGLE_CONGRUENCE",
+    "nameKo": "삼각형의 합동",
+    "definition": "두 삼각형의 합동 조건을 확인하고 대응하는 변과 각의 성질을 이용한다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 4,
+    "examples": [
+      "qid_v1_545e439586cd1bb8898a9ed1c954ea19f92a8d78fc999fd2836a6de5ffc914d4",
+      "qid_v1_70174116e724056293081a26029ce9b4afb81da812c5e7dccc4ff558782d23aa",
+      "qid_v1_44526e40b95a0c60ce2ab35b0ccac014fee406bc3258b51be536d26fa86bf9c6"
+    ],
+    "relatedKeys": [
+      "PT_M1_CONGRUENCE_DATA_TRANSFER"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_TRIANGLE_ANGLE",
+    "nameKo": "삼각형의 각",
+    "definition": "삼각형의 내각의 합과 외각의 관계를 이용하여 각의 크기를 구한다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_ba6cebd0f26be6a84eb48eb4d2b0d1b0877c964b8e5e3575d703db07364d60ba"
+    ],
+    "relatedKeys": [
+      "PT_M1_TRIANGLE_ANGLE_CONDITION"
+    ],
+    "narrowExisting": []
+  },
+  {
+    "bundle": "NPT_M2_PARALLEL_SEGMENT_RATIO",
+    "nameKo": "평행선과 선분의 비",
+    "definition": "평행선으로 나뉜 대응 선분 사이 비례 관계를 세워 길이를 구한다.",
+    "course": "middle2",
+    "distinctFrom": [],
+    "absorbInto": null,
+    "count": 1,
+    "examples": [
+      "qid_v1_fd153bb1352b6e7100453f0d6035d6e2999603fb8d418e8567f0db201d32b99f"
+    ],
+    "relatedKeys": [
+      "PT_PARALLEL_SEGMENT_RATIO"
     ],
     "narrowExisting": []
   }
