@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "21",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "길이는양수이므로0제외,둘레90은이하라21포함. 최댓값21cm.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 세로의 길이보다 3 cm 더 긴 직사각형이 있다. 이 직사각형의 둘레의 길이를 90 cm 이하가 되게 하는 세로의 길이의 최댓값은?",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "길이는양수이므로0제외,둘레90은이하라21포함. 최댓값21cm.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "길이는양수이므로0제외,둘레90은이하라21포함. 최댓값21cm."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "to": "C",
+      "style": "SOLID",
+      "role": "ACCENT",
+      "from": "E"
+    },
+    {
+      "to": "C",
+      "style": "DASHED",
+      "role": "REF",
+      "from": "A"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "2"
+    },
+    {
+      "edge": "AD",
+      "label": "2"
+    },
+    {
+      "edge": "AE",
+      "label": "2"
+    },
+    {
+      "to": "C",
+      "label": "2sqrt(3)",
+      "from": "E"
+    }
+  ],
+  "caption": "원본의a=AB,b=AD,c=AE를보존한다. a+b−c=AC+EA=EC이므로정육면체공간대각선EC를강조한다. 세직교방향성분의제곱합2²+2²+2²=12에서크기2√3. 정답2√3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q05.png\" />\n\n오른쪽 그림과 같이 한 모서리의 길이가 $2$인 정육면체에서 $\\vec{\\mathrm{AB}}=\\vec{a}, \\vec{\\mathrm{AD}}=\\vec{b}, \\vec{\\mathrm{AE}}=\\vec{c}$라고 할 때, 벡터 $\\vec{a}+\\vec{b}-\\vec{c}$의 크기를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본의a=AB,b=AD,c=AE를보존한다. a+b−c=AC+EA=EC이므로정육면체공간대각선EC를강조한다. 세직교방향성분의제곱합2²+2²+2²=12에서크기2√3. 정답2√3.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의a=AB,b=AD,c=AE를보존한다. a+b−c=AC+EA=EC이므로정육면체공간대각선EC를강조한다. 세직교방향성분의제곱합2²+2²+2²=12에서크기2√3. 정답2√3."
+  ]
+}

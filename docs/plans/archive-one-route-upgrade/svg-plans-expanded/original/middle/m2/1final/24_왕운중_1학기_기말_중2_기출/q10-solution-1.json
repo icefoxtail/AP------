@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "4"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      24
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "P1",
+        "x": "21",
+        "y": "90"
+      }
+    ],
+    "formula": "4*x + 6",
+    "overlays": {
+      "lines": [
+        {
+          "id": "limit",
+          "slope": "0",
+          "intercept": "90"
+        }
+      ]
+    }
+  },
+  "caption": "세로x>0,가로x+3인직사각형둘레4x+6. 둘레90이하이려면x≤21이며양의길이중최대21. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 세로의 길이보다 3 cm 더 긴 직사각형이 있다. 이 직사각형의 둘레의 길이를 90 cm 이하가 되게 하는 세로의 길이의 최댓값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "세로x>0,가로x+3인직사각형둘레4x+6. 둘레90이하이려면x≤21이며양의길이중최대21. 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "세로x>0,가로x+3인직사각형둘레4x+6. 둘레90이하이려면x≤21이며양의길이중최대21. 정답②."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "81/4",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      4,
+      5.5
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "4",
+        "11/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "(x-4)^2+17/4",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "17/4"
+      },
+      {
+        "id": "B",
+        "x": "9/2",
+        "y": "9/2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "c17/4의실제오른쪽가지 x≥4에서 접점(9/2,9/2)을보인다. 표시상한11/2는원문상한이아니다. f−x=(x−9/2)²로중근이며정답17/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=(x-4)^2+c\\;(x\\ge4)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 접하도록 하는 실수 $c$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "c17/4의실제오른쪽가지 x≥4에서 접점(9/2,9/2)을보인다. 표시상한11/2는원문상한이아니다. f−x=(x−9/2)²로중근이며정답17/4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "c17/4의실제오른쪽가지 x≥4에서 접점(9/2,9/2)을보인다. 표시상한11/2는원문상한이아니다. f−x=(x−9/2)²로중근이며정답17/4."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3/4",
+          "y": "5/4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "복원a2,b1을쓴실제두선의교점(3/4,5/4)이최종해. 앞두오독해와분리한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1]\n훈인이와 정용이가 연립방정식 $\\begin{cases} ax+2y=4 \\\\ 3x-by=1 \\end{cases}$을 푸는데 훈인이는 $a$를 잘못보고 풀어서 $x=1$, $y=2$를 얻었고, 정용이는 $b$를 잘못보고 풀어서 $x=3$, $y=-1$을 얻었다. 이때, 다음 물음에 답하시오. (단, $a,b$는 상수) [7점]\n(1) 두 수 $a$와 $b$의 값을 각각 구하시오. [4점]\n(2) 처음 연립방정식의 해를 구하시오. [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "복원a2,b1을쓴실제두선의교점(3/4,5/4)이최종해. 앞두오독해와분리한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "복원a2,b1을쓴실제두선의교점(3/4,5/4)이최종해. 앞두오독해와분리한다."
+  ]
+}

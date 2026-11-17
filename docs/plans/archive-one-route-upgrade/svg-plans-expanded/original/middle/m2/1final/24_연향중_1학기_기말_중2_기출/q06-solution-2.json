@@ -1,0 +1,451 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V6",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V7",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V8",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V9",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "13",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V10",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "13",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V11",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "X",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "O_V1",
+      "refs": [
+        "O",
+        "V1"
+      ]
+    },
+    {
+      "id": "V1_V2",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "V2_V3",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "V3_O",
+      "refs": [
+        "V3",
+        "O"
+      ]
+    },
+    {
+      "id": "V2_V4",
+      "refs": [
+        "V2",
+        "V4"
+      ]
+    },
+    {
+      "id": "V4_V5",
+      "refs": [
+        "V4",
+        "V5"
+      ]
+    },
+    {
+      "id": "V5_V3",
+      "refs": [
+        "V5",
+        "V3"
+      ]
+    },
+    {
+      "id": "V4_V6",
+      "refs": [
+        "V4",
+        "V6"
+      ]
+    },
+    {
+      "id": "V6_V7",
+      "refs": [
+        "V6",
+        "V7"
+      ]
+    },
+    {
+      "id": "V7_V5",
+      "refs": [
+        "V7",
+        "V5"
+      ]
+    },
+    {
+      "id": "V8_V9",
+      "refs": [
+        "V8",
+        "V9"
+      ]
+    },
+    {
+      "id": "V9_V10",
+      "refs": [
+        "V9",
+        "V10"
+      ]
+    },
+    {
+      "id": "V10_V11",
+      "refs": [
+        "V10",
+        "V11"
+      ]
+    },
+    {
+      "id": "V11_V8",
+      "refs": [
+        "V11",
+        "V8"
+      ]
+    },
+    {
+      "id": "X_Y",
+      "refs": [
+        "X",
+        "Y"
+      ]
+    }
+  ],
+  "caption": "그림2는가로3장위세로1장. 전체높이3x+y21. 그림1과연립해x4,y9이며넓이36,정답④. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+  "hiddenPointNames": [
+    "O",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "X",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dim",
+        "ownerSegment": "X_Y",
+        "text": "21",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모양과 크기가 같은 직사각형 여러 개를 이어 붙이려고 한다. [그림1]은 직사각형 5개, [그림2]는 직사각형 4개를 이어 붙인 것일 때, 직사각형의 하나의 넓이를 구하면? [4점]",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "그림2는가로3장위세로1장. 전체높이3x+y21. 그림1과연립해x4,y9이며넓이36,정답④. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그림2는가로3장위세로1장. 전체높이3x+y21. 그림1과연립해x4,y9이며넓이36,정답④. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다."
+  ]
+}

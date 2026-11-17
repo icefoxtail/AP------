@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "6",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "branch": "POSITIVE",
+        "label": "y=sqrt(6-x)"
+      },
+      {
+        "id": "sec",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "-2"
+        ],
+        "domain": [
+          "5",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=-2x+12"
+      },
+      {
+        "id": "tan",
+        "kind": "LINE",
+        "coefficients": [
+          "97/8",
+          "-2"
+        ],
+        "domain": [
+          "5",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=-2x+97/8"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "6",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "23/4",
+          "y": "1/2",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "x": "95/16",
+          "y": "1/4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a6으로복원한실제끝점근처 확대이다. k12는(6,0),(23/4,1/2)두교점,97/8은접점(95/16,1/4)한개. 두경계의포함/제외를분리해정답12≤k<97/8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\sqrt{a-x}$의 그래프가 점 $(2,2)$를 지난다. 이 그래프와 직선 $y=-2x+k$가 서로 다른 두 점에서 만나도록 하는 모든 실수 $k$의 값의 범위를 구하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a6으로복원한실제끝점근처 확대이다. k12는(6,0),(23/4,1/2)두교점,97/8은접점(95/16,1/4)한개. 두경계의포함/제외를분리해정답12≤k<97/8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a6으로복원한실제끝점근처 확대이다. k12는(6,0),(23/4,1/2)두교점,97/8은접점(95/16,1/4)한개. 두경계의포함/제외를분리해정답12≤k<97/8."
+  ]
+}

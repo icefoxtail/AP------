@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "20",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "domainStates": [
+          "NONE",
+          "NONE"
+        ],
+        "label": "y=20/x"
+      },
+      {
+        "id": "secant",
+        "kind": "LINE",
+        "coefficients": [
+          "15",
+          "-5/2"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=15-5x/2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "10",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "5",
+          "y": "5/2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "gap",
+          "from": "C",
+          "to": "H",
+          "dashed": true,
+          "length": true
+        }
+      ]
+    },
+    "viewport": [
+      1,
+      7,
+      -1,
+      11
+    ]
+  },
+  "caption": "실제 길이 관계는 x>0인 y=20/x이며 양수 부분 2≤x≤6을 발췌했다. 실제점 A(2,10),B(4,5)의 할선 y=15−5x/2는 x=5에서 H(5,5/2)를 지나지만 실제점은 C(5,4)이다. 차3/2가 보여 세 점이 한 직선에 없으므로 일차함수가 아니다. 정답②. 점선은 비교용 할선이며 길이 관계 자체가 아니다. 발췌 끝2,6은 실제 정의역의 끝이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 $y$가 $x$의 일차함수가 아닌 것은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "실제 길이 관계는 x>0인 y=20/x이며 양수 부분 2≤x≤6을 발췌했다. 실제점 A(2,10),B(4,5)의 할선 y=15−5x/2는 x=5에서 H(5,5/2)를 지나지만 실제점은 C(5,4)이다. 차3/2가 보여 세 점이 한 직선에 없으므로 일차함수가 아니다. 정답②. 점선은 비교용 할선이며 길이 관계 자체가 아니다. 발췌 끝2,6은 실제 정의역의 끝이 아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 길이 관계는 x>0인 y=20/x이며 양수 부분 2≤x≤6을 발췌했다. 실제점 A(2,10),B(4,5)의 할선 y=15−5x/2는 x=5에서 H(5,5/2)를 지나지만 실제점은 C(5,4)이다. 차3/2가 보여 세 점이 한 직선에 없으므로 일차함수가 아니다. 정답②. 점선은 비교용 할선이며 길이 관계 자체가 아니다. 발췌 끝2,6은 실제 정의역의 끝이 아니다."
+  ]
+}

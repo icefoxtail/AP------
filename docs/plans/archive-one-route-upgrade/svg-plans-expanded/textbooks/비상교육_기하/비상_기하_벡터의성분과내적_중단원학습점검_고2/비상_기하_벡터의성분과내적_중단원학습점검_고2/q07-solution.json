@@ -1,0 +1,72 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 3
+      },
+      "height": 4,
+      "names": {
+        "base": [
+          "F",
+          "G",
+          "H",
+          "E"
+        ],
+        "top": [
+          "B",
+          "C",
+          "D",
+          "A"
+        ]
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "B",
+      "role": "ACCENT",
+      "style": "SOLID"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "role": "ACCENT",
+      "style": "SOLID"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "FG",
+      "label": "5"
+    },
+    {
+      "edge": "GH",
+      "label": "3"
+    },
+    {
+      "edge": "HD",
+      "label": "4"
+    }
+  ],
+  "caption": "AB는 길이3인 깊이 방향이다. AG=AB+BC+CG에서 세 모서리 방향은 서로 수직. AB·AG=|AB|²=3²=9. 원문 꼭짓점과5/3/4 치수를 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q07.png\" />\n\n오른쪽 그림과 같이 $\\overline{\\mathrm{FG}}=5, \\overline{\\mathrm{GH}}=3, \\overline{\\mathrm{HD}}=4$인 직육면체에서 $\\vec{\\mathrm{AB}}\\cdot\\vec{\\mathrm{AG}}$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "AB는 길이3인 깊이 방향이다. AG=AB+BC+CG에서 세 모서리 방향은 서로 수직. AB·AG=|AB|²=3²=9. 원문 꼭짓점과5/3/4 치수를 보존한다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "AB는 길이3인 깊이 방향이다. AG=AB+BC+CG에서 세 모서리 방향은 서로 수직. AB·AG=|AB|²=3²=9. 원문 꼭짓점과5/3/4 치수를 보존한다."
+  ]
+}

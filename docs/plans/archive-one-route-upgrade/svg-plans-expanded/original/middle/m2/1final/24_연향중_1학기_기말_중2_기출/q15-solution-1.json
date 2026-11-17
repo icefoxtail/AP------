@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "B_A",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "A_D",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "D_C",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "C_B",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "A_P",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "caption": "원본은AP로연결한오른쪽사다리꼴APCD. 1초뒤BP2,PC8이고(10+8)·6/2=54. 정답1초. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "w",
+        "ownerSegment": "A_D",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h",
+        "ownerSegment": "B_A",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target",
+        "fill": "LIGHT",
+        "label": "54",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "P",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 직사각형 $ABCD$에서 점 $P$가 점 $B$를 출발하여 점 $C$를 향해 초속 $2\\text{ cm}$로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후에 사다리꼴 $APCD$의 넓이가 $54\\text{ cm}^2$가 되는 것은 점 $P$가 점 $B$를 출발한 지 몇 초 후인지 구하면? [5점]",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본은AP로연결한오른쪽사다리꼴APCD. 1초뒤BP2,PC8이고(10+8)·6/2=54. 정답1초. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은AP로연결한오른쪽사다리꼴APCD. 1초뒤BP2,PC8이고(10+8)·6/2=54. 정답1초. 유일 원점은 배치 자유도 고정이며 원문 좌표 조건이 아니다."
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ],
+      "arrow": "END",
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "arrow": "END",
+      "emphasis": "BOLD"
+    }
+  ],
+  "caption": "반지름과변이모두1인정육각형을원본의점순서A왼위/B왼/C왼아래/D오른아래/E오른/F오른위대로구성한다. O원점,E수평은배치게이지다. ㄴ CO=BA이므로AF−CO=AF+AB=AO=OD. 평행사변형의합벡터와중심이대각선중점임을보여참.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q04.png\" />\n\n오른쪽 그림과 같이 한 변의 길이가 $1$인 정육각형 $\\mathrm{ABCDEF}$의 세 대각선 $\\mathrm{AD}, \\mathrm{BE}, \\mathrm{CF}$의 교점을 $\\mathrm{O}$라고 할 때, 다음 <보기> 중 옳은 것을 모두 고르시오.\n\n<보기>\nㄱ. $\\vec{\\mathrm{BO}}+\\vec{\\mathrm{OF}}=\\vec{\\mathrm{CE}}$\nㄴ. $\\vec{\\mathrm{AF}}-\\vec{\\mathrm{CO}}=\\vec{\\mathrm{OD}}$\nㄷ. $|\\vec{\\mathrm{BD}}|=\\sqrt{2}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "반지름과변이모두1인정육각형을원본의점순서A왼위/B왼/C왼아래/D오른아래/E오른/F오른위대로구성한다. O원점,E수평은배치게이지다. ㄱ BO+OF=BF이고CE와같은크기·방향이므로참. 반지름과변이모두1인정육각형을원본의점순서A왼위/B왼/C왼아래/D오른아래/E오른/F오른위대로구성한다. O원점,E수평은배치게이지다. ㄴ CO=BA이므로AF−CO=AF+AB=AO=OD. 평행사변형의합벡터와중심이대각선중점임을보여참. 반지름과변이모두1인정육각형을원본의점순서A왼위/B왼/C왼아래/D오른아래/E오른/F오른위대로구성한다. O원점,E수평은배치게이지다. ㄷ BD는한변1의정육각형의짧은대각선으로√3이다. √2라는보기는거짓. 정답ㄱ,ㄴ.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름과변이모두1인정육각형을원본의점순서A왼위/B왼/C왼아래/D오른아래/E오른/F오른위대로구성한다. O원점,E수평은배치게이지다. ㄴ CO=BA이므로AF−CO=AF+AB=AO=OD. 평행사변형의합벡터와중심이대각선중점임을보여참."
+  ]
+}

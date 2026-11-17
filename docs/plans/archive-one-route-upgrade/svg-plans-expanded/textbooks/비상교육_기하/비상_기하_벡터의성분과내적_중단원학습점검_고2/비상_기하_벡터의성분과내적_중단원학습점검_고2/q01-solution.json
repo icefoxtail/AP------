@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "caption": "원문 위치벡터는 임의이므로 대표 배치다. P는 AB를3:2, Q는 BA를4:1 내분한다. OP=(2a+3b)/5, OQ=(4a+b)/5. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenAP",
+        "ownerSegment": "AP",
+        "text": "3t"
+      },
+      {
+        "id": "lenPB",
+        "ownerSegment": "PB",
+        "text": "2t"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $\\mathrm{A}, \\mathrm{B}$의 위치벡터를 각각 $\\vec{a}, \\vec{b}$라고 할 때, 다음 점의 위치벡터를 $\\vec{a}, \\vec{b}$로 나타내시오.\n\n⑴ 선분 $\\mathrm{AB}$를 $3:2$로 내분하는 점 $\\mathrm{P}$\n⑵ 선분 $\\mathrm{BA}$를 $4:1$로 내분하는 점 $\\mathrm{Q}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 위치벡터는 임의이므로 대표 배치다. P는 AB를3:2, Q는 BA를4:1 내분한다. OP=(2a+3b)/5, OQ=(4a+b)/5. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 위치벡터는 임의이므로 대표 배치다. P는 AB를3:2, Q는 BA를4:1 내분한다. OP=(2a+3b)/5, OQ=(4a+b)/5. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

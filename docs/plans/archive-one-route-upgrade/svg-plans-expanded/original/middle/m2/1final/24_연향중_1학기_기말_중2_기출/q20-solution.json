@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원선이1·2·3사분면을지나므로a>0,b<0. 새기울기b/a<0,절편−ab>0이라내리막양의절편⑤. 두선은a1,b−1의부호대표예시이며실제계수확정이아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax-b$의 그래프가 제 1, 2, 3사분면을 지날 때, 다음 중 일차함수 $y=\\dfrac{b}{a}x-ab$의 그래프로 옳은 것은? (단, $a,b$는 상수) [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원선이1·2·3사분면을지나므로a>0,b<0. 새기울기b/a<0,절편−ab>0이라내리막양의절편⑤. 두선은a1,b−1의부호대표예시이며실제계수확정이아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원선이1·2·3사분면을지나므로a>0,b<0. 새기울기b/a<0,절편−ab>0이라내리막양의절편⑤. 두선은a1,b−1의부호대표예시이며실제계수확정이아니다."
+  ]
+}

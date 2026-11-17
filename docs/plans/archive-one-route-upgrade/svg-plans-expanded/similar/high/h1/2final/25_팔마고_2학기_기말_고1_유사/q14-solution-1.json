@@ -1,0 +1,66 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-1",
+      "2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -3,
+      6
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "1/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "원함수2+1/(x−1)의정의역x≠1,치역y≠2. x<0에서y1..2여서제3사분면은없다. 역함수존재와교점조건은다음실제역함수와비교,정답ㄱㄷ.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\mathbb R\\setminus\\{1\\}$이고 공역이 $\\mathbb R\\setminus\\{2\\}$인 함수 $f(x)=\\dfrac1{x-1}+2$에 대한 설명 중 옳은 것만을 있는 대로 고른 것은? [4.5점]<div style=\"margin-top:8px;line-height:1.7\">ㄱ. 함수 $f(x)$의 역함수는 존재한다.<br>ㄴ. 그래프 $y=f(x)$는 제1사분면과 제3사분면을 지난다.<br>ㄷ. 두 그래프 $y=f(x)$, $y=f^{-1}(x)$의 교점의 개수는 방정식 $f(x)=x$의 서로 다른 실근의 개수와 같다.</div>",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원함수2+1/(x−1)의정의역x≠1,치역y≠2. x<0에서y1..2여서제3사분면은없다. 역함수존재와교점조건은다음실제역함수와비교,정답ㄱㄷ.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원함수2+1/(x−1)의정의역x≠1,치역y≠2. x<0에서y1..2여서제3사분면은없다. 역함수존재와교점조건은다음실제역함수와비교,정답ㄱㄷ."
+  ]
+}

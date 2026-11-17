@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "16"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "12"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "16"
+      }
+    ],
+    "formula": "x^2-4*x+16",
+    "functionName": "f",
+    "nameVariable": "x",
+    "axisTitles": {
+      "x": "x",
+      "y": "f"
+    }
+  },
+  "caption": "가로축 x는 원문의 실수 t를 나타내는 그래프용 이름이다(x=t). 세로축 f는 |a−tb|²이며 f(x)=x²−4x+16, x2에서12,원래 크기의최솟값2√3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 벡터 $\\vec{a}, \\vec{b}$에 대하여 $|\\vec{a}|=4, |\\vec{b}|=1, |\\vec{a}+2\\vec{b}|=2\\sqrt{7}$일 때, 실수 $t$에 대하여 $|\\vec{a}-t\\vec{b}|$의 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가로축 x는 원문의 실수 t를 나타내는 그래프용 이름이다(x=t). 세로축 f는 |a−tb|²이며 f(x)=x²−4x+16, x2에서12,원래 크기의최솟값2√3.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축 x는 원문의 실수 t를 나타내는 그래프용 이름이다(x=t). 세로축 f는 |a−tb|²이며 f(x)=x²−4x+16, x2에서12,원래 크기의최솟값2√3."
+  ]
+}

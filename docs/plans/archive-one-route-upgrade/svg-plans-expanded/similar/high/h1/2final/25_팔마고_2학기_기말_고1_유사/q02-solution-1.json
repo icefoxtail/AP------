@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "4"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "g",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "원문대응2→4→3으로합성값3. 전체대응도를유지하는경로확대,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 두 대응도와 같은 함수 $f$, $g$에 대하여 $(g\\circ f)(2)$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문대응2→4→3으로합성값3. 전체대응도를유지하는경로확대,정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문대응2→4→3으로합성값3. 전체대응도를유지하는경로확대,정답①."
+  ]
+}

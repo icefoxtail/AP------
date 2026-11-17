@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      3,
+      0,
+      4
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "RATIONAL",
+        "numerator": [
+          "3",
+          "0"
+        ],
+        "denominator": [
+          "1/4",
+          "1"
+        ],
+        "domain": [
+          "3/4",
+          "11/4"
+        ],
+        "domainStates": [
+          "CLOSED",
+          "CLOSED"
+        ],
+        "label": "Y=3/(x+1/4)"
+      },
+      {
+        "id": "minimum",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "3/4",
+          "11/4"
+        ],
+        "style": "DASHED",
+        "label": "Y=1"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3/4",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "11/4",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "세로축 Y=(y−60)/3으로변환한실제제한곡선이다. x는시간h,원래속력y=60+3Y km/h. x3/4의Y3→69최대,x11/4의Y1→63최소. 직선Y1은최소기준선. 관계식(60x+24)/(x+1/4)와정답69/63.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자동차가 $A$에서 $B$까지 $24\\text{ km}$를 평균 $96\\text{ km/h}$의 속력으로 달리고, $B$에서 $C$까지 $x$시간 동안 평균 $60\\text{ km/h}$의 속력으로 달렸다고 하자. $A$에서 $C$까지의 평균 속력을 $y\\text{ km/h}$라 할 때, 다음을 구하시오. (1) $x$와 $y$ 사이의 관계식 (2) $\\dfrac34\\le x\\le\\dfrac{11}{4}$일 때 $y$의 최댓값과 최솟값.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "세로축 Y=(y−60)/3으로변환한실제제한곡선이다. x는시간h,원래속력y=60+3Y km/h. x3/4의Y3→69최대,x11/4의Y1→63최소. 직선Y1은최소기준선. 관계식(60x+24)/(x+1/4)와정답69/63.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "세로축 Y=(y−60)/3으로변환한실제제한곡선이다. x는시간h,원래속력y=60+3Y km/h. x3/4의Y3→69최대,x11/4의Y1→63최소. 직선Y1은최소기준선. 관계식(60x+24)/(x+1/4)와정답69/63."
+  ]
+}

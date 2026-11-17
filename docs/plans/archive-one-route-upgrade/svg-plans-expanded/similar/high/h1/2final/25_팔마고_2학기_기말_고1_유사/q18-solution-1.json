@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "1",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "branch": "POSITIVE",
+        "label": "y=sqrt(x)+1"
+      },
+      {
+        "id": "g",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "4",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "branch": "POSITIVE",
+        "label": "y=sqrt(x-4)"
+      },
+      {
+        "id": "chord",
+        "kind": "LINE",
+        "coefficients": [
+          "25/4",
+          "-1/4"
+        ],
+        "domain": [
+          "9",
+          "13"
+        ],
+        "label": "x+4y=25"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "9",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "13",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "원본PNG의두실제곡선 PA/QB와선분AB,좌표축경계를그대로보존한표시발췌이다. 이동벡터(4,−1)로곡선호가대응한다. 다음평행사변형넓이21+아래삼각형2로정답23.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 무리함수 $f(x)=\\sqrt x+1$, $g(x)=\\sqrt{x-4}$의 그래프와 직선 $x+4y-25=0$이 각각 점 $A(9,4)$와 $B(13,3)$에서 만난다. 그림과 같이 함수 $f(x)$, $g(x)$의 그래프와 직선 $x+4y-25=0$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG의두실제곡선 PA/QB와선분AB,좌표축경계를그대로보존한표시발췌이다. 이동벡터(4,−1)로곡선호가대응한다. 다음평행사변형넓이21+아래삼각형2로정답23.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG의두실제곡선 PA/QB와선분AB,좌표축경계를그대로보존한표시발췌이다. 이동벡터(4,−1)로곡선호가대응한다. 다음평행사변형넓이21+아래삼각형2로정답23."
+  ]
+}

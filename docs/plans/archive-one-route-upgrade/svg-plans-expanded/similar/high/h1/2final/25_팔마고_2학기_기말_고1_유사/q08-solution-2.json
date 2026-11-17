@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "11"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "14"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "17"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "세번째값11에서네번째14,다섯번째17을표시한다. 앞8에한번+3해서11로온다. 정답17.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x+3$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$으로 정의한다. 실수 $a$가 $f^2(a)=8$을 만족할 때, $f^5(a)$의 값은? (단, $n$은 자연수이다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "세번째값11에서네번째14,다섯번째17을표시한다. 앞8에한번+3해서11로온다. 정답17.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "세번째값11에서네번째14,다섯번째17을표시한다. 앞8에한번+3해서11로온다. 정답17."
+  ]
+}

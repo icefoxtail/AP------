@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "5"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "g",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f⁻¹",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "원문g3=5를먼저읽고 f2=5를역추적한다. 3→5→2,정답②. 원본두대응도그대로보존.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 두 대응도와 같은 함수 $f$, $g$에 대하여 $f^{-1}(g(3))$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문g3=5를먼저읽고 f2=5를역추적한다. 3→5→2,정답②. 원본두대응도그대로보존.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문g3=5를먼저읽고 f2=5를역추적한다. 3→5→2,정답②. 원본두대응도그대로보존."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "-24",
+          "18"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      1.5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*(3*x-2)^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2/3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "8"
+      }
+    ],
+    "axisTitles": {
+      "x": "r",
+      "y": "D"
+    }
+  },
+  "caption": "r=x/y>0에서 E−49=18r+8/r−24=2(3r−2)²/r이다. 양수분모를제거한D의영점r2/3에서최소49,서로소비2:3. 정답49+2+3=54.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x\\gt0$, $y\\gt0$일 때, $E=(2x+y)\\left(\\dfrac8x+\\dfrac9y\\right)$라 하자. $E$의 최솟값을 $m$이라 하고, 그 최솟값을 갖게 하는 비 $x:y$를 서로소 자연수 $p:q$로 나타낼 때, $m+p+q$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "r=x/y>0에서 E−49=18r+8/r−24=2(3r−2)²/r이다. 양수분모를제거한D의영점r2/3에서최소49,서로소비2:3. 정답49+2+3=54.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "r=x/y>0에서 E−49=18r+8/r−24=2(3r−2)²/r이다. 양수분모를제거한D의영점r2/3에서최소49,서로소비2:3. 정답49+2+3=54."
+  ]
+}

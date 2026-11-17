@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "60",
+          "-6"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "60"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "54"
+      },
+      {
+        "id": "P2",
+        "x": "5",
+        "y": "30"
+      }
+    ],
+    "formula": "60 - 6*x",
+    "axisScale": {
+      "x": "1",
+      "y": "1/5"
+    }
+  },
+  "caption": "원본이동0≤x≤5초에서사다리꼴넓이60−6x. 끝에서도삼각형30이남는다. 목표(1,54)에서1초. 시간/넓이다른양의세로축1/5배율,좌표는실제값.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 직사각형 $ABCD$에서 점 $P$가 점 $B$를 출발하여 점 $C$를 향해 초속 $2\\text{ cm}$로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후에 사다리꼴 $APCD$의 넓이가 $54\\text{ cm}^2$가 되는 것은 점 $P$가 점 $B$를 출발한 지 몇 초 후인지 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본이동0≤x≤5초에서사다리꼴넓이60−6x. 끝에서도삼각형30이남는다. 목표(1,54)에서1초. 시간/넓이다른양의세로축1/5배율,좌표는실제값.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본이동0≤x≤5초에서사다리꼴넓이60−6x. 끝에서도삼각형30이남는다. 목표(1,54)에서1초. 시간/넓이다른양의세로축1/5배율,좌표는실제값."
+  ]
+}

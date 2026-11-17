@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "m",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ],
+      "arrow": "END",
+      "emphasis": "BOLD"
+    }
+  ],
+  "caption": "정삼각형은닮음대표로한변2를사용한다. D/E/F는각변AB/BC/CA의실제MIDPOINT이며원본문항에크기조건을추가하지않는다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다. ⑷FD−BD=FD+DB=FB. 시점과종점을순서대로이어합벡터를찾는다. 정답FB.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q01.png\" />\n\n오른쪽 그림과 같이 정삼각형 $\\mathrm{ABC}$에서 세 변 $\\mathrm{AB}, \\mathrm{BC}, \\mathrm{CA}$의 중점을 각각 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$라고 할 때, 다음을 구하시오.\n\n⑴ $\\vec{\\mathrm{FE}}$와 같은 벡터\n⑵ $\\vec{\\mathrm{DF}}$와 크기가 같고 방향이 반대인 벡터\n⑶ $\\vec{\\mathrm{BD}}+\\vec{\\mathrm{EC}}$\n⑷ $\\vec{\\mathrm{FD}}-\\vec{\\mathrm{BD}}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정삼각형은닮음대표로한변2를사용한다. D/E/F는각변AB/BC/CA의실제MIDPOINT이며원본문항에크기조건을추가하지않는다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다. ⑴FE는AB와평행하고절반길이이며방향도A→B와같다. 정답FE=AD=DB. 정삼각형은닮음대표로한변2를사용한다. D/E/F는각변AB/BC/CA의실제MIDPOINT이며원본문항에크기조건을추가하지않는다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다. ⑵DF의역벡터는FD. 같은반대방향의반변EB,CE도같다. 정답FD,EB,CE. 정삼각형은닮음대표로한변2를사용한다. D/E/F는각변AB/BC/CA의실제MIDPOINT이며원본문항에크기조건을추가하지않는다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다. ⑶EC=DF로평행이동하면BD+EC=BD+DF=BF. 굵은BF가합벡터이며EC는원래위치도보존한다. 정답BF. 정삼각형은닮음대표로한변2를사용한다. D/E/F는각변AB/BC/CA의실제MIDPOINT이며원본문항에크기조건을추가하지않는다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다. ⑷FD−BD=FD+DB=FB. 시점과종점을순서대로이어합벡터를찾는다. 정답FB.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형은닮음대표로한변2를사용한다. D/E/F는각변AB/BC/CA의실제MIDPOINT이며원본문항에크기조건을추가하지않는다. 첫 기준점의 원점과 기준변의 수평 방향은 배치 게이지이며 원문에 좌표를 추가하지 않는다. ⑷FD−BD=FD+DB=FB. 시점과종점을순서대로이어합벡터를찾는다. 정답FB."
+  ]
+}

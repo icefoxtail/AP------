@@ -1,0 +1,98 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 1
+      },
+      "height": 1,
+      "names": {
+        "base": [
+          "F",
+          "G",
+          "H,Q",
+          "E"
+        ],
+        "top": [
+          "B",
+          "C,P",
+          "D",
+          "A"
+        ]
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "C",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "C",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "C",
+        "G",
+        "H",
+        "D"
+      ]
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EH",
+      "label": "1"
+    },
+    {
+      "edge": "HG",
+      "label": "1"
+    },
+    {
+      "edge": "GC",
+      "label": "1"
+    },
+    {
+      "from": "H",
+      "to": "C",
+      "label": "sqrt(2)"
+    }
+  ],
+  "caption": "원본의면CGHD위X를E원점기준(1,y,z),0≤y,z≤1로두면EX²=1+y²+z². 최대점P=C,최소점Q=H임을실제같은꼭짓점의별칭으로표시한다. EP−EQ=QP=HC이므로그면의대각선HC=√2를강조한다. 정답√2.",
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "G",
+        "refs": [
+          "H",
+          "C"
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q08.png\" />\n\n오른쪽 그림과 같이 한 모서리의 길이가 $1$인 정육면체에서 면 $\\mathrm{CGHD}$ 위를 움직이는 두 점 $\\mathrm{P}, \\mathrm{Q}$가 있다. $|\\vec{\\mathrm{EP}}|$가 최대이고 $|\\vec{\\mathrm{EQ}}|$가 최소일 때, $|\\vec{\\mathrm{EP}}-\\vec{\\mathrm{EQ}}|$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본의면CGHD위X를E원점기준(1,y,z),0≤y,z≤1로두면EX²=1+y²+z². 최대점P=C,최소점Q=H임을실제같은꼭짓점의별칭으로표시한다. EP−EQ=QP=HC이므로그면의대각선HC=√2를강조한다. 정답√2.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의면CGHD위X를E원점기준(1,y,z),0≤y,z≤1로두면EX²=1+y²+z². 최대점P=C,최소점Q=H임을실제같은꼭짓점의별칭으로표시한다. EP−EQ=QP=HC이므로그면의대각선HC=√2를강조한다. 정답√2."
+  ]
+}

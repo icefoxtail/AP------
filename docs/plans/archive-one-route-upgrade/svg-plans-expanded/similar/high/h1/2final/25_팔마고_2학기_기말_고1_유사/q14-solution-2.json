@@ -1,0 +1,68 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-1",
+      "1"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -3,
+      6
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "(3-sqrt(5))/2",
+          "y": "(3-sqrt(5))/2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "(3+sqrt(5))/2",
+          "y": "(3+sqrt(5))/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "실제역함수1+1/(x−2)와원함수교점은(x−1)(x−2)=1의두근(3±√5)/2이며y=x위두점이다. 이경우는직접방정식으로확인하며일반감소함수에고정점성질을무조건적용하지않는다. 정답ㄱㄷ.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\mathbb R\\setminus\\{1\\}$이고 공역이 $\\mathbb R\\setminus\\{2\\}$인 함수 $f(x)=\\dfrac1{x-1}+2$에 대한 설명 중 옳은 것만을 있는 대로 고른 것은? [4.5점]<div style=\"margin-top:8px;line-height:1.7\">ㄱ. 함수 $f(x)$의 역함수는 존재한다.<br>ㄴ. 그래프 $y=f(x)$는 제1사분면과 제3사분면을 지난다.<br>ㄷ. 두 그래프 $y=f(x)$, $y=f^{-1}(x)$의 교점의 개수는 방정식 $f(x)=x$의 서로 다른 실근의 개수와 같다.</div>",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제역함수1+1/(x−2)와원함수교점은(x−1)(x−2)=1의두근(3±√5)/2이며y=x위두점이다. 이경우는직접방정식으로확인하며일반감소함수에고정점성질을무조건적용하지않는다. 정답ㄱㄷ.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제역함수1+1/(x−2)와원함수교점은(x−1)(x−2)=1의두근(3±√5)/2이며y=x위두점이다. 이경우는직접방정식으로확인하며일반감소함수에고정점성질을무조건적용하지않는다. 정답ㄱㄷ."
+  ]
+}

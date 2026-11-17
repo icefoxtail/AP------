@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "100"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "10",
+        "y": "1000"
+      },
+      {
+        "id": "P2",
+        "x": "12",
+        "y": "1200"
+      }
+    ],
+    "formula": "100*x",
+    "axisScale": {
+      "x": "1",
+      "y": "1/60"
+    }
+  },
+  "caption": "동생은10분에1000m이므로100m/분. 도서관1200m에는12분도착. 시간분/거리m은다른양이라세로1/60배율,좌표는실제거리. 표시구간밖에이동을음수로연장하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집에서 1200 m 떨어진 도서관까지 가는데 동생은 걸어서 가고, 형은 동생이 출발한 지 5분 후에 자전거를 타고 갔다. 아래 그래프는 동생이 출발한 지 $x$분 후에 형이 간 거리 $y$ m를 나타낸 것이다. 형과 동생이 집에서 1000 m 떨어진 곳에서 만났다면 동생이 도서관까지 가는 데 걸린 시간은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "동생은10분에1000m이므로100m/분. 도서관1200m에는12분도착. 시간분/거리m은다른양이라세로1/60배율,좌표는실제거리. 표시구간밖에이동을음수로연장하지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "동생은10분에1000m이므로100m/분. 도서관1200m에는12분도착. 시간분/거리m은다른양이라세로1/60배율,좌표는실제거리. 표시구간밖에이동을음수로연장하지않는다."
+  ]
+}

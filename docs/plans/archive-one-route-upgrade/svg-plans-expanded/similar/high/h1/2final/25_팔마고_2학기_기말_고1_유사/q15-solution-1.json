@@ -1,0 +1,66 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "2"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3,
+      7,
+      -3,
+      8
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "13/3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "a−2의자기역함수는(5,13/3)와(13/3,5)를서로교환한다. f⁻¹5=13/3,세배13. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\dfrac{2x+3}{x+a}$가 자기 자신의 역함수일 때, $3f^{-1}(5)$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a−2의자기역함수는(5,13/3)와(13/3,5)를서로교환한다. f⁻¹5=13/3,세배13. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a−2의자기역함수는(5,13/3)와(13/3,5)를서로교환한다. f⁻¹5=13/3,세배13. 정답⑤."
+  ]
+}

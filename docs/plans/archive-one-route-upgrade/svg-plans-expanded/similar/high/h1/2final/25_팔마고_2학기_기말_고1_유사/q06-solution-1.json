@@ -1,0 +1,61 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -3,
+      6,
+      -2,
+      6
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "target",
+          "slope": "0",
+          "intercept": "3",
+          "style": "DASHED",
+          "label": "y=3"
+        }
+      ]
+    }
+  },
+  "caption": "(x−1)(y−2)=3의원래점근선x1/y2,목표높이3에서교점(4,3)을읽는다. f⁻¹(a+b)=4,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유리함수 $y=f(x)$의 그래프 위의 모든 점 $(x,y)$가 $(x-1)(y-2)=3$을 만족한다. 이 그래프의 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "(x−1)(y−2)=3의원래점근선x1/y2,목표높이3에서교점(4,3)을읽는다. f⁻¹(a+b)=4,정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "(x−1)(y−2)=3의원래점근선x1/y2,목표높이3에서교점(4,3)을읽는다. f⁻¹(a+b)=4,정답②."
+  ]
+}

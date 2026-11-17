@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-13",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "-10"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "J",
+        "x": "3",
+        "y": "-10"
+      },
+      {
+        "id": "L",
+        "x": "0",
+        "y": "-13"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "-1"
+      }
+    ]
+  },
+  "caption": "최소b=t3에서허용a1,c−13을택한비교예시이다. 일반a>0에서c=−6a−7,경계높이−6a−4로두치역이이어진다. a1이유일답이라는뜻이아니며모든허용a에서6a+c+t=−4. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt b)\\\\ a(x-3)^2-6a-4&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 하자. $b=t$일 때, $6a+c+t$의 값은? (단, $a,b,c,t$는 모두 실수이다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "최소b=t3에서허용a1,c−13을택한비교예시이다. 일반a>0에서c=−6a−7,경계높이−6a−4로두치역이이어진다. a1이유일답이라는뜻이아니며모든허용a에서6a+c+t=−4. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "최소b=t3에서허용a1,c−13을택한비교예시이다. 일반a>0에서c=−6a−7,경계높이−6a−4로두치역이이어진다. a1이유일답이라는뜻이아니며모든허용a에서6a+c+t=−4. 정답⑤."
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "BQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "AQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "QP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "caption": "원문삼각형의모양·크기는임의이므로대표배치B(0,0),C(6,0),A(2,4)를쓴다. BP+CP=0에서P는BC중점. AQ=2QP에서Q는AP를2:1내분한다. ABP넓이는ABC의1/2,ABQ는ABP의2/3이므로ABC는ABQ의3배. 정답3. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "mid",
+        "count": 1,
+        "segments": [
+          "BP",
+          "PC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "aq",
+        "ownerSegment": "AQ",
+        "text": "2t"
+      },
+      {
+        "id": "qp",
+        "ownerSegment": "QP",
+        "text": "t"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q07.png\" />\n\n오른쪽 그림과 같은 삼각형 $\\mathrm{ABC}$에 대하여 두 점 $\\mathrm{P}, \\mathrm{Q}$가 다음 조건을 모두 만족시킬 때, 삼각형 $\\mathrm{ABC}$의 넓이는 삼각형 $\\mathrm{ABQ}$의 넓이의 몇 배인지 구하시오.\n\n㈎ $\\vec{\\mathrm{BP}}+\\vec{\\mathrm{CP}}=\\vec{0}$을 만족시키는 점 $\\mathrm{P}$\n㈏ 점 $\\mathrm{P}$에 대하여 $\\vec{\\mathrm{AQ}}=2\\vec{\\mathrm{QP}}$를 만족시키는 점 $\\mathrm{Q}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문삼각형의모양·크기는임의이므로대표배치B(0,0),C(6,0),A(2,4)를쓴다. BP+CP=0에서P는BC중점. AQ=2QP에서Q는AP를2:1내분한다. ABP넓이는ABC의1/2,ABQ는ABP의2/3이므로ABC는ABQ의3배. 정답3. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문삼각형의모양·크기는임의이므로대표배치B(0,0),C(6,0),A(2,4)를쓴다. BP+CP=0에서P는BC중점. AQ=2QP에서Q는AP를2:1내분한다. ABP넓이는ABC의1/2,ABQ는ABP의2/3이므로ABC는ABQ의3배. 정답3. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

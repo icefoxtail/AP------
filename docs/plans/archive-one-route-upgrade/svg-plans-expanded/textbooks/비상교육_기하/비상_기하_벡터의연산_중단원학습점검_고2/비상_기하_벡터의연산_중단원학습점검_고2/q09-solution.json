@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "R",
+    "L",
+    "D",
+    "Q",
+    "U",
+    "V",
+    "W"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "arrow": "END",
+      "dashed": true
+    },
+    {
+      "id": "OR",
+      "refs": [
+        "O",
+        "R"
+      ],
+      "arrow": "END",
+      "dashed": true
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ],
+      "arrow": "END",
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "OU",
+      "refs": [
+        "O",
+        "U"
+      ],
+      "arrow": "END",
+      "emphasis": "BOLD"
+    }
+  ],
+  "caption": "타원은원점을둘러싸므로모든동경방향이가능하다. Q=OP/|OP|의종점은항상O에서거리1. 대표축방향타원점P(3,0),R(0,2),L(−3,0),D(0,−2)를단위점으로정규화하는화살표와완전한단위원을그린다. 타원자체의곡선은이보조도에서생략하고원문식x²/9+y²/4=1을유지한다. 단위원전체가자취이므로넓이π. 정답π. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "P",
+    "R",
+    "Q",
+    "U"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "타원 $\\frac{x^2}{9}+\\frac{y^2}{4}=1$ 위를 움직이는 점 $\\mathrm{P}$에 대하여 $\\vec{\\mathrm{OQ}}=\\frac{\\vec{\\mathrm{OP}}}{|\\vec{\\mathrm{OP}}|}$를 만족시키는 점 $\\mathrm{Q}$가 그리는 도형의 넓이를 구하시오. (단, $\\mathrm{O}$는 원점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "타원은원점을둘러싸므로모든동경방향이가능하다. Q=OP/|OP|의종점은항상O에서거리1. 대표축방향타원점P(3,0),R(0,2),L(−3,0),D(0,−2)를단위점으로정규화하는화살표와완전한단위원을그린다. 타원자체의곡선은이보조도에서생략하고원문식x²/9+y²/4=1을유지한다. 단위원전체가자취이므로넓이π. 정답π. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "타원은원점을둘러싸므로모든동경방향이가능하다. Q=OP/|OP|의종점은항상O에서거리1. 대표축방향타원점P(3,0),R(0,2),L(−3,0),D(0,−2)를단위점으로정규화하는화살표와완전한단위원을그린다. 타원자체의곡선은이보조도에서생략하고원문식x²/9+y²/4=1을유지한다. 단위원전체가자취이므로넓이π. 정답π. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

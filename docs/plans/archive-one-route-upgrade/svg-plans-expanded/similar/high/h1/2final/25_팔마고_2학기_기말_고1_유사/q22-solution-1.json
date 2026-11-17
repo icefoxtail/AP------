@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x-3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "3"
+      }
+    ]
+  },
+  "caption": "원문두점으로기울기2,절편−3을복원한다. 역함수(x+3)/2. 합성식을뒤집으면h=f∘g=6x+1. 정답두식.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $f$가 $f(1)=-1$, $f(3)=3$을 만족하고 $g(x)=3x+2$일 때, 다음을 구하시오. (1) $f^{-1}(x)$ (2) $f^{-1}\\circ h=g$를 만족하는 일차함수 $h(x)$.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문두점으로기울기2,절편−3을복원한다. 역함수(x+3)/2. 합성식을뒤집으면h=f∘g=6x+1. 정답두식.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문두점으로기울기2,절편−3을복원한다. 역함수(x+3)/2. 합성식을뒤집으면h=f∘g=6x+1. 정답두식."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-17/4",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "4",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      4.25,
+      6
+    ],
+    "viewport": [
+      4,
+      7,
+      3,
+      6
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "9/2",
+          "y": "9/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "역함수√(x−17/4)+4의자연정의역 x≥17/4와접점(9/2,9/2)을보존한다. 두곡선이같은y=x방향으로만나는실제배치,정답17/4.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=(x-4)^2+c\\;(x\\ge4)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 접하도록 하는 실수 $c$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수√(x−17/4)+4의자연정의역 x≥17/4와접점(9/2,9/2)을보존한다. 두곡선이같은y=x방향으로만나는실제배치,정답17/4.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수√(x−17/4)+4의자연정의역 x≥17/4와접점(9/2,9/2)을보존한다. 두곡선이같은y=x방향으로만나는실제배치,정답17/4."
+  ]
+}

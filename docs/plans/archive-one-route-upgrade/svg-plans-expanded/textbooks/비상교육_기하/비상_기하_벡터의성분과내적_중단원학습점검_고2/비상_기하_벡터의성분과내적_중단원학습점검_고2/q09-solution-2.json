@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "formula": "x^2-2",
+    "functionName": "f",
+    "nameVariable": "x",
+    "axisTitles": {
+      "x": "x",
+      "y": "f"
+    }
+  },
+  "caption": "가로축 x는 동점P의 원래 y좌표를 나타내는 그래프용 매개변수다(P=(2,x)). 세로축 f는내적이며 f(x)=x²−2. −1≤x≤2에서 최댓값2,최솟값−2. 이축을원래좌표평면x/y와혼동하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 점 $\\mathrm{A}(3, 0), \\mathrm{B}(0, 6), \\mathrm{C}(0, -3)$에 대하여 선분 $\\mathrm{AB}, \\mathrm{AC}$를 $1:2$로 내분하는 점을 각각 $\\mathrm{D}, \\mathrm{E}$라고 하자. 점 $\\mathrm{P}$가 선분 $\\mathrm{DE}$ 위를 움직일 때, $\\vec{\\mathrm{OP}}\\cdot\\vec{\\mathrm{AP}}$의 최댓값과 최솟값을 각각 구하시오. (단, $\\mathrm{O}$는 원점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "D=(2,2),E=(2,−1)는AB/AC를1:2 내분. P=(2,y),−1≤y≤2라 OP·AP=y²−2. 동점의 실제 선분과 두 내분점을 보존한다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다. 가로축 x는 동점P의 원래 y좌표를 나타내는 그래프용 매개변수다(P=(2,x)). 세로축 f는내적이며 f(x)=x²−2. −1≤x≤2에서 최댓값2,최솟값−2. 이축을원래좌표평면x/y와혼동하지않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축 x는 동점P의 원래 y좌표를 나타내는 그래프용 매개변수다(P=(2,x)). 세로축 f는내적이며 f(x)=x²−2. −1≤x≤2에서 최댓값2,최솟값−2. 이축을원래좌표평면x/y와혼동하지않는다."
+  ]
+}

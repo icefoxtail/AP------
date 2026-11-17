@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "DH",
+      "refs": [
+        "D",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "caption": "평면ACD의 실제 단면이다. AC25,AD20,DC15에서 D의발H는AH16,DH12. AC방향을x로보면 DC성분(9,−12,0). 두 평면은 수직이므로 두 세로성분의 내적은0. AE·DC=9×9=81. 두 패널을 같은 평면에 겹친 도형으로 해석하지 않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenAC",
+        "ownerSegment": "AC",
+        "text": "25"
+      },
+      {
+        "id": "lenAD",
+        "ownerSegment": "AD",
+        "text": "20"
+      },
+      {
+        "id": "lenDC",
+        "ownerSegment": "DC",
+        "text": "15"
+      },
+      {
+        "id": "lenAH",
+        "ownerSegment": "AH",
+        "text": "16"
+      },
+      {
+        "id": "lenDH",
+        "ownerSegment": "DH",
+        "text": "12"
+      },
+      {
+        "id": "lenHC",
+        "ownerSegment": "HC",
+        "text": "9"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "foot",
+      "refs": [
+        "D",
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "triangle",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<img src=\"q11.png\" />\n\n다음 그림과 같이 $\\overline{\\mathrm{AD}}=20, \\overline{\\mathrm{AB}}=15$인 직사각형 모양의 종이 $\\mathrm{ABCD}$를 대각선 $\\mathrm{AC}$를 접는 선으로 하여 점 $\\mathrm{B}$가 점 $\\mathrm{E}$의 위치에 오도록 접었다. 평면 $\\mathrm{ACE}$가 평면 $\\mathrm{ACD}$와 수직일 때, $\\vec{\\mathrm{AE}}\\cdot\\vec{\\mathrm{DC}}$를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "평면ACD의 실제 단면이다. AC25,AD20,DC15에서 D의발H는AH16,DH12. AC방향을x로보면 DC성분(9,−12,0). 두 평면은 수직이므로 두 세로성분의 내적은0. AE·DC=9×9=81. 두 패널을 같은 평면에 겹친 도형으로 해석하지 않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다. 접힌 평면ACE의 실제 단면이다. AC25,AE15,CE20에서 E의발H는AH9,EH12. 이 그림의 세로방향은 앞패널의y가아닌공간z방향이다. AE=(9,0,12). 두 평면은 수직이므로 두 세로성분의 내적은0. AE·DC=9×9=81. 두 패널을 같은 평면에 겹친 도형으로 해석하지 않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평면ACD의 실제 단면이다. AC25,AD20,DC15에서 D의발H는AH16,DH12. AC방향을x로보면 DC성분(9,−12,0). 두 평면은 수직이므로 두 세로성분의 내적은0. AE·DC=9×9=81. 두 패널을 같은 평면에 겹친 도형으로 해석하지 않는다. 첫점 원점과 다른 점의 위치는 배치 기준이며 원문에 좌표 조건을 추가하지 않는다."
+  ]
+}

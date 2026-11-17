@@ -1,0 +1,113 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "이는 실제 공간점의 xy 정사영이다. 실제 z좌표는 A1,B−2,C−5. AB=(x+2,−1,−3),AC=(3,y−4,−6)이므로 AC=2AB, x=−1/2,y=2. z성분도 같은비라 투영만 보고 공간 공선을 단정한 것이 아니다. A의표시좌표(−2,4)는원문공간좌표의정확한xy성분이며배치게이지가아니다.",
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 벡터 $\\vec{\\mathrm{OA}}=(-2, 4, 1), \\vec{\\mathrm{OB}}=(x, 3, -2), \\vec{\\mathrm{OC}}=(1, y, -5)$에 대하여 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$가 한 직선 위에 있도록 하는 실수 $x, y$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "이는 실제 공간점의 xy 정사영이다. 실제 z좌표는 A1,B−2,C−5. AB=(x+2,−1,−3),AC=(3,y−4,−6)이므로 AC=2AB, x=−1/2,y=2. z성분도 같은비라 투영만 보고 공간 공선을 단정한 것이 아니다. A의표시좌표(−2,4)는원문공간좌표의정확한xy성분이며배치게이지가아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이는 실제 공간점의 xy 정사영이다. 실제 z좌표는 A1,B−2,C−5. AB=(x+2,−1,−3),AC=(3,y−4,−6)이므로 AC=2AB, x=−1/2,y=2. z성분도 같은비라 투영만 보고 공간 공선을 단정한 것이 아니다. A의표시좌표(−2,4)는원문공간좌표의정확한xy성분이며배치게이지가아니다."
+  ]
+}

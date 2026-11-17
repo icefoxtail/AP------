@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      3,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "8",
+          "3"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "domainStates": [
+          "CLOSED",
+          "CLOSED"
+        ],
+        "label": "y=3+5/(x+1)"
+      },
+      {
+        "id": "minimum",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "style": "DASHED",
+        "label": "y=4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "원래제한정의역[0,4]의실제곡선만표시한다. k8일때(0,8)에서(4,4)로감소,최솟값4. 반대가지나구간밖연장으로정의를늘리지않는다. 정답8.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x\\mid 0\\le x\\le 4\\}$인 함수 $y=\\dfrac{3x+k}{x+1}$의 최솟값이 $4$일 때, 실수 $k$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원래제한정의역[0,4]의실제곡선만표시한다. k8일때(0,8)에서(4,4)로감소,최솟값4. 반대가지나구간밖연장으로정의를늘리지않는다. 정답8.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원래제한정의역[0,4]의실제곡선만표시한다. k8일때(0,8)에서(4,4)로감소,최솟값4. 반대가지나구간밖연장으로정의를늘리지않는다. 정답8."
+  ]
+}

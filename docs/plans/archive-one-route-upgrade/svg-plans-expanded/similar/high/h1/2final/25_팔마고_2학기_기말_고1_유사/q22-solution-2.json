@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "5"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "Z",
+        "elements": [
+          "7"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "g",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "입력x1의확인예시1→5→7이다. 일반식은 x→3x+2→6x+1이며이예시만으로항등식을증명하지않는다. 합성단계도에서 f⁻¹∘h=g와동치다. 정답h6x+1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $f$가 $f(1)=-1$, $f(3)=3$을 만족하고 $g(x)=3x+2$일 때, 다음을 구하시오. (1) $f^{-1}(x)$ (2) $f^{-1}\\circ h=g$를 만족하는 일차함수 $h(x)$.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "입력x1의확인예시1→5→7이다. 일반식은 x→3x+2→6x+1이며이예시만으로항등식을증명하지않는다. 합성단계도에서 f⁻¹∘h=g와동치다. 정답h6x+1.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "입력x1의확인예시1→5→7이다. 일반식은 x→3x+2→6x+1이며이예시만으로항등식을증명하지않는다. 합성단계도에서 f⁻¹∘h=g와동치다. 정답h6x+1."
+  ]
+}
