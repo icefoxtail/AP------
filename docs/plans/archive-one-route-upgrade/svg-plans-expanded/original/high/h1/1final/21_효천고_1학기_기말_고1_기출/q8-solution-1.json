@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "x": "2",
+        "y": "3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "3"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "bound",
+        "y": "5",
+        "intersectionX": [
+          "-2",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      0,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        -1,
+        2,
+        3
+      ],
+      "y": [
+        3,
+        5
+      ]
+    }
+  },
+  "caption": "두 절댓값의 합은 x=-1과 x=2에서 식이 바뀌며 가운데 구간에서는 일정하다. 높이5인 수평선 아래 또는 같은 높이에 있는 그래프 부분을 찾고 그 x범위에서 정수를 센다. 교점의 좌표는 중간값이고 최종 정수 개수는 표시하지 않는다.",
+  "accessibilityDescription": "두 절댓값의 합은 x=-1과 x=2에서 식이 바뀌며 가운데 구간에서는 일정하다. 높이5인 수평선 아래 또는 같은 높이에 있는 그래프 부분을 찾고 그 x범위에서 정수를 센다. 교점의 좌표는 중간값이고 최종 정수 개수는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|x-2|+|x+1|\\le5$를 만족시키는 정수 $x$의 개수는? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "−1과2에서부호가바뀐다. f=|x−2|+|x+1|는x≤−1에서1−2x,−1≤x≤2에서3,x≥2에서2x−1. y5와교점−2/3으로−2≤x≤3,정수6개. 그래프는각조각과높이5비교만보이고정수점및최종개수는표시하지않는다. 원본모든필드기존자산참조0.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 절댓값의 합은 x=-1과 x=2에서 식이 바뀌며 가운데 구간에서는 일정하다. 높이5인 수평선 아래 또는 같은 높이에 있는 그래프 부분을 찾고 그 x범위에서 정수를 센다. 교점의 좌표는 중간값이고 최종 정수 개수는 표시하지 않는다."
+  ]
+}

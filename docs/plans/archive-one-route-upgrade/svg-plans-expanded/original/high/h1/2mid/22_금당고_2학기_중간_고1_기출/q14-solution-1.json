@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "s",
+    "axisVariable": false,
+    "parameter": {
+      "name": "l",
+      "value": "1",
+      "hideNote": true
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "s는 세 교차 근호항의 합이고 l은 두 논증에서 얻는 공통 경계이다. 위 줄은 결론을 부정한 가정에서 s>l, 아래 줄은 산술기하평균에서 s≤l을 얻는 관계를 나타낸다. 같은 경계의 열린 끝점과 닫힌 끝점을 비교하면 공통값이 없음을 알 수 있다. l의 수치와 빈칸의 값, 마지막 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 양의 실수 $x,y,z$에 대하여 $x+y+z=2$일 때, $\\sqrt{x+2}+\\sqrt{y+2}+\\sqrt{z+2}\\le2\\sqrt6$이 성립함을 귀류법을 이용하여 증명한 것이다.\n\n결론을 부정하여 $\\sqrt{x+2}+\\sqrt{y+2}+\\sqrt{z+2}\\gt2\\sqrt6$이라 가정하자. 양변을 제곱하면\n$(\\sqrt{x+2}+\\sqrt{y+2}+\\sqrt{z+2})^2\\gt(2\\sqrt6)^2$\n$(가)+2\\sqrt{(x+2)(y+2)}+2\\sqrt{(y+2)(z+2)}+2\\sqrt{(z+2)(x+2)}\\gt24$\n$\\therefore \\sqrt{(x+2)(y+2)}+\\sqrt{(y+2)(z+2)}+\\sqrt{(z+2)(x+2)}\\gt8$ …… ①\n한편 산술평균과 기하평균의 관계에 의하여\n$x+y+(나)\\ge2\\sqrt{(x+2)(y+2)}$,\n$y+z+(나)\\ge2\\sqrt{(y+2)(z+2)}$,\n$z+x+(나)\\ge2\\sqrt{(z+2)(x+2)}$\n이므로\n$2\\sqrt{(x+2)(y+2)}+2\\sqrt{(y+2)(z+2)}+2\\sqrt{(z+2)(x+2)}\\le(다)$\n그러나 이는 ①에 모순이다. 따라서 $\\sqrt{x+2}+\\sqrt{y+2}+\\sqrt{z+2}\\le2\\sqrt6$이다.\n\n위의 (가), (나), (다)에 알맞은 값을 각각 $p,q,r$이라 할 때, $p+q+r$의 값은? [4.4점]",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "method",
+      "condition": "s=√((x+2)(y+2))+√((y+2)(z+2))+√((z+2)(x+2)). 가정에서s>8,AMGM에서s≤8. 공통경계를l로표시하고값을숨긴다. parameter값1은숫자눈금없는배치용이며실제경계값이라는주장아님.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "s는 세 교차 근호항의 합이고 l은 두 논증에서 얻는 공통 경계이다. 위 줄은 결론을 부정한 가정에서 s>l, 아래 줄은 산술기하평균에서 s≤l을 얻는 관계를 나타낸다. 같은 경계의 열린 끝점과 닫힌 끝점을 비교하면 공통값이 없음을 알 수 있다. l의 수치와 빈칸의 값, 마지막 합은 표시하지 않는다."
+  ]
+}

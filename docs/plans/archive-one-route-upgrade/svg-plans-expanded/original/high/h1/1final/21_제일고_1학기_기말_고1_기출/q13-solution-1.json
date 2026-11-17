@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -5,
+      5
+    ],
+    "curves": [
+      {
+        "id": "L1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "L1"
+      },
+      {
+        "id": "L2",
+        "kind": "LINE",
+        "coefficients": [
+          "-7",
+          "-3"
+        ],
+        "domain": [
+          "-4",
+          "-2/3"
+        ],
+        "label": "L2"
+      },
+      {
+        "id": "L3",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "L3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "L1은 x−2y=0, L2는 3x+y+7=0, L3는 원문의 세 번째 직선이다. k=6인 경우 L3와 L1이 평행하다. 선분처럼 보이는 끝은 표시창의 잘린 부분이며 직선의 실제 끝점이 아니다. 세 경우에서 삼각형이 만들어지지 않는 이유를 구별하며 마지막 k의 합은 표시하지 않는다.",
+  "accessibilityDescription": "L1은 x−2y=0, L2는 3x+y+7=0, L3는 원문의 세 번째 직선이다. k=6인 경우 L3와 L1이 평행하다. 선분처럼 보이는 끝은 표시창의 잘린 부분이며 직선의 실제 끝점이 아니다. 세 경우에서 삼각형이 만들어지지 않는 이유를 구별하며 마지막 k의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[13] 세 직선 $x-2y=0$, $3x+y+7=0$, $3x-ky-12=0$가 삼각형을 이루지 않도록 하는 모든 실수 $k$의 값의 합은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "L1:x−2y0,L2:3x+y+7=0은교점(−2,−1). L3가L1과평행이면k6,L2와평행이면k−1,교점을지나면k18. k0의x4는둘과평행하지않고공통교점도안지나므로삼각형존재. 최종합23미표시. 기존SVG는엔진표시가있고읽을수있으나공점사례만있어두평행사례를추가한3계획으로보완한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "L1은 x−2y=0, L2는 3x+y+7=0, L3는 원문의 세 번째 직선이다. k=6인 경우 L3와 L1이 평행하다. 선분처럼 보이는 끝은 표시창의 잘린 부분이며 직선의 실제 끝점이 아니다. 세 경우에서 삼각형이 만들어지지 않는 이유를 구별하며 마지막 k의 합은 표시하지 않는다."
+  ]
+}
