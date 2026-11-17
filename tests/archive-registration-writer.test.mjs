@@ -6,7 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,registrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -738,7 +738,7 @@ test('the writer decides the mode once, hands the same name to every command, an
     const result=await prepareRegistration({...f.options,env,execute:async ctx=>{seen.add(ctx.env.ARCHIVE_REGISTRATION_MODE);return f.execute(ctx);}});
     assert.deepEqual([...seen],[expected],JSON.stringify(env));assert.equal(result.registrationMode,expected);
   }
-  assert.equal(registrationMode({GITHUB_EVENT_NAME:'push'}),'merge');
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'push'}),'merge');
   const f=fixture(t);
   await assert.rejects(()=>prepareRegistration({...f.options,env:{ARCHIVE_REGISTRATION_MODE:'fast'}}),/REGISTRATION_MODE_INVALID/);
 });

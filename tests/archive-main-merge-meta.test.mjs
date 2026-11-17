@@ -4,11 +4,11 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import canonical from '../archive/archive2-canonical.js';
 import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets,registerMergedSource,backlogCounts} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
-import {registrationMode} from '../archive/tools/meta-foundation/registration-mode.mjs';
+import {explicitRegistrationMode,inferRegistrationMode} from '../archive/tools/meta-foundation/registration-mode.mjs';
 import {validateActiveMetaFields} from '../archive/tools/meta-foundation/active-registry.mjs';
 import {validateReviewedSourceReassessment,REASSESSED_STUDENT_FIELDS} from '../archive/tools/meta-foundation/reviewed-source-reassessment.mjs';
 import {nativeReviewedFigureRebind} from '../archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs';
@@ -1735,14 +1735,33 @@ test('main auto-meta verify CLI preserves missing registered UID rejection',t=>{
 });
 
 // ---- registration modes: a merge run handles only what that merge changed; the backlog waits for a digest run ----
-test('registration mode comes from one place: push is merge, everything else is digest, an explicit value wins and junk fails',()=>{
-  assert.equal(registrationMode({GITHUB_EVENT_NAME:'push'}),'merge');
-  for(const env of [{},{GITHUB_EVENT_NAME:'schedule'},{GITHUB_EVENT_NAME:'workflow_dispatch'},{GITHUB_EVENT_NAME:'pull_request'}])assert.equal(registrationMode(env),'digest');
-  assert.equal(registrationMode({GITHUB_EVENT_NAME:'push',ARCHIVE_REGISTRATION_MODE:'digest'}),'digest');
-  assert.equal(registrationMode({GITHUB_EVENT_NAME:'schedule',ARCHIVE_REGISTRATION_MODE:'merge'}),'merge');
-  assert.throws(()=>registrationMode({ARCHIVE_REGISTRATION_MODE:'fast'}),/REGISTRATION_MODE_INVALID/);
+test('registration mode: libraries read only the explicit variable; the writer alone infers merge from a push event',()=>{
+  // Library/tool reader: no explicit value means digest, whatever CI event the process runs in.
+  for(const env of [{},{GITHUB_EVENT_NAME:'push'},{GITHUB_EVENT_NAME:'schedule'},{GITHUB_EVENT_NAME:'pull_request'}])assert.equal(explicitRegistrationMode(env),'digest',JSON.stringify(env));
+  assert.equal(explicitRegistrationMode({ARCHIVE_REGISTRATION_MODE:'merge'}),'merge');
+  assert.equal(explicitRegistrationMode({GITHUB_EVENT_NAME:'push',ARCHIVE_REGISTRATION_MODE:'digest'}),'digest');
+  assert.throws(()=>explicitRegistrationMode({ARCHIVE_REGISTRATION_MODE:'fast'}),/REGISTRATION_MODE_INVALID/);
+  // Writer reader.
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'push'}),'merge');
+  for(const env of [{},{GITHUB_EVENT_NAME:'schedule'},{GITHUB_EVENT_NAME:'workflow_dispatch'},{GITHUB_EVENT_NAME:'pull_request'}])assert.equal(inferRegistrationMode(env),'digest');
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'push',ARCHIVE_REGISTRATION_MODE:'digest'}),'digest');
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'schedule',ARCHIVE_REGISTRATION_MODE:'merge'}),'merge');
+  assert.throws(()=>inferRegistrationMode({ARCHIVE_REGISTRATION_MODE:'fast'}),/REGISTRATION_MODE_INVALID/);
   assert.throws(()=>selectTargets(root,{},{},'0'.repeat(40),undefined,'fast'),/REGISTRATION_MODE_INVALID/);
 });
+test('a push environment without an explicit mode never turns the registrar (function or CLI) into merge mode',()=>modeFixture(async f=>{
+  seedMode(f);const before=f.stateBytes();
+  process.env.GITHUB_EVENT_NAME='push';
+  const plan=await f.run('plan',{plan:true});
+  assert.equal(plan.mode,'digest');assert.equal(plan.targetCount,5,'backlog plus this merge, as in a digest run');
+  const out=path.join(f.reports,'cli-plan.json'),env={...process.env,GITHUB_EVENT_NAME:'push',GITHUB_ACTIONS:''};delete env.ARCHIVE_REGISTRATION_MODE;
+  const cli=spawnSync(process.execPath,[path.join(root,'archive/tools/meta-foundation/auto-register-merged-source.mjs'),'--root',f.dir,'--plan','--report',out],{encoding:'utf8',env});
+  assert.equal(cli.status,0,cli.stderr);
+  const cliPlan=JSON.parse(fs.readFileSync(out,'utf8'));assert.equal(cliPlan.mode,'digest');assert.equal(cliPlan.targetCount,5);
+  const explicit=spawnSync(process.execPath,[path.join(root,'archive/tools/meta-foundation/auto-register-merged-source.mjs'),'--root',f.dir,'--plan','--report',out],{encoding:'utf8',env:{...env,ARCHIVE_REGISTRATION_MODE:'merge'}});
+  assert.equal(explicit.status,0,explicit.stderr);assert.equal(JSON.parse(fs.readFileSync(out,'utf8')).targetCount,3,'only an explicit value selects merge');
+  assert.deepEqual(f.stateBytes(),before);
+}));
 const refusingContext=async()=>({registry:{registrySha:'sha256:'+'c'.repeat(64)},validate(){},refreshRuntime(){},metadata:{records:[]},metaByUid:new Map(),
   identityMap:{records:[]},identityByJoin:new Map(),runtimes:new Map(),owners:new Map()});
 // Two exam files. fixture.js is the one a merge changes; other.js only carries queued backlog. Every attempted target is refused

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { BOUNDED_RENDERER_UI_INPUTS } from '../4slot/bounded-renderer-ui-inputs.mjs';
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
-import { registrationMode, REGISTRATION_MODE_ENV } from '../../archive/tools/meta-foundation/registration-mode.mjs';
+import { inferRegistrationMode, REGISTRATION_MODE_ENV } from '../../archive/tools/meta-foundation/registration-mode.mjs';
 import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
 // Each successful lane stages its allowlisted output. Native `git diff`/reset guards then see that index as
@@ -16,7 +16,7 @@ import {checkStagedRegistrationWhitespace} from './archive-registration-whitespa
 
 export const VERSION = 'archive-registration-writer-v1';
 export const STATE = '.archive-meta-register/auto/writer-state.json';
-export { registrationMode };
+export { inferRegistrationMode };
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const json = v => JSON.stringify(v, null, 2) + '\n';
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -390,7 +390,7 @@ export function renderRegistrationSummary(result) {
 // Recovery checks only the checked-out snapshot. It does not fetch main, run producers or edit Git data.
 export function checkRegistration({root=ROOT,work,lanes=nativeLanes(root),env=process.env}={}) {
   root=path.resolve(root);assertClean(root);
-  const registration=registrationMode(env);
+  const registration=inferRegistrationMode(env);
   const assessment=assess(indexRows(root),stateAt(root),lanes,registration);
   const report={schemaVersion:VERSION,mode:'check',registrationMode:registration,inputSha:git(root,'rev-parse','HEAD').trim(),...assessment,
     registrationReady:assessment.publishable,safeToPersist:false,changedPaths:[],
@@ -404,7 +404,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   if(env.GITHUB_ACTIONS==='true'&&(env.GITHUB_EVENT_NAME==='pull_request'||env.GITHUB_REF!=='refs/heads/main'))throw Error('MAIN_ONLY_WRITER');
   if(new Set(lanes.map(l=>l.id)).size!==lanes.length||lanes.some((l,i)=>l.id==='fourSlot'&&i!==lanes.length-1))throw Error('INVALID_LANE_ORDER');
   work=evidenceDir(root,work,env);
-  const registration=registrationMode(env);
+  const registration=inferRegistrationMode(env);
   const inputSha=git(root,'rev-parse','HEAD').trim(),before=indexRows(root),old=stateAt(root);
   const initialSeals=read(root,'archive/data/meta-foundation/crosswalks/sealed-digests.v1.json',{entries:[]});
   const allOutputs=unique(lanes.flatMap(l=>l.outputs));

@@ -26,7 +26,7 @@ import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,plan
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
-import { registrationMode } from './registration-mode.mjs';
+import { explicitRegistrationMode } from './registration-mode.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -604,7 +604,7 @@ function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,t
 
 // plan:true stops after target selection (read-only, no registry context, no writes) so a caller can tell cheaply whether
 // a run has any work; with zero targets it returns the same NO_CHANGE report a full run would.
-export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256,mode=registrationMode(process.env),plan=false,contextLoader=context}={}) {
+export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256,mode=explicitRegistrationMode(process.env),plan=false,contextLoader=context}={}) {
   root=path.resolve(root);
   if(!['merge','digest'].includes(mode))throw Error('REGISTRATION_MODE_INVALID');
   if(plan&&(doWrite||replayReportPath||canonicalParentRetryRequestPath))throw Error('AUTO_META_PLAN_READ_ONLY');
