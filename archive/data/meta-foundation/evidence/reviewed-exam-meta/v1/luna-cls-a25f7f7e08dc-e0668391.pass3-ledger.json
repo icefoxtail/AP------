@@ -1,0 +1,191 @@
+{
+    "sourceArchiveFile":  "types/high/h2/25_제일고_1학기_중간_고2_확률과통계_유형확인.js",
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "items":  [
+                  {
+                      "conditionKeys":  [
+                                            "COND_DIGIT_SUM"
+                                        ],
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "resolutionReason":  "홀수 자릿수는 1개 또는 3개라 ₄C₁·3·2³+₄C₃·3³·2=96+216=312이고 홀짝 자리 분석이 쓰인다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+                                               "CC_PARITY_ANALYSIS"
+                                           ]
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_EXPONENT_LAWS"
+                                           ],
+                      "resolutionReason":  "(x²−2/x)⁶의 일반항에서 x의 지수는 12−3r이므로 상수항은 r=4에서 ₆C₄·(−2)⁴=240이다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  12,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "11개 전체에서 a+b+c+d=11이고 3d+a+b+c=11이므로 d=0, 이어 a,b≥1,c≥2를 만족하는 분배는 a′+b′+c′=7의 비음수해 ₉C₂=36가지다.",
+                      "chosenFrom":  "new",
+                      "conditionKeys":  [
+                                            "COND_LOWER_BOUND"
+                                        ],
+                      "ordinal":  13,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_GRID_SHORTEST_PATH"
+                                           ],
+                      "resolutionReason":  "여섯 번 동서북 이동 뒤 소수 좌표는 (3,3)뿐이라 유리한 경로 ₆C₃=20개, 전체 2⁶개로 확률은 5/16이다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  14,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_PARITY_ANALYSIS"
+                                           ],
+                      "resolutionReason":  "세 홀수는 서로 이웃할 수 없어서 세 짝수 사이의 틈에 하나씩 놓이며 원형 배열 수는 2!·3!=12다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  15,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "resolutionReason":  "1·2·3 숫자로 만든 세 자리 이하는 3+9+27=39개이므로 50번째는 네 자리 11번째인 1212다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+                                               "CC_REPEATED_PERMUTATION_DIGIT_BOUND"
+                                           ]
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_SET_INTERSECTION"
+                                           ],
+                      "resolutionReason":  "네 원소 중 정확히 하나를 A∩B에 고르면 나머지 셋은 교집합 밖의 세 상태 중 하나라 유리한 순서쌍은 4·3³개다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  17,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_ORDER_FIXED_PERMUTATION"
+                                           ],
+                      "resolutionReason":  "A\u003cB와 D\u003cC는 서로 다른 두 쌍의 순서 제약이므로 5!/(2·2)=30가지 위원 투표 순서다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  18,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_ODD"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_PARITY_ANALYSIS"
+                                           ],
+                      "resolutionReason":  "학생 총수는 SA+3SC=7이고 SA 홀수이므로 SC=0에서 1가지, SC=2에서 6가지가 가능해 합은 7이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_ODD"
+                                        ],
+                      "crossConceptKeys":  [
+                                               "CC_PARITY_ANALYSIS"
+                                           ],
+                      "resolutionReason":  "곱 abcd가 홀수면 네 자연수는 모두 2u+1 꼴이고 u들의 합은 2이므로 해의 수 ₅C₃=10이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "resolutionReason":  "P(x)=xΣ(1+x)^j=(1+x)⁸−(1+x)이므로 x³의 계수는 ₈C₃=56이다.",
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "ordinal":  21,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "resolutionReason":  "세 점수 합 5에는 짝수 2회와 홀수 1회가 필요해 홀수 자리 3가지와 각 시행 숫자 선택 2³가지로 24개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+                                               "CC_PARITY_ANALYSIS"
+                                           ]
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_MONOTONIC_ORDER",
+                                            "COND_FUNCTION_VALUE_CONSTRAINT"
+                                        ],
+                      "rpmPath":  {
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "resolutionReason":  "비감소 함수에서 f(2)=3, f(5)=f(1)+2 조건에 따라 f(1)=1,2,3의 경우 수는 각각 4,9,12라 합계 25다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_POLYNOMIAL_TERM_COUNT"
+                                           ],
+                      "resolutionReason":  "(x+y+z)³의 항은 세 지수 합이 3인 조합 ₅C₃=10개이고 a,b를 곱해도 겹치지 않아 20개다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  4,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_NON_CONSECUTIVE_SELECTION"
+                                           ],
+                      "resolutionReason":  "남학생 원순열 3!가지 뒤 네 틈 중 두 틈을 순서 있게 골라 여학생을 놓으므로 3!·₄P₂=72가지다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  6,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_DIGIT_SUM"
+                                        ],
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "resolutionReason":  "숫자 3의 개수를 0,1,2,3으로 나누면 배열 수가 1,7,10,1이므로 합은 19다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+                                               "CC_CASE_EXHAUSTION_PERMUTATION"
+                                           ]
+                  },
+                  {
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_SELECTION"
+                                           ],
+                      "resolutionReason":  "전체 9개 중 3개는 ₉C₃이고 흰 공 2개·검은 공 1개는 ₅C₂·₄C₁이므로 확률은 40/84=10/21이다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  9,
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  }
+              ],
+    "createdAt":  "2026-11-13T12:32:00+09:00"
+}

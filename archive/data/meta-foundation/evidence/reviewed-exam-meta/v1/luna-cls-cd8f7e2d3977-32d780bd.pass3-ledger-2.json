@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T00:00:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x=−1에서 도함수 일치로 2(−1)+a=4라 a=6이고 연속으로 −4+b=−2라 b=2, 따라서 a−b=4이다.",
+      "choiceTableUsed": "H2-미적분I.json",
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x→−∞에서 두 근호를 각각 유리화하면 √(x²+x)+x→−1/2, √(x²+3x)+x→−3/2라 비는 1/3이다.",
+      "choiceTableUsed": "H2-미적분I.json",
+      "rpmPath": {
+        "midUnit": "함수의 극한",
+        "l3": "극한의 성질",
+        "l4": "대수적 계산"
+      }
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "주어진 부등식을 x²+3으로 나누고 무한대에서는 x로 나누면 f(x)/x의 양끝 극한이 2이며 x=1에서 f의 양끝 극한은 1이라 합은 3이다.",
+      "choiceTableUsed": "H2-미적분I.json",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "직선 y=t(x+1)과 단위원의 교점에서 높이는 2t/(1+t²)이므로 S(t)=2t/(1+t²), 따라서 tS(t)의 극한은 2이다.",
+      "choiceTableUsed": "H2-미적분I.json",
+      "rpmPath": {
+        "midUnit": "함수의 극한",
+        "l3": "무한대에서의 극한",
+        "l4": "다항·유리함수"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "y=h를 대입한 차분비는 [f(x+h)−f(x)]/h=f(h)/h−4x이고 f′(0)=10이므로 f′(x)=10−4x, f′(1)=6이다.",
+      "choiceTableUsed": "H2-미적분I.json",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ]
+    }
+  ]
+}
