@@ -436,7 +436,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선에 95% 구간 31.02 ≤ x ≤ 32.98과 99% 구간 30.71 ≤ x ≤ 33.29가 각각 양 끝에 점으로 표시되어 있다.",
+    "solutionImageCaption": "표본 64개의 표준오차는 4 ÷ √64 = 2분의 1이다. 95% 구간은 32 ± 0.98, 99% 구간은 32 ± 1.29이므로 a-b+c-d = -1.96 - 2.58 = -4.54. 따라서 답은 ① -4.54이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
