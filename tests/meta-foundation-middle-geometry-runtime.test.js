@@ -6,7 +6,8 @@ const path = require("path");
 const crypto = require("crypto");
 const { execFileSync } = require("child_process");
 const Archive2Core = require("../archive/archive2-core.js");
-const { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes } = require("./helpers/middle-geometry-issued-approval.cjs");
+const { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
+  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes } = require("./helpers/middle-geometry-issued-approval.cjs");
 
 async function main() {
 const { loadBank, nativeReviewReceipt, planQuestion, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
@@ -625,6 +626,141 @@ if (sourceRetainedInputs.length) {
   console.log("PASS " + sourceRetainedInputs.length +
     " exact issued Q11/Q15 approvals retained with current source reuse BLOCKED; " +
     (cases.length + companionChanges.length + fileRejections) + " rejected corruptions; new approvals 0");
+}
+const rhsRetainedInputs = retainedInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).kind === "EXACT_E017_Q2_ISSUED_RHS_SOURCE_BLOCK");
+if (rhsRetainedInputs.length) {
+  assert.strictEqual(rhsRetainedInputs.length, 1, "the observed RHS source block is one fixed issued UID");
+  const input = rhsRetainedInputs[0], baseline = retainedApprovals.get(input.current.questionUid);
+  assert.strictEqual(input.current.questionUid, "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9");
+  assert.strictEqual(input.ordinal, 2);
+  assert.strictEqual(baseline.proof.currentNativeReady, false);
+  assert.strictEqual(baseline.declaredInputs.originalSolutionUi.currentUiContinuity, "NOT_ASSERTED");
+  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+  const changedBank = structuredClone(input.nativeSource.bank);
+  changedBank[1] = { ...changedBank[1], content: "unknown selected question fixture" };
+  const cases = [
+    ["RHS retained metadata whole changed", { current: { ...input.current, tagStatus: "unreviewed" } }],
+    ["RHS retained identity UID changed", { identity: { ...input.identity, questionUid: "qid_v1_" + "0".repeat(64) } }],
+    ["RHS retained runtime whole changed", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, metadataRevision: input.nativeSource.runtimeRecord.metadataRevision + ":changed" } } }],
+    ["RHS original evidence removed", { current: { ...input.current, approvalEvidence: [] } }],
+    ["RHS owner changed", { runtimeOwner: "MIDDLE1" }],
+    ["RHS ordinal changed", { ordinal: 3 }],
+    ["RHS unissued receipt", { current: { ...input.current, metadataRevision: input.current.metadataRevision + "-unissued" } }],
+    ["RHS unknown source bank hidden behind observed byte pins", { question: changedBank[1], previous: changedBank[1],
+      nativeSource: { ...input.nativeSource, bank: changedBank } }]
+  ];
+  for (const [label, changes] of cases) rejects({ ...input, ...changes }, label);
+
+  let fileRejections = 0, protocolRejections = 0;
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-rhs-retention-"));
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
+    for (const relative of baseline.readPaths) {
+      const target = path.resolve(fixtureRoot, relative);
+      assert(target.startsWith(fixtureRoot + path.sep), relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    const copied = issuedObserver.assertKnownInputs(candidate, "unchanged copied exact RHS authority closure");
+    assert.deepStrictEqual(copied.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(copied.authenticatedDrifts, baseline.authenticatedDrifts);
+    const refuse = (value, label) => { rejects(value, label); fileRejections += 1; };
+    const nativeSourceBytes = readRhsOriginalNativeSource(fixtureRoot);
+    assert.strictEqual(sha256(nativeSourceBytes), baseline.declaredInputs.originalNativeSource.sha256);
+    assert.throws(() => assertRhsOriginalNativeSourceBytes(
+      Buffer.concat([nativeSourceBytes, Buffer.from("\n")])), /RHS_ORIGINAL_SOURCE_BYTES/,
+      "changed original Native source cannot hide behind the current whole-source refusal");
+    fileRejections += 1;
+    const emptyRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-rhs-missing-object-"));
+    try {
+      execFileSync("git", ["init", "--quiet", emptyRoot], { stdio: ["ignore", "pipe", "pipe"] });
+      assert.throws(() => readRhsOriginalNativeSource(emptyRoot),
+        /Command failed: git|RHS_ORIGINAL_SOURCE_PATH/, "the original Native source must exist in the caller's Git context");
+      fileRejections += 1;
+    } finally { fs.rmSync(emptyRoot, { recursive: true, force: true }); }
+
+    const documentPaths = [baseline.receiptPath, baseline.bindingPath,
+      "docs/operations/m2-e017-rhs-continuity-20261116/final-ui-binding-r1.json",
+      ".archive-meta-register/evidence/m2s2-display21-current626-20261116/e017-native-review.json"];
+    for (const relative of documentPaths) {
+      assert(baseline.readPaths.has(relative), relative);
+      const file = path.join(fixtureRoot, relative), bytes = fs.readFileSync(file);
+      fs.appendFileSync(file, "\n");
+      refuse(candidate, "known source block plus changed original RHS authority: " + relative);
+      fs.writeFileSync(file, bytes);
+    }
+    const reviewRelative = documentPaths[3], reviewFile = path.join(fixtureRoot, reviewRelative);
+    const reviewBytes = fs.readFileSync(reviewFile);
+    fs.unlinkSync(reviewFile);
+    refuse(candidate, "known source block plus missing original Native review");
+    fs.symlinkSync(path.join(root, reviewRelative), reviewFile);
+    refuse(candidate, "same-byte original Native review symlink");
+    fs.unlinkSync(reviewFile); fs.writeFileSync(reviewFile, reviewBytes);
+
+    for (const relative of baseline.declaredInputs.assetPaths) {
+      const file = path.join(fixtureRoot, relative), bytes = fs.readFileSync(file);
+      fs.unlinkSync(file);
+      refuse(candidate, "known source block plus missing original RHS asset");
+      fs.writeFileSync(file, Buffer.concat([bytes, Buffer.from("\n")]));
+      refuse(candidate, "known source block plus changed original RHS asset");
+      fs.unlinkSync(file); fs.symlinkSync(path.join(root, relative), file);
+      refuse(candidate, "same-byte original RHS asset symlink");
+      fs.unlinkSync(file); fs.writeFileSync(file, bytes);
+    }
+    const masterFile = path.join(fixtureRoot, "archive/data/master_tables/js_archive_tag_master.json");
+    const masterBytes = fs.readFileSync(masterFile);
+    fs.appendFileSync(masterFile, "\n");
+    refuse(candidate, "RHS current master drift is not an observed source change");
+    fs.writeFileSync(masterFile, masterBytes);
+    const sourceRelative = "archive/exams/" + input.source, sourceFile = path.join(fixtureRoot, sourceRelative);
+    const sourceBytes = fs.readFileSync(sourceFile), unknownBytes = Buffer.concat([sourceBytes, Buffer.from("\n")]);
+    const blobOf = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+    fs.writeFileSync(sourceFile, unknownBytes);
+    refuse({ ...candidate, nativeSource: { ...candidate.nativeSource, bytes: unknownBytes, blobSha1: blobOf(unknownBytes) } },
+      "RHS unobserved source bytes are rejected");
+    fs.writeFileSync(sourceFile, sourceBytes);
+    fs.unlinkSync(sourceFile); fs.symlinkSync(path.join(root, sourceRelative), sourceFile);
+    refuse(candidate, "same-byte observed source symlink is rejected");
+    fs.unlinkSync(sourceFile); fs.writeFileSync(sourceFile, sourceBytes);
+    const issuedBytes = execFileSync("git", ["show", "f9e49a0e0c18f18c63f31d7547bd504f07a821c6:" + sourceRelative],
+      { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    const issuedBank = loadBank(issuedBytes.toString("utf8"), sourceRelative);
+    fs.writeFileSync(sourceFile, issuedBytes);
+    refuse({ ...candidate, question: issuedBank[1], previous: issuedBank[1],
+      nativeSource: { ...candidate.nativeSource, bytes: issuedBytes, blobSha1: blobOf(issuedBytes), bank: issuedBank } },
+      "old issued source is not an observed current RHS BLOCKED condition");
+    fs.writeFileSync(sourceFile, sourceBytes);
+
+    // These explicit protocol doubles exercise only the refusal gate. They
+    // cannot issue metadata or replace the real Native/plan calls above.
+    const basePlan = { status: "SUPPLEMENT_PENDING", reasons: [baseline.expectedPlanReason],
+      questionUid: input.current.questionUid, sourceArchiveFile: input.source, sourceOrdinal: input.ordinal };
+    const protocolCases = [
+      ["current Native receipt cannot be counted as BLOCKED", {
+        nativeReviewReceipt: () => baseline.receiptPath, planQuestion: () => basePlan }],
+      ["unknown RHS refusal stays a failure", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, reasons: ["UNKNOWN_NATIVE_INPUT_FAILURE"] }) }],
+      ["RHS refusal cannot become already registered", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, status: "ALREADY_REGISTERED" }) }],
+      ["RHS refusal cannot carry generated metadata", {
+        nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, final: { metadataApprovalType: "FINAL_QA" } }) }]
+    ];
+    for (const [label, overrides] of protocolCases) {
+      const observer = createIssuedApprovalObserver({ ...issuedObserverApi, ...overrides });
+      assert.throws(() => observer.assertBlocked(candidate, label), label);
+      protocolRejections += 1;
+    }
+    const restored = issuedObserver.assertKnownInputs(candidate, "restored entire original RHS input closure");
+    assert.deepStrictEqual(restored.declaredInputs, baseline.declaredInputs);
+    assert.deepStrictEqual(restored.authenticatedDrifts, baseline.authenticatedDrifts);
+  } finally { fs.rmSync(fixtureRoot, { recursive: true, force: true }); }
+  console.log("PASS exact issued RHS1 approval retained with current source reuse BLOCKED; " +
+    (cases.length + fileRejections + protocolRejections) +
+    " rejected corruptions; current Native approvals 0; current UI continuity NOT_ASSERTED");
 }
 console.log("CURRENT_NATIVE_READINESS " + JSON.stringify({
   ready: nativeApprovals.size, blockedRetained: retainedApprovals.size,

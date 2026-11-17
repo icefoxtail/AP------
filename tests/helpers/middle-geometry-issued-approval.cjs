@@ -8,6 +8,7 @@ const path = require("path");
 const crypto = require("crypto");
 const { execFileSync } = require("child_process");
 const SvgIndexContinuity = require("../../tools/4slot/existing-vector-svg-index-continuity.cjs");
+const ExistingVectorUi = require("../../tools/4slot/existing-registered-vector-ui.cjs");
 const SVG_INDEX = "archive/data/svg-accessibility-index.js";
 const MASTER = "archive/data/master_tables/js_archive_tag_master.json";
 const ACTIVE_INDEX = "archive/data/meta-foundation/canonical/registry_index.json";
@@ -164,6 +165,78 @@ const SOURCE_ONLY = Object.freeze({
   "currentRejection": "NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED"
 });
 
+// These later source bytes are an observed blocking condition, never a source
+// approval. The exact edition and the complete changed-field inventory are fixed.
+const SOURCE_EDITION_2372 = Object.freeze({
+  "commit": "5a20d765998a2101899572ba84a359fef751ecfb",
+  "pins": {
+    "bytes": 66857,
+    "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+    "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f"
+  },
+  "changes": [
+    {
+      "sourceOrdinal": 2,
+      "fields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "fields": [
+        "content"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "fields": [
+        "solution"
+      ]
+    }
+  ]
+});
+
+const RHS_ONLY = Object.freeze({
+  "schemaVersion": "EXACT_E017_Q2_ISSUED_RHS_SOURCE_BLOCK",
+  "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+  "sourceOrdinal": 2,
+  "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+  "expectedQuestionCount": 23,
+  "requestId": "m2s2-display21-current626-e017-existing-rhs1-20261116",
+  "requestSha256": "fb902c9c631d8cfcc848dd544ebfb3fad6371534c71eb36d3431b8411bb1c176",
+  "receipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-display21-current626-e017-existing-rhs1-20261116.json",
+    "bytes": 26178,
+    "sha256": "5aa6d34e837537778e9f228f889f512658abc7f2cdfe5e7cf6deaae5b67ca740",
+    "gitBlobSha1": "310ad0cb7f1ccbba4835c961360941661513181c"
+  },
+  "sourceBinding": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-display21-current626-e017-existing-rhs1-20261116.source-review-binding.json",
+    "bytes": 9069,
+    "sha256": "b5586ffc169d8309a7e1fd917b8ccebe1d3cbc45512abd68b08c75551b6859a3",
+    "gitBlobSha1": "b0f2b4244e08e3cc9b561f1a73e51f9517fcb273"
+  },
+  "reviewBinding": {
+    "commit": "3f7430d37ca2257ede52175baa94c160c0125f7a",
+    "path": "docs/operations/m2-e017-rhs-continuity-20261116/final-ui-binding-r1.json",
+    "bytes": 6009,
+    "sha256": "12084de0ea2681bb6cf78a6ec6f60b00eb79fa6605b9b48dbf7dc8a1003dcb6d",
+    "gitBlobSha1": "6235ee120366c52d2e6035dfba8a9431a5104fca"
+  },
+  "nativeSourceRef": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "bytes": 40638,
+    "sha256": "ec693aa011e6a82f41c63f640666d061c2751a972abfb730ca91e954565ad9c3",
+    "gitBlobSha1": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d"
+  },
+  "sourceReviewSha256": "cecf291e5adf9ccb8fc84a1539620a997db3882c3bab167fd3e74ae7d17a04bd",
+  "typedProofSha256": "010cd67a316b38b058aee0949f6cea26e55dda4b964b14aacd9547e79445bde5"
+});
+
 const PROOF_KINDS = Object.freeze([
   ["m2ProblemRenderer21Continuity", "archive-reviewed-m2-problem21-continuity-v1", "archive-m2-problem24-student-ui-preview-v1"],
   ["m2Family3ProblemContinuity", "archive-m2-family3-problem-continuity-v1", "archive-m2-problem24-student-ui-preview-v1"],
@@ -226,6 +299,25 @@ function readOriginalNativeSource(root, prior) {
   });
   return assertOriginalNativeSourceBytes(raw, prior);
 }
+function assertRhsOriginalNativeSourceBytes(raw) {
+  assert(Buffer.isBuffer(raw), "ISSUED_RETENTION:RHS_ORIGINAL_SOURCE_BYTES");
+  const ref = RHS_ONLY.nativeSourceRef;
+  assert.deepStrictEqual(pins(raw), { gitBlobSha1: ref.gitBlobSha1, sha256: ref.sha256, bytes: ref.bytes },
+    "ISSUED_RETENTION:RHS_ORIGINAL_SOURCE_BYTES");
+  return raw;
+}
+function readRhsOriginalNativeSource(root) {
+  const ref = RHS_ONLY.nativeSourceRef;
+  const options = { cwd: root, maxBuffer: 1024 * 1024, timeout: 30000,
+    env: { ...process.env, GIT_NO_LAZY_FETCH: "1", GIT_OPTIONAL_LOCKS: "0" },
+    stdio: ["ignore", "pipe", "pipe"] };
+  // Re-read the original required source in this caller's Git object context.
+  // The current whole-source refusal occurs before Native reaches this input.
+  const entry = execFileSync("git", ["--literal-pathspecs", "ls-tree", "-z", ref.commit, "--", ref.path], options).toString("utf8");
+  assert.strictEqual(entry, "100644 blob " + ref.gitBlobSha1 + "\t" + ref.path + "\0",
+    "ISSUED_RETENTION:RHS_ORIGINAL_SOURCE_PATH");
+  return assertRhsOriginalNativeSourceBytes(execFileSync("git", ["cat-file", "blob", ref.gitBlobSha1], options));
+}
 function createIssuedApprovalObserver(api) {
   const immutableCache = new Map(), ancestorCache = new Set();
   const git = (root, args) => execFileSync("git", args, {
@@ -287,6 +379,31 @@ function createIssuedApprovalObserver(api) {
         "ISSUED_RETENTION:IMMUTABLE_LARGE_REF_BYTES");
     }
     authenticatedRefs.add(key);
+  }
+  function assertObservedSourceEdition(root, relative, issued, actual, label) {
+    assert.strictEqual(relative, OBSERVATION.source.path, label + ": unknown source change");
+    assert.deepStrictEqual(pins(issued), OBSERVATION.source.before, label + ": known source before");
+    const editions = [
+      { commit: OBSERVATION.observed, pins: OBSERVATION.source.after,
+        changes: [{ sourceOrdinal: SOURCE_ONLY.changedSourceOrdinal, fields: SOURCE_ONLY.changedSourceFields }] },
+      SOURCE_EDITION_2372
+    ];
+    const edition = single(editions, value => same(value.pins, pins(actual)), label + ": unobserved source edition");
+    const head = ancestor(root, edition.commit);
+    assert(actual.equals(immutable(root, edition.commit, relative)) && actual.equals(immutable(root, head, relative)),
+      label + ": exact observed source and current HEAD bytes");
+    const beforeBank = api.loadBank(issued.toString("utf8"), relative);
+    const currentBank = api.loadBank(actual.toString("utf8"), relative);
+    assert.strictEqual(beforeBank.length, SOURCE_ONLY.expectedQuestionCount, label);
+    assert.strictEqual(currentBank.length, SOURCE_ONLY.expectedQuestionCount, label);
+    const changes = beforeBank.map((before, index) => {
+      const after = currentBank[index];
+      if (same(before, after)) return null;
+      return { sourceOrdinal: index + 1, fields: [...new Set([...Object.keys(before), ...Object.keys(after)])]
+        .filter(field => !same(before[field], after[field])).sort() };
+    }).filter(Boolean);
+    assert.deepStrictEqual(changes, edition.changes, label + ": exact known source field inventory");
+    return { commit: edition.commit, pins: edition.pins, changes, beforeBank, currentBank };
   }
   function assertRetained(input, label) {
     const { current, identity, source, ordinal, question, previous, registry, runtimeOwner, nativeSource } = input;
@@ -415,15 +532,17 @@ function createIssuedApprovalObserver(api) {
     assert(currentSource.equals(nativeSource.bytes), label + ": current source bytes");
     const anchorSource = immutable(root, OBSERVATION.anchor, sourcePath);
     const sourceChangedSinceAnchor = !currentSource.equals(anchorSource);
-    if (sourceChangedSinceAnchor) {
-      const known = OBSERVATION.source;
-      ancestor(root, OBSERVATION.observed);
-      assert.strictEqual(sourcePath, known.path, label + ": unknown source change");
-      assert.deepStrictEqual(pins(anchorSource), known.before, label + ": known source before");
-      assert.deepStrictEqual(pins(currentSource), known.after, label + ": known source after");
-      assert(currentSource.equals(immutable(root, OBSERVATION.observed, sourcePath)), label + ": source observation");
+    const sourceEdition = sourceChangedSinceAnchor
+      ? assertObservedSourceEdition(root, sourcePath, anchorSource, currentSource, label) : null;
+    if (sourceEdition) assert.deepStrictEqual(sourceEdition.currentBank, nativeSource.bank, label + ": observed caller source bank");
+    const rhsOnly = requestId === RHS_ONLY.requestId;
+    if (rhsOnly) {
+      assert(source === RHS_ONLY.sourceArchiveFile && ordinal === RHS_ONLY.sourceOrdinal &&
+        current.questionUid === RHS_ONLY.questionUid, label + ": exact issued RHS singleton");
+      assert.deepStrictEqual(pins(issuedBytes), pinsOnly(RHS_ONLY.receipt), label + ": fixed RHS issued receipt");
     }
-    return { kind: sourceOnly ? SOURCE_ONLY.schemaVersion : "ISSUED_TYPED_UI", receiptPath, receipt, bindingPath, patch, context, readPaths, sourceChangedSinceAnchor, live,
+    return { kind: sourceOnly ? SOURCE_ONLY.schemaVersion : rhsOnly ? RHS_ONLY.schemaVersion : "ISSUED_TYPED_UI",
+      receiptPath, receipt, bindingPath, patch, context, readPaths, sourceChangedSinceAnchor, sourceEdition, live,
       proof: { approval: "RETAINED_ISSUED_APPROVAL", anchor: OBSERVATION.anchor,
         receipt: { path: receiptPath, ...pins(issuedBytes) }, questionUid: current.questionUid,
         sourceArchiveFile: source, sourceOrdinal: ordinal, metadataSha256: sha(stable(current)),
@@ -524,21 +643,13 @@ function createIssuedApprovalObserver(api) {
     // No mathematical review, rendering, new approval or source rewrite occurs.
     const sourcePath = "archive/exams/" + source, beforeBytes = immutable(root, OBSERVATION.anchor, sourcePath);
     assert.deepStrictEqual(pins(beforeBytes), OBSERVATION.source.before, label + ": issued source edition");
-    assert.deepStrictEqual(pins(nativeSource.bytes), OBSERVATION.source.after, label + ": exact735 source edition");
-    assert(nativeSource.bytes.equals(immutable(root, OBSERVATION.observed, sourcePath)) &&
-      nativeSource.bytes.equals(immutable(root, ancestor(root, OBSERVATION.observed), sourcePath)),
-      label + ": current HEAD exact observed source");
-    const oldBank = api.loadBank(beforeBytes.toString("utf8"), sourcePath);
-    const newBank = api.loadBank(nativeSource.bytes.toString("utf8"), sourcePath);
-    assert.strictEqual(oldBank.length, SOURCE_ONLY.expectedQuestionCount, label);
-    assert.strictEqual(newBank.length, SOURCE_ONLY.expectedQuestionCount, label);
+    const edition = kept.sourceEdition;
+    assert(edition && nativeSource.bytes.equals(immutable(root, edition.commit, sourcePath)),
+      label + ": exact observed source edition");
+    const oldBank = edition.beforeBank, newBank = edition.currentBank;
     assert.deepStrictEqual(newBank, nativeSource.bank, label + ": caller bank must be the current source bytes");
-    const changed = oldBank.map((value, index) => same(value, newBank[index]) ? null : index + 1).filter(Boolean);
-    assert.deepStrictEqual(changed, [SOURCE_ONLY.changedSourceOrdinal], label + ": exact known source delta");
-    const oldChanged = oldBank[SOURCE_ONLY.changedSourceOrdinal - 1], newChanged = newBank[SOURCE_ONLY.changedSourceOrdinal - 1];
-    const changedFields = [...new Set([...Object.keys(oldChanged), ...Object.keys(newChanged)])]
-      .filter(field => !same(oldChanged[field], newChanged[field])).sort();
-    assert.deepStrictEqual(changedFields, SOURCE_ONLY.changedSourceFields, label + ": known source fields only");
+    const changedFields = single(edition.changes, value => value.sourceOrdinal === SOURCE_ONLY.changedSourceOrdinal,
+      label + ": original observed question change").fields;
     for (const subject of SOURCE_ONLY.subjects)
       assert.deepStrictEqual(newBank[subject.sourceOrdinal - 1], oldBank[subject.sourceOrdinal - 1],
         label + ": selected source question whole unchanged");
@@ -552,13 +663,132 @@ function createIssuedApprovalObserver(api) {
         subjects: SOURCE_ONLY.subjects.map(value => ({ ...value,
           wholeQuestionSha256: sha(stable(newBank[value.sourceOrdinal - 1])) })),
         changedOrdinal: SOURCE_ONLY.changedSourceOrdinal, changedFields,
+        observedCommit: edition.commit, completeChangedFields: edition.changes,
         currentNativeAuthority: "NOT_GRANTED" }
-    }, authenticatedDrifts: [{ path: sourcePath, issued: OBSERVATION.source.before, current: OBSERVATION.source.after }] };
+    }, authenticatedDrifts: [{ path: sourcePath, issued: OBSERVATION.source.before, current: edition.pins }] };
+  }
+  function assertKnownRhsInputs(input, kept, label) {
+    const { current, identity, source, ordinal, nativeSource } = input, root = nativeSource.root;
+    assert(kept.kind === RHS_ONLY.schemaVersion && current.questionUid === RHS_ONLY.questionUid &&
+      source === RHS_ONLY.sourceArchiveFile && ordinal === RHS_ONLY.sourceOrdinal &&
+      kept.sourceChangedSinceAnchor && kept.sourceEdition, label + ": exact RHS blocking scope");
+    const receipt = kept.receipt;
+    assert(receipt.scope === "PARTIAL_UIDS" && receipt.partialUidCount === 1 && receipt.totalQuestions === 1 &&
+      receipt.expectedQuestionCount === RHS_ONLY.expectedQuestionCount &&
+      receipt.requestSha256 === RHS_ONLY.requestSha256 && receipt.registryChanges?.length === 0 &&
+      receipt.approval?.type === "FINAL_QA" && receipt.approval.sourceRebind === undefined &&
+      receipt.sourceBlobSha1 === OBSERVATION.source.before.gitBlobSha1 &&
+      receipt.sourceRawSha256 === OBSERVATION.source.before.sha256, label + ": fixed original RHS issuance");
+    assert.strictEqual(kept.receiptPath, RHS_ONLY.receipt.path, label);
+    assert.strictEqual(kept.bindingPath, RHS_ONLY.sourceBinding.path, label);
+    const bindingBytes = immutable(root, OBSERVATION.anchor, kept.bindingPath);
+    assert.deepStrictEqual(pins(bindingBytes), pinsOnly(RHS_ONLY.sourceBinding), label + ": exact issued RHS source binding");
+    assert(kept.live(kept.bindingPath).equals(bindingBytes), label);
+    const request = JSON.parse(bindingBytes).requestSnapshot, patch = kept.patch;
+    assert(request.items.length === 1 && request.requestId === RHS_ONLY.requestId &&
+      request.expectedQuestionCount === RHS_ONLY.expectedQuestionCount &&
+      request.expectedSourceBlobSha1 === OBSERVATION.source.before.gitBlobSha1 &&
+      request.registrationMode === undefined && patch.rebind === undefined, label + ": closed original RHS request");
+    assert.deepStrictEqual(Object.keys(patch.sourceReview).sort(),
+      ["schemaVersion", "reviewCommit", "reviewPath", "reviewRef", "e017RhsContinuity"].sort(),
+      label + ": unmixed original RHS marker");
+    const marker = patch.sourceReview.e017RhsContinuity;
+    assert.deepStrictEqual(marker, { schemaVersion: "archive-m2-e017-existing-rhs-solution-continuity-v1",
+      reviewCommit: RHS_ONLY.reviewBinding.commit,
+      reviewRef: { path: RHS_ONLY.reviewBinding.path, sha256: RHS_ONLY.reviewBinding.sha256 } },
+      label + ": exact original RHS binding marker");
+    const repair = single(receipt.fingerprintRepairs, value => value.questionUid === current.questionUid &&
+      value.sourceOrdinal === ordinal, label + ": exact original RHS repair");
+    assert.strictEqual(receipt.fingerprintRepairs.length, 1, label);
+    const original = repair.sourceReview, typed = original.e017RhsContinuity;
+    assert.strictEqual(sha(stable(original)), RHS_ONLY.sourceReviewSha256, label + ": complete original RHS source-review proof");
+    assert.strictEqual(sha(stable(typed)), RHS_ONLY.typedProofSha256, label + ": complete original RHS typed proof");
+    const documentBytes = boundImmutable(root, RHS_ONLY.reviewBinding);
+    assert(kept.live(RHS_ONLY.reviewBinding.path).equals(documentBytes) &&
+      immutable(root, OBSERVATION.anchor, RHS_ONLY.reviewBinding.path).equals(documentBytes),
+      label + ": immutable and live RHS binding document");
+    const document = JSON.parse(documentBytes);
+    assert(document.schemaVersion === "archive-m2-e017-existing-rhs-binding-v1" &&
+      document.scope === "EXACT_E017_Q2_EXISTING_RHS_FIRST_LINE_ONLY" &&
+      document.questionUid === current.questionUid && document.sourceOrdinal === ordinal &&
+      document.sourceArchiveFile === source && document.expectedQuestionCount === RHS_ONLY.expectedQuestionCount &&
+      document.newMathematicalQa === false && document.newMetadataApprovals === 0,
+      label + ": original RHS binding scope");
+    for (const key of ["nativeReviewRef", "nativeItemSha256", "authorityRefs", "reviewedCurrentSourceRef",
+      "currentSourceRef", "currentAssetRefs", "solutionAssetRefs", "transition",
+      "studentUiTechnicalRef", "studentUiVisualRef"])
+      assert.deepStrictEqual(document[key], typed[key], label + ": original RHS declared " + key);
+    assert.deepStrictEqual(pinsOnly(document.currentSourceRef), OBSERVATION.source.before, label);
+    assert.strictEqual(document.currentSourceRef.path, "archive/exams/" + source, label);
+
+    // Authenticate the complete original reader closure. Only paths that the
+    // original reader consumes live are compared with current regular files;
+    // no new review, current screenshot or historical database is manufactured.
+    const immutableRefs = [document.nativeReviewRef, ...document.authorityRefs,
+      document.reviewedCurrentSourceRef, document.currentSourceRef,
+      document.studentUiTechnicalRef, document.studentUiVisualRef];
+    const rpm = original.nativeRpmCourseTransport;
+    assert(rpm?.schemaVersion === "archive-m2-native-rpm-course-transport-v1" &&
+      rpm.questionUid === current.questionUid && rpm.sourceOrdinal === ordinal &&
+      rpm.ordinaryParentValidationRequired === true && rpm.newMathematicalQa === false &&
+      rpm.nativeSource.gitBlobSha1 === RHS_ONLY.nativeSourceRef.gitBlobSha1 &&
+      rpm.nativeSource.sha256 === RHS_ONLY.nativeSourceRef.sha256, label + ": original RHS RPM transport");
+    immutableRefs.push(rpm.nativeRpmRef, rpm.currentRpmRef);
+    for (const ref of immutableRefs) authenticateRef(root, ref);
+    const originalSource = readRhsOriginalNativeSource(root);
+    assert(boundImmutable(root, RHS_ONLY.nativeSourceRef).equals(originalSource),
+      label + ": original RHS source commit and object binding");
+    assert.strictEqual(original.reviewedSourceBlobSha1, RHS_ONLY.nativeSourceRef.gitBlobSha1, label);
+    assert.strictEqual(original.reviewCommitSourceBlobSha1, RHS_ONLY.nativeSourceRef.gitBlobSha1, label);
+    assert.strictEqual(original.reviewedSourceSha256, RHS_ONLY.nativeSourceRef.sha256, label);
+    assert(kept.live(original.reviewRef.path).equals(boundImmutable(root, document.nativeReviewRef)),
+      label + ": original Native review live witness");
+    assert(kept.live(rpm.currentRpmRef.path).equals(boundImmutable(root, rpm.currentRpmRef)),
+      label + ": original current RPM live witness");
+
+    const assetPaths = [];
+    assert.strictEqual(document.currentAssetRefs.length, 2, label + ": original RHS asset inventory");
+    for (const ref of document.currentAssetRefs) {
+      const raw = boundImmutable(root, ref);
+      assert(raw.equals(boundImmutable(root, { ...ref, commit: RHS_ONLY.nativeSourceRef.commit })) &&
+        raw.equals(kept.live(ref.path)), label + ": original RHS asset history/live bytes");
+      assetPaths.push(ref.path);
+    }
+    const technical = JSON.parse(boundImmutable(root, document.studentUiTechnicalRef));
+    const visual = JSON.parse(boundImmutable(root, document.studentUiVisualRef));
+    assert(technical.expectedLogicalCases === 1 && technical.completedLogicalCases === 1 &&
+      technical.results?.length === 1 && visual.records?.length === 1,
+      label + ": immutable original RHS solution-one UI");
+    assert.deepStrictEqual(ExistingVectorUi.verifyUi({
+      technical, visual, technicalRef: document.studentUiTechnicalRef,
+      readRef: ref => boundImmutable(root, ref), questionUid: current.questionUid,
+      sourceOrdinal: ordinal, surface: "SOLUTION", sourceRef: document.currentSourceRef,
+      assetRefs: document.solutionAssetRefs
+    }), typed.ui, label + ": original issued UI contract only");
+    assertAuthorityInputs(input, kept, label);
+    const edition = kept.sourceEdition, sourcePath = "archive/exams/" + source;
+    assert.deepStrictEqual(edition.currentBank, nativeSource.bank, label + ": exact current RHS source bank");
+    assert.deepStrictEqual(input.question, edition.currentBank[ordinal - 1], label);
+    const q2Change = single(edition.changes, value => value.sourceOrdinal === ordinal,
+      label + ": exact observed Q2 source change");
+    assert.deepStrictEqual(q2Change.fields, SOURCE_ONLY.changedSourceFields, label + ": known Q2 image/layout change only");
+    const expectedPlanReason = api.sourceFingerprint(input.question) === identity.sourceFingerprint
+      ? "NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED" : "IDENTITY_SOURCE_FINGERPRINT_MISMATCH";
+    return { ...kept, expectedPlanReason, declaredInputs: {
+      readonlyPaths: [...kept.readPaths].filter(relative => relative !== sourcePath && !assetPaths.includes(relative)).sort(),
+      fontPaths: [], assetPaths: assetPaths.sort(), sourcePaths: [sourcePath], inventorySize: kept.readPaths.size,
+      immutableRefs, originalNativeSource: pins(originalSource),
+      originalSolutionUi: { technicalRef: document.studentUiTechnicalRef, visualRef: document.studentUiVisualRef,
+        logicalCases: 1, originalTiles: 1, currentUiContinuity: "NOT_ASSERTED" },
+      selectedSource: { anchor: OBSERVATION.anchor, path: sourcePath, observedCommit: edition.commit,
+        changes: edition.changes, currentQuestionSha256: sha(stable(input.question)), currentNativeAuthority: "NOT_GRANTED" }
+    }, authenticatedDrifts: [{ path: sourcePath, issued: OBSERVATION.source.before, current: edition.pins }] };
   }
   function assertKnownInputs(input, label) {
     const kept = assertRetained(input, label), { current, identity, source, ordinal, nativeSource, registry } = input;
     const root = nativeSource.root, head = ancestor(root, OBSERVATION.observed);
     if (kept.kind === SOURCE_ONLY.schemaVersion) return assertKnownSourceOnlyInputs(input, kept, label);
+    if (kept.kind === RHS_ONLY.schemaVersion) return assertKnownRhsInputs(input, kept, label);
     const repair = single(kept.receipt.fingerprintRepairs,
       value => value.questionUid === current.questionUid && value.sourceOrdinal === ordinal, label + ": issued typed repair");
     const candidates = PROOF_KINDS.filter(([key]) => repair.sourceReview?.[key] !== undefined);
@@ -639,11 +869,7 @@ function createIssuedApprovalObserver(api) {
       if (sources.has(relative)) {
         const issued = immutable(root, OBSERVATION.anchor, relative);
         if (!actual.equals(issued)) {
-          assert.strictEqual(relative, OBSERVATION.source.path, label + ": unknown source dependency drift");
-          assert.deepStrictEqual(pins(issued), OBSERVATION.source.before, label + ": observed source before");
-          assert.deepStrictEqual(pins(actual), OBSERVATION.source.after, label + ": observed source after");
-          assert(actual.equals(immutable(root, OBSERVATION.observed, relative)) &&
-            actual.equals(immutable(root, head, relative)), label + ": current observed source bytes");
+          assertObservedSourceEdition(root, relative, issued, actual, label + ": declared source dependency");
         }
         continue;
       }
@@ -712,6 +938,8 @@ function createIssuedApprovalObserver(api) {
     }
     assert(Array.isArray(result.reasons) && result.reasons.length > 0 &&
       result.reasons.every(reason => allowed.has(reason)), label + ": unknown current refusal");
+    if (kept.kind === RHS_ONLY.schemaVersion)
+      assert.deepStrictEqual(result.reasons, [kept.expectedPlanReason], label + ": exact RHS current refusal");
     assert.strictEqual(sha(stable({ current, identity, runtime: nativeSource.runtimeRecord,
       question: input.question, previous: input.previous, sourceBytes: sha(nativeSource.bytes) })), before,
       label + ": original producer probe must not mutate issued inputs");
@@ -722,4 +950,5 @@ function createIssuedApprovalObserver(api) {
   }
   return { assertRetained, assertKnownInputs, assertBlocked };
 }
-module.exports = { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes };
+module.exports = { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
+  readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes };
