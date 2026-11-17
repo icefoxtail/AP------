@@ -351,6 +351,10 @@
         new URL("workspace.html?view=monthly-test", location.href).href,
     }),
   ]);
+  // 수업 양식: print forms that are not assessments. A static link (like the grade buttons), so it needs no catalog and no click code.
+  const HOME_FORMS = Object.freeze([
+    Object.freeze({ label: "빈 풀이노트 인쇄", note: "문제집 수업용 A4 풀이 양식", href: "note-sheet.html" }),
+  ]);
   function homeProductMarkup(product) {
     const attrs = `data-product-key="${esc(product.productKey)}" data-route-owner="${esc(product.routeOwner || "")}" data-availability="${String(product.availability)}"`;
     if (product.availability && typeof product.routeResolver === "function")
@@ -3094,6 +3098,10 @@
         <section class="home-quick" aria-labelledby="home-quick-title">
           <h2 id="home-quick-title">빠른 평가</h2>
           <div class="home-quick-list">${products.map(productMarkup).join("")}</div>
+        </section>
+        <section class="home-forms" aria-labelledby="home-forms-title">
+          <h2 id="home-forms-title">수업 양식</h2>
+          <ul class="home-form-list">${HOME_FORMS.map((form) => `<li><a class="home-form-link" href="${esc(form.href)}"><span class="home-form-text"><strong>${esc(form.label)}</strong><span class="home-form-note">${esc(form.note)}</span></span><span class="home-quick-open">열기</span></a></li>`).join("")}</ul>
         </section>
       </div>
     </div>`;
