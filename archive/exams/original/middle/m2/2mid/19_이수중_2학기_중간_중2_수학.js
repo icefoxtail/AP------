@@ -491,11 +491,11 @@ window.examData = {
     "score": 3,
     "question": "<p>13. 다음 그림은 평행사변형 $\\text{ABCD}$의 내부에 있는 한 점 $\\text{P}$를 지나고 $\\overline{\\text{AB}}, \\overline{\\text{AD}}$에 각각 평행한 선분 $\\text{GH, EF}$를 그은 것이다. 이때, $\\overline{\\text{PH}}+\\overline{\\text{PF}}$의 값을 구하여라. [3점]</p><p><img src=\"assets/images/19_이수중_2학기_중간_중2_수학/q13.png\" /></p>",
     "choices": [
-      "$9\\text{m}$",
-      "$10\\text{m}$",
-      "$13\\text{m}$",
-      "$14\\text{m}$",
-      "$15\\text{m}$"
+      "$9\\text{cm}$",
+      "$10\\text{cm}$",
+      "$13\\text{cm}$",
+      "$14\\text{cm}$",
+      "$15\\text{cm}$"
     ],
     "answer": "",
     "solution": "",

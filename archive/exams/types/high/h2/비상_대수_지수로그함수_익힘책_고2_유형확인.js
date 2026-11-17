@@ -227,7 +227,7 @@ window.questionBank = [
     "content": "함수 $y=\\log_2 x$의 그래프 위의 점을 $D$라 하자. 두 점\n$A(a,0),\\quad B(10,0)$\n과 $y$축 위의 점\n$C=(0,\\log_2 a)$\n에 대하여 사각형 $ABDC$가 평행사변형일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
     "answer": "5",
-    "solution": "[키포인트] 평행사변형의 좌표 관계를 이용하여 점 $D$의 좌표를 구하고, 로그함수 위의 점 조건을 적용한다.\\n조건 정리: $A(a,0)$, $B(10,0)$, $C=(0,\\log_2 a)$이고, 사각형 $ABDC$는 평행사변형이다.\\n풀이 방향: 평행사변형에서 $D=B+C-A$의 좌표 관계를 이용한 뒤, $D$가 $y=\\log_2 x$ 위에 있음을 대입한다.\\n정석 풀이: 사각형 $ABDC$가 평행사변형이므로 $\\overrightarrow{AD}=\\overrightarrow{BC}$이고, 좌표로는 $D=B+C-A$이다. 따라서 $D=(10,0)+(0,\\log_2 a)-(a,0)=(10-a,\\log_2 a)$이다. 점 $D$가 함수 $y=\\log_2 x$의 그래프 위에 있으므로 $\\log_2 a=\\log_2(10-a)$이다. 로그함수는 일대일대응이므로 $a=10-a$이다. 따라서 $2a=10$, $a=5$이다.\\n따라서 구하는 값은 $5$이다.",
+    "solution": "[키포인트] 평행사변형의 좌표 관계를 이용하여 점 $D$의 좌표를 구하고, 로그함수 위의 점 조건을 적용한다.\\n조건 정리: $A(a,0)$, $B(10,0)$, $C=(0,\\log_2 a)$이고, 사각형 $ABDC$는 평행사변형이다.\\n풀이 방향: 평행사변형에서 $D=B+C-A$의 좌표 관계를 이용한 뒤, $D$가 $y=\\log_2 x$ 위에 있음을 대입한다.\\n정석 풀이: 사각형 $ABDC$가 평행사변형이므로 $\\overrightarrow{AB}=\\overrightarrow{CD}$이고, 좌표로는 $D=B+C-A$이다. 따라서 $D=(10,0)+(0,\\log_2 a)-(a,0)=(10-a,\\log_2 a)$이다. 점 $D$가 함수 $y=\\log_2 x$의 그래프 위에 있으므로 $\\log_2 a=\\log_2(10-a)$이다. 로그함수는 일대일대응이므로 $a=10-a$이다. 따라서 $2a=10$, $a=5$이다.\\n따라서 구하는 값은 $5$이다.",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",
     "subUnitConfidence": "category_or_cue_inferred",

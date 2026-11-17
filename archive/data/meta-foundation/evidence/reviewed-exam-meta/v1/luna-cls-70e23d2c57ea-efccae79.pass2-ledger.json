@@ -1,0 +1,293 @@
+{
+    "sourceArchiveFile":  "original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js",
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "items":  [
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  1,
+                      "rpmPath":  {
+                                      "l4":  "실수 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근"
+                                  },
+                      "primaryMethod":  "제곱근 기호의 값과 홀수 제곱근의 부호를 구별해 보기의 각 진술을 확인한다.",
+                      "decisiveStep":  "음수 -7의 다섯제곱근도 실수로 존재하며 (-√[5]7)^5=-7임을 확인한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  4,
+                      "rpmPath":  {
+                                      "l4":  "호도법",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "일반각과 호도법"
+                                  },
+                      "primaryMethod":  "4π/3 라디안을 240도로 바꾸고 360도 주기 각의 동경을 비교해 ㄱ과 ㄷ만 참임을 고른다.",
+                      "decisiveStep":  "동경 위치가 같아도 한 바퀴씩 더한 각은 크기가 달라 ㄴ이 거짓이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  5,
+                      "rpmPath":  {
+                                      "l4":  "밑과 진수 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻"
+                                  },
+                      "primaryMethod":  "밑 x+1의 양수·1 제외 조건과 진수 (x+7)(6-x)\u003e0을 합쳐 정수 x=1,2,3,4,5를 센다.",
+                      "decisiveStep":  "밑 조건 x\u003e-1, x≠0과 진수 조건 -7\u003cx\u003c6의 교집합을 취한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  6,
+                      "rpmPath":  {
+                                      "l4":  "조건식",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙"
+                                  },
+                      "primaryMethod":  "a^x=b^(2y)=c^(3z)=7을 이용해 abc를 7^(1/x+1/(2y)+1/(3z))로 바꾸어 지수를 2로 정한다.",
+                      "decisiveStep":  "abc=49=7²에서 1/x+1/(2y)+1/(3z)=2를 얻고 6배한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  7,
+                      "rpmPath":  {
+                                      "l4":  "밑의 변환",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질"
+                                  },
+                      "primaryMethod":  "log_4 9를 log_2 3으로 바꾸어 x=log_2 18로 합친 뒤 2^x=18을 계산한다.",
+                      "decisiveStep":  "밑변환으로 log_4 9=log_2 3임을 확인한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  8,
+                      "rpmPath":  {
+                                      "l4":  "곱·몫·거듭제곱",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질"
+                                  },
+                      "primaryMethod":  "f(k)=log_3((k+3)/(k+2))의 합을 곱의 로그로 묶어 중간 인수가 약분되게 만든다.",
+                      "decisiveStep":  "곱이 (n+3)/3으로 망원 약분되므로 이를 3²와 같게 둔다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  9,
+                      "rpmPath":  {
+                                      "l4":  "n제곱근",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근"
+                                  },
+                      "primaryMethod":  "근호식을 2^(2/m+1/n)=2^(1/2)로 바꾸고 (m-4)(n-2)=8의 양의 약수쌍을 비교한다.",
+                      "decisiveStep":  "약수쌍 네 경우에서 m-n을 계산해 최솟값 -5를 고른다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  11,
+                      "rpmPath":  {
+                                      "l4":  "호도법",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "일반각과 호도법"
+                                  },
+                      "primaryMethod":  "대칭 조건으로 0\u003cθ\u003cπ에서 θ=36도 또는 108도를 얻고 더 큰 중심각으로 호 길이 3π를 계산한다.",
+                      "decisiveStep":  "4θ와 θ가 y축 대칭이므로 5θ가 180도에 360도의 배수를 더한 각이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  12,
+                      "rpmPath":  {
+                                      "l4":  "정의역·밑 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그부등식"
+                                  },
+                      "primaryMethod":  "a²\u003ca에서 0\u003ca\u003c1을 얻고 지수·로그의 단조성과 밑 b+1\u003e1로 ㄱ, ㄷ을 판정한다.",
+                      "decisiveStep":  "밑 a가 1보다 작아 log_a b\u003clog_a a=1이므로 ㄴ은 거짓이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  13,
+                      "primaryMethod":  "호 BP의 길이로 중심각 BOP=π/3을 구한 뒤 현 AP와 각 PAQ를 이용해 부채꼴 APQ의 넓이를 구한다.",
+                      "decisiveStep":  "AP=8sin(π/3)=4√3, ∠PAQ=π/6을 대입해 넓이 4π를 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "hold":  "호 길이·현 길이·부채꼴 넓이를 함께 쓰는 이 문항에 맞는 네 칸 조합을 수학I 선택지에서 찾지 못함",
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  14,
+                      "rpmPath":  {
+                                      "l4":  "치환",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수방정식"
+                                  },
+                      "primaryMethod":  "t=2^x\u003e0으로 치환해 t²+(1-k)t+4=0이 서로 다른 양의 근을 갖도록 합과 판별식을 적용한다.",
+                      "decisiveStep":  "k\u003e1과 (1-k)²\u003e16을 함께 써 k\u003e5를 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  15,
+                      "rpmPath":  {
+                                      "l4":  "조건식",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙"
+                                  },
+                      "primaryMethod":  "x=216^a, y=216^(b/2)를 대입해 2a+b=40으로 줄이고 a,b\u003e2인 자연수쌍을 센다.",
+                      "decisiveStep":  "a=3부터 18까지 각 값에 b=40-2a가 하나씩 대응해 16쌍이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  17,
+                      "rpmPath":  {
+                                      "l4":  "지수식 계산",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙"
+                                  },
+                      "primaryMethod":  "a=2^(1/3)으로 두어 x=a+a^(-1)을 세제곱하고 a³=2를 대입해 x³=5/2+3x를 얻는다.",
+                      "decisiveStep":  "x³ 관계를 2x³-6x-2에 대입하면 x가 소거되어 3이 남는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  19,
+                      "rpmPath":  {
+                                      "l4":  "실수 지수",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수의 확장"
+                                  },
+                      "primaryMethod":  "a^(log_3 4)=2^n에서 a=3^(n/2)로 바꾸고 a≤27에 맞는 지수들을 곱한다.",
+                      "decisiveStep":  "3^(n/2)≤3³에서 n=1부터 6까지를 얻어 곱을 3^(21/2)로 계산한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  22,
+                      "rpmPath":  {
+                                      "l4":  "치환",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그부등식"
+                                  },
+                      "primaryMethod":  "t=log_2 x로 치환해 x가 8과 n/2 사이에 있음을 구하고 n의 홀짝과 16보다 큰지 여부로 정수 x 두 개 조건을 나눈다.",
+                      "decisiveStep":  "각 구간에서 정수 개수가 2가 되는 n은 10,11,21,22여서 합은 64이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_POSITIVE"
+                                        ]
+                  }
+              ],
+    "createdAt":  "2026-11-12T17:48:21+09:00"
+}

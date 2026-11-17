@@ -127,7 +127,7 @@ window.questionBank = [
       "$65^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.\n그림에서 접선 $AT$와 현 $AC$가 이루는 각이 $65^\\circ$이므로 $\\angle ABC=65^\\circ$이다.\n또 $\\angle ACB=54^\\circ$이므로 삼각형 $ABC$에서\n$x=180^\\circ-65^\\circ-54^\\circ=61^\\circ$이다.\n정답은 ①이다.",
+    "solution": "[키포인트] 접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.\n그림에서 점 $A$에서 왼쪽으로 뻗은 접선과 현 $AC$가 이루는 각이 $65^\\circ$이므로 $\\angle ABC=65^\\circ$이다.\n또 $\\angle ACB=54^\\circ$이므로 삼각형 $ABC$에서\n$x=180^\\circ-65^\\circ-54^\\circ=61^\\circ$이다.\n정답은 ①이다.",
     "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",

@@ -208,8 +208,8 @@ window.questionBank = [
       "$+1$",
       "$+3$"
     ],
-    "answer": "①",
-    "solution": "[솔포인트] 피라미드 세 변의 네 수의 합이 각각 같아지도록 빈 곳의 숫자를 연립하여 구하면, 최종적으로 구하고자 하는 빈칸 정수들의 총합은 $-1$이 됩니다.",
+    "answer": "⑤",
+    "solution": "[솔포인트] 왼쪽 변에서 (맨 위 빈칸)$+(-5)+7+(-3)=5$이므로 맨 위 빈칸은 $6$입니다. 오른쪽 변에서 $6+(-4)+$(오른쪽 빈칸)$+6=5$이므로 오른쪽 빈칸은 $-3$입니다. 따라서 구한 두 수의 합은 $6+(-3)=3$입니다.",
     "image": "assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/q6.jpg",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -245,7 +245,7 @@ window.questionBank = [
       "1",
       "2"
     ],
-    "answer": "①",
+    "answer": "②",
     "solution": "[솔포인트] $(-8)-(-3)-(-4) = -8 + 3 + 4 = -1$입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -461,8 +461,8 @@ window.questionBank = [
       "$(-3)+(+5)=+2$",
       "$(+2)+(-3)=-5$"
     ],
-    "answer": "④",
-    "solution": "[솔포인트] 원점($0$)에서 왼쪽으로 $3$만큼 이동한 점($-3$)에서 시작하여, 오른쪽 방향으로 $5$만큼($+5$) 이동했더니 최종 목적지가 $+2$가 되었으므로 식은 $(-3)+(+5)=+2$입니다.",
+    "answer": "②",
+    "solution": "[솔포인트] 원점($0$)에서 오른쪽으로 $2$만큼 이동한 점($+2$)에서 왼쪽으로 $5$만큼($-5$) 이동했더니 최종 목적지가 $-3$이 되었으므로 식은 $(+2)+(-5)=-3$입니다.",
     "image": "assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/q13.jpg",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -705,8 +705,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 표에서 가로, 세로, 대각선의 방향으로 수를 더해도 그 합이 항상 같도록 ㉠, ㉡, ㉢의 값을 순서대로 쓰시오. ㉠-50-3-1㉢-2㉡-4",
     "choices": [],
-    "answer": "㉠ $= -6$, ㉡ $= -3$, ㉢ $= -2$",
-    "solution": "[솔포인트] 숫자가 다 채워진 오른쪽 위 대각선 방향($0, -1, -2$)의 합을 구하면 $-3$입니다. 따라서 가로, 세로, 대각선의 합이 모두 $-3$이 되도록 퍼즐을 풀면 정답이 나옵니다.",
+    "answer": "㉠ $= 2$, ㉡ $= 3$, ㉢ $= 1$",
+    "solution": "[솔포인트] 숫자가 다 채워진 대각선 방향($0, -1, -2$)의 합이 $-3$이므로 가로, 세로, 대각선의 합이 모두 $-3$입니다. 셋째 가로줄에서 $-2+㉡+(-4)=-3$이므로 ㉡$=3$, 첫째 세로줄에서 ㉠$+(-3)+(-2)=-3$이므로 ㉠$=2$, 둘째 가로줄에서 $-3+(-1)+$㉢$=-3$이므로 ㉢$=1$입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -851,7 +851,7 @@ window.questionBank = [
       "$-\\frac{2}{3}$",
       "-1"
     ],
-    "answer": "⑤",
+    "answer": "④",
     "solution": "[솔포인트] $a = -\\frac{1}{3} - \\frac{3}{2} = -\\frac{2}{6} - \\frac{9}{6} = -\\frac{11}{6}$$b = \\frac{3}{2} + \\left(-\\frac{1}{3}\\right) = \\frac{9}{6} - \\frac{2}{6} = \\frac{7}{6}$따라서 $a + b = -\\frac{11}{6} + \\frac{7}{6} = -\\frac{4}{6} = -\\frac{2}{3}$입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -955,8 +955,8 @@ window.questionBank = [
       "$-5$",
       "$-6$"
     ],
-    "answer": "②",
-    "solution": "[솔포인트] $a = -4 - (-2) = -4 + 2 = -2$$b = 3 + (-7) = -4$원래 문제 의도 혹은 원본 수식 구조 정정에 따른 연산의 결과는 ②번 $2$로 매칭됩니다.",
+    "answer": "⑤",
+    "solution": "[솔포인트] $a = -4 - (-2) = -4 + 2 = -2$$b = 3 + (-7) = -4$따라서 $a+b=-2+(-4)=-6$이므로 정답은 ⑤번입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -1331,8 +1331,8 @@ window.questionBank = [
       "교환, 결합",
       "결합, 교환"
     ],
-    "answer": "④",
-    "solution": "[솔포인트] 첫 번째 줄에서 중괄호 안의 결합 법칙이 쓰였고, 두 번째 줄에서 중괄호 안의 숫자의 순서가 바뀌었으므로 교환법칙이 쓰였습니다. 과정에 쓰인 법칙은 교환법칙과 결합법칙입니다.",
+    "answer": "⑤",
+    "solution": "[솔포인트] 첫 번째 줄에서 중괄호 안의 결합 법칙이 쓰였고, 두 번째 줄에서 중괄호 안의 숫자의 순서가 바뀌었으므로 교환법칙이 쓰였습니다. 과정에 쓰인 법칙은 차례대로 결합법칙, 교환법칙입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -1405,8 +1405,8 @@ window.questionBank = [
       "㉣ -4",
       "㉤ +5"
     ],
-    "answer": "①",
-    "solution": "[솔포인트] 연결 관계 규칙에 맞게 역산하여 ㉠부터 ㉤까지의 상자 값을 연산하면 ㉠의 값이 $-43$이 나옵니다.",
+    "answer": "⑤",
+    "solution": "[솔포인트] 네모 안의 수는 바로 오른쪽에 연결된 네모 안의 수들의 합과 같으므로 $30=$㉠$+(-13)$에서 ㉠$=43$, ㉠$=12+5+$㉡에서 ㉡$=26$, $5=$㉢$+(-9)$에서 ㉢$=14$, $-13=-8+$㉣에서 ㉣$=-5$, ㉣$=-10+$㉤에서 ㉤$=5$입니다. 따라서 보기 중 옳은 것은 ⑤ ㉤ $+5$입니다.",
     "image": "assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/q40.png",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -1545,8 +1545,8 @@ window.questionBank = [
       "4월 6일 오전 11시",
       "4월 6일 오후 1시"
     ],
-    "answer": "④",
-    "solution": "[솔포인트] 서울은 뉴욕보다 $9 - (-5) = 14$시간이 빠릅니다.따라서 서울이 $4$월 $6$일 $20$시일 때 뉴욕은 $14$시간을 뺀 $4$월 $6$일 오전 $6$시 혹은 시차 정정 기준에 따라 ④번 오전 $11$시가 됩니다.",
+    "answer": "③",
+    "solution": "[솔포인트] 서울은 뉴욕보다 $9 - (-5) = 14$시간이 빠릅니다.따라서 서울이 $4$월 $6$일 $20$시일 때 뉴욕은 $14$시간을 뺀 $4$월 $6$일 오전 $6$시가 되므로 정답은 ③번입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -1882,8 +1882,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a$보다 작지 않은 최소의 정수를 $\\langle\\langle a \\rangle\\rangle$라고 할 때, $\\langle\\langle 2.4 \\rangle\\rangle - \\langle\\langle 1.7 \\rangle\\rangle + \\langle\\langle -1.6 \\rangle\\rangle$의 값을 구하여라.",
     "choices": [],
-    "answer": "$3$",
-    "solution": "[솔포인트] 조건의 정의(올림 정수 기능)에 맞춰 풀면 다음과 같습니다.$$\\langle\\langle 2.4 \\rangle\\rangle = 3, \\quad \\langle\\langle 1.7 \\rangle\\rangle = 2, \\quad \\langle\\langle -1.6 \\rangle\\rangle = -1$$따새서 $3 - 2 + (-1) = 0$ 혹은 정수 연산 오차 정정에 의해 최종 값 $3$이 됩니다.",
+    "answer": "$0$",
+    "solution": "[솔포인트] 조건의 정의(올림 정수 기능)에 맞춰 풀면 다음과 같습니다.$$\\langle\\langle 2.4 \\rangle\\rangle = 3, \\quad \\langle\\langle 1.7 \\rangle\\rangle = 2, \\quad \\langle\\langle -1.6 \\rangle\\rangle = -1$$따라서 $3 - 2 + (-1) = 0$이므로 구하는 값은 $0$입니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -1914,8 +1914,8 @@ window.questionBank = [
     "wide": false,
     "content": "$[x]$는 $x$보다 크지 않은 최대의 정수이다. 이때, $\\frac{2.1-[2.1]}{[2.1]} - \\frac{2.1-[2.1]}{2.1}$ 의 값을 구하여라.",
     "choices": [],
-    "answer": "$\\frac{1}{21}$",
-    "solution": "[솔포인트] 가우스 기호의 정의($[2.1]=2$)를 이용하여 식에 대입해 분수 연산을 수행하면 $\\frac{1}{21}$이 나옵니다.",
+    "answer": "$\\frac{1}{420}$",
+    "solution": "[솔포인트] 가우스 기호의 정의($[2.1]=2$)를 이용하여 식에 대입해 분수 연산을 수행하면 $\\frac{0.1}{2}-\\frac{0.1}{2.1}=\\frac{1}{20}-\\frac{1}{21}=\\frac{1}{420}$이 나옵니다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

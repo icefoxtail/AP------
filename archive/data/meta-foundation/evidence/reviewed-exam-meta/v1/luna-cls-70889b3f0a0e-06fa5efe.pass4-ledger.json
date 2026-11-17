@@ -1,0 +1,80 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:44:37.493+00:00",
+ "sourceArchiveFile": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 12,
+   "chosenFrom": "new",
+   "resolutionReason": "A=(√3+√5)/2, B=(3√5-√3)/2, C=(2√5+3√3)/5를 √3≈1.732, √5≈2.236으로 근삿값 비교하는 실수의 대소 문제인데 수학(상) 표에는 실수의 연산·대소 경로가 전혀 없다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 수학(상) 표에 무리수의 값을 비교하는 실수의 대소 경로가 없음.",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "실수와 그 연산",
+     "label": "실수와 그 연산",
+     "parent": "(최상위)",
+     "why": "가장 가까운 '방정식과 부등식'은 복소수·방정식 중심이라 무리수 근삿값 비교와 맞지 않는다."
+    },
+    "rpmPath.midUnit": {
+     "value": "제곱근과 실수",
+     "label": "제곱근과 실수",
+     "parent": "실수와 그 연산",
+     "why": "가장 가까운 '복소수'는 허수 단위가 있는 수의 연산이라 실수의 크기 비교와 맞지 않는다."
+    },
+    "rpmPath.l3": {
+     "value": "무리수와 실수",
+     "label": "무리수와 실수",
+     "parent": "실수와 그 연산 > 제곱근과 실수",
+     "why": "가장 가까운 '복소수의 연산'은 복소수 사칙이라 무리수 대소 비교와 맞지 않는다."
+    },
+    "rpmPath.l4": {
+     "value": "실수의 대소",
+     "label": "실수의 대소 비교",
+     "parent": "실수와 그 연산 > 제곱근과 실수 > 무리수와 실수",
+     "why": "가장 가까운 '서로 같은 복소수'는 상등 조건이라 근삿값으로 크기를 비교하는 것과 맞지 않는다."
+    }
+   }
+  },
+  {
+   "ordinal": 19,
+   "chosenFrom": "new",
+   "resolutionReason": "점 (2,1)에서 원 x²+y²=1에 그은 접선 y=a(x-2)+1을 원점 거리 1로 풀어 y=1, y=4x/3-5/3을 얻는데 접점·기울기가 주어진 접선 두 항목은 모두 맞지 않는다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "도형의 방정식",
+    "midUnit": "원의 방정식",
+    "l3": "원의 접선",
+    "l4": ""
+   },
+   "hold": "신규 제안: rpmPath.l4 에 원 밖의 한 점에서 그은 접선 항목이 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "원 밖의 한 점에서 그은 접선",
+     "label": "원 밖의 한 점에서 그은 접선",
+     "parent": "도형의 방정식 > 원의 방정식 > 원의 접선",
+     "why": "가장 가까운 '접점이 주어진 접선'은 접점 좌표가 먼저 주어지고, '기울기가 주어진 접선'은 기울기가 주어진다. 이 문항은 접점도 기울기도 없이 원 밖의 점만 주어져 맞지 않는다."
+    }
+   }
+  },
+  {
+   "ordinal": 3,
+   "chosenFrom": "new",
+   "resolutionReason": "O(0,0), A(2,5), B(4,3)으로 삼각형 OAB의 넓이 (1/2)|2·3-4·5|=7을 좌표로 구하는 것이라 평면좌표의 좌표 도형 활용 항목에 가깝다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "도형의 방정식",
+    "midUnit": "평면좌표",
+    "l3": "삼각형의 무게중심",
+    "l4": "좌표 도형 활용"
+   }
+  }
+ ]
+}

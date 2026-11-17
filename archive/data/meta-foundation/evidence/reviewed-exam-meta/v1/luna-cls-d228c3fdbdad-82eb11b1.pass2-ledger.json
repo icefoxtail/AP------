@@ -1,0 +1,276 @@
+{
+    "sourceArchiveFile":  "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학I.js",
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "items":  [
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  1,
+                      "rpmPath":  {
+                                      "l4":  "지수식 계산",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙"
+                                  },
+                      "primaryMethod":  "(1/2)^(-2)는 밑을 2로 뒤집어 제곱해 4를 얻는다.",
+                      "decisiveStep":  "음의 지수 -2를 양의 지수 2로 바꾸면서 밑의 역수를 취한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  2,
+                      "rpmPath":  {
+                                      "l4":  "로그와 지수 관계",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻"
+                                  },
+                      "primaryMethod":  "log_4 8=3/2와 log_(1/2)4=-2를 각각 계산해 두 로그의 차를 7/2로 구한다.",
+                      "decisiveStep":  "밑 1/2를 -2제곱하면 4이므로 두 번째 로그값은 -2이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  3,
+                      "rpmPath":  {
+                                      "l4":  "일반각",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "일반각과 호도법"
+                                  },
+                      "primaryMethod":  "23π/6에서 4π를 빼 같은 코사인값을 갖는 -π/6으로 바꾸어 √3/2를 얻는다.",
+                      "decisiveStep":  "cos은 짝함수이므로 cos(-π/6)=cos(π/6)으로 정리한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  5,
+                      "rpmPath":  {
+                                      "l4":  "치환",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그부등식"
+                                  },
+                      "primaryMethod":  "t=log_2 x로 놓으면 t²-4t+3≤0이 되어 1≤t≤3, 따라서 자연수 x는 2부터 8까지이다.",
+                      "decisiveStep":  "2가 1보다 큰 밑이라 1≤log_2 x≤3을 2≤x≤8로 옮긴다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  7,
+                      "rpmPath":  {
+                                      "l4":  "증가·감소",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그함수의 그래프"
+                                  },
+                      "primaryMethod":  "점선 교점의 좌표를 지수함수와 로그함수의 역관계에 따라 a=2, c=4, b=16, d=2^16으로 차례로 정한다.",
+                      "decisiveStep":  "첫 점선의 log_2 a=1에서 a를 정하고, 이후 교점마다 y=2^x와 x=log_2 y를 적용한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  8,
+                      "rpmPath":  {
+                                      "l4":  "단위원",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 뜻"
+                                  },
+                      "primaryMethod":  "cosθ·tanθ=sinθ이므로 원 위 점의 세로좌표는 -2이고, 반지름 3에서 |a|=√5라서 |ab|=2√5이다.",
+                      "decisiveStep":  "a²+b²=9에 b=-2를 대입해 a²=5를 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  9,
+                      "rpmPath":  {
+                                      "l4":  "밑과 진수 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻"
+                                  },
+                      "primaryMethod":  "진수 부등식으로 2\u003ca\u003c7을 얻고 밑이 1인 경우 a=3을 빼 정수 후보 4,5,6의 합을 구한다.",
+                      "decisiveStep":  "a-2≠1 조건이 진수에서 나온 후보 a=3을 제거한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  10,
+                      "rpmPath":  {
+                                      "l4":  "밑의 변환",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질"
+                                  },
+                      "primaryMethod":  "x+y=4와 1/x²+1/y²=14에서 xy=1을 구한 뒤 x³+y³=(x+y)³-3xy(x+y)=52를 계산한다.",
+                      "decisiveStep":  "p=xy로 놓으면 (16-2p)/p²=14이고 p\u003e0에서 p=1이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  11,
+                      "rpmPath":  {
+                                      "l4":  "곱·몫·거듭제곱",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질"
+                                  },
+                      "primaryMethod":  "3초마다 전하량이 1/3배가 되므로 9초 후의 Q_p에서 12초 후에는 다시 1/3배가 된다.",
+                      "decisiveStep":  "로그 차를 log(Q_t/Q_0)=kt로 바꾸어 같은 3초 간격의 비율이 일정함을 확인한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  14,
+                      "rpmPath":  {
+                                      "l4":  "주기 구간의 해",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각방정식·부등식"
+                                  },
+                      "primaryMethod":  "이동공식으로 식을 3sin²x+sin x-2=0으로 바꾸고 sin x=2/3 또는 -1의 구간 내 해를 센다.",
+                      "decisiveStep":  "주어진 구간에서 두 값의 해 개수를 각각 3개와 2개로 세어 합한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "NONE",
+                      "ordinal":  15,
+                      "rpmPath":  {
+                                      "l4":  "삼각함수 관계",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 성질"
+                                  },
+                      "primaryMethod":  "두 근호를 각각 (sinθ+cosθ)²와 (cosθ-sinθ)²의 제곱근으로 바꾸어 2cosθ를 얻는다.",
+                      "decisiveStep":  "0\u003cθ\u003cπ/4에서 cosθ-sinθ가 양수이므로 둘째 근호의 절댓값을 제거한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  16,
+                      "rpmPath":  {
+                                      "l4":  "조건식",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙"
+                                  },
+                      "primaryMethod":  "a\u003e1에서는 (a²)^k\u003ea^k\u003e1이고 1/a는 0과 1 사이이므로 거듭제곱 지수가 작은 (1/a)^(1/k)가 더 크다.",
+                      "decisiveStep":  "1/a\u003c1의 거듭제곱은 지수가 커질수록 작아짐을 적용해 두 역수 거듭제곱의 순서를 정한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "CASE_BRANCH",
+                      "ordinal":  18,
+                      "rpmPath":  {
+                                      "l4":  "정의역·밑 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그부등식"
+                                  },
+                      "primaryMethod":  "절댓값 로그를 m=8 기준으로 나누어 m≤8에서는 n≤⌊3m/8⌋, m≥8에서는 mn≤24를 세고 겹친 세 쌍을 한 번 뺀다.",
+                      "decisiveStep":  "m=8인 (8,1),(8,2),(8,3)이 양쪽 계산에 중복되므로 3을 뺀다.",
+                      "crossConceptKeys":  [
+                                               "CC_INEQUALITY_ABSOLUTE_VALUE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  20,
+                      "rpmPath":  {
+                                      "l4":  "삼각함수 관계",
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 성질"
+                                  },
+                      "primaryMethod":  "각 이동공식으로 첫째 분수를 sec²θ, 둘째 분수를 -tan²θ로 바꾸어 sec²θ-tan²θ=1을 적용한다.",
+                      "decisiveStep":  "sin(3π/2±θ), cos(π+θ), tan(π-θ)를 각각 부호까지 정리해 두 항을 단순화한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  }
+              ],
+    "createdAt":  "2026-11-12T17:46:12+09:00"
+}

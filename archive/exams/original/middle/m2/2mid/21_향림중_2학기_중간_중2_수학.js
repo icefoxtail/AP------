@@ -507,7 +507,7 @@ window.questionBank = [
   {
     "id": 6,
     "score": 3,
-    "question": "<p>6. 일차함수 $y = \\dfrac{1}{2}x + 1$의 그래프와 $x$축에서 만나고, 일차함수 $y = 2x - 3$의 그래프와 $y$축에서 만나는 직선을 그래프로 하는 일차함수의 식을 구하면? [3점]</p>",
+    "question": "<p>6. 일차함수 $y = -\\dfrac{1}{2}x + 1$의 그래프와 $x$축에서 만나고, 일차함수 $y = 2x - 3$의 그래프와 $y$축에서 만나는 직선을 그래프로 하는 일차함수의 식을 구하면? [3점]</p>",
     "choices": [
       "$y = x - 3$",
       "$y = \\dfrac{1}{2}x - 3$",
@@ -517,7 +517,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>6. 일차함수 $y = \\dfrac{1}{2}x + 1$의 그래프와 $x$축에서 만나고, 일차함수 $y = 2x - 3$의 그래프와 $y$축에서 만나는 직선을 그래프로 하는 일차함수의 식을 구하면? [3점]</div>",
+    "content": "<div>6. 일차함수 $y = -\\dfrac{1}{2}x + 1$의 그래프와 $x$축에서 만나고, 일차함수 $y = 2x - 3$의 그래프와 $y$축에서 만나는 직선을 그래프로 하는 일차함수의 식을 구하면? [3점]</div>",
     "templateKey": "TPL_LINE_MULTI_CONDITION",
     "problemTypeKey": "PT_LINE_EQUATION",
     "standardUnitKey": "M2-04",

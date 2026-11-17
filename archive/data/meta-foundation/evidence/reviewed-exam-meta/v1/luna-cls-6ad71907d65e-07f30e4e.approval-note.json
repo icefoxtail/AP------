@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-6ad71907d65e-07f30e4e",
+  "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js",
+  "createdAt": "2026-11-15T19:33:59.430Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "90029f846da13e82103cc850a178c1ab7ba828e9",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/24_금당고_1학기_중간_고2_대수.json",
+      "sourceSha256": "7785e82825e0e03711a6fecf0c8aed0d7a522999ad83b9886ef8712124f5c042",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6ad71907d65e-07f30e4e.pass1-ledger.json",
+      "repoSha256": "dff61046b7b1f2578c6216c6a9da92c15836a9be2976c2611dc95352306df35a",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/24_금당고_1학기_중간_고2_대수.json",
+      "sourceSha256": "831c5bf8b0101dee72e7013dff96b42687320545c4162c2b893b185179a31467",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-6ad71907d65e-07f30e4e.pass2-ledger.json",
+      "repoSha256": "831c5bf8b0101dee72e7013dff96b42687320545c4162c2b893b185179a31467",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 42,
+    "agree": 105,
+    "luna-k4": 24,
+    "tera-k67": 18
+  },
+  "itemSources": {
+    "registered+agree+luna-k4": 7,
+    "registered+agree+tera-k67": 6
+  },
+  "typeHoldQuestions": 5,
+  "idWarnings": []
+}
