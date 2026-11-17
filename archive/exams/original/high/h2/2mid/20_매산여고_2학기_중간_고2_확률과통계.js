@@ -881,12 +881,11 @@ window.questionBank = [
     "wide": false,
     "tags": [
       "객관식",
-      "조건부확률",
-      "같은 색 조건부확률 모순 판정"
+      "조건부확률"
     ],
     "difficultyBucket": 4,
-    "primaryMethod": "같은 색 조건부확률 모순 판정",
-    "decisiveStep": "조건부확률에서 a=200이나 구슬 수 조건 a<=50과 모순",
+    "primaryMethod": "같은 색 조건부확률",
+    "decisiveStep": "같은 색일 확률을 흰색·검은색으로 나누어 a=25를 구한다",
     "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
     "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
     "crossConceptKeys": [],
