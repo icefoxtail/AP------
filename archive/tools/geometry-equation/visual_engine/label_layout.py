@@ -1520,7 +1520,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         if end is None:continue
                         tie_to_owner(end);ring=box;ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
                     if ring is not None:break
-            if ring is None and label['kind']=='POINT_NAME' and label.get('crossFallbackAllowed') is True and owner_marker is not None and not leader_only:
+            if ring is None and ((label['kind']=='POINT_NAME' and label.get('crossFallbackAllowed') is True) or (label['kind']=='COORDINATE_LABEL' and ring_like and not label.get('ringLeader'))) and owner_marker is not None and not leader_only:   # a coordinate label that found no clear leader either: the nearest free box on a leader that crosses a thin stroke or two (marked, never a point or another leader)
                 # (CL) no clear place and no clear leader: the nearest free box on a leader that crosses a thin stroke or two
                 incident=incident or owner_incident_ids(at,owner_marker,occupied)
                 found=crossing_leader_placement(at,w,h,occupied,acceptable,incident)

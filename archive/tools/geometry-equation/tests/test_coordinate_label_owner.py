@@ -43,4 +43,23 @@ class CoordinateLabelOwner(unittest.TestCase):
         r=run([label],[point('A',(200,200)),*pen])
         self.assertIn(r['status'],('PASS','POLISH_REQUIRED'))
 
+    def test_points_crowded_on_a_curve_each_label_belongs_to_its_own_point(self):
+        # five points 18 px apart along a curve: every label is tied to its own point by a leader or stands nearer it than any other point, and none stands across the curve's line
+        xs=[120+18*k for k in range(5)]
+        points=[point('P%d'%k,(x,200-0.35*(x-120))) for k,x in enumerate(xs)]
+        curve={'id':'curve','kind':'curve','role':'curve','geometry':[(100,207),(300,137)]}
+        labels=[coordinate_label('P%d-coordinates'%k,'P%d'%k,tuple(points[k]['geometry'][:2])) for k in range(5)]
+        r=run(labels,[*points,curve])
+        self.assertEqual(r['unresolved'],[])
+        led={row['ownerLabelId']:row for row in r['leaders']}
+        for row in r['labels']:
+            k=int(row['id'][1]);box=Box(**row['box']);own=points[k]['geometry'][:2]
+            if row['id'] in led:
+                self.assertEqual(led[row['id']]['from'],list(own))                                       # the leader starts on its own point
+                continue
+            d_own=box_point_distance(box,tuple(own))
+            self.assertLessEqual(d_own,NEAR_RELOCATION_LEADER_MIN_GAP+1e-6,row['id'])                   # leaderless: close to its own point
+            for j,other in enumerate(points):
+                if j!=k:self.assertLess(d_own,box_point_distance(box,tuple(other['geometry'][:2])),(row['id'],'nearer another point'))
+
 if __name__=='__main__':unittest.main()

@@ -1291,7 +1291,14 @@ function piecewisePolynomialSpec(plan,id){
     objects.push({id:lineId,kind:'LINE',coefficients:[slope,-1,level]});
     const surdSlope=slanted&&String(line.slope).includes('sqrt'),surdIntercept=slanted&&String(line.intercept).includes('sqrt');
     const slopeText=!slanted?'':line.slope==='1'?'x':line.slope==='-1'?'-x':(surdSlope?'('+line.slope+')':line.slope)+'*x',interceptText=!slanted?levelText:line.intercept==='0'?'':surdIntercept?'+('+line.intercept+')':line.intercept.startsWith('-')?line.intercept:'+'+line.intercept;
-    if(line.hideLabel!==true){lineLabels.push(labelId);objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[(v[0]+v[1])/2,v[3]],priority:0});}
+    if(line.hideLabel!==true){
+      // A reference line's equation stands at the right end of its own line (a line label owned by its line: the layout looks along the line for a free box and ties a far one back with a leader),
+      // never as a row of the header band, where a stack of equations cannot be told apart. The first row of an old plan that asks for the band is gone: the label is beside its line.
+      const spanX=v[1]-v[0],spanY=v[3]-v[2];
+      let labelX=v[1]-spanX*.07,labelY=slope*labelX+level+spanY*.07;
+      if(slanted){const top=v[3]-spanY*.08,bottom=v[2]+spanY*.08;if(labelY>top||labelY<bottom){labelY=labelY>top?top:bottom;labelX=Math.min(Math.max((labelY-spanY*.07-level)/slope,v[0]+spanX*.05),labelX);}}
+      objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[labelX,labelY],priority:0,target:lineId,lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:'END'});
+    }
     for(const [k,point] of row.points.entries()){
       // A crossing that is also a marked key point is drawn once, as that key point (framing names it in keyPoint).
       if(point.keyPoint!==undefined){if(!required.some(other=>other.id===point.keyPoint))throw Error('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED');continue;}
