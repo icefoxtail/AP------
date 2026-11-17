@@ -441,10 +441,6 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 변이 a인 정사각형을 남는 파란 (a−b)² 정사각형, 같은 주황 띠 두 개, 초록 b² 모서리로 분할한 관계 모식도이다. 도식의 비례는 예시이다.",
-    "solutionImageCaption": "가로 a+b, 세로 a−b인 직사각형을 잘라 옮기면 한 변이 a인 정사각형에서 한 변이 b인 정사각형을 뺀 도형이 되므로 (a+b)(a−b)=a²−b²이다. 정답은 ②이다.",
-    "solutionImageSize": "full"
   },
   {
     "id": 14,

@@ -371,11 +371,6 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "content": "오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 내접하고, 세 점 $\\mathrm{D, E, F}$는 원 $\\mathrm{O}$의 중심에서 $\\triangle\\mathrm{ABC}$의 각 변에 내린 수선의 발이다. $\\overline{\\mathrm{OE}}=\\overline{\\mathrm{OF}}$일 때, $\\angle x$의 크기는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q08.png\" />",
-      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q8-solution.svg",
-      "solutionImageAlt": "해설 그림: 원의 중심 O에서 두 현에 수선을 내려 각각 E와 F에 닿는다. 두 수선의 길이는 같고 중심각 BOC는 115도이며 꼭짓점 C에 원주각 x가 표시된다.",
-      "solutionImageCaption": "OE=OF이므로 AC=BC이다. 사각형 BDOE에서 ∠B=360°−90°−90°−115°=65°이므로 ∠A=∠B=65°이고 x=∠C=50°이다. 정답은 ②이다.",
-      "solutionImageSize": "full"
-    ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],

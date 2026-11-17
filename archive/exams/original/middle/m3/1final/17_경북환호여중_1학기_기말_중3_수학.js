@@ -157,8 +157,8 @@ window.questionBank = [
     "images": [
       "assets/images/17_경북환호여중_1학기_기말_중3_수학/q08.png"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "정사각형의 한 변을 $2t$라 하면 $A, D$는 $y=x^2$ 위에 있으므로 높이는 $15-t^2$이다. 정사각형이므로 $2t=15-t^2$, 즉 $(t+5)(t-3)=0$에서 $t=3$이다. 한 변이 $6$이므로 넓이는 $36$이다. 정답은 ⑤이다.",
     "score": 5.0,
     "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q08.png"
   },
