@@ -194,9 +194,17 @@
 
   html[data-archive2-context="archive2"][data-ap-render-ready="true"] .sol-image-wrap img {
     width: auto !important;
+    max-width: 92% !important;
+    max-height: 340px !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  /* 2026-11-17 사용자 지시: 휴대폰 해설 그림도 칸 폭 92%·높이 340px 이내로 가운데 정렬(높이 무제한 제거).
+     데이터가 solutionImageSizeOverride: "full"로 명시한 그림만 칸 폭 전체·높이 무제한. */
+  html[data-archive2-context="archive2"][data-ap-render-ready="true"] .sol-image-wrap.image-override-full img {
     max-width: 100% !important;
     max-height: none !important;
-    height: auto !important;
   }
 
   /* Reflow a full-width solution's long inline MathJax atom into the mobile
@@ -303,9 +311,17 @@
 
   html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .sol-image-wrap img {
     width: auto !important;
+    max-width: 92% !important;
+    max-height: 340px !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  /* 2026-11-17 사용자 지시: 휴대폰 해설 그림도 칸 폭 92%·높이 340px 이내로 가운데 정렬(높이 무제한 제거).
+     데이터가 solutionImageSizeOverride: "full"로 명시한 그림만 칸 폭 전체·높이 무제한. */
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .sol-image-wrap.image-override-full img {
     max-width: 100% !important;
     max-height: none !important;
-    height: auto !important;
   }
 
   html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .q-box.sol-box .sol-exp mjx-container {

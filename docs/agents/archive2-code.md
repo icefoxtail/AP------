@@ -45,6 +45,12 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 인쇄도 같은 A4 화면을 쓰므로 쪽 나누기가 함께 바뀐다(그림이 큰 시험은 쪽이 늘 수 있다). 사용자가 쪽 수보다 해설 가독성이 먼저라고 정했다. 화면 전용 CSS로 인쇄만 되돌리려 하지 않는다: 쪽 나누기는 화면에서 `scrollHeight`로 정하고 래스터·네이티브 인쇄가 그 화면을 찍는다.
 - 그림 엔진은 이 실제 페이지로 크기 등급별 표시 크기를 재서 글자 크기를 정한다(`measureArchiveDisplayEnvelope`, `record-visual-browser-evidence.mjs`의 측정은 같은 `applySolutionSvgDisplayWidth`를 불러 쓴다). 새 규칙에서는 모든 등급이 같은 크기로 재져 요청 등급이 기본 글자 크기를 바꾸지 않는다. k·상한을 바꾸면 엔진 측정과 `tests/archive-solution-image.test.js`·`tests/archive-solution-svg-size.test.cjs`를 함께 확인한다.
 
+## 그림 기본 크기는 large와 full 사이 (2026-11-17 사용자 지시)
+
+- 문제 그림 `.q-image-wrap`의 `image-large`·`image-full`·`image-tall`(자동 분류가 붙인 것 포함)은 모두 폭 90%·높이 240px, 가운데 정렬이다. 해설 그림 `.sol-image-wrap`은 SVG 포함 모든 등급이 칸 폭 90%·높이 340px 이내(휴대폰은 `archive2-preview-mobile.css`에서 92%·340px)이다. 위 "해설 SVG는 라벨 크기 기준" 절의 폭 계산(자연 폭 x 0.6)은 그대로이고, 칸 폭·높이 상한이 그 위에서 누른다. 높이 무제한 해설 그림은 없앴다.
+- 크게 보여야 하는 그림만 데이터 필드로 허용한다: 문제 `imageSizeOverride`(`full`=폭 100%·240px, `tall`=폭 100%·320px), 해설 `solutionImageSizeOverride`(`full`=칸 폭 전체·높이 무제한). 클래스 `image-override-full|tall`로 렌더하며, 이 필드는 `print-contract.js`·`render-authority.js`·`render-state-normalizer.js`를 지나간다. 기존 데이터의 `imageSize`·`solutionImageSize` 값은 바꾸지 않았다(원본 JS 해시 고정값). 명시적 `solutionImageLayout: "fullwidth"`는 특별한 경우로 그대로 둔다.
+- 이유: 그림이 단 폭을 꽉 채우고 높이 제한이 없거나(`tall` 320px·해설 `full`) 커서 시험지가 읽기 불편했다.
+
 ## 연도는 항상 최신부터 (2026-11-10 사용자 결정)
 
 - 문제지 만들기·단원별 기출·빠른 평가의 연도 순서는 **항상 최신 연도가 먼저**(2026 → 2025 → 2024 …)이고 연도를 알 수 없는 자료는 마지막이다(`Archive2Core.recencyRank` 한 곳). 이유: 26·27·28년 시험지가 계속 쌓이고, 수학도 출제 경향이 있어 최신 연도 기출을 먼저 풀어 보는 것이 학생에게 도움이 된다.

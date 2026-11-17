@@ -16,7 +16,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
   assert.match(engine, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
   assert.match(engine, /src="svg-accessibility\.js\?v=20261014\.1"/);
-  assert.match(engine, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-1/);
+  assert.match(engine, /archive2-preview-mobile\.css\?v=20261117-figure-large-1/);
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
@@ -87,7 +87,7 @@ test('direct mobile problem flow admits only explicitly marked inline images thr
   assert.match(mobile, /\.q-box \.q-content img\[data-archive-mobile-figure="true"\]:not\(\[hidden\]\)/);
   assert.doesNotMatch(mobile, /:has\(\.q-box \.q-content img\)/);
   const mixed = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
-  assert.match(mixed, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-1/);
+  assert.match(mixed, /archive2-preview-mobile\.css\?v=20261117-figure-large-1/);
   const wrapSource = engine.slice(engine.indexOf('function wrapLatex('), engine.indexOf('function normalizeSolutionLineBreaks('));
   const wrapLatex = vm.runInNewContext('(' + wrapSource.trim() + ')');
   const marked = '<img src="assets/images/example/q12.png" class="exam-img" alt="그림" data-archive-mobile-figure="true">';
