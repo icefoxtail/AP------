@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-4",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "-5/2",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "-1.6",
+            "showValue": true
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "D",
+            "value": "3/5",
+            "showValue": true
+          },
+          {
+            "id": "E",
+            "value": "3.2",
+            "showValue": true
+          },
+          {
+            "id": "F",
+            "value": "7",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "주어진 유리수를 원점 기준으로 배열한다. 좌우 방향은 부호, 원점까지 거리는 절댓값이며 정수 여부는 각 수의 표기로 판정한다. 항목별 개수와 정답 번호는 쓰지 않는다.",
+  "accessibilityDescription": "주어진 유리수를 원점 기준으로 배열한다. 좌우 방향은 부호, 원점까지 거리는 절댓값이며 정수 여부는 각 수의 표기로 판정한다. 항목별 개수와 정답 번호는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 수에 대한 설명으로 옳은 것은?\n$-4, \\quad +\\dfrac{3}{5}, \\quad 0, \\quad -\\dfrac{5}{2}, \\quad +7, \\quad -1.6, \\quad +3.2$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "주어진 수들을 분류한다.\n- 양수: $+\\dfrac{3}{5}, +7, +3.2$의 $3$개\n- 음수: $-4, -\\dfrac{5}{2}, -1.6$의 $3$개\n- 정수: $-4, 0, +7$의 $3$개\n- 자연수(양의 정수): $+7$의 $1$개\n- 정수가 아닌 유리수: $+\\dfrac{3}{5}, -\\dfrac{5}{2}, -1.6, +3.2$의 $4$개\n\n각 보기를 검토한다.\n① 자연수는 $+7$의 $1$개이므로 옳지 않다.\n② 음의 유리수는 $-4, -\\dfrac{5}{2}, -1.6$의 $3$개이므로 옳지 않다.\n③ 정수가 아닌 유리수는 $+\\dfrac{3}{5}, -\\dfrac{5}{2}, -1.6, +3.2$의 $4$개이므로 옳다.\n④ 각 수의 절댓값은 $4, 0.6, 0, 2.5, 7, 1.6, 3.2$이므로 절댓값이 가장 큰 수는 $+7$이다. 따라서 옳지 않다.\n⑤ $0$에서 가장 가까운 수는 거리(절댓값)가 $0$인 $0$ 자기 자신이므로 옳지 않다.\n따라서 옳은 것은 ③이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 유리수를 원점 기준으로 배열한다. 좌우 방향은 부호, 원점까지 거리는 절댓값이며 정수 여부는 각 수의 표기로 판정한다. 항목별 개수와 정답 번호는 쓰지 않는다."
+  ]
+}

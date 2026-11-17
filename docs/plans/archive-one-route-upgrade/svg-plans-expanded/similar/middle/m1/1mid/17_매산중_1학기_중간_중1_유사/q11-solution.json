@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "showValue": true
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "5",
+            "showValue": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "O",
+            "to": "A",
+            "style": "ARROW",
+            "label": "3"
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "style": "ARROW",
+            "label": "8",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫 이동은 O에서 A로 왼쪽 3, 둘째 이동은 A에서 B로 오른쪽 8이다. 화살표의 출발점과 방향을 읽어 덧셈식을 만들며 정답 식은 그림에 쓰지 않는다.",
+  "accessibilityDescription": "첫 이동은 O에서 A로 왼쪽 3, 둘째 이동은 A에서 B로 오른쪽 8이다. 화살표의 출발점과 방향을 읽어 덧셈식을 만들며 정답 식은 그림에 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선에서 원점 $0$에서 출발하여 왼쪽으로 $3$만큼 이동한 후, 다시 오른쪽으로 $8$만큼 이동하여 $+5$에 도착하는 과정을 나타낸 덧셈 식으로 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "수직선에서의 이동을 부호가 붙은 수의 덧셈으로 나타낸다.\n- 원점에서 왼쪽으로 $3$만큼 이동: $-3$\n- 그 위치에서 오른쪽으로 $8$만큼 이동: $+(+8)$\n- 도착한 위치: $+5$\n이를 덧셈 식으로 나타내면\n$(-3) + (+8) = +5$\n따라서 정답은 ①이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "첫 이동은 O에서 A로 왼쪽 3, 둘째 이동은 A에서 B로 오른쪽 8이다. 화살표의 출발점과 방향을 읽어 덧셈식을 만들며 정답 식은 그림에 쓰지 않는다."
+  ]
+}

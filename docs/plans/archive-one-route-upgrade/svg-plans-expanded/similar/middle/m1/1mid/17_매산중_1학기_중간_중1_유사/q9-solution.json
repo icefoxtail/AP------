@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "왼쪽 끝 −4는 포함하고 오른쪽 끝 3은 포함하지 않는다. 이 차이를 확인한 뒤 구간 안 정수를 세며 최종 개수는 쓰지 않는다.",
+  "accessibilityDescription": "왼쪽 끝 −4는 포함하고 오른쪽 끝 3은 포함하지 않는다. 이 차이를 확인한 뒤 구간 안 정수를 세며 최종 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-4 \\le x < 3$을 만족시키는 정수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "$-4 \\le x < 3$을 만족하는 정수 $x$는\n$-4, -3, -2, -1, 0, 1, 2$\n이다.\n따라서 구하는 정수 $x$의 개수는 $7$개이다.\n(또는 $2 - (-4) + 1 = 7$개)\n따라서 정답은 ⑤이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 끝 −4는 포함하고 오른쪽 끝 3은 포함하지 않는다. 이 차이를 확인한 뒤 구간 안 정수를 세며 최종 개수는 쓰지 않는다."
+  ]
+}

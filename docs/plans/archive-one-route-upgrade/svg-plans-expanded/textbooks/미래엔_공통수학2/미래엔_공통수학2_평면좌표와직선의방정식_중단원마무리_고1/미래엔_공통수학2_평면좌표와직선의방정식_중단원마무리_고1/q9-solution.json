@@ -1,0 +1,133 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "base",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "P",
+          "base"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "P"
+  ],
+  "displaySegments": [],
+  "displayLines": [
+    "l",
+    "m",
+    "base",
+    "t"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "두 직선의 교점 P를 먼저 찾고 주어진 기준선과 평행한 직선을 P를 지나게 그린다.",
+  "accessibilityDescription": "두 직선의 교점 P를 먼저 찾고 주어진 기준선과 평행한 직선을 P를 지나게 그린다.",
+  "newVisualInformation": [
+    "두 직선의 교점 P를 먼저 찾고 주어진 기준선과 평행한 직선을 P를 지나게 그린다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $2x-3y+4=0$과 $3x+y-5=0$의 교점을 지나고 직선 $6x+3y+1=0$과 평행한 직선의 방정식을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정답·해설 공란. 원문으로 직접 풀이해 계획했으며 원본은 보충하지 않음. P(1,2),기울기−2,최종y=−2x+4숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

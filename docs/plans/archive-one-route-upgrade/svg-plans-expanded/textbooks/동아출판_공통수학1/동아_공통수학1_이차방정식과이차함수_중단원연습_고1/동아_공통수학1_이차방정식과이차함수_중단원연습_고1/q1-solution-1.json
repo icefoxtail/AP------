@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "소문항 1: 포물선과 가로축의 만남을 살펴본다. 위치 관계의 이름은 본문에서 판단한다.",
+  "accessibilityDescription": "소문항 1: 포물선과 가로축의 만남을 살펴본다. 위치 관계의 이름은 본문에서 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 이차함수 그래프와 $x$축의 위치 관계를 판단하시오.\n⑴ $y=x^2-4x+2$\n⑵ $y=-x^2-8x-16$\n⑶ $y=2x^2-3x+3$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "D=8,0,-15를 독립 계산. 두 교점/접함/만나지않음 관계를 그림으로 확인하되 최종 관계 이름은 caption에 쓰지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "소문항 1: 포물선과 가로축의 만남을 살펴본다. 위치 관계의 이름은 본문에서 판단한다."
+  ]
+}

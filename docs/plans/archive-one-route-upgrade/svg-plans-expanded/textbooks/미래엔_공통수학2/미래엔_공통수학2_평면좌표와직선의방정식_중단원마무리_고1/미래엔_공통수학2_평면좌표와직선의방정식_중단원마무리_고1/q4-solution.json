@@ -1,0 +1,142 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "11"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "P",
+    "H",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "HR",
+      "refs": [
+        "H",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "점 P에서 직선에 수선을 내리면 두 대상 사이의 최단 거리는 선분 PH이다.",
+  "accessibilityDescription": "점 P에서 직선에 수선을 내리면 두 대상 사이의 최단 거리는 선분 PH이다.",
+  "newVisualInformation": [
+    "점 P에서 직선에 수선을 내리면 두 대상 사이의 최단 거리는 선분 PH이다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "P",
+        "H",
+        "R"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(4, 2)$와 직선 $3x-4y+11=0$ 사이의 거리를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정답·해설 공란. 원문으로 직접 풀이해 계획했으며 원본은 보충하지 않음. 대입분자15,법선길이5,거리3. H(11/5,22/5)는발로파생,거리숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

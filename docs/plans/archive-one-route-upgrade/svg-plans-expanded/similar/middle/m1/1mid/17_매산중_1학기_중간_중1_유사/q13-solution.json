@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "-7",
+            "showValue": false
+          },
+          {
+            "id": "A",
+            "value": "-2",
+            "showValue": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "style": "ARROW",
+            "label": "5"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "주어진 점 A에서 왼쪽으로 5만큼 이동한 끝점 B를 찾는다. 왼쪽 이동은 수가 작아지는 방향이고 구하는 B의 값은 숨긴다.",
+  "accessibilityDescription": "주어진 점 A에서 왼쪽으로 5만큼 이동한 끝점 B를 찾는다. 왼쪽 이동은 수가 작아지는 방향이고 구하는 B의 값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위에서 $-2$가 나타내는 점으로부터 왼쪽으로 $5$만큼 떨어진 점이 나타내는 수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "수직선에서 어떤 수에서 왼쪽으로 이동하는 것은 그 수에서 이동한 거리만큼 빼는 것과 같다.\n따라서 $-2$에서 왼쪽으로 $5$만큼 떨어진 점이 나타내는 수는\n$(-2) - 5 = (-2) + (-5) = -7$\n따라서 정답은 ①이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 점 A에서 왼쪽으로 5만큼 이동한 끝점 B를 찾는다. 왼쪽 이동은 수가 작아지는 방향이고 구하는 B의 값은 숨긴다."
+  ]
+}

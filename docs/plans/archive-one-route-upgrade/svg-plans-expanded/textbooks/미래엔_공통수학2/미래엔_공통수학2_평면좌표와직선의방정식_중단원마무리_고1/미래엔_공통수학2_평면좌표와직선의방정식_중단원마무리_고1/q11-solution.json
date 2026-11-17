@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bis",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ext",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "args": {
+          "mode": "EXTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [],
+  "displayLines": [
+    "l",
+    "m",
+    "bis",
+    "ext"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "교점 P에서 두 직선이 만드는 각의 내각과 외각을 각각 이등분하는 두 방향을 비교한다.",
+  "accessibilityDescription": "교점 P에서 두 직선이 만드는 각의 내각과 외각을 각각 이등분하는 두 방향을 비교한다.",
+  "newVisualInformation": [
+    "교점 P에서 두 직선이 만드는 각의 내각과 외각을 각각 이등분하는 두 방향을 비교한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $4x+y-5=0$과 $x-4y+3=0$이 이루는 각을 이등분하는 직선의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정답·해설 공란. 원문으로 직접 풀이해 계획했으며 원본은 보충하지 않음. P(1,1). 두이등분선3x+5y−8=0,5x−3y−2=0. 식라벨미표시. A B는방향을고정한보조점.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

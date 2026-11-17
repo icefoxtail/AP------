@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "24",
+          "20",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "L"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 5,
+        "y": 74
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "caption": "왼쪽 가로좌표를 a라 두면 대칭인 오른쪽 좌표는 12에서 a를 뺀 값이다. 너비와 높이로 만든 둘레 함수의 최고점을 찾는다.",
+  "accessibilityDescription": "왼쪽 가로좌표를 a라 두면 대칭인 오른쪽 좌표는 12에서 a를 뺀 값이다. 너비와 높이로 만든 둘레 함수의 최고점을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[문제해결] 오른쪽 그림과 같이 곡선 $y=-x^2+12x$ 위의 두 점 $\\mathrm{A, B}$와 $x$축 위의 두 점 $\\mathrm{C, D}$를 꼭짓점으로 하는 직사각형 $\\mathrm{ACDB}$의 둘레의 길이의 최댓값을 구하시오. (단, 두 점 $\\mathrm{A, B}$는 제1사분면 위의 점이다.)\n<img src=\"q12.png\" />\n\n[단계1] 점 $\\mathrm{C}$의 $x$좌표를 $a$라고 할 때, $a$의 값의 범위를 구하시오.\n[단계2] 직사각형 $\\mathrm{ACDB}$의 둘레의 길이를 $a$에 대한 식으로 나타내시오.\n[단계3] 직사각형 $\\mathrm{ACDB}$의 둘레의 길이의 최댓값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "q12 직접확인: 포물선위 A좌/B우 같은높이, 아래는이미지잘림이나 발문C,D가 x축임. 0<a<6; 높이−a²+12a,너비12−2a,둘레−2a²+20a+24. 최고74 미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 가로좌표를 a라 두면 대칭인 오른쪽 좌표는 12에서 a를 뺀 값이다. 너비와 높이로 만든 둘레 함수의 최고점을 찾는다."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "40",
+          "-8/3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "15"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      15
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "15/2",
+        "y": "150"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "caption": "한 부스의 가로 길이를 x라 두면 테이프는 가로 네 번과 세로 세 번 쓰인다. 전체 넓이 함수의 가장 높은 위치를 찾는다.",
+  "accessibilityDescription": "한 부스의 가로 길이를 x라 두면 테이프는 가로 네 번과 세로 세 번 쓰인다. 전체 넓이 함수의 가장 높은 위치를 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[연결] 다음 그림과 같이 전체 길이가 $60\\text{ m}$인 검정 테이프를 겹치지 않고 남김없이 사용하여 강당 바닥에 합동인 두 직사각형 모양으로 된 동아리 부스를 만들려고 한다. 만들 수 있는 동아리 부스의 넓이의 최댓값을 구하시오. (단, 검정 테이프의 너비는 생각하지 않는다.)\n<img src=\"q11.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "q11 직접확인: 나란한 합동 직사각형과 가운데 공유변. 그림 하단은 잘렸으나 발문상 두직사각형 확정. 4x+3h=60, 전체S=2xh=40x−8x²/3, 0<x<15. 최대150 미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "한 부스의 가로 길이를 x라 두면 테이프는 가로 네 번과 세로 세 번 쓰인다. 전체 넓이 함수의 가장 높은 위치를 찾는다."
+  ]
+}

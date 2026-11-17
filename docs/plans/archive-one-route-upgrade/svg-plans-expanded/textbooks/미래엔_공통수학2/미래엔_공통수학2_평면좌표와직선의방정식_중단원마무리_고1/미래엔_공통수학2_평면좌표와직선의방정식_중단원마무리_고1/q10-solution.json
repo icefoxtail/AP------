@@ -1,0 +1,99 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "P"
+  ],
+  "displaySegments": [],
+  "displayLines": [
+    "l",
+    "m"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "예시 k=0에서 교점이 제1사분면 안에 놓이는 모습을 확인한다. 전체 k의 범위는 두 좌표가 양수라는 조건으로 별도로 구한다.",
+  "accessibilityDescription": "예시 k=0에서 교점이 제1사분면 안에 놓이는 모습을 확인한다. 전체 k의 범위는 두 좌표가 양수라는 조건으로 별도로 구한다.",
+  "newVisualInformation": [
+    "예시 k=0에서 교점이 제1사분면 안에 놓이는 모습을 확인한다. 전체 k의 범위는 두 좌표가 양수라는 조건으로 별도로 구한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $y=-x+3$과 $y=kx+3k+2$가 제$1$사분면에서 만날 때, 실수 $k$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정답·해설 공란. 원문으로 직접 풀이해 계획했으며 원본은 보충하지 않음. 교점x=(1−3k)/(1+k),y=(2+6k)/(1+k); 조건−1/3<k<1/3. 예시는0만,범위표시안함.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

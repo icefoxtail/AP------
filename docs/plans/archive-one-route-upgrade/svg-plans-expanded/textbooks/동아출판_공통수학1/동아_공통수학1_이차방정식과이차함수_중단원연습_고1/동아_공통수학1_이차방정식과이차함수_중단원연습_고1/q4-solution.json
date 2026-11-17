@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "l"
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-8"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "m"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "18",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "주어진 점을 지나는 두 접선과 포물선의 접점을 비교한다. 접선 방정식은 본문에서 계산한다.",
+  "accessibilityDescription": "주어진 점을 지나는 두 접선과 포물선의 접점을 비교한다. 접선 방정식은 본문에서 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(0, 2)$를 지나고 이차함수 $y=x^2-4x+6$의 그래프에 접하는 직선의 방정식을 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점t에서 y=(2t−4)x+6−t². (0,2) 통과→t=±2. 접점(2,2),(-2,18)은 중간값. 최종 직선식·기울기는 표시하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 점을 지나는 두 접선과 포물선의 접점을 비교한다. 접선 방정식은 본문에서 계산한다."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -4
+      },
+      {
+        "id": "E",
+        "x": 4,
+        "y": 0
+      }
+    ]
+  },
+  "caption": "상수항을 뺀 곡선의 예이다. 위아래로 옮겨도 최댓값과 최솟값의 가로 위치는 유지된다.",
+  "accessibilityDescription": "상수항을 뺀 곡선의 예이다. 위아래로 옮겨도 최댓값과 최솟값의 가로 위치는 유지된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1\\le x\\le 4$에서 이차함수 $y=x^2-4x+k$의 최댓값과 최솟값의 합이 $10$일 때, 실수 $k$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "실제 함수의 최소k−4, 최대k; 합10→k7. 예시 상수항0 곡선임을 명시. 최종k7 미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "상수항을 뺀 곡선의 예이다. 위아래로 옮겨도 최댓값과 최솟값의 가로 위치는 유지된다."
+  ]
+}
