@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5/2",
+          "-3",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "5/2"
+      },
+      {
+        "id": "V",
+        "x": "3",
+        "y": "-2"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "6",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0",
+        "3",
+        "6"
+      ],
+      "y": [
+        "-2",
+        "5/2"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "S"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "height",
+          "slope": "0",
+          "intercept": "5/2",
+          "label": "f=5",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "세로축은 S=f(x)/2이다. 점선은 S=5/2, 즉 원래 f값5인 높이이다. x=0에서 f값5, 꼭짓점 x=3에서−4, 다시 같은 높이가 되는 x=6을 기준으로 움직이는 오른쪽 끝 a를 나눈다. 0<a<3, 3≤a≤6, a>6에서 최대와 최소를 담당하는 위치가 달라진다. 표시창0≤x≤7은 비교용이며 a의 허용범위를7 이하로 제한한 것이 아니다. 최종 a값들과 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0\\le x\\le a$에서 이차함수 $y=x^2-6x+5$의 최댓값과 최솟값의 합이 5가 되도록 하는 모든 양수 $a$의 값의 합을 구하면? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "0<a3면5+f(a)=5 ->a1,3≤a≤6합1불가,a>6면f(a)−4=5 ->a3+√13.합4+√13⑤.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "세로축은 S=f(x)/2이다. 점선은 S=5/2, 즉 원래 f값5인 높이이다. x=0에서 f값5, 꼭짓점 x=3에서−4, 다시 같은 높이가 되는 x=6을 기준으로 움직이는 오른쪽 끝 a를 나눈다. 0<a<3, 3≤a≤6, a>6에서 최대와 최소를 담당하는 위치가 달라진다. 표시창0≤x≤7은 비교용이며 a의 허용범위를7 이하로 제한한 것이 아니다. 최종 a값들과 합은 쓰지 않는다."
+  ]
+}

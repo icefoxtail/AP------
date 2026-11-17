@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "t"
+  },
+  "caption": "정수해를 L부터3까지라 두면 합 조건에서 L=−4가 된다. 가로축 t는 x가 아니라 둘째 부등식의 경계 t=(a−4)/4이다. 최소 정수가−4이려면 t=−5는 허용되지만 t=−4는 제외된다. 이 구간을 a의 조건으로 되돌리고 최종 최대 a는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases}7x-2\\lt4x+10\\\\x+4\\gt-3x+a\\end{cases}$를 만족시키는 모든 정수 $x$의 값의 합이 $-4$가 되도록 하는 정수 $a$의 최댓값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "L합식(L+3)(4−L)/2=−4 ->L−4(5불가),−5≤t<−4 ->−16≤a<−12,amax−13⑤.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "정수해를 L부터3까지라 두면 합 조건에서 L=−4가 된다. 가로축 t는 x가 아니라 둘째 부등식의 경계 t=(a−4)/4이다. 최소 정수가−4이려면 t=−5는 허용되지만 t=−4는 제외된다. 이 구간을 a의 조건으로 되돌리고 최종 최대 a는 쓰지 않는다."
+  ]
+}

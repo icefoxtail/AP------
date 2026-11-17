@@ -1,0 +1,147 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "E",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "A",
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s0",
+        "text": "c",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s1",
+        "text": "d",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "label2",
+        "ownerSegment": "s2",
+        "text": "5sqrt(2)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원본 직육면체에서 공간 대각선 AG와 밑면 대각선 EG를 포함하는 삼각형 AEG를 펼쳤다. AE는 밑면에 수직이므로 E에서 직각이고 AG²=c²+d²=a²+b²+c²=50이다. 겉넓이로부터 ab+bc+ca=47을 함께 이용하여 세 변의 합의 제곱을 구한다. 앞 패널과 같은 가능한 배치이며 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 밑면의 가로와 세로의 길이가 각각 $a$와 $b$이고 높이가 $c$인 직육면체의 겉넓이는 $94$이다. 대각선 $\\mathrm{AG}$의 길이가 $5\\sqrt{2}$일 때, $a+b+c$의 값을 구하시오.\n<img src=\"q10.png\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본 q10.png 직접확인: FG=a,GH=b,DH=c,공간대각선AG=5√2. EF=GH=b,AE=DH=c,EG밑면대각선. surface94→pair47,AG²50→sum²144,양의합12. a3,b4,c5 예시는정확두조건만족. 원본입체보존+직각삼각형2개추출,최종12미표시. 각 첫 점의 원점 좌표는 평행이동 배치 기준일 뿐 원문 좌표가 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 직육면체에서 공간 대각선 AG와 밑면 대각선 EG를 포함하는 삼각형 AEG를 펼쳤다. AE는 밑면에 수직이므로 E에서 직각이고 AG²=c²+d²=a²+b²+c²=50이다. 겉넓이로부터 ab+bc+ca=47을 함께 이용하여 세 변의 합의 제곱을 구한다. 앞 패널과 같은 가능한 배치이며 최종 합은 쓰지 않는다."
+  ]
+}

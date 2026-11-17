@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "5"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "13",
+        "marker": "NONE"
+      },
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "5"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "13",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "A",
+        "B",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "3"
+      ],
+      "y": [
+        "5",
+        "11"
+      ]
+    },
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "5"
+      },
+      {
+        "x": "3",
+        "y": "5"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "11",
+          "label": "y=11",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "H(x)=|x+2|+|x−3|의 가운데 평평한 부분과 양쪽 가지를 그렸다. 주어진 높이11과 비교하여 그 이하인 닫힌 구간을 읽는다. 경계에 놓인 정수도 포함하되 최종 정수 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서답형 1.(단답형)<br>부등식 $|x+2|+|x-3|\\le11$을 만족시키는 정수 $x$의 개수를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "해−5≤x≤6,정수12개.경계값은중간값이나최종목록/개수안표시.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "H(x)=|x+2|+|x−3|의 가운데 평평한 부분과 양쪽 가지를 그렸다. 주어진 높이11과 비교하여 그 이하인 닫힌 구간을 읽는다. 경계에 놓인 정수도 포함하되 최종 정수 개수는 쓰지 않는다."
+  ]
+}
