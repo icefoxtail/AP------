@@ -411,3 +411,23 @@ test("library state defaults legacy rows and never revives a one-way tombstone",
     /invalid library status/i,
   );
 });
+
+test("mixed validation rejects a source value placed where the catalog value is empty, and accepts the catalog value", async () => {
+  // Source.restore keeps the source JS value when the catalog value is empty; the server compares against the catalog
+  // value (including ""), so the saved-paper request must carry the catalog value. The metadata check must stay strict.
+  const record = catalog.records.find((row) => core.generalUseEligibility(row).ok &&
+    typeof row.sourceFile === "string" && row.courseKey === "" && row.assignmentFingerprint && row.sourceFingerprint);
+  assert.ok(record, "catalog has a general-use record whose courseKey is empty");
+  const filters = { grade: record.effectiveBrowseGrade, primaryPaths: [core.generalPathKey(record)] };
+  const exact = materialize(record);
+  assert.equal(exact.courseKey, "");
+  await validateApprovedMixedQuestions(env, [{ ...exact }], input(filters));
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [{ ...exact, courseKey: "SOURCE-ONLY-COURSE" }], input(filters)),
+    "canonical metadata parity mismatch: courseKey",
+  );
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [{ ...exact, curriculumKey: "SOURCE-ONLY-CURRICULUM" }], input(filters)),
+    "canonical metadata parity mismatch: curriculumKey",
+  );
+});

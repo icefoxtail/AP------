@@ -578,7 +578,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261111-one-lane-difficulty-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261117-stale-2'],
+    ['archive2-workspace.js', '20261118-save-wire-1'],
     ['archive2-quick-pools.js', '20261117-middle-parent-1'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
@@ -1414,4 +1414,93 @@ test('while a save result is unknown, output and backup stay reachable and only 
   statusNode.textContent = '';
   await click({ action: 'close-dialog' });
   assert.doesNotMatch(statusNode.textContent, /잠급니다/, 'closing a dialog is not locked');
+});
+
+// ---- 저장 요청 본문을 서버 계약에 맞춘다 (savePapers: saveWireQuestion / saveRequestFilters / parity 문구) ----
+function savedPaperOk() {
+  return { ok: true, status: 200, json: async () => ({ success: true, saved: true, papers: [{ id: crypto.randomUUID() }] }) };
+}
+function captureSavePost(ctx, reply = savedPaperOk) {
+  const bodies = [];
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname === '/api/archive-saved-papers' && init.method === 'POST') {
+      bodies.push(JSON.parse(init.body));
+      return reply();
+    }
+    throw new Error('unexpected API request: ' + parsed.pathname);
+  };
+  return bodies;
+}
+
+test('저장 요청 본문의 정본 메타 필드는 카탈로그 값이고 미리보기·인쇄용 문항은 바뀌지 않는다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const uid = w.state.selected[0].questionUid;
+  // 카탈로그: courseKey·curriculumKey는 빈 값, L3 필드는 없음. 원본 JS에서 복원한 문항은 그 자리에 원본 값을 남긴다(Source.restore).
+  const catalogRecord = { ...w.state.byUid.get(uid), courseKey: '', curriculumKey: '' };
+  delete catalogRecord.L3;
+  w.state.byUid.set(uid, catalogRecord);
+  const [paper] = await w.prepare();
+  const shown = paper.questions[0];
+  Object.assign(shown, { courseKey: 'SOURCE-ONLY-COURSE', curriculumKey: 'SOURCE-ONLY-CURRICULUM', L3: 'SOURCE-ONLY-L3' });
+  const shownBefore = plain(shown);
+  const bodies = captureSavePost(ctx);
+
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(bodies.length, 1);
+  const sent = bodies[0].papers[0].questions[0];
+  for (const field of core.META_FIELDS) {
+    if (catalogRecord[field] === undefined) assert.equal(Object.hasOwn(sent, field), false, field + ' is absent in the catalog, so it is absent in the request');
+    else assert.deepEqual(sent[field], plain(catalogRecord[field]), field + ' equals the catalog record');
+  }
+  assert.equal(sent.courseKey, '', 'an empty catalog value is sent as empty, not dropped and not replaced by the source value');
+  assert.equal(Object.hasOwn(sent, 'L3'), false);
+  for (const field of ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'content', 'answer', 'solution'])
+    assert.deepEqual(sent[field], plain(shown[field]), field + ' is not a metadata field and is sent unchanged');
+  // Preview/print objects keep the restored (source) values.
+  assert.deepEqual(plain(w.state.prepared[0].questions[0]), shownBefore);
+  assert.equal(shown.courseKey, 'SOURCE-ONLY-COURSE');
+});
+
+test('카탈로그 레코드가 없는 문항(수정본·옛 출제 등)은 전송 본문에서도 그대로 보낸다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  const uid = w.state.selected[0].questionUid;
+  const [paper] = await w.prepare();
+  paper.questions[0].courseKey = 'FROZEN-COURSE';
+  w.state.byUid.delete(uid);
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.deepEqual(bodies[0].papers[0].questions[0], plain(paper.questions[0]));
+});
+
+test('찾기 화면에서 넘어온 material·file·similarOnly는 저장 요청의 selection_filters에 넣지 않는다', async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  w.state.filters = { ...w.state.filters, material: 'exam', file: 'x.js', similarOnly: '1', school: '' };
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  const filters = bodies[0].selection_filters;
+  for (const key of ['material', 'file', 'similarOnly']) assert.equal(Object.hasOwn(filters, key), false, key);
+  assert.ok(filters.grade && Array.isArray(filters.primaryPaths) && Array.isArray(filters.sourceFiles), 'the real range conditions stay');
+});
+
+test('저장이 정본 메타 불일치(409)로 거절되면 화면에는 안내 문구만, 서버 원문은 콘솔에만 남긴다', async t => {
+  const raw = 'canonical metadata parity mismatch: courseKey';
+  const run = async (message, status = 409) => {
+    const { w, ctx } = configureSaveHarness(t);
+    captureSavePost(ctx, () => ({ ok: false, status, json: async () => ({ success: false, error: message }) }));
+    await w.savePapers();
+    return w.state;
+  };
+  const warn = t.mock.method(console, 'warn', () => {});
+  const state = await run(raw);
+  assert.equal(state.saveResultState, 'FAILED');
+  assert.equal(state.saveError, '분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.');
+  assert.doesNotMatch(state.saveError, /parity|courseKey/);
+  assert.ok(warn.mock.calls.some(call => call.arguments.some(arg => String(arg).includes(raw))), 'raw server text goes to console.warn');
+  // 다른 거절은 이 PR 범위 밖이라 그대로 둔다.
+  const other = await run('1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.', 413);
+  assert.equal(other.saveError, '1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.');
 });
