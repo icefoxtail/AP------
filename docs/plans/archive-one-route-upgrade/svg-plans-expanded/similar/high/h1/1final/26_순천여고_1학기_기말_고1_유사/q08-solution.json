@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1/2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "첫 행은 절댓값 부등식, 둘째 행은 이차식의 부호를 정리한 결과이다. x=3은 두 조건에서 모두 등호를 만족하므로 겹치는 한 점도 빠뜨리지 않는다. 정답: 공통 정수−4,−3,−2,−1,3의 합은−7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases}|x-1|+|x+2|\\le7\\\\-2x^2+5x+3\\le0\\end{cases}$을 만족하는 정수 $x$값의 합을 구하면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "첫 행은 절댓값 부등식, 둘째 행은 이차식의 부호를 정리한 결과이다. x=3은 두 조건에서 모두 등호를 만족하므로 겹치는 한 점도 빠뜨리지 않는다. 정답: 공통 정수−4,−3,−2,−1,3의 합은−7.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 행은 절댓값 부등식, 둘째 행은 이차식의 부호를 정리한 결과이다. x=3은 두 조건에서 모두 등호를 만족하므로 겹치는 한 점도 빠뜨리지 않는다. 정답: 공통 정수−4,−3,−2,−1,3의 합은−7."
+  ]
+}

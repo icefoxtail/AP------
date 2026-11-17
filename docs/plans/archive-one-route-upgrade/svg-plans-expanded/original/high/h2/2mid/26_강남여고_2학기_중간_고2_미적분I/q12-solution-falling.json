@@ -1,0 +1,178 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "tangentDirection",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "horizontalReference",
+      "refs": [
+        "U",
+        "V"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 400
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "derivativeSign",
+        "ownerSegment": "tangentDirection",
+        "text": "f′(a)<0",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "a에서 접선은 오른쪽으로 내려간다. 접선 기울기의 부호는 음수이다. 원래 곡선은 문제 그림에서 확인한다. 이 보조도는 왼쪽에서 오른쪽으로 읽는 접선 방향 모형이며 접점 위치나 기울기 크기를 나타내지 않는다. 점선은 수평 방향의 비교선이다. 네 부호를 이용하면 f′(a)f′(b)<0이고, c를 포함한 곱은 0이다. 정답 ②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 미분가능한 함수 $y=f(x)$의 그래프가 그림과 같을 때, 다음 중 옳은 것은? (4점)",
+      "mappedTo": "direction schematic"
+    },
+    {
+      "id": "image",
+      "condition": "원본 PNG 직접 확인: 0,b 상승 가지, a 하강 가지, c 수평 극소 접선. 도함수 부호 +,−,+,0만 사용한다. 원문에 없는 다항식 차수·함수식·좌표를 지정하지 않는다.",
+      "mappedTo": "tangentDirection"
+    },
+    {
+      "id": "gauge",
+      "condition": "O=(0,0)은 방향 도식의 비표시 배치 앵커이며 실제 접점 좌표가 아니다. L,R,U,V는 O에서 이동한 모형 끝점이다. 오른쪽 수평 이동에 대한 세로 변화의 부호만 원문과 대응하며 길이·기울기 절댓값은 원문 수치가 아니다. 세 패널은 서로 다른 원문 접점 좌표를 공유한다는 뜻이 아니다.",
+      "mappedTo": "O L R U V"
+    }
+  ],
+  "newVisualInformation": [
+    "방향→도함수 부호→곱의 부호 순서로 설명한다. 최신 ADD2에 따라 중간 부호와 최종 정답을 표시한다."
+  ]
+}

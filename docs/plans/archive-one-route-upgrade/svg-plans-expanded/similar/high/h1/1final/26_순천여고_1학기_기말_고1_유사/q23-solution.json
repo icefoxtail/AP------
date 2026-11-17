@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "25"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "15"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [],
+    "dimensions": [
+      {
+        "id": "base",
+        "from": "B",
+        "to": "D",
+        "label": "9/2",
+        "side": "BELOW",
+        "offset": 2
+      },
+      {
+        "id": "altitude",
+        "from": "F",
+        "to": "E",
+        "label": "15/2",
+        "side": "LEFT",
+        "offset": 2
+      }
+    ]
+  },
+  "caption": "원본 포물선과 조명 그림은 반드시 유지하고 삼각형 BDE의 밑변과 높이만 별도로 펼쳤다. C를 지나는 접선 후보 중 접점이 조형물0≤x≤8 안에 있는 가지를 택하면 E=(5,15/2),D=(25/2,0)이다. 밑변 BD=9/2, 높이 EF=15/2이며 수선발 F는 B의 왼쪽 바깥에 있다. 정답: 삼각형 BDE 넓이는 (9/2)(15/2)/2=135/8.",
+  "rightAngles": [
+    {
+      "id": "rF",
+      "refs": [
+        "E",
+        "F",
+        "B"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형3.<br>오른쪽 그림과 같이 폭이 $8\\,\\mathrm{m}$, 높이가 $8\\,\\mathrm{m}$인 포물선 모양의 조형물이 지면과 만나는 두 지점을 각각 $A,B$라 하자. $A$지점에 높이가 $\\dfrac{25}{2}\\,\\mathrm{m}$인 조명이 지면과 수직으로 설치되어 있을 때, $\\dfrac{25}{2}\\,\\mathrm{m}$ 조명이 있는 지점을 $C$라 하고, 이 조명의 불빛에 의하여 생기는 조형물의 그림자의 끝을 $D$라 하자. 또, 조형물에서 그림자의 끝인 $D$를 연결하는 선이 조형물과 접하는 점을 $E$라 할 때, 생기는 삼각형 $BDE$의 넓이를 구하고, 그 과정을 서술하시오. [9.0점, 부분점수 있음]<br>(단, 조형물의 두께는 생각하지 않는다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본 포물선과 조명 그림은 반드시 유지하고 삼각형 BDE의 밑변과 높이만 별도로 펼쳤다. C를 지나는 접선 후보 중 접점이 조형물0≤x≤8 안에 있는 가지를 택하면 E=(5,15/2),D=(25/2,0)이다. 밑변 BD=9/2, 높이 EF=15/2이며 수선발 F는 B의 왼쪽 바깥에 있다. 정답: 삼각형 BDE 넓이는 (9/2)(15/2)/2=135/8.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "O=(0,0)은 원문 A와 일치하는 좌표화의 비표시 기준점이다. B=(8,0), D=(25/2,0), E=(5,15/2), F=(5,0)을 정확히 유도하고 실제 점 B,D,E,F의 이름과 풀이 길이는 표시한다. 기준점 O의 중복 이름만 숨긴다.",
+      "mappedTo": "O and derived geometry nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 포물선과 조명 그림은 반드시 유지하고 삼각형 BDE의 밑변과 높이만 별도로 펼쳤다. C를 지나는 접선 후보 중 접점이 조형물0≤x≤8 안에 있는 가지를 택하면 E=(5,15/2),D=(25/2,0)이다. 밑변 BD=9/2, 높이 EF=15/2이며 수선발 F는 B의 왼쪽 바깥에 있다. 정답: 삼각형 BDE 넓이는 (9/2)(15/2)/2=135/8."
+  ]
+}
