@@ -564,7 +564,7 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "questionType": "객관식",
-    "content": "그림과 같이 종이로 부채를 만들려고 한다. $\\angle\\mathrm{BOA} = \\frac{2}{3}\\pi$이고 두 부채꼴 $\\mathrm{OAB, OCD}$의 반지름의 길이가 각각 $6\\,\\mathrm{cm}, 12\\,\\mathrm{cm}$일 때, 종이의 넓이는?<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q14.png\" class=\"exam-img\"></div> [4.0점]",
+    "content": "그림과 같이 종이로 부채를 만들려고 한다. $\\angle\\mathrm{BOA} = \\frac{2}{3}\\pi$이고 두 부채꼴 $\\mathrm{OAB, OCD}$의 반지름의 길이가 각각 $6\\,\\mathrm{cm}, 12\\,\\mathrm{cm}$일 때, 종이의 넓이는?<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q14.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"중심 O를 공유하는 안쪽 부채꼴 OAB와 바깥 부채꼴 OCD가 보인다. 두 부채꼴은 같은 중심각이며 반지름은 각각 6센티미터와 12센티미터이다. 두 호 사이의 띠 모양 부분이 종이이다.\"></div> [4.0점]",
     "choices": [
       "$6\\pi$",
       "$12\\pi$",
@@ -646,7 +646,7 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "questionType": "객관식",
-    "content": "그림은 양수 $a$에 대하여 함수 $y=\\left(\\frac{1}{a}\\right)^x$의 그래프를 그린 것이다. $a$의 값이 가장 큰 것은?<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q16.png\" class=\"exam-img\"></div> [5.0점]",
+    "content": "그림은 양수 $a$에 대하여 함수 $y=\\left(\\frac{1}{a}\\right)^x$의 그래프를 그린 것이다. $a$의 값이 가장 큰 것은?<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q16.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"다섯 지수곡선이 모두 (0,1)을 지난다. 높이 1보다 높은 같은 수평선에서 다섯 곡선과의 교점은 왼쪽부터 ①, ②, ③, ④, ⑤ 순이다. ①부터 ③은 감소하고 ④와 ⑤는 증가한다.\"></div> [5.0점]",
     "choices": [],
     "answer": "③",
     "solution": "주어진 함수는 $y=\\left(\\dfrac1a\\right)^x$이고, 모든 그래프는 $(0,1)$을 지난다.\n$a>1$이면 $0<\\dfrac1a<1$이므로 오른쪽으로 갈수록 내려가는 그래프 ①, ②, ③에 해당한다. 반대로 $0<a<1$이면 오른쪽으로 갈수록 올라가는 그래프 ④, ⑤에 해당한다.\n$x=-1$을 대입하면\n$y=\\left(\\dfrac1a\\right)^{-1}=a$이다.\n따라서 $x=-1$에서 그래프의 높이가 클수록 $a$도 크다. 그림에서 왼쪽 구간의 세 감소 그래프 중 가장 위쪽에 있는 것은 ③이다.\n그러므로 $a$의 값이 가장 큰 것은 ③이다."
@@ -814,9 +814,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "교점이 제2사분면에 있으려면 $x<0$이고 $y>0$이어야 한다.\n첫째 그래프에서 $y=3^{x+2}-1>0$이므로\n$3^{x+2}>1=3^0$,\n$x+2>0$, 즉 $x>-2$이다.\n따라서 교점의 $x$좌표는 $-2<x<0$이다.\n두 그래프의 높이가 같은 조건을 정리하면\n$3^{x+2}-1=2^{x+1}+n$\n$\\Rightarrow n=3^{x+2}-2^{x+1}-1$이다.\n$t=x+2$로 놓으면 $0<t<2$이고\n$n=3^t-2^{t-1}-1$이다.\n이제 $g(t)=3^t-2^{t-1}-1$의 값의 범위를 구한다.\n$0\\le u<v\\le2$에서 $h=v-u>0$으로 놓으면\n$g(v)-g(u)=3^u(3^h-1)-2^{u-1}(2^h-1)$이다.\n$3^u>2^{u-1}$이고 $3^h-1>2^h-1>0$이므로\n$3^u(3^h-1)>2^{u-1}(2^h-1)$이다.\n따라서 $g(v)-g(u)>0$, 즉 $g(t)$는 $0\\le t\\le2$에서 증가한다.\n양 끝에서의 값은\n$g(0)=3^0-2^{-1}-1=1-\\dfrac12-1=-\\dfrac12$,\n$g(2)=3^2-2^1-1=9-2-1=6$이다.\n$0<t<2$이므로 $-\\dfrac12<n<6$이다.\n또 지수함수로 이루어진 그래프는 이 구간에서 끊어지지 않고 증가하므로, $-\\dfrac12$과 $6$ 사이의 정수 높이 $0,1,2,3,4,5$를 모두 지난다.\n이때 $x=t-2$이므로 $-2<x<0$이고, $y=3^t-1>0$이어서 실제 교점은 제2사분면에 있다.\n따라서 가능한 정수 $n$은 $0,1,2,3,4,5$의 $6$개이므로 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_효천고_1학기_중간_고2_수학I/q20-solution.svg",
-    "solutionImageAlt": "제2사분면 교점 조건을 만족하는 정수 n의 범위: g(t)가 t=0에서 -1/2, t=2에서 6 사이를 증가하며 정수 높이 0부터 5까지 모두 지남",
-    "solutionImageCaption": "0과 2 사이에서 증가하는 그래프가 정수 높이 0부터 5까지 모두 지나는 모습",
+    "solutionImage": "assets/images/22_효천고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: n축에 열린 구간 −1/2<n<6을 표시한다. 양 끝은 포함되지 않는다.",
+    "solutionImageCaption": "g(t)는 0<t<2에서 증가하고 n의 범위는 −1/2<n<6이다. 이 열린 구간의 정수는 6개이므로 정답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
@@ -960,7 +960,7 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "questionType": "서술형",
-    "content": "다음 그림과 같이 함수 $y=a^x-b$의 그래프가 기울기가 -1인 직선과 만나는 점을 $\\mathrm{Q}(2, 14)$라고 하자. $y=a^x-b$의 역함수인 로그함수가 점 $\\mathrm{P}$를 지나고, 점 $\\mathrm{P}$를 지나며 $x$축에 평행한 직선이 함수 $y=a^x-b$의 그래프와 만나는 점을 $\\mathrm{R}$라고 하자. 삼각형 $\\mathrm{PQR}$의 넓이가 78일 때, $y=a^x-b$의 역함수와 $a+b$의 값을 구하는 과정을 서술하시오. (단, $a, b$는 양의 실수)<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q24.png\" class=\"exam-img\"></div> [5.0점]",
+    "content": "다음 그림과 같이 함수 $y=a^x-b$의 그래프가 기울기가 -1인 직선과 만나는 점을 $\\mathrm{Q}(2, 14)$라고 하자. 점 $\\mathrm{P}$는 $y=a^x-b$의 역함수인 로그곡선과 이 직선의 교점이다. 점 $\\mathrm{P}$를 지나며 $x$축에 평행한 직선이 함수 $y=a^x-b$의 그래프와 만나는 점을 $\\mathrm{R}$라고 하자. 삼각형 $\\mathrm{PQR}$의 넓이가 78일 때, $y=a^x-b$의 역함수와 $a+b$의 값을 구하는 과정을 서술하시오. (단, $a, b$는 양의 실수)<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q24.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"좌표평면에 지수함수 y=a^x−b와 그 역함수 로그곡선, Q(2,14)를 지나는 기울기 −1인 직선이 그려져 있다. P는 그 직선과 로그곡선의 교점이며, P와 같은 높이의 수평선은 지수곡선과 R에서 만난다.\"></div> [5.0점]",
     "choices": [],
     "answer": "역함수: $y=\\log_4(x+2)$; $a+b=6$",
     "solution": "$Q=(2,14)$가 $y=a^x-b$ 위에 있으므로 $a^2-b=14$이다. $b>0$이므로 $a^2=14+b>14$이고 $a>1$이다. 따라서 역함수 $y=\\log_a(x+b)$는 증가한다.\n$Q$를 지나며 기울기가 $-1$인 직선은 $y=-x+16$이다. $Q=(2,14)$가 원래 함수 위에 있으므로 역함수 그래프에는 대칭점 $(14,2)$가 있다. 이 점은 $14+2=16$이어서 직선 $y=-x+16$ 위에도 있다. 역함수는 증가하고 직선은 감소하므로 두 그래프는 만나는 점이 하나뿐이다. 따라서 그림의 점 $P$는 $(14,2)$이다.\n점 $R$의 $y$좌표는 $P$와 같아 $2$이고, $Q$에서 수평선 $PR$까지의 높이는 $14-2=12$이다.\n$78=\\dfrac12\\cdot PR\\cdot12$이므로 $PR=13$이다. 따라서 $R$의 $x$좌표는 $14-13=1$ 또는 $14+13=27$이다.\n원래 함수는 $a>1$이므로 증가한다. $f(2)=14>2$이므로 $f(r)=2$인 $r$은 $2$보다 작아야 한다. 따라서 $r=1$이다. 이때\n$a-b=2,\\qquad a^2-b=14$\n이므로 두 식을 빼면 $a^2-a=12$, 즉 $(a-4)(a+3)=0$이다. $a>1$이므로 $a=4$, $b=2$이다.\n따라서 역함수는 $y=\\log_4(x+2)$이고 $a+b=4+2=6$이다."
@@ -995,9 +995,13 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "questionType": "서술형",
-    "content": "그림과 같이 두 상수 $a, k$에 대하여 직선 $x=k$가 두 곡선 $y=2^{x-1}+1$, $y=\\log_2(x-a)$와 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\overline{\\mathrm{AB}}=8$이라고 하면 점 $\\mathrm{A}$의 좌표는 $(k, 2^{k-1}+1)$, 점 $\\mathrm{B}$의 좌표는 $(k, 2^{k-1}-7)$이라고 할 수 있다.\n점 $\\mathrm{B}$를 지나고 기울기가 -1인 직선이 곡선 $y=2^{x-1}+1$과 만나는 점을 $\\mathrm{C}$라 하자. 이때 점 $\\mathrm{C}$의 좌표를 $k$와 관련된 식으로 표현하시오.\n$\\overline{\\mathrm{BC}}=2\\sqrt{2}$라고 할 때, 곡선 $y=\\log_2(x-a)$가 $x$축과 만나는 점 $\\mathrm{D}$에 대하여 사각형 $\\mathrm{ACDB}$의 넓이를 구하는 과정을 서술하시오. (단, $0 < a < k$)<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q25.png\" class=\"exam-img\"></div> [6.0점]",
+    "content": "그림과 같이 두 상수 $a, k$에 대하여 직선 $x=k$가 두 곡선 $y=2^{x-1}+1$, $y=\\log_2(x-a)$와 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\overline{\\mathrm{AB}}=8$이라고 하면 점 $\\mathrm{A}$의 좌표는 $(k, 2^{k-1}+1)$, 점 $\\mathrm{B}$의 좌표는 $(k, 2^{k-1}-7)$이라고 할 수 있다.\n점 $\\mathrm{B}$를 지나고 기울기가 -1인 직선이 곡선 $y=2^{x-1}+1$과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{BC}}=2\\sqrt{2}$일 때 점 $\\mathrm{C}$의 좌표를 $k$와 관련된 식으로 표현하시오.\n또한 곡선 $y=\\log_2(x-a)$가 $x$축과 만나는 점 $\\mathrm{D}$에 대하여 사각형 $\\mathrm{ACDB}$의 넓이를 구하는 과정을 서술하시오. (단, $0 < a < k$)<div class=\"exam-img-box\"><img src=\"assets/images/22_효천고_1학기_중간_고2_수학I/q25.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" style=\"width:240px;max-width:100%;height:auto;max-height:250px;object-fit:contain\" alt=\"지수곡선 y=2^(x−1)+1, 로그곡선 y=log₂(x−a), 수직선 x=k가 보인다. A와 B는 x=k에서 두 곡선과 만나는 점이고, C는 B를 지나 기울기 −1인 직선과 지수곡선의 교점이며, D는 로그곡선과 x축의 교점이다.\"></div> [6.0점]",
     "choices": [],
     "answer": "$C=(k-2,\\,2^{k-1}-5)$; 넓이 $10$",
-    "solution": "점 $C$의 좌표를 정할 때에는 뒤에서 주어지는 $\\overline{BC}=2\\sqrt2$ 조건도 함께 사용한다.\n$B=(k,2^{k-1}-7)$이다. $x\\ge k$이면 지수함숫값은 $A$의 높이 $2^{k-1}+1$ 이상이다. 반면 $B$를 지나고 기울기가 $-1$인 직선의 높이는 $B$의 높이 이하이므로 두 그래프는 $x\\ge k$에서 만나지 않는다. 따라서 $C$는 $B$의 왼쪽 위에 있다. 기울기가 $-1$이고 $BC=2\\sqrt2$이므로 가로·세로 좌표 차의 절댓값은 각각 $2$이다. 따라서\n$C=(k-2,2^{k-1}-5)$이다.\n$C$가 $y=2^{x-1}+1$ 위에 있으므로\n$2^{k-1}-5=2^{k-3}+1$,\n$2^{k-1}-2^{k-3}=6$,\n$3\\cdot2^{k-3}=6$,\n$2^{k-3}=2$이다.\n따라서 $k=4$이고\n$A=(4,9),\\quad B=(4,1),\\quad C=(2,3)$이다.\n점 $B$가 $y=\\log_2(x-a)$ 위에 있으므로 $1=\\log_2(4-a)$, 즉 $4-a=2$이고 $a=2$이다. 이 로그함수가 $x$축과 만나는 점은 $0=\\log_2(x-2)$에서 $x-2=1$, 즉 $D=(3,0)$이다.\n대각선 $BC$로 사각형 $ACDB$를 두 삼각형 $ABC$와 $BCD$로 나눈다. $AB=8$이고 $C$에서 직선 $AB$까지의 거리는 $2$이므로\n$[ABC]=\\dfrac12\\cdot8\\cdot2=8$이다.\n$BC$의 기울기는 $-1$이고 $B=(4,1)$을 지나므로 $BC$의 직선은 $y=-x+5$이다. 이 식에 $x=3$을 대입하면 $y=2$이므로 $E=(3,2)$는 $BC$ 위의 점이다. 또한 $D=(3,0)$이므로 $DE=2$이다. 직선 $DE$는 $x=3$이고 $B$, $C$의 $x$좌표는 각각 $4$, $2$이므로 $B$와 $C$에서 이 직선까지의 수직 거리는 각각 $1$이다. 이 보조점 $E$를 사용하면 $BCD$가 $BDE$와 $CDE$로 나뉘어\n$[BDE]=\\dfrac12\\cdot2\\cdot1=1$, $[CDE]=\\dfrac12\\cdot2\\cdot1=1$,\n따라서 $[BCD]=2$이다.\n그러므로 $[ACDB]=[ABC]+[BCD]=8+2=10$이다."
+    "solution": "점 $C$의 좌표를 정할 때에는 발문에서 주어진 $\\overline{BC}=2\\sqrt2$ 조건도 함께 사용한다.\n$B=(k,2^{k-1}-7)$이다. $x\\ge k$이면 지수함숫값은 $A$의 높이 $2^{k-1}+1$ 이상이다. 반면 $B$를 지나고 기울기가 $-1$인 직선의 높이는 $B$의 높이 이하이므로 두 그래프는 $x\\ge k$에서 만나지 않는다. 따라서 $C$는 $B$의 왼쪽 위에 있다. 기울기가 $-1$이고 $BC=2\\sqrt2$이므로 가로·세로 좌표 차의 절댓값은 각각 $2$이다. 따라서\n$C=(k-2,2^{k-1}-5)$이다.\n$C$가 $y=2^{x-1}+1$ 위에 있으므로\n$2^{k-1}-5=2^{k-3}+1$,\n$2^{k-1}-2^{k-3}=6$,\n$3\\cdot2^{k-3}=6$,\n$2^{k-3}=2$이다.\n따라서 $k=4$이고\n$A=(4,9),\\quad B=(4,1),\\quad C=(2,3)$이다.\n점 $B$가 $y=\\log_2(x-a)$ 위에 있으므로 $1=\\log_2(4-a)$, 즉 $4-a=2$이고 $a=2$이다. 이 로그함수가 $x$축과 만나는 점은 $0=\\log_2(x-2)$에서 $x-2=1$, 즉 $D=(3,0)$이다.\n대각선 $BC$로 사각형 $ACDB$를 두 삼각형 $ABC$와 $BCD$로 나눈다. $AB=8$이고 $C$에서 직선 $AB$까지의 거리는 $2$이므로\n$[ABC]=\\dfrac12\\cdot8\\cdot2=8$이다.\n$BC$의 기울기는 $-1$이고 $B=(4,1)$을 지나므로 $BC$의 직선은 $y=-x+5$이다. 이 식에 $x=3$을 대입하면 $y=2$이므로 $E=(3,2)$는 $BC$ 위의 점이다. 또한 $D=(3,0)$이므로 $DE=2$이다. 직선 $DE$는 $x=3$이고 $B$, $C$의 $x$좌표는 각각 $4$, $2$이므로 $B$와 $C$에서 이 직선까지의 수직 거리는 각각 $1$이다. 이 보조점 $E$를 사용하면 $BCD$가 $BDE$와 $CDE$로 나뉘어\n$[BDE]=\\dfrac12\\cdot2\\cdot1=1$, $[CDE]=\\dfrac12\\cdot2\\cdot1=1$,\n따라서 $[BCD]=2$이다.\n그러므로 $[ACDB]=[ABC]+[BCD]=8+2=10$이다.",
+    "solutionImage": "assets/images/22_효천고_1학기_중간_고2_수학I/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위의 사각형 ACDB에서 대각선 BC가 큰 삼각형 ABC와 삼각형 BCD를 나눈다. BC 위의 E에서 D로 잇는 세로선 DE가 BCD를 왼쪽 CDE와 오른쪽 BDE로 분할한다. 그림에는 점 좌표와 최종 넓이를 표시하지 않는다.",
+    "solutionImageCaption": "AB=8이고 C에서 AB까지의 수선 길이가 2이므로 [ABC]=8이다. DE=2이며 B와 C에서 DE까지의 수평거리는 각각 1이므로 [BDE]=[CDE]=1이다. 따라서 사각형 ACDB의 넓이는 10이다.",
+    "solutionImageSize": "full"
   }
 ];

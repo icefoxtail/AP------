@@ -190,7 +190,7 @@ window.questionBank = [
   {
     "id": 6,
     "questionType": "객관식",
-    "content": "함수 $y=4^{x+a}+b$의 그래프가 오른쪽 그림과 같을 때, 상수 $a, b$에 대하여 $a-b$의 값은? [4.2점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q06.png\" class=\"exam-img\"></div>",
+    "content": "함수 $y=4^{x+a}+b$의 그래프가 오른쪽 그림과 같을 때, 상수 $a, b$에 대하여 $a-b$의 값은? [4.2점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q06.png\" class=\"exam-img\" alt=\"증가하는 지수곡선이 세로축과 높이 1에서 만난다. 아래에 가로 점근선 y=−3이 점선으로 표시되어 있다.\"></div>",
     "choices": [
       "1",
       "2",
@@ -378,7 +378,7 @@ window.questionBank = [
   {
     "id": 11,
     "questionType": "객관식",
-    "content": "그림과 같이 직선 $x=t$ ($t>1$)와 두 곡선 $y=\\log_2 x, y=\\log_2 4x$가 만나는 점을 각각 $\\mathrm{A, B}$라 하자. 점 $\\mathrm{C}(1, 0)$과 곡선 $y=\\log_2 4x$ 위의 점 $\\mathrm{D}$에 대하여 점 $\\mathrm{D}$와 직선 $x=t$ 사이의 거리가 선분 $\\mathrm{AB}$의 길이와 같고, 두 삼각형 $\\mathrm{ABC}, \\mathrm{ABD}$의 넓이의 비가 $3:1$일 때, 점 $\\mathrm{D}$의 좌표는 $(p, q)$이다. $p+4^q$의 값은? (단, 점 $\\mathrm{D}$의 $x$좌표는 $t$보다 작다.) [4.8점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q11.png\" class=\"exam-img\"></div>",
+    "content": "그림과 같이 직선 $x=t$ ($t>1$)와 두 곡선 $y=\\log_2 x, y=\\log_2 4x$가 만나는 점을 각각 $\\mathrm{A, B}$라 하자. 점 $\\mathrm{C}(1, 0)$과 곡선 $y=\\log_2 4x$ 위의 점 $\\mathrm{D}$에 대하여 점 $\\mathrm{D}$와 직선 $x=t$ 사이의 거리가 선분 $\\mathrm{AB}$의 길이와 같고, 두 삼각형 $\\mathrm{ABC}, \\mathrm{ABD}$의 넓이의 비가 $3:1$일 때, 점 $\\mathrm{D}$의 좌표는 $(p, q)$이다. $p+4^q$의 값은? (단, 점 $\\mathrm{D}$의 $x$좌표는 $t$보다 작다.) [4.8점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q11.png\" class=\"exam-img\" alt=\"두 로그곡선 y=log₂x, y=log₂(4x)와 세로선 x=t가 있다. 세로선과 두 곡선의 교점은 차례로 A, B이다. C는 가로축의 점이고, D는 세로선 왼쪽에 있는 위쪽 로그곡선의 점이다.\"></div>",
     "choices": [
       "365",
       "375",
@@ -498,7 +498,7 @@ window.questionBank = [
   {
     "id": 14,
     "questionType": "객관식",
-    "content": "함수 $y={\\left(\\frac{1}{2}\\right)}^x$의 그래프를 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동하면 함수 $y=f(x)$의 그래프와 일치한다. 함수 $y={\\left(\\frac{1}{2}\\right)}^x$의 그래프가 $y$축과 만나는 점 $\\mathrm{A}$는 이 평행이동에 의하여 곡선 $y=f(x)$와 직선 $y=x+1$의 교점 $\\mathrm{B}$로 이동된다. 또 점 $\\mathrm{B}$를 지나고 기울기가 $-1$인 직선과 함수 $y=\\log_2(x-n)+m$의 그래프의 교점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$의 넓이가 $6$일 때, $f(4)$의 값은? (단, $n, m$은 양의 실수이다.) [4.8점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q14.png\" class=\"exam-img\"></div>",
+    "content": "함수 $y={\\left(\\frac{1}{2}\\right)}^x$의 그래프를 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동하면 함수 $y=f(x)$의 그래프와 일치한다. 함수 $y={\\left(\\frac{1}{2}\\right)}^x$의 그래프가 $y$축과 만나는 점 $\\mathrm{A}$는 이 평행이동에 의하여 곡선 $y=f(x)$와 직선 $y=x+1$의 교점 $\\mathrm{B}$로 이동된다. 또 점 $\\mathrm{B}$를 지나고 기울기가 $-1$인 직선과 함수 $y=\\log_2(x-n)+m$의 그래프의 교점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$의 넓이가 $6$일 때, $f(4)$의 값은? (단, $n, m$은 양의 실수이다.) [4.8점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q14.png\" class=\"exam-img\" alt=\"원래 지수곡선의 세로축 교점 A, 옮긴 지수곡선과 직선 y=x+1의 교점 B, B를 지나는 내림 직선과 로그곡선의 교점 C를 표시한다.\"></div>",
     "choices": [
       "8",
       "10",
@@ -507,7 +507,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "2",
-    "solution": "**① 평행이동을 식으로.** 원래 함수 $y=(\\frac{1}{2})^x$를 오른쪽으로 $m$, 위로 $n$ 이동하면 $f(x)=(\\frac{1}{2})^{x-m}+n$입니다. $A=(0,1)$이 $B=(m,1+n)$으로 이동합니다.\n**② $B$의 직선 조건.** $B$가 $y=x+1$ 위에 있으므로 $1+n=m+1$, 즉 $n=m$입니다. 따라서 $B=(m,m+1)$이고 $\\overline{AB}=m\\sqrt2$입니다($m>0$).\n**③ $C$의 좌표.** 그림에서 $C$는 $B$의 오른쪽 아래에 있으며 $BC$의 기울기는 $-1$입니다. $C=(m+d,m+1-d)$ ($d>0$)로 두면 $C$가 $y=\\log_2(x-m)+m$ 위에 있으므로\n$m+1-d=\\log_2d+m\\iff 1-d=\\log_2d$입니다. $d>0$에서 왼쪽은 엄격히 감소, 오른쪽은 엄격히 증가하므로 해는 하나이고, $d=1$을 넣으면 $0=0$이므로 유일한 해입니다. 따라서 $C=(m+1,m)$, $BC=\\sqrt2$입니다.\n**④ 넓이와 함수값.** $AB$의 기울기는 $1$, $BC$는 $-1$이어서 서로 수직입니다. $[ABC]=\\frac12(m\\sqrt2)(\\sqrt2)=m=6$이므로 $m=n=6$입니다.\n$f(4)=(\\frac{1}{2})^{4-6}+6=(\\frac{1}{2})^{-2}+6=4+6=10$으로 정답은 ②입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q14_solution.svg\" alt=\"평행이동 후 A B C의 좌표와 수직 관계\" class=\"solution-img\" />",
+    "solution": "**① 평행이동을 식으로.** 원래 함수 $y=(\\frac{1}{2})^x$를 오른쪽으로 $m$, 위로 $n$ 이동하면 $f(x)=(\\frac{1}{2})^{x-m}+n$입니다. $A=(0,1)$이 $B=(m,1+n)$으로 이동합니다.\n**② $B$의 직선 조건.** $B$가 $y=x+1$ 위에 있으므로 $1+n=m+1$, 즉 $n=m$입니다. 따라서 $B=(m,m+1)$이고 $\\overline{AB}=m\\sqrt2$입니다($m>0$).\n**③ $C$의 좌표.** 그림에서 $C$는 $B$의 오른쪽 아래에 있으며 $BC$의 기울기는 $-1$입니다. $C=(m+d,m+1-d)$ ($d>0$)로 두면 $C$가 $y=\\log_2(x-m)+m$ 위에 있으므로\n$m+1-d=\\log_2d+m\\iff 1-d=\\log_2d$입니다. $d>0$에서 왼쪽은 엄격히 감소, 오른쪽은 엄격히 증가하므로 해는 하나이고, $d=1$을 넣으면 $0=0$이므로 유일한 해입니다. 따라서 $C=(m+1,m)$, $BC=\\sqrt2$입니다.\n**④ 넓이와 함수값.** $AB$의 기울기는 $1$, $BC$는 $-1$이어서 서로 수직입니다. $[ABC]=\\frac12(m\\sqrt2)(\\sqrt2)=m=6$이므로 $m=n=6$입니다.\n$f(4)=(\\frac{1}{2})^{4-6}+6=(\\frac{1}{2})^{-2}+6=4+6=10$으로 정답은 ②입니다.\n",
     "questionNumber": 14,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -534,7 +534,10 @@ window.questionBank = [
       "assets/images/22_금당고_1학기_중간_고2_수학I/q14.png"
     ],
     "metaStatus": "CANONICAL_LOOKUP_ATTEMPTED_BINDING_GAP",
-    "solutionImage": "assets/solutions/22_금당고_1학기_중간_고2_수학I/q14_solution.svg"
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축에서 A(0,1), B(6,7), C(7,6)을 이은 삼각형이다. AB의 기울기는 1, BC의 기울기는 −1이며 두 변은 B에서 직각이다.",
+    "solutionImageCaption": "AB와 BC의 기울기는 각각 1, −1이므로 수직이다. 삼각형 ABC의 넓이 6에서 m=n=6이며 f(4)=10이다. 정답은 ②, 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -653,10 +656,10 @@ window.questionBank = [
   {
     "id": 18,
     "questionType": "서술형",
-    "content": "&lt;단답형 2&gt; 그림과 같이 반지름의 길이가 $10$인 부채꼴 모양의 텃밭이 있다. 선분 $\\mathrm{OA, OB}$ 위에 각각 두 점 $\\mathrm{C, D}$와 $\\mathrm{E, F}$를 잡아 두 부채꼴 $\\mathrm{OCE, ODF}$의 호 $\\mathrm{CE, DF}$를 양 끝으로 하는 통로를 만들려고 한다. 두 선분 $\\mathrm{OC, DA}$의 길이는 각각 자연수이고 색칠한 두 영역의 넓이는 서로 같다. 세 호 $\\mathrm{CE, DF, AB}$의 길이의 합이 $4\\pi$일 때, 통로 $\\mathrm{CEFD}$의 넓이를 구하시오. (단, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OE}}, \\overline{\\mathrm{OD}}=\\overline{\\mathrm{OF}}$) [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q18.png\" class=\"exam-img\"></div>",
+    "content": "&lt;단답형 2&gt; 그림과 같이 반지름의 길이가 $10$인 부채꼴 모양의 텃밭이 있다. 선분 $\\mathrm{OA, OB}$ 위에 각각 두 점 $\\mathrm{C, D}$와 $\\mathrm{E, F}$를 잡아 두 부채꼴 $\\mathrm{OCE, ODF}$의 호 $\\mathrm{CE, DF}$를 양 끝으로 하는 통로를 만들려고 한다. 두 선분 $\\mathrm{OC, DA}$의 길이는 각각 자연수이고 색칠한 두 영역의 넓이는 서로 같다. 세 호 $\\mathrm{CE, DF, AB}$의 길이의 합이 $4\\pi$일 때, 통로 $\\mathrm{CEFD}$의 넓이를 구하시오. (단, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OE}}, \\overline{\\mathrm{OD}}=\\overline{\\mathrm{OF}}$) [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_금당고_1학기_중간_고2_수학I/q18-problem-v1.svg\" class=\"exam-img\" alt=\"중심 O를 꼭짓점으로 하는 반지름 10의 부채꼴 개략도이다. OA 위 점은 O–C–D–A, OB 위 점은 O–E–F–B 순이며 호 CE, DF, AB가 보인다. 안쪽 부채꼴 OCE와 바깥 띠 DFBA는 같은 옅은 색, 통로 CEFD는 다른 색으로 구분한다. 길이 비율은 나타내지 않는다.\"></div>",
     "choices": [],
     "answer": "\\frac{7\\pi}{3}",
-    "solution": "**① 반지름과 넓이 조건.** 공통 중심각을 $\\theta>0$, 안쪽 반지름을 $r=OC=OE$, 중간 반지름을 $s=OD=OF$로 둡니다. 그림에서 $0<r<s<10$입니다. $OC=r$과 $DA=10-s$가 자연수이므로 $r,s$는 정수입니다.\n색칠한 안쪽 부채꼴 $OCE$와 바깥쪽 띠 $DFBA$의 넓이가 같으므로\n$\\frac12r^2\\theta=\\frac12(10^2-s^2)\\theta\\iff r^2+s^2=100$입니다. $0<r<s<10$인 정수해는 $r=6,s=8$뿐입니다($6^2+8^2=36+64=100$). $DA=10-8=2$도 자연수여서 원문에 맞습니다.\n**② 호의 길이 조건.** 같은 중심각에서 호의 길이는 반지름에 비례합니다. 따라서 $CE+DF+AB$의 호 길이 합은 $(r+s+10)\\theta=(6+8+10)\\theta=24\\theta=4\\pi$입니다. $\\theta=\\pi/6$입니다.\n**③ 통로 넓이.** 통로 $CEFD$는 반지름 $8$의 부채꼴에서 반지름 $6$의 부채꼴을 뺀 띠입니다.\n$[CEFD]=\\frac12(8^2-6^2)\\cdot\\frac\\pi6=\\frac12(64-36)\\cdot\\frac\\pi6=\\frac{7\\pi}{3}$입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q18_solution.svg\" alt=\"반지름 6, 8, 10의 부채꼴에서 통로의 넓이\" class=\"solution-img\" />",
+    "solution": "**① 반지름과 넓이 조건.** 공통 중심각을 $\\theta>0$, 안쪽 반지름을 $r=OC=OE$, 중간 반지름을 $s=OD=OF$로 둡니다. 그림에서 $0<r<s<10$입니다. $OC=r$과 $DA=10-s$가 자연수이므로 $r,s$는 정수입니다.\n색칠한 안쪽 부채꼴 $OCE$와 바깥쪽 띠 $DFBA$의 넓이가 같으므로\n$\\frac12r^2\\theta=\\frac12(10^2-s^2)\\theta\\iff r^2+s^2=100$입니다. $0<r<s<10$인 정수해는 $r=6,s=8$뿐입니다($6^2+8^2=36+64=100$). $DA=10-8=2$도 자연수여서 원문에 맞습니다.\n**② 호의 길이 조건.** 같은 중심각에서 호의 길이는 반지름에 비례합니다. 따라서 $CE+DF+AB$의 호 길이 합은 $(r+s+10)\\theta=(6+8+10)\\theta=24\\theta=4\\pi$입니다. $\\theta=\\pi/6$입니다.\n**③ 통로 넓이.** 통로 $CEFD$는 반지름 $8$의 부채꼴에서 반지름 $6$의 부채꼴을 뺀 띠입니다.\n$[CEFD]=\\frac12(8^2-6^2)\\cdot\\frac\\pi6=\\frac12(64-36)\\cdot\\frac\\pi6=\\frac{7\\pi}{3}$입니다.\n",
     "questionNumber": 18,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -686,7 +689,10 @@ window.questionBank = [
     ],
     "metaStatus": "RPM_ONLY_NO_ACTIVE_PROJECTION",
     "nullReason": "NO_EXACT_ACTIVE_PROJECTION_AFTER_RPM_CROSSWALK_LOOKUP",
-    "solutionImage": "assets/solutions/22_금당고_1학기_중간_고2_수학I/q18_solution.svg"
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_수학I/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 O에서 세 동심 호와 OA, OB 위의 C,D,E,F를 표시한다. 안쪽 부채꼴과 바깥 띠는 같은 색으로, 그 사이 통로 CEFD는 다른 색으로 구분한다.",
+    "solutionImageCaption": "같은 넓이 조건으로 반지름은 6, 8이고, 호 길이 합에서 중심각은 π/6이다. 통로 CEFD의 넓이는 7π/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -694,7 +700,7 @@ window.questionBank = [
     "content": "※ 다음은 서술형 문제입니다. 답안지 뒷면에 볼펜으로 풀이 과정을 상세하게 서술하시오.<br>(풀이 과정에 부분 점수 있으며, 답만 적으면 풀이 과정 배점하지 않음.)<br><br>&lt;서술형 1&gt; 길이가 $\\sqrt[3]{54}$인 선분 $\\mathrm{AB}$를 지름으로 하는 원 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{AP}}=\\sqrt[3]{2}$이다. 점 $\\mathrm{P}$에서 선분 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 삼각형 $\\mathrm{PAH}$의 넓이는 $2^{\\frac{y}{x}} \\times 3^z$이다. $x+y-z$의 값을 구하시오.<br>(단, $x$와 $y$는 서로소인 자연수이고, $z$는 정수이다.) [10점]",
     "choices": [],
     "answer": "15",
-    "solution": "**① 직각삼각형 확인.** $AB$가 원의 지름이고 $P$가 원 위에 있으므로 원주각 $\\angle APB=90^\\circ$입니다. 따라서 $AB$는 직각삼각형 $APB$의 빗변입니다.\n$AB=\\sqrt[3]{54}=3\\sqrt[3]2=3\\cdot2^{\\frac{1}{3}}$, $AP=2^{\\frac{1}{3}}$입니다. 피타고라스 정리로\n$PB^2=AB^2-AP^2=9\\cdot2^{\\frac{2}{3}}-2^{\\frac{2}{3}}=8\\cdot2^{\\frac{2}{3}}$이므로 $PB=2^{\\frac{3}{2}}\\cdot2^{\\frac{1}{3}}=2^{\\frac{11}{6}}$입니다.\n**② 수선의 발 $H$.** 직각삼각형의 닮음에서 $AP^2=AB\\cdot AH$이므로\n$AH=\\frac{AP^2}{AB}=\\frac{2^{\\frac{2}{3}}}{3\\cdot2^{\\frac{1}{3}}}=\\frac{2^{\\frac{1}{3}}}3$입니다.\n또 같은 삼각형의 넓이를 두 방법으로 계산하면 $\\frac12 AP\\cdot PB=\\frac12 AB\\cdot PH$이므로\n$PH=\\frac{AP\\cdot PB}{AB}=\\frac{2^{\\frac{1}{3}}\\cdot2^{\\frac{11}{6}}}{3\\cdot2^{\\frac{1}{3}}}=\\frac{2^{\\frac{11}{6}}}3$입니다.\n**③ 넓이와 지수 비교.** $PH\\perp AB$이므로 $[PAH]=\\frac12 AH\\cdot PH=\\frac12\\cdot\\frac{2^{\\frac{1}{3}}}3\\cdot\\frac{2^{\\frac{11}{6}}}3=2^{\\frac{1}{3}+\\frac{11}{6}-1}\\cdot3^{-2}=2^{\\frac{7}{6}}\\cdot3^{-2}$입니다.\n$x=6$, $y=7$은 서로소이고 $z=-2$이므로 $x+y-z=6+7-(-2)=15$입니다.\n<img src=\"assets/solutions/22_금당고_1학기_중간_고2_수학I/q19_solution.svg\" alt=\"지름 AB인 원의 직각삼각형과 수선의 발 H\" class=\"solution-img\" />",
+    "solution": "**① 직각삼각형 확인.** $AB$가 원의 지름이고 $P$가 원 위에 있으므로 원주각 $\\angle APB=90^\\circ$입니다. 따라서 $AB$는 직각삼각형 $APB$의 빗변입니다.\n$AB=\\sqrt[3]{54}=3\\sqrt[3]2=3\\cdot2^{\\frac{1}{3}}$, $AP=2^{\\frac{1}{3}}$입니다. 피타고라스 정리로\n$PB^2=AB^2-AP^2=9\\cdot2^{\\frac{2}{3}}-2^{\\frac{2}{3}}=8\\cdot2^{\\frac{2}{3}}$이므로 $PB=2^{\\frac{3}{2}}\\cdot2^{\\frac{1}{3}}=2^{\\frac{11}{6}}$입니다.\n**② 수선의 발 $H$.** 직각삼각형의 닮음에서 $AP^2=AB\\cdot AH$이므로\n$AH=\\frac{AP^2}{AB}=\\frac{2^{\\frac{2}{3}}}{3\\cdot2^{\\frac{1}{3}}}=\\frac{2^{\\frac{1}{3}}}3$입니다.\n또 같은 삼각형의 넓이를 두 방법으로 계산하면 $\\frac12 AP\\cdot PB=\\frac12 AB\\cdot PH$이므로\n$PH=\\frac{AP\\cdot PB}{AB}=\\frac{2^{\\frac{1}{3}}\\cdot2^{\\frac{11}{6}}}{3\\cdot2^{\\frac{1}{3}}}=\\frac{2^{\\frac{11}{6}}}3$입니다.\n**③ 넓이와 지수 비교.** $PH\\perp AB$이므로 $[PAH]=\\frac12 AH\\cdot PH=\\frac12\\cdot\\frac{2^{\\frac{1}{3}}}3\\cdot\\frac{2^{\\frac{11}{6}}}3=2^{\\frac{1}{3}+\\frac{11}{6}-1}\\cdot3^{-2}=2^{\\frac{7}{6}}\\cdot3^{-2}$입니다.\n$x=6$, $y=7$은 서로소이고 $z=-2$이므로 $x+y-z=6+7-(-2)=15$입니다.\n",
     "questionNumber": 19,
     "curriculum": "H15",
     "standardCourse": "수학I",
@@ -722,7 +728,10 @@ window.questionBank = [
     "images": [],
     "metaStatus": "RPM_ONLY_NO_ACTIVE_PROJECTION",
     "nullReason": "NO_EXACT_ACTIVE_PROJECTION_AFTER_RPM_CROSSWALK_LOOKUP",
-    "solutionImage": "assets/solutions/22_금당고_1학기_중간_고2_수학I/q19_solution.svg"
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 원의 위쪽 반원 위에 점 P가 있다. 지름 위 점은 A-H-B 순서이고 PH는 AB에 수직이다. ∠APB와 ∠AHP에 직각 표시가 있으며, 삼각형 PAH를 옅은 색으로 구분한다.",
+    "solutionImageCaption": "원주각 APB와 수선 PH를 확인해 삼각형 PAH의 넓이를 구한다. 정답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
