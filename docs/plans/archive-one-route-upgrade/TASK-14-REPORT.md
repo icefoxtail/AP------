@@ -206,3 +206,12 @@ PR·main 병합·정본 JS·SVG·운영장부·엔진 변경 없음. 다음은 �
 
 ## 저장 전 렌더 재시도
 누락된 provider-bridge 파일5개를 원격 원본 그대로 작업 사본에 복구해 import 성공. 기존 /usr/bin/chromium을 공식 설정으로 지정하여 실제 full renderer 2회 시도했다. 최종 환경차단은 Chromium의 OS socket Operation not permitted로 SIGABRT이며 measure 단계 ARCHIVE_PREFLIGHT_FAIL이다. SVG·PNG 출력0, 실제 화면검수0. 위 초기 import 실패는 이 확인으로 원인이 갱신되었으며, 엔진 코드·검증기 변경이나 보안 제한 우회는 하지 않았다. 이 배치계획은 완성 렌더 PASS가 아니다.
+
+
+## 2026-11-17 재개 batch6 원격 저장
+
+결과 커밋 b62742f999b314ac54063b0e6ee92312779845db. 원격 재수신49파일blob 일치. 원본6시험지 OPEN45문항: FIGURE32/EXEMPT9/CONTENT3/UNSUPPORTED1. 계획35개 중2개는 CONTENT 원문확인 전 게시보류. 공식부분검사와 독립검수 모두 완료. 전체렌더NOT_RUN·출판UNVERIFIED.
+
+원본 OPEN 별도 범위로 집계하며 유사·교과서48/351시험지,847/9093문항 집계에는 더하지 않는다. 세부는 결과브랜치 svg-plans-expanded/BATCH6-REPORT.md 및 BATCH6-INDEX.json. 운영장부·정본·SVG·엔진·PR·main 변경없음.
+
+계속 작업: 원본19복성고수학II OPEN20 완료·독립검수, 22복성고수학II OPEN18 작성완료·검수중,21매산여고수학II OPEN18 작성중. 유사중1 매산중1mid24문항 및 동아공수1 이차방정식과이차함수 중단원연습12문항 병행. 각 시험지 writer1명,리드만 원격저장.
