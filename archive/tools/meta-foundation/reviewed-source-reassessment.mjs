@@ -15,6 +15,14 @@ import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-curren
 import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-target-application.mjs";
 import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
+import { validateM2E006ProblemContinuity } from "./reviewed-m2-e006-problem-continuity.mjs";
+import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
+import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
+import { validateM2ProblemRenderer21Continuity } from "./reviewed-m2-problem21-continuity.mjs";
+import { validateM2Family3ProblemContinuity } from "./reviewed-m2-family3-problem-continuity.mjs";
+import { validateM2E023SolutionDisplayContinuity } from "./reviewed-m2-e023-solution-display-continuity.mjs";
+import { validateM3Q5CompleteGivenApplication, M3_Q5_COMPLETE_GIVEN_SCHEMA } from "./reviewed-m3-e052-q5-complete-given.mjs";
+import { bindReviewedM2NativeRpmCourse } from "./reviewed-m2-native-rpm-course.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -202,6 +210,84 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
   })) fail("native review retains an explicit source/content/difficulty hold");
   const payload = studentPayload(question);
+  const q5CompleteGiven = validateM3Q5CompleteGivenApplication({ root, request, patch, native: loaded, row,
+    metadata, question, final, canonicalBefore, canonicalAfter, studentPayload, cache });
+  if (q5CompleteGiven) {
+    const inner = validateReviewedSourceReassessment({ root, request, patch: q5CompleteGiven.normalizedPatch,
+      metadata, question: q5CompleteGiven.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    if (q5CompleteGiven.proof.schemaVersion !== M3_Q5_COMPLETE_GIVEN_SCHEMA ||
+        inner.proposalFinalization?.schemaVersion !== "archive-native-proposal-finalization-v2" ||
+        !inner.proposalFinalization.nativeProposalBindings?.length ||
+        inner.proposalFinalization.nativeProposalBindings.some(binding => binding.type !== "CC") ||
+        !inner.proposalFinalization.definitions?.length ||
+        inner.proposalFinalization.definitions.some(definition => definition.collection !== "concepts"))
+      fail("Q5 complete-given bridge requires the original complete Native and CC finalizer");
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), q5CompleteGivenApplication: {
+      ...q5CompleteGiven.proof, replayedOriginalSourceReviewSha256: sha256(stable(inner)) } };
+  }
+  const e017Rhs = validateM2E017RhsContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes });
+  if (e017Rhs) {
+    const inner = validateReviewedSourceReassessment({ root, request, patch: e017Rhs.normalizedPatch,
+      metadata, question: e017Rhs.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
+      ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
+  const m2Family3 = validateM2Family3ProblemContinuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes, cache });
+  if (m2Family3) {
+    // Preserve the existing retained-fields/scope options. The ordinary Native
+    // recursion still checks every non-display value and the current parent.
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2Family3.normalizedPatch,
+      metadata, question: m2Family3.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2Family3ProblemContinuity: {
+      ...m2Family3.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
+  // Both witnesses read the same real source before either comparison view is
+  // composed. Each owns a closed, disjoint set of display fields. The recursive
+  // ordinary Native validator still checks the complete resulting payload and
+  // all metadata, original assets and current parent authority.
+  const m2Problem21 = validateM2ProblemRenderer21Continuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes, cache });
+  const e023Display = validateM2E023SolutionDisplayContinuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes });
+  if (m2Problem21 || e023Display) {
+    const normalizedQuestion = { ...question }, normalizedPatch = { ...patch, sourceReview: { ...patch.sourceReview } };
+    const owned = new Set();
+    for (const [context, fields, option] of [
+      [m2Problem21, m2Problem21?.normalizedProblemFields, "m2ProblemRenderer21Continuity"],
+      [e023Display, e023Display?.ownedFields, "e023SolutionDisplayContinuity"],
+    ]) {
+      if (!context) continue;
+      if (!Array.isArray(fields) || !fields.length || new Set(fields).size !== fields.length)
+        fail("exact owned display field inventory required");
+      for (const field of fields) {
+        if (owned.has(field)) fail("display comparison field ownership overlaps");
+        owned.add(field);
+        if (Object.hasOwn(context.normalizedQuestion, field)) normalizedQuestion[field] = context.normalizedQuestion[field];
+        else delete normalizedQuestion[field];
+      }
+      delete normalizedPatch.sourceReview[option];
+    }
+    const inner = validateReviewedSourceReassessment({ root, request, patch: normalizedPatch, metadata,
+      question: normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter, issuedSourceReview, cache });
+    const originalSourceReviewSha256 = sha256(stable(inner));
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)),
+      ...(m2Problem21 ? { m2ProblemRenderer21Continuity: { ...m2Problem21.proof, originalSourceReviewSha256 } } : {}),
+      ...(e023Display ? { e023SolutionDisplayContinuity: { ...e023Display.proof, originalSourceReviewSha256 } } : {}) };
+  }
+  const m2E006 = validateM2E006ProblemContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
+  if (m2E006) {
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2E006.normalizedPatch,
+      metadata, question: m2E006.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2E006ProblemContinuity: {
+      ...m2E006.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
   const m2Renderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });
   if (m2Renderer) {
@@ -214,10 +300,12 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2ProblemRendererContinuity: {
       ...m2Renderer.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
+  const m2CcRenderer = validateReviewedM2CcRendererContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
   const rendererContinuity = patch.sourceReview.rendererProof === undefined ? null :
     validateReviewedCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
-  if (!rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
+  if (!m2CcRenderer && !rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
   if (row.sourceEvidence) {
     const evidence = row.sourceEvidence, q = reviewedBank[ordinal - 1];
@@ -236,7 +324,13 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question: m2CcRenderer?.originalQuestion || question, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+  if (m2CcRenderer && (proposalFinalization?.proof?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+      !proposalFinalization.proof.nativeProposalBindings?.length ||
+      proposalFinalization.proof.nativeProposalBindings.some(binding => binding.type !== "CC") ||
+      !proposalFinalization.proof.definitions?.length ||
+      proposalFinalization.proof.definitions.some(definition => definition.collection !== "concepts")))
+    fail("typed M2 renderer bridge requires the original CC finalizer to succeed");
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const currentDefinitionApplication = validateM2S1CurrentDefinitionApplication({ root, request, patch, native: loaded, row,
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,
@@ -326,6 +420,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       questionUid: patch.questionUid, sourceOrdinal: ordinal, studentPayloadSha256: sha256(stable(payload)),
       rpmBindings, scope: "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false } });
   if (nativeFamilyCourseTransport) Object.assign(accepted, nativeFamilyCourseTransport.fields);
+  const nativeRpmCourseTransport = bindReviewedM2NativeRpmCourse({ root, request, patch, native: loaded, row,
+    metadata, question, committedQuestion: committedBank[ordinal - 1], accepted, final, canonicalBefore, canonicalAfter,
+    issuedProof: issuedSourceReview?.nativeRpmCourseTransport });
+  if (nativeRpmCourseTransport) Object.assign(accepted, nativeRpmCourseTransport.fields);
   for (const [key, value] of Object.entries(patch.after)) {
     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
     // Source curriculum identifiers may be carried verbatim; they are never guessed from the reviewed grade.
@@ -351,6 +449,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewCommitSourceBlobSha1: loaded.committedBlob, questionUid: patch.questionUid, sourceOrdinal: ordinal,
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(rendererContinuity ? { rendererContinuity } : {}),
+    ...(m2CcRenderer ? { m2CcRendererContinuity: { ...m2CcRenderer.proof,
+      originalFinalizationSha256: sha256(stable(proposalFinalization.proof)) } } : {}),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(rationaleContinuity ? { rationaleContinuity } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
@@ -359,6 +459,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(retainedNativeFields ? { retainedNativeFields: retainedNativeFields.proof } : {}),
     ...(retainedScopeTransport ? { retainedScopeTransport: retainedScopeTransport.proof } : {}),
     ...(nativeFamilyCourseTransport ? { nativeFamilyCourseTransport: nativeFamilyCourseTransport.proof } : {}),
+    ...(nativeRpmCourseTransport ? { nativeRpmCourseTransport: nativeRpmCourseTransport.proof } : {}),
     ...(currentDefinitionApplication ? { currentDefinitionApplication: currentDefinitionApplication.proof } : {}),
     ...(prerequisiteExistingApplication ? { prerequisiteExistingApplication: prerequisiteExistingApplication.proof } : {}),
     ...(currentTargetApplication ? { currentTargetApplication: currentTargetApplication.proof } : {}),

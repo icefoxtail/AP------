@@ -1796,8 +1796,8 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 일차식을 간단히 하면 $4x+1$이고, 이때 $x$의 계수를 $a$라 하자. 또, $3y - \\dfrac{1}{6} - \\dfrac{2(2y-5)}{3}$을 간단히 했을 때 $y$의 계수를 $b$라 할 때, $\\dfrac{3}{8}a - \\dfrac{3}{5}b$의 값을 구하여라.",
     "choices": [],
-    "answer": "2",
-    "solution": "[키포인트] $9x - 5x + 1 = 4x + 1$ → $a = 4$\n$\\dfrac{3y-1-8y+20}{6} = \\dfrac{-5y+19}{6}$ → $b = -\\dfrac{5}{6}$\n$\\dfrac{3}{8} \\times 4 - \\dfrac{3}{5} \\times (-\\dfrac{5}{6}) = \\dfrac{3}{2} + \\dfrac{1}{2} = 2$\n따라서 구하는 값은 2이다.",
+    "answer": "1/2",
+    "solution": "[키포인트] $9x - 5x + 1 = 4x + 1$ → $a = 4$\n$3y - \\dfrac{1}{6} - \\dfrac{2(2y-5)}{3} = \\dfrac{18y-1-8y+20}{6} = \\dfrac{10y+19}{6}$ → $b = \\dfrac{10}{6} = \\dfrac{5}{3}$\n$\\dfrac{3}{8} \\times 4 - \\dfrac{3}{5} \\times \\dfrac{5}{3} = \\dfrac{3}{2} - 1 = \\dfrac{1}{2}$\n따라서 구하는 값은 $\\dfrac{1}{2}$이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

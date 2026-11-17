@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 25,
-  "templateCount": 53,
+  "problemTypeCount": 26,
+  "templateCount": 56,
   "problemTypes": [
     {
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -1433,6 +1433,34 @@
             14,
             22
           ]
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+      "canonicalLabelKo": "평행사변형의 대변 성질 증명",
+      "definition": "평행사변형의 정의인 두 쌍의 평행 조건과 공통 대각선에서 삼각형의 ASA 합동을 도출하여 두 쌍의 대변의 길이가 같음을 증명하는 유형.",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "status": "ACTIVE",
+      "aliases": [],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_FINALIZATION_20261115",
+          "questionUid": "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b",
+          "nativeReviewRef": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/review.json",
+            "sha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880"
+          },
+          "sourceOrdinal": 21,
+          "newMathematicalQa": false
         }
       ]
     }
@@ -3315,6 +3343,87 @@
           ]
         }
       ]
+    },
+    {
+      "templateKey": "TPL_SIMILAR_FIGURES_CORRESPONDENCE_STATEMENT_JUDGMENT",
+      "parentProblemTypeKey": "PT_SIMILAR_FIGURES",
+      "canonicalLabelKo": "닮은 도형의 대응변·대응각 진술 판정",
+      "definition": "닮음이 주어진 두 도형의 꼭짓점 대응 순서를 정하고 대응각의 같음과 대응변의 일정한 비를 진술에 대조하여 성질의 참거짓을 판정한다.",
+      "internalSkeleton": "닮음 기호의 꼭짓점 대응을 정렬한다 → 대응각과 대응변에 관한 각 진술을 대조한다 → 필요한 보조 도형량 관계를 적용해 보장되지 않는 진술을 판정한다.",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "status": "ACTIVE",
+      "aliases": [],
+      "sourceUnits": [
+        "M2-06"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_8f34f90323c1111974d47bbdbdeadcd5f0b39ad60bbde43d0e8802438a815c95"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_FINALIZATION_20261115",
+          "questionUid": "qid_v1_8f34f90323c1111974d47bbdbdeadcd5f0b39ad60bbde43d0e8802438a815c95",
+          "nativeReviewRef": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/review.json",
+            "sha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880"
+          },
+          "sourceOrdinal": 10,
+          "newMathematicalQa": false
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA",
+      "parentProblemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+      "canonicalLabelKo": "두 평행쌍과 공통 대각선의 ASA 합동 증명",
+      "definition": "평행사변형의 대각선 양쪽 두 삼각형에서 두 쌍의 엇각과 공통 대각선을 확인하여 ASA 합동을 완성하고 대응변 상등을 결론으로 옮긴다.",
+      "internalSkeleton": "두 평행쌍에서 엇각의 같음을 얻는다 → 공통 대각선과 함께 ASA 합동을 완성한다 → 합동인 삼각형의 대응변으로 두 쌍의 대변 상등을 결론낸다.",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "status": "ACTIVE",
+      "aliases": [],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_FINALIZATION_20261115",
+          "questionUid": "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b",
+          "nativeReviewRef": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/review.json",
+            "sha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880"
+          },
+          "sourceOrdinal": 21,
+          "newMathematicalQa": false
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM",
+      "canonicalLabelKo": "내접다각형의 교대 내각과 호의 합",
+      "definition": "원에 내접하는 다각형에서 각 내각이 바라보는 호들이 원둘레 전체를 이룬다는 원주각과 호의 관계로 교대 내각의 합 등 미지의 각을 구한다.",
+      "internalSkeleton": "각 내각이 바라보는 호를 확인하고 호의 합이 원 전체임을 세워 미지의 각을 계산한다.",
+      "aliases": [],
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 0,
+      "supportingQuestionUids": [],
+      "evidenceProvenance": {
+        "source": "SIMILAR_MIDDLE_PTTPL_FILL_20261117",
+        "examUids": [
+          "25_풍덕중_2학기_기말_중3_유사"
+        ],
+        "questionOrdinals": [
+          9
+        ]
+      }
     }
   ],
   "droppedTemplates": [],

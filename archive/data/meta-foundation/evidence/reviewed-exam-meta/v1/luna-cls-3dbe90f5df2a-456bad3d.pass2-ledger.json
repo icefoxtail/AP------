@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass2",
+  "createdAt": "2026-11-12T17:23:00+09:00",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형확인.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "",
+      "primaryMethod": "점 (1,4)를 지수함수 y=2^(x-1)+c에 대입해 c를 정한 뒤, 항상 양수인 지수항으로 치역과 점근선을 판단한다.",
+      "decisiveStep": "c=3이므로 그래프는 y=3을 점근선으로 하고 y>3인 값을 가진다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "지수함수", "l3": "지수함수의 그래프", "l4": "평행이동" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "",
+      "primaryMethod": "각 로그를 밑의 거듭제곱과 비교해 -2, -3, 2로 바꾸고 작은 값부터 배열한다.",
+      "decisiveStep": "밑 1/3인 두 로그값의 부호를 지수 등식으로 확인해 -3<-2<2가 된다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "로그", "l3": "로그의 뜻", "l4": "로그와 지수 관계" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "",
+      "primaryMethod": "지수방정식에서 a=2를 얻고 로그의 증가성을 이용해 자연수 n의 범위를 정한다.",
+      "decisiveStep": "log₃(n+1)≤3은 n≤26과 같으므로 자연수 해는 26개다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "로그함수", "l3": "로그부등식", "l4": "정의역·밑 조건" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "",
+      "primaryMethod": "증가하는 y=2^(x-a)+b의 양 끝 함수값을 최솟값 7/2와 최댓값 7에 각각 맞춰 두 식을 세운다.",
+      "decisiveStep": "두 식의 차로 2^(1-a)=1/2를 얻어 a=2, 이어 b=3이므로 ab=6이다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "지수함수", "l3": "지수함수의 활용", "l4": "최대·최소" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "",
+      "primaryMethod": "t=bˣ로 놓아 t²-7t+12=0을 풀고, 두 x근의 차가 1이라는 조건을 로그의 차로 바꾼다.",
+      "decisiveStep": "두 t값 3과 4에서 log_b(4/3)=1이므로 b=4/3이다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "지수함수", "l3": "지수방정식", "l4": "치환" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "",
+      "primaryMethod": "x절편과 y절편으로 f(x)=x²-2x-3을 정하고, 두 그래프의 지수를 밑 1/2의 감소성에 맞춰 비교한다.",
+      "decisiveStep": "f(x)>g(x)는 x(x-3)>0이 되어 x<0 또는 x>3을 준다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "지수함수", "l3": "지수부등식", "l4": "밑의 범위에 따른 부등호" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "",
+      "primaryMethod": "기준 지수그래프를 평행이동하거나 축 대칭한 식들과 보기의 로그그래프를 구별한다.",
+      "decisiveStep": "첫 네 식은 지수그래프 변환으로 얻을 수 있지만 y=log₂x는 로그그래프라 해당 변환으로 겹치지 않는다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "지수함수", "l3": "지수함수의 그래프", "l4": "평행이동" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "",
+      "primaryMethod": "두 로그함수의 차가 3으로 일정하므로 두 직선 사이의 넓이를 가로 길이와 높이의 곱으로 세운다.",
+      "decisiveStep": "3(a-1)=15에서 a=6을 얻는다.",
+      "rpmPath": {},
+      "hold": "H2-대수 표에 로그그래프 사이 넓이 계산을 나타내는 유형 경로 조합이 없어 경로를 정하지 못함",
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "",
+      "primaryMethod": "로그의 합을 log₂((x-1)(m-x))로 합치고, 합이 일정한 두 양수의 곱이 같을 때 최대가 됨을 쓴다.",
+      "decisiveStep": "최대 곱 ((m-1)/2)²를 2⁶과 같게 두고 m>1을 적용해 m=17을 얻는다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "로그함수", "l3": "로그함수의 활용", "l4": "최대·최소" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "",
+      "primaryMethod": "평행사변형의 대각선 중점 관계로 D의 좌표를 정하고, D가 로그함수 위에 있다는 조건을 이용한다.",
+      "decisiveStep": "D=(10-a,log₂a)이므로 log₂a=log₂(10-a)에서 a=5이다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "로그함수", "l3": "로그함수의 활용", "l4": "그래프 교점" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "",
+      "primaryMethod": "s=log₂α, r=log₂β로 두어 곱 조건과 로그값 차에서 두 치환근을 구한 뒤 근과 계수의 관계를 적용한다.",
+      "decisiveStep": "s+r=8과 |s-r|=4에서 두 값 6,2를 얻어 k=8, m=12이므로 합은 20이다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "로그함수", "l3": "로그방정식", "l4": "치환" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "",
+      "primaryMethod": "처음의 배수 3, 9, 243을 3의 거듭제곱으로 바꾸어 각각 해당하는 시간을 지수식에서 읽는다.",
+      "decisiveStep": "3배 시간이 4시간이므로 a=4이고, 9배와 243배의 시각은 8시간과 20시간이라 차이는 12시간이다.",
+      "rpmPath": {},
+      "hold": "H2-대수 표의 지수함수 활용 경로에는 증가 배수에 따른 경과 시간 유형 조합이 없어 경로를 정하지 못함",
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "",
+      "primaryMethod": "y=9^-x를 y=3^-2x로 바꾸고, 같은 높이를 지나는 수평선에서 각 교점의 x좌표 배율을 차례로 비교한다.",
+      "decisiveStep": "A의 x좌표가 t이면 B는 2t, C에서 D까지는 2|t|라 두 선분 길이의 비는 2이다.",
+      "rpmPath": { "majorUnit": "지수함수와 로그함수", "midUnit": "지수함수", "l3": "지수함수의 활용", "l4": "그래프 교점" },
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "",
+      "primaryMethod": "집합 A의 진수 조건과 상한, 집합 B의 밑 1/2인 지수부등식 해를 각각 구해 정수 교집합의 개수를 맞춘다.",
+      "decisiveStep": "A 안의 x≤-1 정수 세 개에 x≥4인 값을 하나 더하려면 2ᵏ-4=4여서 k=3이다.",
+      "rpmPath": {},
+      "hold": "로그부등식과 지수부등식의 해집합 교집합 개수를 함께 세는 조합에 맞는 H2-대수 한 줄 유형 경로가 없음",
+      "crossConceptKeys": [], "conditionKeys": [], "integrationPattern": "NONE"
+    }
+  ]
+}

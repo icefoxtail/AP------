@@ -340,7 +340,8 @@ async function loadFinalCatalog(repositoryRoot = root) {
     const bytes = Buffer.from(fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n"), "utf8");
     const actual = sha256(bytes);
     if (actual !== entry.sha256) throw new Error(`canonical input digest mismatch: ${entry.path}`);
-    resources[entry.path] = JSON.parse(bytes.toString("utf8"));
+    // Non-JSON evidence remains digest-bound without becoming a resolver resource.
+    if (entry.path.endsWith(".json")) resources[entry.path] = JSON.parse(bytes.toString("utf8"));
     files[entry.path] = { sha256: actual };
   }
   const projectionVersion = await core.Canonical.computeProjectionVersion(manifest.files, manifest.resolverVersion);

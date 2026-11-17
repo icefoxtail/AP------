@@ -1,0 +1,191 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T11:52:12.247+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "분모 x²−ax+2a가 모든 실수에서 0이 아니려면 판별식 a²−8a\u003c0이므로 0\u003ca\u003c8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "연속의 뜻",
+                                      "l4":  "구간에서의 연속"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(2)=1,g(2)=−1,f′(2)=5,g′(2)=4라 미분값 ff′−f′g−fg′=5+5−4=6이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_DEFINITION_LIMIT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(2,3) 구간에서 그래프가 수평이므로 그 구간 모든 점에서 f′(x)=0이라 도함수 영점이 두 개라는 설명이 틀렸다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_CONTINUITY_AND_EXTREMA_AUDIT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "평균값 정리의 (f(a)−f(0))/a=f′(2)에서 a²−3a=0이고 a\u003e0라 a=3, f′(3)=9다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "기울기 조건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_MEAN_VALUE_THEOREM_FORMULA"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′의 영점 0,3과 f′=g′의 교점 0,4에서 도함수 부호를 비교하면 f는 (0,3) 감소하고 제시된 참은 ㄱ뿐이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_SIGN_EXTREMA_ANALYSIS"
+                                           ]
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "다섯 극한을 직접 계산하면 차례로 −2,2,2,2,0이므로 그 값과 일치하는 첫째·셋째·넷째 항목만 옳다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "접선 기울기 f′(a)=tan(π/3)=√3이고 두 증분계수의 계수 합은 −2−3=−5라 극한은 −5√3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_DIFFERENCE_QUOTIENT_SCALING"
+                                           ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "|x|→2⁺에서 세 합성 극한값은 각각 4,2,−1이므로 그 합은 5다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x=1의 좌우극한이 같아야 하므로 우극한 2와 좌극한 k−3을 같게 놓아 k=5다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "극한의 성질",
+                                      "l4":  "미정계수"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(1)=0에서 B=−3−2A이고 다른 극점 조건은 A≤−5라 f(5)−f(3)=92+12A의 최댓값은 A=−5에서 32다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_SIGN_EXTREMA_ANALYSIS"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(x)=3k²에서 접점은 x=0,4k/3이고 평행접선 간 넓이식 128k⁴/81=2048과 k\u003e0에서 k=6이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_TANGENT_LINE_SLOPE_AT_POINT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "분자 f(x)−3x는 x=2에서 0이므로 극한은 f′(2)−3=2−3=−1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_DEFINITION_LIMIT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(x+1)−2f(x)+f(x−1)=0은 다항식 차수를 1 이하로 제한해 f′가 상수이고 f′(1)=3이면 f′(−1)=3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "도함수 계산"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "접선이 주어진 점 (0,4)을 지나므로 x=0에서의 직선값, 즉 y절편은 4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "접선의 방정식"
+                                  }
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "도함수 3x²+2ax+2a가 항상 0 이상이려면 4a²−24a≤0이어서 0≤a≤6이고 자연수 a는 여섯 개다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_ALWAYS_POSITIVE_QUADRATIC_DERIVATIVE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′=3(x−3)(x+1)에서 극댓값 f(−1)=6, 극솟값 f(3)=−26이므로 5M+m=4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_CUBIC_FUNCTION_EXTREMA_VALUES"
+                                           ]
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x\u003e0에서 3+2/x\u003cf(x)/x\u003c3+5/x이고 양 끝이 모두 3으로 수렴하므로 극한은 3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  }
+              ]
+}

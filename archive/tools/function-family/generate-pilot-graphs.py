@@ -2360,13 +2360,13 @@ BATCH16_CASES = [
         "id": 27,
         "assetRef": "assets/images/21_강남여고_2학기_기말_고1_기출/q27-solution.svg",
         "visualKind": "RADICAL_GRAPH",
-        "factSummary": "rational graph facts give g=sqrt(-2x)-1, domain x≤0; QII for x<-1/2 and QIII for -1/2<x<0",
+        "factSummary": "rational graph facts (asymptotes x=1,y=-2, y-intercept 1) give a=-2,b=-1,c=-1, g=sqrt(-2x-1)-1, domain x≤-1/2; QII for x<-1 and QIII for -1<x≤-1/2",
         "spec": {
             "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 500,
             "xRange": [-6, 2], "yRange": [-6, 5],
-            "curves": [{"points": [{"x": -6, "y": 2.464102}, {"x": -2, "y": 1}, {"x": -0.5, "y": 0}, {"x": 0, "y": -1}]}],
-            "points": [{"x": -0.5, "y": 0, "label": "x-int"}, {"x": 0, "y": -1, "label": "V"}],
-            "annotations": [{"x": -5.5, "y": 4.3, "text": "g=√(−2x)−1"}, {"x": -5.5, "y": -5.2, "text": "QII / QIII"}],
+            "curves": [{"points": [{"x": -6, "y": 2.316625}, {"x": -2, "y": 0.732051}, {"x": -1, "y": 0}, {"x": -0.5, "y": -1}]}],
+            "points": [{"x": -1, "y": 0, "label": "x-int"}, {"x": -0.5, "y": -1, "label": "V"}],
+            "annotations": [{"x": -5.5, "y": 4.3, "text": "g=√(−2x−1)−1"}, {"x": -5.5, "y": -5.2, "text": "QII / QIII"}],
         },
     },
     {
@@ -2957,7 +2957,7 @@ def validate_math(case: dict) -> None:
         _check_curve(curves[0], lambda x: (2 * x - 1) / (x - 1), "gangnam21q22.inverse.left")
         _check_curve(curves[1], lambda x: (2 * x - 1) / (x - 1), "gangnam21q22.inverse.right")
     elif case_id == "h1-21-gangnam-2final-q27-radical-quadrants-from-rational":
-        _check_curve(curves[0], lambda x: (-2 * x) ** 0.5 - 1, "gangnam21q27.radical")
+        _check_curve(curves[0], lambda x: (-2 * x - 1) ** 0.5 - 1, "gangnam21q27.radical")
     elif case_id == "h1-21-bokseong-2final-q10-rational-asymptotes-intercept":
         _check_curve(curves[0], lambda x: (-3 * x + 3) / (x - 2), "bokseong21q10.left")
         _check_curve(curves[1], lambda x: (-3 * x + 3) / (x - 2), "bokseong21q10.right")

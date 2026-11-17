@@ -674,7 +674,8 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -1087,7 +1088,7 @@ window.questionBank = [
     "layoutTag": "fullwidth",
     "wide": false,
     "answer": "$10\\text{ cm}$",
-    "solution": "삼각형 $ABD$에서 $E$는 $BD$의 중점이고, 삼각형 $ADC$에서 $F$는 $DC$의 중점이다.\n따라서 $EF$는 삼각형 $ABC$의 중점 연결선이므로\n$EF=\\dfrac12BC=15\\text{ cm}$이다.\n\n두 무게중심 $G,G\\prime$은 각각 중선 $AE,AF$를 꼭짓점에서부터 $\\dfrac23$만큼 간 지점이다.\n따라서 $GG\\prime=\\dfrac23EF$이고\n$GG\\prime=\\dfrac23\\times15=10\\text{ cm}$이다.",
+    "solution": "삼각형 $ABD$에서 $E$는 $BD$의 중점이고, 삼각형 $ADC$에서 $F$는 $DC$의 중점이다.\n따라서 $EF=ED+DF=\\dfrac12BD+\\dfrac12DC=\\dfrac12BC=15\\text{ cm}$이다.\n\n두 무게중심 $G,G\\prime$은 각각 중선 $AE,AF$를 꼭짓점에서부터 $\\dfrac23$만큼 간 지점이다.\n따라서 $GG\\prime=\\dfrac23EF$이고\n$GG\\prime=\\dfrac23\\times15=10\\text{ cm}$이다.",
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_APPLICATION",
     "crossConceptKeys": [

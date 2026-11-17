@@ -1,0 +1,47 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-14T00:26:44+09:00",
+    "sourceArchiveFile":  "types/high/h2/비상_대수_삼각함수_중단원_고2_유형심화.js",
+    "items":  [
+                  {
+                      "hold":  [
+                                   "rpmPath.majorUnit: 고정 넓이 부채꼴의 최소 둘레 경로가 H2-대수 표에 없다.",
+                                   "rpmPath.midUnit: 고정 넓이 부채꼴의 최소 둘레 경로가 H2-대수 표에 없다.",
+                                   "rpmPath.l3: 고정 넓이 부채꼴의 최소 둘레 경로가 H2-대수 표에 없다.",
+                                   "rpmPath.l4: 고정 넓이 부채꼴의 최소 둘레 경로가 H2-대수 표에 없다.",
+                                   "crossConceptKeys: 고정 넓이 부채꼴의 둘레 최소화에 맞는 교차 개념 키가 H2-대수 표에 없다."
+                               ],
+                      "integrationPattern":  "NONE",
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "resolutionReason":  "넓이 조건 r²θ/2=16에서 θ=32/r²이므로 둘레는 2r+32/r≥2√64=16이고 등호는 r=4, θ=2에서 성립한다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "hold":  [
+                                   "rpmPath.majorUnit: 삼각함수의 접선 기울기 도함수를 쓰는 미적분 경로가 H2-대수 표에 없다.",
+                                   "rpmPath.midUnit: 삼각함수의 접선 기울기 도함수를 쓰는 미적분 경로가 H2-대수 표에 없다.",
+                                   "rpmPath.l3: 삼각함수의 접선 기울기 도함수를 쓰는 미적분 경로가 H2-대수 표에 없다.",
+                                   "rpmPath.l4: 삼각함수의 접선 기울기 도함수를 쓰는 미적분 경로가 H2-대수 표에 없다."
+                               ],
+                      "integrationPattern":  "NONE",
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "resolutionReason":  "접선 기울기는 (tan x)′=sec²x이므로 x=π/4에서 k=sec²(π/4)=2다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ]
+                  }
+              ]
+}

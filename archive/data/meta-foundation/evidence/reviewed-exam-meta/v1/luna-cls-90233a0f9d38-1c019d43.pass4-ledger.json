@@ -1,0 +1,26 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:06:12.449+00:00",
+ "sourceArchiveFile": "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+ "items": [
+  {
+   "ordinal": 1,
+   "chosenFrom": "new",
+   "resolutionReason": "결핵 검사, 동천 수질, 인구주택총조사, 신약 임상시험, 전구 수명 검사 중 모집단 전체를 조사하는 전수조사에 적합한 것의 개수를 가리는 문제인데 모집단과 표본 아래 해당 l4가 없다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "l4": ""
+   },
+   "hold": "신규 제안: 모집단과 표본 아래 전수조사와 표본조사 구분 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "전수조사와 표본조사",
+     "label": "전수조사와 표본조사의 구분",
+     "parent": "통계 > 통계적 추정 > 모집단과 표본",
+     "why": "가장 가까운 '표본평균'과 '표본분포'는 표본에서 계산한 값과 분포를 다루고, 이 문항은 조사 방법이 전수인지 표본인지 가린다."
+    }
+   }
+  }
+ ]
+}

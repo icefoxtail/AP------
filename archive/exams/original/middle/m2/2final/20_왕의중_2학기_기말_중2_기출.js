@@ -58,7 +58,11 @@ window.questionBank = [
       "l4": "변·각의 성질"
     },
     "primaryMethod": "이웃각 보각과 비례배분",
-    "decisiveStep": "두 내각의 합180°를5:4로 나누고 목표 외각의 보각을 정한다."
+    "decisiveStep": "두 내각의 합180°를5:4로 나누고 목표 외각의 보각을 정한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 2,
@@ -116,7 +120,11 @@ window.questionBank = [
       "l4": "특수 사각형의 대각선 성질"
     },
     "primaryMethod": "사각형 종류의 대각선 반분 성질",
-    "decisiveStep": "평행사변형 계열과 일반 사다리꼴의 대각선 반분 여부를 직접 비교한다."
+    "decisiveStep": "평행사변형 계열과 일반 사다리꼴의 대각선 반분 여부를 직접 비교한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 3,
@@ -175,7 +183,11 @@ window.questionBank = [
       "l4": "대각선 조건"
     },
     "primaryMethod": "평행사변형 판정조건의 충분성 비교",
-    "decisiveStep": "대변·평행·대각선반분과 대각선의 단순길이상등을 구별한다."
+    "decisiveStep": "대변·평행·대각선반분과 대각선의 단순길이상등을 구별한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 4,
@@ -236,7 +248,11 @@ window.questionBank = [
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "같은 밑각에서 직사각형으로 판정",
-    "decisiveStep": "OA=OB와 대각선반분을 결합하여 같은대각선의 직사각형임을 얻고 두 명제를 판단한다."
+    "decisiveStep": "OA=OB와 대각선반분을 결합하여 같은대각선의 직사각형임을 얻고 두 명제를 판단한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 5,
@@ -295,7 +311,11 @@ window.questionBank = [
       "l4": "각 사각형의 성질"
     },
     "primaryMethod": "마름모의 변·각·대각선 성질",
-    "decisiveStep": "수직반분과 각이등분은 성립하지만 대각선의 길이상등은 일반적으로 보장되지 않음을 구분한다."
+    "decisiveStep": "수직반분과 각이등분은 성립하지만 대각선의 길이상등은 일반적으로 보장되지 않음을 구분한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 6,
@@ -353,7 +373,11 @@ window.questionBank = [
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "직각 조건으로 직사각형 판정",
-    "decisiveStep": "평행사변형에서 한직각이면 보각과 대각성질로 네각모두 직각임을 확인한다."
+    "decisiveStep": "평행사변형에서 한직각이면 보각과 대각성질로 네각모두 직각임을 확인한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 7,
@@ -412,7 +436,11 @@ window.questionBank = [
       "l4": "길이"
     },
     "primaryMethod": "AA 대응으로 전체·부분 길이 계산",
-    "decisiveStep": "ABC와EBD의 AA대응에서 전체AB와BC를 사용하고 마지막에BE를 뺀다."
+    "decisiveStep": "ABC와EBD의 AA대응에서 전체AB와BC를 사용하고 마지막에BE를 뺀다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 8,
@@ -581,7 +609,11 @@ window.questionBank = [
       "l4": "미지 길이"
     },
     "primaryMethod": "연장선의 전체 길이와 평행선분비",
-    "decisiveStep": "EBF와EAD의 평행닮음에서 EA=EB+BA를 만든 뒤 대응길이를 구한다."
+    "decisiveStep": "EBF와EAD의 평행닮음에서 EA=EB+BA를 만든 뒤 대응길이를 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 11,
@@ -613,8 +645,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "layoutTag": "grid",
     "wide": false,
-    "answer": "⑤",
-    "solution": "평행한 세 직선이 두 직선과 만날 때, 두 교점 사이의 대응하는 선분의 길이의 비는 같다.\n왼쪽 직선에서 l과 m 사이의 길이는 4 cm, m과 n 사이의 길이는 12 cm이다.\n오른쪽 직선에서는 각각 6 cm와 x cm이므로\n4:12=6:x\n4x=72\nx=18\n정답은 ⑤이다.",
+    "answer": "①",
+    "solution": "평행한 세 직선이 두 직선과 만날 때, 두 교점 사이의 대응하는 선분의 길이의 비는 같다.\n왼쪽 직선에서 l과 m 사이의 길이는 4 cm, l과 n 사이의 전체 길이는 12 cm이므로 m과 n 사이의 길이는 12-4=8 cm이다.\n오른쪽 직선에서는 각각 6 cm와 x cm이므로\n4:8=6:x\n4x=48\nx=12\n정답은 ①이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -624,10 +656,6 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-    "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 서로 평행한 세 직선 l, m, n과 이 세 직선을 지나는 두 직선이 있다. 왼쪽 직선에서 l과 m 사이는 4 cm, m과 n 사이는 12 cm이고 오른쪽 직선에서 l과 m 사이는 6 cm, m과 n 사이는 x cm이다. 오른쪽 그림은 같은 그림에서 l과 m 사이의 두 선분을 파란색, m과 n 사이의 두 선분을 주황색으로 나타냈다.",
-    "solutionImageCaption": "평행한 세 직선이 두 직선과 만날 때 대응하는 선분의 길이의 비는 같다. 4 대 12는 6 대 x이므로 4x는 72이다. 정답은 ⑤이다.",
-    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
     "rpmL2": "평행선과 선분의 길이의 비",
@@ -640,7 +668,11 @@ window.questionBank = [
       "l4": "여러 평행선"
     },
     "primaryMethod": "세평행선의 전체·부분 구간비",
-    "decisiveStep": "실제 그림은 왼쪽 l~n전체12와 l~m부분4를 보여주므로 남은구간8을 먼저 정해야 한다."
+    "decisiveStep": "실제 그림은 왼쪽 l~n전체12와 l~m부분4를 보여주므로 남은구간8을 먼저 정해야 한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 12,
@@ -758,7 +790,11 @@ window.questionBank = [
       "l4": "사다리꼴"
     },
     "primaryMethod": "사다리꼴 중점선의 두 반밑변",
-    "decisiveStep": "대각선과 중점선의 교점에서 두 삼각형의 중점연결을 적용하여 y=BC/2와PN=AD/2를 구한다."
+    "decisiveStep": "대각선과 중점선의 교점에서 두 삼각형의 중점연결을 적용하여 y=BC/2와PN=AD/2를 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 14,
@@ -819,7 +855,11 @@ window.questionBank = [
       "l4": "선분비를 이용한 복합도형"
     },
     "primaryMethod": "두 중점의 평행닮음으로 대각선 삼등분",
-    "decisiveStep": "각 중점에서1:2인 평행변비를 찾아 BP와DQ가 BD의1/3임을 얻고 남는PQ를 구한다."
+    "decisiveStep": "각 중점에서1:2인 평행변비를 찾아 BP와DQ가 BD의1/3임을 얻고 남는PQ를 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 15,
@@ -932,7 +972,11 @@ window.questionBank = [
       "l4": "직각삼각형 판정"
     },
     "primaryMethod": "제곱합으로 직각삼각형 판정",
-    "decisiveStep": "가장긴변의 제곱을 나머지두변 제곱합과 직접 비교한다."
+    "decisiveStep": "가장긴변의 제곱을 나머지두변 제곱합과 직접 비교한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 17,
@@ -1013,8 +1057,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "layoutTag": "grid",
     "wide": false,
-    "answer": "④",
-    "solution": "작은 정사각형의 한 변을 GF=x cm라 하자.\n그림에서 A와 E의 가로 방향 거리는 AD+GF=12+x이고, 세로 방향 거리는 AB=12 cm이다.\nAE=20 cm이므로 직각삼각형에서\n(12+x)²+12²=20²\n(12+x)²=256\n12+x=16\nx=4\n따라서 GF=4 cm이고 정답은 ④이다.",
+    "answer": "②",
+    "solution": "작은 정사각형의 한 변을 GF=x cm라 하자.\n그림에서 A와 E의 가로 방향 거리는 AD+GF=12+x이고, 세로 방향 거리는 AB=12 cm이다.\nAE=20 cm이므로 직각삼각형에서\n(12+x)²+12²=20²\n(12+x)²=256\n12+x=16\nx=4\n따라서 GF=4 cm이고 정답은 ②이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -1026,7 +1070,7 @@ window.questionBank = [
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
     "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에는 한 변이 12 cm인 큰 정사각형과 그 오른쪽 아래 꼭짓점 C에 붙은 작은 정사각형이 있고 점 A와 E를 잇는 선분 AE는 20 cm이며 작은 정사각형의 한 변 GF는 x cm이다. 오른쪽에는 직각이 B인 직각삼각형 ABE가 있고 AB는 12 cm, 가로 변은 12와 x로 나뉘며 AE는 20 cm이다.",
-    "solutionImageCaption": "작은 정사각형의 한 변을 x cm라 하면 직각삼각형 ABE에서 가로 변 BE는 12+x cm, 세로 변 AB는 12 cm, 빗변 AE는 20 cm이다. 피타고라스 정리에서 12+x의 제곱 더하기 12의 제곱은 20의 제곱이고, 12+x는 16이다. 따라서 x는 16에서 12를 뺀 값이다. 정답은 ④이다.",
+    "solutionImageCaption": "작은 정사각형의 한 변을 x cm라 하면 직각삼각형 ABE에서 가로 변 BE는 12+x cm, 세로 변 AB는 12 cm, 빗변 AE는 20 cm이다. 피타고라스 정리에서 12+x의 제곱 더하기 12의 제곱은 20의 제곱이고, 12+x는 16이다. 따라서 x는 16에서 12를 뺀 값이다. 정답은 ②이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
@@ -1040,7 +1084,11 @@ window.questionBank = [
       "l4": "평면도형 길이"
     },
     "primaryMethod": "인접 정사각형 배치의 직각삼각형",
-    "decisiveStep": "가로12+x,세로12,빗변20인 직각삼각형을 찾아 작은 정사각형의 변을 구한다."
+    "decisiveStep": "가로12+x,세로12,빗변20인 직각삼각형을 찾아 작은 정사각형의 변을 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 19,
@@ -1099,7 +1147,11 @@ window.questionBank = [
       "l4": "평면도형 길이"
     },
     "primaryMethod": "반원 제곱넓이의 상쇄와 삼각형 넓이",
-    "decisiveStep": "반원들의 넓이합 관계에서 겹친 곡선부분을 빼 두 초승달합을 직각삼각형넓이로 바꾼다."
+    "decisiveStep": "반원들의 넓이합 관계에서 겹친 곡선부분을 빼 두 초승달합을 직각삼각형넓이로 바꾼다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 20,
@@ -1160,7 +1212,11 @@ window.questionBank = [
       "l4": "평면도형 길이"
     },
     "primaryMethod": "대각선 길이와 공통밑변 높이합",
-    "decisiveStep": "대각선10을 구한 뒤 직사각형전체넓이를 대각선밑변과 두높이합의 곱으로 표현한다."
+    "decisiveStep": "대각선10을 구한 뒤 직사각형전체넓이를 대각선밑변과 두높이합의 곱으로 표현한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 21,
@@ -1255,7 +1311,11 @@ window.questionBank = [
       "l4": "닮음비"
     },
     "primaryMethod": "대응면 순서로 사면체 모서리 대응",
-    "decisiveStep": "대응면의 꼭짓점 순서로 모서리를 대응하고2:1비로 두 길이를 구한다."
+    "decisiveStep": "대응면의 꼭짓점 순서로 모서리를 대응하고2:1비로 두 길이를 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 23,
@@ -1312,7 +1372,11 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "내심과 무게중심의 밑변 분할비",
-    "decisiveStep": "각이등분선의4:3과 중선끝점의1:1을 공통밑변에 놓고 부분DE의 넓이비를 얻는다."
+    "decisiveStep": "각이등분선의4:3과 중선끝점의1:1을 공통밑변에 놓고 부분DE의 넓이비를 얻는다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 24,
@@ -1364,6 +1428,10 @@ window.questionBank = [
       "l4": "직각삼각형의 변 길이"
     },
     "primaryMethod": "가능한 빗변을 나누는 제곱관계",
-    "decisiveStep": "가장 긴변이7인경우와x인경우를 나누어 나머지변의 제곱관계를 모두 계산한다."
+    "decisiveStep": "가장 긴변이7인경우와x인경우를 나누어 나머지변의 제곱관계를 모두 계산한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   }
 ];

@@ -16,8 +16,8 @@ window.questionBank = [
       "11"
     ],
     "image": "assets/images/19_신흥중_2학기_기말_중2_기출/q01.png",
-    "solution": "그림에서 $E$는 $AC$의 중점이고 $G$는 무게중심이다.\n따라서 $AE=EC=8\\text{ cm}$이므로 $x=8$이다.\n\n$G$는 중선 $BE$를 $2:1$로 나눈다.\n$BG:GE=2:1$이고 $BG=6\\text{ cm}$이므로\n$GE=6\\div2=3\\text{ cm}$이다.\n따라서 $y=3$이다.\n\n$x+y=8+3=11$\n\n그러므로 정답은 ⑤이다.",
-    "answer": "⑤",
+    "solution": "그림에서 $E$는 $AC$의 중점이고 $G$는 무게중심이다.\n$AC=8\\text{ cm}$이고 $E$는 $AC$의 중점이므로 $x=AE=4$이다.\n\n$G$는 중선 $BE$를 $2:1$로 나눈다.\n$BG:GE=2:1$이고 $BG=6\\text{ cm}$이므로\n$GE=6\\div2=3\\text{ cm}$이다.\n따라서 $y=3$이다.\n\n$x+y=4+3=7$\n\n그러므로 정답은 ③이다.",
+    "answer": "③",
     "layoutTag": "grid",
     "wide": false,
     "level": "하",
@@ -62,10 +62,6 @@ window.questionBank = [
     "tagStatus": "review_required",
     "reviewStatus": "review_required",
     "rpmL4": "2:1 비",
-    "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 중선 AD, BE가 무게중심 G에서 만난다. E는 변 AC의 중점이라 AE와 EC가 같고 길이 8 cm이며, 파란색 BG는 6 cm, 주황색 GE는 3 cm이다. 오른쪽에는 중선 BE를 따로 펴서 BG와 GE의 길이를 나타냈다.",
-    "solutionImageCaption": "E는 AC의 중점이므로 AE=EC=8 cm에서 x=8이다. 무게중심 G는 중선 BE를 2:1로 나누므로 BG=6 cm일 때 GE=3 cm이고 y=3이다. 따라서 x+y를 구하면 된다. 정답은 11이다.",
-    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
     "rpmL2": "삼각형의 무게중심",
@@ -212,9 +208,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "좌표·길이",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 점 B, M, D, N, C가 있고 BD는 18 cm, DC는 12 cm이다. 두 삼각형의 무게중심 G, G′을 이은 파란색 선분이 AD와 만난다. 오른쪽 그림은 삼각형 AMN에서 AM과 AN을 각각 같은 길이 3칸으로 나눈 모양으로, 꼭짓점 A 쪽 2칸 지점의 점 G, G′을 이은 파란색 선분이 MN과 평행하고, MD는 9 cm, DN은 6 cm, MN은 15 cm이다.",
@@ -228,7 +224,8 @@ window.questionBank = [
       "midUnit": "삼각형의 무게중심",
       "l3": "중선과 무게중심",
       "l4": "좌표·길이"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 4,
@@ -292,9 +289,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "선분비를 이용한 복합도형",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 첫째 그림은 직사각형 A-B-C-D에서 가로 AD가 6 cm, 세로 AB가 4 cm이고 M, N이 BC, CD의 중점이며 오각형 P-Q-N-C-M이 파랗게 칠해져 있다. 둘째 그림은 AD와 BM이 평행한 닮은 삼각형 PAD와 PMB로 AD는 6 cm, BM은 3 cm이다. 셋째 그림은 AB와 DN이 평행한 닮은 삼각형 QAB와 QND로 AB는 4 cm, DN은 2 cm이다. 넷째 그림은 사각형 A-M-C-N 안에 분홍색 삼각형 APQ와 파란색 오각형이 놓인 모양이다.",
@@ -308,7 +305,8 @@ window.questionBank = [
       "midUnit": "평행선과 선분의 길이의 비",
       "l3": "비례 활용",
       "l4": "선분비를 이용한 복합도형"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 5,
@@ -327,7 +325,7 @@ window.questionBank = [
       "$18\\text{ cm}^2$"
     ],
     "image": "assets/images/19_신흥중_2학기_기말_중2_기출/q05.png",
-    "solution": "$G$는 무게중심이므로 $G$를 지나고 $BC$에 평행한 $FE$는 밑변에서 높이의 3분의 2 지점에 있다.\n따라서 $F$는 $AB$를 $AF:FB=2:1$로 나눈다.\n$D$는 $BC$의 중점이다.\n\n$[ABD]=\\dfrac12[ABC]=18\\text{ cm}^2$이다.\n삼각형 $AFD$와 $ABD$는 밑변을 $AD$로 볼 때, 꼭짓점 $F$, $B$가 $AB$ 위에 있으므로 넓이의 비는\n$[AFD]:[ABD]=AF:AB=2:3$이다.\n\n$[AFD]=\\dfrac23\\cdot18=12\\text{ cm}^2$\n\n그러므로 정답은 ④이다.",
+    "solution": "$G$는 무게중심이므로 $G$를 지나고 $BC$에 평행한 $FE$는 꼭짓점 $A$에서 높이의 3분의 2 지점(밑변에서 3분의 1 지점)에 있다.\n따라서 $F$는 $AB$를 $AF:FB=2:1$로 나눈다.\n$D$는 $BC$의 중점이다.\n\n$[ABD]=\\dfrac12[ABC]=18\\text{ cm}^2$이다.\n삼각형 $AFD$와 $ABD$는 밑변을 $AD$로 볼 때, 꼭짓점 $F$, $B$가 $AB$ 위에 있으므로 넓이의 비는\n$[AFD]:[ABD]=AF:AB=2:3$이다.\n\n$[AFD]=\\dfrac23\\cdot18=12\\text{ cm}^2$\n\n그러므로 정답은 ④이다.",
     "answer": "④",
     "layoutTag": "grid",
     "wide": false,
@@ -1191,9 +1189,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "확률 계산",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 가로에 갑이 낼 수 있는 가위, 바위, 보, 세로에 을이 낼 수 있는 가위, 바위, 보를 놓은 3×3 표이다. 같은 것을 내는 대각선의 세 칸이 파란색으로 칠해져 비김이라고 쓰여 있다.",
@@ -1207,7 +1205,8 @@ window.questionBank = [
       "midUnit": "확률",
       "l3": "확률의 뜻",
       "l4": "확률 계산"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 17,
@@ -1407,9 +1406,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "경우를 나누어 구하는 확률",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 가로 x, 세로 y의 6×6 표이다. y=x인 대각선의 6칸은 옅은 회색, y=x+1인 바로 위 대각선의 5칸은 진한 회색으로 칠해져 있다.",
@@ -1423,7 +1422,8 @@ window.questionBank = [
       "midUnit": "확률",
       "l3": "확률의 활용",
       "l4": "경우를 나누어 구하는 확률"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 20,
@@ -1491,9 +1491,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "확률 계산",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 0, 1, 2, 3, 4가 적힌 카드를 꼭짓점으로 하는 오각형과 모든 대각선이다. 0과 3, 1과 2, 2와 4를 잇는 세 선분은 파란색이다.",
@@ -1507,7 +1507,8 @@ window.questionBank = [
       "midUnit": "확률",
       "l3": "확률의 뜻",
       "l4": "확률 계산"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 21,
@@ -1566,9 +1567,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "무게중심을 이용한 복합도형",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 각 A가 직각인 직각삼각형 ABC에서 AC는 18 cm이고, 빗변 BC의 중점 D와 무게중심 G가 있다. 중선 AD 위의 AG는 파란색, GD는 주황색이고 GD는 5 cm이다. 오른쪽 그림은 D를 중심으로 A, B, C를 지나는 초록색 반원과 반지름 DB, DC, DA이다.",
@@ -1582,7 +1583,8 @@ window.questionBank = [
       "midUnit": "삼각형의 무게중심",
       "l3": "넓이와 무게중심",
       "l4": "무게중심을 이용한 복합도형"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 22,

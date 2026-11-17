@@ -118,47 +118,6 @@ label.check {
 .skip:focus {
   top: 0;
 }
-.appbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  min-height: 66px;
-  background: white;
-  border-bottom: 1px solid var(--line);
-  padding: 10px 28px;
-}
-.brand {
-  font-size: 20px;
-  font-weight: 800;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.brand span {
-  font-size: 12px;
-  color: var(--accent);
-  vertical-align: top;
-}
-.appbar nav {
-  display: flex;
-  gap: 5px;
-  flex: 1;
-}
-.appbar nav button {
-  border-color: transparent;
-  background: none;
-  white-space: nowrap;
-}
-.appbar nav button.active {
-  color: var(--navy);
-  background: var(--chip);
-}
-.legacy {
-  font-size: 12px;
-  white-space: nowrap;
-}
 .status {
   min-height: 32px;
   padding: 7px 30px;
@@ -263,11 +222,6 @@ p {
   justify-content: space-between;
   align-items: center;
   margin: 24px 0 12px;
-  gap: 12px;
-}
-.exam-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 .exam {
@@ -414,11 +368,6 @@ p {
   border-bottom: 1px solid var(--line-soft);
   font-size: 13px;
 }
-.summary-number {
-  font-size: 32px;
-  font-weight: 800;
-  margin: 10px 0;
-}
 .callout {
   padding: 12px 14px;
   border: 1px solid var(--warn);
@@ -436,10 +385,6 @@ p {
 .callout.good {
   border-color: var(--good);
   background: var(--good-bg);
-}
-.review-pass {
-  color: var(--good);
-  font-weight: 700;
 }
 .preview {
   width: 100%;
@@ -573,24 +518,8 @@ dialog::backdrop {
   .filters {
     grid-template-columns: repeat(6, minmax(100px, 1fr));
   }
-  .exam-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 @media (max-width: 1000px) {
-  .appbar {
-    gap: 12px;
-    padding: 10px 16px;
-    flex-wrap: wrap;
-  }
-  .appbar nav {
-    order: 3;
-    flex-basis: 100%;
-    overflow: auto;
-  }
-  .legacy {
-    margin-left: auto;
-  }
   main {
     padding: 22px 16px 90px;
   }
@@ -604,11 +533,6 @@ dialog::backdrop {
     position: static;
     order: -1;
   }
-  .inspector .summary-panel {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
   .preview {
     height: 700px;
   }
@@ -617,14 +541,6 @@ dialog::backdrop {
   }
 }
 @media (max-width: 600px) {
-  .brand {
-    font-size: 18px;
-  }
-  .appbar nav button {
-    font-size: 12px;
-    padding: 8px 10px;
-    min-height: 38px;
-  }
   .filters {
     grid-template-columns: 1fr 1fr;
   }
@@ -637,7 +553,6 @@ dialog::backdrop {
   .intro .actions {
     margin-top: 14px;
   }
-  .exam-list,
   .scope-list {
     grid-template-columns: 1fr;
   }
@@ -650,9 +565,6 @@ dialog::backdrop {
   }
   .floating .actions {
     width: 100%;
-  }
-  .inspector .summary-panel {
-    display: block;
   }
   .composition {
     display: block;
@@ -691,28 +603,6 @@ dialog::backdrop {
 .panel > .resultbar {
   margin-top: 10px;
   margin-bottom: 12px;
-}
-.callout:has(.review-pass) {
-  border-color: var(--good);
-  background: var(--good-bg);
-}
-/* Compact teaching workspace: document first, controls grouped by purpose. */
-.appbar {
-  min-height: 56px;
-  padding: 8px 24px;
-  gap: 28px;
-}
-.brand {
-  font-size: 18px;
-  letter-spacing: -0.65px;
-}
-.appbar nav {
-  gap: 2px;
-}
-.appbar nav button {
-  padding: 7px 12px;
-  font-size: 13px;
-  border-radius: var(--radius-field);
 }
 .status {
   min-height: 27px;
@@ -807,11 +697,6 @@ button.small {
   font-weight: 750;
   border-bottom-color: var(--navy);
 }
-.summary-number {
-  font-size: 28px;
-  line-height: 1.2;
-  margin: 12px 0 15px;
-}
 .summary-line {
   font-size: 12px;
   padding: 7px 0;
@@ -819,16 +704,6 @@ button.small {
 .callout {
   font-size: 12px;
   padding: 10px 12px;
-}
-.plan-panel {
-  padding: 11px 14px !important;
-  font-size: 12px;
-}
-.plan-panel[open] {
-  padding: 16px !important;
-}
-.plan-panel[open] > summary {
-  margin-bottom: 18px;
 }
 .paper-panel {
   padding: 0 !important;
@@ -916,13 +791,6 @@ button.small {
 .header-fields .check {
   font-size: 12px;
 }
-.exam-list {
-  display: block;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-field);
-  overflow: hidden;
-}
 .exam {
   display: grid;
   grid-template-columns: 205px minmax(0, 1fr) 92px 188px;
@@ -952,32 +820,11 @@ button.small {
   justify-content: flex-start;
   gap: 5px;
 }
-.exam-range .inline {
-  font-size: 12px;
-  gap: 9px;
-}
 .exam .range {
   font-size: 12px;
   line-height: 1.6;
   min-height: 0;
   margin: 5px 0 0;
-  color: var(--muted);
-}
-.exam-count {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-.exam-count > strong {
-  font-size: 17px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-}
-.exam-count small {
-  font-size: 12px;
-  font-weight: 500;
-  margin-left: 3px;
   color: var(--muted);
 }
 .exam .actions {
@@ -1025,9 +872,6 @@ button.small {
 .metric strong {
   font-size: 25px;
 }
-.mobile-actions {
-  display: none;
-}
 #content[inert] {
   opacity: 0.65;
   cursor: progress;
@@ -1058,45 +902,15 @@ button.small {
     order: 1;
     position: static;
   }
-  .appbar {
-    padding: 8px 16px;
-    gap: 10px;
-  }
-  .appbar nav {
-    order: 3;
-    flex-basis: 100%;
-    gap: 2px;
-  }
   .status {
     padding: 5px 16px;
   }
   main {
     padding: 16px 14px calc(84px + var(--archive2-mobile-bottom-nav-offset, 0px));
   }
-  .mobile-actions {
-    display: flex;
-    gap: 8px;
-    position: fixed;
-    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
-    left: 0;
-    right: 0;
-    z-index: 15;
-    background: #fffffff5;
-    border-top: 1px solid var(--line);
-    padding: 10px 14px;
-    padding-bottom: 10px;
-  }
-  .mobile-actions button {
-    flex: 1;
-    font-size: 12px;
-    min-height: 44px;
-  }
   .preview {
     height: 650px;
     min-height: 0;
-  }
-  .inspector .summary-panel {
-    display: block;
   }
   .intro {
     gap: 12px;
@@ -1119,17 +933,6 @@ button.small {
     grid-template-columns: 1fr 75px;
     gap: 9px 12px;
     padding: 13px 14px;
-  }
-  .exam-identity {
-    grid-column: 1;
-  }
-  .exam-count {
-    grid-column: 2;
-    grid-row: 1;
-    align-items: flex-end;
-  }
-  .exam-range {
-    grid-column: 1/-1;
   }
   .exam .actions {
     grid-column: 1/-1;
@@ -1227,25 +1030,11 @@ input,
 select {
   min-width: 0;
 }
-.delivery-progress {
-  border-top: 1px solid var(--line);
-  margin-top: 16px;
-  padding-top: 12px;
-}
-.delivery-progress h3 {
-  font-size: 14px;
-}
 .assignment-students .recent-row {
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 16px;
   padding: 12px 0;
-}
-.appbar > .legacy {
-  font-size: 12px;
-  background: none;
-  border: 0;
-  min-height: 32px;
 }
 .original-output {
   flex-basis: 100%;
@@ -1294,38 +1083,6 @@ select {
   height: 290px;
   min-height: 290px;
 }
-.mobile-sheet-close {
-  display: none;
-}
-@media (max-width: 700px) {
-  .inspector.mobile-open {
-    position: fixed;
-    inset: auto 8px calc(72px + var(--archive2-mobile-bottom-nav-offset, 0px));
-    max-height: 72vh;
-    overflow: auto;
-    z-index: 40;
-    box-shadow:
-      0 0 0 100vmax #17171c44,
-      0 6px 28px #17171c33;
-    border-radius: var(--radius-card);
-    background: white;
-  }
-  .inspector.mobile-open .mobile-sheet-close {
-    display: block;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    margin-left: auto;
-    background: white;
-  }
-  .inspector.mobile-open .panel {
-    margin: 0;
-  }
-  .mobile-actions button {
-    font-size: 12px;
-    padding: 9px 10px;
-  }
-}
 @media (max-width: 600px) {
   .original-output .header-fields {
     grid-template-columns: 1fr 1fr;
@@ -1340,31 +1097,9 @@ select {
   .assignment-students .recent-row > a {
     grid-column: 1/-1;
   }
-  .appbar > .legacy {
-    font-size: 12px;
-  }
   .original-issue-dialog .header-fields input {
     min-height: 44px;
   }
-}
-.exam .exam-title {
-  display: inline;
-  padding: 0;
-  min-height: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  font-weight: 700;
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-}
-.exam .exam-title:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.exam-count > .muted {
-  font-size: 12px;
 }
 .exam {
   grid-template-columns: 190px minmax(0, 1fr) 75px 270px;
@@ -1459,10 +1194,7 @@ select {
  .original-issue-toolbar > .actions { width:100%; }
  .original-issue-toolbar > .actions button { flex:1; }
  #original-preview-frame { height:60vh; min-height:300px; }
- .exam-title { text-align:left; }
 }
-
-.finder-filters > summary { font-size:12px; margin-bottom:12px; cursor:pointer; }
 
 .material-switch { display:flex; gap:6px; margin-bottom:16px; }
 .material-switch [aria-pressed=true] { color:white; background:var(--ink); border-color:var(--ink); }
@@ -1482,61 +1214,6 @@ select {
 .finder-surface :focus-visible {
   outline: 3px solid var(--finder-focus);
   outline-offset: 2px;
-}
-.finder-panel {
-  padding: 16px;
-}
-.finder-search-zone {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.finder-search-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px;
-}
-.finder-search-box {
-  min-width: 0;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-field);
-  background: var(--surface);
-  color: var(--ink-2);
-  overflow: hidden;
-}
-.finder-search-box:focus-within {
-  outline: 3px solid var(--finder-focus);
-  outline-offset: 2px;
-}
-.finder-search-box > span {
-  width: 40px;
-  flex: none;
-  text-align: center;
-  font-size: 18px;
-  color: var(--muted);
-}
-.finder-search-box input {
-  min-width: 0;
-  height: 100%;
-  flex: 1;
-  border: 0;
-  border-radius: 0;
-  padding: 0 12px 0 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 13px;
-  outline: 0;
-}
-.finder-search-box input:focus-visible {
-  outline: 0;
-}
-.finder-search-submit {
-  min-width: 64px;
-  min-height: 44px;
 }
 .finder-active-zone {
   display: flex;
@@ -1580,14 +1257,6 @@ select {
   text-underline-offset: 3px;
   white-space: nowrap;
 }
-.finder-filter-core {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px 12px;
-  align-items: end;
-  padding-top: 10px;
-  border-top: 1px solid var(--line-soft);
-}
 .finder-field {
   min-width: 0;
   display: grid;
@@ -1610,44 +1279,6 @@ select {
   color: var(--ink);
   font-size: 13px;
 }
-.finder-detail-filters {
-  margin-top: 10px;
-}
-.finder-detail-filters > summary {
-  display: none;
-  min-height: 44px;
-  align-items: center;
-  color: var(--ink-2);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  list-style: none;
-}
-.finder-detail-filters > summary::-webkit-details-marker {
-  display: none;
-}
-/* Drawn chevron (no text-symbol icons). */
-.finder-detail-filters > summary::after,
-.quick-short > summary::after {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-left: 9px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translate(-2px, -2px);
-}
-.finder-detail-filters[open] > summary::after,
-.quick-short[open] > summary::after {
-  transform: rotate(225deg) translate(-2px, -2px);
-}
-.finder-filter-detail {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1.7fr 1fr;
-  gap: 10px 12px;
-  align-items: end;
-}
 .finder-year-range {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -1657,18 +1288,6 @@ select {
 .finder-year-range b {
   color: var(--muted);
   font-weight: 600;
-}
-.finder-results-wrap {
-  container-type: inline-size;
-}
-.finder-surface .exam-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  overflow: visible;
 }
 .finder-surface .exam {
   min-width: 0;
@@ -1696,19 +1315,6 @@ select {
   background: var(--selected);
   box-shadow: 0 0 0 1px var(--ink);
 }
-.finder-surface .exam-identity {
-  grid-area: identity;
-  min-width: 0;
-}
-.finder-surface .exam-count {
-  grid-area: count;
-  align-items: flex-end;
-  gap: 4px;
-}
-.finder-surface .exam-range {
-  grid-area: range;
-  min-width: 0;
-}
 .finder-surface .exam .actions {
   grid-area: actions;
   display: grid;
@@ -1717,9 +1323,6 @@ select {
   padding: 10px 0 0;
   margin: 0;
   border-top: 1px solid var(--line-soft);
-}
-.finder-surface .exam .finder-card-actions {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 .finder-card-more {
   position: relative;
@@ -1782,38 +1385,12 @@ select {
 .finder-surface .exam h2 {
   margin: 7px 0 0;
 }
-.finder-surface .exam .exam-title {
-  min-height: 0;
-  padding: 0;
-  font-size: 16px;
-  line-height: 1.35;
-  font-weight: 750;
-}
-.finder-surface .exam-range .inline {
-  gap: 7px;
-  font-size: 13px;
-  color: var(--ink-2);
-}
-.finder-surface .exam-range .inline strong {
-  color: var(--ink);
-}
 .finder-surface .exam .range {
   min-height: 0;
   margin: 5px 0 0;
   color: var(--ink-2);
   font-size: 13px;
   line-height: 1.55;
-}
-.finder-surface .exam-count > strong {
-  color: var(--ink);
-  font-size: 17px;
-  font-weight: 750;
-}
-.finder-surface .exam-count small,
-.finder-surface .exam-count > .muted {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 650;
 }
 .finder-surface .exam .actions button {
   min-width: 0;
@@ -1827,26 +1404,11 @@ select {
   background: var(--ink);
   color: var(--surface);
 }
-.finder-resultbar {
-  margin-top: 18px;
-}
-.finder-resultbar > strong {
-  font-size: 14px;
-}
-.finder-resultbar .muted {
-  color: var(--ink-2);
-  font-size: 12px;
-}
 .finder-selection-bar {
   border: 1px solid var(--line);
 }
 @container (min-width: 1072px) {
   .finder-surface .exam-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 1240px) and (min-width: 701px) {
-  .finder-filter-detail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1871,42 +1433,6 @@ select {
     padding-inline: 10px;
     white-space: nowrap;
   }
-  .finder-panel {
-    padding: 10px;
-  }
-  .finder-panel .material-switch {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
-    margin-bottom: 8px;
-  }
-  .finder-panel .material-switch button {
-    min-width: 0;
-    min-height: 44px;
-    padding: 6px 5px;
-    font-size: 12px;
-  }
-  .finder-search-zone {
-    gap: 6px;
-    margin-bottom: 6px;
-  }
-  .finder-search-row {
-    grid-template-columns: minmax(0, 1fr) 52px;
-    gap: 6px;
-  }
-  .finder-search-box {
-    height: 44px;
-  }
-  .finder-search-box input {
-    font-size: 14px;
-  }
-  .finder-search-submit {
-    width: 52px;
-    min-width: 52px;
-    min-height: 44px;
-    padding: 0;
-    font-size: 13px;
-  }
   .finder-active-zone {
     align-items: flex-start;
     gap: 6px;
@@ -1922,11 +1448,6 @@ select {
     padding: 0 2px;
     font-size: 13px;
   }
-  .finder-filter-core {
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 9px;
-    padding-top: 7px;
-  }
   .finder-course {
     grid-column: 1/-1;
   }
@@ -1941,50 +1462,21 @@ select {
     min-height: 44px;
     font-size: 13px;
   }
-  .finder-detail-filters {
-    margin-top: 7px;
-    padding-top: 7px;
-    border-top: 1px solid var(--line-soft);
-  }
-  .finder-detail-filters > summary {
-    display: flex;
-    min-height: 44px;
-  }
-  .finder-filter-detail {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 9px;
-    margin-top: 7px;
-  }
   .finder-school,
   .finder-year,
   .finder-family {
     grid-column: 1/-1;
   }
-  .finder-resultbar {
-    margin-top: 12px;
-    margin-bottom: 8px;
-    align-items: flex-start;
-  }
-  .finder-resultbar .muted {
-    display: none;
-  }
   .finder-surface .exam {
     padding: 13px;
     gap: 7px 9px;
   }
-  .finder-surface .exam .exam-title {
-    font-size: 15px;
-  }
-  .finder-surface .exam-range .inline,
   .finder-surface .exam .range {
     font-size: 13px;
   }
   .finder-surface .exam .actions {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 6px;
-  }
-  .finder-surface .exam .finder-card-actions {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
   .finder-surface .exam .actions button {
     min-height: 44px;
@@ -2033,12 +1525,6 @@ select {
       104px + var(--archive2-mobile-bottom-nav-offset, 0px)
     );
   }
-}
-
-/* Compose decision order. Existing filter, scope, and selection handlers remain owners. */
-body[data-archive-view="compose"] .compose-setup {
-  padding: 0;
-  overflow: hidden;
 }
 body[data-archive-view="compose"] .compose-step {
   padding: 16px;
@@ -2094,6 +1580,14 @@ body[data-archive-view="compose"] .compose-range > .resultbar h2 {
 body[data-archive-view="compose"] .compose-composition > .compose-step-head {
   margin-bottom: 14px;
 }
+/* 수정본 만들기: 원본 범위 안내(번호 칸 없이 제목 한 줄). */
+.cz-derived .cz-derived-title {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.cz-derived p {
+  margin: 0 0 6px;
+}
 body[data-archive-view="compose"] .compose-detail {
   margin: 16px 0;
   padding: 11px 12px;
@@ -2113,10 +1607,6 @@ body[data-archive-view="compose"] .compose-taxonomy {
   border-top: 1px solid var(--line);
   font-size: 12px;
 }
-body[data-archive-view="compose"] .compose-create-bar {
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
 @media (max-width: 600px) {
   body[data-archive-view="compose"] .compose-step {
     padding: 14px;
@@ -2129,23 +1619,6 @@ body[data-archive-view="compose"] .compose-create-bar {
   }
   body[data-archive-view="compose"] .compose-range .scope-list {
     grid-template-columns: 1fr;
-  }
-  body[data-archive-view="compose"] .workspace > div > .compose-composition > .compose-create-bar {
-    position: fixed;
-    z-index: 14;
-    left: 0;
-    right: 0;
-    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
-    margin: 0;
-    padding: 10px 14px;
-    background: var(--surface);
-    box-shadow: 0 -4px 14px #17171c18;
-  }
-  body[data-archive-view="compose"] .compose-create-bar button {
-    min-height: 44px;
-  }
-  body[data-archive-view="compose"] .mobile-actions {
-    bottom: calc(var(--archive2-mobile-bottom-nav-offset, 0px) + 2px);
   }
 }
 
@@ -2165,16 +1638,6 @@ body[data-archive-view="compose"] .compose-create-bar {
 }
 .saved-paper-more {
   position: relative;
-}
-.saved-paper-back {
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
 }
 .button-like {
   display: inline-flex;
@@ -2293,14 +1756,6 @@ body[data-archive-view="compose"] .compose-create-bar {
 .compose-saved-continuity-more > summary { min-height: 44px; padding: 0 10px; display: flex; align-items: center; border: 1px solid var(--line); border-radius: var(--radius-field); cursor: pointer; }
 .compose-saved-continuity-more > div { position: absolute; z-index: 20; top: calc(100% + 4px); right: 0; min-width: 170px; padding: 6px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: 0 8px 22px #17171c24; }
 .compose-saved-continuity-more button { width: 100%; min-height: 44px; text-align: left; }
-@media (max-width: 1000px) {
-  .mobile-actions > .mobile-saved-paper-assign {
-    flex: 1;
-    min-height: 44px;
-    font-size: 12px;
-  }
-}
-
 
 /* S7 simple compose: difficulty is a primary control, extra conditions stay in 세부 조건. */
 body[data-archive-view="compose"] .compose-subject-note {
@@ -2319,48 +1774,100 @@ body[data-archive-view="compose"] .compose-difficulty > p {
 body[data-archive-view="compose"] .compose-detail > summary .badge {
   margin-left: 8px;
 }
-@media (min-width: 601px) {
-  /* 학년 and 과목 share one row; 범위 uses the full width below. */
-  body[data-archive-view="compose"] .compose-setup {
-    display: grid;
-    grid-template-columns: minmax(150px, 280px) minmax(190px, 1fr);
-  }
-  body[data-archive-view="compose"] .compose-setup > .compose-subject {
-    border-top: 0;
-  }
-  body[data-archive-view="compose"] .compose-setup > .compose-range,
-  body[data-archive-view="compose"] .compose-setup > .callout {
-    grid-column: 1 / -1;
-  }
-}
 
-/* Quick assessments (5분 테스트 / 소단원 / 중단원 / 종합평가) */
-.quick-tabs {
+/* ---- 빠른 평가 (5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가), 2026-11-16 ---------------------------------
+   위에 4종 전환과 한 줄 설명, 아래는 왼쪽 조건(학년·과목 → 난이도 → 단원 목록), 오른쪽 "만들어질 평가"와 시험지 열기.
+   1100px 미만은 조건이 위, 결과가 아래 한 줄이고 하단 고정 띠(.qk-bar)가 시험지 열기를 맡는다(문제지 만들기 .cz-bar와 같은 구성).
+   색·글꼴은 토큰만 쓴다. */
+.qk {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.qk-seg {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.qk-seg-btn {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 0;
+  font-size: 15px;
+  line-height: 1.25;
+  word-break: keep-all;
+}
+.qk-seg-btn + .qk-seg-btn {
+  border-left: 1px solid var(--line);
+}
+.qk-intro {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 0 0 14px;
+  align-items: baseline;
+  gap: 4px 16px;
 }
-.quick-tab {
+.qk-intro h1 {
+  margin: 0;
+}
+.qk-intro p {
+  flex: 1 1 280px;
+  margin: 0;
+}
+.qk-pack-link {
+  display: inline-flex;
+  align-items: center;
   min-height: 44px;
-  padding: 8px 16px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 14px;
   font-weight: 700;
 }
-.quick-tab[aria-pressed="true"] {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--surface);
+.qk-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.qk-cond {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+.qk-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.qk-h {
+  margin: 0;
+  font-size: 17px;
+}
+.qk-grades {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+.qk-grades .find-grade {
+  min-width: 0;
+  padding: 0 2px;
+  font-weight: 700;
+}
+.qk-subject-note {
+  margin: 0;
+  font-weight: 700;
+}
+.qk-note,
+.qk-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
 }
 .quick-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 8px 0;
 }
 .quick-chip {
   min-height: 44px;
@@ -2385,44 +1892,343 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 .quick-chip[aria-pressed="true"] small {
   color: #fff;
 }
-.quick-units {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
-  margin-top: 10px;
+.quick-chip:disabled {
+  color: var(--muted);
+  background: var(--chip);
 }
-.quick-unit {
-  min-width: 0;
-  min-height: 72px;
-  padding: 12px 14px;
+/* 난이도: PC는 슬라이더가 늘 보이고, 휴대폰은 "한 쪽 4문항 · 바꾸기"처럼 한 줄 요약 + 바꾸기로 접는다. */
+.qk-level-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.qk-level > p {
+  margin: 0;
+}
+.qk-level-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qk-fold {
+  display: none;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+/* 난이도 슬라이더는 누르는 칸이 44px 이상이어야 한다(workspace.html의 기본 34px보다 우선). */
+.qk .five-minute-slider-rail,
+.qk .five-minute-slider input {
+  height: 44px;
+}
+.qk .five-minute-slider input::-webkit-slider-runnable-track {
+  height: 44px;
+}
+.qk .five-minute-slider input::-webkit-slider-thumb {
+  margin-top: 11px;
+}
+/* 단원 목록: 대단원 머리 아래 중단원(소단원) 줄. 쓸 수 있는 줄이 먼저, 모자란 줄은 한 줄로 접는다. */
+.qk-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.qk-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qk-group-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-size: 15px;
+}
+.qk-group-title small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.qk-rows {
   display: grid;
-  align-content: start;
-  gap: 3px;
-  border: 1px solid var(--line);
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+.qk-row {
+  min-width: 0;
+  min-height: 52px;
+  padding: 8px 14px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  border: 1.5px solid var(--control-line);
   border-radius: var(--radius-card);
   background: var(--surface);
   color: var(--ink);
   text-align: left;
   font-size: 14px;
 }
-.quick-unit strong { font-size: 15px; }
-.quick-unit small { color: var(--muted); font-size: 12px; font-weight: 600; word-break: keep-all; }
-.quick-unit-parent { color: var(--muted); font-size: 12px; font-weight: 600; }
-button.quick-unit:not(:disabled):hover { border-color: var(--ink); background: var(--chip); }
-.quick-unit.is-short, .quick-unit:disabled { background: var(--chip); color: var(--muted); }
-.quick-reason { color: var(--danger); font-size: 12px; font-style: normal; font-weight: 600; }
-.quick-unit-check {
+.qk-row-name {
+  font-size: 15px;
+  font-weight: 700;
+  word-break: keep-all;
+}
+.qk-row small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  word-break: keep-all;
+}
+.qk-row.is-root {
+  background: var(--chip);
+}
+.qk-row[aria-pressed="true"] small,
+.qk-check:has(input:checked) small {
+  color: #fff;
+}
+.qk-check {
   grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
+  align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-.quick-unit-check span { display: grid; gap: 3px; }
-.quick-unit-check input { margin-top: 3px; width: 20px; height: 20px; }
-.quick-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-.quick-short { margin-top: 14px; }
-.quick-chip:disabled { color: var(--muted); background: var(--chip); }
-.quick-short > summary { cursor: pointer; font-weight: 700; color: var(--ink-2); min-height: 44px; display: flex; align-items: center; }
+.qk-check > span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.qk-check input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--brand);
+}
+.qk-check:has(input:checked) {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+.qk-check.is-implied:has(input:checked) {
+  border-style: dashed;
+  background: var(--chip);
+  color: var(--ink);
+}
+.qk-check.is-implied:has(input:checked) small {
+  color: var(--muted);
+}
+.qk-row.is-short {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 44px;
+  border-color: var(--line);
+  background: var(--chip);
+  color: var(--muted);
+}
+.qk-row.is-short .qk-row-name {
+  font-weight: 500;
+}
+.qk-reason {
+  color: var(--danger);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.qk-short {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qk-short-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--radius-field);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 14px;
+  text-align: left;
+}
+.qk-short-toggle::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+}
+.qk-short-toggle[aria-expanded="true"]::after {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+.qk-short-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+/* 오른쪽: 만들어질 평가 */
+.qk-result {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 20px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+}
+.qk-result > p {
+  margin: 0;
+}
+.qk-r-title {
+  margin: 0;
+  font-size: 18px;
+}
+.qk-r-scope {
+  font-size: 16px;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+.qk-r-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 700;
+}
+.qk-big {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+}
+.qk-r-reason {
+  padding: 8px 10px;
+  border-radius: var(--radius-field);
+  background: var(--brand-soft);
+  color: var(--brand-soft-ink);
+  font-size: 13px;
+}
+.qk-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.qk-actions button {
+  width: 100%;
+  min-height: 52px;
+}
+.qk-r-after {
+  font-size: 13px;
+}
+.qk-bar {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .qk-grid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 32px;
+  }
+  .qk-result {
+    position: sticky;
+    top: 16px;
+  }
+}
+@media (max-width: 1099px) {
+  body[data-archive-view="five-minute"] #content,
+  body[data-archive-view="subunit-test"] #content,
+  body[data-archive-view="unit-test"] #content,
+  body[data-archive-view="monthly-test"] #content {
+    padding-bottom: calc(110px + var(--archive2-mobile-bottom-nav-offset, 0px));
+  }
+  .qk-fold {
+    display: inline-flex;
+    align-items: center;
+  }
+  .qk-level-body {
+    display: none;
+  }
+  .qk-level.is-open .qk-level-body {
+    display: flex;
+  }
+  .qk-actions {
+    display: none;
+  }
+  .qk-result {
+    padding: 16px;
+  }
+  .qk-bar {
+    position: fixed;
+    z-index: 40;
+    left: 0;
+    right: 0;
+    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--ink);
+    color: var(--surface);
+  }
+  .qk-bar-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .qk-bar-count {
+    display: block;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .qk-bar .qk-bar-main {
+    min-height: 48px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--surface);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .qk-bar .qk-bar-main:disabled {
+    background: var(--chip);
+    color: var(--muted);
+  }
+  .qk-bar :focus-visible {
+    outline: 3px solid var(--surface);
+    outline-offset: 2px;
+  }
+}
+@media (min-width: 961px) and (max-width: 1099px) {
+  .qk-bar {
+    left: var(--archive2-sidebar-width, 232px);
+    padding-inline: 48px;
+  }
+}
+@media (max-width: 600px) {
+  .qk-seg-btn {
+    padding: 0 2px;
+    font-size: 13px;
+  }
+  .qk-grades .find-grade {
+    min-height: 48px;
+  }
+  .qk-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .qk-big {
+    font-size: 36px;
+  }
+}
 
 /* Error alert: a failure is also shown here (fixed, dismissible) so it is not missed below the fold or behind a dialog.
    Placed at the top so it never covers the bottom action bar or the phone bottom menu. */
@@ -2493,10 +2299,6 @@ button.quick-unit:not(:disabled):hover { border-color: var(--ink); background: v
 .grade-h2 { --grade: var(--grade-h2); }
 .grade-h3 { --grade: var(--grade-h3); }
 .grade-none { --grade: var(--ink); }
-.badge.grade-badge {
-  background: var(--grade);
-  color: #fff;
-}
 
 /* Page frame */
 main {
@@ -2551,28 +2353,6 @@ dialog::backdrop {
 .pager span {
   font-weight: 700;
 }
-
-/* Search boxes: ink-outlined pills with a pill button beside them */
-.finder-search-row {
-  gap: 10px;
-}
-.finder-search-box {
-  height: 52px;
-  border: 2px solid var(--ink);
-  border-radius: 26px;
-  padding-left: 20px;
-}
-.finder-search-box input {
-  min-height: 0;
-  height: 100%;
-  padding: 0 18px 0 0;
-  font-size: 17px;
-}
-.finder-search-submit {
-  min-width: 84px;
-  min-height: 52px;
-  border-radius: 26px;
-}
 .finder-chip {
   min-height: 32px;
   border: 0;
@@ -2613,27 +2393,6 @@ dialog::backdrop {
 .finder-surface .exam:hover {
   background: var(--surface);
   border-color: var(--control-line);
-}
-.finder-surface .exam .exam-title {
-  min-height: 0;
-  /* the title is a text-style button; the padding gives it a 44px hit area without moving the layout */
-  padding: 10px 0;
-  margin: -10px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 17px;
-}
-.finder-surface .exam .exam-title:hover {
-  background: transparent;
-  color: var(--brand-ink);
-}
-.finder-surface .exam-count > strong {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 22px;
-  color: var(--ink);
 }
 .finder-surface .exam .actions {
   border-top: 1px solid var(--line-soft);
@@ -2686,8 +2445,7 @@ dialog::backdrop {
 .floating button:hover {
   background: var(--chip);
 }
-.saved-library-back,
-.saved-paper-back {
+.saved-library-back {
   min-height: 44px;
   padding: 0 4px;
   border: 0;
@@ -2698,8 +2456,7 @@ dialog::backdrop {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.saved-library-back:hover,
-.saved-paper-back:hover {
+.saved-library-back:hover {
   background: transparent;
   color: var(--brand-hover);
 }
@@ -2721,10 +2478,6 @@ dialog::backdrop {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 30px;
-}
-.summary-number {
-  font-family: var(--font-display);
-  font-weight: 400;
 }
 .compose-step-number {
   border-radius: var(--radius-field);
@@ -2937,9 +2690,6 @@ body[data-archive-view="compose"] .compose-step-number {
 .home-quick-item:hover {
   background: var(--chip);
 }
-.home-tools {
-  display: none;
-}
 
 /* ---- Tablet and phone ------------------------------------------------------------------- */
 @media (max-width: 1100px) {
@@ -2963,25 +2713,6 @@ body[data-archive-view="compose"] .compose-step-number {
   .phone-quick-link {
     display: inline-flex;
     align-items: center;
-  }
-  .home-tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 20px;
-    padding-top: 8px;
-    border-top: 1px solid var(--line);
-  }
-  .home-tools a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .home-tools .home-link {
-    padding: 0;
-    color: var(--brand);
-    font-weight: 500;
   }
 }
 @media (max-width: 700px) {
@@ -3048,17 +2779,6 @@ body[data-archive-view="compose"] .compose-step-number {
   .status.error {
     margin: 12px 16px 0;
   }
-  .finder-search-box {
-    height: 52px;
-  }
-  .finder-search-submit {
-    width: 72px;
-    min-width: 72px;
-    min-height: 52px;
-  }
-  .finder-search-row {
-    grid-template-columns: minmax(0, 1fr) 72px;
-  }
   .finder-surface .exam .actions button {
     padding: 0 2px;
     font-size: 14px;
@@ -3075,13 +2795,6 @@ body[data-archive-view="compose"] .compose-step-number {
 h1 .badge {
   font-family: var(--font-body);
   font-weight: 700;
-}
-.summary-number small,
-.finder-surface .exam-count > strong small {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 14px;
-  margin-left: 4px;
 }
 body[data-archive-view="compose"] .compose-step-number {
   font-family: var(--font-body);
@@ -3109,25 +2822,6 @@ body[data-archive-view="compose"] .compose-step-number {
 }
 .home-quick-item:hover .home-quick-open {
   color: var(--brand-hover);
-}
-
-/* Grade choice buttons in 빠른 평가: grade-colored 2px outline, filled with the grade color when chosen. */
-.quick-chip[data-action="quick-grade"] {
-  min-width: 64px;
-  border: 2px solid var(--grade);
-  border-radius: var(--radius-field);
-  background: var(--surface);
-  color: var(--grade);
-  font-weight: 700;
-}
-.quick-chip[data-action="quick-grade"]:hover {
-  background: var(--chip);
-}
-.quick-chip[data-action="quick-grade"][aria-pressed="true"],
-.quick-chip[data-action="quick-grade"][aria-pressed="true"]:hover {
-  border-color: var(--grade);
-  background: var(--grade);
-  color: #fff;
 }
 
 /* ---- Exam rows and 학교별 기출 (2026-11-10: similar problems beside the exam) ------------------
@@ -3611,10 +3305,6 @@ body[data-archive-view="compose"] .compose-step-number {
 .history-class {
   color: var(--ink);
   font-weight: 700;
-}
-.history-id {
-  color: var(--muted);
-  font-size: 13px;
 }
 @container exam-rows (min-width: 560px) {
   .exam-row.saved-row {
@@ -4678,6 +4368,83 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 .cz-scope .scope-item {
   min-height: 44px;
 }
+/* 대단원 아래 중단원(고등은 소단원 묶음) 줄 (2026-11-16): 대단원 줄 끝의 화살표로 펼치고, 줄은 안쪽으로 들여 쓴다. */
+.cz-scope .scope-item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.cz-scope .scope-item > label {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: none;
+  align-self: stretch;
+  min-height: 44px;
+  padding: 6px 0;
+}
+.cz-scope .scope-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* 단원·중단원 이름은 본문 작은 글자(14px)로 읽힌다(2026-11-16, 예전 12px). */
+.cz-scope .scope-item label {
+  font-size: 14px;
+}
+.cz-scope .scope-item small {
+  font-size: 13px;
+}
+.cz-scope .scope-item .scope-expand {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  margin: -6px -8px -6px 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-field);
+}
+.cz-scope .scope-item .scope-expand:hover {
+  background: var(--chip);
+}
+.cz-scope .scope-item .scope-expand::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-bottom: 3px;
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.cz-scope .scope-item .scope-expand[aria-expanded="true"]::after {
+  margin-bottom: -3px;
+  transform: rotate(-135deg);
+}
+.cz-scope .scope-subs {
+  background: var(--chip);
+  border-top: 1px solid var(--line-soft);
+}
+.cz-scope .scope-sub {
+  padding-left: 30px;
+  border-top: 1px solid var(--surface);
+}
+.cz-scope .scope-sub:first-child {
+  border-top: 0;
+}
+.cz-scope .scope-sub:has(input:checked) {
+  background: var(--selected);
+}
+.cz-scope .scope-sub.is-implied {
+  border-left: 3px dotted var(--ink-2);
+  background: var(--chip);
+}
+.cz-scope .scope-sub.is-zero {
+  opacity: 0.55;
+}
+.cz-scope .scope-sub.is-zero label {
+  cursor: not-allowed;
+}
 .cz-scope .range-more {
   margin-top: 4px;
 }
@@ -4709,7 +4476,7 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   display: block;
   margin-top: 2px;
   color: var(--ink-2);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
 }
 

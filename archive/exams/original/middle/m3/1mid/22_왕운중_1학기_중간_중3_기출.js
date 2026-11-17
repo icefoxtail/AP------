@@ -132,7 +132,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "한 변의 길이가 $x$ 인 정사각형 모양의 대수 막대 1개와 가로, 세로의 길이가 각각 $2, 2a$ 인 직사각형 모양의 대수 막대 2개로 만든 직사각형이 있다.\\n이 때 다음과 같이 직사각형 모양의 대수 막대 1개를 옮겨 놓은 그림을 참고하여 $x^{2}+4ax$ 를 $A^{2}-B^{2}$ 으로 변형했을 때, $A-B$의 값을 구하면? [4점]",
+    "content": "한 변의 길이가 $x$ 인 정사각형 모양의 대수 막대 1개와 가로, 세로의 길이가 각각 $x, 2a$ 인 직사각형 모양의 대수 막대 2개로 만든 직사각형이 있다.\\n이 때 다음과 같이 직사각형 모양의 대수 막대 1개를 옮겨 놓은 그림을 참고하여 $x^{2}+4ax$ 를 $A^{2}-B^{2}$ 으로 변형했을 때, $A-B$의 값을 구하면? [4점]",
     "image": "assets/images/22_왕운중_1학기_중간_중3_기출/q4.png",
     "choices": [
       "$x$",
@@ -229,8 +229,8 @@ window.questionBank = [
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [

@@ -8,6 +8,7 @@ const stable = value => JSON.stringify(value, (_, v) => v && typeof v === "objec
 const sha = value => crypto.createHash("sha256").update(value).digest("hex");
 
 export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
+  Object.freeze({ requestKey: "q5CompleteGivenApplication", proofKey: "q5CompleteGivenApplication" }),
   Object.freeze({ requestKey: "proposalFinalization", proofKey: "proposalFinalization" }),
   Object.freeze({ requestKey: "retainedFields", proofKey: "retainedNativeFields" }),
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
@@ -17,13 +18,18 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "prerequisiteExistingApplication", proofKey: "prerequisiteExistingApplication" }),
   Object.freeze({ requestKey: "currentTargetApplication", proofKey: "currentTargetApplication" }),
   Object.freeze({ requestKey: "m2ProblemRendererContinuity", proofKey: "m2ProblemRendererContinuity" }),
+  Object.freeze({ requestKey: "m2E006ProblemContinuity", proofKey: "m2E006ProblemContinuity" }),
+  Object.freeze({ requestKey: "e017RhsContinuity", proofKey: "e017RhsContinuity" }),
+  Object.freeze({ requestKey: "m2ProblemRenderer21Continuity", proofKey: "m2ProblemRenderer21Continuity" }),
+  Object.freeze({ requestKey: "m2Family3ProblemContinuity", proofKey: "m2Family3ProblemContinuity" }),
+  Object.freeze({ requestKey: "e023SolutionDisplayContinuity", proofKey: "e023SolutionDisplayContinuity" }),
 ]);
 
 export function reviewedSourceBindingItems(request) {
   if (!Array.isArray(request?.items)) fail("request items required");
   return request.items.filter(patch => REVIEWED_SOURCE_BINDING_OPT_INS.some(({ requestKey }) =>
     patch.sourceReview?.[requestKey] !== undefined) || patch.targetParentRef?.nativeSourceReview !== undefined ||
-    patch.targetParentRef?.retainedScopeParent !== undefined);
+    patch.targetParentRef?.retainedScopeParent !== undefined || patch.targetParentRef?.nativeRpmCourseTransport !== undefined);
 }
 
 export function reviewedSourceBindingPath(requestId) {
@@ -60,7 +66,8 @@ export function buildReviewedSourceBinding({ request, requestId, requestSha256, 
     if (repairs.length !== 1 || !proof || proof.schemaVersion !== "archive-reviewed-source-reassessment-v1" ||
         proof.questionUid !== patch.questionUid || proof.sourceOrdinal !== patch.sourceOrdinal ||
         REVIEWED_SOURCE_BINDING_OPT_INS.some(({ requestKey, proofKey }) =>
-          patch.sourceReview?.[requestKey] !== undefined && proof[proofKey] === undefined))
+          patch.sourceReview?.[requestKey] !== undefined && proof[proofKey] === undefined) ||
+        patch.targetParentRef?.nativeRpmCourseTransport !== undefined && proof.nativeRpmCourseTransport === undefined)
       fail("exact selected fingerprint repair and source-review proof required");
     const parents = nativeParentBindings.filter(value => value.questionUid === patch.questionUid && value.sourceOrdinal === patch.sourceOrdinal);
     const hasParent = patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined;

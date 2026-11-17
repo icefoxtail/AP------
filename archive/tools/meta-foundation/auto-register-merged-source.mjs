@@ -1,3 +1,4 @@
+import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 // Main-merge metadata registration. It applies declared metadata, never invents a semantic review.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,9 +12,13 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
-  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedM2E006ProblemRebind, nativeReviewedE017RhsRebind,
+  nativeReviewedM2Problem21Rebind, nativeReviewedM2Family3Rebind, nativeReviewedM3Q5CompleteGivenRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
+import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
@@ -165,6 +170,7 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
+  if(originalSourceError.isSubject({questionUid:current?.questionUid||identity?.questionUid,source,ordinal}))return null;
   if(!nativeSource||!previous)return null;
   if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
@@ -201,7 +207,14 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||approval?.type!==current.metadataApprovalType||approval.metadataReviewed!==true
         ||!String(approval.approvedBy||'').trim()||approval.type==='REVIEW2'&&approval.reviewPassCount!==2
         ||!Array.isArray(approval.evidenceRefs)||!approval.evidenceRefs.length)continue;
-      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(boundRead(ref.path))===ref.sha256))continue;
+      const rpmHistory=nativeSource.issuedRpmHistoryContext;
+      const solutionRpmHistory=nativeSource.issuedSolutionRpmHistoryContext;
+      if(rpmHistory&&solutionRpmHistory)continue;
+      if(rpmHistory)assertIssuedRpmHistoricalLeaf({context:rpmHistory,receipt,nativeSource,current,identity,ordinal});
+      if(solutionRpmHistory)assertIssuedSolutionRpmHistoricalLeaf({context:solutionRpmHistory,receipt,nativeSource,current,identity,ordinal,previous});
+      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(solutionRpmHistory
+        ?readIssuedSolutionRpmHistoricalEvidence(solutionRpmHistory,receipt,ref):rpmHistory
+          ?readIssuedRpmHistoricalEvidence(rpmHistory,receipt,ref):boundRead(ref.path))===ref.sha256))continue;
       const record=nativeReceiptRecords(receipt,nativeSource,source)?.get(identity.questionUid);
       const runtime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
       const registeredIdentity=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);
@@ -222,14 +235,20 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         if(kept!==true)continue;
         return receiptPath;
       }
-      validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
+      const verifiedSource=validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
       const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
       if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2Renderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedM2E006=nativeReviewedM2E006ProblemRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource});
+      const reviewedE017Rhs=nativeReviewedE017RhsRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2Problem21=nativeReviewedM2Problem21Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2Family3=nativeReviewedM2Family3Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM3Q5=nativeReviewedM3Q5CompleteGivenRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2E006!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&reviewedM2Problem21!==true&&reviewedM2Family3!==true&&reviewedM3Q5!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -262,6 +281,7 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
+  if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
   const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});
   if(authorityHold)return reject(authorityHold.reason);
   if(canonicalParentRetry&&['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current.metadataApprovalType))return reject('CANONICAL_PARENT_RETRY:NATIVE_AUTHORITY_NOT_SUPPORTED');

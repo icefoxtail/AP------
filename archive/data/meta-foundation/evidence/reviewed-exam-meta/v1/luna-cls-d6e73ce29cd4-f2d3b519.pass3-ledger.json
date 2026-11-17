@@ -1,0 +1,47 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:22:40+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js",
+    "items":  [
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "1000=2³·5³에서 약수 개수는 4·4=16, 약수 합은 (1+2+4+8)(1+5+25+125)=2340이지만 H2-대수 표에는 약수 계산 RPM 경로가 없다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  "rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4: H2-대수 표에 약수의 개수·합 계산에 맞는 RPM 경로가 없음."
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "AB=4인 반원의 좌표에서 ∠CAB=π/6으로 C,P를 정하고 평행 관계로 Q,D를 구하면 두 삼각형 넓이의 합은 3√3/4다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l3":  "삼각형의 넓이",
+                                      "l4":  "복합도형"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "PT_H22A_05_TRIANGLE_AREA"
+                  }
+              ]
+}

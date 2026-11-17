@@ -37,6 +37,7 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
   has_difficulty5=false
   has_basic_rebind=false
   has_binding_course_correction=false
+  has_direct_judgment=false
   for request in "${reqs[@]}"; do
     schema="$(node -e 'try { console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion || "") } catch {}' "$request")"
     if [[ "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
@@ -51,10 +52,19 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
     if [[ "$schema" == "archive-binding-course-correction-request-v1" || "$schema" == "archive-binding-course-correction-request-v2" ]]; then
       has_binding_course_correction=true
     fi
+    # Type-only direct judgments are v2 requests; the approval type tells them apart (their registrar lane has its own tests).
+    approval="$(node -e 'try { console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).approval?.type || "") } catch {}' "$request")"
+    if [[ "$approval" == "DIRECT_JUDGMENT" ]]; then
+      has_direct_judgment=true
+    fi
   done
   node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  node --test tests/archive-reviewed-projection-phase.test.mjs
   if [[ "$has_binding_course_correction" == "true" ]]; then
     node --test tests/archive-binding-course-correction.test.mjs
+  fi
+  if [[ "$has_direct_judgment" == "true" ]]; then
+    node --test tests/archive-type-judgment-registration.test.mjs
   fi
   if [[ "$has_basic_rebind" == "true" ]]; then
     node --test tests/archive-basic-scope-rebind.test.mjs
@@ -95,9 +105,9 @@ for round in 1 2; do
   # can rewrite a runtime pack (middle-geometry-v1.json counts) after the final canonical manifest was built,
   # so its own --check fails once for requests that add records to such a pack and passes on the next run.
   # One re-run is allowed; a genuine failure fails again and fails the pass.
-  if ! python archive/build_db.py; then
+  if ! node tools/ci/archive-registration-build-db.mjs; then
     echo "::warning title=build_db did not converge on the first run::re-running once to reach the generator fixed point"
-    python archive/build_db.py
+    node tools/ci/archive-registration-build-db.mjs
   fi
 
   node archive/tools/verify-archive-registration.mjs
@@ -106,22 +116,13 @@ for round in 1 2; do
 
   # Verify every applied request (do not stop at the first refusal) so one extra round can drop all of them.
   verify_failed=(); verify_errors=(); verify_stages=(); consumer_candidates=()
-  for request in "${applied[@]}"; do
-    schema="$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion)' "$request")"
-    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" || "$schema" == "archive-basic-scope-rebind-request-v1" || "$schema" == "archive-basic-parent-correction-request-v1" || "$schema" == "archive-binding-course-correction-request-v1" || "$schema" == "archive-binding-course-correction-request-v2" ]]; then
-      verify_rc=0
-      out="$(node "$registrar" --request "$request" --verify-projection 2>&1)" || verify_rc=$?
-      if [[ "$verify_rc" -ne 0 ]]; then
-        verify_failed+=("$request")
-        # A refusal that prints no recognisable "...Error: " line (signal kill, non-Error throw, "AssertionError [ERR_...]")
-        # must not abort the whole pass under `set -e -o pipefail` (grep exits 1): isolation is per request.
-        verify_msg="$(grep -E '^(Uncaught )?[A-Za-z]*Error: ' <<<"$out" | tail -n 1 | cut -c1-500 || true)"
-        verify_errors+=("${verify_msg:-consumer projection verification failed (exit status $verify_rc)}")
-        verify_stages+=(projection-verify)
-        continue
-      fi
-    fi
-    consumer_candidates+=("$request")
+  node tools/ci/verify-reviewed-projection-requests.mjs --report-file "$work/projection-preflight-$round.json" --refusals-file "$work/projection-refusals.nul" --candidates-file "$work/projection-candidates.nul" -- "${applied[@]}"
+  mapfile -d '' -t projection_refusals < "$work/projection-refusals.nul"
+  mapfile -d '' -t consumer_candidates < "$work/projection-candidates.nul"
+  for ((i=0; i<${#projection_refusals[@]}; i+=2)); do
+    verify_failed+=("${projection_refusals[$i]}")
+    verify_errors+=("${projection_refusals[$((i+1))]}")
+    verify_stages+=(projection-verify)
   done
   # One shared consumer load checks all remaining requests. A global/ambiguous failure aborts,
   # leaving the inbox unconsumed; only exact request failures may be rejected and retried.

@@ -15,38 +15,95 @@
         // boldsymbol/폰트를 못 불러 startup이 멈추고, 수식이 날것으로 인쇄된다.
         // 현재 문서 위치 기준 상대 경로로 해석해 어디에 올려도 vendor를 찾게 한다.
         var AP_VENDOR_BASE = new URL('vendor/', document.baseURI).href;
+
+        const hangulMathFontLoads = new Map();
+        const preparedHangulMathGlyphs = new Set();
+        function prepareHangulMathFont(glyphs) {
+            if (hangulMathFontLoads.has(glyphs)) return hangulMathFontLoads.get(glyphs);
+            let timer;
+            const fontReady = Promise.resolve().then(() => {
+                if (!document.fonts?.load || !document.fonts?.check) throw new Error('HANGUL_MATH_FONT_API_UNAVAILABLE');
+                return Promise.all([400, 700].map(async weight => {
+                    const descriptor = `${weight} 16px "Nanum Myeongjo"`;
+                    const faces = await document.fonts.load(descriptor, glyphs);
+                    if (!faces.length || faces.some(face => face.family.replace(/["']/g, '') !== 'Nanum Myeongjo' || face.status !== 'loaded') ||
+                        !document.fonts.check(descriptor, glyphs)) {
+                        throw new Error('HANGUL_MATH_FONT_NOT_LOADED');
+                    }
+                }));
+            });
+            const ready = Promise.race([
+                fontReady,
+                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('HANGUL_MATH_FONT_TIMEOUT')), 5000); })
+            ]).finally(() => clearTimeout(timer)).then(() => {
+                for (const glyph of glyphs) preparedHangulMathGlyphs.add(glyph);
+            });
+            hangulMathFontLoads.set(glyphs, ready);
+            return ready;
+        }
+
+        function prepareEnclosedLatinMathJax() {
+            // Install the fallback before MathJax can measure and cache these glyphs.
+            const descriptor = '16px "AP Enclosed Latin"';
+            const letters = String.fromCodePoint(...Array.from({ length: 52 }, (_, i) => 0x24B6 + i));
+            let timer;
+            const fontReady = Promise.resolve().then(() => {
+                if (!document.fonts?.load || !document.fonts?.check) throw new Error('ENCLOSED_LATIN_FONT_API_UNAVAILABLE');
+                return document.fonts.load(descriptor, letters);
+            }).then(faces => {
+                if (faces.length !== 1 || faces[0].family.replace(/["']/g, '') !== 'AP Enclosed Latin' ||
+                    faces[0].status !== 'loaded' || !document.fonts.check(descriptor, letters)) {
+                    throw new Error('ENCLOSED_LATIN_FONT_NOT_LOADED');
+                }
+            });
+            return Promise.race([
+                fontReady,
+                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('ENCLOSED_LATIN_FONT_TIMEOUT')), 5000); })
+            ]).finally(() => clearTimeout(timer)).then(() => {
+                const startup = window.MathJax.startup;
+                const output = startup.document?.outputJax;
+                const unknownText = output?.unknownText;
+                if (typeof unknownText !== 'function') throw new Error('ENCLOSED_LATIN_MATHJAX_OUTPUT_UNAVAILABLE');
+                output.unknownText = function (text, ...args) {
+                    if ((text.match(/[\uAC00-\uD7A3]/gu) || []).some(glyph => !preparedHangulMathGlyphs.has(glyph))) {
+                        throw new Error('HANGUL_MATH_FONT_NOT_READY');
+                    }
+                    const node = unknownText.call(this, text, ...args);
+                    if (!/[\u24B6-\u24E9\uAC00-\uD7A3]/u.test(text)) return node;
+
+                    // CHTML uses unknownText for both measurement and final markup.
+                    // Keep the original outer styles and style only the target runs.
+                    this.adaptor.remove(this.adaptor.firstChild(node));
+                    for (const part of text.split(/([\u24B6-\u24E9]+|[\uAC00-\uD7A3]+)/u)) {
+                        if (!part) continue;
+                        const content = this.text(part);
+                        const child = /[\u24B6-\u24E9]/u.test(part) ? this.html('span', {
+                            class: 'ap-enclosed-latin',
+                            style: { 'font-family': this.font.getFamily('"AP Enclosed Latin", serif') }
+                        }, [content]) : /[\uAC00-\uD7A3]/u.test(part) ? this.html('span', {
+                            class: 'ap-hangul-math',
+                            style: { 'font-family': this.font.getFamily('"Nanum Myeongjo", serif') }
+                        }, [content]) : content;
+                        this.adaptor.append(node, child);
+                    }
+                    return node;
+                };
+                return startup.defaultPageReady();
+            });
+        }
+
         window.MathJax = {
             loader: { paths: { mathjax: AP_VENDOR_BASE + 'mathjax', 'mathjax-tex': AP_VENDOR_BASE + 'mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']}, macros: { wideparen: ['\\overset{\\frown}{#1}', 1] } },
             output: {
                 font: 'mathjax-tex',
-                unknownFamily: 'AP Enclosed Latin, serif',
                 displayOverflow: 'linebreak',
                 linebreaks: { inline: true, width: '100%', lineleading: 0.2 }
             },
             options: { enableMenu: false },
             startup: {
                 typeset: false,
-                pageReady() {
-                    // Unknown glyph widths are cached by MathJax. Load this exact
-                    // 52-character face before its first measurement, not afterward.
-                    const descriptor = '16px "AP Enclosed Latin"';
-                    const letters = String.fromCodePoint(...Array.from({ length: 52 }, (_, i) => 0x24B6 + i));
-                    let timer;
-                    const fontReady = Promise.resolve().then(() => {
-                        if (!document.fonts?.load || !document.fonts?.check) throw new Error('ENCLOSED_LATIN_FONT_API_UNAVAILABLE');
-                        return document.fonts.load(descriptor, letters);
-                    }).then(faces => {
-                        if (faces.length !== 1 || faces[0].family.replace(/["']/g, '') !== 'AP Enclosed Latin' ||
-                            faces[0].status !== 'loaded' || !document.fonts.check(descriptor, letters)) {
-                            throw new Error('ENCLOSED_LATIN_FONT_NOT_LOADED');
-                        }
-                    });
-                    return Promise.race([
-                        fontReady,
-                        new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('ENCLOSED_LATIN_FONT_TIMEOUT')), 5000); })
-                    ]).finally(() => clearTimeout(timer)).then(() => window.MathJax.startup.defaultPageReady());
-                }
+                pageReady: prepareEnclosedLatinMathJax
             }
         };
     </script>
@@ -57,10 +114,11 @@
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20260915.2"></script>
     <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
+    <script src="exam-display-title.js?v=20261116-polish-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="mathjax_render_loop.js?v=20260911.5"></script>
+    <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
@@ -80,10 +138,11 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
-    <script src="screen-runtime-adapter.js?v=20261112-student-svg-1"></script>
+    <script src="screen-runtime-adapter.js?v=20261116-polish-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
+    <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+        @import url('vendor/nanum-myeongjo/nanum-myeongjo.css');
         @font-face {
             font-family: 'AP Enclosed Latin';
             src: url('vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2') format('woff2');
@@ -95,28 +154,6 @@
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
         @page { size: A4; margin: 0; }
         body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 54px; }
-        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 56px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; z-index: 1000; box-sizing: border-box; }
-        #ctrl-title { color: white; font-weight: 800; font-size: 14px; }
-        .mode-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.07); padding: 4px; border-radius: 10px; }
-        .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
-        .mode-tab.active { background: white; color: #0f172a; }
-        .qr-output-wrap { position: relative; }
-        #btn-qr-output { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
-        .qr-output-popover { position: absolute; right: 0; top: calc(100% + 8px); width: 190px; padding: 12px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; }
-        .qr-output-wrap.open .qr-output-popover { display: block; }
-        .qr-output-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
-        .qr-output-option { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.4; padding: 5px 0; cursor: pointer; }
-        .qr-output-option input { width: 14px; height: 14px; margin: 0; }
-        .print-header-editor-wrap { position: relative; }
-        .print-header-editor-btn { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
-        .print-header-editor-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 310px; padding: 14px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; box-sizing: border-box; }
-        .print-header-editor-wrap.open .print-header-editor-panel { display: block; }
-        .print-header-editor-title { font-size: 13px; font-weight: 800; margin-bottom: 10px; }
-        .print-header-editor-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 9px; font-size: 11px; font-weight: 800; }
-        .print-header-editor-input { width: 100%; height: 32px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 9px; font-size: 12px; font-weight: 700; box-sizing: border-box; }
-        .print-header-editor-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 10px; margin-top: 8px; }
-        .print-header-editor-check { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; line-height: 1.35; cursor: pointer; }
-        .print-header-editor-check input { width: 14px; height: 14px; margin: 0; }
         .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
         :is(#print-area,[data-archive-build-root]) { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         /* 측정용 숨김 영역(staging)은 화면 밖(top:-9999px)에 있지만 absolute라서, 안의 수식·그림이 83mm보다 넓으면
@@ -125,34 +162,9 @@
         body.screen-fit-mode { overflow-x: hidden; }
         body.screen-fit-mode :is(#print-area,[data-archive-build-root]) { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
-        /* 2026-11-01: 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
-        body.screen-fit-mode .qr-output-wrap { display: none !important; }
         @media screen and (max-width: 640px) {
-            body.screen-fit-mode { padding-top: 44px; }
-            body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
             body.screen-fit-mode :is(#print-area,[data-archive-build-root]) { margin-left: 0; margin-right: 0; transform-origin: top left; }
-            body.screen-fit-mode #ctrl-title,
-            body.screen-fit-mode #btn-print,
-            body.screen-fit-mode #btn-print-gdi,
-            body.screen-fit-mode .qr-output-wrap { display: none; }
-            body.screen-fit-mode .print-header-editor-panel {
-                position: fixed;
-                right: 8px;
-                top: 48px;
-                width: min(310px, calc(100vw - 16px));
-            }
-            body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
         }
-        /* preview=1: 아카이브 출제 패널 임베드용. 모드 탭만 남기고 조작 UI 숨김 */
-        body.preview-mode { padding-top: 44px; }
-        body.preview-mode #mode-ctrl { height: 44px; padding: 0 12px; justify-content: center; gap: 8px; }
-        body.preview-mode #ctrl-title,
-        body.preview-mode #btn-print,
-        body.preview-mode #btn-print-gdi,
-        body.preview-mode #qpp-display,
-        body.preview-mode .qr-output-wrap,
-        body.preview-mode .print-header-editor-wrap { display: none; }
-        body.preview-mode .mode-tab { padding: 5px 12px; font-size: 11px; }
 
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
@@ -464,8 +476,8 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261116-mobile-figure-1">
-    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
-    <script src="render-feedback.js?v=20261106-solution-loading-1"></script>
+    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
+    <script src="render-feedback.js?v=20261116-output-bar-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261111-student-navigation-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>
@@ -479,9 +491,9 @@
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
         <div class="ctrl-right" style="display:flex; gap:10px; align-items:center;">
-            <span id="qpp-display" style="color:rgba(255,255,255,0.7); font-size:11px; font-weight:bold;"></span>
+            <span id="qpp-display"></span>
             <div class="print-header-editor-wrap" id="print-header-editor-wrap">
-                <button class="print-header-editor-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
+                <button class="print-header-editor-btn ctrl-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
                 <div class="print-header-editor-panel" onclick="event.stopPropagation()">
                     <div class="print-header-editor-title">출력 헤더</div>
                     <label class="print-header-editor-field">제목
@@ -502,28 +514,28 @@
                 </div>
             </div>
             <div class="qr-output-wrap" id="qr-output-wrap">
-                <button id="btn-qr-output" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
+                <button id="btn-qr-output" class="ctrl-btn" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
                 <div class="qr-output-popover" id="qr-output-popover">
                     <div class="qr-output-title">QR 출력</div>
                     <label class="qr-output-option"><input type="checkbox" id="chk-submit-qr" onchange="setQrOutputParam('submit', this.checked)"> 정답지 제출 QR</label>
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
-            <button id="btn-print-gdi" onclick="openFastPrintDialog()" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">빠른 인쇄</button>
+            <button id="btn-print" class="ctrl-btn" onclick="safePrint('vector')">일반 인쇄 / PDF 저장</button>
+            <button id="btn-print-gdi" class="ctrl-btn ctrl-btn--primary" onclick="openFastPrintDialog()">빠른 인쇄</button>
         </div>
     </div>
-    <div id="fast-print-dialog" hidden style="display:none; position:fixed; inset:0; z-index:1000; align-items:center; justify-content:center; background:rgba(24,24,27,.42);" onclick="if (event.target === this) closeFastPrintDialog()">
-        <div role="dialog" aria-modal="true" aria-labelledby="fast-print-dialog-title" style="width:min(360px,calc(100vw - 32px)); box-sizing:border-box; padding:22px; border-radius:12px; background:#fff; box-shadow:0 18px 50px rgba(0,0,0,.24);" onclick="event.stopPropagation()">
-            <div id="fast-print-dialog-title" style="font-size:17px; font-weight:800; color:#18181b;">빠른 인쇄</div>
-            <div style="margin-top:7px; color:#71717a; font-size:13px;">양면으로 출력할 부수를 선택하세요.</div>
-            <label style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:20px; color:#27272a; font-size:14px; font-weight:700;">
+    <div id="fast-print-dialog" hidden style="display:none;" onclick="if (event.target === this) closeFastPrintDialog()">
+        <div class="fast-print-box" role="dialog" aria-modal="true" aria-labelledby="fast-print-dialog-title" onclick="event.stopPropagation()">
+            <div id="fast-print-dialog-title" class="fast-print-title">빠른 인쇄</div>
+            <div class="fast-print-help">양면으로 출력할 부수를 선택하세요.</div>
+            <label class="fast-print-field">
                 인쇄 부수
-                <input id="print-copies" type="number" min="1" max="99" step="1" value="1" inputmode="numeric" onkeydown="if (event.key === 'Enter') { event.preventDefault(); confirmFastPrint(); }" style="width:72px; height:36px; box-sizing:border-box; border:1px solid #d4d4d8; border-radius:7px; padding:0 8px; text-align:center; font-size:16px; font-weight:800; color:#18181b;">
+                <input id="print-copies" class="fast-print-input" type="number" min="1" max="99" step="1" value="1" inputmode="numeric" onkeydown="if (event.key === 'Enter') { event.preventDefault(); confirmFastPrint(); }">
             </label>
-            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:22px;">
-                <button type="button" onclick="closeFastPrintDialog()" style="padding:8px 14px; border:1px solid #d4d4d8; border-radius:7px; background:#fff; color:#3f3f46; font-weight:700; cursor:pointer;">취소</button>
-                <button id="btn-fast-print-confirm" type="button" onclick="confirmFastPrint()" style="padding:8px 16px; border:none; border-radius:7px; background:#0f766e; color:#fff; font-weight:800; cursor:pointer;">인쇄</button>
+            <div class="fast-print-actions">
+                <button type="button" class="ctrl-btn" onclick="closeFastPrintDialog()">취소</button>
+                <button id="btn-fast-print-confirm" type="button" class="ctrl-btn ctrl-btn--primary" onclick="confirmFastPrint()">인쇄</button>
             </div>
         </div>
     </div>
@@ -586,16 +598,29 @@ function rendererMode() {
 }
 
 async function waitForEnclosedLatinMath(elements) {
-    const family = window.MathJax?.config?.output?.unknownFamily ?? window.MathJax?.output?.unknownFamily;
-    if (family !== 'AP Enclosed Latin, serif') return;
+    const pageReady = window.MathJax?.config?.startup?.pageReady ?? window.MathJax?.startup?.pageReady;
+    if (pageReady !== prepareEnclosedLatinMathJax) return;
     const roots = elements == null ? [document.body] : Array.isArray(elements) ? elements : [elements];
     const targets = roots.flatMap(root => typeof root === 'string' ? [...document.querySelectorAll(root)] : [root]);
-    if (!targets.some(node => /[\u24B6-\u24E9]/u.test(node?.textContent || ''))) return;
+    const enclosedLatin = targets.some(node => /[\u24B6-\u24E9]/u.test(node?.textContent || ''));
+    const hangul = new Set();
+    const collectHangul = text => { for (const glyph of text.match(/[\uAC00-\uD7A3]/gu) || []) hangul.add(glyph); };
+    for (const node of targets) {
+        // Plain Korean body text keeps its existing path. Only math needs the
+        // CHTML fallback prepared before its first measurement can be cached.
+        for (const match of (node?.textContent || '').matchAll(/(?<!\\)(?:\$\$([\s\S]*?)\$\$|\$([^$]*?)\$)|\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/gu)) {
+            collectHangul(match.slice(1).filter(value => value !== undefined).join(''));
+        }
+        if (node?.matches?.('math, mjx-container')) collectHangul(node.textContent || '');
+        for (const math of node?.querySelectorAll?.('math, mjx-container') || []) collectHangul(math.textContent || '');
+    }
+    if (!enclosedLatin && !hangul.size) return;
     const ready = window.MathJax?.startup?.promise;
-    if (!ready || typeof ready.then !== 'function') throw new Error('ENCLOSED_LATIN_FONT_NOT_READY');
+    if (!ready || typeof ready.then !== 'function') throw new Error(enclosedLatin ? 'ENCLOSED_LATIN_FONT_NOT_READY' : 'HANGUL_MATH_FONT_NOT_READY');
     // The general MathJax loader deliberately continues on failure. This
     // named glyph path must not measure/cache missing glyphs after that catch.
     await ready;
+    if (hangul.size) await prepareHangulMathFont([...hangul].sort().join(''));
 }
 
 async function typesetMath(label, elements) {
@@ -1743,7 +1768,7 @@ async function init() {
     applyQrSolutionLockUI();
 
     const qppDisp = document.getElementById('qpp-display');
-    if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
+    if (qppDisp) qppDisp.innerText = `쪽당 ${AppState.qpp}문항`;
 
     if (!dataUrl) {
         showArchiveDataLoadError('시험지 데이터가 전달되지 않았습니다. 아카이브에서 시험지를 다시 선택해 주세요.');
@@ -1775,9 +1800,13 @@ async function init() {
             AppState.canonicalData = buildArchiveCanonicalData(sourceArchiveFile);
             AppState.title = window.examTitle || (!window.questionBank && (window.examData?.title || window.examData?.examTitle)) || p.get('title') || recentLaunch?.title || '수학 시험지';
             AppState.identityTitle = AppState.title;
-            AppState.displayTitle = window.examDisplayTitle || AppState.title;
+            // 머리글에 찍는 제목만 읽기 쉬운 이름으로 바꾼다(식별 제목 identityTitle·시험지 JS는 그대로). 해석할 수 없으면 원문.
+            const readableTitle = value => window.ExamDisplayTitle?.readableExamTitle?.(value) || value;
+            AppState.displayTitle = window.examDisplayTitle || readableTitle(AppState.title);
+            if (AppState.displayTitle) document.title = `${AppState.displayTitle} · JS 아카이브`;
             AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
             document.getElementById('ctrl-title').innerText = getDisplayTitle();
+            document.getElementById('ctrl-title').title = getDisplayTitle();
             renderPrintHeaderControls();
             await render();
         } catch (error) {
@@ -3446,7 +3475,7 @@ function setPrintButtonsBusy(busy, mode) {
     });
     if (busy) {
         const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : mode === 'gdi' ? document.getElementById('btn-print-gdi') : document.getElementById('btn-print');
-        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : mode === 'gdi' ? 'Windows 드라이버 준비 중…' : '인쇄 준비 중…';
+        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '빠른 인쇄 준비 중…' : mode === 'gdi' ? '빠른 인쇄 준비 중…' : '인쇄 준비 중…';
     } else {
         buttons.forEach(button => { button.textContent = button.dataset.apPrintLabel || button.textContent; });
     }
@@ -3545,7 +3574,7 @@ async function safePrint(mode = 'vector') {
                 documentName: document.title,
                 onProgress: progress => {
                     const button = document.getElementById('btn-print-native');
-                    if (button) button.textContent = `PCL 페이지 변환 중… ${progress.index}/${progress.total}`;
+                    if (button) button.textContent = `빠른 인쇄 준비 중… ${progress.index}/${progress.total}`;
                 }
             }) };
         } else if (mode === 'gdi') {
@@ -3557,7 +3586,7 @@ async function safePrint(mode = 'vector') {
                 documentName: document.title,
                 onProgress: progress => {
                     const button = document.getElementById('btn-print-gdi');
-                    if (button) button.textContent = `GDI 페이지 변환 중… ${progress.index}/${progress.total}`;
+                    if (button) button.textContent = `빠른 인쇄 준비 중… ${progress.index}/${progress.total}`;
                 }
             }) };
         } else optimizedImages = await flattenPrintImagesForOpaquePrint();

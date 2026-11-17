@@ -10,6 +10,10 @@ import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
 import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
+import {isPartialSubsetPreservation,hasPartialSubsetPreservationFingerprint,validatePartialSubsetPreservation} from './native-partial-subset-preservation.mjs';
+import {loadIssuedChildContinuity} from './native-issued-child-continuity.mjs';
+import {loadIssuedRpmChildContinuity,readIssuedRpmHistoricalEvidence,replayIssuedRpmHistoricalLeaf} from './native-issued-rpm-history.mjs';
+import {loadIssuedSolutionRpmChildContinuity,readIssuedSolutionRpmHistoricalEvidence,replayIssuedSolutionRpmHistoricalLeaf} from './native-issued-solution-rpm-history.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -42,6 +46,7 @@ function evidence(root,refs) {
 // from turning an issued preservation receipt into an ordinary FINAL_QA receipt.
 export function isPartialNativeSourcePreservation(receipt,root) {
   if(receipt?.approval?.type!=='FINAL_QA'||!(receipt.scope==='PARTIAL_UIDS'||Object.hasOwn(receipt,'partialUidCount')))return false;
+  if(hasPartialSubsetPreservationFingerprint(receipt))return true;
   if(Object.hasOwn(receipt.approval,'sourceRebind')||receipt.newMetadataApprovals===0&&receipt.preservedMetadataApprovals>0||
     Array.isArray(receipt.approval.evidenceRefs)&&receipt.approval.evidenceRefs.some(ref=>nativePath(ref?.path)))return true;
   if(!root||!ID.test(receipt.requestId||'')||!Array.isArray(receipt.appliedRecords)||!receipt.appliedRecords.length||
@@ -333,6 +338,11 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     !Buffer.isBuffer(source.bytes)||!Array.isArray(source.bank)||!same(source.bank[ordinal-1],question)||
     source.bank.length!==receipt.expectedQuestionCount||blob(source.bytes)!==source.blobSha1||
     receipt.sourceBlobSha1!==source.blobSha1||receipt.sourceRawSha256!==sha(source.bytes))fail('current receipt differs from actual state');
+  const issuedChild=loadIssuedChildContinuity({root,receipt,nativeSource,current,identity,ordinal});
+  const historyInput={childContext:issuedChild,root,envelope:receipt,bytes:nativeSource.bytes,bank:nativeSource.bank,
+    current,identity,runtimeRecord:runtime};
+  const issuedHistory=issuedChild ? issuedChild.descriptor.kind==='RPM_UNCHANGED_FP0'
+    ?loadIssuedRpmChildContinuity(historyInput):loadIssuedSolutionRpmChildContinuity(historyInput) : null;
   if(unchangedMemberOfRendererReassessment({receipt,nativeSource,question,identity,ordinal,current,registry,state,revalidateLeaf}))return true;
   // null preserves the ordinary native/student guards; this is not permission
   // to reuse changed student content or skip a renderer/typed-source verifier.
@@ -345,17 +355,20 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
-    if(!spec||!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
+    const subsetRequested=isPartialSubsetPreservation(cursor);
+    if(!spec||!subsetRequested&&!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
       !cursor.approval.evidenceRefs.some(item=>same(item,ref))||cursor.newMetadataApprovals!==0||
       cursor.preservedMetadataApprovals!==cursor.partialUidCount||!absentOrEmpty(cursor.registryChanges)||
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
     const raw=readBytes(root,ref.path);
     if(sha(raw)!==ref.sha256)fail('prior receipt digest changed');
     const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
+    const subset=subsetRequested?validatePartialSubsetPreservation({root,envelope:cursor,prior,bytes:source.bytes,bank:source.bank,
+      metadata:[...state.records.values()],identities:[...state.identities.values()],runtime:[...state.runtimes.values()],mode:"receipt"}):null;
     if(ref.path!==receiptPath(prior.requestId)||seen.has(prior.requestId)||prior.examUid!==cursor.examUid||
       prior.sourceArchiveFile!==cursor.sourceArchiveFile||prior.expectedQuestionCount!==cursor.expectedQuestionCount||
-      prior.partialUidCount!==cursor.partialUidCount||prior.sourceRawSha256===cursor.sourceRawSha256||
-      !same([...old.records.keys()].sort(),[...state.records.keys()].sort()))fail('preserved ancestor scope or source binding changed');
+      !subset&&prior.partialUidCount!==cursor.partialUidCount||prior.sourceRawSha256===cursor.sourceRawSha256||
+      !subset&&!same([...old.records.keys()].sort(),[...state.records.keys()].sort()))fail('preserved ancestor scope or source binding changed');
     const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
     for(const [uid,row]of state.records) {
       const before=old.records.get(uid),beforeRuntime=old.runtimes.get(uid),nextRuntime=state.runtimes.get(uid);
@@ -367,6 +380,20 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
         fail('selected whole question, approval or identity changed');
     }
     cursor=prior;state=old;source={...nativeSource,...priorSource,runtimeRecord:old.runtime};
+  }
+  if(issuedChild) {
+    if(receiptPath(cursor.requestId)!==issuedChild.descriptor.priorReceiptRef.path)
+      fail('issued child history terminal differs');
+    const isSolution=issuedChild.descriptor.kind==='SOLUTION_REBIND_FP1';
+    for(const ref of cursor.approval.evidenceRefs||[]) {
+      const bytes=isSolution?readIssuedSolutionRpmHistoricalEvidence(issuedHistory,cursor,ref)
+        :readIssuedRpmHistoricalEvidence(issuedHistory,cursor,ref);
+      if(sha(bytes)!==ref.sha256)fail('issued child historical evidence changed');
+    }
+    const replay=isSolution?replayIssuedSolutionRpmHistoricalLeaf:replayIssuedRpmHistoricalLeaf;
+    if(replay({context:issuedHistory,nativeSource:source,revalidateLeaf})!==true)
+      fail('issued child original native cursors did not replay');
+    return true;
   }
   evidence(root,cursor.approval.evidenceRefs);
   const relative=receiptPath(cursor.requestId),context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};

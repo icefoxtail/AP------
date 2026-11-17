@@ -59,7 +59,7 @@
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
-    <script src="mathjax_render_loop.js?v=20260911.5"></script>
+    <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
@@ -69,6 +69,7 @@
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
+    <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -82,80 +83,12 @@
             color: #000;
         }
 
-        /* [UI] Mode Control Bar */
-        #mode-ctrl {
-            position: fixed; top: 0; left: 0; width: 100%; height: 56px;
-            background: #0f172a; display: flex; justify-content: space-between;
-            align-items: center; padding: 0 24px; z-index: 1000; box-sizing: border-box;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        #ctrl-title { color: white; font-weight: 800; font-size: 14px; letter-spacing: -0.02em; }
-        .mode-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.07); padding: 4px; border-radius: 10px; }
-        .mode-tab {
-            padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700;
-            cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5);
-            transition: all 0.2s;
-        }
-        .mode-tab.active { background: white; color: #0f172a; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        
-        .ctrl-right { display: flex; align-items: center; gap: 12px; }
-        .qpp-selector { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 700; }
-        .qr-output-wrap { position: relative; }
-        #btn-qr-output { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
-        .qr-output-popover { position: absolute; right: 0; top: calc(100% + 8px); width: 190px; padding: 12px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; }
-        .qr-output-wrap.open .qr-output-popover { display: block; }
-        /* 2026-11-01: 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
-        body.screen-fit-mode .qr-output-wrap { display: none !important; }
-        .qr-output-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
-        .qr-output-option { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.4; padding: 5px 0; cursor: pointer; }
-        .qr-output-option input { width: 14px; height: 14px; margin: 0; }
-        .print-header-editor-wrap { position: relative; }
-        .print-header-editor-btn { padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-weight: 700; font-size: 12px; cursor: pointer; }
-        .print-header-editor-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 310px; padding: 14px; border-radius: 8px; background: #fff; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,0.25); display: none; z-index: 1100; box-sizing: border-box; }
-        .print-header-editor-wrap.open .print-header-editor-panel { display: block; }
-        .print-header-editor-title { font-size: 13px; font-weight: 800; margin-bottom: 10px; }
-        .print-header-editor-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 9px; font-size: 11px; font-weight: 800; }
-        .print-header-editor-input { width: 100%; height: 32px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 9px; font-size: 12px; font-weight: 700; box-sizing: border-box; }
-        .print-header-editor-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 10px; margin-top: 8px; }
-        .print-header-editor-check { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; line-height: 1.35; cursor: pointer; }
-        .print-header-editor-check input { width: 14px; height: 14px; margin: 0; }
         .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
-        #qppSelect {
-            background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px; padding: 4px 8px; font-family: inherit; font-size: 11px; cursor: pointer; min-height: 36px;
-        }
-
-        /* [v1.9] 드롭다운 가독성 보정 */
-        #qppSelect option {
-            background: #ffffff;
-            color: #0f172a;
-        }
-        #qppSelect:focus {
-            outline: none;
-            border-color: rgba(255,255,255,0.35);
-        }
 
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         body.screen-fit-mode { overflow-x: hidden; }
         body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
-        @media screen and (max-width: 640px) {
-            body.screen-fit-mode { padding-top: 44px; }
-            body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
-            body.screen-fit-mode #ctrl-title,
-            body.screen-fit-mode .qr-output-wrap,
-            body.screen-fit-mode .ctrl-right > label,
-            body.screen-fit-mode .ctrl-right > #btn-print,
-            body.screen-fit-mode .ctrl-right > #btn-print-gdi { display: none; }
-            body.screen-fit-mode .ctrl-right { display: flex; }
-            body.screen-fit-mode .print-header-editor-panel {
-                position: fixed;
-                right: 8px;
-                top: 48px;
-                width: min(310px, calc(100vw - 16px));
-            }
-            body.screen-fit-mode .mode-tab { padding: 5px 10px; font-size: 11px; }
-        }
 
         /* [PDF Mode] Container & Viewer */
         #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); background: #525659; overflow: hidden; }
@@ -449,15 +382,15 @@
     <script src="exam-render-executor.js?v=20261106-output-performance-1"></script>
     <script src="solution-render-executor.js?v=20261111-svg-k-2"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
-    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
-    <script src="render-feedback.js?v=20261106-solution-loading-1"></script>
+    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
+    <script src="render-feedback.js?v=20261116-output-bar-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261111-student-navigation-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>
 </head>
 <body>
     <div id="mode-ctrl">
-        <span id="ctrl-title">믹서 로딩 중...</span>
+        <span id="ctrl-title">문제지를 불러오는 중…</span>
         <div class="mode-tabs">
             <button class="mode-tab" id="btn-exam" onclick="switchMode('exam')">시험지</button>
             <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
@@ -465,7 +398,7 @@
         </div>
         <div class="ctrl-right">
             <div class="qpp-selector">
-                <span>문항/쪽:</span>
+                <span>쪽당 문항</span>
                 <select id="qppSelect" onchange="changeQpp(this.value)">
                     <option value="1">1문항</option>
                     <option value="2">2문항</option>
@@ -474,10 +407,10 @@
                     <option value="8">8문항</option>
                 </select>
             </div>
-            <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
-            <button class="mode-tab" id="btn-pdf-link" style="display:none; color:#fbbf24;">↗ PDF 새 탭</button>
+            <button class="mode-tab ctrl-btn" type="button" onclick="shuffleData()">문항 섞기</button>
+            <button class="mode-tab ctrl-btn" id="btn-pdf-link" style="display:none;">PDF 새 탭에서 열기</button>
             <div class="print-header-editor-wrap" id="print-header-editor-wrap">
-                <button class="print-header-editor-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
+                <button class="print-header-editor-btn ctrl-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
                 <div class="print-header-editor-panel" onclick="event.stopPropagation()">
                     <div class="print-header-editor-title">출력 헤더</div>
                     <label class="print-header-editor-field">제목
@@ -498,28 +431,28 @@
                 </div>
             </div>
             <div class="qr-output-wrap" id="qr-output-wrap">
-                <button id="btn-qr-output" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
+                <button id="btn-qr-output" class="ctrl-btn" type="button" onclick="toggleQrOutputPopover(event)">QR 출력: 없음</button>
                 <div class="qr-output-popover" id="qr-output-popover">
                     <div class="qr-output-title">QR 출력</div>
                     <label class="qr-output-option"><input type="checkbox" id="chk-submit-qr" onchange="setQrOutputParam('submit', this.checked)"> 정답지 제출 QR</label>
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
-            <button id="btn-print-gdi" onclick="openFastPrintDialog()" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">빠른 인쇄</button>
+            <button id="btn-print" class="ctrl-btn" onclick="safePrint('vector')">일반 인쇄 / PDF 저장</button>
+            <button id="btn-print-gdi" class="ctrl-btn ctrl-btn--primary" onclick="openFastPrintDialog()">빠른 인쇄</button>
         </div>
     </div>
-    <div id="fast-print-dialog" hidden style="display:none; position:fixed; inset:0; z-index:1000; align-items:center; justify-content:center; background:rgba(24,24,27,.42);" onclick="if (event.target === this) closeFastPrintDialog()">
-        <div role="dialog" aria-modal="true" aria-labelledby="fast-print-dialog-title" style="width:min(360px,calc(100vw - 32px)); box-sizing:border-box; padding:22px; border-radius:12px; background:#fff; box-shadow:0 18px 50px rgba(0,0,0,.24);" onclick="event.stopPropagation()">
-            <div id="fast-print-dialog-title" style="font-size:17px; font-weight:800; color:#18181b;">빠른 인쇄</div>
-            <div style="margin-top:7px; color:#71717a; font-size:13px;">양면으로 출력할 부수를 선택하세요.</div>
-            <label style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:20px; color:#27272a; font-size:14px; font-weight:700;">
+    <div id="fast-print-dialog" hidden style="display:none;" onclick="if (event.target === this) closeFastPrintDialog()">
+        <div class="fast-print-box" role="dialog" aria-modal="true" aria-labelledby="fast-print-dialog-title" onclick="event.stopPropagation()">
+            <div id="fast-print-dialog-title" class="fast-print-title">빠른 인쇄</div>
+            <div class="fast-print-help">양면으로 출력할 부수를 선택하세요.</div>
+            <label class="fast-print-field">
                 인쇄 부수
-                <input id="print-copies" type="number" min="1" max="99" step="1" value="1" inputmode="numeric" onkeydown="if (event.key === 'Enter') { event.preventDefault(); confirmFastPrint(); }" style="width:72px; height:36px; box-sizing:border-box; border:1px solid #d4d4d8; border-radius:7px; padding:0 8px; text-align:center; font-size:16px; font-weight:800; color:#18181b;">
+                <input id="print-copies" class="fast-print-input" type="number" min="1" max="99" step="1" value="1" inputmode="numeric" onkeydown="if (event.key === 'Enter') { event.preventDefault(); confirmFastPrint(); }">
             </label>
-            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:22px;">
-                <button type="button" onclick="closeFastPrintDialog()" style="padding:8px 14px; border:1px solid #d4d4d8; border-radius:7px; background:#fff; color:#3f3f46; font-weight:700; cursor:pointer;">취소</button>
-                <button id="btn-fast-print-confirm" type="button" onclick="confirmFastPrint()" style="padding:8px 16px; border:none; border-radius:7px; background:#0f766e; color:#fff; font-weight:800; cursor:pointer;">인쇄</button>
+            <div class="fast-print-actions">
+                <button type="button" class="ctrl-btn" onclick="closeFastPrintDialog()">취소</button>
+                <button id="btn-fast-print-confirm" type="button" class="ctrl-btn ctrl-btn--primary" onclick="confirmFastPrint()">인쇄</button>
             </div>
         </div>
     </div>
@@ -647,11 +580,34 @@ function getRenderHeaderMetaRight(type, fallbackMetaRight) {
     return fallbackMetaRight || '';
 }
 
+// 단원별 기출 권인지: 옛 저장 키(unitpast_)이거나, 출력 봉투 경로(outputRequestId가 key)에서는 meta 표지로 안다.
+// unit-past-exams.js buildMixedMeta가 category '단원별 기출'을 싣고 봉투 sourceKind도 'unit-past'다.
+function isUnitPastOutput() {
+    return String(AppState.key || '').startsWith('unitpast_')
+        || AppState.meta?.category === '단원별 기출'
+        || AppState.outputEnvelope?.sourceKind === 'unit-past';
+}
+
+// 출처 요약("출처: A / B / C")이 길면 시험 이름 중간에서 자르지 않고 " / " 경계에서 자른 뒤 " 외 N개"를 붙인다.
+// " / "로 나뉘지 않는 문자열이면 예전처럼 글자 수로 자른다.
+function clampSourceSummary(summary, maxLength) {
+    const text = String(summary ?? '').replace(/\s+/g, ' ').trim();
+    if (text.length <= maxLength || !text.includes(' / ')) return clampText(text, maxLength);
+    const label = /^출처:\s*/.exec(text);
+    const prefix = label ? '출처: ' : '';
+    const parts = text.slice(label ? label[0].length : 0).split(' / ');
+    for (let kept = parts.length - 1; kept >= 1; kept--) {
+        const candidate = `${prefix}${parts.slice(0, kept).join(' / ')} 외 ${parts.length - kept}개`;
+        if (candidate.length <= maxLength) return candidate;
+    }
+    return clampText(text, maxLength);
+}
+
 function getRenderHeaderSubtitle(type) {
     const opts = getPrintHeaderOptions();
-    if (String(AppState.key || '').startsWith('unitpast_')) {
+    if (isUnitPastOutput()) {
         if (type === 'exam') return shouldApplyPrintHeader(type) ? opts.subtitle : '';
-        return clampText(AppState.meta?.sourceSummary || '', 180);
+        return clampSourceSummary(AppState.meta?.sourceSummary || '', 180);
     }
     return shouldApplyPrintHeader(type) ? opts.subtitle : '';
 }
@@ -1551,6 +1507,15 @@ function fitQuestionBox(box) {
     const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
     
     const imgs = box.querySelectorAll('.q-content img, .q-image-wrap img');
+    // Preserve an authored pixel cap while constraining it to the actual column.
+    // A fixed inline max-width otherwise overrides the responsive stylesheet.
+    imgs.forEach(img => {
+        const sourceMaxWidth = String(img.style.maxWidth || '').trim();
+        if (/^(?:\d+(?:\.\d+)?|\.\d+)px$/i.test(sourceMaxWidth) && parseFloat(sourceMaxWidth) > 0) {
+            const priority = img.style.getPropertyPriority('max-width');
+            img.style.setProperty('max-width', `min(100%, ${sourceMaxWidth})`, priority);
+        }
+    });
 
     for (const tCls of textClasses) {
         box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
@@ -3324,7 +3289,7 @@ function setPrintButtonsBusy(busy, mode) {
     });
     if (busy) {
         const active = mode === 'raster' ? document.getElementById('btn-print-raster') : mode === 'native' ? document.getElementById('btn-print-native') : mode === 'gdi' ? document.getElementById('btn-print-gdi') : document.getElementById('btn-print');
-        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '네이티브 PCL 준비 중…' : mode === 'gdi' ? 'Windows 드라이버 준비 중…' : '인쇄 준비 중…';
+        if (active) active.textContent = mode === 'raster' ? '페이지 이미지 생성 중…' : mode === 'native' ? '빠른 인쇄 준비 중…' : mode === 'gdi' ? '빠른 인쇄 준비 중…' : '인쇄 준비 중…';
     } else {
         buttons.forEach(button => { button.textContent = button.dataset.apPrintLabel || button.textContent; });
     }
@@ -3425,7 +3390,7 @@ async function safePrint(mode = 'vector') {
                 documentName: document.title,
                 onProgress: progress => {
                     const button = document.getElementById('btn-print-native');
-                    if (button) button.textContent = `PCL 페이지 변환 중… ${progress.index}/${progress.total}`;
+                    if (button) button.textContent = `빠른 인쇄 준비 중… ${progress.index}/${progress.total}`;
                 }
             }) };
         } else if (mode === 'gdi') {
@@ -3437,7 +3402,7 @@ async function safePrint(mode = 'vector') {
                 documentName: document.title,
                 onProgress: progress => {
                     const button = document.getElementById('btn-print-gdi');
-                    if (button) button.textContent = `GDI 페이지 변환 중… ${progress.index}/${progress.total}`;
+                    if (button) button.textContent = `빠른 인쇄 준비 중… ${progress.index}/${progress.total}`;
                 }
             }) };
         } else optimizedImages = await flattenPrintImagesForOpaquePrint();
@@ -3669,7 +3634,7 @@ async function init() {
                 AppState.qpp = normalizeMixedQpp(p.get('qpp') || AppState.meta.qpp);
                 AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
                 const title = getIdentityTitle();
-                document.getElementById('ctrl-title').textContent = title;
+                document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title;
                 document.getElementById('qppSelect').value = String(AppState.qpp);
                 document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
                 renderPrintHeaderControls();
@@ -3726,7 +3691,7 @@ async function init() {
 
     AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
     const title = getIdentityTitle();
-    document.getElementById('ctrl-title').textContent = title;
+    document.getElementById('ctrl-title').textContent = title; document.getElementById('ctrl-title').title = title;
     document.getElementById('qppSelect').value = String(AppState.qpp);
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
     renderPrintHeaderControls();
@@ -4002,7 +3967,7 @@ return { AppState,
         if (ctx) mixedReadinessTracker = ctx.readinessTracker;
         renderPrintHeaderControls();
         syncQrOutputControls(ctx?.input.url);
-        document.getElementById('ctrl-title').textContent = getIdentityTitle();
+        document.getElementById('ctrl-title').textContent = getIdentityTitle(); document.getElementById('ctrl-title').title = getIdentityTitle();
         document.getElementById('qppSelect').value = String(AppState.qpp);
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${AppState.mode}`));
         applyQrSolutionLockUI();

@@ -6,7 +6,15 @@
 
 신규 기출·유사·ALIVE/Generated·교과서·문제집·교재/평가 문항의 전체 제출 요건은 [확장 메타·4칸·기록 메타 공통 계약](JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 따른다. 이 문서의 Resolver 결과는 그중 기존 PT/TPL 투영을 담당하며 4칸 판정·검토 기록을 자동 생성하거나 대체하지 않는다. 4칸은 최종 문항·해설에서 독립 판정하고 동반 파일로 인계한다. 이유: Resolver PASS만으로 확장 메타 전체를 작성·검토했다고 오인하지 않기 위해서다.
 
-실제 원문 + 해당 학년 2022/2015 교육과정 내 학생 재현 가능 최종 풀이 → 표준단원/세부단원 → RPM Primary L1→L4 → CrossConcept/Condition/Integration → 공식 Resolver가 ACTIVE PT/TPL과 정확한 과정 바인딩을 결정한다. **AI가 PT/TPL을 별도 의미 분류로 재발명하거나 CrossConcept으로 Primary를 갈아끼우지 않는다.**
+**유형(PT/TPL) 출처 제한 해제 (2026-11-16 사용자 결정).** "PT/TPL은 공식 Resolver 결과만"이라는 제한을 없앤다. 이 문서와 다른 문서(봉인된 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md` 포함)에 남은 같은 뜻의 문구보다 이 항이 우선한다. 이유: 유형은 문항이 늘수록 계속 늘어나는 분류라 한 판정기에 묶을 수 없고, 잠금 때문에 유형 칸이 대부분 비어 있었다.
+
+- **값을 내는 길은 셋이고 모두 정식이다.** ① Resolver 조회(RPM 경로 → 크로스워크 → ACTIVE 키) ② 문항·해설의 결정 단계를 근거로 작업자(사람·모델)가 ACTIVE 키 가운데서 직접 판정 ③ 맞는 키가 없으면 `registryChanges`로 새 키 신설([확장 원칙](../agents/metadata.md)).
+- **유지하는 조건은 근거다.** 근거 없이 채우지 않는다. 직접 판정은 결정 단계(`decisiveStep`)와 그 근거가 된 원문 구절을 원장에 남긴다. 가장 가까운 키에 억지로 붙이지 않는다. 승인은 서로 보지 않은 두 판정의 일치 또는 검수로 한다.
+- **기계 검증은 그대로다.** 키가 ACTIVE인지, TPL의 부모 PT가 맞는지, 교육과정 바인딩이 있는지를 등록기가 검사한다. 바인딩·크로스워크 행이 없으면 값을 버리지 말고 add-only로 행을 추가한다.
+- **Resolver와 직접 판정이 다르면** 오류로 막지 않는다. 직접 판정의 근거를 확인해 맞으면 크로스워크 행을 추가하고, Resolver 쪽이 맞으면 직접 판정을 고친다.
+- **아직 코드에 남은 것(후속 PR):** 기출 생산 게이트의 Resolver 일치 강제(`completion-evidence.mjs`의 projection parity), `typeHold`로 등록된 문항에 나중에 유형을 채우는 경로, 요청 생성기의 바인딩 자동 추가. 그때까지 이 세 곳은 기존대로 동작한다.
+
+실제 원문 + 해당 학년 2022/2015 교육과정 내 학생 재현 가능 최종 풀이 → 표준단원/세부단원 → RPM Primary L1→L4 → CrossConcept/Condition/Integration → ACTIVE PT/TPL과 정확한 과정 바인딩(Resolver 조회 또는 근거 있는 직접 판정). **CrossConcept으로 Primary를 갈아끼우지 않는다.**
 
 권위 우선순위: 사용자 현재 지시 > 적용 역할/캠페인 정본 > `docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`(의미/증거) 및 RPM LOCKED/마스터 > 본 연결 계약(진입/프로젝션) > Git 과거 사례·crosswalk의 예전 GAP. 본 문서는 새 메타 레지스트리를 생성하지 않는다.
 
@@ -15,7 +23,7 @@
 ## 1. 서로 다른 두 층
 
 - **수학적 의미(사람/AI 판정 + 정본 검증):** 현재 과정/표준단원과 세부단원, RPM Primary L1/L2/L3/L4, 실제 결정 단계 `primaryMethod`/`decisiveStep`, Primary 바깥에서 정답에 기여한 `crossConceptKeys[]`, 실제 조건 `conditionKeys[]`, 복합 사고 `integrationPattern`. 수학 교육과정 밖 공식·미분법으로 풀이를 정당화하지 않는다.
-- **호환성/기계 키(Resolver 판정):** `problemTypeKey`(PT), `templateKey`(TPL), GLOBAL ACTIVE parent와 정확한 교육과정 `curriculum+standardCourse+standardUnitKey+subUnitKey+PT` 바인딩. PT/TPL은 RPM L3/L4의 또 다른 권위가 아니라 메타 소비자를 위한 *projection*이다.
+- **호환성/기계 키(Resolver 조회 또는 근거 있는 직접 판정, §0):** `problemTypeKey`(PT), `templateKey`(TPL), GLOBAL ACTIVE parent와 정확한 교육과정 `curriculum+standardCourse+standardUnitKey+subUnitKey+PT` 바인딩. PT/TPL은 RPM L3/L4의 또 다른 권위가 아니라 메타 소비자를 위한 *projection*이다.
 - **운영 등록(별도):** Git source UID, 소형 승인 메타, Consumer/DB/index, Pages. 메타 의미 확정과 PR/main·학생 배포는 서로 증명하지 않는다.
 
 `PT=RPM L3` 또는 `TPL=RPM L4`라는 단순 일대일 규칙을 만들지 않는다. PT/TPL을 교육과정에 가두어 새 키를 만들지도 않는다. (맞는 ACTIVE 키가 없을 때의 정식 신설 절차는 [확장 원칙](../agents/metadata.md): 추정 금지이지 신설 금지가 아니다.) 기존 2015 ACTIVE 의미 키를 2022 단원에 정확 바인딩하여 재사용한다.
@@ -25,7 +33,7 @@
 1. 실제 원문과 교육과정 내 최종 풀이에서 핵심 사고 및 결정적인 식/조건을 문항별 먼저 작성. R1은 저장 정답/해설 비노출 독립 풀이 및 freeze를 기존 역할 정본대로 선행.
 2. 해당 학년의 마스터 표준단원·세부단원과 RPM Primary L1~L4를 조회; 범위 밖 해법을 억지로 끌어오지 않는다.
 3. 별도로 CrossConcept·Condition·Integration을 실제 해설의 역할로 판정하고 ACTIVE 개념 레지스트리에서 키 조회. Primary와 동일 의미를 중복 CrossConcept로 등록하지 않는다. 단순 계산기술이 Primary의 결정 단계를 대체해서는 안 된다.
-4. `archive/tools/meta-foundation/rpm-active-resolver.mjs`의 유일한 판정 경로를 사용한다. crosswalk → GLOBAL ACTIVE taxonomy/templates → 정확한 curriculum binding 및 TPL parent를 조회한다. 결과 PT/TPL을 손으로 임의 재선정하지 않는다.
+4. `archive/tools/meta-foundation/rpm-active-resolver.mjs`로 crosswalk → GLOBAL ACTIVE taxonomy/templates → 정확한 curriculum binding 및 TPL parent를 조회한다. Resolver가 값을 내지 못하거나 결정 단계와 맞지 않는 값을 내면 §0대로 근거를 남기고 직접 판정하거나 새 키를 만든다. 근거 없이 바꾸지 않는다.
 5. 기존 확정된 학생 해설과 기계 키가 맞지 않으면 해당 QID의 결정 단계/후보만 재검. 본문·다른 QID·대형 메타를 덮어쓰지 않는다.
 6. 해당 stage의 기존 Evidence와 SHA에 결속. R1/R2/R3의 수학·시각·Golden·원본 확인은 기존 역할 품질 게이트로 별도 검증.
 
@@ -38,7 +46,7 @@ node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage R1 --input arch
 
 R2/R3는 `--stage R2`/`--stage R3`와 동일한 현재 판본의 입력으로 실행한다. `--validator-receipt`은 그 판본의 유효 영수증이 있는 경우 지정한다. 입력 경로는 실물 stage-local 소형 JSON이며 `<run>`은 실제 작업 폴더명으로 바꾼다. `stage-meta-bridge.mjs`는 evidence 파일만 `archive/_generated/` 아래 저장한다. SOURCE_ONLY가 없는 R1은 기존 독립성 계약대로 먼저 물리 동결한다.
 
-**GPT/Claude/Gemini가 Node 실행 환경이 없을 때:** 공식 입력 JSON의 `primaryMethod`/`decisiveStep`/RPM 경로와 source SHA를 stage-local ledger로 기록하고, 공식 Resolver를 실행할 수 있는 실제 Git executor에게 같은 파일을 넘긴다. 임의 추정 PT/TPL 또는 자체 제작 유사 Resolver로 PASS하지 않는다. 기술 미실행은 `NOT_RUN` 또는 `OWNER_INCOMPLETE`로 구분한다.
+**GPT/Claude/Gemini가 Node 실행 환경이 없을 때:** 공식 입력 JSON의 `primaryMethod`/`decisiveStep`/RPM 경로와 source SHA를 stage-local ledger로 기록하고, 공식 Resolver를 실행할 수 있는 실제 Git executor에게 같은 파일을 넘긴다. 이때도 §0의 직접 판정(결정 단계와 원문 구절 근거)은 원장에 적을 수 있다. 근거 없는 PT/TPL이나 자체 제작 유사 Resolver로 PASS하지 않는다. 기술 미실행은 `NOT_RUN` 또는 `OWNER_INCOMPLETE`로 구분한다.
 
 ## 3. 판정 상태·금지 행동
 

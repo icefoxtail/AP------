@@ -105,3 +105,216 @@ The create event is documented in [GitHub Actions events](https://docs.github.co
 After the candidate reference is returned, open an ordinary pull request against main with the connected GitHub tool. Normal PR CI, source review evidence, identity checks, changed-UID Consumer checks, and existing registration contracts remain required. A successful candidate build is only a transport result. After a reviewed merge, only the existing single main registration writer may persist shared outputs and dispatch the exact registered snapshot to Pages.
 
 If main advances before the candidate branch can be created, reissue the inputs against a newly checked base. Do not weaken exact-byte assertions or reuse a previous PASS report as proof of the new snapshot. If a referenced request points to different final source bytes, regenerate and review that request through its existing typed registration contract.
+
+## Closed problem image repair eight — `M2_PROBLEM_IMAGE_REPAIR8_V1`
+
+This additional profile transports the reviewed problem-image URI repair for
+E017 Q4/Q5/Q9/Q18/Q20/Q23 and E023 Q6/Q10 only. E017 Q2, all other UIDs, answers,
+solutions, image alt text, layout, metadata values, registries and approval
+requests are outside this profile. The ordinary metadata profiles and their
+`META_FIELDS`/`SOURCE_METADATA_FIELDS` remain unchanged.
+
+The trusted current-main runner dispatches this exact profile to
+`archive/tools/meta-foundation/materialize-reviewed-problem-image-repair8.mjs`.
+It still requires a clean trusted checkout, an input commit whose sole parent
+is that exact main, a matching create event, append-only metadata paths and
+hashes, and the existing current-main lease before candidate publication.
+No code is loaded from the input commit. There is no fallback for a misspelled
+profile, an unsupported shape, or missing immutable evidence.
+
+### Separate static review authority
+
+Stage A2 is an independently published, metadata-only JSON file at
+`docs/operations/m2-problem-image8-repair-20261116/independent-static-v2.json`.
+Its exact thirteen top-level fields are:
+
+- `schemaVersion`: `archive-independent-m2-problem-image-repair8-static-v2`;
+- `profile`: `M2_PROBLEM_IMAGE_REPAIR8_V1`;
+- distinct `producer` and `reviewer` identifiers;
+- `basisReviewSha256` and `repairPlanSha256`, fixed to the reviewed R3 records;
+- `priorStaticRef`: the exact five-key reference to the immutable A1 review;
+- `rows`: exactly eight distinct `{key, newAssetRef, staticDecision,
+  beforeSourceRef, wholeQuestionBeforeSha256, oldAssetRef}` records;
+- `actualUi: "PENDING"`, `newFullMathematicalQa: false`, and zero
+  `newReview2Claims`, `newMetadataApprovals`, `newDifficultyJudgments`.
+
+Each decision must be `ACCEPTED`. Each five-key asset reference contains
+`commit`, `path`, `gitBlobSha1`, `sha256`, and `bytes`. The helper reads the
+immutable Git object and verifies its mode, size, Git hash and raw hash. The
+closed eight-row inventory fixes both the approved new assets and the original
+reviewed source/whole-question/old-asset bytes at
+`61830b6cd7ef773f6d9c963142a7e95af4c48e82`. The helper replays those complete
+historical JavaScript sources, checks each selected whole question digest, and
+verifies each historical asset directly from Git. Reissuing an A2 wrapper
+cannot change that original review context or reassign its A1 reviewer.
+This profile makes no new mathematical,
+difficulty, Native, REVIEW2 or metadata approval.
+
+The published asset authority is `5ab3fd968a000c5bd169cd1f70e082469610ff60`.
+The unchanged A1 review is published as
+`e0c968d539ea5d76ce134c38956a32bc280989fe`, raw SHA-256
+`f608d253890e072e79ed6bc4dcabfb98e9058fcfc4dc60641bf57736f8eff7fb`.
+A2 is published as `8a03e198329962876dadc62149821efefecf0a02`, raw SHA-256
+`3dd0395907a7e047382619832af91e898ca740c7ed712764762ee8099eec7d89`.
+These are evidence references, not a source payload embedded in the input.
+The detailed independent observations and student content are not recopied.
+
+### Metadata-only input shape
+
+The existing candidate envelope contains exactly one `inputFiles` entry,
+its materialization manifest. Even an empty `preservationRequestRefs` field
+is rejected for this profile. The manifest has exactly these fields:
+
+```text
+schemaVersion: archive-m2-problem-image-repair8-materialization-v1
+transportProfile: M2_PROBLEM_IMAGE_REPAIR8_V1
+materializationId
+baseCommit
+identityRef: {path, blobSha1, sha256}
+staticEvidenceRef: {commit, path, gitBlobSha1, sha256, bytes}
+outputScope: [exact E017 source path, exact E023 source path]
+files: [
+  {
+    path,
+    sourceBeforeRef: {commit, path, gitBlobSha1, sha256, bytes},
+    after: {blobSha1, sha256},
+    expectedQuestionCount,
+    changes: [
+      {
+        key, questionUid, sourceOrdinal, wholeQuestionBeforeSha256,
+        imageBefore, imageAfter,
+        oldAssetRef: {commit, path, gitBlobSha1, sha256, bytes},
+        newAssetRef: {commit, path, gitBlobSha1, sha256, bytes}
+      }
+    ]
+  }
+]
+```
+
+`sourceBeforeRef` describes the **current whole source container** at the exact
+input base. It is not the original Native semantic authority. `oldAssetRef`
+also binds the current base; its path and exact bytes must match A2's original
+old asset. `newAssetRef` must equal the matching A2 row. Each selected current
+whole question must equal the historical whole-question digest fixed in A2.
+Rebinding B to a new current source hash does not permit a changed given,
+answer, solution, metadata field or old image for any selected item. Unselected
+questions may have changed in a newer base and are preserved exactly from that
+base. These checks compare whole objects and retain the original distinction
+between static display evidence and semantic registration authority.
+Current identity bytes and the canonical UID/source ordinal lookup must agree.
+An explicit legacy source UID is accepted only through the existing exact,
+unambiguous legacy alias contract. Wrong UID, ordinal, source, duplicated row,
+missing row, mismatched denominator, stale whole-question hash or asset fails.
+
+The input carries only IDs, paths, URI strings and hashes. It cannot carry
+source code, question/answer/solution text, SVG, base64 payloads or arbitrary
+JSON extensions. Approved SVG bytes are published separately. The candidate
+worker never writes or replaces an asset file.
+
+### Source preservation and output
+
+The materializer reads the full immutable current JavaScript, locates strict
+JSON value ranges in its existing `window.questionBank` literal, and replaces
+only each selected top-level `image` string. No key insertion or reformatting
+is supported. Inverting those eight ranges must restore every original byte,
+including comments, prefix and trailing JavaScript statements.
+
+Both complete before and after sources are executed in separate bounded VM
+contexts with string/Wasm code generation disabled. The entire resulting bank
+must equal the original bank with only the selected eight image values changed.
+This detects trailing assignments that override a selected image or change an
+unselected field after an image change. It does not rely on literal-array-only
+comparison. The current two banks contain 23 and 24 questions: eight selected
+image values and 39 unselected whole questions are protected, together with
+all other fields of the selected eight.
+
+The worker writes only the two source files and its normal transport receipt.
+Its candidate remains a child of the immutable input commit, with the envelope
+removed as in the existing workflow. The receipt states `approvalEffect: NONE`,
+`registrationStatus: NOT_REGISTERED`, and the static closure retains
+`actualUi: PENDING`. An explicit publication child may reuse the eight approved
+public asset blobs. Normal PR checks, fresh actual student UI review and any
+separately authorized registrar continuity contract remain required. Neither
+the transport receipt nor static acceptance grants Native/semantic approval.
+
+The real-Git regression fixture reads the historical source and approved assets
+as opaque immutable objects. Tests commit only their public references and
+hashes; they do not embed question, answer, solution or review content. Test
+assertions compare hashes so failed comparisons do not print that content.
+Full-history CI must retain those exact evidence objects; absent evidence is a
+fixture failure, never a skipped positive test. Negative tests cover fully
+resealed current question/old-asset drift, altered historical A2 bindings,
+scope, identity, reviewer separation, metadata/raw payload mixing and complete
+JavaScript suffix effects.
+
+## Separate M2S1 SVG7 content image pointer profile
+
+`M2S1_SVG7_IMAGE_POINTER_V1` is a separate closed profile, implemented by
+`materialize-reviewed-m2s1-svg7-image-pointer.mjs`. The default metadata fields
+and the existing `M2_PROBLEM_IMAGE_REPAIR8_V1` contract remain unchanged. Its
+scope is exactly E037 Q3/Q15, E048 Q11/Q13/Q24 and E045 Q15/Q24, with the
+canonical UID and ordinal for each row fixed in code. The three current banks
+contain 25, 26 and 24 questions: seven selected pointers and 68 unselected
+whole questions.
+
+The independent static authority is
+`34b9e6ab851d78f90bba4975416cbeb5ee8817e3`, path
+`docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json`,
+raw SHA-256 `2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e`.
+It binds the original expectation freeze, original-image observations, separate
+root static review, and exact seven before/after asset refs. The module verifies
+those fixed hashes, separate producer/reviewer identities, seven static decisions
+and `actualUi: PENDING`. New mathematical, Native, REVIEW2, metadata, difficulty
+or four-slot approvals are all zero. The new assets exist separately at public
+commit `c39e2b8a727d1b170980b9decd2288a56102622f`; the worker never writes assets.
+
+The envelope contains only one input file: a manifest with
+`schemaVersion: archive-m2s1-svg7-image-pointer-materialization-v1` and the exact
+profile above. Its closed top-level fields are `schemaVersion`,
+`transportProfile`, `materializationId`, `baseCommit`, `identityRef`,
+`staticEvidenceRef`, `outputScope` and `files`. File entries retain the five-key
+immutable `sourceBeforeRef`, the expected after blob/raw hash pair, exact bank
+count and complete selected changes. Each change contains only:
+
+```text
+key, questionUid, sourceOrdinal, wholeQuestionBeforeSha256,
+pointerField: content, pointerKind: EXACT_SINGLE_IMG_SRC_URI,
+pointerBefore, pointerAfter, contentBeforeSha256, contentAfterSha256,
+oldAssetRef, newAssetRef
+```
+
+Every immutable ref binds commit, path, Git blob SHA, raw SHA-256 and byte count.
+Current source and old-asset refs must resolve at `baseCommit`; current whole
+selected questions and old assets must equal the independently reviewed
+originals. New asset refs must match the exact published asset commit, path
+and bytes. A newer unrelated source-container change is allowed only when these
+selected objects remain exact and every nonselected current object is preserved.
+The complete current identity denominator and canonical UID/ordinal lookups
+are checked. An existing legacy UID uses the original unambiguous alias
+contract. No UID rewriting, numbering change or metadata insertion is allowed.
+
+Only the existing URI inside the selected `content` string's single `img src`
+is replaced. The original URI must occur exactly once in the content literal
+and entire source; the new URI must be absent. The surrounding HTML, all other
+fields and every byte outside those seven URI ranges remain exact. No generic
+HTML normalization is performed. The module recognizes the existing strict
+JSON `window.questionBank` array and the existing strict JSON
+`window.examData.questions` array followed by its unchanged questionBank alias.
+The literal before/after hashes, complete separately executed banks and inverse
+byte reconstruction must all agree. A suffix that changes another field when
+the URI changes is rejected.
+
+Unknown keys, extra input files, missing/duplicated/foreign scope rows, raw source
+or SVG payloads, and even an empty `preservationRequestRefs` field are rejected.
+The generated candidate changes only the three source files plus the existing
+transport receipt/envelope lifecycle. Its receipt remains `approvalEffect: NONE`
+and `registrationStatus: NOT_REGISTERED`. Actual student UI, independent current
+display review and any registrar continuity request are separate requirements.
+Static acceptance or this source transport cannot substitute for them.
+
+The dedicated regression suite is registered in the full runner and registration
+scope. It uses a 256 MB heap and a finite 240-second command budget after a
+115.4-second complete local boundary run. Original immutable student files are
+read only as opaque Git inputs; no student text or SVG payload is embedded in
+the committed test. Missing historical objects fail the fixture instead of
+skipping a positive case.

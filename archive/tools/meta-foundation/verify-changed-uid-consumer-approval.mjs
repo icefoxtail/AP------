@@ -41,6 +41,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { isAuditPreservation } from "./native-audit-preservation.mjs";
+import { isPartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
 import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
@@ -50,6 +51,7 @@ import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
+import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS } from "./register-type-judgment.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -156,6 +158,23 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, request: doc,
         rows: doc.items.map(item => ({ ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false })) };
     }
+    if (schema === SCHEMA.V2 && doc.approval?.type === DIRECT_JUDGMENT) {
+      // Type fields only: the claim is that the consumer now shows the judged PT/TPL as approved facets (metaHint*).
+      if (doc.scope !== "PARTIAL_UIDS" || doc.fieldScope !== FIELD_SCOPE_TYPE_ONLY || doc.approval.metadataReviewed !== true ||
+          !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length || doc.items.length > doc.expectedQuestionCount)
+        fail("INVALID_REQUEST", "direct type judgment requires its PARTIAL_UIDS TYPE_ONLY scope");
+      const rows = doc.items.map(item => {
+        if (!item?.questionUid || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > doc.expectedQuestionCount ||
+            typeof item.after?.problemTypeKey !== "string" || !item.after.problemTypeKey.trim())
+          fail("INVALID_REQUEST", "direct type judgment item needs questionUid, sourceOrdinal and after.problemTypeKey");
+        return { ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false, gated: false,
+          expect: { problemTypeKey: item.after.problemTypeKey, templateKey: typeof item.after.templateKey === "string" ? item.after.templateKey.trim() : "" } };
+      });
+      if (new Set(rows.map(r => r.uid)).size !== rows.length || new Set(rows.map(r => r.ordinal)).size !== rows.length)
+        fail("INVALID_REQUEST", "direct type judgment UID/ordinal scope is ambiguous");
+      return { kind: "direct-type-judgment", approvalType: DIRECT_JUDGMENT, exam: doc.examUid || doc.sourceArchiveFile, sourceFile: doc.sourceArchiveFile,
+        expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, request: doc, rows };
+    }
     if (schema === SCHEMA.V2 && doc.registrationMode !== undefined) {
       if (doc.registrationMode !== "IDENTITY_FINGERPRINT_ONLY" || doc.scope !== "PARTIAL_UIDS" ||
           doc.approval?.type !== "FINAL_QA" || doc.approval.metadataReviewed !== true ||
@@ -185,7 +204,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         doc.approval.rendererPreservation?.schemaVersion === APPROVED_RENDERER_PRESERVATION;
       if ((!audit && doc.approval.type !== "FINAL_QA") || (renderer ? !rendererValid : !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined)) ||
+          (!audit && !(partial && isPartialSubsetPreservation(doc)) && doc.approval.sourceRebind.schemaVersion !== undefined)) ||
           doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
@@ -395,7 +414,8 @@ function verifiedDifficultyRows(root, unit, consumer) {
     const values = Object.fromEntries(DIFFICULTY_FIELDS.map(field => [field, checked.after[field] ?? null]));
     const semanticPending = !meta.metadataApprovalType &&
       ["registration_only_pending_review", "registration_pending_semantic_review"].includes(meta.metadataStatus) &&
-      meta.fieldStatus?.problemType === "manual_review_pending" && meta.fieldStatus?.template === "manual_review_pending" &&
+      // A direct type judgment (type fields only) is not a semantic review of the row: its other fields stay pending.
+      ["manual_review_pending", TYPE_FIELD_STATUS].includes(meta.fieldStatus?.problemType) && ["manual_review_pending", TYPE_FIELD_STATUS].includes(meta.fieldStatus?.template) &&
       meta.tagConfidence === "registration_only" && meta.tagStatus === "registration_only_pending_review";
     return { ...row, difficultyProjection: { values, binding: checked.consumerBinding, semanticPending,
       ordinaryNormalization: proof.mode === "verify-projection" && !unit.request.reviewedCorrection,
@@ -500,6 +520,28 @@ function checkRow(consumer, unit, row) {
   if (Object.keys(queryFilters).length && !consumer.ProblemBankMeta.query(consumer.inventory, queryFilters).some(r => r.uid === uid))
     return { ...out, reason: "NOT_RETURNED_BY_PAGE_QUERY", detail: JSON.stringify(queryFilters) };
   return out;
+}
+
+// Direct type judgment: the official registrar replay proves the registered type fields; the consumer must then show them as
+// approved facets. A row whose stored fingerprints no longer match the current question text (binding "stale") has its type
+// recorded but is not displayed by the catalog by design; that is reported, not failed (the row needs its own fingerprint rebind).
+function checkTypeRow(consumer, unit, row) {
+  const key = `${normalizeFile(unit.sourceFile)}#${Number(row.ordinal)}`;
+  const resolved = consumer.resolvedBySource.get(key);
+  if (!resolved) return { reason: "ROW_MISSING_IN_RESOLVED_CATALOG", detail: key };
+  const out = { uid: resolved.questionUid };
+  if (row.uid !== resolved.questionUid) return { ...out, reason: "UID_MISMATCH", detail: `request ${row.uid} != consumer ${resolved.questionUid}` };
+  const typeConflicts = (resolved.metadataConflicts || []).filter(field => ["problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
+  if (typeConflicts.length) return { ...out, reason: "METADATA_CONFLICT", detail: typeConflicts.join(",") };
+  if (!consumer.pageByUid.get(resolved.questionUid)) return { ...out, reason: "NOT_IN_PROBLEM_BANK_INDEX" };
+  if (!["exact", "content"].includes(resolved.metaBinding)) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
+  const status = String(resolved.metaHintStatus || "");
+  const mismatches = [];
+  if (!same(resolved.metaHintPT, row.expect.problemTypeKey)) mismatches.push(`problemTypeKey: request ${JSON.stringify(row.expect.problemTypeKey)} != consumer ${JSON.stringify(resolved.metaHintPT ?? null)}`);
+  if (!same(resolved.metaHintTPL || "", row.expect.templateKey)) mismatches.push(`templateKey: request ${JSON.stringify(row.expect.templateKey)} != consumer ${JSON.stringify(resolved.metaHintTPL ?? null)}`);
+  if (status[1] !== "A") mismatches.push(`PT facet is not approved (metaHintStatus=${JSON.stringify(status)})`);
+  if (row.expect.templateKey && status[2] !== "A") mismatches.push(`TPL facet is not approved (metaHintStatus=${JSON.stringify(status)})`);
+  return mismatches.length ? { ...out, reason: "VALUE_MISMATCH", detail: mismatches.join("; ") } : out;
 }
 
 function preservedNativeRows(root, unit, consumer) {
@@ -704,6 +746,26 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       }
       continue;
     }
+    if (unit.kind === "direct-type-judgment") {
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.directTypeApprovals = 0; summary.typeNotDisplayed = 0;
+      summary.expectedQuestionCount = unit.expectedQuestionCount;
+      try {
+        const replay = registerReviewedExamV2({ root, request: unit.request, write: false, verifyProjection: true });
+        if (replay.status !== "PASS" || replay.replay !== true || replay.fieldScope !== FIELD_SCOPE_TYPE_ONLY || replay.typeApprovals !== rows.length ||
+            replay.newMetadataApprovals !== 0 || replay.plannedPaths.length) throw Error("direct type judgment replay/scope mismatch");
+      } catch (error) {
+        summary.checked = rows.length; result.counts.checked += rows.length;
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-", reason: "VALUE_MISMATCH", detail: "official type judgment replay failed: " + error.message });
+        continue;
+      }
+      for (const row of rows) {
+        summary.checked++; result.counts.checked++;
+        const checked = checkTypeRow(consumer, unit, row);
+        if (checked.reason) result.failures.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid || row.uid || "-", reason: checked.reason, detail: checked.detail || "" });
+        else { summary.passed++; result.counts.passed++; if (checked.typeNotDisplayed) summary.typeNotDisplayed++; else summary.directTypeApprovals++; }
+      }
+      continue;
+    }
     if (unit.kind === "binding-course-correction") {
       // This operation creates no approval. Its gate is exact preservation of
       // every runtime consumer in the pack, including existing non-approvals.
@@ -747,7 +809,8 @@ export function renderSummary(result) {
   const c = result.counts;
   const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation", "native-authority-withdrawal"].includes(e.kind));
   const difficulty = result.exams.some(e => e.kind === "difficulty5-ratings");
-  const verification = preservation || difficulty;
+  const typeJudgment = result.exams.some(e => e.kind === "direct-type-judgment");
+  const verification = preservation || difficulty || typeJudgment;
   const lines = [verification ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
     lines.push(`PASS: changed ${c.passed}/${c.changed} ${verification ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
@@ -771,6 +834,8 @@ export function renderSummary(result) {
     lines.push(`  New basic parent approvals: ${e.newBasicParentApprovals ?? 0}; preserved prior parents: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   for (const e of result.exams.filter(e => e.kind === "native-authority-withdrawal"))
     lines.push(`  Unsupported approvals withdrawn: ${e.withdrawnMetadataApprovals ?? 0}; explicit authority holds: ${e.authorityHolds ?? 0}; new approvals: 0.`);
+  for (const e of result.exams.filter(e => e.kind === "direct-type-judgment"))
+    lines.push(`  Direct type judgments shown as approved facets: ${e.directTypeApprovals ?? 0}; recorded but not shown until the row fingerprint is rebound: ${e.typeNotDisplayed ?? 0}; unit/difficulty/other approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

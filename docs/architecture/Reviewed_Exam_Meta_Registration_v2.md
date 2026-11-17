@@ -277,6 +277,25 @@ M3 C그룹의 `artifactRefs["proposals.json"]`도 원 Git SHA로 읽는다. `pro
   이 수리 영수증이 소유하지 않는다. `--verify-projection`은 실제 resolver와 학생용 ProblemBankMeta 검색에서 UID와 두 지문을 확인하고,
   새 의미 승인 없이 수리된 source binding만 검증한다. 기존 소비자 충돌은 면제하지 않는다.
 
+### 유형만 등록하는 `DIRECT_JUDGMENT` (2026-11-17)
+
+`approval.type: "DIRECT_JUDGMENT"`(`reviewPassCount` 1)는 PT/TPL 두 칸만 쓰는 PARTIAL_UIDS 요청이다. `fieldScope: "TYPE_ONLY"`가 필수이고
+`registrationMode`·`sourceRebind`·`rendererPreservation`·item의 `sourceReview`/`rebind`/`typeHold`/`targetParentRef` 등 다른 칸을 여는 키는 거부한다.
+구현은 `register-type-judgment.mjs`이고 v2는 승인 유형 검사와 한 줄 분기만 갖는다(IDENTITY_FINGERPRINT_ONLY와 같은 자리). 다른 v2 길은 영향이 없다.
+
+- 쓰는 값: `problemTypeKey`, `templateKey`(없으면 PT만), `fieldStatus.problemType`/`template` = `approved_direct_judgment`(PT만이면 template 상태는 그대로),
+  행의 `typeApproval`(판정자·근거 문장·판정 때 지문·행 지문 결속 `exact|content|stale`·결과표 출처·결정 문서·덮어쓴 이전 값). 단원·소단원·난이도·
+  교차개념·조건·결합패턴·RPM 경로, 행 상태(`metadataStatus`·`reviewStatus`·tag), 지문, identity, Runtime은 읽어 승인하지도 쓰지도 않는다.
+- 지키는 값: PT ACTIVE, TPL ACTIVE이고 상위가 고른 PT, 문항 `scope`(교육과정·과목)에 대한 ACTIVE 연결(단원은 보지 않는다), `before` 일치,
+  이미 승인된 유형(`approved*`)과 승인 전이 아닌 상태(hold·adjudicated·debt)는 덮어쓰지 않음, 원본 blob·문항별 판정 지문 일치,
+  `metadataApprovalType`(영수증이 있는 승인)이 있는 행과 분류 HOLD 행은 거부(전체 v2 길을 쓴다).
+- `registryChanges`는 추가 전용(`before: null`, ACTIVE, problemTypes/templates/bindings)만 받고, 버전이 오른 팩의 Runtime 파일 버전을 같이 맞춘다.
+- 영수증은 v2 영수증 schema에 `fieldScope: "TYPE_ONLY"`, `typeRecords`(행의 유형 조각)를 담는다. `appliedRecords`·`runtimeRecords`는 비어 있다. 재실행은
+  행의 유형 조각과 레지스트리를 다시 검사하고(`--verify-projection` 포함) 아무것도 쓰지 않는다.
+- Consumer 검증(`verify-changed-uid-consumer-approval.mjs`, kind `direct-type-judgment`)은 공식 등록기 replay 뒤 실제 카탈로그의 `metaHintPT/TPL`이
+  요청과 같고 `metaHintStatus`가 `A`(승인)인지 본다. 행 지문이 현재 본문과 어긋난(`stale`) 행은 유형이 기록되지만 카탈로그가 보여주지 않으므로
+  실패가 아니라 `typeNotDisplayed`로 보고한다.
+
 ### Generated 확장 키(EXT-*) — 사용은 허용, 정본 승격 없음 (2026-11-02)
 
 유사시험지 등 Generated 문항은 정본에 없는 개념·조건을 `EXT-CROSS-*`/`EXT-COND-*` 확장 키로 쓴다
@@ -781,3 +800,49 @@ receipt; all protected metadata values, type HOLD and runtime values remain
 unchanged. It reports one preserved BASIC approval and zero new metadata,
 difficulty, mathematical, REVIEW2 or four-slot approvals. Full parent/catalog
 closure and consumed typed Consumer validation remain required before release.
+
+## Immutable M2 CC finalization with a separately reviewed current renderer
+
+A `PARTIAL_UIDS` / `FINAL_QA` source reassessment may explicitly carry
+`sourceReview.m2CcRendererProof` with schema
+`archive-reviewed-m2-cc-renderer-continuity-v1`. This is a separate, bounded M2
+S2 CC contract. The ordinary native reassessment and the M3 renderer contract
+remain unchanged; their prohibition on combining unrelated finalizations and
+renderer reviews remains in force. Registration modes, source-only preservation,
+M3 renderer proofs, template/condition finalization and newly proposed values
+cannot be combined through this M2 bridge.
+
+The SHA-bound immutable composition document names the original accepted request
+and source, the native review, the exact current Git source and a separate
+independent renderer review. The original request's selected UID/ordinal inventory,
+semantic after values, registry change, definition and support remain exact. The
+original proposal finalizer runs unchanged against the original accepted source
+question and old assets. Its original source snapshot, application, definition,
+primary-image witness and ADD_ONLY checks must all pass. The old image is never
+represented as the new image.
+
+A second gate binds the independent review to both complete question hashes and
+complete old/current asset inventories. The current question must equal the
+reviewed current Git question with only the original accepted `crossConceptKeys`,
+`curriculumKey` and `courseKey` transported. All other non-renderer fields, including
+stem, choices, answer and solution text, remain equal. Only the explicitly reviewed
+`image`, `imageAlt`, `imageSize`, `layoutTag`, `solutionImage`, `solutionImageAlt` and
+`solutionImageCaption` differences are supported. Local and immutable asset hashes,
+regular-file/path safety and self-contained SVG dependencies remain mandatory.
+The bridge issues no new mathematical, difficulty or definition judgment.
+
+The existing source-review sidecar stores the complete typed request. Registrar
+replay and native reuse re-run both gates and compare the complete reproduced
+proof with the issued proof. Removing or changing the bridge cannot fall back to
+an ordinary review of the old payload. AutoMeta may accept a changed pending
+cursor only after that production verification returns true and the dedicated M2
+cursor gate confirms the exact original or current student payload and original
+finalization digest. A general source-review success is not a student-change
+exception. Same-path asset drift, arbitrary earlier cursors, changed answers,
+missing evidence and altered approvals remain failures.
+
+All local old/current assets and composition/independent witnesses must be explicit
+SHA-bound request evidence. Original source/request/native/finalization commits
+must be reachable in the release history for fixed Git validation. An official
+scoped registrar, native reuse, Consumer and replay result is required separately
+from an independent renderer PASS.

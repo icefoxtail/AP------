@@ -1,0 +1,116 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T17:39:56+09:00",
+    "sourceArchiveFile":  "original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js",
+    "items":  [
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "g(x)=(x−1)²+1가 0≤x≤3에서 [1,5]를 만들고 f(t)=−(t−4)²+a+16은 이 구간에서 t=1에서 최소이므로 a+7=5, a=−2이다.",
+                      "choiceTableUsed":  "H1-수학(하).json",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수",
+                                      "midUnit":  "함수",
+                                      "l3":  "합성함수",
+                                      "l4":  "정의역 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "닮음으로 직사각형 변을 x, y라 하면 x/6+y/8=1이고 xy의 최대는 x=3,y=4에서 12이므로 둘레는 14이다.",
+                      "choiceTableUsed":  "H1-수학(하).json",
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  {
+                                   "rpmPath.majorUnit":  "H1-수학(하) 표에는 직각삼각형 내부 직사각형의 넓이 최적화를 분류할 도형 majorUnit이 없다.",
+                                   "rpmPath.midUnit":  "선택 표에 직각삼각형과 내접 직사각형 넓이를 다루는 midUnit이 없다.",
+                                   "rpmPath.l3":  "표의 l3에는 닮음으로 내접 직사각형의 넓이를 최대화하는 유형이 없다.",
+                                   "rpmPath.l4":  "표에 이 직각삼각형 내접 직사각형 넓이 최대를 나타내는 l4가 없어 특정하지 않는다."
+                               }
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "h(x)=f(|x|)이고 h(x)=3의 세 근 조건은 b=3이며 양의 정수 높이 점 수 9는 꼭짓점 높이 4, 즉 a=2일 때 맞아 f(4)=−5이다.",
+                      "choiceTableUsed":  "H1-수학(하).json",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수",
+                                      "midUnit":  "함수",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  {
+                                   "rpmPath.l3":  "H1-수학(하) 표에 짝함수로 접힌 이차함수 그래프의 정수 높이 점 개수 분류가 없다.",
+                                   "rpmPath.l4":  "선택 표에 절댓값 대칭 그래프와 정수 높이 교점 개수 유형의 l4가 없다."
+                               }
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "f=x³+Ax²+Bx+C로 놓으면 조건은 5A+3B=−9, −1+A−B+2C=0, 1+A+B+C=0이고 이를 풀어 A=−3,B=0,C=2이므로 f(x)=x³−3x²+2이다.",
+                      "choiceTableUsed":  "H1-수학(상).json",
+                      "rpmPath":  {
+                                      "majorUnit":  "다항식",
+                                      "midUnit":  "항등식과 나머지정리",
+                                      "l3":  "항등식",
+                                      "l4":  "미정계수법"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_IDENTITY_PARAMETER"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "standardUnitKey":  "H15-SA-02",
+                      "subUnitKey":  "H15-SA-02-REMAINDER_FACTOR"
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "f(x)=(x−2)²−6이고 역함수가 존재하려면 구간이 꼭짓점 왼쪽에 있어 b≤2이며, 범위 [−5,10]에서 f(−2)=10과 f(b)=−5를 맞춰 b=1,a=−4이다.",
+                      "choiceTableUsed":  "H1-수학(하).json",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수",
+                                      "midUnit":  "함수",
+                                      "l3":  "함수의 성질",
+                                      "l4":  "일대일함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RANGE",
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

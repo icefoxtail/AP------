@@ -591,7 +591,7 @@ window.questionBank = [
       "289"
     ],
     "answer": "④",
-    "solution": "[확률모형] 한 번 던질 때 5 이상의 눈이 나올 확률은 $\frac13$이다. 5번 중 5 이상이 나온 횟수를 $Y$라 하면 $Y\sim B(5,\frac13)$이다.<br>[상금 조건] 매번 기본 1000원에 5 이상일 때 1000원이 추가되므로 총상금은 $5000+1000Y$원이다. 9000원 이상이려면 $Y\ge4$이다.<br>[확률 계산] $$P(Y\ge4)=\binom54\left(\frac13\right)^4\left(\frac23\right)+\binom55\left(\frac13\right)^5=\frac{10}{243}+\frac1{243}=\frac{11}{243}.$$<br>[정답] 서로소인 $a=243$, $b=11$이므로 $a+b=254$이다. 정답은 ④이다.",
+    "solution": "[확률모형] 한 번 던질 때 5 이상의 눈이 나올 확률은 $\\frac13$이다. 5번 중 5 이상이 나온 횟수를 $Y$라 하면 $Y\\sim B(5,\\frac13)$이다.<br>[상금 조건] 매번 기본 1000원에 5 이상일 때 1000원이 추가되므로 총상금은 $5000+1000Y$원이다. 9000원 이상이려면 $Y\\ge4$이다.<br>[확률 계산] $$P(Y\\ge4)=\\binom54\\left(\\frac13\\right)^4\\left(\\frac23\\right)+\\binom55\\left(\\frac13\\right)^5=\\frac{10}{243}+\\frac1{243}=\\frac{11}{243}.$$<br>[정답] 서로소인 $a=243$, $b=11$이므로 $a+b=254$이다. 정답은 ④이다.",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",

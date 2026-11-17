@@ -1,0 +1,193 @@
+{
+    "sourceArchiveFile":  "types/high/h2/25_제일고_1학기_중간_고2_심화.js",
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "items":  [
+                  {
+                      "resolutionReason":  "3cos(ax)의 주기는 2π/a이고 2π/a=4π에서 양수 a=1/2이므로 양수 제약을 반영한다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "ordinal":  1,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "최댓값 4와 최솟값 −2에서 중심선 c=1, 진폭 |a|=3을 얻고 주기 3π에서 |b|=2/3을 대입해 x=π/2의 값을 구한다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l3":  "그래프 활용",
+                                      "l4":  "최대·최소"
+                                  },
+                      "ordinal":  10,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "a_n=(n−16)d이고 d≠0이므로 (k−16)(k−14)d²\u003c0은 14\u003ck\u003c16을 뜻해 자연수 k=15다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_NONZERO",
+                                            "COND_NATURAL"
+                                        ],
+                      "ordinal":  11,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "첫 정사각형 둘레는 4이고 새 넓이는 매번 남은 넓이의 1/4이므로 둘레비는 √3/2, 누적은 2회 4+2√3\u003c7.9와 3회 7+2√3\u003e7.9에서 최소 n=3이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "ordinal":  12,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "(a+4d)²=(a+d)(a+13d)와 d\u003e0에서 d=2a이고 3a+18d=78에서 a=2,d=4이므로 a₁₀=38이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "ordinal":  13,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "각 항은 2+1/k−1/(k+1)로 정리되어 합이 2m+1−1/(m+1)이고 m=24에서 1224/25가 된다.",
+                      "chosenFrom":  "pass1",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "ordinal":  14,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "(2cos x−1)(cos x+1)\u003c0과 0\u003cx≤π에서 sin x\u003e0을 함께 적용하면 π/3\u003cx\u003cπ이고 β−α=2π/3이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "ordinal":  15,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "2sin(kx)=c의 연속한 네 양의 교점은 주기 2π/k에 따라 짝을 이루고 합은 6π/k이므로 cos(6π/k)=−1/2에서 최대 양수 k=9다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "ordinal":  16,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_NONZERO"
+                                        ],
+                      "rpmPath":  {
+                                      "l3":  "등비수열",
+                                      "l4":  "중항"
+                                  },
+                      "resolutionReason":  "2^a,2^b,2^c의 등비중항에서 2b=a+c가 되고 (a−c)²=0 및 (a−c)²/4≥0으로 세 명제가 모두 참이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "rpmPath":  {
+                                      "l3":  "등비수열",
+                                      "l4":  "합"
+                                  },
+                      "resolutionReason":  "정수 첫째항 a와 정수 공비 r에서 a(1+r+r²)=3 및 a²(1+r²+r⁴)=21을 풀면 r=−2,a=1이라 a₅=16이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "resolutionReason":  "tan(ax)의 점근선 간격은 π/a이고 제시된 x=nπ/3+π/6의 간격 π/3과 같아 양수 a=3이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "ordinal":  2,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ],
+                      "rpmPath":  {
+                                      "l4":  "삼각함수 관계"
+                                  },
+                      "resolutionReason":  "t=2x−π/3에서 2x=t+π/3이고 sin(t−π/2)=−cos t이므로 α=π/3, β=5π/6이며 두 값은 제시 범위 안이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2"
+                  },
+                  {
+                      "resolutionReason":  "sin(x+π/6)=cos(x−π/3)으로 두면 f=−s²+s+1은 s=1/2에서 최대이고 [0,2π)에서 cos k\u003c0인 최대점은 k=2π/3뿐이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "ordinal":  22,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "cos²x−sin x+3=−(sin x+1/2)²+17/4이므로 최대 x는 7π/6,11π/6이고 최소 x=π/2에서 두 차의 합은 −2π다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "ordinal":  23,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "S_n=(n+2)Σk−Σk²=n(n+1)(n+5)/6이고 S_8=8·9·13/6=156이므로 자연수 m=8이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "ordinal":  25,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "등차수열의 합은 n(2+20)/2=11n이므로 11n=110에서 자연수 n=10이다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "ordinal":  4,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "등비중항 조건 (x+3)²=4x²는 (x−3)(x+1)=0이어서 가능한 정수 x는 3,−1이고 합은 2다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "ordinal":  5,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "제2사분면 θ에서 cosθ=−4/5, tanθ=−3/4이고 각 변환식은 분자를 −2cosθ, 분모를 −tanθ로 바꿔 32/15를 준다.",
+                      "chosenFrom":  "pass2",
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "ordinal":  7,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "사인법칙으로 변의 비가 3:4:5이고 둘레 60에서 변은 15,20,25이므로 넓이는 15×20/2=150이다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l3":  "삼각형의 넓이",
+                                      "l4":  "복합도형"
+                                  },
+                      "ordinal":  8,
+                      "choiceTableUsed":  "H2-대수.json"
+                  }
+              ],
+    "createdAt":  "2026-11-13T11:53:00+09:00"
+}

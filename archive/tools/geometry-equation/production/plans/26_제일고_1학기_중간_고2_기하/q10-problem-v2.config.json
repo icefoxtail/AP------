@@ -1,0 +1,66 @@
+{
+  "sourcePath": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "solid-figure-v1",
+        "view": {
+          "yawDeg": 28
+        },
+        "solids": [
+          {
+            "id": "tetra",
+            "kind": "REGULAR_POLYHEDRON",
+            "faces": 4,
+            "side": 3,
+            "names": [
+              "B",
+              "C",
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "octa",
+            "kind": "REGULAR_POLYHEDRON",
+            "faces": 8,
+            "side": 3,
+            "names": [
+              "F",
+              "G",
+              "H",
+              "I",
+              "E",
+              "J"
+            ]
+          }
+        ],
+        "caption": "정사면체와 정팔면체",
+        "accessibilityDescription": "왼쪽 정사면체의 꼭짓점은 A, B, C, D이다. 오른쪽 정팔면체의 꼭짓점은 E, F, G, H, I, J이다. 보이지 않는 모서리는 점선으로 표시한다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "정사면체 ABCD",
+            "mappedTo": "solids[0]"
+          },
+          {
+            "id": "c2",
+            "condition": "정팔면체 EFGHIJ",
+            "mappedTo": "solids[1]"
+          }
+        ],
+        "newVisualInformation": [
+          "왼쪽 그림의 잘려 보이지 않던 B 라벨을 복원한다.",
+          "정다면체의 꼭짓점 대응과 보이는 모서리·숨은 모서리 구분을 보존한다."
+        ]
+      },
+      "typography": {
+        "baseFontPx": 26,
+        "displayScale": 1.2,
+        "studentTargetPx": 31.2
+      }
+    }
+  ]
+}

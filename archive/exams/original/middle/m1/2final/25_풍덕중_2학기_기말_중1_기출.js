@@ -813,7 +813,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그래프는 풍덕중학교 학생 $100$명의 윗몸일으키기 기록에 대한 상대도수의 분포를 나타낸 것이다. 기록이 $50$회인 학생이 속한 계급의 학생 수로 옳은 것은? [4점]",
-    "image": "assets/images/25_풍덕중_2학기_기말_중1_기출/q18.png",
+    "image": "assets/images/25_풍덕중_2학기_기말_중1_기출/q18-problem-geometry-20261116.svg",
+    "imageSize": "full",
+    "imageAlt": "윗몸일으키기 기록에 대한 상대도수분포다각형",
     "choices": [
       "$15$명",
       "$20$명",
@@ -863,7 +865,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그래프는 학생 수가 $100$명인 A 중학교, $200$명인 B 중학교에 대해, 학생들의 키에 대한 상대도수의 분포를 나타낸 것이다. 다음 설명 중 가장 옳지 않은 것은? [4점]",
-    "image": "assets/images/25_풍덕중_2학기_기말_중1_기출/q19.png",
+    "image": "assets/images/25_풍덕중_2학기_기말_중1_기출/q19-problem-geometry-20261116.svg",
+    "imageSize": "full",
+    "imageAlt": "A중학교와 B중학교의 키에 대한 상대도수분포다각형",
     "choices": [
       "A 중학교에서 키가 $140\\rm\\,cm$ 미만인 학생은 $15$명이다.",
       "B 중학교에서 키가 $130\\rm\\,cm$ 이상 $140\\rm\\,cm$ 미만인 학생 수는 $10$명이다.",

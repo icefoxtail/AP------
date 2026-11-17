@@ -1,0 +1,471 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-11T21:00:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "x=1에서 3x+5, x=-2에서 4-2/(x+1), 양·음의 무한대에서 나머지 세 식의 극한 등식을 각각 검사한다.",
+                      "decisiveStep":  "색이 모두 달라 회전 고정 배열은 없으므로 4!/4=6가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "여섯 자리 배치 중 세 꼭짓점을 각각 두 자리씩 둔 정삼각형 탁자에서 남자 두 명이 같은 모서리 쌍을 차지하는 경우를 전체 원순열에서 뺀다.",
+                      "decisiveStep":  "전체는 6!/3=240, 같은 모서리에 앉는 경우는 3·2!·4!/3=48이므로 다른 모서리는 192가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_POLYGON_TABLE_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "서로 다른 세 학생이 네 여행지 중 하나씩 고르는 선택을 학생마다 곱의 법칙으로 센다.",
+                      "decisiveStep":  "선택은 학생마다 네 가지씩 독립적으로 가능해 4³=64가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "suncheon의 여덟 문자 배열에서 두 n을 같은 글자로 보고 중복된 배열을 나눈다.",
+                      "decisiveStep":  "같은 n 두 개를 나눈 중복을 제거하면 8!/2!=4·7!이므로 k=4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "숫자 2가 들어갈 자리를 서로 이웃하지 않게 정하고 나머지 자리에 1 또는 3을 채운다.",
+                      "decisiveStep":  "2의 개수가 0, 1, 2일 때 수는 각각 16, 32, 12이므로 모두 60가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NO_ADJACENT_EVEN"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "확통과 독서를 월요일부터 목요일 중 먼저와 나중 순서에 맞게 놓고 영어를 금요일부터 일요일에 고른 뒤 나머지 과목을 배열한다.",
+                      "decisiveStep":  "확통·독서 자리 선택 6가지, 영어 자리 선택 3가지, 나머지 네 과목 배열 4!가 곱해져 432가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INEQUALITY_CONSTRAINT"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "세 종류에서 네 개를 중복 허용해 고르는 경우를 음이 아닌 세 변수의 합으로 바꾼다.",
+                      "decisiveStep":  "x₁+x₂+x₃=4의 해 개수는 별과 막대에 따라 C(6,2)=15이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "무기명 투표는 두 후보가 받을 표 수의 분배로, 기명 투표는 일곱 유권자 각각의 선택으로 센다.",
+                      "decisiveStep":  "무기명은 8가지이고 기명은 2⁷=128가지이므로 b-a=120이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "분할·분배"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "엄격히 증가하는 세 눈은 여섯 눈 중 세 개를 고르는 경우로 세고, 비감소 세 눈은 중복조합으로 센다.",
+                      "decisiveStep":  "m=C(6,3)=20, n=C(8,3)=56이므로 m+n=76이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "x+y+z=15에서 각 홀수 자연수를 2a+1 꼴로 바꾸어 음이 아닌 세 변수 합 문제로 바꾼다.",
+                      "decisiveStep":  "a+b+c=6의 해 수는 C(8,2)=28이므로 순서쌍은 28개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_ODD",
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "C(3,0)+C(4,1)+C(5,2)+C(6,3)+C(7,4)를 조합 계수의 하키스틱 합으로 묶는다.",
+                      "decisiveStep":  "합은 C(8,4)=70으로 정리된다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항계수",
+                                      "l4":  "조합 항등식"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PASCAL_HOCKEY_STICK_IDENTITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "31³을 90으로 나눈 나머지가 1임을 이용해 17제곱을 세제곱 묶음과 제곱으로 나누어 계산한다.",
+                      "decisiveStep":  "31³≡1, 31²≡61 (mod 90)이므로 31¹⁷≡61이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  "선택지의 경우의 수·확률·통계 유형 경로에는 거듭제곱의 나머지 계산 조합이 없다."
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "(x²-3x)⁶을 x⁶(x-3)⁶으로 바꾸고 x⁹과 x¹⁰에 해당하는 이항 전개 항을 각각 찾는다.",
+                      "decisiveStep":  "두 계수는 -540과 135이므로 합은 -405이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "A에서 B까지 격자 최단 경로 중 끊어진 x=110 도로를 피한 수를 세고 P=(140,50)을 거치는 수를 뺀다.",
+                      "decisiveStep":  "전체 허용 경로는 62개이고 P를 지나는 경로는 5·6=30개라서 남는 경로는 32개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_GRID_SHORTEST_PATH"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "X의 일곱 원소 중 하나만 8로 보내고 나머지 여섯 원소를 2에는 최대 3개, 4에는 최대 5개, 6에는 최대 1개 보내는 분배를 센다.",
+                      "decisiveStep":  "남은 여섯 개의 분배 수 합은 41+156=197이고 8의 원소 선택 7가지를 곱해 1379가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "분할·분배"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_FREQUENCY_CONSTRAINTS"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "집합 {1,3,5,7,9,11,13}에서 1을 포함한 채 나머지 여덟 원소를 짝수 개 골라 전체 크기를 홀수로 만든다.",
+                      "decisiveStep":  "여덟 원소의 부분집합 중 짝수 크기인 것은 절반인 2⁷=128개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_ODD_SUBSETS_HALF_POWER"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_ODD"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "U={0,1,2,3,4}의 각 원소가 A∪B에 들어가도록 배정하고 A∩B가 비는 쌍을 제외한다.",
+                      "decisiveStep":  "합집합 조건을 만족하는 쌍은 3⁵이고 교집합이 빈 쌍은 2⁵이므로 211개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_SET_INTERSECTION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NONEMPTY_SELECTION"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "13개의 같은 사탕을 네 학생에게 나누되 정확히 두 명만 1개를 받고 A가 B보다 많이 받는 경우를 나누어 센다.",
+                      "decisiveStep":  "B와 C 또는 D가 1개인 경우는 16가지이고 C와 D가 1개인 경우는 A\u003eB인 네 쌍이라 모두 20가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_LOWER_BOUND",
+                                            "COND_INEQUALITY_CONSTRAINT",
+                                            "COND_FREQUENCY_CONSTRAINTS"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "(1+x+x²+x³)(x²+a/x)^5에서 x⁷을 만드는 항의 계수를 a식으로 세워 225와 같게 둔다.",
+                      "decisiveStep":  "계수 조건은 10a²+5a=225이고 정수 근은 a=-5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "f(2)=1인 경우와 2인 경우로 나누고, 비감소인 앞뒤 값과 f(3)\u003cf(4)의 엄격한 증가 경계를 세어 센다.",
+                      "decisiveStep":  "f(2)=1인 경우 20개, f(2)=2인 경우 20개가 있어 모두 40개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_MONOTONIC_ORDER",
+                                            "COND_STRICT_MONOTONE_VALUES"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "같은 색 빨간 펜 7자루의 세 학생 분배와 구분되는 파란 펜 한 자루의 수령자를 선택하고, 두 번째 경우에는 모두 한 자루 이상 받게 한다.",
+                      "decisiveStep":  "전체 분배는 3·C(9,2)=108가지이고 모두 받는 조건은 3·C(7,2)=63가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_LOWER_BOUND"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "원형 탁자의 여덟 자리에서 1학년 2명, 2학년 3명, 3학년 3명이 같은 학년끼리 이웃하거나 마주보지 않도록 배치한다.",
+                      "decisiveStep":  "가능한 학년 배열은 회전 동치 두 가지이고 각 배열에 2!·3!·3! 배치가 있어 144가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_POLYGON_TABLE_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NO_CONSECUTIVE_ELEMENTS"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "정사각형 밑면의 사각뿔 다섯 면에 여섯 색 중 다섯 색을 하나씩 놓고 네 회전을 같은 색칠로 묶는다.",
+                      "decisiveStep":  "모든 면 색이 다르므로 항등회전만 고정점을 가지며 6·5!/4=180가지이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_POLYHEDRON_COLORING_ROTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "숫자 0,1,2,3,4,5를 한 번씩 쓰는 여섯 자리 수에서 4의 배수가 되는 끝 두 자리를 먼저 고른다.",
+                      "decisiveStep":  "끝 두 자리에서 0을 쓴 세 경우는 각 24개, 쓰지 않은 네 경우는 각 18개라 모두 144개이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_DIVISIBILITY",
+                                            "COND_DISTINCT_DIGITS",
+                                            "COND_EDGE_RESTRICTIONS"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

@@ -42,7 +42,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [
@@ -55,8 +55,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q001_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=15cm, BC=17cm, 피타고라스 정리로 구한 AC=8cm를 보여 주고, sin B의 분자인 AC는 파란색, 분모인 빗변 BC는 주황색으로 구분한다.",
@@ -64,7 +64,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "빗변 17과 한 변 15에서 피타고라스 정리로 맞은편 변을 얻고, 그 변을 빗변으로 나누어 sin B를 정한다.",
-    "decisiveStep": "빗변 17과 한 변 15에서 피타고라스 정리로 맞은편 변을 얻고, 그 변을 빗변으로 나누어 sin B를 정한다."
+    "decisiveStep": "빗변 17과 한 변 15에서 피타고라스 정리로 맞은편 변을 얻고, 그 변을 빗변으로 나누어 sin B를 정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -604,7 +606,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "crossConceptKeys": ["CC_SLOPE","CC_TRIANGLE_AREA","CC_PYTHAGOREAN"],
@@ -615,8 +617,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q10_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q10-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 좌표축 위에서 x축과 y축 위의 점 A, B를 지나는 직선 AB와 원점 O로 만든 삼각형 OAB를 그렸다. O에서 AB에 내린 수선 OH=2이고 OA=26/5, OB=13/6, AB=169/30이며 ∠BAO와 ∠BOH는 같은 크기 α로 파랑으로 표시했다.",
@@ -624,7 +626,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "tan α로 두 절편의 길이비 12:5를 정하고 피타고라스 및 같은 삼각형의 두 넓이 식을 결합하여 배율과 y절편을 얻는다.",
-    "decisiveStep": "tan α로 두 절편의 길이비 12:5를 정하고 피타고라스 및 같은 삼각형의 두 넓이 식을 결합하여 배율과 y절편을 얻는다."
+    "decisiveStep": "tan α로 두 절편의 길이비 12:5를 정하고 피타고라스 및 같은 삼각형의 두 넓이 식을 결합하여 배율과 y절편을 얻는다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -668,7 +672,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "crossConceptKeys": [
@@ -681,8 +685,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q11_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q11-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 꼭짓점 A에서 변 BC에 수선 AH를 내려 직각삼각형 ABH를 만든 그림이다. AC=40m, BC=60m, ∠C=60°이고 CH=20m, AH=20√3m(파랑), BH=40m(주황)가 표시되어 있다.",
@@ -690,7 +694,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "수선으로 두 직각삼각형을 만든 뒤 특수각 삼각비로 높이와 밑변 일부를 구하고 피타고라스 정리로 최종 거리를 결정한다.",
-    "decisiveStep": "수선으로 두 직각삼각형을 만든 뒤 특수각 삼각비로 높이와 밑변 일부를 구하고 피타고라스 정리로 최종 거리를 결정한다."
+    "decisiveStep": "수선으로 두 직각삼각형을 만든 뒤 특수각 삼각비로 높이와 밑변 일부를 구하고 피타고라스 정리로 최종 거리를 결정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -863,7 +869,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
     "crossConceptKeys": [
@@ -877,8 +883,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q14_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q14-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 직사각형 ABCD를 A와 C가 겹치도록 접은 그림이다. PA=PC=5(파랑 눈금), PD=4, AD=9이고 접는 선 PQ는 AC의 중점 M을 지나 AC와 수직이며 ∠APM=∠CPM=x(주황)이다. 아래에 AC를 펴서 AM=MC=3√10/2를 따로 보였다.",
@@ -886,7 +892,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "접는 선이 AC의 수직이등분선이므로 PA=PC와 MC=AC/2를 얻고, 두 번의 피타고라스 정리로 필요한 변을 복원한 뒤 sin x를 정한다.",
-    "decisiveStep": "접는 선이 AC의 수직이등분선이므로 PA=PC와 MC=AC/2를 얻고, 두 번의 피타고라스 정리로 필요한 변을 복원한 뒤 sin x를 정한다."
+    "decisiveStep": "접는 선이 AC의 수직이등분선이므로 PA=PC와 MC=AC/2를 얻고, 두 번의 피타고라스 정리로 필요한 변을 복원한 뒤 sin x를 정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -930,7 +938,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "crossConceptKeys": ["CC_TRIANGLE_AREA","CC_MIDPOINT","CC_PYTHAGOREAN"],
@@ -941,8 +949,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q15_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q15-solution-v2.svg",
     "solutionImageAlt": "해설 그림: x축 위의 O와 B(10, 0), 점 A(32/5, 24/5)로 만든 직각삼각형 OAB와 B가 AC의 중점인 점 C를 그린 그림이다. OA=8, AB=BC=6이고 삼각형 OAB와 OBC의 넓이가 같다(주황).",
@@ -950,7 +958,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "삼각비로 A의 좌표를 복원하고 넓이 이등분을 AB=BC로 해석하여 B가 AC의 중점임을 확인한 다음 C=2B−A로 좌표를 결정한다.",
-    "decisiveStep": "삼각비로 A의 좌표를 복원하고 넓이 이등분을 AB=BC로 해석하여 B가 AC의 중점임을 확인한 다음 C=2B−A로 좌표를 결정한다."
+    "decisiveStep": "삼각비로 A의 좌표를 복원하고 넓이 이등분을 AB=BC로 해석하여 B가 AC의 중점임을 확인한 다음 C=2B−A로 좌표를 결정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -994,7 +1004,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": ["CC_PYTHAGOREAN"],
@@ -1005,8 +1015,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q16-engine-upgrade.svg",
     "imageSize": "tall",
     "imageAlt": "원과 두 현",
@@ -1016,7 +1026,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "같은 길이의 두 현은 중심에서 같은 거리에 있고 중심에서 현에 내린 수선이 현을 반으로 나누므로 반지름과 반현으로 중심거리를 구한다.",
-    "decisiveStep": "같은 길이의 두 현은 중심에서 같은 거리에 있고 중심에서 현에 내린 수선이 현을 반으로 나누므로 반지름과 반현으로 중심거리를 구한다."
+    "decisiveStep": "같은 길이의 두 현은 중심에서 같은 거리에 있고 중심에서 현에 내린 수선이 현을 반으로 나누므로 반지름과 반현으로 중심거리를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -1124,7 +1136,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
     "crossConceptKeys": ["CC_TRIG_RATIO"],
@@ -1135,8 +1147,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q18_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB와 합동인 두 직각삼각형 OAP, OBP(파란색), ∠APO=∠BPO=30°, PA=PB=3√3, OA=OB=3을 보이는 그림이다.",
@@ -1144,7 +1156,9 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "접점의 반지름이 접선과 수직이고 두 직각삼각형이 합동이므로 OP가 60도를 이등분한다. 30도의 탄젠트로 한 접선의 길이를 구한 뒤 같은 길이의 두 접선을 합한다.",
-    "decisiveStep": "접점의 반지름이 접선과 수직이고 두 직각삼각형이 합동이므로 OP가 60도를 이등분한다. 30도의 탄젠트로 한 접선의 길이를 구한 뒤 같은 길이의 두 접선을 합한다."
+    "decisiveStep": "접점의 반지름이 접선과 수직이고 두 직각삼각형이 합동이므로 OP가 60도를 이등분한다. 30도의 탄젠트로 한 접선의 길이를 구한 뒤 같은 길이의 두 접선을 합한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -1426,7 +1440,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "reviewed_pass",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
@@ -1437,8 +1451,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q23_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 눈높이 1.6m인 측정자가 10m 떨어진 나무의 꼭대기를 올려다보는 그림이다. 올려본각은 30°(빨대와 수직 기준선이 이루는 각 60°의 여각)이고, 눈높이 위로 올라간 나무의 높이 H−1.6과 수평거리 10m가 직각삼각형(주황)을 이룬다. 문제 그림에 빠진 클리노미터 각 60°는 해설 기준이다.",
@@ -1446,6 +1460,8 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "실과 빨대의 각을 여각으로 바꾸어 올려본각 30도를 얻고 수평거리와 탄젠트로 눈높이 위 높이를 구한 뒤 눈높이를 더한다.",
-    "decisiveStep": "실과 빨대의 각을 여각으로 바꾸어 올려본각 30도를 얻고 수평거리와 탄젠트로 눈높이 위 높이를 구한 뒤 눈높이를 더한다."
+    "decisiveStep": "실과 빨대의 각을 여각으로 바꾸어 올려본각 30도를 얻고 수평거리와 탄젠트로 눈높이 위 높이를 구한 뒤 눈높이를 더한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   }
 ];

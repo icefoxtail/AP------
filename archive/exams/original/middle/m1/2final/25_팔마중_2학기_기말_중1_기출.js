@@ -870,7 +870,9 @@ window.questionBank = [
         "그래프"
       ],
       "wide": false,
-      "image": "assets/images/25_팔마중_2학기_기말_중1_기출/q17.png",
+      "image": "assets/images/25_팔마중_2학기_기말_중1_기출/q17-problem-geometry-20261116.svg",
+      "imageSize": "full",
+      "imageAlt": "남학생과 여학생의 윗몸일으키기 기록에 대한 도수분포다각형",
       "content": "아래 도수분포다각형은 A동아리의 남학생과 여학생의 $2$분 동안 윗몸일으키기 횟수를 조사하여 나타낸 것이다. 다음 중 옳은 것은? [4점]",
       "choices": [
         "남학생 수가 여학생 수보다 많다.",

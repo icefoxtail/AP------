@@ -1,0 +1,495 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-12T01:08:28+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/22_효천고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "팩토리얼, 순열, 중복순열, 조합, 중복조합의 정의를 각각 대입해 다섯 풀이의 계산식을 확인한다.",
+                      "decisiveStep":  "각 식을 정의에 맞게 비교하면 ㄱ, ㄴ, ㄷ, ㅁ만 옳고 ㄹ에는 분모의 $3!$이 빠져 있다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COUNTING_APPLICATION",
+                      "hold":  "여러 계산법의 정의를 함께 판별하는 조합에 맞는 단일 유형 경로가 선택지에 없다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "할머니와 할아버지를 한 묶음으로 보고 원탁에서 다섯 대상을 배열한 뒤, 묶음 안의 두 사람 순서를 센다.",
+                      "decisiveStep":  "원순열은 $(5-1)!$가지이고 부부의 순서가 $2$가지여서 경우의 수는 $2\\cdot4!=48$이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "같은 문자에서 네 자리를 중복해 고르는 중복조합으로 세 문자 선택을 센다.",
+                      "decisiveStep":  "${}_3\\mathrm{H}_4={}_6\\mathrm{C}_4=15$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COMBINATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "양 끝에 올 $p,n$의 순서를 정하고, 남은 다섯 문자를 배열할 때 반복되는 두 $s$를 같은 문자로 처리한다.",
+                      "decisiveStep":  "양 끝 배치는 $2$가지이고 가운데 배열은 $5!/2!$가지여서 전체는 $120$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "집에서 우체국까지 위쪽 두 번의 위치를 고르고, 우체국에서 도서관까지도 위쪽 두 번의 위치를 따로 고른 뒤 두 구간을 잇는다.",
+                      "decisiveStep":  "첫 구간은 ${}_4\\mathrm{C}_2=6$가지, 둘째 구간은 ${}_5\\mathrm{C}_2=10$가지이므로 이어지는 길은 $6\\cdot10=60$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COUNTING_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "양의 정수 $x,y,z$에서 각각 $1$을 빼고 합이 $5$인 음이 아닌 정수해로 바꾸어 별과 막대 개수를 센다.",
+                      "decisiveStep":  "세 변수의 양의 해 개수는 ${}_7\\mathrm{C}_2=21$이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COMBINATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "$(x+y)^8$에서 $x^2y^6$은 여덟 인자 중 $y$를 두 번 $x$로 바꾸어 고르는 항으로 읽는다.",
+                      "decisiveStep":  "그 선택은 ${}_8\\mathrm{C}_2=28$가지라 계수는 $28$이다.",
+                      "standardUnitKey":  "H15-PS-02",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "일반항 $(3x)^{6-k}(-1/x)^k$에서 지수가 $-2$가 되는 $k$를 찾고 해당 계수를 계산한다.",
+                      "decisiveStep":  "$6-2k=-2$에서 $k=4$이므로 계수는 ${}_6\\mathrm{C}_4\\cdot3^2=135$이다.",
+                      "standardUnitKey":  "H15-PS-02",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "왼쪽 각 조합값이 $1,2,3,4,5,6$임을 읽고 합을 조합 항등식으로 바꾸어 $n$을 찾는다.",
+                      "decisiveStep":  "합은 $21={}_7\\mathrm{C}_5$이고 이를 만족하는 자연수는 $n=7$이다.",
+                      "standardUnitKey":  "H15-PS-02",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항계수",
+                                      "l4":  "조합 항등식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "${}_{n+1}\\mathrm{P}_2$와 ${}_n\\mathrm{H}_2$를 각각 $n$의 식으로 바꾸어 주어진 합을 방정식으로 푼다.",
+                      "decisiveStep":  "합은 $n(n+1)+n(n+1)/2=135$이므로 $n(n+1)=90$에서 $n=9$이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COUNTING_APPLICATION",
+                      "hold":  "순열값과 중복조합값을 함께 계산하는 식에 맞는 단일 유형 경로가 선택지에 없다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "정삼각형 탁자의 꼭짓점 자리 세 개와 변 가운데 자리 세 개에 여섯 사람을 놓고 회전 동치만 나눈다.",
+                      "decisiveStep":  "$6!$배치에서 $120^\\circ$씩 도는 세 배치가 같은 경우이므로 $6!/3=240$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "$1,2,4$를 이어지는 한 묶음으로 만들고, 그 묶음 안의 배열과 나머지 $3,5,6$의 순서를 센다.",
+                      "decisiveStep":  "네 대상 중 $3$이 $6$보다 먼저 오는 배열은 $4!/2$가지이고 묶음 안은 $3!$가지여서 $72$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "도로 교차점마다 왼쪽과 아래쪽에서 오는 경로 수를 더하고, $P$에 도달하는 수는 $0$으로 고정한다.",
+                      "decisiveStep":  "도로가 없는 변은 $0$으로 두어 누적하면 $B$에 도달하는 허용 경로는 $28$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COUNTING_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "일반항에서 $x^3$을 만드는 항을 골라 이항계수와 $(2)^3(-a)^3$을 곱한 뒤 계수 조건을 푼다.",
+                      "decisiveStep":  "$-{}_6\\mathrm{C}_3\\cdot8a^3=-4320$이므로 $a^3=27$이고 $a=3$이다.",
+                      "standardUnitKey":  "H15-PS-02",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항정리",
+                                      "l4":  "특정 항의 계수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "각 $n=2$부터 $12$까지의 행에서 음영이 된 두 항 ${}_n\\mathrm{C}_{n-2}$와 ${}_n\\mathrm{C}_{n-1}$을 대칭성으로 바꾸어 더한다.",
+                      "decisiveStep":  "한 행의 합은 $n(n+1)/2$이고 전체는 $\\sum_{n=2}^{12}n(n+1)/2=12\\cdot13\\cdot14/6-1=363$이다.",
+                      "standardUnitKey":  "H15-PS-02",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항계수",
+                                      "l4":  "이항계수의 성질"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "먼저 원소 네 개인 $B$를 $A$에서 고르고, $B$에 없는 세 원소 각각을 $C$에 넣을지 말지 선택한다.",
+                      "decisiveStep":  "$B$의 선택은 ${}_7\\mathrm{C}_4=35$가지, $C$의 추가 원소 선택은 $2^3=8$가지라 전체는 $280$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COMBINATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "$89^{21}$의 거듭제곱을 나머지 주기로 줄여 $810$으로 나눈 나머지를 구해야 한다.",
+                      "decisiveStep":  "선택지에 합동식과 나머지 계산을 분류할 단원이나 유형 경로가 없다.",
+                      "hold":  "이 문항은 경우의 수·이항정리 선택지의 범위 밖인 나머지 계산이라 단원과 유형을 모두 보류한다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "원형으로 번갈아 놓여야 하는 홀수와 짝수의 자리를 정하고, $6$과 $3$이 이웃하지 않도록 해당 짝수 자리를 제외한다.",
+                      "decisiveStep":  "$1$을 고정한 뒤 나머지 홀수는 $3!$가지, $6$의 자리는 $2$가지, 나머지 짝수는 $3!$가지여서 $72$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "숫자를 작은 순서대로 놓되 첫 자리는 $0$이 될 수 없게 하고, $10112$보다 앞서는 다중집합 배열이 있는지 앞자리부터 센다.",
+                      "decisiveStep":  "첫 자리 $1$ 뒤 남은 숫자 중 사전순으로 더 앞서는 배열은 없으므로 $10112$는 첫 번째이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "메뉴 $n$개를 고른 뒤 그 가운데 쿠폰 하나를 고르는 두 단계를 곱의 합으로 센다.",
+                      "decisiveStep":  "$\\sum_{n=1}^{7}n\\,{}_7\\mathrm{C}_n=7\\cdot2^6=448$가지이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COUNTING_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "$a+2b=7$인 걸음 횟수 쌍을 $b=0,1,2,3$으로 나누고 각 쌍에서 두 걸음 순서를 배열한다.",
+                      "decisiveStep":  "각 경우의 수는 ${}_7\\mathrm{C}_0$, ${}_6\\mathrm{C}_1$, ${}_5\\mathrm{C}_2$, ${}_4\\mathrm{C}_3$이므로 합은 $1+6+10+4=21$이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COUNTING_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "양의 정수 네 개에서 각각 $1$을 빼고 남은 합에 여유분을 나타내는 변수를 더해 중복조합으로 바꾼다.",
+                      "decisiveStep":  "다섯 음이 아닌 정수의 합이 $3$인 해이므로 경우의 수는 ${}_7\\mathrm{C}_4=35$이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COMBINATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "$f(1)\\le f(2)\\le f(3)\\le f(4)\u003cf(5)$인 수열을 세고, 곱이 홀수인 경우 곧 양 끝 값이 모두 홀수인 경우를 뺀다.",
+                      "decisiveStep":  "단조 수열은 $56$가지이고 양 끝 값이 모두 홀수인 경우는 $28$가지이므로 곱이 짝수인 함수는 $28$개이다.",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-COMBINATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "중복조합",
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "이항정리에서 짝수 차수 계수의 합을 $(1+1)^{2n}$과 $(1-1)^{2n}$의 합으로 표현한다.",
+                      "decisiveStep":  "짝수 항의 합은 $2^{2n-1}$이고 이는 어떤 자연수 $n$에서도 $3$의 배수가 아니므로 조건을 만족하는 합은 $0$이다.",
+                      "standardUnitKey":  "H15-PS-02",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항계수",
+                                      "l4":  "이항계수의 성질"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

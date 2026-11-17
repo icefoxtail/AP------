@@ -703,8 +703,8 @@ window.questionBank = [
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -738,7 +738,7 @@ window.questionBank = [
       "(x-y+z)(x+y+z)",
       "(x-y+z)(x+y-z)"
     ],
-    "answer": "⑤",
+    "answer": "③",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
