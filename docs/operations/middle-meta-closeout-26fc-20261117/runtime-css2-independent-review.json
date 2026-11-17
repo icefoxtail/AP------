@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "archive-independent-runtime-retained-css-delta-review-v1",
+  "reviewer": "/root/m3s2_release",
+  "decision": "STATIC_ACCEPT_EXACT_TEST_ONLY_DELTA_DYNAMIC_PENDING",
+  "reviewedAt": "2026-11-17",
+  "scope": {
+    "productionEdits": 0,
+    "sourceEdits": 0,
+    "approvalEdits": 0,
+    "sourceOrMathematicalReview": 0,
+    "newImageInspection": 0,
+    "refWrites": 0
+  },
+  "inputs": {
+    "helper": {
+      "gitBlobSha1": "103319f7eadfed7518c8d917cae1e83dc4c390d2",
+      "sha256": "f5d6ce950c41596600bb15d84c0f1ea960ad86df23f09c2ea722f5dc900c46b4",
+      "bytes": 46572
+    },
+    "wrapper": {
+      "gitBlobSha1": "f8643e0f94fa3d33117073d726214d6dcb7be8f9",
+      "sha256": "4c0be01a6d5c755c2df9a5fb9b212b7eeb2476c03ae66d1959c3d5f69e3c71b4",
+      "bytes": 52703
+    },
+    "delta": {
+      "gitBlobSha1": "9ca6aefe9bfc68975184a6f6dec4c740c56af0e7",
+      "sha256": "297491d03a1462921c9546cafa5db270f931b14e49aee3c27bc9225173ab46c9",
+      "bytes": 8373
+    },
+    "inventory": {
+      "gitBlobSha1": "8ec1367c03aa22aced9475b8d234c5d527135f6c",
+      "sha256": "2d97b40413d164cba96f0f33fbecaff482c9a8b883b42a157366794192a9f70f",
+      "bytes": 298505
+    }
+  },
+  "baseline": {
+    "helper": {
+      "gitBlobSha1": "431c7ae943803330c7b32e087f00e7d3c6a00cea",
+      "sha256": "324bdc73b349c4c07ce8a7f413c27721607db5be4475778eceff06009ab30d28",
+      "bytes": 45627
+    },
+    "wrapper": {
+      "gitBlobSha1": "f6071b375c45273e8b242acf65144adc47e3e9b1",
+      "sha256": "247b42bb90a431426f10cf90cefb488bbf5869fc96e7572ad144ca36a3a02c9b",
+      "bytes": 51273
+    },
+    "existingReviewReuse": "Previously accepted runtime4 is reused only after whole-byte inverse equality; no fresh execution is inferred."
+  },
+  "independentChecks": {
+    "helperInverseExact": true,
+    "wrapperInverseExact": true,
+    "helperBeforeRaw": "324bdc73b349c4c07ce8a7f413c27721607db5be4475778eceff06009ab30d28",
+    "wrapperBeforeRaw": "247b42bb90a431426f10cf90cefb488bbf5869fc96e7572ad144ca36a3a02c9b",
+    "existingObservationFieldsAndFirstThreeRendererRowsExact": true,
+    "addedCssRows": [
+      {
+        "path": "archive/css/js-archive-theme-override.css",
+        "before": {
+          "gitBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+          "sha256": "4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2",
+          "bytes": 15557
+        },
+        "after": {
+          "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+          "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+          "bytes": 13947
+        }
+      },
+      {
+        "path": "archive/archive2-reader-controls.css",
+        "before": {
+          "gitBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+          "sha256": "24631292b2c7a8831fd6cb01de7eb4662d2c69d3c6542d380a5abaa0c43bafe3",
+          "bytes": 3687
+        },
+        "after": {
+          "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+          "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+          "bytes": 4905
+        }
+      }
+    ],
+    "changedFunctions": 0,
+    "newNegativeDefinitions": 4,
+    "negatives": [
+      "theme current bytes plus newline rejected",
+      "theme old captured bytes rejected as current",
+      "reader-controls current bytes plus newline rejected",
+      "reader-controls old captured bytes rejected as current"
+    ],
+    "knownInputBoundary": [
+      "each declared live ref remains authenticated",
+      "known CSS requires exact captured before Git/raw/size",
+      "current CSS requires exact after Git/raw/size and equality to immutable observed735 and current HEAD",
+      "unlisted drift remains rejected",
+      "regular path and symlink checks unchanged",
+      "issued receipt/evidence, selected MD/ID/runtime and ACTIVE boundary unchanged",
+      "generated SVG issued-to-current selected footprint unchanged",
+      "original Native null and precise plan refusal still mandatory",
+      "no current Native or display PASS is issued by retained classification"
+    ],
+    "inventoryMetadata": {
+      "a57": 227,
+      "current": 227,
+      "a57Exact": 218,
+      "currentExact": 218,
+      "a57Changes": [
+        {
+          "path": "archive/archive2-reader-controls.css",
+          "dynamic": false,
+          "source": false
+        },
+        {
+          "path": "archive/css/js-archive-theme-override.css",
+          "dynamic": false,
+          "source": false
+        },
+        {
+          "path": "archive/data/question_metadata.json",
+          "dynamic": true,
+          "source": false
+        },
+        {
+          "path": "archive/data/svg-accessibility-index.js",
+          "dynamic": true,
+          "source": false
+        },
+        {
+          "path": "archive/engine.html",
+          "dynamic": false,
+          "source": false
+        },
+        {
+          "path": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+          "dynamic": false,
+          "source": true
+        },
+        {
+          "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+          "dynamic": false,
+          "source": true
+        },
+        {
+          "path": "archive/render-feedback.js",
+          "dynamic": false,
+          "source": false
+        },
+        {
+          "path": "archive/screen-runtime-adapter.js",
+          "dynamic": false,
+          "source": false
+        }
+      ],
+      "currentVersusA57": [
+        "archive/data/question_metadata.json"
+      ]
+    },
+    "inventoryEvidenceScope": "Owner inventory full raw/Git verified and row counts/path classifications independently recomputed; no duplicate network fetch of all227 dependencies and no new Native execution.",
+    "cssCurrentCaptureCorroboration": [
+      {
+        "path": "archive/css/js-archive-theme-override.css",
+        "currentServedRef": {
+          "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+          "path": "archive/css/js-archive-theme-override.css",
+          "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+          "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+          "bytes": 13947
+        }
+      },
+      {
+        "path": "archive/archive2-reader-controls.css",
+        "currentServedRef": {
+          "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+          "path": "archive/archive2-reader-controls.css",
+          "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+          "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+          "bytes": 4905
+        }
+      }
+    ],
+    "freshCaptureRef": {
+      "gitBlobSha1": "c18655b38cb8adef217781e6b6bbf65ba8570758",
+      "sha256": "576c49a84a24ea53412817d8ab19868b59b8b4ac5f9775bc93e3619e747e4e03",
+      "bytes": 204380
+    }
+  },
+  "verification": {
+    "repositoryJavaScriptEvaluation": 0,
+    "nodeSyntax": "NOT_RUN",
+    "nodeTests": "NOT_RUN",
+    "fullCI": "NOT_RUN",
+    "native": "NOT_RUN",
+    "consumer": "NOT_RUN"
+  },
+  "limitations": [
+    "The reported a57 failure is retained as an actual prior failure.",
+    "Static acceptance does not establish that the successor full CI passes.",
+    "Selected generated-data invariants remain runtime gates; inventory metadata is not a substitute."
+  ],
+  "nextAction": "Root may integrate exact test-only2 and execute required CI; retain unknown-null failure and report retained blocked rows separately from current Native readiness."
+}

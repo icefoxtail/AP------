@@ -55,7 +55,7 @@ window.questionBank = [
     "id": 2,
     "questionNumber": 2,
     "questionType": "객관식",
-    "content": "2. 함수 $f(x)$가 $x > 1$에서\n$$\\frac{2x+3}{x-1} < f(x) < 2 + \\left(\\frac{1}{3}\\right)^x$$\n을 만족할 때, 극한값 $\\lim_{x \\to \\infty} f(x)$의 값은? [3.8점]",
+    "content": "2. 함수 $f(x)$가 $x > 1$에서\n$$\\frac{2x-3}{x-1} < f(x) < 2 + \\left(\\frac{1}{3}\\right)^x$$\n을 만족할 때, 극한값 $\\lim_{x \\to \\infty} f(x)$의 값은? [3.8점]",
     "choices": [
       "$0$",
       "$1$",
@@ -65,7 +65,7 @@ window.questionBank = [
     ],
     "images": [],
     "answer": "③",
-    "solution": "$x\\to\\infty$일 때 $\\frac{2x+3}{x-1}=2+\\frac5{x-1}\\to2$이고 $2+(\\frac13)^x\\to2$이다. 주어진 부등식의 양쪽이 모두 2에 수렴하므로 샌드위치 정리에 의해 $\\lim f(x)=2$이다. 정답은 ③이다.",
+    "solution": "$x\\to\\infty$일 때 $\\frac{2x-3}{x-1}=2-\\frac1{x-1}\\to2$이고 $2+(\\frac13)^x\\to2$이다. 주어진 부등식의 양쪽이 모두 2에 수렴하므로 샌드위치 정리에 의해 $\\lim f(x)=2$이다. 정답은 ③이다.",
     "level": "중",
     "difficultyBucket": 2,
     "category": "수학II",

@@ -1,0 +1,465 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T22:48:19+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "입장객 수와 동전 10개의 앞면 개수처럼 셀 수 있는 값과 강수량·몸무게·전구 수명처럼 연속적으로 측정하는 값을 구별한다.",
+                      "decisiveStep":  "입장객 수는 정수이고 앞면 개수는 0부터 10까지이므로 이산확률변수는 ㄱ, ㄹ이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "이산확률변수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "18번 연결 시도에서 실패 확률이 1/3인 횟수 X를 이항분포 B(18,1/3)로 놓는다.",
+                      "decisiveStep":  "E(X)=18/3=6, V(X)=18×(1/3)×(2/3)=4이므로 합은 10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "0≤x≤2에서 밀도 f(x)=2ax가 만드는 밑변 2, 높이 4a인 삼각형의 넓이를 1로 놓는다.",
+                      "decisiveStep":  "2×4a/2=1에서 a=1/4이며 이 값은 밀도의 음이 아닌 조건도 만족한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "표준정규분포의 대칭으로 -1부터 0까지의 확률을 0부터 1까지로 바꾸고 0부터 0.5까지의 확률을 더한다.",
+                      "decisiveStep":  "주어진 표에서 0.34+0.19=0.53이므로 P(-1≤Z≤0.5)=0.53이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "표준정규분포"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "동전 두 번의 앞면 횟수 X가 B(2,1/2)를 따름을 이용하여 Y=2X-1의 평균과 분산을 변환한다.",
+                      "decisiveStep":  "E(X)=1, V(X)=1/2이므로 E(Y)=1, V(Y)=2이고 합은 3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_DISTRIBUTION_MOMENTS"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "확률 k/{x(x+1)}를 k{1/x-1/(x+1)}로 분해하여 x=1부터 9까지의 합을 1로 놓는다.",
+                      "decisiveStep":  "확률 합은 k(1-1/10)=1이므로 k=10/9이고 P(X=1)=k/2=5/9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률질량함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "평균 30과 제곱의 평균 920에서 분산을 구해 np=30, np(1-p)=20을 연립한다.",
+                      "decisiveStep":  "V(X)=920-30²=20이므로 1-p=2/3, p=1/3이고 n=90이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(2X-1)=1에서 E(X)를 구하고 E((X-1)²)=4를 중심에서의 제곱 평균으로 읽는다.",
+                      "decisiveStep":  "E(X)=1이므로 V(X)=4이고 V(1-2X)=(-2)²×4=16이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "B(100,p)에서 X=99와 X=100의 확률을 이항계수와 p의 거듭제곱으로 나타내 주어진 비를 비교한다.",
+                      "decisiveStep":  "100p⁹⁹(1-p)=100p¹⁰⁰에서 p=1/2이므로 평균 50과 표준편차 5의 합은 55이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_PROBABILITY_FORMULA"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "확률식 ₁₀₀Cₓ4¹⁰⁰⁻ˣ/5¹⁰⁰을 (1/5)ˣ(4/5)¹⁰⁰⁻ˣ 꼴로 읽어 이항분포의 분산을 구한다.",
+                      "decisiveStep":  "X는 B(100,1/5)이므로 V(X)=16이고 V(X/2+10)=16/4=4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "-1≤x≤1에서 다섯 함수가 음이 아닌지와 그래프 아래 넓이가 1인지 확인한다.",
+                      "decisiveStep":  "|x|는 높이 1, 밑변 1인 삼각형 두 개의 넓이 합이 1이고 다른 후보는 음수 부분이 있거나 넓이가 2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "N(36,16)의 구간 [28,32]를 표준점수 [-2,-1]로 바꾸고 대칭 구간 [1,2]를 N(62,25)에 대응시킨다.",
+                      "decisiveStep":  "Y=72의 표준점수가 2이므로 아래 경계 k의 표준점수는 1이며 k=62+5=67이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "평균 175, 표준편차 4인 키에서 171의 표준점수를 구하고 해당 아래쪽 확률에 학생 500명을 곱한다.",
+                      "decisiveStep":  "(171-175)/4=-1이므로 500(0.5-0.34)=80명이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTED_FREQUENCY_COUNT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "음료량 평균 350과 표준편차 5를 이용하여 360밀리리터 이상의 사건을 표준정규분포의 오른쪽 꼬리로 바꾼다.",
+                      "decisiveStep":  "(360-350)/5=2이므로 주어진 표에서 확률은 0.5-0.48=0.02이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "F(x+20)-F(x)를 길이 20인 구간 [x,x+20]의 확률로 해석해 평균 40을 중심으로 구간을 배치한다.",
+                      "decisiveStep":  "정규밀도는 평균에서 멀어질수록 작아지므로 x+10=40일 때 구간 확률이 최대이며 x=30이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "225발 중 명중 횟수를 B(225,4/5)로 놓고 평균과 표준편차로 192발 이상인 사건을 정규근사한다.",
+                      "decisiveStep":  "평균 180, 분산 36이므로 192의 표준점수는 2이고 근사 확률은 0.5-0.48=0.02이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "복원 추출의 검은 공 확률을 p=x/(x+2)로 두고 평균 np=6과 분산 np(1-p)=2를 나눈다.",
+                      "decisiveStep":  "1-p=2/6=1/3이므로 p=2/3이고 n=6/(2/3)=9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "2100권 중 문학 도서 수를 성공확률 0.3인 이항분포로 보아 평균 630과 표준편차 21로 정규근사한다.",
+                      "decisiveStep":  "651과 672의 표준점수는 1과 2이므로 구간 확률은 0.48-0.34=0.14이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "주어진 합을 이항분포 B(8,1/4)의 E(X²)로 읽고 분산과 평균의 제곱을 더한다.",
+                      "decisiveStep":  "평균은 2, 분산은 8×(1/4)×(3/4)=3/2이므로 합은 3/2+4=11/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "정사면체를 20번 던져 1이 나온 횟수를 N으로 두고 최종 좌표를 (2N,20-N)으로 나타낸다.",
+                      "decisiveStep":  "E(N)=20/4=5이므로 좌표의 기댓값은 (2×5,20-5)=(10,15)이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "3의 배수 횟수 X의 평균 n/3과 분산 2n/9를 이용해 평균에서 8 이내인 확률을 정규근사한다.",
+                      "decisiveStep":  "중앙 확률 0.96은 표준점수 2까지이므로 8/√(2n/9)≥2에서 n≤72이고 최댓값은 72이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "빨간 공 3개와 파란 공 2개에서 두 개를 고르는 ₅C₂가지 중 빨간 공 수 x별로 ₃Cₓ₂C₂₋ₓ를 세어 확률표를 만든다.",
+                      "decisiveStep":  "X=0,1,2의 확률은 1/10,6/10,3/10이므로 E(X)=6/5, E(X²)=9/5에서 V(X)=9/25이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY",
+                                               "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "H=50+14(X-m)/σ의 평균과 표준편차를 일차변환 공식으로 구하고 m=50, σ=12, X=74를 대입한다.",
+                      "decisiveStep":  "표준화한 변수의 평균은 0, 표준편차는 1이므로 E(H)=50, σ(H)=14이고 해당 응시자의 H는 50+14×2=78이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "길이 50 미만 또는 66 초과의 불량 확률을 평균 58, 표준편차 4로 구한 뒤 3750개 중 불량 개수를 이항분포로 모델링한다.",
+                      "decisiveStep":  "불량 확률은 2(0.5-0.48)=0.04이고 불량 수의 평균 150, 표준편차 12에서 168의 표준점수는 1.5이므로 근사 확률은 0.07이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

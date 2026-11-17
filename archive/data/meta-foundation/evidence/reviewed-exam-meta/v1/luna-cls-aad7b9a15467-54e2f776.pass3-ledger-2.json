@@ -1,0 +1,192 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T11:41:46.253+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "정육각형 회전에서 120° 회전 세 개가 같은 원형배치를 만들므로 경우의 수는 9!/3=24·7!이고 k=24다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_POLYGON_TABLE_PERMUTATION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "R−L=3,U−D=2와 총 7회에서 L+D=1이므로 두 이동횟수 조합의 배열 수는 105+140=245다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "짝수 자연수 x=2a,y=2b,z=2c로 두면 a+b+c=9인 양의 정수해가 되고 1씩 빼어 8C2=28가지다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x⁶ 계수는 Σ(r=0..3) C(6,6−2r)C(4,r)=1+60+90+4=155다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_TERM_COEFFICIENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "P(S)=1과 P(∅)=0으로 첫 두 확률 명제는 참이며 같은 확률을 가진 서로 다른 한 원소 사건으로 셋째는 반박된다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_AXIOMS"
+                                           ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "남자 M과 짜장면 J에서 P(M∩J)=P(M)+P(J)−P(M∪J)=2/3+3/5−4/5=7/15다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "midUnit":  "확률의 뜻과 활용"
+                                  }
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "양끝이 모두 남학생일 확률은 (4·3)/(7·6)=2/7이므로 적어도 한 여학생이 끝에 설 확률은 5/7이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "확률의 덧셈정리"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMPLEMENT_EVENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "짝수 크기 k≥2인 B마다 A 선택은 2ᵏ가지라 경우 수는 Σ_even,k≥2 C(10,k)2ᵏ=(3¹⁰+1)/2−1=29524다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "이항계수의 성질"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_NONEMPTY_SELECTION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "서로 다른 세 가방의 책 수 합이 5인 음이 아닌 정수해는 중복조합 ₃H₅=₇C₅가지로 3Π5와 다르다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복을 허용한 선택"
+                                  }
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "전체 선택은 C(10,3)=120이고 바지 없는 10, 흰색 없는 20을 빼고 둘 다인 1을 더해 유리한 선택은 91개라 확률은 91/120이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "확률의 덧셈정리"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(3)≤f(4)와 f(3)f(4)=16은 (1,16),(2,8),(4,4)이고 각 경우 비감소 앞뒤 선택 수 1,9,36의 합은 46이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_MONOTONIC_ORDER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  24,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "15x²−8nx+n²=(3x−n)(5x−n)이므로 정수근은 n이 3 또는 5의 배수일 때, 30개 중 10+6−2=14개라 확률은 7/15다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  25,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "3장 미만에서 멈출 확률은 첫 카드 7의 1/10과 두 장 합이 7의 배수가 되는 12/90이므로 원하는 여사건 확률은 1−1/10−12/90=23/30이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "확률의 덧셈정리"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMPLEMENT_EVENT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_DIVISIBILITY"
+                                        ]
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(a+b)ⁿ에서 b를 고를 r개의 위치를 정하는 방법이 C(n,r)이므로 제시한 계수 공식은 참이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_GENERAL_TERM"
+                                           ]
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "주사위 표본공간 {1,2,3,4,5,6}에는 7보다 큰 눈이 없어 해당 사건은 공집합이고 확률 0이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_DICE_EXPERIMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "s,p,e,e,r 배열은 5!에서 동일한 e 두 개의 중복 2!을 나누므로 60가지다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "서로 다른 동전 세 개의 결과는 2³=8가지이고 모두 같은 면은 HHH,TTT 두 가지라 확률은 1/4다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_COIN_TOSS_EXPERIMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "P(A∪B)=P(A)+P(B)−P(A∩B)=1/4+2/3−1/6=3/4다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "midUnit":  "확률의 뜻과 활용"
+                                  }
+                  }
+              ]
+}

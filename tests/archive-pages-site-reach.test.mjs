@@ -79,6 +79,8 @@ test('everything the canonical loader can fetch is shipped', () => {
     ...canonical.reviewedRegistrationProofPaths(packs),
     'data/archive2-canonical-input-manifest.json',
     'data/archive2-source-verification-index.json',
+    canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH,
+    ...Array.from({ length: canonical.SOURCE_VERIFICATION_INDEX_BUCKET_COUNT }, (_, i) => canonical.SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX + i.toString(16) + '.json'),
   ];
   for (const relative of fetched) {
     const packaged = relative.startsWith('../') ? relative.replace(/^\.\.\//, '') : `archive/${relative}`;

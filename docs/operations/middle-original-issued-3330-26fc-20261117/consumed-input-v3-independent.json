@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "archive-issued3330-consumed-input-independent-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_CI_M2S2_26FC42390A50",
+  "decision": "STATIC_ACCEPT_OFFICIAL_CONSUMED_RESOURCE_BOUNDARY",
+  "path": "tools/ci/observe-original-middle-issued-3330.cjs",
+  "before": {
+    "gitBlobSha1": "2836ea9b8191533871749b78d596a881b6c6909a",
+    "sha256": "244d7a03ddea33e2f99e1fa948a60d993ae01630beccac3ee0bf0a03965766db",
+    "bytes": 47670
+  },
+  "after": {
+    "gitBlobSha1": "4f86104a006545bd55b7a61399c9492a94003780",
+    "sha256": "3707a275812a61b65a36d616090c4db526c56138a5513eb5e775f47cf7dc56a4",
+    "bytes": 53895
+  },
+  "delta": {
+    "gitBlobSha1": "982322003ee0a61967aea3d580821194c5f0921b",
+    "sha256": "db89899dbd30e3168c3c4bebd232b6a4d3002c2691495622a0d0a90eec48b19b",
+    "bytes": 8278
+  },
+  "ownerProof": {
+    "gitBlobSha1": "55206411ba2d61273528f5922ad0ac7c45d7ce7d",
+    "sha256": "b3001934beca64cb24ef742067ce11444de21960bd8ff59545f9b6ac23179b0a",
+    "bytes": 1322
+  },
+  "actualFailure": {
+    "runId": 44060052001,
+    "jobId": 133959277837,
+    "phase": "CURRENT_AUTHENTICATED_INPUTS",
+    "consumerQueries": 0,
+    "reportGitBlobSha1": "4535ba236fb4bf21cb868bb5752ba4eaf7bc163e",
+    "boundary": "A generatedFrom history declaration was read although the official resolved catalog does not consume it."
+  },
+  "independentlyReadOfficialApis": {
+    "loadResolvedConsumerCatalog": {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "gitBlobSha1": "bbff0735c92824e163281208160d5bea47196747",
+      "sha256": "d8985a280b0b29668f6849addf61b80a2fdd795e032d7a2a1996bb411e85071c"
+    },
+    "consumer": {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "gitBlobSha1": "568c0918843e52e5eb6b55bc1ece59bd25b67054"
+    },
+    "canonical": {
+      "path": "archive/archive2-canonical.js",
+      "gitBlobSha1": "733bede611518556c0b7eebf0680e30cf8d56afd",
+      "sha256": "6df9ec964ec8b70f0e797808e1557500041115487530a08f444a8a6e67b9aa1d"
+    }
+  },
+  "verification": {
+    "wholeInverseExact": true,
+    "reversibleEdits": 4,
+    "actualHeadCanonicalCodeReadBeforeRequire": true,
+    "resources": "REQUIRED_INPUT_PATHS union runtimeInputPathsFromManifest then reviewedRegistrationProofPaths of loaded runtime packs",
+    "allManifestPathsDigestsAndUniquenessChecked": true,
+    "everyConsumedResourceDeclaredRequired": true,
+    "normalizedLfDigestMatchesOfficial": true,
+    "everyConsumedResourceTrackedRegularNoSymlinkAndHeadBlob": true,
+    "allReadFilesPostchecked": true,
+    "manifestVersionProjectionDigestStillCheckedByOriginalOfficialConsumer": true,
+    "officialConsumerCallUnchanged": true,
+    "uidSourcePageQueryAndStoredApprovalChecksWholeUnchanged": true,
+    "unconsumedDeclaredResourcesVerified": false,
+    "unconsumedDeclaredMetadataValidated": true,
+    "actualOfficialConsumerRequiredAfterAuthentication": true
+  },
+  "definedNewProtocolCases": {
+    "count": 12,
+    "positive": "Three official consumed resources read; valid undeployed historical declaration remains explicitly unverified.",
+    "negatives": [
+      "missing required manifest row",
+      "consumed raw digest mismatch",
+      "missing consumed bytes",
+      "duplicate manifest row",
+      "unsafe unconsumed path",
+      "malformed unconsumed digest",
+      "unsafe proof path",
+      "missing proof declaration",
+      "tampered proof bytes",
+      "non-array runtime path result",
+      "non-array proof path result"
+    ]
+  },
+  "execution": {
+    "ownerReportedNewProtocolPass": 12,
+    "ownerReportedFailures": 0,
+    "old36ReusedNotRerun": true,
+    "reviewerNodeRuns": 0,
+    "actual3330Queries": "NOT_RUN_BY_REVIEWER",
+    "newNativeOrApprovalCalls": 0,
+    "productionWrites": 0,
+    "remoteRefsWrites": 0
+  }
+}

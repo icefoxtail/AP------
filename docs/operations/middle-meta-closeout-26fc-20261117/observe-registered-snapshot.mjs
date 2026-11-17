@@ -761,6 +761,8 @@ const CONFIG = {
   "publicBase": "https://icefoxtail.github.io/AP------/",
   "publicPaths": [
     "archive/data/archive2-canonical-input-manifest.json",
+    "archive/data/archive2-canonical-input-manifest.compact.json",
+    "archive/archive2-canonical.js",
     "archive/data/archive2-catalog.json",
     "archive/data/archive2-source-verification-index.json",
     "archive/data/item-4slot-index.json",
@@ -1740,6 +1742,13 @@ async function observePublic() {
     expectedOption: '--public-base ' + CONFIG.publicBase,
     globalDeploymentApprovalInferred: false
   };
+  const releaseMapping = readJson(options.snapshot, 'tools/archive-pages-release-manifest.json');
+  must(releaseMapping.data?.schemaVersion === 'ARCHIVE_PAGES_SITE_MANIFEST_V1' &&
+    Array.isArray(releaseMapping.data.archiveRootFiles) &&
+    releaseMapping.data.archiveRootFiles.includes('archive2-canonical.js') &&
+    Array.isArray(releaseMapping.data.archiveDataFiles) &&
+    releaseMapping.data.archiveDataFiles.includes('archive2-canonical-input-manifest.compact.json'),
+    'PUBLIC_COMPANION_RELEASE_MAPPING_MISSING');
   const started = Date.now(), deadline = started + 240000;
   const before = await publicMarker(options.publicBase, Math.min(30000, deadline - Date.now())), files = [];
   for (const p of CONFIG.publicPaths) {
@@ -1770,7 +1779,9 @@ async function observePublic() {
   const exactSnapshotMarker = markerStable && before.registeredMainSHA === options.snapshot;
   return {
     status: filesExact && exactSnapshotMarker ? 'PASS_SCOPED_PUBLIC_BYTES_AND_SNAPSHOT_MARKER' : 'PENDING_PUBLIC',
-    pathScope: 'NINE_PREVIOUSLY_VERIFIED_PUBLIC20_METADATA_RUNTIME_AND_BASIC_PARENT_PATHS',
+    pathScope: 'NINE_PRIOR_PUBLIC20_PATHS_PLUS_EXPLICIT_CANONICAL_LOADER_AND_COMPACT_COMPANION',
+    currentReleaseMappingRef: releaseMapping.ref,
+    additionalPaths: ['archive/archive2-canonical.js', 'archive/data/archive2-canonical-input-manifest.compact.json'],
     totalPublicBudgetMs: 240000, elapsedPublicMs: Date.now() - started,
     sourceOrAnswerBodyOutput: 0, identityPublicPath: 'NOT_IN_PRIOR_PUBLIC20_MAPPING; GIT_CAS_ONLY',
     publicFileBytes: filesExact ? 'PASS_EXACT_SELECTED_BYTES' : 'NOT_YET_EXACT',

@@ -117,7 +117,7 @@ export function nativeLanes(root) {
       'tools/ci/collect-reviewed-consumer-refusals.mjs','tools/ci/verify-reviewed-projection-requests.mjs',
       'tools/ci/archive-meta-register-trigger-paths.txt','tools/ci/verify-registered-consumer-approval.sh',
       'tests/archive-reviewed-exam-registration-v2.test.mjs','tests/archive-reviewed-projection-phase.test.mjs','tests/archive-basic-scope-rebind.test.mjs',
-      'tests/archive-difficulty5-register.test.mjs','tests/archive-finalqa-nonpt-register.test.mjs',
+      'tests/archive-difficulty5-register.test.mjs','tests/archive-type-judgment-registration.test.mjs','tests/archive-finalqa-nonpt-register.test.mjs',
       'tests/archive-finalqa-nonpt-real-geumdang.test.mjs'],outputs:reviewed,scopedInputs:reviewedScoped,
       commands:[{...cmd('bash','tools/ci/reviewed-meta-register-pass.sh'),timeoutMs:55*60000}],alwaysFinal:true,
       finalCommands:({env})=>fs.existsSync(path.join(env.RUNNER_TEMP,'archive-meta-register-pass/requests'))

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "archive-independent-protected-current-ops18-transport-review-v1",
+  "reviewer": "GPT_ROOT_26FC_M3S2_INDEPENDENT",
+  "reviewedAtUtc": "2026-11-17 03:54:06 UTC",
+  "decision": "STATIC_ACCEPT_EXACT_FOUR_FILE_TRANSPORT_DELTA_ACTUAL_CI_REQUIRED",
+  "scope": "M1_TYPED_SEVEN_FOURTEEN_VIEWS_PLUS_M3_Q16_TWO_AND_Q5_TWO",
+  "ownerManifest": {
+    "gitBlobSha1": "33e6989d2c47a63afe043332d739ade442e567fd",
+    "sha256": "709291b79247849105c9657418c8d212c3a7fffb971b65ded1276abb63538962",
+    "bytes": 8980
+  },
+  "delta": {
+    "gitBlobSha1": "087868af887033b8cf987fc5ce0dd271c78bd691",
+    "sha256": "4dd49e871b78a1f9be72a3f2beef15f0c649fc08ea07433c1a8253c0e8c4fbb0",
+    "bytes": 15053
+  },
+  "reviewedOperations": [
+    {
+      "tag": "helper",
+      "gitBlobSha1": "66e822cd012fc8744afc8af3124d39ff9319b20c",
+      "sha256": "606a2008bb34a2cd363b16099a32eb0288781592d99ee1ede41cd8977360850b",
+      "bytes": 24695
+    },
+    {
+      "tag": "old-test-after",
+      "gitBlobSha1": "99db769e531d531d0450a83f34f9ebd5a1c5df2a",
+      "sha256": "89100c489366ef745f5ffc5599df59afeb50b1962281bda86b3e659b6399d411",
+      "bytes": 9094
+    },
+    {
+      "tag": "new-test",
+      "gitBlobSha1": "942d546f42ecb611a5d5b2b25e9a61093df27bb8",
+      "sha256": "ab5efddc292f74c61d6672145e2003b36cafc746cc46683734f5676a1b6ae184",
+      "bytes": 11149
+    },
+    {
+      "tag": "workflow",
+      "gitBlobSha1": "da21239efd932a32fa9936fb22b1c4e42b17d3d5",
+      "sha256": "10181ece0724cdd6d06623b4e28fd2bb72dd2b389e2e68c2af1eeb6bfcbabd4b",
+      "bytes": 7280
+    }
+  ],
+  "mechanicalInverse": {
+    "helperRegions": 6,
+    "eachAfterUnique": true,
+    "helperWholeExact": true,
+    "oldTestLiteralOnly": true
+  },
+  "profileFixtureChecks": [
+    {
+      "profile": "m1",
+      "subjectsExact": true,
+      "logicalCasesExact": true,
+      "viewportTokens": [
+        {
+          "name": "desktop",
+          "width": 1365,
+          "height": 1000
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "caseCount": 14,
+      "subjects": 7
+    },
+    {
+      "profile": "q16",
+      "subjectsExact": true,
+      "logicalCasesExact": true,
+      "viewportTokens": [
+        {
+          "name": "desktop",
+          "width": 1365,
+          "height": 1000
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "caseCount": 2,
+      "subjects": 1
+    },
+    {
+      "profile": "q5",
+      "subjectsExact": true,
+      "logicalCasesExact": true,
+      "viewportTokens": [
+        {
+          "name": "desktop",
+          "width": 1365,
+          "height": 1000
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "caseCount": 2,
+      "subjects": 1
+    }
+  ],
+  "findings": [
+    {
+      "boundary": "CLOSED_PROFILE_SCOPE",
+      "finding": "Four explicit schemas exist in the helper; the new workflow runs only m1/q16/q5: 7+1+1 fixed subjects and 14+2+2 views. Reviewer parsed the literal profile JSON and compared every UID/key/source/asset/ordinal and both viewports to the three fixed fixture manifests. Existing SVG7 is not recaptured."
+    },
+    {
+      "boundary": "EXACT_PUSH_PROVENANCE",
+      "finding": "Both jobs require the one ops branch, same repository, nonfork/nondeleted push. executionContext authenticates actual event/ref/repository/after/GITHUB_SHA; checkedRef authenticates actual Git HEAD and regular tracked producer/fixture/helper bytes. M1 carries explicit closed-push owner and null PR/base; Q16 uses its existing nested checkout evidence; Q5's original JSON remains without run/job and without top surface. Actual run/job is separately carried by transport execution."
+    },
+    {
+      "boundary": "RAW_SHAPE_COMPATIBILITY",
+      "finding": "The Q16/Q5 top and result builder shapes were checked only at their known producer output blocks. Q16 has top PROBLEM surface but no per-result surface/mode and no file assets. Q5 has no top/per-result surface/mode, has its one fixed PNG, and retains zero Parent/Native approvals and PENDING visual releaseGate. M1 retains its PROBLEM/exam result shape. No raw JSON is rewritten to resemble another schema."
+    },
+    {
+      "boundary": "ORIGINAL_TILE_AND_FAILURE_CONTRACT",
+      "finding": "The unchanged common reader rejects unsafe/symlink/nonregular paths, extra output files, hash/size mismatch, malformed/bounded PNG chunks, duplicate/out-of-scope artifacts and incomplete PASS inventory. Partial FAIL is transported as FAIL with uncompleted tiles labeled. H.assertScreenshotInventory remains mandatory. Original JSON/PNG bytes are framed without editing."
+    },
+    {
+      "boundary": "EXISTING_SVG7_PRESERVATION",
+      "finding": "Reviewer reversed all six helper regions and obtained exact primary 2ec771 bytes; the old transport test differs only by changing the formerly unknown q5 profile literal to not-a-profile. Existing SVG7 execution and screenshot checks retain their original semantics. Primary actual execution is evidence for that old version only."
+    },
+    {
+      "boundary": "WORKFLOW_AND_SPARSE_INPUTS",
+      "finding": "Read-only contents permission, exact SHA checkout, credentials disabled, one contract job, explicit 3-profile matrix, known code/fixture/H/renderer/font/MD/ID/SVG plus each fixed source/asset scope, external RUNNER_TEMP outputs, no continue-on-error, always transport/artifact retention. No source/asset writes or registration step; new production authority is absent."
+    },
+    {
+      "boundary": "TEST_DEFINITIONS",
+      "finding": "Read all 43 new synthetic protocol/M1 provenance definitions: 18 profile protocol tests, 14 targeted refusals, 1 M1 positive PR/push preservation, 10 M1 push refusals. Existing20+new43+Q16 provenance13 =76 defined cases. They are not reported as executed here."
+    }
+  ],
+  "producerReviewsReused": {
+    "m1": {
+      "bytes": 2327,
+      "sha256": "cfe677fa79854e0828e638764e6c2c58b153f12b8503685dce462c57c3e017b3",
+      "gitBlobSha1": "5745ae4c5262e21e6bd1b69ff65ac68ccd5aaa42"
+    },
+    "q16Q5": {
+      "bytes": 7427,
+      "sha256": "510e9d3048f6d90ff6f25fea0c58f984b4bc4e5b924e9b5132c55811a8c80512",
+      "gitBlobSha1": "502c8ee23467dcb392458e0c7c0843dbcf7f812b"
+    },
+    "primaryTransport": {
+      "gitBlobSha1": "f44e460ca38f23196d144d807ee5c8bf73a33124",
+      "sha256": "87a400a0b3cb2ae4a8fb527379af09b8bdcdcbffdef9b79955f5770e7fa4dccf",
+      "bytes": 7074
+    }
+  },
+  "actualExecutionBoundary": {
+    "repositoryCodeImportedOrEvaluatedByReviewer": 0,
+    "nodeSyntax": "NOT_RUN",
+    "newNodeTests": "NOT_RUN",
+    "actualOps18Chrome": "NOT_RUN",
+    "newVisualReview": "NOT_RUN",
+    "sourceBodiesOrAnswersRead": 0,
+    "newMathApproval": 0,
+    "newMetadataOrNativeApproval": 0,
+    "registration": 0
+  },
+  "knownActualSvg7Separate": {
+    "runId": "44011127748",
+    "jobId": "133798119021",
+    "newWorkflowRepeatedCases": 0,
+    "displayEquivalenceProof": {
+      "gitBlobSha1": "a6c0daa99d012b5980c9911a0bdfecbd2a25a27d",
+      "sha256": "136fb3e586c1b6ac76d910ca74d630cebea534eb9b0bb66e17951a4039a718e5",
+      "bytes": 43820,
+      "readbackExact": true,
+      "decision": "ACCEPT_CURRENT_CAPTURE_DISPLAY_CONTINUITY_BY_EXACT_PRIOR_OBSERVATION_REUSE"
+    }
+  },
+  "integration": {
+    "intendedBase": "a57c51f633c937da15d1fac766631b413e02bd55",
+    "exactOpsRef": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+    "rootMustVerifyBeforePinsAndAbsentAdditions": true,
+    "remoteRefWritesByReviewer": 0,
+    "rootSolePublisher": true
+  },
+  "nextAction": "Root may create the isolated exact ops branch after final path/blob CAS, execute the76 defined contract cases and18 current Chrome views, and retain failed captures without promotion. Current visual acceptance and authority rebinding require the actual output and separate independent evidence."
+}

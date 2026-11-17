@@ -303,7 +303,7 @@ window.questionBank = [
       "125°"
     ],
     "image": "",
-    "answer": "④ 115°",
+    "answer": "③ 115°",
     "solution": "중심각 AOB=60°, BOC=70°이므로 B를 포함하지 않는 호 AC의 중심각은 360−60−70=230°. 원주각 ∠ABC=230/2=115°이다.",
     "displayNo": "0128",
     "questionNo": 128,
@@ -1809,7 +1809,7 @@ window.questionBank = [
       "대표문제 다시 풀기"
     ],
     "wide": false,
-    "content": "△ABC에서 AH⊥BC이다. AC=17 cm, AH=8 cm, BC=21 cm일 때, AB의 길이를 구하시오.",
+    "content": "△ABC에서 AH⊥BC이고 점 H는 선분 BC 위에 있다. AC=17 cm, AH=8 cm, BC=21 cm일 때, AB의 길이를 구하시오.",
     "choices": [],
     "image": "",
     "answer": "10 cm",
@@ -1876,8 +1876,8 @@ window.questionBank = [
     "content": "한 변의 길이가 17 cm인 정사각형 ABCD의 각 변 위에 AE=BF=CG=DH=5 cm가 되도록 점 E, F, G, H를 잡았을 때, □EFGH의 넓이를 구하시오.",
     "choices": [],
     "image": "",
-    "answer": "239 cm²",
-    "solution": "정사각형 넓이 17²에서 네 모서리 직각삼각형 넓이 4·(5·5/2)=50을 빼면 239 cm².",
+    "answer": "169 cm²",
+    "solution": "정사각형 넓이 17²=289에서 네 모서리 직각삼각형(직각을 낀 두 변 5 cm, 12 cm)의 넓이 4·(5·12/2)=120을 빼면 169 cm².",
     "displayNo": "0723",
     "questionNo": 723,
     "sourceQuestionNo": 723,

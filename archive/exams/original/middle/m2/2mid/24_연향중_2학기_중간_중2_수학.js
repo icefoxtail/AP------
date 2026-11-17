@@ -310,7 +310,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "변의 길이가 $8$, $15$, $17$인 직각삼각형의 내접원의 반지름과 넓이를 바르게 짝지은 것은? [4점]",
+    "content": "변의 길이가 $8$, $15$, $17$인 직각삼각형의 내접원의 반지름과 삼각형의 넓이를 바르게 짝지은 것은? [4점]",
     "choices": [
       "2, 40",
       "3, 40",
@@ -976,7 +976,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 닮음의 길이 관계를 이용한다.\n$BH=2\\mathrm{cm}$, $HC=6\\mathrm{cm}$이므로 $BC=8\\mathrm{cm}$이다.\n$\\triangle ABH\\sim\\triangle ABC$이므로 $AB:BC=BH:AB$이다. 따라서 $AB^2=BH\\times BC$이다.\n$x^2=2\\times8=16$이므로 길이 $x=4$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 닮음의 길이 관계를 이용한다.\n$BH=2\\mathrm{cm}$, $HC=6\\mathrm{cm}$이므로 $BC=8\\mathrm{cm}$이다.\n$\\triangle ABH\\sim\\triangle CBA$이므로 $AB:BC=BH:AB$이다. 따라서 $AB^2=BH\\times BC$이다.\n$x^2=2\\times8=16$이므로 길이 $x=4$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중2_수학/q17-solution.svg",
     "image": "assets/images/24_연향중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",

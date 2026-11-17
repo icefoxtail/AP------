@@ -1,0 +1,53 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:01:02+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/23_팔마고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "각 최단 경로는 6C3=20가지이고 중앙 세로선에 C에서만 들어오는 경로는 10가지이므로 포함배제 결과는 10·20+20·10-10·10=300이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "PT_COUNTING_ARRANGEMENT",
+                      "hold":  {
+                                   "rpmPath.majorUnit":  "서로 만나는 최단 경로쌍의 포함배제를 직접 나타내는 RPM 행이 H2-확률과통계 표에 없어 해당 네 RPM 칸을 보류한다.",
+                                   "rpmPath.midUnit":  "서로 만나는 최단 경로쌍의 포함배제를 직접 나타내는 RPM 행이 H2-확률과통계 표에 없어 해당 네 RPM 칸을 보류한다.",
+                                   "rpmPath.l3":  "서로 만나는 최단 경로쌍의 포함배제를 직접 나타내는 RPM 행이 H2-확률과통계 표에 없어 해당 네 RPM 칸을 보류한다.",
+                                   "rpmPath.l4":  "서로 만나는 최단 경로쌍의 포함배제를 직접 나타내는 RPM 행이 H2-확률과통계 표에 없어 해당 네 RPM 칸을 보류한다."
+                               },
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  }
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "조건 (라)의 비감소 함수는 252개이고 f(2)≤f(5), f(2)f(5)=18이면 (3,6)만 가능해 함께 만족하는 함수 30개, 확률은 30/252=5/42이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_FUNCTION_VALUE_CONSTRAINT",
+                                            "COND_MONOTONIC_ORDER"
+                                        ],
+                      "integrationPattern":  "PT_CONDITIONAL_PROBABILITY",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "조건부확률",
+                                      "l4":  "조건부확률 계산"
+                                  }
+                  }
+              ]
+}

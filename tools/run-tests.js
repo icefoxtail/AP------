@@ -41,6 +41,20 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/m2-closed8-issued-rpm-view.test.cjs', args: ['--test', 'tests/m2-closed8-issued-rpm-view.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-m2-problem21-current-ui-continuity.test.mjs', args: ['--test', 'tests/archive-m2-problem21-current-ui-continuity.test.mjs'], timeout: 60000 },
+  { label: 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs', args: ['--test', 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs'], timeout: 180000 },
+  { label: 'tests/archive-m3s2-current-ui-reuse.test.cjs', args: ['--test', 'tests/archive-m3s2-current-ui-reuse.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-m3s2-q16-current-renderer-provenance.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-current-renderer-provenance.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-pr-q5-current-ui-shadow.test.mjs', args: ['--test', 'tests/archive-pr-q5-current-ui-shadow.test.mjs'], timeout: 180000 },
+  { label: 'tests/item-4slot-m1s2-current-ui-reuse.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-current-ui-reuse.test.cjs'], timeout: 60000 },
+  { label: 'tests/item-4slot-svg7-current-ui-binding.test.cjs', args: ['--test', 'tests/item-4slot-svg7-current-ui-binding.test.cjs'], timeout: 60000 },
+  { label: 'tests/m2-closed8-scoped-input-paths.test.cjs', args: ['--test', 'tests/m2-closed8-scoped-input-paths.test.cjs'], timeout: 60000 },
+  { label: 'tests/m2s2-closed-eight-current-browser.test.cjs', args: ['--test', 'tests/m2s2-closed-eight-current-browser.test.cjs'], timeout: 60000 },
+  { label: 'tests/protected-current-ui-log-transport.test.cjs', args: ['--test', 'tests/protected-current-ui-log-transport.test.cjs'], timeout: 60000 },
+  { label: 'tests/protected9-ui-log-transport.test.cjs', args: ['--test', 'tests/protected9-ui-log-transport.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-e015-issued-source-continuity.test.mjs', args: ['--test', 'tests/archive-e015-issued-source-continuity.test.mjs'], timeout: 60000 },
+  { label: 'tests/archive-m2s1-svg7-problem-browser.test.cjs', args: ['--test', 'tests/archive-m2s1-svg7-problem-browser.test.cjs'] },
   { label: 'tests/archive-completion-check.test.mjs', args: ['--test', 'tests/archive-completion-check.test.mjs'] },
   { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
   { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
@@ -48,6 +62,7 @@ const requiredCommands = [
   { label: 'tests/item-4slot-m1s2-ui-provenance.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-ui-provenance.test.cjs'] },
   { label: 'tests/item-4slot-m1-m3-transport.test.cjs', args: ['--test', 'tests/item-4slot-m1-m3-transport.test.cjs'] },
   { label: 'tests/archive-m3s2-layout-continuity.test.cjs', args: ['--test', 'tests/archive-m3s2-layout-continuity.test.cjs'] },
+  { label: 'tests/archive-assignment-board-direct-output.test.cjs', args: ['--test', 'tests/archive-assignment-board-direct-output.test.cjs'] },
   { label: 'tests/archive-renderer-continuity-writer-inputs.test.mjs', args: ['--test', 'tests/archive-renderer-continuity-writer-inputs.test.mjs'] },
   {
     label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',
@@ -545,6 +560,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-difficulty5-register.test.mjs']
   },
   {
+    // The register pass runs this only when a DIRECT_JUDGMENT (type-only) request is in the inbox; a PR that changes the lane needs it too.
+    label: 'tests/archive-type-judgment-registration.test.mjs',
+    args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
+  },
+  {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },
@@ -699,9 +719,11 @@ const outputGuard = createOutputGuard({
   root,
   outputFiles: [
     'archive/data/archive2-canonical-input-manifest.json',
+    'archive/data/archive2-canonical-input-manifest.compact.json',
     'archive/data/archive2-catalog.json',
     'archive/data/archive2-item-review-overrides.json',
     'archive/data/archive2-source-verification-index.json',
+    'archive/data/archive2-source-verification-index-v2.json',
     ...READINESS_OUTPUT_FILES
   ],
   outputPrefixes: ['archive/data/archive2-source-verification/'],

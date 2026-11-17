@@ -1,0 +1,63 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:45:23.745+00:00",
+ "sourceArchiveFile": "original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 10,
+   "chosenFrom": "new",
+   "resolutionReason": "x³=1의 허근 ω에서 ω³=1, 1+ω+ω²=0이므로 f(n)=1/ωⁿ이 3항 주기로 반복되어 f(1)+...+f(30)=0이라 복소수의 거듭제곱 주기성 항목이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l3": "i의 거듭제곱",
+    "l4": "주기성"
+   }
+  },
+  {
+   "ordinal": 12,
+   "chosenFrom": "new",
+   "resolutionReason": "세 함수 y=f(x), g(x), h(x)의 그래프에서 h(x)>f(x)>g(x)인 x의 범위를 읽는 문제인데 함수 단원의 l3·l4 중 그래프로 부등식을 푸는 항목이 없다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수>함수 아래 그래프를 이용해 부등식 해를 읽는 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "함수의 그래프",
+     "label": "함수의 그래프",
+     "parent": "함수 > 함수",
+     "why": "가장 가까운 '함수의 뜻'은 대응·정의역·치역을 다루고 '함수의 성질'은 일대일·항등함수 분류라, 여러 그래프의 위아래 비교로 구간을 읽는 이 문항과 맞지 않는다."
+    },
+    "rpmPath.l4": {
+     "value": "그래프를 이용한 부등식의 해",
+     "label": "그래프를 이용한 부등식의 해",
+     "parent": "함수 > 함수 > 함수의 그래프",
+     "why": "가장 가까운 '정의역·공역·치역'은 집합 범위를 묻고, 이 문항은 h>f>g가 성립하는 x구간을 그래프에서 읽는 것이라 맞지 않는다."
+    }
+   }
+  },
+  {
+   "ordinal": 20,
+   "chosenFrom": "new",
+   "resolutionReason": "y=x² 위 두 교점 A(a,a²), B(b,b²)가 원 C의 지름이고 중심이 y=x 위에 있으며 수직 이등분선의 y절편 5/6이라는 조건이 얽혀 81r²=26을 얻으므로 원의 중심과 반지름 항목, INTERDEPENDENT이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l3": "원의 방정식",
+    "l4": "중심과 반지름"
+   },
+   "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+   "ordinal": 8,
+   "chosenFrom": "pass1",
+   "resolutionReason": "x³+5x+6=(x-α)(x-β)(x-γ)로 놓고 상수항을 비교해 αβγ=-6을 얻으므로 삼차방정식을 인수의 곱으로 쓰는 인수분해형 항목이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "l4": "인수분해형"
+   }
+  }
+ ]
+}

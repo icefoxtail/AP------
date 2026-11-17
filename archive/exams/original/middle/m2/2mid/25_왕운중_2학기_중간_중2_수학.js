@@ -504,7 +504,7 @@ window.questionBank = [
       "표"
     ],
     "wide": true,
-    "content": "그림과 같이 두 직각삼각형 $ABC$와 $DEF$가 있다. 두 직각삼각형의 합동 조건을 설명하는 과정에서 괄호 안에 들어갈 것으로 옳은 것은? [4점]<br><div class=\"note-box\">아래 그림과 같이 $\\triangle DEF$를 뒤집어 길이가 같은 두 변 $AC$와 $DF$가 서로 겹치도록 놓으면 $\\angle ACB+\\angle DFE=90^\\circ+90^\\circ=180^\\circ$이다. 따라서 세 점 $B$, $C(F)$, $E$는 한 직선 위에 있으므로 $\\triangle ABE$가 만들어진다.<br>이때 $\\triangle ABE$는 $\\overline{AB}=\\overline{AE}$이므로 이등변삼각형이다.<br>$\\triangle ABC$와 $\\triangle DEF$에서<br>$\\angle C=\\angle F=90^\\circ$ …… ㉠, $\\overline{AB}=\\overline{DE}$ …… ㉡<br>또, $\\triangle ABE$는 이등변삼각형이므로 $\\angle B=\\angle E$ …… ㉢<br>㉠, ㉡, ㉢에서 (　　　　　　) $\\triangle ABC\\equiv\\triangle DEF$이다.<br>즉, 빗변의 길이와 한 예각의 크기가 각각 같은 두 직각삼각형은 서로 합동이다.</div>",
+    "content": "그림과 같이 두 직각삼각형 $ABC$와 $DEF$가 있다. 두 직각삼각형의 합동 조건을 설명하는 과정에서 괄호 안에 들어갈 것으로 옳은 것은? [4점]<br><div class=\"note-box\">아래 그림과 같이 $\\triangle DEF$를 뒤집어 길이가 같은 두 변 $AC$와 $DF$가 서로 겹치도록 놓으면 $\\angle ACB+\\angle DFE=90^\\circ+90^\\circ=180^\\circ$이다. 따라서 세 점 $B$, $C(F)$, $E$는 한 직선 위에 있으므로 $\\triangle ABE$가 만들어진다.<br>이때 $\\triangle ABE$는 $\\overline{AB}=\\overline{AE}$이므로 이등변삼각형이다.<br>$\\triangle ABC$와 $\\triangle DEF$에서<br>$\\angle C=\\angle F=90^\\circ$ …… ㉠, $\\overline{AB}=\\overline{DE}$ …… ㉡<br>또, $\\triangle ABE$는 이등변삼각형이므로 $\\angle B=\\angle E$ …… ㉢<br>㉠, ㉡, ㉢에서 (　　　　　　) $\\triangle ABC\\equiv\\triangle DEF$이다.<br>즉, 빗변의 길이와 다른 한 변의 길이가 각각 같은 두 직각삼각형은 서로 합동이다.</div>",
     "choices": [
       "두 직각삼각형의 세 변의 길이가 같으므로",
       "두 직각삼각형의 두 변의 길이와 끼인각의 크기가 같으므로",

@@ -1,0 +1,47 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:49:10.128+00:00",
+ "sourceArchiveFile": "original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 1,
+   "chosenFrom": "pass2",
+   "resolutionReason": "가장 작은 자연수, 84의 소인수, x²-4=0의 해, 요일의 모임과 키가 작은 학생의 모임을 비교해 대상이 분명한 기준으로 정해지는지 가리는 집합의 뜻 문제라 집합과 원소 항목이다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "집합과 명제",
+    "midUnit": "집합의 뜻과 포함 관계",
+    "l3": "집합과 원소",
+    "l4": "원소나열법·조건제시법"
+   }
+  },
+  {
+   "ordinal": 20,
+   "chosenFrom": "new",
+   "resolutionReason": "|x-[x]-1/2|=x²/8에서 소수 부분 절댓값이 1/2 이하라 |x|≤2로 제한하고 정수 구간별 그래프 교점을 세어 실근 개수를 구하므로 그래프의 교점 항목을 쓴다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "함수",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수>함수 아래 그래프의 교점을 다루는 l3·l4 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "함수의 그래프",
+     "label": "함수의 그래프",
+     "parent": "함수 > 함수",
+     "why": "가장 가까운 '함수의 뜻'은 대응과 정의역을 다루고, 이 문항은 가우스 기호와 절댓값 그래프의 교점 개수를 센다."
+    },
+    "rpmPath.l4": {
+     "value": "그래프의 교점",
+     "label": "함수 그래프의 교점",
+     "parent": "함수 > 함수 > 함수의 그래프",
+     "why": "가장 가까운 '대응과 함수'는 대응 개념이고, 이 문항은 두 식의 그래프가 만나는 점의 개수를 센다."
+    }
+   }
+  }
+ ]
+}

@@ -846,16 +846,16 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 두 삼각형에 대하여 △ABC≡△DEF가 되도록 하는 나머지 한 조건이 될 수 있는 것을 모두 고르면? (정답 2개)(4점)",
+    "content": "다음 그림과 같은 두 삼각형에서 AB=DE=3cm, AC=DF=5cm일 때, △ABC≡△DEF가 되도록 하는 나머지 한 조건이 될 수 있는 것을 모두 고르면? (정답 2개)(4점)",
     "choices": [
       "∠A=∠D",
       "$\\overline{AB}$=$\\overline{EF}$",
-      "∠B=∠E",
+      "∠A=∠E",
       "∠C=∠F",
       "$\\overline{BC}$=$\\overline{EF}$"
     ],
     "answer": "①, ⑤",
-    "solution": "그림에서 AB=DE=3cm, AC=DF=5cm이다.\n① ∠A=∠D이면 두 변과 그 끼인각이 각각 같으므로 SAS 합동이다.\n② AB와 EF는 대응하는 변이 아니므로 등식만으로 합동을 보장하지 않는다.\n③ 한 각만 더 같다고 해서 두 삼각형의 크기가 정해지지는 않는다.\n④ 주어진 두 변과 한 각의 위치가 SSA가 되어 합동을 보장하지 않는다.\n⑤ BC=EF이면 세 변이 각각 같으므로 SSS 합동이다.\n따라서 정답은 ①, ⑤이다.",
+    "solution": "그림에서 AB=DE=3cm, AC=DF=5cm이다.\n① ∠A=∠D이면 두 변과 그 끼인각이 각각 같으므로 SAS 합동이다.\n② AB와 EF는 대응하는 변이 아니므로 등식만으로 합동을 보장하지 않는다.\n③ ∠A와 ∠E는 대응각이 아니므로 합동을 보장하지 않는다.\n④ 주어진 두 변과 한 각의 위치가 SSA가 되어 합동을 보장하지 않는다.\n⑤ BC=EF이면 세 변이 각각 같으므로 SSS 합동이다.\n따라서 정답은 ①, ⑤이다.",
     "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
     "subUnit": "작도와 합동",

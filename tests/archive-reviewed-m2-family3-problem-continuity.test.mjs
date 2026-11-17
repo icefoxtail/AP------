@@ -234,3 +234,35 @@ test("family3 immutable static and actual UI evidence bounds memory-only normali
     f.verifyUnchanged();
   } finally { f.close(); }
 });
+
+// The generated SVG accessibility index is rebuilt by every main snapshot, so it
+// is compared by the entries the question's own image consumes (rules in
+// svg-index-continuity.mjs); every other served file stays a byte pin.
+test("family3 compares consumed SVG index entries, not the whole generated file", async t => {
+  const f = fixture(), INDEX = "archive/data/svg-accessibility-index.js", PREFIX = "(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+  const SUFFIX = ");\n}(typeof window !== 'undefined' ? window : globalThis));\n", file = path.join(f.root, INDEX);
+  const rewrite = mutate => { const text = fs.readFileSync(file, "utf8"), doc = JSON.parse(text.slice(PREFIX.length, -SUFFIX.length));
+    mutate(doc); fs.writeFileSync(file, PREFIX + JSON.stringify(doc) + SUFFIX); };
+  const mine = doc => doc.records.filter(row => decodeURIComponent(row.assetRef).endsWith("/24_연향중_2학기_중간_중2_수학/q6-problem-visual-v2.svg"));
+  const other = doc => doc.records.filter(row => !decodeURIComponent(row.assetRef).includes("/24_연향중_2학기_중간_중2_수학/"));
+  const restore = () => f.restore(INDEX);
+  try {
+    await t.test("unrelated added, removed or changed entries still pass", () => {
+      rewrite(doc => { const rows = other(doc); rows[0].descriptionKo = "unrelated change"; doc.records.splice(doc.records.indexOf(rows[1]), 1);
+        doc.records.push({ ...rows[2], assetRef: "assets/images/zz_unrelated/q1.svg" }); });
+      try { assert.ok(validate(f.args())); } finally { restore(); }
+    });
+    for (const [label, mutate] of [
+      ["changed consumed entry", doc => { mine(doc)[0].descriptionKo += " changed"; }],
+      ["removed consumed entry", doc => { doc.records.splice(doc.records.indexOf(mine(doc)[0]), 1); }],
+      ["consumed key gains a second role entry", doc => { doc.records.push({ ...mine(doc)[0], visualRole: "solution" }); }],
+    ]) await t.test(label + " fails", () => {
+      rewrite(mutate);
+      try { assert.throws(() => validate(f.args()), /LIVE_SERVED_CODE_DRIFT/); } finally { restore(); }
+    });
+    await t.test("an appended byte to the index fails", () => {
+      fs.appendFileSync(file, " ");
+      try { assert.throws(() => validate(f.args()), /LIVE_SERVED_CODE_DRIFT/); } finally { restore(); }
+    });
+  } finally { f.close(); }
+});

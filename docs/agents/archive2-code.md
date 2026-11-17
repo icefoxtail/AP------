@@ -243,3 +243,10 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 마크업 `scopeUnitMarkup`: 대단원 줄 끝 `data-action="scope-expand"` 단추(44px), 펼치면 `.scope-subs` 안에 `.scope-sub` 줄(0문항 `is-zero` 흐림·고를 수 없음, 대단원을 체크하면 `is-implied` "포함됨", 문항이 없는 "중단원 미지정"/"기타" 줄은 숨김). 펼침은 `state.scopeUnitOpen`(없으면 고른 자식이 있을 때만 펼침). `render()`는 목록 안쪽 스크롤 위치를 보존한다.
 - `settleIndexesForView`가 문제지 만들기 화면에서도 기록된 메타 색인을 미리 만든다(빠른 평가와 같은 소속 판정에 필요). 메타 거르기(`composeMetaFacets`)는 고른 중단원의 문항을 따라간다.
 - 테스트: `tests/archive2-compose-tree.test.js`가 결함 조건을 본다 — 중등 중단원 목록 = 정본 L2(누락 0, 순서 일치), 중단원 합 + 미지정 = 대단원 문항 수, 자식 키 안정, 옛 대단원 키 초안이 같은 문항 수로 복원, 중단원만 고르면 그 문항만, 메타 후보가 따라감, 마크업(접힘·0문항·포함됨).
+
+## 원본 확인 파일 목록은 조각으로 (2026-11-17, 원본 출제 CI 상한 대응)
+
+- 원본 하나를 확인할 때 Worker는 manifest + 최상위 index(`archive/data/archive2-source-verification-index-v2.json`, 약 3KB) + 해시 접두어 조각 1개(`archive/data/archive2-source-verification/index-v2/<0-f>.json`, 16개) + 시험지 조각 1개만 받는다. 이유: 통짜 index(`archive2-source-verification-index.json`)가 등록마다 커져 `tests/archive2-original-source-verification-shard.test.mjs`의 500,000 바이트 상한을 넘나들었다. 상한과 단언은 그대로 두고 구조로 풀었다.
+- 해시 사슬: manifest → 최상위 index → 조각 → 시험지 조각. 한 단계가 늘어 대조는 더 강하다. 조각은 `sha256(sourceFile)` 첫 글자로 정하므로 새 시험지가 어느 조각에 가는지 빌더가 알아서 정한다(`archive/tools/build-archive2-catalog.mjs`가 재생성, 자동 등록기도 같은 빌더를 쓴다).
+- 통짜 index는 지우지 않았다. 이미 배포된 옛 Worker가 읽고, 단체 출제(mixed) 조회가 아직 이것을 쓰기 때문이다. 빌더 주석 `COMPAT`에도 적었다. 옛 Worker가 계산하는 기준 버전에는 새 최상위 index가 들어가므로, 통짜 index·mixed 자료는 그 버전을 박아 만든다(순환 해시를 피하려고 최상위 index는 통짜 index와 자기 자신을 뺀 버전을 쓴다).
+- 정리 순서: Worker 재배포가 확인되면 옛 Worker 호환 목적의 통짜 index 생성을 지운다. 그 전에 mixed 조회(`loadMixedVerificationRecords`)를 최상위 index 구조로 옮겨야 한다(그때는 순환 문제가 없어진다).

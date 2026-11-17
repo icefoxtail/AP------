@@ -1,0 +1,67 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:20:43+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "전체 배열은 6!/2!=360이고 SR을 한 덩어리로 센 이웃 배열은 2×5!/2!=120이므로 확률은 1/3이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION",
+                                               "CC_NEIGHBORING_PERMUTATION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "20칸에서 2칸을 고르는 190쌍 중 접변 15+16개와 꼭짓점만 맞닿는 24쌍을 빼면 135쌍이므로 확률은 27/38이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 덧셈정리",
+                                      "l4":  "여사건"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_SELECTION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "전체 비음수 정수해 330개 중 a=2b는 54개, a=4c는 42개, 교집합은 9개라 포함배제 확률은 87/330=29/110이고 p+q=139다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  24,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "1200=2⁴·3·5²에서 a∈{1,2,4,5,10,20}이고 각 bc=1200/a²에서 서로소 순서쌍을 빼면 비서로소인 쌍의 합은 22+10+2+6+2+0=42다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "hold":  "rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4: 자연수 인수분해와 서로소 약수쌍 세기는 확률·순열 표의 풀이 유형과 일치하는 행이 없어 경로를 특정할 수 없음."
+                  }
+              ]
+}

@@ -1,0 +1,85 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:04:19.763+00:00",
+ "sourceArchiveFile": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
+ "items": [
+  {
+   "ordinal": 13,
+   "chosenFrom": "pass2",
+   "resolutionReason": "5명이 3명 중 1명에게 투표할 때 기명은 3⁵=243, 무기명은 득표수의 합이 5인 음이 아닌 정수해 7C2=21이라 m+n=264이므로 중복조합 정수해 개수 항목이다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "중복조합",
+    "l4": "정수해 개수"
+   }
+  },
+  {
+   "ordinal": 18,
+   "chosenFrom": "new",
+   "resolutionReason": "오늘이 월요일일 때 15⁹일 후 요일을 15≡1 (mod 7)로 7로 나눈 나머지 1을 써서 화요일로 정하는 문제인데 확률과통계 표에는 정수의 나머지 경로가 없다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "standardUnitKey": "H15-PS-01",
+   "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+   "hold": "신규 제안: 확률과통계 표에 거듭제곱의 나머지(요일 주기) 경로가 없음.",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "정수의 성질",
+     "label": "정수의 성질",
+     "parent": "(최상위)",
+     "why": "가장 가까운 '경우의 수'는 개수를 세는 단원이라 7로 나눈 나머지의 주기를 쓰는 요일 계산과 맞지 않는다."
+    },
+    "rpmPath.midUnit": {
+     "value": "나머지와 합동",
+     "label": "나머지와 합동",
+     "parent": "정수의 성질",
+     "why": "가장 가까운 '순열과 조합'은 배열·선택을 세는 중단원이라 mod 7 계산과 맞지 않는다."
+    },
+    "rpmPath.l3": {
+     "value": "거듭제곱의 나머지",
+     "label": "거듭제곱의 나머지",
+     "parent": "정수의 성질 > 나머지와 합동",
+     "why": "가장 가까운 '순열 중복·원순열'은 중복 배열이라 15⁹을 7로 나눈 나머지와 맞지 않는다."
+    },
+    "rpmPath.l4": {
+     "value": "주기를 이용한 나머지",
+     "label": "주기를 이용한 나머지(요일)",
+     "parent": "정수의 성질 > 나머지와 합동 > 거듭제곱의 나머지",
+     "why": "가장 가까운 '중복을 허용한 선택'은 선택 수를 세는 것이라 요일이 7일 주기로 반복되는 나머지와 맞지 않는다."
+    }
+   }
+  },
+  {
+   "ordinal": 4,
+   "chosenFrom": "pass2",
+   "resolutionReason": "₂H₁₀=₁₁C₁₀=11과 ₂Π₂=2²=4를 각각 계산해 합 15를 구하는 중복조합과 중복순열이라 중복조합의 중복을 허용한 선택 항목이다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "중복조합",
+    "l4": "중복을 허용한 선택"
+   }
+  },
+  {
+   "ordinal": 6,
+   "chosenFrom": "pass2",
+   "resolutionReason": "X={1,2,3,4}에서 Y로의 함수 4⁴=256과 일대일대응 4!=24를 더해 280을 구하는 중복순열과 순열이라 중복·원순열 항목에 둔다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "순열",
+    "l4": "중복·원순열"
+   }
+  }
+ ]
+}

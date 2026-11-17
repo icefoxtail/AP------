@@ -1,0 +1,71 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:30:40+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/23_복성고_1학기_중간_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "두 지수곡선의 수평 간격은 log₂y와 log₂y-3에서 항상 3이고 1≤y≤4의 높이도 3이어서 넓이는 9이나, 이 영역 넓이를 직접 나타내는 RPM 행은 표에 없다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "PT_FUNCTION_GRAPH_GEOMETRY",
+                      "hold":  {
+                                   "rpmPath.majorUnit":  "지수곡선과 두 수평선 사이 영역 넓이를 직접 나타내는 RPM 행이 H2-수학I 표에 없어 보류한다.",
+                                   "rpmPath.midUnit":  "지수곡선과 두 수평선 사이 영역 넓이를 직접 나타내는 RPM 행이 H2-수학I 표에 없어 보류한다.",
+                                   "rpmPath.l3":  "지수곡선과 두 수평선 사이 영역 넓이를 직접 나타내는 RPM 행이 H2-수학I 표에 없어 보류한다.",
+                                   "rpmPath.l4":  "지수곡선과 두 수평선 사이 영역 넓이를 직접 나타내는 RPM 행이 H2-수학I 표에 없어 보류한다."
+                               },
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  }
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "거리비 5/100을 대입하면 80+20(log5-2)=80+20(0.7-2)=54dB이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "PT_LOG_APPLICATION",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "상용로그",
+                                      "l4":  "상용로그표·자릿수"
+                                  }
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "n년 뒤 가격은 100(0.9)^n이고 100(0.9)^n≤30에서 주어진 로그값으로 n≥13이므로 처음 30만원 이하가 되는 해는 2023+13=2036년이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ],
+                      "integrationPattern":  "PT_EXPONENTIAL_DECAY",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수부등식",
+                                      "l4":  "밑의 범위에 따른 부등호"
+                                  }
+                  }
+              ]
+}
