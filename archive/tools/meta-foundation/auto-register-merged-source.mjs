@@ -26,6 +26,7 @@ import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,plan
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
+import { explicitRegistrationMode } from './registration-mode.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -507,14 +508,19 @@ export function summarizeBacklog(root, pending) {
   return {...out,reasons:topCounts(atoms,25),reasonKinds:topCounts(kinds,25),distinctBaseCommits:bases.size,oldestBaseCommit:oldestBase(root,bases)};
 }
 
-export function selectTargets(root, state, config, head, stats) {
+// mode 'digest' (default, also every caller that does not pass one) keeps the whole queued backlog as targets.
+// mode 'merge' returns only what changed between the durable cursor and HEAD, plus pilots; queued entries are
+// neither targets nor touched. Entries a merge run could not reach carry origin:'merge' (see registerMergedSource)
+// and are tried first by a digest run. Entries without that field are plain backlog (older state files).
+export function selectTargets(root, state, config, head, stats, mode='digest') {
+  if(!['merge','digest'].includes(mode))throw Error('REGISTRATION_MODE_INVALID');
   const base=state.lastProcessedCommit||config.bootstrapBase;
   if(!/^[a-f0-9]{40}$/.test(base||''))throw Error('BOOTSTRAP_BASE_REQUIRED');
   git(root,'merge-base','--is-ancestor',base,head);
   const files=git(root,'diff','--name-only','-z',base,head,'--','archive/exams/').split('\0').filter(p=>p.endsWith('.js'));
-  const selected=new Map(Object.entries(structuredClone(state.pending||{})));
+  const selected=new Map(mode==='merge'?[]:Object.entries(structuredClone(state.pending||{})));
   // Optional, read-only origin bookkeeping for the run report; the returned targets are unaffected.
-  if(stats){stats.diffKeys=new Set();stats.pilotKeys=new Set();stats.pendingBefore=selected.size;stats.diffFiles=files.length;stats.diffAlsoPending=0;}
+  if(stats){stats.diffKeys=new Set();stats.pilotKeys=new Set();stats.pendingBefore=Object.keys(state.pending||{}).length;stats.diffFiles=files.length;stats.diffAlsoPending=0;}
   for(const rel of files) {
     const source=sourcePath(rel.slice('archive/exams/'.length));
     if(!fs.existsSync(path.join(root,rel)))continue; // Native identity sync owns deletions; never invent a UID relocation.
@@ -529,8 +535,14 @@ export function selectTargets(root, state, config, head, stats) {
     const key=`${sourcePath(seed.sourceArchiveFile)}#${seed.sourceOrdinal}`;
     if(!state.completedPilots?.includes(key)){if(stats)stats.pilotKeys.add(key);selected.set(key,{...seed,baseCommit:seed.baseCommit||base,pilot:true});}
   }
-  return [...selected.entries()].sort(([a],[b])=>a.localeCompare(b,'en'));
+  // Digest runs try the merge-originated leftovers before the older backlog; without markers the order is unchanged.
+  const rank=([,t])=>t?.origin==='merge'&&mode==='digest'?0:1;
+  return [...selected.entries()].sort((x,y)=>rank(x)-rank(y)||x[0].localeCompare(y[0],'en'));
 }
+
+// Fields that mark an entry as "left over from a merge run". They never survive an attempt.
+const settled=t=>{const rest={...t};delete rest.origin;delete rest.mergeHead;return rest;};
+export const backlogCounts=pending=>{const all=Object.values(pending||{});return {backlogRemaining:all.length,mergeBacklog:all.filter(e=>e?.origin==='merge').length};};
 
 function replayBatch(root, file, {config,state,head}) {
   const original=JSON.parse(fs.readFileSync(file,'utf8')),binding=original.replayBatch;
@@ -573,7 +585,7 @@ export function safeInstrumentation(build) {
   catch(error) { return {schemaVersion:INSTRUMENTATION_VERSION,error:String(error?.message||error).slice(0,160)}; }
 }
 const newTally = targets => ({targets,attempted:0,applied:0,alreadyRegistered:0,refused:0,unchangedSkipped:0,notReachedBudget:0});
-function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,tally,origins,files,unchangedFiles,outputs,touched}) {
+function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,tally,origins,files,unchangedFiles,outputs,touched,mode,mergeNotReached=0}) {
   const o=name=>({targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0,...origins.get(name)});
   const origin=originStats?{available:true,
     thisMergeDiff:{changedExamFiles:originStats.diffFiles,questions:o('diff').targets,attempted:o('diff').attempted,unchangedSkipped:o('diff').unchangedSkipped,
@@ -586,11 +598,16 @@ function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,t
     run:{batchLimit:max,...tally,registeredUids:touched,requestFiles:paths.filter(p=>p.startsWith(`${AUTO}/requests/`)).length,
       receiptFiles:paths.filter(p=>p.startsWith(`${AUTO}/receipts/`)).length},
     attemptedByFile:topFileRows(files),unchangedSkippedByFile:topCounts(new Map([...unchangedFiles].map(([f,v])=>[f,v.total]))),
-    origin,pendingBeforeRun:pendingBefore,backlogAfterRun:summarizeBacklog(root,pendingAfter)};
+    origin,pendingBeforeRun:pendingBefore,backlogAfterRun:summarizeBacklog(root,pendingAfter),
+    registration:{mode,...backlogCounts(pendingAfter),mergeNotReached}};
 }
 
-export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256}={}) {
+// plan:true stops after target selection (read-only, no registry context, no writes) so a caller can tell cheaply whether
+// a run has any work; with zero targets it returns the same NO_CHANGE report a full run would.
+export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256,mode=explicitRegistrationMode(process.env),plan=false,contextLoader=context}={}) {
   root=path.resolve(root);
+  if(!['merge','digest'].includes(mode))throw Error('REGISTRATION_MODE_INVALID');
+  if(plan&&(doWrite||replayReportPath||canonicalParentRetryRequestPath))throw Error('AUTO_META_PLAN_READ_ONLY');
   if(replayReportPath&&doWrite)throw Error('AUTO_META_REPLAY_READ_ONLY');
   const config=read(root,CONFIG); if(config?.enabled!==true){const r={status:'DISABLED',processed:0,results:[]};if(reportPath)fs.writeFileSync(reportPath,json(r));return r;}
   const head=git(root,'rev-parse','HEAD').trim();
@@ -602,25 +619,31 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const parentRetry=retryRef?loadCanonicalParentRetry(root,retryRef.path,retryRef.sha256):null;
   if(canonicalParentRetryRequestSha256&&!parentRetry)throw Error('CANONICAL_PARENT_RETRY:REQUEST_REQUIRED');
   const originStats=replay||parentRetry?null:{};
-  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head,originStats);
+  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head,originStats,mode);
   if(parentRetry&&!equal(targets,canonicalParentRetryTargets(parentRetry)))throw Error('CANONICAL_PARENT_RETRY:TARGET_SCOPE');
   if(parentRetry)for(const [key,target]of targets) {
     const queued=state.pending?.[key],item=parentRetry.request.items.find(r=>r.sourceOrdinal===target.sourceOrdinal);
     if(queued&&queued.baseCommit!==target.baseCommit)throw Error('CANONICAL_PARENT_RETRY:PENDING_BASE_CONFLICT');
     if(!queued&&!state.latestReceipts?.[item.questionUid])throw Error('CANONICAL_PARENT_RETRY:PENDING_TARGET_REQUIRED');
   }
-  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0,...(parentRetry?{canonicalParentRetryRequest:{path:parentRetry.path,sha256:parentRetry.requestSha256},selectedUidCount:parentRetry.request.items.length}:{})};
+  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,mode,...backlogCounts(state.pending),mergeNotReached:0,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0,...(parentRetry?{canonicalParentRetryRequest:{path:parentRetry.path,sha256:parentRetry.requestSha256},selectedUidCount:parentRetry.request.items.length}:{})};
   if(!targets.length){
-    if(replay?.registrySha&&(await context(root)).registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
+    if(replay?.registrySha&&(await contextLoader(root)).registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
     const batch={schemaVersion:REPLAY_VERSION,head,configSha256:hash(config),registrySha:null,targets:[],results:[],rowBindings:[],sourceHashes:{},immutableOutputs:{}};
-    report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];
+    report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];report.targetCount=0;
+    if(mode==='merge')report.note='NO_TARGETS: this merge changed no exam question; queued backlog is left for the scheduled or manual digest run';
     if(replay){report.replayVerified=true;report.replayed=0;report.replayOf=replay.sha256;}
     else report.replayBatch={...batch,sha256:hash(batch),stateAfterSha256:hash(state)};
     if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max:config.maxQuestionsPerRun||100,originStats,pendingBefore:Object.keys(state.pending||{}).length,
-      pendingAfter:state.pending,tally:newTally(0),origins:new Map(),files:new Map(),unchangedFiles:new Map(),outputs:new Map(),touched:0}));
+      pendingAfter:state.pending,tally:newTally(0),origins:new Map(),files:new Map(),unchangedFiles:new Map(),outputs:new Map(),touched:0,mode}));
     if(reportPath)fs.writeFileSync(reportPath,json(report));return report;
   }
-  const c=await context(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
+  if(plan) {
+    report.status='PLAN';report.targetCount=targets.length;report.applied=0;report.plannedPaths=[];
+    if(reportPath)fs.writeFileSync(reportPath,json(report));
+    return report;
+  }
+  const c=await contextLoader(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
   if(replay&&c.registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
   const rowBinding=key=>{
     const identity=c.identityByJoin.get(key),current=c.metaByUid.get(identity?.questionUid);
@@ -634,7 +657,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   if(!Number.isInteger(max)||max<1||max>500)throw Error('BATCH_LIMIT_INVALID');
   if(parentRetry&&targets.length>max)throw Error('CANONICAL_PARENT_RETRY:BATCH_LIMIT');
   const sourceDelta=git(root,'diff','--name-only',state.lastProcessedCommit,head,'--','archive/exams/').trim();
-  let acted=0;
+  let acted=0,mergeNotReached=0;
   const tally=newTally(targets.length),origins=new Map(),fileTally=new Map(),unchangedFiles=new Map();
   const originOf=key=>!originStats?'unknown':originStats.diffKeys.has(key)?'diff':originStats.pilotKeys.has(key)?'pilot':'backlog';
   const count=(name,field)=>{const row=origins.get(name)||{targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0};row[field]++;origins.set(name,row);};
@@ -642,7 +665,13 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   for(let ti=0;ti<targets.length;ti++) {
     const [key,target]=targets[ti];
     count(originOf(key),'targets');
-    if(acted>=max){nextState.pending[key]=target;tally.notReachedBudget++;count(originOf(key),'notReachedBudget');continue;}
+    if(acted>=max) {
+      // A merge run never lets this merge's own questions fall back into the anonymous backlog: mark them so the
+      // next digest run tries them first and the reports can count them separately.
+      const fromMerge=mode==='merge'&&originOf(key)==='diff';
+      nextState.pending[key]=fromMerge?{...target,origin:'merge',mergeHead:head}:target;
+      tally.notReachedBudget++;if(fromMerge)mergeNotReached++;count(originOf(key),'notReachedBudget');continue;
+    }
     const attemptedTarget=structuredClone(target);
     const source=sourcePath(target.sourceArchiveFile),ordinal=Number(target.sourceOrdinal),rel=`archive/exams/${source}`;
     if(!Number.isInteger(ordinal)||ordinal<1)throw Error('INVALID_TARGET_ORDINAL');
@@ -664,6 +693,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       if(!replay&&state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
         tally.unchangedSkipped++;count(originOf(key),'unchangedSkipped');fileRow(unchangedFiles,source).total++;
+        // An entry that was already attempted is no longer an unvisited merge leftover (an older writer keeps stale marks).
+        if(state.pending[key].origin!==undefined||state.pending[key].mergeHead!==undefined)nextState.pending[key]=settled(state.pending[key]);
         continue;
       }
       acted++;attempted=true;target.attemptSignature=attemptSignature;
@@ -706,8 +737,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       if(['APPLY','ALREADY_REGISTERED'].includes(result.status)) {
         delete nextState.pending[key];
         if(target.pilot&&!nextState.completedPilots.includes(key))nextState.completedPilots.push(key);
-      } else nextState.pending[key]={...target,lastReasons:result.reasons};
-    }catch(e) { if(!attempted)acted++;result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...target,lastReasons:result.reasons}; }
+      } else nextState.pending[key]={...settled(target),lastReasons:result.reasons};
+    }catch(e) { if(!attempted)acted++;result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...settled(target),lastReasons:result.reasons}; }
     tally.attempted++;count(originOf(key),'attempted');
     {const row=fileRow(fileTally,source);row.total++;
       if(result.status==='APPLY'){tally.applied++;row.registered++;}
@@ -758,8 +789,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
   report.applied=touched.size;report.pending=Object.keys(nextState.pending).length;report.plannedPaths=[...outputs.keys()];
+  Object.assign(report,backlogCounts(nextState.pending),{mergeNotReached,targetCount:targets.length});
   if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max,originStats,pendingBefore:Object.keys(state.pending||{}).length,pendingAfter:nextState.pending,
-    tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size}));
+    tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size,mode,mergeNotReached}));
   if(doWrite)for(const [rel,obj]of outputs)write(root,rel,obj);
   if(reportPath)fs.writeFileSync(reportPath,json(report));
   return report;
@@ -800,7 +832,7 @@ async function runCli() {
   const a=process.argv.slice(2),get=k=>a.includes(k)?a[a.indexOf(k)+1]:undefined;
   try {
     const root=get('--root')||ROOT,reportPath=get('--report')||path.join(process.env.RUNNER_TEMP||'/tmp','archive-auto-meta-report.json');
-    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256')});
+    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256'),plan:a.includes('--plan')});
     console.log(JSON.stringify(result,null,2));
   }catch(e){console.error('AUTO_META_FAILED:',e.stack||e);process.exitCode=1;}
 }

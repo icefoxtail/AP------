@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { BOUNDED_RENDERER_UI_INPUTS } from '../4slot/bounded-renderer-ui-inputs.mjs';
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
+import { inferRegistrationMode, REGISTRATION_MODE_ENV } from '../../archive/tools/meta-foundation/registration-mode.mjs';
 import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
 // Each successful lane stages its allowlisted output. Native `git diff`/reset guards then see that index as
@@ -15,6 +16,7 @@ import {checkStagedRegistrationWhitespace} from './archive-registration-whitespa
 
 export const VERSION = 'archive-registration-writer-v1';
 export const STATE = '.archive-meta-register/auto/writer-state.json';
+export { inferRegistrationMode };
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const json = v => JSON.stringify(v, null, 2) + '\n';
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -124,7 +126,9 @@ export function nativeLanes(root) {
         // Reuse its real checks before commit; its old post-push summary names HEAD as registered,
         // so use this writer's accurate PREPARED summary and the push helper's exact SHA instead.
         ?[{...cmd('bash','tools/ci/verify-registered-consumer-approval.sh'),env:{GITHUB_STEP_SUMMARY:'/dev/null'}}]:[]},
-    {id:'semantic',inputs:[...code,...registration,...canonicalParentRetryDependencies(root),'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
+    // digestContinuation: queued backlog (needsContinuation) is drained by digest runs only; a merge run reruns this lane
+    // only when its inputs changed, and never reports the backlog as finished.
+    {id:'semantic',digestContinuation:true,inputs:[...code,...registration,...canonicalParentRetryDependencies(root),'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
       'tools/ci/archive-main-auto-meta-pass.sh','tests/archive-question-identity-contract.test.mjs',
       'tests/archive-question-identity-runtime.test.mjs'],outputs:auto,enabled:config.enabled===true,
       commands:[{...cmd('bash','tools/ci/archive-main-auto-meta-pass.sh'),...(parentRetry?{env:{ARCHIVE_CANONICAL_PARENT_RETRY_REQUEST:parentRetry.path,ARCHIVE_CANONICAL_PARENT_RETRY_SHA256:parentRetry.sha256}}:{})}],
@@ -230,18 +234,22 @@ function stateAt(root) {
     ||(state.blockedLanes!==undefined&&!Array.isArray(state.blockedLanes)))throw Error('WRITER_STATE_SCHEMA_MISMATCH');
   return state;
 }
-function assess(rows,state,lanes) {
+function assess(rows,state,lanes,mode='digest') {
   const blocked=new Set(state.blockedLanes||[]);
   const results=lanes.map(lane=>{
     const enabled=lane.enabled!==false,inputDigest=inputFingerprint(rows,lane),outputDigest=fingerprint(rows,lane.outputs);
     const cached=state.lanes[lane.id];
     const scopedInputDigest=lane.scopedInputs?fingerprint(rows,lane.scopedInputs):undefined;
     const scopeChanged=lane.scopedInputs&&cached?.scopedInputDigest!==scopedInputDigest;
-    const needed=Boolean(blocked.has(lane.id)||cached?.needsContinuation===true||cached?.enabled!==enabled||cached?.inputDigest!==inputDigest||cached?.outputDigest!==outputDigest||scopeChanged);
+    const deferrable=mode==='merge'&&lane.digestContinuation===true;
+    const needed=Boolean(blocked.has(lane.id)||(cached?.needsContinuation===true&&!deferrable)||cached?.enabled!==enabled||cached?.inputDigest!==inputDigest||cached?.outputDigest!==outputDigest||scopeChanged);
+    // Not needed in a merge run is not the same as nothing left: the queued backlog stays visible.
+    const backlogDeferred=!needed&&enabled&&deferrable&&cached?.needsContinuation===true;
     return {id:lane.id,enabled,required:lane.required===true,needed,inputDigest,outputDigest,...(lane.scopedInputs?{scopedInputDigest}:{}),
-      status:needed?'NEEDS_REGISTRATION':enabled?'VERIFIED_REUSED':'DISABLED'};
+      ...(backlogDeferred?{backlogDeferred:true}:{}),
+      status:needed?'NEEDS_REGISTRATION':enabled?(backlogDeferred?'VERIFIED_REUSED_BACKLOG_REMAINS':'VERIFIED_REUSED'):'DISABLED'};
   });
-  return {lanes:results,needed:results.some(r=>r.needed),
+  return {lanes:results,needed:results.some(r=>r.needed),backlogDeferred:results.some(r=>r.backlogDeferred),
     publishable:results.filter(r=>r.required&&r.enabled).every(r=>!r.needed)&&results.some(r=>r.required&&r.enabled),
     inputDigest:sha(json(results.map(({id,enabled,inputDigest})=>({id,enabled,inputDigest})))),
     outputDigest:fingerprint(rows,unique(lanes.flatMap(l=>l.outputs)))};
@@ -298,6 +306,9 @@ export function laneInstrumentation({laneId, nativeWork, sharedEvidence, root, r
       if(auto)out.autoMeta=auto;
       const stale=staleMaterializedPayloads(root,readJsonSafe(path.join(dir,'materialize.json')));
       if(stale)out.staleMetaV2Payloads=stale;
+    } else if(laneId==='fourSlot') {
+      const stages=readStageTimes(path.join(nativeWork,'archive-four-slot','stage-times.jsonl'));
+      if(stages)out.stages=stages;
     } else if(laneId==='shared') {
       let text=null;try{text=fs.readFileSync(path.join(sharedEvidence,'meta-v2-materializer-write.log'),'utf8');}catch{/* lane did not materialize */}
       const stale=text&&staleMaterializedPayloads(root,embeddedJson(text));
@@ -325,6 +336,12 @@ function renderInstrumentation(lanes, cell) {
     const run=auto.run,o=auto.origin,b=auto.backlogAfterRun;
     lines.push('','#### Automatic registration (this run)','',
       `targets=${run.targets}; attempted=${run.attempted} (limit ${run.batchLimit}); registered=${run.applied} UIDs (${run.requestFiles} request, ${run.receiptFiles} receipt files); already registered=${run.alreadyRegistered}; refused=${run.refused}; skipped unchanged=${run.unchangedSkipped}; not reached (limit)=${run.notReachedBudget}`);
+    const g=auto.registration;
+    if(g)lines.push('','| registration | value |','| --- | --- |',
+      `| mode | ${cell(g.mode,16)} (${g.mode==='merge'?'only the questions this merge changed':'this merge plus the queued backlog'}) |`,
+      `| backlog remaining (all queued) | ${Number(g.backlogRemaining)||0} |`,
+      `| this merge's questions not processed (limit) | ${Number(g.mergeNotReached)||0} |`,
+      `| merge leftovers still queued | ${Number(g.mergeBacklog)||0} |`);
     if(o?.available)lines.push('',`This merge's questions: ${o.thisMergeDiff.questions} (${o.thisMergeDiff.changedExamFiles} exam files; attempted ${o.thisMergeDiff.attempted}; not reached because of the limit ${o.thisMergeQuestionsNotReachedBecauseOfBudget}). Queued backlog questions in this run: ${o.queuedBacklog.questions} (attempted ${o.queuedBacklog.attempted}).`);
     const files=auto.attemptedByFile;
     if(files?.top?.length)lines.push('','| attempted exam file | attempted | registered | already | refused |','| --- | ---: | ---: | ---: | ---: |',
@@ -361,6 +378,7 @@ export function renderRegistrationSummary(result) {
     '| lane | result | error code |','| --- | --- | --- |',
     ...shown.map(r=>`| ${cell(r.id,64)} | ${cell(r.status,48)} | ${cell(r.error,100)} |`)];
   if(shown.length<lanes.length)lines.push('',`${lanes.length-shown.length} additional lane records are in report.json.`);
+  if(result.backlogDeferred===true)lines.push('','Queued registration work remains (not needed in this merge run). The scheduled or manual digest run continues it; this is not a completed registration.');
   // A malformed instrumentation object must never turn a finished preparation into a failed run.
   try { lines.push(...renderInstrumentation(lanes,cell)); }
   catch { lines.push('','Instrumentation summary could not be rendered (see report.json).'); }
@@ -372,10 +390,11 @@ export function renderRegistrationSummary(result) {
 // Recovery checks only the checked-out snapshot. It does not fetch main, run producers or edit Git data.
 export function checkRegistration({root=ROOT,work,lanes=nativeLanes(root),env=process.env}={}) {
   root=path.resolve(root);assertClean(root);
-  const assessment=assess(indexRows(root),stateAt(root),lanes);
-  const report={schemaVersion:VERSION,mode:'check',inputSha:git(root,'rev-parse','HEAD').trim(),...assessment,
+  const registration=inferRegistrationMode(env);
+  const assessment=assess(indexRows(root),stateAt(root),lanes,registration);
+  const report={schemaVersion:VERSION,mode:'check',registrationMode:registration,inputSha:git(root,'rev-parse','HEAD').trim(),...assessment,
     registrationReady:assessment.publishable,safeToPersist:false,changedPaths:[],
-    status:assessment.needed?(assessment.publishable?'REGISTRATION_PARTIAL':'REGISTRATION_REQUIRED'):'REGISTERED'};
+    status:assessment.needed?(assessment.publishable?'REGISTRATION_PARTIAL':'REGISTRATION_REQUIRED'):assessment.backlogDeferred?'REGISTERED_WITH_BACKLOG':'REGISTERED'};
   if(work)writeEvidence(evidenceDir(root,work,env),report);
   return report;
 }
@@ -385,10 +404,11 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   if(env.GITHUB_ACTIONS==='true'&&(env.GITHUB_EVENT_NAME==='pull_request'||env.GITHUB_REF!=='refs/heads/main'))throw Error('MAIN_ONLY_WRITER');
   if(new Set(lanes.map(l=>l.id)).size!==lanes.length||lanes.some((l,i)=>l.id==='fourSlot'&&i!==lanes.length-1))throw Error('INVALID_LANE_ORDER');
   work=evidenceDir(root,work,env);
+  const registration=inferRegistrationMode(env);
   const inputSha=git(root,'rev-parse','HEAD').trim(),before=indexRows(root),old=stateAt(root);
   const initialSeals=read(root,'archive/data/meta-foundation/crosswalks/sealed-digests.v1.json',{entries:[]});
   const allOutputs=unique(lanes.flatMap(l=>l.outputs));
-  const report={schemaVersion:VERSION,mode:'prepare',inputSha,status:'PREPARING',safeToPersist:false,registrationReady:false,
+  const report={schemaVersion:VERSION,mode:'prepare',registrationMode:registration,inputSha,status:'PREPARING',safeToPersist:false,registrationReady:false,
     sourceMutation:0,independentReviewClaim:false,lanes:[],changedPaths:[]};
   writeEvidence(work,report); // An interrupted retry cannot leave an earlier attempt's publishable report.
   const next={schemaVersion:VERSION,lanes:{...old.lanes},blockedLanes:[]};
@@ -400,6 +420,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     ARCHIVE_REGISTRATION_BUILD_PREPARE_ID:buildPrepareId,
     ARCHIVE_REGISTRATION_BUILD_CACHE_DIR:path.join(work,'build-cache',buildPrepareId),
     GITHUB_STEP_SUMMARY:path.join(work,'native-step-summary.md'),
+    [REGISTRATION_MODE_ENV]:registration,
     NODE_OPTIONS:env.NODE_OPTIONS||'--max-old-space-size=6144'};
   fs.mkdirSync(writerEnv.RELEASE_EVIDENCE_DIR,{recursive:true});
   let sharedPassed=true,finalChecked=false;
@@ -475,10 +496,11 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   for(const lane of lanes) {
     // 4slot consumes the final verified identity map, or the preserved baseline after shared rollback.
     if(lane.id==='studentIndexes'||lane.id==='fourSlot')await finishShared();
-    const current=indexRows(root),assessment=assess(current,old,[lane]).lanes[0];
+    const current=indexRows(root),assessment=assess(current,old,[lane],registration).lanes[0];
     const needed=assessment.needed;
+    // A lane that does not run keeps the queued-work flag it had: skipping it never erases remaining backlog.
     const record={...assessment,status:needed?'RUNNING':'NO_OP',needed,verifiedInputDigest:assessment.inputDigest,
-      verifiedOutputDigest:assessment.outputDigest,needsContinuation:false};
+      verifiedOutputDigest:assessment.outputDigest,needsContinuation:!needed&&old.lanes[lane.id]?.needsContinuation===true};
     report.lanes.push(record);laneState.set(lane.id,record);
     if(lane.enabled===false){record.status='DISABLED';continue;}
     if(!needed)continue;
@@ -519,8 +541,8 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   // A failed final shared proof must stay blocked across restarts even when rollback restored old bytes.
   if(!sharedPassed&&!next.blockedLanes.includes('shared'))next.blockedLanes.push('shared');
   next.blockedLanes.sort();
-  const ready=assess(rows,next,lanes);
-  Object.assign(report,{registrationReady:ready.publishable,publishable:ready.publishable,needed:ready.needed,
+  const ready=assess(rows,next,lanes,registration);
+  Object.assign(report,{registrationReady:ready.publishable,publishable:ready.publishable,needed:ready.needed,backlogDeferred:ready.backlogDeferred,
     inputDigest:ready.inputDigest,outputDigest:ready.outputDigest});
   if(JSON.stringify(next)!==JSON.stringify(old)) {
     fs.mkdirSync(path.dirname(path.join(root,STATE)),{recursive:true});fs.writeFileSync(path.join(root,STATE),json(next));stage(root,[STATE]);
@@ -538,7 +560,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   }
   report.changedPaths=changed(root);report.safeToPersist=true;
   const failed=report.lanes.some(r=>['FAILED','ROLLED_BACK','STALE_DEPENDENCY'].includes(r.status));
-  report.status=failed?'PREPARED_WITH_FAILURES':report.needed?'PREPARED_WITH_PENDING':report.changedPaths.length?'PREPARED':'NO_OP';
+  report.status=failed?'PREPARED_WITH_FAILURES':report.needed?'PREPARED_WITH_PENDING':report.changedPaths.length?(ready.backlogDeferred?'PREPARED_WITH_BACKLOG':'PREPARED'):(ready.backlogDeferred?'NO_OP_WITH_BACKLOG':'NO_OP');
   // Include the entire allowlist: regeneration after a main race may touch different derived files.
   writeEvidence(work,report,allOutputs);
   return report;
