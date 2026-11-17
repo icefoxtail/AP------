@@ -803,6 +803,53 @@ const D5_FIELDS = [
   'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag',
   'legacyLevelCompatibility'
 ];
+
+// Closed metadata-only repair for the five source schemas actually observed
+// with nonnumeric identity IDs. These exact source bytes contain JSON data;
+// repository JavaScript is never executed or transformed into executable code.
+const LEGACY_NUMBERING_PINS = [
+  {
+    "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+    "gitBlobSha1": "a370abb83cfa7bb65a8de980422c5b4869c3490f",
+    "sha256": "d6930f0aab817111af7c25fce3cfdbf7a4b5002269523719e004734e6c3c245d",
+    "bytes": 11847,
+    "questionCount": 24
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2final/19_동산여중_2학기_기말_중3_수학.js",
+    "gitBlobSha1": "c9efd5c9641d21127bbbeb0b77f69cd270e7b632",
+    "sha256": "b97ed85296292713204bb12a4cdbb6f47f40892922da35df005dd12cd46975a4",
+    "bytes": 80832,
+    "questionCount": 25
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+    "gitBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+    "sha256": "593994b906e074da4f6e39ba956b976534f9654add9404fe24de69f8aded72bb",
+    "bytes": 58424,
+    "questionCount": 21
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "0a2b4a0ffb487e85a2b00a6f8203556adb0e375a",
+    "sha256": "325b015724d732bdbe9b258116bbf220aed2fc0f316c1fca5e076d1ce1ae50b7",
+    "bytes": 61507,
+    "questionCount": 23
+  },
+  {
+    "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "36c738026dc11bd0483ece6039154d43e624eafc",
+    "sha256": "0e9f0f3e3c9e413f62ff38090b4022b45951887a57131651ce9573cfa735c098",
+    "bytes": 134945,
+    "questionCount": 23
+  }
+];
+const DIAGNOSTIC_E017_Q11 = {
+  questionUid: 'qid_v1_061f56b801d84fca7fb2dccabc0f36cd424db51a71705aaf9907bbe01c0206a4',
+  sourceArchiveFile: 'original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js',
+  sourceOrdinal: 11
+};
+
 const inputRefs = new Map();
 let repoRoot = null;
 let options = null;
@@ -931,7 +978,7 @@ function positiveDisplay(value) {
 }
 function identityCohort(data) {
   const rows = recordsOf(data).filter(row => scopeForSource(row.sourceArchiveFile));
-  const byUid = new Map(), byTuple = new Map(), byDisplay = new Map(), bySource = new Map();
+  const byUid = new Map(), byTuple = new Map(), byDisplay = new Map(), bySource = new Map(), displayByUid = new Map();
   const counts = Object.fromEntries(Object.keys(CONFIG.denominators).map(k => [k, 0]));
   for (const row of rows) {
     must(UID_RE.test(row.questionUid) && Number.isSafeInteger(row.sourceOrdinal) && row.sourceOrdinal > 0,
@@ -944,6 +991,7 @@ function identityCohort(data) {
       const key = row.sourceArchiveFile + '#' + display;
       must(!byDisplay.has(key), 'IDENTITY_DISPLAY_NUMBER_AMBIGUOUS');
       byDisplay.set(key, row);
+      displayByUid.set(row.questionUid, display);
     }
     if (!bySource.has(row.sourceArchiveFile)) bySource.set(row.sourceArchiveFile, []);
     bySource.get(row.sourceArchiveFile).push(row);
@@ -954,8 +1002,62 @@ function identityCohort(data) {
     globalSelectedUses.set(row.questionUid, (globalSelectedUses.get(row.questionUid) || 0) + 1);
   must([...globalSelectedUses.values()].every(n => n === 1), 'IDENTITY_UID_USED_OUTSIDE_UNIQUE_TARGET');
   rows.sort((a, b) => a.questionUid.localeCompare(b.questionUid));
-  return { rows, byUid, byTuple, byDisplay, bySource, counts };
+  return { rows, byUid, byTuple, byDisplay, bySource, displayByUid, counts };
 }
+
+function displayForIdentity(cohort, row) {
+  return row ? cohort.displayByUid.get(row.questionUid) ?? null : null;
+}
+function attachClosedSourceNumbering(cohort, commit) {
+  const observations = [];
+  for (const pin of LEGACY_NUMBERING_PINS) {
+    const source = pin.sourceArchiveFile;
+    const identityRows = cohort.bySource.get(source);
+    must(identityRows?.length === pin.questionCount, 'CLOSED_NUMBER_SOURCE_IDENTITY_COUNT_MISMATCH');
+    const read = readBlob(commit, 'archive/exams/' + source);
+    must(read.ref.gitBlobSha1 === pin.gitBlobSha1 && read.ref.sha256 === pin.sha256 &&
+      read.ref.bytes === pin.bytes, 'CLOSED_NUMBER_SOURCE_BYTES_CHANGED');
+    // Accept only one JSON object assignment and the two known inert aliases.
+    // Comments are allowed before the assignment only. No VM/eval/import runs.
+    const match = /^\s*(?:(?:\/\/[^\r\n]*(?:\r?\n|$)|\/\*[\s\S]*?\*\/)\s*)*window\.examData\s*=\s*(\{[\s\S]*\})\s*;?\s*(?:window\.questionBank\s*=\s*window\.examData\.questions\s*;\s*window\.examTitle\s*=\s*window\.examData\.(?:title|examTitle)\s*;?\s*)?$/.exec(read.bytes.toString('utf8'));
+    must(match, 'CLOSED_NUMBER_SOURCE_NOT_DATA_ONLY_WRAPPER');
+    let data;
+    try { data = JSON.parse(match[1]); } catch { throw new Error('CLOSED_NUMBER_SOURCE_NOT_STRICT_JSON'); }
+    must(data && !Array.isArray(data) && Array.isArray(data.questions) &&
+      data.questions.length === pin.questionCount, 'CLOSED_NUMBER_SOURCE_ARRAY_COUNT_MISMATCH');
+    const seen = new Set(), projected = [];
+    for (let i = 0; i < data.questions.length; i++) {
+      const question = data.questions[i], sourceOrdinal = i + 1;
+      must(question && typeof question === 'object' && !Array.isArray(question),
+        'CLOSED_NUMBER_SOURCE_ITEM_NOT_OBJECT');
+      const fromId = positiveDisplay(question.id), fromNumber = positiveDisplay(question.number);
+      must(fromId === null || fromNumber === null || fromId === fromNumber,
+        'CLOSED_NUMBER_SOURCE_AMBIGUOUS');
+      const display = fromId ?? fromNumber;
+      must(display !== null && !seen.has(display), 'CLOSED_NUMBER_SOURCE_MISSING_OR_DUPLICATE');
+      seen.add(display);
+      const identity = cohort.byTuple.get(source + '#' + sourceOrdinal);
+      must(identity && identityRows.includes(identity), 'CLOSED_NUMBER_SOURCE_ORDINAL_IDENTITY_MISMATCH');
+      const priorDisplay = displayForIdentity(cohort, identity);
+      must(priorDisplay === null || priorDisplay === display, 'CLOSED_NUMBER_IDENTITY_NUMERIC_CONTRADICTION');
+      const key = source + '#' + display, priorRow = cohort.byDisplay.get(key);
+      must(!priorRow || priorRow.questionUid === identity.questionUid, 'CLOSED_NUMBER_IDENTITY_COLLISION');
+      cohort.byDisplay.set(key, identity);
+      cohort.displayByUid.set(identity.questionUid, display);
+      projected.push({ questionUid: identity.questionUid, sourceOrdinal, displayNumber: display,
+        identityRawNumberSha256: digest(identity.sourceQuestionNo ?? null) });
+    }
+    observations.push({ sourceArchiveFile: source, sourceRef: read.ref, count: projected.length,
+      schema: 'EXACT_WINDOW_EXAM_DATA_JSON_QUESTIONS',
+      displayRule: 'OFFICIAL_POSITIVE_ID_ELSE_NUMBER_WITH_AMBIGUITY_AND_DUPLICATE_REJECTION',
+      arrayOrdinalIsDisplayNumberAssumed: false,
+      projectionSha256: digest(projected), rows: projected });
+  }
+  return { commit, status: 'PASS_CLOSED_METADATA_NUMBER_PROJECTION',
+    sourceCount: observations.length, sourceEvaluation: 0, sourceBodyOutput: 0,
+    newApprovalInferred: false, observations };
+}
+
 function metadataMap(data, uids) {
   const map = new Map();
   for (const row of recordsOf(data)) if (uids.has(row.questionUid)) {
@@ -1153,7 +1255,7 @@ function pendingAssignments(index, cohort, snapshot) {
       const display = positiveDisplay(pending.ordinal);
       must(display !== null && source, 'PENDING_DISPLAY_NUMBER_INVALID');
       const byNumber = cohort.byDisplay.get(source + '#' + display);
-      const knownDisplay = row ? positiveDisplay(row.sourceQuestionNo) : null;
+      const knownDisplay = displayForIdentity(cohort, row);
       if (row && knownDisplay !== null)
         must(knownDisplay === display, 'PENDING_DISPLAY_UID_MISMATCH');
       if (!byNumber) {
@@ -1168,7 +1270,7 @@ function pendingAssignments(index, cohort, snapshot) {
     if (row) {
       must(!index.byUid.has(row.questionUid), 'REGISTERED_AND_ITEM_PENDING_COLLISION');
       add(row.questionUid, pending.reason, pending.questionUid ? 'INDEX_EXPLICIT_UID' :
-        pending.sourceOrdinal != null ? 'INDEX_SOURCE_ORDINAL' : 'INDEX_DISPLAY_NUMBER_TO_IDENTITY_SOURCE_QUESTION_NO');
+        pending.sourceOrdinal != null ? 'INDEX_SOURCE_ORDINAL' : 'INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP');
     } else {
       must(source && pending.ordinal == null, 'PENDING_TARGET_UNRESOLVED');
       for (const id of cohort.bySource.get(source))
@@ -1186,7 +1288,7 @@ function pendingAssignments(index, cohort, snapshot) {
     }
     must(compact.sourceArchiveFile === id.sourceArchiveFile && Array.isArray(compact.items),
       'COMPACT_METADATA_SCOPE_INVALID');
-    const display = positiveDisplay(id.sourceQuestionNo);
+    const display = displayForIdentity(cohort, id);
     if (display !== null && !compact.items.some(item => positiveDisplay(item.ordinal) === display)) {
       add(id.questionUid, 'NOT_SUBMITTED', 'EXACT_COMPACT_OMITS_AUTHENTICATED_DISPLAY_NUMBER');
     } else {
@@ -1290,6 +1392,103 @@ function proveRemainingThree(baseMd, currentMd, baseline, current, baseRuntime, 
     meaning: 'Stored MD, identity and runtime row equality only; no current Native/UI/whole-item approval is inferred.',
     rows };
 }
+
+function diagnosticToken(value, maximum = 300) {
+  if (value == null) return null;
+  if (typeof value === 'string' && value.length <= maximum &&
+    /^[A-Za-z0-9_@.:\-]+$/.test(value)) return value;
+  return { redactedValueSha256: digest(value) };
+}
+function diagnosticFingerprints(row) {
+  return Object.fromEntries(['sourceFingerprint', 'contentFingerprint', 'approvedSourceFingerprint',
+    'identityFingerprint'].map(field => {
+    const value = row?.[field];
+    return [field, value == null ? null : typeof value === 'string' && /^(?:sha256:)?[a-f0-9]{64}$/.test(value) ?
+      value : { redactedValueSha256: digest(value) }];
+  }));
+}
+function diagnosticNativeReceiptLocators(row) {
+  const values = row?.approvalEvidence;
+  if (values == null) return { present: false, locators: [], otherEntrySha256s: [] };
+  if (!Array.isArray(values)) return { present: true, array: false, valueSha256: digest(values) };
+  const locators = [], otherEntrySha256s = [];
+  for (const value of values) {
+    if (typeof value === 'string' &&
+      /^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/[A-Za-z0-9_.-]+\.json$/.test(value))
+      locators.push(value);
+    else otherEntrySha256s.push(digest(value));
+  }
+  return { present: true, array: true, entryCount: values.length, locators, otherEntrySha256s };
+}
+function diagnosticStoredMetadata(row) {
+  if (!row) return { present: false, wholeRowSha256: null };
+  return { present: true, wholeRowSha256: digest(row),
+    metadataRevision: diagnosticToken(row.metadataRevision),
+    metadataApprovalType: safeAxis('metadataApprovalType', row.metadataApprovalType),
+    reviewStatus: safeAxis('reviewStatus', row.reviewStatus),
+    metadataStatus: safeAxis('metadataStatus', row.metadataStatus),
+    tagStatus: safeAxis('tagStatus', row.tagStatus),
+    defaultSelectable: safeAxis('defaultSelectable', row.defaultSelectable),
+    metaFoundationPackVersion: diagnosticToken(row.metaFoundationPackVersion),
+    ownerFields: Object.fromEntries(['ownerPack', 'metaFoundationPackId', 'metaFoundationPack',
+      'metaFoundationOwnerPack'].map(field => [field, diagnosticToken(row[field])])),
+    fingerprints: diagnosticFingerprints(row),
+    approvalEvidence: diagnosticNativeReceiptLocators(row) };
+}
+function diagnosticStoredIdentity(row) {
+  if (!row) return { present: false, wholeRowSha256: null };
+  return { present: true, wholeRowSha256: digest(row), questionUid: row.questionUid,
+    sourceArchiveFile: row.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal,
+    sourceQuestionNo: typeof row.sourceQuestionNo === 'number' && Number.isSafeInteger(row.sourceQuestionNo) ?
+      row.sourceQuestionNo : diagnosticToken(row.sourceQuestionNo, 100),
+    status: diagnosticToken(row.status), fingerprintVersion: diagnosticToken(row.fingerprintVersion),
+    fingerprints: diagnosticFingerprints(row) };
+}
+function diagnosticStoredRuntime(entry) {
+  if (!entry) return { present: false, wholeRowSha256: null };
+  const row = entry.row;
+  return { present: true, path: entry.path, packId: entry.packId, wholeRowSha256: entry.sha256,
+    metadataRevision: diagnosticToken(row.metadataRevision),
+    metadataApprovalType: safeAxis('metadataApprovalType', row.metadataApprovalType),
+    reviewStatus: safeAxis('reviewStatus', row.reviewStatus),
+    metadataStatus: safeAxis('metadataStatus', row.metadataStatus),
+    fingerprints: diagnosticFingerprints(row),
+    approvalEvidence: diagnosticNativeReceiptLocators(row) };
+}
+function observeExactNativeFailureUid(baseline, current, baseMd, currentMd, baseIndex, actualIndex,
+  beforeRuntime, afterRuntime, pending) {
+  const subject = DIAGNOSTIC_E017_Q11, uid = subject.questionUid;
+  const beforeIdentity = baseline.byUid.get(uid), afterIdentity = current.byUid.get(uid);
+  for (const identity of [beforeIdentity, afterIdentity])
+    must(identity && identity.sourceArchiveFile === subject.sourceArchiveFile &&
+      identity.sourceOrdinal === subject.sourceOrdinal, 'EXACT_DIAGNOSTIC_UID_IDENTITY_MISMATCH');
+  const beforeMd = baseMd.get(uid), afterMd = currentMd.get(uid);
+  return { schemaVersion: 'archive-observer-exact-native-failure-metadata-v1',
+    purpose: 'EXACT_E017_Q11_RECEIPT_LOCATOR_AND_STORED_IDENTITY_DIAGNOSTIC_ONLY',
+    questionUid: uid, sourceArchiveFile: subject.sourceArchiveFile, sourceOrdinal: subject.sourceOrdinal,
+    baselineCommit: CONFIG.baselineCommit, currentCommit: options.snapshot,
+    separateF9Read: 'NOT_PERFORMED',
+    baseline: { metadata: diagnosticStoredMetadata(beforeMd),
+      identity: diagnosticStoredIdentity(beforeIdentity),
+      runtime: diagnosticStoredRuntime(beforeRuntime.get(uid)),
+      registered: baseIndex.byUid.has(uid), fourSlotWholeRowSha256: digest(baseIndex.byUid.get(uid)) },
+    current: { metadata: diagnosticStoredMetadata(afterMd),
+      identity: diagnosticStoredIdentity(afterIdentity),
+      runtime: diagnosticStoredRuntime(afterRuntime.get(uid)),
+      registered: actualIndex.byUid.has(uid), fourSlotWholeRowSha256: digest(actualIndex.byUid.get(uid)),
+      pending: pending.get(uid) || [] },
+    wholeRowEquality: {
+      metadata: Boolean(beforeMd && afterMd && digest(beforeMd) === digest(afterMd)),
+      identity: digest(beforeIdentity) === digest(afterIdentity),
+      runtime: Boolean(beforeRuntime.has(uid) && afterRuntime.has(uid) &&
+        beforeRuntime.get(uid).path === afterRuntime.get(uid).path &&
+        beforeRuntime.get(uid).sha256 === afterRuntime.get(uid).sha256),
+      fourSlot: digest(baseIndex.byUid.get(uid)) === digest(actualIndex.byUid.get(uid))
+    },
+    existingLoadedRowsOnly: true, newSourceReadForDiagnostic: 0,
+    currentNativeValidation: 'NOT_RUN', newClassification: 0, newApprovalInferred: false };
+}
+
 function protectedObservations(baseline, current, baseMd, currentMd, baseIndex, actualIndex, pending) {
   const groups = {};
   for (const [name, group] of Object.entries(CONFIG.protectedGroups)) {
@@ -1445,7 +1644,7 @@ function summarizePending(cohort, index, pending, md, examIds) {
     return {
       questionUid: row.questionUid, semester: scopeForSource(row.sourceArchiveFile),
       examId: examIds.get(row.sourceArchiveFile), sourceOrdinal: row.sourceOrdinal,
-      sourceDisplayNumber: positiveDisplay(row.sourceQuestionNo),
+      sourceDisplayNumber: displayForIdentity(cohort, row),
       compactPath: compactPath(row.sourceArchiveFile),
       physicalStatus: reasons.some(value => value.reason === 'NOT_SUBMITTED') ? 'NOT_SUBMITTED' : 'PENDING',
       reasons,
@@ -1645,6 +1844,11 @@ async function observe() {
     actualIndex.counts?.registered === actualIndex.globalRecordCount &&
     actualIndex.counts?.pending === actualIndex.globalPendingEntryCount &&
     actualIndex.counts?.files === actualIndex.globalFileCount);
+  report.closedSourceNumbering = {
+    baseline: attachClosedSourceNumbering(baseline, CONFIG.baselineCommit),
+    current: attachClosedSourceNumbering(current, options.snapshot),
+    scope: 'FIVE_OBSERVED_LEGACY_BANKS_ONLY; RAW_ID_IS_NOT_ASSUMED_TO_BE_DISPLAY_NUMBER'
+  };
   const basePending = pendingAssignments(baseIndex, baseline, CONFIG.baselineCommit);
   const pending = pendingAssignments(actualIndex, current, options.snapshot);
   const sources = [...baseline.bySource.keys()].sort();
@@ -1673,10 +1877,13 @@ async function observe() {
     current: metadataSummary(current, currentMd), baseline: metadataSummary(baseline, baseMd)
   };
   report.baselineToSnapshotSelectedRowDeltas = selectedDeltas(baseline, current, baseMd, currentMd, baseIndex, actualIndex);
-  const targets = new Set(CONFIG.protectedGroups.m3RemainingThree.rows.map(row => row.questionUid));
+  const targets = new Set([...CONFIG.protectedGroups.m3RemainingThree.rows.map(row => row.questionUid),
+    DIAGNOSTIC_E017_Q11.questionUid]);
   const beforeRuntime = runtimeSelection(CONFIG.baselineCommit, targets);
   const afterRuntime = runtimeSelection(options.snapshot, targets);
   report.remainingThreeStoredRowCas = proveRemainingThree(baseMd, currentMd, baseline, current, beforeRuntime, afterRuntime);
+  report.exactNativeFailureDiagnostic = observeExactNativeFailureUid(baseline, current, baseMd, currentMd,
+    baseIndex, actualIndex, beforeRuntime, afterRuntime, pending);
   report.protectedSubgroups = protectedObservations(baseline, current, baseMd, currentMd, baseIndex, actualIndex, pending);
   report.public = await observePublic();
   const finalTrackedState = gitText(['status', '--porcelain', '--untracked-files=no']);

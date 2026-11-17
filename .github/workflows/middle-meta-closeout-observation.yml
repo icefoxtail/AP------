@@ -1,25 +1,16 @@
 name: Middle Metadata Closeout Observation
 
 on:
+  # Operational observation selects persisted main. PR candidate checks run in CI.
   push:
     branches: ['ops/middle-meta-observer-26fc-20261117']
-  pull_request:
-    branches: [main]
-    paths:
-      - '.github/workflows/middle-meta-closeout-observation.yml'
-      - 'docs/operations/middle-meta-closeout-26fc-20261117/**'
-      - 'archive/tools/meta-foundation/**'
-      - 'tools/4slot/**'
-      - 'tools/run-tests.js'
-      - 'tests/meta-foundation-middle-geometry-runtime.test.js'
-      - '.archive-meta-register/4slot-renderer-continuity/**'
 
 permissions:
   contents: read
 
 jobs:
   observe-registered-snapshot:
-    if: (github.event_name == 'pull_request' && github.event.pull_request.number == 2330) || (github.event_name == 'push' && github.ref == 'refs/heads/ops/middle-meta-observer-26fc-20261117')
+    if: github.event_name == 'push' && github.ref == 'refs/heads/ops/middle-meta-observer-26fc-20261117'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -37,7 +28,7 @@ jobs:
       - name: Observe the latest persisted main snapshot without registration
         shell: bash
         env:
-          OBSERVATION_CODE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          OBSERVATION_CODE_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           observed_main="$(git rev-parse refs/remotes/origin/main)"
