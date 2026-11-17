@@ -1,0 +1,165 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=3: 대칭차 {1, 7}"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "7",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "2",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "3",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "1",
+              "in": [
+                "B"
+              ]
+            }
+          ],
+          "shade": "(A-B)∪(B-A)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=2: 대칭차 {0, 1}"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "2",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "3",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "0",
+              "in": [
+                "B"
+              ]
+            }
+          ],
+          "shade": "(A-B)∪(B-A)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=-2: 대칭차 {-4, -3}"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "-3",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "2",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "3",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "-4",
+              "in": [
+                "B"
+              ]
+            }
+          ],
+          "shade": "(A-B)∪(B-A)"
+        }
+      }
+    }
+  ],
+  "caption": "대칭차(색칠)가 {0,1}이면 B의 원소 2는 A에도 있어야 하므로 a-1=2 또는 a²-2=2에서 a=3, 2, -2를 얻는다. a=3이면 A={2,3,7}, B={1,2,3}으로 대칭차가 {1,7}, a=-2이면 A={-3,2,3}, B={-4,2,3}으로 {-4,-3}이라 조건에 맞지 않고, a=2이면 A={1,2,3}, B={0,2,3}으로 대칭차가 {0,1}이 되어 성립한다. 따라서 b=1+2+3=6, ab=12 (정답 ③).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $A$, $B$가 $A=\\{3,a-1,a^2-2\\}$, $B=\\{2,3,a-2\\}$일 때, $(A-B)\\cup(B-A)=\\{0,1\\}$이다. 집합 $A$의 모든 원소의 합을 $b$라고 할 때, $ab$의 값은? (단, $a$, $b$는 상수이다.) [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a의 세 후보 3, 2, -2를 원문 식에 대입해 A,B의 원소와 대칭차(색칠)를 한 장에서 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭차(색칠)가 {0,1}이면 B의 원소 2는 A에도 있어야 하므로 a-1=2 또는 a²-2=2에서 a=3, 2, -2를 얻는다. a=3이면 A={2,3,7}, B={1,2,3}으로 대칭차가 {1,7}, a=-2이면 A={-3,2,3}, B={-4,2,3}으로 {-4,-3}이라 조건에 맞지 않고, a=2이면 A={1,2,3}, B={0,2,3}으로 대칭차가 {0,1}이 되어 성립한다. 따라서 b=1+2+3=6, ab=12 (정답 ③)."
+  ]
+}

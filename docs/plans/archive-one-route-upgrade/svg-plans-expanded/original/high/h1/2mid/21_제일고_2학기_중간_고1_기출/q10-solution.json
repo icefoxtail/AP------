@@ -1,0 +1,35 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "subset": [
+      "Q",
+      "P"
+    ],
+    "shade": "Q"
+  },
+  "caption": "문제 그림에서 Pᶜ과 Q는 R 안에 있고 서로 겹치지 않으므로 Pᶜ∩Q=∅이다. 따라서 Q의 원소는 모두 P에 속하여 Q⊂P이고, q이면 p이므로 q→p가 성립한다. 즉 q는 p이기 위한 충분조건이다 (정답 ①).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림의 진리집합 $P,Q,R$의 포함관계에 대한 설명으로 옳은 것은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "Pᶜ∩Q=∅ 에서 Q⊂P를 한 장의 포함관계 벤으로 보인다(R은 이 단계에 필요 없어 생략).",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "Pᶜ∩Q=∅ ⇒ Q⊂P ⇒ q→p, q는 p의 충분조건"
+  ]
+}

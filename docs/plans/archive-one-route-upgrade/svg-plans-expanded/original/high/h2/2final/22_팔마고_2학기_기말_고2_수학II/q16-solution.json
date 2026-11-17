@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "9"
+      },
+      {
+        "id": "P",
+        "x": "19/4",
+        "y": "95/16"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "3",
+        "9"
+      ],
+      "P": [
+        "19/4",
+        "95/16"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "6"
+      ],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "5/4",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "19/4"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "l",
+        "from": "0",
+        "to": "19/4",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "l",
+        "lower": "axis",
+        "from": "0",
+        "to": "19/4",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      },
+      {
+        "id": "S3",
+        "upper": "f",
+        "lower": "axis",
+        "from": "19/4",
+        "to": "6",
+        "fill": "MEDIUM",
+        "label": "S_3"
+      }
+    ]
+  },
+  "caption": "곡선 y=-x²+6x와 x축으로 둘러싸인 전체 넓이는 ∫₀⁶(-x²+6x)dx=36이다. 직선 y=mx와의 교점을 x=b라 하면 b=6-m이고, 직선 위쪽·곡선 아래쪽 넓이는 ∫₀ᵇ(bx-x²)dx=b³/6이다(S₁). 이등분 조건 S₁=S₂+S₃=18에서 b³/6=18, b³=108이므로 (6-m)³=108이다 (정답 ⑤). 그림은 m=5/4(b=19/4)인 표본이며 실제 m은 6-∛108이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 곡선 $y=-x^2+6x$와 $x$축으로 둘러싸인 도형의 넓이가 직선 $y=mx$에 의하여 이등분될 때, 상수 $m$에 대하여 $(6-m)^3$의 값은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직선 아래 영역(S₂+S₃)과 위쪽 영역(S₁)이 각각 18임을 표본 직선으로 보이고 b³/6=18을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "S1=b³/6=18, S2+S3=18, 전체 36"
+  ]
+}

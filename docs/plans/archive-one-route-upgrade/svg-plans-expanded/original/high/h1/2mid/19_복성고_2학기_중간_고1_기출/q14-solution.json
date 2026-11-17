@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "P",
+        "x": "-1/3",
+        "y": "2"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "R",
+        "x": "-2/3",
+        "y": "1"
+      },
+      {
+        "id": "T",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "0",
+        "3"
+      ],
+      "P": [
+        "-1/3",
+        "2"
+      ],
+      "Q": [
+        "1",
+        "2"
+      ],
+      "R": [
+        "-2/3",
+        "1"
+      ],
+      "T": [
+        "2",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "2",
+        "intersectionX": [
+          "-1/3",
+          "1"
+        ]
+      },
+      {
+        "id": "k",
+        "y": "1",
+        "intersectionX": [
+          "-2/3",
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "f(f(x))=2이면 먼저 f(t)=2에서 t=-1/3 또는 t=1이다(y=2와의 교점 P, Q). 따라서 f(x)=-1/3 또는 f(x)=1이다. f의 치역은 [0,3]이라 f(x)=-1/3은 해가 없고(정의역 밖), f(x)=1에서 x=-2/3, x=2(y=1과의 교점 R, T)이다. 구하는 곱은 (-2/3)·2=-4/3이다 (정답 ④).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $\\{x\\mid -1\\le x\\le3\\}$에서 정의된 함수 $f(x)=\\begin{cases}3x+3&(-1\\le x<0)\\\\-x+3&(0\\le x\\le3)\\end{cases}$의 그래프가 다음 그림과 같다. $-1\\le x\\le3$에서 $(f\\circ f)(x)=2$인 모든 실수 $x$의 값의 곱은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=2, y=1과의 교점 좌표를 모두 표시하여 합성함수의 역추적 단계를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "y=2와의 교점 P(-1/3,2), Q(1,2); y=1과의 교점 R(-2/3,1), T(2,1); 곱 -4/3"
+  ]
+}

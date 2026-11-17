@@ -1,0 +1,132 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "x": "2",
+        "y": "-2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1",
+        "marker": "NONE"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "-2",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4/3",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "-2"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "g(x)"
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "4/3",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      },
+      {
+        "id": "S3",
+        "upper": "axis",
+        "lower": "f",
+        "from": "4/3",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_3"
+      },
+      {
+        "id": "S4",
+        "upper": "axis",
+        "lower": "f",
+        "from": "2",
+        "to": "3",
+        "fill": "MEDIUM",
+        "label": "S_4"
+      }
+    ]
+  },
+  "caption": "g(x)=f(x)/a의 한 주기 [0,3]이다(부호는 x=4/3에서 바뀐다). 넓이는 S₁=1/2, S₂=1/6, S₃=2/3, S₄=7/6이므로 ∫₀³|g|=5/2이고, 주기 3에 의해 [3,5]는 [0,2]와 같아 ∫₃⁵|g|=S₁+S₂+S₃=4/3이다. 따라서 ∫₀⁵|f|dx=a(5/2+4/3)=23a/6=23에서 a=6이다 (정답 ②).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 만족시키는 함수 $f(x)=\\begin{cases}ax&(0\\le x<1)\\\\-3ax+4a&(1\\le x<2)\\\\a(x^2-3x)&(2\\le x<3)\\end{cases}$에 대하여 양수 $a$의 값은? [4.4점]<br><div class=\"question-note-box\">(가) 모든 실수 $x$에 대하여 $f(x+3)=f(x)$이다.<br>(나) $\\displaystyle\\int_0^5|f(x)|dx=23$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 주기의 네 영역 넓이와 남은 구간 [3,5]≡[0,2]를 합하여 23a/6을 만든다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "S1=1/2, S2=1/6, S3=2/3, S4=7/6, 합 5/2, [3,5]≡[0,2] 합 4/3"
+  ]
+}

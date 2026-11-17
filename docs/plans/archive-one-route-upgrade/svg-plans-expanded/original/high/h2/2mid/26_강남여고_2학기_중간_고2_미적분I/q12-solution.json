@@ -1,0 +1,469 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "x=0, b: f′>0 (올라감)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "L",
+          "R",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "tangent",
+            "refs": [
+              "L",
+              "R"
+            ]
+          },
+          {
+            "id": "horizontal",
+            "refs": [
+              "U",
+              "V"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "hiddenPointNames": [
+          "O",
+          "L",
+          "R",
+          "U",
+          "V"
+        ],
+        "coordinateCanvas": {
+          "width": 400,
+          "height": 320
+        },
+        "rightAngles": [],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "x=c: f′=0 (수평)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "L",
+          "R",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "tangent",
+            "refs": [
+              "L",
+              "R"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "hiddenPointNames": [
+          "O",
+          "L",
+          "R",
+          "U",
+          "V"
+        ],
+        "coordinateCanvas": {
+          "width": 400,
+          "height": 320
+        },
+        "rightAngles": [],
+        "hiddenPointStyle": "NONE"
+      }
+    },
+    {
+      "caption": {
+        "text": "x=a: f′<0 (내려감)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "L",
+          "R",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "tangent",
+            "refs": [
+              "L",
+              "R"
+            ]
+          },
+          {
+            "id": "horizontal",
+            "refs": [
+              "U",
+              "V"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "hiddenPointNames": [
+          "O",
+          "L",
+          "R",
+          "U",
+          "V"
+        ],
+        "coordinateCanvas": {
+          "width": 400,
+          "height": 320
+        },
+        "rightAngles": [],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "접선이 오른쪽으로 올라가면 f′>0, 수평이면 f′=0, 내려가면 f′<0이다(그림은 접선 방향 모형이며 실제 접점 위치나 기울기 크기를 뜻하지 않는다). 그래프에서 f′(0)>0, f′(a)<0, f′(b)>0, f′(c)=0이므로 ② f′(a)f′(b)<0만 참이다(① f′(0)f′(a)<0, ③ f′(c)=0, ④·⑤는 곱이 0) (정답 ②).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 미분가능한 함수 $y=f(x)$의 그래프가 그림과 같을 때, 다음 중 옳은 것은? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0,b / c / a에서 접선 방향과 도함수 부호를 세 패널로 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접선이 오른쪽으로 올라가면 f′>0, 수평이면 f′=0, 내려가면 f′<0이다(그림은 접선 방향 모형이며 실제 접점 위치나 기울기 크기를 뜻하지 않는다). 그래프에서 f′(0)>0, f′(a)<0, f′(b)>0, f′(c)=0이므로 ② f′(a)f′(b)<0만 참이다(① f′(0)f′(a)<0, ③ f′(c)=0, ④·⑤는 곱이 0) (정답 ②)."
+  ]
+}
