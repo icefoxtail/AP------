@@ -10,7 +10,7 @@ const REF_PINS={"priorSourceRef":{"commit":"8377221debc9200dff7e647ae1a772d8d5a2
 const UI_PRODUCER={path:'tools/check-m3s2-q16-layout-browser.cjs',gitBlobSha1:'74fdbc3653ba321c614d2c06d817278c955325c4',sha256:'4b7e0dceda1cb9bc6df3f2bd70d689cd080d76afa84b09a971b3a5f2daadd517',bytes:26123};
 const UI_MANIFEST={path:'tests/fixtures/archive-m3s2-q16-layout-ui.json',gitBlobSha1:'e694b6723add49a8b7695e059b07e5a089a19d65',sha256:'4f0474664d32ee2fdaf18c8ff9cb61566ea8a70bf0a2a2040116ddca6c2d2957',bytes:1069};
 const UI_CAPTURE={path:'tools/check-reviewed-problem-renderer-browser.cjs',gitBlobSha1:'56c80b40d53fa88e8054a16f7b7267f968696f3f',sha256:'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',bytes:56735};
-const UI_ENGINE={path:'archive/engine.html',gitBlobSha1:'226342544e896cd6a6f35aa946947b89ef3c893e',sha256:'671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5',bytes:196085};
+const UI_ENGINE={path:'archive/engine.html',gitBlobSha1:'4012ec2322d26d01d9b1c75779afa140b41db40e',sha256:'12f0c276418a4715b5915ed03eff92e597fca73c5a57ba2c4c7868524ff5b500',bytes:196179};
 const SVG_INDEX='archive/data/svg-accessibility-index.js',FONT_DIR='archive/vendor/nanum-myeongjo/',FONT_CSS=FONT_DIR+'nanum-myeongjo.css',MATHJAX='archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js';
 const VIEWPORTS=[{name:'desktop',width:1365,height:1000},{name:'mobile',width:390,height:844}];
 const STUDENT=['id','number','questionType','content','question','choices','answer','solution','image','images','figureSvg','svg','solutionImage','solutionImages','solutionFigureSvg'];

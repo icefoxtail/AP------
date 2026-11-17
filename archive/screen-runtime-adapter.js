@@ -433,6 +433,7 @@ function createArchiveScreenRuntime() {
             document.body.appendChild(script);
             if (scriptError) throw scriptError;
             // 문항 배열 찾기 규칙(별칭 줄이 없는 window.examData 형식 포함)은 exam-source-reader.js 한 곳에 있다.
+            if (!window.ExamSourceReader) throw new Error('EXAM_SOURCE_READER_MISSING');
             raw = window.ExamSourceReader.readQuestionArray(window);
             if (!Array.isArray(raw) || !raw.length) throw new Error('EMPTY_SOURCE_DATA');
             title = window.ExamSourceReader.readExamTitle(window) || input.title || '수학 시험지';

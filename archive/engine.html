@@ -1788,6 +1788,7 @@ async function init() {
             await waitForMathJaxOrContinue();
             if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
             // 문항 배열 찾기 규칙(questionBank, 별칭 줄이 없는 window.examData 형식 포함)은 exam-source-reader.js 한 곳에 있다.
+            if (!window.ExamSourceReader) throw new Error('exam-source-reader.js를 불러오지 못했습니다.');
             const loadedQuestions = window.ExamSourceReader.readQuestionArray(window) || [];
             const sourceArchiveFile = String(safeDataUrl)
                 .replace(/^[^#?]*\/exams\//i, '')
