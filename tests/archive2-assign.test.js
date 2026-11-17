@@ -81,8 +81,8 @@ function memoryStorage(initial = {}) {
 let uuidCounter = 0;
 const uuid = () => `11111111-1111-4111-8111-${String(++uuidCounter).padStart(12, "0")}`;
 const NOW = Date.parse("2026-11-10T03:00:00Z"); // 한국 시간 2026-11-10 12:00
-async function build({ papers = [paper(P1)], api = makeApi(), history = null, storage = memoryStorage(), onDone = () => {}, now = () => NOW } = {}) {
-  const model = Assign.createModel({ papers, request: api.request, history, storage, uuid, now, onDone });
+async function build({ papers = [paper(P1)], api = makeApi(), history = null, storage = memoryStorage(), onDone = () => {}, now = () => NOW, original = undefined } = {}) {
+  const model = Assign.createModel({ papers, request: api.request, history, storage, uuid, now, onDone, ...(original ? { original } : {}) });
   await model.load();
   return { model, api, storage };
 }
@@ -340,6 +340,18 @@ test("문항 목록 기준 갱신(409)은 모든 경로에서 새로고침 안�
   const before = api.posts().length;
   assert.equal(await model.retryFailed(), false);
   assert.equal(api.posts().length, before, "자동 POST 0회");
+});
+
+test("저장본 출제는 서버가 index_version을 읽지 않으므로 새 기준을 받는 방법이 있어도 다시 보내지 않는다", async () => {
+  const post = () => { throw httpError(409, { error: "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요." }); };
+  let refreshes = 0;
+  const { model, api } = await build({ api: makeApi({ post }), original: { indexVersion: "idx", refreshIndexVersion: async () => { refreshes += 1; return "idx-new"; } } });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(api.posts().length, 1);
+  assert.equal(refreshes, 0);
+  assert.equal(model.results().stale, 1);
+  assert.match(Assign.renderFoot(model), /data-assign-action="refresh-page"/);
 });
 
 test("기준 갱신이 아닌 실패는 계속 다시 시도할 수 있고 새로고침 버튼이 없다", async () => {
@@ -946,7 +958,7 @@ test("배포 꾸러미와 workspace.html에 새 파일이 같은 버전으로 �
   assert.ok(manifest.archiveRootFiles.includes("archive2-assign.css"));
   const html = read("archive", "workspace.html");
   assert.match(html, /archive2-assign\.css\?v=20261116-polish-1/);
-  assert.match(html, /archive2-assign\.js\?v=20261117-stale-1/);
+  assert.match(html, /archive2-assign\.js\?v=20261117-stale-2/);
   assert.ok(html.indexOf("archive2-assign.js") < html.indexOf("archive2-library.js"), "패널은 보관함보다 먼저 올라온다");
   for (const file of ["archive2-assign.js", "archive2-assign.css"]) assert.ok(fs.existsSync(path.join(root, "archive", file)));
   const css = read("archive", "archive2-assign.css");

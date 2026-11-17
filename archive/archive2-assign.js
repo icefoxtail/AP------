@@ -229,6 +229,9 @@
   // 서버가 브라우저의 문항 목록 기준(index_version)이 현재 배포와 다르다고 거절하는 문구. 다시 보내도 같은 기준을 보내므로 새로고침만 답이다.
   const INDEX_STALE_PATTERN = /분류 기준이 갱신/;
   const INDEX_STALE_MESSAGE = "문항 목록 기준이 새로 바뀌었습니다. 페이지를 새로고침한 뒤 다시 출제해 주세요.";
+  // 원본 출제만 자동 재전송한다(서버가 문항 내용을 새 기준으로 다시 검증하는 경로: archive2-questions.js validateOriginalSnapshot).
+  // 저장본·단원별은 서버가 index_version을 읽지 않아 이 거절이 나지 않는다.
+  const INDEX_RESEND_LABEL = "문항 목록 기준이 바뀌어 새 기준으로 다시 보내는 중…";
   const ORIGINAL_CANCELLED_MESSAGE = "이 반에 같은 날 낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다. 출제일을 바꿔 주세요.";
   const ORIGINAL_MESSAGES = [
     [/취소된 Assignment/, ORIGINAL_CANCELLED_MESSAGE],
@@ -924,6 +927,20 @@
       job.message = info.message;
       if (info.kind === "failed" || info.kind === "cancelled") store.mark(job.paperId, job.classId, job.date, "failed");
     }
+    // 원본 출제가 문항 목록 기준 갱신(409)을 받았을 때만, 현재 배포된 기준으로 index_version만 바꾼 새 본문을 돌려준다(아니면 null).
+    // 서버가 원본 문항 하나하나의 해시·개수·순서·메타를 새 기준으로 다시 검증하므로(validateOriginalSnapshot) 문항은 그대로 보낸다:
+    // 원본이 바뀌었다면 서버가 "원본 내용 또는 문항 순서가 변경"으로 거절하고 교사는 새로고침 안내를 받는다.
+    async function staleResendBody(job, error) {
+      if (job.kind !== "original" || job.staleResent || typeof originalCtx.refreshIndexVersion !== "function") return null;
+      if (Number(error?.status) !== 409 || !INDEX_STALE_PATTERN.test(text(error?.data?.error || error?.message))) return null;
+      job.staleResent = true; // 다시 보낸 뒤에도 거절되면 새로고침 안내로 끝낸다(무한 반복 금지)
+      job.resending = true;
+      emit();
+      let version = "";
+      try { version = text(await originalCtx.refreshIndexVersion()); } catch (refreshError) { warnRaw(text(refreshError?.message)); }
+      if (!version || version === text(job.body.index_version)) { job.resending = false; return null; }
+      return Object.freeze({ ...job.body, index_version: version });
+    }
     async function sendJob(job) {
       if (job.rebuild) {
         // 교사가 '새로 출제'를 직접 눌렀을 때만: 취소된 건의 번호를 버리고 새 번호를 만든다.
@@ -948,12 +965,21 @@
       const startedAt = now();
       store.mark(job.paperId, job.classId, job.date, "sent");
       emit();
+      // 단원별 출제는 계약 헤더 없이 보낸다(서버의 헤더 경로는 단원별 문제지를 받지 못한다).
+      const post = () => request("/class-exam-assignments", job.kind === "unit"
+        ? { method: "POST", body: job.body, timeoutMs: WRITE_TIMEOUT_MS }
+        : { method: "POST", headers: { "X-Archive2-Contract": CONTRACT }, body: job.body, timeoutMs: WRITE_TIMEOUT_MS });
       let response;
       try {
-        // 단원별 출제는 계약 헤더 없이 보낸다(서버의 헤더 경로는 단원별 문제지를 받지 못한다).
-        response = await request("/class-exam-assignments", job.kind === "unit"
-          ? { method: "POST", body: job.body, timeoutMs: WRITE_TIMEOUT_MS }
-          : { method: "POST", headers: { "X-Archive2-Contract": CONTRACT }, body: job.body, timeoutMs: WRITE_TIMEOUT_MS });
+        try {
+          response = await post();
+        } catch (first) {
+          // 문항 목록 기준(index_version) 갱신 409: 서버는 저장 전에 거절하므로 만들어진 건이 없다. 새 기준을 받아 건당 한 번만 다시 보낸다.
+          const body = await staleResendBody(job, first);
+          if (!body) throw first;
+          job.body = body;
+          try { response = await post(); } finally { job.resending = false; }
+        }
       } catch (error) {
         applyFailure(job, error);
         emit();
@@ -1387,7 +1413,8 @@
     const multi = model.state.papers.length > 1;
     const authStopped = model.state.authLost && job.status === "queued";
     const label = authStopped ? "보내지 않음" : job.status === "ok" && job.already ? "이미 출제됨 (같은 건)"
-      : job.status === "ok" && job.attempts > 1 ? "출제됨 (다시 확인해 같은 건으로 처리)" : STATUS_LABEL[job.status];
+      : job.status === "ok" && job.attempts > 1 ? "출제됨 (다시 확인해 같은 건으로 처리)"
+        : job.status === "running" && job.resending ? INDEX_RESEND_LABEL : STATUS_LABEL[job.status];
     const id = esc(job.assignmentId);
     const detail = job.status === "ok-pdf" ? job.pdfError : ["failed", "unknown", "cancelled", "exclude-failed"].includes(job.status) ? job.message : "";
     const actions = [];
