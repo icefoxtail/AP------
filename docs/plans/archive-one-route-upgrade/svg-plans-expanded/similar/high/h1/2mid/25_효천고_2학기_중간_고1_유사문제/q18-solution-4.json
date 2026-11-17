@@ -1,0 +1,413 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "11"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-14"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "11"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-14"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-12"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-52"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "T",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "PR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "RQ",
+      "refs": [
+        "R",
+        "Q"
+      ]
+    },
+    {
+      "id": "TR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "PT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "T",
+    "R"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "caption": "원본직사각형보존,반사단계4의P대칭점T(-2, -3)와실제변내부반사점R을표시. 네T에서Q(−12,8)까지거리제곱은모두221,꺾은길이√221. 네반사점모두원래변선분내부임을확인했다. 정답(−12,8).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 네 점 $O(0,0)$, $A(0,11)$, $B(-14,11)$, $C(-14,0)$을 꼭짓점으로 하는 직사각형 $OABC$가 있다. 직사각형 $OABC$ 내부의 두 점 $P(-2,3)$와 점 $Q$에 대하여 선분 $OA$ 위에 $\\angle PR_1O=\\angle QR_1A$가 되는 점 $R_1$을 잡고, 선분 $AB$ 위에 $\\angle PR_2A=\\angle QR_2B$가 되는 점 $R_2$를 잡는다. 또 선분 $BC$ 위에 $\\angle PR_3C=\\angle QR_3B$가 되는 점 $R_3$을 잡고, 선분 $CO$ 위에 $\\angle PR_4O=\\angle QR_4C$가 되는 점 $R_4$를 잡는다. 두 선분 $PR_i$, $R_iQ$ ($i=1,2,3,4$)의 길이의 합이 항상 일정할 때, 점 $Q$의 좌표는? [4.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원본직사각형보존,반사단계4의P대칭점T(-2, -3)와실제변내부반사점R을표시. 네T에서Q(−12,8)까지거리제곱은모두221,꺾은길이√221. 네반사점모두원래변선분내부임을확인했다. 정답(−12,8).",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본직사각형보존,반사단계4의P대칭점T(-2, -3)와실제변내부반사점R을표시. 네T에서Q(−12,8)까지거리제곱은모두221,꺾은길이√221. 네반사점모두원래변선분내부임을확인했다. 정답(−12,8)."
+  ]
+}

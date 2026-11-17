@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-19"
+                },
+                {
+                  "kind": "integer",
+                  "value": "15"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "22"
+                },
+                {
+                  "kind": "integer",
+                  "value": "15"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-19"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "52"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "22"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-19"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "22"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "HU",
+      "refs": [
+        "H",
+        "U"
+      ]
+    },
+    {
+      "id": "HV",
+      "refs": [
+        "H",
+        "V"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "H",
+    "U",
+    "V"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "U",
+        "H",
+        "V"
+      ]
+    }
+  ],
+  "caption": "실제 k6의 두 직선 교점H(−19/15,22/15),기울기2와−1/2를 직각과 함께 표시. 2(−3/k)=−1,정답6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $2x-y+4=0$, $3x+ky-5=0$이 서로 수직일 때, 실수 $k$의 값은? [3.1점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 k6의 두 직선 교점H(−19/15,22/15),기울기2와−1/2를 직각과 함께 표시. 2(−3/k)=−1,정답6.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 k6의 두 직선 교점H(−19/15,22/15),기울기2와−1/2를 직각과 함께 표시. 2(−3/k)=−1,정답6."
+  ]
+}

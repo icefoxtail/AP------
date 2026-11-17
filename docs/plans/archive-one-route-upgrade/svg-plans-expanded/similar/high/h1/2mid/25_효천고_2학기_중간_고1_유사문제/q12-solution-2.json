@@ -1,0 +1,46 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-19",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      2,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-(x-4)^2-3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "-3"
+      }
+    ]
+  },
+  "caption": "원래꼭짓점(4,3)→x축대칭(4,−3)→위로3이동(4,0)을순서비교. 실제정의역은실수전체,핵심표시창만발췌. a3,b4,정답7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "포물선 $y=x^2-8x+19$를 $x$축에 대하여 대칭이동한 후, $y$축의 방향으로 $a$만큼 평행이동한 포물선이 $x$축과 점 $(b,0)$에서 접할 때, $a+b$의 값은? (단, $a,b$는 상수) [4.1점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원래꼭짓점(4,3)→x축대칭(4,−3)→위로3이동(4,0)을순서비교. 실제정의역은실수전체,핵심표시창만발췌. a3,b4,정답7.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원래꼭짓점(4,3)→x축대칭(4,−3)→위로3이동(4,0)을순서비교. 실제정의역은실수전체,핵심표시창만발췌. a3,b4,정답7."
+  ]
+}

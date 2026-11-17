@@ -1,0 +1,62 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫째눈",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "둘째눈",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "두눈차5인순서쌍만연결. 차2는8개/차5는2개,겹치지않아합10개. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 차가 2 또는 5인 경우의 수는? (5점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

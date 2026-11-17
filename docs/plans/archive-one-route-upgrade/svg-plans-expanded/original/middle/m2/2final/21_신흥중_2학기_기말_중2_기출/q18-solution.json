@@ -1,0 +1,76 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫비딸기",
+        "elements": [
+          "2/3"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "둘째비딸기",
+        "elements": [
+          "2/3"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "둘다비딸기",
+        "elements": [
+          "4/9"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "적어도딸기",
+        "elements": [
+          "5/9"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "복원하여독립이다. 두번모두비딸기는곱4/9,적어도하나는여사건1−4/9=5/9. 마지막화살표는보수계산,오렌지1/4은불필요조건. 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "여러 가지 맛의 사탕이 들어 있는 상자에서 사탕 한 개를 임의로 꺼낼 때, 꺼낸 사탕이 딸기맛일 확률은 $\\dfrac{1}{3}$, 오렌지맛일 확률은 $\\dfrac{1}{4}$라고 한다. 이 상자에서 사탕 두 개를 임의로 꺼내되, 한 개를 꺼낼 때마다 다시 넣어 추출이 서로 독립이 되도록 할 때, \n적어도 하나는 딸기맛일 확률은? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

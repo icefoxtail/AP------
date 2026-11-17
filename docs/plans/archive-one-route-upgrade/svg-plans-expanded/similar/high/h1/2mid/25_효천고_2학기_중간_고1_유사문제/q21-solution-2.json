@@ -1,0 +1,163 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "integer",
+                "value": "-5"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "7"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "25"
+              },
+              {
+                "kind": "integer",
+                "value": "-5"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "17"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "caption": "실제C(25, 17)의내분/외분두경우. t3/5와3에서3|t−1|=2|t|를모두만족. 점C를선분AB위로제한하지않으며정답(1,5),(25,17).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 두 점 $A(-5,2)$, $B(5,7)$과 직선 $AB$ 위의 점 $C$가 $3\\overline{BC}=2\\overline{AC}$를 만족시킬 때, 점 $C$의 좌표를 모두 구하고 그 과정을 서술하시오. [6점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제C(25, 17)의내분/외분두경우. t3/5와3에서3|t−1|=2|t|를모두만족. 점C를선분AB위로제한하지않으며정답(1,5),(25,17).",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제C(25, 17)의내분/외분두경우. t3/5와3에서3|t−1|=2|t|를모두만족. 점C를선분AB위로제한하지않으며정답(1,5),(25,17)."
+  ]
+}

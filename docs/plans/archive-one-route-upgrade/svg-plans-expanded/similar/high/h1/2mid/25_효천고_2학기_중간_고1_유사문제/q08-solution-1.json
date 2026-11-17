@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "H",
+    "U",
+    "V",
+    "K",
+    "X",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "PK",
+      "refs": [
+        "P",
+        "K"
+      ]
+    },
+    {
+      "id": "KH",
+      "refs": [
+        "K",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P",
+    "H",
+    "U",
+    "V",
+    "K",
+    "X",
+    "Y"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "P",
+        "H",
+        "U"
+      ]
+    },
+    {
+      "id": "k",
+      "refs": [
+        "P",
+        "K",
+        "H"
+      ]
+    }
+  ],
+  "caption": "원본 일반수선/두절편그림을보존. 명시예시3x+4y−7=0,P4,5,H1,1에서t−1,변화(−3,−4),거리5. 일반답은b/a,x₁+at,y₁+bt,−(ax₁+by₁+c)/(a²+b²),√(a²+b²),④. 예시가일반계수를고정하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기는 좌표평면 위의 점 $P(x_1,y_1)$과 점 $P$를 지나지 않는 직선 $l:ax+by+c=0$ ($a\\ne0$, $b\\ne0$) 사이의 거리 공식을 구하는 과정 중 일부이다. 빈칸 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ에 들어갈 내용을 순서대로 바르게 나열한 것은? [3.8점]<br><br>점 $P$에서 직선 $l$에 내린 수선의 발을 $H(x_2,y_2)$라 하자. 직선 $l$의 기울기가 $-\\dfrac ab$이므로 직선 $PH$의 기울기는 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄱ</span>이다.<br>$x_2-x_1=at$, $y_2-y_1=bt$로 두면 $x_2$, $y_2$는 각각 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄴ</span>, <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄷ</span>이다.<br>점 $H$가 $l$ 위에 있으므로 이를 $ax_2+by_2+c=0$에 대입하면 $t=$ <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄹ</span>이다. 따라서 $PH=\\dfrac{|ax_1+by_1+c|}{\\square}$이므로 ㅁ은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㅁ</span>이다.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원본 일반수선/두절편그림을보존. 명시예시3x+4y−7=0,P4,5,H1,1에서t−1,변화(−3,−4),거리5. 일반답은b/a,x₁+at,y₁+bt,−(ax₁+by₁+c)/(a²+b²),√(a²+b²),④. 예시가일반계수를고정하지않는다.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 일반수선/두절편그림을보존. 명시예시3x+4y−7=0,P4,5,H1,1에서t−1,변화(−3,−4),거리5. 일반답은b/a,x₁+at,y₁+bt,−(ax₁+by₁+c)/(a²+b²),√(a²+b²),④. 예시가일반계수를고정하지않는다."
+  ]
+}

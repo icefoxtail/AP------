@@ -1,0 +1,76 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "시계순서",
+        "elements": [
+          "A"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "다음",
+        "elements": [
+          "E"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "그다음",
+        "elements": [
+          "D"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "세칸뒤",
+        "elements": [
+          "C"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "원래정오각형의방향과명칭을보존하여A→E→D→C로세칸을별도표시한다. 그뒤B→A로돌아와한바퀴5. 합3또는8일때C,정답7/36.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 1인 정오각형 $ABCDE$가 있다.\n 꼭짓점 $A$에 있는 말을 주사위를 던져서 나오는 눈의 수만큼 시계바늘이 도는 방향으로 이동한다. 한 개의 주사위를 두 번 던질 때,\n 말이 꼭짓점 $C$로 이동해 있을 확률을 구하면? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}
