@@ -18,6 +18,7 @@ import { hasAuditSourcePreservationClaim } from './native-audit-source-preservat
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
 import { replayE015IssuedSourceContinuation, assertE015IssuedSourceContinuationLeaf } from './native-e015-source-cc-continuity.mjs';
+import { replayM2Problem21CurrentUiContinuation, assertM2Problem21CurrentUiLeaf } from './m2-problem21-current-ui-continuity.mjs';
 import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
 import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
@@ -197,6 +198,19 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
   } else {
     try {
       const replayed=replayE015IssuedSourceContinuation({nativeSource,question,previous,current,identity,source,ordinal,
+        revalidateLeaf:leaf=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,
+          pt,tpl,registry,ownerPack,...leaf})});
+      if(replayed!==null)return replayed;
+    } catch { return null; }
+  }
+  // Only a live private token can present the original issued bank. The
+  // recursive leaf still runs the unmodified receipt and current ACTIVE guards.
+  if(Object.hasOwn(nativeSource,'m2Problem21CurrentUiContinuation')) {
+    try { assertM2Problem21CurrentUiLeaf({context:nativeSource.m2Problem21CurrentUiContinuation,
+      nativeSource,current,identity,source,ordinal,question}); } catch { return null; }
+  } else {
+    try {
+      const replayed=replayM2Problem21CurrentUiContinuation({nativeSource,question,previous,current,identity,source,ordinal,
         revalidateLeaf:leaf=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,
           pt,tpl,registry,ownerPack,...leaf})});
       if(replayed!==null)return replayed;
