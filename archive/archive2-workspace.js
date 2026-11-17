@@ -2310,6 +2310,24 @@
   // 학교 기출·유사문제 줄·홈의 `출제`(source-issue)도 같은 패널로 낸다(2026-11-11). 옛 iframe(openOriginalIssue)은
   // 주소에 assign=legacy가 있거나 패널 스크립트가 없을 때만 쓴다. 본문 만들기·재전송·이력은 archive2-assign.js(원본 항목).
   // 원본 문항은 옛 iframe이 부모에게서 받던 것과 같은 방법(Source.load(file, sourceHash))으로 받고, 해시는 그대로 검증된다.
+  // 사이트가 새로 배포되면 서버의 기준 버전(index_version)이 이 화면이 읽은 것과 달라져 출제가 409로 거절된다.
+  // 패널이 그 거절을 받았을 때 현재 배포된 기준 버전만 가볍게 다시 읽는다: 목록 전체를 다시 만들지 않고, 로더(loadInputBundle)와 같은
+  // 검사(매니페스트 형식·resolver 버전·projectionVersion 재계산)를 거친다. 화면의 목록·catalog는 바꾸지 않는다.
+  async function fetchCurrentProjectionVersion() {
+    const Canon = window.Archive2Canonical;
+    if (!Canon?.computeProjectionVersion) throw new Error("canonical loader unavailable");
+    const response = await fetch(new URL("data/archive2-canonical-input-manifest.json", document.baseURI).toString(), { cache: "no-cache" });
+    if (!response.ok) throw new Error("canonical manifest unavailable (" + response.status + ")");
+    const manifest = JSON.parse(await response.text());
+    if (
+      manifest?.schemaVersion !== "archive2-canonical-input-manifest-v1" ||
+      manifest.resolverVersion !== Canon.RESOLVER_VERSION ||
+      !Array.isArray(manifest.files)
+    ) throw new Error("canonical manifest version mismatch");
+    const version = await Canon.computeProjectionVersion(manifest.files);
+    if (version !== manifest.projectionVersion) throw new Error("canonical manifest digest mismatch");
+    return version;
+  }
   function openOriginalAssign(exam) {
     const Assign = window.Archive2Assign;
     if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
@@ -2327,7 +2345,7 @@
         kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
         grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
       }],
-      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash) },
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
       request: assignRequest,
       opener: document.activeElement,
     });

@@ -124,4 +124,30 @@ class Observation(unittest.TestCase):
         empty=svg.replace('</svg>','<g id="overlay-line-L-equation" data-label-kind="EQUATION_LABEL" data-owner="overlay-line-L"></g></svg>')
         self.assertIn('OVERLAY_LABEL_EMPTY:L',tamper(empty)['errors'])
 
+QUARTIC={'family':'piecewise-polynomial','pieces':[{'coefficients':['2','0','0','0','1']}],'breakpoints':[],'sourceDomain':{'kind':'ALL_REALS'},
+         'domain':[-1.3,1.3],'viewport':[-1.3,1.3,-1.5,5],'requiredPoints':[{'id':'E0','x':'0','y':'2'}],'axisTickValues':{'x':[],'y':[]},
+         'coordinateBand':{'hide':['E0']},
+         'overlays':{'points':[{'id':'A','x':'0','y':'-1','coordinates':True},{'id':'B','curveX':'-1','coordinates':True},{'id':'C','curveX':'1','coordinates':True}],
+                     'lines':[{'id':'l','slope':'-4','intercept':'-1','label':'l'},{'id':'r','slope':'4','intercept':'-1','label':'m'}],
+                     'segments':[{'id':'bc','from':'B','to':'C'}]}}
+
+class QuarticPieceObserver(unittest.TestCase):
+    """A quartic piece (five coefficients) is a valid plan for framing, so the independent observer must read it too (it used to refuse more than four)."""
+    def test_five_coefficient_piece_passes_the_observer(self):
+        plan=fitted(copy.deepcopy(QUARTIC))
+        result,model=observed(plan)
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertNotIn('OVERLAY_CURVE_UNSUPPORTED',result['errors'])
+        self.assertEqual(result['overlays']['points'],3)
+
+    def test_exact_point_on_the_quartic_is_still_checked(self):
+        plan=fitted(copy.deepcopy(QUARTIC));_,model=observed(plan)
+        shifted=model['svg'].replace('id="B" data-role="point" data-overlay="true" cx="','id="B" data-role="point" data-overlay="true" cx="7')
+        self.assertIn('OVERLAY_POINT_MISMATCH:B',audit(plan,shifted,model['transform'])['errors'])
+
+    def test_six_coefficients_stay_refused(self):
+        from graph_observer import _pp_coeff_coefficients
+        self.assertEqual(len(_pp_coeff_coefficients(['1','2','3','4','5'])),5)
+        with self.assertRaises(ValueError):_pp_coeff_coefficients(['1','2','3','4','5','6'])
+
 if __name__=='__main__':unittest.main()

@@ -146,6 +146,16 @@
 - **구역(`section`):** 한 단원의 소단원을 머리말로 나누고 싶을 때 단원에 `sections`(이름 목록)를 두고 소단원 묶음에 `section`을 단다. 지금은 공통수학1 "여러 가지 방정식과 부등식"만 "여러 가지 방정식"/"여러 가지 부등식"으로 나눈다. 단원 일반·기타·이동·제외 묶음에는 `section`이 없다.
 - **검사:** `tests/meta-os-subunit-groups.test.mjs`(한 키는 통합 단원당 한 묶음, 표의 키가 정본에 있음, 라벨 한글·비어 있지 않음, 종류별 규칙, `--check` 일치). 운영 데이터의 정확한 개수는 고정하지 않는다.
 
+## CURRENT — 문항별 중단원 지정표 (2026-11-17, 사용자 결정)
+
+- **무엇:** `archive/data/archive2-middle-parent-assignments.json`. 옛(2015) 소단원 키가 2022 중단원 둘 이상에 걸치거나 키가 없어서 단원 표(중등)의 "중단원 미지정"에 떨어지던 문항을, 문항을 하나씩 읽고(1차, 독립 2차, 불일치는 최종 판정) 정한 중단원 하나에 잇는 표다. 옛 키·크로스워크·`legacySubUnitMappings`(`RPM_MIDDLE_LEGACY_SUBUNIT_PARENT_DRIFT` 검사 대상)·봉인 문서는 바꾸지 않는다(소단원 묶음표와 같은 "키는 그대로, 표를 얹는다" 방식). 이유: 원의 성질 380문항이 "원주각"·"원주각의 활용" 칸이 0인 채 미지정에 있어 선생님이 원주각만 골라 출제할 수 없었다.
+- **정본과 파생:** 정본은 지정표 파일 하나다. 카탈로그 빌더(`archive/tools/build-archive2-catalog.mjs`)가 지정표를 읽어 카탈로그 문항에 `reviewedMiddleParentKey` 필드를 싣고(파생, `--check`가 불일치를 잡는다), 화면은 그 필드만 읽는다(`UnitPastExamsCore.reviewedMiddleParent`, 단원 표 `archive2-unit-tree.js` `assign`, 통합 단원 `classify`). 지정표를 따로 내려받지 않는다.
+- **지문 조건:** 문항 본문(발문·보기·그림)의 지문(`assignmentFingerprint`)이 판정 당시와 같을 때만 필드가 실린다. 본문이 바뀐 문항은 필드가 없어 예전 규칙으로 떨어진다(추정 금지). 해설·정답만 바뀐 것은 지정이 유지된다.
+- **우선순위:** 정본 판정이 EXACT인 문항은 그 판정이 1순위이고 지정표는 쓰지 않는다. 지정이 같은 학년의 다른 대단원 중단원이면 대단원도 그 중단원의 대단원이 된다. 학년이 다른 중단원(예: 중3 문항을 중2 피타고라스 정리로)은 지정표에 넣지 않는다(문항 학년은 바꾸지 않는다). 판정이 NOT_IN_2022인 문항도 넣지 않는다(예전처럼 미지정).
+- **도구:** `node archive/tools/build-middle-parent-assignments.mjs --ledger <final.jsonl> [--unresolved <out.jsonl>]`로 판정 원장(한 줄에 한 문항 JSONL)을 지정표로 바꾼다. `OTHER_BIG_UNIT` 행은 판정자가 적은 대단원·중단원 이름이 같은 학년의 정본 중단원 하나와 정확히 맞을 때만 풀고(학년 접두어·공백 차이만 맞춘다), 아니면 추정하지 않고 `unresolved`로 낸다. `--check`는 지정표 파일을 검증한다. 원장(`final.jsonl`, 근거글 포함 약 3MB)은 Git에 넣지 않고 Drive에 두며, 지정표 `basis.ledgerSha256`에 해시만 남긴다. 문항을 더 판정했으면 원장을 합쳐 도구를 다시 돌린다. 지정표를 손으로 고치지 않는다.
+- **워커:** 워커(`apmath/worker-backup/worker`)는 단원 분류(`archive2-unit-tree`·`archive2-unified-units`·`unit-past-exams-core`)를 번들하지 않는다. 지정표 변경은 워커 재배포 대상이 아니다(`tools/ci/apms-worker-bundle-paths.txt`의 파일을 건드리지 않았다).
+- **검사:** `tests/archive2-middle-parent-assignments.test.js`(지정 문항이 지정 중단원으로 감, EXACT 1순위, 지문이 다르면 무시, 키가 전부 정본, 카탈로그 필드가 지정표와 일치). 운영 데이터의 정확한 개수는 고정하지 않는다.
+
 ## CURRENT — REVIEW2 등록 완화 (2026-11-13, 사용자 결정)
 
 두 번 독립 판정(REVIEW2) 경로에만 적용한다. 다른 승인 유형(FINAL_QA, META_PIPELINE_AUDIT)과 나머지 검사는 그대로다.

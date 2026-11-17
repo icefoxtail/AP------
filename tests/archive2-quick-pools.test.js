@@ -518,11 +518,20 @@ test('screens: 중단원 평가 lists every official 중단원 of the grade unde
   assert.match(first, /평면도형/);
   assert.match(first, /<span class="qk-row-name">다각형<\/span>|<span class="qk-row-name">원과 부채꼴<\/span>/);
   assert.doesNotMatch(first, /이전 분류/);
-  h.w.quickState.shortOpen = false;
-  const folded = h.w.renderQuick();
-  assert.match(folded, /class="qk-short-toggle"[^>]*aria-expanded="false">문항이 모자란 중단원 \d+개</, 'short rows are one folded line');
-  assert.doesNotMatch(folded, /class="qk-row is-short"/);
-  assert.doesNotMatch(folded, /필요 · \d+문항 가능/, 'no long shortage sentence in the list');
+  // 모자란 중단원이 실제 자료에 있는지는 자료와 문항별 중단원 지정표에 따라 달라진다(지정표 뒤 중1은 모든 중단원이 충분하다).
+  // 모자란 줄이 있으면 접힌 한 줄이어야 하고, 없으면 접는 줄도 모자란 줄도 없어야 한다.
+  // 접는 동작 자체는 아래 shortUnitCatalog 시험이 고정 자료로 본다.
+  for (const grade of ['중1', '중2', '중3']) {
+    h.w.quickState.grade = grade;
+    h.w.quickState.shortOpen = true;
+    const hasShort = /class="qk-row is-short"/.test(h.w.renderQuick());
+    h.w.quickState.shortOpen = false;
+    const folded = h.w.renderQuick();
+    if (hasShort) assert.match(folded, /class="qk-short-toggle"[^>]*aria-expanded="false">문항이 모자란 중단원 \d+개</, `${grade}: short rows are one folded line`);
+    else assert.doesNotMatch(folded, /class="qk-short-toggle"/, `${grade}: 모자란 줄이 없으면 접는 줄도 없다`);
+    assert.doesNotMatch(folded, /class="qk-row is-short"/);
+    assert.doesNotMatch(folded, /필요 · \d+문항 가능/, 'no long shortage sentence in the list');
+  }
 });
 
 test('screens: a short row is folded behind one line and opens to a short reason', async () => {
