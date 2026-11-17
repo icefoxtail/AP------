@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "14",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "10",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-14",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "x": "4",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(x-2)+3*abs(x-4)",
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "6",
+        "intersectionX": [
+          "2",
+          "5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 6
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "5"
+      ],
+      "y": [
+        "6"
+      ]
+    }
+  },
+  "caption": "절댓값 기준점에서 꺾이는 그래프와 높이 6인 수평선을 비교하여 그래프가 아래에 있는 구간을 찾는다.",
+  "accessibilityDescription": "절댓값 기준점에서 꺾이는 그래프와 높이 6인 수평선을 비교하여 그래프가 아래에 있는 구간을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 부등식 $|x-2| + 3|x-4| < 6$을 만족시키는 정수 $x$값들의 합은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 기준점에서 꺾이는 그래프와 높이 6인 수평선을 비교하여 그래프가 아래에 있는 구간을 찾는다."
+  ]
+}

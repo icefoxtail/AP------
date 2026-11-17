@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "road",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "D",
+          "road"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ce",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ce",
+          "road"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [
+    "road"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "C",
+    "D"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "도로 아래로 D를 대칭시킨 E와 C를 잇는 직선으로 최단 경로를 찾는다",
+  "accessibilityDescription": "도로 아래로 D를 대칭시킨 E와 C를 잇는 직선으로 최단 경로를 찾는다",
+  "newVisualInformation": [
+    "도로 아래로 D를 대칭시킨 E와 C를 잇는 직선으로 최단 경로를 찾는다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 직선으로 뻗은 도로변에 $4\\,\\mathrm{km}$ 떨어진 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$로부터 각각 수직으로 $2\\,\\mathrm{km}$와 $1\\,\\mathrm{km}$ 떨어진 지점에 두 건물 $\\mathrm{C}$와 $\\mathrm{D}$가 있다. 도로변에 버스 정류장을 만들려고 할 때, 두 건물에서 버스 정류장까지의 거리의 합의 최솟값을 구하시오.\n<img src=\"q15.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문 PNG에서 건물 둘은 도로 같은 쪽. D를 y=0에 반사, E=(4,-1); CE=5. P=(8/3,0). 답 5 라벨 없음; 단위 km, 좌표는 A원점 정규화.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

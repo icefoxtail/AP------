@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len1",
+        "ownerSegment": "sOA",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "len2",
+        "ownerSegment": "sOB",
+        "text": "15/8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "len3",
+        "ownerSegment": "sAB",
+        "text": "17/8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 380
+  },
+  "caption": "변 1을 빗변으로 둘 수 없음을 합 조건으로 확인한 뒤 두 실근의 변 중 긴 쪽을 빗변으로 놓는다.",
+  "accessibilityDescription": "변 1을 빗변으로 둘 수 없음을 합 조건으로 확인한 뒤 두 실근의 변 중 긴 쪽을 빗변으로 놓는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서·논술형 2> $x$에 대한 사차방정식 $x^4-6x^3+(9+k)x^2-(4+2k)x+k=0$의 서로 다른 세 실근이 어떤 직각삼각형의 세 변의 길이가 된다. 가능한 모든 $k$값들을 풀이과정과 함께 서술하시오. [12점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "변 1을 빗변으로 둘 수 없음을 합 조건으로 확인한 뒤 두 실근의 변 중 긴 쪽을 빗변으로 놓는다."
+  ]
+}

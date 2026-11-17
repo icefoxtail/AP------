@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ca",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "33"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cset",
+        "op": "INTERSECTION",
+        "inputs": [
+          "ca",
+          "cb"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "Cset"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "코사인법칙으로 얻은 현 BC와 원주각 A를 외접원 반지름에 연결한다.",
+  "accessibilityDescription": "코사인법칙으로 얻은 현 BC와 원주각 A를 외접원 반지름에 연결한다.",
+  "newVisualInformation": [
+    "코사인법칙으로 얻은 현 BC와 원주각 A를 외접원 반지름에 연결한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "sqrt(33)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": []
+  },
+  "sourceQuote": "삼각형 $\\text{ABC}$에서 $b=4$, $c=5$, $\\cos A",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $\\text{ABC}$에서 $b=4$, $c=5$, $\\cos A = \\frac{1}{5}$일 때, 외접원의 반지름의 길이를 구하시오.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "cosA=1/5,sinA=2sqrt(6)/5; 반지름 답 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

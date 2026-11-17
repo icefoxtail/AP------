@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "절댓값 부등식을 풀어 얻은 열린 구간에서 정수점을 센다.",
+  "accessibilityDescription": "절댓값 부등식을 풀어 얻은 열린 구간에서 정수점을 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $|2x-3| < x+3$을 만족시키는 모든 정수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "절댓값 부등식을 풀어 얻은 열린 구간에서 정수점을 센다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 부등식을 풀어 얻은 열린 구간에서 정수점을 센다."
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "diag",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "B",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ef",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ef",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ef",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "displayLines": [
+    "diag",
+    "yaxis"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "E",
+    "F"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "A와 B를 각각 경계선에 대칭시켜 꺾인 경로를 한 직선으로 편다",
+  "accessibilityDescription": "A와 B를 각각 경계선에 대칭시켜 꺾인 경로를 한 직선으로 편다",
+  "newVisualInformation": [
+    "A와 B를 각각 경계선에 대칭시켜 꺾인 경로를 한 직선으로 편다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 두 점 $\\mathrm{A}(4, 3)$과 $\\mathrm{B}(2, -4)$에 대하여 서로 다른 두 점 $\\mathrm{C}$와 $\\mathrm{D}$가 각각 $y$축과 직선 $y=x$ 위에 있을 때, $\\overline{\\mathrm{AD}}+\\overline{\\mathrm{DC}}+\\overline{\\mathrm{CB}}$의 최솟값을 구하시오.\n<img src=\"q18.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG 확인. E=(3,4),F=(-2,-4); D=(4/3,4/3),C=(0,-4/5); E-D-C-F 순서. EF=√89 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "두 변과 그 끼인각으로 삼각형의 높이와 넓이를 연결한다.",
+  "accessibilityDescription": "두 변과 그 끼인각으로 삼각형의 높이와 넓이를 연결한다.",
+  "newVisualInformation": [
+    "두 변과 그 끼인각으로 삼각형의 높이와 넓이를 연결한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "30",
+        "value": 30,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "$\\triangle \\mathrm{ABC}$에서 $b=5$, $c=8$,",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle \\mathrm{ABC}$에서 $b=5$, $c=8$, $A=30^{\\circ}$일 때, $\\triangle \\mathrm{ABC}$의 넓이를 구하시오.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "S=bc sinA/2. 최종 넓이 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

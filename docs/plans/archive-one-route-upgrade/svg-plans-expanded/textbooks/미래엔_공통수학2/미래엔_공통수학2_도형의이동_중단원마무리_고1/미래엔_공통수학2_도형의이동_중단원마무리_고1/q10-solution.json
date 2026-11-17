@@ -1,0 +1,120 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "l"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l",
+    "m"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "평행이동한 두 직선 사이의 거리는 한 직선 위 점에서 다른 직선까지의 수선 길이",
+  "accessibilityDescription": "평행이동한 두 직선 사이의 거리는 한 직선 위 점에서 다른 직선까지의 수선 길이",
+  "newVisualInformation": [
+    "평행이동한 두 직선 사이의 거리는 한 직선 위 점에서 다른 직선까지의 수선 길이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "포물선 $y=x^2-4x$를 포물선 $y=x^2-12x+27$로 옮기는 평행이동에 의하여 직선 $l: 2x+y-1=0$이 직선 $l'$으로 옮겨진다. 이때 두 직선 $l$과 $l'$ 사이의 거리를 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "포물선 꼭짓점(2,-4)→(6,-9), 이동(4,-5), m:2x+y-4=0, 거리3/√5. H=(6/5,8/5) 파생; 거리 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

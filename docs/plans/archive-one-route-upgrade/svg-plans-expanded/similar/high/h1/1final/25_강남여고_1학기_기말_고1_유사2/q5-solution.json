@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "15",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3,
+      7,
+      -10,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "m"
+    }
+  },
+  "caption": "x에 대한 완전제곱에서 얻은 최솟값 m을 a의 함수로 본다. 아래로 더 내려갈 수 없는 꼭짓점의 높이를 비교한다.",
+  "accessibilityDescription": "x에 대한 완전제곱에서 얻은 최솟값 m을 a의 함수로 본다. 아래로 더 내려갈 수 없는 꼭짓점의 높이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = x^2 - 2ax + 3a^2 - 8a + 15$의 최솟값을 $m$이라 할 때, $m$이 가질 수 있는 최솟값은? (단, $a$는 실수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "x에 대한 완전제곱에서 얻은 최솟값 m을 a의 함수로 본다. 아래로 더 내려갈 수 없는 꼭짓점의 높이를 비교한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x에 대한 완전제곱에서 얻은 최솟값 m을 a의 함수로 본다. 아래로 더 내려갈 수 없는 꼭짓점의 높이를 비교한다."
+  ]
+}

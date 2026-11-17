@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -2,
+      14
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "4",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "curveX": "-2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "4"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S",
+          "points": [
+            "A",
+            "B",
+            "D"
+          ],
+          "fill": "LIGHT",
+          "label": "S"
+        },
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "MEDIUM",
+          "label": "T"
+        }
+      ]
+    }
+  },
+  "caption": "포물선 위 A, B에서 수평선을 그어 C, D를 찾는다. 두 삼각형은 같은 높이를 가지므로 수평 밑변 길이를 비교한다.",
+  "accessibilityDescription": "포물선 위 A, B에서 수평선을 그어 C, D를 찾는다. 두 삼각형은 같은 높이를 가지므로 수평 밑변 길이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2-2x$의 그래프와 직선 $y=x+4$가 만나는 두 점을 A, B라 하자. (단, 점 A의 $x$좌표는 점 B의 $x$좌표보다 작다.) 점 A를 지나고 $x$축에 평행한 직선이 $y=x^2-2x$의 그래프와 만나는 점 중 A가 아닌 점을 C, 점 B를 지나고 $x$축에 평행한 직선이 $y=x^2-2x$의 그래프와 만나는 점 중 B가 아닌 점을 D라 할 때, 삼각형 ABD의 넓이를 S, 삼각형 ABC의 넓이를 T라 하자. $S:T=a:b$일 때, $a+b$의 값은? (단, $a, b$는 서로소인 자연수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "포물선 위 A, B에서 수평선을 그어 C, D를 찾는다. 두 삼각형은 같은 높이를 가지므로 수평 밑변 길이를 비교한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 위 A, B에서 수평선을 그어 C, D를 찾는다. 두 삼각형은 같은 높이를 가지므로 수평 밑변 길이를 비교한다."
+  ]
+}

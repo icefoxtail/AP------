@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: t=1인 세로선 위 두 점 P, Q의 높이 차가 선분 PQ이다. 최대 길이는 t를 움직여 구한다.",
+  "accessibilityDescription": "예: t=1인 세로선 위 두 점 P, Q의 높이 차가 선분 PQ이다. 최대 길이는 t를 움직여 구한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)=-x^2+6x$의 그래프와 직선 $y=2x$가 만나는 두 점 중 원점이 아닌 점을 A라 하고, 점 A의 $x$좌표를 $\\alpha$라 하자. $0 < t < \\alpha$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=2x$와 만나는 점을 각각 P, Q라 할 때, 선분 PQ의 길이의 최댓값은 $M$이다. $M+\\alpha$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: t=1인 세로선 위 두 점 P, Q의 높이 차가 선분 PQ이다. 최대 길이는 t를 움직여 구한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: t=1인 세로선 위 두 점 P, Q의 높이 차가 선분 PQ이다. 최대 길이는 t를 움직여 구한다."
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "E",
+        "F"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "F",
+        "A"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "C",
+        "E"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "E",
+        "A"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "hiddenPointStyle": "DOT",
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 420
+  },
+  "caption": "강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다.",
+  "accessibilityDescription": "강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[도형필요] 원에 내접하는 정육각형이 있다. 정육각형의 꼭짓점 중 서로 다른 3개의 점을 택하여 삼각형을 만들 때, 정육각형의 어떠한 변과도 공유하지 않는 삼각형의 개수는? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다."
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bis",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bis",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "각이등분선 AD가 밑변을 두 변의 길이 비로 나누므로 두 삼각형의 넓이 비가 같다.",
+  "accessibilityDescription": "각이등분선 AD가 밑변을 두 변의 길이 비로 나누므로 두 삼각형의 넓이 비가 같다.",
+  "newVisualInformation": [
+    "각이등분선 AD가 밑변을 두 변의 길이 비로 나누므로 두 삼각형의 넓이 비가 같다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labBD",
+        "ownerSegment": "sBD",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labDC",
+        "ownerSegment": "sDC",
+        "text": "2*x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "bis1",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bis2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceQuote": "$\\overline{\\text{AB}}=4$, $\\overline{\\te",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{\\text{AB}}=4$, $\\overline{\\text{AC}}=8$인 삼각형 $\\text{ABC}$에서 $\\angle \\text{A}$의 이등분선이 변 $\\text{BC}$와 만나는 점을 $\\text{D}$라 하고, $\\overline{\\text{BC}}=a$라고 하자. $a(\\sin B + \\sin C) = 6\\sqrt{2}$일 때, 삼각형 $\\text{ABD}$의 넓이를 구하시오. (단, $\\angle A < 90^\\circ$)",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "A=45도,BD:DC=1:2. 작은 삼각형 넓이 답 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

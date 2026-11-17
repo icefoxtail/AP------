@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -2,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "예: a=0인 구간에서 꼭짓점과 두 끝점의 높이를 비교한다. 구간을 옮길 때 축을 포함하는지 나누어 판단한다.",
+  "accessibilityDescription": "예: a=0인 구간에서 꼭짓점과 두 끝점의 높이를 비교한다. 구간을 옮길 때 축을 포함하는지 나누어 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$a \\le x \\le a+2$에서 이차함수 $y=x^2-2x$의 최댓값과 최솟값의 합이 8이 되도록 하는 모든 실수 $a$의 값의 곱은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: a=0인 구간에서 꼭짓점과 두 끝점의 높이를 비교한다. 구간을 옮길 때 축을 포함하는지 나누어 판단한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: a=0인 구간에서 꼭짓점과 두 끝점의 높이를 비교한다. 구간을 옮길 때 축을 포함하는지 나누어 판단한다."
+  ]
+}

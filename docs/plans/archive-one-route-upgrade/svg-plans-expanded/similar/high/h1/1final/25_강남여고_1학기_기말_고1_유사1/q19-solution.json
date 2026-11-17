@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "예: k=17일 때 두 부등식의 해를 비교한다. 이 예시만으로 전체 k 범위를 단정하지 않는다.",
+  "accessibilityDescription": "예: k=17일 때 두 부등식의 해를 비교한다. 이 예시만으로 전체 k 범위를 단정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 연립부등식 $\\begin{cases} 4x+3 \\ge 2x+7 \\\\ x-1 < -2x+k \\end{cases}$ 를 만족시키는 모든 정수 $x$의 값의 합이 14가 되도록 하는 정수 $k$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: k=17일 때 두 부등식의 해를 비교한다. 이 예시만으로 전체 k 범위를 단정하지 않는다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: k=17일 때 두 부등식의 해를 비교한다. 이 예시만으로 전체 k 범위를 단정하지 않는다."
+  ]
+}

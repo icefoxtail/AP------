@@ -1,0 +1,185 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ca",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cset",
+        "op": "INTERSECTION",
+        "inputs": [
+          "ca",
+          "cb"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "Cset"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": 1
+        }
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "사인비를 변의 길이 비로 바꾸고 가장 긴 변에 마주 보는 각을 선택한다.",
+  "accessibilityDescription": "사인비를 변의 길이 비로 바꾸고 가장 긴 변에 마주 보는 각을 선택한다.",
+  "newVisualInformation": [
+    "사인비를 변의 길이 비로 바꾸고 가장 긴 변에 마주 보는 각을 선택한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "7*k",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "3*k",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "5*k",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": []
+  },
+  "sourceQuote": "$\\triangle \\mathrm{ABC}$에서 $\\sin A : \\si",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle \\mathrm{ABC}$에서 $\\sin A : \\sin B : \\sin C = 3 : 5 : 7$일 때, 이 삼각형의 가장 큰 각의 크기는?",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a:b:c=3:5:7; 가장 큰 각 C의 크기는 라벨에 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

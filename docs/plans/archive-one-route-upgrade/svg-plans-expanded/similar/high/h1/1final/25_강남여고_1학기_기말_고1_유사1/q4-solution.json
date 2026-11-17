@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "파란 범위와 주황 범위의 공통 부분에서 양 끝점 포함 여부를 비교한다.",
+  "accessibilityDescription": "파란 범위와 주황 범위의 공통 부분에서 양 끝점 포함 여부를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $2x-1<x+5 \\le 3x-3$의 해가 $a \\le x<b$일 때, $a+b$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "파란 범위와 주황 범위의 공통 부분에서 양 끝점 포함 여부를 비교한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "파란 범위와 주황 범위의 공통 부분에서 양 끝점 포함 여부를 비교한다."
+  ]
+}

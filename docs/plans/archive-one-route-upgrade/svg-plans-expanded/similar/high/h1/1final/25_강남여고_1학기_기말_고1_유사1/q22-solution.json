@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-4",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "예: a=0일 때 첫째 부등식의 오른쪽 구간과 둘째 부등식의 닫힌 구간을 비교한다. a의 전체 범위는 끝점 조건으로 따로 판정한다.",
+  "accessibilityDescription": "예: a=0일 때 첫째 부등식의 오른쪽 구간과 둘째 부등식의 닫힌 구간을 비교한다. a의 전체 범위는 끝점 조건으로 따로 판정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} x^2+2x-8 > 0 \\\\ x^2 - (a+4)x + 4a \\le 0 \\end{cases}$ 의 해가 $2 < x \\le 4$가 되도록 하는 실수 $a$의 값의 범위와 그 범위 안에 있는 정수 $a$의 개수를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: a=0일 때 첫째 부등식의 오른쪽 구간과 둘째 부등식의 닫힌 구간을 비교한다. a의 전체 범위는 끝점 조건으로 따로 판정한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: a=0일 때 첫째 부등식의 오른쪽 구간과 둘째 부등식의 닫힌 구간을 비교한다. a의 전체 범위는 끝점 조건으로 따로 판정한다."
+  ]
+}

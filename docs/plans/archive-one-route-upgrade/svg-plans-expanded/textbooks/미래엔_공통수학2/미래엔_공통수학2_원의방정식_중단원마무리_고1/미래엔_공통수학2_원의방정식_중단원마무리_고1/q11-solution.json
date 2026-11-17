@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oh",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "U",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "radiusU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "radiusV",
+      "refs": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "nearHeight",
+      "refs": [
+        "U",
+        "H"
+      ]
+    },
+    {
+      "id": "farHeight",
+      "refs": [
+        "V",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l",
+    "oh"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "정삼각형의 높이는 꼭짓점에서 밑변 직선까지의 거리이며 원의 중심을 지나는 수선 방향에서 양 끝을 비교한다",
+  "accessibilityDescription": "정삼각형의 높이는 꼭짓점에서 밑변 직선까지의 거리이며 원의 중심을 지나는 수선 방향에서 양 끝을 비교한다",
+  "newVisualInformation": [
+    "정삼각형의 높이는 꼭짓점에서 밑변 직선까지의 거리이며 원의 중심을 지나는 수선 방향에서 양 끝을 비교한다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 원 $x^2+y^2=8$ 위의 점 $\\mathrm{A}$와 직선 $y=x+6$ 위의 서로 다른 두 점 $\\mathrm{B}$와 $\\mathrm{C}$를 꼭짓점으로 하는 정삼각형 $\\mathrm{ABC}$를 만들 때, 그 넓이의 최댓값과 최솟값을 구하시오.\n<img src=\"q11.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG 확인. 중심-직선거리3√2, r2√2. 높이√2와5√2, 넓이 h²/√3. 최종 넓이 둘 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

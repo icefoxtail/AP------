@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -5,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 근은 축 x=3의 양쪽에 같은 거리만큼 놓인다. 꼭짓점과 두 근으로 이차함수의 계수를 결정한다.",
+  "accessibilityDescription": "두 근은 축 x=3의 양쪽에 같은 거리만큼 놓인다. 꼭짓점과 두 근으로 이차함수의 계수를 결정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=f(x)$의 꼭짓점의 좌표가 $(3, -4)$이고, 이차방정식 $f(x)=0$의 두 실근 $\\alpha, \\beta$에 대하여 $|\\alpha-\\beta|=4$일 때, $f(0)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "두 근은 축 x=3의 양쪽에 같은 거리만큼 놓인다. 꼭짓점과 두 근으로 이차함수의 계수를 결정한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근은 축 x=3의 양쪽에 같은 거리만큼 놓인다. 꼭짓점과 두 근으로 이차함수의 계수를 결정한다."
+  ]
+}

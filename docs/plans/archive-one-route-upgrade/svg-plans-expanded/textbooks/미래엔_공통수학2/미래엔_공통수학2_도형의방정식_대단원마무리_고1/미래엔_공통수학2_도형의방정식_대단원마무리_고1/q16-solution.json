@@ -1,0 +1,108 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "M"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "M",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "M"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "무게중심 G는 꼭짓점 A에서 변의 중점 M으로 향하는 중선을 이 대 일로 나눈다",
+  "accessibilityDescription": "무게중심 G는 꼭짓점 A에서 변의 중점 M으로 향하는 중선을 이 대 일로 나눈다",
+  "newVisualInformation": [
+    "무게중심 G는 꼭짓점 A에서 변의 중점 M으로 향하는 중선을 이 대 일로 나눈다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$의 좌표가 $(5, -2)$이고 변 $\\mathrm{BC}$의 중점의 좌표가 $(-4, -5)$일 때, 삼각형 $\\mathrm{ABC}$의 무게중심의 좌표를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "G=(-1,-4). B,C는 미지이므로 임의 꼭짓점을 만들지 않고 중선만 표시; G좌표 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

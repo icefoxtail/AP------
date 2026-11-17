@@ -1,0 +1,121 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "17"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "circle",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [
+    "t"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "원 위의 점 P에서 반지름에 수직인 접선",
+  "accessibilityDescription": "원 위의 점 P에서 반지름에 수직인 접선",
+  "newVisualInformation": [
+    "원 위의 점 P에서 반지름에 수직인 접선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음을 구하시오.\n⑴ 원 $x^2+y^2=36$에 접하고 기울기가 $\\sqrt{3}$인 직선의 방정식\n⑵ 원 $x^2+y^2=17$ 위의 점 $(-4, 1)$에서의 접선의 방정식",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(1)은 기울기-거리식. (2) -4x+y=17, P에서 반지름과 접선 수직. 최종 접선 식 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

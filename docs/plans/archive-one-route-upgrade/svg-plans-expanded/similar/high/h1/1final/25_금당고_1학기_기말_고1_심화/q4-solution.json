@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "주어진 닫힌 구간을 중심 1에서 양쪽으로 같은 거리인 범위로 읽는다.",
+  "accessibilityDescription": "주어진 닫힌 구간을 중심 1에서 양쪽으로 같은 거리인 범위로 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 부등식 $||x-1|-k| \\le 2$의 해가 $-3 \\le x \\le 5$가 되도록 하는 상수 $k$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 닫힌 구간을 중심 1에서 양쪽으로 같은 거리인 범위로 읽는다."
+  ]
+}

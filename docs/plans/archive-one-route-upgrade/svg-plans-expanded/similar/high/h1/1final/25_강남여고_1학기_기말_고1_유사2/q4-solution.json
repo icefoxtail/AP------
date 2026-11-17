@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "예: a=1일 때 해의 왼쪽 끝은 열리고 오른쪽 끝은 닫힌다. a의 전체 범위는 왼쪽 경계의 이동으로 판단한다.",
+  "accessibilityDescription": "예: a=1일 때 해의 왼쪽 끝은 열리고 오른쪽 끝은 닫힌다. a의 전체 범위는 왼쪽 경계의 이동으로 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $x-a<3x+1 \\le x+5$를 만족시키는 정수 $x$의 개수가 3개가 되도록 하는 모든 정수 $a$의 값의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: a=1일 때 해의 왼쪽 끝은 열리고 오른쪽 끝은 닫힌다. a의 전체 범위는 왼쪽 경계의 이동으로 판단한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: a=1일 때 해의 왼쪽 끝은 열리고 오른쪽 끝은 닫힌다. a의 전체 범위는 왼쪽 경계의 이동으로 판단한다."
+  ]
+}

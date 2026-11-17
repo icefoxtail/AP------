@@ -1,0 +1,361 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "285"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "at",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "at",
+          "cu"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pm",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pn",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "N",
+          "ac"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pm",
+          "pn"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "현 AB를 보는 원주각 C와 외접원의 반지름으로 작은 호 AB의 길이를 연결한다.",
+  "accessibilityDescription": "현 AB를 보는 원주각 C와 외접원의 반지름으로 작은 호 AB의 길이를 연결한다.",
+  "newVisualInformation": [
+    "현 AB를 보는 원주각 C와 외접원의 반지름으로 작은 호 AB의 길이를 연결한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radius",
+        "ownerSegment": "sOA",
+        "text": "4*sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "45",
+        "value": 45,
+        "style": "SECTOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle2",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "label": "75",
+        "value": 75,
+        "style": "SECTOR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "central",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 150,
+        "label": "150",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "style": "SECTOR"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "sourceQuote": "원 모양의 공원 테두리에 세 지점 $\\text{A, B, C}$가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 모양의 공원 테두리에 세 지점 $\\text{A, B, C}$가 있다. 삼각형 $\\text{ABC}$에서 $A=60^\\circ$, $B=45^\\circ$이고 $\\overline{\\text{AC}}=8\\text{m}$일 때, 점 $\\text{A}$에서 점 $\\text{B}$까지 원의 둘레를 따라가는 짧은 호 $\\text{AB}$의 길이를 구하시오.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "C75,중심각150,R4sqrt(2). 작은 호 AB 강조 사양 추가, 호 길이 답 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "현 BC와 원주각 A의 대응을 확인하고 외접원의 반지름을 사인법칙에 사용한다.",
+  "accessibilityDescription": "현 BC와 원주각 A의 대응을 확인하고 외접원의 반지름을 사인법칙에 사용한다.",
+  "newVisualInformation": [
+    "현 BC와 원주각 A의 대응을 확인하고 외접원의 반지름을 사인법칙에 사용한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "6*sqrt(2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labOB",
+        "ownerSegment": "sOB",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": []
+  },
+  "sourceQuote": "반지름의 길이가 $6$인 원에 내접하는 삼각형 $\\text{ABC}$에서",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름의 길이가 $6$인 원에 내접하는 삼각형 $\\text{ABC}$에서 $a=6\\sqrt{2}$일 때, $\\cos A$의 값을 구하시오. (단, $0^\\circ < A < 90^\\circ$)",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "반지름6,현6sqrt(2), A는 예각으로 선택. cosA 답 미표시.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

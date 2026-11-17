@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "같은 사인값을 가지는 두 끼인각의 삼각형을 비교하여 변의 범위 조건을 적용한다.",
+  "accessibilityDescription": "같은 사인값을 가지는 두 끼인각의 삼각형을 비교하여 변의 범위 조건을 적용한다.",
+  "newVisualInformation": [
+    "같은 사인값을 가지는 두 끼인각의 삼각형을 비교하여 변의 범위 조건을 적용한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "a",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "SECTOR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceQuote": "삼각형 $\\text{ABC}$에서 $b=4$, $c=6$이고 $\\sin ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $\\text{ABC}$에서 $b=4$, $c=6$이고 $\\sin A = \\frac{\\sqrt{3}}{2}$일 때, $a$의 값을 구하시오. (단, $2 < a < 6$)",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "A=60 또는120도; 2<a<6으로 둔각 가지 제외. 두 가지를 별도 계획하여 선택 근거 유지.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

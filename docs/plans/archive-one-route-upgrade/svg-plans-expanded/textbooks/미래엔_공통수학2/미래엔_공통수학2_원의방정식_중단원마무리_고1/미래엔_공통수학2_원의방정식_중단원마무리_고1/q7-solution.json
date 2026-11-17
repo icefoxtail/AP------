@@ -1,0 +1,179 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "H"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "U",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "H",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "radiusU",
+      "refs": [
+        "C",
+        "U"
+      ]
+    },
+    {
+      "id": "radiusV",
+      "refs": [
+        "C",
+        "V"
+      ]
+    },
+    {
+      "id": "nearHeight",
+      "refs": [
+        "U",
+        "H"
+      ]
+    },
+    {
+      "id": "farHeight",
+      "refs": [
+        "V",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "중심 C에서 직선에 내린 수선 위에서 반지름을 더하거나 빼어 거리를 비교한다",
+  "accessibilityDescription": "중심 C에서 직선에 내린 수선 위에서 반지름을 더하거나 빼어 거리를 비교한다",
+  "newVisualInformation": [
+    "중심 C에서 직선에 내린 수선 위에서 반지름을 더하거나 빼어 거리를 비교한다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $(x-2)^2+(y-5)^2=4$ 위의 점과 직선 $3x-4y-6=0$ 사이의 거리의 최댓값과 최솟값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "중심-직선거리4, r2, 극대6 극소2. 최종 값 미표시; 수선 방향과 원의 양끝 관계.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

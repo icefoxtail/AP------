@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S",
+          "points": [
+            "O",
+            "A",
+            "P"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "예: t=1일 때 P에서 직선 OA까지의 높이 관계를 삼각형 OAP로 본다. 최대 넓이는 P를 움직여 구한다.",
+  "accessibilityDescription": "예: t=1일 때 P에서 직선 OA까지의 높이 관계를 삼각형 OAP로 본다. 최대 넓이는 P를 움직여 구한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차항의 계수가 -1인 이차함수 $f(x)$의 그래프가 원점을 지나고, 직선 $y=2x$와 만나는 두 점 중 원점이 아닌 점을 A라 하자. 원점 O와 점 A 사이의 실수 $t$ ($0 < t < x_A$)에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=2x$와 만나는 점을 각각 P, Q라 하자. 선분 PQ의 길이의 최댓값이 4일 때, 삼각형 OAP의 넓이의 최댓값은? (단, 점 A의 $x$좌표는 양수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: t=1일 때 P에서 직선 OA까지의 높이 관계를 삼각형 OAP로 본다. 최대 넓이는 P를 움직여 구한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: t=1일 때 P에서 직선 OA까지의 높이 관계를 삼각형 OAP로 본다. 최대 넓이는 P를 움직여 구한다."
+  ]
+}

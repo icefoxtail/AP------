@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ca",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "33"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cb",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cset",
+        "op": "INTERSECTION",
+        "inputs": [
+          "ca",
+          "cb"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "Cset"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "넓이로 변 AB를 구한 뒤 각 B에 마주 보는 현 AC와 외접원을 연결한다.",
+  "accessibilityDescription": "넓이로 변 AB를 구한 뒤 각 B에 마주 보는 현 AC와 외접원을 연결한다.",
+  "newVisualInformation": [
+    "넓이로 변 AB를 구한 뒤 각 B에 마주 보는 현 AC와 외접원을 연결한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "12*sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "labCA",
+        "ownerSegment": "sCA",
+        "text": "2*sqrt(33)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": []
+  },
+  "sourceQuote": "넓이가 $12\\sqrt{2}$인 삼각형 $\\text{ABC}$에서 $a=",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "넓이가 $12\\sqrt{2}$인 삼각형 $\\text{ABC}$에서 $a=6$, $\\sin B = \\frac{1}{3}$일 때, 외접원의 반지름의 길이를 구하시오. (단, $B < 90^\\circ$)",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "method",
+      "condition": "sinB1/3,cosB2sqrt(2)/3,c12sqrt(2),b2sqrt(33); R 답 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

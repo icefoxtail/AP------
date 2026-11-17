@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3,
+      7,
+      -10,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "caption": "아래로 열린 포물선의 꼭짓점 V에서 최댓값을 읽는다. 구하는 높이는 좌표 라벨로 쓰지 않는다.",
+  "accessibilityDescription": "아래로 열린 포물선의 꼭짓점 V에서 최댓값을 읽는다. 구하는 높이는 좌표 라벨로 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=-2x^2+8x-3$의 최댓값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "아래로 열린 포물선의 꼭짓점 V에서 최댓값을 읽는다. 구하는 높이는 좌표 라벨로 쓰지 않는다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "아래로 열린 포물선의 꼭짓점 V에서 최댓값을 읽는다. 구하는 높이는 좌표 라벨로 쓰지 않는다."
+  ]
+}

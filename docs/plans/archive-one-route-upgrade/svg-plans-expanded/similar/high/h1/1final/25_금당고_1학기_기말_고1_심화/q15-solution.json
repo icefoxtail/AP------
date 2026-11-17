@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "절댓값 조건을 중심 1에서 양쪽으로 거리 3 이내인 닫힌 구간으로 옮겨 정수들을 센다.",
+  "accessibilityDescription": "절댓값 조건을 중심 1에서 양쪽으로 거리 3 이내인 닫힌 구간으로 옮겨 정수들을 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $f(x) \\le 0$의 해가 $-1 \\le x \\le 3$일 때, 부등식 $f(|x-1|) \\le 0$을 만족시키는 정수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 조건을 중심 1에서 양쪽으로 거리 3 이내인 닫힌 구간으로 옮겨 정수들을 센다."
+  ]
+}

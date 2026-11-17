@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "예: k=9일 때 첫째 부등식의 열린 구간과 둘째 부등식의 오른쪽 반직선이 겹친다. 음수 k인 경우도 별도로 비교한다.",
+  "accessibilityDescription": "예: k=9일 때 첫째 부등식의 열린 구간과 둘째 부등식의 오른쪽 반직선이 겹친다. 음수 k인 경우도 별도로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases} x^2 - (k-2)x - 2k < 0 \\\\ x^2 - 4x - 12 \\ge 0 \\end{cases}$ 를 만족시키는 정수 $x$의 개수가 3개가 되도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "예: k=9일 때 첫째 부등식의 열린 구간과 둘째 부등식의 오른쪽 반직선이 겹친다. 음수 k인 경우도 별도로 비교한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예: k=9일 때 첫째 부등식의 열린 구간과 둘째 부등식의 오른쪽 반직선이 겹친다. 음수 k인 경우도 별도로 비교한다."
+  ]
+}

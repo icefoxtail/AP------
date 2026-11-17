@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "2",
+                "add": "0"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ],
+    "parameter": {
+      "name": "a",
+      "value": "3"
+    }
+  },
+  "caption": "예: a=3일 때 두 기준점 사이에서는 두 거리의 합이 일정하다. 최솟값 조건은 해설에서 비교한다.",
+  "accessibilityDescription": "예: a=3일 때 두 기준점 사이에서는 두 거리의 합이 일정하다. 최솟값 조건은 해설에서 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 실수 $x$에 대하여 부등식 $|x-a| + |x-2a| \\ge 4$가 항상 성립하도록 하는 양수 $a$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "예: a=3일 때 두 기준점 사이에서는 두 거리의 합이 일정하다. 최솟값 조건은 해설에서 비교한다."
+  ]
+}
