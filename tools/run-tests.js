@@ -545,6 +545,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-difficulty5-register.test.mjs']
   },
   {
+    // The register pass runs this only when a DIRECT_JUDGMENT (type-only) request is in the inbox; a PR that changes the lane needs it too.
+    label: 'tests/archive-type-judgment-registration.test.mjs',
+    args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
+  },
+  {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },
