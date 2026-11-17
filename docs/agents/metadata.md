@@ -158,3 +158,11 @@
 - **무엇:** `archive/tools/meta-foundation/source-delta.mjs`는 같은 문항의 옛 본문과 현재 본문을 비교해 무엇이 바뀌었는지 판정하는 순수 모듈이다(`UNCHANGED`·`FIGURE`·`NOTATION`·`SOLUTION`·`STEM_EDIT`·`ANSWER`·`REPLACED`·`NUMBER_MISMATCH`). 지문 계산식은 기존 등록기와 글자 그대로 같고, `NOTATION`은 코드에 이유와 함께 적힌 명시 규칙만 같게 본다(애매하면 아님). 이유: 그림 교체·본문 오류 수정으로 지문이 어긋난 문항의 메타를 떼지 않고, 변경 종류를 꼬리표로 남기는 재결속의 첫 단계다.
 - **보고 도구:** `node archive/tools/meta-foundation/source-delta-report.mjs --scope <시험지 경로 접두어> --out <저장소 밖 경로>`는 읽기 전용이며 어긋난 문항마다 git 이력에서 옛 blob을 찾아 분류를 집계한다. 보고서는 Git에 두지 않는다(저장소 안 출력은 거부). `REPLACED` 임계값(`REPLACED_RECALL_THRESHOLD`)은 표본 약 20건으로 정한 값이고 전수 보고로 보정한다.
 - 이 PR 시점에서 등록기·빌더·화면 코드는 이 모듈을 쓰지 않는다. 검사: `tests/archive-source-delta.test.mjs`.
+
+- 완성도 확인: `node archive/tools/completion/check.mjs --scope original/middle/m3/1` (읽기 전용, 시험별 요약 + 문항 TSV).
+- JSON 증적은 `--format json --out /tmp/completion.json`, 완료 게이트는 `--require complete`를 사용한다. 저장소 내부 출력은 금지한다.
+- 실행 이유: 본문·답·풀이·그림과 canonical 메타/4슬롯의 부족 상태를 분리 집계하며, 수학 정오·승인·등록을 자동 변경하지 않는다.
+- 상태값: stem·answer `OK|MISSING`(답·풀이의 `.`·`-`·`?`·`TODO`·`null`·`undefined` 단독 값은 `BOILERPLATE`), solution `OK|MISSING|BOILERPLATE`, figure `OK|NOT_NEEDED|FILE_MISSING|BROKEN_SVG`, unit `APPROVED|RECORDED|LABEL_MISMATCH|MISSING`, difficulty `APPROVED|NUMBER_ONLY|INVALID|MISSING`, type `APPROVED|RECORDED|HOLD|INVALID|REGISTRY_UNAVAILABLE|MISSING`, fourSlot `REGISTERED|WRITTEN|STALE|MISSING`, overall `COMPLETE|PENDING_REGISTER|IN_PROGRESS|BLOCKED`. 태그·`&nbsp;`를 벗기고 비어 있으면 없는 값으로 보되 그림·수식 태그(`<img`·`<svg`·`<math`)가 있으면 내용으로 본다. 이유: 빈 값을 완성으로 통과시키지 않기 위해서다.
+- `REGISTRY_UNAVAILABLE`은 활성 레지스트리를 읽지 못한 환경 문제다(문항 데이터 결함 아님). 이 상태면 COMPLETE가 될 수 없고, 요약 머리의 `# WARNING` 줄·stderr·`--require complete` 실패 사유에 표시된다. 빈 선택(문항 0개)도 `--require complete`는 실패시킨다.
+- 4칸에 `NOT_SUBMITTED`·`EXPLICIT_REVIEW_HOLD:`·`SOURCE_UID_CONFLICT` 저장 사유가 있으면 `reasons`에 그대로 나오고 `PENDING_REGISTER`(등록하면 됨)가 아니라 `IN_PROGRESS`로 본다. unit 불일치는 `UNIT_NAME_DIFFERS`·`UNIT_KEY_NOT_IN_MASTER`·`SUBUNIT_*`로 구분해 `reasons`에 적는다.
+- SVG 검사는 `python3`(없으면 `python`)의 XML 파서가 필요하고, 시작할 때 프로브해 쓸 수 없으면 `PYTHON_UNAVAILABLE`로 중단한다(Windows의 Microsoft Store 스텁 포함). 깨짐(`BROKEN_SVG`)은 파서가 ParseError를 낸 경우만이다. `--exam` 하나만 봐도 4칸 등록부 빌더가 전체 4칸 파일을 다시 검증한다(빌더에 시험지 한정 옵션이 없다).
