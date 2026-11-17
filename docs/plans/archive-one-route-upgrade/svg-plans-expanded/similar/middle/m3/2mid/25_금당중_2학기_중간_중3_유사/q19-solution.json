@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "X"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "px",
+      "refs": [
+        "P",
+        "X"
+      ]
+    },
+    {
+      "id": "xo",
+      "refs": [
+        "X",
+        "O"
+      ]
+    },
+    {
+      "id": "pa",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "ao",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "po",
+      "refs": [
+        "P",
+        "O"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "pxlen",
+        "ownerSegment": "px",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "side": "RIGHT"
+      },
+      {
+        "id": "aolen",
+        "ownerSegment": "ao",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "side": "LEFT"
+      },
+      {
+        "id": "po13",
+        "ownerSegment": "po",
+        "text": "13"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "A"
+        ]
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "A",
+        "tangent": "pa"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 615,
+    "height": 455
+  },
+  "caption": "최단 거리8에 반지름5를 더해 중심까지13을 구하고, 접점의 직각삼각형을 이용한다.",
+  "newVisualInformation": [
+    "빗변13과 반지름5는 중간값이고 PA의 답은 숨긴다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름5, 원까지 최단거리8, P에서 접점 A로 그은 접선.",
+      "mappedTo": [
+        "mathPlan"
+      ]
+    }
+  ],
+  "accessibilityDescription": "최단 거리8에 반지름5를 더해 중심까지13을 구하고, 접점의 직각삼각형을 이용한다."
+}
