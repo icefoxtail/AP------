@@ -92,7 +92,7 @@ test('a forged digest does not turn a non-PNG into an image',t=>{
  f.write();assert.throws(()=>f.collect(),/UI_LOG_PNG_HEADER/);
 });
 test('undeclared capture profiles are closed',t=>{
- const f=fixture(t);assert.throws(()=>T.collectBundle({out:f.out,profile:'q5',context:f.context}),/UI_LOG_PROFILE_SCHEMA/);
+ const f=fixture(t);assert.throws(()=>T.collectBundle({out:f.out,profile:'not-a-profile',context:f.context}),/UI_LOG_PROFILE_SCHEMA/);
 });
 test('exact ops push binds all three SHA identities and its real event',()=>{
  const f=protocol();f.env.GITHUB_EVENT_NAME='push';f.env.GITHUB_REF=T.REVIEW_REF;f.env.GITHUB_SHA=HEAD;

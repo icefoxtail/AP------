@@ -1,0 +1,144 @@
+name: Middle Protected Current Renderer
+
+on:
+  push:
+    branches:
+      - 'ops/middle-protected9-current-renderer-26fc-20261117'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: protected-current-ui-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    name: Exact ops capture and transport contracts
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/middle-protected9-current-renderer-26fc-20261117' && github.event.repository.fork == false && github.event.deleted == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/check-reviewed-problem-renderer-browser.cjs
+            /tools/capture-m1s2-problem-surface.cjs
+            /tools/check-m1s2-problem-seven-browser.cjs
+            /tools/check-m3s2-q16-layout-browser.cjs
+            /tools/emit-protected9-ui-log-transport.cjs
+            /tests/protected9-ui-log-transport.test.cjs
+            /tests/protected-current-ui-log-transport.test.cjs
+            /tests/archive-m3s2-q16-current-renderer-provenance.test.cjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify the exact push and current checkout
+        run: node -e "const cp=require('node:child_process');const T=require('./tools/emit-protected9-ui-log-transport.cjs');T.executionContext(cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());"
+      - name: Verify closed provenance and lossless transport refusal guards
+        run: node --test tests/protected9-ui-log-transport.test.cjs tests/protected-current-ui-log-transport.test.cjs tests/archive-m3s2-q16-current-renderer-provenance.test.cjs
+
+  current-ui:
+    name: Current ${{ matrix.profile }} problem surfaces
+    needs: contract
+    if: github.repository == 'icefoxtail/AP------' && github.event_name == 'push' && github.ref == 'refs/heads/ops/middle-protected9-current-renderer-26fc-20261117' && github.event.repository.fork == false && github.event.deleted == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: m1
+            inputs: |
+              /archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js
+              /archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js
+              /archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js
+              /archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js
+              /archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js
+              /archive/assets/images/24_향림중_2학기_기말_중1_기출/
+              /archive/assets/images/25_팔마중_2학기_기말_중1_기출/
+              /archive/assets/images/25_풍덕중_2학기_기말_중1_기출/
+              /archive/assets/images/23_향림중_2학기_중간_중1_기출/
+              /archive/assets/images/26_팔마중_2학기_중간_중1_기출/
+          - profile: q16
+            inputs: |
+              /archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js
+              /archive/assets/images/25_풍덕중_2학기_기말_중3_기출/
+          - profile: q5
+            inputs: |
+              /archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js
+              /archive/assets/images/21_풍덕중_2학기_기말_중3_기출/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /archive/*.js
+            /archive/*.css
+            /archive/engine.html
+            /archive/css/
+            /archive/js/
+            /archive/vendor/
+            /archive/data/svg-accessibility-index.js
+            /archive/data/question_metadata.json
+            /archive/data/question_identity_map.json
+            /apmath/css/student-navigation.css
+            /apmath/js/student-navigation.js
+            /tools/check-reviewed-problem-renderer-browser.cjs
+            /tools/capture-m1s2-problem-surface.cjs
+            /tools/check-m1s2-problem-seven-browser.cjs
+            /tools/check-m3s2-q16-layout-browser.cjs
+            /tools/check-m3-e052-q5-problem-browser.cjs
+            /tools/emit-protected9-ui-log-transport.cjs
+            /tests/fixtures/archive-m1s2-problem-seven-ui.json
+            /tests/fixtures/archive-m3s2-q16-layout-ui.json
+            /tests/fixtures/archive-m3-e052-q5-problem-ui.json
+            ${{ matrix.inputs }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify the exact push and current checkout
+        run: node -e "const cp=require('node:child_process');const T=require('./tools/emit-protected9-ui-log-transport.cjs');T.executionContext(cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());"
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the isolated browser driver
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/protected-current-driver" --no-save --package-lock=false playwright@1.62.1
+      - name: Capture only the selected current problem profile
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          ARCHIVE_M1S2_UI_EXPECTED_SHA: ${{ github.sha }}
+          ARCHIVE_M3S2_LAYOUT_UI_EXPECTED_SHA: ${{ github.sha }}
+          ARCHIVE_M3_E052_Q5_UI_EXPECTED_SHA: ${{ github.sha }}
+          CAPTURE_PROFILE: ${{ matrix.profile }}
+          NODE_PATH: ${{ runner.temp }}/protected-current-driver/node_modules
+        run: |
+          case "$CAPTURE_PROFILE" in
+            m1) node tools/check-m1s2-problem-seven-browser.cjs --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/m1-current-ui" ;;
+            q16) node tools/check-m3s2-q16-layout-browser.cjs --output "$RUNNER_TEMP/q16-current-ui" ;;
+            q5) node --max-old-space-size=512 tools/check-m3-e052-q5-problem-browser.cjs --output "$RUNNER_TEMP/q5-current-ui" ;;
+            *) exit 1 ;;
+          esac
+      - name: Preserve exact technical JSON and all original problem tiles in log frames
+        if: always()
+        env:
+          CAPTURE_PROFILE: ${{ matrix.profile }}
+        run: node tools/emit-protected9-ui-log-transport.cjs --root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/$CAPTURE_PROFILE-current-ui" --profile "$CAPTURE_PROFILE" --expected-head "${{ github.sha }}"
+      - name: Preserve the original technical JSON and scroll tiles as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: protected-current-${{ matrix.profile }}-${{ github.sha }}
+          path: ${{ runner.temp }}/${{ matrix.profile }}-current-ui/
+          if-no-files-found: error
+          retention-days: 14
