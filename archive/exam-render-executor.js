@@ -30,7 +30,7 @@
         return forced.has(item) ? { page: true } : null;
     }
     function injectGridRowStyle(document) {
-        if (document.getElementById('ap-exam-grid-row-style')) return;
+        if (!document?.head || typeof document.getElementById !== 'function' || document.getElementById('ap-exam-grid-row-style')) return;
         const style = document.createElement('style');
         style.id = 'ap-exam-grid-row-style';
         style.textContent = '.grid-container.ap-grid-row-page::after{display:none}'
