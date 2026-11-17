@@ -834,10 +834,60 @@ const ORIGINAL_RECEIPT_BLOCKS = Object.freeze({
   ]
 });
 
+// The E006 display proof stores its UI locators as evidence pairs. Resolve only
+// this fixed issued Q3/Q21 profile to its original full immutable refs; it cannot
+// turn an unknown typed receipt or changed source into a retained approval.
+const E006_TYPED_UI = Object.freeze({
+  requestId: "m2s2-e006-problem-continuity-20261116",
+  source: "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+  receipt: { gitBlobSha1: "63537f5a234f2b86a36cb4ba58f1bdfc6246300a",
+    sha256: "7d6f0aed188fe8f8012d9a2d87d5853aeda0f296cf157833ed5c58de4ff16ad0", bytes: 76468 },
+  sourcePins: { gitBlobSha1: "5566eba8e4c5e3f47d34525e6414d1fe3c7d225d",
+    sha256: "0211cff2daaea021b40a685b20ad2ee1ca4d1b7480e5db706087c74942a24762", bytes: 58252 },
+  checkoutCommit: "b6b605bf0d660f48e64646a9e59688c77e3e8a01",
+  technicalRef: { commit: "cdad05c2efd43d947d3dfa29325d8e32f9589514",
+    path: "docs/operations/m2-e006-problem-continuity-20261116/student-ui-technical-v1.json",
+    gitBlobSha1: "cda984193a4fa02b6bc7a45808e5db4df90fc880",
+    sha256: "6c36bb0f768012fd47d654865bb3cbf5cdeb763c453b90e239190c844a0c7b32", bytes: 90462 },
+  visualRef: { commit: "cdad05c2efd43d947d3dfa29325d8e32f9589514",
+    path: "docs/operations/m2-e006-problem-continuity-20261116/student-ui-independent-v1.json",
+    gitBlobSha1: "b0a8b94ce6c7b9103b6836ad6100e55439f2b3e8",
+    sha256: "eaa4c0ff0adcaf3764cf46867e563d81aa615f2c3357f5becbe4d6c19e1dfe35", bytes: 4054 },
+  subjects: [
+    { questionUid: "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f", sourceOrdinal: 3,
+      sourceReviewSha256: "955f57ecd749064a1399e5540ee979395852a7d1dcca7c388d493ddcfaa664d6" },
+    { questionUid: "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea", sourceOrdinal: 21,
+      sourceReviewSha256: "614b81227a771a7f1f42b89a5c62eb51d33c3495cd6643e654adcfcfbd5d2d8c" }
+  ]
+});
+function assertM2E006TypedProfile(input, kept, repair) {
+  const label = "ISSUED_RETENTION:E006_TYPED_PROFILE";
+  const subject = single(E006_TYPED_UI.subjects, value => value.questionUid === input.current?.questionUid &&
+    value.sourceOrdinal === input.ordinal, label + ": exact subject");
+  assert.strictEqual(input.source, E006_TYPED_UI.source, label + ": source");
+  assert.strictEqual(kept.receipt.requestId, E006_TYPED_UI.requestId, label + ": receipt");
+  assert.deepStrictEqual(pins(Buffer.from(kept.live(kept.receiptPath))), E006_TYPED_UI.receipt, label + ": receipt bytes");
+  assert.deepStrictEqual(pins(input.nativeSource.bytes), E006_TYPED_UI.sourcePins, label + ": source bytes");
+  assert.strictEqual(input.nativeSource.bank.length, 23, label + ": source count");
+  assert.strictEqual(kept.sourceChangedSinceAnchor, false, label + ": no source-edition exception");
+  assert.strictEqual(sha(stable(repair.sourceReview)), subject.sourceReviewSha256, label + ": issued whole source proof");
+  const typed = repair.sourceReview.m2E006ProblemContinuity;
+  assert(typed?.schemaVersion === "archive-m2-e006-problem-continuity-v1" && typed.questionUid === subject.questionUid &&
+    typed.sourceOrdinal === subject.sourceOrdinal && typed.sourceArchiveFile === E006_TYPED_UI.source,
+    label + ": typed subject");
+  for (const [key, full] of [["technicalRef", E006_TYPED_UI.technicalRef], ["visualRef", E006_TYPED_UI.visualRef]])
+    assert.deepStrictEqual(typed.ui[key], { path: full.path, sha256: full.sha256 }, label + ": fixed evidence pair");
+  assert(typed.ui.checkoutCommit === E006_TYPED_UI.checkoutCommit && typed.ui.logicalCases === 4 &&
+    typed.ui.screenshotArtifactCount === 5 && typed.ui.selectedLogicalCases === 2,
+    label + ": original UI inventory");
+  return { ...subject, technicalRef: { ...E006_TYPED_UI.technicalRef }, visualRef: { ...E006_TYPED_UI.visualRef } };
+}
+
 const PROOF_KINDS = Object.freeze([
   ["m2ProblemRenderer21Continuity", "archive-reviewed-m2-problem21-continuity-v1", "archive-m2-problem24-student-ui-preview-v1"],
   ["m2Family3ProblemContinuity", "archive-m2-family3-problem-continuity-v1", "archive-m2-problem24-student-ui-preview-v1"],
-  ["q5CompleteGivenApplication", "archive-m3-e052-q5-complete-given-application-v1", "archive-m3-e052-q5-student-ui-preview-v1"]
+  ["q5CompleteGivenApplication", "archive-m3-e052-q5-complete-given-application-v1", "archive-m3-e052-q5-student-ui-preview-v1"],
+  ["m2E006ProblemContinuity", "archive-m2-e006-problem-continuity-v1", "archive-m2-e006-student-ui-preview-v1"]
 ]);
 function relativePath(value) {
   assert(typeof value === "string" && value.length > 0 && value.length < 800 &&
@@ -1572,6 +1622,74 @@ function createIssuedApprovalObserver(api) {
           currentNativeAuthority: "NOT_GRANTED", currentDisplayQuality: "NOT_REVIEWED" } },
       authenticatedDrifts: [{ path: sourcePath, issued: profile.issuedSource, current: profile.observedSource }] };
   }
+  function assertM2E006OriginalInputs(input, kept, repair, profile, label) {
+    const root = input.nativeSource.root, typed = repair.sourceReview.m2E006ProblemContinuity;
+    const originalRefs = new Map();
+    const read = ref => {
+      assert(ref && SHA1.test(ref.commit) && SHA256.test(ref.sha256), label + ": original immutable ref");
+      const raw = immutable(root, ref.commit, relativePath(ref.path));
+      assert.strictEqual(sha(raw), ref.sha256, label + ": original immutable raw");
+      if (ref.gitBlobSha1 !== undefined) assert.strictEqual(blob(raw), ref.gitBlobSha1, label + ": original immutable Git");
+      if (ref.bytes !== undefined) assert.strictEqual(raw.length, ref.bytes, label + ": original immutable size");
+      originalRefs.set(ref.commit + ":" + ref.path, { commit: ref.commit, path: ref.path, ...pins(raw) });
+      return raw;
+    };
+    // The receipt's whole sourceReview is fixed above. Only explicit refs in
+    // that issued proof are traversed; global outputDigests are never expanded.
+    const refs = value => {
+      if (!value || typeof value !== "object") return;
+      if (value.commit && value.path && value.sha256) read(value);
+      for (const child of Object.values(value)) if (child && typeof child === "object") refs(child);
+    };
+    refs(repair.sourceReview);
+    for (const key of ["nativeReviewedSource", "nativeCommittedSource", "prefigureSource", "currentSource"]) {
+      const ref = typed[key], raw = read(ref);
+      assert.strictEqual(ref.path, "archive/exams/" + input.source, label + ": original source path");
+      const bank = api.loadBank(raw.toString("utf8"), ref.path);
+      assert.strictEqual(bank.length, 23, label + ": original source count");
+      assert.strictEqual(sha(stable(bank[input.ordinal - 1])), ref.questionSha256, label + ": original selected question whole");
+    }
+    for (const [sourceKey, assetsKey] of [["nativeReviewedSource", "nativeAssets"], ["nativeCommittedSource", "nativeAssets"],
+      ["prefigureSource", "prefigureAssets"], ["currentSource", "currentAssets"]]) {
+      const inventory = typed[assetsKey];
+      assert(Array.isArray(inventory) && inventory.length > 0 && new Set(inventory.map(ref => ref.path)).size === inventory.length,
+        label + ": original asset inventory");
+      for (const ref of inventory) {
+        assert(ref.path.startsWith("archive/assets/"), label + ": original asset path");
+        const raw = read({ ...ref, commit: typed[sourceKey].commit });
+        assert(kept.live(ref.path).equals(raw), label + ": original/current declared asset drift");
+      }
+    }
+    const boundEvidence = (ref, commit) => {
+      for (const list of [kept.receipt.approval.evidenceRefs, kept.patch.evidenceRefs])
+        assert.strictEqual(list.filter(value => same(value, ref)).length, 1, label + ": original evidence pair");
+      const raw = read({ ...ref, commit });
+      assert(kept.live(ref.path).equals(raw), label + ": original witness live bytes");
+      return JSON.parse(raw);
+    };
+    boundEvidence(typed.reviewRef, typed.reviewCommit);
+    for (const ref of typed.originalReviewRefs) {
+      const document = boundEvidence(ref, typed.reviewCommit);
+      // Authenticate only this target's original observation refs. Other rows
+      // in the same immutable review are not a new source/review scope.
+      if (Array.isArray(document.rows)) {
+        const selected = single(document.rows, row => row.questionUid === input.current.questionUid &&
+          row.sourceOrdinal === input.ordinal, label + ": original observed subject");
+        refs(selected);
+      } else {
+        assert(document.questionUid === input.current.questionUid && document.sourceOrdinal === input.ordinal,
+          label + ": original singleton observation");
+        refs(document);
+      }
+    }
+    for (const full of [profile.technicalRef, profile.visualRef]) {
+      const evidence = { path: full.path, sha256: full.sha256 };
+      boundEvidence(evidence, full.commit);
+      assert.deepStrictEqual(pins(read(full)), { gitBlobSha1: full.gitBlobSha1, sha256: full.sha256, bytes: full.bytes }, label);
+    }
+    return [...originalRefs.values()].sort((a, b) => (a.commit + a.path).localeCompare(b.commit + b.path));
+  }
+
   function assertKnownInputs(input, label) {
     const kept = assertRetained(input, label), { current, identity, source, ordinal, nativeSource, registry } = input;
     const root = nativeSource.root, head = ancestor(root, OBSERVATION.observed);
@@ -1586,7 +1704,10 @@ function createIssuedApprovalObserver(api) {
     assert(typed.schemaVersion === schema && typed.questionUid === current.questionUid &&
       typed.sourceOrdinal === ordinal && typed.sourceArchiveFile === source &&
       typed.requiresOrdinaryNativeValidation !== false, label + ": typed target");
-    const ref = typed.ui?.technicalRef;
+    const isE006 = key === "m2E006ProblemContinuity";
+    const e006 = isE006 ? assertM2E006TypedProfile(input, kept, repair) : null;
+    const originalE006Inputs = isE006 ? assertM2E006OriginalInputs(input, kept, repair, e006, label) : null;
+    const ref = isE006 ? e006.technicalRef : typed.ui?.technicalRef;
     const declared = single(kept.receipt.approval.evidenceRefs, value => value.path === ref?.path,
       label + ": technical evidence ref");
     assert.strictEqual(declared.sha256, ref.sha256, label);
@@ -1603,8 +1724,8 @@ function createIssuedApprovalObserver(api) {
       technical.failures?.length === 0 && technical.externalFontResources?.length === 0,
       label + ": issued technical transport");
     const isQ5 = key === "q5CompleteGivenApplication";
-    assert.strictEqual(technical.items?.length, isQ5 ? 1 : 24, label + ": immutable item inventory");
-    assert.strictEqual(technical.completedLogicalCases, isQ5 ? 2 : 48, label + ": immutable case inventory");
+    assert.strictEqual(technical.items?.length, isE006 ? 2 : isQ5 ? 1 : 24, label + ": immutable item inventory");
+    assert.strictEqual(technical.completedLogicalCases, isE006 ? 4 : isQ5 ? 2 : 48, label + ": immutable case inventory");
     const selected = single(technical.items, value => value.questionUid === identity.questionUid &&
       value.sourceOrdinal === ordinal && value.sourceRef?.path === "archive/exams/" + source,
       label + ": exact UI selected UID/source");
@@ -1637,13 +1758,17 @@ function createIssuedApprovalObserver(api) {
     assert.strictEqual(new Set(technical.items.map(item => item.questionUid)).size, technical.items.length,
       label + ": duplicate technical UID");
     addList(technical.servedFiles, true, "served");
-    addList(technical.mirroredAssets, true, "mirrored");
+    addList(technical.mirroredAssets, !isE006, "mirrored");
     addList(technical.studentFontResources, true, "font");
     for (const value of [technical.manifestRef, technical.checkerRef, technical.identityRef])
       add(value, false, "immutable");
     add(technical.captureHelperRef, isQ5, "capture-helper");
     add(technical.fontLicenseRef, isQ5, "font-license");
     if (isQ5) addList(technical.surfaceRefs, true, "surface");
+    if (isE006) {
+      addList(technical.surfaceRefs, false, "surface");
+      addList(technical.originalFirstBasisRefs, false, "original-basis");
+    }
 
     assertAuthorityInputs(input, kept, label);
 
@@ -1681,7 +1806,7 @@ function createIssuedApprovalObserver(api) {
     // assert captured UI -> f9 equality, approve closed8 additions or pass Native.
     assert(inputs.get(SVG_INDEX)?.live, label + ": declared generated SVG input");
     let assetRefs;
-    if (key === "m2ProblemRenderer21Continuity") assetRefs = [selected.assetRef];
+    if (key === "m2ProblemRenderer21Continuity" || isE006) assetRefs = [selected.assetRef];
     else if (key === "m2Family3ProblemContinuity") {
       assetRefs = FAMILY3_UIDS.map(uid =>
         single(technical.items, item => item.questionUid === uid, label + ": family3 footprint target").assetRef);
@@ -1701,7 +1826,7 @@ function createIssuedApprovalObserver(api) {
         assetPaths: [...new Set(assetRefs.map(value => value.path))].sort(),
         records: issuedEntries.length, sha256: sha(stable(issuedEntries)),
         capturedUiContinuity: "NOT_ASSERTED", currentNativeAuthority: "NOT_GRANTED" }
-    }, authenticatedDrifts: drifts };
+    }, authenticatedDrifts: drifts, ...(isE006 ? { originalE006Inputs, typedProfile: "EXACT_M2_E006_Q3_Q21" } : {}) };
   }
   function pinsOnly(ref) {
     return { gitBlobSha1: ref.gitBlobSha1, sha256: ref.sha256, bytes: ref.bytes };
@@ -1742,4 +1867,4 @@ function createIssuedApprovalObserver(api) {
 }
 module.exports = { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
   readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
-  readOriginalReceiptSource, assertOriginalReceiptSourceBytes };
+  readOriginalReceiptSource, assertOriginalReceiptSourceBytes, assertM2E006TypedProfile };

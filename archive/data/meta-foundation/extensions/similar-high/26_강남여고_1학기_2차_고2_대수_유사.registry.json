@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_강남여고_1학기_2차_고2_대수_유사",
+  "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+      "definition": "첫째항부터 제n항까지의 합 S_n이 n의 식으로 주어질 때 a_1=S_1, n≥2에서 a_n=S_n−S_{n−1}로 일반항을 구하고, 첫째항이 같은 식에 포함되는지 확인한 뒤 항의 값·부호·합을 구하는 유형.",
+      "parentRpmRecordId": "H2-M1-RPM-128",
+      "parentRpmL1": "수열",
+      "parentRpmL2": "수열의 합",
+      "parentRpmL3": "계차수열",
+      "parentRpmL4": "일반항 구하기",
+      "parentProblemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+      "parentTemplateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_128",
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "RPM \"계차수열 > 일반항 구하기\"는 계차 b_n=a_{n+1}−a_n으로 a_n을 구하는 유형이다. 부분합 S_n에서 S_n−S_{n−1}로 일반항을 구하고 n≥2 구분과 a_1=S_1을 따로 확인하는 유형을 구분하지 못하며, 마스터 RPM 대수에 부분합에서 일반항을 구하는 리프가 없다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 14
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-ARC-RATIO-CENTRAL-ANGLE-AREA-SUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "호의 길이의 비로 중심각을 구해 외심에서 나눈 세 삼각형의 넓이 합 구하기",
+      "definition": "원 위의 세 점이 나누는 호의 길이의 비가 주어지면 호의 길이가 중심각에 비례함을 이용해 360°를 그 비로 나누어 중심각을 구하고, 세 중심각이 모두 180°보다 작을 때 외심과 두 꼭짓점이 이루는 세 삼각형의 넓이 (1/2)r^2 sinθ를 더해 삼각형의 넓이를 구하는 개념.",
+      "parentKey": "CC_CIRCUMCIRCLE",
+      "parentLabelKo": "외접원",
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_CIRCUMCIRCLE은 외접원을 쓰는 것까지만 다루며, 호의 길이의 비를 중심각으로 바꾸는 단계와 중심각을 이용해 넓이를 세 부분으로 나누어 합하는 단계를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 11
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-CYCLIC-QUADRILATERAL-OPPOSITE-ANGLE-COSINE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "원에 내접하는 사각형의 마주 보는 두 각의 코사인 값이 서로 반대임을 이용하기",
+      "definition": "원에 내접하는 사각형 ABCD에서 B+D=180°이므로 cosD=−cosB이다. 대각선으로 나눈 두 삼각형에 각각 코사인법칙을 적용한 식을 이 관계로 연립해 대각선의 길이와 각을 구하는 개념.",
+      "parentKey": "CC_QUADRILATERAL_AREA_TRIG",
+      "parentLabelKo": "사각형의 대각선 분할과 삼각비 넓이",
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_QUADRILATERAL_AREA_TRIG는 사각형을 대각선으로 나눈 삼각비 넓이를 다루며, 내접 사각형의 마주 보는 두 각의 코사인 관계로 대각선을 구하는 단계를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 12
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-ARITHMETIC-ABSOLUTE-TERM-NEAREST-ZERO",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "등차수열의 절댓값이 최소가 되는 항을 영점에 가장 가까운 자연수로 찾기",
+      "definition": "등차수열의 일반항이 a_n=p−qn 꼴일 때 |a_n|은 a_n=0이 되는 실수 n에 가장 가까운 자연수에서 최소가 되므로, 그 양쪽 두 자연수의 절댓값을 비교해 n을 정하는 개념.",
+      "parentKey": "CC_GENERAL_TERM",
+      "parentLabelKo": "일반항",
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_GENERAL_TERM은 임의의 항을 나타내는 식 자체를 다루며, 절댓값의 최소를 영점에 가장 가까운 자연수 후보의 비교로 판정하는 단계를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 16
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-PARTIAL-SUM-CONSTANT-PAIR-TERM-ZERO",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "부분합이 일정하면 이웃한 두 항의 합이 0임을 이용하기",
+      "definition": "모든 자연수 n에 대하여 S_{2n}이 일정한 값이면 n≥2에서 S_{2n}−S_{2n−2}=a_{2n−1}+a_{2n}=0이므로 짝수 번째 항이 직전 홀수 번째 항의 부호를 바꾼 값이 된다. n=1일 때는 a_1+a_2=S_2로 따로 둔다는 개념.",
+      "parentKey": "CC_GENERAL_TERM",
+      "parentLabelKo": "일반항",
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_GENERAL_TERM은 일반항 표현을 다루며, 두 부분합의 차로 이웃한 두 항의 합이 0이라는 관계를 읽어 내는 단계를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 17
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-ANNUITY-DUE-COMPOUND-TOTAL",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "복리로 매월 초에 적립하는 적금의 원리합계를 등비수열의 합으로 구하기",
+      "definition": "월 이율 r로 매월 초 일정액 P를 n개월 적립하면 각 납입금에 한 달씩 더 이자가 붙어 첫 항이 P(1+r), 공비가 1+r인 등비수열의 합 P(1+r){(1+r)^n−1}/r이 원리합계가 된다는 개념.",
+      "parentKey": "CC_GEOMETRIC_SEQUENCE",
+      "parentLabelKo": "등비수열",
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_GEOMETRIC_SEQUENCE는 등비수열의 항 사이 관계를 다루며, 복리 적립에서 납입 시점마다 이자가 붙는 개월 수를 등비수열의 합으로 모델링하는 단계를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 19
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-SINE-LINE-INTERSECTION-PERIODIC-X-COORDINATES",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "사인곡선과 수평선 교점의 x좌표를 주기마다 반복되는 두 계열로 나타내기",
+      "definition": "y=sin(πx)와 y=c(0<c<1)의 교점의 x좌표는 주기 2마다 반복되는 x=2k+α, x=2k+(1−α) 두 계열이므로, 작은 것부터 나열한 a_n의 홀수 번째·짝수 번째 항을 각각 등차수열의 일반항으로 나타내는 개념.",
+      "parentKey": "CC_TRIGONOMETRIC_EQUATION",
+      "parentLabelKo": "삼각방정식",
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_TRIGONOMETRIC_EQUATION은 삼각방정식의 기본 해법이며, 교점을 크기순으로 나열한 수열의 홀수·짝수 번째 항을 두 등차수열로 정리하는 단계를 포함하지 않는다. 기존 EXT-CROSS-SINE-NEGATIVE-HALF-PERIOD-LINE-INTERSECTION은 y<0 반주기에서 교점의 개수를 세는 개념이라 의미가 다르다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 20
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-SIGN-PATTERN-PERIOD-FOUR-BLOCK-SUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "지수가 연속합인 (−1)의 거듭제곱의 부호가 4항 주기로 반복됨을 이용한 묶음 합",
+      "definition": "(−1)^{1+2+…+n}=(−1)^{n(n+1)/2}의 부호가 n=1,2,3,4에서 −,−,+,+이고 4항마다 반복됨을 찾아, 가중합 Σ n·a_n을 4항 묶음의 합과 남은 항의 합으로 나누어 구하는 개념.",
+      "parentKey": "CC_CYCLIC_EXPONENT_REDUCTION",
+      "parentLabelKo": "주기성을 이용한 지수 축약",
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_CYCLIC_EXPONENT_REDUCTION은 지수를 주기로 줄이는 개념이며, 연속합 지수의 홀짝으로 부호 규칙을 찾고 n이 곱해진 묶음 합으로 시그마를 나누는 단계를 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+        "qid": 21
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-17",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [
+    {
+      "key": "EXT-CROSS-TRIG-ANGLE-REDUCTION-PI-HALF-PI",
+      "definedIn": "archive/data/meta-foundation/extensions/similar-high/26_제일고_1학기_중간_고2_대수_유사.registry.json",
+      "usedInQids": [
+        3
+      ]
+    }
+  ],
+  "aliasProposals": [],
+  "noStudentRelease": true
+}

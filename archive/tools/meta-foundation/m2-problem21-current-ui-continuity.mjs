@@ -1012,6 +1012,47 @@ export function readM2Problem21CurrentUiContinuation({context,root,request,patch
       !same(question,ctx.oldBank[ctx.item.sourceOrdinal-1]))fail('PRIVATE_ORIGINAL_P21_READER');
   assertLive(ctx);return Buffer.from(ctx.oldBytes);
 }
+// The ordinary RPM leaf replays the issued course proof after P21/E023 have
+// authenticated and removed only their display options. Keep the real current
+// file bound as well; the bytes returned here are explicitly the issued view.
+// This cannot mint a token, normalize a question, or grant course authority.
+export function readM2Problem21CurrentRpmSource({context,root,request,patch,metadata,final,issuedProof,relativePath,currentSourceBytes}){
+  if(context===undefined)return null;
+  const ctx=context&&contexts.get(context);
+  if(!ctx||fs.realpathSync(root)!==ctx.root||relativePath!==ctx.item.currentSourceRef.path||
+      ctx.item.issuedSourceRef.path!==relativePath||!same(request,ctx.issuedBinding.requestSnapshot)||
+      request.expectedSourceBlobSha1!==ctx.item.issuedSourceRef.gitBlobSha1||
+      patch?.questionUid!==ctx.item.questionUid||patch?.sourceOrdinal!==ctx.item.sourceOrdinal)
+    fail('PRIVATE_ISSUED_RPM_SOURCE_CONTEXT');
+  const original=exactOne(ctx.issuedBinding.requestSnapshot.items,
+    row=>row.questionUid===ctx.item.questionUid&&row.sourceOrdinal===ctx.item.sourceOrdinal,'PRIVATE_ISSUED_RPM_ITEM');
+  const normalized=structuredClone(original);
+  if(!normalized.sourceReview?.m2ProblemRenderer21Continuity||!normalized.targetParentRef?.nativeRpmCourseTransport)
+    fail('PRIVATE_ISSUED_RPM_OPTIONS');
+  delete normalized.sourceReview.m2ProblemRenderer21Continuity;
+  if(Object.hasOwn(normalized.sourceReview,'e023SolutionDisplayContinuity')){
+    if(ctx.item.sourceArchiveFile!=='original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js')
+      fail('PRIVATE_ISSUED_RPM_COMPANION');
+    delete normalized.sourceReview.e023SolutionDisplayContinuity;
+  }
+  if(!same(patch,normalized)||!same(final,ctx.current)||!same(metadata,{...ctx.current,...original.before}))
+    fail('PRIVATE_ISSUED_RPM_NORMALIZED_PATCH');
+  const repair=exactOne(ctx.receipt.fingerprintRepairs,
+    row=>row.questionUid===ctx.item.questionUid&&row.sourceOrdinal===ctx.item.sourceOrdinal,'PRIVATE_ISSUED_RPM_REPAIR');
+  const expected=repair.sourceReview?.nativeRpmCourseTransport;
+  if(!expected||!issuedProof||!same(issuedProof,expected)||
+      expected.questionUid!==ctx.item.questionUid||expected.sourceOrdinal!==ctx.item.sourceOrdinal||
+      expected.currentSource?.path!==relativePath||expected.currentSource?.gitBlobSha1!==ctx.item.issuedSourceRef.gitBlobSha1||
+      expected.currentSource?.sha256!==ctx.item.issuedSourceRef.sha256)
+    fail('PRIVATE_ISSUED_RPM_PROOF');
+  assertLive(ctx);
+  const actual=currentSourceBytes===undefined?fs.readFileSync(localPath(ctx.root,relativePath)):currentSourceBytes;
+  if(!Buffer.isBuffer(actual))fail('PRIVATE_ISSUED_RPM_CURRENT_BYTES');
+  checked(actual,ctx.item.currentSourceRef);
+  if(!actual.equals(ctx.sources.get(ctx.item.sourceArchiveFile).currentBytes))fail('PRIVATE_ISSUED_RPM_CURRENT_BYTES');
+  checked(ctx.oldBytes,ctx.item.issuedSourceRef);
+  return Buffer.from(ctx.oldBytes);
+}
 function replay(args,expected){
   const ctx=authenticate(args);if(!ctx)return null;
   if(typeof args.revalidateLeaf!=='function')fail('ORDINARY_NATIVE_CALLBACK');

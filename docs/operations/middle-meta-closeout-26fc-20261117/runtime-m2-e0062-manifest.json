@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "middle-runtime-m2-e006-two-candidate-manifest-v1",
+  "baseCommit": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+  "scope": "TEST_ONLY_FIXED_M2_E006_Q3_Q21_ISSUED_UI_RETENTION_CURRENT_NATIVE_BLOCKED",
+  "operations": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/candidate/tests/helpers/middle-geometry-issued-approval.cjs",
+      "gitBlobSha1": "e5227df7a41da27c1620bf91ee004e67fe097ca7",
+      "sha256": "d15fb66d2ab8e7c813845423e21d24be7f7e799c73611141f9189e2813f206bf",
+      "bytes": 116130,
+      "expectedBeforeGitBlobSha1": "9317117d747304c4ad314538a41035fc87e22a31"
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/candidate/tests/meta-foundation-middle-geometry-runtime.test.js",
+      "gitBlobSha1": "9a204fb7075a02fb8e1ec733a5357c2c8ddacfd9",
+      "sha256": "3da516a6b538b53cc909e8cafbb6e5fba5fb918a1086878f1812dc9b1c603882",
+      "bytes": 79724,
+      "expectedBeforeGitBlobSha1": "2ac1caca326c9b08935640e13566b97ef724e3ef"
+    }
+  ],
+  "proof": {
+    "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/final-proof-v1.json",
+    "gitBlobSha1": "e0ca0529b118411610018fccaee8751d8f5ffdb9",
+    "sha256": "9074bfb78975659eed2aa5442ee5a00d1271e3e7de9b7c247e8fe7c26b53635b",
+    "bytes": 11735
+  },
+  "delta": {
+    "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/edits-v1.json",
+    "gitBlobSha1": "fa2b6e866d9681ebad77db8d282bf3454c999664",
+    "sha256": "494201e74f18fb0d06589cde63fb8ca056d7815f714a7ab9903b167a226b1cc9",
+    "bytes": 17433
+  },
+  "validation": {
+    "syntaxFiles": 2,
+    "newInputProfiles": 2,
+    "newNegativeAssertions": 31,
+    "fullRuntime": "NOT_RUN",
+    "scopedCommandExit": 1,
+    "scopedCommandBoundary": "All new assertions completed; postcheck incorrectly compared entire generated SVG and failed",
+    "postcheckRecovery": "Separate selected-footprint CAS and original one-UID plan, exit0; no repeated31 tests",
+    "requiredLiveReadonlyFilesUnchanged": 212,
+    "codeFilesUnchanged": 81,
+    "originalPlan": {
+      "status": "SUPPLEMENT_PENDING",
+      "reasons": [
+        "NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED"
+      ],
+      "keys": [
+        "questionUid",
+        "reasons",
+        "sourceArchiveFile",
+        "sourceOrdinal",
+        "status"
+      ],
+      "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
+      "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 3
+    },
+    "selectedSvg": [
+      {
+        "label": "f9-issued",
+        "commit": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
+        "global": {
+          "gitBlobSha1": "b5c174cce6838a5f575b15eac289c5076912e0d8",
+          "sha256": "dcea67e94dc4c6de5ae18a6a933ca16ea5eb0e26f2c061c633a13e40401bdee6",
+          "bytes": 5553969
+        },
+        "selectedRecords": 2,
+        "selectedWholeSha256": "a06c9dd5c746afc4329c5ba9692fab3cc6cf2d8ad6fd26b0d412d4cff996ba35"
+      },
+      {
+        "label": "e5-probe",
+        "commit": null,
+        "global": {
+          "gitBlobSha1": "ee7ff859bb4de64265afa3489dc7ac129b752c6e",
+          "sha256": "4d3f87f16f951c5b6617cfd4f23e692efa9997eea8ee7235b83d17d2fdddf658",
+          "bytes": 5689821
+        },
+        "selectedRecords": 2,
+        "selectedWholeSha256": "a06c9dd5c746afc4329c5ba9692fab3cc6cf2d8ad6fd26b0d412d4cff996ba35"
+      },
+      {
+        "label": "candidate22",
+        "commit": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+        "global": {
+          "gitBlobSha1": "e673fdf898cfd9aea26f544cc11890cacbdaf800",
+          "sha256": "4eb677f1bb275190d74e2a1c3c6aeae3b83bb4b22383e096fcdd9b853084db4d",
+          "bytes": 5689821
+        },
+        "selectedRecords": 2,
+        "selectedWholeSha256": "a06c9dd5c746afc4329c5ba9692fab3cc6cf2d8ad6fd26b0d412d4cff996ba35"
+      }
+    ],
+    "headWorktreeUnchanged": true
+  },
+  "releaseGate": "root independent review + exact successor focused runtime CI",
+  "remoteRefWriter": "root only",
+  "currentNativeApprovalsGranted": 0
+}

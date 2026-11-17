@@ -8,7 +8,7 @@ const { execFileSync } = require("child_process");
 const Archive2Core = require("../archive/archive2-core.js");
 const { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
   readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
-  readOriginalReceiptSource, assertOriginalReceiptSourceBytes } = require("./helpers/middle-geometry-issued-approval.cjs");
+  readOriginalReceiptSource, assertOriginalReceiptSourceBytes, assertM2E006TypedProfile } = require("./helpers/middle-geometry-issued-approval.cjs");
 
 async function main() {
 const { loadBank, nativeReviewReceipt, planQuestion, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
@@ -516,6 +516,81 @@ if (uiRetainedInputs.length) {
   console.log("PASS " + uiRetainedInputs.length + " immutable typed-UI issued approvals retained; current Native reuse BLOCKED, new approvals 0; " +
     (cases.length + 19) + " rejected corruptions");
 }
+// This is the separate M2 E006 two-item UI schema, not the M3 E00612
+// original-receipt cohort. Test its closed evidence-pair bridge independently.
+const m2E006Inputs = retainedInputs.filter(input =>
+  retainedApprovals.get(input.current.questionUid).typedProfile === "EXACT_M2_E006_Q3_Q21");
+assert.deepStrictEqual(m2E006Inputs.map(input => input.ordinal).sort((a, b) => a - b), [3, 21]);
+let m2E006Negatives = 0;
+for (const input of m2E006Inputs) {
+  const kept = retainedApprovals.get(input.current.questionUid);
+  const repair = kept.receipt.fingerprintRepairs.find(row => row.questionUid === input.current.questionUid);
+  const profile = assertM2E006TypedProfile(input, kept, repair);
+  assert.strictEqual(profile.questionUid, input.current.questionUid);
+  assert.strictEqual(kept.declaredInputs.inventorySize, 109);
+  assert.strictEqual(kept.declaredInputs.selectedSvg.assetPaths.length, 1);
+  assert(kept.originalE006Inputs.length > 0);
+  const reject = (candidate, retained, proof, label) => {
+    assert.throws(() => assertM2E006TypedProfile(candidate, retained, proof), label);
+    m2E006Negatives++;
+  };
+  reject({ ...input, source: input.source.replace("/m2/", "/m3/") }, kept, repair, "M3 E006 is not M2 E006");
+  reject({ ...input, ordinal: input.ordinal + 1 }, kept, repair, "only the exact two ordinals");
+  reject({ ...input, current: { ...input.current, questionUid: "qid_v1_" + "0".repeat(64) } },
+    kept, repair, "unknown UID cannot use the E006 UI evidence pair");
+  reject(input, { ...kept, receipt: { ...kept.receipt, requestId: kept.receipt.requestId + "-unknown" } },
+    repair, "no new receipt profile");
+  reject(input, { ...kept, live: relative => Buffer.concat([kept.live(relative), Buffer.from("\n")]) },
+    repair, "changed issued receipt bytes");
+  reject(input, { ...kept, sourceChangedSinceAnchor: true }, repair, "no E006 source-edition exemption");
+  reject({ ...input, nativeSource: { ...input.nativeSource, bytes: Buffer.concat([input.nativeSource.bytes, Buffer.from("\n")]) } },
+    kept, repair, "changed current whole source");
+  reject({ ...input, nativeSource: { ...input.nativeSource, bank: input.nativeSource.bank.slice(1) } },
+    kept, repair, "changed bank denominator");
+  for (const change of [
+    proof => { proof.m2E006ProblemContinuity.ui.technicalRef.sha256 = "0".repeat(64); },
+    proof => { proof.m2E006ProblemContinuity.ui.visualRef.path += ".other"; },
+    proof => { proof.m2E006ProblemContinuity.ui.technicalRef.commit = profile.technicalRef.commit; },
+    proof => { proof.m2E006ProblemContinuity.nativeReviewedSource.gitBlobSha1 = "0".repeat(40); },
+    proof => { proof.m2E006ProblemContinuity.nativeAssets[0].sha256 = "0".repeat(64); },
+    proof => { proof.m2E006ProblemContinuity.ui.logicalCases = 48; }
+  ]) {
+    const sourceReview = structuredClone(repair.sourceReview); change(sourceReview);
+    reject(input, kept, { ...repair, sourceReview }, "the original whole typed proof cannot change");
+  }
+}
+{
+  const input = m2E006Inputs[0], baseline = retainedApprovals.get(input.current.questionUid);
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-e006-dependencies-"));
+  try {
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"], env: { ...process.env, GIT_OPTIONAL_LOCKS: "0" } });
+    for (const relative of baseline.readPaths) {
+      const target = path.join(fixtureRoot, relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(root, relative), target);
+    }
+    const candidate = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
+    issuedObserver.assertKnownInputs(candidate, "complete exact E006 input copy");
+    const repair = baseline.receipt.fingerprintRepairs.find(row => row.questionUid === input.current.questionUid);
+    const originalAsset = repair.sourceReview.m2E006ProblemContinuity.nativeAssets.find(ref => ref.path.endsWith(".png"));
+    assert(originalAsset, "old native renderer remains a required live input");
+    const target = path.join(fixtureRoot, originalAsset.path), bytes = fs.readFileSync(target);
+    fs.unlinkSync(target);
+    assert.throws(() => issuedObserver.assertKnownInputs(candidate, "known renderer plus absent original asset"));
+    fs.writeFileSync(target, Buffer.concat([bytes, Buffer.from("\n")]));
+    assert.throws(() => issuedObserver.assertKnownInputs(candidate, "known renderer plus changed original asset"));
+    fs.unlinkSync(target); fs.symlinkSync(path.join(root, originalAsset.path), target);
+    assert.throws(() => issuedObserver.assertKnownInputs(candidate, "known renderer plus same-byte original-asset symlink"));
+    fs.unlinkSync(target); fs.writeFileSync(target, bytes);
+    const restored = issuedObserver.assertKnownInputs(candidate, "restored original E006 asset and full closure");
+    assert.deepStrictEqual(restored.originalE006Inputs, baseline.originalE006Inputs);
+    m2E006Negatives += 3;
+  } finally { fs.rmSync(fixtureRoot, { recursive: true, force: true }); }
+}
+console.log("PASS fixed M2 E006 Q3/Q21 issued-UI retention inputs, current Native remains BLOCKED; " +
+  m2E006Negatives + " closed-profile/dependency negatives; new approvals 0");
+
 const sourceRetainedInputs = retainedInputs.filter(input =>
   retainedApprovals.get(input.current.questionUid).kind === "EXACT_E017_Q11_Q15_SOURCE_PRESERVATION");
 if (sourceRetainedInputs.length) {
