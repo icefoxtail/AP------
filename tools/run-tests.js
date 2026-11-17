@@ -48,6 +48,7 @@ const requiredCommands = [
   { label: 'tests/item-4slot-m1s2-ui-provenance.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-ui-provenance.test.cjs'] },
   { label: 'tests/item-4slot-m1-m3-transport.test.cjs', args: ['--test', 'tests/item-4slot-m1-m3-transport.test.cjs'] },
   { label: 'tests/archive-m3s2-layout-continuity.test.cjs', args: ['--test', 'tests/archive-m3s2-layout-continuity.test.cjs'] },
+  { label: 'tests/archive-assignment-board-direct-output.test.cjs', args: ['--test', 'tests/archive-assignment-board-direct-output.test.cjs'] },
   { label: 'tests/archive-renderer-continuity-writer-inputs.test.mjs', args: ['--test', 'tests/archive-renderer-continuity-writer-inputs.test.mjs'] },
   {
     label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',

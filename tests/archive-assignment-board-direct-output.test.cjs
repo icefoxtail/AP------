@@ -76,5 +76,7 @@ test("Archive1 keeps its one-click exam/solution/answer actions and output-to-pr
   assertNoMatch(action, /openExamModeModal/, "exam card action must not add a mode-selection step");
   assertMatch(board, /data-action="assign">반에 출제/, "direct output shortcuts must preserve a separate assignment action");
   assertMatch(action, /openAssignTargetPanel\(item, 4\)/, "assignment action must still open the student target flow");
-  assertMatch(engine, /id="btn-print" onclick="safePrint\('vector'\)"/, "the output page should print directly from its toolbar");
+  // Same single <button> tag must carry both id="btn-print" and onclick="safePrint('vector')"; other attributes (e.g. class) may sit around them in either order.
+  const printTag = /<button\b(?=[^>]*\sid="btn-print")(?=[^>]*\sonclick="safePrint\('vector'\)")[^>]*>/;
+  assertMatch(engine, printTag, "the output page should print directly from its toolbar");
 });
