@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-12",
+          "9",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      0,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "E1",
+        "x": "2",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    }
+  },
+  "caption": "도함수의 부호가 음수에서 양수로 바뀌는 곳과 그 반대인 곳을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 함수 $f(x)=-2x^3+9x^2-12x+a$의 극댓값이 3일 때, 함수 $f(x)$의 극솟값은? (단, $a$는 상수) [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=7을 얻은 뒤 x=1극소,x=2극대. 극소 높이 답을 좌표/눈금에 쓰지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=7을 얻은 뒤 x=1극소,x=2극대. 극소 높이 답을 좌표/눈금에 쓰지 않음."
+  ]
+}

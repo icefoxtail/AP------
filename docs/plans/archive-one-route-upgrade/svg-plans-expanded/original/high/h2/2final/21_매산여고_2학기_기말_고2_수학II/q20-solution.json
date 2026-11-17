@@ -1,0 +1,269 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "T"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "T",
+    "O",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "T",
+        "O"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 450
+  },
+  "caption": "높이를 절반으로 잡은 예시 단면이다. 위쪽 작은 삼각형과 전체 원뿔 단면의 닮음으로 높이와 반지름을 연결한다. 내부 직사각형의 가로 길이는 정사각형 밑면의 대각선이다.",
+  "accessibilityDescription": "높이를 절반으로 잡은 예시 단면이다. 위쪽 작은 삼각형과 전체 원뿔 단면의 닮음으로 높이와 반지름을 연결한다. 내부 직사각형의 가로 길이는 정사각형 밑면의 대각선이다.",
+  "newVisualInformation": [
+    "높이를 절반으로 잡은 예시 단면이다. 위쪽 작은 삼각형과 전체 원뿔 단면의 닮음으로 높이와 반지름을 연결한다. 내부 직사각형의 가로 길이는 정사각형 밑면의 대각선이다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "OB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "s7",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rF",
+      "refs": [
+        "D",
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "rG",
+      "refs": [
+        "E",
+        "G",
+        "F"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식2 (단답형)] 그림과 같이 밑면의 반지름의 길이가 $8$, 높이가 $12$인 원뿔의 내부에 밑면이 정사각형인 직육면체를 내접시킬 때, 직육면체의 부피가 최대가 되는 직육면체 밑면의 한 변의 길이를 구하여라. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존PNG 직접확인: 원뿔반지름8 높이12, 밑면정사각 직육면체. 단면은 대각선을 지나는 중심단면. 예시 y6, 대각선8일뿐 최적모형 아님. 최종변16√2/3 숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

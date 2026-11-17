@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "6",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -8,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 2,
+        "y": 8
+      }
+    ]
+  },
+  "caption": "도함수 곡선의 부호와 두 영점 사이의 넓이를 확인한다. 식과 최종 값은 그림에 쓰지 않는다.",
+  "accessibilityDescription": "도함수 곡선의 부호와 두 영점 사이의 넓이를 확인한다. 식과 최종 값은 그림에 쓰지 않는다.",
+  "newVisualInformation": [
+    "도함수 곡선의 부호와 두 영점 사이의 넓이를 확인한다. 식과 최종 값은 그림에 쓰지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식3 (서술형)] 함수 $f(x)=\\displaystyle\\int_x^1(2t^3-6t^2)\\,dt$일 때, 다음 물음에 답하여라. [총 7점](부분점수 없음.)\n1) 함수 $f'(x)$를 구하여라. (2점)\n2) 함수 $f(x)=\\displaystyle\\int_x^1(2t^3-6t^2)\\,dt$의 극댓값을 구하여라. (3점)\n3) $y=f'(x)$와 $x$축으로 둘러싸인 도형의 넓이를 구하여라. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "도함수−2x³+6x². f의 극댓값12, 면적27/2 미표시. 식이 소문항1의 답이므로 그래프에 식라벨을 별도추가하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-9",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -3,
+      6,
+      -25,
+      25
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-1",
+        "y": "15"
+      },
+      {
+        "id": "E1",
+        "x": "3",
+        "y": "-17"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "up",
+          "slope": "0",
+          "intercept": "14",
+          "label": "y=t"
+        },
+        {
+          "id": "down",
+          "slope": "0",
+          "intercept": "-14",
+          "label": "y=-t"
+        }
+      ]
+    },
+    "sampleNote": "t=14"
+  },
+  "caption": "t=14 비교 예시이다. 수평선 두 개의 교점 수를 합치되 극점에서 접하는 교점은 한 번만 센다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 함수 $f(x)=x^3-3x^2-9x+10$에 대하여 $x$에 대한 방정식 $|f(x)|=t$의 서로 다른 실근의 개수가 5가 되도록 하는 실수 $t$의 값을 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대15,극소−17. t14는 경계 전 비교 예시로 교점6개; 극값 높이·최종t는 숨기고 수평선을 극점까지 이동할 때 중복교점 변화를 본다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "극대15,극소−17. t14는 경계 전 비교 예시로 교점6개; 극값 높이·최종t는 숨기고 수평선을 극점까지 이동할 때 중복교점 변화를 본다."
+  ]
+}

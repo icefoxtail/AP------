@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -1,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "tan",
+          "slope": "4",
+          "intercept": "0",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "접점에서 곡선과 직선의 기울기가 같은 조건을 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 곡선 $y=x^2+2x+1$ 위의 점 $(1, 4)$에서 접하는 접선의 방정식을 구하시오. [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′(1)=4;접점(1,4)을 유지하고 접선의 최종 방정식은 라벨에 쓰지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f′(1)=4;접점(1,4)을 유지하고 접선의 최종 방정식은 라벨에 쓰지 않음."
+  ]
+}

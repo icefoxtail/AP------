@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      0.5
+    ],
+    "viewport": [
+      -1.5,
+      0.5,
+      1.5,
+      4.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "-1",
+        "intercept": "2",
+        "intersectionX": [
+          "-1",
+          "0"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "g",
+        "lower": "f",
+        "from": "-1",
+        "to": "0",
+        "label": "S"
+      }
+    ]
+  },
+  "caption": "두 교점 사이에서 직선이 위에 있으므로 위 함수에서 아래 함수를 뺀다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 곡선 $y=x^2+2$와 직선 $y=-x+2$로 둘러싸인 도형의 넓이가 $\\frac{q}{p}$일 때 $p+q$의 값은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "교점−1,0; integrand−x−x². 최종 p+q 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "교점−1,0; integrand−x−x². 최종 p+q 숨김."
+  ]
+}

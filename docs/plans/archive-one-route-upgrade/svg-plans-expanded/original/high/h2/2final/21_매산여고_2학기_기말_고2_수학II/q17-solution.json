@@ -1,0 +1,42 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-4",
+      "0",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -14,
+      20
+    ]
+  },
+  "caption": "바깥 함수가 전체 구간에서 감소하므로 함수값의 대소와 입력의 대소가 반대임을 확인한다.",
+  "accessibilityDescription": "바깥 함수가 전체 구간에서 감소하므로 함수값의 대소와 입력의 대소가 반대임을 확인한다.",
+  "newVisualInformation": [
+    "바깥 함수가 전체 구간에서 감소하므로 함수값의 대소와 입력의 대소가 반대임을 확인한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)=-x^3-4x+3$, $g(x)=x^2-5x+5$에 대하여 부등식 $f(g(x))\\le-{f(x)}^3-4f(x)+3$을 만족시키는 $x$의 최솟값을 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "F(u)=−u³−4u+3,F′<0. 최종x≥−2와 최솟값은 그림에 쓰지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

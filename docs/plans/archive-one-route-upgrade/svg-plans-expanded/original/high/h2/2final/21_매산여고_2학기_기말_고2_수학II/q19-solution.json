@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -14,
+      8
+    ],
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "3",
+        "intercept": "-6",
+        "intersectionX": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "t",
+        "from": "-2",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "(2-sqrt(7))/3",
+        "y": "20/27+14*sqrt(7)/27"
+      },
+      {
+        "id": "R",
+        "x": "(2+sqrt(7))/3",
+        "y": "20/27-14*sqrt(7)/27"
+      }
+    ]
+  },
+  "caption": "접점과 다른 교점 사이에서 곡선이 접선 위에 놓인 영역을 비교한다.",
+  "accessibilityDescription": "접점과 다른 교점 사이에서 곡선이 접선 위에 놓인 영역을 비교한다.",
+  "newVisualInformation": [
+    "접점과 다른 교점 사이에서 곡선이 접선 위에 놓인 영역을 비교한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식1 (단답형)] 곡선 $y=x^3-2x^2-x+2$ 위의 점 $(2,0)$에서의 접선과 이 곡선으로 둘러싸인 도형의 넓이를 구하여라. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "차(x−2)²(x+2), 구간−2..2. 넓이64/3 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "6"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -2,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-3/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0"
+        },
+        {
+          "id": "B",
+          "curveX": "1"
+        }
+      ]
+    }
+  },
+  "caption": "도함수가 x축 아래인 부분에서는 원함수가 감소한다. 영점에서의 접촉과 구간 내부의 부호를 나누어 읽고 최종 구간 표기는 본문에 맡긴다.",
+  "accessibilityDescription": "도함수가 x축 아래인 부분에서는 원함수가 감소한다. 영점에서의 접촉과 구간 내부의 부호를 나누어 읽고 최종 구간 표기는 본문에 맡긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 함수 $f(x)=2x^3-3x^2+1$가 감소하는 구간은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "도함수의 부호로 감소 구간을 찾는다.\n$f'(x)=6x^2-6x=6x(x-1)$\n$x<0$ 및 $x>1$에서는 $f'(x)>0$이고, $0<x<1$에서는 $f'(x)<0$이다.\n따라서 감소 구간은 $[0,1]$이다.\n정답은 ③이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수가 x축 아래인 부분에서는 원함수가 감소한다. 영점에서의 접촉과 구간 내부의 부호를 나누어 읽고 최종 구간 표기는 본문에 맡긴다."
+  ]
+}

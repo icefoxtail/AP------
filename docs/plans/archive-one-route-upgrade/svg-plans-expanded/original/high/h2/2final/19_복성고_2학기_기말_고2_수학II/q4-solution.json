@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -15,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1"
+        },
+        {
+          "id": "B",
+          "curveX": "3"
+        }
+      ]
+    }
+  },
+  "caption": "도함수의 두 영점 −1,3 사이에서 부호는 음수이다. 왼쪽 영점에서 +에서 −로 바뀌므로 원함수의 극대 위치를 찾는다. 상수 a의 값은 쓰지 않는다.",
+  "accessibilityDescription": "도함수의 두 영점 −1,3 사이에서 부호는 음수이다. 왼쪽 영점에서 +에서 −로 바뀌므로 원함수의 극대 위치를 찾는다. 상수 a의 값은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3-3x^2-9x+a$의 극댓값이 $6$일 때, 실수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "도함수의 부호로 극댓값이 생기는 점을 찾는다.\n$f'(x)=3x^2-6x-9$\n$=3(x-3)(x+1)$\n$x=-1$의 왼쪽에서는 $f'(x)>0$, 오른쪽에서는 $f'(x)<0$이므로 $x=-1$에서 극댓값을 갖는다.\n$f(-1)=-1-3+9+a=5+a$\n극댓값이 6이므로\n$5+a=6$\n$a=1$\n정답은 ④이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 두 영점 −1,3 사이에서 부호는 음수이다. 왼쪽 영점에서 +에서 −로 바뀌므로 원함수의 극대 위치를 찾는다. 상수 a의 값은 쓰지 않는다."
+  ]
+}

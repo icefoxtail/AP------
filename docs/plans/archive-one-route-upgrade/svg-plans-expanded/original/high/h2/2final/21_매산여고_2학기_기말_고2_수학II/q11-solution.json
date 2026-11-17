@@ -1,0 +1,42 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "10",
+      "-7",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1,
+      6,
+      -15,
+      12
+    ]
+  },
+  "caption": "두 위치의 차를 나타낸 그래프가 가로축과 만나는 시각 중 출발 이후 첫 교점을 고른다. 음수 t 부분은 다항식의 단순 연장이며 실제 운동은 t가 0 이상인 부분만 본다.",
+  "accessibilityDescription": "두 위치의 차를 나타낸 그래프가 가로축과 만나는 시각 중 출발 이후 첫 교점을 고른다. 음수 t 부분은 다항식의 단순 연장이며 실제 운동은 t가 0 이상인 부분만 본다.",
+  "newVisualInformation": [
+    "두 위치의 차를 나타낸 그래프가 가로축과 만나는 시각 중 출발 이후 첫 교점을 고른다. 음수 t 부분은 다항식의 단순 연장이며 실제 운동은 t가 0 이상인 부분만 본다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위를 움직이는 두 점 $P,Q$에 대하여 시각 $t$ ($t\\ge0$)에서 점 $P$의 위치를 $x_1$, 점 $Q$의 위치를 $x_2$라 하자.\n$x_1=3t^3-3t^2+7t$, $x_2=2t^3+4t^2-3t$일 때, 두 점 $P,Q$가 동시에 원점을 출발한 후 처음으로 만나는 순간 점 $P$의 속도를 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "차t(t−2)(t−5), 첫 만남2. 속도31은 미표시. 화면 왼쪽 음수t는 다항식 연장으로 풀이 대상은t≥0.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

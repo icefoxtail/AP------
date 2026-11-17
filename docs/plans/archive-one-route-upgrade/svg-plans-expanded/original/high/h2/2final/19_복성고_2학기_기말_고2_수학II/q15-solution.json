@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "12",
+          "3",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        4
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      -50,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "M"
+      ]
+    }
+  },
+  "caption": "두 함수 차의 부등식을 a≥φ(x)로 바꾼다. φ는 구간 안에서 증가하다 감소하므로 높은 점의 높이를 모든 x에서 넘어야 한다. 구하는 a의 최솟값은 숨긴다.",
+  "accessibilityDescription": "두 함수 차의 부등식을 a≥φ(x)로 바꾼다. φ는 구간 안에서 증가하다 감소하므로 높은 점의 높이를 모든 x에서 넘어야 한다. 구하는 a의 최솟값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=x^3-3x^2-2x+a+11$, $g(x)=-x^3+10x-5$에 대하여 $0<x<4$에서 $f(x)\\ge g(x)$를 만족시키는 상수 $a$의 최솟값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "주어진 부등식을 정리한다.\n$f(x)-g(x)=2x^3-3x^2-12x+a+16$\n모든 $0<x<4$에서 이 값이 0 이상이려면\n$a\\ge -2x^3+3x^2+12x-16=\\phi(x)$\n이어야 한다.\n$\\phi'(x)=-6x^2+6x+12=-6(x-2)(x+1)$\n따라서 $\\phi$는 $0<x<2$에서 증가하고 $2<x<4$에서 감소한다.\n최댓값은\n$\\phi(2)=-16+12+24-16=4$\n이므로 가장 작은 $a$는 4이다.\n정답은 ①이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 함수 차의 부등식을 a≥φ(x)로 바꾼다. φ는 구간 안에서 증가하다 감소하므로 높은 점의 높이를 모든 x에서 넘어야 한다. 구하는 a의 최솟값은 숨긴다."
+  ]
+}

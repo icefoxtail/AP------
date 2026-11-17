@@ -1,0 +1,42 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-4",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -10,
+      10
+    ]
+  },
+  "caption": "원점 대칭인 삼차곡선에서 대칭 구간의 부호 있는 넓이가 서로 상쇄된다.",
+  "accessibilityDescription": "원점 대칭인 삼차곡선에서 대칭 구간의 부호 있는 넓이가 서로 상쇄된다.",
+  "newVisualInformation": [
+    "원점 대칭인 삼차곡선에서 대칭 구간의 부호 있는 넓이가 서로 상쇄된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 임의의 실수 $a$에 대하여 $\\displaystyle\\int_{-a}^a f(x)\\,dx=0$을 만족시킨다. $f'(0)=-4$일 때, $f(1)$의 값을 구하면? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f=x³−4x. f(1)의 점/값−3을 별도로 쓰지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

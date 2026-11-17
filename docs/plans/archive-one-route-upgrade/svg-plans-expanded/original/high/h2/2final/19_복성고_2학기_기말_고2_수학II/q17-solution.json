@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1,
+      1,
+      -1,
+      1
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-sqrt(3)/3",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "R",
+        "x": "sqrt(3)/3",
+        "y": "-2*sqrt(3)/9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "u",
+      "y": "v"
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "T",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "MEDIUM"
+      }
+    ]
+  },
+  "caption": "u=x/a, v=f(x)/a⁴로 정규화한 그래프이다. 왼쪽 양의 영역과 오른쪽 음의 영역은 원점 대칭이므로 넓이가 같다. 실제 전체 넓이는 a⁵을 곱해 복원하며 구하는 a는 쓰지 않는다.",
+  "accessibilityDescription": "u=x/a, v=f(x)/a⁴로 정규화한 그래프이다. 왼쪽 양의 영역과 오른쪽 음의 영역은 원점 대칭이므로 넓이가 같다. 실제 전체 넓이는 a⁵을 곱해 복원하며 구하는 a는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=ax(x^2-a^2)$의 그래프와 $x$축으로 둘러싸인 부분의 넓이가 $512$일 때, 양의 상수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "영점은 $x=-a,0,a$이고 $0<x<a$에서 $f(x)<0$이다.\n오른쪽 부분의 넓이는\n$\\displaystyle\\int_0^a -ax(x^2-a^2)\\,dx$\n$=a\\displaystyle\\int_0^a(a^2x-x^3)\\,dx$\n$=a\\left[\\dfrac{a^2x^2}{2}-\\dfrac{x^4}{4}\\right]_0^a$\n$=\\dfrac{a^5}{4}$\n함수는 원점 대칭이므로 왼쪽 부분의 넓이도 $\\dfrac{a^5}{4}$이다.\n$\\dfrac{a^5}{2}=512$\n$a^5=1024=4^5$\n양수 조건에서 $a=4$\n정답은 ④이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "u=x/a, v=f(x)/a⁴로 정규화한 그래프이다. 왼쪽 양의 영역과 오른쪽 음의 영역은 원점 대칭이므로 넓이가 같다. 실제 전체 넓이는 a⁵을 곱해 복원하며 구하는 a는 쓰지 않는다."
+  ]
+}

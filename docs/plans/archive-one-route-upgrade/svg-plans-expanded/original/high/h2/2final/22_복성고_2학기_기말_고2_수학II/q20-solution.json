@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      1.5
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -0.5,
+      2.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "y": "1",
+        "intersectionX": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "g",
+        "lower": "f",
+        "from": "-1",
+        "to": "1",
+        "label": "4/3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "M",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "한 예시의 할선과 포물선 사이 영역을 보고 두 끝점의 가로 간격과 중점 높이를 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 곡선 $y=x^2$ 위를 움직이는 두 점 $\\mathrm{A, B}$가 있다. 이 곡선과 직선 $\\mathrm{AB}$로 둘러싸인 부분의 넓이가 항상 $\\frac{4}{3}$이고, 선분 $\\mathrm{AB}$의 중점 $\\mathrm{M}$이 그리는 곡선을 $y=f(x)$라고 할 때, $f(2)$의 값은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "u−1,v1 예시로 간격2,면적4/3,중점(0,1). 임의 중점m의 높이 m²+1로 일반화하며 최종 f(2) 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "u−1,v1 예시로 간격2,면적4/3,중점(0,1). 임의 중점m의 높이 m²+1로 일반화하며 최종 f(2) 숨김."
+  ]
+}

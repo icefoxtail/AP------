@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "12",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      1
+    ],
+    "viewport": [
+      -5,
+      1,
+      -2,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "functionName": "g"
+  },
+  "caption": "도함수 포물선의 축은 x=−2이다. 증가 조건을 지키며 도함수를 가장 낮추면 꼭짓점이 x축에 닿는다. x=1에서의 구하는 높이는 표시하지 않는다.",
+  "accessibilityDescription": "도함수 포물선의 축은 x=−2이다. 증가 조건을 지키며 도함수를 가장 낮추면 꼭짓점이 x축에 닿는다. x=1에서의 구하는 높이는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 문제 2. [5점]\n최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킬 때, $f'(1)$의 최솟값은 무엇인가?\n(가) $f(0)=2$\n(나) 모든 실수 $x$에 대하여 $f'(x)\\ge f'(-2)$이다.\n(다) $x_1<x_2$인 임의의 두 실수 $x_1,x_2$에 대하여 $f(x_1)<f(x_2)$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "삼차함수를\n$f(x)=x^3+Ax^2+Bx+2$\n라 두면\n$f'(x)=3x^2+2Ax+B$\n$f'(x)$가 모든 실수에서 $f'(-2)$ 이상이려면 이 이차함수의 꼭짓점이 $x=-2$에 있어야 한다.\n$-\\dfrac{2A}{6}=-2$\n$A=6$\n따라서\n$f'(x)=3x^2+12x+B=3(x+2)^2+B-12$\n$f$가 모든 실수에서 증가하므로 $f'(x)\\ge0$이어야 한다. 따라서\n$B-12\\ge0$, $B\\ge12$\n$f'(1)=3+12+B=15+B$\n최솟값은 $B=12$일 때 $27$이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 포물선의 축은 x=−2이다. 증가 조건을 지키며 도함수를 가장 낮추면 꼭짓점이 x축에 닿는다. x=1에서의 구하는 높이는 표시하지 않는다."
+  ]
+}

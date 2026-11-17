@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      2
+    ],
+    "viewport": [
+      -1.5,
+      2,
+      -2,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-sqrt(3)/3",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "E1",
+        "x": "sqrt(3)/3",
+        "y": "-2*sqrt(3)/9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "sampleNote": "k=2",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-sqrt(3)/3"
+        },
+        {
+          "id": "B",
+          "curveX": "sqrt(3)/3"
+        },
+        {
+          "id": "C",
+          "x": "sqrt(3)/3",
+          "y": "2*sqrt(3)/9"
+        },
+        {
+          "id": "D",
+          "x": "-sqrt(3)/3",
+          "y": "-2*sqrt(3)/9"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ac",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "cb",
+          "from": "C",
+          "to": "B"
+        },
+        {
+          "id": "bd",
+          "from": "B",
+          "to": "D"
+        },
+        {
+          "id": "da",
+          "from": "D",
+          "to": "A"
+        },
+        {
+          "id": "ab",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "수직 평행이동을 제거한 대표형 f(x)=x³−x, 즉 k=2인 예시이다. 수직 평행이동은 극점 사이 가로·세로 차를 바꾸지 않으므로 두 극점을 대각선 끝점으로 잡는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 최고차항의 계수가 1인 삼차함수 $y=f(x)$와 기울기가 2인 직선이 $x=-1$인 점에서 접하고, $x=2$인 점에서 만난다. 함수 $y=f(x)$는 $x=p$에서 극대이고 $x=q$에서 극소이다. 두 점 $\\mathrm{A}(p, f(p)), \\mathrm{B}(q, f(q))$에 대하여 선분 $\\mathrm{AB}$를 대각선으로 하고 두 변이 각각 좌표축과 평행한 직사각형의 넓이를 구하시오. [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "본문에 직사각형 변 좌표축평행 명시 확인(과거 meta decisiveStep과 다르지만 본문 우선). k2 선택으로 f=x³−x; 변길이2/√3,4/(3√3), 넓이답 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "본문에 직사각형 변 좌표축평행 명시 확인(과거 meta decisiveStep과 다르지만 본문 우선). k2 선택으로 f=x³−x; 변길이2/√3,4/(3√3), 넓이답 숨김."
+  ]
+}

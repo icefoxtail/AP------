@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "18",
+          "-3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -5,
+      110
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 96
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTitles": {
+      "x": "r",
+      "y": "V/π"
+    }
+  },
+  "caption": "문제 그림의 축단면 닮음에서 h=18−3r이다. 부피를 π로 나눈 r²(18−3r)의 증가·감소를 비교한다. 구하는 최대점의 가로좌표는 숨긴다.",
+  "accessibilityDescription": "문제 그림의 축단면 닮음에서 h=18−3r이다. 부피를 π로 나눈 r²(18−3r)의 증가·감소를 비교한다. 구하는 최대점의 가로좌표는 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 밑면의 반지름의 길이가 $6$이고 높이가 $18$인 원뿔에 내접하는 원기둥 중에서 부피가 최대인 원기둥의 밑면의 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "원뿔의 밑면 반지름은 6, 높이는 18이다. 원기둥의 반지름을 $r$, 높이를 $h$라 하면 닮음으로\n$\\dfrac r6=\\dfrac{18-h}{18}$\n$h=18-3r$\n따라서 원기둥의 부피는\n$V=\\pi r^2h=\\pi r^2(18-3r)$\n$V'(r)=36\\pi r-9\\pi r^2=9\\pi r(4-r)$\n$0<r<6$에서 $r=4$를 기준으로 $V'$의 부호가 $+\\to-$로 바뀌므로 부피가 최대일 때의 반지름은 4이다.\n정답은 ①이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 그림의 축단면 닮음에서 h=18−3r이다. 부피를 π로 나눈 r²(18−3r)의 증가·감소를 비교한다. 구하는 최대점의 가로좌표는 숨긴다."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-1",
+          "0",
+          "1/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -1.5,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "-sqrt(2)",
+        "y": "-1"
+      },
+      {
+        "id": "E2",
+        "x": "sqrt(2)",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1",
+        "E2"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "up",
+          "slope": "0",
+          "intercept": "1/2",
+          "label": "y=k"
+        },
+        {
+          "id": "down",
+          "slope": "0",
+          "intercept": "-1/2",
+          "label": "y=-k"
+        }
+      ]
+    },
+    "sampleNote": "k=1/2"
+  },
+  "caption": "k=1/2 비교 예시이다. 짝함수의 대칭인 두 극소점과 위아래 수평선의 교점 개수 변화를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "19. 최고차항의 계수가 양수인 사차함수 $f(x)=ax^4+bx^2+c$ ($a, b, c$는 상수)가 다음 조건을 만족시킨다. $|f(x)|=k$의 서로 다른 실근의 개수가 4개일 때의 $k$값을 구하시오. [4.5점]\n\n가. 방정식 $f(x)=0$의 모든 실근이 $\\alpha, \\beta, \\gamma$이다. (단, $\\alpha < \\beta < \\gamma$)\n나. $f(1)=-\\frac{3}{4}, f'(-1)=1$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f=x⁴/4−x². k1/2예시6교점에서아래수평선이극소높이에닿을때의변화를비교. 최종k=1 및 극소높이−1 숫자는 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f=x⁴/4−x². k1/2예시6교점에서아래수평선이극소높이에닿을때의변화를비교. 최종k=1 및 극소높이−1 숫자는 숨김."
+  ]
+}

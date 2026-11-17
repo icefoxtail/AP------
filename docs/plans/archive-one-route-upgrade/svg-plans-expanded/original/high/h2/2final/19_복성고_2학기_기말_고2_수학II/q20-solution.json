@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "24",
+          "-3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        8
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      0,
+      8,
+      -2,
+      52
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 48
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "x"
+    }
+  },
+  "caption": "시간에 따른 높이는 아래로 열린 포물선이다. 꼭짓점에서 접선 기울기가 0이고 지면으로 돌아올 때 기울기는 음수이다. 최고점의 시각·높이와 마지막 속도의 수치는 숨긴다.",
+  "accessibilityDescription": "시간에 따른 높이는 아래로 열린 포물선이다. 꼭짓점에서 접선 기울기가 0이고 지면으로 돌아올 때 기울기는 음수이다. 최고점의 시각·높이와 마지막 속도의 수치는 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 문제 1. [4점]\n지면에서 $24,\\mathrm{m/s}$의 속도로 지면과 수직하게 위로 쏘아 올린 물체의 $t$초 후의 높이를 $x,\\mathrm{m}$라 하면\n$x=24t-3t^2$\n인 관계가 성립한다고 한다. (단위 생략해도 점수 인정)\n(1) 물체가 최고 높이에 도달할 때까지 걸린 시간과 그때의 높이를 구하시오. (2점)\n(2) 물체가 지면에 떨어지는 순간의 속도를 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "높이는 $x(t)=24t-3t^2$이다.\n$x'(t)=24-6t$\n최고점에서 $x'(t)=0$이므로\n$24-6t=0$, $t=4$\n이때 높이는\n$x(4)=24\\cdot4-3\\cdot4^2=96-48=48$\\,m\n물체가 지면에 닿을 때는\n$24t-3t^2=3t(8-t)=0$\n$t>0$이므로 $t=8$이다.\n속도는\n$v(t)=x'(t)=24-6t$\n$v(8)=24-48=-24$\\,m/s\n따라서 속도는 아래 방향으로 $24$\\,m/s이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "시간에 따른 높이는 아래로 열린 포물선이다. 꼭짓점에서 접선 기울기가 0이고 지면으로 돌아올 때 기울기는 음수이다. 최고점의 시각·높이와 마지막 속도의 수치는 숨긴다."
+  ]
+}

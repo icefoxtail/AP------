@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "net": {
+    "kind": "CYLINDER",
+    "radius": 2,
+    "height": 4,
+    "dims": [
+      {
+        "part": "rect-width",
+        "label": "2\\pi r"
+      },
+      {
+        "part": "rect-height",
+        "label": "h"
+      },
+      {
+        "part": "radius-top",
+        "label": "r"
+      }
+    ]
+  },
+  "caption": "닫힌 원기둥의 두 밑면과 옆면을 펼쳐 겉넓이 제약을 세운다. 그림의 비율은 예시이며 길이는 문자로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1]\n겉넓이가 $24\\pi$로 일정하면서 부피가 최대인 원기둥을 만드는 활동을 하려고 한다. 아래의 물음에 답하시오. [총 10.0점]\n\n(1) 원기둥의 부피($V$)를 밑면의 반지름의 길이($r$)를 이용한 식으로 나타내 보자. [4.0점]\n(2) 원기둥의 부피가 최대일 때 부피를 구하시오. [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "겉넓이 두원+직사각형 구조를 설명; r,h 문자만 유지하고 부피식(소문항1정답) 및 최대부피(소문항2정답)는 그림에 쓰지 않음.",
+      "mappedTo": "net"
+    }
+  ],
+  "newVisualInformation": [
+    "겉넓이 두원+직사각형 구조를 설명; r,h 문자만 유지하고 부피식(소문항1정답) 및 최대부피(소문항2정답)는 그림에 쓰지 않음."
+  ]
+}

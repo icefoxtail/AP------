@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -6,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "E1",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "sampleNote": "a=0"
+  },
+  "caption": "a=0 예시에서 축을 가로지르는 근과 접하기만 하는 근을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 함수 $f(x)=x^3-3x+a$에서 $F(x)=\\int_{0}^{x} f(t)dt$가 단 하나의 극값을 갖도록 하는 상수 $a$의 값이 될 수 없는 것은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "F′=f;단근의 부호변화만 F극값에 기여. a0/2/3으로3근/경계중근/1근을 비교하며 보기의 정답 선택은 표시하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "F′=f;단근의 부호변화만 F극값에 기여. a0/2/3으로3근/경계중근/1근을 비교하며 보기의 정답 선택은 표시하지 않음."
+  ]
+}

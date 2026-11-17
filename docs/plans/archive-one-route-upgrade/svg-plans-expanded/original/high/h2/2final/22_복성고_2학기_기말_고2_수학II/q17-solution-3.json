@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      0,
+      5,
+      -2,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "5/2",
+        "y": "-1/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "sampleNote": "n=3"
+  },
+  "caption": "n=3 예시에서 도함수를 양수인 육으로 나눈 그래프의 부호를 읽어 증가와 감소를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 함수 $f(x)=2x^3-3(n+2)x^2+12nx+16n$에 대하여, $x \\ge 0$에서 부등식 $f(x) \\ge 0$이 항상 성립하도록 하는 자연수 $n$의 개수를 구하시오. [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′=6(x−2)(x−n);n1,n2,n>2의세가지 순서/중근 사례. n3은일반순서예시일 뿐 가능한 모든 n범위나최종개수는 표시하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f′=6(x−2)(x−n);n1,n2,n>2의세가지 순서/중근 사례. n3은일반순서예시일 뿐 가능한 모든 n범위나최종개수는 표시하지 않음.",
+    "표시함수는 f′(x)/6=(x−2)(x−n)으로 원래 도함수와 부호가 같다. 원함수의 높이로 오해하지 않는다."
+  ]
+}

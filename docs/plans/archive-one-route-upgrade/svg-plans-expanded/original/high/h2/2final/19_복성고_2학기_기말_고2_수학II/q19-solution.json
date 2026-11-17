@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        20
+      ]
+    },
+    "domain": [
+      0,
+      20
+    ],
+    "viewport": [
+      0,
+      20,
+      -10,
+      220
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "d"
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/10"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "third",
+          "slope": "0",
+          "intercept": "180",
+          "label": "d=180"
+        }
+      ]
+    }
+  },
+  "caption": "서로 반대 방향이므로 상대 이동거리 d=t+t²/2를 본다. 세 번째 만남의 조건은 거리180의 수평선과 만나는 것이다. 구하는 시각은 좌표로 쓰지 않는다.",
+  "accessibilityDescription": "서로 반대 방향이므로 상대 이동거리 d=t+t²/2를 본다. 세 번째 만남의 조건은 거리180의 수평선과 만나는 것이다. 구하는 시각은 좌표로 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둘레의 길이가 $60,\\mathrm{m}$인 원이 있다.\n원 위를 움직이는 두 점 $P$, $Q$가 같은 점에서 동시에 출발하여 서로 반대방향으로 움직인다. 점 $P$는 시각 $t$에서 속도가 $1,\\mathrm{m/s}$이고, 점 $Q$는 시각 $t$에서의 속도가 $t,\\mathrm{m/s}$일 때, 출발한 후 세 번째 만나는 것은 몇 초 후인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "서로 반대 방향으로 움직이므로 두 점 사이의 상대 속도는\n$1+t$\\,m/s\n이다.\n출발 후 $t$초 동안 상대적으로 움직인 거리는\n$\\displaystyle\\int_0^t(1+u)\\,du$\n$=t+\\dfrac{t^2}{2}$\n세 번째 만남까지 상대 이동 거리는 원의 둘레의 세 배인\n$3\\cdot60=180$\\,m\n이다.\n$t+\\dfrac{t^2}{2}=180$\n$t^2+2t-360=0$\n$(t+20)(t-18)=0$\n$t>0$이므로 $t=18$\n정답은 ④이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 반대 방향이므로 상대 이동거리 d=t+t²/2를 본다. 세 번째 만남의 조건은 거리180의 수평선과 만나는 것이다. 구하는 시각은 좌표로 쓰지 않는다."
+  ]
+}

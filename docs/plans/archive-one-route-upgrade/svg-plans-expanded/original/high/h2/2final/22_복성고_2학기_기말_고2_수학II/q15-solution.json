@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "5/3",
+          "-8/3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.2,
+      2
+    ],
+    "viewport": [
+      -0.2,
+      2,
+      -0.4,
+      1.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "1 - sqrt(6)/6",
+        "y": "-1/36 + 2*sqrt(6)/27"
+      },
+      {
+        "id": "E2",
+        "x": "sqrt(6)/6 + 1",
+        "y": "-2*sqrt(6)/27 - 1/36"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1",
+        "E2"
+      ]
+    },
+    "regions": [
+      {
+        "id": "A",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "5/3",
+        "label": "B",
+        "fill": "MEDIUM"
+      }
+    ]
+  },
+  "caption": "축 위 영역과 축 아래 영역의 넓이가 같으면 부호 있는 정적분에서 서로 상쇄된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 함수 $f(x)=x^2(x-1)(x-2a)$에서 다음 그림과 같이 곡선 $y=f(x)$와 $x$축으로 둘러싸인 도형을 $A, B$라고 하자. 두 도형 $A, B$의 넓이가 같을 때, 상수 $a$의 값은? (단, $a > \\frac{1}{2}$) [4.0점]\n\n<img src=\"assets/images/22_복성고_2학기_기말_고2_수학II/q15.png\" style=\"max-width:300px; display:block; margin:10px auto;\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG 영점0(접함),1,2a와 A양수 B음수 확인. 같은 넓이의 정확한 모델은 a5/6; a와 2a 최종 숫자를 formula/좌표/눈금에 표시하지 않고 영역만 비교.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "PNG 영점0(접함),1,2a와 A양수 B음수 확인. 같은 넓이의 정확한 모델은 a5/6; a와 2a 최종 숫자를 formula/좌표/눈금에 표시하지 않고 영역만 비교."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      0,
+      5,
+      -3,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "5/2",
+        "y": "-9/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "sampleNote": "k=1",
+    "regions": [
+      {
+        "id": "S",
+        "upper": "axis",
+        "lower": "f",
+        "from": "3/2",
+        "to": "5/2",
+        "label": "S"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "curveX": "3/2"
+        },
+        {
+          "id": "R",
+          "curveX": "5/2"
+        }
+      ],
+      "lines": [
+        {
+          "id": "left",
+          "x": "3/2",
+          "style": "DASHED"
+        },
+        {
+          "id": "right",
+          "x": "5/2",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "k=1로 정규화하고 적분구간을 [1.5, 2.5]로 둔 예시이다. 양끝이 함께 이동하는 구간에서 오른쪽 끝 높이와 왼쪽 끝 높이의 차가 적분값의 변화율이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 함수 $y=f(x)$의 그래프가 다음 그림과 같고, 함수 $g(x)$가 $g(x)=\\int_{x}^{x+1} f(t)dt$를 만족시킬 때, $g(x)$의 최솟값은? [4.0점]\n\n<img src=\"assets/images/22_복성고_2학기_기말_고2_수학II/q13.png\" style=\"max-width:300px; display:block; margin:10px auto;\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG에서 위로 열린 포물선,영점1,4 확인. k>0은 수직배율만 바꾸므로 k1 예시. 길이1 구간 예시는1.5~2.5이며 최솟값을 주는 최종x/g값은 표시하지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "PNG에서 위로 열린 포물선,영점1,4 확인. k>0은 수직배율만 바꾸므로 k1 예시. 길이1 구간 예시는1.5~2.5이며 최솟값을 주는 최종x/g값은 표시하지 않음."
+  ]
+}
