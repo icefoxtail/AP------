@@ -1,0 +1,126 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A-B경로",
+        "elements": [
+          "위",
+          "가운데",
+          "아래"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B-C경로",
+        "elements": [
+          "위",
+          "가운데",
+          "아래"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "원래곡선도로를보존하고두구간의선택쌍만표시한다. 각구간3가지라3×3=9,정답④. 되돌아가B를다시지나는경로는포함하지않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 경로를 따라 지점 $A$에서 지점 $C$까지 가는 모든 경로의 수를 구하면? (단, 같은 지점을 두 번 이상 지나지 않는다.) (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

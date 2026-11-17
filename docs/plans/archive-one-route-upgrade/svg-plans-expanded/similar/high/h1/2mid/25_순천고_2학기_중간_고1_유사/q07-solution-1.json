@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "r",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "30/13",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "1",
+            "5"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "서로 다른 두교점은 r>30/13, 경계 제외. 표시5는 실제 상한아님. 자연수 최소3, 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $M(0,-4)$, $N(2,0)$의 중점을 중심으로 하고 반지름이 자연수 $r$인 원이 직선 $5x-12y+1=0$과 서로 다른 두 점에서 만난다. 자연수 $r$의 최솟값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "서로 다른 두교점은 r>30/13, 경계 제외. 표시5는 실제 상한아님. 자연수 최소3, 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두교점은 r>30/13, 경계 제외. 표시5는 실제 상한아님. 자연수 최소3, 정답⑤."
+  ]
+}

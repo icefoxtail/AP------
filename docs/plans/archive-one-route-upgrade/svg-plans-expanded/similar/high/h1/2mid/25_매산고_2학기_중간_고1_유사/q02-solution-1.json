@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11/2",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -8,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x/2+11/2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "-7",
+        "y": "2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "given",
+          "slope": "-2",
+          "intercept": "5",
+          "style": "DASHED",
+          "label": "y=-2*x+5"
+        }
+      ]
+    }
+  },
+  "caption": "원문 직선 기울기−2와 실제 수직선1/2, 점(−3,4)/(−7,2)을 보존. k−7, 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 점 $(-3,4)$를 지나고, 직선 $2x+y-5=0$에 수직인 직선이 점 $(k,2)$를 지날 때, $k$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문 직선 기울기−2와 실제 수직선1/2, 점(−3,4)/(−7,2)을 보존. k−7, 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 직선 기울기−2와 실제 수직선1/2, 점(−3,4)/(−7,2)을 보존. k−7, 정답①."
+  ]
+}

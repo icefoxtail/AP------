@@ -1,0 +1,524 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "85"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "85"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "85"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "85"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cU",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "85"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cD",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "85"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "85"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "O",
+    "R",
+    "P",
+    "Q",
+    "cL",
+    "cR",
+    "cU",
+    "cD"
+  ],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "coordinateLabels": [
+    "C",
+    "O",
+    "R",
+    "P",
+    "Q"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "hiddenPointNames": [
+    "cL",
+    "cR",
+    "cU",
+    "cD"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "p1,q0,m0의 명시적 비교 예시이며 일반계수를 고정한 증명이 아님. O가원내부라양끝은반대쪽. 일반교점식(1+m²)x²+4(p+qm)x−81=0에서 근곱−81/(1+m²),실제거리곱은절댓값에(1+m²)를곱해항상81. 정답81.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $x^2+y^2+4px+4qy-81=0$과 원점 $O(0,0)$ 및 점 $R(1,m)$을 지나는 직선 $l$이 만나는 두 점을 $P$, $Q$라 할 때, $\\overline{OP}\\cdot\\overline{OQ}$를 구하시오. (단, $p$, $q$, $m$은 실수이다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "p1,q0,m0의 명시적 비교 예시이며 일반계수를 고정한 증명이 아님. O가원내부라양끝은반대쪽. 일반교점식(1+m²)x²+4(p+qm)x−81=0에서 근곱−81/(1+m²),실제거리곱은절댓값에(1+m²)를곱해항상81. 정답81.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "p1,q0,m0의 명시적 비교 예시이며 일반계수를 고정한 증명이 아님. O가원내부라양끝은반대쪽. 일반교점식(1+m²)x²+4(p+qm)x−81=0에서 근곱−81/(1+m²),실제거리곱은절댓값에(1+m²)를곱해항상81. 정답81."
+  ]
+}

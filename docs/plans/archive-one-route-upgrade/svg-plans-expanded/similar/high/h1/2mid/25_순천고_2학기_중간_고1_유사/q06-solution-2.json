@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-7"
+              },
+              {
+                "kind": "integer",
+                "value": "-11"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-9"
+              },
+              {
+                "kind": "integer",
+                "value": "-11"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-5"
+              },
+              {
+                "kind": "integer",
+                "value": "-11"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "H",
+    "A",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "HT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P",
+    "H",
+    "A",
+    "T"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "P",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "caption": "실제 k-11의 평행선 x+y=-11와 x+y=−3, 수선발H와 거리4√2. 두 해5/−11의합−6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $l:x+y+3=0$과 평행하고 점 $P(k,0)$을 지나는 직선 $m$이 있다. 두 직선 $l$, $m$ 사이의 거리가 $4\\sqrt2$일 때, 가능한 모든 실수 $k$의 값의 합은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 k-11의 평행선 x+y=-11와 x+y=−3, 수선발H와 거리4√2. 두 해5/−11의합−6.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 k-11의 평행선 x+y=-11와 x+y=−3, 수선발H와 거리4√2. 두 해5/−11의합−6."
+  ]
+}

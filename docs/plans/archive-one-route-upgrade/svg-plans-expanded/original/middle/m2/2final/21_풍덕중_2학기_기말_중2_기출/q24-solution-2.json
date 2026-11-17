@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A확률",
+        "elements": [
+          "2/5"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B확률",
+        "elements": [
+          "1/3"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "기여",
+        "elements": [
+          "2/15"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "파랑/파랑인경우. 같은색은2/5+2/15=8/15,다른색은여사건1−8/15=7/15. 두주머니독립무작위추출의통상모형을쓴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 4. 주머니 A에는 노란 공 3개, 파란 공 2개가 들어 있고, 주머니 B에는 노란 공 2개, 파란 공 1개가 들어 있다. 두 주머니 A, B에서 공을 각각 한 개씩 임의로 꺼낼 때, 다음을 구하시오.\n(1) 꺼낸 두 구슬의 색이 같은 색일 확률을 구하시오. (풀이과정 서술) (2점)\n(2) 꺼낸 두 구슬의 색이 다른 색일 확률을 구하시오. (풀이과정 서술) (2점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

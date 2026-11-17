@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2/3"
+        ]
+      }
+    ],
+    "domain": [
+      -7,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "4+(2/3)*x",
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "U",
+          "x": "-6",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "x": "0",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "area",
+          "points": [
+            "U",
+            "O",
+            "V"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "a>0이므로x절편은음수. 밑변6/높이4/넓이12에서절편−6,기울기a2/3. 정답⑤."
+}

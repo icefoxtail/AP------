@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "4√7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60°",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "진단패널1: AB12/BC8/B60°만 보존하면 AC²112,넓이24√3. 다른 패널과 공통 AC로 결합 금지.",
+  "sourceConditions": [
+    {
+      "id": "diagnostic",
+      "condition": "CONDITIONAL DIAGNOSTIC ONLY: conflicting subsets are separated; this is not a repaired original figure or a confirmed answer.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

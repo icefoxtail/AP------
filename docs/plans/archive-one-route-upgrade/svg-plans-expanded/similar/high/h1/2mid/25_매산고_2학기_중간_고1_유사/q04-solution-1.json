@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7/5",
+          "-2/5"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-2*x/5+7/5",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "moved",
+          "slope": "-2/5",
+          "intercept": "6/5",
+          "style": "DASHED",
+          "label": "y=-2*x/5+6/5"
+        }
+      ],
+      "points": [
+        {
+          "id": "T",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "실제 원래점(1,1)→(3,0), 이동벡터(2,−1)와 평행 두 직선. 새식2x+5y−6=0, 정답c−6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(0,0)$을 점 $(2,-1)$로 이동시키는 평행이동에 의하여 직선 $2x+5y-7=0$이 이동한 도형이 $2x+5y+c=0$일 때, 상수 $c$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 원래점(1,1)→(3,0), 이동벡터(2,−1)와 평행 두 직선. 새식2x+5y−6=0, 정답c−6.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 원래점(1,1)→(3,0), 이동벡터(2,−1)와 평행 두 직선. 새식2x+5y−6=0, 정답c−6."
+  ]
+}

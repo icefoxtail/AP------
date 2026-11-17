@@ -1,0 +1,82 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": []
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": []
+      },
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A-B"
+  },
+  "caption": "전체1..8의 소속을 모두 표시하고 A에만 속한8을 강조. A∖B={8}, 곱8, 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{1,2,3,4,5,6,7,8\\}$의 두 부분집합 $A=\\{2,4,6,8\\}$, $B=\\{1,2,3,4,6\\}$에 대하여 집합 $A\\setminus B$의 모든 원소의 곱은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "전체1..8의 소속을 모두 표시하고 A에만 속한8을 강조. A∖B={8}, 곱8, 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "전체1..8의 소속을 모두 표시하고 A에만 속한8을 강조. A∖B={8}, 곱8, 정답①."
+  ]
+}

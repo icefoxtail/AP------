@@ -1,0 +1,64 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "12",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "24",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "36",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "72",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A는36배수집합,B는12배수집합의 관계 예시이며 숫자4개는 전체 원소목록이 아니다. A36⊆An⊆A12에 해당하는 n12/36만 가능, 포함 방향이 숫자 나눗셈과 반대임을 확인. 정답2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자연수 $n$의 양의 배수를 원소로 하는 집합을 $A_n$이라 하자. $A_n\\subset(A_4\\cap A_6)$, $(A_{36}\\cup A_{72})\\subset A_n$을 만족시키는 모든 자연수 $n$의 개수는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "A는36배수집합,B는12배수집합의 관계 예시이며 숫자4개는 전체 원소목록이 아니다. A36⊆An⊆A12에 해당하는 n12/36만 가능, 포함 방향이 숫자 나눗셈과 반대임을 확인. 정답2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "A는36배수집합,B는12배수집합의 관계 예시이며 숫자4개는 전체 원소목록이 아니다. A36⊆An⊆A12에 해당하는 n12/36만 가능, 포함 방향이 숫자 나눗셈과 반대임을 확인. 정답2."
+  ]
+}

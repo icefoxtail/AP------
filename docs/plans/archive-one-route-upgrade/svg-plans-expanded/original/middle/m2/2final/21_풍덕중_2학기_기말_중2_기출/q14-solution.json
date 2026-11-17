@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "묶음내순서",
+        "elements": [
+          "부철모",
+          "모철부"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "세대상배열",
+        "elements": [
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "철이와부모님이붙어서철이가가운데라는통상묶음해석을전제로한다. 부모순서2가지×묶음과나머지두명배열3!6=12,정답③. 단순히서열상사이에있음만뜻한다면조건확인이필요하다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "철이네 가족 5명이 나란히 서서 사진을 찍으려고 한다. 이때 철이가 부모님 사이에 서게 되는 경우의 수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

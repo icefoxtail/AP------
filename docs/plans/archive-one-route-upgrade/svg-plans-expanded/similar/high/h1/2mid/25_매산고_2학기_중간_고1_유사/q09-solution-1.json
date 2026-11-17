@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "PR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P",
+    "Q",
+    "R"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "p",
+      "refs": [
+        "A",
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "caption": "원문 Q와R의 직선이 실제로 P도 지나므로 l과 일치한다. AP:PB1:3, P(0,2),B(6,−1),기울기2와−1/2 직교. a+k=1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $A(-2,3)$, $B(6,a)$가 있고, 선분 $AB$를 $1:3$으로 내분하는 점을 $P$라 하자. 점 $P$를 지나고 선분 $AB$에 수직인 직선 $l$은 두 점 $Q(1,4)$, $R(3,8)$을 지나는 직선과 평행하다. 직선 $l$의 $y$절편을 $k$라 할 때, $a+k$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문 Q와R의 직선이 실제로 P도 지나므로 l과 일치한다. AP:PB1:3, P(0,2),B(6,−1),기울기2와−1/2 직교. a+k=1.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 Q와R의 직선이 실제로 P도 지나므로 l과 일치한다. AP:PB1:3, P(0,2),B(6,−1),기울기2와−1/2 직교. a+k=1."
+  ]
+}

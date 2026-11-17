@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "G",
+    "H"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "caption": "무게중심으로 실제A(2,1)복원, BC:y3x−2의 수선발H(11/10,13/10). AH=3/√10,정답그값. 원문 삼각형/무게중심 보존.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$의 무게중심이 $G(2,3)$이고 $B(0,-2)$, $C(4,10)$일 때, $A$에서 직선 $BC$에 내린 수선의 길이를 $h$라 하자. $h$의 값을 구하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "무게중심으로 실제A(2,1)복원, BC:y3x−2의 수선발H(11/10,13/10). AH=3/√10,정답그값. 원문 삼각형/무게중심 보존.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "무게중심으로 실제A(2,1)복원, BC:y3x−2의 수선발H(11/10,13/10). AH=3/√10,정답그값. 원문 삼각형/무게중심 보존."
+  ]
+}

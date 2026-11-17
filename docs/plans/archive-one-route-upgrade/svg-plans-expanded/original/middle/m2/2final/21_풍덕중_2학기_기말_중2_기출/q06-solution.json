@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "2+(-1)*x"
+  },
+  "caption": "a<0,b>0의대표직선y=−x+2는Ⅱ→Ⅰ→Ⅳ사분면을지난다. 대표값일뿐원문에서a−1/b2로정한것이아니다. 일반부호판정a<0,b>0,정답①."
+}

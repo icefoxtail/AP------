@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -8,
+      -3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-2*x-12",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-6",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "reference",
+          "slope": "1/2",
+          "intercept": "3",
+          "style": "DASHED",
+          "label": "y=x/2+3"
+        }
+      ]
+    }
+  },
+  "caption": "이동벡터(−1,2)는 기울기−2 직선 방향과 평행하므로 이번에는 원래선과 이동선이 일치한다. 기준 PQ와 (−6,0)에서 수직, a−2,b−12, 정답−14.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=ax+b$를 $x$축의 방향으로 $-1$만큼, $y$축의 방향으로 $2$만큼 평행이동한 직선이 두 점 $P(-6,0)$, $Q(-4,1)$을 지나는 직선과 $x$축 위에서 수직으로 만난다. $a+b$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "이동벡터(−1,2)는 기울기−2 직선 방향과 평행하므로 이번에는 원래선과 이동선이 일치한다. 기준 PQ와 (−6,0)에서 수직, a−2,b−12, 정답−14.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "이동벡터(−1,2)는 기울기−2 직선 방향과 평행하므로 이번에는 원래선과 이동선이 일치한다. 기준 PQ와 (−6,0)에서 수직, a−2,b−12, 정답−14."
+  ]
+}

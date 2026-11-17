@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "P",
+    "H",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "QP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "HT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "O",
+    "Q",
+    "P",
+    "H",
+    "T"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "foot",
+      "refs": [
+        "P",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "caption": "정수 조건 후 Q(1,1)→P(1,−1). 원문직선 위 수선발H(2/5,−1/5),PH1을 보존. 다른 대수해a−3/7은 정수아님. 정답a+b2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=x$ 위의 점 $Q(a,b)$를 $x$축에 대하여 대칭이동한 점을 $P$라 하자. 점 $P$와 직선 $3x-4y-2=0$ 사이의 거리가 $1$일 때, $a+b$의 값은? (단, $a,b$는 정수이다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "정수 조건 후 Q(1,1)→P(1,−1). 원문직선 위 수선발H(2/5,−1/5),PH1을 보존. 다른 대수해a−3/7은 정수아님. 정답a+b2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "정수 조건 후 Q(1,1)→P(1,−1). 원문직선 위 수선발H(2/5,−1/5),PH1을 보존. 다른 대수해a−3/7은 정수아님. 정답a+b2."
+  ]
+}

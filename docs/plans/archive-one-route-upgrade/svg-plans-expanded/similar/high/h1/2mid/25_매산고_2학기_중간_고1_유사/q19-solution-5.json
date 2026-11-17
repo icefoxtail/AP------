@@ -1,0 +1,47 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "실제 b2,c6의 근집합 A[2, 4],B[2],합집합2개. 근합6/4가 달라 둘 다두근인 동일집합은불가. bc값6/7/12중 최소6+최대12=18.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)=x^2-5x+10$과 실수 $b,c$에 대하여 $A=\\{x\\mid f(x)-x-b=0\\}$, $B=\\{x\\mid f(x)+x-c=0\\}$라 하자. 두 집합 $A,B$는 공집합이 아니고 $n(A\\cup B)=2$일 때, $bc$의 최댓값과 최솟값의 합을 구하는 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 b2,c6의 근집합 A[2, 4],B[2],합집합2개. 근합6/4가 달라 둘 다두근인 동일집합은불가. bc값6/7/12중 최소6+최대12=18.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 b2,c6의 근집합 A[2, 4],B[2],합집합2개. 근합6/4가 달라 둘 다두근인 동일집합은불가. bc값6/7/12중 최소6+최대12=18."
+  ]
+}

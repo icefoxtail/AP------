@@ -1,0 +1,64 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "16",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=16-2t"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=7"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "16",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "9/2",
+          "y": "7",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "8",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "길이(cm)"
+    }
+  },
+  "caption": "실제시간0≤t≤8시간에서남은길이16−2t. 길이7과만나는t9/2=4.5시간,정답④. 가로축t는시간이며고갈이후음수길이로연장하지않는다."
+}

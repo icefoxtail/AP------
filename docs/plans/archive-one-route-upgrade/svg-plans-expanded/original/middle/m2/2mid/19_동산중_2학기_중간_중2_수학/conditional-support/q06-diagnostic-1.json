@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-16",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-16",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "D",
+    "E",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vAE",
+        "ownerSegment": "AE",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원본PNG와 발문의 AC4/DC2/AE=AC/두직각이면 직각삼각형 ADE와 ACD가 RHS합동이라 EAD=CAD. tan(CAD)=DC/AC=1/2이나 tan30°=1/√3이므로 동시에 성립하지 않는다. 어떤 값을 고칠지 원본대조 전 확정할 수 없다. 이 패널은 길이와 두 직각을 보존한 조건부분 모형이며30°표시와 정답을 붙이지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "diagnostic",
+      "condition": "CONDITIONAL DIAGNOSTIC ONLY: conflicting subsets are separated; this is not a repaired original figure or a confirmed answer.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "c",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "e",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ]
+}

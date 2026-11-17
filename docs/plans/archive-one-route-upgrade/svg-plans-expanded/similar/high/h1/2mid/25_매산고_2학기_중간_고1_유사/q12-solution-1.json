@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "P",
+    "H",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "DP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "HT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "B",
+    "C",
+    "D",
+    "P",
+    "H",
+    "T"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "reflect",
+      "refs": [
+        "B",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "caption": "B(3,5)의 직선x+y2 대칭점 D(−3,−1), 중점H(0,2). D와C의 선분이 l과 P(3/2,1/2)에서 만나 최소2√10을 실제 달성. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $A(3,-5)$를 $x$축에 대하여 대칭이동한 점을 $B$라 하고, 점 $B$를 $y$축 방향으로 $-4$만큼 평행이동한 점을 $C$라 하자. 두 점 $(0,2)$, $(2,0)$을 지나는 직선 $l$ 위를 움직이는 점 $P$에 대하여 $\\overline{BP}+\\overline{CP}$의 최솟값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "B(3,5)의 직선x+y2 대칭점 D(−3,−1), 중점H(0,2). D와C의 선분이 l과 P(3/2,1/2)에서 만나 최소2√10을 실제 달성. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "B(3,5)의 직선x+y2 대칭점 D(−3,−1), 중점H(0,2). D와C의 선분이 l과 P(3/2,1/2)에서 만나 최소2√10을 실제 달성. 정답②."
+  ]
+}

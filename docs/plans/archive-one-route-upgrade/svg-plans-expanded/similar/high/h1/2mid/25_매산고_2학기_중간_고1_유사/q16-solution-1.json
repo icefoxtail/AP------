@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "H",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "H",
+    "B"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dx",
+        "ownerSegment": "AH",
+        "text": "9"
+      },
+      {
+        "id": "dy",
+        "ownerSegment": "HB",
+        "text": "6"
+      },
+      {
+        "id": "len",
+        "ownerSegment": "BA",
+        "text": "3*sqrt(13)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "h",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "caption": "실제 좌표차 가로9/세로6 직각삼각형으로 거리√117=3√13을 표시. a3,b13,정답29.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 두 점 $(1,-2)$, $(10,4)$ 사이의 거리가 $a\\sqrt b$일 때, 자연수 $a,b$에 대하여 $a+2b$의 값을 구하시오. (단, $b$는 $1$보다 큰 제곱수로 나누어떨어지지 않는다.)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 좌표차 가로9/세로6 직각삼각형으로 거리√117=3√13을 표시. a3,b13,정답29.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 좌표차 가로9/세로6 직각삼각형으로 거리√117=3√13을 표시. a3,b13,정답29."
+  ]
+}

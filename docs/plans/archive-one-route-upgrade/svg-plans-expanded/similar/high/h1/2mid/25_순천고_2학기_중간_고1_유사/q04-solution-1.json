@@ -1,0 +1,60 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "12",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "B-A"
+  },
+  "caption": "a−5가 유일공통원소6이므로 a11. A의 중복6은 한 번만 쓰고 B∖A의4/12 강조. 합16.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$a>6$인 실수 $a$에 대하여 두 집합 $A=\\{2,6,a-5\\}$, $B=\\{4,6,a+1\\}$이 있다. $A\\cap B=\\{6\\}$이고 $a-5\\in A\\cap B$일 때, $B-A$의 모든 원소의 합은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a−5가 유일공통원소6이므로 a11. A의 중복6은 한 번만 쓰고 B∖A의4/12 강조. 합16.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a−5가 유일공통원소6이므로 a11. A의 중복6은 한 번만 쓰고 B∖A의4/12 강조. 합16."
+  ]
+}

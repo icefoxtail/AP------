@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래y=−3x+2와위로3만큼옮긴y=−3x+5. 절편2→5이므로b3,정답④."
+}

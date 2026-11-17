@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "E",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "E",
+    "C"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {},
+  "caption": "대각선 AC만 실제좌표로 표시, E가 중점임을 보존한다. B/D 좌표는 원문 미정이므로 임의 확정하지 않는다. C(3,−3)는 제4사분면, 정답ab−9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 점 $A(1,3)$이고, 두 대각선의 교점이 $E(2,0)$이다. 제$4$사분면 위의 점 $C(a,b)$에 대하여 $ab$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "대각선 AC만 실제좌표로 표시, E가 중점임을 보존한다. B/D 좌표는 원문 미정이므로 임의 확정하지 않는다. C(3,−3)는 제4사분면, 정답ab−9.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 AC만 실제좌표로 표시, E가 중점임을 보존한다. B/D 좌표는 원문 미정이므로 임의 확정하지 않는다. C(3,−3)는 제4사분면, 정답ab−9."
+  ]
+}

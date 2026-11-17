@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-5"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-5"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "area",
+        "fill": "LIGHT",
+        "label": "50",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "AB=BA의 필요충분조건 |x|+|y|5가 만드는 정확 마름모 경계와 둘러싸인 넓이. 네 꼭짓점±5/대각선10과10으로 넓이50. 부등식 영역으로 원래 등식을 바꾸지 않음.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 실수 $x,y$에 대하여 두 행렬 $A=\\begin{pmatrix}3&2\\\\1&|x|\\end{pmatrix}$, $B=\\begin{pmatrix}|y|&2\\\\1&2\\end{pmatrix}$라 하자. 집합 $X=\\{(x,y)\\mid A^2-B^2=(A+B)(A-B)\\}$가 나타내는 도형의 넓이는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "AB=BA의 필요충분조건 |x|+|y|5가 만드는 정확 마름모 경계와 둘러싸인 넓이. 네 꼭짓점±5/대각선10과10으로 넓이50. 부등식 영역으로 원래 등식을 바꾸지 않음.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "AB=BA의 필요충분조건 |x|+|y|5가 만드는 정확 마름모 경계와 둘러싸인 넓이. 네 꼭짓점±5/대각선10과10으로 넓이50. 부등식 영역으로 원래 등식을 바꾸지 않음."
+  ]
+}

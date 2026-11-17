@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "21"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "2√7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vDC",
+        "ownerSegment": "DC",
+        "text": "2√7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "2√21",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "d",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 120,
+        "label": "120°",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "진단패널2: AD=CD=2√7,D120°만 보존하면 AC²84,넓이7√3. 첫 패널 AC²112와 모순이므로 답31√3 확정 또는 사각형 복원 금지.",
+  "sourceConditions": [
+    {
+      "id": "diagnostic",
+      "condition": "CONDITIONAL DIAGNOSTIC ONLY: conflicting subsets are separated; this is not a repaired original figure or a confirmed answer.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "m",
+        "elements": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "n",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ]
+  },
+  "caption": "교점가로좌표x=m−n. x2인순서쌍(3,1),(4,2),(5,3),(6,4)네개,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던져 처음에 나온 눈의 수를 $m$, 나중에 나온 눈의 수를 $n$이라 할 때, 두 일차함수 $y=2x-m$, $y=x-n$의 그래프의 교점의 $x$좌표가 $2$인 경우의 수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

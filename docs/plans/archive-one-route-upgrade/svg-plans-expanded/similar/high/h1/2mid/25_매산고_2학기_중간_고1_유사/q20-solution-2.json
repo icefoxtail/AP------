@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "P",
+    "N",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "MP",
+      "refs": [
+        "M",
+        "P"
+      ]
+    },
+    {
+      "id": "PN",
+      "refs": [
+        "P",
+        "N"
+      ]
+    },
+    {
+      "id": "NQ",
+      "refs": [
+        "N",
+        "Q"
+      ]
+    },
+    {
+      "id": "QM",
+      "refs": [
+        "Q",
+        "M"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "M",
+    "P",
+    "N",
+    "Q"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "area",
+        "fill": "LIGHT",
+        "label": "7/2",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "M",
+              "P",
+              "N",
+              "Q"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원 패널과 동일한 정확 좌표이며 M=M1,N=M2,P=P1,Q=P2. 전체 원을 빼 좁은사각형 관계를 확대, 좌표넓이차 |21−28|/2=7/2. 정답7/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에 서로 다른 원 $C_1,C_2$가 제1사분면에서 직선 $l:\\dfrac{x}{4}+\\dfrac{y}{3}=1$과 $x$축, $y$축에 동시에 접한다. $C_1$의 반지름이 $C_2$의 반지름보다 작다고 하자. 두 원의 중심을 각각 $M_1,M_2$라 하고 원 $C_1,C_2$와 직선 $l$과의 접점을 각각 $P_1,P_2$라 할 때, 사각형 $M_1P_1M_2P_2$의 넓이를 구하는 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원 패널과 동일한 정확 좌표이며 M=M1,N=M2,P=P1,Q=P2. 전체 원을 빼 좁은사각형 관계를 확대, 좌표넓이차 |21−28|/2=7/2. 정답7/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원 패널과 동일한 정확 좌표이며 M=M1,N=M2,P=P1,Q=P2. 전체 원을 빼 좁은사각형 관계를 확대, 좌표넓이차 |21−28|/2=7/2. 정답7/2."
+  ]
+}

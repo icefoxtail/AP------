@@ -1,0 +1,63 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "11/3",
+          "-2/3"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원점에서A(1,3)/B(4,1)로가는경계기울기3과1/4. 선분끝점도만남이므로1/4≤a≤3,정답①."
+}

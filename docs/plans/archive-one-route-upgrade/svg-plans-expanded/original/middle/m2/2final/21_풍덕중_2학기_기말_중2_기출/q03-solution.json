@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "4"
+      }
+    ],
+    "formula": "4+(2)*x"
+  },
+  "caption": "x절편−2/y절편4를각축에서읽어합2,정답③."
+}
