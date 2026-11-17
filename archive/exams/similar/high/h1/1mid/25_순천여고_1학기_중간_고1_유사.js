@@ -164,7 +164,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
+    "solutionImageCaption": "대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -659,7 +663,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB와 현 CD가 P에서 만난다. CP=10, DP=8이고 AB=26이다. 두 현의 교점 관계로 AP와 PB의 곱을 구하고, 두 길이의 합은 지름과 같다.",
+    "solutionImageCaption": "지름 AB와 현 CD가 P에서 만난다. CP=10, DP=8이고 AB=26이다. 두 현의 교점 관계로 AP와 PB의 곱을 구하고, 두 길이의 합은 지름과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

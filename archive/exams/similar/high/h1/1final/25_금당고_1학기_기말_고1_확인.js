@@ -111,7 +111,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "higher inequality",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 부등식을 닫힌 구간으로 옮기고 양 끝을 포함하여 정수들을 센다.",
+    "solutionImageCaption": "절댓값 부등식을 닫힌 구간으로 옮기고 양 끝을 포함하여 정수들을 센다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -421,7 +425,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "higher inequality",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 새 부등식의 열린 구간과 인접한 정수 눈금을 비교한다. 양 끝을 제외한다.",
+    "solutionImageCaption": "새 부등식의 열린 구간과 인접한 정수 눈금을 비교한다. 양 끝을 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -479,7 +487,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다.",
+    "solutionImageCaption": "강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -611,6 +623,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 변 1을 빗변으로 둘 수 없음을 합 조건으로 확인한 뒤 두 실근의 변 중 긴 쪽을 빗변으로 놓는다.",
+    "solutionImageCaption": "변 1을 빗변으로 둘 수 없음을 합 조건으로 확인한 뒤 두 실근의 변 중 긴 쪽을 빗변으로 놓는다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -324,7 +324,11 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q06-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q06-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q06-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_유사/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄에 9 이하를 나타내는 왼쪽 반직선과 2보다 큰 오른쪽 반직선이 각각 표시되어 있다.",
+    "solutionImageCaption": "x+3≤12에서 x≤9, 2x−1>3에서 x>2이므로 공통 범위는 2<x≤9이다. 이 안의 정수는 3부터 9까지 7개이므로 답은 ⑤ 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -439,7 +443,11 @@ window.questionBank = [
     "sourceQid": 8,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q08-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_유사/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄에 21 이상을 나타내는 오른쪽 반직선과 29보다 작은 왼쪽 반직선이 각각 표시되어 있다.",
+    "solutionImageCaption": "전체 구슬 수는 7x+5이고, 8(x−3)<7x+5≤8(x−2)에서 21≤x<29이다. 정수 x는 21부터 28까지이고 최솟값 21과 최댓값 28의 합은 49이므로 답은 ① 49이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -727,7 +735,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 식의 그래프가 −4와 2 사이에서 높이 6인 수평 구간을 이루고, 그 위에 점선 2a=8이 예시로 그려져 있다.",
+    "solutionImageCaption": "−4≤x≤2에서 |x−2|+|x+4|=6이므로 해는 중심 −1에서 좌우로 같은 거리만큼 뻗은 −1−a≤x≤a−1이다. 정수 11개를 포함하고 다음 정수는 포함하지 않으려면 5≤a<6이므로 답은 ⑤ 5≤a<6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1102,7 +1114,11 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_매산고_1학기_기말_고1_유사_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 곡선 y=x²+1과 점선 y=2x가 점 (1,2)에서 접하는 그림이 그려져 있다.",
+    "solutionImageCaption": "공통해는 x>0이고 두 부등식을 더하면 (a+c)(x²+1)<4bx이다. x²+1≥2x이므로 a+c<2b가 필요하고, 이때 x=1이 실제 공통해가 되어 충분하다. 따라서 답은 2b>a+c이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
