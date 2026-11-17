@@ -244,7 +244,6 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "①과 ④는 꼭짓점이 x축의 양쪽 중 오른쪽에 있고 아래로 열리는 같은 모양이다. ②는 x축 음의 부분에 닿으며 위로 열리고, ③은 x축 양의 부분에 닿으며 위로 열린다. ⑤는 x축 음의 부분에 닿으며 아래로 열린다.",
     "questionNumber": 13,
@@ -441,7 +440,6 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 파란 포물선의 꼭짓점은 (2, −3)이다. 포물선이 세로축의 1을 지나는 곳과 꼭짓점을 표시했다.",
     "questionNumber": 23,
