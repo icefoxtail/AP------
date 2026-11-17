@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "8"
+      }
+    ]
+  },
+  "caption": "역함수점Q(8,4)는원함수점(4,8)으로바뀐다. P(1,2)와두점으로기울기2/절편0. a+b2,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $f(x)=ax+b$의 그래프가 점 $P(1,2)$를 지나고, 역함수 $y=f^{-1}(x)$의 그래프가 점 $Q(8,4)$를 지난다. $a+b$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수점Q(8,4)는원함수점(4,8)으로바뀐다. P(1,2)와두점으로기울기2/절편0. a+b2,정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수점Q(8,4)는원함수점(4,8)으로바뀐다. P(1,2)와두점으로기울기2/절편0. a+b2,정답①."
+  ]
+}

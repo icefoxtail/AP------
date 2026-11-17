@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "9/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "0",
+            "5"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "부정조건 x≤9/2와 자연수 전체집합을 함께 적용해1,2,3,4만 남긴다. 0은 자연수에 넣지 않는다. 합10,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$가 자연수 전체의 집합일 때, 조건<br>$p: 2x-9 > 0$<br>에 대하여 $\\sim p$의 진리집합의 원소의 합은? [3.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "부정조건 x≤9/2와 자연수 전체집합을 함께 적용해1,2,3,4만 남긴다. 0은 자연수에 넣지 않는다. 합10,정답③.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "부정조건 x≤9/2와 자연수 전체집합을 함께 적용해1,2,3,4만 남긴다. 0은 자연수에 넣지 않는다. 합10,정답③."
+  ]
+}

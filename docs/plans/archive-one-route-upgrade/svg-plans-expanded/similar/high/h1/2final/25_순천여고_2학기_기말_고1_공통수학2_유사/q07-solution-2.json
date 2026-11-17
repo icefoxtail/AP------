@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-3*x",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "-2"
+      }
+    ]
+  },
+  "caption": "④의 수평선y0 교점−√3,0,√3 중 두점만으로도 일대일이 아님을 알 수 있다. ②는 자연정의역x≥−1,③은치역공백[−2,1),⑤는상수구간으로 각각탈락. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 실수 전체의 집합 $R$에서 $R$로의 일대일대응인 것은? [4.1점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "④의 수평선y0 교점−√3,0,√3 중 두점만으로도 일대일이 아님을 알 수 있다. ②는 자연정의역x≥−1,③은치역공백[−2,1),⑤는상수구간으로 각각탈락. 정답①.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "④의 수평선y0 교점−√3,0,√3 중 두점만으로도 일대일이 아님을 알 수 있다. ②는 자연정의역x≥−1,③은치역공백[−2,1),⑤는상수구간으로 각각탈락. 정답①."
+  ]
+}

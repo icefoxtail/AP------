@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "0"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      }
+    ]
+  },
+  "caption": "합의두번째항은f0=2. 첫합성값0과합하여2. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 대응도와 같은 함수 $f:X\\to X$에 대하여 $(f\\circ f)(3)+f(0)$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "합의두번째항은f0=2. 첫합성값0과합하여2. 정답②.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "합의두번째항은f0=2. 첫합성값0과합하여2. 정답②."
+  ]
+}

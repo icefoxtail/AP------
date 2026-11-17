@@ -1,0 +1,46 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11",
+          "-7",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      2,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-7*x+11",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "7/2",
+        "y": "-5/4"
+      }
+    ]
+  },
+  "caption": "제곱후의대수후보(7±√5)/2를비교한다. 작은근은3미만이라원래양변부호조건을어긴다. 다음수직선과함께큰근만선택,정답(7+√5)/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f:[1,\\infty)\\to[2,\\infty)$를 $f(x)=x^2-2x+3$으로 정의하자. 방정식 $f^{-1}(x)=x-2$를 만족하는 모든 실수 $x$를 구하고, 그 풀이 과정을 서술하시오. [8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "제곱후의대수후보(7±√5)/2를비교한다. 작은근은3미만이라원래양변부호조건을어긴다. 다음수직선과함께큰근만선택,정답(7+√5)/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "제곱후의대수후보(7±√5)/2를비교한다. 작은근은3미만이라원래양변부호조건을어긴다. 다음수직선과함께큰근만선택,정답(7+√5)/2."
+  ]
+}

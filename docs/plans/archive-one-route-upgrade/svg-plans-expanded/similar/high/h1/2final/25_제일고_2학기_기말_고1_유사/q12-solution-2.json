@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "8"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      }
+    ]
+  },
+  "caption": "원본의수평선y8과교점B(5,8)로q5를읽는다. 원본곡선·y=x·눈금전체보존,정답p+q12.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프와 직선 $y=x$가 그림과 같다. 직선 $x=4$와 그래프 $y=f(x)$의 교점을 $A$, 직선 $y=8$과 그래프 $y=f(x)$의 교점을 $B$라 하자. $A=(4,p)$, $B=(q,8)$일 때, $p+q$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원본의수평선y8과교점B(5,8)로q5를읽는다. 원본곡선·y=x·눈금전체보존,정답p+q12.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의수평선y8과교점B(5,8)로q5를읽는다. 원본곡선·y=x·눈금전체보존,정답p+q12."
+  ]
+}

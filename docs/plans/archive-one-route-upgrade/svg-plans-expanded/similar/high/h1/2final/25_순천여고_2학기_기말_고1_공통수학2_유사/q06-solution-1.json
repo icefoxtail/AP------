@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "25",
+          "-10",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-5)^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "16"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "9",
+        "y": "16"
+      }
+    ],
+    "axisTitles": {
+      "x": "s",
+      "y": "D"
+    }
+  },
+  "caption": "s=x+2y>0에서 s+25/s−10=(s−5)²/s이므로 양수분모를 뺀 부호곡선D를 표시한다. s5에서만0이며 다음 y1/2조건과 동시에 가능. 정답14.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 양수 $x, y$에 대하여<br>$$x+2y^2+\\frac{25}{x+2y}$$<br>는 $x=\\alpha, y=\\beta$일 때, 최솟값 $\\gamma$를 갖는다. 이때 상수 $\\alpha, \\beta, \\gamma$에 대하여 $\\alpha+\\beta+\\gamma$의 값은? (단, $\\alpha, \\beta$는 상수이다.) [4.9점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "s=x+2y>0에서 s+25/s−10=(s−5)²/s이므로 양수분모를 뺀 부호곡선D를 표시한다. s5에서만0이며 다음 y1/2조건과 동시에 가능. 정답14.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "s=x+2y>0에서 s+25/s−10=(s−5)²/s이므로 양수분모를 뺀 부호곡선D를 표시한다. s5에서만0이며 다음 y1/2조건과 동시에 가능. 정답14."
+  ]
+}

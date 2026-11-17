@@ -1,0 +1,64 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "1",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "-2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -1,
+      8
+    ],
+    "viewport": [
+      -2,
+      9,
+      -3,
+      2
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": -2
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": -1
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 8,
+        "y": 1
+      }
+    ]
+  },
+  "caption": "시작점(−1,−2),y절편−1,x절편3으로제3/4/1사분면을차례로지난다. x<0에서y>0은없다. 정답3개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\sqrt{x+1}-2$의 그래프가 지나는 사분면의 개수는?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "시작점(−1,−2),y절편−1,x절편3으로제3/4/1사분면을차례로지난다. x<0에서y>0은없다. 정답3개.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "시작점(−1,−2),y절편−1,x절편3으로제3/4/1사분면을차례로지난다. x<0에서y>0은없다. 정답3개."
+  ]
+}

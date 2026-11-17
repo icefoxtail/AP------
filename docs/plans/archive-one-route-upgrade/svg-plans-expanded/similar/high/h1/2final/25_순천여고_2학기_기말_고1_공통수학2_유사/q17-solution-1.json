@@ -1,0 +1,79 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "4",
+      "2"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -3,
+      4,
+      -1,
+      4
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "-3/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "boundary",
+          "slope": "1",
+          "intercept": "2",
+          "style": "DASHED",
+          "label": "y=x+2"
+        },
+        {
+          "id": "tangent",
+          "slope": "1",
+          "intercept": "5/2",
+          "style": "DASHED",
+          "label": "y=x+5/2"
+        }
+      ]
+    }
+  },
+  "caption": "k2는끝점(−2,0)과(0,2)에서 두교점, k5/2는 접점(−3/2,1)한개. 그래서하한포함/상한제외. 정답2≤k<5/2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\sqrt{2x+4}$와 $y=x+k$의 그래프의 교점의 개수가 $2$개가 되도록 하는 상수 $k$의 값의 범위를 구하면? [4.9점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "k2는끝점(−2,0)과(0,2)에서 두교점, k5/2는 접점(−3/2,1)한개. 그래서하한포함/상한제외. 정답2≤k<5/2.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "k2는끝점(−2,0)과(0,2)에서 두교점, k5/2는 접점(−3/2,1)한개. 그래서하한포함/상한제외. 정답2≤k<5/2."
+  ]
+}

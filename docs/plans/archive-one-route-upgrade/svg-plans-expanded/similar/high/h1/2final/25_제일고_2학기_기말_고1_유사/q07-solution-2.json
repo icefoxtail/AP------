@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-8",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*x^2-8*x+3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4/3",
+        "y": "-7/3"
+      }
+    ],
+    "axisTitles": {
+      "x": "m",
+      "y": "D"
+    }
+  },
+  "caption": "거리제곱조건을정리한3m²−8m+3=0의두근이접선기울기이다. 근곱3/3=1,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(5,3)$에서 원 $x^2+y^2-2x+2y-2=0$에 그은 두 접선의 기울기를 각각 $m_1,m_2$라 할 때, $m_1m_2$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "거리제곱조건을정리한3m²−8m+3=0의두근이접선기울기이다. 근곱3/3=1,정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "거리제곱조건을정리한3m²−8m+3=0의두근이접선기울기이다. 근곱3/3=1,정답④."
+  ]
+}

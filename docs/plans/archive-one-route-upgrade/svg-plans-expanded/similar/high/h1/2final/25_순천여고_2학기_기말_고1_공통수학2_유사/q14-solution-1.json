@@ -1,0 +1,66 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-3",
+      "5"
+    ],
+    "denominator": [
+      "-5",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      7
+    ],
+    "viewport": [
+      -2,
+      7,
+      -4,
+      9
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3/5",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "a5의 실제곡선은 y=x대칭이고(0,3/5)와(3/5,0)이 서로바뀐다. 행렬식−19≠0이므로 상수함수가 아니며 역함수도같다. 정답5.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\frac{ax-3}{2x-5}$의 역함수가 그 자신이 되도록 하는 상수 $a$의 값은? [4.3점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "a5의 실제곡선은 y=x대칭이고(0,3/5)와(3/5,0)이 서로바뀐다. 행렬식−19≠0이므로 상수함수가 아니며 역함수도같다. 정답5.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "a5의 실제곡선은 y=x대칭이고(0,3/5)와(3/5,0)이 서로바뀐다. 행렬식−19≠0이므로 상수함수가 아니며 역함수도같다. 정답5."
+  ]
+}

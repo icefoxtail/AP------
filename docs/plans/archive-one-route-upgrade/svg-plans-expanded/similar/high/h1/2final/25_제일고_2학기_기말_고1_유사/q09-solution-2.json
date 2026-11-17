@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "36",
+          "-12",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-6)^2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "25"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "11",
+        "y": "25"
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "D"
+    }
+  },
+  "caption": "t=a−4>0에서 a+b−25=(t−6)²/t. 양수분모를제외한D그래프의영점t6에서만최소달성,실제a10,b15. 정답25.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $P(2,7)$과 $Q(6,11)$의 중점을 지나는 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$이 있다. $a,b$는 양수이고 이 직선이 $x$축, $y$축과 만나는 점을 각각 $A,B$라 할 때, $\\overline{OA}+\\overline{OB}$의 최솟값은? (단, $O$는 원점)",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "t=a−4>0에서 a+b−25=(t−6)²/t. 양수분모를제외한D그래프의영점t6에서만최소달성,실제a10,b15. 정답25.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "t=a−4>0에서 a+b−25=(t−6)²/t. 양수분모를제외한D그래프의영점t6에서만최소달성,실제a10,b15. 정답25."
+  ]
+}

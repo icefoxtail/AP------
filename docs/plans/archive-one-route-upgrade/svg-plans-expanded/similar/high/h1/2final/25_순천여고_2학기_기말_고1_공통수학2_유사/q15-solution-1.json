@@ -1,0 +1,66 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "224/9",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      11
+    ],
+    "viewport": [
+      0,
+      12,
+      0,
+      12
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "8/3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "28/3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "chord",
+          "slope": "-1",
+          "intercept": "12",
+          "style": "DASHED",
+          "label": "y=-x+12"
+        }
+      ]
+    }
+  },
+  "caption": "실제 k224/9에서 P(8/3,28/3),Q(28/3,8/3)를 원래곡선과직선에 표시한다. x차20/3,중심에서현거리6√2로 면적40. 정답224/9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 유리함수 $y=\\frac{k}{x}\\,(k>0)$의 그래프가 직선 $y=-x+12$와 두 점 $P, Q$에서 만난다. 삼각형 $OPQ$의 넓이가 $40$일 때, 상수 $k$의 값은? (단, $O$는 원점이다.) [4.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제 k224/9에서 P(8/3,28/3),Q(28/3,8/3)를 원래곡선과직선에 표시한다. x차20/3,중심에서현거리6√2로 면적40. 정답224/9.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 k224/9에서 P(8/3,28/3),Q(28/3,8/3)를 원래곡선과직선에 표시한다. x차20/3,중심에서현거리6√2로 면적40. 정답224/9."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "첫행P=[−2,3]∪(5,∞),둘째행필요조건Q의최대정수a−3,셋째행충분조건R의최소정수b6. q는P를포함,r은P안에들어야한다. 정답−3+6=3.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 조건 $p,q,r$이 다음과 같을 때, $q$가 $p$이기 위한 필요조건이고 $r$이 $p$이기 위한 충분조건이 되도록 하는 정수 $a$의 최댓값과 정수 $b$의 최솟값의 합은?<br>$p:|2x-1|\\le5$ 또는 $x\\gt5$, &nbsp; $q:x\\gt a$, &nbsp; $r:x\\ge b$",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "첫행P=[−2,3]∪(5,∞),둘째행필요조건Q의최대정수a−3,셋째행충분조건R의최소정수b6. q는P를포함,r은P안에들어야한다. 정답−3+6=3.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "첫행P=[−2,3]∪(5,∞),둘째행필요조건Q의최대정수a−3,셋째행충분조건R의최소정수b6. q는P를포함,r은P안에들어야한다. 정답−3+6=3."
+  ]
+}

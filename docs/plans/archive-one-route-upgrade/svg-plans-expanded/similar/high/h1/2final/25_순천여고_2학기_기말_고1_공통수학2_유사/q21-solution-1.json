@@ -1,0 +1,68 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-2",
+      "1"
+    ],
+    "sign": 1,
+    "offset": "1",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      2,
+      7
+    ],
+    "viewport": [
+      1,
+      8,
+      0,
+      5
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "(7+sqrt(5))/2",
+          "y": "(3+sqrt(5))/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "target",
+          "slope": "1",
+          "intercept": "-2",
+          "style": "DASHED",
+          "label": "y=x-2"
+        }
+      ]
+    }
+  },
+  "caption": "실제역함수1+√(x−2),x≥2와직선x−2의교점이다. 제곱전 x≥3을반드시적용하며 유효근(7+√5)/2만남긴다. 정답그값.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f:[1,\\infty)\\to[2,\\infty)$를 $f(x)=x^2-2x+3$으로 정의하자. 방정식 $f^{-1}(x)=x-2$를 만족하는 모든 실수 $x$를 구하고, 그 풀이 과정을 서술하시오. [8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "실제역함수1+√(x−2),x≥2와직선x−2의교점이다. 제곱전 x≥3을반드시적용하며 유효근(7+√5)/2만남긴다. 정답그값.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "실제역함수1+√(x−2),x≥2와직선x−2의교점이다. 제곱전 x≥3을반드시적용하며 유효근(7+√5)/2만남긴다. 정답그값."
+  ]
+}

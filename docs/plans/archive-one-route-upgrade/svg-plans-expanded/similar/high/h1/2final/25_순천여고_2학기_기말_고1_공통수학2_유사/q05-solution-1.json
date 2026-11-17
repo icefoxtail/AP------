@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "subset": [
+      "P",
+      "Q"
+    ]
+  },
+  "caption": "첫 조건은P⊆Q이다. 등호도 허용하며 다음 Q/R서로소와 함께 P/R서로소를 얻는다. 정답r→¬p.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 세 조건 $p, q, r$의 진리집합을 각각 $P, Q, R$이라 하자. 세 집합이 다음 조건을 만족할 때, 항상 참인 명제는? [4.6점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\">(가) $P \\cap Q^c = \\varnothing$<br>(나) $Q \\cup R^c = R^c$</div>",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "첫 조건은P⊆Q이다. 등호도 허용하며 다음 Q/R서로소와 함께 P/R서로소를 얻는다. 정답r→¬p.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 조건은P⊆Q이다. 등호도 허용하며 다음 Q/R서로소와 함께 P/R서로소를 얻는다. 정답r→¬p."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "g⁻¹",
+        "from": "X",
+        "to": "Y"
+      }
+    ]
+  },
+  "caption": "둘째 항 f∘(g∘f)⁻¹은 g⁻¹로 소거된다. 원문 g4=1을 거꾸로 읽어1→4. 정답7.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여 $X$에서 $X$로의 두 함수 $f, g$가 그림과 같을 때, $(g^{-1} \\circ f^{-1})^{-1}(2)+(f \\circ (g \\circ f)^{-1})(1)$의 값은? (단, 그림에서 첫 번째 화살표는 $f$를, 두 번째 화살표는 $g$를 나타낸다.) [4.2점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "둘째 항 f∘(g∘f)⁻¹은 g⁻¹로 소거된다. 원문 g4=1을 거꾸로 읽어1→4. 정답7.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "둘째 항 f∘(g∘f)⁻¹은 g⁻¹로 소거된다. 원문 g4=1을 거꾸로 읽어1→4. 정답7."
+  ]
+}

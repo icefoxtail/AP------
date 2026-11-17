@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-7",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-2)*(x-5)",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "7/2",
+        "y": "-9/4"
+      },
+      {
+        "id": "C",
+        "x": "5",
+        "y": "0"
+      }
+    ],
+    "axisTitles": {
+      "x": "a",
+      "y": "D"
+    }
+  },
+  "caption": "공역과치역 경계의 차 D=f(a)−(3a−10)=(a−2)(a−5). 두근2/5 모두 a≥2를 만족하여 합7. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $X=\\{x|x \\ge a\\}, Y=\\{y|y \\ge 3a-10\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=x^2-4x$의 역함수가 존재하도록 하는 상수 $a$의 값들의 합은? [4.8점]",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "공역과치역 경계의 차 D=f(a)−(3a−10)=(a−2)(a−5). 두근2/5 모두 a≥2를 만족하여 합7. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "공역과치역 경계의 차 D=f(a)−(3a−10)=(a−2)(a−5). 두근2/5 모두 a≥2를 만족하여 합7. 정답④."
+  ]
+}

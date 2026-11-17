@@ -1,0 +1,59 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "3"
+    ],
+    "sign": 1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      4,
+      0,
+      4
+    ],
+    "domainRangeLabels": true,
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0.75,
+        "y": 1.5
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 3
+      }
+    ]
+  },
+  "caption": "원문E(3,3)에서k3. 실제윗곡선√(3x)의A(3/4,3/2)를표시한다. 아래곡선의동일높이D(9/4,3/2)는다음패널에서보존. 정답4t+6=9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 무리함수 $y=\\sqrt{kx}$, $y=\\sqrt{x}$의 그래프가 그림과 같고, 위쪽 그래프 $y=\\sqrt{kx}$는 점 $E(3,3)$을 지난다. 위쪽 그래프의 점 $A$에서 $x$축에 평행한 직선을 그어 아래쪽 그래프와 만나는 점을 $D$라 하고, 두 점 $A,D$에서 $x$축에 내린 수선의 발을 각각 $B,C$라 하자. 사각형 $ABCD$가 정사각형일 때 점 $A$의 $x$좌표를 $t$라 하자. $4t+6$의 값은?",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "원문E(3,3)에서k3. 실제윗곡선√(3x)의A(3/4,3/2)를표시한다. 아래곡선의동일높이D(9/4,3/2)는다음패널에서보존. 정답4t+6=9.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원문E(3,3)에서k3. 실제윗곡선√(3x)의A(3/4,3/2)를표시한다. 아래곡선의동일높이D(9/4,3/2)는다음패널에서보존. 정답4t+6=9."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "(x-1)^2-1",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "C",
+        "x": "4",
+        "y": "8"
+      }
+    ]
+  },
+  "caption": "역함수 g=(x−1)²−1의실제가지x≥1중1..4표시발췌이다. 왼쪽연장은그리지않고오른쪽4는원문상한이아니다. f와대칭이고실제교점(3,3),정답그좌표.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프는 $y=\\sqrt{x}$의 그래프를 $x$축의 방향으로 $-1$, $y$축의 방향으로 $1$만큼 평행이동한 것이다. $f$의 역함수를 $g$라 할 때, 두 함수 $y=f(x)$, $y=g(x)$의 그래프의 교점의 좌표를 구하는 과정을 서술하시오.",
+      "mappedTo": "original"
+    },
+    {
+      "id": "method",
+      "condition": "역함수 g=(x−1)²−1의실제가지x≥1중1..4표시발췌이다. 왼쪽연장은그리지않고오른쪽4는원문상한이아니다. f와대칭이고실제교점(3,3),정답그좌표.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수 g=(x−1)²−1의실제가지x≥1중1..4표시발췌이다. 왼쪽연장은그리지않고오른쪽4는원문상한이아니다. f와대칭이고실제교점(3,3),정답그좌표."
+  ]
+}
