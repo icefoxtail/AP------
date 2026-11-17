@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "B",
+          "D",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "α",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "β",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sDE",
+        "text": "s",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "정사각형의 한 변을 s라 둔다. 위쪽의 작은 삼각형과 전체 삼각형에서 높이는 α−s와 α, 밑변은 s와 β이므로 s/β=(α−s)/α이다. α와 β는 원래 방정식의 두 근이며 그림은 그 정확한 길이를 사용한다. s의 수치와 마지막 계수의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2-6x+3=0$의 두 실근을 $\\alpha$, $\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$에 내접하는 정사각형의 한 변의 길이와 넓이가 두 근인 이차방정식이 $8x^2+mx+n=0$일 때, $|m+n|$의 값은? (단, 정사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있다.) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존문제SVG직접확인: B직각, ABα/BCβ,두변이직각변위에있는정사각형. α=3−√6,β=3+√6를정확스칼라로만듦. B원점은평행이동게이지로원문좌표아님. A/C는정확이동,D/F는닮음에서s=αβ/(α+β)=1/2를도출한이동,E는벡터합. E가AC위에있고정사각형임을검증. s²1/4,m−6,n1,최종5. 기존그림의조건은유지하되닮음대응α−s와s를추가해식으로연결한다. 전체+작은삼각형확대2패널,확대패널A원점은평행이동게이지이며D/E는같은정확길이로도출한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형의 한 변을 s라 둔다. 위쪽의 작은 삼각형과 전체 삼각형에서 높이는 α−s와 α, 밑변은 s와 β이므로 s/β=(α−s)/α이다. α와 β는 원래 방정식의 두 근이며 그림은 그 정확한 길이를 사용한다. s의 수치와 마지막 계수의 합은 표시하지 않는다."
+  ]
+}

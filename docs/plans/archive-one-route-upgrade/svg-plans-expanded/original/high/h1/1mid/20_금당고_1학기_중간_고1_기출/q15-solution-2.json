@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "D",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "height",
+        "ownerSegment": "sAD",
+        "text": "α-s",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "width",
+        "ownerSegment": "sDE",
+        "text": "s",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "전체 그림 위쪽의 작은 직각삼각형만 평행이동하여 확대한 보조 그림이다. 세로 α−s와 가로 s가 전체 삼각형의 세로 α와 가로 β에 각각 대응한다. 실제 길이 비율은 바꾸지 않으며 작은 삼각형 밖의 정사각형과 점 B,C는 이 패널에 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2-6x+3=0$의 두 실근을 $\\alpha$, $\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$에 내접하는 정사각형의 한 변의 길이와 넓이가 두 근인 이차방정식이 $8x^2+mx+n=0$일 때, $|m+n|$의 값은? (단, 정사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있다.) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존문제SVG직접확인: B직각, ABα/BCβ,두변이직각변위에있는정사각형. α=3−√6,β=3+√6를정확스칼라로만듦. B원점은평행이동게이지로원문좌표아님. A/C는정확이동,D/F는닮음에서s=αβ/(α+β)=1/2를도출한이동,E는벡터합. E가AC위에있고정사각형임을검증. s²1/4,m−6,n1,최종5. 기존그림의조건은유지하되닮음대응α−s와s를추가해식으로연결한다. 전체+작은삼각형확대2패널,확대패널A원점은평행이동게이지이며D/E는같은정확길이로도출한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 그림 위쪽의 작은 직각삼각형만 평행이동하여 확대한 보조 그림이다. 세로 α−s와 가로 s가 전체 삼각형의 세로 α와 가로 β에 각각 대응한다. 실제 길이 비율은 바꾸지 않으며 작은 삼각형 밖의 정사각형과 점 B,C는 이 패널에 그리지 않는다."
+  ]
+}

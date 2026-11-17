@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "pieces": [
+          {
+            "lo": {
+              "value": "8/3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "위 줄은 첫 부등식에 해가 존재하는 k의 범위이고, 아래 줄은 둘째 부등식에 해가 없는 k의 범위이다. 열린 끝점과 닫힌 끝점을 구별하여 두 줄의 공통 범위에서 정수를 고른다. 각 범위는 k=0과 포물선의 열림 방향을 따로 검토한 뒤 얻은 것이며 마지막 곱은 표시하지 않는다.",
+  "accessibilityDescription": "위 줄은 첫 부등식에 해가 존재하는 k의 범위이고, 아래 줄은 둘째 부등식에 해가 없는 k의 범위이다. 열린 끝점과 닫힌 끝점을 구별하여 두 줄의 공통 범위에서 정수를 고른다. 각 범위는 k=0과 포물선의 열림 방향을 따로 검토한 뒤 얻은 것이며 마지막 곱은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 모두 만족시키는 모든 정수 $k$의 곱을 구하면? <div class='note-box'>(가) 이차부등식 $kx^2-4x+(k-3)\\le0$의 해가 존재한다.<br>(나) 이차부등식 $kx^2-kx+k-2\\le0$의 해가 존재하지 않는다.</div> [5.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(가)는k<0이면아래로열려해존재,k0이면−4x−3≤0해존재,k>0은D1≥0에서k≤4. (나)는k≤0불가(k0은−2≤0항상참이므로해존재),k>0에서D2=k(8−3k)<0이므로k>8/3. 공통8/3<k≤4에서정수3,4곱12. 새수직선은두조건만비교하며최종곱이나정수점목록은표시안함.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "위 줄은 첫 부등식에 해가 존재하는 k의 범위이고, 아래 줄은 둘째 부등식에 해가 없는 k의 범위이다. 열린 끝점과 닫힌 끝점을 구별하여 두 줄의 공통 범위에서 정수를 고른다. 각 범위는 k=0과 포물선의 열림 방향을 따로 검토한 뒤 얻은 것이며 마지막 곱은 표시하지 않는다."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "s",
+    "axisVariable": false,
+    "parameter": {
+      "name": "l",
+      "value": "1",
+      "hideNote": true
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "S",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "0"
+              },
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "l은 x=1을 대입한 겉넓이 식의 경계값 S(1)이다. x>1에서 S(x)는 연속으로 증가하고 위로 제한되지 않아 오른쪽 열린 반직선 전체가 가능한 겉넓이이다. 빈 끝점은 모서리 하나가 0인 x=1을 제외함을 뜻한다. l의 수치와 구하는 자연수는 직접 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[상] $x>1$인 실수 $x$에 대하여 세 모서리의 길이가 각각 $x-1, x+1, x+2$ 인 직육면체의 겉넓이를 $S$라 할 때, $S$의 값이 될 수 없는 가장 큰 자연수는? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "모든자산참조0. S=6x²+8x−2, x>1. S(x)−S(1)=(x−1)(6x+14)>0,연속증가및무한증가로S>12. 경계제외를수직선으로나타내고기호l=S(1),내부l1은정성적배치만위한값이며원문수치아님. 최종12숨김. 단순표시문장이아니라범위의열린끝점을가시화한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "l은 x=1을 대입한 겉넓이 식의 경계값 S(1)이다. x>1에서 S(x)는 연속으로 증가하고 위로 제한되지 않아 오른쪽 열린 반직선 전체가 가능한 겉넓이이다. 빈 끝점은 모서리 하나가 0인 x=1을 제외함을 뜻한다. l의 수치와 구하는 자연수는 직접 표시하지 않는다."
+  ]
+}

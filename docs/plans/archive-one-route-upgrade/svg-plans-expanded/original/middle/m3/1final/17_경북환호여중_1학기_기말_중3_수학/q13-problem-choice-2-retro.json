@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "4",
+        "marker": "NONE"
+      },
+      {
+        "id": "R",
+        "x": "1",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "②",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 좌표평면 위의 점 $\\text{P}(a, b)$가 제4사분면 위에 있을 때, 다음 중 이차함수 $y=a(x-b)^2$의 그래프가 될 수 있는 것은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "choice",
+      "condition": "원본 SVG 선택지 2: a 부호 1, 꼭짓점 x의 부호 -1; 수치는 없는 개형. 표본 크기를 새 조건으로 주지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 개형을 현행 엔진의 일정 획·축 글자 계약으로 재작성한다."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "-3",
+        "marker": "NONE"
+      },
+      {
+        "id": "W0",
+        "x": "-1",
+        "y": "-3",
+        "marker": "NONE"
+      },
+      {
+        "id": "W1",
+        "x": "0",
+        "y": "-1",
+        "marker": "NONE"
+      },
+      {
+        "id": "W2",
+        "x": "-2",
+        "y": "-1",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "-1",
+        "-3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "curveX": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "curveX": "0",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "g",
+          "from": "P0",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "이차함수의 그래프",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선의 꼭짓점은 (−1, −3)이다. 포물선은 세로축의 −1을 지나며 꼭짓점에 점선을 맞췄다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "visual",
+      "condition": "기존 705×544의 글자28px·곡선6px는 선명하지만 x/y 좌표의 픽셀 배율이 다르다. 원문 좌표를 현재 정확 그래프 엔진으로 같은 단위에 놓고 투영선·이름 없는 점을 보존한다. y=2(x+1)²−3은 내부 계산이며 최종 abc는 표시하지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이차함수의 그래프"
+  ]
+}
