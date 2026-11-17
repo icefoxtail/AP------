@@ -47,7 +47,7 @@
   {
     "bundle": "NTPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
     "pt": "PT_M3_POLY_FACTORIZATION",
-    "nameKo": "정수 조건",
+    "nameKo": "정수 인수쌍",
     "definition": "다항식을 인수의 곱으로 바꾸고 정수 인수쌍을 나열하거나 인수의 범위를 제한하여 가능한 값이나 개수를 구한다. 소수·범위·최대최소 조건은 꼬리표로 분리한다.",
     "absorbInto": null,
     "count": 43,
@@ -297,25 +297,12 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M3_RADICAL_COEFFICIENT",
-    "pt": "PT_M3_RADICAL_CALCULATION",
-    "nameKo": "계수 비교",
-    "definition": "동류근호항을 정리하고 같은 근호의 유리수 계수를 비교하여 미지수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_379358be71cf980ecfc7a2f16fedf593c1a7010afbb7404fe14647a32c16c62e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M3_MULTIPLICATION_EXPANSION",
     "pt": "PT_M3_POLY_MULTIPLICATION",
     "nameKo": "전개",
     "definition": "분배법칙과 곱셈공식으로 괄호를 풀고 동류항을 정리한다.",
     "absorbInto": null,
-    "count": 19,
+    "count": 22,
     "examples": [
       "qid_v1_fd137e43878719aa10bb9d6126bc16a0dd6559b4699977f4bdb6debc5111353e",
       "qid_v1_a60765fa4e51666d980e8351600f9b0b90096c9d0ad54a72d78102741f61941b",
@@ -421,45 +408,6 @@
     "count": 1,
     "examples": [
       "qid_v1_ede1fd5a49729ccdc010368a088fb93e1ede9bb186ec5b8c7c31e169e5be5e43"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_MULTIPLICATION_GEOMETRY",
-    "pt": "PT_M3_POLY_MULTIPLICATION",
-    "nameKo": "겉넓이",
-    "definition": "모서리의 곱으로 직육면체의 각 면 넓이를 구하고 다항식을 전개해 겉넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_45792dee7f10bddf69f8bbefac620de031500de9ba317256efa7df876b426378"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_MULTIPLICATION_QUOTIENT",
-    "pt": "PT_M3_POLY_MULTIPLICATION",
-    "nameKo": "나눗셈 복원",
-    "definition": "나누는 식과 몫의 곱에 나머지를 더하여 원래 다항식을 복원한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_53354809cbd0b1ca80b0467ef06d5ab9e7735ed6972fd41accc0aba2d4e57b0c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_MULTIPLICATION_IDENTITY",
-    "pt": "PT_M3_POLY_MULTIPLICATION",
-    "nameKo": "등식 비교",
-    "definition": "완전제곱 전개와 상수배를 이용하여 주어진 여러 다항식이 같은 식의 배수인지 비교한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_af64573167825095155e5ea6cfb160f6cb280651fff1a7d42e49c8b4c3fd7a05"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -827,7 +775,7 @@
     "nameKo": "방정식 풀이",
     "definition": "방정식을 인수분해하고 곱이 영이면 적어도 한 인수가 영이라는 성질로 근을 구한다.",
     "absorbInto": null,
-    "count": 33,
+    "count": 35,
     "examples": [
       "qid_v1_fd034db18ee40ab56444cfc47fa6dbd8b06cf50e4d12731dd77790bde4696003",
       "qid_v1_6dd2ae1a8f4b8dcaccb5d927a79a837ee1862c4d716dacf1524c43126835a7f8",
@@ -842,7 +790,7 @@
     "nameKo": "근의 계산",
     "definition": "영인수 성질로 근을 구하고 두 근의 합·차·곱 또는 주어진 결합값을 계산한다.",
     "absorbInto": null,
-    "count": 14,
+    "count": 15,
     "examples": [
       "qid_v1_ab89c3a7e8e40172c3166c89ce60b069a453f81124ef6f0820f1bfa3c1694553",
       "qid_v1_04d8d17fc3c1ed32c5bd7eb26d5e1c4f335a77f7c184f0a3d67874a5cf7c82b5",
@@ -877,21 +825,6 @@
       "qid_v1_32e5d041677547f6d7db878c6cec86c281840b990e837b614f68a504c4730817",
       "qid_v1_0a1b464463e190b6ad54a6a82f872a6d3b9651e42fdf10aa6471f41f0da89fd6",
       "qid_v1_947b7b62e3b3e7f29012fa4ffb119c0f1eee144f992c6dd46cfe43b05465b4e2"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_ZERO_PRODUCT_ROOT_CONDITION",
-    "pt": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-    "nameKo": "근의 조건",
-    "definition": "인수분해로 얻은 근 가운데 주어진 범위·부등식·대소 조건에 맞는 것을 선택하고 필요한 매개변수를 정한다.",
-    "absorbInto": null,
-    "count": 4,
-    "examples": [
-      "qid_v1_18e864e57888ee6fa0e6e648e98417554cafdbb6109478eeb73bb01ef4729027",
-      "qid_v1_bd8ea3e3ceda7326ed6b7107b3d30d8b9fd32893a44bc53ec06c81592a6eb12a",
-      "qid_v1_a0b0a23fe02a5e9d874c3cd38047fe5ffbf00d8644ea077597834a202a37f1aa"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -1042,19 +975,6 @@
       "qid_v1_7db8be32e5fb2808f56c5cf3961bbaecfcaff9d3ab44b19de3c3461840fc7f3e",
       "qid_v1_67c2aba01109f6437ee12e8f3664d3d49c4986d02d929b8641c8216639538ca7",
       "qid_v1_ff7f6e6431c46afe926c4bbfdef70b400ed4755aa61668a1b3feeb9200e9c759"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_GRAPH_GEOMETRY_BISECTION",
-    "pt": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
-    "nameKo": "넓이 이등분",
-    "definition": "삼각형 넓이를 이등분하는 선이 공통 꼭짓점에서 밑변 중점으로 이어짐을 이용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_b52ca9ebe380cf1ae308723e21ce255ca14f1d39a9c3c0c913c3948f683c9086"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -1434,9 +1354,9 @@
     "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_SIDE_EXISTING",
     "pt": "PT_M2_PYTHAGOREAN_RELATION",
     "nameKo": "변의 길이",
-    "definition": "직각삼각형의 두 변에서 나머지 한 변을 제곱 관계로 구하며 빗변이 정해지지 않으면 경우를 나눈다.",
+    "definition": "직각삼각형의 두 변에서 나머지 한 변 또는 그 제곱을 구하고, 연결된 직각삼각형에서는 이 관계를 차례로 적용한다.",
     "absorbInto": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
-    "count": 6,
+    "count": 7,
     "examples": [
       "qid_v1_e5bd124281da2585962e7a0b80c501b9d24e8a34f8b8fd7f779265d64382b24c",
       "qid_v1_014c33b1727ee97814a95d997376463b0541564ad8b404457cfaa667087341aa",
@@ -1501,20 +1421,8 @@
       "qid_v1_2bb48c65f60d7e9d6a70bf62492fd45be4a6ecc026b6306bb12466c6258bb5ee"
     ],
     "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_SUCCESSIVE",
-    "pt": "PT_M2_PYTHAGOREAN_RELATION",
-    "nameKo": "연속 직각삼각형",
-    "definition": "공유 빗변을 다음 직각삼각형의 변으로 쓰며 제곱 관계를 연속 적용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8d51c31d8a262b9cc626fd54c321be6fda7e57b2afd89e79b0068c472251738d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
+    "narrowExisting": [],
+    "note": "넓이 분할로 피타고라스 정리를 증명하는 교과서의 독립된 증명 구조다. 변 길이 계산·넓이 대입과 달라 유지하며 다른 증명 문항에도 반복 적용된다."
   },
   {
     "bundle": "NTPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT",
@@ -1773,9 +1681,9 @@
     "bundle": "NTPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
     "pt": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
     "nameKo": "도형의 길이",
-    "definition": "도형의 넓이·부피·둘레·피타고라스 관계로 이차방정식을 세우고 길이 조건에 맞는 근을 고른다.",
+    "definition": "도형의 넓이·부피·둘레·피타고라스·길이비 관계로 이차방정식을 세우고 길이 조건에 맞는 근을 고른다.",
     "absorbInto": null,
-    "count": 16,
+    "count": 17,
     "examples": [
       "qid_v1_dd3cbc4027bf2b474aeb95926bd8daa921a6abf5f813ddbf44f1f36c9213b6b3",
       "qid_v1_5f5af14559740dfe9d08a921b11ca3bc45bb7c3dce8f1fc340b1be9956ef1cbc",
@@ -1825,32 +1733,6 @@
       "qid_v1_634ea416ea17beed3d4d6bf4d934f62d3641428a2ddb5ccbadfb286441a653a8",
       "qid_v1_dfd55ae93b2b63201209a99a6a36bee8b567ce1aa50ff93b6ee2761ebabd7343",
       "qid_v1_e329b34b40a728d2233ddd878f292dec142a692154fc77531cd20ca314c7d1e0"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_HEIGHT",
-    "pt": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-    "nameKo": "높이와 시간",
-    "definition": "목표 높이를 이차식에 대입하여 두 시각을 구하고 그 차로 유지 시간을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4685dff436e98d0ba34e74350aa7ad7f2b9bb3a8fceffe5f0cc3ebaf7fe31e9a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_RATIO",
-    "pt": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-    "nameKo": "길이의 비",
-    "definition": "길이 사이의 비례식을 곱하여 이차방정식을 만들고 양의 길이를 선택한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_0e84646799a928d1b5ab1ae8f53ec52ae94350e763a3314b87d7c9e401e373e8"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -2112,38 +1994,13 @@
     "bundle": "NTPL_M1_SIGNED_CHANGE_MODEL_DIFFERENCE",
     "pt": "PT_M1_SIGNED_CHANGE_MODEL",
     "nameKo": "상대값 비교",
-    "definition": "크고 작음 또는 방향에 따른 변화를 부호식으로 세우고 두 결과의 차를 구한다.",
+    "definition": "크고 작음 또는 방향에 따른 값을 부호식으로 세우고 두 값의 차를 구하여 상대 위치나 시각을 계산한다.",
     "absorbInto": null,
-    "count": 2,
+    "count": 3,
     "examples": [
       "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e",
-      "qid_v1_d1df28543ae69907c9cb88e44cf26dd027746be5f05c0d0ca260925884ce8e96"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_SIGNED_CHANGE_MODEL_TIME",
-    "pt": "PT_M1_SIGNED_CHANGE_MODEL",
-    "nameKo": "시차",
-    "definition": "서로 다른 지역의 부호 있는 시차를 빼서 두 지역 간 시간 차와 현지시각을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
+      "qid_v1_d1df28543ae69907c9cb88e44cf26dd027746be5f05c0d0ca260925884ce8e96",
       "qid_v1_241a58a5d8333111bf32c1ac664c7301f4e2bd959018297e6c1429793e96da56"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_SIGNED_CHANGE_MODEL_RATE",
-    "pt": "PT_M1_SIGNED_CHANGE_MODEL",
-    "nameKo": "증감률",
-    "definition": "증가와 감소 비율을 순서대로 곱하여 최종량이 원래 양의 몇 배인지 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_cadca2876bd0e658ceef7caa512862b412f3ec34b9be07a7f75a0e79fe1a1d65"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -2227,9 +2084,9 @@
     "bundle": "NTPL_H1_FACTOR_THEOREM_REPEATED",
     "pt": "PT_H1_FACTOR_THEOREM",
     "nameKo": "중복인수",
-    "definition": "일차인수의 반복 나눗셈 나머지 또는 근 위치로 이동한 전개식의 낮은 차수 항을 0으로 놓아 중복인수 조건을 확인하고 계수를 정한다.",
+    "definition": "반복 나눗셈이나 근의 대칭 관계로 중복인수를 확인하여 다항식 계수를 정한다.",
     "absorbInto": null,
-    "count": 8,
+    "count": 9,
     "examples": [
       "qid_v1_96bf4c5622efeca7fd035c54b770eca9297d2bb08e7249c2cfafcac0aeeb259c",
       "qid_v1_af6abac870e85fdb42b8c80e64ed9e67e9dfb3275b9c3e80510ca233b0081e5d",
@@ -2242,9 +2099,9 @@
     "bundle": "NTPL_H1_FACTOR_THEOREM_FACTOR",
     "pt": "PT_H1_FACTOR_THEOREM",
     "nameKo": "인수분해",
-    "definition": "확인한 영점의 일차인수를 추출하고 남은 몫을 추가로 인수분해한다.",
+    "definition": "확인한 영점의 일차인수를 추출하고 남은 몫을 인수분해하거나 항등식의 공통인수를 약분해 다항식을 정한다.",
     "absorbInto": null,
-    "count": 5,
+    "count": 6,
     "examples": [
       "qid_v1_b879cbffa61b73db97a2adc1fb871f6e05dd4a766acd92eee148b49c6031577e",
       "qid_v1_a07caec16fed8769d97b410c47611d9e7a5e79c68a5936df42063a5452e2f314",
@@ -2389,19 +2246,6 @@
       "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
       "qid_v1_ad2f2b0c4a250ff7561604af9bf3aa7ac449ce3eaa05e73d0124022dcbd27522",
       "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_PARALLEL_ANGLE_TRANSFER_CONVERSE",
-    "pt": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-    "nameKo": "평행 판별",
-    "definition": "동위각 또는 엇각이 같다는 역을 이용하여 두 직선이 평행함을 설명한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_56afedcfb10d825c253cab70bab6dcc56fb8f03cc10ac6a1dc8ad996020ddd69"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -2600,19 +2444,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_CIRCLE_TANGENT_PROOF",
-    "pt": "PT_CIRCLE_TANGENT",
-    "nameKo": "등접선 증명",
-    "definition": "반지름·접점의 직각·공통빗변으로 두 직각삼각형의 합동을 증명해 두 접선 길이의 같음을 얻는다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_828803f46792fadc8014e2570d3be5b535ff852837621722d9458b02c6e38428"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_CALCULATE",
     "pt": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
     "nameKo": "최대공약수와 최소공배수",
@@ -2743,32 +2574,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M1_SOLID_FIGURE_MEASURE_NET_EXISTING",
-    "pt": "PT_M1_SOLID_FIGURE_MEASURE",
-    "nameKo": "원뿔 전개도",
-    "definition": "원뿔이 구르는 회전수와 밑면 원주 관계에서 모선을 구하고 겉넓이를 계산한다.",
-    "absorbInto": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
-    "count": 1,
-    "examples": [
-      "qid_v1_dac159f88b041dbfe23bee2a8bb6a54536139a7106304c35721e829d53c1e4dc"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_SOLID_FIGURE_MEASURE_HEIGHT",
-    "pt": "PT_M1_SOLID_FIGURE_MEASURE",
-    "nameKo": "입체 높이",
-    "definition": "같은 사면체 부피를 서로 다른 밑면과 높이로 표현해 미지 높이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_62c77e5b3185cdeb5cbe69fab9aa4f47ddaa9bc9cb061f6b39c5cccaea5a81ec"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_SOLID_FIGURE_MEASURE_COMPOSITE_EXISTING",
     "pt": "PT_M1_SOLID_FIGURE_MEASURE",
     "nameKo": "접촉면 제외",
@@ -2839,21 +2644,6 @@
     ],
     "relatedKeys": [],
     "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_CENTRAL_TENDENCY_DEFINITION_EXISTING",
-    "pt": "PT_M1_CENTRAL_TENDENCY",
-    "nameKo": "대푯값 정의",
-    "definition": "자료의 중심경향·가운데 위치·최고빈도에 해당하는 대푯값 용어를 구별한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2a86d9c38bae118bcb96212bb3c423739a33cd0f018d2a728e9288a4ef3363ea"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": [
-      "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
-    ]
   },
   {
     "bundle": "NTPL_M3_QUADRATIC_FUNCTION_EXTREMA_PARAMETER",
@@ -2934,9 +2724,9 @@
     "bundle": "NTPL_H1_POLY_DIVISION_IDENTITY",
     "pt": "PT_H1_POLY_DIVISION",
     "nameKo": "나눗셈 항등식",
-    "definition": "피제수=제수×몫+나머지와 차수 제한을 세워 계수를 비교하거나 다항식을 복원한다.",
+    "definition": "피제수=제수×몫+나머지와 나머지 차수 제한을 이용하여 나눗셈 관계를 판별하거나 계수와 다항식을 구한다.",
     "absorbInto": null,
-    "count": 15,
+    "count": 16,
     "examples": [
       "qid_v1_93067347eab124304d3de92ad8d62d8f078903df4ca5fa0412084ac5adf9fdec",
       "qid_v1_90751a88fb893b6516eade15b014d4db589ca9c248406d1ce06f66a5dc5fdd0b",
@@ -2946,40 +2736,15 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_POLY_DIVISION_DEGREE",
-    "pt": "PT_H1_POLY_DIVISION",
-    "nameKo": "나머지 차수",
-    "definition": "나머지의 차수가 제수보다 작아야 한다는 조건으로 가능한 나머지 설명을 판별한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_652fa26716a878bfec68fa30a8d775650ece981ab1d3fee0681989ebfb8de505"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_POLY_DIVISION_INTEGER",
-    "pt": "PT_H1_POLY_DIVISION",
-    "nameKo": "정수값 조건",
-    "definition": "다항식 분수를 몫과 나머지로 정리하고 분모가 나머지의 약수여야 하는 조건으로 정수값을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_639e2d14a56aae873601e1c19b68392fd731cc8f6a6b16f57f8e0820e9fab70b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_POLY_DIVISION_REDUCTION",
     "pt": "PT_H1_POLY_DIVISION",
     "nameKo": "차수 낮추기",
-    "definition": "주어진 이차 관계식으로 고차식을 나눈 나머지 형태로 낮춰 식의 값을 계산한다.",
+    "definition": "이미 얻은 다항식 관계 또는 제수의 관계식으로 높은 차수 항을 낮은 차수로 치환해 식의 값이나 나머지를 구한다.",
     "absorbInto": null,
-    "count": 1,
+    "count": 2,
     "examples": [
-      "qid_v1_73ac2113c484349750a407cc69f1420cdd704debe17fd3448a290f4ae97d16a2"
+      "qid_v1_73ac2113c484349750a407cc69f1420cdd704debe17fd3448a290f4ae97d16a2",
+      "qid_v1_203490aa8bc4fb9ffa22b577975d6e6551d5c65d2815bc7629ec29799078ed4a"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -3075,7 +2840,7 @@
   {
     "bundle": "NTPL_M1_LINEAR_EQUATION_SOLVING_INTEGER",
     "pt": "PT_M1_LINEAR_EQUATION_SOLVING",
-    "nameKo": "정수해 조건",
+    "nameKo": "정수해 매개변수",
     "definition": "해를 매개변수의 식으로 나타내고 양수·음수·정수 조건을 적용하여 가능한 매개변수를 구한다.",
     "absorbInto": null,
     "count": 5,
@@ -3281,19 +3046,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_GEO_PLANE_VECTOR_REGION",
-    "pt": "PT_GEO_PLANE_VECTOR",
-    "nameKo": "벡터 영역",
-    "definition": "크기와 내적의 부등식을 원판과 반평면 영역으로 바꾸어 교집합 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_eb278f94a465311bb07a04b1a51a50e7f9ff865ecf397a3abd79b4370dff4a67"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_SEGMENT_LENGTH_RELATIONS_MIDPOINT",
     "pt": "PT_M1_SEGMENT_LENGTH_RELATIONS",
     "nameKo": "중점 길이",
@@ -3474,7 +3226,7 @@
   {
     "bundle": "NTPL_LOG_IDENTITY_OPERATIONS_INTEGER_POWER",
     "pt": "PT_LOG_IDENTITY_OPERATIONS",
-    "nameKo": "로그 정수 조건",
+    "nameKo": "로그 정수쌍",
     "definition": "로그 등식을 정수 지수 거듭제곱 관계로 바꾸고 자연수·집합 범위에서 가능한 쌍이나 원소를 센다.",
     "absorbInto": null,
     "count": 4,
@@ -3527,19 +3279,6 @@
       "qid_v1_d688a0b7e84dce9ed9907bf3f9ca8656cbbfe09b7d65c2084459bcc412341f22",
       "qid_v1_932388d655c52251506981d42b7cc14aead52e0ca51cf23def44c404ab9bfe75",
       "qid_v1_f71f19cb1df4e7ae495d8180a3711a60852907a5565233794b77d567f3a7a67d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_LOG_IDENTITY_OPERATIONS_GEOMETRY",
-    "pt": "PT_LOG_IDENTITY_OPERATIONS",
-    "nameKo": "로그 비례",
-    "definition": "도형 닮음비를 밑변환 로그로 나타내어 요구한 부등식의 정수해를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_755aec680c5f446b7fb57e454c5b45d42f04047f64ecf3f42fd2d035efb0f123"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -3638,7 +3377,7 @@
   {
     "bundle": "NTPL_M1_LITERAL_EXPRESSION_EVALUATION_RESTORE",
     "pt": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
-    "nameKo": "조건 대입",
+    "nameKo": "문자값 복원",
     "definition": "증가량·절댓값 조건으로 문자값을 먼저 정한 다음 목표식에 대입한다.",
     "absorbInto": null,
     "count": 2,
@@ -3659,19 +3398,6 @@
     "examples": [
       "qid_v1_c7b9cac8b827c18eeb31e8d31ac94eac119d66b78d623bc21e8835c58a667c05",
       "qid_v1_e48a948a09785e3f578bb6089829106bf45ab92fc0f6a64b0d8d62b1f2a7442d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_LITERAL_EXPRESSION_EVALUATION_GEOMETRY",
-    "pt": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
-    "nameKo": "길이식",
-    "definition": "그림에서 남은 선분을 문자식으로 나타내어 둘레식을 정리한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8ef5ba063705db6f671d5e21c33aa4a97ed7c810900890d9f8fe0b33ca04523d"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -3709,7 +3435,7 @@
   {
     "bundle": "NTPL_M1_DIVISOR_MULTIPLE_EXPONENT_INTEGER",
     "pt": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
-    "nameKo": "정수 몫",
+    "nameKo": "약수와 배수",
     "definition": "분수가 자연수인 조건을 분모가 분자의 약수여야 한다는 조건으로 바꾸거나 범위의 배수를 찾는다.",
     "absorbInto": null,
     "count": 3,
@@ -3930,32 +3656,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_CIRCLE_LINE_RELATION_AUDIT",
-    "pt": "PT_CIRCLE_LINE_RELATION",
-    "nameKo": "현 성질 검토",
-    "definition": "현과 중심거리의 대응은 같은 원에서 성립한다는 전제의 적용 범위를 판별한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2ce2c3ae134e7a18f7f3a7bd4a2e542df808e1262ecac8bd89e8ee6d82691dc1"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_CIRCLE_LINE_RELATION_BISECTOR",
-    "pt": "PT_CIRCLE_LINE_RELATION",
-    "nameKo": "같은 현 조건",
-    "definition": "같은 원분의 넓이에서 현의 같음을 얻고 같은 거리인 점의 수직이등분선 자취로 바꾼다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_638f532df2a8d1cf7366eb232e8442fb95424637b8ffa212a194a0aa091e1227"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
     "pt": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
     "nameKo": "공식 계산",
@@ -3966,20 +3666,6 @@
       "qid_v1_c2c08a210d535e8cdc629804794470b02bb5f715a02f16a67257ad7b62e500d9",
       "qid_v1_861f9f7549d50401ee54e7d9d7a0a55d808573166e835e7e81cfd628171e9f9f",
       "qid_v1_018562b23aa4baed8371efe6e3d8a1b0ec2dc9d22713d19146cde5f1d34ab486"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_PERMUTATION_COMBINATION_CALCULATION_INTEGER",
-    "pt": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
-    "nameKo": "자연수 조건",
-    "definition": "순열·팩토리얼 등식을 연속 정수의 곱으로 바꾸어 가능한 자연수 n을 정한다.",
-    "absorbInto": null,
-    "count": 2,
-    "examples": [
-      "qid_v1_91a743760f78bcf4768dc9329e09a1a1ee8cd850b1b40c05e0f0188fe79e7007",
-      "qid_v1_7d0f0d7b5700eb36fbd09a792b09947a08916dde2a40a6c6512c7c0faf51bf3b"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -4119,19 +3805,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_LCM_APPLICATION_TILING",
-    "pt": "PT_LCM_APPLICATION",
-    "nameKo": "타일 배열",
-    "definition": "직사각형 타일 변의 최소공배수로 가장 작은 정사각형 변을 정하고 타일 수를 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_1259ca16fb100899aad97bf33a1f13ab074f513725e2193c75d7fa960d800ebb"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_DIVISOR_COUNT_EXPONENT",
     "pt": "PT_DIVISOR_COUNT",
     "nameKo": "약수 개수",
@@ -4222,25 +3895,12 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M3_REAL_NUMBER_CLASSIFICATION_COUNT",
-    "pt": "PT_M3_REAL_NUMBER_CLASSIFICATION",
-    "nameKo": "무리수 조건 개수",
-    "definition": "제곱수와 합이 제곱수인 경우를 제외하여 무리수 조건을 만족하는 순서쌍을 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_5feef9f6470d4ffd40cbd10b2bce8d81601b98c50327420a2c45a3754dfbd8ea"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_INEQUALITY_APPLICATION_QUANTITY",
     "pt": "PT_H1_INEQUALITY_APPLICATION",
     "nameKo": "수량 부등식",
     "definition": "자리·생산일수·영양·비용 조건을 부등식으로 나타내고 교집합에서 가능한 정수 범위나 극값을 구한다.",
     "absorbInto": null,
-    "count": 5,
+    "count": 6,
     "examples": [
       "qid_v1_1738829299924a7c3fe53e5d9dd702f0a65db6f8d510c61562b4d3a718b0a0d6",
       "qid_v1_34e0b72c90fc3b2e60da171a307fda560e4453e83b4983c1290750adccfda2ac",
@@ -4255,24 +3915,11 @@
     "nameKo": "도형 부등식",
     "definition": "움직이는 점의 거리·길이비·넓이·삼각형 조건을 이차부등식으로 세워 허용범위를 정한다.",
     "absorbInto": null,
-    "count": 5,
+    "count": 7,
     "examples": [
       "qid_v1_bcb299207b989456506817240509a86f7b950353036f7c8ba8d5ba217da106da",
       "qid_v1_51ed9ddc29d49ca9befac3de4a8e43185469e64f8de31584a9992039b73a3e4c",
       "qid_v1_5e51ca8dc60c24f52474a367657664498451e6fb87ad096e6eba13eb1706069f"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_INEQUALITY_APPLICATION_PROFIT",
-    "pt": "PT_H1_INEQUALITY_APPLICATION",
-    "nameKo": "이익 범위",
-    "definition": "수입에서 고정비와 생산비를 뺀 이익식을 이차부등식으로 세워 판매량 범위를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_753e14457601806c774f1015060dfdd86c7cee58e210e73fe4d3d7a2b4c3161d"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -4365,19 +4012,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M1_BASIC_CONSTRUCTION_TOOLS",
-    "pt": "PT_M1_BASIC_CONSTRUCTION",
-    "nameKo": "작도 도구",
-    "definition": "눈금 없는 자의 역할과 삼각형 성립조건을 검토하여 작도 가능성을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_AVOID",
     "pt": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
     "nameKo": "사분면 회피",
@@ -4411,9 +4045,9 @@
     "bundle": "NTPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
     "pt": "PT_H1_COMPLEX_OPERATION",
     "nameKo": "음수 제곱근",
-    "definition": "음수 제곱근을 i배 양수 근호로 나타내어 곱·몫의 부호와 조건에 따른 연산을 계산한다.",
+    "definition": "음수 제곱근을 i배 양수 근호로 나타내어 곱·몫의 부호와 조건에 따른 연산을 계산한다. 유한한 입력 후보의 개수는 조건 꼬리표로 분리한다.",
     "absorbInto": null,
-    "count": 4,
+    "count": 5,
     "examples": [
       "qid_v1_9d4bb70c885da4816a8890ed77eb47c9b181e9b423e8b30c02f61628c0ef6e02",
       "qid_v1_4d004315009396829248c4e9672389528ca20480e30ffda6e73ab29cca2d4d86",
@@ -4428,24 +4062,11 @@
     "nameKo": "복소 연산 판별",
     "definition": "음수 제곱근의 곱·몫, i의 주기, 켤레 성질을 계산하거나 반례로 확인하여 잘못된 등식을 판별한다.",
     "absorbInto": null,
-    "count": 5,
+    "count": 6,
     "examples": [
       "qid_v1_e9d9ef04225f97355f92b8117cd2bf0c037f6001414f8c419a041a1af3f2db30",
       "qid_v1_4483892ad2a662dfe2c0e46e22cb2ae7fa01d075565e2f1e0a4bb0c8ca0ff804",
       "qid_v1_b79d2fe73bc8eca477f7e4bd0d53b2b3d0e284596e16fa79b902d28018199385"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_COMPLEX_OPERATION_COUNT",
-    "pt": "PT_H1_COMPLEX_OPERATION",
-    "nameKo": "부호 조건 개수",
-    "definition": "복소 제곱근 등식이 성립하는 부호 경우를 나누고 카드 사용 조건에 맞는 경우를 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_f5017834c488202e40305751486a87541b2d573f389329eb1e2678d9c88c9e5b"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -4461,19 +4082,6 @@
       "qid_v1_63e6cd212f7507e1e9e682425b69942d1a1b21726eff0091cac89160c0dcf04a",
       "qid_v1_6fdbbbf9cc32a2475a2b7b8433b41bf0567d2a47990cc6257c562020c8f00f65",
       "qid_v1_2094aa94bb0244548e17ed0f9aa63339e7a00de72ee8bb1be9454edb2b36ade0"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_LOG_APPLICATION_INTEGER",
-    "pt": "PT_LOG_APPLICATION",
-    "nameKo": "로그 정수쌍",
-    "definition": "로그 등식을 거듭제곱과 자연수의 관계로 바꾸어 제한 범위의 정수쌍을 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6730d96cf185646f2cdc2719e0532847520117600f1b5287ced3fb75b73d9b8c"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -4539,19 +4147,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_FUNCTION_EXTREMUM_TRIG_RANGE",
-    "pt": "PT_FUNCTION_EXTREMUM",
-    "nameKo": "삼각함수 치역",
-    "definition": "삼각함수의 합성과 양의 분모 조건으로 분수식의 상하한을 증명하고 구간에서 달성 여부를 확인한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2c73bdf43b3fc513e18a9874ecd2230352862577f28b4200caf16b01f62cf1e4"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_QUADRANT_SIGN_DEDUCTION_SIGN",
     "pt": "PT_M1_QUADRANT_SIGN_DEDUCTION",
     "nameKo": "좌표 부호",
@@ -4610,19 +4205,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M1_FREQUENCY_DISTRIBUTION_READING_MEDIAN",
-    "pt": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "nameKo": "중앙값 조건",
-    "definition": "줄기잎 그림의 중앙 두 값 평균에서 미지수를 정하고 구간도수와 결합한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION_REVERSE",
     "pt": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
     "nameKo": "오독 복원",
@@ -4655,7 +4237,7 @@
   {
     "bundle": "NTPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
     "pt": "PT_ROOT_INTEGER_FEASIBILITY",
-    "nameKo": "지수 정수 조건",
+    "nameKo": "지수 배수 조건",
     "definition": "근호를 유리수 지수로 나타내고 소인수 지수의 합동·배수 조건으로 가능한 자연수 또는 최소값을 구한다.",
     "absorbInto": null,
     "count": 9,
@@ -4698,19 +4280,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_LIMIT_VALUE_CALC_ISOLATED",
-    "pt": "PT_LIMIT_VALUE_CALC",
-    "nameKo": "고립 예외",
-    "definition": "예외적 함숫값이 고립되어 있음을 확인하여 점의 함숫값과 주변 극한을 구별한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_152fcc8c52d8e501b7b32b9e9218dfaea8ada3a6c805092615da157dac45591f"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_LIMIT_VALUE_CALC_DOMINANCE",
     "pt": "PT_LIMIT_VALUE_CALC",
     "nameKo": "지배항",
@@ -4727,27 +4296,14 @@
   {
     "bundle": "NTPL_M1_CONTEXT_GRAPH_INTERPRETATION_READ",
     "pt": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
-    "nameKo": "시간 그래프 판독",
-    "definition": "시간 그래프에서 좌표·증가·감소·수평 구간과 전환 시각을 읽어 주어진 상황을 해석한다.",
+    "nameKo": "시간 그래프 해석",
+    "definition": "시간 그래프의 좌표와 증가·감소·수평 구간을 읽어 상황을 해석한다. 거리 그래프에서는 방향 전환과 구간별 거리 변화의 절댓값 합을 구한다.",
     "absorbInto": null,
-    "count": 7,
+    "count": 8,
     "examples": [
       "qid_v1_28dffb072aeed86bcc72e87f6d1aac95ac1b80710b65dc212b8b9c870134c77a",
       "qid_v1_96d702da27a2eeef5d98dd8f2da63afb6b8cc8c1b3ea45e83d8904c3b8009b7f",
       "qid_v1_84cf1f48629fd79a142ce5fda0f82102e7c9f5cf60dff20ba4164c078f9d868c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE",
-    "pt": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
-    "nameKo": "이동거리",
-    "definition": "거리 그래프의 방향 전환을 확인하고 구간별 변화량 절댓값을 더하여 총 이동거리를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_76c8dd1ee187b8849864d8d9d0a007b83d137f7e06e26e5627e8b0848215e367"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -4771,9 +4327,9 @@
     "bundle": "NTPL_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME_WIN_COUNT",
     "pt": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
     "nameKo": "승패 횟수",
-    "definition": "상대의 승리는 자신의 패배임을 이용해 두 사람의 이동량 방정식을 세워 승패 횟수를 구한다.",
+    "definition": "한 사람의 승리는 상대의 패배임을 이용해 승리·패배·필요시 무승부 횟수와 두 사람 이동량의 관계식을 세워 푼다.",
     "absorbInto": null,
-    "count": 6,
+    "count": 7,
     "examples": [
       "qid_v1_f4f72f4442835a1af5ea51e0a75439873683233c16b89349fe5d5380bfba8c55",
       "qid_v1_585be3259c062b960275f3f8f6ed5d1c2cbef633d5142bbff0f9421d66648e8c",
@@ -4796,25 +4352,12 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME_DRAW",
-    "pt": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
-    "nameKo": "무승부 조건",
-    "definition": "승리·패배·무승부의 횟수와 점수 조건을 연립하여 상대의 이동량을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_b5c9221c6a2dbd480298d87795a47b0d102fe08636d0f3af391688e11f7f691d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M3_QUADRATIC_EQUATION_ROOT_COUNT_DISCRIMINANT",
     "pt": "PT_M3_QUADRATIC_EQUATION_ROOT_COUNT",
     "nameKo": "근의 개수 조건",
-    "definition": "판별식 또는 제곱형 우변의 부호로 서로 다른 두 근·중근·실근 존재 조건을 정한다.",
+    "definition": "판별식 또는 제곱형 우변의 부호로 두 근·중근·실근 존재 조건을 정한다. 제한된 입력 후보와 확률 계산은 조건·결합 꼬리표로 분리한다.",
     "absorbInto": null,
-    "count": 5,
+    "count": 6,
     "examples": [
       "qid_v1_b024b8ae2e49731229b6147dc5d57ba2a9397396c4089ee16adadc21a5fe2cf9",
       "qid_v1_37095e6bd0bc687fc91415ea925d33a02bdd7f226db95e2a8d9de6e1efd1fd25",
@@ -4833,19 +4376,6 @@
     "examples": [
       "qid_v1_2f078e6c664cfbdcbe8a3baeedac921eeb78e16b59297b4a4774c952e6344be1",
       "qid_v1_a28f0194df0561e0d1ba0836f632de0c8aeb9d362b09f25a16c01e7c9d437222"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_QUADRATIC_EQUATION_ROOT_COUNT_COUNT",
-    "pt": "PT_M3_QUADRATIC_EQUATION_ROOT_COUNT",
-    "nameKo": "실근 조건 개수",
-    "definition": "서로 다른 두 실근 조건을 만족하는 주사위 순서쌍을 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_10536a13bc1a0602e70a47d9936c115ca59c182024c65a953be9e8d2af000d0e"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -4906,32 +4436,6 @@
       "qid_v1_e40fe340613e1f32d88dc11e0d9d7a512f75b263e40204df0b45ffdb9c66f1ed",
       "qid_v1_7b1853e5a99727482e74573679693fb4e8f628e5265fdcc91809a3d87f622b60",
       "qid_v1_34bf352b7c13b121beaf7d7e75ddb7864289e0dd1eb096a7ab9e027705d9056a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIGONOMETRIC_RELATION_IDENTITY",
-    "pt": "PT_TRIGONOMETRIC_RELATION",
-    "nameKo": "삼각항등식",
-    "definition": "삼각함수 항등식과 양의 근 조건으로 삼각형의 각과 반지름을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_76dbe36528642e2ef1598487ddecc84719a641700fb3e50fadb46eeb3ad61b9a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIGONOMETRIC_RELATION_SIGN",
-    "pt": "PT_TRIGONOMETRIC_RELATION",
-    "nameKo": "부호와 절댓값",
-    "definition": "사분면의 부호를 이용하여 삼각식의 절댓값과 제곱근을 정리한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_5838e47002c19b044bdc6642482c7302cc6231ee245b09a858343c78ea86634a"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5055,19 +4559,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_RANDOM_VARIABLE_DISTRIBUTION_NORMALIZATION",
-    "pt": "PT_RANDOM_VARIABLE_DISTRIBUTION",
-    "nameKo": "총확률",
-    "definition": "이산분포의 확률합과 연속분포의 넓이가 각각 1이라는 조건으로 상수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_42f9e8192d54b4935ecd226cf864ba78331c959a6a8965c5dc5c828301abfbb1"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_COORDINATE_COMPOSITE_AREA_RECTANGLE",
     "pt": "PT_M1_COORDINATE_COMPOSITE_AREA",
     "nameKo": "직사각형 넓이",
@@ -5078,19 +4569,6 @@
       "qid_v1_12dbbaadb7a5feb4a75dacd4a09897ce2ab2eb0134070ad2c33ae3f862e4ec69",
       "qid_v1_d0190912ff2fefe3a53fc83f953ce6706956fcef833f5d3bdc7cb331a5f34471",
       "qid_v1_c21b777fff7132ee8b6859a5fe142fdac3937e7e0915b0fef5b80be3d13ee991"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_COORDINATE_COMPOSITE_AREA_BISECTION",
-    "pt": "PT_M1_COORDINATE_COMPOSITE_AREA",
-    "nameKo": "넓이 이등분",
-    "definition": "직사각형을 이등분하는 직선이 중심을 지남을 이용하여 비례상수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_288aafe77c04590487e8d046b4aeb44b1091569aa368dd277e6c39255bddef6a"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5159,9 +4637,9 @@
     "bundle": "NTPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
     "pt": "PT_H1_QUADRATIC_DISCRIMINANT",
     "nameKo": "구간근 조건",
-    "definition": "판별식·축·끝점의 함수값·열린 경계를 함께 비교하여 지정 구간에 필요한 개수의 근이 존재하는 매개변수 범위를 정한다.",
+    "definition": "판별식·축·끝점의 함수값과 경계를 비교해 지정 구간에 필요한 근이 있거나 지정 입력이 두 근 사이에 있을 조건을 구한다.",
     "absorbInto": null,
-    "count": 6,
+    "count": 7,
     "examples": [
       "qid_v1_7006768acc230dbdffc0ec921eee5548cc4f0bff385f39ac48075269abbf87c2",
       "qid_v1_53a6438d0fe419833a075d023d2edee806ea7d216d6be88f9987434f057dffca",
@@ -5174,26 +4652,13 @@
     "bundle": "NTPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
     "pt": "PT_H1_ROOT_COEFFICIENT_RELATION",
     "nameKo": "근에서 방정식",
-    "definition": "주어진 두 근의 합·곱 또는 일차인수 곱으로 이차방정식과 계수를 구성한다.",
+    "definition": "주어진 근들의 합·곱 또는 기본대칭식을 계수로 옮겨 방정식을 구성하고 필요한 근·계수·값을 구한다.",
     "absorbInto": null,
-    "count": 7,
+    "count": 8,
     "examples": [
       "qid_v1_c82fd05989e00689197bd875774ae42df0cb74794d797f734b2b2759c14ea3d1",
       "qid_v1_534ea3844f3bf08f7abbea6b3595345906fe07722327e392d1c237b005420270",
       "qid_v1_ea0fbdec0cddc38ba4494fa2549f5eed895c30cdd9faa9655e55ab59bf7063ad"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_ROOT_COEFFICIENT_RELATION_SYMMETRIC_SYSTEM",
-    "pt": "PT_H1_ROOT_COEFFICIENT_RELATION",
-    "nameKo": "대칭식 복원",
-    "definition": "세 수의 기본대칭식을 연립하여 삼차방정식 계수를 정하고 세 수를 복원한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_67b671ad192d2b04f6758cf17154bf38edb53c061def8d7ef63167053f03d321"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5237,19 +4702,6 @@
       "qid_v1_4d4a77b01b0bef5c71d1f615a48f9710a929675fe91a01faa413dcfdba0e1aa9",
       "qid_v1_8931a5254185c15f7d986d4eb75cf19fbfb1570f5f7532ef4b81b209d3664f69",
       "qid_v1_8d53fb82dd8dcff3db7b8e101d280f0e073ca24a9cb34bfe55a4e2e7982d5982"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_SUM",
-    "pt": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
-    "nameKo": "합 역산",
-    "definition": "주어진 합과 목표 합의 차로 필요한 수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_cc141463187937a03cdd7ed29553006ed4e3fc95557c21c78d57f914b5dd8d66"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5360,19 +4812,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_QUADRILATERAL_PROPERTIES_AREA",
-    "pt": "PT_QUADRILATERAL_PROPERTIES",
-    "nameKo": "넓이 분할",
-    "definition": "평행한 밑변의 같은 높이와 공통부분 차감으로 삼각형 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_QUADRILATERAL_PROPERTIES_SQUARE_EXISTING",
     "pt": "PT_QUADRILATERAL_PROPERTIES",
     "nameKo": "정사각형 길이",
@@ -5389,9 +4828,9 @@
     "bundle": "NTPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
     "pt": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "nameKo": "확률 정의",
-    "definition": "확률 범위·필연과 불가능 사건·표본공간·근원사건의 정의를 대조하여 진술을 판별한다.",
+    "definition": "표본공간·사건·근원사건을 나열하거나 정의와 확률의 기본 성질을 대조하여 진술을 판별한다.",
     "absorbInto": null,
-    "count": 4,
+    "count": 5,
     "examples": [
       "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
       "qid_v1_b8539a3e0e472d0d66feff4f53782218c23b0e2dd0fc485a341c3328dca24e87",
@@ -5405,7 +4844,7 @@
     "pt": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "nameKo": "확률 비",
     "definition": "유리한 인원 또는 영역 넓이를 전체로 나누어 확률을 구한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "count": 1,
     "examples": [
       "qid_v1_b6d82eefaf0eb7e4dd2625fd1c747d69aacba880eb30f166e5268df04d72ad27"
@@ -5490,19 +4929,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_GEO_HYPERBOLA_INTERSECTION",
-    "pt": "PT_GEO_HYPERBOLA",
-    "nameKo": "직선 교점 조건",
-    "definition": "직선을 쌍곡선에 대입한 이차방정식의 판별식으로 만나지 않는 매개변수 범위를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_c384434b5bd69dd7486fceb200a9a75c1c2e98f5df529f525e830c31238dabcc"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
     "pt": "PT_GEO_HYPERBOLA",
     "nameKo": "초점 거리",
@@ -5523,7 +4949,7 @@
     "nameKo": "초점거리합",
     "definition": "타원의 초점거리합을 대칭·둘레·내접 또는 좌표조건과 결합하여 식과 길이를 구한다.",
     "absorbInto": null,
-    "count": 7,
+    "count": 8,
     "examples": [
       "qid_v1_e6e88e32968390b7b8e8ceb1a2626bf5e39d47ab3f2fa24803af182848c55a16",
       "qid_v1_8db76866ef8b8ff5d5afe912c24f7c53e9ace3692101cf0260c97d8ba26dce02",
@@ -5616,19 +5042,6 @@
       "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
       "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
       "qid_v1_47078e204ad71bcc67fef6bb5b7c385dd7cdab216dc2159e4667e21e5de1b00b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_TRIANGLE_SIDE_FEASIBILITY_RANGE",
-    "pt": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
-    "nameKo": "삼각형 성립",
-    "definition": "긴 변이 나머지 두 변의 합보다 작아야 한다는 조건으로 작도 가능성을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_af7a18bbd7061b94c134b626d79297547468f436be8f6f284fbddbda8aefd9c0"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5784,19 +5197,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_REMAINDER_THEOREM_DIVISOR",
-    "pt": "PT_H1_REMAINDER_THEOREM",
-    "nameKo": "나머지 약수",
-    "definition": "나머지정리로 얻은 일정 나머지를 분모가 나누어야 하는 조건을 적용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_de4d5d3a41ec300aba02edb23bce513b64a1b293167374c6e6dbf3ba7a2c939e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
     "pt": "PT_H1_COMPLEX_CONDITION_EQUATION",
     "nameKo": "음수 근호 조건",
@@ -5821,32 +5221,6 @@
     "examples": [
       "qid_v1_fa0c518475d67cc657dd157016d12993813d6027dcf862d0a095b70e2be4f472",
       "qid_v1_698bfc8df28191954b77c53b52b66e344396cdba212b3e0995259254dd307a0f"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIGONOMETRIC_EQUATION_PHASE",
-    "pt": "PT_TRIGONOMETRIC_EQUATION",
-    "nameKo": "해의 간격",
-    "definition": "한 주기의 두 해 차이를 위상으로 나타내고 여각쌍으로 합을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4f595f3dabe33f7697c1a891c6dde572880f109e3c1df4ed4d304d1285c805e6"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIGONOMETRIC_EQUATION_ABSOLUTE",
-    "pt": "PT_TRIGONOMETRIC_EQUATION",
-    "nameKo": "절댓값 분기",
-    "definition": "삼각식 제곱근을 절댓값으로 바꾸어 부호분기와 제외각을 적용해 해 구간을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_7b33fae9f5855aa7031895aeae87af70079fb5672af52d57697d5d0b70210186"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5912,39 +5286,13 @@
   {
     "bundle": "NTPL_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION_PAIRS",
     "pt": "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION",
-    "nameKo": "반비례 정수 좌표 약수쌍",
+    "nameKo": "정수 좌표 약수쌍",
     "definition": "xy=a의 정수해를 양수·음수 약수쌍으로 빠짐없이 센다.",
     "absorbInto": "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION_CORE",
     "count": 2,
     "examples": [
       "qid_v1_2e57de2c53204013dd96317d274069537db1672516e0797707dc13f55167161f",
       "qid_v1_2f0876982821e650277bf473c7985d9f828d34cdcf2136c1cb2c1c5359b2db23"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORDINATE_POINT_READING_QUADRANT",
-    "pt": "PT_COORDINATE_POINT_READING",
-    "nameKo": "좌표 부호와 사분면",
-    "definition": "좌표의 두 성분 부호로 사분면을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_f5d0519ac31ed045bcd59e79f592539079f7cfc8261074508d197635f3aad84b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORDINATE_POINT_READING_REFLECTION",
-    "pt": "PT_COORDINATE_POINT_READING",
-    "nameKo": "축대칭 좌표",
-    "definition": "대칭축에 수직인 좌표 성분만 부호를 바꾸어 대칭점을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_92910f5f81a5f1de1aa21a9b6735cf5144511375225e962356dc29fba24b0804"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -5964,67 +5312,15 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_ORDER",
-    "pt": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
-    "nameKo": "수직선 순서와 합차 부호",
-    "definition": "수직선의 순서와 절댓값 관계로 합과 차의 부호를 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_166fa40c76545fe976ba0662a7b8f71eb8b7c27414071ea3bb51ee3c28ad2daa"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_DEFINITE",
-    "pt": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
-    "nameKo": "부호 결정 가능성",
-    "definition": "양수와 음수의 연산에서 결과의 부호가 항상 정해지는 식을 구분한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2a841942d1b594389e24314429ff539da83478eafba3cd1f685daddc75a260af"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_COMBINED",
-    "pt": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
-    "nameKo": "곱 부호와 대소관계 결합",
-    "definition": "곱의 부호와 두 수의 대소관계를 결합해 각 수의 부호를 정하고 식의 부호를 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8a18955416344b1b8817047fca7f27d3cb122e1d3c3e621bedb260fea403381c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_RECIPROCAL",
     "pt": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
-    "nameKo": "전개도 반대면 역수 조건",
+    "nameKo": "반대면 역수",
     "definition": "정육면체 전개도의 반대면을 찾아 역수 조건으로 문자를 구하고 식의 값을 계산한다.",
     "absorbInto": null,
     "count": 2,
     "examples": [
       "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3",
       "qid_v1_64964b29f6a19a71e6a3c13db68811367afe814e1fee2d49b4e5f577b215c482"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_OPPOSITE",
-    "pt": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
-    "nameKo": "전개도 반대면 찾기",
-    "definition": "정육면체 전개도를 접었을 때 서로 마주 보는 면을 찾는다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_038ad7239c7b9d7957c54da5b77b19fb3b81ef7c99ac98c6a0d9430610ffb75b"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6045,9 +5341,9 @@
   {
     "bundle": "NTPL_M1_ROTATION_SOLID_PROPERTIES_CONSTANT",
     "pt": "PT_M1_ROTATION_SOLID_PROPERTIES",
-    "nameKo": "수직 단면의 반지름 일정",
+    "nameKo": "수직 단면 판정",
     "definition": "높이에 관계없이 수직 단면의 반지름이 일정한 회전체를 식별한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
     "count": 1,
     "examples": [
       "qid_v1_8dcde91f5db698019ae5040ad98f75b1f41b1803097ee9f682a4eb115b0fcec7"
@@ -6058,7 +5354,7 @@
   {
     "bundle": "NTPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_AUDIT",
     "pt": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
-    "nameKo": "수선의 발과 거리 진술 판정",
+    "nameKo": "수선과 거리 판정",
     "definition": "점과 직선 사이의 거리는 수선 길이임을 적용하고 수선의 발·중점·사선 길이 진술을 구분한다.",
     "absorbInto": null,
     "count": 3,
@@ -6085,22 +5381,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M1_TRIANGLE_CONSTRUCTION_ORDER_SSS",
-    "pt": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
-    "nameKo": "세 변 작도 순서",
-    "definition": "기준 변의 양 끝점을 중심으로 나머지 두 변 길이의 원을 그려 꼭짓점을 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9207cb96f9a04f687e10d7567228c6b7ef3de0617b7a2fd924d759e75b4450e9"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_TRIANGLE_CONSTRUCTION_ORDER_SAS",
     "pt": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
-    "nameKo": "두 변과 끼인각 작도 순서",
+    "nameKo": "SAS 작도 순서",
     "definition": "끼인각의 꼭짓점과 두 변 길이가 대응하도록 작도 순서와 반지름 사용을 확인한다.",
     "absorbInto": null,
     "count": 2,
@@ -6194,32 +5477,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE_TEMPERATURE",
-    "pt": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
-    "nameKo": "기온 변화 일차식",
-    "definition": "지면 기온과 고도당 기온 감소량으로 주어진 고도의 기온을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_cefb7d8d0fb4eed5ab7ad10704245fce66054f95d6dbbf66c1c69f526b246a60"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M2_LINEAR_INEQUALITY_IDENTIFICATION_IDENTIFY",
-    "pt": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
-    "nameKo": "일차부등식 식별",
-    "definition": "문장을 식으로 옮기고 미지수의 일차항과 부등호가 있는지 확인한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
     "pt": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
     "nameKo": "부등식 변형 성질",
@@ -6234,92 +5491,15 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION_AREA",
-    "pt": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
-    "nameKo": "평행선 등적변형",
-    "definition": "평행선 사이의 같은 높이로 넓이를 옮기고 밑변비로 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_ff3e0c3a8eb16e1e21d6e96321d3f0f8d0caba89237360365ac759b547571238"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIANGLE_ANGLE_BISECTOR_ANGLE",
-    "pt": "PT_TRIANGLE_ANGLE_BISECTOR",
-    "nameKo": "내외각 이등분 각 추적",
-    "definition": "이등변삼각형 밑각과 내각·외각의 이등분각을 구해 두 각의 차로 요구 각을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_55a62a8f14901d99086cbada5d16a23129795e1f49fe4f738ae47bca124aa6b0"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MG_PARALLELOGRAM_INTERNAL_POINT_AREA_HEIGHT_RATIO",
-    "pt": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
-    "nameKo": "내부점 높이비 넓이",
-    "definition": "평행사변형의 같은 길이 대변을 밑변으로 하는 삼각형의 높이비로 넓이비를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_490130ca61d11494015508cd6a0fcc353afdbcc2d6fd9479fec1a84dc6e9ce9c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MG_PARALLELOGRAM_INTERNAL_POINT_AREA_AREA_SUM",
-    "pt": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
-    "nameKo": "내부점 대향 삼각형 넓이합",
-    "definition": "평행사변형 내부점에서 마주 보는 대변을 밑변으로 하는 두 삼각형 넓이합이 전체의 절반임을 이용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_402b39f1410c9d0c1edc0b83c25913a62502d42d700029037f890aec5320a66b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA_AXES",
-    "pt": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-    "nameKo": "절편 삼각형 넓이",
-    "definition": "일차함수의 두 절편으로 좌표축과 이루는 삼각형 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA_INTERSECTION",
     "pt": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-    "nameKo": "두 직선과 축 삼각형 넓이",
-    "definition": "직선의 교점과 축 절편으로 밑변·높이를 구해 둘러싸인 삼각형 넓이를 계산한다.",
+    "nameKo": "직선과 축 넓이",
+    "definition": "직선들의 교점과 좌표축 절편으로 삼각형의 밑변·높이를 구해 둘러싸인 넓이를 계산한다.",
     "absorbInto": null,
-    "count": 1,
+    "count": 2,
     "examples": [
+      "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
       "qid_v1_02ba342085d4412c88c9345646c21892176c610700d3d55fcb923164ed4dcd21"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_PARALLEL_SEGMENT_RATIO_RATIO",
-    "pt": "PT_PARALLEL_SEGMENT_RATIO",
-    "nameKo": "평행선 대응변 비",
-    "definition": "평행선으로 생기는 닮은 삼각형의 대응변 비로 미지 길이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_320612b441f40ac7967282546361ecfeb1aaa31929e83e987b74a723cbc62b2e"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6341,7 +5521,7 @@
   {
     "bundle": "NTPL_H1_COUNTING_PRINCIPLE_GENERAL_ENUMERATE",
     "pt": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
-    "nameKo": "조건에 맞는 대상 직접 세기",
+    "nameKo": "직접 세기",
     "definition": "유한한 대상에서 조건을 만족하는 항목을 빠짐없이 세어 경우의 수를 구한다.",
     "absorbInto": null,
     "count": 2,
@@ -6367,19 +5547,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_COUNTING_PRINCIPLE_GENERAL_COLLINEAR",
-    "pt": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
-    "nameKo": "공선 중복 직선 세기",
-    "definition": "점 두 개 선택에서 한 직선 위 여러 점으로 생긴 동일 직선의 중복을 보정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_7ac5262e8733b1f8b78942298c95d7418a58cbe148cd38135f850f88e68c3b96"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_ISOSCELES_TRIANGLE_CLAIMS",
     "pt": "PT_ISOSCELES_TRIANGLE",
     "nameKo": "이등변삼각형 성질 판정",
@@ -6394,54 +5561,15 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_ISOSCELES_TRIANGLE_DISTANCE_SUM",
-    "pt": "PT_ISOSCELES_TRIANGLE",
-    "nameKo": "같은 변까지 거리합",
-    "definition": "이등변삼각형 내부의 두 삼각형 넓이합에서 같은 변을 밑변으로 하여 수선 거리합을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_a85ea170115ee9b5e9d78bc34aec731eee7a84e57e87664b8b3071f0d7d99ba9"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS_DIGITS",
-    "pt": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
-    "nameKo": "자리 교환 식 세우기",
-    "definition": "각 자릿값으로 원래 수와 자리 교환한 수를 나타내 수의 차 조건을 식으로 세운다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6ea3fed185518524ccef7a780bda080e3a7e2ed4665bec4a4261e9d62284d108"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT_BISECTOR",
     "pt": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
-    "nameKo": "평행사변형 각 이등분선 길이",
+    "nameKo": "각이등분선 길이",
     "definition": "평행선과 각 이등분선으로 이등변삼각형을 찾아 같은 변 관계로 미지 길이를 구한다.",
     "absorbInto": null,
     "count": 2,
     "examples": [
       "qid_v1_b1f42e39aee464c5f72e0cdbab9f91dcd4a31d67b9e5c2c23d46d84f849c4d6c",
       "qid_v1_43100c677921e57a90799b99e024c2c0f99a81d42cf424f62988557c88b88032"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M2_BASIC_COUNTING_CASE_SPLIT_PAIRS",
-    "pt": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
-    "nameKo": "무순서 쌍 직접 세기",
-    "definition": "서로 다른 대상의 무순서 쌍을 중복 없이 나열한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_765c1396a319dc62a1b4e737ca589b65b34172f840a5c736cdcfbcd671fcaba2"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6461,50 +5589,11 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE_DISTANCE",
-    "pt": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
-    "nameKo": "이차함수 절편 사이 거리",
-    "definition": "y=0의 두 근으로 x절편을 구하고 두 좌표의 차로 거리를 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_0cf15d9a7a35de037d544f1d7f1c6bd481cc714ba66f803b750372bd0b0e70bb"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM_VALUE",
-    "pt": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM",
-    "nameKo": "꼭짓점과 절편으로 함숫값",
-    "definition": "꼭짓점과 절편으로 이차함수의 계수를 결정한 뒤 특정 함숫값을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_16cf956cc18dd3f6bed4d4266c7f5a63d21c2c2530dcacf987bced0c97b90ed4"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_QUADRATIC_FUNCTION_BASIC_FORM_REFLECT",
-    "pt": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-    "nameKo": "기본 포물선의 축대칭",
-    "definition": "주어진 점으로 y=ax²의 계수를 구하고 x축 대칭의 계수 부호 변화를 적용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4494fe540fb8493e113a40a0334f94b6a760f29f2cdd2d56c5d3cb2124589d9a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M3_QUADRATIC_FUNCTION_BASIC_FORM_POINT_RATIO",
     "pt": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-    "nameKo": "길이비로 기본 포물선 계수",
+    "nameKo": "기본형 계수",
     "definition": "그림의 길이비로 곡선 위 점의 좌표를 얻어 y=ax²의 계수를 구한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
     "count": 1,
     "examples": [
       "qid_v1_e5c51b728e08236d7406c3a4a40435c8593ec852302943197b843808abe67687"
@@ -6513,26 +5602,14 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION_REDUCE",
-    "pt": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-    "nameKo": "근의 관계식으로 다항식 환원",
-    "definition": "방정식의 근이 만족하는 관계식으로 이차식을 상수로 환원하여 식의 값을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_94468afb1ee4c75c4b4c0f3abf496e752d99dfd9e1035d02f4ecba2ef2818c77"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION_RECIPROCAL",
     "pt": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-    "nameKo": "근의 관계식과 역수",
-    "definition": "방정식에 근을 대입한 관계식을 근으로 나누어 근과 역수가 섞인 식의 값을 구한다.",
+    "nameKo": "근의 관계식",
+    "definition": "방정식에 근을 대입해 얻은 관계식으로 다항식 또는 역수식을 변형하여 목표식의 값을 구한다.",
     "absorbInto": null,
-    "count": 1,
+    "count": 2,
     "examples": [
+      "qid_v1_94468afb1ee4c75c4b4c0f3abf496e752d99dfd9e1035d02f4ecba2ef2818c77",
       "qid_v1_ca58a5815fac1e69aa57a4efc0503cf49eae84e0a7224384ebb84bd2f7a327f4"
     ],
     "relatedKeys": [],
@@ -6541,7 +5618,7 @@
   {
     "bundle": "NTPL_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION_TABLE",
     "pt": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-    "nameKo": "표에서 방정식의 해 판독",
+    "nameKo": "표에서 해 찾기",
     "definition": "등식이 성립하거나 같은 함숫값을 갖는 표의 입력값을 찾아 방정식의 해를 결정한다.",
     "absorbInto": null,
     "count": 2,
@@ -6557,7 +5634,7 @@
     "pt": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
     "nameKo": "대입하여 해 확인",
     "definition": "후보 수를 방정식에 대입하여 양변이 같은지 확인한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
     "count": 1,
     "examples": [
       "qid_v1_8e09af7c42676548fbb5b3683ec8f0626d8c3663685ed46d0348c77d687c3b85"
@@ -6568,7 +5645,7 @@
   {
     "bundle": "NTPL_M3_REAL_NUMBER_LINE_TRANSFER",
     "pt": "PT_M3_REAL_NUMBER_LINE",
-    "nameKo": "무리수 길이를 수직선에 옮기기",
+    "nameKo": "수직선 길이 이동",
     "definition": "도형에서 구한 근호 길이를 기준점 양쪽으로 옮겨 좌표를 얻고 요구 식을 계산한다.",
     "absorbInto": null,
     "count": 3,
@@ -6600,7 +5677,7 @@
     "pt": "PT_TRIG_RATIO_APPLICATION",
     "nameKo": "삼각비와 내접원 반지름",
     "definition": "삼각비로 직각삼각형의 변을 구하고 접선 등길이 관계로 내접원 반지름을 구한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "count": 1,
     "examples": [
       "qid_v1_fd93539379b5daf38abc26e88655978c8261f442f1cb970febc5a3ee936c7848"
@@ -6611,65 +5688,13 @@
   {
     "bundle": "NTPL_TRIG_RATIO_APPLICATION_AREA_ANGLE",
     "pt": "PT_TRIG_RATIO_APPLICATION",
-    "nameKo": "삼각형 넓이에서 각 복원",
+    "nameKo": "넓이에서 각",
     "definition": "두 변과 넓이로 사인값을 구하고 예각·둔각 조건으로 각을 결정한다.",
     "absorbInto": null,
     "count": 2,
     "examples": [
       "qid_v1_fab25e16e251d6f2a86896e464d17e0123803eaa597767aaf98c3b04c057f0bb",
       "qid_v1_81da5259e35dca07269ec2288d9f13fe9a1ea871c9388ecd037b5a08651330e0"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M3_DISPERSION_BAR_GRAPH_COMPARISON_VARIANCE",
-    "pt": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
-    "nameKo": "분포의 분산 비교",
-    "definition": "같은 간격으로 주어진 분포의 평균과 분산을 계산해 산포를 비교한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3815fd69e95e026cfdfba825cbc243eae57253f38329b28dc3eb18c14a39cd29"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORD_TRIANGLE_AREA_SUBTRACT",
-    "pt": "PT_COORD_TRIANGLE_AREA",
-    "nameKo": "외접 도형 넓이 차",
-    "definition": "모눈의 외접 정사각형에서 바깥 직각삼각형 넓이를 빼 내부 삼각형 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_b9205ff9995f221847ddb49746137ec13f4ca103ffb320658c2922ac77d3a7f5"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORD_TRIANGLE_AREA_SIMILAR",
-    "pt": "PT_COORD_TRIANGLE_AREA",
-    "nameKo": "닮음비와 좌표 삼각형 넓이비",
-    "definition": "좌표의 거리비와 평행선 닮음으로 길이비를 정해 삼각형 넓이비를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_33a7f0ce9b5669ff75c9fd36ee5da6769183ee2d59b01b18121692b2b4332171"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORD_TRIANGLE_AREA_MAXIMUM",
-    "pt": "PT_COORD_TRIANGLE_AREA",
-    "nameKo": "고정 빗변 삼각형 최대 넓이",
-    "definition": "빗변이 일정한 직각삼각형의 두 직각변이 같을 때 넓이가 최대임을 이용해 좌표를 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6192047d6f229988bb9f6f4a066f9b45ac6933e68cca30a093f3b6691818f8db"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6689,53 +5714,14 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY_TURN",
-    "pt": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-    "nameKo": "증감 전환점으로 축 결정",
-    "definition": "증가·감소가 바뀌는 x좌표와 이차함수 축의 식을 같게 놓아 계수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6f61057113447cb7f89ae8ecc3403037cef8be751bcc1f7282bd7b89e297c663"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_FUNCTION_VALUE_SUBSTITUTE",
     "pt": "PT_FUNCTION_VALUE",
     "nameKo": "좌표의 함수식 대입",
     "definition": "후보 좌표를 함수식에 대입해 함수 그래프 위에 있는 점을 고른다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_FUNCTION_VALUE_DIRECT",
     "count": 1,
     "examples": [
       "qid_v1_7be82cf55ed1785188eacdb67ff36ccfca74da860a1592531b0a513cc4329251"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_VALUE_PERIOD",
-    "pt": "PT_FUNCTION_VALUE",
-    "nameKo": "주기로 함숫값 환원",
-    "definition": "주기만큼 입력을 줄인 뒤 주어진 식으로 함숫값을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3d46b9c9b8052dc8866e146a39326a3c2d027febd378edb9f3a71cfa35b2ba14"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_VALUE_GRAPH",
-    "pt": "PT_FUNCTION_VALUE",
-    "nameKo": "그래프에서 함수 합성 읽기",
-    "definition": "그래프에서 함숫값을 반복 추적해 합성값 또는 역으로 대응하는 입력을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_c670613b7bee732c0ee641e911d16a7ece545376f50fd7b800eaf0d830a66090"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6757,7 +5743,7 @@
   {
     "bundle": "NTPL_TWO_CIRCLES_COMMON_TANGENT",
     "pt": "PT_TWO_CIRCLES",
-    "nameKo": "공통접선 접점 사이 거리",
+    "nameKo": "공통접선 길이",
     "definition": "중심거리와 반지름의 차 또는 합으로 직각삼각형을 구성해 공통접선의 접점 사이 거리를 구한다.",
     "absorbInto": null,
     "count": 15,
@@ -6772,7 +5758,7 @@
   {
     "bundle": "NTPL_TWO_CIRCLES_POSITION",
     "pt": "PT_TWO_CIRCLES",
-    "nameKo": "두 원 위치와 접선 개수",
+    "nameKo": "두 원 위치",
     "definition": "중심거리를 반지름 합·차와 비교해 두 원의 위치 관계와 공통접선 개수를 판단한다.",
     "absorbInto": null,
     "count": 7,
@@ -6780,45 +5766,6 @@
       "qid_v1_fee3c62243915b1baea4a7df891b47c031c6a6f3211c2cf72765a82d87f1668a",
       "qid_v1_bceb66d280bf9315bcc507e01dbb605732ffcd40b0c9f9a3c29d6d8bbc2e8fb7",
       "qid_v1_8c89e13e98a61f19454796c4000cc45b9d3488acd721ef5962ee2f1d7419b584"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_PRIME_COMPOSITE_JUDGMENT_PLACEMENT",
-    "pt": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
-    "nameKo": "소수 인접합 배치",
-    "definition": "인접한 수의 합이 소수라는 조건을 만족하도록 남은 수를 배치한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9520ebc42f8e213fa1575b32fbdc4b4326c1ef4680b68e7c1d8a02d2468a244f"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_PRIME_COMPOSITE_JUDGMENT_COMPOSITE",
-    "pt": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
-    "nameKo": "합성수 식별",
-    "definition": "1과 소수를 제외하고 주어진 목록의 합성수를 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_95c505b1dc48fdd92c7a337f33da77a0122dd43578cc29fc666ecdd4e7ddb33c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_FINITE_LIST_PRIME_COUNT_PRIME_COUNT",
-    "pt": "PT_M1_FINITE_LIST_PRIME_COUNT",
-    "nameKo": "소수와 합성수 개수",
-    "definition": "목록의 수를 소수와 합성수로 분류해 개수를 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_06740978942b779994563598344b11f3175db28c11916a3d3907c106860922f4"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6834,84 +5781,6 @@
       "qid_v1_ce7dc4bc294551a01e8df9c68956608af28c7a28fa020139c78630b58d14f7cc",
       "qid_v1_a26898a44ef6967882b277b6c707cf7ec419537a4cfa339b787cbd908cf3273a",
       "qid_v1_e6a797161b3c1768f9e9f9ae054f5204a85bf045d6e25127bd6b209adc4f4181"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_TRAPEZOID_AREA_FORMULA",
-    "pt": "PT_M1_TRAPEZOID_AREA",
-    "nameKo": "사다리꼴 넓이 공식",
-    "definition": "평행한 두 밑변의 합과 수직 높이의 곱의 절반으로 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_dc6c92f5a2c44bcc6790ecadb2794119a6f92a68b9f63a408e76e7d07954add6"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_BOUNDED_PRIME_COUNT_RANGE",
-    "pt": "PT_BOUNDED_PRIME_COUNT",
-    "nameKo": "구간 소수 열거",
-    "definition": "주어진 구간에서 소수를 빠짐없이 열거하여 합이나 개수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_5355b061b80d8a99c83726f9410e67f5b8a7aa41ee272656ea859a0633323814"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MAGIC_SQUARE_ENTRY_RECOVERY_MAGIC",
-    "pt": "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
-    "nameKo": "마방진 공통합 복원",
-    "definition": "완성된 행·열·대각선의 공통합으로 비어 있는 칸을 차례로 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8e37189907e103852a52c5d90cc04a8add0ec0c5c6a5b810a49a4a55701c6c91"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_STRAIGHT_ANGLE_PARTITION_STRAIGHT",
-    "pt": "PT_M1_STRAIGHT_ANGLE_PARTITION",
-    "nameKo": "평각 분할 방정식",
-    "definition": "인접한 각들의 합이 180도임을 이용해 일차방정식을 푼다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3670a8bfef35a354dc01b4cc3658404fbc1842d39404a194a5de83d16d356b61"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_STAR_POLYGON_ANGLE_SUM_STAR_FIVE",
-    "pt": "PT_M1_STAR_POLYGON_ANGLE_SUM",
-    "nameKo": "오각별 끝각 합",
-    "definition": "삼각형 외각을 두 끝각의 합으로 바꾸어 오각별 끝각들을 한 삼각형 내각합으로 모은다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_c02020bd99eec2220c0b500590aa13ca9a95c24ec90a1e2d86a9778d14a83c92"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_STAR_POLYGON_ANGLE_SUM_STAR_SIX",
-    "pt": "PT_M1_STAR_POLYGON_ANGLE_SUM",
-    "nameKo": "육각별 끝각 합",
-    "definition": "육각별의 표시각을 두 삼각형의 내각으로 묶어 합을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_e9a2d345b8dd9ecd502fa5d644bdb632da7d705d5dc5e1c8ea0ce6f2a333bfbd"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6933,39 +5802,13 @@
   {
     "bundle": "NTPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_MEDIAN_STEM",
     "pt": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
-    "nameKo": "중앙값과 줄기 도수 복원",
+    "nameKo": "중앙값 도수 복원",
     "definition": "가운데 두 자료의 평균으로 미지 잎의 합을 구하고 줄기별 도수를 합산한다.",
     "absorbInto": null,
     "count": 2,
     "examples": [
       "qid_v1_d6feb67ad616443d78fe3cd6d427940ed8dd198ed474262fa1385cc8e575dcd0",
       "qid_v1_df3fb526e4cb9e134c874b91c6ec4e0c1db549cdafe9a7cf057eaa848d9bc77e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_ROTATION_AREA",
-    "pt": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
-    "nameKo": "정사각형 회전 대칭 넓이",
-    "definition": "중심에서의 90도 회전으로 네 영역의 합동을 보여 겹친 넓이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_bc3c8887f61ff9c5567be5de3b14e4bd2169fd525ade0e6f8e5d789506293f6a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_M2_LINEAR_INEQUALITY_SOLVING_SIGN",
-    "pt": "PT_M2_LINEAR_INEQUALITY_SOLVING",
-    "nameKo": "매개계수 일차부등식",
-    "definition": "계수의 부호를 확인해 부등식을 나누고 해를 수직선에 나타낸다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_1481461eb45445d2996cfd2d32cdd20bd5621440f7edbe3159067cca9178447f"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -6986,35 +5829,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_CIRCLE_EQUATION_LATTICE",
-    "pt": "PT_CIRCLE_EQUATION",
-    "nameKo": "원 위 정수 격자점",
-    "definition": "원의 표준형에서 정수 제곱합을 만족하는 좌표쌍을 열거한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_d9309e2687e8eadf5384109ea39c1aefee612e899c5d3f5a8c8601af08a34ebc"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_CIRCLE_EQUATION_SQUARE_SUM",
-    "pt": "PT_CIRCLE_EQUATION",
-    "nameKo": "원 위 점 제곱합",
-    "definition": "원 위 점의 좌표가 만족하는 식을 직접 이용해 좌표 제곱합을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8d419571908188d0b86253c02ae4d5967621e4705516f2416169dca8e9114a9b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_CIRCLE_EQUATION_RADIUS_EXTREMA",
     "pt": "PT_CIRCLE_EQUATION",
-    "nameKo": "반지름 제곱 최댓값과 최솟값",
+    "nameKo": "반지름 극값",
     "definition": "원의 반지름 제곱을 매개변수 이차식으로 나타내 완전제곱으로 극값과 중심을 구한다.",
     "absorbInto": null,
     "count": 7,
@@ -7029,26 +5846,13 @@
   {
     "bundle": "NTPL_CIRCLE_EQUATION_CENTER_LOCUS",
     "pt": "PT_CIRCLE_EQUATION",
-    "nameKo": "두 점 지나는 원의 중심 자취",
+    "nameKo": "원의 중심 자취",
     "definition": "두 고정점까지 등거리인 원의 중심이 수직이등분선 위에 있음을 이용한다.",
     "absorbInto": null,
     "count": 2,
     "examples": [
       "qid_v1_89c67abb9e060cfcfab195dd65547154ac397a1c8084906ffe622aee5b51f3ec",
       "qid_v1_0e5d40fcb5747be53691a5b6ea61bc2473d438d9662925c0506f310f5cf98e49"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_CIRCLE_EQUATION_TANGENCY",
-    "pt": "PT_CIRCLE_EQUATION",
-    "nameKo": "공통점과 경계로 접함 확인",
-    "definition": "공통점을 곡선 식에 대입해 계수를 정하고 두 곡선의 경계값으로 접함을 확인한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_10de502fd5b397f88e0bb315067d1a534db78719ec8f5f079e7f826648c78d7b"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7061,20 +5865,8 @@
     "absorbInto": null,
     "count": 2,
     "examples": [
-      "qid_v1_6d61028680263dddb330631283b990d579c8a6ecb06520ae256e4d8268f4890e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MOVE_CIRCLE_REFLECTION_CENTER_REFLECT",
-    "pt": "PT_MOVE_CIRCLE_REFLECTION",
-    "nameKo": "대칭 원의 중심과 반지름",
-    "definition": "대칭 이동에 따른 원 중심 좌표 변화와 반지름 보존으로 계수를 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_db61d8e460f91f62cc7067ab874d094f2c9995dc6b452d9400424fe79ab17a22"
+      "qid_v1_6d61028680263dddb330631283b990d579c8a6ecb06520ae256e4d8268f4890e",
+      "qid_v1_988103868c813feeb0e500ee575b3a7ade21442782a2b0abf3a4a998b451da55"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7110,7 +5902,7 @@
   {
     "bundle": "NTPL_LINE_INTERSECTION_CONDITION_QUADRANT",
     "pt": "PT_LINE_INTERSECTION_CONDITION",
-    "nameKo": "직선 교점의 사분면 조건",
+    "nameKo": "교점 사분면",
     "definition": "연립한 교점 좌표를 매개변수로 나타내 두 성분의 부호 조건을 함께 푼다.",
     "absorbInto": null,
     "count": 5,
@@ -7118,19 +5910,6 @@
       "qid_v1_7be342d5a2cd74905524509003330137ee9156c44c100ae79a0bff3d49a2c876",
       "qid_v1_d675b8a63afcf4453c299ff6921f3852f2fca66d8f716b827b36a292f2a3a636",
       "qid_v1_a2bc916589fbce4587ded738761cd2b63327e1a7d287e71376285e05eeacdb97"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_LINE_INTERSECTION_CONDITION_INTERCEPT",
-    "pt": "PT_LINE_INTERSECTION_CONDITION",
-    "nameKo": "직선 축 교점",
-    "definition": "한 좌표를 0으로 놓고 직선 방정식을 풀어 축과의 교점을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_ac36518b15063f2545b4ac78dd1fdfb164b5e9908dfa17e08e1116fa7adde386"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7164,22 +5943,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_HEIGHT_AREA",
-    "pt": "PT_COORD_DISTANCE_OPTIMIZATION",
-    "nameKo": "넓이와 수선 거리 최적화",
-    "definition": "넓이로 수선 높이를 고정하고 가능한 수선발 위치를 비교하여 목표 거리를 최적화한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_357faa0e3110ebbef7cfff34f71e3f6de332d788ca07f921198b9465c4c7cd2e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_POLYGON_DISTANCE",
     "pt": "PT_COORD_DISTANCE_OPTIMIZATION",
-    "nameKo": "다각형 경계까지 거리 극값",
+    "nameKo": "다각형 거리 극값",
     "definition": "최대는 꼭짓점 거리 비교로, 최소는 선분 안 수선발 또는 끝점 거리로 구한다.",
     "absorbInto": null,
     "count": 12,
@@ -7194,7 +5960,7 @@
   {
     "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_CIRCLE_DISTANCE",
     "pt": "PT_COORD_DISTANCE_OPTIMIZATION",
-    "nameKo": "두 원 위 점 사이 거리 극값",
+    "nameKo": "두 원 거리 극값",
     "definition": "중심거리와 반지름 합으로 원주점 사이 거리의 극값을 구하고 중심선 위 등호 조건을 확인한다.",
     "absorbInto": null,
     "count": 2,
@@ -7208,7 +5974,7 @@
   {
     "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_PROJECTION",
     "pt": "PT_COORD_DISTANCE_OPTIMIZATION",
-    "nameKo": "원 정사영 구간 거리 극값",
+    "nameKo": "정사영 거리 극값",
     "definition": "중심의 정사영 거리와 반지름 합으로 정사영 구간의 분리 여부를 확인하고 거리의 극값을 구한다.",
     "absorbInto": null,
     "count": 12,
@@ -7216,58 +5982,6 @@
       "qid_v1_ddb443442dc300295cc801ff2f4e80a2848489759ca2354cb370a327f10d6215",
       "qid_v1_2fe9f35122fb8208fe26e198556446712cedb810a0335d6faa8fac0a137a8634",
       "qid_v1_577ad610838b3fe62fde6bc3c2bdd0b8556679c9c99a92d4af632a672c7da311"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_LINEAR_SYSTEM_INEQUALITY_EMPTY",
-    "pt": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
-    "nameKo": "일차부등식 해 없음 조건",
-    "definition": "부등식이 해를 갖지 않도록 미지수 계수를 0으로 하고 상수 조건을 확인한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_fb0a1e3a0cef1d917135d64b032a79f56288dfa559af3768ca7d9791c79b9d3c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MOVE_EQUATION_TRANSFORM_TRANSFORM",
-    "pt": "PT_MOVE_EQUATION_TRANSFORM",
-    "nameKo": "이동 규칙과 역치환",
-    "definition": "점의 이동 좌표와 방정식의 역치환 규칙을 대조해 진술을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_83aaa053c90f8745bcb348ae4067e19490915f0fc61748d0bdcfe9d317b558f8"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_SYSTEM_EQUATION_DOUBLE",
-    "pt": "PT_H1_SYSTEM_EQUATION",
-    "nameKo": "연립방정식 유일해",
-    "definition": "한 변수를 소거한 이차방정식이 중근을 갖는 조건으로 연립방정식의 유일해를 보장한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_0b1a3de136d7f40fb45e16b140143ba099c8493984b03aeb1304e8f5a58a0cef"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_SYSTEM_EQUATION_INTEGER",
-    "pt": "PT_H1_SYSTEM_EQUATION",
-    "nameKo": "치환과 정수근 후보",
-    "definition": "곱을 새 변수로 두고 합과 곱의 약수 후보별로 이차방정식 정수근을 검사한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_b41165642c1e6cc0f24975ffd694d241d09f66b433d9d3b444a462d1ba664fdc"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7288,40 +6002,14 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_QUADRATIC_EXTREMA_INTEGER_MAX",
-    "pt": "PT_H1_QUADRATIC_EXTREMA",
-    "nameKo": "정수 분할 최대 곱",
-    "definition": "합이 일정한 양의 정수쌍을 비교하여 곱으로 나타낸 넓이를 최대화한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_1c9d1ef5015ed480477ae4890d6d8489c2f31bf3c597725fa1f7e029788f1a55"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_QUADRATIC_EXTREMA_SUB_RANGE",
     "pt": "PT_H1_QUADRATIC_EXTREMA",
     "nameKo": "치환 범위 이차식 극값",
     "definition": "지수식으로 둔 치환변수의 범위를 구한 뒤 그 구간에서 이차식의 최솟값을 계산한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "count": 1,
     "examples": [
       "qid_v1_cbed68f3190cf4061d92503399fe1aad83c10a41359ab7a9487633c5ec3f194b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_POLY_FORMULA_SYMMETRIC_SHIFT_SUM",
-    "pt": "PT_H1_POLY_FORMULA_SYMMETRIC",
-    "nameKo": "거듭제곱 합 소거",
-    "definition": "연속 거듭제곱 합에 공비를 곱한 식에서 원래 합을 빼 중간항을 소거한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8aec5a8768cfabb2e6f4ab33b47ecaece271c303cbffea17e2c361a2c63a78ef"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7341,66 +6029,15 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_POLY_FACTORIZATION_IRREDUCIBLE",
-    "pt": "PT_H1_POLY_FACTORIZATION",
-    "nameKo": "기약 인수와 계수 비교",
-    "definition": "실수계수 다항식의 기약 이차인수 포함 관계와 남은 인수의 계수 관계로 다항식을 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_98467cbe6ed27d39cf010165cbf5eb813321d102a281c59217687991524678db"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_POLY_FACTORIZATION_COEFFICIENT",
     "pt": "PT_H1_POLY_FACTORIZATION",
-    "nameKo": "인수분해 계수 조건",
-    "definition": "두 일차인수의 계수를 비교해 원하는 인수분해가 가능한 매개변수를 구한다.",
+    "nameKo": "인수와 계수 비교",
+    "definition": "인수분해 형태를 놓고 계수를 비교해 미정계수나 다항식을 구한다. 기약인수·정수 조건은 조건 꼬리표로 분리한다.",
     "absorbInto": null,
-    "count": 1,
+    "count": 2,
     "examples": [
+      "qid_v1_98467cbe6ed27d39cf010165cbf5eb813321d102a281c59217687991524678db",
       "qid_v1_f8736c9db5d5c7424117739d29d57b98ef5ef3409dbe800eb6974c2075013c71"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_EQUATION_APPLICATION_TANGENT",
-    "pt": "PT_H1_EQUATION_APPLICATION",
-    "nameKo": "접선 할선 길이 방정식",
-    "definition": "접선·할선과 닮음 관계로 반지름 방정식을 세우고 양의 해를 선택한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_eff7ec4f23da9a631ea845fd455f6227ab7f8f3667edfb57164602cc77f90121"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_EQUATION_APPLICATION_DIAMETER",
-    "pt": "PT_H1_EQUATION_APPLICATION",
-    "nameKo": "내접 직사각형 길이",
-    "definition": "내접 직사각형 대각선이 원의 지름임을 이용해 변의 비와 피타고라스 방정식으로 길이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_a6152c1d5291eae1f30b15014809749a059658845e4dc98a049e7b0cb5010d22"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_EQUATION_APPLICATION_VOLUME",
-    "pt": "PT_H1_EQUATION_APPLICATION",
-    "nameKo": "부피 조건 삼차방정식",
-    "definition": "가로·세로·높이의 관계로 부피를 표현해 삼차방정식을 풀고 양수해를 선택한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_454a702ca80f5e78d6e564f2fa2c64f9a7f76b560278505393be0fac41e6cae8"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7408,103 +6045,14 @@
   {
     "bundle": "NTPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
     "pt": "PT_H1_EQUATION_APPLICATION",
-    "nameKo": "변의 합과 제곱합",
-    "definition": "두 변의 합과 제곱합 조건으로 연립방정식을 세워 길이를 구한다.",
+    "nameKo": "도형 연립방정식",
+    "definition": "도형의 두 길이 관계를 식으로 나타내고 연립방정식으로 길이를 구한다. 닮음·내접·피타고라스는 선행 결합 개념으로 구분한다.",
     "absorbInto": null,
-    "count": 1,
+    "count": 3,
     "examples": [
-      "qid_v1_13e4413971a2216114f677a823e2acae074ab3dc7ae9098ed838a770dc2baba8"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_EQUATION_APPLICATION_SIMILARITY",
-    "pt": "PT_H1_EQUATION_APPLICATION",
-    "nameKo": "닮음 길이 연립방정식",
-    "definition": "삼각형 닮음비로 두 길이 관계식을 세워 연립하여 길이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
+      "qid_v1_a6152c1d5291eae1f30b15014809749a059658845e4dc98a049e7b0cb5010d22",
+      "qid_v1_13e4413971a2216114f677a823e2acae074ab3dc7ae9098ed838a770dc2baba8",
       "qid_v1_2579df4dfcc65781282ce1b413b3883d75977492c510c260cb76c6fba012a418"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION_DOMAIN",
-    "pt": "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION",
-    "nameKo": "복수 근호 실수 조건",
-    "definition": "각 근호 안의 비음수 조건을 교차하여 허용 구간과 정수 개수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_074bd71ece4bf006b2e2d2b83fdb7f8f72fc2941f7590b70ae86e8bd3a6ca2fc"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_QUADRATIC_INEQUALITY_INTEGER_BOUND",
-    "pt": "PT_H1_QUADRATIC_INEQUALITY",
-    "nameKo": "최대 정수해 경계",
-    "definition": "최대 정수해가 만족하고 바로 다음 정수는 불만족하는 조건으로 매개변수를 제한한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8e515551b2c2fded1ef92ed00c6e923d39a8c66c118fcdf17cb15157ab2aa8aa"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_QUADRATIC_INEQUALITY_EXISTENCE",
-    "pt": "PT_H1_QUADRATIC_INEQUALITY",
-    "nameKo": "연립 부등식 존재 조건",
-    "definition": "부등식을 더한 필요조건과 특정 입력을 대입한 충분조건을 결합해 해의 존재 조건을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_78a31c3cfb92b50b84aba03816516ec7d27d632c54bc5af9a29db8a2aa5de072"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_QUADRATIC_INEQUALITY_UNIVERSAL",
-    "pt": "PT_H1_QUADRATIC_INEQUALITY",
-    "nameKo": "구간에서 항상 성립",
-    "definition": "꼭짓점의 위치에 따라 구간 최솟값을 나누어 이차부등식이 항상 성립할 조건을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4a3fe82d78022363a42ab61cff73746ea7028057afc61a9b50d044ca6dd08a6d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_QUADRATIC_INEQUALITY_BOUNDARY",
-    "pt": "PT_H1_QUADRATIC_INEQUALITY",
-    "nameKo": "공통 해집합 경계 복원",
-    "definition": "주어진 공통 해집합의 경계를 각 이차식의 근으로 놓아 계수를 구하고 열린·닫힌 구간을 확인한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_84202dda6be94d3aa3e6cba7590f8c4bacf9d9d895288f5fcdb8055a8b0314cc"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_SUBSET_COUNT_SIGN_SUBSET",
-    "pt": "PT_SUBSET_COUNT",
-    "nameKo": "곱 부호 조건 부분집합",
-    "definition": "허용 약수 중 음수의 짝수 개 선택과 양수의 자유 선택을 결합하고 공집합을 보정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_09577482f89afbb6fb02eb8c1f8e2b0931e180117a48a2686f70f38eaa311a1e"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7540,19 +6088,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_QUANTIFIER_NEGATION_NEGATED_EXTREMA",
-    "pt": "PT_QUANTIFIER_NEGATION",
-    "nameKo": "부정 명제와 극값",
-    "definition": "전칭명제의 부정을 존재명제로 바꾸고 이차식의 극값으로 성립 조건을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6210bcddbf9dff3e31d9ba1c51952029107cd73f00f6f1fddfc79a7eaaaefb50"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_QUANTIFIER_NEGATION_NEGATE",
     "pt": "PT_QUANTIFIER_NEGATION",
     "nameKo": "양화명제 부정",
@@ -7568,22 +6103,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_LINE_EQUATION_COEFFICIENT",
-    "pt": "PT_LINE_EQUATION",
-    "nameKo": "직선식 계수와 축평행",
-    "definition": "두 변수의 계수가 0인지 구별해 직선 표현 여부와 축 평행을 판단한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_de55dd94df0c1c3363bd9462f856a2eb4e12252e57993026becc8c24de0fc1f6"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_LINE_EQUATION_SLOPE",
     "pt": "PT_LINE_EQUATION",
-    "nameKo": "평행 수직 직선의 방정식",
+    "nameKo": "평행·수직 직선",
     "definition": "주어진 직선과 평행하거나 수직인 기울기를 정하고 한 점을 대입해 직선식을 구한다.",
     "absorbInto": null,
     "count": 2,
@@ -7609,19 +6131,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_LINE_EQUATION_COMMON_NORMAL",
-    "pt": "PT_LINE_EQUATION",
-    "nameKo": "두 방향에 수직인 직선",
-    "definition": "두 방향벡터와 내적이 0인 방향을 구해 주어진 점을 지나는 직선식을 세운다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_a1807dacd42a0f6174436c56669cd9f2b8fd99b62b814def070e907afe1ed82a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H22A_08_MATHEMATICAL_INDUCTION_REACHABLE",
     "pt": "PT_H22A_08_MATHEMATICAL_INDUCTION",
     "nameKo": "귀납 전이 도달 지표",
@@ -7631,84 +6140,6 @@
     "examples": [
       "qid_v1_df42f5b20ec33ab598512c27311ddfdbecf31a45f0c322767763daa5270cb532",
       "qid_v1_f2175fa6ada8c1f860f635c67ae2ac008f5b664dbc0f9482d603f3283d8195a7"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_08_MATHEMATICAL_INDUCTION_INDUCTION",
-    "pt": "PT_H22A_08_MATHEMATICAL_INDUCTION",
-    "nameKo": "수학적 귀납법 구조",
-    "definition": "기초 단계와 k에서 k+1로의 귀납 단계를 확인해 모든 자연수 명제를 증명하는 구조를 식별한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_bcb70943d7c76fcb1c0b9183e952254789d6d15c59cacfd169fe7bcedc998499"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_06_SEQUENCE_APPLICATION_SUBSEQUENCE",
-    "pt": "PT_H22A_06_SEQUENCE_APPLICATION",
-    "nameKo": "부분수열 성질 판정",
-    "definition": "등차·등비 일반항에서 인덱스 치환과 홀짝 조건을 분석하여 부분수열 성질을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8a1afa3936045646b185c02f546a4238337af95638b86819bbf010972793b556"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_06_SEQUENCE_APPLICATION_GENERAL_TERM",
-    "pt": "PT_H22A_06_SEQUENCE_APPLICATION",
-    "nameKo": "등차 등비 일반항",
-    "definition": "등차수열과 등비수열의 일반항 공식을 적용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6af6260718ef07b5f4bf1f24f5941babf5ea5d5636f39a043e87a9cd29e201c4"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_06_SEQUENCE_APPLICATION_SUM_FORMULA",
-    "pt": "PT_H22A_06_SEQUENCE_APPLICATION",
-    "nameKo": "등차 등비 합",
-    "definition": "등차수열과 등비수열의 합 공식을 적용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_69de3070fc13760f686834bb71eb9af89a4febf85a0969cb226a825ca86fc821"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIGONOMETRIC_INEQUALITY_INTEGER_TRIG",
-    "pt": "PT_TRIGONOMETRIC_INEQUALITY",
-    "nameKo": "삼각부등식 정수 후보",
-    "definition": "구간의 정수 입력을 삼각함수에 대입하고 정의되지 않는 값과 부등식 불만족 값을 제외한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_c73b2623abe7a0606e97a01fcdedec52ee8e797987138e3812d53f3fca10908e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_04_TRIG_EQUATION_TRIG_ROOTCOUNT",
-    "pt": "PT_H22A_04_TRIG_EQUATION",
-    "nameKo": "삼각치환 방정식 근 개수",
-    "definition": "삼각함수 치환 범위와 이차식의 값 범위를 이용해 원래 방정식의 근 개수 조건을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_629c5e1e337f1c6bdbfce3a4069c3da69d2d3c5f3d71f5d8c1db5221d1319549"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -7742,22 +6173,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H22A_05_TRIANGLE_AREA_RADIUS_RATIO",
-    "pt": "PT_H22A_05_TRIANGLE_AREA",
-    "nameKo": "내외접원 반지름 비",
-    "definition": "코사인법칙으로 넓이를 구하고 넓이의 내접원·외접원 표현을 연립해 반지름 비를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9e629403836a4e04ff56ec813ca7afd6d935ad0e8b8fe6c3d952a72e21dd7996"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H22A_05_TRIANGLE_AREA_INRADIUS",
     "pt": "PT_H22A_05_TRIANGLE_AREA",
-    "nameKo": "코사인법칙과 내접원 반지름",
+    "nameKo": "내접원 반지름",
     "definition": "코사인법칙과 삼각형 넓이식으로 넓이를 구한 뒤 반둘레로 나누어 내접원 반지름을 구한다.",
     "absorbInto": null,
     "count": 3,
@@ -7770,22 +6188,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H22A_05_COSINE_LAW_COS_CLAIMS",
-    "pt": "PT_H22A_05_COSINE_LAW",
-    "nameKo": "삼각형 법칙 진술 판정",
-    "definition": "코사인법칙의 변 관계식을 중심으로 사인법칙을 함께 적용해 진술의 참거짓을 판단한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_f85a39aa619c421fa0a1fb531f55ef85282c802507530be2e662fcbbe9f55645"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_STATISTICAL_ESTIMATION_SAMPLE_MEAN",
     "pt": "PT_STATISTICAL_ESTIMATION",
-    "nameKo": "표본평균의 기대값과 표준오차",
+    "nameKo": "표본평균 분포",
     "definition": "표본평균의 평균은 모평균이고 표준편차는 모표준편차를 표본크기 제곱근으로 나눈 값임을 이용한다.",
     "absorbInto": null,
     "count": 2,
@@ -7800,9 +6205,9 @@
     "bundle": "NTPL_STATISTICAL_ESTIMATION_PROP_CI",
     "pt": "PT_STATISTICAL_ESTIMATION",
     "nameKo": "모비율 신뢰구간",
-    "definition": "표본비율에 신뢰계수와 표준오차의 곱을 더하고 빼 모비율 신뢰구간을 구한다.",
+    "definition": "표본비율을 중심으로 표준오차와 신뢰계수를 이용해 모비율 신뢰구간을 구하거나, 주어진 구간의 중점에서 표본비율과 빈도를 복원한다.",
     "absorbInto": null,
-    "count": 4,
+    "count": 5,
     "examples": [
       "qid_v1_61880b73756d0f29e4a60465e67c2849ad84baa8656116677640e2c172dce735",
       "qid_v1_4000939232e1fd2211b76f4ac0bbe775eee48ffd7f4e910c17d4d88480d958c6",
@@ -7812,209 +6217,14 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_STATISTICAL_ESTIMATION_CI_CENTER",
-    "pt": "PT_STATISTICAL_ESTIMATION",
-    "nameKo": "신뢰구간 중점 복원",
-    "definition": "모비율 신뢰구간 중점으로 표본비율을 얻어 표본 수를 곱해 해당 인원을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_0f2d5b57565b73d695fce1a221fb1073863839d10c338fdfd2605f318a440ef7"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPONENTIAL_EQUATION_SAME_BASE",
-    "pt": "PT_EXPONENTIAL_EQUATION",
-    "nameKo": "지수방정식 밑 통일",
-    "definition": "양변의 밑을 통일하여 지수의 방정식을 푼다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3fb5fef685636abc8859bd7cfcbbf953d774de8a368bd8cf92a842d41799c388"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPONENTIAL_EQUATION_SUB_SIGN",
-    "pt": "PT_EXPONENTIAL_EQUATION",
-    "nameKo": "지수치환과 원래 해 부호",
-    "definition": "지수식을 양수 변수로 치환하고 원래 해의 부호를 치환변수 경계 조건으로 옮긴다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4b5b94f9a4cfd2711d7df8703e994581710c1549c29000f65f479a5b8c13647c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_EXPONENTIAL_EQUATION_DOUBLE_SUB",
     "pt": "PT_EXPONENTIAL_EQUATION",
     "nameKo": "중첩 치환 지수방정식",
     "definition": "지수식과 그 역수의 차를 순차 치환하여 이차방정식의 판별식으로 실근 조건을 구한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
     "count": 1,
     "examples": [
       "qid_v1_297c3633f82367243534527d7b18aa3009759b96adca6cc5ac5f789615f07554"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_LOG_FLOOR_INTERVAL_ENUMERATION_FRACTIONAL",
-    "pt": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
-    "nameKo": "로그 정수부 구간 방정식",
-    "definition": "로그 값을 정수부와 소수부로 나누고 정수부분이 바뀌는 구간마다 방정식을 푼다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_67d8de6659be297dba1acbf6dd4c2d0c7c15ac403e4d23fa6a4d252de328d58e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_LOG_FLOOR_INTERVAL_ENUMERATION_FLOOR_SUM",
-    "pt": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
-    "nameKo": "로그 정수부 가중합",
-    "definition": "절댓값 치환의 중복 횟수를 보존하며 거듭제곱 경계로 로그 정수부를 나누어 합산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_b8730909ca2b859894f1c0cc7e32bc8658f7880c10c3503d183daa39b5529e05"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_INVERSE_PROPERTIES_COMPARE",
-    "pt": "PT_INVERSE_PROPERTIES",
-    "nameKo": "원함수와 역함수 비교",
-    "definition": "역함수를 구하고 단조성으로 원함수와 역함수의 대소를 입력 구간별로 비교한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3719b2ea9d5c0a99af2b92750299c5801fa94542f6f8ca15ab9cb8fc765984a9"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIGONOMETRIC_DEFINITION_AREA_RATIO",
-    "pt": "PT_TRIGONOMETRIC_DEFINITION",
-    "nameKo": "삼각비로 넓이비 표현",
-    "definition": "직각삼각형 삼각비로 수선과 넓이를 표현하여 넓이비를 정리한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2a3001dcd5b5604ca6528dfaad528e4a1b78d9ad6e0c32951cd28e9938e119b7"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPONENT_CALCULATION_CUBIC_REDUCE",
-    "pt": "PT_EXPONENT_CALCULATION",
-    "nameKo": "기하 길이와 근호식 환원",
-    "definition": "도형의 변 관계로 근호 길이를 얻고 세제곱근 치환으로 삼차항을 상수로 환원한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2753aaecb535756fc747f932c31d3a87149d51849b41c30479e85abb9ee109d7"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPONENT_LAW_APPLICATION_SYMMETRIC",
-    "pt": "PT_EXPONENT_LAW_APPLICATION",
-    "nameKo": "지수치환 대칭식",
-    "definition": "지수식을 새 변수로 두고 곱·역수합으로 이차대칭식을 얻어 제곱합을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_5db96ddc6dc16c68ee27e6fce63207558a49c0800e45e96762c48ebe39ad82aa"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_01_LOG_PROPERTIES_LOG_PROOF",
-    "pt": "PT_H22A_01_LOG_PROPERTIES",
-    "nameKo": "로그 법칙 유도",
-    "definition": "로그의 지수 역관계와 밑변환으로 몫 법칙과 지수계수 분리 법칙을 증명한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_a79495718e68727c070e1e104d11f929bd4dd715f1e5f595d5e20c79bde98ed6"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TRIG_QUADRANT_EVALUATION_ABSOLUTE",
-    "pt": "PT_TRIG_QUADRANT_EVALUATION",
-    "nameKo": "사분면 부호로 절댓값 해제",
-    "definition": "사분면에 따른 삼각함수 부호를 정해 절댓값을 풀고 식을 정리한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_7ed14b8350a5a3b0bcf78129bb092fb2440215f82ab5c1de5d52db6fcf3033b8"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_03_LOG_INEQUALITY_LOG_INTEGER",
-    "pt": "PT_H22A_03_LOG_INEQUALITY",
-    "nameKo": "로그 절댓값 정수쌍",
-    "definition": "로그 차의 절댓값을 구간별로 풀어 자연수 곱·비 조건으로 바꾸고 중복을 보정해 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_e85ca9e55e72e0ecec565ec795956e650bce4f06ff8431e3244a61a2996a68ad"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPONENTIAL_INEQUALITY_UNIVERSAL",
-    "pt": "PT_EXPONENTIAL_INEQUALITY",
-    "nameKo": "로그치환 항상 성립",
-    "definition": "로그치환으로 이차부등식으로 바꾸어 모든 실수에서 성립할 최솟값 조건을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_279c15abd169f69633fdf4b555370408474230c3e4207ee3f8a6c154564174e6"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_COUNTING_COUNT_CONSTRAINT",
-    "pt": "PT_FUNCTION_COUNTING",
-    "nameKo": "함수 배정 조건별 개수",
-    "definition": "정의역 원소 배정에 일대일·증가·비감소 제약을 적용해 함수 개수와 조건부 비율을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9bf16bc9930d62ee70677bfc1ea346d1665b579d797b26cdf1597956d3f5c83c"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_03_LOG_EQUATION_INTEGER",
-    "pt": "PT_H22A_03_LOG_EQUATION",
-    "nameKo": "로그방정식 양의 정수해",
-    "definition": "로그 차를 하나로 합쳐 유리식 관계로 환원하고 양의 정수 조건으로 후보를 제한한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_78aed1d3a255deb6089f5e0f2c401f0a9a2302135adab97bf0e86aacf143115f"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8029,45 +6239,6 @@
     "examples": [
       "qid_v1_e32f33b41ed6865af932169d451619ef47b508fa357f6807fa50bd8377c0e73d",
       "qid_v1_6c9e0c3e94c105917931d21943ff98190e41e3a4153bf13cfbacc9d6284c2f8d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COUNTING_SELECTION_DISTRIBUTION_ORDER",
-    "pt": "PT_COUNTING_SELECTION_DISTRIBUTION",
-    "nameKo": "증가 비감소 선택",
-    "definition": "엄격증가 배열은 조합으로, 비감소 배열은 중복조합으로 세어 합한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_bdee9eb78bc9f39a0ab47adb393b959aa213fb2f11b0b78425c293684f7bb48e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COUNTING_REPEATED_ASSIGNMENT_PREFIX",
-    "pt": "PT_COUNTING_REPEATED_ASSIGNMENT",
-    "nameKo": "중복허용 사전순 순위",
-    "definition": "짧은 자릿수와 목표보다 작은 접두사 블록별 배열 수를 더해 사전순 순위를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_b662fecabcc1421c668d348757f128ecbcdbad03449db2d783e51a31ccc89d18"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPECTATION_VARIANCE_STANDARD",
-    "pt": "PT_EXPECTATION_VARIANCE",
-    "nameKo": "표준점수 역산",
-    "definition": "서로 다른 평균과 표준편차의 표준점수 변환식을 같게 놓아 원점수를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9270c2a18e6d2795fd20a002e5a1333140cdfb029ac9153312a8275552df238b"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8090,118 +6261,14 @@
   {
     "bundle": "NTPL_DERIVATIVE_MOTION_GEOMETRIC_RATE",
     "pt": "PT_DERIVATIVE_MOTION",
-    "nameKo": "도형 넓이 부피 변화율",
-    "definition": "닮음이나 도형 관계로 넓이·부피를 시간의 함수로 나타내 미분한다.",
+    "nameKo": "도형 변화율",
+    "definition": "닮음이나 도형 관계로 길이·넓이·부피를 시간의 함수로 나타내 미분한다.",
     "absorbInto": null,
-    "count": 3,
+    "count": 4,
     "examples": [
       "qid_v1_72244ae03611d1fd30ab16b3a5352402812e68e60fce637d00b1d93394d00152",
       "qid_v1_f3b9b9f18be7c5bdcb8085066a7dd50242182290d394a8919e44eb94be97caa1",
       "qid_v1_c4b8e6d7f78ed5faf4fbe9a4b73892e4beb956714c6f93e36c020155f693a35a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_DERIVATIVE_MOTION_SHADOW_RATE",
-    "pt": "PT_DERIVATIVE_MOTION",
-    "nameKo": "닮음 길이 변화율",
-    "definition": "닮음으로 두 길이 사이 식을 구해 시간에 따라 미분하고 주어진 속도를 대입한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_1f9bc0d830890d4da0122a0d62d5f69f1db39f208af2b00489b2d84a7a64d32d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_DERIVATIVE_EXTREMA_LOCAL",
-    "pt": "PT_DERIVATIVE_EXTREMA",
-    "nameKo": "극값 정의와 미분 조건",
-    "definition": "국소 극값의 정의와 미분가능할 때 도함수가 0인 필요조건을 반례로 구분한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_1f525a5f1adc02071156aca1e4292aa17d6cc8d0fde106657da99c698c5ebb5b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_DERIVATIVE_EXTREMA_CRITICAL",
-    "pt": "PT_DERIVATIVE_EXTREMA",
-    "nameKo": "도함수 부호와 극점 위치",
-    "definition": "도함수의 부호와 임계점의 구간 내부 여부를 조사해 극값 관련 조건을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_7dfe62a664d27a491120f6358f8ebfbd6233f158f7b6508b4827af9028c2ccae"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_GEO_PARABOLA_CHORD",
-    "pt": "PT_GEO_PARABOLA",
-    "nameKo": "포물선 현의 길이",
-    "definition": "포물선과 직선을 연립한 두 교점의 좌표 차로 현 길이를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_2d132dff5606fcb9f0ea4a8d7914cb200a74702ec6f9c25f3ff6c704d298405b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_GEO_PARABOLA_DOT_EXTREMA",
-    "pt": "PT_GEO_PARABOLA",
-    "nameKo": "포물선 교점 내적 극값",
-    "definition": "교점 좌표의 근과 계수 관계로 내적을 매개변수식으로 바꾸고 허용구간에서 최소화한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_d4d907492f759f27e1c9c18bb1c8c8cce2259234251dde13fc3e7f270d3305b8"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_DERIVATIVE_DEFINITION_DEFINITION",
-    "pt": "PT_DERIVATIVE_DEFINITION",
-    "nameKo": "미분계수 정의 대입 검토",
-    "definition": "차분식에서 빼야 할 함숫값을 확인해 잘못 대입한 단계를 찾는다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_87df64944525d616e56455de7d1992ee5e69d41d730632fef0fc2c5190ee4f72"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TANGENT_DERIVATIVE_INTERCEPT",
-    "pt": "PT_TANGENT_DERIVATIVE",
-    "nameKo": "접선의 알려진 축 교점",
-    "definition": "접선이 이미 지나는 축 위 점에서 절편을 직접 읽는다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_a8d40ae3fc5146a4f598748d68433f80d1f53130b1dcaf20004f21ef39ebac1a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_TANGENT_DERIVATIVE_SLOPE_SIGN",
-    "pt": "PT_TANGENT_DERIVATIVE",
-    "nameKo": "접선 기울기 부호",
-    "definition": "그래프에서 접선 기울기의 부호를 읽어 도함수값의 곱 부호를 판단한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_f2f1ee5dec6c88174136faa5af8b0c0d6a9ab5f7bd1f9588ffad21a0a9519f8b"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8216,45 +6283,6 @@
     "examples": [
       "qid_v1_21f297b71881feca7d80af975005dd691437ea50ebf379e3654112d99aa8f427",
       "qid_v1_13d17a591fe449c9e07aaaa1e09be2e10829b51a577d3d4b59f084dc78fd7df4"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MEAN_VALUE_THEOREM_MVT_RANGE",
-    "pt": "PT_MEAN_VALUE_THEOREM",
-    "nameKo": "평균값정리 도함수 범위",
-    "definition": "할선 기울기가 지정 구간의 도함수 값 범위에 속하도록 부등식을 연립한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_e70e803c37ef99407d3a809376b67633e27d31db7eac6e71a7000740cc795292"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_CONTINUITY_JUDGMENT_COUNTEREXAMPLE",
-    "pt": "PT_CONTINUITY_JUDGMENT",
-    "nameKo": "연속성 역명제 반례",
-    "definition": "극값은 존재하지만 불연속인 함수를 찾아 연속성 명제의 역을 반박한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_6e470a5587dce280001dfa7b980f4db5178ee8fbeca5c798426ac4aaedf95e34"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_GRAPH_PROPERTIES_RATIONAL_MONO",
-    "pt": "PT_FUNCTION_GRAPH_PROPERTIES",
-    "nameKo": "유리함수 증감과 끝값",
-    "definition": "매개변수 부호로 유리함수의 단조성을 정해 구간 끝에서 극값을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_8cac1be78ae440cc4f139f391098a06c4b970f87c0a5a64df8242fbdb582b91c"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8288,19 +6316,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_LIMIT_PARAMETER_DETERMINATION_RATIONALIZE",
-    "pt": "PT_LIMIT_PARAMETER_DETERMINATION",
-    "nameKo": "근호 차 극한 계수",
-    "definition": "근호의 차를 유리화하여 무한대 극한을 계산하고 주어진 값과 같게 놓는다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4111a5599fa1828e6ec9ac5f656200c1b1121a8c72076a5c304b24786b5eba4a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_MATRIX_MULTIPLICATION_DIMENSION",
     "pt": "PT_H1_MATRIX_MULTIPLICATION",
     "nameKo": "행렬곱 정의 조건",
@@ -8310,19 +6325,6 @@
     "examples": [
       "qid_v1_4e77b7858b065d998e8964569ed9a2b2a38074e0e0e6beb69e156ab6096019d8",
       "qid_v1_9436d66a79627abbe641baee7dd91c1401fc73151bda687b5cb74eaa33a6908d"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_MATRIX_MULTIPLICATION_LAWS",
-    "pt": "PT_H1_MATRIX_MULTIPLICATION",
-    "nameKo": "행렬곱 법칙 판정",
-    "definition": "비가환성·소거법칙 실패 반례와 결합법칙으로 명제의 참거짓을 판단한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_827cf2d3af7a41d163df82edd99f11a3b09864fac83eaac531bf1e7bdf99e744"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8345,7 +6347,7 @@
   {
     "bundle": "NTPL_H1_MATRIX_POWER_IDENTITY_SHEAR_POWER",
     "pt": "PT_H1_MATRIX_POWER_IDENTITY",
-    "nameKo": "비대각성분 거듭제곱 규칙",
+    "nameKo": "비대각 거듭제곱",
     "definition": "대각성분이 1인 삼각행렬의 거듭제곱에서 비대각성분이 지수에 비례하는 규칙을 구한다.",
     "absorbInto": null,
     "count": 2,
@@ -8386,66 +6388,14 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_DICTIONARY_ORDER_PERMUTATION_UNRANK",
-    "pt": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
-    "nameKo": "사전순 순위에서 배열",
-    "definition": "첫 자리 0을 제외하며 자릿수별 팩토리얼 블록을 차감해 지정 순위의 배열을 복원한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_29f42ec3c268b140731674e450bc2b77084708515b175d69e7ccd1b234135307"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_DICTIONARY_ORDER_PERMUTATION_RANK",
     "pt": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
     "nameKo": "배열의 사전순 순위",
     "definition": "첫 자리 0을 제외하고 목표보다 앞선 접두사별 팩토리얼 블록을 더해 순위를 구한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
     "count": 1,
     "examples": [
       "qid_v1_bd7731170999a467a54aa8bb00adcec81a6fc457af62fe40e777542780a995f8"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_GRAPH_INTERSECTION_INTERSECTION",
-    "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
-    "nameKo": "대칭 정렬과 교점 개수",
-    "definition": "모든 매개변수 조건에서 그래프의 중심을 정렬하고 산술기하평균 경계로 교점 개수를 판단한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_61f835eff3ff1956f623151a638fd0ec5948ae8ec3dc09f03a78c2d7ad4242af"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_POINT_LINE_DISTANCE_SQUARE_BOUND",
-    "pt": "PT_POINT_LINE_DISTANCE",
-    "nameKo": "점직선 거리 상한",
-    "definition": "거리제곱 유리식을 완전제곱으로 비교하여 상한과 등호 조건을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_d37627f426d099dfd1de73a5d5d5ec57a190175bb3b02ceb4b27892f410faba3"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_04_TRIG_PROPERTIES_ASYMPTOTE",
-    "pt": "PT_H22A_04_TRIG_PROPERTIES",
-    "nameKo": "탄젠트 점근선",
-    "definition": "탄젠트 입력이 π/2의 홀수배가 되는 조건으로 수직점근선을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9e79f931827ab83bf843c12a71c6578fc5b2867c23bf84131f873aed09311196"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8497,9 +6447,9 @@
   {
     "bundle": "NTPL_M1_LINEAR_EQUATION_MODELING_CANCEL",
     "pt": "PT_M1_LINEAR_EQUATION_MODELING",
-    "nameKo": "배열 변경에서 이차항 소거",
+    "nameKo": "배열 변경 방정식",
     "definition": "직사각형 배열의 행·열 변화 식을 세워 이차항을 소거하고 일차방정식으로 원래 수를 구한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
     "count": 1,
     "examples": [
       "qid_v1_f52664e10dc36692c209117c15b3251e690bcaa240b2b5aaff6fdcad0b66270d"
@@ -8536,58 +6486,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_FACTOR_THEOREM_REMAINDER_FORM",
-    "pt": "PT_H1_FACTOR_THEOREM",
-    "nameKo": "나머지 조건 다항식 표현",
-    "definition": "중복인수로 나눈 나머지가 주어질 때 몫과 나머지의 형태로 다항식을 두고 값 조건으로 계수를 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_82fddfb8c583aeda5f7fc85c0ef6dbfb9a4333fc574c7e65b134a3c12e6b3b73"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_FACTOR_THEOREM_EVEN_ROOT",
-    "pt": "PT_H1_FACTOR_THEOREM",
-    "nameKo": "짝다항식 대칭 중근",
-    "definition": "짝다항식의 부호 대칭 근과 중복도를 이용해 인수곱을 복원한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_89df23508353c5d831a697a188bb12517202d2e6a3e26284937db3aa836a0a00"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_FACTOR_THEOREM_IDENTITY",
-    "pt": "PT_H1_FACTOR_THEOREM",
-    "nameKo": "근 대입과 항등식 약분",
-    "definition": "제수 후보의 근을 대입해 계수를 정하고 항등식을 약분하여 다항식을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_399f685e2917b6aee98af528c0f4d6aa6a77265d7e5264699e00f298fee63747"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_POLY_DIVISION_MOD_REDUCE",
-    "pt": "PT_H1_POLY_DIVISION",
-    "nameKo": "나머지 합동식 환원",
-    "definition": "제수에 따른 낮은 차수 치환을 반복해 다항식 조합의 나머지를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_203490aa8bc4fb9ffa22b577975d6e6551d5c65d2815bc7629ec29799078ed4a"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_POLY_DIVISION_DIVISION",
     "pt": "PT_H1_POLY_DIVISION",
     "nameKo": "다항식 나눗셈 계수",
@@ -8618,7 +6516,7 @@
   {
     "bundle": "NTPL_LOG_APPLICATION_LOG_MODEL",
     "pt": "PT_LOG_APPLICATION",
-    "nameKo": "로그 모형 두 시점 비교",
+    "nameKo": "로그 모형 비교",
     "definition": "두 조건의 로그식을 빼 비율 관계로 바꾸고 모형 계수나 새로운 시점의 양을 구한다.",
     "absorbInto": null,
     "count": 6,
@@ -8672,45 +6570,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_REMAINDER_THEOREM_CUBIC_DIFF",
-    "pt": "PT_H1_REMAINDER_THEOREM",
-    "nameKo": "나머지 값의 세제곱 차",
-    "definition": "같은 제수의 근에 대입한 두 다항식 값의 차와 세제곱 차를 결합해 곱을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_44a110beffcdc22010ed6c96ca0e6b5a03cfee0b2bf7cf3ce0fb1c8cd02fd875"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_COMPLEX_OPERATION_CONJUGATE",
-    "pt": "PT_H1_COMPLEX_OPERATION",
-    "nameKo": "켤레 관계 복소수 판정",
-    "definition": "주어진 켤레 관계를 대입해 허수부 또는 반례로 진술을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_1f1d196ff9f74e0ba03e97bb7fe638b894ece950e593815c599b782790b1ea40"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_INEQUALITY_APPLICATION_RECTANGLE",
-    "pt": "PT_H1_INEQUALITY_APPLICATION",
-    "nameKo": "직사각형 조건 연립 부등식",
-    "definition": "둘레로 한 변을 다른 변으로 나타내고 변 차와 넓이 조건의 부등식을 함께 푼다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_c44424442b48771d5a22afcf10e40e9a0a9d4ae2ca4c13d7ea846f3fbbdd90db"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_INEQUALITY_APPLICATION_MODEL_BOUND",
     "pt": "PT_H1_INEQUALITY_APPLICATION",
     "nameKo": "수량 제한 이차부등식",
@@ -8720,32 +6579,6 @@
     "examples": [
       "qid_v1_cc5ceeaa20e62622f09ff7f70071f62f6954383d81c1f7264e9539ec1ec8c1cc",
       "qid_v1_7e33e529dabc665120f423a8a72d3805b3eb62aeb6d1caf13005a1ea2ba87ab3"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_INEQUALITY_APPLICATION_OBTUSE",
-    "pt": "PT_H1_INEQUALITY_APPLICATION",
-    "nameKo": "둔각삼각형 변 조건",
-    "definition": "삼각부등식과 가장 긴 변 제곱이 나머지 제곱합보다 크다는 조건을 교차한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_970b92aa822e949aa5d8f01592926ea23aa09aa1641f37dae81112b238f27da4"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_HIGHER_DEGREE_EQUATION_DISTINCT",
-    "pt": "PT_H1_HIGHER_DEGREE_EQUATION",
-    "nameKo": "고차방정식 서로 다른 실근",
-    "definition": "일차·이차인수로 분해한 뒤 중근과 공통근의 경우를 나누어 서로 다른 실근 개수를 맞춘다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_d559627f73d05e2d31f1ac28c3a435591fe2768c24bb9037de2c05ecbcce2dd0"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8764,54 +6597,16 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_H1_QUADRATIC_DISCRIMINANT_BETWEEN",
-    "pt": "PT_H1_QUADRATIC_DISCRIMINANT",
-    "nameKo": "두 근 사이 입력",
-    "definition": "위로 열린 이차식에서 주어진 입력이 두 근 사이에 있으려면 함숫값이 음수임을 이용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_58414230d3f09b69e7ebb1dd64d63e527d3955d1c614f733f418db816c7cd980"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_ROOT_COEFFICIENT_RELATION_VIETA",
-    "pt": "PT_H1_ROOT_COEFFICIENT_RELATION",
-    "nameKo": "근의 합과 곱 계산",
-    "definition": "이차방정식 계수에서 두 근의 합과 곱을 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3fc3cb33ec80e539ff91e8356ddd767cf58754b614fd5254a4f2dce6586510a8"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_H1_PERMUTATION_COMBINATION_CALCULATION_FACTORIAL",
     "pt": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
-    "nameKo": "순열 조합식 팩토리얼 변형",
+    "nameKo": "팩토리얼 변형",
     "definition": "순열·조합을 팩토리얼로 전개하고 공통인수나 분모를 정리해 항등식 또는 미지수를 구한다.",
     "absorbInto": null,
-    "count": 2,
+    "count": 4,
     "examples": [
-      "qid_v1_0cd27dd5fa09c5e32b2f96148ef8e660a6c3977206a3cf98d6fa7d88759ecd91",
-      "qid_v1_3c6e7bc8fb7c56bdfab76af3deafb3643a06ff0197382a8cf5453aa2d78d2d1f"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H1_ADJACENT_GROUP_PERMUTATION_INCLUSION",
-    "pt": "PT_H1_ADJACENT_GROUP_PERMUTATION",
-    "nameKo": "이웃 조건 포함배제",
-    "definition": "각 이웃 조건의 대상을 한 묶음으로 세고 두 조건이 겹치는 배열을 빼어 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4731a317382d82f1d6e1e445c213d37ca4b74780bfb1ded99c8931aa5394bfb6"
+      "qid_v1_91a743760f78bcf4768dc9329e09a1a1ee8cd850b1b40c05e0f0188fe79e7007",
+      "qid_v1_7d0f0d7b5700eb36fbd09a792b09947a08916dde2a40a6c6512c7c0faf51bf3b",
+      "qid_v1_0cd27dd5fa09c5e32b2f96148ef8e660a6c3977206a3cf98d6fa7d88759ecd91"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -8863,7 +6658,7 @@
   {
     "bundle": "NTPL_CIRCLE_TANGENT_APOLLONIUS",
     "pt": "PT_CIRCLE_TANGENT",
-    "nameKo": "거리비 원의 최대 시야각",
+    "nameKo": "거리비와 시야각",
     "definition": "거리비로 아폴로니오스 원을 정하고 최대 시야각의 접선 조건으로 직각삼각형을 만든다.",
     "absorbInto": null,
     "count": 3,
@@ -8893,7 +6688,7 @@
   {
     "bundle": "NTPL_SET_CONSTRUCTION_ENUMERATE",
     "pt": "PT_SET_CONSTRUCTION",
-    "nameKo": "조건제시 집합 원소 나열",
+    "nameKo": "집합 원소 나열",
     "definition": "약수·방정식·구간 조건을 만족하는 원소를 빠짐없이 나열한다.",
     "absorbInto": null,
     "count": 4,
@@ -8944,19 +6739,6 @@
     "examples": [
       "qid_v1_9b8f0a7e0036cb48d5b6a39878100cfc4514611d280a30b3cf02143b9d97c71f",
       "qid_v1_51ba07bac7b71f1c6cc1d2a99af2de03448529dd4c5097aa7df2fb6fcb071cdb"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_MOVE_COMPOSITE_INVARIANT",
-    "pt": "PT_MOVE_COMPOSITE",
-    "nameKo": "합동변환 넓이 보존",
-    "definition": "평행이동과 대칭이동의 합성에서 도형 넓이가 보존됨을 이용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9d135dfe9140e8e16f639374fb7cd56417070917865c52a461856b4b0c397349"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9020,19 +6802,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_CIRCLE_LINE_RELATION_LEVEL_COUNT",
-    "pt": "PT_CIRCLE_LINE_RELATION",
-    "nameKo": "원 위 넓이값 점 개수",
-    "definition": "넓이의 범위를 구한 뒤 경계값과 내부값의 실현 점 개수를 구분해 합산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_df9286f4e3b87744a012bd482b12b583343effc19e2afaeb993987fddcb00b64"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_DERIVATIVE_RATE_RELATION_SLOPE_COMPARE",
     "pt": "PT_DERIVATIVE_RATE_RELATION",
     "nameKo": "할선 접선 기울기 비교",
@@ -9056,19 +6825,6 @@
     "examples": [
       "qid_v1_158e8c518224af0f21906f03c7f27c0600bc41b3c6d7d9523244f7033f5da97d",
       "qid_v1_d95943da8232b480cbe744e61d3d905a4ba73e650a6bf3bff3be45992f57a7b0"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_EXTREMUM_EXISTENCE",
-    "pt": "PT_FUNCTION_EXTREMUM",
-    "nameKo": "극값 존재와 연속성",
-    "definition": "구간의 연속성과 수직점근선 양쪽의 발산을 확인해 최댓값·최솟값의 존재를 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_502c26d07ab00e39ad68094e1570a7515611351138b84858bbe2b1711f8cca3a"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9098,19 +6854,6 @@
     "examples": [
       "qid_v1_2af6d64944efccad3da304e5111dd8b2409d7add0cf3ac6f92fc0751e9966684",
       "qid_v1_26bdeccba28b7b9b5e53239ea2efef9dd9e53149c0eacaf9b035fd4d4f9922e1"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_SET_EQUALITY_ROSTER",
-    "pt": "PT_SET_EQUALITY",
-    "nameKo": "집합의 동일성",
-    "definition": "조건제시 집합을 원소나열법으로 바꿔 같은 원소를 갖는지 비교한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_f0e33608620402114254e9acd51776c57f57676edea393955e44feb8af97e9be"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9178,26 +6921,13 @@
   {
     "bundle": "NTPL_GEO_SPACE_FIGURE_LINE_PLANE",
     "pt": "PT_GEO_SPACE_FIGURE",
-    "nameKo": "직선 평면 각과 투영길이",
+    "nameKo": "직선·평면 각",
     "definition": "방향벡터와 평면 법선의 정규화 내적으로 법선 성분을 구하고 평면과의 각 또는 투영길이를 계산한다.",
     "absorbInto": null,
     "count": 2,
     "examples": [
       "qid_v1_60186d3edcedadf9833dcd41e3915ff556bc9a924fac8a8df9790080ef070aea",
       "qid_v1_94fcc61274ac720f5ec7008a79839fbbbca10faeb27a8df9a368ca1ee0a61850"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_GEO_SPACE_FIGURE_PARALLEL_NORMAL",
-    "pt": "PT_GEO_SPACE_FIGURE",
-    "nameKo": "직선 평면 수직 계수",
-    "definition": "직선 방향벡터가 평면 법선과 평행함을 성분비로 적용한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_95eee161223495c78cb795e0c3201851c417316f3c9f5de9e4e53ceea33d0869"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9213,32 +6943,6 @@
       "qid_v1_e57079a991588b48dd960d7ed7874c7cdbcf4d4d9bf0688441d47272d02f28af",
       "qid_v1_fa4c223fa47c049efddce2a0ed597b18885deb061ec688964b2e3904ec6c137f",
       "qid_v1_83e2fce69d4944538893be0859eb6eeef7610a7bbb5bc0682d3c338e0cd306c7"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_GEO_ELLIPSE_ELIMINATE",
-    "pt": "PT_GEO_ELLIPSE",
-    "nameKo": "타원 자취 매개변수 소거",
-    "definition": "길이 조건과 내분점 좌표로 매개변수를 소거하여 타원 자취를 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_dbbfa2f6080c9fc10b6355c0c40662d27d85dd9e67ebaa99cd94bb5aa021a17e"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_GEO_ELLIPSE_FOCAL_TRIANGLE",
-    "pt": "PT_GEO_ELLIPSE",
-    "nameKo": "타원 초점삼각형",
-    "definition": "타원의 초점거리합과 직각삼각형 제곱합을 결합해 거리곱을 구한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_05519625e6f86b47752dcf969ca40c90f9050cfd7f634f5ea0f1dd70d6e3285a"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9288,22 +6992,9 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_GEO_HYPERBOLA_TRIANGLE_BOUND",
-    "pt": "PT_GEO_HYPERBOLA",
-    "nameKo": "초점거리차와 삼각부등식",
-    "definition": "쌍곡선 거리차로 목표 거리합을 바꾸고 삼각부등식의 등호가 곡선에서 실현되는지 확인한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_13bc1fdc7a3bbf1c52d4aa8681fd1e57938c0d148238e93de12181818cda2f16"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
     "pt": "PT_GEO_CONIC_TANGENT",
-    "nameKo": "기울기 지정 이차곡선 접선",
+    "nameKo": "기울기 지정 접선",
     "definition": "평행·수직 조건으로 접선 기울기를 정하고 이차곡선의 기울기 지정 접선식으로 계수나 절편을 구한다.",
     "absorbInto": null,
     "count": 4,
@@ -9333,7 +7024,7 @@
   {
     "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
     "pt": "PT_FUNCTION_GRAPH_GEOMETRY",
-    "nameKo": "그래프 교점 삼각형 넓이",
+    "nameKo": "교점 삼각형 넓이",
     "definition": "그래프와 수평선 교점에서 밑변과 높이를 읽어 삼각형 넓이를 구한다.",
     "absorbInto": null,
     "count": 2,
@@ -9361,7 +7052,7 @@
   {
     "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
     "pt": "PT_FUNCTION_GRAPH_GEOMETRY",
-    "nameKo": "지수로그 그래프 좌표 추적",
+    "nameKo": "그래프 좌표 추적",
     "definition": "그림의 절편과 대응하는 입력·출력값을 차례로 추적해 좌표를 구한다.",
     "absorbInto": null,
     "count": 2,
@@ -9382,19 +7073,6 @@
     "examples": [
       "qid_v1_e7f6550571f6a2579f5697b7dcff4d579d449dc1fd3af68a1dd7a6e02636e12c",
       "qid_v1_f2e6952a490b885c9b2e7a84100cdb48f26ab0aeed054ada88dd7e42b23d5053"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_H22A_07_SIGMA_NOTATION_SIGMA",
-    "pt": "PT_H22A_07_SIGMA_NOTATION",
-    "nameKo": "합의 시그마 표현",
-    "definition": "일반항과 마지막 항의 지표를 찾아 합을 시그마 기호로 나타낸다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_4fe089cd7ef09798476047e82c8f7e8cbc6322f6ef528420e7d2e4242a05c37d"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9433,7 +7111,7 @@
     "pt": "PT_FUNCTION_GRAPH_QUADRANT",
     "nameKo": "로그 그래프 구간 부호",
     "definition": "주어진 x구간에서 로그함수의 단조성과 경계 극한으로 y의 부호 조건을 정한다.",
-    "absorbInto": null,
+    "absorbInto": "TPL_FUNCTION_QUADRANT_PARAMETER",
     "count": 1,
     "examples": [
       "qid_v1_96aefa8296c1e25ec71ce803cd898770dadd8c6d9c9bfd62cdf2f4111a7290af"
@@ -9455,19 +7133,6 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_PROBABILITY_PROPERTIES_APPLICATION_SAMPLE_SPACE",
-    "pt": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-    "nameKo": "표본공간과 사건 나열",
-    "definition": "가능한 결과 전체와 조건을 만족하는 사건의 원소를 구분해 나열한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3892b3ff350a0b4b81ca558a4724a115c0a0898ef9fcc13e2681361638995c05"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_MOVE_COMPOSITE_SHIFT_AREA",
     "pt": "PT_MOVE_COMPOSITE",
     "nameKo": "복합 이동과 영역 넓이",
@@ -9476,35 +7141,6 @@
     "count": 1,
     "examples": [
       "qid_v1_7a2c037ec05170de7878bd4247877d2461dd1b98c9dade8f6948d626044216a1"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_CIRCLE_EQUATION_CLAIM_AUDIT",
-    "pt": "PT_CIRCLE_EQUATION",
-    "nameKo": "원의 조건 진술 판정",
-    "definition": "반지름 제곱의 양수 조건과 축 접촉 조건을 대조하고 반례로 보편 진술을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_5d50ba4d0dcf01793ddc67dcd565b907d73c489bdfd16dd87cbd93a2c0d57e6b"
-    ],
-    "relatedKeys": [
-      "TM_CIRCLE_EXISTENCE_CONDITION",
-      "TM_CIRCLE_AXIS_TANGENT"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORD_FIGURE_PROPERTIES_MEDIAN_PROOF",
-    "pt": "PT_COORD_FIGURE_PROPERTIES",
-    "nameKo": "좌표로 중선 정리 증명",
-    "definition": "한 변의 중점을 원점으로 놓아 두 거리 제곱의 합에서 교차항을 소거하여 중선 정리를 증명한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_79fb1dd04f41a18af0e3c1d33e8b5985449da22b8d2e5e45295f66d850532864"
     ],
     "relatedKeys": [],
     "narrowExisting": []
@@ -9524,151 +7160,16 @@
     "narrowExisting": []
   },
   {
-    "bundle": "NTPL_COORD_SECTION_SECTION_AUDIT",
-    "pt": "PT_COORD_SECTION",
-    "nameKo": "내분 외분 진술 판정",
-    "definition": "등분점을 좌표화하고 점의 순서와 거리비를 비교해 내분·외분 진술을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_18a996954ca22f78af74ae5aaae0945ca3d4317b1e2cd5ac4e8d3c30ebe84d6c"
-    ],
-    "relatedKeys": [
-      "TPL_SECTION_BOTH"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_SUBSET_COUNT_CARDINALITY_PARITY",
-    "pt": "PT_SUBSET_COUNT",
-    "nameKo": "부분집합 크기 홀짝",
-    "definition": "원소합 조건으로 필수 원소를 정하고 남은 원소의 선택 개수 홀짝을 맞추어 부분집합을 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_201789779b767a9f7defeddebfde7003e3f9044d531c2debf571a884cfceea82"
-    ],
-    "relatedKeys": [
-      "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_DOMAIN_RANGE_SURJECTIVITY_IMAGE_CARDINALITY",
-    "pt": "PT_DOMAIN_RANGE_SURJECTIVITY",
-    "nameKo": "치역 원소수 최적화",
-    "definition": "유한 정의역에서 같은 함숫값을 갖는 입력을 묶고 묶음 수가 최소가 되는 매개변수를 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3be1a2621ad257a10cf4f8eb2549bf72d80d34196140a307d5bc93a41f6259cc"
-    ],
-    "relatedKeys": [
-      "TPL_RANGE_ENUMERATION",
-      "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_INTEGER_LEVELS",
-    "pt": "PT_FUNCTION_GRAPH_GEOMETRY",
-    "nameKo": "정수 높이 교점 수",
-    "definition": "대칭 그래프의 정수 높이별 수평선 교점 개수를 누적해 꼭짓점 높이와 계수를 정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_9908b504105d14ee3429f21379e77449fc17e7aa59e86ce13870eebc2e13ff64"
-    ],
-    "relatedKeys": [
-      "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_FUNCTION_COUNTING_FIBER_REPRESENTATIVE",
-    "pt": "PT_FUNCTION_COUNTING",
-    "nameKo": "원상별 대표 선택",
-    "definition": "고정 함수가 일대일대응이 되도록 각 함숫값의 원상에서 대표 하나씩을 선택하여 가능한 정의역을 센다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_dfd3fd6b5ff1e71492e419ce7f02cbe01dd14715372a2465c787b80d01d25a3f"
-    ],
-    "relatedKeys": [
-      "TPL_INJECTIVE_BIJECTION_COUNT"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_SET_AGGREGATE_SUM_CLAIMS",
-    "pt": "PT_SET_AGGREGATE",
-    "nameKo": "원소합 성질 판정",
-    "definition": "서로소 영역의 원소합 가법성을 확인하고 같은 합을 갖는 다른 집합의 반례로 진술을 판정한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_3b54370fba1c07d916ebc69a75d11a85446bbf24d9fb0784a86231566de644ad"
-    ],
-    "relatedKeys": [
-      "TPL_SET_ELEMENT_SUM"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_COORD_FIGURE_PROPERTIES_RIGHT_VERTEX_CASES",
-    "pt": "PT_COORD_FIGURE_PROPERTIES",
-    "nameKo": "직각 꼭짓점 경우분류",
-    "definition": "좌표 삼각형의 직각 꼭짓점을 나누어 수직 조건 또는 지름 원으로 후보 꼭짓점을 구한 뒤 넓이를 비교한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_363c98e4a9f3f7e9b1be969f929664a90d2f735c4af32f61cf388db7cd07290b"
-    ],
-    "relatedKeys": [],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_CONTRADICTION_PROOF_INTEGER_PRODUCT",
-    "pt": "PT_CONTRADICTION_PROOF",
-    "nameKo": "정수 인수곱 귀류법",
-    "definition": "유리수 가정을 기약분수의 정수 제곱 관계로 바꾸고 차의 제곱을 인수분해하여 정수 인수곱이 1인 조건의 모순을 보인다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_eeaae8329366ce661ae678ca266009f5e7b4c5b334127a25ecbbf37a53a8af69"
-    ],
-    "relatedKeys": [
-      "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION",
-      "TPL_IRRATIONALITY_INTEGER_GAP_CONTRADICTION"
-    ],
-    "narrowExisting": []
-  },
-  {
-    "bundle": "NTPL_EXPECTATION_VARIANCE_DISTRIBUTION_MEAN",
-    "pt": "PT_EXPECTATION_VARIANCE",
-    "nameKo": "확률분포 평균",
-    "definition": "각 확률변수 값과 그 확률의 곱을 더하여 기댓값을 직접 계산한다.",
-    "absorbInto": null,
-    "count": 1,
-    "examples": [
-      "qid_v1_64c16ed1afd78cc123dc5562f64b70d4685da3f38c3e276948ebaab4787f2f45"
-    ],
-    "relatedKeys": [
-      "TPL_EXPECTATION_TRANSFORM"
-    ],
-    "narrowExisting": []
-  },
-  {
     "bundle": "NTPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
     "pt": "PT_M1_COORD_TRIANGLE_AREA",
-    "nameKo": "중2 직선 교점 좌표 넓이",
+    "nameKo": "직선 교점 넓이",
     "definition": "중2 시험지에서 직선들의 교점과 절편을 구하고 좌표차를 밑변·높이로 삼각형 넓이를 계산한다.",
     "absorbInto": null,
     "count": 3,
     "examples": [
-      "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
       "qid_v1_1e86fe684aa9067c7eddbc36fb97d94976245e41e50eedb231e3e6421de897a7",
-      "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520"
+      "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520",
+      "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0"
     ],
     "relatedKeys": [
       "TPL_M1_COORD_TRIANGLE_AREA_DIRECT"
