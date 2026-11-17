@@ -1,0 +1,398 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "큰 삼각형의 대응각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lH",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "lH"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "H"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ],
+            "dashed": true
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "6"
+            },
+            {
+              "id": "lCA",
+              "ownerSegment": "sCA",
+              "text": "8"
+            },
+            {
+              "id": "lBC",
+              "ownerSegment": "sBC",
+              "text": "10"
+            }
+          ],
+          "angles": [
+            {
+              "id": "ax",
+              "refs": [
+                "B",
+                "A",
+                "H"
+              ],
+              "label": "x",
+              "color": "BLUE"
+            },
+            {
+              "id": "cx",
+              "refs": [
+                "B",
+                "C",
+                "A"
+              ],
+              "label": "x",
+              "color": "BLUE"
+            },
+            {
+              "id": "ay",
+              "refs": [
+                "H",
+                "A",
+                "C"
+              ],
+              "label": "y",
+              "color": "WARM"
+            },
+            {
+              "id": "by",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "label": "y",
+              "color": "WARM"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "ra",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "rh",
+            "refs": [
+              "A",
+              "H",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "수선으로 나뉜 작은 삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lH",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "lH"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "H"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ]
+          },
+          {
+            "id": "sHC",
+            "refs": [
+              "H",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "expressionLabels": []
+        },
+        "rightAngles": [
+          {
+            "id": "rh",
+            "refs": [
+              "A",
+              "H",
+              "C"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "큰 삼각형에서 파란 x와 주황 y에 대응하는 각을 찾고 수선으로 나뉜 직각삼각형과 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6, AC=8, 직각 A, H는 A에서 BC로 내린 수선의 발.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계산한 빗변10과 대응각을 함께 보이고 삼각비의 합은 숨긴다."
+  ],
+  "accessibilityDescription": "큰 삼각형에서 파란 x와 주황 y에 대응하는 각을 찾고 수선으로 나뉜 직각삼각형과 비교한다."
+}
