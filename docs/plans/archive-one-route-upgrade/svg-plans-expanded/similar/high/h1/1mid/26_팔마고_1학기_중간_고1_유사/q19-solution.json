@@ -1,0 +1,144 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "b",
+        "ownerSegment": "AC",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "ownerSegment": "AB",
+        "text": "c=b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a",
+        "ownerSegment": "BC",
+        "text": "a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "인수분해하면(b−c)(ab+ac+bc)=0이고 모든 변이 양수여서 둘째 인수는 양수다. 따라서 b=c,즉 AB=AC. 그림 길이5,5,6은 한 대표 배치이며 원문 고정값이 아니다. 정답 A를 꼭지각으로 하는 이등변삼각형.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형(서술형) 1]\n삼각형 $ABC$에서 $\\overline{BC}=a$, $\\overline{CA}=b$, $\\overline{AB}=c$일 때, 다음 등식이 성립한다.\n$ab^2-ac^2+b^2c-bc^2=0$ 삼각형 $ABC$가 무슨 삼각형인지 정확하게 풀이과정과 함께 쓰시오. [4.8점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "인수분해하면(b−c)(ab+ac+bc)=0이고 모든 변이 양수여서 둘째 인수는 양수다. 따라서 b=c,즉 AB=AC. 그림 길이5,5,6은 한 대표 배치이며 원문 고정값이 아니다. 정답 A를 꼭지각으로 하는 이등변삼각형.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "첫 점은 좌표 배치 기준이고 나머지는 정확 기호좌표로 유도한다. 실제 해/허용 대표예시는 caption에 구별했으며 단순 평면도형 점좌표를 새 원문 조건으로 추가하지 않는다.",
+      "mappedTo": "construction nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "인수분해하면(b−c)(ab+ac+bc)=0이고 모든 변이 양수여서 둘째 인수는 양수다. 따라서 b=c,즉 AB=AC. 그림 길이5,5,6은 한 대표 배치이며 원문 고정값이 아니다. 정답 A를 꼭지각으로 하는 이등변삼각형."
+  ]
+}

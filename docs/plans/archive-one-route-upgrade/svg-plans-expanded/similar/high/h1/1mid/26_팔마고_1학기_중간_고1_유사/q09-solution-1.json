@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "34"
+              },
+              {
+                "kind": "integer",
+                "value": "9"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "34"
+              },
+              {
+                "kind": "integer",
+                "value": "9"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-14"
+              },
+              {
+                "kind": "integer",
+                "value": "9"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-14"
+              },
+              {
+                "kind": "integer",
+                "value": "9"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "width",
+        "ownerSegment": "AB",
+        "text": "2t=4/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "DA",
+        "text": "6−3t²/2=16/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "원본의 축에 평행한 직사각형 배치를 그대로 보존한다. 최대를 이루는 t=2/3에서 A(2/3,34/9),D(2/3,−14/9), 폭4/3,높이16/3이다. 둘레2(4/3+16/3)=40/3. 정답40/3.",
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinatePanel": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 직사각형 $ABCD$의 두 꼭짓점 $A, B$는 이차함수 $y=-\\dfrac{1}{2}x^2+4$의 그래프 위에 있고, 두 꼭짓점 $C, D$는 이차함수 $y=x^2-2$의 그래프 위에 있다. 이때 직사각형 $ABCD$의 둘레의 길이에 대한 최댓값은?\n(단, 점 $A$는 제1사분면, 점 $D$는 제4사분면 위의 점이다.) [4.5점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "원본의 축에 평행한 직사각형 배치를 그대로 보존한다. 최대를 이루는 t=2/3에서 A(2/3,34/9),D(2/3,−14/9), 폭4/3,높이16/3이다. 둘레2(4/3+16/3)=40/3. 정답40/3. 둘레L(t)=−3(t−2/3)²+40/3. 원문 D가 제4사분면이므로 실제 범위0<t<√2이며 표시창 오른끝3/2는 비교용 연장이다. t=2/3은 허용되어 최대40/3. 그림 식 x는 t, y는 L이다. 정답40/3.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "첫 점은 좌표 배치 기준이고 나머지는 정확 기호좌표로 유도한다. 실제 해/허용 대표예시는 caption에 구별했으며 단순 평면도형 점좌표를 새 원문 조건으로 추가하지 않는다.",
+      "mappedTo": "construction nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 축에 평행한 직사각형 배치를 그대로 보존한다. 최대를 이루는 t=2/3에서 A(2/3,34/9),D(2/3,−14/9), 폭4/3,높이16/3이다. 둘레2(4/3+16/3)=40/3. 정답40/3."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "status": "LABEL_PLACEMENT_PATCH_PLAN",
+  "executable": false,
+  "role": "problem",
+  "preserveGeometry": true,
+  "target": "angleB-label",
+  "oldAnchor": [
+    355.142365583,
+    316.297653489
+  ],
+  "owner": "angleB",
+  "ownerRays": [
+    "Qdown",
+    "Q1",
+    "N1"
+  ],
+  "geometryEvidence": "angleB arc는 Q1(약410,308)에서 SW쪽으로 이어지고 source data-owner-points가 Qdown Q1 N1이다. 라벨은 왼쪽 다른 횡단선 가까이 떨어져 있다.",
+  "placement": "b를 angleB 호 내부에서 읽히게 배치하되 폭/높이가 호를 덮으면 오른쪽 아래 외부영역에 놓고 지시선 끝을 angleB 호 중점(대략390,328)에 연결한다. 절대 좌표를 blind 적용하지 말고 최종 글꼴 측정 후 승인한다.",
+  "forbidden": [
+    "첫 횡단선과n의 교점에 연결 금지",
+    "85°와 b 라벨/호 중첩 금지",
+    "문제 그림에 a55,b85,답30을 추가 금지",
+    "관계가 맞는 횡단선 각도를 임의 회전하거나 원문 수치 변경 금지"
+  ],
+  "solutionPanel": "별도 해설 패널에서는 a=180−125=55,b=85(맞꼭지각),b−a30을 표시하고 b의 같은 소유각에 지시선을 연결한다.",
+  "render": "NOT_RUN",
+  "visualStatus": "SOURCE_XML_REVIEW_ONLY; 새 SVG 변환/렌더 미실행"
+}

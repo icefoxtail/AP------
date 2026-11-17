@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "svg-engine-upgrade-requirements-v1",
+  "executablePlanCount": 20,
+  "requirementCount": 2,
+  "requirements": [
+    {
+      "status": "ENGINE_UPGRADE_REQUIRED",
+      "reason": "PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED",
+      "requestedPlan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "12",
+                "0",
+                "-11",
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "domain": [
+            "-33/10",
+            "33/10"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": "0",
+              "y": "12"
+            },
+            {
+              "id": "V1",
+              "x": "-sqrt(22)/2",
+              "y": "-73/4"
+            },
+            {
+              "id": "V2",
+              "x": "sqrt(22)/2",
+              "y": "-73/4"
+            },
+            {
+              "id": "L",
+              "x": "-33/10",
+              "y": "108021/10000",
+              "marker": "NONE"
+            },
+            {
+              "id": "R",
+              "x": "33/10",
+              "y": "108021/10000",
+              "marker": "NONE"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "L",
+              "R"
+            ]
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "A",
+                "curveX": "-sqrt((11+sqrt(73))/2)",
+                "coordinates": true,
+                "unnamed": false
+              },
+              {
+                "id": "B",
+                "curveX": "-sqrt((11-sqrt(73))/2)",
+                "coordinates": true,
+                "unnamed": false
+              },
+              {
+                "id": "C",
+                "curveX": "sqrt((11-sqrt(73))/2)",
+                "coordinates": true,
+                "unnamed": false
+              },
+              {
+                "id": "D",
+                "curveX": "sqrt((11+sqrt(73))/2)",
+                "coordinates": true,
+                "unnamed": false
+              }
+            ]
+          }
+        },
+        "caption": "실제 m3에서 x⁴−11x²+12이다. u=(11+√73)/2,v=(11−√73)/2>0이고 네 근은−√u,−√v,√v,√u 순이다. ad+bc=−u−v=−11에서 m²+2=11. 정답 m3."
+      },
+      "requirement": "실제 사차곡선의 네 근과 두 무리 극점의 정확 표시 지원. 실행 가능한 치환/근순서 두 패널과 별도 요구이며 엔진 검사 우회하지 않는다.",
+      "render": "NOT_RUN",
+      "sourceOrdinal": 18,
+      "executable": false,
+      "actualRender": "NOT_RUN"
+    },
+    {
+      "status": "ENGINE_UPGRADE_REQUIRED",
+      "reason": "PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED",
+      "requestedPlan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "domain": [
+            -4,
+            4
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": "-4",
+              "y": "24",
+              "marker": "NONE"
+            },
+            {
+              "id": "V",
+              "x": "1",
+              "y": "-1"
+            },
+            {
+              "id": "R",
+              "x": "4",
+              "y": "8",
+              "marker": "NONE"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "L",
+              "R"
+            ]
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "compare",
+                "slope": "-2*sqrt(2)",
+                "intercept": "6",
+                "label": "y=-2sqrt(2)x+6",
+                "style": "DASHED"
+              }
+            ],
+            "points": [
+              {
+                "id": "L1",
+                "curveX": "1-sqrt(2)-sqrt(9-2*sqrt(2))",
+                "coordinates": true,
+                "unnamed": true
+              },
+              {
+                "id": "R1",
+                "curveX": "1-sqrt(2)+sqrt(9-2*sqrt(2))",
+                "coordinates": true,
+                "unnamed": true
+              }
+            ]
+          }
+        },
+        "caption": "m=−2√2의 바깥 두 교점만 확대 비교한다. 보조 포물선 전체를 보이지만 실제 h에서 이 식을 쓰는 범위는 x≤−1 또는 x≥2뿐이다. 두 교점 x=1−√2±√(9−2√2)는 각각 이 범위를 만족한다. 가운데 구간은 앞 패널의 다른 포물선과 접점(√2,2)을 사용하므로 이 패널의 중앙 곡선은 원래 h가 아니다. 정답 세 교점, T17."
+      },
+      "requirement": "중첩근호 교점의 graph overlay exact-form 지원. 현재 실행 대안은 공식 exact construction 좌표판.",
+      "render": "NOT_RUN",
+      "sourceOrdinal": 22,
+      "executable": false,
+      "actualRender": "NOT_RUN"
+    }
+  ],
+  "consumptionRule": "요구사항 기록 전용. q*.json 실행 계획 목록에 넣거나 PASS로 집계하지 않는다."
+}

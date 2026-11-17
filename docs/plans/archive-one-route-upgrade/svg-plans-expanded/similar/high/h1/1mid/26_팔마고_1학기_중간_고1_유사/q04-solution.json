@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "formula": "(5) + (-4)*x + (1)*x^2"
+  },
+  "caption": "실제 최솟값인 k9일 때 y=(x−2)²+1은 꼭짓점이 x축 위에 있다. 일반적으로 꼭짓점 높이2k−17>0에서 k>17/2. 정답 최소 정수9.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차함수 $y=x^2-4x+2k-13$의 그래프와 $x$축이 만나지 않도록 하는 정수 $k$의 최솟값은? [3.8점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "실제 최솟값인 k9일 때 y=(x−2)²+1은 꼭짓점이 x축 위에 있다. 일반적으로 꼭짓점 높이2k−17>0에서 k>17/2. 정답 최소 정수9.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 최솟값인 k9일 때 y=(x−2)²+1은 꼭짓점이 x축 위에 있다. 일반적으로 꼭짓점 높이2k−17>0에서 k>17/2. 정답 최소 정수9."
+  ]
+}

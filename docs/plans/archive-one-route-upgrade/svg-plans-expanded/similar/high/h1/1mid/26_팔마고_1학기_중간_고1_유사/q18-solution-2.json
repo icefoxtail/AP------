@@ -1,0 +1,391 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "div",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "11"
+                          },
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "expression",
+                            "op": "div",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "1"
+                              },
+                              {
+                                "kind": "integer",
+                                "value": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "73"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "div",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "11"
+                          },
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "expression",
+                            "op": "div",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "-1"
+                              },
+                              {
+                                "kind": "integer",
+                                "value": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "73"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "11"
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "div",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "-1"
+                          },
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "73"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "add",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "11"
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "div",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "1"
+                          },
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "73"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "axis",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "점 A,B,C,D는 각각 소문자 근 a,b,c,d의 위치를 나타낸다. a=−√u,b=−√v,c=√v,d=√u, u=(11+√73)/2,v=(11−√73)/2. 원점 대칭인 바깥근의 곱 ad=−u,안쪽근의 곱 bc=−v이므로 합−11. 정답 m3.",
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinatePanel": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 사차방정식 $x^4-(m^2+2)x^2+4m=0$이 서로 다른 네 실근 $a, b, c, d$를 갖고, $ad+bc=-11$의 관계가 성립할 때, 양수 $m$의 값은? (단, $a<b<c<d$이다.) [5점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "t=x²로 치환한 실제 t²−11t+12이다. 두 영점 v=(11−√73)/2,u=(11+√73)/2는 양수이며 합11,곱12. 따라서 네 x근은−√u,−√v,√v,√u이고 ad+bc=−11. 정답 m3. 점 A,B,C,D는 각각 소문자 근 a,b,c,d의 위치를 나타낸다. a=−√u,b=−√v,c=√v,d=√u, u=(11+√73)/2,v=(11−√73)/2. 원점 대칭인 바깥근의 곱 ad=−u,안쪽근의 곱 bc=−v이므로 합−11. 정답 m3.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "첫 점은 좌표 배치 기준이고 나머지는 정확 기호좌표로 유도한다. 실제 해/허용 대표예시는 caption에 구별했으며 단순 평면도형 점좌표를 새 원문 조건으로 추가하지 않는다.",
+      "mappedTo": "construction nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "점 A,B,C,D는 각각 소문자 근 a,b,c,d의 위치를 나타낸다. a=−√u,b=−√v,c=√v,d=√u, u=(11+√73)/2,v=(11−√73)/2. 원점 대칭인 바깥근의 곱 ad=−u,안쪽근의 곱 bc=−v이므로 합−11. 정답 m3."
+  ]
+}

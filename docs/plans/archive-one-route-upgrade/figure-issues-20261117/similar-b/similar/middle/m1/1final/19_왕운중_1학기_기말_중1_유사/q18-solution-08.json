@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "NA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "NB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "NC",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ND",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "NE",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "NF",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "NG",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "NH",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "NA",
+    "NB",
+    "NC",
+    "ND",
+    "NE",
+    "NF",
+    "NG",
+    "NH"
+  ],
+  "hiddenPointNames": [
+    "NA",
+    "NB",
+    "NC",
+    "ND",
+    "NE",
+    "NF",
+    "NG",
+    "NH"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "NA",
+        "NB"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "NC",
+        "ND"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "NE",
+        "NF"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "NG",
+        "NH"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "NA",
+        "NC"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "NB",
+        "ND"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "NC",
+        "NE"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "ND",
+        "NF"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "NE",
+        "NG"
+      ]
+    },
+    {
+      "id": "FH",
+      "refs": [
+        "NF",
+        "NH"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "세 정사각형은 공통변을 한 번씩만 세어 성냥개비10개이다. 처음4개에 추가마다3개씩이므로 B=3x+1. A=2x+1과 비교해 정답 B−A=x.",
+  "hiddenPointStyle": "NONE",
+  "newVisualInformation": [
+    "세 정사각형은 공통변을 한 번씩만 세어 성냥개비10개이다. 처음4개에 추가마다3개씩이므로 B=3x+1. A=2x+1과 비교해 정답 B−A=x."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "성냥개비를 사용하여 아래의 그림과 같이 정삼각형과 정사각형을 만들고 있다. 이와 같은 방법으로 정삼각형과 정사각형을 각각 $x$개 만들 때, 필요한 성냥개비의 총 개수를 각각 A, B라 할 때, B-A를 $x$를 사용한 식으로 나타내면? [5점]<br><img src=\"assets/images/19_왕운중_1학기_기말_중1_유사/q18.svg\" alt=\"q18\">",
+      "mappedTo": "source"
+    },
+    {
+      "id": "publication-gate",
+      "condition": "CONDITIONAL_CONTENT_RESTORATION: 해설의 삼각형 공유변 의도를 채택하는 조건부 복원. 내용 담당자의 의도확인 및 배치확정 전 게시 금지. 공식검사/독립검수/집PC렌더 통과만으로 게시 승인되지 않는다.",
+      "mappedTo": "publication gate"
+    }
+  ]
+}

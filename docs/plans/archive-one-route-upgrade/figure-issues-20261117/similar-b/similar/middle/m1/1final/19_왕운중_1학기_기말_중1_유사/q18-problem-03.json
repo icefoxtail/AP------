@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "NA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "NB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "NC",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ND",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "NA"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "NA",
+    "NB",
+    "NC",
+    "ND"
+  ],
+  "hiddenPointNames": [
+    "NA",
+    "NB",
+    "NC",
+    "ND"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "NA",
+        "NB"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "NA",
+        "NC"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "NB",
+        "NC"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "NC",
+        "ND"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "NB",
+        "ND"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "정삼각형 2개를 변을 공유하여 이어 붙인 모양.",
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "repair",
+      "condition": "원본 삼각형들의 점 접촉은 해설 규칙과 충돌한다. 해설이 명시한 변 공유 규칙으로 복원하는 수정 제안이며 원본 무단 수정은 하지 않는다.",
+      "mappedTo": "all segments"
+    },
+    {
+      "id": "source",
+      "condition": "성냥개비를 사용하여 아래의 그림과 같이 정삼각형과 정사각형을 만들고 있다. 이와 같은 방법으로 정삼각형과 정사각형을 각각 $x$개 만들 때, 필요한 성냥개비의 총 개수를 각각 A, B라 할 때, B-A를 $x$를 사용한 식으로 나타내면? [5점]<br><img src=\"assets/images/19_왕운중_1학기_기말_중1_유사/q18.svg\" alt=\"q18\">",
+      "mappedTo": "source"
+    },
+    {
+      "id": "publication-gate",
+      "condition": "CONDITIONAL_CONTENT_RESTORATION: 해설의 삼각형 공유변 의도를 채택하는 조건부 복원. 내용 담당자의 의도확인 및 배치확정 전 게시 금지. 공식검사/독립검수/집PC렌더 통과만으로 게시 승인되지 않는다.",
+      "mappedTo": "publication gate"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 2개를 변을 공유하여 이어 붙인 모양."
+  ]
+}

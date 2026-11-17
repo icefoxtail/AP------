@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "3",
+        "y": "-9"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "bad",
+          "slope": "0",
+          "intercept": "-10",
+          "label": "y=-10",
+          "style": "DASHED"
+        },
+        {
+          "id": "good",
+          "slope": "0",
+          "intercept": "-3",
+          "label": "y=-3",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "A1",
+          "curveX": "3-sqrt(6)",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "B1",
+          "curveX": "3+sqrt(6)",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "formula": "(0) + (-6)*x + (1)*x^2"
+  },
+  "caption": "t=x²−6x=(x−3)²−9≥−9. 치환식의 후보 t=−10,−3 중 −10은 최솟값보다 작아 배제되고 −3만 두 실근을 준다. 정답 α²+β²=30.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사차방정식 $(x^2-6x)(x^2-6x+13)+30=0$의 서로 다른 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha^2+\\beta^2$의 값은? [4.4점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "method",
+      "condition": "t=x²−6x=(x−3)²−9≥−9. 치환식의 후보 t=−10,−3 중 −10은 최솟값보다 작아 배제되고 −3만 두 실근을 준다. 정답 α²+β²=30.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "t=x²−6x=(x−3)²−9≥−9. 치환식의 후보 t=−10,−3 중 −10은 최솟값보다 작아 배제되고 −3만 두 실근을 준다. 정답 α²+β²=30."
+  ]
+}

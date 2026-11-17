@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "M",
+    "E",
+    "B",
+    "C"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "MC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labelBD",
+        "ownerSegment": "BD",
+        "text": "8 cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimAD",
+        "from": "A",
+        "to": "D",
+        "label": "15 cm",
+        "side": "RIGHT",
+        "offset": 2
+      },
+      {
+        "id": "dimDM",
+        "from": "D",
+        "to": "M",
+        "label": "3 cm",
+        "side": "LEFT",
+        "offset": 2
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 중점 M과 수선의 발 D,E. 주어진 길이 BD=8 cm, DM=3 cm, AD=15 cm.",
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "C",
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "conditional",
+      "condition": "발문 길이만으로 점순서는 유일하지 않다. 원본 SVG의 A-D-M-E는84를 주고, 해설/보기의36과 일치하는 A-E-M-D로 고치는 조건부 복원 제안. 출판 전에 문제 그림 교정의 의도 확인 필요.",
+      "mappedTo": "layout"
+    },
+    {
+      "id": "source",
+      "condition": "오른쪽 그림의 $\\triangle ABC$에서 변 $BC$의 중점을 $M$이라 하고, 점 $B, C$에서 직선 $AM$에 내린 수선의 발을 각각 $D, E$라 하자. $\\overline{BD}=8\\,\\mathrm{cm}, \\overline{DM}=3\\,\\mathrm{cm}, \\overline{AD}=15\\,\\mathrm{cm}$일 때, $\\triangle ACE$의 넓이는? [5점]",
+      "mappedTo": "source"
+    },
+    {
+      "id": "publication-gate",
+      "condition": "CONDITIONAL_CONTENT_RESTORATION: A-E-M-D 점순서와 해설36을 채택하는 조건부 복원. 발문 길이만으로는 원본84배치도 가능. 내용 담당자의 의도확인 및 배치확정 전 게시 금지. 공식검사/독립검수/집PC렌더 통과만으로 게시 승인되지 않는다.",
+      "mappedTo": "publication gate"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC의 중점 M과 수선의 발 D,E. 주어진 길이 BD=8 cm, DM=3 cm, AD=15 cm."
+  ]
+}
