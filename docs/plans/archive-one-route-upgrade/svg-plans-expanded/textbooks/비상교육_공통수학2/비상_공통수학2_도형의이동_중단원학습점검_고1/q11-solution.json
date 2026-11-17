@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "eb",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "eb"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "E",
+    "P",
+    "Q",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "P"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [
+    "yaxis",
+    "eb"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "E",
+    "P",
+    "Q"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "A의 대칭점과 원의 중심을 이으면 최단 경로가 펴진다. 같은 직선 위의 Q와 P를 밑변으로 보고 A에서 수선을 내린다.",
+  "accessibilityDescription": "A의 대칭점과 원의 중심을 이으면 최단 경로가 펴진다. 같은 직선 위의 Q와 P를 밑변으로 보고 A에서 수선을 내린다.",
+  "newVisualInformation": [
+    "A의 대칭점과 원의 중심을 이으면 최단 경로가 펴진다. 같은 직선 위의 Q와 P를 밑변으로 보고 A에서 수선을 내린다."
+  ],
+  "pointNames": {
+    "E": "A′"
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $A(-2,-2)$, $B(-2,1)$과 $y$축 위의 점 $P$, $\\overline{BQ}=1$인 점 $Q$에 대하여 $\\overline{AP}+\\overline{PQ}$의 값이 최소가 될 때, 삼각형 $APQ$의 넓이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A′B5, BQ1, B-Q-P-A′ 순서. P(0,-1/2),Q(-6/5,2/5),넓이9/5숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

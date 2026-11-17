@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "꼭짓점과 세로축과의 교점을 구별한다. 같은 폭을 유지한 채 가로축에 닿는 포물선의 위치를 살펴본다.",
+  "accessibilityDescription": "꼭짓점과 세로축과의 교점을 구별한다. 같은 폭을 유지한 채 가로축에 닿는 포물선의 위치를 살펴본다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 이차함수 $y = -2(x + 1)^2$의 그래프에 대한 설명으로 옳지 않은 것은? [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "꼭짓점−1,0 y절편0,−2. 최종거짓보기번호미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 세로축과의 교점을 구별한다. 같은 폭을 유지한 채 가로축에 닿는 포물선의 위치를 살펴본다."
+  ]
+}

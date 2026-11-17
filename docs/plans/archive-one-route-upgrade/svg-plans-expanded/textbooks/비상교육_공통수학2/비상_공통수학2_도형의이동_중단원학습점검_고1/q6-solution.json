@@ -1,0 +1,137 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 지난다.",
+  "accessibilityDescription": "두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 지난다.",
+  "newVisualInformation": [
+    "두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 지난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $C_1$: $x^2+(y-1)^2=1$을 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $6$만큼 평행이동한 원을 $C_2$라고 하자. 직선 $l$이 두 원 $C_1$, $C_2$의 넓이를 동시에 이등분할 때, 직선 $l$의 방정식을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원중심A(0,1),B(3,7)중간값표시. 원문중심이름없어A/B보조명. 최종직선식y=2x+1숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

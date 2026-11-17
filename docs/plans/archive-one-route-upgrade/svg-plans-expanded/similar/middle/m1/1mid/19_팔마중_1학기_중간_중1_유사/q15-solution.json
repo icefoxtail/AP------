@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-9/4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-31/4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "두 조건을 따로 표시한 뒤 공통 범위 안의 정수점을 확인한다. 양쪽 부등호가 모두 엄격하므로 끝점을 제외하고 총개수는 쓰지 않는다.",
+  "accessibilityDescription": "두 조건을 따로 표시한 뒤 공통 범위 안의 정수점을 확인한다. 양쪽 부등호가 모두 엄격하므로 끝점을 제외하고 총개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어떤 정수에 $\\dfrac{9}{4}$를 더하면 음수가 되고, $\\dfrac{31}{4}$을 더하면 양수가 된다. 이때 이를 만족시키는 정수의 개수를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "어떤 정수를 $n$이라고 하자.\n\n1) $n$에 $\\dfrac{9}{4}$를 더하면 음수가 되므로\n$n + \\dfrac{9}{4} < 0$\n$n < -\\dfrac{9}{4} = -2.25$\n\n2) $n$에 $\\dfrac{31}{4}$을 더하면 양수가 되므로\n$n + \\dfrac{31}{4} > 0$\n$n > -\\dfrac{31}{4} = -7.75$\n\n두 부등식을 동시에 만족시키는 정수 $n$의 범위는\n$-7.75 < n < -2.25$\n\n따라서 만족시키는 정수 $n$은\n$-7, -6, -5, -4, -3$\n의 총 $5$개이다.\n\n정답은 ⑤이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 조건을 따로 표시한 뒤 공통 범위 안의 정수점을 확인한다. 양쪽 부등호가 모두 엄격하므로 끝점을 제외하고 총개수는 쓰지 않는다."
+  ]
+}

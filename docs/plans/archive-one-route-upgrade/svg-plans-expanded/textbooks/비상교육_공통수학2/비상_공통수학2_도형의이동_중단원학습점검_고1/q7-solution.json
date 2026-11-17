@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "diag",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vertical",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ab",
+          "vertical"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "R",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "R",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [
+    "diag",
+    "ab",
+    "vertical"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "A를 대칭시켜 B를 구한 뒤 가로로 두 칸 옮긴 세로선 위에서 A와 B를 잇는 직선과 만나는 C를 찾는다.",
+  "accessibilityDescription": "A를 대칭시켜 B를 구한 뒤 가로로 두 칸 옮긴 세로선 위에서 A와 B를 잇는 직선과 만나는 C를 찾는다.",
+  "newVisualInformation": [
+    "A를 대칭시켜 B를 구한 뒤 가로로 두 칸 옮긴 세로선 위에서 A와 B를 잇는 직선과 만나는 C를 찾는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $A(-2,3)$을 직선 $y=x$에 대하여 대칭이동한 점을 $B$라 하고, 점 $B$를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $a$만큼 평행이동한 점을 $C$라고 하자. 세 점 $A$, $B$, $C$가 한 직선 위에 있을 때, 실수 $a$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "B(3,-2),R(5,-2),C(5,-4),a=-2숫자는미표시. vertical은파생기준선.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

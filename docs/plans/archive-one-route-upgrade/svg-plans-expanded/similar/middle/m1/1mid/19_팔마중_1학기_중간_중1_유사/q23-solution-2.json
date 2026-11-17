@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "-3/2",
+            "showValue": false
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "3/2",
+            "showValue": false
+          }
+        ],
+        "spans": [
+          {
+            "from": "O",
+            "to": "B",
+            "label": "1.5",
+            "style": "BRACE"
+          },
+          {
+            "from": "O",
+            "to": "C",
+            "label": "1.5",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원점에서 같은 거리인 두 후보 중 왼쪽 점이 작은 수 B이다. 양쪽 거리만 주어진 절댓값으로 표시하고 B의 좌표와 마지막 계산값은 숨긴다.",
+  "accessibilityDescription": "원점에서 같은 거리인 두 후보 중 왼쪽 점이 작은 수 B이다. 양쪽 거리만 주어진 절댓값으로 표시하고 B의 좌표와 마지막 계산값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-5$보다 $2$만큼 큰 수를 $A$라 하고, $|x| = \\dfrac{3}{2}$을 만족시키는 유리수 $x$ 중에서 작은 수를 $B$라고 할 때, 다음 물음에 답하시오. (단, 풀이 과정을 자세히 쓰시오.)\n(1) $A$의 값을 구하시오. [2점]\n(2) $B$의 값을 구하시오. [2점]\n(3) $A \\times B - 4 \\times (-B)^2$의 값을 구하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "(1) $-5$보다 $2$만큼 큰 수이므로\n$A = -5 + 2 = -3$\n\n(2) $|x| = \\dfrac{3}{2}$을 만족시키는 $x$는 $\\dfrac{3}{2}$ 또는 $-\\dfrac{3}{2}$이다.\n이 중 작은 수이므로\n$B = -\\dfrac{3}{2}$\n\n(3) $A = -3, B = -\\dfrac{3}{2}$을 주어진 식에 대입하면\n$A \\times B = (-3) \\times \\left(-\\dfrac{3}{2}\\right) = \\dfrac{9}{2}$\n\n또한 $(-B)^2 = \\left(-\\left(-\\dfrac{3}{2}\\right)\\right)^2 = \\left(\\dfrac{3}{2}\\right)^2 = \\dfrac{9}{4}$이므로\n$4 \\times (-B)^2 = 4 \\times \\dfrac{9}{4} = 9$\n\n따라서\n$A \\times B - 4 \\times (-B)^2 = \\dfrac{9}{2} - 9 = \\dfrac{9}{2} - \\dfrac{18}{2} = -\\dfrac{9}{2}$",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점에서 같은 거리인 두 후보 중 왼쪽 점이 작은 수 B이다. 양쪽 거리만 주어진 절댓값으로 표시하고 B의 좌표와 마지막 계산값은 숨긴다."
+  ]
+}

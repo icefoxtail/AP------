@@ -1,0 +1,141 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "AB",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/3"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "AB"
+      },
+      {
+        "id": "AC",
+        "kind": "LINE",
+        "coefficients": [
+          "16",
+          "-1"
+        ],
+        "domain": [
+          "12",
+          "16"
+        ],
+        "color": "WARM",
+        "label": "AC"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "12",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "16",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "12",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "6",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "6",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "14",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "x": "14",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "AH",
+          "from": "A",
+          "to": "H"
+        },
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        },
+        {
+          "id": "RS",
+          "from": "R",
+          "to": "S"
+        },
+        {
+          "id": "SP",
+          "from": "S",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "내접 직사각형의 높이가 정해지면 닮음으로 너비가 정해진다. 넓이가 가장 클 때의 가로와 세로를 확인한 뒤 둘레를 계산한다.",
+  "accessibilityDescription": "내접 직사각형의 높이가 정해지면 닮음으로 너비가 정해진다. 넓이가 가장 클 때의 가로와 세로를 확인한 뒤 둘레를 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "23. 아래 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AH}} = 4, \\overline{\\text{BH}} = 12, \\overline{\\text{CH}} = 4$일 때, $\\triangle\\text{ABC}$에 내접하는 직사각형 $\\text{PQRS}$의 넓이가 최대일 때, 직사각형 $\\text{PQRS}$의 둘레의 길이는? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"삼각형 ABC의 A에서 가로 밑변 BC에 내린 수선 AH의 길이는 4이다. 밑변은 H에서 12와 4로 나뉜다. 직사각형 PQRS의 위쪽 두 점은 두 사선, 아래쪽 두 점은 밑변에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인 P좌상Q좌하R우하S우상. 높이t,너비16−4t,넓이16t−4t²→t2 너비8,둘레20. 보조좌표계 B0,0 H12,0 C16,0 A12,4, 최종둘레숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "내접 직사각형의 높이가 정해지면 닮음으로 너비가 정해진다. 넓이가 가장 클 때의 가로와 세로를 확인한 뒤 둘레를 계산한다."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-7/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "원점에서 같은 거리인 두 끝점 사이의 열린 구간에서 정수점을 센다. 두 끝점은 정수가 아니며 최종 개수는 적지 않는다.",
+  "accessibilityDescription": "원점에서 같은 거리인 두 끝점 사이의 열린 구간에서 정수점을 센다. 두 끝점은 정수가 아니며 최종 개수는 적지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "절댓값이 같은 두 수의 차가 7일 때, 두 수 사이에 있는 정수의 개수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "절댓값이 같고 부호가 반대인 두 수를 $-x$, $x$ ($x > 0$)라 하자.\n\n두 수의 차가 $7$이므로\n\n$x - (-x) = 7$\n\n$2x = 7 \\implies x = \\dfrac{7}{2} = 3.5$\n\n따라서 두 수는 $-\\dfrac{7}{2}$과 $\\dfrac{7}{2}$이다.\n\n두 수 $-\\dfrac{7}{2}$과 $\\dfrac{7}{2}$ 사이에 있는 정수는\n\n$-3, -2, -1, 0, 1, 2, 3$\n\n의 모두 $7$개이다.\n\n정답은 ③이다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점에서 같은 거리인 두 끝점 사이의 열린 구간에서 정수점을 센다. 두 끝점은 정수가 아니며 최종 개수는 적지 않는다."
+  ]
+}

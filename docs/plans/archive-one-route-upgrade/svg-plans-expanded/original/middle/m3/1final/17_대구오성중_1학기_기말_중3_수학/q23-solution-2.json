@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "h",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "16",
+          "-4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "h"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "16",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "높이에 따른 직사각형 넓이의 변화이다. 양 끝에서는 직사각형이 퇴화하므로 그 사이 꼭짓점의 높이를 이용한다.",
+  "accessibilityDescription": "높이에 따른 직사각형 넓이의 변화이다. 양 끝에서는 직사각형이 퇴화하므로 그 사이 꼭짓점의 높이를 이용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "23. 아래 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AH}} = 4, \\overline{\\text{BH}} = 12, \\overline{\\text{CH}} = 4$일 때, $\\triangle\\text{ABC}$에 내접하는 직사각형 $\\text{PQRS}$의 넓이가 최대일 때, 직사각형 $\\text{PQRS}$의 둘레의 길이는? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"삼각형 ABC의 A에서 가로 밑변 BC에 내린 수선 AH의 길이는 4이다. 밑변은 H에서 12와 4로 나뉜다. 직사각형 PQRS의 위쪽 두 점은 두 사선, 아래쪽 두 점은 밑변에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인 P좌상Q좌하R우하S우상. 높이t,너비16−4t,넓이16t−4t²→t2 너비8,둘레20. 보조좌표계 B0,0 H12,0 C16,0 A12,4, 최종둘레숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "높이에 따른 직사각형 넓이의 변화이다. 양 끝에서는 직사각형이 퇴화하므로 그 사이 꼭짓점의 높이를 이용한다."
+  ]
+}

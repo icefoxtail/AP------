@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "20",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "44",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=44"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "늘어난 길이에 따른 넓이 증가량을 주어진 증가량과 비교한다. 길이가 양수인 범위에서 교점을 읽는다.",
+  "accessibilityDescription": "늘어난 길이에 따른 넓이 증가량을 주어진 증가량과 비교한다. 길이가 양수인 범위에서 교점을 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 가로의 길이가 $12\\,\\text{m}$, 세로의 길이가 $8\\,\\text{m}$인 직사각형 모양의 꽃밭이 있다. 가로와 세로의 길이를 각각 $x\\,\\text{m}$씩 늘였더니 그 넓이가 처음보다 $44\\,\\text{m}^2$만큼 커졌다. $x$의 값은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(12+x)(8+x)−96=x²+20x=44→x2,−22. 양의해2 좌표/눈금숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "늘어난 길이에 따른 넓이 증가량을 주어진 증가량과 비교한다. 길이가 양수인 범위에서 교점을 읽는다."
+  ]
+}

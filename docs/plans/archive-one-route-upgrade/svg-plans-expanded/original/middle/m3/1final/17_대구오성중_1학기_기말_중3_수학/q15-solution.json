@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-15/2",
+          "1",
+          "1/2"
+        ],
+        "domain": [
+          "-6",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-5",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "x": "-1",
+          "y": "-8",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "axis",
+          "x": "-1",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 축을 중심으로 두 가로축 교점이 대칭임을 이용한다.",
+  "accessibilityDescription": "주어진 축을 중심으로 두 가로축 교점이 대칭임을 이용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 이차함수 $y = \\frac{1}{2}x^2 + bx + c$의 그래프가 점 $(3, 0)$을 지나고, 직선 $x = -1$을 축으로 할 때, $b - 2c$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "축−b=−1→b1,c−15/2. 최종b−2c16숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 축을 중심으로 두 가로축 교점이 대칭임을 이용한다."
+  ]
+}

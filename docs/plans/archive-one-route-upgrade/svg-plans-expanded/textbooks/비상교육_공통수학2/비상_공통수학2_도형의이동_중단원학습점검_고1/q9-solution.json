@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "diag",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "6",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-8",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "circle",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "H",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "HR",
+      "refs": [
+        "H",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [
+    "diag",
+    "t"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "coordinateLabels": [
+    "A",
+    "O"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "중심을 대각선에 대칭시킨 뒤 접점으로 향하는 반지름이 접선과 수직인 관계를 본다. 두 평행 접선 중 한쪽 예시이다.",
+  "accessibilityDescription": "중심을 대각선에 대칭시킨 뒤 접점으로 향하는 반지름이 접선과 수직인 관계를 본다. 두 평행 접선 중 한쪽 예시이다.",
+  "newVisualInformation": [
+    "중심을 대각선에 대칭시킨 뒤 접점으로 향하는 반지름이 접선과 수직인 관계를 본다. 두 평행 접선 중 한쪽 예시이다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "R"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $3x+4y+k=0$을 $y$축에 대하여 대칭이동한 직선을 $l$, 원 $(x-2)^2+(y-3)^2=4$를 직선 $y=x$에 대하여 대칭이동한 원을 $C$라고 하자. 원 $C$와 직선 $l$이 한 점에서 만나도록 하는 실수 $k$의 값을 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "O(3,2),H(21/5,2/5)는법선(3,-4)방향반지름2. k두답−9,11및접선식숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "diag",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "diag"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [
+    "xaxis",
+    "yaxis",
+    "diag"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "같은 원래 점을 네 기준에 대칭시킨 위치를 비교한다. 대칭점의 좌표는 그림에 쓰지 않는다.",
+  "accessibilityDescription": "같은 원래 점을 네 기준에 대칭시킨 위치를 비교한다. 대칭점의 좌표는 그림에 쓰지 않는다.",
+  "newVisualInformation": [
+    "같은 원래 점을 네 기준에 대칭시킨 위치를 비교한다. 대칭점의 좌표는 그림에 쓰지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(3,-2)$를 다음 점 또는 직선에 대하여 대칭이동한 점의 좌표를 구하시오.\\n(1) $x$축\\n(2) $y$축\\n(3) 원점\\n(4) 직선 $y=x$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "축과원점은기준, A(3,-2). 네답좌표는coordinateLabels에서제외.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

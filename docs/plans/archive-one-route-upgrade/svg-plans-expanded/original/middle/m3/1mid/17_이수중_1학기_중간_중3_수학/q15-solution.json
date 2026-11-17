@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "L",
+            "value": "2"
+          },
+          {
+            "id": "A",
+            "value": "sqrt(8)"
+          },
+          {
+            "id": "R",
+            "value": "3"
+          }
+        ],
+        "spans": [
+          {
+            "from": "L",
+            "to": "A",
+            "label": "a",
+            "style": "ARROW"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "S",
+            "value": "11"
+          },
+          {
+            "id": "B",
+            "value": "sqrt(128)"
+          },
+          {
+            "id": "T",
+            "value": "12"
+          }
+        ],
+        "spans": [
+          {
+            "from": "S",
+            "to": "B",
+            "style": "ARROW"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "√8은2와3사이, √128은11과12사이에 있다. 각각 왼쪽 정수에서 해당 수까지의 거리가 소수부분이다. √128=4√8을 이용해 두 거리를 비교하고 최종식은 쓰지 않는다.",
+  "accessibilityDescription": "√8은2와3사이, √128은11과12사이에 있다. 각각 왼쪽 정수에서 해당 수까지의 거리가 소수부분이다. √128=4√8을 이용해 두 거리를 비교하고 최종식은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. $\\sqrt{8}$의 소수부분을 $a$라 할 때, $\\sqrt{128}$의 소수부분을 $a$로 나타내면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "2<√8<3이므로a=√8−2. 11<√128<12이고 √128=4√8=4a+8이므로소수부분4a−3,①.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "√8은2와3사이, √128은11과12사이에 있다. 각각 왼쪽 정수에서 해당 수까지의 거리가 소수부분이다. √128=4√8을 이용해 두 거리를 비교하고 최종식은 쓰지 않는다."
+  ]
+}

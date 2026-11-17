@@ -1,0 +1,321 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sSU",
+      "refs": [
+        "S",
+        "U"
+      ]
+    },
+    {
+      "id": "sUV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "sVW",
+      "refs": [
+        "V",
+        "W"
+      ]
+    },
+    {
+      "id": "sWP",
+      "refs": [
+        "W",
+        "P"
+      ]
+    },
+    {
+      "id": "sQT",
+      "refs": [
+        "Q",
+        "T"
+      ]
+    },
+    {
+      "id": "sTV",
+      "refs": [
+        "T",
+        "V"
+      ]
+    },
+    {
+      "id": "sTS",
+      "refs": [
+        "T",
+        "S"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPQ",
+        "ownerSegment": "sPQ",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lQR",
+        "ownerSegment": "sQR",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lSU",
+        "ownerSegment": "sSU",
+        "text": "6-2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
+  "accessibilityDescription": "자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "Q",
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "V",
+        "U",
+        "S"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 오른쪽 그림은 하나의 직사각형을 두 개의 정사각형 $\\mathrm{A, C}$와 직사각형 $\\mathrm{B}$로 나눈 것이다. 두 정사각형 $\\mathrm{A, C}$ 넓이가 각각 $\\frac{18}{5}x$, $14-x$이고, 변의 길이가 모두 자연수일 때, 직사각형 $\\mathrm{B}$의 넓이를 구하여라. (단, $x$는 자연수)(7점) [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "기존 문제 SVG 직접 확인: 큰 정사각형A, 오른쪽 위 직사각형B·아래 정사각형C. 0<x<14 및 5|x로x5,10검토. x10에서A넓이36,C넓이4; 변6,2. B넓이2(6−2)=8은 최종값이므로 표시하지 않는다.",
+      "mappedTo": "derived-method"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 SVG 직접 확인: 큰 정사각형A, 오른쪽 위 직사각형B·아래 정사각형C. 0<x<14 및 5|x로x5,10검토. x10에서A넓이36,C넓이4; 변6,2. B넓이2(6−2)=8은 최종값이므로 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "hiddenPointStyle": "NONE"
+}

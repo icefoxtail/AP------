@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "3",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "OC",
+          "from": "O",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        },
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점에서 원점으로 보조선을 그어 사각형을 두 삼각형으로 나눈다. 각각의 밑변과 높이를 좌표로 읽는다.",
+  "accessibilityDescription": "꼭짓점에서 원점으로 보조선을 그어 사각형을 두 삼각형으로 나눈다. 각각의 밑변과 높이를 좌표로 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 이차함수 $y = -x^2 - 2x + 3$의 그래프에서 꼭짓점을 $\\text{A}$, $x$축의 음의 부분과의 교점을 $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, 사각형 $\\text{ABOC}$의 넓이는? (단, 점 $\\text{O}$는 원점이다.) [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A이고 왼쪽 x절편은 B이다. C는 세로절편이다. A, B, O, C를 이은 사각형 영역을 녹색으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인. 삼각형ABO6,ACO3/2→넓이15/2. 최종넓이숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점에서 원점으로 보조선을 그어 사각형을 두 삼각형으로 나눈다. 각각의 밑변과 높이를 좌표로 읽는다."
+  ]
+}
