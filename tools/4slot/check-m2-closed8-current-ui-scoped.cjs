@@ -134,6 +134,58 @@ function safeRelative(p){
   need(typeof p==='string'&&p.length>0&&!path.isAbsolute(p)&&!/[\\\x00-\x1f\x7f]/.test(p)&&
     !p.split('/').some(x=>!x||x==='.'||x==='..'),'PATH');return p;
 }
+// Untrusted diagnostic/output paths are not repository dependencies. Immutable
+// refs have already passed refShape; explicitly required paths retain validation.
+function dependencyPath(p,required=false){
+  if(typeof p!=='string')return false;
+  const supported=/^(?:(?:archive|tools|tests|docs)\/|\.archive-meta-register\/(?:evidence|4slot-[^/]+)\/)/.test(p);
+  if(!supported&&!required)return false;
+  safeRelative(p);return supported;
+}
+// These five documents are historical-only inputs in the original validators.
+// Their live aliases/wrappers retain the existing current-file checks.
+const HISTORICAL_ONLY_PROOFS=Object.freeze([
+  {
+    "commit": "e0c968d539ea5d76ce134c38956a32bc280989fe",
+    "path": "docs/operations/m2-problem-image8-repair-20261116/independent-static-v1.json",
+    "gitBlobSha1": "c37c57e7b5993d2431b6e1399529c86b3bdd06b6",
+    "sha256": "f608d253890e072e79ed6bc4dcabfb98e9058fcfc4dc60641bf57736f8eff7fb",
+    "bytes": 4127
+  },
+  {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+    "gitBlobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+    "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+    "bytes": 118816
+  },
+  {
+    "commit": "1244785eb4889e9c6a6ebdbca3b57c5e9ef53a67",
+    "path": "docs/operations/m2-s2-e023-solution-display6-continuity-20261116/independent-static-v1.json",
+    "gitBlobSha1": "245578b48da7b0cc0a5c3a4e0048e7e2590080a5",
+    "sha256": "458cbdde5842e97dc8f542fe03d74da36ab4c1bde95d2b1e8e274c7e6a109be7",
+    "bytes": 17215
+  },
+  {
+    "commit": "6d011ffd05eb2581c41a4119121cdc0009dcfc99",
+    "path": "docs/operations/m2-s2-e023-solution-ui-20261116/student-ui-technical-r4.json",
+    "gitBlobSha1": "b0829009e77805a070e6771939b5efa98ce1cec2",
+    "sha256": "2059ecf6f667676bbd07a1b04e3928ed219ba578dd3a6c7ceb33bc1d04b408ed",
+    "bytes": 22874
+  },
+  {
+    "commit": "4c7227ba795225da1d389f6852793bbe0f1bf54c",
+    "path": "docs/operations/m2-s2-e023-solution-ui-20261116/student-ui-independent-r4.json",
+    "gitBlobSha1": "968135fc29dfa64d3c9b3300c9e8b6eeb0ab599f",
+    "sha256": "82934951f72d9b35c4ba785c3fd1eda35daddc2cba4e0de6450b2450bea1ba20",
+    "bytes": 4824
+  }
+].map(Object.freeze));
+function historicalProofRef(ref){
+  const expected=HISTORICAL_ONLY_PROOFS.find(r=>r.path===ref?.path);
+  if(!expected)return false;
+  need(stable(refShape(ref))===stable(expected),'HISTORICAL_PROOF_PIN');return true;
+}
 function file(root,p){
   let at=root;for(const part of safeRelative(p).split('/')){
     at=path.join(at,part);need(!fs.lstatSync(at).isSymbolicLink(),'SYMLINK');
@@ -198,7 +250,7 @@ async function makeFixture(root,head,modules,report){
   const fixture=path.join(work,'fixture');
   git(root,['clone','--quiet','--shared','--no-checkout','--no-hardlinks',root,fixture]);
   const currentInputs=new Map(),immutableInputs=new Map(),privateInputs=new Map(),copied=new Set();
-  const queue=[],queued=new Set(),commits=new Set(),optionalMissing=new Set();
+  const queue=[],queued=new Set(),commits=new Set(),optionalMissing=new Set(),historicalRead=new Set();
   function current(p){
     safeRelative(p);const entry=git(root,['ls-tree','-z',head,'--',p]).toString();
     const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
@@ -230,16 +282,22 @@ async function makeFixture(root,head,modules,report){
     immutableInputs.set(key,ref);need(immutableInputs.size<=2400,'IMMUTABLE_BOUND');return raw;
   }
   function enqueue(p,required=false){
-    if(typeof p!=='string')return;
-    safeRelative(p);
-    if(!/^(?:(?:archive|tools|tests|docs)\/|\.archive-meta-register\/(?:evidence|4slot-[^/]+)\/)/.test(p))return;
+    if(!dependencyPath(p,required))return;
     if(!queued.has(p)){queued.add(p);queue.push({path:p,required});}
   }
   function refsIn(value){
     if(Array.isArray(value)){for(const v of value)refsIn(v);return;}
     if(!value||typeof value!=='object')return;
     if(OID.test(value.commit||'')&&OID.test(value.gitBlobSha1||'')&&HASH.test(value.sha256||'')&&Number.isSafeInteger(value.bytes)){
-      immutable(value);enqueue(value.path,true);
+      const raw=immutable(value);
+      if(historicalProofRef(value)){
+        const key=value.commit+':'+value.path;
+        if(!historicalRead.has(key)){
+          historicalRead.add(key);
+          (report.historicalOnlyInputs||(report.historicalOnlyInputs=[])).push(refShape(value));
+          refsIn(JSON.parse(raw));
+        }
+      }else enqueue(value.path,true);
     }else if(typeof value.path==='string')enqueue(value.path);
     for(const [k,v]of Object.entries(value)){
       if(k==='outputDigests'||k==='path')continue;
@@ -649,4 +707,4 @@ if(require.main===module){
   need(out,'OUTPUT_REQUIRED');
   run(root,out).catch(e=>{console.error(JSON.stringify({status:'FAIL',error:safeFailure(e)}));process.exitCode=1;});
 }
-module.exports={run};
+module.exports={run,pathContractForTests:Object.freeze({dependencyPath,refShape,historicalProofRef,HISTORICAL_ONLY_PROOFS})};
