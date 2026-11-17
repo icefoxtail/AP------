@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SSS_POSITIVE_SIDE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": true
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {
+          "k": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {
+          "k": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lensCA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lensCD",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lensCE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lensCB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lensED",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "E",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lensAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "E",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "맞꼭지각과 평행선으로 두 삼각형의 대응을 확인한다. 실제 닮음비1:2를 유지하여 각 변의 길이를 대응하되 둘레의 합은 쓰지 않는다.",
+  "accessibilityDescription": "맞꼭지각과 평행선으로 두 삼각형의 대응을 확인한다. 실제 닮음비1:2를 유지하여 각 변의 길이를 대응하되 둘레의 합은 쓰지 않는다.",
+  "scalarLabels": [
+    {
+      "nodeId": "lensCA",
+      "ownerSegment": "sCA",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lensCD",
+      "ownerSegment": "sCD",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lensCE",
+      "ownerSegment": "sCE",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lensCB",
+      "ownerSegment": "sCB",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lensED",
+      "ownerSegment": "sED",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lensAB",
+      "ownerSegment": "sAB",
+      "prefix": ""
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 삼각형 $ABC$의 변 $BC$와 $AC$의 연장선이 직선 $l$과 만나는 점을 $E$와 $D$라 하고, 직선 $l$과 $m$이 서로 평행할 때, 다음과 같은 성질이 성립한다고 한다. 이때, 삼각형 $CDE$의 둘레길이를 $a$, 삼각형 $ABC$의 둘레길이를 $b$라 할 때, $a+b$의 값은? $\\overline{ED}$의 길이는 $\\overline{EC}$의 길이보다 1cm 더 길다. $\\overline{CB}$의 길이는 $\\overline{AC}$의 길이보다 2cm 더 길다. $\\overline{AB}=10\\text{cm}$, $\\overline{CD}=3\\text{cm}$. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "\n\\(l\\parallel m\\)이고 \\(\\angle DCE=\\angle ACB\\)이므로 \\(\\triangle CDE\\sim\\triangle CAB\\)이다.\n닮음비를 \\(t\\)라 두면\n\\(\\dfrac{CD}{CA}=\\dfrac{CE}{CB}=\\dfrac{DE}{AB}=t\\)이다.\n\\(CD=3\\)이다.\n\\(\\dfrac{CD}{CA}=t\\)이므로 \\(CA=\\dfrac{CD}{t}\\)이다.\n\\(CA=\\dfrac3t\\)이다.\n\\(AB=10\\)이다.\n\\(\\dfrac{DE}{AB}=t\\)이므로 \\(DE=AB\\cdot t\\)이다.\n\\(DE=10t\\)이다.\n\\(CB=CA+2\\)이다.\n\\(CB=\\dfrac3t+2\\)이다.\n\\(CE=t\\cdot CB\\)이다.\n\\(CE=t\\left(\\dfrac3t+2\\right)\\)이다.\n\\(CE=3+2t\\)이다.\n\\(DE=CE+1\\)을 대입한다.\n\\(10t=CE+1\\)이다.\n\\(10t=(3+2t)+1\\)이다.\n\\(8t=4\\)이다.\n\\(t=\\dfrac12\\)이다.\n\\(DE=10t\\)이다.\n\\(DE=10\\cdot\\dfrac12\\)이다.\n\\(DE=5\\)이다.\n\\(CE=3+2t\\)이다.\n\\(CE=3+2\\cdot\\dfrac12\\)이다.\n\\(CE=4\\)이다.\n\\(CA=\\dfrac3t\\)이다.\n\\(CA=\\dfrac3{\\frac{1}{2}}\\)이다.\n\\(CA=6\\)이다.\n\\(CB=CA+2\\)이다.\n\\(CB=6+2\\)이다.\n\\(CB=8\\)이다.\n\\(\\triangle CDE\\)의 둘레는 \\(3+4+5\\)이다.\n\\(\\triangle CDE\\)의 둘레는 \\(12\\)이다.\n\\(\\triangle ABC\\)의 둘레는 \\(6+8+10\\)이다.\n\\(\\triangle ABC\\)의 둘레는 \\(24\\)이다.\n\\(a+b=12+24\\)이다.\n\\(a+b=36\\)이다.\n따라서 정답은 ④이다.\n",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "C",
+        "D",
+        "E",
+        "A",
+        "B",
+        "lensCA",
+        "lensCD",
+        "lensCE",
+        "lensCB",
+        "lensED",
+        "lensAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "맞꼭지각과 평행선으로 두 삼각형의 대응을 확인한다. 실제 닮음비1:2를 유지하여 각 변의 길이를 대응하되 둘레의 합은 쓰지 않는다."
+  ]
+}

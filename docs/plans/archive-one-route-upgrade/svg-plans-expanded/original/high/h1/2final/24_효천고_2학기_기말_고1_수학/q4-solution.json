@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "15",
+        "title": "남학생"
+      },
+      {
+        "count": "6",
+        "title": "여학생"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "남학생 여섯 명 중 두 명을 뽑는 경우와 여학생 네 명 중 두 명을 뽑는 경우를 독립적으로 짝짓는다. 각 칸은 조합으로 구한 중간 경우의 수이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "남학생 6명과 여학생 4명이 있는 동아리에서 남학생 2명, 여학생 2명을 뽑아 한 모둠을 구성하는 모든 방법의 수는? [3.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "C(6,2)=15와C(4,2)=6을 곱한다. 사람 배치는 추가 순열을 만들지 않으며 최종90 숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "C(6,2)=15와C(4,2)=6을 곱한다. 사람 배치는 추가 순열을 만들지 않으며 최종90 숨김."
+  ]
+}

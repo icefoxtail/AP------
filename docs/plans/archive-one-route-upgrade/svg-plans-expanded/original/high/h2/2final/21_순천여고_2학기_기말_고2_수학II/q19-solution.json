@@ -1,0 +1,157 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.1,
+      1.1,
+      -0.1,
+      1.2
+    ],
+    "curves": [
+      {
+        "id": "upper",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "label": "y=kx^2"
+      },
+      {
+        "id": "lower",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/3"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "label": "y=x^2/3"
+      },
+      {
+        "id": "top",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "label": "y=1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "1"
+      ],
+      "y": [
+        "0",
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "1",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "1",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "right",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "top",
+          "upper"
+        ],
+        "from": "0",
+        "to": "1/2",
+        "label": "S1"
+      },
+      {
+        "id": "S2a",
+        "between": [
+          "upper",
+          "lower"
+        ],
+        "from": "0",
+        "to": "1/2",
+        "label": "S2",
+        "fill": "MEDIUM"
+      },
+      {
+        "id": "S2b",
+        "between": [
+          "top",
+          "lower"
+        ],
+        "from": "1/2",
+        "to": "1",
+        "fill": "MEDIUM"
+      },
+      {
+        "id": "S3",
+        "under": "lower",
+        "from": "0",
+        "to": "1",
+        "label": "S3"
+      }
+    ]
+  },
+  "caption": "k=4인 모양 예시이며 정답 k를 나타내지 않는다. 위 곡선이 정사각형 위변을 먼저 만나므로 가운데 넓이는 그 교점에서 적분식을 나누어 구한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 네 점 $(0,0),(0,1),(1,0),(1,1)$을 꼭짓점으로 하는 정사각형 내부를 두 곡선 $y=kx^2$, $y=\\dfrac{1}{3}x^2$로 나누는 세 부분의 넓이를 각각 $S_1,S_2,S_3$이라 하자. $S_1,S_2,S_3$이 이 순서대로 등차수열을 이룰 때, 양수 $k$의 값은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "실제PNG에서S1위쪽/S2가운데/S3아래쪽 확인. 예시k4라위변교점1/2,최종k36/25미표시. 등차조건S2=1/3 및분할필요.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "k=4인 모양 예시이며 정답 k를 나타내지 않는다. 위 곡선이 정사각형 위변을 먼저 만나므로 가운데 넓이는 그 교점에서 적분식을 나누어 구한다.",
+  "newVisualInformation": [
+    "실제PNG에서S1위쪽/S2가운데/S3아래쪽 확인. 예시k4라위변교점1/2,최종k36/25미표시. 등차조건S2=1/3 및분할필요."
+  ]
+}

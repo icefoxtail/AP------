@@ -1,0 +1,53 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "fixed": "E",
+        "title": "양끝"
+      },
+      {
+        "count": "5",
+        "title": "첫칸"
+      },
+      {
+        "count": "4",
+        "title": "둘째"
+      },
+      {
+        "count": "3",
+        "title": "셋째"
+      },
+      {
+        "count": "2",
+        "title": "넷째"
+      },
+      {
+        "count": "1",
+        "title": "끝칸"
+      },
+      {
+        "fixed": "E",
+        "title": "양끝"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "양 끝을 같은 문자 E로 고정하고 가운데 다섯 칸에 P, R, M, U, T를 순서대로 놓는다. 각 칸의 수는 남은 카드 수이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "문자 $\\mathrm{P, E, R, M, U, T, E}$가 적힌 카드 7장을 일렬로 나열할 때, $\\mathrm{E}$ 두 장이 양 끝에 오는 모든 경우의 수는? [3.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "E 두 장은 같은 문자이므로 양 끝 순서를 다시 곱하지 않는다. 5!의 곱셈 단계만 표시하고120은 숨긴다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "E 두 장은 같은 문자이므로 양 끝 순서를 다시 곱하지 않는다. 5!의 곱셈 단계만 표시하고120은 숨긴다."
+  ]
+}

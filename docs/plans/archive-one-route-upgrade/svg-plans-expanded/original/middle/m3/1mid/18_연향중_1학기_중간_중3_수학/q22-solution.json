@@ -25,138 +25,117 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "Q",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "R",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "8"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "S",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "8"
-            },
-            {
-              "kind": "integer",
-              "value": "2"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "T",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "2"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "U",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "8"
-            },
-            {
-              "kind": "integer",
-              "value": "6"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "V",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "6"
-            },
-            {
-              "kind": "integer",
-              "value": "6"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "W",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "6"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
         },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "P",
+          "Q",
+          "W"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "Q",
+          "R",
+          "T"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "Q",
+          "R",
+          "V"
+        ],
+        "args": {},
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       }
@@ -302,6 +281,11 @@
       "id": "reason",
       "condition": "기존 문제 SVG 직접 확인: 큰 정사각형A, 오른쪽 위 직사각형B·아래 정사각형C. 0<x<14 및 5|x로x5,10검토. x10에서A넓이36,C넓이4; 변6,2. B넓이2(6−2)=8은 최종값이므로 표시하지 않는다.",
       "mappedTo": "derived-method"
+    },
+    {
+      "id": "provenance-repair",
+      "condition": "자연수 제약으로x10, 넓이36/4에서 유도한 변6/2를 평행이동량으로 사용. P만 정규화 원점이고 Q/W/R/T는 변 이동, V/S/U는 벡터합. 정사각형·공유변 관계를 연산으로 보존하며 B넓이8 미표시. PLANE_FIGURE_v1은 NORMALIZATION_ORIGIN을 거절하고 SOURCE_POINT를 요구하므로, 단 하나의 시작 꼭짓점(0,0)은 임의 평행이동 자유도를 고정한 배치 앵커로 사용한다. 원문이 좌표0을 주었다는 뜻이 아니며 모든 길이와 위치관계는 뒤따르는 파생 연산에서 생성한다.",
+      "mappedTo": "mathPlan.nodes"
     }
   ],
   "newVisualInformation": [

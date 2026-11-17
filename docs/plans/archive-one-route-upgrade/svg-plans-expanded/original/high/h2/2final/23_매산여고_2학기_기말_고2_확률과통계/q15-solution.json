@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "A",
+        "mean": "0",
+        "sd": "1",
+        "meanLine": true
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1.5"
+      },
+      {
+        "x": "0"
+      },
+      {
+        "x": "1.5"
+      }
+    ],
+    "zAxis": false,
+    "shades": [
+      {
+        "from": 0,
+        "to": 1,
+        "color": "BLUE"
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "color": "GREEN"
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "표준정규분포에서 문제의 표가 정한 기준 반폭을 표시했다. 좌우 넓이를 합쳐 요구 확률과 비교한 뒤, 표본평균의 표준편차를 이용하여 표본크기 조건으로 바꾼다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 어느 농장에서 생산되는 딸기의 당도는 평균이 $8$이고 표준편차가 $1.2$인 정규분포를 따른다고 한다. 이 농장에서 생산된 딸기 중 임의추출한 $n$개의 딸기 당도의 표본평균을 $\\overline{X}$라 할 때, $P(7.76 \\le \\overline{X} \\le 8.24) \\ge 0.86$이 되기 위한 $n$의 최솟값을 아래 표준정규분포표를 이용하여 구하시오. [4.5점]<br><br><table class=\"exam-table\"><tr><td>$z$</td><td>$P(0 \\le Z \\le z)$</td></tr><tr><td>$0.5$</td><td>$0.19$</td></tr><tr><td>$1.0$</td><td>$0.34$</td></tr><tr><td>$1.5$</td><td>$0.43$</td></tr><tr><td>$2.0$</td><td>$0.48$</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "표본평균 표준편차1.2/√n, 표준화 반폭0.2√n. 문제 표에 따라 기준 반폭1.5의 좌우 영역을 합쳐 비교한다. 구하는 n최솟값과 이를 바로 드러내는 n눈금은 숨기고 ±1.5는 결정적 중간값으로 유지.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "표본평균 표준편차1.2/√n, 표준화 반폭0.2√n. 문제 표에 따라 기준 반폭1.5의 좌우 영역을 합쳐 비교한다. 구하는 n최솟값과 이를 바로 드러내는 n눈금은 숨기고 ±1.5는 결정적 중간값으로 유지."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "A",
+        "mean": "350",
+        "sd": "10",
+        "meanLine": true
+      }
+    ],
+    "ticks": [
+      {
+        "x": "330"
+      },
+      {
+        "x": "350"
+      }
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "to": 0,
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "한 병의 부피 분포에서 불량 판정 기준 왼쪽의 영역을 읽는다. 이 영역의 확률을 p로 두고 불량 개수의 이항분포를 정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 어느 회사에서 생산되는 생수 한 병의 부피는 평균 $350\\,\\mathrm{mL}$, 표준편차 $10\\,\\mathrm{mL}$인 정규분포를 따르며, 부피가 $330\\,\\mathrm{mL}$ 이하인 생수는 불량품으로 판정한다고 한다. 이 회사에서 생산되는 $10000$병의 생수를 임의로 택할 때, 불량품의 개수가 $228$개 이상일 확률을 아래 표준정규분포표를 이용하여 구하여라. [4.7점]<br><br><table class=\"exam-table\"><tr><td>$z$</td><td>$P(0 \\le Z \\le z)$</td></tr><tr><td>$0.5$</td><td>$0.19$</td></tr><tr><td>$1.0$</td><td>$0.34$</td></tr><tr><td>$1.5$</td><td>$0.43$</td></tr><tr><td>$2.0$</td><td>$0.48$</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "표 기준 한 병 불량확률을 p로 얻고 독립 추출 모형 Y~B(10000,p)의 평균200·분산196·표준편차14를 계산한다. 경계228은 z2. 한 병 곡선의 z−2와 개수 근사의 z2를 나누어 보여 두 단계 혼동을 막는다. 최종확률과 같은 p의 숫자는 라벨에 쓰지 않는다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "표 기준 한 병 불량확률을 p로 얻고 독립 추출 모형 Y~B(10000,p)의 평균200·분산196·표준편차14를 계산한다. 경계228은 z2. 한 병 곡선의 z−2와 개수 근사의 z2를 나누어 보여 두 단계 혼동을 막는다. 최종확률과 같은 p의 숫자는 라벨에 쓰지 않는다."
+  ]
+}

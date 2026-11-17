@@ -1,0 +1,81 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "9",
+      "6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      1
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-1",
+          "y": "-6",
+          "coordinates": true
+        },
+        {
+          "id": "L",
+          "x": "-5",
+          "y": "-4",
+          "coordinates": false
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "-4",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "LR",
+          "from": "L",
+          "to": "R"
+        }
+      ]
+    },
+    "viewport": [
+      -5,
+      1,
+      -12,
+      15
+    ]
+  },
+  "caption": "수평선의 높이를 a=-4로 둔 예시이다. 두 극값 사이에서는 교점이 세 개이며, 극값 높이에서는 접점 때문에 서로 다른 교점 수가 달라진다. 선분 LR은 수평선 y=a를 표시한 구간이다.",
+  "accessibilityDescription": "수평선의 높이를 a=-4로 둔 예시이다. 두 극값 사이에서는 교점이 세 개이며, 극값 높이에서는 접점 때문에 서로 다른 교점 수가 달라진다. 선분 LR은 수평선 y=a를 표시한 구간이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8. 방정식 $x^3+6x^2+9x-2-a=0$이 서로 다른 세 실근을 갖도록 하는 정수 $a$의 개수는? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h′=3(x+3)(x+1),극대−2 극소−6. −6<a<−2,정수−5−4−3 세개. 최종개수숨김,예시a−4명시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "수평선의 높이를 a=-4로 둔 예시이다. 두 극값 사이에서는 교점이 세 개이며, 극값 높이에서는 접점 때문에 서로 다른 교점 수가 달라진다. 선분 LR은 수평선 y=a를 표시한 구간이다."
+  ]
+}

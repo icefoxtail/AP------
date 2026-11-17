@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "3",
+        "title": "여"
+      },
+      {
+        "count": "2",
+        "title": "남"
+      },
+      {
+        "count": "2",
+        "title": "여"
+      },
+      {
+        "count": "1",
+        "title": "남"
+      },
+      {
+        "count": "1",
+        "title": "여"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "여학생끼리 이웃하지 않는 여사건은 여·남·여·남·여의 교대 배치뿐이다. 각 칸에 쓴 수는 그 자리에서 고를 수 있는 남은 학생 수이다. 이 곱을 전체 다섯 명의 배치 수에서 뺀다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "남학생 2명과 여학생 3명을 일렬로 세울 때, 여학생 중 적어도 2명은 이웃하게 세우는 경우의 수는? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "여사건은3!×2!. 전체5!에서 뺀108은 숨기고 교대 배치 조건을 caption에 그대로 남긴다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "여사건은3!×2!. 전체5!에서 뺀108은 숨기고 교대 배치 조건을 caption에 그대로 남긴다."
+  ]
+}

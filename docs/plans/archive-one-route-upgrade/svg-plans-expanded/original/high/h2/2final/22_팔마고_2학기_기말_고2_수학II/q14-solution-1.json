@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "3",
+      "-4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "viewport": [
+      -1,
+      4,
+      -10,
+      15
+    ]
+  },
+  "caption": "a=2인 예시에서 곡선 높이에서 직선 높이를 뺀 차이의 그래프이다. 두 넓이가 같도록 정한 예시는 아니다. 0, a−1, a+1 사이에서 차이의 부호가 바뀌는 것을 확인한다.",
+  "accessibilityDescription": "a=2인 예시에서 곡선 높이에서 직선 높이를 뺀 차이의 그래프이다. 두 넓이가 같도록 정한 예시는 아니다. 0, a−1, a+1 사이에서 차이의 부호가 바뀌는 것을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 곡선 $y=x(x-a)^2$과 직선 $y=x$로 둘러싸인 두 도형의 넓이가 같을 때, 상수 $a$의 값은? (단, $a>0$) [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기존solutionSVG직접확인:답a3가함수라벨에노출. 새계획은a2와1/2예시로답숨김보완제안만. 0<a<1 전체적분−4a/3≠0,a1퇴화,a>1 적분(a−3)(a+1)³/12→a3. 최종a미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2인 예시에서 곡선 높이에서 직선 높이를 뺀 차이의 그래프이다. 두 넓이가 같도록 정한 예시는 아니다. 0, a−1, a+1 사이에서 차이의 부호가 바뀌는 것을 확인한다."
+  ]
+}

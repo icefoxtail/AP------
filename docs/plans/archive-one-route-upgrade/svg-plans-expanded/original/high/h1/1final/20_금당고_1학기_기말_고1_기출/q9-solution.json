@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-11"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RA",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "RA",
+          "I",
+          "RB"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bisB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "RA",
+          "I",
+          "RB"
+        ],
+        "args": {
+          "mode": "EXTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bisA",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "I",
+    "P",
+    "H",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sPK",
+      "refs": [
+        "P",
+        "K"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l",
+    "m",
+    "bisA",
+    "bisB"
+  ],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "두 직선까지의 거리가 같은 점에서 두 수선을 비교한다. 두 이등분선을 모두 남기고 음의 기울기 조건으로 고르되 선택한 직선의 최종 식은 숨긴다.",
+  "accessibilityDescription": "두 직선까지의 거리가 같은 점에서 두 수선을 비교한다. 두 이등분선을 모두 남기고 음의 기울기 조건으로 고르되 선택한 직선의 최종 식은 숨긴다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "P",
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "P",
+        "K",
+        "I"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $4x+3y-11=0$, $3x-4y-2=0$이 이루는 각을 이등분하는 직선 중에서 기울기가 음수인 직선의 방정식을 구하시오. [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "두 직선까지의 거리가 같은 점은 각의 이등분선 위에 있다.\n두 직선의 계수에서 \\(\\sqrt{4^2+3^2}=\\sqrt{3^2+(-4)^2}=5\\)이므로, 각의 이등분선은\n\\[\n|4x+3y-11|=|3x-4y-2|\n\\]\n를 만족한다.\n절댓값을 풀어 두 경우로 나눈다.\n\\[\n4x+3y-11=3x-4y-2\n\\quad\\Longrightarrow\\quad x+7y-9=0\n\\]\n또는\n\\[\n4x+3y-11=-(3x-4y-2)\n\\quad\\Longrightarrow\\quad 7x-y-13=0\n\\]\n이다.\n첫째 직선의 기울기는 \\(-\\frac17\\), 둘째 직선의 기울기는 \\(7\\)이다.\n기울기가 음수인 직선은 \\(x+7y-9=0\\)이므로 정답은 ⑤이다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "l",
+        "m",
+        "I",
+        "RA",
+        "RB",
+        "bisA",
+        "bisB",
+        "axis",
+        "P",
+        "H",
+        "K"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선까지의 거리가 같은 점에서 두 수선을 비교한다. 두 이등분선을 모두 남기고 음의 기울기 조건으로 고르되 선택한 직선의 최종 식은 숨긴다."
+  ]
+}

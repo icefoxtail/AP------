@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l",
+          "m"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "I",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "sIU",
+      "refs": [
+        "I",
+        "U"
+      ]
+    },
+    {
+      "id": "sIV",
+      "refs": [
+        "I",
+        "V"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l",
+    "m"
+  ],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "두 직선의 기울기 곱이 −1인 관계를 직각으로 확인한다. 첫 직선 기울기1/9와 둘째 직선 기울기−3/a를 대응한다. 마지막 합은 쓰지 않는다.",
+  "accessibilityDescription": "두 직선의 기울기 곱이 −1인 관계를 직각으로 확인한다. 첫 직선 기울기1/9와 둘째 직선 기울기−3/a를 대응한다. 마지막 합은 쓰지 않는다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "U",
+        "I",
+        "V"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $x-9y+7=0$이 직선 $3x+ay=1$과 수직일 때, 상수 $a$의 값이 $\\dfrac{\\alpha}{\\beta}$이다. 이때 $\\alpha+\\beta$의 값을 구하시오. [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "첫째 직선의 식을 기울기 꼴로 정리한다.\n\\(x-9y+7=0\\)\n\\(y=\\dfrac19x+\\dfrac79\\)이므로 기울기는 \\(\\dfrac19\\)이다.\n둘째 직선은\n\\(3x+ay=1\\)\n\\(y=-\\dfrac3a x+\\dfrac1a\\)이므로 기울기는 \\(-\\dfrac3a\\)이다.\n수직인 두 직선의 기울기의 곱은 \\(-1\\)이므로\n\\(\\dfrac19\\left(-\\dfrac3a\\right)=-1\\)\n\\(-\\dfrac{1}{3a}=-1\\), 따라서 \\(a=\\dfrac13\\)이다.\n\\(a=\\dfrac{\\alpha}{\\beta}\\)에서 \\(\\alpha=1,\\ \\beta=3\\)이므로 \\(\\alpha+\\beta=4\\)이다.\n그러므로 정답은 ③이다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "l",
+        "m",
+        "I",
+        "U",
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 기울기 곱이 −1인 관계를 직각으로 확인한다. 첫 직선 기울기1/9와 둘째 직선 기울기−3/a를 대응한다. 마지막 합은 쓰지 않는다. 원문 의심: α,β가 서로소인 양의 정수라는 조건이 없어 α±β의 유일성이 보장되지 않는다. 기약분수 관례를 추가하지 않고 도형관계만 계획했다."
+  ]
+}

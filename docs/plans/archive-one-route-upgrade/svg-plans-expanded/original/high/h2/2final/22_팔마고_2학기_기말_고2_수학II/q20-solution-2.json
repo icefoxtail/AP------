@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "d",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7/2",
+          "7",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "d"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=7/2인 도함수 예시이다. 두 근이 같은 열린구간 안에 있는 다른 경우를 비교한다. 판별식, 꼭짓점 위치와 양 끝 높이의 조건을 함께 확인한다.",
+  "accessibilityDescription": "a=7/2인 도함수 예시이다. 두 근이 같은 열린구간 안에 있는 다른 경우를 비교한다. 판별식, 꼭짓점 위치와 양 끝 높이의 조건을 함께 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 1. 함수 $f(x)=x^3+ax^2+ax+1$이 열린구간 $(-2, 1)$에서 극댓값과 극솟값을 모두 갖도록 하는 실수 $a$의 값의 범위를 구하고, 그 풀이과정을 서술하시오. [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′=3x²+2ax+a,양끝12−3a>0,3+3a>0,꼭짓점−a/3∈(−2,1),D4a(a−3)>0→−1<a<0 또는3<a<4. 최종범위숨김,매개변수예시명시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=7/2인 도함수 예시이다. 두 근이 같은 열린구간 안에 있는 다른 경우를 비교한다. 판별식, 꼭짓점 위치와 양 끝 높이의 조건을 함께 확인한다."
+  ]
+}

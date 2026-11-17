@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "2",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "polar",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "-8",
+            "denominator": "5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "setP",
+        "op": "INTERSECTION",
+        "inputs": [
+          "polar",
+          "c"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "setP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "Q",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "P",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UnitX",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAP",
+        "ownerSegment": "sAP",
+        "text": "2r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lPQ",
+        "ownerSegment": "sPQ",
+        "text": "2r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "접점 P에서 반지름 방향과 접선이 수직이다. Q는 P의 대척점이고 PQ는 지름이다. 직각이등변 조건 AP=PQ를 이용하되 접점의 좌표와 마지막 곱은 표시하지 않는다. 두 접점 중 한 경우를 표시하며 다른 경우는 y=x에 대한 대칭이다.",
+  "accessibilityDescription": "접점 P에서 반지름 방향과 접선이 수직이다. Q는 P의 대척점이고 PQ는 지름이다. 직각이등변 조건 AP=PQ를 이용하되 접점의 좌표와 마지막 곱은 표시하지 않는다. 두 접점 중 한 경우를 표시하며 다른 경우는 y=x에 대한 대칭이다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형 2> 좌표평면 위에 원 $C: x^2+y^2=r^2$ $(0<r<2\\sqrt{2})$와 점 $A(2,2)$가 있다. 점 $A$에서 원 $C$에 그은 접선 $l$이 원 $C$와 만나는 접점을 $P$라 하고, 점 $P$를 지나고 직선 $l$과 수직인 직선이 원 $C$와 만나는 다른 한 점을 $Q$라 하자. 삼각형 $APQ$가 이등변삼각형이 되도록 하는 점 $P$의 좌표를 $(a,b)$라 할 때, $ab$의 값은? [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "\\(A\\)가 원 밖에 있으므로 \\(\\triangle OPA\\)는 접점 P에서 직각이다. 또 \\(PQ\\)는 접선 l에 수직이므로 반지름 OP와 나란하다. 따라서 O가 선분 PQ 위에 있고 \\(PQ=2r\\), \\(\\triangle APQ\\)도 P에서 직각이다.\n\n직각삼각형 \\(OPA\\)에서\n\\[\nAP^2=OA^2-OP^2=2^2+2^2-r^2=8-r^2\n\\]\n이다. 직각삼각형 \\(APQ\\)가 이등변이려면 두 직각변이 같아야 하므로 \\(AP=PQ=2r\\)이다.\n\\[\n8-r^2=4r^2\n\\]\n에서 \\(r^2=\\frac85\\)이다.\n\n접점 \\(P=(a,b)\\)에서 원의 접선은 \\(ax+by=r^2\\)이고 A(2,2)가 그 위에 있으므로\n\\(2a+2b=\\frac85\\), 따라서 \\(a+b=\\frac45\\)이다.\n또 \\(a^2+b^2=r^2=\\frac85\\)이므로\n\\[\n(a+b)^2=a^2+b^2+2ab\n\\]\n에서\n\\(2ab=\\frac{16}{25}-\\frac85=-\\frac{24}{25}\\)이다.\n따라서 \\(ab=-\\frac{12}{25}\\)이다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "c",
+        "polar",
+        "setP",
+        "P",
+        "Q",
+        "UnitX"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P에서 반지름 방향과 접선이 수직이다. Q는 P의 대척점이고 PQ는 지름이다. 직각이등변 조건 AP=PQ를 이용하되 접점의 좌표와 마지막 곱은 표시하지 않는다. 두 접점 중 한 경우를 표시하며 다른 경우는 y=x에 대한 대칭이다."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": -8
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": -12
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 8
+      }
+    ]
+  },
+  "caption": "닫힌구간의 양 끝점과 구간 내부에서 기울기가 0인 점의 높이를 비교한다. 가장 큰 값과 작은 값의 합은 표시하지 않는다.",
+  "accessibilityDescription": "닫힌구간의 양 끝점과 구간 내부에서 기울기가 0인 점의 높이를 비교한다. 가장 큰 값과 작은 값의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 닫힌구간 $[-2, 2]$에서 함수 $f(x)=x^3+3x^2-12$의 최댓값과 최솟값의 합은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′=3x(x+2),후보−2,0,2;값−8,−12,8,최종합−4숨김. 표시구간과원문닫힌구간일치.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌구간의 양 끝점과 구간 내부에서 기울기가 0인 점의 높이를 비교한다. 가장 큰 값과 작은 값의 합은 표시하지 않는다."
+  ]
+}

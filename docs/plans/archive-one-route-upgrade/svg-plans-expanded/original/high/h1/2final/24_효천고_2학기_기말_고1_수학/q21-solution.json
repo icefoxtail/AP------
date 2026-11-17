@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "35",
+        "title": "홀수0"
+      },
+      {
+        "count": "196",
+        "title": "홀수2"
+      }
+    ],
+    "join": "PLUS"
+  },
+  "caption": "합이 짝수인 세 수는 홀수가 없거나 두 개이다. 첫 칸은 일곱 짝수 중 셋을 고르는 수, 둘째 칸은 여덟 홀수 중 둘과 일곱 짝수 중 하나를 고르는 수이다. 서로 겹치지 않는 두 경우를 더한다. 선택한 세 수의 오름차순은 하나뿐이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3]<br>다음 조건을 만족시키는 자연수 $a, b, c$의 모든 순서쌍 $(a, b, c)$의 개수를 구하고 그 과정을 서술하시오. [6점]<br><br>〈조건〉<br>(가) $a+b+c$는 짝수이다.<br>(나) $a < b < c \\le 15$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "C(7,3)=35와 C(8,2)C(7,1)=196의 합. 순열3!을 곱하지 않으며231숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "C(7,3)=35와 C(8,2)C(7,1)=196의 합. 순열3!을 곱하지 않으며231숨김."
+  ]
+}

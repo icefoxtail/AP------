@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {
+        "count": "45",
+        "title": "AB조"
+      },
+      {
+        "count": "35",
+        "title": "나머지"
+      }
+    ],
+    "join": "TIMES"
+  },
+  "caption": "A와 B가 있는 네 명의 조를 먼저 만든다. 나머지 열 명 중 동료 두 명을 고르는 수가 첫 칸이다. 남은 여덟 명을 네 명씩 나눌 때 조에 이름이 없으므로 두 조의 교환을 한 번만 센 수가 둘째 칸이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\mathrm{A}$와 $\\mathrm{B}$를 포함한 12명을 4명씩 3개의 조로 나눌 때 $\\mathrm{A}$와 $\\mathrm{B}$가 같은 조에 포함되도록 나누는 경우의 수는? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "C(10,2)=45, 남은 조분할C(8,4)/2=35. AB조만 구별되고 다른 두 조는 무표지라는 핵심을 보존. 최종1575 숨김.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "C(10,2)=45, 남은 조분할C(8,4)/2=35. AB조만 구별되고 다른 두 조는 무표지라는 핵심을 보존. 최종1575 숨김."
+  ]
+}

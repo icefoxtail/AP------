@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cx",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cy",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "cx",
+          "cy"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "H"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "P",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sQH",
+      "refs": [
+        "Q",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [
+    "c"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2*sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "밑변 AB를 고정하면 넓이는 높이에 비례한다. 중심 수선 방향의 가까운 점 P와 먼 점 Q에서 두 높이의 극값을 읽는다. 넓이의 최종 합은 쓰지 않는다.",
+  "accessibilityDescription": "밑변 AB를 고정하면 넓이는 높이에 비례한다. 중심 수선 방향의 가까운 점 P와 먼 점 Q에서 두 높이의 극값을 읽는다. 넓이의 최종 합은 쓰지 않는다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $x^2+y^2-2x+4y+3=0$ 위를 움직이는 점 $P$와 두 점 $A(2,-5)$, $B(4,-3)$이 꼭짓점인 삼각형 $PAB$의 넓이의 최댓값과 최솟값의 합을 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "원의 식을 표준형으로 바꾼다.\n\\(x^2+y^2-2x+4y+3=0\\)\n\\((x-1)^2+(y+2)^2=2\\)\n이므로 중심은 \\(C(1,-2)\\), 반지름은 \\(\\sqrt2\\)이다.\n\n\\(A(2,-5)\\), \\(B(4,-3)\\)를 지나는 직선은 기울기가 1이므로 \\(y=x-7\\), 즉 \\(x-y-7=0\\)이다.\n\\(AB=\\sqrt{(4-2)^2+(-3+5)^2}=2\\sqrt2\\)이다.\n중심 C에서 직선 AB까지의 거리는\n\\[\nd=\\frac{|1-(-2)-7|}{\\sqrt{1^2+(-1)^2}}=2\\sqrt2\n\\]\n이다. 반지름이 \\(\\sqrt2\\)이므로 원 위의 점 P에서 직선 AB까지의 거리는 최소 \\(\\sqrt2\\), 최대 \\(3\\sqrt2\\)이다.\n\n삼각형 PAB의 밑변을 AB로 두면\n\\[\n[ PAB ]=\\frac12\\cdot 2\\sqrt2\\cdot(\\text{P와 AB 사이의 거리})\n\\]\n이다.\n따라서 넓이의 최솟값은 2, 최댓값은 6이고 합은 8이다. 정답은 ⑤이다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "cx",
+        "cy",
+        "C",
+        "l",
+        "H",
+        "P",
+        "Q",
+        "c"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑변 AB를 고정하면 넓이는 높이에 비례한다. 중심 수선 방향의 가까운 점 P와 먼 점 Q에서 두 높이의 극값을 읽는다. 넓이의 최종 합은 쓰지 않는다."
+  ]
+}

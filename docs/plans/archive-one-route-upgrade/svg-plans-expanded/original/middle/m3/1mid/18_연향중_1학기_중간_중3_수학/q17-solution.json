@@ -25,146 +25,135 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "B",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "5"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "C",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "5"
-            },
-            {
-              "kind": "integer",
-              "value": "3"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "D",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "3"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
+        "id": "C",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
         "id": "E",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "rational",
-              "numerator": "3",
-              "denominator": "2"
-            },
-            {
-              "kind": "rational",
-              "numerator": "1",
-              "denominator": "2"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "F",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "rational",
-              "numerator": "7",
-              "denominator": "2"
-            },
-            {
-              "kind": "rational",
-              "numerator": "1",
-              "denominator": "2"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "G",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "rational",
-              "numerator": "7",
-              "denominator": "2"
-            },
-            {
-              "kind": "rational",
-              "numerator": "5",
-              "denominator": "2"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "H",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "rational",
-              "numerator": "3",
-              "denominator": "2"
-            },
-            {
-              "kind": "rational",
-              "numerator": "5",
-              "denominator": "2"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
         },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "E",
+          "F",
+          "H"
+        ],
+        "args": {},
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       }
@@ -290,6 +279,11 @@
       "id": "reason",
       "condition": "남은 넓이에 x²를 더하면2x²+3xy+y²=(2x+y)(x+y). 전체 가로2x+y는 최종답이므로 표시하지 않는다. 특정 그림은 x2,y1 예시이며 숫자 길이표시 없이 x,y 조건만 적는다.",
       "mappedTo": "derived-method"
+    },
+    {
+      "id": "provenance-repair",
+      "condition": "예시 x2,y1을 기존 visible caption에 유지. 원점은 정규화; 전체 넓이(x²+3xy+y²)+x²=15 및 세로3에서 가로5를 유도한 평행이동으로 외곽 작도. 대각선 중점M에서 반변1씩 이동해 중앙 정사각형을 생성. 가로5는 출력 길이 라벨로 노출하지 않음. PLANE_FIGURE_v1은 NORMALIZATION_ORIGIN을 거절하고 SOURCE_POINT를 요구하므로, 단 하나의 시작 꼭짓점(0,0)은 임의 평행이동 자유도를 고정한 배치 앵커로 사용한다. 원문이 좌표0을 주었다는 뜻이 아니며 모든 길이와 위치관계는 뒤따르는 파생 연산에서 생성한다.",
+      "mappedTo": "mathPlan.nodes"
     }
   ],
   "newVisualInformation": [

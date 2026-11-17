@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "s",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "s"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "속도를 적분하여 얻은 위치 그래프이다. 출발 위치를 확인하고 시간이 음수가 아닌 부분에서 가로축을 지나는 때를 읽는다.",
+  "accessibilityDescription": "속도를 적분하여 얻은 위치 그래프이다. 출발 위치를 확인하고 시간이 음수가 아닌 부분에서 가로축을 지나는 때를 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 좌표가 2인 점에서 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 속도가 $v(t)=1-2t$일 때, 점 $\\mathrm{P}$가 원점을 지나는 시각은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "s=2+t−t²,근−1,2 중시간≥0→2. 최종교점좌표눈금숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "속도를 적분하여 얻은 위치 그래프이다. 출발 위치를 확인하고 시간이 음수가 아닌 부분에서 가로축을 지나는 때를 읽는다."
+  ]
+}

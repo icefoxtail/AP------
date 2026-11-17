@@ -25,7 +25,7 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "B",
@@ -44,7 +44,7 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "C",
@@ -63,144 +63,155 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "D",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "1"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "F",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "1"
-            },
-            {
-              "kind": "integer",
-              "value": "1"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "E",
-        "op": "SOURCE_POINT",
-        "inputs": [],
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
         "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "2"
-            },
-            {
-              "kind": "integer",
-              "value": "1"
-            }
-          ]
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
         },
         "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleBD",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleBE",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "meetP",
+        "op": "INTERSECTION",
+        "inputs": [
+          "axis",
+          "circleBD"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "meetQ",
+        "op": "INTERSECTION",
+        "inputs": [
+          "axis",
+          "circleBE"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "P",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "expression",
-              "op": "add",
-              "args": [
-                {
-                  "kind": "integer",
-                  "value": "1"
-                },
-                {
-                  "kind": "expression",
-                  "op": "mul",
-                  "args": [
-                    {
-                      "kind": "integer",
-                      "value": "-1"
-                    },
-                    {
-                      "kind": "expression",
-                      "op": "sqrt",
-                      "args": [
-                        {
-                          "kind": "integer",
-                          "value": "2"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
+        "op": "SELECT_POINT",
+        "inputs": [
+          "meetP"
+        ],
+        "args": {},
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "F"
+          ],
+          "sign": 1
+        }
       },
       {
         "id": "Q",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "expression",
-              "op": "add",
-              "args": [
-                {
-                  "kind": "integer",
-                  "value": "1"
-                },
-                {
-                  "kind": "expression",
-                  "op": "sqrt",
-                  "args": [
-                    {
-                      "kind": "integer",
-                      "value": "2"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
+        "op": "SELECT_POINT",
+        "inputs": [
+          "meetQ"
+        ],
+        "args": {},
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "F"
+          ],
+          "sign": -1
+        }
       }
     ]
   },
@@ -364,6 +375,11 @@
       "id": "reason",
       "condition": "기존 문제 SVG 직접 확인: A0 B1 C2, 두 단위 정사각형. BD=BE=√2, p=1−√2,q=1+√2는 중간값. 1/p−1/q=−2√2 최종값 숨김. 대각선과 양쪽 수직선 길이 대응을 유지한다.",
       "mappedTo": "derived-method"
+    },
+    {
+      "id": "provenance-repair",
+      "condition": "원그림에 직접 주어진 수직선 A0 B1 C2만 SOURCE_POINT GIVEN으로 유지. 단위 정사각형 꼭짓점 D/F/E는 평행이동, P/Q는 BD/BE를 반지름으로 하는 원과 원래 수직선의 교점을 좌우 branch로 선택. p,q 원시좌표 제거.",
+      "mappedTo": "mathPlan.nodes"
     }
   ],
   "newVisualInformation": [

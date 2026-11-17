@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "4",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      2.5
+    ],
+    "viewport": [
+      -1.5,
+      2.5,
+      -5,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "도함수가 0인 점과 실제 극대점을 구별한다. 원함수가 가장 높아지는 지점 위로 수평선이 놓여야 모든 x에서 부등식이 성립한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 실수 $x$에 대하여 부등식 $-3x^4+4x^3\\le k$가 성립하도록 하는 정수 $k$의 최솟값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "도함수12x²(1−x),x0은정지변곡,x1극대. 최댓값이최종k이므로극점높이와함수식라벨숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "도함수가 0인 점과 실제 극대점을 구별한다. 원함수가 가장 높아지는 지점 위로 수평선이 놓여야 모든 x에서 부등식이 성립한다.",
+  "newVisualInformation": [
+    "도함수12x²(1−x),x0은정지변곡,x1극대. 최댓값이최종k이므로극점높이와함수식라벨숨김."
+  ]
+}

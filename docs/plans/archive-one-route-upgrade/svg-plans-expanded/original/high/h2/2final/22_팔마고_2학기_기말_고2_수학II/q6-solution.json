@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(x)",
+    "domain": [
+      -2,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "함수 y=|x|의 예시이다. 원점은 주변보다 낮지만 두 직선의 기울기가 서로 달라 하나의 접선을 정할 수 없다. 이 예시만으로 다른 보기까지 판정하지 않는다.",
+  "accessibilityDescription": "함수 y=|x|의 예시이다. 원점은 주변보다 낮지만 두 직선의 기울기가 서로 달라 하나의 접선을 정할 수 없다. 이 예시만으로 다른 보기까지 판정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 다음 <보기> 문장의 참(true), 거짓(false)을 바르게 판단한 것은? [3.9점]\n\n<보기>\n(가) 극댓값은 항상 극솟값보다 크다.\n(나) 미분가능한 함수 $f(x)$가 열린구간 $(a, b)$에서 $x=c$ ($a < c < b$)일 때 최댓값 또는 최솟값을 가지면 곡선 $y=f(x)$ 위의 점 $(c, f(c))$에서의 접선의 기울기는 0이다.\n(다) 함수 $f(x)$가 $x=a$에서 극값을 갖는다면 $f'(a)=0$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(가)국소극값간전역대소강제없음,(나)내부미분가능극값은기울기0,(다)|x|반례. 최종참거짓조합미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수 y=|x|의 예시이다. 원점은 주변보다 낮지만 두 직선의 기울기가 서로 달라 하나의 접선을 정할 수 없다. 이 예시만으로 다른 보기까지 판정하지 않는다."
+  ]
+}

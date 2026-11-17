@@ -1,0 +1,49 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "120",
+      "countUnit": "가지"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "24",
+        "countUnit": "가지"
+      },
+      {
+        "id": "B",
+        "count": "24",
+        "countUnit": "가지"
+      }
+    ],
+    "elements": [
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "shade": "(A∪B)^c"
+  },
+  "caption": "운전자를 제외한 다섯 사람의 모든 배치가 U이다. A와 B는 각각 해당 사람이 원래 자리에 남는 배치들의 집합이다. 겹친 영역의 6은 두 사람이 모두 원래 자리에 남는 배치 수이다. 색칠한 원 밖이 두 사람 모두 자리를 옮긴 경우이다. 영역 넓이는 경우의 수의 비율을 나타내지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6인승 자동차에 3명이 타고 있었다. 새로운 사람 3명이 추가로 자동차에 탑승할 때, 운전자는 자리를 바꾸지 않고 나머지 5명은 임의로 앉는다고 한다. 이때, 처음부터 자동차에 탔던 2명이 모두 처음 좌석이 아닌 다른 좌석에 앉게 되는 경우의 수는? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "전체120,각 고정24,동시고정6. 기존SVG의 A만18/B만18은24−6과 동치. 합집합 여집합을 칠하여 포함배제 관계 보존, 최종78숨김.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체120,각 고정24,동시고정6. 기존SVG의 A만18/B만18은24−6과 동치. 합집합 여집합을 칠하여 포함배제 관계 보존, 최종78숨김."
+  ]
+}

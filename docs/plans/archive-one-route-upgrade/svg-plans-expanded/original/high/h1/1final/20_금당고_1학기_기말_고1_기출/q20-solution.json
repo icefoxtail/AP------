@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "H"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "G",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "H",
+    "P",
+    "G",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sGK",
+      "refs": [
+        "G",
+        "K"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "displayCircles": [
+    "c"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "중심 수선 위의 가장 가까운 점 P를 잡는다. 무게중심 G의 직선 AB까지 거리는 P의 거리의1/3임을 두 수선으로 비교한다. 최솟값의 분수와 최종합은 쓰지 않는다.",
+  "accessibilityDescription": "중심 수선 위의 가장 가까운 점 P를 잡는다. 무게중심 G의 직선 AB까지 거리는 P의 거리의1/3임을 두 수선으로 비교한다. 최솟값의 분수와 최종합은 쓰지 않는다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "G",
+        "K",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $C: (x-1)^2+(y-2)^2=4$와 두 점 $A(4,3)$, $B(1,7)$이 있다. 점 $P$가 원 $C$ 위를 움직일 때, 삼각형 $PAB$의 무게중심과 직선 $AB$ 사이의 거리의 최솟값이 $\\dfrac{\\alpha}{\\beta}$이다. 이때 $\\alpha+\\beta$의 값을 구하시오. [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "원의 중심은 \\(C(1,2)\\), 반지름은 2이다. A와 B를 지나는 직선의 기울기는\n\\(\\frac{7-3}{1-4}=-\\frac43\\)\n이므로\n\\(AB:4x+3y-25=0\\)이다.\n\n삼각형의 무게중심 \\(G\\)는 세 꼭짓점 좌표의 평균이다. 직선 \\(AB\\)의 식을 \\(F(x,y)=4x+3y-25\\)라 하면 \\(F(A)=F(B)=0\\)이므로\n\\[\nF(G)=\\frac{F(A)+F(B)+F(P)}3=\\frac{F(P)}3\n\\]\n이다. 따라서 \\(d(G,AB)=\\frac13 d(P,AB)\\)이다.\n\n중심 C에서 직선 AB까지의 거리는\n\\[\n\\frac{|4(1)+3(2)-25|}{\\sqrt{4^2+3^2}}=3\n\\]\n이다. 반지름이 2이므로 원 위의 점 P에서 AB까지의 최소 거리는 \\(3-2=1\\)이다.\n따라서 \\(d(G,AB)\\)의 최솟값은 \\(\\frac13\\)이다. \\(\\alpha+\\beta=1+3=4\\)이므로 정답은 ①이다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "C",
+        "A",
+        "B",
+        "l",
+        "H",
+        "P",
+        "G",
+        "K",
+        "c"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심 수선 위의 가장 가까운 점 P를 잡는다. 무게중심 G의 직선 AB까지 거리는 P의 거리의1/3임을 두 수선으로 비교한다. 최솟값의 분수와 최종합은 쓰지 않는다. 원문 의심: α,β가 서로소인 양의 정수라는 조건이 없어 α±β의 유일성이 보장되지 않는다. 기약분수 관례를 추가하지 않고 도형관계만 계획했다."
+  ]
+}

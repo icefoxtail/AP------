@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      0,
+      7,
+      -36,
+      14
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E1",
+        "x": "4",
+        "y": "-32"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "v"
+    }
+  },
+  "caption": "보조 다항식 전체를 정의하되 실제 속도 비교는 t>0에서 한다. 그림은 0부터 7까지의 일부이며 최저점에 닿는 수평선과 높은 수평선의 교점 수를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원점을 출발하여 움직이는 두 점 $P,Q$의 시각 $t$에서의 속도는 각각 $V_1(t)=t^3-6t^2$, $V_2(t)=a$이다. $t>0$에서 두 점 $P,Q$의 속도가 같을 때가 오직 한 번이 되도록 하는 정수 $a$의 최솟값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "p(t)=t³−6t²,t>0. t4에서최솟값−32. 구하는a최소값이므로높이숫자숨김;정의역반직선은caption에명시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "보조 다항식 전체를 정의하되 실제 속도 비교는 t>0에서 한다. 그림은 0부터 7까지의 일부이며 최저점에 닿는 수평선과 높은 수평선의 교점 수를 비교한다.",
+  "newVisualInformation": [
+    "p(t)=t³−6t²,t>0. t4에서최솟값−32. 구하는a최소값이므로높이숫자숨김;정의역반직선은caption에명시."
+  ]
+}

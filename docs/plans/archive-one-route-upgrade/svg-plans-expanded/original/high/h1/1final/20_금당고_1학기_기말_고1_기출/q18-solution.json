@@ -1,0 +1,424 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "XaxisPoint",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mx",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "my",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "mx",
+          "my"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "set13",
+        "op": "INTERSECTION",
+        "inputs": [
+          "l",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "set24",
+        "op": "INTERSECTION",
+        "inputs": [
+          "m",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "set13"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "XaxisPoint"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "C3",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "set13"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "XaxisPoint"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "C2",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "set24"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "XaxisPoint"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "C4",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "set24"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "XaxisPoint"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "circleC1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "17"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleC2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleC3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "17"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleC4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "displaySegments": [],
+  "displayLines": [
+    "l",
+    "m"
+  ],
+  "displayCircles": [
+    "base",
+    "circleC1",
+    "circleC2",
+    "circleC3",
+    "circleC4"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": []
+  },
+  "caption": "두 축에 동시에 접하는 원의 중심은 y=x 또는 y=−x 위에 있다. 주어진 원과 두 직선의 네 교점을 중심으로 하는 원들을 모두 표시한다. 각 사분면의 양의 반지름만 취하고 최종 제곱합은 숨긴다.",
+  "accessibilityDescription": "두 축에 동시에 접하는 원의 중심은 y=x 또는 y=−x 위에 있다. 주어진 원과 두 직선의 네 교점을 중심으로 하는 원들을 모두 표시한다. 각 사분면의 양의 반지름만 취하고 최종 제곱합은 숨긴다.",
+  "coordinateLabels": [
+    "M"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심이 원 $(x-1)^2+(y-2)^2=9$ 위에 있고, $x$축 및 $y$축에 동시에 접하는 모든 원의 넓이의 합을 $S\\pi$라 할 때, $S$의 값을 구하시오. [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "주어진 원의 중심은 \\((1,2)\\), 반지름은 \\(3\\)이다.\n두 좌표축에 동시에 접하는 원의 중심은 \\((\\pm r,\\pm r)\\)이고 \\(r>0\\)이다.\n각 사분면에서 주어진 원의 중심까지 거리를 \\(3\\)으로 둔다.\n\n제1사분면 중심이 \\((r,r)\\)이면\n\\((r-1)^2+(r-2)^2=9\\)\n\\(2r^2-6r+5=9\\)\n\\(r^2-3r-2=0\\)\n\\(r=\\dfrac{3\\pm\\sqrt{17}}2\\)이고 양수인 반지름은 \\(\\dfrac{3+\\sqrt{17}}2\\)이다.\n\n제2사분면 중심이 \\((-r,r)\\)이면\n\\((r+1)^2+(r-2)^2=9\\)\n\\(2r^2-2r+5=9\\)\n\\(r^2-r-2=0\\)\n\\((r-2)(r+1)=0\\)이므로 \\(r=2\\)이다.\n\n제4사분면 중심이 \\((r,-r)\\)이면\n\\((r-1)^2+(r+2)^2=9\\)\n\\(2r^2+2r+5=9\\)\n\\(r^2+r-2=0\\)\n\\((r+2)(r-1)=0\\)이므로 \\(r=1\\)이다.\n\n제3사분면 중심이 \\((-r,-r)\\)이면\n\\((r+1)^2+(r+2)^2=9\\)\n\\(2r^2+6r+5=9\\)\n\\(r^2+3r-2=0\\)\n\\(r=\\dfrac{-3\\pm\\sqrt{17}}2\\)이고 양수인 반지름은 \\(\\dfrac{\\sqrt{17}-3}2\\)이다.\n\n넓이의 합이 \\(S\\pi\\)이므로 \\(S\\)는 네 반지름의 제곱의 합이다.\n\\(S=\\dfrac{(3+\\sqrt{17})^2+(\\sqrt{17}-3)^2}{4}+2^2+1^2\\)\n\\(S=13+4+1\\)\n\\(S=18\\)이다.\n따라서 정답은 ⑤이다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "construction",
+      "condition": "주어진 좌표점만 SOURCE_POINT GIVEN이다. 원점과 단위축은 좌표틀 고정용이며 파생점은 공식 연산 노드로 계산한다. 보조 직선의 수치 계수는 위 풀이의 완전제곱·기울기·매개변수 결정 결과이다. Q14는 해결된 변3,4,5 및6,8,10의 두 직각삼각형을 C원점,CD양의세로방향으로 정규화하고 닮음배율−2를 적용한다. 예시 k값은 caption과 일치한다.",
+      "mappedTo": [
+        "O",
+        "XaxisPoint",
+        "mx",
+        "my",
+        "M",
+        "base",
+        "l",
+        "m",
+        "set13",
+        "set24",
+        "C1",
+        "C3",
+        "C2",
+        "C4",
+        "circleC1",
+        "circleC2",
+        "circleC3",
+        "circleC4"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 축에 동시에 접하는 원의 중심은 y=x 또는 y=−x 위에 있다. 주어진 원과 두 직선의 네 교점을 중심으로 하는 원들을 모두 표시한다. 각 사분면의 양의 반지름만 취하고 최종 제곱합은 숨긴다."
+  ]
+}
