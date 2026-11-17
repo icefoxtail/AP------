@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "archive-observer-public-companion-independent-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_CI_M2S2_26FC42390A50",
+  "decision": "STATIC_ACCEPT_EXACT_THREE_HUNK_OBSERVATION_EXTENSION",
+  "path": "docs/operations/middle-meta-closeout-26fc-20261117/observe-registered-snapshot.mjs",
+  "before": {
+    "commit": "8b7406be777a28df1a2b3036dcb10ea1fc9cdfd8",
+    "gitBlobSha1": "3af65bd44923e37c318c022bb9d5ef144e5909fe",
+    "sha256": "aad112885ba2cd9a59d6683d2f50d5cd0b3e7664557183693da9cf1aab2bc1b4",
+    "bytes": 98820
+  },
+  "after": {
+    "gitBlobSha1": "4e24aaf84891e8954c43057df6c6c9c54dce0797",
+    "sha256": "27ae32aafd309c492662f2ad4b18c4818e2f2bc464ba7e722a330aca5cce7055",
+    "bytes": 99624
+  },
+  "verification": {
+    "hunks": 3,
+    "wholeInverseExact": true,
+    "addedPublicPaths": [
+      "archive/archive2-canonical.js",
+      "archive/data/archive2-canonical-input-manifest.compact.json"
+    ],
+    "priorNinePublicPathsUnchanged": true,
+    "releaseManifestReadFromExactObservedSnapshot": true,
+    "releaseManifestGitRegularBlobAndRawDigestBound": true,
+    "releaseSchema": "ARCHIVE_PAGES_SITE_MANIFEST_V1",
+    "requiredMapping": {
+      "archiveRootFiles": "archive2-canonical.js",
+      "archiveDataFiles": "archive2-canonical-input-manifest.compact.json"
+    },
+    "currentReleaseMappingRefReported": true,
+    "actualRemoteBytesRequiredForBothNewFiles": true,
+    "priorStableBeforeAfterReleaseMarkerAndExactSnapshotRequired": true,
+    "budgetsAndStatusSemanticsUnchanged": true,
+    "nonPublicObserverBodiesWholeExact": true
+  },
+  "execution": {
+    "authorNodeCheck": "PASS_REPORTED_BY_OWNER_NOT_RERUN",
+    "reviewerExecution": 0,
+    "actualPublicRequests": 0,
+    "actualPublicPass": "NOT_CLAIMED",
+    "productionWrites": 0,
+    "approvalOrNativeCalls": 0,
+    "refWrites": 0
+  }
+}

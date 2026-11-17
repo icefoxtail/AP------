@@ -119,6 +119,87 @@ function treeEntry(root, commit, relative) {
   required(found && found[3] === relative, "TRACKED_REGULAR_INPUT");
   return found[2];
 }
+function authenticateConsumedCanonicalInputs(canonical, manifest, input) {
+  required(Array.isArray(canonical?.REQUIRED_INPUT_PATHS) &&
+    typeof canonical.runtimeInputPathsFromManifest === "function" &&
+    typeof canonical.reviewedRegistrationProofPaths === "function", "CANONICAL_RESOURCE_API_REQUIRED");
+  const declared = new Map();
+  for (const ref of manifest.files) {
+    canonicalInputPath(ref.path);
+    required(/^[a-f0-9]{64}$/.test(ref.sha256 || "") && !declared.has(ref.path), "CURRENT_MANIFEST_DIGEST");
+    declared.set(ref.path, ref);
+  }
+  const runtimePaths = canonical.runtimeInputPathsFromManifest(manifest.files);
+  required(Array.isArray(runtimePaths), "CANONICAL_RUNTIME_PATHS");
+  const consumed = new Map();
+  function load(relative) {
+    const repoRelative = canonicalInputPath(relative), ref = declared.get(relative);
+    required(ref, "CURRENT_CONSUMED_MANIFEST_INPUT_MISSING");
+    if (consumed.has(relative)) return consumed.get(relative).data;
+    const raw = input.read(repoRelative);
+    required(sha(Buffer.from(raw.toString("utf8").replaceAll("\r\n", "\n"))) === ref.sha256, "CURRENT_MANIFEST_INPUT_DRIFT");
+    const data = JSON.parse(raw.toString("utf8"));
+    consumed.set(relative, { data, sha256: ref.sha256 });
+    return data;
+  }
+  for (const relative of new Set([...canonical.REQUIRED_INPUT_PATHS, ...runtimePaths])) load(relative);
+  const proofPaths = canonical.reviewedRegistrationProofPaths(runtimePaths.map(relative => consumed.get(relative).data));
+  required(Array.isArray(proofPaths), "CANONICAL_REVIEWED_PROOF_PATHS");
+  for (const relative of proofPaths) load(relative);
+  const refs = [...consumed].map(([relative, value]) => ({ path: relative, sha256: value.sha256 }))
+    .sort((a, b) => a.path.localeCompare(b.path, "en"));
+  return { scope: "EXACT_OFFICIAL_LOAD_RESOLVED_CONSUMER_CATALOG_RESOURCE_BOUNDARY",
+    manifestDeclaredFiles: declared.size, consumedFiles: consumed.size,
+    unconsumedDeclaredFiles: declared.size - consumed.size,
+    runtimeFiles: runtimePaths.length, reviewedProofPaths: proofPaths.length,
+    consumedWholeSha256: hashValue(refs), unconsumedResourcesClaimedVerified: false,
+    officialConsumerExecution: "REQUIRED_NEXT" };
+}
+function canonicalInputProtocolChecks() {
+  const requiredPath = "data/required.json", runtimePath = "data/meta-foundation/runtime/fixture-v1.json";
+  const proofPath = "data/meta-foundation/evidence/reviewed-exam-meta/v1/fixture.json";
+  const optionalPath = "_generated/intelligence/unused.json";
+  const documents = new Map([[requiredPath, Buffer.from('{"required":true}\n')],
+    [runtimePath, Buffer.from('{"generatedFrom":{"reviewedExam_fixture":"archive/' + proofPath + '"}}\n')],
+    [proofPath, Buffer.from('{"proof":true}\n')]]);
+  const manifest = { files: [...documents].map(([path, raw]) => ({ path, sha256: sha(raw) }))
+    .concat([{ path: optionalPath, sha256: "a".repeat(64) }]) };
+  const canonical = { REQUIRED_INPUT_PATHS: [requiredPath], runtimeInputPathsFromManifest: () => [runtimePath],
+    reviewedRegistrationProofPaths: packs => [packs[0].generatedFrom.reviewedExam_fixture.replace(/^archive\//, "")] };
+  const makeInput = (overrides = new Map()) => ({ read(relative) {
+    const raw = overrides.has(relative) ? overrides.get(relative) : documents.get(relative.replace(/^archive\//, ""));
+    required(Buffer.isBuffer(raw), "SYNTHETIC_MISSING_CONSUMED_INPUT");return raw;
+  } });
+  const edit = fn => { const next = structuredClone(manifest);fn(next);return next; };
+  let checks = 0;
+  const check = fn => { fn();checks++; };
+  check(() => { const result = authenticateConsumedCanonicalInputs(canonical, manifest, makeInput());
+    assert.equal(result.consumedFiles, 3);assert.equal(result.unconsumedDeclaredFiles, 1);
+    assert.equal(result.unconsumedResourcesClaimedVerified, false); });
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical,
+    edit(m => m.files = m.files.filter(x => x.path !== requiredPath)), makeInput()), /CURRENT_CONSUMED_MANIFEST_INPUT_MISSING/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical,
+    edit(m => m.files[0].sha256 = "b".repeat(64)), makeInput()), /CURRENT_MANIFEST_INPUT_DRIFT/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical, manifest,
+    makeInput(new Map([["archive/" + requiredPath, null]]))), /SYNTHETIC_MISSING_CONSUMED_INPUT/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical,
+    edit(m => m.files.push(m.files[0])), makeInput()), /CURRENT_MANIFEST_DIGEST/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical,
+    edit(m => m.files[3].path = "../unrelated.json"), makeInput()), /UNSAFE_PATH/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical,
+    edit(m => m.files[3].sha256 = "invalid"), makeInput()), /CURRENT_MANIFEST_DIGEST/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs({ ...canonical,
+    reviewedRegistrationProofPaths: () => ["../unrelated.json"] }, manifest, makeInput()), /UNSAFE_PATH/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical,
+    edit(m => m.files = m.files.filter(x => x.path !== proofPath)), makeInput()), /CURRENT_CONSUMED_MANIFEST_INPUT_MISSING/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs(canonical, manifest,
+    makeInput(new Map([["archive/" + proofPath, Buffer.from("tampered")]]))), /CURRENT_MANIFEST_INPUT_DRIFT/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs({ ...canonical,
+    runtimeInputPathsFromManifest: () => null }, manifest, makeInput()), /CANONICAL_RUNTIME_PATHS/));
+  check(() => assert.throws(() => authenticateConsumedCanonicalInputs({ ...canonical,
+    reviewedRegistrationProofPaths: () => null }, manifest, makeInput()), /CANONICAL_REVIEWED_PROOF_PATHS/));
+  return checks;
+}
 function reader(root, snapshot) {
   const observed = new Map();
   let lastAttempt = null;
@@ -384,12 +465,13 @@ async function observe({ root, codeRoot, output, allowHydration = false }) {
     required(Array.isArray(metadata.records) && Array.isArray(identities.records) &&
       Array.isArray(manifest.files) && manifest.files.length > 0 && manifest.files.length < 20000,
     "CURRENT_INPUT_SHAPE");
-    for (const ref of manifest.files) {
-      const relative = canonicalInputPath(ref.path);
-      required(/^[a-f0-9]{64}$/.test(ref.sha256 || ""), "CURRENT_MANIFEST_DIGEST");
-      const raw = input.read(relative);
-      required(sha(Buffer.from(raw.toString("utf8").replaceAll("\r\n", "\n"))) === ref.sha256, "CURRENT_MANIFEST_INPUT_DRIFT");
-    }
+    // Match the exact resource boundary used by loadResolvedConsumerCatalog.
+    // generatedFrom history can be declared in the manifest without being a
+    // runtime consumer input. Every actually consumed resource is still read
+    // from this HEAD, checked against its declared digest, and postchecked.
+    input.read("archive/archive2-canonical.js");
+    const canonicalApi = require(path.join(root, "archive/archive2-canonical.js"));
+    report.canonicalConsumedInputs = authenticateConsumedCanonicalInputs(canonicalApi, manifest, input);
     const registryIndex = input.json(REGISTRY);
     for (const ref of [...registryIndex.canonicalSources || [], ...registryIndex.compiledArtifacts || []]) {
       const raw = input.read(ref.path), expected = String(ref.sha256 || "").replace(/^sha256:/, "");
@@ -640,7 +722,7 @@ function selfTest() {
   subject.approvedHash = hashValue(subject.after);
   const current = { questionUid: subject.uid, sourceArchiveFile: subject.source, sourceOrdinal: 2, ...subject.after };
   const identity = { questionUid: subject.uid, sourceArchiveFile: subject.source, sourceOrdinal: 2 };
-  let checks = pageLabelProtocolChecks() + storedFinalQaProtocolChecks();
+  let checks = pageLabelProtocolChecks() + storedFinalQaProtocolChecks() + canonicalInputProtocolChecks();
   function check(f) { f(); checks++; }
   check(() => assert.equal(storedAudit(subject, [current], [identity]).retained, true));
   check(() => assert.equal(storedAudit(subject, [{ ...current, difficultyBucket: 4 }], [identity]).retained, false));
@@ -674,7 +756,7 @@ function selfTest() {
   console.log(JSON.stringify({ status: "PASS", protocolChecks: checks, actualConsumerQueries: 0,
     originalApprovalsEvaluated: 0, mathematicalReview: 0, meaning: "PURE_OBSERVER_PROTOCOL_TESTS_ONLY" }));
 }
-module.exports = { CONFIG, stable, hashValue, storedAudit, pageAudit, regular, relativePath, canonicalInputPath, observe, selfTest, pageLabelProtocolChecks, storedFinalQaStatus, storedFinalQaProtocolChecks };
+module.exports = { CONFIG, stable, hashValue, storedAudit, pageAudit, regular, relativePath, canonicalInputPath, observe, selfTest, pageLabelProtocolChecks, storedFinalQaStatus, storedFinalQaProtocolChecks, authenticateConsumedCanonicalInputs, canonicalInputProtocolChecks };
 if (require.main === module) {
   if (process.argv.slice(2).length === 1 && process.argv[2] === "--self-test") selfTest();
   else {
