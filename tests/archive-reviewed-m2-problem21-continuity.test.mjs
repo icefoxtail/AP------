@@ -8,7 +8,8 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { validateM2ProblemRenderer21Continuity, M2_PROBLEM21_CONTINUITY_SCHEMA,
-  M2_PROBLEM21_BINDING_SCHEMA, M2_PROBLEM21_SCOPE, M2_PROBLEM21_ITEMS } from "../archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs";
+  M2_PROBLEM21_BINDING_SCHEMA, M2_PROBLEM21_SCOPE, M2_PROBLEM21_ITEMS, M2_PROBLEM21_DERIVED_SVG8_ITEMS } from "../archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs";
+import SvgIndexContinuity from "../tools/4slot/existing-vector-svg-index-continuity.cjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const EVIDENCE_DIRECTORY = "docs/operations/m2-problem21-continuity-20261116/";
@@ -33,7 +34,7 @@ const allProblemFields = ["id", "number", "sourceQuestionNo", "sourceQid", "sour
   "content", "question", "choices", "image", "images", "figureSvg", "layoutTag", "wide", "imageAlt", "imageCaption", "imageSize", "score"];
 const problem = question => Object.fromEntries(allProblemFields.filter(key => Object.hasOwn(question, key)).map(key => [key, question[key]]));
 const without = (question, fields) => Object.fromEntries(Object.entries(question).filter(([key]) => !fields.includes(key)));
-function fixture() {
+function fixture(selectedKey) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-m2-problem21-")); git(root, ["init", "-q"]);
   const common = path.resolve(repo, git(repo, ["rev-parse", "--git-common-dir"]).toString().trim());
   fs.writeFileSync(path.join(root, ".git/objects/info/alternates"), `${path.join(common, "objects")}\n`);
@@ -54,7 +55,7 @@ function fixture() {
     const bytes = git(root, ["show", `${ref.commit}:${ref.path}`]); assert.equal(blob(bytes), ref.gitBlobSha1); assert.equal(sha(bytes), ref.sha256);
     write(ref.path, bytes);
   }
-  for (const row of staticDoc.rows) { materialize(row.currentSourceRef); row.nativeProblemAssets.forEach(materialize); row.currentProblemAssets.forEach(materialize); }
+  for (const row of staticDoc.rows.filter(row => selectedKey === undefined || (Array.isArray(selectedKey) ? selectedKey.includes(row.key) : row.key === selectedKey))) { materialize(row.currentSourceRef); row.nativeProblemAssets.forEach(materialize); row.currentProblemAssets.forEach(materialize); }
   for (const ref of technical.servedFiles) if (ref.path !== "archive/data/question_metadata.json" && !ref.path.startsWith("archive/exams/")) materialize(ref);
   for (const ref of technical.studentFontResources) materialize(ref);
   let wrapper;
@@ -244,4 +245,121 @@ test("frozen public problem21 uses real immutable Git and original UI evidence",
     for (const [relative, expected] of f.baseline) if (relative !== ".archive-meta-register/evidence/test-m2-problem21/binding.json")
       assert.equal(actual.get(relative), expected, `input unchanged: ${relative}`);
   } finally { f.close(); }
+});
+
+test("generated SVG index uses only the authenticated problem21 target while retaining strict file boundaries", async t => {
+  const f = fixture("E017-Q10"), relative = "archive/data/svg-accessibility-index.js";
+  const full = path.join(f.root, relative), original = fs.readFileSync(full);
+  const match = original.toString("utf8").match(/Object\.freeze\((\{[\s\S]*\})\);/);
+  assert.ok(match);
+  const index = JSON.parse(match[1]);
+  const encode = records => Buffer.from(original.toString("utf8").replace(match[1], JSON.stringify({ ...index, records })));
+  const target = f.staticDoc.rows.find(row => row.key === "E017-Q10").currentProblemAssets[0].path.slice("archive/".length);
+  const unrelated = { ...index.records[0], assetRef: "assets/images/generated-reader-fixture/unrelated.svg" };
+  const run = () => validateM2ProblemRenderer21Continuity(f.args("E017-Q10"));
+  try {
+    const baseline = run();
+    await t.test("generated nonselected data advances without changing issued proof", () => {
+      fs.writeFileSync(full, encode([...index.records, unrelated]));
+      try { assert.deepEqual(run(), baseline); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("previously absent selected record cannot be added", () => {
+      assert.equal(index.records.filter(row => row.assetRef === target && row.visualRole === "problem").length, 0);
+      fs.writeFileSync(full, encode([...index.records, { ...unrelated, assetRef: target, visualRole: "problem" }]));
+      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("an unrelated global duplicate still fails closed", () => {
+      fs.writeFileSync(full, encode([...index.records, index.records[0]]));
+      try { assert.throws(run, /SVG_INDEX_RUNTIME_LOOKUP_REJECTED/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("normalized aliases cannot hide an unrelated duplicate", () => {
+      const originalRow = index.records.find(row => row.visualRole === "problem" && row.assetRef.startsWith("assets/"));
+      assert.ok(originalRow);
+      fs.writeFileSync(full, encode([...index.records, { ...originalRow, assetRef: "/archive/" + encodeURI(originalRow.assetRef) }]));
+      try { assert.throws(run, /SVG_INDEX_RUNTIME_LOOKUP_REJECTED/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("selected solution-role additions cannot bypass the footprint", () => {
+      fs.writeFileSync(full, encode([...index.records, { ...unrelated, assetRef: target, visualRole: "solution" }]));
+      try { assert.throws(run, /SELECTED_SVG_INDEX_DRIFT/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("generated data cannot become executable code", () => {
+      fs.writeFileSync(full, Buffer.concat([Buffer.from("outside();"), original]));
+      try { assert.throws(run, /SVG_INDEX_WRAPPER/); } finally { fs.writeFileSync(full, original); }
+    });
+    await t.test("a symlink cannot transport the current index outside the fixture", () => {
+      const outside = fs.mkdtempSync(path.join(os.tmpdir(), "outside-svg-input-"));
+      fs.writeFileSync(path.join(outside, "index.js"), original);
+      fs.unlinkSync(full); fs.symlinkSync(path.join(outside, "index.js"), full);
+      try { assert.throws(run, /SYMLINK_PATH/); }
+      finally { fs.unlinkSync(full); fs.writeFileSync(full, original); fs.rmSync(outside, { recursive: true, force: true }); }
+    });
+    await t.test("a directory cannot stand in for generated index bytes", () => {
+      fs.unlinkSync(full); fs.mkdirSync(full);
+      try { assert.throws(run, /LIVE_SVG_INDEX_UNAVAILABLE/); }
+      finally { fs.rmdirSync(full); fs.writeFileSync(full, original); }
+    });
+    await t.test("missing generated bytes are refused", () => {
+      fs.unlinkSync(full);
+      try { assert.throws(run, /LIVE_SVG_INDEX_UNAVAILABLE/); }
+      finally { fs.writeFileSync(full, original); }
+    });
+    assert.equal(sha(fs.readFileSync(full)), sha(original));
+    assert.deepEqual(f.beforeDigests(), f.baseline);
+  } finally { f.close(); }
+});
+
+
+
+test("closed repair8 accepts only its exact approved canonical SVG records", async t => {
+  const items = M2_PROBLEM21_DERIVED_SVG8_ITEMS, f = fixture(items.map(row => row.key));
+  const relative = "archive/data/svg-accessibility-index.js", full = path.join(f.root, relative);
+  const raw = fs.readFileSync(full), captured = SvgIndexContinuity.parseIndex(raw);
+  const publishedIndexRaw = git(repo, ["show", "22f79c4ffd5ad5f811c2840a532422e0ecabd3e1:" + relative]);
+  assert.equal(blob(publishedIndexRaw), "b5c174cce6838a5f575b15eac289c5076912e0d8", "immutable published generated footprint");
+  const current = SvgIndexContinuity.parseIndex(publishedIndexRaw);
+  const prefix = "(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+  const suffix = ");\n}(typeof window !== 'undefined' ? window : globalThis));\n";
+  const projected = clone(captured), byUid = new Map();
+  for (const item of items) {
+    const refs = [{ path: item.assetPath }], old = SvgIndexContinuity.selectEntries(captured, refs);
+    const observed = SvgIndexContinuity.selectEntries(current, refs);
+    assert.equal(old.length, 0, item.key + ": captured selected footprint");
+    assert.equal(observed.length, 1, item.key + ": current selected footprint");
+    assert.equal(sha(stable(observed[0])), item.derivedRecordSha256, item.key + ": exact independently derived whole record");
+    byUid.set(item.questionUid, clone(observed[0])); projected.records.push(clone(observed[0]));
+  }
+  const install = document => fs.writeFileSync(full, prefix + JSON.stringify(document) + suffix);
+  const run = key => validateM2ProblemRenderer21Continuity(f.args(key));
+  try {
+    install(projected);
+    for (const item of items) await t.test(item.key + ": original Native and UI authority remain required", () => {
+      const result = run(item.key);
+      assert.equal(result.proof.requiresOrdinaryNativeValidation, true);
+      assert.equal(result.proof.newMetadataApprovals, 0);
+      assert.equal(result.proof.newMathematicalQa, false);
+      assert.equal(result.proof.sourceWrites, 0);
+      assert.equal(result.proof.rendererWrites, 0);
+    });
+    const target = items[0], asset = byUid.get(target.questionUid);
+    for (const [name, mutate, pattern] of [
+      ["changed derived text is refused", d => { d.records.find(r => r.assetRef === asset.assetRef && r.visualRole === "problem").descriptionKo = "synthetic changed description"; }, /SELECTED_SVG_INDEX_DRIFT/],
+      ["unknown record field is refused", d => { d.records.find(r => r.assetRef === asset.assetRef && r.visualRole === "problem").unreviewedField = true; }, /SELECTED_SVG_INDEX_DRIFT|SVG_INDEX_RUNTIME_LOOKUP_REJECTED/],
+      ["solution-role replacement is refused", d => { d.records.find(r => r.assetRef === asset.assetRef && r.visualRole === "problem").visualRole = "solution"; }, /SELECTED_SVG_INDEX_DRIFT/],
+      ["second selected role is refused", d => { d.records.push({ ...asset, visualRole: "solution" }); }, /SELECTED_SVG_INDEX_DRIFT/],
+      ["normalized duplicate still fails globally", d => { d.records.push({ ...asset, assetRef: "archive/" + asset.assetRef }); }, /SVG_INDEX_RUNTIME_LOOKUP_REJECTED/],
+    ]) await t.test(name, () => {
+      const changed = clone(projected); mutate(changed); install(changed);
+      try { assert.throws(() => run(target.key), pattern); } finally { install(projected); }
+    });
+    await t.test("another UID cannot borrow the named ordinal", () => {
+      const args = f.args(target.key); args.patch.questionUid = items[1].questionUid;
+      assert.throws(() => validateM2ProblemRenderer21Continuity(args), /EXACT20_ONLY_Q2|NATIVE_IDENTITY_OR_METADATA_ONLY_SCOPE/);
+    });
+    await t.test("the approved SVG bytes remain mandatory", () => {
+      const assetFile = path.join(f.root, target.assetPath), original = fs.readFileSync(assetFile);
+      fs.appendFileSync(assetFile, " ");
+      try { assert.throws(() => run(target.key), /LIVE_PROBLEM_ASSET_DRIFT/); }
+      finally { fs.writeFileSync(assetFile, original); }
+    });
+  } finally { fs.writeFileSync(full, raw); f.close(); }
 });
