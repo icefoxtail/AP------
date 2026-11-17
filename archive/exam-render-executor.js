@@ -411,19 +411,32 @@
         }
         return area;
         };
+        // A stretchy math bar (overline/arrow) draws a spacer a few px past its box; MathJax only clips it with
+        // clip-path, so the spacer still counts as scrollable overflow. First retry such a question with the
+        // paint-only clip (mixed_engine.html [data-ap-mjx-clip]) before moving it down the ladder. Questions that
+        // do not clip never get the attribute, so their output is unchanged.
+        const mjxClipTried = new Set();
         for (let pass = 0; ; pass += 1) {
             builtPages = [];
             await layoutPass();
-            if (pass > ladder.length) break;
+            if (pass > ladder.length + 1) break;
             const escalate = new Map();
+            let marked = false;
             builtPages.forEach(page => clippedQuestionBoxes(page).forEach(box => {
                 const item = cloneItems.get(box);
                 if (!item || item.q.layoutTag === 'fullwidth') return;
+                if (!mjxClipTried.has(item) && typeof box.querySelector === 'function' && box.querySelector('mjx-stretchy-h > mjx-ext')
+                    && typeof item.box.setAttribute === 'function') {
+                    mjxClipTried.add(item);
+                    item.box.setAttribute('data-ap-mjx-clip', '1');
+                    marked = true;
+                    return;
+                }
                 const current = forcedWide.get(item);
                 const next = ladder[current ? ladder.indexOf(current) + 1 : 0];
                 if (next) escalate.set(item, next);
             }));
-            if (!escalate.size) break;
+            if (!escalate.size && !marked) break;
             escalate.forEach((step, item) => forcedWide.set(item, step));
             builtPages.forEach(page => page.remove());
         }
