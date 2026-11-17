@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass1",
+  "createdAt": "2026-11-11T23:58:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js",
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "",
+      "primaryMethod": "다섯 색에서 세 개를 중복 허용해 고르는 수를 ${}_{5}H_{3}$로 세고, $(a+b+c)^7$의 항 수를 ${}_{9}C_{2}$로 세어 각 진술을 확인한다.",
+      "decisiveStep": "${}_{5}H_{3}={}_{7}C_{3}=35$이고 $(a+b+c)^7$의 항 수는 음이 아닌 지수 세 개의 합이 7인 경우의 수인 ${}_{9}C_{2}=36$이다.",
+      "rpmPath": { "majorUnit": "경우의 수", "midUnit": "순열과 조합", "l3": "중복조합", "l4": "중복을 허용한 선택" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "",
+      "primaryMethod": "그림의 A에서 B까지 오른쪽과 위쪽으로만 이동하며, 가로 6칸과 높이 변화에 맞춰 가능한 최단 경로를 구간별로 센다.",
+      "decisiveStep": "왼쪽 아래에서 계단 모양 경계까지 가는 경우와 경계에서 B까지 가는 경우를 나누고, 경계를 지나는 접점별 경로 수를 곱해 합한다.",
+      "rpmPath": { "majorUnit": "경우의 수", "midUnit": "순열과 조합", "l3": "조합", "l4": "선택" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "",
+      "primaryMethod": "${}_{n}C_{r}$의 파스칼 항등식과 $r{}_{n}C_{r}=n{}_{n-1}C_{r-1}$를 확인하고, $(x+1)^{10}(x+1)^{10}=(x+1)^{20}$에서 $x^{10}$의 계수를 구한다.",
+      "decisiveStep": "두 인수를 $(x+1)^{20}$으로 합치면 $x^{10}$의 계수는 ${}_{20}C_{10}$이므로 보기의 ${}_{21}C_{10}$과 다르다.",
+      "rpmPath": { "majorUnit": "경우의 수", "midUnit": "이항정리", "l3": "이항계수", "l4": "조합 항등식" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "",
+      "primaryMethod": "11계단을 오르는 동안 2계단씩 오른 횟수를 k라 두면 1계단 오르기는 11-2k회이고, 전체 이동 순서 수를 k별로 더한다.",
+      "decisiveStep": "각 k에서 총 이동 횟수는 11-k회이며 2계단 이동 k회의 자리를 고르는 ${}_{11-k}C_{k}$를 k=0부터 5까지 합한다.",
+      "rpmPath": { "majorUnit": "경우의 수", "midUnit": "순열과 조합", "l3": "조합", "l4": "선택" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "",
+      "primaryMethod": "${}_{2}\\Pi_{5}$는 두 기호 중 다섯 자리를 정하는 경우의 수로, ${}_{3}H_{5}$는 세 종류에서 중복을 허용해 다섯 개를 고르는 경우의 수로 각각 계산한다.",
+      "decisiveStep": "각 항을 ${}_{2}\\Pi_{5}=2^5$와 ${}_{3}H_{5}={}_{7}C_{5}$로 바꾼 뒤 더한다.",
+      "hold": "합에 중복순열과 중복조합이 함께 있어 선택지의 한 가지 유형 경로로 둘을 함께 나타낼 수 없다.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

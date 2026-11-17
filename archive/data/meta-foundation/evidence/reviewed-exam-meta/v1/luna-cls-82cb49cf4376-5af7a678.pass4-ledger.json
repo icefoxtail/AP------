@@ -1,0 +1,42 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:43:20.826+00:00",
+ "sourceArchiveFile": "original/high/h1/1final/19_매산고_1학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 14,
+   "chosenFrom": "new",
+   "resolutionReason": "2|x-1|+3|x+1|<6을 x<-1, -1≤x<1, x≥1로 나누어 풀면 -7/5<x<1이라 대단원 방정식과부등식, 중단원 여러 가지 부등식과 정수해(l4)는 표에 있으나 절댓값 부등식을 뜻하는 l3은 표에 없다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "방정식과 부등식",
+    "midUnit": "여러 가지 부등식",
+    "l3": "",
+    "l4": "정수해"
+   },
+   "hold": "신규 제안: rpmPath.l3 에 절댓값을 포함한 부등식 항목이 표에 없음(연립일차부등식과 구간 나눔 풀이가 다름).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "절댓값 부등식",
+     "label": "절댓값을 포함한 부등식",
+     "parent": "방정식과 부등식 > 여러 가지 부등식",
+     "why": "가장 가까운 '연립일차부등식'은 두 일차부등식의 공통 범위를 구하는 것이고, 이 문항은 절댓값 기호의 부호 경계 -1, 1로 구간을 나눠 푸는 경우 분리라 맞지 않는다."
+    }
+   }
+  },
+  {
+   "ordinal": 20,
+   "chosenFrom": "pass2",
+   "resolutionReason": "원 x²+y²=1 위의 점 Q에서 직선 MD에 내린 수선의 발 H에 대해 DH의 최댓값을 구하는 문제라 도형의 방정식 원과 직선 항목 중 현의 길이 쪽이 가장 가깝다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "도형의 방정식",
+    "midUnit": "원의 방정식",
+    "l3": "원과 직선",
+    "l4": "현의 길이"
+   },
+   "crossConceptKeys": []
+  }
+ ]
+}
