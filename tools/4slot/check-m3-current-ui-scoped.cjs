@@ -1,0 +1,759 @@
+#!/usr/bin/env node
+'use strict';
+// Closed read-only ops gate; only a disjoint private derived index and UI proof copies vary.
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto');
+const{execFileSync,spawnSync}=require('node:child_process');
+const CONFIG={
+  "schemaVersion": "archive-m3-current-ui-source49-scoped-gate-v1",
+  "repository": "icefoxtail/AP------",
+  "branch": "refs/heads/ops/m3-current-ui-registration-26fc-20261117",
+  "integrationAncestor": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+  "visualAncestor": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+      "gitBlobSha1": "71eb98b06f359f1f1a18f62fa281b01e1ea94eec",
+      "sha256": "695298b878666f01aafbce21378f991b82b865e8b359849df0627200fd255b7d",
+      "bytes": 50755
+    },
+    {
+      "path": "tools/4slot/m3-e052-q5-complete-given-continuity.cjs",
+      "gitBlobSha1": "a3929b0965545a279486c81b060357bfc66b5d03",
+      "sha256": "f26f136f4e1fea5409512df26fec6815929d88177ce235d5fecdfdf5cb6ac3b7",
+      "bytes": 9456
+    },
+    {
+      "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+      "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
+      "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
+      "bytes": 15920
+    },
+    {
+      "path": "tools/4slot/m3s2-layout-continuity.cjs",
+      "gitBlobSha1": "ac7eb5ebf99620ea5e9620f3e592e1342add30d7",
+      "sha256": "9683ec12b0253d6c2f7bd7feadb800833e6a4a7798e02178dafc53788621030c",
+      "bytes": 44099
+    },
+    {
+      "path": ".archive-meta-register/4slot-m3s2-layout-continuity/qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf.json",
+      "gitBlobSha1": "8a54a3d9a00dabed465b495b0c89723eb0a600cb",
+      "sha256": "09f91865024aaa7b2162244d8abaf6a2bdd76c7df81342bd1e242a013659dfd4",
+      "bytes": 6642
+    },
+    {
+      "path": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+      "gitBlobSha1": "a11402180c3b1f5a124905dbdb5e1ff78c34d600",
+      "sha256": "896f16b36f9cb2878f758f80ed0a836fde765dc78cfc76d9f697af691004e1ac",
+      "bytes": 8192
+    },
+    {
+      "path": "tests/archive-m3s2-current-ui-reuse.test.cjs",
+      "gitBlobSha1": "28ba356add45f8620c18eb68189037506e01b8e7",
+      "sha256": "07255f9d2036c99af4966f730080bb0a9ed28bc614e41654760a59ac85bc77b1",
+      "bytes": 10741
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+      "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
+      "bytes": 116137
+    },
+    {
+      "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
+      "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
+      "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
+      "bytes": 21269
+    },
+    {
+      "path": ".archive-meta-register/4slot-m3-e052-q5-complete-given/qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1.json",
+      "gitBlobSha1": "d5776277d104277ab625fa6e66c5d50b90f283e8",
+      "sha256": "edcbd2bd8d55c8fc111ba8d693a6cd1ead274f7a225b2849b75a621d865a8fdc",
+      "bytes": 4614
+    }
+  ],
+  "codePins": [
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+      "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+      "bytes": 41001
+    },
+    {
+      "path": "archive/item-4slot.js",
+      "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+      "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+      "bytes": 8639
+    }
+  ],
+  "groups": [
+    {
+      "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "count": 25,
+      "sourceRef": {
+        "commit": "dd2d5d9dca6ee625500d0d5b3d201717190a9a7e",
+        "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+        "sha256": "996ba1f2538b060c96f6528fc90c62affa567285a6a24d2106051199f9a348d1",
+        "bytes": 66658
+      },
+      "compactRef": {
+        "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+        "path": "archive/data/item-4slot/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.4slot.json",
+        "gitBlobSha1": "4f996d2c2d1c170554b2711e664c7fe9422591ec",
+        "sha256": "5f821ee0847061d5f964b4a6f84597b0102c66e3c30075c84cef406c694971a1",
+        "bytes": 5278
+      },
+      "dictionaryRef": {
+        "commit": "bc0af77466f92f32b2044c452e2f1418bbae4cf0",
+        "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+        "gitBlobSha1": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+        "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+        "bytes": 367619
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "count": 24,
+      "sourceRef": {
+        "commit": "a66a389b96525f67e2868a000184039e08627e9f",
+        "path": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "gitBlobSha1": "80043be4a26d379664740f0846720bba38f31d5a",
+        "sha256": "02614aa1dcd88aa933aa81712074fb66597867fd3d3673bb3bb23312bc91636b",
+        "bytes": 63188
+      },
+      "compactRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "archive/data/item-4slot/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.4slot.json",
+        "gitBlobSha1": "f4893c501ed00113c370827bf508f86a73a5e8b1",
+        "sha256": "43350f9e38ee141503b5f738ee2cd76100975604b6c1c265adc68d4c940dd89f",
+        "bytes": 4821
+      },
+      "dictionaryRef": {
+        "commit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+        "path": "docs/architecture/4slot/term-dictionary-v1.6.json",
+        "gitBlobSha1": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+        "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+        "bytes": 367619
+      }
+    }
+  ],
+  "selected": [
+    {
+      "key": "Q5",
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 5,
+      "path": ".archive-meta-register/4slot-m3-e052-q5-complete-given/qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1.json",
+      "binding": "M3_E052_Q5_COMPLETE_GIVEN_EXISTING_VECTOR",
+      "refField": "q5CompleteGivenContinuityRef",
+      "deleteReason": "M3_Q5_CLAIM_MISSING_OR_MIXED"
+    },
+    {
+      "key": "Q16",
+      "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 16,
+      "path": ".archive-meta-register/4slot-m3s2-layout-continuity/qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf.json",
+      "binding": "M3S2_EXISTING_LAYOUT_CONTINUITY",
+      "refField": "layoutContinuityRef",
+      "deleteReason": "M3S2_LAYOUT_CLAIM_MISSING_OR_MIXED"
+    }
+  ],
+  "q5Refs": {
+    "technicalRef": {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/technical-proof.json",
+      "gitBlobSha1": "0cd74ab0be77a70badcabc655b811bb02cbb9209",
+      "sha256": "9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279",
+      "bytes": 76724
+    },
+    "visualRef": {
+      "commit": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/visual-current-reuse-v1.json",
+      "gitBlobSha1": "c12986521a343b4d4ea3dac5fb5282617c5cc69f",
+      "sha256": "f7b575307f2105c5e03a96b4b601e8c22953263723810843338a30c043a7ebf3",
+      "bytes": 7372
+    },
+    "priorTechnicalRef": {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-technical-v1.json",
+      "gitBlobSha1": "e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb",
+      "sha256": "c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f",
+      "bytes": 76825
+    },
+    "priorVisualRef": {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-independent-v1.json",
+      "gitBlobSha1": "ba2b198f2e8876f2667f29e12e595556714460c5",
+      "sha256": "d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e",
+      "bytes": 1736
+    },
+    "witnessRef": {
+      "commit": "006e6455f69c092c3251d440daf0c4b07da7a469",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json",
+      "gitBlobSha1": "56ec9409ca900e94a46d6562e6e9189aedac7d43",
+      "sha256": "07632bee16334ab68a80b3433db7b32daa145053b68156b68244b9145ebeaa7e",
+      "bytes": 37970
+    },
+    "framesRef": {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/producer-frames.jsonl",
+      "gitBlobSha1": "439b8fc9187f3907a63a16af5841251952024533",
+      "sha256": "c822e4bac3fb2ba1a21657f89f838d35bedbe08820d418021ec75c72c666d628",
+      "bytes": 197175
+    },
+    "artifacts": [
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-desktop-tile-01.png",
+        "gitBlobSha1": "9d96646282e97104a032c81c03451bda8794eb1b",
+        "sha256": "600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f",
+        "bytes": 28776
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-mobile-tile-01.png",
+        "gitBlobSha1": "a977c9c35a5b2a5bb4fd90c23ffbc16d30e9d908",
+        "sha256": "d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab",
+        "bytes": 30805
+      }
+    ]
+  },
+  "q16Refs": {
+    "technicalRef": {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/technical-proof.json",
+      "gitBlobSha1": "93f7d450d8c025a0e9e13f8fe7d2e853fcdf16e5",
+      "sha256": "f3aed5e059efdb74b542c9ff3ca71f5668d5b4505599af628307d76f57297a12",
+      "bytes": 72140
+    },
+    "visualRef": {
+      "commit": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/visual-current-reuse-v1.json",
+      "gitBlobSha1": "e97b9239521286baa7dec7216de745b30c3f55a5",
+      "sha256": "587e750ec40543da076f3f1129a02a34e3caaf509696043d2629ffd78a4dcca5",
+      "bytes": 6909
+    },
+    "priorTechnicalRef": {
+      "commit": "29494e8d5a1dac11a542b0b402d0f854c5cb452e",
+      "path": "docs/operations/m3s2-q16-layout-ui-26fc-20261116/technical-proof.json",
+      "gitBlobSha1": "ed5e933876e02bbbe597f4df34e3d85ce3cc47ab",
+      "sha256": "31cdd2904799b243ff7d85e43756f27c5c055e2c4e9f5bac4a648652db23fce1",
+      "bytes": 72254
+    },
+    "priorVisualRef": {
+      "commit": "933fb9238f617d1924aa823633ff6f23fde8a37d",
+      "path": "docs/operations/m3s2-q16-layout-ui-26fc-20261116/independent-visual-review.json",
+      "gitBlobSha1": "9030d5bdbd75858eff6af3884ae806ee30088510",
+      "sha256": "7faa8035dcc9b6b3f2d608588adb39a5fb242de22ae33347bfd84ef2678f73d3",
+      "bytes": 2048
+    },
+    "witnessRef": {
+      "commit": "006e6455f69c092c3251d440daf0c4b07da7a469",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json",
+      "gitBlobSha1": "56ec9409ca900e94a46d6562e6e9189aedac7d43",
+      "sha256": "07632bee16334ab68a80b3433db7b32daa145053b68156b68244b9145ebeaa7e",
+      "bytes": 37970
+    },
+    "framesRef": {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/producer-frames.jsonl",
+      "gitBlobSha1": "f321736234b755d5acd5173fc8a00276389ef659",
+      "sha256": "aba4b5c5555269eb8187241f576914c833b487ebeca8820e3d2d8cb0c4b9d17b",
+      "bytes": 161762
+    },
+    "artifacts": [
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/E008-Q16-desktop-tile-01.png",
+        "gitBlobSha1": "9b2057478538aae62881fc434f4ca825ce7e7256",
+        "sha256": "b12e1f0ac18d5d903518afa714a311c67cdcfda191c3bf9ee5d20b67df32fc61",
+        "bytes": 28361
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q16/E008-Q16-mobile-tile-01.png",
+        "gitBlobSha1": "d4353601dda1f361da12e3b885861be0e64096dc",
+        "sha256": "3fe2010b0513b607f302625dfb2298f1dbe370d9237d6d728b8e56c1bd03ce1f",
+        "bytes": 10552
+      }
+    ]
+  },
+  "q5OldCursorRef": {
+    "commit": "8c27587b8e7bbab6d35e0bc1d95d0c2a1beb63cd",
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "gitBlobSha1": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+    "sha256": "ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9",
+    "bytes": 66266
+  },
+  "oldQ16SidecarRef": {
+    "commit": "8c5b782f706f7c47bbbce56129844899c1697075",
+    "path": ".archive-meta-register/4slot-m3s2-layout-continuity/qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf.json",
+    "gitBlobSha1": "0874eaad4c591ab35ad0996c1e445ade67f98c61",
+    "sha256": "1b25e5e592d05428e6818d63f27f0f18c20940524622bd3928e14623e64fad6a",
+    "bytes": 6568
+  },
+  "generatedPaths": [
+    "archive/data/question_metadata.json",
+    "archive/data/question_identity_map.json",
+    "archive/data/svg-accessibility-index.js"
+  ]
+};
+
+const MD='archive/data/question_metadata.json',ID='archive/data/question_identity_map.json';
+const SVG='archive/data/svg-accessibility-index.js',INDEX='archive/data/item-4slot-index.json';
+const OID=/^[a-f0-9]{40}$/,SHA=/^[a-f0-9]{64}$/,UID=/^qid_v1_[a-f0-9]{64}$/;
+const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)
+ ?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const blob=b=>crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex');
+const vector=row=>Object.fromEntries(['format','given','goal','method','condition','candidates'].map(k=>[k,row[k]]));
+const json=b=>JSON.parse(b.toString('utf8'));
+function need(ok,code){if(!ok)throw Error('M3_SOURCE49_'+code);}
+function safeRelative(rel){
+ need(typeof rel==='string'&&rel.length>0&&!path.posix.isAbsolute(rel)&&!/[\\\x00-\x1f]/.test(rel)&&
+  rel.split('/').every(p=>p&&p!=='.'&&p!=='..'),'PATH');
+ return rel;
+}
+function file(root,rel){
+ safeRelative(rel);let p=root;
+ for(const part of rel.split('/')){p=path.join(p,part);const s=fs.lstatSync(p);need(!s.isSymbolicLink(),'SYMLINK');}
+ need(fs.statSync(p).isFile(),'REGULAR_FILE');return p;
+}
+function git(root,args,options={}){
+ const env={...process.env};delete env.GIT_NO_LAZY_FETCH;env.GIT_OPTIONAL_LOCKS='0';
+ return execFileSync('git',['-C',root,...args],{env,maxBuffer:160*1024*1024,timeout:180000,
+  stdio:['ignore','pipe','pipe'],...options});
+}
+function pin(raw,expected,label){
+ need(Buffer.isBuffer(raw)&&raw.length===expected.bytes&&blob(raw)===expected.gitBlobSha1&&sha(raw)===expected.sha256,'PIN_'+label);
+}
+function refShape(ref){
+ need(ref&&OID.test(ref.commit||'')&&OID.test(ref.gitBlobSha1||'')&&SHA.test(ref.sha256||'')&&
+  Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=128*1024*1024,'IMMUTABLE_REF');
+ return {commit:ref.commit,path:safeRelative(ref.path),gitBlobSha1:ref.gitBlobSha1,sha256:ref.sha256,bytes:ref.bytes};
+}
+function refsIn(value,out=[]){
+ if(Array.isArray(value)){for(const x of value)refsIn(x,out);}
+ else if(value&&typeof value==='object'){
+  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path'))out.push(refShape(value));
+  else for(const [k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out);
+ }
+ return out;
+}
+function leafPaths(value,out=[]){
+ if(Array.isArray(value)){for(const x of value)leafPaths(x,out);}
+ else if(value&&typeof value==='object'){
+  for(const[k,x]of Object.entries(value)){
+   if(k==='outputDigests')continue;
+   if(typeof x==='string'&&/^(?:docs\/operations\/|archive\/data\/(?:meta-review|meta-foundation\/evidence)\/|\.archive-meta-register\/evidence\/)/.test(x)&&x.endsWith('.json'))out.push(safeRelative(x));
+   else if(x&&typeof x==='object')leafPaths(x,out);
+  }
+ }
+ return out;
+}
+function reportOutput(p){
+ const base=fs.realpathSync(process.env.RUNNER_TEMP||os.tmpdir()),out=path.resolve(p);
+ need(out.startsWith(base+path.sep),'REPORT_OUTSIDE_RUNNER_TEMP');return out;
+}
+function safeError(error){
+ const raw=String(error?.message||error||''),code=raw.split(':')[0];
+ return {code:/^[A-Z][A-Z0-9_+|-]{0,179}$/.test(code)?code:'UNCLASSIFIED_FAILURE',sha256:sha(raw)};
+}
+function phase(report,name){report.phase=name;console.log(JSON.stringify({schemaVersion:CONFIG.schemaVersion,phase:name,status:'RUNNING'}));}
+function provenance(root){
+ const e=process.env,head=git(root,['rev-parse','HEAD']).toString().trim();
+ need(e.GITHUB_ACTIONS==='true'&&e.GITHUB_EVENT_NAME==='push'&&e.GITHUB_REPOSITORY===CONFIG.repository&&
+  e.GITHUB_REF===CONFIG.branch&&e.GITHUB_SHA===head&&e.ARCHIVE_M3_SOURCE49_EXPECTED_SHA===head&&OID.test(head),'OPS_PROVENANCE');
+ const event=json(fs.readFileSync(e.GITHUB_EVENT_PATH));
+ need(event.ref===CONFIG.branch&&event.after===head&&event.deleted===false&&
+  event.repository?.full_name===CONFIG.repository&&event.repository?.fork===false,'OPS_EVENT');
+ need(/^[1-9][0-9]*$/.test(e.GITHUB_RUN_ID||'')&&/^[1-9][0-9]*$/.test(e.GITHUB_RUN_ATTEMPT||'')&&
+  e.GITHUB_JOB==='m3-current-authority','OPS_RUN');
+ need(git(root,['rev-parse','--is-shallow-repository']).toString().trim()==='false','FULL_HISTORY_REQUIRED');
+ for(const commit of[CONFIG.integrationAncestor,CONFIG.visualAncestor])git(root,['merge-base','--is-ancestor',commit,head]);
+ return {provider:'GITHUB_ACTIONS',repository:CONFIG.repository,eventName:'push',ref:CONFIG.branch,checkoutCommit:head,
+  eventCommit:event.after,runId:e.GITHUB_RUN_ID,runAttempt:Number(e.GITHUB_RUN_ATTEMPT),job:e.GITHUB_JOB,
+  integrationAncestor:CONFIG.integrationAncestor,visualAncestor:CONFIG.visualAncestor};
+}
+
+function run(root,output){
+ root=fs.realpathSync(root);output=reportOutput(output);
+ const report={schemaVersion:CONFIG.schemaVersion,status:'RUNNING',phase:'PROVENANCE',
+  sourceQuestionCount:49,selectedQuestionCount:2,outsideQuestionCount:47,
+  newMathematicalQa:0,newSemanticApprovals:0,newFourSlotVectors:0,newNativeApprovals:0,
+  globalBuilderRun:false,mainWrites:0,sourceWrites:0,trackedCheckoutWrites:0,ChromeRuns:0};
+ let work,fixture,rootHead,rootStatus,checkpoint=[];
+ const currentInputs=new Map(),immutableInputs=new Map(),fixtureInputs=new Map(),rawPins=new Map();
+ const publish=()=>{
+  fs.mkdirSync(path.dirname(output),{recursive:true});
+  const raw=Buffer.from(JSON.stringify(report,null,2)+'\n');need(raw.length<=2*1024*1024,'REPORT_SIZE');
+  fs.writeFileSync(output,raw);
+  const payload=raw.toString('base64'),width=6000,chunks=Math.ceil(payload.length/width);
+  const receipt={schemaVersion:'archive-scoped-metadata-log-v1',profile:'M3_SOURCE49_EXISTING_AUTHORITY',
+   bytes:raw.length,sha256:sha(raw),gitBlobSha1:blob(raw),chunks};
+  console.log('ARCHIVE_SCOPED_REPORT_BEGIN '+JSON.stringify(receipt));
+  for(let i=0;i<chunks;i++)console.log('ARCHIVE_SCOPED_REPORT_CHUNK '+JSON.stringify({index:i,data:payload.slice(i*width,(i+1)*width)}));
+  console.log('ARCHIVE_SCOPED_REPORT_END '+JSON.stringify(receipt));
+ };
+ try{
+  report.execution=provenance(root);rootHead=report.execution.checkoutCommit;
+  rootStatus=git(root,['status','--porcelain=v1','--untracked-files=all']).toString();need(rootStatus==='','ROOT_DIRTY');
+  for(const expected of[...CONFIG.files,...CONFIG.codePins]){
+   const bytes=fs.readFileSync(file(root,expected.path));pin(bytes,expected,'CODE');
+   need(git(root,['rev-parse',rootHead+':'+expected.path]).toString().trim()===expected.gitBlobSha1,'CODE_HEAD');
+  }
+  const builder=require(path.join(root,'tools/4slot/build-4slot-runtime.cjs'));
+  const consumer=require(path.join(root,'archive/item-4slot.js'));
+  const Q5=require(path.join(root,'tools/4slot/m3-e052-q5-complete-given-continuity.cjs'));
+  const Q16=require(path.join(root,'tools/4slot/m3s2-layout-continuity.cjs'));
+  const {sourceNumber,sourceIdentityNumber}=require(path.join(root,'tools/4slot/exam-items.cjs'));
+  work=fs.mkdtempSync(path.join(fs.realpathSync(process.env.RUNNER_TEMP||os.tmpdir()),'m3-source49-'));
+  fixture=path.join(work,'fixture');
+  git(root,['clone','--quiet','--shared','--no-checkout','--no-hardlinks',root,fixture]);
+  need(git(fixture,['rev-parse','HEAD']).toString().trim()===rootHead,'PRIVATE_HEAD');
+  const commits=new Set(),objectSeen=new Set(),objectCache=new Map(),queue=[],queued=new Set(),parsedDocs=new Set();
+  let objectCacheBytes=0;
+  function ensureCommit(commit){
+   need(OID.test(commit),'COMMIT');if(commits.has(commit))return;
+   try{git(root,['cat-file','-e',commit+'^{commit}']);}
+   catch{git(root,['fetch','--quiet','--no-tags','--no-write-fetch-head','https://github.com/'+CONFIG.repository+'.git',commit]);}
+   git(root,['cat-file','-e',commit+'^{commit}']);commits.add(commit);need(commits.size<=128,'COMMIT_BOUND');
+  }
+  function object(oid){
+   need(OID.test(oid),'OBJECT_OID');if(objectCache.has(oid))return objectCache.get(oid);
+   const bytes=git(root,['cat-file','blob',oid]);need(blob(bytes)===oid,'OBJECT_BYTES');
+   objectSeen.add(oid);rawPins.set(oid,{gitBlobSha1:oid,sha256:sha(bytes),bytes:bytes.length});
+   if(bytes.length<=4*1024*1024&&objectCacheBytes+bytes.length<=96*1024*1024){objectCache.set(oid,bytes);objectCacheBytes+=bytes.length;}
+   return bytes;
+  }
+  function immutable(ref){
+   ref=refShape(ref);const key=ref.commit+':'+ref.path;
+   if(ref.path.startsWith('archive/exams/'))need(CONFIG.groups.some(g=>g.sourceRef.path===ref.path),'UNRELATED_SOURCE_REF');
+   ensureCommit(ref.commit);
+   const entry=git(root,['ls-tree','-z',ref.commit,'--',ref.path]).toString();
+   const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+   need(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path,'IMMUTABLE_PATH');
+   let bytes=null;const known=rawPins.get(ref.gitBlobSha1);
+   if(known)need(known.bytes===ref.bytes&&known.sha256===ref.sha256,'IMMUTABLE_RAW_ALIAS');
+   if(!known||ref.bytes<=4*1024*1024){bytes=object(ref.gitBlobSha1);pin(bytes,ref,'IMMUTABLE');}
+   const old=immutableInputs.get(key);
+   if(old)need(stable(old)===stable(ref),'IMMUTABLE_CONFLICT');else immutableInputs.set(key,ref);
+   need(immutableInputs.size<=1800,'IMMUTABLE_BOUND');return bytes;
+  }
+  function current(rel){
+   safeRelative(rel);const full=file(root,rel),bytes=fs.readFileSync(full);
+   const entry=git(root,['ls-tree','-z',rootHead,'--',rel]).toString();
+   const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+   need(match&&match[3]===rel&&blob(bytes)===match[2],'CURRENT_HEAD');
+   const p={path:rel,gitBlobSha1:match[2],sha256:sha(bytes),bytes:bytes.length},old=currentInputs.get(rel);
+   if(old)need(stable(old)===stable(p),'CURRENT_CHANGED');else currentInputs.set(rel,p);
+   return bytes;
+  }
+  function put(rel,bytes){
+   safeRelative(rel);const full=path.join(fixture,rel);
+   fs.mkdirSync(path.dirname(full),{recursive:true});
+   if(fs.existsSync(full)){need(sha(fs.readFileSync(file(fixture,rel)))===sha(bytes),'PRIVATE_CONFLICT');return;}
+   fs.writeFileSync(full,bytes,{flag:'wx',mode:0o444});
+   fixtureInputs.set(rel,{path:rel,gitBlobSha1:blob(bytes),sha256:sha(bytes),bytes:bytes.length});
+   const a=fs.statSync(full),b=fs.statSync(file(root,rel));need(a.dev!==b.dev||a.ino!==b.ino,'SHARED_WRITABLE_INODE');
+  }
+  function copy(rel){if(fixtureInputs.has(rel))return fs.readFileSync(file(fixture,rel));const bytes=current(rel);put(rel,bytes);return bytes;}
+  function live(ref){immutable(ref);const bytes=current(ref.path);pin(bytes,ref,'LIVE');put(ref.path,bytes);return bytes;}
+  function docScope(rel){
+   return rel.endsWith('.json')&&/^(?:docs\/operations\/|archive\/data\/(?:meta-review|meta-foundation\/evidence)\/|\.archive-meta-register\/evidence\/)/.test(rel);
+  }
+  function queueDoc(bytes,ref,liveDocument=false){
+   need(Buffer.isBuffer(bytes)&&bytes.length<=4*1024*1024&&docScope(ref.path),'DOC_SCOPE');
+   const key=(ref.commit||rootHead)+':'+ref.path+':'+sha(bytes);
+   if(queued.has(key))return;queued.add(key);need(queued.size<=160,'DOC_BOUND');
+   queue.push({bytes,ref,liveDocument,key});
+  }
+  function hydrateRef(ref,{recursive=true,copyCurrent=true}={}){
+   const bytes=immutable(ref);
+   if(copyCurrent&&!fixtureInputs.has(ref.path)&&fs.existsSync(path.join(root,ref.path))){
+    if(ref.path.startsWith('archive/data/item-4slot/'))need(CONFIG.groups.some(g=>g.compactRef.path===ref.path),'OTHER_COMPACT');
+    if(!ref.path.startsWith('archive/exams/')||CONFIG.groups.some(g=>g.sourceRef.path===ref.path))copy(ref.path);
+   }
+   if(recursive&&docScope(ref.path))queueDoc(bytes,ref,false);
+   return bytes;
+  }
+  function hydrateMetadataDocument(rel){
+   safeRelative(rel);need(docScope(rel),'METADATA_SCOPE');const bytes=copy(rel);
+   queueDoc(bytes,{commit:rootHead,path:rel},true);return bytes;
+  }
+  function hydrateDocument(value){
+   for(const ref of refsIn(value))hydrateRef(ref);
+   for(const rel of new Set(leafPaths(value)))if(fs.existsSync(path.join(root,rel)))hydrateMetadataDocument(rel);
+  }
+  function drain(){
+   while(queue.length){
+    const item=queue.shift();if(parsedDocs.has(item.key))continue;parsedDocs.add(item.key);
+    const data=json(item.bytes);hydrateDocument(data);
+    // The complete original Native review declares its selected bank by blob and
+    // digest rather than a five-field ref. Authenticate this exact bank only.
+    if(data.schemaVersion==='m3-s2-complete-semantic-review-v1'&&data.sourceAfterBlob){
+     need(data.sourceArchiveFile===undefined||data.sourceArchiveFile===Q5.SOURCE,'NATIVE_REVIEW_SOURCE');
+     const bytes=object(data.sourceAfterBlob);
+     need(sha(bytes)===data.sourceAfterSha256,'NATIVE_REVIEW_SOURCE_BYTES');
+     immutable({commit:item.ref.commit,path:'archive/exams/'+Q5.SOURCE,gitBlobSha1:data.sourceAfterBlob,
+      sha256:data.sourceAfterSha256,bytes:bytes.length});
+    }
+   }
+  }
+  function copyPrefix(prefix,filter=()=>true){
+   const entries=git(root,['ls-tree','-r','-z',rootHead,'--',prefix]).toString().split('\0').filter(Boolean);
+   need(entries.length<=2500,'PREFIX_BOUND');
+   for(const entry of entries){
+    const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)$/.exec(entry);need(match,'PREFIX_REGULAR');
+    if(filter(match[3]))copy(match[3]);
+   }
+  }
+  phase(report,'AUTHENTICATED_INPUTS');
+  const actualIndex=json(copy(INDEX)),identity=json(copy(ID));copy(MD);copy(SVG);
+  need(actualIndex.schemaVersion===builder.SCHEMA&&Array.isArray(actualIndex.files)&&
+   Array.isArray(actualIndex.records)&&Array.isArray(actualIndex.pending),'ACTUAL_INDEX');
+  need(identity.schemaVersion==='question-identity-map-v1'&&Array.isArray(identity.records),'IDENTITY');
+  const joinMap=new Map(),uidUses=new Map();
+  for(const row of identity.records){
+   const key=row.sourceArchiveFile+'#'+row.sourceOrdinal;if(!joinMap.has(key))joinMap.set(key,[]);
+   joinMap.get(key).push(row);uidUses.set(row.questionUid,(uidUses.get(row.questionUid)||0)+1);
+  }
+  const states=[],compacts=new Map();
+  for(const group of CONFIG.groups){
+   live(group.sourceRef);live(group.compactRef);live(group.dictionaryRef);
+   const bank=builder.loadBank(current(group.sourceRef.path)),compact=json(current(group.compactRef.path));
+   need(bank.length===group.count&&compact.items.length===group.count&&compact.sourceArchiveFile===group.sourceArchiveFile&&
+    !Object.hasOwn(compact,'scope'),'BANK_DENOMINATOR');compacts.set(group.sourceArchiveFile,compact);
+   need(OID.test(compact.sourceGitBlobSha),'COMPACT_BASELINE');object(compact.sourceGitBlobSha);
+   for(let i=0;i<bank.length;i++){
+    const rows=joinMap.get(group.sourceArchiveFile+'#'+(i+1))||[],display=sourceNumber(bank[i]);
+    need(rows.length===1&&UID.test(rows[0].questionUid)&&uidUses.get(rows[0].questionUid)===1,'UID_JOIN');
+    need(String(rows[0].sourceQuestionNo)===sourceIdentityNumber(bank[i]),'IDENTITY_NUMBER');
+    need(Number.isSafeInteger(display)&&display>0&&compact.items.filter(x=>x.ordinal===display).length===1,'DISPLAY_JOIN');
+    states.push({questionUid:rows[0].questionUid,sourceArchiveFile:group.sourceArchiveFile,sourceOrdinal:i+1,
+     sourceQuestionNo:sourceIdentityNumber(bank[i]),displayNumber:display,compactPath:group.compactRef.path});
+   }
+   const assets=new Set(),fields=['id','number','questionType','content','question','choices','answer','solution',
+    'image','images','figureSvg','svg','solutionImage','solutionImages','solutionFigureSvg'];
+   for(const q of bank){
+    const text=JSON.stringify(Object.fromEntries(fields.map(k=>[k,q[k]??null]))).replaceAll('\\/','/');
+    for(const match of text.matchAll(/(?:archive\/)?assets\/[A-Za-z0-9_가-힣%./+()@ -]+\.(?:png|jpe?g|gif|webp|svg)/gi))
+     assets.add(match[0].startsWith('archive/')?match[0]:'archive/'+match[0]);
+   }
+   for(const rel of[...assets].sort())copy(rel);
+   for(const it of compact.items)if(it.registrationHold)hydrateDocument(it.registrationHold);
+  }
+  need(states.length===49&&new Set(states.map(s=>s.questionUid)).size===49,'SOURCE49');
+  const selected=new Set(CONFIG.selected.map(s=>s.questionUid)),allUids=new Set(states.map(s=>s.questionUid));
+  for(const item of CONFIG.selected){
+   const rows=states.filter(s=>s.questionUid===item.questionUid);
+   need(rows.length===1&&rows[0].sourceArchiveFile===item.sourceArchiveFile&&rows[0].sourceOrdinal===item.sourceOrdinal,'SELECTED_JOIN');
+  }
+  const outside=states.filter(s=>!selected.has(s.questionUid));need(outside.length===47,'OUTSIDE47');
+  const stateOf=(index,tuple)=>{
+   const records=index.records.filter(r=>r.questionUid===tuple.questionUid);
+   const pending=index.pending.filter(r=>r.path===tuple.compactPath&&(r.ordinal==null||r.ordinal===tuple.displayNumber));
+   need(records.length<=1&&(records.length===1?pending.length===0:pending.length>0),'STATE_PARTITION');
+   if(records.length)need(records[0].sourceArchiveFile===tuple.sourceArchiveFile&&records[0].sourceOrdinal===tuple.sourceOrdinal&&
+    records[0].sourceQuestionNo===tuple.sourceQuestionNo,'STATE_TUPLE');
+   return {questionUid:tuple.questionUid,record:records[0]||null,pending:pending.slice().sort((a,b)=>stable(a).localeCompare(stable(b),'en'))};
+  };
+  const actualOutside=outside.map(s=>stateOf(actualIndex,s)),actualSelected=states.filter(s=>selected.has(s.questionUid)).map(s=>stateOf(actualIndex,s));
+  need(actualSelected.every(s=>s.record===null),'ACTUAL_TARGET_ALREADY_REGISTERED');
+  report.actualBaseline={index:currentInputs.get(INDEX),selectedRegistered:0,selectedPending:2,
+   outsideRegistered:actualOutside.filter(x=>x.record).length,outsidePending:actualOutside.filter(x=>!x.record).length,
+   outsideWholeStateSha256:sha(stable(actualOutside)),selectedWholeStateSha256:sha(stable(actualSelected))};
+  const q5CarrierRaw=copy(Q5.FILE),q5Carrier=json(q5CarrierRaw);Q5.assertDescriptor(q5Carrier);
+  const q16Path=CONFIG.selected[1].path,q16Raw=copy(q16Path),q16Doc=json(q16Raw);Q16.assertSubject(q16Doc);
+  for(const doc of[q5Carrier,q16Doc])for(const ref of refsIn(doc))hydrateRef(ref);
+  immutable(CONFIG.q5OldCursorRef);
+  const oldQ16Raw=immutable(CONFIG.oldQ16SidecarRef);for(const ref of refsIn(json(oldQ16Raw)))hydrateRef(ref);
+  // Follow only the exact issued Q5 packet and explicit Native provenance; global
+  // runtime/canonical documents and output inventories never enter this queue.
+  for(const rel of[Q5.REQUEST_WITNESS,Q5.RECEIPT,Q5.SOURCE_BINDING])hydrateMetadataDocument(rel);
+  copyPrefix('archive/data/meta-foundation/canonical');
+  copyPrefix('archive/data/meta-foundation/compiled');
+  copyPrefix('archive/data/meta-foundation/runtime',p=>p.endsWith('.json'));
+  copy('archive/data/master_tables/js_archive_tag_master.json');
+  // Preserve every tracked byte in the existing Q5 Native-code cache input
+  // directory. These files are copied opaquely; execution uses the pinned code.
+  copyPrefix('archive/tools/meta-foundation');
+  const registry=json(current('archive/data/meta-foundation/canonical/registry_index.json'));
+  for(const ref of[...(registry.canonicalSources||[]),...(registry.compiledArtifacts||[])])copy(ref.path);
+  copy('archive/data/meta-foundation/canonical/metadata_rules.json');
+  const candidateUi=new Map();
+  for(const spec of[CONFIG.q5Refs,CONFIG.q16Refs]){
+   for(const ref of Object.values(spec).flat()){
+    const bytes=hydrateRef(ref);if([spec.technicalRef,spec.visualRef,spec.witnessRef,spec.framesRef,...spec.artifacts].includes(ref)){
+     const liveBytes=current(ref.path);pin(liveBytes,ref,'CURRENT_UI');candidateUi.set(ref.path,liveBytes);
+    }
+   }
+   const tech=json(immutable(spec.technicalRef));
+   need(tech.completedLogicalCases===2&&tech.results.length===2,'CURRENT_CASE2');
+   for(const ref of refsIn(tech))hydrateRef(ref);
+  }
+  // Other existing claims are included only when their filename and declared
+  // identity belong to these exact 49 rows; no unrelated packet is inspected.
+  const claimEntries=git(root,['ls-tree','-r','-z',rootHead,'--','.archive-meta-register']).toString().split('\0').filter(Boolean);
+  for(const entry of claimEntries){
+   const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)$/.exec(entry);need(match,'CLAIM_TREE');
+   const rel=match[3],uid=path.posix.basename(rel,'.json');
+   if(!/^\.archive-meta-register\/4slot-[^/]+\//.test(rel)||!allUids.has(uid))continue;
+   const bytes=copy(rel),doc=json(bytes);
+   need(allUids.has(doc.questionUid)&&states.some(s=>s.questionUid===doc.questionUid&&s.sourceArchiveFile===doc.sourceArchiveFile&&
+    s.sourceOrdinal===doc.sourceOrdinal),'CLAIM_SCOPE');
+   for(const ref of refsIn(doc))hydrateRef(ref);
+  }
+  drain();
+  report.closure={currentFileCount:currentInputs.size,immutableRefCount:immutableInputs.size,declaredMetadataDocuments:parsedDocs.size,
+   scope:'source2/current canonical+runtime metadata; fixed original Q5 receipt/binding and exact UI refs; no outputDigests recursion'};
+  phase(report,'FOCUSED_AND_ORIGINAL_AUTHORITY');
+  report.focused=[];
+  function command(name,args,expected){
+   const child=spawnSync(process.execPath,args,{cwd:root,encoding:'utf8',timeout:240000,maxBuffer:8*1024*1024,
+    env:{...process.env,NODE_OPTIONS:'--max-old-space-size=6144'}});
+   const stdout=String(child.stdout||''),stderr=String(child.stderr||'');
+   const get=label=>{const matches=[...stdout.matchAll(new RegExp('^# '+label+' ([0-9]+)$','gm'))];return matches.length?Number(matches.at(-1)[1]):null;};
+   const item={name,exitCode:child.status,tests:get('tests'),pass:get('pass'),fail:get('fail'),stdoutSha256:sha(stdout),stderrSha256:sha(stderr),
+    error:child.error?safeError(child.error):null};
+   report.focused.push(item);
+   need(!child.error&&child.status===0&&item.tests===expected&&item.pass===expected&&item.fail===0,'FOCUSED_'+name);
+  }
+  command('Q5_SHADOW_READONLY54',['--test','tests/archive-pr-q5-current-ui-shadow.test.mjs'],54);
+  command('Q5_FOCUSED44_AND_ORIGINAL_NATIVE1',['tests/archive-m3-e052-q5-current-ui-reuse.test.mjs','--actual-native'],45);
+  command('Q16_FOCUSED43_AND_EXISTING_AUTHORITY1',['tests/archive-m3s2-current-ui-reuse.test.cjs','--actual-authority'],44);
+  report.authority={q5OriginalNativeGivenUiAndAncestor:true,q5ExistingVectorCount:25,q5Outside24WholeUnchanged:true,
+   q16OriginalVectorCount:24,q16SelectedMdIdAndLiveUi:true,source:'actual optional resolver tests, not metadata helper alone',
+   newNativeApprovals:0,newFourSlotVectors:0};
+
+  checkpoint=[...fixtureInputs.values()].filter(x=>x.path!==INDEX);
+  const outsideSame=index=>{
+   need(index.counts.files===2&&index.counts.items===49&&index.records.length+index.pending.length===49,'RESULT_DENOMINATOR');
+   need(index.records.every(r=>allUids.has(r.questionUid))&&index.pending.every(r=>CONFIG.groups.some(g=>g.compactRef.path===r.path)&&
+    Number.isSafeInteger(r.ordinal)),'RESULT_SCOPE');
+   const now=outside.map(s=>stateOf(index,s));
+   report.lastOutsideCheck={phase:report.phase,expectedSha256:sha(stable(actualOutside)),observedSha256:sha(stable(now)),
+    changed:now.flatMap((x,i)=>stable(x)===stable(actualOutside[i])?[]:[{questionUid:x.questionUid,
+     expectedWholeSha256:sha(stable(actualOutside[i])),observedWholeSha256:sha(stable(x)),expectedRegistered:!!actualOutside[i].record,
+     observedRegistered:!!x.record,pending:x.pending.map(p=>safeError(p.reason))}])};
+   need(stable(now)===stable(actualOutside),'OUTSIDE47_CHANGED');
+  };
+  const observedStable=result=>{
+   for(const[p,h]of result.observed)need(sha(fs.readFileSync(file(fixture,p)))===h,'BUILD_OBSERVED_DRIFT');
+  };
+  const selectedSummary=index=>states.filter(s=>selected.has(s.questionUid)).map(s=>{
+   const state=stateOf(index,s);
+   return {questionUid:s.questionUid,sourceOrdinal:s.sourceOrdinal,registered:!!state.record,
+    recordSha256:state.record?sha(stable(state.record)):null,pending:state.pending.map(p=>safeError(p.reason))};
+  });
+  function replacePrivate(rel,bytes){
+   const full=path.join(fixture,safeRelative(rel));
+   if(fs.existsSync(full)){file(fixture,rel);fs.chmodSync(full,0o644);}
+   else fs.mkdirSync(path.dirname(full),{recursive:true});
+   fs.writeFileSync(full,bytes,{mode:0o444});fs.chmodSync(full,0o444);
+  }
+  function build(previous){const result=builder.build(fixture,{previous,reuseCache:false});observedStable(result);outsideSame(result.index);return result;}
+  phase(report,'OLD_DISPLAY_BINDING_BASELINE');
+  for(const rel of candidateUi.keys())fs.unlinkSync(file(fixture,rel));
+  replacePrivate(q16Path,oldQ16Raw);
+  const before=build(actualIndex);
+  need(before.index.records.filter(r=>selected.has(r.questionUid)).length===0,'OLD_BINDINGS_MUST_REFUSE');
+  report.before={counts:before.index.counts,selected:selectedSummary(before.index),outsideWholeStateSha256:sha(stable(actualOutside))};
+  phase(report,'OFFICIAL_BUILDER_SOURCE49');
+  for(const[rel,bytes]of candidateUi)replacePrivate(rel,bytes);
+  replacePrivate(q16Path,q16Raw);
+  const after=build(before.index),rows=after.index.records.filter(r=>selected.has(r.questionUid));
+  report.after={counts:after.index.counts,selected:selectedSummary(after.index)};
+  need(rows.length===2&&after.index.counts.registered===before.index.counts.registered+2&&
+   after.index.counts.pending===before.index.counts.pending-2,'EXACT_TWO_RECOVERED');
+  for(const item of CONFIG.selected){
+   const row=rows.find(r=>r.questionUid===item.questionUid),tuple=states.find(s=>s.questionUid===item.questionUid);
+   const expected=compacts.get(item.sourceArchiveFile).items.find(it=>it.ordinal===tuple.displayNumber);
+   const sidecarPin=currentInputs.get(item.path);
+   need(row&&row.registrationStatus==='REGISTERED'&&row.sourceBinding===item.binding&&row.independentReviewClaim===false&&
+    row[item.refField]?.path===item.path&&row[item.refField]?.sha256===sidecarPin.sha256&&
+    stable(vector(row))===stable(vector(expected)),'UNCHANGED_VECTOR_AUTHORITY');
+  }
+  const verification=builder.verify(after.index),api=consumer.createIndex(after.index);let queries=0;
+  for(const row of rows){
+   need(stable(api.get(row.questionUid))===stable(row),'CONSUMER_GET');queries++;
+   for(const slot of builder.SLOTS)for(const term of row[slot]){
+    need(api.hasTerm(row.questionUid,slot,term,row.dictionaryVersion),'CONSUMER_HAS_TERM');queries++;
+   }
+  }
+  report.consumer={selected:2,queries,officialScopeVerified:verification.verified,pendingPreserved:verification.pending,
+   status:verification.status,outsideWholeStateSha256:sha(stable(actualOutside))};
+  phase(report,'COLD_REPLAY');
+  replacePrivate(INDEX,Buffer.from(JSON.stringify(after.index)+'\n'));
+  const cold=builder.run(fixture,{check:true});
+  need(cold.changed===false&&cold.revalidatedFiles===2&&cold.reusedFiles===0,'COLD_CHECK');
+  report.cold={changed:cold.changed,revalidatedFiles:cold.revalidatedFiles,reusedFiles:cold.reusedFiles,
+   counts:cold.counts,indexSha256:cold.indexSha256};
+  report.evidenceDeletion=[];
+  for(const[key,ref]of[['Q5',CONFIG.q5Refs.visualRef],['Q16',CONFIG.q16Refs.visualRef]]){
+   phase(report,'CURRENT_VISUAL_DELETION_'+key);
+   const item=CONFIG.selected.find(s=>s.key===key),other=CONFIG.selected.find(s=>s.key!==key);
+   fs.unlinkSync(file(fixture,ref.path));
+   const missing=build(after.index);
+   const lost=stateOf(missing.index,states.find(s=>s.questionUid===item.questionUid));
+   need(lost.record===null&&lost.pending.length===1,'DELETED_CURRENT_VISUAL_REGISTERED');
+   const kept=missing.index.records.find(r=>r.questionUid===other.questionUid),prior=rows.find(r=>r.questionUid===other.questionUid);
+   need(kept&&stable(kept)===stable(prior),'UNRELATED_SELECTED_CHANGED');
+   report.evidenceDeletion.push({key,questionUid:item.questionUid,removedPath:ref.path,registered:false,
+    reason:safeError(lost.pending[0].reason),otherSelectedWholeUnchanged:true,
+    outsideWholeStateSha256:sha(stable(actualOutside))});
+   replacePrivate(ref.path,candidateUi.get(ref.path));
+  }
+  phase(report,'CARRIER_SIDECAR_DELETION');
+  for(const item of CONFIG.selected)fs.unlinkSync(file(fixture,item.path));
+  const deleted=build(after.index);
+  need(deleted.index.records.filter(r=>selected.has(r.questionUid)).length===0,'DELETED_CLAIM_REGISTERED');
+  for(const item of CONFIG.selected){
+   const state=stateOf(deleted.index,states.find(s=>s.questionUid===item.questionUid));
+   need(state.pending.length===1&&state.pending[0].reason===item.deleteReason,'DELETE_REASON');
+  }
+  report.deleted={selectedRegistered:0,selectedRejected:2,counts:deleted.index.counts,
+   outsideWholeStateSha256:sha(stable(actualOutside)),claimDeletionFailClosed:true};
+  replacePrivate(Q5.FILE,q5CarrierRaw);replacePrivate(q16Path,q16Raw);
+  phase(report,'FINAL_INPUT_PRESERVATION');
+  for(const expected of checkpoint)pin(fs.readFileSync(file(fixture,expected.path)),expected,'PRIVATE_INPUT_UNCHANGED');
+  for(const expected of currentInputs.values())pin(fs.readFileSync(file(root,expected.path)),expected,'ROOT_INPUT_UNCHANGED');
+  need(git(root,['rev-parse','HEAD']).toString().trim()===rootHead&&
+   git(root,['status','--porcelain=v1','--untracked-files=all']).toString()===rootStatus,'ROOT_MUTATION');
+  need(git(fixture,['rev-parse','HEAD']).toString().trim()===rootHead,'PRIVATE_HEAD_CHANGED');
+  report.inputs={current:[...currentInputs.values()].sort((a,b)=>a.path.localeCompare(b.path,'en')),
+   immutable:[...immutableInputs.values()].sort((a,b)=>(a.commit+':'+a.path).localeCompare(b.commit+':'+b.path,'en')),
+   currentFileCount:currentInputs.size,immutableRefCount:immutableInputs.size,opaqueHistoricalObjectCount:objectSeen.size,
+   privateNonderivedFilesUnchanged:checkpoint.length,sharedWritableHardlinks:0,otherQuestionSourceBanksRead:0,
+   rootTrackedRepositoryWrites:0,remoteRefWrites:0};
+  report.phase='COMPLETE';report.status='PASS_PRIVATE_SCOPED_EXISTING_AUTHORITY';
+  report.actualMainRegistration='NOT_PERFORMED';report.actualPagesVerification='NOT_PERFORMED';
+  publish();
+  console.log(JSON.stringify({schemaVersion:report.schemaVersion,status:report.status,selectedExistingAuthority:2,
+   selectedConsumer:2,sourceQuestionCount:49,outsideWholeStatePreserved:47,coldChanged:false,
+   currentVisualDeletionRejected:2,carrierDeletionRejected:2,newNativeApprovals:0,mainWrites:0,
+   reportSha256:sha(fs.readFileSync(output))}));
+  return report;
+ }catch(error){
+  report.status='FAIL';report.error=safeError(error);report.actualMainRegistration='NOT_PERFORMED';
+  if(rootHead)try{
+   report.rootHeadUnchanged=git(root,['rev-parse','HEAD']).toString().trim()===rootHead;
+   report.rootStatusUnchanged=git(root,['status','--porcelain=v1','--untracked-files=all']).toString()===rootStatus;
+  }catch{report.rootInputCheck='UNAVAILABLE';}
+  report.currentInputCount=currentInputs.size;report.immutableRefCount=immutableInputs.size;
+  publish();console.error(JSON.stringify({schemaVersion:report.schemaVersion,status:'FAIL',phase:report.phase,
+   error:report.error,selected:report.after?.selected||report.before?.selected||null,reportSha256:sha(fs.readFileSync(output))}));
+  process.exitCode=1;return report;
+ }finally{if(work)fs.rmSync(work,{recursive:true,force:true});}
+}
+if(require.main===module){
+ const args=process.argv.slice(2);let root=path.resolve(__dirname,'../..'),output;
+ for(let i=0;i<args.length;i++){
+  if(args[i]==='--root')root=path.resolve(args[++i]);
+  else if(args[i]==='--output')output=args[++i];
+  else throw Error('M3_SOURCE49_UNKNOWN_ARGUMENT');
+ }
+ need(output,'OUTPUT_REQUIRED');run(root,output);
+}
+module.exports={run};

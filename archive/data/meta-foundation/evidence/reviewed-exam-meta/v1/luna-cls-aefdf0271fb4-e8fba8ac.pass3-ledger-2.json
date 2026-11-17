@@ -1,0 +1,137 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T21:55:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/22_효천고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "조부모를 묶으면 다섯 대상을 원형 배열하는 4!가지이고 묶음 안의 순서 2가지라 경우의 수는 48이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_NEIGHBORING_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_CONSECUTIVE_GROUPING"
+                                        ]
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "p,n을 양 끝에 놓는 2순서와 가운데 passion의 5!/2! 배열을 곱해 120가지다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_IDENTICAL_OBJECT_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_SPECIFIED_ITEMS_AT_BOTH_ENDPOINTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x,y,z에 각각 1을 배정하면 나머지 5를 세 음이 아닌 정수로 나누는 경우의 수는 C(7,2)=21이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "왼쪽 합은 C(1,0)+…+C(6,5)=1+2+3+4+5+6=21=C(7,5)이므로 n=7이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "이항계수의 성질"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_COEFFICIENT_EQUATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "정삼각형 탁자 회전은 3가지 동일배치로 묶이므로 6명을 놓는 서로 다른 방법은 6!/3=240이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_POLYGON_TABLE_PERMUTATION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "1,2,4를 한 묶음으로 만들면 3보다 6이 먼저 오지 않는 네 대상의 배열 4!/2개와 묶음 내부 3!을 곱해 72다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_NEIGHBORING_PERMUTATION",
+                                               "CC_ORDER_FIXED_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_CONSECUTIVE_GROUPING"
+                                        ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(2−ax)^6의 x³항 계수는 C(6,3)·2³(−a)³=−160a³이며 −4320과 같아 a=3이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_GENERAL_TERM"
+                                           ]
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "짝수 네 개는 원형에서 홀수 사이에만 놓이고 6은 3과 이웃하지 않는 두 자리라 3!·2·3!=72가지다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NO_ADJACENT_EVEN"
+                                        ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "사용 가능 숫자별 빈도를 지켜 1~4자리 수를 세면 3+11+35+95=144개이고 10112는 가장 작은 가능 5자리 수라 145번째다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복·원순열"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CASE_EXHAUSTION_PERMUTATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_FREQUENCY_CONSTRAINTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "양의 정수 a,b,c,d에 각각 1을 주고 여유변수와 함께 합 3을 분배하는 비음이 아닌 5변수 해는 C(7,3)=35다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_UPPER_BOUND"
+                                        ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "비감소 조건에서 f(5)=2,4일 때 1+15개, f(5)=3,5일 때 f(1) 짝수인 1+11개라 총 28개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_MONOTONIC_ORDER",
+                                            "COND_DIVISIBILITY"
+                                        ]
+                  }
+              ]
+}

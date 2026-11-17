@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "archive-readonly-shadow-candidate-manifest-v1",
+  "taskId": "middle-meta-26fc-20261116",
+  "owner": "ci_m2s2",
+  "status": "STATIC_ACCEPT_EXACT_Q5_INPUT_TRANSPORT_DYNAMIC_NOT_RUN",
+  "beforeCodeCommit": "55768e7fe4c3cba8e30a814fed65c384abe24838",
+  "liveInputComparisonCommit": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+  "operations": [
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "bytes": 116137,
+      "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
+      "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+      "expectedBeforeGitBlobSha1": "8ec2daa45ec631481ede69a4a7514a08ed881fe0",
+      "fullRemoteReadbackExact": true
+    },
+    {
+      "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
+      "bytes": 21269,
+      "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
+      "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
+      "expectedBeforeGitBlobSha1": null,
+      "fullRemoteReadbackExact": true
+    }
+  ],
+  "exactDelta": {
+    "bytes": 19399,
+    "sha256": "c475edceb1b31563854c08b3e2afd13282cfa0debca43902c32764b82210d304",
+    "gitBlobSha1": "485b228c289417de55277c0a63b44e1532243946"
+  },
+  "independentStaticReview": {
+    "bytes": 4919,
+    "sha256": "69c5c3614937ea4053e4ac36fcf124fd2c2930636a6c6bbef9a74000ef6fa71a",
+    "gitBlobSha1": "a328166b1fefbd074da39ffa2a17c743773c3db1"
+  },
+  "binding": {
+    "unchangedRequestId": "m3s2-e052-q5-complete-given-q12-native2-r1-20261116",
+    "selectedQuestionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+    "companionQuestionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+    "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "expectedQuestionCount": 25,
+    "sourceQuestionOrdinal": 5,
+    "approvedRequest": {
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/approved-request-v1.json",
+      "bytes": 15405,
+      "sha256": "e0211e0093661e782455ce631e8cb68fbd1fe9f65479e3a8b8162b8ba82eb317",
+      "gitBlobSha1": "da393b3aff6d7c482da1c9f505ea4c46c27b28a8"
+    },
+    "originalMarkerRefs": [
+      {
+        "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+        "path": "docs/operations/m3-e052-q5-complete-given-20261116/application-basis-v1.json",
+        "gitBlobSha1": "f2a96c282b365405c05ae7ad78c04c710ed635bc",
+        "sha256": "5c1cca89666988ba8e5f500c1eddac525d6dcc4f5ad01f17eb4c6e7bbf7a025a",
+        "bytes": 9022
+      },
+      {
+        "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+        "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-technical-v1.json",
+        "gitBlobSha1": "e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb",
+        "sha256": "c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f",
+        "bytes": 76825
+      },
+      {
+        "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+        "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-independent-v1.json",
+        "gitBlobSha1": "ba2b198f2e8876f2667f29e12e595556714460c5",
+        "sha256": "d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e",
+        "bytes": 1736
+      }
+    ],
+    "currentDisplayRefs": [
+      {
+        "commit": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/visual-current-reuse-v1.json",
+        "bytes": 7372,
+        "sha256": "f7b575307f2105c5e03a96b4b601e8c22953263723810843338a30c043a7ebf3",
+        "gitBlobSha1": "c12986521a343b4d4ea3dac5fb5282617c5cc69f"
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/technical-proof.json",
+        "gitBlobSha1": "0cd74ab0be77a70badcabc655b811bb02cbb9209",
+        "sha256": "9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279",
+        "bytes": 76724
+      },
+      {
+        "commit": "006e6455f69c092c3251d440daf0c4b07da7a469",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json",
+        "gitBlobSha1": "56ec9409ca900e94a46d6562e6e9189aedac7d43",
+        "sha256": "07632bee16334ab68a80b3433db7b32daa145053b68156b68244b9145ebeaa7e",
+        "bytes": 37970
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/producer-frames.jsonl",
+        "gitBlobSha1": "439b8fc9187f3907a63a16af5841251952024533",
+        "sha256": "c822e4bac3fb2ba1a21657f89f838d35bedbe08820d418021ec75c72c666d628",
+        "bytes": 197175
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-desktop-tile-01.png",
+        "gitBlobSha1": "9d96646282e97104a032c81c03451bda8794eb1b",
+        "sha256": "600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f",
+        "bytes": 28776
+      },
+      {
+        "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-mobile-tile-01.png",
+        "gitBlobSha1": "a977c9c35a5b2a5bb4fd90c23ffbc16d30e9d908",
+        "sha256": "d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab",
+        "bytes": 30805
+      }
+    ],
+    "additionalDeclaredServedRefs": [
+      {
+        "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "path": "archive/archive2-output-bar.css",
+        "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+        "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+        "bytes": 9673
+      },
+      {
+        "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "path": "archive/exam-display-title.js",
+        "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+        "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+        "bytes": 2358
+      },
+      {
+        "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "path": "archive/archive2-tokens.css",
+        "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+        "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+        "bytes": 2241
+      }
+    ],
+    "stagedPathCount": 9,
+    "sourceReadOnlyPin": {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+      "sha256": "996ba1f2538b060c96f6528fc90c62affa567285a6a24d2106051199f9a348d1",
+      "bytes": 66658
+    },
+    "actualNewServedHeadCas": [
+      {
+        "path": "archive/archive2-output-bar.css",
+        "bytes": 9673,
+        "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+        "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+        "exact": true
+      },
+      {
+        "path": "archive/exam-display-title.js",
+        "bytes": 2358,
+        "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+        "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+        "exact": true
+      },
+      {
+        "path": "archive/archive2-tokens.css",
+        "bytes": 2241,
+        "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+        "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+        "exact": true
+      }
+    ]
+  },
+  "constraints": [
+    "Only the exact original request ID is eligible; unrelated requests, including other Q5 difficulty requests, do not trigger staging.",
+    "Fixed approved-request whole canonical content, live fixed HEAD bytes, original marker and selected descriptor evidence bind the input graph.",
+    "Current visual links exact old authority and fixed proof6; fresh minus original served inventory must be exactly the named new3.",
+    "Every copied path must be a regular immutable ancestor blob, exact current HEAD path/blob/raw/size and exact current live bytes.",
+    "Only missing readonly9 are copied. Existing differing files, path traversal, symlinks and root-shared hardlinks are refused.",
+    "No source, MD, ID, runtime, canonical or registry file is staged or changed by this adapter; current selected source is read/authenticated only.",
+    "No global recursive document scan or Native helper constant discovery; Native and registrar retain the original full validation after hydration.",
+    "Legacy old-engine/no-current-proof route remains unchanged; unknown renderer editions fail closed."
+  ],
+  "verification": {
+    "fullRemoteReadbackExact": true,
+    "beforeBodyCas": true,
+    "newTestBefore404": true,
+    "productionInverseWholeExact": true,
+    "allPriorFamilyGeometryAndApplyBodiesUnchanged": true,
+    "ownCodeOrTestExecution": 0,
+    "nodeSyntax": "NOT_RUN",
+    "nodeTests": "NOT_RUN",
+    "native": "NOT_RUN",
+    "shadowExecution": "NOT_RUN",
+    "mathematicalReview": 0,
+    "sourceQuestionEvaluation": 0,
+    "imagesViewed": 0,
+    "testCaseDefinitions": 54,
+    "testDefinitionCounts": {
+      "literalTests": 26,
+      "requestMutationTests": 13,
+      "missingRefTests": 12,
+      "liveTamperTests": 3
+    },
+    "testsMeaning": "Real sealed immutable metadata/PNG bytes are hashed without viewing; only the hydration function runs in private sparse Git fixtures. Negative cases do not grant or simulate authority.",
+    "commands": [
+      "node --check tools/ci/archive-pr-native-preview.mjs",
+      "node --test tests/archive-pr-q5-current-ui-shadow.test.mjs"
+    ]
+  },
+  "integration": {
+    "frozenM3CurrentUiCandidate": "4f2744955009bcba3b42260d8e91f2c3e98157ba",
+    "authorityReview": "7cafcf2a5b1302b027b5b61190b890a797f32da9",
+    "needsActualHistory": [
+      "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+      "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "006e6455f69c092c3251d440daf0c4b07da7a469",
+      "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+    ],
+    "originalMainAndBranchWriter": "root",
+    "gate": "Run the exact two files on an integration HEAD retaining the fixed publication ancestry/current files. No physical Q5 registration claim before original Native/authority, builder/Consumer and relevant replay gates."
+  }
+}

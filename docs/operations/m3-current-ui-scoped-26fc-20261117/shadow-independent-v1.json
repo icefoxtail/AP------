@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "archive-independent-q5-current-ui-shadow-adapter-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "GPT_M3S2_RELEASE_20261116",
+  "decision": "STATIC_ACCEPT_EXACT_Q5_READONLY_HYDRATION_DYNAMIC_PENDING",
+  "candidate": {
+    "path": "tools/ci/archive-pr-native-preview.mjs",
+    "before": {
+      "gitBlobSha1": "8ec2daa45ec631481ede69a4a7514a08ed881fe0",
+      "sha256": "3b5a799bdeadd81dd7f0f5f327d35f5f1a2b84654e891b26c5309e4bf01583a6",
+      "bytes": 98762
+    },
+    "after": {
+      "gitBlobSha1": "b579f489aa31ec4673dc0e5c612bc6b7ec3b589c",
+      "sha256": "72aa1d94437ee925fccc0482291112ced51818e63fcbcba5a28869c8f595e6b8",
+      "bytes": 116137
+    },
+    "test": {
+      "path": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
+      "gitBlobSha1": "8975e9a07f43a39b7968a254e2c0855264b6eb7e",
+      "sha256": "3a91cbb390bb3593f2a85885ae6fbd016eb42ce2558ff8bb0e63299f985d7a5b",
+      "bytes": 21269
+    }
+  },
+  "relatedProductionManifest": {
+    "gitBlobSha1": "4f2744955009bcba3b42260d8e91f2c3e98157ba",
+    "sha256": "1ac0ea3caa07e3e6279596669bf8a904d05ac7a3cac1e7c0f2a568452f927bf5",
+    "bytes": 13722
+  },
+  "originalAuthorityLocator": {
+    "gitBlobSha1": "1975e36e02f2b31c5c7816b81e6ee74a72fb2251",
+    "sha256": "5ff4c1768eb73994f7f916f7404f8e4c1124f02a49bc6f7bbe5423e78680b4be",
+    "bytes": 2525
+  },
+  "mechanicalChecks": {
+    "inverseExact": true,
+    "profileProductionTestExact": true,
+    "currentSixExact": true,
+    "priorTechnical": true,
+    "priorVisual": true,
+    "onlyHooks": 2,
+    "restoration9": 9
+  },
+  "findings": [
+    {
+      "boundary": "Exact existing authority",
+      "result": "PASS_STATIC",
+      "evidence": "The only opt-in is the fixed original Q5/Q12 requestId. Descriptor path/raw/size/selected UID2/source and the complete canonical approved request must match. The exact application/technical/visual marker is bound to both approval and item evidence plus descriptor evidence. This does not grant approval."
+    },
+    {
+      "boundary": "Authenticated declared closure",
+      "result": "PASS_STATIC",
+      "evidence": "Fresh visual explicitly declares the fixed raw technical, equivalence witness, producer frames and two original PNG refs. The only additional served inputs are exactly three paths introduced by the fixed current technical compared with the original technical. All nine refs are authenticated by fixed commit/path/Git/raw/size, current HEAD/live bytes and ancestry."
+    },
+    {
+      "boundary": "Readonly copying and post-state isolation",
+      "result": "PASS_STATIC",
+      "evidence": "Only missing nine readonly paths are created in a disjoint private shadow. Existing matching files keep their inode; mismatches, same-inode sharing, root/path symlinks, traversal, nonregular files and unknown renderer editions are rejected. MD/ID/runtime/source and output files are never staged by the adapter. Root observed inputs are checked before and after copying."
+    },
+    {
+      "boundary": "Original registration pipeline",
+      "result": "PASS_STATIC",
+      "evidence": "Removal of the added constant/function and one hook exactly restores before8ec2 bytes. Existing family3 hydration, request application, registrar, strict plan/output checks and finally cleanup remain unchanged. Legacy old-renderer/no-current-proof route remains a no-op."
+    },
+    {
+      "boundary": "Dedicated tests",
+      "result": "READ_NOT_EXECUTED",
+      "evidence": "Read complete test body. It uses authentic immutable metadata/PNG/source bytes in separate private Git worktrees with readonly object alternates, covers request and descriptor mutation, exact closure gaps, unknown renderer, existing drift, ancestor omission, symlinks, hardlinks, no source/data writes, repeated idempotence and public-input preservation. Repository source is not evaluated."
+    }
+  ],
+  "remainingRequirements": [
+    "Root integration must include immutable current proof ancestry, exact nine live files and unchanged approved original request/evidence.",
+    "Run the new dedicated hydration tests in supported Node CI; local syntax and dynamic execution were not performed here.",
+    "Q5 original Native GIVEN/UI/ancestor authority and source49 builder/Consumer/cold/delete gates remain separate required dynamic evidence."
+  ],
+  "bounds": {
+    "newNodeExecution": 0,
+    "newSyntaxExecution": 0,
+    "newNativeExecution": 0,
+    "newRegistrarExecution": 0,
+    "newBuilderExecution": 0,
+    "newConsumerExecution": 0,
+    "newSourceReview": 0,
+    "newImageReview": 0,
+    "newApproval": 0,
+    "productionWritesByReviewer": 0,
+    "remoteRefWrites": 0
+  },
+  "notes": [
+    "Static acceptance is not a current Native PASS or an actual registration result.",
+    "The test loads only the fixed closure and uses actual source bytes opaquely; no question text/answer/solution is included in this review."
+  ]
+}

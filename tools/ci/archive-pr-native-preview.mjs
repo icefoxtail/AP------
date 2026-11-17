@@ -1331,6 +1331,317 @@ export function hydrateFixedNativeServedInputs({ root, shadow, headSha, requests
   return result;
 }
 
+// Exact public metadata inputs for one unchanged issued Q5/Q12 request.
+const SHADOW_M3_Q5_CURRENT_UI = {
+  "requestId": "m3s2-e052-q5-complete-given-q12-native2-r1-20261116",
+  "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+  "companionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+  "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+  "sourceOrdinal": 5,
+  "expectedQuestionCount": 25,
+  "approvedRequest": {
+    "path": "docs/operations/m3-e052-q5-complete-given-20261116/approved-request-v1.json",
+    "bytes": 15405,
+    "sha256": "e0211e0093661e782455ce631e8cb68fbd1fe9f65479e3a8b8162b8ba82eb317",
+    "gitBlobSha1": "da393b3aff6d7c482da1c9f505ea4c46c27b28a8"
+  },
+  "priorRefs": [
+    {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/application-basis-v1.json",
+      "gitBlobSha1": "f2a96c282b365405c05ae7ad78c04c710ed635bc",
+      "sha256": "5c1cca89666988ba8e5f500c1eddac525d6dcc4f5ad01f17eb4c6e7bbf7a025a",
+      "bytes": 9022
+    },
+    {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-technical-v1.json",
+      "gitBlobSha1": "e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb",
+      "sha256": "c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f",
+      "bytes": 76825
+    },
+    {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-independent-v1.json",
+      "gitBlobSha1": "ba2b198f2e8876f2667f29e12e595556714460c5",
+      "sha256": "d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e",
+      "bytes": 1736
+    }
+  ],
+  "currentRefs": [
+    {
+      "commit": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/visual-current-reuse-v1.json",
+      "bytes": 7372,
+      "sha256": "f7b575307f2105c5e03a96b4b601e8c22953263723810843338a30c043a7ebf3",
+      "gitBlobSha1": "c12986521a343b4d4ea3dac5fb5282617c5cc69f"
+    },
+    {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/technical-proof.json",
+      "gitBlobSha1": "0cd74ab0be77a70badcabc655b811bb02cbb9209",
+      "sha256": "9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279",
+      "bytes": 76724
+    },
+    {
+      "commit": "006e6455f69c092c3251d440daf0c4b07da7a469",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json",
+      "gitBlobSha1": "56ec9409ca900e94a46d6562e6e9189aedac7d43",
+      "sha256": "07632bee16334ab68a80b3433db7b32daa145053b68156b68244b9145ebeaa7e",
+      "bytes": 37970
+    },
+    {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/producer-frames.jsonl",
+      "gitBlobSha1": "439b8fc9187f3907a63a16af5841251952024533",
+      "sha256": "c822e4bac3fb2ba1a21657f89f838d35bedbe08820d418021ec75c72c666d628",
+      "bytes": 197175
+    },
+    {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-desktop-tile-01.png",
+      "gitBlobSha1": "9d96646282e97104a032c81c03451bda8794eb1b",
+      "sha256": "600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f",
+      "bytes": 28776
+    },
+    {
+      "commit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+      "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-mobile-tile-01.png",
+      "gitBlobSha1": "a977c9c35a5b2a5bb4fd90c23ffbc16d30e9d908",
+      "sha256": "d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab",
+      "bytes": 30805
+    }
+  ],
+  "extraServed": [
+    {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "archive/archive2-output-bar.css",
+      "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+      "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+      "bytes": 9673
+    },
+    {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "archive/exam-display-title.js",
+      "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+      "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+      "bytes": 2358
+    },
+    {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "archive/archive2-tokens.css",
+      "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+      "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+      "bytes": 2241
+    }
+  ],
+  "sourceRef": {
+    "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+    "sha256": "996ba1f2538b060c96f6528fc90c62affa567285a6a24d2106051199f9a348d1",
+    "bytes": 66658
+  },
+  "engineRef": {
+    "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+    "path": "archive/engine.html",
+    "gitBlobSha1": "226342544e896cd6a6f35aa946947b89ef3c893e",
+    "sha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+    "bytes": 196085
+  },
+  "captureCommit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+  "legacyEngineBlob": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b"
+};
+
+// Current Q5 display evidence is deliberately absent from the immutable issued
+// request. Authenticate that exact request and its original three evidence refs
+// before following this one independently sealed display binding. This restores
+// only missing readonly input bytes; the ordinary Native/registrar validation
+// below still decides all approval, identity, source and current UI conditions.
+export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) {
+  const p = SHADOW_M3_Q5_CURRENT_UI;
+  if (!Array.isArray(requests)) fail('Q5_SHADOW_REQUESTS');
+  const selected = requests.filter(row => row?.requestId === p.requestId);
+  if (!selected.length) return [];
+  if (selected.length !== 1) fail('Q5_SHADOW_AMBIGUOUS_REQUEST');
+  root = path.resolve(root); shadow = path.resolve(shadow);
+  for (const directory of [root, shadow]) {
+    const stat = fs.lstatSync(directory);
+    if (!stat.isDirectory() || stat.isSymbolicLink() || fs.realpathSync(directory) !== directory)
+      fail('Q5_SHADOW_ROOT');
+  }
+  if (root === shadow || root.startsWith(shadow + path.sep) || shadow.startsWith(root + path.sep)
+      || !/^[a-f0-9]{40}$/.test(headSha || '') || git(root, 'rev-parse', 'HEAD').trim() !== headSha)
+    fail('Q5_SHADOW_HEAD');
+  const stable = value => JSON.stringify(value, (_, row) => row && typeof row === 'object' && !Array.isArray(row)
+    ? Object.fromEntries(Object.keys(row).sort().map(key => [key, row[key]])) : row);
+  const same = (a, b) => stable(a) === stable(b);
+  const five = ref => {
+    if (!objectKeys(ref, ['commit', 'path', 'gitBlobSha1', 'sha256', 'bytes'])
+        || !/^[a-f0-9]{40}$/.test(ref.commit || '') || !/^[a-f0-9]{40}$/.test(ref.gitBlobSha1 || '')
+        || !/^[a-f0-9]{64}$/.test(ref.sha256 || '') || !Number.isSafeInteger(ref.bytes)
+        || ref.bytes < 1 || ref.bytes > 2 * 1024 * 1024) fail('Q5_SHADOW_REF');
+    return ref;
+  };
+  const strictPath = (base, file, allowMissing = false) => {
+    const full = safe(base, file);
+    let cursor = base;
+    const parts = file.split('/');
+    for (let i = 0; i < parts.length; i++) {
+      cursor = path.join(cursor, parts[i]);
+      let stat;
+      try { stat = fs.lstatSync(cursor); }
+      catch (error) {
+        if (error.code === 'ENOENT' && allowMissing) return full;
+        fail('Q5_SHADOW_MISSING:' + file);
+      }
+      if (stat.isSymbolicLink()) fail('Q5_SHADOW_SYMLINK:' + file);
+      if (i < parts.length - 1 ? !stat.isDirectory() : !stat.isFile()) fail('Q5_SHADOW_REGULAR:' + file);
+    }
+    return full;
+  };
+  const tree = (commit, file) => {
+    safe(root, file);
+    const entry = spawnSync('git', ['ls-tree', '-z', commit, '--', file], { cwd: root, encoding: 'utf8',
+      env: { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_OPTIONAL_LOCKS: '0' }, maxBuffer: 1024 * 1024 });
+    const match = !entry.error && entry.status === 0 && /^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry.stdout);
+    if (!match || match[2] !== file) fail('Q5_SHADOW_GIT_REGULAR:' + file);
+    return match[1];
+  };
+  const observed = new Map(), ancestors = new Set();
+  const readHead = (file, expected) => {
+    const oid = tree(headSha, file), raw = gitBytes(root, headSha + ':' + file);
+    if (expected && (oid !== expected.gitBlobSha1 || raw.length !== expected.bytes || sha(raw) !== expected.sha256))
+      fail('Q5_SHADOW_HEAD_PIN:' + file);
+    const full = strictPath(root, file), live = fs.readFileSync(full);
+    if (live.length !== raw.length || sha(live) !== sha(raw)) fail('Q5_SHADOW_LIVE_PIN:' + file);
+    observed.set(file, { sha256: sha(raw), bytes: raw.length });
+    return raw;
+  };
+  const pinned = ref => {
+    five(ref);
+    if (!ancestors.has(ref.commit)) {
+      const result = spawnSync('git', ['merge-base', '--is-ancestor', ref.commit, headSha], { cwd: root,
+        env: { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_OPTIONAL_LOCKS: '0' }, maxBuffer: 1024 * 1024 });
+      if (result.error || result.status !== 0) fail('Q5_SHADOW_ANCESTOR');
+      ancestors.add(ref.commit);
+    }
+    if (tree(ref.commit, ref.path) !== ref.gitBlobSha1) fail('Q5_SHADOW_IMMUTABLE_PIN:' + ref.path);
+    return readHead(ref.path, ref);
+  };
+  const descriptor = selected[0];
+  if (!flatInboxPath(descriptor.path)) fail('Q5_SHADOW_REQUEST_PATH');
+  const requestRaw = readHead(descriptor.path), request = parsed(requestRaw.toString('utf8'));
+  if (sha(requestRaw) !== descriptor.sha256 || requestRaw.length !== descriptor.sizeBytes
+      || request.requestId !== p.requestId || descriptor.requestId !== p.requestId
+      || request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.scope !== 'PARTIAL_UIDS'
+      || request.sourceArchiveFile !== p.sourceArchiveFile || request.expectedQuestionCount !== p.expectedQuestionCount
+      || !Array.isArray(descriptor.selectedItems)
+      || !same([...descriptor.selectedItems].sort((a,b) => a.sourceOrdinal - b.sourceOrdinal),
+        [{ questionUid: p.questionUid, sourceOrdinal: 5 }, { questionUid: p.companionUid, sourceOrdinal: 12 }]))
+    fail('Q5_SHADOW_REQUEST');
+  const approved = parsed(readHead(p.approvedRequest.path, p.approvedRequest).toString('utf8'));
+  if (!same(request, approved)) fail('Q5_SHADOW_APPROVED_REQUEST_CHANGED');
+  const item = request.items.find(row => row.questionUid === p.questionUid);
+  const marker = item.sourceReview.q5CompleteGivenApplication;
+  if (!objectKeys(marker, ['schemaVersion', 'applicationRef', 'technicalRef', 'visualRef'])
+      || marker.schemaVersion !== 'archive-m3-e052-q5-complete-given-application-v1'
+      || !same([marker.applicationRef, marker.technicalRef, marker.visualRef], p.priorRefs))
+    fail('Q5_SHADOW_ORIGINAL_MARKER');
+  for (const ref of p.priorRefs) {
+    const short = { path: ref.path, sha256: ref.sha256 };
+    if (![request.approval.evidenceRefs, item.evidenceRefs].every(refs =>
+        refs.filter(row => row.path === ref.path).length === 1 && refs.some(row => same(row, short)))
+        || !Array.isArray(descriptor.evidence)
+        || descriptor.evidence.filter(row => row.path === ref.path).length !== 1
+        || !descriptor.evidence.some(row => row.path === ref.path && row.sha256 === ref.sha256))
+      fail('Q5_SHADOW_UNBOUND_ORIGINAL_EVIDENCE');
+  }
+  // Preserve the original old-renderer route. Unknown/new renderer editions may
+  // not borrow this bounded current display bundle.
+  const engineOid = tree(headSha, 'archive/engine.html');
+  const currentRequested = p.currentRefs.slice(0, 2).some(ref => {
+    const full = strictPath(root, ref.path, true);
+    return fs.existsSync(full);
+  });
+  if (!currentRequested && engineOid === p.legacyEngineBlob) return [];
+  if (engineOid !== p.engineRef.gitBlobSha1) fail('Q5_SHADOW_RENDERER_EDITION');
+  const [basisRaw, priorRaw] = p.priorRefs.map(pinned);
+  const basis = parsed(basisRaw.toString('utf8')), prior = parsed(priorRaw.toString('utf8'));
+  const currentRaw = p.currentRefs.map(pinned);
+  const visual = parsed(currentRaw[0].toString('utf8')), technical = parsed(currentRaw[1].toString('utf8'));
+  if (visual.schemaVersion !== 'archive-independent-m3-e052-q5-current-ui-reuse-v1'
+      || visual.scope !== 'EXACT_E052_Q5_COMPLETE_GIVEN_CURRENT_DISPLAY_ONLY'
+      || visual.decision !== 'APPROVE_EXACT_STUDENT_UI'
+      || !same(visual.priorTechnicalRef, marker.technicalRef) || !same(visual.priorVisualRef, marker.visualRef)
+      || !same([visual.technicalRef, visual.displayEquivalenceRef, visual.currentProducerFramesRef, ...visual.artifactRefs],
+        p.currentRefs.slice(1)) || visual.newNativeApproval !== 0 || visual.newMetadataApproval !== 0
+      || visual.newMathematicalQa !== 0 || visual.currentFullLiveCodeFontAssetGuardsRequired !== true)
+    fail('Q5_SHADOW_CURRENT_BINDING');
+  const identity = value => [value.key, value.questionUid, value.sourceOrdinal, value.expectedBankCount];
+  const noCommit = ref => Object.fromEntries(['path','gitBlobSha1','sha256','bytes'].map(key => [key, ref[key]]));
+  if (basis.questionUid !== p.questionUid || basis.sourceOrdinal !== 5 || basis.expectedQuestionCount !== 25
+      || technical.schemaVersion !== 'archive-m3-e052-q5-student-ui-preview-v1'
+      || technical.status !== 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING' || technical.checkoutCommit !== p.captureCommit
+      || technical.expectedLogicalCases !== 2 || technical.completedLogicalCases !== 2
+      || !Array.isArray(prior.items) || prior.items.length !== 1 || !Array.isArray(technical.items) || technical.items.length !== 1
+      || !same(identity(technical.items[0]), ['E052-Q5', p.questionUid, 5, 25])
+      || !same(identity(prior.items[0]), identity(technical.items[0]))
+      || !same(noCommit(prior.items[0].sourceRef), noCommit(technical.items[0].sourceRef))
+      || !same(noCommit(prior.items[0].assetRef), noCommit(technical.items[0].assetRef))
+      || !same(technical.items[0].sourceRef, p.sourceRef)
+      || !same(noCommit(basis.sourceAfterRef), noCommit(p.sourceRef)))
+    fail('Q5_SHADOW_CURRENT_SCOPE');
+  pinned(p.sourceRef); pinned(p.engineRef);
+  if (request.expectedSourceBlobSha1 !== p.sourceRef.gitBlobSha1
+      || descriptor.source?.path !== p.sourceRef.path || descriptor.source?.blobSha1 !== p.sourceRef.gitBlobSha1
+      || descriptor.source?.sha256 !== p.sourceRef.sha256 || descriptor.source?.sizeBytes !== p.sourceRef.bytes)
+    fail('Q5_SHADOW_SOURCE_BINDING');
+  if (!Array.isArray(technical.servedFiles) || !Array.isArray(prior.servedFiles)
+      || new Set(technical.servedFiles.map(ref => ref.path)).size !== technical.servedFiles.length
+      || new Set(prior.servedFiles.map(ref => ref.path)).size !== prior.servedFiles.length)
+    fail('Q5_SHADOW_SERVED_INVENTORY');
+  const priorPaths = new Set(prior.servedFiles.map(ref => ref.path));
+  const added = technical.servedFiles.filter(ref => !priorPaths.has(ref.path));
+  if (!same(added.slice().sort((a,b) => a.path.localeCompare(b.path, 'en')),
+      p.extraServed.slice().sort((a,b) => a.path.localeCompare(b.path, 'en'))))
+    fail('Q5_SHADOW_NEW_SERVED_SCOPE');
+  const staged = [...p.currentRefs, ...p.extraServed];
+  const buffers = [...currentRaw, ...p.extraServed.map(ref => {
+    if (ref.commit !== p.captureCommit || !technical.servedFiles.some(value => same(value, ref)))
+      fail('Q5_SHADOW_UNDECLARED_SERVED_INPUT');
+    return pinned(ref);
+  })];
+  if (staged.length !== 9 || new Set(staged.map(ref => ref.path)).size !== 9)
+    fail('Q5_SHADOW_FIXED_NINE');
+  const existing = [];
+  for (const ref of staged) {
+    const full = strictPath(shadow, ref.path, true), present = fs.existsSync(full);
+    if (present) {
+      const bytes = fs.readFileSync(strictPath(shadow, ref.path));
+      if (bytes.length !== ref.bytes || sha(bytes) !== ref.sha256) fail('Q5_SHADOW_EXISTING_DRIFT:' + ref.path);
+      const a = fs.statSync(full), b = fs.statSync(strictPath(root, ref.path));
+      if (a.dev === b.dev && a.ino === b.ino) fail('Q5_SHADOW_SHARED_INODE:' + ref.path);
+    }
+    existing.push(present);
+  }
+  const assertObserved = () => {
+    if (git(root, 'rev-parse', 'HEAD').trim() !== headSha) fail('Q5_SHADOW_HEAD_CHANGED');
+    for (const [file, ref] of observed) {
+      const bytes = fs.readFileSync(strictPath(root, file));
+      if (bytes.length !== ref.bytes || sha(bytes) !== ref.sha256) fail('Q5_SHADOW_INPUT_CHANGED:' + file);
+    }
+  };
+  assertObserved();
+  for (let i = 0; i < staged.length; i++) if (!existing[i]) {
+    const full = strictPath(shadow, staged[i].path, true);
+    fs.mkdirSync(path.dirname(full), { recursive: true });
+    fs.writeFileSync(full, buffers[i], { flag: 'wx', mode: 0o600 });
+  }
+  assertObserved();
+  return staged.map((ref, i) => ({ ...ref, headSha, existing: existing[i] }));
+}
+
 // Re-derive the *initial* official plan from the immutable Git input. A replay
 // on the post-state returns plannedPaths:[] and cannot authenticate a new
 // allowlist. This shadow has independent bytes; verify-local never writes its
@@ -1368,6 +1679,7 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
       fs.writeFileSync(full, gitBytes(root, `${headSha}:${file}`));
     }
     hydrateFixedNativeServedInputs({ root, shadow, headSha: git(root, 'rev-parse', 'HEAD').trim(), requests });
+    hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests });
     const plans = applyNativeRequests({ root: shadow, requests, run, scriptRoot: root, guard: false });
     return { plans, outputs: nativeOutputManifest(shadow, plans) };
   } finally { fs.rmSync(shadow, { recursive: true, force: true }); }
