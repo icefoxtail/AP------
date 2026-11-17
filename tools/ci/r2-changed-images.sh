@@ -5,6 +5,7 @@
 #
 #   r2-changed-images.sh <base-sha> <head-sha> <out-file>        images changed between two commits
 #   r2-changed-images.sh --folder <exam-folder-name> <out-file>  git-tracked images of ONE exam folder
+#   r2-changed-images.sh --pick-base < runs.json                 newest run usable as a diff base (see below)
 #
 # <out-file> receives NUL-separated paths RELATIVE to archive/assets/images (the rclone source root), ready for
 # `rclone copy --files-from0`. In diff mode only added/copied/modified/renamed-to files are listed
@@ -39,6 +40,28 @@ finish() {
   fi
   mv "$tmp" "$out"
 }
+
+# --pick-base: reads the JSON of `gh api .../runs?branch=main&status=success` on stdin and prints the head_sha of the
+# newest run that may serve as the diff base: a push run, or a manual run in mode catch_up. Manual runs in mode folder
+# only upload one exam folder, so they never count (otherwise they would hide the images of a failed push).
+# Prints nothing when no run qualifies. The run-name below must match `run-name:` in the workflow.
+if [ "${1:-}" = "--pick-base" ]; then
+  js='
+const catchUpTitle = "R2 image copy (catch_up)";
+let text = "";
+process.stdin.setEncoding("utf8");
+process.stdin.on("data", chunk => { text += chunk; });
+process.stdin.on("end", () => {
+  let runs = [];
+  try { runs = JSON.parse(text).workflow_runs || []; } catch (error) { runs = []; }
+  const ok = run => /^[0-9a-f]{40}$/.test(run.head_sha || "")
+    && (run.event === "push" || (run.event === "workflow_dispatch" && (run.display_title === catchUpTitle || run.name === catchUpTitle)));
+  const hit = runs.find(ok);
+  if (hit) process.stdout.write(hit.head_sha + "\n");
+});
+'
+  exec node -e "$js"
+fi
 
 if [ "${1:-}" = "--folder" ]; then
   folder="${2-}"

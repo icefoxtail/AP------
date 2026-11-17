@@ -62,25 +62,42 @@ test("every rclone call names its files explicitly and never walks the bucket or
   assert.match(code, /rclone copy archive\/assets\/images "r2-ap-assets:\$\{R2_BUCKET\}\/exams\/images"/);
 });
 
-test("manual run takes a required `folder` input; its value reaches the shell only through env", () => {
-  assert.match(workflow, /workflow_dispatch:\n\s+inputs:\n\s+folder:\n(?:\s+(?:description|type):[^\n]*\n)*\s+required: true\n/, "folder is required");
-  const uses = workflow.match(/github\.event\.inputs\.folder/g) || [];
-  assert.equal(uses.length, 1, "referenced once");
-  assert.match(workflow, /^\s+FOLDER_INPUT: \$\{\{ github\.event\.inputs\.folder \}\}$/m, "passed as an env value, not spliced into a script");
-  assert.doesNotMatch(code.replace(/^\s+FOLDER_INPUT: .*$/m, ""), /\$\{\{[^}]*inputs/, "no ${{ }} input expansion inside run scripts");
+test("manual run takes a required `mode` (folder|catch_up) and an optional `folder`; both reach the shell only through env", () => {
+  assert.match(workflow, /workflow_dispatch:\n\s+inputs:\n\s+mode:\n(?:\s+(?:description|type|default):[^\n]*\n)*\s+required: true\n(?:\s+(?:type|default):[^\n]*\n)*\s+options:\n\s+- folder\n\s+- catch_up\n/, "mode is a required choice");
+  assert.match(workflow, /\n {6}folder:\n\s+description:[^\n]*\n\s+required: false\n/, "folder is needed only for mode=folder; the script validates it");
+  assert.match(workflow, /^\s+FOLDER_INPUT: \$\{\{ github\.event\.inputs\.folder \}\}$/m);
+  assert.match(workflow, /^\s+MODE_INPUT: \$\{\{ github\.event\.inputs\.mode \}\}$/m);
+  assert.equal((workflow.match(/github\.event\.inputs\.folder/g) || []).length, 1, "folder referenced once");
+  const scripts = code.replace(/^\s+(FOLDER_INPUT|MODE_INPUT): .*$/gm, "").replace(/^run-name: .*$/m, "");
+  assert.doesNotMatch(scripts, /\$\{\{[^}]*inputs/, "no ${{ }} input expansion inside run scripts");
 });
 
-test("the push base order is last successful run, then this push's before, then a hard failure; limits live in one env block", () => {
-  assert.match(code, /actions\/workflows\/r2-archive-assets-copy\.yml\/runs\?branch=main&status=success/);
+test("run-name carries the mode but never the folder text", () => {
+  const runName = workflow.match(/^run-name: (.*)$/m);
+  assert.ok(runName, "run-name exists");
+  assert.match(runName[1], /R2 image copy \(\$\{\{ github\.event_name == 'push' && 'push' \|\| github\.event\.inputs\.mode \}\}\)/);
+  assert.doesNotMatch(runName[1], /inputs\.folder/);
+  assert.ok(scriptText.includes('"R2 image copy (catch_up)"'), "the base lookup keys on the same name");
+});
+
+test("the base is the newest successful push or catch_up run (folder runs excluded), then this push's before, then a hard failure", () => {
+  assert.match(code, /actions\/workflows\/r2-archive-assets-copy\.yml\/runs\?branch=main&status=success&per_page=30/);
+  assert.match(code, /\| bash tools\/ci\/r2-changed-images\.sh --pick-base/);
   assert.match(code, /PUSH_BEFORE: \$\{\{ github\.event\.before \}\}/);
   assert.match(code, /actions: read/);
+  // Only event=push or a workflow_dispatch named exactly "(catch_up)" qualifies; folder runs never do.
+  assert.match(scriptCode, /run\.event === "push" \|\| \(run\.event === "workflow_dispatch" && \(run\.display_title === catchUpTitle/);
+  assert.doesNotMatch(scriptCode, /\(folder\)/, "no folder run name is accepted");
   const plan = code.slice(code.indexOf("Plan upload"));
-  assert.ok(plan.indexOf("status=success") < plan.indexOf('before="${PUSH_BEFORE'), "(a) before (b)");
+  assert.ok(plan.indexOf("pick_base ||") < plan.indexOf('before="${PUSH_BEFORE'), "(a) before (b)");
   assert.match(plan, /fallback to this push only \(\$\{why\}\)/, "the (a)->(b) fallback leaves a reason in the log line");
   assert.match(plan, /fail_plan "could not decide which images changed/);
-  assert.ok(plan.includes("어떤 이미지가 바뀌었는지 정하지 못해 올리지 않았음. 수동 실행에서 폴더를 지정해 올릴 것"));
+  assert.ok(plan.includes("어떤 이미지가 바뀌었는지 정하지 못해 올리지 않았음. 수동 실행 mode=folder로 폴더를 지정하거나, 원인을 고친 뒤 mode=catch_up으로 올릴 것"));
+  assert.ok(plan.includes("수동 실행 mode=catch_up으로 올릴 것"), "an over-limit push points to catch_up");
   assert.equal((workflow.match(/^\s+R2_MAX_IMAGES_PUSH: "\d+"$/gm) || []).length, 1);
   assert.equal((workflow.match(/^\s+R2_MAX_IMAGES_FOLDER: "\d+"$/gm) || []).length, 1);
+  assert.equal((workflow.match(/^\s+R2_MAX_IMAGES_CATCH_UP: "10000"$/gm) || []).length, 1);
+  assert.match(code, /no_check_bucket = true/);
 });
 
 test("run scripts are safe under bash -eo pipefail: nothing pipes into an early-closing head", () => {
@@ -103,8 +120,15 @@ function stepRun(stepName) {
 }
 const limits = {
   R2_MAX_IMAGES_PUSH: workflow.match(/R2_MAX_IMAGES_PUSH: "(\d+)"/)[1],
-  R2_MAX_IMAGES_FOLDER: workflow.match(/R2_MAX_IMAGES_FOLDER: "(\d+)"/)[1]
+  R2_MAX_IMAGES_FOLDER: workflow.match(/R2_MAX_IMAGES_FOLDER: "(\d+)"/)[1],
+  R2_MAX_IMAGES_CATCH_UP: workflow.match(/R2_MAX_IMAGES_CATCH_UP: "(\d+)"/)[1]
 };
+// What `gh api .../runs?...&per_page=30` returns (newest first); the fake gh prints it and the real --pick-base reads it.
+const RUN_PUSH = sha => ({ event: "push", display_title: "Merge pull request #1", head_sha: sha });
+const RUN_CATCH_UP = sha => ({ event: "workflow_dispatch", display_title: "R2 image copy (catch_up)", head_sha: sha });
+const RUN_FOLDER = sha => ({ event: "workflow_dispatch", display_title: "R2 image copy (folder)", head_sha: sha });
+const RUN_OLD_MANUAL = sha => ({ event: "workflow_dispatch", display_title: "R2 Archive Assets Copy", head_sha: sha });
+const runsJson = runs => JSON.stringify({ workflow_runs: runs });
 
 test("log preview of a 3,000-entry list exits 0 under bash -eo pipefail", t => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "r2-preview-"));
@@ -156,7 +180,7 @@ function fixture(t) {
   write(dir, "archive/assets/images/other/new.png", "n");
   const b = commit(dir, "change");
   const bin = path.join(dir, "bin");
-  write(dir, "bin/gh", '#!/usr/bin/env bash\n[ -z "${GH_FAKE_SHA:-}" ] || echo "$GH_FAKE_SHA"\n');
+  write(dir, "bin/gh", '#!/usr/bin/env bash\n[ -z "${GH_FAKE_RUNS:-}" ] || printf "%s" "$GH_FAKE_RUNS"\n');
   fs.chmodSync(path.join(bin, "gh"), 0o755);
   const plan = path.join(dir, "plan.sh");
   fs.writeFileSync(plan, stepRun("Plan upload"));
@@ -177,7 +201,7 @@ function runPlan(fx, env) {
       ...process.env,
       PATH: `${fx.bin}${path.delimiter}${process.env.PATH}`,
       RUNNER_TEMP: temp, GITHUB_STEP_SUMMARY: summary, GITHUB_OUTPUT: output,
-      GITHUB_REPOSITORY: "o/r", GH_TOKEN: "x", GH_FAKE_SHA: "", FOLDER_INPUT: "", PUSH_BEFORE: "", GITHUB_SHA: fx.b,
+      GITHUB_REPOSITORY: "o/r", GH_TOKEN: "x", GH_FAKE_RUNS: "", MODE_INPUT: "", FOLDER_INPUT: "", PUSH_BEFORE: "", GITHUB_SHA: fx.b, GITHUB_REF: "refs/heads/main",
       ...limits, ...env
     }
   });
@@ -189,73 +213,133 @@ function installScript(fx) {
   fs.copyFileSync(script, target);
 }
 
-test("plan (a): uses the last successful run's head as the base", t => {
+const PICK_FAIL_KO = "어떤 이미지가 바뀌었는지 정하지 못해 올리지 않았음. 수동 실행 mode=folder로 폴더를 지정하거나, 원인을 고친 뒤 mode=catch_up으로 올릴 것";
+const noOutput = r => {
+  assert.notEqual(r.status, 0);
+  assert.equal(fs.existsSync(r.list), false, "no file list");
+  assert.doesNotMatch(r.output, /mode=/, "no outputs, so the copy step is skipped");
+};
+
+test("plan (a): a push uses the newest successful push run's head as the base", t => {
   const fx = fixture(t);
   installScript(fx);
-  const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_SHA: fx.a, PUSH_BEFORE: fx.b });
+  const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_RUNS: runsJson([RUN_PUSH(fx.a)]), PUSH_BEFORE: fx.b });
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.match(r.stdout, /R2 plan: mode=push images_to_check=2 \(changed since last successful run /);
   assert.deepEqual(names(r.list), [`${FOLDER}/q 1(a).png`, "other/new.png"].sort());
   assert.match(r.output, /mode=push\ncount=2\n/);
 });
 
-test("plan (b): without a last successful run it falls back to this push's before and says so", t => {
+test("plan: a successful FOLDER run is never the base; a catch_up or push success is", t => {
   const fx = fixture(t);
   installScript(fx);
-  const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_SHA: "", PUSH_BEFORE: fx.a });
+  const push = extra => runPlan(fx, { GITHUB_EVENT_NAME: "push", PUSH_BEFORE: "", GH_FAKE_RUNS: runsJson(extra) });
+  // (a) A newer successful folder run (and an old-style manual run) sit in front of an older push success.
+  // Using the folder run's sha (= HEAD) as base would find "nothing changed"; the push success must win.
+  const skipped = push([RUN_FOLDER(fx.b), RUN_OLD_MANUAL(fx.b), RUN_PUSH(fx.a)]);
+  assert.equal(skipped.status, 0, skipped.stdout + skipped.stderr);
+  assert.match(skipped.stdout, /images_to_check=2 \(changed since last successful run /);
+  // Only folder runs: no base at all, so (b) does not apply (no before) and the job fails.
+  noOutput(push([RUN_FOLDER(fx.b), RUN_OLD_MANUAL(fx.a)]));
+  // (b) A newer catch_up success IS the base (HEAD here, so nothing is left to upload).
+  const viaCatchUp = push([RUN_FOLDER(fx.a), RUN_CATCH_UP(fx.b), RUN_PUSH(fx.a)]);
+  assert.equal(viaCatchUp.status, 0, viaCatchUp.stdout + viaCatchUp.stderr);
+  assert.match(viaCatchUp.stdout, /R2 plan: mode=push images_to_check=0 /);
+  // (c) A newer push success wins over an older catch_up success.
+  const viaPush = push([RUN_PUSH(fx.b), RUN_CATCH_UP(fx.a)]);
+  assert.equal(viaPush.status, 0, viaPush.stdout + viaPush.stderr);
+  assert.match(viaPush.stdout, /R2 plan: mode=push images_to_check=0 /);
+  const older = push([RUN_CATCH_UP(fx.a), RUN_PUSH(fx.b)]);
+  assert.match(older.stdout, /R2 plan: mode=push images_to_check=2 /, "list order = newest first: the catch_up run is the newest here");
+});
+
+test("plan (b): without a usable base run a push falls back to its own before and says so", t => {
+  const fx = fixture(t);
+  installScript(fx);
+  const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_RUNS: "", PUSH_BEFORE: fx.a });
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.match(r.stdout, /R2 plan: mode=push images_to_check=2 \(fallback to this push only \(no earlier successful run found\)/);
   assert.match(r.stdout, /earlier unsuccessful runs may be missing/);
   assert.equal(names(r.list).length, 2);
+  const onlyFolder = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_RUNS: runsJson([RUN_FOLDER(fx.b)]), PUSH_BEFORE: fx.a });
+  assert.equal(onlyFolder.status, 0, "falls to (b), not to the folder run");
+  assert.match(onlyFolder.stdout, /images_to_check=2 \(fallback to this push only/);
 });
 
-test("plan (c): when no base can be diffed the job fails, uploads nothing and never selects everything", t => {
+test("plan (c): when no base can be diffed the push fails, uploads nothing and never selects everything", t => {
   const fx = fixture(t);
   installScript(fx);
   const unknown = "1".repeat(40);
   for (const env of [
-    { GH_FAKE_SHA: "", PUSH_BEFORE: "" },
-    { GH_FAKE_SHA: "", PUSH_BEFORE: "0".repeat(40) },
-    { GH_FAKE_SHA: unknown, PUSH_BEFORE: unknown }
+    { GH_FAKE_RUNS: "", PUSH_BEFORE: "" },
+    { GH_FAKE_RUNS: "", PUSH_BEFORE: "0".repeat(40) },
+    { GH_FAKE_RUNS: runsJson([RUN_PUSH(unknown)]), PUSH_BEFORE: unknown },
+    { GH_FAKE_RUNS: "not json", PUSH_BEFORE: "" }
   ]) {
     const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", ...env });
-    assert.notEqual(r.status, 0, JSON.stringify(env));
-    assert.equal(fs.existsSync(r.list), false, "no file list");
-    assert.doesNotMatch(r.output, /mode=/, "no outputs, so the copy step is skipped");
+    noOutput(r);
     assert.match(r.stdout, /R2 plan: mode=none images_to_check=0 \(could not decide which images changed/);
-    assert.ok(r.summary.includes("어떤 이미지가 바뀌었는지 정하지 못해 올리지 않았음. 수동 실행에서 폴더를 지정해 올릴 것"));
+    assert.ok(r.summary.includes(PICK_FAIL_KO));
   }
 });
 
-test("plan: a push over the safety limit fails instead of uploading or widening", t => {
+test("plan: a push over the safety limit fails and tells to run catch_up", t => {
   const fx = fixture(t);
   installScript(fx);
-  const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_SHA: fx.a, R2_MAX_IMAGES_PUSH: "1" });
-  assert.notEqual(r.status, 0);
-  assert.equal(fs.existsSync(r.list), false);
+  const r = runPlan(fx, { GITHUB_EVENT_NAME: "push", GH_FAKE_RUNS: runsJson([RUN_PUSH(fx.a)]), R2_MAX_IMAGES_PUSH: "1" });
+  noOutput(r);
   assert.match(r.stdout, /more than 1 images changed; nothing uploaded/);
+  assert.ok(r.summary.includes("수동 실행 mode=catch_up으로 올릴 것"));
 });
 
-test("plan: workflow_dispatch uploads exactly the tracked images of the named folder", t => {
+test("plan: catch_up uploads the changed list since the base; no base, a bad diff, a limit or a non-main ref fail without a list", t => {
   const fx = fixture(t);
   installScript(fx);
-  const r = runPlan(fx, { GITHUB_EVENT_NAME: "workflow_dispatch", FOLDER_INPUT: FOLDER });
+  const catchUp = env => runPlan(fx, { GITHUB_EVENT_NAME: "workflow_dispatch", MODE_INPUT: "catch_up", ...env });
+  const ok = catchUp({ GH_FAKE_RUNS: runsJson([RUN_FOLDER(fx.b), RUN_PUSH(fx.a)]) });
+  assert.equal(ok.status, 0, ok.stdout + ok.stderr);
+  assert.match(ok.stdout, /R2 plan: mode=catch_up images_to_check=2 \(changed since last successful push\/catch_up run /);
+  assert.deepEqual(names(ok.list), [`${FOLDER}/q 1(a).png`, "other/new.png"].sort());
+  assert.match(ok.output, /mode=catch_up\ncount=2\n/);
+  // (d) no base: fail, no fallback to the push's before.
+  for (const env of [{ GH_FAKE_RUNS: "" }, { GH_FAKE_RUNS: runsJson([RUN_FOLDER(fx.a)]) }, { GH_FAKE_RUNS: runsJson([RUN_PUSH("1".repeat(40))]) }]) {
+    const r = catchUp({ ...env, PUSH_BEFORE: fx.a });
+    noOutput(r);
+    assert.match(r.stdout, /could not decide which images changed/);
+    assert.ok(r.summary.includes(PICK_FAIL_KO));
+  }
+  // (e) over the catch_up limit.
+  const big = catchUp({ GH_FAKE_RUNS: runsJson([RUN_PUSH(fx.a)]), R2_MAX_IMAGES_CATCH_UP: "1" });
+  noOutput(big);
+  assert.match(big.stdout, /more than 1 images changed; nothing uploaded/);
+  // Only on main.
+  noOutput(catchUp({ GH_FAKE_RUNS: runsJson([RUN_PUSH(fx.a)]), GITHUB_REF: "refs/heads/other" }));
+});
+
+test("plan: mode=folder uploads exactly the tracked images of the named folder and is not a base", t => {
+  const fx = fixture(t);
+  installScript(fx);
+  const folder = env => runPlan(fx, { GITHUB_EVENT_NAME: "workflow_dispatch", MODE_INPUT: "folder", GH_FAKE_RUNS: runsJson([RUN_PUSH(fx.a)]), ...env });
+  const r = folder({ FOLDER_INPUT: FOLDER });
   assert.equal(r.status, 0, r.stdout + r.stderr);
-  assert.match(r.stdout, /R2 plan: mode=folder images_to_check=2 \(manual run: folder /);
-  assert.deepEqual(names(r.list), [`${FOLDER}/keep.png`, `${FOLDER}/q 1(a).png`].sort());
-  const tooMany = runPlan(fx, { GITHUB_EVENT_NAME: "workflow_dispatch", FOLDER_INPUT: FOLDER, R2_MAX_IMAGES_FOLDER: "1" });
-  assert.notEqual(tooMany.status, 0);
-  assert.equal(fs.existsSync(tooMany.list), false);
+  assert.match(r.stdout, /R2 plan: mode=folder images_to_check=2 \(manual run: folder .*never used as a base\)/);
+  assert.deepEqual(names(r.list), [`${FOLDER}/keep.png`, `${FOLDER}/q 1(a).png`].sort(), "the push base is not consulted for a folder run");
+  assert.match(r.output, /mode=folder\ncount=2\n/);
+  noOutput(folder({ FOLDER_INPUT: FOLDER, R2_MAX_IMAGES_FOLDER: "1" }));
 });
 
-test("plan: rejected folder inputs fail without a list and never run injected shell text", t => {
+test("plan: mode=folder with an empty or rejected folder, and an unknown mode, fail without a list; input text never runs as shell", t => {
   const fx = fixture(t);
   installScript(fx);
+  const run = env => runPlan(fx, { GITHUB_EVENT_NAME: "workflow_dispatch", GH_FAKE_RUNS: runsJson([RUN_PUSH(fx.a)]), ...env });
   for (const folder of ["", "..", "../other", "other/..", "/etc", "C:\\x", FOLDER + "/", "a/b", " " + FOLDER, ".hidden", "no-such-folder", `x"; touch pwned; "`, "$(touch pwned)"]) {
-    const r = runPlan(fx, { GITHUB_EVENT_NAME: "workflow_dispatch", FOLDER_INPUT: folder });
-    assert.notEqual(r.status, 0, JSON.stringify(folder));
-    assert.equal(fs.existsSync(r.list), false, JSON.stringify(folder));
+    const r = run({ MODE_INPUT: "folder", FOLDER_INPUT: folder });
+    noOutput(r);
     assert.equal(fs.existsSync(path.join(fx.dir, "pwned")), false, "input is data, not shell");
+  }
+  for (const mode of ["", "full", "folder; touch pwned"]) {
+    noOutput(run({ MODE_INPUT: mode, FOLDER_INPUT: FOLDER }));
+    assert.equal(fs.existsSync(path.join(fx.dir, "pwned")), false);
   }
 });
 
