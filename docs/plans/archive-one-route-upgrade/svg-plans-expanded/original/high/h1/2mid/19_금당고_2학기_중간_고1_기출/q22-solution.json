@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "4/3",
+          "-1/3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "J",
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "m",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 가지가 (1,1)에서 이어지고 y=x를 기준으로 서로 대칭이다. x<1인 가지와 x≥1인 가지가 역관계임을 비교한다. 공통 경계점은 포함되며 g의 최종 함수값은 표시하지 않는다.",
+  "accessibilityDescription": "두 가지가 (1,1)에서 이어지고 y=x를 기준으로 서로 대칭이다. x<1인 가지와 x≥1인 가지가 역관계임을 비교한다. 공통 경계점은 포함되며 g의 최종 함수값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형 2&gt; 함수 $f(x)=\\begin{cases}-3x+4 &(x<1)\\\\-\\dfrac13x+\\dfrac43 &(x\\ge1)\\end{cases}$와 함수 $g(x)$가 모든 실수 $x$에 대하여 $g(f^{-1}(x))+g(f(x))=\\dfrac32x+\\dfrac72$를 만족시킬 때, $g(3)$의 값을 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "f(f(x))=x 양쪽구간과x1에서확인. f역=f, x1/3대입하면2g3=4로g3=2. 도식에는g값노출없음.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 가지가 (1,1)에서 이어지고 y=x를 기준으로 서로 대칭이다. x<1인 가지와 x≥1인 가지가 역관계임을 비교한다. 공통 경계점은 포함되며 g의 최종 함수값은 표시하지 않는다."
+  ]
+}

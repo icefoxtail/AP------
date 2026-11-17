@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SSS_POSITIVE_SIDE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": true
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "l1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l3",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H3",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "l3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenCA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sPH1",
+      "refs": [
+        "P",
+        "H1"
+      ]
+    },
+    {
+      "id": "sPH2",
+      "refs": [
+        "P",
+        "H2"
+      ]
+    },
+    {
+      "id": "sPH3",
+      "refs": [
+        "P",
+        "H3"
+      ]
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenAB",
+      "ownerSegment": "sAB",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenBC",
+      "ownerSegment": "sBC",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenCA",
+      "ownerSegment": "sCA",
+      "prefix": ""
+    }
+  ],
+  "caption": "AB=5,BC=12인 직각삼각형을 좌표 정규화해 그린다. P는 위치를 보여 주기 위한 내부점 예시(무게중심)이며 최솟값을 만드는 점으로 정한 것이 아니다. 세 수선거리 d1=PH1,d2=PH2,d3=PH3와 PA,PB,PC로 나뉜 세 삼각형을 비교하면 5d1+12d2+13d3=60이다. 등호는 별도로 P를 내심에 두어 세 거리가 모두 2일 때 실현된다. 최종 목적식 값은 숨긴다.",
+  "accessibilityDescription": "AB=5,BC=12인 직각삼각형을 좌표 정규화해 그린다. P는 위치를 보여 주기 위한 내부점 예시(무게중심)이며 최솟값을 만드는 점으로 정한 것이 아니다. 세 수선거리 d1=PH1,d2=PH2,d3=PH3와 PA,PB,PC로 나뉜 세 삼각형을 비교하면 5d1+12d2+13d3=60이다. 등호는 별도로 P를 내심에 두어 세 거리가 모두 2일 때 실현된다. 최종 목적식 값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형 1&gt; 아래의 그림과 같이 $\\angle B=90^\\circ$이고 $\\overline{AB}=5,\\;\\overline{BC}=12$인 직각삼각형의 내부의 점 $P$에서 세 변 $AB,BC,CA$에 내린 수선의 발을 각각 $H_1,H_2,H_3$이라 하자. $5\\overline{PH_1}^{\\,2}+12\\overline{PH_2}^{\\,2}+13\\overline{PH_3}^{\\,2}$의 최솟값을 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "CA13,면적30. 가중거리합60와가중치합30에서 Cauchy 또는 제곱완성으로 목적식≥120. 내접원반지름2에서등호실현. 기존그림의세수선/내심조건을보존하고세부분삼각형보조선을추가.",
+      "mappedTo": [
+        "B",
+        "C",
+        "A",
+        "P",
+        "l1",
+        "H1",
+        "l2",
+        "H2",
+        "l3",
+        "H3",
+        "lenAB",
+        "lenBC",
+        "lenCA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB=5,BC=12인 직각삼각형을 좌표 정규화해 그린다. P는 위치를 보여 주기 위한 내부점 예시(무게중심)이며 최솟값을 만드는 점으로 정한 것이 아니다. 세 수선거리 d1=PH1,d2=PH2,d3=PH3와 PA,PB,PC로 나뉜 세 삼각형을 비교하면 5d1+12d2+13d3=60이다. 등호는 별도로 P를 내심에 두어 세 거리가 모두 2일 때 실현된다. 최종 목적식 값은 숨긴다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rH1",
+      "refs": [
+        "P",
+        "H1",
+        "A"
+      ]
+    },
+    {
+      "id": "rH2",
+      "refs": [
+        "P",
+        "H2",
+        "C"
+      ]
+    },
+    {
+      "id": "rH3",
+      "refs": [
+        "P",
+        "H3",
+        "A"
+      ]
+    }
+  ]
+}

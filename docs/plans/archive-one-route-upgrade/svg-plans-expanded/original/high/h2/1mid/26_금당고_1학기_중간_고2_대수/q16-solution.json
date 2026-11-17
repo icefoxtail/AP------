@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "H"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "곡선 위 점에서 가로축에 수선을 내려 탄젠트를 세로길이/가로길이로 읽는다. 제1사분면 조건과 y²=x를 함께 사용하며 구하는 세로좌표는 쓰지 않는다.",
+  "accessibilityDescription": "곡선 위 점에서 가로축에 수선을 내려 탄젠트를 세로길이/가로길이로 읽는다. 제1사분면 조건과 y²=x를 함께 사용하며 구하는 세로좌표는 쓰지 않는다.",
+  "newVisualInformation": [
+    "곡선 위 점에서 가로축에 수선을 내려 탄젠트를 세로길이/가로길이로 읽는다. 제1사분면 조건과 y²=x를 함께 사용하며 구하는 세로좌표는 쓰지 않는다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "H",
+          "O",
+          "P"
+        ],
+        "label": "θ"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 $y=\\sqrt{x}\\ (x>0)$ 위의 점 $P$에 대하여 동경 $OP$가 나타내는 각의 크기를 $\\theta$라 하자. $3\\cos^2\\theta-\\sin^2\\theta=2$일 때, 점 $P$의 $y$좌표의 값은? (단, $O$는 원점이고, $x$축의 양의 방향을 시초선으로 한다.) [5.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "3cos²−sin²2로cos√3/2,sin1/2. tan1/√3, x3는중간값. P의최종y√3는좌표라벨숨김.",
+      "mappedTo": "mathPlan"
+    }
+  ]
+}

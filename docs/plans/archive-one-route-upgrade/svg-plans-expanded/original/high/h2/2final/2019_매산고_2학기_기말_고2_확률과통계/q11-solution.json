@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "95%",
+        "pieces": [
+          {
+            "lo": {
+              "value": "31.02",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "32.98",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "99%",
+        "pieces": [
+          {
+            "lo": {
+              "value": "30.71",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "33.29",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "두 신뢰구간은 중심32가 같고 표준오차는1/2이다. 각각의 양쪽 오차를 비교하고 구간 폭을 구하되 두 폭의 음의 합은 표시하지 않는다.",
+  "accessibilityDescription": "두 신뢰구간은 중심32가 같고 표준오차는1/2이다. 각각의 양쪽 오차를 비교하고 구간 폭을 구하되 두 폭의 음의 합은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "표준편차가 4인 정규분포를 따르는 모집단에서 크기가 64인 표본을 임의추출하여 구한 표본평균이 32일 때,\n모집단 평균 $m$에 대한 신뢰도 95%와 99%의 신뢰구간을 각각 구하면 $a\\le m\\le b$와 $c\\le m\\le d$이다. 이때 $a-b+c-d$의 값을 구하면? (단, $Z$가 표준정규분포를 따르는 확률변수일 때 $P(|Z|\\le1.96)=0.95$, $P(|Z|\\le2.58)=0.99$로 계산한다.) (4.9점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "표본평균의 표준편차는\n$\\dfrac4{\\sqrt{64}}=\\dfrac12$이다.\n신뢰도 95%의 신뢰구간은\n$32\\pm1.96\\cdot\\dfrac12=32\\pm0.98$,\n따라서 $a=31.02$, $b=32.98$이다.\n신뢰도 99%의 신뢰구간은\n$32\\pm2.58\\cdot\\dfrac12=32\\pm1.29$,\n따라서 $c=30.71$, $d=33.29$이다.\n그러므로\n$a-b+c-d=(31.02-32.98)+(30.71-33.29)$\n$=-1.96-2.58=-4.54$이다.\n정답은 ①이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 신뢰구간은 중심32가 같고 표준오차는1/2이다. 각각의 양쪽 오차를 비교하고 구간 폭을 구하되 두 폭의 음의 합은 표시하지 않는다."
+  ]
+}

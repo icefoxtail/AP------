@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SSS_POSITIVE_SIDE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": true
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "MIDPOINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "MIDPOINT",
+        "inputs": [
+          "F",
+          "G"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "MIDPOINT",
+        "inputs": [
+          "G",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "MIDPOINT",
+        "inputs": [
+          "H",
+          "E"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenEF",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenIJ",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "I",
+          "J"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sIJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "sJK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "sKL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "sLI",
+      "refs": [
+        "L",
+        "I"
+      ]
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenEF",
+      "ownerSegment": "sEF",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenIJ",
+      "ownerSegment": "sIJ",
+      "prefix": ""
+    }
+  ],
+  "caption": "원래 변4인 정사각형에서 중점을 두 번 연결한다. EFGH는 색칠 부분의 바깥 경계, IJKL은 안쪽 흰 부분의 경계이다. 두 경계를 모두 세어야 한다. 대표 변의 중간길이만 표시하고 둘레의 최종 합은 숨긴다.",
+  "accessibilityDescription": "원래 변4인 정사각형에서 중점을 두 번 연결한다. EFGH는 색칠 부분의 바깥 경계, IJKL은 안쪽 흰 부분의 경계이다. 두 경계를 모두 세어야 한다. 대표 변의 중간길이만 표시하고 둘레의 최종 합은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $4$인 정사각형 안에 각 변의 중점을 연결한 정사각형을 연속하여 $2$개 그렸을 때, 색칠한 부분의 둘레의 길이는? [3점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q12-problem-v3.svg\" alt=\"한 변이 4인 바깥 정사각형에서 중점을 이어 주황 정사각형을 만들었다. 안쪽 하얀 정사각형을 빼고 네 주황 부분이 색칠되어 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "중간 마름모의 한 변2√2,안쪽정사각형의한변2. 색칠된영역의 바깥 경계8√2와 안쪽 경계8의합8+8√2,①. 네삼각형이점에서만만나므로 같은결과.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "lenEF",
+        "lenIJ"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 변4인 정사각형에서 중점을 두 번 연결한다. EFGH는 색칠 부분의 바깥 경계, IJKL은 안쪽 흰 부분의 경계이다. 두 경계를 모두 세어야 한다. 대표 변의 중간길이만 표시하고 둘레의 최종 합은 숨긴다."
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "16"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "16"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sIA",
+      "refs": [
+        "I",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "16",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sEF",
+        "text": "10+2x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sFG",
+        "text": "16+2x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "sIA",
+        "text": "x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 560
+  },
+  "caption": "사진틀의 폭을 x로 놓아 전체 가로와 세로를 나타낸다. 배치는 x=2인 설명용 예시이며 넓이 56 조건의 정답 배치가 아니다. 바깥 직사각형 넓이에서 안쪽 사진 넓이를 뺀다.",
+  "accessibilityDescription": "사진틀의 폭을 x로 놓아 전체 가로와 세로를 나타낸다. 배치는 x=2인 설명용 예시이며 넓이 56 조건의 정답 배치가 아니다. 바깥 직사각형 넓이에서 안쪽 사진 넓이를 뺀다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 가로의 길이와 세로의 길이가 각각 $10\\text{ cm}$, $16\\text{ cm}$인 직사각형 모양의 사진이 있다. 다음 그림과 같이 폭이 일정하고, 넓이가 $56\\text{ cm}^2$인 사진틀을 만들려면 사진틀의 폭을 몇 $\\text{cm}$로 해야 하는가? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q7-problem-visual-v2.svg\" alt=\"안쪽 사진은 가로 10 cm, 세로 16 cm인 직사각형이다. 둘레를 둘러싼 주황색 사진틀의 폭은 네 변에서 모두 같다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "사진틀 폭 x>0. 전체 가로10+2x, 세로16+2x이므로 (10+2x)(16+2x)−160=56. (x+14)(x−1)=0, x1. 새 도형은 실제 답이 아닌 x2 배치 예시이며 폭과 전체변의 대수식만 표시한다. A 원점은 임의 평행이동 게이지이며 원문이 지정한 좌표가 아니다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "사진틀의 폭을 x로 놓아 전체 가로와 세로를 나타낸다. 배치는 x=2인 설명용 예시이며 넓이 56 조건의 정답 배치가 아니다. 바깥 직사각형 넓이에서 안쪽 사진 넓이를 뺀다."
+  ]
+}

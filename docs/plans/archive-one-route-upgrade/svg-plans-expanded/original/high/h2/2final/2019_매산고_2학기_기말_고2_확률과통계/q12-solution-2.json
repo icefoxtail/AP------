@@ -1,0 +1,42 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1",
+      "0",
+      "1"
+    ],
+    "shades": [
+      {
+        "from": 0,
+        "to": null,
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "평균70과 표준오차4를 적용해66을 표준화하면−1이다. 구하는 확률은 이 경계 오른쪽 넓이이며 중앙의 절반과 추가 부분을 표에서 읽는다. 최종 확률값은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정규분포 $N(40,8^2)$을 따르는 모집단에서 크기가 16인 표본을 임의추출하여 구한 표본평균을 $\\overline X$, 정규분포 $N(70,\\sigma^2)$을 따르는 모집단에서 크기가 25인 표본을 임의추출하여 구한 표본평균을 $\\overline Y$라 하자. $P(\\overline X\\le43)+P(\\overline Y\\le64)=1$일 때, $P(\\overline Y\\ge66)$의 값을 표준정규분포표를 이용하여 구한 것은? (5.1점)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>1</td><td>0.3413</td></tr><tr><td>1.2</td><td>0.3849</td></tr><tr><td>1.4</td><td>0.4192</td></tr><tr><td>1.6</td><td>0.4452</td></tr></tbody></table></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "먼저 $\\overline X$의 표준편차는\n$\\dfrac8{\\sqrt{16}}=2$이다.\n따라서\n$P(\\overline X\\le43)=P\\left(Z\\le\\dfrac{43-40}{2}\\right)=P(Z\\le1.5)$이다.\n주어진 조건에서\n$P(\\overline Y\\le64)=1-P(Z\\le1.5)$\n$=P(Z\\ge1.5)=P(Z\\le-1.5)$이다.\n$\\overline Y$의 평균은 70, 표준편차는 $\\dfrac{\\sigma}{\\sqrt{25}}=\\dfrac{\\sigma}{5}$이므로\n$\\dfrac{64-70}{\\sigma/5}=-1.5$,\n$\\sigma=20$이다.\n따라서 $\\overline Y$의 표준편차는 4이고,\n$P(\\overline Y\\ge66)=P\\left(Z\\ge\\dfrac{66-70}{4}\\right)$\n$=P(Z\\ge-1)=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413=0.8413$이다.\n그러므로 정답은 ①이다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균70과 표준오차4를 적용해66을 표준화하면−1이다. 구하는 확률은 이 경계 오른쪽 넓이이며 중앙의 절반과 추가 부분을 표에서 읽는다. 최종 확률값은 쓰지 않는다."
+  ]
+}

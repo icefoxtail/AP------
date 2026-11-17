@@ -1,0 +1,71 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "ratePi": "1/2",
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "4",
+        "8"
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      4.0,
+      8
+    ],
+    "viewport": [
+      4.0,
+      8,
+      -1.3,
+      1.2
+    ],
+    "referenceLines": [
+      {
+        "id": "line",
+        "slope": "-1/4",
+        "intercept": "1",
+        "intersectionCount": 2,
+        "endCrossing": false
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "8"
+      ],
+      "y": [
+        "-1",
+        "0"
+      ]
+    },
+    "keyPoints": true
+  },
+  "caption": "n=8인 비교 사례이다. 제4사분면의 교점 후보는 n/2<x≤n에만 있으므로 왼쪽은 제외하고 오른쪽은 포함한다. 완전한 음의 반주기 안에서 직선과의 교점을 세어 앞 사례와 비교한다. 두 사례만으로 전체 자연수를 분류한 것으로 보지 않으며 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=-\\frac{2}{n}x+1$과 함수 $y=\\sin\\left(\\frac{\\pi x}{2}\\right)$의 그래프가 제4사분면에서 만나는 서로 다른 점이 $3$개가 되도록 하는 모든 자연수 $n$의 값의 합은? (4.9점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원문sin(πx/2) ratePi1/2그대로. n/2<x≤n, 음반주기(4j+2,4j+4). n7말단x7교점및직전내부교점이둘다있고총3; n8완전반주기에서2. 최종모든n의합46미표시. 일반분류는원해설논증유지.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "accessibilityDescription": "n=8인 비교 사례이다. 제4사분면의 교점 후보는 n/2<x≤n에만 있으므로 왼쪽은 제외하고 오른쪽은 포함한다. 완전한 음의 반주기 안에서 직선과의 교점을 세어 앞 사례와 비교한다. 두 사례만으로 전체 자연수를 분류한 것으로 보지 않으며 최종 합은 쓰지 않는다.",
+  "newVisualInformation": [
+    "n=8인 비교 사례이다. 제4사분면의 교점 후보는 n/2<x≤n에만 있으므로 왼쪽은 제외하고 오른쪽은 포함한다. 완전한 음의 반주기 안에서 직선과의 교점을 세어 앞 사례와 비교한다. 두 사례만으로 전체 자연수를 분류한 것으로 보지 않으며 최종 합은 쓰지 않는다."
+  ]
+}

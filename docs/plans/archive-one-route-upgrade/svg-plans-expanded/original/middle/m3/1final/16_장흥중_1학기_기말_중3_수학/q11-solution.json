@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f(x)"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -4,
+        0,
+        2
+      ],
+      "y": [
+        0,
+        2
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "x": "-4",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "P",
+          "x": "-4",
+          "y": "8",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "TP",
+          "from": "T",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "원점과 주어진 점 (2,2)로 계수를 정한 다음, x=-4에서 곡선까지 수직으로 올라가 함수값을 읽는다. 구하는 높이의 숫자는 표시하지 않는다.",
+  "accessibilityDescription": "원점과 주어진 점 (2,2)로 계수를 정한 다음, x=-4에서 곡선까지 수직으로 올라가 함수값을 읽는다. 구하는 높이의 숫자는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 이차함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, $f(-4)$를 구하면? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q11-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선 y=f(x)는 원점을 꼭짓점으로 한다. 가로 2와 세로 2를 점선으로 이으면 곡선 위 한 점을 읽을 수 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원점 꼭짓점, (2,2)를 지나므로 f(x)=x²/2. f(−4)=8이지만 새 그림에는 그 높이 숫자를 표시하지 않는다. x−4에서 곡선까지 수직 보조선을 추가해 함수값 읽기 경로를 보여준다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원점과 주어진 점 (2,2)로 계수를 정한 다음, x=-4에서 곡선까지 수직으로 올라가 함수값을 읽는다. 구하는 높이의 숫자는 표시하지 않는다."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-6",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2,
+      5,
+      -3,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "3/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "Q"
+    }
+  },
+  "caption": "A=log₂a와t=log₂x로 치환한 이차식의 A=2인 예시이다. 모든 t에서 0 이상이려면 최저점이 가로축 아래로 내려가지 않아야 한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 로그부등식 $\\left(\\log_2\\frac xa\\right)\\left(\\log_2\\frac{x^2}a\\right)+2\\ge0$이 모든 양의 실수 $x$에 대하여 성립할 때, 양의 실수 $a$의 최솟값을 $m$이라 하자. 이때 $m$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "2t²−3At+A²+2;최솟값(16−A²)/8. A2와5 비교,최종A경계±4/a최소1/16숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A=log₂a와t=log₂x로 치환한 이차식의 A=2인 예시이다. 모든 t에서 0 이상이려면 최저점이 가로축 아래로 내려가지 않아야 한다."
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SSS_POSITIVE_SIDE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": true
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenCD",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenDE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenEA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "E",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenAB",
+      "ownerSegment": "sAB",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenBC",
+      "ownerSegment": "sBC",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenCD",
+      "ownerSegment": "sCD",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenDE",
+      "ownerSegment": "sDE",
+      "prefix": ""
+    },
+    {
+      "nodeId": "lenEA",
+      "ownerSegment": "sEA",
+      "prefix": ""
+    }
+  ],
+  "caption": "세 번째 소문항의 바깥 윤곽만 분리한 보조도이다. A는 위 꼭짓점이며 시계방향으로 B,C,D,E를 붙였다. 칠교의 맞닿은 내부선은 둘레에 포함하지 않는다. 원래 한 변4와 단위모눈에서 얻은 각 외곽변만 표시하고 그 합 및 앞 소문항의 조각번호·둘레값은 숨긴다.",
+  "accessibilityDescription": "세 번째 소문항의 바깥 윤곽만 분리한 보조도이다. A는 위 꼭짓점이며 시계방향으로 B,C,D,E를 붙였다. 칠교의 맞닿은 내부선은 둘레에 포함하지 않는다. 원래 한 변4와 단위모눈에서 얻은 각 외곽변만 표시하고 그 합 및 앞 소문항의 조각번호·둘레값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형 2>\n오른쪽 그림과 같이 한 변의 길이가 $4$인 정사각형의 칠교판이 있다. [6점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q24-1-problem-v3.svg\" alt=\"한 변이 4인 정사각형 안에 일곱 칠교 조각이 맞닿아 있다. 각 조각 안에 ①부터 ⑦까지 번호를 적었다.\" style=\"display: block; width: min(100%, 440px); height: auto; margin: 0 auto;\">\n(1) $7$개의 칠교 조각 중 서로 합동이 아니면서 둘레의 길이가 같은 것을 구하여 번호를 써라. [2점]\n(2) (1)에서 조각의 둘레의 길이를 구하여라. [2점]\n(3) 칠교를 사용하여 만든 오른쪽 모양의 둘레의 길이를 구하여라. [2점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q24-2-problem-v3.svg\" alt=\"왼쪽 위에서 오른쪽으로 내려오는 경사진 변이 있다. 일곱 조각 사이의 선을 표시하고 바깥 윤곽을 굵게 이었다.\" style=\"display: block; width: min(100%, 440px); height: auto; margin: 0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "원본 단위모눈에서①②의둘레4+4√2,③⑤는2+2√2,④는4√2,⑥⑦은4+2√2. 합동아닌동일둘레는⑥⑦. 재배치외곽의길이는3√2,4,2,√2,6이므로12+4√2. 실제 SVG좌표를길이척도74px=1로읽고원래정사각형4와각조각합동으로확인했다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "lenAB",
+        "lenBC",
+        "lenCD",
+        "lenDE",
+        "lenEA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 번째 소문항의 바깥 윤곽만 분리한 보조도이다. A는 위 꼭짓점이며 시계방향으로 B,C,D,E를 붙였다. 칠교의 맞닿은 내부선은 둘레에 포함하지 않는다. 원래 한 변4와 단위모눈에서 얻은 각 외곽변만 표시하고 그 합 및 앞 소문항의 조각번호·둘레값은 숨긴다."
+  ]
+}
