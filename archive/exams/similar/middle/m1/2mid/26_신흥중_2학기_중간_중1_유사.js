@@ -72,7 +72,7 @@ window.questionBank = [
     "image": "assets/images/26_신흥중_2학기_중간_중1_유사/q02.svg",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
-    "solution": "두 직선 $l$과 $m$이 평행하므로 평행선에서 엇각의 크기는 서로 같다.\n왼쪽 횡단선에서 직선 $l$과의 각 $65^\\circ$와 $\\angle x$는 서로 엇각의 위치에 있으므로 $\\angle x = 65^\\circ$이다.\n오른쪽 횡단선에서 직선 $l$과의 각 $55^\\circ$와 $\\angle y$는 서로 엇각의 위치에 있으므로 $\\angle y = 55^\\circ$이다.\n따라서 구하는 각의 합은\n$$\\angle x + \\angle y = 65^\\circ + 55^\\circ = 120^\\circ$$\n이므로 정답은 ②이다.",
+    "solution": "두 직선 $l$과 $m$이 평행하므로 평행선에서 동위각의 크기는 서로 같다.\n왼쪽 횡단선에서 직선 $l$과의 각 $65^\\circ$와 $\\angle x$는 서로 동위각의 위치에 있으므로 $\\angle x = 65^\\circ$이다.\n오른쪽 횡단선에서 직선 $l$과의 각 $55^\\circ$와 $\\angle y$는 서로 동위각의 위치에 있으므로 $\\angle y = 55^\\circ$이다.\n따라서 구하는 각의 합은\n$$\\angle x + \\angle y = 65^\\circ + 55^\\circ = 120^\\circ$$\n이므로 정답은 ②이다.",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",

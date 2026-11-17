@@ -1082,7 +1082,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다음 중 가장 먼저 계산하여야 할 곳은?",
+    "content": "다음 식에서 가장 먼저 계산하여야 할 곳은?\n$5$ ① $+\\ 4$ ② $\\times\\left\\{6$ ③ $-\\left(1$ ④ $-\\dfrac{1}{3}\\right)\\times 2\\right\\}$ ⑤ $\\div 3$",
     "choices": [
       "①",
       "②",
@@ -1604,7 +1604,7 @@ window.questionBank = [
       "$(-12)\\div(-4)$",
       "$3\\div(-1)^3$",
       "$(-9)\\div(+3)$",
-      "$(-2)\\div\\left(-\\dfrac23\\right)\\times\\left(-\\dfrac94\\right)$"
+      "$(-2)\\div\\left(-\\dfrac23\\right)\\times(-1)$"
     ],
     "answer": "②",
     "solution": "[키포인트] 각 보기의 계산 결과를 비교한다.\n조건 정리: 나머지 넷과 같은 값이 무엇인지 찾는다.\n풀이 방향: 곱셈과 나눗셈을 차례로 계산한다.\n정석 풀이: ①, ③, ④, ⑤는 $-3$이고, ②는 $3$이다. 따라서 다른 하나는 ②이다.\n따라서 정답은 ②이다.",

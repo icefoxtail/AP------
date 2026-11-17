@@ -570,9 +570,9 @@ window.questionBank = [
     "choices": [
       "(가) $90^\\circ$",
       "(나) $OB$",
-      "(다) $OM$",
+      "(다) 공통",
       "(라) ASA 합동",
-      "(마) $AM=BM$"
+      "(마) $BM$"
     ],
     "answer": "④",
     "solution": "$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = 90^\\circ$ (가)\n$OA = OB$ (반지름) (나)\n$OM$은 공통 (다)\n\n빗변의 길이와 다른 한 변의 길이가 각각 같으므로\n$\\triangle OAM \\equiv \\triangle OBM$ (RHS 합동)\n\n따라서 (라)에 ASA 합동이라 한 것은 옳지 않다.\n정답은 ④이다.",
@@ -837,7 +837,7 @@ window.questionBank = [
       "$\\dfrac{\\sqrt{6}+\\sqrt{2}}{8}$"
     ],
     "answer": "③",
-    "solution": "직각삼각형 $AEF$에서 $AF = 8, \\angle EAF = 30^\\circ$이므로\n$AE = 8\\cos 30^\\circ = 4\\sqrt{3}, EF = 8\\sin 30^\\circ = 4$\n\n$AE$가 세로변과 $45^\\circ$를 이루므로 가로 방향 투영은\n$AE\\sin 45^\\circ = 4\\sqrt{3} \\times \\dfrac{\\sqrt{2}}{2} = 2\\sqrt{6}$\n\n$EF \\perp AE$이므로 $EF$의 가로 방향 투영은\n$EF\\cos 45^\\circ = 4 \\times \\dfrac{\\sqrt{2}}{2} = 2\\sqrt{2}$\n\n$AF\\sin 75^\\circ = 2\\sqrt{6} + 2\\sqrt{2}$\n$8\\sin 75^\\circ = 2\\sqrt{6} + 2\\sqrt{2}$\n$\\sin 75^\\circ = \\dfrac{2\\sqrt{6} + 2\\sqrt{2}}{8} = \\dfrac{\\sqrt{6} + \\sqrt{2}}{4}$\n\n정답은 ③이다.",
+    "solution": "$75^\\circ = 45^\\circ + 30^\\circ$이므로 삼각함수의 덧셈정리를 이용하면\n$\\sin 75^\\circ = \\sin(45^\\circ + 30^\\circ) = \\sin 45^\\circ \\cos 30^\\circ + \\cos 45^\\circ \\sin 30^\\circ$\n$= \\dfrac{\\sqrt{2}}{2} \\times \\dfrac{\\sqrt{3}}{2} + \\dfrac{\\sqrt{2}}{2} \\times \\dfrac{1}{2} = \\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$\n정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q20-quality-v4.svg",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q20-solution.svg",
     "solutionImageAlt": "직각삼각형 투영과 sin 75도",

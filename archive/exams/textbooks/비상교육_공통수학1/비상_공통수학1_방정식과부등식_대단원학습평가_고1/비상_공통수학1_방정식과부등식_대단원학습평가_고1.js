@@ -506,9 +506,9 @@ window.questionBank = [
       "대단원 학습 평가"
     ],
     "wide": false,
-    "content": "연립부등식 $\\begin{cases} x^2+x-6>0 \\\\ x^2-(a+2)x+3a-3\\le0 \\end{cases}$의 해가 $2<x<3$이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
+    "content": "연립부등식 $\\begin{cases} x^2+x-6>0 \\\\ x^2-(a+2)x+3a-3\\le0 \\end{cases}$의 해가 $2<x\\le3$이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-2\\le a\\le3$",
+    "solution": "$x^2+x-6>0$에서 $(x+3)(x-2)>0$이므로 $x<-3$ 또는 $x>2$이다. $x^2-(a+2)x+3a-3\\le0$에서 $(x-3)\\{x-(a-1)\\}\\le0$이다. 연립부등식의 해가 $2<x\\le3$이 되려면 둘째 부등식의 해가 $a-1\\le x\\le3$이고 $-3\\le a-1\\le2$이어야 한다. 따라서 $-2\\le a\\le3$이다."
   }
 ];

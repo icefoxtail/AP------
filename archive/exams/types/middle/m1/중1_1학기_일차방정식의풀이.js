@@ -716,7 +716,7 @@ window.questionBank = [
       "방정식풀이"
     ],
     "wide": false,
-    "content": "$$x+1=a, \\quad \\frac{x}{3}-\\frac{x-1}{2}=1$$",
+    "content": "$$x+1=a, \\quad \\frac{x}{3}-\\frac{x-1}{2}=1$$\n두 방정식의 해가 서로 같을 때, 상수 $a$의 값은?",
     "choices": [
       "$-3$",
       "$-2$",
@@ -843,7 +843,7 @@ window.questionBank = [
       "방정식풀이"
     ],
     "wide": false,
-    "content": "$$6-\\frac{x}{3}=\\frac{x}{2}-14 \\qquad ax=5-a$$",
+    "content": "$$6-\\frac{x}{3}=\\frac{x}{2}-14 \\qquad ax=5-a$$\n두 방정식의 해가 서로 같을 때, 상수 $a$의 값은?",
     "choices": [
       "$-\\dfrac{1}{5}$",
       "$\\dfrac{1}{5}$",
@@ -935,7 +935,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "두 방정식 $2x-3=5$, $\\dfrac{ay-2}{4}=-\\dfrac{1}{2}$의 해가 같다고 할 때, $a$의 값은?",
+    "content": "두 방정식 $2x-3=5$, $\\dfrac{ay-2}{4}=\\dfrac{1}{2}$의 해가 같다고 할 때, $a$의 값은?",
     "choices": [
       "$4$",
       "$3$",
@@ -943,8 +943,8 @@ window.questionBank = [
       "$1$",
       "$0$"
     ],
-    "answer": "⑤",
-    "solution": "[키포인트] $2x-3=5$ → $x=4$\n$y=4$ 대입: $\\dfrac{4a-2}{4}=-\\dfrac{1}{2}$ → $4a-2=-2$ → $a=0$\n따라서 정답은 ⑤이다.",
+    "answer": "④",
+    "solution": "[키포인트] $2x-3=5$ → $x=4$\n$y=4$ 대입: $\\dfrac{4a-2}{4}=\\dfrac{1}{2}$ → $4a-2=2$ → $a=1$\n따라서 정답은 ④이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
