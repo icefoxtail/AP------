@@ -12,6 +12,7 @@ const existingVector = require('./existing-registered-vector-continuity.cjs');
 const originalSourceError = require('./original-source-error-hold.cjs');
 const m1Problem = require('./m1s2-problem-renderer-continuity.cjs');
 const m3Layout = require('./m3s2-layout-continuity.cjs');
+const q5CompleteGiven = require('./m3-e052-q5-complete-given-continuity.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
@@ -26,7 +27,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('./original-source-error-hold.cjs'),require.resolve('./m1s2-problem-renderer-continuity.cjs'),require.resolve('./m1s2-problem-renderer-ui.cjs'),require.resolve('./m3s2-layout-continuity.cjs')].map(p=>fs.readFileSync(p))));
+const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-original-text-solution3.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('../m2s1-text3-solution-fragments.cjs'),require.resolve('./existing-registered-vector-svg7-ui.cjs'),require.resolve('./existing-vector-svg-index-continuity.cjs'),require.resolve('./existing-registered-vector-svg7-derived-continuity.cjs'),require.resolve('../../archive/svg-accessibility.js'),require.resolve('./original-source-error-hold.cjs'),require.resolve('./m1s2-problem-renderer-continuity.cjs'),require.resolve('./m1s2-problem-renderer-ui.cjs'),require.resolve('./m3s2-layout-continuity.cjs'),require.resolve('./m3-e052-q5-complete-given-continuity.cjs'),q5CompleteGiven.worker].map(p=>fs.readFileSync(p))));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -188,6 +189,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
   const vectorContinuities=existingVector.collect(root,{safe,walk,sha});
   const m1ProblemContinuities=m1Problem.collect(root,{safe,walk,sha});
   const m3LayoutContinuities=m3Layout.collect(root,{safe,walk,sha});
+  const q5CompleteGivenContinuities=q5CompleteGiven.collect(root,{safe,walk,sha});
   const records=[], files=[], pending=[], observed=[], stats={revalidatedFiles:0,reusedFiles:0};
   const inputs=walk(safe(root,INPUT.slice(0,-1)));
   for(const full of inputs){
@@ -200,6 +202,9 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
     const oldM3LayoutClaims=(oldFiles.get(rel)?.m3LayoutContinuityClaims||[]).concat((previous?.records||[]).filter(r=>r.compactPath===rel&&
       (r.sourceBinding===m3Layout.BINDING||own(r,'layoutContinuityRef'))).map(r=>({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,...r.layoutContinuityRef})));
     if(oldM3LayoutClaims.length)file.m3LayoutContinuityClaims=oldM3LayoutClaims;
+    const oldQ5Claims=(oldFiles.get(rel)?.q5CompleteGivenContinuityClaims||[]).concat((previous?.records||[]).filter(r=>r.compactPath===rel&&
+      (r.sourceBinding===q5CompleteGiven.BINDING||own(r,'q5CompleteGivenContinuityRef'))).map(r=>({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,...r.q5CompleteGivenContinuityRef})));
+    if(oldQ5Claims.length)file.q5CompleteGivenContinuityClaims=oldQ5Claims;
     const fail=(reason,ordinal=null,detail={})=>pending.push({path:rel,...(ordinal==null?{}:{ordinal}),reason,...detail});
     try{
       if(!rel.endsWith('.4slot.json'))throw Error('UNSUPPORTED_INPUT_FILE');
@@ -217,7 +222,8 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       const vectorEntries=vectorContinuities.get(d.sourceArchiveFile)||[],vectorDigests=vectorEntries.flatMap(e=>e.digests);
       const m1Entries=m1ProblemContinuities.get(d.sourceArchiveFile)||[],m1Digests=m1Entries.flatMap(e=>e.digests);
       const m3LayoutEntries=m3LayoutContinuities.get(d.sourceArchiveFile)||[],m3LayoutDigests=m3LayoutEntries.flatMap(e=>e.digests);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,scope?.contractSha256||null,rendererScope?.evidenceDigests||null,continuityDigests,vectorDigests,m1Digests,m3LayoutDigests]));
+      const q5Entries=q5CompleteGivenContinuities.get(d.sourceArchiveFile)||[],q5Digests=q5Entries.flatMap(e=>e.digests);
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,scope?.contractSha256||null,rendererScope?.evidenceDigests||null,continuityDigests,vectorDigests,m1Digests,m3LayoutDigests,q5Digests]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       if(scope)file={...file,scope:partial.SCOPE,expectedQuestionCount:bank.length,selectedCount:scope.selected.length,unsubmittedCount:scope.unsubmitted.length,completeExam:false};
@@ -230,6 +236,9 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       for(const [p,h]of vectorDigests)if(h)observed.push([p,h]);
       for(const [p,h]of m1Digests)if(h)observed.push([p,h]);
       for(const [p,h]of m3LayoutDigests)if(h)observed.push([p,h]);
+      for(const [p,h]of q5Digests)if(h)observed.push([p,h]);
+      if(oldQ5Claims.some(r=>r.questionUid!==q5CompleteGiven.UID||r.sourceOrdinal!==q5CompleteGiven.ORDINAL||d.sourceArchiveFile!==q5CompleteGiven.SOURCE))throw Error('M3_Q5_PRIOR_CLAIM_INVALID');
+      if(q5Entries.length)file.q5CompleteGivenContinuityClaims=q5Entries.map(e=>({questionUid:e.questionUid,sourceOrdinal:e.sourceOrdinal,path:e.path,sha256:e.sha256}));
       if(oldM3LayoutClaims.some(r=>r.questionUid!==m3Layout.UID||r.sourceOrdinal!==m3Layout.ORDINAL||d.sourceArchiveFile!==m3Layout.SOURCE))throw Error('M3S2_LAYOUT_PRIOR_CLAIM_INVALID');
       if(m3LayoutEntries.length)file.m3LayoutContinuityClaims=m3LayoutEntries.map(e=>({questionUid:e.questionUid,sourceOrdinal:e.sourceOrdinal,path:e.path,sha256:e.sha256}));
       const oldVectorClaims=(old?.existingVectorContinuityClaims||[]).concat((previous?.records||[]).filter(r=>r.compactPath===rel&&
@@ -240,7 +249,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
       // The explicit metadata continuation also depends on the issued receipt,
       // metadata and runtime. Always replay that one negative decision live.
-      if(reuseCache&&!originalSourceHoldScope&&!vectorEntries.length&&!oldVectorClaims.length&&!m1Entries.length&&!oldM1Claims.length&&!m3LayoutEntries.length&&!oldM3LayoutClaims.length&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
+      if(reuseCache&&!originalSourceHoldScope&&!vectorEntries.length&&!oldVectorClaims.length&&!m1Entries.length&&!oldM1Claims.length&&!m3LayoutEntries.length&&!oldM3LayoutClaims.length&&!q5Entries.length&&!oldQ5Claims.length&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
         files.push(old);records.push(...previous.records.filter(r=>r.compactPath===rel));pending.push(...previous.pending.filter(r=>r.path===rel));stats.reusedFiles++;continue;
       }
       stats.revalidatedFiles++;
@@ -334,18 +343,28 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
           try{m3LayoutContinuation=m3Layout.verify(root,selectedM3Layouts[0],{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loadBank,safe});observed.push(...m3LayoutContinuation.observed);}
           catch(e){fail(e.message,it.ordinal);continue;}
         }
+        let q5Continuation=null;
+        const selectedQ5=q5Entries.filter(e=>e.questionUid===id.questionUid||e.sourceOrdinal===cur.ordinal);
+        const priorQ5=oldQ5Claims.filter(e=>e.questionUid===id.questionUid||e.sourceOrdinal===cur.ordinal);
+        if(selectedQ5.length||priorQ5.length){
+          if(selectedQ5.length!==1||selectedQ5[0].questionUid!==id.questionUid||selectedQ5[0].sourceOrdinal!==cur.ordinal||
+             rendererBound||rendererContinuation||vectorContinuation||m1Continuation||m3LayoutContinuation||
+             priorQ5.some(e=>e.path!==selectedQ5[0].path||e.sha256!==selectedQ5[0].sha256)){fail('M3_Q5_CLAIM_MISSING_OR_MIXED',it.ordinal);continue;}
+          try{q5Continuation=q5CompleteGiven.verify(root,selectedQ5[0],{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loadBank,safe});observed.push(...q5Continuation.observed);}
+          catch(e){fail(e.message,it.ordinal);continue;}
+        }
         if(rendererBound&&(rendererContinuation||vectorContinuation||m1Continuation)){fail('MULTIPLE_RENDERER_CONTINUITY_AUTHORITIES',it.ordinal);continue;}
-        if(currentPayload!==baseline&&!rendererBound&&!rendererContinuation&&!vectorContinuation&&!m1Continuation&&!m3LayoutContinuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
+        if(currentPayload!==baseline&&!rendererBound&&!rendererContinuation&&!vectorContinuation&&!m1Continuation&&!m3LayoutContinuation&&!q5Continuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
-        if(alteredAsset&&!rendererContinuation&&!vectorContinuation&&!m1Continuation){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
+        if(alteredAsset&&!rendererContinuation&&!vectorContinuation&&!m1Continuation&&!q5Continuation){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
         if(own(it,'registrationHold')) {
           const errors=validateRegistrationHold(root,d,it,id,cur), h=it.registrationHold;
           if(errors.length)fail('INVALID_REGISTRATION_HOLD:'+errors.join('|'),it.ordinal,{questionUid:id.questionUid});
           else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence,nextAction:h.nextAction});
           continue;
         }
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:m3LayoutContinuation?m3Layout.BINDING:rendererBound?'SCOPED_REVIEWED_RENDERER':m1Continuation?m1Problem.BINDING:vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),...(m1Continuation?{m1ProblemContinuityRef:m1Continuation.ref}:{}),...(m3LayoutContinuation?{layoutContinuityRef:m3LayoutContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:q5Continuation?q5CompleteGiven.BINDING:m3LayoutContinuation?m3Layout.BINDING:rendererBound?'SCOPED_REVIEWED_RENDERER':m1Continuation?m1Problem.BINDING:vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(q5Continuation?{q5CompleteGivenContinuityRef:q5Continuation.ref}:{}),...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),...(m1Continuation?{m1ProblemContinuityRef:m1Continuation.ref}:{}),...(m3LayoutContinuation?{layoutContinuityRef:m3LayoutContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
         if(rendererBound)row.rendererReceipt={schemaVersion:existingRenderer.RECEIPT_SCHEMA,...d[existingRenderer.MARKER].receipt};
         records.push(row);
       }
@@ -370,9 +389,9 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
   return {index:result,observed,stats};
 }
 function stableContinuityClaimPosition(file){
-  if(!own(file,'m1ProblemContinuityClaims')&&!own(file,'m3LayoutContinuityClaims'))return file;
-  const {m1ProblemContinuityClaims,m3LayoutContinuityClaims,...ordinary}=file;
-  return {...ordinary,...(own(file,'m1ProblemContinuityClaims')?{m1ProblemContinuityClaims}:{}),...(own(file,'m3LayoutContinuityClaims')?{m3LayoutContinuityClaims}:{})};
+  if(!own(file,'m1ProblemContinuityClaims')&&!own(file,'m3LayoutContinuityClaims')&&!own(file,'q5CompleteGivenContinuityClaims'))return file;
+  const {m1ProblemContinuityClaims,m3LayoutContinuityClaims,q5CompleteGivenContinuityClaims,...ordinary}=file;
+  return {...ordinary,...(own(file,'m1ProblemContinuityClaims')?{m1ProblemContinuityClaims}:{}),...(own(file,'m3LayoutContinuityClaims')?{m3LayoutContinuityClaims}:{}),...(own(file,'q5CompleteGivenContinuityClaims')?{q5CompleteGivenContinuityClaims}:{})};
 }
 function serialize(x){return JSON.stringify(x)+'\n';}
 function verify(index) {
