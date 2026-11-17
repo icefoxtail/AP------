@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "26"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "24"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "H",
+    "J",
+    "K",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "partialCA",
+      "refs": [
+        "C",
+        "J"
+      ]
+    },
+    {
+      "id": "partialCB",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "partialAH",
+      "refs": [
+        "H",
+        "K"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "planeMarks": {},
+  "rightAngles": [
+    {
+      "id": "rightDetail",
+      "refs": [
+        "K",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "caption": "C와 수선발 H 부근만 확대했다. 사선은 CA의 일부, 가로선은 CB의 일부, 점선은 AH의 일부이며 끝에서 전체 선분이 끝난다는 뜻이 아니다. CH는 α−log₃α에 해당한다. 전체도에서 얻은 밑변과 수평 길이 차를 이용하며 구하는 길이는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 기울기가 $-1$인 직선이 두 곡선 $y=3^x$, $y=\\log_3x$와 만나는 두 점을 각각 $A$, $B$라 하고, 선분 $AB$를 지나고 $x$축과 평행한 직선이 곡선 $y=3^x$와 만나는 점을 $C$라 하자. 선분 $AB$의 길이가 $24\\sqrt2$, 삼각형 $ABC$의 넓이가 $312$이다. 점 $A$의 $x$좌표를 $\\alpha$라 할 때, $\\alpha-\\log_3\\alpha$의 값을 구하고 그 과정을 서술하시오. (단, $O$는 원점이다.) [7점]",
+      "mappedTo": "source geometry"
+    },
+    {
+      "id": "image",
+      "condition": "직접 본 원본 PNG는 A 왼쪽 위, B 오른쪽 아래, C는 B와 같은 높이의 지수곡선 위 점이다. 발문의 수평선 표현은 그림의 BC로 확인한다. 원본 곡선은 변경하지 않고 새 보조도는 삼각형만 분리한다.",
+      "mappedTo": "A B C"
+    },
+    {
+      "id": "gauge",
+      "condition": "평면 보조도 C=(0,0)은 평행이동 자유도 고정용 비표시 기준점이며 실제 함수좌표 C라고 주장하지 않는다. AB의 기울기−1과 길이24√2로 수평/수직 차24, 넓이312로 BC26이므로 B=C+(26,0), A=B+(−24,24)는 정확 파생이다. H는 A의 직선CB 수선발이다. 좌표값을 표시하지 않는다.",
+      "mappedTo": "construction nodes"
+    },
+    {
+      "id": "detail",
+      "condition": "J는 CA를1:5로 내분한 점, K는 H+(0,4), T는 H+(2,0)인 비표시 절단점이다. K는 AH, T는 HB 위에 놓이며 축·좌표·절단점 이름·길이는 표시하지 않는다. 전체 그림의 부분을 같은 기하관계로 확대하며 가로/세로 축척은 같다.",
+      "mappedTo": "J K T"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 겹침 없이 높이와 밑변의 차가 목표 좌표차 CH임을 보여 준다. 최종 길이는 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "J",
+    "K",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE"
+}
