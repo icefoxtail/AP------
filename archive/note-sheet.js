@@ -138,7 +138,8 @@
         if (check) check.checked = cell.on;
         el.querySelectorAll("[data-count] input, [data-count] button").forEach((control) => { control.disabled = !cell.on; });
         const input = el.querySelector("[data-count] input");
-        if (input && !options.keepInputs && doc.activeElement !== input) input.value = String(cell.n);
+        // Typing keeps its own text (keepInputs / focused field); a -/+ press passes force because focus may stay in the field (iOS Safari).
+        if (input && !options.keepInputs && (options.force || doc.activeElement !== input)) input.value = String(cell.n);
       });
       const kinds = selectedKinds(state);
       const total = totalSheets(state);
@@ -187,7 +188,7 @@
         const cell = state[holder?.dataset.kindRow];
         if (!cell || !cell.on) return;
         cell.n = clampSheets(cell.n + Number(step.dataset.step));
-        update();
+        update({ force: true });
         return;
       }
       if (event.target.closest?.("#ns-print-button")) {
