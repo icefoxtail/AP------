@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '..');
@@ -67,10 +68,7 @@ export function buildInlineImageInventory() {
       errors.push(`${relative}: parse failure: ${error.message}`);
       continue;
     }
-    const bank = Array.isArray(window.questionBank)
-      ? window.questionBank
-      : (window.questionBank?.questions || window.questionBank?.problems || []);
-    if (!Array.isArray(bank)) continue;
+    const bank = examSourceReader.readQuestionArray(window) || [];
 
     bank.forEach((question, index) => {
       const content = String(question?.content || question?.question || question?.text || question?.prompt || '');

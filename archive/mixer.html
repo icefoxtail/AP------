@@ -39,6 +39,7 @@
 <!-- Phase 4 fingerprint bridge: loaded for contract use only; no preset UI exposure before Gate 4. -->
 <script src="mixer-school-fingerprint.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint bridge 로드 실패 — fingerprint preset 비활성화')"></script>
 <script src="mixer-school-fingerprint-runtime.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint runtime 로드 실패 — fingerprint preset 비활성화')"></script>
+<script src="exam-source-reader.js?v=20261117-reader-1"></script>
     <style>
         :root {
             --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
@@ -1976,17 +1977,14 @@ function fetchQuestionData(file) {
         .then(source => {
             // 파일마다 별도 Function scope에서 실행해 서로 다른 archive JS의
             // 동일한 top-level const/let 선언이 전역에서 충돌하지 않게 한다.
-            delete window.questions;
-            delete window.questionBank;
-            delete window.examData;
+            // 문항 배열 찾기 규칙은 exam-source-reader.js 한 곳에 있다.
+            const reader = window.ExamSourceReader;
+            if (!reader) throw new Error('exam-source-reader.js를 불러오지 못했습니다.');
+            reader.SOURCE_GLOBALS.forEach(name => { delete window[name]; });
             const executeArchiveSource = new Function('window', 'document', source);
             executeArchiveSource(window, document);
-            const examData = window.examData;
-            const data = window.questions || window.questionBank
-                || (Array.isArray(examData) ? examData : examData?.questions || examData?.problems);
-            delete window.questions;
-            delete window.questionBank;
-            delete window.examData;
+            const data = reader.readQuestionArray(window);
+            reader.SOURCE_GLOBALS.forEach(name => { delete window[name]; });
             if (!Array.isArray(data)) throw new Error('문항 배열이 없습니다.');
             return data;
         });

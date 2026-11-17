@@ -99,7 +99,7 @@ export function nativeLanes(root) {
     'tools/ci/archive-pages-registration.paths','tools/ci/archive-meta-register-commit.paths',
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
     'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
-    'archive/archive2-source.js','archive/unit-past-exams-core.js'];
+    'archive/archive2-source.js','archive/exam-source-reader.js','archive/unit-past-exams-core.js'];
   const registration=[...sourceQualityHoldDependencyPaths(root),'archive/exams/','archive/data/question_identity_map.json','archive/data/question_metadata.json',
     'archive/data/meta-foundation/','archive/data/master_tables/','archive/data/r2e-intake/',
     'archive/data/basic-scope-source-links.json','archive/data/basic-scope-parent-groups.json',
