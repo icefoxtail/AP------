@@ -150,11 +150,13 @@
   },
   {
     "bundle": "NPT_M2_SYSTEM_COMMON_SOLUTION_REUSE",
-    "nameKo": "연립방정식의 공통해",
-    "definition": "미정계수가 없는 두 관계로 공통해를 먼저 구한 뒤 다른 관계에 대입하여 계수를 결정한다. 기존 중2 공통해 유형으로 흡수한다.",
+    "nameKo": "연립방정식의 해",
+    "definition": "연립방정식으로 구한 해를 추가 방정식에 대입하여 계수를 결정한다. 기존의 두 연립방정식 공통해 정의보다 넓어 흡수하지 않는다.",
     "course": "middle2",
-    "distinctFrom": [],
-    "absorbInto": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+    "distinctFrom": [
+      "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION"
+    ],
+    "absorbInto": null,
     "count": 8,
     "examples": [
       "qid_v1_a56cb6de5226591fb49af765cbd7176d4019838449386d36f3ea290c0ab123f0",
@@ -162,7 +164,9 @@
       "qid_v1_9f84108928c12a93a215894072262825ea8e32b031d138d998136a4d9111728b"
     ],
     "relatedKeys": [],
-    "narrowExisting": []
+    "narrowExisting": [
+      "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION"
+    ]
   },
   {
     "bundle": "NPT_M2_LINEAR_INEQUALITY",
@@ -307,14 +311,16 @@
     "definition": "서로 겹치지 않는 조건별 결과를 세어 합의 법칙으로 전체 경우의 수를 구한다.",
     "course": "middle2",
     "distinctFrom": [],
-    "absorbInto": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+    "absorbInto": null,
     "count": 5,
     "examples": [
       "qid_v1_3cde11625f9c7fc9aadb4e136a18cd26185afc36302ef7b3af0dfc6fc0a71147",
       "qid_v1_f2a496665fe83474194330a8d63181413a0d62f4468fed207b07ae31a876241b",
       "qid_v1_ef258ab2d03d1b5413cc79e0e96b42303633dcb6e0747dad5404fe53c0e8a3b9"
     ],
-    "relatedKeys": [],
+    "relatedKeys": [
+      "PT_M2_BASIC_COUNTING_CASE_SPLIT"
+    ],
     "narrowExisting": []
   },
   {
@@ -676,9 +682,7 @@
     "nameKo": "무리수",
     "definition": "유리수 계수의 근호식을 정리하여 무리수 부분이 사라지는 조건을 판단한다.",
     "course": "middle3",
-    "distinctFrom": [
-      "PT_M3_RADICAL_CALCULATION"
-    ],
+    "distinctFrom": [],
     "absorbInto": null,
     "count": 9,
     "examples": [
@@ -686,10 +690,10 @@
       "qid_v1_81820289a1ceb6a2985bebce89e51a61398e76e8e2cca147af4b4a74fb768260",
       "qid_v1_fcec8696069a3958ea7c35f0d7c34a8029f668bc2a6171d52df5b9d93a2ee456"
     ],
-    "relatedKeys": [],
-    "narrowExisting": [
+    "relatedKeys": [
       "PT_M3_RADICAL_CALCULATION"
-    ]
+    ],
+    "narrowExisting": []
   },
   {
     "bundle": "NPT_M3_SURFACE_PATH",
