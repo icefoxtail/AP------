@@ -1,0 +1,185 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=-4일 때이"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "0",
+                "16",
+                "-8",
+                "1"
+              ]
+            }
+          ],
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "A",
+              "x": 2,
+              "y": 16
+            },
+            {
+              "id": "B",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -1,
+            5
+          ],
+          "viewport": [
+            -1,
+            5,
+            -5,
+            26
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "L",
+                "x": "-1",
+                "y": "20",
+                "coordinates": false,
+                "unnamed": true
+              },
+              {
+                "id": "R",
+                "x": "5",
+                "y": "-4",
+                "coordinates": false,
+                "unnamed": true
+              }
+            ],
+            "segments": [
+              {
+                "id": "line",
+                "from": "L",
+                "to": "R",
+                "color": "WARM"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=-1일 때이"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "0",
+                "16",
+                "-8",
+                "1"
+              ]
+            }
+          ],
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "A",
+              "x": 2,
+              "y": 16
+            },
+            {
+              "id": "B",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -1,
+            5
+          ],
+          "viewport": [
+            -1,
+            5,
+            -5,
+            26
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "L",
+                "x": "-1",
+                "y": "17",
+                "coordinates": false,
+                "unnamed": true
+              },
+              {
+                "id": "R",
+                "x": "5",
+                "y": "11",
+                "coordinates": false,
+                "unnamed": true
+              }
+            ],
+            "segments": [
+              {
+                "id": "line",
+                "from": "L",
+                "to": "R",
+                "color": "WARM"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "k=-4일 때이다. g(x)=k를 분모 x로 곱해 동치인 f(x)=kx+16의 교점으로 확인한다. 곡선은 f(x)=x²(x−4)², 주황 선분은 y=-4x+16의 표시창 안 부분이다. x=0은 g의 정의역에서 제외되며 교점도 아니다. 음수에서 한 교점과 양수에서 세 교점을 읽되, 이 예시 두 개가 전체 정수 k 목록을 뜻하지는 않는다. 최종 합은 표시하지 않는다. k=-1일 때이다. 곡선은 f(x)=x²(x−4)², 주황 선분은 y=-1x+16의 표시창 안 부분이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<단답형 3>\n최고차항의 계수가 1인 사차함수 $f(x)$와 0이 아닌 실수 전체의 집합에서 정의된 함수 $g(x)$가 다음 조건을 만족시킨다.\n\n(가) $f'(0)=f(0)=0$\n(나) 함수 $f(x)$는 $x=2$에서 극댓값 16을 갖는다.\n(다) 0이 아닌 모든 실수 $x$에 대하여 $f(x)=xg(x)+16$이다.\n\n방정식 $g(x)=k$가 서로 다른 네 실근을 갖도록 하는 모든 정수 $k$의 합을 구하시오. [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-4일 때이다. g(x)=k를 분모 x로 곱해 동치인 f(x)=kx+16의 교점으로 확인한다. 곡선은 f(x)=x²(x−4)², 주황 선분은 y=-4x+16의 표시창 안 부분이다. x=0은 g의 정의역에서 제외되며 교점도 아니다. 음수에서 한 교점과 양수에서 세 교점을 읽되, 이 예시 두 개가 전체 정수 k 목록을 뜻하지는 않는다. 최종 합은 표시하지 않는다. k=-1일 때이다. 곡선은 f(x)=x²(x−4)², 주황 선분은 y=-1x+16의 표시창 안 부분이다."
+  ]
+}

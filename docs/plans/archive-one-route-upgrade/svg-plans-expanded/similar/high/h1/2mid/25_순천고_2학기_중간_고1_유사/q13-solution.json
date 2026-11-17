@@ -1,0 +1,183 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A-B"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "elements": [],
+          "shade": "A-B"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ABc"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "elements": [],
+          "shade": "A∩B^c"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(A-B)(A-C)"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "elements": [],
+          "shade": "(A-B)∪(A-C)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "A-(BC)"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "elements": [],
+          "shade": "A-(B∩C)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(AB)(AC)"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "elements": [],
+          "shade": "(A∩B)∪(A∩C)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "A(BC)"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "elements": [],
+          "shade": "A∩(B∪C)"
+        }
+      }
+    }
+  ],
+  "caption": "집합식 A-B의 정확 영역을 같은 원 배치에서 비교. 앞뒤 두개씩 세 쌍이 각각 같은 원소 소속조건이다. 임의집합에서 ㄱ/ㄴ/ㄷ 모두성립,정답⑤. 집합식 A∩B^c의 정확 영역을 같은 원 배치에서 비교. 집합식 (A-B)∪(A-C)의 정확 영역을 같은 원 배치에서 비교. 집합식 A-(B∩C)의 정확 영역을 같은 원 배치에서 비교. 집합식 (A∩B)∪(A∩C)의 정확 영역을 같은 원 배치에서 비교. 집합식 A∩(B∪C)의 정확 영역을 같은 원 배치에서 비교.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 세 부분집합 $A$, $B$, $C$에 대하여 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은? ㄱ. $A-B=A\\cap B^c$ ㄴ. $(A-B)\\cup(A-C)=A-(B\\cap C)$ ㄷ. $(A\\cap B)\\cup(A\\cap C)=A\\cap(B\\cup C)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 6개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "집합식 A-B의 정확 영역을 같은 원 배치에서 비교. 앞뒤 두개씩 세 쌍이 각각 같은 원소 소속조건이다. 임의집합에서 ㄱ/ㄴ/ㄷ 모두성립,정답⑤. 집합식 A∩B^c의 정확 영역을 같은 원 배치에서 비교. 집합식 (A-B)∪(A-C)의 정확 영역을 같은 원 배치에서 비교. 집합식 A-(B∩C)의 정확 영역을 같은 원 배치에서 비교. 집합식 (A∩B)∪(A∩C)의 정확 영역을 같은 원 배치에서 비교. 집합식 A∩(B∪C)의 정확 영역을 같은 원 배치에서 비교."
+  ]
+}

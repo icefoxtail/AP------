@@ -1,0 +1,73 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "첫여집합등식은PR"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "P",
+              "name": "P"
+            },
+            {
+              "id": "R",
+              "name": "R"
+            }
+          ],
+          "subset": [
+            "P",
+            "R"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "드모르간법칙으로PQ=이므로QP"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "P",
+              "name": "P"
+            },
+            {
+              "id": "Q",
+              "name": "Q"
+            }
+          ],
+          "disjoint": [
+            [
+              "P",
+              "Q"
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "첫여집합등식은P⊆R. 이것만으로역방향r→p는보장하지않는다. 다음서로소조건에서정답q→¬p를얻는다. 드모르간법칙으로P∩Q=∅이므로Q⊆P^c. 정답② q→¬p. 원소를임의로추가하지않은관계도이며빈집합도허용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자. $P^C\\cup R^C=P^C$, $P^C\\cup Q^C=U$일 때, 다음 중 항상 참인 명제는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "첫여집합등식은P⊆R. 이것만으로역방향r→p는보장하지않는다. 다음서로소조건에서정답q→¬p를얻는다. 드모르간법칙으로P∩Q=∅이므로Q⊆P^c. 정답② q→¬p. 원소를임의로추가하지않은관계도이며빈집합도허용한다."
+  ]
+}

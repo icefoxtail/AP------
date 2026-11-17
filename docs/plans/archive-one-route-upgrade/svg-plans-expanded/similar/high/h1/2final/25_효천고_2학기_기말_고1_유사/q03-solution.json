@@ -1,0 +1,158 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "첫순서1g1=0f0=3"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "0"
+              ]
+            },
+            {
+              "id": "Z",
+              "name": "Z",
+              "elements": [
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 1,
+                "element": 0
+              },
+              "to": {
+                "column": 2,
+                "element": 0
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "g",
+              "from": "X",
+              "to": "Y"
+            },
+            {
+              "name": "f",
+              "from": "Y",
+              "to": "Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "반대순서1f1=5g5=24"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "5"
+              ]
+            },
+            {
+              "id": "Z",
+              "name": "Z",
+              "elements": [
+                "24"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 1,
+                "element": 0
+              },
+              "to": {
+                "column": 2,
+                "element": 0
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y"
+            },
+            {
+              "name": "g",
+              "from": "Y",
+              "to": "Z"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "첫순서1→g1=0→f0=3. 다음반대순서24와합27. 정답③. 반대순서1→f1=5→g5=24. 합성은교환되지않고합27.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=2x+3$, $g(x)=x^2-1$에 대하여 $(f\\circ g)(1)+(g\\circ f)(1)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "첫순서1→g1=0→f0=3. 다음반대순서24와합27. 정답③. 반대순서1→f1=5→g5=24. 합성은교환되지않고합27."
+  ],
+  "columns": 1
+}

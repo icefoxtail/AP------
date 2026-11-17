@@ -1,0 +1,963 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "아래"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P4Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P0Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P4Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P0Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P4Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P2Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P2Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P3Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P3Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P2Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P3Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "P4Y0",
+          "P0Y1",
+          "P4Y1",
+          "P0Y2",
+          "P4Y2",
+          "P1Y0",
+          "P1Y2",
+          "P2Y0",
+          "P2Y2",
+          "P3Y0",
+          "P3Y2",
+          "P1Y1",
+          "P2Y1",
+          "P3Y1"
+        ],
+        "hiddenPointNames": [
+          "A",
+          "P4Y0",
+          "P0Y1",
+          "P4Y1",
+          "P0Y2",
+          "P4Y2",
+          "P1Y0",
+          "P1Y2",
+          "P2Y0",
+          "P2Y2",
+          "P3Y0",
+          "P3Y2",
+          "P1Y1",
+          "P2Y1",
+          "P3Y1"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "h0",
+            "refs": [
+              "A",
+              "P4Y0"
+            ]
+          },
+          {
+            "id": "h1",
+            "refs": [
+              "P0Y1",
+              "P4Y1"
+            ]
+          },
+          {
+            "id": "h2",
+            "refs": [
+              "P0Y2",
+              "P4Y2"
+            ]
+          },
+          {
+            "id": "v0",
+            "refs": [
+              "A",
+              "P0Y2"
+            ]
+          },
+          {
+            "id": "v1",
+            "refs": [
+              "P1Y0",
+              "P1Y2"
+            ]
+          },
+          {
+            "id": "v2",
+            "refs": [
+              "P2Y0",
+              "P2Y2"
+            ]
+          },
+          {
+            "id": "v3",
+            "refs": [
+              "P3Y0",
+              "P3Y2"
+            ]
+          },
+          {
+            "id": "v4",
+            "refs": [
+              "P4Y0",
+              "P4Y2"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [],
+          "regions": [
+            {
+              "id": "even0",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "P1Y0",
+                    "P1Y1",
+                    "P0Y1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "even1",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P1Y1",
+                    "P2Y1",
+                    "P2Y2",
+                    "P1Y2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "even2",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P2Y0",
+                    "P3Y0",
+                    "P3Y1",
+                    "P2Y1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "even3",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P3Y1",
+                    "P4Y1",
+                    "P4Y2",
+                    "P3Y2"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P4Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P0Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P4Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P0Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P4Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P2Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P2Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P3Y0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P3Y2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P2Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P3Y1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "P4Y0",
+          "P0Y1",
+          "P4Y1",
+          "P0Y2",
+          "P4Y2",
+          "P1Y0",
+          "P1Y2",
+          "P2Y0",
+          "P2Y2",
+          "P3Y0",
+          "P3Y2",
+          "P1Y1",
+          "P2Y1",
+          "P3Y1"
+        ],
+        "hiddenPointNames": [
+          "A",
+          "P4Y0",
+          "P0Y1",
+          "P4Y1",
+          "P0Y2",
+          "P4Y2",
+          "P1Y0",
+          "P1Y2",
+          "P2Y0",
+          "P2Y2",
+          "P3Y0",
+          "P3Y2",
+          "P1Y1",
+          "P2Y1",
+          "P3Y1"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "h0",
+            "refs": [
+              "A",
+              "P4Y0"
+            ]
+          },
+          {
+            "id": "h1",
+            "refs": [
+              "P0Y1",
+              "P4Y1"
+            ]
+          },
+          {
+            "id": "h2",
+            "refs": [
+              "P0Y2",
+              "P4Y2"
+            ]
+          },
+          {
+            "id": "v0",
+            "refs": [
+              "A",
+              "P0Y2"
+            ]
+          },
+          {
+            "id": "v1",
+            "refs": [
+              "P1Y0",
+              "P1Y2"
+            ]
+          },
+          {
+            "id": "v2",
+            "refs": [
+              "P2Y0",
+              "P2Y2"
+            ]
+          },
+          {
+            "id": "v3",
+            "refs": [
+              "P3Y0",
+              "P3Y2"
+            ]
+          },
+          {
+            "id": "v4",
+            "refs": [
+              "P4Y0",
+              "P4Y2"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [],
+          "regions": [
+            {
+              "id": "even0",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P0Y1",
+                    "P1Y1",
+                    "P1Y2",
+                    "P0Y2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "even1",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P1Y0",
+                    "P2Y0",
+                    "P2Y1",
+                    "P1Y1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "even2",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P2Y1",
+                    "P3Y1",
+                    "P3Y2",
+                    "P2Y2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "even3",
+              "fill": "LIGHT",
+              "pattern": "HATCH",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "P3Y0",
+                    "P4Y0",
+                    "P4Y1",
+                    "P3Y1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "2행4열의 좌석 인접관계를 그렸다. 사선 무늬 칸은 짝수 번호 학생, 빈 무늬 칸은 홀수 번호 학생의 자리이다. 각 열에 짝수 학생이 하나씩 있어야 하고 옆 열에서는 행이 바뀐다. 이 패널은 첫 열에서 아래쪽 자리를 짝수 자리로 정한 경우이다. 홀수 자리도 같은 열의 짝수 자리와 접하므로 조건(나)를 만족한다. 각 패턴에서 짝수 학생4!, 홀수 학생4!로 배치한다. 두 패턴을 합쳐 정답2×4!×4!=1152. 이 패널은 첫 열에서 위쪽 자리를 짝수 자리로 정한 경우이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;단답형3&gt;<br>책상이 2행 4열로 놓인 교실의 8개 자리에 1번부터 8번까지의 학생을 다음 조건을 만족시키도록 배치하는 경우의 수를 구하시오. (단, 위·아래·왼쪽·오른쪽으로 맞닿은 자리를 이웃한 자리로 본다.)<div class=\"note-box\">(가) 짝수 번호의 학생끼리는 이웃할 수 없다.<br>(나) 홀수 번호의 학생은 적어도 하나의 짝수 번호 학생과 이웃하게 앉아야 한다.<br>(다) 빈자리는 없고 한 자리에 한 명씩 앉는다.</div> [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "2행4열의 좌석 인접관계를 그렸다. 사선 무늬 칸은 짝수 번호 학생, 빈 무늬 칸은 홀수 번호 학생의 자리이다. 각 열에 짝수 학생이 하나씩 있어야 하고 옆 열에서는 행이 바뀐다. 이 패널은 첫 열에서 아래쪽 자리를 짝수 자리로 정한 경우이다. 홀수 자리도 같은 열의 짝수 자리와 접하므로 조건(나)를 만족한다. 각 패턴에서 짝수 학생4!, 홀수 학생4!로 배치한다. 두 패턴을 합쳐 정답2×4!×4!=1152. 이 패널은 첫 열에서 위쪽 자리를 짝수 자리로 정한 경우이다."
+  ]
+}

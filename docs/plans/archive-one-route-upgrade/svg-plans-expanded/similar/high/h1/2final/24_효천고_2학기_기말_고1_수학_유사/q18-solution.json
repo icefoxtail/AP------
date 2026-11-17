@@ -1,0 +1,123 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "두근각각고정은p5,q3,pq1"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "B",
+              "elements": [
+                "r",
+                "s"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "B",
+              "elements": [
+                "r",
+                "s"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "두근교환은p7,q2,pq14"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "B",
+              "elements": [
+                "r",
+                "s"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "B",
+              "elements": [
+                "r",
+                "s"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "두근각각고정은p−5,q−3,pq15. r,s는x²−x−1의두무리근(1±√5)/2이다. fmodg=(p+6)x+q+3,상수대응은정수가무리근이될수없어제외한다. 최댓값정답15. 두근교환은p−7,q−2,pq14.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x) = x^3 + 4x^2 + px + q - 2$, $g(x) = x^2 - x - 1$에 대하여 두 집합 $A = \\{x \\mid (g \\circ f)(x) = 0\\}$, $B = \\{x \\mid g(x) = 0\\}$이 있다. $B \\subset A$일 때, 정수 $p, q$에 대하여 $pq$의 최댓값은? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두근각각고정은p−5,q−3,pq15. r,s는x²−x−1의두무리근(1±√5)/2이다. fmodg=(p+6)x+q+3,상수대응은정수가무리근이될수없어제외한다. 최댓값정답15. 두근교환은p−7,q−2,pq14."
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "2",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "3",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "4",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "5",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "6",
+              "in": [
+                "B"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "2",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "3",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "4",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "5",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "6",
+              "in": [
+                "B"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 3"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "2",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "3",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "4",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "5",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "6",
+              "in": [
+                "B"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "서로소로 전체를 덮는 실제 경우 A=[2, 3],B는나머지4개. B합16. 세 후보 중 A2/3의 합이최소5라 B1/4/5/6의합16 최대. 서로소로 전체를 덮는 실제 경우 A=[2, 5],B는나머지4개. B합14. 서로소로 전체를 덮는 실제 경우 A=[3, 5],B는나머지4개. B합13.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{1,2,3,4,5,6\\}$의 두 부분집합 $A$, $B$가 다음 조건을 만족시킬 때, 집합 $B$의 모든 원소의 합의 최댓값은? [4.8점]<br><div class=\"note-box\">(가) 집합 $A$의 모든 원소는 소수이다.<br>(나) 두 집합 $A$, $B$는 서로소이다.<br>(다) $n(A\\cup B)=6$, $n(B)=4$이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 3개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "서로소로 전체를 덮는 실제 경우 A=[2, 3],B는나머지4개. B합16. 세 후보 중 A2/3의 합이최소5라 B1/4/5/6의합16 최대. 서로소로 전체를 덮는 실제 경우 A=[2, 5],B는나머지4개. B합14. 서로소로 전체를 덮는 실제 경우 A=[3, 5],B는나머지4개. B합13."
+  ]
+}

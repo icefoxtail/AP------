@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "2",
+            "4"
+          ]
+        }
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "4",
+            "7"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "n=2 예시에서 정수3 하나. 일반적으로 n<4에서 n1,2가 가능하고 n3,4,5는 정수해0개, n>4에서1≤n−5≤3이므로 n6,7,8이다. 정답 모든 n의 합24. n=7 예시에서 정수5,6 두 개.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 이차부등식 $-x^2+(n+4)x-4n\\gt0$을 만족시키는 자연수 $x$가 최소 1개, 최대 3개가 되도록 하는 모든 자연수 $n$의 값의 합은? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 수직선을 한 그림의 줄로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "n=2 예시에서 정수3 하나. 일반적으로 n<4에서 n1,2가 가능하고 n3,4,5는 정수해0개, n>4에서1≤n−5≤3이므로 n6,7,8이다. 정답 모든 n의 합24. n=7 예시에서 정수5,6 두 개."
+  ]
+}

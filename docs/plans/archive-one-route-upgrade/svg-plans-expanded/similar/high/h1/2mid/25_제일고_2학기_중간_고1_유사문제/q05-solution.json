@@ -1,0 +1,158 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "AB의 실제 원소 소속 영역"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [],
+          "shade": "A∩B"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "A(AB)의 실제 원소 소속"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [],
+          "shade": "A∪(A∩B)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(AB)c의 실제 원소 소속"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [],
+          "shade": "(A∩B)^c"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "AcBc의 실제 원소 소속"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [],
+          "shade": "A^c∩B^c"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "AB인 포함 배치의 대표 세"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "p",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "q",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "r",
+              "in": []
+            }
+          ],
+          "shade": "A^c",
+          "subset": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "A∩B의 실제 원소 소속 영역 비교. ㄱ의A−(A−B)는 공통영역,ㄴ은A전체. ㄷ의 여집합은 합집합이므로 두 뒤쪽 패널이 다르다. ㄱ/ㄴ 참,정답①. A∪(A∩B)의 실제 원소 소속 영역 비교. (A∩B)^c의 실제 원소 소속 영역 비교. A^c∩B^c의 실제 원소 소속 영역 비교. A⊆B인 포함 배치의 대표 세 영역 p/q/r은 일반 원소 이름이다. B밖이면 반드시A밖이므로 Bᶜ⊆Aᶜ로 방향이 반대. q가A밖이지만B안인 반례를 보여 ㄹ은 거짓,정답ㄱ/ㄴ.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 부분집합 $A$, $B$에 대하여 다음 보기의 성질 중 옳은 것만을 있는 대로 고른 것은? [4.5점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $A\\cap B=A-(A-B)$<br>ㄴ. $A\\cup(A\\cap B)=A$<br>ㄷ. $(A\\cap B)^C=A^C\\cap B^C$<br>ㄹ. $A\\subset B$이면 $A^C\\subset B^C$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 5개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A∩B의 실제 원소 소속 영역 비교. ㄱ의A−(A−B)는 공통영역,ㄴ은A전체. ㄷ의 여집합은 합집합이므로 두 뒤쪽 패널이 다르다. ㄱ/ㄴ 참,정답①. A∪(A∩B)의 실제 원소 소속 영역 비교. (A∩B)^c의 실제 원소 소속 영역 비교. A^c∩B^c의 실제 원소 소속 영역 비교. A⊆B인 포함 배치의 대표 세 영역 p/q/r은 일반 원소 이름이다. B밖이면 반드시A밖이므로 Bᶜ⊆Aᶜ로 방향이 반대. q가A밖이지만B안인 반례를 보여 ㄹ은 거짓,정답ㄱ/ㄴ."
+  ]
+}

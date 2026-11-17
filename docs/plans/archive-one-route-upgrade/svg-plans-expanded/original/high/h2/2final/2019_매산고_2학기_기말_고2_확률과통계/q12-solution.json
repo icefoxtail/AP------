@@ -1,0 +1,88 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "표준화 경계3/2의 오른쪽"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            "-3/2",
+            "0",
+            "3/2"
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": 0,
+              "color": "BLUE"
+            },
+            {
+              "from": 2,
+              "to": null,
+              "color": "WARM"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "평균70과 표준오차4를"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            "-1",
+            "0",
+            "1"
+          ],
+          "shades": [
+            {
+              "from": 0,
+              "to": null,
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "표준화 경계3/2의 오른쪽 꼬리와 −3/2의 왼쪽 꼬리가 같은 넓이임을 보여준다. 주어진 두 누적확률의 합이1이라는 조건에서 두 번째 표준화 경계를 찾는다. 평균70과 표준오차4를 적용해66을 표준화하면−1이다. 구하는 확률은 이 경계 오른쪽 넓이이며 중앙의 절반과 추가 부분을 표에서 읽는다. 최종 확률값은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정규분포 $N(40,8^2)$을 따르는 모집단에서 크기가 16인 표본을 임의추출하여 구한 표본평균을 $\\overline X$, 정규분포 $N(70,\\sigma^2)$을 따르는 모집단에서 크기가 25인 표본을 임의추출하여 구한 표본평균을 $\\overline Y$라 하자. $P(\\overline X\\le43)+P(\\overline Y\\le64)=1$일 때, $P(\\overline Y\\ge66)$의 값을 표준정규분포표를 이용하여 구한 것은? (5.1점)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>1</td><td>0.3413</td></tr><tr><td>1.2</td><td>0.3849</td></tr><tr><td>1.4</td><td>0.4192</td></tr><tr><td>1.6</td><td>0.4452</td></tr></tbody></table></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "표준화 경계3/2의 오른쪽 꼬리와 −3/2의 왼쪽 꼬리가 같은 넓이임을 보여준다. 주어진 두 누적확률의 합이1이라는 조건에서 두 번째 표준화 경계를 찾는다. 평균70과 표준오차4를 적용해66을 표준화하면−1이다. 구하는 확률은 이 경계 오른쪽 넓이이며 중앙의 절반과 추가 부분을 표에서 읽는다. 최종 확률값은 쓰지 않는다."
+  ]
+}

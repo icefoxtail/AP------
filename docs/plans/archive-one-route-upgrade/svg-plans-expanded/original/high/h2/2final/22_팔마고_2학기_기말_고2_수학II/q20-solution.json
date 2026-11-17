@@ -1,0 +1,113 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=-1/2인 도함수 예시이"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "d",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "-1/2",
+                "-1",
+                "3"
+              ],
+              "domain": [
+                "-2",
+                "1"
+              ],
+              "color": "BLUE",
+              "label": "d"
+            },
+            {
+              "id": "axis",
+              "kind": "LINE",
+              "coefficients": [
+                "0",
+                "0"
+              ],
+              "domain": [
+                "-2",
+                "1"
+              ],
+              "color": "WARM",
+              "label": "y=0"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=7/2인 도함수 예시이"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "d",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "7/2",
+                "7",
+                "3"
+              ],
+              "domain": [
+                "-2",
+                "1"
+              ],
+              "color": "BLUE",
+              "label": "d"
+            },
+            {
+              "id": "axis",
+              "kind": "LINE",
+              "coefficients": [
+                "0",
+                "0"
+              ],
+              "domain": [
+                "-2",
+                "1"
+              ],
+              "color": "WARM",
+              "label": "y=0"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "a=-1/2인 도함수 예시이다. 열린구간의 양 끝에서 높이가 양수이고 꼭짓점은 아래에 있어 서로 다른 두 근이 내부에 생긴다. 이 예시 하나로 매개변수 전체 범위를 대신하지 않는다. a=7/2인 도함수 예시이다. 두 근이 같은 열린구간 안에 있는 다른 경우를 비교한다. 판별식, 꼭짓점 위치와 양 끝 높이의 조건을 함께 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 1. 함수 $f(x)=x^3+ax^2+ax+1$이 열린구간 $(-2, 1)$에서 극댓값과 극솟값을 모두 갖도록 하는 실수 $a$의 값의 범위를 구하고, 그 풀이과정을 서술하시오. [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=-1/2인 도함수 예시이다. 열린구간의 양 끝에서 높이가 양수이고 꼭짓점은 아래에 있어 서로 다른 두 근이 내부에 생긴다. 이 예시 하나로 매개변수 전체 범위를 대신하지 않는다. a=7/2인 도함수 예시이다. 두 근이 같은 열린구간 안에 있는 다른 경우를 비교한다. 판별식, 꼭짓점 위치와 양 끝 높이의 조건을 함께 확인한다."
+  ]
+}

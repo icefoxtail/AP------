@@ -1,0 +1,158 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "실제 합성 경로1/232를"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1/2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "3"
+              ]
+            },
+            {
+              "id": "Z",
+              "name": "Z",
+              "elements": [
+                "-2"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 1,
+                "element": 0
+              },
+              "to": {
+                "column": 2,
+                "element": 0
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y"
+            },
+            {
+              "name": "f",
+              "from": "Y",
+              "to": "Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "나머지 경로21/31/2로 네"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "-2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "-1/3"
+              ]
+            },
+            {
+              "id": "Z",
+              "name": "Z",
+              "elements": [
+                "1/2"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 1,
+                "element": 0
+              },
+              "to": {
+                "column": 2,
+                "element": 0
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y"
+            },
+            {
+              "name": "f",
+              "from": "Y",
+              "to": "Z"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "실제 합성 경로1/2→3→−2를 직접 계산한다. f²(x)=−1/x. 다음 패널에서 나머지 두 번을 확인한다. 정답 f^2026(1/2)=−2. 나머지 경로−2→−1/3→1/2로 네 번마다 돌아온다. 이 궤도에 분모0인 입력1이나0이 없으므로 반복이 정의된다. 2026≡2(mod4), 정답−2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\dfrac{1+x}{1-x}$에 대하여 $f^{2026}\\left(\\dfrac12\\right)$의 값은? (단, $f^{n+1}(x)=(f^n\\circ f)(x)$) [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 합성 경로1/2→3→−2를 직접 계산한다. f²(x)=−1/x. 다음 패널에서 나머지 두 번을 확인한다. 정답 f^2026(1/2)=−2. 나머지 경로−2→−1/3→1/2로 네 번마다 돌아온다. 이 궤도에 분모0인 입력1이나0이 없으므로 반복이 정의된다. 2026≡2(mod4), 정답−2."
+  ],
+  "columns": 1
+}

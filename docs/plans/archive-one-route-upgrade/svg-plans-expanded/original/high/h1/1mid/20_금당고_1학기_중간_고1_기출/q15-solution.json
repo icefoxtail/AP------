@@ -1,0 +1,472 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "정사각형의 한 변을 s라 둔"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "VECTOR_SUM_POINT",
+              "inputs": [
+                "B",
+                "D",
+                "F"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "hiddenPointNames": [
+          "D",
+          "E",
+          "F"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sFB",
+            "refs": [
+              "F",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "rE",
+            "refs": [
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l0",
+              "ownerSegment": "sAB",
+              "text": "α",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "l1",
+              "ownerSegment": "sBC",
+              "text": "β",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sDE",
+              "text": "s",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "전체 그림 위쪽의 작은"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sub",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "6"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "1",
+                          "denominator": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "D",
+          "E"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "hiddenPointNames": [
+          "D",
+          "E"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEA",
+            "refs": [
+              "E",
+              "A"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rD",
+            "refs": [
+              "A",
+              "D",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "height",
+              "ownerSegment": "sAD",
+              "text": "α-s",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "width",
+              "ownerSegment": "sDE",
+              "text": "s",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "정사각형의 한 변을 s라 둔다. 위쪽의 작은 삼각형과 전체 삼각형에서 높이는 α−s와 α, 밑변은 s와 β이므로 s/β=(α−s)/α이다. α와 β는 원래 방정식의 두 근이며 그림은 그 정확한 길이를 사용한다. s의 수치와 마지막 계수의 합은 표시하지 않는다. 전체 그림 위쪽의 작은 직각삼각형만 평행이동하여 확대한 보조 그림이다. 세로 α−s와 가로 s가 전체 삼각형의 세로 α와 가로 β에 각각 대응한다. 실제 길이 비율은 바꾸지 않으며 작은 삼각형 밖의 정사각형과 점 B,C는 이 패널에 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2-6x+3=0$의 두 실근을 $\\alpha$, $\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$에 내접하는 정사각형의 한 변의 길이와 넓이가 두 근인 이차방정식이 $8x^2+mx+n=0$일 때, $|m+n|$의 값은? (단, 정사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있다.) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형의 한 변을 s라 둔다. 위쪽의 작은 삼각형과 전체 삼각형에서 높이는 α−s와 α, 밑변은 s와 β이므로 s/β=(α−s)/α이다. α와 β는 원래 방정식의 두 근이며 그림은 그 정확한 길이를 사용한다. s의 수치와 마지막 계수의 합은 표시하지 않는다. 전체 그림 위쪽의 작은 직각삼각형만 평행이동하여 확대한 보조 그림이다. 세로 α−s와 가로 s가 전체 삼각형의 세로 α와 가로 β에 각각 대응한다. 실제 길이 비율은 바꾸지 않으며 작은 삼각형 밖의 정사각형과 점 B,C는 이 패널에 그리지 않는다."
+  ]
+}

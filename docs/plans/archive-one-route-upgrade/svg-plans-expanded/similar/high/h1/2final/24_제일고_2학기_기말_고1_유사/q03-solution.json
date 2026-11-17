@@ -1,0 +1,100 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "pq는 PQ=와같"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "P",
+              "name": "P"
+            },
+            {
+              "id": "Q",
+              "name": "Q"
+            }
+          ],
+          "disjoint": [
+            [
+              "P",
+              "Q"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "rq는 RQ이"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "R",
+              "name": "R"
+            },
+            {
+              "id": "Q",
+              "name": "Q"
+            }
+          ],
+          "subset": [
+            "R",
+            "Q"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "sr는SR=,대우rs와같"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "S",
+              "name": "S"
+            },
+            {
+              "id": "R",
+              "name": "R"
+            }
+          ],
+          "disjoint": [
+            [
+              "S",
+              "R"
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "p⇒¬q는 P∩Q=∅와같다. 대우q⇒¬p도성립한다. 다른조건과연결하면r⇒q⇒¬p. 정답은보장되지않는역명제q⇒r,⑤. r⇒q는 R⊆Q이다. Q안 R밖의원소가있을수있어 q⇒r는보장되지않는다. 대우¬q⇒¬r와p⇒¬q를연결하면p⇒¬r. 정답⑤. s⇒¬r는S∩R=∅,대우r⇒¬s와같다. 세패널은각조건을따로도식화하며하나의원소배치라고섞지않는다. q만참이고p,r,s가거짓인반례로역명제q⇒r는거짓,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 조건 $p,q,r,s$에 대하여 $p\\Rightarrow\\sim q$, $r\\Rightarrow q$, $s\\Rightarrow\\sim r$이라고 할 때, 보기 중 옳지 않은 것은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 3개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "p⇒¬q는 P∩Q=∅와같다. 대우q⇒¬p도성립한다. 다른조건과연결하면r⇒q⇒¬p. 정답은보장되지않는역명제q⇒r,⑤. r⇒q는 R⊆Q이다. Q안 R밖의원소가있을수있어 q⇒r는보장되지않는다. 대우¬q⇒¬r와p⇒¬q를연결하면p⇒¬r. 정답⑤. s⇒¬r는S∩R=∅,대우r⇒¬s와같다. 세패널은각조건을따로도식화하며하나의원소배치라고섞지않는다. q만참이고p,r,s가거짓인반례로역명제q⇒r는거짓,정답⑤."
+  ]
+}

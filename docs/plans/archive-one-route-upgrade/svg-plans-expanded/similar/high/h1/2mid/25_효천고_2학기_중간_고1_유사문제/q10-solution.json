@@ -1,0 +1,156 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "BA의실제포함배치에서A"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "p",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "q",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "r",
+              "in": []
+            }
+          ],
+          "shade": "A",
+          "subset": [
+            "B",
+            "A"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "BA의실제포함배치에서Ac"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "p",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "q",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "r",
+              "in": []
+            }
+          ],
+          "shade": "A^c",
+          "subset": [
+            "B",
+            "A"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "BA의실제포함배치에서Bc"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "p",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "q",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "r",
+              "in": []
+            }
+          ],
+          "shade": "B^c",
+          "subset": [
+            "B",
+            "A"
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "B⊆A의실제포함배치에서A영역. A합B=A/교집합B,여집합은A밖⊆B밖. q는역방향포함의반례. 정답ㄱ/ㄴ/ㄷ. B⊆A의실제포함배치에서A^c영역. B⊆A의실제포함배치에서B^c영역.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $A\\cup B=A$일 때, 다음 보기 중 항상 옳은 것만을 있는 대로 고른 것은? [3.9점]<br><br>ㄱ. $B\\subset A$<br>ㄴ. $A^c\\subset B^c$<br>ㄷ. $A\\cap B=B$<br>ㄹ. $B^c\\subset A^c$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 3개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "B⊆A의실제포함배치에서A영역. A합B=A/교집합B,여집합은A밖⊆B밖. q는역방향포함의반례. 정답ㄱ/ㄴ/ㄷ. B⊆A의실제포함배치에서A^c영역. B⊆A의실제포함배치에서B^c영역."
+  ]
+}

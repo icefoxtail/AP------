@@ -1,0 +1,462 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a,c, 빗변은AF"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "u",
+            "refs": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "id": "v",
+            "refs": [
+              "U",
+              "V"
+            ]
+          },
+          {
+            "id": "h",
+            "refs": [
+              "O",
+              "V"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "u",
+              "text": "a",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "v",
+              "text": "c",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d",
+              "ownerSegment": "h",
+              "text": "AF",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "O",
+              "U",
+              "V"
+            ]
+          }
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "b,c, 빗변은FC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "u",
+            "refs": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "id": "v",
+            "refs": [
+              "U",
+              "V"
+            ]
+          },
+          {
+            "id": "h",
+            "refs": [
+              "O",
+              "V"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "u",
+              "text": "b",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "v",
+              "text": "c",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d",
+              "ownerSegment": "h",
+              "text": "FC",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "O",
+              "U",
+              "V"
+            ]
+          }
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a,b, 빗변은AC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "u",
+            "refs": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "id": "v",
+            "refs": [
+              "U",
+              "V"
+            ]
+          },
+          {
+            "id": "h",
+            "refs": [
+              "O",
+              "V"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "u",
+              "text": "a",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "v",
+              "text": "b",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "d",
+              "ownerSegment": "h",
+              "text": "AC",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "O",
+              "U",
+              "V"
+            ]
+          }
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "직육면체의 한 면을 펼친 직각삼각형이며 두 직각변은 a,c, 빗변은AF이다. 대표길이 a2,b4,c5는 두 조건을 만족하는 한 예시이고 유일한 모서리값이라는 뜻은 아니다. 세 면의 피타고라스 식을 합하면2(a²+b²+c²)=90. (a+b+c)²=121에서 겉넓이121−45=76. 정답76. 직육면체의 한 면을 펼친 직각삼각형이며 두 직각변은 b,c, 빗변은FC이다. 직육면체의 한 면을 펼친 직각삼각형이며 두 직각변은 a,b, 빗변은AC이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직육면체 $ABCD$-$EFGH$에서 모서리 $AE,\\ BF,\\ CG,\\ DH$는 밑면 $ABCD$에 수직이다. 모든 모서리의 길이의 합이 $44$이고 삼각형 $AFC$의 세 변의 길이의 제곱의 합이 $90$일 때, 이 직육면체의 겉넓이는? (3.5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 3개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직육면체의 한 면을 펼친 직각삼각형이며 두 직각변은 a,c, 빗변은AF이다. 대표길이 a2,b4,c5는 두 조건을 만족하는 한 예시이고 유일한 모서리값이라는 뜻은 아니다. 세 면의 피타고라스 식을 합하면2(a²+b²+c²)=90. (a+b+c)²=121에서 겉넓이121−45=76. 정답76. 직육면체의 한 면을 펼친 직각삼각형이며 두 직각변은 b,c, 빗변은FC이다. 직육면체의 한 면을 펼친 직각삼각형이며 두 직각변은 a,b, 빗변은AC이다."
+  ]
+}

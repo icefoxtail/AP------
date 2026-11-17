@@ -1,0 +1,135 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "첫 부등식을 ax4x+8로"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "8",
+                "-4",
+                "1"
+              ]
+            }
+          ],
+          "domain": [
+            -1,
+            5
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": "2",
+              "y": "4"
+            },
+            {
+              "id": "L",
+              "x": "-1",
+              "y": "13",
+              "marker": "NONE"
+            },
+            {
+              "id": "R",
+              "x": "5",
+              "y": "13",
+              "marker": "NONE"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "V",
+              "L",
+              "R"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "둘째 부등식을 x4x+8b로"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "8",
+                "-4",
+                "-1"
+              ]
+            }
+          ],
+          "domain": [
+            -5,
+            1
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": "-2",
+              "y": "12"
+            },
+            {
+              "id": "L",
+              "x": "-5",
+              "y": "3",
+              "marker": "NONE"
+            },
+            {
+              "id": "R",
+              "x": "1",
+              "y": "3",
+              "marker": "NONE"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "V",
+              "L",
+              "R"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "첫 부등식을 a≤x²−4x+8로 옮겼다. 모든 x에서 성립하려면 상수 a의 높이가 이 곡선의 최솟값을 넘을 수 없다. 꼭짓점은 (2,4)이며 최종 두 상수의 합은 쓰지 않는다. 둘째 부등식을 −x²−4x+8≤b로 옮겼다. 모든 x에서 성립하려면 b의 높이가 이 곡선의 최댓값 이상이어야 한다. 꼭짓점은 (−2,12)이며 첫 패널과 다른 함수임을 구별한다. 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 부등식 $x+a \\le x^2-3x+8 \\le 2x^2+x+b$ 가 모든 실수 $x$에 대하여 성립하도록 하는 $a$의 최댓값과 $b$의 최솟값의 합은? (단, $a, b$는 실수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식을 a≤x²−4x+8로 옮겼다. 모든 x에서 성립하려면 상수 a의 높이가 이 곡선의 최솟값을 넘을 수 없다. 꼭짓점은 (2,4)이며 최종 두 상수의 합은 쓰지 않는다. 둘째 부등식을 −x²−4x+8≤b로 옮겼다. 모든 x에서 성립하려면 b의 높이가 이 곡선의 최댓값 이상이어야 한다. 꼭짓점은 (−2,12)이며 첫 패널과 다른 함수임을 구별한다. 최종 합은 쓰지 않는다."
+  ]
+}

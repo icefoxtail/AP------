@@ -1,0 +1,373 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "B",
+          "C",
+          "D"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "B",
+          "C",
+          "D"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "base",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "right",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "top",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "left",
+            "refs": [
+              "D",
+              "O"
+            ]
+          },
+          {
+            "id": "diag",
+            "refs": [
+              "O",
+              "C"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "label0",
+              "ownerSegment": "base",
+              "text": "x=8",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "label1",
+              "ownerSegment": "right",
+              "text": "y=12",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "label2",
+              "ownerSegment": "diag",
+              "text": "4\\sqrt{13}",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "O",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "16"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "16"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "B",
+          "C",
+          "D"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "B",
+          "C",
+          "D"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "base",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "right",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "top",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "left",
+            "refs": [
+              "D",
+              "O"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "label0",
+              "ownerSegment": "base",
+              "text": "x−4=4",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "label1",
+              "ownerSegment": "right",
+              "text": "y+4=16",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "O",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "실제 가로x8,세로y12에서 대각선4√13이고 넓이96이다. 변형 뒤 가로4,세로16으로 넓이64가 되어32 감소한다. x²+y²208과 x−y=−4로 양의 해를 선택한다. 정답64.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "대각선의 길이가 $4\\sqrt{13}$인 직사각형 $ABCD$가 있다. 이 직사각형의 가로 길이는 4만큼 줄어들고 세로 길이는 4만큼 늘어난 직사각형을 $A'B'C'D'$라 하자. $A'B'C'D'$의 넓이는 $ABCD$의 넓이보다 32만큼 작을 때, $A'B'C'D'$의 넓이는? [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 가로x8,세로y12에서 대각선4√13이고 넓이96이다. 변형 뒤 가로4,세로16으로 넓이64가 되어32 감소한다. x²+y²208과 x−y=−4로 양의 해를 선택한다. 정답64."
+  ]
+}

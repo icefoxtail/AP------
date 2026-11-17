@@ -1,0 +1,61 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "shade": "(A∪B)∩(A^c∪B)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "shade": "(A^c∪B^c)∩(A∪B^c)"
+        }
+      }
+    }
+  ],
+  "caption": "첫 번째 괄호에 해당하는 영역을 비교한다. 두 번째 괄호에 해당하는 영역을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U$일 때 $\\{(A\\cup B)\\cap(A^c\\cup B)\\}\\cup\\{(A^c\\cup B^c)\\cap(A\\cup B^c)\\}$를 간단히 하면? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 번째 괄호에 해당하는 영역을 비교한다. 두 번째 괄호에 해당하는 영역을 비교한다."
+  ]
+}

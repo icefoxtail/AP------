@@ -1,0 +1,151 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=6일 때"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "12",
+                "-8",
+                "1"
+              ]
+            }
+          ],
+          "domain": [
+            1,
+            7
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": "1",
+              "y": "5",
+              "marker": "NONE"
+            },
+            {
+              "id": "V",
+              "x": "4",
+              "y": "-4"
+            },
+            {
+              "id": "R",
+              "x": "7",
+              "y": "5",
+              "marker": "NONE"
+            },
+            {
+              "id": "A",
+              "x": "2",
+              "y": "0"
+            },
+            {
+              "id": "B",
+              "x": "6",
+              "y": "0"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "L",
+              "R"
+            ]
+          },
+          "formula": "x^2-8*x+12"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "가로축 k의"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-8",
+                "-4",
+                "1"
+              ]
+            }
+          ],
+          "domain": [
+            -2,
+            6
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": "-2",
+              "y": "4",
+              "marker": "NONE"
+            },
+            {
+              "id": "V",
+              "x": "2",
+              "y": "-12"
+            },
+            {
+              "id": "R",
+              "x": "6",
+              "y": "4",
+              "marker": "NONE"
+            },
+            {
+              "id": "A",
+              "x": "2-2*sqrt(3)",
+              "y": "0"
+            },
+            {
+              "id": "B",
+              "x": "2+2*sqrt(3)",
+              "y": "0"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "L",
+              "R"
+            ]
+          },
+          "axisTitles": {
+            "x": "k",
+            "y": "H"
+          },
+          "formula": "(x-2)^2-12"
+        }
+      }
+    }
+  ],
+  "caption": "k=6일 때 y=x²−8x+12의 두 교점은2,6, 꼭짓점은(4,−4)이다. 0이하인 범위2≤x≤6이므로 (가)는 거짓. 정답 (나)만 옳은②. 가로축 k의 H(k)=D/4=(k−2)²−12는 k=2±2√3에서0이며 H≥0일 때 원래 부등식 해가 존재한다. 따라서 (나)는 참. H<0의 정수−1,0,1,2,3,4,5의 합은14라 (다)는 거짓.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2+2(2-k)x+12\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=6$일 때, 이차부등식의 해는 $x\\le2$ 또는 $x\\ge6$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $k\\le2-2\\sqrt3$ 또는 $k\\ge2+2\\sqrt3$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 15이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=6일 때 y=x²−8x+12의 두 교점은2,6, 꼭짓점은(4,−4)이다. 0이하인 범위2≤x≤6이므로 (가)는 거짓. 정답 (나)만 옳은②. 가로축 k의 H(k)=D/4=(k−2)²−12는 k=2±2√3에서0이며 H≥0일 때 원래 부등식 해가 존재한다. 따라서 (나)는 참. H<0의 정수−1,0,1,2,3,4,5의 합은14라 (다)는 거짓."
+  ]
+}

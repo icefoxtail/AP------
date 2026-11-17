@@ -1,0 +1,315 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          }
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "labBC",
+              "ownerSegment": "sBC",
+              "text": "4",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "labCA",
+              "ownerSegment": "sCA",
+              "text": "6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "labAB",
+              "ownerSegment": "sAB",
+              "text": "c",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "label": "60",
+              "value": 60,
+              "style": "SECTOR",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          }
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 420
+        },
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "labBC",
+              "ownerSegment": "sBC",
+              "text": "4",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "labCA",
+              "ownerSegment": "sCA",
+              "text": "6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "labAB",
+              "ownerSegment": "sAB",
+              "text": "c",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "label": "120",
+              "value": 120,
+              "style": "SECTOR",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "넓이에서 얻은 같은 사인값의 예각과 둔각 가지를 각각 코사인법칙에 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle \\mathrm{ABC}$에서 $a=4$, $b=6$이고 넓이가 $6\\sqrt{3}$일 때, 가능한 변 $c$의 길이의 제곱의 합을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이에서 얻은 같은 사인값의 예각과 둔각 가지를 각각 코사인법칙에 연결한다."
+  ]
+}

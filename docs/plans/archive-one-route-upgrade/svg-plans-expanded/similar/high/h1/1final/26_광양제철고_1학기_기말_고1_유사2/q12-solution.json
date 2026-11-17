@@ -1,0 +1,147 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "2",
+                "1"
+              ]
+            }
+          ],
+          "domain": [
+            "-5/2",
+            "1/2"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": "-5/2",
+              "y": "5/4",
+              "marker": "NONE"
+            },
+            {
+              "id": "V",
+              "x": "-1",
+              "y": "-1"
+            },
+            {
+              "id": "O",
+              "x": "0",
+              "y": "0"
+            },
+            {
+              "id": "R",
+              "x": "1/2",
+              "y": "5/4",
+              "marker": "NONE"
+            },
+            {
+              "id": "Z",
+              "x": "-2",
+              "y": "0"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "L",
+              "R"
+            ]
+          },
+          "formula": "(0) + (2)*x + (1)*x^2"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "2",
+                "-1"
+              ]
+            }
+          ],
+          "domain": [
+            "-1/2",
+            "5/2"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": "-1/2",
+              "y": "-5/4",
+              "marker": "NONE"
+            },
+            {
+              "id": "V",
+              "x": "1",
+              "y": "1"
+            },
+            {
+              "id": "O",
+              "x": "0",
+              "y": "0"
+            },
+            {
+              "id": "R",
+              "x": "5/2",
+              "y": "-5/4",
+              "marker": "NONE"
+            },
+            {
+              "id": "Z",
+              "x": "2",
+              "y": "0"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "L",
+              "R"
+            ]
+          },
+          "formula": "(0) + (2)*x + (-1)*x^2"
+        }
+      }
+    }
+  ],
+  "caption": "c=0이고 b>0이면 원점 가까이에서 ax+b>0이므로 x의 양·음 양쪽에 제1·제3사분면 점이 생긴다. 이 패널은 a=1,b=2인 정확한 예시이며 전체 계수의 경우를 대표하는 유일한 식이 아니다. a의 부호가 달라도 원점 근처 부호 관계를 비교한다. b<0일 때 a>0은 제3사분면을,a<0은 제1사분면을 지나지 못한다. b는1..5의5가지이고 a는0,b를 뺀6가지. 정답30개. 실제 함수의 정의역은 전체 실수이며 이 창은 두 근·극점·원점 근처의 부호를 확대한 표시 구간이다. 이 패널은 a=−1,b=2인 정확한 예시이며 전체 계수의 경우를 대표하는 유일한 식이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8개의 정수 $-2,-1,0,1,2,3,4,5$ 중 서로 다른 세 수 $a,b,c$를 택하여 만든 이차함수 $y=ax^2+bx+c$의 그래프 중 원점과 제1사분면 및 제3사분면을 모두 지나는 함수의 개수는? [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "c=0이고 b>0이면 원점 가까이에서 ax+b>0이므로 x의 양·음 양쪽에 제1·제3사분면 점이 생긴다. 이 패널은 a=1,b=2인 정확한 예시이며 전체 계수의 경우를 대표하는 유일한 식이 아니다. a의 부호가 달라도 원점 근처 부호 관계를 비교한다. b<0일 때 a>0은 제3사분면을,a<0은 제1사분면을 지나지 못한다. b는1..5의5가지이고 a는0,b를 뺀6가지. 정답30개. 실제 함수의 정의역은 전체 실수이며 이 창은 두 근·극점·원점 근처의 부호를 확대한 표시 구간이다. 이 패널은 a=−1,b=2인 정확한 예시이며 전체 계수의 경우를 대표하는 유일한 식이 아니다."
+  ]
+}
