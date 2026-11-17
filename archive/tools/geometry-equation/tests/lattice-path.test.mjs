@@ -105,6 +105,18 @@ test('the figure composes, the brute-force observer passes it, and it catches a 
     const shown=await compose(q12,2);
     assert.ok(/id="count-6-3"/.test(shown));
     assert.ok(has(await audit({...q12,hideTargetCount:true},shown),'LP_TARGET_COUNT_SHOWN:6,3'));
+    // a problem figure hides the final count even when the plan says nothing (or asks to show it): the answer is never drawn there
+    for(const lattice of [q12,{...q12,hideTargetCount:false}]){
+      const problem=await composeLatticePathFigure({plan:plan(lattice),model:solveLattice(lattice),identity:assetIdentity('18_테스트|9','PROBLEM_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+      assert.equal(problem.status,'COMPOSED',JSON.stringify(problem.detail));
+      assert.ok(!/id="count-6-3"/.test(problem.svg),'the final count is not drawn in a problem figure');
+      assert.ok(/id="count-0-0"/.test(problem.svg),'the other counts stay');
+      assert.equal((await audit({...q12,hideTargetCount:true},problem.svg)).status,'PASS');
+      assert.ok(has(await audit(q12,problem.svg),'LP_COUNT_'),'a plan that shows the count does not match the hidden figure');
+    }
+    // the observer itself refuses the final count on a problem figure, whatever the plan says
+    const onProblem=(await pythonWorker({lattice:q12,svg:shown,surface:'PROBLEM_VISUAL'},{script:observer})).result;
+    assert.ok(has(onProblem,'LP_TARGET_COUNT_SHOWN:6,3'),JSON.stringify(onProblem.errors));
     // a point moved, and a plan asking for another forbidden road than the one drawn
     assert.ok(has(await audit(q12,edit(svg,/<circle id="point-P"[^>]*>/,tag=>tag.replace(/cx="[\d.]+"/,'cx="150"'))),'LP_POINT_MISPLACED:P'));
     assert.ok(has(await audit({...q12,forbidden:[[[3,1],[3,2]]]},svg),'LP_'));

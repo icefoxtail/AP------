@@ -158,8 +158,10 @@ def recover_lattice(root, plan, errors):
     return u, cx[0], cy[-1]    # unit, x of column 0, y of row 0 (rows grow upward = y decreases)
 
 
-def audit(lat, svg):
+def audit(lat, svg, surface=None):
     plan = Plan(lat)
+    # a problem figure never shows the final count (it is the answer), whatever the plan says (the engine forces the same)
+    if surface == 'PROBLEM_VISUAL': plan.hide_target = True
     expected = plan.expected_counts()
     if plan.start is not None and plan.total == 0: fail('LP_NO_VALID_PATH')
     errors = []

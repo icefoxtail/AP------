@@ -278,6 +278,8 @@ export async function composeLatticePathFigure({plan,model,identity,typographyPo
   let ownBrowser=null;
   try{
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
+    // A problem figure never writes the final count (it is the answer): hideTargetCount is forced to true there, whatever the plan says; the observer then reads the same hidden plan.
+    if(identity?.surface==='PROBLEM_VISUAL'&&plan?.lattice&&plan.lattice.hideTargetCount!==true){plan={...plan,lattice:{...plan.lattice,hideTargetCount:true}};model=solveLattice(plan.lattice);}
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
     try{spec=latticePathSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='LATTICE_MODEL_MISMATCH'?error.message:'LATTICE_SPEC_ERROR',{code:error.message});}
@@ -310,7 +312,7 @@ export async function composeLatticePathFigure({plan,model,identity,typographyPo
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-lattice-path-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({lattice:plan.lattice,svg},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({lattice:plan.lattice,svg,surface:identity?.surface},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
