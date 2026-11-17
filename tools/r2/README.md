@@ -50,3 +50,11 @@ powershell -ExecutionPolicy Bypass -File .\tools\r2\audit-archive-assets.ps1
 ```
 
 The script scans `archive/assets/images` for `png`, `jpg`, `jpeg`, `webp`, `gif`, and `svg` files. It writes `_tmp/r2-archive-assets-manifest.json` with each asset key, byte size, SHA-256 hash, and summary data including the 20 largest files.
+
+## Upload policy (2026-11-17)
+
+The `R2 Archive Assets Copy` workflow never compares, lists, or copies the whole image folder (Class A request charges). Every upload is an explicit file list in one of three modes:
+
+- push: only the images changed since the newest successful push or catch_up run (else since this push's `before`). If it cannot tell which images changed, the job fails and uploads nothing.
+- manual `mode=catch_up`: the same changed-image list, with a higher limit, for when pushes keep failing; it advances the base.
+- manual `mode=folder` + `folder`: the git-tracked images of one exam folder under `archive/assets/images/`. A folder run does not advance the base, so it cannot hide the images of an earlier failed push.
