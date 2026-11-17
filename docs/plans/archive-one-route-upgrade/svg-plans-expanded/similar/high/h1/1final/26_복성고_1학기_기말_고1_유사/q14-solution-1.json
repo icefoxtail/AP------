@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "4",
+        "y": "-4"
+      },
+      {
+        "id": "R",
+        "x": "7",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "보기의 k=6인 이차곡선이다. 위로 열린 곡선에서0 이하인 부분이 어디인지 확인하여 보기의 두 반직선과 비교한다. 참·거짓 판정이나 최종 선택지는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2+2(2-k)x+12\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=6$일 때, 이차부등식의 해는 $x\\le2$ 또는 $x\\ge6$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $k\\le2-2\\sqrt3$ 또는 $k\\ge2+2\\sqrt3$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 15이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가k6이면2≤x≤6로거짓. 나D≥0조건참. 다D<0인정수−1..5합14≠15거짓.나만②. subanswer진위선언은캡션없음.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "보기의 k=6인 이차곡선이다. 위로 열린 곡선에서0 이하인 부분이 어디인지 확인하여 보기의 두 반직선과 비교한다. 참·거짓 판정이나 최종 선택지는 표시하지 않는다."
+  ]
+}

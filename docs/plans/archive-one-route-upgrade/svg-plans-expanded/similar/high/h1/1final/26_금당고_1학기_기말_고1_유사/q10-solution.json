@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "11",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "13",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "n"
+  },
+  "caption": "가장 작은 자연수를 n이라 하면 합은4n+6이다. 50<4n+6<58을 정리한 열린 구간을 표시했다. 내부 자연수를 찾은 뒤 가장 큰 수 n+3으로 돌아가며 최종 큰 수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속하는 네 자연수의 합이 50보다 크고 58보다 작을 때, 네 자연수 중 가장 큰 자연수는? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "11<n<13 ->n12,가장큰15②.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "가장 작은 자연수를 n이라 하면 합은4n+6이다. 50<4n+6<58을 정리한 열린 구간을 표시했다. 내부 자연수를 찾은 뒤 가장 큰 수 n+3으로 돌아가며 최종 큰 수는 쓰지 않는다."
+  ]
+}

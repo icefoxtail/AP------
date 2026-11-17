@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "21",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "29",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "전체 구슬 수는7x+5이다. 마지막 날에는 남은 구슬만 쓰므로8(x−3)<7x+5≤8(x−2)이다. 정리한 x≥21과 x<29를 따로 표시했다. 정수 일수의 양끝을 찾되 최종 두 값의 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지수는 구슬 한 봉지를 사서 매일 일정한 개수씩 꺼내 쓰려고 한다. 하루에 7개씩 쓰면 $x$일 동안 쓰고 5개가 남고, 8개씩 쓰면 $(x-2)$일 만에 모두 쓰게 된다고 할 때, $x$의 최댓값과 최솟값의 합은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "21≤x<29 정수21..28,합49①. 마지막날일부소비가능한일수해석을caption명시.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 구슬 수는7x+5이다. 마지막 날에는 남은 구슬만 쓰므로8(x−3)<7x+5≤8(x−2)이다. 정리한 x≥21과 x<29를 따로 표시했다. 정수 일수의 양끝을 찾되 최종 두 값의 합은 쓰지 않는다."
+  ]
+}

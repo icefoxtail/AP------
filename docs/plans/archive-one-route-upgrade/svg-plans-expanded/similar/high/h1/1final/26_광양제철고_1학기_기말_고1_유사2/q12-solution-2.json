@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "-15",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "-3",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "O",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "0"
+      ],
+      "y": [
+        "0"
+      ]
+    }
+  },
+  "caption": "c=0이고 b>0이면 원점 가까이에서 ax+b>0이므로 x의 양·음 양쪽에 제1·제3사분면 점이 생긴다. 이 패널은 a=−1,b=2인 정확한 예시이며 전체 계수의 경우를 대표하는 유일한 식이 아니다. a의 부호가 달라도 원점 근처 부호 관계를 비교한다. 최종 함수 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8개의 정수 $-2,-1,0,1,2,3,4,5$ 중 서로 다른 세 수 $a,b,c$를 택하여 만든 이차함수 $y=ax^2+bx+c$의 그래프 중 원점과 제1사분면 및 제3사분면을 모두 지나는 함수의 개수는? [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "c0,a,b 비영 서로다름. b>0 충분; b<0,a>0이면x<0에서y>0으로3사분면없음,a<0이면x>0에서y<0으로1사분면없음. b5개,a6개->30⑤. 두 예시곡선 모두 허용 계수.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "c=0이고 b>0이면 원점 가까이에서 ax+b>0이므로 x의 양·음 양쪽에 제1·제3사분면 점이 생긴다. 이 패널은 a=−1,b=2인 정확한 예시이며 전체 계수의 경우를 대표하는 유일한 식이 아니다. a의 부호가 달라도 원점 근처 부호 관계를 비교한다. 최종 함수 개수는 쓰지 않는다."
+  ]
+}

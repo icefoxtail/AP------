@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "13",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "17",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "t"
+  },
+  "caption": "텐트 수를 t라 하면 N=6t+10이다. 마지막 사용 텐트에 적어도 한 명이 있어야 하므로8(t−3)<N≤8(t−2)이다. 두 조건을 정리한 t≥13과 t<17을 따로 표시했다. 가능한 정수 양끝에서 학생 수를 계산하되 최종 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 학교의 학생들이 텐트에서 야영하려고 한다. 한 텐트에 6명씩 배정하면 10명이 남고, 8명씩 배정하면 텐트가 2개 남는다. 학생 수가 최소일 때와 최대일 때의 합은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "13≤t<17,N최소88 최대106 합194①. 마지막 텐트 일부배정 가능 해석을 명시.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "텐트 수를 t라 하면 N=6t+10이다. 마지막 사용 텐트에 적어도 한 명이 있어야 하므로8(t−3)<N≤8(t−2)이다. 두 조건을 정리한 t≥13과 t<17을 따로 표시했다. 가능한 정수 양끝에서 학생 수를 계산하되 최종 합은 쓰지 않는다."
+  ]
+}

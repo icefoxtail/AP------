@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "첫 행은 이차부등식으로 정해진 고정 구간이다. 둘째 행은 k=0인 비교 예시의 열린 이동구간 k−3<x<k+3이며 최종 p=5를 만족하는 k를 나타낸 것이 아니다. 정수에서는 k−2부터 k+2까지의 다섯 후보와 고정 구간의 교집합을 구한다. 창을 옮기며 합을 조사하고 최종 k들의 합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서논술형2&gt;<br>$x$에 대한 연립부등식 $\\begin{cases}|x-k|\\lt3\\\\x^2-3x-10\\le0\\end{cases}$을 만족시키는 정수 $x$가 존재할 때, 이 연립부등식을 만족시키는 모든 정수 $x$값의 합을 $p$라고 하자. $p=5$가 되도록 하는 모든 정수 $k$값의 합을 풀이과정과 함께 구하시오. (7점, 부분점수 있음)\\n",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정수k−4..7가능,합5되는k1,7만 ->합8. 예시k0일때정수−2..2합0,최종아님.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 행은 이차부등식으로 정해진 고정 구간이다. 둘째 행은 k=0인 비교 예시의 열린 이동구간 k−3<x<k+3이며 최종 p=5를 만족하는 k를 나타낸 것이 아니다. 정수에서는 k−2부터 k+2까지의 다섯 후보와 고정 구간의 교집합을 구한다. 창을 옮기며 합을 조사하고 최종 k들의 합은 쓰지 않는다."
+  ]
+}

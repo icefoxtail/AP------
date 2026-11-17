@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "첫 부등식의 x>3과 둘째 부등식의 x<7을 서로 다른 행에 표시했다. 두 조건을 동시에 만족하는 부분을 찾고 경계의 열린 점을 구별한다. 최종 공통 구간 표기는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립부등식 $\\begin{cases}3x-4>5\\\\2x+5<19\\end{cases}$을 풀면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "3<x<7⑤. 두 원래 조건만 표시, 최종교집합행 없음.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부등식의 x>3과 둘째 부등식의 x<7을 서로 다른 행에 표시했다. 두 조건을 동시에 만족하는 부분을 찾고 경계의 열린 점을 구별한다. 최종 공통 구간 표기는 쓰지 않는다."
+  ]
+}

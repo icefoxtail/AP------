@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "AB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "AD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label2",
+        "ownerSegment": "BC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label3",
+        "ownerSegment": "BD",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label4",
+        "ownerSegment": "DC",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "도시 사이의 선 하나는 해당 두 도시를 직접 잇는 도로 묶음을 나타내며 숫자는 그 묶음의 도로 수이다. 선의 길이·각도는 원문 거리가 아닌 추상 배치이다. A에서 C로 가는 서로 다른 도시 방문 순서를 먼저 나눈 뒤 각 경로의 숫자를 곱한다. A와 C를 직접 잇는 선은 없으며 최종 경우의 수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 지역 $A,B,C,D$를 연결하는 도로망이 있다. 두 지역 사이를 직접 잇는 도로는 $A$와 $B$ 사이에 2개, $A$와 $D$ 사이에 2개, $B$와 $C$ 사이에 3개, $B$와 $D$ 사이에 1개, $C$와 $D$ 사이에 2개이고, $A$와 $C$ 사이에는 직접 잇는 도로가 없다. $A$지역을 출발하여 각 지역을 두 번 이상 지나지 않으면서 $C$지역으로 가는 방법의 수는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "단순경로ABC,ADC,ABDC,ADBC뿐. 도로수곱6+4+4+6=20①. 추상 네트워크 간선가중치는주어진도로개수, 실제거리아님.",
+      "mappedTo": "independent-math"
+    },
+    {
+      "id": "gauge",
+      "condition": "A=(0,0)은 평면도형의 평행이동 자유도를 고정하는 추상 배치 기준점이다. 도시 배치는 원문 거리/각도를 주장하지 않는 추상 네트워크이며 나머지 모든 점은 A에서 해당 정수 칸수만큼 TRANSLATE_POINT로 유도한다. 숫자 좌표는 숨기고 도시 이름 A,B,C,D는 표시한다.",
+      "mappedTo": "A and derived network nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "도시 사이의 선 하나는 해당 두 도시를 직접 잇는 도로 묶음을 나타내며 숫자는 그 묶음의 도로 수이다. 선의 길이·각도는 원문 거리가 아닌 추상 배치이다. A에서 C로 가는 서로 다른 도시 방문 순서를 먼저 나눈 뒤 각 경로의 숫자를 곱한다. A와 C를 직접 잇는 선은 없으며 최종 경우의 수는 쓰지 않는다."
+  ]
+}

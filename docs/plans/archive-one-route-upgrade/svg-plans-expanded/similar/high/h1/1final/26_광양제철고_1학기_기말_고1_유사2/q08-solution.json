@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      0
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-5"
+      },
+      {
+        "id": "R",
+        "x": "0",
+        "y": "4"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "0"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "H"
+    }
+  },
+  "caption": "먼저 a>0과 a=0은 양수가 되는 x가 있으므로 제외한다. a<0에서는 D/4=a²+6a+4≤0이어야 한다. 가로축을 a로 하여 판별식 보조곡선을 그렸으며 정수 눈금에서 높이가0 이하인 경우를 확인한다. 최종 정수 개수는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$에 대한 부등식 $ax^2-2(a+2)x-2>0$이 해를 갖지 않을 때, 정수 $a$의 개수는? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a<0,D/4≤0 ->−3−√5≤a≤−3+√5. 정수−5..−1 총5③. a0 일차예외 확인.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "먼저 a>0과 a=0은 양수가 되는 x가 있으므로 제외한다. a<0에서는 D/4=a²+6a+4≤0이어야 한다. 가로축을 a로 하여 판별식 보조곡선을 그렸으며 정수 눈금에서 높이가0 이하인 경우를 확인한다. 최종 정수 개수는 쓰지 않는다."
+  ]
+}

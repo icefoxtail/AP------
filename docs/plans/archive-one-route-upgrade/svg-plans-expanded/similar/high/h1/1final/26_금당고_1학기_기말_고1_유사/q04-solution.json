@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-4",
+        "y": "8",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-49/4"
+      },
+      {
+        "id": "R",
+        "x": "5",
+        "y": "8",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "H"
+    }
+  },
+  "caption": "우변을 옮긴 H(x)=x²−x−12의 부호를 살핀다. 위로 열린 이차곡선이므로 두 영점 사이에서 음수가 된다. 원래 부등호가 엄격하므로 영점 자체는 제외한다. 최종 경계 수치와 해구간 표기는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2-12<x$를 풀면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "(x+3)(x−4)<0 ->−3<x<4④. 최종영점좌표미표시.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "우변을 옮긴 H(x)=x²−x−12의 부호를 살핀다. 위로 열린 이차곡선이므로 두 영점 사이에서 음수가 된다. 원래 부등호가 엄격하므로 영점 자체는 제외한다. 최종 경계 수치와 해구간 표기는 쓰지 않는다."
+  ]
+}

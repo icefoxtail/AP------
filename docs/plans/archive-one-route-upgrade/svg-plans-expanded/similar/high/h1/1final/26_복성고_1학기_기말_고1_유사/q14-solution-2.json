@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "4",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-12"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "L",
+        "V",
+        "R"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "0"
+      ]
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "H"
+    }
+  },
+  "caption": "가로축은 k이며 H(k)=D/4=(k−2)²−12인 판별식 보조곡선이다. 원래 x에 관한 이차부등식의 해 존재 여부는 H의 부호로 판단하고 접할 때의 등호도 살핀다. 정수 눈금과 대칭을 이용하되 보기의 최종 옳은 조합과 정수합은 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차부등식 $x^2+2(2-k)x+12\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=6$일 때, 이차부등식의 해는 $x\\le2$ 또는 $x\\ge6$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $k\\le2-2\\sqrt3$ 또는 $k\\ge2+2\\sqrt3$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 15이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가k6이면2≤x≤6로거짓. 나D≥0조건참. 다D<0인정수−1..5합14≠15거짓.나만②. subanswer진위선언은캡션없음.",
+      "mappedTo": "independent-math"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 k이며 H(k)=D/4=(k−2)²−12인 판별식 보조곡선이다. 원래 x에 관한 이차부등식의 해 존재 여부는 H의 부호로 판단하고 접할 때의 등호도 살핀다. 정수 눈금과 대칭을 이용하되 보기의 최종 옳은 조합과 정수합은 쓰지 않는다."
+  ]
+}
