@@ -125,6 +125,16 @@
         for (const attr of box.attributes) node.setAttribute(attr.name, attr.value);
         node.classList.add('sol-box-long');
         node.innerHTML = '<div class="sol-meta"><div class="sol-exp"></div></div>';
+        // Same heading as the executor's continuation shells: tell the student which question this tail belongs to.
+        const numNode = typeof box.querySelector === 'function' ? box.querySelector('.q-num') : null;
+        const num = String(numNode?.textContent || '').trim().replace(/\.\s*$/, '');
+        if (num) {
+            const label = document.createElement('div');
+            label.className = 'sol-cont-label';
+            label.style.cssText = 'font-size:8.5pt;font-weight:700;color:#555;margin:0 0 3px 0;line-height:1.4;';
+            label.textContent = `${num}. (이어짐)`;
+            node.insertBefore(label, node.firstChild);
+        }
         return node;
     }
     // Moves the loaded solution figure from the head of a solution box into a final solution chunk (once).

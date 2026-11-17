@@ -58,6 +58,22 @@
         return applied;
     }
 
+    // A continuation shell holds only the tail of a solution, so without a heading a student cannot tell which
+    // question it belongs to. Put "<number>. (이어짐)" at its top; the continuation overhead measured from the shell
+    // then includes this line, so the fit math stays correct.
+    function labelContinuationShell(shell, sourceBox, qNo, doc) {
+        if (!shell || !doc || typeof shell.querySelector !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
+        const numNode = typeof sourceBox?.querySelector === 'function' ? sourceBox.querySelector('.q-num') : null;
+        const num = String(numNode?.textContent || '').trim().replace(/\.\s*$/, '') || (Number(qNo) > 0 ? String(qNo) : '');
+        if (!num) return shell;
+        const label = doc.createElement('div');
+        label.className = 'sol-cont-label';
+        label.style.cssText = 'font-size:8.5pt;font-weight:700;color:#555;margin:0 0 3px 0;line-height:1.4;';
+        label.textContent = `${num}. (이어짐)`;
+        shell.insertBefore(label, shell.firstChild);
+        return shell;
+    }
+
     async function measureSolutionBatch(boxes, staging, deps, document) {
         const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
         boxes.forEach(box => box.classList.add('fit-tight'));
@@ -73,7 +89,7 @@
                     const node = document.createElement('span'); node.className = 'sol-chunk'; node.dataset.chunkId = `c${chunkIndex}`; node.innerHTML = html; host.appendChild(node);
                     return { node, chunkId: node.dataset.chunkId };
                 });
-                record.shell = deps.makeLongSolutionShell(record.box, index + 1, true);
+                record.shell = labelContinuationShell(deps.makeLongSolutionShell(record.box, index + 1, true), record.box, index + 1, document);
                 staging.append(host, record.shell); hosts.push(host, record.shell);
             });
             await deps.typesetMath('solution-decision-batch', hosts);
@@ -269,7 +285,7 @@
                         ? Array.from(exp.children).slice(-borrowCount)
                         : [];
                     targetCol = advanceColumn();
-                    shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                    shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     markSolutionPlacement(shell, true);
@@ -289,7 +305,7 @@
                     if (deps.rendererMode() === 'legacy') await deps.raf();
                     if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
                         targetCol = advanceColumn();
-                        shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                        shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
                         exp = shell.querySelector('.sol-exp');
                         targetCol.appendChild(shell);
                         markSolutionPlacement(shell, true);
@@ -452,7 +468,7 @@
             const chunkTotal = measuredChunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0);
             const primaryBlockId = `solution-block:${solutionIndex + 1}:primary`;
             box.dataset.solutionDecisionBlockId = primaryBlockId;
-            const continuationShell = deps.makeLongSolutionShell(box, solutionIndex + 1, true);
+            const continuationShell = labelContinuationShell(deps.makeLongSolutionShell(box, solutionIndex + 1, true), box, solutionIndex + 1, document);
             staging.appendChild(continuationShell);
             await deps.typesetMath('solution-decision-shell', [continuationShell]);
             const continuationShellOverhead = Math.max(1, Number(continuationShell.scrollHeight || 1));
