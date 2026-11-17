@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "svg-engine-upgrade-requirement-v1",
+  "kind": "ENGINE_UPGRADE_REQUIREMENT",
+  "status": "ENGINE_UPGRADE_REQUIRED",
+  "executable": false,
+  "exam": "archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+  "no": 23,
+  "sourceCommit": "494319a3ebdd16414b02a213684649e820c1d95d",
+  "sourceBlobSha": "fe6fc8eb7b2b07758f591a38106fb1c1030d76c8",
+  "assetRole": "SOLUTION",
+  "existingAsset": "archive/assets/images/26_제일고_1학기_중간_고2_대수/q23-solution.svg",
+  "requestedAction": "기존 그림 보존, 현 엔진에서 같은 단일 혼합함수를 정확히 지원하도록 확장 후 가독성 업그레이드",
+  "studentGoal": "선형 가지·절댓값 지수 가지와 수평선의 교점 수가 경계 n=0,8에서 바뀌는 이유를 학생이 순서대로 추적한다.",
+  "decisiveStep": "n<0,n=0,0<n<8,n=8,n>8로 나누고 경계점의 중복과 점근선 비도달을 구별하여 g(n)을 센다.",
+  "currentGap": {
+    "code": "MIXED_SINGLE_FUNCTION_BRANCHES_UNSUPPORTED",
+    "reason": "현재 multi-curve는 서로 다른 함수를 비교하는 기능으로 단일함수 가지 분할을 금지한다. 다항 조각 기능에 지수식을 넣거나 여러함수로 위장하지 않는다.",
+    "neededCapability": "동일 functionId 아래 LINE/EXPONENTIAL 가지의 정확한 식·정의역·열림닫힘·접점중복제거·점근선비도달을 표현하는 혼합 단일함수"
+  },
+  "exactFunction": {
+    "id": "f",
+    "branches": [
+      {
+        "id": "linear",
+        "expression": "x+11",
+        "domain": "x < -3"
+      },
+      {
+        "id": "exp_down",
+        "expression": "2^(1-x)-8",
+        "domain": "-3 <= x <= -2"
+      },
+      {
+        "id": "exp_up",
+        "expression": "8-2^(1-x)",
+        "domain": "x > -2"
+      }
+    ],
+    "joinRules": [
+      "(-3,8)은 선형 가지 끝에서 제외, 지수 가지에서 포함: 함수 점 1개",
+      "(-2,0)은 내려오는 가지에 포함하고 올라가는 가지에서 제외: 함수 점 1개"
+    ],
+    "asymptote": {
+      "equation": "y=8",
+      "direction": "x -> +infinity",
+      "attainedByRightBranch": false
+    }
+  },
+  "panels": [
+    {
+      "id": "overview",
+      "purpose": "단일함수 세 가지와 두 경계점 위치를 확인",
+      "xRange": [
+        -13,
+        4
+      ],
+      "yRange": [
+        -2,
+        10
+      ],
+      "showProbes": false,
+      "labels": [
+        "x=-3",
+        "(-3,8)",
+        "(-2,0)",
+        "y=8 점근선",
+        "y=x+11 (x<-3)",
+        "y=|2^(1-x)-8| (x≥-3)"
+      ],
+      "note": "왼쪽 선형 가지와 오른쪽 지수 가지는 같은 함수 색/범례를 유지한다."
+    },
+    {
+      "id": "boundary_detail",
+      "purpose": "-3와-2 부근이 전체그래프에서 좁아지는 문제를 별도 확대",
+      "xRange": [
+        -3.4,
+        -1.4
+      ],
+      "yRange": [
+        -0.4,
+        8.8
+      ],
+      "labels": [
+        "x<-3",
+        "x≥-3",
+        "(-3,8) 한 점",
+        "(-2,0) 한 점"
+      ],
+      "note": "전체패널과 다른 축범위임을 표시. 같은 물리축척이라는 허위표시는 하지 않는다."
+    },
+    {
+      "id": "probe_-1",
+      "purpose": "n=-1에서 교점 1개를 각 가지와 대응",
+      "probe": -1,
+      "expectedDistinctIntersections": 1,
+      "xRange": [
+        -13,
+        4
+      ],
+      "yRange": [
+        -2,
+        10
+      ],
+      "rootEvidence": [
+        -12
+      ],
+      "note": "교점에 번호표시하되 정확 교점 좌표/중간계산을 표시한다."
+    },
+    {
+      "id": "probe_0",
+      "purpose": "n=0에서 교점 2개를 각 가지와 대응",
+      "probe": 0,
+      "expectedDistinctIntersections": 2,
+      "xRange": [
+        -13,
+        4
+      ],
+      "yRange": [
+        -2,
+        10
+      ],
+      "rootEvidence": [
+        -11,
+        -2.0
+      ],
+      "note": "n=8에서는 오른쪽 점근선에 교점이 없고 (-3,8)만 포함. n=0에서는 (-2,0)을 두 번 세지 않는다."
+    },
+    {
+      "id": "probe_4",
+      "purpose": "n=4에서 교점 3개를 각 가지와 대응",
+      "probe": 4,
+      "expectedDistinctIntersections": 3,
+      "xRange": [
+        -13,
+        4
+      ],
+      "yRange": [
+        -2,
+        10
+      ],
+      "rootEvidence": [
+        -7,
+        -2.584962500721156,
+        -1.0
+      ],
+      "note": "교점에 번호표시하되 정확 교점 좌표/중간계산을 표시한다."
+    },
+    {
+      "id": "probe_8",
+      "purpose": "n=8에서 교점 1개를 각 가지와 대응",
+      "probe": 8,
+      "expectedDistinctIntersections": 1,
+      "xRange": [
+        -13,
+        4
+      ],
+      "yRange": [
+        -2,
+        10
+      ],
+      "rootEvidence": [
+        -3.0
+      ],
+      "note": "n=8에서는 오른쪽 점근선에 교점이 없고 (-3,8)만 포함. n=0에서는 (-2,0)을 두 번 세지 않는다."
+    },
+    {
+      "id": "probe_9",
+      "purpose": "n=9에서 교점 0개를 각 가지와 대응",
+      "probe": 9,
+      "expectedDistinctIntersections": 0,
+      "xRange": [
+        -13,
+        4
+      ],
+      "yRange": [
+        -2,
+        10
+      ],
+      "rootEvidence": [],
+      "note": "교점에 번호표시하되 정확 교점 좌표/중간계산을 표시한다."
+    },
+    {
+      "id": "case_count_and_ordered_pairs",
+      "purpose": "수평선 사례에서 전체 정수구간으로 일반화한 뒤 순서쌍 수를 구한다.",
+      "rows": [
+        {
+          "n": "-10..-1 or 8",
+          "g": 1,
+          "count": 11
+        },
+        {
+          "n": "0",
+          "g": 2,
+          "count": 1
+        },
+        {
+          "n": "1..7",
+          "g": 3,
+          "count": 7
+        },
+        {
+          "n": "9,10",
+          "g": 0,
+          "count": 2
+        }
+      ],
+      "pairTypes": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "calculation": "2×11×1+2×2×7=50",
+      "caption": "경계별 교점 수를 세고 합이 3인 순서쌍 유형을 짝지어 계산한다. 정답 50."
+    }
+  ],
+  "intersectionRules": {
+    "linear": "x=n-11 when n<8",
+    "expDown": "x=1-log2(8+n) when 0<=n<=8",
+    "expUp": "x=1-log2(8-n) when 0<n<8",
+    "deduplicateByExactCoordinates": true
+  },
+  "layout": {
+    "mode": "세로 독립 패널. 모바일에서 두 열 그래프+오른쪽표 배치 금지",
+    "mobileReviewWidths": [
+      360,
+      390
+    ],
+    "minimumDisplayedLabelPx": 16,
+    "curveStrokeDisplayedPx": 2.5,
+    "axisStrokeDisplayedPx": 1.5,
+    "probeStyle": "수평 보조선은 점선과 n 라벨. 색만으로 구별하지 않음",
+    "labels": "교점 기호와 곡선이 겹치지 않도록 바깥 라벨+leader, 치밀한 구간은 확대패널로",
+    "clipping": "곡선은plot영역clip, 좌표/함수/경계 라벨은별도안전여백, 점근선은곡선과분리",
+    "font": "현엔진 승인 한글/수학 글꼴, 서체 로드 확인 후 실제외부렌더검수"
+  },
+  "answerPolicy": {
+    "preserve": [
+      "g(n)의 각 구간 교점수",
+      "정의역 |n|≤10",
+      "필요한 경계/중간값"
+    ],
+    "show": [
+      "g(n)별 정수 n의 개수 11,1,7,2",
+      "순서쌍 2·11·1+2·2·7=50",
+      "각 가지의 식과 정확 교점 좌표"
+    ],
+    "hide": [],
+    "noInventedAssumptions": true
+  },
+  "reusePattern": "MIXED_SINGLE_FUNCTION_HORIZONTAL_INTERSECTION_BOUNDARY_PANELS",
+  "verification": {
+    "sourceRead": true,
+    "existingSvgSourceReviewed": true,
+    "existingRasterViewed": true,
+    "math": "PASS_EXACT_BRANCH_AND_BOUNDARY_REASONING",
+    "officialSpec": "NOT_APPLICABLE_ENGINE_UPGRADE_REQUIRED",
+    "render": "NOT_RUN",
+    "visualNew": "NOT_RUN",
+    "externalControllerRequired": true,
+    "noValidationBypass": true
+  },
+  "solutionInformationPolicy": "f6d467 ADDENDUM2: 해설의 정답·식·좌표·중간값 숨김 금지, 결정적 단계 표시. 원본 문제그림과 별도.",
+  "sourceRecheck": {
+    "previous": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+    "questionFileBlobUnchanged": true
+  }
+}
