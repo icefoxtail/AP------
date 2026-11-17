@@ -1,0 +1,326 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B",
+    "T",
+    "C",
+    "D"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "pa",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "pb",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "cd",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCT",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "sDT",
+      "refs": [
+        "D",
+        "T"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "paLen",
+        "ownerSegment": "pa",
+        "text": "PA=12",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "side": "LEFT"
+      },
+      {
+        "id": "pb12",
+        "ownerSegment": "pb",
+        "text": "12"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "A",
+          "B",
+          "T"
+        ]
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "A",
+        "tangent": "pa"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "B",
+        "tangent": "pb"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "T",
+        "tangent": "cd"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eqC",
+        "count": 1,
+        "segments": [
+          "sCA",
+          "sCT"
+        ]
+      },
+      {
+        "id": "eqD",
+        "count": 2,
+        "segments": [
+          "sDB",
+          "sDT"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 460
+  },
+  "caption": "C와 D에서 그은 두 접선 길이가 각각 같으므로 CD를 CT와 TD로 나누어 바깥 접선의 일부와 바꿔 센다.",
+  "newVisualInformation": [
+    "접선 쌍의 같은 표시와 PB12를 유지하고 최종 둘레는 숨긴다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PA12, P의 접점 A,B, T에서의 접선과 PA,PB의 교점 C,D.",
+      "mappedTo": [
+        "mathPlan"
+      ]
+    }
+  ],
+  "accessibilityDescription": "C와 D에서 그은 두 접선 길이가 각각 같으므로 CD를 CT와 TD로 나누어 바깥 접선의 일부와 바꿔 센다."
+}
