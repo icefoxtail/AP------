@@ -40,9 +40,11 @@ const isGeneratedPath = (file) => [
   "archive/data/archive2-canonical-input-manifest.json",
   "archive/data/archive2-canonical-input-manifest.compact.json",
   "archive/data/archive2-source-verification-index.json",
+  "archive/data/archive2-source-verification-index-v2.json",
   "archive/data/archive2-crosswalk-inventory.json"
 ].includes(file) || /^archive\/data\/meta-foundation\/runtime\/[^/]+\.json$/.test(file) ||
   /^archive\/data\/archive2-source-verification\/v1\/[^/]+\.json$/.test(file) ||
+  /^archive\/data\/archive2-source-verification\/index-v2\/[0-9a-f]\.json$/.test(file) ||
   /^archive\/data\/meta-foundation\/evidence\/review-overrides\/v1\/qid_v1_[0-9a-f]{64}\.json$/.test(file);
 
 function inspect() {

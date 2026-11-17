@@ -717,9 +717,11 @@ const outputGuard = createOutputGuard({
   root,
   outputFiles: [
     'archive/data/archive2-canonical-input-manifest.json',
+    'archive/data/archive2-canonical-input-manifest.compact.json',
     'archive/data/archive2-catalog.json',
     'archive/data/archive2-item-review-overrides.json',
     'archive/data/archive2-source-verification-index.json',
+    'archive/data/archive2-source-verification-index-v2.json',
     ...READINESS_OUTPUT_FILES
   ],
   outputPrefixes: ['archive/data/archive2-source-verification/'],

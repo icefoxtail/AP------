@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-root-latest1ce-integration-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "candidateParent": "fd837d79dbf1730ca76ef6110e0ff1a3ced5f00a",
+  "latestMainParent": "1cebc07e058364ac39d3150b2464db2772ca5325",
+  "mainBase": "e5ec3fb52b0f5f412ceab224bf165e7eb1d48999",
+  "latestMainChangedPaths": 47,
+  "overlapPaths": 10,
+  "preservedNonoverlapPaths": 37,
+  "manualResolutionPaths": [
+    "archive/tools/build-archive2-catalog.mjs",
+    "tests/archive2-original-source-verification-shard.test.mjs",
+    "tools/run-tests.js"
+  ],
+  "manualDeltaReviewed": true,
+  "operationsRawBeforeCas10": true,
+  "codeOverlapOperations": [
+    {
+      "path": "archive/archive2-canonical.js",
+      "bytes": 107993,
+      "sha256": "5d2085695a151d7a4630c2b3e7fc8550aebe26fa15bc59d8ac8af8e90385c73c",
+      "gitBlobSha1": "4a568d9c483f72783707e50ce99d4fb37be01684",
+      "expectedBeforeGitBlobSha1": "093b678432351748b620725b193443e620d065f0",
+      "latestMainGitBlobSha1": "7a0dc4123a2831903324affd30ffacbe89d1b7be",
+      "mergeTreeGitBlobSha1": "4a568d9c483f72783707e50ce99d4fb37be01684",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "archive/tools/build-archive2-catalog.mjs",
+      "bytes": 61857,
+      "sha256": "9f25e7f2325fc528addd1a400db3d880b450d37278893703d98da473b9556c4c",
+      "gitBlobSha1": "c5aedc012c832d0ea00f4531f38f7d7d0bbecc22",
+      "expectedBeforeGitBlobSha1": "adbde493e5ebb455e4802df59183e1bc92693a79",
+      "latestMainGitBlobSha1": "27ff725c76a08ce6be60c19c681ce141d87ed902",
+      "mergeTreeGitBlobSha1": "1a5c2b2f26852b84fd9b7fed811eb1868a9fe8df",
+      "manualResolutionOrFix": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs",
+      "bytes": 13394,
+      "sha256": "58d46215c623b7e07a38c2810afef7802adb6395bcf1fde9d0867ade97ee1b11",
+      "gitBlobSha1": "f950ad0b7a80afc1aa36c70fe93e62f5f2ec6d42",
+      "expectedBeforeGitBlobSha1": "f25476730794dbefb3175503a2bdafda5e91b9dc",
+      "latestMainGitBlobSha1": "d386cb19d4e0f7af2f613566ac4a6ce873b46661",
+      "mergeTreeGitBlobSha1": "f950ad0b7a80afc1aa36c70fe93e62f5f2ec6d42",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "tests/archive2-original-source-verification-shard.test.mjs",
+      "bytes": 48589,
+      "sha256": "cfa32b833b439a926b58cf6ba0bfc5d73c362e9396c3d841df6a12be2480b73d",
+      "gitBlobSha1": "3588dbf6b83991018a6304a276eb699828f0c401",
+      "expectedBeforeGitBlobSha1": "e0fbe355e154d65ef9d05007caca9d44736baaff",
+      "latestMainGitBlobSha1": "ca6bf98793f3bcfcb63cf8f9ab8c68fc9b52c1c3",
+      "mergeTreeGitBlobSha1": "27d36284e2856013e8de4cb84ca4dc72209e997f",
+      "manualResolutionOrFix": true
+    },
+    {
+      "path": "tools/4slot/m3s2-layout-continuity.cjs",
+      "bytes": 44099,
+      "sha256": "c811ffdff4e2cfe98c476e7f84d23185a18c43e6e5824d0fae0df21fe2f3fcf1",
+      "gitBlobSha1": "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130",
+      "expectedBeforeGitBlobSha1": "ac7eb5ebf99620ea5e9620f3e592e1342add30d7",
+      "latestMainGitBlobSha1": "5665887ea2549aa92ceea7865143db5fe891c547",
+      "mergeTreeGitBlobSha1": "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "tools/archive-pages-release-manifest.json",
+      "bytes": 9040,
+      "sha256": "cedbecd20dea1685ecf05f325efa796bb8a8ab192fa55076f7d408637a7f44cf",
+      "gitBlobSha1": "109f0d0480c8424dbf4197e736439a79aa0e6d00",
+      "expectedBeforeGitBlobSha1": "ccb5efeffb1a0ad352b07813ef70b03018e54778",
+      "latestMainGitBlobSha1": "c0cd3de894c5fd2fb18799fe53a0f935f9f66cfb",
+      "mergeTreeGitBlobSha1": "109f0d0480c8424dbf4197e736439a79aa0e6d00",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "tools/check-m3s2-q16-layout-browser.cjs",
+      "bytes": 26602,
+      "sha256": "71f2cab9234d4a80ada7e79c7b03df288079fd39f8e806a6fce1255324951958",
+      "gitBlobSha1": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7",
+      "expectedBeforeGitBlobSha1": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7",
+      "latestMainGitBlobSha1": "74fdbc3653ba321c614d2c06d817278c955325c4",
+      "mergeTreeGitBlobSha1": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "tools/ci/archive-meta-register-commit.paths",
+      "bytes": 1461,
+      "sha256": "a4751b899aa36db18e6937283a30936054e1d7bba87a9f073dc209bb445ccd89",
+      "gitBlobSha1": "20e7d63700a5f439c1fa76aa00808105ed848368",
+      "expectedBeforeGitBlobSha1": "7de1fd84d9c7272a58a794ae1a95800a3266268a",
+      "latestMainGitBlobSha1": "3be46229e41ec4d710b6c8cef02fe20f4ff4b6d7",
+      "mergeTreeGitBlobSha1": "20e7d63700a5f439c1fa76aa00808105ed848368",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "tools/ci/archive-pages-registration.paths",
+      "bytes": 1079,
+      "sha256": "dabfb304332bd2f352d571f667e5baf79b7f863d17dc6e5b11fbfa46c6f193ba",
+      "gitBlobSha1": "a53f1ce629cf82f8bc95bc8dfdf8d6f4c0dbf191",
+      "expectedBeforeGitBlobSha1": "e2eda50d16c840409e80196b115024f7f7488f94",
+      "latestMainGitBlobSha1": "00eb00afb322fc9f6604e43307e89b86f0d8bc56",
+      "mergeTreeGitBlobSha1": "a53f1ce629cf82f8bc95bc8dfdf8d6f4c0dbf191",
+      "manualResolutionOrFix": false
+    },
+    {
+      "path": "tools/run-tests.js",
+      "bytes": 33790,
+      "sha256": "e78566685702ef6afac59e4532c086dc29073fa12794365c2a15937777179cba",
+      "gitBlobSha1": "18a95393618487a3021655a3aa7db7cd6f7b2726",
+      "expectedBeforeGitBlobSha1": "f6fe0cf241daaddbf4da9f005304f6bc3729cb7a",
+      "latestMainGitBlobSha1": "40f346082988946bca0f609c44ebacdc5622bc6f",
+      "mergeTreeGitBlobSha1": "953bc47db11619c4dbe071ee040673a3b916fab4",
+      "manualResolutionOrFix": true
+    }
+  ],
+  "compact": {
+    "schemaVersion": "archive-root-compact-current1ce-roundtrip-v1",
+    "fullMain": "1cebc07e058364ac39d3150b2464db2772ca5325",
+    "codecBlob": "4a568d9c483f72783707e50ce99d4fb37be01684",
+    "full": {
+      "gitBlobSha1": "fb6226c921b7df6ef9b44feb834c542e78b0db73",
+      "sha256": "40fe85e22aea1a564b2a6d3fdfc5817699c6581b0c88cee757e4a3a206b4f7ad",
+      "bytes": 122332,
+      "files": 689
+    },
+    "compact": {
+      "gitBlobSha1": "c031f7b860ed6c68579a3acbe3e3753c30da393a",
+      "sha256": "930738309dbad3a19164da09a24a4e8b6ee9530c2ffebbc77dafee1308cad5db",
+      "bytes": 80367
+    },
+    "roundtripWholeExact": true,
+    "officialBuilderFullRun": "PENDING",
+    "sourceOrApprovalEdits": 0
+  },
+  "gateV8": {
+    "before": "d112e971f28df83df70f40df6658b08d3106bca8",
+    "after": "e538edc8ab1b9530ef61f70d91ed554671572aca",
+    "inverseTwoPinsWholeExact": true,
+    "codePins": [
+      "9395012e8c6c7af8cae33586b3e39f3081ffea04",
+      "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130"
+    ]
+  },
+  "q5ActualNative": {
+    "report": "03dab47edc3159ffadfaed53b3b737f41d0b016f",
+    "receipt": "69916c99cdffb0ced0e80499ef43ad4d3a9cfb62",
+    "status": "PASS",
+    "source49Registration": "NOT_RUN"
+  },
+  "testPolicyRelaxation": 0,
+  "ownSourceEdits": 0,
+  "ownMdidEdits": 0,
+  "ownM3S1Edits": 0,
+  "semanticApproval": "NOT_VERIFIED",
+  "globalQuality": "UNKNOWN",
+  "remaining": [
+    "focused Closed8 source47",
+    "focused M3 source49",
+    "focused runtime",
+    "PR CI",
+    "main merge",
+    "actual writer receipts",
+    "target Consumer",
+    "Pages remote readback"
+  ]
+}

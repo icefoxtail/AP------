@@ -840,6 +840,10 @@ const sourceShardDir = path.join(root, "archive", sourceShardPrefix);
 const mixedSourceShardDir = path.join(root, "archive", mixedSourceShardPrefix);
 const mixedUidBucketDir = path.join(root, "archive", mixedUidBucketPrefix);
 const sourceIndexTarget = path.join(root, "archive", sourceIndexPath);
+const topIndexPath = core.Canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH;
+const indexBucketPrefix = core.Canonical.SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX;
+const indexBucketDir = path.join(root, "archive", indexBucketPrefix);
+const topIndexTarget = path.join(root, "archive", topIndexPath);
 const recordsBySource = new Map();
 for (const record of resolvedCatalog.records) {
   const sourceFile = core.normalizeFile(record.sourceFile);
@@ -984,11 +988,54 @@ if (sourceShardQuestionCount !== resolvedCatalog.records.length ||
     sourceIndexRows.length !== resolvedCatalog.exams.length)
   throw new Error("Canonical source shard coverage is incomplete");
 
+// Sharded file list used by original-source verification (Worker/browser: archive2-canonical.js
+// loadSourceVerificationShard): a small top index plus SOURCE_VERIFICATION_INDEX_BUCKET_COUNT buckets keyed by the
+// first hex digit of sha256(sourceFile). One original check reads the manifest, the top index, ONE bucket and ONE
+// source shard, so the bytes it needs do not grow with the number of registered exams. The top index commits to the
+// bucket bytes; the manifest commits to the top index.
+const indexBucketCount = core.Canonical.SOURCE_VERIFICATION_INDEX_BUCKET_COUNT;
+const indexBucketFiles = new Map(Array.from({ length: indexBucketCount }, (_, i) => [i.toString(16), []]));
+for (const row of sourceIndexRows) indexBucketFiles.get(hash(row.sourceFile).slice(0, 1)).push(row);
+const indexBucketTexts = new Map();
+const topIndexBucketRows = [];
+for (const [prefix, files] of indexBucketFiles) {
+  const bucketText = JSON.stringify({
+    schemaVersion: core.Canonical.SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA,
+    prefix,
+    files,
+  }) + "\n";
+  indexBucketTexts.set(indexBucketPrefix + prefix + ".json", bucketText);
+  topIndexBucketRows.push({
+    prefix,
+    sha256: hash(bucketText),
+    byteLength: Buffer.byteLength(bucketText),
+    fileCount: files.length,
+  });
+}
+const topIndex = {
+  schemaVersion: core.Canonical.SOURCE_VERIFICATION_TOP_INDEX_SCHEMA,
+  resolverVersion: core.Canonical.RESOLVER_VERSION,
+  generatedFromCatalogIndexVersion: indexVersion,
+  // The version of the manifest WITHOUT the flat index and without this file (neither can be committed to by it).
+  baseProjectionVersion,
+  fileCount: sourceIndexRows.length,
+  buckets: topIndexBucketRows,
+};
+const topIndexText = JSON.stringify(topIndex) + "\n";
+// COMPAT: the flat index, the mixed lookup and the mixed context/UID buckets are read by Workers deployed before the
+// sharded file list existed. Those Workers compute their base version as "the manifest without the flat index", which
+// now also contains the top index, so everything they read must carry that version. Remove this (and the flat index,
+// once the mixed lookup has moved to the sharded layout) after the Worker redeploy is confirmed.
+const flatIndexBaseProjectionVersion = await core.Canonical.computeProjectionVersion(
+  [...manifestFiles, { path: topIndexPath, sha256: hash(topIndexText) }],
+  core.Canonical.RESOLVER_VERSION,
+);
+
 const resolvedAuthorityContext = resolvedCatalog.canonicalAuthority;
 const mixedContext = {
   schemaVersion: "archive2-mixed-source-verification-context-v1",
   resolverVersion: core.Canonical.RESOLVER_VERSION,
-  baseProjectionVersion,
+  baseProjectionVersion: flatIndexBaseProjectionVersion,
   authority: {
     taxonomyVersion: resolvedAuthorityContext.taxonomyVersion,
     gradeCourses: resolvedAuthorityContext.gradeCourses || [],
@@ -1035,11 +1082,11 @@ const sourceIndex = {
   schemaVersion: "archive2-source-verification-index-v1",
   resolverVersion: core.Canonical.RESOLVER_VERSION,
   generatedFromCatalogIndexVersion: indexVersion,
-  baseProjectionVersion,
+  baseProjectionVersion: flatIndexBaseProjectionVersion,
   mixedLookup: {
     schemaVersion: mixedIndexSchemaVersion(mixedEmitSchema),
     resolverVersion: core.Canonical.RESOLVER_VERSION,
-    baseProjectionVersion,
+    baseProjectionVersion: flatIndexBaseProjectionVersion,
     context: {
       path: mixedContextPath,
       sha256: hash(mixedContextText),
@@ -1054,6 +1101,9 @@ const sourceIndexText = JSON.stringify(sourceIndex) + "\n";
 const manifestFilesWithSourceIndex = [...manifestFiles, {
   path: sourceIndexPath,
   sha256: hash(sourceIndexText),
+}, {
+  path: topIndexPath,
+  sha256: hash(topIndexText),
 }].sort((a, b) => a.path.localeCompare(b.path));
 const manifest = {
   schemaVersion: "archive2-canonical-input-manifest-v1",
@@ -1076,9 +1126,10 @@ if (packageOnly) {
       [relative(target), packedText],
       [relative(overrideIndexTarget), overrideIndexText],
       [relative(sourceIndexTarget), sourceIndexText],
+      [relative(topIndexTarget), topIndexText],
       [relative(manifestTarget), JSON.stringify(manifest) + "\n"],
       [relative(compactManifestTarget), compactManifestText],
-      ...[...shardTexts].map(([file, text]) => ['archive/' + file, text]),
+      ...[...shardTexts, ...indexBucketTexts].map(([file, text]) => ['archive/' + file, text]),
     ],
     packageFiles: [
       [relative(mixedContextTarget), mixedContextText],
@@ -1105,6 +1156,19 @@ if (packageOnly) {
     : null;
   if (actualSourceIndex !== sourceIndexText)
     throw new Error("Archive 2.0 canonical source verification index is stale");
+  const actualTopIndex = fs.existsSync(topIndexTarget)
+    ? fs.readFileSync(topIndexTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualTopIndex !== topIndexText)
+    throw new Error("Archive 2.0 canonical source verification top index is stale");
+  for (const [bucketPath, expected] of indexBucketTexts) {
+    const targetPath = path.join(root, "archive", bucketPath);
+    const actualBucket = fs.existsSync(targetPath)
+      ? fs.readFileSync(targetPath, "utf8").replace(/\r\n/g, "\n")
+      : null;
+    if (actualBucket !== expected)
+      throw new Error(`Archive 2.0 canonical source verification index bucket is stale: ${bucketPath}`);
+  }
   const actualMixedContext = fs.existsSync(mixedContextTarget)
     ? fs.readFileSync(mixedContextTarget, "utf8").replace(/\r\n/g, "\n")
     : null;
@@ -1150,6 +1214,10 @@ if (packageOnly) {
   fs.mkdirSync(sourceShardDir, { recursive: true });
   fs.mkdirSync(mixedSourceShardDir, { recursive: true });
   fs.mkdirSync(mixedUidBucketDir, { recursive: true });
+  fs.mkdirSync(indexBucketDir, { recursive: true });
+  for (const [bucketPath, bucketText] of indexBucketTexts)
+    fs.writeFileSync(path.join(root, "archive", bucketPath), bucketText);
+  fs.writeFileSync(topIndexTarget, topIndexText);
   for (const [shardPath, shardText] of shardTexts)
     fs.writeFileSync(path.join(root, "archive", shardPath), shardText);
   for (const [shardPath, shardText] of mixedSourceShardTexts)

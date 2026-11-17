@@ -15,6 +15,8 @@ const authorityInputFiles = (inputManifest.files || [])
     'data/archive2-catalog.json',
     'data/basic-scope-parent-links.json',
     'data/archive2-source-verification-index.json',
+    // The sharded file list commits to the base version these parent links feed, so it cannot be an input here.
+    core.Canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH,
   ].includes(row.path))
   .map(({ path: inputPath }) => ({
     path: inputPath,
@@ -113,7 +115,8 @@ const canonical = {
     // master/policy advance can be projected before the catalog builder writes
     // the final manifest. The catalog builder remains the manifest authority.
     const files = inputManifest.files
-      .filter(row => row.path !== 'data/archive2-source-verification-index.json')
+      .filter(row => row.path !== 'data/archive2-source-verification-index.json' &&
+        row.path !== core.Canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH)
       .map(row => {
       const inputPath = row.path;
       const sourcePath = inputPath.startsWith('../')

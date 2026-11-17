@@ -12,9 +12,9 @@ const CONFIG={
   "files": [
     {
       "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
-      "gitBlobSha1": "a725d9af4e25f4c118a6e743ad95cb01bec5cf8c",
-      "sha256": "489a8089bd53ca5ca3823c932561381d40971b15038c13a8bd3ef8dc6cf8f5d3",
-      "bytes": 51020
+      "gitBlobSha1": "9395012e8c6c7af8cae33586b3e39f3081ffea04",
+      "sha256": "904f664a60ffb4c6e5503916a8a3f60d664318633018fec8f8d35a7d4c6a64e2",
+      "bytes": 50976
     },
     {
       "path": "tools/4slot/m3-e052-q5-complete-given-continuity.cjs",
@@ -30,8 +30,8 @@ const CONFIG={
     },
     {
       "path": "tools/4slot/m3s2-layout-continuity.cjs",
-      "gitBlobSha1": "ac7eb5ebf99620ea5e9620f3e592e1342add30d7",
-      "sha256": "9683ec12b0253d6c2f7bd7feadb800833e6a4a7798e02178dafc53788621030c",
+      "gitBlobSha1": "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130",
+      "sha256": "c811ffdff4e2cfe98c476e7f84d23185a18c43e6e5824d0fae0df21fe2f3fcf1",
       "bytes": 44099
     },
     {
