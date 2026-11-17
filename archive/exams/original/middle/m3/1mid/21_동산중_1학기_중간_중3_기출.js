@@ -738,7 +738,7 @@ window.questionBank = [
       "(x-y+z)(x+y+z)",
       "(x-y+z)(x+y-z)"
     ],
-    "answer": "⑤",
+    "answer": "③",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
