@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          -2,
+          -1
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "1",
+          "-2"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/4",
+        "y": "9/8"
+      },
+      {
+        "id": "E",
+        "x": "1",
+        "y": "0"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)$, $g(x)$의 그래프가 다음 그림과 같을 때, 옳은 것을 보기에서 모두 고른 것은? [4.5점]<br><img src=\"assets/images/25_제일고_2학기_중간_고2_수학II/q9.png\" style=\"display:block;max-width:100%;height:auto;margin:8px auto;\"><div class=\"note-box\">ㄱ. 함수 $f(x)+g(x)$는 $x=-1$에서 연속이다.<br>ㄴ. 함수 $f(x)g(x)$는 $x=1$에서 연속이다.<br>ㄷ. $\\displaystyle\\lim_{x\\to0}f(x-1)g(x)=1$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(x)+g(x)의 그래프에서 x=-1과 x=1의 좌극한·우극한을 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1에서 f(x)+g(x)의 좌극한과 우극한이 달라 불연속이다."
+  ],
+  "caption": "f(x)+g(x)의 그래프이다. x=−1에서 좌극한은 0, 우극한은 −2로 달라 ㄱ은 거짓이다. x=1에서 f(x)g(x)의 좌극한 −1, 우극한 −1, 함숫값 f(1)g(1)=(−1)(1)=−1이 모두 같아 ㄴ은 참이다. ㄷ은 x→0−에서 f(x−1)g(x)→1, x→0+에서 −1이라 극한이 없어 거짓이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "x=−1에서 끊어지는 두 함수의 합의 그래프에 꼭짓점과 끝점의 좌표가 표시된 그림이다."
+}

@@ -40,3 +40,6 @@
 - 20 매산여고 기말 고2 수학II q13: `referenceCurves[0]`에 `name:"g"`만 쓰고 `formula`는 빼면 통과한다(`formula`는 조각 형식 전용). f는 `functionName:"f"`+`formula`. ARCHIVE_BOUND.
 - 금당고 확인 q20, 금당고 기말 q09, 복성고 q11, 순천고 q17: 렌더 ARCHIVE_BOUND, PNG에서 핵심 값·축 이름 확인.
 - 남은 미확인: 매산여고 중간 q13(렌더 중단).
+
+## 2026-11-18 엔진 수정 뒤
+- 엔진 `6b803c1c7f`(svg-engine/fail-corpus-20261117)로 비정수 x 필수점이 풀렸다. 매산여고 2mid q20, 제일고 2mid q9 플랜을 다시 써서 그 엔진 worktree로 렌더 ARCHIVE_BOUND, PNG 확인. 장부는 FIGURE로 되돌림. 이 엔진이 main에 들어가기 전에는 공장 렌더에서 실패할 수 있다.
