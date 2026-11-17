@@ -2824,6 +2824,45 @@ body[data-archive-view="compose"] .compose-step-number {
   color: var(--brand-hover);
 }
 
+/* 수업 양식: a quiet one-line list under the home columns (static links to printable forms). */
+.home-bottom > .home-forms {
+  flex: 1 1 100%;
+}
+.home-form-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.home-form-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  min-height: 52px;
+  padding: 0 4px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+.home-form-link:hover {
+  background: var(--chip);
+  color: var(--ink);
+}
+.home-form-link:hover .home-quick-open {
+  color: var(--brand-hover);
+}
+.home-form-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 14px;
+  padding: 8px 0;
+}
+.home-form-note {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
 /* ---- Exam rows and 학교별 기출 (2026-11-10: similar problems beside the exam) ------------------
    One row = grade-colored spine (year + grade), title, subject · count · range, the exam buttons and
    the similar-problem cell. 학교별 기출 and the home list draw it with the same function. The row
