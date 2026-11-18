@@ -118,6 +118,7 @@ assert.strictEqual(identityByUid.size, identityMap.records.length, "identity UID
 assert.strictEqual(identityByJoin.size, identityMap.records.length, "identity source identity must be unique");
 const registry = loadActiveMetaRegistry(root);
 assert.strictEqual(registry.status, "ACTIVE", registry.errors.join("|"));
+const { sourceChangedSinceReview } = require("./helpers/source-changed-since-review.cjs");
 const nativeSources = new Map();
 const nativeApprovals = new Map(), issuedApprovals = new Map();
 const nativeInputs = [];
@@ -196,9 +197,10 @@ function assertReviewedState(input, label) {
     return { receiptPath: assertNativeApproval(input, label), currentNativeReady: true };
   } catch (error) {
     if (!(error instanceof assert.AssertionError)) throw error;
-    // Native 검증이 안 되는 문항: 계속 바뀌는 원본의 현재 값을 과거 영수증·판본 표와 대조해 실패시키지 않는다.
-    // 행과 메타의 일치, 분류·HOLD·결합 검사는 아래 공통 단언이 모든 행에 그대로 건다.
-    return { receiptPath: null, currentNativeReady: false, staleSource: true };
+    // 원본 시험지가 영수증 이후 정상 수정되어 어긋난 문항만 재등록 대기로 센다(실패 아님).
+    // 영수증이 현재 원본과 같은데 어긋나는 것(영수증 누락·위조, 신원/행 불일치, 잘못된 결합, 증거 해시 불일치)은 그대로 실패한다.
+    if (sourceChangedSinceReview(input)) return { receiptPath: null, currentNativeReady: false, staleSource: true };
+    throw error;
   }
 }
 function rememberReviewedState(input, state) {
@@ -286,12 +288,16 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   assert.deepStrictEqual(metadata.conditionKeys, row.conditionKeys);
 }
 
-const historicalUid = historical.cohorts["1.0.0"][0][0];
+// 음성 사례는 영수증이 현재 원본과 맞는(재등록 대기가 아닌) 문항으로 건다. 재등록 대기 문항은 분류가 거절되지 않는다.
+const historicalUid = nativeInputs.map(input => input.current.questionUid).find(uid => historicalByUid.has(uid) &&
+  historical.cohorts["1.0.0"].some(row => row[0] === uid) && sha256(stable(activeRuntimeByUid.get(uid)[0].row)) !== historicalByUid.get(uid).digest) || historical.cohorts["1.0.0"][0][0];
 const historicalEntry = activeRuntimeByUid.get(historicalUid)[0];
 const invalidCohortCases = [
   ["missing historical UID", []],
   ["duplicate historical UID", [historicalEntry, historicalEntry]],
   ["historical source ordinal drift", [{ ...historicalEntry, row: { ...historicalEntry.row, sourceOrdinal: historicalEntry.row.sourceOrdinal + 1 } }]],
+  ["unproved historical version change", [{ ...historicalEntry, row: { ...historicalEntry.row, metaFoundationPackVersion: "999.0.0" } }]],
+  ["unproved historical classification change", [{ ...historicalEntry, row: { ...historicalEntry.row, templateKey: "TPL_UNREVIEWED_COHORT_CHANGE" } }]],
 ];
 for (const [label, entries] of invalidCohortCases) {
   const invalid = new Map(activeRuntimeByUid).set(historicalUid, entries);
