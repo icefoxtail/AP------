@@ -1467,6 +1467,13 @@ const SHADOW_M3_Q5_CURRENT_UI = {
   "legacyEngineBlob": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b"
 };
 
+// Render engine files may change after the capture (user decision 2026-11-18): their captured Git
+// bytes are staged as is, and neither HEAD nor the working tree is compared with them.
+const isRenderEngineFile = file => file === 'archive/engine.html' || file === 'archive/mixed_engine.html'
+  || file === 'apmath/wrong_print_engine.html' || /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(file)
+  || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(file)
+  || /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(file);
+
 // Current Q5 display evidence is deliberately absent from the immutable issued
 // request. Authenticate that exact request and its original three evidence refs
 // before following this one independently sealed display binding. This restores
@@ -1541,6 +1548,11 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
       ancestors.add(ref.commit);
     }
     if (tree(ref.commit, ref.path) !== ref.gitBlobSha1) fail('Q5_SHADOW_IMMUTABLE_PIN:' + ref.path);
+    if (isRenderEngineFile(ref.path)) {
+      const captured = gitBytes(root, ref.commit + ':' + ref.path);
+      if (captured.length !== ref.bytes || sha(captured) !== ref.sha256) fail('Q5_SHADOW_IMMUTABLE_PIN:' + ref.path);
+      return captured;
+    }
     return readHead(ref.path, ref);
   };
   // The issued request names these three exact publications. The original
@@ -1589,7 +1601,6 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
     return fs.existsSync(full);
   });
   if (!currentRequested && engineOid === p.legacyEngineBlob) return [];
-  if (engineOid !== p.engineRef.gitBlobSha1) fail('Q5_SHADOW_RENDERER_EDITION');
   const [basisRaw, priorRaw] = p.priorRefs.map(originalPrior);
   const basis = parsed(basisRaw.toString('utf8')), prior = parsed(priorRaw.toString('utf8'));
   const currentRaw = p.currentRefs.map(pinned);
@@ -1616,7 +1627,7 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
       || !same(technical.items[0].sourceRef, p.sourceRef)
       || !same(noCommit(basis.sourceAfterRef), noCommit(p.sourceRef)))
     fail('Q5_SHADOW_CURRENT_SCOPE');
-  pinned(p.sourceRef); pinned(p.engineRef);
+  pinned(p.sourceRef);
   if (request.expectedSourceBlobSha1 !== p.sourceRef.gitBlobSha1
       || descriptor.source?.path !== p.sourceRef.path || descriptor.source?.blobSha1 !== p.sourceRef.gitBlobSha1
       || descriptor.source?.sha256 !== p.sourceRef.sha256 || descriptor.source?.sizeBytes !== p.sourceRef.bytes)

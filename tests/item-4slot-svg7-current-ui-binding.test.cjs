@@ -135,8 +135,12 @@ test('visual reuse does not grant a new semantic approval or remove a legacy deb
 test('a forged independent equivalence document is rejected',()=>{
   assert.throws(()=>invoke({readRef:ref=>ref.path===visual.independentEquivalenceRef.path?badBytes(readRef(ref)):readRef(ref)}),/PINNED_DOCUMENT_BYTES/);
 });
+// Render engine files may change after the capture, so their current bytes are not compared (user decision 2026-11-18).
+test('changed live renderer engine bytes are not compared with the captured bytes',()=>{
+  const ref=original.servedFiles.find(r=>r.path==='archive/engine.html');assert.ok(ref);
+  invoke({readLiveRef:r=>r.path===ref.path?badBytes(readRef(r)):liveRef(r)});
+});
 for(const [name,ref] of [
-  ['renderer engine',original.servedFiles.find(r=>r.path==='archive/engine.html')],
   ['font resource',original.studentFontResources.find(r=>r.kind==='FONT')],
   ['selected source',original.items[0].sourceRef],
   ['selected problem asset',original.items[0].assetRef],
