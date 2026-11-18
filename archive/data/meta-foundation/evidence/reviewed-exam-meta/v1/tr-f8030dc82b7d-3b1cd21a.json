@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-f8030dc82b7d-3b1cd21a",
+  "requestSha256": "9ba25adcbee9eec844d47e3d32b139d0dfc7bf4a9e72032818525556c5738230",
+  "examUid": "21_순천여고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/21_순천여고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "f79555abe39f5007d22bcfb19ce22afebcbb893b",
+  "sourceRawSha256": "1628f62f6f63878133a83a60a9cba9b53274fdb145795080b1b5b509416c4611",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f8030dc82b7d-3b1cd21a.type-ledger.json",
+        "sha256": "c49f704207df91e4310f16785700ecf8a48dd9c7e6224176e626169ac8592cd9"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_d280dd607fbe9398daa99fb24745dbe79c68cc5b967bcb1dec206812ccf0c1a9",
+      "sourceArchiveFile": "original/high/h2/1final/21_순천여고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_SET_OPERATION",
+      "templateKey": "TPL_OPERATION_NUMBER_SET",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-f8030dc82b7d-3b1cd21a",
+        "judge": "dots",
+        "rationale": "두 집합의 공통 원소는 3으로 나눈 나머지가 1인 5의 배수 10,25,…,100이므로 교집합의 원소 수는 7이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(하)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "08aceb22cb4968516b3361410fd59a511f168543ac8bc0b20526ed1a8234cec4",
+        "judgedContentFingerprint": "5bff07ff1a55b4ea2e2b59bb99a30c951045b2883b55bf2bd830547b822859ba",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f664b5b603b26e92a52035e8562e811ef2fb4ae4841c843d4b8d2dd14ec164d6",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f8030dc82b7d-3b1cd21a.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_SET_CARDINALITY",
+          "templateKey": "TPL_INTERSECTION_CARDINALITY_DIRECT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_SET_CARDINALITY",
+          "templateKey": "TPL_INTERSECTION_CARDINALITY_DIRECT",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-5e9c1c1eca21-bf9a8a01",
+  "requestSha256": "f00895c4b2a31c399bbb1e7cc9f5598781d804c5170adbce5a788cb24209d70d",
+  "examUid": "22_신흥중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "d503f4689c101b0880d5c113d3a58fd7813b2a13",
+  "sourceRawSha256": "027cc3fd99ffd57552186890f2928157a4be25d6216dcbc2ae7fe9ec9c4dd569",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5e9c1c1eca21-bf9a8a01.type-ledger.json",
+        "sha256": "4132647cc4763cb46829216275bb2d251239c3db4c0577b2d1390308a7420ea0"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_f0d6fa9b9efa76ba5f480d956ac6cfbc97938fb64387418f6a349c08f788e89c",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-5e9c1c1eca21-bf9a8a01",
+        "judge": "dots",
+        "rationale": "예각 범위에서 sin=cos는 45도에서만 성립하고 sin은 증가하므로 ①③이 참이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "68bb9a375a31bc815e0529fe7c9d0185d4833b0187ae49ccade869926487fea6",
+        "judgedContentFingerprint": "1a6484258c4e0c78fccf9e4eac3dfa3af52f99c1bd9686ed3ae28aa983c5743a",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "0e38c76872b631c57d242d8997b810ffaa7b564e0f0a7866f37d15e4ef366d2f",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5e9c1c1eca21-bf9a8a01.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": null,
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

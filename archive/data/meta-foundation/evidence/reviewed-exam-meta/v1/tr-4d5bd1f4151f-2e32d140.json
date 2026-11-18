@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-4d5bd1f4151f-2e32d140",
+  "requestSha256": "b423c05d9f9009430cd33e61a7b136c568890dcd5c72d96ea5bf4b593ae76f95",
+  "examUid": "19_순천고_2학기_기말_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/2final/19_순천고_2학기_기말_고2_확률과통계.js",
+  "sourceBlobSha1": "79cc9fdab86a47b87178fb74bb1748d70a1db150",
+  "sourceRawSha256": "3930d14c9fefb9afa8e18d6b524e46f4b13f08bf7c56e19a8f18f4c1d19e8afe",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4d5bd1f4151f-2e32d140.type-ledger.json",
+        "sha256": "84a02e08b6fe877be996263d9ceeae696bffcb93f0ab213b70ac38305d0dce7f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 3,
+  "registryChanges": [],
+  "typeApprovals": 3,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 2,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_864200bd77dd4c66e333dea0d4005c6ecb0527f4dedbd43fd006486d3f798391",
+      "sourceArchiveFile": "original/high/h2/2final/19_순천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-4d5bd1f4151f-2e32d140",
+        "judge": "dots",
+        "rationale": "평균 50 표준편차 4로 54와 62를 z=1,3으로 바꾸어 표의 넓이를 뺀다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "2f482677e14d39e989e6e4580cb799d294ab4bbe6a32068b6c6ecfb92447b145",
+        "judgedContentFingerprint": "707c52d9f24b71b5e445acdcb1a51116cb4c363212f11efd91e5e279b61902a5",
+        "rowBinding": "content",
+        "textBindingFingerprint": "163810d9f167225252f4b15780cdaf604ce02f142530402f5cada92beb4f8f8b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4d5bd1f4151f-2e32d140.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+          "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+          "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5876c0f64cebe431b71e2cadbd3ea2c666b49768dedd074c1f71c9e4ba93156f",
+      "sourceArchiveFile": "original/high/h2/2final/19_순천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-4d5bd1f4151f-2e32d140",
+        "judge": "dots",
+        "rationale": "신뢰구간의 중심으로 표본평균 600을 구하고 반길이 9.8=1.96×40/√n으로 n을 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "5fa463ff4a30b4caf1c28a38465e184a075b62cc16507498145159c18211910d",
+        "judgedContentFingerprint": "b0edc71dfa1e8b7a5e52efcc9bf58dd1b58298687b172eee57039c13d79f6d39",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "b0c2edf0709e8d9387ba406b4c46e00e25d2a9870174d2b10d084c16e52132d1",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4d5bd1f4151f-2e32d140.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_cce939404bc155101e037a7fc72489902ba51dcb87407cc5457b2c6dc396b6ed",
+      "sourceArchiveFile": "original/high/h2/2final/19_순천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-4d5bd1f4151f-2e32d140",
+        "judge": "dots",
+        "rationale": "오차한계 2.5와 표준오차 1로 임계값 2.5를 구해 양측 신뢰도 98%를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "701b07d7c582b753c839b8e84686e8a02077a9f1b5c38c2aafd8e7ec7d1915f8",
+        "judgedContentFingerprint": "7bdddaced1ce058c22d87f3dc95330f60a06ec0f619e470c92d243365bdd7c64",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d3eb5060467d5c7f027a2ac00298a647f7635b2bb7ec406f144fca99f45dcc14",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4d5bd1f4151f-2e32d140.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 3,
+  "expectedQuestionCount": 21
+}
