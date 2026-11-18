@@ -245,16 +245,19 @@ test("an exam whose row count differs from its source is skipped as a whole", ()
   assert.equal(skipped[0].reason, "EXAM_ROW_COUNT_DIFFERS_FROM_SOURCE");
 });
 
-test("selectable-by-type metric counts only rows bound to the current stem/choices/image", () => {
+test("selectable-by-type metric counts rows whose metadata is bound to the current stem+choices; a planned type is bound by its own judgment", () => {
   const stale = records.map(r => r.sourceOrdinal === 1 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
   const planned = new Map([["uid1", { pt: "PT_A", tpl: "TPL_A" }]]);
   const fresh = typeSelectable(makeCtx(), [EXAM], planned);
   assert.equal(fresh.selectableBefore, 1); // uid3 already carries an approved PT_A and is bound
   assert.equal(fresh.selectableAfter, 2);
   assert.equal(fresh.plannedSelectable, 1);
+  // a stale row (fingerprint of an older text) stays hidden unless planned; the planned type is shown
+  const staleApproved = records.map(r => r.sourceOrdinal === 3 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
+  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 0);
   const hidden = typeSelectable(makeCtx({ records: stale }), [EXAM], planned);
-  assert.equal(hidden.selectableAfter, 1);
-  assert.equal(hidden.plannedHiddenStaleBinding, 1);
+  assert.equal(hidden.selectableAfter, 2);
+  assert.equal(hidden.plannedSelectable, 1);
 });
 
 test("result tables are read from plain folders (never repaired) and the excluded duplicate book file is ignored", () => {

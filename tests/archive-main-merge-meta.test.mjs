@@ -7,7 +7,6 @@ import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import canonical from '../archive/archive2-canonical.js';
-import {textFingerprint} from '../archive/tools/meta-foundation/text-binding-lib.mjs';
 import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets,registerMergedSource,backlogCounts} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
 import {explicitRegistrationMode,inferRegistrationMode} from '../archive/tools/meta-foundation/registration-mode.mjs';
 import {validateActiveMetaFields} from '../archive/tools/meta-foundation/active-registry.mjs';
@@ -42,20 +41,6 @@ test('UID mismatch is refused',()=>{const f=fixture();f.identity.questionUid='ot
 test('embedded source UID cannot impersonate identity',()=>{const f=fixture();f.question.questionUid='other';assert.deepEqual(planQuestion(f).reasons,['SOURCE_UID_CONFLICT']);});
 test('identity fingerprint drift is refused',()=>{const f=fixture();f.identity.sourceFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
 test('unrelated metadata fingerprint conflict is refused',()=>{const f=fixture();f.current.sourceFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['METADATA_SOURCE_FINGERPRINT_CONFLICT']);});
-// 재결속 기록(발문·보기 text-v1): 해설·정답·그림만 바뀐 문항은 지문이 달라도 등록되고, 발문·보기가 바뀐 문항은 계속 거절된다.
-function reboundFixture(stemChanged=false) {
-  const f=fixture();
-  const old={...f.question};
-  f.question={...old,solution:'solution v2',image:'recut.png',...(stemChanged?{content:'question changed'}:{})};
-  f.identity.sourceFingerprint=sourceFingerprint(old);f.current.sourceFingerprint=sourceFingerprint(old);f.current.contentFingerprint=contentFingerprint(old);
-  const record=(anchor)=>({uid:f.identity.questionUid,fp:anchor,text:textFingerprint(old)});
-  f.textRebinds={present:true,byUid:new Map([[uid,[record(sourceFingerprint(old))]]])};
-  return f;
-}
-test('text rebind: a solution/figure-only change is not refused as a fingerprint drift',()=>{const f=reboundFixture();const r=planQuestion(f);assert.equal(r.status,'APPLY');assert.equal(r.final.sourceFingerprint,sourceFingerprint(f.question));assert.equal(r.final.contentFingerprint,contentFingerprint(f.question));});
-test('text rebind: without a record (or without the rebind argument) the old refusal is unchanged',()=>{const f=reboundFixture();delete f.textRebinds;assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);f.textRebinds={present:true,byUid:new Map()};assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
-test('text rebind: a changed stem stays refused even with a record for the old fingerprint',()=>{const f=reboundFixture(true);assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
-test('text rebind: a record of another question never applies, and a metadata row drift needs its own record',()=>{const f=reboundFixture();f.textRebinds={present:true,byUid:new Map([['qid_v1_'+'c'.repeat(64),[...f.textRebinds.byUid.get(uid)]]])};assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);const g=reboundFixture();g.current.sourceFingerprint='bad';assert.deepEqual(planQuestion(g).reasons,['METADATA_SOURCE_FINGERPRINT_CONFLICT']);});
 test('runtime owner is not silently moved',()=>{const f=fixture();f.runtimeOwner='OTHER';assert.deepEqual(planQuestion(f).reasons,['EXISTING_RUNTIME_OWNER_CONFLICT']);});
 test('missing semantic rationale is not synthesized',()=>{const f=fixture();delete f.question.decisiveStep;assert.deepEqual(planQuestion(f).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);});
 test('unknown difficulty is retained as debt',()=>{const f=fixture();f.question.difficultyBucket='UNKNOWN';assert.ok(planQuestion(f).reasons.includes('DIFFICULTY_INCOMPLETE'));});

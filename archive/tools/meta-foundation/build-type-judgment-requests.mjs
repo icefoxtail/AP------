@@ -26,7 +26,7 @@ import { DIRECT_JUDGMENT, DECISION_DOCUMENT } from "./register-type-judgment.mjs
 import { isLegacyPathFormulaUid } from "./reviewed-exam-registration-v2.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { loadCourseAliases, makeCourseAliases } from "./course-aliases.mjs";
-import { textFingerprint } from "./text-binding-lib.mjs";
+import { classifyMetaBinding, textFingerprint } from "./text-binding-lib.mjs";
 import { createRequire } from "node:module";
 // Text binding of a question (stem + choices; archive/question-binding.js, decision "메타 결속 지문 범위"): used to see whether the
 // question text changed since it was judged. The one definition lives in that module.
@@ -327,7 +327,7 @@ export function summarize({ requests, skipped, resultLines, commits = [], head =
 // the PT is an ACTIVE registered key, the TPL is ACTIVE with that PT as parent, and the row has no foundation taxonomy HOLD.
 // This replicates that gate (the real builder has no temporary-output mode); it is an estimate until the builder itself is run.
 export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
-  const out = { exams: 0, rows: 0, selectableBefore: 0, selectableAfter: 0, plannedRows: 0, plannedSelectable: 0, plannedHiddenStaleBinding: 0 };
+  const out = { exams: 0, rows: 0, selectableBefore: 0, selectableAfter: 0, plannedRows: 0, plannedSelectable: 0 };
   for (const file of examFiles) {
     let source; try { source = ctx.readBank(file); } catch { continue; }
     out.exams++;
@@ -335,15 +335,17 @@ export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
       const q = source.bank[m.sourceOrdinal - 1];
       if (!q) continue;
       out.rows++;
-      const bound = m.contentFingerprint === sourceFingerprints(q).contentFingerprint;
+      // Bound = the row's metadata is about today's stem+choices (the catalog rule). A planned type is bound by its own judgment, which the
+      // converter only emits for questions whose stem+choices still equal the judged text.
+      const bound = Boolean(classifyMetaBinding({ meta: m, question: q, assignmentFingerprint: sourceFingerprints(q).contentFingerprint, rebinds: ctx.rebinds ?? null }));
       // A TPL that fails its check is dropped by the catalog while the PT stays; the PT facet is what 유형 filter and the spread use.
-      const visible = (pt) => bound && m.foundationTaxonomyStatus !== "HOLD" && Boolean(text(pt)) && ctx.registry.pt.get(text(pt))?.status === "ACTIVE";
+      const visible = (pt, isBound) => isBound && m.foundationTaxonomyStatus !== "HOLD" && Boolean(text(pt)) && ctx.registry.pt.get(text(pt))?.status === "ACTIVE";
       const planned = plannedByUid.get(m.questionUid);
-      const before = visible(m.problemTypeKey);
+      const before = visible(m.problemTypeKey, bound);
       if (before) out.selectableBefore++;
-      const after = planned ? visible(planned.pt) : before;
+      const after = planned ? visible(planned.pt, true) : before;
       if (after) out.selectableAfter++;
-      if (planned) { out.plannedRows++; if (after) out.plannedSelectable++; else if (!bound) out.plannedHiddenStaleBinding++; }
+      if (planned) { out.plannedRows++; if (after) out.plannedSelectable++; }
     }
   }
   return out;
