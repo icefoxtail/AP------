@@ -171,7 +171,8 @@ test("student-facing source and identity map unchanged after write", t => {
   assert.equal(after[2], idBefore[2]);
   const rec = x.rec(1);
   assert.equal(rec.standardUnitKey, slice.meta.records.find(r => r.sourceOrdinal === 1).standardUnitKey);
-  assert.equal(rec.templateKey, "");
+  // 난이도 등록기는 templateKey를 건드리지 않는다: 등록 전 값과 같아야 한다(운영 자료의 값 자체는 유형 묶음 등록으로 바뀔 수 있다).
+  assert.equal(rec.templateKey, slice.meta.records.find(r => r.sourceOrdinal === 1).templateKey);
 });
 
 test("latestBlobSha drift rejects the whole file", t => {
