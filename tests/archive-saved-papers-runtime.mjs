@@ -394,6 +394,27 @@ try {
   const list = await request("archive-saved-papers?limit=20");
   assert.equal("snapshot" in list.body.papers[0], false);
 
+  const qpp2BatchId = uuid();
+  const qpp2Saved = await request("archive-saved-papers", "POST", saveInput(qpp2BatchId, directFilters, [
+    { part_index: 0, questions: [directQuestion], meta: { ...metaFor("qpp2 paper", [directQuestion], directFilters), qpp: 2 } },
+  ], catalog.indexVersion));
+  assert.equal(qpp2Saved.status, 200, "qpp 2 저장 성공");
+  const qpp2Detail = await request(`archive-saved-papers/${qpp2Saved.body.papers[0].id}`);
+  assert.equal(qpp2Detail.status, 200);
+  assert.equal(Number(qpp2Detail.body.paper.snapshot.meta.qpp), 2, "qpp 2 snapshot retains qpp: 2");
+
+  const qpp3Saved = await request("archive-saved-papers", "POST", saveInput(uuid(), directFilters, [
+    { part_index: 0, questions: [directQuestion], meta: { ...metaFor("qpp3 paper", [directQuestion], directFilters), qpp: 3 } },
+  ], catalog.indexVersion));
+  assert.equal(qpp3Saved.status, 409, "qpp 3 저장은 거절되어야 함");
+  assert.equal(qpp3Saved.body.error, "출력 쪽당 문항 수를 확인해 주세요.");
+
+  const qpp5Saved = await request("archive-saved-papers", "POST", saveInput(uuid(), directFilters, [
+    { part_index: 0, questions: [directQuestion], meta: { ...metaFor("qpp5 paper", [directQuestion], directFilters), qpp: 5 } },
+  ], catalog.indexVersion));
+  assert.equal(qpp5Saved.status, 409, "qpp 5 저장은 거절되어야 함");
+  assert.equal(qpp5Saved.body.error, "출력 쪽당 문항 수를 확인해 주세요.");
+
   const htmlQuestion = materialize(htmlImageFixture.record);
   const htmlFilters = filtersFor(htmlImageFixture.record);
   const htmlSaved = await request("archive-saved-papers", "POST", saveInput(uuid(), htmlFilters, [
