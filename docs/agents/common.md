@@ -27,6 +27,15 @@ Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](me
 6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI의 실패 목록을 읽는다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime contract"를 본다. 실패가 있어도 병합하고, 실패한 검사와 짐작되는 원인을 PR에 한 줄 적어 관제의 수리 목록에 넘긴다(2026-11-17 사용자 결정, 위 절). PR 기술검사는 고정 event base와 실제 검증 snapshot에 결속한다. 이후 main 이동은 병합 충돌·보호 규칙과 별도로 확인하며, 바뀐 입력·직접 의존성·검사기에 해당하는 검사만 재실행한다. 무관한 main 이동만으로 전체 Archive 검사를 반복하지 않는다(이력 재작성·강제 push 금지).
 7. 보고에는 한 일, 확인 근거(실행한 명령과 결과), 남은 일, 사용자 결정이 필요한 것을 쓴다. 돌리지 않은 검사는 NOT_RUN으로 적는다.
 
+## CURRENT — 판본 장부: 승인은 그대로 두고 "같은 판본"만 덧붙인다 (2026-11-18, 사용자 결정)
+
+- `docs/operations/edition-ledger/ledger-v1.json`은 추가 전용 장부다. "이 새 판본은 승인된 판본과 같은 것으로 본다"를 행으로 적는다. 기존 승인 기록(영수증·4칸·UI 승인 proof)은 봉인이라 고치지 않는다.
+- 행 종류 둘: `renderer`(렌더러 파일의 봉인 판본 → 새 판본, 증거 PNG_BYTE_IDENTICAL 또는 SCREEN_JUDGMENT), `source`(시험지 JS 한 문항의 봉인 판본 → 새 판본, 발문·보기 지문이 같다는 주장과 바뀐 필드).
+- 행은 지우거나 고치거나 순서를 바꾸지 않고 끝에만 덧붙인다. `node tools/edition-ledger.mjs --check`가 형식·정규형·추가 전용을 검사한다. `source` 행의 changedFields에 발문·보기(`archive/question-field-layers.js`의 BINDING_FIELDS)가 있으면 거절한다.
+- 행을 넣는 때: 배치·그림·렌더러만 고쳐 승인 검사가 낡았지만 학생이 보는 문제는 같을 때. 발문·보기가 실제로 바뀌었으면 행이 아니라 사람 재판정이다.
+- 판정: PNG가 바이트 단위로 같으면 도구 증거로 충분하다. PNG가 달라지는 렌더러 항목은 관제의 화면 판정 또는 사용자가 정한다(SCREEN_JUDGMENT는 judgedBy 필수). 작업자가 스스로 승인하지 않는다.
+- 이유: 배치 필드 하나, 엔진 파일 하나를 고칠 때마다 관계없는 문항의 승인이 낡아 CI가 빨개졌다(2026-11-18 하루 세 번). 지금(A1)은 형식·검증·목록 도구만 있고 이 장부를 읽는 검사는 아직 없다. `tools/recapture-approved-renders.mjs --list`는 승인 proof가 봉인한 파일 중 현재 코드와 달라진 것을 읽기 전용으로 보여 준다.
+
 ## CURRENT TOP — 작업별 진입 / 과거 Notion 필독 해제 (2026-10-22)
 
 - **범용으로 'GPT 작업 전 필독 라우터' 900줄과 Archive 생명주기를 매 작업 선열람하는 의무를 폐지한다.** 사용자 지정 범위·역할·현행 exact Git/Notion CURRENT **한 곳과 실물**에서 바로 시작한다. [Notion 공통 행동 규칙](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)은 실제 공통 원칙·충돌이 있을 때만 확인하며, [캠페인별 상세 문서](https://app.notion.com/p/4010e68bd69f81b7a445c7c48abe1c05)는 **자기 캠페인 담당자만** 연다.
