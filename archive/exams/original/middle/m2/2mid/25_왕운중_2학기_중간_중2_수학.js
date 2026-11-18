@@ -494,7 +494,7 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "삼각형의성질",
