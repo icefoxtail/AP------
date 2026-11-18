@@ -1578,7 +1578,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "서답형",
-  "layoutTag": "grid",
+  "layoutTag": "subjective-2up",
   "tags": [
     "서답형",
     "삼각비",
@@ -1646,7 +1646,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "서답형",
-  "layoutTag": "grid",
+  "layoutTag": "subjective-2up",
   "tags": [
     "서답형",
     "이차함수",
