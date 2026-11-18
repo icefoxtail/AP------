@@ -478,3 +478,37 @@ test('taxonomy blueprint provenance은 snapshot identity에 포함된다', () =>
   });
   assert.notEqual(first, second);
 });
+
+test('문항 id가 Q01, 12, 7 등 문자열이나 숫자 형태일 때 getQuestionNo와 matchQuestionNo가 숫자를 정확히 추출하고 비교한다', () => {
+  assert.equal(core.parseQuestionNo("Q01"), 1);
+  assert.equal(core.parseQuestionNo("Q02"), 2);
+  assert.equal(core.parseQuestionNo("12"), 12);
+  assert.equal(core.parseQuestionNo(7), 7);
+  assert.equal(core.parseQuestionNo(""), null);
+  assert.equal(core.parseQuestionNo("abc"), null);
+  assert.equal(core.parseQuestionNo(null), null);
+
+  assert.equal(core.getQuestionNo({ id: "Q01" }), 1);
+  assert.equal(core.getQuestionNo({ id: "12" }), 12);
+  assert.equal(core.getQuestionNo({ id: 7 }), 7);
+  assert.equal(core.getQuestionNo({ _sourceQuestionNo: "Q15" }), 15);
+  assert.equal(core.getQuestionNo({ id: "abc" }), 0);
+
+  assert.equal(core.matchQuestionNo("Q01", 1), true);
+  assert.equal(core.matchQuestionNo("Q01", "1"), true);
+  assert.equal(core.matchQuestionNo("Q01", "Q01"), true);
+  assert.equal(core.matchQuestionNo("12", 12), true);
+  assert.equal(core.matchQuestionNo(7, 7), true);
+  assert.equal(core.matchQuestionNo("abc", 1), false);
+  assert.equal(core.matchQuestionNo(null, 1), false);
+  assert.equal(core.matchQuestionNo("abc", "abc"), false);
+
+  const record = fixtureRecord({
+    id: "Q01",
+  });
+  const classified = core.classifyRecord(record, core.PROFILES.h2);
+  assert.notEqual(classified.status, 'invalid');
+  const catalog = core.buildCatalog([record], { profileId: 'h2' });
+  const paperRecord = catalog.units.find(u => u.count).papers[0].records[0];
+  assert.equal(paperRecord.sourceQuestionNo, 1);
+});

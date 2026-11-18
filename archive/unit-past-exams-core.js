@@ -326,9 +326,29 @@
     return [...new Set(candidates)];
   }
 
+  function parseQuestionNo(value) {
+    if (typeof value === 'number') {
+      return Number.isInteger(value) && value > 0 ? value : null;
+    }
+    if (typeof value === 'string') {
+      const match = value.match(/\d+/);
+      if (match) {
+        const n = Number(match[0]);
+        return Number.isInteger(n) && n > 0 ? n : null;
+      }
+    }
+    return null;
+  }
+
+  function matchQuestionNo(questionId, targetNo) {
+    const a = parseQuestionNo(questionId);
+    const b = parseQuestionNo(targetNo);
+    return a !== null && b !== null && a === b;
+  }
+
   function getQuestionNo(record) {
-    const direct = Number(record && (record.id || record._sourceQuestionNo || record.source_question_no));
-    if (Number.isInteger(direct) && direct > 0) return direct;
+    const direct = parseQuestionNo(record && (record.id ?? record._sourceQuestionNo ?? record.source_question_no));
+    if (direct !== null) return direct;
     const match = String(record && (record.qKey || record._qKey) || '').match(/\.js_(\d+)$/);
     return match ? Number(match[1]) : 0;
   }
@@ -2232,6 +2252,8 @@
     highSemanticSubjectForCourseKey,
     normalizePath,
     getSourceFileCandidates,
+    parseQuestionNo,
+    matchQuestionNo,
     getQuestionNo,
     getQuestionUid,
     getPeriod,
