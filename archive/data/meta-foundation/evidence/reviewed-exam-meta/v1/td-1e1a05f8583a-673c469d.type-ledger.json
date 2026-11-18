@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-1e1a05f8583a-673c469d",
+  "sourceArchiveFile": "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3ca8b350b43f63d5ed3180b9a4e730f3fcf8dd9c4c8f4720237557562207619f",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_LINEAR",
+      "step": "식을 y=ax+b,a≠0 형태로 정리하여 ㄴㄹㅁ 세 개를 일차함수로 판별한다.",
+      "note": " 새 TPL 제안: 함수와 일차함수 판별의 직접 풀이. 정의: 식을 y=ax+b,a≠0 형태로 정리하여 ㄴㄹㅁ 세 개를 일차함수로 판별한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dba3b94d36d559eafeaa40b2552985690b4f123dfd37bb640be059d08c5ac0cd",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+      "step": "삼각형 성립조건과 최대변 제곱합을 비교하여3·4·5와7·24·25 두 직각삼각형을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_005d65242b256395f47e0b51e9dc505bcbc4b74580fc29c93076e4e69e4d503a",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "step": "직각이등변삼각형의 같은 빗변과 여각 대응으로 ABD와CAE를 RHA합동시켜 AD=6을 얻는다. AB²=6²+8²=100이므로 ABC넓이는50이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9579e02c03ee0592d983c6b5d8dd75eeb6c64d8876e3cbd11c7a39b17f64ad21",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "정사각형넓이9와81에서 변3과9를 얻고 가로12·세로9인 직각삼각형의 빗변sqrt(12²+9²)=15를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_014c33b1727ee97814a95d997376463b0541564ad8b404457cfaa667087341aa",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "미지변이 빗변이면 x²=14²+11²=317,14가빗변이면 x²=14²-11²=75이므로 가능한 제곱값의 합392를 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 미지변이 빗변이면 x²=14²+11²=317,14가빗변이면 x²=14²-11²=75이므로 가능한 제곱값의 합392를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6be6222e4358fb32cbeaef1b11216d9cdeb623f9c411e375260078077aaa3df5",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "작은 직각삼각형에서 x²=10²-6²=64를 얻고 큰 삼각형에서 y²=8²+15²=289로 합25를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_895e71dc4edbf25a35c587254ebd12144a1d05305b672a6e576278e6a9b9f211",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "EOD와BCD의 AA닮음비5:8로 EO=15/4를 얻어 넓이75/8을 구하고 직사각형중심의 높이절반으로 OH=3을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

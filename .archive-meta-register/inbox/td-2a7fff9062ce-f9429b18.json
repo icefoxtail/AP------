@@ -1,0 +1,558 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2a7fff9062ce-f9429b18",
+  "examUid": "19_연향중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/19_연향중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "7d37d7c653bbb8cb77492371f275d344e4dd31de",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+        "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f4a178d38611e2e51f4d74c3f2198105adc537e9fc8bcfc7121fc56cb8fb4a28",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION"
+      },
+      "rationale": "이항한 다항식의 차수로 이차방정식 여부를 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "de095e338473016eae86b2e8c79ff655969a2e38b0f6046720b5e256fcfca5f9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3730c9916f0303c41c9e6a9bd6d813aaa1ca4d81883bad3a380f438d1d1abedd",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+        "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE"
+      },
+      "rationale": "(3x-1)(x+2)=0으로 인수분해하여 근을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "20812ffd51d19d89e53e5c5497b1c0fb3d8f089300e4202f378a052dad02a67d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f29d280a1f0ab8d5bc9dcf24785a0340535ca0d843b4769e737228e6b1368ff2",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT"
+      },
+      "rationale": "계수로 나누고 완전제곱식 (x+2)²=6을 만든다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "90451b8944cd4e056e9ec50bf62e528b83f1c6f016a672ef5604963062ef3cc8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_201fc6c4dbad44491c20e1b54c53d0205818851f296003b519389974f29ad996",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT"
+      },
+      "rationale": "이차항이 0이 아닌 조건을 보존하면서 완전제곱 우변을 0으로 놓는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "f973372e7042e048f6d495ab933dda8115e3a2f9b615f0892e523b8cc43b0e90",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ac756bfd076b704cfd4d1401ec06246f2a945f325f4b032563cf4ff7f78ec17e",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_ROOT_PARAMETER"
+      },
+      "rationale": "근의 공식 형태와 주어진 근을 비교하여 p,q를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "979d5bfbe965a067d59cf920a67d8ed139c7e7b862f134b76da398d5b6306ac8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4d9eaa24bf8864f556ba7cf0d8806ce2987c1fd04a11e5460139a789b7b5d359",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER"
+      },
+      "rationale": "분수를 없애 구한 큰 무리근을 연속 정수 사이에 놓는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "45b46a77568feabeb5b64405a81b1ea1fe69a46950706c4cda0f5e388044db84",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bca152b9913f5e2db136fb022efd64ffc4b1162b32949f42871d02d85a76593b",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_SQUARE_CONDITION"
+      },
+      "rationale": "(x-2)²=k+4에서 제곱근이 정수인 k를 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "5995072fe6a221330714cf2b6407d3f860569f159c264087eca067e0be236248",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0befd3c02c66a713088eb99ca625f24bdce5bd575d61e36329a4ed38eb9a723b",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_WORD_PROBLEM_INTERVAL"
+      },
+      "rationale": "목표 높이 이상 부등식을 풀어 두 경계 시각의 차를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "b9c7ec8449481d0488eef34cbe069ece8bb0c0dcb4eaee025433e52adafb69ff",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2fb8e7c6617738266b2dedab93629ecfe5bc1e45d9d3fc146b0a5cbff0d094d4",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM"
+      },
+      "rationale": "실생활의 y를 x의 식으로 나타내 이차식을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "69ca4314c2c96d23e60ebb3684b5f6067b174eae767e55e1aa55d9e5d6627bb5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f6a05883061bb678dd6bf0a742be3135ef522df069d319d05c29748daa84af62",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_WIDTH"
+      },
+      "rationale": "위로 열림과 넓은 폭 조건을 0<a<2/3으로 바꾼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "599e766d2f4c600ec992a2759d1a086bf48d99f95e475506f10f1a1b33b227ce",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f65c6949c2d41851ee32eb3812c94e5350a8b05f7c66ca6c8a4e8e4d6fa84d54",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      },
+      "rationale": "그래프의 꼭짓점 (-1,0)과 y절편2를 꼭짓점형에 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "3f362619539a7d2665ee334b99c3da3a9a426faec76a67323776f2c498a3e9f2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ddd5f3a8764e042bded4696d541c198cd79a45c733654a09a7849f8aef11ff7b",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      },
+      "rationale": "완전제곱식으로 바꿔 축과 꼭짓점을 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "4836fbbb80a00073d103d25d74399d712af7933535aa49952e09b7ec66ae25c7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_992dabf7ff8d1dda849c39b07e0d8558e1958c7f64e2496bfaf351cc1541e56c",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_MONOTONICITY",
+        "templateKey": "TPL_M3_FIND_INTERVAL_OF_INCREASING_FUNCTION_VALUE"
+      },
+      "rationale": "아래로 열린 포물선의 축 왼쪽이 증가 구간임을 쓴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "f85d9f236a99e544457a023c3f0f55e7aa1c1f22cb1d6ce7cfa270650b9bd6dc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d6fce39cda27d1165b02e4f0a8153bcdde790c59cec2b01b42b881174185b372",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "templateKey": "TPL_M3_TRANSLATION_SAME_SHAPE"
+      },
+      "rationale": "평행이동으로 계수 a가 보존됨을 이용해 p를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "796ff0137930d9baad7aa0169b1b644409f6da8e89e1b69ba505e3c27537feb0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5c1b38aacd2954d35d362c1fc205349757b8977f86e28b418941d4d3a5f7092c",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT"
+      },
+      "rationale": "폭과 최솟값으로 식을 세우고 꼭짓점 사분면으로 해를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "691b6432a25d6136bc3155553fe7c68fda19571d3f8230f324cc32c649b05e24",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b52ca9ebe380cf1ae308723e21ce255ca14f1d39a9c3c0c913c3948f683c9086",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY"
+      },
+      "rationale": "삼각형 넓이를 이등분하는 직선이 밑변 중점을 지나도록 한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "27f954a26678702ee68a25c7db8f68244e65eb055b841fd8c733716017aeb273",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0f1cbfe71e2b2895f9a44d102d20906d118c5de1cc382897cb4eaaf7d9ec3d53",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "templateKey": "TPL_M3_EVALUATE_EXPRESSIONS_FROM_PARABOLA_GRAPH_AND_INTERCEPTS"
+      },
+      "rationale": "포물선의 개형과 x=-1/2,2의 위치에서 계수식 부호를 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "546dcbb2d4c1066c041d6758b56e96311208e33c42f5567b599fc19950161564",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_26de6cb25c9da8d3b1415c11f80c571f88ecb6271830090251873d1420042f0c",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_ALL_QUADRANTS"
+      },
+      "rationale": "꼭짓점형에서 y절편이 음수일 조건으로 모든 사분면 통과 범위를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "722ab7e4e7e566bba1dce99c560ef810e37ef9c2fced825f8bbab866761b085d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_136e3c83d180556eaf6ed375b1dc488e8bfc08f9e8ef45217da3e21aee65c6f9",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION"
+      },
+      "rationale": "교점의 x를 2≤x≤4로 제한하고 a=4/(x+1)²의 범위를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "e2af998096209c53b5a280ca355aba1a53c7d6cd7cea9e5491412d2617dd1eca",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a9d4d24af72022e8c13820243b8648afc7e758414743199fdb2f0b432cd7baed",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION"
+      },
+      "rationale": "물받이 단면 x(48-2x)=288을 세워 양의 길이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "da01b335829e65ffb9b81418e029f95d012a3661c88a6144f846f25defc30c6a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ece568dad0c2edc4808681af16ac1ee16b8d697e44a4e6dcf2239272c18f8c7c",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS"
+      },
+      "rationale": "직선과 첫 포물선 교점을 구해 둘째 포물선에 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "86eaf2a4aa5cf4b3b9e9df086b02a61133e2a7c1a7db6b6830b8aa6eaa411d69",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5b42af6546418cacabe5c4247ce00913745c51686617a707d650de9263da0268",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_EXTREMA",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_EXTREMA_MODEL"
+      },
+      "rationale": "직사각형 넓이 x(4-2x)를 완전제곱하여 최대 위치를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "d9e058ce875df2d7e02441c1ed880ccca3571465e3085db02aceec3e8077c256",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2a7fff9062ce-f9429b18.type-ledger.json",
+          "sha256": "404f70217293d48926bee1e40eb21b9e8d0e0c70c8c58378728f87e1507d06e5"
+        }
+      ]
+    }
+  ]
+}

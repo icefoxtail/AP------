@@ -1,0 +1,609 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2520f987d058-4f601a38",
+  "examUid": "23_신흥중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "b76e6b519e0fc002747c80fd3abaa4aba06cf1a8",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+        "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f137a02dd99bc2efbb0435314ae04e281437ed89fc9429b90175b4a066b6d665",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH"
+      },
+      "rationale": "그래프가 수평선 y=-2이므로 x계수 a=0이고 -2b-4=0에서 b=-2,합-2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "21059afe0ad2ec4c09586a31411763a49b4f562ec835ae3e802921e888ad1c57",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4b8fcb34476ec976ea6934cf54a9aa6a9c9b18e8d0b22aab5645c7fa001cdba0",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT"
+      },
+      "rationale": "두 그래프의 교점(1,-2)을 각각 대입하면1+2a=3과 b-2=2에서 a=1,b=4,차-3이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "textBindingFingerprint": "5c81387208e092256c3fc7d2af6d1a43559c15dab7b5d41d09a2027ebda6152c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_42507c1e1282707d86b88ffc814b15550cf2dd6b12b167ea82908e1c2aa50c77",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE"
+      },
+      "rationale": "그래프의 속력50과150 및 형의10분 지연을 읽어50x=150(x-10)을 세우면 만나는 시각x=15분이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "dace5fa6fab5bed9273f40de107c466624738febe1f155deaf9e06473898cebf",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_486bbb6be3cf9d8f5eb87e143ed309c191da780a6192ad6ffbdec7edc303e341",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
+      },
+      "rationale": "AB=BC이므로 두 밑각 A=C=(180-40)/2=70도이고 외각x=110도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "867f2cb868210f03dbd7d0492d7385c57ae302ea772f765ceb7e26154aacb93a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_587965d52705f6431d134526d486682d7bbbd6f29a89769c458866bcc16fcaed",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
+      },
+      "rationale": "연속 이등변삼각형에서 밑각20도,40도를 차례로 얻어 CDE는 정삼각형의60도이고 EDF=180-40-60=80도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "6d39b25d1708082eb92fbdb3bdc78fb47ece88ac4ea533037ba55a87dae4aba7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_842210b8cb13f092a4ba105fecf209695b6d507a286dd0cb01e9a7c7fcf9de0f",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA"
+      },
+      "rationale": "직각삼각형의 빗변·변 또는 예각과 길이는 합동을 정하지만 두 예각만 같은 ①은 크기를 정하지 못한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a96b16eaa23da8feaad2083cf30d62121686a6ff6be30a59073dda4fbd285a21",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_24e44c0c5bb7ca2e27014ffb2ea525a6af1ae5201cdbee39439892428a7509cd",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE"
+      },
+      "rationale": "직각삼각형 EBC와 EDC가 공통 빗변EC와 BC=DC로 RHS 합동이므로 C의44도를 EC가 이등분하여 DEC=90-22=68도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "b76a77864e03ff21a63b8defcdd0e7fa56e6944904d3a6648218593f31d6e727",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f17d85178c629c93d5f0976c87b55dc1dc34058bb59d1f1d06c55deca7ba1e78",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+      },
+      "rationale": "외심의 세 꼭짓점 등거리 OA=OB=OC와 현 BC의 수직이등분으로 OBN와 OCN의 RHS 합동을 확인해②·⑤를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "b63afd0aeadfd54eb6bc1cb456ff854448e7b78c7452f461c3eee8d01826229e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_186322c028b97f3b03b6d3bef1f55c5001aa3aa87e3d6325588d54ed0c08951f",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+      },
+      "rationale": "반지름이 같은 이등변삼각형에서 BOC=120도,COA=110도이므로 남은 중심각x=130도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "51fd1a6144065e2421723eb534c455049147e1f4c53ee1aaa1a1a928f0c7adef",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_36eef83bdd2322a3f253f692ad0bcdc03985135a912faeec2fd3fe0313c70aa4",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER"
+      },
+      "rationale": "내심으로 B=2×36=72도,C=2×24=48도이므로 A=180-72-48=60도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "6340db6ddb8bac29ac1b94e68b020f48388997eaa6cb0ce3e413595d3c2a8189",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0b82d3dfb2b2cc6eef9244d8eec53a845a044b2bdaa8ffe2f750c158ef95827d",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+      },
+      "rationale": "직각삼각형의 빗변 중점 M에서 AM=CM=5이고30도 맞은편 AC도5이므로 AMC 둘레15이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "f74343189146655bf82f6fc78234f55d5ed0068c8f5fc939801b180ca98bd3d5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_99785fa833afddcdc637b235d0221d4d13016f7aa33a07f6cfa2a563a435e237",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER"
+      },
+      "rationale": "내심의 각 이등분선에서 A+B/2=100과 A/2+B=110을 합쳐 A+B=140이므로 C=40도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "e5a6968aef8bc0ae21a3b5ad794cc4be521d878b0df112a4be2e4a6b0bb8dc83",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9e49ef1019c928139f81835d2c74abd57ccc5e8386c94503ba80191b6ae31247",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "rationale": "평행사변형의 대각선 이등분으로 AO=4,BO=6을 얻어 AB=6과 더한 둘레16을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "d7817917fc9ec71ea11728368585e0f88856f52ce6bbfbd2f72309ed0c355fa3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bb513f28d6cf0fd2714ca22b4749d3e199396df43cbd20c2cefc34de354c56b6",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS"
+      },
+      "rationale": "각 이등분선과 평행선 엇각이 만드는 이등변삼각형으로 BE=CF=8이므로 겹친 길이 EF=8+8-10=6이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-2"
+      },
+      "textBindingFingerprint": "7a63361bd60a44c633ab9ec547394cf032e1bb8a859824df8bd829b27ab809a7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_741ad2ac93c41abb022cd9429f82743163cc96a363292eab663f1970bc422586",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+      },
+      "rationale": "등변사다리꼴 양쪽에 수선을 내리면60도 밑각의 직각삼각형에서 수평부분이각3이므로 BC=15이고 둘레36이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "9ecff43d18827611e730e56bb17c099939b9accbd72089773f17f65add36b9a5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e46d416164d9ef1516e705c9c4217b58f42c9c605c5af0ec7e63669d6fa80aa2",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "rationale": "평행사변형과 그 특수사각형은 대각선이 서로 이등분하지만 일반 사다리꼴은 이를 보장하지 못한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "222e6b2309cd4219dc07b8053d5493a5fa594b1d135a3229a8071e00d395d9b0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_91a870d7fab3f1291785f81ac7e5ac9feead994b5a56014ec1aa904fb0690e31",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+      },
+      "rationale": "직사각형의 수직 대각선은 정사각형을 만들고 평행사변형의 같은 이웃각은 각각90도가 되므로③·④만 옳다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "59a88c466d544a1d366f014bebb7f80f0ea7d122b5ba9a0060c5dfeb00a26887",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d862d59f4625031a650a248354067f171f186055685e14c5585f2e70891288bf",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+      },
+      "rationale": "정사각형의45도 대각선으로 EBC=70도,ABE=20도를 얻고 대각선 대칭의 SAS 합동으로 EDA=20도를 옮긴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "748c53115e34007aa65d28cfe512f4f4b81e5ea65c77e5046a1d17b2321e9ffa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_06cea9dbc948bdee1c3bc0417b391eb89119efb0b4b4ae5b45e48ece6108a2c4",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR"
+      },
+      "rationale": "꼭지각 이등분선 AD를 그으면 AB=AC,공통AD,같은 끼인각으로 ABD와 ACD가 SAS 합동이어서 두 밑각이 같다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "eefaf924e13d483fda2c88488e29a84ca19cef9aa30d183e9836e8be6ef4c897",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4fed26b676eeb692a532ccbe037c13db8c9e8bd611e22aef6ff093a0fd84d18d",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+      },
+      "rationale": "원호 위 세 점으로 두 현을 만들면 중심은 각 현 양 끝점과 등거리이므로 두 수직이등분선 교점으로 정해진다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "97937ea53acea11d50b50934a947ee1766698cd6f43c46ee6b7c252b2150dd1f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d534b474a17fd63c95d863ca79a657960a9616319f64f553b57f0ce886698e9b",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER"
+      },
+      "rationale": "내심에서 변까지의 거리는 수선의 길이이므로 한 변에 수선을 내려 그 선분을 내접원 반지름으로 표시한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "7871c3fa5c0126eb2ab68fde482cc358bff2517cdee1f6f8a564d7680dc53e9b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_86c879f088e88e43db595f79ec973a9f9be40d1ae0c2a1e77baacf7ca90dd2b4",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "rationale": "평행한 두 대변쌍에서 엇각 BAC=DCA,BCA=DAC와 공통AC를 얻어 ABC와 CDA의 ASA 합동을 증명한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "9a01d83292461c22f62c2ff4e4fe8878f5eef432293001df5251fd4e2ea823cf",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7a9757eb4bea5f754b378fef8fa89c60a039652cb4babeeadd049b17c10c7f07",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA"
+      },
+      "rationale": "대각이 각각 같아 A+B=180도이고 외각 EAD도 A의 보각이므로 B=EAD의 동위각으로 AD∥BC를 보여 두 대변쌍의 평행을 증명한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "493b07b851c6279188e467e5756bd4853c713a94fd7cfaf3f40a05b12ed563ea",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_69eb4df0f417c6a4502f106554c0b503fe7d7951f2189f47913648763ab147d0",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA"
+      },
+      "rationale": "OA=OB,OC=OD는 같은 대각선의 두 절반 OA=OC,OB=OD를 보장하지 않으므로2와3으로 다른 길이의 반례를 만들어 평행사변형 판정을 부정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "b1e5e43c2ed1b31305bb92420a5b3e51253c65ba06a66c545e07c78704cbfd8f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2520f987d058-4f601a38.type-ledger.json",
+          "sha256": "70d26193ce2522cb3ef832ee3cd6079d6d19cffbb52d887edd56a987c6e87c66"
+        }
+      ]
+    }
+  ]
+}

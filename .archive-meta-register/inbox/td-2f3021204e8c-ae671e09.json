@@ -1,0 +1,466 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2f3021204e8c-ae671e09",
+  "examUid": "24_팔마고_1학기_기말_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/24_팔마고_1학기_기말_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "7b983b6f3076ca280e08a494a4f267fbf8745d35",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+        "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a0132025c91d9b801d00ccbb9521569b4738b672393e01f39462e1651f5dbea0",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "배반은 교집합공집합이므로{2,6}과 겹치지 않는 나머지1의 사건{4,7}을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "848c22406230c34dbbb11fd6aaff3b362544b75e10a55ab209d4d6e7d24caac7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_08e4654de13734568b40d09da68b086d7cb0dfd43e4f1acd77d8095667d25425",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "rationale": "양끝 짝수 선택3P2와 가운데5!의 배열을7!로 나누어1/7.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f6d1b4fab77551f4c5f34f7730b425a0ae37979ee585d9d091ce9bbe5e4f4549",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a5ffa3214f401b126695ece882004d56d59f12299e5b4db7a9de2fb82560b64c",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "rationale": "교집합1/4을 조건사건7/12로 나누어3/7.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "8d422fe12b48ef619cc4865632840837c309f2769b9b6566028e8699b2a7e53e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f9cc3b1c77d4bfb77549832df01335e68a2381c2e41e0c15fdd1c933cf9737d7",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "rationale": "원본 그림의8점 고리는 반지름1~2이므로 영역넓이3π를 전체25π로 나누어3/25.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "a13936598ccc76d7eadd2ee4a3e8cc9d7c1b35d65f9480267362dc61ddecb895",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7a9df8bd7c67e35376a90da19a02f7692678cef4e8d8edd4a141431d6b6b79cc",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "rationale": "동일눈6쌍,합1은0쌍,A눈≥B눈21쌍으로 확률0<1/6<7/12를 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "c63a5c7b7082214f5fa6fe4ea1643e3f8b2ca68e38211dcd8ebf50ca14ead02c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7b07018f9003ff56d68f89a983a1c0ef7a27447e191a882c0695fcd4a1c9b074",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "rationale": "표에서 남학생28명 중애견미용8명이므로8/28=2/7.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3777c6993663cd247a738739ad9d8948e7f773d814f45c433dfe624779f6fb3f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9e138d8760145f8a5eea786ce08296eb9c0582c89c23cc97d0c7cd2809be4fc6",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "교집합확률은 주변확률합1에서 합사건3/4을 빼1/4.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1c162b0e73461a36169757f1cb6669459017848421ed8c427d7086194b31b1e7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_398148b6294c93810a73fa0aef62b73659a8e326c898c24c0761305afa3c5cb2",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "수학책 적어도하나는 영어책만 두 권의 여사건이므로1−C(5,2)/C(8,2)=9/14.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f22f3caa840015b288629eff11b8f37faa1e9219d898087e16043cdd6327aae7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b8eaec02cf69d231229ee8ca3661e1e6aaffab15715edbb7716220e006200783",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "합사건공식으로 ㄱ은 교집합 미차감 오류,ㄴ은 주변확률합7/6으로 배반불가,ㄷ은 P(A)>0에서 곱셈정리이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "ea701b8dc076172c286de61d6153a2357b40e6d3c3f1a31a73a7fac82819b55d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_59f8ca83cb60da4e26fdd1ae7616178ff7c92721b6329bb56cd6728e232239c0",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "두 조건 동시확률은5/7+1/5−4/5=4/35.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "fed8a0d5a44656f7e67e19528a29123e5d5ab017dc39b8cbcad524c859d0a1a7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5c4c583b812a4bf33f97eeedb819d7d7ec1e4d881f1178a5a948105feba859a5",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "라이언없음6과 인형없음3의 중복1을 포함배제해 전체15중7,확률7/15.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f2ac154a0ab50f78d06513668512c58c436a255bd90d6c5bbe90925ed93b4266",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_95229b1e3d1655fc1ecb88ebd674438f7354b401d1d94fed81328f82b310200a",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "1학년x의 남학생0.6x와2학년0.7(80−x)를 분모로 역조건0.72를 세워 x60.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "55754b96e16053e46bc7b459b09c7c66951b46c6e7bda479121b045a0d629282",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_175b9a49037a5c246b9ec91946d37a71738f8fb7b79660326877590a03687c26",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "A·A여사건 분기로 P(B)=1/5+2/5=3/5,역조건 P(A|B)=1/3이므로 합14/15.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "0cf1b3c7b9fdf1d3e50f3c0d7dc35ad5760d45a3108eef37251a647589b613dc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d41000594e086e9f18889e93c9c9a01161172928b14c83e5c6dcf0b0785ddc2d",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "비 여부에 따라 승률을 가중하여(3/10)(1/3)+(7/10)(2/7)=3/10.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "93d6ff291cf2cac876b150b149dc5dc0c407419ef478626fc4b5da006debd97f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2988714f519a23904ff05f6c112e1eedf4c46f1c4faaa1e1fc393d14e04e2478",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "방정식 근 n/2,n/3의 정수조건을2배수 또는3배수로 바꾸어 포함배제10+6−3=13,확률13/20.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "308e981097fcff647caaee9273e8d45e40d6c901e20892854c0adb7fe8c71e6e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bb9d344012f3f08c3335d0c9e3d40d365a37efea77652e047101b995108136c7",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "원순열에서 금지이웃6·4와6·5 사건확률각2/5,교집합1/10을 빼 합7/10의 여사건3/10.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1bdb729750cf25e31cb27f3e9d0b7233cc3268787449525a2c75a3a62d1dea56",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_64b18203574f31b73fea0e4fcf898136addf94680ed7e6a4f7c65ea007b8da6f",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "rationale": "곱셈정리로 교집합1/6,합사건5/6을 구한 뒤 조건공간으로 나눠8/15와3/8을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "6d3f0b194cfe8b05c16471734f4919770fd4563349ab2f0daecc0f59f57f157c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4e8dbf61ac2db6ad4a38e37d2056adb44c65709c606817a9dffc09bc2213afb7",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "첫색에 따른 주머니 분기에서 흰검1/9,검검1/3을 합해 두번째검4/9,역조건1/4.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "16732f6f2221f39f94894838a98630dd7d6c5479d937a14d6c476f073078be7f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2f3021204e8c-ae671e09.type-ledger.json",
+          "sha256": "f77d0decd67f7593fa535c47bb50257b172c2900a3bf597b9f285f9122df8512"
+        }
+      ]
+    }
+  ]
+}
