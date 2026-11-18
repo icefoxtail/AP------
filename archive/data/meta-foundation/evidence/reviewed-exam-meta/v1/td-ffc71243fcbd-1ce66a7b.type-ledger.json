@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ffc71243fcbd-1ce66a7b",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": null,
+      "step": "평행한 밑변 사이에서 ADB와 ADC의 넓이가 같아 공통AOD를 빼면 AOB=OCD=90−75를 얻는다.",
+      "note": "새 TPL 제안: 사다리꼴 대각선 교차의 등넓이. 같은 밑변과 평행선 사이 같은 높이를 가진 삼각형에서 공통부분을 빼 넓이를 전이한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "주어진 닮음의 대응각 A=BCD를 연결해180−2x=x/2를 세워 밑각72를 구한다.",
+      "note": "새 TPL 제안: 주어진 닮음의 대응각 방정식. 닮음 순서의 대응각과 각 이등분·내각합을 결합한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "직각과 평행선의 각으로 AOP∼CBA를 세워 AO:CB=5:8을 AP:CA에 옮긴다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "중점연결선으로 MN=BC/2와 높이h/2를 얻어 MQN넓이가 평행사변형의1/8임을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ec4315a58b66e1ebad91df2b293bc4368c9a198026fe07235d1c7051c557102b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "정사각형 대각선의 등길이·45도와 두 직각 관계로 OCQ≡OBP를 보이고 겹친 넓이를 OBC의9로 전이한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}
