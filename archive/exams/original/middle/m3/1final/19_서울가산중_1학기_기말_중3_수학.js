@@ -382,6 +382,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "layoutTag": "subjective-2up",
     "imageSize": "large",
     "questionNumber": 20,
     "number": 20,
