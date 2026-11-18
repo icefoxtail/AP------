@@ -26,6 +26,8 @@ export function emptyJudgment(qid, fingerprint = '') {
     // 3. 그림
     figureNeed: '',
     figureEvidence: '',
+    solutionFigureNeed: '',
+    solutionFigureEvidence: '',
     // 4. 단원
     standardUnitKey: '',
     subUnitKey: '',
@@ -197,8 +199,6 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       problemTypeKey: sourceMeta?.ptTplCandidate?.problemTypeKey ?? regItem?.ptTplCandidate?.problemTypeKey ?? null,
       templateKey: sourceMeta?.ptTplCandidate?.templateKey ?? regItem?.ptTplCandidate?.templateKey ?? null,
       difficultyBucket: sourceMeta?.difficultyBucket ?? item.difficultyBucket ?? null,
-      primaryMethod: sourceMeta?.primaryMethod ?? regItem?.primaryMethod ?? '',
-      decisiveStep: sourceMeta?.decisiveStep ?? regItem?.decisiveStep ?? '',
       newKeyProposal: sourceMeta?.newKeyProposal ?? null,
       item4slot: sourceMeta?.item4slot ?? null,
       boundary: sourceMeta?.difficultyBoundaryFlag ?? regItem?.difficultyBoundaryFlag ?? '',
@@ -215,7 +215,13 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       curriculum,
       problem: { content: item.content, choices: item.choices || [], points: item.points },
       // 직접 푼 뒤에 본다
-      reference: { answer: item.answer, solution: item.solution },
+      reference: {
+        answer: item.answer,
+        solution: item.solution,
+        // 원천 마크다운이 적어 온 풀이 요약 (풀기 전에 보지 않는다)
+        sourcePrimaryMethod: sourceMeta?.primaryMethod ?? regItem?.primaryMethod ?? '',
+        sourceDecisiveStep: sourceMeta?.decisiveStep ?? regItem?.decisiveStep ?? '',
+      },
       source,
       units: unitsOut,
       termCandidates: termCandidates(dictionary, texts),

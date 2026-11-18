@@ -51,7 +51,7 @@ function goodJudgments(candDir) {
     qid: 1, itemFingerprint: fp(1),
     solveSteps: ['양변에서 3 을 빼면 x=7-3 이다.', 'x=4 이므로 보기 ③ 4 가 답이다.'],
     solvedAnswer: '4', answerMatches: true, answerIssue: '',
-    figureNeed: 'NONE', figureEvidence: '',
+    figureNeed: 'NONE', figureEvidence: '', solutionFigureNeed: 'NONE', solutionFigureEvidence: '',
     standardUnitKey: unit.standardUnitKey, subUnitKey: unit.subUnits[0].subUnitKey, unitEvidence: '방정식 $x+3=7$',
     rpmRecordId: unit.rpm[0].id, rpmReason: 'x+3=7 에서 양변에서 3 을 빼는 한 단계를 쓴다.',
     problemTypeKey: pt ? pt.problemTypeKey : 'NONE', templateKey: tpl ? tpl.templateKey : 'NONE',
@@ -70,7 +70,7 @@ function goodJudgments(candDir) {
     qid: 2, itemFingerprint: fp(2),
     solveSteps: ['2x=12 의 양변을 2 로 나눈다.', 'x=12/2=6 이다.'],
     solvedAnswer: '6', answerMatches: true, answerIssue: '',
-    figureNeed: 'NONE', figureEvidence: '',
+    figureNeed: 'NONE', figureEvidence: '', solutionFigureNeed: 'NONE', solutionFigureEvidence: '',
     standardUnitKey: unit.standardUnitKey, subUnitKey: unit.subUnits[0].subUnitKey, unitEvidence: '방정식 $2x=12$',
     rpmRecordId: unit.rpm[unit.rpm.length - 1].id, rpmReason: '2x=12 에서 12 를 2 로 나누는 풀이 단계에 해당한다.',
     problemTypeKey: 'NONE', templateKey: 'NONE',
@@ -131,6 +131,8 @@ test('build-candidates: 과목·교육과정으로 거른 후보, 원문 인용,
       assert.ok(dict.byName.has(stripWs(t.term)));
     }
     assert.equal(c.source.standardUnitKey, 'M2-01');
+    assert.equal('primaryMethod' in c.source || 'decisiveStep' in c.source, false, '풀기 전에 보는 source 구역에 풀이 요약이 없다');
+    assert.ok(c.reference.sourcePrimaryMethod && c.reference.sourceDecisiveStep);
     // 빈 판정 틀이 있고, 다시 돌려도 작성 중인 판정을 덮어쓰지 않는다
     const jf = path.join(ctx.judgmentDir, 'q01.json');
     assert.equal(readJson(jf).solveSteps.length, 0);
@@ -288,7 +290,10 @@ test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없�
       assert.equal(it.difficultyBoundaryFlag, it.after.difficultyBoundaryFlag);
       assert.equal(it.after.visualNecessity.problem, 'EXEMPT');
       assert.ok(it.after.visualNecessity.problemReason);
-      assert.equal('solution' in it.after.visualNecessity, false, '근거 없는 해설 그림 판단은 비워 둔다');
+      assert.equal(it.after.visualNecessity.solution, 'EXEMPT');
+      assert.ok(it.after.visualNecessity.solutionReason);
+      assert.equal(it.after.metaRationale.crossConcept, 'NONE: 원천 마크다운 값, 재판정 안 함');
+      assert.equal(it.after.metaRationale.integration, 'NONE: 원천 마크다운 값, 재판정 안 함');
       assert.match(it.after.metaRationale.condition, /^NONE:/);
       assert.equal(it.after.provenance.kind, 'SIMILAR_FROM_ORIGINAL');
       assert.equal(it.after.provenance.sourceExam, STEM.replace('_유사', '_기출'));
@@ -570,5 +575,42 @@ test('apply-judgment: SELF_CONTAINED 그림 판단과 Condition 칸은 판정 �
     const reg = readJson(path.join(out, fs.readdirSync(out).find(f => /\.meta-q01-q02\.json$/.test(f))));
     assert.match(reg.items[1].after.visualNecessity.problemReason, /방정식 \$2x=12\$/);
     assert.match(reg.items[1].after.metaRationale.condition, /^NONE: .*방정식/);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 해설 그림 칸은 NONE|NEEDS_FIGURE 이고 NEEDS_FIGURE 는 해설 인용이 있어야 하며 시험지를 보류하지 않는다', () => {
+  const ctx = fresh();
+  try {
+    const mutate = fn => { const js = goodJudgments(ctx.candDir); fn(js); writeJudgments(ctx.judgmentDir, js); return check(ctx); };
+    let r = mutate(js => { js[1].solutionFigureNeed = ''; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'));
+    r = mutate(js => { js[1].solutionFigureNeed = 'NEEDS_FIGURE'; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'), '인용 없음');
+    r = mutate(js => { js[1].solutionFigureNeed = 'NEEDS_FIGURE'; js[1].solutionFigureEvidence = '해설에 없는 구절입니다'; });
+    assert.ok(codesOf(r, 1).includes('QUOTE_NOT_SUBSTRING'));
+    r = mutate(js => { js[1].solutionFigureNeed = 'NEEDS_FIGURE'; js[1].solutionFigureEvidence = '등식의 성질로 양변에서'; });
+    assert.deepEqual(codesOf(r, 1), []);
+    assert.equal(r.releasable, true);
+    const out = path.join(ctx.work, 'out');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet });
+    assert.equal(ap.written, true);
+    const reg = readJson(path.join(out, fs.readdirSync(out).find(f => /\.meta-q01-q02\.json$/.test(f))));
+    assert.equal(reg.items[0].after.visualNecessity.solution, 'REQUIRED');
+    assert.match(reg.items[0].after.visualNecessity.solutionReason, /등식의 성질로 양변에서/);
+    assert.equal(reg.items[1].after.visualNecessity.solution, 'EXEMPT');
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: provenance 는 변환기만 만든다 — 스테이지에 없으면 다시 변환하라며 실패하고 아무것도 쓰지 않는다', () => {
+  const ctx = fresh();
+  try {
+    writeJudgments(ctx.judgmentDir, goodJudgments(ctx.candDir));
+    const regFile = path.join(path.dirname(ctx.jsPath), fs.readdirSync(path.dirname(ctx.jsPath)).find(f => /\.meta-q01-q02\.json$/.test(f)));
+    const reg = readJson(regFile);
+    for (const it of reg.items) delete it.after.provenance;
+    writeJson(regFile, reg);
+    const out = path.join(ctx.work, 'out');
+    assert.throws(() => applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet }), /PROVENANCE_MISSING.*다시 변환/);
+    assert.equal(fs.existsSync(out), false);
   } finally { ctx.cleanup(); }
 });

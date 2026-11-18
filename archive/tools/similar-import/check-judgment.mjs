@@ -10,6 +10,7 @@ import {
 } from './lib.mjs';
 
 export const FIGURE_NEEDS = ['NONE', 'SELF_CONTAINED', 'NEEDS_FIGURE'];
+export const SOLUTION_FIGURE_NEEDS = ['NONE', 'NEEDS_FIGURE'];
 export const CODES_HOLD_CLASS = new Set(['FIGURE_MISSING']); // 판정은 맞지만 시험지를 내보낼 수 없는 사유
 export function reviewState(judgments, total) {
   const rows = [...judgments.entries()].map(([qid, j]) => ({ qid, ...(j.review || {}) }));
@@ -107,6 +108,13 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
       if (!nonEmpty(j.figureEvidence)) add('FIELD_EMPTY', 'figureEvidence(발문 인용)가 비었습니다');
       else if (!isQuote(j.figureEvidence, ['stem', 'choices'])) add('QUOTE_NOT_SUBSTRING', 'figureEvidence 가 발문·보기에 그대로 있지 않거나 4자 미만입니다');
       if (j.figureNeed === 'NEEDS_FIGURE' && !itemHasImage(it)) add('FIGURE_MISSING', `그림이 필요한 문항인데 image 가 없습니다${it.problemPlanRef ? ' (plan 은 있으나 아직 그림 파일 없음)' : ''}`);
+    }
+
+    // 3b. 해설 그림 (NEEDS_FIGURE 여도 보류하지 않는다 — 해설 그림은 나중에 그림 줄에서 만든다)
+    if (!SOLUTION_FIGURE_NEEDS.includes(j.solutionFigureNeed)) add('FIELD_EMPTY', `solutionFigureNeed 는 ${SOLUTION_FIGURE_NEEDS.join('|')} 중 하나여야 합니다`);
+    else if (j.solutionFigureNeed === 'NEEDS_FIGURE') {
+      if (!nonEmpty(j.solutionFigureEvidence)) add('FIELD_EMPTY', 'solutionFigureEvidence(해설 인용)가 비었습니다');
+      else if (!isQuote(j.solutionFigureEvidence, ['solution'])) add('QUOTE_NOT_SUBSTRING', 'solutionFigureEvidence 가 해설에 그대로 있지 않거나 4자 미만입니다');
     }
 
     // 4. 단원

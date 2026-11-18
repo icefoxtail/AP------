@@ -12,7 +12,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, parseCli, readBank, readJson, writeJson, pad2, gitBlobSha1, findSibling, orderItem, serializeBank,
-  loadMasters, loadCrosswalkRecords, loadTermDictionary, stripWs, questionUidForSource, appendStatus, findOriginalExamFile,
+  loadMasters, loadCrosswalkRecords, loadTermDictionary, stripWs, questionUidForSource, appendStatus,
 } from './lib.mjs';
 import { checkJudgments, printReport, answerMatchesStored, reviewState } from './check-judgment.mjs';
 export { reviewState };
@@ -25,6 +25,13 @@ export function problemVisual(j) {
   if (j.figureNeed === 'SELF_CONTAINED') return { problem: 'EXEMPT', problemReason: `그림을 가리키는 말(「${String(j.figureEvidence).trim()}」)이 있으나 글만으로 풀려 그림이 필요 없다.` };
   return null;
 }
+/** 해설 그림 판단: NONE 은 불필요(EXEMPT), NEEDS_FIGURE 는 값만 기록한다(보류 없음). */
+export function solutionVisual(j) {
+  if (j.solutionFigureNeed === 'NONE') return { solution: 'EXEMPT', solutionReason: '해설이 글만으로 완결되어 그림 없이 따라갈 수 있다.' };
+  if (j.solutionFigureNeed === 'NEEDS_FIGURE') return { solution: 'REQUIRED', solutionReason: `해설을 따라가려면 그림이 필요하다(「${String(j.solutionFigureEvidence).trim()}」).` };
+  return null;
+}
+const SOURCE_MD_VALUE = '원천 마크다운 값, 재판정 안 함';
 /** Condition 키가 있으면 키와 4칸 condition 근거, 없으면 NONE 과 4칸 condition 에 적힌 것. */
 export function conditionRationale(j, conditionKeys) {
   const terms = (j.slots?.condition || []).map(e => e.term);
@@ -178,12 +185,15 @@ export function applyJudgments({
       condition: conditionRationale(j, after.conditionKeys),
     };
     // 판정 기록에서 만들 수 있는 필수 메타. 근거가 없는 칸(visualNecessity.solution, provenance.generator, variationNote)은 비워 둔다.
-    const vis = problemVisual(j);
-    if (vis) after.visualNecessity = { ...(after.visualNecessity || {}), ...vis };
-    if (!after.provenance) {
-      const origFile = findOriginalExamFile({ repoRoot, stem, targetSourceFile: targetSourceJsPath });
-      if (origFile) after.provenance = { kind: 'SIMILAR_FROM_ORIGINAL', sourceExam: path.basename(origFile, '.js'), sourceArchiveFile: origFile, sourceQid: after.sourceQid, variationType: after.variationType };
+    after.visualNecessity = { ...(after.visualNecessity || {}), ...problemVisual(j), ...solutionVisual(j) };
+    // CrossConcept·Integration 은 변환기가 원천 마크다운에서 옮긴 값이다. 판정 대상이 아니므로 근거 문장만 고정 문구로 둔다.
+    if (after.integrationPattern) {
+      const keys = Array.isArray(after.crossConceptKeys) ? after.crossConceptKeys : [];
+      after.metaRationale.crossConcept = `${keys.length ? keys.join(', ') : 'NONE'}: ${SOURCE_MD_VALUE}`;
+      after.metaRationale.integration = `${after.integrationPattern}: ${SOURCE_MD_VALUE}`;
     }
+    // provenance 는 변환기만 만든다. 없으면 옛 변환기로 만든 스테이지이므로 다시 변환하게 한다.
+    if (!after.provenance) throw new Error(`PROVENANCE_MISSING: Q${q.id} 스테이지 등록 요청에 provenance 가 없습니다 (md 머리글에 sourceArchiveFile 이 없거나 옛 변환 산출물). similar-md-to-js 로 다시 변환하세요.`);
     const proposal = j.newKeyProposal ? `; PROPOSAL: ${JSON.stringify(j.newKeyProposal)}` : '';
     return {
       ...it,

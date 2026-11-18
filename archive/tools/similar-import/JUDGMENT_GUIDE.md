@@ -26,8 +26,9 @@
 
 1. `problem` 의 발문·보기만 읽고 **직접 푼다.** 풀어서 답을 확인한 뒤에 `reference`(저장 정답·해설)를 본다.
 2. **단원·RPM·유형(PT/TPL)은 `reference` 해설에 적힌 결정적 풀이 단계를 기준으로 고른다.** 내 풀이가 해설과 다르면 해설 기준으로 고르고, 다르다는 사실은 `how` 에 적는다.
-3. `units` 에서 단원을 고른다. 단원 안의 `subUnits`, `rpm`, `problemTypes` 만 후보다. 후보는 같은 과목·같은 단원의 등록된 유형 전부이고, 원본 기출의 같은 번호 문항이 쓴 유형은 `sourceExamHint` 에 따로 있다(참고만 한다. 해설의 결정적 단계가 다르면 따르지 않는다).
-4. `source` 는 원천 마크다운이 적어 온 값이다. 틀릴 수 있다. 그대로 베끼지 말고 문항을 읽고 정한다.
+3. `units` 에서 단원을 고른다. 단원 안의 `subUnits`, `rpm`, `problemTypes` 만 후보다. 원천이 적은 단원과 원본 기출 힌트 단원은 등록된 유형 전부, 다른 단원은 좁은 목록이다. 단원을 바꿨는데 후보가 비면 `NONE` 으로 두고 `how` 에 적는다. 원본 기출의 같은 번호 문항이 쓴 유형은 `sourceExamHint` 에 따로 있다(참고만 한다. 해설의 결정적 단계가 다르면 따르지 않는다).
+4. `source` 는 원천 마크다운이 적어 온 값이다. 틀릴 수 있다. 그대로 베끼지 말고 문항을 읽고 정한다. (원천의 `primaryMethod`·`decisiveStep` 은 풀기 전에 보지 않도록 `reference` 쪽에 있다.)
+5. CrossConcept·Condition 키·결합 패턴(`integrationPattern`)과 출처(`provenance` 의 `generator`·`variationNote`)는 판정 대상이 아니다. 원천 마크다운 값을 그대로 옮기고 재판정하지 않으며, 원천에 없는 `generator`·`variationNote` 는 쓰지 않는다.
 
 ### 칸의 뜻과 채우는 법
 
@@ -39,6 +40,7 @@
 | `answerIssue` | 다르면 무엇이 다른가 | `false` 일 때만 쓴다. 비우면 실패. |
 | `figureNeed` | 그림 필요 여부 | `NONE` 그림 언급 없음 · `SELF_CONTAINED` 그림 언급은 있으나 글만으로 풀림 · `NEEDS_FIGURE` 그림의 값·모양을 읽어야 풀림 |
 | `figureEvidence` | 근거 | `NONE` 이 아니면 발문에서 **그대로** 옮긴 문장 |
+| `solutionFigureNeed` `solutionFigureEvidence` | 해설 그림 필요 여부 | `NONE` 해설을 글만으로 따라갈 수 있다 · `NEEDS_FIGURE` 해설을 따라가려면 그림이 필요하다. **해설을 글만으로 따라갈 수 있으면 NONE.** NEEDS_FIGURE 이면 해설에서 **그대로** 옮긴 구절을 `solutionFigureEvidence` 에 쓴다(NONE 이면 비워도 된다). NEEDS_FIGURE 여도 시험지는 보류되지 않는다(해설 그림은 나중에 그림 줄에서 만든다). |
 | `standardUnitKey` `subUnitKey` | 단원·소단원 | 후보 안의 키. 소단원은 고른 단원의 것. |
 | `unitEvidence` | 근거 | 발문·해설에서 **그대로** 옮긴 구절 |
 | `rpmRecordId` | RPM 행 | 고른 단원의 `rpm` 후보 id. 맞는 것이 없으면 `NONE` |
@@ -71,46 +73,47 @@
 - **그림 낱말(그림·표·아래의)이 있는데 글만으로 풀린다.** `SELF_CONTAINED` 와 그 구절 인용. 그림이 없으면 못 푸는 문항만 `NEEDS_FIGURE` 이고, 그림 파일이 없으면 시험지가 보류된다.
 - **4칸 인용이 길다.** 5~40자의 짧은 구절을 골라 그대로 옮긴다. `$`가 들어간 구간은 닫는 `$` 까지 옮기면 안전하다.
 
-### 예시: 1문항 (이등변삼각형, 객관식)
+### 예시: 1문항 (가상의 이등변삼각형 문항, 객관식 — 어느 실제 시험의 문항도 아니다)
 
 ```json
 {
-  "qid": 10,
+  "qid": 3,
   "itemFingerprint": "(도구가 채운 값 그대로 둔다)",
   "solveSteps": [
-    "AB=AC 인 이등변삼각형에서 꼭지각 A 의 이등분선 AD 는 BC 를 수직이등분하므로 BD=CD=4.5 이다.",
-    "∠BAD=30° 이므로 ∠A=60° 이고 밑각도 60° 라 정삼각형이다.",
-    "따라서 AC=BC=2×4.5=9 (cm) 이다."
+    "AB=AC 이므로 ∠C=∠B=64° 이다 (이등변삼각형의 밑각).",
+    "삼각형의 내각의 합이 180° 이므로 ∠A=180°-64°-64°=52° 이다."
   ],
-  "solvedAnswer": "⑤",
+  "solvedAnswer": "③",
   "answerMatches": true,
   "answerIssue": "",
   "figureNeed": "NONE",
   "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
   "standardUnitKey": "M2-05",
   "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-  "unitEvidence": "이등변삼각형 $ABC$에서 $\\angle A$의 이등분선",
+  "unitEvidence": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서",
   "rpmRecordId": "M2-RPM-178",
-  "rpmReason": "꼭지각 A=60° 와 밑각 60° 를 이용해 정삼각형임을 보는 단계라 밑각과 꼭짓각 행이다.",
+  "rpmReason": "∠B=64° 에서 ∠C=64° 를 얻는 밑각 성질을 쓰는 단계라 밑각과 꼭짓각 행이다.",
   "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-  "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
-  "typeReason": "꼭지각 A 의 이등분선 AD 가 밑변 BC 를 수직이등분해 BD=CD=4.5 가 되는 단계가 꼭지각 이등분선 템플릿의 정의와 같다.",
+  "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+  "typeReason": "∠B=64° 로 밑각 ∠C=64° 를 정하고 내각의 합에서 꼭지각 ∠A=52° 를 구하는 단계가 밑각 템플릿의 정의와 같다.",
   "newKeyProposal": null,
-  "difficultyBucket": 2,
+  "difficultyBucket": 1,
   "difficultyConfidence": "high",
   "difficultyBoundaryFlag": "NONE",
-  "difficultyReason": "꼭지각 이등분선의 성질(BD=4.5)과 ∠A=60° 에서 정삼각형을 알아보는 두 단계라 2단계로 본다.",
+  "difficultyReason": "밑각 성질 ∠C=64° 와 내각의 합 180° 를 바로 쓰는 두 줄 풀이라 1단계로 본다.",
   "format": "",
   "slots": {
     "given": [{ "term": "이등변삼각형", "src": "stem", "quote": "인 이등변삼각형 $ABC$에서" }],
-    "goal": [{ "term": "길이", "src": "stem", "quote": "$\\overline{AC}$의 길이는?" }],
+    "goal": [{ "term": "크기", "src": "stem", "quote": "$\\angle A$의 크기는?" }],
     "method": [
-      { "term": "수직이등분선", "src": "solution", "quote": "밑변 $BC$를 수직이등분하므로", "evidenceType": "NAMED" },
-      { "term": "정삼각형", "src": "solution", "quote": "인 정삼각형이다", "evidenceType": "NAMED" }
+      { "term": "밑각", "src": "solution", "quote": "밑각의 크기가 같으므로", "evidenceType": "NAMED" },
+      { "term": "내각의합", "src": "solution", "quote": "내각의 합이 $180^\\circ$이므로", "evidenceType": "NAMED" }
     ],
     "condition": []
   },
-  "how": "꼭지각 이등분선으로 BD=4.5 를 얻고 ∠A=60° 에서 정삼각형 AC=9 를 계산해 보기 ⑤와 대조했다. 후보 PT 중 꼭지각 이등분선 템플릿이 그대로 맞았다.",
+  "how": "밑각 ∠C=64° 와 내각의 합에서 ∠A=52° 를 얻어 보기 ③과 대조했다. 해설도 같은 두 단계라 밑각 템플릿을 골랐다.",
   "review": { "reviewerSolvedAnswer": "", "verdict": "", "fixes": [], "note": "" }
 }
 ```
