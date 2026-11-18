@@ -536,6 +536,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-course-aliases.test.mjs']
   },
   {
+    // New PT/TPL keys generated from the dots bundle tables; fixture-only, deterministic key names.
+    label: 'tests/archive-new-type-keys.test.mjs',
+    args: ['--test', 'tests/archive-new-type-keys.test.mjs']
+  },
+  {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },
