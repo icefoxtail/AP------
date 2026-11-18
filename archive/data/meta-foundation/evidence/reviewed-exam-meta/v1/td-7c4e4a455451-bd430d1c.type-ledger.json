@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7c4e4a455451-bd430d1c",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_c702dfb9fc51850a29214fcea5c4e83e13bc44f2c91ace8d27265cd5e4da52ce",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "분모·소수를 정리한 두 식을 빼 x=y=-1을 얻고 kx-2y-7=0에 대입하여 k=-5를 결정한다.",
+      "note": " 검사 오류: [{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6ea3fed185518524ccef7a780bda080e3a7e2ed4665bec4a4261e9d62284d108",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+      "templateKey": null,
+      "step": "원래 수100x+70+y와 자리 교환한 수100y+70+x를 써 바꾼 수=원래 수+99인 ⑤를 선택한다.",
+      "note": "새 TPL 제안: 자리 교환 조건의 방정식 표현. 정의: 각 자리의 자릿값으로 수를 나타내고 두 수의 차 조건만 식으로 번역한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_91b42523c89d961c54bfe029774b62ab0c22c8f98dc5a6ff9a7dccc17118fbb5",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 자연수 입력에 출력이 정확히 하나인지 확인하여 3으로 나눈 나머지와 반지름에 따른 둘레인 ②·④를 선택한다.",
+      "note": "새 TPL 제안: 일상 관계의 함수 판별. 정의: 입력에 대응하는 출력의 존재성과 유일성으로 함수 여부를 판정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_367e012776642d6e80755d48a5fb420cbc1af507280a4627110830e2dab502f4",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "닮음비2:3으로 AD=4, 넓이비4:9와 대응각의 같음을 확인하고 대응변 길이 자체가 같다는 ⑤를 제외한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_47128a6f70167e5be057df9b362aa62766c5b5dca75fa2e217519b0d62540914",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": null,
+      "step": "중심각이 같은 부채꼴과 각이45·45·90도로 고정된 삼각형만 확대·축소로 겹치므로 ③·⑤를 고른다.",
+      "note": "새 TPL 제안: 항상 닮은 도형의 종류 판별. 정의: 같은 종류의 임의 두 도형에 대해 대응각과 변비가 항상 일정한지 판정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc8244a63d89d2d847b9f113979fbecec5e2bec8d2c3b732ded818e9c1b2639c",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "대응 높이4:8의 닮음비를 세제곱하여 부피비1:8에서 작은 기둥 부피64/8=8을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f2478378f351ea8b296ebddc3ed046be95e5dcf9ba2ac35820bd8d58c2604993",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "step": "B=E=50도에 끼인 변 AB:DE=12:6과 BC:EF=8:4가 같아지는 ②에서 SAS 닮음을 확인한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d7ad507514b1cfd9be1a3d83451b98d3c18f807a63e363208e3eb9cd530d89a5",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "공통 A와 ABD=ACB로 ABD와 ACB의 AA 닮음을 얻어 AD:AB=AB:AC에서 x=36/8=9/2를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_84b8f337f11de70b4e5f78556667435b68bc7c497c81341cf06b8cf84a5a40d6",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "직각삼각형의 빗변 높이가 만드는 두 삼각형의 AA 닮음에서 AD²=BD·DC를 써 16=2x, x=8을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_16d7f39f001c81db4788b40d7f16b55ff87a124b24e334570872b58338ab717f",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "BE와 AD가 평행하므로 BE/AD=FB/FA=4/10에서 BE=2를 구하고 EC=BC-BE=5-2=3을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a8022ea4db53d559711e09960cdae09bccae92129b0877d05c83e9bc986d945",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "두 대각선을 가로지르는 중점연결선에서 MQ=BC/2=7, MP=AD/2=4이므로 PQ=3이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f8298c8648bab711a48219ac0e647b41956252e97ba0a015f677cbb576434c3",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "상수가 확정된 x+2y=6과3x+2y=14를 풀어(4,1)을 얻고 나머지 식에 대입해 a=-1,b=1을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e699257bc29548373e96583bc3cddef1366381c8340082642c9b4e3561c5b490",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "공통 A와 AED=ABC로 ADE와 ACB의 AA 닮음을 확인하고 닮음비3:4의 넓이비9:16에서 큰 넓이32를 얻어 사각형은14이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_622679eecea598cb102b45658b9712e991212ed0b5530b115929308c4d8b06b6",
+      "sourceOrdinal": 25,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "모서리5:10의 닮음비를 세제곱하면 한 개 부피비1:8이므로 작은 것6개보다 큰 것1개인 B가 많다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

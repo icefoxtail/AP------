@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-817d955a2260-f5904547",
+  "examUid": "21_연향중_2학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-817d955a2260-f5904547.type-ledger.json",
+        "sha256": "f0be58e91238b7f9ebcdd118a2a74d059328df77b25912b83fd11881a2959e13"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fe5d49b0dadd9e739562b8676fbd4c73b49f0fa1b0c865ced42f8e4cffba638f",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "높이3sin30=1.5를 밑변√13과 곱해 삼각형 넓이3√13/4.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0c4a7eef04841fab52d28dc29293a78baea1d70dc510845113da70a22846cbd4",
+        "contentFingerprint": "493c2f2ab43a78bb30a1b8301dd2c3b4d13425263f48e56bef7fc42ef4be4a1c"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-817d955a2260-f5904547.type-ledger.json",
+          "sha256": "f0be58e91238b7f9ebcdd118a2a74d059328df77b25912b83fd11881a2959e13"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e8cacc18082642c4046428cce7c7d0ce9341ccfc2fb69edb7bbc33584db51d7c",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "rationale": "반지름 이등변 밑각55로 중심각70, 반원에서90·70을 빼20, 호비70:20에 길이5를 대응35/2.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "2defdc00cd505cf02238ad7aab4f13199260433a038a1af770cb9d832934be73",
+        "contentFingerprint": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-817d955a2260-f5904547.type-ledger.json",
+          "sha256": "f0be58e91238b7f9ebcdd118a2a74d059328df77b25912b83fd11881a2959e13"
+        }
+      ]
+    }
+  ]
+}

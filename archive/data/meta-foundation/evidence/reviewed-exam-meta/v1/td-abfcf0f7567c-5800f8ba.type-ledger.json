@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-abfcf0f7567c-5800f8ba",
+  "sourceArchiveFile": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "x+y+z=3m을대입하여변환자료평균(x+y+z-3m)/(3a)=0.",
+      "note": "필요 TPL: 평행이동과 배율을 함께 적용한 평균: 각 변량에 같은 상수를 더하거나 빼고 같은 수로 나눈 자료의 평균을 원래 평균에서 변환한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "평균합에서a+b1,최빈값2와a<b로a-1,b2를복원하고일곱자료중앙값2.",
+      "note": "필요 TPL: 평균과 최빈값 조건으로 중앙값 복원: 자료의 합과 최빈값의 반복 조건으로 미지 변량을 결정한 뒤 정렬하여 중앙값을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

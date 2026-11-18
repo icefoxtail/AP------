@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-6d9f6919d511-df87b745",
+  "examUid": "21_팔마중_1학기_중간_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "5eed532622e4202222b50bd5a68300a6abe4770b",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9f6919d511-df87b745.type-ledger.json",
+        "sha256": "b9ccc8ec5dcfbfd51f44f93b0f4140278c70bab04b7e0eeea502efdd00da1b0a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ba18a540ac2833bd5052c05ce0541851336f8188703491c592fa2a876be2ec78",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES"
+      },
+      "rationale": "2a<2b에서a<b를 얻고 같은 수1을 더해도 방향이 유지되므로②의반대 부등호를 반박한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5a2392275395b898dddba67e6a729cf69e9f33acfb31336ff55a4643239dbe00",
+        "contentFingerprint": "46d4a5ec33927d73f53fab85a6060abeda0633a35162a2406a7d1e3181cd01b5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9f6919d511-df87b745.type-ledger.json",
+          "sha256": "b9ccc8ec5dcfbfd51f44f93b0f4140278c70bab04b7e0eeea502efdd00da1b0a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7bdd91965158153f36a0dcdc65813886e297ef226e070163dac9f92e73040609",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      },
+      "rationale": "원래 식에서 잘못 뺀 결과를 빼 덧셈해야 할 식을 복원하고 원래 식에 더해6x제곱-2x-11을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "8b66ba492b6d6284ad70089b958b639b5db62a0f38ed4974962ccd6bbf969e80",
+        "contentFingerprint": "34aed6d3d86bf89470f6c56434dba2383de72f472b68f318c909214ab911dcac"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9f6919d511-df87b745.type-ledger.json",
+          "sha256": "b9ccc8ec5dcfbfd51f44f93b0f4140278c70bab04b7e0eeea502efdd00da1b0a"
+        }
+      ]
+    }
+  ]
+}

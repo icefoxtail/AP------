@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-dbdea1d0af3b-c2cfa997",
+  "sourceArchiveFile": "original/middle/m2/1final/20_금당중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_421f01c260416b7aed108a7d4fb5bb28f8b8e7034c3bbde3f3b6359ffadc779d",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "지수법칙과 동류항 합을 적용하여 각 등식을 검토하면 b¹²÷b⁶=b⁶만 옳다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4f72f4442835a1af5ea51e0a75439873683233c16b89349fe5d5380bfba8c55",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": null,
+      "step": "상대의 승수가 자신의 패수라는 관계를 사용하여 금이2x-y=9,당이-x+2y=3을 세운다.",
+      "note": "새 TPL 제안: 가위바위보 계단 이동의 연립방정식 수립. 정의: 상대의 승수가 자신의 패수라는 관계를 사용하여 금이2x-y=9,당이-x+2y=3을 세운다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_66de057559a1a75f47ccefaf55b91c6493cda600446e5ee830e738d9ef115aff",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+      "step": "왕복 시간합 x/60+x/80≤70을 세워 x≤2400m를 얻고 최대거리를2.4km로 환산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

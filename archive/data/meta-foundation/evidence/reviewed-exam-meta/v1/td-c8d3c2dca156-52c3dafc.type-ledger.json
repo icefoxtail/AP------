@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c8d3c2dca156-52c3dafc",
+  "sourceArchiveFile": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "두 할선각은 먼 호144도와 가까운 호36도의 차의 절반이므로 x=54도이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0a276f5894e6ce31198f1003708d4d22106c9878656370df9171afd4c2a241ae",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "여덟 자료 가운데 두 값13의 평균으로 a=13을 구하고 최빈값11과13의 합 b=24를 빼 -11을 얻는다.",
+      "note": "필요 TPL: 짝수 자료 중앙값과 복수 최빈값 결합; 가운데 두 자료 평균과 최고도수인 모든 자료값을 계산하여 결합한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de15991d27fe79fbae983e4eec0dd36b58423e6f33ebcd64420862cb816441ff",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "편차합0으로 2x²+x-3=0을 세워 정수근1을 고르고 평균74에 지민 편차2를 더한76과 정국 편차1의 합77을 구한다.",
+      "note": "필요 TPL: 편차 합으로 성적 복원; 편차합0에서 미지수를 결정한 뒤 평균에 편차를 더해 원자료를 복원한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "원주각126도가 보는 큰 호252도를 전체에서 빼 작은 중심각108도를 얻고 접점 두 직각의 사각형에서 P=72도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

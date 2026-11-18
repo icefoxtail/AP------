@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-abfcf0f7567c-5800f8ba",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "ac00a051839d9a418407e388269a7df4fd2be3d7",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-abfcf0f7567c-5800f8ba.type-ledger.json",
+        "sha256": "0181659f441f7ceb62f383f4447b468e550b5b1503bcc9f56af99b182845f32a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+      },
+      "rationale": "x+y+z=3m을대입하여변환자료평균(x+y+z-3m)/(3a)=0.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "ca40635ae5e233467f14f84a034434a158fd9f59cd58ca6de6734e964959d7a7",
+        "contentFingerprint": "568b60a7d3f1c6e8e22ec637f44f417979dd9c0378e4734bef296e24006efae1"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-abfcf0f7567c-5800f8ba.type-ledger.json",
+          "sha256": "0181659f441f7ceb62f383f4447b468e550b5b1503bcc9f56af99b182845f32a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE"
+      },
+      "rationale": "평균합에서a+b1,최빈값2와a<b로a-1,b2를복원하고일곱자료중앙값2.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c38f134e30fcc01d5503eadb975a79d635ea68b7216e992df733c6d96cd1d762",
+        "contentFingerprint": "23721a62ba99b2ea51796398dbf8a8262abdab40e2dbf0535b7bd0f2d7314498"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-abfcf0f7567c-5800f8ba.type-ledger.json",
+          "sha256": "0181659f441f7ceb62f383f4447b468e550b5b1503bcc9f56af99b182845f32a"
+        }
+      ]
+    }
+  ]
+}

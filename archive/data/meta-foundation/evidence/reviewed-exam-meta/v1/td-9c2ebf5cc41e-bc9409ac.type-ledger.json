@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9c2ebf5cc41e-bc9409ac",
+  "sourceArchiveFile": "original/middle/m2/1final/21_향림중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b3d9aa10b53c4c265bf432e9aa878f1c49275037f7061abb621751bd3ba5afad",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "a≤b의 양변에 음수 -4를 곱하면 부등호를 뒤집어야 하므로 3-4a≥3-4b임을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_227821ec244e4d17a597166c2678fc8b62b8c1c02388407631e2af39e55ea0ff",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "step": "이항·괄호 전개·동류항 소거 후 일차항이 남는 부등식 ㄱ,ㄷ,ㄹ,ㅂ을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f17ffa3be750d8ea988df13b80644fc0cbea034bb7c95febb9bc2fdcfdca3f24",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+      "step": "편도 거리 x의 왕복시간 x/3+x/4와 구매시간 1/3의 합이 3/2 이하가 되도록 풀어 x≤2km를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_60213c383467e81b3cde75a51ed6c64a7f33cd3aac544539a357226779a68531",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "상수식 둘로 공통해 (3,6)을 구하고 2x-ay=-6,ax-by=-12에 차례로 대입하여 a=2,b=3을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

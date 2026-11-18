@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-278ea7f3bb73-89b74a62",
+  "examUid": "21_팔마중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_팔마중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "3682b06c54c2955bb407014fc1e1f5e016f49752",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-278ea7f3bb73-89b74a62.type-ledger.json",
+        "sha256": "cb15873266b796d5146539012c81c07848a3fdfd71a00275240a95fbac2c574c"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_828803f46792fadc8014e2570d3be5b535ff852837621722d9458b02c6e38428",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT"
+      },
+      "rationale": "반지름OA=OB,접점직각,공통빗변OP로RHS합동을증명하고대응변PA=PB를결론낸다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "18a0c96cf0de674a8b4d2774addd95a6878063e984b788ebdbddfa541b77371a",
+        "contentFingerprint": "b49dd491951e88b53d58014bc55a0090877051c5de2675bed4008227f9d6c057"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-278ea7f3bb73-89b74a62.type-ledger.json",
+          "sha256": "cb15873266b796d5146539012c81c07848a3fdfd71a00275240a95fbac2c574c"
+        }
+      ]
+    }
+  ]
+}

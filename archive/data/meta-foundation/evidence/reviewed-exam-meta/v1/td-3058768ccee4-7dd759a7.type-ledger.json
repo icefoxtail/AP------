@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3058768ccee4-7dd759a7",
+  "sourceArchiveFile": "original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_16106087564b6e5a23a39fcb27c442d7d6db876708b866e2bce8b48bf5a4ea39",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "지수법칙으로 각 등식을 검토하면5³×5=5⁴라서 세 번째 등식만 옳지 않다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f52e95f3869c8dcc7f4c18af824d004a7a963457fc2b4dec6eab70f4cef5dd0c",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": null,
+      "step": "잘못 뺀 관계에서 A=(4x-3y+2)-(7x+4y-5)를 복원한 뒤 원래 식에 더하여 x-10y+9를 얻는다.",
+      "note": "새 TPL 제안: 잘못 뺀 다항식의 덧셈 복원. 정의: 잘못 뺀 관계에서 A=(4x-3y+2)-(7x+4y-5)를 복원한 뒤 원래 식에 더하여 x-10y+9를 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_15280878dc22f4d50666510cd57bb3953bcbbd9c20594d43817bcbc0549d05d0",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "조건에서 음수-2로 나누어 a>b를 얻고 양수·음수 배수와 덧셈의 부등호 방향을 적용하여 ㄱ,ㄴ만 참으로 판단한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_889e17ae7156db4c4e0cb521b04575bc212d8a9d8d94dc71b1fb2a2ebeb47d2f",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+      "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+      "step": "분모를 없애3x-5≤4를 풀면x≤3이므로 자연수해1,2,3의 합6을 구한다.",
+      "note": " 검사 오류: [{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a43df02d786a5e20c2366ab4451a8ee65b1e6d90fb9270e3fc229a21ad39d391",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+      "templateKey": null,
+      "step": "(-1,2)를 ax+2y=5에 대입하여 a=-1을 구하고(p,2p/3)를 대입하여 p=15를 얻는다.",
+      "note": "새 TPL 제안: 한 점으로 계수를 구한 뒤 미지 좌표 결정. 정의: (-1,2)를 ax+2y=5에 대입하여 a=-1을 구하고(p,2p/3)를 대입하여 p=15를 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a99053df638c23f151446dab39bcf4fa98cead19f25621965c127dc70590df13",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+      "step": "상대의 승수가 자신의 패수임을 써3x-y=23,-x+3y=11을 세우고 합하여2(x+y)=34에서 총17회를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4da5667d4596455aaa22722b687a654a3d7851a1cadd5bfbf2f32f284d8becbb",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "x보다 작은 자연수y는 한 x에 여러 값 또는 대응값 없음이 가능하므로 함수가 아니다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: x보다 작은 자연수y는 한 x에 여러 값 또는 대응값 없음이 가능하므로 함수가 아니다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f2c23e584874ef0f001897cbde4ce04798d3ad30123e382abeefb60be5057c4",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기3이 양수이므로 x증가에 y도 증가하여 감소한다는 진술이 거짓이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_13afa3452cbd820dd936af66d88acfec96a52eeee087607eadb3b35e8cad8adc",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+      "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+      "step": "부등식을 x<(6-a)/3으로 정리한 뒤 자연수1조차 포함하지 않으려면 경계≤1이어야 하므로 a≥3이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

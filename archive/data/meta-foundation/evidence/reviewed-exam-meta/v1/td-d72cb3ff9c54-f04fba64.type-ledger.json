@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-d72cb3ff9c54-f04fba64",
+  "sourceArchiveFile": "original/middle/m2/2mid/20_풍덕중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_35ad636a695d0bb57b37cd03d08b7e49185f6e2bb5724923eb38f20db5ac6d84",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": null,
+      "step": "양변에 각각 10,6을 곱해 4x+y=11,3x-y=3으로 정리하고 더하여 x=2,y=3,a-b=-1을 구한다.",
+      "note": "새 TPL 제안: 소수·분수 혼합 계수의 정수화 후 연립 풀이. 정의: 소수식에는10, 분수식에는 분모 최소공배수를 곱하여 정수식으로 바꾼 뒤 연립해 해의 일차결합을 계산한다. ACTIVE 전체 정의 재대조에서 소수계수 정수화 PT와 일치함을 직접 확인하여 NEW_KEY를 정정했다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dca716cf8b8946e15f3ebe523d0b0a5ff8458ab89153560bb65b57b90e919461",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "이미 주어진 ABC~DEF의 대응변 AB:DE=4:8과 대응각을 이용해 닮음비 7:8이라는 ⑤가 틀림을 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e6e8e7f9985aa54934079da49c27848d654df29c70cf879df0e643f45da5455",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "그림의 높이 4:8에서 닮음비 1:2, 넓이비 1:4, 부피비 1:8을 얻어 부피 12에 대응하는 값은 96임을 확인한다.",
+      "note": " 원문 alt·해설의 AB=3,IJ=6은 실제 그림의 AD=3,DH=4,LP=8과 불일치한다. 대응 높이 4:8로 직접 판독했다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_90a4ef218e2d68ebb99ba8a8be2c91ddbb52488f8d76df04550ead8c76d3e3fd",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "동일한 표시각과 삼각형 외각으로 DEF와 ABC의 대응각이 같음을 얻는다. 실제 그림 DE=4,AB=8,AC=9이므로 DF=4.5이다.",
+      "note": " 원문 alt·해설은 AB=6,AC=8,DE=3으로 바꾸어 DF=4를 제시하나 실제 그림은 AB=8,AC=9,DE=4라 DF=4.5이다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b9141551853c8a51c876abf44bedb5e1d9a4cebae714d15ed524998fdaf654dd",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "빗변에 내린 높이로 생긴 직각삼각형의 닮음에서 AD²=BD·CD를 얻어 CD=9, 넓이=13×6/2=39를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_376799e913aa222d136c7fa89b5ecd4ad06c36a9f1ff73526a41bd2fa6cc63f0",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "DE∥BC에 의해 AD:DB=10:5=AE:EC이다. 실제 그림 AE=8이므로 x=4, DE:BC=2:3에서 y=10, 합14이다.",
+      "note": " 원문 alt·해설의 AE=6과 실제 그림 AE=8이 불일치하여 해설 답13과 그림 풀이14가 다르다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bf02d9290655e07be3222bd897061142c38f80d57db49ed05e7afaf30d9b50f6",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "평행선 사이 두 횡단선의 대응비 4:6=2:3을 적용한다. 실제 오른쪽 l~n 구간15와 l~m 구간6에서 m~n=9, 왼쪽 x=6, 오른쪽 m~k의 y=9+3=12, 합18이다.",
+      "note": " 원문 alt·해설의 오른쪽 세 구간6,y,3 및 근거 없는 x=8은 실제 그림의 l~n=15, l~m=6, m~k=y와 다르다. 그림 풀이 합18, 해설20으로 불일치한다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4dc8911f67bc6291233c964f9296013f39ae3c96bd8f60e43afc8ab197802edc",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "step": "내각 이등분선 정리 AB:AC=BD:DC에서 8:6=BD:3이므로 BD=4이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ee6a0dce92669fa9ff57b1596e516bb2c57fac7a7aafa66a8f3682d771b49b08",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "실제 그림 AD=7,BC=3,AB=10이며 대각선 교점F에서 AF:FC=7:3이다. EF∥BC이므로 AE=7, EF=3×7/10=2.1, x+y=9.1이다.",
+      "note": " 원문 alt·해설의 사다리꼴 AD=6,BC=10,AE:EB=3:2는 실제 그림 AD=7,BC=3,AB=10 및 교점F 구조와 다르다. 그림 풀이9.1, 해설8.4로 불일치한다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f64fc2dc96708b33a284b8a1da5d82839e70aea79596b21c878a585626a104b7",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "step": "공통각B를 끼는 BA:BD=12:9와 BC:BA=16:12가 같아 ABC~DBA를 SAS로 증명하고 대응변 AC:DA=4:3에서 AD=6을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

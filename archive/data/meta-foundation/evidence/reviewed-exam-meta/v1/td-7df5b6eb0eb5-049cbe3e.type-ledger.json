@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7df5b6eb0eb5-049cbe3e",
+  "sourceArchiveFile": "original/middle/m2/2final/21_왕운중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ea373a3a0fc11cfa898972a903148f3e4eb7f2c910bcf04461aa840e03954ecc",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": null,
+      "step": "정삼각형·원·정사각형은 크기 외 모양이 고정되고 나머지는 각이나 변비의 반례가 있음을 판별한다.",
+      "note": " 새 TPL 제안: 닮은 도형의 직접 풀이. 정의: 정삼각형·원·정사각형은 크기 외 모양이 고정되고 나머지는 각이나 변비의 반례가 있음을 판별한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3dff82746a83596d06b32b1cd9ade38d66c86c3e68939578153ec8a8f227b9e6",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": null,
+      "step": "닮음에서 대응각은 같고 길이비와 부피비는 다르다는 정의를 대조한다.",
+      "note": "원문의심: 대응각이 비례한다는 말은 비례상수1도 허용하므로 엄밀히 거짓이 아니다. 길이의 닮음비로 비례한다는 의미를 의도한 것으로 보인다. 새 TPL 제안: 닮은 도형의 직접 풀이. 정의: 닮음에서 대응각은 같고 길이비와 부피비는 다르다는 정의를 대조한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6ecfd6225cb65901df80b6613b19bfe4c6321a2187f97a7381c5025c4ae6d3ad",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "곧은 옆선을 같은 높이로 자른 평행단면 길이는 등차이므로72와48의 중간값60을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8b478f8a26e164cfbb7382abb79635b1394d3cde88c74f55be4617cafb8b0561",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "반지름1:2:3의 제곱으로 중앙원1과 바깥고리9-4=5의 넓이비를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_febcaf74ac48abaca6dcab6c73de6f5bdce100cbe816a5ef2b2235db17d9e664",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "직각삼각형의 높이로 생긴 닮음에서 AB제곱=BD곱하기BC로 BC=25를 구하고 높이·직각변 길이를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b881fc2ad796f2496dcd50617c288ed52deabb373456f28ff2c66c026c6c84b7",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": null,
+      "step": "A에서 BC에 내린 수선을 공통으로 갖는 두 제곱식을 빼 BH=43/8을 얻고 AC제곱=81/4를 계산한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: A에서 BC에 내린 수선을 공통으로 갖는 두 제곱식을 빼 BH=43/8을 얻고 AC제곱=81/4를 계산한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c4ee272d94ca5b2e36cbc96eeb1625ed0f0969817b8c20ef1ad67d60ec82ad5",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "밑면둘레비2:3이 닮음비이므로 부피비8:27을 적용해40의27/8배를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_976842504eca33910fd45f1faeb82934d64cdab38991948d7eac2058e3b4f335",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "사다리꼴의 평행변과 밑변중점으로 AP:PM=DQ:QM=4:3을 얻고 PQ=3AD/7을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9cc05a6e11f9e84eaae1bf168b0cffcaaeee6fb00f5ae4cc0646105d3740ec0a",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "두 평행조건의 닮음비를 연결해 AD/AB=AF/AD=6/11을 얻고 AB에서AD를 뺀다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1e921ee5eddb6da7dcfe1a141310328ac736457eb7cde8972272cdcdb39e68e3",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "평행변 길이비 DE:BC=1:2로 GE:GC=1:2를 얻고 같은 높이의 밑변비로 두 목표넓이15와30을 합한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d829c5f1d45db87d33592fb2b153754aa1cb476132dbea6f92b6b99573840b3d",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "반원넓이를 지름제곱으로 환산해 AB제곱100과 BC제곱36을 얻고 다른 변8로 삼각형 넓이24를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_33d1f76b9060e7198d28a12c5d276c83581c53d03a809e63c11040ce8b1f6c6d",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "step": "주어진 등각과 C공통각으로 ABC와 DAC의 AA닮음을 새로 판정해 AC제곱=BC곱하기DC를 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3dc658a82e55e2a04c398154be0523eab80bf54f1dc8ba67d8bf64366b29185b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "주어진 닮음의 대응변8:10=4:5로 EF=5를 구하고 직각변10과5로 넓이를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cc461bb9d77e4555b943ab21c950676041fec37d110b2a8a79ebdfecb4865b3b",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "교차삼각형 평행변비2:3에서 BC:BE=2:5를 얻고 두번째 평행선 구조에 적용해 BD와CD를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6bf79ebf7e4c-01d35227",
+  "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1011cf7e8758501ddb962a191efff932dba614d6b22343d53c6614340b2b8fad",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": null,
+      "step": "②에서 삼각형 ADC의 각합으로 DAC=65도를 얻으면 DBC=65도와 같은 선분 DC를 보므로 네 점이 공원이다.",
+      "note": "필요 TPL: 같은 선분을 보는 각으로 공원성 판정; 원주각 정리의 역으로 네 점이 한 원 위에 있는지를 판별한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3beb0392eba5132e9ad7fd013c779fedb504294a09850e963dfc83a208419a9c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "줄기잎에서 열째29와 열한째31의 평균30을 중앙값으로, 세 번 반복되는38을 최빈값으로 구한다.",
+      "note": "필요 TPL: 짝수 자료 중앙값과 최빈값 계산; 줄기잎의 순서로 가운데 두 자료 평균과 최고빈도 자료값을 구한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e0a897b66189145ed590a05380ac88796e0eba395e8c4873e8619769c8030e13",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "편차합2+a-4+1+0+3=0에서 a=-2를 구하고 평균10에 더해 화요일 안타8개를 복원한다.",
+      "note": "필요 TPL: 편차 합으로 원자료 복원; 편차합0으로 빈 편차를 정하고 평균에 더하여 원자료를 구한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_328bd81661f928cecddfbe977438e1edfe6f846797b7d95c44ea4a7ab4ed2436",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "표준편차가 작을수록 고르다는 성질로 정국1과 윤기2.5를 비교하여⑤를 참으로 고른다.",
+      "note": "필요 TPL: 집단별 평균·표준편차 해석; 평균과 고름의 역할을 구별하고 작은 표준편차의 집단을 비교한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7618bfdd5a4e24caf13b741c9a29e2b496a6751b1e4208771e17efa3bbec2f62",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+      "step": "편차는 변량-평균, 분산은 편차제곱 평균이라는 정의로 ㄱㄷ을 배제하고 편차합0 및 큰 분산의 넓은 분포인 ㄴㄹ을 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "등접선으로 직각변을 t+2,t+3과 빗변5로 나타내어 피타고라스 방정식의 양근 t=1을 구하고 직각 꼭짓점의 접선길이와 같은 반지름1로 둘레2π를 얻는다.",
+      "note": "필요 TPL: 직각삼각형 내접원과 접선 길이; 등접선으로 변을 표현하여 피타고라스 관계에서 내접원 반지름을 결정한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-72c365078091-90f5590a",
+  "examUid": "22_매산중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "80112de352d08c2b6f13f19292343629b18d2991",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-72c365078091-90f5590a.type-ledger.json",
+        "sha256": "4eeec29ab0bc33eb243e04c03b891bb55f9ab539c9ff1eaf334630a8be2af352"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_49fe6f43168ceb5e690744b48aea25eb5f8b8b3b2c5e7adb290ae7a7446a9b91",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES"
+      },
+      "rationale": "내접사각형 대각110의 보각x70, 외각y110.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "87a7933ad4a2ff24f3994ddc96cc8c137b1775cda8502fbee31807bebf6831af",
+        "contentFingerprint": "0960057928abbfd3ecea2e0c37edb74fa54da0ddc2c787b353cc19f48882f6cd"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-72c365078091-90f5590a.type-ledger.json",
+          "sha256": "4eeec29ab0bc33eb243e04c03b891bb55f9ab539c9ff1eaf334630a8be2af352"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS"
+      },
+      "rationale": "대각의 합이180인 등변사다리꼴과 직사각형만 항상 원에 내접한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "f151f4862ee50766b06047b2da83837504ec1551e1e494142c11b21c6a0fbb52",
+        "contentFingerprint": "056dbb066a7293cb05dc4d5ce7ac283b5c0843ba292def065290363dc8a16efb"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-72c365078091-90f5590a.type-ledger.json",
+          "sha256": "4eeec29ab0bc33eb243e04c03b891bb55f9ab539c9ff1eaf334630a8be2af352"
+        }
+      ]
+    }
+  ]
+}

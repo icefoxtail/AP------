@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-dc4b3080828b-332e29fe",
+  "examUid": "20_신흥중_1학기_기말_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+  "expectedSourceBlobSha1": "effa3d073447fda9bc26cc2a47b147cb57ce7712",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dc4b3080828b-332e29fe.type-ledger.json",
+        "sha256": "13effde0182a4e465a3ef376d145d7718bece62c5952ebe8ff26b0890c5b90a6"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_8e2caf6e4f58df161c620e017c1504ec5ce619572d36495cc05833c78fdaf450",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS"
+      },
+      "rationale": "곱셈·나눗셈·거듭제곱의 지수법칙을 적용하면 a¹³÷a⁹÷a⁵=1/a라서 세 번째 등식이 틀렸다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "77b12bb15866fb23cdfb11cd8805c90de133ed25e05a510ccea6e93255745f6d",
+        "contentFingerprint": "80d7b4c8e2f24857624b407169d237c0a3f0ca488c782e3634a58b4bf89e49c3"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dc4b3080828b-332e29fe.type-ledger.json",
+          "sha256": "13effde0182a4e465a3ef376d145d7718bece62c5952ebe8ff26b0890c5b90a6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4bf9e87f67583a4b9c70bc46c783c2585b47f0a689d23172689f230447e85f5b",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION"
+      },
+      "rationale": "상수계수 두 식에서 공통해(-1,3)을 구하여 나머지 식에 대입하면 a=-13,b=-11이므로 차2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "084a74020f0b634eed5019f8d2da69eed8b26ac013b1a87aa7e87287508fabcf",
+        "contentFingerprint": "5b9be7bd16f9707b36ad3c730b794a3400f7bc2f4a8dfd11e41e16c29b1b556b"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dc4b3080828b-332e29fe.type-ledger.json",
+          "sha256": "13effde0182a4e465a3ef376d145d7718bece62c5952ebe8ff26b0890c5b90a6"
+        }
+      ]
+    }
+  ]
+}
