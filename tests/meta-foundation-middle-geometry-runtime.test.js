@@ -260,6 +260,37 @@ function verifyHistoricalCohorts(index, remember = false) {
   assert.strictEqual(currentNativeReady + retainedBlocked, reviewedTransitions);
   return { unchanged, reviewedTransitions, currentNativeReady, retainedBlocked };
 }
+// Approval kinds an additional runtime row may carry besides FINAL_QA/REVIEW2 (handled by the
+// native reviewed-state path). MAIN_MERGE is the automatic registrar's ordinary path for a
+// merged exam source (auto-register-merged-source.mjs): it records registered_merged_source /
+// review_required and claims no independent review. The allowed kinds are this explicit set;
+// each needs its own paired status and evidence, and any other combination is refused.
+const AUTO_RECEIPT_DIR = ".archive-meta-register/auto/receipts/";
+function assertAdditionalRowApproval(metadata, row) {
+  const uid = row.questionUid;
+  const type = metadata.metadataApprovalType;
+  assert(["META_PIPELINE_AUDIT", "MAIN_MERGE"].includes(type), "unsupported additional-row approval type " + type + ": " + uid);
+  if (type === "META_PIPELINE_AUDIT") {
+    assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", uid);
+    assert((metadata.approvalEvidence || []).some((file) => file.endsWith(".source-parity.json")), uid);
+    return;
+  }
+  assert.strictEqual(metadata.metadataStatus, "registered_merged_source", uid);
+  assert.strictEqual(metadata.reviewStatus, "review_required", uid);
+  assert.strictEqual(metadata.metadataRegistrationStatus, "REGISTERED", uid);
+  assert.strictEqual(metadata.metadataRegistrationBasis, "MAIN_MERGED_EXPLICIT_METADATA", uid);
+  assert.strictEqual(row.metadataApprovalType, "MAIN_MERGE", uid);
+  const receiptPaths = (metadata.registrationEvidence || []).filter((file) => file.startsWith(AUTO_RECEIPT_DIR));
+  assert.strictEqual(receiptPaths.length, 1, "MAIN_MERGE row needs exactly one auto-registrar receipt: " + uid);
+  const receipt = readJson(receiptPaths[0]);
+  assert.strictEqual(receiptPaths[0], AUTO_RECEIPT_DIR + receipt.requestId + ".json", uid);
+  assert.strictEqual(receipt.questionUid, uid);
+  assert.strictEqual(receipt.approvalBasis, "MAIN_MERGED_EXPLICIT_METADATA", uid);
+  assert.strictEqual(receipt.independentReviewClaim, false, uid);
+  assert.strictEqual(receipt.metadataRegistrationStatus, "REGISTERED", uid);
+  assert.strictEqual(metadata.metadataRevision, "archive-main-merge-meta-v1:" + receipt.requestId, uid);
+}
+
 const preservedCohorts = verifyHistoricalCohorts(activeRuntimeByUid, true);
 const currentReviewedRows = historical.cohorts["1.0.3"].map(([uid]) => activeRuntimeByUid.get(uid)[0]);
 const additionalReviewedRows = runtime.records.filter(row => !historicalByUid.has(row.questionUid))
@@ -271,11 +302,10 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType) || issuedApprovals.has(row.questionUid)) {
     const input = nativeInput(metadata, row, entry);
     rememberReviewedState(input, assertReviewedState(input, row.questionUid));
+    assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", row.questionUid);
   } else {
-    assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
-    assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
+    assertAdditionalRowApproval(metadata, row);
   }
-  assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", row.questionUid);
   assert.strictEqual(metadata.sourceArchiveFile, row.sourceArchiveFile, row.questionUid);
   assert.strictEqual(Number(metadata.sourceOrdinal), Number(row.sourceOrdinal), row.questionUid);
   assert.strictEqual(metadata.metadataRevision, row.metadataRevision, row.questionUid);
@@ -1081,7 +1111,7 @@ for (const row of runtime.records) {
     assert.strictEqual(row.defaultSelectable, false);
   } else {
     assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion) ||
-      currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT" ||
+      ["META_PIPELINE_AUDIT", "MAIN_MERGE"].includes(currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType) ||
       issuedApprovals.has(row.questionUid), row.questionUid);
     assert.strictEqual(row.l4Disposition, "ASSIGNED", row.questionUid);
     assert(activeTemplates.has(row.templateKey), row.templateKey);
