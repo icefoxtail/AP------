@@ -18,7 +18,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 6칸)가 `workspace.html`과 `unit-past-exams.html`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.
 - `apmath/DESIGN.md`는 APMS용이라 별개다.
 - 출력 창(`engine.html`·`mixed_engine.html`) 위 조작줄은 `archive/archive2-output-bar.css`가 맡는다(화면 전용 `@media screen`, 토큰은 layer로 불러 종이 글꼴·바탕을 바꾸지 않는다, 웹 글꼴은 부르지 않는다). 자세한 규칙은 `archive/DESIGN.md` "출력 창 조작줄". 이유: 웹 글꼴이 늦게 도착하면 런타임이 종이를 다시 그리고, 토큰의 `:root` 글꼴·바탕이 종이에 번지면 인쇄가 바뀐다.
-- 원본 기출 머리글 제목(시험지·해설·정답)은 읽기 쉬운 이름이다(`archive/exam-display-title.js`, 예: `2022 강남여고 고1 1학기 중간`). CI 출력 비교(`archive2-output-performance-browser.cjs`, `archive2-solution-loading-browser.cjs`)의 기준 렌더러는 이 규칙보다 앞선 불변 커밋이라, 기준 쪽 서버만 시험지 JS 끝에 같은 해석 함수를 붙여 엔진의 기존 입력 `window.examDisplayTitle`로 같은 제목을 받게 한다(`serve(..., { referenceDisplayTitle: true })`). 비교 필드·허용 오차·케이스는 그대로라 본문 해시·블록 좌표·인쇄 픽셀은 전부 계속 엄격하게 비교한다. 이유: 기준 커밋을 새로 만들면 push 가능한 기준 브랜치가 따로 필요하고, 비교 때 제목 줄을 무시하면 머리글 결함까지 가린다.
+- 원본 기출 머리글 제목(시험지·해설·정답)은 읽기 쉬운 이름이다(`archive/exam-display-title.js`, 예: `2022 강남여고 고1 1학기 중간`). CI 출력 확인(`archive2-output-performance-browser.cjs`, `archive2-solution-loading-browser.cjs`)은 2026-11-18부터 현재 코드만 렌더해 오류·미렌더·시간을 본다. 기준 커밋과 쪽수·본문 해시·블록 좌표를 비교하는 장치(OUTPUT_PARITY, `archive2-output-comparison-references.json`, 릴리스 자격 게이트)는 뺐다. 이유: 렌더러·그림 크기 규칙을 일부러 바꿀 때마다 기준 커밋을 옮겨야 해서 모든 엔진 PR이 막혔다. 수동 비교가 필요하면 `ARCHIVE_PERFORMANCE_BASE_SHA`를 직접 줄 수 있고, 기준 쪽 서버만 시험지 JS 끝에 같은 해석 함수를 붙여 같은 제목을 받게 하는 `serve(..., { referenceDisplayTitle: true })`가 그대로 남아 있다.
 
 ## 시험지 끝 제출 QR (2026-11-01 사용자 결정)
 

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-4b1b091efb73-0e0109ca",
+  "examUid": "25_금당고_1학기_기말_고2_수학I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js",
+  "expectedSourceBlobSha1": "5b3c097c17201927a278c9fe9519d68b4f72945b",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4b1b091efb73-0e0109ca.type-ledger.json",
+        "sha256": "8b344dcebdad11cf08923998f82d891e83e4c33882b36039502d5c4e038388de"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ee920290dc6e07fe75fe004f21f0c0e752a1e40796ebfcd24194d6788539510a",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+        "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE"
+      },
+      "rationale": "부등식을 cos(πk/2)>1/2로 줄여4의배수항만 합하면4r(r+1)=440,40≤n≤43이므로 합83이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "f428daea95664ea4dbf22a655d0fa3be3c4794ce09de0b21cbcd56fa82c2dc21",
+        "contentFingerprint": "3830ddc3e701d93a7a43f3721dd56328c0a26eb62b93fd72448a3dbed0c59582"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4b1b091efb73-0e0109ca.type-ledger.json",
+          "sha256": "8b344dcebdad11cf08923998f82d891e83e4c33882b36039502d5c4e038388de"
+        }
+      ]
+    }
+  ]
+}

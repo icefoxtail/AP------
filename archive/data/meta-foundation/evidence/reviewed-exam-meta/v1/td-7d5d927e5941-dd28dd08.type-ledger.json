@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7d5d927e5941-dd28dd08",
+  "sourceArchiveFile": "original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9f347dc912d679056f7a93a65c820e249eaf11772b7632f4df199024b16d3f59",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "같은밑나눗셈은지수를빼므로a10/a2=a8인④만 옳다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_efd1328db8cfd8f59d356a671f04baae6785973bcf71c23d21fcb86a1ccf6d46",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": null,
+      "step": "잘못뺀결과에빼버린식을두번더하여2x제곱+5x-32를 얻는다.",
+      "note": "새 TPL 제안: 잘못 뺀 다항식의 덧셈 복원. 정의: 잘못뺀결과에빼버린식을두번더하여2x제곱+5x-32를 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9a83ebcc01cbabc2c16e1aa212671ce5b9feca5773da785662d6d55fea735ff1",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "같은수덧셈과양수배는방향유지,음수배는반전됨을적용해③만a>b임을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0735257607a1fa687f72b50327597eb5bfb5323f019942f68eec441418c6c5f2",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+      "step": "편도거리xm에대해x/40+x/40+15≤75를풀어x≤1200m=1.2km를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-64522da51fd1-4e05b8ef",
+  "sourceArchiveFile": "original/middle/m2/1final/22_왕운중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1341f5e6b2b12e3edd8220972d3d99ff5e79a913478b7eed99a1ba19c6883b22",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "y=ax+b,a≠0 꼴인지 확인하여 상수함수 y=1과 반비례 y=6/x를 제외한다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: y=ax+b,a≠0 꼴인지 확인하여 상수함수 y=1과 반비례 y=6/x를 제외한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e6927787022fcde863d953951ee2da5386ddb00250fbf4f8336bf467a325fd1d",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "step": "x계수 2,3을 6으로 맞춰 ①×3-②×2로 x를 소거한다.",
+      "note": " 검사 오류: [{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_86d5e7890a6cd4518d23b539469bfcc61ee6c03238719ec284f9ffdaec6c177a",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "step": "이동식 y=2x-3+n에 (2,5)를 대입하여 n=4를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e958a53e34aa23aa2761be2d5b75c654a91ec8b9016e0ddd60e8fbbfb6cfbf6",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": null,
+      "step": "근영 승리 w,전체 경기 n으로 3w-n=5,2n-3w=14를 세워 근영 승리 8회를 구한다.",
+      "note": "새 TPL 제안: 계단 이동으로 특정인의 승리 횟수 구하기. 정의: 근영 승리 w,전체 경기 n으로 3w-n=5,2n-3w=14를 세워 근영 승리 8회를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_51e7662ff26ed70725329e3f521c2dda0d416450842aa0df7b0580019ec1e208",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": null,
+      "step": "(-1,-2)를 지나는 식 y=mx+m-2에서 제2사분면 회피 조건 m≥0,m-2≤0을 세워 기울기 최댓값 2를 구한다.",
+      "note": "새 TPL 제안: 제2사분면을 지나지 않는 기울기 범위. 정의: (-1,-2)를 지나는 식 y=mx+m-2에서 제2사분면 회피 조건 m≥0,m-2≤0을 세워 기울기 최댓값 2를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b65b720c9bede871fe3eb7ee2816dcfaf3a826b67ce7a55d31c9dd0258846cee",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "y=2x-6으로 변환해 기울기,절편,사분면,평행 및 이동 진술의 참거짓을 따져 ②④⑤를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9db68e46b5bb9ba39aa703d2463c926d0f0ee86428a37f6f0e594a1f7f5f4eac",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": null,
+      "step": "절편형 방정식,수평선,연립해와 교점,계수합,수직이동을 각각 확인하여 계수합은 3이 아닌 1/2인 라만 거른다.",
+      "note": "새 TPL 제안: 직선 그래프와 연립방정식의 여러 성질 판별. 정의: 절편형 방정식,수평선,연립해와 교점,계수합,수직이동을 각각 확인하여 계수합은 3이 아닌 1/2인 라만 거른다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9e0196096ee96fa85e079b186747f05be30f463e39eadf60da02ee442cfa7613",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+      "step": "왕복 이동시간 x/3+x/4와 구매시간 1/6의 합이 2/3 이하임을 세워 x≤6/7을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f24d1a784a50d4614cd7fe7bd670af0e60d0e30ae6f3c428c8b414fd5ce1601e",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "평행으로 a=3,원점 통과로 b=0을 구한 뒤 두 평행선의 절편 차 0-(-1)=1을 이동량 m으로 정한다.",
+      "note": "새 TPL 제안: 평행한 두 직선이 일치하는 수직 이동량. 정의: 평행으로 a=3,원점 통과로 b=0을 구한 뒤 두 평행선의 절편 차 0-(-1)=1을 이동량 m으로 정한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

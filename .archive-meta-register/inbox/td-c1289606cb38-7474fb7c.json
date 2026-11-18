@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-c1289606cb38-7474fb7c",
+  "examUid": "18_강남여고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/18_강남여고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "69dd492d6e65bb5c6874140939fe75e634010449",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c1289606cb38-7474fb7c.type-ledger.json",
+        "sha256": "19218cc8983c2ca48df3a2ee4306cfebe7da1500d63c68989c81a113b368c730"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c6b88aa6916f95eb0cbd7b73d963f46eb513ad51d300ad9c0a538fbf73359b00",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "두 번째 하향 이동의 연결 열별로 동일 방향 이동의 배열을 세어 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a7ceabc2edb43c251b17620f351d99c515fd691204b8167488ca75274a5c1e89",
+        "contentFingerprint": "8c98bfc63d90dfaad67e536a80178fdb6f5f11298b4208638f369ae5c9344de2"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c1289606cb38-7474fb7c.type-ledger.json",
+          "sha256": "19218cc8983c2ca48df3a2ee4306cfebe7da1500d63c68989c81a113b368c730"
+        }
+      ]
+    }
+  ]
+}

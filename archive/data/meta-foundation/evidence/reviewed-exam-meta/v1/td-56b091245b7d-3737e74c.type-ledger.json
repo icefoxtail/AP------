@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-56b091245b7d-3737e74c",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a1997d001657058a9eed8e93254b3e37ed833280c3216342f580fa3e71aa46f7",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+      "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+      "step": "반둘레12를 이웃변비1:2로 배분해 BC=8이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f7b2f8bce5b05cddfb58e0986f936bbc5f5f730d4a31d046ed78e80c3adbbe5",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "step": "AB=CD와 이웃각 A=D만으로 평행사변형은 보장되지 않지만 다른조건은 대변평행·등길이나 대각선이등분을 보장한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_402b39f1410c9d0c1edc0b83c25913a62502d42d700029037f890aec5320a66b",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "templateKey": null,
+      "step": "내부점에서 마주보는 두 대변을 밑변으로 한 넓이합은 각각 전체의 절반이므로 APD+BPC=APB+CPD=52이다.",
+      "note": "새 TPL 제안: 내부점의 마주보는 두 삼각형 넓이합을 다른 쌍 넓이합으로 계산(개별 넓이를 빼서 구하는 기존 TPL과 목표 차이). 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e46a41afdaaeb4661370288ec3075ce8edfe748236ba2c92be46e225c96fc0a",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "BC=OD이고 평행하여 BCDO도 평행사변형이며 BOD는 원래 평행사변형의1/4이므로 BCDO=2BOD=ABE=10이다.",
+      "note": "원문 해설의 원래 평행사변형과 같은높이·반밑변이라는 표현 대신 대각선4등분 넓이로 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7ce1dcbfa3bbbf8d0c0985226c7229e43e8699e9db388b887db30c4988b156e2",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "직사각형의 대각선 등길이·이등분과 각대칭으로 x=65도,y=5여서 합70이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa6c5239e7ad3af91da0923b3999e156130227d06a4a4516e563dab5ff93712d",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "마름모 대각선 수직이등분으로 전체넓이12이며 대각선과 BC중점P로 두번 반을 취해 ABP=3이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b6e231c39c8d3815d4116aea246406b81c8f3279ab6caca3d85d041c1d903a3a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "마름모 판정에는 평행사변형의 이웃한 두 변 같음이 필요하며 단순 두변 같음은 이미 대변에서 성립하여④가 거짓이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2db82a8cf12d9765898f0fbe2451dfd9a186886856da2ab9cb3ee92731d07560",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "마름모의 수직이등분 대각선은 본래 성질이므로 그 조건만으로 정사각형이 되지 않아⑤가 거짓이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+      "step": "꼭지각이60도인 이등변삼각형은 정삼각형이며 꼭지각이등분선이 밑변을 반으로 나누므로 AC=BC=2BD=6이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_869b7f337d0e79b47bdd53c5d1c14326b139ab19feb25f617e8390606e95e70c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "step": "밑각같음2x+3y=10x-6y와 내각합12x+9y=180을 연립해 x=9,y=8,합17이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4828ff112fccff971e2c01da41848a59aa52b71af3f98e3127c112b44ba05d9f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "step": "직각삼각형 ADE와 ACE는 공통빗변AE와 AD=AC로 RHS합동이므로 DE=CE=6이다. BDE는45도 직각이등변삼각형이라 BD=6,넓이18이다.",
+      "note": "원문 해설의 여러 밑각 추적 대신 주어진 등변과 공통빗변의 직접 RHS 풀이도 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c3c6a8816838082caa89b0de54e590e7149574d94416b81e51b5a9773c2ba80",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "대응변4:2=2:1로 x=4이고 높이4와 모선8의30도 삼각형으로 사다리꼴의 둔각y=150도여서 합154이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e271996ce7aec3e4b6dc91eb0ec8c039abcc31ffd5a77e67e41a0940e7fad238",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "평행사변형 대각선 이등분AO=CO,BO=DO에서 같은길이BE=DF를 빼어 OE=OF이므로 AECF도 대각선이 서로 이등분하는 평행사변형이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

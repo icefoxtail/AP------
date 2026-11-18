@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-09b3e71a5577-f29a6486",
+  "sourceArchiveFile": "original/high/h2/1final/23_금당고_1학기_기말_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8d08bae1168f634624304a231a6d5f3d569c45a55717b2761731229145ca5b33",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "step": "절댓값 곱의 단순 영점에서만 미분불가능하므로 f의 중복근 구조를 결정하고 f'의 단순근을 찾는다.",
+      "note": "원문 해설은 짝수 중복도여야 미분가능하다고 단정하나 3차 이상 홀수 중복근도 절댓값이 미분가능하다. f=(x-1)^2(x-3)의 결론과 유형은 판독 가능.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

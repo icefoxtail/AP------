@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-959ebbbbb077-59db1a67",
+  "sourceArchiveFile": "original/middle/m2/1final/24_연향중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_da5b7298cd41a3149ac97ecdc947d2a51c0b1c4ca25e39a5804a7c9c0e75b2ac",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 상황을 식으로 바꾸어 직사각형 넓이 고정 관계 y=20/x만 일차함수가 아님을 고른다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: 각 상황을 식으로 바꾸어 직사각형 넓이 고정 관계 y=20/x만 일차함수가 아님을 고른다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1cb325cf5bb8ba498e1e9baa0b51f8d41ab38603a5910fc8ebe65995a798405d",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "수직 이동으로 절편을 -8/5로 바꾼 y=4x/5-8/5에 y=0을 대입해 x절편2를 구한다.",
+      "note": "새 TPL 제안: 수직 평행이동 후 절편 계산. 정의: 수직 이동으로 절편을 -8/5로 바꾼 y=4x/5-8/5에 y=0을 대입해 x절편2를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22b4022f9487c6f6fcc0e1cedff2cd6ceb064ad852055be17254aafa3cdb4f47",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "y=-3x/2+3으로 정리해 절편2,3을 확인하고 점 통과·사분면·증가방향·평행이동 설명을 판별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

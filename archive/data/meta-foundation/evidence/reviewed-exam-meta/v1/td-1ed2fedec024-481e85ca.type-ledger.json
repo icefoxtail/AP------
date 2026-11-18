@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-1ed2fedec024-481e85ca",
+  "sourceArchiveFile": "original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b264a696bbb667ba93ab39e3f8c05092906d4a2182ea28860f44113b8807521b",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "④에서음수의 세제곱 부호와지수의곱으로-a세제곱b6을 얻어참임을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be031db3ff73c30b371f5ff6f7d9c7e788a1c7a5404aa5ee3b27a77432b4204b",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "step": "잘못 더한 결과에서더할식을두번빼6x제곱-2x+3-2(2x제곱-3x+7)=2x제곱+4x-11을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1d71cc6de37d571a5a0ce29e6d44d65f0e320a7082f773f10e5ff22c11914484",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": null,
+      "step": "양변에음수-5를곱해부등호를뒤집고같은수3을더하면-5a+3≤-5b+3이유지됨을설명한다.",
+      "note": "새 TPL 제안: 부등식의 성질 적용 과정 설명. 정의: 양변에음수-5를곱해부등호를뒤집고같은수3을더하면-5a+3≤-5b+3이유지됨을설명한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    }
+  ]
+}
