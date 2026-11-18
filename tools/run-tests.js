@@ -670,6 +670,14 @@ const requiredCommands = [
     // Exact public Git evidence and source views; no global data generation.
     args: ['--max-old-space-size=384', 'tests/archive-m3-e052-q5-complete-given.test.mjs'],
     timeout: 180000
+  },
+  {
+    label: 'tests/edition-ledger.test.mjs',
+    args: ['--test', 'tests/edition-ledger.test.mjs']
+  },
+  {
+    label: 'tests/recapture-approved-renders.test.mjs',
+    args: ['--test', 'tests/recapture-approved-renders.test.mjs']
   }
 ];
 
