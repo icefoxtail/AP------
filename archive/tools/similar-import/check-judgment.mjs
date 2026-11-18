@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, readBank, readJson, writeJson, pad2, stripWs, CIRCLED, gitBlobSha1, parseCli, appendStatus, getPath,
-  loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage,
+  loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage, itemFingerprint, loadGuideExample, BOUNDARY_FLAGS,
 } from './lib.mjs';
 
 export const FIGURE_NEEDS = ['NONE', 'SELF_CONTAINED', 'NEEDS_FIGURE'];
@@ -43,6 +43,8 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
   const { bank, text: jsText } = readBank(jsPath);
   const candDir = candidatesDir || path.join(path.dirname(judgmentDir), 'candidates');
   const dictionary = loadTermDictionary(repoRoot);
+  const example = loadGuideExample();
+  const exampleTexts = example ? [example.how, example.typeReason, example.rpmReason, example.difficultyReason, ...(example.solveSteps || [])].map(stripWs).filter(Boolean) : [];
   const examCodes = [];
   const examMeta = fs.existsSync(path.join(candDir, '_exam.json')) ? readJson(path.join(candDir, '_exam.json')) : null;
   if (!examMeta) examCodes.push({ code: 'FIELD_EMPTY', msg: `후보 폴더가 없습니다: ${candDir}`, severity: 'FAIL' });
@@ -70,6 +72,10 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     const texts = { stem: it.content, choices: (it.choices || []).join('\n'), solution: it.solution };
     const strippedTexts = Object.fromEntries(Object.entries(texts).map(([k, v]) => [k, stripWs(v)]));
     const itemTokens = itemTokenSet([it.content, ...(it.choices || []), it.solution, it.answer]);
+
+    // 0. 이 문항의 판정인가 (빈 틀을 만들 때의 문항 지문과 같고, 가이드 예시 글이 아니다)
+    if (j.itemFingerprint !== itemFingerprint(it)) add('STALE_OR_EXAMPLE', '판정 틀의 itemFingerprint 가 현재 문항과 다르거나 없습니다. 이 문항의 틀이 아니거나 문항이 바뀐 뒤입니다. build-candidates --force 로 틀을 다시 만들어 처음부터 쓰세요.');
+    else if ([j.how, j.typeReason, j.rpmReason, j.difficultyReason, ...(Array.isArray(j.solveSteps) ? j.solveSteps : [])].some(s => nonEmpty(s) && exampleTexts.includes(stripWs(s)))) add('STALE_OR_EXAMPLE', 'JUDGMENT_GUIDE.md 예시와 글자가 같은 문장이 있습니다. 예시를 베끼지 말고 이 문항을 읽고 쓰세요.');
 
     for (const b of findBrokenStrings(j)) if (b.kind === 'CTRL_CHAR') add('CTRL_CHAR', `${b.path} 에 깨진 제어문자(탭·폼피드·백스페이스 등)가 있습니다. 역슬래시를 \\\\ 로 쓰세요.`);
 
@@ -139,7 +145,8 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     // 7. 난이도
     if (![1, 2, 3, 4, 5].includes(j.difficultyBucket)) add('FIELD_EMPTY', 'difficultyBucket 은 1~5 정수여야 합니다');
     if (!['high', 'medium', 'low'].includes(j.difficultyConfidence)) add('FIELD_EMPTY', 'difficultyConfidence 는 high|medium|low 여야 합니다');
-    if (!['하', '중', '상'].includes(j.level)) add('FIELD_EMPTY', 'level 은 하|중|상 이어야 합니다');
+    if (!BOUNDARY_FLAGS.includes(j.difficultyBoundaryFlag)) add('FIELD_EMPTY', `difficultyBoundaryFlag 는 ${BOUNDARY_FLAGS.join('|')} 중 하나여야 합니다`);
+    else if (/^B\d\d$/.test(j.difficultyBoundaryFlag) && ![Number(j.difficultyBoundaryFlag[1]), Number(j.difficultyBoundaryFlag[2])].includes(j.difficultyBucket)) add('FIELD_EMPTY', `difficultyBoundaryFlag ${j.difficultyBoundaryFlag} 는 difficultyBucket 이 ${j.difficultyBoundaryFlag[1]} 또는 ${j.difficultyBoundaryFlag[2]} 일 때만 쓸 수 있습니다`);
     if (!nonEmpty(j.difficultyReason)) add('FIELD_EMPTY', 'difficultyReason 이 비었습니다');
 
     // 8. 4칸

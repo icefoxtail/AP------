@@ -8,13 +8,15 @@ import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, parseCli, appendStatus, readBank, readJson, writeJson, pad2, gitBlobSha1, findSibling,
   loadMasters, loadCrosswalkRecords, loadTaxonomy, loadTermDictionary, loadCourseGroups, resolveCourseGroups,
-  buildCourseTables, itemHasImage, FIGURE_CUE_RE,
+  buildCourseTables, itemHasImage, FIGURE_CUE_RE, findOriginalExamFile, itemFingerprint,
 } from './lib.mjs';
 import { parseSimilarMd } from '../similar-md-to-js.mjs';
 
-export function emptyJudgment(qid) {
+export function emptyJudgment(qid, fingerprint = '') {
   return {
     qid,
+    // 도구가 채운다. 건드리지 않는다 (문항 지문이 바뀌었는지 검사기가 본다)
+    itemFingerprint: fingerprint,
     // 1. 직접 풀이 (저장된 정답·해설을 보기 전에 푼다)
     solveSteps: [],
     solvedAnswer: '',
@@ -40,7 +42,7 @@ export function emptyJudgment(qid) {
     difficultyBucket: null,
     difficultyConfidence: '',
     difficultyReason: '',
-    level: '',
+    difficultyBoundaryFlag: '',
     // 8. 4칸
     format: '',
     slots: { given: [], goal: [], method: [], condition: [] },
@@ -103,16 +105,37 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
   if (mdPath) md = parseSimilarMd(fs.readFileSync(mdPath, 'utf8'));
   const curriculum = String(bank[0]?.curriculum || md?.exam?.curriculum || '');
   if (!curriculum) throw new Error('CURRICULUM_UNKNOWN: 문항에 curriculum 이 없습니다. --md 로 원천을 주세요.');
+  const mdSourceFile = md?.exam?.sourceArchiveFile || null;
   const grade = md?.exam?.grade || (stem.match(/_(중[123]|고[123])_/) || [])[1] || '';
 
   const masters = loadMasters(repoRoot);
   const groups = loadCourseGroups(repoRoot);
   const courseGroups = resolveCourseGroups({ bank, explicitCourse: course, grade, curriculum, groups });
-  const tables = buildCourseTables({ repoRoot, courseGroups, curriculum, masters, crosswalk: loadCrosswalkRecords(repoRoot), taxonomy: loadTaxonomy(repoRoot) });
+  const taxonomy = loadTaxonomy(repoRoot);
+
+  // 같은 시험의 원본 기출이 있으면 같은 번호 문항이 쓴 PT/TPL 을 힌트로 모은다 (후보에 없으면 그 단원에 더한다).
+  const originalFile = findOriginalExamFile({ repoRoot, stem, targetSourceFile: register?.sourceArchiveFile, mdSourceFile });
+  const originalBank = originalFile ? readBank(path.join(repoRoot, originalFile)).bank : null;
+  const hints = new Map();
+  for (const item of bank) {
+    const srcQid = Number(item.sourceQid ?? md?.questions?.[item.id - 1]?.meta?.sourceQid ?? register?.items?.[item.id - 1]?.sourceQid) || item.id;
+    const o = originalBank?.find(x => x.id === srcQid);
+    const pt = o?.problemTypeKey && taxonomy.pts.get(o.problemTypeKey)?.status === 'ACTIVE' ? o.problemTypeKey : '';
+    if (!pt) continue;
+    const tpl = o.templateKey && taxonomy.tpls.get(o.templateKey)?.parentProblemTypeKey === pt ? o.templateKey : '';
+    hints.set(item.id, { exam: originalFile, sourceQid: srcQid, problemTypeKey: pt, templateKey: tpl, standardUnitKey: o.standardUnitKey || '' });
+  }
+  const tables = buildCourseTables({
+    repoRoot, courseGroups, curriculum, masters, crosswalk: loadCrosswalkRecords(repoRoot), taxonomy,
+    extraPts: [...hints.values()].map(h => ({ problemTypeKey: h.problemTypeKey, standardUnitKey: h.standardUnitKey })),
+  });
   const dictionary = loadTermDictionary(repoRoot);
 
-  const unitsOut = tables.units.map(u => {
-    const pts = [...(tables.ptByUnit.get(u.key) || new Map()).values()];
+  // 단원 목록은 문항마다 다르다: 문항의 주 단원(원천이 적은 단원, 원본 기출 문항의 단원)은 등록부의 같은 과목·단원 유형 전부,
+  // 나머지 단원은 이 시험 교육과정에 묶인 유형만 보인다 (후보가 지나치게 길어지지 않게). 주 단원을 알 수 없으면 전부 보인다.
+  const unitsFor = focus => tables.units.map(u => {
+    const wide = !focus.size || focus.has(u.key);
+    const pts = [...((wide ? tables.ptByUnitAny : tables.ptByUnit).get(u.key) || new Map()).values()];
     return {
       standardUnitKey: u.key,
       label: u.label,
@@ -131,6 +154,12 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       })),
     };
   });
+  const unitsOutCache = new Map();
+  const unitsOutFor = focus => {
+    const k = [...focus].sort().join(',');
+    if (!unitsOutCache.has(k)) unitsOutCache.set(k, unitsFor(focus));
+    return unitsOutCache.get(k);
+  };
   const rpmOutsideUnits = tables.rpmRows.filter(r => !r.standardUnitKey).map(r => r.id);
 
   const defs = {
@@ -148,7 +177,7 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
     grade,
     courses: courseGroups.map(g => g.id),
     dictionaryVersion: dictionary.version,
-    unitCount: unitsOut.length,
+    unitCount: tables.units.length,
     rpmWithoutUnit: rpmOutsideUnits,
     questionCount: bank.length,
   });
@@ -168,13 +197,14 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       problemTypeKey: sourceMeta?.ptTplCandidate?.problemTypeKey ?? regItem?.ptTplCandidate?.problemTypeKey ?? null,
       templateKey: sourceMeta?.ptTplCandidate?.templateKey ?? regItem?.ptTplCandidate?.templateKey ?? null,
       difficultyBucket: sourceMeta?.difficultyBucket ?? item.difficultyBucket ?? null,
-      level: sourceMeta?.level ?? item.level ?? '',
       primaryMethod: sourceMeta?.primaryMethod ?? regItem?.primaryMethod ?? '',
       decisiveStep: sourceMeta?.decisiveStep ?? regItem?.decisiveStep ?? '',
       newKeyProposal: sourceMeta?.newKeyProposal ?? null,
       item4slot: sourceMeta?.item4slot ?? null,
       boundary: sourceMeta?.difficultyBoundaryFlag ?? regItem?.difficultyBoundaryFlag ?? '',
     };
+    const focus = new Set([source.standardUnitKey, hints.get(qid)?.standardUnitKey].filter(k => k && tables.unitKeys.has(k)));
+    const unitsOut = unitsOutFor(focus);
     const sourcePlan = mdQ ? (mdQ.plan && typeof mdQ.plan === 'object' ? (mdQ.plan.exempt ? { exempt: mdQ.plan.reason || true } : { plan: true }) : { exempt: 'NONE' }) : null;
     const texts = { stem: item.content, choices: (item.choices || []).join('\n'), solution: item.solution };
 
@@ -190,14 +220,16 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       units: unitsOut,
       termCandidates: termCandidates(dictionary, texts),
       figure: figureClues(item.content, item.choices || [], item, sourcePlan),
+      // 원본 기출의 같은 번호 문항이 쓴 유형. 참고만 한다 (해설의 결정적 풀이 단계가 다르면 따르지 않는다).
+      sourceExamHint: hints.has(qid) ? (({ standardUnitKey, ...h }) => h)(hints.get(qid)) : null,
       guide: 'JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다.',
     });
 
     const jPath = path.join(outDir, 'judgment', `q${pad2(qid)}.json`);
-    if (force || !fs.existsSync(jPath)) writeJson(jPath, emptyJudgment(qid));
+    if (force || !fs.existsSync(jPath)) writeJson(jPath, emptyJudgment(qid, itemFingerprint(item)));
     else kept.push(qid);
   }
-  return { stem, questionCount: bank.length, units: unitsOut.length, keptExistingJudgments: kept, outDir, courses: courseGroups.map(g => g.id) };
+  return { stem, questionCount: bank.length, units: tables.units.length, keptExistingJudgments: kept, outDir, courses: courseGroups.map(g => g.id) };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

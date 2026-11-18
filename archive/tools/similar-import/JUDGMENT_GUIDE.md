@@ -16,6 +16,7 @@
 | 7 반영 | `node archive/tools/similar-import/apply-judgment.mjs <stem.js> <작업폴더>/judgment` | 도구 |
 
 - 작업폴더는 저장소 밖 `C:/AI_WS/tmp/similar-judgment/<stem>/` 에 둔다. 판정·후보·검수 묶음은 저장소에 넣지 않는다.
+- `build-candidates` 는 이미 있는 `judgment/qNN.json` 을 덮어쓰지 않는다. **이미 채워진 판정 파일이 있으면 내용을 믿지 말고** `--force` 로 빈 틀을 다시 만들어 처음부터 쓴다. 틀의 `itemFingerprint` 가 현재 문항과 다르거나 예시 글이 그대로 남아 있으면 `STALE_OR_EXAMPLE` 로 걸린다.
 - 진행 단계는 `C:/AI_WS/tmp/similar-judgment/STATUS.tsv` 에 쌓인다: `CONVERTED → JUDGED(검사 통과) → REVIEWED(검수 완료) → READY(운영 병합 가능)` 또는 `HOLD`.
 - 수학 내용(발문·보기·정답·해설)은 고치지 않는다. 틀렸다고 생각하면 `answerMatches:false` 와 `answerIssue` 로 보고하고 시험지는 보류된다.
 
@@ -23,9 +24,10 @@
 
 문항마다 `candidates/qNN.json` 을 읽고 `judgment/qNN.json` 을 채운다. 읽는 순서는 이렇다.
 
-1. `problem` 의 발문·보기만 읽고 **직접 푼다.** `reference`(저장 정답·해설)는 풀고 난 뒤에 본다.
-2. `units` 에서 단원을 고른다. 단원 안의 `subUnits`, `rpm`, `problemTypes` 만 후보다.
-3. `source` 는 원천 마크다운이 적어 온 값이다. 틀릴 수 있다. 그대로 베끼지 말고 문항을 읽고 정한다.
+1. `problem` 의 발문·보기만 읽고 **직접 푼다.** 풀어서 답을 확인한 뒤에 `reference`(저장 정답·해설)를 본다.
+2. **단원·RPM·유형(PT/TPL)은 `reference` 해설에 적힌 결정적 풀이 단계를 기준으로 고른다.** 내 풀이가 해설과 다르면 해설 기준으로 고르고, 다르다는 사실은 `how` 에 적는다.
+3. `units` 에서 단원을 고른다. 단원 안의 `subUnits`, `rpm`, `problemTypes` 만 후보다. 후보는 같은 과목·같은 단원의 등록된 유형 전부이고, 원본 기출의 같은 번호 문항이 쓴 유형은 `sourceExamHint` 에 따로 있다(참고만 한다. 해설의 결정적 단계가 다르면 따르지 않는다).
+4. `source` 는 원천 마크다운이 적어 온 값이다. 틀릴 수 있다. 그대로 베끼지 말고 문항을 읽고 정한다.
 
 ### 칸의 뜻과 채우는 법
 
@@ -41,11 +43,12 @@
 | `unitEvidence` | 근거 | 발문·해설에서 **그대로** 옮긴 구절 |
 | `rpmRecordId` | RPM 행 | 고른 단원의 `rpm` 후보 id. 맞는 것이 없으면 `NONE` |
 | `rpmReason` | 이유 | 이 문항의 어떤 단계가 그 행인지. 숫자·식을 넣는다. |
-| `problemTypeKey` `templateKey` | 유형 | 후보 안의 키. 맞는 것이 없으면 `NONE`. TPL 은 고른 PT 의 것만. |
+| `problemTypeKey` `templateKey` | 유형 | 후보 안의 키. **후보에 맞는 유형이 없을 때만** `NONE`(+ `newKeyProposal`). 후보를 끝까지 보고 나서 정한다. TPL 은 고른 PT 의 것만. |
 | `typeReason` | 이유 | 결정적 풀이 단계 한 문장. 숫자·식을 넣는다. |
 | `newKeyProposal` | 새 키 제안 | PT 가 `NONE` 이면 필수: `{key,label,why}`. 이름은 개념 단어 하나(예: 평행사변형의 성질). 조건·절차를 이름에 넣지 않는다. 같은 개념은 다른 문항과 같은 key 를 쓴다. |
-| `difficultyBucket` `level` `difficultyConfidence` | 난이도 | 1~5, 하/중/상, high/medium/low. 경계가 애매하면 낮게 잡고 `medium`. |
+| `difficultyBucket` `difficultyConfidence` `difficultyBoundaryFlag` | 난이도 | 1~5 정수만(하/중/상은 쓰지 않는다), high/medium/low, 경계 `NONE`·`B12`·`B23`·`B34`·`B45`·`UNKNOWN`. **정의·공식을 바로 쓰면 1이다. 풀이 줄 수·서술형·배점·계산량은 올리는 이유가 아니다. 애매하면 낮게 잡고 경계 플래그(두 단계 사이면 `B12` 처럼 낮은 쪽이 앞)로 표시한다.** 경계 플래그의 두 단계에 `difficultyBucket` 이 들어 있어야 한다. |
 | `difficultyReason` | 이유 | 풀이 단계 수와 어려운 지점을 이 문항의 숫자로 |
+| `itemFingerprint` | (도구가 채움) | 건드리지 않는다. 문항이 바뀌었는지 검사기가 본다. |
 | `slots` | 4칸 | given/goal/method/condition. 항목마다 `term`(사전 용어), `src`(stem·choices·solution), `quote`(그대로 옮긴 4자 이상). method 는 `evidenceType`(NAMED 또는 IMPLIED, IMPLIED 면 `justification`). goal 과 method 는 비울 수 없다. |
 | `slotReasons` | 칸 이유 | 선택. `{ "method": "…" }` |
 | `format` | 4칸 형식 | 비워 두면 객관식 `단일 정답`, 단답형 `단답`, 서술형 `서술` |
@@ -64,7 +67,7 @@
 ### 막히기 쉬운 곳
 
 - **소단원이 중복처럼 보인다.** 같은 이름의 소단원이 둘일 수 있다. 가장 내용이 가까운 키 하나를 고르고 `how` 에 적는다.
-- **RPM 행이 `RPM_ONLY` 이거나 PT 후보가 없다.** 단원에 후보 PT 가 하나도 없는 것은 정상이다. `NONE` + `newKeyProposal` 을 쓴다.
+- **RPM 행이 `RPM_ONLY` 이거나 PT 후보가 없다.** 단원에 후보 PT 가 하나도 없으면 `NONE` + `newKeyProposal` 을 쓴다. 후보가 있는데 `NONE` 으로 내지 않는다.
 - **그림 낱말(그림·표·아래의)이 있는데 글만으로 풀린다.** `SELF_CONTAINED` 와 그 구절 인용. 그림이 없으면 못 푸는 문항만 `NEEDS_FIGURE` 이고, 그림 파일이 없으면 시험지가 보류된다.
 - **4칸 인용이 길다.** 5~40자의 짧은 구절을 골라 그대로 옮긴다. `$`가 들어간 구간은 닫는 `$` 까지 옮기면 안전하다.
 
@@ -73,6 +76,7 @@
 ```json
 {
   "qid": 10,
+  "itemFingerprint": "(도구가 채운 값 그대로 둔다)",
   "solveSteps": [
     "AB=AC 인 이등변삼각형에서 꼭지각 A 의 이등분선 AD 는 BC 를 수직이등분하므로 BD=CD=4.5 이다.",
     "∠BAD=30° 이므로 ∠A=60° 이고 밑각도 60° 라 정삼각형이다.",
@@ -94,8 +98,8 @@
   "newKeyProposal": null,
   "difficultyBucket": 2,
   "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
   "difficultyReason": "꼭지각 이등분선의 성질(BD=4.5)과 ∠A=60° 에서 정삼각형을 알아보는 두 단계라 2단계로 본다.",
-  "level": "중",
   "format": "",
   "slots": {
     "given": [{ "term": "이등변삼각형", "src": "stem", "quote": "인 이등변삼각형 $ABC$에서" }],
@@ -158,3 +162,4 @@
 | `CTRL_CHAR` | 탭·폼피드 등 깨진 글자 |
 | `REVIEW_ANSWER_MISMATCH` / `REVIEW_FIX_NOT_APPLIED` | 검수 기록이 서로 맞지 않음 |
 | `CANDIDATES_STALE` | 후보를 만든 뒤 시험지 JS가 바뀜 |
+| `STALE_OR_EXAMPLE` | 판정 틀이 이 문항의 것이 아니거나(문항 지문 불일치) 가이드 예시 글이 그대로 남음 |

@@ -50,7 +50,6 @@ export function flagsFor({ item, j, c, check }) {
   if (src.problemTypeKey && src.problemTypeKey !== j.problemTypeKey) diffs.push('PT');
   if (src.templateKey && src.templateKey !== j.templateKey) diffs.push('TPL');
   if (src.difficultyBucket != null && src.difficultyBucket !== '' && Number(src.difficultyBucket) !== j.difficultyBucket) diffs.push('난이도');
-  if (src.level && src.level !== j.level) diffs.push('level');
   if (diffs.length >= 2) flags.push(`원천 값과 다른 칸 ${diffs.length}개 (${diffs.join(', ')})`);
 
   const allPts = c.units.flatMap(u => u.problemTypes);
@@ -63,7 +62,7 @@ export function flagsFor({ item, j, c, check }) {
   if (shorts.length) flags.push(`이유가 ${SHORT}자 미만 (${shorts.join(', ')})`);
 
   if (j.newKeyProposal) flags.push(`새 키 제안 ${j.newKeyProposal.key}`);
-  if (j.difficultyConfidence === 'low' || (src.boundary && !['NONE', 'false', false].includes(src.boundary))) flags.push(`난이도 경계 (confidence=${j.difficultyConfidence}${src.boundary && src.boundary !== 'NONE' ? `, 원천 경계 ${src.boundary}` : ''})`);
+  if (j.difficultyConfidence === 'low' || !['', 'NONE', undefined].includes(j.difficultyBoundaryFlag) || (src.boundary && !['NONE', 'false', false].includes(src.boundary))) flags.push(`난이도 경계 (confidence=${j.difficultyConfidence}${j.difficultyBoundaryFlag && j.difficultyBoundaryFlag !== 'NONE' ? `, 경계 ${j.difficultyBoundaryFlag}` : ''}${src.boundary && src.boundary !== 'NONE' ? `, 원천 경계 ${src.boundary}` : ''})`);
   if (hasBackslashPair(item)) flags.push('보기·인라인 수식 안 \\\\ 경고 (환경 밖)');
   if (!solutionShowsAnswer(item, (j.solveSteps || []).filter(Boolean), j.solvedAnswer)) flags.push('풀이 과정에 정답 값이 등장하지 않음');
   return flags;
@@ -133,7 +132,7 @@ export function buildReviewMarkdown({ jsPath, judgmentDir, candidatesDir = null,
       `**단원** ${j.standardUnitKey}(${unit?.label ?? '?'}) / ${j.subUnitKey}(${sub?.label ?? '?'})${arrow(src.standardUnitKey, j.standardUnitKey)}${arrow(src.subUnitKey, j.subUnitKey)}\n- 근거 인용: 「${q(j.unitEvidence)}」`,
       `**RPM** ${j.rpmRecordId} ${judgedRpm ? `[${judgedRpm}]` : ''}${srcRpm ? (srcRpm === judgedRpm ? ' (원천과 같음)' : ` **원천→판정: ${srcRpm} → ${judgedRpm || j.rpmRecordId}**`) : ''}\n- 이유: ${q(j.rpmReason)}`,
       `**유형** PT=${j.problemTypeKey} / TPL=${j.templateKey}${arrow(src.problemTypeKey, j.problemTypeKey)}${arrow(src.templateKey, j.templateKey)}\n- 이유: ${q(j.typeReason)}${j.newKeyProposal ? `\n- 새 키 제안: \`${j.newKeyProposal.key}\` (${j.newKeyProposal.label}) — ${q(j.newKeyProposal.why)}` : ''}`,
-      `**난이도** ${j.difficultyBucket} (${j.level}, confidence=${j.difficultyConfidence})${arrow(src.difficultyBucket, j.difficultyBucket)}\n- 이유: ${q(j.difficultyReason)}`,
+      `**난이도** ${j.difficultyBucket} (confidence=${j.difficultyConfidence}, 경계=${j.difficultyBoundaryFlag || '-'})${arrow(src.difficultyBucket, j.difficultyBucket)}\n- 이유: ${q(j.difficultyReason)}`,
       '',
       `**4칸**`,
       ...['given', 'goal', 'method', 'condition'].map(k => `- ${k}: ${fmtSlot(j.slots?.[k] || [])}`),
