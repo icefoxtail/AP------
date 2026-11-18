@@ -27,6 +27,7 @@ import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,plan
 
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 import { explicitRegistrationMode } from './registration-mode.mjs';
+import { loadRebinds, rebindHolds, textFingerprint } from './text-binding-lib.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -308,7 +309,7 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 }
 
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
-export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
+export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry, textRebinds=null}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
   if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
@@ -322,8 +323,12 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const questionNo=String(q.sourceQuestionNo??q.id??'');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
   const fp=sourceFingerprint(q), cf=contentFingerprint(q);
-  if(identity.sourceFingerprint!==fp) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
-  if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous))) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
+  // 지문이 달라도 발문·보기(text-v1)가 등록 당시와 같다는 재결속 기록이 있으면 같은 문항으로 본다(해설·정답·그림만 바뀐 경우).
+  // 기록이 없거나(textRebinds=null 포함) 발문·보기가 바뀌었으면 이전과 똑같이 거절한다. docs/agents/metadata.md "메타 결속 지문 범위".
+  const textFp=textRebinds?textFingerprint(q):null;
+  const reboundTo=anchor=>Boolean(textFp)&&rebindHolds(textRebinds,identity.questionUid,anchor,textFp);
+  if(identity.sourceFingerprint!==fp&&!reboundTo(identity.sourceFingerprint)) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
+  if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous)) && !reboundTo(current.sourceFingerprint)) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
   const coreChanged=Boolean(previous&&!equal(pick(previous,CORE),pick(q,CORE)));
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
   if(current.metadataStatus==='SOURCE_HOLD')return reject('EXPLICIT_SOURCE_HOLD');
@@ -460,7 +465,7 @@ async function context(root) {
     runtimes.set(data.packId,{rel,data});
     for(const r of data.records){if(owners.has(r.questionUid))throw Error('DUPLICATE_RUNTIME_UID');owners.set(r.questionUid,data.packId);}
   }
-  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityMap:identity,identityByJoin,runtimes,owners};
+  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityMap:identity,identityByJoin,runtimes,owners,textRebinds:loadRebinds(root)};
 }
 
 // Read-only run instrumentation. It is written only into the (uncommitted) run report outside `replayBatch`,
@@ -689,7 +694,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const priorPath=state.latestReceipts?.[id?.questionUid];
       if(priorPath&&!new RegExp('^\\.archive-meta-register/auto/receipts/[A-Za-z0-9_-]+\\.json$').test(priorPath))throw Error('RECEIPT_PATH_INVALID');
       const prior=priorPath?read(root,priorPath):null;
-      const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
+      // 재결속 기록이 있는 문항은 기록이 생기거나 달라지면 한 번 다시 시도한다(없는 문항의 서명은 이전과 같다). 기록 없이는 거절이 그대로 굳는다.
+      const rebindEntries=c.textRebinds?.byUid.get(id?.questionUid);
+      const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(rebindEntries?.length?{textRebinds:rebindEntries.map(e=>[e.fp,e.text])}:{}),...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
       if(!replay&&state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
         tally.unchangedSkipped++;count(originOf(key),'unchangedSkipped');fileRow(unchangedFiles,source).total++;
@@ -701,7 +708,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const runtimeOwner=c.owners.get(id?.questionUid),nativeSource=sourceBindings.get(source);
       if(['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
-      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,
+      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,textRebinds:c.textRebinds,
         nativeSource:{...nativeSource,...(parentRetry?{previousSourceBytes:execFileSync('git',['show',`${target.baseCommit}:${rel}`],{cwd:root,maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']})}:{}),identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
