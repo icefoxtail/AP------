@@ -580,7 +580,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "wide": true,
     "tags": [
       "내각의이등분선",
