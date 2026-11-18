@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ee8f71802ffe-919206c7",
+  "sourceArchiveFile": "original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bd8f065b19a3d29bea219296df0806250a5f0ad53a530d1875d2ea3ed3f21e49",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_078",
+      "step": "상용로그의 정수부분 차 2를 진수의 백 배 이동으로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fe2fe2a56e7d4e7efd7f2987338dd7bef2852dc6b83b9ab0272f992fc6bd75af",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+      "step": "180도와 π라디안의 대응으로 a,b를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cceca13e0825347b96863e8710dfdd94130c53623eeb504ecdaed4996e1ff40e",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+      "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+      "step": "구의 반지름을 3의 유리수 거듭제곱으로 바꾸고 기약 지수를 읽는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8debb7e57044a4a84f2775095b3c9580de26ac42b0191d74dcc55a62cd4fdae8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+      "step": "공통 거듭제곱값으로 a,b,c를 표현해 곱의 지수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b7c6493afadab1e83ca3fca6f1db2b6e47c9b227d6db25ea70aab3ad55666cc3",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "로그식의 자연수값을 m으로 두어 n=2^((3m-1)/2)로 바꾸고 지수의 정수 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_30fd0d6a88688f69a1536674e9b0bec5ba7f2392bfc0a83fdce6fafc57ea06bd",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "step": "n의 홀짝별로 두 거듭제곱 방정식의 실근과 그 곱을 구해 주어진 유한 범위를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cf1b8fa5d4d198481a4de97daa2ba5e14c498da9ccd0532dde81fc4eab2f2ff3",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "step": "로그곡선 교점을 이차방정식의 두 근으로 두고 합·곱으로 중점 좌표를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5cff60e8d6d87c872da7ff37e9888214f04c102f1461fd4e02dde67bd0aebd5d",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "진수 양수 조건과 밑 2의 증가성을 적용한 부등식 범위를 교차한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}
