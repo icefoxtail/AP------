@@ -133,6 +133,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-question-binding.test.mjs',
+    args: ['--test', 'tests/archive-question-binding.test.mjs']
+  },
+  {
     label: 'tests/archive-source-delta.test.mjs',
     args: ['--test', 'tests/archive-source-delta.test.mjs']
   },
