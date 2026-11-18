@@ -1,0 +1,64 @@
+{
+  "qid": 5,
+  "itemFingerprint": "cefc8e43aad86f0d",
+  "solveSteps": [
+    "삼각형의 세 내각의 합은 180도이므로 각 A = 180도 - (40도 + 70도) = 180도 - 110도 = 70도이다.",
+    "각 A = 각 C = 70도이므로 삼각형 ABC는 AB = BC 인 이등변삼각형이다.",
+    "2x + 1 = x + 6 이 성립하므로 x = 5 이다.",
+    "따라서 x의 값은 5 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "크기가 같은 이등변삼각형이다. 따라서",
+  "rpmRecordId": "M2-RPM-179",
+  "rpmReason": "내각 합 180도에서 각 A = 70도를 구하여 AB = BC 인 이등변삼각형임을 판정하는 단계이다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_CONVERSE",
+  "typeReason": "두 내각이 70도로 같음을 확인하여 이등변삼각형의 대변 2x + 1 = x + 6 에서 x = 5 를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "180도에서 110도를 빼서 70도를 얻고 단순 일차방정식 x = 5 를 푸는 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "고, 두 변의 길이가 $\\over"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "크기가 같은 이등변삼각형이다. 따라서"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "주어진 식을 대입하면 $$ 2x",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "내각 합 180도에서 각 A = 70도로 이등변삼각형임을 확인하여 2x + 1 = x + 6, x = 5 로 ⑤를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

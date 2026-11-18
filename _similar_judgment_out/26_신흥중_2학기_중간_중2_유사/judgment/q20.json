@@ -1,0 +1,65 @@
+{
+  "qid": 20,
+  "itemFingerprint": "c5d5554bd96169e5",
+  "solveSteps": [
+    "정사각형 ABCD 에서 AB = BC 이고 각 B = 90도이므로 직각삼각형 ABF 와 BCG 는 RHA 합동이다.",
+    "따라서 대응변의 길이는 같으므로 BF = CG = 9 cm, BG = AF = 15 cm 이다.",
+    "세 점 B, F, G 가 순서대로 놓여 있으므로 FG = BG - BF = 15 - 9 = 6 cm 이다.",
+    "삼각형 AFG 에서 AF 와 FG 가 수직이므로 넓이는 1/2 * 6 * 15 = 45 cm^2 이다.",
+    "따라서 삼각형 AFG의 넓이는 45 cm^2 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "1. 직각삼각형 $ABF$와",
+  "rpmRecordId": "M2-RPM-181",
+  "rpmReason": "정사각형 꼭짓점에서 수선을 내려 RHA 합동으로 FG = 6 cm 를 구하고 넓이 45 cm^2 를 계산하는 단계이다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+  "typeReason": "직각삼각형의 RHA 합동 성질을 이용하여 변의 길이를 찾고 삼각형 AFG 의 넓이 45 cm^2 를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "90도 각 관계에서 RHA 합동을 증명하고 15 와 9 의 차이로 밑변을 찾아 45 를 구하는 난이도 3 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "정사각형 $ABCD$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "BE$에 내린 수선의 발을 각각"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "$BCG$의 합동 증명: 정사각",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "RHA 합동으로 BF = 9 cm, BG = 15 cm, FG = 6 cm 임을 찾아 넓이 1/2 * 6 * 15 = 45 cm^2 로 ⑤를 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

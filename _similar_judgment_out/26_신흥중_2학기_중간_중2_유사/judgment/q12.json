@@ -1,0 +1,65 @@
+{
+  "qid": 12,
+  "itemFingerprint": "a2bf2c01d3997e3d",
+  "solveSteps": [
+    "각 ACD = x 라 하자.",
+    "삼각형 BCD 에서 BC = BD 이므로 각 BDC = 각 BCD = x 이고, 외각 각 ABD = x + x = 2x 이다.",
+    "삼각형 ADB 에서 AD = DB 이므로 각 BAD = 각 ABD = 2x 이다.",
+    "삼각형 ACD 에서 외각 각 ADE = 각 CAD + 각 ACD = 2x + x = 3x 이다.",
+    "3x = 84도 이므로 x = 28도이다. 따라서 각 ACD = 28도이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "B, C$가 순서대로 변 위에",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "BD}$이므로 이등변삼각형이다. $$ \\",
+  "rpmRecordId": "M2-RPM-178",
+  "rpmReason": "이등변삼각형의 밑각과 외각 성질을 연속으로 써서 3x = 84도에서 각 ACD = 28도를 구하는 단계이다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+  "typeReason": "선분 길이가 같은 연속된 이등변삼각형에서 외각 84도 조건으로 각 ACD = 28도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 밑각과 외각 관계를 2단계 추적하여 3x = 84도, x = 28도를 얻는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "B, C$가 순서대로 변 위에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "$$ 삼각형의 외각의 성질에 의하"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "BD}$이므로 이등변삼각형이다. $$ \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "이등변삼각형 밑각과 외각에서 3x = 84도이므로 각 ACD = 28도임을 구하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

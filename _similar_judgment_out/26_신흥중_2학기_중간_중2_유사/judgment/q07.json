@@ -1,0 +1,64 @@
+{
+  "qid": 7,
+  "itemFingerprint": "6242d687c673ed9d",
+  "solveSteps": [
+    "외심 O에서 세 꼭짓점에 이르는 거리는 같으므로 OA = OB = OC 이다.",
+    "삼각형 AOC 는 OA = OC 인 이등변삼각형이므로 각 OCA = 각 OAC = 40도이다.",
+    "삼각형 BOC 는 OB = OC 인 이등변삼각형이므로 각 OCB = 각 OBC = 25도이다.",
+    "따라서 각 ACB = 각 OCA + 각 OCB = 40도 + 25도 = 65도이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "e ABC$의 외심이고 $\\ang",
+  "rpmRecordId": "M2-RPM-185",
+  "rpmReason": "외심 O에서 꼭짓점까지 거리가 같음을 이용해 40도와 25도를 더해 각 ACB = 65도를 구하는 단계이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "typeReason": "외심 O의 성질로 생기는 두 이등변삼각형의 밑각 40도와 25도의 합 65도를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외심에서 꼭짓점 거리가 같아 두 밑각 40도와 25도를 더해 65도를 즉시 얻는 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "e ABC$의 외심이고 $\\ang"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "삼각형의 세 꼭짓점에 이르는 거리"
+      }
+    ],
+    "method": [
+      {
+        "term": "거리",
+        "src": "solution",
+        "quote": "짓점에 이르는 거리는 모두 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외심 O에서 OA = OB = OC 로 각 OCA = 40도, 각 OCB = 25도이므로 각 ACB = 65도로 ①을 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

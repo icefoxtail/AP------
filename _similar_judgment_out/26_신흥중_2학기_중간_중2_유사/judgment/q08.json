@@ -1,0 +1,65 @@
+{
+  "qid": 8,
+  "itemFingerprint": "f5e6df9a947c4bee",
+  "solveSteps": [
+    "선분 AD 와 EC 가 평행하므로 삼각형 ADE 와 삼각형 ADC 는 밑변 AD를 공유하고 높이가 같아 넓이가 같다.",
+    "따라서 사각형 ABDE = 삼각형 ABD + 삼각형 ADE = 삼각형 ABD + 삼각형 ADC = 삼각형 ABC 이다.",
+    "직각삼각형 ABC 에서 밑변 BC = BD + DC = 8 + 12 = 20 cm 이고 높이 AB = 14 cm 이다.",
+    "넓이는 1/2 * 20 * 14 = 140 cm^2 이다.",
+    "따라서 사각형 ABDE 의 넓이는 140 cm^2 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "직각삼각형 $ABC$ ($\\",
+  "rpmRecordId": "M2-RPM-194",
+  "rpmReason": "평행선 사이의 등적변형으로 사각형 ABDE 넓이를 밑변 20 cm 와 높이 14 cm 인 삼각형 ABC 넓이 140 으로 바꾸는 단계이다.",
+  "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+  "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+  "typeReason": "평행선 조건에서 등적변형을 적용하여 사각형의 넓이를 직각삼각형 ABC 넓이 140 cm^2 로 변환하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "등적변형 아이디어를 이용해 직각삼각형 넓이 1/2 * 20 * 14 = 140 을 계산하는 전형적인 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$ ("
+      }
+    ],
+    "goal": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "m}$일 때, 사각형 $ABDE$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "높이가 같아 넓이가 같다. $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "AD와 EC 평행으로 사각형 ABDE 넓이가 직각삼각형 ABC 넓이와 같으므로 1/2 * 20 * 14 = 140 cm^2 로 ④를 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
