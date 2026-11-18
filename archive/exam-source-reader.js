@@ -52,5 +52,17 @@
     if (typeof stem === "string" && stem.trim()) return stem;
     return typeof content === "string" ? content : "";
   }
-  return { readQuestionArray, readExamTitle, readQuestionBody, SOURCE_GLOBALS };
+  // 메타 결속용 발문: content → question → stem 순으로 "비어 있지 않은 문자열"(공백만이면 비어 있음)을 고른다.
+  // 값은 다듬지 않은 원문 그대로 돌려주고, 셋 다 비면 "". 메타 결속 지문(archive/question-binding.js)이 발문을 읽는
+  // 정의가 이 한 곳이 되게 한다(복사본은 content만 읽어 question에만 발문이 있는 시험지에서 발문 수정을 놓친다).
+  // readQuestionBody(표시용)와 달리 stem까지 본다. 기존 지문 함수들은 이 함수를 아직 쓰지 않는다.
+  function readStemForBinding(question) {
+    if (!question || typeof question !== "object") return "";
+    for (const key of ["content", "question", "stem"]) {
+      const value = question[key];
+      if (typeof value === "string" && value.trim()) return value;
+    }
+    return "";
+  }
+  return { readQuestionArray, readExamTitle, readQuestionBody, readStemForBinding, SOURCE_GLOBALS };
 });
