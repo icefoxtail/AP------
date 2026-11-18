@@ -66,10 +66,14 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 칸이 넘칠 때 `fitQuestionBox`가 붙이는 `img-fit-*`는 같은 비율에 0.85·0.7·0.55를 곱하는 변수(`--ap-fig-k`)로 바뀌었고, 균등 칸 엔진의 `images` 프로파일(옛 78%·150px)은 0.8을 곱한다(묶음 그림 제외). "단 폭"은 한 칸 안쪽 폭 83.65mm 상수로 둔다(측정용 staging과 최종 칸이 같은 크기를 쓰게). 전폭 칸에서도 같은 값이다.
 - 오답 엔진(`apmath/wrong_print_engine.html`)과 편집기(`internal-review-engine.js`)의 크기 선택지, `generated-bank.html`은 이번 범위가 아니다.
 
-## 전폭 배치 표시는 한 단 전체로 읽는다 (2026-11-18 사용자 결정)
+## 모든 문항을 칸에 먼저 놓고, 안 들어가는 문항만 한 단 전체로 올린다 (2026-11-18 사용자 결정, 같은 날 앞선 "전폭 표시는 한 단 전체로 읽는다"를 대체)
 
-- 배치는 "기본 칸"과 "한 단 전체(`subjective-2up`)" 둘뿐이다. 시험지 데이터에 남은 `"layoutTag": "fullwidth"`(와 layout-authority 정규식이 전폭으로 잡는 `full`·`full-width`·`wide` 값)는 **데이터를 고치지 않고** 문제 모드 렌더용 사본에서만 `subjective-2up`으로 읽는다(`APRenderStateNormalizer.renderLayoutTag`, `engine.html`·`mixed_engine.html`의 `renderExam` 입구와 배치 기록). 이유: 승인 기록에 묶여 시험지 파일을 고칠 수 없는 문항이 많고(77개 파일 408문항), 전폭 문항은 쪽 하나를 통째로 차지했다.
-- 아직 그대로인 것: 불리언 `wide: true`(균등 칸 갈래 판정이 걸려 있어 자동 승격과 함께 다음에 처리), `subjective-4up`, 해설 쪽의 전폭 승격(맞춤 실패 마지막 수단).
+- 배치는 "기본 칸(grid)"과 "한 단 전체(`subjective-2up`)" 둘뿐이고 기본은 2단 칸이다. 문제 모드 렌더 입구(`engine.html`·`mixed_engine.html`의 `renderExam`, `APRenderStateNormalizer.renderQuestionLayout`)는 시험지 데이터의 `layoutTag`(fullwidth·wide·full·subjective-2up·subjective-4up 등)와 `wide:true`를 처음 배치에서 **무시**한다(데이터는 고치지 않고 렌더용 사본만). 이유: 이 태그는 그림이 크던 시절 사람이 붙인 것이라 과해서, 짧은 보기 5개와 그림 하나뿐인 문항(금당중 중3 2학기 중간 23·24번)이 한 단을 통째로 차지했다. 해설 모드는 건드리지 않는다.
+- 쪽당 4문항(`archive/equal-slot-engine.js`)에서는 `finalize`가 칸에 놓고 잰 뒤, 실효 글자 크기(글자 x 칸 배율)가 **10.8px(8.1pt, `MIN_EFFECTIVE_FONT_PX`) 미만**이 되는 문항만 한 단 전체(span 2)로 올려 쪽을 다시 만든다(`state.spans`, 최대 6회). 읽는 순서는 위 "번호 오름차순" 규칙 그대로이고, 한 단 전체는 통째로 빈 단 맨 위에 놓이며 연달아 나오면 한 쪽에 짝이 된다. 한 문항이 올라가도 시험지 전체가 옛 갈래로 넘어가지 않는다(예전에는 2up·wide가 하나라도 있으면 전체가 옛 갈래였다). 쪽을 다시 만들면 마지막 쪽 QR을 다시 달아야 해서 호출부가 `finalize(area, { afterRelayout })`로 넘긴다.
+- 한 단 전체로도 안 맞으면 그림만 단계적으로 줄인다(`tight images`·`floor images` 프로파일, 하한은 단 폭의 35%). 그래도 안 맞으면 글자는 10.8px로 두고 `LAYOUT_OVERFLOW`를 감사 결과(`area.dataset.equalSlotAudit`의 `warnings`·`layoutOverflow`)와 console 경고에 남기고, 교사 화면(PC 화면 전용)에는 그 문항에 빨간 점선과 문구를 보인다(인쇄·PDF·인쇄 이미지에는 안 넣음). 세로로만 넘치는 문항은 글자 10.8px를 지키고, **가로로 넘치는 문항(칸보다 넓은 표·한 줄 긴 글)은 가로가 들어가는 배율까지만 줄인다**(`overflowReason: "width"`, 글자가 10.8px 밑이 될 수 있고 같은 LAYOUT_OVERFLOW로 보고). 이유: 가로 넘침은 렌더 공통 게이트 S12에 걸려 시험지가 통째로 안 열리고, 칸을 키워도(한 단 전체) 폭은 그대로다. 오른쪽 단으로 문항을 이어 쓰는 경로는 아직 없다.
+- 작성자가 꼭 한 단 전체를 원하면 문항에 `layoutForce: "subjective-2up"`(렌더 전용 필드, `RENDER_FIELDS`·`RENDER_ONLY_FIELDS`)을 쓴다. 기존 데이터에는 없으므로 전부 자동 판정이다.
+- 자동 승격과 글자 하한은 시험지 렌더(`APExamRenderExecutor.render`가 `autoPromote`를 켬)에만 있다. 반 합성·오답 엔진(`renderComposed`)과 쪽당 4문항이 아닌 시험지(옛 갈래: 칸을 넘치면 `fallbackLadder`로 그 문항만 키움)는 이전 동작이다. 아직 그대로인 것: 해설 쪽의 전폭 승격(맞춤 실패 마지막 수단), 옛 갈래의 `autoCompress` 글자 축소.
+- 회귀 테스트: `tests/equal-slot-engine.test.js`(plan span·selectFit 하한), `tests/archive-layout-hint-demotion.test.js`(입구 정리).
 
 ## 연도는 항상 최신부터 (2026-11-10 사용자 결정)
 
@@ -288,3 +292,14 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - 한 쪽 안의 읽는 순서(왼쪽 단 위→아래, 오른쪽 단 위→아래)는 항상 문항 번호 오름차순이다. 칸 배정은 **열 우선·단조 증가**: 마지막에 놓은 칸 뒤만 쓰고, 한 단 전체를 쓰는 `subjective-2up`은 통째로 빈 단의 맨 위에만 놓는다(현재 단에 문항이 있으면 다음 단, 오른쪽 단도 못 쓰면 다음 쪽). 뒤 문항은 앞의 빈 칸을 채우지 않으므로 빈 자리와 쪽 수 증가는 감수한다. 코드는 두 벌이고 같은 규칙이다: `archive/layout-authority.js` `planLegacyProductionLayout`의 `findSlot`(원본 열기 쪽 배치 계획)과 `archive/exam-render-executor.js` `buildSlotPages`의 `findSlot`/`commitSlot`(문제지 만들기·단원별 기출·서버 PDF). 특수 칸이 없는 쪽의 번호순 ceil(n/2) 균등 분할은 그대로다. 회귀 테스트: `tests/exam-layout-reading-order.test.js`.
 - 이유: 일반 문항 사이에 서술형이 끼면 행 우선 배정이 서술형 아래 빈 칸을 뒤 문항으로 채워 21→23→22로 읽혔다(동산중 1학기 중간 중3 6쪽 등). 사용자: "그냥 번호 순대로 가게", "쪽수는 전혀 고려 대상이 아니야". `subjective-4up`(데이터 0건)은 쪽당 6·8문항에서 배치가 달라질 수 있다(번호순은 유지).
+
+## 시험지 문자열 처리는 공용 파일 하나 (2026-11-18, 렌더러 모듈화 첫 조각)
+
+- `engine.html`(원본 시험지)과 `mixed_engine.html`(문제지 만들기·단원별 기출)이 같은 이름의 문자열 함수를 따로 복사해 두어, 한쪽만 고친 사고가 쌓여 같은 문항이 화면마다 다르게 나왔다(보기 값이 틀리게 나옴, `$<br>$` 글자 노출, 발문 중간 [보기] 상자, 표 안 `<보기>` 소실). 이제 `wrapLatex`·`normalizeSolutionLineBreaks`·`extractChoice`·`stripChoicePrefix`·`detectChoiceRenderMode`·`renderChoicesHTML`·`protectRenderSegments`·`normalizeViewBlocks`·`formatGridAnswer`(와 이들이 부르는 `normalizeHangulStatementBreaks`·`normalizeConditionMarkerBreaks`)는 `archive/render-text.js`(`APRenderText`) 한 곳에만 있고, 두 HTML에는 같은 이름의 한 줄 위임만 남는다. 이 함수를 고칠 때는 `render-text.js`만 고친다. DOM·window·MathJax에 닿는 코드를 넣지 않는다(표 엔진만 `globalThis.ApTableEngine`을 호출 시점에 읽고, 보기 변환은 `renderChoicesHTML(q, { formatChoice })` 훅으로 받는다).
+- `wrapLatex`는 engine 방식(표·`question-table-wrap`을 통째로 보호, 리터럴 `\n`은 TeX 명령이 아님)에 mixed가 지켜 오던 것을 더했다: 보호한 블록 안에서도 한글 `<이름표>`와 수식 안 `<`·`>`는 글자로, `$` 없는 TeX 명령은 수식으로 바꾼다(`repairStructuralBlock`). 그리고 수식 밖 TeX 명령 바로 뒤의 `__HTMLTAG_n__` 표지를 하위 첨자로 먹지 않는다(`wrapBareLatex`).
+- 회귀 테스트: `tests/archive-render-text-shared.test.js`(사고별 실제 문항 표본 + 두 HTML에 본문 복사가 없는지 구조 검사). 오답 엔진(`apmath/wrong_print_engine.html`)은 아직 자기 복사본을 가진다.
+
+## 렌더 엔진 파일을 바이트·해시로 고정하는 검사 금지 (2026-11-18 사용자 결정)
+
+- 렌더 엔진 파일(`archive/engine.html`, `mixed_engine.html`, `apmath/wrong_print_engine.html`, 이들이 싣는 `archive/*.js|css`·`archive/css|js/`·학생 내비 CSS/JS)의 현재 바이트·git blob·sha256·줄수·크기를 고정 상수와 비교해 다르면 실패하는 검사를 만들지 않는다. 승인 기록(영수증·픽스처)은 "그 판본으로 승인했다"는 과거 기록으로 두고 기록 안의 해시는 그 시점 git 객체와만 대조한다. 현재 엔진이 그 판본과 같아야 한다는 요구는 두지 않는다. 대신 문항 수, 렌더 준비 완료, 수식 오류 0, 넘침 없음 같은 결함 조건을 검사한다. 글꼴·벤더 라이브러리·원본 시험지·그림 자산의 바이트 고정은 이 규칙의 대상이 아니다.
+- 이유: 인쇄 눌림 핫픽스의 `?v=` 한 줄까지 CI를 깨뜨려 엔진을 고칠 때마다 known-failure가 쌓였다. 사용자: "이런 거 없애버려. 쓸데없는 거다. 이런 것 때문에 계속 문제가 생기는 거야."

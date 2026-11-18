@@ -196,13 +196,11 @@ const CI_CASES = [
   ['tests/meta-foundation-limit-continuity-runtime.test.js', 'limit-continuity.txt'],
   ['tests/meta-foundation-middle-geometry-runtime.test.js', 'middle-geometry.txt'],
   ['tests/item-4slot-data.test.cjs', 'item-4slot-data.txt'],
-  ['tests/archive-pr-q5-current-ui-shadow.test.mjs', 'q5-shadow.txt'],
-  ['tests/item-4slot-svg7-current-ui-binding.test.cjs', 'svg7-binding.txt'],
 ];
 const verdictFor = (file, output, ok = false) => classifyRun({ entries: forFile(file), ok, output });
 
-test('실제 목록은 CI 출력의 다섯 파일 전부를 KNOWN-FAIL로 분류한다', () => {
-  assert.deepEqual([...new Set(realEntries.map(e => e.file))].sort(), CI_CASES.map(([file]) => file).sort(), '목록의 파일이 곧 CI에서 실패한 다섯 파일');
+test('실제 목록은 CI 출력의 세 파일 전부를 KNOWN-FAIL로 분류한다', () => {
+  assert.deepEqual([...new Set(realEntries.map(e => e.file))].sort(), CI_CASES.map(([file]) => file).sort(), '목록의 파일이 곧 CI에서 실패한 세 파일');
   for (const [file, name] of CI_CASES) {
     const verdict = verdictFor(file, fixture(name));
     assert.deepEqual(verdict.problems, [], file);
@@ -211,19 +209,7 @@ test('실제 목록은 CI 출력의 다섯 파일 전부를 KNOWN-FAIL로 분류
   }
 });
 
-test('svg7 결속: 18개 실패 이름이 CI 출력에서 정확히 읽히고 항목의 이름과 같다', () => {
-  const { names } = parseFailures(fixture('svg7-binding.txt'));
-  const listed = forFile('tests/item-4slot-svg7-current-ui-binding.test.cjs').flatMap(e => e.testNames);
-  assert.equal(names.length, 18);
-  assert.deepEqual([...names].sort(), [...listed].sort());
-});
-
 test('(a) 같은 파일에서 다른 하위 테스트가 실패하면 FAIL', () => {
-  const file = 'tests/item-4slot-svg7-current-ui-binding.test.cjs';
-  const extra = fixture('svg7-binding.txt').replace('1..34', 'not ok 35 - a brand new subtest\n  ---\n  error: |-\n    live bytes\n  ...\n1..35');
-  const verdict = verdictFor(file, extra);
-  assert.equal(verdict.verdict, 'fail');
-  assert.match(verdict.problems.join('\n'), /목록에 없는 실패: "a brand new subtest"/);
   // 이름 없는 스크립트: 첫 실패 문구가 다른 단언이면 FAIL
   const limit = fixture('limit-continuity.txt').replace('canonical native assignment missing/ambiguous', 'a completely different assertion');
   assert.equal(verdictFor('tests/meta-foundation-limit-continuity-runtime.test.js', limit).verdict, 'fail');
@@ -242,28 +228,14 @@ test('(b) 서명의 실패가 사라지면 FAIL — 통과해도, 일부만 사�
     assert.equal(verdict.verdict, 'fail', file);
     assert.match(verdict.problems.join('\n'), /예상된 실패가 재현되지 않음/, file);
   }
-  // svg7: 18개 중 하나만 통과로 바뀌어도 FAIL
-  const file = 'tests/item-4slot-svg7-current-ui-binding.test.cjs';
-  const oneFixed = fixture('svg7-binding.txt').replace('not ok 16 - changed live font resource bytes fail closed', 'ok 16 - changed live font resource bytes fail closed');
-  assert.equal(verdictFor(file, oneFixed).verdict, 'fail');
   // item-4slot-data: 두 FAIL 중 하나만 사라져도 FAIL
   const oneGone = fixture('item-4slot-data.txt').split('\n').filter(line => !line.includes('19_신흥중_2학기_중간_중3_수학')).join('\n');
   assert.equal(verdictFor('tests/item-4slot-data.test.cjs', oneGone).verdict, 'fail');
 });
 
 test('(c) 오류 문구가 달라지면 FAIL — 이름이 같아도, 한 테스트의 문구만 달라져도', () => {
-  const svg7 = 'tests/item-4slot-svg7-current-ui-binding.test.cjs';
-  const text = fixture('svg7-binding.txt');
-  // 18개 중 한 테스트의 상세만 다른 원인으로 바꾼다(나머지 17개는 'live bytes'가 남아 있어도 FAIL이어야 한다)
-  const start = text.indexOf('not ok 17 - changed live selected source bytes fail closed');
-  const end = text.indexOf('# Subtest:', start);
-  const changed = text.slice(0, start) + text.slice(start, end).split('live bytes').join('live sha256') + text.slice(end);
-  assert.notEqual(changed, text);
-  assert.equal(verdictFor(svg7, changed).verdict, 'fail');
-  const middle = fixture('middle-geometry.txt').replace('unknown live renderer change', 'unknown live font change');
+  const middle = fixture('middle-geometry.txt').replace('unknown source change', 'unknown live font change');
   assert.equal(verdictFor('tests/meta-foundation-middle-geometry-runtime.test.js', middle).verdict, 'fail');
-  const q5 = fixture('q5-shadow.txt').replace('archive/engine.html', 'archive/exam-render-executor.js');
-  assert.equal(verdictFor('tests/archive-pr-q5-current-ui-shadow.test.mjs', q5).verdict, 'fail');
   // 첫 실패의 문항(qid)이 바뀌면 FAIL: 다음 실패로 넘어간 것이므로 목록을 사람이 다시 봐야 한다
   const nextQid = fixture('limit-continuity.txt').replace('qid_v1_0a3b270b', 'qid_v1_ffffffff');
   assert.equal(verdictFor('tests/meta-foundation-limit-continuity-runtime.test.js', nextQid).verdict, 'fail');
@@ -276,18 +248,10 @@ test('목록은 원인·해결 조건·수리 번호를 갖고, 첫 실패에서
   }
   const stops = realEntries.filter(e => e.stopsAtFirstFailure).map(e => e.file).sort();
   assert.deepEqual(stops, [
-    'tests/archive-pr-q5-current-ui-shadow.test.mjs',
     'tests/meta-foundation-limit-continuity-runtime.test.js',
     'tests/meta-foundation-middle-geometry-runtime.test.js',
   ]);
   const lines = formatKnownFailureSummary(realEntries);
   assert.equal(lines.length, realEntries.length + 1);
   assert.match(lines[0], new RegExp(`${realEntries.length}건`));
-});
-
-test('q5 서명은 Node 22 TAP 주석 접두("# ")가 있든 없든(Node 24 로컬 출력) 같은 실패로 읽는다', () => {
-  const file = 'tests/archive-pr-q5-current-ui-shadow.test.mjs';
-  const local = 'AssertionError [ERR_ASSERTION]: archive/engine.html\n198587 !== 196085\n  generatedMessage: false,\n';
-  assert.equal(verdictFor(file, local).verdict, 'known');
-  assert.equal(verdictFor(file, fixture('q5-shadow.txt')).verdict, 'known');
 });

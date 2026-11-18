@@ -132,6 +132,10 @@ function immutable(ctx, ref, read = false) {
   if (bytes.length !== ref.bytes || sha(bytes) !== ref.sha256 || blob(bytes) !== ref.gitBlobSha1) fail("IMMUTABLE_RAW_DIGEST");
   return bytes;
 }
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile = p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function live(ctx, ref, code = "LIVE_REF_DRIFT") {
   let fd;
   try {
@@ -286,7 +290,7 @@ function validateUi(ctx, bound, current) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
     if (ref.path === SVG_INDEX_PATH) verifySvgIndexFootprint({ frozenBytes: immutable(ctx, ref, true), root: ctx.root,
       indexPath: ref.path, assetRefs: indexAssetRefs, safe, fail });
-    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    else if (!dynamic.has(ref.path) && !isRenderEngineFile(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {

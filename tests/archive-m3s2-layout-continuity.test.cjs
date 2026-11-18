@@ -32,7 +32,9 @@ function syntheticRef(p,b){return{commit:'a'.repeat(40),path:p,gitBlobSha1:gitBl
 function syntheticReader(files){const captured=new Map([...files].map(([p,b])=>[p,Buffer.from(b)])),current=new Map([...files].map(([p,b])=>[p,Buffer.from(b)]));return{currentFiles:current,ref(r){const b=captured.get(r.path);assert(b);assert.equal(gitBlob(b),r.gitBlobSha1);assert.equal(sha(b),r.sha256);return b;},current(p){assert(current.has(p));return current.get(p);},generated(p){assert(current.has(p));return current.get(p);}};}
 for(const p of ['archive/vendor/nanum-myeongjo/test.woff2','archive/example.css','archive/vendor/mathjax/example.js','archive/assets/images/25_풍덕중_2학기_기말_중3_기출/test.png']){
  test('capture/current exact dependency passes: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));H.assertLiveRenderRef(syntheticRef(p,b),read);});
- test('single current render dependency drift is refused: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));read.currentFiles.set(p,Buffer.from('changed'));assert.throws(()=>H.assertLiveRenderRef(syntheticRef(p,b),read),/UI_CURRENT_RENDER_DEPENDENCY/);});
+ // Render engine files (archive/*.css, archive/*.js, ...) may change later; fonts, vendor libraries and assets stay exact.
+ if(p==='archive/example.css')test('later render engine file edits are not refused: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));read.currentFiles.set(p,Buffer.from('changed'));H.assertLiveRenderRef(syntheticRef(p,b),read);});
+ else test('single current render dependency drift is refused: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));read.currentFiles.set(p,Buffer.from('changed'));assert.throws(()=>H.assertLiveRenderRef(syntheticRef(p,b),read),/UI_CURRENT_RENDER_DEPENDENCY/);});
 }
 test('capture dependency digest tampering is refused',()=>{const p='archive/example.css',b=Buffer.from('exact'),read=syntheticReader(new Map([[p,b]])),r=syntheticRef(p,b);r.sha256='f'.repeat(64);assert.throws(()=>H.assertLiveRenderRef(r,read));});
 function dataRow(){return{questionUid:H.UID,sourceArchiveFile:H.SOURCE,sourceOrdinal:H.ORDINAL,revision:'synthetic-approved-row'};}
@@ -73,19 +75,15 @@ for(const[name,alter]of[
  ['duplicate UID use',t=>t.uidUses.set(H.UID,2)]
 ])test('exact raw identity rejects '+name,()=>{const t=actualTuple();alter(t);assert.throws(()=>H.assertCurrentTuple(t),/CURRENT_TUPLE/);});
 
-// A newer shared renderer never inherits this issued UI contract implicitly.
-test('current renderer drift remains blocked by the real live dependency validator',()=>{
+// Render engine files may change after the capture: the live engine bytes are not compared with fixed bytes,
+// while a captured record that names a different engine than the issued contract is still rejected.
+test('current renderer bytes are not pinned by the live dependency validator',()=>{
  const currentEngine=fs.readFileSync(path.join(ROOT,'archive/engine.html'));
  const f=dependencyFixture(),engineRef=f.technical.servedFiles.find(r=>r.path==='archive/engine.html');
- f.read.currentFiles.set('archive/engine.html',currentEngine);
- if(gitBlob(currentEngine)===engineRef.gitBlobSha1){
-  assert.equal(sha(currentEngine),engineRef.sha256);
-  H.assertLiveRenderRef(engineRef,f.read);
- }else{
-  assert.throws(()=>H.assertLiveRenderRef(engineRef,f.read),/UI_CURRENT_RENDER_DEPENDENCY/);
-  const rebound=dependencyFixture();
-  const changedRef=syntheticRef('archive/engine.html',currentEngine);
-  rebound.technical.servedFiles=rebound.technical.servedFiles.map(r=>r.path==='archive/engine.html'?changedRef:r);
-  assert.throws(()=>H.assertUiRenderDependencies(rebound.technical,rebound.read),/UI_ENGINE/);
- }
+ f.read.currentFiles.set('archive/engine.html',Buffer.concat([currentEngine,Buffer.from('\n<!-- later renderer edit -->\n')]));
+ H.assertLiveRenderRef(engineRef,f.read);
+ const rebound=dependencyFixture();
+ const changedRef=syntheticRef('archive/engine.html',currentEngine);
+ rebound.technical.servedFiles=rebound.technical.servedFiles.map(r=>r.path==='archive/engine.html'?changedRef:r);
+ assert.throws(()=>H.assertUiRenderDependencies(rebound.technical,rebound.read),/UI_ENGINE/);
 });

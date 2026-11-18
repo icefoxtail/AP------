@@ -21,6 +21,7 @@ function object(x){return !!x&&typeof x==='object'&&!Array.isArray(x);}
 function exact(x,keys,code){if(!object(x)||!eq(Object.keys(x).sort(),[...keys].sort()))fail(code+'_KEYS');}
 function integer(x,min=0){return Number.isSafeInteger(x)&&x>=min;}
 function unique(rows,match,code){const found=(rows||[]).filter(match);if(found.length!==1)fail(code);return found[0];}
+const isRenderEngineFile=p=>p==='archive/engine.html'||p==='archive/mixed_engine.html'||p==='apmath/wrong_print_engine.html'||/^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function capturedRef(reader,ref,checkoutCommit,live=false){
  if(!ref||ref.commit!==checkoutCommit||!OID.test(checkoutCommit))fail('CAPTURE_COMMIT');
  // The historical Git tree is authenticated before comparing current bytes.
@@ -144,7 +145,7 @@ function verify({reader,doc,current,subjects,ancestor}){
  for(const ref of t.servedFiles){if(ref.commit!==t.checkoutCommit||runtimePaths.has(ref.path))fail('RUNTIME_INVENTORY');runtimePaths.add(ref.path);
   // Own source/assets are checked by each selected sidecar. Recheck the exact
   // shared student runtime without coupling one UID to another exam's bytes.
-  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/'));
+  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/')&&!isRenderEngineFile(ref.path));
   if(ref.path==='archive/engine.html')engine++;
  }if(engine!==1)fail('ENGINE_REQUIRED');
  const mirroredPaths=new Set();for(const ref of t.mirroredAssets){if(!ref.path?.startsWith('archive/assets/images/')||mirroredPaths.has(ref.path))fail('MIRRORED_INVENTORY');mirroredPaths.add(ref.path);capturedRef(reader,ref,t.checkoutCommit);}

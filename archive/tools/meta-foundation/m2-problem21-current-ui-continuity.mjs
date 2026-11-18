@@ -557,6 +557,8 @@ function remember(ctx,ref){
   if(before&&!same(before,value))fail('CONFLICTING_LIVE_DEPENDENCY');
   ctx.liveRefs.set(ref.path,value);
 }
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile=p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||/^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||/^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function live(ctx,ref,read=false){
   const digest=fileDigest(ctx.root,ref.path);
   if(digest.bytes!==ref.bytes||digest.sha256!==ref.sha256)fail('LIVE_DEPENDENCY_DRIFT');
@@ -907,7 +909,7 @@ function buildBase(root,head){
       const current=fs.readFileSync(localPath(root,SVG));
       verifyM2Problem21CurrentSvgProjection({capturedBytes:raw,currentBytes:current});
       remember(ctx,{path:SVG,sha256:sha(current),bytes:current.length});
-    }else live(ctx,ref);
+    }else if(!isRenderEngineFile(ref.path))live(ctx,ref);
   }
   if(!metadata||!ctx.liveRefs.has(SVG))fail('SERVED_SELECTED_DATA_REQUIRED');
   if(technical.identityRef.path!==ID||technical.identityRef.commit!==technical.checkoutCommit)fail('CAPTURE_IDENTITY_REF');

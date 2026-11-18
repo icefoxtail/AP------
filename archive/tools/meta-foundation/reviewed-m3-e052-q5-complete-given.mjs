@@ -175,6 +175,12 @@ function svgIndexFootprint(ctx, ref, technical) {
     SvgIndexContinuity.selectEntries(current, assetRefs)), 'SVG_INDEX_CONSUMED_FOOTPRINT_DRIFT');
 }
 
+// Render engine files may change after the capture. Their captured Git bytes stay authenticated,
+// but the current bytes are not compared with the captured ones (user decision 2026-11-18).
+const isRenderEngineFile = p => p === 'archive/engine.html' || p === 'archive/mixed_engine.html' || p === 'apmath/wrong_print_engine.html' ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
+
 function uiEvidence(ctx, basis) {
   const originalTechnical = evidence(ctx, ctx.spec.technicalRef, DIR + 'student-ui-technical-v1.json');
   const visual = evidence(ctx, ctx.spec.visualRef, DIR + 'student-ui-independent-v1.json');
@@ -208,6 +214,7 @@ function uiEvidence(ctx, basis) {
     Array.isArray(visual.records) && visual.records.length === 2, 'INDEPENDENT_ALL_TILES_VISUAL_REQUIRED');
   const atCheckout = (ref, opts = {}) => {
     ensure(ref?.commit === technical.checkoutCommit, 'UI_CHECKOUT_REF_DRIFT');
+    if (isRenderEngineFile(ref.path)) opts = { ...opts, live: false };
     if (currentUi && opts.live) ensure(git(ctx, ['rev-parse', 'HEAD:' + ref.path]).toString().trim() === ref.gitBlobSha1, 'CURRENT_UI_HEAD_RENDER_DRIFT');
     return reference(ctx, ref, opts);
   };
@@ -377,14 +384,10 @@ export function assertM3Q5CurrentUiDocuments({ prior, visual, technical, current
 }
 function currentM3Q5Ui(ctx, prior, visual) {
   const c = CURRENT_Q5_UI;
-  const headEngine = git(ctx, ['rev-parse', 'HEAD:' + c.code[5].path]).toString().trim();
-  // Only the unchanged original engine can use the original UI branch.
-  // Missing current binding files, local rollback and unknown future renderer
-  // bytes cannot turn current display readiness into an old-UI success.
-  const requested = [c.technicalRef, c.visualRef].some(ref => fs.existsSync(safe(ctx.root, ref.path))) ||
-    headEngine !== UI_CODE[5].gitBlobSha1;
+  // The current binding is used when its files are present; the current engine bytes
+  // are not compared with a fixed edition.
+  const requested = [c.technicalRef, c.visualRef].some(ref => fs.existsSync(safe(ctx.root, ref.path)));
   if (!requested) return null;
-  ensure(headEngine === c.code[5].gitBlobSha1, 'CURRENT_UI_HEAD_ENGINE_DRIFT');
   ensure(same(ctx.spec.technicalRef, c.priorTechnicalRef) && same(ctx.spec.visualRef, c.priorVisualRef), 'CURRENT_UI_ORIGINAL_AUTHORITY_REF');
   // Original publication refs are fixed above and already authenticated by
   // evidence()/reference() against their immutable trees and current live bytes.

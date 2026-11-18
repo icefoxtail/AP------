@@ -23,6 +23,7 @@
 
   // 배치·크기 전용 필드만 넣는다. 근거(읽은 곳):
   //  layoutTag                 engine.html:2640-2670,2777 슬롯·전폭 배치 / layout-authority.js:29-58 placementKind
+  //  layoutForce               render-state-normalizer.js renderQuestionLayout — 작성자가 한 단 전체(subjective-2up)를 고정할 때만 읽음. 자동 승격은 이 필드와 무관
   //  wide                      engine.html:2634 / layout-authority.js:800 impliedFullWidth / exam-render-executor.js:65
   //  imageSize                 engine.html:2462 크기 클래스만 정함(small|half|medium|large|full|tall)
   //  imageSizeOverride         engine.html:2463 full|tall 크기 상한만 키움
@@ -36,6 +37,7 @@
   //  preserveChoicePrefixes, solutionReminderImagePolicy 등. 보류 사유는 PR 설명 참고.
   const RENDER_ONLY_FIELDS = Object.freeze([
     "layoutTag",
+    "layoutForce",
     "wide",
     "imageSize",
     "imageSizeOverride",

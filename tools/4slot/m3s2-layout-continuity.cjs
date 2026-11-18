@@ -53,7 +53,9 @@ function assertCapture(c,screenshots,viewport){
  demand(end===c.content.height&&eq(c.scrollAfter,scroll)&&c.scrollOperations===operations,'INCOMPLETE_COVERAGE');
 }
 function fileRef(r){return Object.fromEntries(['commit','path','gitBlobSha1','sha256','bytes'].map(k=>[k,r?.[k]]));}
-function assertLiveRenderRef(r,read){validRef(r);read.ref(r);const current=read.current(r.path);demand(current.length===r.bytes&&blob(current)===r.gitBlobSha1&&sha(current)===r.sha256,'UI_CURRENT_RENDER_DEPENDENCY');}
+const isRenderEngineFile=p=>p==='archive/engine.html'||p==='archive/mixed_engine.html'||p==='apmath/wrong_print_engine.html'||/^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
+// Render engine files may change after the capture; only the captured Git bytes are authenticated.
+function assertLiveRenderRef(r,read){validRef(r);read.ref(r);if(isRenderEngineFile(r.path))return;const current=read.current(r.path);demand(current.length===r.bytes&&blob(current)===r.gitBlobSha1&&sha(current)===r.sha256,'UI_CURRENT_RENDER_DEPENDENCY');}
 function assertSelectedDataRows(before,current,expectedHash){
  const selected=bytes=>{const d=JSON.parse(bytes);demand(Array.isArray(d.records),'UI_SELECTED_DATA_RECORDS');const rows=d.records.filter(row=>row?.questionUid===UID);demand(rows.length===1&&rows[0].sourceArchiveFile===SOURCE&&rows[0].sourceOrdinal===ORDINAL&&hash(rows[0])===expectedHash,'UI_SELECTED_DATA_CHANGED');return rows[0];};
  demand(eq(selected(before),selected(current)),'UI_SELECTED_DATA_CHANGED');return expectedHash;
