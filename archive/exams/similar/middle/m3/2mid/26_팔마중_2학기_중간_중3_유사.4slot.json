@@ -1,0 +1,987 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사.js",
+  "sourceGitBlobSha": "93e722077f82606dda35b5dbd5cab8c313d64eb0",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-04",
+  "judgedBy": {
+    "agent": "similar-md-importer",
+    "at": "2026-11-18"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "일체형 마크다운 변환 산출물(UNREVIEWED)"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin A \\times \\tan B = \\frac{\\sqrt{3}}{2} \\times \\frac{1}{\\sqrt{3}} = \\frac{1}{2}"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "피타고라스 정리로 $\\overline{AC}=3$을 구해 $\\sin A$와 $\\tan B$를 곱한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "\\sin B + \\cos A = \\frac{2}{5} + \\frac{2}{5} = \\frac{4}{5}"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "피타고라스 정리로 $\\overline{AC}=2$를 구해 $\\sin B$와 $\\cos A$를 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\tan A = \\frac{\\sqrt{5}}{3}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "\\sin A \\times \\cos A"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "\\angle\\text{A}$는 예각"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$\\tan A$로 직각삼각형의 빗변 $\\sqrt{14}$를 구해 $\\sin A, \\cos A$를 곱한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "\\tan x = \\frac{\\sqrt{3}}{3}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "\\sin(x + y)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "\\sin(30^\\circ + 60^\\circ) = \\sin 90^\\circ = 1"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "특수각 표에서 $x=30^\\circ, y=60^\\circ$를 구해 $\\sin(x+y)$에 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형의 가장 작은 내각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "1 : 1 : \\sqrt{2}"
+          }
+        ],
+        "method": [
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "\\frac{\\sqrt{2}}{2} : \\frac{\\sqrt{2}}{2} : 1"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "크기의 비가 $3 : 4 : 5$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "비례배분으로 $A=45^\\circ$를 구한 뒤 세 삼각비의 비를 간단히 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $1$인 사분원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "\\sin 38^\\circ - \\cos 52^\\circ + \\tan 38^\\circ$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin 38^\\circ = \\cos(90^\\circ - 38^\\circ) = \\cos 52^\\circ"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "여각 관계로 $\\sin 38^\\circ - \\cos 52^\\circ = 0$을 소거한 뒤 $\\tan 38^\\circ$를 읽는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "\\tan 28^\\circ = 0.532"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "나무의 높이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "7.98 + 1.5 = 9.48"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$15\\tan 28^\\circ$를 계산한 뒤 학생의 눈높이 $1.5\\text{ m}$를 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{ABH}$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "수선 $\\text{AH}$를 그어 직각삼각형 $\\text{ABH}$에 피타고라스 정리를 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle\\text{A}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin(180^\\circ - A)"
+          }
+        ],
+        "condition": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $20\\sqrt{2}\\text{ cm}^2$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "둔각삼각형 넓이 공식으로 $180^\\circ-A=45^\\circ$를 구해 $A$를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\text{ABD}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "16\\cos 30^\\circ = 8\\sqrt{3}"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$30^\\circ$ 삼각비를 두 번 적용해 $\triangle ABD$의 두 직각변을 구해 넓이를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선 $\\text{AC}$, $\\text{BD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $\\text{ABCD}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\frac{1}{2} \\times 12 \\times 8 \\times \\sin 45^\\circ"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "예각의 크기가 $45^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "사각형 두 대각선 넓이 공식 $\\frac{1}{2}ab\\sin\\theta$를 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $\\text{ABCD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\cos x^\\circ = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\frac{3\\sqrt{13}}{13}"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "직각삼각형의 닮음"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선의 발을 $\\text{E}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "직각삼각형 $\\text{ADC}$의 닮음으로 $\\overline{AD}=\\overline{BC}$를 구해 $\\cos x^\\circ$를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\text{ABC}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이등변삼각형 성질과 $\\sin 45^\\circ$로 밑변 $\\overline{AB}=6\\sqrt{2}$를 구해 넓이를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "왼쪽 원"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "x + y = 14 + 13 = 27"
+          }
+        ],
+        "method": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현을 이등분"
+          }
+        ],
+        "condition": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "중심에서 두 현까지의 거리는 같고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "현의 이등분으로 $x$를, 접선과 반지름의 수직으로 $y$를 구해 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $\\text{O}$"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "현 $\\text{CD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{CD}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{OMC}$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $\\text{O}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "반지름 $8$과 $\\overline{OM}=4$로 $\triangle OMC$에서 $\\overline{CM}$을 구해 $2$배한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\text{OM}} \\perp \\overline{\\text{AB}}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각은 중심각의 절반"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각을 이등분"
+          }
+        ],
+        "condition": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현의 길이"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$\\angle AOB=\\angle MON=124^\\circ$를 구한 뒤 원주각이 중심각의 절반임을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $\\text{O}$"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "두 접선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\text{APB}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\frac{1}{2} \\times 8 \\times 8 \\times \\sin 60^\\circ"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$\\overline{PB}=\\overline{PA}=8$임을 이용해 삼각비 넓이 공식에 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $\\text{ABCD}$"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $\\text{O}$에 외접"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{CD}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "두 변의 길이의 합"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "원에 외접하는 사각형의 마주 보는 두 변의 합이 같음을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "반원 $\\text{O}$"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "반원 $\\text{O}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{AHD}$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "접선 길이 합으로 $\\overline{AD}=13$을 구한 뒤 수선 $\\text{AH}$로 지름을 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "두 원의 반지름"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현 $\\text{AB}$와 $\\text{CD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AP}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "피타고라스 정리로 반현 $\\overline{AQ}=12$를 구하고 정사각형 $\\text{OQPR}$의 변 $5$를 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin x^\\circ \\times \\tan x^\\circ"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{EGC}$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "정육면체의 면대각선과 공간대각선으로 $\triangle EGC$의 세 변을 구해 삼각비를 곱한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{BCD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "성벽의 높이"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "\\frac{30(\\sqrt{3} + 1)}{(\\sqrt{3} - 1)(\\sqrt{3} + 1)} = 15(\\sqrt{3} + 1)"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 올려본각으로 밑변 차 $h\\sqrt{3}-h=30$을 세우고 분모를 유리화한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원의 반지름"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "반지름의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{OMB}$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "반지름을 $r$로 두고 $\triangle OMB$에 피타고라스 정리를 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $\\text{ABCD}$"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{GH}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $\\text{DCH}$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$\triangle DCH$에서 $\\overline{CH}=6$을 구한 뒤 접선 길이 같음으로 $\\overline{GH}$의 일차방정식을 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

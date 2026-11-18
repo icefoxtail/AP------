@@ -43,6 +43,7 @@ const requiredCommands = [
   { label: 'tests/archive-e015-issued-source-continuity.test.mjs', args: ['--test', 'tests/archive-e015-issued-source-continuity.test.mjs'], timeout: 60000 },
   { label: 'tests/archive-m2s1-svg7-problem-browser.test.cjs', args: ['--test', 'tests/archive-m2s1-svg7-problem-browser.test.cjs'] },
   { label: 'tests/archive-completion-check.test.mjs', args: ['--test', 'tests/archive-completion-check.test.mjs'] },
+  { label: 'tests/archive-similar-md-to-js.test.mjs', args: ['--test', 'tests/archive-similar-md-to-js.test.mjs'] },
   { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
   { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
   { label: 'tests/item-4slot-m1s2-problem-continuity.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-problem-continuity.test.cjs'] },
