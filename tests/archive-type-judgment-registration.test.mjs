@@ -377,3 +377,49 @@ test("dry run on the real repository data plans only the metadata file and the r
   assert.deepEqual(fs.readFileSync(path.join(repo, META)), metaBefore, "a dry run changes nothing");
   t.diagnostic(`dry run row: ${wanted.sourceArchiveFile}#${wanted.sourceOrdinal} -> ${binding.problemTypeKey} (${result.rowBindingCounts && JSON.stringify(result.rowBindingCounts)})`);
 });
+
+// ---- course aliases (archive/data/meta-foundation/course-aliases.v1.json) --------------------------------------------------------
+const ALIASES = "archive/data/meta-foundation/course-aliases.v1.json";
+const aliasDoc = {
+  schemaVersion: "course-aliases-v1",
+  spellingGroups: [{ id: "A", grade: "중1", members: [COURSE, "중1"], evidence: ["fixture"] }, { id: "B", grade: "고1", members: ["수학(상)"], evidence: ["fixture"] },
+    { id: "C", grade: "중2", members: ["중2 수학"], evidence: ["fixture"] }],
+  successorGroups: [{ id: "S", curricula: { "2015": ["수학(상)"], "2022": [COURSE] }, evidence: ["fixture"] }]
+};
+const typeRequest = f => f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
+
+test("a row whose course is another spelling of the binding course registers, and the relation is recorded", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  const row = f.rows()[0];
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.deepEqual(row.typeApproval.scope, { curriculum: "2022", standardCourse: COURSE, curriculumSource: "request", rowCourse: "중1", courseRelation: "alias" });
+  assert.equal(f.run(typeRequest(f), { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
+test("without the alias data the same spelling difference is refused (unchanged strict behaviour)", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중1 judged=중1 수학/);
+});
+
+test("another grade or subject is refused even with the alias data", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중2 수학" } } });
+  f.put(ALIASES, aliasDoc);
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중2 수학 judged=중1 수학/);
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "공통수학1" } } });
+  g.put(ALIASES, aliasDoc);
+  assert.throws(() => g.run(typeRequest(g)), /course mismatch/);
+});
+
+test("the same subject of the other curriculum is accepted only through a successor group, and the row curriculum may differ then", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "수학(상)", curriculum: "2015", curriculumKey: "2015" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=수학\(상\)/);
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  assert.equal(f.rows()[0].typeApproval.scope.courseRelation, "successor");
+  // an alias relation still compares the curriculum of the row
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "중1", curriculum: "2015" } } });
+  g.put(ALIASES, aliasDoc);
+  assert.throws(() => g.run(typeRequest(g)), /curriculum mismatch: uid1 row=2015 judged=2022/);
+});
