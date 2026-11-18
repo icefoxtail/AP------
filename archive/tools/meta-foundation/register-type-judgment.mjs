@@ -20,6 +20,7 @@
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
 // never overwritten; the judgment is bound to the current source bytes (blob and per-question fingerprints).
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { loadCourseAliases } from "./course-aliases.mjs";
@@ -272,7 +273,7 @@ export function registerTypeJudgment(ctx) {
       }
     }
   }
-  output.set("archive/data/question_metadata.json", json(metadata));
+  output.set("archive/data/question_metadata.json", questionMetadataText(metadata));
   const outputDigests = [...output].filter(([file, text]) => file !== "archive/data/question_metadata.json" &&
     (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text))
     .map(([file, text]) => ({ path: file, sha256: digest(text) }));
