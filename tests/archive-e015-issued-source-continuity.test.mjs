@@ -137,7 +137,7 @@ try {
     return Buffer.from(textFn(text.slice(0,start))+JSON.stringify(bank)+textFn(text.slice(end+1)));
   }
   const accepts=(bytes)=>assert.equal(assertE015LayoutTagOnlyEdition(f14Bytes,bytes),true);
-  const rejects=(bytes)=>assert.throws(()=>assertE015LayoutTagOnlyEdition(f14Bytes,bytes),/E015_ISSUED_SOURCE_CONTINUITY/);
+  const rejects=(bytes,code)=>assert.throws(()=>assertE015LayoutTagOnlyEdition(f14Bytes,bytes),new RegExp(`^Error: E015_ISSUED_SOURCE_CONTINUITY:${code}$`));
   const pass=(name,fn)=>{fn();passed++;console.log(`PASS [layoutTag-only] ${name}`);};
   pass('restored file differs from f14aefb3ab only by layoutTag and is accepted',()=>{
     const a=bankFromJson(f14Bytes),b=bankFromJson(restoredBytes);
@@ -146,16 +146,16 @@ try {
     accepts(restoredBytes);
   });
   pass('identical edition and re-serialized restored edition are accepted',()=>{accepts(f14Bytes);accepts(edit(restoredBytes,()=>{}));});
-  pass('content changed by one character rejected',()=>rejects(edit(restoredBytes,b=>{b[6].content=b[6].content.slice(0,-1)+(b[6].content.endsWith('?')?'!':'?');})));
-  pass('answer changed rejected',()=>rejects(edit(restoredBytes,b=>{b[6].answer=b[6].answer+'0';})));
-  pass('image changed rejected',()=>rejects(edit(restoredBytes,b=>{b[7].image=b[7].image.replace('q8','q7');})));
-  pass('image attached after the bank changed rejected',()=>rejects(edit(restoredBytes,()=>{},t=>t.replace('q07-solution.svg','q07-solution-x.svg'))));
-  pass('text before the bank changed rejected',()=>rejects(edit(restoredBytes,()=>{},t=>t.replace('window.examTitle = "24_','window.examTitle = "25_'))));
-  pass('question added rejected',()=>rejects(edit(restoredBytes,b=>{b.push(structuredClone(b[23]));})));
-  pass('question removed rejected',()=>rejects(edit(restoredBytes,b=>{b.pop();})));
-  pass('non-layoutTag key added rejected',()=>rejects(edit(restoredBytes,b=>{b[3].extraKey='x';})));
-  pass('non-layoutTag key removed rejected',()=>rejects(edit(restoredBytes,b=>{delete b[3].tags;})));
-  pass('question order swapped rejected',()=>rejects(edit(restoredBytes,b=>{[b[3],b[4]]=[b[4],b[3]];})));
-  pass('non-string layoutTag rejected',()=>rejects(edit(restoredBytes,b=>{b[0].layoutTag=5;})));
+  pass('content changed by one character rejected',()=>rejects(edit(restoredBytes,b=>{b[6].content=b[6].content.slice(0,-1)+(b[6].content.endsWith('?')?'!':'?');}),'LAYOUT_TAG_ONLY'));
+  pass('answer changed rejected',()=>rejects(edit(restoredBytes,b=>{b[6].answer=b[6].answer+'0';}),'LAYOUT_TAG_ONLY'));
+  pass('image changed rejected',()=>rejects(edit(restoredBytes,b=>{b[7].image=b[7].image.replace('q8','q7');}),'LAYOUT_TAG_ONLY'));
+  pass('image attached after the bank changed rejected',()=>rejects(edit(restoredBytes,()=>{},t=>t.replace('q07-solution.svg','q07-solution-x.svg')),'LAYOUT_TAG_ONLY'));
+  pass('text before the bank changed rejected',()=>rejects(edit(restoredBytes,()=>{},t=>t.replace('window.examTitle = "24_','window.examTitle = "25_')),'LAYOUT_TAG_ONLY'));
+  pass('question added rejected',()=>rejects(edit(restoredBytes,b=>{b.push(structuredClone(b[23]));}),'BANK_24'));
+  pass('question removed rejected',()=>rejects(edit(restoredBytes,b=>{b.pop();}),'BANK_24'));
+  pass('non-layoutTag key added rejected',()=>rejects(edit(restoredBytes,b=>{b[3].extraKey='x';}),'LAYOUT_TAG_ONLY'));
+  pass('non-layoutTag key removed rejected',()=>rejects(edit(restoredBytes,b=>{delete b[3].tags;}),'LAYOUT_TAG_ONLY'));
+  pass('question order swapped rejected',()=>rejects(edit(restoredBytes,b=>{[b[3],b[4]]=[b[4],b[3]];}),'LAYOUT_TAG_ONLY'));
+  pass('non-string layoutTag rejected',()=>rejects(edit(restoredBytes,b=>{b[0].layoutTag=5;}),'LAYOUT_TAG_ONLY'));
   console.log(JSON.stringify({schemaVersion:'e015-issued-source-continuity-focused-v2',passed,skippedEnvEperm:skipped,failed:0,ordinaryNativeExecutions:0,newApprovals:0,sourceWrites:0}));
 } finally { for(const r of roots)fs.rmSync(r,{recursive:true,force:true}); }
