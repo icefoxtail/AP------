@@ -294,9 +294,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     else if (!CONFIDENCE.has(conf)) reason = "difficultyConfidence must be high/medium/low";
     else if (!BOUNDARY.has(a.difficultyBoundaryFlag)) reason = "difficultyBoundaryFlag must be NONE/B12/B23/B34/B45/UNKNOWN";
     if (reason) { out.decision = "SKIP_INVALID"; out.reason = reason; counts.SKIP_INVALID++; items.push(out); continue; }
+    // Only a question that still carries a legacy 하/중/상 label gets a compatibility value; without one the field is not written.
+    const existingLevel = existingLevelOf(rec, item);
     const next = {
       difficultyBucket: a.difficultyBucket, difficultyConfidence: conf, difficultyBoundaryFlag: a.difficultyBoundaryFlag,
-      legacyLevelCompatibility: computeLegacyCompat(existingLevelOf(rec, item), a.difficultyBucket)
+      ...(existingLevel ? { legacyLevelCompatibility: computeLegacyCompat(existingLevel, a.difficultyBucket) } : {})
     };
     out.after = next;
     if (verifyProjection) {
