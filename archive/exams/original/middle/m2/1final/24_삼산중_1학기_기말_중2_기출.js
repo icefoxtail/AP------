@@ -553,6 +553,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[핵심]\n평행한 두 직선은 기울기가 같다.\n[풀이]\n구하는 직선을 $y=-\\frac52x+b$라 두고 $(4,-5)$를 대입하면 $-5=-10+b$이므로 $b=5$이다. 따라서 $y=-\\frac52x+5$이고 그림의 ③이다.\n[결론]\n정답은 ③이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q14-problem-visual-v2.svg",
+    "imageScale": 100,
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
