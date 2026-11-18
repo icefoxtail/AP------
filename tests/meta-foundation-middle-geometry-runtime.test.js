@@ -261,11 +261,10 @@ function verifyHistoricalCohorts(index, remember = false) {
   return { unchanged, reviewedTransitions, currentNativeReady, retainedBlocked };
 }
 // Approval kinds an additional runtime row may carry besides FINAL_QA/REVIEW2 (handled by the
-// native reviewed-state path). MAIN_MERGE is the automatic registrar's ordinary path for a
-// merged exam source (auto-register-merged-source.mjs): it records registered_merged_source /
-// review_required and claims no independent review. The allowed kinds are this explicit set;
-// each needs its own paired status and evidence, and any other combination is refused.
-const AUTO_RECEIPT_DIR = ".archive-meta-register/auto/receipts/";
+// native reviewed-state path): an explicit set, anything else (unknown or empty) fails.
+// META_PIPELINE_AUDIT keeps its existing requirements. For MAIN_MERGE only check that the
+// runtime row and the canonical metadata agree on the approval type and the same question.
+// MAIN_MERGE의 상태·영수증 계약은 등록기(auto-register-merged-source.mjs)가 강제한다. 여기서 다시 조이지 않는다(2026-11-18 사용자 결정: 값이 있으면 쓴다, 막는 것은 실제 결함뿐).
 function assertAdditionalRowApproval(metadata, row) {
   const uid = row.questionUid;
   const type = metadata.metadataApprovalType;
@@ -275,20 +274,8 @@ function assertAdditionalRowApproval(metadata, row) {
     assert((metadata.approvalEvidence || []).some((file) => file.endsWith(".source-parity.json")), uid);
     return;
   }
-  assert.strictEqual(metadata.metadataStatus, "registered_merged_source", uid);
-  assert.strictEqual(metadata.reviewStatus, "review_required", uid);
-  assert.strictEqual(metadata.metadataRegistrationStatus, "REGISTERED", uid);
-  assert.strictEqual(metadata.metadataRegistrationBasis, "MAIN_MERGED_EXPLICIT_METADATA", uid);
-  assert.strictEqual(row.metadataApprovalType, "MAIN_MERGE", uid);
-  const receiptPaths = (metadata.registrationEvidence || []).filter((file) => file.startsWith(AUTO_RECEIPT_DIR));
-  assert.strictEqual(receiptPaths.length, 1, "MAIN_MERGE row needs exactly one auto-registrar receipt: " + uid);
-  const receipt = readJson(receiptPaths[0]);
-  assert.strictEqual(receiptPaths[0], AUTO_RECEIPT_DIR + receipt.requestId + ".json", uid);
-  assert.strictEqual(receipt.questionUid, uid);
-  assert.strictEqual(receipt.approvalBasis, "MAIN_MERGED_EXPLICIT_METADATA", uid);
-  assert.strictEqual(receipt.independentReviewClaim, false, uid);
-  assert.strictEqual(receipt.metadataRegistrationStatus, "REGISTERED", uid);
-  assert.strictEqual(metadata.metadataRevision, "archive-main-merge-meta-v1:" + receipt.requestId, uid);
+  assert.strictEqual(metadata.questionUid, uid);
+  assert.strictEqual(row.metadataApprovalType, type, uid);
 }
 
 const preservedCohorts = verifyHistoricalCohorts(activeRuntimeByUid, true);
