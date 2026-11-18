@@ -10,6 +10,14 @@ const { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNa
   readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
   readOriginalReceiptSource, assertOriginalReceiptSourceBytes, assertM2E006TypedProfile } = require("./helpers/middle-geometry-issued-approval.cjs");
 
+// Node rejects a string as the second assert.throws argument (ERR_AMBIGUOUS_ARGUMENT) whenever the thrown
+// message equals that string, and otherwise treats it only as a failure message. The
+// negative cases therefore pass a validator: the refusal must be a real Error (an
+// AssertionError, fs or git refusal), never a TypeError/ReferenceError/SyntaxError/RangeError
+// produced by a broken fixture, and the case label stays the not-thrown failure message.
+const isRefusalError = error => error instanceof Error &&
+  !(error instanceof TypeError || error instanceof ReferenceError || error instanceof SyntaxError || error instanceof RangeError);
+
 async function main() {
 const { loadBank, nativeReviewReceipt, planQuestion, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
 const { loadActiveMetaRegistry, validateActiveMetaFields } = await import("../archive/tools/meta-foundation/active-registry.mjs");
@@ -450,7 +458,7 @@ if (uiRetainedInputs.length) {
     fs.writeFileSync(evidenceFile, originalEvidence);
     issuedObserver.assertKnownInputs(candidate, "restored declared-input closure before unknown-drift negatives");
     const refusesUnknownDependency = label => assert.throws(
-      () => issuedObserver.assertKnownInputs(candidate, label), label);
+      () => issuedObserver.assertKnownInputs(candidate, label), isRefusalError, label);
     const cssPaths = [
       "archive/archive2-reader-controls.css",
       "archive/css/js-archive-theme-override.css"
@@ -531,7 +539,7 @@ for (const input of m2E006Inputs) {
   assert.strictEqual(kept.declaredInputs.selectedSvg.assetPaths.length, 1);
   assert(kept.originalE006Inputs.length > 0);
   const reject = (candidate, retained, proof, label) => {
-    assert.throws(() => assertM2E006TypedProfile(candidate, retained, proof), label);
+    assert.throws(() => assertM2E006TypedProfile(candidate, retained, proof), isRefusalError, label);
     m2E006Negatives++;
   };
   reject({ ...input, source: input.source.replace("/m2/", "/m3/") }, kept, repair, "M3 E006 is not M2 E006");
@@ -595,7 +603,7 @@ const sourceRetainedInputs = retainedInputs.filter(input =>
   retainedApprovals.get(input.current.questionUid).kind === "EXACT_E017_Q11_Q15_SOURCE_PRESERVATION");
 if (sourceRetainedInputs.length) {
   const input = sourceRetainedInputs[0], baseline = retainedApprovals.get(input.current.questionUid);
-  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), isRefusalError, label);
   const changedBank = structuredClone(input.nativeSource.bank);
   changedBank[input.ordinal - 1] = { ...changedBank[input.ordinal - 1], content: "unapproved selected-source fixture" };
   const cases = [
@@ -712,7 +720,7 @@ if (rhsRetainedInputs.length) {
   assert.strictEqual(input.ordinal, 2);
   assert.strictEqual(baseline.proof.currentNativeReady, false);
   assert.strictEqual(baseline.declaredInputs.originalSolutionUi.currentUiContinuity, "NOT_ASSERTED");
-  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+  const rejects = (candidate, label) => assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), isRefusalError, label);
   const changedBank = structuredClone(input.nativeSource.bank);
   changedBank[1] = { ...changedBank[1], content: "unknown selected question fixture" };
   const cases = [
@@ -827,7 +835,7 @@ if (rhsRetainedInputs.length) {
     ];
     for (const [label, overrides] of protocolCases) {
       const observer = createIssuedApprovalObserver({ ...issuedObserverApi, ...overrides });
-      assert.throws(() => observer.assertBlocked(candidate, label), label);
+      assert.throws(() => observer.assertBlocked(candidate, label), isRefusalError, label);
       protocolRejections += 1;
     }
     const restored = issuedObserver.assertKnownInputs(candidate, "restored entire original RHS input closure");
@@ -874,7 +882,7 @@ for (const inputs of originalGroups.values()) {
   const input = inputs.find(value => value.ordinal === 4) || inputs[0];
   const baseline = retainedApprovals.get(input.current.questionUid);
   const refuses = (candidate, label) => {
-    assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), label);
+    assert.throws(() => issuedObserver.assertKnownInputs(candidate, label), isRefusalError, label);
     originalReceiptRejections += 1;
   };
   for (const [label, change] of [
@@ -1001,7 +1009,7 @@ for (const inputs of originalGroups.values()) {
         nativeReviewReceipt: () => null, planQuestion: () => ({ ...basePlan, final: { metadataApprovalType: "FINAL_QA" } }) }]
     ]) {
       const observer = createIssuedApprovalObserver({ ...issuedObserverApi, ...overrides });
-      assert.throws(() => observer.assertBlocked(candidate, label), label);
+      assert.throws(() => observer.assertBlocked(candidate, label), isRefusalError, label);
       originalReceiptRejections += 1;
     }
     const restored = issuedObserver.assertKnownInputs(candidate, "restored complete original receipt closure");

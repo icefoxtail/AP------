@@ -564,6 +564,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
   },
   {
+    // Converter from the carrier branch result tables to DIRECT_JUDGMENT requests; fixture-only, runs when the tool changes.
+    label: 'tests/archive-type-direct-converter.test.mjs',
+    args: ['--test', 'tests/archive-type-direct-converter.test.mjs']
+  },
+  {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },
@@ -665,6 +670,14 @@ const requiredCommands = [
     // Exact public Git evidence and source views; no global data generation.
     args: ['--max-old-space-size=384', 'tests/archive-m3-e052-q5-complete-given.test.mjs'],
     timeout: 180000
+  },
+  {
+    label: 'tests/edition-ledger.test.mjs',
+    args: ['--test', 'tests/edition-ledger.test.mjs']
+  },
+  {
+    label: 'tests/recapture-approved-renders.test.mjs',
+    args: ['--test', 'tests/recapture-approved-renders.test.mjs']
   }
 ];
 
