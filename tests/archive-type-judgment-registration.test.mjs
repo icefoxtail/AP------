@@ -423,3 +423,47 @@ test("the same subject of the other curriculum is accepted only through a succes
   g.put(ALIASES, aliasDoc);
   assert.throws(() => g.run(typeRequest(g)), /curriculum mismatch: uid1 row=2015 judged=2022/);
 });
+
+// ---- pack scope: values may be added, nothing else about a pack -----------------------------------------------------------------
+function packScopeFixture(t) {
+  // The row is a 2015 question; the only binding of PT_A is 2015 too, but the owner pack declares only 2022: the binding is out of scope.
+  const f = fixture(t, { rowMutations: { 1: { curriculum: "2015", curriculumKey: "2015" } } });
+  f.put("archive/data/meta-foundation/runtime/test-pack-v1.json", { packId: "TEST_PACK", packVersion: "1.0.0", runtimeVersion: "TEST_PACK@1.0.0/reviewed-exam-v2", counts: { records: 0 }, records: [] });
+  const bindings = f.read(`${f.base}/bindings.json`);
+  bindings.bindings.push({ curriculum: "2015", standardCourse: COURSE, standardUnitKey: "UNIT_X", subUnitKey: "SUB_X", problemTypeKey: "PT_A", status: "ACTIVE" });
+  f.put(`${f.base}/bindings.json`, bindings);
+  const pack = f.read(`${f.base}/pack.json`);
+  const packChange = after => ({ path: `${f.base}/pack.json`, before: pack, after, evidenceRefs: f.evidenceRefs });
+  const item = f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { scope: { curriculum: "2015", standardCourse: COURSE } });
+  return { f, pack, packChange, item };
+}
+
+test("a binding outside the owner pack's declared scope is refused until the same request widens the pack (values appended only)", t => {
+  const { f, pack, packChange, item } = packScopeFixture(t);
+  assert.throws(() => f.run(f.request([item])), /binding ownerPack scope missing: 2015\/중1 수학\/PT_A/);
+  const req = f.request([item], { registryChanges: [packChange({ ...pack, curricula: [...pack.curricula, "2015"] })] });
+  f.run(req, { write: true });
+  assert.deepEqual(f.read(`${f.base}/pack.json`).curricula, ["2022", "2015"]);
+  assert.equal(f.read(`${f.base}/pack.json`).packVersion, "1.0.1", "the planner bumps the pack version");
+  assert.equal(f.read("archive/data/meta-foundation/runtime/test-pack-v1.json").packVersion, "1.0.1");
+  assert.equal(f.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
+test("pack changes that remove, replace, reorder or touch another field are refused", t => {
+  const { f, pack, packChange, item } = packScopeFixture(t);
+  const attempts = [
+    { ...pack, curricula: [] },
+    { ...pack, curricula: ["2015"] },
+    { ...pack, curricula: ["2015", "2022"] },
+    { ...pack, curricula: ["2022", "2022"] },
+    { ...pack, standardCourses: [COURSE, ""] },
+    { ...pack, curricula: [...pack.curricula, "2015"], canonicalStatus: "RETIRED" },
+    { ...pack, curricula: [...pack.curricula, "2015"], packVersion: "9.9.9" },
+    { ...pack, curricula: [...pack.curricula, "2015"], ownedStandardUnitDomains: ["X"] },
+    { ...pack }
+  ];
+  for (const after of attempts) assert.throws(() => f.run(f.request([item], { registryChanges: [packChange(after)] })), /may only add values to a pack's curricula\/standardCourses/);
+  const before = f.read(`${f.base}/pack.json`);
+  assert.deepEqual(before, pack, "a refused request leaves the pack untouched");
+});

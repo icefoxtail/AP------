@@ -13,6 +13,8 @@
 // Course names: the row's course and the binding's course may differ in spelling or be the same subject of the other curriculum when
 // archive/data/meta-foundation/course-aliases.v1.json says so (never across grades or subjects); the judgment records the relation.
 //
+// A request may also widen a pack's declared scope (append curricula/standardCourses values only) next to its new bindings.
+//
 // What stays strict (the type fields themselves): the PT is ACTIVE; a TPL is ACTIVE and its parent is the chosen PT; an
 // ACTIVE binding of the PT exists for the question's curriculum and course (a new key and its binding may be added by the
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
@@ -73,8 +75,35 @@ function checkDecisionDocument(root, ref, h) {
   if (!fs.readFileSync(full, "utf8").includes(ref.section)) h.fail(`decision section not found in ${ref.document}`);
 }
 
+// A pack document may only GROW its declared scope: values are appended to curricula / standardCourses, nothing is removed,
+// reordered or changed, and no other field differs. (The pack version is bumped by the registry planner as for any pack change.)
+const PACK_FILE = /^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/pack\.json$/;
+const PACK_SCOPE_FIELDS = ["curricula", "standardCourses"];
+export function isPackScopeAddition(change) {
+  if (!PACK_FILE.test(change?.path || "") || change.collection) return false;
+  const { before, after } = change;
+  const plain = v => v && typeof v === "object" && !Array.isArray(v);
+  if (!plain(before) || !plain(after)) return false;
+  const keys = new Set([...Object.keys(before), ...Object.keys(after)]);
+  let added = 0;
+  for (const key of keys) {
+    if (!PACK_SCOPE_FIELDS.includes(key)) { if (JSON.stringify(before[key] ?? null) !== JSON.stringify(after[key] ?? null)) return false; continue; }
+    const a = before[key], b = after[key];
+    if (!Array.isArray(a) || !Array.isArray(b) || b.length < a.length) return false;
+    if (!a.every((value, i) => b[i] === value)) return false;
+    const appended = b.slice(a.length);
+    if (appended.some(v => typeof v !== "string" || !v.trim()) || new Set(b).size !== b.length) return false;
+    added += appended.length;
+  }
+  return added > 0;
+}
+
 function checkRegistryChanges(changes, h) {
   for (const change of changes) {
+    if (PACK_FILE.test(change.path || "")) {
+      if (!isPackScopeAddition(change)) h.fail(`direct judgment may only add values to a pack's curricula/standardCourses: ${change.path}`);
+      continue;
+    }
     const allowed = ADDABLE_REGISTRY.find(([pattern]) => pattern.test(change.path || ""));
     if (!allowed || !allowed[1].has(change.collection) || !change.match || change.before !== null || !change.after || change.after.status !== "ACTIVE")
       h.fail(`direct judgment registryChanges may only add ACTIVE problemTypes/templates/bindings: ${change.path}`);
