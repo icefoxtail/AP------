@@ -1,0 +1,76 @@
+{
+  "qid": 4,
+  "itemFingerprint": "f8982d8d3cec4c36",
+  "solveSteps": [
+    "이차방정식 x^2 + 2mx + 25 = 0 이 중근을 가지려면 좌변이 완전제곱식이어야 한다.",
+    "(2m / 2)^2 = m^2 = 25 이다.",
+    "m = +-5 이다.",
+    "m > 0 이므로 양수 m = 5 이다.",
+    "선지 중 1, 2, 3, 4, 5 에서 답은 ⑤ 5이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "좌변이 완전제곱식이 되어야 하므",
+  "rpmRecordId": "M3-RPM-034",
+  "rpmReason": "2mx의 절반의 제곱이 상수항 25가 되어야 하므로 m^2 = 25에서 m을 구한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+  "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT",
+  "typeReason": "2mx 일차항 계수의 절반의 제곱이 25가 되는 완전제곱식 조건으로 양수 m을 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "2mx의 m에 대해 m^2 = 25에서 양수 m = 5를 1단계로 구하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "이차방정식 $x^2 +",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중근",
+        "quote": "5 = 0$이 중근을 갖도록 하는",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "좌변이 완전제곱식이 되어야 하므",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "quote": "갖도록 하는 양수 $m$의 값은",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "2mx의 절반의 제곱 m^2 = 25에서 m > 0이므로 m = 5를 도출하여 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

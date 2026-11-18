@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "cf89eff7750c70c1",
+  "solveSteps": [
+    "y = -x^2 - 4x + 21 = -(x+2)^2 + 25 이므로 꼭짓점 A는 (-2, 25)이다.",
+    "x = 0일 때 y = 21이므로 y축과의 교점 B는 (0, 21)이다.",
+    "선분 OB를 밑변으로 하면 OB의 길이는 21이고 높이는 점 A의 x좌표의 절댓값 2이다.",
+    "따라서 삼각형 ABO의 넓이는 (1/2) * 21 * 2 = 21이다. 답은 $21$이다."
+  ],
+  "solvedAnswer": "$21$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = -x",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "완전제곱식으로 변형해 꼭짓점 A(-2, 25)와 교점 B(0, 21)로 삼각형 ABO의 넓이 21을 구한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "NONE",
+  "typeReason": "꼭짓점 A(-2, 25)와 y절편 B(0, 21), 원점 O로 이루어진 삼각형 ABO의 넓이 21을 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "완전제곱식 꼭짓점 A(-2, 25)와 절편 B(0, 21)를 찾아 밑변 21, 높이 2로 넓이를 구하는 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "이차함수 $y = -x",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "quote": "1$ 그래프의 꼭짓점을 $\\math",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "{ABO}$의 넓이를 구하는 과정",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "quote": "와 $y$축의 교점을 $\\math",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "꼭짓점 A(-2, 25)와 y축 교점 B(0, 21)에서 밑변 OB = 21, 높이 2로 삼각형 ABO의 넓이 21을 계산하여 $21$로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

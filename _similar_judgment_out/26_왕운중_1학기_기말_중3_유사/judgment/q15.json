@@ -1,0 +1,71 @@
+{
+  "qid": 15,
+  "itemFingerprint": "14615321f9c14c2b",
+  "solveSteps": [
+    "그림의 그래프에서 x축과의 교점이 (-3, 0), (3, 0)이고 y축과의 교점이 (0, -9)이다.",
+    "f(x) = a(x+3)(x-3)으로 두고 점 (0, -9)를 대입하면 f(0) = -9a = -9 이므로 a = 1이다.",
+    "따라서 이차함수의 식은 f(x) = (x+3)(x-3)이다.",
+    "f(4) = (4+3)(4-3) = 7 * 1 = 7이다. 답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그림과 같은 그래프를 나타내는 이",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "프를 나타내는 이차함수의 식을 $y",
+  "rpmRecordId": "M3-RPM-054",
+  "rpmReason": "x축과의 두 교점과 y축 절편 (0, -9)로부터 f(x) = (x+3)(x-3)을 구하고 f(4) = 7을 계산한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+  "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+  "typeReason": "그래프의 세 점 (-3, 0), (3, 0), (0, -9)로부터 f(x) 식을 결정하고 함숫값 f(4)를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "그래프의 세 점으로 f(x)를 완성하고 함숫값 f(4) = 7을 구하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "프를 나타내는 이차함수의 식을 $y",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "quote": "나타내는 이차함수의 식을 $y",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "quote": "$x$축과의 교점이 $(-3,",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "그래프",
+        "quote": "그림과 같은 그래프를 나타내는 이",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "그래프의 세 점 (-3, 0), (3, 0), (0, -9)로 f(x) = (x+3)(x-3)을 결정하고 f(4) = 7을 얻어 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}
