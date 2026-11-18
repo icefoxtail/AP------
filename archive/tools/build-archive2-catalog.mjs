@@ -6,7 +6,9 @@ import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
+import examSourceReader from "../exam-source-reader.js";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
+import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
   buildMixedSourceShard,
   buildMixedUidBucket,
@@ -30,6 +32,11 @@ if (refreshingCanonicalProjection && process.argv.includes("--check"))
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
 const identity = JSON.parse(read("archive/data/question_identity_map.json"));
 const sourceQualityHolds = loadSourceQualityHolds({ root, identity });
+// 문항별 중단원 지정표(정본)에서 카탈로그 필드 reviewedMiddleParentKey를 파생한다. 본문 지문(assignmentFingerprint)이
+// 판정 당시와 같은 문항에만 싣고, 달라진 문항은 싣지 않는다(예전 규칙으로 떨어진다).
+const middleParentAssignments = readMiddleParentAssignments(root);
+const middleToc = loadMiddleToc();
+const reviewedMiddleStats = { assigned: middleParentAssignments ? middleParentAssignments.byUid.size : 0, applied: 0, stale: 0 };
 const basicScopeLinks = JSON.parse(read("archive/data/basic-scope-parent-links.json"));
 const projectionPolicy = JSON.parse(read("archive/data/archive2-canonical-projection-policy.json"));
 const foundationTaxonomy = JSON.parse(read("archive/data/meta-foundation/compiled/taxonomy_registry.json"));
@@ -361,12 +368,7 @@ for (const exam of exams) {
   const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(scope);
   vm.runInContext(source, scope, { filename: file, timeout: 3000 });
-  const bank = [
-    scope.window.questions,
-    scope.window.questionBank,
-    scope.window.questionBank?.questions,
-    scope.window.examData?.questions,
-  ].find(Array.isArray);
+  const bank = examSourceReader.readQuestionArray(scope.window);
   exam.identityTitle = scope.window.examTitle || file.split('/').pop().replace(/\.js$/,'');
   if (!Array.isArray(bank)) throw new Error("source bank unavailable: " + file);
   if (bank.length !== Number(exam.qCount))
@@ -511,6 +513,15 @@ for (const exam of exams) {
       sourceIntegrityStatus: identityStatus === "VERIFIED" ? "VERIFIED" : "UNRESOLVED",
       sourceFingerprint: fingerprint,
       assignmentFingerprint,
+      ...(() => {
+        const applied = middleParentAssignments
+          ? applyAssignment(middleParentAssignments.byUid.get(id?.questionUid || ""), { effectiveBrowseGrade: sourceGradeEvidence.grade, assignmentFingerprint }, middleToc)
+          : null;
+        if (applied?.stale) reviewedMiddleStats.stale += 1;
+        if (!applied?.key) return {};
+        reviewedMiddleStats.applied += 1;
+        return { reviewedMiddleParentKey: applied.key };
+      })(),
       rawQuestionHash: hash(JSON.stringify(question)),
       approvedSourceFingerprint: registrationPending ? "" : (meta?.sourceFingerprint || ""),
       metadataAssignmentEvidence: meta ? {
@@ -1239,5 +1250,6 @@ console.log(JSON.stringify({
   mixedLookupRecordCount: mixedRecordsByUid.size,
   mixedLookupContextBytes: Buffer.byteLength(mixedContextText),
   metaHint: hintStats,
+  reviewedMiddleParent: reviewedMiddleStats,
   ...catalog.health,
 }, null, 2));

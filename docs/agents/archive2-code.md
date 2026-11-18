@@ -32,6 +32,14 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 어떤 수단으로도 안 맞을 때만 마지막 수단으로 그 상자를 전폭 승격하고 `[archive-solution]` 경고를 남긴다. 완전히 없애지 않는 이유: 인라인 `max-width:400px` 이미지가 있는 시험(강남여고 고2 대수, 순천여고 고1 공통수학2)에서 승격이 없으면 가로 넘침 게이트(S12)가 렌더 전체를 막아 해설지가 안 열린다.
 - 명시적 전폭(`solutionImageLayout:'fullwidth'`)은 그대로 유지한다.
 
+## 문항 하나가 칸에 안 맞아도 시험지 전체를 막지 않는다 (2026-11-17)
+
+- 시험지(`archive/exam-render-executor.js` `render`): 글자·그림을 가장 작은 단계(`fit-micro`)로 줄여도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px)은 그 문항만 단계적으로 키워 다시 쪽 나누기를 한다. 순서: ① 같은 열에서 세로로 길게(칸 2개 높이 … 열 전체, `data-ap-fallback="tall-N"`) → ② 한 줄 전체 폭 칸(`row`) → ③ 쪽 전체(`page`, 진짜 특별한 경우만). 맞는 문항의 배치는 그대로이고, 넘치는 문항이 없으면 한 번만 배치한다. readiness 검사·허용값은 건드리지 않는다. 사용자 결정(2026-11-17): 쪽 전체는 특별한 경우만, 세로로 길게가 기본. 이유: 단원별 기출 「원의 성질 › 원과 직선 · 2단계 · 1권」에서 문항 하나(4번·41번)가 8~170px 넘쳐 `PDF readiness failed: content clipped`로 시험지 전체가 출력되지 않았다.
+- 수식 공백(`mjx-stretchy-h > mjx-ext` 안 `mjx-spacer`)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우(향림중 5번)는 칸을 키우지 않고, 그 문항에 한해 `data-ap-mjx-clip`을 달아 `mixed_engine.html` CSS `[data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint }`로 처리한다(잘린 문항만, 폴백 단계보다 먼저 한 번). `overflow:clip/hidden`은 readiness가 잘림으로 보므로 쓰지 않는다. 전역 `contain: paint`는 쓰지 않는다. 이유: 처음에 전역으로 넣었더니 Chrome PDF 인쇄 픽셀 parity(Archive printed pixel parity)가 8건 깨졌다.
+- 조건/보기 상자(`.box`)를 `display:block`으로 바꾸는 CSS는 전역으로 두지 않는다. 페이지 이미지 인쇄(html2canvas)의 `onclone`이 클론 문서에 `ap-h2c-clone` 클래스를 달 때만 적용한다. 이유: 전역 변경은 평소 Chrome PDF·화면의 줄 높이를 바꿔 인쇄 픽셀 parity를 깬다.
+- 해설지(`archive/solution-render-executor.js` `renderSplitSolutionBox`): 첫 상자(문제 다시보기+그림+정답)의 풀이 조각 하나가 기존 `autoCompress`(글자 축소) 뒤에도 칸을 3px 넘게 잘라 먹으면(readiness 기준), 그 조각을 "{번호}. (이어짐)" 라벨이 붙은 다음 칸 이어짐 상자로 보낸다(머리가 칸에 들어갈 때만). 이어짐 라벨은 이 구제 경로로 만든 상자(와 그 뒤 이어지는 상자)에만 붙이고, 기존 경로로 잘 나오던 해설은 main과 DOM·높이가 그대로다. 이유: 같은 1권 해설지 4번이 칸보다 50px 커서 해설지 전체가 열리지 않았고, 처음 구현이 모든 이어짐 상자에 라벨을 달고 구제 전 축소 없이 쪼개 50문항 해설 parity(bodyHash·블록 높이)를 깼다. `mixed_engine.html`의 "상자 안 상자는 한 테두리" CSS도 기존 해설 블록 높이를 23~24px 줄여 같은 parity를 깨므로 이 변경에서 뺐다(필요하면 parity 기준 정정과 함께 따로 한다).
+- 같은 흐름의 `renderComposed`(반 합성·클리닉 출력)와 권위 배치(`layout-authority`)는 이 폴백이 없다. 같은 증상이 나오면 같은 방식으로 옮긴다.
+
 ## 해설·정답 열람은 잠그지 않는다 (2026-11-10 사용자 결정)
 
 - `engine.html`의 `qr=1`·`mode=`는 화면 구성용 값이며 열람 제한 장치가 아니다. 학생이 주소를 바꾸면 해설·정답이 열리지만, 이를 막는 잠금을 추가하지 않는다. 이유: 공부용으로 시험지를 받은 학생이 몇 문제 풀고 바로 확인하는 경우가 있어서다.
@@ -44,6 +52,12 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 해설 그림이 문항 머리(번호·문제·정답)와 첫 해설 조각과 함께 한 칸에 들어가지 않으면, 그림을 머리에서 떼어 **해설 마지막 조각 뒤**로 옮겨 다음 칸·쪽으로 흘린다(`layout-materializer.js`의 `moveSolutionImageToTail`, 문항당 1회). 그래도 넘치면 기존처럼 `MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE`로 실패한다. 이유: 그림이 머리에 묶여 있어 긴 문제+큰 그림 문항이 쪽 나눔에 실패했고, 그 때문에 해설 그림을 게시에서 빼야 했다(2026-11-11 사용자 지적: 해설이 몇 쪽이든 그림을 빼지 않는다).
 - 인쇄도 같은 A4 화면을 쓰므로 쪽 나누기가 함께 바뀐다(그림이 큰 시험은 쪽이 늘 수 있다). 사용자가 쪽 수보다 해설 가독성이 먼저라고 정했다. 화면 전용 CSS로 인쇄만 되돌리려 하지 않는다: 쪽 나누기는 화면에서 `scrollHeight`로 정하고 래스터·네이티브 인쇄가 그 화면을 찍는다.
 - 그림 엔진은 이 실제 페이지로 크기 등급별 표시 크기를 재서 글자 크기를 정한다(`measureArchiveDisplayEnvelope`, `record-visual-browser-evidence.mjs`의 측정은 같은 `applySolutionSvgDisplayWidth`를 불러 쓴다). 새 규칙에서는 모든 등급이 같은 크기로 재져 요청 등급이 기본 글자 크기를 바꾸지 않는다. k·상한을 바꾸면 엔진 측정과 `tests/archive-solution-image.test.js`·`tests/archive-solution-svg-size.test.cjs`를 함께 확인한다.
+
+## 그림 기본 크기는 large와 full 사이 (2026-11-17 사용자 지시)
+
+- 문제 그림 `.q-image-wrap`의 `image-large`·`image-full`(자동 분류가 붙인 것 포함)은 폭 90%·높이 240px, `image-tall`만 폭 90%·높이 280px(2026-11-17 사용자 결정), 모두 가운데 정렬이다. 해설 그림 `.sol-image-wrap`은 SVG 포함 모든 등급이 칸 폭 90%·높이 340px 이내(휴대폰은 `archive2-preview-mobile.css`에서 92%·340px)이다. 위 "해설 SVG는 라벨 크기 기준" 절의 폭 계산(자연 폭 x 0.6)은 그대로이고, 칸 폭·높이 상한이 그 위에서 누른다. 높이 무제한 해설 그림은 없앴다.
+- 크게 보여야 하는 그림만 데이터 필드로 허용한다: 문제 `imageSizeOverride`(`full`=폭 100%·240px, `tall`=폭 100%·320px), 해설 `solutionImageSizeOverride`(`full`=칸 폭 전체·높이 무제한). 클래스 `image-override-full|tall`로 렌더하며, 이 필드는 `print-contract.js`·`render-authority.js`·`render-state-normalizer.js`를 지나간다. 기존 데이터의 `imageSize`·`solutionImageSize` 값은 바꾸지 않았다(원본 JS 해시 고정값). 명시적 `solutionImageLayout: "fullwidth"`는 특별한 경우로 그대로 둔다.
+- 이유: 그림이 단 폭을 꽉 채우고 높이 제한이 없거나(`tall` 320px·해설 `full`) 커서 시험지가 읽기 불편했다.
 
 ## 연도는 항상 최신부터 (2026-11-10 사용자 결정)
 
@@ -255,5 +269,10 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - `archive/note-sheet.html`(+ `note-sheet.css` 화면, `note-sheet-paper.css` 종이, `note-sheet.js`)은 문제 없이 교재·쪽·번호 줄과 풀이 칸만 있는 A4 양식(풀이노트 2문항·4문항, 서술형 풀이노트 2문항, 다시 풀기 4문항)을 뽑는 단독 페이지다. 양식 선택(여러 개)·양식별 장수(1~30)·인쇄 버튼이 위에 있고 아래에 양식마다 한 장씩 축소 미리보기가 나온다. 인쇄할 때는 `#ns-print`에 고른 장수만큼 만들어 `@page { size: A4; margin: 0 }`로 쪽마다 한 장씩 나온다. 문항·카탈로그·저장소를 읽거나 쓰지 않는다. 이유: 선생님이 기존 문제집으로 수업할 때 학생이 풀이를 쓰는 양식을 아카이브에서 바로 뽑기 위해서다.
 - 종이(`.ns-page` 안쪽)의 칸 이름·문구·치수·점 격자는 사용자가 시안으로 확정한 값이라 바꾸지 않는다. 종이 CSS는 인쇄 본문이라 화면 토큰을 쓰지 않고(색 숫자가 있다), 화면 조작 영역 CSS만 토큰을 쓴다. 모든 종이 규칙은 `.ns-page` 아래에 묶여 메뉴·조작 영역으로 새지 않는다.
-- 메뉴 6개는 늘리지 않았고 홈 "빠른 평가" 칸에도 넣지 않았다(평가가 아니라 양식이고, 홈 카드 목록은 `archive2-workspace.js`의 `HOME_PRODUCT_REGISTRY`라 흐름을 건드려야 한다). 지금은 직접 주소(`note-sheet.html`)로 연다. 이어 붙이려면 그 레지스트리에 항목 하나와 홈 칸 제목 판단이 필요하다.
+- 들어가는 길: 메뉴 6개는 늘리지 않았고 홈 "빠른 평가" 칸과 `HOME_PRODUCT_REGISTRY`에도 넣지 않았다(평가가 아니라 양식이다). 대신 홈 맨 아래(휴대폰은 맨 끝)에 "수업 양식" 칸을 두고 `archive2-workspace.js`의 `HOME_FORMS` 목록으로 정적 링크(`<a href="note-sheet.html">`, 클릭 처리 코드·카탈로그 의존 없음)를 그린다. 나중에 다른 인쇄 양식이 생기면 `HOME_FORMS`에 한 줄만 더한다. 이 칸은 선생님 판별 없이 모두에게 보인다(홈의 다른 칸도 판별하지 않고, 빈 양식은 노출될 정보가 없다). 직접 주소로도 열린다.
 - 확인 도구 주의: CDP `Page.printToPDF`를 base64 한 메시지로 받으면 PDF가 약 5MB를 넘을 때 응답이 오지 않아 멈춘 것처럼 보인다(8장 이상). `transferMode: "ReturnAsStream"` + `IO.read`로 받는다. 30장 PDF는 약 13MB다(점 격자 배경 때문에 쪽당 약 0.4~0.8MB).
+
+## 시험지 쪽 안 읽는 순서는 번호 오름차순 (2026-11-18 사용자 결정)
+
+- 한 쪽 안의 읽는 순서(왼쪽 단 위→아래, 오른쪽 단 위→아래)는 항상 문항 번호 오름차순이다. 칸 배정은 **열 우선·단조 증가**: 마지막에 놓은 칸 뒤만 쓰고, 한 단 전체를 쓰는 `subjective-2up`은 통째로 빈 단의 맨 위에만 놓는다(현재 단에 문항이 있으면 다음 단, 오른쪽 단도 못 쓰면 다음 쪽). 뒤 문항은 앞의 빈 칸을 채우지 않으므로 빈 자리와 쪽 수 증가는 감수한다. 코드는 두 벌이고 같은 규칙이다: `archive/layout-authority.js` `planLegacyProductionLayout`의 `findSlot`(원본 열기 쪽 배치 계획)과 `archive/exam-render-executor.js` `buildSlotPages`의 `findSlot`/`commitSlot`(문제지 만들기·단원별 기출·서버 PDF). 특수 칸이 없는 쪽의 번호순 ceil(n/2) 균등 분할은 그대로다. 회귀 테스트: `tests/exam-layout-reading-order.test.js`.
+- 이유: 일반 문항 사이에 서술형이 끼면 행 우선 배정이 서술형 아래 빈 칸을 뒤 문항으로 채워 21→23→22로 읽혔다(동산중 1학기 중간 중3 6쪽 등). 사용자: "그냥 번호 순대로 가게", "쪽수는 전혀 고려 대상이 아니야". `subjective-4up`(데이터 0건)은 쪽당 6·8문항에서 배치가 달라질 수 있다(번호순은 유지).

@@ -247,7 +247,6 @@ window.examData = {
     },
     {
       "id": 17,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q17-solution.svg",
       "solutionImageAlt": "꼭짓점에서 y절편까지 가로 4만큼 갔을 때 높이가 2 감소한다. 주황 보조선은 x=1의 함수값을 찾는 데 쓴다.",
       "solutionImageCaption": "1=16a+3에서 a=−1/8이다. x=1일 때 a+b+c=25a+3=−1/8이고 정답은 ①이다.",
@@ -266,7 +265,6 @@ window.examData = {
     },
     {
       "id": 18,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q18-solution.svg",
       "solutionImageAlt": "x축의 −1, −1/2, 1/2에서 세로 보조선을 그렸다. −1/2일 때는 초록 점이 위쪽이고 나머지 두 주황 점은 아래쪽이다.",
       "solutionImageCaption": "a<0, c>0이고 f(−1)<0이므로 a−b+c<0이다. 이 조건을 말한 ③이 옳다.",
@@ -303,7 +301,6 @@ window.examData = {
     },
     {
       "id": 20,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q20-solution.svg",
       "solutionImageAlt": "두 착지점이 좌우로 같은 거리인 가로 60 cm 위에 주황 꼭짓점이 있다. 가로 50 cm에 해당하는 75 cm와 두 착지점이 같은 포물선에 있다.",
       "solutionImageCaption": "y=−(x−40)(x−80)/4이고 대칭축은 x=60이다. 최고 높이는 100 cm이고 정답은 ③이다.",
@@ -350,7 +347,6 @@ window.examData = {
     },
     {
       "id": 24,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q24-solution.svg",
       "solutionImageAlt": "주황 삼각형 바깥의 직사각형을 세 모서리 삼각형으로 나눴다. 각 색 영역의 넓이를 직사각형 넓이에서 빼면 주황 삼각형이 남는다.",
       "solutionImageCaption": "A=(2,9), C=(5,0)이다. 둘레의 직사각형 넓이는 45이고 바깥 넓이 4, 25/2, 27/2를 빼면 15이다.",

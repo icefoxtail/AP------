@@ -190,33 +190,26 @@
       };
     });
   }
-  // 원본 엔진(engine.html)과 같은 규칙: questions → questionBank → examData(배열 또는 .questions/.problems).
-  // window.examData = {...} 형식 원본은 questionBank 별칭 줄이 없다.
-  function readSourceQuestionArray() {
-    if (Array.isArray(window.questions)) return window.questions;
-    if (Array.isArray(window.questionBank)) return window.questionBank;
-    const examData = window.examData;
-    if (Array.isArray(examData)) return examData;
-    if (Array.isArray(examData?.questions)) return examData.questions;
-    if (Array.isArray(examData?.problems)) return examData.problems;
-    return null;
+  // 문항 배열 찾기 규칙(questions → questionBank → examData)은 exam-source-reader.js 한 곳에 있다.
+  function requireSourceReader() {
+    if (!window.ExamSourceReader) throw new Error('exam-source-reader.js를 불러오지 못했습니다. 새로고침해 다시 시도해 주세요.');
+    return window.ExamSourceReader;
   }
   function loadQuestionFile(sourceFile) {
     if (state.fileCache.has(sourceFile)) return state.fileCache.get(sourceFile);
     const promise = (async () => {
+      const reader = requireSourceReader();
       const candidates = core.getSourceFileCandidates(sourceFile);
       const failures = [];
       for (const candidate of candidates) {
-        delete window.questions;
-        delete window.questionBank;
-        delete window.examData;
+        for (const name of reader.SOURCE_GLOBALS) delete window[name];
         try {
           await loadScript(`exams/${candidate}?v=20260827b`);
         } catch (error) {
           failures.push(`${candidate}: ${error.message || error}`);
           continue;
         }
-        const data = readSourceQuestionArray();
+        const data = reader.readQuestionArray(window);
         if (Array.isArray(data)) return data.map(question => ({ ...question }));
         failures.push(`${candidate}: 문항 배열(questions/questionBank/examData) 없음`);
       }

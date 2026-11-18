@@ -264,7 +264,7 @@ test('geometry pack version dependency preserves the issued REVIEW2 row through 
     /does not match its issued Native receipt/, 'unchanged evidence cannot authorize a changed runtime row');
 });
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, directType = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -336,7 +336,8 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     sourceArchiveFile: 'original/native.js', expectedSourceBlobSha1: git('rev-parse', `HEAD:${SOURCE}`),
     expectedQuestionCount: partial ? 24 : 1, ...(partial ? {scope:'PARTIAL_UIDS'} : {}),
     ...(identityOnly ? {registrationMode:'IDENTITY_FINGERPRINT_ONLY'} : {}),
-    approval: { type: 'FINAL_QA', evidenceRefs: [evidenceRef] },
+    approval: { type: directType ? 'DIRECT_JUDGMENT' : 'FINAL_QA', evidenceRefs: [evidenceRef] },
+    ...(directType ? { fieldScope: 'TYPE_ONLY' } : {}),
     registryChanges: [], items: [{ questionUid: 'fixture', sourceOrdinal: partial ? 5 : 1, evidenceRefs: [evidenceRef] }],
   };
   if (auditPreservation) {
@@ -378,7 +379,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const r = spawnSync(program, args, { cwd: target, encoding: 'utf8' });
       if (r.status !== 0) throw Error(`FIXTURE_GIT:${r.stderr}`); return r.stdout;
     }
-    if (args[0].endsWith('/register-reviewed-exam-meta-source.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/register-reviewed-exam-meta-source.mjs')) {
       const requestPath = args[args.indexOf('--request') + 1];
       assert.equal(requestPath, REQUEST, 'an unchanged other-owner inbox must not run');
       const req = JSON.parse(fs.readFileSync(path.join(target, requestPath), 'utf8'));
@@ -390,7 +391,9 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const basic=['archive-basic-scope-current-source-preservation-v1','archive-basic-native-source-hold-preservation-v1','archive-reviewed-native-basic-parent-v1']
         .includes(req.approval.sourceReview?.schemaVersion);
       const newBasic=req.approval.sourceReview?.schemaVersion==='archive-reviewed-native-basic-parent-v1';
+      const direct = req.approval?.type === 'DIRECT_JUDGMENT';
       const result = { status: 'PASS', requestId: req.requestId, totalQuestions: req.items.length, replay,
+        ...(direct ? { fieldScope: 'TYPE_ONLY', typeApprovals: req.items.length, newMetadataApprovals: 0 } : {}),
         ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
         ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
           ...(phase==='projection'?{consumerLanes:{identityBindings:req.items.length,newMetadataApprovals:0}}:{})}:{}),
@@ -398,7 +401,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         ...(basic?{newMetadataApprovals:newBasic?req.items.length:0,preservedMetadataApprovals:newBasic?0:req.items.length,advancedApprovals:0,metadataValuesChanged:false,expectedQuestionCount:req.expectedQuestionCount,
           ...(newBasic?{newBasicParentApprovals:req.items.length,newDifficultyJudgments:0,newBlindReviews:0,newReview2:0}:{})}:{}),
         plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : basic ? [META,IDENTITY,BASIC_LINKS,RECEIPT].sort() : PLANNED,
-        consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
+        consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : direct ? 'TYPE_FIELDS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
       if (phase === 'write' && !replay) {
         if(identityRepair)write(IDENTITY,json({records:[{questionUid:'fixture',sourceFingerprint:'current'}]}),target);
         else {
@@ -413,7 +416,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       }
       return json(hook.result?.(phase, result, target) || result);
     }
-    if (args[0].endsWith('/register-difficulty5.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/register-difficulty5.mjs')) {
       const requestPath = args[args.indexOf('--request') + 1];
       assert.equal(requestPath, difficultyOnly ? REQUEST : DIFFICULTY_REQUEST);
       const req = JSON.parse(fs.readFileSync(path.join(target, requestPath), 'utf8'));
@@ -437,7 +440,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       }
       return json(hook.difficultyResult?.(phase, result, target) || result);
     }
-    if (args[0].endsWith('/verify-changed-uid-consumer-approval.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/verify-changed-uid-consumer-approval.mjs')) {
       hook.consumer?.(target);
       const files=[REQUEST,...(pairedDifficulty?[DIFFICULTY_REQUEST]:[])];
       const exams=files.map(file=>{const req=JSON.parse(fs.readFileSync(path.join(target,file),'utf8'));
@@ -446,9 +449,11 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         const count=(req.gemini?.items||req.items).length;
         const basic=Boolean(req.approval?.sourceReview);
         const newBasic=req.approval?.sourceReview?.schemaVersion==='archive-reviewed-native-basic-parent-v1';
-        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':newBasic?'basic-parent-registration':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
+        const direct=req.approval?.type==='DIRECT_JUDGMENT';
+        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':direct?'direct-type-judgment':identityRepair?'identity-fingerprint-repair':newBasic?'basic-parent-registration':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
           exam:req.gemini?.requestId||req.examUid||req.sourceArchiveFile,
           sourceFile:'original/native.js',changed:count,checked:count,passed:count,skippedUnchanged:0,
+          ...(direct?{approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:count,typeNotDisplayed:0,expectedQuestionCount:req.expectedQuestionCount}:{}),
           ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}),
           ...(preservation?{approvalCreated:false,newMetadataApprovals:0,preservedMetadataApprovals:1,
             approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}),
@@ -757,7 +762,7 @@ test('inbox-only PR selects its fixed v2 request and leaves unchanged course inb
   assert.equal(f.validate(proof).reusable, true);
   assert.deepEqual(f.snapshot(), before, 'successful local reuse is read-only');
   f.assertShadowsRemoved();
-  const actualWrites = f.calls.filter(c => c.root === f.root && c.args.includes('--write') && c.args[0].endsWith('/register-reviewed-exam-meta-source.mjs'));
+  const actualWrites = f.calls.filter(c => c.root === f.root && c.args.includes('--write') && c.args[0].replaceAll('\\','/').endsWith('/register-reviewed-exam-meta-source.mjs'));
   assert.equal(actualWrites.length, 1, 'verify-local writes only its isolated shadow');
 });
 
@@ -1060,7 +1065,7 @@ function ordinaryOfficialFixture(t, mutate) {
   const headSha = f.git('rev-parse', 'HEAD'), officialResults = [];
   const run = (program, args, root = f.root) => {
     if (program === 'git') return f.run(program, args, root);
-    if (args[0].endsWith('/register-difficulty5.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/register-difficulty5.mjs')) {
       const request = JSON.parse(fs.readFileSync(path.join(root, args[args.indexOf('--request') + 1]), 'utf8'));
       const result = registerDifficulty5({ root, request, write: args.includes('--write'), verifyProjection: args.includes('--verify-projection') });
       officialResults.push(copy(result)); return json(result);
@@ -2779,4 +2784,41 @@ test('served shadow never expands an ordinary request with no explicit family ma
   assert.deepEqual(hydrateFixedNativeServedInputs({ root: f.root, shadow, headSha: f.headSha, requests: f.selected() }), []);
   assert.deepEqual(fs.readdirSync(shadow), []);
   assert.deepEqual(attachNativeRegistryVersionDependencies({ root: '/not-a-checkout', headSha: 'invalid', requests: [] }), []);
+});
+
+test('type-only direct judgment is previewed as its own kind with the registrar and Consumer states it really returns',t=>{
+  const f=fixture(t,{partial:true,directType:true});
+  const selected=f.selected();
+  assert.equal(selected[0].kind,'direct-type-judgment');assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  assert.equal(proof.nativePreview.requests[0].kind,'direct-type-judgment');
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('type-only direct judgment preview refuses a registrar result that is not a verified type-only replay',t=>{
+  const cases=[
+    r=>({...r,consumerSearchStatus:'STATIC_VALUES_VERIFIED'}),r=>({...r,consumerSearchStatus:'NOT_RUN'}),
+    r=>({...r,typeApprovals:2}),r=>({...r,newMetadataApprovals:1}),r=>({...r,fieldScope:undefined}),r=>({...r,replay:false}),
+  ];
+  for(const mutate of cases){
+    const f=fixture(t,{partial:true,directType:true});f.hook.result=(p,r)=>p==='projection'?mutate(r):r;
+    assert.throws(()=>f.produce(),/PROJECTION_NOT_VERIFIED/);
+  }
+});
+
+test('type-only direct judgment preview refuses a Consumer result of another kind or with unaccounted rows',t=>{
+  const mutations=[e=>({...e,kind:'reviewed-exam-v2'}),e=>({...e,directTypeApprovals:0}),e=>({...e,newMetadataApprovals:1}),e=>({...e,approvalCreated:true}),
+    e=>({...e,expectedQuestionCount:1})];
+  for(const mutate of mutations){
+    const f=fixture(t,{partial:true,directType:true});
+    const base={changed:1,checked:1,passed:1,skippedUnchanged:0};
+    f.hook.consumerResult={status:'PASS',counts:base,exams:[mutate({file:REQUEST,kind:'direct-type-judgment',sourceFile:'original/native.js',...base,
+      approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:1,typeNotDisplayed:0,expectedQuestionCount:24})],failures:[],unobservedFields:[],assignmentPending:[]};
+    assert.throws(()=>f.produce(),/CONSUMER_NOT_PASS/);
+  }
+  // a row the catalog does not display is still accounted for (typeNotDisplayed), not a failure
+  const f=fixture(t,{partial:true,directType:true}),base={changed:1,checked:1,passed:1,skippedUnchanged:0};
+  f.hook.consumerResult={status:'PASS',counts:base,exams:[{file:REQUEST,kind:'direct-type-judgment',sourceFile:'original/native.js',...base,
+    approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:0,typeNotDisplayed:1,expectedQuestionCount:24}],failures:[],unobservedFields:[],assignmentPending:[]};
+  assert.equal(f.produce().status,'PASS');
 });
