@@ -231,6 +231,10 @@ const e006Ref = value => Object.fromEntries(E006_REF_KEYS.map(key => [key, value
 const e006BytesRef = value => Object.fromEntries(["path", "gitBlobSha1", "sha256", "bytes"].map(key => [key, value[key]]));
 const e006EvidenceRef = value => ({ path: value.path, sha256: value.sha256 });
 const e006One = (rows, predicate, message) => { const found = (rows || []).filter(predicate); if (found.length !== 1) fail(message); return found[0]; };
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile = p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 const e006Need = (value, message) => { if (!value) fail(message); };
 function e006Document(readRef, ref, argument) {
   const raw = readRef(ref);
@@ -292,7 +296,7 @@ export function validateM2E006ProblemUiEvidence({ technical, visual, technicalRe
       const read = relative => { try { const bytes = readLiveFile(relative); return Buffer.isBuffer(bytes) ? bytes : null; } catch { return null; } };
       try { compareSvgIndexContinuity({ frozenBytes: frozen, liveBytes: read(ref.path), assetRefs: indexAssetRefs, readAsset: read }); }
       catch (error) { if (error instanceof SvgIndexContinuityError) fail(`E006 served SVG index continuity: ${error.code}`); throw error; }
-    } else if (!dynamic.has(ref.path)) readLiveRef(ref);
+    } else if (!dynamic.has(ref.path) && !isRenderEngineFile(ref.path)) readLiveRef(ref);
   }
   const fonts = new Map();
   e006Need(t.fontTransport === "EXACT_CHECKOUT_CHROMIUM_NANUM_MYEONGJO_V31_SUBSETS" && t.studentFontResources.length === 32,

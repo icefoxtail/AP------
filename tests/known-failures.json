@@ -12,10 +12,10 @@
     },
     {
       "file": "tests/meta-foundation-middle-geometry-runtime.test.js",
-      "pattern": "historical reviewed transition: qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9: unknown live renderer change",
+      "pattern": "historical reviewed transition: qid_v1_c44b869578422235c076e993f43ba01014e75d35e3af7a5555d7eaf5104b0dae: unknown source change",
       "repair": "37-②",
-      "cause": "[CI 로그에서 확인한 사실] 첫 실패 문항 qid_v1_204dd322…에서 'unknown live renderer change'(archive/engine.html 바이트 198587, 고정된 핀은 196085)로 멈춘다. [관제 보고, 로그에서 미확인, 첫 실패에서 멈춰 가려짐] 20 왕의중 2학기 기말 중2 영수증 e050이 발급 상태 핀 목록에 없음, 24 왕운중 2학기 기말 중1 7번 MAIN_MERGE 행을 테스트가 받지 않음.",
-      "resolvedWhen": "engine.html 핀이 현재 판본으로 재결속된 뒤에도 실패하면 다음 실패(위 관제 보고 항목)로 서명을 갱신하고, 모두 해결되면 항목 삭제",
+      "cause": "[PR #2446 CI 로그에서 확인한 사실] 렌더러 엔진 고정 비교를 없앤 뒤 첫 실패 문항이 qid_v1_c44b8695…의 'unknown source change'(원본 시험지 판본이 발급 영수증의 관찰 판본 표와 다름)로 바뀌었다. 엔진 고정은 더 이상 원인이 아니다. [관제 보고, 로그에서 미확인, 첫 실패에서 멈춰 가려짐] 20 왕의중 2학기 기말 중2 영수증 e050이 발급 상태 핀 목록에 없음, 24 왕운중 2학기 기말 중1 7번 MAIN_MERGE 행을 테스트가 받지 않음.",
+      "resolvedWhen": "원본 시험지 판본 표(LAYOUT_TAG_EDITION_TABLE)와 발급 영수증이 현재 원본으로 재결속된 뒤에도 실패하면 다음 실패로 서명을 갱신하고, 모두 해결되면 항목 삭제",
       "stopsAtFirstFailure": true
     },
     {
@@ -38,41 +38,6 @@
       "repair": "37-③",
       "cause": "결함 수가 정확히 2개(위 두 FAIL)일 때만 알려진 상태. 세 번째 결함이 생기면 이 줄이 달라져 빨강이 된다.",
       "resolvedWhen": "위 두 항목이 해결되면 함께 삭제"
-    },
-    {
-      "file": "tests/archive-pr-q5-current-ui-shadow.test.mjs",
-      "pattern": "AssertionError \\[ERR_ASSERTION\\]: archive/engine\\.html\\s*\\n(?:#\\s*)?\\d+ !== \\d+",
-      "repair": "37-④",
-      "cause": "현행 UI 결속: 테스트가 고정한 archive/engine.html 바이트 수가 현재 engine.html과 다름(CI 문구 'archive/engine.html 198587 !== 196085'). #2399/#2411 무렵부터 main에서 빨강. 첫 실패에서 멈춘다.",
-      "resolvedWhen": "현행 UI 결속(engine.html 핀)이 현재 engine.html로 재결속되면",
-      "stopsAtFirstFailure": true
-    },
-    {
-      "file": "tests/item-4slot-svg7-current-ui-binding.test.cjs",
-      "testNames": [
-        "sealed current technical dispatch verifies seven retained display bindings and all sixteen original tiles",
-        "changed live font resource bytes fail closed",
-        "changed live selected source bytes fail closed",
-        "changed live selected problem asset bytes fail closed",
-        "the sixteen actual original PNG files must remain present and byte exact",
-        "current selected metadata drift is rejected",
-        "a nonselected item in the same three source banks cannot drift",
-        "current selected identity drift is rejected",
-        "a selected UID duplicated elsewhere in the global identity table is rejected",
-        "a missing source-bank identity row is rejected",
-        "unrelated global metadata additions preserve the complete selected bank rows",
-        "generated files use only their named current-data path while code and assets stay live exact",
-        "unrelated SVG generator header changes do not replace the selected consumed footprint",
-        "a newly consumed selected SVG problem record is rejected",
-        "a newly consumed selected SVG solution fallback record is rejected",
-        "duplicate global SVG lookup keys are rejected even outside the selected seven assets",
-        "executing or malformed SVG wrappers are rejected",
-        "the caller must bind the actual captured selected source and asset refs"
-      ],
-      "pattern": "live bytes",
-      "repair": "37-⑤",
-      "cause": "현행 UI 결속: 34개 중 18개 하위 테스트가 모두 'live bytes'(현재 archive/engine.html 바이트 198587 !== 고정값 196085)로 실패. #2399/#2411 무렵부터 main에서 빨강. 'live bytes'는 어느 live 파일의 길이 불일치든 같은 문구이며, 첫 불일치 뒤는 가려진다.",
-      "resolvedWhen": "현행 UI 결속(engine.html 핀)이 현재 engine.html로 재결속되면"
     }
   ]
 }

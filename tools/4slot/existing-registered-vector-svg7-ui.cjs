@@ -74,6 +74,8 @@ function closedRoles(value,row,technical,manifest,readRef){
     readRef(b.beforeSourceRef);readRef(b.oldAssetRef);
   }
 }
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile=p=>p==='archive/engine.html'||p==='archive/mixed_engine.html'||p==='apmath/wrong_print_engine.html'||/^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){
   if(technical?.schemaVersion===CURRENT_SCHEMA)return verifyCurrentSvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,
     questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture});
@@ -108,7 +110,7 @@ function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCur
     need(ref.commit===COMMIT,'SERVED_COMMIT');readRef(ref);
     if(!dynamic.has(ref.path)){
       if(derivedContinuity&&ref.path===derivedContinuity.indexPath)derivedContinuity.assertCapturedIndexRef(ref);
-      else readLiveRef(ref);
+      else if(!isRenderEngineFile(ref.path))readLiveRef(ref);
     }
   }
   const fontIds=new Set();
@@ -665,7 +667,7 @@ function verifyCurrentSvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,
   for(const ref of raw.servedFiles){
     need(ref.commit===CURRENT_CAPTURE,'CURRENT_SERVED_COMMIT');
     currentPinned(readRef,ref);
-    if(!generated.has(ref.path))currentPinned(readLiveRef,ref);
+    if(!generated.has(ref.path)&&!isRenderEngineFile(ref.path))currentPinned(readLiveRef,ref);
   }
   need(raw.mirroredAssets.length===22&&new Set(raw.mirroredAssets.map(ref=>ref.path)).size===22,'CURRENT_MIRRORED_INVENTORY');
   for(const ref of raw.mirroredAssets){

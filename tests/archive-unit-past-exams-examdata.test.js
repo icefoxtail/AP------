@@ -101,3 +101,53 @@ test('mixer·Archive2Source도 같은 공용 읽기(exam-source-reader.js)를 �
   }
   assert.match(read('unit-past-exams.html'), /exam-source-reader\.js\?v=/, 'unit-past-exams.html: exam-source-reader.js 로드');
 });
+
+function createRestorer(sources) {
+  const start = uiSource.indexOf('function requireSourceReader');
+  const end = uiSource.indexOf('function getQpp()');
+  assert.ok(start > 0 && end > start, 'restorer section must exist');
+  const window = { ExamSourceReader: examSourceReader, Archive2ErrorDetail: null };
+  const context = {
+    window, core, matchQuestionNo: core.matchQuestionNo, parseQuestionNo: core.parseQuestionNo,
+    state: { fileCache: new Map() }, Error, Array, Promise, Number, String, Object, Map,
+    loadScript: async src => {
+      const key = src.replace(/^exams\//, '').replace(/\?.*$/, '');
+      if (!(key in sources)) throw new Error(`불러오기 실패: ${src}`);
+      vm.runInContext(sources[key], context);
+    }
+  };
+  vm.createContext(context);
+  vm.runInContext(`${uiSource.slice(start, end)}\nthis.restorePaperQuestions = restorePaperQuestions;`, context);
+  return { restore: context.restorePaperQuestions };
+}
+
+test('restorePaperQuestions: 문항 id가 Q01, 12, 7 꼴이어도 sourceQuestionNo와 매칭해 원본 문항을 복원한다', async () => {
+  const restorer = createRestorer({
+    'p/q01.js': 'window.examData = { questions: [{ id: "Q01", question: "1번 본문" }, { id: "12", question: "12번 본문" }, { id: 7, question: "7번 본문" }] };'
+  });
+  const paper = {
+    records: [
+      { sourceFile: 'p/q01.js', sourceQuestionNo: 1, sourceOrdinal: 1, mappedUnitKey: 'u1' },
+      { sourceFile: 'p/q01.js', sourceQuestionNo: 12, sourceOrdinal: 2, mappedUnitKey: 'u1' },
+      { sourceFile: 'p/q01.js', sourceQuestionNo: 7, sourceOrdinal: 3, mappedUnitKey: 'u1' },
+    ]
+  };
+  const restored = await restorer.restore(paper);
+  assert.equal(restored.length, 3);
+  assert.equal(restored[0].question, '1번 본문');
+  assert.equal(restored[1].question, '12번 본문');
+  assert.equal(restored[2].question, '7번 본문');
+});
+
+test('restorePaperQuestions: 일치하는 번호가 없으면 다른 순서 문항을 추측하지 않고 예외를 던진다', async () => {
+  const restorer = createRestorer({
+    'p/missing.js': 'window.examData = { questions: [{ id: "Q02", question: "2번 본문" }] };'
+  });
+  const paper = {
+    records: [{ sourceFile: 'p/missing.js', sourceQuestionNo: 1, sourceOrdinal: 1, mappedUnitKey: 'u1' }]
+  };
+  await assert.rejects(
+    () => restorer.restore(paper),
+    /p\/missing\.js의 1번 문항을 찾지 못했습니다/,
+  );
+});

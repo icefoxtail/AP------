@@ -85,6 +85,19 @@
         if (Number.isFinite(activeCapacity) && activeCapacity > 0) return activeCapacity;
         throw new Error('INVALID_MEASURED_SOLUTION_HEIGHT');
     }
+    // 글자·그림을 가장 작게(fit-micro) 해도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px).
+    function clippedExamBoxes(page) {
+        const view = page.ownerDocument?.defaultView || global;
+        const clips = value => value === 'hidden' || value === 'clip';
+        return [...page.querySelectorAll('.q-box')].filter(box => [box, ...box.querySelectorAll('*')].some(element => {
+            const tooTall = element.scrollHeight > element.clientHeight + 3, tooWide = element.scrollWidth > element.clientWidth + 3;
+            if (!tooTall && !tooWide) return false;
+            const style = view.getComputedStyle(element);
+            return (tooWide && clips(style.overflowX)) || (tooTall && clips(style.overflowY));
+        }));
+    }
+    // 2026-11-18: 배치 힌트(layoutTag·wide)를 입구에서 지우므로 모든 문항이 먼저 칸에 놓인다. 칸에 안 들어가 잘리는 문항만 한 단 전체로 올려
+    // 다시 쪽을 나눈다(글자는 fit-micro 10.8px 밑으로 내리지 않음). 한 단 전체로도 잘리면 잘린 채 숨기지 않고 LAYOUT_OVERFLOW로 보고하고 교사 화면에 표시한다.
     async function exam({ area, items, usableHeight, deps }) {
         const document = area.ownerDocument;
         items.forEach(item => assertQuestionImagesReady(item.box, deps));
@@ -92,32 +105,56 @@
             measurements: { raw: item.profile.proxyHeight_raw, tight: item.profile.proxyHeight_tight },
             layoutTag: ['fullwidth', 'subjective-2up', 'subjective-4up'].includes(item.q.layoutTag) ? item.q.layoutTag : '',
             columnSpan: item.q.layoutTag === 'fullwidth' ? 2 : 1 }));
-        const plan = global.APLayoutAuthority.planLegacyProductionLayout({ pageGeometry: { usableHeight, columns: 2, qpp: deps.appState.qpp, blockGap: deps.SE_BLOCK_GAP }, blocks });
         const byId = new Map(blocks.map((block, index) => [block.blockId, items[index].box]));
-        for (const pagePlan of plan.pages) {
-            const page = deps.makePage(area, 'exam', pagePlan.pageNo);
-            if (pagePlan.itemPlacements.some(item => item.columnSpan > 1)) {
-                const wide = document.createElement('div'); wide.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                for (const item of pagePlan.itemPlacements) wide.appendChild(byId.get(item.blockId));
-                page.body.appendChild(wide);
-            } else {
-                const cols = columns(page, document, '1 1 0');
-                const slots = pagePlan.itemPlacements.some(item => item.slotRowStart !== null && item.slotSpanRows > 1);
-                pagePlan.columns.forEach((column, index) => {
-                    if (!slots) { column.items.forEach(item => cols[index].appendChild(byId.get(item.blockId))); return; }
-                    for (let row = 0; row < plan.slotRows;) {
-                        const item = column.items.find(item => item.slotRowStart === row);
-                        if (item) { const node = byId.get(item.blockId); node.style.flex = `${item.slotSpanRows} 1 0`; cols[index].appendChild(node); row += item.slotSpanRows; }
-                        else { const spacer = document.createElement('div'); spacer.style.flex = '1 1 0'; cols[index].appendChild(spacer); row += 1; }
-                    }
-                });
+        const indexByBox = new Map(items.map((item, index) => [item.box, index]));
+        const promoted = new Set();
+        let plan, builtPages, overflow = [];
+        for (let pass = 0; ; pass += 1) {
+            promoted.forEach(index => { blocks[index].layoutTag = 'subjective-2up'; });
+            plan = global.APLayoutAuthority.planLegacyProductionLayout({ pageGeometry: { usableHeight, columns: 2, qpp: deps.appState.qpp, blockGap: deps.SE_BLOCK_GAP }, blocks });
+            builtPages = [];
+            items.forEach(item => {
+                item.box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
+                item.box.querySelectorAll('img').forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
+                item.box.style.fontSize = ''; item.box.style.lineHeight = ''; item.box.style.flex = '';
+            });
+            for (const pagePlan of plan.pages) {
+                const page = deps.makePage(area, 'exam', pagePlan.pageNo);
+                builtPages.push(page);
+                if (pagePlan.itemPlacements.some(item => item.columnSpan > 1)) {
+                    const wide = document.createElement('div'); wide.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
+                    for (const item of pagePlan.itemPlacements) wide.appendChild(byId.get(item.blockId));
+                    page.body.appendChild(wide);
+                } else {
+                    const cols = columns(page, document, '1 1 0');
+                    const slots = pagePlan.itemPlacements.some(item => item.slotRowStart !== null && item.slotSpanRows > 1);
+                    pagePlan.columns.forEach((column, index) => {
+                        if (!slots) { column.items.forEach(item => cols[index].appendChild(byId.get(item.blockId))); return; }
+                        for (let row = 0; row < plan.slotRows;) {
+                            const item = column.items.find(item => item.slotRowStart === row);
+                            if (item) { const node = byId.get(item.blockId); node.style.flex = `${item.slotSpanRows} 1 0`; cols[index].appendChild(node); row += item.slotSpanRows; }
+                            else { const spacer = document.createElement('div'); spacer.style.flex = '1 1 0'; cols[index].appendChild(spacer); row += 1; }
+                        }
+                    });
+                }
+                if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-authority-page', [page]);
+                await deps.raf();
+                const boxes = [...page.querySelectorAll('.q-box')]; boxes.forEach(deps.fitQuestionBox);
+                if (page.body.scrollHeight > usableHeight + deps.SE_PAGE_TOLERANCE) { boxes.forEach(deps.autoCompress); await deps.raf(); }
             }
-            if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-authority-page', [page]);
-            await deps.raf();
-            const boxes = [...page.querySelectorAll('.q-box')]; boxes.forEach(deps.fitQuestionBox);
-            if (page.body.scrollHeight > usableHeight + deps.SE_PAGE_TOLERANCE) { boxes.forEach(deps.autoCompress); await deps.raf(); }
+            const clipped = builtPages.flatMap(clippedExamBoxes).map(box => indexByBox.get(box)).filter(index => index !== undefined);
+            const next = clipped.filter(index => !promoted.has(index));
+            if (next.length && pass < 3) {
+                next.forEach(index => promoted.add(index));
+                builtPages.forEach(page => page.remove());
+                continue;
+            }
+            overflow = clipped.map(index => ({ blockId: blocks[index].blockId, number: (items[index].box.querySelector('.q-num')?.textContent || '').trim() }));
+            clipped.forEach(index => { items[index].box.dataset.layoutOverflow = '1'; });
+            break;
         }
-        deps.onLayoutPlan?.({ mode: 'exam', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan });
+        overflow.forEach(entry => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체로도 잘리는 문항', entry));
+        deps.onLayoutPlan?.({ mode: 'exam', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan, promotedBlocks: [...promoted].map(index => blocks[index].blockId), layoutOverflow: overflow });
         return area;
     }
     function continuationBox(box, document) {
