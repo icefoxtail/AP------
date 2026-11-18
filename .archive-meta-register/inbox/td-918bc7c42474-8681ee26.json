@@ -1,0 +1,538 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-918bc7c42474-8681ee26",
+  "examUid": "25_제일고_2학기_중간_고2_확률과통계_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/high/h2/2mid/25_제일고_2학기_중간_고2_확률과통계_유사.js",
+  "expectedSourceBlobSha1": "74b8876ef4c101a5ad093c8d9ecaa0016535f530",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+        "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_33aaa48bde82ecd04a85a5fcd5fc4d4362d714e229f193c40368ef0de144c8bf",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+      },
+      "rationale": "모든 가능한 값의 확률 합3a+1/5=1로 상수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "82b1a36dbf1c29b8b9d95e48573447c9a2bb937d39516b7abf9eb564dad22797",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_01d7c6034c11d9994447a3afd265ebacc2c59376d4187a20dcdccbea019c5eae",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "rationale": "분포표의 값과 확률을 각각 곱하여 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "8f7fa93328e7e44a6ead9c60586276ab55a9e871e0c99d01a0c46ca03e23cdf5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bc1d27ef166de418ed08213376b2a5b67af491a21c6348428add10f568edda55",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "이항분포의 평균np와 분산np(1-p)를 계산해 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "a45d0d69b83f6cb0f123848c811235010efcf12af943e072ba0c4b6b1e34181e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f703afc185290f6ede3f0edcab08b2e1ba2db11c194448a4feacc8846bcd06dc",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION"
+      },
+      "rationale": "구간양끝을 -1과2로 표준화하고 중앙확률을 양쪽에서 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "8f708937927c5976305294b10753a37a59704e31103b1ebea4541b10711e1959",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b54909aace42215daa3b88cf87d00cd01452d18e37728c71622de5f8e7665bad",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+      },
+      "rationale": "누적조건과 전체확률로 a,b를 정하고 이차부등식의 해에 해당하는3과5의 확률을 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "4147c6fcc66f9cc80daa1a60cc4d236d2702ecc44092378b9089d6b310bc50e1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3efe46e7ab5c15ce1b2e41d8dd7692e40fd307bdd5bd56a30b29c20ba1a7ca72",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY"
+      },
+      "rationale": "밀도그래프 전체 삼각형넓이를1로 놓고 요청구간 사다리꼴넓이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "05bd0319ad4cbb61ba37a949d790c15555e79f28b3116245d2d45f4d38f98f3a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ac4146e8840694705beee63a249a5cca04747907c2a130187e806dc62d8dd9af",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "두 정규변수를 표준화하면 공통상한2에서 같은 확률이므로 하한도-1로 일치시킨다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "5bf8dc7a50e0f2d67daf5ebc8b3bbef848380e1b40fb63d229fa1ded5cdadbad",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f08bfb0705c5fed16f22db03b17b65716409a2d3b3578944c0e9e54f071b29ae",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "rationale": "물리적 구슬쌍10개의 곱 평균을 구하고 기댓값의 선형성을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "c7cc338c36afbbe59d577d58ea4c6a1044d319e13039185bf2a8b89d2af11288",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7650e9ae74ea683f3c9549a4068162ebadcd22ba7d4d2dce7890c76b00965195",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "직사각형의 폭과 높이 분포로 넓이의 첫째둘째 모멘트를 구하고 변환분산에81을 곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "70f078a265a3b11aaa7e13dd9fee53665770c2fd1fff42faaf87e8f627ef292a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_eb8109bae1946078b898522cc70cb5360e1f75cb496a88c5c4060f5f252e516b",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PROBABILITY"
+      },
+      "rationale": "성공확률1/3인24회 이항분포의 1회성공과0회성공 확률비를 약분한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1a6a2d0cecc9a62e0e8589bb51f5299fb9af115d76008605aac3b6def536a884",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_22d2d2d5a3ae2f7def83d56ecbb739d5858736a01d7c3839ba8965c89524be06",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "정규곡선의 중심좌표 순서로 평균을, 폭과 높이로 표준편차를 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "04c12bb2d1eed2e98ec1ad48b3a14b1e7d4d417e3aa4d85d8230ce87618f668a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5777788d0b8122cce76cfcbb89510cbbcba4f287d50b93d1240f8172e6a5360e",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+      },
+      "rationale": "이항분포의 평균50과 표준편차5로 정규근사하여 표준구간[-1,2]의 확률을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "cf3449af11232d220a09b94e12832174ff3e0975a609987385630574cb325689",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0b50808157a6d900f4adc5ea784829e6b7e74c357990fac3b4a4305f682dcfb3",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "모든 k의 좌우꼬리 대칭조건에서 평균22를 구한 뒤 대칭구간을 표준화한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "763a98b3659157d60d277e18772ab2555490ecb188e8fd03b37c3db42620b7f0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ef8febb76887ce462aa00f9d5b20d81f044a6209c3e127537aca0dbd07cf4e9c",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "주장옆 공격수0,1,2의 배열수를 세어 분포를 만들고 E(X²)-E(X)²의 양의 제곱근을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e4827121a38439da4fa83a739fcbcd1764a7654ea27f3664f39a6410ce290aa1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_74861721b0ae2da5508f0f5e6a8cc7de590d5c96cb1ab426e4a37fe94b76b0db",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "rationale": "같은확률의 끝카드 쌍10개에 대한 곱의 평균을 구하고 일차변환의 기댓값을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "8fbd21a8df2ccffb0bdf97645c9dd6e63afaec282d4593281e6f4c1e72a174a1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f0c5865a6035a20ff55f264328a0c725cb533b0f8bb14e4ebf3ab9af57303e73",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "상위30%를 평균부터 경계까지20%로 바꾸고 z=0.52를 원래 몸무게로 환산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "a50370e0b79a43494aefda76037628d55878f7775f35d78cfa8d0c210a5bfb0a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_31fac5be25e7dde2cad319a888def46621955988ae09ffb846fc068eadae3bc7",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+      },
+      "rationale": "192회 이항분포를 평균144,표준편차6인 정규분포로 근사하고 누적0.8413의 경계를 역산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f2693b90cf7e31ebc65d15483e8f8fcabd6d0d0746255a78628fc7769cc030c4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0a2c6ba08cd6b46c16613690e8b0a03be307fa5a5d6225e36febc9f02652f887",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION"
+      },
+      "rationale": "교점존재를 판별식 W(W+4)≥0으로 바꾸고 두 꼬리구간 확률을 표준화하여 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "605043c7de38a46ce758fc22d27c53188d4a23cbe4e205f302e804ffecefd172",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3f633ebff13760aeeb969077c75e9460fb2ceae02cad83df0b93ce2f4a25b587",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "rationale": "한 시행에서 두 종류 앞면수가 같을 확률3/8로 기대점수를 구한 후24회 합의 선형성을 쓴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "02d759361eedf8c78adcbfcf654b3eed9b12fa4ca3ea01ece0fc9d3418e8b1f8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4ceeca4f157411a4e89ae7e0e29f598bd3a3350e1213a18069b3ae778901fed8",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "평균18과 분산6을 연립하여 성공확률2/3을 정하고 공수와 반복횟수를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "07abb74a289ae530cbd3ced4b7c383131d88f6053ebed2be801c9df313034baa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a45ab0e209d17add3c4ed6adb5cd42ea5d604f499309bc821f490a0f9630b5de",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+      },
+      "rationale": "두값 이동의 독립400회 합의 평균400과 분산1600을 정해 정규근사하고 경계440을 표준화한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "4f753236ef5224e3ba5fd24ddaaca7a982e09e62796dcb449cb60156ae16336e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-918bc7c42474-8681ee26.type-ledger.json",
+          "sha256": "304ab0e739baffa775b73ba91039857666a3df6db7e8614ff7ecac3e2a677cd5"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e1bc953043f6-dd1c229a",
+  "sourceArchiveFile": "similar/high/h1/2final/25_순천고_2학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_df69c15ea53bc138826dca5a33b34de6dbe4a850b59acdab1bd28843732b0c58",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+      "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+      "step": "x+1=0만변수값에따라참거짓이달라조건,나머지는진릿값확정명제.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ecc524ac85152d1c377d1b9842dae94da263d06164165075308fa95771e7b2be",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+      "step": "역q→p는근−2,4가모두x≤a에포함되어야하므로a≥4,최소4.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f90dd2fb2f10fdadddc11ee25a26f5d0919301af937e43ac1387f2a4e40f6f34",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+      "step": "세진수비음수교집합−1≤x≤7의정수9개.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c94e5f7c0b46f41cdc6d29169105a38da0e4722d769ffd0a8d3eaee65f97dff0",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+      "step": "대응도1→5→8과3→6을읽어합14.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3ea0d38f0d05861b8cd322a3750c32f825102216416bf332ce395caa3ef2b25",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "step": "진수조건x≥1,근호비음수로y≤2이며끝점달성,합3.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a0357de43750576f7fcf8ab50067e0dc811fbb0672b94b2731d9f61c2a4068de",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "step": "둘째치역(−∞,5],첫째는a>0일때(b,∞). 겹침·공백없으려면b5,a양의정수최소1, b−a최대4.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1c70d3a03e62f0980ca29db53328aa8534c222cc8c71fb14bbeca87c4ecbc2c3",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+      "step": "그래프c→b→d를역추적해k=c,다른보기두번값a,c,b,e로배제.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0b4122551ef27e1647778cd045254242b6e0e47eb7a7cc6ff77da824b8d4937a",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+      "step": "점근선x2,y1과x절편3을동시에맞추어y=(x−3)/(x−2).",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_937dd4cb0571fbc491bf0e0d4066319c7f262ea1edff0e534d3dae1b98475cc1",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "step": "증가함수의고정점근7±√(49−2a)가서로다르고모두6이상,24≤a<24.5의자연수24,근합14더해38.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4289be0492a87a239eacd87eae17b75213523bd32a23ed7bf60fbe4359aaea82",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTRADICTION_PROOF",
+      "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+      "step": "두짝수제곱가정으로24a=4(p+q)(p−q),곱6a. 두인수같은홀짝으로곱홀수또는4배수이나6a≡2mod4모순,24·4−6·4=72.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e8713dc4ab7e73131ee44f84e3ce638b1f58640ac25aa9e1aebbca1768bb75b",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "step": "t=x−1>0으로식1/(t+4/t),AMGM분모≥4(동치(t−2)²≥0). t2에서최대1/4,a3,합4.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    }
+  ]
+}

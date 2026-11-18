@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e9c1ac121cc2-1ff4256e",
+  "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_575a12dc75884035bb5b799d87026ee985f3334f141c67791c4ca8c03d0b1a8c",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "한 학생을 고정하여 회전 중복을 없애고 나머지5명을 배열한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_006ac16005ec9ff5f863f1523b460156a78c1af67a53dea1666f7bae49b97d5d",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "빨간 공 두 개를 뽑는 사건의 여사건을 이용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3b66265c1bfab2b9498eb62031379d4c8d0a1d2212975fb4978d58605dc0d6a0",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "세 색을 하나씩 뽑는 확률을1에서 빼 같은 색 쌍의 존재확률을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c865adbf66e1078ec150ed352de03330fcbc546a103b4fd796fc8b3893aa1384",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "조합 대칭으로 아래첨자를2로 통일하고 하키스틱 항등식을 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3c026a973151baf117fa9e7f4af50d5d0652d3d4384370d7f03ef500cf515a05",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "step": "서로 다른 여섯 면색칠6!을 세 변 길이가 다른 직육면체의 회전4가지로 나눈다.",
+      "note": "필요 TPL: 입체 면색칠의 회전 동치; 서로 다른 색의 면 배정에서 입체를 보존하는 회전의 수를 구해 동치 배열을 묶는다. 원순열의 단일 원형 회전과 다르다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9618234b76f5f417b0bce7ff4d3365f2017ace3b06e600d04ebe2e012630a8a8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "전개식의 x5계수들을 모은 조합합을 하키스틱 항등식으로 하나의 조합으로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d387617486bfd63239227fdd5eedc062bde1244019e255a917f8ab643dedfb3",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "끝자리 짝수를 고정한 반복 선택에서33이 연속하는 두 사건을 포함배제로 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a9cce5528161b65241d622ad5402d4994d82740fca324914e1e93bb7228cedf3",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "원소1~5의 소속을 세 집합 중 하나로 배정하고 공집합·같은 집합 조건을 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ed8cae4761a6b916f63ea50073a86da140dfea2a306b5297a223efa7750d050",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "학생별 세 나라 반복 선택에서 필수 나라가 누락되는 경우를 포함배제로 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22650ae5fe0c3be2b68efb1185f08439b1bc7663ce5658ebc253e6569535b68b",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+      "step": "양끝 홀수 및 가운데 두 값의 같은 홀짝을 비감소 함수값 조건과 결합해 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

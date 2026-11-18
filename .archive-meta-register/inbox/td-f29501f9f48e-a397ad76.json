@@ -1,0 +1,513 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-f29501f9f48e-a397ad76",
+  "examUid": "25_순천고_2학기_중간_고1_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+  "expectedSourceBlobSha1": "5c7b081a57e102c144f10083180e5a6700a36c35",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+        "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_0042147989f9a09e4d9df99b848d82d3c9cce69f7fd6f23bf50344b801ac325b",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_SET_CARDINALITY_DIRECT"
+      },
+      "rationale": "조건을24의 양의 약수로 해석해 원소를 센다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "fe2a18bb63a06ab36361e3e442e100aa6cb8b1bb85652dd819d9cbae1b01bea9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5a2b3bbb3cd6a08f4cc1ce68834bffc0e189d198b2941b4a93d9189b9e260069",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+        "templateKey": "TPL_NESTED_SET_RELATION"
+      },
+      "rationale": "공집합과 공집합을 원소로 갖는 집합을 구분한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "6e74f98468f5441e0953eda881cdba1ef198cb9d79032d3fdabc7513cead058a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_33944de318d1ae8c0b58acde0c987394df79b9065d27db24775c5d052666ba0b",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+        "templateKey": "TPL_FIGURE_PARALLELOGRAM"
+      },
+      "rationale": "대각선이 서로 이등분하는 조건으로 대변 꼭짓점을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "ace3150c63a3a098424a251bbbaa5f36be08254bab692df8c3e7a3f764964e1a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fb44ec4cf49fafe613032490836e53a983e1455198bd9e6d8450a19d66fdda0a",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION",
+        "templateKey": "TPL_OPERATION_WITH_PARAMETER"
+      },
+      "rationale": "교집합 단일원소 조건으로 a를 정해 차집합을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "f63622ece480ed8d641f83488a60e9e58c748f3ca041d20154bce5ad44e3cfbe",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_127ad8e2e1f7ca81f5fd916f6006b3f0af0964d5dc1f111b290882ee650b532c",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_PROPER_OR_NONEMPTY_SUBSET_COUNT"
+      },
+      "rationale": "전체 부분집합에서 공집합과 자기자신을 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "65e4a5eca443876bae208604b4ce3a09057745715f0d9d73859f626342123bb9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_89f8d36b8d987a33828e3df0c6e30df8fa695b3e1c79a2042548710a887ff3e7",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_DISTANCE_PARALLEL_LINES"
+      },
+      "rationale": "평행한 직선의 상수항 차이로 거리를 표현한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "2fa6d50503dd4fa105157b4cee3010a4f3e0075af6bc0857a88aba2432d9b957",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c7a9b369faf7a5f9cd988cc46cbe85ad9837feac2a7ee8440e4901a2b1f264fc",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_LINE_POSITION"
+      },
+      "rationale": "원의 중심과 직선 사이 거리보다 반지름이 커야 한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "c725b20164787fd53bcb3a278a3c523b5f191bcaa8de96819d0596f2654416ba",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6e3f9b66971dc9a4a41d40021dc63e98afb1ea6f7cac755762eb7fa87e64df8b",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_RELATION"
+      },
+      "rationale": "평행이동 뒤 직선의 수직기울기와 교점 조건을 적용한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "76b4194e334ad1fe5dee8a707e225a5e809c294ae3537bc914e8b7b5eeafa53e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_437b66158b569b8e64f7f541f8f581a3706ef435ec6b5d0a9324fef2e4db9554",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "rationale": "중심직선거리와 반지름으로 현길이를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "f97667f93a5c54a5396d250503f5d7b5f02a5d18e9282e461bd3c980e456b259",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7b699f362f339945354b20eb5bb8733c6ae3e728f73de09716e8570800cee5dd",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_VENN_TO_EXPRESSION"
+      },
+      "rationale": "그림의 A 안이면서 B 또는 C인 영역을 집합식으로 나타낸다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "9252f328ac090a40770b2070b544b4e86c22401db4c077606c8efd12a673a89e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d37627f426d099dfd1de73a5d5d5ec57a190175bb3b02ceb4b27892f410faba3",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE"
+      },
+      "rationale": "거리제곱의 분수식을 완전제곱으로 비교해 상한과 등호조건을 정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "3fa171d157090c9fc2dab1c0de0b1bb4aaa588cd266948a4ff23da08d504727b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3afbb1efb8724a8c6c9300372ce75e16d5efcb1cef43d967d6520185da5abdb4",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT"
+      },
+      "rationale": "차집합을 여집합으로 바꾸고 드모르간·분배법칙으로 명제를 확인한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "d343dfc6573ae732d3393efb41f0ca3203e9964874bf836d97c3377af99b7e8b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bac21135afb7e959843fc2f6f4d70ba9381ef8baf6ac5ac9472d0d033eb67cd5",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_INCLUSION",
+        "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE"
+      },
+      "rationale": "배수집합의 포함을 n의 약수배수 조건으로 바꾼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "4614b0dc6a3a4d57416e509c02766247ee7e7cd40554d6f29640c28aae2b77eb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9b3be5fe711f0852d1bc1b0eecf7b0bc27fc87c7c392c20c78001e0e66417483",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY"
+      },
+      "rationale": "이동한 중심에서 두 직선까지 거리가 반지름과 같도록 한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "6da799dfd60b8670e052389120a61ae7e41baac92b86f6a5788819e6e8c859f0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6fc97b7de14439dc5436c1886c9271f20dcde5d4755d1d7dd8190a839e1792db",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TWO_CIRCLES",
+        "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH"
+      },
+      "rationale": "직각삼각형 외접원을 구하고 두 원의 공통현 길이를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "9b40d2b4ba4d4f8c5e60c56e1dfb69528582c13cda797770861f2cc76108d2b4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_52dcb3b3fb93c354b659d982dbdf436a1c7cdb50748fd9b8922a2322b63cbbcc",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT"
+      },
+      "rationale": "무게중심에서 A를 복원한 뒤 BC까지 거리를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "2d1538eadb3b2d4e14b7f5d9a512b3ada127c40a262fd0fc6e64488bd2593bfe",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0bbe9a09d73ff0857293ed61907f5edf91de5b345115b45b4dcfcf0b9014ccb6",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_RELATION"
+      },
+      "rationale": "직선대입 교점방정식의 근곱을 원점에서 두 교점까지 거리곱으로 바꾼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "9083a1cc9f10f357d1a893e9c085b4e5dd82b41d961cd09c281cf5ffb4ecfd36",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_412c8087265c2fc6ce31c1eaca82da4a9246b6efd429b18650f5610799fa075e",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN"
+      },
+      "rationale": "B원소를 필수로 고정하고 A-B의 자유선택에서 A를 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "a5c91d7aa34a6e2ca7ebe09778c268401f8ea59a5e54fd42441cb1cb0e8ef383",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7e5266d01a0f4b5fdcfab62fb657a1bf95fcc13691b9011af8bb640575820193",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PERPENDICULAR_FOOT_ALTITUDE",
+        "templateKey": "TPL_PERPENDICULAR_FOOT_COORDINATE"
+      },
+      "rationale": "주어진 직선과 수직인 점통과 직선을 연립해 수선의 발을 정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "688d797f41f50d10ed257edc2ad64e73aa5f7ba9ab3347a4c5847c039e153d93",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_369f4ee27e4ce52b6c9572d0e37d16fcc855df33008fba04954b239d24f11649",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_EXTREMUM",
+        "templateKey": "TPL_UNION_RANGE"
+      },
+      "rationale": "교집합의 가능한 범위를 구해 합집합의 최대최소로 전환한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "f220a71f0f449e2c885e378dfaf52b619447519d826d5ebf5aa15f27425c8dd9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+          "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+        }
+      ]
+    }
+  ]
+}

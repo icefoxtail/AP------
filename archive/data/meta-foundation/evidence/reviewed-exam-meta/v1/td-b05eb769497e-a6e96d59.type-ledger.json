@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b05eb769497e-a6e96d59",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_적분_대단원학습평가_고2/비상_미적분1_적분_대단원학습평가_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0fd76a05b28e2f632232b2b34c62cee5e1527255b686aa5f12a39a67a9211da9",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+      "step": "부정적분 관계식 양변을 미분해 x²-2f(x)=6x+4를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_787478756b1f303d8573f79a5af3635726c5676cef8ede5cc9361fa430f95dac",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "피적분식의 차 4를 적분하고 f(1)=-3으로 상수를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bad600a63fc6db5a5c42108a7f12bc5680c5b452f42ff00fdbafee6faa417ddc",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "step": "정적분을 -8+2a로 계산하여 0과 같게 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e8db7e2e6c9eb17f5b3352d5f976ef996c692e94a0d03a5188f1f698c48a7227",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "step": "피적분함수를 |x-1|로 약분하고 x=1에서 구간을 나누어 0~1의 1-x와 1~2의 x-1을 적분하면 1/2+1/2=1이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_db04999ee56155795b1ff84f8024cab61f76a206c331dd38b68fb5eed8540fc9",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+      "step": "미적분 기본정리로 f′=(x-1)(x-2)를 얻어 극대점의 적분값을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_77fe9598fc087034e5da6407549583671e8177b7df1aaf4a820502d7097883c1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "step": "전체 넓이 2/3과 부분 넓이 2/(3√a)의 이등분 조건을 세운다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e96ac01edc5712c6f1454b0f934682e44b4766c91bc34f7bf60e269cbb179c03",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "step": "교점 1,m 사이의 넓이 (m-1)³/6=9/2를 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a8aed5ac1333987a54fbc5476c98fc73a768702b37b3c8d455c68f30aeed890",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_MOTION_CONDITION_PARAMETER",
+      "step": "속도 그래프의 부호 있는 사다리꼴 넓이 합을 위치 -5/2와 맞춘다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a97af18186ca35cd675429cd29b5159411abf15a1dff627ad5a5cd43a1e23ed3",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "step": "정지 시각 t=5까지 음이 아닌 속도를 정적분한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa9af478a3d050ea5a1e01147fa44ea09769450ad5af1d4b6d2e2b43eec652f5",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+      "step": "함수방정식을 차분극한으로 바꿔 f′(x)=3x+5를 얻고 f(0)=0을 사용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d13843b36cd708fc51263e651439d9cb03bcc6414ccdaa02c1f4cf345f697954",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "합과 곱의 도함수를 적분해 초기값으로 상수를 정하고 인수분해로 두 함수를 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da4c421ba6455d49f6d406002bdc80a48fc036aaf05b73426654f9570c4306a5",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "step": "고정구간 적분을 a로 놓아 a=2+2a를 풀고 함숫값과 적분을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3e22648e5c901a152df5d1969337805251ec40df2f87506931014c47b9cce08c",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "step": "적분 관계식을 미분하여 x²f′=x⁴-4x³를 얻고 함수를 복원하여 넓이를 적분한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3324e0c8d54f88275960b2ef48eed291e4837d9c6bbe3c301a27e66a6bb7044c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "step": "속도 최대 시각의 변위와 두 번째 방향전환 시각까지의 절댓값 적분을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    }
+  ]
+}

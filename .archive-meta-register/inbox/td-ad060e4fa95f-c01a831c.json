@@ -1,0 +1,560 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-ad060e4fa95f-c01a831c",
+  "examUid": "17_팔마중_2학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "840993336973dd133f0c7d57f50eeeb67210a046",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+        "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_01fb3734794d9202a09827f90028a49e9a338e5028d850c015df16f5215e5747",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "rationale": "직각삼각형의 두예각은 여각이므로 cosA=sinB가 항상성립.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "0557d9de5fd412380a325f981b12f5242a2b7afcc9e43e3dae01a29633a246a9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_646d134318dfcbad5d4fac3cc8248b05eb3ef9394ed9e6a20db3aaa83b852540",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "rationale": "tanA=sinA/cosA를 대입약분해 주어진sinA√3/3.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "7765a4f4fdd200aba2de4aef8811179b55b86a6af38b98ff17c4beb884405327",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bed52308300c162f01b9798cab2a56319b4e15e9a1cc8bbacc8561e153cef3ab",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "rationale": "특수각값과 합차공식으로 각등식 대조,탄젠트45=1이므로 두번째곱0.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "1792e1f83de5500e0f61bc58913522e637750fd06948b04114c53d20709c67a4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fd93539379b5daf38abc26e88655978c8261f442f1cb970febc5a3ee936c7848",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "60도 삼각비로 빗변6과 높이3√3을 복원하고 접선등길이로2r=3√3+3-6.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "5c1dd771222feea32d44049e0f182e854c5e301a6d6c681b9a5b0cf58660823e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_32d80ccc393407a97f00f5c4e1c3289f940e6e2f45d91b7d6f05176ba04e3b29",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      },
+      "rationale": "sin25=높이10/비탈길로 길이25m를 구한 뒤 속력2로 나눠12.5초.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "78e71709b41ed19ea5eda7156fad8356d48d6ffa4f8d75d68c4b80b2f3acd3dd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a998d255f40173bdf5331da96342bdb31f1e1c4b1ea10749fdf7a2dded3fb15a",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "이등변밑각75로 꼭지각30을 구하고 높이12sin30을 적용해 넓이36.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "0eaa09051f6a3fbcdb8512df96c256a0caa903bce0ecab5cb61fdd03d414bdb0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3b030767698d7fb02cdb247e5ea667212ec94829e36bd0614cb059de722d8dd2",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "평행사변형 예각30의 높이4sin30=2와 밑변√3의 곱2√3.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "dcb67177848c7541d4a3edbeb78150757d3c8bf2422ea5d829d2431469cb92b2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8bb2f239647c4d59629ada96b908d8981d67f8f7c6056351d7eef3907c14dca8",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "교차대각선각60을 구해 두 삼각형 높이합BDsin60과 밑변AC를 이용하여 넓이12√3.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "5a3f8c5424cd344e68ce2d88404f1069a30688d874096305d4733a5d6e9ea6fc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d6d5d616e92f2a7a7a77fed886c32f4c10859ad2b39ba14e5189faa0cf77e325",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_CIRCLE_TANGENT"
+      },
+      "rationale": "접선길이 변수로 꼭짓점B의 두접선합=8+10-7=11,새 접선DE를 치환해 작은삼각형둘레11.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "3d385f23ec3f7dcf979e9a402f4edb75c5fe625251c669411cec6e5ab9d147e5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4aa357812b77d773a5baaf06f120a3472905a0f808aa861fe99e0e6277ea3cdf",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      },
+      "rationale": "두접선삼각형합동으로 중심각120을60씩 분할,접선반지름직각에서 PA=5tan60=5√3.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "f57d4b0a5077bc4c183ffd0e57d17ecb517e873770fd8688e050a880faa03f47",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3e9e0f668d99cddcdc61e1a3e9be740b124f6ad8bee66b9b75549d37932b5a10",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "rationale": "반지름이등변각과 원주각으로 외부삼각형식 x+(x+50)/2+65=180을 세워x60,나머지중심각70에서밑각55.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "2a1fca50cb3e8606ec321dc01a37883365f5ee18f1fd10f509143a0cb90c9d6d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3dbf6ef42664980017dfcca2694fef5d8d7c868db05f7fa394ddaca196f894c4",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      },
+      "rationale": "원주각55와20의 두배중심각합150과 반지름2로 호합5π/3.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "eb372d04e48d09c57306b71cf9e5206948a4f3e699a423eded90721c64e8d1cc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_07815895182638dfa3e329c3ebe2333b2511095ee575a57713c1bd8707233e5b",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+      },
+      "rationale": "원주각24와28이 보는 인접호 중심각48과56을 합해104.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "e80de8877d744da9b8d8be58176aa34a2312bcccc385b499ff34e5a2add879a4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6648df1c835b6582e18885fceea1fa4ed9a48c6b09b371953a8fa3320eaa8979",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "rationale": "세 원주각으로 호를 복원해 BC반원,내접외각x130과 교차현삼각형각y60의합190.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "bfabeb88b324503eca3a1ce30f9591fcff3855fdeae8e232aeddacab26b75d7f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4a6221e20913b382b1359a16eac474056843795659df21a232b938749078cd52",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC"
+      },
+      "rationale": "교차점 보각·삼각형내각을 복원한 뒤 같은현을 보는 각 일치의 역으로 다섯 공원점 조건을 판정.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "692aba932293a5c7285cb3097afded231c4c695851134aada6123bda7169fd25",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3c477e3ec6cd1aaa35b41997e6c7d98649835f9edb15c71f1a7a213429fa3e2e",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+      },
+      "rationale": "원주각·맞꼭지각 AA닮음으로(4+x)(4-x)=3·2를 세워 중심거리√10.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "95cb71252887b2b19a21af24d381441f70941afb86b31b2d7369f74647827ccd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2d56e395257d5e5a17e20325527a63c9adde9bddfe4aafdf1a545f129ea8e47b",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+      },
+      "rationale": "두 할선의 원주각 AA닮음으로3·8=2(2+지름),지름10에서원넓이25π.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "2551fcdc702c0ff4c9832d003717551f0fbac836a7c1c5f9ef4960484ad2d728",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2d5342fbf6186e1c623aa7e1ab6cf5ed2a78cf49914915d61a29a6b812712d44",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+      },
+      "rationale": "접선현각과 주어진각으로 APT 이등변을 얻어 AP6,PB16;접선할선곱으로 PT4√6.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "be3caf1e39bf44612909be5cb37b0a668839f6a3d5e4c2320c1d9432917bb71f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d079d324aacab9d7ae8deecf4a33d021e96b5c2a96cf5e749efa791bfa943733",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      },
+      "rationale": "그림AC8과 내각75·45에서 수선각45·30,AH4√3을 구하고 AB=AH/sin45=4√6.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "2fecad87b8993f58c7e8d60439f1ca16c760dffc646f3d55a4a62c3ce3db5098",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_CIRCLE_TANGENT"
+      },
+      "rationale": "외접사각형 대변합으로 BC8,CE4를 빼BE4,직각접점 정사각형으로 반지름4와 원넓이16π.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "1ee7ef0564d2c44b5364e004ccf50c8e9db2d84280d17f25858a8b6775f5aeea",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0b4c6cd7e33eb32a8cd80104ba4b346e19cfae92bdf6950a93b579b3d3cc63d3",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "rationale": "내접대각합으로 x45,같은호원주각으로 D각90과 내접외각y90,합135.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "1586af5402b9baadc27e5128f8a886ba7449900f9fca6bacbe0a1038878e4065",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0583e4498c7b8f091dd890bccedb102d44c29b2acb3041dcd9c1a585fad27410",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "rationale": "접선반지름직각에서 POT60,일직선으로 BOT120,반지름이등변밑각30과 접선직각차로 BTC60.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "33e3df4e73e9413b624d848ecb771b15593bffff1fa52f9a5de307b03cdb2354",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ad060e4fa95f-c01a831c.type-ledger.json",
+          "sha256": "e60a7d605643a17a7bf768e9d07bf50b6fda67f2cfa0de204f3473b75f7645dd"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-817d955a2260-4ddfbfb0",
+  "sourceArchiveFile": "original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fe5d49b0dadd9e739562b8676fbd4c73b49f0fa1b0c865ced42f8e4cffba638f",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "step": "높이3sin30=1.5를 밑변√13과 곱해 삼각형 넓이3√13/4.",
+      "note": "OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f45f5c706fd75c0455381cddeda12299d443326eb77b6cacae822b573dfed7b",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "기간 증가에 몸무게 감소하는 우하향 분포를 선택.",
+      "note": "새 PT 제안: 산점도의 상관 방향과 실생활 대응. 정의: 두 변량의 동반 증가·감소 경향을 판단하여 양·음·무상관을 구분하고 실생활 관계와 연결한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_40227ed5039590f2deb29ae32f5fa8aa54ed414b7eb4179c69efe591e9b63af0",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "우상향3과 우하향4만 일정한 증가·감소 경향이 있어 상관관계를 갖는다.",
+      "note": "새 PT 제안: 산점도와 상관관계 개념 판정. 정의: 산점도 점들의 분포에서 양·음의 일정한 변화 경향과 무상관을 구분하여 상관관계의 존재나 관련 진술을 판단한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ba54188ed94e0e03289ffc7ce4b3a9459bfc02157aee9dc493d0f04fd81e400c",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "머리둘레와 TV시청시간은 일정한 동반 변화 경향이 없는 쌍.",
+      "note": "새 PT 제안: 산점도의 상관 방향과 실생활 대응. 정의: 두 변량의 동반 증가·감소 경향을 판단하여 양·음·무상관을 구분하고 실생활 관계와 연결한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_NOT_IN_SOURCE, PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_229b30647de2da7c189569e6cce4a221730659dda82b11188e6715dd36b3d781",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "두 점수80이상인 우상단4점을 전체20으로 나누어20%.",
+      "note": "새 PT 제안: 산점도에서 조건을 만족하는 자료 비율. 정의: 산점도 좌표를 읽어 두 변량의 크기·차 또는 경계 조건을 만족하는 점을 세고 전체에 대한 비율을 구한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e8cacc18082642c4046428cce7c7d0ce9341ccfc2fb69edb7bbc33584db51d7c",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "반지름 이등변 밑각55로 중심각70, 반원에서90·70을 빼20, 호비70:20에 길이5를 대응35/2.",
+      "note": "OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6da45452565a185143af3045939699f56e923d679651ef8859eaedf1ea344265",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "전반 우상향, y=x 위아래 점의 존재, 동일 x에서 다른 y를 실제 좌표로 근거 삼아 설명.",
+      "note": "새 PT 제안: 산점도의 분포를 근거로 사실 서술. 정의: 산점도의 방향과 구체적인 좌표·동일 좌표축 값의 비교를 근거로 관찰 가능한 여러 사실을 서술하고 인과 추론과 구별한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

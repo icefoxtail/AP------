@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e072e2b6897a-9d5519a7",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학2/비상_공통수학2_명제_중단원학습점검_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_73a36e44fed69217dac3b2c2d21196df6073571bd2e99268a8a4fc0431938c5a",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+      "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+      "step": "참거짓이 명확한 문장인지 먼저 구별하고 직사각형과 삼각형의 성질로 진릿값을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc76eae9fabe38e11ef8d715243f670cf66821017f9dbeae7ebb929c783fb915",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+      "step": "전체집합 1부터10에서 각 조건을 만족하는 원소만 열거한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_abbb7ec8616be1124b2e536f89d763abc115c6258ae2835aa4546fefa4e03f16",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_TRANSFORM",
+      "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_CONSTRUCTION",
+      "step": "가정과 결론을 교환하거나 각각 부정하여 역·대우를 구성하고 반례로 진릿값을 판단한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5bdc898c77c004980699b4b69351b784b01ba52db2b320e041a121dcb6ffaa10",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "step": "두 조건 사이 함의 방향을 각각 확인하여 필요조건과 충분조건을 구별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05353683c5b33111064fee6c550493fa3a2830ce5e1e93730e8091e0b4e87b2a",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
+      "step": "그림의 R⊂P∩Q와 P,Q의 겹치지 않는 부분을 함의·대우의 진리집합 포함관계로 읽는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb42408e604442d6f025d2e8789d47480630e7906ee0b80453de274fdce805e5",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_QUANTIFIER_NEGATION_NEGATE",
+      "step": "전칭과 존재 양화사를 서로 바꾸고 부등식을 부정한 뒤 제곱식의 비음수성으로 진릿값을 정한다.",
+      "note": "새 TPL 제안: 전칭·존재 혼합 부정과 진릿값: 여러 양화명제의 양화사와 서술부를 각각 부정한 뒤 진릿값을 판단한다. / check-ledger: TPL_NOT_ACTIVE(null template; 선택 PT는 ACTIVE)",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c899090a5af7975052a85fa1295132a89344a7edbf26f50a38752d99e68d867",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
+      "step": "결론을 x<8로 정리하고 (-∞,2k]가 그 안에 포함되도록 2k<8을 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_694dc53a184900dba5944386c4a96b56481259c4bb31eb82859e0f9d197da042",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+      "step": "필요조건의 방향 Q⊂P를 적용해 열린구간 (-5,6)이 x<a에 포함될 조건 a≥6을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_29d4420f676f8f5a8ee11f10af503d9aa3b48b43bb00fb0884129b43fc7aa0a7",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+      "step": "세 진리집합의 P⊂Q⊂R 관계를 각 필요·충분조건의 함의 방향과 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_78a500a790090d2a30fb5f3cce99baef0612a788bf8b39512f2a9a594c3dccb3",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+      "step": "양변 제곱 차를 2(",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_687799a77c94bf0b1cd52bddf075d60010e7587db11c92d9cae73de2c6ea0c94",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM",
+      "step": "대각선 조건 x²+y²=50에서 (x-y)²≥0으로 2xy≤50과 등호조건 x=y를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    }
+  ]
+}
