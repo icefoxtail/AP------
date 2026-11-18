@@ -33,7 +33,7 @@ Use with [README_CURRENT.md](README_CURRENT.md). 이 문서는 공통 품질·�
 
 ## 4. R1 자신의 정밀 Meta 전 qid 조회·수리 의무
 
-- 지금 R1이 검수한 **전 reviewable qid**의 source+독립 풀이+실제 최종 student solution으로 `primaryMethod/decisiveStep`를 새로 판정, standardUnitKey/subUnitKey+교과 parent·연도 커리큘럼, RPM L1/L2/L3/L4 current + 허용 lower-only prerequisite, grade crosswalk, GLOBAL ACTIVE canonical owner/aliases/PT/TPL, exact binding, Condition/CrossConcept/IntegrationPattern의 실제 사용/부적용, `level 하|중|상`과 독립 `difficultyBucket 1..5`의 학생 난도 근거를 일일이 확인한다.
+- 지금 R1이 검수한 **전 reviewable qid**의 source+독립 풀이+실제 최종 student solution으로 `primaryMethod/decisiveStep`를 새로 판정, standardUnitKey/subUnitKey+교과 parent·연도 커리큘럼, RPM L1/L2/L3/L4 current + 허용 lower-only prerequisite, grade crosswalk, GLOBAL ACTIVE canonical owner/aliases/PT/TPL, exact binding, Condition/CrossConcept/IntegrationPattern의 실제 사용/부적용, `difficultyBucket 1..5`의 학생 난도 근거만(새 문항에 `level` 하|중|상은 쓰지 않음. [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)) 일일이 확인한다.
 - 문항별 `META_LOOKUP_EVIDENCE`에 source/solution SHA, 실제 읽은 Git authority path+blob SHA, RPM semantic L3/L4, crosswalk→ACTIVE→binding 결과와 최종 key, old/new metadata, validation/status를 **실제 수리와 함께** 기록. CREATED에서 누락했다고 R2로 넘기기만 하지 않는다. canonical exact ACTIVE 매핑이 존재하는데 null인 PT/TPL·잘못된 parent를 직접 수정. 없는 키를 임의 발명·generated-only extension을 원기출에 오용하거나 무근거 전 qid NONE/[]·CANONICAL_UNVERIFIED로 채우지 않는다.
 - 정본/원본의 실제 독해·exhaustive lookup/수리 시도 후에도 해결 안 된 **특정 qid/필드**만 `EVIDENCE_DEBT`와 attemptedAction/authoritySha/why/firstMissingStep/originalOwner=R1/recoveryExecutor를 기록. 할 수 있는 조회 자체를 생략하거나 전 qid 무검토면 `OWNER_INCOMPLETE` 및 R1_QUALITY_PASS=false.
 
