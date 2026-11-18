@@ -569,6 +569,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-type-direct-converter.test.mjs']
   },
   {
+    // Course-name alias data (spelling groups and 2015/2022 successor groups) used by the type-judgment lane and its converter.
+    label: 'tests/archive-course-aliases.test.mjs',
+    args: ['--test', 'tests/archive-course-aliases.test.mjs']
+  },
+  {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },

@@ -2808,7 +2808,8 @@ test('type-only direct judgment preview refuses a registrar result that is not a
 
 test('type-only direct judgment preview refuses a Consumer result of another kind or with unaccounted rows',t=>{
   const mutations=[e=>({...e,kind:'reviewed-exam-v2'}),e=>({...e,directTypeApprovals:0}),e=>({...e,newMetadataApprovals:1}),e=>({...e,approvalCreated:true}),
-    e=>({...e,expectedQuestionCount:1})];
+    e=>({...e,expectedQuestionCount:1}),e=>({...e,directTypeApprovals:2,typeNotDisplayed:-1}),e=>({...e,directTypeApprovals:1.5,typeNotDisplayed:-0.5}),e=>({...e,typeNotDisplayed:undefined}),
+    e=>({...e,directTypeApprovals:'1',typeNotDisplayed:0})];
   for(const mutate of mutations){
     const f=fixture(t,{partial:true,directType:true});
     const base={changed:1,checked:1,passed:1,skippedUnchanged:0};
@@ -2820,5 +2821,7 @@ test('type-only direct judgment preview refuses a Consumer result of another kin
   const f=fixture(t,{partial:true,directType:true}),base={changed:1,checked:1,passed:1,skippedUnchanged:0};
   f.hook.consumerResult={status:'PASS',counts:base,exams:[{file:REQUEST,kind:'direct-type-judgment',sourceFile:'original/native.js',...base,
     approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:0,typeNotDisplayed:1,expectedQuestionCount:24}],failures:[],unobservedFields:[],assignmentPending:[]};
-  assert.equal(f.produce().status,'PASS');
+  const out=f.produce();
+  assert.equal(out.status,'PASS');
+  assert.deepEqual(out.nativePreview.checks.find(c=>c.id==='native-consumer').directTypeJudgments,{requests:1,newMetadataApprovals:0,directTypeApprovals:0,typeNotDisplayed:1});
 });

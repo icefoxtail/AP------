@@ -10,6 +10,11 @@
 // reviewStatus, tags, fingerprints and the identity map are neither read for approval nor written. No runtime row is
 // created. The receipt keeps the registrar's v2 receipt schema (registry lineage reads it) with fieldScope TYPE_ONLY.
 //
+// Course names: the row's course and the binding's course may differ in spelling or be the same subject of the other curriculum when
+// archive/data/meta-foundation/course-aliases.v1.json says so (never across grades or subjects); the judgment records the relation.
+//
+// A request may also widen a pack's declared scope (append curricula/standardCourses values only) next to its new bindings.
+//
 // What stays strict (the type fields themselves): the PT is ACTIVE; a TPL is ACTIVE and its parent is the chosen PT; an
 // ACTIVE binding of the PT exists for the question's curriculum and course (a new key and its binding may be added by the
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
@@ -17,6 +22,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
+import { loadCourseAliases } from "./course-aliases.mjs";
 
 export const DIRECT_JUDGMENT = "DIRECT_JUDGMENT";
 export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
@@ -69,8 +75,35 @@ function checkDecisionDocument(root, ref, h) {
   if (!fs.readFileSync(full, "utf8").includes(ref.section)) h.fail(`decision section not found in ${ref.document}`);
 }
 
+// A pack document may only GROW its declared scope: values are appended to curricula / standardCourses, nothing is removed,
+// reordered or changed, and no other field differs. (The pack version is bumped by the registry planner as for any pack change.)
+const PACK_FILE = /^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/pack\.json$/;
+const PACK_SCOPE_FIELDS = ["curricula", "standardCourses"];
+export function isPackScopeAddition(change) {
+  if (!PACK_FILE.test(change?.path || "") || change.collection) return false;
+  const { before, after } = change;
+  const plain = v => v && typeof v === "object" && !Array.isArray(v);
+  if (!plain(before) || !plain(after)) return false;
+  const keys = new Set([...Object.keys(before), ...Object.keys(after)]);
+  let added = 0;
+  for (const key of keys) {
+    if (!PACK_SCOPE_FIELDS.includes(key)) { if (JSON.stringify(before[key] ?? null) !== JSON.stringify(after[key] ?? null)) return false; continue; }
+    const a = before[key], b = after[key];
+    if (!Array.isArray(a) || !Array.isArray(b) || b.length < a.length) return false;
+    if (!a.every((value, i) => b[i] === value)) return false;
+    const appended = b.slice(a.length);
+    if (appended.some(v => typeof v !== "string" || !v.trim()) || new Set(b).size !== b.length) return false;
+    added += appended.length;
+  }
+  return added > 0;
+}
+
 function checkRegistryChanges(changes, h) {
   for (const change of changes) {
+    if (PACK_FILE.test(change.path || "")) {
+      if (!isPackScopeAddition(change)) h.fail(`direct judgment may only add values to a pack's curricula/standardCourses: ${change.path}`);
+      continue;
+    }
     const allowed = ADDABLE_REGISTRY.find(([pattern]) => pattern.test(change.path || ""));
     if (!allowed || !allowed[1].has(change.collection) || !change.match || change.before !== null || !change.after || change.after.status !== "ACTIVE")
       h.fail(`direct judgment registryChanges may only add ACTIVE problemTypes/templates/bindings: ${change.path}`);
@@ -78,7 +111,7 @@ function checkRegistryChanges(changes, h) {
 }
 
 // PT/TPL/binding checks that depend only on the registry and the question's curriculum/course (never on its unit).
-function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h) {
+function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliases) {
   const pt = tables.pt.get(problemTypeKey);
   if (!pt || pt.status !== "ACTIVE") h.fail(`inactive/missing PT: ${problemTypeKey}`);
   if (templateKey) {
@@ -86,8 +119,10 @@ function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h) {
     if (!tpl || tpl.status !== "ACTIVE") h.fail(`inactive/missing TPL: ${templateKey}`);
     if (tpl.parentProblemTypeKey !== problemTypeKey) h.fail(`TPL parent mismatch: ${templateKey}`);
   }
+  // A binding course that is another spelling of the judged scope course is the same course (successors are a row-vs-scope matter only).
+  const sameCourse = (a, b) => ["same", "alias"].includes(aliases.relation(a, b));
   const bindings = [...tables.bindings.values()].filter(b => b.curriculum === scope.curriculum &&
-    compact(b.standardCourse) === compact(scope.standardCourse) && b.problemTypeKey === problemTypeKey);
+    sameCourse(b.standardCourse, scope.standardCourse) && b.problemTypeKey === problemTypeKey);
   const inScope = bindings.some(b => {
     const pack = tables.packs.get(b.ownerPack || pt.ownerPack);
     return pack && pack.meta.curricula.includes(scope.curriculum) && pack.meta.standardCourses.includes(b.standardCourse);
@@ -103,6 +138,7 @@ const typeSlice = row => ({ questionUid: row.questionUid, sourceArchiveFile: row
 export function registerTypeJudgment(ctx) {
   const { root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, h } = ctx;
   const { fail: failWith, eq, safePath, json, digest } = h;
+  const aliases = loadCourseAliases(root);
   assertRequestShape(req, h);
   const registryChanges = req.registryChanges || [];
   checkRegistryChanges(registryChanges, h);
@@ -124,7 +160,7 @@ export function registerTypeJudgment(ctx) {
       const patch = patches.get(record.questionUid);
       const current = rows.find(row => row.questionUid === record.questionUid);
       if (!patch || !current || !eq(typeSlice(current), record)) failWith(`registered type metadata drift: ${record.questionUid}`);
-      checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: record.typeApproval.scope }, h);
+      checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: record.typeApproval.scope }, h, aliases);
     }
     return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, fieldScope: FIELD_SCOPE_TYPE_ONLY, replay: true,
       plannedPaths: [], typeApprovals: patches.size, newMetadataApprovals: 0,
@@ -167,15 +203,18 @@ export function registerTypeJudgment(ctx) {
     }
     // A held taxonomy row is not shown by the catalog, so a type registered on it could never be verified in the consumer.
     if (current.foundationTaxonomyStatus === "HOLD") failWith(`row has a foundation taxonomy HOLD; its type cannot be displayed: ${uid}`);
-    // Rows whose other fields carry a receipt-backed approval keep that receipt replayable; they use the full v2 path.
-    if (current.metadataApprovalType) failWith(`row carries a receipt-backed ${current.metadataApprovalType} approval; register its type through the full v2 path: ${uid}`);
+    // A receipt on the row's OTHER fields stays replayable: receiptRecordMatchesRow (reviewed-exam-registration-v2.mjs) leaves the type fields
+    // out of that comparison when the receipt recorded no type. A row whose type is already approved was refused above.
     const scope = patch.scope;
     if (!scope || !["2015", "2022"].includes(scope.curriculum) || !textOf(scope.standardCourse)) failWith(`scope.curriculum (2015|2022) and scope.standardCourse required: ${uid}`);
     const rowCurriculum = textOf(current.curriculum) || textOf(current.curriculumKey);
-    if (rowCurriculum && rowCurriculum !== scope.curriculum) failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
     const rowCourse = textOf(current.standardCourse) || textOf(current.courseKey);
-    if (rowCourse && compact(rowCourse) !== compact(scope.standardCourse)) failWith(`course mismatch: ${uid} row=${rowCourse} judged=${scope.standardCourse}`);
-    checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h);
+    // Row course vs judged course: equal, another spelling of it, or (when the alias data says so) the same subject of the other curriculum.
+    const courseRelation = rowCourse ? aliases.relation(rowCourse, scope.standardCourse) : "";
+    if (rowCourse && !courseRelation) failWith(`course mismatch: ${uid} row=${rowCourse} judged=${scope.standardCourse}`);
+    // A successor course lives in the other curriculum, so the row's own curriculum is not compared with the binding's then.
+    if (rowCurriculum && rowCurriculum !== scope.curriculum && courseRelation !== "successor") failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
+    checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliases);
     // Source binding: the judgment was made on the current question text; the row's own fingerprints are tagged, not rewritten.
     const fp = h.sourceFingerprints(q), judged = patch.judgedFingerprints;
     if (judged?.sourceFingerprint !== fp.sourceFingerprint || judged?.contentFingerprint !== fp.contentFingerprint) failWith(`judged fingerprints differ from the current source: ${uid}`);
@@ -191,7 +230,8 @@ export function registerTypeJudgment(ctx) {
       }
     const typeApproval = { schemaVersion: TYPE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
-      scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request" },
+      scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
+        ...(courseRelation === "alias" || courseRelation === "successor" ? { rowCourse, courseRelation } : {}) },
       judgedSourceFingerprint: fp.sourceFingerprint, judgedContentFingerprint: fp.contentFingerprint, rowBinding,
       resultSource: req.approval.resultSource, decisionRef: req.approval.decisionRef, receipt: receiptPath,
       ...(hasEmbedded ? { examEmbeddedType: { ...embedded, matchesRegistered: embedded.problemTypeKey === problemTypeKey && (empty(embedded.templateKey) || embedded.templateKey === templateKey) } } : {}),
