@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7e8ed5e59646-e6cdce21",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_유리함수와무리함수_중단원마무리_고1/미래엔_공통수학2_유리함수와무리함수_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_42b6ac5f9da49839a86670b4ee595e44c6692e9eaf2fb3822986b90f35681d41",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "step": "첫 식을 통분하고 둘째 식은 나눗셈을 역수 곱셈으로 바꾼 뒤 인수분해·약분한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da9111198ab6d2f2fdf28eaf3c6b5bae55931e9d5b5f1b2040b998e3cbf37159",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "step": "각 식을 4/(x-1)-3과 -5/(x+4)+2로 써서 쌍곡선의 중심과 점근선을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_822c0a29153d3dea7f0cebc5c22c550f84ad07cae66b78d860cf8e38380a1c27",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "step": "첫 식은 합차공식으로, 둘째 식은 분모의 켤레를 곱하여 근호식을 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_35eb332c7fb0d7bd636c8e67f9b5946081f06cf732e0b8f5de8143cb857032ba",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "step": "근호 안의 비음성과 근호값의 부호로 정의역·치역을 정하고 시작점과 증가·감소 방향을 그린다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0de73c90a40c4b63901037dc8216deb7c0112e3cb8403adaf0db0ab27bdfbcae",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "두 식을 4/(x+3)-1과 4/(x+2)-3으로 고쳐 이동량 m=1,n=-2를 읽는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7fdee12c937a44b14c9d428ea07e0ab2b6c6e68b342e1e4b6202d3a897e67a2b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+      "step": "그림의 점근선 x=-2,y=-3에서 c=2,a=-3을 읽고 점 (1,-2)를 대입해 b=-3을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d96b62fe57f3430a619faaa93040b61573a819a58b230a320553cf207d4f738e",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "비상수 분수함수가 자기 역함수이려면 변환행렬의 대각합 a+1=0이고 f(3)=1에서 b=7이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_32c2db88054cd1c6d8657c936d5237bf95629522f453d2f0c3675188c4af0c57",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "이동한 식 y=√(a(x+2))+5에 (-1,8)을 대입해 √a=3을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8d8abdbc7479d3a90894b708f07cc63dea15cfee41900996bcd77d55b60ad82c",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+      "step": "그림의 시작점 (4,2)와 y절편 -2에서 c=2,b=16,a=-4를 결정하고 x=-5를 대입한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c0f1fbc7d94c5568459e04b780597a4aca1b423887d13a95e45e241ecff84af",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "f⁻¹(x)=a+(2a+b)/(x-2)와 f(x-4)-4의 점근선을 비교해 a=-2를 얻고 잔여분자 2a+b=3에서 b=7을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b5af2c89c72e40c8f3ace96bf41feb58292495e678cbeea401e6eff71d648a7c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "step": "증가함수와 역함수의 교점을 y=x에서 찾고 t=√(x-5)≥0으로 바꾼 t²-t+5-k=0이 서로 다른 두 비음근을 갖게 한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    }
+  ]
+}

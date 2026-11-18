@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f74ce3985e93-a777e2ce",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_함수의극한_중단원학습점검_고2/비상_미적분1_함수의극한_중단원학습점검_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d95943da8232b480cbe744e61d3d905a4ba73e650a6bf3bff3be45992f57a7b0",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": null,
+      "step": "역수항은 0으로 수렴하고 양의 제곱 분모가 0으로 가면 양의 무한대로 발산한다.",
+      "note": "새 TPL 제안: 복합 표준 극한 계산: 여러 극한식에 적절한 계산 방법을 각각 적용한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_99cfbf351be8888af4db59e95daae19f66ee31a18320920dd772012f065f7d21",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_DIRECTIONAL_APPROACH",
+      "step": "x=2의 오른쪽과 왼쪽에 해당하는 각 함수식에 2를 대입한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9246e4d83455ddf9975fd2f1000eac2111478539c6fa054653771b23ac70f468",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+      "step": "합 차 곱 몫의 극한 법칙에 주어진 극한값 2와 3을 넣는다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_007b0bc16dea887d0d77454f5f3bf2a06c1a6d54bf3a51db8521d6a47a8c4241",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_EXISTENCE",
+      "templateKey": "TPL_LIMIT_EXISTENCE_TEST",
+      "step": "분자를 (x-2)(x-3)으로 분해하면 좌극한 1과 우극한 -1이 다르다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d9e559965b4c57edae78e6a299b0652fe22bd39768d9afd5deef6e0ef92c1312",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "step": "좌극한 2+a와 우극한 3을 일치시킨다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0823488e62ac117e3fff393c11074287f09ad2e651f99f4ced5ea8f1f26fef8b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_EXISTENCE",
+      "templateKey": "TPL_LIMIT_EXISTENCE_TEST",
+      "step": "그림에서 f의 좌우극한 0과 g의 좌우극한 1,2를 합차곱몫에 적용한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_065e22c667e90a65e850baf7c2ea4d6a96b2977015f5e974568282429f9c76aa",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": null,
+      "step": "각각 인수 약분, 근호 유리화, 분배법칙으로 0/0식을 정리한다.",
+      "note": "새 TPL 제안: 복합 표준 극한 계산: 여러 극한식에 적절한 계산 방법을 각각 적용한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb7b3d80be8a854df2452b31be9c7d5e82c9da8fbdbee36bc64d7b2ebcee9824",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+      "step": "무한대의 부호에 유의해 분자와 분모를 x 또는 절댓값으로 나눈다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b3edb8648af70755931c7f652b2e7914efff903b3089cccaa12488afba77a57",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "step": "근호 차를 유리화하여 극한 (a-1)/2=5를 푼다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_772bf92d2baa0898c9ae0558fd6e974c59f1f924788ab44e919cf71808d35779",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_ASYMPTOTIC_RELATION",
+      "step": "f(x)/x가 유한하므로 f(x)/x²→0을 이용한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d6c53a105603bab56220c616a6d1e3f68ee3397fcec214552d35b80ca41ee223",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "step": "분자의 영점 조건과 약분 또는 유리화 후 극한값 조건을 연립한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c638dd169227f0841fd82e51965d5ac66f2d0e0ce738a46f1346f7424b38294",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "step": "부등식을 x(x+1)로 나누어 f(x)/x→2를 얻는다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_34de3a2e321de8c7624e16c21ed640c01d77ed416a95ea0ef5e9636ad3419d2a",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "직선 y=t(x+1)과 원을 연립해 PH=2t/(1+t²)를 구한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_524136bb858705271aa6606e22baeb3fc0ec5fae9d3d1588b48d32d7dc29eab6",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_FACTOR_CANCEL",
+      "step": "g(2)=4와 f=(x-2)(g-x+2)를 사용해 공통인수를 약분한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    }
+  ]
+}

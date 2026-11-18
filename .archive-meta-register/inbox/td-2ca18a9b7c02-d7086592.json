@@ -1,0 +1,331 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2ca18a9b7c02-d7086592",
+  "examUid": "미래엔_공통수학2_함수_중단원마무리_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_함수_중단원마무리_고1/미래엔_공통수학2_함수_중단원마무리_고1.js",
+  "expectedSourceBlobSha1": "cf569e07c001eb8567d9e5c4d7d11c486e7f9919",
+  "expectedQuestionCount": 11,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+        "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d8a644ab19e9d96afdb9d76aba0e352a533e59ab3f3af405a2637f4805ff76cc",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+        "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING"
+      },
+      "rationale": "X의 각 원소를 대입해 함수값이 Y에 속하는지 검사하면 ⑵만 x=0에서 -1로 벗어난다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "4606d51deb73620a221bf03a6cd1f1df171b4acaab86c12c3d86ccd870773a37",
+        "contentFingerprint": "1dc38b291cdf57ad551882ea158ab7f6114ea63aec53ec0e4a7199614088a711"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_368bf18305bc466dddd95d3aa96ff72e0acb2dd704619f2d42f3464e2b9fe3e9",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_FUNCTION_DIRECT"
+      },
+      "rationale": "실수 전체를 정의역·공역으로 볼 때 기울기 0이 아닌 일차함수는 일대일대응이고 y=x,y=-1은 각각 항등·상수함수이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "342161773c16939b71e23e45128e25507bf7d69b0035c84e0f68b2d7b169f954",
+        "contentFingerprint": "3882e9d65e3730338d80ace8dc89966549400ca2acf3e9bf5b0fb8bcf894a55d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6443786a4d64f9c46c8dbf97aadb2eeca1aeb090df7a8ba241086ef60a50dd24",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT"
+      },
+      "rationale": "안쪽 함수값을 먼저 구해 바깥 함수에 대입하는 합성 순서를 적용한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "27ec9ff9583d4b0399cd057ac9b90a43b4cb9591dc9ce929f6714c63a4cf05b9",
+        "contentFingerprint": "a4af2284ff63b4fecc650de4431e7722be23f9f0f9ee916982aed8de4534bf88"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5023e82015e2f6cfb74cae92d40f59b25ee41b519b20e0d5227fc153d3b8f1d9",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_FUNCTION_FORM"
+      },
+      "rationale": "y=4x+6을 x에 대해 풀고 두 변수 이름을 바꾸어 역함수식을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "e6fc0445477dfe0c13248afff3a4ededb51fe6a7591d622395172dc32b050703",
+        "contentFingerprint": "b83b2dfe7e852dd66b8067001b4535cbc7a86bbb5446a9e7957b47b3527f094d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_167b841affe59342b7c5946d35748e1941eaed77ff44e33b2e2261e51e1b179d",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_EQUALITY",
+        "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN"
+      },
+      "rationale": "정의역의 두 값 1,2에서 함수값을 각각 같게 놓은 연립방정식을 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "3acb83c19614442e9f2a21d08ed9468d1958353fe2ab2322826632219310cf1e",
+        "contentFingerprint": "27d84e71161c4a760dc9742c11ccd2bfd64ed5dccca82b6b7c10486aa8a325f7"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1fa5a72af8a91fe88df7efa644197b67c98d25734ee76bd53cd3454a64988e76",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT"
+      },
+      "rationale": "g(-2)=10≥2이므로 f의 첫 분기 10+1을 적용한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "cfe811f5fa2f0cf2bfea7c926147f27eba895d2481b7eeae171dba39529f568a",
+        "contentFingerprint": "e61589911462ad4bda4b40854e929cc2c5e641de10cc583471b34fa5f253a473"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8cc7d541683e897d771a5272dd357ceb93f2ee1e465927a6ce7768272bcb7387",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION"
+      },
+      "rationale": "합성식 2h(x)-7=-4x+3을 h(x)에 대해 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "b430dc101e7e548e05b2cdf6b11f8fd7d5795215b73803a148e326758cde929c",
+        "contentFingerprint": "543aae02611d4cdd8f33caac70fc99aee28bc86420ecb2272aa3711130f4bc8e"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3994f2bbc3c7c9fa53101814eaea0950407385589e2197c948776afd8d891fcc",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE"
+      },
+      "rationale": "f⁻¹(3)=-2를 f(-2)=3으로 바꾸어 f(-1)=1과 연립하면 f(x)=-2x-1이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "94a12e111e92fea9fc24a6b72b29837b75c608d5f99852d4e2f1770dc5dcdd88",
+        "contentFingerprint": "121dd3861a9b5ea72ae3b579c286b28c311338b6764233fca990bfabcb8ee2bc"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_741cb1350c43208c7335b0237692fda9fb64f5357087e5299575045c182c1779",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE"
+      },
+      "rationale": "그림에서 f(b)=a,f(c)=b,f(d)=c,f(e)=d를 읽고 합성은 순방향, 역합성은 역방향으로 두 번 추적한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "f9262768e0cb8f6cf6c9a0d2ee9d642c36cfded7a6a986bd33378b670c925f6a",
+        "contentFingerprint": "307b56e81d7b6adc9f42352363dd96bbef44763eac6be4b95d73dd16ef138cb1"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e420aa5cd0fe98f4294acbf7ba13b61e4153e6ab096f51be96687f5b675ff20f",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION"
+      },
+      "rationale": "증가·감소 두 경우의 양 끝점 대응 (1,-1),(3,5) 또는 (1,5),(3,-1)을 연립한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "7ee48aea384b09df8279c52e918f5517921fb3ef253b04f336f206a4b351aea4",
+        "contentFingerprint": "01c1577b89275c07c2063c093e5691f56de5e9f4995d6739687ffdf132221209"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9edb28d1003bb890730e68e40ffd1bfd90df02966aaef5804a85bde7973e555d",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITION_EQUATION",
+        "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE"
+      },
+      "rationale": "g(a+1)=(a+1)²를 대입하고 a≤4와 a>4로 g(4)를 나눠 유효한 해 a=-8,6만 남긴다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "091cf524a5cf1b5deda58dc6653603d9850a79ac1f00c424722668e41ae1df99",
+        "contentFingerprint": "d60fbf7f0008322f90b38a907bc68a52dcfec0c321552b38a47bacebc343722e"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ca18a9b7c02-d7086592.type-ledger.json",
+          "sha256": "dd819b655908544ccc5a38bd35bf687917b3afa870e11954c1b344db1c113a39"
+        }
+      ]
+    }
+  ]
+}

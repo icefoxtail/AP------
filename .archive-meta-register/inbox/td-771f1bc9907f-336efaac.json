@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-771f1bc9907f-336efaac",
+  "examUid": "미래엔_대수_수학적귀납법_중단원마무리_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_수학적귀납법_중단원마무리_고2/미래엔_대수_수학적귀납법_중단원마무리_고2.js",
+  "expectedSourceBlobSha1": "e549d742e5d246f4f76f8cfa3ae080f6b2137ab9",
+  "expectedQuestionCount": 7,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+        "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d23a59aaa85059cd3641dcbc89b10c157d914150c1ba8a22be0938295241ebce",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+        "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129"
+      },
+      "rationale": "각 점화식에 n=1,2,3,4를 순서대로 대입하여 제5항을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "4707de7262eeeee310c3c2edee9ddc5b85a8e19b9bdd317e84213df349b575e4",
+        "contentFingerprint": "49fbfee13062f3f999bff10461c02175eb1ec9124919160f99cbedcf92e20cde"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_529fe49d80c31e1ba940e34bdc26a8b9c75741511f04cb464bb8ca18fc96ef49",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+        "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131"
+      },
+      "rationale": "n=1의 양변을 확인한 뒤 k까지의 세제곱합을 귀납가정으로 대체한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "d50ae21785970b89d3dbfed01378b63049930dc6bd55348069aa5425617e5545",
+        "contentFingerprint": "3c9c2d08cb2286e0bd58df87faa719bc2897c9e39dba5af8f1c76527f1e68938"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_76141cdc816366470d8488b30b2a7065adab9dfad14b9c8a07713155f077dc15",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+        "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_130"
+      },
+      "rationale": "a_(n+1)/a_n=n/(n+1)을 곱하면 중간 인수가 소거되어 a_n=1/n이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "13c786b5d0346d80184afe7cc2cfbe0a083eff57bec3e0b279113fc762a457f0",
+        "contentFingerprint": "bd84504df120a70f6c46725d3388fd1ee6e4dff520b47e2eda5d8b5a07a5b725"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f6b028aedb36517a93c7f41760f729e4ad1efd16ee9751f4f4b22dba32aa28ed",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+        "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129"
+      },
+      "rationale": "점화식으로 a_3=4a_1이므로 a_1=1이고 2^(n-1)≥200인 첫 n을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "48f139ffc630cc61b0d96c2e59015373eed377bcd38cd28f4b7e7819c62c2d64",
+        "contentFingerprint": "20f5f45aa3e8f9d1233e6d2acbb54ae7242372933cad50f445cba1899b2fd6fe"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_32820e37dc39f734c8c7b5980577e02aa29dcb4e5925af1b471f06e169de2de3",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+        "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_130"
+      },
+      "rationale": "점화식을 연속 두 항의 차가 같은 식으로 바꿔 공차 3, 첫째항 -7인 등차수열임을 보인다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "10db99c481a6013a4fdeb0ad7714abca0600775fd342843f6dc9831d55921210",
+        "contentFingerprint": "15107f6b1e6aec66f63478301e333f2c6d79ed79178c6f62e700e84943551cd9"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f8cc05c1efd4c8616ba1b79cfdaa8e37dfb9761f888fd031679d1bb6aec37051",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+        "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129"
+      },
+      "rationale": "수열이 1,2,4,8,16의 주기 5를 가지며 한 주기 합 31이므로 10주기 뒤 네 항을 더한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "ff8be8f6ec3c7e6f1ae67d5f1be908c7cd2f91a714cc3bab19e4ec940df13dfd",
+        "contentFingerprint": "41d3b6e985b977dc509de8de37ef37fdfa4fabef2f1df2655a6cad4f2e50c6be"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1cb7f63fd78d18000469f4c27fc905cc40e912ec449f509a6177161d62b032cf",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+        "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_132"
+      },
+      "rationale": "배수 명제는 다음 항을 가정한 배수와 상수로 분해하고, 부등식은 귀납가정에 1/(k+1)을 더해 다음 목표와 비교한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "b3210f649c8282f8e35b9e56261ae2cb79366b0c1f6caef5bd43328bf9f34868",
+        "contentFingerprint": "2d9cd01eb29e7c8e83ff54a6acc4d5f9e0965161bfa98c8a44c43cf6ccf25aaf"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-771f1bc9907f-336efaac.type-ledger.json",
+          "sha256": "180525abd746d1a75590d6d1fd2593f87f6b057593391f0dab35d766277a6473"
+        }
+      ]
+    }
+  ]
+}

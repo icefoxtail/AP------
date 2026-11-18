@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7e567838f638-f66ef5ec",
+  "examUid": "비상_기하_공간좌표_중단원학습점검_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_공간좌표_중단원학습점검_고2/비상_기하_공간좌표_중단원학습점검_고2.js",
+  "expectedSourceBlobSha1": "cb63f2d279b379ef19b8fdccd105d07cdb617b41",
+  "expectedQuestionCount": 18,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-f66ef5ec.type-ledger.json",
+        "sha256": "ef94a172abd4eb423048e3e98f6bf2fde7f6900a2ebd938ab8e032998f3361a8"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_9f95769bd8b6993fdcf708a9d6b6ca48a2bb5c90ab756611ecb47e5ef2bfe008",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION"
+      },
+      "rationale": "R=(0,2,5)의 정사영 R′가 PQ 위에 있어 높이가 5임을 확인하고 밑변 3√2를 곱해 삼각형 넓이를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "acf7a7bb8c3a353343cfca4df7c7eb5982db0aad0bf5688c38a991743fb536df",
+        "contentFingerprint": "19bf5edb12b5304b301f0be28bbca112a8e6b8fa48d9367d356d1d9524a7ab95"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-f66ef5ec.type-ledger.json",
+          "sha256": "ef94a172abd4eb423048e3e98f6bf2fde7f6900a2ebd938ab8e032998f3361a8"
+        }
+      ]
+    }
+  ]
+}

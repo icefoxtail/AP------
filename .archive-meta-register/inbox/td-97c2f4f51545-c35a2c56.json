@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-97c2f4f51545-c35a2c56",
+  "examUid": "비상_기하_도형의방정식_중단원학습점검_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_도형의방정식_중단원학습점검_고2/비상_기하_도형의방정식_중단원학습점검_고2.js",
+  "expectedSourceBlobSha1": "3921f9c69bf17ac34e7c84d47923445deee99776",
+  "expectedQuestionCount": 11,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-c35a2c56.type-ledger.json",
+        "sha256": "9ec0db74f8204246cca2caf638a263cb34de25a203af12d35640307c6b9de277"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e57079a991588b48dd960d7ed7874c7cdbcf4d4d9bf0688441d47272d02f28af",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_VECTOR"
+      },
+      "rationale": "방향벡터 (3k,−5)와 (2k+1,k²)의 내적을 0으로 놓아 k(k+3)=0을 풀고 k=0을 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "4314098ce789dfbd8f7eb332f6714b6193cf663612229c5251ad03e295829947",
+        "contentFingerprint": "af411c61a35adb3ba4a65b9f527d204433e11010ea025d3a5dec867bfdb68b1b"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-c35a2c56.type-ledger.json",
+          "sha256": "9ec0db74f8204246cca2caf638a263cb34de25a203af12d35640307c6b9de277"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_60186d3edcedadf9833dcd41e3915ff556bc9a924fac8a8df9790080ef070aea",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE"
+      },
+      "rationale": "AB=(2,1,1)와 법선 (1,−1,2)의 내적으로 법선 방향 성분을 구하고 √(6−9/6)=3√2/2로 투영길이를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "b7c17d95a801758e992dc602a087f9434654c2f2b169ba8396cd75f46bc027e9",
+        "contentFingerprint": "27779aaab1850968ed5f364281b1d9b5191cf22493bf565832bcdfbc5a02de80"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-c35a2c56.type-ledger.json",
+          "sha256": "9ec0db74f8204246cca2caf638a263cb34de25a203af12d35640307c6b9de277"
+        }
+      ]
+    }
+  ]
+}

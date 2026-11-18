@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-71db7e58c382-a5263026",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_벡터의성분과내적_중단원학습점검_고2/비상_기하_벡터의성분과내적_중단원학습점검_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e07c16ef7d04ab6343af6960039d4de225c018c86930606f5a052aa06afa2a7b",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "내분점 위치벡터 공식을 적용하되 AB의 3:2와 BA의 4:1에서 시작점과 끝점의 가중치를 구별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d7f61f447ea52c7abc6b25c91fb2d668b75206c5783fb8eb38ac93eb5b33be6c",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "AM=a/2·AP=(a+2b)/3을 내분점 식으로 구해 MP=AP−AM=−a/6+2b/3을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ff81c55ab4130dba135a6b3ce3a3c33fe457f1addcb317b89fdc1e88e4261355",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": null,
+      "step": "|a+2b|²=28에서 a·b=2를 구해 |a−tb|²=t²−4t+16=(t−2)²+12의 최솟값을 구한다.",
+      "note": "벡터 내적 최적화: 벡터의 크기 제곱이나 내적을 매개변수의 이차식으로 바꾸어 극값을 구하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fe0ce7892371027b0a327088a18c3e74f67e04e7b0eeb2169eddd26e40035e1c",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": null,
+      "step": "내분점 D=(2,2)·E=(2,−1)에서 P=(2,y), −1≤y≤2로 두어 내적 y²−2의 꼭짓점과 경계를 비교한다.",
+      "note": "벡터 내적 최적화: 벡터의 크기 제곱이나 내적을 매개변수의 이차식으로 바꾸어 극값을 구하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_445cc1eac989f5ef38cb28edfbbe76bfb1083450e6af8094f7eec80bf2db0474",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "가중 벡터식으로 P=(3A+2B+5C)/10임을 얻고 AC에 대한 높이비가 B의 계수 2/10임을 써 넓이 20을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    }
+  ]
+}

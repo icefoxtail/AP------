@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-5e9d7c7b721a-89db33a2",
+  "examUid": "백발백중_공통수학2_Best2회_P14_Q01_20261020_유사1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best2회_P14_Q01_20261020_유사1.js",
+  "expectedSourceBlobSha1": "c8fd42aeea21f81f126e551f70acad0a1c88362f",
+  "expectedQuestionCount": 1,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/백발백중_공통수학2.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5e9d7c7b721a-89db33a2.type-ledger.json",
+        "sha256": "0c4f7017b65e5ee589d42f63f96fae0f63f631ec2a9ef33f59186ffa4e28dd0a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b07d8538e0f7b649fbd701c69a89c43cb252896ef897baf329b76ca09038eb36",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "rationale": "거리 공식으로 OA=5, AB=3, BO=2√13을 구해 세 변을 합한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "8d8575ad45794d2a3e112faadb34b8c5dbfa187abcb34640088898a371e63e42",
+        "contentFingerprint": "9cefed966e41008987d289b2b45cb7b13484190e5dd80ac173121374f7523a1f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5e9d7c7b721a-89db33a2.type-ledger.json",
+          "sha256": "0c4f7017b65e5ee589d42f63f96fae0f63f631ec2a9ef33f59186ffa4e28dd0a"
+        }
+      ]
+    }
+  ]
+}

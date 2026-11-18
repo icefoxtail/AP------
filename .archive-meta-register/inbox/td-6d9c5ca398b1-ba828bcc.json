@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-6d9c5ca398b1-ba828bcc",
+  "examUid": "비상_공통수학1_조합_중단원학습점검_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학1/비상_공통수학1_조합_중단원학습점검_고1/비상_공통수학1_조합_중단원학습점검_고1.js",
+  "expectedSourceBlobSha1": "8c0aaab943558e44b77001b9016ed02132731dbd",
+  "expectedQuestionCount": 4,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9c5ca398b1-ba828bcc.type-ledger.json",
+        "sha256": "13918cd105b8f776e83b4d284cb97136c89b5e3b8807fa08256684700f94dbdf"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2032d0bcca1496f12a61eb9727473f4dbabb8010980e9eeefb8e53f5dd49ac07",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "rationale": "동시에 고르므로 순서를 고려하지 않고 6C3=20,10C2=45를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5c6f64d4a12ff01289f63338b205f5643fc1d666ce94af49a7b65936c6812af4",
+        "contentFingerprint": "dcc8776bd4b6a262c64321ff9d222d80f8b2b376286b5956ea7cdf6299f2586f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9c5ca398b1-ba828bcc.type-ledger.json",
+          "sha256": "13918cd105b8f776e83b4d284cb97136c89b5e3b8807fa08256684700f94dbdf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c00ade19facef5bba559f2d12a0b58d720388fcedfc1768fa659c24459b80261",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "rationale": "전체 9C4에서 주스만 고르는 5C4와 차만 고르는 4C4를 빼면 120이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c9618a6e5f72d319895afa0afb85d63ec122c18d7d4284b339ad406aaae48693",
+        "contentFingerprint": "5536fdcb1e3d5fd90a04d8439934e34e066af638bb71c8c6ca0a31c2a70f99bd"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9c5ca398b1-ba828bcc.type-ledger.json",
+          "sha256": "13918cd105b8f776e83b4d284cb97136c89b5e3b8807fa08256684700f94dbdf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_dc85ae5562a8a59024c919f775fd731196b069738b01492fdb275e35d289de0f",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "rationale": "종류별로 4C2×3C2가지 선택한 뒤 선택한 네 체험의 순서 4!를 곱하여 432이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "64ac888aa31d18ecf824adb070b0baa73d7ca05b3115ca05ed0c588be554d83e",
+        "contentFingerprint": "13a97eabdec522e377de0739e0e0149530330c15c0d3bcae06e785c5b6e8be66"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9c5ca398b1-ba828bcc.type-ledger.json",
+          "sha256": "13918cd105b8f776e83b4d284cb97136c89b5e3b8807fa08256684700f94dbdf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_db4a5a7943fe6f7952d2d7507842a9bd120654cb0fd294b5de6654a61b155365",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "rationale": "높이 4를 0.5씩 나눈 여덟 단의 양의 정수 폭 합이 10이므로 경계 일곱 개를 아홉 내부 위치에서 고르는 9C7=36이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "2ad331b7a764ead2b8b22208378a8ead8118862391d84d15af846571eded903a",
+        "contentFingerprint": "3de1ad32242ee6b16f1bd0ed4e318d6e47e27e45d8251b840c8326cbe36e5352"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6d9c5ca398b1-ba828bcc.type-ledger.json",
+          "sha256": "13918cd105b8f776e83b4d284cb97136c89b5e3b8807fa08256684700f94dbdf"
+        }
+      ]
+    }
+  ]
+}

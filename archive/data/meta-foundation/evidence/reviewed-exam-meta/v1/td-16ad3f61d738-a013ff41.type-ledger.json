@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-16ad3f61d738-a013ff41",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_공간도형과공간좌표_익힘책_고2/비상_기하_공간도형과공간좌표_익힘책_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_990f958f7413c01ae3769d9f68bf231ba62a3a65b4337be7203fe0597ca75955",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "정육각기둥의 AB와 같은 윗면 모서리와 평행·교차 모서리를 제외해 아래쪽 4개와 옆 4개를 센다.",
+      "note": "평면 결정과 공간 위치 관계: 평면 결정 조건 및 평행·교차·꼬인 관계를 판정하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c6cb8460d6e844060c0bbcdcc194c2d786c672a831ed911be0266c073e15ac0c",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "5개 꼭짓점의 세 점 조합 10개에서 밑면 4점의 중복 3개를 빼 평면 7개를 구한다.",
+      "note": "평면 결정과 공간 위치 관계: 평면 결정 조건 및 평행·교차·꼬인 관계를 판정하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b091a7e3f95b5912b00c16d09b776fcc37a5dc8cd17d23b5894b5a312f0afb3e",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+      "step": "BG∥AH로 각을 옮기고 면대각선으로 이루어진 정삼각형 BGD·AFH에서 ㄴ·ㄷ이 60°임을 확인한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_96675781c6602d93b6e20762fb137696285ce783afd4e57348fc67c8f7e14526",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "CD가 AF·BF에 모두 수직이므로 평면 ABF에 수직임을 보이고 이등변삼각형의 중선을 사용해 ㄴ·ㄹ을 판별한다.",
+      "note": "공간 수직성 증명: 교차하는 두 직선에 대한 수직성으로 직선과 평면의 수직을 증명하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7563a7833ee46e01610e72ecb110173ee00d7409989640a07d69883f4ace389e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "BD⊥AC와 BD⊥CG에서 BD⊥평면 ACGE를 얻어 그 평면의 AG와 수직임을 보인다.",
+      "note": "공간 수직성 증명: 교차하는 두 직선에 대한 수직성으로 직선과 평면의 수직을 증명하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1839b411c8e29cd21c9d09ad0e0d78ce7b300a5f60f519fca188ef14471913e1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "HM=(1,2,0), DF 방향=(1,1,−1)을 설정하여 내적 3을 길이곱 √15로 나눈다.",
+      "note": "공간 직선각의 좌표 내적: 공간 방향벡터의 내적과 크기로 두 직선의 각을 계산하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_000c8554ba8cf30f35d88624e8997c0627894c55daabea59c4e8c2ef74907362",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "step": "BC가 평면 ABD에 수직이어서 BCD가 직각삼각형임을 보이고 sinθ=BC/CD=cos45°cos30°를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a2e0362cdcd9faf5a10643f79dab496f6ec83c5b617e7fb3e24640be393fb55",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "step": "BC⊥평면 AMD와 AM=DM=√14를 이용해 단면 넓이 2√6을 구하고 높이 합 BC를 곱해 부피를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_49dd37699954da18f8a3f187e9f96b2181bf107fed29e4ab4c5b66a76f097411",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "삼각형 BGM의 정사영 BCM의 넓이 1을 원넓이 √6으로 나누어 cosθ를 구한다.",
+      "note": "정사영 넓이: 평면도형의 정사영 넓이 S′=S cosθ를 이용하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76dc62bf45519a194e4ec402107520ad2d92da4e9e53fbe5ad77a21a1fba6211",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": null,
+      "step": "접기 전 두 삼각형의 넓이가 같고 투영 삼각형 HBD의 밑변비 HD/CD=3/7이므로 cosθ=3/7을 구한다.",
+      "note": "정사영 넓이: 평면도형의 정사영 넓이 S′=S cosθ를 이용하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_64a4a7ef92f103107133859c992daa5de7c31aff20e6794c69a52af1cfe1f6fe",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "step": "각 좌표축 수선의 발로 직교 모서리 2·3·4를 얻어 직각삼각뿔 부피를 곱의 1/6로 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    }
+  ]
+}
