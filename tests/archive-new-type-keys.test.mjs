@@ -167,3 +167,40 @@ test("--bundles-only keeps only the lines the bundle tables touch; without it ev
   const without = plan({ lines: extra });
   assert.equal(without.nk.stats.lines.outsideBundles, 0);
 });
+
+// ---- --replace-draft-types: draft values are replaced in their own "tr-" requests, approved/adjudicated values stay
+const replaceRecords = () => [
+  row(1), // blank
+  row(2, { problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" } }), // draft, differs
+  row(3, { problemTypeKey: "PT_A", templateKey: "TPL_A", fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" } }), // draft, same as judged
+  row(4, { problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "approved_review2", template: "approved_review2" } }), // approved, differs
+  row(5, { problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "r2e_adjudicated", template: "r2e_adjudicated" } }), // adjudicated, differs
+  row(6, { problemTypeKey: "PT_B", templateKey: "", fieldStatus: { problemType: "", template: "" } }) // blank status with a value, differs
+];
+const replaceLines = () => [1, 2, 3, 4, 5, 6].map(n => line(n, { decision: "PICK", pt: "PT_A", tpl: "TPL_A" }));
+const replaceCtx = () => { const c = makeCtx(replaceRecords()); c.registry.pt.set("PT_B", { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }); return c; };
+
+test("replace mode: a draft value that differs from the judgment is replaced in a separate tr- request; default mode leaves it", () => {
+  const off = planRequests({ ctx: replaceCtx(), resultRows: replaceLines(), approvedBy: "x" });
+  assert.deepEqual(off.requests.flatMap(r => r.items.map(i => i.questionUid)), ["uid1"]);
+  const on = planRequests({ ctx: replaceCtx(), resultRows: replaceLines(), approvedBy: "x", replaceDraft: true });
+  assert.equal(on.requests.length, 2);
+  const fill = on.requests.find(r => r.requestId.startsWith("td-")), repl = on.requests.find(r => r.requestId.startsWith("tr-"));
+  assert.deepEqual(fill.items.map(i => i.questionUid), ["uid1"]);
+  assert.deepEqual(repl.items.map(i => i.questionUid), ["uid2", "uid6"]);
+  assert.deepEqual(repl.items[0].before, { problemTypeKey: "PT_B", templateKey: "TPL_B" });
+  assert.deepEqual(repl.items[0].after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+  assert.deepEqual(repl.items[1].before, { problemTypeKey: "PT_B", templateKey: "" });
+  assert.ok([fill.requestId, repl.requestId].sort()[0] === fill.requestId, "replacements sort after the blank-field requests");
+  for (const r of on.requests) for (const i of r.items) assert.ok(!("level" in i) && i.textBindingFingerprint);
+});
+
+test("replace mode: approved and adjudicated values stay and are listed with their existing and judged values; equal values need nothing", () => {
+  const { skipped } = planRequests({ ctx: replaceCtx(), resultRows: replaceLines(), approvedBy: "x", replaceDraft: true });
+  const by = Object.fromEntries(skipped.map(s => [s.uid, s]));
+  assert.equal(by.uid3.reason, "TYPE_ALREADY_PRESENT");
+  for (const uid of ["uid4", "uid5"]) assert.equal(by[uid].reason, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT");
+  assert.deepEqual(by.uid4.existing, { pt: "PT_B", tpl: "TPL_B", ptStatus: "approved_review2", tplStatus: "approved_review2", approval: "", revision: "archive-registration-sync-v1" });
+  assert.deepEqual(by.uid4.judged, { pt: "PT_A", tpl: "TPL_A" });
+  assert.equal(by.uid5.existing.ptStatus, "r2e_adjudicated");
+});

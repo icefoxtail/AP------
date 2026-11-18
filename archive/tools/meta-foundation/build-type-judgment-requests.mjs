@@ -5,6 +5,8 @@
 //   node archive/tools/meta-foundation/build-type-judgment-requests.mjs --results <git ref> [--results <git ref>...] \
 //        [--results-dir <local dir>] [--exams a.js,b.js | --exams-file <file>] [--limit N] [--out <repo root>] [--dry-run] [--summary-global] [--skipped-out <file>]
 //        [--allow-pack-scope-additions] [--include-receipt-rows] [--judged-base <git ref> | auto (default) | none]
+//        [--replace-draft-types]   (a draft type value (blank/manual_review_pending/projection_unmaterialized) that differs from the judgment is replaced, in separate "tr-" requests)
+//        [--max-requests N]   (write only the first N requests in registration order = one batch; run again on the main that holds it for the next)
 //        [--bundles <git ref> | --bundles-dir <dir>] [--bundles-only]   (new PT/TPL keys from the NEW_KEY bundle tables; implies --allow-pack-scope-additions)
 //
 // Without --out (or with --dry-run) nothing is written: only the summary is printed. With --out <dir> the request files go to
@@ -191,7 +193,7 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false }) {
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false }) {
   const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
@@ -227,7 +229,20 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     const items = [];
     for (const { row, m } of entries) {
       const status = { pt: String(m.fieldStatus?.problemType ?? ""), tpl: String(m.fieldStatus?.template ?? "") };
-      if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
+      let replace = false;
+      if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
+        // --replace-draft-types: a value that is only a draft (both status fields overwritable) and differs from the judgment is replaced;
+        // an approved or adjudicated value stays (counted with its own reason, the list of "differs from dots"); a value equal to the judgment needs nothing.
+        const present = !empty(m.problemTypeKey) || !empty(m.templateKey);
+        if (!replaceDraft || !present) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
+        const same = (m.problemTypeKey ?? "") === row.pt && (empty(row.tpl) || (m.templateKey ?? "") === row.tpl);
+        if (same) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
+        if (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl)) {
+          skip(row, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT", { existing: { pt: m.problemTypeKey ?? "", tpl: m.templateKey ?? "", ptStatus: status.pt, tplStatus: status.tpl, approval: m.metadataApprovalType ?? "", revision: m.metadataRevision ?? "" }, judged: { pt: row.pt, tpl: text(row.tpl) } });
+          continue;
+        }
+        replace = true;
+      }
       if (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl)) { skip(row, "TYPE_STATUS_NOT_OVERWRITABLE"); continue; }
       if (m.foundationTaxonomyStatus === "HOLD") { skip(row, "ROW_FOUNDATION_TAXONOMY_HOLD"); continue; }
       if (m.metadataApprovalType && !includeReceiptRows) { skip(row, "ROW_HAS_APPROVAL_RECEIPT"); continue; }
@@ -266,10 +281,13 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
       if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
-      items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null });
+      items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null, replace });
     }
-    if (!items.length) continue;
-    prepared.push({ file, bank, bytes, items });
+    // Replacements of draft values never share a request with the blank-field registrations (they are held back as the last batch).
+    for (const replace of [false, true]) {
+      const part = items.filter(i => i.replace === replace);
+      if (part.length) prepared.push({ file, bank, bytes, items: part, replace });
+    }
   }
   // One pack change per pack carries every value the whole batch needs (a later request would see the already widened pack).
   const additions = new Map();
@@ -280,8 +298,9 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
   }
   // New keys (--bundles): their add-only registryChanges ride on the request that sorts first, next to the pack scope additions.
   const keyChanges = ctx.newKeys ? ctx.newKeys.finalize(prepared.flatMap(p => p.items)) : null;
-  const carrierFile = keyChanges?.registryChanges.length ? prepared[0]?.file : additions.size ? prepared.find(p => p.items.some(i => i.packAddition))?.file : null;
-  for (const { file, bank, bytes, items } of prepared) {
+  const fills = prepared.filter(p => !p.replace);
+  const carrierFile = keyChanges?.registryChanges.length ? fills[0]?.file : additions.size ? fills.find(p => p.items.some(i => i.packAddition))?.file : null;
+  for (const { file, bank, bytes, items, replace: replacing } of prepared) {
     // Result source: the table file that holds most of this exam's judged lines (ties: path order).
     const bySource = new Map();
     for (const { row } of items) { const k = JSON.stringify(row._source); bySource.set(k, (bySource.get(k) || 0) + 1); }
@@ -289,8 +308,8 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     const resultSource = JSON.parse(best);
     const core = items.map(({ row, m }) => ({ uid: row.uid, o: m.sourceOrdinal, pt: row.pt, tpl: text(row.tpl), step: text(row.step) }));
     // The carrier of the pack changes sorts before every other request ("tc" < "td"): the inbox is registered in name order.
-    const carrier = file === carrierFile;
-    const requestId = `${carrier ? "tc" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
+    const carrier = file === carrierFile && !replacing;
+    const requestId = `${carrier ? "tc" : replacing ? "tr" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
     const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge: "dots", resultSource,
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
       rows: items.map(({ row, m }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
@@ -404,7 +423,7 @@ export function loadContext(root) {
 
 // ---------------------------------------------------------------- CLI
 export function parseCli(argv) {
-  const args = { results: [], resultsDir: [], exams: null, examsFile: null, limit: null, out: null, dryRun: false, summaryGlobal: false, skippedOut: null, root: here, allowPackAdditions: false, includeReceiptRows: false, judgedBase: "auto", bundles: null, bundlesDir: null, bundlesOnly: false,
+  const args = { results: [], resultsDir: [], exams: null, examsFile: null, limit: null, out: null, dryRun: false, summaryGlobal: false, skippedOut: null, root: here, allowPackAdditions: false, includeReceiptRows: false, judgedBase: "auto", bundles: null, bundlesDir: null, bundlesOnly: false, replaceDraft: false, maxRequests: null,
     approvedBy: "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다." };
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
@@ -425,6 +444,8 @@ export function parseCli(argv) {
     else if (k === "--bundles") args.bundles = value();
     else if (k === "--bundles-dir") args.bundlesDir = value();
     else if (k === "--bundles-only") args.bundlesOnly = true;
+    else if (k === "--replace-draft-types") args.replaceDraft = true;
+    else if (k === "--max-requests") { args.maxRequests = Number(value()); if (!Number.isInteger(args.maxRequests) || args.maxRequests < 1) throw new Error("INVALID_MAX_REQUESTS"); }
     else throw new Error(`INVALID_ARGUMENT:${k}`);
   }
   if (!args.results.length && !args.resultsDir.length) throw new Error("RESULTS_REQUIRED");
@@ -447,12 +468,18 @@ export function run(args) {
     args.allowPackAdditions = true;
   }
   const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy,
-    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows });
+    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft });
+  // One batch = the first N requests in registration (file name) order; the rest are left for the next run on a main that holds this batch.
+  if (args.maxRequests) {
+    const keep = new Set(built.requests.map(r => r.requestId).sort().slice(0, args.maxRequests));
+    built.requests = built.requests.filter(r => keep.has(r.requestId));
+    for (const key of [...built.files.keys()]) if (!keep.has(/([^/]+?)(?:\.type-ledger)?\.json$/.exec(key)[1])) built.files.delete(key);
+  }
   let head = null;
   try { head = git(ctx.root, "rev-parse", "HEAD").trim(); } catch { /* not a git checkout */ }
   const summary = summarize({ requests: built.requests, skipped: built.skipped, resultLines: resultRows.length, commits, head });
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase,
-    bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly };
+    bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly, replaceDraftTypes: args.replaceDraft, maxRequests: args.maxRequests };
   if (newKeys) summary.newKeys = { bundleTables: bundleOrigin, bundles: { pt: newKeys.stats.ptBundles, tpl: newKeys.stats.tplBundles }, lines: newKeys.stats.lines, ...built.stats.newKeys };
   if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
