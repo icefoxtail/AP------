@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e50063023d03-32335a9d",
+  "sourceArchiveFile": "original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "상수계수 두 식을 연립하여 공통해(-3,4)를 구한 뒤 나머지 식에 대입하여 a=b=1,합2를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": null,
+      "step": "소수식에10,분수식에6을 곱하여 3x-2y=-18,2x-3y=-22로 정리한 뒤 소거하여 x=-2,y=6을 얻는다.",
+      "note": "새 TPL 제안: 소수·분수 연립방정식의 해 계산. 정의: 소수식에10,분수식에6을 곱하여 3x-2y=-18,2x-3y=-22로 정리한 뒤 소거하여 x=-2,y=6을 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "y=7x는 x마다 y를 하나로 정한다. 다른 보기의 유일성도 검토하되 낮과 밤 보기에는 하루합24시간의 해석 여지가 있다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: y=7x는 x마다 y를 하나로 정한다. 다른 보기의 유일성도 검토하되 낮과 밤 보기에는 하루합24시간의 해석 여지가 있다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "그래프의 가파른 정도는 a가 아니라 |a|에 따르므로 a값이 클수록 가파르다는 진술이 거짓이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+      "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+      "step": "(2,3)을 y=ax+7에 대입하여 a=-2를 구하고 (4,b)를 대입하여 b=-1,합-3을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+      "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+      "step": "y절편1과 기울기-3/2로 (0,1),(2,-2)를 지나는 다섯 번째 그림을 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "정사각형의 중심(3,1)을 지나는 직선이 넓이를 이등분하므로 이 점을 대입하여 통과하지 않는 두 번째 식을 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": null,
+      "step": "두 방정식을 가감하여 교점(-1,3)을 구하고 이 점을 지나는 수직선은 x좌표가 일정한 x=-1임을 적용한다.",
+      "note": "새 TPL 제안: 연립방정식의 교점을 지나는 수직선 결정. 정의: 두 방정식을 가감하여 교점(-1,3)을 구하고 이 점을 지나는 수직선은 x좌표가 일정한 x=-1임을 적용한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9d71bd07b651-3ebb13ee",
+  "sourceArchiveFile": "original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2093dd628eaf4c1cba20717060c9da4bbb3747e8dc8d47473ff6a9fc4ae78875",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "같은 밑의 곱은 지수를 더하고 거듭제곱은 지수를 곱해 세 번째 식만 참임을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9e234b59d6353f1bbfdfec30bc581bd573c11c29381af3508cc5ca03c888112b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "계수와 지수를 분리해 곱셈·나눗셈을 계산하면 ②와 ④의 결과만 일치한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a31c5eaf5ff2e05c53ce63586ff91233ddc61c88334a03d9bb29604967d4fc8a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "step": "잘못 더한 결과에서 더해버린 2x제곱-3x+7을 두 번 빼 바른 결과 2x제곱+5x-11을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bcfe3a9ced6516485968e812145b05f1dd4aed56bd354973bf53d3cff5424262",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "a<b의 양변에 음수 -5를 곱하면 부등호가 뒤집혀야 함을 이용해 다섯 번째 비교가 잘못됨을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    }
+  ]
+}

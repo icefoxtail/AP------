@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-258ecb5a451e-03516cab",
+  "examUid": "19_부산사직여중_1학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+  "expectedQuestionCount": 19,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-258ecb5a451e-03516cab.type-ledger.json",
+        "sha256": "7c79def19b69d40b79bcd36aa8435b3ce70b2791bcf98116eab61321f6cb1c05"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d55900ef5658e87fd3b9f27874fb098ada8c6a45bee133508206f13589b917a2",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS"
+      },
+      "rationale": "각 보기에 지수법칙을 적용하고 같은 항의 합은 항수로 정리하여 ④가 a제곱/2와 같음을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "16825068b72a97df551e259076d2ecfed21bd36afe35427bbbb4d8a4e4c55c88",
+        "contentFingerprint": "80cd5d346e36b51934c8422997d2203efd2afeba2e60c5f06a04e337a4c30646"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-258ecb5a451e-03516cab.type-ledger.json",
+          "sha256": "7c79def19b69d40b79bcd36aa8435b3ce70b2791bcf98116eab61321f6cb1c05"
+        }
+      ]
+    }
+  ]
+}

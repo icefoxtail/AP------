@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-faa4898baea6-5f4b00fc",
+  "sourceArchiveFile": "original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e1117b5bf9602b9b7651913a1507b6ad44b96db43d749919badc0bf18e376dc0",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": null,
+      "step": "괄호를 풀고 분모를 없애 4x-y=-2,4x+3y=6을 연립하면 x=0,y=2이므로 곱0이다.",
+      "note": "새 TPL 제안: 소수·분수 연립방정식 해의 곱 계산. 정의: 괄호를 풀고 분모를 없애 4x-y=-2,4x+3y=6을 연립하면 x=0,y=2이므로 곱0이다. 검사 오류: [{\"code\":\"CUE_NOT_IN_SOURCE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_06fe6505fb71374402461d91de4aafa43c002912324a5e13b01ef09c5627e0cf",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "자연수6의 소인수는 2와3으로 한 x에 여러 y가 대응하므로 함수가 아니다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 자연수6의 소인수는 2와3으로 한 x에 여러 y가 대응하므로 함수가 아니다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22d89efbfd383b056eb1b8dfe16d21ca1444f617f9226107c627fff98f5d3ffe",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 관계를 식으로 나타내면 y=x/10과 y=2πx만 기울기가0이 아닌 일차식이다.",
+      "note": "새 TPL 제안: 생활 관계의 일차함수 여부 판별. 정의: 각 관계를 식으로 나타내면 y=x/10과 y=2πx만 기울기가0이 아닌 일차식이다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9f16ae32e1270d2da56f3dde3a44ea2f394c5122514994880a4f208236c6df5a",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "y=ax에서 a<0이면 x증가에 y가 감소하므로 증가한다는 진술이 거짓이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb805ff6dee34b387b46d34f2f83a5c5d521b3fb003de8b2620b5db3aaa369fa",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "y=2x+1의 y절편에 이동량 -2를 더하여 y=2x-1을 얻는다.",
+      "note": "새 TPL 제안: 주어진 수직 이동량으로 일차함수 식 변환. 정의: y=2x+1의 y절편에 이동량 -2를 더하여 y=2x-1을 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e5da21ff48e671983263dd2bed3039752b696fd442676fde07514aae1575522d",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "그림의 절편 (4,0),(0,2)에서 기울기 -1/2를 계산하므로 기울기가 -2라는 설명이 거짓이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bbe0a7a08edf306a36a4ab0c85b5506173bba4002c7d02f654c658faf768ae46",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+      "templateKey": null,
+      "step": "3x-2y+4=2x+1을 y에 관하여 정리하여 y=x/2+3/2를 얻는다.",
+      "note": "새 TPL 제안: 일차방정식을 일차함수 식으로 변환. 정의: 3x-2y+4=2x+1을 y에 관하여 정리하여 y=x/2+3/2를 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6d5510af1b16aa7b4b0ba9a591551ef3893f82ce15a2730a11184953510dc581",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+      "templateKey": null,
+      "step": "그림의 (3,-1),(5,2)를 대입하여 a=3/2,b=-11/2를 구한 뒤 (m,0),(2,n)을 대입하여 m=11/3,n=-5/2를 얻는다.",
+      "note": "새 TPL 제안: 그래프의 두 점으로 계수와 미지 좌표 결정. 정의: 그림의 (3,-1),(5,2)를 대입하여 a=3/2,b=-11/2를 구한 뒤 (m,0),(2,n)을 대입하여 m=11/3,n=-5/2를 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}
