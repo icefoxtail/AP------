@@ -199,6 +199,79 @@ const SOURCE_EDITION_2372 = Object.freeze({
   ]
 });
 
+// layoutTag-only edition (user-approved fullwidth restoration, PR #2415, commit d22363528f).
+// This is NOT a new approval and adds no authority. Its only difference from the 2372
+// edition above is the per-question "layoutTag" string value; assertLayoutTagOnlyEdition
+// enforces that against the immutable 2372 bytes. `changes` is the cumulative field
+// inventory against the issued source (Q2's layoutTag is back to its issued value, so Q2
+// no longer lists layoutTag there); `layoutTagOnly.changes` is the delta from the 2372 edition.
+const LAYOUT_TAG_ORDINALS = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23]);
+const SOURCE_EDITION_LAYOUT_TAG = Object.freeze({
+  "commit": "d22363528f3c774ba9aab1cbd3b6159b99e4b0aa",
+  "pins": {
+    "bytes": 66752,
+    "sha256": "84d7909ae077b115558282bc7e0159bf7d013e06d24b6e1009500b97b45b75f1",
+    "gitBlobSha1": "415acb4076df5da1c852b72c7534ab41141f36d1"
+  },
+  "selectedQ2Fields": ["image", "imageAlt", "imageSize"],
+  "layoutTagOnly": {
+    "base": SOURCE_EDITION_2372,
+    "changes": LAYOUT_TAG_ORDINALS.map(sourceOrdinal => ({ sourceOrdinal, fields: ["layoutTag"] }))
+  },
+  "changes": [
+    { "sourceOrdinal": 1, "fields": ["layoutTag"] },
+    { "sourceOrdinal": 2, "fields": ["image", "imageAlt", "imageSize"] },
+    ...[3, 4, 5].map(sourceOrdinal => ({ sourceOrdinal, fields: ["layoutTag"] })),
+    { "sourceOrdinal": 6, "fields": ["content", "layoutTag"] },
+    ...[7, 8, 9, 10, 12, 13, 14, 16].map(sourceOrdinal => ({ sourceOrdinal, fields: ["layoutTag"] })),
+    { "sourceOrdinal": 17, "fields": ["layoutTag", "solution"] },
+    ...[18, 19, 20, 21, 22, 23].map(sourceOrdinal => ({ sourceOrdinal, fields: ["layoutTag"] }))
+  ]
+});
+
+// Strict comparison used by the layoutTag-only edition: parse the bank as JSON (no code),
+// then require identical text outside the bank, identical question count/order, identical
+// key sets and identical values for every key except layoutTag, a string layoutTag on both
+// sides, and finally byte-identical text once layoutTag string values are masked.
+// Failures carry a specific "LAYOUT_TAG_ONLY:<REASON>" message. Returns the changed ordinals.
+function parseSourceBank(bytes, side) {
+  const text = bytes.toString("utf8"), matches = [...text.matchAll(/window\s*\.\s*questionBank\s*=/g)];
+  if (matches.length !== 1) assert.fail("LAYOUT_TAG_ONLY:BANK_ASSIGNMENT:" + side);
+  const from = matches[0].index + matches[0][0].length, start = text.indexOf("[", from);
+  if (start < 0 || text.slice(from, start).trim()) assert.fail("LAYOUT_TAG_ONLY:BANK_START:" + side);
+  let depth = 0, quoted = false, escaped = false, end = -1;
+  for (let i = start; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) { if (escaped) escaped = false; else if (c === "\\") escaped = true; else if (c === '"') quoted = false; continue; }
+    if (c === '"') quoted = true;
+    else if (c === "[" || c === "{") depth++;
+    else if (c === "]" || c === "}") { if (--depth === 0) { end = i + 1; break; } }
+  }
+  let bank;
+  try { bank = JSON.parse(text.slice(start, end)); } catch { assert.fail("LAYOUT_TAG_ONLY:BANK_JSON:" + side); }
+  if (end < 0 || !Array.isArray(bank) || bank.some(q => !q || Array.isArray(q) || typeof q !== "object"))
+    assert.fail("LAYOUT_TAG_ONLY:BANK_SHAPE:" + side);
+  return { bank, prefix: text.slice(0, start), suffix: text.slice(end), text };
+}
+function assertLayoutTagOnlyEdition(baseBytes, nextBytes) {
+  const base = parseSourceBank(baseBytes, "base"), next = parseSourceBank(nextBytes, "next");
+  if (base.prefix !== next.prefix || base.suffix !== next.suffix) assert.fail("LAYOUT_TAG_ONLY:TEXT_OUTSIDE_BANK");
+  if (base.bank.length !== next.bank.length) assert.fail("LAYOUT_TAG_ONLY:QUESTION_COUNT");
+  const changes = [];
+  base.bank.forEach((before, index) => {
+    const after = next.bank[index], ordinal = index + 1;
+    if (!same(Object.keys(before).sort(), Object.keys(after).sort())) assert.fail("LAYOUT_TAG_ONLY:QUESTION_KEYS:" + ordinal);
+    for (const key of Object.keys(before))
+      if (key !== "layoutTag" && !same(before[key], after[key])) assert.fail("LAYOUT_TAG_ONLY:QUESTION_VALUE:" + ordinal + ":" + key);
+    if (Object.hasOwn(before, "layoutTag") && (typeof before.layoutTag !== "string" || typeof after.layoutTag !== "string"))
+      assert.fail("LAYOUT_TAG_ONLY:LAYOUT_TAG_TYPE:" + ordinal);
+    if (before.layoutTag !== after.layoutTag) changes.push({ sourceOrdinal: ordinal, fields: ["layoutTag"] });
+  });
+  const mask = text => text.replace(/(?<!\\)"layoutTag"\s*:\s*"[^"\\]*"/g, '"layoutTag": ""');
+  if (mask(base.text) !== mask(next.text)) assert.fail("LAYOUT_TAG_ONLY:TEXT_FORMAT");
+  return changes;
+}
+
 const RHS_ONLY = Object.freeze({
   "schemaVersion": "EXACT_E017_Q2_ISSUED_RHS_SOURCE_BLOCK",
   "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
@@ -1057,7 +1130,8 @@ function createIssuedApprovalObserver(api) {
     const editions = [
       { commit: OBSERVATION.observed, pins: OBSERVATION.source.after,
         changes: [{ sourceOrdinal: SOURCE_ONLY.changedSourceOrdinal, fields: SOURCE_ONLY.changedSourceFields }] },
-      SOURCE_EDITION_2372
+      SOURCE_EDITION_2372,
+      SOURCE_EDITION_LAYOUT_TAG
     ];
     const edition = single(editions, value => same(value.pins, pins(actual)), label + ": unobserved source edition");
     const head = ancestor(root, edition.commit);
@@ -1074,6 +1148,15 @@ function createIssuedApprovalObserver(api) {
         .filter(field => !same(before[field], after[field])).sort() };
     }).filter(Boolean);
     assert.deepStrictEqual(changes, edition.changes, label + ": exact known source field inventory");
+    if (edition.layoutTagOnly) {
+      // Allowed only as a layoutTag-value restoration of an already-observed edition.
+      const base = edition.layoutTagOnly.base;
+      git(root, ["merge-base", "--is-ancestor", base.commit, edition.commit]);
+      const baseBytes = immutable(root, base.commit, relative);
+      assert.deepStrictEqual(pins(baseBytes), base.pins, label + ": layoutTag-only base edition bytes");
+      assert.deepStrictEqual(assertLayoutTagOnlyEdition(baseBytes, actual), edition.layoutTagOnly.changes,
+        label + ": exact layoutTag-only change inventory");
+    }
     return { commit: edition.commit, pins: edition.pins, changes, beforeBank, currentBank };
   }
   function assertOriginalReceiptSourceEdition(root, profile, relative, issued, actual, label) {
@@ -1470,7 +1553,10 @@ function createIssuedApprovalObserver(api) {
     assert.deepStrictEqual(input.question, edition.currentBank[ordinal - 1], label);
     const q2Change = single(edition.changes, value => value.sourceOrdinal === ordinal,
       label + ": exact observed Q2 source change");
-    assert.deepStrictEqual(q2Change.fields, SOURCE_ONLY.changedSourceFields, label + ": known Q2 image/layout change only");
+    // Each edition pins its own exact Q2 net field set; only the layoutTag-only edition differs
+    // (Q2 layoutTag was restored to the issued value, so it is no longer a net change).
+    assert.deepStrictEqual(q2Change.fields, edition.selectedQ2Fields || SOURCE_ONLY.changedSourceFields,
+      label + ": known Q2 image/layout change only");
     const expectedPlanReason = api.sourceFingerprint(input.question) === identity.sourceFingerprint
       ? "NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED" : "IDENTITY_SOURCE_FINGERPRINT_MISMATCH";
     return { ...kept, expectedPlanReason, declaredInputs: {
@@ -1867,4 +1953,5 @@ function createIssuedApprovalObserver(api) {
 }
 module.exports = { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
   readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
-  readOriginalReceiptSource, assertOriginalReceiptSourceBytes, assertM2E006TypedProfile };
+  readOriginalReceiptSource, assertOriginalReceiptSourceBytes, assertM2E006TypedProfile,
+  assertLayoutTagOnlyEdition, SOURCE_EDITION_2372, SOURCE_EDITION_LAYOUT_TAG };
