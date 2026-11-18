@@ -26,3 +26,16 @@ test('layoutForce keeps a one-column question and is a render-only field', () =>
   assert.equal(layers.isRenderOnlyField('layoutForce'), true);
   assert.equal(N.renderQuestionLayout(null), null);
 });
+
+test('promotion only helps height-limited questions and the authority path promotes clipped ones instead of hiding them', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const slot = fs.readFileSync(path.join(__dirname, '../archive/equal-slot-engine.js'), 'utf8');
+  assert.match(slot, /byWidth/);
+  assert.match(slot, /!byWidth && canPromote/);
+  assert.match(slot, /overflowReason/);
+  const materializer = fs.readFileSync(path.join(__dirname, '../archive/layout-materializer.js'), 'utf8');
+  assert.match(materializer, /clippedExamBoxes/);
+  assert.match(materializer, /LAYOUT_OVERFLOW/);
+  assert.match(materializer, /promoted\.add\(index\)/);
+});

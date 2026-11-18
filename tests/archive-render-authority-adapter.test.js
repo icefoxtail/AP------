@@ -30,20 +30,20 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter']) {
     const version = {
       mathjax_render_loop: '20261116-enclosed-latin',
-      'layout-materializer': '20261117-cont-label-1',
+      'layout-materializer': '20261118-auto-promote-1',
       'solution-render-executor': '20261118-figure-ratio-1',
-      'exam-render-executor': '20261118-figure-ratio-1',
+      'exam-render-executor': '20261118-auto-promote-1',
       'question-image-readiness': '20261106-output-performance-1',
       'layout-authority': '20261009\\.1',
       'screen-runtime-adapter': '20261116-polish-1',
       'screen-runtime': '20261106-output-performance-2',
-      'render-state-normalizer': '20261118-figure-ratio-1'
+      'render-state-normalizer': '20261118-auto-promote-1'
     }[script] || (script === 'snapshot-contract' ? '20260923\\.1' : '20260911\\.5');
     assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
   }
   assert.match(engine, /solution-render-executor\.js\?v=20261118-figure-ratio-1/);
   assert.match(engine, /answer-render-executor\.js\?v=20261029-sections-1/);
-  assert.match(engine, /exam-render-executor\.js\?v=20261118-figure-ratio-1/);
+  assert.match(engine, /exam-render-executor\.js\?v=20261118-auto-promote-1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);

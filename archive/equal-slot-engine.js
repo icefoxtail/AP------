@@ -217,13 +217,14 @@
             let fit = selectFit(r.candidates, r.slot, r.minScale);
             const slotNode = r.box.parentElement;
             const item = state?.itemByBox.get(r.box);
-            if (fit.belowMin && canPromote && r.span === 1 && item) promote.push(item);
+            // 한 단 전체는 칸 높이만 두 배로 하고 폭은 그대로라서, 폭이 모자란 문항(칸보다 넓은 표·그림)은 올려도 도움이 안 된다. 높이가 원인일 때만 올린다.
+            const widthScale = Math.min(1, r.slot.width / fit.width);
+            const byWidth = widthScale < r.minScale - 1e-9;
+            if (fit.belowMin && !byWidth && canPromote && r.span === 1 && item) promote.push(item);
             else if (fit.belowMin) {
                 // 글자를 10.8px 밑으로 줄이지 않는다: 가장 작게 만든 후보를 최소 배율로 놓으면 칸을 넘친다(세로로 넘치는 쪽은 안전하다).
                 // 단 가로로 넘치는 문항(칸보다 넓은 표·그림)은 칸을 키울 수 없고, 가로 넘침은 렌더 전체를 막는 공통 게이트(S12)에 걸려
                 // 시험지가 아예 안 열린다. 그래서 가로가 들어가는 배율까지만 줄이고(글자는 10.8px 밑이 될 수 있음) 같은 LAYOUT_OVERFLOW로 보고한다.
-                const widthScale = Math.min(1, r.slot.width / fit.width);
-                const byWidth = widthScale < r.minScale - 1e-9;
                 fit = { ...fit, scale: byWidth ? widthScale : r.minScale, status: 'overflow', overflow: true, overflowReason: byWidth ? 'width' : 'height' };
                 slotNode.dataset.layoutOverflow = '1';
             } else delete slotNode.dataset.layoutOverflow;
@@ -344,7 +345,8 @@
                 }
                 if (markedEmpty && visibleSemanticContent(box)) add('EMPTY_SLOT_HAS_CONTENT', { page: pageIndex, slot: slotIndex });
                 const bounds = footprint(box, geo);
-                if (slot.dataset.layoutOverflow === '1') warn('LAYOUT_OVERFLOW', {page:pageIndex, slot:slotIndex, sourceRef:slot.dataset.sourceRef || '', number:(slot.querySelector('.q-num')?.textContent || '').trim(), bounds, rect, fit:JSON.parse(box.dataset.equalSlotFit || 'null')});
+                // 의도: 넘친 문항은 CONTENT_OUTSIDE_SLOT으로 시험지를 막지 않고(막으면 시험지가 안 열린다) 진단(LAYOUT_OVERFLOW, outsideSlot)과 교사 화면 표시로 남긴다.
+                if (slot.dataset.layoutOverflow === '1') warn('LAYOUT_OVERFLOW', {page:pageIndex, slot:slotIndex, outsideSlot:outside(bounds, rect), sourceRef:slot.dataset.sourceRef || '', number:(slot.querySelector('.q-num')?.textContent || '').trim(), bounds, rect, fit:JSON.parse(box.dataset.equalSlotFit || 'null')});
                 else if (outside(bounds, rect)) add('CONTENT_OUTSIDE_SLOT', {page:pageIndex, slot:slotIndex, bounds, rect});
                 auditSvgViewBoxes(box, add, pageIndex, slotIndex);
                 for (const node of [box, ...list(box, '*')]) {
