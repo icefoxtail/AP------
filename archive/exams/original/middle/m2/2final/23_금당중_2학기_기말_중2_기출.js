@@ -483,7 +483,11 @@ window.questionBank = [
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "그래프의 공통 교점으로 계수 복원",
-    "decisiveStep": "교점(1,-2)을 각 직선식에 넣어 a,b를 따로 결정한다."
+    "decisiveStep": "교점(1,-2)을 각 직선식에 넣어 a,b를 따로 결정한다.",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 y=x−3과 y=−4x+2가 그려져 있고, 두 직선이 점 (1, −2)에서 만난다. 교점에서 x축과 y축에 점선이 그어져 1과 −2가 표시되어 있다.",
+    "solutionImageCaption": "교점(1,−2)은 두 방정식을 모두 만족한다. x−ay=3에 대입하면1+2a=3에서a=1, bx+y=2에 대입하면b−2=2에서b=4. 실제 두 직선은y=x−3,y=−4x+2이며a−b=−3. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

@@ -750,7 +750,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q14",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-solution.plan.json",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 수직선 위에 0부터 4까지의 닫힌 구간이 표시되어 있고, 그 안에 점 3이 있다.",
+    "solutionImageCaption": "f(x)=(x−3)²−2이므로 최솟값이 −2이려면 폭 4인 구간 [t,t+4]가 x=3을 포함해야 한다. t≤3≤t+4에서 −1≤t≤3이므로 답은 ② −1≤t≤3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1080,7 +1084,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q20",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 수직선 두 줄에 각각 1, 3/2, 3, 7과 1, 3, 5, 7이 표시되어 있고, 첫째 줄에는 3/2과 3 사이의 거리가 표시되어 있다.",
+    "solutionImageCaption": "예: a=3/2일 때 두 구간의 최댓값과 최솟값이 같아지고, a=5이면 조건 (나)를 만족하지 못한다. 1≤a≤2이고 f(−1)=(a+1)²의 최댓값 9와 최솟값 4의 합은 13이므로 답은 ④ 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

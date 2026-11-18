@@ -345,7 +345,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 줄의 근 −3, 6을 각각 왼쪽으로 2만큼 옮기면 둘째 줄의 근 −5, 4가 된다. 두 근의 곱은 따로 계산한다.",
+    "solutionImageCaption": "첫째 줄의 근 −3, 6을 각각 왼쪽으로 2만큼 옮기면 둘째 줄의 근 −5, 4가 된다. 두 근의 곱은 따로 계산한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -567,6 +571,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 [−3, 2] 안에 대칭축의 위치 T=1이 있다. 왼쪽 끝점 L은 축에서 4, 오른쪽 끝점 R은 1만큼 떨어져 있다. 따라서 최솟값은 a−1, 최댓값은 a+15이다.",
+    "solutionImageCaption": "구간 [−3, 2] 안에 대칭축의 위치 T=1이 있다. 왼쪽 끝점 L은 축에서 4, 오른쪽 끝점 R은 1만큼 떨어져 있다. 따라서 최솟값은 a−1, 최댓값은 a+15이다.",
+    "solutionImageSize": "full"
   }
 ];

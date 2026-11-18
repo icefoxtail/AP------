@@ -574,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 높이 4에서 두 포물선 y=(x+1)²과 y=(x−6)² 위의 점 A(1,4), B(8,4)가 선분 AB로 이어져 있다.",
+    "solutionImageCaption": "두 포물선의 오른쪽 가지에서 같은 높이 t인 점을 고른다. A의 x좌표는 −1+√t, B의 x좌표는 6+√t이므로 AB=(6+√t)−(−1+√t)=7이다. 그림은 t=4인 한 예로 A(1,4), B(8,4)를 나타내며 높이를 4로 제한하지 않는다. 원본 그림의 B도 오른쪽 가지에 있다. 정답 ④, 7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

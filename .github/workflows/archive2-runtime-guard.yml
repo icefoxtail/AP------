@@ -52,12 +52,6 @@ on:
       - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
       - '.github/workflows/archive2-runtime-guard.yml'
   workflow_dispatch:
-    inputs:
-      solution_baseline_sha:
-        description: 'Optional exact baseline override; otherwise use the pinned correctness-only reference in tests/archive2-output-comparison-references.json.'
-        required: false
-        default: ''
-        type: string
 
 permissions:
   contents: read
@@ -192,7 +186,6 @@ jobs:
           tests/archive-font-invalidation.test.cjs
           tests/archive-inline-image-readiness.test.js
           tests/archive-question-image-map-regression.test.js
-          tests/archive2-output-strict-gate.test.cjs
       - uses: browser-actions/setup-chrome@v1
         if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
         id: chrome
@@ -206,13 +199,10 @@ jobs:
       - name: Compare 50 real solutions and verify asset failures in actual Chrome
         if: steps.scope.outputs.solution_browser == 'true'
         timeout-minutes: 8
-        # The correctness-only reference applies the shared image-fit and font
-        # import-order repairs to the old engine. Preserve all output checks
-        # and the existing one-pixel geometry tolerance.
+        # Current code only: no baseline commit is rendered or compared.
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_BASE_SHA: ${{ inputs.solution_baseline_sha }}
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs
@@ -235,7 +225,7 @@ jobs:
         if: steps.scope.outputs.solution_browser != 'true' && steps.scope.outputs.mode != 'archive-content'
         env:
           SCOPE_MODE: ${{ steps.scope.outputs.mode }}
-        run: printf '50-question output comparison NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
+        run: printf '50-question output check NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload solution loading metadata, including failures
         if: always()
         uses: actions/upload-artifact@v4

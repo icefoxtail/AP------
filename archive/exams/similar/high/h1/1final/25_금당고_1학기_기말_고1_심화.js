@@ -253,7 +253,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=3일 때 두 기준점 사이에서는 두 거리의 합이 일정하다. 최솟값 조건은 해설에서 비교한다.",
+    "solutionImageCaption": "예: a=3일 때 두 기준점 사이에서는 두 거리의 합이 일정하다. 최솟값 조건은 해설에서 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -369,7 +373,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=2, b=1일 때 파란 포물선이 주황 x축에 접한다. 주사위 눈의 다른 경우도 같은 판별식 조건으로 조사한다.",
+    "solutionImageCaption": "예: a=2, b=1일 때 파란 포물선이 주황 x축에 접한다. 주사위 눈의 다른 경우도 같은 판별식 조건으로 조사한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -427,7 +435,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 조건을 중심 1에서 양쪽으로 거리 3 이내인 닫힌 구간으로 옮겨 정수들을 센다.",
+    "solutionImageCaption": "절댓값 조건을 중심 1에서 양쪽으로 거리 3 이내인 닫힌 구간으로 옮겨 정수들을 센다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -485,7 +497,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-08-CORE",
     "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 마주 보는 두 점을 지름으로 잡고 다른 한 점을 연결한 직각삼각형의 예이다. 같은 방법을 다른 지름에 적용한다.",
+    "solutionImageCaption": "원의 마주 보는 두 점을 지름으로 잡고 다른 한 점을 연결한 직각삼각형의 예이다. 같은 방법을 다른 지름에 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -617,6 +633,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 짧은 변 1과 두 실근에 해당하는 변을 직각삼각형에 대응시킨다. 두 실근의 합과 피타고라스 관계를 함께 사용한다.",
+    "solutionImageCaption": "짧은 변 1과 두 실근에 해당하는 변을 직각삼각형에 대응시킨다. 두 실근의 합과 피타고라스 관계를 함께 사용한다.",
+    "solutionImageSize": "full"
   }
 ];

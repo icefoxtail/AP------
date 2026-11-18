@@ -699,6 +699,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 한 점에서 두 갈래로 갈라져 상자 A와 상자 B에 이르고, A에서는 1, 2로, B에서는 3, 4, 5로 다시 갈라지는 나무 그림이다. 각 갈래 옆에 1/2, 1/3의 확률이 적혀 있고 오른쪽에 각 숫자에 이르는 확률 1/4, 1/6이 곱셈으로 표시되어 있다.",
+    "solutionImageCaption": "상자를 먼저 고른 뒤 공을 고르는 한 번의 시행을 나누어 각 숫자의 확률을 구한다.",
+    "solutionImageSize": "full"
   }
 ];

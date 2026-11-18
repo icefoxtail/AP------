@@ -1062,7 +1062,11 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 줄의 수직선이 있고, 첫째 줄에는 −5보다 작은 부분과 1보다 큰 부분이, 둘째 줄에는 −7과 0 사이가 표시되어 있다. 각 범위의 끝은 모두 빈 원이다.",
+    "solutionImageCaption": "f의 x절편이 −5, 1이고 위로 열린 모양이므로 f(x)>0인 범위는 x<−5 또는 x>1이다. 두 그래프가 x=−7, 0에서 만나고 그 사이에서 g가 f보다 위에 있으므로 f(x)<g(x)는 −7<x<0이다. 공통부분 −7<x<−5에 속하는 정수는 −6 하나이다. 답은 −6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
