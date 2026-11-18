@@ -33,6 +33,7 @@ function engineContext() {
   });
   const context = {
     window, document,
+    APRenderText: require('../archive/render-text.js'),
     Node: { TEXT_NODE: 3, ELEMENT_NODE: 1 },
     URL, URLSearchParams, console, setTimeout, clearTimeout,
     requestAnimationFrame: callback => setTimeout(callback, 0),
@@ -120,7 +121,10 @@ test('picture choices use the same source resolution and readiness gate as quest
 
 test('inline image policy is wired through shared, legacy, layout-authority, Screen Runtime, and mixer paths', () => {
   assert.match(engine, /question-image-readiness\.js\?v=20261106-output-performance-1/);
-  assert.match(engine, /s = s\.split\(mathSegmentRe\)\.map/);
+  // wrapLatex 본문은 engine.html·mixed_engine.html이 같이 쓰는 render-text.js에 있다.
+  const renderText = fs.readFileSync(path.join(root, 'archive', 'render-text.js'), 'utf8');
+  assert.match(renderText, /s = s\.split\(mathSegmentRe\)\.map/);
+  assert.doesNotMatch(renderText, /protectedSegmentRe/);
   assert.doesNotMatch(engine, /protectedSegmentRe/);
   assert.match(engine, /await prepareQuestionImages\(root, timeoutMs, signal\)/);
   assert.match(engine, /\.q-content img, \.q-image-wrap img/);

@@ -15,6 +15,28 @@
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>'"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[ch]));
   }
+
+  function parseQuestionNo(value) {
+    if (core && typeof core.parseQuestionNo === 'function') return core.parseQuestionNo(value);
+    if (typeof value === 'number') {
+      return Number.isInteger(value) && value > 0 ? value : null;
+    }
+    if (typeof value === 'string') {
+      const match = value.match(/\d+/);
+      if (match) {
+        const n = Number(match[0]);
+        return Number.isInteger(n) && n > 0 ? n : null;
+      }
+    }
+    return null;
+  }
+
+  function matchQuestionNo(questionId, targetNo) {
+    if (core && typeof core.matchQuestionNo === 'function') return core.matchQuestionNo(questionId, targetNo);
+    const a = parseQuestionNo(questionId);
+    const b = parseQuestionNo(targetNo);
+    return a !== null && b !== null && a === b;
+  }
   function getSession() {
     try {
       const stored = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
@@ -131,11 +153,18 @@
     for (const meta of sidecar?.records || []) {
       const file = String(meta.sourceArchiveFile || '').replace(/\\/g, '/');
       bySource.set(`${file}#${meta.sourceOrdinal}`, meta);
-      if (meta.sourceQuestionNo !== undefined) bySource.set(`${file}#id:${meta.sourceQuestionNo}`, meta);
+      if (meta.sourceQuestionNo !== undefined) {
+        const qNo = parseQuestionNo(meta.sourceQuestionNo);
+        if (qNo !== null) bySource.set(`${file}#id:${qNo}`, meta);
+        bySource.set(`${file}#id:${meta.sourceQuestionNo}`, meta);
+      }
     }
     return (Array.isArray(records) ? records : []).map(record => {
       const file = String(record.sourceFile || record._sourceFile || '').replace(/\\/g, '/');
-      const meta = bySource.get(`${file}#${record.sourceOrdinal}`) || bySource.get(`${file}#id:${record.id || record.sourceQuestionNo}`);
+      const recordQNo = parseQuestionNo(record.id ?? record.sourceQuestionNo);
+      const meta = bySource.get(`${file}#${record.sourceOrdinal}`) ||
+        (recordQNo !== null ? bySource.get(`${file}#id:${recordQNo}`) : undefined) ||
+        bySource.get(`${file}#id:${record.id || record.sourceQuestionNo}`);
       const useGate = generalUse
         ? generalUse.check(core.getQuestionUid(meta || {}) || core.getQuestionUid(record), file, record.sourceOrdinal)
         : null;
@@ -231,7 +260,7 @@
     for (const [sourceFile, records] of grouped.entries()) {
       const questions = await loadQuestionFile(sourceFile);
       for (const record of records) {
-        const original = questions.find(question => Number(question?.id) === Number(record.sourceQuestionNo));
+        const original = questions.find(question => matchQuestionNo(question?.id, record.sourceQuestionNo));
         if (!original) throw markError(new Error(`${sourceFile}의 ${record.sourceQuestionNo}번 문항을 찾지 못했습니다.`), {
           file: sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: core.getQuestionUid(record), code: 'QUESTION_NOT_FOUND',
         });

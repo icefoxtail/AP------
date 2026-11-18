@@ -1,18 +1,9 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const engine = fs.readFileSync(path.join(__dirname, '..', 'archive', 'engine.html'), 'utf8');
-
-function extractFunction(name) {
-  const start = engine.indexOf(`function ${name}(`);
-  assert.notEqual(start, -1, `${name} must exist`);
-  const end = engine.indexOf('\nfunction ', start + 1);
-  return engine.slice(start, end === -1 ? engine.length : end);
-}
+// wrapLatex 본문은 engine.html·mixed_engine.html이 같이 쓰는 archive/render-text.js에 있다.
+const { wrapLatex } = require('../archive/render-text.js');
 
 test('Archive wrapLatex preserves structured table HTML while leaving its math for final MathJax typesetting', () => {
-  const wrapLatex = new Function(extractFunction('wrapLatex') + '; return wrapLatex;')();
   const source = '표<br><div class="question-table-wrap"><table><tr><td>$a$</td></tr></table></div>';
   const result = wrapLatex(source);
   assert.match(result, /question-table-wrap/);

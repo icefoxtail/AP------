@@ -136,6 +136,9 @@ const PROFILE = {
 const INBOX = '.archive-meta-register/inbox/' + PROFILE.requestId + '.json';
 const STAGED = [...PROFILE.currentRefs, ...PROFILE.extraServed];
 const LIVE = [PROFILE.approvedRequest, ...PROFILE.priorRefs, ...STAGED, PROFILE.sourceRef, PROFILE.engineRef];
+// Render engine files may change after the capture: the captured Git bytes are used, not HEAD or the working tree.
+const RENDER = new Set(['archive/engine.html', 'archive/archive2-output-bar.css', 'archive/exam-display-title.js', 'archive/archive2-tokens.css']);
+const NON_RENDER_STAGED = STAGED.filter(ref => !RENDER.has(ref.path));
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const blob = bytes => crypto.createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
 const git = (root, ...args) => execFileSync('git', args, { cwd: root, maxBuffer: 8 * 1024 * 1024,
@@ -150,11 +153,11 @@ const publicHead = str(ROOT, 'rev-parse', 'HEAD');
 const publicStatus = git(ROOT, 'status', '--porcelain=v1', '-z');
 const publicHashes = fileHashes(ROOT);
 const immutableBytes = new Map(LIVE.map(ref => {
-  const b = git(ROOT, 'show', publicHead + ':' + ref.path);
+  const b = git(ROOT, 'show', (RENDER.has(ref.path) ? ref.commit : publicHead) + ':' + ref.path);
   assert.equal(b.length, ref.bytes, ref.path);
   assert.equal(sha(b), ref.sha256, ref.path);
   assert.equal(blob(b), ref.gitBlobSha1, ref.path);
-  assert.equal(sha(fs.readFileSync(path.join(ROOT, ref.path))), ref.sha256, ref.path);
+  if (!RENDER.has(ref.path)) assert.equal(sha(fs.readFileSync(path.join(ROOT, ref.path))), ref.sha256, ref.path);
   return [ref.path, b];
 }));
 const approvedRequest = JSON.parse(immutableBytes.get(PROFILE.approvedRequest.path));
@@ -294,20 +297,23 @@ test('Current source descriptor drift is refused', t => reject(t, f => { f.selec
 test('A new HEAD with the same files but without immutable proof ancestry is refused', t => reject(t, f => {
   seal(f, null);
 }, /Q5_SHADOW_ANCESTOR/));
-for (const ref of [...PROFILE.priorRefs, ...STAGED])
+for (const ref of [...PROFILE.priorRefs, ...NON_RENDER_STAGED])
   test('Missing original/current declared input is refused: ' + ref.path, t => reject(t, f => fs.unlinkSync(path.join(f.root, ref.path))));
-for (const ref of [PROFILE.currentRefs[1], PROFILE.currentRefs[5], PROFILE.extraServed[0]])
+for (const ref of [PROFILE.currentRefs[1], PROFILE.currentRefs[5]])
   test('Live bytes cannot differ from fixed HEAD: ' + ref.path, t => reject(t, f => {
     fs.appendFileSync(path.join(f.root, ref.path), Buffer.from('\n'));
   }, /Q5_SHADOW_LIVE_PIN/));
 test('A current proof replaced in both HEAD and the worktree is still refused', t => reject(t, f => {
   fs.appendFileSync(path.join(f.root, PROFILE.currentRefs[0].path), '\n'); seal(f);
 }, /Q5_SHADOW_HEAD_PIN/));
-test('A declared runtime input replaced in HEAD cannot be borrowed from another edition', t => reject(t, f => {
+test('A later edition of a render engine file in HEAD does not block the captured bytes', t => {
+  const f = fixture(t);
   fs.appendFileSync(path.join(f.root, PROFILE.extraServed[2].path), '\n'); seal(f);
-}, /Q5_SHADOW_HEAD_PIN/));
+  assert.equal(run(f).length, 9);
+  for (const ref of PROFILE.extraServed) assert.equal(sha(fs.readFileSync(path.join(f.shadow, ref.path))), ref.sha256);
+});
 test('Same-byte live file symlinks are refused', t => reject(t, f => {
-  const full = path.join(f.root, PROFILE.extraServed[0].path), copy = path.join(f.temp, 'same.css');
+  const full = path.join(f.root, PROFILE.currentRefs[1].path), copy = path.join(f.temp, 'same.json');
   fs.copyFileSync(full, copy); fs.unlinkSync(full); fs.symlinkSync(copy, full);
 }, /(?:SYMLINK|Q5_SHADOW_SYMLINK)/));
 test('A live parent-directory symlink is refused', t => reject(t, f => {
@@ -315,7 +321,7 @@ test('A live parent-directory symlink is refused', t => reject(t, f => {
   fs.renameSync(dir, outside); fs.symlinkSync(outside, dir, 'dir');
 }, /(?:SYMLINK|Q5_SHADOW_SYMLINK)/));
 test('A dangling live input symlink is refused', t => reject(t, f => {
-  const full = path.join(f.root, PROFILE.extraServed[0].path);
+  const full = path.join(f.root, PROFILE.currentRefs[1].path);
   fs.unlinkSync(full); fs.symlinkSync(path.join(f.temp, 'missing-target'), full);
 }, /Q5_SHADOW_SYMLINK/));
 test('A shadow parent-directory symlink is refused before any writes', t => reject(t, f => {
@@ -352,9 +358,11 @@ test('The original legacy renderer route stages no new display proofs', t => {
   assert.deepEqual(run(f), []);
   assert.equal(countStaged(f), 0);
 });
-test('Unknown renderer editions are refused, including when all current proofs are present', t => reject(t, f => {
+test('A later renderer edition is not refused when all current proofs are present', t => {
+  const f = fixture(t);
   fs.appendFileSync(path.join(f.root, 'archive/engine.html'), '\n'); seal(f);
-}, /Q5_SHADOW_RENDERER_EDITION/));
+  assert.equal(run(f).length, 9);
+});
 test('Source bytes are never hydrated from the current display bundle', t => reject(t, f => {
   fs.appendFileSync(path.join(f.root, PROFILE.sourceRef.path), '\n');
 }, /Q5_SHADOW_LIVE_PIN/));

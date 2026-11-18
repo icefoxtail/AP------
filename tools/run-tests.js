@@ -35,6 +35,8 @@ const requiredCommands = [
   { label: 'tests/protected-current-ui-log-transport.test.cjs', args: ['--test', 'tests/protected-current-ui-log-transport.test.cjs'], timeout: 60000 },
   { label: 'tests/protected9-ui-log-transport.test.cjs', args: ['--test', 'tests/protected9-ui-log-transport.test.cjs'], timeout: 60000 },
   { label: 'tests/archive-completion-check.test.mjs', args: ['--test', 'tests/archive-completion-check.test.mjs'] },
+  { label: 'tests/archive-similar-md-to-js.test.mjs', args: ['--test', 'tests/archive-similar-md-to-js.test.mjs'] },
+  { label: 'tests/archive-similar-import-harness.test.mjs', args: ['--test', 'tests/archive-similar-import-harness.test.mjs'] },
   { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
   { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
   { label: 'tests/item-4slot-m1s2-problem-continuity.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-problem-continuity.test.cjs'] },

@@ -309,6 +309,11 @@
           "grade": "source_declared",
           "note": "원본 선언값을 받아들임(승인이라는 이름이지만 판정이 아님)"
         },
+        "approved_direct_judgment": {
+          "canonical": "approved_direct_judgment",
+          "grade": "judged_once",
+          "note": "유형(PT/TPL) 직접 판정 등록기(register-type-judgment.mjs)가 problemType·template 칸에만 쓰는 값. 문항마다 한 번의 직접 판정(결정 풀이 한 문장)이 정본이고 독립 재판정은 요구하지 않음. 근거는 같은 줄의 typeApproval"
+        },
         "manual_review_pending": {
           "canonical": "manual_review_pending",
           "grade": "pending",

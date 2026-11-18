@@ -76,8 +76,11 @@ test('The ledger records current production differences rather than a desired-bu
   const archive = source('archive/engine.html');
   const mixed = source('archive/mixed_engine.html');
   const clinic = source('apmath/wrong_print_engine.html');
-  assert.match(archive, /Number\.parseInt\(q\.choiceColumns, 10\)/);
-  assert.doesNotMatch(mixed, /choiceColumns/);
+  // 2026-11-18: renderChoicesHTML 본문은 두 엔진이 같이 쓰는 archive/render-text.js 한 곳으로 옮겼다.
+  // 그래서 mixed도 choiceColumns를 읽는다(원장 DRIFT_CHOICE_COLUMNS_001의 mixer 차이는 닫혔다). 원장 JSON은 당시 기록이라 그대로 둔다.
+  assert.match(source('archive/render-text.js'), /Number\.parseInt\(q\.choiceColumns, 10\)/);
+  assert.match(archive, /function renderChoicesHTML\(q\) \{ return APRenderText\.renderChoicesHTML\(q\); \}/);
+  assert.match(mixed, /function renderChoicesHTML\(q\) \{ return APRenderText\.renderChoicesHTML\(q, /);
   assert.match(clinic, /function getQuestionAnswer\(q\)/);
   assert.match(clinic, /state\.mode === 'review'/);
   assert.match(clinic, /AP_CLINIC_PREVIEW/);
