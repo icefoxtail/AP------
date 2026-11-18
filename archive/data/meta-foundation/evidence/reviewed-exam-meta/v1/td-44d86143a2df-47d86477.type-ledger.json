@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-44d86143a2df-47d86477",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_424af2aa0f28beb65e58fbdcbdf8f5377fd5fa4f4d0eaa9995edcad63955b653",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT",
+      "step": "꼭짓점(2,-4)와원점조건으로a=1을구해합-1이다.",
+      "note": "필요 TPL: 꼭짓점과 원점으로 표준형 복원. 정의: 꼭짓점(2,-4)와원점조건으로a=1을구해합-1이다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3a43a97b8fef55827ed828fbd1d553a9ccecfaa56eeb2392084c1780b87c01a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_AVOID_EXISTING",
+      "step": "x<0에서(x-3)²>9이므로위로열리고9a-4≥0이어야해a≥4/9이다.",
+      "note": "필요 TPL: 제3사분면 회피조건. 정의: x<0에서(x-3)²>9이므로위로열리고9a-4≥0이어야해a≥4/9이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e8f64b546da00dcaf5263d64e03c2faa61eece746a0e7d059b19ff3d7dea924",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": "TPL_M3_EVALUATE_EXPRESSIONS_FROM_PARABOLA_GRAPH_AND_INTERCEPTS",
+      "step": "근-1,2로a(x+1)(x-2)를복원하여a>0,b=-a,c=-2a이고f(-1)=0이라④가거짓이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ac83789dcf2e6a2f6a20a1bd7850f50737959cb9ebcb59746a4eaacb2d9e0792",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT",
+      "step": "대칭축a/8=-1에서a=-8이다.",
+      "note": "필요 TPL: 대칭축에서 일차항계수 역산. 정의: 대칭축a/8=-1에서a=-8이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_41396640724ca790c6e1eba621ca991054ec1017c73035f74bd9e1200ed0d47c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_COMMON_VERTEX",
+      "step": "첫함수꼭짓점(-2,6)을둘째식에일치시켜p=-2,q=4,합2이다.",
+      "note": "필요 TPL: 두포물선 꼭짓점 일치. 정의: 첫함수꼭짓점(-2,6)을둘째식에일치시켜p=-2,q=4,합2이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d4ea81bab2debff9383a61f21a4214063ff7b39dc3c836b6f31ed06561e3264",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_M3_GRAPH_GEOMETRY_POLYGON_AREA",
+      "step": "완전제곱꼴로꼭짓점(4,8),y절편(0,4)을얻어평행변4,8과거리4인사다리꼴넓이24이다.",
+      "note": "필요 TPL: 꼭짓점·절편 사다리꼴 넓이. 정의: 완전제곱꼴로꼭짓점(4,8),y절편(0,4)을얻어평행변4,8과거리4인사다리꼴넓이24이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

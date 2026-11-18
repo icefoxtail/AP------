@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-625644762fee-ebe05f5d",
+  "examUid": "23_제일고_2학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "2e1965219795d6d242f9432a89b65f34dbfea3e0",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+        "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_3c582c73167695999b3b479ea0af3b8f555e9f6d0befc1ee4c16911d3c6d6ccc",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "연결실패 횟수를 B(18,1/3)으로 두어 np와 npq를 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "09924bc4dafc28ab9e75e53a614c618ec41da70606c0c85d728d21cbe01316e8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_483fa0425e9bd5597f4b8ea7243f23acd4469a6e35f3e2f5d1c8610f091bb713",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY"
+      },
+      "rationale": "밀도 삼각형의 전체넓이4a를1과 같게 둔다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e3ea5ff9be6014bf13f4961a19fe199a96a38e8530fbf0c4824eacf2ba6bb7f6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fac6c179237ab452e957bbe63de44705555acf8043f9fd79b9dcd920f05dee52",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "표준정규분포의 좌우 대칭으로 음수구간을 양수구간 확률로 바꾸어 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "824bf89937702d889ae347ce6469f61d8b08f0fd39de4f84982dcc0adf9c5c7e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_19e18ccacac54bf9f9aa97a6af207b63e4a0bb1c602d1253faaf5ed23b72001a",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "동전 앞면횟수의 이항 평균·분산에 Y=2X-1의 변환을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "89a4546bcc7e5529f599347f91eba450936088c16431d2bbbf897315be0336c5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fa920845bcdb9f3c59e526d9a652cb2d9c0e18d25b3a961c84aab4d07f4bfb40",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "이차모멘트에서 이항분산을 복원해 np와 npq로 모수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "824f1292bdc3a7279b43dae5d7e94ec3202f898228b5251691b92bce9d9578bf",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_54d1387f46828336cd0c6cad0359f554bcd8876ef5f1acf7905f094b48294249",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "연속된 극단 이항확률의 비로 p를 정하고 평균·표준편차를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "2b41c548b5ecacce2fc2066e222f07b9399dd7ab1c245fd902fdb491f7759bd0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_95881dd9ef4fdf8a71227678b48694be2c5edc0931fc1571858faa9d78fb00cf",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "질량함수를 B(100,1/5)로 읽고 분산에1/4을 곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "6406d2da294873d8eb11a9760f9b6f6a649507121e72e04a764e9c71d0899f43",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_67ead6d9796dc90f8456ca813f264482459ce3a43d8404e876dc9f0b707814a4",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY"
+      },
+      "rationale": "각 후보 함수의 비음성과 전체넓이1을 검사한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "93cd3602fcfd0c5e08b542683efe7d08d4d1100fe42abf85127c8e0da93e769e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ebac68dc9073d692f726ae252c5f2491dfb6304ac202ba0fbcafbdd8779f04ab",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "분산/평균에서1-p를 구한 뒤 np=6으로 시행횟수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "af7d67f7722a6ba5d3940e8a65a9b9a366f069c45ec5e0cb42352a214135231f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_74d1b187e7124c4361cf4231e646771a4fb4aa26cd037fbd896e0944ed9adab2",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "조합확률 가중제곱합을 이항 이차모멘트로 보고 npq+(np)²를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "9e628fda7c4522f67cf252c783fbbefe91dbcf3a0bada499b16fc2abe2da4fe3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_811553b968dca13e58160f5354c96cff0f200668cd3c9fb0934dfc2021d96cb2",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "rationale": "한 시행의 좌표증분 기댓값을 각각 구해20회에 대해 선형적으로 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "9ca6828011bbc0067577c4f16c7fa9e5dbe8c1e8d721a9ffe732fc1f24aebadc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_487881e6628b99e94edb68c31ef470a586afcba3184128d8ae74141c33e98898",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+      },
+      "rationale": "빨강 개수별 조합확률로 질량함수·분포표를 구성한 뒤 모멘트를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1d9772df290c488ac72853fc3e7d9832e4c3d57fb6e78a2d4525715d54a81982",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-625644762fee-ebe05f5d.type-ledger.json",
+          "sha256": "ed742d378ceef2f238b9b938d19dd6cec6283bd52e5d45ae3083ceea14eae2c0"
+        }
+      ]
+    }
+  ]
+}

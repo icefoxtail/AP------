@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-61ea58d4389d-f47cc96d",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_명제_중단원마무리_고1/미래엔_공통수학2_명제_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bc53fe1decb1a87f44aad00761779f8554fc9ece64b8af71a27b9351b3ca4d03",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+      "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+      "step": "변수나 주관적 기준 없이 진릿값이 정해지는 문장만 명제로 골라 √4=2와 26의 나눗셈성을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b190225397a269177993f9f961d68e26b63312bcab81fad2a4df2e8d7b7516a",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+      "step": "p의 근은 2,4이고 q는 x≠3이므로 U 안에서 진리집합과 여집합을 나열한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c9e65758b6d44c480f5ddf4de34ddc79e14a760d4e3952b10da4ac476241d27",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_TRANSFORM",
+      "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_CONSTRUCTION",
+      "step": "가정·결론을 교환하거나 둘 다 부정해 역·대우를 만들고 1/2와 x=0을 반례로 검사한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7dd1506db65181d85df9a59fe43cb075bf80aaf6292de6dd848e30a5dc29d7da",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "step": "각 해집합의 포함 방향을 비교하고 a²=b²에는 a=-b도 가능함을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d04a12909f595e022a6d3ecaf6563b594ea4da4df22b47aa80df3101e45c01d7",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+      "step": "모든과 어떤을 서로 바꾸고 부등호를 부정한 뒤 완전제곱과 절댓값의 비음성을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9df2587e3f6036345eaf195a698e3f6b0d747e4662f75563e34ea5f4a4d93b7d",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
+      "step": "p→¬q를 P∩Q=∅로 바꾸어 포함관계와 드모르간 법칙을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_799943d59f3cbd6e28bb76e2098d7f6b2f2cf797d0237674b349d6458872a1ee",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+      "step": "역 q→p의 해집합 포함 [-1,7]⊂[-2a,2a]에서 2a≥7을 요구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_519a128c03b120260d1cde08dbde86cf4f9c743ff264281092d32e1570806923",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
+      "step": "p의 해집합 [1,9]가 q의 해집합 (-∞,a]에 포함될 조건을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_34c22bdd583a3d287c3d4205174b3e92dd956f71644cee76c7cce25ce09f8856",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOGIC_CHAIN",
+      "templateKey": "TPL_IMPLICATION_CHAIN",
+      "step": "¬r→¬q의 대우 q→r를 p→q에 연결해 p→r와 그 대우를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f710d349fe28167f59c140c626195aa60fa261eeab9ebee7be45e946b4b56b9c",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "step": "(가)의 부정으로 ax²+2x-4<0이 항상 성립해 정수 a≤-1이고, (나)가 거짓이려면 q가 전칭참이 아니므로 자연수 b≥5이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a9f7fb9b522527ff1870e64661f083ba8aa3fa61929103b30cfc835e31288e34",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "step": "t=x²+y²+1로 놓아 식을 t+25/t+(x-2)²-5로 고치면 하한 5가 x=2,y=0에서 달성된다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    }
+  ]
+}

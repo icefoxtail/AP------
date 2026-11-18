@@ -1,0 +1,250 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-6deebf74735a-94589447",
+  "examUid": "26_제일고_1학기_중간_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "fe6fc8eb7b2b07758f591a38106fb1c1030d76c8",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+        "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a8a427125249ae8d5e0e18c81a21b8faf8f759715a0ed7bfd47730e47afe534f",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPONENT_CALCULATION",
+        "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION"
+      },
+      "rationale": "세제곱근 곱과 중첩 근호를 같은 세제곱근의 배수로 정리한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "935e920f6566cd728ffda403f8d7caa497474968db628b856b0e5374470b0014",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c00ef17631acb104a3f44cb1851557c6120e55478734720823de95e1ebd883f0",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+        "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT"
+      },
+      "rationale": "음수 밑에서 유리수 지수법칙을 무조건 적용한 등식과 양의 네제곱근 정의를 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "ef4e775eaf8517058e845b236a273b66c019dc8ba25c79252d7a74257fa55d08",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fd60b7bb0c5cf6750afa9f689f232b566743aba15d902d40c50b25e5d0a71891",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+        "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC"
+      },
+      "rationale": "넓이를 호 길이와 반지름의 곱으로 써 반지름을 구한 뒤 중심각을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "a78d569453a70058a57960c3e772ad323e03bcaf772558ff90828fc03ab27fd1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4c5b918e1c7715af8217f4a639678a4508228187b725e06bab7d79aeb0e566bb",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+        "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN"
+      },
+      "rationale": "로그의 진수 양수·밑 양수·밑 1 제외 조건을 합쳐 정수해를 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "3ea7ac981687b380842ae39196736aacdcc3a2078e1da4474e0627941ba88bae",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ccfceb99fe3647ba9d893ec724add7767100e685731eff3f239699c359a71b97",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+        "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY"
+      },
+      "rationale": "사인·코사인의 합과 제곱합에서 두 값의 이차방정식을 만들고 사분면으로 구별한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "43494c7bbec169387dd20cb67222055ff8d63f5aace1ae005dccf8f604b24453",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cae94c5bb02a61470b8c4fe4dfb6d24995de9a60e3aea2c68f9c4f3792d1558d",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_APPLICATION",
+        "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE"
+      },
+      "rationale": "공통 거듭제곱값의 로그로 지수를 나타내고 역수 관계식에 대입하여 k를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "d03736d3cfc834125737df467cd403aa7595f75b58011d5284fe0ac464189ae3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6436294d78b15d2211c1263c84a86af0ca8c0f0d545c4fb9ac9ca4adeed7ef6f",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+        "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER"
+      },
+      "rationale": "로그 역수 관계를 양수 x로 치환하고 밑변환으로 목표 로그를 x의 유리식으로 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "dcc52c1c9963ad6e8cd01db6a11cbca8ac84298a8edaddbcdd4e90f4519f043f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_723f7521a9c7f1781d8a34f9461c927db5cacc6661b6b5d878bd5ae87239b265",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+        "templateKey": "TPL_VARIABLE_EXPONENT_LOG_INEQUALITY"
+      },
+      "rationale": "원 위 점의 거리 범위를 로그식으로 환원하여 가능한 자연수 m과 각 거리의 두 점을 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "475a79348aa94400671a7e78083c9fb9b149105f9d0381c8f0c0c96b79f452b1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7413eebbc7a44a35b34d2aace6323d350de6d71dd203857b5cc8b02a28a72f44",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION"
+      },
+      "rationale": "수평선과 로그곡선의 교점 좌표를 구하여 사다리꼴 밑변과 높이를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "adf87dc5d6b7adb5cd9f51fcb3d39707be1a8db7d81dcecb6f2e65d2d87a89b9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-94589447.type-ledger.json",
+          "sha256": "b7045fb7ee11b540763494a094cd7da97030120fc5c49103ef217afe288fe095"
+        }
+      ]
+    }
+  ]
+}

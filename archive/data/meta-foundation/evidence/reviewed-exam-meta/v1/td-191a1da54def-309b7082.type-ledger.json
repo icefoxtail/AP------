@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-191a1da54def-309b7082",
+  "sourceArchiveFile": "similar/high/h2/2mid/25_제일고_2학기_중간_고2_수학II_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fb8320429d0c4ace5a8f883b8746697214ab4fdcb00660132bd60b6cd2b7efb1",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "step": "양쪽 경계를 양수7x²로 나누면 모두4/7로 수렴하므로 조임정리를 쓴다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f1e0f6d3139b807a3676fdc1d9ac822e22d878482aed520af1bb32dc40da89c4",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_AVERAGE_RATE_ANALYSIS",
+      "step": "두 끝점 함수값의 차3을 입력변화3으로 나눈다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_503b5e81518acec0927ae823db9051a77985297b9e5d88bf21a556716ae5fa1c",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_RATIONALIZATION",
+      "step": "근호항의 차를 켤레식으로 유리화하여 x²를 약분한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_75bfe450b0866d84602ba81237211c76b8814a700da956918acf58d1a116ef06",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "step": "그림의 좌우값을 합과 곱에 각각 적용하고 이동 입력의 접근방향까지 비교한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4a4e440d681c7af51e65464a99500ce291b705e7620251ec286de985574d5522",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "step": "두 양의 부호변화 구간의 근과 홀함수 대칭근 및 원점근을 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_736ce9105620c330d02e5bdfb9ff659eb34b49d09c72fcb2bd7737e35ec0e673",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "홀함수 성질과 분모인수로 주어진 극한을 f'(2)로 환원한 뒤 제곱차 극한을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_263d861dfff244144d4204587c3cbd7ab8b85a7949b0689ee6bb6315d8c94d9f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "step": "경계의 좌우미분계수와 함수값을 동시에 맞추어 c,d를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_79243bf49521f176973567f5df9f373da577574b7a5e81e8f3bcdd1d525ad8cb",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "step": "직선과 근호함수의 교점개수 변화점0,9/4를 찾고 이차인수의 영점으로 점프를 상쇄한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a2ad2ac37ccd6ac6075510cc9bd8705e3d5e7ba768de54411ec4757ba6ed8da3",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "step": "연속인 두 함수 선택이 교점 한 곳에서만 바뀌어야 미분불가능점이 한 개이므로 네 가지 전환을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_39fef08b242364aaaad48f52a14a9452b2133ad494e1eef8f0c3e4257aa2520e",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+      "step": "접선으로 f(1),f'(1)을 고정한 이동삼차식에 주어진 함수와 도함수의 값관계를 대입하여 남은 계수를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ed54e5e81999859d1ae455e32c9a9e61b19d662cabffbb749e8ff3c9bea8e02a",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "step": "모든 실수에서 분모의 근호가 양수여야 하므로 내부 이차식의 판별식이 음수인 조건을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_490262f43a8fd6f612ee9e51ecffb0e020b9dd4d05fb4afdb6e4ee2760ce33ee",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "중심직선거리로 반지름을 구하고 원점최대거리=중심거리+반지름을 매개변수로 나타내 극한을 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_02ad1f9cee84be35d2ac42f9b31d728aa5b427e17dd377412af8171fa7865a3d",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+      "step": "함수도함수 항등식의 최고차항으로 차수를 제한하고 이차계수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ba2685ad054eed7bbd0d1cf41173d74c7d60eb1364219723c5175871489542d4",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+      "step": "접선기울기를 도함수 이차식으로 나타내 최소점2를 찾고 그 접선의 절편을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-2mid.jsonl"
+    }
+  ]
+}

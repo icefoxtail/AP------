@@ -1,0 +1,602 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-69316de4be3d-b529ede4",
+  "examUid": "23_연향중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/23_연향중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "1734691f43b4384da8298ae1ea265afa1b5e9f0d",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+        "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2ceeafa1e4e8c44c1b9a3326a6f660f041ffd59c72b0cd3c73260323e8a559a1",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION"
+      },
+      "rationale": "등식을 전개·이항해 이차항이 남고 삼차항이 없는 것을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "d3261aa68be1702243b373eb76eac22f3fc77fa1b8a69945fa145b514cd15ea2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_79c9340b6e77512a2f22812f9f85881c7afe5cbc05073e78e36f62ac6c0b3e74",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION"
+      },
+      "rationale": "이항 후 이차항계수a-1이0인 a=1을 제외한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "228912386b7e0c15f4de90eefc41eae8c098a28d3497864ed7e52012629db399",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_02ab2032d4b3181bcad3007cfc03454a247abe4d334618441faf876eba1399f2",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION"
+      },
+      "rationale": "대괄호의 수를 각 식에 넣어 좌변0을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "3104c2d378caabea1ff6975b0ba95d358219f49ff48e46c924451843b99ed0a0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7fe011882448d9bf7e2472b06682b31d78ea155f890138456e9eeef4a6e69c3f",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+        "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE"
+      },
+      "rationale": "전개·이항한 x²-5x+6을 (x-2)(x-3)=0으로 풀어 근을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "95adb6955de74f335fde43e6802dc6065e12283a642003737fc321cdaf2c33ad",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7977bda7eb40954c23226366a9e52559f166a9349070ce3aff27256de80e3d3a",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_COUNT"
+      },
+      "rationale": "중근 조건a²=4b를 만족하는 주사위 순서쌍(2,1),(4,4)을 세어 확률로 바꾼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "ad9e64feb53071388f1baec66b1824bbcf956262a1354c77594e2bea6969c28a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5c44596892e5930a9c4422f1bd4a96c7a5acd361a7030f112bb70594f8faf76c",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_ROOT_COEFFICIENT"
+      },
+      "rationale": "주어진 켤레근의 합4와 곱-6을 원래 이차식 계수와 대응한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "ad09e539e0503baa5d46f4e5f57cba30e449e1270548621b96c1bc2f69010eee",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a31ac9953d4552e72d6fd3d0dcacb07c033c4620e65956de706dfd87a619b207",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_ROOT_FORMULA"
+      },
+      "rationale": "근의 공식으로 큰 근(3+√11)/2를 골라 목표식에 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "cf06a2712c43d99a8fd59b580bbb72d2cadc332c381ba42f6d7ca782fcd6d368",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_59098c26b1dd593f28f96bc3d2a268ee81b1409cccee82d1f99b73a43c1e4b62",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_ROOT_COEFFICIENT"
+      },
+      "rationale": "두 근2,-5의 합과 곱으로 a,b를 결정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "50f371561d1226340f160f041a1dd87c1eb9fd54058885568e47e31004650570",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b52d60faee7cfacfba615abca137457d5c104fbf16c4a784286eef4401ef64cf",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM"
+      },
+      "rationale": "각 실생활 관계식을 세워 대각선수 x(x-3)/2가 이차식임을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "07825f997a818aec1faade810f816e66d1fd7b3840719ca6329ebb6ee823a738",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e17435a27efca5132a25cde6bb80a3bdb5507f315bb906de0ec0b62c033b6069",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION"
+      },
+      "rationale": "x=2를 함수식에 넣어 f(2)=-1을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "849361bcd3fcb8ce0130679de7477576855d8e69664049477e264dbbf9e5a5d5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fae70d3a1fe79cf947fa48986413bd97c328545d430c48cbc7833f43c7f044b4",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_WIDTH"
+      },
+      "rationale": "각 이차항 계수 절댓값을 비교해 최대3인 식을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "3b46d7f0c33a5164bc9de77cc048f10d66d0c659dd02fc05768b521833d8a1d6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0df320ff7f4aa87ac1cd32cb0aed95a49ff332075a8a0c882a1a4d317314ac72",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS"
+      },
+      "rationale": "y=-3x²의 축·꼭짓점·볼록방향·폭·대칭 진술을 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "80efb64395b7c1a7fd3882b45f0882fb1a7b8b0d25f2e2a9845bb168dfd38fa2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8b726cc7a05bb8f7a34b1592bac9a63f2966a9cbd5462b29b71a8fbb4ad3ba3f",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_REFLECTION"
+      },
+      "rationale": "x축 대칭식 y=-3x²에 x=-2를 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "bd97063292e1d46f3b3cd508975943417bf70f702097353939f75414efd0fc27",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2709bcff256e69893abe4fbd1f38bd21831381a74404cd2fc26cf9b0aa878a87",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS"
+      },
+      "rationale": "표준형을 비교해 수평이동-1과 수직이동-2를 읽어 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "2d05f29d97c968935a665cd9b82639b74f327c97abe8762808e7b5a427b4bfa9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_86b8d4522f7d0309f55ce94b39dbc4e432a3467b6427559f2bd94b1058a9cbaf",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA"
+      },
+      "rationale": "표준형의 꼭짓점·축·볼록방향·폭 및 평행이동 성질을 설명과 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "85f5ca4f1447b155ffcf1ad157328b739a24d641cdfe0cadae0cc929d4042169",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_781cf83745d35a68dc451795fdb349723afb995a609d4d656ced6dc6ede5a1f6",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      },
+      "rationale": "일반형을 (x-2)²/2+1로 변형해 꼭짓점을 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "91a3852dbd12eb539801b7d2d4378fdb21dd50be93ce81df93e91966884a2a4c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e35b0881ecc381e2e379a34208b447c5aace0a4d7613e6d87bf45fa0e4f4d3bd",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT"
+      },
+      "rationale": "꼭짓점(-1,1)의 표준형에 점(1,5)을 넣어 계수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "9f1554730c4508a76a3f513bd727597d3259362d494f985beaef0adc8eef1f32",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7b3782cf621bb28662ef0a97f2f8eb677e6977bcff7b617505d2adfab15fc436",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_READ"
+      },
+      "rationale": "아래로 열린 개형과 왼쪽 대칭축,음의 y절편에서 세 계수부호를 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "a55d6d67bd8bcebdc9f7da986ba1a6c2fa1cf4eb7b688af83dc392394f2cf665",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_af4d527e28b9ee6d539dbd7bc9260d039cf48d1258f40aeef4b56c68b18bc8c8",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT"
+      },
+      "rationale": "같은 높이의 두 점 중간x=1을 축으로 정하고 꼭짓점형에 한 점을 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "0315862e4c914cd435c12d9fe2c51317b12835e545dccb63468d5e2059cc109b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_208c34d10a8a02eef1aea4cb71d468994884ae3c15dd11be75c17798a2fd39ce",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_M3_GRAPH_GEOMETRY_POLYGON_AREA"
+      },
+      "rationale": "수평이동 후 공통y절편에서 새 꼭짓점(2,1)을 정해 밑변4와 높이2로 평행사변형 넓이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "ffb4ab56d5a3bf81f48901ed878a8e364ee03749f93a0c5f75dc3b2d4969041a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_08db3e54f6ff84c42cd5cf228de52f96d7f4904f8103c28fb243a9be72e7f3e8",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_ROOT_FORMULA"
+      },
+      "rationale": "판별식40을 계산해 근의 공식을 정리한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "cd1139e7c4b91d02046abfbe1697971227daf7df182c71790dc78eb7066959ba",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_783f10f5b62402db0a4470f3818788ae0d18063889732a485f80dcb71d5a7470",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION"
+      },
+      "rationale": "접은 길이x에서 밑변50-2x와 넓이x(50-2x)=200을 세우고 가로>세로를 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "1c070b9ad7d48a50ff584db4889cb981f82611443a17bb12c6c0d8806c9ab248",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ec220827ce83117b65422b76f99c730bd33ed691c626aa97332280d5415846c5",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      },
+      "rationale": "일반형을2(x-2)²-5로 바꿔 꼭짓점·축을 읽고 y절편과 대칭점으로 그림을 그린다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "d4a1d4fbb3498db700554d5d333ab35393bb8db4afd25c260b81217e8cf72e52",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_acf35e6c2420f2290880a4ac9572aa464e1460a4374d422490117cd039ef8dd0",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_M3_CALCULATE_TRIANGLE_AREA_FROM_VERTEX_AND_Y_INTERCEPT"
+      },
+      "rationale": "꼭짓점(1,3)과 y절편(0,4)에서 BO=4와 축까지 거리1로 삼각형 넓이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "e4ac593bc29b7a37e761123335cb02a3647104b234d94b3d0ef7ea876d9b4ac2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-69316de4be3d-b529ede4.type-ledger.json",
+          "sha256": "7fe79b01e97ba9e2b38bdec341a44c401f47daa2853c16f1150b90c8c4586bdc"
+        }
+      ]
+    }
+  ]
+}

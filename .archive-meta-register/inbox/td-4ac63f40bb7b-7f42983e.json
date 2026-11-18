@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-4ac63f40bb7b-7f42983e",
+  "examUid": "비상_대수_지수로그함수_중단원_고2_유형확인",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_중단원_고2_유형확인.js",
+  "expectedSourceBlobSha1": "ed4d96130ad965afd38b5f21b21fd26a52e1052e",
+  "expectedQuestionCount": 17,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+        "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e81d88153ba683b55e79ce106c86482b187153aba4026c097b6668112e06c331",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+      },
+      "rationale": "지수·로그 그래프의 평행이동을 적용하여 수평점근선y=−2,수직점근선x=2와 개형을 정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "8bba322e1c3edb6efcaa40dd2d58c52f6a55294b6c82cbb5c6e58e2ef4cd8861",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_96abe1931aaf0b55895161e4782bc03b37f38d0eadc0eb3c1f9861f15622bc87",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+        "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON"
+      },
+      "rationale": "로그 진수를√5,√6으로 맞춰 증가성을 비교하고 지수 소문항은 같은밑의 감소성을 쓴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "584abe9a26dd3a1e74c7e3a41e0bfc421a34b73e2b283b3c849878120ed4e49b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_679126a3cc864eacd10c039a52f055fa2be1c75e71b1f771d06805fb976a6a37",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+      },
+      "rationale": "각 함수의 증가·감소성을 확인하고 구간0,2의 양끝값을 대입한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "8a6204fa03846bd46086007d9016b5e1f3f3c7d42c55cc358c8c611345833add",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ad15d3e01a7de1e742cf82861d1fd595fc4c1da9885377cd618cee585974b9ba",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+        "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON"
+      },
+      "rationale": "로그값을 정수2와 비교하고 근호 소문항은 세 값이0.2임을 직접 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "db2baf35e134e6dcbce21f0a7c8a695a4b13c730a911afccd6b4170c4ba682a8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_57f4c00081e830ed6014a1d3460cb5db047e94eeb6782635c0cb44ade07689d7",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+        "templateKey": "TPL_H22A_01_LOG_DEFINITION_073"
+      },
+      "rationale": "높이2를 log3x에 대입하여 x=9를 얻고 수선발의 같은 x좌표를 쓴다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "1bebebd13ee694961ee88c95ef9beb45f9d28581d51ecf30c1c3bb541e3f5347",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d35a78c3c2a5927d93925514bf93552337555c440140d52e808876bf97c50186",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+        "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND"
+      },
+      "rationale": "0.95^n≤1/2에 주어진 근사로그를 취하고 음수−0.02로 나누어 n≥15를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "66223a9f865f149849605b714981261cd8cc7053608a74b67309949a5dedb53c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_321f55ba1bf3f8a77de84c3136fab8342482f80bd6762c2187be13fe6c0e01b6",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_APPLICATION",
+        "templateKey": "TPL_LOG_APPLICATION_LOG_MODEL"
+      },
+      "rationale": "거리20과 비율1/4에서 c=10을 구한 뒤 거리50의 비율1/32를 백분율로 바꾼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "e05e30a38b5f4ab2b4fe2110c57406d3465718d59e077dd84cad9e3b1052c0ad",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4ac63f40bb7b-7f42983e.type-ledger.json",
+          "sha256": "c10cced3f4767ea6917b1e086dbccf1d9328cdf7ee8babd2a2f52ca583952a49"
+        }
+      ]
+    }
+  ]
+}

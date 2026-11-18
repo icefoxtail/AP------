@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-21e704e7dd26-cb6eca99",
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e15a120f5eeba03474064701c98753b588ca30cbc2658867e7cf183ad4041d12",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_LINEAR",
+      "step": "각 식을 y=ax+b로 정리하되 a≠0을 검사하여 -x/2+3과3x-3만 일차함수로 고른다.",
+      "note": " 새 TPL 제안: 함수와 일차함수 판별의 직접 풀이. 정의: 각 식을 y=ax+b로 정리하되 a≠0을 검사하여 -x/2+3과3x-3만 일차함수로 고른다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_83242ba62a5b8f2abafa733e98a15b60f429638cd248c6917d6cc819e2325bed",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+      "step": "그림의 수직선을 x=-2로 읽고2x-1=k에 대입하여 k=-5를 구한다.",
+      "note": " 새 TPL 제안: y축에 평행한 직선의 방정식의 직접 풀이. 정의: 그림의 수직선을 x=-2로 읽고2x-1=k에 대입하여 k=-5를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c81421ec67b7f04a3ed86ab76b03e02b594283409cbc57eff85c2492a2a29e73",
+      "sourceOrdinal": 11,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "3의배수4개와4의배수3개를 합한 뒤 공통배수12를한번 빼서6개를 센다.",
+      "note": " 새 PT 제안: 겹치는 선택의 포함배제. 두 범주에 속한 선택 수를 더한 뒤 공통으로 세어진 항목을 빼 중복 없이 센다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a60b496bfdef0143d747340f4203ea2b997df3048b0304b3743e784067a695da",
+      "sourceOrdinal": 12,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "오른쪽3·위쪽3 최단방향열20개에서 끊긴 구간을 지나는 앞쪽3×뒤쪽2의6개를 빼14개를 센다.",
+      "note": "원문의심: 해설의 '끊긴 구간이 있을 때 전체 경로20가지'는 끊긴 구간을 복구한 전체를 뜻해야 한다. 최종계산14는 맞다. 새 PT 제안: 최단경로의 이동 순서 세기. 최단이동에 필요한 각 방향 이동 횟수를 정하고 이들을 배열하는 순서를 센다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_003d3c0ce857918ef50ee37ff021d6b75d36ca7480ddf644c813753f5c04a2b3",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "당첨을 하나 뽑은 뒤에는 전체9개 중 당첨3개가 남으므로4/10×3/9=2/15를 구한다.",
+      "note": " 새 PT 제안: 비복원 추출의 확률 계산. 뽑은 대상을 되돌려 넣지 않아 바뀐 전체와 성공 대상 수를 반영한 조건부 확률을 차례로 곱하고 필요한 경우를 더한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f385c722484a29e235cf35d48ed420e150ff3b3aa3d36c0ab3df0736a5a26503",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+      "templateKey": null,
+      "step": "정육각형 하나가 붙을 때 공유변 두 길이를 제거하여 둘레가8씩 증가하므로 y=12+8(x-1)=8x+4,여덟개는68이다.",
+      "note": " 새 PT 제안: 반복 도형의 일정한 증가량으로 일차식 세우기. 반복 배치되는 도형의 공유부분을 고려해 한 단계 증가량을 정하고 초기값과 단계수로 일차관계식을 만든다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}
