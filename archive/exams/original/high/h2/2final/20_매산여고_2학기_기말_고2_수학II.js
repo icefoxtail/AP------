@@ -370,7 +370,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=f′(x)가 x축과 (−3,0), (1,0)에서 만나고, 꼭짓점이 (−1,−4)로 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=x²+2x−3=(x+3)(x−1)이므로 f′는 x=−3에서 +에서 −로, x=1에서 −에서 +로 부호가 바뀐다. f(x)=x³/3+x²−3x+C에서 극솟값 f(1)=C−5/3=−4이므로 C=−7/3이고, 극댓값은 f(−3)=20/3이다. 따라서 답은 ③ 20/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -415,7 +419,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선이 점 (−1,3)에서 골짜기, 점 (1,7)에서 봉우리를 이루고, 높이 5의 점선 y=5가 곡선과 서로 다른 세 점에서 만난다.",
+    "solutionImageCaption": "도함수의 영점 ±1과 f′(0)=3에서 f′(x)=3(1−x²)이고, f(0)=5를 적용하면 f(x)=−x³+3x+5로 극값이 3과 7이다. 서로 다른 세 실근이려면 3<k<7이므로 정수 k는 4, 5, 6의 3개이다. 따라서 답은 ③ 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -583,7 +591,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 x인 좌표평면에 위치 그래프가 그려져 있고, 점 (0,−5)에서 출발해 (1,0)에서 축에 닿았다가 (2,−1)까지 내려간 뒤 (5/2,0)에서 축을 가로지른다.",
+    "solutionImageCaption": "속도를 적분하면 x(t)=−5+2t³−9t²+12t이고, 2t³−9t²+12t−5=(t−1)²(2t−5)=0에서 위치가 원점인 시각은 t=1과 t=5/2이다. 따라서 a+b=7/2이고 답은 ① 7/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

@@ -163,7 +163,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 아래로 볼록한 포물선 y=f′(x)가 그려져 있고, 가로축과 만나는 두 점 (−3,0), (1,0)과 꼭짓점 (−1,−12)이 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=3x²+6x−9=3(x+3)(x−1)이라 x=−3에서 부호가 +에서 −로 바뀌므로 극댓값은 f(−3)=27+a이다. 27+a=12에서 a=−15이므로 답은 ⑤ −15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -773,7 +777,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선과 직선 y=3x−6이 두 점 (−2,−12), (2,0)에서 만나고, 그 사이에서 곡선이 직선 위에 놓인 영역이 옅게 칠해져 있다.",
+    "solutionImageCaption": "y′=3x²−4x−1에서 접점 (2,0)의 접선 기울기는 3이므로 접선은 y=3x−6이다. 곡선과 접선의 차 (x−2)²(x+2)를 −2부터 2까지 적분하면 64/3이므로 답은 64/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -812,7 +820,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "SOURCE_IMAGE_PRESERVED_CLEAN_CROP"
+    "visualDisposition": "SOURCE_IMAGE_PRESERVED_CLEAN_CROP",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔을 중심축을 지나는 평면으로 자른 단면이 삼각형으로 그려져 있고, 그 안에 직육면체를 대각선으로 자른 단면인 직사각형이 놓여 있다. 밑변의 중점 O와 양 끝 A, B, 변의 중점 D, E, 수선의 발 F, G가 표시되어 있으며, 높이 12, O에서 B까지 8, 직사각형의 세로 변 y, O에서 꼭짓점 F까지 (√2/2)x가 적혀 있다.",
+    "solutionImageCaption": "밑면의 반지름이 8, 높이가 12인 원뿔을 중심축을 지나는 평면으로 자른 단면이다. 밑면 정사각형의 한 변을 x, 직육면체의 높이를 y라 하면 단면 직사각형의 가로변은 정사각형의 대각선 x√2이므로 중심 O에서 꼭짓점까지는 (√2/2)x이고, 닮음으로 y=12−(3√2/4)x이다. 부피 V(x)=12x²−(3√2/4)x³은 x=(16√2)/3까지 증가한 뒤 감소하므로 답은 (16√2)/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -849,7 +861,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": true,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x와 세로축 y 위에 삼차곡선이 그려져 있고, 원점 (0,0), 봉우리 (2,8), 영점 (3,0)이 표시되어 있으며, 0부터 3까지 곡선과 가로축 사이 영역이 27/2로 칠해져 있다.",
+    "solutionImageCaption": "f′(x)=−2x³+6x²=−2x²(x−3)이라 x<3에서 양수, x>3에서 음수이므로 x=3에서 극댓값 f(3)=12를 갖는다. 그림은 y=f′(x)의 그래프이고 0부터 3까지의 넓이는 ∫₀³(−2x³+6x²)dx=27/2이다. 답은 f′(x)=−2x³+6x², 극댓값 12, 넓이 27/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

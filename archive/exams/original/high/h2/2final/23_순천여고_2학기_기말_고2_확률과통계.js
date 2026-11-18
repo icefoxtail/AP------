@@ -222,7 +222,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 수직선에 I, J, K가 1, 4, 7 위치에 찍혀 있고, I와 J 사이, J와 K 사이에 각각 흰카드라는 중괄호 표시가 붙어 있다.",
+    "solutionImageCaption": "흰 카드가 수 순서대로 고정되어 있으므로 검은 카드 3장이 들어갈 틈을 고르는 문제가 된다. 그림은 예: i=1, j=4, k=7인 경우로, 1과 4 사이에 3, 4와 7 사이에 6이 들어가 조건을 만족한다. 가운데 틈이 3, 4, 5일 때 경우의 수가 각각 6, 9, 6가지이고 모두 더하면 21이다. 따라서 답은 ① 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,

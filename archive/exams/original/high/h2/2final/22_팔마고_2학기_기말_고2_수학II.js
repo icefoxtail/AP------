@@ -316,7 +316,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 y=|x|의 그래프가 원점 (0,0)에서 V자로 꺾인 모양으로 그려져 있다.",
+    "solutionImageCaption": "|x|는 x=0에서 극소이지만 좌우 기울기가 1과 −1로 달라 그 점에서 접선의 기울기가 정해지지 않으므로 (다)는 거짓이다. 극값의 정의상 (가)도 거짓이고, 열린구간 내부에서 최댓값이나 최솟값을 가지면 f′(c)=0인 (나)는 참이므로 답은 ⑤ (가) 거짓, (나) 참, (다) 거짓이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -639,7 +643,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 x 위에 위로 볼록한 위치 곡선 x(t)가 그려져 있다. 세로축 위의 출발점 (0,2)와 가로축을 지나는 점 (2,0)이 표시되어 있다.",
+    "solutionImageCaption": "x(t)=2+∫₀ᵗ(1−2s)ds=2+t−t²이고, 원점을 지날 때 t²−t−2=(t−2)(t+1)=0에서 t≥0인 값은 2이다. 따라서 답은 ④ 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1061,7 +1069,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 a=−1/2일 때, 아래 패널은 a=7/2일 때의 아래로 볼록한 도함수 y=f′(x)이다. 두 그림 모두 구간의 양 끝 x=−2, x=1에서 함숫값이 양수이고 꼭짓점이 아래쪽에 있다.",
+    "solutionImageCaption": "f′(x)=3x²+2ax+a가 열린구간 (−2,1)에서 서로 다른 두 근을 가지려면 f′(−2)=12−3a>0, f′(1)=3+3a>0, 꼭짓점 −a/3이 구간 안, 판별식 4a(a−3)>0이어야 한다. 이를 모두 만족하는 범위는 −1<a<0 또는 3<a<4이다. 따라서 답은 (−1,0)∪(3,4)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1159,6 +1171,10 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 u, 세로축 y(W) 위에 곡선 y=−u³+3u가 원점을 지나며 그려져 있고, 꼭짓점 (1,2)이 표시되어 있다.",
+    "solutionImageCaption": "겉넓이 2πr²+2πrh=k에서 h=(k−2πr²)/(2πr)이고 부피는 V=(k/2)r−πr³이다. ρ=√(k/(6π))로 놓고 u=r/ρ, W=V/(πρ³)라 하면 W=3u−u³이고 u=1에서 극대 2이다. 이때 h=2ρ이므로 답은 1:2이다.",
+    "solutionImageSize": "medium"
   }
 ];

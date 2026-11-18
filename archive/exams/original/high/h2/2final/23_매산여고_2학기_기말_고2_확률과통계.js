@@ -743,7 +743,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 평균 350인 정규분포 곡선에서 330의 왼쪽 꼬리가 칠해져 있고, 아래 패널은 평균 200인 곡선에서 228의 오른쪽 꼬리가 칠해져 있다. 두 패널 모두 아래에 z축이 있다.",
+    "solutionImageCaption": "한 병의 부피를 표준화하면 330은 Z=-2이므로 불량 확률은 0.5-0.48=0.02이다. 불량품 수는 평균 200, 표준편차 14인 이항분포를 따르고 228을 표준화하면 2이므로 P(Z≥2)=0.5-0.48=0.02. 따라서 답은 ⑤ 0.02이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

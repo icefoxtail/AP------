@@ -448,7 +448,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "상한이 변수인 적분",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 f′(x)의 그래프가 아래로 볼록한 포물선으로 그려져 있고, x축과 만나는 (−1,0), (3,0)과 꼭짓점 (1,−12)이 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=3x²−6x−9=3(x+1)(x−3)이라 x=−1에서 극대 f(−1)=5, x=3에서 극소 f(3)=−27이다. 두 극값의 합은 5−27=−22이므로 답은 ② −22이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -1265,7 +1269,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q22.png",
-    "imageAlt": "포물선과 직선 사이의 넓이 및 x=k"
+    "imageAlt": "포물선과 직선 사이의 넓이 및 x=k",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 y=f(x)−g(x)가 (0,0)과 (6,0)에서 x축과 만나고, 꼭짓점 (3,9)에서 x축에 내린 점선이 넓이를 이등분한다. 그 사이의 영역 S가 옅게 칠해져 있다.",
+    "solutionImageCaption": "교점이 x=0, 6이고 0<x<6에서 f(x)−g(x)=6x−x²>0이므로 전체 넓이는 ∫₀⁶(6x−x²)dx=36이다. ∫₀ᵏ(6x−x²)dx=18에서 k³−9k²+54=0, (k−3)(k²−6k−18)=0이고 0<k<6인 해는 k=3이므로 답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
