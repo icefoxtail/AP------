@@ -88,6 +88,20 @@ test('수식 밖 TeX 명령 바로 뒤의 태그 표지가 하위 첨자로 먹�
   assert.equal(T.wrapLatex('값 \\alpha_1 과 \\beta^2 이다'), '값 $\\alpha_1$ 과 $\\beta^2$ 이다');
 });
 
+test('인라인 <svg>와 알려진 HTML 요소는 글자(&lt;)로 바뀌지 않는다', () => {
+  // original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js 문항 16 해설: svg 안 <text>에 $수식$이 있다.
+  const svg = '<svg width="160" height="120" viewBox="0 0 160 120"><g stroke="black"><polygon points="60,40 75,25" /></g><text x="82" y="100">중심 겹침 ($x^3$)</text></svg>';
+  const out = T.wrapLatex('정육면체이다.<br>' + svg + '\n이 부분($x^{3}$)이 중복이다.');
+  assert.ok(out.includes(svg), out);
+  assert.doesNotMatch(out, /&lt;\/?(?:svg|g|polygon|text)/);
+  assert.match(out, /<\/svg><br>이 부분\(\$x\^\{3\}\$\)/);
+  // original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js 문항 21 등: 목록·center·fieldset·small·h3
+  const html = '<div class="box"><ul><li>식을 세운 경우 (2점)</li><li>$x$의 값 (1점)</li></ul></div><center><b>&lt;보 기&gt;</b></center><fieldset><legend>범례</legend>ㄱ</fieldset><small>※ 참고</small><h3>제목</h3>';
+  assert.equal(T.wrapLatex(html), html);
+  // 비교 부호로 쓴 글자는 여전히 글자다.
+  assert.equal(T.wrapLatex('a<b, x<code'), 'a&lt;b, x&lt;code');
+});
+
 test('보기 블록: 발문 중간의 [보기]는 상자로 바뀌지 않고, 줄 앞의 [보기]는 상자가 된다', () => {
   // original/high/h1/1mid/20_매산고_1학기_중간_고1_기출.js 문항 13 (옛 mixed: 발문 한가운데가 상자로 잘림)
   const mid = '세 자연수 $a$, $b$, $c$가 등식을 만족시킬 때, [보기]에서 옳은 것만을 있는 대로 고른 것은?<br>'
@@ -148,6 +162,8 @@ test('정답표: 문항 번호 (2)는 수식이 되지 않고 분수만 묶는�
   // 수식 안의 분수는 건드리지 않는다.
   assert.equal(T.formatGridAnswer('$1/2$'), '$1/2$');
   assert.equal(T.formatGridAnswer(null), '–');
+  // $ 없이 쓴 TeX 명령이 든 정답은 통째로 수식이 되므로 분수 span을 넣지 않는다 (original/high/h2/2mid/16_매산고_2학기_중간_고2_기하와벡터_기출.js 문항 17)
+  assert.equal(T.formatGridAnswer('\\dfrac{4x^2}{27}+\\dfrac{(y-1/2)^2}{9}=1'), '$\\dfrac{4x^2}{27}+\\dfrac{(y-1/2)^2}{9}=1$');
 });
 
 test('해설 줄바꿈: [학생용 보강] 바로 뒤 \\n은 영문자가 이어져도 줄바꿈이고 \\neq는 그대로다', () => {

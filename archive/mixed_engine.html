@@ -189,6 +189,7 @@
 
         .choices-compact { display: flex; flex-wrap: wrap; gap: 4px 15px; }
         .choices-compact .choice-item { min-width: 15%; }
+        .choices-grid { display: grid; gap: 4px 12px; } /* engine.html과 같은 규칙(중복) — choiceColumns 격자 */
 
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
         .choices-block .choice-item {
@@ -301,6 +302,7 @@
         .ans-cell.group-end { border-bottom: 2px solid #6b7280; } /* 4문제(한 장)마다 채점 구분선 */
         .ans-n { width: 40px; flex: 0 0 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; min-width: 0; font-weight: bold; font-size: 10.5pt; line-height: 1.5; overflow-wrap: anywhere; }
+        .ans-atomic { white-space: nowrap; } /* engine.html과 같은 규칙(중복) — 정답표 분수 줄바꿈 방지 */
 
         .page-qr {
             position: absolute;

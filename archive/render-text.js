@@ -64,6 +64,13 @@
       s = s
           .replace(/<div[^>]*class=["'][^"']*question-table-wrap[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, saveStructuralBlock)
           .replace(/<table[\s\S]*?<\/table>/gi, saveStructuralBlock);
+      // 인라인 <svg>…</svg>는 안의 글자에 $수식$이 있어도(예: <text>($x^3$)</text>) 수식 분할에 쪼개져 태그가 글자로 바뀌지 않게 통째로 보호한다.
+      // 표 안의 svg는 위에서 표와 함께 이미 보호됐다.
+      s = s.replace(/<svg[\s\S]*?<\/svg>/gi, match => {
+          const token = `__WRAP_STRUCTURAL_BLOCK_${structuralBlocks.length}__`;
+          structuralBlocks.push(match);
+          return token;
+      });
       s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
       s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
       const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
@@ -79,7 +86,7 @@
       s = s.split(mathSegmentRe).map((seg, idx) => {
           if (idx % 2 === 1) return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r\n|\r|\n/g, ' ');
           let t = seg;
-          t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+          t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tfoot|caption|tr|th|td|colgroup|col|ul|ol|li|dl|dt|dd|center|small|h[1-6]|fieldset|legend|figure|figcaption|picture|source|hr|pre|code|del|ins|mark|font|blockquote|label)(?![a-zA-Z0-9])[^>]*>/gi, m => {
               const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
           });
           t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));
@@ -464,8 +471,10 @@
       // HTML spans inside an existing $...$ segment prevents MathJax from
       // recognizing the segment and leaks literal dollar signs into the answer
       // table (notably for fractional coordinates and slope/intercept answers).
+      // $ 없이 쓴 TeX 명령(\dfrac, \begin 등)이 든 정답은 wrapLatex가 통째로 수식으로 감싸므로 span을 넣지 않는다(수식 안에 HTML이 들어가 깨진다).
+      const bareTex = /\\[a-zA-Z]/.test(raw.replace(/\\n(?![a-zA-Z])/g, ''));
       const value = raw.split(/(\$[^$]*\$)/g).map(part => {
-          if (part.startsWith('$') && part.endsWith('$')) return part;
+          if (bareTex || (part.startsWith('$') && part.endsWith('$'))) return part;
           return part.replace(/\b\d+\/\d+\b/g, match => `<span class="ans-atomic">${match}</span>`);
       }).join('');
       return wrapLatex(value);
