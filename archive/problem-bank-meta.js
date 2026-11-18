@@ -101,7 +101,7 @@
   function createSourceBoundDisplayProjection({
     meta = null, identity = null, sourceFile = '', sourceOrdinal = 0, sourceGrade = '',
     sourceFingerprint = '', assignmentFingerprint = '', gradeCourseAllowlist = [],
-    scopeParents = [], canonicalParents = [], allowContentBoundRevision = false,
+    scopeParents = [], canonicalParents = [], allowContentBoundRevision = false, textBound = false,
   } = {}) {
     const fail = reason => ({ projection: null, reason });
     const file = sourcePath(sourceFile), ordinal = Number(sourceOrdinal);
@@ -116,7 +116,10 @@
     // fingerprint (stem + choices + image, i.e. what the classification describes) still matches,
     // so the row still describes this question. That case is projected and labelled
     // CONTENT_BOUND_SOURCE_REVISED; a changed stem/choices/image stays a FINGERPRINT_MISMATCH.
-    const contentMatches = Boolean(assignmentFingerprint) && meta.contentFingerprint === assignmentFingerprint;
+    // textBound (catalog builder only): the caller already confirmed that the row describes the same stem and choices as now
+    // (text-v1 row binding, which ignores image changes), so a changed content fingerprint alone does not refuse the projection.
+    const contentMatches = Boolean(assignmentFingerprint) &&
+      (meta.contentFingerprint === assignmentFingerprint || (allowContentBoundRevision === true && textBound === true));
     const sourceMatches = Boolean(sourceFingerprint) && meta.sourceFingerprint === sourceFingerprint;
     const contentBoundRevision = allowContentBoundRevision === true && contentMatches && !sourceMatches && Boolean(sourceFingerprint);
     if (!(sourceMatches && contentMatches) && !contentBoundRevision)

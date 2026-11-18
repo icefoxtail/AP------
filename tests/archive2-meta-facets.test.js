@@ -193,15 +193,81 @@ test('CORE applicability stays outside the basic metric while advanced use still
   assert.equal(core.basicEligibility(original, options).ok, true, 'the approved default-scope input was not mutated');
 });
 
-test('records whose approval only lags the answer/solution bytes are usable and labelled; changed stems stay out of meta filtering', async () => {
+// Re-derives the binding kind of catalog rows with the same library the builder uses ("row", "type" or "" for an unbound row).
+async function bindingKinds(data, byUid) {
+  const lib = await import(pathToFileURL(path.join(root, 'archive/tools/meta-foundation/text-binding-lib.mjs')).href);
+  const rebinds = lib.loadRebinds(root);
+  const banks = new Map();
+  const kinds = new Map();
+  for (const row of data.records) {
+    const source = byUid.get(row.questionUid);
+    if (!source) continue;
+    if (source.contentFingerprint === row.assignmentFingerprint) { kinds.set(row.questionUid, 'row'); continue; }
+    if (!banks.has(row.sourceFile)) {
+      const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
+      vm.createContext(scope);
+      vm.runInContext(read('exams/' + row.sourceFile).replace(/^﻿/, '').replace(/\r\n/g, '\n'), scope, { timeout: 5000 });
+      banks.set(row.sourceFile, require('../archive/exam-source-reader.js').readQuestionArray(scope.window));
+    }
+    const question = banks.get(row.sourceFile)[row.sourceOrdinal - 1];
+    kinds.set(row.questionUid, question ? lib.classifyMetaBinding({ meta: source, question, assignmentFingerprint: lib.contentFingerprint(question), rebinds }) : '');
+  }
+  return kinds;
+}
+
+test('a row whose stem and choices are confirmed as the same keeps its release status when only the solution, answer or figure changed', async () => {
   const data = await catalog();
-  const content = data.records.filter(row => row.metaBinding && row.sourceStatus === 'HOLD' && row.metaHintPT);
-  assert.ok(content.length > 0, 'content-bound rows exist');
+  const meta = await metadata();
+  const byUid = new Map(meta.records.map(row => [row.questionUid, row]));
+  const kinds = await bindingKinds(data, byUid);
+  // The harness catalog re-derives canonical reasons; the builder's own reason codes are in the published file.
+  const published = new Map(core.decodeCatalog(JSON.parse(read('data/archive2-catalog.json'))).records.map(row => [row.questionUid, row]));
+  const seen = { rowStale: 0, rowSolutionOnly: 0, typeOnly: 0, unbound: 0 };
+  for (const row of data.records) {
+    const source = byUid.get(row.questionUid);
+    if (!source) continue;
+    const kind = kinds.get(row.questionUid);
+    const exact = source.sourceFingerprint === row.sourceFingerprint;
+    const contentEqual = source.contentFingerprint === row.assignmentFingerprint;
+    // Positive: a confirmed row binding is enough for the release status (a changed explanation/answer/figure is not a reason).
+    if (kind === 'row') {
+      assert.equal(row.sourceStatus, 'VERIFIED', 'row-bound rows are released: ' + row.questionUid);
+      assert.notEqual(row.metaProjectionFailureReason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH', row.questionUid);
+      assert.ok(!(published.get(row.questionUid).canonicalAssignmentReasons || []).includes('assignment_fingerprint_mismatch'), row.questionUid);
+      if (!contentEqual) {
+        seen.rowStale++;
+        if (row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND')
+          assert.equal(row.metaProjection.sourceBinding.bindingMode, 'CONTENT_BOUND_SOURCE_REVISED', row.questionUid);
+      } else if (!exact) seen.rowSolutionOnly++;
+      continue;
+    }
+    // Negative: a changed stem/choices (unconfirmed) or a type-only binding gets neither the assignment nor the display projection.
+    if (kind === 'type') seen.typeOnly++; else seen.unbound++;
+    if (!exact) {
+      assert.equal(row.sourceStatus, 'HOLD', 'not confirmed as the same stem and choices: ' + row.questionUid);
+      assert.ok(!row.assignmentEvidence, row.questionUid);
+      assert.notEqual(row.metaProjectionStatus, 'DISPLAY_ONLY_SOURCE_BOUND', row.questionUid);
+      assert.ok((published.get(row.questionUid).canonicalAssignmentReasons || []).length > 0, 'a refused assignment carries its reason: ' + row.questionUid);
+    }
+  }
+  // Operating counts are not pinned; these guard against a vacuous run.
+  assert.ok(seen.rowSolutionOnly > 0 && seen.typeOnly > 0 && seen.unbound > 0, JSON.stringify(seen));
+});
+
+test('a question that is released only by its row binding still passes the same strict gates, and unbound rows stay out of meta filtering', async () => {
+  const data = await catalog();
+  const meta = await metadata();
+  const byUid = new Map(meta.records.map(row => [row.questionUid, row]));
+  const content = data.records.filter(row => row.metaBinding && row.sourceStatus === 'VERIFIED' && row.metaHintPT &&
+    byUid.get(row.questionUid)?.sourceFingerprint !== row.sourceFingerprint);
+  assert.ok(content.length > 0, 'row-bound rows with a changed solution exist');
   for (const row of content.slice(0, 200)) {
-    assert.equal(row.sourceStatus, 'HOLD');
     assert.equal(core.generalUseEligibility(row).ok, true);
     assert.ok(core.metaFacetsOf(row).pt);
-    assert.equal(core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok, false, 'strict approval is untouched');
+    // Release status no longer blocks, but taxonomy/approval/review gates are unchanged.
+    const reasons = core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).reasons;
+    assert.ok(!reasons.includes('source_release'), row.questionUid);
+    if (!row.assignmentEvidence) assert.ok(reasons.includes('taxonomy'), 'no assignment, no default selection: ' + row.questionUid);
   }
   const unbound = data.records.filter(row => !row.metaBinding && row.sourceStatus === 'HOLD');
   for (const row of unbound.slice(0, 200)) {
@@ -424,6 +490,15 @@ test('display projection: exact bytes by default; content-bound only on opt-in a
   const changedStem = { ...base, assignmentFingerprint: 'a'.repeat(64), allowContentBoundRevision: true };
   assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection(changedStem).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
   assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...base, sourceFingerprint: '', allowContentBoundRevision: true }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  // textBound: the builder confirmed the row is about the same stem and choices (text-v1), so a changed content fingerprint (e.g. a figure) does not refuse the
+  // projection. It only works together with the content-bound opt-in, and never without the caller's confirmation.
+  const figureChanged = { ...base, assignmentFingerprint: 'a'.repeat(64) };
+  const confirmed = ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, allowContentBoundRevision: true, textBound: true });
+  assert.equal(confirmed.reason, '');
+  assert.equal(confirmed.projection.sourceBinding.bindingMode, 'CONTENT_BOUND_SOURCE_REVISED');
+  assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, allowContentBoundRevision: true }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, textBound: true }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, allowContentBoundRevision: true, textBound: false }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
 });
 
 // ---- registration verifier ---------------------------------------------------------------------
