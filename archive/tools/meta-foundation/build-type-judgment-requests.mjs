@@ -189,7 +189,7 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
 export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false }) {
-  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 }, textBound: 0, noTextFingerprint: 0 };
+  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
   const wanted = exams ? new Set(exams.map(normalizeExam)) : null;
@@ -260,9 +260,9 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
           ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
       const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
-      const fp = sourceFingerprints(judgedQ);
       const textFp = textFingerprint(judgedQ);
-      items.push({ row, m, scope: picked.scope, fp, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null });
+      if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
+      items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null });
     }
     if (!items.length) continue;
     prepared.push({ file, bank, bytes, items });
@@ -302,12 +302,10 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         return { path: ctx.registry.packFiles.get(packId), before: structuredClone(before),
           after: { ...structuredClone(before), curricula: [...before.curricula, ...[...e.curricula].sort()], standardCourses: [...before.standardCourses, ...[...e.standardCourses].sort()] }, evidenceRefs: [ref] };
       }) } : {}),
-      items: items.map(({ row, m, scope, fp, textFp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
+      items: items.map(({ row, m, scope, textFp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
         before: { problemTypeKey: empty(m.problemTypeKey) ? "" : m.problemTypeKey, templateKey: empty(m.templateKey) ? "" : m.templateKey },
         after: { problemTypeKey: row.pt, ...(tplKey ? { templateKey: tplKey } : {}) },
-        rationale, scope, judgedFingerprints: fp, ...(textFp ? { judgedTextFingerprint: textFp } : {}), evidenceRefs: [ref] })) };
-    // The registrar binds a request to the exam file's blob unless EVERY item carries a stem+choices fingerprint (then the blob may differ).
-    if (items.every(i => i.textFp)) stats.textBound++; else stats.noTextFingerprint++;
+        rationale, scope, textBindingFingerprint: textFp, evidenceRefs: [ref] })) };
     requests.push(request);
     files.set(`${INBOX_DIR}/${requestId}.json`, json(request));
   }
@@ -431,7 +429,6 @@ export function run(args) {
   const summary = summarize({ requests: built.requests, skipped: built.skipped, resultLines: rows.length, commits, head });
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase };
   if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here
-  summary.requestBinding = { textBound: built.stats.textBound, blobBound: built.stats.noTextFingerprint };
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
   summary.typeSelectable = { scope: "requested exams", estimate: "catalog metaHint gate replicated; builder not run", ...typeSelectable(ctx, built.requests.map(r => r.sourceArchiveFile), planned) };
   if (args.summaryGlobal) summary.typeSelectableAllExams = { scope: "every exam in canonical metadata", ...typeSelectable(ctx, [...ctx.rowsBySource.keys()].sort(), planned) };

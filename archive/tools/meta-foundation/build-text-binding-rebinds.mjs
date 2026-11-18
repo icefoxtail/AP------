@@ -1,18 +1,19 @@
 // 재결속 기록 생성기·검증기 (메타 결속 지문 text-v1, 결정: docs/agents/metadata.md "메타 결속 지문 범위").
 //
 // 정본 메타·identity의 지문(sourceFingerprint 5필드 / contentFingerprint 3필드)은 등록 당시의 해설·정답·그림까지 묶어서
-// 해설을 고치거나 그림을 다시 자르면 "낡은 결속"이 된다. 그러나 학생이 보는 발문·보기가 같다면 이미 한 판정은 유효하다.
+// 해설을 고치거나 그림을 다시 자르면 "낡은 결속"이 된다. 학생이 보는 발문·보기가 같다면 이미 한 판정은 유효하다.
 // 이 도구는 그 지문 X가 가리키던 등록 당시의 문항을 git 이력에서 찾아 발문·보기 지문(text-v1)을 지금과 비교하고,
-// 같은 것만 `archive/data/meta-foundation/text-binding-rebinds.v1.json`에 추가 전용으로 남긴다.
+// 같은 것만 `archive/data/meta-foundation/text-binding-rebinds.v1.json`에 남긴다. **이 파일은 옛 기록(영수증·identity)용 1회
+// 계산 결과로 동결되어 더 자라지 않는다**: `--write`는 파일이 이미 있으면 거절하고, `--check --against <ref>`는 기준 ref의 파일과
+// 한 글자도 다르지 않아야 통과한다. 새 등록은 행(`textBindingFingerprint`)과 유형 판정(`typeApproval.textBindingFingerprint`)에 text-v1을 직접 싣는다.
 // - 같지 않은 것(발문·보기가 실제로 바뀜)과 이력에서 못 찾은 것(확인 불가)은 기록하지 않는다. 추정으로 풀지 않는다.
-// - 기존 기록(메타 행·identity·영수증)은 한 글자도 고치지 않는다. 기존 항목은 지우거나 고치지 않고 끝에만 덧붙인다.
 // - 소비자(카탈로그 빌더·등록기)는 git을 보지 않고 이 파일만 읽는다.
 //
 // 사용:
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs                 # 예행: 건수만 보고
-//   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --write         # 새로 풀리는 항목을 끝에 덧붙임
+//   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --write         # 파일이 없을 때만 만든다
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --check [--against origin/main] [--verify-history [--sample N]]
-//   옵션: --root <repo>  --report-pending (등록기 pending 사유별 분포도 함께 보고)  --explain [N] (발문·보기가 바뀐 표본 N개의 전후 보기)
+//   옵션: --root <repo>  --report-pending  --explain [N]
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -34,7 +35,7 @@ const PENDING_STATE = ".archive-meta-register/auto/state.json";
 const HEX64 = /^[a-f0-9]{64}$/;
 
 const FAMILY_FP = { A: sourceFingerprint, B: contentFingerprint };
-const ROLES = ["rowContent", "rowSource", "identitySource", "judgedContent"];
+const ROLES = ["rowContent", "rowSource", "identitySource"];
 
 const readJson = (root, rel) => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
 const git = (root, args, input) => execFileSync("git", args, { cwd: root, encoding: "utf8", maxBuffer: 512 * 1024 * 1024,
@@ -129,8 +130,6 @@ export function collect(root) {
       add(row.contentFingerprint, "B", "rowContent");
       add(row.sourceFingerprint, "A", "rowSource");
       add(id.sourceFingerprint, "A", "identitySource");
-      const ta = row.typeApproval;
-      if (ta?.judgedContentFingerprint && !ta.judgedTextFingerprint) add(ta.judgedContentFingerprint, "B", "judgedContent");
       items.push({ row, uid: row.questionUid, ordinal: row.sourceOrdinal, curText, cur, anchors, question: q });
     }
     files.push({ rel, items });
@@ -164,12 +163,7 @@ function analyze(root, { existing, explain = 0 }) {
         const key = it.uid + "|" + fp;
         let result;
         if (fp === it.cur[anchor.family]) {
-          // 현재 지문과 같다: 기존 동작으로 충분. judgedContent만 미리 text 지문을 남긴다.
           result = { status: "MATCH_CURRENT" };
-          if (anchor.roles.has("judgedContent") && !have.has(key)) {
-            added.push({ uid: it.uid, fp, family: anchor.family, text: it.curText, basis: "current", file: rel, ordinal: it.ordinal });
-            have.add(key);
-          }
         } else if (have.has(key)) {
           result = { status: "ALREADY_RECORDED" };
         } else {
@@ -253,10 +247,11 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
       try { base = JSON.parse(git(root, ["show", against + ":" + REBINDS_PATH])); } catch { /* 기준 ref에 파일이 없으면 모두 새 항목이다. */ }
     }
     if (base) {
+      // 동결: 기준 ref의 파일과 항목이 정확히 같아야 한다(늘어나도 줄어도 안 된다).
       const baseText = base.entries.map((e) => JSON.stringify(e));
       const ours = doc.entries.map((e) => JSON.stringify(e));
-      if (ours.length < baseText.length || baseText.some((line, i) => line !== ours[i]))
-        errors.push("not append-only relative to " + against);
+      if (ours.length !== baseText.length || baseText.some((line, i) => line !== ours[i]))
+        errors.push("frozen file differs from " + against);
     }
   }
   let verified = 0;
@@ -319,6 +314,7 @@ export async function main(argv) {
     return;
   }
   const existing = readExisting(root, REBINDS_PATH);
+  if (args.has("--write") && existing) { console.error("FROZEN: " + REBINDS_PATH + " is a one-time result and is never extended"); process.exitCode = 1; return; }
   const analysis = analyze(root, { existing, explain: args.has("--explain") ? Number(args.get("--explain")) || 12 : 0 });
   const summary = { mode: args.has("--write") ? "write" : "dry-run", existingEntries: existing?.entries.length || 0, newEntries: analysis.added.length,
     newByBasis: analysis.added.reduce((m, e) => ({ ...m, [e.basis]: (m[e.basis] || 0) + 1 }), {}), perRole: analysis.perRole, skipped: analysis.skipped };

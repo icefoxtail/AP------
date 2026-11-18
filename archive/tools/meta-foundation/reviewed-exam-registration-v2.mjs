@@ -31,7 +31,7 @@ import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
-import { DIRECT_JUDGMENT, isTextBoundDirectRequest, registerTypeJudgment } from "./register-type-judgment.mjs";
+import { DIRECT_JUDGMENT, registerTypeJudgment } from "./register-type-judgment.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -2185,8 +2185,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const blob = fs.existsSync(path.join(root, ".git"))
     ? execFileSync("git", ["hash-object", "--path", `archive/exams/${source}`, "--stdin"], { cwd: root, input: bytes, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }).trim()
     : crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
-  // A direct type judgment bound to the text of each question (judgedTextFingerprint) is checked per question by its lane instead.
-  if (req.expectedSourceBlobSha1 !== blob && !isTextBoundDirectRequest(req)) fail("source Git blob drift");
+  // A direct type judgment is bound to each question's stem + choices (textBindingFingerprint, checked by its lane), not to the file blob.
+  if (req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT) fail("source Git blob drift");
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
@@ -3123,7 +3123,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     // is verified against that lane; every field the lane does not carry is verified against the
     // exact active runtime pack row. A canonical value that exists must still equal the request.
     const canonicalMissing = Array.isArray(c.canonicalAssignmentReasons) && c.canonicalAssignmentReasons.includes("assignment_missing");
-    const laneBound = canonicalMissing && ["exact", "content"].includes(c.metaBinding);
+    const laneBound = canonicalMissing && Boolean(c.metaBinding);
     const projection = c.metaProjection && c.metaProjection.projectionStatus === "DISPLAY_ONLY_SOURCE_BOUND" ? c.metaProjection : null;
     const lane = {
       curriculumKey: () => c.metaHintCurriculum,

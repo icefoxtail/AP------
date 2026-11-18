@@ -51,7 +51,7 @@ import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
-import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS, isTextBoundDirectRequest } from "./register-type-judgment.mjs";
+import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS } from "./register-type-judgment.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -535,7 +535,7 @@ function checkTypeRow(consumer, unit, row) {
   const typeConflicts = (resolved.metadataConflicts || []).filter(field => ["problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   if (typeConflicts.length) return { ...out, reason: "METADATA_CONFLICT", detail: typeConflicts.join(",") };
   if (!consumer.pageByUid.get(resolved.questionUid)) return { ...out, reason: "NOT_IN_PROBLEM_BANK_INDEX" };
-  if (!["exact", "content", "text", "type"].includes(resolved.metaBinding)) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
+  if (!resolved.metaBinding) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
   const status = String(resolved.metaHintStatus || "");
   const mismatches = [];
   if (!same(resolved.metaHintPT, row.expect.problemTypeKey)) mismatches.push(`problemTypeKey: request ${JSON.stringify(row.expect.problemTypeKey)} != consumer ${JSON.stringify(resolved.metaHintPT ?? null)}`);
@@ -663,9 +663,8 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
         const blob = unit.kind === "difficulty5-ratings"
           ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), binding.expectedSourceBlobSha1).sha
           : gitBlobSha1(root, sourcePath);
-        // A text-bound direct judgment is verified per question by its replay below (stem + choices), not by the file blob.
-        const textBound = unit.kind === "direct-type-judgment" && isTextBoundDirectRequest(unit.request);
-        if (binding.expectedSourceBlobSha1 !== blob && !textBound) {
+        // A direct type judgment is verified per question by its replay below (stem + choices), not by the file blob.
+        if (binding.expectedSourceBlobSha1 !== blob && unit.kind !== "direct-type-judgment") {
           sourceBound = false;
           result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
         }

@@ -57,26 +57,19 @@ export function rebindHolds(rebinds, uid, anchorFp, currentTextFp) {
   return (rebinds.byUid.get(uid) || []).some((entry) => entry.fp === anchorFp && entry.text === currentTextFp);
 }
 
-// 유형 판정(DIRECT_JUDGMENT)이 현재 발문·보기에 대한 것인가. 판정이 text-v1 지문을 저장했으면 그것이 현재와 같아야 하고,
-// 저장하지 않은 옛 판정은 판정 당시의 내용 지문(발문+보기+그림)이 현재와 같거나 재결속 기록이 그 판정 지문이 가리키던 발문·보기가
-// 지금과 같다고 말해야 한다. 값이 그 판정의 결과인지(fieldStatus)도 확인한다 — 다른 길로 유형이 바뀐 행에 옛 판정을 씌우지 않는다.
-export function typeJudgmentBoundToText(meta, textFp, currentContentFp, rebinds) {
-  const approval = meta?.typeApproval;
-  if (!approval || approval.approvalType !== "DIRECT_JUDGMENT" || meta.fieldStatus?.problemType !== "approved_direct_judgment") return false;
-  if (approval.judgedTextFingerprint) return approval.judgedTextFingerprint === textFp;
-  return approval.judgedContentFingerprint === currentContentFp ||
-    rebindHolds(rebinds, meta.questionUid, approval.judgedContentFingerprint, textFp);
-}
-
-// 카탈로그의 metaBinding 판정(메타 힌트를 보여 줄 근거). 기존 지문이 일치하는 행은 이전과 똑같다.
-//   "exact"  행이 이 문항의 5필드 지문에 묶임      "content" 발문·보기·그림 지문(3필드)에 묶임(해설·정답만 바뀜)
-//   "text"   행이 발문·보기(text-v1) 기준으로 묶임(재결속 기록)   "type" 유형 판정만 발문·보기에 묶임(행의 나머지 값은 옛 본문 기준)
-//   ""       근거 없음(발문·보기가 바뀌었거나 확인 불가) — 힌트를 내보내지 않는다.
-export function classifyMetaBinding({ meta, question, fingerprint, assignmentFingerprint, rebinds }) {
-  if (meta.contentFingerprint === assignmentFingerprint) return meta.sourceFingerprint === fingerprint ? "exact" : "content";
+// 카탈로그가 메타 힌트를 보여 줄 근거: 이 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가. 결과는 둘뿐이다.
+//   "row"  행 전체가 같은 발문+보기에 묶임   "type" 유형 판정(PT/TPL)만 묶임 — 행의 나머지 값은 옛 본문 기준이라 힌트에서 뺀다
+//   ""     근거 없음(발문·보기가 바뀌었거나 확인 불가) — 힌트를 내보내지 않는다.
+// 근거 하나라도 있으면 된다: ① 행의 내용 지문(발문+보기+그림)이 현재와 같음(그림이 같으면 발문·보기도 같다) ② 재결속 기록(동결된 1회 계산 결과)이 등록 당시 지문이 가리키던 발문·보기가 지금과 같다고 말함.
+// 유형 판정은 같은 방식으로 자기 지문(typeApproval)을 본다. 값이 그 판정의 결과인지(fieldStatus)도 확인한다.
+export function classifyMetaBinding({ meta, question, assignmentFingerprint, rebinds }) {
+  if (meta.contentFingerprint === assignmentFingerprint) return "row";
   const textFp = textFingerprint(question);
   if (!textFp) return "";
-  if (rebindHolds(rebinds, meta.questionUid, meta.contentFingerprint, textFp)) return "text";
-  if (typeJudgmentBoundToText(meta, textFp, assignmentFingerprint, rebinds)) return "type";
+  if (rebindHolds(rebinds, meta.questionUid, meta.contentFingerprint, textFp)) return "row";
+  const approval = meta.typeApproval;
+  if (approval?.approvalType === "DIRECT_JUDGMENT" && meta.fieldStatus?.problemType === "approved_direct_judgment" &&
+      (approval.textBindingFingerprint === textFp || approval.judgedContentFingerprint === assignmentFingerprint ||
+       rebindHolds(rebinds, meta.questionUid, approval.judgedContentFingerprint, textFp))) return "type";
   return "";
 }

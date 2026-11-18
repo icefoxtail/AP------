@@ -112,12 +112,10 @@ const hintActiveTemplates = new Map(foundationTaxonomy.templates
   .filter((row) => row.status === "ACTIVE").map((row) => [row.templateKey, row]));
 const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
   ? "A" : /hold/i.test(String(value || "")) ? "H" : "P";
-// 발문·보기 결속(text-v1, 결정: docs/agents/metadata.md "메타 결속 지문 범위"). 행의 내용 지문이 현재와 다르면(해설·정답·그림이 바뀜)
-// 지금까지는 힌트를 숨겼다. 발문·보기가 그대로라는 근거가 있으면 보여 준다: ① 재결속 기록(등록 당시 지문이 가리키던 문항의 발문·보기가
-// 지금과 같음, 추가 전용 데이터 파일) ② 유형 판정이 저장한 text-v1 지문 또는 판정 당시의 내용 지문이 현재와 같음. 기존 지문이 일치하는 행은
-// 이전과 똑같이 동작하고, 일치하지 않는 행만 이 길을 탄다. git 이력은 보지 않는다.
+// 메타 힌트를 보여 줄 근거는 하나: 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가(text-binding-lib.mjs classifyMetaBinding).
+// 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
 const textRebinds = loadRebinds(root);
-const hintStats = { joined: 0, exact: 0, content: 0, text: 0, type: 0, changedContent: 0,
+const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
   holdSkipped: 0 };
 function buildMetaHint(meta, binding) {
@@ -477,21 +475,17 @@ for (const exam of exams) {
     // stem, choices and image the classification describes are byte-identical (assignment
     // fingerprint), so the recorded values still describe this question. Anything else is not
     // provably safe and stays out of meta-based filtering (the question itself stays usable).
-    let metaBinding = "";
+    // metaBinding: 이 행의 메타가 지금과 같은 발문+보기에 대한 것인가(있으면 "text", 없으면 비움). 판정은 text-binding-lib.mjs 한 곳.
+    // 유형 판정만 묶인 행("type")은 행의 나머지 값(L3·교육과정)을 힌트에서 뺀다(buildMetaHint).
+    let bindingKind = "";
     if (validJoin) {
       hintStats.joined++;
-      if (meta.contentFingerprint === assignmentFingerprint) {
-        metaBinding = meta.sourceFingerprint === fingerprint ? "exact" : "content";
-        hintStats[metaBinding]++;
-      } else {
-        // 근거가 있으면 "text"(행 전체) 또는 "type"(유형 판정만) — 판정 규칙은 text-binding-lib.mjs classifyMetaBinding 한 곳.
-        // "type"이면 행의 나머지 값(L3·교육과정)은 옛 본문 기준이라 힌트에서 뺀다(buildMetaHint).
-        metaBinding = classifyMetaBinding({ meta, question, fingerprint, assignmentFingerprint, rebinds: textRebinds });
-        if (metaBinding) hintStats[metaBinding]++;
-        else hintStats.changedContent++;
-      }
+      bindingKind = classifyMetaBinding({ meta, question, assignmentFingerprint, rebinds: textRebinds });
+      if (bindingKind) hintStats[bindingKind]++;
+      else hintStats.unbound++;
     }
-    const metaHint = buildMetaHint(meta, metaBinding);
+    const metaBinding = bindingKind ? "text" : "";
+    const metaHint = buildMetaHint(meta, bindingKind);
     const record = {
       sourceFile: file,
       sourceOrdinal: ordinal,

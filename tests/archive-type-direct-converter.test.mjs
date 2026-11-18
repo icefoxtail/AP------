@@ -67,9 +67,8 @@ test("PICK line of an empty-type row becomes one DIRECT_JUDGMENT request item wi
   assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
   assert.equal(item.rationale, "결정 단계 문장 1");
   assert.deepEqual(item.scope, { curriculum: "2015", standardCourse: "중1 수학" });
-  assert.deepEqual(item.judgedFingerprints, fp(1));
-  assert.equal(item.judgedTextFingerprint, textFingerprint(questions[0]), "the stem+choices fingerprint binds the request to the text, not to the file blob");
-  assert.deepEqual(Object.keys(item).sort(), ["after", "before", "evidenceRefs", "judgedFingerprints", "judgedTextFingerprint", "questionUid", "rationale", "scope", "sourceOrdinal"]);
+  assert.equal(item.textBindingFingerprint, textFingerprint(questions[0]), "the stem+choices fingerprint binds the request to the text, not to the file blob");
+  assert.deepEqual(Object.keys(item).sort(), ["after", "before", "evidenceRefs", "questionUid", "rationale", "scope", "sourceOrdinal", "textBindingFingerprint"]);
   assert.deepEqual(r.approval.resultSource, { branch: "data/type-judgment-c", commit: "a".repeat(40), file: "docs/plans/x/type-results-c/m1.jsonl" });
 });
 
@@ -223,12 +222,10 @@ test("judged-base check: changed stem/choices skip the row, unchanged rows pass,
   r = planRequests({ ctx: ctxFor(null), resultRows: [line(1)], approvedBy: "x" });
   assert.equal(r.requests.length, 1);
   assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1 });
-  // the judged fingerprints are those of the exam as the judge saw it (figure/solution may have changed since); the text fingerprint is equal by construction
+  // figure/solution changes since the judgment do not matter; the text fingerprint is that of the stem+choices
   const moved = copy(); moved[0].image = "old.png"; moved[0].solution = "옛 해설";
   r = planRequests({ ctx: ctxFor(moved), resultRows: [line(1)], approvedBy: "x" });
-  assert.deepEqual(r.requests[0].items[0].judgedFingerprints, sourceFingerprints(moved[0]));
-  assert.equal(r.requests[0].items[0].judgedTextFingerprint, textFingerprint(questions[0]));
-  assert.deepEqual([r.stats.textBound, r.stats.noTextFingerprint], [1, 0]);
+  assert.equal(r.requests[0].items[0].textBindingFingerprint, textFingerprint(questions[0]));
 });
 
 test("new options are parsed", () => {

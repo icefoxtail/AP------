@@ -11,7 +11,6 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
   REBINDS_PATH, classifyMetaBinding, contentFingerprint, loadRebinds, rebindHolds, sourceFingerprint, textFingerprint,
-  typeJudgmentBoundToText,
 } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 import { contentFingerprint as registrarContentFingerprint, sourceFingerprint as registrarSourceFingerprint }
   from "../archive/tools/meta-foundation/auto-register-merged-source.mjs";
@@ -75,7 +74,7 @@ const run = (root, ...args) => {
   return { status: result.status, out: result.stdout, err: result.stderr, json: () => JSON.parse(result.stdout) };
 };
 
-test("rebinds: same stem resolves, changed stem and unknown history do not, and the file is append-only and idempotent", (t) => {
+test("rebinds: same stem resolves, changed stem and unknown history do not, and the file is written once and then frozen", (t) => {
   const { root, first, v2 } = fixtureRepo(t);
   const dry = run(root);
   assert.equal(dry.status, 0, dry.err);
@@ -103,17 +102,18 @@ test("rebinds: same stem resolves, changed stem and unknown history do not, and 
   assert.equal(summary.perRole.rowContent.TEXT_CHANGED, 1);
   assert.equal(summary.perRole.rowContent.NO_HISTORY, 1);
 
-  // 추가 전용·멱등: 다시 돌려도 파일이 그대로이고 새 항목이 없다.
+  // 동결: 파일이 있으면 다시 만들지 않는다.
   const before = fs.readFileSync(path.join(root, REBINDS_PATH), "utf8");
   const again = run(root, "--write");
-  assert.equal(again.json().newEntries, 0);
+  assert.equal(again.status, 1);
+  assert.match(again.err, /FROZEN/);
   assert.equal(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8"), before);
 
   const check = run(root, "--check", "--verify-history");
   assert.equal(check.status, 0, check.out);
 });
 
-test("rebinds --check rejects malformed, duplicated and non-append-only files", (t) => {
+test("rebinds --check rejects malformed, duplicated and changed (unfrozen) files", (t) => {
   const { root } = fixtureRepo(t);
   run(root, "--write");
   git(root, "add", "-A"); git(root, "commit", "-q", "-m", "rebinds");
@@ -129,7 +129,9 @@ test("rebinds --check rejects malformed, duplicated and non-append-only files", 
     return JSON.stringify(head, null, 2).replace(/\n}$/, "") + ',\n  "entries": [\n' + value.entries.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]\n}\n";
   };
   fs.writeFileSync(file, canonical({ ...doc, entries: doc.entries.slice(1) }));
-  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "removing an entry is not append-only");
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "removing an entry changes the frozen file");
+  fs.writeFileSync(file, canonical({ ...doc, entries: [...doc.entries, { ...doc.entries[0], fp: "e".repeat(64) }] }));
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "adding an entry changes the frozen file");
   fs.writeFileSync(file, canonical({ ...doc, entries: [...doc.entries, doc.entries[0]] }));
   assert.equal(run(root, "--check").status, 1, "duplicate (uid, fp)");
   fs.writeFileSync(file, canonical({ ...doc, entries: [{ ...doc.entries[0], fp: "zz" }] }));
@@ -143,48 +145,28 @@ test("rebinds --check rejects malformed, duplicated and non-append-only files", 
   assert.equal(run(root, "--check", "--verify-history").status, 1);
 });
 
-test("a judgment fingerprint equal to the current source gets a text fingerprint recorded without history", (t) => {
-  const { root, rows, v2 } = fixtureRepo(t);
-  // 문항 1의 유형 판정이 "현재 원본"의 내용 지문으로 이뤄졌고 text 지문은 저장하지 않은 옛 판정이라고 하자.
-  const metaPath = path.join(root, "archive/data/question_metadata.json");
-  const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
-  meta.records[0].typeApproval = { approvalType: "DIRECT_JUDGMENT", judgedContentFingerprint: contentFingerprint(v2[0]) };
-  meta.records[0].fieldStatus = { problemType: "approved_direct_judgment" };
-  fs.writeFileSync(metaPath, JSON.stringify(meta));
-  run(root, "--write");
-  const rebinds = loadRebinds(root);
-  const current = (rebinds.byUid.get("uid1") || []).find((e) => e.basis === "current");
-  assert.ok(current, "recorded with basis=current");
-  assert.equal(current.fp, contentFingerprint(v2[0]));
-  assert.equal(current.text, textFingerprint(v2[0]));
-  assert.equal(rows.length, 3);
-});
-
 // ---- 소비자 판정(카탈로그가 쓰는 classifyMetaBinding) ----------------------------------------------------------------
-test("classifyMetaBinding: existing fingerprint match keeps its old answer; rebinds and type judgments only add", () => {
+test("classifyMetaBinding: bound when stem+choices are unchanged (row or type), hidden when they changed", () => {
   const past = q();
   const now = q({ solution: "해설 수정", image: "figs/recut.png" });
   const changedStem = q({ content: "<p>a+b의 값을 구하시오.</p>", solution: "해설 수정", image: "figs/recut.png" });
   const meta = { questionUid: "u", sourceFingerprint: sourceFingerprint(past), contentFingerprint: contentFingerprint(past) };
-  const ctx = (question, m = meta, rebinds = null) => ({ meta: m, question, fingerprint: sourceFingerprint(question), assignmentFingerprint: contentFingerprint(question), rebinds });
+  const ctx = (question, m = meta, rebinds = null) => ({ meta: m, question, assignmentFingerprint: contentFingerprint(question), rebinds });
 
-  assert.equal(classifyMetaBinding(ctx(past)), "exact");
-  assert.equal(classifyMetaBinding(ctx(q({ solution: "다른 해설" }))), "content");
-  assert.equal(classifyMetaBinding(ctx(now)), "", "stale row without any record stays hidden");
-
-  const byUid = new Map([["u", [{ uid: "u", fp: meta.contentFingerprint, text: textFingerprint(now) }]]]);
-  const rebinds = { present: true, byUid };
-  assert.equal(classifyMetaBinding(ctx(now, meta, rebinds)), "text");
+  assert.equal(classifyMetaBinding(ctx(past)), "row");
+  assert.equal(classifyMetaBinding(ctx(now)), "", "stale row without any evidence stays hidden");
+  // frozen rebind record
+  const rebinds = { present: true, byUid: new Map([["u", [{ uid: "u", fp: meta.contentFingerprint, text: textFingerprint(now) }]]]) };
+  assert.equal(classifyMetaBinding(ctx(now, meta, rebinds)), "row");
   assert.equal(classifyMetaBinding(ctx(changedStem, meta, rebinds)), "", "a changed stem makes the record void");
   assert.equal(classifyMetaBinding(ctx(now, { ...meta, questionUid: "other" }, rebinds)), "", "another question's record never applies");
-
-  // 유형 판정: 저장된 text 지문 / 판정 당시 내용 지문
+  // a type judgment bound to the text: only the type is shown
   const judged = (extra) => ({ ...meta, fieldStatus: { problemType: "approved_direct_judgment" }, typeApproval: { approvalType: "DIRECT_JUDGMENT", ...extra } });
-  assert.equal(classifyMetaBinding(ctx(now, judged({ judgedTextFingerprint: textFingerprint(past) }))), "type");
-  assert.equal(classifyMetaBinding(ctx(changedStem, judged({ judgedTextFingerprint: textFingerprint(past) }))), "");
+  assert.equal(classifyMetaBinding(ctx(now, judged({ textBindingFingerprint: textFingerprint(past) }))), "type");
+  assert.equal(classifyMetaBinding(ctx(changedStem, judged({ textBindingFingerprint: textFingerprint(past) }))), "");
   assert.equal(classifyMetaBinding(ctx(now, judged({ judgedContentFingerprint: contentFingerprint(now) }))), "type");
   assert.equal(classifyMetaBinding(ctx(now, judged({ judgedContentFingerprint: contentFingerprint(past) }))), "");
-  assert.equal(typeJudgmentBoundToText({ ...judged({ judgedTextFingerprint: textFingerprint(now) }), fieldStatus: { problemType: "approved_review2" } }, textFingerprint(now), "x", null), false,
+  assert.equal(classifyMetaBinding(ctx(now, { ...judged({ textBindingFingerprint: textFingerprint(now) }), fieldStatus: { problemType: "approved_review2" } })), "",
     "a type changed by another route is not covered by an old judgment");
 });
 
@@ -204,13 +186,13 @@ test("the committed rebinds file, when present, is well-formed and unique per (u
 
 // 추가 전용: 이 변경이 기준 브랜치의 기존 항목을 고치거나 지우지 않았는가. 기준 ref를 풀 수 없는 얕은 체크아웃에서는 실패가 아니라
 // 눈에 띄는 "건너뜀"으로 표시한다(조용한 통과와 구분).
-test("the committed rebinds file only appends to the base branch's file", (t) => {
+test("the committed rebinds file equals the base branch's file (frozen)", (t) => {
   const base = process.env.GITHUB_BASE_REF ? "origin/" + process.env.GITHUB_BASE_REF : "origin/main";
   const result = run(repo, "--check", "--against", base);
   const out = JSON.parse(result.out);
   if (out.errors.some((e) => e.startsWith("BASE_UNAVAILABLE:"))) {
     console.log(`# NOT_RUN append-only check: base ${base} is not available in this checkout (shallow clone?)`);
-    t.skip(`append-only check NOT_RUN: ${base} unavailable`);
+    t.skip(`frozen-file check NOT_RUN: ${base} unavailable`);
     return;
   }
   assert.equal(result.status, 0, result.out);

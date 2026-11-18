@@ -23,7 +23,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { loadCourseAliases } from "./course-aliases.mjs";
-import { TEXT_BINDING_VERSION, textFingerprint } from "./text-binding-lib.mjs";
+import { textFingerprint } from "./text-binding-lib.mjs";
 
 export const DIRECT_JUDGMENT = "DIRECT_JUDGMENT";
 export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
@@ -35,7 +35,7 @@ const OVERWRITABLE_STATUS = new Set(["", "manual_review_pending", "projection_un
 const REQUEST_KEYS = new Set(["schemaVersion", "requestId", "examUid", "sourceArchiveFile", "expectedSourceBlobSha1", "expectedQuestionCount",
   "scope", "fieldScope", "approval", "registryChanges", "items"]);
 const APPROVAL_KEYS = new Set(["type", "metadataReviewed", "reviewPassCount", "approvedBy", "judge", "decisionRef", "resultSource", "evidenceRefs"]);
-const ITEM_KEYS = new Set(["questionUid", "sourceOrdinal", "before", "after", "rationale", "judge", "scope", "judgedFingerprints", "judgedTextFingerprint", "evidenceRefs", "reason"]);
+const ITEM_KEYS = new Set(["questionUid", "sourceOrdinal", "before", "after", "rationale", "judge", "scope", "judgedFingerprints", "textBindingFingerprint", "evidenceRefs", "reason"]);
 const TYPE_FIELDS = ["problemTypeKey", "templateKey"];
 const PLACEHOLDER = /^(?:-|none|null|n\/a|tbd|todo|\?+)$/i;
 const compact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
@@ -47,12 +47,10 @@ const ADDABLE_REGISTRY = [
 ];
 
 export const isDirectJudgmentRequest = req => req?.approval?.type === DIRECT_JUDGMENT;
-// A request whose every item names the text-v1 fingerprint (stem + choices) of the question the judge saw is bound to that text,
-// not to the exam file's bytes: a figure, solution or answer edit elsewhere in the file does not invalidate it
-// (docs/agents/metadata.md "메타 결속 지문 범위"). The lane is atomic per request, so one item whose stem or choices changed refuses
-// the whole request; the converter already leaves such items out. A request without these fingerprints keeps the exact blob binding.
-export const isTextBoundDirectRequest = req => isDirectJudgmentRequest(req) && Array.isArray(req.items) && req.items.length > 0 &&
-  req.items.every(item => /^[a-f0-9]{64}$/.test(item?.judgedTextFingerprint || ""));
+// The judgment is bound to the stem and choices of each question (text-v1 fingerprint `textBindingFingerprint`), nothing else: the
+// exam file's blob, figures, solution and answer may change after the judge looked. The lane is atomic per request, so one question
+// whose stem or choices differ refuses the whole request (the converter leaves such questions out beforehand).
+// `judgedFingerprints` is still accepted in old requests but no longer compared.
 
 function assertRequestShape(req, h) {
   const { fail, requireText } = h;
@@ -151,13 +149,12 @@ export function registerTypeJudgment(ctx) {
   checkRegistryChanges(registryChanges, h);
   const source = req.sourceArchiveFile;
   const patches = new Map(req.items.map(item => [item.questionUid, item]));
-  const textBound = isTextBoundDirectRequest(req);
   const consumerFields = { directTypeJudgment: req.items.length, newMetadataApprovals: 0 };
 
   if (previous) {
     if (previous.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || previous.fieldScope !== FIELD_SCOPE_TYPE_ONLY ||
         previous.approval?.type !== DIRECT_JUDGMENT || previous.metadataRegistrationStatus !== "REGISTERED" ||
-        previous.sourceArchiveFile !== source || (!textBound && (previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes))) ||
+        previous.sourceArchiveFile !== source ||
         previous.scope !== req.scope || previous.expectedQuestionCount !== req.expectedQuestionCount ||
         previous.partialUidCount !== patches.size || previous.totalQuestions !== patches.size ||
         !Array.isArray(previous.typeRecords) || previous.typeRecords.length !== patches.size ||
@@ -224,13 +221,8 @@ export function registerTypeJudgment(ctx) {
     if (rowCurriculum && rowCurriculum !== scope.curriculum && courseRelation !== "successor") failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
     checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliases);
     // Source binding: the judgment was made on the current question text; the row's own fingerprints are tagged, not rewritten.
-    const fp = h.sourceFingerprints(q), judged = patch.judgedFingerprints;
-    // Text-bound items are checked on stem + choices only (what the judge classified); figure, solution and answer may have moved on.
-    if (textBound) {
-      if (patch.judgedTextFingerprint !== textFingerprint(q)) failWith(`stem or choices changed since the judgment: ${uid}`);
-      if (judged && !/^[a-f0-9]{64}$/.test(judged.sourceFingerprint || "") || judged && !/^[a-f0-9]{64}$/.test(judged.contentFingerprint || "")) failWith(`judgedFingerprints malformed: ${uid}`);
-    } else if (judged?.sourceFingerprint !== fp.sourceFingerprint || judged?.contentFingerprint !== fp.contentFingerprint) failWith(`judged fingerprints differ from the current source: ${uid}`);
-    const judgedText = textFingerprint(q);
+    const fp = h.sourceFingerprints(q), judgedText = textFingerprint(q);
+    if (!judgedText || patch.textBindingFingerprint !== judgedText) failWith(`stem or choices differ from the judged text (textBindingFingerprint): ${uid}`);
     const rowBinding = current.contentFingerprint !== fp.contentFingerprint ? "stale" : current.sourceFingerprint === fp.sourceFingerprint ? "exact" : "content";
     bindingCounts[rowBinding]++;
     const embedded = { problemTypeKey: q.problemTypeKey ?? null, templateKey: q.templateKey ?? null };
@@ -245,10 +237,10 @@ export function registerTypeJudgment(ctx) {
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
       scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
         ...(courseRelation === "alias" || courseRelation === "successor" ? { rowCourse, courseRelation } : {}) },
-      judgedSourceFingerprint: textBound && judged ? judged.sourceFingerprint : fp.sourceFingerprint, judgedContentFingerprint: textBound && judged ? judged.contentFingerprint : fp.contentFingerprint, rowBinding,
+      judgedSourceFingerprint: fp.sourceFingerprint, judgedContentFingerprint: fp.contentFingerprint, rowBinding,
       // 판정이 본 발문·보기의 지문(text-v1). 이후 해설·정답·그림이 바뀌어도 발문·보기가 같으면 이 판정이 유효하다는 근거다
       // (docs/agents/metadata.md "메타 결속 지문 범위"). 발문이 비어 지문을 만들 수 없는 문항은 필드를 쓰지 않는다.
-      ...(judgedText ? { judgedTextFingerprint: judgedText, textBindingVersion: TEXT_BINDING_VERSION } : {}),
+      textBindingFingerprint: judgedText,
       resultSource: req.approval.resultSource, decisionRef: req.approval.decisionRef, receipt: receiptPath,
       ...(hasEmbedded ? { examEmbeddedType: { ...embedded, matchesRegistered: embedded.problemTypeKey === problemTypeKey && (empty(embedded.templateKey) || embedded.templateKey === templateKey) } } : {}),
       priorType: { problemTypeKey: current.problemTypeKey ?? null, templateKey: current.templateKey ?? null,
