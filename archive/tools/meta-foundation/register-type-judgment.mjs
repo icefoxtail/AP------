@@ -202,7 +202,9 @@ export function registerTypeJudgment(ctx) {
       if (was !== claimed) failWith(`before mismatch: ${uid}.${key}`);
     }
     // A type that is already approved is final for this lane; an unapproved (draft/pending) value is replaced.
+    // A field with no value has nothing to protect: its status is only a tag, so an empty field is filled whatever the tag says.
     for (const field of ["problemType", "template"]) {
+      if (empty(current[`${field}Key`])) continue;
       const status = String(current.fieldStatus?.[field] ?? "");
       if (/^approved/i.test(status)) failWith(`type already approved: ${uid}.${field}=${status}`);
       if (!OVERWRITABLE_STATUS.has(status)) failWith(`type field status is not overwritable: ${uid}.${field}=${status}`);
