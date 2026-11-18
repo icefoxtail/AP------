@@ -22,6 +22,7 @@ import {
 } from "../helpers/archive2-questions.js";
 import {
   SAVED_PAPER_BATCH_ID,
+  checkSavedPaperAssets,
   readAndVerifySavedSnapshot,
   resolveSavedPaperLibraryStatus,
 } from "../helpers/archive-saved-papers.js";
@@ -669,6 +670,7 @@ export async function handleArchive2(
         saved: true,
         assignment,
         question_uids: actualRows.map((r) => r.question_uid),
+        ...(savedSnapshot ? await checkSavedPaperAssets(env, savedSnapshot) : {}),
         error:
           assignment.pdf_status === "ready"
             ? undefined

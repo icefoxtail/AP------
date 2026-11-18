@@ -10,6 +10,7 @@ import {
   computeSavedPaperRequestHash,
   computeSavedPaperCopyRequestHash,
   prepareSavedPaperBatch,
+  checkSavedPaperAssets,
   readAndVerifySavedSnapshot,
   resolveSavedPaperLibraryStatus,
 } from "../helpers/archive-saved-papers.js";
@@ -387,6 +388,7 @@ async function handleDetail(id, env, teacher) {
     success: true,
     paper: {
       ...listRow(row),
+      ...(await checkSavedPaperAssets(env, snapshot)),
       snapshot_hash: row.snapshot_hash,
       schema_version: row.schema_version,
       source_index_version: row.source_index_version,
