@@ -1,0 +1,66 @@
+{
+  "qid": 11,
+  "itemFingerprint": "6e127403f6b438de",
+  "solveSteps": [
+    "직사각형 ABCD 전체 넓이는 20 * 8 = 160 cm^2 이다.",
+    "x초 후 BP = 2x cm 이므로 직각삼각형 ABP 의 넓이는 (1/2) * 2x * 8 = 8x cm^2 이다.",
+    "사다리꼴 APCD 넓이는 y = 160 - 8x = -8x + 160 이므로 ㄱ은 참이다.",
+    "x가 1초 증가할 때마다 넓이는 8 cm^2 씩 줄어들므로 ㄴ도 참이다.",
+    "y = 100 일 때 100 = -8x + 160 에서 8x = 60, x = 7.5 초이므로 ㄷ은 거짓이다.",
+    "따라서 옳은 것은 ㄱ, ㄴ (②)이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "사다리꼴 $APCD$의 넓이를 $y\\text{ cm}^2$라 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은?",
+  "rpmRecordId": "M2-RPM-176",
+  "rpmReason": "직사각형 ABCD 에서 점 P 의 이동에 따라 변하는 사다리꼴 APCD 의 넓이 y = -8x + 160 을 다루는 넓이 활용 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+  "typeReason": "도형 ABCD 에서 동점 BP = 2x 로부터 사다리꼴 넓이 식 y = -8x + 160 을 유도하여 판정하는 기하 유도 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직사각형 160 에서 ABP 넓이 8x 를 빼 관계식을 세우고 y=100 일 때 x=7.5 초를 계산하는 3단계 복합 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "가로의 길이가 $20\\text{ cm}$, 세로의 길이가 $8\\text{ cm}$인 직사각형 $ABCD$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "사다리꼴 $APCD$의 넓이를 $y\\text{ cm}^2$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "직사각형의 넓이에서 $\\triangle ABP$의 넓이를 뺀 것이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ABCD 전체 넓이 160 에서 삼각형 넓이 8x 를 빼 y = -8x + 160 을 구하고 ㄱ, ㄴ이 참임을 확인하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

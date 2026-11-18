@@ -1,0 +1,64 @@
+{
+  "qid": 21,
+  "itemFingerprint": "c949d92081dee770",
+  "solveSteps": [
+    "aligned 조건 1: ax + 3y - 6 = 0 이 (b+1)x - 3y + 2 = 0 과 만나지 않으므로 평행하여 -a/3 = (b+1)/3, 즉 a = -b - 1 이다.",
+    "aligned 조건 2: (-b+5)x + 6y - 12 = 0 과 무수히 많은 점에서 만나므로 일치하여 2a = -b + 5 이다.",
+    "2(-b - 1) = -b + 5 에서 -b = 7 이므로 b = -7, a = -(-7) - 1 = 6 이다.",
+    "따라서 순서쌍 (a, b)는 a = 6, b = -7 (⑤)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "일차방정식 $ax + 3y - 6 = 0$의 그래프가 다음 두 조건을 만족시킬 때",
+  "rpmRecordId": "M2-RPM-175",
+  "rpmReason": "ax + 3y - 6 = 0 이 한 직선과는 평행하고 6y - 12 = 0 직선과는 일치하는 두 직선의 평행·일치 행이다.",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+  "typeReason": "ax 식이 평행 조건과 일치 조건을 모두 만족하도록 aligned 관계식을 세워 연립하는 복수 위치 관계 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행과 일치의 aligned 두 조건을 해석하여 2a = -b + 5 를 연립해 푸는 5점 배점의 3단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 } (b + 1)x - 3y + 2 = 0\\text{과 만나지 않는다.}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "상수 $a, b$의 순서쌍 $(a, b)$는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "만나지 않으려면 두 직선이 평행해야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "aligned 두 조건에서 a = -b - 1 과 2a = -b + 5 를 세워 연립하여 a=6, b=-7 로 ⑤를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

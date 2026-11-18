@@ -1,0 +1,64 @@
+{
+  "qid": 13,
+  "itemFingerprint": "53638a417fb51c9b",
+  "solveSteps": [
+    "aligned 수식 보기 ㄱ: (1, 4) 대입 시 2(1) + 4 - 6 = 0 이 성립하므로 참이다.",
+    "ㄴ: y = 6 - 2x 에서 x, y가 자연수이면 (1, 4), (2, 2)의 2개뿐이므로 거짓이다.",
+    "ㄷ: 수 전체 범위에서 일차방정식의 해를 나타내는 그래프는 직선이므로 한 점이라는 설명은 거짓이다.",
+    "따라서 옳은 것은 ㄱ(①)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "일차방정식 $2x + y - 6 = 0$의 해에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은?",
+  "rpmRecordId": "M2-RPM-172",
+  "rpmReason": "일차방정식 2x + y - 6 = 0 의 해와 그래프 성질을 다루는 방정식과 그래프 일차방정식의 그래프 행이다 (aligned 보기).",
+  "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+  "typeReason": "일차방정식 2x + y - 6 = 0 의 해와 그래프 명제들을 판정하는 aligned 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대입과 자연수 해 개수 카운트, 그래프 개형의 3가지 aligned 명제를 종합 판별하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "일차방정식 $2x + y - 6 = 0$의 해에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "해를 나타내는 그래프는 한 점이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x = 1, y = 4$를 식 $2x + y - 6 = 0$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "aligned 보기 중 (1, 4)가 해가 됨을 확인하고 자연수 해 개수가 2개임을 분석하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

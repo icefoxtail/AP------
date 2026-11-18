@@ -1,0 +1,64 @@
+{
+  "qid": 7,
+  "itemFingerprint": "17115fc57f16ce33",
+  "solveSteps": [
+    "y = ax + b 에서 기울기는 x의 증가량에 대한 y의 증가량의 비율이다.",
+    "x가 3 증가할 때 y가 2 감소하므로 기울기 a = -2/3 이다.",
+    "x가 -3에서 6까지 9만큼 증가할 때 ax 항의 y 증가량은 (-2/3) * 9 = -6 이다.",
+    "따라서 정답은 ①(-6)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = ax + b$의 그래프에서 $x$의 값이 $3$만큼 증가할 때",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "y = ax + b 에서 x와 y의 변화량으로 기울기 a=-2/3 를 구하고 새 변화량을 계산하는 기울기·절편 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "typeReason": "기울기 a = -2/3 를 구하고 x의 증가량 9 를 곱해 ax 변화량 -6 을 산출하는 성질 판정 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기 a=-2/3 를 먼저 구한 뒤 x의 변화량 9를 적용하여 ax 관련 증가량 -6 을 구하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "일차함수의 기울기를 구한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "증가",
+        "src": "stem",
+        "quote": "$y$의 값의 증가량은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "변화량",
+        "src": "solution",
+        "quote": "$x$의 증가량은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = ax + b 의 기울기 a=-2/3 를 구하고 x 증가량 9에 곱해 y 증가량이 -6 임을 확인하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

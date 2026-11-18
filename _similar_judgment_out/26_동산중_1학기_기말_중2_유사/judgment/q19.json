@@ -1,0 +1,65 @@
+{
+  "qid": 19,
+  "itemFingerprint": "b91bd9cccc085690",
+  "solveSteps": [
+    "cases 첫 식 0.4x - 0.2y = 0.8 의 양변에 10 을 곱해 2x - y = 4 를 얻는다.",
+    "둘째 식의 양변에 6을 곱해 2x + 3y = 12 를 얻는다.",
+    "두 식을 변끼리 빼면 4y = 8 이므로 y = 2, 2x = 6 에서 x = 3 이다.",
+    "따라서 해는 x = 3, y = 2 (④)이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} 0.4x - 0.2y = 0.8 \\ \\dfrac{x}{3} + \\dfrac{y}{2} = 2 \\end{cases}$의 해는?",
+  "rpmRecordId": "M2-RPM-153",
+  "rpmReason": "소수 0.4, 0.2, 0.8 과 분수가 포함된 cases 연립방정식을 정수화하여 푸는 분수·소수가 있는 연립방정식 행이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+  "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+  "typeReason": "소수 계수에 10 을 곱하고 분수 계수에 6을 곱해 12 를 만든 뒤 가감법으로 푸는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "소수 0.4 와 분수를 10, 6 을 곱해 정수 계수로 변환한 후 연립방정식을 푸는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 0.4x - 0.2y = 0.8 \\ \\dfrac{x}{3} + \\dfrac{y}{2} = 2 \\end{cases}$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "의 해는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "변끼리 뺀다.",
+        "evidenceType": "IMPLIED",
+        "justification": "두 식을 변끼리 빼서 x를 소거하는 가감법을 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "cases 연립방정식에 10과 6을 곱해 2x - y = 4 와 2x + 3y = 12 로 정리한 뒤 풀어 x=3, y=2 로 ④를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
