@@ -31,7 +31,7 @@ import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
-import { DIRECT_JUDGMENT, registerTypeJudgment } from "./register-type-judgment.mjs";
+import { DIRECT_JUDGMENT, isTextBoundDirectRequest, registerTypeJudgment } from "./register-type-judgment.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -2185,7 +2185,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const blob = fs.existsSync(path.join(root, ".git"))
     ? execFileSync("git", ["hash-object", "--path", `archive/exams/${source}`, "--stdin"], { cwd: root, input: bytes, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }).trim()
     : crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
-  if (req.expectedSourceBlobSha1 !== blob) fail("source Git blob drift");
+  // A direct type judgment bound to the text of each question (judgedTextFingerprint) is checked per question by its lane instead.
+  if (req.expectedSourceBlobSha1 !== blob && !isTextBoundDirectRequest(req)) fail("source Git blob drift");
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });

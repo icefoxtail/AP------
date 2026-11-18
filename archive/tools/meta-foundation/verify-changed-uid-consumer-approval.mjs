@@ -51,7 +51,7 @@ import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
-import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS } from "./register-type-judgment.mjs";
+import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS, isTextBoundDirectRequest } from "./register-type-judgment.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -663,7 +663,9 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
         const blob = unit.kind === "difficulty5-ratings"
           ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), binding.expectedSourceBlobSha1).sha
           : gitBlobSha1(root, sourcePath);
-        if (binding.expectedSourceBlobSha1 !== blob) {
+        // A text-bound direct judgment is verified per question by its replay below (stem + choices), not by the file blob.
+        const textBound = unit.kind === "direct-type-judgment" && isTextBoundDirectRequest(unit.request);
+        if (binding.expectedSourceBlobSha1 !== blob && !textBound) {
           sourceBound = false;
           result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
         }

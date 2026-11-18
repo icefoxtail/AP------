@@ -11,6 +11,7 @@ import {
   DECISION_SECTION, INBOX_DIR, EVIDENCE_DIR, REQUEST_SCHEMA
 } from "../archive/tools/meta-foundation/build-type-judgment-requests.mjs";
 import { makeCourseAliases } from "../archive/tools/meta-foundation/course-aliases.mjs";
+import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 
 const EXAM = "original/middle/m1/1mid/24_가나중_1학기_중간_중1_기출.js";
 const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
@@ -67,7 +68,8 @@ test("PICK line of an empty-type row becomes one DIRECT_JUDGMENT request item wi
   assert.equal(item.rationale, "결정 단계 문장 1");
   assert.deepEqual(item.scope, { curriculum: "2015", standardCourse: "중1 수학" });
   assert.deepEqual(item.judgedFingerprints, fp(1));
-  assert.deepEqual(Object.keys(item).sort(), ["after", "before", "evidenceRefs", "judgedFingerprints", "questionUid", "rationale", "scope", "sourceOrdinal"]);
+  assert.equal(item.judgedTextFingerprint, textFingerprint(questions[0]), "the stem+choices fingerprint binds the request to the text, not to the file blob");
+  assert.deepEqual(Object.keys(item).sort(), ["after", "before", "evidenceRefs", "judgedFingerprints", "judgedTextFingerprint", "questionUid", "rationale", "scope", "sourceOrdinal"]);
   assert.deepEqual(r.approval.resultSource, { branch: "data/type-judgment-c", commit: "a".repeat(40), file: "docs/plans/x/type-results-c/m1.jsonl" });
 });
 
@@ -221,6 +223,12 @@ test("judged-base check: changed stem/choices skip the row, unchanged rows pass,
   r = planRequests({ ctx: ctxFor(null), resultRows: [line(1)], approvedBy: "x" });
   assert.equal(r.requests.length, 1);
   assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1 });
+  // the judged fingerprints are those of the exam as the judge saw it (figure/solution may have changed since); the text fingerprint is equal by construction
+  const moved = copy(); moved[0].image = "old.png"; moved[0].solution = "옛 해설";
+  r = planRequests({ ctx: ctxFor(moved), resultRows: [line(1)], approvedBy: "x" });
+  assert.deepEqual(r.requests[0].items[0].judgedFingerprints, sourceFingerprints(moved[0]));
+  assert.equal(r.requests[0].items[0].judgedTextFingerprint, textFingerprint(questions[0]));
+  assert.deepEqual([r.stats.textBound, r.stats.noTextFingerprint], [1, 0]);
 });
 
 test("new options are parsed", () => {
@@ -228,6 +236,8 @@ test("new options are parsed", () => {
   assert.equal(args.allowPackAdditions, true);
   assert.equal(args.includeReceiptRows, true);
   assert.equal(args.judgedBase, "auto");
+  assert.equal(parseCli(["--results", "r"]).judgedBase, "auto", "the judged-base check is on by default");
+  assert.equal(parseCli(["--results", "r", "--judged-base", "none"]).judgedBase, null);
   assert.throws(() => parseCli(["--results", "r", "--judged-base"]), /MISSING_VALUE/);
 });
 

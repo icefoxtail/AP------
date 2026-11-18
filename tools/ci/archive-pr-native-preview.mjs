@@ -37,6 +37,7 @@ const sorted = values => [...new Set(values)].sort();
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
+import { isTextBoundDirectRequest } from '../../archive/tools/meta-foundation/register-type-judgment.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -922,7 +923,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
           sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
-    if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+    // A direct type judgment bound to each question's stem + choices (judgedTextFingerprint) does not need the file blob to match; the registrar checks the text.
+    if ((blobSha1 !== request.expectedSourceBlobSha1 && !isTextBoundDirectRequest(request)) || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
     let bank;
     try {
       const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
