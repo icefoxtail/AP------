@@ -23,8 +23,8 @@ Use with [README_CURRENT.md](README_CURRENT.md). 단독 배포 금지. 결속 �
 
 - 원문·자체 최종 풀이로 `primaryMethod/decisiveStep`를 선정하고 학년/과정(H15/H22), `standardUnitKey/subUnitKey`·교과 parent 및 해당 시험 연도·교육과정, 교육과정 누적형 허용의 공식·method/notation/concept inventory를 확인한다.
 - 실제 Git current RPM Primary/LOCKED semantic L1→L2→L3→L4, 허용 lower-only prerequisite, 학년·과목 crosswalk, GLOBAL ACTIVE PT/TPL taxonomy/aliases/ownerPack·exact curriculum binding을 qid별로 **조회**한다. canonical PT/TPL key가 현재 binding pack의 local taxonomy 파일에 없다는 이유만으로 ABSENT라고 단정하지 않는다.
-- `CrossConcept, Condition, IntegrationPattern`를 실제 사용 근거·비적용 이유로 결정하고 학습 `level=하|중|상`와 시험/문제은행 `difficultyBucket=1..5`를 **각각 독립 판정**하며 계산량/문항번호/기계적 bucket 환산으로 결정하지 않는다. UID·source provenance·course/standard parent·검색 projection 관계 기록.
-- 실제 qid별 `META_LOOKUP_EVIDENCE`에 source/solution SHA, Git authority path/blob SHA, RPM L3/L4 path/current+prerequisite 범위, crosswalk/ACTIVE/binding lookup 결과, chosen PT/TPL, CrossConcept/Condition/Integration 이유, level/난도 판단, nullReason 또는 before/after 수정 내역 저장. 없는 canonical key 발명, 미이수 상위과정 적용, 모두 NONE/[]/null 관성 처리 금지. exact ACTIVE key가 있는데 PT/TPL null이면 직접 수정.
+- `CrossConcept, Condition, IntegrationPattern`를 실제 사용 근거·비적용 이유로 결정하고 시험/문제은행 `difficultyBucket=1..5`만 판정하며(새 문항에 `level` 하|중|상은 쓰지 않음, [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)) 계산량/문항번호/기계적 환산으로 결정하지 않는다. UID·source provenance·course/standard parent·검색 projection 관계 기록.
+- 실제 qid별 `META_LOOKUP_EVIDENCE`에 source/solution SHA, Git authority path/blob SHA, RPM L3/L4 path/current+prerequisite 범위, crosswalk/ACTIVE/binding lookup 결과, chosen PT/TPL, CrossConcept/Condition/Integration 이유, difficultyBucket 판단, nullReason 또는 before/after 수정 내역 저장. 없는 canonical key 발명, 미이수 상위과정 적용, 모두 NONE/[]/null 관성 처리 금지. exact ACTIVE key가 있는데 PT/TPL null이면 직접 수정.
 - 정말 권위 전체 조회·repair 시도 후 결정 불가인 특정 qid만 `EVIDENCE_DEBT`와 attemptedLookup/sourceIdentity/firstMissingStep/owner=CREATE 기록. 전체 qid 무조회 `CANONICAL_META_UNVERIFIED`는 `OWNER_INCOMPLETE`로 분리하며 **CREATE_QUALITY_PASS=false**.
 
 ## 4. R1 독립풀이를 위한 물리 인계

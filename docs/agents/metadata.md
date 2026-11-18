@@ -3,6 +3,15 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## 난이도는 정수 1~5만 (2026-11-18 21시 KST부터 적용)
+
+- **적용 시점:** 2026-11-18 21:00 KST 이후 새로 만들거나 반입하는 모든 아카이브 문항(기출·유사·교과서·문제집·생성).
+- **규칙:** 난이도는 정수 `difficultyBucket` 1~5만 판정한다. 새 문항에는 `level`(하/중/상)을 쓰지 않는다. 검사기는 `level`이 없으면 통과하고, 있으면 하/중/상만 허용한다.
+- **기존 문항:** 그 전에 만들어진 문항의 `level`은 지우지 않고 그대로 두며, 하/중/상에서 정수로 환산하지 않는다.
+- **우선순위:** 봉인 문서(룰북 v2.6, difficultyBucket 운영규칙 v1.3 등)의 "level 3단계 유지" 조항보다 이 결정이 새 문항에 우선한다. 봉인 문서는 고치지 않는다.
+- **이유:** 같은 것을 두 번 물어, 작성 모델이 같은 정수에 "중"과 "상"을 섞어 채웠다(두 칸이 어긋남).
+- **진행 중(각각 다른 PR):** 옛 `mixer.html`(상/중/하 필터)은 진입 링크를 숨기고, 등록기의 `level` 검사는 삭제한다.
+
 ## CURRENT — 메타 결속 지문 범위: 발문과 보기만 본다 (2026-11-18, 사용자 결정)
 
 - **결정:** 검수된 메타를 문항에 묶는 지문(결속)은 발문과 보기(선택지)만 본다. 해설·정답·그림·다른 메타가 바뀌어도 이미 한 판정은 유지하고, 발문·보기가 바뀌는 오류 수정 때만 다시 판정한다. 이유: 해설을 다듬거나 그림을 SVG로 교체하거나 이미지를 다시 자를 때마다 검수된 메타가 무효가 되어 자동 등록 대기가 수천 건 쌓였다. 발문은 처음 정해 두면 웬만해서 바뀌지 않는다.
@@ -112,7 +121,7 @@
 - 공용 대형 메타는 조회용이며 작업자는 시험지 소형 JSON/stage-local 패킷만 수정한다. 병합 후 등록·Consumer/Search parity는 Git 자동화/기술 소유 범위다. GPT 사후 FINAL QA의 종료는 [v2.0 카드](../../docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)대로 Git main/대상 blob 확인까지이며, PT/TPL 신규 검사 제외·후속 CI/Pages 수동 폴링 제외를 지킨다. 자동화 검증을 수행하지 않았으면 `PIPELINE_PASS`라고 주장하지 않는다.
 
 ## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
-- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·1~5 난이도(정수 difficultyBucket만, 새 문항에 `level` 없음: [난이도 절](#난이도는-정수-15만-2026-11-18-21시-kst부터-적용))·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
 
 ## CURRENT — 5단계 난이도(Gemini) 인박스 운반: 수리는 도구가, 작업 목록은 빈 파일만 (2026-11-11, 사용자 위임 결정)
 

@@ -558,7 +558,7 @@ function isV3Completion(candidateFile) {
 
 function validateBasicCompletionFields(question) {
   const errors = [];
-  const requiredFields = ["level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "questionType", "layoutTag", "tags", "wide", "content", "choices", "answer", "solution", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"];
+  const requiredFields = ["category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "questionType", "layoutTag", "tags", "wide", "content", "choices", "answer", "solution", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"];
   for (const field of requiredFields) if (!Object.hasOwn(question || {}, field)) errors.push(`BASIC_ARCHIVE_FIELD_MISSING:q${question?.id}:${field}`);
   for (const field of ["content", "answer", "solution", "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]) {
     if (!nonEmpty(question?.[field])) errors.push(`BASIC_ARCHIVE_FIELD_REQUIRED:q${question?.id}:${field}`);
