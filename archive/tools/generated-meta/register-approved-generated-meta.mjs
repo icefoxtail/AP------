@@ -300,7 +300,7 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   sourceQuestion.meta = meta; sourceQuestion.metaFinalSha256 = digest;
   sourceQuestion.metaReviewEvidence = evidenceRef;
   sourceQuestion.metaReviewEvidenceSha256 = evidence.sha256;
-  sourceQuestion.difficultyBucket = meta.difficultyBucket; if (meta.level !== undefined) sourceQuestion.level = meta.level; else delete sourceQuestion.level;
+  sourceQuestion.difficultyBucket = meta.difficultyBucket; if (meta.level !== undefined) sourceQuestion.level = meta.level;
   for (const field of TOP_LEVEL_META_FIELDS) {
     if (Object.prototype.hasOwnProperty.call(meta, field)) sourceQuestion[field] = structuredClone(meta[field]);
     else delete sourceQuestion[field];
@@ -313,7 +313,7 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   consumerRecord.question.meta = meta; consumerRecord.question.metaFinalSha256 = digest; consumerRecord.question.metaReviewEvidence = evidenceRef;
   consumerRecord.question.metaReviewEvidenceSha256 = evidence.sha256;
   consumerRecord.question.uid = uid;
-  consumerRecord.question.difficultyBucket = meta.difficultyBucket; if (meta.level !== undefined) consumerRecord.question.level = meta.level; else delete consumerRecord.question.level;
+  consumerRecord.question.difficultyBucket = meta.difficultyBucket; if (meta.level !== undefined) consumerRecord.question.level = meta.level;
   for (const field of TOP_LEVEL_META_FIELDS) {
     if (Object.prototype.hasOwnProperty.call(meta, field)) consumerRecord.question[field] = structuredClone(meta[field]);
     else delete consumerRecord.question[field];
@@ -321,7 +321,7 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   indexRow.meta = meta; indexRow.metaFinalSha256 = digest; indexRow.metaReviewEvidence = evidenceRef;
   indexRow.metaReviewEvidenceSha256 = evidence.sha256;
   indexRow.rpmL1 = meta.rpmL1; indexRow.rpmL2 = meta.rpmL2; indexRow.rpmL3 = meta.rpmL3; indexRow.rpmL4 = meta.rpmL4;
-  indexRow.difficultyBucket = meta.difficultyBucket; if (meta.level !== undefined) indexRow.level = meta.level; else delete indexRow.level;
+  indexRow.difficultyBucket = meta.difficultyBucket; if (meta.level !== undefined) indexRow.level = meta.level;
   for (const field of TOP_LEVEL_META_FIELDS) {
     if (Object.prototype.hasOwnProperty.call(meta, field)) indexRow[field] = structuredClone(meta[field]);
     else delete indexRow[field];
