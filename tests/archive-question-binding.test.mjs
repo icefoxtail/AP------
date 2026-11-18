@@ -200,3 +200,64 @@ test('발문에 글자가 한 자라도 있으면 기존 규칙대로 그림을 
   await same(q, { ...q, content: '<p>그림을 보시오.</p><p><img src="b.png"></p>', image: 'b-fig.png' });
   await same({ content: '.', choices: null }, { content: '.<img src="a.png">', choices: null, image: 'z.png' });
 });
+
+test('보기 칸이 그림뿐이면 그림이 곧 보기다: 순서 변경·다른 그림은 불일치, 해설만 변경은 일치', async () => {
+  const imgs = ['<img src="q12_choice1.png">', '<img src="q12_choice2.png">', '<p><img src="q12_choice3.png"></p>'];
+  const q = { content: '옳은 그래프는?', choices: imgs, solution: '해설' };
+  assert.deepEqual(bindingPayload(q).choices, ['<img src="q12_choice1.png">', '<img src="q12_choice2.png">', '<p><img src="q12_choice3.png"></p>']);
+  await differ(q, { ...q, choices: [imgs[1], imgs[0], imgs[2]] }, '순서 변경');
+  await differ(q, { ...q, choices: [imgs[0], '<img src="other.png">', imgs[2]] }, '다른 그림');
+  await differ(q, { ...q, choices: [imgs[0], imgs[1]] }, '개수');
+  await same(q, { ...q, solution: '다른 해설', answer: '③', level: '상' }, '해설·정답·메타');
+  await same(q, { ...q, choices: imgs.map((s) => ' ' + s + '\r\n') }, '공백·줄바꿈');
+  // 맨 앞 ① 기호는 지우고 그림은 남긴다.
+  await same(q, { ...q, choices: ['① <img src="q12_choice1.png">', '②<img src="q12_choice2.png">', '③ <p><img src="q12_choice3.png"></p>'] }, '기호');
+  // 글자가 있는 보기에서는 기존 규칙대로 그림을 가린다.
+  await same({ content: 'q', choices: ['① 가 <img src="a.png">'] }, { content: 'q', choices: ['가 <img src="b.png">'] });
+});
+
+test('보기가 전부 비었거나 기호뿐인데 문항에 그림이 있으면 그림을 지문에 넣는다', async () => {
+  const q = { content: '그래프로 옳은 것은?', choices: ['①', '②', '③', '④', '⑤'], image: 'q3.png', solution: '해설' };
+  const payload = bindingPayload(q);
+  assert.deepEqual(payload.choices, ['', '', '', '', '']);
+  assert.equal(payload.image, 'q3.png');
+  assert.ok(!('stemMedia' in payload));
+  await differ(q, { ...q, image: 'q3b.png' }, 'image 변경');
+  await differ(q, { ...q, image: undefined, images: ['x.png'] }, 'images');
+  await same(q, { ...q, solution: '다른 해설', answer: '②' }, '해설');
+  // 그림이 없으면 기존대로(image·images를 지문에 넣지 않는다).
+  const noImage = { content: '값은?', choices: ['①', '②', '③'] };
+  assert.ok(!('image' in bindingPayload(noImage)) && !('stemMedia' in bindingPayload(noImage)));
+  await same(noImage, { ...noImage, solution: '다른 해설' });
+  await differ(noImage, { ...noImage, choices: ['①', '②'] }, '개수는 여전히 지문');
+  // 빈 배열은 보기가 없는 서술형이므로 image를 넣지 않는다.
+  assert.ok(!('image' in bindingPayload({ content: 'q', choices: [], image: 'a.png' })));
+  // 발문 원문에 그림 태그가 있으면 그것도 지문에 넣는다.
+  const inline = { content: '다음 그림에서 <img src="a.png"> 옳은 것은?', choices: ['', ''] };
+  assert.equal(bindingPayload(inline).stemMedia, '다음 그림에서 <img src="a.png"> 옳은 것은?');
+  await differ(inline, { ...inline, content: '다음 그림에서 <img src="b.png"> 옳은 것은?' }, '발문 속 그림');
+  // 발문에 그림 태그가 없고 보기가 비었으면 stemMedia 없이 image만.
+  assert.ok(!('stemMedia' in bindingPayload({ content: 'q', choices: ['①'], images: ['a.png'] })));
+});
+
+test('모양이 이상한 보기: 배열이 아니면 오류, 원소는 안정적으로 문자열화', async () => {
+  assert.equal(bindingPayload({ content: 'q', choices: null }).choices, null);
+  assert.equal(bindingPayload({ content: 'q', choices: undefined }).choices, null);
+  assert.throws(() => bindingPayload({ content: 'q', choices: '① 1 ② 2' }), /choices/);
+  assert.throws(() => bindingPayload({ content: 'q', choices: { 0: '1' } }), /choices/);
+  await assert.rejects(() => bindingFingerprint({ content: 'q', choices: 'x' }), /choices/);
+  await differ({ content: 'q', choices: [{ a: 1 }] }, { content: 'q', choices: [{ a: 2 }] }, '객체 원소');
+  await same({ content: 'q', choices: [{ a: 1, b: [2, { d: 4, c: 3 }] }] }, { content: 'q', choices: [{ b: [2, { c: 3, d: 4 }], a: 1 }] }, '키 순서');
+  await differ({ content: 'q', choices: [[1, 2]] }, { content: 'q', choices: [[2, 1]] }, '배열 원소');
+  assert.deepEqual(bindingPayload({ content: 'q', choices: [3, true, null, undefined, 'x'] }).choices, ['3', 'true', '', '', 'x']);
+});
+
+test('닫히지 않은 <svg>·<figure>, 대문자 <IMG>, $p<q$ 같은 경계 규칙', async () => {
+  await differ({ content: '<svg viewBox="0 0 1 1"> 처음 발문' }, { content: '<svg viewBox="0 0 1 1"> 바뀐 발문' }, '닫히지 않은 svg');
+  await differ({ content: '<figure> 처음 발문' }, { content: '<figure> 바뀐 발문' }, '닫히지 않은 figure');
+  await differ({ content: '그림 <picture> 처음 발문' }, { content: '그림 <picture> 바뀐 발문' }, '닫히지 않은 picture');
+  await same({ content: '식 <IMG SRC="a.png"> 값은?' }, { content: '식 <IMG SRC="b.png" ALT="x"> 값은?' }, '대문자 IMG 교체');
+  await same({ content: '식 <Img src="a.png"> 값은?' }, { content: '식 <img src="b.png"> 값은?' }, '대소문자 혼용');
+  await differ({ content: '두 명제 $p<q$ 일 때' }, { content: '두 명제 $p<r$ 일 때' }, '$p<q$');
+  await differ({ content: '$p<q$ 이고 $x>1$' }, { content: '$p<q$ 이고 $x>2$' }, '부등호 뒤 글자');
+});

@@ -64,6 +64,37 @@
     return value === undefined ? null : value;
   }
 
+  // 그림 태그를 가리지 않고 공백·줄바꿈만 정규화한 문자열(NFC, CRLF→LF, 연속 공백 한 칸, 앞뒤 공백 제거).
+  function collapseSpace(value) {
+    return value.normalize("NFC").replace(/\r\n?/g, "\n").replace(/\s+/g, " ").trim();
+  }
+  const MEDIA_TAG = /<(?:img|svg|figure|picture)(?=[\s/>])/i;
+  function hasMediaTag(text) {
+    return typeof text === "string" && MEDIA_TAG.test(text);
+  }
+  function hasValue(value) {
+    if (Array.isArray(value)) return value.length > 0;
+    return value !== undefined && value !== null && value !== "";
+  }
+
+  // 보기 한 칸의 문자열: 문자열은 그대로, 숫자·불리언은 String, 객체·배열은 키 정렬 직렬화(서로 다른 객체가 같아지지 않게),
+  // null·undefined는 "".
+  function choiceText(choice) {
+    if (typeof choice === "string") return choice;
+    if (choice === undefined || choice === null) return "";
+    if (typeof choice === "object") return JSON.stringify(stable(choice));
+    return String(choice);
+  }
+
+  // 보기 한 칸: 그림 태그를 가리고 맨 앞 ①~⑩ 기호를 지운 값. 그것이 비었는데 원문에 그림 태그가 있었다면
+  // 그림이 곧 보기이므로 그림 태그를 가리지 않은(공백·줄바꿈만 정규화하고 맨 앞 기호만 지운) 원문을 쓴다.
+  function normalizeChoice(choice) {
+    const text = choiceText(choice);
+    const normalized = normalizeBindingText(text).replace(CHOICE_MARK, "");
+    if (normalized !== "" || !hasMediaTag(text)) return normalized;
+    return collapseSpace(text).replace(CHOICE_MARK, "");
+  }
+
   function choicesAreImages(question) {
     return question.choicesEmbeddedInImage === true
       || question.sourcePayload?.choicesEmbeddedInImage === true;
@@ -76,19 +107,21 @@
     const rawStem = examSourceReader.readStemForBinding(question);
     if (!rawStem) throw new Error("bindingPayload: 발문(content·question·stem)이 모두 비어 있습니다.");
     const stem = normalizeBindingText(rawStem);
-    const payload = {
-      v: VERSION,
-      stem,
-      choices: Array.isArray(question.choices)
-        ? question.choices.map((choice) => normalizeBindingText(choice).replace(CHOICE_MARK, ""))
-        : null,
-    };
+    const rawChoices = question.choices;
+    if (rawChoices !== undefined && rawChoices !== null && !Array.isArray(rawChoices))
+      throw new Error("bindingPayload: choices가 배열이 아닙니다(" + typeof rawChoices + ").");
+    const choices = Array.isArray(rawChoices) ? rawChoices.map(normalizeChoice) : null;
+    const payload = { v: VERSION, stem, choices };
     // 발문이 그림뿐이라 정규화한 발문이 빈 문자열이면 그림이 곧 문제이므로 인라인 그림 태그가 든 발문(공백·줄바꿈만
     // 정규화)과 image·images를 포함한다. 안 그러면 지문이 상수가 되어 문제가 통째로 바뀌어도 결속이 유지된다.
     const stemIsMedia = stem === "";
-    if (stemIsMedia) payload.stemMedia = rawStem.normalize("NFC").replace(/\r\n?/g, "\n").replace(/\s+/g, " ").trim();
+    // 보기 칸이 전부 비었는데(기호뿐 포함) 문항에 그림이 있으면 보기 내용이 그림 안에 있다. choicesEmbeddedInImage와 같게 본다.
+    const hasFigure = hasMediaTag(rawStem) || hasValue(question.image) || hasValue(question.images);
+    const choicesInFigure = Array.isArray(choices) && choices.length > 0
+      && choices.every((choice) => choice === "") && hasFigure;
+    if (stemIsMedia || (choicesInFigure && hasMediaTag(rawStem))) payload.stemMedia = collapseSpace(rawStem);
     // 보기가 그림 안에 든 문항은 그림이 곧 보기이므로 그림을 포함한다.
-    if (stemIsMedia || choicesAreImages(question)) {
+    if (stemIsMedia || choicesAreImages(question) || choicesInFigure) {
       payload.image = stable(question.image ?? null);
       payload.images = stable(question.images ?? null);
     }
