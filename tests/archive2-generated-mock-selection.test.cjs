@@ -25,6 +25,18 @@ function row(sourceQid, purpose, number, difficultyBucket) {
 
 const allPurposes = ['A', 'B', 'C'];
 
+// Rows are chosen by the source exam they point at, not by a past blob of that exam file.
+const PALMA_2MID_EXAM = 'archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js';
+function assertSourceQuestionsExist(rows) {
+  const vm = require('node:vm');
+  const context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', PALMA_2MID_EXAM), 'utf8'), context, { timeout: 5000 });
+  const ids = new Set((context.window.questionBank || []).map(q => String(q.id)));
+  assert.ok(ids.size > 0, 'the Palma 2mid source exam has no questionBank');
+  const missing = rows.filter(r => !ids.has(String(r.sourceQid))).map(r => r.uid);
+  assert.deepEqual(missing, [], 'rows point at questions missing from the source exam');
+}
+
 test('choice display closes one unmatched leading math delimiter and preserves balanced or escaped dollars', () => {
   assert.equal(formatChoiceForDisplay('$x+1$'), '$x+1$');
   assert.equal(formatChoiceForDisplay('$(x-5)^2+(y+4)^2=13'), '$(x-5)^2+(y+4)^2=13$');
@@ -210,7 +222,7 @@ test('approved Palma QID9 rows use every covered source qid once and report only
   const indexPath = path.join(__dirname, '../archive/data/generated-lite-consumer/v1/index.json');
   const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
   const candidates = index.records.filter(record =>
-    record.sourceExamBlobSha === '4cfce909c023e5c4df4a759945c8cc3e0a63ec76' &&
+    record.sourceExamPath === PALMA_2MID_EXAM &&
     record.consumerSelectable === true &&
     !index.excludedHoldUids.includes(record.uid) &&
     /^ALITE-PALMA25-2MID-Q\d+-[ABC][123]$/.test(record.uid)
@@ -223,6 +235,7 @@ test('approved Palma QID9 rows use every covered source qid once and report only
   });
 
   assert.ok(candidates.length > 0);
+  assertSourceQuestionsExist(candidates);
   assert.ok(candidates.every(record => record.consumerSelectable === true));
   assert.ok(candidates.every(record => record.approval !== 'HOLD'));
   assert.equal(result.ok, true);
@@ -237,7 +250,7 @@ test('approved Palma QID9 rows use every covered source qid once and report only
 test('the actual Palma pool satisfies a five-level mixed quota within the interaction budget', () => {
   const index = JSON.parse(fs.readFileSync(path.join(__dirname, '../archive/data/generated-lite-consumer/v1/index.json'), 'utf8'));
   const candidates = index.records.filter(record =>
-    record.sourceExamBlobSha === '4cfce909c023e5c4df4a759945c8cc3e0a63ec76' &&
+    record.sourceExamPath === PALMA_2MID_EXAM &&
     record.consumerSelectable === true &&
     !index.excludedHoldUids.includes(record.uid) &&
     /^ALITE-PALMA25-2MID-Q\d+-[ABC][123]$/.test(record.uid)
