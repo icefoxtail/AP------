@@ -303,11 +303,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     else if (!CONFIDENCE.has(conf)) reason = "difficultyConfidence must be high/medium/low";
     else if (!BOUNDARY.has(a.difficultyBoundaryFlag)) reason = "difficultyBoundaryFlag must be NONE/B12/B23/B34/B45/UNKNOWN";
     if (reason) { out.decision = "SKIP_INVALID"; out.reason = reason; counts.SKIP_INVALID++; items.push(out); continue; }
-    // A draft request carries the 1..5 integer only: no level is read, converted or compared (user decision 2026-11-18),
-    // so legacyLevelCompatibility (derived from the old 3-level word) is neither computed nor written.
+    // Only a question that still carries a legacy 하/중/상 label gets a compatibility value; without one the field is not written.
+    const existingLevel = existingLevelOf(rec, item);
     const next = {
       difficultyBucket: a.difficultyBucket, difficultyConfidence: conf, difficultyBoundaryFlag: a.difficultyBoundaryFlag,
-      ...(draft ? {} : { legacyLevelCompatibility: computeLegacyCompat(existingLevelOf(rec, item), a.difficultyBucket) })
+      ...(existingLevel ? { legacyLevelCompatibility: computeLegacyCompat(existingLevel, a.difficultyBucket) } : {})
     };
     out.after = next;
     if (verifyProjection) {

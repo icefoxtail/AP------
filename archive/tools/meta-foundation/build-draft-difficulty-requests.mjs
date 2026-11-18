@@ -18,12 +18,10 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
-import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { SCHEMA, DRAFT_SINGLE_MODEL, registerDifficulty5 } from "./register-difficulty5.mjs";
+import { textFingerprint } from "./text-binding-lib.mjs";
 
-const require = createRequire(import.meta.url);
-const QuestionBinding = require("../../question-binding.js");
 const here = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 
 export const LEDGER_SCHEMA = "meta-judgment-ledger-v1";
@@ -50,7 +48,7 @@ export function judgedStemChoicesSha256(q) {
   const choices = Array.isArray(q.choices) ? q.choices.map(c => String(c)) : null;
   return sha256(JSON.stringify({ stem, choices }));
 }
-export const textBindingSha256 = q => sha256(QuestionBinding.bindingSerialize(q));
+export const textBindingSha256 = textFingerprint;
 
 // Same bank lookup as the registrar (register-difficulty5.mjs parseBank).
 function parseBank(bytes) {
@@ -97,17 +95,17 @@ export function planExamRequest({ ledger, ledgerName, ledgerBytes, ctx, includeR
     if (rec.sourceArchiveFile !== source || rec.sourceOrdinal !== n || id.sourceArchiveFile !== source || id.sourceOrdinal !== n) { skip(item, "UID_ORDINAL_MISMATCH"); continue; }
     const q = bank[n - 1];
     if (judgedStemChoicesSha256(q) !== item.stemChoicesSha256) { skip(item, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGED"); continue; }
-    let binding;
-    try { binding = textBindingSha256(q); } catch { skip(item, "STEM_EMPTY"); continue; }
+    const binding = textFingerprint(q);
+    if (!binding) { skip(item, "STEM_EMPTY"); continue; }
     if (isBucket(rec.difficultyBucket)) { stats.alreadyFilled++; skip(item, "ALREADY_HAS_DIFFICULTY"); continue; }
     if (/^approved/i.test(String(rec.fieldStatus?.difficulty ?? "")) && rec.fieldStatus.difficulty !== "approved_source") { skip(item, "APPROVED_STATUS_NOT_OVERWRITTEN"); continue; }
     // A row with a registration receipt is replayed against that receipt byte for byte; changing its status would read as drift.
     if (!includeReceiptRows && (rec.metadataApprovalType || (rec.approvalEvidence || []).some(ref => /evidence\/reviewed-exam-meta\/v1\//.test(ref)))) { skip(item, "RECEIPT_ROW_HELD"); continue; }
     seen.add(n); seen.add(uid);
-    // Integer 1..5 only: the old 3-level word (level) is neither carried nor converted (user decision 2026-11-18).
+    // Integer 1..5 only: the request carries no level (user decision 2026-11-18); the lane writes legacyLevelCompatibility only when the row already has one.
     items.push({ ordinal: n, questionUid: uid,
       after: { difficultyBucket: item.difficultyBucket, difficultyConfidence: confidence, difficultyBoundaryFlag: boundary },
-      judgedTextBinding: { version: QuestionBinding.VERSION, sha256: binding } });
+      textBindingFingerprint: binding });
   }
   stats.eligible = items.length;
   if (!items.length) return { request: null, skipped, stats };

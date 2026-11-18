@@ -52,7 +52,7 @@ test("a judged ledger item becomes a request; the lane fills the three integer-d
   assert.equal(request.approvalType, DRAFT_SINGLE_MODEL);
   assert.equal(request.judge, "opencode-go/deepseek-v4.1-flash");
   assert.equal(request.gemini.items[0].after.difficultyBoundaryFlag, "NONE");
-  assert.equal(request.gemini.items[0].judgedTextBinding.sha256, textBindingSha256(bank[0]));
+  assert.equal(request.gemini.items[0].textBindingFingerprint, textBindingSha256(bank[0]));
   assert.equal(request.gemini.items[1].after.difficultyBoundaryFlag, "B45");
   const dry = registerDifficulty5({ root: x.root, request });
   assert.equal(dry.summary.APPLY, 2);
@@ -69,7 +69,7 @@ test("a judged ledger item becomes a request; the lane fills the three integer-d
   assert.equal(after.records[0].fieldStatus.difficulty, DRAFT_FIELD_STATUS);
   assert.equal(after.records[0].fieldStatus.subUnit, "approved_source", "other field statuses are untouched");
   assert.equal(Object.hasOwn(after.records[0], "level"), false);
-  assert.equal(Object.hasOwn(after.records[0], "legacyLevelCompatibility"), false, "no level-derived value is written");
+  assert.equal(Object.hasOwn(after.records[0], "legacyLevelCompatibility"), false, "no level-derived value is written for a row without a level");
   assert.equal(after.records[2].fieldStatus.difficulty, "manual_review_pending", "rows outside the request are untouched");
   assert.equal(after.counts.explicitDifficultyHolds, 3);
   assert.equal(registerDifficulty5({ root: x.root, request }).summary.ALREADY_REGISTERED, 2, "replay is a no-op");
