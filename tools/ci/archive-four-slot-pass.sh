@@ -21,9 +21,12 @@ now_ms() {
 # not writable. A failing command still records its own exit code through the EXIT trap.
 stage_end() {
   [[ -n "$stage_name" ]] || return 0
-  local code="${stage_rc:-${1:-0}}" ms=0
+  local code="${stage_rc:-${1:-0}}" ms=0 adj=''
   ms=$(( $(now_ms) - stage_start )) 2>/dev/null || ms=0
-  { printf '{"stage":"%s","durationMs":%s,"exitCode":%s}\n' "$stage_name" "$ms" "$code" >> "$stage_log"; } 2>/dev/null || true
+  # The wall clock can be stepped back mid-stage (runner clock sync). A negative duration is meaningless: record 0 and
+  # mark it so the number is not mistaken for a real zero.
+  if (( ms < 0 )) 2>/dev/null; then ms=0; adj=',"clockAdjusted":true'; fi
+  { printf '{"stage":"%s","durationMs":%s,"exitCode":%s%s}\n' "$stage_name" "$ms" "$code" "$adj" >> "$stage_log"; } 2>/dev/null || true
   printf '[stage-time] %s %sms exit=%s\n' "$stage_name" "$ms" "$code" >&2 2>/dev/null || true
   stage_name=''
   stage_rc=''
