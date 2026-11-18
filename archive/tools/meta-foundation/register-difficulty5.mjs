@@ -10,6 +10,11 @@ import { verifyPreservedAuditDifficulty } from "./native-audit-preservation.mjs"
 // format validation and a "never overwrite an existing 1~5 number" guard.
 export const SCHEMA = "archive-difficulty5-register-request-v1";
 export const REVIEWED_CORRECTION_SCHEMA = "archive-difficulty5-reviewed-correction-v1";
+// Single-model draft grade (docs/agents/metadata.md, "단일 모델 초안 등급"): a request with approvalType DRAFT_SINGLE_MODEL fills
+// the same four fields as an ordinary request and, in the same write, marks fieldStatus.difficulty of the filled rows only.
+// The mark is a label: selection, filters and screens read difficultyBucket exactly as before.
+export const DRAFT_SINGLE_MODEL = "DRAFT_SINGLE_MODEL";
+export const DRAFT_FIELD_STATUS = "draft_single_model";
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const CONFIDENCE = new Set(["high", "medium", "low"]);
@@ -215,6 +220,10 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   if (!request || request.schemaVersion !== SCHEMA) fail("schemaVersion must be " + SCHEMA);
   if (verifyProjection && write) fail("--verify-projection is read-only");
   const g = request.gemini;
+  const draft = request.approvalType === DRAFT_SINGLE_MODEL;
+  if (request.approvalType !== undefined && !draft) fail("unsupported approvalType: " + String(request.approvalType));
+  if (draft && request.reviewedCorrection) fail("a draft request cannot carry a reviewed correction");
+  if (draft && !(typeof request.judge === "string" && request.judge.trim())) fail("DRAFT_SINGLE_MODEL requires the judge (model) name");
   if (!g || g.schemaVersion !== "v1" || !Array.isArray(g.items) || !g.items.length) fail("gemini v1 payload with items required");
   if (typeof g.requestId !== "string" || !g.requestId) fail("gemini.requestId required");
   const source = String(g.sourceArchiveFile || "").normalize("NFC");
@@ -279,7 +288,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   }
 
   const items = [], counts = { APPLY: 0, ALREADY_REGISTERED: 0, SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: 0 };
-  let changedFields = 0;
+  let changedFields = 0, draftMarked = 0;
   for (const item of g.items) {
     const rec = byOrdinal.get(item.ordinal), a = item.after || {};
     const cur = {
@@ -312,9 +321,13 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     }
     out.decision = "APPLY"; counts.APPLY++;
     for (const [f, v] of Object.entries(next)) if (!equal(rec[f], v)) { rec[f] = v; changedFields++; }
+    // The label is not a value change: it is not counted in changedFields (that count is bounded to the four difficulty fields).
+    if (draft) { rec.fieldStatus = { ...(rec.fieldStatus || {}), difficulty: DRAFT_FIELD_STATUS }; draftMarked++; }
     items.push(out);
   }
 
+  if (draft && draftMarked && doc.counts && Object.hasOwn(doc.counts, "explicitDifficultyHolds"))
+    doc.counts.explicitDifficultyHolds = doc.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
   if (write && counts.APPLY) {
     // Preserve the shared sidecar digest convention (same as the pinpoint registrar).
     delete doc.digest;
@@ -326,6 +339,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     requestId: g.requestId, driveFileId: request.driveFileId ?? null, driveSha256: request.driveSha256 ?? null,
     sourceArchiveFile: source, sourceBlobSha: sha, items,
     summary: { total: items.length, ...counts, changedFields, written: Boolean(write && counts.APPLY),
+      ...(draft ? { approvalType: DRAFT_SINGLE_MODEL, draftMarked } : {}),
       ...(verifyProjection ? { consumerBinding: Object.values(binding).reduce((m, b) => (m[b] = (m[b] || 0) + 1, m), {}) } : {}) },
     ptTpl: "UNTOUCHED_NOT_IN_SCOPE"
   };

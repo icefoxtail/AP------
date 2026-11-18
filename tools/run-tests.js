@@ -521,6 +521,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-difficulty5-register.test.mjs']
   },
   {
+    // Single-model draft difficulty: ledger -> diff5 request converter and the lane's draft label; fixture-only.
+    label: 'tests/archive-draft-difficulty.test.mjs',
+    args: ['--test', 'tests/archive-draft-difficulty.test.mjs']
+  },
+  {
     // The register pass runs this only when a DIRECT_JUDGMENT (type-only) request is in the inbox; a PR that changes the lane needs it too.
     label: 'tests/archive-type-judgment-registration.test.mjs',
     args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
