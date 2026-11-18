@@ -92,7 +92,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "이차함수",
@@ -250,7 +250,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "이차함수",
@@ -791,7 +791,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "이차함수",
@@ -1025,7 +1025,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "이차함수",
@@ -1183,7 +1183,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "이차함수",
@@ -1265,7 +1265,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "삼각비",
@@ -1344,7 +1344,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "삼각비",
@@ -1499,7 +1499,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "객관식",
     "삼각비",
@@ -1578,7 +1578,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "서답형",
-  "layoutTag": "fullwidth",
+  "layoutTag": "grid",
   "tags": [
     "서답형",
     "삼각비",

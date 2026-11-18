@@ -1821,7 +1821,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "wide",
     "tags": [
       "서술형",
       "원의 성질",

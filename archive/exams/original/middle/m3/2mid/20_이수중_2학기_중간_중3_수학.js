@@ -22,7 +22,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -109,7 +109,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -367,7 +367,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -457,7 +457,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -545,7 +545,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -632,7 +632,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -722,7 +722,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -809,7 +809,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -978,7 +978,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -1066,7 +1066,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -1152,7 +1152,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -1240,7 +1240,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -1326,7 +1326,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -1415,7 +1415,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "객관식",
       "삼각비",
@@ -1595,7 +1595,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "서답형",
       "삼각비",
@@ -1676,7 +1676,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "서답형",
       "삼각비",
@@ -1758,7 +1758,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "figure",
     "tags": [
       "서답형",
       "삼각비",

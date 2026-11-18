@@ -570,7 +570,7 @@ window.questionBank = [
     "standardUnit": "자료의 산포도",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "표준편차",
       "도수표 작성",
@@ -654,7 +654,7 @@ window.questionBank = [
     "standardUnit": "직각삼각형의 성질",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "피타고라스 정리",
       "직각삼각형",
@@ -738,7 +738,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각비",
       "tan 30°",
@@ -826,7 +826,7 @@ window.questionBank = [
     "standardUnit": "직각삼각형의 성질",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "피타고라스 정리",
       "직각삼각형",
@@ -993,7 +993,7 @@ window.questionBank = [
     "standardUnit": "도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "정사각형",
       "넓이",
@@ -1076,7 +1076,7 @@ window.questionBank = [
     "standardUnit": "다각형과 원",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "정육각형",
       "원에 내접",
@@ -1160,7 +1160,7 @@ window.questionBank = [
     "standardUnit": "원의 성질과 도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "접기",
       "수직이등분선",
@@ -1246,7 +1246,7 @@ window.questionBank = [
     "standardUnit": "도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "사다리꼴",
       "넓이",
@@ -1417,7 +1417,7 @@ window.questionBank = [
     "standardUnit": "입체도형의 길이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "직육면체",
       "면대각선",
@@ -1501,7 +1501,7 @@ window.questionBank = [
     "standardUnit": "입체도형의 길이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "직육면체",
       "전개도",
@@ -1586,7 +1586,7 @@ window.questionBank = [
     "standardUnit": "입체도형의 길이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "정사각뿔",
       "밑면 중심",
@@ -1826,7 +1826,7 @@ window.questionBank = [
     "standardUnit": "직각삼각형과 도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "접기",
       "대칭",

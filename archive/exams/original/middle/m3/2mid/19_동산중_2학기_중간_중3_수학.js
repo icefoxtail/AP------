@@ -112,7 +112,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -198,7 +198,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -364,7 +364,7 @@ window.questionBank = [
     "standardUnit": "통계",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -858,7 +858,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -945,7 +945,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1031,7 +1031,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1119,7 +1119,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1206,7 +1206,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1294,7 +1294,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1382,7 +1382,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1470,7 +1470,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1558,7 +1558,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1646,7 +1646,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -1734,7 +1734,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
@@ -2048,7 +2048,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "source_figure",
     "tags": [
       "기출",
       "2019",
