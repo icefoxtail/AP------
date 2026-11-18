@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-44d532fbf4f3-9d985d1f",
+  "sourceArchiveFile": "original/high/h2/1mid/19_금당고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_69e0209ee3eeebc55a42272cf52a0e366d01d81a4e20b231c67005031de85dd2",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "72의 소인수 2,3의 배수를 포함배제로 제외하여 서로소인 자연수를 센다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT에 맞는 유형 없음. 필요한 유형: 72의 소인수 2,3의 배수를 포함배제로 제외하여 서로소인 자연수를 센다. 제안 유형명: 서로소 자연수의 포함배제 계수. 구별 단서: 기준 정수의 소인수 배수들을 제외하고 공배수 중복을 보정하는 구조. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8938bef2fe7adde2088fe3be490c5100ca9ea69675b4b138288d69040d326c46",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "여학생을 원형 배치한 뒤 세 틈 중 두 틈에 남학생을 배치한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_100dca0dcfacce814c8ee2b8631782116c31c9c28c3faaf0ccd720006a95adda",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "step": "8명 고정좌석 순열을 직사각형의 180도 회전 동치 두 개씩 묶어 센다.",
+      "note": "발문·해설·정본 그림 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 필요한 TPL: 8명 고정좌석 순열을 직사각형의 180도 회전 동치 두 개씩 묶어 센다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_035450a063a8fa98e68257876bb90477931614bcc2c30de1951452c630aedf09",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "각각 다른 편지 다섯 통을 세 우체통 중 하나에 독립 배정한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_116a65d5327403358e1d44d3b231c60200b08d3a58c72493354ce7dc3e0fa2e9",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "중복 숫자 배열 6!/(3!2!)에서 첫 자리 0인 배열을 뺀다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_397eacf63aed6e096f9282dde286b0c0ebc2450660d68ed98462e5cfa69d408f",
+      "sourceOrdinal": 6,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "잘린 5×5 격자에서 크기별 정사각형 수를 세고 빠진 모서리를 포함한 것을 제외한다.",
+      "note": "발문·해설·정본 그림 직접 판독. 해당 과목 ACTIVE PT에 맞는 유형 없음. 필요한 유형: 잘린 5×5 격자에서 크기별 정사각형 수를 세고 빠진 모서리를 포함한 것을 제외한다. 제안 유형명: 결손 격자의 크기별 정사각형 계수. 구별 단서: 변 길이별 위치 개수에서 결손 칸을 포함한 도형을 제외하며 격자 경로 배열과 구별. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2132124b2d58f697537ce7e4a546048cead4476f5ee776cd5c79b07c6a4983b7",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "세 호텔로 반복 배정한 전체에서 빈 호텔이 있는 경우를 포함배제로 제거한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_47f5de1ff731758a1397cdafc281b9b76e67e9c0ec311c7e6885510fd5ef4266",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "step": "다른 다섯 면색의 순열 5!을 정삼각기둥의 여섯 회전 동치로 나눈다.",
+      "note": "발문·해설·정본 그림 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 필요한 TPL: 다른 다섯 면색의 순열 5!을 정삼각기둥의 여섯 회전 동치로 나눈다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e2120b285f50fb4e608c6d918fcacc0f06db7a909a672d8585fd54b03b0d97f2",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "총 8걸음의 중간 격자점별 경로 순열을 구한 뒤 두 사람 경로 수의 제곱을 합한다.",
+      "note": "발문·해설·정본 그림 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_957250c332d68240e5605818a43dd5cabab342fad5e50d342ab0798b220e5c0a",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "step": "곱 전개에서 차수쌍 (2,0),(0,2)의 계수를 더해 n을 정한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7161624ad59b4e85cd84aacfaf5240828686958ce34ff21a2cbf442efa8e4981",
+      "sourceOrdinal": 13,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_EXPONENT_LAWS",
+      "templateKey": null,
+      "step": "거듭제곱을 반복 제곱하며 250으로 나눈 나머지만 유지해 9^10의 나머지를 구한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT에 맞는 유형 없음. 필요한 유형: 거듭제곱을 반복 제곱하며 250으로 나눈 나머지만 유지해 9^10의 나머지를 구한다. 제안 유형명: 거듭제곱의 나머지 계산. 구별 단서: 합동관계를 반복 제곱·곱셈에 적용해 큰 거듭제곱 없이 나머지를 구하는 구조. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a6d639c87e020e9107e3351c13bc7355d32410480bf9dc1ff58fc6298f57fad7",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "step": "이차식의 각 항과 (x+2)^5에서 차수합3이 되는 계수를 합한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_38568f0a3428325debf4da59dff3815bb08309b887449fb2d93e0f279c1ae587",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "step": "x²로 나누기 전 분자의 x²항을 이항정리로 구한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4970eecabc1da5787622f815fc4effce7f48bd3e963cfa312c7685070ff7812f",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "선행 숫자별 팩토리얼 묶음을 누적해 사전식 순위와 역순위를 구한다.",
+      "note": "발문·해설 직접 판독. 해당 과목 ACTIVE PT 정의에 부합한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

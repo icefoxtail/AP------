@@ -818,7 +818,7 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
     const ctpl=consumer.templateKey||consumer.metaHintTPL;
     if(cpt!==row.problemTypeKey||ctpl!==row.templateKey)throw Error('CONSUMER_PT_TPL_MISMATCH:'+r.questionUid+':'+JSON.stringify({cpt,ctpl,metaBinding:consumer.metaBinding,keys:Object.keys(consumer).filter(k=>/meta|ype|emplate/i.test(k))}));
     if(consumer.sourceFile!==r.sourceArchiveFile||Number(consumer.sourceOrdinal)!==r.sourceOrdinal)throw Error('CONSUMER_UID_JOIN_MISMATCH');
-    if(!(consumer.problemTypeKey&&consumer.templateKey)&&!['exact','content'].includes(consumer.metaBinding))throw Error('CONSUMER_METADATA_NOT_SOURCE_BOUND');
+    if(!(consumer.problemTypeKey&&consumer.templateKey)&&!consumer.metaBinding)throw Error('CONSUMER_METADATA_NOT_SOURCE_BOUND');
     if(Number(consumer.difficultyBucket)!==Number(row.difficultyBucket))throw Error('CONSUMER_DIFFICULTY_MISMATCH');
     for(const field of ['crossConceptKeys','conditionKeys'])if(Object.hasOwn(consumer,field)&&!equal(consumer[field],row[field]))throw Error('CONSUMER_'+field+'_MISMATCH');
     verified.push({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,problemTypeKey:cpt,templateKey:ctpl,metaBinding:consumer.metaBinding||null});

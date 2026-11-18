@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6901c7e97620-7a62891e",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_미분_대단원학습평가_고2/비상_미적분1_미분_대단원학습평가_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e1f5edbad132c75686ff47c7294cc3f0d4a585122deb18f376954fcc55fbfef9",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_AVERAGE_RATE_ANALYSIS",
+      "step": "구간 평균변화율 4+a=9를 푼다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e146872309186cddffcc2d5f16aab64f6b00ae861783b4d3821ca9eb7d48c56",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "step": "경계 x=1에서 함수값 5+a=b-3와 기울기 6=b를 맞춘다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa28df7855174b528379799ad633616df387c11e32a30df1817b95a546aec9b7",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "분자를 두 차분으로 분리하여 -5f′(1)=-5(-6)를 계산한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_039e15e69d88c72f1eab6f14fbbf38f78bd5da25fd4bc7fc56fe5e9b6341baee",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "step": "f′(t)=-1에서 t=±1인 두 접선 y=-x-1,y=-x+3의 거리를 구한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c788fa9b2f80c74bae34ae763a409bd408fe107660fd527b9080600472687aea",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+      "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+      "step": "그림에서 f′는 -1에서만 부호가 바뀌고 4에서는 음수로 접하므로 극값은 하나다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b68a6eeff4376ac63e4881db0ecefeca78bc7923d37eadfff9bdced1dc39a10",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "step": "f′의 두 근 1±√(1-a/3)이 모두 (-1,2)에 있도록 제한한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_24a9a339c81bc8cb4c6f51e7d327b396e9bd88dd830a71594c806fcdef47341b",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+      "step": "t=x+1/x≥2로 놓아 t³-27t의 t=3 최솟값을 구한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_467d593d9d722512a57c4d75769be9c341bb570071366718b1a46b672c403d57",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+      "step": "두 속도 2t-6과 2t-8의 곱을 음수로 둔다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_255862d5dff34c903fc602418eadfecdf54e74f07db5ef87b1f1e3e6fc9b8a47",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "극한에서 f(3)=-1,g(3)=2,f′(3)=2,g′(3)=6을 얻어 곱미분한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f801eaa8694d000e418499fe47147af48f36a92c27bf8f5eced961b0ff9c78d",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "templateKey": "TPL_MONOTONICITY_CONDITION",
+      "step": "삼차함수가 일대일이려면 f′=-3x²+2ax+a≤0이어야 하므로 판별식을 제한한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e75ea1b22e3e2e60ea2cdf06dff4d0d405dc1498609a6a0c7e77d922d23a4f08",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+      "step": "x³-3x²-9x+a의 x=3 극솟값 a-27<0과 f(0)=a>0을 결합한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b065f600f0863d2b7fdd4fe5384df2aad55a459ef1a242ff936110d51debcb0c",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+      "step": "판매액 (3600+100x)(540-x²)의 도함수 영점 x=6에서 최대를 얻는다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d416df8f493d2f56eba92c1d1ae56ff474eeb32fcad179a72bc11893c3bcda60",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+      "step": "수면 높이 t에 대한 넓이 π(20t-t²)를 미분해 t=5를 대입한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    }
+  ]
+}

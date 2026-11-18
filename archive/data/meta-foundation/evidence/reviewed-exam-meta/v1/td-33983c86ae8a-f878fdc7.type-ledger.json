@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-33983c86ae8a-f878fdc7",
+  "sourceArchiveFile": "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_40de6c10e47674e5cd3ae555e3956c75d96491262000a5445bc5285e0b06089f",
+      "sourceOrdinal": 10,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_REPRESENTATIVE",
+      "templateKey": null,
+      "step": "평균은 극단값의 영향을 받고 중앙값은 정렬한 가운데, 최빈값은 최대 빈도라는 정의를 대조한다.",
+      "note": "새 PT 제안: 대푯값의 정의와 선택 기준. 정의: 평균·중앙값·최빈값의 정의와 극단값 또는 자료의 성격을 고려하여 진술의 참거짓이나 적합한 대푯값을 결정한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0288fa4a71c61cd530b5cf9ba388587f3130b983b5b167cd121247c0e3e4a9f5",
+      "sourceOrdinal": 12,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_REPRESENTATIVE",
+      "templateKey": null,
+      "step": "독서량의 극단값20은 중앙값, 점수는 평균, 가장 많이 팔린 용량은 최빈값을 선택.",
+      "note": "새 PT 제안: 대푯값의 정의와 선택 기준. 정의: 평균·중앙값·최빈값의 정의와 극단값 또는 자료의 성격을 고려하여 진술의 참거짓이나 적합한 대푯값을 결정한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3a36c10e9929596bd7eb8cce12e04e7cf1823fd658f4ab6ac2f81c174c8ea5a",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_RESTORE",
+      "step": "편차합0에서 B편차-3, 평균15를 더해 대기시간12.",
+      "note": "필요 TPL: 편차 합으로 누락 변량 복원: 주어진 편차의 합에서 빠진 편차를 구한 뒤 평균을 더해 원래 변량을 복원한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_67b324d8c693061ad471978ece78fa527d426cf8db7c5fc432e48f1c7d84b22e",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합0으로 미지수-1, 제곱편차 평균5의 제곱근으로 표준편차√5.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_08937558eedebfe6e99b861d34136feb01ef2995efe016b2307e45cacf4cf880",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "점그래프에서 같은 평균과 총점, 평균 초과 횟수 및 평균으로부터 퍼짐을 비교하여 B팀의 산포가 더 큼을 판별.",
+      "note": "새 PT 제안: 그래프에서 평균과 산포도 비교. 정의: 변량을 나타낸 점 또는 꺾은선 그래프에서 평균과 기준 초과 횟수, 평균으로부터의 퍼짐을 읽어 여러 자료 집단을 비교한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ef9e0ab757f09d042977070b6d877df80864816aaa863a08318febb6df36e7f2",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "기존 세 수의 합0·제곱합3에4와6을 추가하여 새 평균2, 제곱평균11에서 분산7.",
+      "note": "새 PT 제안: 여러 집단의 평균과 분산 통합. 정의: 집단별 인원과 평균·분산으로 합과 제곱합을 복원하여 자료를 합치거나 추가한 전체 집단의 평균과 분산을 계산한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7104c8e242fa13fcbd5828561cc381b07bb9ca68b7befcc97841c3b9a1e56ac6",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+      "step": "평균보다 큰 변량의 편차는 양수라는 정의를 기준으로 부호와 산포도 진술을 판정.",
+      "note": "필요 TPL: 편차와 산포도 개념 진술 검토: 편차의 부호·합, 분산과 표준편차의 정의 및 크기 해석에 관한 진술의 참거짓을 판정한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_df2e35942728369d2b0983e3b274f475c4982a35b6ab54c49d1ebe778cc36221",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "세 점그래프 평균6, 가격은 모두6이라 표준편차0, 색상 분산은8이 아니며 반응속도보다 덜 퍼짐.",
+      "note": "새 PT 제안: 그래프에서 평균과 산포도 비교. 정의: 변량을 나타낸 점 또는 꺾은선 그래프에서 평균과 기준 초과 횟수, 평균으로부터의 퍼짐을 읽어 여러 자료 집단을 비교한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2071475886464274b38e07e127a25433c78e5c1983dc7d4d3715c8522d30659a",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "마스크 구입 수량이 커질수록 총가격이 증가하므로 양의 상관을 갖는 상황으로 선택.",
+      "note": "새 PT 제안: 산점도의 상관 방향과 실생활 대응. 정의: 두 변량의 동반 증가·감소 경향을 판단하여 양·음·무상관을 구분하고 실생활 관계와 연결한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_53f01162bf81d262c79b8dec5a9ee34a19ffbe11100a91b4f1cb0f1efdfba8a2",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "우하향 직선 가까이에 가장 좁게 모인 다섯째 산점도가 강한 음의 상관.",
+      "note": "새 PT 제안: 산점도의 상관 방향과 강도. 정의: 산점도의 점들이 향하는 증가·감소 방향과 직선 주위 밀집 정도를 이용하여 상관의 방향과 강도를 비교한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50576707415164c134ea03937d2ae50aca3e916d481062999494eedd7f49b414",
+      "sourceOrdinal": 22,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "두 점수 차가20이상인 점은(40,60),(50,80),(70,90)의 세 점으로 전체10명의30%.",
+      "note": "새 PT 제안: 산점도에서 조건을 만족하는 자료 비율. 정의: 산점도 좌표를 읽어 두 변량의 크기·차 또는 경계 조건을 만족하는 점을 세고 전체에 대한 비율을 구한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ac582e7d10312c13cb17650a7eb1009c7bae07fb3601e22f62ee7969af41bd72",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_DISPERSION",
+      "step": "자료 평균7과 편차-2,-1,-1,1,1,2의 제곱 평균2에서 표준편차√2.",
+      "note": "필요 TPL: 주어진 자료의 분산과 표준편차: 자료의 평균을 구하고 각 편차의 제곱을 평균하여 분산을 계산한 뒤 제곱근을 취한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f26d4866cbe31f4cac85649ce7ec3b3e915d6cdfd3a26313c34e88280160a6cb",
+      "sourceOrdinal": 25,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균a+3을 뺀 편차로 분산식을(2a²+12)/5=6으로 세우고 양수조건에 맞는 a3을 선택.",
+      "note": "새 PT 제안: 분산 조건으로 미지 변량 결정. 정의: 자료의 미지 변량을 포함한 평균과 편차를 식으로 나타내고 주어진 분산 조건을 방정식으로 풀어 미지수를 결정한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

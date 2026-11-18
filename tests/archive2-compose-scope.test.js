@@ -729,12 +729,12 @@ test('difficulty filters apply only after an explicit choice and can return to a
 test('problem paper maker uses a recorded difficulty without approval labels or text binding', async () => {
   const r2 = basicRecord('중3', {
     difficultyBucket: 2, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined,
-    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: 'content',
+    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: 'text',
     metadataConflicts: ['difficultyBucket'],
   });
   const r3 = basicRecord('중3', {
     questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-r3').digest('hex'),
-    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: 'content',
+    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: 'text',
   });
   // same bucket 2, no text binding recorded: still usable (binding is a label); a broken source
   // reference (generalUseEligibility) is the real defect and stays out

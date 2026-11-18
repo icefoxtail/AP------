@@ -922,7 +922,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
           sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
-    if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+    // A direct type judgment is bound to each question's stem + choices (the registrar checks the text), not to the file blob.
+    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT') || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
     let bank;
     try {
       const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };

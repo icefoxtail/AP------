@@ -418,7 +418,6 @@ function reportCenterExternalizeExamImage(url) {
     return typeof window.resolveExamImageUrl === 'function' ? window.resolveExamImageUrl(url) : url;
 }
 const REPORT_CENTER_ARCHIVE_INDEX_URL = 'https://icefoxtail.github.io/AP------/archive/index';
-const REPORT_CENTER_ARCHIVE_MIXER_URL = 'https://icefoxtail.github.io/AP------/archive/mixer.html';
 
 function reportCenterArchiveRender() {
     if (typeof window !== 'undefined' && window.ApArchiveRender) return window.ApArchiveRender;
@@ -539,7 +538,7 @@ function reportCenterNormalizeArchiveFile(raw) {
             type: 'mixed',
             original,
             path: '',
-            url: REPORT_CENTER_ARCHIVE_MIXER_URL,
+            url: '',
             message: '믹서 출제물은 원본 문항 매핑 정보가 있어야 문항 원문을 직접 확인할 수 있습니다.'
         };
     }
@@ -1272,9 +1271,8 @@ function reportCenterBuildArchiveStatusHtml(session) {
                 <a href="${reportCenterAttr(linkUrl)}" target="_blank" rel="noopener" style="font-size:11px; font-weight:700; color:var(--primary); text-decoration:none; white-space:nowrap;">열기</a>
             </div>
             <div style="font-size:11px; font-weight:700; color:var(--secondary); word-break:break-all; background:var(--surface-2); border-radius:10px; padding:8px 10px;">${reportCenterEscape(session?.archive_file || 'archive_file 없음')}</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="display:grid; grid-template-columns:1fr; gap:8px;">
                 <button class="btn" style="min-height:42px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14); color:var(--primary);" onclick="reportCenterLoadArchiveQuestionDetails('${safeStudentId}', '${safeSessionId}')">문항 원문 확인</button>
-                <button class="btn" style="min-height:42px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--text);" onclick="window.open('${REPORT_CENTER_ARCHIVE_MIXER_URL}', '_blank', 'noopener')">믹서 열기</button>
             </div>
         </div>
         <div id="report-center-archive-details"></div>

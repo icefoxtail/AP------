@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
 import { blueprintInsertStatements } from "../apmath/worker-backup/worker/helpers/archive2-questions.js";
+import { stableStringify } from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const worker = path.join(root, "apmath/worker-backup/worker");
@@ -368,11 +369,16 @@ try {
   assert.equal((await request("archive-saved-papers?status=ARCHIVED&limit=20")).body.papers.some(paper => paper.id === directId), true);
   const restored = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
   assert.equal(restored.status, 200, JSON.stringify(restored));
+  const r2BeforeDetail = r2ImageRequests.length;
+  assert.equal((await request("archive-saved-papers/" + directId)).status, 200);
+  assert.equal(r2ImageRequests.length, r2BeforeDetail, "opening a saved paper reads no image from R2");
   const frozenImage = directDetail.body.paper.snapshot.questions[0].image;
-  assert.match(frozenImage, /^data:image\/png;base64,/);
-  assert.ok(Buffer.from(frozenImage.split(",")[1], "base64").equals(
-    fs.readFileSync(path.join(root, "archive", imageFixture.rawQuestion.image)),
-  ), "snapshot embeds the source image bytes");
+  assert.equal(frozenImage, imageFixture.rawQuestion.image, "the snapshot keeps the image path");
+  assert.ok(!/data:image\//.test(JSON.stringify(directDetail.body.paper.snapshot)), "no image is embedded in the snapshot");
+  const imageBytes = fs.readFileSync(path.join(root, "archive", imageFixture.rawQuestion.image));
+  assert.deepEqual(directDetail.body.paper.snapshot.assets.find((asset) => asset.path === imageFixture.rawQuestion.image),
+    { path: imageFixture.rawQuestion.image, sha256: crypto.createHash("sha256").update(imageBytes).digest("hex"), bytes: imageBytes.length },
+    "the image is recorded as path + sha256 + byte count");
   assert.ok(r2ImageRequests.length >= 1, "the Worker fetched the saved-paper image from img.wangjiedu.com");
   assert.equal(
     r2ImageRequests[0],
@@ -423,12 +429,11 @@ try {
   assert.equal(htmlSaved.status, 200, JSON.stringify(htmlSaved));
   const htmlDetail = await request(`archive-saved-papers/${htmlSaved.body.papers[0].id}`);
   const htmlQuestionSaved = htmlDetail.body.paper.snapshot.questions[0];
-  assert.match(htmlQuestionSaved.solutionImage, /^data:image\/svg\+xml;base64,/);
-  const embeddedInlineImage = /<img\b[^>]*\bsrc=["'](data:image\/[^"']+)["']/i.exec(htmlQuestionSaved.content)?.[1];
-  assert.ok(embeddedInlineImage, "HTML img src is inlined into saved content");
-  assert.ok(Buffer.from(embeddedInlineImage.split(",")[1], "base64").equals(
-    fs.readFileSync(path.join(root, "archive", htmlImageFixture.imagePath)),
-  ), "HTML image bytes are pinned");
+  assert.equal(htmlQuestionSaved.solutionImage, htmlQuestion.solutionImage, "solution image path is kept");
+  assert.ok(htmlQuestionSaved.content.includes(htmlImageFixture.imagePath), "HTML img src keeps its path");
+  assert.ok(!/data:image\//.test(JSON.stringify(htmlDetail.body.paper.snapshot)));
+  const htmlAsset = htmlDetail.body.paper.snapshot.assets.find((asset) => asset.path === htmlImageFixture.imagePath);
+  assert.equal(htmlAsset.sha256, crypto.createHash("sha256").update(fs.readFileSync(path.join(root, "archive", htmlImageFixture.imagePath))).digest("hex"), "HTML image bytes are pinned by sha256");
 
   const batchQuestions = automatic
     .filter((record) => record.effectiveBrowseGrade === directFilters.grade && core.pathKey(record, 4) === directFilters.primaryPaths[0])
@@ -465,9 +470,42 @@ try {
   assert.equal(assignment.status, 502, "fixture has no Browser Rendering; assignment remains saved on PDF failure");
   const assignmentRetry = await request("class-exam-assignments", "POST", assignmentInput);
   assert.equal(assignmentRetry.body.assignment.id, assignment.body.assignment.id);
+  const r2BeforeAssign = r2ImageRequests.length;
   const secondClassAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, class_id: "class-race", student_ids: ["student-race"] });
   assert.equal(secondClassAssignment.body.saved, true);
+  assert.equal(r2ImageRequests.length, r2BeforeAssign, "assigning a saved paper reads no image from R2");
   assert.equal(secondClassAssignment.body.assignment.archive_file, assignment.body.assignment.archive_file);
+  const savedPayload = JSON.parse(assignment.body.assignment.mixed_payload_json);
+  assert.equal(savedPayload.questions[0].image, directDetail.body.paper.snapshot.questions[0].image, "assignment payload keeps the key; the screens resolve it to the public image address");
+  assert.ok(!/data:image\//.test(assignment.body.assignment.mixed_payload_json));
+
+  // A snapshot saved before this change (images embedded as data URLs, no assets list) is still read and assigned as before.
+  {
+    const stored = directDetail.body.paper.snapshot;
+    const dataUrl = "data:image/png;base64," + imageBytes.toString("base64");
+    const { assets: _unused, ...rest } = stored;
+    const legacyJson = stableStringify({ ...rest, questions: [{ ...stored.questions[0], image: dataUrl }] });
+    const parentRow = await db.prepare("SELECT * FROM archive_saved_papers WHERE id=?").bind(directId).first();
+    const insertRow = async (patch) => {
+      const row = { ...parentRow, id: uuid(), save_batch_id: uuid(), save_request_hash: crypto.randomBytes(32).toString("hex"), ...patch };
+      row.snapshot_hash = crypto.createHash("sha256").update(row.snapshot_json).digest("hex");
+      const columns = Object.keys(row);
+      await db.prepare(`INSERT INTO archive_saved_papers (${columns.join(",")}) VALUES (${columns.map(() => "?").join(",")})`)
+        .bind(...columns.map((column) => row[column])).run();
+      return row.id;
+    };
+    const legacyId = await insertRow({ snapshot_json: legacyJson });
+    const legacyDetail = await request(`archive-saved-papers/${legacyId}`);
+    assert.equal(legacyDetail.status, 200, JSON.stringify(legacyDetail));
+    assert.equal(legacyDetail.body.paper.snapshot.questions[0].image, dataUrl);
+    const legacyAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, saved_paper_id: legacyId, assignment_batch_id: uuid() });
+    assert.equal(legacyAssignment.body.saved, true, JSON.stringify(legacyAssignment));
+    assert.equal(JSON.parse(legacyAssignment.body.assignment.mixed_payload_json).questions[0].image, dataUrl);
+
+    // A malformed asset record is rejected like any other snapshot defect.
+    const malformedId = await insertRow({ snapshot_json: stableStringify({ ...stored, assets: [{ path: "not-an-image-path", sha256: "x", bytes: -1 }] }) });
+    assert.equal((await request(`archive-saved-papers/${malformedId}`)).status, 409);
+  }
   const priorBlueprintCount = Number((await db.prepare("SELECT COUNT(*) n FROM exam_blueprints WHERE archive_file=?").bind(assignment.body.assignment.archive_file).first()).n);
   assert.ok(priorBlueprintCount >= 1);
   const missingOtherClassWriteKey = crypto.createHash("sha256").update(JSON.stringify(["class-b", assignmentInput.exam_date, assignment.body.assignment.archive_file])).digest("hex");
