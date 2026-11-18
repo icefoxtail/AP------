@@ -1,0 +1,72 @@
+{
+  "qid": 24,
+  "itemFingerprint": "c3f1061a904ae98e",
+  "solveSteps": [
+    "역과 식당 사이의 거리를 x km라 하면 왕복 걷는 시간은 2x/3 시간이다.",
+    "식사 시간은 30분 = 1/2 시간이고, 전체 여유 시간은 2시간 30분 = 5/2 시간이다.",
+    "부등식을 세우면 2x/3 + 1/2 <= 5/2 이다.",
+    "양변에 6을 곱하면 4x + 3 <= 15, 4x <= 12 이므로 x <= 3 이다.",
+    "따라서 최대 3 km 떨어진 식당까지 다녀올 수 있다. 답은 $3\\text{ km}$이다."
+  ],
+  "solvedAnswer": "$3\\text{ km}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "때, 역에서 최대 몇 $\\tex",
+  "rpmRecordId": "M2-RPM-144",
+  "rpmReason": "시속 3 km 왕복 시간 2x/3과 점심 식사 30분(1/2시간)의 합이 5/2시간 이하인 4x <= 12에서 x <= 3을 푼다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+  "templateKey": "NONE",
+  "typeReason": "기차 여유 시간 5/2시간 내에 시속 3 km 왕복 및 30분 식사를 하는 거리 x <= 3 km를 구하는 속력 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "2x/3 + 1/2 <= 5/2 부등식을 세우고 6을 곱해 4x <= 12에서 최대 3 km를 구하는 표준 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "최댓값",
+        "quote": "때, 역에서 최대 몇 $\\tex",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차부등식",
+        "quote": "$ 2단계: 일차부등식을 세운다. (",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "quote": "양변에 분모의 최소공배수인 $6$을 곱",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "공배수",
+        "quote": "에 분모의 최소공배수인 $6$을 곱",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "2x/3 + 1/2 <= 5/2에서 양변에 6을 곱해 4x <= 12, x <= 3을 도출하여 $3\\text{ km}$로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

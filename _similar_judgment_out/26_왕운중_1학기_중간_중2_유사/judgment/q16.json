@@ -1,0 +1,71 @@
+{
+  "qid": 16,
+  "itemFingerprint": "5c956b5bac692758",
+  "solveSteps": [
+    "5x - 4 <= 2x + 8 에서 5x - 2x <= 8 + 4 이다.",
+    "동류항을 정리하면 3x <= 12 이다.",
+    "양변을 양수 3으로 나누면 x <= 4 이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "다음 일차부등식을 풀면? [3",
+  "rpmRecordId": "M2-RPM-138",
+  "rpmReason": "5x - 4 <= 2x + 8을 정리해 3x <= 12로부터 해 x <= 4를 구한다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+  "templateKey": "NONE",
+  "typeReason": "기본형 일차부등식을 이항하여 3x <= 12를 풀고 해 x <= 4를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이항 후 3x <= 12에서 양변을 3으로 나누는 1단계 기본 부등식 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "quote": "다음 일차부등식을 풀면? [3",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "quote": "다음 일차부등식을 풀면? [3",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "등식",
+        "quote": "다음 일차부등식을 풀면? [3",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "+ 4 $$ 동류항을 정리하면 $",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "5x - 4 <= 2x + 8에서 3x <= 12, x <= 4를 도출하여 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}
