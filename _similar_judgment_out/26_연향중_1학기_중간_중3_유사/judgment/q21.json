@@ -1,0 +1,76 @@
+{
+  "qid": 21,
+  "itemFingerprint": "fbc7ee52364907cd",
+  "solveSteps": [
+    "xy < 0 이고 x < y 이므로 x < 0, y > 0 이고 x - y < 0 이다.",
+    "sqrt((-2x)^2) = |-2x| = -2x 이다.",
+    "sqrt(9y^2) = |3y| = 3y 이다.",
+    "sqrt((x - y)^2) = |x - y| = -(x - y) = -x + y 이다.",
+    "식 전체 = (-2x) - (3y) + (-x + y) = -3x - 2y 이다."
+  ],
+  "solvedAnswer": "-3x - 2y",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "부호 조건을 파악하고 $",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "xy < 0 부호 조건으로부터 각 항의 절댓값을 벗겨 식을 간단히 정리한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+  "typeReason": "xy < 0 및 x < y 부호 조건을 이용하여 근호 안의 식을 절댓값으로 풀고 정리하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "xy < 0에서 부호를 판정하고 세 항의 절댓값을 각각 벗겨 정리하는 2단계 서술형 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조건",
+        "quote": "부호 조건을 파악하고 $",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "동류항",
+        "quote": "값을 벗긴 후 동류항을 정리한다.",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "성질",
+        "quote": "= |A|$의 성질을 적용하여 각",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절댓값",
+        "quote": "하여 각 항의 절댓값을 벗긴 후 동",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "xy < 0, x < y에서 x < 0, y > 0을 얻고 |-2x| - |3y| + |x-y| = -2x - 3y - x + y = -3x - 2y로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

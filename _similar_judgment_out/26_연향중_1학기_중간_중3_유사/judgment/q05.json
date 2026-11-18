@@ -1,0 +1,76 @@
+{
+  "qid": 5,
+  "itemFingerprint": "c6e3b6b8c4b4af12",
+  "solveSteps": [
+    "sqrt(0.9) = 3/sqrt(10) 은 근호가 벗겨지지 않으므로 무리수이다.",
+    "파이는 순환하지 않는 무한소수이므로 무리수이다.",
+    "-sqrt(16/81) = -4/9, 0.3dot{7} = 17/45, sqrt(0.25) = 0.5 는 유리수이다.",
+    "sqrt(12) = 2*sqrt(3) 과 2 - sqrt(5) 는 무리수이다.",
+    "무리수는 총 4개이다. 선지 중 1, 2, 3, 5, 4 에서 답은 ⑤ 4이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "유리수와 무리수의 정의를 적용",
+  "rpmRecordId": "M3-RPM-003",
+  "rpmReason": "0.9와 12의 근호식 및 파이의 무리수 여부와 16/81의 유리수 여부를 분류한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+  "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+  "typeReason": "주어진 수들 중 근호를 벗길 수 없는 0.9, 12와 파이 등의 무리수를 분류하여 개수를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "0.9, 16/81, 0.25의 근호를 판별하고 무리수 4개를 세는 1단계 분류 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "<보기> 중 무리수의 개수는? [",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "quote": "계: 무리수의 개수를 센다. 무리",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "quote": "수와 무리수의 정의를 적용하여 근",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순환소수",
+        "quote": "수 있는 수와 순환소수를 분류한다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "0.9, 파이, 12의 근호, 2-sqrt(5)의 4개가 무리수임을 판정하여 선지 ⑤(4)를 선택하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

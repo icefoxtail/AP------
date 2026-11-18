@@ -1,0 +1,76 @@
+{
+  "qid": 4,
+  "itemFingerprint": "1eb248a9c5d7984d",
+  "solveSteps": [
+    "ㄱ: 3 = sqrt(9) 이므로 sqrt(10) > 3 이다. 거짓이다.",
+    "ㄴ: 0.5 = sqrt(0.25) 이고 0.5 > 0.25 이므로 sqrt(0.5) > 0.5 는 참이다.",
+    "ㄷ: 4 = sqrt(16) 이고 16 > 15 이므로 4 > sqrt(15), 즉 -4 < -sqrt(15) 는 참이다.",
+    "ㄹ: sqrt(5) < sqrt(7) 이므로 음수를 취하면 -sqrt(5)/3 > -sqrt(7)/3 이다. 거짓이다.",
+    "따라서 옳은 것은 ㄴ, ㄷ이다. 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+  "unitEvidence": "제곱근의 대소 비교 성질과",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "근호 안의 수 10과 15를 비교하고 0.5와 0.25 및 음수의 부등호 성질을 적용한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+  "typeReason": "근호가 있는 수와 유리수의 대소 및 0.5와 음수 부호에 따른 대소 관계를 판정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "근호 안으로 넣어 10과 9, 0.5와 0.25, 16과 15를 1단계로 비교 판정하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "관계",
+        "quote": "기> 중 대소 관계가 옳은 것만을",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "quote": "기에 적용하여 판정한다. 1단계",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "대소비교",
+        "quote": "제곱근의 대소 비교 성질과",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "quote": "비교 성질과 음수의 성질을 각",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "각 보기를 근호로 통일하여 비교한 결과 ㄴ(0.5>0.25)과 ㄷ(-4<-sqrt(15))이 참임을 확인하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

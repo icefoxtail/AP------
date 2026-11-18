@@ -1,0 +1,70 @@
+{
+  "qid": 14,
+  "itemFingerprint": "1e6f023b7ec61ba0",
+  "solveSteps": [
+    "① (a + 4)^2 = a^2 + 8a + 16 이다.",
+    "② (a - 5)^2 = a^2 - 10a + 25 이다.",
+    "③ (a + 3)(a - 3) = a^2 - 9 이다.",
+    "④ (x - 3)(x + 4) = x^2 + (-3+4)x - 12 = x^2 + x - 12 로 옳다.",
+    "⑤ (2x - 3)(x - 2) = 2x^2 - 7x + 6 이다. 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "unitEvidence": "곱셈공식을 적용하여 각",
+  "rpmRecordId": "M3-RPM-182",
+  "rpmReason": "완전제곱식의 16, 25 상수항 및 일차식의 곱에서 -12가 나오는 공식을 비교 판별한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+  "typeReason": "곱셈공식을 적용하여 상수항 16, 25, -12 등의 전개 결과가 올바른지 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "곱셈공식을 1단계로 전개하여 4번의 -12가 일치함을 바로 확인하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다항식을 전개한 것으",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "전개",
+        "quote": "다항식을 전개한 것으로 옳은",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "quote": "곱셈공식을 적용하여 각",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "각 식의 곱셈공식을 전개한 결과 4번 (x-3)(x+4) = x^2+x-12가 참임을 확인하고 16, 25 등의 오답을 배제하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 15,
+  "itemFingerprint": "35f44a5989e0e4d3",
+  "solveSteps": [
+    "① 97^2 = (100 - 3)^2 은 완전제곱식을 이용한다.",
+    "② 105^2 = (100 + 5)^2 은 완전제곱식을 이용한다.",
+    "③ 304 * 308 = (300 + 4)(300 + 8) 은 두 일차식의 곱을 이용한다.",
+    "④ (sqrt(3) + sqrt(5))^2 은 완전제곱식을 이용한다.",
+    "⑤ 304 * 296 = (300 + 4)(300 - 4) = 300^2 - 4^2 = 90000 - 16 = 89984 로 합차공식을 이용하기 가장 편리하다. 답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "unitEvidence": "다음 중 곱셈공식 $(a+b)(",
+  "rpmRecordId": "M3-RPM-018",
+  "rpmReason": "304와 296을 300 기준 합차공식으로 변형하여 90000 - 16을 계산한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+  "typeReason": "수의 곱셈 304와 296에 합차공식을 적용하여 편리하게 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "304와 296의 평균 300을 기준으로 합과 차의 꼴을 1단계로 찾아내는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "곱셈공식",
+        "quote": "다음 중 곱셈공식 $(a+b)(",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "공식",
+        "quote": "가장 적합한 공식을 분석한다.",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "합차공식",
+        "quote": "있다. 따라서 합차공식 $(a + b",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평균",
+        "quote": "두 수의 평균을 기준으로 $",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "304와 296은 (300+4)(300-4)로 합차공식을 바로 적용할 수 있어 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

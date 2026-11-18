@@ -1,0 +1,70 @@
+{
+  "qid": 2,
+  "itemFingerprint": "de954f53e3b54617",
+  "solveSteps": [
+    "sqrt((-4)^2) = 4 이다.",
+    "(-sqrt(12))^2 = 12 이다.",
+    "sqrt(1/36) = 1/6 이다.",
+    "12 * (1/6) = 2 이므로 전체 식은 4 + 2 = 6 이다.",
+    "선지 중 4, 6, 8, 10, 12 에서 답은 ② 6이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "을 계산한 후 사칙연산을 수행한다.",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "12와 36이 포함된 근호식을 제곱근의 성질로 정리하고 곱셈과 덧셈을 수행한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "12의 제곱근의 제곱과 1/36의 제곱근의 곱셈 및 덧셈 사칙연산을 수행하는 혼합 계산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "근호 밖으로 빼고 12에 1/6을 곱하여 4+2=6을 얻는 1단계 기본 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "제곱근의 성질 $\\s",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사칙연산",
+        "quote": "을 계산한 후 사칙연산을 수행한다.",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "성질",
+        "quote": "제곱근의 성질 $\\sqrt{",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "sqrt((-4)^2)=4와 12 * (1/6) = 2를 계산하여 4+2=6을 얻고 2번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}
