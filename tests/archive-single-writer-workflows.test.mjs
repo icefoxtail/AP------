@@ -61,7 +61,7 @@ const git = (dir, ...args) => execFileSync('git', args, { cwd: dir, encoding: 'u
 
 test('only the serialized main registration job persists shared outputs, using one retryable transaction', () => {
   const register = job(writer, 'register');
-  assert.match(register, /if: github\.event_name != 'pull_request' && github\.ref == 'refs\/heads\/main'/);
+  assert.match(register, /needs: classify\n    if: \$\{\{ !cancelled\(\) && github\.event_name != 'pull_request' && github\.ref == 'refs\/heads\/main' && needs\.classify\.outputs\.skip_register != 'true' \}\}/);
   assert.match(register, /permissions:\n      contents: write\n      actions: write/);
   assert.match(register, /group: archive-reviewed-exam-meta-register-main\n      cancel-in-progress: false/);
   assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
@@ -167,6 +167,40 @@ test('actual dispatch shell sends one exact SHA and refuses malformed refs befor
     const rejected = f.run(command, { REGISTERED_MAIN_SHA: invalid });
     assert.notEqual(rejected.status, 0, invalid || 'empty SHA');
     assert.equal(f.read('command-trace'), '', 'no unbound publication request was sent');
+  }
+});
+
+// An already registered push must not wait behind the register lock; any doubt leaves it to the register job.
+test('classify hands only a push that needs no registration straight to Pages, outside the lock', t => {
+  const classify = job(writer, 'classify');
+  assert.match(classify, /if: github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/);
+  assert.doesNotMatch(classify, /concurrency:|contents: write|git-push-derived-with-retry/);
+  const handoff = step(classify, /^        id: handoff$/m);
+  assert.match(handoff, /continue-on-error: true/);
+  const command = shell(handoff);
+  const sha = '4'.repeat(40);
+  const f = fixture(t);
+  const nodeStub = [
+    '#!/usr/bin/env bash',
+    'if [[ "$1" == tools/ci/archive-registration-writer.mjs ]]; then',
+    '  mkdir -p "$4"; printf \'{"needed":%s}\' "$NEEDED" > "$4/report.json"; [[ "${WRITER_FAIL:-}" != 1 ]]; exit',
+    'fi',
+    'exec "$REAL_NODE" "$@"', ''].join('\n');
+  const run = (needed, extra = {}) => {
+    f.put('bin/node', nodeStub, 0o755);
+    f.put('bin/gh', '#!/usr/bin/env bash\nprintf "%s\\n" "$@" >> "$COMMAND_TRACE"\n', 0o755);
+    f.put('command-trace', '');
+    f.put('output', '');
+    return f.run(command, { PUSH_SHA: sha, NEEDED: needed, REAL_NODE: process.execPath, RUNNER_TEMP: path.join(f.dir, 'tmp'), ...extra });
+  };
+  assert.equal(run('false').status, 0);
+  assert.deepEqual(f.read('command-trace').trim().split('\n'),
+    ['workflow', 'run', 'archive-pages-release.yml', '--ref', 'main', '-f', `registered_main_sha=${sha}`]);
+  assert.equal(f.read('output'), 'dispatched=true\n');
+  for (const [needed, extra] of [['true', {}], ['false', { WRITER_FAIL: '1' }], ['false', { PUSH_SHA: 'main' }]]) {
+    run(needed, extra);
+    assert.equal(f.read('command-trace'), '', 'nothing was dispatched');
+    assert.equal(f.read('output'), '', 'the register job is not skipped');
   }
 });
 

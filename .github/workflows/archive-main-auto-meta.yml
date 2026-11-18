@@ -69,8 +69,46 @@ jobs:
           path: ${{ runner.temp }}/auto-meta-preview/
           if-no-files-found: warn
           retention-days: 14
+  classify:
+    # Runs outside the register lock. A push whose tree is already fully registered (writer --check:
+    # nothing needed) goes straight to Pages; anything else or any error leaves it to register.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: write
+    outputs:
+      skip_register: ${{ steps.handoff.outputs.dispatched }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Hand an already registered push straight to the single Pages entrypoint
+        id: handoff
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUSH_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          [[ "$PUSH_SHA" =~ ^[a-f0-9]{40}$ ]]
+          out="$RUNNER_TEMP/archive-registration-classify"
+          node tools/ci/archive-registration-writer.mjs --check --work-dir "$out" > /dev/null
+          if [[ "$(node -p "const r=require(process.argv[1]);r.needed===false" "$out/report.json")" != true ]]; then
+            echo 'Registration is needed for this push; the register job handles it.'
+            exit 0
+          fi
+          gh workflow run archive-pages-release.yml --ref main -f registered_main_sha="$PUSH_SHA"
+          printf 'dispatched=true\n' >> "$GITHUB_OUTPUT"
+          echo "Already registered: Pages dispatched for $PUSH_SHA; register job skipped." >> "$GITHUB_STEP_SUMMARY"
   register:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: classify
+    if: ${{ !cancelled() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.classify.outputs.skip_register != 'true' }}
     runs-on: ubuntu-latest
     # reviewed inbox lane 120 + other lanes; persist may redo one full prepare.
     timeout-minutes: 345
