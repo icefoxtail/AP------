@@ -201,7 +201,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],

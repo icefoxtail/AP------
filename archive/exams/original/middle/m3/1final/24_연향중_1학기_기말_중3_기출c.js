@@ -418,7 +418,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": ["객관식", "이차함수", "그래프", "축", "조건해석"],
     "wide": true,
     "content": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 것은? (단, $a$, $p$는 상수이다.)",
