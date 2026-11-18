@@ -161,6 +161,16 @@ test("explicit hold counters are recomputed, row-level counters are not touched"
   assert.equal(after.counts.records, 5);
 });
 
+test("a type judgment without a template key replays and verifies (absent key is not drift)", t => {
+  const f = fixture(t);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
+  const meta = f.read(META);
+  delete meta.records[0].templateKey; // real rows without a template have no such key
+  f.put(META, meta);
+  f.run(req, { write: true });
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
 test("a re-run is an idempotent replay and verifies; later drift of a registered type is detected", t => {
   const f = fixture(t);
   const req = f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
